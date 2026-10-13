@@ -6,8 +6,8 @@ Edition** for Nintendo Switch.
 [Progress on decomp.dev](https://decomp.dev/jwfeniello/scott-pilgrim-switch-decomp)
 · [Progress workflow](https://github.com/jwfeniello/scott-pilgrim-switch-decomp/actions/workflows/progress.yml)
 
-**Current locally verified progress: 27,388 exact functions / 2,462,776 bytes /
-15.019982% of executable `.text`.** The original `.text` is 16,396,664 bytes.
+**Current locally verified progress: 28,863 exact functions / 2,771,572 bytes /
+16.903268% of executable `.text`.** The original `.text` is 16,396,664 bytes.
 This includes engine and library infrastructure. The project does not yet rebuild
 or boot the complete game. Original method names and many ABI declarations remain
 provisional.
@@ -31,11 +31,12 @@ python tools/report.py
 python -m unittest discover -s tools -p "test_*.py" -v
 ```
 
-The verifier compiles ordinary C++, resolves checked standard ELF relocations
+The verifier compiles ordinary C and C++, resolves checked standard ELF relocations
 against original symbol bindings, and compares every byte of each complete
 original FDE function extent. It rejects extra compiler bytes as well as missing
 or different bytes. Source code is compiled, never executed. Outputs go to the
-chosen build directory. `--only BUILD_ID` checks one entry from
+chosen build directory. `--jobs 4` optionally runs four compiler processes;
+byte comparisons and receipt order remain deterministic. `--only BUILD_ID` checks one entry from
 `config/builds.json` without updating the complete snapshot.
 
 ## Progress reports
@@ -114,7 +115,12 @@ build. These candidates are not promoted by a similarity score.
 The repository contains reconstructed source and metadata. Game binaries,
 assets, proprietary SDK files and compiler installations are not distributed.
 
-Project source and tools are licensed under [MIT](LICENSE).
+Reconstructed project source and tools are licensed under [MIT](LICENSE).
+Vendored library sources and headers retain their upstream licenses; see
+[third-party notices](THIRD_PARTY_NOTICES.md).
 
 The requested 15% milestone is reached. See [milestone findings](docs/FIFTEEN_PERCENT.md)
 and [C++ ABI recovery](docs/LEAF_RECOVERY.md) for validation and declaration limits.
+
+The next requested target is 25%. See [ongoing findings](docs/TWENTY_FIVE_PERCENT.md)
+for the current verified checkpoint and library source limitations.

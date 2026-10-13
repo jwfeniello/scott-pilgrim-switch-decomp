@@ -47,9 +47,12 @@ def input_hashes(root=ROOT):
             dependency = (path.parent/include).resolve()
             require(dependency.is_relative_to(root.resolve()),'Include escapes repository')
             add_source(dependency.relative_to(root.resolve()).as_posix())
+    header_roots = set()
     for build in builds:
         add_source(build['source'])
         for name in build.get('header_roots',[]):
+            if name in header_roots:continue
+            header_roots.add(name)
             directory=safe_path(root,name)
             require(directory.is_dir(),'Missing header root: '+name)
             for path in directory.rglob('*'):

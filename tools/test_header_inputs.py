@@ -10,7 +10,8 @@ class HeaderInputTests(unittest.TestCase):
         for name in ('config/target.json','config/functions.tsv','tools/elf.py','tools/project.py','tools/verify.py'):(root/name).write_text('{}')
         (root/'src/View.cpp').write_text('#include <public_api.h>\n')
         (root/'vendor/include/public_api.h').write_text('struct Value {unsigned size;};\n')
-        (root/'config/builds.json').write_text(json.dumps(dict(builds=[dict(source='src/View.cpp',header_roots=[header_root])])))
+        builds = [dict(source='src/View.cpp',header_roots=[header_root]) for _ in range(2)]
+        (root/'config/builds.json').write_text(json.dumps(dict(builds=builds)))
 
     def test_system_header_changes_and_additions_invalidate_inputs(self):
         with tempfile.TemporaryDirectory()as folder:

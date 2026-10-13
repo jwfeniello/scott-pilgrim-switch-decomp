@@ -1,5 +1,6 @@
 """Rebuild source and compare whole functions to a user-supplied original ELF."""
 import argparse
+from concurrent.futures import ThreadPoolExecutor
 import datetime as dt
 import os
 from pathlib import Path
@@ -16,7 +17,8 @@ def compiler_version(compiler,expected):
     return result.stdout.splitlines()[0]
 
 
-def verify(original_path,compilers,build_dir,root=ROOT,only=None):
+def verify(original_path,compilers,build_dir,root=ROOT,only=None,jobs=1):
+    require(jobs > 0,'Compiler job count must be positive')
     root,build_dir = Path(root),Path(build_dir);target,functions = inventory(root)
     original = Elf(original_path)
     require(digest(original.data) == target['sha256'],'Original ELF SHA-256 does not match this target')
@@ -26,10 +28,11 @@ def verify(original_path,compilers,build_dir,root=ROOT,only=None):
     builds = load(root/'config/builds.json')['builds']
     if only:builds = [b for b in builds if b['id'] == only]
     require(bool(builds),'No selected build')
+    require(len({b['id']for b in builds}) == len(builds),'Duplicate build output ID')
     versions = {version:compiler_version(compilers[version],version)for version in {b['compiler']for b in builds}}
     build_dir.mkdir(parents=True,exist_ok=True)
     relative = original.relative_relocations();matches = [];failures = [];receipts = []
-    for index,build in enumerate(builds):
+    def compile_build(build):
         output = build_dir/(build['id']+'.o')
         command = [str(compilers[build['compiler']]),*build['flags'],'-c',str(root/build['source']),'-o',str(output)]
         result = subprocess.run(command,capture_output=True,text=True,
@@ -37,26 +40,29 @@ def verify(original_path,compilers,build_dir,root=ROOT,only=None):
                                 creationflags=getattr(subprocess,'CREATE_NO_WINDOW',0),
                                 env=dict(os.environ,TMP=str(build_dir.resolve()),TEMP=str(build_dir.resolve())))
         require(result.returncode == 0,'Compile failed for '+build['id']+'\n'+result.stderr)
-        obj = Elf(output)
-        receipts.append(dict(id=build['id'],compiler=build['compiler'],object_sha256=digest(obj.data)))
-        for recipe in build['functions']:
-            address = int(recipe['address'],0)
-            require(recipe['size'] == spans[address],'Recipe does not cover the full original FDE')
-            linked,relocations = link_method(obj,recipe,original,relative)
-            expected = original.at(address,spans[address])
-            require(digest(expected) == recipe['target_sha256'],'Original function hash differs from manifest')
-            exact = linked == expected
-            if not exact:
-                failures.append(dict(address=hex(address),target_size=len(expected),compiled_size=len(linked),
-                                     first_different_offsets=[i for i in range(0,min(len(linked),len(expected)),4)
-                                                              if linked[i:i+4] != expected[i:i+4]][:8]))
-            matches.append(dict(address=hex(address),size=len(expected),exact=exact,
-                                target_sha256=digest(expected),compiled_sha256=digest(linked),
-                                source=build['source'],symbol=recipe['symbol'],
-                                source_review=build.get('source_review','manual_reconstruction'),
-                                relocation_count=len(relocations)))
-        if index%50 == 0 or index+1 == len(builds):
-            print(f"Compiled {index+1}/{len(builds)} source builds; compared {len(matches)} complete functions",flush=True)
+        return build,output
+    with ThreadPoolExecutor(max_workers=jobs) as pool:
+        for index,(build,output) in enumerate(pool.map(compile_build,builds)):
+            obj = Elf(output)
+            receipts.append(dict(id=build['id'],compiler=build['compiler'],object_sha256=digest(obj.data)))
+            for recipe in build['functions']:
+                address = int(recipe['address'],0)
+                require(recipe['size'] == spans[address],'Recipe does not cover the full original FDE')
+                linked,relocations = link_method(obj,recipe,original,relative)
+                expected = original.at(address,spans[address])
+                require(digest(expected) == recipe['target_sha256'],'Original function hash differs from manifest')
+                exact = linked == expected
+                if not exact:
+                    failures.append(dict(address=hex(address),target_size=len(expected),compiled_size=len(linked),
+                                         first_different_offsets=[i for i in range(0,min(len(linked),len(expected)),4)
+                                                                  if linked[i:i+4] != expected[i:i+4]][:8]))
+                matches.append(dict(address=hex(address),size=len(expected),exact=exact,
+                                    target_sha256=digest(expected),compiled_sha256=digest(linked),
+                                    source=build['source'],symbol=recipe['symbol'],
+                                    source_review=build.get('source_review','manual_reconstruction'),
+                                    relocation_count=len(relocations)))
+            if index%50 == 0 or index+1 == len(builds):
+                print(f"Compiled {index+1}/{len(builds)} source builds; compared {len(matches)} complete functions",flush=True)
     require(not failures,'Complete byte comparison failed: '+str(failures[:5]))
     snapshot = dict(version=1,generated_at=dt.datetime.now(dt.timezone.utc).isoformat(),
                     target_elf_sha256=target['sha256'],input_sha256=input_hashes(root),
@@ -79,8 +85,9 @@ def main():
     parser.add_argument('--clang8',type=Path,default=os.environ.get('SCOTT_CLANG8','toolchains/llvm801/bin/clang++'))
     parser.add_argument('--build-dir',type=Path,default=ROOT/'build/verify')
     parser.add_argument('--only',help='Verify one build without updating the public snapshot')
+    parser.add_argument('--jobs',type=int,default=1,help='Concurrent compiler processes (default: 1)')
     args = parser.parse_args()
-    verify(args.original,{'7.0.1':args.clang7.resolve(),'8.0.1':args.clang8.resolve()},args.build_dir.resolve(),only=args.only)
+    verify(args.original,{'7.0.1':args.clang7.resolve(),'8.0.1':args.clang8.resolve()},args.build_dir.resolve(),only=args.only,jobs=args.jobs)
 
 
 if __name__ == '__main__':main()

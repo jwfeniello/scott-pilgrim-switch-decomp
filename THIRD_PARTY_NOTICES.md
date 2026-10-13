@@ -11,3 +11,11 @@ headers, complete dual MIT / University of Illinois/NCSA notice and contributor
 credits are in `vendor/llvm-libcxx-4`. Public musl 1.1.20 C and AArch64 type headers
 are in `vendor/musl`, with their complete MIT copyright notice. See
 [header provenance](vendor/README.md). No Nintendo SDK library files are included.
+
+
+Public OpenSSL source views use the OpenSSL_1_0_2u release, under the retained
+OpenSSL/SSLeay license in `vendor/openssl-1.0.2u/LICENSE`. This product includes
+software developed by the OpenSSL Project for use in the OpenSSL Toolkit
+(https://www.openssl.org/), cryptographic software written by Eric Young
+(eay@cryptsoft.com), and software written by Tim Hudson (tjh@cryptsoft.com).
+See `vendor/README.md` for provenance and configuration limits.

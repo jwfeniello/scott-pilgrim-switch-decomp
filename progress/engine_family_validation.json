@@ -874,6 +874,21 @@
         312
       ],
       "first_different_offset": 100
+    },
+    {
+      "id": "sdk_composite_destructor",
+      "source_sha256": "1fdca780939983f46d46f7eb2f3dc54172e08692973b6611dd9e87532f07cf2e",
+      "instances_sha256": "abcc12b22347b083d69965c573367ab25fcdeb27431ce32713346dea1c330eea",
+      "dependencies": {},
+      "repeated_exact_functions": 14,
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "a24f01cdab1e4c49e138f1a21534aa0c76ec27a41ae983b8c23f1a1f5dc08be9",
+      "negative_control": "wrong_exchange_order",
+      "rejected_functions": 14,
+      "wrong_compiled_sizes": [
+        536
+      ],
+      "first_different_offset": 124
     }
   ]
 }

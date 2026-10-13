@@ -1,0 +1,9 @@
+{
+  "url": "https://api.github.com/repos/openssl/openssl/tarball/OpenSSL_1_0_2u",
+  "archive_sha256": "3df06574493cfb0f2c28c13b2d6b92e064a607d1d526a8f026ea70f1fc4d4329",
+  "official_sha256": null,
+  "tag": "OpenSSL_1_0_2u",
+  "tag_object_sha": "b8371bb22ec8d3859fba779989398a7a0255d864",
+  "library_revision_in_original": "unproven",
+  "configuration": "GNU C/AArch64, no asm; 64-bit limbs or 32-bit limbs with BN_LLONG; fixture default prefix /usr/local/ssl"
+}

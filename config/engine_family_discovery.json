@@ -2051,6 +2051,27 @@
           "high_offset": 104
         }
       ]
+    },
+    {
+      "id": "sdk_composite_destructor",
+      "source": "src/SdkCompositeDestructor.cpp",
+      "function": "Composite",
+      "reference": "0x156370",
+      "size": 536,
+      "macro": "SDK_COMPOSITE",
+      "include": "sdk_composite_destructor_instances.inc",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-std=c++11",
+        "-O2",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-fno-omit-frame-pointer",
+        "-fPIC",
+        "-funwind-tables"
+      ],
+      "symbol_pattern": "_ZN15SdkCompositeAbi9CompositeILj([0-9]+)EED2Ev"
     }
   ]
 }

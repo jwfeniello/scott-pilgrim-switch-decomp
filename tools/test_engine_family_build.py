@@ -56,6 +56,7 @@ def mutation(family,content):
     if identifier=='shared_callback_construction':return 'wrong_atomic_order','__atomic_fetch_add(&control->references,1,__ATOMIC_RELAXED);','__atomic_fetch_add(&control->references,1,__ATOMIC_ACQ_REL);'
     if identifier=='pointer_array_release':return 'wrong_freed_pointer','allocator->Free(object);','allocator->Free(reinterpret_cast<void*>(reinterpret_cast<uintptr_t>(object)+8));'
     if identifier=='guarded_scalar_dispatch':return 'wrong_dispatch_hash',',Hash,&payload);',',Hash ^ 1u,&payload);'
+    if identifier=='sdk_composite_destructor':return 'wrong_exchange_order','__atomic_exchange_n(&value,nullptr,__ATOMIC_ACQ_REL)','__atomic_exchange_n(&value,nullptr,__ATOMIC_RELAXED)'
     if identifier.startswith('identity_'):
         line = next(line for line in content.splitlines() if family['function']+'(' in line and '__attribute__' in line)
         return 'wrong_identity',line,line.replace('id==A','id==(A ^ 1u)')
