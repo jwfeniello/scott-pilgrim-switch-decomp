@@ -130,6 +130,23 @@ def relocate(code,offset,kind,target,address):
     struct.pack_into('<I',code,offset,word)
 
 
+def immutable_literal(obj,relocation):
+    symbol = relocation['symbol_record']
+    require(0 < symbol[3] < len(obj.sections),'Unresolved literal symbol')
+    storage = obj.sections[symbol[3]];width = storage[9]
+    offset = symbol[4]+relocation['addend']
+    require(storage[1] == 1 and storage[2]&2 and storage[2]&0x10 and not storage[2]&5,'Not a mergeable immutable literal')
+    require(0 <= offset < storage[5],'Invalid literal extent')
+    content = obj.data[storage[4]:storage[4]+storage[5]]
+    if storage[2]&0x20:
+        require(width == 1,'Unsupported string literal width')
+        end = content.find(b'\0',offset)
+        require(end >= offset,'Unterminated string literal')
+        return content[offset:end+1]
+    require(width in (4,8,16) and offset%width == 0 and offset <= storage[5]-width,'Invalid literal extent')
+    return content[offset:offset+width]
+
+
 def link_method(obj,recipe,original,relative):
     code,relocations = obj.method(recipe['symbol']);actual = bytearray(code)
     used = []
@@ -142,12 +159,7 @@ def link_method(obj,recipe,original,relative):
         elif name in recipe.get('bindings',{}):
             target = int(recipe['bindings'][name],0)+addend
         else:
-            symbol = relocation['symbol_record']
-            require(0 < symbol[3] < len(obj.sections),'Unresolved symbol '+name)
-            storage = obj.sections[symbol[3]];width = storage[9];offset = symbol[4]+addend
-            require(storage[1] == 1 and storage[2]&2 and storage[2]&0x10 and not storage[2]&5,'Not a mergeable immutable literal')
-            require(width in (4,8,16) and offset%width == 0 and 0 <= offset <= storage[5]-width,'Invalid literal extent')
-            literal = obj.data[storage[4]+offset:storage[4]+offset+width]
+            literal = immutable_literal(obj,relocation);width = len(literal)
             target = int(recipe['literals'][literal.hex()],0)
             require(any(s[1] != 8 and s[2]&2 and not s[2]&5 and s[3] <= target < target+width <= s[3]+s[5]for s in original.sections),'Literal destination is not immutable')
             require(original.at(target,width) == literal,'Original literal bytes differ')

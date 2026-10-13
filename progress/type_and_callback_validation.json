@@ -1,0 +1,60 @@
+{
+  "target_elf_sha256": "ea95638e6d6aaa0dc6cddd552a9366799aa1ec3bc07ee201f23f6c151103f5b8",
+  "families": [
+    {
+      "id": "type_registration_once",
+      "source_sha256": "852d88a5a82b18ad8984fb41a66fe7630fb7fd22979356342bbc1ebdcca91511",
+      "instances_sha256": "9a8527c40ee441d4e81bdb6f93e88ce633def1c95298190024c27d156841bc6e",
+      "repeated_exact_functions": 649,
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "9f842c42ec1f701fc632a6b6fd4a4f003dcd1f94cc65826d9cce593bd5ca9830",
+      "negative_control": "wrong_initial_index",
+      "rejected_functions": 649,
+      "wrong_compiled_sizes": [
+        240
+      ],
+      "first_different_offsets": [
+        156
+      ]
+    },
+    {
+      "id": "factory_construction",
+      "source_sha256": "b8fe4d92c0fd50863506c569cd3fe68ef5b44fe9ed1e2ddcd3b79b24be460f89",
+      "instances_sha256": "2d195de6c86983e5a5be8bc2ea60b9f7f899e8cd9a11b363d0182447cb420f8c",
+      "repeated_exact_functions": 489,
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "eecf848f1b1553940d742faab31fcebb4e7b9fd6de6359a531727ac6965c5d64",
+      "negative_control": "wrong_allocation_size",
+      "rejected_functions": 489,
+      "wrong_compiled_sizes": [
+        192
+      ],
+      "first_different_offsets": [
+        56
+      ]
+    },
+    {
+      "id": "callback_identity",
+      "source_sha256": "871e947aec75dc0fb5b5ae4ac96e26818265164af94bbfb3d99cc3eb79463550",
+      "instances_sha256": "7a0a6b84c12e36248ac19e8c109fc0a477fab05cc36da07c053f64fd936e981b",
+      "repeated_exact_functions": 770,
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "44b83efdc3570d6061ca2d54faf514817880ff25557a843db5bf0b64994e361a",
+      "negative_control": "wrong_owner_comparison",
+      "rejected_functions": 770,
+      "wrong_compiled_sizes": [
+        80
+      ],
+      "first_different_offsets": [
+        12,
+        16,
+        20,
+        24,
+        28,
+        32,
+        36,
+        40
+      ]
+    }
+  ]
+}

@@ -7,8 +7,9 @@ import shutil
 import struct
 import tempfile
 import unittest
+from types import SimpleNamespace
 
-from elf import relocate
+from elf import immutable_literal,link_method,relocate
 from project import ROOT,input_hashes,load,validated_snapshot
 from report import make_report
 from check_publish import check_report
@@ -65,6 +66,35 @@ class ReportTests(unittest.TestCase):
 
 
 class RelocationTests(unittest.TestCase):
+    def test_string_literals_check_content_termination_and_storage(self):
+        section = (0,1,0x32,0,0,4,0,0,1,1)
+        relocation = dict(symbol='',kind=277,offset=4,addend=0,
+                          symbol_record=(0,0,0,1,0,4))
+        code = struct.pack('<II',0x90000002,0x91000042)
+        high = dict(relocation,kind=275,offset=0)
+        obj = SimpleNamespace(data=b'tag\0',sections=[(),section],
+                              method=lambda _: (code,[high,relocation]))
+        original = SimpleNamespace(sections=[(0,1,2,0x1000,0,4,0,0,1,0)],
+                                   at=lambda address,size:b'tag\0'[:size])
+        recipe = dict(symbol='example',address='0x2000',bindings={},
+                      literals={'74616700':'0x1000'})
+        self.assertEqual(immutable_literal(obj,relocation),b'tag\0')
+        linked,used = link_method(obj,recipe,original,{})
+        self.assertEqual(len(linked),8);self.assertEqual(len(used),2)
+        original.at = lambda address,size:b'bad\0'[:size]
+        with self.assertRaisesRegex(ValueError,'Original literal bytes differ'):
+            link_method(obj,recipe,original,{})
+        obj.data = b'tag!'
+        with self.assertRaisesRegex(ValueError,'Unterminated'):
+            immutable_literal(obj,relocation)
+        obj.data = b'tag\0'
+        for flags,width,offset in ((0x33,1,0),(0x22,1,0),(0x32,2,0),(0x32,1,4)):
+            with self.subTest(flags=flags,width=width,offset=offset):
+                changed = list(section);changed[2]=flags;changed[9]=width
+                obj.sections=[(),tuple(changed)]
+                with self.assertRaises(ValueError):
+                    immutable_literal(obj,dict(relocation,addend=offset))
+
     def test_branches_reject_alignment_range_and_opcode_errors(self):
         for word,target in ((0x94000000,3),(0x94000000,1<<28),(0xd65f03c0,4)):
             with self.subTest(word=hex(word),target=target):

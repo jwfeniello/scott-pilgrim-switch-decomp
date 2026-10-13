@@ -6,8 +6,8 @@ Edition** for Nintendo Switch.
 [Progress on decomp.dev](https://decomp.dev/jwfeniello/scott-pilgrim-switch-decomp)
 · [Progress workflow](https://github.com/jwfeniello/scott-pilgrim-switch-decomp/actions/workflows/progress.yml)
 
-**Current locally verified progress: 2,678 exact functions / 848,528 bytes /
-5.175004% of executable `.text`.** The original `.text` is 16,396,664 bytes.
+**Current locally verified progress: 4,586 exact functions / 1,159,776 bytes /
+7.073244% of executable `.text`.** The original `.text` is 16,396,664 bytes.
 This includes engine and library infrastructure. The project does not yet rebuild
 or boot the complete game. Original method names and many ABI declarations remain
 provisional.
@@ -73,6 +73,9 @@ boundaries.
 | Reference pair release | 100 | 68,000 |
 | Lazy hexadecimal type hashes | 760 | 197,600 |
 | Lazy type registration | 753 | 177,708 |
+| One-time type registration | 649 | 155,760 |
+| Factory construction and ownership cleanup | 489 | 93,888 |
+| Callback identity comparison | 770 | 61,600 |
 | Serializer, ActionStep methods and probes | 6 | 664 |
 | Local-model leaf proposals | 700 | 8,052 |
 
@@ -80,9 +83,11 @@ The 700 leaf proposals are exact machine-code matches whose ABI/source review
 remains pending. Exact bytes do not establish the original prototype, class
 ownership or readable source quality. See [methodology](docs/METHODOLOGY.md).
 
-The latest registration family compiles from one C++ template with Clang 8.0.1.
-All 753 complete bodies match; repeat builds and deliberately incorrect source
-constants validate the comparison. See [registration findings](docs/LAZY_TYPE_REGISTRATION.md).
+The latest three families add 1,908 complete functions / 311,248 bytes using
+ordinary C++ templates and Clang 8.0.1. Every instance matches; repeat builds
+and deliberately incorrect source controls validate the comparison. See
+[7% milestone findings](docs/TYPE_AND_CALLBACK_FAMILIES.md) and the earlier
+[lazy registration findings](docs/LAZY_TYPE_REGISTRATION.md).
 
 `src/wip/` preserves close reconstructions with **zero** exact-match credit.
 The metadata initializer remains 13 instruction words away in its last workspace
