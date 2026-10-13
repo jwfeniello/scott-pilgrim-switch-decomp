@@ -29,6 +29,16 @@ def mutation(family,content):
     if identifier == 'static_factory_construction':return 'wrong_allocation_size','sizeof(ConstructedType<Key>)','sizeof(ConstructedType<Key>)+8'
     if identifier == 'guarded_callback_dispatch':return 'wrong_dispatch_hash',',Hash,payload);',',Hash ^ 1u,payload);'
     if identifier == 'guarded_callback_buffer':return 'wrong_dispatch_hash',',Hash,&payload);',',Hash ^ 1u,&payload);'
+    if identifier.startswith('typed_property_access'):return 'wrong_initial_index','index(-1)','index(-2)'
+    if identifier == 'type_payload':return 'wrong_payload_offset','self+8','self+16'
+    if identifier == 'type_address':return 'wrong_address','&AddressBinding<Key>::table;','&AddressBinding<Key>::table+1;'
+    if identifier == 'virtual_result_adapter':return 'wrong_argument','self->Read(value)','self->Read(reinterpret_cast<void*>(reinterpret_cast<uintptr_t>(value)+8))'
+    if identifier == 'delete_with_frame':return 'missing_destroy','    FramedDeleteBinding<Key>::Destroy(self);',''
+    if identifier == 'hash_capacity':return 'wrong_minimum_capacity','n==1','n==2'
+    if identifier == 'hash_rebuild':return 'wrong_allocation_flags','n*8,8,Flags,','n*8,8,Flags ^ 1u,'
+    if identifier.startswith('identity_'):
+        line = next(line for line in content.splitlines() if family['function']+'(' in line and '__attribute__' in line)
+        return 'wrong_identity',line,line.replace('id==A','id==(A ^ 1u)')
     return 'wrong_atomic_order','__ATOMIC_RELAXED','__ATOMIC_ACQ_REL'
 
 

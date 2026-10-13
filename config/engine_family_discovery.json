@@ -849,6 +849,292 @@
         "-fomit-frame-pointer",
         "-fno-pic"
       ]
+    },
+    {
+      "id": "typed_property_access",
+      "source": "src/TypedPropertyAccess.cpp",
+      "function": "AccessTypedProperty",
+      "reference": "0x28a840",
+      "size": 264,
+      "macro": "TYPED_PROPERTY_ACCESS",
+      "include": "typed_property_access_instances.inc",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-std=c++11",
+        "-O2",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-fno-omit-frame-pointer",
+        "-fPIC"
+      ]
+    },
+    {
+      "id": "type_payload",
+      "source": "src/TypePayload.cpp",
+      "function": "FindTypedPayload",
+      "reference": "0x1851c0",
+      "size": 28,
+      "macro": "TYPE_PAYLOAD",
+      "include": "type_payload_instances.inc",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-std=c++11",
+        "-O2",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-fomit-frame-pointer",
+        "-fno-pic"
+      ]
+    },
+    {
+      "id": "type_address",
+      "source": "src/TypeAddress.cpp",
+      "function": "TypeAddress",
+      "reference": "0x1851e0",
+      "size": 12,
+      "macro": "TYPE_ADDRESS",
+      "include": "type_address_instances.inc",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-std=c++11",
+        "-O2",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-fomit-frame-pointer",
+        "-fno-pic"
+      ]
+    },
+    {
+      "id": "virtual_result_adapter",
+      "source": "src/VirtualResultAdapter.cpp",
+      "function": "AdaptVirtualResult",
+      "reference": "0x256fe0",
+      "size": 24,
+      "macro": "VIRTUAL_RESULT_ADAPTER",
+      "include": "virtual_result_adapter_instances.inc",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-std=c++11",
+        "-O2",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-fomit-frame-pointer",
+        "-fno-pic"
+      ]
+    },
+    {
+      "id": "delete_with_frame",
+      "source": "src/DeleteWithFrame.cpp",
+      "function": "DestroyWithFrame",
+      "reference": "0x42860",
+      "size": 36,
+      "macro": "DELETE_WITH_FRAME",
+      "include": "delete_with_frame_instances.inc",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-std=c++11",
+        "-O2",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-fno-omit-frame-pointer",
+        "-fPIC"
+      ]
+    },
+    {
+      "id": "typed_property_access_wide",
+      "source": "src/TypedPropertyAccessWide.cpp",
+      "function": "AccessTypedProperty",
+      "reference": "0x28ad90",
+      "size": 264,
+      "macro": "TYPED_PROPERTY_ACCESS_WIDE",
+      "include": "typed_property_access_wide_instances.inc",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-std=c++11",
+        "-O2",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-fno-omit-frame-pointer",
+        "-fPIC"
+      ]
+    },
+    {
+      "id": "hash_capacity",
+      "source": "src/HashCapacity.cpp",
+      "function": "SetHashCapacity",
+      "reference": "0x1a75f0",
+      "size": 264,
+      "macro": "HASH_CAPACITY",
+      "include": "hash_capacity_instances.inc",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-std=c++11",
+        "-O3",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-fno-omit-frame-pointer",
+        "-fPIC"
+      ]
+    },
+    {
+      "id": "hash_rebuild",
+      "source": "src/HashRebuild.cpp",
+      "function": "RebuildHashBuckets",
+      "reference": "0x305c10",
+      "size": 672,
+      "macro": "HASH_REBUILD",
+      "include": "hash_rebuild_instances.inc",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-std=c++11",
+        "-O3",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-fno-omit-frame-pointer",
+        "-fPIC"
+      ],
+      "parameters": [
+        {
+          "kind": "mov32",
+          "offset": 44,
+          "high_offset": 48
+        }
+      ]
+    },
+    {
+      "id": "typed_property_access_wider",
+      "source": "src/TypedPropertyAccessWider.cpp",
+      "function": "AccessTypedProperty",
+      "reference": "0x28afb0",
+      "size": 264,
+      "macro": "TYPED_PROPERTY_ACCESS_WIDER",
+      "include": "typed_property_access_wider_instances.inc",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-std=c++11",
+        "-O2",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-fno-omit-frame-pointer",
+        "-fPIC"
+      ]
+    },
+    {
+      "id": "identity_two",
+      "source": "src/IdentityTwo.cpp",
+      "function": "MatchesTwoIdentities",
+      "reference": "0x67dcd0",
+      "size": 40,
+      "macro": "IDENTITY_TWO",
+      "include": "identity_two_instances.inc",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-std=c++11",
+        "-O2",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-fomit-frame-pointer",
+        "-fno-pic"
+      ],
+      "parameters": [
+        {
+          "kind": "mov32",
+          "offset": 0,
+          "high_offset": 4
+        },
+        {
+          "kind": "mov32",
+          "offset": 12,
+          "high_offset": 16
+        }
+      ]
+    },
+    {
+      "id": "identity_three",
+      "source": "src/IdentityThree.cpp",
+      "function": "MatchesThreeIdentities",
+      "reference": "0x680590",
+      "size": 60,
+      "macro": "IDENTITY_THREE",
+      "include": "identity_three_instances.inc",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-std=c++11",
+        "-O2",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-fomit-frame-pointer",
+        "-fno-pic"
+      ],
+      "parameters": [
+        {
+          "kind": "mov32",
+          "offset": 0,
+          "high_offset": 4
+        },
+        {
+          "kind": "mov32",
+          "offset": 12,
+          "high_offset": 16
+        },
+        {
+          "kind": "mov32",
+          "offset": 28,
+          "high_offset": 32
+        }
+      ]
+    },
+    {
+      "id": "identity_four",
+      "source": "src/IdentityFour.cpp",
+      "function": "MatchesFourIdentities",
+      "reference": "0x738530",
+      "size": 76,
+      "macro": "IDENTITY_FOUR",
+      "include": "identity_four_instances.inc",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-std=c++11",
+        "-O2",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-fomit-frame-pointer",
+        "-fno-pic"
+      ],
+      "parameters": [
+        {
+          "kind": "mov32",
+          "offset": 0,
+          "high_offset": 4
+        },
+        {
+          "kind": "mov32",
+          "offset": 12,
+          "high_offset": 16
+        },
+        {
+          "kind": "mov32",
+          "offset": 28,
+          "high_offset": 32
+        },
+        {
+          "kind": "mov32",
+          "offset": 44,
+          "high_offset": 48
+        }
+      ]
     }
   ]
 }

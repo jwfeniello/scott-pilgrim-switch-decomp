@@ -1,0 +1,13 @@
+{
+  "id": "leaf_primitives",
+  "source_sha256": "10e40a897b02433e1ee5b87160a2951cb35aa445f0e9e0c810fda62e45ee37dd",
+  "identical_repeat_objects": true,
+  "repeat_object_sha256": "fdb4300a574c1db6cb799174e954e198b266f104a2f0f2df351d85700162e5af",
+  "repeated_exact_functions": 10109,
+  "exact_bytes": 77456,
+  "negative_control": "added_external_side_effect",
+  "rejected_functions": 10109,
+  "rejection_causes": {
+    "Unresolved literal symbol": 10109
+  }
+}
