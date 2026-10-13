@@ -1,0 +1,95 @@
+# Engine families: 10% checkpoint on the way to 15%
+
+Twenty new families add 3,750 complete original functions / 500,192 bytes.
+The project now verifies 8,336 unique functions / 1,659,968 bytes / 10.123815%
+of the original 16,396,664-byte `.text`. The active requested target remains 15%.
+
+| Behavior | Exact functions | Exact bytes |
+| --- | ---: | ---: |
+| Callback cloning | 726 | 46,464 |
+| C++ member-function-pointer invocation | 689 | 19,292 |
+| Call a destructor, then tail-call deallocation | 1,193 | 28,632 |
+| Callback owner destruction/free | 271 | 26,016 |
+| Factory construction through a static context resolver | 140 | 25,760 |
+| Guarded callback dispatch, direct and temporary arguments | 481 | 146,224 |
+| Reference-owning members and reference sets | 250 | 207,804 |
+
+## Recovered behavior
+
+Callback cloning allocates a 40-byte polymorphic record from a context pool,
+initializes its vtable and copies the bound owner, invoke field and real 16-byte
+C++ member-function pointer. Member invocation uses the ordinary C++ `->*`
+operator, retaining the ARM64 member pointer's virtual encoding and adjustment.
+The deleting wrappers call an object-specific destructor and then deallocate;
+the original deallocation target `0xfa3b40` is identified by the PLT as `_ZdlPv`.
+Their referenced destructor bodies receive no credit from the wrappers alone.
+
+Owner cleanup resolves an allocator, calls the object's virtual destructor and
+frees it. The static-context factory family shares the earlier reconstruction's
+allocation, temporary ownership and indirect-return behavior, with a direct
+context-resolver call replacing the virtual call.
+
+Both dispatch families check a host flag or a cached enabled setting, invoke an
+optional bound callback, reload the host and dispatch through its nonnull handle.
+Each function supplies its own original hash. The guarded settings constructor
+zeros its observed fields, writes `UNKNOWN PROJECT NAME`, sets a count to 13 and
+stores the observed four-word limits. Vector views retain the two separate
+eight-byte name writes; joining them into one wider copy changes the code.
+
+The temporary-argument variant uses two opaque temporary views with distinct
+lifetimes. Their original complete types and the called helper's complete ABI are
+unknown. Keeping both alive through the final call produced 300 correct prefix
+bytes but omitted one original unwind call; that candidate was rejected. The
+scoped version reproduces all 304 bytes, including both unwind paths. Exact code
+does not establish a recovered original declaration or full-game behavior.
+
+Reference-owning destructors use relaxed atomic decrements, destroy last-reference
+objects, choose their allocators and remove handles from a mutex-protected
+4,003-bucket tracking map. The class-member families model the actual ownership
+field offsets, including gaps between fields, using normal C++ members. Members
+are destroyed in reverse declaration order, then the base destructor is called.
+The separate reference-set families contain one, four, six, eight or ten slots.
+
+The reference member destructors range from 372 to 3,612 bytes. Every complete
+function is independently compiled and compared. Generated vtables, base
+destructor bodies, data, and RTTI/class identities receive no additional credit.
+All method/type labels and complete class layouts remain provisional ABI views.
+
+## Compiler and verification findings
+
+The new callback and reference families use public Clang 8.0.1 with `-O2`,
+`-mcpu=cortex-a57`, `-fno-strict-aliasing`, `-fomit-frame-pointer` and `-fno-pic`.
+The static factory variant retains `-fPIC -fno-omit-frame-pointer`.
+Exact flags and bindings are in `config/builds.json`.
+
+An ownership member's destructor must preserve its `noexcept` boundary.
+Destroying it from the parent destructor body instead of as a member adds
+unwanted base-cleanup paths. The mutex operations also use nonthrowing
+declarations in the matching view. These choices restore the observed distinct
+termination paths without adding or deleting compiled instruction bytes.
+
+`tools/discover_engine_families.py` compiles and fully checks a reference before
+searching candidates. Masks apply only to discovery. Real per-function hashes
+and member offsets become C++ template inputs. Promotion requires every compiled
+body to match every byte of the complete original FDE after standard relocations
+and rejects overlap with existing credited addresses.
+
+All 20 batch builds repeat identically. Wrong initial fields, owner adjustment,
+destructor omission, allocation sizes, allocator indexes, dispatch hashes and
+atomic memory order reject every corresponding function. The saved validation
+contains the source/include/header hashes, object hashes and rejected counts.
+The full project rebuild compiles all 765 configurations and confirms all 8,336
+original-byte comparisons. No complete linked game or data matching is claimed.
+
+## Reproduction
+
+```powershell
+python tools/test_engine_family_build.py --original "C:\path\Scott_Switch.elf" --clang8 "C:\path\llvm801\bin\clang++.exe" --build-dir "D:\scott-build\engine-families"
+python tools/verify.py --original "C:\path\Scott_Switch.elf" --clang7 "C:\path\llvm701\bin\clang++.exe" --clang8 "C:\path\llvm801\bin\clang++.exe" --build-dir "D:\scott-build"
+python tools/report.py --out build/report.json
+```
+
+Discovery profiles are recorded in `config/engine_family_discovery.json`.
+Use `--family ID` to select one; `--promote` updates source inputs and recipes only
+after all selected complete bodies pass. Refresh the full snapshot afterwards.
+See `progress/engine_family_validation.json` for the repeat/negative controls.
