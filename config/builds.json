@@ -397615,6 +397615,2816 @@
           }
         }
       ]
+    },
+    {
+      "id": "openssl_no_vectorize_crypto_modes_gcm128_32_longlong_O2_unwind_novec_O3_omit_unwind",
+      "source": "src/OpenSslVariant_openssl_no_vectorize_crypto_modes_gcm128_32_longlong_O2_unwind_novec_O3_omit_unwind.c",
+      "compiler": "8.0.1",
+      "source_review": "library_abi_view",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-x",
+        "c",
+        "-std=gnu99",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-U_WIN32",
+        "-U_WIN64",
+        "-DOPENSSL_THREADS",
+        "-D_REENTRANT",
+        "-I",
+        "vendor/openssl-configs/32_longlong",
+        "-I",
+        "vendor/openssl-1.0.2u",
+        "-I",
+        "vendor/openssl-1.0.2u/include",
+        "-I",
+        "vendor/openssl-1.0.2u/crypto",
+        "-I",
+        "vendor/openssl-1.0.2u/crypto/modes",
+        "-isystem",
+        "vendor/musl/include",
+        "-isystem",
+        "vendor/musl/generated",
+        "-O3",
+        "-fomit-frame-pointer",
+        "-fno-pic",
+        "-funwind-tables",
+        "-fno-vectorize",
+        "-fno-slp-vectorize"
+      ],
+      "header_roots": [
+        "vendor/openssl-1.0.2u",
+        "vendor/openssl-configs",
+        "vendor/musl/include",
+        "vendor/musl/generated"
+      ],
+      "functions": [
+        {
+          "address": "0x23cbb0",
+          "size": 356,
+          "symbol": "CRYPTO_gcm128_aad",
+          "target_sha256": "a7ff7db81d956fffcc0952b5d46939f1e632d5219b7b9040d3f0d3b5968e900d",
+          "bindings": {},
+          "got_bindings": {}
+        },
+        {
+          "address": "0x23d100",
+          "size": 700,
+          "symbol": "CRYPTO_gcm128_decrypt",
+          "target_sha256": "9197a85f345a21c454428c2a72d356b7fe4bd85937c3f59e1a4c01d8e3f30850",
+          "bindings": {},
+          "got_bindings": {}
+        },
+        {
+          "address": "0x23d600",
+          "size": 592,
+          "symbol": "CRYPTO_gcm128_decrypt_ctr32",
+          "target_sha256": "2b540453185dbacc5676a4ef391662e3618029adb7d393c4df977b394b6d5b9c",
+          "bindings": {},
+          "got_bindings": {}
+        },
+        {
+          "address": "0x23ce40",
+          "size": 704,
+          "symbol": "CRYPTO_gcm128_encrypt",
+          "target_sha256": "ae155b76fe2a2b107f46fc5acc4a609d921b6a23270bcffef7b43fb7c215c06e",
+          "bindings": {},
+          "got_bindings": {}
+        },
+        {
+          "address": "0x23d3c0",
+          "size": 564,
+          "symbol": "CRYPTO_gcm128_encrypt_ctr32",
+          "target_sha256": "200c36caf7cd53156b7581d3755e0bb6286a0712f04501efaf1f3455821e45ce",
+          "bindings": {},
+          "got_bindings": {}
+        },
+        {
+          "address": "0x23d850",
+          "size": 316,
+          "symbol": "CRYPTO_gcm128_finish",
+          "target_sha256": "16fa4e5f60cdb18617c67702eed0f91bfa25e8e50ac07572a2a6e00505a92d36",
+          "bindings": {
+            "CRYPTO_memcmp": "0x1b9a50"
+          },
+          "got_bindings": {}
+        }
+      ]
+    },
+    {
+      "id": "openssl_no_vectorize_crypto_dsa_dsa_gen_32_longlong_O2_unwind_novec_O3_omit_unwind",
+      "source": "src/OpenSslVariant_openssl_no_vectorize_crypto_dsa_dsa_gen_32_longlong_O2_unwind_novec_O3_omit_unwind.c",
+      "compiler": "8.0.1",
+      "source_review": "library_abi_view",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-x",
+        "c",
+        "-std=gnu99",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-U_WIN32",
+        "-U_WIN64",
+        "-DOPENSSL_THREADS",
+        "-D_REENTRANT",
+        "-I",
+        "vendor/openssl-configs/32_longlong",
+        "-I",
+        "vendor/openssl-1.0.2u",
+        "-I",
+        "vendor/openssl-1.0.2u/include",
+        "-I",
+        "vendor/openssl-1.0.2u/crypto",
+        "-I",
+        "vendor/openssl-1.0.2u/crypto/dsa",
+        "-isystem",
+        "vendor/musl/include",
+        "-isystem",
+        "vendor/musl/generated",
+        "-O3",
+        "-fomit-frame-pointer",
+        "-fno-pic",
+        "-funwind-tables",
+        "-fno-vectorize",
+        "-fno-slp-vectorize"
+      ],
+      "header_roots": [
+        "vendor/openssl-1.0.2u",
+        "vendor/openssl-configs",
+        "vendor/musl/include",
+        "vendor/musl/generated"
+      ],
+      "functions": [
+        {
+          "address": "0x2186a0",
+          "size": 2540,
+          "symbol": "dsa_builtin_paramgen",
+          "target_sha256": "14496ab38c16c56665970536a7c02b4497313cabd75e3aea6b56ccb8866792ed",
+          "bindings": {
+            "EVP_MD_size": "0x1ca280",
+            "memcpy": "0xfa3330",
+            "BN_MONT_CTX_new": "0x1d1530",
+            "BN_CTX_new": "0x1d0ad0",
+            "BN_CTX_start": "0x1d0c90",
+            "BN_CTX_get": "0x1d0e20",
+            "BN_value_one": "0x1c3140",
+            "BN_lshift": "0x1c2da0",
+            "EVP_sha1": "0x1ea9f0",
+            "EVP_sha224": "0x1eaa00",
+            "EVP_sha256": "0x1eaa10",
+            "BN_GENCB_call": "0x1d6f60",
+            "BN_set_word": "0x1c3730",
+            "EVP_Digest": "0x1c9bf0",
+            "BN_bin2bn": "0x1c37b0",
+            "BN_add": "0x1d2920",
+            "BN_mask_bits": "0x1c3f30",
+            "BN_copy": "0x1c3630",
+            "BN_lshift1": "0x1c2b90",
+            "BN_div": "0x1d1a80",
+            "BN_sub": "0x1d2ce0",
+            "BN_cmp": "0x1c3d70",
+            "BN_is_prime_fasttest_ex": "0x1d7630",
+            "RAND_bytes": "0x1c7f20",
+            "BN_CTX_end": "0x1d0d90",
+            "BN_CTX_free": "0x1d0b30",
+            "BN_MONT_CTX_free": "0x1d1590",
+            "BN_MONT_CTX_set": "0x1d15d0",
+            "BN_mod_exp_mont": "0x1d5010",
+            "BN_free": "0x1c3320",
+            "BN_dup": "0x1c34f0"
+          },
+          "got_bindings": {}
+        }
+      ]
+    },
+    {
+      "id": "openssl_no_vectorize_ssl_t1_enc_32_longlong_O2_unwind_novec_O3_omit_unwind",
+      "source": "src/OpenSslVariant_openssl_no_vectorize_ssl_t1_enc_32_longlong_O2_unwind_novec_O3_omit_unwind.c",
+      "compiler": "8.0.1",
+      "source_review": "library_abi_view",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-x",
+        "c",
+        "-std=gnu99",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-U_WIN32",
+        "-U_WIN64",
+        "-DOPENSSL_THREADS",
+        "-D_REENTRANT",
+        "-I",
+        "vendor/openssl-configs/32_longlong",
+        "-I",
+        "vendor/openssl-1.0.2u",
+        "-I",
+        "vendor/openssl-1.0.2u/include",
+        "-I",
+        "vendor/openssl-1.0.2u/crypto",
+        "-I",
+        "vendor/openssl-1.0.2u/ssl",
+        "-isystem",
+        "vendor/musl/include",
+        "-isystem",
+        "vendor/musl/generated",
+        "-O3",
+        "-fomit-frame-pointer",
+        "-fno-pic",
+        "-funwind-tables",
+        "-fno-vectorize",
+        "-fno-slp-vectorize"
+      ],
+      "header_roots": [
+        "vendor/openssl-1.0.2u",
+        "vendor/openssl-configs",
+        "vendor/musl/include",
+        "vendor/musl/generated"
+      ],
+      "functions": [
+        {
+          "address": "0x244550",
+          "size": 1860,
+          "symbol": "tls1_PRF",
+          "target_sha256": "bb613416728685342b453c3fd5fdb55ff788af28a91c781f34b5c50d7200049f",
+          "bindings": {
+            "ssl_get_handshake_digest": "0x21e8a0",
+            "memset": "0xfa3340",
+            "EVP_MD_size": "0x1ca280",
+            "OpenSSLDie": "0x1b9910",
+            "EVP_MD_CTX_init": "0x1c95c0",
+            "EVP_MD_CTX_set_flags": "0x1ca2d0",
+            "EVP_PKEY_new_mac_key": "0x219eb0",
+            "EVP_DigestSignInit": "0x1f9ff0",
+            "EVP_MD_CTX_copy_ex": "0x1c9a60",
+            "EVP_DigestUpdate": "0x1c9830",
+            "EVP_DigestSignFinal": "0x1fa1a0",
+            "memcpy": "0xfa3330",
+            "EVP_PKEY_free": "0x1d0240",
+            "EVP_MD_CTX_cleanup": "0x1c99a0",
+            "OPENSSL_cleanse": "0x1ba470",
+            "ERR_put_error": "0x1ba7f0"
+          },
+          "got_bindings": {},
+          "literals": {
+            "433a2f6769742f7562696c69627261726965732f55626973657276696365732f65787465726e616c2f686172626f7572636f6d6d6f6e2f6c69627261726965732f6f70656e73736c2f73736c2f74315f656e632e6300": "0x1319cfe",
+            "6368756e6b203e3d203000": "0x1315c40"
+          }
+        },
+        {
+          "address": "0x244ca0",
+          "size": 564,
+          "symbol": "tls1_setup_key_block",
+          "target_sha256": "7dbf9da6a3486563489c6685208dbd08f6f711e7e48d75f080a1403ff1387ad0",
+          "bindings": {
+            "ssl_cipher_get_evp": "0x21e3d0",
+            "EVP_CIPHER_key_length": "0x1ca240",
+            "EVP_CIPHER_iv_length": "0x1ca230",
+            "ssl3_cleanup_key_block": "0x2428a0",
+            "CRYPTO_malloc": "0x1b9f70",
+            "ssl_get_algorithm2": "0x226600",
+            "ERR_put_error": "0x1ba7f0",
+            "OPENSSL_cleanse": "0x1ba470",
+            "CRYPTO_free": "0x1ba410"
+          },
+          "got_bindings": {},
+          "literals": {
+            "433a2f6769742f7562696c69627261726965732f55626973657276696365732f65787465726e616c2f686172626f7572636f6d6d6f6e2f6c69627261726965732f6f70656e73736c2f73736c2f74315f656e632e6300": "0x1319cfe",
+            "6b657920657870616e73696f6e00": "0x1315c32"
+          }
+        }
+      ]
+    },
+    {
+      "id": "openssl_no_vectorize_crypto_bn_bn_gcd_32_longlong_O2_unwind_novec_O3_omit_unwind",
+      "source": "src/OpenSslVariant_openssl_no_vectorize_crypto_bn_bn_gcd_32_longlong_O2_unwind_novec_O3_omit_unwind.c",
+      "compiler": "8.0.1",
+      "source_review": "library_abi_view",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-x",
+        "c",
+        "-std=gnu99",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-U_WIN32",
+        "-U_WIN64",
+        "-DOPENSSL_THREADS",
+        "-D_REENTRANT",
+        "-I",
+        "vendor/openssl-configs/32_longlong",
+        "-I",
+        "vendor/openssl-1.0.2u",
+        "-I",
+        "vendor/openssl-1.0.2u/include",
+        "-I",
+        "vendor/openssl-1.0.2u/crypto",
+        "-I",
+        "vendor/openssl-1.0.2u/crypto/bn",
+        "-isystem",
+        "vendor/musl/include",
+        "-isystem",
+        "vendor/musl/generated",
+        "-O3",
+        "-fomit-frame-pointer",
+        "-fno-pic",
+        "-funwind-tables",
+        "-fno-vectorize",
+        "-fno-slp-vectorize"
+      ],
+      "header_roots": [
+        "vendor/openssl-1.0.2u",
+        "vendor/openssl-configs",
+        "vendor/musl/include",
+        "vendor/musl/generated"
+      ],
+      "functions": [
+        {
+          "address": "0x1d2040",
+          "size": 2272,
+          "symbol": "BN_mod_inverse",
+          "target_sha256": "5bf45922fcc9dad747c65a96689ef223d8a8df4279e2bb8595ba9e2c5ef558a4",
+          "bindings": {
+            "BN_CTX_start": "0x1d0c90",
+            "BN_CTX_get": "0x1d0e20",
+            "BN_new": "0x1c3380",
+            "BN_set_word": "0x1c3730",
+            "BN_copy": "0x1c3630",
+            "BN_ucmp": "0x1c3d10",
+            "BN_nnmod": "0x1d3df0",
+            "BN_num_bits": "0x1c31f0",
+            "BN_is_bit_set": "0x1c3ef0",
+            "BN_rshift": "0x1c2f40",
+            "BN_uadd": "0x1d2b90",
+            "BN_rshift1": "0x1c2c80",
+            "BN_usub": "0x1d29c0",
+            "BN_div": "0x1d1a80",
+            "BN_mul": "0x1d3af0",
+            "BN_add": "0x1d2920",
+            "BN_sub": "0x1d2ce0",
+            "BN_lshift1": "0x1c2b90",
+            "BN_lshift": "0x1c2da0",
+            "BN_mul_word": "0x1c2b10",
+            "ERR_put_error": "0x1ba7f0",
+            "BN_free": "0x1c3320",
+            "BN_CTX_end": "0x1d0d90"
+          },
+          "got_bindings": {},
+          "literals": {
+            "433a2f6769742f7562696c69627261726965732f55626973657276696365732f65787465726e616c2f686172626f7572636f6d6d6f6e2f6c69627261726965732f6f70656e73736c2f63727970746f2f626e2f626e5f6763642e6300": "0x13178a2"
+          }
+        }
+      ]
+    },
+    {
+      "id": "openssl_no_vectorize_crypto_bn_bn_exp_32_longlong_O2_unwind_novec_O3_omit_unwind",
+      "source": "src/OpenSslVariant_openssl_no_vectorize_crypto_bn_bn_exp_32_longlong_O2_unwind_novec_O3_omit_unwind.c",
+      "compiler": "8.0.1",
+      "source_review": "library_abi_view",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-x",
+        "c",
+        "-std=gnu99",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-U_WIN32",
+        "-U_WIN64",
+        "-DOPENSSL_THREADS",
+        "-D_REENTRANT",
+        "-I",
+        "vendor/openssl-configs/32_longlong",
+        "-I",
+        "vendor/openssl-1.0.2u",
+        "-I",
+        "vendor/openssl-1.0.2u/include",
+        "-I",
+        "vendor/openssl-1.0.2u/crypto",
+        "-I",
+        "vendor/openssl-1.0.2u/crypto/bn",
+        "-isystem",
+        "vendor/musl/include",
+        "-isystem",
+        "vendor/musl/generated",
+        "-O3",
+        "-fomit-frame-pointer",
+        "-fno-pic",
+        "-funwind-tables",
+        "-fno-vectorize",
+        "-fno-slp-vectorize"
+      ],
+      "header_roots": [
+        "vendor/openssl-1.0.2u",
+        "vendor/openssl-configs",
+        "vendor/musl/include",
+        "vendor/musl/generated"
+      ],
+      "functions": [
+        {
+          "address": "0x1d5ab0",
+          "size": 2224,
+          "symbol": "BN_mod_exp_mont_consttime",
+          "target_sha256": "08ae03ff4a106bcac2bf6ac5a204ebdefd304aaa7c83545eb5796b6eb261ed64",
+          "bindings": {
+            "ERR_put_error": "0x1ba7f0",
+            "BN_CTX_start": "0x1d0c90",
+            "BN_set_word": "0x1c3730",
+            "BN_MONT_CTX_new": "0x1d1530",
+            "BN_MONT_CTX_set": "0x1d15d0",
+            "CRYPTO_malloc": "0x1b9f70",
+            "memset": "0xfa3340",
+            "BN_value_one": "0x1c3140",
+            "bn_to_mont_fixed_top": "0x1d1490",
+            "BN_ucmp": "0x1c3d10",
+            "BN_div": "0x1d1a80",
+            "BN_MONT_CTX_free": "0x1d1590",
+            "OPENSSL_cleanse": "0x1ba470",
+            "CRYPTO_free": "0x1ba410",
+            "BN_CTX_end": "0x1d0d90",
+            "bn_mul_mont_fixed_top": "0x1d10e0",
+            "BN_is_bit_set": "0x1c3ef0",
+            "BN_from_montgomery": "0x1d1360"
+          },
+          "got_bindings": {},
+          "literals": {
+            "433a2f6769742f7562696c69627261726965732f55626973657276696365732f65787465726e616c2f686172626f7572636f6d6d6f6e2f6c69627261726965732f6f70656e73736c2f63727970746f2f626e2f626e5f6578702e6300": "0x12f3786"
+          }
+        }
+      ]
+    },
+    {
+      "id": "openssl_no_vectorize_ssl_ssl_asn1_32_longlong_O2_unwind_novec_O3_omit_unwind",
+      "source": "src/OpenSslVariant_openssl_no_vectorize_ssl_ssl_asn1_32_longlong_O2_unwind_novec_O3_omit_unwind.c",
+      "compiler": "8.0.1",
+      "source_review": "library_abi_view",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-x",
+        "c",
+        "-std=gnu99",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-U_WIN32",
+        "-U_WIN64",
+        "-DOPENSSL_THREADS",
+        "-D_REENTRANT",
+        "-I",
+        "vendor/openssl-configs/32_longlong",
+        "-I",
+        "vendor/openssl-1.0.2u",
+        "-I",
+        "vendor/openssl-1.0.2u/include",
+        "-I",
+        "vendor/openssl-1.0.2u/crypto",
+        "-I",
+        "vendor/openssl-1.0.2u/ssl",
+        "-isystem",
+        "vendor/musl/include",
+        "-isystem",
+        "vendor/musl/generated",
+        "-O3",
+        "-fomit-frame-pointer",
+        "-fno-pic",
+        "-funwind-tables",
+        "-fno-vectorize",
+        "-fno-slp-vectorize"
+      ],
+      "header_roots": [
+        "vendor/openssl-1.0.2u",
+        "vendor/openssl-configs",
+        "vendor/musl/include",
+        "vendor/musl/generated"
+      ],
+      "functions": [
+        {
+          "address": "0x2313d0",
+          "size": 2192,
+          "symbol": "i2d_SSL_SESSION",
+          "target_sha256": "ef379781435aa9cd722eda3dd6b6ef1fb415d5c960a35b1b8b6aaa1c2f1479df",
+          "bindings": {
+            "ASN1_INTEGER_set": "0x1cad10",
+            "strlen": "0xfa3360",
+            "i2d_ASN1_INTEGER": "0x1cbd70",
+            "i2d_ASN1_OCTET_STRING": "0x1cbe20",
+            "ASN1_object_size": "0x1c20e0",
+            "i2d_X509": "0x1fbcc0",
+            "ASN1_put_object": "0x1c1f00"
+          },
+          "got_bindings": {}
+        }
+      ]
+    },
+    {
+      "id": "openssl_no_vectorize_crypto_bn_bn_mont_32_longlong_O2_unwind_novec_O3_omit_unwind",
+      "source": "src/OpenSslVariant_openssl_no_vectorize_crypto_bn_bn_mont_32_longlong_O2_unwind_novec_O3_omit_unwind.c",
+      "compiler": "8.0.1",
+      "source_review": "library_abi_view",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-x",
+        "c",
+        "-std=gnu99",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-U_WIN32",
+        "-U_WIN64",
+        "-DOPENSSL_THREADS",
+        "-D_REENTRANT",
+        "-I",
+        "vendor/openssl-configs/32_longlong",
+        "-I",
+        "vendor/openssl-1.0.2u",
+        "-I",
+        "vendor/openssl-1.0.2u/include",
+        "-I",
+        "vendor/openssl-1.0.2u/crypto",
+        "-I",
+        "vendor/openssl-1.0.2u/crypto/bn",
+        "-isystem",
+        "vendor/musl/include",
+        "-isystem",
+        "vendor/musl/generated",
+        "-O3",
+        "-fomit-frame-pointer",
+        "-fno-pic",
+        "-funwind-tables",
+        "-fno-vectorize",
+        "-fno-slp-vectorize"
+      ],
+      "header_roots": [
+        "vendor/openssl-1.0.2u",
+        "vendor/openssl-configs",
+        "vendor/musl/include",
+        "vendor/musl/generated"
+      ],
+      "functions": [
+        {
+          "address": "0x1d1190",
+          "size": 464,
+          "symbol": "bn_from_montgomery_word",
+          "target_sha256": "6021615347edeb8f5f91ae75f823d54f528cdd034d16585fa56691070a5ffc88",
+          "bindings": {
+            "bn_expand2": "0x1c35c0",
+            "bn_mul_add_words": "0x1c4400",
+            "bn_sub_words": "0x1c4900"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x1d15d0",
+          "size": 640,
+          "symbol": "BN_MONT_CTX_set",
+          "target_sha256": "a9b23391d22f8194b8e6388d31b0608491d604801836301e58785232f49f03a8",
+          "bindings": {
+            "BN_CTX_start": "0x1d0c90",
+            "BN_CTX_get": "0x1d0e20",
+            "BN_copy": "0x1c3630",
+            "BN_init": "0x1c3370",
+            "BN_num_bits": "0x1c31f0",
+            "BN_set_word": "0x1c3730",
+            "BN_set_bit": "0x1c3e20",
+            "BN_mod_inverse": "0x1d2040",
+            "BN_lshift": "0x1c2da0",
+            "BN_sub_word": "0x1c2a00",
+            "BN_div": "0x1d1a80",
+            "BN_CTX_end": "0x1d0d90"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x1d1900",
+          "size": 384,
+          "symbol": "BN_MONT_CTX_set_locked",
+          "target_sha256": "fede0bc00f58fd68944b955e58447e5fd382cadc230d4743657b75f830d8dd19",
+          "bindings": {
+            "CRYPTO_lock": "0x1b95a0",
+            "CRYPTO_malloc": "0x1b9f70",
+            "BN_init": "0x1c3370",
+            "BN_clear_free": "0x1c32b0",
+            "CRYPTO_free": "0x1ba410"
+          },
+          "got_bindings": {},
+          "literals": {
+            "433a2f6769742f7562696c69627261726965732f55626973657276696365732f65787465726e616c2f686172626f7572636f6d6d6f6e2f6c69627261726965732f6f70656e73736c2f63727970746f2f626e2f626e5f6d6f6e742e6300": "0x131b6a7"
+          }
+        },
+        {
+          "address": "0x1d1360",
+          "size": 176,
+          "symbol": "BN_from_montgomery",
+          "target_sha256": "cb819a76fd6b884d1cafa43bddc756c44ea19c79205bf61f8395d1369beb13ab",
+          "bindings": {
+            "BN_CTX_start": "0x1d0c90",
+            "BN_CTX_get": "0x1d0e20",
+            "BN_copy": "0x1c3630",
+            "BN_CTX_end": "0x1d0d90"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x1d1410",
+          "size": 120,
+          "symbol": "bn_from_mont_fixed_top",
+          "target_sha256": "d9e0f2afdd6945508d89f70cde8b9f9cda432931fad05833dc88961ab36282e2",
+          "bindings": {
+            "BN_CTX_start": "0x1d0c90",
+            "BN_CTX_get": "0x1d0e20",
+            "BN_copy": "0x1c3630",
+            "BN_CTX_end": "0x1d0d90"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x1d1490",
+          "size": 152,
+          "symbol": "bn_to_mont_fixed_top",
+          "target_sha256": "e54121090e13f4bd529e372d22903a55042dfe61e0b3e860492df5ab16000c14",
+          "bindings": {
+            "BN_CTX_start": "0x1d0c90",
+            "BN_CTX_get": "0x1d0e20",
+            "bn_mul_fixed_top": "0x1d3b50",
+            "bn_sqr_fixed_top": "0x1d4680",
+            "BN_CTX_end": "0x1d0d90"
+          },
+          "got_bindings": {}
+        }
+      ]
+    },
+    {
+      "id": "openssl_no_vectorize_crypto_rsa_rsa_gen_32_longlong_O2_unwind_novec_O3_omit_unwind",
+      "source": "src/OpenSslVariant_openssl_no_vectorize_crypto_rsa_rsa_gen_32_longlong_O2_unwind_novec_O3_omit_unwind.c",
+      "compiler": "8.0.1",
+      "source_review": "library_abi_view",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-x",
+        "c",
+        "-std=gnu99",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-U_WIN32",
+        "-U_WIN64",
+        "-DOPENSSL_THREADS",
+        "-D_REENTRANT",
+        "-I",
+        "vendor/openssl-configs/32_longlong",
+        "-I",
+        "vendor/openssl-1.0.2u",
+        "-I",
+        "vendor/openssl-1.0.2u/include",
+        "-I",
+        "vendor/openssl-1.0.2u/crypto",
+        "-I",
+        "vendor/openssl-1.0.2u/crypto/rsa",
+        "-isystem",
+        "vendor/musl/include",
+        "-isystem",
+        "vendor/musl/generated",
+        "-O3",
+        "-fomit-frame-pointer",
+        "-fno-pic",
+        "-funwind-tables",
+        "-fno-vectorize",
+        "-fno-slp-vectorize"
+      ],
+      "header_roots": [
+        "vendor/openssl-1.0.2u",
+        "vendor/openssl-configs",
+        "vendor/musl/include",
+        "vendor/musl/generated"
+      ],
+      "functions": [
+        {
+          "address": "0x21d370",
+          "size": 1364,
+          "symbol": "RSA_generate_key_ex",
+          "target_sha256": "73d05fe7947542282f6368e73b4c2a88ca89d8f97f545171e920382172d9881b",
+          "bindings": {
+            "ERR_put_error": "0x1ba7f0",
+            "BN_CTX_new": "0x1d0ad0",
+            "BN_CTX_start": "0x1d0c90",
+            "BN_CTX_get": "0x1d0e20",
+            "BN_new": "0x1c3380",
+            "BN_copy": "0x1c3630",
+            "BN_generate_prime_ex": "0x1d6fe0",
+            "BN_value_one": "0x1c3140",
+            "BN_sub": "0x1d2ce0",
+            "ERR_set_mark": "0x1bb680",
+            "BN_mod_inverse": "0x1d2040",
+            "ERR_peek_last_error": "0x1bad60",
+            "ERR_pop_to_mark": "0x1bb6d0",
+            "BN_GENCB_call": "0x1d6f60",
+            "BN_cmp": "0x1c3d70",
+            "BN_mul": "0x1d3af0",
+            "BN_div": "0x1d1a80",
+            "BN_CTX_end": "0x1d0d90",
+            "BN_CTX_free": "0x1d0b30"
+          },
+          "got_bindings": {},
+          "literals": {
+            "433a2f6769742f7562696c69627261726965732f55626973657276696365732f65787465726e616c2f686172626f7572636f6d6d6f6e2f6c69627261726965732f6f70656e73736c2f63727970746f2f7273612f7273615f67656e2e6300": "0x1323500"
+          }
+        }
+      ]
+    },
+    {
+      "id": "openssl_no_vectorize_crypto_x509_x509_obj_32_longlong_O2_unwind_novec_O3_omit_unwind",
+      "source": "src/OpenSslVariant_openssl_no_vectorize_crypto_x509_x509_obj_32_longlong_O2_unwind_novec_O3_omit_unwind.c",
+      "compiler": "8.0.1",
+      "source_review": "library_abi_view",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-x",
+        "c",
+        "-std=gnu99",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-U_WIN32",
+        "-U_WIN64",
+        "-DOPENSSL_THREADS",
+        "-D_REENTRANT",
+        "-I",
+        "vendor/openssl-configs/32_longlong",
+        "-I",
+        "vendor/openssl-1.0.2u",
+        "-I",
+        "vendor/openssl-1.0.2u/include",
+        "-I",
+        "vendor/openssl-1.0.2u/crypto",
+        "-I",
+        "vendor/openssl-1.0.2u/crypto/x509",
+        "-isystem",
+        "vendor/musl/include",
+        "-isystem",
+        "vendor/musl/generated",
+        "-O3",
+        "-fomit-frame-pointer",
+        "-fno-pic",
+        "-funwind-tables",
+        "-fno-vectorize",
+        "-fno-slp-vectorize"
+      ],
+      "header_roots": [
+        "vendor/openssl-1.0.2u",
+        "vendor/openssl-configs",
+        "vendor/musl/include",
+        "vendor/musl/generated"
+      ],
+      "functions": [
+        {
+          "address": "0x1f61c0",
+          "size": 1280,
+          "symbol": "X509_NAME_oneline",
+          "target_sha256": "96befb16247639bbd8c0d123d0514d8235b2056b096724919a10fc444226c243",
+          "bindings": {
+            "sk_num": "0x1c0240",
+            "sk_value": "0x1c0260",
+            "OBJ_obj2nid": "0x1c06e0",
+            "OBJ_nid2sn": "0x1c0520",
+            "i2t_ASN1_OBJECT": "0x1c1800",
+            "strlen": "0xfa3360",
+            "BUF_MEM_grow": "0x1c7a00",
+            "memcpy": "0xfa3330",
+            "BUF_MEM_new": "0x1c7960",
+            "CRYPTO_free": "0x1ba410",
+            "strncpy": "0xfa35f0",
+            "ERR_put_error": "0x1ba7f0",
+            "BUF_MEM_free": "0x1c79c0"
+          },
+          "got_bindings": {},
+          "literals": {
+            "3031323334353637383941424344454600": "0x131b460",
+            "4e4f20583530395f4e414d4500": "0x13216d2",
+            "433a2f6769742f7562696c69627261726965732f55626973657276696365732f65787465726e616c2f686172626f7572636f6d6d6f6e2f6c69627261726965732f6f70656e73736c2f63727970746f2f783530392f783530395f6f626a2e6300": "0x131392d"
+          }
+        }
+      ]
+    },
+    {
+      "id": "openssl_no_vectorize_ssl_d1_both_32_longlong_O2_unwind_novec_O3_omit_unwind",
+      "source": "src/OpenSslVariant_openssl_no_vectorize_ssl_d1_both_32_longlong_O2_unwind_novec_O3_omit_unwind.c",
+      "compiler": "8.0.1",
+      "source_review": "library_abi_view",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-x",
+        "c",
+        "-std=gnu99",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-U_WIN32",
+        "-U_WIN64",
+        "-DOPENSSL_THREADS",
+        "-D_REENTRANT",
+        "-I",
+        "vendor/openssl-configs/32_longlong",
+        "-I",
+        "vendor/openssl-1.0.2u",
+        "-I",
+        "vendor/openssl-1.0.2u/include",
+        "-I",
+        "vendor/openssl-1.0.2u/crypto",
+        "-I",
+        "vendor/openssl-1.0.2u/ssl",
+        "-isystem",
+        "vendor/musl/include",
+        "-isystem",
+        "vendor/musl/generated",
+        "-O3",
+        "-fomit-frame-pointer",
+        "-fno-pic",
+        "-funwind-tables",
+        "-fno-vectorize",
+        "-fno-slp-vectorize"
+      ],
+      "header_roots": [
+        "vendor/openssl-1.0.2u",
+        "vendor/openssl-configs",
+        "vendor/musl/include",
+        "vendor/musl/generated"
+      ],
+      "functions": [
+        {
+          "address": "0x245e50",
+          "size": 1204,
+          "symbol": "dtls1_do_write",
+          "target_sha256": "b271b5b3dcaf65b2de27ce4570669ea47b3143ad3cd8a793d3a8a8910014d835",
+          "bindings": {
+            "SSL_get_wbio": "0x220b50",
+            "BIO_ctrl": "0x1b9000",
+            "OpenSSLDie": "0x1b9910",
+            "EVP_CIPHER_CTX_flags": "0x1c9eb0",
+            "EVP_CIPHER_block_size": "0x1ca1e0",
+            "EVP_MD_CTX_md": "0x1ca2c0",
+            "EVP_MD_size": "0x1ca280",
+            "dtls1_write_bytes": "0x22faa0",
+            "ssl3_finish_mac": "0x242bb0",
+            "SSL_ctrl": "0x220e00"
+          },
+          "got_bindings": {},
+          "literals": {
+            "433a2f6769742f7562696c69627261726965732f55626973657276696365732f65787465726e616c2f686172626f7572636f6d6d6f6e2f6c69627261726965732f6f70656e73736c2f73736c2f64315f626f74682e6300": "0x1313b92",
+            "732d3e64312d3e6d7475203e3d2064746c73315f6d696e5f6d747528732900": "0x13027c6",
+            "732d3e696e69745f6e756d203d3d2028696e7429732d3e64312d3e775f6d73675f6864722e6d73675f6c656e202b2044544c53315f484d5f4845414445525f4c454e47544800": "0x131fa81",
+            "6c656e203d3d2028756e7369676e656420696e742972657400": "0x13027e5"
+          }
+        }
+      ]
+    },
+    {
+      "id": "openssl_no_vectorize_crypto_asn1_a_object_32_longlong_O2_unwind_novec_O3_omit_unwind",
+      "source": "src/OpenSslVariant_openssl_no_vectorize_crypto_asn1_a_object_32_longlong_O2_unwind_novec_O3_omit_unwind.c",
+      "compiler": "8.0.1",
+      "source_review": "library_abi_view",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-x",
+        "c",
+        "-std=gnu99",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-U_WIN32",
+        "-U_WIN64",
+        "-DOPENSSL_THREADS",
+        "-D_REENTRANT",
+        "-I",
+        "vendor/openssl-configs/32_longlong",
+        "-I",
+        "vendor/openssl-1.0.2u",
+        "-I",
+        "vendor/openssl-1.0.2u/include",
+        "-I",
+        "vendor/openssl-1.0.2u/crypto",
+        "-I",
+        "vendor/openssl-1.0.2u/crypto/asn1",
+        "-isystem",
+        "vendor/musl/include",
+        "-isystem",
+        "vendor/musl/generated",
+        "-O3",
+        "-fomit-frame-pointer",
+        "-fno-pic",
+        "-funwind-tables",
+        "-fno-vectorize",
+        "-fno-slp-vectorize"
+      ],
+      "header_roots": [
+        "vendor/openssl-1.0.2u",
+        "vendor/openssl-configs",
+        "vendor/musl/include",
+        "vendor/musl/generated"
+      ],
+      "functions": [
+        {
+          "address": "0x1c1360",
+          "size": 1176,
+          "symbol": "a2d_ASN1_OBJECT",
+          "target_sha256": "6a0d6db33f970baa5d6d692974781b64c887e79af2b6835229cba8f7b0833071",
+          "bindings": {
+            "strlen": "0xfa3360",
+            "ERR_put_error": "0x1ba7f0",
+            "BN_new": "0x1c3380",
+            "BN_set_word": "0x1c3730",
+            "BN_mul_word": "0x1c2b10",
+            "BN_add_word": "0x1c28f0",
+            "BN_num_bits": "0x1c31f0",
+            "CRYPTO_free": "0x1ba410",
+            "CRYPTO_malloc": "0x1b9f70",
+            "BN_div_word": "0x1c2800",
+            "BN_free": "0x1c3320"
+          },
+          "got_bindings": {},
+          "literals": {
+            "433a2f6769742f7562696c69627261726965732f55626973657276696365732f65787465726e616c2f686172626f7572636f6d6d6f6e2f6c69627261726965732f6f70656e73736c2f63727970746f2f61736e312f615f6f626a6563742e6300": "0x130de44"
+          }
+        }
+      ]
+    },
+    {
+      "id": "openssl_no_vectorize_crypto_ec_ec2_oct_32_longlong_O2_unwind_novec_O3_omit_unwind",
+      "source": "src/OpenSslVariant_openssl_no_vectorize_crypto_ec_ec2_oct_32_longlong_O2_unwind_novec_O3_omit_unwind.c",
+      "compiler": "8.0.1",
+      "source_review": "library_abi_view",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-x",
+        "c",
+        "-std=gnu99",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-U_WIN32",
+        "-U_WIN64",
+        "-DOPENSSL_THREADS",
+        "-D_REENTRANT",
+        "-I",
+        "vendor/openssl-configs/32_longlong",
+        "-I",
+        "vendor/openssl-1.0.2u",
+        "-I",
+        "vendor/openssl-1.0.2u/include",
+        "-I",
+        "vendor/openssl-1.0.2u/crypto",
+        "-I",
+        "vendor/openssl-1.0.2u/crypto/ec",
+        "-isystem",
+        "vendor/musl/include",
+        "-isystem",
+        "vendor/musl/generated",
+        "-O3",
+        "-fomit-frame-pointer",
+        "-fno-pic",
+        "-funwind-tables",
+        "-fno-vectorize",
+        "-fno-slp-vectorize"
+      ],
+      "header_roots": [
+        "vendor/openssl-1.0.2u",
+        "vendor/openssl-configs",
+        "vendor/musl/include",
+        "vendor/musl/generated"
+      ],
+      "functions": [
+        {
+          "address": "0x201710",
+          "size": 956,
+          "symbol": "ec_GF2m_simple_point2oct",
+          "target_sha256": "6825290ad316c1991c1979b9315aa577710f11de93ddfcc08622899ff35a2d28",
+          "bindings": {
+            "EC_POINT_is_at_infinity": "0x1daef0",
+            "EC_GROUP_get_degree": "0x1da640",
+            "ERR_put_error": "0x1ba7f0",
+            "BN_CTX_new": "0x1d0ad0",
+            "BN_CTX_start": "0x1d0c90",
+            "BN_CTX_get": "0x1d0e20",
+            "EC_POINT_get_affine_coordinates_GF2m": "0x1dad20",
+            "BN_num_bits": "0x1c31f0",
+            "memset": "0xfa3340",
+            "BN_bn2bin": "0x1c3bf0",
+            "BN_CTX_end": "0x1d0d90",
+            "BN_CTX_free": "0x1d0b30"
+          },
+          "got_bindings": {},
+          "literals": {
+            "433a2f6769742f7562696c69627261726965732f55626973657276696365732f65787465726e616c2f686172626f7572636f6d6d6f6e2f6c69627261726965732f6f70656e73736c2f63727970746f2f65632f6563325f6f63742e6300": "0x1327af2"
+          }
+        }
+      ]
+    },
+    {
+      "id": "openssl_no_vectorize_crypto_ec_ecp_oct_32_longlong_O2_unwind_novec_O3_omit_unwind",
+      "source": "src/OpenSslVariant_openssl_no_vectorize_crypto_ec_ecp_oct_32_longlong_O2_unwind_novec_O3_omit_unwind.c",
+      "compiler": "8.0.1",
+      "source_review": "library_abi_view",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-x",
+        "c",
+        "-std=gnu99",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-U_WIN32",
+        "-U_WIN64",
+        "-DOPENSSL_THREADS",
+        "-D_REENTRANT",
+        "-I",
+        "vendor/openssl-configs/32_longlong",
+        "-I",
+        "vendor/openssl-1.0.2u",
+        "-I",
+        "vendor/openssl-1.0.2u/include",
+        "-I",
+        "vendor/openssl-1.0.2u/crypto",
+        "-I",
+        "vendor/openssl-1.0.2u/crypto/ec",
+        "-isystem",
+        "vendor/musl/include",
+        "-isystem",
+        "vendor/musl/generated",
+        "-O3",
+        "-fomit-frame-pointer",
+        "-fno-pic",
+        "-funwind-tables",
+        "-fno-vectorize",
+        "-fno-slp-vectorize"
+      ],
+      "header_roots": [
+        "vendor/openssl-1.0.2u",
+        "vendor/openssl-configs",
+        "vendor/musl/include",
+        "vendor/musl/generated"
+      ],
+      "functions": [
+        {
+          "address": "0x202260",
+          "size": 916,
+          "symbol": "ec_GFp_simple_point2oct",
+          "target_sha256": "a3323f4514a20a89a46f34e410172307cb7c8057225904c54a201d2ab5446ce9",
+          "bindings": {
+            "EC_POINT_is_at_infinity": "0x1daef0",
+            "BN_num_bits": "0x1c31f0",
+            "ERR_put_error": "0x1ba7f0",
+            "BN_CTX_new": "0x1d0ad0",
+            "BN_CTX_start": "0x1d0c90",
+            "BN_CTX_get": "0x1d0e20",
+            "EC_POINT_get_affine_coordinates_GFp": "0x1dacb0",
+            "memset": "0xfa3340",
+            "BN_bn2bin": "0x1c3bf0",
+            "BN_CTX_end": "0x1d0d90",
+            "BN_CTX_free": "0x1d0b30"
+          },
+          "got_bindings": {},
+          "literals": {
+            "433a2f6769742f7562696c69627261726965732f55626973657276696365732f65787465726e616c2f686172626f7572636f6d6d6f6e2f6c69627261726965732f6f70656e73736c2f63727970746f2f65632f6563705f6f63742e6300": "0x1311c11"
+          }
+        }
+      ]
+    },
+    {
+      "id": "openssl_no_vectorize_crypto_evp_p5_crpt2_32_longlong_O2_unwind_novec_O3_omit_unwind",
+      "source": "src/OpenSslVariant_openssl_no_vectorize_crypto_evp_p5_crpt2_32_longlong_O2_unwind_novec_O3_omit_unwind.c",
+      "compiler": "8.0.1",
+      "source_review": "library_abi_view",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-x",
+        "c",
+        "-std=gnu99",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-U_WIN32",
+        "-U_WIN64",
+        "-DOPENSSL_THREADS",
+        "-D_REENTRANT",
+        "-I",
+        "vendor/openssl-configs/32_longlong",
+        "-I",
+        "vendor/openssl-1.0.2u",
+        "-I",
+        "vendor/openssl-1.0.2u/include",
+        "-I",
+        "vendor/openssl-1.0.2u/crypto",
+        "-I",
+        "vendor/openssl-1.0.2u/crypto/evp",
+        "-isystem",
+        "vendor/musl/include",
+        "-isystem",
+        "vendor/musl/generated",
+        "-O3",
+        "-fomit-frame-pointer",
+        "-fno-pic",
+        "-funwind-tables",
+        "-fno-vectorize",
+        "-fno-slp-vectorize"
+      ],
+      "header_roots": [
+        "vendor/openssl-1.0.2u",
+        "vendor/openssl-configs",
+        "vendor/musl/include",
+        "vendor/musl/generated"
+      ],
+      "functions": [
+        {
+          "address": "0x20d020",
+          "size": 792,
+          "symbol": "PKCS5_PBKDF2_HMAC",
+          "target_sha256": "9bf4710861f50caab419019b1e9ca78e8a334caa213aed5ab94417295a9aca3c",
+          "bindings": {
+            "EVP_MD_size": "0x1ca280",
+            "HMAC_CTX_init": "0x20d980",
+            "strlen": "0xfa3360",
+            "HMAC_Init_ex": "0x20d740",
+            "HMAC_CTX_copy": "0x20da70",
+            "HMAC_Update": "0x20d9b0",
+            "HMAC_Final": "0x20d9d0",
+            "HMAC_CTX_cleanup": "0x20db70",
+            "memcpy": "0xfa3330"
+          },
+          "got_bindings": {}
+        }
+      ]
+    },
+    {
+      "id": "openssl_no_vectorize_crypto_rsa_rsa_oaep_32_longlong_O2_unwind_novec_O3_omit_unwind",
+      "source": "src/OpenSslVariant_openssl_no_vectorize_crypto_rsa_rsa_oaep_32_longlong_O2_unwind_novec_O3_omit_unwind.c",
+      "compiler": "8.0.1",
+      "source_review": "library_abi_view",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-x",
+        "c",
+        "-std=gnu99",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-U_WIN32",
+        "-U_WIN64",
+        "-DOPENSSL_THREADS",
+        "-D_REENTRANT",
+        "-I",
+        "vendor/openssl-configs/32_longlong",
+        "-I",
+        "vendor/openssl-1.0.2u",
+        "-I",
+        "vendor/openssl-1.0.2u/include",
+        "-I",
+        "vendor/openssl-1.0.2u/crypto",
+        "-I",
+        "vendor/openssl-1.0.2u/crypto/rsa",
+        "-isystem",
+        "vendor/musl/include",
+        "-isystem",
+        "vendor/musl/generated",
+        "-O3",
+        "-fomit-frame-pointer",
+        "-fno-pic",
+        "-funwind-tables",
+        "-fno-vectorize",
+        "-fno-slp-vectorize"
+      ],
+      "header_roots": [
+        "vendor/openssl-1.0.2u",
+        "vendor/openssl-configs",
+        "vendor/musl/include",
+        "vendor/musl/generated"
+      ],
+      "functions": [
+        {
+          "address": "0x1ea120",
+          "size": 748,
+          "symbol": "RSA_padding_add_PKCS1_OAEP_mgf1",
+          "target_sha256": "1dd3042c8152086a812516616ec3c20f7e987f3fa6893d1527838bc243d5377f",
+          "bindings": {
+            "EVP_sha1": "0x1ea9f0",
+            "EVP_MD_size": "0x1ca280",
+            "EVP_Digest": "0x1c9bf0",
+            "memset": "0xfa3340",
+            "memcpy": "0xfa3330",
+            "RAND_bytes": "0x1c7f20",
+            "CRYPTO_malloc": "0x1b9f70",
+            "ERR_put_error": "0x1ba7f0",
+            "CRYPTO_free": "0x1ba410"
+          },
+          "got_bindings": {},
+          "literals": {
+            "433a2f6769742f7562696c69627261726965732f55626973657276696365732f65787465726e616c2f686172626f7572636f6d6d6f6e2f6c69627261726965732f6f70656e73736c2f63727970746f2f7273612f7273615f6f6165702e6300": "0x13158ca"
+          }
+        }
+      ]
+    },
+    {
+      "id": "openssl_no_vectorize_crypto_dsa_dsa_ossl_32_longlong_O2_unwind_novec_O3_omit_unwind",
+      "source": "src/OpenSslVariant_openssl_no_vectorize_crypto_dsa_dsa_ossl_32_longlong_O2_unwind_novec_O3_omit_unwind.c",
+      "compiler": "8.0.1",
+      "source_review": "library_abi_view",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-x",
+        "c",
+        "-std=gnu99",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-U_WIN32",
+        "-U_WIN64",
+        "-DOPENSSL_THREADS",
+        "-D_REENTRANT",
+        "-I",
+        "vendor/openssl-configs/32_longlong",
+        "-I",
+        "vendor/openssl-1.0.2u",
+        "-I",
+        "vendor/openssl-1.0.2u/include",
+        "-I",
+        "vendor/openssl-1.0.2u/crypto",
+        "-I",
+        "vendor/openssl-1.0.2u/crypto/dsa",
+        "-isystem",
+        "vendor/musl/include",
+        "-isystem",
+        "vendor/musl/generated",
+        "-O3",
+        "-fomit-frame-pointer",
+        "-fno-pic",
+        "-funwind-tables",
+        "-fno-vectorize",
+        "-fno-slp-vectorize"
+      ],
+      "header_roots": [
+        "vendor/openssl-1.0.2u",
+        "vendor/openssl-configs",
+        "vendor/musl/include",
+        "vendor/musl/generated"
+      ],
+      "functions": [
+        {
+          "address": "0x1d7fd0",
+          "size": 740,
+          "symbol": "dsa_do_sign",
+          "target_sha256": "3b4f4adb03133bb6da83dec31f35c1dc7740a669528980d982b75c88b7b6464d",
+          "bindings": {
+            "BN_new": "0x1c3380",
+            "BN_CTX_new": "0x1d0ad0",
+            "BN_CTX_get": "0x1d0e20",
+            "DSA_sign_setup": "0x1d8fc0",
+            "BN_num_bits": "0x1c31f0",
+            "BN_bin2bn": "0x1c37b0",
+            "BN_rand": "0x1d69b0",
+            "BN_mod_mul": "0x1d4380",
+            "BN_mod_add_quick": "0x1d40b0",
+            "BN_mod_inverse": "0x1d2040",
+            "ERR_put_error": "0x1ba7f0",
+            "BN_free": "0x1c3320",
+            "BN_CTX_free": "0x1d0b30",
+            "BN_clear_free": "0x1c32b0",
+            "DSA_SIG_new": "0x1d8fd0"
+          },
+          "got_bindings": {},
+          "literals": {
+            "433a2f6769742f7562696c69627261726965732f55626973657276696365732f65787465726e616c2f686172626f7572636f6d6d6f6e2f6c69627261726965732f6f70656e73736c2f63727970746f2f6473612f6473615f6f73736c2e6300": "0x132f40e"
+          }
+        }
+      ]
+    },
+    {
+      "id": "openssl_no_vectorize_crypto_evp_bio_enc_32_longlong_O2_unwind_novec_O3_omit_unwind",
+      "source": "src/OpenSslVariant_openssl_no_vectorize_crypto_evp_bio_enc_32_longlong_O2_unwind_novec_O3_omit_unwind.c",
+      "compiler": "8.0.1",
+      "source_review": "library_abi_view",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-x",
+        "c",
+        "-std=gnu99",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-U_WIN32",
+        "-U_WIN64",
+        "-DOPENSSL_THREADS",
+        "-D_REENTRANT",
+        "-I",
+        "vendor/openssl-configs/32_longlong",
+        "-I",
+        "vendor/openssl-1.0.2u",
+        "-I",
+        "vendor/openssl-1.0.2u/include",
+        "-I",
+        "vendor/openssl-1.0.2u/crypto",
+        "-I",
+        "vendor/openssl-1.0.2u/crypto/evp",
+        "-isystem",
+        "vendor/musl/include",
+        "-isystem",
+        "vendor/musl/generated",
+        "-O3",
+        "-fomit-frame-pointer",
+        "-fno-pic",
+        "-funwind-tables",
+        "-fno-vectorize",
+        "-fno-slp-vectorize"
+      ],
+      "header_roots": [
+        "vendor/openssl-1.0.2u",
+        "vendor/openssl-configs",
+        "vendor/musl/include",
+        "vendor/musl/generated"
+      ],
+      "functions": [
+        {
+          "address": "0x206dc0",
+          "size": 656,
+          "symbol": "enc_ctrl",
+          "target_sha256": "1fc7c447e4a6bf6913d399705f14be43f103d4295d9eee6af80376f6579607aa",
+          "bindings": {
+            "": "0x13495aa",
+            "EVP_CipherInit_ex": "0x1e5550",
+            "EVP_CipherFinal_ex": "0x1e5e00",
+            "BIO_clear_flags": "0x1b8b40",
+            "BIO_write": "0x1b8c80",
+            "BIO_copy_next_retry": "0x1b9570",
+            "EVP_CIPHER_CTX_init": "0x1e54d0",
+            "EVP_CIPHER_CTX_copy": "0x1e63e0",
+            "BIO_ctrl": "0x1b9000"
+          },
+          "got_bindings": {}
+        }
+      ]
+    },
+    {
+      "id": "openssl_no_vectorize_crypto_rsa_rsa_crpt_32_longlong_O2_unwind_novec_O3_omit_unwind",
+      "source": "src/OpenSslVariant_openssl_no_vectorize_crypto_rsa_rsa_crpt_32_longlong_O2_unwind_novec_O3_omit_unwind.c",
+      "compiler": "8.0.1",
+      "source_review": "library_abi_view",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-x",
+        "c",
+        "-std=gnu99",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-U_WIN32",
+        "-U_WIN64",
+        "-DOPENSSL_THREADS",
+        "-D_REENTRANT",
+        "-I",
+        "vendor/openssl-configs/32_longlong",
+        "-I",
+        "vendor/openssl-1.0.2u",
+        "-I",
+        "vendor/openssl-1.0.2u/include",
+        "-I",
+        "vendor/openssl-1.0.2u/crypto",
+        "-I",
+        "vendor/openssl-1.0.2u/crypto/rsa",
+        "-isystem",
+        "vendor/musl/include",
+        "-isystem",
+        "vendor/musl/generated",
+        "-O3",
+        "-fomit-frame-pointer",
+        "-fno-pic",
+        "-funwind-tables",
+        "-fno-vectorize",
+        "-fno-slp-vectorize"
+      ],
+      "header_roots": [
+        "vendor/openssl-1.0.2u",
+        "vendor/openssl-configs",
+        "vendor/musl/include",
+        "vendor/musl/generated"
+      ],
+      "functions": [
+        {
+          "address": "0x20e080",
+          "size": 628,
+          "symbol": "RSA_setup_blinding",
+          "target_sha256": "31d8bbac0193b1cad338753f02434986f5c05986eb5ac607e8e8dd51289cdac2",
+          "bindings": {
+            "BN_CTX_new": "0x1d0ad0",
+            "BN_CTX_start": "0x1d0c90",
+            "BN_CTX_get": "0x1d0e20",
+            "RAND_status": "0x1c8060",
+            "BN_value_one": "0x1c3140",
+            "BN_sub": "0x1d2ce0",
+            "BN_mul": "0x1d3af0",
+            "BN_mod_inverse": "0x1d2040",
+            "BN_CTX_end": "0x1d0d90",
+            "RAND_add": "0x1c7e70",
+            "BN_BLINDING_create_param": "0x1e8540",
+            "BN_BLINDING_thread_id": "0x1e88d0",
+            "CRYPTO_THREADID_current": "0x1b9880",
+            "ERR_put_error": "0x1ba7f0",
+            "BN_CTX_free": "0x1d0b30",
+            "BN_free": "0x1c3320"
+          },
+          "got_bindings": {},
+          "literals": {
+            "433a2f6769742f7562696c69627261726965732f55626973657276696365732f65787465726e616c2f686172626f7572636f6d6d6f6e2f6c69627261726965732f6f70656e73736c2f63727970746f2f7273612f7273615f637270742e6300": "0x132347f"
+          }
+        }
+      ]
+    },
+    {
+      "id": "openssl_no_vectorize_crypto_dh_dh_key_32_longlong_O2_unwind_novec_O3_omit_unwind",
+      "source": "src/OpenSslVariant_openssl_no_vectorize_crypto_dh_dh_key_32_longlong_O2_unwind_novec_O3_omit_unwind.c",
+      "compiler": "8.0.1",
+      "source_review": "library_abi_view",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-x",
+        "c",
+        "-std=gnu99",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-U_WIN32",
+        "-U_WIN64",
+        "-DOPENSSL_THREADS",
+        "-D_REENTRANT",
+        "-I",
+        "vendor/openssl-configs/32_longlong",
+        "-I",
+        "vendor/openssl-1.0.2u",
+        "-I",
+        "vendor/openssl-1.0.2u/include",
+        "-I",
+        "vendor/openssl-1.0.2u/crypto",
+        "-I",
+        "vendor/openssl-1.0.2u/crypto/dh",
+        "-isystem",
+        "vendor/musl/include",
+        "-isystem",
+        "vendor/musl/generated",
+        "-O3",
+        "-fomit-frame-pointer",
+        "-fno-pic",
+        "-funwind-tables",
+        "-fno-vectorize",
+        "-fno-slp-vectorize"
+      ],
+      "header_roots": [
+        "vendor/openssl-1.0.2u",
+        "vendor/openssl-configs",
+        "vendor/musl/include",
+        "vendor/musl/generated"
+      ],
+      "functions": [
+        {
+          "address": "0x1d0640",
+          "size": 576,
+          "symbol": "generate_key",
+          "target_sha256": "2997789f7362fb5b074ccebef4d54537db62bbf3ea053d8d2c3e809ce8982aae",
+          "bindings": {
+            "BN_num_bits": "0x1c31f0",
+            "ERR_put_error": "0x1ba7f0",
+            "BN_CTX_new": "0x1d0ad0",
+            "BN_new": "0x1c3380",
+            "BN_MONT_CTX_set_locked": "0x1d1900",
+            "BN_rand": "0x1d69b0",
+            "BN_rand_range": "0x1d6c40",
+            "BN_init": "0x1c3370",
+            "BN_free": "0x1c3320",
+            "BN_CTX_free": "0x1d0b30"
+          },
+          "got_bindings": {},
+          "literals": {
+            "433a2f6769742f7562696c69627261726965732f55626973657276696365732f65787465726e616c2f686172626f7572636f6d6d6f6e2f6c69627261726965732f6f70656e73736c2f63727970746f2f64682f64685f6b65792e6300": "0x12f71e6"
+          }
+        }
+      ]
+    },
+    {
+      "id": "openssl_no_vectorize_crypto_hmac_hmac_32_longlong_O2_unwind_novec_O3_omit_unwind",
+      "source": "src/OpenSslVariant_openssl_no_vectorize_crypto_hmac_hmac_32_longlong_O2_unwind_novec_O3_omit_unwind.c",
+      "compiler": "8.0.1",
+      "source_review": "library_abi_view",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-x",
+        "c",
+        "-std=gnu99",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-U_WIN32",
+        "-U_WIN64",
+        "-DOPENSSL_THREADS",
+        "-D_REENTRANT",
+        "-I",
+        "vendor/openssl-configs/32_longlong",
+        "-I",
+        "vendor/openssl-1.0.2u",
+        "-I",
+        "vendor/openssl-1.0.2u/include",
+        "-I",
+        "vendor/openssl-1.0.2u/crypto",
+        "-I",
+        "vendor/openssl-1.0.2u/crypto/hmac",
+        "-isystem",
+        "vendor/musl/include",
+        "-isystem",
+        "vendor/musl/generated",
+        "-O3",
+        "-fomit-frame-pointer",
+        "-fno-pic",
+        "-funwind-tables",
+        "-fno-vectorize",
+        "-fno-slp-vectorize"
+      ],
+      "header_roots": [
+        "vendor/openssl-1.0.2u",
+        "vendor/openssl-configs",
+        "vendor/musl/include",
+        "vendor/musl/generated"
+      ],
+      "functions": [
+        {
+          "address": "0x20d740",
+          "size": 576,
+          "symbol": "HMAC_Init_ex",
+          "target_sha256": "3a6400e4f5fdf48d787850c28917f6f696b70023e6f3233582c808bec4b35d94",
+          "bindings": {
+            "EVP_MD_block_size": "0x1ca260",
+            "OpenSSLDie": "0x1b9910",
+            "EVP_DigestInit_ex": "0x1c9620",
+            "EVP_DigestUpdate": "0x1c9830",
+            "EVP_DigestFinal_ex": "0x1c98f0",
+            "memcpy": "0xfa3330",
+            "memset": "0xfa3340",
+            "EVP_MD_CTX_copy_ex": "0x1c9a60"
+          },
+          "got_bindings": {},
+          "literals": {
+            "433a2f6769742f7562696c69627261726965732f55626973657276696365732f65787465726e616c2f686172626f7572636f6d6d6f6e2f6c69627261726965732f6f70656e73736c2f63727970746f2f686d61632f686d61632e6300": "0x1315ab4",
+            "6a203c3d2028696e742973697a656f66286374782d3e6b65792900": "0x12f1d23"
+          }
+        }
+      ]
+    },
+    {
+      "id": "openssl_no_vectorize_crypto_bn_bn_add_32_longlong_O2_unwind_novec_O3_omit_unwind",
+      "source": "src/OpenSslVariant_openssl_no_vectorize_crypto_bn_bn_add_32_longlong_O2_unwind_novec_O3_omit_unwind.c",
+      "compiler": "8.0.1",
+      "source_review": "library_abi_view",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-x",
+        "c",
+        "-std=gnu99",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-U_WIN32",
+        "-U_WIN64",
+        "-DOPENSSL_THREADS",
+        "-D_REENTRANT",
+        "-I",
+        "vendor/openssl-configs/32_longlong",
+        "-I",
+        "vendor/openssl-1.0.2u",
+        "-I",
+        "vendor/openssl-1.0.2u/include",
+        "-I",
+        "vendor/openssl-1.0.2u/crypto",
+        "-I",
+        "vendor/openssl-1.0.2u/crypto/bn",
+        "-isystem",
+        "vendor/musl/include",
+        "-isystem",
+        "vendor/musl/generated",
+        "-O3",
+        "-fomit-frame-pointer",
+        "-fno-pic",
+        "-funwind-tables",
+        "-fno-vectorize",
+        "-fno-slp-vectorize"
+      ],
+      "header_roots": [
+        "vendor/openssl-1.0.2u",
+        "vendor/openssl-configs",
+        "vendor/musl/include",
+        "vendor/musl/generated"
+      ],
+      "functions": [
+        {
+          "address": "0x1d2ce0",
+          "size": 224,
+          "symbol": "BN_sub",
+          "target_sha256": "9bdd71c716fb28bbe9ef8c9d89b15eb8cc884bf9e06ad079b8c290c309008f89",
+          "bindings": {
+            "bn_expand2": "0x1c35c0",
+            "BN_ucmp": "0x1c3d10"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x1d2b90",
+          "size": 332,
+          "symbol": "BN_uadd",
+          "target_sha256": "c1abb066aeebf99e7d796f4040e0c050bc3fab6f038d303dbbfc3163375ba890",
+          "bindings": {
+            "bn_expand2": "0x1c35c0",
+            "bn_add_words": "0x1c47e0"
+          },
+          "got_bindings": {}
+        }
+      ]
+    },
+    {
+      "id": "openssl_no_vectorize_crypto_stack_stack_32_longlong_O2_unwind_novec_O3_omit_unwind",
+      "source": "src/OpenSslVariant_openssl_no_vectorize_crypto_stack_stack_32_longlong_O2_unwind_novec_O3_omit_unwind.c",
+      "compiler": "8.0.1",
+      "source_review": "library_abi_view",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-x",
+        "c",
+        "-std=gnu99",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-U_WIN32",
+        "-U_WIN64",
+        "-DOPENSSL_THREADS",
+        "-D_REENTRANT",
+        "-I",
+        "vendor/openssl-configs/32_longlong",
+        "-I",
+        "vendor/openssl-1.0.2u",
+        "-I",
+        "vendor/openssl-1.0.2u/include",
+        "-I",
+        "vendor/openssl-1.0.2u/crypto",
+        "-I",
+        "vendor/openssl-1.0.2u/crypto/stack",
+        "-isystem",
+        "vendor/musl/include",
+        "-isystem",
+        "vendor/musl/generated",
+        "-O3",
+        "-fomit-frame-pointer",
+        "-fno-pic",
+        "-funwind-tables",
+        "-fno-vectorize",
+        "-fno-slp-vectorize"
+      ],
+      "header_roots": [
+        "vendor/openssl-1.0.2u",
+        "vendor/openssl-configs",
+        "vendor/musl/include",
+        "vendor/musl/generated"
+      ],
+      "functions": [
+        {
+          "address": "0x1bf7f0",
+          "size": 252,
+          "symbol": "sk_dup",
+          "target_sha256": "b8270d68c4a584b009c90bd9e7d167d31c60a059976a867e2d1e1dc9cc94742d",
+          "bindings": {
+            "CRYPTO_malloc": "0x1b9f70",
+            "CRYPTO_realloc": "0x1ba130",
+            "memcpy": "0xfa3330",
+            "CRYPTO_free": "0x1ba410"
+          },
+          "got_bindings": {},
+          "literals": {
+            "433a2f6769742f7562696c69627261726965732f55626973657276696365732f65787465726e616c2f686172626f7572636f6d6d6f6e2f6c69627261726965732f6f70656e73736c2f63727970746f2f737461636b2f737461636b2e6300": "0x13275aa"
+          }
+        },
+        {
+          "address": "0x1bf8f0",
+          "size": 152,
+          "symbol": "sk_new",
+          "target_sha256": "80103e0e587ae5371890b9b017ab1a803725ed215088ec48fce4ff4023c0fe15",
+          "bindings": {
+            "CRYPTO_malloc": "0x1b9f70",
+            "CRYPTO_free": "0x1ba410"
+          },
+          "got_bindings": {},
+          "literals": {
+            "433a2f6769742f7562696c69627261726965732f55626973657276696365732f65787465726e616c2f686172626f7572636f6d6d6f6e2f6c69627261726965732f6f70656e73736c2f63727970746f2f737461636b2f737461636b2e6300": "0x13275aa"
+          }
+        },
+        {
+          "address": "0x1bfb10",
+          "size": 136,
+          "symbol": "sk_new_null",
+          "target_sha256": "ca09ccd32b14fa9d457ee7231ba23d5153719e6c4fabb37197b50a3d0aaabd25",
+          "bindings": {
+            "CRYPTO_malloc": "0x1b9f70",
+            "CRYPTO_free": "0x1ba410"
+          },
+          "got_bindings": {},
+          "literals": {
+            "433a2f6769742f7562696c69627261726965732f55626973657276696365732f65787465726e616c2f686172626f7572636f6d6d6f6e2f6c69627261726965732f6f70656e73736c2f63727970746f2f737461636b2f737461636b2e6300": "0x13275aa"
+          }
+        }
+      ]
+    },
+    {
+      "id": "openssl_no_vectorize_crypto_bn_bn_shift_32_longlong_O2_unwind_novec_O3_omit_unwind",
+      "source": "src/OpenSslVariant_openssl_no_vectorize_crypto_bn_bn_shift_32_longlong_O2_unwind_novec_O3_omit_unwind.c",
+      "compiler": "8.0.1",
+      "source_review": "library_abi_view",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-x",
+        "c",
+        "-std=gnu99",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-U_WIN32",
+        "-U_WIN64",
+        "-DOPENSSL_THREADS",
+        "-D_REENTRANT",
+        "-I",
+        "vendor/openssl-configs/32_longlong",
+        "-I",
+        "vendor/openssl-1.0.2u",
+        "-I",
+        "vendor/openssl-1.0.2u/include",
+        "-I",
+        "vendor/openssl-1.0.2u/crypto",
+        "-I",
+        "vendor/openssl-1.0.2u/crypto/bn",
+        "-isystem",
+        "vendor/musl/include",
+        "-isystem",
+        "vendor/musl/generated",
+        "-O3",
+        "-fomit-frame-pointer",
+        "-fno-pic",
+        "-funwind-tables",
+        "-fno-vectorize",
+        "-fno-slp-vectorize"
+      ],
+      "header_roots": [
+        "vendor/openssl-1.0.2u",
+        "vendor/openssl-configs",
+        "vendor/musl/include",
+        "vendor/musl/generated"
+      ],
+      "functions": [
+        {
+          "address": "0x1c2f40",
+          "size": 508,
+          "symbol": "BN_rshift",
+          "target_sha256": "fa7504e7d836cca7820c07665fc3f2ba0e6b29b91309d56f7a0fa338188563a3",
+          "bindings": {
+            "BN_num_bits": "0x1c31f0",
+            "bn_expand2": "0x1c35c0",
+            "ERR_put_error": "0x1ba7f0",
+            "BN_set_word": "0x1c3730"
+          },
+          "got_bindings": {},
+          "literals": {
+            "433a2f6769742f7562696c69627261726965732f55626973657276696365732f65787465726e616c2f686172626f7572636f6d6d6f6e2f6c69627261726965732f6f70656e73736c2f63727970746f2f626e2f626e5f73686966742e6300": "0x1306172"
+          }
+        }
+      ]
+    },
+    {
+      "id": "openssl_no_vectorize_ssl_t1_lib_32_longlong_O2_unwind_novec_O3_omit_unwind",
+      "source": "src/OpenSslVariant_openssl_no_vectorize_ssl_t1_lib_32_longlong_O2_unwind_novec_O3_omit_unwind.c",
+      "compiler": "8.0.1",
+      "source_review": "library_abi_view",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-x",
+        "c",
+        "-std=gnu99",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-U_WIN32",
+        "-U_WIN64",
+        "-DOPENSSL_THREADS",
+        "-D_REENTRANT",
+        "-I",
+        "vendor/openssl-configs/32_longlong",
+        "-I",
+        "vendor/openssl-1.0.2u",
+        "-I",
+        "vendor/openssl-1.0.2u/include",
+        "-I",
+        "vendor/openssl-1.0.2u/crypto",
+        "-I",
+        "vendor/openssl-1.0.2u/ssl",
+        "-isystem",
+        "vendor/musl/include",
+        "-isystem",
+        "vendor/musl/generated",
+        "-O3",
+        "-fomit-frame-pointer",
+        "-fno-pic",
+        "-funwind-tables",
+        "-fno-vectorize",
+        "-fno-slp-vectorize"
+      ],
+      "header_roots": [
+        "vendor/openssl-1.0.2u",
+        "vendor/openssl-configs",
+        "vendor/musl/include",
+        "vendor/musl/generated"
+      ],
+      "functions": [
+        {
+          "address": "0x2362f0",
+          "size": 476,
+          "symbol": "ssl_set_client_disabled",
+          "target_sha256": "a6032cc3f4ae1893ff3541c54b95eb88dd71287d956f683389841b8807514071",
+          "bindings": {
+            "": "0x17e5140"
+          },
+          "got_bindings": {}
+        }
+      ]
+    },
+    {
+      "id": "openssl_no_vectorize_crypto_cmac_cmac_32_longlong_O2_unwind_novec_O3_omit_unwind",
+      "source": "src/OpenSslVariant_openssl_no_vectorize_crypto_cmac_cmac_32_longlong_O2_unwind_novec_O3_omit_unwind.c",
+      "compiler": "8.0.1",
+      "source_review": "library_abi_view",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-x",
+        "c",
+        "-std=gnu99",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-U_WIN32",
+        "-U_WIN64",
+        "-DOPENSSL_THREADS",
+        "-D_REENTRANT",
+        "-I",
+        "vendor/openssl-configs/32_longlong",
+        "-I",
+        "vendor/openssl-1.0.2u",
+        "-I",
+        "vendor/openssl-1.0.2u/include",
+        "-I",
+        "vendor/openssl-1.0.2u/crypto",
+        "-I",
+        "vendor/openssl-1.0.2u/crypto/cmac",
+        "-isystem",
+        "vendor/musl/include",
+        "-isystem",
+        "vendor/musl/generated",
+        "-O3",
+        "-fomit-frame-pointer",
+        "-fno-pic",
+        "-funwind-tables",
+        "-fno-vectorize",
+        "-fno-slp-vectorize"
+      ],
+      "header_roots": [
+        "vendor/openssl-1.0.2u",
+        "vendor/openssl-configs",
+        "vendor/musl/include",
+        "vendor/musl/generated"
+      ],
+      "functions": [
+        {
+          "address": "0x1e5310",
+          "size": 448,
+          "symbol": "CMAC_Final",
+          "target_sha256": "84797c4c56d30d65821a3354ed3ef493752b3f5005ec7f92eb6d4c7d80f007b3",
+          "bindings": {
+            "EVP_CIPHER_CTX_block_size": "0x1ca1f0",
+            "memset": "0xfa3340",
+            "EVP_Cipher": "0x1ca200",
+            "OPENSSL_cleanse": "0x1ba470"
+          },
+          "got_bindings": {}
+        }
+      ]
+    },
+    {
+      "id": "openssl_no_vectorize_crypto_rc2_rc2_skey_32_longlong_O2_unwind_novec_O3_omit_unwind",
+      "source": "src/OpenSslVariant_openssl_no_vectorize_crypto_rc2_rc2_skey_32_longlong_O2_unwind_novec_O3_omit_unwind.c",
+      "compiler": "8.0.1",
+      "source_review": "library_abi_view",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-x",
+        "c",
+        "-std=gnu99",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-U_WIN32",
+        "-U_WIN64",
+        "-DOPENSSL_THREADS",
+        "-D_REENTRANT",
+        "-I",
+        "vendor/openssl-configs/32_longlong",
+        "-I",
+        "vendor/openssl-1.0.2u",
+        "-I",
+        "vendor/openssl-1.0.2u/include",
+        "-I",
+        "vendor/openssl-1.0.2u/crypto",
+        "-I",
+        "vendor/openssl-1.0.2u/crypto/rc2",
+        "-isystem",
+        "vendor/musl/include",
+        "-isystem",
+        "vendor/musl/generated",
+        "-O3",
+        "-fomit-frame-pointer",
+        "-fno-pic",
+        "-funwind-tables",
+        "-fno-vectorize",
+        "-fno-slp-vectorize"
+      ],
+      "header_roots": [
+        "vendor/openssl-1.0.2u",
+        "vendor/openssl-configs",
+        "vendor/musl/include",
+        "vendor/musl/generated"
+      ],
+      "functions": [
+        {
+          "address": "0x2522b0",
+          "size": 328,
+          "symbol": "RC2_set_key",
+          "target_sha256": "2d193cbb8196c72d10694466a2c7d2b9a32d9e4523eacc4bac11fe74cc2aa272",
+          "bindings": {
+            "": "0x134f464"
+          },
+          "got_bindings": {}
+        }
+      ]
+    },
+    {
+      "id": "openssl_no_vectorize_crypto_dsa_dsa_key_32_longlong_O2_unwind_novec_O3_omit_unwind",
+      "source": "src/OpenSslVariant_openssl_no_vectorize_crypto_dsa_dsa_key_32_longlong_O2_unwind_novec_O3_omit_unwind.c",
+      "compiler": "8.0.1",
+      "source_review": "library_abi_view",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-x",
+        "c",
+        "-std=gnu99",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-U_WIN32",
+        "-U_WIN64",
+        "-DOPENSSL_THREADS",
+        "-D_REENTRANT",
+        "-I",
+        "vendor/openssl-configs/32_longlong",
+        "-I",
+        "vendor/openssl-1.0.2u",
+        "-I",
+        "vendor/openssl-1.0.2u/include",
+        "-I",
+        "vendor/openssl-1.0.2u/crypto",
+        "-I",
+        "vendor/openssl-1.0.2u/crypto/dsa",
+        "-isystem",
+        "vendor/musl/include",
+        "-isystem",
+        "vendor/musl/generated",
+        "-O3",
+        "-fomit-frame-pointer",
+        "-fno-pic",
+        "-funwind-tables",
+        "-fno-vectorize",
+        "-fno-slp-vectorize"
+      ],
+      "header_roots": [
+        "vendor/openssl-1.0.2u",
+        "vendor/openssl-configs",
+        "vendor/musl/include",
+        "vendor/musl/generated"
+      ],
+      "functions": [
+        {
+          "address": "0x21a600",
+          "size": 324,
+          "symbol": "DSA_generate_key",
+          "target_sha256": "83c6a9d8af616d0629d6b745197489d56acb05787608608d740b17d853910ac4",
+          "bindings": {
+            "BN_CTX_new": "0x1d0ad0",
+            "BN_new": "0x1c3380",
+            "BN_rand_range": "0x1d6c40",
+            "BN_init": "0x1c3370",
+            "BN_mod_exp": "0x1d4b70",
+            "BN_free": "0x1c3320",
+            "BN_CTX_free": "0x1d0b30"
+          },
+          "got_bindings": {}
+        }
+      ]
+    },
+    {
+      "id": "openssl_no_vectorize_crypto_idea_i_skey_32_longlong_O2_unwind_novec_O3_omit_unwind",
+      "source": "src/OpenSslVariant_openssl_no_vectorize_crypto_idea_i_skey_32_longlong_O2_unwind_novec_O3_omit_unwind.c",
+      "compiler": "8.0.1",
+      "source_review": "library_abi_view",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-x",
+        "c",
+        "-std=gnu99",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-U_WIN32",
+        "-U_WIN64",
+        "-DOPENSSL_THREADS",
+        "-D_REENTRANT",
+        "-I",
+        "vendor/openssl-configs/32_longlong",
+        "-I",
+        "vendor/openssl-1.0.2u",
+        "-I",
+        "vendor/openssl-1.0.2u/include",
+        "-I",
+        "vendor/openssl-1.0.2u/crypto",
+        "-I",
+        "vendor/openssl-1.0.2u/crypto/idea",
+        "-isystem",
+        "vendor/musl/include",
+        "-isystem",
+        "vendor/musl/generated",
+        "-O3",
+        "-fomit-frame-pointer",
+        "-fno-pic",
+        "-funwind-tables",
+        "-fno-vectorize",
+        "-fno-slp-vectorize"
+      ],
+      "header_roots": [
+        "vendor/openssl-1.0.2u",
+        "vendor/openssl-configs",
+        "vendor/musl/include",
+        "vendor/musl/generated"
+      ],
+      "functions": [
+        {
+          "address": "0x251790",
+          "size": 324,
+          "symbol": "idea_set_decrypt_key",
+          "target_sha256": "27394f811373da22153dfda31bfef624ea8f09c91b55880a9029e227933f2c6a",
+          "bindings": {},
+          "got_bindings": {}
+        }
+      ]
+    },
+    {
+      "id": "openssl_no_vectorize_crypto_asn1_asn1_lib_32_longlong_O2_unwind_novec_O3_omit_unwind",
+      "source": "src/OpenSslVariant_openssl_no_vectorize_crypto_asn1_asn1_lib_32_longlong_O2_unwind_novec_O3_omit_unwind.c",
+      "compiler": "8.0.1",
+      "source_review": "library_abi_view",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-x",
+        "c",
+        "-std=gnu99",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-U_WIN32",
+        "-U_WIN64",
+        "-DOPENSSL_THREADS",
+        "-D_REENTRANT",
+        "-I",
+        "vendor/openssl-configs/32_longlong",
+        "-I",
+        "vendor/openssl-1.0.2u",
+        "-I",
+        "vendor/openssl-1.0.2u/include",
+        "-I",
+        "vendor/openssl-1.0.2u/crypto",
+        "-I",
+        "vendor/openssl-1.0.2u/crypto/asn1",
+        "-isystem",
+        "vendor/musl/include",
+        "-isystem",
+        "vendor/musl/generated",
+        "-O3",
+        "-fomit-frame-pointer",
+        "-fno-pic",
+        "-funwind-tables",
+        "-fno-vectorize",
+        "-fno-slp-vectorize"
+      ],
+      "header_roots": [
+        "vendor/openssl-1.0.2u",
+        "vendor/openssl-configs",
+        "vendor/musl/include",
+        "vendor/musl/generated"
+      ],
+      "functions": [
+        {
+          "address": "0x1c2470",
+          "size": 208,
+          "symbol": "ASN1_STRING_dup",
+          "target_sha256": "bf1a52cf1b4892a191737a9721916695a835ab5356edc151008df3a9bee19f8d",
+          "bindings": {
+            "CRYPTO_malloc": "0x1b9f70",
+            "ERR_put_error": "0x1ba7f0",
+            "CRYPTO_free": "0x1ba410"
+          },
+          "got_bindings": {},
+          "literals": {
+            "433a2f6769742f7562696c69627261726965732f55626973657276696365732f65787465726e616c2f686172626f7572636f6d6d6f6e2f6c69627261726965732f6f70656e73736c2f63727970746f2f61736e312f61736e315f6c69622e6300": "0x13023f9"
+          }
+        },
+        {
+          "address": "0x1c2540",
+          "size": 88,
+          "symbol": "ASN1_STRING_new",
+          "target_sha256": "47947714c9df8eabbd7b6d07d76d0408479cd57aaab7cd303f49dd77633f4370",
+          "bindings": {
+            "CRYPTO_malloc": "0x1b9f70",
+            "ERR_put_error": "0x1ba7f0"
+          },
+          "got_bindings": {},
+          "literals": {
+            "433a2f6769742f7562696c69627261726965732f55626973657276696365732f65787465726e616c2f686172626f7572636f6d6d6f6e2f6c69627261726965732f6f70656e73736c2f63727970746f2f61736e312f61736e315f6c69622e6300": "0x13023f9"
+          }
+        }
+      ]
+    },
+    {
+      "id": "openssl_no_vectorize_ssl_d1_lib_32_longlong_O2_unwind_novec_O3_omit_unwind",
+      "source": "src/OpenSslVariant_openssl_no_vectorize_ssl_d1_lib_32_longlong_O2_unwind_novec_O3_omit_unwind.c",
+      "compiler": "8.0.1",
+      "source_review": "library_abi_view",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-x",
+        "c",
+        "-std=gnu99",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-U_WIN32",
+        "-U_WIN64",
+        "-DOPENSSL_THREADS",
+        "-D_REENTRANT",
+        "-I",
+        "vendor/openssl-configs/32_longlong",
+        "-I",
+        "vendor/openssl-1.0.2u",
+        "-I",
+        "vendor/openssl-1.0.2u/include",
+        "-I",
+        "vendor/openssl-1.0.2u/crypto",
+        "-I",
+        "vendor/openssl-1.0.2u/ssl",
+        "-isystem",
+        "vendor/musl/include",
+        "-isystem",
+        "vendor/musl/generated",
+        "-O3",
+        "-fomit-frame-pointer",
+        "-fno-pic",
+        "-funwind-tables",
+        "-fno-vectorize",
+        "-fno-slp-vectorize"
+      ],
+      "header_roots": [
+        "vendor/openssl-1.0.2u",
+        "vendor/openssl-configs",
+        "vendor/musl/include",
+        "vendor/musl/generated"
+      ],
+      "functions": [
+        {
+          "address": "0x22c550",
+          "size": 276,
+          "symbol": "dtls1_new",
+          "target_sha256": "cb4f07351a87f7480c26318db32c0e7d447e8be684646cffeed8dbb4c72157de",
+          "bindings": {
+            "ssl3_new": "0x224710",
+            "CRYPTO_malloc": "0x1b9f70",
+            "memset": "0xfa3340",
+            "pqueue_new": "0x247dc0",
+            "pqueue_free": "0x247df0",
+            "CRYPTO_free": "0x1ba410"
+          },
+          "got_bindings": {},
+          "literals": {
+            "433a2f6769742f7562696c69627261726965732f55626973657276696365732f65787465726e616c2f686172626f7572636f6d6d6f6e2f6c69627261726965732f6f70656e73736c2f73736c2f64315f6c69622e6300": "0x12f74ff"
+          }
+        }
+      ]
+    },
+    {
+      "id": "openssl_no_vectorize_crypto_ec_ec_lib_32_longlong_O2_unwind_novec_O3_omit_unwind",
+      "source": "src/OpenSslVariant_openssl_no_vectorize_crypto_ec_ec_lib_32_longlong_O2_unwind_novec_O3_omit_unwind.c",
+      "compiler": "8.0.1",
+      "source_review": "library_abi_view",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-x",
+        "c",
+        "-std=gnu99",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-U_WIN32",
+        "-U_WIN64",
+        "-DOPENSSL_THREADS",
+        "-D_REENTRANT",
+        "-I",
+        "vendor/openssl-configs/32_longlong",
+        "-I",
+        "vendor/openssl-1.0.2u",
+        "-I",
+        "vendor/openssl-1.0.2u/include",
+        "-I",
+        "vendor/openssl-1.0.2u/crypto",
+        "-I",
+        "vendor/openssl-1.0.2u/crypto/ec",
+        "-isystem",
+        "vendor/musl/include",
+        "-isystem",
+        "vendor/musl/generated",
+        "-O3",
+        "-fomit-frame-pointer",
+        "-fno-pic",
+        "-funwind-tables",
+        "-fno-vectorize",
+        "-fno-slp-vectorize"
+      ],
+      "header_roots": [
+        "vendor/openssl-1.0.2u",
+        "vendor/openssl-configs",
+        "vendor/musl/include",
+        "vendor/musl/generated"
+      ],
+      "functions": [
+        {
+          "address": "0x1d9870",
+          "size": 268,
+          "symbol": "EC_GROUP_new",
+          "target_sha256": "00a7906c471dbfc968c6fb2e44defba3da3044a26d9d32882bc58e60d90f5d2b",
+          "bindings": {
+            "CRYPTO_malloc": "0x1b9f70",
+            "BN_init": "0x1c3370",
+            "ERR_put_error": "0x1ba7f0",
+            "CRYPTO_free": "0x1ba410"
+          },
+          "got_bindings": {},
+          "literals": {
+            "433a2f6769742f7562696c69627261726965732f55626973657276696365732f65787465726e616c2f686172626f7572636f6d6d6f6e2f6c69627261726965732f6f70656e73736c2f63727970746f2f65632f65635f6c69622e6300": "0x12f37e2"
+          }
+        }
+      ]
+    },
+    {
+      "id": "openssl_no_vectorize_crypto_pkcs12_p12_utl_32_longlong_O2_unwind_novec_O3_omit_unwind",
+      "source": "src/OpenSslVariant_openssl_no_vectorize_crypto_pkcs12_p12_utl_32_longlong_O2_unwind_novec_O3_omit_unwind.c",
+      "compiler": "8.0.1",
+      "source_review": "library_abi_view",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-x",
+        "c",
+        "-std=gnu99",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-U_WIN32",
+        "-U_WIN64",
+        "-DOPENSSL_THREADS",
+        "-D_REENTRANT",
+        "-I",
+        "vendor/openssl-configs/32_longlong",
+        "-I",
+        "vendor/openssl-1.0.2u",
+        "-I",
+        "vendor/openssl-1.0.2u/include",
+        "-I",
+        "vendor/openssl-1.0.2u/crypto",
+        "-I",
+        "vendor/openssl-1.0.2u/crypto/pkcs12",
+        "-isystem",
+        "vendor/musl/include",
+        "-isystem",
+        "vendor/musl/generated",
+        "-O3",
+        "-fomit-frame-pointer",
+        "-fno-pic",
+        "-funwind-tables",
+        "-fno-vectorize",
+        "-fno-slp-vectorize"
+      ],
+      "header_roots": [
+        "vendor/openssl-1.0.2u",
+        "vendor/openssl-configs",
+        "vendor/musl/include",
+        "vendor/musl/generated"
+      ],
+      "functions": [
+        {
+          "address": "0x1ec030",
+          "size": 256,
+          "symbol": "OPENSSL_asc2uni",
+          "target_sha256": "83e48a4339cf6a94ab5db7279c61501e79ed155a8bf5825db81d8b812cf6ba0f",
+          "bindings": {
+            "strlen": "0xfa3360",
+            "CRYPTO_malloc": "0x1b9f70"
+          },
+          "got_bindings": {},
+          "literals": {
+            "433a2f6769742f7562696c69627261726965732f55626973657276696365732f65787465726e616c2f686172626f7572636f6d6d6f6e2f6c69627261726965732f6f70656e73736c2f63727970746f2f706b637331322f7031325f75746c2e6300": "0x1327a15"
+          }
+        }
+      ]
+    },
+    {
+      "id": "openssl_no_vectorize_ssl_s3_both_32_longlong_O2_unwind_novec_O3_omit_unwind",
+      "source": "src/OpenSslVariant_openssl_no_vectorize_ssl_s3_both_32_longlong_O2_unwind_novec_O3_omit_unwind.c",
+      "compiler": "8.0.1",
+      "source_review": "library_abi_view",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-x",
+        "c",
+        "-std=gnu99",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-U_WIN32",
+        "-U_WIN64",
+        "-DOPENSSL_THREADS",
+        "-D_REENTRANT",
+        "-I",
+        "vendor/openssl-configs/32_longlong",
+        "-I",
+        "vendor/openssl-1.0.2u",
+        "-I",
+        "vendor/openssl-1.0.2u/include",
+        "-I",
+        "vendor/openssl-1.0.2u/crypto",
+        "-I",
+        "vendor/openssl-1.0.2u/ssl",
+        "-isystem",
+        "vendor/musl/include",
+        "-isystem",
+        "vendor/musl/generated",
+        "-O3",
+        "-fomit-frame-pointer",
+        "-fno-pic",
+        "-funwind-tables",
+        "-fno-vectorize",
+        "-fno-slp-vectorize"
+      ],
+      "header_roots": [
+        "vendor/openssl-1.0.2u",
+        "vendor/openssl-configs",
+        "vendor/musl/include",
+        "vendor/musl/generated"
+      ],
+      "functions": [
+        {
+          "address": "0x241460",
+          "size": 244,
+          "symbol": "ssl3_send_change_cipher_spec",
+          "target_sha256": "32cf60aeb4fc2c15789cba832ec9af842cb5d0bb6fe22a0daf1b2d2ac287adcb",
+          "bindings": {
+            "ssl3_write_bytes": "0x23e390"
+          },
+          "got_bindings": {}
+        }
+      ]
+    },
+    {
+      "id": "openssl_no_vectorize_crypto_bn_bn_asm_32_longlong_O2_unwind_novec_O3_omit_unwind",
+      "source": "src/OpenSslVariant_openssl_no_vectorize_crypto_bn_bn_asm_32_longlong_O2_unwind_novec_O3_omit_unwind.c",
+      "compiler": "8.0.1",
+      "source_review": "library_abi_view",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-x",
+        "c",
+        "-std=gnu99",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-U_WIN32",
+        "-U_WIN64",
+        "-DOPENSSL_THREADS",
+        "-D_REENTRANT",
+        "-I",
+        "vendor/openssl-configs/32_longlong",
+        "-I",
+        "vendor/openssl-1.0.2u",
+        "-I",
+        "vendor/openssl-1.0.2u/include",
+        "-I",
+        "vendor/openssl-1.0.2u/crypto",
+        "-I",
+        "vendor/openssl-1.0.2u/crypto/bn",
+        "-isystem",
+        "vendor/musl/include",
+        "-isystem",
+        "vendor/musl/generated",
+        "-O3",
+        "-fomit-frame-pointer",
+        "-fno-pic",
+        "-funwind-tables",
+        "-fno-vectorize",
+        "-fno-slp-vectorize"
+      ],
+      "header_roots": [
+        "vendor/openssl-1.0.2u",
+        "vendor/openssl-configs",
+        "vendor/musl/include",
+        "vendor/musl/generated"
+      ],
+      "functions": [
+        {
+          "address": "0x1c45d0",
+          "size": 212,
+          "symbol": "bn_sqr_words",
+          "target_sha256": "f3340c3d2babeaf84f8511d8d0acba0c25337a87f8ac253bebc9067b9068e831",
+          "bindings": {},
+          "got_bindings": {}
+        }
+      ]
+    },
+    {
+      "id": "openssl_no_vectorize_crypto_comp_comp_lib_32_longlong_O2_unwind_novec_O3_omit_unwind",
+      "source": "src/OpenSslVariant_openssl_no_vectorize_crypto_comp_comp_lib_32_longlong_O2_unwind_novec_O3_omit_unwind.c",
+      "compiler": "8.0.1",
+      "source_review": "library_abi_view",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-x",
+        "c",
+        "-std=gnu99",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-U_WIN32",
+        "-U_WIN64",
+        "-DOPENSSL_THREADS",
+        "-D_REENTRANT",
+        "-I",
+        "vendor/openssl-configs/32_longlong",
+        "-I",
+        "vendor/openssl-1.0.2u",
+        "-I",
+        "vendor/openssl-1.0.2u/include",
+        "-I",
+        "vendor/openssl-1.0.2u/crypto",
+        "-I",
+        "vendor/openssl-1.0.2u/crypto/comp",
+        "-isystem",
+        "vendor/musl/include",
+        "-isystem",
+        "vendor/musl/generated",
+        "-O3",
+        "-fomit-frame-pointer",
+        "-fno-pic",
+        "-funwind-tables",
+        "-fno-vectorize",
+        "-fno-slp-vectorize"
+      ],
+      "header_roots": [
+        "vendor/openssl-1.0.2u",
+        "vendor/openssl-configs",
+        "vendor/musl/include",
+        "vendor/musl/generated"
+      ],
+      "functions": [
+        {
+          "address": "0x223170",
+          "size": 88,
+          "symbol": "COMP_compress_block",
+          "target_sha256": "46c9757aae4bd7950129fc393c19000f38d6891d6c779a6be778756a6e574200",
+          "bindings": {},
+          "got_bindings": {}
+        },
+        {
+          "address": "0x2231d0",
+          "size": 88,
+          "symbol": "COMP_expand_block",
+          "target_sha256": "bfe6604e77808f9575c60b3acce473e327920bdda9b99f38a01cd7a1629752c7",
+          "bindings": {},
+          "got_bindings": {}
+        }
+      ]
+    },
+    {
+      "id": "openssl_no_vectorize_crypto_bio_bf_buff_32_longlong_O2_unwind_novec_O3_omit_unwind",
+      "source": "src/OpenSslVariant_openssl_no_vectorize_crypto_bio_bf_buff_32_longlong_O2_unwind_novec_O3_omit_unwind.c",
+      "compiler": "8.0.1",
+      "source_review": "library_abi_view",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-x",
+        "c",
+        "-std=gnu99",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-U_WIN32",
+        "-U_WIN64",
+        "-DOPENSSL_THREADS",
+        "-D_REENTRANT",
+        "-I",
+        "vendor/openssl-configs/32_longlong",
+        "-I",
+        "vendor/openssl-1.0.2u",
+        "-I",
+        "vendor/openssl-1.0.2u/include",
+        "-I",
+        "vendor/openssl-1.0.2u/crypto",
+        "-I",
+        "vendor/openssl-1.0.2u/crypto/bio",
+        "-isystem",
+        "vendor/musl/include",
+        "-isystem",
+        "vendor/musl/generated",
+        "-O3",
+        "-fomit-frame-pointer",
+        "-fno-pic",
+        "-funwind-tables",
+        "-fno-vectorize",
+        "-fno-slp-vectorize"
+      ],
+      "header_roots": [
+        "vendor/openssl-1.0.2u",
+        "vendor/openssl-configs",
+        "vendor/musl/include",
+        "vendor/musl/generated"
+      ],
+      "functions": [
+        {
+          "address": "0x222fb0",
+          "size": 172,
+          "symbol": "buffer_new",
+          "target_sha256": "041feae5f423409c06b0fda0220ec476060ab13e15f6eb8b6b4a22d67f75b43f",
+          "bindings": {
+            "CRYPTO_malloc": "0x1b9f70",
+            "CRYPTO_free": "0x1ba410"
+          },
+          "got_bindings": {},
+          "literals": {
+            "433a2f6769742f7562696c69627261726965732f55626973657276696365732f65787465726e616c2f686172626f7572636f6d6d6f6e2f6c69627261726965732f6f70656e73736c2f63727970746f2f62696f2f62665f627566662e6300": "0x12fcdcb"
+          }
+        }
+      ]
+    },
+    {
+      "id": "openssl_no_vectorize_crypto_bio_bss_mem_32_longlong_O2_unwind_novec_O3_omit_unwind",
+      "source": "src/OpenSslVariant_openssl_no_vectorize_crypto_bio_bss_mem_32_longlong_O2_unwind_novec_O3_omit_unwind.c",
+      "compiler": "8.0.1",
+      "source_review": "library_abi_view",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-x",
+        "c",
+        "-std=gnu99",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-U_WIN32",
+        "-U_WIN64",
+        "-DOPENSSL_THREADS",
+        "-D_REENTRANT",
+        "-I",
+        "vendor/openssl-configs/32_longlong",
+        "-I",
+        "vendor/openssl-1.0.2u",
+        "-I",
+        "vendor/openssl-1.0.2u/include",
+        "-I",
+        "vendor/openssl-1.0.2u/crypto",
+        "-I",
+        "vendor/openssl-1.0.2u/crypto/bio",
+        "-isystem",
+        "vendor/musl/include",
+        "-isystem",
+        "vendor/musl/generated",
+        "-O3",
+        "-fomit-frame-pointer",
+        "-fno-pic",
+        "-funwind-tables",
+        "-fno-vectorize",
+        "-fno-slp-vectorize"
+      ],
+      "header_roots": [
+        "vendor/openssl-1.0.2u",
+        "vendor/openssl-configs",
+        "vendor/musl/include",
+        "vendor/musl/generated"
+      ],
+      "functions": [
+        {
+          "address": "0x1fbba0",
+          "size": 68,
+          "symbol": "mem_new",
+          "target_sha256": "cc5041283c63cdd20a147a05ceb2ce64172fa6d5a1d7245bc8cb054dc548aef0",
+          "bindings": {
+            "BUF_MEM_new": "0x1c7960"
+          },
+          "got_bindings": {}
+        }
+      ]
+    },
+    {
+      "id": "openssl_clang7_ssl_tls_srp_32_longlong_O2_unwind_O3_omit_clang7",
+      "source": "src/OpenSslVariant_openssl_clang7_ssl_tls_srp_32_longlong_O2_unwind_O3_omit_clang7.c",
+      "compiler": "7.0.1",
+      "source_review": "library_abi_view",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-x",
+        "c",
+        "-std=gnu99",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-U_WIN32",
+        "-U_WIN64",
+        "-DOPENSSL_THREADS",
+        "-D_REENTRANT",
+        "-I",
+        "vendor/openssl-configs/32_longlong",
+        "-I",
+        "vendor/openssl-1.0.2u",
+        "-I",
+        "vendor/openssl-1.0.2u/include",
+        "-I",
+        "vendor/openssl-1.0.2u/crypto",
+        "-I",
+        "vendor/openssl-1.0.2u/ssl",
+        "-isystem",
+        "vendor/musl/include",
+        "-isystem",
+        "vendor/musl/generated",
+        "-O3",
+        "-fomit-frame-pointer",
+        "-fno-pic"
+      ],
+      "header_roots": [
+        "vendor/openssl-1.0.2u",
+        "vendor/openssl-configs",
+        "vendor/musl/include",
+        "vendor/musl/generated"
+      ],
+      "functions": [
+        {
+          "address": "0x223390",
+          "size": 460,
+          "symbol": "SSL_SRP_CTX_init",
+          "target_sha256": "39741fc36aaadb8e8a37d9fb4aebd5e16ec7a9c6492f1fe6bc30e1bbf39286b8",
+          "bindings": {
+            "BN_dup": "0x1c34f0",
+            "BUF_strdup": "0x1b9ae0",
+            "ERR_put_error": "0x1ba7f0",
+            "CRYPTO_free": "0x1ba410",
+            "BN_free": "0x1c3320"
+          },
+          "got_bindings": {},
+          "literals": {
+            "433a2f6769742f7562696c69627261726965732f55626973657276696365732f65787465726e616c2f686172626f7572636f6d6d6f6e2f6c69627261726965732f6f70656e73736c2f73736c2f746c735f7372702e6300": "0x12f9a23"
+          }
+        }
+      ]
+    },
+    {
+      "id": "openssl_clang7_crypto_modes_gcm128_32_longlong_O2_unwind_O2_omit_unwind_clang7",
+      "source": "src/OpenSslVariant_openssl_clang7_crypto_modes_gcm128_32_longlong_O2_unwind_O2_omit_unwind_clang7.c",
+      "compiler": "7.0.1",
+      "source_review": "library_abi_view",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-x",
+        "c",
+        "-std=gnu99",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-U_WIN32",
+        "-U_WIN64",
+        "-DOPENSSL_THREADS",
+        "-D_REENTRANT",
+        "-I",
+        "vendor/openssl-configs/32_longlong",
+        "-I",
+        "vendor/openssl-1.0.2u",
+        "-I",
+        "vendor/openssl-1.0.2u/include",
+        "-I",
+        "vendor/openssl-1.0.2u/crypto",
+        "-I",
+        "vendor/openssl-1.0.2u/crypto/modes",
+        "-isystem",
+        "vendor/musl/include",
+        "-isystem",
+        "vendor/musl/generated",
+        "-O2",
+        "-fomit-frame-pointer",
+        "-fno-pic",
+        "-funwind-tables"
+      ],
+      "header_roots": [
+        "vendor/openssl-1.0.2u",
+        "vendor/openssl-configs",
+        "vendor/musl/include",
+        "vendor/musl/generated"
+      ],
+      "functions": [
+        {
+          "address": "0x23c620",
+          "size": 380,
+          "symbol": "CRYPTO_gcm128_init",
+          "target_sha256": "1c590b1e81785fdd8a8ea7b23d9c07be0e820406bfd04bae5f1405394d1657d9",
+          "bindings": {
+            "memset": "0xfa3340"
+          },
+          "got_bindings": {}
+        }
+      ]
+    },
+    {
+      "id": "openssl_clang7_ssl_ssl_sess_32_longlong_O2_unwind_O3_omit_clang7",
+      "source": "src/OpenSslVariant_openssl_clang7_ssl_ssl_sess_32_longlong_O2_unwind_O3_omit_clang7.c",
+      "compiler": "7.0.1",
+      "source_review": "library_abi_view",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-x",
+        "c",
+        "-std=gnu99",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-U_WIN32",
+        "-U_WIN64",
+        "-DOPENSSL_THREADS",
+        "-D_REENTRANT",
+        "-I",
+        "vendor/openssl-configs/32_longlong",
+        "-I",
+        "vendor/openssl-1.0.2u",
+        "-I",
+        "vendor/openssl-1.0.2u/include",
+        "-I",
+        "vendor/openssl-1.0.2u/crypto",
+        "-I",
+        "vendor/openssl-1.0.2u/ssl",
+        "-isystem",
+        "vendor/musl/include",
+        "-isystem",
+        "vendor/musl/generated",
+        "-O3",
+        "-fomit-frame-pointer",
+        "-fno-pic"
+      ],
+      "header_roots": [
+        "vendor/openssl-1.0.2u",
+        "vendor/openssl-configs",
+        "vendor/musl/include",
+        "vendor/musl/generated"
+      ],
+      "functions": [
+        {
+          "address": "0x22ff20",
+          "size": 176,
+          "symbol": "SSL_SESSION_new",
+          "target_sha256": "b88ffb312696cbfccbabe7b8e86b34be836dfa89cb112c333bc5c1f38deb4aec",
+          "bindings": {
+            "CRYPTO_malloc": "0x1b9f70",
+            "memset": "0xfa3340",
+            "time": "0xfa3b60",
+            "CRYPTO_new_ex_data": "0x1c67a0",
+            "ERR_put_error": "0x1ba7f0"
+          },
+          "got_bindings": {},
+          "literals": {
+            "433a2f6769742f7562696c69627261726965732f55626973657276696365732f65787465726e616c2f686172626f7572636f6d6d6f6e2f6c69627261726965732f6f70656e73736c2f73736c2f73736c5f736573732e6300": "0x132366e"
+          }
+        }
+      ]
     }
   ]
 }
