@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "game": "Scott Pilgrim vs. The World: The Game - Complete Edition",
+  "platform": "Nintendo Switch",
+  "version_id": "switch",
+  "revision": "Not yet independently identified; target fixed by original ELF SHA-256",
+  "sha256": "ea95638e6d6aaa0dc6cddd552a9366799aa1ec3bc07ee201f23f6c151103f5b8",
+  "text_address": "0x188",
+  "text_size": 16396664,
+  "function_count": 53675,
+  "fde_code_bytes": 15836928,
+  "unmatched_text_without_fde_bytes": 559736
+}

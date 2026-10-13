@@ -1,0 +1,38 @@
+name: Verified progress report
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  report:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: '3.12'
+      - name: Test reporting and verification boundaries
+        run: python -m unittest discover -s tools -p 'test_*.py' -v
+      - name: Generate source-current locally verified progress
+        run: python tools/report.py --out build/report.json
+      - name: Check publication inputs and report totals
+        run: python tools/check_publish.py --report build/report.json
+      - name: Validate with objdiff-cli 3.8.2
+        shell: bash
+        run: |
+          curl --fail --location --retry 3 https://github.com/encounter/objdiff/releases/download/v3.8.2/objdiff-cli-linux-x86_64 -o build/objdiff-cli
+          echo 'e5445089a6f707e30cb5e02992451b604619cedfd2660ee2373a86bfefd9e718  build/objdiff-cli' | sha256sum --check
+          chmod +x build/objdiff-cli
+          build/objdiff-cli report changes build/report.json build/report.json
+      - name: Publish decomp.dev report
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: switch_report
+          path: build/report.json
+          if-no-files-found: error
+          retention-days: 90
