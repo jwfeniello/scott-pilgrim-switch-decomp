@@ -64,6 +64,7 @@ def compile_family(compiler,source,output,family):
     output.parent.mkdir(parents=True,exist_ok=True)
     command = [str(compiler),*family['flags'],'-I',str(ROOT/'src'),'-c',str(source),'-o',str(output)]
     result = subprocess.run(command,capture_output=True,text=True,
+                            cwd=ROOT,
                             creationflags=getattr(subprocess,'CREATE_NO_WINDOW',0),
                             env=dict(os.environ,TMP=str(output.parent.resolve()),TEMP=str(output.parent.resolve())))
     require(result.returncode == 0,'Compile failed: '+result.stderr)

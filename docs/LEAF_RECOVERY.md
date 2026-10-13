@@ -2,8 +2,8 @@
 
 The October 13 checkpoint adds 10,109 complete original function extents,
 77,456 bytes, through `src/LeafPrimitives.cpp`. The full project now verifies
-26,244 functions / 2,196,936 bytes / 13.398677% of the original executable text.
-The requested 15% milestone remains in progress.
+27,388 functions / 2,462,776 bytes / 15.019982% of the original executable text.
+The requested 15% milestone is reached; see [the final findings](FIFTEEN_PERCENT.md).
 
 The source recovers scalar and vector field loads/stores, integer and floating
 expressions, constants, and tail forwarding. It contains ordinary C++, rather

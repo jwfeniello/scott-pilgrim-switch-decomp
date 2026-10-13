@@ -6,8 +6,8 @@ Edition** for Nintendo Switch.
 [Progress on decomp.dev](https://decomp.dev/jwfeniello/scott-pilgrim-switch-decomp)
 · [Progress workflow](https://github.com/jwfeniello/scott-pilgrim-switch-decomp/actions/workflows/progress.yml)
 
-**Current locally verified progress: 26,244 exact functions / 2,196,936 bytes /
-13.398677% of executable `.text`.** The original `.text` is 16,396,664 bytes.
+**Current locally verified progress: 27,388 exact functions / 2,462,776 bytes /
+15.019982% of executable `.text`.** The original `.text` is 16,396,664 bytes.
 This includes engine and library infrastructure. The project does not yet rebuild
 or boot the complete game. Original method names and many ABI declarations remain
 provisional.
@@ -116,4 +116,5 @@ assets, proprietary SDK files and compiler installations are not distributed.
 
 Project source and tools are licensed under [MIT](LICENSE).
 
-See [C++ ABI recovery](docs/LEAF_RECOVERY.md) for the new leaf matches and their declaration limits. The requested 15% milestone remains in progress.
+The requested 15% milestone is reached. See [milestone findings](docs/FIFTEEN_PERCENT.md)
+and [C++ ABI recovery](docs/LEAF_RECOVERY.md) for validation and declaration limits.

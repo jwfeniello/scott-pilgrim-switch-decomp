@@ -36,3 +36,10 @@ immutable original section. See [the three family findings](TYPE_AND_CALLBACK_FA
 
 Specify compiler paths with `--clang7` / `--clang8` or the environment variables
 `SCOTT_CLANG7` / `SCOTT_CLANG8`. Installations remain outside the repository.
+
+The 15% checkpoint also records `-O3` library builds with public libc++ 4 and
+musl header fixtures, allocator ABI views and explicit internal helper
+instantiations. Shared callback construction uses `-funwind-tables`, which
+changes frame setup scheduling on the tested Clang build. These observations
+do not identify the original NX compiler or prove an original library version.
+See [the milestone findings](FIFTEEN_PERCENT.md) and [header provenance](../vendor/README.md).

@@ -33,6 +33,7 @@ def verify(original_path,compilers,build_dir,root=ROOT,only=None):
         output = build_dir/(build['id']+'.o')
         command = [str(compilers[build['compiler']]),*build['flags'],'-c',str(root/build['source']),'-o',str(output)]
         result = subprocess.run(command,capture_output=True,text=True,
+                                cwd=root,
                                 creationflags=getattr(subprocess,'CREATE_NO_WINDOW',0),
                                 env=dict(os.environ,TMP=str(build_dir.resolve()),TEMP=str(build_dir.resolve())))
         require(result.returncode == 0,'Compile failed for '+build['id']+'\n'+result.stderr)

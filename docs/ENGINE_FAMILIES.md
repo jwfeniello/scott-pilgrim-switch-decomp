@@ -1,8 +1,9 @@
-# Engine families: 10% checkpoint on the way to 15%
+# Engine families: verified checkpoints
 
 Twenty new families add 3,750 complete original functions / 500,192 bytes.
 The project now verifies 8,336 unique functions / 1,659,968 bytes / 10.123815%
-of the original 16,396,664-byte `.text`. The active requested target remains 15%.
+of the original 16,396,664-byte `.text`. This is a historical checkpoint;
+the final [15% milestone](FIFTEEN_PERCENT.md) is now reached.
 
 | Behavior | Exact functions | Exact bytes |
 | --- | ---: | ---: |
@@ -100,7 +101,7 @@ The next checkpoint is 20,649 functions / 1,838,940 bytes / 11.215330% after a f
 
 ## Ownership and buffer checkpoint
 
-The current full rebuild checks 26,244 distinct functions / 2,196,936 bytes /
+The ownership checkpoint rebuild checks 26,244 distinct functions / 2,196,936 bytes /
 13.398677% through 807 build configurations. Nine more template families add
 421 functions / 84,552 bytes beyond the 11.215330% checkpoint: component-slot
 assignment with an indirect nontrivial result, reference-vector destruction,
@@ -120,3 +121,11 @@ All 41 discovered family batches repeat identically; changed flag tests, atomic
 orders and buffer zeros reject every affected body. See the merged
 `progress/engine_family_validation.json`. Complete original class identities,
 vtables/data matching and linked-game behavior remain unresolved.
+
+## Fifteen percent milestone
+
+The final full rebuild verifies 27,388 functions / 2,462,776 bytes / 15.019982%
+through 891 source builds. The engine-family control receipts now cover 56
+families. Public library algorithms and generated ABI views have separate repeat
+and source-change rejection receipts. See [the milestone findings](FIFTEEN_PERCENT.md)
+for the additions, compiler/header observations and unresolved declarations.

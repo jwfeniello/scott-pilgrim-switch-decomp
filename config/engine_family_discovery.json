@@ -1416,6 +1416,641 @@
           "scale": 8
         }
       ]
+    },
+    {
+      "id": "function_swap",
+      "source": "src/FunctionSwapAbi.cpp",
+      "function": "SwapFunctionAbi",
+      "reference": "0x17e820",
+      "size": 352,
+      "macro": "FUNCTION_SWAP",
+      "include": "function_swap_instances.inc",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-std=c++11",
+        "-O3",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-fPIC",
+        "-fno-omit-frame-pointer",
+        "-fno-exceptions",
+        "-funwind-tables"
+      ]
+    },
+    {
+      "id": "reference_members_10",
+      "source": "src/ReferenceMembers10.cpp",
+      "function": "ReleaseMembers10",
+      "reference": "0x9fa040",
+      "size": 3288,
+      "macro": "REFERENCE_MEMBERS_10",
+      "include": "reference_members_10_instances.inc",
+      "symbol_pattern": "^_ZN13SingleRelease16ReleaseMembers10ILj([0-9]+)E(?:Lj[0-9]+E){10}ED2Ev$",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-std=c++11",
+        "-O2",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-fomit-frame-pointer",
+        "-fno-pic",
+        "-Wno-zero-length-array"
+      ],
+      "parameters": [
+        {
+          "kind": "ldst_uimm",
+          "offset": 24,
+          "related_offsets": [
+            60,
+            140,
+            344
+          ],
+          "scale": 8
+        },
+        {
+          "kind": "ldst_uimm",
+          "offset": 348,
+          "related_offsets": [
+            380,
+            460,
+            664
+          ],
+          "scale": 8
+        },
+        {
+          "kind": "ldst_uimm",
+          "offset": 668,
+          "related_offsets": [
+            700,
+            780,
+            984
+          ],
+          "scale": 8
+        },
+        {
+          "kind": "ldst_uimm",
+          "offset": 988,
+          "related_offsets": [
+            1020,
+            1100,
+            1304
+          ],
+          "scale": 8
+        },
+        {
+          "kind": "ldst_uimm",
+          "offset": 1308,
+          "related_offsets": [
+            1340,
+            1420,
+            1624
+          ],
+          "scale": 8
+        },
+        {
+          "kind": "ldst_uimm",
+          "offset": 1628,
+          "related_offsets": [
+            1660,
+            1740,
+            1944
+          ],
+          "scale": 8
+        },
+        {
+          "kind": "ldst_uimm",
+          "offset": 1948,
+          "related_offsets": [
+            1980,
+            2060,
+            2264
+          ],
+          "scale": 8
+        },
+        {
+          "kind": "ldst_uimm",
+          "offset": 2268,
+          "related_offsets": [
+            2300,
+            2380,
+            2584
+          ],
+          "scale": 8
+        },
+        {
+          "kind": "ldst_uimm",
+          "offset": 2588,
+          "related_offsets": [
+            2620,
+            2700,
+            2904
+          ],
+          "scale": 8
+        },
+        {
+          "kind": "ldst_uimm",
+          "offset": 2908,
+          "related_offsets": [
+            2940,
+            3020,
+            3224
+          ],
+          "scale": 8
+        }
+      ]
+    },
+    {
+      "id": "reference_members_12",
+      "source": "src/ReferenceMembers12.cpp",
+      "function": "ReleaseMembers12",
+      "reference": "0x9ed790",
+      "size": 3936,
+      "macro": "REFERENCE_MEMBERS_12",
+      "include": "reference_members_12_instances.inc",
+      "symbol_pattern": "^_ZN13SingleRelease16ReleaseMembers12ILj([0-9]+)E(?:Lj[0-9]+E){12}ED2Ev$",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-std=c++11",
+        "-O2",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-fomit-frame-pointer",
+        "-fno-pic",
+        "-Wno-zero-length-array"
+      ],
+      "parameters": [
+        {
+          "kind": "ldst_uimm",
+          "offset": 24,
+          "related_offsets": [
+            60,
+            140,
+            344
+          ],
+          "scale": 8
+        },
+        {
+          "kind": "ldst_uimm",
+          "offset": 348,
+          "related_offsets": [
+            380,
+            460,
+            664
+          ],
+          "scale": 8
+        },
+        {
+          "kind": "ldst_uimm",
+          "offset": 668,
+          "related_offsets": [
+            700,
+            780,
+            984
+          ],
+          "scale": 8
+        },
+        {
+          "kind": "ldst_uimm",
+          "offset": 988,
+          "related_offsets": [
+            1020,
+            1100,
+            1304
+          ],
+          "scale": 8
+        },
+        {
+          "kind": "ldst_uimm",
+          "offset": 1308,
+          "related_offsets": [
+            1340,
+            1420,
+            1624
+          ],
+          "scale": 8
+        },
+        {
+          "kind": "ldst_uimm",
+          "offset": 1628,
+          "related_offsets": [
+            1660,
+            1740,
+            1944
+          ],
+          "scale": 8
+        },
+        {
+          "kind": "ldst_uimm",
+          "offset": 1948,
+          "related_offsets": [
+            1980,
+            2060,
+            2264
+          ],
+          "scale": 8
+        },
+        {
+          "kind": "ldst_uimm",
+          "offset": 2268,
+          "related_offsets": [
+            2300,
+            2380,
+            2584
+          ],
+          "scale": 8
+        },
+        {
+          "kind": "ldst_uimm",
+          "offset": 2588,
+          "related_offsets": [
+            2620,
+            2700,
+            2904
+          ],
+          "scale": 8
+        },
+        {
+          "kind": "ldst_uimm",
+          "offset": 2908,
+          "related_offsets": [
+            2940,
+            3020,
+            3224
+          ],
+          "scale": 8
+        },
+        {
+          "kind": "ldst_uimm",
+          "offset": 3228,
+          "related_offsets": [
+            3260,
+            3340,
+            3544
+          ],
+          "scale": 8
+        },
+        {
+          "kind": "ldst_uimm",
+          "offset": 3548,
+          "related_offsets": [
+            3580,
+            3660,
+            3864
+          ],
+          "scale": 8
+        }
+      ]
+    },
+    {
+      "id": "inherited_vector_destructor",
+      "source": "src/InheritedVectorDestructor.cpp",
+      "function": "InheritedVectorOwner",
+      "reference": "0x687830",
+      "size": 172,
+      "macro": "INHERITED_VECTOR",
+      "include": "inherited_vector_destructor_instances.inc",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-std=c++11",
+        "-O2",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-fomit-frame-pointer",
+        "-fno-pic"
+      ],
+      "parameters": [
+        {
+          "kind": "ldst_uimm",
+          "offset": 24,
+          "scale": 8,
+          "related_offsets": [
+            64,
+            96
+          ],
+          "fields": [
+            {
+              "offset": 32,
+              "delta": -8,
+              "scale": 8,
+              "encoding": "ldst_uimm"
+            },
+            {
+              "offset": 44,
+              "delta": -8,
+              "scale": 8,
+              "encoding": "ldst_uimm"
+            },
+            {
+              "offset": 76,
+              "delta": -8,
+              "scale": 8,
+              "encoding": "ldst_uimm"
+            },
+            {
+              "offset": 100,
+              "delta": -8,
+              "scale": 8,
+              "encoding": "ldst_uimm"
+            }
+          ]
+        }
+      ],
+      "symbol_pattern": "^_ZN13SingleRelease20InheritedVectorOwnerILj([0-9]+)ELj[0-9]+EED2Ev$"
+    },
+    {
+      "id": "deserialize_callbacks",
+      "source": "src/DeserializeCallbacks.cpp",
+      "function": "DeserializeCallbacks",
+      "reference": "0x69f060",
+      "size": 644,
+      "macro": "DESERIALIZE_CALLBACKS",
+      "include": "deserialize_callbacks_instances.inc",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-std=c++11",
+        "-O2",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-fomit-frame-pointer",
+        "-fno-pic"
+      ],
+      "parameters": [
+        {
+          "kind": "mov32",
+          "offset": 332,
+          "high_offset": 336
+        }
+      ]
+    },
+    {
+      "id": "counter_buffer_destructor",
+      "source": "src/CounterBufferDestructor.cpp",
+      "function": "CounterBufferOwner",
+      "reference": "0x6878e0",
+      "size": 192,
+      "macro": "COUNTER_BUFFER",
+      "include": "counter_buffer_destructor_instances.inc",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-std=c++11",
+        "-O2",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-fomit-frame-pointer",
+        "-fno-pic"
+      ],
+      "parameters": [
+        {
+          "kind": "ldst_uimm",
+          "offset": 108,
+          "scale": 8,
+          "related_offsets": [
+            160
+          ],
+          "fields": [
+            {
+              "offset": 164,
+              "encoding": "ldst_uimm",
+              "scale": 4,
+              "delta": -8
+            }
+          ]
+        },
+        {
+          "kind": "ldst_uimm",
+          "offset": 20,
+          "scale": 8,
+          "related_offsets": [
+            52,
+            104
+          ]
+        }
+      ],
+      "symbol_pattern": "^_ZN13SingleRelease18CounterBufferOwnerILj([0-9]+)ELj[0-9]+ELj[0-9]+EED2Ev$"
+    },
+    {
+      "id": "lazy_type_info_omit",
+      "source": "src/LazyTypeInfoOmit.cpp",
+      "function": "GetLazyTypeInfoOmit",
+      "reference": "0x6a8fb0",
+      "size": 216,
+      "macro": "LAZY_TYPE_INFO_OMIT",
+      "include": "lazy_type_info_omit_instances.inc",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-std=c++11",
+        "-O2",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-fomit-frame-pointer",
+        "-fno-pic"
+      ],
+      "parameters": [
+        {
+          "kind": "mov32",
+          "offset": 100,
+          "high_offset": 104
+        }
+      ]
+    },
+    {
+      "id": "lazy_type_registration_omit",
+      "source": "src/LazyTypeRegistrationOmit.cpp",
+      "function": "RegisterLazyTypeOmit",
+      "reference": "0x6a8ed0",
+      "size": 224,
+      "macro": "LAZY_TYPE_REGISTRATION_OMIT",
+      "include": "lazy_type_registration_omit_instances.inc",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-std=c++11",
+        "-O2",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-fomit-frame-pointer",
+        "-fno-pic"
+      ],
+      "parameters": [
+        {
+          "kind": "mov32",
+          "offset": 48,
+          "high_offset": 52
+        }
+      ]
+    },
+    {
+      "id": "pool_buffer_destructor",
+      "source": "src/PoolBufferDestructor.cpp",
+      "function": "DestroyPoolBuffer",
+      "reference": "0xd11d20",
+      "size": 76,
+      "macro": "POOL_BUFFER",
+      "include": "pool_buffer_destructor_instances.inc",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-std=c++11",
+        "-O2",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-fomit-frame-pointer",
+        "-fno-pic"
+      ]
+    },
+    {
+      "id": "inherited_raw_destructor",
+      "source": "src/InheritedRawDestructor.cpp",
+      "function": "RawOwner",
+      "reference": "0x684bc0",
+      "size": 100,
+      "macro": "INHERITED_RAW",
+      "include": "inherited_raw_destructor_instances.inc",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-std=c++11",
+        "-O2",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-fomit-frame-pointer",
+        "-fno-pic"
+      ],
+      "parameters": [
+        {
+          "kind": "ldst_uimm",
+          "offset": 8,
+          "scale": 8
+        },
+        {
+          "kind": "ldst_uimm",
+          "offset": 28,
+          "scale": 8
+        }
+      ],
+      "symbol_pattern": "^_ZN8RawOwnerILj([0-9]+)ELj[0-9]+ELj[0-9]+EED2Ev$"
+    },
+    {
+      "id": "factory_construction_omit",
+      "source": "src/FactoryConstructionOmit.cpp",
+      "function": "ConstructThroughFactoryOmit",
+      "reference": "0x781590",
+      "size": 248,
+      "macro": "FACTORY_CONSTRUCTION_OMIT",
+      "include": "factory_construction_omit_instances.inc",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-std=c++11",
+        "-O2",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-fomit-frame-pointer",
+        "-fno-pic"
+      ]
+    },
+    {
+      "id": "static_function_callback",
+      "source": "src/StaticFunctionCallback.cpp",
+      "function": "InvokeStaticFunction",
+      "reference": "0xdd7f30",
+      "size": 148,
+      "macro": "STATIC_FUNCTION",
+      "include": "static_function_callback_instances.inc",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-std=c++11",
+        "-O2",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-fomit-frame-pointer",
+        "-fno-pic"
+      ]
+    },
+    {
+      "id": "shared_callback_construction",
+      "source": "src/SharedCallbackConstruction.cpp",
+      "function": "ConstructSharedCallback",
+      "reference": "0x4d7a80",
+      "size": 356,
+      "macro": "SHARED_CALLBACK_CONSTRUCTION",
+      "include": "shared_callback_construction_instances.inc",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-std=c++11",
+        "-O2",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-fno-omit-frame-pointer",
+        "-fPIC",
+        "-funwind-tables"
+      ]
+    },
+    {
+      "id": "pointer_array_release",
+      "source": "src/PointerArrayRelease.cpp",
+      "function": "ReleasePointerArray",
+      "reference": "0x6b7840",
+      "size": 128,
+      "macro": "POINTER_ARRAY_RELEASE",
+      "include": "pointer_array_release_instances.inc",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-std=c++11",
+        "-O2",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-fomit-frame-pointer",
+        "-fno-pic"
+      ],
+      "parameters": [
+        {
+          "kind": "ldst_uimm",
+          "offset": 12,
+          "scale": 8
+        },
+        {
+          "kind": "ldst_uimm",
+          "offset": 20,
+          "scale": 8
+        }
+      ]
+    },
+    {
+      "id": "guarded_scalar_dispatch",
+      "source": "src/GuardedScalarDispatch.cpp",
+      "function": "DispatchGuardedScalar",
+      "reference": "0x6790e0",
+      "size": 312,
+      "macro": "GUARDED_SCALAR_DISPATCH",
+      "include": "guarded_scalar_dispatch_instances.inc",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-std=c++11",
+        "-O2",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-fomit-frame-pointer",
+        "-fno-pic"
+      ],
+      "parameters": [
+        {
+          "kind": "mov32",
+          "offset": 100,
+          "high_offset": 104
+        }
+      ]
     }
   ]
 }

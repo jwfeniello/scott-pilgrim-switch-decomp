@@ -9,10 +9,16 @@ from elf import Elf,link_method,require
 from project import ROOT,digest,load
 
 
-def compare(obj,build,original,relative):
+def compare(obj,build,original,relative,strict=True):
     results = []
     for recipe in build['functions']:
-        code,_ = link_method(obj,recipe,original,relative)
+        try:code,_ = link_method(obj,recipe,original,relative)
+        except (ValueError,KeyError) as exc:
+            if strict:raise
+            code,_ = obj.method(recipe['symbol'])
+            results.append(dict(exact=False,size=len(code),first_difference=None,
+                                rejection_reason=type(exc).__name__+': '+str(exc)))
+            continue
         expected = original.at(int(recipe['address'],0),recipe['size'])
         results.append(dict(exact=code == expected,size=len(code),
                             first_difference=next((i for i in range(0,min(len(code),len(expected)),4)
@@ -39,6 +45,17 @@ def mutation(family,content):
     if identifier.startswith('raw_buffer_'):return 'wrong_clear_value','*reinterpret_cast<RawZeroPair*>(&capacity)=0;','*reinterpret_cast<RawZeroPair*>(&capacity)=1;'
     if identifier.startswith('optional_'):return 'wrong_initialized_test','if(initialized)','if(!initialized)'
     if identifier=='shared_count_destructor':return 'wrong_atomic_order','__ATOMIC_ACQ_REL','__ATOMIC_RELAXED'
+    if identifier=='function_swap':return 'missing_clone','self->value->CloneInto(t);',''
+    if identifier=='deserialize_callbacks':return 'wrong_type_tag','tag==Hash','tag==(Hash ^ 1u)'
+    if identifier=='inherited_vector_destructor':return 'wrong_first_element','data[0].~InheritedVectorElement<Key>();','data[1].~InheritedVectorElement<Key>();'
+    if identifier in ('lazy_type_info_omit','lazy_type_registration_omit'):return 'wrong_initial_index','index(-1)','index(-2)'
+    if identifier=='pool_buffer_destructor':return 'wrong_clear_value','Pair{0,0}','Pair{1,0}'
+    if identifier=='inherited_raw_destructor':return 'wrong_clear_value','value=nullptr;','value=reinterpret_cast<void*>(1);'
+    if identifier=='factory_construction_omit':return 'wrong_allocation_size','sizeof(ConstructedType<Key>)','sizeof(ConstructedType<Key>)+8'
+    if identifier=='static_function_callback':return 'wrong_receiver_adjustment','(value.host->*value.member)(event);','(reinterpret_cast<StaticFunctionHost*>(reinterpret_cast<uintptr_t>(value.host)+8)->*value.member)(event);'
+    if identifier=='shared_callback_construction':return 'wrong_atomic_order','__atomic_fetch_add(&control->references,1,__ATOMIC_RELAXED);','__atomic_fetch_add(&control->references,1,__ATOMIC_ACQ_REL);'
+    if identifier=='pointer_array_release':return 'wrong_freed_pointer','allocator->Free(object);','allocator->Free(reinterpret_cast<void*>(reinterpret_cast<uintptr_t>(object)+8));'
+    if identifier=='guarded_scalar_dispatch':return 'wrong_dispatch_hash',',Hash,&payload);',',Hash ^ 1u,&payload);'
     if identifier.startswith('identity_'):
         line = next(line for line in content.splitlines() if family['function']+'(' in line and '__attribute__' in line)
         return 'wrong_identity',line,line.replace('id==A','id==(A ^ 1u)')
@@ -81,7 +98,7 @@ def main():
                 wrong_source.write_bytes(source.read_bytes())
                 dependencies['src/ReferenceReleaseAbi.h'] = digest(header.read_bytes())
             wrong = compile_family(args.clang8.resolve(),wrong_source,folder/(family['id']+'_wrong.o'),family)
-            rejected = compare(wrong,build,original,relative)
+            rejected = compare(wrong,build,original,relative,strict=False)
             require(all(not r['exact']for r in rejected),'Wrong source received credit')
             report = dict(id=family['id'],source_sha256=digest(source.read_bytes()),
                           instances_sha256=digest((ROOT/'src'/family['include']).read_bytes()),
