@@ -11,9 +11,10 @@ def main():
     parser.add_argument('--original',type=Path,required=True)
     parser.add_argument('--clang8',type=Path,required=True)
     parser.add_argument('--build-dir',type=Path,required=True)
+    parser.add_argument('--build-id',default='leaf_primitives')
     args=parser.parse_args();folder=args.build_dir.resolve();folder.mkdir(parents=True,exist_ok=True)
     original=Elf(args.original);require(digest(original.data)==load(ROOT/'config/target.json')['sha256'],'Wrong original')
-    relative=original.relative_relocations();build=next(b for b in load(ROOT/'config/builds.json')['builds']if b['id']=='leaf_primitives')
+    relative=original.relative_relocations();build=next(b for b in load(ROOT/'config/builds.json')['builds']if b['id']==args.build_id)
     source=ROOT/build['source'];first=compile_family(args.clang8,source,folder/'leaf_first.o',build)
     second=compile_family(args.clang8,source,folder/'leaf_second.o',build);require(first.data==second.data,'Objects differ')
     for recipe in build['functions']:

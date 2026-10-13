@@ -97,3 +97,26 @@ See `progress/engine_family_validation.json` for the repeat/negative controls.
 ## Additional accessor and container checkpoint
 
 The next checkpoint is 20,649 functions / 1,838,940 bytes / 11.215330% after a full 778-configuration rebuild. Twelve further template families add 2,204 functions / 101,516 bytes: typed property access at three descriptor offsets, type payload checks, static address getters, virtual result forwarding, framed destruction, hash-table capacity/rebuild, and two/three/four-identity tests. Together with the 10,109 leaf matches, this adds 12,313 functions / 178,972 bytes beyond the 10.123815% checkpoint. All 32 template-family repeat builds agree and their wrong-source controls reject every instance. Hash capacity and rebuild use public Clang 8 at -O3; their control flow follows libc++ hash-table algorithms, with reconstructed allocation bindings. Only whole original extents are counted.
+
+## Ownership and buffer checkpoint
+
+The current full rebuild checks 26,244 distinct functions / 2,196,936 bytes /
+13.398677% through 807 build configurations. Nine more template families add
+421 functions / 84,552 bytes beyond the 11.215330% checkpoint: component-slot
+assignment with an indirect nontrivial result, reference-vector destruction,
+layered reference ownership, wide-zero buffer destruction/deallocation,
+optional listener ownership and shared-count release.
+
+The optional owner destroys its initialized listener first, then releases its
+owned pointer through the observed allocator. Automatic C++ member destruction
+also recreates the exceptional cleanup and termination paths. Related byte-load
+and ADD-immediate fields must agree on the same member layout; inconsistent
+instances are rejected. Wide-zero buffer resets require an eight-byte-aligned
+128-bit store view; scalar source zeros generate different code. Shared-count
+release uses an acquire/release atomic decrement and an independently bound
+weak-release helper. The affected original helper bodies receive no credit here.
+
+All 41 discovered family batches repeat identically; changed flag tests, atomic
+orders and buffer zeros reject every affected body. See the merged
+`progress/engine_family_validation.json`. Complete original class identities,
+vtables/data matching and linked-game behavior remain unresolved.

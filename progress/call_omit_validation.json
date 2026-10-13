@@ -1,0 +1,13 @@
+{
+  "id": "call_recovery_omit",
+  "source_sha256": "2ef273c62c8f1df29b4939cc7fd03628cae77bb64b6f20ecd8cd20633c7a9728",
+  "identical_repeat_objects": true,
+  "repeat_object_sha256": "e66f7632964774e2154c05684632f6361b39da99c6bbbbb8a000bb20a96cf88f",
+  "repeated_exact_functions": 2020,
+  "exact_bytes": 93584,
+  "negative_control": "added_external_side_effect",
+  "rejected_functions": 2020,
+  "rejection_causes": {
+    "Unresolved literal symbol": 2020
+  }
+}

@@ -1135,6 +1135,287 @@
           "high_offset": 48
         }
       ]
+    },
+    {
+      "id": "component_slot_assign",
+      "source": "src/ComponentSlotAssign.cpp",
+      "function": "AssignComponentSlot",
+      "reference": "0x69a820",
+      "size": 772,
+      "macro": "COMPONENT_SLOT_ASSIGN",
+      "include": "component_slot_assign_instances.inc",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-std=c++11",
+        "-O2",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-fomit-frame-pointer",
+        "-fno-pic"
+      ],
+      "parameters": [
+        {
+          "kind": "mov32",
+          "offset": 28,
+          "high_offset": 32
+        }
+      ]
+    },
+    {
+      "id": "reference_vector_destructor",
+      "source": "src/ReferenceVectorDestructor.cpp",
+      "function": "ReferenceVectorOwner",
+      "reference": "0x68fe60",
+      "size": 488,
+      "macro": "REFERENCE_VECTOR_DESTRUCTOR",
+      "include": "reference_vector_destructor_instances.inc",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-std=c++11",
+        "-O2",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-fomit-frame-pointer",
+        "-fno-pic"
+      ],
+      "symbol_pattern": "^_ZN13SingleRelease20ReferenceVectorOwnerILj([0-9]+)EED2Ev$"
+    },
+    {
+      "id": "layered_reference_destructor",
+      "source": "src/LayeredReferenceDestructor.cpp",
+      "function": "LayerOwner",
+      "reference": "0x709cf0",
+      "size": 392,
+      "macro": "LAYERED_REFERENCE_DESTRUCTOR",
+      "include": "layered_reference_destructor_instances.inc",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-std=c++11",
+        "-O2",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-fomit-frame-pointer",
+        "-fno-pic"
+      ],
+      "parameters": [
+        {
+          "kind": "ldst_uimm",
+          "offset": 24,
+          "related_offsets": [
+            60,
+            140,
+            344
+          ],
+          "scale": 8
+        }
+      ],
+      "symbol_pattern": "^_ZN13SingleRelease10LayerOwnerILj([0-9]+)ELj[0-9]+EED2Ev$"
+    },
+    {
+      "id": "raw_buffer_destructor",
+      "source": "src/RawBufferWideZero.cpp",
+      "function": "RawBufferOwner",
+      "reference": "0x69f2f0",
+      "size": 108,
+      "macro": "RAW_BUFFER_DESTRUCTOR",
+      "include": "raw_buffer_destructor_instances.inc",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-std=c++11",
+        "-O2",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-fomit-frame-pointer",
+        "-fno-pic"
+      ],
+      "parameters": [
+        {
+          "kind": "ldst_uimm",
+          "offset": 8,
+          "related_offsets": [
+            80
+          ],
+          "scale": 8,
+          "fields": [
+            {
+              "offset": 28,
+              "delta": -16,
+              "encoding": "ldst_uimm",
+              "scale": 8
+            },
+            {
+              "offset": 84,
+              "delta": -24,
+              "encoding": "pair_simm",
+              "scale": 8
+            }
+          ]
+        }
+      ],
+      "symbol_pattern": "^_ZN13SingleRelease14RawBufferOwnerILj([0-9]+)ELj[0-9]+EED2Ev$"
+    },
+    {
+      "id": "raw_buffer_deleting",
+      "source": "src/RawBufferDeleting.cpp",
+      "function": "DeleteRawBuffer",
+      "reference": "0x69f360",
+      "size": 116,
+      "macro": "RAW_BUFFER_DELETING",
+      "include": "raw_buffer_deleting_instances.inc",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-std=c++11",
+        "-O2",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-fomit-frame-pointer",
+        "-fno-pic"
+      ],
+      "parameters": [
+        {
+          "kind": "ldst_uimm",
+          "offset": 8,
+          "related_offsets": [
+            84
+          ],
+          "scale": 8,
+          "fields": [
+            {
+              "offset": 28,
+              "delta": -16,
+              "encoding": "ldst_uimm",
+              "scale": 8
+            },
+            {
+              "offset": 88,
+              "delta": -24,
+              "encoding": "pair_simm",
+              "scale": 8
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "optional_pointer_destructor",
+      "source": "src/OptionalPointerDestructor.cpp",
+      "function": "OptionalPointer",
+      "reference": "0x70e9a0",
+      "size": 136,
+      "macro": "OPTIONAL_POINTER",
+      "include": "optional_pointer_destructor_instances.inc",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-std=c++11",
+        "-O2",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-fomit-frame-pointer",
+        "-fno-pic"
+      ],
+      "symbol_pattern": "_ZN15OptionalPointerILj([0-9]+)EED2Ev"
+    },
+    {
+      "id": "optional_owner_destructor",
+      "source": "src/OptionalOwnerDestructor.cpp",
+      "function": "OptionalOwner",
+      "reference": "0x72dfd0",
+      "size": 156,
+      "macro": "OPTIONAL_OWNER",
+      "include": "optional_owner_destructor_instances.inc",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-std=c++11",
+        "-O2",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-fomit-frame-pointer",
+        "-fno-pic"
+      ],
+      "parameters": [
+        {
+          "kind": "ldst_uimm",
+          "offset": 20,
+          "scale": 1,
+          "fields": [
+            {
+              "offset": 28,
+              "delta": -16,
+              "encoding": "add_uimm",
+              "scale": 1
+            }
+          ]
+        }
+      ],
+      "symbol_pattern": "_ZN13OptionalOwnerILj([0-9]+)ELj[0-9]+EED2Ev"
+    },
+    {
+      "id": "optional_owner_deleting",
+      "source": "src/OptionalOwnerDeleting.cpp",
+      "function": "OptionalOwner",
+      "reference": "0x72e070",
+      "size": 164,
+      "macro": "OPTIONAL_OWNER_DELETING",
+      "include": "optional_owner_deleting_instances.inc",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-std=c++11",
+        "-O2",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-fomit-frame-pointer",
+        "-fno-pic"
+      ],
+      "parameters": [
+        {
+          "kind": "ldst_uimm",
+          "offset": 20,
+          "scale": 1,
+          "fields": [
+            {
+              "offset": 28,
+              "delta": -16,
+              "encoding": "add_uimm",
+              "scale": 1
+            }
+          ]
+        }
+      ],
+      "symbol_pattern": "_ZN13OptionalOwnerILj([0-9]+)ELj[0-9]+EED0Ev"
+    },
+    {
+      "id": "shared_count_destructor",
+      "source": "src/SharedCountDestructor.cpp",
+      "function": "DestroySharedCount",
+      "reference": "0x2710d0",
+      "size": 116,
+      "macro": "SHARED_COUNT",
+      "include": "shared_count_destructor_instances.inc",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-std=c++11",
+        "-O2",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-fno-omit-frame-pointer",
+        "-fPIC"
+      ],
+      "parameters": [
+        {
+          "kind": "ldst_uimm",
+          "offset": 20,
+          "scale": 8
+        }
+      ]
     }
   ]
 }

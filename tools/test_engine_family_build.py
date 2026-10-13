@@ -36,6 +36,9 @@ def mutation(family,content):
     if identifier == 'delete_with_frame':return 'missing_destroy','    FramedDeleteBinding<Key>::Destroy(self);',''
     if identifier == 'hash_capacity':return 'wrong_minimum_capacity','n==1','n==2'
     if identifier == 'hash_rebuild':return 'wrong_allocation_flags','n*8,8,Flags,','n*8,8,Flags ^ 1u,'
+    if identifier.startswith('raw_buffer_'):return 'wrong_clear_value','*reinterpret_cast<RawZeroPair*>(&capacity)=0;','*reinterpret_cast<RawZeroPair*>(&capacity)=1;'
+    if identifier.startswith('optional_'):return 'wrong_initialized_test','if(initialized)','if(!initialized)'
+    if identifier=='shared_count_destructor':return 'wrong_atomic_order','__ATOMIC_ACQ_REL','__ATOMIC_RELAXED'
     if identifier.startswith('identity_'):
         line = next(line for line in content.splitlines() if family['function']+'(' in line and '__attribute__' in line)
         return 'wrong_identity',line,line.replace('id==A','id==(A ^ 1u)')

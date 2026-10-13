@@ -19,6 +19,27 @@ MASKS = {275:0x9f00001f,311:0x9f00001f,277:0xffc003ff,278:0xffc003ff,
 def word(raw,offset):return struct.unpack_from('<I',raw,offset)[0]
 
 
+def member_locations(parameter):
+    return [dict(offset=parameter['offset'],delta=0,encoding='ldst_uimm',scale=parameter['scale']),
+            *[dict(offset=o,delta=0,encoding='ldst_uimm',scale=parameter['scale'])for o in parameter.get('related_offsets',[])],
+            *parameter.get('fields',[])]
+
+
+def member_value(raw,location):
+    instruction=word(raw,location['offset']);encoding=location['encoding']
+    if encoding=='ldst_uimm':
+        require(instruction&0x3b000000==0x39000000,'Unexpected member-offset encoding')
+        value=(instruction>>10)&0xfff
+    elif encoding=='add_uimm':
+        require(instruction&0xffc00000==0x91000000,'Unexpected ADD-member encoding')
+        value=(instruction>>10)&0xfff
+    else:
+        require(encoding=='pair_simm' and instruction&0x3a000000==0x28000000,'Unexpected paired-member encoding')
+        value=(instruction>>15)&0x7f
+        if value&0x40:value-=0x80
+    return value*location['scale']-location.get('delta',0)
+
+
 def relocation_target(raw,address,offset,kind):
     instruction = word(raw,offset)
     if kind in (282,283):
@@ -101,7 +122,8 @@ def discover(original,family,obj,symbol):
             masks[parameter['offset']] = masks[parameter['high_offset']] = 0xffe0001f
         else:
             require(parameter['kind'] == 'ldst_uimm','Unsupported instance parameter')
-            for offset in [parameter['offset'],*parameter.get('related_offsets',[])]:masks[offset] = 0xffc003ff
+            for location in member_locations(parameter):
+                masks[location['offset']] = 0xffc07fff if location['encoding']=='pair_simm' else 0xffc003ff
     rows = []
     for address,length in sorted(original.unwind_ranges().items()):
         if length != size:continue
@@ -122,9 +144,9 @@ def write_instances(path,family,addresses,original):
                 require(low&0xffe00000 == 0x52800000 and high&0xffe00000 == 0x72a00000,'Unexpected 32-bit parameter encoding')
                 value = ((low>>5)&0xffff)|(((high>>5)&0xffff)<<16)
             else:
-                require(parameter['kind'] == 'ldst_uimm' and low&0x3b000000 == 0x39000000,'Unexpected member-offset encoding')
-                value = ((low>>10)&0xfff)*parameter['scale']
-                require(all(((word(raw,o)>>10)&0xfff)*parameter['scale'] == value for o in parameter.get('related_offsets',[])),'Inconsistent member-offset parameters')
+                require(parameter['kind'] == 'ldst_uimm','Unexpected member-offset parameter')
+                locations=member_locations(parameter);value=member_value(raw,locations[0])
+                require(all(member_value(raw,location)==value for location in locations),'Inconsistent member-offset parameters')
             args.append(hex(value)+'u')
         rows.append(f"{family['macro']}({', '.join(args)})")
     path.write_text('// Keys label distinct original function extents.\n'+
@@ -138,6 +160,7 @@ def main():
     parser.add_argument('--build-dir',type=Path,default=ROOT/'build/engine_families')
     parser.add_argument('--family',action='append',help='Select a discovery family ID; default all')
     parser.add_argument('--promote',action='store_true')
+    parser.add_argument('--keep-exact',action='store_true',help='Reject nonmatching candidates, then rebuild only the complete matches')
     args = parser.parse_args();original = Elf(args.original)
     require(digest(original.data) == load(ROOT/'config/target.json')['sha256'],'Wrong original ELF')
     families = load(ROOT/'config/engine_family_discovery.json')['families']
@@ -161,13 +184,29 @@ def main():
             write_instances(include,family,addresses,original)
             obj = compile_family(args.clang8.resolve(),source,folder/(family['id']+'.o'),family)
             methods = instances(obj,family);require(set(methods) == set(addresses),'Incomplete batch')
-            recipes = [];results = []
+            recipes = [];results = [];rejections = []
             for address in addresses:
-                recipe,result = recipe_for(obj,methods[address],address,family['size'],original,relative)
+                try:
+                    recipe,result = recipe_for(obj,methods[address],address,family['size'],original,relative)
+                except ValueError as exc:
+                    if not args.keep_exact:raise
+                    rejections.append(dict(address=hex(address),reason=str(exc)))
+                    continue
                 recipes.append(recipe);results.append(result)
+            if rejections:
+                require(bool(recipes),'No complete matches to retain')
+                addresses=[int(r['address'],0)for r in recipes]
+                write_instances(include,family,addresses,original)
+                obj=compile_family(args.clang8.resolve(),source,folder/(family['id']+'.o'),family)
+                methods=instances(obj,family);require(set(methods)==set(addresses),'Incomplete retained batch')
+                recipes=[];results=[]
+                for address in addresses:
+                    recipe,result=recipe_for(obj,methods[address],address,family['size'],original,relative)
+                    recipes.append(recipe);results.append(result)
             builds.append(dict(id=family['id'],source=family['source'],compiler='8.0.1',flags=family['flags'],functions=recipes))
             generated.append((family['include'],include.read_bytes()));existing.update(addresses)
             report = dict(id=family['id'],exact_functions=len(results),exact_bytes=sum(r['size']for r in results),object_sha256=digest(obj.data),results=results)
+            if rejections:report['rejected_candidates']=rejections
             reports.append(report);print(json.dumps({k:v for k,v in report.items()if k != 'results'}),flush=True)
     (folder/'engine_discovery_results.json').write_text(json.dumps(dict(target_elf_sha256=digest(original.data),families=reports),indent=2)+'\n')
     if args.promote:

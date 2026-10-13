@@ -1,8 +1,8 @@
-# Straight-line C++ recovery
+# C++ ABI recovery
 
 The October 13 checkpoint adds 10,109 complete original function extents,
 77,456 bytes, through `src/LeafPrimitives.cpp`. The full project now verifies
-20,649 functions / 1,838,940 bytes / 11.215330% of the original executable text.
+26,244 functions / 2,196,936 bytes / 13.398677% of the original executable text.
 The requested 15% milestone remains in progress.
 
 The source recovers scalar and vector field loads/stores, integer and floating
@@ -31,3 +31,26 @@ python tools/test_leaf_build.py --original "C:\path\Scott_Switch.elf" --clang8 "
 Receipts are saved in `progress/leaf_validation.json`. Library, engine and leaf
 matches share one deduplicated original-address inventory. Complete linked-game
 behavior, reconstructed type fidelity and data matching remain unestablished.
+
+## Extended ABI views
+
+The next retained sources add direct and virtual calls, guarded cleanup, branch
+merges, ordinary control-flow blocks, atomic operations and selected alternate
+compiler profiles. All are ordinary C++ expressions and control flow. The
+`RecoveredLeaf_<address>` names label observed extents, not original symbols.
+There are no instruction arrays, inline assembly or compiler-output patches.
+
+Call argument counts, integer types, hidden-return storage and global declarations
+are provisional ABI views. In particular, an address-bound global view does not
+prove a recovered original declaration or a compatible whole-game data layout.
+An exact body may leave unused arguments/registers untouched without identifying
+their original types. None of these recipes constitutes a linked game build.
+These entries are labeled `generated_cxx_abi_view` in the build configuration and
+progress evidence. Further source and ABI review remains necessary.
+
+`progress/call_omit_validation.json`, `progress/call_frame_validation.json` and
+`progress/recovery_validation.json` record repeat builds and rejection of an
+added external source side effect for every retained function. To repeat a
+selected build, pass `--build-id ID` to `tools/test_leaf_build.py`, with its
+recorded compiler executable in `--clang8` (that option accepts either public
+compiler path). The independent full verifier uses the recorded version.
