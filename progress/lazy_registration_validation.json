@@ -1,0 +1,24 @@
+{
+  "target_elf_sha256": "ea95638e6d6aaa0dc6cddd552a9366799aa1ec3bc07ee201f23f6c151103f5b8",
+  "source_sha256": "8896cd7dac9ca50fd56cc0b391bd9b473e6db19d6d0af9765c99b5262b3bc644",
+  "instances_sha256": "38828e6198c64d1d5c778371f56c6c4b39da79c4aea017ab83563dc6d2e9bd8f",
+  "repeated_exact_functions": 753,
+  "repeat_object_sha256": "5ebf698b6a206395b73f763fe15d8b7ee5aaf0a834505730d4366481c853745a",
+  "identical_repeat_objects": true,
+  "negative_controls": [
+    {
+      "control": "wrong_hash",
+      "rejected_functions": 753,
+      "first_different_offsets": [
+        56
+      ]
+    },
+    {
+      "control": "wrong_index",
+      "rejected_functions": 753,
+      "first_different_offsets": [
+        168
+      ]
+    }
+  ]
+}
