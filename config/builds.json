@@ -407501,6 +407501,2162 @@
           "got_bindings": {}
         }
       ]
+    },
+    {
+      "id": "openssl_q_ssl_s3_pkt_O3_omit",
+      "source": "src/OpenSslQ_ssl_s3_pkt_O3_omit.c",
+      "compiler": "8.0.1",
+      "source_review": "library_abi_view",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-x",
+        "c",
+        "-std=gnu99",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-U_WIN32",
+        "-U_WIN64",
+        "-DOPENSSL_THREADS",
+        "-D_REENTRANT",
+        "-I",
+        "vendor/openssl-q-configs/32_longlong",
+        "-I",
+        "vendor/openssl-1.0.2q",
+        "-I",
+        "vendor/openssl-1.0.2q/include",
+        "-I",
+        "vendor/openssl-1.0.2q/crypto",
+        "-I",
+        "vendor/openssl-1.0.2q/ssl",
+        "-isystem",
+        "vendor/musl/include",
+        "-isystem",
+        "vendor/musl/generated",
+        "-O3",
+        "-fomit-frame-pointer",
+        "-fno-pic",
+        "-funwind-tables"
+      ],
+      "header_roots": [
+        "vendor/openssl-1.0.2q",
+        "vendor/openssl-q-configs",
+        "vendor/musl/include",
+        "vendor/musl/generated"
+      ],
+      "functions": [
+        {
+          "address": "0x23fca0",
+          "size": 300,
+          "symbol": "ssl3_do_change_cipher_spec",
+          "target_sha256": "d8dfd566d12a8ce10c9dcff3dfe35abb9f5a9f60061368582b13be3f5d84023a",
+          "bindings": {
+            "ERR_put_error": "0x1ba7f0"
+          },
+          "got_bindings": {},
+          "literals": {
+            "433a2f6769742f7562696c69627261726965732f55626973657276696365732f65787465726e616c2f686172626f7572636f6d6d6f6e2f6c69627261726965732f6f70656e73736c2f73736c2f73335f706b742e6300": "0x13236dd"
+          }
+        },
+        {
+          "address": "0x23ebb0",
+          "size": 4148,
+          "symbol": "ssl3_read_bytes",
+          "target_sha256": "fe7fe238d1b5312ad81acd93adbaab4f426d144269c932fb001968c9090e0396",
+          "bindings": {
+            "ssl3_setup_read_buffer": "0x241b30",
+            "ERR_put_error": "0x1ba7f0",
+            "SSL_state": "0x220df0",
+            "EVP_MD_CTX_md": "0x1ca2c0",
+            "EVP_MD_size": "0x1ca280",
+            "OpenSSLDie": "0x1b9910",
+            "EVP_CIPHER_CTX_flags": "0x1c9eb0",
+            "ssl3_cbc_copy_mac": "0x240120",
+            "CRYPTO_memcmp": "0x1b9a50",
+            "COMP_expand_block": "0x2231d0",
+            "tls1_process_heartbeat": "0x239990",
+            "ssl3_renegotiate": "0x2265d0",
+            "ssl3_renegotiate_check": "0x226310",
+            "BIO_snprintf": "0x1bdc50",
+            "ERR_add_error_data": "0x1bb4a0",
+            "SSL_CTX_remove_session": "0x230ec0",
+            "memcpy": "0xfa3330",
+            "ssl3_release_read_buffer": "0x241f10",
+            "SSL_get_rbio": "0x220b40",
+            "BIO_clear_flags": "0x1b8b40",
+            "BIO_set_flags": "0x1b8b60"
+          },
+          "got_bindings": {},
+          "literals": {
+            "433a2f6769742f7562696c69627261726965732f55626973657276696365732f65787465726e616c2f686172626f7572636f6d6d6f6e2f6c69627261726965732f6f70656e73736c2f73736c2f73335f706b742e6300": "0x13236dd",
+            "6d61635f73697a65203c3d204556505f4d41585f4d445f53495a4500": "0x1313ac5",
+            "256400": "0x12f11c7",
+            "53534c20616c657274206e756d6265722000": "0x12fec3f"
+          }
+        },
+        {
+          "address": "0x23fbf0",
+          "size": 168,
+          "symbol": "ssl3_send_alert",
+          "target_sha256": "84f0aa832ed030800deab135931de1bea44216cf86b5f86c53f2801d8b6f409b",
+          "bindings": {
+            "SSL_CTX_remove_session": "0x230ec0"
+          },
+          "got_bindings": {}
+        }
+      ]
+    },
+    {
+      "id": "openssl_q_crypto_ec_ec_asn1_O3_omit",
+      "source": "src/OpenSslQ_crypto_ec_ec_asn1_O3_omit.c",
+      "compiler": "8.0.1",
+      "source_review": "library_abi_view",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-x",
+        "c",
+        "-std=gnu99",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-U_WIN32",
+        "-U_WIN64",
+        "-DOPENSSL_THREADS",
+        "-D_REENTRANT",
+        "-I",
+        "vendor/openssl-q-configs/32_longlong",
+        "-I",
+        "vendor/openssl-1.0.2q",
+        "-I",
+        "vendor/openssl-1.0.2q/include",
+        "-I",
+        "vendor/openssl-1.0.2q/crypto",
+        "-I",
+        "vendor/openssl-1.0.2q/crypto/ec",
+        "-isystem",
+        "vendor/musl/include",
+        "-isystem",
+        "vendor/musl/generated",
+        "-O3",
+        "-fomit-frame-pointer",
+        "-fno-pic",
+        "-funwind-tables"
+      ],
+      "header_roots": [
+        "vendor/openssl-1.0.2q",
+        "vendor/openssl-q-configs",
+        "vendor/musl/include",
+        "vendor/musl/generated"
+      ],
+      "functions": [
+        {
+          "address": "0x1ff610",
+          "size": 1924,
+          "symbol": "ec_asn1_pkparameters2group",
+          "target_sha256": "0768d42a05182b9ba5570312fe0f61ff4d365d964970fb437ef8ef7eb068b77d",
+          "bindings": {
+            "OBJ_obj2nid": "0x1c06e0",
+            "EC_GROUP_new_by_curve_name": "0x1dcbf0",
+            "EC_GROUP_set_asn1_flag": "0x1da460",
+            "BN_bin2bn": "0x1c37b0",
+            "ERR_put_error": "0x1ba7f0",
+            "ASN1_INTEGER_to_BN": "0x1cb1b0",
+            "BN_new": "0x1c3380",
+            "ASN1_INTEGER_get": "0x1caf70",
+            "BN_set_bit": "0x1c3e20",
+            "EC_GROUP_new_curve_GF2m": "0x1dd370",
+            "BN_free": "0x1c3320",
+            "EC_POINT_free": "0x1d9a90",
+            "BN_num_bits": "0x1c31f0",
+            "EC_GROUP_new_curve_GFp": "0x1dd2a0",
+            "CRYPTO_free": "0x1ba410",
+            "CRYPTO_malloc": "0x1b9f70",
+            "memcpy": "0xfa3330",
+            "EC_POINT_new": "0x1da010",
+            "EC_GROUP_set_point_conversion_form": "0x1da480",
+            "EC_POINT_oct2point": "0x2013f0",
+            "EC_GROUP_clear_free": "0x1d9ac0",
+            "EC_GROUP_set_generator": "0x1da1f0"
+          },
+          "got_bindings": {},
+          "literals": {
+            "433a2f6769742f7562696c69627261726965732f55626973657276696365732f65787465726e616c2f686172626f7572636f6d6d6f6e2f6c69627261726965732f6f70656e73736c2f63727970746f2f65632f65635f61736e312e6300": "0x1315a37"
+          }
+        },
+        {
+          "address": "0x1ff520",
+          "size": 232,
+          "symbol": "d2i_ECPKParameters",
+          "target_sha256": "6d7661f0ad4f74f53460b95e9f718617b0007a91b98a964ecca0e3d09986a92f",
+          "bindings": {
+            "ECPKPARAMETERS_it": "0x17dc640",
+            "ASN1_item_d2i": "0x1cc000",
+            "EC_GROUP_clear_free": "0x1d9ac0",
+            "ASN1_item_free": "0x1cb340",
+            "ERR_put_error": "0x1ba7f0"
+          },
+          "got_bindings": {},
+          "literals": {
+            "433a2f6769742f7562696c69627261726965732f55626973657276696365732f65787465726e616c2f686172626f7572636f6d6d6f6e2f6c69627261726965732f6f70656e73736c2f63727970746f2f65632f65635f61736e312e6300": "0x1315a37"
+          }
+        },
+        {
+          "address": "0x2008a0",
+          "size": 680,
+          "symbol": "d2i_ECPrivateKey",
+          "target_sha256": "42efcddf8902ad5aafec5a4694ae20b6a74c7c3a2a0b4489b5f1525bd2f5588c",
+          "bindings": {
+            "EC_PRIVATEKEY_it": "0x17dc678",
+            "ASN1_item_d2i": "0x1cc000",
+            "EC_KEY_new": "0x1d9060",
+            "EC_GROUP_clear_free": "0x1d9ac0",
+            "BN_bin2bn": "0x1c37b0",
+            "EC_POINT_clear_free": "0x1d9bb0",
+            "EC_POINT_new": "0x1da010",
+            "EC_POINT_oct2point": "0x2013f0",
+            "ERR_put_error": "0x1ba7f0",
+            "EC_KEY_free": "0x1d91a0",
+            "ASN1_item_free": "0x1cb340",
+            "EC_POINT_mul": "0x1db0b0"
+          },
+          "got_bindings": {},
+          "literals": {
+            "433a2f6769742f7562696c69627261726965732f55626973657276696365732f65787465726e616c2f686172626f7572636f6d6d6f6e2f6c69627261726965732f6f70656e73736c2f63727970746f2f65632f65635f61736e312e6300": "0x1315a37"
+          }
+        },
+        {
+          "address": "0x1ffda0",
+          "size": 160,
+          "symbol": "i2d_ECPKParameters",
+          "target_sha256": "fe2a82c0c78ed6713428b562e1207ad2b0082eb33459501ca1bf7d6e405f1477",
+          "bindings": {
+            "ECPKPARAMETERS_it": "0x17dc640",
+            "ASN1_item_i2d": "0x1ce880",
+            "ERR_put_error": "0x1ba7f0",
+            "ASN1_item_free": "0x1cb340"
+          },
+          "got_bindings": {},
+          "literals": {
+            "433a2f6769742f7562696c69627261726965732f55626973657276696365732f65787465726e616c2f686172626f7572636f6d6d6f6e2f6c69627261726965732f6f70656e73736c2f63727970746f2f65632f65635f61736e312e6300": "0x1315a37"
+          }
+        },
+        {
+          "address": "0x200ee0",
+          "size": 56,
+          "symbol": "i2d_ECParameters",
+          "target_sha256": "6c4dee7803818fcbbd744311e7a2f4ce230939e68e8a4ea491db4c228afb102e",
+          "bindings": {
+            "ERR_put_error": "0x1ba7f0"
+          },
+          "got_bindings": {},
+          "literals": {
+            "433a2f6769742f7562696c69627261726965732f55626973657276696365732f65787465726e616c2f686172626f7572636f6d6d6f6e2f6c69627261726965732f6f70656e73736c2f63727970746f2f65632f65635f61736e312e6300": "0x1315a37"
+          }
+        },
+        {
+          "address": "0x200b50",
+          "size": 908,
+          "symbol": "i2d_ECPrivateKey",
+          "target_sha256": "aaf08085f14a3bd149240ff1403d08d658fe15ac4c7282df2024a195fcbb39ab",
+          "bindings": {
+            "EC_PRIVATEKEY_it": "0x17dc678",
+            "ASN1_item_new": "0x1cdd20",
+            "BN_num_bits": "0x1c31f0",
+            "EC_GROUP_get_degree": "0x1da640",
+            "ERR_put_error": "0x1ba7f0",
+            "CRYPTO_malloc": "0x1b9f70",
+            "BN_bn2bin": "0x1c3bf0",
+            "memset": "0xfa3340",
+            "ASN1_STRING_set": "0x1c2340",
+            "ASN1_STRING_type_new": "0x1c2610",
+            "EC_POINT_point2oct": "0x201360",
+            "CRYPTO_realloc": "0x1ba130",
+            "ASN1_item_free": "0x1cb340",
+            "CRYPTO_free": "0x1ba410",
+            "ASN1_item_i2d": "0x1ce880"
+          },
+          "got_bindings": {},
+          "literals": {
+            "433a2f6769742f7562696c69627261726965732f55626973657276696365732f65787465726e616c2f686172626f7572636f6d6d6f6e2f6c69627261726965732f6f70656e73736c2f63727970746f2f65632f65635f61736e312e6300": "0x1315a37"
+          }
+        },
+        {
+          "address": "0x201100",
+          "size": 288,
+          "symbol": "i2o_ECPublicKey",
+          "target_sha256": "d87c049337ec5ce4bd12beb9aeed6bcdac5220875d507a852fba4ca891d92306",
+          "bindings": {
+            "EC_POINT_point2oct": "0x201360",
+            "ERR_put_error": "0x1ba7f0",
+            "CRYPTO_malloc": "0x1b9f70",
+            "CRYPTO_free": "0x1ba410"
+          },
+          "got_bindings": {},
+          "literals": {
+            "433a2f6769742f7562696c69627261726965732f55626973657276696365732f65787465726e616c2f686172626f7572636f6d6d6f6e2f6c69627261726965732f6f70656e73736c2f63727970746f2f65632f65635f61736e312e6300": "0x1315a37"
+          }
+        },
+        {
+          "address": "0x201010",
+          "size": 228,
+          "symbol": "o2i_ECPublicKey",
+          "target_sha256": "9d2315f2119ed0704515b7c5dd7d12fe2d8e30c0f2a32813a5a209b4b458bfd0",
+          "bindings": {
+            "EC_POINT_new": "0x1da010",
+            "EC_POINT_oct2point": "0x2013f0",
+            "ERR_put_error": "0x1ba7f0"
+          },
+          "got_bindings": {},
+          "literals": {
+            "433a2f6769742f7562696c69627261726965732f55626973657276696365732f65787465726e616c2f686172626f7572636f6d6d6f6e2f6c69627261726965732f6f70656e73736c2f63727970746f2f65632f65635f61736e312e6300": "0x1315a37"
+          }
+        }
+      ]
+    },
+    {
+      "id": "openssl_q_crypto_ec_ec_lib_O3_omit",
+      "source": "src/OpenSslQ_crypto_ec_ec_lib_O3_omit.c",
+      "compiler": "8.0.1",
+      "source_review": "library_abi_view",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-x",
+        "c",
+        "-std=gnu99",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-U_WIN32",
+        "-U_WIN64",
+        "-DOPENSSL_THREADS",
+        "-D_REENTRANT",
+        "-I",
+        "vendor/openssl-q-configs/32_longlong",
+        "-I",
+        "vendor/openssl-1.0.2q",
+        "-I",
+        "vendor/openssl-1.0.2q/include",
+        "-I",
+        "vendor/openssl-1.0.2q/crypto",
+        "-I",
+        "vendor/openssl-1.0.2q/crypto/ec",
+        "-isystem",
+        "vendor/musl/include",
+        "-isystem",
+        "vendor/musl/generated",
+        "-O3",
+        "-fomit-frame-pointer",
+        "-fno-pic",
+        "-funwind-tables"
+      ],
+      "header_roots": [
+        "vendor/openssl-1.0.2q",
+        "vendor/openssl-q-configs",
+        "vendor/musl/include",
+        "vendor/musl/generated"
+      ],
+      "functions": [
+        {
+          "address": "0x1d9f40",
+          "size": 204,
+          "symbol": "EC_EX_DATA_set_data",
+          "target_sha256": "6a1c7c8819b831837d64af04a2f1a095a2a46bf14ad2461c3df65c9bec7ccb74",
+          "bindings": {
+            "CRYPTO_malloc": "0x1b9f70",
+            "ERR_put_error": "0x1ba7f0"
+          },
+          "got_bindings": {},
+          "literals": {
+            "433a2f6769742f7562696c69627261726965732f55626973657276696365732f65787465726e616c2f686172626f7572636f6d6d6f6e2f6c69627261726965732f6f70656e73736c2f63727970746f2f65632f65635f6c69622e6300": "0x12f37e2"
+          }
+        },
+        {
+          "address": "0x1da680",
+          "size": 668,
+          "symbol": "EC_GROUP_cmp",
+          "target_sha256": "82fa4bb40c57ba322a27d45b0f8b2305fc9974dea99b97583f860771f3882ba9",
+          "bindings": {
+            "BN_CTX_new": "0x1d0ad0",
+            "BN_CTX_start": "0x1d0c90",
+            "BN_CTX_get": "0x1d0e20",
+            "BN_cmp": "0x1c3d70",
+            "ERR_put_error": "0x1ba7f0",
+            "BN_CTX_end": "0x1d0d90",
+            "BN_CTX_free": "0x1d0b30",
+            "BN_copy": "0x1c3630"
+          },
+          "got_bindings": {},
+          "literals": {
+            "433a2f6769742f7562696c69627261726965732f55626973657276696365732f65787465726e616c2f686172626f7572636f6d6d6f6e2f6c69627261726965732f6f70656e73736c2f63727970746f2f65632f65635f6c69622e6300": "0x12f37e2"
+          }
+        },
+        {
+          "address": "0x1d9c00",
+          "size": 832,
+          "symbol": "EC_GROUP_copy",
+          "target_sha256": "8a02b767ace716c0f17a50eae4c629fabc591723955fac7d62daf07737dc7d36",
+          "bindings": {
+            "ERR_put_error": "0x1ba7f0",
+            "CRYPTO_free": "0x1ba410",
+            "CRYPTO_malloc": "0x1b9f70",
+            "BN_MONT_CTX_free": "0x1d1590",
+            "BN_MONT_CTX_new": "0x1d1530",
+            "BN_MONT_CTX_copy": "0x1d1850",
+            "OPENSSL_cleanse": "0x1ba470",
+            "BN_copy": "0x1c3630",
+            "memcpy": "0xfa3330"
+          },
+          "got_bindings": {},
+          "literals": {
+            "433a2f6769742f7562696c69627261726965732f55626973657276696365732f65787465726e616c2f686172626f7572636f6d6d6f6e2f6c69627261726965732f6f70656e73736c2f63727970746f2f65632f65635f6c69622e6300": "0x12f37e2"
+          }
+        },
+        {
+          "address": "0x1da600",
+          "size": 60,
+          "symbol": "EC_GROUP_get_curve_GF2m",
+          "target_sha256": "f3058ccf6d58ff1396d11ca025a14c530e0c83fc7ddc5ffff0a1f6ae8b3aaf15",
+          "bindings": {
+            "ERR_put_error": "0x1ba7f0"
+          },
+          "got_bindings": {},
+          "literals": {
+            "433a2f6769742f7562696c69627261726965732f55626973657276696365732f65787465726e616c2f686172626f7572636f6d6d6f6e2f6c69627261726965732f6f70656e73736c2f63727970746f2f65632f65635f6c69622e6300": "0x12f37e2"
+          }
+        },
+        {
+          "address": "0x1da580",
+          "size": 60,
+          "symbol": "EC_GROUP_get_curve_GFp",
+          "target_sha256": "f13f37b7d36ace3efe95f60d7e63bd35bf81e4a17dae7ca4a2ea2cae1f66ade3",
+          "bindings": {
+            "ERR_put_error": "0x1ba7f0"
+          },
+          "got_bindings": {},
+          "literals": {
+            "433a2f6769742f7562696c69627261726965732f55626973657276696365732f65787465726e616c2f686172626f7572636f6d6d6f6e2f6c69627261726965732f6f70656e73736c2f63727970746f2f65632f65635f6c69622e6300": "0x12f37e2"
+          }
+        },
+        {
+          "address": "0x1da640",
+          "size": 60,
+          "symbol": "EC_GROUP_get_degree",
+          "target_sha256": "cd83e58dccb079dedd5938d83d396b1ebcb90bb583542b1bc6ce906a59f5f696",
+          "bindings": {
+            "ERR_put_error": "0x1ba7f0"
+          },
+          "got_bindings": {},
+          "literals": {
+            "433a2f6769742f7562696c69627261726965732f55626973657276696365732f65787465726e616c2f686172626f7572636f6d6d6f6e2f6c69627261726965732f6f70656e73736c2f63727970746f2f65632f65635f6c69622e6300": "0x12f37e2"
+          }
+        },
+        {
+          "address": "0x1da5c0",
+          "size": 60,
+          "symbol": "EC_GROUP_set_curve_GF2m",
+          "target_sha256": "61f748065dfe1d000286ec78288fdaa1bccef41310bd2784cbe145418d96ecb7",
+          "bindings": {
+            "ERR_put_error": "0x1ba7f0"
+          },
+          "got_bindings": {},
+          "literals": {
+            "433a2f6769742f7562696c69627261726965732f55626973657276696365732f65787465726e616c2f686172626f7572636f6d6d6f6e2f6c69627261726965732f6f70656e73736c2f63727970746f2f65632f65635f6c69622e6300": "0x12f37e2"
+          }
+        },
+        {
+          "address": "0x1da540",
+          "size": 60,
+          "symbol": "EC_GROUP_set_curve_GFp",
+          "target_sha256": "70f47c8a13f426d9a53819c8ab68bbf2434f0a6e08c5f38acb551a263f557e0c",
+          "bindings": {
+            "ERR_put_error": "0x1ba7f0"
+          },
+          "got_bindings": {},
+          "literals": {
+            "433a2f6769742f7562696c69627261726965732f55626973657276696365732f65787465726e616c2f686172626f7572636f6d6d6f6e2f6c69627261726965732f6f70656e73736c2f63727970746f2f65632f65635f6c69622e6300": "0x12f37e2"
+          }
+        },
+        {
+          "address": "0x1da1f0",
+          "size": 440,
+          "symbol": "EC_GROUP_set_generator",
+          "target_sha256": "c04737f1af3bafbfffff65e5e63e117991937862ddba9b8759e672a9ff1ca209",
+          "bindings": {
+            "ERR_put_error": "0x1ba7f0",
+            "BN_copy": "0x1c3630",
+            "BN_set_word": "0x1c3730",
+            "BN_MONT_CTX_free": "0x1d1590",
+            "BN_CTX_new": "0x1d0ad0",
+            "BN_MONT_CTX_new": "0x1d1530",
+            "BN_MONT_CTX_set": "0x1d15d0",
+            "BN_CTX_free": "0x1d0b30"
+          },
+          "got_bindings": {},
+          "literals": {
+            "433a2f6769742f7562696c69627261726965732f55626973657276696365732f65787465726e616c2f686172626f7572636f6d6d6f6e2f6c69627261726965732f6f70656e73736c2f63727970746f2f65632f65635f6c69622e6300": "0x12f37e2"
+          }
+        },
+        {
+          "address": "0x1da4a0",
+          "size": 120,
+          "symbol": "EC_GROUP_set_seed",
+          "target_sha256": "1c65be98ce4edff9c655825bd83f9dde43923ea5c9fe9404785ae043d123fc3e",
+          "bindings": {
+            "CRYPTO_free": "0x1ba410",
+            "CRYPTO_malloc": "0x1b9f70",
+            "memcpy": "0xfa3330"
+          },
+          "got_bindings": {},
+          "literals": {
+            "433a2f6769742f7562696c69627261726965732f55626973657276696365732f65787465726e616c2f686172626f7572636f6d6d6f6e2f6c69627261726965732f6f70656e73736c2f63727970746f2f65632f65635f6c69622e6300": "0x12f37e2"
+          }
+        },
+        {
+          "address": "0x1dad90",
+          "size": 120,
+          "symbol": "EC_POINT_add",
+          "target_sha256": "c1b72161e35f576d3ce8c1384bb76958711ef90c638808643165bfd13c475774",
+          "bindings": {
+            "ERR_put_error": "0x1ba7f0"
+          },
+          "got_bindings": {},
+          "literals": {
+            "433a2f6769742f7562696c69627261726965732f55626973657276696365732f65787465726e616c2f686172626f7572636f6d6d6f6e2f6c69627261726965732f6f70656e73736c2f63727970746f2f65632f65635f6c69622e6300": "0x12f37e2"
+          }
+        },
+        {
+          "address": "0x1da920",
+          "size": 112,
+          "symbol": "EC_POINT_cmp",
+          "target_sha256": "4bc5b0cf4ddeb05b090319fd83d87a0d9f5267d24de32187e0e25d94c43cf0ef",
+          "bindings": {
+            "ERR_put_error": "0x1ba7f0"
+          },
+          "got_bindings": {},
+          "literals": {
+            "433a2f6769742f7562696c69627261726965732f55626973657276696365732f65787465726e616c2f686172626f7572636f6d6d6f6e2f6c69627261726965732f6f70656e73736c2f63727970746f2f65632f65635f6c69622e6300": "0x12f37e2"
+          }
+        },
+        {
+          "address": "0x1da0f0",
+          "size": 120,
+          "symbol": "EC_POINT_copy",
+          "target_sha256": "3e04793cafc07c37912b53a5cd90ce4c069b5f18549cf2a08fbdd3fba980a617",
+          "bindings": {
+            "ERR_put_error": "0x1ba7f0"
+          },
+          "got_bindings": {},
+          "literals": {
+            "433a2f6769742f7562696c69627261726965732f55626973657276696365732f65787465726e616c2f686172626f7572636f6d6d6f6e2f6c69627261726965732f6f70656e73736c2f63727970746f2f65632f65635f6c69622e6300": "0x12f37e2"
+          }
+        },
+        {
+          "address": "0x1dae10",
+          "size": 112,
+          "symbol": "EC_POINT_dbl",
+          "target_sha256": "d06ecf17f35199461a86cffedd25154cb5d77c21df26302a480b7eff889d978e",
+          "bindings": {
+            "ERR_put_error": "0x1ba7f0"
+          },
+          "got_bindings": {},
+          "literals": {
+            "433a2f6769742f7562696c69627261726965732f55626973657276696365732f65787465726e616c2f686172626f7572636f6d6d6f6e2f6c69627261726965732f6f70656e73736c2f63727970746f2f65632f65635f6c69622e6300": "0x12f37e2"
+          }
+        },
+        {
+          "address": "0x1dad20",
+          "size": 100,
+          "symbol": "EC_POINT_get_affine_coordinates_GF2m",
+          "target_sha256": "8a84662a851c1c7a1ebf31dad83087d4dd20adfa7cb45bc1485cc5beee723a0f",
+          "bindings": {
+            "ERR_put_error": "0x1ba7f0"
+          },
+          "got_bindings": {},
+          "literals": {
+            "433a2f6769742f7562696c69627261726965732f55626973657276696365732f65787465726e616c2f686172626f7572636f6d6d6f6e2f6c69627261726965732f6f70656e73736c2f63727970746f2f65632f65635f6c69622e6300": "0x12f37e2"
+          }
+        },
+        {
+          "address": "0x1dacb0",
+          "size": 100,
+          "symbol": "EC_POINT_get_affine_coordinates_GFp",
+          "target_sha256": "517b548ca08ba1db107edca8f92156905609051fc3a8f5b29cf82bb960652c96",
+          "bindings": {
+            "ERR_put_error": "0x1ba7f0"
+          },
+          "got_bindings": {},
+          "literals": {
+            "433a2f6769742f7562696c69627261726965732f55626973657276696365732f65787465726e616c2f686172626f7572636f6d6d6f6e2f6c69627261726965732f6f70656e73736c2f63727970746f2f65632f65635f6c69622e6300": "0x12f37e2"
+          }
+        },
+        {
+          "address": "0x1dae80",
+          "size": 100,
+          "symbol": "EC_POINT_invert",
+          "target_sha256": "b9ab4215d1a37090dfc8002308cfb8786cb15309a0c4ef237b6b5981959167b9",
+          "bindings": {
+            "ERR_put_error": "0x1ba7f0"
+          },
+          "got_bindings": {},
+          "literals": {
+            "433a2f6769742f7562696c69627261726965732f55626973657276696365732f65787465726e616c2f686172626f7572636f6d6d6f6e2f6c69627261726965732f6f70656e73736c2f63727970746f2f65632f65635f6c69622e6300": "0x12f37e2"
+          }
+        },
+        {
+          "address": "0x1daef0",
+          "size": 100,
+          "symbol": "EC_POINT_is_at_infinity",
+          "target_sha256": "423d0b148532cc700a7714ca9ab06c55374d16a2fcb9061f4563ea18c1cbdb7a",
+          "bindings": {
+            "ERR_put_error": "0x1ba7f0"
+          },
+          "got_bindings": {},
+          "literals": {
+            "433a2f6769742f7562696c69627261726965732f55626973657276696365732f65787465726e616c2f686172626f7572636f6d6d6f6e2f6c69627261726965732f6f70656e73736c2f63727970746f2f65632f65635f6c69622e6300": "0x12f37e2"
+          }
+        },
+        {
+          "address": "0x1daf60",
+          "size": 100,
+          "symbol": "EC_POINT_is_on_curve",
+          "target_sha256": "42181c4e9b656be7bd9d8aca7f2033d04f9f480e1c41bb48a57d9a475431e6ee",
+          "bindings": {
+            "ERR_put_error": "0x1ba7f0"
+          },
+          "got_bindings": {},
+          "literals": {
+            "433a2f6769742f7562696c69627261726965732f55626973657276696365732f65787465726e616c2f686172626f7572636f6d6d6f6e2f6c69627261726965732f6f70656e73736c2f63727970746f2f65632f65635f6c69622e6300": "0x12f37e2"
+          }
+        },
+        {
+          "address": "0x1dafd0",
+          "size": 96,
+          "symbol": "EC_POINT_make_affine",
+          "target_sha256": "4fc5df331a57b0bcb698391a985471cc8d01f8fb73636e39528ac338908451c8",
+          "bindings": {
+            "ERR_put_error": "0x1ba7f0"
+          },
+          "got_bindings": {},
+          "literals": {
+            "433a2f6769742f7562696c69627261726965732f55626973657276696365732f65787465726e616c2f686172626f7572636f6d6d6f6e2f6c69627261726965732f6f70656e73736c2f63727970746f2f65632f65635f6c69622e6300": "0x12f37e2"
+          }
+        },
+        {
+          "address": "0x1da010",
+          "size": 224,
+          "symbol": "EC_POINT_new",
+          "target_sha256": "fb50d43c9230704584d472fe0527ed6248b89d8a67745c23bb03c94bfc022cd2",
+          "bindings": {
+            "CRYPTO_malloc": "0x1b9f70",
+            "ERR_put_error": "0x1ba7f0",
+            "CRYPTO_free": "0x1ba410"
+          },
+          "got_bindings": {},
+          "literals": {
+            "433a2f6769742f7562696c69627261726965732f55626973657276696365732f65787465726e616c2f686172626f7572636f6d6d6f6e2f6c69627261726965732f6f70656e73736c2f63727970746f2f65632f65635f6c69622e6300": "0x12f37e2"
+          }
+        },
+        {
+          "address": "0x1dab80",
+          "size": 96,
+          "symbol": "EC_POINT_set_Jprojective_coordinates_GFp",
+          "target_sha256": "404ac44a2a57a87f2cdc031173b7901d8f77d652655ae7fa91483080828b8ab2",
+          "bindings": {
+            "ERR_put_error": "0x1ba7f0"
+          },
+          "got_bindings": {},
+          "literals": {
+            "433a2f6769742f7562696c69627261726965732f55626973657276696365732f65787465726e616c2f686172626f7572636f6d6d6f6e2f6c69627261726965732f6f70656e73736c2f63727970746f2f65632f65635f6c69622e6300": "0x12f37e2"
+          }
+        },
+        {
+          "address": "0x1dac40",
+          "size": 100,
+          "symbol": "EC_POINT_set_affine_coordinates_GF2m",
+          "target_sha256": "0f1edac5b119f701477f0a0bd6c275419bab8ad206a4b9fecaa3fab0f04c30c9",
+          "bindings": {
+            "ERR_put_error": "0x1ba7f0"
+          },
+          "got_bindings": {},
+          "literals": {
+            "433a2f6769742f7562696c69627261726965732f55626973657276696365732f65787465726e616c2f686172626f7572636f6d6d6f6e2f6c69627261726965732f6f70656e73736c2f63727970746f2f65632f65635f6c69622e6300": "0x12f37e2"
+          }
+        },
+        {
+          "address": "0x1dabe0",
+          "size": 96,
+          "symbol": "EC_POINT_set_affine_coordinates_GFp",
+          "target_sha256": "692df2a182d46525a5868eddb5cb73413ed60a06713fbf6fd7197f1f08227e59",
+          "bindings": {
+            "ERR_put_error": "0x1ba7f0"
+          },
+          "got_bindings": {},
+          "literals": {
+            "433a2f6769742f7562696c69627261726965732f55626973657276696365732f65787465726e616c2f686172626f7572636f6d6d6f6e2f6c69627261726965732f6f70656e73736c2f63727970746f2f65632f65635f6c69622e6300": "0x12f37e2"
+          }
+        },
+        {
+          "address": "0x1dab20",
+          "size": 96,
+          "symbol": "EC_POINT_set_to_infinity",
+          "target_sha256": "b70d6af86a632b4911ef5ffb9a6f66cdeb96a991c654ef7acc1ebe3e1223aa5f",
+          "bindings": {
+            "ERR_put_error": "0x1ba7f0"
+          },
+          "got_bindings": {},
+          "literals": {
+            "433a2f6769742f7562696c69627261726965732f55626973657276696365732f65787465726e616c2f686172626f7572636f6d6d6f6e2f6c69627261726965732f6f70656e73736c2f63727970746f2f65632f65635f6c69622e6300": "0x12f37e2"
+          }
+        },
+        {
+          "address": "0x1db030",
+          "size": 124,
+          "symbol": "EC_POINTs_make_affine",
+          "target_sha256": "ef7e236f0273427ec38614e7b70a4ad631ef2fce11d372ecf061d0e62b6dfd15",
+          "bindings": {
+            "ERR_put_error": "0x1ba7f0"
+          },
+          "got_bindings": {},
+          "literals": {
+            "433a2f6769742f7562696c69627261726965732f55626973657276696365732f65787465726e616c2f686172626f7572636f6d6d6f6e2f6c69627261726965732f6f70656e73736c2f63727970746f2f65632f65635f6c69622e6300": "0x12f37e2"
+          }
+        }
+      ]
+    },
+    {
+      "id": "openssl_q_ssl_s3_srvr_O3_novec",
+      "source": "src/OpenSslQ_ssl_s3_srvr_O3_novec.c",
+      "compiler": "8.0.1",
+      "source_review": "library_abi_view",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-x",
+        "c",
+        "-std=gnu99",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-U_WIN32",
+        "-U_WIN64",
+        "-DOPENSSL_THREADS",
+        "-D_REENTRANT",
+        "-I",
+        "vendor/openssl-q-configs/32_longlong",
+        "-I",
+        "vendor/openssl-1.0.2q",
+        "-I",
+        "vendor/openssl-1.0.2q/include",
+        "-I",
+        "vendor/openssl-1.0.2q/crypto",
+        "-I",
+        "vendor/openssl-1.0.2q/ssl",
+        "-isystem",
+        "vendor/musl/include",
+        "-isystem",
+        "vendor/musl/generated",
+        "-O3",
+        "-fomit-frame-pointer",
+        "-fno-pic",
+        "-funwind-tables",
+        "-fno-vectorize",
+        "-fno-slp-vectorize"
+      ],
+      "header_roots": [
+        "vendor/openssl-1.0.2q",
+        "vendor/openssl-q-configs",
+        "vendor/musl/include",
+        "vendor/musl/generated"
+      ],
+      "functions": [
+        {
+          "address": "0x229b10",
+          "size": 4036,
+          "symbol": "ssl3_get_client_key_exchange",
+          "target_sha256": "1098e4b50529dda0d1e6296b88dcaeec286319e5f47ba13ac21bff9f0a649dc6",
+          "bindings": {
+            "EC_KEY_new": "0x1d9060",
+            "ERR_put_error": "0x1ba7f0",
+            "BN_bin2bn": "0x1c37b0",
+            "DH_compute_key": "0x1d0620",
+            "DH_free": "0x1d04d0",
+            "X509_get_pubkey": "0x1f4ef0",
+            "EVP_PKEY_cmp_parameters": "0x1cfd60",
+            "EVP_PKEY_get1_DH": "0x1d0180",
+            "EVP_PKEY_free": "0x1d0240",
+            "ssl3_send_alert": "0x23fbf0",
+            "EC_POINT_free": "0x1d9a90",
+            "EC_KEY_free": "0x1d91a0",
+            "BN_CTX_free": "0x1d0b30",
+            "EC_KEY_get0_group": "0x1d9630",
+            "EC_KEY_get0_private_key": "0x1d9680",
+            "EC_KEY_set_group": "0x1d9640",
+            "EC_KEY_set_private_key": "0x1d9690",
+            "EC_POINT_new": "0x1da010",
+            "BN_CTX_new": "0x1d0ad0",
+            "EC_POINT_oct2point": "0x2013f0",
+            "EC_GROUP_get_degree": "0x1da640",
+            "ECDH_compute_key": "0x21b470",
+            "OPENSSL_cleanse": "0x1ba470",
+            "RAND_bytes": "0x1c7f20",
+            "RSA_private_decrypt": "0x20e050",
+            "EVP_PKEY_CTX_new": "0x1cf5d0",
+            "memcpy": "0xfa3330",
+            "memset": "0xfa3340",
+            "BN_ucmp": "0x1c3d10",
+            "BN_clear_free": "0x1c32b0",
+            "EC_KEY_get0_public_key": "0x1d96d0",
+            "EC_POINT_copy": "0x1da0f0",
+            "memmove": "0xfa33b0",
+            "CRYPTO_free": "0x1ba410",
+            "BUF_strndup": "0x1b9bc0",
+            "BUF_strdup": "0x1b9ae0",
+            "EVP_PKEY_decrypt_init": "0x1fa910",
+            "EVP_PKEY_derive_set_peer": "0x1fab90",
+            "ERR_clear_error": "0x1baa40",
+            "ASN1_get_object": "0x1c1d30",
+            "EVP_PKEY_decrypt": "0x1fa9a0",
+            "EVP_PKEY_CTX_ctrl": "0x1cf9d0",
+            "SRP_generate_server_master_secret": "0x223700",
+            "EVP_PKEY_CTX_free": "0x1cf970"
+          },
+          "got_bindings": {},
+          "literals": {
+            "433a2f6769742f7562696c69627261726965732f55626973657276696365732f65787465726e616c2f686172626f7572636f6d6d6f6e2f6c69627261726965732f6f70656e73736c2f73736c2f73335f737276722e6300": "0x131f935"
+          }
+        }
+      ]
+    },
+    {
+      "id": "openssl_q_crypto_rsa_rsa_eay_O3_novec",
+      "source": "src/OpenSslQ_crypto_rsa_rsa_eay_O3_novec.c",
+      "compiler": "8.0.1",
+      "source_review": "library_abi_view",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-x",
+        "c",
+        "-std=gnu99",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-U_WIN32",
+        "-U_WIN64",
+        "-DOPENSSL_THREADS",
+        "-D_REENTRANT",
+        "-I",
+        "vendor/openssl-q-configs/32_longlong",
+        "-I",
+        "vendor/openssl-1.0.2q",
+        "-I",
+        "vendor/openssl-1.0.2q/include",
+        "-I",
+        "vendor/openssl-1.0.2q/crypto",
+        "-I",
+        "vendor/openssl-1.0.2q/crypto/rsa",
+        "-isystem",
+        "vendor/musl/include",
+        "-isystem",
+        "vendor/musl/generated",
+        "-O3",
+        "-fomit-frame-pointer",
+        "-fno-pic",
+        "-funwind-tables",
+        "-fno-vectorize",
+        "-fno-slp-vectorize"
+      ],
+      "header_roots": [
+        "vendor/openssl-1.0.2q",
+        "vendor/openssl-q-configs",
+        "vendor/musl/include",
+        "vendor/musl/generated"
+      ],
+      "functions": [
+        {
+          "address": "0x1e8f30",
+          "size": 1056,
+          "symbol": "RSA_eay_private_encrypt",
+          "target_sha256": "0b346c4bc3fff0d4ebbd0ce1e2f5c34862c5ba3692361361f637c5be99cbc3f7",
+          "bindings": {
+            "BN_CTX_new": "0x1d0ad0",
+            "BN_CTX_start": "0x1d0c90",
+            "BN_CTX_get": "0x1d0e20",
+            "BN_num_bits": "0x1c31f0",
+            "CRYPTO_malloc": "0x1b9f70",
+            "RSA_padding_add_PKCS1_type_1": "0x211ef0",
+            "ERR_put_error": "0x1ba7f0",
+            "BN_CTX_end": "0x1d0d90",
+            "BN_CTX_free": "0x1d0b30",
+            "OPENSSL_cleanse": "0x1ba470",
+            "CRYPTO_free": "0x1ba410",
+            "RSA_padding_add_X931": "0x212690",
+            "RSA_padding_add_none": "0x2128e0",
+            "BN_bin2bn": "0x1c37b0",
+            "BN_ucmp": "0x1c3d10",
+            "BN_BLINDING_convert_ex": "0x1e8720",
+            "CRYPTO_lock": "0x1b95a0",
+            "BN_init": "0x1c3370",
+            "BN_MONT_CTX_set_locked": "0x1d1900",
+            "BN_BLINDING_invert_ex": "0x1e8800",
+            "BN_sub": "0x1d2ce0",
+            "BN_cmp": "0x1c3d70",
+            "bn_bn2binpad": "0x1c3960"
+          },
+          "got_bindings": {},
+          "literals": {
+            "433a2f6769742f7562696c69627261726965732f55626973657276696365732f65787465726e616c2f686172626f7572636f6d6d6f6e2f6c69627261726965732f6f70656e73736c2f63727970746f2f7273612f7273615f6561792e6300": "0x131d5a9"
+          }
+        },
+        {
+          "address": "0x1e8c00",
+          "size": 808,
+          "symbol": "RSA_eay_public_decrypt",
+          "target_sha256": "a7f9ecc2cbfdeb81f96b6224c199d8b3c3531df1d2d6f04bb2910ba59c632afb",
+          "bindings": {
+            "BN_num_bits": "0x1c31f0",
+            "BN_ucmp": "0x1c3d10",
+            "BN_CTX_new": "0x1d0ad0",
+            "BN_CTX_start": "0x1d0c90",
+            "BN_CTX_get": "0x1d0e20",
+            "CRYPTO_malloc": "0x1b9f70",
+            "ERR_put_error": "0x1ba7f0",
+            "BN_CTX_end": "0x1d0d90",
+            "BN_CTX_free": "0x1d0b30",
+            "OPENSSL_cleanse": "0x1ba470",
+            "CRYPTO_free": "0x1ba410",
+            "BN_bin2bn": "0x1c37b0",
+            "BN_MONT_CTX_set_locked": "0x1d1900",
+            "BN_sub": "0x1d2ce0",
+            "bn_bn2binpad": "0x1c3960",
+            "RSA_padding_check_X931": "0x212760",
+            "RSA_padding_check_PKCS1_type_1": "0x211f90",
+            "memcpy": "0xfa3330"
+          },
+          "got_bindings": {},
+          "literals": {
+            "433a2f6769742f7562696c69627261726965732f55626973657276696365732f65787465726e616c2f686172626f7572636f6d6d6f6e2f6c69627261726965732f6f70656e73736c2f63727970746f2f7273612f7273615f6561792e6300": "0x131d5a9"
+          }
+        },
+        {
+          "address": "0x1e9f90",
+          "size": 380,
+          "symbol": "rsa_get_blinding",
+          "target_sha256": "f5082278dc0c865988c440ef65063ec12a8ceb62ed92ee011de876353e3989a6",
+          "bindings": {
+            "CRYPTO_lock": "0x1b95a0",
+            "RSA_setup_blinding": "0x20e080",
+            "CRYPTO_THREADID_current": "0x1b9880",
+            "BN_BLINDING_thread_id": "0x1e88d0",
+            "CRYPTO_THREADID_cmp": "0x1b98d0"
+          },
+          "got_bindings": {},
+          "literals": {
+            "433a2f6769742f7562696c69627261726965732f55626973657276696365732f65787465726e616c2f686172626f7572636f6d6d6f6e2f6c69627261726965732f6f70656e73736c2f63727970746f2f7273612f7273615f6561792e6300": "0x131d5a9"
+          }
+        }
+      ]
+    },
+    {
+      "id": "openssl_q_crypto_evp_evp_enc_O3_novec",
+      "source": "src/OpenSslQ_crypto_evp_evp_enc_O3_novec.c",
+      "compiler": "8.0.1",
+      "source_review": "library_abi_view",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-x",
+        "c",
+        "-std=gnu99",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-U_WIN32",
+        "-U_WIN64",
+        "-DOPENSSL_THREADS",
+        "-D_REENTRANT",
+        "-I",
+        "vendor/openssl-q-configs/32_longlong",
+        "-I",
+        "vendor/openssl-1.0.2q",
+        "-I",
+        "vendor/openssl-1.0.2q/include",
+        "-I",
+        "vendor/openssl-1.0.2q/crypto",
+        "-I",
+        "vendor/openssl-1.0.2q/crypto/evp",
+        "-isystem",
+        "vendor/musl/include",
+        "-isystem",
+        "vendor/musl/generated",
+        "-O3",
+        "-fomit-frame-pointer",
+        "-fno-pic",
+        "-funwind-tables",
+        "-fno-vectorize",
+        "-fno-slp-vectorize"
+      ],
+      "header_roots": [
+        "vendor/openssl-1.0.2q",
+        "vendor/openssl-q-configs",
+        "vendor/musl/include",
+        "vendor/musl/generated"
+      ],
+      "functions": [
+        {
+          "address": "0x1e5a10",
+          "size": 120,
+          "symbol": "EVP_CIPHER_CTX_ctrl",
+          "target_sha256": "7f696fa7c553bda3c216f467af42573cfeb753379485fa651635a619129d0ff3",
+          "bindings": {
+            "ERR_put_error": "0x1ba7f0"
+          },
+          "got_bindings": {},
+          "literals": {
+            "433a2f6769742f7562696c69627261726965732f55626973657276696365732f65787465726e616c2f686172626f7572636f6d6d6f6e2f6c69627261726965732f6f70656e73736c2f63727970746f2f6576702f6576705f656e632e6300": "0x132d296"
+          }
+        },
+        {
+          "address": "0x1e6330",
+          "size": 168,
+          "symbol": "EVP_CIPHER_CTX_rand_key",
+          "target_sha256": "3fe28bbb94a1e7b4cd32deca024b8c74504a1321e6e25d702c73efab8c8341d5",
+          "bindings": {
+            "RAND_bytes": "0x1c7f20",
+            "ERR_put_error": "0x1ba7f0"
+          },
+          "got_bindings": {},
+          "literals": {
+            "433a2f6769742f7562696c69627261726965732f55626973657276696365732f65787465726e616c2f686172626f7572636f6d6d6f6e2f6c69627261726965732f6f70656e73736c2f63727970746f2f6576702f6576705f656e632e6300": "0x132d296"
+          }
+        },
+        {
+          "address": "0x1e6240",
+          "size": 232,
+          "symbol": "EVP_CIPHER_CTX_set_key_length",
+          "target_sha256": "555da456a441427f04702716d98333c3317e1ebbedc1b775ba7dfd4d37db65cf",
+          "bindings": {
+            "ERR_put_error": "0x1ba7f0"
+          },
+          "got_bindings": {},
+          "literals": {
+            "433a2f6769742f7562696c69627261726965732f55626973657276696365732f65787465726e616c2f686172626f7572636f6d6d6f6e2f6c69627261726965732f6f70656e73736c2f63727970746f2f6576702f6576705f656e632e6300": "0x132d296"
+          }
+        },
+        {
+          "address": "0x1e5f70",
+          "size": 504,
+          "symbol": "EVP_DecryptFinal_ex",
+          "target_sha256": "06abc83cfb63fd821c6473cc71edc7c2509f8c3af9c18e89398b1c9164d693d9",
+          "bindings": {
+            "ERR_put_error": "0x1ba7f0",
+            "OpenSSLDie": "0x1b9910"
+          },
+          "got_bindings": {},
+          "literals": {
+            "433a2f6769742f7562696c69627261726965732f55626973657276696365732f65787465726e616c2f686172626f7572636f6d6d6f6e2f6c69627261726965732f6f70656e73736c2f63727970746f2f6576702f6576705f656e632e6300": "0x132d296",
+            "62203c3d2073697a656f66286374782d3e66696e616c2900": "0x12f38b1"
+          }
+        },
+        {
+          "address": "0x1e5c80",
+          "size": 380,
+          "symbol": "EVP_DecryptUpdate",
+          "target_sha256": "13fe19e6917accd2dcb4b7cf633678620931234752d39a7ded0ce0e13676a382",
+          "bindings": {
+            "OpenSSLDie": "0x1b9910",
+            "memcpy": "0xfa3330"
+          },
+          "got_bindings": {},
+          "literals": {
+            "433a2f6769742f7562696c69627261726965732f55626973657276696365732f65787465726e616c2f686172626f7572636f6d6d6f6e2f6c69627261726965732f6f70656e73736c2f63727970746f2f6576702f6576705f656e632e6300": "0x132d296",
+            "62203c3d2073697a656f66286374782d3e66696e616c2900": "0x12f38b1"
+          }
+        },
+        {
+          "address": "0x1e5e10",
+          "size": 340,
+          "symbol": "EVP_EncryptFinal_ex",
+          "target_sha256": "8595a935660ab0c13f32c1404ef31f0cce52a42cda78143df916d456198695df",
+          "bindings": {
+            "memset": "0xfa3340",
+            "OpenSSLDie": "0x1b9910",
+            "ERR_put_error": "0x1ba7f0"
+          },
+          "got_bindings": {},
+          "literals": {
+            "433a2f6769742f7562696c69627261726965732f55626973657276696365732f65787465726e616c2f686172626f7572636f6d6d6f6e2f6c69627261726965732f6f70656e73736c2f63727970746f2f6576702f6576705f656e632e6300": "0x132d296",
+            "62203c3d2073697a656f66286374782d3e6275662900": "0x130df28"
+          }
+        },
+        {
+          "address": "0x1e5aa0",
+          "size": 468,
+          "symbol": "EVP_EncryptUpdate",
+          "target_sha256": "8ac7271c753d61fb3128817185f1c9e803fe3054bb9da2aaf804e4aef0bf0c66",
+          "bindings": {
+            "OpenSSLDie": "0x1b9910",
+            "memcpy": "0xfa3330"
+          },
+          "got_bindings": {},
+          "literals": {
+            "433a2f6769742f7562696c69627261726965732f55626973657276696365732f65787465726e616c2f686172626f7572636f6d6d6f6e2f6c69627261726965732f6f70656e73736c2f63727970746f2f6576702f6576705f656e632e6300": "0x132d296",
+            "626c203c3d2028696e742973697a656f66286374782d3e6275662900": "0x130fc1f"
+          }
+        }
+      ]
+    },
+    {
+      "id": "openssl_q_crypto_bn_bn_lib_O3_omit",
+      "source": "src/OpenSslQ_crypto_bn_bn_lib_O3_omit.c",
+      "compiler": "8.0.1",
+      "source_review": "library_abi_view",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-x",
+        "c",
+        "-std=gnu99",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-U_WIN32",
+        "-U_WIN64",
+        "-DOPENSSL_THREADS",
+        "-D_REENTRANT",
+        "-I",
+        "vendor/openssl-q-configs/32_longlong",
+        "-I",
+        "vendor/openssl-1.0.2q",
+        "-I",
+        "vendor/openssl-1.0.2q/include",
+        "-I",
+        "vendor/openssl-1.0.2q/crypto",
+        "-I",
+        "vendor/openssl-1.0.2q/crypto/bn",
+        "-isystem",
+        "vendor/musl/include",
+        "-isystem",
+        "vendor/musl/generated",
+        "-O3",
+        "-fomit-frame-pointer",
+        "-fno-pic",
+        "-funwind-tables"
+      ],
+      "header_roots": [
+        "vendor/openssl-1.0.2q",
+        "vendor/openssl-q-configs",
+        "vendor/musl/include",
+        "vendor/musl/generated"
+      ],
+      "functions": [
+        {
+          "address": "0x1c3bf0",
+          "size": 280,
+          "symbol": "BN_bn2bin",
+          "target_sha256": "1d06676e27eb73f0af70f6964a86824cf753be9c7e4937750b753d9856829996",
+          "bindings": {},
+          "got_bindings": {}
+        },
+        {
+          "address": "0x1c3380",
+          "size": 88,
+          "symbol": "BN_new",
+          "target_sha256": "c5105ec0f7bac461f1ea299b5630dd033de4e6d4ec67b757616d2d5533512413",
+          "bindings": {
+            "CRYPTO_malloc": "0x1b9f70",
+            "ERR_put_error": "0x1ba7f0"
+          },
+          "got_bindings": {},
+          "literals": {
+            "433a2f6769742f7562696c69627261726965732f55626973657276696365732f65787465726e616c2f686172626f7572636f6d6d6f6e2f6c69627261726965732f6f70656e73736c2f63727970746f2f626e2f626e5f6c69622e6300": "0x12fe850"
+          }
+        },
+        {
+          "address": "0x1c31f0",
+          "size": 180,
+          "symbol": "BN_num_bits",
+          "target_sha256": "505ac583562a3cc14d70a32a12a1bdb1f52cef0e1df68e593f22880c79fb1480",
+          "bindings": {},
+          "got_bindings": {}
+        },
+        {
+          "address": "0x1c3960",
+          "size": 644,
+          "symbol": "bn_bn2binpad",
+          "target_sha256": "7dd4c84749622b591d627414ab3e5c43fde1b8b06ba4b9965c3dd4bf85980b1a",
+          "bindings": {
+            "OPENSSL_cleanse": "0x1ba470"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x1c4060",
+          "size": 200,
+          "symbol": "bn_cmp_part_words",
+          "target_sha256": "dba3fe187c74491d746813c15a22ccd74d9f339fe4d38759b18339b0c79f2562",
+          "bindings": {},
+          "got_bindings": {}
+        },
+        {
+          "address": "0x1c4000",
+          "size": 92,
+          "symbol": "bn_cmp_words",
+          "target_sha256": "938eeac89ac7c77a01f2dc835397826dcb95c95f60d663865368bf645f16abda",
+          "bindings": {},
+          "got_bindings": {}
+        }
+      ]
+    },
+    {
+      "id": "openssl_q_crypto_rsa_rsa_oaep_O2_novec",
+      "source": "src/OpenSslQ_crypto_rsa_rsa_oaep_O2_novec.c",
+      "compiler": "8.0.1",
+      "source_review": "library_abi_view",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-x",
+        "c",
+        "-std=gnu99",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-U_WIN32",
+        "-U_WIN64",
+        "-DOPENSSL_THREADS",
+        "-D_REENTRANT",
+        "-I",
+        "vendor/openssl-q-configs/32_longlong",
+        "-I",
+        "vendor/openssl-1.0.2q",
+        "-I",
+        "vendor/openssl-1.0.2q/include",
+        "-I",
+        "vendor/openssl-1.0.2q/crypto",
+        "-I",
+        "vendor/openssl-1.0.2q/crypto/rsa",
+        "-isystem",
+        "vendor/musl/include",
+        "-isystem",
+        "vendor/musl/generated",
+        "-O2",
+        "-fomit-frame-pointer",
+        "-fno-pic",
+        "-funwind-tables",
+        "-fno-vectorize",
+        "-fno-slp-vectorize"
+      ],
+      "header_roots": [
+        "vendor/openssl-1.0.2q",
+        "vendor/openssl-q-configs",
+        "vendor/musl/include",
+        "vendor/musl/generated"
+      ],
+      "functions": [
+        {
+          "address": "0x1ea580",
+          "size": 1128,
+          "symbol": "RSA_padding_check_PKCS1_OAEP_mgf1",
+          "target_sha256": "4ae90e7fec215fe0da25afdb20b04b842734649c3068f37996090e1201d70105",
+          "bindings": {
+            "EVP_sha1": "0x1ea9f0",
+            "EVP_MD_size": "0x1ca280",
+            "ERR_put_error": "0x1ba7f0",
+            "OPENSSL_cleanse": "0x1ba470",
+            "CRYPTO_free": "0x1ba410",
+            "CRYPTO_malloc": "0x1b9f70",
+            "memset": "0xfa3340",
+            "memcpy": "0xfa3330",
+            "EVP_Digest": "0x1c9bf0",
+            "CRYPTO_memcmp": "0x1b9a50"
+          },
+          "got_bindings": {},
+          "literals": {
+            "433a2f6769742f7562696c69627261726965732f55626973657276696365732f65787465726e616c2f686172626f7572636f6d6d6f6e2f6c69627261726965732f6f70656e73736c2f63727970746f2f7273612f7273615f6f6165702e6300": "0x13158ca"
+          }
+        }
+      ]
+    },
+    {
+      "id": "openssl_q_ssl_d1_pkt_O3_omit",
+      "source": "src/OpenSslQ_ssl_d1_pkt_O3_omit.c",
+      "compiler": "8.0.1",
+      "source_review": "library_abi_view",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-x",
+        "c",
+        "-std=gnu99",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-U_WIN32",
+        "-U_WIN64",
+        "-DOPENSSL_THREADS",
+        "-D_REENTRANT",
+        "-I",
+        "vendor/openssl-q-configs/32_longlong",
+        "-I",
+        "vendor/openssl-1.0.2q",
+        "-I",
+        "vendor/openssl-1.0.2q/include",
+        "-I",
+        "vendor/openssl-1.0.2q/crypto",
+        "-I",
+        "vendor/openssl-1.0.2q/ssl",
+        "-isystem",
+        "vendor/musl/include",
+        "-isystem",
+        "vendor/musl/generated",
+        "-O3",
+        "-fomit-frame-pointer",
+        "-fno-pic",
+        "-funwind-tables"
+      ],
+      "header_roots": [
+        "vendor/openssl-1.0.2q",
+        "vendor/openssl-q-configs",
+        "vendor/musl/include",
+        "vendor/musl/generated"
+      ],
+      "functions": [
+        {
+          "address": "0x22fb10",
+          "size": 800,
+          "symbol": "do_dtls1_write",
+          "target_sha256": "88816d4d4d691d8eb2f769cafbb01108d266e7b7ddea5fd9efd27ee44d0adaf5",
+          "bindings": {
+            "OpenSSLDie": "0x1b9910",
+            "ssl3_write_pending": "0x23e5f0",
+            "EVP_MD_CTX_md": "0x1ca2c0",
+            "EVP_MD_size": "0x1ca280",
+            "EVP_CIPHER_CTX_flags": "0x1c9eb0",
+            "EVP_CIPHER_CTX_iv_length": "0x1ca0c0",
+            "ssl3_do_compress": "0x23e340",
+            "ERR_put_error": "0x1ba7f0",
+            "memcpy": "0xfa3330",
+            "ssl3_record_sequence_update": "0x243610"
+          },
+          "got_bindings": {},
+          "literals": {
+            "433a2f6769742f7562696c69627261726965732f55626973657276696365732f65787465726e616c2f686172626f7572636f6d6d6f6e2f6c69627261726965732f6f70656e73736c2f73736c2f64315f706b742e6300": "0x132d5bd",
+            "3000": "0x130bc01"
+          }
+        },
+        {
+          "address": "0x22f9d0",
+          "size": 196,
+          "symbol": "dtls1_write_app_data_bytes",
+          "target_sha256": "448d669b4f8fa643c230112395a558ba5ed3d7c0b66d923bd18c720d568c1905",
+          "bindings": {
+            "SSL_state": "0x220df0",
+            "ERR_put_error": "0x1ba7f0"
+          },
+          "got_bindings": {},
+          "literals": {
+            "433a2f6769742f7562696c69627261726965732f55626973657276696365732f65787465726e616c2f686172626f7572636f6d6d6f6e2f6c69627261726965732f6f70656e73736c2f73736c2f64315f706b742e6300": "0x132d5bd"
+          }
+        },
+        {
+          "address": "0x22faa0",
+          "size": 104,
+          "symbol": "dtls1_write_bytes",
+          "target_sha256": "c8343205ad77e94f115eb663a6f403981a3f95fd1e5c4dec1309157f6aabf32e",
+          "bindings": {
+            "OpenSSLDie": "0x1b9910"
+          },
+          "got_bindings": {},
+          "literals": {
+            "433a2f6769742f7562696c69627261726965732f55626973657276696365732f65787465726e616c2f686172626f7572636f6d6d6f6e2f6c69627261726965732f6f70656e73736c2f73736c2f64315f706b742e6300": "0x132d5bd",
+            "6c656e203c3d2053534c335f52545f4d41585f504c41494e5f4c454e47544800": "0x1327ca4"
+          }
+        }
+      ]
+    },
+    {
+      "id": "openssl_q_ssl_t1_lib_O3_omit",
+      "source": "src/OpenSslQ_ssl_t1_lib_O3_omit.c",
+      "compiler": "8.0.1",
+      "source_review": "library_abi_view",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-x",
+        "c",
+        "-std=gnu99",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-U_WIN32",
+        "-U_WIN64",
+        "-DOPENSSL_THREADS",
+        "-D_REENTRANT",
+        "-I",
+        "vendor/openssl-q-configs/32_longlong",
+        "-I",
+        "vendor/openssl-1.0.2q",
+        "-I",
+        "vendor/openssl-1.0.2q/include",
+        "-I",
+        "vendor/openssl-1.0.2q/crypto",
+        "-I",
+        "vendor/openssl-1.0.2q/ssl",
+        "-isystem",
+        "vendor/musl/include",
+        "-isystem",
+        "vendor/musl/generated",
+        "-O3",
+        "-fomit-frame-pointer",
+        "-fno-pic",
+        "-funwind-tables"
+      ],
+      "header_roots": [
+        "vendor/openssl-1.0.2q",
+        "vendor/openssl-q-configs",
+        "vendor/musl/include",
+        "vendor/musl/generated"
+      ],
+      "functions": [
+        {
+          "address": "0x239b30",
+          "size": 452,
+          "symbol": "tls1_heartbeat",
+          "target_sha256": "64e52f3d0702218fa3661fecd69adc45d66f20536e4f29413f9c68be9fe113c7",
+          "bindings": {
+            "SSL_state": "0x220df0",
+            "ERR_put_error": "0x1ba7f0",
+            "CRYPTO_malloc": "0x1b9f70",
+            "RAND_bytes": "0x1c7f20",
+            "ssl3_write_bytes": "0x23e390",
+            "CRYPTO_free": "0x1ba410"
+          },
+          "got_bindings": {},
+          "literals": {
+            "433a2f6769742f7562696c69627261726965732f55626973657276696365732f65787465726e616c2f686172626f7572636f6d6d6f6e2f6c69627261726965732f6f70656e73736c2f73736c2f74315f6c69622e6300": "0x1325dd8"
+          }
+        },
+        {
+          "address": "0x239990",
+          "size": 416,
+          "symbol": "tls1_process_heartbeat",
+          "target_sha256": "9cad9f5ed6073a9932ae65f32bf4b3cd0cbb608572e2d74ca823f6560eb8f8f2",
+          "bindings": {
+            "CRYPTO_malloc": "0x1b9f70",
+            "memcpy": "0xfa3330",
+            "RAND_bytes": "0x1c7f20",
+            "ssl3_write_bytes": "0x23e390",
+            "CRYPTO_free": "0x1ba410"
+          },
+          "got_bindings": {},
+          "literals": {
+            "433a2f6769742f7562696c69627261726965732f55626973657276696365732f65787465726e616c2f686172626f7572636f6d6d6f6e2f6c69627261726965732f6f70656e73736c2f73736c2f74315f6c69622e6300": "0x1325dd8"
+          }
+        },
+        {
+          "address": "0x239910",
+          "size": 128,
+          "symbol": "tls1_save_sigalgs",
+          "target_sha256": "f1721a560a6173c31aec3dd928e3f21e67af71c1af0fed054235328a6ec66af8",
+          "bindings": {
+            "CRYPTO_free": "0x1ba410",
+            "CRYPTO_malloc": "0x1b9f70",
+            "memcpy": "0xfa3330"
+          },
+          "got_bindings": {},
+          "literals": {
+            "433a2f6769742f7562696c69627261726965732f55626973657276696365732f65787465726e616c2f686172626f7572636f6d6d6f6e2f6c69627261726965732f6f70656e73736c2f73736c2f74315f6c69622e6300": "0x1325dd8"
+          }
+        }
+      ]
+    },
+    {
+      "id": "openssl_q_crypto_ec_ec2_oct_O3_omit",
+      "source": "src/OpenSslQ_crypto_ec_ec2_oct_O3_omit.c",
+      "compiler": "8.0.1",
+      "source_review": "library_abi_view",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-x",
+        "c",
+        "-std=gnu99",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-U_WIN32",
+        "-U_WIN64",
+        "-DOPENSSL_THREADS",
+        "-D_REENTRANT",
+        "-I",
+        "vendor/openssl-q-configs/32_longlong",
+        "-I",
+        "vendor/openssl-1.0.2q",
+        "-I",
+        "vendor/openssl-1.0.2q/include",
+        "-I",
+        "vendor/openssl-1.0.2q/crypto",
+        "-I",
+        "vendor/openssl-1.0.2q/crypto/ec",
+        "-isystem",
+        "vendor/musl/include",
+        "-isystem",
+        "vendor/musl/generated",
+        "-O3",
+        "-fomit-frame-pointer",
+        "-fno-pic",
+        "-funwind-tables"
+      ],
+      "header_roots": [
+        "vendor/openssl-1.0.2q",
+        "vendor/openssl-q-configs",
+        "vendor/musl/include",
+        "vendor/musl/generated"
+      ],
+      "functions": [
+        {
+          "address": "0x201ad0",
+          "size": 868,
+          "symbol": "ec_GF2m_simple_oct2point",
+          "target_sha256": "d315dedfddd01e3d7fa269fbf2af21d2d74b7544aa47ab27abdcb89a3bf88f12",
+          "bindings": {
+            "EC_GROUP_get_degree": "0x1da640",
+            "EC_POINT_set_to_infinity": "0x1dab20",
+            "ERR_put_error": "0x1ba7f0",
+            "BN_CTX_new": "0x1d0ad0",
+            "BN_CTX_start": "0x1d0c90",
+            "BN_CTX_get": "0x1d0e20",
+            "BN_bin2bn": "0x1c37b0",
+            "BN_ucmp": "0x1c3d10",
+            "BN_CTX_end": "0x1d0d90",
+            "BN_CTX_free": "0x1d0b30",
+            "EC_POINT_set_compressed_coordinates_GF2m": "0x2012d0",
+            "EC_POINT_is_on_curve": "0x1daf60",
+            "EC_POINT_set_affine_coordinates_GF2m": "0x1dac40"
+          },
+          "got_bindings": {},
+          "literals": {
+            "433a2f6769742f7562696c69627261726965732f55626973657276696365732f65787465726e616c2f686172626f7572636f6d6d6f6e2f6c69627261726965732f6f70656e73736c2f63727970746f2f65632f6563325f6f63742e6300": "0x1327af2"
+          }
+        }
+      ]
+    },
+    {
+      "id": "openssl_q_crypto_x509v3_v3_alt_O3_omit",
+      "source": "src/OpenSslQ_crypto_x509v3_v3_alt_O3_omit.c",
+      "compiler": "8.0.1",
+      "source_review": "library_abi_view",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-x",
+        "c",
+        "-std=gnu99",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-U_WIN32",
+        "-U_WIN64",
+        "-DOPENSSL_THREADS",
+        "-D_REENTRANT",
+        "-I",
+        "vendor/openssl-q-configs/32_longlong",
+        "-I",
+        "vendor/openssl-1.0.2q",
+        "-I",
+        "vendor/openssl-1.0.2q/include",
+        "-I",
+        "vendor/openssl-1.0.2q/crypto",
+        "-I",
+        "vendor/openssl-1.0.2q/crypto/x509v3",
+        "-isystem",
+        "vendor/musl/include",
+        "-isystem",
+        "vendor/musl/generated",
+        "-O3",
+        "-fomit-frame-pointer",
+        "-fno-pic",
+        "-funwind-tables"
+      ],
+      "header_roots": [
+        "vendor/openssl-1.0.2q",
+        "vendor/openssl-q-configs",
+        "vendor/musl/include",
+        "vendor/musl/generated"
+      ],
+      "functions": [
+        {
+          "address": "0x1f9a90",
+          "size": 460,
+          "symbol": "copy_email",
+          "target_sha256": "8e0a57ded375e1dac9133f109d8b1e68fa2dd1acddaeea57badf20b40abcecd6",
+          "bindings": {
+            "X509_get_subject_name": "0x1f4e20",
+            "X509_NAME_get_index_by_NID": "0x1f3550",
+            "X509_NAME_get_entry": "0x1f34f0",
+            "X509_NAME_ENTRY_get_data": "0x1f34e0",
+            "ASN1_STRING_dup": "0x1c2470",
+            "X509_NAME_delete_entry": "0x1f35f0",
+            "X509_NAME_ENTRY_free": "0x1f3ca0",
+            "GENERAL_NAME_new": "0x1f4ab0",
+            "sk_push": "0x1bff70",
+            "ERR_put_error": "0x1ba7f0",
+            "GENERAL_NAME_free": "0x1f4ac0",
+            "ASN1_STRING_free": "0x1c25a0"
+          },
+          "got_bindings": {},
+          "literals": {
+            "433a2f6769742f7562696c69627261726965732f55626973657276696365732f65787465726e616c2f686172626f7572636f6d6d6f6e2f6c69627261726965732f6f70656e73736c2f63727970746f2f7835303976332f76335f616c742e6300": "0x1323397"
+          }
+        },
+        {
+          "address": "0x1f95d0",
+          "size": 360,
+          "symbol": "v2i_GENERAL_NAME_ex",
+          "target_sha256": "64c4a31cc0c9ac8bc9c541a736f61930b448eed6f6d7e7b948b15c252db42eac",
+          "bindings": {
+            "name_cmp": "0x1f13c0",
+            "ERR_put_error": "0x1ba7f0",
+            "ERR_add_error_data": "0x1bb4a0"
+          },
+          "got_bindings": {},
+          "literals": {
+            "656d61696c00": "0x13139a7",
+            "55524900": "0x131f70d",
+            "444e5300": "0x130df75",
+            "52494400": "0x1327aba",
+            "495000": "0x12f9649",
+            "6469724e616d6500": "0x1327abe",
+            "6f746865724e616d6500": "0x13082ba",
+            "433a2f6769742f7562696c69627261726965732f55626973657276696365732f65787465726e616c2f686172626f7572636f6d6d6f6e2f6c69627261726965732f6f70656e73736c2f63727970746f2f7835303976332f76335f616c742e6300": "0x1323397",
+            "6e616d653d00": "0x12f961c"
+          }
+        }
+      ]
+    },
+    {
+      "id": "openssl_q_crypto_ec_ecp_oct_O3_omit",
+      "source": "src/OpenSslQ_crypto_ec_ecp_oct_O3_omit.c",
+      "compiler": "8.0.1",
+      "source_review": "library_abi_view",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-x",
+        "c",
+        "-std=gnu99",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-U_WIN32",
+        "-U_WIN64",
+        "-DOPENSSL_THREADS",
+        "-D_REENTRANT",
+        "-I",
+        "vendor/openssl-q-configs/32_longlong",
+        "-I",
+        "vendor/openssl-1.0.2q",
+        "-I",
+        "vendor/openssl-1.0.2q/include",
+        "-I",
+        "vendor/openssl-1.0.2q/crypto",
+        "-I",
+        "vendor/openssl-1.0.2q/crypto/ec",
+        "-isystem",
+        "vendor/musl/include",
+        "-isystem",
+        "vendor/musl/generated",
+        "-O3",
+        "-fomit-frame-pointer",
+        "-fno-pic",
+        "-funwind-tables"
+      ],
+      "header_roots": [
+        "vendor/openssl-1.0.2q",
+        "vendor/openssl-q-configs",
+        "vendor/musl/include",
+        "vendor/musl/generated"
+      ],
+      "functions": [
+        {
+          "address": "0x202600",
+          "size": 800,
+          "symbol": "ec_GFp_simple_oct2point",
+          "target_sha256": "2d5d50c163e6c960360771ba81dd358942d991d6b1f9b64331c2fefd6e8f7327",
+          "bindings": {
+            "BN_num_bits": "0x1c31f0",
+            "EC_POINT_set_to_infinity": "0x1dab20",
+            "ERR_put_error": "0x1ba7f0",
+            "BN_CTX_new": "0x1d0ad0",
+            "BN_CTX_start": "0x1d0c90",
+            "BN_CTX_get": "0x1d0e20",
+            "BN_bin2bn": "0x1c37b0",
+            "BN_ucmp": "0x1c3d10",
+            "BN_CTX_end": "0x1d0d90",
+            "BN_CTX_free": "0x1d0b30",
+            "EC_POINT_set_compressed_coordinates_GFp": "0x201240",
+            "EC_POINT_is_on_curve": "0x1daf60",
+            "EC_POINT_set_affine_coordinates_GFp": "0x1dabe0"
+          },
+          "got_bindings": {},
+          "literals": {
+            "433a2f6769742f7562696c69627261726965732f55626973657276696365732f65787465726e616c2f686172626f7572636f6d6d6f6e2f6c69627261726965732f6f70656e73736c2f63727970746f2f65632f6563705f6f63742e6300": "0x1311c11"
+          }
+        }
+      ]
+    },
+    {
+      "id": "openssl_q_crypto_bn_bn_ctx_O3_novec",
+      "source": "src/OpenSslQ_crypto_bn_bn_ctx_O3_novec.c",
+      "compiler": "8.0.1",
+      "source_review": "library_abi_view",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-x",
+        "c",
+        "-std=gnu99",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-U_WIN32",
+        "-U_WIN64",
+        "-DOPENSSL_THREADS",
+        "-D_REENTRANT",
+        "-I",
+        "vendor/openssl-q-configs/32_longlong",
+        "-I",
+        "vendor/openssl-1.0.2q",
+        "-I",
+        "vendor/openssl-1.0.2q/include",
+        "-I",
+        "vendor/openssl-1.0.2q/crypto",
+        "-I",
+        "vendor/openssl-1.0.2q/crypto/bn",
+        "-isystem",
+        "vendor/musl/include",
+        "-isystem",
+        "vendor/musl/generated",
+        "-O3",
+        "-fomit-frame-pointer",
+        "-fno-pic",
+        "-funwind-tables",
+        "-fno-vectorize",
+        "-fno-slp-vectorize"
+      ],
+      "header_roots": [
+        "vendor/openssl-1.0.2q",
+        "vendor/openssl-q-configs",
+        "vendor/musl/include",
+        "vendor/musl/generated"
+      ],
+      "functions": [
+        {
+          "address": "0x1d0e20",
+          "size": 468,
+          "symbol": "BN_CTX_get",
+          "target_sha256": "f048b1236a604d9faac58a1ae37008bb7fa4d445afba9a140f1b560474132085",
+          "bindings": {
+            "CRYPTO_malloc": "0x1b9f70",
+            "BN_init": "0x1c3370",
+            "BN_set_word": "0x1c3730",
+            "ERR_put_error": "0x1ba7f0"
+          },
+          "got_bindings": {},
+          "literals": {
+            "433a2f6769742f7562696c69627261726965732f55626973657276696365732f65787465726e616c2f686172626f7572636f6d6d6f6e2f6c69627261726965732f6f70656e73736c2f63727970746f2f626e2f626e5f6374782e6300": "0x13024dc"
+          }
+        },
+        {
+          "address": "0x1d0c90",
+          "size": 244,
+          "symbol": "BN_CTX_start",
+          "target_sha256": "e8f73a4a24abaf1293c4bf263982f1ec762319921e6e3359708bfe8e7a8a51f8",
+          "bindings": {
+            "CRYPTO_malloc": "0x1b9f70",
+            "memcpy": "0xfa3330",
+            "CRYPTO_free": "0x1ba410",
+            "ERR_put_error": "0x1ba7f0"
+          },
+          "got_bindings": {},
+          "literals": {
+            "433a2f6769742f7562696c69627261726965732f55626973657276696365732f65787465726e616c2f686172626f7572636f6d6d6f6e2f6c69627261726965732f6f70656e73736c2f63727970746f2f626e2f626e5f6374782e6300": "0x13024dc"
+          }
+        }
+      ]
+    },
+    {
+      "id": "openssl_q_crypto_rsa_rsa_ssl_O3_omit",
+      "source": "src/OpenSslQ_crypto_rsa_rsa_ssl_O3_omit.c",
+      "compiler": "8.0.1",
+      "source_review": "library_abi_view",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-x",
+        "c",
+        "-std=gnu99",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-U_WIN32",
+        "-U_WIN64",
+        "-DOPENSSL_THREADS",
+        "-D_REENTRANT",
+        "-I",
+        "vendor/openssl-q-configs/32_longlong",
+        "-I",
+        "vendor/openssl-1.0.2q",
+        "-I",
+        "vendor/openssl-1.0.2q/include",
+        "-I",
+        "vendor/openssl-1.0.2q/crypto",
+        "-I",
+        "vendor/openssl-1.0.2q/crypto/rsa",
+        "-isystem",
+        "vendor/musl/include",
+        "-isystem",
+        "vendor/musl/generated",
+        "-O3",
+        "-fomit-frame-pointer",
+        "-fno-pic",
+        "-funwind-tables"
+      ],
+      "header_roots": [
+        "vendor/openssl-1.0.2q",
+        "vendor/openssl-q-configs",
+        "vendor/musl/include",
+        "vendor/musl/generated"
+      ],
+      "functions": [
+        {
+          "address": "0x2123d0",
+          "size": 260,
+          "symbol": "RSA_padding_add_SSLv23",
+          "target_sha256": "873efa8d2e29e0276d8578607740f0ada13c644ceb363ebfc89ffbfd463a3654",
+          "bindings": {
+            "ERR_put_error": "0x1ba7f0",
+            "RAND_bytes": "0x1c7f20",
+            "memcpy": "0xfa3330"
+          },
+          "got_bindings": {},
+          "literals": {
+            "433a2f6769742f7562696c69627261726965732f55626973657276696365732f65787465726e616c2f686172626f7572636f6d6d6f6e2f6c69627261726965732f6f70656e73736c2f63727970746f2f7273612f7273615f73736c2e6300": "0x12f98ee"
+          }
+        },
+        {
+          "address": "0x2124e0",
+          "size": 432,
+          "symbol": "RSA_padding_check_SSLv23",
+          "target_sha256": "97080a6a085fae2dd577247ddb72e0fc7059104e243972e5b0ecd099e0545b03",
+          "bindings": {
+            "ERR_put_error": "0x1ba7f0",
+            "memcpy": "0xfa3330"
+          },
+          "got_bindings": {},
+          "literals": {
+            "433a2f6769742f7562696c69627261726965732f55626973657276696365732f65787465726e616c2f686172626f7572636f6d6d6f6e2f6c69627261726965732f6f70656e73736c2f63727970746f2f7273612f7273615f73736c2e6300": "0x12f98ee"
+          }
+        }
+      ]
+    },
+    {
+      "id": "openssl_q_ssl_s3_cbc_O3_omit",
+      "source": "src/OpenSslQ_ssl_s3_cbc_O3_omit.c",
+      "compiler": "8.0.1",
+      "source_review": "library_abi_view",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-x",
+        "c",
+        "-std=gnu99",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-U_WIN32",
+        "-U_WIN64",
+        "-DOPENSSL_THREADS",
+        "-D_REENTRANT",
+        "-I",
+        "vendor/openssl-q-configs/32_longlong",
+        "-I",
+        "vendor/openssl-1.0.2q",
+        "-I",
+        "vendor/openssl-1.0.2q/include",
+        "-I",
+        "vendor/openssl-1.0.2q/crypto",
+        "-I",
+        "vendor/openssl-1.0.2q/ssl",
+        "-isystem",
+        "vendor/musl/include",
+        "-isystem",
+        "vendor/musl/generated",
+        "-O3",
+        "-fomit-frame-pointer",
+        "-fno-pic",
+        "-funwind-tables"
+      ],
+      "header_roots": [
+        "vendor/openssl-1.0.2q",
+        "vendor/openssl-q-configs",
+        "vendor/musl/include",
+        "vendor/musl/generated"
+      ],
+      "functions": [
+        {
+          "address": "0x23feb0",
+          "size": 112,
+          "symbol": "ssl3_cbc_remove_padding",
+          "target_sha256": "0ad787cdaea35ba2f3abd7020311ac99f45262801abdf931246238c5bd77bfdd",
+          "bindings": {},
+          "got_bindings": {}
+        },
+        {
+          "address": "0x23ff20",
+          "size": 512,
+          "symbol": "tls1_cbc_remove_padding",
+          "target_sha256": "3f2685b00ed0033346ead001ca5f6e6d1abc34dc30336147e797884d9ec2bee3",
+          "bindings": {
+            "": "0x134cf18",
+            "CRYPTO_memcmp": "0x1b9a50",
+            "EVP_CIPHER_flags": "0x1ca220"
+          },
+          "got_bindings": {}
+        }
+      ]
+    },
+    {
+      "id": "openssl_q_crypto_rsa_rsa_pk1_O2_omit",
+      "source": "src/OpenSslQ_crypto_rsa_rsa_pk1_O2_omit.c",
+      "compiler": "8.0.1",
+      "source_review": "library_abi_view",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-x",
+        "c",
+        "-std=gnu99",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-U_WIN32",
+        "-U_WIN64",
+        "-DOPENSSL_THREADS",
+        "-D_REENTRANT",
+        "-I",
+        "vendor/openssl-q-configs/32_longlong",
+        "-I",
+        "vendor/openssl-1.0.2q",
+        "-I",
+        "vendor/openssl-1.0.2q/include",
+        "-I",
+        "vendor/openssl-1.0.2q/crypto",
+        "-I",
+        "vendor/openssl-1.0.2q/crypto/rsa",
+        "-isystem",
+        "vendor/musl/include",
+        "-isystem",
+        "vendor/musl/generated",
+        "-O2",
+        "-fomit-frame-pointer",
+        "-fno-pic",
+        "-funwind-tables"
+      ],
+      "header_roots": [
+        "vendor/openssl-1.0.2q",
+        "vendor/openssl-q-configs",
+        "vendor/musl/include",
+        "vendor/musl/generated"
+      ],
+      "functions": [
+        {
+          "address": "0x212220",
+          "size": 420,
+          "symbol": "RSA_padding_check_PKCS1_type_2",
+          "target_sha256": "e47a8e53c6f66be3bb7bc7bf70e9a83ebb95d843b3f0cb4957bb4b2115ef1286",
+          "bindings": {
+            "CRYPTO_malloc": "0x1b9f70",
+            "memset": "0xfa3340",
+            "memcpy": "0xfa3330",
+            "OPENSSL_cleanse": "0x1ba470",
+            "CRYPTO_free": "0x1ba410",
+            "ERR_put_error": "0x1ba7f0"
+          },
+          "got_bindings": {},
+          "literals": {
+            "433a2f6769742f7562696c69627261726965732f55626973657276696365732f65787465726e616c2f686172626f7572636f6d6d6f6e2f6c69627261726965732f6f70656e73736c2f63727970746f2f7273612f7273615f706b312e6300": "0x130fe08"
+          }
+        }
+      ]
+    },
+    {
+      "id": "openssl_q_crypto_pkcs7_pk7_doit_O2_omit",
+      "source": "src/OpenSslQ_crypto_pkcs7_pk7_doit_O2_omit.c",
+      "compiler": "8.0.1",
+      "source_review": "library_abi_view",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-x",
+        "c",
+        "-std=gnu99",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-U_WIN32",
+        "-U_WIN64",
+        "-DOPENSSL_THREADS",
+        "-D_REENTRANT",
+        "-I",
+        "vendor/openssl-q-configs/32_longlong",
+        "-I",
+        "vendor/openssl-1.0.2q",
+        "-I",
+        "vendor/openssl-1.0.2q/include",
+        "-I",
+        "vendor/openssl-1.0.2q/crypto",
+        "-I",
+        "vendor/openssl-1.0.2q/crypto/pkcs7",
+        "-isystem",
+        "vendor/musl/include",
+        "-isystem",
+        "vendor/musl/generated",
+        "-O2",
+        "-fomit-frame-pointer",
+        "-fno-pic",
+        "-funwind-tables"
+      ],
+      "header_roots": [
+        "vendor/openssl-1.0.2q",
+        "vendor/openssl-q-configs",
+        "vendor/musl/include",
+        "vendor/musl/generated"
+      ],
+      "functions": [
+        {
+          "address": "0x2065c0",
+          "size": 192,
+          "symbol": "PKCS7_find_digest",
+          "target_sha256": "2cf75f9640f5bbdf893a539da0ad3c51bc5da52bfef422d2e6de2701773e8609",
+          "bindings": {
+            "BIO_find_type": "0x1b9440",
+            "BIO_ctrl": "0x1b9000",
+            "EVP_MD_CTX_md": "0x1ca2c0",
+            "EVP_MD_type": "0x1ca270",
+            "BIO_next": "0x1b9490",
+            "ERR_put_error": "0x1ba7f0"
+          },
+          "got_bindings": {},
+          "literals": {
+            "433a2f6769742f7562696c69627261726965732f55626973657276696365732f65787465726e616c2f686172626f7572636f6d6d6f6e2f6c69627261726965732f6f70656e73736c2f63727970746f2f706b6373372f706b375f646f69742e6300": "0x12f5749"
+          }
+        }
+      ]
+    },
+    {
+      "id": "openssl_q_crypto_x509_x509_cmp_O2_omit",
+      "source": "src/OpenSslQ_crypto_x509_x509_cmp_O2_omit.c",
+      "compiler": "8.0.1",
+      "source_review": "library_abi_view",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-x",
+        "c",
+        "-std=gnu99",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-U_WIN32",
+        "-U_WIN64",
+        "-DOPENSSL_THREADS",
+        "-D_REENTRANT",
+        "-I",
+        "vendor/openssl-q-configs/32_longlong",
+        "-I",
+        "vendor/openssl-1.0.2q",
+        "-I",
+        "vendor/openssl-1.0.2q/include",
+        "-I",
+        "vendor/openssl-1.0.2q/crypto",
+        "-I",
+        "vendor/openssl-1.0.2q/crypto/x509",
+        "-isystem",
+        "vendor/musl/include",
+        "-isystem",
+        "vendor/musl/generated",
+        "-O2",
+        "-fomit-frame-pointer",
+        "-fno-pic",
+        "-funwind-tables"
+      ],
+      "header_roots": [
+        "vendor/openssl-1.0.2q",
+        "vendor/openssl-q-configs",
+        "vendor/musl/include",
+        "vendor/musl/generated"
+      ],
+      "functions": [
+        {
+          "address": "0x1f5420",
+          "size": 124,
+          "symbol": "X509_chain_up_ref",
+          "target_sha256": "63655ea7eaa3b49bc513dac66b7dad6d1f1b341547279727dccbc71df85c2e68",
+          "bindings": {
+            "sk_dup": "0x1bf7f0",
+            "sk_num": "0x1c0240",
+            "sk_value": "0x1c0260",
+            "CRYPTO_add_lock": "0x1b9930"
+          },
+          "got_bindings": {},
+          "literals": {
+            "433a2f6769742f7562696c69627261726965732f55626973657276696365732f65787465726e616c2f686172626f7572636f6d6d6f6e2f6c69627261726965732f6f70656e73736c2f63727970746f2f783530392f783530395f636d702e6300": "0x130fcac"
+          }
+        }
+      ]
+    },
+    {
+      "id": "openssl_q_crypto_ec_ec_err_O3_omit",
+      "source": "src/OpenSslQ_crypto_ec_ec_err_O3_omit.c",
+      "compiler": "8.0.1",
+      "source_review": "library_abi_view",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-x",
+        "c",
+        "-std=gnu99",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-U_WIN32",
+        "-U_WIN64",
+        "-DOPENSSL_THREADS",
+        "-D_REENTRANT",
+        "-I",
+        "vendor/openssl-q-configs/32_longlong",
+        "-I",
+        "vendor/openssl-1.0.2q",
+        "-I",
+        "vendor/openssl-1.0.2q/include",
+        "-I",
+        "vendor/openssl-1.0.2q/crypto",
+        "-I",
+        "vendor/openssl-1.0.2q/crypto/ec",
+        "-isystem",
+        "vendor/musl/include",
+        "-isystem",
+        "vendor/musl/generated",
+        "-O3",
+        "-fomit-frame-pointer",
+        "-fno-pic",
+        "-funwind-tables"
+      ],
+      "header_roots": [
+        "vendor/openssl-1.0.2q",
+        "vendor/openssl-q-configs",
+        "vendor/musl/include",
+        "vendor/musl/generated"
+      ],
+      "functions": [
+        {
+          "address": "0x252e00",
+          "size": 60,
+          "symbol": "ERR_load_EC_strings",
+          "target_sha256": "7fef80c4b0bf20e91a609642aee06fb37794c8105e300fc237a144e64c8b4383",
+          "bindings": {
+            "": "0x17eac38",
+            "ERR_func_error_string": "0x1bb0d0",
+            "ERR_load_strings": "0x1ba700"
+          },
+          "got_bindings": {}
+        }
+      ]
     }
   ]
 }

@@ -1,0 +1,11 @@
+{
+  "tag": "OpenSSL_1_0_2q",
+  "url": "https://api.github.com/repos/openssl/openssl/tarball/OpenSSL_1_0_2q",
+  "archive_sha256": "7b26272c54c269a0bce122d7c2c39626393367223c4888b8a000a9bebf3ffd8d",
+  "tag_object": "4bd676413494473ed5f3011c7ffa423eaae79468",
+  "commit": "5707219a6aae8052cb98aa361d115be01b8fd894",
+  "configuration": "linux-aarch64 no-asm no-shared, derived THIRTY_TWO_BIT and BN_LLONG fixture",
+  "exported_headers": "Materialized from the corresponding public q source files",
+  "diagnostic_filename": "Observed original source-file prefix through #line directives",
+  "limitations": "These isolated complete C body matches do not establish the complete original library revision, original SDK, or linked data."
+}

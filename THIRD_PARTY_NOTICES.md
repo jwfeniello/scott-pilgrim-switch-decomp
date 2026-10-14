@@ -25,3 +25,7 @@ Jean-loup Gailly and Mark Adler, under the retained zlib license in
 `vendor/zlib-1.2.11/LICENSE` and `zlib.h`. Source files retain their individual
 copyright notices. The altered fixture version marker is identified in
 `vendor/README.md`; no complete proprietary SDK fork is distributed.
+
+The public OpenSSL_1_0_2q views retain the OpenSSL/SSLeay terms in
+`vendor/openssl-1.0.2q/LICENSE`. The OpenSSL Project, Eric Young and Tim Hudson
+acknowledgments above also apply to these additional public source/header views.

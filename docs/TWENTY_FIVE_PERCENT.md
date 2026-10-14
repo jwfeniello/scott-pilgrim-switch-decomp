@@ -1,7 +1,7 @@
 # Work toward 25%
 
-Current verified checkpoint: **29,663 exact functions /
-2,829,700 bytes / 17.257779%** of the original 16,396,664-byte
+Current verified checkpoint: **29,738 exact functions /
+2,861,664 bytes / 17.452721%** of the original 16,396,664-byte
 `.text`. The 25% target requires 4,099,166 exact bytes and remains unfinished.
 
 ## Added engine and ABI views
@@ -39,7 +39,7 @@ standard ELF relocations are checked during each full function comparison.
 Every added C build was compiled twice with identical object output. Adding an
 external side effect to every preprocessed C definition rejects every credited
 function. Receipts are in `progress/c_library_validation.json`. These controls
-complement the fresh full 1,343-build original-byte comparison in
+complement the fresh full 1,363-build original-byte comparison in
 `progress/verified.json`.
 
 ## Vector and named-call ABI recovery
@@ -89,9 +89,30 @@ bytes alone do not establish those declarations.
 All eight new builds passed fresh subset compilation, identical-object repeats,
 and external-side-effect negative controls for every credited function.
 Their receipts are merged in `progress/recovery_validation.json` and the
-fresh complete snapshot covers all 1,343 source builds. The player helper in
+fresh complete snapshot covers all 1,363 source builds. The player helper in
 `src/wip/PlayerObjectListIndex.cpp` passes 128 bounded normal-path comparisons
 but remains uncredited; see [the behavior findings](PLAYER_OBJECT_LIST.md).
+
+## Older public OpenSSL source revision
+
+The official `OpenSSL_1_0_2q` source and its corresponding public headers add
+75 complete functions / 31,964 bytes across 20 compiler profiles. Larger recovered
+bodies include `ssl3_read_bytes` at `0x23ebb0` (4,148 bytes) and
+`ssl3_get_client_key_exchange` at `0x229b10` (4,036 bytes). The newer `u` source
+had similar implementations with remaining instruction differences; the older
+ordinary C algorithms pass the unchanged complete-byte verifier.
+
+The q fixture uses no-assembly AArch64 configuration with derived 32-bit bignum
+limbs and `BN_LLONG`. Its source tag, upstream commit, archive SHA-256 and
+configuration limits are recorded in `vendor/openssl-q-provenance.json`, and
+fixture bytes in `vendor/openssl_q_sha256.json`. Its original license is retained.
+All 20 profiles have identical-object repeat and every-definition side-effect
+negative controls in `progress/c_library_validation.json`.
+
+Across the recorded u and q source views, 428 OpenSSL profiles now reproduce
+914 complete original bodies / 326,624 bytes. This evidence identifies compatible
+isolated source bodies. It does not establish one complete original library
+revision, original SDK/compiler release, linked data, or a complete library build.
 
 ## Reporting and remaining work
 

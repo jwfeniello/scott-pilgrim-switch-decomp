@@ -62,3 +62,18 @@ The sole header-value alteration supplies the observed
 Matching that string and six isolated bodies does not establish the complete
 SDK fork, its configuration, or linked data. The full original license notice
 is retained in [`zlib-1.2.11/LICENSE`](zlib-1.2.11/LICENSE) and `zlib.h`.
+
+## Public OpenSSL q source fixture
+
+`openssl-1.0.2q` contains public headers, exported-header copies, and notices from
+the official [`OpenSSL_1_0_2q` tag](https://github.com/openssl/openssl/tree/OpenSSL_1_0_2q).
+Its commit and archive hash are in `openssl-q-provenance.json`; fixture hashes
+are in `openssl_q_sha256.json`. Exported headers are materialized from the
+corresponding q source files. `openssl-q-configs/32_longlong` supplies a derived
+no-assembly AArch64 configuration with 32-bit bignum limbs and `BN_LLONG`.
+
+The C views in `src/OpenSslQ_*.c` retain upstream algorithms and copyright notices.
+Their diagnostic filenames use the observed original prefix. The complete
+OpenSSL/SSLeay license is in [`openssl-1.0.2q/LICENSE`](openssl-1.0.2q/LICENSE).
+Matching isolated q and u bodies does not establish a complete original library
+revision, SDK installation, configuration, or linked data.
