@@ -1,0 +1,2175 @@
+{
+  "source": "src/wip/PlayerObjectListIndex.cpp",
+  "source_sha256": "7a07c7d6d56ca5a2006da7a1e5c39ed5d3124fdbd8651e7cf21277a3f3a321b6",
+  "target_elf_sha256": "ea95638e6d6aaa0dc6cddd552a9366799aa1ec3bc07ee201f23f6c151103f5b8",
+  "original_address": "0x996ab0",
+  "original_size": 376,
+  "compiled_size": 372,
+  "compiler": "clang version 8.0.1 (tags/RELEASE_801/final)",
+  "compiled_function_sha256": "bce94d99ef64bbfa761e2e38bf8f909f07fd5ffa3ddec8ec81aec51ed3570017",
+  "exact_match": false,
+  "normal_path_cases": 128,
+  "limitations": "External dependencies are stubbed. No unwinding, full game behavior, linking, or boot proof.",
+  "cases": [
+    {
+      "values": [],
+      "target": 67764224,
+      "cache_mode": "ready",
+      "keep_buffer": false,
+      "result": -1,
+      "trace": [
+        "get_level_item",
+        "collect"
+      ]
+    },
+    {
+      "values": [],
+      "target": 67764224,
+      "cache_mode": "ready",
+      "keep_buffer": true,
+      "result": -1,
+      "trace": [
+        "get_level_item",
+        "collect",
+        "choose_allocator",
+        "free"
+      ]
+    },
+    {
+      "values": [],
+      "target": 67764224,
+      "cache_mode": "missing_handle",
+      "keep_buffer": false,
+      "result": -1,
+      "trace": [
+        "get_level_item",
+        "resolve",
+        "ensure_ready",
+        "collect"
+      ]
+    },
+    {
+      "values": [],
+      "target": 67764224,
+      "cache_mode": "missing_handle",
+      "keep_buffer": true,
+      "result": -1,
+      "trace": [
+        "get_level_item",
+        "resolve",
+        "ensure_ready",
+        "collect",
+        "choose_allocator",
+        "free"
+      ]
+    },
+    {
+      "values": [],
+      "target": 67764224,
+      "cache_mode": "missing_object",
+      "keep_buffer": false,
+      "result": -1,
+      "trace": [
+        "get_level_item",
+        "resolve",
+        "ensure_ready",
+        "collect"
+      ]
+    },
+    {
+      "values": [],
+      "target": 67764224,
+      "cache_mode": "missing_object",
+      "keep_buffer": true,
+      "result": -1,
+      "trace": [
+        "get_level_item",
+        "resolve",
+        "ensure_ready",
+        "collect",
+        "choose_allocator",
+        "free"
+      ]
+    },
+    {
+      "values": [],
+      "target": 67764224,
+      "cache_mode": "cleared_after_init",
+      "keep_buffer": false,
+      "result": -1,
+      "trace": [
+        "get_level_item",
+        "resolve",
+        "ensure_ready",
+        "collect"
+      ]
+    },
+    {
+      "values": [],
+      "target": 67764224,
+      "cache_mode": "cleared_after_init",
+      "keep_buffer": true,
+      "result": -1,
+      "trace": [
+        "get_level_item",
+        "resolve",
+        "ensure_ready",
+        "collect",
+        "choose_allocator",
+        "free"
+      ]
+    },
+    {
+      "values": [],
+      "target": 0,
+      "cache_mode": "ready",
+      "keep_buffer": false,
+      "result": -1,
+      "trace": [
+        "get_level_item",
+        "collect"
+      ]
+    },
+    {
+      "values": [],
+      "target": 0,
+      "cache_mode": "ready",
+      "keep_buffer": true,
+      "result": -1,
+      "trace": [
+        "get_level_item",
+        "collect",
+        "choose_allocator",
+        "free"
+      ]
+    },
+    {
+      "values": [],
+      "target": 0,
+      "cache_mode": "missing_handle",
+      "keep_buffer": false,
+      "result": -1,
+      "trace": [
+        "get_level_item",
+        "resolve",
+        "ensure_ready",
+        "collect"
+      ]
+    },
+    {
+      "values": [],
+      "target": 0,
+      "cache_mode": "missing_handle",
+      "keep_buffer": true,
+      "result": -1,
+      "trace": [
+        "get_level_item",
+        "resolve",
+        "ensure_ready",
+        "collect",
+        "choose_allocator",
+        "free"
+      ]
+    },
+    {
+      "values": [],
+      "target": 0,
+      "cache_mode": "missing_object",
+      "keep_buffer": false,
+      "result": -1,
+      "trace": [
+        "get_level_item",
+        "resolve",
+        "ensure_ready",
+        "collect"
+      ]
+    },
+    {
+      "values": [],
+      "target": 0,
+      "cache_mode": "missing_object",
+      "keep_buffer": true,
+      "result": -1,
+      "trace": [
+        "get_level_item",
+        "resolve",
+        "ensure_ready",
+        "collect",
+        "choose_allocator",
+        "free"
+      ]
+    },
+    {
+      "values": [],
+      "target": 0,
+      "cache_mode": "cleared_after_init",
+      "keep_buffer": false,
+      "result": -1,
+      "trace": [
+        "get_level_item",
+        "resolve",
+        "ensure_ready",
+        "collect"
+      ]
+    },
+    {
+      "values": [],
+      "target": 0,
+      "cache_mode": "cleared_after_init",
+      "keep_buffer": true,
+      "result": -1,
+      "trace": [
+        "get_level_item",
+        "resolve",
+        "ensure_ready",
+        "collect",
+        "choose_allocator",
+        "free"
+      ]
+    },
+    {
+      "values": [
+        67764224
+      ],
+      "target": 67764224,
+      "cache_mode": "ready",
+      "keep_buffer": false,
+      "result": 0,
+      "trace": [
+        "get_level_item",
+        "collect",
+        "choose_allocator",
+        "free"
+      ]
+    },
+    {
+      "values": [
+        67764224
+      ],
+      "target": 67764224,
+      "cache_mode": "ready",
+      "keep_buffer": true,
+      "result": 0,
+      "trace": [
+        "get_level_item",
+        "collect",
+        "choose_allocator",
+        "free"
+      ]
+    },
+    {
+      "values": [
+        67764224
+      ],
+      "target": 67764224,
+      "cache_mode": "missing_handle",
+      "keep_buffer": false,
+      "result": 0,
+      "trace": [
+        "get_level_item",
+        "resolve",
+        "ensure_ready",
+        "collect",
+        "choose_allocator",
+        "free"
+      ]
+    },
+    {
+      "values": [
+        67764224
+      ],
+      "target": 67764224,
+      "cache_mode": "missing_handle",
+      "keep_buffer": true,
+      "result": 0,
+      "trace": [
+        "get_level_item",
+        "resolve",
+        "ensure_ready",
+        "collect",
+        "choose_allocator",
+        "free"
+      ]
+    },
+    {
+      "values": [
+        67764224
+      ],
+      "target": 67764224,
+      "cache_mode": "missing_object",
+      "keep_buffer": false,
+      "result": 0,
+      "trace": [
+        "get_level_item",
+        "resolve",
+        "ensure_ready",
+        "collect",
+        "choose_allocator",
+        "free"
+      ]
+    },
+    {
+      "values": [
+        67764224
+      ],
+      "target": 67764224,
+      "cache_mode": "missing_object",
+      "keep_buffer": true,
+      "result": 0,
+      "trace": [
+        "get_level_item",
+        "resolve",
+        "ensure_ready",
+        "collect",
+        "choose_allocator",
+        "free"
+      ]
+    },
+    {
+      "values": [
+        67764224
+      ],
+      "target": 67764224,
+      "cache_mode": "cleared_after_init",
+      "keep_buffer": false,
+      "result": 0,
+      "trace": [
+        "get_level_item",
+        "resolve",
+        "ensure_ready",
+        "collect",
+        "choose_allocator",
+        "free"
+      ]
+    },
+    {
+      "values": [
+        67764224
+      ],
+      "target": 67764224,
+      "cache_mode": "cleared_after_init",
+      "keep_buffer": true,
+      "result": 0,
+      "trace": [
+        "get_level_item",
+        "resolve",
+        "ensure_ready",
+        "collect",
+        "choose_allocator",
+        "free"
+      ]
+    },
+    {
+      "values": [
+        67764224
+      ],
+      "target": 0,
+      "cache_mode": "ready",
+      "keep_buffer": false,
+      "result": -1,
+      "trace": [
+        "get_level_item",
+        "collect",
+        "choose_allocator",
+        "free"
+      ]
+    },
+    {
+      "values": [
+        67764224
+      ],
+      "target": 0,
+      "cache_mode": "ready",
+      "keep_buffer": true,
+      "result": -1,
+      "trace": [
+        "get_level_item",
+        "collect",
+        "choose_allocator",
+        "free"
+      ]
+    },
+    {
+      "values": [
+        67764224
+      ],
+      "target": 0,
+      "cache_mode": "missing_handle",
+      "keep_buffer": false,
+      "result": -1,
+      "trace": [
+        "get_level_item",
+        "resolve",
+        "ensure_ready",
+        "collect",
+        "choose_allocator",
+        "free"
+      ]
+    },
+    {
+      "values": [
+        67764224
+      ],
+      "target": 0,
+      "cache_mode": "missing_handle",
+      "keep_buffer": true,
+      "result": -1,
+      "trace": [
+        "get_level_item",
+        "resolve",
+        "ensure_ready",
+        "collect",
+        "choose_allocator",
+        "free"
+      ]
+    },
+    {
+      "values": [
+        67764224
+      ],
+      "target": 0,
+      "cache_mode": "missing_object",
+      "keep_buffer": false,
+      "result": -1,
+      "trace": [
+        "get_level_item",
+        "resolve",
+        "ensure_ready",
+        "collect",
+        "choose_allocator",
+        "free"
+      ]
+    },
+    {
+      "values": [
+        67764224
+      ],
+      "target": 0,
+      "cache_mode": "missing_object",
+      "keep_buffer": true,
+      "result": -1,
+      "trace": [
+        "get_level_item",
+        "resolve",
+        "ensure_ready",
+        "collect",
+        "choose_allocator",
+        "free"
+      ]
+    },
+    {
+      "values": [
+        67764224
+      ],
+      "target": 0,
+      "cache_mode": "cleared_after_init",
+      "keep_buffer": false,
+      "result": -1,
+      "trace": [
+        "get_level_item",
+        "resolve",
+        "ensure_ready",
+        "collect",
+        "choose_allocator",
+        "free"
+      ]
+    },
+    {
+      "values": [
+        67764224
+      ],
+      "target": 0,
+      "cache_mode": "cleared_after_init",
+      "keep_buffer": true,
+      "result": -1,
+      "trace": [
+        "get_level_item",
+        "resolve",
+        "ensure_ready",
+        "collect",
+        "choose_allocator",
+        "free"
+      ]
+    },
+    {
+      "values": [
+        0
+      ],
+      "target": 67764224,
+      "cache_mode": "ready",
+      "keep_buffer": false,
+      "result": -1,
+      "trace": [
+        "get_level_item",
+        "collect",
+        "choose_allocator",
+        "free"
+      ]
+    },
+    {
+      "values": [
+        0
+      ],
+      "target": 67764224,
+      "cache_mode": "ready",
+      "keep_buffer": true,
+      "result": -1,
+      "trace": [
+        "get_level_item",
+        "collect",
+        "choose_allocator",
+        "free"
+      ]
+    },
+    {
+      "values": [
+        0
+      ],
+      "target": 67764224,
+      "cache_mode": "missing_handle",
+      "keep_buffer": false,
+      "result": -1,
+      "trace": [
+        "get_level_item",
+        "resolve",
+        "ensure_ready",
+        "collect",
+        "choose_allocator",
+        "free"
+      ]
+    },
+    {
+      "values": [
+        0
+      ],
+      "target": 67764224,
+      "cache_mode": "missing_handle",
+      "keep_buffer": true,
+      "result": -1,
+      "trace": [
+        "get_level_item",
+        "resolve",
+        "ensure_ready",
+        "collect",
+        "choose_allocator",
+        "free"
+      ]
+    },
+    {
+      "values": [
+        0
+      ],
+      "target": 67764224,
+      "cache_mode": "missing_object",
+      "keep_buffer": false,
+      "result": -1,
+      "trace": [
+        "get_level_item",
+        "resolve",
+        "ensure_ready",
+        "collect",
+        "choose_allocator",
+        "free"
+      ]
+    },
+    {
+      "values": [
+        0
+      ],
+      "target": 67764224,
+      "cache_mode": "missing_object",
+      "keep_buffer": true,
+      "result": -1,
+      "trace": [
+        "get_level_item",
+        "resolve",
+        "ensure_ready",
+        "collect",
+        "choose_allocator",
+        "free"
+      ]
+    },
+    {
+      "values": [
+        0
+      ],
+      "target": 67764224,
+      "cache_mode": "cleared_after_init",
+      "keep_buffer": false,
+      "result": -1,
+      "trace": [
+        "get_level_item",
+        "resolve",
+        "ensure_ready",
+        "collect",
+        "choose_allocator",
+        "free"
+      ]
+    },
+    {
+      "values": [
+        0
+      ],
+      "target": 67764224,
+      "cache_mode": "cleared_after_init",
+      "keep_buffer": true,
+      "result": -1,
+      "trace": [
+        "get_level_item",
+        "resolve",
+        "ensure_ready",
+        "collect",
+        "choose_allocator",
+        "free"
+      ]
+    },
+    {
+      "values": [
+        0
+      ],
+      "target": 0,
+      "cache_mode": "ready",
+      "keep_buffer": false,
+      "result": -1,
+      "trace": [
+        "get_level_item",
+        "collect",
+        "choose_allocator",
+        "free"
+      ]
+    },
+    {
+      "values": [
+        0
+      ],
+      "target": 0,
+      "cache_mode": "ready",
+      "keep_buffer": true,
+      "result": -1,
+      "trace": [
+        "get_level_item",
+        "collect",
+        "choose_allocator",
+        "free"
+      ]
+    },
+    {
+      "values": [
+        0
+      ],
+      "target": 0,
+      "cache_mode": "missing_handle",
+      "keep_buffer": false,
+      "result": -1,
+      "trace": [
+        "get_level_item",
+        "resolve",
+        "ensure_ready",
+        "collect",
+        "choose_allocator",
+        "free"
+      ]
+    },
+    {
+      "values": [
+        0
+      ],
+      "target": 0,
+      "cache_mode": "missing_handle",
+      "keep_buffer": true,
+      "result": -1,
+      "trace": [
+        "get_level_item",
+        "resolve",
+        "ensure_ready",
+        "collect",
+        "choose_allocator",
+        "free"
+      ]
+    },
+    {
+      "values": [
+        0
+      ],
+      "target": 0,
+      "cache_mode": "missing_object",
+      "keep_buffer": false,
+      "result": -1,
+      "trace": [
+        "get_level_item",
+        "resolve",
+        "ensure_ready",
+        "collect",
+        "choose_allocator",
+        "free"
+      ]
+    },
+    {
+      "values": [
+        0
+      ],
+      "target": 0,
+      "cache_mode": "missing_object",
+      "keep_buffer": true,
+      "result": -1,
+      "trace": [
+        "get_level_item",
+        "resolve",
+        "ensure_ready",
+        "collect",
+        "choose_allocator",
+        "free"
+      ]
+    },
+    {
+      "values": [
+        0
+      ],
+      "target": 0,
+      "cache_mode": "cleared_after_init",
+      "keep_buffer": false,
+      "result": -1,
+      "trace": [
+        "get_level_item",
+        "resolve",
+        "ensure_ready",
+        "collect",
+        "choose_allocator",
+        "free"
+      ]
+    },
+    {
+      "values": [
+        0
+      ],
+      "target": 0,
+      "cache_mode": "cleared_after_init",
+      "keep_buffer": true,
+      "result": -1,
+      "trace": [
+        "get_level_item",
+        "resolve",
+        "ensure_ready",
+        "collect",
+        "choose_allocator",
+        "free"
+      ]
+    },
+    {
+      "values": [
+        67768320,
+        67764224,
+        67764224
+      ],
+      "target": 67764224,
+      "cache_mode": "ready",
+      "keep_buffer": false,
+      "result": 1,
+      "trace": [
+        "get_level_item",
+        "collect",
+        "choose_allocator",
+        "free"
+      ]
+    },
+    {
+      "values": [
+        67768320,
+        67764224,
+        67764224
+      ],
+      "target": 67764224,
+      "cache_mode": "ready",
+      "keep_buffer": true,
+      "result": 1,
+      "trace": [
+        "get_level_item",
+        "collect",
+        "choose_allocator",
+        "free"
+      ]
+    },
+    {
+      "values": [
+        67768320,
+        67764224,
+        67764224
+      ],
+      "target": 67764224,
+      "cache_mode": "missing_handle",
+      "keep_buffer": false,
+      "result": 1,
+      "trace": [
+        "get_level_item",
+        "resolve",
+        "ensure_ready",
+        "collect",
+        "choose_allocator",
+        "free"
+      ]
+    },
+    {
+      "values": [
+        67768320,
+        67764224,
+        67764224
+      ],
+      "target": 67764224,
+      "cache_mode": "missing_handle",
+      "keep_buffer": true,
+      "result": 1,
+      "trace": [
+        "get_level_item",
+        "resolve",
+        "ensure_ready",
+        "collect",
+        "choose_allocator",
+        "free"
+      ]
+    },
+    {
+      "values": [
+        67768320,
+        67764224,
+        67764224
+      ],
+      "target": 67764224,
+      "cache_mode": "missing_object",
+      "keep_buffer": false,
+      "result": 1,
+      "trace": [
+        "get_level_item",
+        "resolve",
+        "ensure_ready",
+        "collect",
+        "choose_allocator",
+        "free"
+      ]
+    },
+    {
+      "values": [
+        67768320,
+        67764224,
+        67764224
+      ],
+      "target": 67764224,
+      "cache_mode": "missing_object",
+      "keep_buffer": true,
+      "result": 1,
+      "trace": [
+        "get_level_item",
+        "resolve",
+        "ensure_ready",
+        "collect",
+        "choose_allocator",
+        "free"
+      ]
+    },
+    {
+      "values": [
+        67768320,
+        67764224,
+        67764224
+      ],
+      "target": 67764224,
+      "cache_mode": "cleared_after_init",
+      "keep_buffer": false,
+      "result": 1,
+      "trace": [
+        "get_level_item",
+        "resolve",
+        "ensure_ready",
+        "collect",
+        "choose_allocator",
+        "free"
+      ]
+    },
+    {
+      "values": [
+        67768320,
+        67764224,
+        67764224
+      ],
+      "target": 67764224,
+      "cache_mode": "cleared_after_init",
+      "keep_buffer": true,
+      "result": 1,
+      "trace": [
+        "get_level_item",
+        "resolve",
+        "ensure_ready",
+        "collect",
+        "choose_allocator",
+        "free"
+      ]
+    },
+    {
+      "values": [
+        67768320,
+        67764224,
+        67764224
+      ],
+      "target": 0,
+      "cache_mode": "ready",
+      "keep_buffer": false,
+      "result": -1,
+      "trace": [
+        "get_level_item",
+        "collect",
+        "choose_allocator",
+        "free"
+      ]
+    },
+    {
+      "values": [
+        67768320,
+        67764224,
+        67764224
+      ],
+      "target": 0,
+      "cache_mode": "ready",
+      "keep_buffer": true,
+      "result": -1,
+      "trace": [
+        "get_level_item",
+        "collect",
+        "choose_allocator",
+        "free"
+      ]
+    },
+    {
+      "values": [
+        67768320,
+        67764224,
+        67764224
+      ],
+      "target": 0,
+      "cache_mode": "missing_handle",
+      "keep_buffer": false,
+      "result": -1,
+      "trace": [
+        "get_level_item",
+        "resolve",
+        "ensure_ready",
+        "collect",
+        "choose_allocator",
+        "free"
+      ]
+    },
+    {
+      "values": [
+        67768320,
+        67764224,
+        67764224
+      ],
+      "target": 0,
+      "cache_mode": "missing_handle",
+      "keep_buffer": true,
+      "result": -1,
+      "trace": [
+        "get_level_item",
+        "resolve",
+        "ensure_ready",
+        "collect",
+        "choose_allocator",
+        "free"
+      ]
+    },
+    {
+      "values": [
+        67768320,
+        67764224,
+        67764224
+      ],
+      "target": 0,
+      "cache_mode": "missing_object",
+      "keep_buffer": false,
+      "result": -1,
+      "trace": [
+        "get_level_item",
+        "resolve",
+        "ensure_ready",
+        "collect",
+        "choose_allocator",
+        "free"
+      ]
+    },
+    {
+      "values": [
+        67768320,
+        67764224,
+        67764224
+      ],
+      "target": 0,
+      "cache_mode": "missing_object",
+      "keep_buffer": true,
+      "result": -1,
+      "trace": [
+        "get_level_item",
+        "resolve",
+        "ensure_ready",
+        "collect",
+        "choose_allocator",
+        "free"
+      ]
+    },
+    {
+      "values": [
+        67768320,
+        67764224,
+        67764224
+      ],
+      "target": 0,
+      "cache_mode": "cleared_after_init",
+      "keep_buffer": false,
+      "result": -1,
+      "trace": [
+        "get_level_item",
+        "resolve",
+        "ensure_ready",
+        "collect",
+        "choose_allocator",
+        "free"
+      ]
+    },
+    {
+      "values": [
+        67768320,
+        67764224,
+        67764224
+      ],
+      "target": 0,
+      "cache_mode": "cleared_after_init",
+      "keep_buffer": true,
+      "result": -1,
+      "trace": [
+        "get_level_item",
+        "resolve",
+        "ensure_ready",
+        "collect",
+        "choose_allocator",
+        "free"
+      ]
+    },
+    {
+      "values": [
+        67764224,
+        67768320
+      ],
+      "target": 67764224,
+      "cache_mode": "ready",
+      "keep_buffer": false,
+      "result": 0,
+      "trace": [
+        "get_level_item",
+        "collect",
+        "choose_allocator",
+        "free"
+      ]
+    },
+    {
+      "values": [
+        67764224,
+        67768320
+      ],
+      "target": 67764224,
+      "cache_mode": "ready",
+      "keep_buffer": true,
+      "result": 0,
+      "trace": [
+        "get_level_item",
+        "collect",
+        "choose_allocator",
+        "free"
+      ]
+    },
+    {
+      "values": [
+        67764224,
+        67768320
+      ],
+      "target": 67764224,
+      "cache_mode": "missing_handle",
+      "keep_buffer": false,
+      "result": 0,
+      "trace": [
+        "get_level_item",
+        "resolve",
+        "ensure_ready",
+        "collect",
+        "choose_allocator",
+        "free"
+      ]
+    },
+    {
+      "values": [
+        67764224,
+        67768320
+      ],
+      "target": 67764224,
+      "cache_mode": "missing_handle",
+      "keep_buffer": true,
+      "result": 0,
+      "trace": [
+        "get_level_item",
+        "resolve",
+        "ensure_ready",
+        "collect",
+        "choose_allocator",
+        "free"
+      ]
+    },
+    {
+      "values": [
+        67764224,
+        67768320
+      ],
+      "target": 67764224,
+      "cache_mode": "missing_object",
+      "keep_buffer": false,
+      "result": 0,
+      "trace": [
+        "get_level_item",
+        "resolve",
+        "ensure_ready",
+        "collect",
+        "choose_allocator",
+        "free"
+      ]
+    },
+    {
+      "values": [
+        67764224,
+        67768320
+      ],
+      "target": 67764224,
+      "cache_mode": "missing_object",
+      "keep_buffer": true,
+      "result": 0,
+      "trace": [
+        "get_level_item",
+        "resolve",
+        "ensure_ready",
+        "collect",
+        "choose_allocator",
+        "free"
+      ]
+    },
+    {
+      "values": [
+        67764224,
+        67768320
+      ],
+      "target": 67764224,
+      "cache_mode": "cleared_after_init",
+      "keep_buffer": false,
+      "result": 0,
+      "trace": [
+        "get_level_item",
+        "resolve",
+        "ensure_ready",
+        "collect",
+        "choose_allocator",
+        "free"
+      ]
+    },
+    {
+      "values": [
+        67764224,
+        67768320
+      ],
+      "target": 67764224,
+      "cache_mode": "cleared_after_init",
+      "keep_buffer": true,
+      "result": 0,
+      "trace": [
+        "get_level_item",
+        "resolve",
+        "ensure_ready",
+        "collect",
+        "choose_allocator",
+        "free"
+      ]
+    },
+    {
+      "values": [
+        67764224,
+        67768320
+      ],
+      "target": 0,
+      "cache_mode": "ready",
+      "keep_buffer": false,
+      "result": -1,
+      "trace": [
+        "get_level_item",
+        "collect",
+        "choose_allocator",
+        "free"
+      ]
+    },
+    {
+      "values": [
+        67764224,
+        67768320
+      ],
+      "target": 0,
+      "cache_mode": "ready",
+      "keep_buffer": true,
+      "result": -1,
+      "trace": [
+        "get_level_item",
+        "collect",
+        "choose_allocator",
+        "free"
+      ]
+    },
+    {
+      "values": [
+        67764224,
+        67768320
+      ],
+      "target": 0,
+      "cache_mode": "missing_handle",
+      "keep_buffer": false,
+      "result": -1,
+      "trace": [
+        "get_level_item",
+        "resolve",
+        "ensure_ready",
+        "collect",
+        "choose_allocator",
+        "free"
+      ]
+    },
+    {
+      "values": [
+        67764224,
+        67768320
+      ],
+      "target": 0,
+      "cache_mode": "missing_handle",
+      "keep_buffer": true,
+      "result": -1,
+      "trace": [
+        "get_level_item",
+        "resolve",
+        "ensure_ready",
+        "collect",
+        "choose_allocator",
+        "free"
+      ]
+    },
+    {
+      "values": [
+        67764224,
+        67768320
+      ],
+      "target": 0,
+      "cache_mode": "missing_object",
+      "keep_buffer": false,
+      "result": -1,
+      "trace": [
+        "get_level_item",
+        "resolve",
+        "ensure_ready",
+        "collect",
+        "choose_allocator",
+        "free"
+      ]
+    },
+    {
+      "values": [
+        67764224,
+        67768320
+      ],
+      "target": 0,
+      "cache_mode": "missing_object",
+      "keep_buffer": true,
+      "result": -1,
+      "trace": [
+        "get_level_item",
+        "resolve",
+        "ensure_ready",
+        "collect",
+        "choose_allocator",
+        "free"
+      ]
+    },
+    {
+      "values": [
+        67764224,
+        67768320
+      ],
+      "target": 0,
+      "cache_mode": "cleared_after_init",
+      "keep_buffer": false,
+      "result": -1,
+      "trace": [
+        "get_level_item",
+        "resolve",
+        "ensure_ready",
+        "collect",
+        "choose_allocator",
+        "free"
+      ]
+    },
+    {
+      "values": [
+        67764224,
+        67768320
+      ],
+      "target": 0,
+      "cache_mode": "cleared_after_init",
+      "keep_buffer": true,
+      "result": -1,
+      "trace": [
+        "get_level_item",
+        "resolve",
+        "ensure_ready",
+        "collect",
+        "choose_allocator",
+        "free"
+      ]
+    },
+    {
+      "values": [
+        0,
+        67764224
+      ],
+      "target": 67764224,
+      "cache_mode": "ready",
+      "keep_buffer": false,
+      "result": 1,
+      "trace": [
+        "get_level_item",
+        "collect",
+        "choose_allocator",
+        "free"
+      ]
+    },
+    {
+      "values": [
+        0,
+        67764224
+      ],
+      "target": 67764224,
+      "cache_mode": "ready",
+      "keep_buffer": true,
+      "result": 1,
+      "trace": [
+        "get_level_item",
+        "collect",
+        "choose_allocator",
+        "free"
+      ]
+    },
+    {
+      "values": [
+        0,
+        67764224
+      ],
+      "target": 67764224,
+      "cache_mode": "missing_handle",
+      "keep_buffer": false,
+      "result": 1,
+      "trace": [
+        "get_level_item",
+        "resolve",
+        "ensure_ready",
+        "collect",
+        "choose_allocator",
+        "free"
+      ]
+    },
+    {
+      "values": [
+        0,
+        67764224
+      ],
+      "target": 67764224,
+      "cache_mode": "missing_handle",
+      "keep_buffer": true,
+      "result": 1,
+      "trace": [
+        "get_level_item",
+        "resolve",
+        "ensure_ready",
+        "collect",
+        "choose_allocator",
+        "free"
+      ]
+    },
+    {
+      "values": [
+        0,
+        67764224
+      ],
+      "target": 67764224,
+      "cache_mode": "missing_object",
+      "keep_buffer": false,
+      "result": 1,
+      "trace": [
+        "get_level_item",
+        "resolve",
+        "ensure_ready",
+        "collect",
+        "choose_allocator",
+        "free"
+      ]
+    },
+    {
+      "values": [
+        0,
+        67764224
+      ],
+      "target": 67764224,
+      "cache_mode": "missing_object",
+      "keep_buffer": true,
+      "result": 1,
+      "trace": [
+        "get_level_item",
+        "resolve",
+        "ensure_ready",
+        "collect",
+        "choose_allocator",
+        "free"
+      ]
+    },
+    {
+      "values": [
+        0,
+        67764224
+      ],
+      "target": 67764224,
+      "cache_mode": "cleared_after_init",
+      "keep_buffer": false,
+      "result": 1,
+      "trace": [
+        "get_level_item",
+        "resolve",
+        "ensure_ready",
+        "collect",
+        "choose_allocator",
+        "free"
+      ]
+    },
+    {
+      "values": [
+        0,
+        67764224
+      ],
+      "target": 67764224,
+      "cache_mode": "cleared_after_init",
+      "keep_buffer": true,
+      "result": 1,
+      "trace": [
+        "get_level_item",
+        "resolve",
+        "ensure_ready",
+        "collect",
+        "choose_allocator",
+        "free"
+      ]
+    },
+    {
+      "values": [
+        0,
+        67764224
+      ],
+      "target": 0,
+      "cache_mode": "ready",
+      "keep_buffer": false,
+      "result": -1,
+      "trace": [
+        "get_level_item",
+        "collect",
+        "choose_allocator",
+        "free"
+      ]
+    },
+    {
+      "values": [
+        0,
+        67764224
+      ],
+      "target": 0,
+      "cache_mode": "ready",
+      "keep_buffer": true,
+      "result": -1,
+      "trace": [
+        "get_level_item",
+        "collect",
+        "choose_allocator",
+        "free"
+      ]
+    },
+    {
+      "values": [
+        0,
+        67764224
+      ],
+      "target": 0,
+      "cache_mode": "missing_handle",
+      "keep_buffer": false,
+      "result": -1,
+      "trace": [
+        "get_level_item",
+        "resolve",
+        "ensure_ready",
+        "collect",
+        "choose_allocator",
+        "free"
+      ]
+    },
+    {
+      "values": [
+        0,
+        67764224
+      ],
+      "target": 0,
+      "cache_mode": "missing_handle",
+      "keep_buffer": true,
+      "result": -1,
+      "trace": [
+        "get_level_item",
+        "resolve",
+        "ensure_ready",
+        "collect",
+        "choose_allocator",
+        "free"
+      ]
+    },
+    {
+      "values": [
+        0,
+        67764224
+      ],
+      "target": 0,
+      "cache_mode": "missing_object",
+      "keep_buffer": false,
+      "result": -1,
+      "trace": [
+        "get_level_item",
+        "resolve",
+        "ensure_ready",
+        "collect",
+        "choose_allocator",
+        "free"
+      ]
+    },
+    {
+      "values": [
+        0,
+        67764224
+      ],
+      "target": 0,
+      "cache_mode": "missing_object",
+      "keep_buffer": true,
+      "result": -1,
+      "trace": [
+        "get_level_item",
+        "resolve",
+        "ensure_ready",
+        "collect",
+        "choose_allocator",
+        "free"
+      ]
+    },
+    {
+      "values": [
+        0,
+        67764224
+      ],
+      "target": 0,
+      "cache_mode": "cleared_after_init",
+      "keep_buffer": false,
+      "result": -1,
+      "trace": [
+        "get_level_item",
+        "resolve",
+        "ensure_ready",
+        "collect",
+        "choose_allocator",
+        "free"
+      ]
+    },
+    {
+      "values": [
+        0,
+        67764224
+      ],
+      "target": 0,
+      "cache_mode": "cleared_after_init",
+      "keep_buffer": true,
+      "result": -1,
+      "trace": [
+        "get_level_item",
+        "resolve",
+        "ensure_ready",
+        "collect",
+        "choose_allocator",
+        "free"
+      ]
+    },
+    {
+      "values": [
+        67768320,
+        0
+      ],
+      "target": 67764224,
+      "cache_mode": "ready",
+      "keep_buffer": false,
+      "result": -1,
+      "trace": [
+        "get_level_item",
+        "collect",
+        "choose_allocator",
+        "free"
+      ]
+    },
+    {
+      "values": [
+        67768320,
+        0
+      ],
+      "target": 67764224,
+      "cache_mode": "ready",
+      "keep_buffer": true,
+      "result": -1,
+      "trace": [
+        "get_level_item",
+        "collect",
+        "choose_allocator",
+        "free"
+      ]
+    },
+    {
+      "values": [
+        67768320,
+        0
+      ],
+      "target": 67764224,
+      "cache_mode": "missing_handle",
+      "keep_buffer": false,
+      "result": -1,
+      "trace": [
+        "get_level_item",
+        "resolve",
+        "ensure_ready",
+        "collect",
+        "choose_allocator",
+        "free"
+      ]
+    },
+    {
+      "values": [
+        67768320,
+        0
+      ],
+      "target": 67764224,
+      "cache_mode": "missing_handle",
+      "keep_buffer": true,
+      "result": -1,
+      "trace": [
+        "get_level_item",
+        "resolve",
+        "ensure_ready",
+        "collect",
+        "choose_allocator",
+        "free"
+      ]
+    },
+    {
+      "values": [
+        67768320,
+        0
+      ],
+      "target": 67764224,
+      "cache_mode": "missing_object",
+      "keep_buffer": false,
+      "result": -1,
+      "trace": [
+        "get_level_item",
+        "resolve",
+        "ensure_ready",
+        "collect",
+        "choose_allocator",
+        "free"
+      ]
+    },
+    {
+      "values": [
+        67768320,
+        0
+      ],
+      "target": 67764224,
+      "cache_mode": "missing_object",
+      "keep_buffer": true,
+      "result": -1,
+      "trace": [
+        "get_level_item",
+        "resolve",
+        "ensure_ready",
+        "collect",
+        "choose_allocator",
+        "free"
+      ]
+    },
+    {
+      "values": [
+        67768320,
+        0
+      ],
+      "target": 67764224,
+      "cache_mode": "cleared_after_init",
+      "keep_buffer": false,
+      "result": -1,
+      "trace": [
+        "get_level_item",
+        "resolve",
+        "ensure_ready",
+        "collect",
+        "choose_allocator",
+        "free"
+      ]
+    },
+    {
+      "values": [
+        67768320,
+        0
+      ],
+      "target": 67764224,
+      "cache_mode": "cleared_after_init",
+      "keep_buffer": true,
+      "result": -1,
+      "trace": [
+        "get_level_item",
+        "resolve",
+        "ensure_ready",
+        "collect",
+        "choose_allocator",
+        "free"
+      ]
+    },
+    {
+      "values": [
+        67768320,
+        0
+      ],
+      "target": 0,
+      "cache_mode": "ready",
+      "keep_buffer": false,
+      "result": -1,
+      "trace": [
+        "get_level_item",
+        "collect",
+        "choose_allocator",
+        "free"
+      ]
+    },
+    {
+      "values": [
+        67768320,
+        0
+      ],
+      "target": 0,
+      "cache_mode": "ready",
+      "keep_buffer": true,
+      "result": -1,
+      "trace": [
+        "get_level_item",
+        "collect",
+        "choose_allocator",
+        "free"
+      ]
+    },
+    {
+      "values": [
+        67768320,
+        0
+      ],
+      "target": 0,
+      "cache_mode": "missing_handle",
+      "keep_buffer": false,
+      "result": -1,
+      "trace": [
+        "get_level_item",
+        "resolve",
+        "ensure_ready",
+        "collect",
+        "choose_allocator",
+        "free"
+      ]
+    },
+    {
+      "values": [
+        67768320,
+        0
+      ],
+      "target": 0,
+      "cache_mode": "missing_handle",
+      "keep_buffer": true,
+      "result": -1,
+      "trace": [
+        "get_level_item",
+        "resolve",
+        "ensure_ready",
+        "collect",
+        "choose_allocator",
+        "free"
+      ]
+    },
+    {
+      "values": [
+        67768320,
+        0
+      ],
+      "target": 0,
+      "cache_mode": "missing_object",
+      "keep_buffer": false,
+      "result": -1,
+      "trace": [
+        "get_level_item",
+        "resolve",
+        "ensure_ready",
+        "collect",
+        "choose_allocator",
+        "free"
+      ]
+    },
+    {
+      "values": [
+        67768320,
+        0
+      ],
+      "target": 0,
+      "cache_mode": "missing_object",
+      "keep_buffer": true,
+      "result": -1,
+      "trace": [
+        "get_level_item",
+        "resolve",
+        "ensure_ready",
+        "collect",
+        "choose_allocator",
+        "free"
+      ]
+    },
+    {
+      "values": [
+        67768320,
+        0
+      ],
+      "target": 0,
+      "cache_mode": "cleared_after_init",
+      "keep_buffer": false,
+      "result": -1,
+      "trace": [
+        "get_level_item",
+        "resolve",
+        "ensure_ready",
+        "collect",
+        "choose_allocator",
+        "free"
+      ]
+    },
+    {
+      "values": [
+        67768320,
+        0
+      ],
+      "target": 0,
+      "cache_mode": "cleared_after_init",
+      "keep_buffer": true,
+      "result": -1,
+      "trace": [
+        "get_level_item",
+        "resolve",
+        "ensure_ready",
+        "collect",
+        "choose_allocator",
+        "free"
+      ]
+    },
+    {
+      "values": [
+        67764224,
+        0
+      ],
+      "target": 67764224,
+      "cache_mode": "ready",
+      "keep_buffer": false,
+      "result": 0,
+      "trace": [
+        "get_level_item",
+        "collect",
+        "choose_allocator",
+        "free"
+      ]
+    },
+    {
+      "values": [
+        67764224,
+        0
+      ],
+      "target": 67764224,
+      "cache_mode": "ready",
+      "keep_buffer": true,
+      "result": 0,
+      "trace": [
+        "get_level_item",
+        "collect",
+        "choose_allocator",
+        "free"
+      ]
+    },
+    {
+      "values": [
+        67764224,
+        0
+      ],
+      "target": 67764224,
+      "cache_mode": "missing_handle",
+      "keep_buffer": false,
+      "result": 0,
+      "trace": [
+        "get_level_item",
+        "resolve",
+        "ensure_ready",
+        "collect",
+        "choose_allocator",
+        "free"
+      ]
+    },
+    {
+      "values": [
+        67764224,
+        0
+      ],
+      "target": 67764224,
+      "cache_mode": "missing_handle",
+      "keep_buffer": true,
+      "result": 0,
+      "trace": [
+        "get_level_item",
+        "resolve",
+        "ensure_ready",
+        "collect",
+        "choose_allocator",
+        "free"
+      ]
+    },
+    {
+      "values": [
+        67764224,
+        0
+      ],
+      "target": 67764224,
+      "cache_mode": "missing_object",
+      "keep_buffer": false,
+      "result": 0,
+      "trace": [
+        "get_level_item",
+        "resolve",
+        "ensure_ready",
+        "collect",
+        "choose_allocator",
+        "free"
+      ]
+    },
+    {
+      "values": [
+        67764224,
+        0
+      ],
+      "target": 67764224,
+      "cache_mode": "missing_object",
+      "keep_buffer": true,
+      "result": 0,
+      "trace": [
+        "get_level_item",
+        "resolve",
+        "ensure_ready",
+        "collect",
+        "choose_allocator",
+        "free"
+      ]
+    },
+    {
+      "values": [
+        67764224,
+        0
+      ],
+      "target": 67764224,
+      "cache_mode": "cleared_after_init",
+      "keep_buffer": false,
+      "result": 0,
+      "trace": [
+        "get_level_item",
+        "resolve",
+        "ensure_ready",
+        "collect",
+        "choose_allocator",
+        "free"
+      ]
+    },
+    {
+      "values": [
+        67764224,
+        0
+      ],
+      "target": 67764224,
+      "cache_mode": "cleared_after_init",
+      "keep_buffer": true,
+      "result": 0,
+      "trace": [
+        "get_level_item",
+        "resolve",
+        "ensure_ready",
+        "collect",
+        "choose_allocator",
+        "free"
+      ]
+    },
+    {
+      "values": [
+        67764224,
+        0
+      ],
+      "target": 0,
+      "cache_mode": "ready",
+      "keep_buffer": false,
+      "result": -1,
+      "trace": [
+        "get_level_item",
+        "collect",
+        "choose_allocator",
+        "free"
+      ]
+    },
+    {
+      "values": [
+        67764224,
+        0
+      ],
+      "target": 0,
+      "cache_mode": "ready",
+      "keep_buffer": true,
+      "result": -1,
+      "trace": [
+        "get_level_item",
+        "collect",
+        "choose_allocator",
+        "free"
+      ]
+    },
+    {
+      "values": [
+        67764224,
+        0
+      ],
+      "target": 0,
+      "cache_mode": "missing_handle",
+      "keep_buffer": false,
+      "result": -1,
+      "trace": [
+        "get_level_item",
+        "resolve",
+        "ensure_ready",
+        "collect",
+        "choose_allocator",
+        "free"
+      ]
+    },
+    {
+      "values": [
+        67764224,
+        0
+      ],
+      "target": 0,
+      "cache_mode": "missing_handle",
+      "keep_buffer": true,
+      "result": -1,
+      "trace": [
+        "get_level_item",
+        "resolve",
+        "ensure_ready",
+        "collect",
+        "choose_allocator",
+        "free"
+      ]
+    },
+    {
+      "values": [
+        67764224,
+        0
+      ],
+      "target": 0,
+      "cache_mode": "missing_object",
+      "keep_buffer": false,
+      "result": -1,
+      "trace": [
+        "get_level_item",
+        "resolve",
+        "ensure_ready",
+        "collect",
+        "choose_allocator",
+        "free"
+      ]
+    },
+    {
+      "values": [
+        67764224,
+        0
+      ],
+      "target": 0,
+      "cache_mode": "missing_object",
+      "keep_buffer": true,
+      "result": -1,
+      "trace": [
+        "get_level_item",
+        "resolve",
+        "ensure_ready",
+        "collect",
+        "choose_allocator",
+        "free"
+      ]
+    },
+    {
+      "values": [
+        67764224,
+        0
+      ],
+      "target": 0,
+      "cache_mode": "cleared_after_init",
+      "keep_buffer": false,
+      "result": -1,
+      "trace": [
+        "get_level_item",
+        "resolve",
+        "ensure_ready",
+        "collect",
+        "choose_allocator",
+        "free"
+      ]
+    },
+    {
+      "values": [
+        67764224,
+        0
+      ],
+      "target": 0,
+      "cache_mode": "cleared_after_init",
+      "keep_buffer": true,
+      "result": -1,
+      "trace": [
+        "get_level_item",
+        "resolve",
+        "ensure_ready",
+        "collect",
+        "choose_allocator",
+        "free"
+      ]
+    }
+  ]
+}

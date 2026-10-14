@@ -16,8 +16,8 @@ Edition** for Nintendo Switch.
 [Progress on decomp.dev](https://decomp.dev/jwfeniello/scott-pilgrim-switch-decomp)
 · [Progress workflow](https://github.com/jwfeniello/scott-pilgrim-switch-decomp/actions/workflows/progress.yml)
 
-**Current locally verified progress: 28,990 exact functions /
-2,813,072 bytes / 17.156368% of executable `.text`.** The original `.text` is 16,396,664 bytes.
+**Current locally verified progress: 29,663 exact functions /
+2,829,700 bytes / 17.257779% of executable `.text`.** The original `.text` is 16,396,664 bytes.
 This includes engine and library infrastructure. The project does not yet rebuild
 or boot the complete game. Original method names and many ABI declarations remain
 provisional.
@@ -137,7 +137,10 @@ and deliberately incorrect source controls validate the comparison. See
 
 `src/wip/` preserves close reconstructions with **zero** exact-match credit.
 The metadata initializer remains 13 instruction words away in its last workspace
-build. These candidates are not promoted by a similarity score.
+build. These candidates are not promoted by a similarity score. The player object-list
+helper has 128 bounded normal-path comparisons against the original; see
+[player helper findings](docs/PLAYER_OBJECT_LIST.md). It also receives zero
+exact-match credit.
 
 ## Layout
 

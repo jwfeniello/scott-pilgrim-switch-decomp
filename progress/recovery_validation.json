@@ -870,6 +870,110 @@
       "rejection_causes": {
         "Unresolved literal symbol": 1
       }
+    },
+    {
+      "id": "abi_cfg_uint32_t_O2_omit",
+      "source_sha256": "a39e09b317fab5f85611c19850fd6244a71e6edbd050ed38dd9ac6ae2adf0542",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "eeec3500557109c8fb2b71c2c13fe59061e21d456c61ef7ba3389b99a0875eba",
+      "repeated_exact_functions": 43,
+      "exact_bytes": 3852,
+      "negative_control": "added_external_side_effect",
+      "rejected_functions": 43,
+      "rejection_causes": {
+        "Unresolved literal symbol": 43
+      }
+    },
+    {
+      "id": "abi_cfg_void_O2_keep_pic",
+      "source_sha256": "3d0b107e84144cc8c0dd1e87cd87bcf33c55b32ccb0047f0fb30d1eb6905e26d",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "46241671735639d2db798b706359654ed8f40a735e6505646a710471602e876b",
+      "repeated_exact_functions": 18,
+      "exact_bytes": 1400,
+      "negative_control": "added_external_side_effect",
+      "rejected_functions": 18,
+      "rejection_causes": {
+        "Unresolved literal symbol": 18
+      }
+    },
+    {
+      "id": "abi_cfg_aggregate_O3_keep_pic",
+      "source_sha256": "a6c7bc28da1ac576e850d2805935f1c681d36fbffda7b22e9c3f9c903448f698",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "334ccf9ee77be74df535aaccb682d9e273a2f3fc6a6d25bee6d3eec73ba944b8",
+      "repeated_exact_functions": 18,
+      "exact_bytes": 1400,
+      "negative_control": "added_external_side_effect",
+      "rejected_functions": 18,
+      "rejection_causes": {
+        "Unresolved literal symbol": 18
+      }
+    },
+    {
+      "id": "abi_cfg_integer_O2_omit",
+      "source_sha256": "a3792c8168019e065540abaeaf446eb8ad3ff1450f2fb323c61ce336112284d9",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "d70bd985774cd0729e1ef39e4200a9e4a1f40de702c11d7adce9cb9703ccc555",
+      "repeated_exact_functions": 10,
+      "exact_bytes": 1260,
+      "negative_control": "added_external_side_effect",
+      "rejected_functions": 10,
+      "rejection_causes": {
+        "Unresolved literal symbol": 10
+      }
+    },
+    {
+      "id": "abi_cfg_uint32_t_O3_keep_pic",
+      "source_sha256": "4566c53d8ef0f32c8aec9441c2b1f52145302856bb7a8500042df687be2c95c8",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "de03e0d4adefbfd92d1c4916b4315249cd4e76106ffc71a42d5a7985bcecc767",
+      "repeated_exact_functions": 7,
+      "exact_bytes": 904,
+      "negative_control": "added_external_side_effect",
+      "rejected_functions": 7,
+      "rejection_causes": {
+        "Unresolved literal symbol": 7
+      }
+    },
+    {
+      "id": "abi_cfg_aggregate_O2_omit",
+      "source_sha256": "55009ca4f1819fe53803025bf27b93a676c6137877b9d4492828e2e15c89307c",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "679dd7a23c5e4d0e12a49571c808fd11558054c8a071a99ab3c119d72fbc7505",
+      "repeated_exact_functions": 6,
+      "exact_bytes": 332,
+      "negative_control": "added_external_side_effect",
+      "rejected_functions": 6,
+      "rejection_causes": {
+        "Unresolved literal symbol": 6
+      }
+    },
+    {
+      "id": "abi_cfg_void_O2_omit",
+      "source_sha256": "19b0471b03504f0b849cc66cd9b36a1dd50cc8893c5cfe2359ccc471d76fbd6b",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "208e125317da19e5b5c45e3afd0f154b3b3e9c3700167ab80b21d8938e80571f",
+      "repeated_exact_functions": 3,
+      "exact_bytes": 316,
+      "negative_control": "added_external_side_effect",
+      "rejected_functions": 3,
+      "rejection_causes": {
+        "Unresolved literal symbol": 3
+      }
+    },
+    {
+      "id": "abi_pair_leaf_pair_O2_omit",
+      "source_sha256": "298745a2c2c6c1837c2b42dd68fa68a54e6266e9702eba68ee1f5a4b94394887",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "bc708e1d01d70d18627fea1e3332cb04e7dd9bb654687758534f27eb6aaab32e",
+      "repeated_exact_functions": 568,
+      "exact_bytes": 7164,
+      "negative_control": "added_external_side_effect",
+      "rejected_functions": 568,
+      "rejection_causes": {
+        "Unresolved literal symbol": 568
+      }
     }
   ]
 }

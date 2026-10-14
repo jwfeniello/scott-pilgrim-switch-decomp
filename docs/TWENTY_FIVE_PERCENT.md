@@ -1,7 +1,7 @@
 # Work toward 25%
 
-Current verified checkpoint: **28,990 exact functions /
-2,813,072 bytes / 17.156368%** of the original 16,396,664-byte
+Current verified checkpoint: **29,663 exact functions /
+2,829,700 bytes / 17.257779%** of the original 16,396,664-byte
 `.text`. The 25% target requires 4,099,166 exact bytes and remains unfinished.
 
 ## Added engine and ABI views
@@ -39,7 +39,7 @@ standard ELF relocations are checked during each full function comparison.
 Every added C build was compiled twice with identical object output. Adding an
 external side effect to every preprocessed C definition rejects every credited
 function. Receipts are in `progress/c_library_validation.json`. These controls
-complement the fresh full 1,335-build original-byte comparison in
+complement the fresh full 1,343-build original-byte comparison in
 `progress/verified.json`.
 
 ## Vector and named-call ABI recovery
@@ -71,6 +71,27 @@ The C source index now handles old-style parameter declarations, as used in
 these upstream bodies, while preserving the distinction between definitions,
 attributed prototypes, function-pointer typedefs, and struct declarations.
 The regression test and real negative controls exercise that boundary.
+
+## Extended ABI and output-register views
+
+Seven additional C++ builds reproduce 105 complete functions / 9,464 bytes.
+Recovery now distinguishes real local-stack loads from callee-save restores,
+corrects comparison-alias operand access metadata, and models aggregate results
+returned through the ARM64 `x8` register. Ordinary C++ return-value objects
+produce that calling convention; the verifier remains independent of the
+disassembler and checks every complete original byte.
+
+A separate two-register output view reproduces 568 complete bodies / 7,164
+bytes. These views expose the observed `x0`/`x1` outputs. Their original return
+types, caller contracts, and class ownership still require review. Matching
+bytes alone do not establish those declarations.
+
+All eight new builds passed fresh subset compilation, identical-object repeats,
+and external-side-effect negative controls for every credited function.
+Their receipts are merged in `progress/recovery_validation.json` and the
+fresh complete snapshot covers all 1,343 source builds. The player helper in
+`src/wip/PlayerObjectListIndex.cpp` passes 128 bounded normal-path comparisons
+but remains uncredited; see [the behavior findings](PLAYER_OBJECT_LIST.md).
 
 ## Reporting and remaining work
 
