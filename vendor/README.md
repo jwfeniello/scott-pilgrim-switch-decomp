@@ -47,3 +47,18 @@ The original OpenSSL/SSLeay terms are retained in
 developed by the OpenSSL Project for use in the OpenSSL Toolkit
 (https://www.openssl.org/), cryptographic software written by Eric Young
 (eay@cryptsoft.com), and software written by Tim Hudson (tjh@cryptsoft.com).
+
+## Public zlib C source fixture
+
+`zlib-1.2.11` contains headers and notices from the official
+[`v1.2.11` tag](https://github.com/madler/zlib/tree/v1.2.11), with upstream
+commit, archive hash, and original header hashes in `zlib-provenance.json`.
+`zlib_sha256.json` records the vendored fixture bytes, which are also covered
+by declared header roots in the full verification snapshot. The C source views
+in `src/Zlib_*.c` preserve upstream algorithms and copyright notices.
+
+The sole header-value alteration supplies the observed
+`1.2.11.f-NINTENDO-SDK-v1` version marker and is explicitly marked in `zlib.h`.
+Matching that string and six isolated bodies does not establish the complete
+SDK fork, its configuration, or linked data. The full original license notice
+is retained in [`zlib-1.2.11/LICENSE`](zlib-1.2.11/LICENSE) and `zlib.h`.

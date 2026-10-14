@@ -39,7 +39,25 @@ def index(source):
                 functions[name]=dict(name=name,body_start=end,body_end=tokens[close][1],start=tokens[segment][1],end=tokens[close][2],diagnostics=calls,has_inline_asm=any(t[0]in ('asm','__asm__')for t in body))
                 segment=close+1
             n=close+1;continue
-        if t==';':segment=n+1
+        if t==';':
+            # Old-style C definitions declare named parameters between the
+            # closing signature parenthesis and the body. Their semicolons
+            # belong to the same definition, rather than ending a prototype.
+            old_style=False
+            for k in range(segment,n):
+                if (tokens[k][0]!='('or k==segment or tokens[k-1][0]in IGNORE
+                    or not re.fullmatch('[A-Za-z_][A-Za-z_0-9]*',tokens[k-1][0])):continue
+                close=pairs[k]
+                parameters=[v[0]for v in tokens[k+1:close]]
+                names=parameters[::2]
+                if (close+1<n and re.fullmatch('[A-Za-z_][A-Za-z_0-9]*',tokens[close+1][0])
+                    and tokens[close+1][0]not in {'__attribute__','__declspec','__asm__'}
+                    and names and len(parameters)==2*len(names)-1
+                    and all(re.fullmatch('[A-Za-z_][A-Za-z_0-9]*',name)and name not in IGNORE for name in names)
+                    and all(value==','for value in parameters[1::2])):
+                    old_style=True
+                break
+            if not old_style:segment=n+1
         n+=1
     return functions
 def add_side_effect(source,functions):

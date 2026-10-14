@@ -1,7 +1,7 @@
 # Work toward 25%
 
-Current verified checkpoint: **28,919 exact functions /
-2,806,492 bytes / 17.116238%** of the original 16,396,664-byte
+Current verified checkpoint: **28,990 exact functions /
+2,813,072 bytes / 17.156368%** of the original 16,396,664-byte
 `.text`. The 25% target requires 4,099,166 exact bytes and remains unfinished.
 
 ## Added engine and ABI views
@@ -39,8 +39,38 @@ standard ELF relocations are checked during each full function comparison.
 Every added C build was compiled twice with identical object output. Adding an
 external side effect to every preprocessed C definition rejects every credited
 function. Receipts are in `progress/c_library_validation.json`. These controls
-complement the fresh full 1,318-build original-byte comparison in
+complement the fresh full 1,335-build original-byte comparison in
 `progress/verified.json`.
+
+## Vector and named-call ABI recovery
+
+New C++ views add 65 complete functions / 4,588 bytes across 11 source builds.
+The renderer now preserves vector-valued call results and uses standard C import
+signatures plus conservative parameter counts/types inferred from original
+demangled SDK imports. An additional compiler-profile scan added 11 of these
+functions; floating-point optimization flags alone did not produce a large gain.
+
+The sources use ordinary C++ vector extensions and bit views. These selected
+bodies need no NEON header or inline assembly. Every source subset was freshly
+compiled, repeated with identical object output, and rejected after adding an
+external source side effect to every credited function. Receipts are merged in
+`progress/recovery_validation.json`. Exact bodies do not establish original
+SDK headers, complete return types, class identities, or full ABI declarations.
+
+## Public zlib source
+
+Six public zlib builds add six complete functions / 1,992 bytes: `adler32_z`,
+`crc32_z`, `inflateEnd`, `deflateInit_`, and two original instances of
+`inflateInit_`. Each passed full-byte comparison and repeat/wrong-source controls.
+The `v1.2.11` tag and fixture hashes are recorded in `vendor/zlib-provenance.json`
+and `vendor/zlib_sha256.json`; its original license is retained. The version
+marker in the fixture is explicitly marked as altered. It does not establish
+the complete Nintendo SDK fork or its linked data.
+
+The C source index now handles old-style parameter declarations, as used in
+these upstream bodies, while preserving the distinction between definitions,
+attributed prototypes, function-pointer typedefs, and struct declarations.
+The regression test and real negative controls exercise that boundary.
 
 ## Reporting and remaining work
 
@@ -48,7 +78,7 @@ Header input hashing now visits shared header folders once per invocation. It
 still detects changed, added and missing headers and rejects paths outside the
 repository. No persistent header cache is used.
 
-A public zlib 1.2.11 probe found a small unpromoted batch. The original includes
+Public zlib 1.2.11 source now reproduces six complete functions / 1,992 bytes. The original includes
 the marker `1.2.11.f-NINTENDO-SDK-v1`; matching that version string alone does not
 establish the complete SDK fork. A public curl 7.64.1 probe yielded no new FDE
 matches. Its original version-string reference lies outside the FDE inventory

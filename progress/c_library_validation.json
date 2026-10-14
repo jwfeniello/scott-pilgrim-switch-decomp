@@ -5304,6 +5304,84 @@
       "rejection_causes": {
         "ValueError: Unresolved literal symbol": 1
       }
+    },
+    {
+      "id": "zlib_adler32_o2_omit",
+      "source_sha256": "ec537ac207846270120b7051e87e75c72549d04b0c0ba68779f172232d33f8d0",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "85cf40268fead254e73f3fafc502d1559be32678cf5f7d8ea24819c61bbbd020",
+      "repeated_exact_functions": 1,
+      "exact_bytes": 964,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 1,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 1
+      }
+    },
+    {
+      "id": "zlib_crc32_o2_omit",
+      "source_sha256": "71dae8a62707aae2001d8bd3da33597f789d50f8c779bcb0fcd4e922296d6164",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "3962eaeffed3f51f7fbd55fa0662ee5ec45bb90ddd04d4e2f8f794e593777b2d",
+      "repeated_exact_functions": 1,
+      "exact_bytes": 740,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 1,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 1
+      }
+    },
+    {
+      "id": "zlib_inflate_o3_keep_pic_unwind",
+      "source_sha256": "cc7043000483b67978f92826fbe47a3ee6829564c0ff456b7d885251f68892b9",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "db734ed4b24be8014877842e7a25a3ce7a078e004dd02ce67343238d5dcc9a64",
+      "repeated_exact_functions": 1,
+      "exact_bytes": 228,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 1,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 1
+      }
+    },
+    {
+      "id": "zlib_deflate_o2_omit",
+      "source_sha256": "f9a1ec1d933a225672247b6e71a7be7bca40ff2f6c12d3099492850323cd5e7f",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "5d839c83d0621c6091ed18fcae709825dc47162261eab4e36d522960a684fe80",
+      "repeated_exact_functions": 1,
+      "exact_bytes": 28,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 1,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 1
+      }
+    },
+    {
+      "id": "zlib_inflate_o3_omit",
+      "source_sha256": "cc7043000483b67978f92826fbe47a3ee6829564c0ff456b7d885251f68892b9",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "114098c44d393a5bb145d00f65192448f5decd8c7378c08aaef5f2f80e7aff78",
+      "repeated_exact_functions": 1,
+      "exact_bytes": 16,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 1,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 1
+      }
+    },
+    {
+      "id": "zlib_inflate_o2_keep_pic_unwind",
+      "source_sha256": "cc7043000483b67978f92826fbe47a3ee6829564c0ff456b7d885251f68892b9",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "b6176d919030a4840646185c8b2e4550e837a514fe1c2e0ea412716a9e017fe6",
+      "repeated_exact_functions": 1,
+      "exact_bytes": 16,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 1,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 1
+      }
     }
   ]
 }

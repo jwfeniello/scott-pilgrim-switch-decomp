@@ -1,6 +1,6 @@
 # What an exact match establishes
 
-A credited function must come from compiled C++ and agree with every byte of its
+A credited function must come from compiled C or C++ and agree with every byte of its
 complete original unwind extent after standard ELF relocations. It must have the
 same size. The linker checks instruction opcode, relocation width, alignment and
 range. GOT references are validated against original RELATIVE relocation entries

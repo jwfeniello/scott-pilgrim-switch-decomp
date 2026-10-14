@@ -400425,6 +400425,1186 @@
           }
         }
       ]
+    },
+    {
+      "id": "simd_recovery_named_imports_void_omit_direct",
+      "source": "src/SimdRecovery_named_imports_void_omit_direct.cpp",
+      "compiler": "8.0.1",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-std=c++11",
+        "-O2",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-fomit-frame-pointer",
+        "-fno-pic"
+      ],
+      "source_review": "generated_cxx_abi_view",
+      "functions": [
+        {
+          "address": "0x639610",
+          "size": 56,
+          "symbol": "RecoveredLeaf_639610",
+          "target_sha256": "0962d2a240f60097d119f1e92e79fce06cc3407646512e2b2b777205a9aa38df",
+          "bindings": {
+            "LeafData_639610_0": "0x191f8d0",
+            "RecoveredCall_639610_5": "0xfa4910",
+            "LeafData_639610_6": "0x6ca570",
+            "LeafData_639610_8": "0x17c1000",
+            "RecoveredCall_639610_11": "0x250"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x673280",
+          "size": 196,
+          "symbol": "RecoveredLeaf_673280",
+          "target_sha256": "12e10cf3f5667e88beea5af1c645890b689149b76b47d67dc7cb6a9ab1e8a23a",
+          "bindings": {
+            "LeafData_673280_0": "0x1948df8",
+            "RecoveredCall_673280_5": "0xfa3340",
+            "LeafData_673280_6": "0x17c1000",
+            "LeafData_673280_8": "0xdd0090",
+            "RecoveredCall_673280_12": "0x250",
+            "LeafData_673280_13": "0x194ae00",
+            "LeafData_673280_15": "0xdd0140",
+            "RecoveredCall_673280_22": "0x250",
+            "LeafData_673280_23": "0x194ae30",
+            "LeafData_673280_25": "0xdd0160",
+            "RecoveredCall_673280_32": "0x250",
+            "LeafData_673280_33": "0x194ae58",
+            "LeafData_673280_36": "0x152100f",
+            "LeafData_673280_41": "0xdd0180",
+            "RecoveredCall_673280_44": "0x250"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x673660",
+          "size": 56,
+          "symbol": "RecoveredLeaf_673660",
+          "target_sha256": "328fb7ff922fa04ed14034b3723fb49323f98f469534cbda16a763a403600b3f",
+          "bindings": {
+            "LeafData_673660_0": "0x295e248",
+            "RecoveredCall_673660_5": "0xfa4910",
+            "LeafData_673660_6": "0x6ca570",
+            "LeafData_673660_8": "0x17c1000",
+            "RecoveredCall_673660_11": "0x250"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x97f910",
+          "size": 28,
+          "symbol": "RecoveredLeaf_97f910",
+          "target_sha256": "cd7e1fe14172e08f92abf81723cdb19f9c3f1ac6cacc665d465e6bfc9c0f5c68",
+          "bindings": {
+            "RecoveredCall_97f910_6": "0x96e360"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xa7f3e0",
+          "size": 48,
+          "symbol": "RecoveredLeaf_a7f3e0",
+          "target_sha256": "c2d70dfb9297a3f7f3847696ee9b87899290a08f9336974037a9896663d43665",
+          "bindings": {
+            "RecoveredCall_a7f3e0_10": "0xfa3e80"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xa7f430",
+          "size": 32,
+          "symbol": "RecoveredLeaf_a7f430",
+          "target_sha256": "5dd6455e5dd889745704d434ee15fd1bee59bb0de3a88f6ddd5793eb1f837d14",
+          "bindings": {
+            "RecoveredCall_a7f430_6": "0xfa3e70"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xcfd610",
+          "size": 48,
+          "symbol": "RecoveredLeaf_cfd610",
+          "target_sha256": "45e1f4782aec55e6ecb2959b91a7706388b5511ff507f6bab32004bdb700c901",
+          "bindings": {
+            "LeafData_cfd610_0": "0x18cc570",
+            "RecoveredCall_cfd610_7": "0xfa3b00",
+            "RecoveredCall_cfd610_9": "0xfa3b40"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xcfd910",
+          "size": 60,
+          "symbol": "RecoveredLeaf_cfd910",
+          "target_sha256": "876176a7ed3053d4864d199f6e4ee6e986d36f275224cdab0b85ea182ae9ca9c",
+          "bindings": {
+            "LeafData_cfd910_0": "0x18cc550",
+            "LeafData_cfd910_3": "0x18cc570",
+            "RecoveredCall_cfd910_10": "0xfa3b00",
+            "RecoveredCall_cfd910_12": "0xfa3b40"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xcfe880",
+          "size": 76,
+          "symbol": "RecoveredLeaf_cfe880",
+          "target_sha256": "b7578b5065b0714358fc4ed336d01abcc29d889d6724be754f32426f0549e964",
+          "bindings": {
+            "LeafData_cfe880_3": "0x18cc700",
+            "RecoveredCall_cfe880_8": "0xcfcfd0",
+            "RecoveredCall_cfe880_12": "0xcfcfd0",
+            "RecoveredCall_cfe880_14": "0xfa3b40"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xcfebb0",
+          "size": 76,
+          "symbol": "RecoveredLeaf_cfebb0",
+          "target_sha256": "c632545af5d86720528ddc19b3d714a10f03e1bdfbe1f11091db14802f29e368",
+          "bindings": {
+            "LeafData_cfebb0_3": "0x18cc790",
+            "RecoveredCall_cfebb0_8": "0xcfe8f0",
+            "RecoveredCall_cfebb0_12": "0xcfe8f0",
+            "RecoveredCall_cfebb0_14": "0xfa3b40"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xd00570",
+          "size": 48,
+          "symbol": "RecoveredLeaf_d00570",
+          "target_sha256": "388276b904bf9483736071c2ad53a7eef7e6650008f7c0cc37245752e3452d00",
+          "bindings": {
+            "LeafData_d00570_0": "0x18cc8d0",
+            "RecoveredCall_d00570_7": "0xfa3b00",
+            "RecoveredCall_d00570_9": "0xfa3b40"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xd00850",
+          "size": 60,
+          "symbol": "RecoveredLeaf_d00850",
+          "target_sha256": "0a60b260cc8a75b7560e5bdabf70c86166c0302bf6da7695fc8eb9a72b08df7d",
+          "bindings": {
+            "LeafData_d00850_0": "0x18cc8b0",
+            "LeafData_d00850_3": "0x18cc8d0",
+            "RecoveredCall_d00850_10": "0xfa3b00",
+            "RecoveredCall_d00850_12": "0xfa3b40"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xd1a3f0",
+          "size": 48,
+          "symbol": "RecoveredLeaf_d1a3f0",
+          "target_sha256": "4e1bd730143e036a973f8ff8664a33ea42e60d45b723f4658902f76d2c5f5d25",
+          "bindings": {
+            "LeafData_d1a3f0_0": "0x18ce2f0",
+            "RecoveredCall_d1a3f0_7": "0xfa3b00",
+            "RecoveredCall_d1a3f0_9": "0xfa3b40"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xd1a610",
+          "size": 116,
+          "symbol": "RecoveredLeaf_d1a610",
+          "target_sha256": "42f8919b8e9141bf58a83dddec4d33ac611729b888afe5e17f52ca840727cca4",
+          "bindings": {
+            "LeafData_d1a610_0": "0x18ce2d0",
+            "LeafData_d1a610_2": "0x18cd740",
+            "LeafData_d1a610_19": "0x18ce2f0",
+            "RecoveredCall_d1a610_24": "0xfa3b00",
+            "RecoveredCall_d1a610_26": "0xfa3b40"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xd1ac30",
+          "size": 60,
+          "symbol": "RecoveredLeaf_d1ac30",
+          "target_sha256": "b805f25f1a118508802a3eadc0e44e529db379ca653972ca45c887d95f7c3b3d",
+          "bindings": {
+            "LeafData_d1ac30_0": "0x18ce3b0",
+            "LeafData_d1ac30_3": "0x18cc570",
+            "RecoveredCall_d1ac30_10": "0xfa3b00",
+            "RecoveredCall_d1ac30_12": "0xfa3b40"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xd1b210",
+          "size": 60,
+          "symbol": "RecoveredLeaf_d1b210",
+          "target_sha256": "437751536d507f4712475439bb447270e722a8ef5f481597ac061e92b3203eab",
+          "bindings": {
+            "LeafData_d1b210_0": "0x18ce3e0",
+            "LeafData_d1b210_3": "0x18cc570",
+            "RecoveredCall_d1b210_10": "0xfa3b00",
+            "RecoveredCall_d1b210_12": "0xfa3b40"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xd1b420",
+          "size": 76,
+          "symbol": "RecoveredLeaf_d1b420",
+          "target_sha256": "9b3eb78c3366ea4eabf5387842bdeb6471b3a66d993e802a61e4bca7b7f52fd6",
+          "bindings": {
+            "LeafData_d1b420_3": "0x18ce1f8",
+            "RecoveredCall_d1b420_8": "0xd19560",
+            "RecoveredCall_d1b420_12": "0xd19560",
+            "RecoveredCall_d1b420_14": "0xfa3b40"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xd1b4f0",
+          "size": 76,
+          "symbol": "RecoveredLeaf_d1b4f0",
+          "target_sha256": "ff86eaffb1340de06ea787c86fd54b70bcc14f74133993785e2ec09994344d82",
+          "bindings": {
+            "LeafData_d1b4f0_3": "0x18ce178",
+            "RecoveredCall_d1b4f0_8": "0xd19310",
+            "RecoveredCall_d1b4f0_12": "0xd19310",
+            "RecoveredCall_d1b4f0_14": "0xfa3b40"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xd1b5b0",
+          "size": 76,
+          "symbol": "RecoveredLeaf_d1b5b0",
+          "target_sha256": "adc6b652ac2bf505b44098d4dbe8947f81aa34ea3947d203e62f4203afed9120",
+          "bindings": {
+            "LeafData_d1b5b0_3": "0x18ce0f8",
+            "RecoveredCall_d1b5b0_8": "0xd190c0",
+            "RecoveredCall_d1b5b0_12": "0xd190c0",
+            "RecoveredCall_d1b5b0_14": "0xfa3b40"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xd1d760",
+          "size": 60,
+          "symbol": "RecoveredLeaf_d1d760",
+          "target_sha256": "9c76a734271098229296ad0f3b2d0e87a5b0bc298379127b22e15e63fa9ddc2c",
+          "bindings": {
+            "LeafData_d1d760_0": "0x18ce640",
+            "LeafData_d1d760_3": "0x18cc8d0",
+            "RecoveredCall_d1d760_10": "0xfa3b00",
+            "RecoveredCall_d1d760_12": "0xfa3b40"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xd1d800",
+          "size": 60,
+          "symbol": "RecoveredLeaf_d1d800",
+          "target_sha256": "26d01eab29b7ef9e37f09d53df38f41b457835e1ee3a6f5b1c51f7d5a9856a3b",
+          "bindings": {
+            "LeafData_d1d800_0": "0x18ce670",
+            "LeafData_d1d800_3": "0x18cc8d0",
+            "RecoveredCall_d1d800_10": "0xfa3b00",
+            "RecoveredCall_d1d800_12": "0xfa3b40"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xd6ac70",
+          "size": 44,
+          "symbol": "RecoveredLeaf_d6ac70",
+          "target_sha256": "d6f319601dba2110cd90ec529284440fdb2edc62836e63621c48ddbf8994240f",
+          "bindings": {},
+          "got_bindings": {}
+        },
+        {
+          "address": "0xe47ef0",
+          "size": 100,
+          "symbol": "RecoveredLeaf_e47ef0",
+          "target_sha256": "a4725b2041f8b315d51bd68c782a5d8935c1cde6699b284aa14e996cc7647d14",
+          "bindings": {},
+          "got_bindings": {}
+        },
+        {
+          "address": "0xe48670",
+          "size": 72,
+          "symbol": "RecoveredLeaf_e48670",
+          "target_sha256": "37e3f99401bd0ea9b52373a0a8cd1ea2712cd72e8cfd4890a87045c0d7cc847b",
+          "bindings": {
+            "LeafData_e48670_2": "0x18e2768"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xe50050",
+          "size": 124,
+          "symbol": "RecoveredLeaf_e50050",
+          "target_sha256": "9b92e10702925265a63af233771977ae7289e59b131226dab44d3f20d708273a",
+          "bindings": {
+            "RecoveredCall_e50050_5": "0xe2fbd0"
+          },
+          "got_bindings": {}
+        }
+      ]
+    },
+    {
+      "id": "simd_recovery_imports_integer_omit_direct",
+      "source": "src/SimdRecovery_imports_integer_omit_direct.cpp",
+      "compiler": "8.0.1",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-std=c++11",
+        "-O2",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-fomit-frame-pointer",
+        "-fno-pic"
+      ],
+      "source_review": "generated_cxx_abi_view",
+      "functions": [
+        {
+          "address": "0x73fc40",
+          "size": 24,
+          "symbol": "RecoveredLeaf_73fc40",
+          "target_sha256": "0145f0276c9fbf20172e046239717281816cb9e43db5ae8454c32e1ffe527b41",
+          "bindings": {},
+          "got_bindings": {}
+        },
+        {
+          "address": "0xa05f10",
+          "size": 56,
+          "symbol": "RecoveredLeaf_a05f10",
+          "target_sha256": "c1a6163de8fa61ae209acbc5dad6cd496638f02bfcefd1f4f5067510b64e7df6",
+          "bindings": {
+            "RecoveredCall_a05f10_4": "0x774e90",
+            "RecoveredCall_a05f10_9": "0xfa3340"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xaab580",
+          "size": 532,
+          "symbol": "RecoveredLeaf_aab580",
+          "target_sha256": "5884cfe3d287844067332a42572424b1f054b32d0d986093f154694bdce30f0a",
+          "bindings": {},
+          "got_bindings": {}
+        },
+        {
+          "address": "0xaaf540",
+          "size": 76,
+          "symbol": "RecoveredLeaf_aaf540",
+          "target_sha256": "2d8c01803b842767fda9cb7fbb6f26f7071729c538e090f139b580cdb77f5d96",
+          "bindings": {
+            "RecoveredCall_aaf540_3": "0xaaf820",
+            "RecoveredCall_aaf540_12": "0xfa3330"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xaaf590",
+          "size": 80,
+          "symbol": "RecoveredLeaf_aaf590",
+          "target_sha256": "832d9a0bb85582d88f38e4a396851cf2b46cabfe959b6bc42a4c39b89e9d161b",
+          "bindings": {
+            "RecoveredCall_aaf590_4": "0xaaf710",
+            "RecoveredCall_aaf590_13": "0xfa3330"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xdafb40",
+          "size": 20,
+          "symbol": "RecoveredLeaf_dafb40",
+          "target_sha256": "c285b98e3d5cf15268e1baaed7eb0fafd3ffc2e8cb64737754e7e70bb13255f0",
+          "bindings": {},
+          "got_bindings": {}
+        },
+        {
+          "address": "0xdafb70",
+          "size": 332,
+          "symbol": "RecoveredLeaf_dafb70",
+          "target_sha256": "fca114d36b3d2f075a3afa1462756dc37ea21c8b93972db8ac3bbe6ff47f34af",
+          "bindings": {
+            "RecoveredCall_dafb70_60": "0xd44440",
+            "RecoveredCall_dafb70_68": "0xd44440",
+            "RecoveredCall_dafb70_75": "0xd44440"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xdb05f0",
+          "size": 16,
+          "symbol": "RecoveredLeaf_db05f0",
+          "target_sha256": "17bcbf9aa1a28ee20b0809969d81e669c7179b699b27f414097db8d6982b4adb",
+          "bindings": {
+            "RecoveredCall_db05f0_3": "0xfa3340"
+          },
+          "got_bindings": {}
+        }
+      ]
+    },
+    {
+      "id": "simd_recovery_named_imports_integer_keep_pic_unwind",
+      "source": "src/SimdRecovery_named_imports_integer_keep_pic_unwind.cpp",
+      "compiler": "8.0.1",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-std=c++11",
+        "-O2",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-fno-omit-frame-pointer",
+        "-fPIC",
+        "-funwind-tables"
+      ],
+      "source_review": "generated_cxx_abi_view",
+      "functions": [
+        {
+          "address": "0x7b360",
+          "size": 68,
+          "symbol": "RecoveredLeaf_7b360",
+          "target_sha256": "8043ef338fe9454a41c37da68654f508663546b3ff55f94cc29c1f38ab2077b1",
+          "bindings": {
+            "RecoveredCall_7b360_1": "0xfa3e50",
+            "RecoveredCall_7b360_5": "0xfa3e60",
+            "RecoveredCall_7b360_8": "0xfa3e70",
+            "RecoveredCall_7b360_11": "0xfa3e80",
+            "RecoveredCall_7b360_13": "0x7b3b0"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x2c4ec0",
+          "size": 64,
+          "symbol": "RecoveredLeaf_2c4ec0",
+          "target_sha256": "43fce67e800aac172627bac303c306f8177ce8febb90b0e641aa53cd556857e1",
+          "bindings": {
+            "RecoveredCall_2c4ec0_2": "0x57eef0",
+            "RecoveredCall_2c4ec0_7": "0xfa3340"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x515b80",
+          "size": 132,
+          "symbol": "RecoveredLeaf_515b80",
+          "target_sha256": "2f9ef2eb6846ac9c2eac6d8947493457c221073a1e48d15f4a98b9ba75570371",
+          "bindings": {
+            "RecoveredCall_515b80_10": "0x36ea0",
+            "RecoveredCall_515b80_16": "0xfa3340",
+            "RecoveredCall_515b80_21": "0xfa3340"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x51d970",
+          "size": 140,
+          "symbol": "RecoveredLeaf_51d970",
+          "target_sha256": "1c783d28704b08a166e027fcd7b535825f5df30b2e6fd6e00a1f0533aece21d0",
+          "bindings": {
+            "RecoveredCall_51d970_6": "0x37030",
+            "RecoveredCall_51d970_8": "0x4fb1c0",
+            "RecoveredCall_51d970_15": "0x36ea0",
+            "RecoveredCall_51d970_21": "0x4fb150"
+          },
+          "got_bindings": {}
+        }
+      ]
+    },
+    {
+      "id": "simd_recovery_abi_float_keep_pic_unwind",
+      "source": "src/SimdRecovery_abi_float_keep_pic_unwind.cpp",
+      "compiler": "8.0.1",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-std=c++11",
+        "-O2",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-fno-omit-frame-pointer",
+        "-fPIC",
+        "-funwind-tables"
+      ],
+      "source_review": "generated_cxx_abi_view",
+      "functions": [
+        {
+          "address": "0x51bc0",
+          "size": 20,
+          "symbol": "RecoveredLeaf_51bc0",
+          "target_sha256": "ae5f1e29feb2944d0c64342634faf26cd26cbc75c38248e9248ca25d1640fbb1",
+          "bindings": {
+            "RecoveredCall_51bc0_0": "0xfa3c70"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x95740",
+          "size": 28,
+          "symbol": "RecoveredLeaf_95740",
+          "target_sha256": "86327d97f37dc361107c7079fde2d900573aad4d678764415ee5d866a4e55f8a",
+          "bindings": {
+            "RecoveredCall_95740_2": "0x98f20"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x95760",
+          "size": 28,
+          "symbol": "RecoveredLeaf_95760",
+          "target_sha256": "6710fd525af41658059dbff688746c0bfc450e2d8ae399b089725a58155ad104",
+          "bindings": {
+            "RecoveredCall_95760_2": "0x98fc0"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x95780",
+          "size": 28,
+          "symbol": "RecoveredLeaf_95780",
+          "target_sha256": "13ee990236cf54d0047be171cf8e6488459096703077dd41ebec9befdf92ca0b",
+          "bindings": {
+            "RecoveredCall_95780_2": "0x990b0"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x957b0",
+          "size": 28,
+          "symbol": "RecoveredLeaf_957b0",
+          "target_sha256": "9901db6afe856acf4f003ab072b536c981bfb2fbebd2522b7c2da5d01a794f58",
+          "bindings": {
+            "RecoveredCall_957b0_2": "0x99150"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x957e0",
+          "size": 28,
+          "symbol": "RecoveredLeaf_957e0",
+          "target_sha256": "e81d9b96b853f6a078507265e16d50feb2f1c06090b1f0772438866502ebe008",
+          "bindings": {
+            "RecoveredCall_957e0_2": "0x99420"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x95800",
+          "size": 28,
+          "symbol": "RecoveredLeaf_95800",
+          "target_sha256": "17523f87bb47505751644bb60906f5d4a967435cd83f120b1208684e39f00887",
+          "bindings": {
+            "RecoveredCall_95800_2": "0x994c0"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x95820",
+          "size": 28,
+          "symbol": "RecoveredLeaf_95820",
+          "target_sha256": "19eef6bd58124f322a151e586827719c5c54662bdf55a0b6fb35fe241a3579da",
+          "bindings": {
+            "RecoveredCall_95820_2": "0x99230"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x5309c0",
+          "size": 28,
+          "symbol": "RecoveredLeaf_5309c0",
+          "target_sha256": "e8a7d0734e4e9279d9f8873f71a3d762f160f17a06afd385eb6dfd1b4b0209ff",
+          "bindings": {},
+          "got_bindings": {}
+        },
+        {
+          "address": "0x576650",
+          "size": 28,
+          "symbol": "RecoveredLeaf_576650",
+          "target_sha256": "89f02a51da37783c30dfa950ef8bfd636bdef623f000a8ee20b4d18877cb95f4",
+          "bindings": {},
+          "got_bindings": {}
+        }
+      ]
+    },
+    {
+      "id": "simd_recovery_named_imports_float_omit_direct",
+      "source": "src/SimdRecovery_named_imports_float_omit_direct.cpp",
+      "compiler": "8.0.1",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-std=c++11",
+        "-O2",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-fomit-frame-pointer",
+        "-fno-pic"
+      ],
+      "source_review": "generated_cxx_abi_view",
+      "functions": [
+        {
+          "address": "0x1c7480",
+          "size": 24,
+          "symbol": "RecoveredLeaf_1c7480",
+          "target_sha256": "48a513272f8fb3327b7eca337cdff206d82b56aed6cc6fb73ba33fc2d4942ed8",
+          "bindings": {
+            "RecoveredCall_1c7480_2": "0xfa3de0"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x6e3010",
+          "size": 28,
+          "symbol": "RecoveredLeaf_6e3010",
+          "target_sha256": "809e94d7e10cbb5057697da57d3fcef7343976efa02c3c92f235ab37149a431c",
+          "bindings": {
+            "LeafData_6e3010_0": "0x1845790",
+            "RecoveredCall_6e3010_3": "0x6e3030"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xd2bc70",
+          "size": 68,
+          "symbol": "RecoveredLeaf_d2bc70",
+          "target_sha256": "abc011c3154a75a39120a949075588b7a0f784b94e655f6d9ff8f232f0750726",
+          "bindings": {
+            "RecoveredCall_d2bc70_2": "0xfa4950",
+            "RecoveredCall_d2bc70_7": "0xd29920",
+            "RecoveredCall_d2bc70_13": "0xfa4960"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xdba700",
+          "size": 52,
+          "symbol": "RecoveredLeaf_dba700",
+          "target_sha256": "95e587c3f86183b78e9b0ec851caf3cdf16974298659f1bc1176840dd5e375da",
+          "bindings": {
+            "LeafData_dba700_0": "0x18d8348",
+            "RecoveredCall_dba700_4": "0xdba310",
+            "LeafData_dba700_6": "0x18d85c0",
+            "RecoveredCall_dba700_9": "0xdbd720"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xdbd760",
+          "size": 32,
+          "symbol": "RecoveredLeaf_dbd760",
+          "target_sha256": "fadd504cf5413d4943c01c662146960f7b149af4bd6648c21e824a19ec015bd2",
+          "bindings": {
+            "LeafData_dbd760_0": "0x18d85c0",
+            "RecoveredCall_dbd760_4": "0xdbd720"
+          },
+          "got_bindings": {}
+        }
+      ]
+    },
+    {
+      "id": "simd_recovery_named_imports_void_keep_pic_unwind",
+      "source": "src/SimdRecovery_named_imports_void_keep_pic_unwind.cpp",
+      "compiler": "8.0.1",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-std=c++11",
+        "-O2",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-fno-omit-frame-pointer",
+        "-fPIC",
+        "-funwind-tables"
+      ],
+      "source_review": "generated_cxx_abi_view",
+      "functions": [
+        {
+          "address": "0x4fad70",
+          "size": 40,
+          "symbol": "RecoveredLeaf_4fad70",
+          "target_sha256": "d7f9041bb84d8c516e7da1c98d2f6c334a9d35a89c031f0149f73fcd3531865a",
+          "bindings": {
+            "RecoveredCall_4fad70_2": "0xfa3ce0"
+          },
+          "got_bindings": {}
+        }
+      ]
+    },
+    {
+      "id": "simd_recovery_abi_bytevector16_omit_direct",
+      "source": "src/SimdRecovery_abi_bytevector16_omit_direct.cpp",
+      "compiler": "8.0.1",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-std=c++11",
+        "-O2",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-fomit-frame-pointer",
+        "-fno-pic"
+      ],
+      "source_review": "generated_cxx_abi_view",
+      "functions": [
+        {
+          "address": "0x9ce650",
+          "size": 36,
+          "symbol": "RecoveredLeaf_9ce650",
+          "target_sha256": "5567a81fe7148f342de5b33cad47e2de25cc85c1b1b813a6502e77159c70f3ed",
+          "bindings": {
+            "RecoveredCall_9ce650_3": "0x970900"
+          },
+          "got_bindings": {}
+        }
+      ]
+    },
+    {
+      "id": "zlib_adler32_o2_omit",
+      "source": "src/Zlib_adler32_O2_omit.c",
+      "compiler": "8.0.1",
+      "source_review": "library_abi_view",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-x",
+        "c",
+        "-std=gnu99",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-U_WIN32",
+        "-U_WIN64",
+        "-DZ_HAVE_UNISTD_H",
+        "-O2",
+        "-fomit-frame-pointer",
+        "-fno-pic",
+        "-I",
+        "vendor/zlib-1.2.11",
+        "-isystem",
+        "vendor/musl/include",
+        "-isystem",
+        "vendor/musl/generated"
+      ],
+      "header_roots": [
+        "vendor/zlib-1.2.11",
+        "vendor/musl/include",
+        "vendor/musl/generated"
+      ],
+      "functions": [
+        {
+          "address": "0x255b70",
+          "size": 964,
+          "symbol": "adler32_z",
+          "target_sha256": "76bf6f6a96ecbc216fbdb233b135882c930a4e72d34ed274151b05d006bbd8ff",
+          "bindings": {},
+          "got_bindings": {}
+        }
+      ]
+    },
+    {
+      "id": "zlib_crc32_o2_omit",
+      "source": "src/Zlib_crc32_O2_omit.c",
+      "compiler": "8.0.1",
+      "source_review": "library_abi_view",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-x",
+        "c",
+        "-std=gnu99",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-U_WIN32",
+        "-U_WIN64",
+        "-DZ_HAVE_UNISTD_H",
+        "-O2",
+        "-fomit-frame-pointer",
+        "-fno-pic",
+        "-I",
+        "vendor/zlib-1.2.11",
+        "-isystem",
+        "vendor/musl/include",
+        "-isystem",
+        "vendor/musl/generated"
+      ],
+      "header_roots": [
+        "vendor/zlib-1.2.11",
+        "vendor/musl/include",
+        "vendor/musl/generated"
+      ],
+      "functions": [
+        {
+          "address": "0x255f50",
+          "size": 740,
+          "symbol": "crc32_z",
+          "target_sha256": "20620a98522a8d89d6e09286ecf37c82c2562f9fd2290e291566558f7368f8b7",
+          "bindings": {
+            "": "0x134fe50"
+          },
+          "got_bindings": {}
+        }
+      ]
+    },
+    {
+      "id": "zlib_inflate_o3_keep_pic_unwind",
+      "source": "src/Zlib_inflate_O3_keep_pic_unwind.c",
+      "compiler": "8.0.1",
+      "source_review": "library_abi_view",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-x",
+        "c",
+        "-std=gnu99",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-U_WIN32",
+        "-U_WIN64",
+        "-DZ_HAVE_UNISTD_H",
+        "-O3",
+        "-fno-omit-frame-pointer",
+        "-fPIC",
+        "-funwind-tables",
+        "-I",
+        "vendor/zlib-1.2.11",
+        "-isystem",
+        "vendor/musl/include",
+        "-isystem",
+        "vendor/musl/generated"
+      ],
+      "header_roots": [
+        "vendor/zlib-1.2.11",
+        "vendor/musl/include",
+        "vendor/musl/generated"
+      ],
+      "functions": [
+        {
+          "address": "0x255a80",
+          "size": 228,
+          "symbol": "inflateEnd",
+          "target_sha256": "d6073150c726a2a4fcc85dc978dba82e2d2b730c219be16a8cdb18c5015c35dc",
+          "bindings": {},
+          "got_bindings": {}
+        }
+      ]
+    },
+    {
+      "id": "zlib_deflate_o2_omit",
+      "source": "src/Zlib_deflate_O2_omit.c",
+      "compiler": "8.0.1",
+      "source_review": "library_abi_view",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-x",
+        "c",
+        "-std=gnu99",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-U_WIN32",
+        "-U_WIN64",
+        "-DZ_HAVE_UNISTD_H",
+        "-O2",
+        "-fomit-frame-pointer",
+        "-fno-pic",
+        "-I",
+        "vendor/zlib-1.2.11",
+        "-isystem",
+        "vendor/musl/include",
+        "-isystem",
+        "vendor/musl/generated"
+      ],
+      "header_roots": [
+        "vendor/zlib-1.2.11",
+        "vendor/musl/include",
+        "vendor/musl/generated"
+      ],
+      "functions": [
+        {
+          "address": "0x530f60",
+          "size": 28,
+          "symbol": "deflateInit_",
+          "target_sha256": "c4563247d06e38de768e71f078af8cc504a7a1b7ccaaf830f48df70e29be028f",
+          "bindings": {},
+          "got_bindings": {}
+        }
+      ]
+    },
+    {
+      "id": "zlib_inflate_o3_omit",
+      "source": "src/Zlib_inflate_O3_omit.c",
+      "compiler": "8.0.1",
+      "source_review": "library_abi_view",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-x",
+        "c",
+        "-std=gnu99",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-U_WIN32",
+        "-U_WIN64",
+        "-DZ_HAVE_UNISTD_H",
+        "-O3",
+        "-fomit-frame-pointer",
+        "-fno-pic",
+        "-I",
+        "vendor/zlib-1.2.11",
+        "-isystem",
+        "vendor/musl/include",
+        "-isystem",
+        "vendor/musl/generated"
+      ],
+      "header_roots": [
+        "vendor/zlib-1.2.11",
+        "vendor/musl/include",
+        "vendor/musl/generated"
+      ],
+      "functions": [
+        {
+          "address": "0x253ca0",
+          "size": 16,
+          "symbol": "inflateInit_",
+          "target_sha256": "d96105e3ae58abd2b507b4d8619dab562b74e61bedb2f8cf936a0c6aa8cb9007",
+          "bindings": {},
+          "got_bindings": {}
+        }
+      ]
+    },
+    {
+      "id": "zlib_inflate_o2_keep_pic_unwind",
+      "source": "src/Zlib_inflate_O2_keep_pic_unwind.c",
+      "compiler": "8.0.1",
+      "source_review": "library_abi_view",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-x",
+        "c",
+        "-std=gnu99",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-U_WIN32",
+        "-U_WIN64",
+        "-DZ_HAVE_UNISTD_H",
+        "-O2",
+        "-fno-omit-frame-pointer",
+        "-fPIC",
+        "-funwind-tables",
+        "-I",
+        "vendor/zlib-1.2.11",
+        "-isystem",
+        "vendor/musl/include",
+        "-isystem",
+        "vendor/musl/generated"
+      ],
+      "header_roots": [
+        "vendor/zlib-1.2.11",
+        "vendor/musl/include",
+        "vendor/musl/generated"
+      ],
+      "functions": [
+        {
+          "address": "0x536750",
+          "size": 16,
+          "symbol": "inflateInit_",
+          "target_sha256": "6a1c277539a954f9ee9d19efcaa26c3695fb49eeb0ba8d47a4bf8c96e5e76ce4",
+          "bindings": {},
+          "got_bindings": {}
+        }
+      ]
+    },
+    {
+      "id": "simd_recovery_profiles_integer_O3_keep_pic_unwind",
+      "source": "src/SimdRecovery_profiles_integer_O3_keep_pic_unwind.cpp",
+      "compiler": "8.0.1",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-std=c++11",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-O3",
+        "-fno-omit-frame-pointer",
+        "-fPIC",
+        "-funwind-tables"
+      ],
+      "source_review": "generated_cxx_abi_view",
+      "functions": [
+        {
+          "address": "0x4f9210",
+          "size": 64,
+          "symbol": "RecoveredLeaf_4f9210",
+          "target_sha256": "298f60da8437117dd1a34b2f2a2c57d5b2d15d34bd9a7b0244092ad3fe766ad9",
+          "bindings": {
+            "RecoveredCall_4f9210_6": "0x4f8790"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x4f9320",
+          "size": 64,
+          "symbol": "RecoveredLeaf_4f9320",
+          "target_sha256": "e8f1d3e1efad2cc5d3320e0d4033e4d00fdaeb7ff9ba9687929925f3e38f5fc1",
+          "bindings": {
+            "RecoveredCall_4f9320_6": "0x4f8790"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x4f9a50",
+          "size": 104,
+          "symbol": "RecoveredLeaf_4f9a50",
+          "target_sha256": "3462fe6f73b26dfb9d27ba95b50dc791122b3a9a8b4a3ae34b9ae906f6772dbf",
+          "bindings": {
+            "RecoveredCall_4f9a50_9": "0xfa3350",
+            "RecoveredCall_4f9a50_14": "0x4f8bd0",
+            "RecoveredCall_4f9a50_19": "0x4f8bd0"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x4f9b50",
+          "size": 64,
+          "symbol": "RecoveredLeaf_4f9b50",
+          "target_sha256": "992da6daf136bfd5f43325bda7c49c86f0f8016cc475ffedbd914b914fd05ae9",
+          "bindings": {
+            "RecoveredCall_4f9b50_6": "0x4f8bd0"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x4f9d10",
+          "size": 64,
+          "symbol": "RecoveredLeaf_4f9d10",
+          "target_sha256": "82a33c0b508f18414832ac92db3d92566681bf198d8066dfdd5e60bfb930733a",
+          "bindings": {
+            "RecoveredCall_4f9d10_6": "0x4f8790"
+          },
+          "got_bindings": {}
+        }
+      ]
+    },
+    {
+      "id": "simd_recovery_profiles_integer_Os_omit",
+      "source": "src/SimdRecovery_profiles_integer_Os_omit.cpp",
+      "compiler": "8.0.1",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-std=c++11",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-Os",
+        "-fomit-frame-pointer",
+        "-fno-pic"
+      ],
+      "source_review": "generated_cxx_abi_view",
+      "functions": [
+        {
+          "address": "0x1e73d0",
+          "size": 40,
+          "symbol": "RecoveredLeaf_1e73d0",
+          "target_sha256": "258f5c787344656d50c215d6b9111a5db8407980f733eaa864ebc66dd806ffeb",
+          "bindings": {},
+          "got_bindings": {}
+        },
+        {
+          "address": "0x2133c0",
+          "size": 48,
+          "symbol": "RecoveredLeaf_2133c0",
+          "target_sha256": "3f19b3920013e9b90e11541f844dcd3359950fbd38b0f05ee982243e8ed5a322",
+          "bindings": {},
+          "got_bindings": {}
+        },
+        {
+          "address": "0x269090",
+          "size": 68,
+          "symbol": "RecoveredLeaf_269090",
+          "target_sha256": "d950e23afb662ea82fc2998c808fd4b580a07f8907de3ee2ee4169390eaac4df",
+          "bindings": {},
+          "got_bindings": {}
+        },
+        {
+          "address": "0x4f4740",
+          "size": 24,
+          "symbol": "RecoveredLeaf_4f4740",
+          "target_sha256": "9420f6b5cb890b4e9bed4408cdf8beb50047239ed4e89e0bf7af8e82a3362d55",
+          "bindings": {},
+          "got_bindings": {}
+        }
+      ]
+    },
+    {
+      "id": "simd_recovery_profiles_integer_O3_omit",
+      "source": "src/SimdRecovery_profiles_integer_O3_omit.cpp",
+      "compiler": "8.0.1",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-std=c++11",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-O3",
+        "-fomit-frame-pointer",
+        "-fno-pic"
+      ],
+      "source_review": "generated_cxx_abi_view",
+      "functions": [
+        {
+          "address": "0x233c80",
+          "size": 116,
+          "symbol": "RecoveredLeaf_233c80",
+          "target_sha256": "5a75204e986ca734476935760de6ae7def9834e5c1aff7e6a9d86d027d6fd0c3",
+          "bindings": {
+            "LeafData_233c80_0": "0x1329ac9",
+            "RecoveredCall_233c80_4": "0x1b9f70",
+            "RecoveredCall_233c80_10": "0xfa3340",
+            "LeafData_233c80_17": "0x1329ac9",
+            "RecoveredCall_233c80_23": "0x1ba7f0"
+          },
+          "got_bindings": {}
+        }
+      ]
+    },
+    {
+      "id": "simd_recovery_profiles_void_O3_keep_pic_unwind",
+      "source": "src/SimdRecovery_profiles_void_O3_keep_pic_unwind.cpp",
+      "compiler": "8.0.1",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-std=c++11",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-O3",
+        "-fno-omit-frame-pointer",
+        "-fPIC",
+        "-funwind-tables"
+      ],
+      "source_review": "generated_cxx_abi_view",
+      "functions": [
+        {
+          "address": "0x58b940",
+          "size": 84,
+          "symbol": "RecoveredLeaf_58b940",
+          "target_sha256": "5fa62c9164c77ce5bbefb602aafc293d387db63fa4da4aed9b5c487316cb1cbe",
+          "bindings": {
+            "RecoveredCall_58b940_6": "0x54dbf0"
+          },
+          "got_bindings": {}
+        }
+      ]
     }
   ]
 }

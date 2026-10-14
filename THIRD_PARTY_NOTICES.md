@@ -19,3 +19,9 @@ software developed by the OpenSSL Project for use in the OpenSSL Toolkit
 (https://www.openssl.org/), cryptographic software written by Eric Young
 (eay@cryptsoft.com), and software written by Tim Hudson (tjh@cryptsoft.com).
 See `vendor/README.md` for provenance and configuration limits.
+
+Public zlib 1.2.11 source views and headers are copyright (C) 1995-2017
+Jean-loup Gailly and Mark Adler, under the retained zlib license in
+`vendor/zlib-1.2.11/LICENSE` and `zlib.h`. Source files retain their individual
+copyright notices. The altered fixture version marker is identified in
+`vendor/README.md`; no complete proprietary SDK fork is distributed.

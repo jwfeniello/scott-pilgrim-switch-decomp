@@ -1,0 +1,25 @@
+{
+  "url": "https://api.github.com/repos/madler/zlib/tarball/v1.2.11",
+  "archive_sha256": "143df9ab483578ce7a1019b96aaa10f6e1ebc64b1a3d97fa14f4b4e4e7ec95e7",
+  "official_sha256": null,
+  "tag": "v1.2.11",
+  "tag_object": "7085a61bce3ed39d5e56ca4d01d80f4338c8a4a6",
+  "commit": "cacf7f1d4e3d44d871b605da3b647f07d718623f",
+  "upstream_header_sha256": {
+    "crc32.h": "407af59d0abfea84a6507c603eb29809411797f98249614fe76a661def783ce1",
+    "deflate.h": "0ca7fb0cf1dd63001c6e9e4ff93c8dbff2fe521199be51a4dda38a11b44919f6",
+    "gzguts.h": "1ef4741cf10441feeca5c8dde2b6c754f0cbd96fcae697d54a604757289a5e9b",
+    "inffast.h": "7d8c1c873ce9bc346ad6005bb9d75cce5c6352aaf7395385be216a9452a34908",
+    "inffixed.h": "237ba710f090e432b62ebf963bee8b302867e9691406b2d3f8ee89ee7bfef9b0",
+    "inflate.h": "8ec9ac297790276f7e46a961d4c6f9f944fb1dec92401339ec2666973cc5983c",
+    "inftrees.h": "c510b36402784b1f898be3b049b923469aa92701de2d9195aed19f6b65c0dce2",
+    "trees.h": "bb0a9d3ca88ee00c81adb7c636e73b97085f6ef1b52d6d58edbe2b6dc3adeb4d",
+    "zconf.h": "9c0087f31cd45fe4bfa0ca79b51df2c69d67c44f2fbb2223d7cf9ab8d971c360",
+    "zlib.h": "4ddc82b4af931ab55f44d977bde81bfbc4151b5dcdccc03142831a301b5ec3c8",
+    "zutil.h": "9a63f6690fac1620aa3cecee5752af618806da438a256b4a047fbcd289cac159"
+  },
+  "alterations": [
+    "zlib.h ZLIB_VERSION changed to the original version marker; no algorithm changes"
+  ],
+  "limitations": "Isolated full FDE source matches do not establish the complete original SDK fork, configuration, or linked data."
+}
