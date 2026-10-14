@@ -1,3 +1,13 @@
+**WE ARE LOOKING FOR THE ORIGINAL NINTENDO SWITCH SDK, CLANG FOR NX COMPILER,
+BUILD FLAGS, AND LIBRARY VERSIONS USED TO BUILD THIS GAME.**
+
+If you have relevant version information or access to a compatible toolchain,
+please [open an issue](https://github.com/jwfeniello/scott-pilgrim-switch-decomp/issues).
+Compiler `--version` output, build IDs, SDK version details, and library revision
+information would help us identify and reproduce the original build. The exact
+SDK/compiler revision is still unknown; SDK 10.6.0 has not been confirmed.
+See [compiler profiles](docs/COMPILERS.md) for what currently works.
+
 # Scott Pilgrim Switch decompilation
 
 Matching reconstruction of **Scott Pilgrim vs. The World: The Game – Complete
@@ -11,6 +21,33 @@ Edition** for Nintendo Switch.
 This includes engine and library infrastructure. The project does not yet rebuild
 or boot the complete game. Original method names and many ABI declarations remain
 provisional.
+
+## Contributing
+
+**HUMAN AND AI-ASSISTED CONTRIBUTIONS ARE WELCOME.** Both follow the same
+review and verification standards. Useful contributions include:
+
+- Reconstructing engine, gameplay, or library functions in readable C/C++.
+- Recovering class layouts, method names, and function signatures with evidence.
+- Identifying compiler settings, SDK revisions, and upstream library versions.
+- Improving verification tools, documentation, and source review.
+
+Open an issue to share findings or submit a focused pull request. For function
+reconstructions, include the original address and complete function size, compiler
+version and flags, verification commands and results, and any uncertain ABI or
+class assumptions. Mention AI assistance when used so reviewers understand how
+the source was produced; verify generated claims and code before submitting.
+
+Exact-match credit requires the complete original function to match byte for
+byte after checked standard ELF relocations. Similarity scores and partial
+matches receive no credit. Close candidates can go in `src/wip/` with their
+remaining differences documented. New matching code needs repeat-build and
+deliberately incorrect-source controls; changes to matching inputs require a
+fresh full verification before updating progress. See [methodology](docs/METHODOLOGY.md)
+and the build commands below.
+
+Submit reconstructed source and reproducible evidence. Keep original game files,
+assets, proprietary SDK files, and compiler installations outside the repository.
 
 ## Build and verify
 
