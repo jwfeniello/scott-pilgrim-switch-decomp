@@ -60,6 +60,8 @@ def main():
         'document.h': ['Int64', 'Uint64'],
         'encodings.h': ['Encode'],
     }
+    if build['id'] == 'rapidjson_pool_reader':
+        targets['reader.h'] += ['ParseArray', 'ParseObject']
     if build['id'].startswith('rapidjson_writer'):
         targets.update({
             'writer.h': ['StartArray', 'StartObject', 'WriteDouble', 'WriteString',

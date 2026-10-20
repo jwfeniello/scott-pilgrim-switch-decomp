@@ -411970,6 +411970,74 @@
           }
         }
       ]
+    },
+    {
+      "id": "rapidjson_pool_reader",
+      "source": "src/RapidJsonPoolReader.cpp",
+      "compiler": "8.0.1",
+      "source_review": "library_abi_view",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-std=c++11",
+        "-O2",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-fno-omit-frame-pointer",
+        "-fno-pic",
+        "-ffunction-sections",
+        "-fdata-sections",
+        "-U_WIN32",
+        "-U_WIN64",
+        "-D_LIBCPP_HAS_NO_THREADS",
+        "-D_LIBCPP_DISABLE_VISIBILITY_ANNOTATIONS",
+        "-nostdinc++",
+        "-isystem",
+        "vendor/llvm-libcxx-4/include",
+        "-isystem",
+        "vendor/musl/include",
+        "-isystem",
+        "vendor/musl/generated",
+        "-I",
+        "vendor/rapidjson-1.1.0/include"
+      ],
+      "header_roots": [
+        "vendor/rapidjson-1.1.0/include",
+        "vendor/llvm-libcxx-4/include",
+        "vendor/musl/include",
+        "vendor/musl/generated"
+      ],
+      "functions": [
+        {
+          "address": "0x16d160",
+          "size": 700,
+          "symbol": "_ZN9rapidjson13GenericReaderINS_4UTF8IcEES2_4PoolE10ParseArrayILj0ENS_19GenericStringStreamIS2_EENS_15GenericDocumentIS2_S3_S3_EEEEvRT0_RT1_",
+          "target_sha256": "9b6b07c09a644c219ed4520eb8dd2d1634598ff28ed80d68a7192f5981e02107",
+          "bindings": {
+            "_ZN9rapidjson13GenericReaderINS_4UTF8IcEES2_4PoolE10ParseValueILj0ENS_19GenericStringStreamIS2_EENS_15GenericDocumentIS2_S3_S3_EEEEvRT0_RT1_": "0x16c650",
+            "_Znwm": "0xfa3b30",
+            "_ZN4Pool7ReallocEPvmm": "0x16dc90",
+            "EngineAllocate": "0x36ea0",
+            "memcpy": "0xfa3330"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x16cde0",
+          "size": 888,
+          "symbol": "_ZN9rapidjson13GenericReaderINS_4UTF8IcEES2_4PoolE11ParseObjectILj0ENS_19GenericStringStreamIS2_EENS_15GenericDocumentIS2_S3_S3_EEEEvRT0_RT1_",
+          "target_sha256": "7ee46dd3f666c0e578a71471b7ad006253d5c462d5cd960da9de6898e22c80d7",
+          "bindings": {
+            "_ZN9rapidjson13GenericReaderINS_4UTF8IcEES2_4PoolE11ParseStringILj0ENS_19GenericStringStreamIS2_EENS_15GenericDocumentIS2_S3_S3_EEEEvRT0_RT1_b": "0x16ca70",
+            "_ZN9rapidjson13GenericReaderINS_4UTF8IcEES2_4PoolE10ParseValueILj0ENS_19GenericStringStreamIS2_EENS_15GenericDocumentIS2_S3_S3_EEEEvRT0_RT1_": "0x16c650",
+            "EngineAllocate": "0x36ea0",
+            "_Znwm": "0xfa3b30",
+            "_ZN4Pool7ReallocEPvmm": "0x16dc90",
+            "memcpy": "0xfa3330"
+          },
+          "got_bindings": {}
+        }
+      ]
     }
   ]
 }

@@ -1,9 +1,9 @@
 {
   "version": 1,
-  "generated_at": "2026-10-20T15:08:41.879505+00:00",
+  "generated_at": "2026-10-20T15:15:03.544384+00:00",
   "target_elf_sha256": "ea95638e6d6aaa0dc6cddd552a9366799aa1ec3bc07ee201f23f6c151103f5b8",
   "input_sha256": {
-    "config/builds.json": "6983fd343e47faa3e0c7cf424d800e5661ebe565fffce5974a059aa2c82420c6",
+    "config/builds.json": "a4f51c12cef7f3c927f7d1664c257470a26b541c667d011d269e8a8f2bfc920d",
     "config/functions.tsv": "399e91468a04e0459194c10d68d2210d1157cedefeb19c7851886ca7632fcb18",
     "config/target.json": "23cc6a5227206a953e7668acf5e9ae5c02a25c23b7e7967f0450a814b888241a",
     "src/AbiCfg_aggregate_O2_omit.cpp": "55009ca4f1819fe53803025bf27b93a676c6137877b9d4492828e2e15c89307c",
@@ -590,6 +590,7 @@
     "src/ProfilesCfgRecoveryOmit801O3OmitDirect.cpp": "5ac2bc5d83dcc6892b7f5b151670a1eb672cdc1769715dfd31482a87e05dc2c8",
     "src/ProfilesCfgRecoveryVoid801O2KeepDirect.cpp": "626e608562fc8a911e549b601013330a172e135661afe057fd75d4e37d2c0370",
     "src/ProfilesResultRecoveryOmit801O2KeepDirect.cpp": "a888616633508b24ae469010f599aed65b5b82dafcb8dd8f9a10a7bc5a0dfb24",
+    "src/RapidJsonPoolReader.cpp": "b323d04e5ce536aac2f0f0785499deb550ea8dc75b95b0631d64d52a194178c8",
     "src/RapidJsonReader.cpp": "a18f10fbecfee1ae54dd5cab33d76e65c3d812faad31c3762e22d6ec3fb9b3cd",
     "src/RapidJsonWriter.cpp": "e305d0fbaed98d1476a92bb09aba49e4e0a9f5d1ea3753db133e7a97cb02954c",
     "src/RawBufferDeleting.cpp": "dd2114dfab1046edc6ef8b20004406e1914a544cbacc37e27743a71038c73163",
@@ -2656,8 +2657,8 @@
     "8.0.1": "dffd62a213ec6cdb4430012a4a41c11e5e32c288f133d5391f9be49e1c5b69de",
     "7.0.1": "c2f0a175157d9aaace8031f8e6d7ea0ed6142b4bcef287105e3ed227301f1002"
   },
-  "exact_functions": 29810,
-  "exact_bytes": 2892408,
+  "exact_functions": 29812,
+  "exact_bytes": 2893996,
   "builds": [
     {
       "id": "probes",
@@ -9613,6 +9614,11 @@
       "id": "rapidjson_writer_701",
       "compiler": "7.0.1",
       "object_sha256": "bcb2a436630c8e198e8dcad9c997fa334ab8eac96fd55833f8ba19a5cb3c8e0e"
+    },
+    {
+      "id": "rapidjson_pool_reader",
+      "compiler": "8.0.1",
+      "object_sha256": "5ab04ade2e98340b62eff959b1bca4b82bf5754c44b19a874c71d71075791989"
     }
   ],
   "matches": [
@@ -15027,6 +15033,28 @@
       "symbol": "_ZN9rapidjson13GenericReaderINS_4UTF8IcEES2_4PoolE10ParseFalseILj0ENS_19GenericStringStreamIS2_EENS_15GenericDocumentIS2_S3_S3_EEEEvRT0_RT1_",
       "source_review": "library_abi_view",
       "relocation_count": 2
+    },
+    {
+      "address": "0x16cde0",
+      "size": 888,
+      "exact": true,
+      "target_sha256": "7ee46dd3f666c0e578a71471b7ad006253d5c462d5cd960da9de6898e22c80d7",
+      "compiled_sha256": "7ee46dd3f666c0e578a71471b7ad006253d5c462d5cd960da9de6898e22c80d7",
+      "source": "src/RapidJsonPoolReader.cpp",
+      "symbol": "_ZN9rapidjson13GenericReaderINS_4UTF8IcEES2_4PoolE11ParseObjectILj0ENS_19GenericStringStreamIS2_EENS_15GenericDocumentIS2_S3_S3_EEEEvRT0_RT1_",
+      "source_review": "library_abi_view",
+      "relocation_count": 6
+    },
+    {
+      "address": "0x16d160",
+      "size": 700,
+      "exact": true,
+      "target_sha256": "9b6b07c09a644c219ed4520eb8dd2d1634598ff28ed80d68a7192f5981e02107",
+      "compiled_sha256": "9b6b07c09a644c219ed4520eb8dd2d1634598ff28ed80d68a7192f5981e02107",
+      "source": "src/RapidJsonPoolReader.cpp",
+      "symbol": "_ZN9rapidjson13GenericReaderINS_4UTF8IcEES2_4PoolE10ParseArrayILj0ENS_19GenericStringStreamIS2_EENS_15GenericDocumentIS2_S3_S3_EEEEvRT0_RT1_",
+      "source_review": "library_abi_view",
+      "relocation_count": 5
     },
     {
       "address": "0x16e000",

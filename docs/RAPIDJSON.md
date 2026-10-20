@@ -1,9 +1,9 @@
 # RapidJSON source views
 
-Three compiler profiles reproduce 27 complete original functions / 15,164
+Four compiler profiles reproduce 29 complete original functions / 16,752
 bytes using public RapidJSON v1.1.0 templates and a provisional allocator ABI
 view. They include JSON dispatch, true/false parsing, hexadecimal decoding,
-UTF-8 encoding, integer handlers, JSON output, decimal formatting, and value
+UTF-8 encoding, array/object parsing, integer handlers, JSON output, decimal formatting, and value
 traversal. Original class declarations and the complete allocator implementation
 remain unestablished. The wrapper functions themselves receive no credit.
 
@@ -31,8 +31,15 @@ Repeat with `rapidjson_writer_801` using Clang 8.0.1 and
 `rapidjson_writer_701` using Clang 7.0.1. The historical `--clang8` argument
 selects the executable for either profile.
 
+`rapidjson_pool_reader` also uses Clang 8.0.1. Its reconstructed pool allocation
+routine supplies the previously missing 104 bytes in each array/object parser.
+The remaining differences disappeared when the maximum-capacity expression
+used `capacity > size ? capacity : size`. Both complete bodies passed fresh
+compilation, repeats, and per-definition negative controls. This is evidence
+for a compatible allocation routine, not a recovered original declaration.
+
 These matches do not establish the game's complete RapidJSON revision or
 configuration. They also do not establish a portable allocator, correct
 whole-game linking, or game execution. The null parser remains uncredited:
-its 300-byte candidate differs in two zero-store instructions. Other larger
+its 300-byte candidate differs in two zero-store instructions. String and number
 reader helpers still differ in size.

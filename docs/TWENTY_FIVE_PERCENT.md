@@ -1,7 +1,7 @@
 # Work toward 25%
 
-Current verified checkpoint: **29,810 exact functions /
-2,892,408 bytes / 17.640222%** of the original 16,396,664-byte
+Current verified checkpoint: **29,812 exact functions /
+2,893,996 bytes / 17.649907%** of the original 16,396,664-byte
 `.text`. The 25% target requires 4,099,166 exact bytes and remains unfinished.
 
 ## Added engine and ABI views
@@ -39,7 +39,7 @@ standard ELF relocations are checked during each full function comparison.
 Every added C build was compiled twice with identical object output. Adding an
 external side effect to every preprocessed C definition rejects every credited
 function. Receipts are in `progress/c_library_validation.json`. These controls
-complement the fresh full 1,391-build original-byte comparison in
+complement the fresh full 1,392-build original-byte comparison in
 `progress/verified.json`.
 
 ## Vector and named-call ABI recovery
@@ -126,12 +126,12 @@ The complete 1,388-build rebuild verifies 29,783 functions / 2,877,244 bytes.
 
 ## RapidJSON readers and writers
 
-Three public-template profiles add 27 complete functions / 15,164 bytes.
+Four public-template profiles add 29 complete functions / 16,752 bytes.
 They passed identical-object repeats, per-definition source-side-effect rejection,
 and comparisons of referenced constant objects and dispatch tables. The writer's
 hex digit table was adapted to lowercase after the data check caught a mismatch.
 See [RapidJSON source views](RAPIDJSON.md) for provenance, controls and limits.
-The complete 1,391-build rebuild verifies 29,810 functions / 2,892,408 bytes.
+The complete 1,392-build rebuild verifies 29,812 functions / 2,893,996 bytes.
 
 ## Reporting and remaining work
 

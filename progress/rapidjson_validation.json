@@ -178,6 +178,32 @@
           "sha256": "bedfbc17dfedc3a783c817da8b2eec13baff8e36c4e6a61c346332973895315a"
         }
       ]
+    },
+    {
+      "id": "rapidjson_pool_reader",
+      "source_sha256": "b323d04e5ce536aac2f0f0785499deb550ea8dc75b95b0631d64d52a194178c8",
+      "header_manifest_sha256": "f7269dd2d821d32406ecc7a7e909925fd0a16d669df327d62efa16d23c849ecc",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "5ab04ade2e98340b62eff959b1bca4b82bf5754c44b19a874c71d71075791989",
+      "repeated_exact_functions": 2,
+      "exact_bytes": 1588,
+      "negative_control": "external_side_effect_in_each_credited_template_definition",
+      "rejected_functions": 2,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 2
+      },
+      "header_injections": {
+        "reader.h:ParseFalse": 1,
+        "reader.h:ParseTrue": 1,
+        "reader.h:ParseHex4": 1,
+        "reader.h:ParseValue": 1,
+        "reader.h:ParseArray": 1,
+        "reader.h:ParseObject": 1,
+        "document.h:Int64": 1,
+        "document.h:Uint64": 1,
+        "encodings.h:Encode": 5
+      },
+      "immutable_tables": []
     }
   ]
 }
