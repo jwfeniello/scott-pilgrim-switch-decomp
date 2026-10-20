@@ -1,0 +1,13 @@
+{
+  "url": "https://codeload.github.com/Tencent/rapidjson/zip/refs/tags/v1.1.0",
+  "sha256": "8e00c38829d6785a2dfb951bb87c6974fa07dfe488aa5b25deec4b8bc0f6a3ab",
+  "tag": "v1.1.0",
+  "exported": "Public include headers and notices; writer.h hexDigits changed to lowercase to match the observed original lookup table",
+  "limitations": "Isolated compatible bodies do not establish the original library revision, allocator implementation, complete ABI or linked game.",
+  "modifications": [
+    {
+      "path": "include/rapidjson/writer.h",
+      "change": "hexDigits A-F replaced with a-f; original table at 0x133d750 is checked by the validation tool"
+    }
+  ]
+}

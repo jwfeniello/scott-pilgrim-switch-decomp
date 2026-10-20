@@ -1,0 +1,183 @@
+{
+  "builds": [
+    {
+      "id": "rapidjson_reader",
+      "source_sha256": "a18f10fbecfee1ae54dd5cab33d76e65c3d812faad31c3762e22d6ec3fb9b3cd",
+      "header_manifest_sha256": "f7269dd2d821d32406ecc7a7e909925fd0a16d669df327d62efa16d23c849ecc",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "90ed97b1872dfdcbc176f8654b03954f5c7ea9bb4ca99b10d8b33ff244f638b8",
+      "repeated_exact_functions": 7,
+      "exact_bytes": 3536,
+      "negative_control": "external_side_effect_in_each_credited_template_definition",
+      "rejected_functions": 7,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 7
+      },
+      "header_injections": {
+        "reader.h:ParseFalse": 1,
+        "reader.h:ParseTrue": 1,
+        "reader.h:ParseHex4": 1,
+        "reader.h:ParseValue": 1,
+        "document.h:Int64": 1,
+        "document.h:Uint64": 1,
+        "encodings.h:Encode": 5
+      },
+      "immutable_tables": [
+        {
+          "function": "0x16c650",
+          "address": "0x1339ae8",
+          "size": 33,
+          "sha256": "97fb986991170c47d3c85488986a7b3c86fb164faa89ffd95a20fdc27c0eb050"
+        }
+      ]
+    },
+    {
+      "id": "rapidjson_writer_801",
+      "source_sha256": "e305d0fbaed98d1476a92bb09aba49e4e0a9f5d1ea3753db133e7a97cb02954c",
+      "header_manifest_sha256": "f7269dd2d821d32406ecc7a7e909925fd0a16d669df327d62efa16d23c849ecc",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "f52b51d154a1db29930ecbe903ac99f9083e028a0a2bedfdecb37d783f16d34c",
+      "repeated_exact_functions": 18,
+      "exact_bytes": 9204,
+      "negative_control": "external_side_effect_in_each_credited_template_definition",
+      "rejected_functions": 18,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 18
+      },
+      "header_injections": {
+        "reader.h:ParseFalse": 1,
+        "reader.h:ParseTrue": 1,
+        "reader.h:ParseHex4": 1,
+        "reader.h:ParseValue": 1,
+        "document.h:Int64": 1,
+        "document.h:Uint64": 1,
+        "document.h:Accept": 1,
+        "encodings.h:Encode": 5,
+        "writer.h:StartArray": 1,
+        "writer.h:StartObject": 1,
+        "writer.h:WriteDouble": 2,
+        "writer.h:WriteString": 1,
+        "writer.h:Int": 1,
+        "writer.h:Int64": 1,
+        "writer.h:Prefix": 1,
+        "writer.h:WriteBool": 1,
+        "writer.h:WriteNull": 1,
+        "internal/dtoa.h:Grisu2": 1,
+        "internal/dtoa.h:DigitGen": 1,
+        "internal/dtoa.h:Prettify": 1,
+        "internal/itoa.h:u32toa": 1,
+        "internal/itoa.h:u64toa": 1
+      },
+      "immutable_tables": [
+        {
+          "function": "0x16f810",
+          "symbol": "_ZZN9rapidjson6WriterINS_19GenericStringBufferINS_4UTF8IcEE4PoolEES3_S3_S4_Lj0EE11WriteStringEPKcjE6escape",
+          "address": "0x133d760",
+          "size": 256,
+          "sha256": "0974ea7dbe5748b07f4705c819a8f2040f187cadc179d27790b609d7938da043"
+        },
+        {
+          "function": "0x16f810",
+          "symbol": "_ZZN9rapidjson6WriterINS_19GenericStringBufferINS_4UTF8IcEE4PoolEES3_S3_S4_Lj0EE11WriteStringEPKcjE9hexDigits",
+          "address": "0x133d750",
+          "size": 16,
+          "sha256": "9f9f5111f7b27a781f1f1ddde5ebc2dd2b796bfc7365c9c28b548e564176929f"
+        },
+        {
+          "function": "0x16fbc0",
+          "symbol": "_ZZN9rapidjson8internal21GetCachedPowerByIndexEmE15kCachedPowers_F",
+          "address": "0x133d860",
+          "size": 696,
+          "sha256": "02bf302f66f50150bcf5e322da879e92e417084d14fbe4f5345ddcb68f863e51"
+        },
+        {
+          "function": "0x16fbc0",
+          "symbol": "_ZZN9rapidjson8internal21GetCachedPowerByIndexEmE15kCachedPowers_E",
+          "address": "0x133db18",
+          "size": 174,
+          "sha256": "538f052ab907338d0e8980bc5d8ad76919b39f0248acdfafaaa0cc76e39948f7"
+        },
+        {
+          "function": "0x1700a0",
+          "address": "0x1339b09",
+          "size": 10,
+          "sha256": "0068c8fe1e1f7b9cd4569ca097d7dba1dbf3a37188c8eaf2fc204e85addc8c12"
+        },
+        {
+          "function": "0x1700a0",
+          "symbol": "_ZZN9rapidjson8internal8DigitGenERKNS0_5DiyFpES3_mPcPiS5_E6kPow10",
+          "address": "0x133dbc8",
+          "size": 40,
+          "sha256": "a516eecb41051151f0183a8b0b6f6693c43f7d9e1815f85caaab18e00a5269a2"
+        },
+        {
+          "function": "0x16fdc0",
+          "symbol": "_ZZN9rapidjson8internal12GetDigitsLutEvE10cDigitsLut",
+          "address": "0x133dbf0",
+          "size": 200,
+          "sha256": "bedfbc17dfedc3a783c817da8b2eec13baff8e36c4e6a61c346332973895315a"
+        },
+        {
+          "function": "0x3ffa0",
+          "address": "0x1339450",
+          "size": 6,
+          "sha256": "26fd36a056d350045ece8c16b29c470dca810f32212b83e9c7b9d009946ac7f0"
+        }
+      ]
+    },
+    {
+      "id": "rapidjson_writer_701",
+      "source_sha256": "e305d0fbaed98d1476a92bb09aba49e4e0a9f5d1ea3753db133e7a97cb02954c",
+      "header_manifest_sha256": "f7269dd2d821d32406ecc7a7e909925fd0a16d669df327d62efa16d23c849ecc",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "bcb2a436630c8e198e8dcad9c997fa334ab8eac96fd55833f8ba19a5cb3c8e0e",
+      "repeated_exact_functions": 2,
+      "exact_bytes": 2424,
+      "negative_control": "external_side_effect_in_each_credited_template_definition",
+      "rejected_functions": 2,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 2
+      },
+      "header_injections": {
+        "reader.h:ParseFalse": 1,
+        "reader.h:ParseTrue": 1,
+        "reader.h:ParseHex4": 1,
+        "reader.h:ParseValue": 1,
+        "document.h:Int64": 1,
+        "document.h:Uint64": 1,
+        "document.h:Accept": 1,
+        "encodings.h:Encode": 5,
+        "writer.h:StartArray": 1,
+        "writer.h:StartObject": 1,
+        "writer.h:WriteDouble": 2,
+        "writer.h:WriteString": 1,
+        "writer.h:Int": 1,
+        "writer.h:Int64": 1,
+        "writer.h:Prefix": 1,
+        "writer.h:WriteBool": 1,
+        "writer.h:WriteNull": 1,
+        "internal/dtoa.h:Grisu2": 1,
+        "internal/dtoa.h:DigitGen": 1,
+        "internal/dtoa.h:Prettify": 1,
+        "internal/itoa.h:u32toa": 1,
+        "internal/itoa.h:u64toa": 1
+      },
+      "immutable_tables": [
+        {
+          "function": "0x170480",
+          "symbol": "_ZZN9rapidjson8internal12GetDigitsLutEvE10cDigitsLut",
+          "address": "0x133dbf0",
+          "size": 200,
+          "sha256": "bedfbc17dfedc3a783c817da8b2eec13baff8e36c4e6a61c346332973895315a"
+        },
+        {
+          "function": "0x170770",
+          "symbol": "_ZZN9rapidjson8internal12GetDigitsLutEvE10cDigitsLut",
+          "address": "0x133dbf0",
+          "size": 200,
+          "sha256": "bedfbc17dfedc3a783c817da8b2eec13baff8e36c4e6a61c346332973895315a"
+        }
+      ]
+    }
+  ]
+}

@@ -29,3 +29,9 @@ copyright notices. The altered fixture version marker is identified in
 The public OpenSSL_1_0_2q views retain the OpenSSL/SSLeay terms in
 `vendor/openssl-1.0.2q/LICENSE`. The OpenSSL Project, Eric Young and Tim Hudson
 acknowledgments above also apply to these additional public source/header views.
+# RapidJSON
+
+The RapidJSON v1.1.0 headers retain their upstream copyright and license notices.
+See `vendor/rapidjson-1.1.0/license.txt` for the MIT license and additional
+upstream third-party notices. The lowercase hexadecimal writer-table adaptation
+is documented in `vendor/rapidjson-provenance.json`.

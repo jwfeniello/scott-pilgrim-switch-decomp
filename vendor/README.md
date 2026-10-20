@@ -77,3 +77,13 @@ Their diagnostic filenames use the observed original prefix. The complete
 OpenSSL/SSLeay license is in [`openssl-1.0.2q/LICENSE`](openssl-1.0.2q/LICENSE).
 Matching isolated q and u bodies does not establish a complete original library
 revision, SDK installation, configuration, or linked data.
+# RapidJSON source fixture
+
+`rapidjson-1.1.0` contains public headers and notices from the official
+[v1.1.0 tag](https://github.com/Tencent/rapidjson/tree/v1.1.0).
+The archive URL/hash and modification are recorded in
+`rapidjson-provenance.json`; file hashes are in `rapidjson_sha256.json`.
+The writer's hexadecimal digit table is adapted to lowercase to match the
+observed original data. See [the source-view notes](../docs/RAPIDJSON.md).
+The fixture retains the upstream `license.txt`.
+
