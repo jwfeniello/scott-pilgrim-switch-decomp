@@ -409657,6 +409657,1843 @@
           "got_bindings": {}
         }
       ]
+    },
+    {
+      "id": "openssl_q_sections_crypto_bn_bn_gf2m_O3_novec",
+      "source": "src/OpenSslQSections_crypto_bn_bn_gf2m_O3_novec.c",
+      "compiler": "8.0.1",
+      "source_review": "library_abi_view",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-x",
+        "c",
+        "-std=gnu99",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-U_WIN32",
+        "-U_WIN64",
+        "-DOPENSSL_THREADS",
+        "-D_REENTRANT",
+        "-I",
+        "vendor/openssl-q-configs/32_longlong",
+        "-I",
+        "vendor/openssl-1.0.2q",
+        "-I",
+        "vendor/openssl-1.0.2q/include",
+        "-I",
+        "vendor/openssl-1.0.2q/crypto",
+        "-I",
+        "vendor/openssl-1.0.2q/crypto/bn",
+        "-isystem",
+        "vendor/musl/include",
+        "-isystem",
+        "vendor/musl/generated",
+        "-O3",
+        "-fomit-frame-pointer",
+        "-fno-pic",
+        "-funwind-tables",
+        "-fno-vectorize",
+        "-fno-slp-vectorize",
+        "-ffunction-sections",
+        "-fdata-sections"
+      ],
+      "header_roots": [
+        "vendor/openssl-1.0.2q",
+        "vendor/openssl-q-configs",
+        "vendor/musl/include",
+        "vendor/musl/generated"
+      ],
+      "functions": [
+        {
+          "address": "0x1df6b0",
+          "size": 152,
+          "symbol": "BN_GF2m_mod_div",
+          "target_sha256": "f3147cce5cf922f867265eca02e54e93412a7ef9130ae7c7d8c8c8972f240d4b",
+          "bindings": {
+            "BN_CTX_start": "0x1d0c90",
+            "BN_CTX_get": "0x1d0e20",
+            "BN_GF2m_mod_inv": "0x1df090",
+            "BN_GF2m_mod_mul": "0x1def20",
+            "BN_CTX_end": "0x1d0d90"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x1df750",
+          "size": 320,
+          "symbol": "BN_GF2m_mod_exp_arr",
+          "target_sha256": "ecb308fe3bfbb13a0ce76b9697616c89aae62c3239695661097c79c236b0b902",
+          "bindings": {
+            "BN_set_word": "0x1c3730",
+            "BN_copy": "0x1c3630",
+            "BN_CTX_start": "0x1d0c90",
+            "BN_CTX_get": "0x1d0e20",
+            "BN_GF2m_mod_arr": "0x1de5e0",
+            "BN_num_bits": "0x1c31f0",
+            "BN_GF2m_mod_sqr_arr": "0x1decc0",
+            "BN_is_bit_set": "0x1c3ef0",
+            "BN_GF2m_mod_mul_arr": "0x1de960",
+            "BN_CTX_end": "0x1d0d90"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x1df090",
+          "size": 1560,
+          "symbol": "BN_GF2m_mod_inv",
+          "target_sha256": "41e880f3c37bf4ddb31be3183536cd64313a1e207e22bed822013cac55f9d256",
+          "bindings": {
+            "BN_CTX_start": "0x1d0c90",
+            "BN_CTX_get": "0x1d0e20",
+            "BN_GF2m_mod_arr": "0x1de5e0",
+            "BN_copy": "0x1c3630",
+            "BN_num_bits": "0x1c31f0",
+            "bn_expand2": "0x1c35c0",
+            "memset": "0xfa3340",
+            "BN_num_bits_word": "0x1c3150",
+            "ERR_put_error": "0x1ba7f0",
+            "BN_CTX_end": "0x1d0d90"
+          },
+          "got_bindings": {},
+          "literals": {
+            "433a2f6769742f7562696c69627261726965732f55626973657276696365732f65787465726e616c2f686172626f7572636f6d6d6f6e2f6c69627261726965732f6f70656e73736c2f63727970746f2f626e2f626e5f6766326d2e6300": "0x13179a8"
+          }
+        },
+        {
+          "address": "0x1def20",
+          "size": 368,
+          "symbol": "BN_GF2m_mod_mul",
+          "target_sha256": "7bb80a4681a53766e097c3e9df0865d19070b5635b35447775ed26f9d51361ee",
+          "bindings": {
+            "BN_num_bits": "0x1c31f0",
+            "CRYPTO_malloc": "0x1b9f70",
+            "BN_GF2m_mod_mul_arr": "0x1de960",
+            "ERR_put_error": "0x1ba7f0",
+            "CRYPTO_free": "0x1ba410"
+          },
+          "got_bindings": {},
+          "literals": {
+            "433a2f6769742f7562696c69627261726965732f55626973657276696365732f65787465726e616c2f686172626f7572636f6d6d6f6e2f6c69627261726965732f6f70656e73736c2f63727970746f2f626e2f626e5f6766326d2e6300": "0x13179a8"
+          }
+        },
+        {
+          "address": "0x1df930",
+          "size": 776,
+          "symbol": "BN_GF2m_mod_solve_quad_arr",
+          "target_sha256": "9df6174e91926165c7ed8f1f77c176f6dded03a6a4c0c89f4c4f9f4f3eefd304",
+          "bindings": {
+            "BN_CTX_start": "0x1d0c90",
+            "BN_CTX_get": "0x1d0e20",
+            "BN_GF2m_mod_arr": "0x1de5e0",
+            "BN_rand": "0x1d69b0",
+            "BN_set_word": "0x1c3730",
+            "BN_copy": "0x1c3630",
+            "BN_GF2m_mod_sqr_arr": "0x1decc0",
+            "BN_GF2m_mod_mul_arr": "0x1de960",
+            "BN_GF2m_add": "0x1de4d0",
+            "BN_ucmp": "0x1c3d10",
+            "ERR_put_error": "0x1ba7f0",
+            "BN_CTX_end": "0x1d0d90"
+          },
+          "got_bindings": {},
+          "literals": {
+            "433a2f6769742f7562696c69627261726965732f55626973657276696365732f65787465726e616c2f686172626f7572636f6d6d6f6e2f6c69627261726965732f6f70656e73736c2f63727970746f2f626e2f626e5f6766326d2e6300": "0x13179a8"
+          }
+        },
+        {
+          "address": "0x1decc0",
+          "size": 600,
+          "symbol": "BN_GF2m_mod_sqr_arr",
+          "target_sha256": "bf8486f27599b3a0a0b184bcb4d80bdb9a59dd44fdf254b1c43c5bcd402dc898",
+          "bindings": {
+            "BN_CTX_start": "0x1d0c90",
+            "BN_CTX_get": "0x1d0e20",
+            "bn_expand2": "0x1c35c0",
+            "BN_GF2m_mod_arr": "0x1de5e0",
+            "BN_CTX_end": "0x1d0d90"
+          },
+          "got_bindings": {}
+        }
+      ]
+    },
+    {
+      "id": "openssl_q_sections_crypto_bn_bn_mul_O3_omit",
+      "source": "src/OpenSslQSections_crypto_bn_bn_mul_O3_omit.c",
+      "compiler": "8.0.1",
+      "source_review": "library_abi_view",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-x",
+        "c",
+        "-std=gnu99",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-U_WIN32",
+        "-U_WIN64",
+        "-DOPENSSL_THREADS",
+        "-D_REENTRANT",
+        "-I",
+        "vendor/openssl-q-configs/32_longlong",
+        "-I",
+        "vendor/openssl-1.0.2q",
+        "-I",
+        "vendor/openssl-1.0.2q/include",
+        "-I",
+        "vendor/openssl-1.0.2q/crypto",
+        "-I",
+        "vendor/openssl-1.0.2q/crypto/bn",
+        "-isystem",
+        "vendor/musl/include",
+        "-isystem",
+        "vendor/musl/generated",
+        "-O3",
+        "-fomit-frame-pointer",
+        "-fno-pic",
+        "-funwind-tables",
+        "-ffunction-sections",
+        "-fdata-sections"
+      ],
+      "header_roots": [
+        "vendor/openssl-1.0.2q",
+        "vendor/openssl-q-configs",
+        "vendor/musl/include",
+        "vendor/musl/generated"
+      ],
+      "functions": [
+        {
+          "address": "0x1d3b50",
+          "size": 660,
+          "symbol": "bn_mul_fixed_top",
+          "target_sha256": "6c94e6113eeab8726a108478565bafce8016074550d0f1418895d1ee9a89e140",
+          "bindings": {
+            "BN_set_word": "0x1c3730",
+            "BN_CTX_start": "0x1d0c90",
+            "BN_CTX_get": "0x1d0e20",
+            "bn_expand2": "0x1c35c0",
+            "bn_mul_comba8": "0x1c49f0",
+            "BN_copy": "0x1c3630",
+            "BN_num_bits_word": "0x1c3150",
+            "bn_mul_recursive": "0x1d3060",
+            "bn_mul_normal": "0x1d34e0",
+            "bn_mul_part_recursive": "0x1d3650",
+            "BN_CTX_end": "0x1d0d90"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x1d3650",
+          "size": 1180,
+          "symbol": "bn_mul_part_recursive",
+          "target_sha256": "0c3086027c3a60216c52420a7f622323fc5ef74e9e3a0e3da2592725fd32d3da",
+          "bindings": {
+            "bn_mul_normal": "0x1d34e0",
+            "bn_cmp_part_words": "0x1c4060",
+            "": "0x134369a",
+            "bn_sub_part_words": "0x1d2dc0",
+            "bn_mul_recursive": "0x1d3060",
+            "memset": "0xfa3340",
+            "bn_mul_comba8": "0x1c49f0",
+            "bn_add_words": "0x1c47e0",
+            "bn_sub_words": "0x1c4900"
+          },
+          "got_bindings": {}
+        }
+      ]
+    },
+    {
+      "id": "openssl_q_sections_crypto_err_err_O3_novec",
+      "source": "src/OpenSslQSections_crypto_err_err_O3_novec.c",
+      "compiler": "8.0.1",
+      "source_review": "library_abi_view",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-x",
+        "c",
+        "-std=gnu99",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-U_WIN32",
+        "-U_WIN64",
+        "-DOPENSSL_THREADS",
+        "-D_REENTRANT",
+        "-I",
+        "vendor/openssl-q-configs/32_longlong",
+        "-I",
+        "vendor/openssl-1.0.2q",
+        "-I",
+        "vendor/openssl-1.0.2q/include",
+        "-I",
+        "vendor/openssl-1.0.2q/crypto",
+        "-I",
+        "vendor/openssl-1.0.2q/crypto/err",
+        "-isystem",
+        "vendor/musl/include",
+        "-isystem",
+        "vendor/musl/generated",
+        "-O3",
+        "-fomit-frame-pointer",
+        "-fno-pic",
+        "-funwind-tables",
+        "-fno-vectorize",
+        "-fno-slp-vectorize",
+        "-ffunction-sections",
+        "-fdata-sections"
+      ],
+      "header_roots": [
+        "vendor/openssl-1.0.2q",
+        "vendor/openssl-q-configs",
+        "vendor/musl/include",
+        "vendor/musl/generated"
+      ],
+      "functions": [
+        {
+          "address": "0x1bab60",
+          "size": 396,
+          "symbol": "get_error_values",
+          "target_sha256": "c19d66df9218f4d867414a1f4148472606a7481f09aaa886277e89c8ffb65bbc",
+          "bindings": {
+            "ERR_get_state": "0x1ba8f0",
+            "CRYPTO_free": "0x1ba410"
+          },
+          "got_bindings": {},
+          "literals": {
+            "00": "0x1326e41",
+            "4e4100": "0x13098f7"
+          }
+        },
+        {
+          "address": "0x1bb510",
+          "size": 360,
+          "symbol": "ERR_add_error_vdata",
+          "target_sha256": "1b5d69bf27700d422855ea66fb9c72e466c5a86ebddea0f329c6fd2f22baa994",
+          "bindings": {
+            "CRYPTO_malloc": "0x1b9f70",
+            "strlen": "0xfa3360",
+            "CRYPTO_realloc": "0x1ba130",
+            "BUF_strlcat": "0x1b9d90",
+            "ERR_get_state": "0x1ba8f0",
+            "CRYPTO_free": "0x1ba410"
+          },
+          "got_bindings": {},
+          "literals": {
+            "433a2f6769742f7562696c69627261726965732f55626973657276696365732f65787465726e616c2f686172626f7572636f6d6d6f6e2f6c69627261726965732f6f70656e73736c2f63727970746f2f6572722f6572722e6300": "0x1305e99"
+          }
+        },
+        {
+          "address": "0x1baa40",
+          "size": 120,
+          "symbol": "ERR_clear_error",
+          "target_sha256": "c9c1fdc36437817cdb212a8d746036c785a9de952a91d4c1b11c62e5278d3c6d",
+          "bindings": {
+            "ERR_get_state": "0x1ba8f0",
+            "CRYPTO_free": "0x1ba410"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x1baac0",
+          "size": 148,
+          "symbol": "ERR_get_error",
+          "target_sha256": "2a9ace5e53349011351cd69b8101d398ad4552ad44d2abcc2df1ae3968db00c9",
+          "bindings": {
+            "ERR_get_state": "0x1ba8f0",
+            "CRYPTO_free": "0x1ba410"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x1bad10",
+          "size": 80,
+          "symbol": "ERR_peek_error",
+          "target_sha256": "277ef006c842e8595845c8e791cffd8250275f8cea2ff1309c20c0292d943971",
+          "bindings": {
+            "ERR_get_state": "0x1ba8f0"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x1bb6d0",
+          "size": 240,
+          "symbol": "ERR_pop_to_mark",
+          "target_sha256": "668e8d3ead28542319edc31fc9c2bc37b9ce5be9a8021b050bb7a7f4017211f7",
+          "bindings": {
+            "ERR_get_state": "0x1ba8f0",
+            "CRYPTO_free": "0x1ba410"
+          },
+          "got_bindings": {}
+        }
+      ]
+    },
+    {
+      "id": "openssl_q_sections_crypto_x509_x509_lu_O3_omit",
+      "source": "src/OpenSslQSections_crypto_x509_x509_lu_O3_omit.c",
+      "compiler": "8.0.1",
+      "source_review": "library_abi_view",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-x",
+        "c",
+        "-std=gnu99",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-U_WIN32",
+        "-U_WIN64",
+        "-DOPENSSL_THREADS",
+        "-D_REENTRANT",
+        "-I",
+        "vendor/openssl-q-configs/32_longlong",
+        "-I",
+        "vendor/openssl-1.0.2q",
+        "-I",
+        "vendor/openssl-1.0.2q/include",
+        "-I",
+        "vendor/openssl-1.0.2q/crypto",
+        "-I",
+        "vendor/openssl-1.0.2q/crypto/x509",
+        "-isystem",
+        "vendor/musl/include",
+        "-isystem",
+        "vendor/musl/generated",
+        "-O3",
+        "-fomit-frame-pointer",
+        "-fno-pic",
+        "-funwind-tables",
+        "-ffunction-sections",
+        "-fdata-sections"
+      ],
+      "header_roots": [
+        "vendor/openssl-1.0.2q",
+        "vendor/openssl-q-configs",
+        "vendor/musl/include",
+        "vendor/musl/generated"
+      ],
+      "functions": [
+        {
+          "address": "0x20a790",
+          "size": 252,
+          "symbol": "x509_object_idx_cnt",
+          "target_sha256": "b37a85fd6f49b59fcb89d096e5aa85ab5288ba0017c7ef59e274b285008d6c0f",
+          "bindings": {
+            "sk_find": "0x1bfe60",
+            "sk_num": "0x1c0240",
+            "sk_value": "0x1c0260",
+            "": "0x20a100"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x20ac60",
+          "size": 688,
+          "symbol": "X509_STORE_CTX_get1_issuer",
+          "target_sha256": "1a42eaf2e679df888814c5d5ec1ed124b23eb0e9f3d3c97ee196d86f4f54e159",
+          "bindings": {
+            "X509_get_issuer_name": "0x1f4e10",
+            "X509_STORE_get_by_subject": "0x20a2b0",
+            "X509_free": "0x1fbcd0",
+            "CRYPTO_lock": "0x1b95a0",
+            "sk_find": "0x1bfe60",
+            "sk_num": "0x1c0240",
+            "sk_value": "0x1c0260",
+            "X509_get_subject_name": "0x1f4e20",
+            "X509_NAME_cmp": "0x1f4c00",
+            "X509_CRL_free": "0x1fe930",
+            "ERR_put_error": "0x1ba7f0",
+            "CRYPTO_add_lock": "0x1b9930"
+          },
+          "got_bindings": {},
+          "literals": {
+            "433a2f6769742f7562696c69627261726965732f55626973657276696365732f65787465726e616c2f686172626f7572636f6d6d6f6e2f6c69627261726965732f6f70656e73736c2f63727970746f2f783530392f783530395f6c752e6300": "0x131b8a6"
+          }
+        }
+      ]
+    },
+    {
+      "id": "openssl_q_sections_crypto_sha_sha256_O3_omit",
+      "source": "src/OpenSslQSections_crypto_sha_sha256_O3_omit.c",
+      "compiler": "8.0.1",
+      "source_review": "library_abi_view",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-x",
+        "c",
+        "-std=gnu99",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-U_WIN32",
+        "-U_WIN64",
+        "-DOPENSSL_THREADS",
+        "-D_REENTRANT",
+        "-I",
+        "vendor/openssl-q-configs/32_longlong",
+        "-I",
+        "vendor/openssl-1.0.2q",
+        "-I",
+        "vendor/openssl-1.0.2q/include",
+        "-I",
+        "vendor/openssl-1.0.2q/crypto",
+        "-I",
+        "vendor/openssl-1.0.2q/crypto/sha",
+        "-isystem",
+        "vendor/musl/include",
+        "-isystem",
+        "vendor/musl/generated",
+        "-O3",
+        "-fomit-frame-pointer",
+        "-fno-pic",
+        "-funwind-tables",
+        "-ffunction-sections",
+        "-fdata-sections"
+      ],
+      "header_roots": [
+        "vendor/openssl-1.0.2q",
+        "vendor/openssl-q-configs",
+        "vendor/musl/include",
+        "vendor/musl/generated"
+      ],
+      "functions": [
+        {
+          "address": "0x20f7e0",
+          "size": 828,
+          "symbol": "SHA256_Final",
+          "target_sha256": "393685deb3857b4ca213ef89fc82b970e75d304c3a56b2853cded515501fa5a1",
+          "bindings": {
+            "memset": "0xfa3340",
+            "": "0x20fc20",
+            "OPENSSL_cleanse": "0x1ba470"
+          },
+          "got_bindings": {}
+        }
+      ]
+    },
+    {
+      "id": "openssl_q_sections_ssl_ssl_sess_O3_omit",
+      "source": "src/OpenSslQSections_ssl_ssl_sess_O3_omit.c",
+      "compiler": "8.0.1",
+      "source_review": "library_abi_view",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-x",
+        "c",
+        "-std=gnu99",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-U_WIN32",
+        "-U_WIN64",
+        "-DOPENSSL_THREADS",
+        "-D_REENTRANT",
+        "-I",
+        "vendor/openssl-q-configs/32_longlong",
+        "-I",
+        "vendor/openssl-1.0.2q",
+        "-I",
+        "vendor/openssl-1.0.2q/include",
+        "-I",
+        "vendor/openssl-1.0.2q/crypto",
+        "-I",
+        "vendor/openssl-1.0.2q/ssl",
+        "-isystem",
+        "vendor/musl/include",
+        "-isystem",
+        "vendor/musl/generated",
+        "-O3",
+        "-fomit-frame-pointer",
+        "-fno-pic",
+        "-funwind-tables",
+        "-ffunction-sections",
+        "-fdata-sections"
+      ],
+      "header_roots": [
+        "vendor/openssl-1.0.2q",
+        "vendor/openssl-q-configs",
+        "vendor/musl/include",
+        "vendor/musl/generated"
+      ],
+      "functions": [
+        {
+          "address": "0x230ed0",
+          "size": 424,
+          "symbol": "remove_session_lock",
+          "target_sha256": "c9b185b011d715b7310038030195e743c3203368d0b0d8202315667c76c1586e",
+          "bindings": {
+            "CRYPTO_lock": "0x1b95a0",
+            "lh_retrieve": "0x1bf600",
+            "SSL_SESSION_free": "0x2301b0",
+            "lh_delete": "0x1bf400"
+          },
+          "got_bindings": {},
+          "literals": {
+            "433a2f6769742f7562696c69627261726965732f55626973657276696365732f65787465726e616c2f686172626f7572636f6d6d6f6e2f6c69627261726965732f6f70656e73736c2f73736c2f73736c5f736573732e6300": "0x132366e"
+          }
+        },
+        {
+          "address": "0x231110",
+          "size": 220,
+          "symbol": "timeout_LHASH_DOALL_ARG",
+          "target_sha256": "6d70ae3edb09065e4c58ad65261bc6d2769958b751bd09aef367fd785850c559",
+          "bindings": {
+            "lh_delete": "0x1bf400",
+            "SSL_SESSION_free": "0x2301b0"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x2311f0",
+          "size": 148,
+          "symbol": "ssl_clear_bad_session",
+          "target_sha256": "ff2b9457729a3899473310a3551d8598d4a8310146bbe0bbaf28ee3c2353e6ae",
+          "bindings": {
+            "SSL_state": "0x220df0",
+            "": "0x230ed0"
+          },
+          "got_bindings": {}
+        }
+      ]
+    },
+    {
+      "id": "openssl_q_sections_ssl_s23_srvr_O3_omit",
+      "source": "src/OpenSslQSections_ssl_s23_srvr_O3_omit.c",
+      "compiler": "8.0.1",
+      "source_review": "library_abi_view",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-x",
+        "c",
+        "-std=gnu99",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-U_WIN32",
+        "-U_WIN64",
+        "-DOPENSSL_THREADS",
+        "-D_REENTRANT",
+        "-I",
+        "vendor/openssl-q-configs/32_longlong",
+        "-I",
+        "vendor/openssl-1.0.2q",
+        "-I",
+        "vendor/openssl-1.0.2q/include",
+        "-I",
+        "vendor/openssl-1.0.2q/crypto",
+        "-I",
+        "vendor/openssl-1.0.2q/ssl",
+        "-isystem",
+        "vendor/musl/include",
+        "-isystem",
+        "vendor/musl/generated",
+        "-O3",
+        "-fomit-frame-pointer",
+        "-fno-pic",
+        "-funwind-tables",
+        "-ffunction-sections",
+        "-fdata-sections"
+      ],
+      "header_roots": [
+        "vendor/openssl-1.0.2q",
+        "vendor/openssl-q-configs",
+        "vendor/musl/include",
+        "vendor/musl/generated"
+      ],
+      "functions": [
+        {
+          "address": "0x24e730",
+          "size": 728,
+          "symbol": "ssl23_accept",
+          "target_sha256": "a6c951ab1835180bc7e13cfe0c0341f6cfad9d839fca230555ab64b49410bcd1",
+          "bindings": {
+            "time": "0xfa3b60",
+            "RAND_add": "0x1c7e70",
+            "ERR_clear_error": "0x1baa40",
+            "__errno_location": "0xfa3400",
+            "SSL_state": "0x220df0",
+            "SSL_clear": "0x220170",
+            "BUF_MEM_new": "0x1c7960",
+            "BUF_MEM_grow": "0x1c7a00",
+            "ssl3_init_finished_mac": "0x242a70",
+            "ssl23_get_client_hello": "0x24ea10",
+            "BUF_MEM_free": "0x1c79c0",
+            "ERR_put_error": "0x1ba7f0"
+          },
+          "got_bindings": {},
+          "literals": {
+            "433a2f6769742f7562696c69627261726965732f55626973657276696365732f65787465726e616c2f686172626f7572636f6d6d6f6e2f6c69627261726965732f6f70656e73736c2f73736c2f7332335f737276722e6300": "0x12fce88"
+          }
+        }
+      ]
+    },
+    {
+      "id": "openssl_q_sections_crypto_x509_x509_vfy_O3_omit",
+      "source": "src/OpenSslQSections_crypto_x509_x509_vfy_O3_omit.c",
+      "compiler": "8.0.1",
+      "source_review": "library_abi_view",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-x",
+        "c",
+        "-std=gnu99",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-U_WIN32",
+        "-U_WIN64",
+        "-DOPENSSL_THREADS",
+        "-D_REENTRANT",
+        "-I",
+        "vendor/openssl-q-configs/32_longlong",
+        "-I",
+        "vendor/openssl-1.0.2q",
+        "-I",
+        "vendor/openssl-1.0.2q/include",
+        "-I",
+        "vendor/openssl-1.0.2q/crypto",
+        "-I",
+        "vendor/openssl-1.0.2q/crypto/x509",
+        "-isystem",
+        "vendor/musl/include",
+        "-isystem",
+        "vendor/musl/generated",
+        "-O3",
+        "-fomit-frame-pointer",
+        "-fno-pic",
+        "-funwind-tables",
+        "-ffunction-sections",
+        "-fdata-sections"
+      ],
+      "header_roots": [
+        "vendor/openssl-1.0.2q",
+        "vendor/openssl-q-configs",
+        "vendor/musl/include",
+        "vendor/musl/generated"
+      ],
+      "functions": [
+        {
+          "address": "0x208580",
+          "size": 660,
+          "symbol": "internal_verify",
+          "target_sha256": "63b6a308484acb3ac5655bd772e514b065ebce393c362a5e031ec7e1ef1432ba",
+          "bindings": {
+            "sk_num": "0x1c0240",
+            "sk_value": "0x1c0260",
+            "X509_get_pubkey": "0x1f4ef0",
+            "X509_verify": "0x1f9ea0",
+            "EVP_PKEY_free": "0x1d0240",
+            "X509_cmp_time": "0x208820"
+          },
+          "got_bindings": {}
+        }
+      ]
+    },
+    {
+      "id": "openssl_q_sections_ssl_d1_both_O2_omit",
+      "source": "src/OpenSslQSections_ssl_d1_both_O2_omit.c",
+      "compiler": "8.0.1",
+      "source_review": "library_abi_view",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-x",
+        "c",
+        "-std=gnu99",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-U_WIN32",
+        "-U_WIN64",
+        "-DOPENSSL_THREADS",
+        "-D_REENTRANT",
+        "-I",
+        "vendor/openssl-q-configs/32_longlong",
+        "-I",
+        "vendor/openssl-1.0.2q",
+        "-I",
+        "vendor/openssl-1.0.2q/include",
+        "-I",
+        "vendor/openssl-1.0.2q/crypto",
+        "-I",
+        "vendor/openssl-1.0.2q/ssl",
+        "-isystem",
+        "vendor/musl/include",
+        "-isystem",
+        "vendor/musl/generated",
+        "-O2",
+        "-fomit-frame-pointer",
+        "-fno-pic",
+        "-funwind-tables",
+        "-ffunction-sections",
+        "-fdata-sections"
+      ],
+      "header_roots": [
+        "vendor/openssl-1.0.2q",
+        "vendor/openssl-q-configs",
+        "vendor/musl/include",
+        "vendor/musl/generated"
+      ],
+      "functions": [
+        {
+          "address": "0x2471d0",
+          "size": 444,
+          "symbol": "dtls1_retransmit_message",
+          "target_sha256": "e33476cebb6fc3c4e163a4ce4c0654f2ee8a07736916749b4c92a2a343aeb761",
+          "bindings": {
+            "pqueue_find": "0x247ee0",
+            "memcpy": "0xfa3330",
+            "dtls1_do_write": "0x245e50",
+            "SSL_get_wbio": "0x220b50",
+            "BIO_ctrl": "0x1b9000"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x246e00",
+          "size": 192,
+          "symbol": "dtls1_send_change_cipher_spec",
+          "target_sha256": "c18e12a885dcabacf1b96d1a886d37968bf130eb3001b6efeb6e549d84ab707a",
+          "bindings": {
+            "dtls1_buffer_message": "0x246ec0",
+            "dtls1_do_write": "0x245e50"
+          },
+          "got_bindings": {}
+        }
+      ]
+    },
+    {
+      "id": "openssl_q_sections_ssl_d1_lib_O3_omit",
+      "source": "src/OpenSslQSections_ssl_d1_lib_O3_omit.c",
+      "compiler": "8.0.1",
+      "source_review": "library_abi_view",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-x",
+        "c",
+        "-std=gnu99",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-U_WIN32",
+        "-U_WIN64",
+        "-DOPENSSL_THREADS",
+        "-D_REENTRANT",
+        "-I",
+        "vendor/openssl-q-configs/32_longlong",
+        "-I",
+        "vendor/openssl-1.0.2q",
+        "-I",
+        "vendor/openssl-1.0.2q/include",
+        "-I",
+        "vendor/openssl-1.0.2q/crypto",
+        "-I",
+        "vendor/openssl-1.0.2q/ssl",
+        "-isystem",
+        "vendor/musl/include",
+        "-isystem",
+        "vendor/musl/generated",
+        "-O3",
+        "-fomit-frame-pointer",
+        "-fno-pic",
+        "-funwind-tables",
+        "-ffunction-sections",
+        "-fdata-sections"
+      ],
+      "header_roots": [
+        "vendor/openssl-1.0.2q",
+        "vendor/openssl-q-configs",
+        "vendor/musl/include",
+        "vendor/musl/generated"
+      ],
+      "functions": [
+        {
+          "address": "0x22cc30",
+          "size": 508,
+          "symbol": "dtls1_handle_timeout",
+          "target_sha256": "5e0ef980e00b20b88a39efefcfac64c03d62fa703e075be1524349995cdaaddf",
+          "bindings": {
+            "gettimeofday": "0xfa3630",
+            "SSL_get_rbio": "0x220b40",
+            "BIO_ctrl": "0x1b9000",
+            "dtls1_check_timeout_num": "0x22d050",
+            "dtls1_heartbeat": "0x247730",
+            "dtls1_retransmit_buffered_messages": "0x247140"
+          },
+          "got_bindings": {}
+        }
+      ]
+    },
+    {
+      "id": "openssl_q_sections_ssl_t1_enc_O2_omit",
+      "source": "src/OpenSslQSections_ssl_t1_enc_O2_omit.c",
+      "compiler": "8.0.1",
+      "source_review": "library_abi_view",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-x",
+        "c",
+        "-std=gnu99",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-U_WIN32",
+        "-U_WIN64",
+        "-DOPENSSL_THREADS",
+        "-D_REENTRANT",
+        "-I",
+        "vendor/openssl-q-configs/32_longlong",
+        "-I",
+        "vendor/openssl-1.0.2q",
+        "-I",
+        "vendor/openssl-1.0.2q/include",
+        "-I",
+        "vendor/openssl-1.0.2q/crypto",
+        "-I",
+        "vendor/openssl-1.0.2q/ssl",
+        "-isystem",
+        "vendor/musl/include",
+        "-isystem",
+        "vendor/musl/generated",
+        "-O2",
+        "-fomit-frame-pointer",
+        "-fno-pic",
+        "-funwind-tables",
+        "-ffunction-sections",
+        "-fdata-sections"
+      ],
+      "header_roots": [
+        "vendor/openssl-1.0.2q",
+        "vendor/openssl-q-configs",
+        "vendor/musl/include",
+        "vendor/musl/generated"
+      ],
+      "functions": [
+        {
+          "address": "0x245600",
+          "size": 444,
+          "symbol": "tls1_final_finish_mac",
+          "target_sha256": "8040b752d5e4fbdd75df6cc947957ff738469da98879cd5fe1e67347652ec917",
+          "bindings": {
+            "ssl3_digest_cached_records": "0x242ca0",
+            "EVP_MD_CTX_init": "0x1c95c0",
+            "ssl_get_handshake_digest": "0x21e8a0",
+            "ssl_get_algorithm2": "0x226600",
+            "EVP_MD_size": "0x1ca280",
+            "EVP_MD_CTX_copy_ex": "0x1c9a60",
+            "EVP_DigestFinal_ex": "0x1c98f0",
+            "": "0x244550",
+            "EVP_MD_CTX_cleanup": "0x1c99a0",
+            "OPENSSL_cleanse": "0x1ba470"
+          },
+          "got_bindings": {}
+        }
+      ]
+    },
+    {
+      "id": "openssl_q_sections_crypto_bn_bn_lib_O3_omit",
+      "source": "src/OpenSslQSections_crypto_bn_bn_lib_O3_omit.c",
+      "compiler": "8.0.1",
+      "source_review": "library_abi_view",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-x",
+        "c",
+        "-std=gnu99",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-U_WIN32",
+        "-U_WIN64",
+        "-DOPENSSL_THREADS",
+        "-D_REENTRANT",
+        "-I",
+        "vendor/openssl-q-configs/32_longlong",
+        "-I",
+        "vendor/openssl-1.0.2q",
+        "-I",
+        "vendor/openssl-1.0.2q/include",
+        "-I",
+        "vendor/openssl-1.0.2q/crypto",
+        "-I",
+        "vendor/openssl-1.0.2q/crypto/bn",
+        "-isystem",
+        "vendor/musl/include",
+        "-isystem",
+        "vendor/musl/generated",
+        "-O3",
+        "-fomit-frame-pointer",
+        "-fno-pic",
+        "-funwind-tables",
+        "-ffunction-sections",
+        "-fdata-sections"
+      ],
+      "header_roots": [
+        "vendor/openssl-1.0.2q",
+        "vendor/openssl-q-configs",
+        "vendor/musl/include",
+        "vendor/musl/generated"
+      ],
+      "functions": [
+        {
+          "address": "0x1c3e20",
+          "size": 200,
+          "symbol": "BN_set_bit",
+          "target_sha256": "e3e59ffd1296b2f724b1b95eea6ed4c72560032ec78fa4b6443c591cb5e14105",
+          "bindings": {
+            "": "0x1c33e0",
+            "CRYPTO_free": "0x1ba410"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x1c3730",
+          "size": 116,
+          "symbol": "BN_set_word",
+          "target_sha256": "0156e2ea279c6a3870ffd0ace4a21c9e3685f8f3bdc78258f111353be3d4ddc3",
+          "bindings": {
+            "": "0x1c33e0",
+            "CRYPTO_free": "0x1ba410"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x1c35c0",
+          "size": 100,
+          "symbol": "bn_expand2",
+          "target_sha256": "79cf7808edd20af1a5c5a6186791a3aa956a575618ea113013ade2b98e8b775b",
+          "bindings": {
+            "": "0x1c33e0",
+            "CRYPTO_free": "0x1ba410"
+          },
+          "got_bindings": {}
+        }
+      ]
+    },
+    {
+      "id": "openssl_q_sections_crypto_x509v3_v3_purp_O3_omit",
+      "source": "src/OpenSslQSections_crypto_x509v3_v3_purp_O3_omit.c",
+      "compiler": "8.0.1",
+      "source_review": "library_abi_view",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-x",
+        "c",
+        "-std=gnu99",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-U_WIN32",
+        "-U_WIN64",
+        "-DOPENSSL_THREADS",
+        "-D_REENTRANT",
+        "-I",
+        "vendor/openssl-q-configs/32_longlong",
+        "-I",
+        "vendor/openssl-1.0.2q",
+        "-I",
+        "vendor/openssl-1.0.2q/include",
+        "-I",
+        "vendor/openssl-1.0.2q/crypto",
+        "-I",
+        "vendor/openssl-1.0.2q/crypto/x509v3",
+        "-isystem",
+        "vendor/musl/include",
+        "-isystem",
+        "vendor/musl/generated",
+        "-O3",
+        "-fomit-frame-pointer",
+        "-fno-pic",
+        "-funwind-tables",
+        "-ffunction-sections",
+        "-fdata-sections"
+      ],
+      "header_roots": [
+        "vendor/openssl-1.0.2q",
+        "vendor/openssl-q-configs",
+        "vendor/musl/include",
+        "vendor/musl/generated"
+      ],
+      "functions": [
+        {
+          "address": "0x1f6de0",
+          "size": 112,
+          "symbol": "X509_check_ca",
+          "target_sha256": "a736e8921af4c341c50d6e3177827c987d2c402bf165d183314e38e275fc8656",
+          "bindings": {
+            "": "0x1f67b0"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x1f6e50",
+          "size": 196,
+          "symbol": "X509_check_issued",
+          "target_sha256": "48bbb85123dca54afa31a89094e1ed78a8ae8437a3edccd23cd9f694e6fe0ed9",
+          "bindings": {
+            "X509_get_subject_name": "0x1f4e20",
+            "X509_get_issuer_name": "0x1f4e10",
+            "X509_NAME_cmp": "0x1f4c00",
+            "": "0x1f67b0",
+            "X509_check_akid": "0x1f6f20"
+          },
+          "got_bindings": {}
+        }
+      ]
+    },
+    {
+      "id": "openssl_q_sections_crypto_asn1_tasn_enc_O2_omit",
+      "source": "src/OpenSslQSections_crypto_asn1_tasn_enc_O2_omit.c",
+      "compiler": "8.0.1",
+      "source_review": "library_abi_view",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-x",
+        "c",
+        "-std=gnu99",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-U_WIN32",
+        "-U_WIN64",
+        "-DOPENSSL_THREADS",
+        "-D_REENTRANT",
+        "-I",
+        "vendor/openssl-q-configs/32_longlong",
+        "-I",
+        "vendor/openssl-1.0.2q",
+        "-I",
+        "vendor/openssl-1.0.2q/include",
+        "-I",
+        "vendor/openssl-1.0.2q/crypto",
+        "-I",
+        "vendor/openssl-1.0.2q/crypto/asn1",
+        "-isystem",
+        "vendor/musl/include",
+        "-isystem",
+        "vendor/musl/generated",
+        "-O2",
+        "-fomit-frame-pointer",
+        "-fno-pic",
+        "-funwind-tables",
+        "-ffunction-sections",
+        "-fdata-sections"
+      ],
+      "header_roots": [
+        "vendor/openssl-1.0.2q",
+        "vendor/openssl-q-configs",
+        "vendor/musl/include",
+        "vendor/musl/generated"
+      ],
+      "functions": [
+        {
+          "address": "0x1cf150",
+          "size": 288,
+          "symbol": "asn1_i2d_ex_primitive",
+          "target_sha256": "7fb4aa6f367214981fc2a8f5f1e852c4661a6363b987f3a7df80af7a925cc06f",
+          "bindings": {
+            "asn1_ex_i2c": "0x1cf270",
+            "ASN1_put_object": "0x1c1f00",
+            "ASN1_put_eoc": "0x1c20c0",
+            "ASN1_object_size": "0x1c20e0"
+          },
+          "got_bindings": {}
+        }
+      ]
+    },
+    {
+      "id": "openssl_q_sections_crypto_x509_x509name_O3_omit",
+      "source": "src/OpenSslQSections_crypto_x509_x509name_O3_omit.c",
+      "compiler": "8.0.1",
+      "source_review": "library_abi_view",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-x",
+        "c",
+        "-std=gnu99",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-U_WIN32",
+        "-U_WIN64",
+        "-DOPENSSL_THREADS",
+        "-D_REENTRANT",
+        "-I",
+        "vendor/openssl-q-configs/32_longlong",
+        "-I",
+        "vendor/openssl-1.0.2q",
+        "-I",
+        "vendor/openssl-1.0.2q/include",
+        "-I",
+        "vendor/openssl-1.0.2q/crypto",
+        "-I",
+        "vendor/openssl-1.0.2q/crypto/x509",
+        "-isystem",
+        "vendor/musl/include",
+        "-isystem",
+        "vendor/musl/generated",
+        "-O3",
+        "-fomit-frame-pointer",
+        "-fno-pic",
+        "-funwind-tables",
+        "-ffunction-sections",
+        "-fdata-sections"
+      ],
+      "header_roots": [
+        "vendor/openssl-1.0.2q",
+        "vendor/openssl-q-configs",
+        "vendor/musl/include",
+        "vendor/musl/generated"
+      ],
+      "functions": [
+        {
+          "address": "0x1f3890",
+          "size": 272,
+          "symbol": "X509_NAME_add_entry_by_txt",
+          "target_sha256": "c6b10b80addc75d69af06a5e13f230c4e45c849e604096f1dfafc0bbfa74c987",
+          "bindings": {
+            "OBJ_txt2obj": "0x1c0850",
+            "X509_NAME_ENTRY_new": "0x1f3c90",
+            "ASN1_OBJECT_free": "0x1c1c70",
+            "OBJ_dup": "0x1c58a0",
+            "X509_NAME_ENTRY_set_data": "0x1f39a0",
+            "X509_NAME_add_entry": "0x1f36e0",
+            "X509_NAME_ENTRY_free": "0x1f3ca0",
+            "ERR_put_error": "0x1ba7f0",
+            "ERR_add_error_data": "0x1bb4a0"
+          },
+          "got_bindings": {},
+          "literals": {
+            "433a2f6769742f7562696c69627261726965732f55626973657276696365732f65787465726e616c2f686172626f7572636f6d6d6f6e2f6c69627261726965732f6f70656e73736c2f63727970746f2f783530392f783530396e616d652e6300": "0x131f67d",
+            "6e616d653d00": "0x12f961c"
+          }
+        }
+      ]
+    },
+    {
+      "id": "openssl_q_sections_crypto_sha_sha512_O2_omit",
+      "source": "src/OpenSslQSections_crypto_sha_sha512_O2_omit.c",
+      "compiler": "8.0.1",
+      "source_review": "library_abi_view",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-x",
+        "c",
+        "-std=gnu99",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-U_WIN32",
+        "-U_WIN64",
+        "-DOPENSSL_THREADS",
+        "-D_REENTRANT",
+        "-I",
+        "vendor/openssl-q-configs/32_longlong",
+        "-I",
+        "vendor/openssl-1.0.2q",
+        "-I",
+        "vendor/openssl-1.0.2q/include",
+        "-I",
+        "vendor/openssl-1.0.2q/crypto",
+        "-I",
+        "vendor/openssl-1.0.2q/crypto/sha",
+        "-isystem",
+        "vendor/musl/include",
+        "-isystem",
+        "vendor/musl/generated",
+        "-O2",
+        "-fomit-frame-pointer",
+        "-fno-pic",
+        "-funwind-tables",
+        "-ffunction-sections",
+        "-fdata-sections"
+      ],
+      "header_roots": [
+        "vendor/openssl-1.0.2q",
+        "vendor/openssl-q-configs",
+        "vendor/musl/include",
+        "vendor/musl/generated"
+      ],
+      "functions": [
+        {
+          "address": "0x211df0",
+          "size": 236,
+          "symbol": "SHA512_Update",
+          "target_sha256": "6249d518422bca4f89e8624d4bb382ef746d10d1ab81901a08c3572a0fddd4bf",
+          "bindings": {
+            "memcpy": "0xfa3330",
+            "": "0x210f00"
+          },
+          "got_bindings": {}
+        }
+      ]
+    },
+    {
+      "id": "openssl_q_sections_crypto_asn1_asn1_lib_O3_omit",
+      "source": "src/OpenSslQSections_crypto_asn1_asn1_lib_O3_omit.c",
+      "compiler": "8.0.1",
+      "source_review": "library_abi_view",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-x",
+        "c",
+        "-std=gnu99",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-U_WIN32",
+        "-U_WIN64",
+        "-DOPENSSL_THREADS",
+        "-D_REENTRANT",
+        "-I",
+        "vendor/openssl-q-configs/32_longlong",
+        "-I",
+        "vendor/openssl-1.0.2q",
+        "-I",
+        "vendor/openssl-1.0.2q/include",
+        "-I",
+        "vendor/openssl-1.0.2q/crypto",
+        "-I",
+        "vendor/openssl-1.0.2q/crypto/asn1",
+        "-isystem",
+        "vendor/musl/include",
+        "-isystem",
+        "vendor/musl/generated",
+        "-O3",
+        "-fomit-frame-pointer",
+        "-fno-pic",
+        "-funwind-tables",
+        "-ffunction-sections",
+        "-fdata-sections"
+      ],
+      "header_roots": [
+        "vendor/openssl-1.0.2q",
+        "vendor/openssl-q-configs",
+        "vendor/musl/include",
+        "vendor/musl/generated"
+      ],
+      "functions": [
+        {
+          "address": "0x1c21f0",
+          "size": 228,
+          "symbol": "asn1_GetSequence",
+          "target_sha256": "0c8980a14d5e1263fc0c924390f3873efcd5d396cce051bd3c264c41a32ca00b",
+          "bindings": {
+            "ASN1_get_object": "0x1c1d30"
+          },
+          "got_bindings": {}
+        }
+      ]
+    },
+    {
+      "id": "openssl_q_sections_crypto_bn_bn_blind_O3_omit",
+      "source": "src/OpenSslQSections_crypto_bn_bn_blind_O3_omit.c",
+      "compiler": "8.0.1",
+      "source_review": "library_abi_view",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-x",
+        "c",
+        "-std=gnu99",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-U_WIN32",
+        "-U_WIN64",
+        "-DOPENSSL_THREADS",
+        "-D_REENTRANT",
+        "-I",
+        "vendor/openssl-q-configs/32_longlong",
+        "-I",
+        "vendor/openssl-1.0.2q",
+        "-I",
+        "vendor/openssl-1.0.2q/include",
+        "-I",
+        "vendor/openssl-1.0.2q/crypto",
+        "-I",
+        "vendor/openssl-1.0.2q/crypto/bn",
+        "-isystem",
+        "vendor/musl/include",
+        "-isystem",
+        "vendor/musl/generated",
+        "-O3",
+        "-fomit-frame-pointer",
+        "-fno-pic",
+        "-funwind-tables",
+        "-ffunction-sections",
+        "-fdata-sections"
+      ],
+      "header_roots": [
+        "vendor/openssl-1.0.2q",
+        "vendor/openssl-q-configs",
+        "vendor/musl/include",
+        "vendor/musl/generated"
+      ],
+      "functions": [
+        {
+          "address": "0x1e8720",
+          "size": 224,
+          "symbol": "BN_BLINDING_convert_ex",
+          "target_sha256": "0deaa2c2540d7ffd3bad71003656207b4a264d90e83ba3aa11138e0ddc05fae7",
+          "bindings": {
+            "BN_BLINDING_update": "0x1e8400",
+            "BN_copy": "0x1c3630",
+            "ERR_put_error": "0x1ba7f0",
+            "BN_mod_mul_montgomery": "0x1d1000",
+            "BN_mod_mul": "0x1d4380"
+          },
+          "got_bindings": {},
+          "literals": {
+            "433a2f6769742f7562696c69627261726965732f55626973657276696365732f65787465726e616c2f686172626f7572636f6d6d6f6e2f6c69627261726965732f6f70656e73736c2f63727970746f2f626e2f626e5f626c696e642e6300": "0x13215a2"
+          }
+        }
+      ]
+    },
+    {
+      "id": "openssl_q_sections_crypto_x509v3_v3_sxnet_O3_omit",
+      "source": "src/OpenSslQSections_crypto_x509v3_v3_sxnet_O3_omit.c",
+      "compiler": "8.0.1",
+      "source_review": "library_abi_view",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-x",
+        "c",
+        "-std=gnu99",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-U_WIN32",
+        "-U_WIN64",
+        "-DOPENSSL_THREADS",
+        "-D_REENTRANT",
+        "-I",
+        "vendor/openssl-q-configs/32_longlong",
+        "-I",
+        "vendor/openssl-1.0.2q",
+        "-I",
+        "vendor/openssl-1.0.2q/include",
+        "-I",
+        "vendor/openssl-1.0.2q/crypto",
+        "-I",
+        "vendor/openssl-1.0.2q/crypto/x509v3",
+        "-isystem",
+        "vendor/musl/include",
+        "-isystem",
+        "vendor/musl/generated",
+        "-O3",
+        "-fomit-frame-pointer",
+        "-fno-pic",
+        "-funwind-tables",
+        "-ffunction-sections",
+        "-fdata-sections"
+      ],
+      "header_roots": [
+        "vendor/openssl-1.0.2q",
+        "vendor/openssl-q-configs",
+        "vendor/musl/include",
+        "vendor/musl/generated"
+      ],
+      "functions": [
+        {
+          "address": "0x205500",
+          "size": 224,
+          "symbol": "sxnet_v2i",
+          "target_sha256": "a565f5ee43de1e77f9c1b111d5f620c35af8855e2f4551aa56fac8bfb6b444bb",
+          "bindings": {
+            "sk_num": "0x1c0240",
+            "sk_value": "0x1c0260",
+            "s2i_ASN1_INTEGER": "0x1f0960",
+            "SXNET_add_id_INTEGER": "0x2056e0",
+            "ERR_put_error": "0x1ba7f0"
+          },
+          "got_bindings": {},
+          "literals": {
+            "433a2f6769742f7562696c69627261726965732f55626973657276696365732f65787465726e616c2f686172626f7572636f6d6d6f6e2f6c69627261726965732f6f70656e73736c2f63727970746f2f7835303976332f76335f73786e65742e6300": "0x12feaf4"
+          }
+        }
+      ]
+    },
+    {
+      "id": "openssl_q_sections_crypto_ec_ec_lib_O3_omit",
+      "source": "src/OpenSslQSections_crypto_ec_ec_lib_O3_omit.c",
+      "compiler": "8.0.1",
+      "source_review": "library_abi_view",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-x",
+        "c",
+        "-std=gnu99",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-U_WIN32",
+        "-U_WIN64",
+        "-DOPENSSL_THREADS",
+        "-D_REENTRANT",
+        "-I",
+        "vendor/openssl-q-configs/32_longlong",
+        "-I",
+        "vendor/openssl-1.0.2q",
+        "-I",
+        "vendor/openssl-1.0.2q/include",
+        "-I",
+        "vendor/openssl-1.0.2q/crypto",
+        "-I",
+        "vendor/openssl-1.0.2q/crypto/ec",
+        "-isystem",
+        "vendor/musl/include",
+        "-isystem",
+        "vendor/musl/generated",
+        "-O3",
+        "-fomit-frame-pointer",
+        "-fno-pic",
+        "-funwind-tables",
+        "-ffunction-sections",
+        "-fdata-sections"
+      ],
+      "header_roots": [
+        "vendor/openssl-1.0.2q",
+        "vendor/openssl-q-configs",
+        "vendor/musl/include",
+        "vendor/musl/generated"
+      ],
+      "functions": [
+        {
+          "address": "0x1daa50",
+          "size": 200,
+          "symbol": "EC_POINT_dup",
+          "target_sha256": "8e4e13f67c0586f5c23fc257e2563d2b8a02b0069deba49a45a8a0e81f93409e",
+          "bindings": {
+            "EC_POINT_new": "0x1da010",
+            "ERR_put_error": "0x1ba7f0",
+            "CRYPTO_free": "0x1ba410"
+          },
+          "got_bindings": {},
+          "literals": {
+            "433a2f6769742f7562696c69627261726965732f55626973657276696365732f65787465726e616c2f686172626f7572636f6d6d6f6e2f6c69627261726965732f6f70656e73736c2f63727970746f2f65632f65635f6c69622e6300": "0x12f37e2"
+          }
+        }
+      ]
+    },
+    {
+      "id": "openssl_q_sections_crypto_x509v3_v3_utl_O3_omit",
+      "source": "src/OpenSslQSections_crypto_x509v3_v3_utl_O3_omit.c",
+      "compiler": "8.0.1",
+      "source_review": "library_abi_view",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-x",
+        "c",
+        "-std=gnu99",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-U_WIN32",
+        "-U_WIN64",
+        "-DOPENSSL_THREADS",
+        "-D_REENTRANT",
+        "-I",
+        "vendor/openssl-q-configs/32_longlong",
+        "-I",
+        "vendor/openssl-1.0.2q",
+        "-I",
+        "vendor/openssl-1.0.2q/include",
+        "-I",
+        "vendor/openssl-1.0.2q/crypto",
+        "-I",
+        "vendor/openssl-1.0.2q/crypto/x509v3",
+        "-isystem",
+        "vendor/musl/include",
+        "-isystem",
+        "vendor/musl/generated",
+        "-O3",
+        "-fomit-frame-pointer",
+        "-fno-pic",
+        "-funwind-tables",
+        "-ffunction-sections",
+        "-fdata-sections"
+      ],
+      "header_roots": [
+        "vendor/openssl-1.0.2q",
+        "vendor/openssl-q-configs",
+        "vendor/musl/include",
+        "vendor/musl/generated"
+      ],
+      "functions": [
+        {
+          "address": "0x1f0aa0",
+          "size": 192,
+          "symbol": "X509V3_add_value_int",
+          "target_sha256": "da94ddd1e9256cc9b253eaa00dd2048bedcf9809b74ddda942c63a15bd230deb",
+          "bindings": {
+            "ASN1_INTEGER_to_BN": "0x1cb1b0",
+            "BN_bn2dec": "0x1c5aa0",
+            "BN_free": "0x1c3320",
+            "X509V3_add_value": "0x1f06d0",
+            "CRYPTO_free": "0x1ba410",
+            "ERR_put_error": "0x1ba7f0"
+          },
+          "got_bindings": {},
+          "literals": {
+            "433a2f6769742f7562696c69627261726965732f55626973657276696365732f65787465726e616c2f686172626f7572636f6d6d6f6e2f6c69627261726965732f6f70656e73736c2f63727970746f2f7835303976332f76335f75746c2e6300": "0x13062ad"
+          }
+        }
+      ]
+    },
+    {
+      "id": "openssl_q_sections_crypto_cryptlib_O3_omit",
+      "source": "src/OpenSslQSections_crypto_cryptlib_O3_omit.c",
+      "compiler": "8.0.1",
+      "source_review": "library_abi_view",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-x",
+        "c",
+        "-std=gnu99",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-U_WIN32",
+        "-U_WIN64",
+        "-DOPENSSL_THREADS",
+        "-D_REENTRANT",
+        "-I",
+        "vendor/openssl-q-configs/32_longlong",
+        "-I",
+        "vendor/openssl-1.0.2q",
+        "-I",
+        "vendor/openssl-1.0.2q/include",
+        "-I",
+        "vendor/openssl-1.0.2q/crypto",
+        "-I",
+        "vendor/openssl-1.0.2q/crypto",
+        "-isystem",
+        "vendor/musl/include",
+        "-isystem",
+        "vendor/musl/generated",
+        "-O3",
+        "-fomit-frame-pointer",
+        "-fno-pic",
+        "-funwind-tables",
+        "-ffunction-sections",
+        "-fdata-sections"
+      ],
+      "header_roots": [
+        "vendor/openssl-1.0.2q",
+        "vendor/openssl-q-configs",
+        "vendor/musl/include",
+        "vendor/musl/generated"
+      ],
+      "functions": [
+        {
+          "address": "0x1b9930",
+          "size": 152,
+          "symbol": "CRYPTO_add_lock",
+          "target_sha256": "bc670efd63e0896a8024352b219be2e8b9d315a4ddf861eb97c5cef25c6e6a12",
+          "bindings": {
+            "": "0x19002a8",
+            "CRYPTO_lock": "0x1b95a0"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x1b9910",
+          "size": 32,
+          "symbol": "OpenSSLDie",
+          "target_sha256": "b2cbe38883340667a3f89da1264b3f430ea0416a117b5437e31d89f3a9277e65",
+          "bindings": {
+            "OPENSSL_showfatal": "0x1b99d0",
+            "abort": "0xfa3890"
+          },
+          "got_bindings": {},
+          "literals": {
+            "2573282564293a204f70656e53534c20696e7465726e616c206572726f722c20617373657274696f6e206661696c65643a2025730a00": "0x1303e38"
+          }
+        }
+      ]
+    },
+    {
+      "id": "openssl_q_sections_crypto_asn1_tasn_dec_O3_omit",
+      "source": "src/OpenSslQSections_crypto_asn1_tasn_dec_O3_omit.c",
+      "compiler": "8.0.1",
+      "source_review": "library_abi_view",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-x",
+        "c",
+        "-std=gnu99",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-U_WIN32",
+        "-U_WIN64",
+        "-DOPENSSL_THREADS",
+        "-D_REENTRANT",
+        "-I",
+        "vendor/openssl-q-configs/32_longlong",
+        "-I",
+        "vendor/openssl-1.0.2q",
+        "-I",
+        "vendor/openssl-1.0.2q/include",
+        "-I",
+        "vendor/openssl-1.0.2q/crypto",
+        "-I",
+        "vendor/openssl-1.0.2q/crypto/asn1",
+        "-isystem",
+        "vendor/musl/include",
+        "-isystem",
+        "vendor/musl/generated",
+        "-O3",
+        "-fomit-frame-pointer",
+        "-fno-pic",
+        "-funwind-tables",
+        "-ffunction-sections",
+        "-fdata-sections"
+      ],
+      "header_roots": [
+        "vendor/openssl-1.0.2q",
+        "vendor/openssl-q-configs",
+        "vendor/musl/include",
+        "vendor/musl/generated"
+      ],
+      "functions": [
+        {
+          "address": "0x1cc000",
+          "size": 96,
+          "symbol": "ASN1_item_d2i",
+          "target_sha256": "860a0de6faa572f18539a48e785649f0f853a86e4eaa3476d1355a5346d4cbc7",
+          "bindings": {
+            "": "0x1cc260"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x1cc060",
+          "size": 28,
+          "symbol": "ASN1_item_ex_d2i",
+          "target_sha256": "49ceb0a6568e4090780a101f15864a72647e8865f4fae2fa89d4944b1646aaf0",
+          "bindings": {
+            "": "0x1cc260"
+          },
+          "got_bindings": {}
+        }
+      ]
+    },
+    {
+      "id": "openssl_q_sections_crypto_bio_bio_lib_O3_omit",
+      "source": "src/OpenSslQSections_crypto_bio_bio_lib_O3_omit.c",
+      "compiler": "8.0.1",
+      "source_review": "library_abi_view",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-x",
+        "c",
+        "-std=gnu99",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-U_WIN32",
+        "-U_WIN64",
+        "-DOPENSSL_THREADS",
+        "-D_REENTRANT",
+        "-I",
+        "vendor/openssl-q-configs/32_longlong",
+        "-I",
+        "vendor/openssl-1.0.2q",
+        "-I",
+        "vendor/openssl-1.0.2q/include",
+        "-I",
+        "vendor/openssl-1.0.2q/crypto",
+        "-I",
+        "vendor/openssl-1.0.2q/crypto/bio",
+        "-isystem",
+        "vendor/musl/include",
+        "-isystem",
+        "vendor/musl/generated",
+        "-O3",
+        "-fomit-frame-pointer",
+        "-fno-pic",
+        "-funwind-tables",
+        "-ffunction-sections",
+        "-fdata-sections"
+      ],
+      "header_roots": [
+        "vendor/openssl-1.0.2q",
+        "vendor/openssl-q-configs",
+        "vendor/musl/include",
+        "vendor/musl/generated"
+      ],
+      "functions": [
+        {
+          "address": "0x1b8e90",
+          "size": 100,
+          "symbol": "BIO_indent",
+          "target_sha256": "fed6271cd3eb0a3d7bb4b05cfe056290d5d83b93a4478b91bc39540699d62bba",
+          "bindings": {
+            "BIO_puts": "0x1b8d90"
+          },
+          "got_bindings": {},
+          "literals": {
+            "2000": "0x12fc32b"
+          }
+        }
+      ]
+    },
+    {
+      "id": "openssl_q_sections_crypto_x509_x509_trs_O2_omit",
+      "source": "src/OpenSslQSections_crypto_x509_x509_trs_O2_omit.c",
+      "compiler": "8.0.1",
+      "source_review": "library_abi_view",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-x",
+        "c",
+        "-std=gnu99",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-U_WIN32",
+        "-U_WIN64",
+        "-DOPENSSL_THREADS",
+        "-D_REENTRANT",
+        "-I",
+        "vendor/openssl-q-configs/32_longlong",
+        "-I",
+        "vendor/openssl-1.0.2q",
+        "-I",
+        "vendor/openssl-1.0.2q/include",
+        "-I",
+        "vendor/openssl-1.0.2q/crypto",
+        "-I",
+        "vendor/openssl-1.0.2q/crypto/x509",
+        "-isystem",
+        "vendor/musl/include",
+        "-isystem",
+        "vendor/musl/generated",
+        "-O2",
+        "-fomit-frame-pointer",
+        "-fno-pic",
+        "-funwind-tables",
+        "-ffunction-sections",
+        "-fdata-sections"
+      ],
+      "header_roots": [
+        "vendor/openssl-1.0.2q",
+        "vendor/openssl-q-configs",
+        "vendor/musl/include",
+        "vendor/musl/generated"
+      ],
+      "functions": [
+        {
+          "address": "0x20b760",
+          "size": 88,
+          "symbol": "trust_1oidany",
+          "target_sha256": "87ef81c4af5658645a84f38aca8f4e618f04970fa589e0e4a9ffe7720ee5d2f5",
+          "bindings": {
+            "": "0x20b630",
+            "X509_check_purpose": "0x1f66c0"
+          },
+          "got_bindings": {}
+        }
+      ]
     }
   ]
 }

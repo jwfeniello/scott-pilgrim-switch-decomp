@@ -1,7 +1,7 @@
 # Work toward 25%
 
-Current verified checkpoint: **29,738 exact functions /
-2,861,664 bytes / 17.452721%** of the original 16,396,664-byte
+Current verified checkpoint: **29,783 exact functions /
+2,877,244 bytes / 17.547740%** of the original 16,396,664-byte
 `.text`. The 25% target requires 4,099,166 exact bytes and remains unfinished.
 
 ## Added engine and ABI views
@@ -39,7 +39,7 @@ standard ELF relocations are checked during each full function comparison.
 Every added C build was compiled twice with identical object output. Adding an
 external side effect to every preprocessed C definition rejects every credited
 function. Receipts are in `progress/c_library_validation.json`. These controls
-complement the fresh full 1,363-build original-byte comparison in
+complement the fresh full 1,388-build original-byte comparison in
 `progress/verified.json`.
 
 ## Vector and named-call ABI recovery
@@ -89,7 +89,7 @@ bytes alone do not establish those declarations.
 All eight new builds passed fresh subset compilation, identical-object repeats,
 and external-side-effect negative controls for every credited function.
 Their receipts are merged in `progress/recovery_validation.json` and the
-fresh complete snapshot covers all 1,363 source builds. The player helper in
+fresh complete snapshot covers all 1,388 source builds. The player helper in
 `src/wip/PlayerObjectListIndex.cpp` passes 128 bounded normal-path comparisons
 but remains uncredited; see [the behavior findings](PLAYER_OBJECT_LIST.md).
 
@@ -113,6 +113,16 @@ Across the recorded u and q source views, 428 OpenSSL profiles now reproduce
 914 complete original bodies / 326,624 bytes. This evidence identifies compatible
 isolated source bodies. It does not establish one complete original library
 revision, original SDK/compiler release, linked data, or a complete library build.
+
+## Function-section OpenSSL profiles (October 20)
+
+Compiling the existing public q source with `-ffunction-sections` and
+`-fdata-sections` exposes internal helper calls as ordinary ELF relocations.
+Twenty-five additional profiles reproduce 45 complete functions / 15,580 bytes.
+The unchanged verifier checks each complete original function after relocation;
+no instruction masks or edited compiler output receive credit. All 25 profiles
+passed identical-object repeats and every-definition wrong-source controls.
+The complete 1,388-build rebuild verifies 29,783 functions / 2,877,244 bytes.
 
 ## Reporting and remaining work
 

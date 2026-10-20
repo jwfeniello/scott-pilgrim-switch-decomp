@@ -1,9 +1,9 @@
 {
   "version": 1,
-  "generated_at": "2026-10-14T08:23:11.491005+00:00",
+  "generated_at": "2026-10-20T04:39:30.370120+00:00",
   "target_elf_sha256": "ea95638e6d6aaa0dc6cddd552a9366799aa1ec3bc07ee201f23f6c151103f5b8",
   "input_sha256": {
-    "config/builds.json": "fb1c672ceaa20845b7844cd714e2230370842dcfef3c315c0b1d90d1806ea7b8",
+    "config/builds.json": "05654362054ef4b4fba1f1c0021655e3bf694a22ba6a97cb4dbfecec9646d6fa",
     "config/functions.tsv": "399e91468a04e0459194c10d68d2210d1157cedefeb19c7851886ca7632fcb18",
     "config/target.json": "23cc6a5227206a953e7668acf5e9ae5c02a25c23b7e7967f0450a814b888241a",
     "src/AbiCfg_aggregate_O2_omit.cpp": "55009ca4f1819fe53803025bf27b93a676c6137877b9d4492828e2e15c89307c",
@@ -214,6 +214,31 @@
     "src/OpenSslExtra_ssl_t1_lib_32_longlong_O2_unwind_O3_omit_unwind.c": "90baf925243ed26a7a85667fa5e74c4592eaf379bb940360c10478702330d5d7",
     "src/OpenSslExtra_ssl_t1_reneg_32_longlong_O2_unwind_O3_omit_unwind.c": "26be20457181cb83cb9842e47013792b01dee7d8bf2351e172b09ca797956140",
     "src/OpenSslExtra_ssl_tls_srp_32_longlong_O2_unwind_O3_omit_unwind.c": "07848d70a8621d13167074a9c6086378a020bc7045f51f60697a784dc8e9c694",
+    "src/OpenSslQSections_crypto_asn1_asn1_lib_O3_omit.c": "8b518cfc3d297119c403f6712593ab9460eb53f7a7135eb76a68d24bb2494deb",
+    "src/OpenSslQSections_crypto_asn1_tasn_dec_O3_omit.c": "189a20b353522653eecce7bda3b565d1cc85a19476fe3e292f1616d192d1bdb3",
+    "src/OpenSslQSections_crypto_asn1_tasn_enc_O2_omit.c": "35aae4ebed83b3d6d36759c617639dfb59061932f1ceca7dbe4fad9e4d25290e",
+    "src/OpenSslQSections_crypto_bio_bio_lib_O3_omit.c": "3cbec044dddd79169ac523c5689ff1fbbbc630e19c87f8fc09a91570464c1a57",
+    "src/OpenSslQSections_crypto_bn_bn_blind_O3_omit.c": "be9a4ae0680c88b5798799052cfcf1b721a458715615218faa0d330aea193f71",
+    "src/OpenSslQSections_crypto_bn_bn_gf2m_O3_novec.c": "a7bc691fc6e3226d4a16dd3fe8303656c4b14731d775d05b0abd7ce3034acac6",
+    "src/OpenSslQSections_crypto_bn_bn_lib_O3_omit.c": "ce5d4e94ea38386e0096d58c5d47b4baefecd8c7b9315cae3145a89d3b2b1dca",
+    "src/OpenSslQSections_crypto_bn_bn_mul_O3_omit.c": "4013e0159e94906a881677aea1a6c4b3a969c2a371bc251a49735982ca28a3a0",
+    "src/OpenSslQSections_crypto_cryptlib_O3_omit.c": "80d051a7819208ab486e6c61914849727fc2cf754e78010bf16d2431d0406307",
+    "src/OpenSslQSections_crypto_ec_ec_lib_O3_omit.c": "1810af90fa5eea1e6e52f5964e137ff8ceae04f8ea494c33373a968ad4975b05",
+    "src/OpenSslQSections_crypto_err_err_O3_novec.c": "1272d2e1be642a6b33e50bb5d9380d5a9130464a81bb4cc5af314cfca0bc61b8",
+    "src/OpenSslQSections_crypto_sha_sha256_O3_omit.c": "2c6577df5f78adcc8e1b073e4cd8aadb06616893c1df6860eecaf9e55dea8c06",
+    "src/OpenSslQSections_crypto_sha_sha512_O2_omit.c": "5d91c3b7c0dc2c2128baa577e2d71b51f975e522f9d334996868d54e95808fd4",
+    "src/OpenSslQSections_crypto_x509_x509_lu_O3_omit.c": "63b7f4bb452f69d3b5b1fca1059309e3d5bde433068670b559a73d06b19600b6",
+    "src/OpenSslQSections_crypto_x509_x509_trs_O2_omit.c": "664eb9116f10701517eecb12ed9ab8b938c915b31dac41af268e3fc223c1cb32",
+    "src/OpenSslQSections_crypto_x509_x509_vfy_O3_omit.c": "4d2295079fc58c69e3f974b196c697f7961e093dae2596917bc9e51db0f5376a",
+    "src/OpenSslQSections_crypto_x509_x509name_O3_omit.c": "ee04406e9a1ae7ad00e59f9c82f5baba689d3f063d395e0b4c09cb8db4b21b44",
+    "src/OpenSslQSections_crypto_x509v3_v3_purp_O3_omit.c": "cf98df260b09a2a689789e79986f0e6f31e303c303019fcb7859ae0cbfcad21d",
+    "src/OpenSslQSections_crypto_x509v3_v3_sxnet_O3_omit.c": "9025d8fd8ceb23e3938c026bcb4798258d36845e3d09117c5611a23d218421d6",
+    "src/OpenSslQSections_crypto_x509v3_v3_utl_O3_omit.c": "451476a0fe6840ac570fbf9dc6da199ece28014c4a05303c23d85f4fa6344228",
+    "src/OpenSslQSections_ssl_d1_both_O2_omit.c": "a59cc3ea6b933b788b04442d5259a759d75b022523a0186a04882d5f1762649f",
+    "src/OpenSslQSections_ssl_d1_lib_O3_omit.c": "d7a101e9eaf5974e940ad4c55dedca82fe83f8d13e75ce98d4779fd3d3034306",
+    "src/OpenSslQSections_ssl_s23_srvr_O3_omit.c": "d7f282075c69e0d036156214c336dc19f3402320b04f2b49509871b4481c5e5b",
+    "src/OpenSslQSections_ssl_ssl_sess_O3_omit.c": "4a5b066880d6bf608fcd42ea5b06a5971fc7bdfce05f282c42ec0b37d772264a",
+    "src/OpenSslQSections_ssl_t1_enc_O2_omit.c": "4edcf7fbd205de1d7a9cf8782b02e738ce574a57ca252910d1ebba60673cc5da",
     "src/OpenSslQ_crypto_bn_bn_ctx_O3_novec.c": "ee47778c44ee1ba56db9eb13f4534be718aad50d7d674b7da2d34c528665b1dd",
     "src/OpenSslQ_crypto_bn_bn_lib_O3_omit.c": "ce5d4e94ea38386e0096d58c5d47b4baefecd8c7b9315cae3145a89d3b2b1dca",
     "src/OpenSslQ_crypto_ec_ec2_oct_O3_omit.c": "9ad21543b48015385900140966241b1ded28555339b06079debac19af34ca2ec",
@@ -2587,15 +2612,15 @@
     "vendor/zlib-1.2.11/zutil.h": "9a63f6690fac1620aa3cecee5752af618806da438a256b4a047fbcd289cac159"
   },
   "compiler_versions": {
-    "7.0.1": "clang version 7.0.1 (tags/RELEASE_701/final)",
-    "8.0.1": "clang version 8.0.1 (tags/RELEASE_801/final)"
+    "8.0.1": "clang version 8.0.1 (tags/RELEASE_801/final)",
+    "7.0.1": "clang version 7.0.1 (tags/RELEASE_701/final)"
   },
   "compiler_sha256": {
-    "7.0.1": "c2f0a175157d9aaace8031f8e6d7ea0ed6142b4bcef287105e3ed227301f1002",
-    "8.0.1": "dffd62a213ec6cdb4430012a4a41c11e5e32c288f133d5391f9be49e1c5b69de"
+    "8.0.1": "dffd62a213ec6cdb4430012a4a41c11e5e32c288f133d5391f9be49e1c5b69de",
+    "7.0.1": "c2f0a175157d9aaace8031f8e6d7ea0ed6142b4bcef287105e3ed227301f1002"
   },
-  "exact_functions": 29738,
-  "exact_bytes": 2861664,
+  "exact_functions": 29783,
+  "exact_bytes": 2877244,
   "builds": [
     {
       "id": "probes",
@@ -9411,6 +9436,131 @@
       "id": "openssl_q_crypto_ec_ec_err_O3_omit",
       "compiler": "8.0.1",
       "object_sha256": "22b9fb936f6171b95ed8e8669bc43c22ae0597fa55578a00ca13f0d7533f1798"
+    },
+    {
+      "id": "openssl_q_sections_crypto_bn_bn_gf2m_O3_novec",
+      "compiler": "8.0.1",
+      "object_sha256": "f48c457f957ad9fe6352fc7e98287def05e8bd4e5424433a8b0a992ca1d9f403"
+    },
+    {
+      "id": "openssl_q_sections_crypto_bn_bn_mul_O3_omit",
+      "compiler": "8.0.1",
+      "object_sha256": "df318753441ed4a4f073438c66f981861d6c4f08c078fc6d2130d7e35279230f"
+    },
+    {
+      "id": "openssl_q_sections_crypto_err_err_O3_novec",
+      "compiler": "8.0.1",
+      "object_sha256": "bfbdb5aadb0eec2055785b0c43bb9203c7aaf978f49ea974a8ea2eda7d628c07"
+    },
+    {
+      "id": "openssl_q_sections_crypto_x509_x509_lu_O3_omit",
+      "compiler": "8.0.1",
+      "object_sha256": "3f49f907ef0d6ec2f35a454d635b60182c3fef127138e4d7a6692670fe4db0f8"
+    },
+    {
+      "id": "openssl_q_sections_crypto_sha_sha256_O3_omit",
+      "compiler": "8.0.1",
+      "object_sha256": "48068066ee77cb0f1b506922b63c28200706fe2cd939693e88705dedcf6477e4"
+    },
+    {
+      "id": "openssl_q_sections_ssl_ssl_sess_O3_omit",
+      "compiler": "8.0.1",
+      "object_sha256": "d2a9f0855df5b67d55129b6d2e4c67e2fb9b968fc8ec8c683b85bfacbeb4a79d"
+    },
+    {
+      "id": "openssl_q_sections_ssl_s23_srvr_O3_omit",
+      "compiler": "8.0.1",
+      "object_sha256": "36005680e5119890b1ccffedf4b3ef598eafa3fa960e0e7cd23843f340230614"
+    },
+    {
+      "id": "openssl_q_sections_crypto_x509_x509_vfy_O3_omit",
+      "compiler": "8.0.1",
+      "object_sha256": "11f94a0aff8f052fcf4b2f3a42f33c5ba1e7dcf0a055c5f3b24ea4dcd19da7f6"
+    },
+    {
+      "id": "openssl_q_sections_ssl_d1_both_O2_omit",
+      "compiler": "8.0.1",
+      "object_sha256": "9cb6be01f40bf7bcc6cb1c1d14158e6f07ec18be95ce3ff03b73bb45ae158aff"
+    },
+    {
+      "id": "openssl_q_sections_ssl_d1_lib_O3_omit",
+      "compiler": "8.0.1",
+      "object_sha256": "b4b2024acb91c7da1bbda2f15b22c65d2cfb0b688e9eb7de3fb4705fd3110c39"
+    },
+    {
+      "id": "openssl_q_sections_ssl_t1_enc_O2_omit",
+      "compiler": "8.0.1",
+      "object_sha256": "25b4458a0a876d6d6491bf064d23cc76d8e3b8baeb4f08887ba54b3221ce041d"
+    },
+    {
+      "id": "openssl_q_sections_crypto_bn_bn_lib_O3_omit",
+      "compiler": "8.0.1",
+      "object_sha256": "fdd9d93a8dc17864b4f666dc89f8897075160ad309b8e0ec173953c5955ca7e4"
+    },
+    {
+      "id": "openssl_q_sections_crypto_x509v3_v3_purp_O3_omit",
+      "compiler": "8.0.1",
+      "object_sha256": "f8049fd30a335cd515b5bb1ca98b4395cea90ad38522aa9567ef8cf3b705816b"
+    },
+    {
+      "id": "openssl_q_sections_crypto_asn1_tasn_enc_O2_omit",
+      "compiler": "8.0.1",
+      "object_sha256": "97394dc3ac6d28a8de1d26af25e4b6ba7334a8a1ac4edfd924bdc13ab382785d"
+    },
+    {
+      "id": "openssl_q_sections_crypto_x509_x509name_O3_omit",
+      "compiler": "8.0.1",
+      "object_sha256": "0b38f2806337b772d4c726ad7bfaacb865ec5436e1582f490488dade5ee670ac"
+    },
+    {
+      "id": "openssl_q_sections_crypto_sha_sha512_O2_omit",
+      "compiler": "8.0.1",
+      "object_sha256": "b649bead6830d84c038f5f1161c54129d2b5387a9913c22dada2d45097b5ab19"
+    },
+    {
+      "id": "openssl_q_sections_crypto_asn1_asn1_lib_O3_omit",
+      "compiler": "8.0.1",
+      "object_sha256": "b44a90ee8375865ccec3f00dbc50bbb43cc9d906436647e3e0934a144e6c8e24"
+    },
+    {
+      "id": "openssl_q_sections_crypto_bn_bn_blind_O3_omit",
+      "compiler": "8.0.1",
+      "object_sha256": "aa75df4e32c4ae70e381b46a56c7e89452c0d5d98fe5353eb4b5bd7b2747d603"
+    },
+    {
+      "id": "openssl_q_sections_crypto_x509v3_v3_sxnet_O3_omit",
+      "compiler": "8.0.1",
+      "object_sha256": "3e00ae14be5c1b87d7214db1be17383d1ca0d69e6df7c212ad9c40c8bfa912bd"
+    },
+    {
+      "id": "openssl_q_sections_crypto_ec_ec_lib_O3_omit",
+      "compiler": "8.0.1",
+      "object_sha256": "fdcc867b436c7d39db4b6e1e51aae2f5748f7814c2b5387d22ced23ded78f184"
+    },
+    {
+      "id": "openssl_q_sections_crypto_x509v3_v3_utl_O3_omit",
+      "compiler": "8.0.1",
+      "object_sha256": "b47a88078950ee8c066204daced238e145725d1d3f67fc290d0d3d92b74938f8"
+    },
+    {
+      "id": "openssl_q_sections_crypto_cryptlib_O3_omit",
+      "compiler": "8.0.1",
+      "object_sha256": "9570e9fae94e2362f1d96d31c71755754f25a8cd03048324e89e236207374402"
+    },
+    {
+      "id": "openssl_q_sections_crypto_asn1_tasn_dec_O3_omit",
+      "compiler": "8.0.1",
+      "object_sha256": "573e5ccc27c8a5b5b03d3ee1627b7ba0ff80333e931d5d50033cfc45f9dafcca"
+    },
+    {
+      "id": "openssl_q_sections_crypto_bio_bio_lib_O3_omit",
+      "compiler": "8.0.1",
+      "object_sha256": "9e8d6cbf3cab184d734c9a2777b7690ab3aaec800f5f75c18addd4695036f995"
+    },
+    {
+      "id": "openssl_q_sections_crypto_x509_x509_trs_O2_omit",
+      "compiler": "8.0.1",
+      "object_sha256": "614f54f97622f8c5b212b0a7bdd69a05d9b7893714a54bfcc1b86c25b815acc2"
     }
   ],
   "matches": [
@@ -16708,6 +16858,17 @@
       "relocation_count": 5
     },
     {
+      "address": "0x1b8e90",
+      "size": 100,
+      "exact": true,
+      "target_sha256": "fed6271cd3eb0a3d7bb4b05cfe056290d5d83b93a4478b91bc39540699d62bba",
+      "compiled_sha256": "fed6271cd3eb0a3d7bb4b05cfe056290d5d83b93a4478b91bc39540699d62bba",
+      "source": "src/OpenSslQSections_crypto_bio_bio_lib_O3_omit.c",
+      "symbol": "BIO_indent",
+      "source_review": "library_abi_view",
+      "relocation_count": 3
+    },
+    {
       "address": "0x1b8f00",
       "size": 248,
       "exact": true,
@@ -16884,6 +17045,28 @@
       "relocation_count": 2
     },
     {
+      "address": "0x1b9910",
+      "size": 32,
+      "exact": true,
+      "target_sha256": "b2cbe38883340667a3f89da1264b3f430ea0416a117b5437e31d89f3a9277e65",
+      "compiled_sha256": "b2cbe38883340667a3f89da1264b3f430ea0416a117b5437e31d89f3a9277e65",
+      "source": "src/OpenSslQSections_crypto_cryptlib_O3_omit.c",
+      "symbol": "OpenSSLDie",
+      "source_review": "library_abi_view",
+      "relocation_count": 4
+    },
+    {
+      "address": "0x1b9930",
+      "size": 152,
+      "exact": true,
+      "target_sha256": "bc670efd63e0896a8024352b219be2e8b9d315a4ddf861eb97c5cef25c6e6a12",
+      "compiled_sha256": "bc670efd63e0896a8024352b219be2e8b9d315a4ddf861eb97c5cef25c6e6a12",
+      "source": "src/OpenSslQSections_crypto_cryptlib_O3_omit.c",
+      "symbol": "CRYPTO_add_lock",
+      "source_review": "library_abi_view",
+      "relocation_count": 4
+    },
+    {
       "address": "0x1b9a50",
       "size": 144,
       "exact": true,
@@ -17027,6 +17210,39 @@
       "relocation_count": 1
     },
     {
+      "address": "0x1baa40",
+      "size": 120,
+      "exact": true,
+      "target_sha256": "c9c1fdc36437817cdb212a8d746036c785a9de952a91d4c1b11c62e5278d3c6d",
+      "compiled_sha256": "c9c1fdc36437817cdb212a8d746036c785a9de952a91d4c1b11c62e5278d3c6d",
+      "source": "src/OpenSslQSections_crypto_err_err_O3_novec.c",
+      "symbol": "ERR_clear_error",
+      "source_review": "library_abi_view",
+      "relocation_count": 2
+    },
+    {
+      "address": "0x1baac0",
+      "size": 148,
+      "exact": true,
+      "target_sha256": "2a9ace5e53349011351cd69b8101d398ad4552ad44d2abcc2df1ae3968db00c9",
+      "compiled_sha256": "2a9ace5e53349011351cd69b8101d398ad4552ad44d2abcc2df1ae3968db00c9",
+      "source": "src/OpenSslQSections_crypto_err_err_O3_novec.c",
+      "symbol": "ERR_get_error",
+      "source_review": "library_abi_view",
+      "relocation_count": 2
+    },
+    {
+      "address": "0x1bab60",
+      "size": 396,
+      "exact": true,
+      "target_sha256": "c19d66df9218f4d867414a1f4148472606a7481f09aaa886277e89c8ffb65bbc",
+      "compiled_sha256": "c19d66df9218f4d867414a1f4148472606a7481f09aaa886277e89c8ffb65bbc",
+      "source": "src/OpenSslQSections_crypto_err_err_O3_novec.c",
+      "symbol": "get_error_values",
+      "source_review": "library_abi_view",
+      "relocation_count": 10
+    },
+    {
       "address": "0x1bacf0",
       "size": 28,
       "exact": true,
@@ -17035,6 +17251,17 @@
       "source": "src/TypedCfgVoidOmitDirect.cpp",
       "symbol": "RecoveredLeaf_1bacf0",
       "source_review": "generated_cxx_abi_view",
+      "relocation_count": 1
+    },
+    {
+      "address": "0x1bad10",
+      "size": 80,
+      "exact": true,
+      "target_sha256": "277ef006c842e8595845c8e791cffd8250275f8cea2ff1309c20c0292d943971",
+      "compiled_sha256": "277ef006c842e8595845c8e791cffd8250275f8cea2ff1309c20c0292d943971",
+      "source": "src/OpenSslQSections_crypto_err_err_O3_novec.c",
+      "symbol": "ERR_peek_error",
+      "source_review": "library_abi_view",
       "relocation_count": 1
     },
     {
@@ -17060,6 +17287,17 @@
       "relocation_count": 17
     },
     {
+      "address": "0x1bb510",
+      "size": 360,
+      "exact": true,
+      "target_sha256": "1b5d69bf27700d422855ea66fb9c72e466c5a86ebddea0f329c6fd2f22baa994",
+      "compiled_sha256": "1b5d69bf27700d422855ea66fb9c72e466c5a86ebddea0f329c6fd2f22baa994",
+      "source": "src/OpenSslQSections_crypto_err_err_O3_novec.c",
+      "symbol": "ERR_add_error_vdata",
+      "source_review": "library_abi_view",
+      "relocation_count": 11
+    },
+    {
       "address": "0x1bb680",
       "size": 68,
       "exact": true,
@@ -17069,6 +17307,17 @@
       "symbol": "RecoveredLeaf_1bb680",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 1
+    },
+    {
+      "address": "0x1bb6d0",
+      "size": 240,
+      "exact": true,
+      "target_sha256": "668e8d3ead28542319edc31fc9c2bc37b9ce5be9a8021b050bb7a7f4017211f7",
+      "compiled_sha256": "668e8d3ead28542319edc31fc9c2bc37b9ce5be9a8021b050bb7a7f4017211f7",
+      "source": "src/OpenSslQSections_crypto_err_err_O3_novec.c",
+      "symbol": "ERR_pop_to_mark",
+      "source_review": "library_abi_view",
+      "relocation_count": 2
     },
     {
       "address": "0x1bbc30",
@@ -17698,6 +17947,17 @@
       "relocation_count": 0
     },
     {
+      "address": "0x1c21f0",
+      "size": 228,
+      "exact": true,
+      "target_sha256": "0c8980a14d5e1263fc0c924390f3873efcd5d396cce051bd3c264c41a32ca00b",
+      "compiled_sha256": "0c8980a14d5e1263fc0c924390f3873efcd5d396cce051bd3c264c41a32ca00b",
+      "source": "src/OpenSslQSections_crypto_asn1_asn1_lib_O3_omit.c",
+      "symbol": "asn1_GetSequence",
+      "source_review": "library_abi_view",
+      "relocation_count": 1
+    },
+    {
       "address": "0x1c22e0",
       "size": 84,
       "exact": true,
@@ -18006,6 +18266,28 @@
       "relocation_count": 9
     },
     {
+      "address": "0x1c35c0",
+      "size": 100,
+      "exact": true,
+      "target_sha256": "79cf7808edd20af1a5c5a6186791a3aa956a575618ea113013ade2b98e8b775b",
+      "compiled_sha256": "79cf7808edd20af1a5c5a6186791a3aa956a575618ea113013ade2b98e8b775b",
+      "source": "src/OpenSslQSections_crypto_bn_bn_lib_O3_omit.c",
+      "symbol": "bn_expand2",
+      "source_review": "library_abi_view",
+      "relocation_count": 2
+    },
+    {
+      "address": "0x1c3730",
+      "size": 116,
+      "exact": true,
+      "target_sha256": "0156e2ea279c6a3870ffd0ace4a21c9e3685f8f3bdc78258f111353be3d4ddc3",
+      "compiled_sha256": "0156e2ea279c6a3870ffd0ace4a21c9e3685f8f3bdc78258f111353be3d4ddc3",
+      "source": "src/OpenSslQSections_crypto_bn_bn_lib_O3_omit.c",
+      "symbol": "BN_set_word",
+      "source_review": "library_abi_view",
+      "relocation_count": 2
+    },
+    {
       "address": "0x1c3960",
       "size": 644,
       "exact": true,
@@ -18048,6 +18330,17 @@
       "symbol": "BN_cmp",
       "source_review": "library_abi_view",
       "relocation_count": 0
+    },
+    {
+      "address": "0x1c3e20",
+      "size": 200,
+      "exact": true,
+      "target_sha256": "e3e59ffd1296b2f724b1b95eea6ed4c72560032ec78fa4b6443c591cb5e14105",
+      "compiled_sha256": "e3e59ffd1296b2f724b1b95eea6ed4c72560032ec78fa4b6443c591cb5e14105",
+      "source": "src/OpenSslQSections_crypto_bn_bn_lib_O3_omit.c",
+      "symbol": "BN_set_bit",
+      "source_review": "library_abi_view",
+      "relocation_count": 2
     },
     {
       "address": "0x1c3ef0",
@@ -19865,6 +20158,28 @@
       "relocation_count": 2
     },
     {
+      "address": "0x1cc000",
+      "size": 96,
+      "exact": true,
+      "target_sha256": "860a0de6faa572f18539a48e785649f0f853a86e4eaa3476d1355a5346d4cbc7",
+      "compiled_sha256": "860a0de6faa572f18539a48e785649f0f853a86e4eaa3476d1355a5346d4cbc7",
+      "source": "src/OpenSslQSections_crypto_asn1_tasn_dec_O3_omit.c",
+      "symbol": "ASN1_item_d2i",
+      "source_review": "library_abi_view",
+      "relocation_count": 1
+    },
+    {
+      "address": "0x1cc060",
+      "size": 28,
+      "exact": true,
+      "target_sha256": "49ceb0a6568e4090780a101f15864a72647e8865f4fae2fa89d4944b1646aaf0",
+      "compiled_sha256": "49ceb0a6568e4090780a101f15864a72647e8865f4fae2fa89d4944b1646aaf0",
+      "source": "src/OpenSslQSections_crypto_asn1_tasn_dec_O3_omit.c",
+      "symbol": "ASN1_item_ex_d2i",
+      "source_review": "library_abi_view",
+      "relocation_count": 1
+    },
+    {
       "address": "0x1cc080",
       "size": 480,
       "exact": true,
@@ -20006,6 +20321,17 @@
       "symbol": "RecoveredLeaf_1ce880",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 1
+    },
+    {
+      "address": "0x1cf150",
+      "size": 288,
+      "exact": true,
+      "target_sha256": "7fb4aa6f367214981fc2a8f5f1e852c4661a6363b987f3a7df80af7a925cc06f",
+      "compiled_sha256": "7fb4aa6f367214981fc2a8f5f1e852c4661a6363b987f3a7df80af7a925cc06f",
+      "source": "src/OpenSslQSections_crypto_asn1_tasn_enc_O2_omit.c",
+      "symbol": "asn1_i2d_ex_primitive",
+      "source_review": "library_abi_view",
+      "relocation_count": 5
     },
     {
       "address": "0x1cf270",
@@ -20591,6 +20917,17 @@
       "relocation_count": 6
     },
     {
+      "address": "0x1d3650",
+      "size": 1180,
+      "exact": true,
+      "target_sha256": "0c3086027c3a60216c52420a7f622323fc5ef74e9e3a0e3da2592725fd32d3da",
+      "compiled_sha256": "0c3086027c3a60216c52420a7f622323fc5ef74e9e3a0e3da2592725fd32d3da",
+      "source": "src/OpenSslQSections_crypto_bn_bn_mul_O3_omit.c",
+      "symbol": "bn_mul_part_recursive",
+      "source_review": "library_abi_view",
+      "relocation_count": 28
+    },
+    {
       "address": "0x1d3af0",
       "size": 84,
       "exact": true,
@@ -20600,6 +20937,17 @@
       "symbol": "BN_sqr",
       "source_review": "library_abi_view",
       "relocation_count": 0
+    },
+    {
+      "address": "0x1d3b50",
+      "size": 660,
+      "exact": true,
+      "target_sha256": "6c94e6113eeab8726a108478565bafce8016074550d0f1418895d1ee9a89e140",
+      "compiled_sha256": "6c94e6113eeab8726a108478565bafce8016074550d0f1418895d1ee9a89e140",
+      "source": "src/OpenSslQSections_crypto_bn_bn_mul_O3_omit.c",
+      "symbol": "bn_mul_fixed_top",
+      "source_review": "library_abi_view",
+      "relocation_count": 17
     },
     {
       "address": "0x1d3f00",
@@ -21768,6 +22116,17 @@
       "relocation_count": 1
     },
     {
+      "address": "0x1daa50",
+      "size": 200,
+      "exact": true,
+      "target_sha256": "8e4e13f67c0586f5c23fc257e2563d2b8a02b0069deba49a45a8a0e81f93409e",
+      "compiled_sha256": "8e4e13f67c0586f5c23fc257e2563d2b8a02b0069deba49a45a8a0e81f93409e",
+      "source": "src/OpenSslQSections_crypto_ec_ec_lib_O3_omit.c",
+      "symbol": "EC_POINT_dup",
+      "source_review": "library_abi_view",
+      "relocation_count": 7
+    },
+    {
       "address": "0x1dab20",
       "size": 96,
       "exact": true,
@@ -22351,6 +22710,61 @@
       "relocation_count": 0
     },
     {
+      "address": "0x1decc0",
+      "size": 600,
+      "exact": true,
+      "target_sha256": "bf8486f27599b3a0a0b184bcb4d80bdb9a59dd44fdf254b1c43c5bcd402dc898",
+      "compiled_sha256": "bf8486f27599b3a0a0b184bcb4d80bdb9a59dd44fdf254b1c43c5bcd402dc898",
+      "source": "src/OpenSslQSections_crypto_bn_bn_gf2m_O3_novec.c",
+      "symbol": "BN_GF2m_mod_sqr_arr",
+      "source_review": "library_abi_view",
+      "relocation_count": 5
+    },
+    {
+      "address": "0x1def20",
+      "size": 368,
+      "exact": true,
+      "target_sha256": "7bb80a4681a53766e097c3e9df0865d19070b5635b35447775ed26f9d51361ee",
+      "compiled_sha256": "7bb80a4681a53766e097c3e9df0865d19070b5635b35447775ed26f9d51361ee",
+      "source": "src/OpenSslQSections_crypto_bn_bn_gf2m_O3_novec.c",
+      "symbol": "BN_GF2m_mod_mul",
+      "source_review": "library_abi_view",
+      "relocation_count": 9
+    },
+    {
+      "address": "0x1df090",
+      "size": 1560,
+      "exact": true,
+      "target_sha256": "41e880f3c37bf4ddb31be3183536cd64313a1e207e22bed822013cac55f9d256",
+      "compiled_sha256": "41e880f3c37bf4ddb31be3183536cd64313a1e207e22bed822013cac55f9d256",
+      "source": "src/OpenSslQSections_crypto_bn_bn_gf2m_O3_novec.c",
+      "symbol": "BN_GF2m_mod_inv",
+      "source_review": "library_abi_view",
+      "relocation_count": 21
+    },
+    {
+      "address": "0x1df6b0",
+      "size": 152,
+      "exact": true,
+      "target_sha256": "f3147cce5cf922f867265eca02e54e93412a7ef9130ae7c7d8c8c8972f240d4b",
+      "compiled_sha256": "f3147cce5cf922f867265eca02e54e93412a7ef9130ae7c7d8c8c8972f240d4b",
+      "source": "src/OpenSslQSections_crypto_bn_bn_gf2m_O3_novec.c",
+      "symbol": "BN_GF2m_mod_div",
+      "source_review": "library_abi_view",
+      "relocation_count": 5
+    },
+    {
+      "address": "0x1df750",
+      "size": 320,
+      "exact": true,
+      "target_sha256": "ecb308fe3bfbb13a0ce76b9697616c89aae62c3239695661097c79c236b0b902",
+      "compiled_sha256": "ecb308fe3bfbb13a0ce76b9697616c89aae62c3239695661097c79c236b0b902",
+      "source": "src/OpenSslQSections_crypto_bn_bn_gf2m_O3_novec.c",
+      "symbol": "BN_GF2m_mod_exp_arr",
+      "source_review": "library_abi_view",
+      "relocation_count": 11
+    },
+    {
       "address": "0x1df890",
       "size": 160,
       "exact": true,
@@ -22360,6 +22774,17 @@
       "symbol": "RecoveredLeaf_1df890",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 6
+    },
+    {
+      "address": "0x1df930",
+      "size": 776,
+      "exact": true,
+      "target_sha256": "9df6174e91926165c7ed8f1f77c176f6dded03a6a4c0c89f4c4f9f4f3eefd304",
+      "compiled_sha256": "9df6174e91926165c7ed8f1f77c176f6dded03a6a4c0c89f4c4f9f4f3eefd304",
+      "source": "src/OpenSslQSections_crypto_bn_bn_gf2m_O3_novec.c",
+      "symbol": "BN_GF2m_mod_solve_quad_arr",
+      "source_review": "library_abi_view",
+      "relocation_count": 33
     },
     {
       "address": "0x1dfc40",
@@ -23693,6 +24118,17 @@
       "relocation_count": 20
     },
     {
+      "address": "0x1e8720",
+      "size": 224,
+      "exact": true,
+      "target_sha256": "0deaa2c2540d7ffd3bad71003656207b4a264d90e83ba3aa11138e0ddc05fae7",
+      "compiled_sha256": "0deaa2c2540d7ffd3bad71003656207b4a264d90e83ba3aa11138e0ddc05fae7",
+      "source": "src/OpenSslQSections_crypto_bn_bn_blind_O3_omit.c",
+      "symbol": "BN_BLINDING_convert_ex",
+      "source_review": "library_abi_view",
+      "relocation_count": 7
+    },
+    {
       "address": "0x1e8800",
       "size": 200,
       "exact": true,
@@ -25013,6 +25449,17 @@
       "relocation_count": 14
     },
     {
+      "address": "0x1f0aa0",
+      "size": 192,
+      "exact": true,
+      "target_sha256": "da94ddd1e9256cc9b253eaa00dd2048bedcf9809b74ddda942c63a15bd230deb",
+      "compiled_sha256": "da94ddd1e9256cc9b253eaa00dd2048bedcf9809b74ddda942c63a15bd230deb",
+      "source": "src/OpenSslQSections_crypto_x509v3_v3_utl_O3_omit.c",
+      "symbol": "X509V3_add_value_int",
+      "source_review": "library_abi_view",
+      "relocation_count": 9
+    },
+    {
       "address": "0x1f0b60",
       "size": 392,
       "exact": true,
@@ -25363,6 +25810,17 @@
       "symbol": "X509_NAME_add_entry",
       "source_review": "library_abi_view",
       "relocation_count": 14
+    },
+    {
+      "address": "0x1f3890",
+      "size": 272,
+      "exact": true,
+      "target_sha256": "c6b10b80addc75d69af06a5e13f230c4e45c849e604096f1dfafc0bbfa74c987",
+      "compiled_sha256": "c6b10b80addc75d69af06a5e13f230c4e45c849e604096f1dfafc0bbfa74c987",
+      "source": "src/OpenSslQSections_crypto_x509_x509name_O3_omit.c",
+      "symbol": "X509_NAME_add_entry_by_txt",
+      "source_review": "library_abi_view",
+      "relocation_count": 16
     },
     {
       "address": "0x1f39a0",
@@ -25968,6 +26426,28 @@
       "symbol": "X509_NAME_oneline",
       "source_review": "library_abi_view",
       "relocation_count": 26
+    },
+    {
+      "address": "0x1f6de0",
+      "size": 112,
+      "exact": true,
+      "target_sha256": "a736e8921af4c341c50d6e3177827c987d2c402bf165d183314e38e275fc8656",
+      "compiled_sha256": "a736e8921af4c341c50d6e3177827c987d2c402bf165d183314e38e275fc8656",
+      "source": "src/OpenSslQSections_crypto_x509v3_v3_purp_O3_omit.c",
+      "symbol": "X509_check_ca",
+      "source_review": "library_abi_view",
+      "relocation_count": 1
+    },
+    {
+      "address": "0x1f6e50",
+      "size": 196,
+      "exact": true,
+      "target_sha256": "48bbb85123dca54afa31a89094e1ed78a8ae8437a3edccd23cd9f694e6fe0ed9",
+      "compiled_sha256": "48bbb85123dca54afa31a89094e1ed78a8ae8437a3edccd23cd9f694e6fe0ed9",
+      "source": "src/OpenSslQSections_crypto_x509v3_v3_purp_O3_omit.c",
+      "symbol": "X509_check_issued",
+      "source_review": "library_abi_view",
+      "relocation_count": 6
     },
     {
       "address": "0x1f6f20",
@@ -28632,6 +29112,17 @@
       "relocation_count": 2
     },
     {
+      "address": "0x205500",
+      "size": 224,
+      "exact": true,
+      "target_sha256": "a565f5ee43de1e77f9c1b111d5f620c35af8855e2f4551aa56fac8bfb6b444bb",
+      "compiled_sha256": "a565f5ee43de1e77f9c1b111d5f620c35af8855e2f4551aa56fac8bfb6b444bb",
+      "source": "src/OpenSslQSections_crypto_x509v3_v3_sxnet_O3_omit.c",
+      "symbol": "sxnet_v2i",
+      "source_review": "library_abi_view",
+      "relocation_count": 8
+    },
+    {
       "address": "0x2055e0",
       "size": 236,
       "exact": true,
@@ -29006,6 +29497,17 @@
       "relocation_count": 18
     },
     {
+      "address": "0x208580",
+      "size": 660,
+      "exact": true,
+      "target_sha256": "63b6a308484acb3ac5655bd772e514b065ebce393c362a5e031ec7e1ef1432ba",
+      "compiled_sha256": "63b6a308484acb3ac5655bd772e514b065ebce393c362a5e031ec7e1ef1432ba",
+      "source": "src/OpenSslQSections_crypto_x509_x509_vfy_O3_omit.c",
+      "symbol": "internal_verify",
+      "source_review": "library_abi_view",
+      "relocation_count": 10
+    },
+    {
       "address": "0x208820",
       "size": 284,
       "exact": true,
@@ -29259,6 +29761,28 @@
       "relocation_count": 8
     },
     {
+      "address": "0x20a790",
+      "size": 252,
+      "exact": true,
+      "target_sha256": "b37a85fd6f49b59fcb89d096e5aa85ab5288ba0017c7ef59e274b285008d6c0f",
+      "compiled_sha256": "b37a85fd6f49b59fcb89d096e5aa85ab5288ba0017c7ef59e274b285008d6c0f",
+      "source": "src/OpenSslQSections_crypto_x509_x509_lu_O3_omit.c",
+      "symbol": "x509_object_idx_cnt",
+      "source_review": "library_abi_view",
+      "relocation_count": 5
+    },
+    {
+      "address": "0x20ac60",
+      "size": 688,
+      "exact": true,
+      "target_sha256": "1a42eaf2e679df888814c5d5ec1ed124b23eb0e9f3d3c97ee196d86f4f54e159",
+      "compiled_sha256": "1a42eaf2e679df888814c5d5ec1ed124b23eb0e9f3d3c97ee196d86f4f54e159",
+      "source": "src/OpenSslQSections_crypto_x509_x509_lu_O3_omit.c",
+      "symbol": "X509_STORE_CTX_get1_issuer",
+      "source_review": "library_abi_view",
+      "relocation_count": 28
+    },
+    {
       "address": "0x20af10",
       "size": 136,
       "exact": true,
@@ -29367,6 +29891,17 @@
       "symbol": "RecoveredLeaf_20b730",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 1
+    },
+    {
+      "address": "0x20b760",
+      "size": 88,
+      "exact": true,
+      "target_sha256": "87ef81c4af5658645a84f38aca8f4e618f04970fa589e0e4a9ffe7720ee5d2f5",
+      "compiled_sha256": "87ef81c4af5658645a84f38aca8f4e618f04970fa589e0e4a9ffe7720ee5d2f5",
+      "source": "src/OpenSslQSections_crypto_x509_x509_trs_O2_omit.c",
+      "symbol": "trust_1oidany",
+      "source_review": "library_abi_view",
+      "relocation_count": 2
     },
     {
       "address": "0x20b7c0",
@@ -29842,6 +30377,17 @@
       "relocation_count": 0
     },
     {
+      "address": "0x20f7e0",
+      "size": 828,
+      "exact": true,
+      "target_sha256": "393685deb3857b4ca213ef89fc82b970e75d304c3a56b2853cded515501fa5a1",
+      "compiled_sha256": "393685deb3857b4ca213ef89fc82b970e75d304c3a56b2853cded515501fa5a1",
+      "source": "src/OpenSslQSections_crypto_sha_sha256_O3_omit.c",
+      "symbol": "SHA256_Final",
+      "source_review": "library_abi_view",
+      "relocation_count": 5
+    },
+    {
       "address": "0x20fc20",
       "size": 3224,
       "exact": true,
@@ -29906,6 +30452,17 @@
       "symbol": "sha512_block_data_order",
       "source_review": "library_abi_view",
       "relocation_count": 2
+    },
+    {
+      "address": "0x211df0",
+      "size": 236,
+      "exact": true,
+      "target_sha256": "6249d518422bca4f89e8624d4bb382ef746d10d1ab81901a08c3572a0fddd4bf",
+      "compiled_sha256": "6249d518422bca4f89e8624d4bb382ef746d10d1ab81901a08c3572a0fddd4bf",
+      "source": "src/OpenSslQSections_crypto_sha_sha512_O2_omit.c",
+      "symbol": "SHA512_Update",
+      "source_review": "library_abi_view",
+      "relocation_count": 5
     },
     {
       "address": "0x211ee0",
@@ -32493,6 +33050,17 @@
       "relocation_count": 3
     },
     {
+      "address": "0x22cc30",
+      "size": 508,
+      "exact": true,
+      "target_sha256": "5e0ef980e00b20b88a39efefcfac64c03d62fa703e075be1524349995cdaaddf",
+      "compiled_sha256": "5e0ef980e00b20b88a39efefcfac64c03d62fa703e075be1524349995cdaaddf",
+      "source": "src/OpenSslQSections_ssl_d1_lib_O3_omit.c",
+      "symbol": "dtls1_handle_timeout",
+      "source_review": "library_abi_view",
+      "relocation_count": 10
+    },
+    {
       "address": "0x22ce30",
       "size": 36,
       "exact": true,
@@ -32700,6 +33268,39 @@
       "symbol": "RecoveredLeaf_230ec0",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 1
+    },
+    {
+      "address": "0x230ed0",
+      "size": 424,
+      "exact": true,
+      "target_sha256": "c9b185b011d715b7310038030195e743c3203368d0b0d8202315667c76c1586e",
+      "compiled_sha256": "c9b185b011d715b7310038030195e743c3203368d0b0d8202315667c76c1586e",
+      "source": "src/OpenSslQSections_ssl_ssl_sess_O3_omit.c",
+      "symbol": "remove_session_lock",
+      "source_review": "library_abi_view",
+      "relocation_count": 9
+    },
+    {
+      "address": "0x231110",
+      "size": 220,
+      "exact": true,
+      "target_sha256": "6d70ae3edb09065e4c58ad65261bc6d2769958b751bd09aef367fd785850c559",
+      "compiled_sha256": "6d70ae3edb09065e4c58ad65261bc6d2769958b751bd09aef367fd785850c559",
+      "source": "src/OpenSslQSections_ssl_ssl_sess_O3_omit.c",
+      "symbol": "timeout_LHASH_DOALL_ARG",
+      "source_review": "library_abi_view",
+      "relocation_count": 2
+    },
+    {
+      "address": "0x2311f0",
+      "size": 148,
+      "exact": true,
+      "target_sha256": "ff2b9457729a3899473310a3551d8598d4a8310146bbe0bbaf28ee3c2353e6ae",
+      "compiled_sha256": "ff2b9457729a3899473310a3551d8598d4a8310146bbe0bbaf28ee3c2353e6ae",
+      "source": "src/OpenSslQSections_ssl_ssl_sess_O3_omit.c",
+      "symbol": "ssl_clear_bad_session",
+      "source_review": "library_abi_view",
+      "relocation_count": 3
     },
     {
       "address": "0x231290",
@@ -34055,6 +34656,17 @@
       "relocation_count": 20
     },
     {
+      "address": "0x245600",
+      "size": 444,
+      "exact": true,
+      "target_sha256": "8040b752d5e4fbdd75df6cc947957ff738469da98879cd5fe1e67347652ec917",
+      "compiled_sha256": "8040b752d5e4fbdd75df6cc947957ff738469da98879cd5fe1e67347652ec917",
+      "source": "src/OpenSslQSections_ssl_t1_enc_O2_omit.c",
+      "symbol": "tls1_final_finish_mac",
+      "source_review": "library_abi_view",
+      "relocation_count": 13
+    },
+    {
       "address": "0x2457c0",
       "size": 780,
       "exact": true,
@@ -34110,6 +34722,17 @@
       "relocation_count": 13
     },
     {
+      "address": "0x246e00",
+      "size": 192,
+      "exact": true,
+      "target_sha256": "c18e12a885dcabacf1b96d1a886d37968bf130eb3001b6efeb6e549d84ab707a",
+      "compiled_sha256": "c18e12a885dcabacf1b96d1a886d37968bf130eb3001b6efeb6e549d84ab707a",
+      "source": "src/OpenSslQSections_ssl_d1_both_O2_omit.c",
+      "symbol": "dtls1_send_change_cipher_spec",
+      "source_review": "library_abi_view",
+      "relocation_count": 2
+    },
+    {
       "address": "0x246ec0",
       "size": 500,
       "exact": true,
@@ -34141,6 +34764,17 @@
       "symbol": "dtls1_retransmit_buffered_messages",
       "source_review": "library_abi_view",
       "relocation_count": 3
+    },
+    {
+      "address": "0x2471d0",
+      "size": 444,
+      "exact": true,
+      "target_sha256": "e33476cebb6fc3c4e163a4ce4c0654f2ee8a07736916749b4c92a2a343aeb761",
+      "compiled_sha256": "e33476cebb6fc3c4e163a4ce4c0654f2ee8a07736916749b4c92a2a343aeb761",
+      "source": "src/OpenSslQSections_ssl_d1_both_O2_omit.c",
+      "symbol": "dtls1_retransmit_message",
+      "source_review": "library_abi_view",
+      "relocation_count": 5
     },
     {
       "address": "0x247390",
@@ -34724,6 +35358,17 @@
       "symbol": "_Z11TypeAddressILj2418464EEPKvv",
       "source_review": "manual_reconstruction",
       "relocation_count": 2
+    },
+    {
+      "address": "0x24e730",
+      "size": 728,
+      "exact": true,
+      "target_sha256": "a6c951ab1835180bc7e13cfe0c0341f6cfad9d839fca230555ab64b49410bcd1",
+      "compiled_sha256": "a6c951ab1835180bc7e13cfe0c0341f6cfad9d839fca230555ab64b49410bcd1",
+      "source": "src/OpenSslQSections_ssl_s23_srvr_O3_omit.c",
+      "symbol": "ssl23_accept",
+      "source_review": "library_abi_view",
+      "relocation_count": 19
     },
     {
       "address": "0x24f130",
