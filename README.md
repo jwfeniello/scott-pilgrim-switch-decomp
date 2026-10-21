@@ -22,6 +22,14 @@ This includes engine and library infrastructure. The project does not yet rebuil
 or boot the complete game. Original method names and many ABI declarations remain
 provisional.
 
+## Gameplay understanding
+
+[Actor actions](docs/ACTOR_ACTIONS.md) maps the original jump/movement class
+hierarchy, shared lifecycle routines, and their player-side dependencies. A
+readable jump-phase model passes 4,224 bounded comparisons with the original
+ARM64 update. This behavioral research receives no exact-match percentage and
+does not establish full-game execution.
+
 ## Contributing
 
 **HUMAN AND AI-ASSISTED CONTRIBUTIONS ARE WELCOME.** Both follow the same

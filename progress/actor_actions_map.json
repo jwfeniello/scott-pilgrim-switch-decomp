@@ -1,0 +1,857 @@
+{
+  "original_sha256": "ea95638e6d6aaa0dc6cddd552a9366799aa1ec3bc07ee201f23f6c151103f5b8",
+  "classes": [
+    {
+      "class_name": "SPTG::ActorJumpAction",
+      "type_string": "0x14db0c9",
+      "inheritance": [
+        {
+          "rtti": "0x1867ef0",
+          "type_name": "N4SPTG15ActorJumpActionE"
+        },
+        {
+          "rtti": "0x18678a8",
+          "type_name": "N4Onyx9Component7ComposeIN4SPTG20ActorActionComponentENS_4Meta4NullEEE"
+        },
+        {
+          "rtti": "0x1867540",
+          "type_name": "N4SPTG20ActorActionComponentE"
+        },
+        {
+          "rtti": "0x1867558",
+          "type_name": "N4Onyx9Component7ComposeINS_15ActionComponentENS_4Meta4NullEEE"
+        },
+        {
+          "rtti": "0x18b4220",
+          "type_name": "N4Onyx15ActionComponentE"
+        },
+        {
+          "rtti": "0x1841f48",
+          "type_name": "N4Onyx9Component7ComposeINS0_4BaseENS_4Meta4NullEEE"
+        },
+        {
+          "rtti": "0x1841e30",
+          "type_name": "N4Onyx9Component4BaseE"
+        }
+      ],
+      "primary_vtables": [
+        {
+          "address": "0x1867e68",
+          "functions": [
+            {
+              "slot": 0,
+              "address": "0x8e1930",
+              "size": 372,
+              "original_sha256": "6ca405a17d11fbf52b1c67e4a871cb84c3a36eb366cf391dd05e33a6e8a7a67c",
+              "inferred_role": null,
+              "matched_source": "src/SingleReferenceDestructor.cpp",
+              "direct_calls": [
+                {
+                  "site": "0x8e198c",
+                  "target": "0xa82b30",
+                  "inferred_role": null
+                },
+                {
+                  "site": "0x8e19d4",
+                  "target": "0xa82b30",
+                  "inferred_role": null
+                },
+                {
+                  "site": "0x8e19ec",
+                  "target": "0xfa4950",
+                  "inferred_role": null
+                },
+                {
+                  "site": "0x8e1a70",
+                  "target": "0xfa4960",
+                  "inferred_role": null
+                },
+                {
+                  "site": "0x8e1aa0",
+                  "target": "0x6768b8",
+                  "inferred_role": null
+                }
+              ]
+            },
+            {
+              "slot": 1,
+              "address": "0x8e8870",
+              "size": 24,
+              "original_sha256": "525949796d795e798e2a26de5dc7681ad0bef6c5d21aa3fc33d9913df24998e1",
+              "inferred_role": null,
+              "matched_source": "src/DeletingWrapper.cpp",
+              "direct_calls": [
+                {
+                  "site": "0x8e8878",
+                  "target": "0x8e1930",
+                  "inferred_role": null
+                }
+              ]
+            },
+            {
+              "slot": 2,
+              "address": "0x678280",
+              "size": 16,
+              "original_sha256": "d9d41e60955f27ce7830f4e158c06dfc4295089fb4481f086770fae8f2fd22ce",
+              "inferred_role": null,
+              "matched_source": "src/LeafPrimitives.cpp",
+              "direct_calls": []
+            },
+            {
+              "slot": 3,
+              "address": "0x678290",
+              "size": 16,
+              "original_sha256": "140e78a1f44a2fcff4bf3604288554cdaa5713e6b64f28ffd972b34138108b32",
+              "inferred_role": null,
+              "matched_source": "src/generated/FUN_00678290.cpp",
+              "direct_calls": []
+            },
+            {
+              "slot": 4,
+              "address": "0x8e8890",
+              "size": 536,
+              "original_sha256": "4c0c47995e8f56a6e1ca7ab798090c4ead9f062dc3c24d7dc681ad7eaa29259c",
+              "inferred_role": "Serialize (inferred)",
+              "matched_source": "src/ExpandedRecoveryOmit.cpp",
+              "direct_calls": [
+                {
+                  "site": "0x8e88a0",
+                  "target": "0xbcaa30",
+                  "inferred_role": null
+                }
+              ]
+            },
+            {
+              "slot": 5,
+              "address": "0x6787a0",
+              "size": 4,
+              "original_sha256": "110f46b5b35c069160560c6ad6786f647dd44e8760a52a46fc22dbbcd7630b91",
+              "inferred_role": null,
+              "matched_source": "src/LeafPrimitives.cpp",
+              "direct_calls": []
+            },
+            {
+              "slot": 6,
+              "address": "0x6787b0",
+              "size": 12,
+              "original_sha256": "8c6157923e3efd2097fa67391cf5706fcf5a256a25c591f02628a1e934be3af0",
+              "inferred_role": null,
+              "matched_source": "src/generated/FUN_006787b0.cpp",
+              "direct_calls": []
+            },
+            {
+              "slot": 7,
+              "address": "0x6787c0",
+              "size": 4,
+              "original_sha256": "110f46b5b35c069160560c6ad6786f647dd44e8760a52a46fc22dbbcd7630b91",
+              "inferred_role": null,
+              "matched_source": "src/LeafPrimitives.cpp",
+              "direct_calls": []
+            },
+            {
+              "slot": 8,
+              "address": "0x6787d0",
+              "size": 4,
+              "original_sha256": "110f46b5b35c069160560c6ad6786f647dd44e8760a52a46fc22dbbcd7630b91",
+              "inferred_role": null,
+              "matched_source": "src/LeafPrimitives.cpp",
+              "direct_calls": []
+            },
+            {
+              "slot": 9,
+              "address": "0x6787e0",
+              "size": 4,
+              "original_sha256": "110f46b5b35c069160560c6ad6786f647dd44e8760a52a46fc22dbbcd7630b91",
+              "inferred_role": null,
+              "matched_source": "src/LeafPrimitives.cpp",
+              "direct_calls": []
+            },
+            {
+              "slot": 10,
+              "address": "0x6787f0",
+              "size": 4,
+              "original_sha256": "110f46b5b35c069160560c6ad6786f647dd44e8760a52a46fc22dbbcd7630b91",
+              "inferred_role": null,
+              "matched_source": "src/LeafPrimitives.cpp",
+              "direct_calls": []
+            },
+            {
+              "slot": 11,
+              "address": "0x8e0ea0",
+              "size": 12,
+              "original_sha256": "ad138ccaff013b0887e77af3dd30676d7f9f9e48de1646348bc84c07af3efc51",
+              "inferred_role": null,
+              "matched_source": "src/generated/FUN_008e0ea0.cpp",
+              "direct_calls": []
+            },
+            {
+              "slot": 12,
+              "address": "0x8e0eb0",
+              "size": 40,
+              "original_sha256": "43e241154f647e9074f5cc2f4c90515b6bcaa41a1759eb7c835fd3a033e2d11d",
+              "inferred_role": null,
+              "matched_source": "src/IdentityTwo.cpp",
+              "direct_calls": []
+            },
+            {
+              "slot": 13,
+              "address": "0x8e8ab0",
+              "size": 788,
+              "original_sha256": "e20ffef5659c28f71a368a37d289dd7bf177a4c0001740694054e9dbfa7f5f6f",
+              "inferred_role": "Update (inferred)",
+              "matched_source": null,
+              "direct_calls": [
+                {
+                  "site": "0x8e8abc",
+                  "target": "0x8e17a0",
+                  "inferred_role": "ActorActionComponent update (inferred)"
+                },
+                {
+                  "site": "0x8e8c98",
+                  "target": "0xbf6e80",
+                  "inferred_role": "Dispatch event (inferred)"
+                },
+                {
+                  "site": "0x8e8cc8",
+                  "target": "0xfa4130",
+                  "inferred_role": null
+                },
+                {
+                  "site": "0x8e8cf0",
+                  "target": "0xfa4140",
+                  "inferred_role": null
+                },
+                {
+                  "site": "0x8e8d08",
+                  "target": "0xfa4130",
+                  "inferred_role": null
+                },
+                {
+                  "site": "0x8e8d28",
+                  "target": "0xfa4140",
+                  "inferred_role": null
+                },
+                {
+                  "site": "0x8e8d40",
+                  "target": "0xfa4130",
+                  "inferred_role": null
+                },
+                {
+                  "site": "0x8e8db4",
+                  "target": "0xfa4140",
+                  "inferred_role": null
+                },
+                {
+                  "site": "0x8e8dc0",
+                  "target": "0xfa4920",
+                  "inferred_role": null
+                }
+              ]
+            },
+            {
+              "slot": 14,
+              "address": "0x8e8dd0",
+              "size": 1048,
+              "original_sha256": "9e1d0cc5c7657e49d2f06e5219736e9e114fbc20c69ff0c2a589e8c54d035fbc",
+              "inferred_role": "Setup (inferred)",
+              "matched_source": null,
+              "direct_calls": [
+                {
+                  "site": "0x8e8df4",
+                  "target": "0x8e1690",
+                  "inferred_role": "ActorActionComponent setup (inferred)"
+                },
+                {
+                  "site": "0x8e8e54",
+                  "target": "0x67edd0",
+                  "inferred_role": "Component handle resolution (inferred)"
+                },
+                {
+                  "site": "0x8e8ea4",
+                  "target": "0x67edd0",
+                  "inferred_role": "Component handle resolution (inferred)"
+                },
+                {
+                  "site": "0x8e8f20",
+                  "target": "0x67edd0",
+                  "inferred_role": "Component handle resolution (inferred)"
+                },
+                {
+                  "site": "0x8e8f58",
+                  "target": "0x85fd70",
+                  "inferred_role": "Apply position (inferred)"
+                },
+                {
+                  "site": "0x8e8fac",
+                  "target": "0xfa4a20",
+                  "inferred_role": null
+                },
+                {
+                  "site": "0x8e9054",
+                  "target": "0x67edd0",
+                  "inferred_role": "Component handle resolution (inferred)"
+                },
+                {
+                  "site": "0x8e90a4",
+                  "target": "0x67edd0",
+                  "inferred_role": "Component handle resolution (inferred)"
+                },
+                {
+                  "site": "0x8e9158",
+                  "target": "0x67edd0",
+                  "inferred_role": "Component handle resolution (inferred)"
+                },
+                {
+                  "site": "0x8e91a8",
+                  "target": "0x67edd0",
+                  "inferred_role": "Component handle resolution (inferred)"
+                }
+              ]
+            },
+            {
+              "slot": 15,
+              "address": "0x8e91f0",
+              "size": 8,
+              "original_sha256": "a09b8561cb9c22d854528ad0bc6beddcc5cd826c605612df592b6c3808a3cf53",
+              "inferred_role": null,
+              "matched_source": "src/LeafPrimitives.cpp",
+              "direct_calls": []
+            },
+            {
+              "slot": 16,
+              "address": "0xbcaa10",
+              "size": 32,
+              "original_sha256": "d5b34c29cd05a735c43157224f1144bc5a2a743e3be79a7b027ebaa821197f32",
+              "inferred_role": null,
+              "matched_source": null,
+              "direct_calls": [
+                {
+                  "site": "0xbcaa2c",
+                  "target": "0xfa4920",
+                  "inferred_role": null
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "class_name": "SPTG::ActorMoveAction",
+      "type_string": "0x14daf9a",
+      "inheritance": [
+        {
+          "rtti": "0x1867ae8",
+          "type_name": "N4SPTG15ActorMoveActionE"
+        },
+        {
+          "rtti": "0x18678a8",
+          "type_name": "N4Onyx9Component7ComposeIN4SPTG20ActorActionComponentENS_4Meta4NullEEE"
+        },
+        {
+          "rtti": "0x1867540",
+          "type_name": "N4SPTG20ActorActionComponentE"
+        },
+        {
+          "rtti": "0x1867558",
+          "type_name": "N4Onyx9Component7ComposeINS_15ActionComponentENS_4Meta4NullEEE"
+        },
+        {
+          "rtti": "0x18b4220",
+          "type_name": "N4Onyx15ActionComponentE"
+        },
+        {
+          "rtti": "0x1841f48",
+          "type_name": "N4Onyx9Component7ComposeINS0_4BaseENS_4Meta4NullEEE"
+        },
+        {
+          "rtti": "0x1841e30",
+          "type_name": "N4Onyx9Component4BaseE"
+        }
+      ],
+      "primary_vtables": [
+        {
+          "address": "0x1867c70",
+          "functions": [
+            {
+              "slot": 0,
+              "address": "0x8e1930",
+              "size": 372,
+              "original_sha256": "6ca405a17d11fbf52b1c67e4a871cb84c3a36eb366cf391dd05e33a6e8a7a67c",
+              "inferred_role": null,
+              "matched_source": "src/SingleReferenceDestructor.cpp",
+              "direct_calls": [
+                {
+                  "site": "0x8e198c",
+                  "target": "0xa82b30",
+                  "inferred_role": null
+                },
+                {
+                  "site": "0x8e19d4",
+                  "target": "0xa82b30",
+                  "inferred_role": null
+                },
+                {
+                  "site": "0x8e19ec",
+                  "target": "0xfa4950",
+                  "inferred_role": null
+                },
+                {
+                  "site": "0x8e1a70",
+                  "target": "0xfa4960",
+                  "inferred_role": null
+                },
+                {
+                  "site": "0x8e1aa0",
+                  "target": "0x6768b8",
+                  "inferred_role": null
+                }
+              ]
+            },
+            {
+              "slot": 1,
+              "address": "0x8e7c70",
+              "size": 24,
+              "original_sha256": "f5321dc3c82c1b27ad013e31ff9a5e158d6c73a9211d567d3710fe62d9384149",
+              "inferred_role": null,
+              "matched_source": "src/DeletingWrapper.cpp",
+              "direct_calls": [
+                {
+                  "site": "0x8e7c78",
+                  "target": "0x8e1930",
+                  "inferred_role": null
+                }
+              ]
+            },
+            {
+              "slot": 2,
+              "address": "0x678280",
+              "size": 16,
+              "original_sha256": "d9d41e60955f27ce7830f4e158c06dfc4295089fb4481f086770fae8f2fd22ce",
+              "inferred_role": null,
+              "matched_source": "src/LeafPrimitives.cpp",
+              "direct_calls": []
+            },
+            {
+              "slot": 3,
+              "address": "0x678290",
+              "size": 16,
+              "original_sha256": "140e78a1f44a2fcff4bf3604288554cdaa5713e6b64f28ffd972b34138108b32",
+              "inferred_role": null,
+              "matched_source": "src/generated/FUN_00678290.cpp",
+              "direct_calls": []
+            },
+            {
+              "slot": 4,
+              "address": "0x8e65a0",
+              "size": 552,
+              "original_sha256": "9380fe4a3eff7412aa278359ab627e8b1f8b06dd302e5ff55d1fcf8bcc4ec432",
+              "inferred_role": "Move serialization (inferred)",
+              "matched_source": "src/ActorMoveAction.cpp",
+              "direct_calls": [
+                {
+                  "site": "0x8e65b0",
+                  "target": "0xbcaa30",
+                  "inferred_role": null
+                }
+              ]
+            },
+            {
+              "slot": 5,
+              "address": "0x6787a0",
+              "size": 4,
+              "original_sha256": "110f46b5b35c069160560c6ad6786f647dd44e8760a52a46fc22dbbcd7630b91",
+              "inferred_role": null,
+              "matched_source": "src/LeafPrimitives.cpp",
+              "direct_calls": []
+            },
+            {
+              "slot": 6,
+              "address": "0x6787b0",
+              "size": 12,
+              "original_sha256": "8c6157923e3efd2097fa67391cf5706fcf5a256a25c591f02628a1e934be3af0",
+              "inferred_role": null,
+              "matched_source": "src/generated/FUN_006787b0.cpp",
+              "direct_calls": []
+            },
+            {
+              "slot": 7,
+              "address": "0x6787c0",
+              "size": 4,
+              "original_sha256": "110f46b5b35c069160560c6ad6786f647dd44e8760a52a46fc22dbbcd7630b91",
+              "inferred_role": null,
+              "matched_source": "src/LeafPrimitives.cpp",
+              "direct_calls": []
+            },
+            {
+              "slot": 8,
+              "address": "0x6787d0",
+              "size": 4,
+              "original_sha256": "110f46b5b35c069160560c6ad6786f647dd44e8760a52a46fc22dbbcd7630b91",
+              "inferred_role": null,
+              "matched_source": "src/LeafPrimitives.cpp",
+              "direct_calls": []
+            },
+            {
+              "slot": 9,
+              "address": "0x6787e0",
+              "size": 4,
+              "original_sha256": "110f46b5b35c069160560c6ad6786f647dd44e8760a52a46fc22dbbcd7630b91",
+              "inferred_role": null,
+              "matched_source": "src/LeafPrimitives.cpp",
+              "direct_calls": []
+            },
+            {
+              "slot": 10,
+              "address": "0x6787f0",
+              "size": 4,
+              "original_sha256": "110f46b5b35c069160560c6ad6786f647dd44e8760a52a46fc22dbbcd7630b91",
+              "inferred_role": null,
+              "matched_source": "src/LeafPrimitives.cpp",
+              "direct_calls": []
+            },
+            {
+              "slot": 11,
+              "address": "0x8e0ea0",
+              "size": 12,
+              "original_sha256": "ad138ccaff013b0887e77af3dd30676d7f9f9e48de1646348bc84c07af3efc51",
+              "inferred_role": null,
+              "matched_source": "src/generated/FUN_008e0ea0.cpp",
+              "direct_calls": []
+            },
+            {
+              "slot": 12,
+              "address": "0x8e0eb0",
+              "size": 40,
+              "original_sha256": "43e241154f647e9074f5cc2f4c90515b6bcaa41a1759eb7c835fd3a033e2d11d",
+              "inferred_role": null,
+              "matched_source": "src/IdentityTwo.cpp",
+              "direct_calls": []
+            },
+            {
+              "slot": 13,
+              "address": "0x8e7c90",
+              "size": 640,
+              "original_sha256": "dbc366d088fbe213781a4caa0b64ff15e005a175c86ecf47f29307c7fbe279da",
+              "inferred_role": "Move update (inferred)",
+              "matched_source": null,
+              "direct_calls": [
+                {
+                  "site": "0x8e7ca8",
+                  "target": "0x8e17a0",
+                  "inferred_role": "ActorActionComponent update (inferred)"
+                },
+                {
+                  "site": "0x8e7d08",
+                  "target": "0x67edd0",
+                  "inferred_role": "Component handle resolution (inferred)"
+                },
+                {
+                  "site": "0x8e7d94",
+                  "target": "0x67edd0",
+                  "inferred_role": "Component handle resolution (inferred)"
+                },
+                {
+                  "site": "0x8e7dc4",
+                  "target": "0x85fd70",
+                  "inferred_role": "Apply position (inferred)"
+                },
+                {
+                  "site": "0x8e7e30",
+                  "target": "0xbf6e80",
+                  "inferred_role": "Dispatch event (inferred)"
+                },
+                {
+                  "site": "0x8e7e68",
+                  "target": "0x85fd70",
+                  "inferred_role": "Apply position (inferred)"
+                },
+                {
+                  "site": "0x8e7e94",
+                  "target": "0xfa4130",
+                  "inferred_role": null
+                },
+                {
+                  "site": "0x8e7f04",
+                  "target": "0xfa4140",
+                  "inferred_role": null
+                },
+                {
+                  "site": "0x8e7f0c",
+                  "target": "0xfa4920",
+                  "inferred_role": null
+                }
+              ]
+            },
+            {
+              "slot": 14,
+              "address": "0x8e60c0",
+              "size": 1248,
+              "original_sha256": "aa263e49bf0d2e272dd5b3fe829b09d9f2a2b035d9cc33219250a23a04373456",
+              "inferred_role": "Move setup (inferred)",
+              "matched_source": null,
+              "direct_calls": [
+                {
+                  "site": "0x8e60dc",
+                  "target": "0x8e1690",
+                  "inferred_role": "ActorActionComponent setup (inferred)"
+                },
+                {
+                  "site": "0x8e6120",
+                  "target": "0x67edd0",
+                  "inferred_role": "Component handle resolution (inferred)"
+                },
+                {
+                  "site": "0x8e6170",
+                  "target": "0x67edd0",
+                  "inferred_role": "Component handle resolution (inferred)"
+                },
+                {
+                  "site": "0x8e6244",
+                  "target": "0x67edd0",
+                  "inferred_role": "Component handle resolution (inferred)"
+                },
+                {
+                  "site": "0x8e6274",
+                  "target": "0x85fd70",
+                  "inferred_role": "Apply position (inferred)"
+                },
+                {
+                  "site": "0x8e6300",
+                  "target": "0xfa4a20",
+                  "inferred_role": null
+                },
+                {
+                  "site": "0x8e63d0",
+                  "target": "0x67edd0",
+                  "inferred_role": "Component handle resolution (inferred)"
+                },
+                {
+                  "site": "0x8e6420",
+                  "target": "0x67edd0",
+                  "inferred_role": "Component handle resolution (inferred)"
+                },
+                {
+                  "site": "0x8e64f8",
+                  "target": "0x67edd0",
+                  "inferred_role": "Component handle resolution (inferred)"
+                },
+                {
+                  "site": "0x8e6548",
+                  "target": "0x67edd0",
+                  "inferred_role": "Component handle resolution (inferred)"
+                }
+              ]
+            },
+            {
+              "slot": 15,
+              "address": "0x8e1580",
+              "size": 272,
+              "original_sha256": "93ac058be603f96894360322954ee03c255ce96f53bb763958864f5d2a716731",
+              "inferred_role": null,
+              "matched_source": null,
+              "direct_calls": []
+            },
+            {
+              "slot": 16,
+              "address": "0xbcaa10",
+              "size": 32,
+              "original_sha256": "d5b34c29cd05a735c43157224f1144bc5a2a743e3be79a7b027ebaa821197f32",
+              "inferred_role": null,
+              "matched_source": null,
+              "direct_calls": [
+                {
+                  "site": "0xbcaa2c",
+                  "target": "0xfa4920",
+                  "inferred_role": null
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "build_config_sha256": "a4f51c12cef7f3c927f7d1664c257470a26b541c667d011d269e8a8f2bfc920d",
+  "player_dispatch": {
+    "class_name": "SPTG::ControllablePlayer",
+    "rtti": "0x1875500",
+    "vtable": "0x1873c70",
+    "slots": [
+      {
+        "vtable_offset": "0x60",
+        "inferred_role": "Type query",
+        "function": {
+          "slot": 12,
+          "address": "0x97aec0",
+          "size": 132,
+          "original_sha256": "1cb5340a1dc5f982ad4c2b753fb0d7fa116f6b0c18f9f03fefd2c6a9a1d7682d",
+          "inferred_role": null,
+          "matched_source": "src/IdentitySetRecovery.cpp",
+          "direct_calls": []
+        }
+      },
+      {
+        "vtable_offset": "0xb0",
+        "inferred_role": "Animation/state application",
+        "function": {
+          "slot": 22,
+          "address": "0x93f750",
+          "size": 772,
+          "original_sha256": "fc271ba376652b738790b59740300d16d0dfc2ae265b4a8a4038b2f0927739e9",
+          "inferred_role": null,
+          "matched_source": null,
+          "direct_calls": [
+            {
+              "site": "0x93f7a4",
+              "target": "0x67edd0",
+              "inferred_role": "Component handle resolution (inferred)"
+            },
+            {
+              "site": "0x93f844",
+              "target": "0x67edd0",
+              "inferred_role": "Component handle resolution (inferred)"
+            },
+            {
+              "site": "0x93f87c",
+              "target": "0x67edd0",
+              "inferred_role": "Component handle resolution (inferred)"
+            },
+            {
+              "site": "0x93f8cc",
+              "target": "0x67edd0",
+              "inferred_role": "Component handle resolution (inferred)"
+            },
+            {
+              "site": "0x93f924",
+              "target": "0x67edd0",
+              "inferred_role": "Component handle resolution (inferred)"
+            },
+            {
+              "site": "0x93f988",
+              "target": "0x67edd0",
+              "inferred_role": "Component handle resolution (inferred)"
+            },
+            {
+              "site": "0x93f9d4",
+              "target": "0x67edd0",
+              "inferred_role": "Component handle resolution (inferred)"
+            }
+          ]
+        }
+      },
+      {
+        "vtable_offset": "0xb8",
+        "inferred_role": "Animation/state request wrapper",
+        "function": {
+          "slot": 23,
+          "address": "0x96c780",
+          "size": 300,
+          "original_sha256": "b026bc7df9265ec269e3c334c7d486c68ebe702ab9ca8bc64fbddefbdcd5b4bc",
+          "inferred_role": null,
+          "matched_source": null,
+          "direct_calls": []
+        }
+      },
+      {
+        "vtable_offset": "0xd8",
+        "inferred_role": "Completion query forwarded to component at actor +0x70",
+        "function": {
+          "slot": 27,
+          "address": "0x93fc90",
+          "size": 92,
+          "original_sha256": "8b82c4ae4f06d0b45ba2cc619755b9ae3ccea4976fbd885ec8fab1867300d28c",
+          "inferred_role": null,
+          "matched_source": null,
+          "direct_calls": [
+            {
+              "site": "0x93fcbc",
+              "target": "0x67edd0",
+              "inferred_role": "Component handle resolution (inferred)"
+            }
+          ]
+        }
+      },
+      {
+        "vtable_offset": "0xf0",
+        "inferred_role": "Facing-related operation",
+        "function": {
+          "slot": 30,
+          "address": "0x97e4e0",
+          "size": 216,
+          "original_sha256": "61e8101f5af04a854d7621e2b4872472dce061c62870159eecc25c1d35fac5d6",
+          "inferred_role": null,
+          "matched_source": null,
+          "direct_calls": [
+            {
+              "site": "0x97e4ec",
+              "target": "0x96ca30",
+              "inferred_role": null
+            },
+            {
+              "site": "0x97e52c",
+              "target": "0x67edd0",
+              "inferred_role": "Component handle resolution (inferred)"
+            },
+            {
+              "site": "0x97e57c",
+              "target": "0x67edd0",
+              "inferred_role": "Component handle resolution (inferred)"
+            }
+          ]
+        }
+      },
+      {
+        "vtable_offset": "0x1a0",
+        "inferred_role": "Landing predicate",
+        "function": {
+          "slot": 52,
+          "address": "0x9415b0",
+          "size": 264,
+          "original_sha256": "5891b827e88865a42c29779b6208b9d29c85ab09dfc1b1c2bc713804cf3082e8",
+          "inferred_role": null,
+          "matched_source": null,
+          "direct_calls": [
+            {
+              "site": "0x9415f8",
+              "target": "0x67edd0",
+              "inferred_role": "Component handle resolution (inferred)"
+            },
+            {
+              "site": "0x941648",
+              "target": "0x67edd0",
+              "inferred_role": "Component handle resolution (inferred)"
+            }
+          ]
+        }
+      },
+      {
+        "vtable_offset": "0x750",
+        "inferred_role": "Action identity query A",
+        "function": {
+          "slot": 234,
+          "address": "0x98f460",
+          "size": 12,
+          "original_sha256": "a8251c9520d82271dff1f7cf1345a3ffc0506569f6e47a9653d18724a1c37093",
+          "inferred_role": null,
+          "matched_source": "src/AbiPairLeaf_pair_O2_omit.cpp",
+          "direct_calls": []
+        }
+      },
+      {
+        "vtable_offset": "0x790",
+        "inferred_role": "Action identity query B",
+        "function": {
+          "slot": 242,
+          "address": "0x98fdf0",
+          "size": 12,
+          "original_sha256": "0cbab88130d73ae4c1db17172c5d91d3585be568bc3461411fee9073e4bcb259",
+          "inferred_role": null,
+          "matched_source": "src/AbiPairLeaf_pair_O2_omit.cpp",
+          "direct_calls": []
+        }
+      }
+    ]
+  },
+  "limits": "Original RTTI confirms class names; role names are inferred. Tables stop at the first entry outside known FDE extents. Direct calls omit indirect virtual calls and tail branches."
+}

@@ -1,0 +1,13 @@
+{
+  "original_sha256": "ea95638e6d6aaa0dc6cddd552a9366799aa1ec3bc07ee201f23f6c151103f5b8",
+  "original_function": "0x8e8ab0",
+  "original_size": 788,
+  "source": "src/wip/ActorJumpPhaseModel.cpp",
+  "source_sha256": "a4afa648a682e46297da8d23a3bcb11ae03070803956331dd23b0a227afc267a",
+  "model_size": 348,
+  "passed_cases": 4224,
+  "negative_control_rejected": true,
+  "nan_negative_control_rejected": true,
+  "scope": "phase decisions with stubbed base update and virtual queries; warm static gates",
+  "exact_match_credit": false
+}
