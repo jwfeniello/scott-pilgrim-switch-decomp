@@ -1,0 +1,123 @@
+{
+  "original_sha256": "ea95638e6d6aaa0dc6cddd552a9366799aa1ec3bc07ee201f23f6c151103f5b8",
+  "components": [
+    {
+      "class_name": "Onyx::Transform",
+      "type_id": "0x22fe74a",
+      "rtti": "0x1843070",
+      "type_string": "0x1397f69",
+      "primary_vtable": "0x1843008",
+      "type_getter": {
+        "address": "0x68ec00",
+        "size": 12,
+        "sha256": "c7ef98a6790d74aaedb9b3472a4459b06d396b10966bd189f4d4b6ada23060e5"
+      }
+    },
+    {
+      "class_name": "SPTG::GraphicsObject",
+      "type_id": "0x2eae5813",
+      "rtti": "0x1864070",
+      "type_string": "0x14d82f4",
+      "primary_vtable": "0x1863f58",
+      "type_getter": {
+        "address": "0x8bae90",
+        "size": 12,
+        "sha256": "cdd6247fcc6691bb67f08f7a540e327fe587c21cb52d5ded10a5600845164b31"
+      }
+    }
+  ],
+  "player": {
+    "class_name": "SPTG::ControllablePlayer",
+    "primary_vtable": "0x1873c70",
+    "rtti": "0x1875500",
+    "type_string": "0x14e2d03",
+    "state_members": [
+      {
+        "getter_slot": "0x750",
+        "getter": {
+          "address": "0x98f460",
+          "size": 12,
+          "sha256": "a8251c9520d82271dff1f7cf1345a3ffc0506569f6e47a9653d18724a1c37093"
+        },
+        "member_pointer": [
+          "0x748",
+          "0x1"
+        ],
+        "handler_slot": "0x748",
+        "handler": {
+          "address": "0x98f270",
+          "size": 484,
+          "sha256": "9b74b6c200dfd30c4053375f3db79e259edfb8db2647e2815e3c63b53228efdd"
+        }
+      },
+      {
+        "getter_slot": "0x790",
+        "getter": {
+          "address": "0x98fdf0",
+          "size": 12,
+          "sha256": "0cbab88130d73ae4c1db17172c5d91d3585be568bc3461411fee9073e4bcb259"
+        },
+        "member_pointer": [
+          "0x788",
+          "0x1"
+        ],
+        "handler_slot": "0x788",
+        "handler": {
+          "address": "0x98f9d0",
+          "size": 1048,
+          "sha256": "199743df9211b557cc4322b4c4e406c067fccfa30edcaa55f35d98f1e1790b19"
+        }
+      }
+    ]
+  },
+  "request_remapping": [
+    {
+      "address": "0x1349240",
+      "ids": [
+        44,
+        43,
+        53,
+        54,
+        55,
+        56,
+        57,
+        42
+      ]
+    },
+    {
+      "address": "0x13490e0",
+      "ids": [
+        60,
+        59,
+        69,
+        70,
+        71,
+        72,
+        73,
+        58
+      ]
+    },
+    {
+      "address": "0x1349120",
+      "ids": [
+        100,
+        99,
+        109,
+        110,
+        111,
+        112,
+        113,
+        98
+      ]
+    }
+  ],
+  "unresolved": [
+    {
+      "type_id": "0x29fbe438",
+      "observed_component_slot": "actor+0x70",
+      "query_slot": "component vtable+0xa0",
+      "class_name": null
+    }
+  ],
+  "exact_credit": 0
+}

@@ -5,6 +5,12 @@ exact-matching percentage. Class names below come from original RTTI; method,
 field, and phase descriptions are inferred unless stated otherwise. Original ELF
 addresses are used throughout; this project's Ghidra instance adds `0x100000`.
 
+Follow-up: [action dependencies and state dispatch](ACTOR_ACTION_DEPENDENCIES.md)
+adds 7,133 bounded checks of shared lifecycle, remapping, landing, jump setup,
+and member-function state transitions. It identifies the Transform and
+GraphicsObject dependencies and resolves the generic identities into state
+member-function pointers. Exact coverage remains unchanged.
+
 ## Confirmed class structure
 
 Both `SPTG::ActorJumpAction` and `SPTG::ActorMoveAction` inherit through:
@@ -89,7 +95,7 @@ action is necessarily attached to this concrete class.
 | `+0xd8` | `0x93fc90` | Resolves actor's component handle at `+0x70`, type ID `0x29fbe438`, and forwards to its virtual `+0xa0` |
 | `+0x1a0` | `0x9415b0` | Landing-like predicate: compares actor integer `+0x144` to converted position Z, then tests vertical motion near zero or negative |
 | `+0xf0` | `0x97e4e0` | Facing-related operation used conditionally during jump setup; exact semantic name remains provisional |
-| `+0x750`, `+0x790` | `0x98f460`, `0x98fdf0` | Identity queries used by shared action setup/update |
+| `+0x750`, `+0x790` | `0x98f460`, `0x98fdf0` | State member-function pointer getters used by shared action setup/update |
 
 The wrapper's remapping is why the numeric phase requests should not yet be
 promoted to a universal actor-state enum. Resolving the component behind
@@ -112,13 +118,14 @@ actor[+0x1a8] = (action[+0xcc] - startY) / (2 * t * 60)
 This supports a jump-height/gravity/flight-duration interpretation and a
 60-based time conversion. It does not establish the full game's timestep.
 Flags at `+0xab`, `+0xac`, and `+0xad` affect start-position and facing choices.
-The setup arithmetic has been inspected, but has not yet received the bounded
-behavioral validation applied to the update decisions.
+The follow-up now checks setup arithmetic and facing decisions in 576 bounded
+fixtures. Its base lifecycle and position setter are stubbed for those fixtures;
+the shared lifecycle receives separate comparisons.
 
-The most useful next tasks are to reconstruct the shared action lifecycle,
-identify the component queried by `0x93fc90`, follow the `0x96c780` remapping,
-and test setup with actual position/grounding dependencies. These supply named,
-testable pieces for the much larger player update at `0x97af50`.
+The shared lifecycle and request remapping now have tested decision models.
+Next targets include the player state handlers at `0x98f270` and `0x98f9d0`,
+the component class queried by `0x93fc90`, and actual position/facing side effects.
+These supply named, testable pieces for the larger player update at `0x97af50`.
 
 Reproduce the evidence with a local original ELF and compiler:
 

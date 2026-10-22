@@ -30,6 +30,12 @@ readable jump-phase model passes 4,224 bounded comparisons with the original
 ARM64 update. This behavioral research receives no exact-match percentage and
 does not establish full-game execution.
 
+[Action dependencies and state dispatch](docs/ACTOR_ACTION_DEPENDENCIES.md)
+adds 7,133 bounded comparisons of shared lifecycle, player request remapping,
+landing, jump setup, and state transitions. RTTI identifies the Transform and
+GraphicsObject dependencies; member-function pointers connect actions to two
+specific player state handlers. These reconstructions also receive zero exact credit.
+
 ## Contributing
 
 **HUMAN AND AI-ASSISTED CONTRIBUTIONS ARE WELCOME.** Both follow the same
