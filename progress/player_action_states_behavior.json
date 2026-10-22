@@ -1,0 +1,47 @@
+{
+  "original_sha256": "ea95638e6d6aaa0dc6cddd552a9366799aa1ec3bc07ee201f23f6c151103f5b8",
+  "source": "src/wip/PlayerActionStates.cpp",
+  "source_sha256": "9e260b009c1c4aabf9431acbb646af6ab120494813df1bb95a6e6bf2327ce89c",
+  "passed_cases": {
+    "game_over": 1680,
+    "action_state": 18144
+  },
+  "negative_controls_rejected": [
+    "movie_gate",
+    "member_null",
+    "airborne",
+    "ownership"
+  ],
+  "exact_credit": 0,
+  "catalog_identity": {
+    "resolver_id": "0x0bf4a9b7",
+    "factory": "0x744c00",
+    "registration_slice": [
+      "0x646930",
+      "0x646958"
+    ],
+    "primary_vtable": "0x1889ab8",
+    "rtti": "0x1889b38",
+    "class_name": "SPTG::ControllablePlayerCatalog",
+    "caveat": "Allocator and base constructor stubbed; normal factory return only"
+  },
+  "original_functions": [
+    {
+      "address": "0x98f270",
+      "size": 484,
+      "sha256": "9b74b6c200dfd30c4053375f3db79e259edfb8db2647e2815e3c63b53228efdd"
+    },
+    {
+      "address": "0x98f9d0",
+      "size": 1048,
+      "sha256": "199743df9211b557cc4322b4c4e406c067fccfa30edcaa55f35d98f1e1790b19"
+    }
+  ],
+  "limitations": [
+    "Bounded stable catalog and component identities; external calls stubbed",
+    "No real movie execution, collision simulation, or concurrent reference updates",
+    "PlayfieldActor type query succeeds; required related actor exists",
+    "Static zero-vector guard preinitialized; exception paths excluded",
+    "Tracker chains contain at most one matching node; allocators deterministic"
+  ]
+}

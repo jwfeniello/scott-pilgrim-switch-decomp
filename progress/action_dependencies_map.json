@@ -24,6 +24,30 @@
         "size": 12,
         "sha256": "cdd6247fcc6691bb67f08f7a540e327fe587c21cb52d5ded10a5600845164b31"
       }
+    },
+    {
+      "class_name": "SPTG::ControllablePlayerCatalog",
+      "type_id": "0xd8ae596",
+      "rtti": "0x1889b38",
+      "type_string": "0x14e6740",
+      "primary_vtable": "0x1889ab8",
+      "type_getter": {
+        "address": "0x6c91b0",
+        "size": 12,
+        "sha256": "6ce46ba54ed657b04f02c322476055364ccb8915e3b0fe686ae48ecb6c2f1d54"
+      }
+    },
+    {
+      "class_name": "SPTG::PlayfieldActor",
+      "type_id": "0x21350526",
+      "rtti": "0x184eeb8",
+      "type_string": "0x14c8570",
+      "primary_vtable": "0x184ee48",
+      "type_getter": {
+        "address": "0x7b9260",
+        "size": 12,
+        "sha256": "6d3917de453932861f7fe2ea1c92eb9c7d50b1f52f232a0ae153aa79ce90a12e"
+      }
     }
   ],
   "player": {

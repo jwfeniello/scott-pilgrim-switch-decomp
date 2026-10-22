@@ -51,7 +51,9 @@ def main():
     components = []
     for name, readable, expected in [
             ('N4Onyx9TransformE', 'Onyx::Transform', 0x022fe74a),
-            ('N4SPTG14GraphicsObjectE', 'SPTG::GraphicsObject', 0x2eae5813)]:
+            ('N4SPTG14GraphicsObjectE', 'SPTG::GraphicsObject', 0x2eae5813),
+            ('N4SPTG25ControllablePlayerCatalogE', 'SPTG::ControllablePlayerCatalog', 0x0d8ae596),
+            ('N4SPTG14PlayfieldActorE', 'SPTG::PlayfieldActor', 0x21350526)]:
         table, rtti, string = vtable(name)
         getter = rel[table+0x58]
         require(constants(getter) == {0: expected}, 'Unexpected component type ID')

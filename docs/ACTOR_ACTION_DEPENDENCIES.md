@@ -74,6 +74,11 @@ The model assumes stable status and non-reentrant callbacks; the original
 re-reads fields after calls, so it must not be simplified blindly in a full port.
 These two state handlers are concrete next targets for gameplay reconstruction.
 
+Follow-up: [player state findings](PLAYER_ACTION_STATES.md) now reconstructs
+both handlers with 19,824 bounded comparisons, connecting the first to
+`GameOverMovie` coordination and the second to action-state motion/playfield
+changes and owned-handle cleanup. Their original method names remain unknown.
+
 ## Player request remapping
 
 Wrapper `0x96c780` (300 bytes) uses the related-actor handle at player `+0x238`.

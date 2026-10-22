@@ -36,6 +36,11 @@ landing, jump setup, and state transitions. RTTI identifies the Transform and
 GraphicsObject dependencies; member-function pointers connect actions to two
 specific player state handlers. These reconstructions also receive zero exact credit.
 
+[Player state findings](docs/PLAYER_ACTION_STATES.md) follows those handlers into
+game-over coordination and action-state entry/exit. Another 19,824 bounded checks
+validate movie-request gating, movement resets, playfield flags, and owned-handle
+cleanup. The original `GameOverMovie` literal and catalog RTTI anchor the interpretation.
+
 ## Contributing
 
 **HUMAN AND AI-ASSISTED CONTRIBUTIONS ARE WELCOME.** Both follow the same
