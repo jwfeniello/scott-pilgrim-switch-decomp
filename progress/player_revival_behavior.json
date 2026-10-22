@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "exact_match_credit": false,
+  "source_sha256": "641c13ec1ec134396ebf7fb25c15634afe9518fe0b9103f1ffd4f1635f26e695",
+  "original_sha256": "ea95638e6d6aaa0dc6cddd552a9366799aa1ec3bc07ee201f23f6c151103f5b8",
+  "recovery_function": {
+    "address": "0x98e420",
+    "size": 396,
+    "sha256": "9d58f28f15ae1850fdb8c9f3847c2885a8ff6d7e6c9fca10ab46b0b93417a05d",
+    "cases": 360
+  },
+  "revival_region": {
+    "containing_function": "0x98d710",
+    "size": 3324,
+    "sha256": "e36f980b7bbe95317a390720390ec10fc58f2822160d2d2534e50904e01fb039",
+    "entry": "0x98dd58",
+    "stops": [
+      "0x98e104",
+      "0x98db20"
+    ],
+    "cases": 753
+  },
+  "concrete_exclusion_query": {
+    "address": "0x96e4a0",
+    "cases": 7
+  },
+  "negative_controls_rejected": [
+    "reach_boundary",
+    "group",
+    "callback_counter",
+    "first_match",
+    "recovery_ready"
+  ],
+  "limits": [
+    "Region is not a whole-function reconstruction; live registers injected.",
+    "Stable catalog, identities, query results; at most two catalog entries in fixtures.",
+    "Event11 callback may change counter only; event19/20 effects and transition helper stubbed.",
+    "Resolver repairs missing handles/pointees; object initialization stubbed.",
+    "Recovery handler uses warm zero-vector guard and stubbed external virtual calls.",
+    "No original state, group, counter or restored-field names proven."
+  ]
+}

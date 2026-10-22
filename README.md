@@ -41,6 +41,11 @@ game-over coordination and action-state entry/exit. Another 19,824 bounded check
 validate movie-request gating, movement resets, playfield flags, and owned-handle
 cleanup. The original `GameOverMovie` literal and catalog RTTI anchor the interpretation.
 
+[Player revival](docs/PLAYER_REVIVAL.md) connects the downed countdown to a
+nearby-player recovery scan and the following animation/recovery state. Another
+1,120 bounded checks verify candidate ordering, callback-sensitive counters,
+spatial boundaries, and complete recovery-handler behavior; no exact credit.
+
 [Player connections](docs/PLAYER_CONNECTIONS.md) traces action exit, a game-over
 timer, collision-scan gating, and selected regions of the shared 13 KB player
 update. It adds 1,246 bounded comparisons, explicitly separating complete small
