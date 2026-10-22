@@ -1,0 +1,72 @@
+{
+  "original_sha256": "ea95638e6d6aaa0dc6cddd552a9366799aa1ec3bc07ee201f23f6c151103f5b8",
+  "source": "src/wip/PlayerConnections.cpp",
+  "source_sha256": "78ecaf11e4ccd87334d3c0f66021b03f33a25b916703dd8ee01991cc58f3afbd",
+  "passed_cases": {
+    "action_exit_full": 252,
+    "player_recovery_region": 7,
+    "game_over_timer_region": 120,
+    "delayed_transition_region": 72,
+    "playfield_gate_region": 27,
+    "animation_candidate_full": 768
+  },
+  "negative_controls_rejected": [
+    "exit_state",
+    "timer_boundary",
+    "delayed",
+    "collision",
+    "animation_bit"
+  ],
+  "exact_credit": 0,
+  "full_functions": [
+    {
+      "address": "0x8e1580",
+      "size": 272,
+      "sha256": "93ac058be603f96894360322954ee03c255ce96f53bb763958864f5d2a716731"
+    },
+    {
+      "address": "0x8cd9f0",
+      "size": 104,
+      "sha256": "e8829342261c08f237503354792ee057e194e984a245a5e354c0d284ee30950e"
+    }
+  ],
+  "regions": [
+    {
+      "start": "0x97b3b0",
+      "stops": [
+        "0x97b464"
+      ],
+      "containing_function": "0x97af50"
+    },
+    {
+      "start": "0x98d764",
+      "stops": [
+        "0x98d7a4",
+        "0x98db20"
+      ],
+      "containing_function": "0x98d710"
+    },
+    {
+      "start": "0x97c624",
+      "stops": [
+        "0x97c6b8"
+      ],
+      "containing_function": "0x97af50"
+    },
+    {
+      "start": "0x7b1180",
+      "stops": [
+        "0x7b11a0",
+        "0x7b1458"
+      ],
+      "containing_function": "0x7af970"
+    }
+  ],
+  "limitations": [
+    "Interior regions start with injected live registers and stop before downstream behavior",
+    "State transition helper and component resolution are deterministic stubs",
+    "Collision mode queries return stable values; no full collision simulation",
+    "AnimationInfoHolderSwitch implementation tested; binding to resolver 0x29fbe438 is unproven",
+    "No complete large player-update reconstruction or new exact matches"
+  ]
+}

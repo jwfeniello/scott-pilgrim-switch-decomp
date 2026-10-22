@@ -41,6 +41,12 @@ game-over coordination and action-state entry/exit. Another 19,824 bounded check
 validate movie-request gating, movement resets, playfield flags, and owned-handle
 cleanup. The original `GameOverMovie` literal and catalog RTTI anchor the interpretation.
 
+[Player connections](docs/PLAYER_CONNECTIONS.md) traces action exit, a game-over
+timer, collision-scan gating, and selected regions of the shared 13 KB player
+update. It adds 1,246 bounded comparisons, explicitly separating complete small
+functions from interior-region checks. Animation readiness has a tested candidate
+implementation; its player-side binding remains unproven.
+
 ## Contributing
 
 **HUMAN AND AI-ASSISTED CONTRIBUTIONS ARE WELCOME.** Both follow the same

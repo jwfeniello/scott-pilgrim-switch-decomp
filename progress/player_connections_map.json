@@ -1,0 +1,873 @@
+{
+  "original_sha256": "ea95638e6d6aaa0dc6cddd552a9366799aa1ec3bc07ee201f23f6c151103f5b8",
+  "exact_credit": 0,
+  "player_update": {
+    "address": "0x97af50",
+    "size": 13032,
+    "sha256": "6ce9f0ee30991bfca37bf10bd22b2108740afe6dadd555eb9b6778dd0dce445f"
+  },
+  "collision_solver": {
+    "address": "0x7af970",
+    "size": 8328,
+    "sha256": "0d391272a68d16945e7627c7c43e13332c072a9a49517d948c1ea6749eefcea1"
+  },
+  "virtual_owners": [
+    {
+      "type_name": "N4SPTG24PlayfieldCollisionSolverE",
+      "rtti": "0x184e818",
+      "primary_vtable": "0x184e798",
+      "slot": "0x70",
+      "target": "0x7af970"
+    },
+    {
+      "type_name": "N4SPTG19ControllableWallaceE",
+      "rtti": "0x1875638",
+      "primary_vtable": "0x1873450",
+      "slot": "0x68",
+      "target": "0x97af50"
+    },
+    {
+      "type_name": "N4SPTG18ControllablePlayerE",
+      "rtti": "0x1875500",
+      "primary_vtable": "0x1873c70",
+      "slot": "0x68",
+      "target": "0x97af50"
+    },
+    {
+      "type_name": "N4SPTG19ControllableStephenE",
+      "rtti": "0x1875e88",
+      "primary_vtable": "0x1875678",
+      "slot": "0x68",
+      "target": "0x97af50"
+    },
+    {
+      "type_name": "N4SPTG17ControllableScottE",
+      "rtti": "0x18766c0",
+      "primary_vtable": "0x1875eb0",
+      "slot": "0x68",
+      "target": "0x97af50"
+    },
+    {
+      "type_name": "N4SPTG18ControllableRamonaE",
+      "rtti": "0x1876ef8",
+      "primary_vtable": "0x18766e8",
+      "slot": "0x68",
+      "target": "0x97af50"
+    },
+    {
+      "type_name": "N4SPTG21ControllableNegaScottE",
+      "rtti": "0x1877730",
+      "primary_vtable": "0x1876f20",
+      "slot": "0x68",
+      "target": "0x97af50"
+    },
+    {
+      "type_name": "N4SPTG18ControllableKnivesE",
+      "rtti": "0x1877fc0",
+      "primary_vtable": "0x18777a0",
+      "slot": "0x68",
+      "target": "0x97af50"
+    },
+    {
+      "type_name": "N4SPTG15ControllableKimE",
+      "rtti": "0x1878840",
+      "primary_vtable": "0x1878030",
+      "slot": "0x68",
+      "target": "0x97af50"
+    }
+  ],
+  "player_state_getters": [
+    {
+      "slot": "0x308",
+      "getter": {
+        "address": "0x980d70",
+        "size": 12,
+        "sha256": "8ba1d731fcbb4009ca81cfaaedb08165a3f81a007bde15ac4fc0d77757ff7902"
+      },
+      "member_pointer": [
+        "0x300",
+        "0x1"
+      ],
+      "handler": {
+        "address": "0x980a50",
+        "size": 800,
+        "sha256": "309ad6069c4ed5a8f3a592b436d79d4eb8ccd958e8de5f839004015cb6a2410f"
+      }
+    },
+    {
+      "slot": "0x730",
+      "getter": {
+        "address": "0x98ece0",
+        "size": 12,
+        "sha256": "17bec775ea478e81c7ef083a0eceb05bed90265915f7781eef62844386b0da14"
+      },
+      "member_pointer": [
+        "0x728",
+        "0x1"
+      ],
+      "handler": {
+        "address": "0x98e5c0",
+        "size": 1812,
+        "sha256": "c7785c8b5295c541d9685f89eaf86f50f6f972cebe61861b13f49df865f527fa"
+      }
+    },
+    {
+      "slot": "0x750",
+      "getter": {
+        "address": "0x98f460",
+        "size": 12,
+        "sha256": "a8251c9520d82271dff1f7cf1345a3ffc0506569f6e47a9653d18724a1c37093"
+      },
+      "member_pointer": [
+        "0x748",
+        "0x1"
+      ],
+      "handler": {
+        "address": "0x98f270",
+        "size": 484,
+        "sha256": "9b74b6c200dfd30c4053375f3db79e259edfb8db2647e2815e3c63b53228efdd"
+      }
+    },
+    {
+      "slot": "0x760",
+      "getter": {
+        "address": "0x98f6f0",
+        "size": 12,
+        "sha256": "f4ff05d9435f0bf64176c93d82084bb7c5929d4435fec78ed5dcb92fe81dbc5b"
+      },
+      "member_pointer": [
+        "0x758",
+        "0x1"
+      ],
+      "handler": {
+        "address": "0x98f470",
+        "size": 640,
+        "sha256": "5ede9f100c09055d9b3cbe660da94015f407d3ad6390b7a4b3715792abce257b"
+      }
+    },
+    {
+      "slot": "0x790",
+      "getter": {
+        "address": "0x98fdf0",
+        "size": 12,
+        "sha256": "0cbab88130d73ae4c1db17172c5d91d3585be568bc3461411fee9073e4bcb259"
+      },
+      "member_pointer": [
+        "0x788",
+        "0x1"
+      ],
+      "handler": {
+        "address": "0x98f9d0",
+        "size": 1048,
+        "sha256": "199743df9211b557cc4322b4c4e406c067fccfa30edcaa55f35d98f1e1790b19"
+      }
+    }
+  ],
+  "direct_call_sites": [
+    {
+      "site": "0x97af8c",
+      "target": "0x78c910"
+    },
+    {
+      "site": "0x97afb0",
+      "target": "0x770d70"
+    },
+    {
+      "site": "0x97b00c",
+      "target": "0xa972b0"
+    },
+    {
+      "site": "0x97b044",
+      "target": "0x7725e0"
+    },
+    {
+      "site": "0x97b070",
+      "target": "0x67edd0"
+    },
+    {
+      "site": "0x97b0d4",
+      "target": "0xa82b30"
+    },
+    {
+      "site": "0x97b170",
+      "target": "0x67edd0"
+    },
+    {
+      "site": "0x97b1d0",
+      "target": "0x67edd0"
+    },
+    {
+      "site": "0x97b20c",
+      "target": "0x67edd0"
+    },
+    {
+      "site": "0x97b298",
+      "target": "0xbf6e80"
+    },
+    {
+      "site": "0x97b2f4",
+      "target": "0x67edd0"
+    },
+    {
+      "site": "0x97b384",
+      "target": "0xbf6e80"
+    },
+    {
+      "site": "0x97b460",
+      "target": "0x812930"
+    },
+    {
+      "site": "0x97b468",
+      "target": "0x9965f0"
+    },
+    {
+      "site": "0x97b498",
+      "target": "0x774810"
+    },
+    {
+      "site": "0x97b4d0",
+      "target": "0xfa3b00"
+    },
+    {
+      "site": "0x97b510",
+      "target": "0x7725e0"
+    },
+    {
+      "site": "0x97b53c",
+      "target": "0x67edd0"
+    },
+    {
+      "site": "0x97b5b8",
+      "target": "0xfa3b00"
+    },
+    {
+      "site": "0x97b66c",
+      "target": "0x92b010"
+    },
+    {
+      "site": "0x97b684",
+      "target": "0x774b50"
+    },
+    {
+      "site": "0x97b950",
+      "target": "0xfa3b00"
+    },
+    {
+      "site": "0x97b980",
+      "target": "0x995d50"
+    },
+    {
+      "site": "0x97b9c0",
+      "target": "0x67edd0"
+    },
+    {
+      "site": "0x97bb38",
+      "target": "0x67edd0"
+    },
+    {
+      "site": "0x97bb8c",
+      "target": "0x67edd0"
+    },
+    {
+      "site": "0x97bbd8",
+      "target": "0x67edd0"
+    },
+    {
+      "site": "0x97bc34",
+      "target": "0x67edd0"
+    },
+    {
+      "site": "0x97bcb8",
+      "target": "0x812930"
+    },
+    {
+      "site": "0x97bdf0",
+      "target": "0x945670"
+    },
+    {
+      "site": "0x97bf8c",
+      "target": "0x67edd0"
+    },
+    {
+      "site": "0x97bfe0",
+      "target": "0x67edd0"
+    },
+    {
+      "site": "0x97c178",
+      "target": "0x774b50"
+    },
+    {
+      "site": "0x97c1a4",
+      "target": "0x67edd0"
+    },
+    {
+      "site": "0x97c1f8",
+      "target": "0x67edd0"
+    },
+    {
+      "site": "0x97c244",
+      "target": "0x67edd0"
+    },
+    {
+      "site": "0x97c294",
+      "target": "0x67edd0"
+    },
+    {
+      "site": "0x97c2c4",
+      "target": "0x774b50"
+    },
+    {
+      "site": "0x97c2f0",
+      "target": "0x67edd0"
+    },
+    {
+      "site": "0x97c344",
+      "target": "0x67edd0"
+    },
+    {
+      "site": "0x97c404",
+      "target": "0x770d70"
+    },
+    {
+      "site": "0x97c440",
+      "target": "0x67edd0"
+    },
+    {
+      "site": "0x97c494",
+      "target": "0x67edd0"
+    },
+    {
+      "site": "0x97c6b4",
+      "target": "0x812930"
+    },
+    {
+      "site": "0x97c6bc",
+      "target": "0x770d70"
+    },
+    {
+      "site": "0x97c6d8",
+      "target": "0x774b50"
+    },
+    {
+      "site": "0x97c71c",
+      "target": "0x67edd0"
+    },
+    {
+      "site": "0x97c770",
+      "target": "0x67edd0"
+    },
+    {
+      "site": "0x97c820",
+      "target": "0x67edd0"
+    },
+    {
+      "site": "0x97c8c0",
+      "target": "0xbf6e80"
+    },
+    {
+      "site": "0x97c8d8",
+      "target": "0x67edd0"
+    },
+    {
+      "site": "0x97c95c",
+      "target": "0xbf6e80"
+    },
+    {
+      "site": "0x97c9f4",
+      "target": "0x78c910"
+    },
+    {
+      "site": "0x97ca00",
+      "target": "0x996ab0"
+    },
+    {
+      "site": "0x97ca1c",
+      "target": "0x78c910"
+    },
+    {
+      "site": "0x97ca28",
+      "target": "0x996ab0"
+    },
+    {
+      "site": "0x97cc00",
+      "target": "0x774b50"
+    },
+    {
+      "site": "0x97cc90",
+      "target": "0x996c30"
+    },
+    {
+      "site": "0x97ce48",
+      "target": "0x9969f0"
+    },
+    {
+      "site": "0x97ce7c",
+      "target": "0x6ea720"
+    },
+    {
+      "site": "0x97ce8c",
+      "target": "0xbfbce0"
+    },
+    {
+      "site": "0x97ceb8",
+      "target": "0x67edd0"
+    },
+    {
+      "site": "0x97cf84",
+      "target": "0xaaee30"
+    },
+    {
+      "site": "0x97cfa4",
+      "target": "0xa82b30"
+    },
+    {
+      "site": "0x97cfe4",
+      "target": "0xa82b30"
+    },
+    {
+      "site": "0x97d01c",
+      "target": "0x7a1880"
+    },
+    {
+      "site": "0x97d0f8",
+      "target": "0x67edd0"
+    },
+    {
+      "site": "0x97d14c",
+      "target": "0x67edd0"
+    },
+    {
+      "site": "0x97d174",
+      "target": "0x7725e0"
+    },
+    {
+      "site": "0x97d1ac",
+      "target": "0x67edd0"
+    },
+    {
+      "site": "0x97d238",
+      "target": "0x67edd0"
+    },
+    {
+      "site": "0x97d288",
+      "target": "0x67edd0"
+    },
+    {
+      "site": "0x97d344",
+      "target": "0x67edd0"
+    },
+    {
+      "site": "0x97d380",
+      "target": "0x8ad6a0"
+    },
+    {
+      "site": "0x97d3c4",
+      "target": "0x774b50"
+    },
+    {
+      "site": "0x97d3f0",
+      "target": "0x67edd0"
+    },
+    {
+      "site": "0x97d434",
+      "target": "0x68b890"
+    },
+    {
+      "site": "0x97d4b8",
+      "target": "0xa82b30"
+    },
+    {
+      "site": "0x97d5d4",
+      "target": "0x67edd0"
+    },
+    {
+      "site": "0x97d650",
+      "target": "0x67edd0"
+    },
+    {
+      "site": "0x97d698",
+      "target": "0x68f3b0"
+    },
+    {
+      "site": "0x97d770",
+      "target": "0xa82b30"
+    },
+    {
+      "site": "0x97d7bc",
+      "target": "0xa82b30"
+    },
+    {
+      "site": "0x97d808",
+      "target": "0xa82b30"
+    },
+    {
+      "site": "0x97d910",
+      "target": "0xfa3330"
+    },
+    {
+      "site": "0x97d924",
+      "target": "0xfa3330"
+    },
+    {
+      "site": "0x97da50",
+      "target": "0xfa3330"
+    },
+    {
+      "site": "0x97da6c",
+      "target": "0xfa3330"
+    },
+    {
+      "site": "0x97db8c",
+      "target": "0xfa3330"
+    },
+    {
+      "site": "0x97dba4",
+      "target": "0xfa3330"
+    },
+    {
+      "site": "0x97dc24",
+      "target": "0x80a560"
+    },
+    {
+      "site": "0x97dd3c",
+      "target": "0xfa3330"
+    },
+    {
+      "site": "0x97dd54",
+      "target": "0xfa3330"
+    },
+    {
+      "site": "0x97de44",
+      "target": "0xf97f00"
+    },
+    {
+      "site": "0x97de7c",
+      "target": "0xa82b30"
+    },
+    {
+      "site": "0x97dec8",
+      "target": "0xa82b30"
+    },
+    {
+      "site": "0x97defc",
+      "target": "0xfa4130"
+    },
+    {
+      "site": "0x97df6c",
+      "target": "0xfa4140"
+    },
+    {
+      "site": "0x97df7c",
+      "target": "0xfa4130"
+    },
+    {
+      "site": "0x97dfec",
+      "target": "0xfa4140"
+    },
+    {
+      "site": "0x97dffc",
+      "target": "0xfa4130"
+    },
+    {
+      "site": "0x97e06c",
+      "target": "0xfa4140"
+    },
+    {
+      "site": "0x97e07c",
+      "target": "0xfa4130"
+    },
+    {
+      "site": "0x97e0ec",
+      "target": "0xfa4140"
+    },
+    {
+      "site": "0x97e0f4",
+      "target": "0x6768b8"
+    },
+    {
+      "site": "0x97e0f8",
+      "target": "0x6768b8"
+    },
+    {
+      "site": "0x97e100",
+      "target": "0x6768b8"
+    },
+    {
+      "site": "0x97e108",
+      "target": "0x6768b8"
+    },
+    {
+      "site": "0x97e10c",
+      "target": "0x6768b8"
+    },
+    {
+      "site": "0x97e110",
+      "target": "0x6768b8"
+    },
+    {
+      "site": "0x97e114",
+      "target": "0x6768b8"
+    },
+    {
+      "site": "0x97e158",
+      "target": "0xa82b30"
+    },
+    {
+      "site": "0x97e1a4",
+      "target": "0xa82b30"
+    },
+    {
+      "site": "0x97e1c8",
+      "target": "0xfa4920"
+    },
+    {
+      "site": "0x97e1cc",
+      "target": "0x6768b8"
+    },
+    {
+      "site": "0x97e1d0",
+      "target": "0x6768b8"
+    },
+    {
+      "site": "0x97e1f0",
+      "target": "0xa82b30"
+    },
+    {
+      "site": "0x97e224",
+      "target": "0x6768b8"
+    },
+    {
+      "site": "0x97e234",
+      "target": "0xfa4920"
+    }
+  ],
+  "direct_call_counts": [
+    {
+      "target": "0x67edd0",
+      "count": 35
+    },
+    {
+      "target": "0xa82b30",
+      "count": 12
+    },
+    {
+      "target": "0x6768b8",
+      "count": 10
+    },
+    {
+      "target": "0xfa3330",
+      "count": 8
+    },
+    {
+      "target": "0x774b50",
+      "count": 6
+    },
+    {
+      "target": "0xbf6e80",
+      "count": 4
+    },
+    {
+      "target": "0xfa4130",
+      "count": 4
+    },
+    {
+      "target": "0xfa4140",
+      "count": 4
+    },
+    {
+      "target": "0x770d70",
+      "count": 3
+    },
+    {
+      "target": "0x7725e0",
+      "count": 3
+    },
+    {
+      "target": "0x78c910",
+      "count": 3
+    },
+    {
+      "target": "0x812930",
+      "count": 3
+    },
+    {
+      "target": "0xfa3b00",
+      "count": 3
+    },
+    {
+      "target": "0x996ab0",
+      "count": 2
+    },
+    {
+      "target": "0xfa4920",
+      "count": 2
+    },
+    {
+      "target": "0x68b890",
+      "count": 1
+    },
+    {
+      "target": "0x68f3b0",
+      "count": 1
+    },
+    {
+      "target": "0x6ea720",
+      "count": 1
+    },
+    {
+      "target": "0x774810",
+      "count": 1
+    },
+    {
+      "target": "0x7a1880",
+      "count": 1
+    },
+    {
+      "target": "0x80a560",
+      "count": 1
+    },
+    {
+      "target": "0x8ad6a0",
+      "count": 1
+    },
+    {
+      "target": "0x92b010",
+      "count": 1
+    },
+    {
+      "target": "0x945670",
+      "count": 1
+    },
+    {
+      "target": "0x995d50",
+      "count": 1
+    },
+    {
+      "target": "0x9965f0",
+      "count": 1
+    },
+    {
+      "target": "0x9969f0",
+      "count": 1
+    },
+    {
+      "target": "0x996c30",
+      "count": 1
+    },
+    {
+      "target": "0xa972b0",
+      "count": 1
+    },
+    {
+      "target": "0xaaee30",
+      "count": 1
+    },
+    {
+      "target": "0xbfbce0",
+      "count": 1
+    },
+    {
+      "target": "0xf97f00",
+      "count": 1
+    }
+  ],
+  "player_hierarchy": [
+    {
+      "rtti": "0x1875500",
+      "type_name": "N4SPTG18ControllablePlayerE"
+    },
+    {
+      "rtti": "0x18753c8",
+      "type_name": "N4Onyx9Component7ComposeIN4SPTG13BaseCharacterENS_4Meta10CollectionINS0_10Dependency4WeakINS2_22MaterialModifierHolderENS4_4NullEEENS6_6StrongINS2_10PlayerInfoES9_EENS6_9SingletonINS2_21PersistentDataManagerES9_EENSE_INS2_21SelectedActorRecorderES9_EENSE_INS2_14FlashMenuPhaseES9_EENSE_INS2_12PauseHandlerES9_EENSE_INS_12Localization12LocalizationES9_EENSE_INS2_20GameStatisticsBureauES9_EENSE_INS2_15SwitchLevelGateES9_EENSE_INS2_12ItemRegistryES9_EENSE_INS2_9InGameHUDES9_EENSE_INS2_25WorldMapInformationBrokerES9_EEEEEE"
+    },
+    {
+      "rtti": "0x18753b0",
+      "type_name": "N4SPTG13BaseCharacterE"
+    },
+    {
+      "rtti": "0x1875110",
+      "type_name": "N4Onyx9Component7ComposeIN4SPTG15AnimatedAiActorENS_4Meta10CollectionINS0_10Dependency9SingletonINS2_16HudStatusManagerENS4_4NullEEENS7_INS2_18LevelSecretManagerES9_EENS7_INS2_25ControllableTextureLoaderES9_EENS6_4WeakINS2_22SpriteAnimationPrinterES9_EES9_S9_S9_S9_S9_S9_S9_S9_EEEE"
+    },
+    {
+      "rtti": "0x18709d8",
+      "type_name": "N4SPTG15AnimatedAiActorE"
+    },
+    {
+      "rtti": "0x18709c0",
+      "type_name": "N4Onyx9Component7ComposeIN4SPTG16SPTG_AIComponentENS_4Meta10CollectionINS0_10Dependency9SingletonINS2_17LevelItemAccessorENS4_4NullEEENS7_INS2_19LevelWindowAccessorES9_EENS7_INS2_14LevelAIManagerES9_EENS6_6StrongINS2_11ActorObjectES9_EENSF_INS2_19AnimationControllerES9_EENS6_7DynamicINS_11TrueTypedefINS2_15AnimatedAiActorENS2_34__ONYX_UniqueAnimatedAiActorMasterEEES9_EENSK_INSL_ISM_NS2_33__ONYX_UniqueAnimatedAiActorSlaveEEES9_EENS6_4WeakINS2_20ShadowAnimatedObjectES9_EES9_S9_S9_S9_EEEE"
+    },
+    {
+      "rtti": "0x185b200",
+      "type_name": "N4SPTG16SPTG_AIComponentE"
+    },
+    {
+      "rtti": "0x1848380",
+      "type_name": "N4Onyx9Component7ComposeINS_11AIComponentENS_4Meta4NullEEE"
+    },
+    {
+      "rtti": "0x18ab810",
+      "type_name": "N4Onyx11AIComponentE"
+    },
+    {
+      "rtti": "0x1841f48",
+      "type_name": "N4Onyx9Component7ComposeINS0_4BaseENS_4Meta4NullEEE"
+    },
+    {
+      "rtti": "0x1841e30",
+      "type_name": "N4Onyx9Component4BaseE"
+    }
+  ],
+  "animation_candidate": {
+    "class_name": "SPTG::AnimationInfoHolderSwitch",
+    "primary_vtable": "0x18663b0",
+    "rtti": "0x1866700",
+    "query": {
+      "address": "0x8cd9f0",
+      "size": 104,
+      "sha256": "e8829342261c08f237503354792ee057e194e984a245a5e354c0d284ee30950e"
+    },
+    "rate_setter": {
+      "address": "0x8cd980",
+      "size": 112,
+      "sha256": "2c174a5f965f24b71702626bde1167d67b54fe03b762dddedd5f3a0ff5151a2e"
+    },
+    "player_resolver_binding_proven": false
+  },
+  "reviewed_regions": [
+    {
+      "start": "0x97b10c",
+      "end": "0x97b134",
+      "role": "Signed countdown; zero enters reset path",
+      "evidence": "instruction inspection"
+    },
+    {
+      "start": "0x97b3b0",
+      "end": "0x97b464",
+      "role": "Recover action-selected state to getter +0x308",
+      "evidence": "bounded region comparisons"
+    },
+    {
+      "start": "0x97bc88",
+      "end": "0x97bcbc",
+      "role": "Store shifted input bits then transition through +0x760",
+      "evidence": "instruction inspection"
+    },
+    {
+      "start": "0x97c624",
+      "end": "0x97c6b8",
+      "role": "Accumulate timer and conditionally transition through +0x730 after >3",
+      "evidence": "bounded region comparisons"
+    },
+    {
+      "start": "0x97cc0c",
+      "end": "0x97cc94",
+      "role": "Action state suppresses a path to +0x2f0 and helper 0x996c30",
+      "evidence": "instruction inspection"
+    }
+  ],
+  "limitations": [
+    "Direct BL count is not a runtime profile or complete indirect call graph",
+    "Reviewed regions do not establish full function behavior",
+    "Animation candidate is not a proven binding for resolver ID 0x29fbe438"
+  ]
+}
