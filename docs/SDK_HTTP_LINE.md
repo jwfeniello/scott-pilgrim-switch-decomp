@@ -4,6 +4,9 @@
 as `ReadHttpLine`. Its caller at `0x85900` uses it before parsing response
 headers. The descriptive C++ name is reconstructed, not an original symbol.
 
+The [header parsers and response constructor](SDK_HTTP_RESPONSE.md) now have
+their own complete exact-match recipes.
+
 The input is a shared byte-buffer owner and an unsigned cursor. Buffer data
 is at offset 16 and its current size at offset 28. The routine retains a
 temporary owner while searching from the cursor for CRLF, releases it, then

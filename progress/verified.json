@@ -1,9 +1,9 @@
 {
   "version": 1,
-  "generated_at": "2026-10-23T10:50:23.881435+00:00",
+  "generated_at": "2026-10-23T11:02:25.627647+00:00",
   "target_elf_sha256": "ea95638e6d6aaa0dc6cddd552a9366799aa1ec3bc07ee201f23f6c151103f5b8",
   "input_sha256": {
-    "config/builds.json": "1631738c251e8880f08488abe414a792fb63ce64011688b3265fff79d2923a9f",
+    "config/builds.json": "38992a4f88aae3d441e1864c4fd30930c1d765617b3c7bf90e3e31c996a63237",
     "config/functions.tsv": "399e91468a04e0459194c10d68d2210d1157cedefeb19c7851886ca7632fcb18",
     "config/target.json": "23cc6a5227206a953e7668acf5e9ae5c02a25c23b7e7967f0450a814b888241a",
     "src/AbiCfg_aggregate_O2_omit.cpp": "55009ca4f1819fe53803025bf27b93a676c6137877b9d4492828e2e15c89307c",
@@ -635,7 +635,10 @@
     "src/SdkFrameBuild.cpp": "cb387cecd360a28e6b6f5c3d320fe23d4eaa8c2dccd1d77cec10a5d98f7caa82",
     "src/SdkFrameConsume.cpp": "0ea8fa71732750ce336118ae4fdbfd4f6ddfd4be7e13d5721ac6f7ad40fb2017",
     "src/SdkFrameHeader.cpp": "daa70dd8d65add121c107e2275bddd0092194370387a0997e72903a46137df19",
+    "src/SdkHttpHeaderLine.cpp": "2ee0e9b9b79d173dcb2fed702cef99f62e985801cf0c09b962a27364cfcd59f3",
+    "src/SdkHttpHeaders.cpp": "41c70524c0053abd3d02a502115355e7d16d0a415ae4ae7e0853901a3916c404",
     "src/SdkHttpLine.cpp": "5096da52abe3878b5c05edeefb84182e78bd2db88b61cd0bbca0a3e3add7a771",
+    "src/SdkHttpResponse.cpp": "b79cefe17f7e00ae881ef0e50a301cae67e06fbc2343377cfa3c145507482d0b",
     "src/SdkJson.cpp": "a4935f4d16aa0854610fe7a52d7d59ac674a7038a3a78bd2bbf0272434110a37",
     "src/SdkJsonBuffer.cpp": "c860abd082a874b98e79dbf20d2cc25568ed9e3ce84590f905cb02369988e4ce",
     "src/SdkJsonBufferFinalize.cpp": "d5efc109a8a64e33cacdaa306e52a16e899b173f4a58506acf954dfbc26ca63a",
@@ -2783,8 +2786,8 @@
     "8.0.1": "dffd62a213ec6cdb4430012a4a41c11e5e32c288f133d5391f9be49e1c5b69de",
     "7.0.1": "c2f0a175157d9aaace8031f8e6d7ea0ed6142b4bcef287105e3ed227301f1002"
   },
-  "exact_functions": 29954,
-  "exact_bytes": 2946652,
+  "exact_functions": 29959,
+  "exact_bytes": 2951256,
   "builds": [
     {
       "id": "probes",
@@ -10030,6 +10033,21 @@
       "id": "sdk_http_line",
       "compiler": "8.0.1",
       "object_sha256": "293b4c544bbfb0ef2a26bca5d65e7153ab23586990d7dfc19a284dfd40b9c972"
+    },
+    {
+      "id": "sdk_http_headers",
+      "compiler": "8.0.1",
+      "object_sha256": "ea0bb0a22b078c525bf2dca77c99e37159125248cc3402f21a290bbf87538f36"
+    },
+    {
+      "id": "sdk_http_header_line",
+      "compiler": "8.0.1",
+      "object_sha256": "9d280ea663b408441e0088a31081abeafc8954905c1d1d55b70f4a3cb527199b"
+    },
+    {
+      "id": "sdk_http_response",
+      "compiler": "8.0.1",
+      "object_sha256": "304d0e96d0c4f1bd68a3acd21a24a9c7d6fec07cd3c5f3bd6d91c4b2c45308ee"
     }
   ],
   "matches": [
@@ -11354,6 +11372,17 @@
       "relocation_count": 0
     },
     {
+      "address": "0x64c70",
+      "size": 620,
+      "exact": true,
+      "target_sha256": "15e26330a5e57c1527137bd0443c83a3ea30b6a855167043e46c81f980203caa",
+      "compiled_sha256": "15e26330a5e57c1527137bd0443c83a3ea30b6a855167043e46c81f980203caa",
+      "source": "src/SdkHttpHeaderLine.cpp",
+      "symbol": "ParseHeaderLine",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 10
+    },
+    {
       "address": "0x66b00",
       "size": 4,
       "exact": true,
@@ -12408,6 +12437,28 @@
       "symbol": "ReadHttpLine",
       "source_review": "manual_reconstruction",
       "relocation_count": 4
+    },
+    {
+      "address": "0x85270",
+      "size": 1680,
+      "exact": true,
+      "target_sha256": "2cff24f99addf46b7ce4933472d63b015e977742371e8b060c9ecfb22be5d6b2",
+      "compiled_sha256": "2cff24f99addf46b7ce4933472d63b015e977742371e8b060c9ecfb22be5d6b2",
+      "source": "src/SdkHttpHeaders.cpp",
+      "symbol": "ParseHeaderBlock",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 16
+    },
+    {
+      "address": "0x85900",
+      "size": 1952,
+      "exact": true,
+      "target_sha256": "3532d98fea870786f212056e75eb62409591060491515c275be0f06ed6b41f0a",
+      "compiled_sha256": "3532d98fea870786f212056e75eb62409591060491515c275be0f06ed6b41f0a",
+      "source": "src/SdkHttpResponse.cpp",
+      "symbol": "ConstructResponse",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 12
     },
     {
       "address": "0x88980",
@@ -15193,6 +15244,17 @@
       "relocation_count": 6
     },
     {
+      "address": "0x1622a0",
+      "size": 176,
+      "exact": true,
+      "target_sha256": "e355f7aade2ccbf4c18f45ee70b414740686993ae54e7b851a823d51b29df4e8",
+      "compiled_sha256": "e355f7aade2ccbf4c18f45ee70b414740686993ae54e7b851a823d51b29df4e8",
+      "source": "src/SdkHttpResponse.cpp",
+      "symbol": "_ZNSt3__16__treeINS_12__value_typeI4TextS2_EENS_19__map_value_compareIS2_S3_4LessLb1EEE22SimpleLibraryAllocatorIS3_Lj1EEE7destroyEPNS_11__tree_nodeIS3_PvEE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 3
+    },
+    {
       "address": "0x162350",
       "size": 112,
       "exact": true,
@@ -15323,6 +15385,17 @@
       "symbol": "RecoveredLeaf_163da0",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 1
+    },
+    {
+      "address": "0x163db0",
+      "size": 176,
+      "exact": true,
+      "target_sha256": "b5b64d142d5bd56e2e9d019450d6cc66b85271af24f7717ec2fba920aefbc0ba",
+      "compiled_sha256": "b5b64d142d5bd56e2e9d019450d6cc66b85271af24f7717ec2fba920aefbc0ba",
+      "source": "src/SdkHttpResponse.cpp",
+      "symbol": "_ZNSt3__16__treeINS_12__value_typeI4TextS2_EENS_19__map_value_compareIS2_S3_4LessLb1EEE22SimpleLibraryAllocatorIS3_Lj1EEE7destroyEPNS_11__tree_nodeIS3_PvEE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 3
     },
     {
       "address": "0x164490",
