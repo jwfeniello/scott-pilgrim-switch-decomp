@@ -415056,6 +415056,141 @@
           }
         }
       ]
+    },
+    {
+      "id": "sdk_json_constructors",
+      "source": "src/SdkJsonConstructors.cpp",
+      "source_review": "manual_reconstruction",
+      "compiler": "8.0.1",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-std=c++11",
+        "-D_GNU_SOURCE",
+        "-U_WIN32",
+        "-U_WIN64",
+        "-O2",
+        "-mcpu=cortex-a57",
+        "-fno-omit-frame-pointer",
+        "-fPIC",
+        "-fno-strict-aliasing",
+        "-fno-vectorize",
+        "-fno-slp-vectorize",
+        "-fno-exceptions",
+        "-nostdinc++",
+        "-isystem",
+        "vendor/llvm-libcxx-4/include",
+        "-isystem",
+        "vendor/musl/include",
+        "-isystem",
+        "vendor/musl/generated",
+        "-D_LIBCPP_HAS_NO_THREADS",
+        "-D_LIBCPP_HAS_MUSL_LIBC",
+        "-D__CLANG_MAX_ALIGN_T_DEFINED",
+        "-D_LIBCPP_DISABLE_VISIBILITY_ANNOTATIONS",
+        "-funwind-tables",
+        "-mllvm",
+        "-tail-dup-placement-threshold=2",
+        "-I",
+        "src",
+        "-I",
+        "vendor/rapidjson-1.1.0/include",
+        "-mgeneral-regs-only"
+      ],
+      "header_roots": [
+        "vendor/llvm-libcxx-4/include",
+        "vendor/musl/include",
+        "vendor/musl/generated",
+        "vendor/rapidjson-1.1.0/include"
+      ],
+      "functions": [
+        {
+          "address": "0x3ee00",
+          "size": 196,
+          "symbol": "CopyJsonView",
+          "target_sha256": "a902191dedc8637a0cdf07a77918d0220ccdff4776d9f35985ec3a5c6a31a1cf",
+          "bindings": {
+            "EngineAllocate": "0x36ea0"
+          },
+          "got_bindings": {
+            "JsonViewTable": {
+              "cell": "0x18ec808",
+              "pointee": "0x17c4368"
+            }
+          }
+        },
+        {
+          "address": "0x3efe0",
+          "size": 968,
+          "symbol": "DeepCopyJsonView",
+          "target_sha256": "96e72f31437a9492bd025fcd1da972ec87665903091879f86d310bbbc69dd6d8",
+          "bindings": {
+            "EngineAllocate": "0x36ea0",
+            "_Znwm": "0xfa3b30",
+            "CopyValue": "0x44de0",
+            "EngineFree": "0x37030",
+            "_ZN4TextC1EPKc": "0x7e7e0",
+            "_ZN8JsonViewC1ERK4Text": "0x3ebb0"
+          },
+          "got_bindings": {
+            "_ZTV8JsonRoot": {
+              "cell": "0x18ec820",
+              "pointee": "0x17c4390"
+            },
+            "JsonViewTable": {
+              "cell": "0x18ec808",
+              "pointee": "0x17c4368"
+            }
+          },
+          "literals": {
+            "7b7d00": "0x12f6a83"
+          }
+        },
+        {
+          "address": "0x3e9d0",
+          "size": 476,
+          "symbol": "JsonFromChars",
+          "target_sha256": "60370368a7a2216e9ebbc5cb3cfbbbea5bc1faf86f9b358cdd03ca35dd8b1f85",
+          "bindings": {
+            "EngineAllocate": "0x36ea0",
+            "_Znwm": "0xfa3b30",
+            "NormalizeJsonText": "0x3e580",
+            "ParseDocument": "0x16c4d0"
+          },
+          "got_bindings": {
+            "JsonViewTable": {
+              "cell": "0x18ec808",
+              "pointee": "0x17c4368"
+            },
+            "_ZTV8JsonRoot": {
+              "cell": "0x18ec820",
+              "pointee": "0x17c4390"
+            }
+          }
+        },
+        {
+          "address": "0x3ebb0",
+          "size": 532,
+          "symbol": "JsonFromText",
+          "target_sha256": "23ae3af9581e5f618ad40fe1ad7a79b1f61193596b235e9ec63051ab68e5ecb5",
+          "bindings": {
+            "EngineAllocate": "0x36ea0",
+            "_Znwm": "0xfa3b30",
+            "NormalizeJsonText": "0x3e580",
+            "ParseDocument": "0x16c4d0"
+          },
+          "got_bindings": {
+            "JsonViewTable": {
+              "cell": "0x18ec808",
+              "pointee": "0x17c4368"
+            },
+            "_ZTV8JsonRoot": {
+              "cell": "0x18ec820",
+              "pointee": "0x17c4390"
+            }
+          }
+        }
+      ]
     }
   ]
 }

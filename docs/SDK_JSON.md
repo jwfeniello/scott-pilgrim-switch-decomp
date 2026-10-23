@@ -156,3 +156,31 @@ bindings and all instructions are checked by the exact verifier.
 
 Only the Json class identity is established by RTTI here. Names and types
 for the shared-root and owner internals remain reconstructed ABI views.
+
+## Construction and deep copying
+
+`src/SdkJsonConstructors.cpp` reconstructs four complete functions:
+
+| Function | Address | Bytes | Behavior |
+| --- | --- | ---: | --- |
+| `CopyJsonView` | `0x3ee00` | 196 | Allocate an owner, retain the shared root, copy name/cursor |
+| `JsonFromChars` | `0x3e9d0` | 476 | Create a document and parse a non-null character pointer |
+| `JsonFromText` | `0x3ebb0` | 532 | Create a document and parse nonempty SDK text |
+| `DeepCopyJsonView` | `0x3efe0` | 968 | Create an independent root/document and copy the selected value |
+
+The names are descriptive. Parsing uses the external text-normalization and
+RapidJSON parsing routines, preserving their original call bindings. A
+successful parse selects the document as the view cursor; a parse error
+clears the cursor. Null input in the character-pointer overload and empty
+input in the SDK-text overload skip parsing.
+
+The deep-copy routine constructs an empty JSON object and clears the result
+cursor when the source has no selected value. Otherwise it allocates a new
+root, copies the source value through the existing `0x44de0` helper, preserves
+the source name pointer, and releases intermediate ownership references.
+
+Passing normalized text and temporary root ownership by value to inline
+helpers reproduces their lifetimes and stack slots. Separate return scopes
+preserve return-value construction without a shallow owner copy. An explicit
+copy constructor retains the shared root if copy elision is unavailable.
+All four functions are credited only after complete byte and binding checks.
