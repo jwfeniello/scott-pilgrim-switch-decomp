@@ -1,6 +1,6 @@
 # URI helpers used by the WebSocket handshake
 
-Five complete functions total 1,944 exact bytes with Clang8.0.1 O2,
+Six complete functions total 2,312 exact bytes with Clang8.0.1 O2,
 tail duplication threshold4. URI and field names are descriptive ABI views;
 no original class name or definition has been recovered for this object.
 
@@ -8,6 +8,7 @@ no original class name or definition has been recovered for this object.
 | --- | ---: | --- |
 | 0x73ee0 | 464 | SDK text slice wrapper, empty when position is at or beyond size |
 | 0x740b0 | 340 | Parse the URI port component with atoi; empty/missing gives zero |
+| 0x74a10 | 368 | Replace the query component through the URI reconstruction helper |
 | 0x74b80 | 116 | Append a NUL-terminated string to shared SDK text |
 | 0x74c00 | 124 | Same append, returning the destination pointer for chaining |
 | 0x74c80 | 900 | Build path plus optional parameters, query, and fragment |
@@ -35,3 +36,15 @@ store the request target at offset0x98, and choose a port at0xa0. Consequently
 the two bytes initially zeroed by its constructor are a port field, not
 confirmed independent flags. The parser0x73580/2400 and setup0x83890/2144
 remain unmatched.
+
+The query replacement wrapper retains two copies of the supplied shared text
+and initializes two indices to 7, but passes a replacement count of one to
+0x74210. Both temporary lifetimes are preserved. This is a reconstructed ABI
+view, not evidence of the original container type. The 2,040-byte URI
+reconstruction callee remains unmatched and receives no exact credit.
+
+A private reassembly candidate now compiles to 2,040 bytes, with two
+normalized instruction differences in the replacement-count guard. Passing
+the shared source owner and range table separately to the range-reading helper
+reproduces the original register allocation. This diagnostic proximity is not
+byte-match verification or a portable-behavior proof; no credit is assigned.

@@ -1,9 +1,9 @@
 {
   "version": 1,
-  "generated_at": "2026-10-23T09:09:39.404257+00:00",
+  "generated_at": "2026-10-23T09:26:17.564784+00:00",
   "target_elf_sha256": "ea95638e6d6aaa0dc6cddd552a9366799aa1ec3bc07ee201f23f6c151103f5b8",
   "input_sha256": {
-    "config/builds.json": "31903d883dbd204b84afcaa76b978d2da3cd7abec524424115cf0dfaf5bfd44b",
+    "config/builds.json": "21988e0b121d50e9c04ba168ae8fdecf74e125d8fa012738a6d03d8293a6966e",
     "config/functions.tsv": "399e91468a04e0459194c10d68d2210d1157cedefeb19c7851886ca7632fcb18",
     "config/target.json": "23cc6a5227206a953e7668acf5e9ae5c02a25c23b7e7967f0450a814b888241a",
     "src/AbiCfg_aggregate_O2_omit.cpp": "55009ca4f1819fe53803025bf27b93a676c6137877b9d4492828e2e15c89307c",
@@ -651,6 +651,7 @@
     "src/SdkTextSplit.cpp": "b200214d62ec6bf6a3824c2e3b2381945dabd36397c08baaeee4ceab6ebafd04",
     "src/SdkTextWrapping.cpp": "322fd2baad2f87357555c406d7d5503296be3e97267a6975144d3ae54e6f3d73",
     "src/SdkUri.cpp": "b82e1f3d058170b1285e9f358d6a6fdc7308bfb61f10be66b70538d7b838927a",
+    "src/SdkUriQuery.cpp": "b9d9dec6c270370731e81a22f578d1b6ac273e49c9d9348edb4cdf75de5abe6e",
     "src/SdkUriSlice.cpp": "c5923e889a3cf952b42f28e0aeca168453dd4463a8a146ab58effa3ccca00b1f",
     "src/SdkWebSocketHeaders.cpp": "a51f199b5bdef66882e49390a6dee26d56c3e998c035084a9fac2070be93befa",
     "src/SdkWideConversion.cpp": "6b909ec8466aacbe57647a331b23855120efd927798dced601c372266ecbbede",
@@ -2777,8 +2778,8 @@
     "8.0.1": "dffd62a213ec6cdb4430012a4a41c11e5e32c288f133d5391f9be49e1c5b69de",
     "7.0.1": "c2f0a175157d9aaace8031f8e6d7ea0ed6142b4bcef287105e3ed227301f1002"
   },
-  "exact_functions": 29948,
-  "exact_bytes": 2944000,
+  "exact_functions": 29949,
+  "exact_bytes": 2944368,
   "builds": [
     {
       "id": "probes",
@@ -9994,6 +9995,11 @@
       "id": "sdk_uri_slice",
       "compiler": "8.0.1",
       "object_sha256": "3fd57d01ad43440a9fe52f1a113df7fc38d9076c90b8194a565eac0dd3515e79"
+    },
+    {
+      "id": "sdk_uri_query",
+      "compiler": "8.0.1",
+      "object_sha256": "fc642e8e0b9ccfcec0d3bca30dc169ecb312dc1dfec12482bbb55c90d36e525d"
     }
   ],
   "matches": [
@@ -11503,6 +11509,17 @@
       "symbol": "ReadUriPort",
       "source_review": "manual_reconstruction",
       "relocation_count": 5
+    },
+    {
+      "address": "0x74a10",
+      "size": 368,
+      "exact": true,
+      "target_sha256": "bbee5734e342a87f366b3d2ce7f18762e35d12e4ae472c62b3b0b6a4b085f152",
+      "compiled_sha256": "bbee5734e342a87f366b3d2ce7f18762e35d12e4ae472c62b3b0b6a4b085f152",
+      "source": "src/SdkUriQuery.cpp",
+      "symbol": "ReplaceUriQuery",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 1
     },
     {
       "address": "0x74b80",
