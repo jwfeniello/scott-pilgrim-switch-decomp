@@ -414471,6 +414471,240 @@
           "got_bindings": {}
         }
       ]
+    },
+    {
+      "id": "sdk_json_o3_general",
+      "source": "src/SdkJson.cpp",
+      "source_review": "manual_reconstruction",
+      "compiler": "8.0.1",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-std=c++11",
+        "-D_GNU_SOURCE",
+        "-U_WIN32",
+        "-U_WIN64",
+        "-O3",
+        "-mcpu=cortex-a57",
+        "-fno-omit-frame-pointer",
+        "-fPIC",
+        "-fno-strict-aliasing",
+        "-fno-vectorize",
+        "-fno-slp-vectorize",
+        "-fno-exceptions",
+        "-nostdinc++",
+        "-isystem",
+        "vendor/llvm-libcxx-4/include",
+        "-isystem",
+        "vendor/musl/include",
+        "-isystem",
+        "vendor/musl/generated",
+        "-D_LIBCPP_HAS_NO_THREADS",
+        "-D_LIBCPP_HAS_MUSL_LIBC",
+        "-D__CLANG_MAX_ALIGN_T_DEFINED",
+        "-D_LIBCPP_DISABLE_VISIBILITY_ANNOTATIONS",
+        "-funwind-tables",
+        "-mllvm",
+        "-tail-dup-placement-threshold=2",
+        "-I",
+        "vendor/rapidjson-1.1.0/include",
+        "-mgeneral-regs-only",
+        "-DNO_FLOAT"
+      ],
+      "header_roots": [
+        "vendor/llvm-libcxx-4/include",
+        "vendor/musl/include",
+        "vendor/musl/generated",
+        "vendor/rapidjson-1.1.0/include"
+      ],
+      "functions": [
+        {
+          "address": "0x44ff0",
+          "size": 388,
+          "symbol": "AddSdkJsonMember",
+          "target_sha256": "025f2174a848d93c868ce12ba7ec71320df7b63eebd02ce448c2d356f8a357db",
+          "bindings": {
+            "EngineAllocate": "0x36ea0",
+            "memcpy": "0xfa3330",
+            "_ZN9rapidjson12GenericValueINS_4UTF8IcEE4PoolEC2IS3_EERKNS0_IS2_T_EERS3_": "0x44de0",
+            "_ZN9rapidjson12GenericValueINS_4UTF8IcEE4PoolE9AddMemberERS4_S5_RS3_": "0x42890"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x44890",
+          "size": 596,
+          "symbol": "SdkStringArrayToJson",
+          "target_sha256": "33c33b1e8bf1a13ad8d8831e6039b0eed1f0b9797f9d586cafbd556ac800229e",
+          "bindings": {
+            "_ZN4Pool7ReallocEPvmm": "0x16dc90",
+            "EngineAllocate": "0x36ea0",
+            "memcpy": "0xfa3330"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x445f0",
+          "size": 320,
+          "symbol": "SetSdkJsonCString",
+          "target_sha256": "ff50140dd47135d4ca161c8120542574cbb776af0b41359de9ec1d120f679844",
+          "bindings": {
+            "EngineAllocate": "0x36ea0",
+            "memcpy": "0xfa3330",
+            "_ZN12JsonDocument8SetValueERKN9rapidjson12GenericValueINS0_4UTF8IcEE4PoolEE": "0x44100"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x44550",
+          "size": 80,
+          "symbol": "SetSdkJsonInt",
+          "target_sha256": "4e9409eee718cfaf0f45da7f068b08f9b80f3663d99aa9ae3f10ad03147672ea",
+          "bindings": {
+            "_ZN12JsonDocument8SetValueERKN9rapidjson12GenericValueINS0_4UTF8IcEE4PoolEE": "0x44100"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x44730",
+          "size": 344,
+          "symbol": "SetSdkJsonText",
+          "target_sha256": "0d6dfc24d140e0e8e5bb25fc4d1ea966d7c5005ab91ec9b047c24d0dcc0c6653",
+          "bindings": {
+            "EngineAllocate": "0x36ea0",
+            "memcpy": "0xfa3330",
+            "_ZN12JsonDocument8SetValueERKN9rapidjson12GenericValueINS0_4UTF8IcEE4PoolEE": "0x44100"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x44100",
+          "size": 1092,
+          "symbol": "SetSdkJsonValue",
+          "target_sha256": "f1e1ef4dea41862c26909601682964a154ecac4af83ec80daff7ffabbe83a1e0",
+          "bindings": {
+            "memcmp": "0xfa3520",
+            "EngineAllocate": "0x36ea0",
+            "memcpy": "0xfa3330",
+            "_ZN9rapidjson12GenericValueINS_4UTF8IcEE4PoolE9AddMemberERS4_S5_RS3_": "0x42890"
+          },
+          "got_bindings": {
+            "_ZZN9rapidjson12GenericValueINS_4UTF8IcEE4PoolEixIS3_EERS4_RKNS0_IS2_T_EEE6buffer": {
+              "cell": "0x18ec830",
+              "pointee": "0x18ff6d0"
+            }
+          },
+          "literals": {
+            "00": "0x1326e41"
+          }
+        },
+        {
+          "address": "0x42890",
+          "size": 336,
+          "symbol": "_ZN9rapidjson12GenericValueINS_4UTF8IcEE4PoolE9AddMemberERS4_S5_RS3_",
+          "target_sha256": "bda04fa96efdc8c378f5b777ca7e2eced1272fc017a95befd8d2688919c71e24",
+          "bindings": {
+            "_ZN4Pool7ReallocEPvmm": "0x16dc90",
+            "EngineAllocate": "0x36ea0"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x44de0",
+          "size": 520,
+          "symbol": "_ZN9rapidjson12GenericValueINS_4UTF8IcEE4PoolEC2IS3_EERKNS0_IS2_T_EERS3_",
+          "target_sha256": "0ca5079091a6199bb822eba58831bb499b062d79ebc11f9850cf736268a46741",
+          "bindings": {
+            "_ZNK9rapidjson12GenericValueINS_4UTF8IcEE4PoolE6AcceptINS_15GenericDocumentIS2_S3_NS_12CrtAllocatorEEEEEbRT_": "0x172a10",
+            "EngineFree": "0x37030",
+            "_ZdlPv": "0xfa3b40",
+            "free": "0x631ec0",
+            "EngineAllocate": "0x36ea0",
+            "memcpy": "0xfa3330"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x173390",
+          "size": 276,
+          "symbol": "_ZN9rapidjson15GenericDocumentINS_4UTF8IcEE4PoolNS_12CrtAllocatorEE5Int64El",
+          "target_sha256": "51af0d593c2028e10ac3fb270ed0e5b8b700423398dc1166e8ef1d65c46703d0",
+          "bindings": {
+            "_Znwm": "0xfa3b30",
+            "realloc": "0x631f60",
+            "free": "0x631ec0"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x1734b0",
+          "size": 256,
+          "symbol": "_ZN9rapidjson15GenericDocumentINS_4UTF8IcEE4PoolNS_12CrtAllocatorEE6Uint64Em",
+          "target_sha256": "0b2d465920fcf4d6bac108c486aae90753d77cc73b64471a9a892e428a975b57",
+          "bindings": {
+            "_Znwm": "0xfa3b30",
+            "realloc": "0x631f60",
+            "free": "0x631ec0"
+          },
+          "got_bindings": {}
+        }
+      ]
+    },
+    {
+      "id": "sdk_json_o2_simd",
+      "source": "src/SdkJson.cpp",
+      "source_review": "manual_reconstruction",
+      "compiler": "8.0.1",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-std=c++11",
+        "-D_GNU_SOURCE",
+        "-U_WIN32",
+        "-U_WIN64",
+        "-O2",
+        "-mcpu=cortex-a57",
+        "-fno-omit-frame-pointer",
+        "-fPIC",
+        "-fno-strict-aliasing",
+        "-fno-vectorize",
+        "-fno-slp-vectorize",
+        "-fno-exceptions",
+        "-nostdinc++",
+        "-isystem",
+        "vendor/llvm-libcxx-4/include",
+        "-isystem",
+        "vendor/musl/include",
+        "-isystem",
+        "vendor/musl/generated",
+        "-D_LIBCPP_HAS_NO_THREADS",
+        "-D_LIBCPP_HAS_MUSL_LIBC",
+        "-D__CLANG_MAX_ALIGN_T_DEFINED",
+        "-D_LIBCPP_DISABLE_VISIBILITY_ANNOTATIONS",
+        "-funwind-tables",
+        "-mllvm",
+        "-tail-dup-placement-threshold=2",
+        "-I",
+        "vendor/rapidjson-1.1.0/include"
+      ],
+      "header_roots": [
+        "vendor/llvm-libcxx-4/include",
+        "vendor/musl/include",
+        "vendor/musl/generated",
+        "vendor/rapidjson-1.1.0/include"
+      ],
+      "functions": [
+        {
+          "address": "0x445a0",
+          "size": 68,
+          "symbol": "SetSdkJsonDouble",
+          "target_sha256": "50792b47d1ad0327c320598b70ffd8b52ad4052816dfb3e093deb79af4f0db44",
+          "bindings": {
+            "_ZN12JsonDocument8SetValueERKN9rapidjson12GenericValueINS0_4UTF8IcEE4PoolEE": "0x44100"
+          },
+          "got_bindings": {}
+        }
+      ]
     }
   ]
 }

@@ -142,3 +142,13 @@ and `-mllvm -tail-dup-placement-threshold=4`. Direct string indexing and a signe
 loop index reproduce the original register allocation; replacing indexing with
 `c_str()` access produced five differing instructions. Full-function verification,
 not that diagnostic count or the behavioral fixture, awards its exact credit.
+
+## Exact JSON dependencies
+
+[Recovered SDK JSON operations](SDK_JSON.md) now provide 11 complete matches,
+including the text setter, named-member assignment, and nested-value copying used
+by this handler. They also identify `JsonDocument` offset `0x20` as the parent
+value, `0x28` as allocated member-name storage, and `0x30` as the start of an
+inline member-name buffer. The provisional `flag`/`scratch` names in the response
+candidate should be interpreted using that evidence. The handler fixture has not
+yet been changed to execute these real JSON services.

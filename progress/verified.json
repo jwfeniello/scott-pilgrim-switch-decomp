@@ -1,9 +1,9 @@
 {
   "version": 1,
-  "generated_at": "2026-10-23T04:55:53.789392+00:00",
+  "generated_at": "2026-10-23T05:10:23.538113+00:00",
   "target_elf_sha256": "ea95638e6d6aaa0dc6cddd552a9366799aa1ec3bc07ee201f23f6c151103f5b8",
   "input_sha256": {
-    "config/builds.json": "b81d55874085b277cf980a213f26d2257329dc76fb46d24c62e1ec4472582bd9",
+    "config/builds.json": "38877e98cfe723bdc84e0567c313532e652ede4586e371ea2ace6484e9e7a486",
     "config/functions.tsv": "399e91468a04e0459194c10d68d2210d1157cedefeb19c7851886ca7632fcb18",
     "config/target.json": "23cc6a5227206a953e7668acf5e9ae5c02a25c23b7e7967f0450a814b888241a",
     "src/AbiCfg_aggregate_O2_omit.cpp": "55009ca4f1819fe53803025bf27b93a676c6137877b9d4492828e2e15c89307c",
@@ -625,6 +625,7 @@
     "src/ReferenceVectorDestructor.cpp": "ad016015e62453ab9ca83f41cd079e85d4567455d747f8c34ee3d8b2b29559a6",
     "src/ResultRecoveryOmit.cpp": "4ad2b8a8c10475c7451aea5a7e0efbd2064b552a6ef7daa14bf2f233386266f0",
     "src/SdkCompositeDestructor.cpp": "1fdca780939983f46d46f7eb2f3dc54172e08692973b6611dd9e87532f07cf2e",
+    "src/SdkJson.cpp": "a4935f4d16aa0854610fe7a52d7d59ac674a7038a3a78bd2bbf0272434110a37",
     "src/SdkOwnerNoBaseOwnerKeepPicUnwind.cpp": "f5b33c74fb068eda3471b1ccdb60accce71daf06bb9cc3c4c4a1068edf667e35",
     "src/SdkOwnerSimpleOwnerKeepPicUnwind.cpp": "8fc2b5afdba4f85a0404131c8b2fb269ec4ce96f7f37f2e73d9f742682950ea7",
     "src/SdkTextCompare.cpp": "835a2f72f2eef2c6d2dd1d5fdaf12b67099fd33361f7d35061fd6a8873fadafb",
@@ -2743,8 +2744,8 @@
     "8.0.1": "dffd62a213ec6cdb4430012a4a41c11e5e32c288f133d5391f9be49e1c5b69de",
     "7.0.1": "c2f0a175157d9aaace8031f8e6d7ea0ed6142b4bcef287105e3ed227301f1002"
   },
-  "exact_functions": 29888,
-  "exact_bytes": 2913008,
+  "exact_functions": 29899,
+  "exact_bytes": 2917284,
   "builds": [
     {
       "id": "probes",
@@ -9825,6 +9826,16 @@
       "id": "sdk_text_compare",
       "compiler": "8.0.1",
       "object_sha256": "a79643901e39744b9a99f7227f71752b4ade6a6a9d61a47a52ef53fe8f70243d"
+    },
+    {
+      "id": "sdk_json_o3_general",
+      "compiler": "8.0.1",
+      "object_sha256": "41502a29fac719e56ad7d3c3780df01edef8a694ac551028a7652abc1a9d1a0c"
+    },
+    {
+      "id": "sdk_json_o2_simd",
+      "compiler": "8.0.1",
+      "object_sha256": "b950ed11a644f21ba624a5e9d211dc00a7a1bb851d280d153962e91e54c0de98"
     }
   ],
   "matches": [
@@ -10115,6 +10126,17 @@
       "relocation_count": 2
     },
     {
+      "address": "0x42890",
+      "size": 336,
+      "exact": true,
+      "target_sha256": "bda04fa96efdc8c378f5b777ca7e2eced1272fc017a95befd8d2688919c71e24",
+      "compiled_sha256": "bda04fa96efdc8c378f5b777ca7e2eced1272fc017a95befd8d2688919c71e24",
+      "source": "src/SdkJson.cpp",
+      "symbol": "_ZN9rapidjson12GenericValueINS_4UTF8IcEE4PoolE9AddMemberERS4_S5_RS3_",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 2
+    },
+    {
       "address": "0x42bf0",
       "size": 12,
       "exact": true,
@@ -10124,6 +10146,94 @@
       "symbol": "RecoveredLeaf_42bf0",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 0
+    },
+    {
+      "address": "0x44100",
+      "size": 1092,
+      "exact": true,
+      "target_sha256": "f1e1ef4dea41862c26909601682964a154ecac4af83ec80daff7ffabbe83a1e0",
+      "compiled_sha256": "f1e1ef4dea41862c26909601682964a154ecac4af83ec80daff7ffabbe83a1e0",
+      "source": "src/SdkJson.cpp",
+      "symbol": "SetSdkJsonValue",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 15
+    },
+    {
+      "address": "0x44550",
+      "size": 80,
+      "exact": true,
+      "target_sha256": "4e9409eee718cfaf0f45da7f068b08f9b80f3663d99aa9ae3f10ad03147672ea",
+      "compiled_sha256": "4e9409eee718cfaf0f45da7f068b08f9b80f3663d99aa9ae3f10ad03147672ea",
+      "source": "src/SdkJson.cpp",
+      "symbol": "SetSdkJsonInt",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 1
+    },
+    {
+      "address": "0x445a0",
+      "size": 68,
+      "exact": true,
+      "target_sha256": "50792b47d1ad0327c320598b70ffd8b52ad4052816dfb3e093deb79af4f0db44",
+      "compiled_sha256": "50792b47d1ad0327c320598b70ffd8b52ad4052816dfb3e093deb79af4f0db44",
+      "source": "src/SdkJson.cpp",
+      "symbol": "SetSdkJsonDouble",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 1
+    },
+    {
+      "address": "0x445f0",
+      "size": 320,
+      "exact": true,
+      "target_sha256": "ff50140dd47135d4ca161c8120542574cbb776af0b41359de9ec1d120f679844",
+      "compiled_sha256": "ff50140dd47135d4ca161c8120542574cbb776af0b41359de9ec1d120f679844",
+      "source": "src/SdkJson.cpp",
+      "symbol": "SetSdkJsonCString",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 3
+    },
+    {
+      "address": "0x44730",
+      "size": 344,
+      "exact": true,
+      "target_sha256": "0d6dfc24d140e0e8e5bb25fc4d1ea966d7c5005ab91ec9b047c24d0dcc0c6653",
+      "compiled_sha256": "0d6dfc24d140e0e8e5bb25fc4d1ea966d7c5005ab91ec9b047c24d0dcc0c6653",
+      "source": "src/SdkJson.cpp",
+      "symbol": "SetSdkJsonText",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 3
+    },
+    {
+      "address": "0x44890",
+      "size": 596,
+      "exact": true,
+      "target_sha256": "33c33b1e8bf1a13ad8d8831e6039b0eed1f0b9797f9d586cafbd556ac800229e",
+      "compiled_sha256": "33c33b1e8bf1a13ad8d8831e6039b0eed1f0b9797f9d586cafbd556ac800229e",
+      "source": "src/SdkJson.cpp",
+      "symbol": "SdkStringArrayToJson",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 4
+    },
+    {
+      "address": "0x44de0",
+      "size": 520,
+      "exact": true,
+      "target_sha256": "0ca5079091a6199bb822eba58831bb499b062d79ebc11f9850cf736268a46741",
+      "compiled_sha256": "0ca5079091a6199bb822eba58831bb499b062d79ebc11f9850cf736268a46741",
+      "source": "src/SdkJson.cpp",
+      "symbol": "_ZN9rapidjson12GenericValueINS_4UTF8IcEE4PoolEC2IS3_EERKNS0_IS2_T_EERS3_",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 7
+    },
+    {
+      "address": "0x44ff0",
+      "size": 388,
+      "exact": true,
+      "target_sha256": "025f2174a848d93c868ce12ba7ec71320df7b63eebd02ce448c2d356f8a357db",
+      "compiled_sha256": "025f2174a848d93c868ce12ba7ec71320df7b63eebd02ce448c2d356f8a357db",
+      "source": "src/SdkJson.cpp",
+      "symbol": "AddSdkJsonMember",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 4
     },
     {
       "address": "0x45890",
@@ -15701,6 +15811,28 @@
       "symbol": "_ZN9rapidjson6WriterINS_19GenericStringBufferINS_4UTF8IcEE4PoolEES3_S3_S4_Lj0EE11WriteDoubleEd",
       "source_review": "library_abi_view",
       "relocation_count": 4
+    },
+    {
+      "address": "0x173390",
+      "size": 276,
+      "exact": true,
+      "target_sha256": "51af0d593c2028e10ac3fb270ed0e5b8b700423398dc1166e8ef1d65c46703d0",
+      "compiled_sha256": "51af0d593c2028e10ac3fb270ed0e5b8b700423398dc1166e8ef1d65c46703d0",
+      "source": "src/SdkJson.cpp",
+      "symbol": "_ZN9rapidjson15GenericDocumentINS_4UTF8IcEE4PoolNS_12CrtAllocatorEE5Int64El",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 3
+    },
+    {
+      "address": "0x1734b0",
+      "size": 256,
+      "exact": true,
+      "target_sha256": "0b2d465920fcf4d6bac108c486aae90753d77cc73b64471a9a892e428a975b57",
+      "compiled_sha256": "0b2d465920fcf4d6bac108c486aae90753d77cc73b64471a9a892e428a975b57",
+      "source": "src/SdkJson.cpp",
+      "symbol": "_ZN9rapidjson15GenericDocumentINS_4UTF8IcEE4PoolNS_12CrtAllocatorEE6Uint64Em",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 3
     },
     {
       "address": "0x174240",
