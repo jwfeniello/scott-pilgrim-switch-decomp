@@ -1,9 +1,9 @@
 {
   "version": 1,
-  "generated_at": "2026-10-23T06:59:37.767817+00:00",
+  "generated_at": "2026-10-23T07:11:59.814807+00:00",
   "target_elf_sha256": "ea95638e6d6aaa0dc6cddd552a9366799aa1ec3bc07ee201f23f6c151103f5b8",
   "input_sha256": {
-    "config/builds.json": "77781d44ad62708472e52522a6f0071f22f1434b880ef368c0fed67cb7476fcd",
+    "config/builds.json": "e33fb1e03986a1082d3538ba7d78fe4aa5a4aebf6a9e28c4dfb07945a18d8203",
     "config/functions.tsv": "399e91468a04e0459194c10d68d2210d1157cedefeb19c7851886ca7632fcb18",
     "config/target.json": "23cc6a5227206a953e7668acf5e9ae5c02a25c23b7e7967f0450a814b888241a",
     "src/AbiCfg_aggregate_O2_omit.cpp": "55009ca4f1819fe53803025bf27b93a676c6137877b9d4492828e2e15c89307c",
@@ -636,6 +636,7 @@
     "src/SdkOwnerNoBaseOwnerKeepPicUnwind.cpp": "f5b33c74fb068eda3471b1ccdb60accce71daf06bb9cc3c4c4a1068edf667e35",
     "src/SdkOwnerSimpleOwnerKeepPicUnwind.cpp": "8fc2b5afdba4f85a0404131c8b2fb269ec4ce96f7f37f2e73d9f742682950ea7",
     "src/SdkTextCompare.cpp": "835a2f72f2eef2c6d2dd1d5fdaf12b67099fd33361f7d35061fd6a8873fadafb",
+    "src/SdkTextConstructor.cpp": "6f434e50913b4998df643889bd61f20a33582f686e8419560894d7f3a15b83c3",
     "src/SharedCallbackConstruction.cpp": "fe897551395d63ff4ab7c40c9ce03c402cda8ef147698b4da58345674fd4a7f8",
     "src/SharedCountDestructor.cpp": "5fad9364c9a06ec0070a86becfd865267eadf0c6a53108037928482cf1630235",
     "src/SimdRecovery_abi_bytevector16_omit_direct.cpp": "566d3e9bd45d43c8419d7a2bce96efd4a07e03b1dccc21978346e41e38473129",
@@ -2751,8 +2752,8 @@
     "8.0.1": "dffd62a213ec6cdb4430012a4a41c11e5e32c288f133d5391f9be49e1c5b69de",
     "7.0.1": "c2f0a175157d9aaace8031f8e6d7ea0ed6142b4bcef287105e3ed227301f1002"
   },
-  "exact_functions": 29911,
-  "exact_bytes": 2921632,
+  "exact_functions": 29915,
+  "exact_bytes": 2923664,
   "builds": [
     {
       "id": "probes",
@@ -9878,6 +9879,11 @@
       "id": "sdk_json_buffer_finalize",
       "compiler": "8.0.1",
       "object_sha256": "1d0819b08f64519db1f5132d9d439ee1c9c25b01e4b321a9c976cedada1d6e9f"
+    },
+    {
+      "id": "sdk_text_constructor",
+      "compiler": "8.0.1",
+      "object_sha256": "99b8d6befdb187ab9046c98cf9bd65be5a71ed718783d1156e1e9ff935f7205d"
     }
   ],
   "matches": [
@@ -11772,6 +11778,50 @@
       "symbol": "CompareSdkText",
       "source_review": "manual_reconstruction",
       "relocation_count": 4
+    },
+    {
+      "address": "0x7e7e0",
+      "size": 448,
+      "exact": true,
+      "target_sha256": "7cac82741ea8668148871a6cbe84069a05c8edbcb87aec1c8ac0c1e4ef0dcf92",
+      "compiled_sha256": "7cac82741ea8668148871a6cbe84069a05c8edbcb87aec1c8ac0c1e4ef0dcf92",
+      "source": "src/SdkTextConstructor.cpp",
+      "symbol": "ConstructSdkText",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 10
+    },
+    {
+      "address": "0x7e9a0",
+      "size": 440,
+      "exact": true,
+      "target_sha256": "f1dab1abce6aa81f72a4358f539f1856d98c4364964787aac4be86c2f37bee98",
+      "compiled_sha256": "f1dab1abce6aa81f72a4358f539f1856d98c4364964787aac4be86c2f37bee98",
+      "source": "src/SdkTextConstructor.cpp",
+      "symbol": "ConstructSizedSdkText",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 9
+    },
+    {
+      "address": "0x7eb60",
+      "size": 576,
+      "exact": true,
+      "target_sha256": "38e0c797e1ab90b5929b20781ec29f2206a8c9e0a81b652210c41a5ff9bff1bd",
+      "compiled_sha256": "38e0c797e1ab90b5929b20781ec29f2206a8c9e0a81b652210c41a5ff9bff1bd",
+      "source": "src/SdkTextConstructor.cpp",
+      "symbol": "ConstructWideSdkText",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 14
+    },
+    {
+      "address": "0x7eda0",
+      "size": 568,
+      "exact": true,
+      "target_sha256": "2312d2a3aec802cc05c674b21990c8303cd68377ec1c5e5ecfc6890389e9ef13",
+      "compiled_sha256": "2312d2a3aec802cc05c674b21990c8303cd68377ec1c5e5ecfc6890389e9ef13",
+      "source": "src/SdkTextConstructor.cpp",
+      "symbol": "ConstructSizedWideSdkText",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 13
     },
     {
       "address": "0x7f310",

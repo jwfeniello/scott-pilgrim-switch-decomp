@@ -415254,6 +415254,142 @@
           "got_bindings": {}
         }
       ]
+    },
+    {
+      "id": "sdk_text_constructor",
+      "source": "src/SdkTextConstructor.cpp",
+      "source_review": "manual_reconstruction",
+      "compiler": "8.0.1",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-std=c++11",
+        "-D_GNU_SOURCE",
+        "-U_WIN32",
+        "-U_WIN64",
+        "-O2",
+        "-mcpu=cortex-a57",
+        "-fno-omit-frame-pointer",
+        "-fPIC",
+        "-fno-strict-aliasing",
+        "-fno-vectorize",
+        "-fno-slp-vectorize",
+        "-fno-exceptions",
+        "-nostdinc++",
+        "-isystem",
+        "vendor/llvm-libcxx-8/include",
+        "-isystem",
+        "vendor/musl/include",
+        "-isystem",
+        "vendor/musl/generated",
+        "-D_LIBCPP_HAS_NO_THREADS",
+        "-D_LIBCPP_HAS_MUSL_LIBC",
+        "-D__CLANG_MAX_ALIGN_T_DEFINED",
+        "-D_LIBCPP_DISABLE_VISIBILITY_ANNOTATIONS",
+        "-funwind-tables",
+        "-mllvm",
+        "-tail-dup-placement-threshold=2",
+        "-I",
+        "src",
+        "-I",
+        "vendor/rapidjson-1.1.0/include",
+        "-mgeneral-regs-only",
+        "-D__ELF__"
+      ],
+      "header_roots": [
+        "vendor/llvm-libcxx-8/include",
+        "vendor/musl/include",
+        "vendor/musl/generated",
+        "vendor/rapidjson-1.1.0/include"
+      ],
+      "functions": [
+        {
+          "address": "0x7e7e0",
+          "size": 448,
+          "symbol": "ConstructSdkText",
+          "target_sha256": "7cac82741ea8668148871a6cbe84069a05c8edbcb87aec1c8ac0c1e4ef0dcf92",
+          "bindings": {
+            "EngineAllocate": "0x36ea0",
+            "strlen": "0xfa3360",
+            "_ZN20SimpleLibraryBindingILj1EE8AllocateEjjjj": "0x36ea0",
+            "memcpy": "0xfa3330",
+            "_ZN20SimpleLibraryBindingILj2EE8AllocateEjjjj": "0x36ea0",
+            "_ZN20SimpleLibraryBindingILj1EE4FreeEPv": "0x37030",
+            "_ZNKSt3__121__basic_string_commonILb1EE20__throw_length_errorEv": "0xfa3b20"
+          },
+          "got_bindings": {
+            "_ZTV6Object": {
+              "cell": "0x18ec818",
+              "pointee": "0x17c51f0"
+            }
+          }
+        },
+        {
+          "address": "0x7e9a0",
+          "size": 440,
+          "symbol": "ConstructSizedSdkText",
+          "target_sha256": "f1dab1abce6aa81f72a4358f539f1856d98c4364964787aac4be86c2f37bee98",
+          "bindings": {
+            "EngineAllocate": "0x36ea0",
+            "_ZN20SimpleLibraryBindingILj1EE8AllocateEjjjj": "0x36ea0",
+            "memcpy": "0xfa3330",
+            "_ZN20SimpleLibraryBindingILj2EE8AllocateEjjjj": "0x36ea0",
+            "_ZN20SimpleLibraryBindingILj1EE4FreeEPv": "0x37030",
+            "_ZNKSt3__121__basic_string_commonILb1EE20__throw_length_errorEv": "0xfa3b20"
+          },
+          "got_bindings": {
+            "_ZTV6Object": {
+              "cell": "0x18ec818",
+              "pointee": "0x17c51f0"
+            }
+          }
+        },
+        {
+          "address": "0x7eb60",
+          "size": 576,
+          "symbol": "ConstructWideSdkText",
+          "target_sha256": "38e0c797e1ab90b5929b20781ec29f2206a8c9e0a81b652210c41a5ff9bff1bd",
+          "bindings": {
+            "EngineAllocate": "0x36ea0",
+            "wcslen": "0xfa3f30",
+            "_ZN20SimpleLibraryBindingILj1EE8AllocateEjjjj": "0x36ea0",
+            "wmemcpy": "0xfa3f40",
+            "ConvertWide": "0x81300",
+            "_ZN20SimpleLibraryBindingILj2EE8AllocateEjjjj": "0x36ea0",
+            "memcpy": "0xfa3330",
+            "_ZN20SimpleLibraryBindingILj1EE4FreeEPv": "0x37030",
+            "_ZNKSt3__121__basic_string_commonILb1EE20__throw_length_errorEv": "0xfa3b20"
+          },
+          "got_bindings": {
+            "_ZTV6Object": {
+              "cell": "0x18ec818",
+              "pointee": "0x17c51f0"
+            }
+          }
+        },
+        {
+          "address": "0x7eda0",
+          "size": 568,
+          "symbol": "ConstructSizedWideSdkText",
+          "target_sha256": "2312d2a3aec802cc05c674b21990c8303cd68377ec1c5e5ecfc6890389e9ef13",
+          "bindings": {
+            "EngineAllocate": "0x36ea0",
+            "_ZN20SimpleLibraryBindingILj1EE8AllocateEjjjj": "0x36ea0",
+            "wmemcpy": "0xfa3f40",
+            "ConvertWide": "0x81300",
+            "_ZN20SimpleLibraryBindingILj2EE8AllocateEjjjj": "0x36ea0",
+            "memcpy": "0xfa3330",
+            "_ZN20SimpleLibraryBindingILj1EE4FreeEPv": "0x37030",
+            "_ZNKSt3__121__basic_string_commonILb1EE20__throw_length_errorEv": "0xfa3b20"
+          },
+          "got_bindings": {
+            "_ZTV6Object": {
+              "cell": "0x18ec818",
+              "pointee": "0x17c51f0"
+            }
+          }
+        }
+      ]
     }
   ]
 }

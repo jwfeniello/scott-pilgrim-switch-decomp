@@ -199,3 +199,27 @@ short- and long-string copying paths, unlike the same-type copy constructor.
 Both allocator bindings resolve to the original engine allocator. This
 is evidence for a matching reconstruction, not proof of the original
 allocator class names or source declarations.
+
+## SDK string construction
+
+`SdkTextConstructor.cpp` reconstructs the complete 448-byte function at
+`0x7e7e0`. It allocates a 40-byte reference-counted string object, constructs
+a temporary string from a nullable character pointer, converts that string
+into the object's string member, and installs the object with an atomic
+reference increment and pointer exchange. Null input produces an empty string.
+The temporary string is destroyed after the object is installed.
+
+The original vtable binding identifies `ubiservices::String::InternalContent`
+through RTTI. The local `Object` and allocator names are provisional. Distinct
+allocator template types select the converting constructor that matches the
+original; this does not prove the original allocator class declarations.
+Clang 8.0.1 with libc++8 matches the full function and verified bindings.
+
+The same build also matches the length-specified character constructor at
+`0x7e9a0` (440 bytes), wide-character constructor at `0x7eb60` (576 bytes),
+and length-specified wide-character constructor at `0x7eda0` (568 bytes).
+The wide forms construct a temporary wide string, call the original conversion
+helper at `0x81300`, then initialize the reference-counted string object.
+The temporary wide string is passed by value to the construction helper; this
+preserves the original stack layout and destruction order. The conversion
+helper itself is still external to this reconstruction.
