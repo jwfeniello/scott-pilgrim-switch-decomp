@@ -416078,6 +416078,78 @@
           "got_bindings": {}
         }
       ]
+    },
+    {
+      "id": "sdk_wide_conversion",
+      "source": "src/SdkWideConversion.cpp",
+      "source_review": "manual_reconstruction",
+      "compiler": "8.0.1",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-std=c++11",
+        "-D_GNU_SOURCE",
+        "-U_WIN32",
+        "-U_WIN64",
+        "-O2",
+        "-mcpu=cortex-a57",
+        "-fno-omit-frame-pointer",
+        "-fPIC",
+        "-fno-strict-aliasing",
+        "-fno-vectorize",
+        "-fno-slp-vectorize",
+        "-fno-exceptions",
+        "-nostdinc++",
+        "-isystem",
+        "vendor/llvm-libcxx-8/include",
+        "-isystem",
+        "vendor/musl/include",
+        "-isystem",
+        "vendor/musl/generated",
+        "-D_LIBCPP_HAS_NO_THREADS",
+        "-D_LIBCPP_HAS_MUSL_LIBC",
+        "-D__CLANG_MAX_ALIGN_T_DEFINED",
+        "-D_LIBCPP_DISABLE_VISIBILITY_ANNOTATIONS",
+        "-funwind-tables",
+        "-mllvm",
+        "-tail-dup-placement-threshold=4",
+        "-I",
+        "src",
+        "-I",
+        "vendor/rapidjson-1.1.0/include",
+        "-mgeneral-regs-only",
+        "-D__ELF__"
+      ],
+      "header_roots": [
+        "vendor/llvm-libcxx-8/include",
+        "vendor/musl/include",
+        "vendor/musl/generated",
+        "vendor/rapidjson-1.1.0/include"
+      ],
+      "functions": [
+        {
+          "address": "0x81460",
+          "size": 672,
+          "symbol": "DecodeSdkWide",
+          "target_sha256": "a329f7a185f74a1c3bdad1535dc6ba643672f85ee06d1c0e42a2384ebad4eb9b",
+          "bindings": {
+            "_ZNSt3__112basic_stringIwNS_11char_traitsIwEE22SimpleLibraryAllocatorIwLj1EEE7reserveEm": "0x81700",
+            "_ZNSt3__112basic_stringIwNS_11char_traitsIwEE22SimpleLibraryAllocatorIwLj1EEE9__grow_byEmmmmmm": "0x17d0b0"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x81300",
+          "size": 340,
+          "symbol": "EncodeSdkWide",
+          "target_sha256": "79fe980784dfa07d762d5b5e94688eadb17b73debf4e1d56a029faa4b571d324",
+          "bindings": {
+            "ReserveBytes": "0x45890",
+            "AppendByte": "0x47b70"
+          },
+          "got_bindings": {}
+        }
+      ]
     }
   ]
 }

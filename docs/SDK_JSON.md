@@ -311,3 +311,20 @@ with the reconstructed SDK allocator binding. It matches `reserve` at `0x81700`
 (340 bytes) and `__grow_by` at `0x17d0b0` (308 bytes), including allocation,
 wide-character copying, deallocation, and length-error references. These are
 complete library functions, not matches for the higher-level byte decoder.
+
+## Wide/byte conversion
+
+`SdkWideConversion.cpp` matches the 340-byte encoder at `0x81300`, called by
+the wide-character string constructors, and the 672-byte decoder at `0x81460`.
+Both clear the destination first and return a success flag. Failure preserves
+the output already produced; no replacement character is inserted.
+
+The encoder emits one to three bytes for values below `0x10000` and rejects
+larger values. It does not reject surrogate values. The decoder handles ASCII,
+two-byte leads `0xC2..0xDF`, and three-byte leads `0xE0..0xEF`; other lead bytes
+cause failure. It uses the original arithmetic without validating continuation
+bytes or checking that the remaining input is long enough. These limitations
+are preserved as game behavior, not presented as a general-purpose Unicode API.
+
+Clang 8.0.1 O2 with libc++8 matches both complete functions and their external
+references. The separate six-byte legacy decoder at `0x81040` remains unmatched.
