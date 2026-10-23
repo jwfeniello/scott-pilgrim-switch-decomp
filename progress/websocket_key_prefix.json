@@ -1,0 +1,75 @@
+{
+  "cases": 12,
+  "original_sha256": "ea95638e6d6aaa0dc6cddd552a9366799aa1ec3bc07ee201f23f6c151103f5b8",
+  "exact_credit": false,
+  "boundary": "Original 0x824d0 entry through call to Base64 encoder; stops before encoder, not complete generator execution",
+  "findings": "Input bytes 8..15 equal little-endian incoming x24 saved at sp+0x40; bytes0..7 are two masked LCG values stored at sp+0x38",
+  "limits": [
+    "tick conversion and allocation synthetic",
+    "only selected representable time values",
+    "no source reconstruction or compiler matching claim",
+    "no claim about entropy or exploitability of callers"
+  ],
+  "observations": [
+    {
+      "nanoseconds": 0,
+      "incoming_x24": "0x0",
+      "encoder_input": "322950075ff36e0c0000000000000000"
+    },
+    {
+      "nanoseconds": 0,
+      "incoming_x24": "0x1122334455667788",
+      "encoder_input": "322950075ff36e0c8877665544332211"
+    },
+    {
+      "nanoseconds": 0,
+      "incoming_x24": "0xffffffffffffffff",
+      "encoder_input": "322950075ff36e0cffffffffffffffff"
+    },
+    {
+      "nanoseconds": 1000000,
+      "incoming_x24": "0x0",
+      "encoder_input": "db85880e6c59880c0000000000000000"
+    },
+    {
+      "nanoseconds": 1000000,
+      "incoming_x24": "0x1122334455667788",
+      "encoder_input": "db85880e6c59880c8877665544332211"
+    },
+    {
+      "nanoseconds": 1000000,
+      "incoming_x24": "0xffffffffffffffff",
+      "encoder_input": "db85880e6c59880cffffffffffffffff"
+    },
+    {
+      "nanoseconds": 1000000000,
+      "incoming_x24": "0x0",
+      "encoder_input": "5a1d7a0b2796a50f0000000000000000"
+    },
+    {
+      "nanoseconds": 1000000000,
+      "incoming_x24": "0x1122334455667788",
+      "encoder_input": "5a1d7a0b2796a50f8877665544332211"
+    },
+    {
+      "nanoseconds": 1000000000,
+      "incoming_x24": "0xffffffffffffffff",
+      "encoder_input": "5a1d7a0b2796a50fffffffffffffffff"
+    },
+    {
+      "nanoseconds": 17000000000,
+      "incoming_x24": "0x0",
+      "encoder_input": "da5f190ea7c20f030000000000000000"
+    },
+    {
+      "nanoseconds": 17000000000,
+      "incoming_x24": "0x1122334455667788",
+      "encoder_input": "da5f190ea7c20f038877665544332211"
+    },
+    {
+      "nanoseconds": 17000000000,
+      "incoming_x24": "0xffffffffffffffff",
+      "encoder_input": "da5f190ea7c20f03ffffffffffffffff"
+    }
+  ]
+}

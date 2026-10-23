@@ -416868,6 +416868,77 @@
           "got_bindings": {}
         }
       ]
+    },
+    {
+      "id": "sdk_base64",
+      "source": "src/SdkBase64.cpp",
+      "source_review": "manual_reconstruction",
+      "compiler": "8.0.1",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-std=c++11",
+        "-D_GNU_SOURCE",
+        "-U_WIN32",
+        "-U_WIN64",
+        "-O3",
+        "-mcpu=cortex-a57",
+        "-fno-omit-frame-pointer",
+        "-fPIC",
+        "-fno-strict-aliasing",
+        "-fno-vectorize",
+        "-fno-slp-vectorize",
+        "-fno-exceptions",
+        "-nostdinc++",
+        "-isystem",
+        "vendor/llvm-libcxx-8/include",
+        "-isystem",
+        "vendor/musl/include",
+        "-isystem",
+        "vendor/musl/generated",
+        "-D_LIBCPP_HAS_NO_THREADS",
+        "-D_LIBCPP_HAS_MUSL_LIBC",
+        "-D__CLANG_MAX_ALIGN_T_DEFINED",
+        "-D_LIBCPP_DISABLE_VISIBILITY_ANNOTATIONS",
+        "-funwind-tables",
+        "-mllvm",
+        "-tail-dup-placement-threshold=4",
+        "-I",
+        "src",
+        "-I",
+        "vendor/rapidjson-1.1.0/include",
+        "-mgeneral-regs-only",
+        "-D__ELF__"
+      ],
+      "header_roots": [
+        "vendor/llvm-libcxx-8/include",
+        "vendor/musl/include",
+        "vendor/musl/generated",
+        "vendor/rapidjson-1.1.0/include"
+      ],
+      "functions": [
+        {
+          "address": "0x478a0",
+          "size": 720,
+          "symbol": "EncodeBase64",
+          "target_sha256": "b3bdace15d58b22f4e69fe3f94650ca04ae9fddc70abf7c665a05cbd0ca6b04f",
+          "bindings": {
+            "_ZN20SimpleLibraryBindingILj1EE8AllocateEjjjj": "0x36ea0",
+            "AppendByte": "0x47b70",
+            "memset": "0xfa3340",
+            "_ZN20SimpleLibraryBindingILj1EE4FreeEPv": "0x37030",
+            "_ZN20SimpleLibraryBindingILj3EE8AllocateEjjjj": "0x36ea0",
+            "memcpy": "0xfa3330",
+            "_ZNKSt3__121__basic_string_commonILb1EE20__throw_length_errorEv": "0xfa3b20"
+          },
+          "got_bindings": {
+            "Base64Alphabet": {
+              "cell": "0x18ec838",
+              "pointee": "0x17c43d8"
+            }
+          }
+        }
+      ]
     }
   ]
 }
