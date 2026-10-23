@@ -21,9 +21,9 @@ template<U32 Kind> static inline void Record(StatisticsBureau* bureau,
     record->dirty = 1;
     const char* name = labels.key;
     const char* attribute = labels.attribute;
-    record->amount += increment;
     record->labels.key = name;
     record->labels.attribute = attribute;
+    record->amount += increment;
 }
 extern "C" void RecordDamage(StatisticsBureau* b, const StatisticsMessage& m) {
     Record<0>(b, m, "damagedealt", DamageLabels);

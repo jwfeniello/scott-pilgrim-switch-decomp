@@ -258,7 +258,7 @@
     "wrong_mark_value"
   ],
   "implementation": "src/gameplay/Statistics.cpp",
-  "implementation_sha256": "5e71319b375184550c28a7bef69eb322eae2ff55724505ede8c06f139ae35a06",
+  "implementation_sha256": "cb3304f4a5f95c404193c0c4e2c9c390df85af91aca001dbdf83ab25f71358ae",
   "layout_sha256": "182a15497caa9568faf4f1e30f7883748d5282dfab2070914139a84ee5a69f90",
   "compiled_functions": [
     {
@@ -279,57 +279,57 @@
       "symbol": "RecordDamage",
       "address": "0x79f0e0",
       "size": 140,
-      "exact": false,
-      "compiled_sha256": "9b28a3cd18ccb40c30bbc10cdc9f59fe6bef248be49f8300e8bd261d55816c03"
+      "exact": true,
+      "compiled_sha256": "4e3707969a8f13e4414729fe553bf57f5bd8bbd005eadc755643c554c04db38d"
     },
     {
       "symbol": "RecordPurchase",
       "address": "0x79f170",
       "size": 128,
-      "exact": false,
-      "compiled_sha256": "982f4d826a8c978d4a9df3413410b40aa5d19103f14e6b4ee8eab46881ef2381"
+      "exact": true,
+      "compiled_sha256": "e4adbb3f849577b19a2843f6ac1f78c215b6dd7cca957e461be7ec8946001741"
     },
     {
       "symbol": "RecordLifeTakenBy",
       "address": "0x79f1f0",
       "size": 128,
-      "exact": false,
-      "compiled_sha256": "29e9da4d565564e92f75ed026a180a57b18a78c01c994b9ba427e910e01b211a"
+      "exact": true,
+      "compiled_sha256": "2a73b8220278ecc5d00034b7743e8bc430b99fbab250581955dba3a038425674"
     },
     {
       "symbol": "RecordLifeTakenFrom",
       "address": "0x79f270",
       "size": 128,
-      "exact": false,
-      "compiled_sha256": "0d6f892998fa2d1482e99f988eb6af0d395c75c788558a619abf63c5a15cb3e9"
+      "exact": true,
+      "compiled_sha256": "4eee52402e437f24ce4ba5794b874e291c48788bf429c2065a41c3f947c0e2c7"
     },
     {
       "symbol": "RecordThrown",
       "address": "0x79f430",
       "size": 128,
-      "exact": false,
-      "compiled_sha256": "7e24309d3c0ec076ccf621f455bf4b2da4528b5932277d43b500ffacfaed658e"
+      "exact": true,
+      "compiled_sha256": "f84c2e2736b493659fecf1d422958a407bee6fe8a98e529e629a57fffa6b1665"
     },
     {
       "symbol": "RecordKilled",
       "address": "0x79f4b0",
       "size": 128,
-      "exact": false,
-      "compiled_sha256": "cd2d3263e9d8e605100bd8b8814336211d61b62643d8d1226b08b4d956e68fc5"
+      "exact": true,
+      "compiled_sha256": "3e1f03250dfdbbec046708732a2b938f21118292dc47718ceb9a294de3341260"
     },
     {
       "symbol": "RecordReanimated",
       "address": "0x79f530",
       "size": 128,
-      "exact": false,
-      "compiled_sha256": "6e592ed6ca44620ab6e8de597de1e98815e036af6b7b47d6ded4216bad0a2e2c"
+      "exact": true,
+      "compiled_sha256": "62a4e7abf5747c8b1b71ecc6cc308be1e3c627e04dddccc7b53a6b0ee0c2a6a6"
     },
     {
       "symbol": "RecordTaunted",
       "address": "0x79f5b0",
       "size": 128,
-      "exact": false,
-      "compiled_sha256": "5f9c05a7fb7c628572c39579fb4d883dc40384a2b6be7362c54698185c528379"
+      "exact": true,
+      "compiled_sha256": "6579426f086cc6c6722d4b6d020341cf4fa77084769b9f8d424a1495a1848572"
     }
   ]
 }

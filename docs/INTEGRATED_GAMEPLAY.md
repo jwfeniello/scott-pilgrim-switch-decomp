@@ -44,14 +44,44 @@ This is one new exact function.
 
 `MarkLifeEvent` also matches its complete 24-byte original at `0x79ef90`, but
 that function already has credit through `LeafPrimitives.cpp`, so it is not
-counted twice. Eight rebuilt statistics handlers remain unmatched. They have
-the original lengths (140 bytes for damage, 128 for the others), but instruction
-scheduling/register choices differ. Behavioral checks do not promote them.
+counted twice. All eight statistics record handlers now match their complete
+original functions: 140 bytes for damage and 128 bytes for each of the seven
+other handlers, adding **1,036 exact bytes**. The shared helper assigns the
+record labels before incrementing its amount; this gives the original instruction
+order with the ordinary Clang 8.0.1 Cortex-A57 profile. No special scheduler
+options or machine-code edits are required.
 
-The available Clang 7/8 optimization profiles, several CPU scheduling profiles,
-and a small set of scheduler options were tried. The retained module uses the
-ordinary Cortex-A57 Clang 8 profile. This result does not identify the original
-compiler version, and the project still cannot rebuild or run the complete game.
+A bounded probe checked 240 dependency-valid source statement orders and found
+this fully matching order. All ten functions in the integrated module now match;
+nine are credited by this build and the existing leaf build credits the mark
+handler. The original compiler version remains unidentified, and the project
+still cannot rebuild or run the complete game.
+
+## Adjacent float-payload callbacks
+
+[StatisticsDetail.cpp](../src/gameplay/StatisticsDetail.cpp) reconstructs four
+additional complete 72-byte handlers at `0x79f2f0`, `0x79f340`, `0x79f390`, and
+`0x79f3e0`, installed for events 21 through 24. Each checks the same local-player
+index, then passes the bits at message offset `0x14` as a **float in S0**, with
+statistic kind 5 through 8 in W0, to `0x6f3c30`. This corrects an integer-looking
+decompiler signature. The original descriptor table identifies these as money
+statistics:
+
+| Event | Kind | Original key | Attribute |
+| --- | --- | --- | --- |
+| 21 | 5 | `moneyearned` | `gained` |
+| 22 | 6 | `moneygivenbyplayer` | `received` |
+| 23 | 7 | `moneygiventoplayer` | `given` |
+| 24 | 8 | `moneyspent` | `spent` |
+
+The descriptors occupy 32-byte records beginning at `0x1846500`. The shared
+consumer finds or creates a record in a pointer-keyed hash map and adds the
+floating-point payload. Transfer direction here follows the original labels;
+the event-producing money-transfer code has not yet been traced.
+
+All four byte-match with checked external bindings, adding **288 exact bytes**.
+They are verified by `gameplay_statistics_detail`; the 3,240-case integration
+fixture above does not exercise these four events or the shared float consumer.
 
 ## Reproduce
 

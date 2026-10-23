@@ -16,8 +16,8 @@ Edition** for Nintendo Switch.
 [Progress on decomp.dev](https://decomp.dev/jwfeniello/scott-pilgrim-switch-decomp)
 · [Progress workflow](https://github.com/jwfeniello/scott-pilgrim-switch-decomp/actions/workflows/progress.yml)
 
-**Current locally verified progress: 29,812 exact functions /
-2,893,996 bytes / 17.649907% of executable `.text`.** The original `.text` is 16,396,664 bytes.
+**Current locally verified progress: 29,825 exact functions /
+2,895,364 bytes / 17.658250% of executable `.text`.** The original `.text` is 16,396,664 bytes.
 This includes engine and library infrastructure. The project does not yet rebuild
 or boot the complete game. Original method names and many ABI declarations remain
 provisional.
@@ -53,8 +53,9 @@ purchases, death, life transfer, and reanimation statistics; no exact credit.
 
 [Integrated gameplay code](docs/INTEGRATED_GAMEPLAY.md) now implements that dispatcher
 and nine handlers in one typed C++ module. All 3,240 behavior cases also pass through
-the rebuilt module. The complete 44-byte dispatcher is a new exact match; the
-unmatched handlers retain zero exact credit.
+the rebuilt module. All ten compiled functions now byte-match, and four adjacent
+money-statistics callbacks also match. The latest batch adds twelve exact
+functions and 1,324 bytes; the existing player-mark match is counted only once.
 
 [Player connections](docs/PLAYER_CONNECTIONS.md) traces action exit, a game-over
 timer, collision-scan gating, and selected regions of the shared 13 KB player
