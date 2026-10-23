@@ -1,0 +1,66 @@
+{
+  "source_sha256": "43cbb565f2ab3b337ddc70ca4c9d5cece4a23f02c0c97d4f004302d1d156d163",
+  "original_sha256": "ea95638e6d6aaa0dc6cddd552a9366799aa1ec3bc07ee201f23f6c151103f5b8",
+  "exact": false,
+  "exact_credit": 0,
+  "cases": 480,
+  "recipe": {
+    "address": "0x4d7390",
+    "size": 688,
+    "symbol": "UpdateRequestState",
+    "target_sha256": "c6c0952c94bda634734006f1ac66fd4768962cb68abe6bcd1bdc7a6dfc36a857",
+    "bindings": {
+      "_ZN8ResponseC1ERKS_": "0x4f5ce0",
+      "LogResponse": "0x4ce310",
+      "_ZN4TailD1Ev": "0x4eb5e0",
+      "GlobalToken": "0x1914858",
+      "_ZN5EventC1ERK6StatusRKmRK6Shared": "0x4d7a80",
+      "ReleaseWeak": "0xfa4310",
+      "DetachTask": "0x49e0a0",
+      "RemoveCallback": "0x49be80"
+    },
+    "got_bindings": {
+      "_ZTV5Event": {
+        "cell": "0x18f8748",
+        "pointee": "0x1826c88"
+      },
+      "CallbackIdentity": {
+        "cell": "0x18f8908",
+        "pointee": "0x4d7930"
+      }
+    }
+  },
+  "different_word_offsets": [
+    116,
+    124,
+    136,
+    148,
+    156,
+    164,
+    196,
+    200,
+    204,
+    212,
+    268,
+    304,
+    392,
+    412,
+    420,
+    452,
+    460,
+    468,
+    548
+  ],
+  "compiled_size": 688,
+  "compiled_sha256": "44c4d26399af7e22a72f89bb3b91557ff32e01db99b4d87700b907d58480c212",
+  "limits": [
+    "Synthetic deterministic external copy, logging, event constructor, callback, weak-release and task-cleanup services.",
+    "Callback return extent not recovered; fixture writes 16 bytes only.",
+    "No exception, concurrency, real SDK, or whole-game validation."
+  ],
+  "negative_controls_rejected": [
+    "wrong_state",
+    "wrong_disposal",
+    "task_not_cleared"
+  ]
+}

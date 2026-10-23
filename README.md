@@ -70,6 +70,10 @@ types remain unrecovered.
 [String-buffer matches](docs/RECOVERED_STRING_BUFFERS.md) add seven complete
 seek, put-back, and string-assignment routines from public libc++ source.
 
+[Request-state reconstruction](docs/REQUEST_STATE_CANDIDATE.md) adds a typed
+688-byte candidate and 480 bounded original-versus-compiled checks. It still
+differs in stack placement and receives zero exact credit.
+
 ## Contributing
 
 **HUMAN AND AI-ASSISTED CONTRIBUTIONS ARE WELCOME.** Both follow the same
