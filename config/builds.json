@@ -412586,6 +412586,327 @@
           "got_bindings": {}
         }
       ]
+    },
+    {
+      "id": "matchmaking_request_destructor",
+      "source": "src/MatchmakingRequestDestructor.cpp",
+      "source_review": "manual_reconstruction",
+      "compiler": "8.0.1",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-std=c++11",
+        "-O2",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-fno-omit-frame-pointer",
+        "-fPIC",
+        "-fno-exceptions",
+        "-fno-vectorize",
+        "-fno-slp-vectorize",
+        "-funwind-tables"
+      ],
+      "functions": [
+        {
+          "address": "0x4d7260",
+          "size": 244,
+          "symbol": "_ZN21MatchmakingRequestAbi7RequestD1Ev",
+          "target_sha256": "09565f330c0496b8340ba2bfc9c1e54d49dc66ddfcd163c5a005b981ba59980b",
+          "bindings": {
+            "DetachTask": "0x49e0a0",
+            "RemoveCallback": "0x49be80",
+            "ReleaseWeak": "0xfa4310",
+            "_ZN21MatchmakingRequestAbi4BaseD2Ev": "0x4731b0",
+            "EmptyFunction": "0x4d6f00"
+          },
+          "got_bindings": {
+            "_ZTVN21MatchmakingRequestAbi7RequestE": {
+              "cell": "0x18f88e0",
+              "pointee": "0x1827550"
+            },
+            "CallbackIdentity": {
+              "cell": "0x18f8908",
+              "pointee": "0x4d7930"
+            }
+          }
+        },
+        {
+          "address": "0x4d8150",
+          "size": 244,
+          "symbol": "_ZN21MatchmakingRequestAbi7RequestD1Ev",
+          "target_sha256": "0a55956a41eca2e3d66eac376b6faae1e8449e994c9e6c9926e06ed3d246598f",
+          "bindings": {
+            "DetachTask": "0x49e0a0",
+            "RemoveCallback": "0x49be80",
+            "ReleaseWeak": "0xfa4310",
+            "_ZN21MatchmakingRequestAbi4BaseD2Ev": "0x4731b0",
+            "EmptyFunction": "0x4d6f00"
+          },
+          "got_bindings": {
+            "_ZTVN21MatchmakingRequestAbi7RequestE": {
+              "cell": "0x18f8938",
+              "pointee": "0x18277f0"
+            },
+            "CallbackIdentity": {
+              "cell": "0x18f8950",
+              "pointee": "0x4d8650"
+            }
+          }
+        },
+        {
+          "address": "0x4d8ca0",
+          "size": 244,
+          "symbol": "_ZN21MatchmakingRequestAbi7RequestD1Ev",
+          "target_sha256": "20c4486674bbf4f4fb4b85bdf49fdb100ea54dd8584630baf6221ce1cbd8ee14",
+          "bindings": {
+            "DetachTask": "0x49e0a0",
+            "RemoveCallback": "0x49be80",
+            "ReleaseWeak": "0xfa4310",
+            "_ZN21MatchmakingRequestAbi4BaseD2Ev": "0x4731b0",
+            "EmptyFunction": "0x4d6f00"
+          },
+          "got_bindings": {
+            "_ZTVN21MatchmakingRequestAbi7RequestE": {
+              "cell": "0x18f8978",
+              "pointee": "0x1827a08"
+            },
+            "CallbackIdentity": {
+              "cell": "0x18f89a0",
+              "pointee": "0x4d9380"
+            }
+          }
+        },
+        {
+          "address": "0x4da9d0",
+          "size": 244,
+          "symbol": "_ZN21MatchmakingRequestAbi7RequestD1Ev",
+          "target_sha256": "17d56e1219ba949c4fd439727c8730103dd312cf6182d56f149d85f2e8935767",
+          "bindings": {
+            "DetachTask": "0x49e0a0",
+            "RemoveCallback": "0x49be80",
+            "ReleaseWeak": "0xfa4310",
+            "_ZN21MatchmakingRequestAbi4BaseD2Ev": "0x4731b0",
+            "EmptyFunction": "0x4d6f00"
+          },
+          "got_bindings": {
+            "_ZTVN21MatchmakingRequestAbi7RequestE": {
+              "cell": "0x18f8a58",
+              "pointee": "0x1827f88"
+            },
+            "CallbackIdentity": {
+              "cell": "0x18f8a80",
+              "pointee": "0x4dafa0"
+            }
+          }
+        },
+        {
+          "address": "0x4dc250",
+          "size": 244,
+          "symbol": "_ZN21MatchmakingRequestAbi7RequestD1Ev",
+          "target_sha256": "34f926515c60d9a00625a998ef1541f30f9111b15b0dfa7d6e97e0a8b754d70c",
+          "bindings": {
+            "DetachTask": "0x49e0a0",
+            "RemoveCallback": "0x49be80",
+            "ReleaseWeak": "0xfa4310",
+            "_ZN21MatchmakingRequestAbi4BaseD2Ev": "0x4731b0",
+            "EmptyFunction": "0x4d6f00"
+          },
+          "got_bindings": {
+            "_ZTVN21MatchmakingRequestAbi7RequestE": {
+              "cell": "0x18f8b20",
+              "pointee": "0x1828508"
+            },
+            "CallbackIdentity": {
+              "cell": "0x18f8b48",
+              "pointee": "0x4dc980"
+            }
+          }
+        },
+        {
+          "address": "0x4ddf20",
+          "size": 244,
+          "symbol": "_ZN21MatchmakingRequestAbi7RequestD1Ev",
+          "target_sha256": "75b428fc7d619a2f09581a08cddc4e94d75839f9529e72df07afc0ad8f56cacd",
+          "bindings": {
+            "DetachTask": "0x49e0a0",
+            "RemoveCallback": "0x49be80",
+            "ReleaseWeak": "0xfa4310",
+            "_ZN21MatchmakingRequestAbi4BaseD2Ev": "0x4731b0",
+            "EmptyFunction": "0x4d6f00"
+          },
+          "got_bindings": {
+            "_ZTVN21MatchmakingRequestAbi7RequestE": {
+              "cell": "0x18f8bf0",
+              "pointee": "0x1828ac0"
+            },
+            "CallbackIdentity": {
+              "cell": "0x18f8c18",
+              "pointee": "0x4de500"
+            }
+          }
+        },
+        {
+          "address": "0x4df780",
+          "size": 244,
+          "symbol": "_ZN21MatchmakingRequestAbi7RequestD1Ev",
+          "target_sha256": "d806ca04c15579bf6c33bdb90ee33774b1e5c68b416b406cd2728beb90caa94d",
+          "bindings": {
+            "DetachTask": "0x49e0a0",
+            "RemoveCallback": "0x49be80",
+            "ReleaseWeak": "0xfa4310",
+            "_ZN21MatchmakingRequestAbi4BaseD2Ev": "0x4731b0",
+            "EmptyFunction": "0x4d6f00"
+          },
+          "got_bindings": {
+            "_ZTVN21MatchmakingRequestAbi7RequestE": {
+              "cell": "0x18f8cb8",
+              "pointee": "0x1829040"
+            },
+            "CallbackIdentity": {
+              "cell": "0x18f8ce0",
+              "pointee": "0x4e00f0"
+            }
+          }
+        },
+        {
+          "address": "0x4e1620",
+          "size": 244,
+          "symbol": "_ZN21MatchmakingRequestAbi7RequestD1Ev",
+          "target_sha256": "7f93b65751389d2f624fd05d16d41e2381151ff1880db8bfbd9f7981b4d664b6",
+          "bindings": {
+            "DetachTask": "0x49e0a0",
+            "RemoveCallback": "0x49be80",
+            "ReleaseWeak": "0xfa4310",
+            "_ZN21MatchmakingRequestAbi4BaseD2Ev": "0x4731b0",
+            "EmptyFunction": "0x4d6f00"
+          },
+          "got_bindings": {
+            "_ZTVN21MatchmakingRequestAbi7RequestE": {
+              "cell": "0x18f8d88",
+              "pointee": "0x18295e0"
+            },
+            "CallbackIdentity": {
+              "cell": "0x18f8db0",
+              "pointee": "0x4e1cf0"
+            }
+          }
+        },
+        {
+          "address": "0x4e2fb0",
+          "size": 244,
+          "symbol": "_ZN21MatchmakingRequestAbi7RequestD1Ev",
+          "target_sha256": "332970488bccdbf51f55a10c547f51bea748fc24ba9b5fc6a085da5c6b580194",
+          "bindings": {
+            "DetachTask": "0x49e0a0",
+            "RemoveCallback": "0x49be80",
+            "ReleaseWeak": "0xfa4310",
+            "_ZN21MatchmakingRequestAbi4BaseD2Ev": "0x4731b0",
+            "EmptyFunction": "0x4d6f00"
+          },
+          "got_bindings": {
+            "_ZTVN21MatchmakingRequestAbi7RequestE": {
+              "cell": "0x18f8e50",
+              "pointee": "0x1829b60"
+            },
+            "CallbackIdentity": {
+              "cell": "0x18f8e78",
+              "pointee": "0x4e3650"
+            }
+          }
+        },
+        {
+          "address": "0x4e4a40",
+          "size": 244,
+          "symbol": "_ZN21MatchmakingRequestAbi7RequestD1Ev",
+          "target_sha256": "6d5d452b2bcb49b5f2e2f032acb00ec301adc32450e8d484bd9076231a0a2ffe",
+          "bindings": {
+            "DetachTask": "0x49e0a0",
+            "RemoveCallback": "0x49be80",
+            "ReleaseWeak": "0xfa4310",
+            "_ZN21MatchmakingRequestAbi4BaseD2Ev": "0x4731b0",
+            "EmptyFunction": "0x4d6f00"
+          },
+          "got_bindings": {
+            "_ZTVN21MatchmakingRequestAbi7RequestE": {
+              "cell": "0x18f8f20",
+              "pointee": "0x182a100"
+            },
+            "CallbackIdentity": {
+              "cell": "0x18f8f48",
+              "pointee": "0x4e51d0"
+            }
+          }
+        },
+        {
+          "address": "0x4e65b0",
+          "size": 244,
+          "symbol": "_ZN21MatchmakingRequestAbi7RequestD1Ev",
+          "target_sha256": "b7d807c9428876aea43d0d8e27fe3d4a34b46ad2bbc95cd05dd495d7300b8889",
+          "bindings": {
+            "DetachTask": "0x49e0a0",
+            "RemoveCallback": "0x49be80",
+            "ReleaseWeak": "0xfa4310",
+            "_ZN21MatchmakingRequestAbi4BaseD2Ev": "0x4731b0",
+            "EmptyFunction": "0x4d6f00"
+          },
+          "got_bindings": {
+            "_ZTVN21MatchmakingRequestAbi7RequestE": {
+              "cell": "0x18f8ff0",
+              "pointee": "0x182a6a0"
+            },
+            "CallbackIdentity": {
+              "cell": "0x18f9018",
+              "pointee": "0x4e6bc0"
+            }
+          }
+        },
+        {
+          "address": "0x4e7410",
+          "size": 244,
+          "symbol": "_ZN21MatchmakingRequestAbi7RequestD1Ev",
+          "target_sha256": "e92551a71c5459e757cfc2b3a8306a845b4910eb0bd2cd28dd91c9aba380a569",
+          "bindings": {
+            "DetachTask": "0x49e0a0",
+            "RemoveCallback": "0x49be80",
+            "ReleaseWeak": "0xfa4310",
+            "_ZN21MatchmakingRequestAbi4BaseD2Ev": "0x4731b0",
+            "EmptyFunction": "0x4d6f00"
+          },
+          "got_bindings": {
+            "_ZTVN21MatchmakingRequestAbi7RequestE": {
+              "cell": "0x18f9048",
+              "pointee": "0x182a940"
+            },
+            "CallbackIdentity": {
+              "cell": "0x18f9070",
+              "pointee": "0x4e7c80"
+            }
+          }
+        },
+        {
+          "address": "0x4e8fd0",
+          "size": 244,
+          "symbol": "_ZN21MatchmakingRequestAbi7RequestD1Ev",
+          "target_sha256": "6f83f3c2ba935b33352947c3bcca19d971b06b066ee01b252ff97ae8aacaf6d9",
+          "bindings": {
+            "DetachTask": "0x49e0a0",
+            "RemoveCallback": "0x49be80",
+            "ReleaseWeak": "0xfa4310",
+            "_ZN21MatchmakingRequestAbi4BaseD2Ev": "0x4731b0",
+            "EmptyFunction": "0x4d6f00"
+          },
+          "got_bindings": {
+            "_ZTVN21MatchmakingRequestAbi7RequestE": {
+              "cell": "0x18f9118",
+              "pointee": "0x182aee0"
+            },
+            "CallbackIdentity": {
+              "cell": "0x18f9140",
+              "pointee": "0x4e95a0"
+            }
+          }
+        }
+      ]
     }
   ]
 }

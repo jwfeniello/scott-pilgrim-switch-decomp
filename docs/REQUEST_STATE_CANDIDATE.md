@@ -88,3 +88,42 @@ The receipt is `progress/request_state_types.json`. This adds no exact credit.
 The optional Unicorn dependency is needed to run this research check. Its receipt
 is `progress/request_state_behavior.json`; exact totals remain exclusively in
 `progress/verified.json`.
+
+## Exact destructor family
+
+[MatchmakingRequestDestructor.cpp](../src/MatchmakingRequestDestructor.cpp)
+reconstructs all thirteen corresponding complete destructors. The normal
+`matchmaking_request_destructor` build now verifies **13 functions / 3,172 bytes**.
+Each address is independently linked to its own vtable and callback bindings,
+and the family agrees with the RTTI vtable associations above.
+
+| Specialization | Destructor | Bytes |
+| --- | --- | --- |
+| session migration | `0x4d7260` | 244 |
+| migration success report | `0x4d8150` | 244 |
+| ticket creation | `0x4d8ca0` | 244 |
+| ticket cancellation | `0x4da9d0` | 244 |
+| player profile storage | `0x4dc250` | 244 |
+| session lock | `0x4ddf20` | 244 |
+| session creation | `0x4df780` | 244 |
+| reservations | `0x4e1620` | 244 |
+| host report | `0x4e2fb0` | 244 |
+| join report | `0x4e4a40` | 244 |
+| session update | `0x4e65b0` | 244 |
+| session join | `0x4e7410` | 244 |
+| session leave | `0x4e8fd0` | 244 |
+
+The shared destructor detaches and clears a live task, clears the operation
+pointer before invoking its disposer, destroys the callable using its inline
+or allocated-object path, releases shared ownership, and calls the base
+destructor. The missing-disposer path calls a non-returning failure routine.
+
+A temporary passed by reference to the disposer is declared inside the non-null
+operation branch. Declaring its lifetime before that branch produced the same
+function length but misplaced its stack store by two instructions. The corrected
+scope gives complete byte equality with ordinary Clang 8.0.1 O2, PIC, preserved
+frame pointer and unwind-table generation. No assembly or byte patches are used.
+
+This exact family is separate from the still-unmatched 688-byte state-update
+candidate and its 480-case fixture. It does not establish a complete working
+matchmaking subsystem or a complete original class declaration.

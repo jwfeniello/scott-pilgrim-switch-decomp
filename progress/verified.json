@@ -1,9 +1,9 @@
 {
   "version": 1,
-  "generated_at": "2026-10-23T02:50:12.962633+00:00",
+  "generated_at": "2026-10-23T03:20:13.470773+00:00",
   "target_elf_sha256": "ea95638e6d6aaa0dc6cddd552a9366799aa1ec3bc07ee201f23f6c151103f5b8",
   "input_sha256": {
-    "config/builds.json": "7f27bc606025cded98da28e2ce37259bca8d3ad0706dcb58603b417d989ffdbe",
+    "config/builds.json": "98205b820eb90a6d36bbcb767f047398c269c8ce6da85ddd5ecc274754cdebba",
     "config/functions.tsv": "399e91468a04e0459194c10d68d2210d1157cedefeb19c7851886ca7632fcb18",
     "config/target.json": "23cc6a5227206a953e7668acf5e9ae5c02a25c23b7e7967f0450a814b888241a",
     "src/AbiCfg_aggregate_O2_omit.cpp": "55009ca4f1819fe53803025bf27b93a676c6137877b9d4492828e2e15c89307c",
@@ -120,6 +120,7 @@
     "src/LibraryWidth40.cpp": "d57d02c493138d924a36cbbc7ad196aeb5fe0b31e087a34f972f164c9070332a",
     "src/LibraryWidth48.cpp": "99cc1643b8cb0c460b479b4dff064169579fd872f81c601e9f4d63500de86ed0",
     "src/LibraryWidth8.cpp": "c808b548ebca6ccc2254acae97f92c0241a2368777bf239fce53ef2513f095c5",
+    "src/MatchmakingRequestDestructor.cpp": "aebe825b8402e0d9668b39e2077314f768350db39e44f4b2b4012c8993a78b7a",
     "src/NarrowCallsCfgRecoveryVoidBool.cpp": "972cd9c0d7701115584ac952b2c0cf491a31f97bbd73b0b56a22bb9a9dfd3e37",
     "src/NarrowCallsExpandedRecoveryOmitUint32_T.cpp": "18c3b74793bd5695f80b26cb61a49ed97b72268ceee64ce79ede797dbdc623f9",
     "src/NoexceptRecoveryOmit.cpp": "e7aad2c9d3d0d0bac3216f7de4646f89f7c0d9f60b427bac42907a60c4a56db0",
@@ -2728,15 +2729,15 @@
     "vendor/zlib-1.2.11/zutil.h": "9a63f6690fac1620aa3cecee5752af618806da438a256b4a047fbcd289cac159"
   },
   "compiler_versions": {
-    "7.0.1": "clang version 7.0.1 (tags/RELEASE_701/final)",
-    "8.0.1": "clang version 8.0.1 (tags/RELEASE_801/final)"
+    "8.0.1": "clang version 8.0.1 (tags/RELEASE_801/final)",
+    "7.0.1": "clang version 7.0.1 (tags/RELEASE_701/final)"
   },
   "compiler_sha256": {
-    "7.0.1": "c2f0a175157d9aaace8031f8e6d7ea0ed6142b4bcef287105e3ed227301f1002",
-    "8.0.1": "dffd62a213ec6cdb4430012a4a41c11e5e32c288f133d5391f9be49e1c5b69de"
+    "8.0.1": "dffd62a213ec6cdb4430012a4a41c11e5e32c288f133d5391f9be49e1c5b69de",
+    "7.0.1": "c2f0a175157d9aaace8031f8e6d7ea0ed6142b4bcef287105e3ed227301f1002"
   },
-  "exact_functions": 29839,
-  "exact_bytes": 2898600,
+  "exact_functions": 29852,
+  "exact_bytes": 2901772,
   "builds": [
     {
       "id": "probes",
@@ -9732,6 +9733,11 @@
       "id": "recovered_stringbuf_2",
       "compiler": "8.0.1",
       "object_sha256": "55f4e1282cb49f2cd651d336d09fb1df813c9cb2b09a5a3a8264552c556f18ca"
+    },
+    {
+      "id": "matchmaking_request_destructor",
+      "compiler": "8.0.1",
+      "object_sha256": "1e7c08f693d2a03e626c47d536050358a2b9ac9167b9275804d5821447b0014e"
     }
   ],
   "matches": [
@@ -122783,6 +122789,17 @@
       "relocation_count": 1
     },
     {
+      "address": "0x4d7260",
+      "size": 244,
+      "exact": true,
+      "target_sha256": "09565f330c0496b8340ba2bfc9c1e54d49dc66ddfcd163c5a005b981ba59980b",
+      "compiled_sha256": "09565f330c0496b8340ba2bfc9c1e54d49dc66ddfcd163c5a005b981ba59980b",
+      "source": "src/MatchmakingRequestDestructor.cpp",
+      "symbol": "_ZN21MatchmakingRequestAbi7RequestD1Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 9
+    },
+    {
       "address": "0x4d7360",
       "size": 36,
       "exact": true,
@@ -123069,6 +123086,17 @@
       "relocation_count": 2
     },
     {
+      "address": "0x4d8150",
+      "size": 244,
+      "exact": true,
+      "target_sha256": "0a55956a41eca2e3d66eac376b6faae1e8449e994c9e6c9926e06ed3d246598f",
+      "compiled_sha256": "0a55956a41eca2e3d66eac376b6faae1e8449e994c9e6c9926e06ed3d246598f",
+      "source": "src/MatchmakingRequestDestructor.cpp",
+      "symbol": "_ZN21MatchmakingRequestAbi7RequestD1Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 9
+    },
+    {
       "address": "0x4d8250",
       "size": 36,
       "exact": true,
@@ -123331,6 +123359,17 @@
       "symbol": "_Z11TypeAddressILj5081696EEPKvv",
       "source_review": "manual_reconstruction",
       "relocation_count": 2
+    },
+    {
+      "address": "0x4d8ca0",
+      "size": 244,
+      "exact": true,
+      "target_sha256": "20c4486674bbf4f4fb4b85bdf49fdb100ea54dd8584630baf6221ce1cbd8ee14",
+      "compiled_sha256": "20c4486674bbf4f4fb4b85bdf49fdb100ea54dd8584630baf6221ce1cbd8ee14",
+      "source": "src/MatchmakingRequestDestructor.cpp",
+      "symbol": "_ZN21MatchmakingRequestAbi7RequestD1Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 9
     },
     {
       "address": "0x4d8da0",
@@ -123903,6 +123942,17 @@
       "symbol": "_Z11TypeAddressILj5088928EEPKvv",
       "source_review": "manual_reconstruction",
       "relocation_count": 2
+    },
+    {
+      "address": "0x4da9d0",
+      "size": 244,
+      "exact": true,
+      "target_sha256": "17d56e1219ba949c4fd439727c8730103dd312cf6182d56f149d85f2e8935767",
+      "compiled_sha256": "17d56e1219ba949c4fd439727c8730103dd312cf6182d56f149d85f2e8935767",
+      "source": "src/MatchmakingRequestDestructor.cpp",
+      "symbol": "_ZN21MatchmakingRequestAbi7RequestD1Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 9
     },
     {
       "address": "0x4daad0",
@@ -124499,6 +124549,17 @@
       "relocation_count": 2
     },
     {
+      "address": "0x4dc250",
+      "size": 244,
+      "exact": true,
+      "target_sha256": "34f926515c60d9a00625a998ef1541f30f9111b15b0dfa7d6e97e0a8b754d70c",
+      "compiled_sha256": "34f926515c60d9a00625a998ef1541f30f9111b15b0dfa7d6e97e0a8b754d70c",
+      "source": "src/MatchmakingRequestDestructor.cpp",
+      "symbol": "_ZN21MatchmakingRequestAbi7RequestD1Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 9
+    },
+    {
       "address": "0x4dc350",
       "size": 36,
       "exact": true,
@@ -125080,6 +125141,17 @@
       "symbol": "_Z11TypeAddressILj5102768EEPKvv",
       "source_review": "manual_reconstruction",
       "relocation_count": 2
+    },
+    {
+      "address": "0x4ddf20",
+      "size": 244,
+      "exact": true,
+      "target_sha256": "75b428fc7d619a2f09581a08cddc4e94d75839f9529e72df07afc0ad8f56cacd",
+      "compiled_sha256": "75b428fc7d619a2f09581a08cddc4e94d75839f9529e72df07afc0ad8f56cacd",
+      "source": "src/MatchmakingRequestDestructor.cpp",
+      "symbol": "_ZN21MatchmakingRequestAbi7RequestD1Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 9
     },
     {
       "address": "0x4de020",
@@ -125687,6 +125759,17 @@
       "relocation_count": 2
     },
     {
+      "address": "0x4df780",
+      "size": 244,
+      "exact": true,
+      "target_sha256": "d806ca04c15579bf6c33bdb90ee33774b1e5c68b416b406cd2728beb90caa94d",
+      "compiled_sha256": "d806ca04c15579bf6c33bdb90ee33774b1e5c68b416b406cd2728beb90caa94d",
+      "source": "src/MatchmakingRequestDestructor.cpp",
+      "symbol": "_ZN21MatchmakingRequestAbi7RequestD1Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 9
+    },
+    {
       "address": "0x4df880",
       "size": 36,
       "exact": true,
@@ -126270,6 +126353,17 @@
       "relocation_count": 2
     },
     {
+      "address": "0x4e1620",
+      "size": 244,
+      "exact": true,
+      "target_sha256": "7f93b65751389d2f624fd05d16d41e2381151ff1880db8bfbd9f7981b4d664b6",
+      "compiled_sha256": "7f93b65751389d2f624fd05d16d41e2381151ff1880db8bfbd9f7981b4d664b6",
+      "source": "src/MatchmakingRequestDestructor.cpp",
+      "symbol": "_ZN21MatchmakingRequestAbi7RequestD1Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 9
+    },
+    {
       "address": "0x4e1720",
       "size": 36,
       "exact": true,
@@ -126829,6 +126923,17 @@
       "symbol": "_Z11TypeAddressILj5123456EEPKvv",
       "source_review": "manual_reconstruction",
       "relocation_count": 2
+    },
+    {
+      "address": "0x4e2fb0",
+      "size": 244,
+      "exact": true,
+      "target_sha256": "332970488bccdbf51f55a10c547f51bea748fc24ba9b5fc6a085da5c6b580194",
+      "compiled_sha256": "332970488bccdbf51f55a10c547f51bea748fc24ba9b5fc6a085da5c6b580194",
+      "source": "src/MatchmakingRequestDestructor.cpp",
+      "symbol": "_ZN21MatchmakingRequestAbi7RequestD1Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 9
     },
     {
       "address": "0x4e30b0",
@@ -127425,6 +127530,17 @@
       "relocation_count": 2
     },
     {
+      "address": "0x4e4a40",
+      "size": 244,
+      "exact": true,
+      "target_sha256": "6d5d452b2bcb49b5f2e2f032acb00ec301adc32450e8d484bd9076231a0a2ffe",
+      "compiled_sha256": "6d5d452b2bcb49b5f2e2f032acb00ec301adc32450e8d484bd9076231a0a2ffe",
+      "source": "src/MatchmakingRequestDestructor.cpp",
+      "symbol": "_ZN21MatchmakingRequestAbi7RequestD1Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 9
+    },
+    {
       "address": "0x4e4b40",
       "size": 36,
       "exact": true,
@@ -128019,6 +128135,17 @@
       "relocation_count": 2
     },
     {
+      "address": "0x4e65b0",
+      "size": 244,
+      "exact": true,
+      "target_sha256": "b7d807c9428876aea43d0d8e27fe3d4a34b46ad2bbc95cd05dd495d7300b8889",
+      "compiled_sha256": "b7d807c9428876aea43d0d8e27fe3d4a34b46ad2bbc95cd05dd495d7300b8889",
+      "source": "src/MatchmakingRequestDestructor.cpp",
+      "symbol": "_ZN21MatchmakingRequestAbi7RequestD1Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 9
+    },
+    {
       "address": "0x4e66b0",
       "size": 36,
       "exact": true,
@@ -128303,6 +128430,17 @@
       "symbol": "_Z11TypeAddressILj5140944EEPKvv",
       "source_review": "manual_reconstruction",
       "relocation_count": 2
+    },
+    {
+      "address": "0x4e7410",
+      "size": 244,
+      "exact": true,
+      "target_sha256": "e92551a71c5459e757cfc2b3a8306a845b4910eb0bd2cd28dd91c9aba380a569",
+      "compiled_sha256": "e92551a71c5459e757cfc2b3a8306a845b4910eb0bd2cd28dd91c9aba380a569",
+      "source": "src/MatchmakingRequestDestructor.cpp",
+      "symbol": "_ZN21MatchmakingRequestAbi7RequestD1Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 9
     },
     {
       "address": "0x4e7510",
@@ -128886,6 +129024,17 @@
       "symbol": "_Z11TypeAddressILj5148080EEPKvv",
       "source_review": "manual_reconstruction",
       "relocation_count": 2
+    },
+    {
+      "address": "0x4e8fd0",
+      "size": 244,
+      "exact": true,
+      "target_sha256": "6f83f3c2ba935b33352947c3bcca19d971b06b066ee01b252ff97ae8aacaf6d9",
+      "compiled_sha256": "6f83f3c2ba935b33352947c3bcca19d971b06b066ee01b252ff97ae8aacaf6d9",
+      "source": "src/MatchmakingRequestDestructor.cpp",
+      "symbol": "_ZN21MatchmakingRequestAbi7RequestD1Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 9
     },
     {
       "address": "0x4e90d0",
