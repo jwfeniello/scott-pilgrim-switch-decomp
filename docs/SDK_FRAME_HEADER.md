@@ -88,3 +88,6 @@ generator at `0x824d0` also uses that encoder. Neither helper nor the
 constructor receives exact credit from the header-list match.
 
 The full handshake constructor now has an [unmatched, behavior-tested candidate](WEBSOCKET_HANDSHAKE_CANDIDATE.md). Its bounded fixture checks 50 cases and rejects four compiled negative controls; it receives no exact credit.
+
+The setup routine also uses [five matched URI/string helpers](SDK_URI.md).
+Tracing setup identifies the constructor field at0xa0 as the port number.

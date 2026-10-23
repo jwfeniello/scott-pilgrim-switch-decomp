@@ -6,7 +6,8 @@ candidate compiles to 2,664 bytes; the original is 2,668 bytes. It is absent
 from the exact build manifest and earns **zero exact-match credit**.
 
 It initializes the HTTP base and two shared strings, sets handshake headers,
-passes protocol and extension lists to the separately matched list helper,
+zeroes the port field at offset0xa0, passes protocol and extension lists to
+the separately matched list helper,
 computes the expected accept response, and calls final setup. Environment
 kinds 1 and 2 add `_beta_cn` to the User-Agent. Version formatting is `%u`,
 including versions greater than the signed 32-bit limit.

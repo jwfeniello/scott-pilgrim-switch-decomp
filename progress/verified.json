@@ -1,9 +1,9 @@
 {
   "version": 1,
-  "generated_at": "2026-10-23T08:42:36.145605+00:00",
+  "generated_at": "2026-10-23T09:09:39.404257+00:00",
   "target_elf_sha256": "ea95638e6d6aaa0dc6cddd552a9366799aa1ec3bc07ee201f23f6c151103f5b8",
   "input_sha256": {
-    "config/builds.json": "90de560ef0e7847b21e55e94dae0e3af66cdb4a3359243b65d8fbdbe7f9d159f",
+    "config/builds.json": "31903d883dbd204b84afcaa76b978d2da3cd7abec524424115cf0dfaf5bfd44b",
     "config/functions.tsv": "399e91468a04e0459194c10d68d2210d1157cedefeb19c7851886ca7632fcb18",
     "config/target.json": "23cc6a5227206a953e7668acf5e9ae5c02a25c23b7e7967f0450a814b888241a",
     "src/AbiCfg_aggregate_O2_omit.cpp": "55009ca4f1819fe53803025bf27b93a676c6137877b9d4492828e2e15c89307c",
@@ -650,6 +650,8 @@
     "src/SdkTextReplaceAll.cpp": "6d9b02f4cf8897519100c97b40fb18e71f39cce1fc5ad01aef532ae37f3996f7",
     "src/SdkTextSplit.cpp": "b200214d62ec6bf6a3824c2e3b2381945dabd36397c08baaeee4ceab6ebafd04",
     "src/SdkTextWrapping.cpp": "322fd2baad2f87357555c406d7d5503296be3e97267a6975144d3ae54e6f3d73",
+    "src/SdkUri.cpp": "b82e1f3d058170b1285e9f358d6a6fdc7308bfb61f10be66b70538d7b838927a",
+    "src/SdkUriSlice.cpp": "c5923e889a3cf952b42f28e0aeca168453dd4463a8a146ab58effa3ccca00b1f",
     "src/SdkWebSocketHeaders.cpp": "a51f199b5bdef66882e49390a6dee26d56c3e998c035084a9fac2070be93befa",
     "src/SdkWideConversion.cpp": "6b909ec8466aacbe57647a331b23855120efd927798dced601c372266ecbbede",
     "src/SharedCallbackConstruction.cpp": "fe897551395d63ff4ab7c40c9ce03c402cda8ef147698b4da58345674fd4a7f8",
@@ -2775,8 +2777,8 @@
     "8.0.1": "dffd62a213ec6cdb4430012a4a41c11e5e32c288f133d5391f9be49e1c5b69de",
     "7.0.1": "c2f0a175157d9aaace8031f8e6d7ea0ed6142b4bcef287105e3ed227301f1002"
   },
-  "exact_functions": 29943,
-  "exact_bytes": 2942056,
+  "exact_functions": 29948,
+  "exact_bytes": 2944000,
   "builds": [
     {
       "id": "probes",
@@ -9982,6 +9984,16 @@
       "id": "library_stbrumme_sha256",
       "compiler": "8.0.1",
       "object_sha256": "694745e64b073da292a5b0edf218b257961b5630f8ff8bfe45b06a09facbb1b8"
+    },
+    {
+      "id": "sdk_uri",
+      "compiler": "8.0.1",
+      "object_sha256": "9eb55189f2b866791bd8d0b5c16085ab42d462703bc2a1d8a04198c577d310cb"
+    },
+    {
+      "id": "sdk_uri_slice",
+      "compiler": "8.0.1",
+      "object_sha256": "3fd57d01ad43440a9fe52f1a113df7fc38d9076c90b8194a565eac0dd3515e79"
     }
   ],
   "matches": [
@@ -11469,6 +11481,61 @@
       "symbol": "RecoveredLeaf_73570",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 1
+    },
+    {
+      "address": "0x73ee0",
+      "size": 464,
+      "exact": true,
+      "target_sha256": "5801b332a74ee52f0d09c822f0f07041b7561fbae85b01466f78bd3e572b9524",
+      "compiled_sha256": "5801b332a74ee52f0d09c822f0f07041b7561fbae85b01466f78bd3e572b9524",
+      "source": "src/SdkUriSlice.cpp",
+      "symbol": "SliceText",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 11
+    },
+    {
+      "address": "0x740b0",
+      "size": 340,
+      "exact": true,
+      "target_sha256": "1b1491252cc024517eb6f349e793563552ee5fe6f4e1cb688a816470f86a52e8",
+      "compiled_sha256": "1b1491252cc024517eb6f349e793563552ee5fe6f4e1cb688a816470f86a52e8",
+      "source": "src/SdkUri.cpp",
+      "symbol": "ReadUriPort",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 5
+    },
+    {
+      "address": "0x74b80",
+      "size": 116,
+      "exact": true,
+      "target_sha256": "90d95a8f786bc0b2f7b9dddd5a0fd11ca384fd29c4bad0f2458a1dd32759ec48",
+      "compiled_sha256": "90d95a8f786bc0b2f7b9dddd5a0fd11ca384fd29c4bad0f2458a1dd32759ec48",
+      "source": "src/SdkUri.cpp",
+      "symbol": "AppendUriText",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 3
+    },
+    {
+      "address": "0x74c00",
+      "size": 124,
+      "exact": true,
+      "target_sha256": "9c1ad8839bc8393507e6f5ef7fba457e6dc68f17caff54fdf7505c25ddcf74d1",
+      "compiled_sha256": "9c1ad8839bc8393507e6f5ef7fba457e6dc68f17caff54fdf7505c25ddcf74d1",
+      "source": "src/SdkUri.cpp",
+      "symbol": "AppendUriTextChain",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 3
+    },
+    {
+      "address": "0x74c80",
+      "size": 900,
+      "exact": true,
+      "target_sha256": "1760ceb7ae5824d84ad5f5ac4acbec1d25effbd4705badb36ce206628ed64ec2",
+      "compiled_sha256": "1760ceb7ae5824d84ad5f5ac4acbec1d25effbd4705badb36ce206628ed64ec2",
+      "source": "src/SdkUri.cpp",
+      "symbol": "BuildUriTail",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 23
     },
     {
       "address": "0x75ec0",

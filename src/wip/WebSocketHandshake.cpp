@@ -160,7 +160,7 @@ struct HttpRequest {
 };
 struct Handshake : HttpRequest {
   Text first;
-  unsigned short flags;
+  unsigned short port;
   Text expected;
   virtual ~Handshake();
   Handshake(const void *, const void *, const Options *);
@@ -168,7 +168,7 @@ struct Handshake : HttpRequest {
 extern "C" void SetupHandshake(Handshake *, const void *);
 Handshake::Handshake(const void *url, const void *config,
                      const Options *options)
-    : HttpRequest(url, config), first(), flags(0), expected() {
+    : HttpRequest(url, config), first(), port(0), expected() {
   unsigned env = CurrentEnvironment->kind;
   {
     Text key("User-Agent");
