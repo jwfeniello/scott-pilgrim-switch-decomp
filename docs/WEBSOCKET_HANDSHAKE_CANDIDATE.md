@@ -42,3 +42,6 @@ and an additional retained register. The receipt in
 
 The called URI/Host setup now has a separate complete reconstruction and
 bounded comparison: [WebSocket setup candidate](WEBSOCKET_SETUP_CANDIDATE.md).
+
+The accept-value helper also has a complete reconstruction and independent
+output checks: [WebSocket accept candidate](WEBSOCKET_ACCEPT_CANDIDATE.md).
