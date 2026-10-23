@@ -218,3 +218,26 @@ All thirteen constructors and all thirteen corresponding destructors are now
 verified against their complete original bodies. This establishes request setup
 and cleanup coverage, not a functioning matchmaking subsystem: the state-update
 family and external operation implementations still require reconstruction.
+
+## Exact result-event base initializer
+
+[StormEventBase.cpp](../src/StormEventBase.cpp) adds the complete 64-byte
+initializer at `0x5859f0`. Its vtable address point is `0x1833488`; the RTTI
+pointer at `0x1833480` resolves to `0x1833b20`, whose name pointer resolves to
+`0x13873ce`: `N5storm11ResultEventE` (`storm::ResultEvent`).
+
+The recovered 48-byte layout initializes a 32-bit invalid value at `0x08`,
+copies the global at `0x1916fa8` to `0x10`, clears `0x18`, copies the two
+32-bit status fields to `0x20` and `0x24`, and copies the 64-bit token to
+`0x28`. The field meanings at `0x10` and `0x18` remain provisional. The
+initializer does not write the padding at `0x0c`.
+
+The migration event constructor at `0x4d7a80` calls this initializer. An
+independent typed reconstruction confirms its 356-byte body and by-value token
+passing through its intermediate constructors, but that body was already
+credited by `SharedCallbackConstruction.cpp`. It earns no additional coverage.
+Only the new 64-byte base initializer is added to the manifest.
+
+The neighboring derived initializer at `0x585990` remains unmatched. Neither
+this match nor the eight-byte status reads resolves the state-update routine's
+remaining stack-layout differences; those updates still receive zero credit.

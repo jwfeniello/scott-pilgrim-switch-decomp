@@ -1,9 +1,9 @@
 {
   "version": 1,
-  "generated_at": "2026-10-23T03:55:38.233794+00:00",
+  "generated_at": "2026-10-23T04:03:59.092070+00:00",
   "target_elf_sha256": "ea95638e6d6aaa0dc6cddd552a9366799aa1ec3bc07ee201f23f6c151103f5b8",
   "input_sha256": {
-    "config/builds.json": "42a74303dfa31c0b5cf293439be38eb7de742f7b67a0ee70c2bf951e0fcbb036",
+    "config/builds.json": "7df1210bbf52bdb886f95c4c4fad3e77b0b24f7c531d4d81d9432602e16f08c4",
     "config/functions.tsv": "399e91468a04e0459194c10d68d2210d1157cedefeb19c7851886ca7632fcb18",
     "config/target.json": "23cc6a5227206a953e7668acf5e9ae5c02a25c23b7e7967f0450a814b888241a",
     "src/AbiCfg_aggregate_O2_omit.cpp": "55009ca4f1819fe53803025bf27b93a676c6137877b9d4492828e2e15c89307c",
@@ -642,6 +642,7 @@
     "src/StackRecoveryOmit.cpp": "05323bb32ec2bad72e25856259ddf8eba49e5599ad308568b7b60a92e2d83436",
     "src/StaticFactoryConstruction.cpp": "99ceea477bde7d232a426141f27d7642b93d884b3c30e0655009b78254cb0a61",
     "src/StaticFunctionCallback.cpp": "432bed1ad235d1b84d44b7f8435cec039471899804a09e81aadbe73ac219197a",
+    "src/StormEventBase.cpp": "83a835079733f4ab39e804146140fe18d5c6fbcfc606d82a2f8be2793d938d1c",
     "src/StructuredRecoveryFrame.cpp": "b9c0b9843dfe9951dbd6c735b391f72540a562dab3cd78967669437212338f6c",
     "src/StructuredRecoveryOmit.cpp": "457eeefdb0c6307a325f0c0deb87d8298b882efcab397e47a6694ebf5cf568e5",
     "src/SweepCfgAtomicVoid801O1Omit.cpp": "4fb9648b1c7ec5600e246f7cc04e12a805f4a4a873f5a89a802c66c2110b6eb6",
@@ -2738,8 +2739,8 @@
     "7.0.1": "c2f0a175157d9aaace8031f8e6d7ea0ed6142b4bcef287105e3ed227301f1002",
     "8.0.1": "dffd62a213ec6cdb4430012a4a41c11e5e32c288f133d5391f9be49e1c5b69de"
   },
-  "exact_functions": 29865,
-  "exact_bytes": 2908604,
+  "exact_functions": 29866,
+  "exact_bytes": 2908668,
   "builds": [
     {
       "id": "probes",
@@ -9800,6 +9801,11 @@
       "id": "matchmaking_context_constructor_11",
       "compiler": "8.0.1",
       "object_sha256": "c71fce18da48fb4c5d78fcc78f0dcb47be101d1826a88ff3ec55d047bfbb17b6"
+    },
+    {
+      "id": "storm_event_base",
+      "compiler": "8.0.1",
+      "object_sha256": "5f8d4585f1eaae48a7acb245add84b6ca7f9f53bd2d6e17071be008a83e9e111"
     }
   ],
   "matches": [
@@ -143463,6 +143469,17 @@
       "symbol": "RecoveredLeaf_585850",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 0
+    },
+    {
+      "address": "0x5859f0",
+      "size": 64,
+      "exact": true,
+      "target_sha256": "60a43189b9c0dd8d57262f9854073cc25cf2582c7ee1800bb8ef22668c3c2206",
+      "compiled_sha256": "60a43189b9c0dd8d57262f9854073cc25cf2582c7ee1800bb8ef22668c3c2206",
+      "source": "src/StormEventBase.cpp",
+      "symbol": "InitializeEventBase",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 4
     },
     {
       "address": "0x585c70",
