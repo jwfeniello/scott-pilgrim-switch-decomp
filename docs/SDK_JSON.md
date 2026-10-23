@@ -125,3 +125,18 @@ The field selector at `0x436b0` uses this initializer while constructing returne
 writers and managing temporary shared views. A private reconstruction of that
 larger routine remains unmatched; verifying this dependency does not establish
 the complete field selector's behavior.
+
+## Text-buffer flush and growth
+
+`GrowJsonBuffer` (`0x459e0`, 232 bytes) reconstructs the helper that appends
+the pending character range to an allocator-backed string, then resets the
+write cursor. It reallocates when the capacity is insufficient or the cursor
+is null, with a minimum allocation of 1,024 characters. The character array
+has an eight-byte header holding its count and allocation offset.
+
+The reconstructed buffer layout has begin/cursor/end pointers at offsets
+0/8/16 and the string at offset 24. Names remain descriptive rather than
+recovered symbols. Both sides of the capacity/cursor predicate are evaluated
+to reproduce the original conditional comparison. Exact verification covers
+the complete function, including bindings to the string insertion helper
+`0x45ad0`, allocator `0x36ea0`, and deallocator `0x37030`.
