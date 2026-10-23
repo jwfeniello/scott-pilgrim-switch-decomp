@@ -43,3 +43,18 @@ RTTI confirms the buffer name `ubiservices::WebSocketBuffer`: vtable
 `0x17c7a40` points to typeinfo `0x17c8e98`, whose name at `0x133bd73` is
 `N11ubiservices15WebSocketBufferE`. The field layout is reconstructed; no
 recovered original class definition is claimed.
+
+## Payload consumption
+
+`SdkFrameConsume.cpp` matches the complete 912-byte function at `0x82140`.
+It decodes the short, 16-bit, or 64-bit payload length, copies a nonzero
+opcode into the destination buffer, appends the payload, consumes the header
+and payload from the input buffer, then resets the saved header length.
+Buffer growth and atomic reference ownership follow the same recovered
+mechanisms as the builder.
+
+The extended length is decoded into a 64-bit value, but the append and
+consume operations take 32-bit counts. This truncation is preserved. The
+function assumes its caller has supplied a sufficiently complete frame;
+it does not validate the available input length or apply XOR masking.
+Clang 7.0.1 and 8.0.1 both reproduce all bytes and verified linked references.
