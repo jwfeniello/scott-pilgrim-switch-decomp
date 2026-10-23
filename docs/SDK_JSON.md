@@ -303,3 +303,11 @@ are verified independently for all three functions.
 The public libc++8 header subset now also includes `vector` and `__split_buffer`
 from LLVM 8.0.0. Their bytes were checked against the 8.0.0 and 8.0.1 upstream
 tags and are identical; provenance and SHA-256 hashes are in the vendor manifest.
+
+## Wide-string storage
+
+`RecoveredSdkWideString.cpp` instantiates public libc++8 wide-string templates
+with the reconstructed SDK allocator binding. It matches `reserve` at `0x81700`
+(340 bytes) and `__grow_by` at `0x17d0b0` (308 bytes), including allocation,
+wide-character copying, deallocation, and length-error references. These are
+complete library functions, not matches for the higher-level byte decoder.

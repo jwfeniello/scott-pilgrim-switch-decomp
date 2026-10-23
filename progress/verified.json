@@ -1,9 +1,9 @@
 {
   "version": 1,
-  "generated_at": "2026-10-23T07:44:54.560687+00:00",
+  "generated_at": "2026-10-23T07:52:53.660457+00:00",
   "target_elf_sha256": "ea95638e6d6aaa0dc6cddd552a9366799aa1ec3bc07ee201f23f6c151103f5b8",
   "input_sha256": {
-    "config/builds.json": "d7ebda972a5669a73e579c79b1727c5702afbcfe19128a6fc7d681aa0f52c8e2",
+    "config/builds.json": "b89c0e6603786e663eb8353b02e0907e2f689f5867162e64b87db4953f449e90",
     "config/functions.tsv": "399e91468a04e0459194c10d68d2210d1157cedefeb19c7851886ca7632fcb18",
     "config/target.json": "23cc6a5227206a953e7668acf5e9ae5c02a25c23b7e7967f0450a814b888241a",
     "src/AbiCfg_aggregate_O2_omit.cpp": "55009ca4f1819fe53803025bf27b93a676c6137877b9d4492828e2e15c89307c",
@@ -603,6 +603,7 @@
     "src/RecoveredNxAtomicRecoveryOmitO2Keep.cpp": "99f8a6d2f1a65d7ab2b2cddb083616ba31073aac8de4c05f6b551f680dbeffac",
     "src/RecoveredNxAtomicRecoveryOmitO2Omit.cpp": "bfde97df9c9da198aacf81361ba894bfb990270150d00e12fbdfaf16098c7e9d",
     "src/RecoveredNxCfgRecoveryVoidO3Keep.cpp": "b7b26e40f25a614ce806676ff11bc384dcca57b99afd90a09a9ba50fa816c4cb",
+    "src/RecoveredSdkWideString.cpp": "d9ce27a84177610413b397daafecd8fb4aa7e2737fc0a97e3132a8c74e18f8fa",
     "src/RecoveredStringBuffers.cpp": "eac0c4d311431bebc4bc82fa634bcaed1a3e4689263e1f37dcf68d3dee79bafe",
     "src/RecoveredStringStreams.cpp": "bb879c69b82083d81d0e914015af25c6cf00bb92ff05d747fcc7fd3959547673",
     "src/RecoveredUbisoftStreams.cpp": "46b8e6b772afdc5efda550d81e8589d054d75f4ca9842b80fd1aa00453067242",
@@ -2754,15 +2755,15 @@
     "vendor/zlib-1.2.11/zutil.h": "9a63f6690fac1620aa3cecee5752af618806da438a256b4a047fbcd289cac159"
   },
   "compiler_versions": {
-    "7.0.1": "clang version 7.0.1 (tags/RELEASE_701/final)",
-    "8.0.1": "clang version 8.0.1 (tags/RELEASE_801/final)"
+    "8.0.1": "clang version 8.0.1 (tags/RELEASE_801/final)",
+    "7.0.1": "clang version 7.0.1 (tags/RELEASE_701/final)"
   },
   "compiler_sha256": {
-    "7.0.1": "c2f0a175157d9aaace8031f8e6d7ea0ed6142b4bcef287105e3ed227301f1002",
-    "8.0.1": "dffd62a213ec6cdb4430012a4a41c11e5e32c288f133d5391f9be49e1c5b69de"
+    "8.0.1": "dffd62a213ec6cdb4430012a4a41c11e5e32c288f133d5391f9be49e1c5b69de",
+    "7.0.1": "c2f0a175157d9aaace8031f8e6d7ea0ed6142b4bcef287105e3ed227301f1002"
   },
-  "exact_functions": 29930,
-  "exact_bytes": 2932348,
+  "exact_functions": 29932,
+  "exact_bytes": 2932996,
   "builds": [
     {
       "id": "probes",
@@ -9928,6 +9929,11 @@
       "id": "sdk_text_split",
       "compiler": "8.0.1",
       "object_sha256": "d717ea0d42fc210241d8a5da5bf3fcbed24704ff196c572302ae6e58d28b1850"
+    },
+    {
+      "id": "recovered_sdk_wide_string",
+      "compiler": "8.0.1",
+      "object_sha256": "d36c2e030d3d1685c1bf2e6d4ccab7149840951f31bbe7d373ab69b7ad13ec86"
     }
   ],
   "matches": [
@@ -12020,6 +12026,17 @@
       "symbol": "SubstringSdkText",
       "source_review": "manual_reconstruction",
       "relocation_count": 9
+    },
+    {
+      "address": "0x81700",
+      "size": 340,
+      "exact": true,
+      "target_sha256": "53cebfc7797bdc5ca4e0c8bfec32a8fc2985bdf8298c902cb734d3c2dc884856",
+      "compiled_sha256": "53cebfc7797bdc5ca4e0c8bfec32a8fc2985bdf8298c902cb734d3c2dc884856",
+      "source": "src/RecoveredSdkWideString.cpp",
+      "symbol": "_ZNSt3__112basic_stringIwNS_11char_traitsIwEE22SimpleLibraryAllocatorIwLj1EEE7reserveEm",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 4
     },
     {
       "address": "0x81ac0",
@@ -16629,6 +16646,17 @@
       "symbol": "_ZNSt3__116__pad_and_outputIcNS_11char_traitsIcEEEENS_19ostreambuf_iteratorIT_T0_EES6_PKS4_S8_S8_RNS_8ios_baseES4_",
       "source_review": "public_library_source",
       "relocation_count": 3
+    },
+    {
+      "address": "0x17d0b0",
+      "size": 308,
+      "exact": true,
+      "target_sha256": "fa867e276ffd80ebdb8b483972ce10540cf0ef681e0b788ca6f6d11f9b8a5b4b",
+      "compiled_sha256": "fa867e276ffd80ebdb8b483972ce10540cf0ef681e0b788ca6f6d11f9b8a5b4b",
+      "source": "src/RecoveredSdkWideString.cpp",
+      "symbol": "_ZNSt3__112basic_stringIwNS_11char_traitsIwEE22SimpleLibraryAllocatorIwLj1EEE9__grow_byEmmmmmm",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 5
     },
     {
       "address": "0x17d1f0",
