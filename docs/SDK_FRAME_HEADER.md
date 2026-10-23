@@ -58,3 +58,31 @@ consume operations take 32-bit counts. This truncation is preserved. The
 function assumes its caller has supplied a sufficiently complete frame;
 it does not validate the available input length or apply XOR masking.
 Clang 7.0.1 and 8.0.1 both reproduce all bytes and verified linked references.
+
+## Handshake request and header lists
+
+RTTI confirms `ubiservices::WebSocketHandshakeRequest`: GOT cell `0x18ecb50`
+points to vtable `0x17c5218`, typeinfo `0x17c8fa8`, and the name string at
+`0x133bf10`. Its constructor at `0x82d10` is still unmatched. It builds the
+User-Agent, Upgrade, Connection, Sec-WebSocket-Key, and Sec-WebSocket-Version
+headers, then adds protocol and extension lists and computes an expected
+handshake response. This identification is based on local strings, RTTI,
+and the constructor's calls, not recovered original source.
+
+`SdkWebSocketHeaders.cpp` matches all 528 bytes at `0x82b00`, called for
+Sec-WebSocket-Protocol and Sec-WebSocket-Extensions. It appends each list
+item to the named header, inserting commas between items without spaces
+or a trailing comma. It preserves existing header contents. Each append
+looks up the header again, detaches its shared string with preservation
+enabled, and inserts the source range at the end. Empty lists do nothing.
+
+The observed loop rechecks whether the list is empty after appending a
+comma. That condition and the repeated owner reads are preserved. The
+map lookup and string insertion remain bound calls; the small `Node`,
+`KeyTuple`, `Empty`, and container types are descriptive ABI views.
+
+The adjacent unmatched helper at `0x827f0` concatenates the key with
+`258EAFA5-E914-47DA-95CA-C5AB0DC85B11`, computes a 20-byte SHA-1 digest,
+and passes the digest to the encoding routine at `0x478a0`. The key
+generator at `0x824d0` also uses that encoder. Neither helper nor the
+constructor receives exact credit from the header-list match.

@@ -1,9 +1,9 @@
 {
   "version": 1,
-  "generated_at": "2026-10-23T08:26:54.505094+00:00",
+  "generated_at": "2026-10-23T08:42:36.145605+00:00",
   "target_elf_sha256": "ea95638e6d6aaa0dc6cddd552a9366799aa1ec3bc07ee201f23f6c151103f5b8",
   "input_sha256": {
-    "config/builds.json": "e0951188106ec1373af21ba6ae130674e598e6ef0ff5b82a0af38231d8e03252",
+    "config/builds.json": "90de560ef0e7847b21e55e94dae0e3af66cdb4a3359243b65d8fbdbe7f9d159f",
     "config/functions.tsv": "399e91468a04e0459194c10d68d2210d1157cedefeb19c7851886ca7632fcb18",
     "config/target.json": "23cc6a5227206a953e7668acf5e9ae5c02a25c23b7e7967f0450a814b888241a",
     "src/AbiCfg_aggregate_O2_omit.cpp": "55009ca4f1819fe53803025bf27b93a676c6137877b9d4492828e2e15c89307c",
@@ -113,6 +113,8 @@
     "src/LibraryLibraryVectorTypedGamewidth8Eh0Pic04120A00D.cpp": "a176b1c84f40c77f97d00e73117627f26f7719616b233289aee46acb10ba0f24",
     "src/LibraryLibraryVectorTypedGamewidth8Eh0Pic04120A00E.cpp": "7dce3da1c0a7cbc917a1a32952c3cc2b9e6c511e879df8a85d775844a234a9d8",
     "src/LibraryLibraryVectorTypedGamewidth8Eh0Pic04120F000.cpp": "7076a0dec3dafbc64b1137ec3efc3d25644cad8868cd8f04fd87e5fb4d1ac438",
+    "src/LibrarySHA1.cpp": "33468111103ace733f63e200c96a27d44b9fd3a5b8614cde7e7b5972ec888db7",
+    "src/LibrarySHA256.cpp": "e1a83f1335232b599b805203a492b39e8b7aaab6ea6bf99ba85e29cdc07df352",
     "src/LibrarySdkString.cpp": "a5de1216990a8af42af7c4c3e15b098707535b538ebc32170ec564927f4dbb86",
     "src/LibraryWidth136.cpp": "f806d6f99602c113a743fc79170ad9695bb65e8ce1147d8c8edfaac1d73ea180",
     "src/LibraryWidth16.cpp": "5a1b73e72b95d28cccd37862860f2dedbc1b555912522eedebd96ea8acdf2ab2",
@@ -648,6 +650,7 @@
     "src/SdkTextReplaceAll.cpp": "6d9b02f4cf8897519100c97b40fb18e71f39cce1fc5ad01aef532ae37f3996f7",
     "src/SdkTextSplit.cpp": "b200214d62ec6bf6a3824c2e3b2381945dabd36397c08baaeee4ceab6ebafd04",
     "src/SdkTextWrapping.cpp": "322fd2baad2f87357555c406d7d5503296be3e97267a6975144d3ae54e6f3d73",
+    "src/SdkWebSocketHeaders.cpp": "a51f199b5bdef66882e49390a6dee26d56c3e998c035084a9fac2070be93befa",
     "src/SdkWideConversion.cpp": "6b909ec8466aacbe57647a331b23855120efd927798dced601c372266ecbbede",
     "src/SharedCallbackConstruction.cpp": "fe897551395d63ff4ab7c40c9ce03c402cda8ef147698b4da58345674fd4a7f8",
     "src/SharedCountDestructor.cpp": "5fad9364c9a06ec0070a86becfd865267eadf0c6a53108037928482cf1630235",
@@ -2744,6 +2747,12 @@
     "vendor/rapidjson-1.1.0/include/rapidjson/stream.h": "84d03fe1bb5293ee416a6340e4be9b4e0f63c5dc064e2ba902fcc1694d1e1e8e",
     "vendor/rapidjson-1.1.0/include/rapidjson/stringbuffer.h": "c7b50a0d3f98f7bd7f66bea78b3f94a8441f6e7669188f52e07d495e63f34cca",
     "vendor/rapidjson-1.1.0/include/rapidjson/writer.h": "9abb1b87643be45d02b05f22105da87b2a3f66e24ba7f26c9d2421dc1a1ba2ab",
+    "vendor/stbrumme-hash/LICENSE": "fdb325df119bf7f4f5718f56c60b05590d82c1a335661a3c9e77cc8c4bac38d4",
+    "vendor/stbrumme-hash/SOURCE.json": "94d84025a1276f9a02f351edd8cf40407b0d9eb342180ab2b120074044ab3515",
+    "vendor/stbrumme-hash/sha1.cpp": "add07da136c6f263e4fa2fc1e9d42ca76101294e6979c414a79c18bb7a851160",
+    "vendor/stbrumme-hash/sha1.h": "9d51b396f5f092226e15da3ab365bbfd0bad173c9d280015cb37711d1b1a8d21",
+    "vendor/stbrumme-hash/sha256.cpp": "26cfc68c9e63c900e42d95fcbf79ef7942c626a6dd42bc4a4116f28dce4a46e4",
+    "vendor/stbrumme-hash/sha256.h": "345e7b8091b7ffe34cf760ee591ab254c30f74749b522f1c2b2b56c8f804652d",
     "vendor/zlib-1.2.11/LICENSE": "5b305a8fcbfac28f3238dfe6db82016dbc72b986be3034e843648f89ffc2bfb5",
     "vendor/zlib-1.2.11/README": "7960b6b1cc63e619abb77acaea5427159605afee8c8b362664f4effc7d7f7d15",
     "vendor/zlib-1.2.11/crc32.h": "407af59d0abfea84a6507c603eb29809411797f98249614fe76a661def783ce1",
@@ -2759,15 +2768,15 @@
     "vendor/zlib-1.2.11/zutil.h": "9a63f6690fac1620aa3cecee5752af618806da438a256b4a047fbcd289cac159"
   },
   "compiler_versions": {
-    "7.0.1": "clang version 7.0.1 (tags/RELEASE_701/final)",
-    "8.0.1": "clang version 8.0.1 (tags/RELEASE_801/final)"
+    "8.0.1": "clang version 8.0.1 (tags/RELEASE_801/final)",
+    "7.0.1": "clang version 7.0.1 (tags/RELEASE_701/final)"
   },
   "compiler_sha256": {
-    "7.0.1": "c2f0a175157d9aaace8031f8e6d7ea0ed6142b4bcef287105e3ed227301f1002",
-    "8.0.1": "dffd62a213ec6cdb4430012a4a41c11e5e32c288f133d5391f9be49e1c5b69de"
+    "8.0.1": "dffd62a213ec6cdb4430012a4a41c11e5e32c288f133d5391f9be49e1c5b69de",
+    "7.0.1": "c2f0a175157d9aaace8031f8e6d7ea0ed6142b4bcef287105e3ed227301f1002"
   },
-  "exact_functions": 29937,
-  "exact_bytes": 2936908,
+  "exact_functions": 29943,
+  "exact_bytes": 2942056,
   "builds": [
     {
       "id": "probes",
@@ -9958,6 +9967,21 @@
       "id": "sdk_frame_consume",
       "compiler": "8.0.1",
       "object_sha256": "c2dc45111eb7af5a63c9f23530d1c341934f067dffff883a09f01ffb4ac13f81"
+    },
+    {
+      "id": "sdk_websocket_headers",
+      "compiler": "8.0.1",
+      "object_sha256": "dd42490ba3021ed65215ecfe0f72813bfccc9e5e0238917946e1819b92afde5d"
+    },
+    {
+      "id": "library_stbrumme_sha1",
+      "compiler": "8.0.1",
+      "object_sha256": "ae9b2dae56ef782b90ee4da3638250ee7e1bb5e397e7bca75ad0f0524956e2ab"
+    },
+    {
+      "id": "library_stbrumme_sha256",
+      "compiler": "8.0.1",
+      "object_sha256": "694745e64b073da292a5b0edf218b257961b5630f8ff8bfe45b06a09facbb1b8"
     }
   ],
   "matches": [
@@ -10542,6 +10566,61 @@
       "source": "src/LibrarySdkString.cpp",
       "symbol": "_ZNSt3__112basic_stringIcNS_11char_traitsIcEE22SimpleLibraryAllocatorIcLj1EEE9push_backEc",
       "source_review": "library_abi_view",
+      "relocation_count": 4
+    },
+    {
+      "address": "0x48b10",
+      "size": 3340,
+      "exact": true,
+      "target_sha256": "8413ee9b7a0cc751d8c033ade00f4654d6d1d3db47e8da342f932f3c21a6d79d",
+      "compiled_sha256": "8413ee9b7a0cc751d8c033ade00f4654d6d1d3db47e8da342f932f3c21a6d79d",
+      "source": "src/LibrarySHA1.cpp",
+      "symbol": "_ZN4SHA112processBlockEPKv",
+      "source_review": "public_library_source",
+      "relocation_count": 0
+    },
+    {
+      "address": "0x49820",
+      "size": 304,
+      "exact": true,
+      "target_sha256": "e96a30b165229cc58ab6722a8ee187235f296e8467b1f61bf8c805ceed0bf41c",
+      "compiled_sha256": "e96a30b165229cc58ab6722a8ee187235f296e8467b1f61bf8c805ceed0bf41c",
+      "source": "src/LibrarySHA1.cpp",
+      "symbol": "_ZN4SHA13addEPKvm",
+      "source_review": "public_library_source",
+      "relocation_count": 2
+    },
+    {
+      "address": "0x49950",
+      "size": 336,
+      "exact": true,
+      "target_sha256": "cd44b602e8ecc40286fef66ffeca8bc4e696041312382123b6a9f48b745c5206",
+      "compiled_sha256": "cd44b602e8ecc40286fef66ffeca8bc4e696041312382123b6a9f48b745c5206",
+      "source": "src/LibrarySHA1.cpp",
+      "symbol": "_ZN4SHA113processBufferEv",
+      "source_review": "public_library_source",
+      "relocation_count": 4
+    },
+    {
+      "address": "0x4bac0",
+      "size": 304,
+      "exact": true,
+      "target_sha256": "7912243d74f451c087dc7aca0350a82804bae85f614ba48693816a0eb206fe53",
+      "compiled_sha256": "7912243d74f451c087dc7aca0350a82804bae85f614ba48693816a0eb206fe53",
+      "source": "src/LibrarySHA256.cpp",
+      "symbol": "_ZN6SHA2563addEPKvm",
+      "source_review": "public_library_source",
+      "relocation_count": 2
+    },
+    {
+      "address": "0x4bbf0",
+      "size": 336,
+      "exact": true,
+      "target_sha256": "6efa2f7f91a181858839b380b0c53babd660d20260a5c0f1efb628729b781aa4",
+      "compiled_sha256": "6efa2f7f91a181858839b380b0c53babd660d20260a5c0f1efb628729b781aa4",
+      "source": "src/LibrarySHA256.cpp",
+      "symbol": "_ZN6SHA25613processBufferEv",
+      "source_review": "public_library_source",
       "relocation_count": 4
     },
     {
@@ -12138,6 +12217,17 @@
       "symbol": "ConsumeFrame",
       "source_review": "manual_reconstruction",
       "relocation_count": 9
+    },
+    {
+      "address": "0x82b00",
+      "size": 528,
+      "exact": true,
+      "target_sha256": "8292100d999fbb16301490c48451b463026a3073a1716d406dcabf71cd0c1e03",
+      "compiled_sha256": "8292100d999fbb16301490c48451b463026a3073a1716d406dcabf71cd0c1e03",
+      "source": "src/SdkWebSocketHeaders.cpp",
+      "symbol": "AppendWebSocketHeaders",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 12
     },
     {
       "address": "0x83780",

@@ -416343,6 +416343,227 @@
           "got_bindings": {}
         }
       ]
+    },
+    {
+      "id": "sdk_websocket_headers",
+      "source": "src/SdkWebSocketHeaders.cpp",
+      "source_review": "manual_reconstruction",
+      "compiler": "8.0.1",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-std=c++11",
+        "-D_GNU_SOURCE",
+        "-U_WIN32",
+        "-U_WIN64",
+        "-O2",
+        "-mcpu=cortex-a57",
+        "-fno-omit-frame-pointer",
+        "-fPIC",
+        "-fno-strict-aliasing",
+        "-fno-vectorize",
+        "-fno-slp-vectorize",
+        "-fno-exceptions",
+        "-nostdinc++",
+        "-isystem",
+        "vendor/llvm-libcxx-8/include",
+        "-isystem",
+        "vendor/musl/include",
+        "-isystem",
+        "vendor/musl/generated",
+        "-D_LIBCPP_HAS_NO_THREADS",
+        "-D_LIBCPP_HAS_MUSL_LIBC",
+        "-D__CLANG_MAX_ALIGN_T_DEFINED",
+        "-D_LIBCPP_DISABLE_VISIBILITY_ANNOTATIONS",
+        "-funwind-tables",
+        "-mllvm",
+        "-tail-dup-placement-threshold=4",
+        "-I",
+        "src",
+        "-I",
+        "vendor/rapidjson-1.1.0/include",
+        "-mgeneral-regs-only",
+        "-D__ELF__"
+      ],
+      "header_roots": [
+        "vendor/llvm-libcxx-8/include",
+        "vendor/musl/include",
+        "vendor/musl/generated",
+        "vendor/rapidjson-1.1.0/include"
+      ],
+      "functions": [
+        {
+          "address": "0x82b00",
+          "size": 528,
+          "symbol": "AppendWebSocketHeaders",
+          "target_sha256": "8292100d999fbb16301490c48451b463026a3073a1716d406dcabf71cd0c1e03",
+          "bindings": {
+            "Piecewise": "0x133ca59",
+            "ConstructSdkText": "0x7e7e0",
+            "LookupHeader": "0x194bc0",
+            "DetachText": "0x7efe0",
+            "InsertText": "0x7f310"
+          },
+          "got_bindings": {},
+          "literals": {
+            "2c00": "0x1305800"
+          }
+        }
+      ]
+    },
+    {
+      "id": "library_stbrumme_sha1",
+      "source": "src/LibrarySHA1.cpp",
+      "source_review": "public_library_source",
+      "compiler": "8.0.1",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-std=c++11",
+        "-D_GNU_SOURCE",
+        "-U_WIN32",
+        "-U_WIN64",
+        "-O3",
+        "-mcpu=cortex-a57",
+        "-fno-omit-frame-pointer",
+        "-fPIC",
+        "-fno-strict-aliasing",
+        "-fno-vectorize",
+        "-fno-slp-vectorize",
+        "-fno-exceptions",
+        "-nostdinc++",
+        "-isystem",
+        "vendor/llvm-libcxx-8/include",
+        "-isystem",
+        "vendor/musl/include",
+        "-isystem",
+        "vendor/musl/generated",
+        "-D_LIBCPP_HAS_NO_THREADS",
+        "-D_LIBCPP_HAS_MUSL_LIBC",
+        "-D__CLANG_MAX_ALIGN_T_DEFINED",
+        "-D_LIBCPP_DISABLE_VISIBILITY_ANNOTATIONS",
+        "-funwind-tables",
+        "-mllvm",
+        "-tail-dup-placement-threshold=4",
+        "-I",
+        "src",
+        "-I",
+        "vendor/rapidjson-1.1.0/include",
+        "-mgeneral-regs-only",
+        "-D__ELF__",
+        "-ffunction-sections"
+      ],
+      "header_roots": [
+        "vendor/llvm-libcxx-8/include",
+        "vendor/musl/include",
+        "vendor/musl/generated",
+        "vendor/rapidjson-1.1.0/include",
+        "vendor/stbrumme-hash"
+      ],
+      "functions": [
+        {
+          "address": "0x48b10",
+          "size": 3340,
+          "symbol": "_ZN4SHA112processBlockEPKv",
+          "target_sha256": "8413ee9b7a0cc751d8c033ade00f4654d6d1d3db47e8da342f932f3c21a6d79d",
+          "bindings": {},
+          "got_bindings": {}
+        },
+        {
+          "address": "0x49950",
+          "size": 336,
+          "symbol": "_ZN4SHA113processBufferEv",
+          "target_sha256": "cd44b602e8ecc40286fef66ffeca8bc4e696041312382123b6a9f48b745c5206",
+          "bindings": {
+            "memset": "0xfa3340",
+            "_ZN4SHA112processBlockEPKv": "0x48b10"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x49820",
+          "size": 304,
+          "symbol": "_ZN4SHA13addEPKvm",
+          "target_sha256": "e96a30b165229cc58ab6722a8ee187235f296e8467b1f61bf8c805ceed0bf41c",
+          "bindings": {
+            "_ZN4SHA112processBlockEPKv": "0x48b10"
+          },
+          "got_bindings": {}
+        }
+      ]
+    },
+    {
+      "id": "library_stbrumme_sha256",
+      "source": "src/LibrarySHA256.cpp",
+      "source_review": "public_library_source",
+      "compiler": "8.0.1",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-std=c++11",
+        "-D_GNU_SOURCE",
+        "-U_WIN32",
+        "-U_WIN64",
+        "-O3",
+        "-mcpu=cortex-a57",
+        "-fno-omit-frame-pointer",
+        "-fPIC",
+        "-fno-strict-aliasing",
+        "-fno-vectorize",
+        "-fno-slp-vectorize",
+        "-fno-exceptions",
+        "-nostdinc++",
+        "-isystem",
+        "vendor/llvm-libcxx-8/include",
+        "-isystem",
+        "vendor/musl/include",
+        "-isystem",
+        "vendor/musl/generated",
+        "-D_LIBCPP_HAS_NO_THREADS",
+        "-D_LIBCPP_HAS_MUSL_LIBC",
+        "-D__CLANG_MAX_ALIGN_T_DEFINED",
+        "-D_LIBCPP_DISABLE_VISIBILITY_ANNOTATIONS",
+        "-funwind-tables",
+        "-mllvm",
+        "-tail-dup-placement-threshold=4",
+        "-I",
+        "src",
+        "-I",
+        "vendor/rapidjson-1.1.0/include",
+        "-mgeneral-regs-only",
+        "-D__ELF__",
+        "-ffunction-sections"
+      ],
+      "header_roots": [
+        "vendor/llvm-libcxx-8/include",
+        "vendor/musl/include",
+        "vendor/musl/generated",
+        "vendor/rapidjson-1.1.0/include",
+        "vendor/stbrumme-hash"
+      ],
+      "functions": [
+        {
+          "address": "0x4bbf0",
+          "size": 336,
+          "symbol": "_ZN6SHA25613processBufferEv",
+          "target_sha256": "6efa2f7f91a181858839b380b0c53babd660d20260a5c0f1efb628729b781aa4",
+          "bindings": {
+            "memset": "0xfa3340",
+            "_ZN6SHA25612processBlockEPKv": "0x49aa0"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x4bac0",
+          "size": 304,
+          "symbol": "_ZN6SHA2563addEPKvm",
+          "target_sha256": "7912243d74f451c087dc7aca0350a82804bae85f614ba48693816a0eb206fe53",
+          "bindings": {
+            "_ZN6SHA25612processBlockEPKv": "0x49aa0"
+          },
+          "got_bindings": {}
+        }
+      ]
     }
   ]
 }

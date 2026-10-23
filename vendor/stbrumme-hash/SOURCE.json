@@ -1,0 +1,13 @@
+{
+  "repository": "https://github.com/stbrumme/hash-library",
+  "commit": "d389d18112bcf7e4786ec5e8723f3658a7f433d7",
+  "license": "zlib",
+  "modifications": "None; upstream files preserved byte for byte.",
+  "sha256": {
+    "sha1.cpp": "add07da136c6f263e4fa2fc1e9d42ca76101294e6979c414a79c18bb7a851160",
+    "sha1.h": "9d51b396f5f092226e15da3ab365bbfd0bad173c9d280015cb37711d1b1a8d21",
+    "sha256.cpp": "26cfc68c9e63c900e42d95fcbf79ef7942c626a6dd42bc4a4116f28dce4a46e4",
+    "sha256.h": "345e7b8091b7ffe34cf760ee591ab254c30f74749b522f1c2b2b56c8f804652d",
+    "LICENSE": "fdb325df119bf7f4f5718f56c60b05590d82c1a335661a3c9e77cc8c4bac38d4"
+  }
+}
