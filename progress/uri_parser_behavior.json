@@ -1,0 +1,30 @@
+{
+  "original_sha256": "ea95638e6d6aaa0dc6cddd552a9366799aa1ec3bc07ee201f23f6c151103f5b8",
+  "original_function_address": "0x73580",
+  "original_function_size": 2400,
+  "cases": 267,
+  "negative_controls": [
+    {
+      "name": "query_separator",
+      "case_index": 6
+    },
+    {
+      "name": "port_offset",
+      "case_index": 4
+    },
+    {
+      "name": "fragment_search",
+      "case_index": 9
+    }
+  ],
+  "exact_credit": false,
+  "source_sha256": "073383c3249c9b94fc6014747c7cbe0be635e5fb58ed80819fbdd43186f7f94e",
+  "candidate_sha256": "2d811c1d3c3fc75cd793f5122f01d161095eff50534bb768c363052e4c8c7170",
+  "boundary": "complete parser return; all 18 range words, input preservation, refcounts and ordered slice/detach/allocation/free/disposal traces",
+  "limitations": [
+    "SliceText and DetachText modeled synthetically, with unique owners",
+    "allocator/free/memory/string-length primitives synthetic",
+    "no allocation failure, concurrent owner changes, or malformed out-of-bounds accesses",
+    "not a general URI standards compliance test"
+  ]
+}

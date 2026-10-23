@@ -48,3 +48,7 @@ normalized instruction differences in the replacement-count guard. Passing
 the shared source owner and range table separately to the range-reading helper
 reproduces the original register allocation. This diagnostic proximity is not
 byte-match verification or a portable-behavior proof; no credit is assigned.
+
+A complete, behavior-tested parser candidate is now available; see
+[URI parser candidate](SDK_URI_PARSER_CANDIDATE.md). It is excluded from
+exact coverage despite matching the original size and passing bounded tests.
