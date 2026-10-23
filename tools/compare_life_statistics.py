@@ -15,6 +15,7 @@ def main():
     p.add_argument('--original', type=Path, required=True)
     p.add_argument('--clang8', type=Path, required=True)
     p.add_argument('--build-dir', type=Path, required=True)
+    p.add_argument('--integrated', action='store_true', help='Execute rebuilt ABI implementation instead of original handlers')
     args = p.parse_args()
     elf = Elf(args.original)
     spans = elf.unwind_ranges()
@@ -22,6 +23,14 @@ def main():
     b = Arm64Behavior(elf, args.clang8, args.build_dir.resolve())
     source = ROOT/'src/wip/GameStatisticsLifeEvents.cpp'
     entries = b.install(source, 'statistics.o')
+    compiled = []
+    if args.integrated:
+        from gameplay_statistics_build import compile_statistics
+        compiled = compile_statistics(elf, args.clang8, b.folder)
+        for recipe, code, exact in compiled:
+            address = int(recipe['address'], 0)
+            b.mu.mem_write(address, code)
+            b.mu.ctl_remove_cache(address, address+recipe['size'])
     B = b.DATA
     P, H, LOCAL, RECORD, MESSAGE, IN, OUT = [B+i*0x2000 for i in range(1, 8)]
     ALLOCATORS, ALLOC, AV, HEAP = B+0x18000, B+0x19000, B+0x1a000, B+0x20000
@@ -159,7 +168,36 @@ def main():
                 'Event inputs limited to 11,17,18,19,20,25,26,27,28 and player indices0..3; singleton handle populated.',
                 'Statistics context, lazy container initialization and key lookup are deterministic stubs.',
                 'Installed handlers tested; runtime replacement of callbacks is not excluded.'])
-    (ROOT/'progress/life_statistics_behavior.json').write_text(json.dumps(report, indent=2)+'\n')
+    if args.integrated:
+        # Reject defects in the executable reconstruction itself, not only in
+        # the independent decision oracle used by the earlier research harness.
+        entries = b.install(source, 'statistics.o')
+        implementation = ROOT/'src/gameplay/Statistics.cpp'
+        (b.folder/'Statistics.h').write_bytes((ROOT/'src/gameplay/Statistics.h').read_bytes())
+        implementation_rejected = []
+        for tag, old, new, values in [
+            ('decrement_instead_of_increment', 'record->amount += increment;', 'record->amount -= increment;', (19, 0, 0, 9, False)),
+            ('wrong_mark_value', 'bureau->playerMarked[message.subject->index] = 1;', 'bureau->playerMarked[message.subject->index] = 2;', (11, 1, 0, 0, False)),
+        ]:
+            text = implementation.read_text(); require(old in text, 'Missing implementation mutation')
+            path = b.folder/(tag+'.cpp'); path.write_text(text.replace(old, new))
+            for recipe, code, exact in compile_statistics(elf, args.clang8, b.folder, path):
+                address = int(recipe['address'], 0)
+                b.mu.mem_write(address, code); b.mu.ctl_remove_cache(address, address+recipe['size'])
+            try: case(*values)
+            except ValueError: implementation_rejected.append(tag)
+            else: raise ValueError('Incorrect executable implementation accepted: '+tag)
+        compiled = compile_statistics(elf, args.clang8, b.folder)
+        report['implementation_negative_controls_rejected'] = implementation_rejected
+        report['implementation'] = 'src/gameplay/Statistics.cpp'
+        report['implementation_sha256'] = digest((ROOT/report['implementation']).read_bytes())
+        report['layout_sha256'] = digest((ROOT/'src/gameplay/Statistics.h').read_bytes())
+        report['compiled_functions'] = [dict(symbol=r['symbol'], address=r['address'],
+            size=len(c), exact=e, compiled_sha256=digest(c)) for r, c, e in compiled]
+        report['executed_chain'][0] = 'rebuilt DispatchPlayerStatistic'
+        report['executed_chain'][-1] = 'rebuilt handler selected by original constructor'
+    filename = 'integrated_statistics_behavior.json' if args.integrated else 'life_statistics_behavior.json'
+    (ROOT/'progress'/filename).write_text(json.dumps(report, indent=2)+'\n')
     print(json.dumps(report, indent=2))
 
 

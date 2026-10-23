@@ -51,6 +51,11 @@ transfer through original event strings and constructor wiring. It maps 28 handl
 and adds 3,240 bounded checks through nine original event handlers, including damage,
 purchases, death, life transfer, and reanimation statistics; no exact credit.
 
+[Integrated gameplay code](docs/INTEGRATED_GAMEPLAY.md) now implements that dispatcher
+and nine handlers in one typed C++ module. All 3,240 behavior cases also pass through
+the rebuilt module. The complete 44-byte dispatcher is a new exact match; the
+unmatched handlers retain zero exact credit.
+
 [Player connections](docs/PLAYER_CONNECTIONS.md) traces action exit, a game-over
 timer, collision-scan gating, and selected regions of the shared 13 KB player
 update. It adds 1,246 bounded comparisons, explicitly separating complete small

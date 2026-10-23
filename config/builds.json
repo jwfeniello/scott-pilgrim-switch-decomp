@@ -412038,6 +412038,40 @@
           "got_bindings": {}
         }
       ]
+    },
+    {
+      "id": "gameplay_statistics",
+      "source": "src/gameplay/Statistics.cpp",
+      "compiler": "8.0.1",
+      "source_review": "manual_reconstruction",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-std=c++11",
+        "-O2",
+        "-mcpu=cortex-a57",
+        "-fomit-frame-pointer",
+        "-fno-pic",
+        "-fno-strict-aliasing",
+        "-ffunction-sections",
+        "-fdata-sections"
+      ],
+      "header_roots": [
+        "src/gameplay"
+      ],
+      "functions": [
+        {
+          "address": "0x986410",
+          "size": 44,
+          "symbol": "DispatchPlayerStatistic",
+          "target_sha256": "1fede0f6897218e6da17316acb5a390bd2580e3d129f60e45120c6e3b22ab3cb",
+          "bindings": {
+            "GetStatisticsBureau": "0x772920"
+          },
+          "got_bindings": {},
+          "literals": {}
+        }
+      ]
     }
   ]
 }

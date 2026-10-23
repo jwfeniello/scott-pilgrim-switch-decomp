@@ -1,9 +1,9 @@
 {
   "version": 1,
-  "generated_at": "2026-10-20T15:15:03.544384+00:00",
+  "generated_at": "2026-10-23T02:14:43.294828+00:00",
   "target_elf_sha256": "ea95638e6d6aaa0dc6cddd552a9366799aa1ec3bc07ee201f23f6c151103f5b8",
   "input_sha256": {
-    "config/builds.json": "a4f51c12cef7f3c927f7d1664c257470a26b541c667d011d269e8a8f2bfc920d",
+    "config/builds.json": "37bc57ef149305b4082070b3fd667db5ad4e8acf1b555dfeecd1a5a3fda9e633",
     "config/functions.tsv": "399e91468a04e0459194c10d68d2210d1157cedefeb19c7851886ca7632fcb18",
     "config/target.json": "23cc6a5227206a953e7668acf5e9ae5c02a25c23b7e7967f0450a814b888241a",
     "src/AbiCfg_aggregate_O2_omit.cpp": "55009ca4f1819fe53803025bf27b93a676c6137877b9d4492828e2e15c89307c",
@@ -679,6 +679,8 @@
     "src/factory_construction_instances.inc": "2d195de6c86983e5a5be8bc2ea60b9f7f899e8cd9a11b363d0182447cb420f8c",
     "src/factory_construction_omit_instances.inc": "8eae5c998fd824bc7b4230f265ba3561cb6e065d15336ead457448dea0e80830",
     "src/function_swap_instances.inc": "adc7468c16b98505670b099e14c5a5dd411a6fafe924c49ce0aabf48e5dd3850",
+    "src/gameplay/Statistics.cpp": "5e71319b375184550c28a7bef69eb322eae2ff55724505ede8c06f139ae35a06",
+    "src/gameplay/Statistics.h": "182a15497caa9568faf4f1e30f7883748d5282dfab2070914139a84ee5a69f90",
     "src/generated/FUN_00300110.cpp": "ed8777c4bc36a2b226216bb30cb46af3184f586f0ffc6fe94137b50e1eb30988",
     "src/generated/FUN_003121e0.cpp": "963a926ff64590f02594c603c3c0a450d2e43e6fa7923c9115d9b993ac1d5f7f",
     "src/generated/FUN_00325d50.cpp": "460a64bd18a6344ad2351a4ec09957daa164f3811aae58d4ffd767a325dbc7fd",
@@ -2657,8 +2659,8 @@
     "8.0.1": "dffd62a213ec6cdb4430012a4a41c11e5e32c288f133d5391f9be49e1c5b69de",
     "7.0.1": "c2f0a175157d9aaace8031f8e6d7ea0ed6142b4bcef287105e3ed227301f1002"
   },
-  "exact_functions": 29812,
-  "exact_bytes": 2893996,
+  "exact_functions": 29813,
+  "exact_bytes": 2894040,
   "builds": [
     {
       "id": "probes",
@@ -9619,6 +9621,11 @@
       "id": "rapidjson_pool_reader",
       "compiler": "8.0.1",
       "object_sha256": "5ab04ade2e98340b62eff959b1bca4b82bf5754c44b19a874c71d71075791989"
+    },
+    {
+      "id": "gameplay_statistics",
+      "compiler": "8.0.1",
+      "object_sha256": "bca69c87bd5f66e6918b04338fbe453f671d2afe637169a7ff902574b10f9afc"
     }
   ],
   "matches": [
@@ -230237,6 +230244,17 @@
       "symbol": "RecoveredLeaf_9853e0",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 0
+    },
+    {
+      "address": "0x986410",
+      "size": 44,
+      "exact": true,
+      "target_sha256": "1fede0f6897218e6da17316acb5a390bd2580e3d129f60e45120c6e3b22ab3cb",
+      "compiled_sha256": "1fede0f6897218e6da17316acb5a390bd2580e3d129f60e45120c6e3b22ab3cb",
+      "source": "src/gameplay/Statistics.cpp",
+      "symbol": "DispatchPlayerStatistic",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 1
     },
     {
       "address": "0x986440",

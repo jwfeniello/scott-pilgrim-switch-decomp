@@ -1,0 +1,335 @@
+{
+  "exact_match_credit": false,
+  "source_sha256": "8c05dafb7b1bd92aa623ecc64899787225f1eb0f2c801766ec1c5c281c230751",
+  "original_sha256": "ea95638e6d6aaa0dc6cddd552a9366799aa1ec3bc07ee201f23f6c151103f5b8",
+  "cases": 3240,
+  "negative_controls_rejected": [
+    "local_gate",
+    "event_kind",
+    "amount",
+    "damage",
+    "mark"
+  ],
+  "factory": "0x7613c0",
+  "constructor": "0x79bc80",
+  "class_name": "SPTG::GameStatisticsBureau",
+  "primary_vtable": "0x184d6f0",
+  "rtti": "0x184d840",
+  "installed_events": [
+    {
+      "event": 0,
+      "handler": null
+    },
+    {
+      "event": 1,
+      "handler": "0x79dfd0"
+    },
+    {
+      "event": 2,
+      "handler": "0x79e040"
+    },
+    {
+      "event": 3,
+      "handler": "0x79e360"
+    },
+    {
+      "event": 4,
+      "handler": "0x79e8d0"
+    },
+    {
+      "event": 5,
+      "handler": "0x79e990"
+    },
+    {
+      "event": 6,
+      "handler": "0x79ea30"
+    },
+    {
+      "event": 7,
+      "handler": "0x79eaa0"
+    },
+    {
+      "event": 8,
+      "handler": "0x79eca0"
+    },
+    {
+      "event": 9,
+      "handler": "0x79edd0"
+    },
+    {
+      "event": 10,
+      "handler": "0x79ef70"
+    },
+    {
+      "event": 11,
+      "handler": "0x79ef90"
+    },
+    {
+      "event": 12,
+      "handler": "0x79efb0"
+    },
+    {
+      "event": 13,
+      "handler": "0x79f630"
+    },
+    {
+      "event": 14,
+      "handler": "0x79f870"
+    },
+    {
+      "event": 15,
+      "handler": "0x79f9a0"
+    },
+    {
+      "event": 16,
+      "handler": "0x79fa20"
+    },
+    {
+      "event": 17,
+      "handler": "0x79f0e0"
+    },
+    {
+      "event": 18,
+      "handler": "0x79f170"
+    },
+    {
+      "event": 19,
+      "handler": "0x79f1f0"
+    },
+    {
+      "event": 20,
+      "handler": "0x79f270"
+    },
+    {
+      "event": 21,
+      "handler": "0x79f2f0"
+    },
+    {
+      "event": 22,
+      "handler": "0x79f340"
+    },
+    {
+      "event": 23,
+      "handler": "0x79f390"
+    },
+    {
+      "event": 24,
+      "handler": "0x79f3e0"
+    },
+    {
+      "event": 25,
+      "handler": "0x79f430"
+    },
+    {
+      "event": 26,
+      "handler": "0x79f4b0"
+    },
+    {
+      "event": 27,
+      "handler": "0x79f530"
+    },
+    {
+      "event": 28,
+      "handler": "0x79f5b0"
+    },
+    {
+      "event": 29,
+      "handler": null
+    },
+    {
+      "event": 30,
+      "handler": null
+    },
+    {
+      "event": 31,
+      "handler": null
+    }
+  ],
+  "verified_statistics": {
+    "17": {
+      "key": "damagedealt",
+      "attribute": "damage"
+    },
+    "18": {
+      "key": "itemsbought",
+      "attribute": "amount"
+    },
+    "19": {
+      "key": "lifetakenbyplayer",
+      "attribute": "amount"
+    },
+    "20": {
+      "key": "lifetakenfromplayer",
+      "attribute": "amount"
+    },
+    "25": {
+      "key": "objectsthrown",
+      "attribute": "amount"
+    },
+    "26": {
+      "key": "timesgotkilled",
+      "attribute": "amount"
+    },
+    "27": {
+      "key": "timesreanimatedbyplayer",
+      "attribute": "amount"
+    },
+    "28": {
+      "key": "timestaunted",
+      "attribute": "amount"
+    }
+  },
+  "executed_chain": [
+    "rebuilt DispatchPlayerStatistic",
+    "0x772920 (cached path)",
+    "0x79e020",
+    "rebuilt handler selected by original constructor"
+  ],
+  "original_functions": {
+    "0x7613c0": {
+      "size": 60,
+      "sha256": "584fedfd87b00cd9045027bda39486d5a2d05c24a3d3222185316ff638f400e0"
+    },
+    "0x79bc80": {
+      "size": 9028,
+      "sha256": "cdcc47230bf1719b86300531bd4168caaa0cfcd5ddacba7f21cb1c33a15fae58"
+    },
+    "0x7a1f10": {
+      "size": 64,
+      "sha256": "2f5202c944957bbd64ab3884483b6ab02a4a115bb70929caf16cc7f223e2cc3f"
+    },
+    "0x986410": {
+      "size": 44,
+      "sha256": "1fede0f6897218e6da17316acb5a390bd2580e3d129f60e45120c6e3b22ab3cb"
+    },
+    "0x772920": {
+      "size": 824,
+      "sha256": "04184fa79cd590121ef401fe1bc59476073c9a290f6dbcf11b181fc8bec0cbe2"
+    },
+    "0x79e020": {
+      "size": 28,
+      "sha256": "43512fd1e28f72dee6f0cdf73deb4f6b303e5f71d61bd6df4cd5952df5cc9662"
+    },
+    "0x79ef90": {
+      "size": 24,
+      "sha256": "3d4d2ef7e4b83a747873ca9addda78bb2a22e5b5b323c30555ac6d83da9e2ca9"
+    },
+    "0x79f0e0": {
+      "size": 140,
+      "sha256": "4e3707969a8f13e4414729fe553bf57f5bd8bbd005eadc755643c554c04db38d"
+    },
+    "0x79f170": {
+      "size": 128,
+      "sha256": "e4adbb3f849577b19a2843f6ac1f78c215b6dd7cca957e461be7ec8946001741"
+    },
+    "0x79f1f0": {
+      "size": 128,
+      "sha256": "2a73b8220278ecc5d00034b7743e8bc430b99fbab250581955dba3a038425674"
+    },
+    "0x79f270": {
+      "size": 128,
+      "sha256": "4eee52402e437f24ce4ba5794b874e291c48788bf429c2065a41c3f947c0e2c7"
+    },
+    "0x79f430": {
+      "size": 128,
+      "sha256": "f84c2e2736b493659fecf1d422958a407bee6fe8a98e529e629a57fffa6b1665"
+    },
+    "0x79f4b0": {
+      "size": 128,
+      "sha256": "3e1f03250dfdbbec046708732a2b938f21118292dc47718ceb9a294de3341260"
+    },
+    "0x79f530": {
+      "size": 128,
+      "sha256": "62a4e7abf5747c8b1b71ecc6cc308be1e3c627e04dddccc7b53a6b0ee0c2a6a6"
+    },
+    "0x79f5b0": {
+      "size": 128,
+      "sha256": "6579426f086cc6c6722d4b6d020341cf4fa77084769b9f8d424a1495a1848572"
+    }
+  },
+  "limits": [
+    "Normal factory/constructor path; allocator, base/subobject initialization, mutex, clock and destruction effects stubbed.",
+    "Event inputs limited to 11,17,18,19,20,25,26,27,28 and player indices0..3; singleton handle populated.",
+    "Statistics context, lazy container initialization and key lookup are deterministic stubs.",
+    "Installed handlers tested; runtime replacement of callbacks is not excluded."
+  ],
+  "implementation_negative_controls_rejected": [
+    "decrement_instead_of_increment",
+    "wrong_mark_value"
+  ],
+  "implementation": "src/gameplay/Statistics.cpp",
+  "implementation_sha256": "5e71319b375184550c28a7bef69eb322eae2ff55724505ede8c06f139ae35a06",
+  "layout_sha256": "182a15497caa9568faf4f1e30f7883748d5282dfab2070914139a84ee5a69f90",
+  "compiled_functions": [
+    {
+      "symbol": "DispatchPlayerStatistic",
+      "address": "0x986410",
+      "size": 44,
+      "exact": true,
+      "compiled_sha256": "1fede0f6897218e6da17316acb5a390bd2580e3d129f60e45120c6e3b22ab3cb"
+    },
+    {
+      "symbol": "MarkLifeEvent",
+      "address": "0x79ef90",
+      "size": 24,
+      "exact": true,
+      "compiled_sha256": "3d4d2ef7e4b83a747873ca9addda78bb2a22e5b5b323c30555ac6d83da9e2ca9"
+    },
+    {
+      "symbol": "RecordDamage",
+      "address": "0x79f0e0",
+      "size": 140,
+      "exact": false,
+      "compiled_sha256": "9b28a3cd18ccb40c30bbc10cdc9f59fe6bef248be49f8300e8bd261d55816c03"
+    },
+    {
+      "symbol": "RecordPurchase",
+      "address": "0x79f170",
+      "size": 128,
+      "exact": false,
+      "compiled_sha256": "982f4d826a8c978d4a9df3413410b40aa5d19103f14e6b4ee8eab46881ef2381"
+    },
+    {
+      "symbol": "RecordLifeTakenBy",
+      "address": "0x79f1f0",
+      "size": 128,
+      "exact": false,
+      "compiled_sha256": "29e9da4d565564e92f75ed026a180a57b18a78c01c994b9ba427e910e01b211a"
+    },
+    {
+      "symbol": "RecordLifeTakenFrom",
+      "address": "0x79f270",
+      "size": 128,
+      "exact": false,
+      "compiled_sha256": "0d6f892998fa2d1482e99f988eb6af0d395c75c788558a619abf63c5a15cb3e9"
+    },
+    {
+      "symbol": "RecordThrown",
+      "address": "0x79f430",
+      "size": 128,
+      "exact": false,
+      "compiled_sha256": "7e24309d3c0ec076ccf621f455bf4b2da4528b5932277d43b500ffacfaed658e"
+    },
+    {
+      "symbol": "RecordKilled",
+      "address": "0x79f4b0",
+      "size": 128,
+      "exact": false,
+      "compiled_sha256": "cd2d3263e9d8e605100bd8b8814336211d61b62643d8d1226b08b4d956e68fc5"
+    },
+    {
+      "symbol": "RecordReanimated",
+      "address": "0x79f530",
+      "size": 128,
+      "exact": false,
+      "compiled_sha256": "6e592ed6ca44620ab6e8de597de1e98815e036af6b7b47d6ded4216bad0a2e2c"
+    },
+    {
+      "symbol": "RecordTaunted",
+      "address": "0x79f5b0",
+      "size": 128,
+      "exact": false,
+      "compiled_sha256": "5f9c05a7fb7c628572c39579fb4d883dc40384a2b6be7362c54698185c528379"
+    }
+  ]
+}
