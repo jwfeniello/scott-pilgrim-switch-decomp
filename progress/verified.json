@@ -1,9 +1,9 @@
 {
   "version": 1,
-  "generated_at": "2026-10-23T05:56:06.334157+00:00",
+  "generated_at": "2026-10-23T06:07:55.276549+00:00",
   "target_elf_sha256": "ea95638e6d6aaa0dc6cddd552a9366799aa1ec3bc07ee201f23f6c151103f5b8",
   "input_sha256": {
-    "config/builds.json": "0c50b853c03e6dc28b209cc5dcccfa698b192803e1e626449b636dd8b2ce8ae9",
+    "config/builds.json": "a2f093917daea04b7a59c1fcb40cdd7f7986dee2a1e313ef2d8f50c0e73ba5d9",
     "config/functions.tsv": "399e91468a04e0459194c10d68d2210d1157cedefeb19c7851886ca7632fcb18",
     "config/target.json": "23cc6a5227206a953e7668acf5e9ae5c02a25c23b7e7967f0450a814b888241a",
     "src/AbiCfg_aggregate_O2_omit.cpp": "55009ca4f1819fe53803025bf27b93a676c6137877b9d4492828e2e15c89307c",
@@ -606,6 +606,7 @@
     "src/RecoveredStringBuffers.cpp": "eac0c4d311431bebc4bc82fa634bcaed1a3e4689263e1f37dcf68d3dee79bafe",
     "src/RecoveredStringStreams.cpp": "bb879c69b82083d81d0e914015af25c6cf00bb92ff05d747fcc7fd3959547673",
     "src/RecoveredUbisoftStreams.cpp": "46b8e6b772afdc5efda550d81e8589d054d75f4ca9842b80fd1aa00453067242",
+    "src/RecoveredUbisoftStringBuffer.cpp": "c932929fc2b06d42af5b488f40d6980525db5c68bbcb911ca1d8869dc5e888d7",
     "src/ReferenceMembers10.cpp": "eb9075d576e997d8e9313abb3c46752c2013f52f032a3ab80b8fc597faa87358",
     "src/ReferenceMembers11.cpp": "923bb561cf1539fa80a081c6578e5decbe73303beedcdb5074ae692c807db259",
     "src/ReferenceMembers12.cpp": "5e95c9a5cf22a775bf7edb3b866e6cdc9f8be5938be369cdddcfe9ff9b4cd282",
@@ -2747,8 +2748,8 @@
     "7.0.1": "c2f0a175157d9aaace8031f8e6d7ea0ed6142b4bcef287105e3ed227301f1002",
     "8.0.1": "dffd62a213ec6cdb4430012a4a41c11e5e32c288f133d5391f9be49e1c5b69de"
   },
-  "exact_functions": 29903,
-  "exact_bytes": 2918600,
+  "exact_functions": 29904,
+  "exact_bytes": 2918952,
   "builds": [
     {
       "id": "probes",
@@ -9854,6 +9855,11 @@
       "id": "sdk_calendar",
       "compiler": "8.0.1",
       "object_sha256": "ef32f07859a6a9e61c382278e426919cc186ff757927eae7c73008da51e424de"
+    },
+    {
+      "id": "recovered_ubisoft_string_buffer",
+      "compiler": "8.0.1",
+      "object_sha256": "dbcda3eba4857f16b883514b43f9b43c657507950fd9eb3d68d54d1424c5849c"
     }
   ],
   "matches": [
@@ -16268,6 +16274,17 @@
       "source": "src/RecoveredStringStreams.cpp",
       "symbol": "_ZNSt3__116__pad_and_outputIcNS_11char_traitsIcEEEENS_19ostreambuf_iteratorIT_T0_EES6_PKS4_S8_S8_RNS_8ios_baseES4_",
       "source_review": "public_library_source",
+      "relocation_count": 3
+    },
+    {
+      "address": "0x17d1f0",
+      "size": 352,
+      "exact": true,
+      "target_sha256": "281fd9a379aaf36dd5a746c5f5b34cedfb5c233e108d5116278e774ad02e2a3d",
+      "compiled_sha256": "281fd9a379aaf36dd5a746c5f5b34cedfb5c233e108d5116278e774ad02e2a3d",
+      "source": "src/RecoveredUbisoftStringBuffer.cpp",
+      "symbol": "_ZNKSt3__115basic_stringbufIcNS_11char_traitsIcEEN11ubiservices18ContainerAllocatorIcEEE3strEv",
+      "source_review": "manual_reconstruction",
       "relocation_count": 3
     },
     {

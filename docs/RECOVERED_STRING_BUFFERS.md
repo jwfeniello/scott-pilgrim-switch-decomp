@@ -99,3 +99,17 @@ initialization and expression lifetimes follow the inspected original operations
 and bounded JSON-prefix checks now cover the setup before stream initialization.
 The complete diagnostic-logging path remains unverified and the full handler
 remains unmatched. Only complete byte-verified functions add exact credit.
+
+## SDK allocator-backed buffer extraction
+
+`RecoveredUbisoftStringBuffer.cpp` explicitly instantiates the public libc++
+string-buffer template with the reconstructed `ubiservices::ContainerAllocator`.
+Its `str() const` method matches the complete 352-byte function at `0x17d1f0`.
+This extracts the accumulated buffer contents into an allocator-backed string;
+the logging reconstruction at `0x1535e0` calls this helper before creating its
+reference-counted message text. The larger logging function remains unmatched.
+
+The credited profile uses Clang 8, libc++ 4 headers, O2 and general registers.
+Full verification binds allocation/free and string-copy dependencies and
+compares all original function bytes. Other instantiated methods receive no
+new credit from this build.
