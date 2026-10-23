@@ -1,0 +1,50 @@
+{
+  "cases": 6912,
+  "exact_credit": 0,
+  "source_sha256": "c197df056cbbd783242fe8762e37a9be00a4ac7f2466c7b4b3d242c9cdf3baba",
+  "original_sha256": "ea95638e6d6aaa0dc6cddd552a9366799aa1ec3bc07ee201f23f6c151103f5b8",
+  "limits": [
+    "Only paths whose classification result is outside the logging range 2..5, using empty and one/two-node trees.",
+    "Synthetic parser, callbacks, locking and completion service.",
+    "No JSON/stream branch, real concurrency, exceptions or full-game validation."
+  ],
+  "negative_controls_rejected": [
+    "early_finished_state",
+    "wrong_completion_gate",
+    "wrong_release_predicate",
+    "wrong_delivery_argument"
+  ],
+  "compiler_flags": [
+    "-target",
+    "aarch64-none-elf",
+    "-std=c++11",
+    "-D_GNU_SOURCE",
+    "-U_WIN32",
+    "-U_WIN64",
+    "-O2",
+    "-mcpu=cortex-a57",
+    "-fno-omit-frame-pointer",
+    "-fPIC",
+    "-fno-strict-aliasing",
+    "-fno-vectorize",
+    "-fno-slp-vectorize",
+    "-fno-exceptions",
+    "-nostdinc++",
+    "-isystem",
+    "${REPO}\\vendor\\llvm-libcxx-4\\include",
+    "-isystem",
+    "${REPO}\\vendor\\musl\\include",
+    "-isystem",
+    "${REPO}\\vendor\\musl\\generated",
+    "-D_LIBCPP_HAS_NO_THREADS",
+    "-D_LIBCPP_HAS_MUSL_LIBC",
+    "-D__CLANG_MAX_ALIGN_T_DEFINED",
+    "-D_LIBCPP_DISABLE_VISIBILITY_ANNOTATIONS",
+    "-funwind-tables"
+  ],
+  "original_function": "0x181f30",
+  "original_function_size": 3320,
+  "compiled_size": 3312,
+  "source": "src/wip/ServiceResponse.cpp",
+  "logging_branch_verified": false
+}

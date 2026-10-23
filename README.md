@@ -24,6 +24,11 @@ provisional.
 
 ## Gameplay understanding
 
+[Service-response research](docs/SERVICE_RESPONSE_CANDIDATE.md) checks 6,912
+bounded delivery/completion cases against the original ARM64 routine, with four
+rejected negative controls. Its diagnostic-logging branch remains unverified,
+and the candidate receives no exact-match credit.
+
 [Actor actions](docs/ACTOR_ACTIONS.md) maps the original jump/movement class
 hierarchy, shared lifecycle routines, and their player-side dependencies. A
 readable jump-phase model passes 4,224 bounded comparisons with the original
