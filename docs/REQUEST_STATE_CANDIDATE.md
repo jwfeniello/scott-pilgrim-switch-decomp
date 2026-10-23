@@ -180,7 +180,41 @@ the original integer-register zero stores rather than vector stores. This is a
 successful reconstruction profile, not evidence that the original build used
 that flag. The verifier checks each complete body and its individual bindings.
 
-Ten of the thirteen associated constructors now match. Ticket creation, session
-creation, and session join remain uncredited, as do all thirteen state updates.
+The final three constructor matches are recorded below. All thirteen state updates
+remain uncredited.
 Explicit ABI layouts and vtable references still need integration into a complete
 class model before this code can serve as portable matchmaking infrastructure.
+
+## Complete constructor family
+
+Three additional selections in `MatchmakingContextConstructors.cpp` finish the
+thirteen-constructor family, adding **1,636 exact bytes**:
+
+| Selection | Request | Address | Function bytes | Context bytes |
+| --- | --- | --- | --- | --- |
+| 9 | session join | `0x4e71e0` | 552 | 184 |
+| 10 | session creation | `0x4df560` | 536 | 96 |
+| 11 | ticket creation | `0x4d8a70` | 548 | 136 |
+
+Selections 9 and 10 use integer registers for the context stores. Selections 9
+and 11 also use LLVM's `-tail-dup-placement-threshold=4` to reproduce duplicated
+shared-ownership assignment branches. These are matching build profiles, not
+claims about the original compiler invocation.
+
+The ticket context has an 80-byte member at offset `0x18` initialized by
+`0x5430a0`; its list links start at `0x68`. The join context has an eight-byte
+member at `0x38` initialized by `0x4eb3d0`, followed by a 120-byte member at
+`0x40` initialized by `0x53ab90`. These member extents are ABI views inferred
+from offsets and allocation sizes; their complete original declarations remain
+unknown. Session creation initializes a root link to its own field at `0x50`.
+
+Source initialization order matters even where the resulting field values agree.
+For ticket creation, placing the 32-bit field initialization before the task
+pointer store allows the compiler to emit the original post-indexed paired
+store. In session creation, initializing the root link after the zero fields
+reproduces the original store ordering. No instruction patches are used.
+
+All thirteen constructors and all thirteen corresponding destructors are now
+verified against their complete original bodies. This establishes request setup
+and cleanup coverage, not a functioning matchmaking subsystem: the state-update
+family and external operation implementations still require reconstruction.

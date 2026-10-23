@@ -1,9 +1,9 @@
 {
   "version": 1,
-  "generated_at": "2026-10-23T03:47:54.282555+00:00",
+  "generated_at": "2026-10-23T03:55:38.233794+00:00",
   "target_elf_sha256": "ea95638e6d6aaa0dc6cddd552a9366799aa1ec3bc07ee201f23f6c151103f5b8",
   "input_sha256": {
-    "config/builds.json": "61561491fa19308ec9b353452c4ce1031b522216d6432a46a07a2ba7ba221f77",
+    "config/builds.json": "42a74303dfa31c0b5cf293439be38eb7de742f7b67a0ee70c2bf951e0fcbb036",
     "config/functions.tsv": "399e91468a04e0459194c10d68d2210d1157cedefeb19c7851886ca7632fcb18",
     "config/target.json": "23cc6a5227206a953e7668acf5e9ae5c02a25c23b7e7967f0450a814b888241a",
     "src/AbiCfg_aggregate_O2_omit.cpp": "55009ca4f1819fe53803025bf27b93a676c6137877b9d4492828e2e15c89307c",
@@ -120,7 +120,7 @@
     "src/LibraryWidth40.cpp": "d57d02c493138d924a36cbbc7ad196aeb5fe0b31e087a34f972f164c9070332a",
     "src/LibraryWidth48.cpp": "99cc1643b8cb0c460b479b4dff064169579fd872f81c601e9f4d63500de86ed0",
     "src/LibraryWidth8.cpp": "c808b548ebca6ccc2254acae97f92c0241a2368777bf239fce53ef2513f095c5",
-    "src/MatchmakingContextConstructors.cpp": "1626f0ba4fb0f20a728e6f5bb52e2703a8c71d0a6e74644a67d83fa372d884b6",
+    "src/MatchmakingContextConstructors.cpp": "f0e540b3eb9dfad7bfb1de0afadf03ae02de3ad62e523dc53de69b0f9f38068d",
     "src/MatchmakingRequestConstructor.cpp": "bf5bc86fd7276ea6f22567b8a960544673b2f673e31710d3ff640317be8417aa",
     "src/MatchmakingRequestDestructor.cpp": "aebe825b8402e0d9668b39e2077314f768350db39e44f4b2b4012c8993a78b7a",
     "src/NarrowCallsCfgRecoveryVoidBool.cpp": "972cd9c0d7701115584ac952b2c0cf491a31f97bbd73b0b56a22bb9a9dfd3e37",
@@ -2738,8 +2738,8 @@
     "7.0.1": "c2f0a175157d9aaace8031f8e6d7ea0ed6142b4bcef287105e3ed227301f1002",
     "8.0.1": "dffd62a213ec6cdb4430012a4a41c11e5e32c288f133d5391f9be49e1c5b69de"
   },
-  "exact_functions": 29862,
-  "exact_bytes": 2906968,
+  "exact_functions": 29865,
+  "exact_bytes": 2908604,
   "builds": [
     {
       "id": "probes",
@@ -9785,6 +9785,21 @@
       "id": "matchmaking_context_constructor_8",
       "compiler": "8.0.1",
       "object_sha256": "e27131ceb489d1c8d52fc92019d23a23339fe9b34f9183b322886170f86f2f6e"
+    },
+    {
+      "id": "matchmaking_context_constructor_9",
+      "compiler": "8.0.1",
+      "object_sha256": "3f26f34db33de2e89c4a47c806bcf6924cd165677ee999b6fbf1b97b63695033"
+    },
+    {
+      "id": "matchmaking_context_constructor_10",
+      "compiler": "8.0.1",
+      "object_sha256": "d61591fecdb2660e6a871b78e89237de90d043af9283359000b891d8d49618e6"
+    },
+    {
+      "id": "matchmaking_context_constructor_11",
+      "compiler": "8.0.1",
+      "object_sha256": "c71fce18da48fb4c5d78fcc78f0dcb47be101d1826a88ff3ec55d047bfbb17b6"
     }
   ],
   "matches": [
@@ -123430,6 +123445,17 @@
       "relocation_count": 2
     },
     {
+      "address": "0x4d8a70",
+      "size": 548,
+      "exact": true,
+      "target_sha256": "f4dd85316faf700b945d1a3acbc5be17a9105695871278d2f79135d54396d5a1",
+      "compiled_sha256": "f4dd85316faf700b945d1a3acbc5be17a9105695871278d2f79135d54396d5a1",
+      "source": "src/MatchmakingContextConstructors.cpp",
+      "symbol": "InitializeRequest",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 26
+    },
+    {
       "address": "0x4d8ca0",
       "size": 244,
       "exact": true,
@@ -125859,6 +125885,17 @@
       "symbol": "_Z11TypeAddressILj5109072EEPKvv",
       "source_review": "manual_reconstruction",
       "relocation_count": 2
+    },
+    {
+      "address": "0x4df560",
+      "size": 536,
+      "exact": true,
+      "target_sha256": "9c75b8f6293abd954ec5bf3cc42e7d49d58b0246d4d16339a912a130f4802770",
+      "compiled_sha256": "9c75b8f6293abd954ec5bf3cc42e7d49d58b0246d4d16339a912a130f4802770",
+      "source": "src/MatchmakingContextConstructors.cpp",
+      "symbol": "InitializeRequest",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 25
     },
     {
       "address": "0x4df780",
@@ -128576,6 +128613,17 @@
       "symbol": "_Z11TypeAddressILj5140944EEPKvv",
       "source_review": "manual_reconstruction",
       "relocation_count": 2
+    },
+    {
+      "address": "0x4e71e0",
+      "size": 552,
+      "exact": true,
+      "target_sha256": "b01ab6fb521f169bd528a717db9a3f689156fa893176ade47101adf990bf1d17",
+      "compiled_sha256": "b01ab6fb521f169bd528a717db9a3f689156fa893176ade47101adf990bf1d17",
+      "source": "src/MatchmakingContextConstructors.cpp",
+      "symbol": "InitializeRequest",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 27
     },
     {
       "address": "0x4e7410",

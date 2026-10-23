@@ -1,4 +1,4 @@
-// ABI views for eight RTTI-associated Storm matchmaking request constructors.
+// ABI views for eleven RTTI-associated Storm matchmaking request constructors.
 // REQUEST_CONTEXT selects the recovered context layout; see
 // docs/REQUEST_STATE_CANDIDATE.md.
 #include <stddef.h>
@@ -133,6 +133,41 @@ struct Context {
   uint64_t second, third, fourth, fifth;
 };
 
+#elif REQUEST_CONTEXT == 9
+enum { ContextBytes = 184 };
+struct Context {
+  void **table;
+  void *task;
+  uint32_t first, pad;
+  uint64_t second, third, fourth, fifth;
+  char name[8];
+  char detail[120];
+};
+
+#elif REQUEST_CONTEXT == 10
+enum { ContextBytes = 96 };
+struct Context {
+  void **table;
+  void *task;
+  uint32_t first, pad;
+  uint64_t second, third, fourth, fifth, sixth, seventh;
+  void *root;
+  uint64_t count, flags;
+};
+
+#elif REQUEST_CONTEXT == 11
+enum { ContextBytes = 136 };
+struct Context {
+  void **table;
+  void *task;
+  uint32_t first, pad;
+  char detail[80];
+  void *prev;
+  void *next;
+  uint64_t count;
+  uint32_t flags, pad2;
+};
+
 #else
 #error Unknown request context
 #endif
@@ -163,6 +198,8 @@ void InitBase(Request *, Name, uint32_t, int32_t, Unique);
 void FreeRelayer(void *, uint64_t, const char *, uint32_t);
 void *AllocateOperation(uint32_t, uint32_t, uint32_t, uint32_t);
 void InitOperation(void *, void *);
+void InitializeName(void *);
+void InitializeDetail(void *);
 void *AllocateContext(size_t, uint32_t, uint32_t, uint64_t, const char *,
                       uint32_t);
 void *AllocateControl(size_t);
@@ -270,6 +307,41 @@ extern "C" void InitializeRequest(Request *self, const Name &name, uint32_t a,
   c->third = 0;
   c->fourth = 0;
   c->fifth = 0;
+
+#elif REQUEST_CONTEXT == 9
+  c->task = nullptr;
+  c->first = 0;
+  c->second = 0;
+  c->third = 0;
+  c->fourth = 0;
+  c->fifth = 0;
+  c->table = ContextTable + 2;
+  InitializeName(c->name);
+  InitializeDetail(c->detail);
+
+#elif REQUEST_CONTEXT == 10
+  c->task = nullptr;
+  c->first = 0xffffffff;
+  c->second = 0;
+  c->third = 0;
+  c->fourth = 0;
+  c->fifth = 0;
+  c->table = ContextTable + 2;
+  c->sixth = 0;
+  c->seventh = 0;
+  c->count = 0;
+  c->flags = 0;
+  c->root = &c->count;
+
+#elif REQUEST_CONTEXT == 11
+  c->table = ContextTable + 2;
+  c->first = 0;
+  c->task = nullptr;
+  InitializeDetail(c->detail);
+  c->prev = &c->prev;
+  c->next = &c->prev;
+  c->count = 0;
+  c->flags = 0;
 
 #else
 #error Unknown request context

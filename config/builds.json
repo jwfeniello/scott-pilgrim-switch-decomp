@@ -413574,6 +413574,222 @@
           }
         }
       ]
+    },
+    {
+      "id": "matchmaking_context_constructor_9",
+      "source": "src/MatchmakingContextConstructors.cpp",
+      "source_review": "manual_reconstruction",
+      "compiler": "8.0.1",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-std=c++11",
+        "-O2",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-fno-omit-frame-pointer",
+        "-fPIC",
+        "-fno-exceptions",
+        "-fno-vectorize",
+        "-fno-slp-vectorize",
+        "-funwind-tables",
+        "-mllvm",
+        "-tail-dup-placement-threshold=4",
+        "-mgeneral-regs-only",
+        "-DREQUEST_CONTEXT=9"
+      ],
+      "functions": [
+        {
+          "address": "0x4e71e0",
+          "size": 552,
+          "symbol": "InitializeRequest",
+          "target_sha256": "b01ab6fb521f169bd528a717db9a3f689156fa893176ade47101adf990bf1d17",
+          "bindings": {
+            "InitBase": "0x472f50",
+            "FreeRelayer": "0x57edc0",
+            "AllocateOperation": "0x36ea0",
+            "InitOperation": "0x530a10",
+            "AllocateContext": "0x57d200",
+            "InitializeName": "0x4eb3d0",
+            "InitializeDetail": "0x53ab90",
+            "AllocateControl": "0xfa3b30",
+            "AttachTask": "0x49e0d0",
+            "ReleaseWeak": "0xfa4310",
+            "AddCallback": "0x49bf60"
+          },
+          "got_bindings": {
+            "RequestTable": {
+              "cell": "0x18f9048",
+              "pointee": "0x182a940"
+            },
+            "DisposerTable": {
+              "cell": "0x18f9050",
+              "pointee": "0x182a9d8"
+            },
+            "ContextTable": {
+              "cell": "0x18f9058",
+              "pointee": "0x182aa58"
+            },
+            "ControlTable": {
+              "cell": "0x18f9060",
+              "pointee": "0x182aac0"
+            },
+            "HandlerTable": {
+              "cell": "0x18f9068",
+              "pointee": "0x182ab10"
+            },
+            "CallbackIdentity": {
+              "cell": "0x18f9070",
+              "pointee": "0x4e7c80"
+            }
+          },
+          "literals": {
+            "00": "0x1326e41"
+          }
+        }
+      ]
+    },
+    {
+      "id": "matchmaking_context_constructor_10",
+      "source": "src/MatchmakingContextConstructors.cpp",
+      "source_review": "manual_reconstruction",
+      "compiler": "8.0.1",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-std=c++11",
+        "-O2",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-fno-omit-frame-pointer",
+        "-fPIC",
+        "-fno-exceptions",
+        "-fno-vectorize",
+        "-fno-slp-vectorize",
+        "-funwind-tables",
+        "-mgeneral-regs-only",
+        "-DREQUEST_CONTEXT=10"
+      ],
+      "functions": [
+        {
+          "address": "0x4df560",
+          "size": 536,
+          "symbol": "InitializeRequest",
+          "target_sha256": "9c75b8f6293abd954ec5bf3cc42e7d49d58b0246d4d16339a912a130f4802770",
+          "bindings": {
+            "InitBase": "0x472f50",
+            "FreeRelayer": "0x57edc0",
+            "AllocateOperation": "0x36ea0",
+            "InitOperation": "0x530a10",
+            "AllocateContext": "0x57d200",
+            "AllocateControl": "0xfa3b30",
+            "AttachTask": "0x49e0d0",
+            "ReleaseWeak": "0xfa4310",
+            "AddCallback": "0x49bf60"
+          },
+          "got_bindings": {
+            "RequestTable": {
+              "cell": "0x18f8cb8",
+              "pointee": "0x1829040"
+            },
+            "DisposerTable": {
+              "cell": "0x18f8cc0",
+              "pointee": "0x18290d8"
+            },
+            "ContextTable": {
+              "cell": "0x18f8cc8",
+              "pointee": "0x1829158"
+            },
+            "ControlTable": {
+              "cell": "0x18f8cd0",
+              "pointee": "0x18291c0"
+            },
+            "HandlerTable": {
+              "cell": "0x18f8cd8",
+              "pointee": "0x1829210"
+            },
+            "CallbackIdentity": {
+              "cell": "0x18f8ce0",
+              "pointee": "0x4e00f0"
+            }
+          },
+          "literals": {
+            "00": "0x1326e41"
+          }
+        }
+      ]
+    },
+    {
+      "id": "matchmaking_context_constructor_11",
+      "source": "src/MatchmakingContextConstructors.cpp",
+      "source_review": "manual_reconstruction",
+      "compiler": "8.0.1",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-std=c++11",
+        "-O2",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-fno-omit-frame-pointer",
+        "-fPIC",
+        "-fno-exceptions",
+        "-fno-vectorize",
+        "-fno-slp-vectorize",
+        "-funwind-tables",
+        "-mllvm",
+        "-tail-dup-placement-threshold=4",
+        "-DREQUEST_CONTEXT=11"
+      ],
+      "functions": [
+        {
+          "address": "0x4d8a70",
+          "size": 548,
+          "symbol": "InitializeRequest",
+          "target_sha256": "f4dd85316faf700b945d1a3acbc5be17a9105695871278d2f79135d54396d5a1",
+          "bindings": {
+            "InitBase": "0x472f50",
+            "FreeRelayer": "0x57edc0",
+            "AllocateOperation": "0x36ea0",
+            "InitOperation": "0x530a10",
+            "AllocateContext": "0x57d200",
+            "InitializeDetail": "0x5430a0",
+            "AllocateControl": "0xfa3b30",
+            "AttachTask": "0x49e0d0",
+            "ReleaseWeak": "0xfa4310",
+            "AddCallback": "0x49bf60"
+          },
+          "got_bindings": {
+            "RequestTable": {
+              "cell": "0x18f8978",
+              "pointee": "0x1827a08"
+            },
+            "DisposerTable": {
+              "cell": "0x18f8980",
+              "pointee": "0x1827aa0"
+            },
+            "ContextTable": {
+              "cell": "0x18f8988",
+              "pointee": "0x1827b20"
+            },
+            "ControlTable": {
+              "cell": "0x18f8990",
+              "pointee": "0x1827b68"
+            },
+            "HandlerTable": {
+              "cell": "0x18f8998",
+              "pointee": "0x1827bb8"
+            },
+            "CallbackIdentity": {
+              "cell": "0x18f89a0",
+              "pointee": "0x4d9380"
+            }
+          },
+          "literals": {
+            "00": "0x1326e41"
+          }
+        }
+      ]
     }
   ]
 }
