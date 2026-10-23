@@ -46,6 +46,11 @@ nearby-player recovery scan and the following animation/recovery state. Another
 1,120 bounded checks verify candidate ordering, callback-sensitive counters,
 spatial boundaries, and complete recovery-handler behavior; no exact credit.
 
+[Gameplay statistics](docs/GAMEPLAY_STATISTICS.md) identifies that path as life
+transfer through original event strings and constructor wiring. It maps 28 handlers
+and adds 3,240 bounded checks through nine original event handlers, including damage,
+purchases, death, life transfer, and reanimation statistics; no exact credit.
+
 [Player connections](docs/PLAYER_CONNECTIONS.md) traces action exit, a game-over
 timer, collision-scan gating, and selected regions of the shared 13 KB player
 update. It adds 1,246 bounded comparisons, explicitly separating complete small

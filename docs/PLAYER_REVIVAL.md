@@ -6,6 +6,11 @@ catalog, spatial checks, counter transfer, animation request, and state transiti
 "Revival", "group", and "counter" are descriptive research names. They do not
 establish original method names or prove the counter's UI label (for example lives).
 
+**Follow-up:** [Gameplay statistics](GAMEPLAY_STATISTICS.md) now ties the consumed
+counter to life transfer using the original event wiring and `lifetakenbyplayer` /
+`lifetakenfromplayer` strings. It also distinguishes a separate reanimation event.
+The original field name and UI presentation are still not recovered.
+
 There are **1,120 new bounded checks**: 753 interior revival-scan cases, 360 calls
 through the complete 396-byte recovery handler, and seven calls through the
 concrete exclusion query. Five mutated models are rejected. These are behavioral
