@@ -412408,6 +412408,184 @@
           "got_bindings": {}
         }
       ]
+    },
+    {
+      "id": "recovered_stringbuf_0",
+      "source": "src/RecoveredStringBuffers.cpp",
+      "source_review": "public_library_source",
+      "compiler": "8.0.1",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-std=c++11",
+        "-D_GNU_SOURCE",
+        "-U_WIN32",
+        "-U_WIN64",
+        "-O2",
+        "-mcpu=cortex-a57",
+        "-fomit-frame-pointer",
+        "-fno-pic",
+        "-fno-strict-aliasing",
+        "-fno-vectorize",
+        "-fno-slp-vectorize",
+        "-nostdinc++",
+        "-isystem",
+        "vendor/llvm-libcxx-4/include",
+        "-isystem",
+        "vendor/musl/include",
+        "-isystem",
+        "vendor/musl/generated",
+        "-D_LIBCPP_HAS_NO_THREADS",
+        "-D_LIBCPP_HAS_MUSL_LIBC",
+        "-D__CLANG_MAX_ALIGN_T_DEFINED",
+        "-D_LIBCPP_DISABLE_VISIBILITY_ANNOTATIONS",
+        "-fno-exceptions"
+      ],
+      "header_roots": [
+        "vendor/llvm-libcxx-4/include",
+        "vendor/musl/include",
+        "vendor/musl/generated"
+      ],
+      "functions": [
+        {
+          "address": "0x1601d0",
+          "size": 20,
+          "symbol": "_ZNSt3__115basic_stringbufIcNS_11char_traitsIcEENS_9allocatorIcEEE7seekposENS_4fposI11__mbstate_tEEj",
+          "target_sha256": "61ecfdedeea60c0831858d8c6c9d7142b8b669ab793902ce5517d0196b080598",
+          "bindings": {},
+          "got_bindings": {}
+        },
+        {
+          "address": "0x4fd480",
+          "size": 20,
+          "symbol": "_ZNSt3__115basic_stringbufIcNS_11char_traitsIcEENS_9allocatorIcEEE7seekposENS_4fposI11__mbstate_tEEj",
+          "target_sha256": "61ecfdedeea60c0831858d8c6c9d7142b8b669ab793902ce5517d0196b080598",
+          "bindings": {},
+          "got_bindings": {}
+        },
+        {
+          "address": "0x160250",
+          "size": 124,
+          "symbol": "_ZNSt3__115basic_stringbufIcNS_11char_traitsIcEENS_9allocatorIcEEE9pbackfailEi",
+          "target_sha256": "0b967f237096d411bab1cdb4353f18697120542d1d737da34561fe9b80544a76",
+          "bindings": {},
+          "got_bindings": {}
+        },
+        {
+          "address": "0x4fd500",
+          "size": 124,
+          "symbol": "_ZNSt3__115basic_stringbufIcNS_11char_traitsIcEENS_9allocatorIcEEE9pbackfailEi",
+          "target_sha256": "0b967f237096d411bab1cdb4353f18697120542d1d737da34561fe9b80544a76",
+          "bindings": {},
+          "got_bindings": {}
+        }
+      ]
+    },
+    {
+      "id": "recovered_stringbuf_1",
+      "source": "src/RecoveredStringBuffers.cpp",
+      "source_review": "public_library_source",
+      "compiler": "8.0.1",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-std=c++11",
+        "-D_GNU_SOURCE",
+        "-U_WIN32",
+        "-U_WIN64",
+        "-O3",
+        "-mcpu=cortex-a57",
+        "-fomit-frame-pointer",
+        "-fno-pic",
+        "-fno-strict-aliasing",
+        "-fno-vectorize",
+        "-fno-slp-vectorize",
+        "-nostdinc++",
+        "-isystem",
+        "vendor/llvm-libcxx-8/include",
+        "-isystem",
+        "vendor/musl/include",
+        "-isystem",
+        "vendor/musl/generated",
+        "-D_LIBCPP_HAS_NO_THREADS",
+        "-D_LIBCPP_HAS_MUSL_LIBC",
+        "-D__CLANG_MAX_ALIGN_T_DEFINED",
+        "-D_LIBCPP_DISABLE_VISIBILITY_ANNOTATIONS",
+        "-fno-exceptions"
+      ],
+      "header_roots": [
+        "vendor/llvm-libcxx-8/include",
+        "vendor/musl/include",
+        "vendor/musl/generated"
+      ],
+      "functions": [
+        {
+          "address": "0x160070",
+          "size": 340,
+          "symbol": "_ZNSt3__115basic_stringbufIcNS_11char_traitsIcEENS_9allocatorIcEEE7seekoffExNS_8ios_base7seekdirEj",
+          "target_sha256": "8f8298dfb4e58758faab05ed7069acc3f62600da84021709f46e63cd97aa2db4",
+          "bindings": {},
+          "got_bindings": {}
+        },
+        {
+          "address": "0x4fd320",
+          "size": 340,
+          "symbol": "_ZNSt3__115basic_stringbufIcNS_11char_traitsIcEENS_9allocatorIcEEE7seekoffExNS_8ios_base7seekdirEj",
+          "target_sha256": "8f8298dfb4e58758faab05ed7069acc3f62600da84021709f46e63cd97aa2db4",
+          "bindings": {},
+          "got_bindings": {}
+        }
+      ]
+    },
+    {
+      "id": "recovered_stringbuf_2",
+      "source": "src/RecoveredStringBuffers.cpp",
+      "source_review": "public_library_source",
+      "compiler": "8.0.1",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-std=c++11",
+        "-D_GNU_SOURCE",
+        "-U_WIN32",
+        "-U_WIN64",
+        "-O3",
+        "-mcpu=cortex-a57",
+        "-fno-omit-frame-pointer",
+        "-fno-pic",
+        "-fno-strict-aliasing",
+        "-fno-vectorize",
+        "-fno-slp-vectorize",
+        "-nostdinc++",
+        "-isystem",
+        "vendor/llvm-libcxx-8/include",
+        "-isystem",
+        "vendor/musl/include",
+        "-isystem",
+        "vendor/musl/generated",
+        "-D_LIBCPP_HAS_NO_THREADS",
+        "-D_LIBCPP_HAS_MUSL_LIBC",
+        "-D__CLANG_MAX_ALIGN_T_DEFINED",
+        "-D_LIBCPP_DISABLE_VISIBILITY_ANNOTATIONS"
+      ],
+      "header_roots": [
+        "vendor/llvm-libcxx-8/include",
+        "vendor/musl/include",
+        "vendor/musl/generated"
+      ],
+      "functions": [
+        {
+          "address": "0x17d350",
+          "size": 404,
+          "symbol": "_ZNSt3__115basic_stringbufIcNS_11char_traitsIcEENS_9allocatorIcEEE3strERKNS_12basic_stringIcS2_S4_EE",
+          "target_sha256": "b21dfafd464ee48826821e9118c2c56acc307c5385cab88c072361cd81c88422",
+          "bindings": {
+            "_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEE6assignEPKcm": "0x161da0",
+            "_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEE6appendEmc": "0x1604b0"
+          },
+          "got_bindings": {}
+        }
+      ]
     }
   ]
 }

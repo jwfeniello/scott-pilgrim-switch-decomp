@@ -16,8 +16,8 @@ Edition** for Nintendo Switch.
 [Progress on decomp.dev](https://decomp.dev/jwfeniello/scott-pilgrim-switch-decomp)
 · [Progress workflow](https://github.com/jwfeniello/scott-pilgrim-switch-decomp/actions/workflows/progress.yml)
 
-**Current locally verified progress: 29,832 exact functions /
-2,897,228 bytes / 17.669619% of executable `.text`.** The original `.text` is 16,396,664 bytes.
+**Current locally verified progress: 29,839 exact functions /
+2,898,600 bytes / 17.677986% of executable `.text`.** The original `.text` is 16,396,664 bytes.
 This includes engine and library infrastructure. The project does not yet rebuild
 or boot the complete game. Original method names and many ABI declarations remain
 provisional.
@@ -66,6 +66,9 @@ implementation; its player-side binding remains unproven.
 [Additional hash-map matches](docs/RECOVERED_HASH_MAPS.md) add seven complete
 library functions: pointer-key lookup and rehash policy. Their application-level
 types remain unrecovered.
+
+[String-buffer matches](docs/RECOVERED_STRING_BUFFERS.md) add seven complete
+seek, put-back, and string-assignment routines from public libc++ source.
 
 ## Contributing
 
