@@ -1,0 +1,28 @@
+{
+  "cases": 840,
+  "negative_controls": [
+    {
+      "name": "port_truncation",
+      "case_index": 30
+    },
+    {
+      "name": "scheme_case",
+      "case_index": 420
+    },
+    {
+      "name": "host_rewrite",
+      "case_index": 84
+    }
+  ],
+  "exact_credit": false,
+  "original_sha256": "ea95638e6d6aaa0dc6cddd552a9366799aa1ec3bc07ee201f23f6c151103f5b8",
+  "source_sha256": "cf43f4fe2b49235b472c3e1470155fc1fd69a06bece2d042fbbef12dcd0cf427",
+  "candidate_sha256": "f402d3cebaa5e4b5535cd6eae0dff46589755b47f04a94f78e677a3c533a901b",
+  "boundary": "Complete setup return; original parser, tail builder, port reader, folded search and stringstream extraction execute; all output fields and ordered lifetime traces compared.",
+  "limitations": [
+    "SliceText and DetachText modeled with unique owners",
+    "allocation/free, SDK insertion, stream initialization/insertion/destruction, text construction and header lookup synthetic",
+    "ASCII toupper and bounded decimal atoi modeled",
+    "no concurrency, allocation failure, malformed-input safety, or network/game execution"
+  ]
+}

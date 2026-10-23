@@ -39,3 +39,6 @@ validation. The fixture does not establish portability or exact code identity.
 Remaining matching differences include stack frame size, temporary locations,
 and an additional retained register. The receipt in
 `progress/websocket_handshake_behavior.json` records source and original hashes.
+
+The called URI/Host setup now has a separate complete reconstruction and
+bounded comparison: [WebSocket setup candidate](WEBSOCKET_SETUP_CANDIDATE.md).
