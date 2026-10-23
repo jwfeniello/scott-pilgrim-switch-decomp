@@ -140,3 +140,19 @@ recovered symbols. Both sides of the capacity/cursor predicate are evaluated
 to reproduce the original conditional comparison. Exact verification covers
 the complete function, including bindings to the string insertion helper
 `0x45ad0`, allocator `0x36ea0`, and deallocator `0x37030`.
+
+## JSON view destruction
+
+`src/SdkJsonDestructors.cpp` reconstructs `ubiservices::Json` destruction.
+The class identity comes from original RTTI at `0x17c7af0`, associated with
+vtable `0x17c4368`. The normal destructor at `0x3eed0` and deleting destructor
+at `0x3ef50` each match a complete 120-byte function.
+
+Destruction clears the 24-byte view's owner pointer, atomically releases the
+owner's shared root, calls its virtual disposal method when the reference
+count reaches zero, then frees the owner allocation. The deleting destructor
+also releases the view allocation. Virtual-table references, free/delete
+bindings and all instructions are checked by the exact verifier.
+
+Only the Json class identity is established by RTTI here. Names and types
+for the shared-root and owner internals remain reconstructed ABI views.

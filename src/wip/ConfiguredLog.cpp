@@ -103,14 +103,12 @@ struct JsonOwner : AtomicOwner<RefObject> {
 extern "C" void *JsonViewTable[];
 extern "C" void Free(void *);
 struct JsonView {
-  void **table;
   uint64_t flags;
   JsonOwner *owner;
   JsonView(const Text &);
-  ~JsonView() {
+  virtual ~JsonView() {
     JsonOwner *p = owner;
     owner = nullptr;
-    table = JsonViewTable + 2;
     if (p) {
       p->~JsonOwner();
       Free(p);

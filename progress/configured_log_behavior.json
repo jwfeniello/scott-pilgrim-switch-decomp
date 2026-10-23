@@ -20,10 +20,10 @@
       "case_index": 0
     }
   ],
-  "source_sha256": "67e60df3f86db7bd052668375b312f4e19efff26b6e39a76a9d188645e948ec8",
+  "source_sha256": "5fc5029d3277e4a6c0f46a40ab55dfd9ffb76f97f350b6de668a3313bca750df",
   "target_elf_sha256": "ea95638e6d6aaa0dc6cddd552a9366799aa1ec3bc07ee201f23f6c151103f5b8",
   "stream_header_sha256": "95ae29b1030a39953cc75f5422aeb03516fb53445999d5f23f2d6dcda9f5484b",
-  "candidate_sha256": "ba545ec9f29f6b0dd67188d9e92adab2bab8ba61dc7a7b3d0c348b452184e688",
+  "candidate_sha256": "d2f87f6a3dc2d4d39b6eb76fb7bc4c3dbf9525b4a5f3fc47b30d510afea919cc",
   "boundary": "complete function return; original exact 352-byte string extraction executes; other services synthetic",
   "limitations": [
     "synthetic stream insertion, text/view constructors, allocator, logging and disposal",

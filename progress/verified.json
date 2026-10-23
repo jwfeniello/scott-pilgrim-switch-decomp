@@ -1,9 +1,9 @@
 {
   "version": 1,
-  "generated_at": "2026-10-23T06:07:55.276549+00:00",
+  "generated_at": "2026-10-23T06:29:47.357174+00:00",
   "target_elf_sha256": "ea95638e6d6aaa0dc6cddd552a9366799aa1ec3bc07ee201f23f6c151103f5b8",
   "input_sha256": {
-    "config/builds.json": "a2f093917daea04b7a59c1fcb40cdd7f7986dee2a1e313ef2d8f50c0e73ba5d9",
+    "config/builds.json": "53ef6e05ae4c329f9e9488f64c6bbfd9df8089d58a8beb24b8bddc84d3826764",
     "config/functions.tsv": "399e91468a04e0459194c10d68d2210d1157cedefeb19c7851886ca7632fcb18",
     "config/target.json": "23cc6a5227206a953e7668acf5e9ae5c02a25c23b7e7967f0450a814b888241a",
     "src/AbiCfg_aggregate_O2_omit.cpp": "55009ca4f1819fe53803025bf27b93a676c6137877b9d4492828e2e15c89307c",
@@ -629,6 +629,7 @@
     "src/SdkCompositeDestructor.cpp": "1fdca780939983f46d46f7eb2f3dc54172e08692973b6611dd9e87532f07cf2e",
     "src/SdkJson.cpp": "a4935f4d16aa0854610fe7a52d7d59ac674a7038a3a78bd2bbf0272434110a37",
     "src/SdkJsonBuffer.cpp": "c860abd082a874b98e79dbf20d2cc25568ed9e3ce84590f905cb02369988e4ce",
+    "src/SdkJsonDestructors.cpp": "3ef45e070f15fb10f0d81103ce59e5aa157a7ac908830bb9d1f71d76fdb71ce1",
     "src/SdkJsonDocument.cpp": "4d232fbeea58587cc8a60f65ac2d8bb21c26ea17b0deeae70aa4ccfdee057d22",
     "src/SdkOwnerNoBaseOwnerKeepPicUnwind.cpp": "f5b33c74fb068eda3471b1ccdb60accce71daf06bb9cc3c4c4a1068edf667e35",
     "src/SdkOwnerSimpleOwnerKeepPicUnwind.cpp": "8fc2b5afdba4f85a0404131c8b2fb269ec4ce96f7f37f2e73d9f742682950ea7",
@@ -2741,15 +2742,15 @@
     "vendor/zlib-1.2.11/zutil.h": "9a63f6690fac1620aa3cecee5752af618806da438a256b4a047fbcd289cac159"
   },
   "compiler_versions": {
-    "7.0.1": "clang version 7.0.1 (tags/RELEASE_701/final)",
-    "8.0.1": "clang version 8.0.1 (tags/RELEASE_801/final)"
+    "8.0.1": "clang version 8.0.1 (tags/RELEASE_801/final)",
+    "7.0.1": "clang version 7.0.1 (tags/RELEASE_701/final)"
   },
   "compiler_sha256": {
-    "7.0.1": "c2f0a175157d9aaace8031f8e6d7ea0ed6142b4bcef287105e3ed227301f1002",
-    "8.0.1": "dffd62a213ec6cdb4430012a4a41c11e5e32c288f133d5391f9be49e1c5b69de"
+    "8.0.1": "dffd62a213ec6cdb4430012a4a41c11e5e32c288f133d5391f9be49e1c5b69de",
+    "7.0.1": "c2f0a175157d9aaace8031f8e6d7ea0ed6142b4bcef287105e3ed227301f1002"
   },
-  "exact_functions": 29904,
-  "exact_bytes": 2918952,
+  "exact_functions": 29906,
+  "exact_bytes": 2919192,
   "builds": [
     {
       "id": "probes",
@@ -9860,6 +9861,11 @@
       "id": "recovered_ubisoft_string_buffer",
       "compiler": "8.0.1",
       "object_sha256": "dbcda3eba4857f16b883514b43f9b43c657507950fd9eb3d68d54d1424c5849c"
+    },
+    {
+      "id": "sdk_json_destructors",
+      "compiler": "8.0.1",
+      "object_sha256": "a6fd09c6197ab842dc94e9d6650180f22cdb137b8387c505b3a3f5e5238e3682"
     }
   ],
   "matches": [
@@ -10027,6 +10033,28 @@
       "symbol": "RecoveredLeaf_3e560",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 0
+    },
+    {
+      "address": "0x3eed0",
+      "size": 120,
+      "exact": true,
+      "target_sha256": "25196ac654b426bc9942ea26af1f235b50d824ee8c9e159de4bdce1012969513",
+      "compiled_sha256": "25196ac654b426bc9942ea26af1f235b50d824ee8c9e159de4bdce1012969513",
+      "source": "src/SdkJsonDestructors.cpp",
+      "symbol": "_ZN11ubiservices4JsonD1Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 3
+    },
+    {
+      "address": "0x3ef50",
+      "size": 120,
+      "exact": true,
+      "target_sha256": "20c708a974f42082948538ed151faced894756df58cb2bf7a78b3028a5f68e32",
+      "compiled_sha256": "20c708a974f42082948538ed151faced894756df58cb2bf7a78b3028a5f68e32",
+      "source": "src/SdkJsonDestructors.cpp",
+      "symbol": "_ZN11ubiservices4JsonD0Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 4
     },
     {
       "address": "0x3efd0",

@@ -10,7 +10,9 @@ and checks a fallback gate. If logging proceeds, it copies the input text
 through a custom string stream, constructs reference-counted message text
 and a JSON view from `{}`, selects plain or JSON logging, and releases the
 temporaries. The reconstruction uses the recovered stream allocator and
-atomic reference-count operations.
+atomic reference-count operations. Its JSON view now uses a virtual destructor;
+this modeling change independently recovered the two exact Json destructor
+functions documented in `SDK_JSON.md`, while the logger remains unmatched.
 
 Original RTTI identifies `ubiservices::BasicStringStream<char>` with public
 nonvirtual bases for its custom-allocator `basic_stringstream` and
