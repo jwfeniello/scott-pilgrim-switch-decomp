@@ -24,9 +24,11 @@ seven functions and 1,864 bytes without duplicate credit.
 
 The pointer lookup uses the existing public libc++ 4 headers. Rehash policy uses
 libc++ 8.0.0 headers. `vendor/llvm-libcxx-8` contains only the header dependency
-closure observed when compiling the hash-map and string-buffer instantiations, together with its upstream
-license. Headers are copied byte-for-byte from the local public
-`libcxx-8.0.0.src` source tree. The ordinary source hashes and recursive header
+closure observed when compiling the hash-map, string-buffer, and vector instantiations, together with its upstream
+license. The original subset was copied byte-for-byte from the local public
+`libcxx-8.0.0.src` source tree. The later `vector` and `__split_buffer` additions
+were retrieved from the corresponding public LLVM tag; their provenance and
+hashes are recorded in `SOURCE.json`. The ordinary source hashes and recursive header
 hashes in the verifier cover these inputs. Matching an isolated library body
 does not establish which library or compiler version built the full game.
 

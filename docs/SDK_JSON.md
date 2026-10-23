@@ -283,3 +283,23 @@ from that temporary's `c_str()`. Consequently embedded NUL bytes can truncate
 the returned string. Both the bounds behavior and this conversion are preserved.
 The wrapper at `0x80400` therefore wraps uppercase conversion; `0x80020` wraps
 whitespace trimming at `0x80160`, which is identified but still unmatched.
+
+## Delimiter-set splitting
+
+`SdkTextSplit.cpp` matches `0x80660` (1,940 bytes) and two 720-byte vector
+growth helpers at `0x17c890` and `0x17cb60`. The split function returns an empty
+vector for limit zero or empty input. Limit one copies the whole input. Otherwise
+it skips delimiter bytes with `find_first_not_of`, locates token ends with
+`find_first_of`, and preserves the remaining suffix as the last result when
+the limit is reached. Suffix construction uses a C string and retains the
+original embedded-NUL behavior.
+
+The single-result branch uses `push_back`; token branches use `emplace_back`.
+A reconstructed string type supplies the observed converting-copy behavior.
+Its inheritance and allocator identities are provisional ABI views, not claims
+about the original declarations. Full function bytes and external references
+are verified independently for all three functions.
+
+The public libc++8 header subset now also includes `vector` and `__split_buffer`
+from LLVM 8.0.0. Their bytes were checked against the 8.0.0 and 8.0.1 upstream
+tags and are identical; provenance and SHA-256 hashes are in the vendor manifest.

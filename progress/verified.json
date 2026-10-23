@@ -1,9 +1,9 @@
 {
   "version": 1,
-  "generated_at": "2026-10-23T07:34:32.924874+00:00",
+  "generated_at": "2026-10-23T07:44:54.560687+00:00",
   "target_elf_sha256": "ea95638e6d6aaa0dc6cddd552a9366799aa1ec3bc07ee201f23f6c151103f5b8",
   "input_sha256": {
-    "config/builds.json": "4977401f210f70cfb7e570a721eae1ff6ff2b02d3c3a02dacc037760b8a1b589",
+    "config/builds.json": "d7ebda972a5669a73e579c79b1727c5702afbcfe19128a6fc7d681aa0f52c8e2",
     "config/functions.tsv": "399e91468a04e0459194c10d68d2210d1157cedefeb19c7851886ca7632fcb18",
     "config/target.json": "23cc6a5227206a953e7668acf5e9ae5c02a25c23b7e7967f0450a814b888241a",
     "src/AbiCfg_aggregate_O2_omit.cpp": "55009ca4f1819fe53803025bf27b93a676c6137877b9d4492828e2e15c89307c",
@@ -642,6 +642,7 @@
     "src/SdkTextOperations.cpp": "efd182372e01da7f57a09c803932b65b2114f57c84c9bda0ebf159466619c2af",
     "src/SdkTextReplace.cpp": "3d16ab0e5101da103946f17ec199b58be37e1145775f24254f325d7f3b901772",
     "src/SdkTextReplaceAll.cpp": "6d9b02f4cf8897519100c97b40fb18e71f39cce1fc5ad01aef532ae37f3996f7",
+    "src/SdkTextSplit.cpp": "b200214d62ec6bf6a3824c2e3b2381945dabd36397c08baaeee4ceab6ebafd04",
     "src/SdkTextWrapping.cpp": "322fd2baad2f87357555c406d7d5503296be3e97267a6975144d3ae54e6f3d73",
     "src/SharedCallbackConstruction.cpp": "fe897551395d63ff4ab7c40c9ce03c402cda8ef147698b4da58345674fd4a7f8",
     "src/SharedCountDestructor.cpp": "5fad9364c9a06ec0070a86becfd865267eadf0c6a53108037928482cf1630235",
@@ -1648,6 +1649,7 @@
     "vendor/llvm-libcxx-8/include/__mutex_base": "35f23f83c18b8d75fbb9b89947c61549706c29fa48e11c20eaaca143abf2681e",
     "vendor/llvm-libcxx-8/include/__node_handle": "c25516972cd8284ff3145199427570b49d6f8dc00376caa380c7e76bed8037c5",
     "vendor/llvm-libcxx-8/include/__nullptr": "d512fc7037851783e9b9abcd97f9a256c988a81f8d4482cdbf340d416aa13a1f",
+    "vendor/llvm-libcxx-8/include/__split_buffer": "8a156b1b0af847fbac719b5685366d0730148c67065f2463bcba76b4f0ed0c66",
     "vendor/llvm-libcxx-8/include/__string": "f2d57b1f1c28cac5809e4a0b9717f16901ef7bb5488f67b457b1f08d486b10f3",
     "vendor/llvm-libcxx-8/include/__threading_support": "495774a89913bf3010788592f6222a63252ba5b2bf740b4a8dff751a2ed81c90",
     "vendor/llvm-libcxx-8/include/__tuple": "fb9e2820a2703286d484e08f7f76041beec96eab83b856001fbeadffd134f890",
@@ -1706,6 +1708,7 @@
     "vendor/llvm-libcxx-8/include/typeinfo": "5618a3562e02316958f3071796c6212320875eb9b27c9e33b50d15f871ef8194",
     "vendor/llvm-libcxx-8/include/unordered_map": "fae9983b91009765c1d709b14ad97987694466c4a561a8c838992db4c0551c53",
     "vendor/llvm-libcxx-8/include/utility": "a015aba431b8d7bdb1b0b2fc759c9c067d5802ff886ab6d78c1682384933aec3",
+    "vendor/llvm-libcxx-8/include/vector": "478cae6126d9390c876610f8084a0679224a5f157c8fdea2a9e32b55c7ff0857",
     "vendor/llvm-libcxx-8/include/version": "164b5778f2dba9ab61d53f8910a83cd220cc5d13975897e799bb2f99eec738ff",
     "vendor/llvm-libcxx-8/include/wchar.h": "27ff803b17a31d7dece2990d0bd117cf0f84f66dfa5a3554019835824ef9f9ac",
     "vendor/llvm-libcxx-8/include/wctype.h": "e42a84375c36c25da3a2be1f1772be600eb528ef96c21caba4286de57ccbe90b",
@@ -2758,8 +2761,8 @@
     "7.0.1": "c2f0a175157d9aaace8031f8e6d7ea0ed6142b4bcef287105e3ed227301f1002",
     "8.0.1": "dffd62a213ec6cdb4430012a4a41c11e5e32c288f133d5391f9be49e1c5b69de"
   },
-  "exact_functions": 29927,
-  "exact_bytes": 2928968,
+  "exact_functions": 29930,
+  "exact_bytes": 2932348,
   "builds": [
     {
       "id": "probes",
@@ -9920,6 +9923,11 @@
       "id": "sdk_text_case_substring",
       "compiler": "8.0.1",
       "object_sha256": "0d5eecd9428f955272aba42d5e8c149a1ee1a76a436c1ebaf3bf2770eec0c14f"
+    },
+    {
+      "id": "sdk_text_split",
+      "compiler": "8.0.1",
+      "object_sha256": "d717ea0d42fc210241d8a5da5bf3fcbed24704ff196c572302ae6e58d28b1850"
     }
   ],
   "matches": [
@@ -11990,6 +11998,17 @@
       "symbol": "UpperSdkText",
       "source_review": "manual_reconstruction",
       "relocation_count": 4
+    },
+    {
+      "address": "0x80660",
+      "size": 1940,
+      "exact": true,
+      "target_sha256": "9e9f38d403ed00478a4f388caa6967a9dad339d2f4c6d2ca00bfddef6a5242c2",
+      "compiled_sha256": "9e9f38d403ed00478a4f388caa6967a9dad339d2f4c6d2ca00bfddef6a5242c2",
+      "source": "src/SdkTextSplit.cpp",
+      "symbol": "SplitSdkText",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 29
     },
     {
       "address": "0x80e00",
@@ -16577,6 +16596,28 @@
       "symbol": "_ZNSt3__112basic_stringIcNS_11char_traitsIcEE22SimpleLibraryAllocatorIcLj1EEE7replaceEmmPKcm",
       "source_review": "library_abi_view",
       "relocation_count": 11
+    },
+    {
+      "address": "0x17c890",
+      "size": 720,
+      "exact": true,
+      "target_sha256": "507d01bce427e34bcca8878148f13266db305d87e024a4a35b4819b3f6f6f846",
+      "compiled_sha256": "507d01bce427e34bcca8878148f13266db305d87e024a4a35b4819b3f6f6f846",
+      "source": "src/SdkTextSplit.cpp",
+      "symbol": "_ZNSt3__16vectorI6String22SimpleLibraryAllocatorIS1_Lj4EEE21__push_back_slow_pathIRKS1_EEvOT_",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 10
+    },
+    {
+      "address": "0x17cb60",
+      "size": 720,
+      "exact": true,
+      "target_sha256": "f06effd635202598c3cbb0909e0f42fe460e3ce1d146459dd20da5ac45d43998",
+      "compiled_sha256": "f06effd635202598c3cbb0909e0f42fe460e3ce1d146459dd20da5ac45d43998",
+      "source": "src/SdkTextSplit.cpp",
+      "symbol": "_ZNSt3__16vectorI6String22SimpleLibraryAllocatorIS1_Lj4EEE21__push_back_slow_pathIRKS1_EEvOT_",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 10
     },
     {
       "address": "0x17cf40",
