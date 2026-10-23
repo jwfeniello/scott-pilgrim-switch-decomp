@@ -65,10 +65,31 @@ Use Clang 8.0.1 and install Unicorn in the Python environment:
 python tools/compare_service_response.py --original <original.elf> --clang8 <clang++.exe> --build-dir <temporary-directory>
 ```
 
-The tool uses the vendored libc++ 4 and musl headers and writes
+The tool uses Clang O3 with the vendored libc++ 8 and musl headers and writes
 [progress/service_response_behavior.json](../progress/service_response_behavior.json)
 only after all comparisons and negative controls pass. Exact totals remain in
 `progress/verified.json`; this research receipt cannot add matching credit.
 
 The stream routines discovered while developing this candidate are independently
 byte-verified and documented in [RECOVERED_STRING_BUFFERS.md](RECOVERED_STRING_BUFFERS.md).
+
+## Logging reconstruction updates
+
+Original RTTI identifies the logger's stream as
+`ubiservices::BasicStringStream<char>` over a custom-allocator stringstream,
+implemented in [UbisoftStringStream.h](../src/UbisoftStringStream.h). Its constructor
+sets `boolalpha | showbase`. The candidate also now zero-initializes JSON values
+before assigning type flags, uses numeric assignment expressions so the right-hand
+value is evaluated before JSON-field lookup, and scopes the transaction-header
+key through the field writer's destruction.
+
+These changes follow original instructions and type evidence. They reduce the
+candidate to 3,316 bytes against the original 3,320, but length similarity is not
+an exact match and the logging path remains unverified. The existing 6,912-case
+fixture and four negative controls cover only the documented non-logging paths.
+
+The JSON helper vtables also have original RTTI identities: `0x17c43b8` points
+through typeinfo `0x17c7b20` to `ubiservices::JsonWriter`, and `0x17c4368` points
+through `0x17c7af0` to `ubiservices::Json`. This identifies helper objects used
+inside the handler; it does not validate Ghidra's destructor label for the entire
+response-processing routine.

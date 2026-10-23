@@ -59,3 +59,42 @@ routine at `0x181f30`, which formats service-error diagnostics through a strings
 That larger candidate is still unmatched and has not passed a behavioral fixture.
 It receives no exact credit. A broader 16-profile stream-instantiation sweep
 found no additional unique matches beyond this batch.
+
+## Ubisoft stream hierarchy
+
+[UbisoftStringStream.h](../src/UbisoftStringStream.h) reconstructs the stream
+hierarchy identified by the service-response routine's original RTTI:
+
+- Vtable `0x17c9450`, typeinfo `0x17c96d8`: `ubiservices::BasicStringStream<char>`.
+- Vtable `0x17c9530`, typeinfo `0x17c95a8`: a `std::basic_stringstream` using
+  `ubiservices::ContainerAllocator<char>`.
+- Vtable `0x17c9710`, typeinfo `0x17c9790`: the corresponding custom-allocator
+  `std::basic_stringbuf`.
+
+The derived constructor enables `boolalpha | showbase`, matching the original
+`0x201` flag update. The empty allocator view uses the allocation/free ABI already
+observed elsewhere; complete matching overflow code independently checks its
+allocation size, alignment, category, and free-call bindings. These findings do
+not establish every original class declaration or allocator operation.
+
+[RecoveredUbisoftStreams.cpp](../src/RecoveredUbisoftStreams.cpp) produces
+**10 new complete matches / 1,800 bytes** with Clang 8.0.1 O3, PIC, a preserved
+frame pointer, unwind tables, disabled exceptions, and public libc++ 8 headers:
+
+| Function group | Addresses | Bytes |
+| --- | --- | --- |
+| derived deleting destructor | `0x15fe00` | 148 |
+| derived complete destructor | `0x15f8a0` | 140 |
+| custom-allocator buffer overflow | `0x1602d0` | 468 |
+| base deleting destructor | `0x15faf0` | 148 |
+| fixed-adjustment derived deleting destructor | `0x15fea0` | 148 |
+| fixed-adjustment derived complete destructor | `0x15f930` | 140 |
+| fixed-adjustment base deleting destructor | `0x15fc20` | 148 |
+| virtual-adjustment derived deleting destructor | `0x15ff40` | 156 |
+| virtual-adjustment derived complete destructor | `0x15f9c0` | 148 |
+| virtual-adjustment base deleting destructor | `0x15fd60` | 156 |
+
+The service-response candidate now uses this shared header. Its updated JSON
+initialization and expression lifetimes follow the inspected original operations,
+but its diagnostic-logging branch still lacks a behavioral fixture and the full
+handler remains unmatched. Only the ten complete stream matches add credit.

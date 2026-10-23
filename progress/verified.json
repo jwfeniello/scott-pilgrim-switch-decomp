@@ -1,9 +1,9 @@
 {
   "version": 1,
-  "generated_at": "2026-10-23T04:13:38.812798+00:00",
+  "generated_at": "2026-10-23T04:34:33.912880+00:00",
   "target_elf_sha256": "ea95638e6d6aaa0dc6cddd552a9366799aa1ec3bc07ee201f23f6c151103f5b8",
   "input_sha256": {
-    "config/builds.json": "67ca4480c2bc9f8aa94c5cc918d9c782ccf613d8cb751e1c2f152415192a6a62",
+    "config/builds.json": "734f0f8bdd82014b7be43657891558cdcebe1af7edbdaf2240208d5fa7e08353",
     "config/functions.tsv": "399e91468a04e0459194c10d68d2210d1157cedefeb19c7851886ca7632fcb18",
     "config/target.json": "23cc6a5227206a953e7668acf5e9ae5c02a25c23b7e7967f0450a814b888241a",
     "src/AbiCfg_aggregate_O2_omit.cpp": "55009ca4f1819fe53803025bf27b93a676c6137877b9d4492828e2e15c89307c",
@@ -605,6 +605,7 @@
     "src/RecoveredNxCfgRecoveryVoidO3Keep.cpp": "b7b26e40f25a614ce806676ff11bc384dcca57b99afd90a09a9ba50fa816c4cb",
     "src/RecoveredStringBuffers.cpp": "eac0c4d311431bebc4bc82fa634bcaed1a3e4689263e1f37dcf68d3dee79bafe",
     "src/RecoveredStringStreams.cpp": "bb879c69b82083d81d0e914015af25c6cf00bb92ff05d747fcc7fd3959547673",
+    "src/RecoveredUbisoftStreams.cpp": "46b8e6b772afdc5efda550d81e8589d054d75f4ca9842b80fd1aa00453067242",
     "src/ReferenceMembers10.cpp": "eb9075d576e997d8e9313abb3c46752c2013f52f032a3ab80b8fc597faa87358",
     "src/ReferenceMembers11.cpp": "923bb561cf1539fa80a081c6578e5decbe73303beedcdb5074ae692c807db259",
     "src/ReferenceMembers12.cpp": "5e95c9a5cf22a775bf7edb3b866e6cdc9f8be5938be369cdddcfe9ff9b4cd282",
@@ -662,6 +663,7 @@
     "src/TypedPropertyAccess.cpp": "6d33a38c728ba176a6bfdbf0a3563305e3736f749b8cec8464590a595c42c09f",
     "src/TypedPropertyAccessWide.cpp": "1605cd202f01687c70e4e02cf39d80f15943500ad343368f989c76430ec1cb7c",
     "src/TypedPropertyAccessWider.cpp": "a07a3c726caa9d2699de93c8c5085ce54312c1e2e6c6e40201153404ba05f942",
+    "src/UbisoftStringStream.h": "95ae29b1030a39953cc75f5422aeb03516fb53445999d5f23f2d6dcda9f5484b",
     "src/UnwindStackRecoveryOmitKeepDirect.cpp": "d881219feab2c1ac62a476a78947020af332eb1a31e576b608a46151ea7bbe4a",
     "src/VectorRecoveryOmit.cpp": "22e2ee087e3458f535305b37ff52010a27cbc27a6ac0829d53e217d014072ba9",
     "src/VirtualResultAdapter.cpp": "436a3ddbde6aa3d01599ef5c245e57e963998f8f52d688fd29f7547980f61158",
@@ -2733,15 +2735,15 @@
     "vendor/zlib-1.2.11/zutil.h": "9a63f6690fac1620aa3cecee5752af618806da438a256b4a047fbcd289cac159"
   },
   "compiler_versions": {
-    "7.0.1": "clang version 7.0.1 (tags/RELEASE_701/final)",
-    "8.0.1": "clang version 8.0.1 (tags/RELEASE_801/final)"
+    "8.0.1": "clang version 8.0.1 (tags/RELEASE_801/final)",
+    "7.0.1": "clang version 7.0.1 (tags/RELEASE_701/final)"
   },
   "compiler_sha256": {
-    "7.0.1": "c2f0a175157d9aaace8031f8e6d7ea0ed6142b4bcef287105e3ed227301f1002",
-    "8.0.1": "dffd62a213ec6cdb4430012a4a41c11e5e32c288f133d5391f9be49e1c5b69de"
+    "8.0.1": "dffd62a213ec6cdb4430012a4a41c11e5e32c288f133d5391f9be49e1c5b69de",
+    "7.0.1": "c2f0a175157d9aaace8031f8e6d7ea0ed6142b4bcef287105e3ed227301f1002"
   },
-  "exact_functions": 29877,
-  "exact_bytes": 2910720,
+  "exact_functions": 29887,
+  "exact_bytes": 2912520,
   "builds": [
     {
       "id": "probes",
@@ -9812,6 +9814,11 @@
       "id": "recovered_stringstreams",
       "compiler": "8.0.1",
       "object_sha256": "38552c81d226945a98c3f034754567a47f02953fadf84ed42b1324e15ea0a149"
+    },
+    {
+      "id": "recovered_ubisoft_streams",
+      "compiler": "8.0.1",
+      "object_sha256": "d2210c4d67fd0ef9950a0f5f868df63ad8650464fb972fc8d079b0ab92eb580b"
     }
   ],
   "matches": [
@@ -13787,6 +13794,39 @@
       "relocation_count": 3
     },
     {
+      "address": "0x15f8a0",
+      "size": 140,
+      "exact": true,
+      "target_sha256": "efbb3aba34f6df779f5648b23e5b97f83cfd4a6a8b2ab3654eef0d9912b1524f",
+      "compiled_sha256": "efbb3aba34f6df779f5648b23e5b97f83cfd4a6a8b2ab3654eef0d9912b1524f",
+      "source": "src/RecoveredUbisoftStreams.cpp",
+      "symbol": "_ZN11ubiservices17BasicStringStreamIcED1Ev",
+      "source_review": "public_library_source",
+      "relocation_count": 10
+    },
+    {
+      "address": "0x15f930",
+      "size": 140,
+      "exact": true,
+      "target_sha256": "c9fdbae9f846469c9bab98e85c1374780c65a48876ee8c35a66de2a932e9d9cf",
+      "compiled_sha256": "c9fdbae9f846469c9bab98e85c1374780c65a48876ee8c35a66de2a932e9d9cf",
+      "source": "src/RecoveredUbisoftStreams.cpp",
+      "symbol": "_ZThn16_N11ubiservices17BasicStringStreamIcED1Ev",
+      "source_review": "public_library_source",
+      "relocation_count": 10
+    },
+    {
+      "address": "0x15f9c0",
+      "size": 148,
+      "exact": true,
+      "target_sha256": "0b1d371bfe4000cafd39a0e5f58478e766e9550f1bf4cc3ad76891bc3180154d",
+      "compiled_sha256": "0b1d371bfe4000cafd39a0e5f58478e766e9550f1bf4cc3ad76891bc3180154d",
+      "source": "src/RecoveredUbisoftStreams.cpp",
+      "symbol": "_ZTv0_n24_N11ubiservices17BasicStringStreamIcED1Ev",
+      "source_review": "public_library_source",
+      "relocation_count": 10
+    },
+    {
       "address": "0x15fa60",
       "size": 140,
       "exact": true,
@@ -13796,6 +13836,17 @@
       "symbol": "_ZNSt3__118basic_stringstreamIcNS_11char_traitsIcEENS_9allocatorIcEEED1Ev",
       "source_review": "public_library_source",
       "relocation_count": 10
+    },
+    {
+      "address": "0x15faf0",
+      "size": 148,
+      "exact": true,
+      "target_sha256": "382acb99ee6b805a56e7afcda4eb1b09de4995a454398cbd1552f0256958413b",
+      "compiled_sha256": "382acb99ee6b805a56e7afcda4eb1b09de4995a454398cbd1552f0256958413b",
+      "source": "src/RecoveredUbisoftStreams.cpp",
+      "symbol": "_ZNSt3__118basic_stringstreamIcNS_11char_traitsIcEEN11ubiservices18ContainerAllocatorIcEEED0Ev",
+      "source_review": "public_library_source",
+      "relocation_count": 11
     },
     {
       "address": "0x15fb90",
@@ -13809,6 +13860,17 @@
       "relocation_count": 10
     },
     {
+      "address": "0x15fc20",
+      "size": 148,
+      "exact": true,
+      "target_sha256": "3bc58808b06f4a99d43a4fa61e21fc71e9d0d0887e222d2082a8d534d73c2d7b",
+      "compiled_sha256": "3bc58808b06f4a99d43a4fa61e21fc71e9d0d0887e222d2082a8d534d73c2d7b",
+      "source": "src/RecoveredUbisoftStreams.cpp",
+      "symbol": "_ZThn16_NSt3__118basic_stringstreamIcNS_11char_traitsIcEEN11ubiservices18ContainerAllocatorIcEEED0Ev",
+      "source_review": "public_library_source",
+      "relocation_count": 11
+    },
+    {
       "address": "0x15fcc0",
       "size": 148,
       "exact": true,
@@ -13818,6 +13880,50 @@
       "symbol": "_ZTv0_n24_NSt3__118basic_stringstreamIcNS_11char_traitsIcEENS_9allocatorIcEEED1Ev",
       "source_review": "public_library_source",
       "relocation_count": 10
+    },
+    {
+      "address": "0x15fd60",
+      "size": 156,
+      "exact": true,
+      "target_sha256": "8e90707c6acf7821fc6e8f9cdd5ba9664a8e450b2ced890b7ab2b3b486bdea32",
+      "compiled_sha256": "8e90707c6acf7821fc6e8f9cdd5ba9664a8e450b2ced890b7ab2b3b486bdea32",
+      "source": "src/RecoveredUbisoftStreams.cpp",
+      "symbol": "_ZTv0_n24_NSt3__118basic_stringstreamIcNS_11char_traitsIcEEN11ubiservices18ContainerAllocatorIcEEED0Ev",
+      "source_review": "public_library_source",
+      "relocation_count": 11
+    },
+    {
+      "address": "0x15fe00",
+      "size": 148,
+      "exact": true,
+      "target_sha256": "9c74410dff97a72d235b4f07b01fe50fbda8ba6bd289567727bec125fd68b0b3",
+      "compiled_sha256": "9c74410dff97a72d235b4f07b01fe50fbda8ba6bd289567727bec125fd68b0b3",
+      "source": "src/RecoveredUbisoftStreams.cpp",
+      "symbol": "_ZN11ubiservices17BasicStringStreamIcED0Ev",
+      "source_review": "public_library_source",
+      "relocation_count": 11
+    },
+    {
+      "address": "0x15fea0",
+      "size": 148,
+      "exact": true,
+      "target_sha256": "c8a7241c9b16fbf85236893e1a0f1544e2bbf4c93c1165c8a04f25a0a62a18c4",
+      "compiled_sha256": "c8a7241c9b16fbf85236893e1a0f1544e2bbf4c93c1165c8a04f25a0a62a18c4",
+      "source": "src/RecoveredUbisoftStreams.cpp",
+      "symbol": "_ZThn16_N11ubiservices17BasicStringStreamIcED0Ev",
+      "source_review": "public_library_source",
+      "relocation_count": 11
+    },
+    {
+      "address": "0x15ff40",
+      "size": 156,
+      "exact": true,
+      "target_sha256": "86b97f340418cb86c75a7576cbb41f8b638744f59c4c1bfbb31ac336e783cf4b",
+      "compiled_sha256": "86b97f340418cb86c75a7576cbb41f8b638744f59c4c1bfbb31ac336e783cf4b",
+      "source": "src/RecoveredUbisoftStreams.cpp",
+      "symbol": "_ZTv0_n24_N11ubiservices17BasicStringStreamIcED0Ev",
+      "source_review": "public_library_source",
+      "relocation_count": 11
     },
     {
       "address": "0x15ffe0",
@@ -13884,6 +13990,17 @@
       "symbol": "_ZNSt3__115basic_stringbufIcNS_11char_traitsIcEENS_9allocatorIcEEE9pbackfailEi",
       "source_review": "public_library_source",
       "relocation_count": 0
+    },
+    {
+      "address": "0x1602d0",
+      "size": 468,
+      "exact": true,
+      "target_sha256": "e03cf989620a840dae1536d347407f67f627258f096a642a3b0d6d925c1e7479",
+      "compiled_sha256": "e03cf989620a840dae1536d347407f67f627258f096a642a3b0d6d925c1e7479",
+      "source": "src/RecoveredUbisoftStreams.cpp",
+      "symbol": "_ZNSt3__115basic_stringbufIcNS_11char_traitsIcEEN11ubiservices18ContainerAllocatorIcEEE8overflowEi",
+      "source_review": "public_library_source",
+      "relocation_count": 2
     },
     {
       "address": "0x1604b0",

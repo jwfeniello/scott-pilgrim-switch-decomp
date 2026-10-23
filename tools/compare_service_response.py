@@ -43,8 +43,9 @@ def destroy_allocated():trace.append(('destroy_heap',))
 for a,f in {0x4c760:parse,0xfa3970:lock,0xfa39c0:unlock,0x7acd0:complete,b.STUB:deliver,b.STUB+16:handle,b.STUB+32:dispose,b.STUB+48:clone,b.STUB+64:clone_into,b.STUB+80:destroy,b.STUB+96:destroy_allocated}.items():b.stub(a,f)
 b.put(RV+0x50,b.STUB);b.put(RV+0x28,b.STUB+16);b.put(OV+0x10,b.STUB+32)
 for off,a in [(0x10,b.STUB+48),(0x18,b.STUB+64),(0x20,b.STUB+80),(0x28,b.STUB+96)]:b.put(FV+off,a)
-flags=['-target', 'aarch64-none-elf', '-std=c++11', '-D_GNU_SOURCE', '-U_WIN32', '-U_WIN64', '-O2', '-mcpu=cortex-a57', '-fno-omit-frame-pointer', '-fPIC', '-fno-strict-aliasing', '-fno-vectorize', '-fno-slp-vectorize', '-fno-exceptions', '-nostdinc++', '-isystem', 'vendor/llvm-libcxx-4/include', '-isystem', 'vendor/musl/include', '-isystem', 'vendor/musl/generated', '-D_LIBCPP_HAS_NO_THREADS', '-D_LIBCPP_HAS_MUSL_LIBC', '-D__CLANG_MAX_ALIGN_T_DEFINED', '-D_LIBCPP_DISABLE_VISIBILITY_ANNOTATIONS', '-funwind-tables']
+flags=['-target', 'aarch64-none-elf', '-std=c++11', '-D_GNU_SOURCE', '-U_WIN32', '-U_WIN64', '-O3', '-mcpu=cortex-a57', '-fno-omit-frame-pointer', '-fPIC', '-fno-strict-aliasing', '-fno-vectorize', '-fno-slp-vectorize', '-fno-exceptions', '-nostdinc++', '-isystem', 'vendor/llvm-libcxx-8/include', '-isystem', 'vendor/musl/include', '-isystem', 'vendor/musl/generated', '-D_LIBCPP_HAS_NO_THREADS', '-D_LIBCPP_HAS_MUSL_LIBC', '-D__CLANG_MAX_ALIGN_T_DEFINED', '-D_LIBCPP_DISABLE_VISIBILITY_ANNOTATIONS', '-funwind-tables']
 flags=[str(ROOT/x) if x.startswith("vendor/") else x for x in flags]
+flags += ["-iquote", str(ROOT/"src/wip")]
 def build(source,name):
  obj=compile_family(compiler,source,out/(name+'.o'),dict(flags=flags));code,rels=obj.method('ProcessServiceResponse');code=bytearray(code);cells={}
  for r in rels:
@@ -95,6 +96,7 @@ for name,old,new,case in mutants:
  except (AssertionError,ValueError):rejected.append(name)
  else:raise AssertionError('Fixture accepted bad implementation '+name)
 report['negative_controls_rejected']=rejected
+report['source_dependencies']={'src/UbisoftStringStream.h':hashlib.sha256((ROOT/'src/UbisoftStringStream.h').read_bytes()).hexdigest()}
 report['compiler_flags']=[x.replace(str(ROOT),'${REPO}') for x in flags]
 report.update(original_function='0x181f30',original_function_size=3320,compiled_size=len(code),source='src/wip/ServiceResponse.cpp',logging_branch_verified=False)
 (ROOT/'progress/service_response_behavior.json').write_text(json.dumps(report,indent=2)+'\n');print('REJECTED',rejected,flush=True)

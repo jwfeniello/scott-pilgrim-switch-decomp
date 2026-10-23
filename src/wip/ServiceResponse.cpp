@@ -2,6 +2,7 @@
 // Only paths outside diagnostic logging have bounded behavioral comparisons.
 // ABI field names/types remain provisional; see
 // docs/SERVICE_RESPONSE_CANDIDATE.md.
+#include "../UbisoftStringStream.h"
 #include <sstream>
 #include <stddef.h>
 #include <stdint.h>
@@ -141,6 +142,7 @@ struct JsonOwner : AtomicOwner<JsonRoot> {
   JsonValue *cursor;
 };
 struct JsonDocument {
+  void SetValue(const JsonValue &);
   void **table;
   void **viewTable;
   uint64_t unknown10;
@@ -170,18 +172,17 @@ struct Writer {
     JsonDocument *d =
         static_cast<JsonDocument *>(Allocate(64, 4, 0, 0x40c00000));
     InitializeDocument(d);
+    document = d;
     d->flag = false;
     JsonValue *v = d->owner->get()->value;
-    v->first = 0;
-    v->second = 0;
-    v->third = 0;
-    v->fourth = 0;
+    *v = JsonValue{};
     v->flags = 3;
     d->owner->cursor = d->owner->get()->value;
-    document = d;
   }
 
   Writer operator[](const char *);
+  Writer &operator=(uint32_t);
+  Writer &operator=(int32_t);
   void SetText(const Text &);
   ~Writer() {
     table = JsonWriterTable + 2;
@@ -204,15 +205,19 @@ struct Writer {
     }
   }
 };
-static inline void PutUnsigned(Writer field, uint32_t value) {
-  JsonValue v = {uint64_t(value), 0, 0, 0,
-                 uint16_t(int32_t(value) < 0 ? 0x1d6 : 0x1f6)};
-  SetJsonValue(field.document, v);
+inline Writer &Writer::operator=(uint32_t value) {
+  JsonValue v = {};
+  v.first = value;
+  v.flags = int32_t(value) < 0 ? 0x1d6 : 0x1f6;
+  document->SetValue(v);
+  return *this;
 }
-static inline void PutSigned(Writer field, int32_t value) {
-  JsonValue v = {uint64_t(int64_t(value)), 0, 0, 0,
-                 uint16_t(value < 0 ? 0xb6 : 0x1f6)};
-  SetJsonValue(field.document, v);
+inline Writer &Writer::operator=(int32_t value) {
+  JsonValue v = {};
+  v.first = uint64_t(int64_t(value));
+  v.flags = value < 0 ? 0xb6 : 0x1f6;
+  document->SetValue(v);
+  return *this;
 }
 struct Completion {
   int32_t code, pad;
@@ -306,12 +311,15 @@ extern "C" void ProcessServiceResponse(Request *self, HttpResponse *incoming,
   int kind = Classify(self->GetContext()->classification, category);
   if (uint32_t(kind - 2) < 4) {
     Writer json;
-    PutUnsigned(json["requestStatusCode"], incoming->status);
-    PutSigned(json["sdkErrorCode"], response.sdkError);
-    PutUnsigned(json["serviceErrorCode"], response.serviceError);
-    json["transactionId"].SetText(
-        FindHeader(incoming, Text("Ubi-TransactionId")));
-    std::stringstream stream;
+    json["requestStatusCode"] = incoming->status;
+    json["sdkErrorCode"] = response.sdkError;
+    json["serviceErrorCode"] = response.serviceError;
+    {
+      Text key("Ubi-TransactionId");
+      const Text &value = FindHeader(incoming, key);
+      json["transactionId"].SetText(value);
+    }
+    ubiservices::BasicStringStream<char> stream;
     if (self->name)
       stream << self->name;
     stream << " received service error: " << response.serviceError << "\n";
