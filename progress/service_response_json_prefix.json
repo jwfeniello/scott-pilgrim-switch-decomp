@@ -1,5 +1,6 @@
 {
-  "cases": 576,
+  "cases": 960,
+  "comparator_cases": 64,
   "negative_controls_rejected": [
     "wrong_unsigned_flags",
     "wrong_signed_flags",
@@ -47,7 +48,8 @@
   ],
   "limits": [
     "Execution stops at ios_base::init; no full-function return or stack-restoration check.",
-    "JSON allocation, field lookup, numeric/text setters and text comparison are synthetic.",
+    "JSON allocation, field lookup and numeric/text setters are synthetic.",
+    "Original text comparator executes with synthetic memcmp and ASCII/C-locale toupper services.",
     "Checks numeric payloads, header selection and temporary cleanup before stream initialization.",
     "Does not check stream formatting, final logging, concurrency or full-game behavior."
   ]

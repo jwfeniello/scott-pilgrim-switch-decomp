@@ -102,9 +102,10 @@ compiled handler through JSON construction and transaction-header lookup. Execut
 stops at the call to `ios_base::init`, before stream formatting. This is deliberately
 a partial-path behavior check, with **zero exact-match credit**.
 
-The additional [fixture](../tools/service_response_json_prefix.py) passes **576 cases**:
+The additional [fixture](../tools/service_response_json_prefix.py) passes **960 cases**:
 positive and high-bit unsigned HTTP/service codes, negative/zero/positive SDK codes,
-empty header trees, root/left/right hits, missing keys on either side, one or several
+empty header trees, root/left/right hits, mixed-case keys, long missing keys,
+missing keys on either side, one or several
 JSON owners, optional scratch allocation, and classification values 2 and 5. It
 compares service traces and synthetic heap contents. It also checks full JSON-object
 zero initialization, numeric payload/type flags, selected header text, scratch-base
@@ -115,8 +116,29 @@ flags, reversed header-tree traversal, wrong fallback selection, and wrong scrat
 allocation base. The separate [receipt](../progress/service_response_json_prefix.json)
 records these results and source/header hashes.
 
-Allocation, JSON setters, field lookup, and text comparison use synthetic services;
-their real implementations are not validated here. Because execution stops inside
+Allocation, JSON setters, and field lookup use synthetic services; their real
+implementations are not validated here. Header comparisons execute the original
+routine at `0x7e460`, with synthetic `memcmp` and ASCII/C-locale `toupper` services.
+An additional **64 comparator cases** check ordering across empty, short, long,
+equal, unequal, and mixed-case strings, including complete-function return and
+register/stack restoration.
+
+Because execution of the response handler stops inside
 the handler, these prefix checks do not check final stack restoration or callee-saved
 register restoration. Stream formatting, final logging, and subsequent cleanup on
 logging paths still need full-path validation.
+
+## Exact text-comparison dependency
+
+[SdkTextCompare.cpp](../src/SdkTextCompare.cpp) matches all **488 bytes** of
+`0x7e460`, with checked bindings to `memcmp` (`0xfa3520`) and `toupper`
+(`0xfa3b50`). The helper first tests string equality, then compares characters
+case-insensitively, using acquire loads of the intrusive string-object pointers.
+This explains why transaction-header lookup accepts different capitalization.
+Its local class names describe ABI views, not recovered original declarations.
+
+The match uses Clang 8.0.1 O3, libc++ 4 headers, a preserved frame pointer, PIC,
+and `-mllvm -tail-dup-placement-threshold=4`. Direct string indexing and a signed
+loop index reproduce the original register allocation; replacing indexing with
+`c_str()` access produced five differing instructions. Full-function verification,
+not that diagnostic count or the behavioral fixture, awards its exact credit.

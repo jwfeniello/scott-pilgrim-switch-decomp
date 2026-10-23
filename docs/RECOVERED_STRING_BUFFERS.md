@@ -96,5 +96,6 @@ frame pointer, unwind tables, disabled exceptions, and public libc++ 8 headers:
 
 The service-response candidate now uses this shared header. Its updated JSON
 initialization and expression lifetimes follow the inspected original operations,
-but its diagnostic-logging branch still lacks a behavioral fixture and the full
-handler remains unmatched. Only the ten complete stream matches add credit.
+and bounded JSON-prefix checks now cover the setup before stream initialization.
+The complete diagnostic-logging path remains unverified and the full handler
+remains unmatched. Only complete byte-verified functions add exact credit.

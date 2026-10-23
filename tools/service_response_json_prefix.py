@@ -42,6 +42,14 @@ def run_fixture(m):
     def object_for(text):
         p = reserve()
         b.write(p, '<QII', m.OV, 1, 0)
+        encoded = text.encode('ascii')
+        if len(encoded) <= 22:
+            b.write(p + 16, '<B', len(encoded) * 2)
+            b.mu.mem_write(p + 17, encoded + b'\0')
+        else:
+            data = reserve()
+            b.mu.mem_write(data, encoded + b'\0')
+            b.write(p + 16, '<QQQ', ((len(encoded) + 16) & ~15) | 1, len(encoded), data)
         names[p] = text
         return p
 
@@ -101,10 +109,15 @@ def run_fixture(m):
         b.put(b.arg(0), object_for(value))
         m.trace.append(('construct_text', value))
 
-    def compare():
-        a, z = text_value(b.arg(0)), text_value(b.arg(1))
+    def uppercase():
+        value = b.arg(0)
+        assert value <= 255
+        return {b.x(0): value - 32 if 97 <= value <= 122 else value}
+
+    def compare_memory():
+        a = bytes(b.mu.mem_read(b.arg(0), b.arg(2)))
+        z = bytes(b.mu.mem_read(b.arg(1), b.arg(2)))
         result = (a > z) - (a < z)
-        m.trace.append(('compare', a, z, result))
         return {b.x(0): result & 0xffffffff}
 
     def free():
@@ -132,9 +145,26 @@ def run_fixture(m):
     for address, callback in {
         0x36ea0: allocate, 0x45180: initialize, 0x37030: free,
         0x436b0: field, 0x44100: set_value, 0x44730: set_text,
-        0x7e7e0: construct_text, 0x7e460: compare, 0xfa3aa0: stop,
+        0x7e7e0: construct_text, 0xfa3aa0: stop,
+        0xfa3520: compare_memory, 0xfa3b50: uppercase,
     }.items():
         b.stub(address, callback)
+
+    # Run the actual comparator, including short/long string equality paths.
+    # Only its C-library services use an ASCII/C-locale fixture implementation.
+    examples = ('', 'A', 'a', 'Ab', 'aB', 'B', 'long-header-name-over-22-bytes',
+                'LONG-HEADER-NAME-OVER-22-BYTES')
+    comparator_cases = 0
+    for left, right in itertools.product(examples, repeat=2):
+        cursor = heap
+        names.clear(); documents.clear(); allocated.clear(); freed.clear()
+        b.put(D + 0x7000, object_for(left))
+        b.put(D + 0x7010, object_for(right))
+        result = b.execute(0x7e460, D + 0x7000, D + 0x7010)
+        signed = result if result < 0x80000000 else result - 0x100000000
+        expected = (left.upper() > right.upper()) - (left.upper() < right.upper())
+        assert (signed > 0) - (signed < 0) == expected, (left, right, signed)
+        comparator_cases += 1
 
     original_parse = m.parse
 
@@ -158,14 +188,18 @@ def run_fixture(m):
             node = reserve()
             b.put(m.INCOMING + 24, node)
             key = {'hit': 'Ubi-TransactionId', 'before': 'AAA', 'after': 'ZZZ',
-                   'left': 'Ubi-TransactionId', 'right': 'Ubi-TransactionId'}[mode]
+                   'left': 'Ubi-TransactionId', 'right': 'Ubi-TransactionId',
+                   'mixed': 'uBI-tRANSACTIONiD', 'left_mixed': 'ubi-transactionid',
+                   'right_mixed': 'UBI-TRANSACTIONID',
+                   'long_miss': 'Ubi-TransactionId-Extra-Long-Header'}[mode]
             b.put(node + 32, object_for(key))
             b.put(node + 40, object_for('transaction-value'))
-            if mode in ('left', 'right'):
+            if mode in ('left', 'right', 'left_mixed', 'right_mixed'):
+                is_left = mode.startswith('left')
                 parent = reserve()
                 b.put(m.INCOMING + 24, parent)
-                b.put(parent + (0 if mode == 'left' else 8), node)
-                b.put(parent + 32, object_for('ZZZ' if mode == 'left' else 'AAA'))
+                b.put(parent + (0 if is_left else 8), node)
+                b.put(parent + 32, object_for('ZZZ' if is_left else 'AAA'))
                 b.put(parent + 40, object_for('wrong-parent-value'))
         try:
             execute(entry, *args)
@@ -187,7 +221,8 @@ def run_fixture(m):
     cases = []
     for http, sdk, service, header, refs, scratch, kind in itertools.product(
             (200, 0xffffffff), (-71, 0, 0x7fffffff), (0, 0xf0000012),
-            ('empty', 'hit', 'before', 'after', 'left', 'right'), (1, 3), (False, True), (2, 5)):
+            ('empty', 'hit', 'before', 'after', 'left', 'right', 'mixed',
+             'left_mixed', 'right_mixed', 'long_miss'), (1, 3), (False, True), (2, 5)):
         cases.append(dict(complete=False, update=True, flip=False, state=1,
                           stopped=False, owners=1, callback='none', transfer=False,
                           kind=kind, http=http, sdk=sdk, service=service,
@@ -224,7 +259,7 @@ def run_fixture(m):
             rejected.append(name)
         else:
             raise AssertionError('Accepted bad implementation ' + name)
-    report = dict(cases=len(cases), negative_controls_rejected=rejected,
+    report = dict(cases=len(cases), comparator_cases=comparator_cases, negative_controls_rejected=rejected,
                   exact_credit=0, original_function='0x181f30', compiled_size=len(code),
                   source_sha256=hashlib.sha256(m.source.read_bytes()).hexdigest(),
                   original_sha256=hashlib.sha256(m.e.data).hexdigest(),
@@ -232,7 +267,8 @@ def run_fixture(m):
                       (m.ROOT / 'src/UbisoftStringStream.h').read_bytes()).hexdigest()},
                   compiler_flags=[x.replace(str(m.ROOT), '${REPO}') for x in m.flags],
                   limits=['Execution stops at ios_base::init; no full-function return or stack-restoration check.',
-                          'JSON allocation, field lookup, numeric/text setters and text comparison are synthetic.',
+                          'JSON allocation, field lookup and numeric/text setters are synthetic.',
+                          'Original text comparator executes with synthetic memcmp and ASCII/C-locale toupper services.',
                           'Checks numeric payloads, header selection and temporary cleanup before stream initialization.',
                           'Does not check stream formatting, final logging, concurrency or full-game behavior.'])
     (m.ROOT / 'progress/service_response_json_prefix.json').write_text(

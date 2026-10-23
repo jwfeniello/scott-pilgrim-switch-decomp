@@ -1,9 +1,9 @@
 {
   "version": 1,
-  "generated_at": "2026-10-23T04:34:33.912880+00:00",
+  "generated_at": "2026-10-23T04:55:53.789392+00:00",
   "target_elf_sha256": "ea95638e6d6aaa0dc6cddd552a9366799aa1ec3bc07ee201f23f6c151103f5b8",
   "input_sha256": {
-    "config/builds.json": "734f0f8bdd82014b7be43657891558cdcebe1af7edbdaf2240208d5fa7e08353",
+    "config/builds.json": "b81d55874085b277cf980a213f26d2257329dc76fb46d24c62e1ec4472582bd9",
     "config/functions.tsv": "399e91468a04e0459194c10d68d2210d1157cedefeb19c7851886ca7632fcb18",
     "config/target.json": "23cc6a5227206a953e7668acf5e9ae5c02a25c23b7e7967f0450a814b888241a",
     "src/AbiCfg_aggregate_O2_omit.cpp": "55009ca4f1819fe53803025bf27b93a676c6137877b9d4492828e2e15c89307c",
@@ -627,6 +627,7 @@
     "src/SdkCompositeDestructor.cpp": "1fdca780939983f46d46f7eb2f3dc54172e08692973b6611dd9e87532f07cf2e",
     "src/SdkOwnerNoBaseOwnerKeepPicUnwind.cpp": "f5b33c74fb068eda3471b1ccdb60accce71daf06bb9cc3c4c4a1068edf667e35",
     "src/SdkOwnerSimpleOwnerKeepPicUnwind.cpp": "8fc2b5afdba4f85a0404131c8b2fb269ec4ce96f7f37f2e73d9f742682950ea7",
+    "src/SdkTextCompare.cpp": "835a2f72f2eef2c6d2dd1d5fdaf12b67099fd33361f7d35061fd6a8873fadafb",
     "src/SharedCallbackConstruction.cpp": "fe897551395d63ff4ab7c40c9ce03c402cda8ef147698b4da58345674fd4a7f8",
     "src/SharedCountDestructor.cpp": "5fad9364c9a06ec0070a86becfd865267eadf0c6a53108037928482cf1630235",
     "src/SimdRecovery_abi_bytevector16_omit_direct.cpp": "566d3e9bd45d43c8419d7a2bce96efd4a07e03b1dccc21978346e41e38473129",
@@ -2742,8 +2743,8 @@
     "8.0.1": "dffd62a213ec6cdb4430012a4a41c11e5e32c288f133d5391f9be49e1c5b69de",
     "7.0.1": "c2f0a175157d9aaace8031f8e6d7ea0ed6142b4bcef287105e3ed227301f1002"
   },
-  "exact_functions": 29887,
-  "exact_bytes": 2912520,
+  "exact_functions": 29888,
+  "exact_bytes": 2913008,
   "builds": [
     {
       "id": "probes",
@@ -9819,6 +9820,11 @@
       "id": "recovered_ubisoft_streams",
       "compiler": "8.0.1",
       "object_sha256": "d2210c4d67fd0ef9950a0f5f868df63ad8650464fb972fc8d079b0ab92eb580b"
+    },
+    {
+      "id": "sdk_text_compare",
+      "compiler": "8.0.1",
+      "object_sha256": "a79643901e39744b9a99f7227f71752b4ade6a6a9d61a47a52ef53fe8f70243d"
     }
   ],
   "matches": [
@@ -11482,6 +11488,17 @@
       "symbol": "RecoveredLeaf_7e440",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 1
+    },
+    {
+      "address": "0x7e460",
+      "size": 488,
+      "exact": true,
+      "target_sha256": "efbba92a23894ad2717b6099194cecd4e89a7915a76446fde49acded2722bc90",
+      "compiled_sha256": "efbba92a23894ad2717b6099194cecd4e89a7915a76446fde49acded2722bc90",
+      "source": "src/SdkTextCompare.cpp",
+      "symbol": "CompareSdkText",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 4
     },
     {
       "address": "0x7f310",
