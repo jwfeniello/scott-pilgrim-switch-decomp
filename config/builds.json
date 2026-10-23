@@ -416150,6 +416150,134 @@
           "got_bindings": {}
         }
       ]
+    },
+    {
+      "id": "sdk_frame_header",
+      "source": "src/SdkFrameHeader.cpp",
+      "source_review": "manual_reconstruction",
+      "compiler": "8.0.1",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-std=c++11",
+        "-D_GNU_SOURCE",
+        "-U_WIN32",
+        "-U_WIN64",
+        "-O2",
+        "-mcpu=cortex-a57",
+        "-fno-omit-frame-pointer",
+        "-fPIC",
+        "-fno-strict-aliasing",
+        "-fno-vectorize",
+        "-fno-slp-vectorize",
+        "-fno-exceptions",
+        "-nostdinc++",
+        "-isystem",
+        "vendor/llvm-libcxx-8/include",
+        "-isystem",
+        "vendor/musl/include",
+        "-isystem",
+        "vendor/musl/generated",
+        "-D_LIBCPP_HAS_NO_THREADS",
+        "-D_LIBCPP_HAS_MUSL_LIBC",
+        "-D__CLANG_MAX_ALIGN_T_DEFINED",
+        "-D_LIBCPP_DISABLE_VISIBILITY_ANNOTATIONS",
+        "-funwind-tables",
+        "-mllvm",
+        "-tail-dup-placement-threshold=4",
+        "-I",
+        "src",
+        "-I",
+        "vendor/rapidjson-1.1.0/include",
+        "-mgeneral-regs-only",
+        "-D__ELF__"
+      ],
+      "header_roots": [
+        "vendor/llvm-libcxx-8/include",
+        "vendor/musl/include",
+        "vendor/musl/generated",
+        "vendor/rapidjson-1.1.0/include"
+      ],
+      "functions": [
+        {
+          "address": "0x81950",
+          "size": 364,
+          "symbol": "ReadFrameHeader",
+          "target_sha256": "2d4722c65d96f7dcdbb029e6727992bd969f22d12062a314eafc9c7f5cecab0e",
+          "bindings": {},
+          "got_bindings": {}
+        }
+      ]
+    },
+    {
+      "id": "sdk_frame_build",
+      "source": "src/SdkFrameBuild.cpp",
+      "source_review": "manual_reconstruction",
+      "compiler": "8.0.1",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-std=c++11",
+        "-D_GNU_SOURCE",
+        "-U_WIN32",
+        "-U_WIN64",
+        "-O2",
+        "-mcpu=cortex-a57",
+        "-fno-omit-frame-pointer",
+        "-fPIC",
+        "-fno-strict-aliasing",
+        "-fno-vectorize",
+        "-fno-slp-vectorize",
+        "-fno-exceptions",
+        "-nostdinc++",
+        "-isystem",
+        "vendor/llvm-libcxx-8/include",
+        "-isystem",
+        "vendor/musl/include",
+        "-isystem",
+        "vendor/musl/generated",
+        "-D_LIBCPP_HAS_NO_THREADS",
+        "-D_LIBCPP_HAS_MUSL_LIBC",
+        "-D__CLANG_MAX_ALIGN_T_DEFINED",
+        "-D_LIBCPP_DISABLE_VISIBILITY_ANNOTATIONS",
+        "-funwind-tables",
+        "-mllvm",
+        "-tail-dup-placement-threshold=4",
+        "-I",
+        "src",
+        "-I",
+        "vendor/rapidjson-1.1.0/include",
+        "-mgeneral-regs-only",
+        "-D__ELF__"
+      ],
+      "header_roots": [
+        "vendor/llvm-libcxx-8/include",
+        "vendor/musl/include",
+        "vendor/musl/generated",
+        "vendor/rapidjson-1.1.0/include"
+      ],
+      "functions": [
+        {
+          "address": "0x81ad0",
+          "size": 1624,
+          "symbol": "BuildFrame",
+          "target_sha256": "96189ccc10194eae2fe139c3178bd54bb1e3346c99a2c300380026e04e69ced6",
+          "bindings": {
+            "EngineAllocate": "0x36ea0",
+            "memset": "0xfa3340",
+            "HostToNetwork16": "0xfa3ce0",
+            "EndianInitialized": "0x18feabc",
+            "memcpy": "0xfa3330",
+            "EngineFree": "0x37030"
+          },
+          "got_bindings": {
+            "_ZTV6Object": {
+              "cell": "0x18ecb48",
+              "pointee": "0x17c7a40"
+            }
+          }
+        }
+      ]
     }
   ]
 }
