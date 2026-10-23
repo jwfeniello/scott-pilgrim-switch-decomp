@@ -417775,6 +417775,113 @@
           }
         }
       ]
+    },
+    {
+      "id": "sdk_http_response_value",
+      "source": "src/SdkHttpResponseValue.cpp",
+      "source_review": "manual_reconstruction",
+      "compiler": "8.0.1",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-std=c++11",
+        "-D_GNU_SOURCE",
+        "-U_WIN32",
+        "-U_WIN64",
+        "-O3",
+        "-mcpu=cortex-a57",
+        "-fno-omit-frame-pointer",
+        "-fPIC",
+        "-fno-strict-aliasing",
+        "-fno-vectorize",
+        "-fno-slp-vectorize",
+        "-fno-exceptions",
+        "-nostdinc++",
+        "-isystem",
+        "vendor/llvm-libcxx-4/include",
+        "-isystem",
+        "vendor/musl/include",
+        "-isystem",
+        "vendor/musl/generated",
+        "-D_LIBCPP_HAS_NO_THREADS",
+        "-D_LIBCPP_HAS_MUSL_LIBC",
+        "-D__CLANG_MAX_ALIGN_T_DEFINED",
+        "-D_LIBCPP_DISABLE_VISIBILITY_ANNOTATIONS",
+        "-funwind-tables",
+        "-mllvm",
+        "-tail-dup-placement-threshold=4",
+        "-I",
+        "src",
+        "-I",
+        "vendor/rapidjson-1.1.0/include",
+        "-mgeneral-regs-only",
+        "-D__ELF__",
+        "-mllvm",
+        "-stackcoloring-lifetime-start-on-first-use=false"
+      ],
+      "header_roots": [
+        "vendor/llvm-libcxx-4/include",
+        "vendor/musl/include",
+        "vendor/musl/generated",
+        "vendor/rapidjson-1.1.0/include"
+      ],
+      "functions": [
+        {
+          "address": "0x8ed60",
+          "size": 388,
+          "symbol": "AssignHttpResponse",
+          "target_sha256": "52aac8bc178e68fb7358b6793ebf1c5b8e7307fa785a7fc2ff59c060f871a9f4",
+          "bindings": {
+            "_ZNSt3__16__treeINS_12__value_typeI4TextS2_EENS_19__map_value_compareIS2_S3_4LessLb1EEE22SimpleLibraryAllocatorIS3_Lj1EEE14__assign_multiINS_21__tree_const_iteratorIS3_PNS_11__tree_nodeIS3_PvEElEEEEvT_SH_": "0x160d50"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xfc980",
+          "size": 472,
+          "symbol": "_ZN12HttpResponseC2EiRK7HeadersRK4Text",
+          "target_sha256": "3fc334b90c9a6dee25cf3ac0c7e259a050f70bc49f1b03abf8f1e41002ba9075",
+          "bindings": {
+            "_ZNSt3__16__treeINS_12__value_typeI4TextS2_EENS_19__map_value_compareIS2_S3_4LessLb1EEE22SimpleLibraryAllocatorIS3_Lj1EEE30__emplace_hint_unique_key_argsIS2_JRKNS_4pairIKS2_S2_EEEEENS_15__tree_iteratorIS3_PNS_11__tree_nodeIS3_PvEElEENS_21__tree_const_iteratorIS3_SK_lEERKT_DpOT0_": "0x167c00",
+            "EngineAllocate": "0x36ea0",
+            "CopyBody": "0x67840"
+          },
+          "got_bindings": {
+            "_ZTV12HttpResponse": {
+              "cell": "0x18ec9f8",
+              "pointee": "0x17c6a98"
+            },
+            "_ZTV16HttpStringEntity": {
+              "cell": "0x18ed468",
+              "pointee": "0x17c4d10"
+            }
+          }
+        },
+        {
+          "address": "0x167580",
+          "size": 360,
+          "symbol": "_ZNSt3__16__treeINS_12__value_typeI4TextS2_EENS_19__map_value_compareIS2_S3_4LessLb1EEE22SimpleLibraryAllocatorIS3_Lj1EEE30__emplace_hint_unique_key_argsIS2_JRKNS_4pairIKS2_S2_EEEEENS_15__tree_iteratorIS3_PNS_11__tree_nodeIS3_PvEElEENS_21__tree_const_iteratorIS3_SK_lEERKT_DpOT0_",
+          "target_sha256": "0f733c4229259f2829638ff7d66f29373b7f5f1aa2211efe82295a587f0173e1",
+          "bindings": {
+            "_ZNSt3__16__treeINS_12__value_typeI4TextS2_EENS_19__map_value_compareIS2_S3_4LessLb1EEE22SimpleLibraryAllocatorIS3_Lj1EEE12__find_equalIS2_EERPNS_16__tree_node_baseIPvEENS_21__tree_const_iteratorIS3_PNS_11__tree_nodeIS3_SC_EElEERPNS_15__tree_end_nodeISE_EESF_RKT_": "0x1676f0",
+            "_ZN20SimpleLibraryBindingILj1EE8AllocateEjjjj": "0x36ea0",
+            "_ZNSt3__127__tree_balance_after_insertIPNS_16__tree_node_baseIPvEEEEvT_S5_": "0x6ff2e0"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x167c00",
+          "size": 360,
+          "symbol": "_ZNSt3__16__treeINS_12__value_typeI4TextS2_EENS_19__map_value_compareIS2_S3_4LessLb1EEE22SimpleLibraryAllocatorIS3_Lj1EEE30__emplace_hint_unique_key_argsIS2_JRKNS_4pairIKS2_S2_EEEEENS_15__tree_iteratorIS3_PNS_11__tree_nodeIS3_PvEElEENS_21__tree_const_iteratorIS3_SK_lEERKT_DpOT0_",
+          "target_sha256": "c0c937f38f4fa0a94f651a8f473b4e11920e65256a5abbeefdc2fd4f35741a58",
+          "bindings": {
+            "_ZNSt3__16__treeINS_12__value_typeI4TextS2_EENS_19__map_value_compareIS2_S3_4LessLb1EEE22SimpleLibraryAllocatorIS3_Lj1EEE12__find_equalIS2_EERPNS_16__tree_node_baseIPvEENS_21__tree_const_iteratorIS3_PNS_11__tree_nodeIS3_SC_EElEERPNS_15__tree_end_nodeISE_EESF_RKT_": "0x167d70",
+            "_ZN20SimpleLibraryBindingILj1EE8AllocateEjjjj": "0x36ea0",
+            "_ZNSt3__127__tree_balance_after_insertIPNS_16__tree_node_baseIPvEEEEvT_S5_": "0x6ff2e0"
+          },
+          "got_bindings": {}
+        }
+      ]
     }
   ]
 }

@@ -65,6 +65,9 @@ Direct calls to the [response constructor](SDK_HTTP_RESPONSE.md) occur in
 `0x8e120` (3,132 bytes) and `0x8f8a0` (3,236 bytes). Their strings and calls
 identify handshake-response and proxy-response processing. They include
 callbacks, logging, locking, and job transitions and remain unmatched.
+The proxy handler's response-value constructor and assignment now have
+[complete matches and RTTI-backed identities](SDK_HTTP_RESPONSE_VALUE.md).
+The assignment helper stores a value; it does not itself dispatch an event.
 The request serializers at `0x84980` and `0x84d20` also remain unmatched.
 
 This checkpoint verifies the listed functions individually; it does not

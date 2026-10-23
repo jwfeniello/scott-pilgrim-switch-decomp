@@ -1,9 +1,9 @@
 {
   "version": 1,
-  "generated_at": "2026-10-23T11:22:53.431325+00:00",
+  "generated_at": "2026-10-23T19:46:28.384158+00:00",
   "target_elf_sha256": "ea95638e6d6aaa0dc6cddd552a9366799aa1ec3bc07ee201f23f6c151103f5b8",
   "input_sha256": {
-    "config/builds.json": "c050c66f4e82cce211836bfb8b3859525d9a29fe74d41a15dc45048cca04fb69",
+    "config/builds.json": "d255e200f8273cacc18ebce9ece4fa01feec28c1b1d8cae732b79ba0a04a6be1",
     "config/functions.tsv": "399e91468a04e0459194c10d68d2210d1157cedefeb19c7851886ca7632fcb18",
     "config/target.json": "23cc6a5227206a953e7668acf5e9ae5c02a25c23b7e7967f0450a814b888241a",
     "src/AbiCfg_aggregate_O2_omit.cpp": "55009ca4f1819fe53803025bf27b93a676c6137877b9d4492828e2e15c89307c",
@@ -640,6 +640,7 @@
     "src/SdkHttpLine.cpp": "5096da52abe3878b5c05edeefb84182e78bd2db88b61cd0bbca0a3e3add7a771",
     "src/SdkHttpRedirect.cpp": "2b3d3683ec3d6c65c0a67a1c6b560898584232841f9c5e2f83e8b322d70bde4a",
     "src/SdkHttpResponse.cpp": "b79cefe17f7e00ae881ef0e50a301cae67e06fbc2343377cfa3c145507482d0b",
+    "src/SdkHttpResponseValue.cpp": "6cc85c065a42430c337eef2b9f902087fd406d27b0d6f586c69c136811448b9a",
     "src/SdkHttpResult.cpp": "4c5be0a736af3ef4ae45df66a82748102070682232b2633a71738d4a4b98cff0",
     "src/SdkHttpStatus.cpp": "6d94a104ee9749ddc402ae717d7971f64c8c1def911a214604325b209620b27a",
     "src/SdkJson.cpp": "a4935f4d16aa0854610fe7a52d7d59ac674a7038a3a78bd2bbf0272434110a37",
@@ -2791,8 +2792,8 @@
     "8.0.1": "dffd62a213ec6cdb4430012a4a41c11e5e32c288f133d5391f9be49e1c5b69de",
     "7.0.1": "c2f0a175157d9aaace8031f8e6d7ea0ed6142b4bcef287105e3ed227301f1002"
   },
-  "exact_functions": 29965,
-  "exact_bytes": 2963752,
+  "exact_functions": 29969,
+  "exact_bytes": 2965332,
   "builds": [
     {
       "id": "probes",
@@ -10078,6 +10079,11 @@
       "id": "sdk_http_result",
       "compiler": "8.0.1",
       "object_sha256": "ac0a38edd14e08faa4eb23e4fa6cda856451e95d1705da165c7813ce5a41375c"
+    },
+    {
+      "id": "sdk_http_response_value",
+      "compiler": "8.0.1",
+      "object_sha256": "b8a8866d3947974edae74cbe3bb2f63a488e34e8e1b815ec7a38bf74b858e7f2"
     }
   ],
   "matches": [
@@ -12612,6 +12618,17 @@
       "relocation_count": 7
     },
     {
+      "address": "0x8ed60",
+      "size": 388,
+      "exact": true,
+      "target_sha256": "52aac8bc178e68fb7358b6793ebf1c5b8e7307fa785a7fc2ff59c060f871a9f4",
+      "compiled_sha256": "52aac8bc178e68fb7358b6793ebf1c5b8e7307fa785a7fc2ff59c060f871a9f4",
+      "source": "src/SdkHttpResponseValue.cpp",
+      "symbol": "AssignHttpResponse",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 1
+    },
+    {
       "address": "0x919e0",
       "size": 16,
       "exact": true,
@@ -13259,6 +13276,17 @@
       "symbol": "RecoveredLeaf_fbd00",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 3
+    },
+    {
+      "address": "0xfc980",
+      "size": 472,
+      "exact": true,
+      "target_sha256": "3fc334b90c9a6dee25cf3ac0c7e259a050f70bc49f1b03abf8f1e41002ba9075",
+      "compiled_sha256": "3fc334b90c9a6dee25cf3ac0c7e259a050f70bc49f1b03abf8f1e41002ba9075",
+      "source": "src/SdkHttpResponseValue.cpp",
+      "symbol": "_ZN12HttpResponseC2EiRK7HeadersRK4Text",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 7
     },
     {
       "address": "0xfd6d0",
@@ -15681,6 +15709,17 @@
       "relocation_count": 3
     },
     {
+      "address": "0x167580",
+      "size": 360,
+      "exact": true,
+      "target_sha256": "0f733c4229259f2829638ff7d66f29373b7f5f1aa2211efe82295a587f0173e1",
+      "compiled_sha256": "0f733c4229259f2829638ff7d66f29373b7f5f1aa2211efe82295a587f0173e1",
+      "source": "src/SdkHttpResponseValue.cpp",
+      "symbol": "_ZNSt3__16__treeINS_12__value_typeI4TextS2_EENS_19__map_value_compareIS2_S3_4LessLb1EEE22SimpleLibraryAllocatorIS3_Lj1EEE30__emplace_hint_unique_key_argsIS2_JRKNS_4pairIKS2_S2_EEEEENS_15__tree_iteratorIS3_PNS_11__tree_nodeIS3_PvEElEENS_21__tree_const_iteratorIS3_SK_lEERKT_DpOT0_",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 3
+    },
+    {
       "address": "0x167b80",
       "size": 120,
       "exact": true,
@@ -15689,6 +15728,17 @@
       "source": "src/CfgAtomicNormalKeep.cpp",
       "symbol": "RecoveredLeaf_167b80",
       "source_review": "generated_cxx_abi_view",
+      "relocation_count": 3
+    },
+    {
+      "address": "0x167c00",
+      "size": 360,
+      "exact": true,
+      "target_sha256": "c0c937f38f4fa0a94f651a8f473b4e11920e65256a5abbeefdc2fd4f35741a58",
+      "compiled_sha256": "c0c937f38f4fa0a94f651a8f473b4e11920e65256a5abbeefdc2fd4f35741a58",
+      "source": "src/SdkHttpResponseValue.cpp",
+      "symbol": "_ZNSt3__16__treeINS_12__value_typeI4TextS2_EENS_19__map_value_compareIS2_S3_4LessLb1EEE22SimpleLibraryAllocatorIS3_Lj1EEE30__emplace_hint_unique_key_argsIS2_JRKNS_4pairIKS2_S2_EEEEENS_15__tree_iteratorIS3_PNS_11__tree_nodeIS3_PvEElEENS_21__tree_const_iteratorIS3_SK_lEERKT_DpOT0_",
+      "source_review": "manual_reconstruction",
       "relocation_count": 3
     },
     {
