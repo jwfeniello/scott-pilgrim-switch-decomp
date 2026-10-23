@@ -1,9 +1,9 @@
 {
   "version": 1,
-  "generated_at": "2026-10-23T02:32:51.086828+00:00",
+  "generated_at": "2026-10-23T02:41:14.457001+00:00",
   "target_elf_sha256": "ea95638e6d6aaa0dc6cddd552a9366799aa1ec3bc07ee201f23f6c151103f5b8",
   "input_sha256": {
-    "config/builds.json": "e4398e96f1cb53bbc43587ac7074ce42cee50b9b889c4fa1d58b5be5014de531",
+    "config/builds.json": "4b1a1bbf8eced6eda3e815624d6aa7bbbdc88d3a3cf70ce43c759153dc111ef1",
     "config/functions.tsv": "399e91468a04e0459194c10d68d2210d1157cedefeb19c7851886ca7632fcb18",
     "config/target.json": "23cc6a5227206a953e7668acf5e9ae5c02a25c23b7e7967f0450a814b888241a",
     "src/AbiCfg_aggregate_O2_omit.cpp": "55009ca4f1819fe53803025bf27b93a676c6137877b9d4492828e2e15c89307c",
@@ -56,6 +56,8 @@
     "src/GuardedCallbackDispatch.cpp": "86f35ac35d52791b5d0d03cec38af6fb2b419530fd5640f6c45a6a2f9c4258e1",
     "src/GuardedScalarDispatch.cpp": "ede9e464d4c14e5a777dfd2390d135a30f32e0198e92a3ff49c1cabec5a3f16b",
     "src/HashCapacity.cpp": "b0a7161f3a106cfa82ca323073696d2bb42ae50e67c8a7fea3cd174a1b969a20",
+    "src/HashMapRecovered0.cpp": "97989206b83c70db896ce515be79352fbbf79766a93870dcb75ec8ce710b48b2",
+    "src/HashMapRecovered1.cpp": "e579e95cd7428cd470c81bda365b673e6e1e3209ff77bb081aabddd994245cb4",
     "src/HashRebuild.cpp": "9fa8475c07fccf948ce78a975f78d99bba93149b71ff8579fe42f7013111e198",
     "src/IdentityFour.cpp": "5946d7f851d1e751a82d63ab41de4e511dec658a87b665e25e18505b7ea700c7",
     "src/IdentitySetRecovery.cpp": "b0d5a6328d5d3aceeae8f208da2db60de50253606260657302ceccd3a219e747",
@@ -1611,6 +1613,43 @@
     "vendor/llvm-libcxx-4/include/vector": "a21dc93caea1171f555a70896e131cdfcc6fd297a8999d3be03bdb03453be910",
     "vendor/llvm-libcxx-4/include/wchar.h": "fec3e8f01750904c045bb4863dfa2f29b4d977f1b8bb035baf57c33d22adbcef",
     "vendor/llvm-libcxx-4/include/wctype.h": "e42a84375c36c25da3a2be1f1772be600eb528ef96c21caba4286de57ccbe90b",
+    "vendor/llvm-libcxx-8/include/__config": "7d20f178a586a0e843473219820c86dd73c4ac2efa36e36c2550a995eb14f104",
+    "vendor/llvm-libcxx-8/include/__debug": "d73705b20c40d3854761351d03fbe5c572c8181e3923e20405d44619b9eed342",
+    "vendor/llvm-libcxx-8/include/__functional_base": "0b34681449595b26df785dec8e8b23232c87bf9f6fa48de397343ca91992e560",
+    "vendor/llvm-libcxx-8/include/__hash_table": "a51df1307720aae0c282167370dddc996b3e2037df3cd1d1088b2d1a6b4ef272",
+    "vendor/llvm-libcxx-8/include/__node_handle": "c25516972cd8284ff3145199427570b49d6f8dc00376caa380c7e76bed8037c5",
+    "vendor/llvm-libcxx-8/include/__nullptr": "d512fc7037851783e9b9abcd97f9a256c988a81f8d4482cdbf340d416aa13a1f",
+    "vendor/llvm-libcxx-8/include/__tuple": "fb9e2820a2703286d484e08f7f76041beec96eab83b856001fbeadffd134f890",
+    "vendor/llvm-libcxx-8/include/__undef_macros": "666ec0f4d837e2d99c565715477c3f31e7b7f43ab737e87a61425617357bac13",
+    "vendor/llvm-libcxx-8/include/algorithm": "8231fe45c1b6e129e1e960cd67433db3b167f74bb099f9aac9ac197b4fde366c",
+    "vendor/llvm-libcxx-8/include/bit": "c63e58712d244dabc8f8c2902fdc33e8fca2a9bc539bf16d9e1181054bc0d354",
+    "vendor/llvm-libcxx-8/include/cassert": "cdc7ff1c26192eafac0ef24d43545a4fa8fe27ffe31ea31e4647a5c0ae389a48",
+    "vendor/llvm-libcxx-8/include/cmath": "e92dfe2842aaec693c2fed43993deb451fddac71d52fdcc1bbc910ebd4f8192c",
+    "vendor/llvm-libcxx-8/include/cstddef": "c0dd839469b7f74766ec5923e2f8122f4e777841b052268ed12c5ecf4f74fee3",
+    "vendor/llvm-libcxx-8/include/cstdint": "a6accf4072737474ab83c3011f758f201af9250251d76ee8f54569e14cef532c",
+    "vendor/llvm-libcxx-8/include/cstdlib": "68141a607a1cc5815586e7a8a547875e9ef7dd3299f7d4644c3f594496326df9",
+    "vendor/llvm-libcxx-8/include/cstring": "4cc1299ba593e12cac9aae6c0142095e68446afd69cd92d9dc44caf7cf188087",
+    "vendor/llvm-libcxx-8/include/exception": "1127e7bb7003801587a3a0a9a1e5aaf18b40a65d0d660d2e0d0a29aef47df1de",
+    "vendor/llvm-libcxx-8/include/functional": "b9d66bdd0e81cee3873812f716364b6598d662f52e1632cbf0ca29e482eea5b7",
+    "vendor/llvm-libcxx-8/include/initializer_list": "256db3286336d7d36ea8b025224f1f2a8ccc99c8b7655cfc95875ce412274df1",
+    "vendor/llvm-libcxx-8/include/iosfwd": "0b62004c656d5c06ce6580344a1d716f41403af8eb424e2753cafb407d68adf2",
+    "vendor/llvm-libcxx-8/include/iterator": "b0077a0d8597cc4133d4fd0e22ab3530efba168a798c281b5569ab655985190a",
+    "vendor/llvm-libcxx-8/include/limits": "d5f0425bc71e31a4588eacad2441449b1c2f0763e14312f507d0997caf99dc0e",
+    "vendor/llvm-libcxx-8/include/math.h": "ccb698bba066ba4b9cef6ccddd5a79ae5c389def391adb10d2de1be77f05b69d",
+    "vendor/llvm-libcxx-8/include/memory": "39eccd2c1fdd537a784f67fb22066c3c10a7a5ce0fc3b298c5dc3ec554d732f0",
+    "vendor/llvm-libcxx-8/include/new": "61fc0d45c6bbb54aeba05da1bfdcc85abb2a8e9a707c925dd9bca4363da8c42f",
+    "vendor/llvm-libcxx-8/include/optional": "9e420207ee1777c41e614e4e77a23e756c8e70206ab48763f076de4f581a1374",
+    "vendor/llvm-libcxx-8/include/stdexcept": "4b9981dd1f20ce554f9d230fe78be5e698072f4eb5a5d132348113ebba2ceba0",
+    "vendor/llvm-libcxx-8/include/stdint.h": "ed35ae99230f7245d2576ef376e685a5dc89442ad947cbd775da8cbaf67128c0",
+    "vendor/llvm-libcxx-8/include/stdlib.h": "45a189476b3c679912e3c3b8f856282a719853db186739f00857d0bef7b0b5f7",
+    "vendor/llvm-libcxx-8/include/string.h": "7e0c97d37ef4d7826b705d53e0d24f3db35906ef6e58e0d9ccf99c9bce68104c",
+    "vendor/llvm-libcxx-8/include/tuple": "2fdd03e45b9ba433b9301599d104c42c21dee40fa559cdee2e90e86c22185314",
+    "vendor/llvm-libcxx-8/include/type_traits": "b9ec09b50c203be7ec53a23af543ec01100e9c3feac519f30238975f3588be49",
+    "vendor/llvm-libcxx-8/include/typeinfo": "5618a3562e02316958f3071796c6212320875eb9b27c9e33b50d15f871ef8194",
+    "vendor/llvm-libcxx-8/include/unordered_map": "fae9983b91009765c1d709b14ad97987694466c4a561a8c838992db4c0551c53",
+    "vendor/llvm-libcxx-8/include/utility": "a015aba431b8d7bdb1b0b2fc759c9c067d5802ff886ab6d78c1682384933aec3",
+    "vendor/llvm-libcxx-8/include/version": "164b5778f2dba9ab61d53f8910a83cd220cc5d13975897e799bb2f99eec738ff",
+    "vendor/llvm-libcxx-8/include/wchar.h": "27ff803b17a31d7dece2990d0bd117cf0f84f66dfa5a3554019835824ef9f9ac",
     "vendor/musl/generated/bits/alltypes.h": "3d69fa30f69b41b86bcc942688d9ff8931665690898b8aa362e170cdd3f4c899",
     "vendor/musl/generated/bits/endian.h": "a87bfe5d40397b650cf7f4a67cae0687ddbe18431c09932ecf663d33fa610a0f",
     "vendor/musl/generated/bits/errno.h": "1760adb5572357ae1fa93625bd501e975c1ba03fdb3f97fc4fce46398772ae7b",
@@ -2660,8 +2699,8 @@
     "7.0.1": "c2f0a175157d9aaace8031f8e6d7ea0ed6142b4bcef287105e3ed227301f1002",
     "8.0.1": "dffd62a213ec6cdb4430012a4a41c11e5e32c288f133d5391f9be49e1c5b69de"
   },
-  "exact_functions": 29825,
-  "exact_bytes": 2895364,
+  "exact_functions": 29832,
+  "exact_bytes": 2897228,
   "builds": [
     {
       "id": "probes",
@@ -9632,6 +9671,16 @@
       "id": "gameplay_statistics_detail",
       "compiler": "8.0.1",
       "object_sha256": "a374a37c2587417a0423c64b7af64a0c24b58817321493a514e934eb6772939c"
+    },
+    {
+      "id": "recovered_hashmap_0",
+      "compiler": "8.0.1",
+      "object_sha256": "924872d3d91a0bc5727a05bad6e58a51c5c6731fe1bba42eb9d7fde9b8ce9209"
+    },
+    {
+      "id": "recovered_hashmap_1",
+      "compiler": "8.0.1",
+      "object_sha256": "2d3628532756e2e1b1c64072d70b2b395a616418930432699909ca4cbd61e7a6"
     }
   ],
   "matches": [
@@ -112475,6 +112524,17 @@
       "relocation_count": 2
     },
     {
+      "address": "0x496940",
+      "size": 288,
+      "exact": true,
+      "target_sha256": "015e4aa160e0d1d3c5b444df445be59aefc477c5821f11c496289f4c1ac04476",
+      "compiled_sha256": "015e4aa160e0d1d3c5b444df445be59aefc477c5821f11c496289f4c1ac04476",
+      "source": "src/HashMapRecovered1.cpp",
+      "symbol": "_ZNSt3__112__hash_tableINS_17__hash_value_typeIPKc5ValueEENS_22__unordered_map_hasherIS3_S5_NS_4hashIS3_EELb1EEENS_21__unordered_map_equalIS3_S5_NS_8equal_toIS3_EELb1EEENS_9allocatorIS5_EEE4findIS3_EENS_15__hash_iteratorIPNS_11__hash_nodeIS5_PvEEEERKT_",
+      "source_review": "library_abi_view",
+      "relocation_count": 0
+    },
+    {
       "address": "0x496a60",
       "size": 264,
       "exact": true,
@@ -119678,6 +119738,17 @@
       "symbol": "_ZNSt3__112__hash_tableINS_17__hash_value_typeIm11GameRecord8EENS_22__unordered_map_hasherImS3_NS_4hashImEELb1EEENS_21__unordered_map_equalImS3_NS_8equal_toImEELb1EEE16LibraryAllocatorIS3_Lj5ELj1092677632EEE8__rehashEm",
       "source_review": "library_abi_view",
       "relocation_count": 11
+    },
+    {
+      "address": "0x4c3870",
+      "size": 288,
+      "exact": true,
+      "target_sha256": "015e4aa160e0d1d3c5b444df445be59aefc477c5821f11c496289f4c1ac04476",
+      "compiled_sha256": "015e4aa160e0d1d3c5b444df445be59aefc477c5821f11c496289f4c1ac04476",
+      "source": "src/HashMapRecovered1.cpp",
+      "symbol": "_ZNSt3__112__hash_tableINS_17__hash_value_typeIPKc5ValueEENS_22__unordered_map_hasherIS3_S5_NS_4hashIS3_EELb1EEENS_21__unordered_map_equalIS3_S5_NS_8equal_toIS3_EELb1EEENS_9allocatorIS5_EEE4findIS3_EENS_15__hash_iteratorIPNS_11__hash_nodeIS5_PvEEEERKT_",
+      "source_review": "library_abi_view",
+      "relocation_count": 0
     },
     {
       "address": "0x4c3b30",
@@ -141724,6 +141795,17 @@
       "relocation_count": 4
     },
     {
+      "address": "0x571270",
+      "size": 288,
+      "exact": true,
+      "target_sha256": "015e4aa160e0d1d3c5b444df445be59aefc477c5821f11c496289f4c1ac04476",
+      "compiled_sha256": "015e4aa160e0d1d3c5b444df445be59aefc477c5821f11c496289f4c1ac04476",
+      "source": "src/HashMapRecovered1.cpp",
+      "symbol": "_ZNSt3__112__hash_tableINS_17__hash_value_typeIPKc5ValueEENS_22__unordered_map_hasherIS3_S5_NS_4hashIS3_EELb1EEENS_21__unordered_map_equalIS3_S5_NS_8equal_toIS3_EELb1EEENS_9allocatorIS5_EEE4findIS3_EENS_15__hash_iteratorIPNS_11__hash_nodeIS5_PvEEEERKT_",
+      "source_review": "library_abi_view",
+      "relocation_count": 0
+    },
+    {
       "address": "0x5719c0",
       "size": 264,
       "exact": true,
@@ -141744,6 +141826,28 @@
       "symbol": "_Z15SetHashCapacityILj5709856EEvP16HashCapacityViewm",
       "source_review": "manual_reconstruction",
       "relocation_count": 4
+    },
+    {
+      "address": "0x572c70",
+      "size": 288,
+      "exact": true,
+      "target_sha256": "015e4aa160e0d1d3c5b444df445be59aefc477c5821f11c496289f4c1ac04476",
+      "compiled_sha256": "015e4aa160e0d1d3c5b444df445be59aefc477c5821f11c496289f4c1ac04476",
+      "source": "src/HashMapRecovered1.cpp",
+      "symbol": "_ZNSt3__112__hash_tableINS_17__hash_value_typeIPKc5ValueEENS_22__unordered_map_hasherIS3_S5_NS_4hashIS3_EELb1EEENS_21__unordered_map_equalIS3_S5_NS_8equal_toIS3_EELb1EEENS_9allocatorIS5_EEE4findIS3_EENS_15__hash_iteratorIPNS_11__hash_nodeIS5_PvEEEERKT_",
+      "source_review": "library_abi_view",
+      "relocation_count": 0
+    },
+    {
+      "address": "0x572ee0",
+      "size": 288,
+      "exact": true,
+      "target_sha256": "015e4aa160e0d1d3c5b444df445be59aefc477c5821f11c496289f4c1ac04476",
+      "compiled_sha256": "015e4aa160e0d1d3c5b444df445be59aefc477c5821f11c496289f4c1ac04476",
+      "source": "src/HashMapRecovered1.cpp",
+      "symbol": "_ZNSt3__112__hash_tableINS_17__hash_value_typeIPKc5ValueEENS_22__unordered_map_hasherIS3_S5_NS_4hashIS3_EELb1EEENS_21__unordered_map_equalIS3_S5_NS_8equal_toIS3_EELb1EEENS_9allocatorIS5_EEE4findIS3_EENS_15__hash_iteratorIPNS_11__hash_nodeIS5_PvEEEERKT_",
+      "source_review": "library_abi_view",
+      "relocation_count": 0
     },
     {
       "address": "0x573950",
@@ -183610,6 +183714,17 @@
       "symbol": "RecoveredLeaf_787750",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 1
+    },
+    {
+      "address": "0x7879e0",
+      "size": 212,
+      "exact": true,
+      "target_sha256": "10f4294bfd7008b88ee3b899798ed7c285c7a34b83c4c49fea7849ff68435807",
+      "compiled_sha256": "10f4294bfd7008b88ee3b899798ed7c285c7a34b83c4c49fea7849ff68435807",
+      "source": "src/HashMapRecovered0.cpp",
+      "symbol": "_ZNSt3__112__hash_tableINS_17__hash_value_typeIj5ValueEENS_22__unordered_map_hasherIjS3_NS_4hashIjEELb1EEENS_21__unordered_map_equalIjS3_NS_8equal_toIjEELb1EEENS_9allocatorIS3_EEE6rehashEm",
+      "source_review": "library_abi_view",
+      "relocation_count": 3
     },
     {
       "address": "0x787d30",
@@ -282566,6 +282681,17 @@
       "symbol": "_Z20RegisterLazyTypeOmitILj12759408ELj3334449670EEP18RegisteredTypeViewPv",
       "source_review": "manual_reconstruction",
       "relocation_count": 31
+    },
+    {
+      "address": "0xc2b490",
+      "size": 212,
+      "exact": true,
+      "target_sha256": "88caf43759616588688ea9bef24933da32c96c9096bec22bc042de2d2df92b0f",
+      "compiled_sha256": "88caf43759616588688ea9bef24933da32c96c9096bec22bc042de2d2df92b0f",
+      "source": "src/HashMapRecovered0.cpp",
+      "symbol": "_ZNSt3__112__hash_tableINS_17__hash_value_typeIj5ValueEENS_22__unordered_map_hasherIjS3_NS_4hashIjEELb1EEENS_21__unordered_map_equalIjS3_NS_8equal_toIjEELb1EEENS_9allocatorIS3_EEE6rehashEm",
+      "source_review": "library_abi_view",
+      "relocation_count": 3
     },
     {
       "address": "0xc2b7e0",

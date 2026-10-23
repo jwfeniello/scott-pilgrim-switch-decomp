@@ -16,8 +16,8 @@ Edition** for Nintendo Switch.
 [Progress on decomp.dev](https://decomp.dev/jwfeniello/scott-pilgrim-switch-decomp)
 · [Progress workflow](https://github.com/jwfeniello/scott-pilgrim-switch-decomp/actions/workflows/progress.yml)
 
-**Current locally verified progress: 29,825 exact functions /
-2,895,364 bytes / 17.658250% of executable `.text`.** The original `.text` is 16,396,664 bytes.
+**Current locally verified progress: 29,832 exact functions /
+2,897,228 bytes / 17.669619% of executable `.text`.** The original `.text` is 16,396,664 bytes.
 This includes engine and library infrastructure. The project does not yet rebuild
 or boot the complete game. Original method names and many ABI declarations remain
 provisional.
@@ -62,6 +62,10 @@ timer, collision-scan gating, and selected regions of the shared 13 KB player
 update. It adds 1,246 bounded comparisons, explicitly separating complete small
 functions from interior-region checks. Animation readiness has a tested candidate
 implementation; its player-side binding remains unproven.
+
+[Additional hash-map matches](docs/RECOVERED_HASH_MAPS.md) add seven complete
+library functions: pointer-key lookup and rehash policy. Their application-level
+types remain unrecovered.
 
 ## Contributing
 
