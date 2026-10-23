@@ -19,6 +19,9 @@ other values are appended as decimal. The Host key and value are retained
 text temporaries. The stringstream extraction temporary is destroyed before
 header lookup, a lifetime detail preserved by the candidate.
 
+The related [proxy CONNECT builder](PROXY_CONNECT_CANDIDATE.md) uses the
+request URL and port, but gates the Host rewrite on environment kind 2.
+
 ## Bounded validation
 
 `tools/compare_websocket_setup.py` compares complete ARM64 returns for840

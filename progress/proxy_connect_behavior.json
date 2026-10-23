@@ -1,0 +1,29 @@
+{
+  "cases": 360,
+  "negative_controls": [
+    {
+      "name": "environment",
+      "case_index": 0
+    },
+    {
+      "name": "auth_gate",
+      "case_index": 1
+    },
+    {
+      "name": "password",
+      "case_index": 4
+    }
+  ],
+  "exact_credit": false,
+  "original_sha256": "ea95638e6d6aaa0dc6cddd552a9366799aa1ec3bc07ee201f23f6c151103f5b8",
+  "source_sha256": "067e601afdf3518fd1fea1515491ea994b9ce902acc94f68f5332cc329470b67",
+  "candidate_sha256": "a3ac0809460b6a7de195ee2de3490a812dcb25e5f62652b6173096fc12cdf211",
+  "boundary": "Complete CONNECT builder return; original URI parser, folded search, vector assignment, Base64 encoder and stream extraction execute; independent output oracle and ordered lifetime traces checked.",
+  "limitations": [
+    "SliceText and DetachText modeled with unique owners",
+    "formatting, allocation/free, SDK insertion, stream lifecycle/insertion and text construction synthetic",
+    "ASCII case conversion modeled",
+    "bounded environment/host/port/authentication combinations",
+    "no concurrency, allocation failure, malformed-input safety or live proxy/network execution"
+  ]
+}
