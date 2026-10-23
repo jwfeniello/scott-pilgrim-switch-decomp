@@ -269,3 +269,17 @@ bind different callees. The manifest records each binding independently.
 the input string, repeatedly finds and replaces the search string, and advances
 by the replacement string's length. It preserves the original loop, including
 its lack of an explicit empty-search guard; no new edge-case policy is added.
+
+## Uppercase and substring
+
+`SdkTextCaseSubstring.cpp` matches uppercase conversion at `0x80540` (284
+bytes) and substring extraction at `0x80e00` (412 bytes). Uppercase conversion
+copies the string and applies `toupper` to each unsigned byte, reevaluating the
+end iterator after each call as the original does. This is byte-wise conversion,
+not Unicode case folding.
+
+The substring helper calls `substr(position, count)` and constructs the result
+from that temporary's `c_str()`. Consequently embedded NUL bytes can truncate
+the returned string. Both the bounds behavior and this conversion are preserved.
+The wrapper at `0x80400` therefore wraps uppercase conversion; `0x80020` wraps
+whitespace trimming at `0x80160`, which is identified but still unmatched.

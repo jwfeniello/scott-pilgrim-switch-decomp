@@ -415823,6 +415823,85 @@
           "got_bindings": {}
         }
       ]
+    },
+    {
+      "id": "sdk_text_case_substring",
+      "source": "src/SdkTextCaseSubstring.cpp",
+      "source_review": "manual_reconstruction",
+      "compiler": "8.0.1",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-std=c++11",
+        "-D_GNU_SOURCE",
+        "-U_WIN32",
+        "-U_WIN64",
+        "-O2",
+        "-mcpu=cortex-a57",
+        "-fno-omit-frame-pointer",
+        "-fPIC",
+        "-fno-strict-aliasing",
+        "-fno-vectorize",
+        "-fno-slp-vectorize",
+        "-fno-exceptions",
+        "-nostdinc++",
+        "-isystem",
+        "vendor/llvm-libcxx-8/include",
+        "-isystem",
+        "vendor/musl/include",
+        "-isystem",
+        "vendor/musl/generated",
+        "-D_LIBCPP_HAS_NO_THREADS",
+        "-D_LIBCPP_HAS_MUSL_LIBC",
+        "-D__CLANG_MAX_ALIGN_T_DEFINED",
+        "-D_LIBCPP_DISABLE_VISIBILITY_ANNOTATIONS",
+        "-funwind-tables",
+        "-mllvm",
+        "-tail-dup-placement-threshold=4",
+        "-I",
+        "src",
+        "-I",
+        "vendor/rapidjson-1.1.0/include",
+        "-mgeneral-regs-only",
+        "-D__ELF__"
+      ],
+      "header_roots": [
+        "vendor/llvm-libcxx-8/include",
+        "vendor/musl/include",
+        "vendor/musl/generated",
+        "vendor/rapidjson-1.1.0/include"
+      ],
+      "functions": [
+        {
+          "address": "0x80e00",
+          "size": 412,
+          "symbol": "SubstringSdkText",
+          "target_sha256": "f562b8d0292b02a86a7e3b9cfbc686afb4942b0347e6ebbf2e29cbf6331dabd9",
+          "bindings": {
+            "_ZN20SimpleLibraryBindingILj2EE8AllocateEjjjj": "0x36ea0",
+            "memcpy": "0xfa3330",
+            "strlen": "0xfa3360",
+            "_ZN20SimpleLibraryBindingILj2EE4FreeEPv": "0x37030",
+            "_ZN20SimpleLibraryBindingILj3EE8AllocateEjjjj": "0x36ea0",
+            "_ZNKSt3__121__basic_string_commonILb1EE20__throw_out_of_rangeEv": "0xfa3c80",
+            "_ZNKSt3__121__basic_string_commonILb1EE20__throw_length_errorEv": "0xfa3b20"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x80540",
+          "size": 284,
+          "symbol": "UpperSdkText",
+          "target_sha256": "d3ccd52800592990c228304fbce5f89af01f9804ec95734ff1f58c7a6eaeb8f9",
+          "bindings": {
+            "_ZN20SimpleLibraryBindingILj3EE8AllocateEjjjj": "0x36ea0",
+            "memcpy": "0xfa3330",
+            "toupper": "0xfa3b50",
+            "_ZNKSt3__121__basic_string_commonILb1EE20__throw_length_errorEv": "0xfa3b20"
+          },
+          "got_bindings": {}
+        }
+      ]
     }
   ]
 }

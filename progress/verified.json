@@ -1,9 +1,9 @@
 {
   "version": 1,
-  "generated_at": "2026-10-23T07:26:28.544628+00:00",
+  "generated_at": "2026-10-23T07:34:32.924874+00:00",
   "target_elf_sha256": "ea95638e6d6aaa0dc6cddd552a9366799aa1ec3bc07ee201f23f6c151103f5b8",
   "input_sha256": {
-    "config/builds.json": "b6d83ab8a4ca2e22ac4a0fb1ac6f3aba5a4515a923cc071ca3974d7141c2d527",
+    "config/builds.json": "4977401f210f70cfb7e570a721eae1ff6ff2b02d3c3a02dacc037760b8a1b589",
     "config/functions.tsv": "399e91468a04e0459194c10d68d2210d1157cedefeb19c7851886ca7632fcb18",
     "config/target.json": "23cc6a5227206a953e7668acf5e9ae5c02a25c23b7e7967f0450a814b888241a",
     "src/AbiCfg_aggregate_O2_omit.cpp": "55009ca4f1819fe53803025bf27b93a676c6137877b9d4492828e2e15c89307c",
@@ -635,6 +635,7 @@
     "src/SdkJsonDocument.cpp": "4d232fbeea58587cc8a60f65ac2d8bb21c26ea17b0deeae70aa4ccfdee057d22",
     "src/SdkOwnerNoBaseOwnerKeepPicUnwind.cpp": "f5b33c74fb068eda3471b1ccdb60accce71daf06bb9cc3c4c4a1068edf667e35",
     "src/SdkOwnerSimpleOwnerKeepPicUnwind.cpp": "8fc2b5afdba4f85a0404131c8b2fb269ec4ce96f7f37f2e73d9f742682950ea7",
+    "src/SdkTextCaseSubstring.cpp": "10bd589e26ca0fc9702724d569acc3110d0a25898c2839fc7891c3d14ad97993",
     "src/SdkTextCompare.cpp": "835a2f72f2eef2c6d2dd1d5fdaf12b67099fd33361f7d35061fd6a8873fadafb",
     "src/SdkTextConstructor.cpp": "6f434e50913b4998df643889bd61f20a33582f686e8419560894d7f3a15b83c3",
     "src/SdkTextDetach.cpp": "b4eae43321e1748b06e0f16265353d946f1b33cdd40e02366ddbf86fd26f05c7",
@@ -2757,8 +2758,8 @@
     "7.0.1": "c2f0a175157d9aaace8031f8e6d7ea0ed6142b4bcef287105e3ed227301f1002",
     "8.0.1": "dffd62a213ec6cdb4430012a4a41c11e5e32c288f133d5391f9be49e1c5b69de"
   },
-  "exact_functions": 29925,
-  "exact_bytes": 2928272,
+  "exact_functions": 29927,
+  "exact_bytes": 2928968,
   "builds": [
     {
       "id": "probes",
@@ -9914,6 +9915,11 @@
       "id": "sdk_text_replace_all",
       "compiler": "8.0.1",
       "object_sha256": "f6e97e51f381ae1bec956c16f793ed7fd0562e4c82ff1298e09397195909f8c0"
+    },
+    {
+      "id": "sdk_text_case_substring",
+      "compiler": "8.0.1",
+      "object_sha256": "0d5eecd9428f955272aba42d5e8c149a1ee1a76a436c1ebaf3bf2770eec0c14f"
     }
   ],
   "matches": [
@@ -11973,6 +11979,28 @@
       "symbol": "TransformSdkText",
       "source_review": "manual_reconstruction",
       "relocation_count": 8
+    },
+    {
+      "address": "0x80540",
+      "size": 284,
+      "exact": true,
+      "target_sha256": "d3ccd52800592990c228304fbce5f89af01f9804ec95734ff1f58c7a6eaeb8f9",
+      "compiled_sha256": "d3ccd52800592990c228304fbce5f89af01f9804ec95734ff1f58c7a6eaeb8f9",
+      "source": "src/SdkTextCaseSubstring.cpp",
+      "symbol": "UpperSdkText",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 4
+    },
+    {
+      "address": "0x80e00",
+      "size": 412,
+      "exact": true,
+      "target_sha256": "f562b8d0292b02a86a7e3b9cfbc686afb4942b0347e6ebbf2e29cbf6331dabd9",
+      "compiled_sha256": "f562b8d0292b02a86a7e3b9cfbc686afb4942b0347e6ebbf2e29cbf6331dabd9",
+      "source": "src/SdkTextCaseSubstring.cpp",
+      "symbol": "SubstringSdkText",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 9
     },
     {
       "address": "0x81ac0",
