@@ -11,6 +11,8 @@ These complete functions have exact-byte recipes, including relocation bindings:
 | `0x163db0` | 176 | Text-map tree destruction |
 
 Names describe recovered behavior; they are not claims of original symbol names.
+The related [WebSocket connection helpers](SDK_WEBSOCKET_CONNECTION.md) now
+cover status interpretation, accept validation, and request-stage setup.
 The two tree routines use separate recursive-call bindings to their respective
 original addresses. The response constructor's tree-destruction call is bound
 to `0x701100`, independently of those two additional matches.

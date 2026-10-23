@@ -1,9 +1,9 @@
 {
   "version": 1,
-  "generated_at": "2026-10-23T11:02:25.627647+00:00",
+  "generated_at": "2026-10-23T11:12:41.282027+00:00",
   "target_elf_sha256": "ea95638e6d6aaa0dc6cddd552a9366799aa1ec3bc07ee201f23f6c151103f5b8",
   "input_sha256": {
-    "config/builds.json": "38992a4f88aae3d441e1864c4fd30930c1d765617b3c7bf90e3e31c996a63237",
+    "config/builds.json": "9b2d7de79be896cdd37ff1621291e292fd0ca4ca5b180fa4a2c8d644188b3943",
     "config/functions.tsv": "399e91468a04e0459194c10d68d2210d1157cedefeb19c7851886ca7632fcb18",
     "config/target.json": "23cc6a5227206a953e7668acf5e9ae5c02a25c23b7e7967f0450a814b888241a",
     "src/AbiCfg_aggregate_O2_omit.cpp": "55009ca4f1819fe53803025bf27b93a676c6137877b9d4492828e2e15c89307c",
@@ -638,7 +638,9 @@
     "src/SdkHttpHeaderLine.cpp": "2ee0e9b9b79d173dcb2fed702cef99f62e985801cf0c09b962a27364cfcd59f3",
     "src/SdkHttpHeaders.cpp": "41c70524c0053abd3d02a502115355e7d16d0a415ae4ae7e0853901a3916c404",
     "src/SdkHttpLine.cpp": "5096da52abe3878b5c05edeefb84182e78bd2db88b61cd0bbca0a3e3add7a771",
+    "src/SdkHttpRedirect.cpp": "2b3d3683ec3d6c65c0a67a1c6b560898584232841f9c5e2f83e8b322d70bde4a",
     "src/SdkHttpResponse.cpp": "b79cefe17f7e00ae881ef0e50a301cae67e06fbc2343377cfa3c145507482d0b",
+    "src/SdkHttpStatus.cpp": "6d94a104ee9749ddc402ae717d7971f64c8c1def911a214604325b209620b27a",
     "src/SdkJson.cpp": "a4935f4d16aa0854610fe7a52d7d59ac674a7038a3a78bd2bbf0272434110a37",
     "src/SdkJsonBuffer.cpp": "c860abd082a874b98e79dbf20d2cc25568ed9e3ce84590f905cb02369988e4ce",
     "src/SdkJsonBufferFinalize.cpp": "d5efc109a8a64e33cacdaa306e52a16e899b173f4a58506acf954dfbc26ca63a",
@@ -662,6 +664,8 @@
     "src/SdkUriQuery.cpp": "b9d9dec6c270370731e81a22f578d1b6ac273e49c9d9348edb4cdf75de5abe6e",
     "src/SdkUriSlice.cpp": "c5923e889a3cf952b42f28e0aeca168453dd4463a8a146ab58effa3ccca00b1f",
     "src/SdkWebSocketHeaders.cpp": "a51f199b5bdef66882e49390a6dee26d56c3e998c035084a9fac2070be93befa",
+    "src/SdkWebSocketStartRequests.cpp": "86e8e0777bb835920e909b8de43c9ee69b39390ef9992e8ac5fadbcc92f539e7",
+    "src/SdkWebSocketValidate.cpp": "e932f3168f58c06521ff5689523b7716b27029f0dfe2a254bd2b95157eb62930",
     "src/SdkWideConversion.cpp": "6b909ec8466aacbe57647a331b23855120efd927798dced601c372266ecbbede",
     "src/SharedCallbackConstruction.cpp": "fe897551395d63ff4ab7c40c9ce03c402cda8ef147698b4da58345674fd4a7f8",
     "src/SharedCountDestructor.cpp": "5fad9364c9a06ec0070a86becfd865267eadf0c6a53108037928482cf1630235",
@@ -2786,8 +2790,8 @@
     "8.0.1": "dffd62a213ec6cdb4430012a4a41c11e5e32c288f133d5391f9be49e1c5b69de",
     "7.0.1": "c2f0a175157d9aaace8031f8e6d7ea0ed6142b4bcef287105e3ed227301f1002"
   },
-  "exact_functions": 29959,
-  "exact_bytes": 2951256,
+  "exact_functions": 29964,
+  "exact_bytes": 2953572,
   "builds": [
     {
       "id": "probes",
@@ -10048,6 +10052,26 @@
       "id": "sdk_http_response",
       "compiler": "8.0.1",
       "object_sha256": "304d0e96d0c4f1bd68a3acd21a24a9c7d6fec07cd3c5f3bd6d91c4b2c45308ee"
+    },
+    {
+      "id": "sdk_http_status",
+      "compiler": "8.0.1",
+      "object_sha256": "b61972a09d4206cb5e3f7656d5b1c35c5501dea944fe9fe633806b320613dc37"
+    },
+    {
+      "id": "sdk_http_redirect",
+      "compiler": "8.0.1",
+      "object_sha256": "37658362f5a54bf240397f34f3546a44d5564a119ee6b669c124f6e76291d2d5"
+    },
+    {
+      "id": "sdk_websocket_validate",
+      "compiler": "8.0.1",
+      "object_sha256": "ddb6891e74dcb01cf92fff2c0d0652acfbe70519fb7154793802cf9bf86157f4"
+    },
+    {
+      "id": "sdk_websocket_start_requests",
+      "compiler": "8.0.1",
+      "object_sha256": "da39546f5e4a772e9d70debe01b087effeebc0c9c625e3236b82de392d5604c5"
     }
   ],
   "matches": [
@@ -12461,6 +12485,39 @@
       "relocation_count": 12
     },
     {
+      "address": "0x860a0",
+      "size": 228,
+      "exact": true,
+      "target_sha256": "39577656778a6d1bca7226f3ea002797f47c2bde5094183697fca6c5f475a9fa",
+      "compiled_sha256": "39577656778a6d1bca7226f3ea002797f47c2bde5094183697fca6c5f475a9fa",
+      "source": "src/SdkHttpRedirect.cpp",
+      "symbol": "IsRedirect",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 6
+    },
+    {
+      "address": "0x86190",
+      "size": 368,
+      "exact": true,
+      "target_sha256": "9b0146bafc2208b8139afe7d974b85672f2215e4dc0cfa94e9efd93394b927d7",
+      "compiled_sha256": "9b0146bafc2208b8139afe7d974b85672f2215e4dc0cfa94e9efd93394b927d7",
+      "source": "src/SdkHttpStatus.cpp",
+      "symbol": "ReadStatusCode",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 7
+    },
+    {
+      "address": "0x86300",
+      "size": 812,
+      "exact": true,
+      "target_sha256": "ec7d176a2169a464ffe0ab5b17255f7c58e9cde55f3d4ca93cb7cb321fa41151",
+      "compiled_sha256": "ec7d176a2169a464ffe0ab5b17255f7c58e9cde55f3d4ca93cb7cb321fa41151",
+      "source": "src/SdkWebSocketValidate.cpp",
+      "symbol": "ValidateHandshake",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 14
+    },
+    {
       "address": "0x88980",
       "size": 36,
       "exact": true,
@@ -12514,6 +12571,28 @@
       "symbol": "RecoveredLeaf_8b620",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 0
+    },
+    {
+      "address": "0x8c690",
+      "size": 456,
+      "exact": true,
+      "target_sha256": "3c9f9215a0f046b90005e6c6972ae1187562ba0b72436a4ee77ca783b8f66dbc",
+      "compiled_sha256": "3c9f9215a0f046b90005e6c6972ae1187562ba0b72436a4ee77ca783b8f66dbc",
+      "source": "src/SdkWebSocketStartRequests.cpp",
+      "symbol": "StartProxyRequest",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 7
+    },
+    {
+      "address": "0x8cb90",
+      "size": 452,
+      "exact": true,
+      "target_sha256": "c879a4a82769bceae4f58ed93dfcdcfd8fbae329853d54cc09bd37ea7745cb92",
+      "compiled_sha256": "c879a4a82769bceae4f58ed93dfcdcfd8fbae329853d54cc09bd37ea7745cb92",
+      "source": "src/SdkWebSocketStartRequests.cpp",
+      "symbol": "StartHandshakeRequest",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 7
     },
     {
       "address": "0x919e0",

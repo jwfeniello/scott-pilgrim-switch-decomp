@@ -417365,6 +417365,296 @@
           "got_bindings": {}
         }
       ]
+    },
+    {
+      "id": "sdk_http_status",
+      "source": "src/SdkHttpStatus.cpp",
+      "source_review": "manual_reconstruction",
+      "compiler": "8.0.1",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-std=c++11",
+        "-D_GNU_SOURCE",
+        "-U_WIN32",
+        "-U_WIN64",
+        "-O3",
+        "-mcpu=cortex-a57",
+        "-fno-omit-frame-pointer",
+        "-fPIC",
+        "-fno-strict-aliasing",
+        "-fno-vectorize",
+        "-fno-slp-vectorize",
+        "-fno-exceptions",
+        "-nostdinc++",
+        "-isystem",
+        "vendor/llvm-libcxx-8/include",
+        "-isystem",
+        "vendor/musl/include",
+        "-isystem",
+        "vendor/musl/generated",
+        "-D_LIBCPP_HAS_NO_THREADS",
+        "-D_LIBCPP_HAS_MUSL_LIBC",
+        "-D__CLANG_MAX_ALIGN_T_DEFINED",
+        "-D_LIBCPP_DISABLE_VISIBILITY_ANNOTATIONS",
+        "-funwind-tables",
+        "-mllvm",
+        "-tail-dup-placement-threshold=4",
+        "-I",
+        "src",
+        "-I",
+        "vendor/rapidjson-1.1.0/include",
+        "-mgeneral-regs-only",
+        "-D__ELF__"
+      ],
+      "header_roots": [
+        "vendor/llvm-libcxx-8/include",
+        "vendor/musl/include",
+        "vendor/musl/generated",
+        "vendor/rapidjson-1.1.0/include"
+      ],
+      "functions": [
+        {
+          "address": "0x86190",
+          "size": 368,
+          "symbol": "ReadStatusCode",
+          "target_sha256": "9b0146bafc2208b8139afe7d974b85672f2215e4dc0cfa94e9efd93394b927d7",
+          "bindings": {
+            "ConstructSdkText": "0x7e7e0",
+            "SplitText": "0x46d50",
+            "atoi": "0xfa3c90",
+            "_ZN20SimpleLibraryBindingILj1EE4FreeEPv": "0x37030"
+          },
+          "got_bindings": {},
+          "literals": {
+            "2000": "0x12fc32b"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sdk_http_redirect",
+      "source": "src/SdkHttpRedirect.cpp",
+      "source_review": "manual_reconstruction",
+      "compiler": "8.0.1",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-std=c++11",
+        "-D_GNU_SOURCE",
+        "-U_WIN32",
+        "-U_WIN64",
+        "-O3",
+        "-mcpu=cortex-a57",
+        "-fno-omit-frame-pointer",
+        "-fPIC",
+        "-fno-strict-aliasing",
+        "-fno-vectorize",
+        "-fno-slp-vectorize",
+        "-fno-exceptions",
+        "-nostdinc++",
+        "-isystem",
+        "vendor/llvm-libcxx-4/include",
+        "-isystem",
+        "vendor/musl/include",
+        "-isystem",
+        "vendor/musl/generated",
+        "-D_LIBCPP_HAS_NO_THREADS",
+        "-D_LIBCPP_HAS_MUSL_LIBC",
+        "-D__CLANG_MAX_ALIGN_T_DEFINED",
+        "-D_LIBCPP_DISABLE_VISIBILITY_ANNOTATIONS",
+        "-funwind-tables",
+        "-mllvm",
+        "-tail-dup-placement-threshold=4",
+        "-I",
+        "src",
+        "-I",
+        "vendor/rapidjson-1.1.0/include",
+        "-mgeneral-regs-only",
+        "-D__ELF__"
+      ],
+      "header_roots": [
+        "vendor/llvm-libcxx-4/include",
+        "vendor/musl/include",
+        "vendor/musl/generated",
+        "vendor/rapidjson-1.1.0/include"
+      ],
+      "functions": [
+        {
+          "address": "0x860a0",
+          "size": 228,
+          "symbol": "IsRedirect",
+          "target_sha256": "39577656778a6d1bca7226f3ea002797f47c2bde5094183697fca6c5f475a9fa",
+          "bindings": {
+            "ReadStatusCode": "0x86190",
+            "ConstructSdkText": "0x7e7e0",
+            "CompareText": "0x7e460"
+          },
+          "got_bindings": {},
+          "literals": {
+            "6c6f636174696f6e00": "0x132eab1"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sdk_websocket_validate",
+      "source": "src/SdkWebSocketValidate.cpp",
+      "source_review": "manual_reconstruction",
+      "compiler": "8.0.1",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-std=c++11",
+        "-D_GNU_SOURCE",
+        "-U_WIN32",
+        "-U_WIN64",
+        "-O2",
+        "-mcpu=cortex-a57",
+        "-fno-omit-frame-pointer",
+        "-fPIC",
+        "-fno-strict-aliasing",
+        "-fno-vectorize",
+        "-fno-slp-vectorize",
+        "-fno-exceptions",
+        "-nostdinc++",
+        "-isystem",
+        "vendor/llvm-libcxx-4/include",
+        "-isystem",
+        "vendor/musl/include",
+        "-isystem",
+        "vendor/musl/generated",
+        "-D_LIBCPP_HAS_NO_THREADS",
+        "-D_LIBCPP_HAS_MUSL_LIBC",
+        "-D__CLANG_MAX_ALIGN_T_DEFINED",
+        "-D_LIBCPP_DISABLE_VISIBILITY_ANNOTATIONS",
+        "-funwind-tables",
+        "-mllvm",
+        "-tail-dup-placement-threshold=4",
+        "-I",
+        "src",
+        "-I",
+        "vendor/rapidjson-1.1.0/include",
+        "-mgeneral-regs-only",
+        "-D__ELF__"
+      ],
+      "header_roots": [
+        "vendor/llvm-libcxx-4/include",
+        "vendor/musl/include",
+        "vendor/musl/generated",
+        "vendor/rapidjson-1.1.0/include"
+      ],
+      "functions": [
+        {
+          "address": "0x86300",
+          "size": 812,
+          "symbol": "ValidateHandshake",
+          "target_sha256": "ec7d176a2169a464ffe0ab5b17255f7c58e9cde55f3d4ca93cb7cb321fa41151",
+          "bindings": {
+            "ReadStatusCode": "0x86190",
+            "ConstructSdkText": "0x7e7e0",
+            "CompareText": "0x7e460",
+            "DefaultResult": "0x613a0",
+            "memcmp": "0xfa3520"
+          },
+          "got_bindings": {},
+          "literals": {
+            "5365632d576562536f636b65742d41636365707400": "0x12f307b",
+            "43616e6e6f742076616c69646174652053657269616c204b65792072656365697665642066726f6d20746865207365727665722e00": "0x1315196",
+            "576562736f636b6574207375636365737366756c6c7920636f6e6e65637465642e00": "0x130f502"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sdk_websocket_start_requests",
+      "source": "src/SdkWebSocketStartRequests.cpp",
+      "source_review": "manual_reconstruction",
+      "compiler": "8.0.1",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-std=c++11",
+        "-D_GNU_SOURCE",
+        "-U_WIN32",
+        "-U_WIN64",
+        "-O2",
+        "-mcpu=cortex-a57",
+        "-fno-omit-frame-pointer",
+        "-fPIC",
+        "-fno-strict-aliasing",
+        "-fno-vectorize",
+        "-fno-slp-vectorize",
+        "-fno-exceptions",
+        "-nostdinc++",
+        "-isystem",
+        "vendor/llvm-libcxx-8/include",
+        "-isystem",
+        "vendor/musl/include",
+        "-isystem",
+        "vendor/musl/generated",
+        "-D_LIBCPP_HAS_NO_THREADS",
+        "-D_LIBCPP_HAS_MUSL_LIBC",
+        "-D__CLANG_MAX_ALIGN_T_DEFINED",
+        "-D_LIBCPP_DISABLE_VISIBILITY_ANNOTATIONS",
+        "-funwind-tables",
+        "-mllvm",
+        "-tail-dup-placement-threshold=4",
+        "-I",
+        "src",
+        "-I",
+        "vendor/rapidjson-1.1.0/include",
+        "-mgeneral-regs-only",
+        "-D__ELF__"
+      ],
+      "header_roots": [
+        "vendor/llvm-libcxx-8/include",
+        "vendor/musl/include",
+        "vendor/musl/generated",
+        "vendor/rapidjson-1.1.0/include"
+      ],
+      "functions": [
+        {
+          "address": "0x8cb90",
+          "size": 452,
+          "symbol": "StartHandshakeRequest",
+          "target_sha256": "c879a4a82769bceae4f58ed93dfcdcfd8fbae329853d54cc09bd37ea7745cb92",
+          "bindings": {
+            "SerializeRequest": "0x84980",
+            "EngineAllocate": "0x36ea0",
+            "_ZN6BufferC1ERK4Text": "0x14ef20"
+          },
+          "got_bindings": {
+            "WriteHandshakeRequest": {
+              "cell": "0x18ecc10",
+              "pointee": "0x8d3c0"
+            }
+          },
+          "literals": {
+            "4a6f62576562536f636b65744f70656e436f6e6e656374696f6e3a3a777269746548616e647368616b655265717565737400": "0x130d545"
+          }
+        },
+        {
+          "address": "0x8c690",
+          "size": 456,
+          "symbol": "StartProxyRequest",
+          "target_sha256": "3c9f9215a0f046b90005e6c6972ae1187562ba0b72436a4ee77ca783b8f66dbc",
+          "bindings": {
+            "BuildProxyConnect": "0x840f0",
+            "EngineAllocate": "0x36ea0",
+            "_ZN6BufferC1ERK4Text": "0x14ef20"
+          },
+          "got_bindings": {
+            "WriteProxyRequest": {
+              "cell": "0x18ecc00",
+              "pointee": "0x8f360"
+            }
+          },
+          "literals": {
+            "4a6f62576562536f636b65744f70656e436f6e6e656374696f6e3a3a777269746550726f78795265717565737400": "0x130b829"
+          }
+        }
+      ]
     }
   ]
 }
