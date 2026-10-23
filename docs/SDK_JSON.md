@@ -1,9 +1,10 @@
 # Recovered SDK JSON operations
 
-[SdkJson.cpp](../src/SdkJson.cpp) reconstructs JSON operations used by the SDK
-response handler, using the vendored RapidJSON 1.1.0 headers and a recovered pool
-allocator layout. **11 complete functions / 4,276 bytes** match the original
-instructions with checked relocation bindings.
+[SdkJson.cpp](../src/SdkJson.cpp) and
+[SdkJsonDocument.cpp](../src/SdkJsonDocument.cpp) reconstruct JSON operations used
+by the SDK response handler, using the vendored RapidJSON 1.1.0 headers and a
+recovered pool allocator layout. **12 complete functions / 4,888 bytes** match the
+original instructions with checked relocation bindings.
 
 | Original address | Bytes | Recovered operation |
 | --- | ---: | --- |
@@ -16,6 +17,7 @@ instructions with checked relocation bindings.
 | `0x44890` | 596 | Convert a vector of SDK strings to a JSON array |
 | `0x44de0` | 520 | RapidJSON value-copy constructor with a destination allocator |
 | `0x44ff0` | 388 | Add a named member by copying another JSON view's current value |
+| `0x45180` | 612 | Initialize a shared JSON document and its first view |
 | `0x173390` | 276 | RapidJSON document handler for signed 64-bit integers |
 | `0x1734b0` | 256 | RapidJSON document handler for unsigned 64-bit integers |
 
@@ -55,13 +57,35 @@ an external dependency, bound to `0x16dc90` where used.
 `sdk_json_o3_general` verifies ten functions with Clang 8.0.1 O3, a preserved frame
 pointer, PIC, libc++ 4 headers, and `-mgeneral-regs-only`. The separate
 `sdk_json_o2_simd` profile verifies the double setter using the floating-point ABI.
-Both use the checked-in RapidJSON headers. The normal full verifier checks each
+`sdk_json_document` verifies the shared-document initializer with Clang 8.0.1 O2
+and general registers. All use the checked-in RapidJSON headers. The normal full verifier checks each
 entire original FDE range; no prefix or fuzzy match contributes credit.
 
-The JSON array-append routine at `0x44af0`, writer field-selection routine at
-`0x436b0`, and document initializer at `0x45180` remain unmatched. The existing
+The JSON array-append routine at `0x44af0` and writer field-selection routine at
+`0x436b0` remain unmatched. The existing
 response-handler fixture still uses synthetic JSON boundaries. These exact helper
 matches do not by themselves validate the complete logging path or a game build.
+
+## Exact shared-document initialization
+
+The initializer at `0x45180` allocates a 24-byte intrusive root, a 104-byte
+RapidJSON document, and a 24-byte view owner. The RapidJSON constructor also
+creates its pool object. Temporary owners retain the root while the first view
+is constructed, then release their references, leaving that view as the owner.
+The initializer clears the parent and allocated-name pointers after destroying
+those temporaries. The inline-name buffer is left for the caller to initialize.
+
+Original RTTI identifies the root as **`ubiservices::JsonImpl::JsonRoot`**:
+GOT cell `0x18ec820` resolves to vtable `0x17c4390`, whose typeinfo is
+`0x17c7b08`; its name is stored at `0x1339ffe`. This establishes the root's
+identity, without recovering every original declaration around it.
+
+The source models the JSON view as a member at offset eight and checks the layout
+with static assertions. Keeping null and non-null raw-root construction paths
+separate reproduces both original atomic-exchange loops. Combining them produced
+a shorter candidate that was not byte-identical. The 612-byte match covers the
+entire initializer and its relocation bindings; the original class declarations
+and complete game build remain unrecovered.
 
 ## JSON view initializer candidate
 

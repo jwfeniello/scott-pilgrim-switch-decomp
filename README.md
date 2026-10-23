@@ -16,8 +16,8 @@ Edition** for Nintendo Switch.
 [Progress on decomp.dev](https://decomp.dev/jwfeniello/scott-pilgrim-switch-decomp)
 · [Progress workflow](https://github.com/jwfeniello/scott-pilgrim-switch-decomp/actions/workflows/progress.yml)
 
-**Current locally verified progress: 29,899 exact functions /
-2,917,284 bytes / 17.791936% of executable `.text`.** The original `.text` is 16,396,664 bytes.
+**Current locally verified progress: 29,900 exact functions /
+2,917,896 bytes / 17.795669% of executable `.text`.** The original `.text` is 16,396,664 bytes.
 This includes engine and library infrastructure. The project does not yet rebuild
 or boot the complete game. Original method names and many ABI declarations remain
 provisional.
@@ -31,9 +31,9 @@ lookup before stream initialization. The case-insensitive text comparator now
 byte-matches all 488 bytes; the full response handler remains unmatched and its
 complete logging path remains unverified.
 
-[SDK JSON operations](docs/SDK_JSON.md) recover 11 complete matches / 4,276 bytes,
-including member updates, nested-value copying, numeric/text setters, and
-string-array conversion used by the response infrastructure.
+[SDK JSON operations](docs/SDK_JSON.md) recover 12 complete matches / 4,888 bytes,
+including shared-document initialization, member updates, nested-value copying,
+numeric/text setters, and string-array conversion used by the response infrastructure.
 
 [Actor actions](docs/ACTOR_ACTIONS.md) maps the original jump/movement class
 hierarchy, shared lifecycle routines, and their player-side dependencies. A

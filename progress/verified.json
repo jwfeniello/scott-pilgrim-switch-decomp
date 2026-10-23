@@ -1,9 +1,9 @@
 {
   "version": 1,
-  "generated_at": "2026-10-23T05:10:23.538113+00:00",
+  "generated_at": "2026-10-23T05:33:14.025809+00:00",
   "target_elf_sha256": "ea95638e6d6aaa0dc6cddd552a9366799aa1ec3bc07ee201f23f6c151103f5b8",
   "input_sha256": {
-    "config/builds.json": "38877e98cfe723bdc84e0567c313532e652ede4586e371ea2ace6484e9e7a486",
+    "config/builds.json": "2af4e12de99b36bbeab68007bc0fcdcaf85b66523c2793a58a285d8bad8628a9",
     "config/functions.tsv": "399e91468a04e0459194c10d68d2210d1157cedefeb19c7851886ca7632fcb18",
     "config/target.json": "23cc6a5227206a953e7668acf5e9ae5c02a25c23b7e7967f0450a814b888241a",
     "src/AbiCfg_aggregate_O2_omit.cpp": "55009ca4f1819fe53803025bf27b93a676c6137877b9d4492828e2e15c89307c",
@@ -626,6 +626,7 @@
     "src/ResultRecoveryOmit.cpp": "4ad2b8a8c10475c7451aea5a7e0efbd2064b552a6ef7daa14bf2f233386266f0",
     "src/SdkCompositeDestructor.cpp": "1fdca780939983f46d46f7eb2f3dc54172e08692973b6611dd9e87532f07cf2e",
     "src/SdkJson.cpp": "a4935f4d16aa0854610fe7a52d7d59ac674a7038a3a78bd2bbf0272434110a37",
+    "src/SdkJsonDocument.cpp": "4d232fbeea58587cc8a60f65ac2d8bb21c26ea17b0deeae70aa4ccfdee057d22",
     "src/SdkOwnerNoBaseOwnerKeepPicUnwind.cpp": "f5b33c74fb068eda3471b1ccdb60accce71daf06bb9cc3c4c4a1068edf667e35",
     "src/SdkOwnerSimpleOwnerKeepPicUnwind.cpp": "8fc2b5afdba4f85a0404131c8b2fb269ec4ce96f7f37f2e73d9f742682950ea7",
     "src/SdkTextCompare.cpp": "835a2f72f2eef2c6d2dd1d5fdaf12b67099fd33361f7d35061fd6a8873fadafb",
@@ -2744,8 +2745,8 @@
     "8.0.1": "dffd62a213ec6cdb4430012a4a41c11e5e32c288f133d5391f9be49e1c5b69de",
     "7.0.1": "c2f0a175157d9aaace8031f8e6d7ea0ed6142b4bcef287105e3ed227301f1002"
   },
-  "exact_functions": 29899,
-  "exact_bytes": 2917284,
+  "exact_functions": 29900,
+  "exact_bytes": 2917896,
   "builds": [
     {
       "id": "probes",
@@ -9836,6 +9837,11 @@
       "id": "sdk_json_o2_simd",
       "compiler": "8.0.1",
       "object_sha256": "b950ed11a644f21ba624a5e9d211dc00a7a1bb851d280d153962e91e54c0de98"
+    },
+    {
+      "id": "sdk_json_document",
+      "compiler": "8.0.1",
+      "object_sha256": "645407a5fb201479066d707ab279160b4159267e066a3d4c0ecde99acf906ce3"
     }
   ],
   "matches": [
@@ -10234,6 +10240,17 @@
       "symbol": "AddSdkJsonMember",
       "source_review": "manual_reconstruction",
       "relocation_count": 4
+    },
+    {
+      "address": "0x45180",
+      "size": 612,
+      "exact": true,
+      "target_sha256": "62cb59ff596ce2861b38f71f5a8634a2cbd54a2865a7cafa4152b9948a4a447d",
+      "compiled_sha256": "62cb59ff596ce2861b38f71f5a8634a2cbd54a2865a7cafa4152b9948a4a447d",
+      "source": "src/SdkJsonDocument.cpp",
+      "symbol": "InitializeSdkJsonDocument",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 8
     },
     {
       "address": "0x45890",

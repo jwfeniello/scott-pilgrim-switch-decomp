@@ -145,8 +145,8 @@ not that diagnostic count or the behavioral fixture, awards its exact credit.
 
 ## Exact JSON dependencies
 
-[Recovered SDK JSON operations](SDK_JSON.md) now provide 11 complete matches,
-including the text setter, named-member assignment, and nested-value copying used
+[Recovered SDK JSON operations](SDK_JSON.md) now provide 12 complete matches,
+including document initialization, the text setter, named-member assignment, and nested-value copying used
 by this handler. They also identify `JsonDocument` offset `0x20` as the parent
 value, `0x28` as allocated member-name storage, and `0x30` as the start of an
 inline member-name buffer. The provisional `flag`/`scratch` names in the response
