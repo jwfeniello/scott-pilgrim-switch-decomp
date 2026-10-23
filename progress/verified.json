@@ -1,9 +1,9 @@
 {
   "version": 1,
-  "generated_at": "2026-10-23T10:25:28.022399+00:00",
+  "generated_at": "2026-10-23T10:50:23.881435+00:00",
   "target_elf_sha256": "ea95638e6d6aaa0dc6cddd552a9366799aa1ec3bc07ee201f23f6c151103f5b8",
   "input_sha256": {
-    "config/builds.json": "3541edcd2275343864009d8943f17a8986bbcbd41218a253ddf1784923c87a38",
+    "config/builds.json": "1631738c251e8880f08488abe414a792fb63ce64011688b3265fff79d2923a9f",
     "config/functions.tsv": "399e91468a04e0459194c10d68d2210d1157cedefeb19c7851886ca7632fcb18",
     "config/target.json": "23cc6a5227206a953e7668acf5e9ae5c02a25c23b7e7967f0450a814b888241a",
     "src/AbiCfg_aggregate_O2_omit.cpp": "55009ca4f1819fe53803025bf27b93a676c6137877b9d4492828e2e15c89307c",
@@ -635,6 +635,7 @@
     "src/SdkFrameBuild.cpp": "cb387cecd360a28e6b6f5c3d320fe23d4eaa8c2dccd1d77cec10a5d98f7caa82",
     "src/SdkFrameConsume.cpp": "0ea8fa71732750ce336118ae4fdbfd4f6ddfd4be7e13d5721ac6f7ad40fb2017",
     "src/SdkFrameHeader.cpp": "daa70dd8d65add121c107e2275bddd0092194370387a0997e72903a46137df19",
+    "src/SdkHttpLine.cpp": "5096da52abe3878b5c05edeefb84182e78bd2db88b61cd0bbca0a3e3add7a771",
     "src/SdkJson.cpp": "a4935f4d16aa0854610fe7a52d7d59ac674a7038a3a78bd2bbf0272434110a37",
     "src/SdkJsonBuffer.cpp": "c860abd082a874b98e79dbf20d2cc25568ed9e3ce84590f905cb02369988e4ce",
     "src/SdkJsonBufferFinalize.cpp": "d5efc109a8a64e33cacdaa306e52a16e899b173f4a58506acf954dfbc26ca63a",
@@ -2782,8 +2783,8 @@
     "8.0.1": "dffd62a213ec6cdb4430012a4a41c11e5e32c288f133d5391f9be49e1c5b69de",
     "7.0.1": "c2f0a175157d9aaace8031f8e6d7ea0ed6142b4bcef287105e3ed227301f1002"
   },
-  "exact_functions": 29953,
-  "exact_bytes": 2946016,
+  "exact_functions": 29954,
+  "exact_bytes": 2946652,
   "builds": [
     {
       "id": "probes",
@@ -10024,6 +10025,11 @@
       "id": "sdk_byte_vector_assign",
       "compiler": "8.0.1",
       "object_sha256": "61b31ed5daa2d553865a678db4295bf61317b6dd0c855a17f84f051336ccee48"
+    },
+    {
+      "id": "sdk_http_line",
+      "compiler": "8.0.1",
+      "object_sha256": "293b4c544bbfb0ef2a26bca5d65e7153ab23586990d7dfc19a284dfd40b9c972"
     }
   ],
   "matches": [
@@ -12391,6 +12397,17 @@
       "symbol": "SetRequestHeader",
       "source_review": "manual_reconstruction",
       "relocation_count": 3
+    },
+    {
+      "address": "0x84ff0",
+      "size": 636,
+      "exact": true,
+      "target_sha256": "2c615ac1e6794defe5b01fc12ef79411be83e9abd81e222b26d4ff3c017d3814",
+      "compiled_sha256": "2c615ac1e6794defe5b01fc12ef79411be83e9abd81e222b26d4ff3c017d3814",
+      "source": "src/SdkHttpLine.cpp",
+      "symbol": "ReadHttpLine",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 4
     },
     {
       "address": "0x88980",
