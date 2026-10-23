@@ -16,14 +16,19 @@ Edition** for Nintendo Switch.
 [Progress on decomp.dev](https://decomp.dev/jwfeniello/scott-pilgrim-switch-decomp)
 · [Progress workflow](https://github.com/jwfeniello/scott-pilgrim-switch-decomp/actions/workflows/progress.yml)
 
-**Current locally verified progress: 30,179 exact functions /
-3,080,148 bytes / 18.785211% of executable `.text`.** The original `.text` is 16,396,664 bytes.
+**Current locally verified progress: 30,306 exact functions /
+3,122,192 bytes / 19.041629% of executable `.text`.** The original `.text` is 16,396,664 bytes.
 This includes engine and library infrastructure. The project does not yet rebuild
 or boot the complete game. Original method names and many ABI declarations remain
 provisional. See the [integration plan](docs/INTEGRATION_PLAN.md) for
 the work needed to turn isolated matches into a linked game build.
 
 ## Gameplay understanding
+
+[HUD pools and event lifetimes](docs/HUD_AND_EVENT_LIFETIMES.md) add 127 complete
+functions / 42,044 bytes. This includes 64 destructors for 32 RTTI-identified HUD
+pool types, component callback readers, reference cleanup, GUID hash tables,
+string records, Storm event cleanup, and JSON formatting.
 
 [Startup and graphics recovery](docs/STARTUP_AND_GRAPHICS.md) adds 114 complete
 functions / 55,424 bytes for NVN procedure loading, factory registration, network

@@ -93,8 +93,13 @@ def recipe_for(obj,symbol,address,size,original,relative):
         if kind in (275,311):continue
         target = relocation_target(raw,address,offset,kind)
         if kind == 312:
-            require(addend == 0 and target in relative,'Original GOT relocation missing')
-            value = dict(cell=hex(target),pointee=hex(relative[target]))
+            require(addend == 0,'Nonzero GOT addend')
+            if target in relative:
+                value = dict(cell=hex(target),pointee=hex(relative[target]))
+            else:
+                require(relocation['symbol_record'][3] == 0 and
+                        original.imported_got_symbols().get(target) == name,'Original GOT relocation missing')
+                value = {'cell':hex(target),'import':name}
             require(name not in recipe['got_bindings'] or recipe['got_bindings'][name] == value,'Conflicting GOT binding')
             recipe['got_bindings'][name] = value
             continue

@@ -38,6 +38,27 @@ class Elf:
             if info&0xffffffff == 1027:result[address] = addend
         return result
 
+    def imported_got_symbols(self):
+        """Named, undefined objects loaded through zero-addend GLOB_DAT cells."""
+        if hasattr(self,'_imported_got_symbols'):return self._imported_got_symbols
+        rel = self.named['.rela.dyn'];table = self.sections[rel[6]]
+        require(table[1] == 11 and table[9] == 24,'Expected dynamic symbol table')
+        strings = self.section_bytes(self.sections[table[6]]);result = {}
+        for offset in range(rel[4],rel[4]+rel[5],rel[9]):
+            address,info,addend = struct.unpack_from('<QQq',self.data,offset)
+            if info&0xffffffff != 1025 or addend != 0:continue
+            index = info>>32
+            require(index < table[5]//table[9],'Dynamic symbol index outside table')
+            symbol = struct.unpack_from('<IBBHQQ',self.data,table[4]+index*table[9])
+            if symbol[3] != 0 or symbol[4] != 0 or symbol[1]&15 != 1 or symbol[1]>>4 not in (1,2):continue
+            require(symbol[0] < len(strings),'Dynamic symbol name outside string table')
+            end = strings.find(b'\0',symbol[0]);require(end >= symbol[0],'Unterminated dynamic symbol')
+            name = strings[symbol[0]:end].decode();require(bool(name),'Empty imported symbol')
+            require(address not in result,'Duplicate imported GOT relocation')
+            result[address] = name
+        self._imported_got_symbols = result
+        return result
+
     def unwind_ranges(self):
         hdr,frame,text = (self.named[name]for name in ('.eh_frame_hdr','.eh_frame','.text'))
         require(self.data[hdr[4]:hdr[4]+4] == bytes.fromhex('011b033b'),'Unsupported unwind header')
@@ -171,7 +192,13 @@ def link_method(obj,recipe,original,relative):
         name,kind,addend = (relocation[k]for k in ('symbol','kind','addend'))
         if kind in (311,312):
             binding = recipe['got_bindings'][name];target = int(binding['cell'],0)
-            require(addend == 0 and relative.get(target) == int(binding['pointee'],0),'Original GOT pointee mismatch')
+            if 'import' in binding:
+                require(set(binding) == {'cell','import'} and addend == 0 and
+                        relocation['symbol_record'][3] == 0 and name == binding['import'] and
+                        target not in relative and original.imported_got_symbols().get(target) == name,
+                        'Original GOT import mismatch')
+            else:
+                require(addend == 0 and relative.get(target) == int(binding['pointee'],0),'Original GOT pointee mismatch')
             require(target%8 == 0 and any(s[0] == 1 and s[1]&2 and s[3] <= target <= s[3]+s[6]-8 for s in original.segments),'GOT outside writable PT_LOAD')
         elif str(relocation['symbol_record'][3]) in recipe.get('immutable_sections',{}):
             require(kind not in (282,283),'Branch bound to immutable data')

@@ -4,7 +4,10 @@ A credited function must come from compiled C or C++ and agree with every byte o
 complete original unwind extent after standard ELF relocations. It must have the
 same size. The linker checks instruction opcode, relocation width, alignment and
 range. GOT references are validated against original RELATIVE relocation entries
-and writable load segments. Compiler mergeable constants must agree with immutable
+or named, undefined object imports with zero-addend GLOB_DAT relocations, and
+writable load segments. Imported symbols must retain the exact original dynamic
+symbol name; a source-defined symbol cannot stand in for an import. Compiler
+mergeable constants must agree with immutable
 original data. Only these standard relocation fields can change compiled bytes.
 
 There are no raw original instructions in source, assembly fallbacks, immediate

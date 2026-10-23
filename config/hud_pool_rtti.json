@@ -1,0 +1,581 @@
+{
+  "evidence": "Original vtable RTTI references; no inferred renaming",
+  "functions": [
+    {
+      "address": "0x8a0420",
+      "size": 220,
+      "kind": "deleting destructor",
+      "vtable": "0x1861d48",
+      "rtti_typeinfo": "0x1861dd0",
+      "rtti_name": "N4SPTG10TSmallPoolINS_15HudStatusDROPINEEE",
+      "element": "HudStatusDROPIN"
+    },
+    {
+      "address": "0x8a0e50",
+      "size": 220,
+      "kind": "deleting destructor",
+      "vtable": "0x1861df8",
+      "rtti_typeinfo": "0x1861e80",
+      "rtti_name": "N4SPTG10TSmallPoolINS_19HudStatusHPRECOVERYEEE",
+      "element": "HudStatusHPRECOVERY"
+    },
+    {
+      "address": "0x8a15c0",
+      "size": 220,
+      "kind": "deleting destructor",
+      "vtable": "0x1861e98",
+      "rtti_typeinfo": "0x1861f20",
+      "rtti_name": "N4SPTG10TSmallPoolINS_19HudStatusGUTSDAMAGEEEE",
+      "element": "HudStatusGUTSDAMAGE"
+    },
+    {
+      "address": "0x8a1c10",
+      "size": 220,
+      "kind": "deleting destructor",
+      "vtable": "0x1861f38",
+      "rtti_typeinfo": "0x1861fc0",
+      "rtti_name": "N4SPTG10TSmallPoolINS_19HudStatusPLEASEWAITEEE",
+      "element": "HudStatusPLEASEWAIT"
+    },
+    {
+      "address": "0x8a2000",
+      "size": 220,
+      "kind": "deleting destructor",
+      "vtable": "0x1861fd8",
+      "rtti_typeinfo": "0x1862060",
+      "rtti_name": "N4SPTG10TSmallPoolINS_15HudStatusFX_1UpEEE",
+      "element": "HudStatusFX_1Up"
+    },
+    {
+      "address": "0x8a2610",
+      "size": 220,
+      "kind": "deleting destructor",
+      "vtable": "0x1862078",
+      "rtti_typeinfo": "0x1862100",
+      "rtti_name": "N4SPTG10TSmallPoolINS_22HudStatusFX_PLAYERNAMEEEE",
+      "element": "HudStatusFX_PLAYERNAME"
+    },
+    {
+      "address": "0x8a2f80",
+      "size": 220,
+      "kind": "deleting destructor",
+      "vtable": "0x1862118",
+      "rtti_typeinfo": "0x18621a0",
+      "rtti_name": "N4SPTG10TSmallPoolINS_21HudStatusKIMAREACLEAREEE",
+      "element": "HudStatusKIMAREACLEAR"
+    },
+    {
+      "address": "0x8a38f0",
+      "size": 220,
+      "kind": "deleting destructor",
+      "vtable": "0x18621b8",
+      "rtti_typeinfo": "0x1862240",
+      "rtti_name": "N4SPTG10TSmallPoolINS_23HudStatusSCOTTAREACLEAREEE",
+      "element": "HudStatusSCOTTAREACLEAR"
+    },
+    {
+      "address": "0x8a4d40",
+      "size": 220,
+      "kind": "deleting destructor",
+      "vtable": "0x18622f8",
+      "rtti_typeinfo": "0x1862380",
+      "rtti_name": "N4SPTG10TSmallPoolINS_17HudStatusPOS_TEXTEEE",
+      "element": "HudStatusPOS_TEXT"
+    },
+    {
+      "address": "0x8a5130",
+      "size": 220,
+      "kind": "deleting destructor",
+      "vtable": "0x1862398",
+      "rtti_typeinfo": "0x1862420",
+      "rtti_name": "N4SPTG10TSmallPoolINS_25HudStatusFX_KEY_DISAPPEAREEE",
+      "element": "HudStatusFX_KEY_DISAPPEAR"
+    },
+    {
+      "address": "0x8a5710",
+      "size": 220,
+      "kind": "deleting destructor",
+      "vtable": "0x1862438",
+      "rtti_typeinfo": "0x18624c0",
+      "rtti_name": "N4SPTG10TSmallPoolINS_16HudStatusFX_TEXTEEE",
+      "element": "HudStatusFX_TEXT"
+    },
+    {
+      "address": "0x8a5d90",
+      "size": 220,
+      "kind": "deleting destructor",
+      "vtable": "0x18624d8",
+      "rtti_typeinfo": "0x1862560",
+      "rtti_name": "N4SPTG10TSmallPoolINS_33HudStatusFX_CAMERAUNBLOCK_GO_DOWNEEE",
+      "element": "HudStatusFX_CAMERAUNBLOCK_GO_DOWN"
+    },
+    {
+      "address": "0x8a6410",
+      "size": 220,
+      "kind": "deleting destructor",
+      "vtable": "0x1862578",
+      "rtti_typeinfo": "0x1862600",
+      "rtti_name": "N4SPTG10TSmallPoolINS_31HudStatusFX_CAMERAUNBLOCK_GO_UPEEE",
+      "element": "HudStatusFX_CAMERAUNBLOCK_GO_UP"
+    },
+    {
+      "address": "0x8a6a90",
+      "size": 220,
+      "kind": "deleting destructor",
+      "vtable": "0x1862618",
+      "rtti_typeinfo": "0x18626a0",
+      "rtti_name": "N4SPTG10TSmallPoolINS_34HudStatusFX_CAMERAUNBLOCK_GO_RIGHTEEE",
+      "element": "HudStatusFX_CAMERAUNBLOCK_GO_RIGHT"
+    },
+    {
+      "address": "0x8a7110",
+      "size": 220,
+      "kind": "deleting destructor",
+      "vtable": "0x18626b8",
+      "rtti_typeinfo": "0x1862740",
+      "rtti_name": "N4SPTG10TSmallPoolINS_33HudStatusFX_CAMERAUNBLOCK_GO_LEFTEEE",
+      "element": "HudStatusFX_CAMERAUNBLOCK_GO_LEFT"
+    },
+    {
+      "address": "0x8a7500",
+      "size": 220,
+      "kind": "deleting destructor",
+      "vtable": "0x1862758",
+      "rtti_typeinfo": "0x18627e0",
+      "rtti_name": "N4SPTG10TSmallPoolINS_23HudStatusFX_VEGANPOLICEEEE",
+      "element": "HudStatusFX_VEGANPOLICE"
+    },
+    {
+      "address": "0x8a77b0",
+      "size": 220,
+      "kind": "deleting destructor",
+      "vtable": "0x18627f8",
+      "rtti_typeinfo": "0x1862838",
+      "rtti_name": "N4SPTG10TSmallPoolINS_20HudStatusFX_EMOTICONEEE",
+      "element": "HudStatusFX_EMOTICON"
+    },
+    {
+      "address": "0x8a7a60",
+      "size": 220,
+      "kind": "deleting destructor",
+      "vtable": "0x1862850",
+      "rtti_typeinfo": "0x1862890",
+      "rtti_name": "N4SPTG10TSmallPoolINS_26HudStatusFX_LEVELUP_STRIPEEEE",
+      "element": "HudStatusFX_LEVELUP_STRIPE"
+    },
+    {
+      "address": "0x8a7d10",
+      "size": 220,
+      "kind": "deleting destructor",
+      "vtable": "0x18628a8",
+      "rtti_typeinfo": "0x18628e8",
+      "rtti_name": "N4SPTG10TSmallPoolINS_19HudStatusFX_LEVELUPEEE",
+      "element": "HudStatusFX_LEVELUP"
+    },
+    {
+      "address": "0x8a8100",
+      "size": 220,
+      "kind": "deleting destructor",
+      "vtable": "0x1862900",
+      "rtti_typeinfo": "0x1862988",
+      "rtti_name": "N4SPTG10TSmallPoolINS_17HudStatusFX_SLIDEEEE",
+      "element": "HudStatusFX_SLIDE"
+    },
+    {
+      "address": "0x8a84f0",
+      "size": 220,
+      "kind": "deleting destructor",
+      "vtable": "0x18629a0",
+      "rtti_typeinfo": "0x1862a28",
+      "rtti_name": "N4SPTG10TSmallPoolINS_23HudStatusFX_LANDONWATEREEE",
+      "element": "HudStatusFX_LANDONWATER"
+    },
+    {
+      "address": "0x8a88e0",
+      "size": 220,
+      "kind": "deleting destructor",
+      "vtable": "0x1862a40",
+      "rtti_typeinfo": "0x1862ac8",
+      "rtti_name": "N4SPTG10TSmallPoolINS_16HudStatusFX_LANDEEE",
+      "element": "HudStatusFX_LAND"
+    },
+    {
+      "address": "0x8a8cd0",
+      "size": 220,
+      "kind": "deleting destructor",
+      "vtable": "0x1862ae0",
+      "rtti_typeinfo": "0x1862b68",
+      "rtti_name": "N4SPTG10TSmallPoolINS_17HudStatusFX_BLOCKEEE",
+      "element": "HudStatusFX_BLOCK"
+    },
+    {
+      "address": "0x8a90c0",
+      "size": 220,
+      "kind": "deleting destructor",
+      "vtable": "0x1862b80",
+      "rtti_typeinfo": "0x1862c08",
+      "rtti_name": "N4SPTG10TSmallPoolINS_21HudStatusFX_HITSTRONGEEE",
+      "element": "HudStatusFX_HITSTRONG"
+    },
+    {
+      "address": "0x8a94b0",
+      "size": 220,
+      "kind": "deleting destructor",
+      "vtable": "0x1862c20",
+      "rtti_typeinfo": "0x1862ca8",
+      "rtti_name": "N4SPTG10TSmallPoolINS_19HudStatusFX_HITWEAKEEE",
+      "element": "HudStatusFX_HITWEAK"
+    },
+    {
+      "address": "0x8a9c20",
+      "size": 220,
+      "kind": "deleting destructor",
+      "vtable": "0x1862cc0",
+      "rtti_typeinfo": "0x1862d48",
+      "rtti_name": "N4SPTG10TSmallPoolINS_15HudStatusDAMAGEEEE",
+      "element": "HudStatusDAMAGE"
+    },
+    {
+      "address": "0x8aa390",
+      "size": 220,
+      "kind": "deleting destructor",
+      "vtable": "0x1862d60",
+      "rtti_typeinfo": "0x1862de8",
+      "rtti_name": "N4SPTG10TSmallPoolINS_14HudStatusMONEYEEE",
+      "element": "HudStatusMONEY"
+    },
+    {
+      "address": "0x8aa950",
+      "size": 220,
+      "kind": "deleting destructor",
+      "vtable": "0x1862e00",
+      "rtti_typeinfo": "0x1862e88",
+      "rtti_name": "N4SPTG10TSmallPoolINS_13HudStatusGUTSEEE",
+      "element": "HudStatusGUTS"
+    },
+    {
+      "address": "0x8aad20",
+      "size": 220,
+      "kind": "deleting destructor",
+      "vtable": "0x1862ea0",
+      "rtti_typeinfo": "0x1862f28",
+      "rtti_name": "N4SPTG10TSmallPoolINS_16HudStatusRATIONSEEE",
+      "element": "HudStatusRATIONS"
+    },
+    {
+      "address": "0x8ab4a0",
+      "size": 220,
+      "kind": "deleting destructor",
+      "vtable": "0x1862f40",
+      "rtti_typeinfo": "0x1862fc8",
+      "rtti_name": "N4SPTG10TSmallPoolINS_15HudStatusHEARTSEEE",
+      "element": "HudStatusHEARTS"
+    },
+    {
+      "address": "0x8ab870",
+      "size": 220,
+      "kind": "deleting destructor",
+      "vtable": "0x1862fe0",
+      "rtti_typeinfo": "0x1863068",
+      "rtti_name": "N4SPTG10TSmallPoolINS_21HudStatusBEATINGHEARTEEE",
+      "element": "HudStatusBEATINGHEART"
+    },
+    {
+      "address": "0x8abe30",
+      "size": 220,
+      "kind": "deleting destructor",
+      "vtable": "0x1863080",
+      "rtti_typeinfo": "0x1863108",
+      "rtti_name": "N4SPTG10TSmallPoolINS_13HudStatusLIFEEEE",
+      "element": "HudStatusLIFE"
+    },
+    {
+      "address": "0x8a0340",
+      "size": 220,
+      "kind": "non-deleting destructor",
+      "vtable": "0x1861d48",
+      "rtti_typeinfo": "0x1861dd0",
+      "rtti_name": "N4SPTG10TSmallPoolINS_15HudStatusDROPINEEE",
+      "element": "HudStatusDROPIN"
+    },
+    {
+      "address": "0x8a0d70",
+      "size": 220,
+      "kind": "non-deleting destructor",
+      "vtable": "0x1861df8",
+      "rtti_typeinfo": "0x1861e80",
+      "rtti_name": "N4SPTG10TSmallPoolINS_19HudStatusHPRECOVERYEEE",
+      "element": "HudStatusHPRECOVERY"
+    },
+    {
+      "address": "0x8a14e0",
+      "size": 220,
+      "kind": "non-deleting destructor",
+      "vtable": "0x1861e98",
+      "rtti_typeinfo": "0x1861f20",
+      "rtti_name": "N4SPTG10TSmallPoolINS_19HudStatusGUTSDAMAGEEEE",
+      "element": "HudStatusGUTSDAMAGE"
+    },
+    {
+      "address": "0x8a1b30",
+      "size": 220,
+      "kind": "non-deleting destructor",
+      "vtable": "0x1861f38",
+      "rtti_typeinfo": "0x1861fc0",
+      "rtti_name": "N4SPTG10TSmallPoolINS_19HudStatusPLEASEWAITEEE",
+      "element": "HudStatusPLEASEWAIT"
+    },
+    {
+      "address": "0x8a1f20",
+      "size": 220,
+      "kind": "non-deleting destructor",
+      "vtable": "0x1861fd8",
+      "rtti_typeinfo": "0x1862060",
+      "rtti_name": "N4SPTG10TSmallPoolINS_15HudStatusFX_1UpEEE",
+      "element": "HudStatusFX_1Up"
+    },
+    {
+      "address": "0x8a2530",
+      "size": 220,
+      "kind": "non-deleting destructor",
+      "vtable": "0x1862078",
+      "rtti_typeinfo": "0x1862100",
+      "rtti_name": "N4SPTG10TSmallPoolINS_22HudStatusFX_PLAYERNAMEEEE",
+      "element": "HudStatusFX_PLAYERNAME"
+    },
+    {
+      "address": "0x8a2ea0",
+      "size": 220,
+      "kind": "non-deleting destructor",
+      "vtable": "0x1862118",
+      "rtti_typeinfo": "0x18621a0",
+      "rtti_name": "N4SPTG10TSmallPoolINS_21HudStatusKIMAREACLEAREEE",
+      "element": "HudStatusKIMAREACLEAR"
+    },
+    {
+      "address": "0x8a3810",
+      "size": 220,
+      "kind": "non-deleting destructor",
+      "vtable": "0x18621b8",
+      "rtti_typeinfo": "0x1862240",
+      "rtti_name": "N4SPTG10TSmallPoolINS_23HudStatusSCOTTAREACLEAREEE",
+      "element": "HudStatusSCOTTAREACLEAR"
+    },
+    {
+      "address": "0x8a4c60",
+      "size": 220,
+      "kind": "non-deleting destructor",
+      "vtable": "0x18622f8",
+      "rtti_typeinfo": "0x1862380",
+      "rtti_name": "N4SPTG10TSmallPoolINS_17HudStatusPOS_TEXTEEE",
+      "element": "HudStatusPOS_TEXT"
+    },
+    {
+      "address": "0x8a5050",
+      "size": 220,
+      "kind": "non-deleting destructor",
+      "vtable": "0x1862398",
+      "rtti_typeinfo": "0x1862420",
+      "rtti_name": "N4SPTG10TSmallPoolINS_25HudStatusFX_KEY_DISAPPEAREEE",
+      "element": "HudStatusFX_KEY_DISAPPEAR"
+    },
+    {
+      "address": "0x8a5630",
+      "size": 220,
+      "kind": "non-deleting destructor",
+      "vtable": "0x1862438",
+      "rtti_typeinfo": "0x18624c0",
+      "rtti_name": "N4SPTG10TSmallPoolINS_16HudStatusFX_TEXTEEE",
+      "element": "HudStatusFX_TEXT"
+    },
+    {
+      "address": "0x8a5cb0",
+      "size": 220,
+      "kind": "non-deleting destructor",
+      "vtable": "0x18624d8",
+      "rtti_typeinfo": "0x1862560",
+      "rtti_name": "N4SPTG10TSmallPoolINS_33HudStatusFX_CAMERAUNBLOCK_GO_DOWNEEE",
+      "element": "HudStatusFX_CAMERAUNBLOCK_GO_DOWN"
+    },
+    {
+      "address": "0x8a6330",
+      "size": 220,
+      "kind": "non-deleting destructor",
+      "vtable": "0x1862578",
+      "rtti_typeinfo": "0x1862600",
+      "rtti_name": "N4SPTG10TSmallPoolINS_31HudStatusFX_CAMERAUNBLOCK_GO_UPEEE",
+      "element": "HudStatusFX_CAMERAUNBLOCK_GO_UP"
+    },
+    {
+      "address": "0x8a69b0",
+      "size": 220,
+      "kind": "non-deleting destructor",
+      "vtable": "0x1862618",
+      "rtti_typeinfo": "0x18626a0",
+      "rtti_name": "N4SPTG10TSmallPoolINS_34HudStatusFX_CAMERAUNBLOCK_GO_RIGHTEEE",
+      "element": "HudStatusFX_CAMERAUNBLOCK_GO_RIGHT"
+    },
+    {
+      "address": "0x8a7030",
+      "size": 220,
+      "kind": "non-deleting destructor",
+      "vtable": "0x18626b8",
+      "rtti_typeinfo": "0x1862740",
+      "rtti_name": "N4SPTG10TSmallPoolINS_33HudStatusFX_CAMERAUNBLOCK_GO_LEFTEEE",
+      "element": "HudStatusFX_CAMERAUNBLOCK_GO_LEFT"
+    },
+    {
+      "address": "0x8a7420",
+      "size": 220,
+      "kind": "non-deleting destructor",
+      "vtable": "0x1862758",
+      "rtti_typeinfo": "0x18627e0",
+      "rtti_name": "N4SPTG10TSmallPoolINS_23HudStatusFX_VEGANPOLICEEEE",
+      "element": "HudStatusFX_VEGANPOLICE"
+    },
+    {
+      "address": "0x8a76d0",
+      "size": 220,
+      "kind": "non-deleting destructor",
+      "vtable": "0x18627f8",
+      "rtti_typeinfo": "0x1862838",
+      "rtti_name": "N4SPTG10TSmallPoolINS_20HudStatusFX_EMOTICONEEE",
+      "element": "HudStatusFX_EMOTICON"
+    },
+    {
+      "address": "0x8a7980",
+      "size": 220,
+      "kind": "non-deleting destructor",
+      "vtable": "0x1862850",
+      "rtti_typeinfo": "0x1862890",
+      "rtti_name": "N4SPTG10TSmallPoolINS_26HudStatusFX_LEVELUP_STRIPEEEE",
+      "element": "HudStatusFX_LEVELUP_STRIPE"
+    },
+    {
+      "address": "0x8a7c30",
+      "size": 220,
+      "kind": "non-deleting destructor",
+      "vtable": "0x18628a8",
+      "rtti_typeinfo": "0x18628e8",
+      "rtti_name": "N4SPTG10TSmallPoolINS_19HudStatusFX_LEVELUPEEE",
+      "element": "HudStatusFX_LEVELUP"
+    },
+    {
+      "address": "0x8a8020",
+      "size": 220,
+      "kind": "non-deleting destructor",
+      "vtable": "0x1862900",
+      "rtti_typeinfo": "0x1862988",
+      "rtti_name": "N4SPTG10TSmallPoolINS_17HudStatusFX_SLIDEEEE",
+      "element": "HudStatusFX_SLIDE"
+    },
+    {
+      "address": "0x8a8410",
+      "size": 220,
+      "kind": "non-deleting destructor",
+      "vtable": "0x18629a0",
+      "rtti_typeinfo": "0x1862a28",
+      "rtti_name": "N4SPTG10TSmallPoolINS_23HudStatusFX_LANDONWATEREEE",
+      "element": "HudStatusFX_LANDONWATER"
+    },
+    {
+      "address": "0x8a8800",
+      "size": 220,
+      "kind": "non-deleting destructor",
+      "vtable": "0x1862a40",
+      "rtti_typeinfo": "0x1862ac8",
+      "rtti_name": "N4SPTG10TSmallPoolINS_16HudStatusFX_LANDEEE",
+      "element": "HudStatusFX_LAND"
+    },
+    {
+      "address": "0x8a8bf0",
+      "size": 220,
+      "kind": "non-deleting destructor",
+      "vtable": "0x1862ae0",
+      "rtti_typeinfo": "0x1862b68",
+      "rtti_name": "N4SPTG10TSmallPoolINS_17HudStatusFX_BLOCKEEE",
+      "element": "HudStatusFX_BLOCK"
+    },
+    {
+      "address": "0x8a8fe0",
+      "size": 220,
+      "kind": "non-deleting destructor",
+      "vtable": "0x1862b80",
+      "rtti_typeinfo": "0x1862c08",
+      "rtti_name": "N4SPTG10TSmallPoolINS_21HudStatusFX_HITSTRONGEEE",
+      "element": "HudStatusFX_HITSTRONG"
+    },
+    {
+      "address": "0x8a93d0",
+      "size": 220,
+      "kind": "non-deleting destructor",
+      "vtable": "0x1862c20",
+      "rtti_typeinfo": "0x1862ca8",
+      "rtti_name": "N4SPTG10TSmallPoolINS_19HudStatusFX_HITWEAKEEE",
+      "element": "HudStatusFX_HITWEAK"
+    },
+    {
+      "address": "0x8a9b40",
+      "size": 220,
+      "kind": "non-deleting destructor",
+      "vtable": "0x1862cc0",
+      "rtti_typeinfo": "0x1862d48",
+      "rtti_name": "N4SPTG10TSmallPoolINS_15HudStatusDAMAGEEEE",
+      "element": "HudStatusDAMAGE"
+    },
+    {
+      "address": "0x8aa2b0",
+      "size": 220,
+      "kind": "non-deleting destructor",
+      "vtable": "0x1862d60",
+      "rtti_typeinfo": "0x1862de8",
+      "rtti_name": "N4SPTG10TSmallPoolINS_14HudStatusMONEYEEE",
+      "element": "HudStatusMONEY"
+    },
+    {
+      "address": "0x8aa870",
+      "size": 220,
+      "kind": "non-deleting destructor",
+      "vtable": "0x1862e00",
+      "rtti_typeinfo": "0x1862e88",
+      "rtti_name": "N4SPTG10TSmallPoolINS_13HudStatusGUTSEEE",
+      "element": "HudStatusGUTS"
+    },
+    {
+      "address": "0x8aac40",
+      "size": 220,
+      "kind": "non-deleting destructor",
+      "vtable": "0x1862ea0",
+      "rtti_typeinfo": "0x1862f28",
+      "rtti_name": "N4SPTG10TSmallPoolINS_16HudStatusRATIONSEEE",
+      "element": "HudStatusRATIONS"
+    },
+    {
+      "address": "0x8ab3c0",
+      "size": 220,
+      "kind": "non-deleting destructor",
+      "vtable": "0x1862f40",
+      "rtti_typeinfo": "0x1862fc8",
+      "rtti_name": "N4SPTG10TSmallPoolINS_15HudStatusHEARTSEEE",
+      "element": "HudStatusHEARTS"
+    },
+    {
+      "address": "0x8ab790",
+      "size": 220,
+      "kind": "non-deleting destructor",
+      "vtable": "0x1862fe0",
+      "rtti_typeinfo": "0x1863068",
+      "rtti_name": "N4SPTG10TSmallPoolINS_21HudStatusBEATINGHEARTEEE",
+      "element": "HudStatusBEATINGHEART"
+    },
+    {
+      "address": "0x8abd50",
+      "size": 220,
+      "kind": "non-deleting destructor",
+      "vtable": "0x1863080",
+      "rtti_typeinfo": "0x1863108",
+      "rtti_name": "N4SPTG10TSmallPoolINS_13HudStatusLIFEEEE",
+      "element": "HudStatusLIFE"
+    }
+  ]
+}
