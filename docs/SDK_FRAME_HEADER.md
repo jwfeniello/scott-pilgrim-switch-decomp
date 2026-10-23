@@ -86,3 +86,5 @@ The adjacent unmatched helper at `0x827f0` concatenates the key with
 and passes the digest to the encoding routine at `0x478a0`. The key
 generator at `0x824d0` also uses that encoder. Neither helper nor the
 constructor receives exact credit from the header-list match.
+
+The full handshake constructor now has an [unmatched, behavior-tested candidate](WEBSOCKET_HANDSHAKE_CANDIDATE.md). Its bounded fixture checks 50 cases and rejects four compiled negative controls; it receives no exact credit.
