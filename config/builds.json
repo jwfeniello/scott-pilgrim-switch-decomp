@@ -413827,6 +413827,304 @@
           }
         }
       ]
+    },
+    {
+      "id": "recovered_stringstreams",
+      "source": "src/RecoveredStringStreams.cpp",
+      "source_review": "public_library_source",
+      "compiler": "8.0.1",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-std=c++11",
+        "-D_GNU_SOURCE",
+        "-U_WIN32",
+        "-U_WIN64",
+        "-O2",
+        "-mcpu=cortex-a57",
+        "-fno-omit-frame-pointer",
+        "-fPIC",
+        "-fno-strict-aliasing",
+        "-fno-vectorize",
+        "-fno-slp-vectorize",
+        "-fno-exceptions",
+        "-nostdinc++",
+        "-isystem",
+        "vendor/llvm-libcxx-8/include",
+        "-isystem",
+        "vendor/musl/include",
+        "-isystem",
+        "vendor/musl/generated",
+        "-D_LIBCPP_HAS_NO_THREADS",
+        "-D_LIBCPP_HAS_MUSL_LIBC",
+        "-D__CLANG_MAX_ALIGN_T_DEFINED",
+        "-D_LIBCPP_DISABLE_VISIBILITY_ANNOTATIONS",
+        "-funwind-tables"
+      ],
+      "header_roots": [
+        "vendor/llvm-libcxx-8/include",
+        "vendor/musl/include",
+        "vendor/musl/generated"
+      ],
+      "functions": [
+        {
+          "address": "0x4fd580",
+          "size": 384,
+          "symbol": "_ZNSt3__115basic_stringbufIcNS_11char_traitsIcEENS_9allocatorIcEEE8overflowEi",
+          "target_sha256": "550d3b87d4fed9418d2e62c9b2308a92cde53091fe1908a7ce3ab252cb88a1fd",
+          "bindings": {
+            "_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEE9push_backEc": "0xfa45d0",
+            "_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEE6resizeEmc": "0xfa45e0"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x17cf40",
+          "size": 360,
+          "symbol": "_ZNSt3__116__pad_and_outputIcNS_11char_traitsIcEEEENS_19ostreambuf_iteratorIT_T0_EES6_PKS4_S8_S8_RNS_8ios_baseES4_",
+          "target_sha256": "45eb9e399537de170f2618947eb70188acfef388b7e326ad864d6904fcb18887",
+          "bindings": {
+            "_Znwm": "0xfa3b30",
+            "memset": "0xfa3340",
+            "_ZdlPv": "0xfa3b40"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x4fd0b0",
+          "size": 148,
+          "symbol": "_ZNSt3__118basic_stringstreamIcNS_11char_traitsIcEENS_9allocatorIcEEED0Ev",
+          "target_sha256": "ac6599c0c2721e96a1697c738a5a135e18cb1c9057cc28fef2e5c5d33769019e",
+          "bindings": {
+            "_ZdlPv": "0xfa3b40",
+            "_ZNSt3__115basic_streambufIcNS_11char_traitsIcEEED2Ev": "0xfa3ad0",
+            "_ZNSt3__114basic_iostreamIcNS_11char_traitsIcEEED2Ev": "0xfa3ae0",
+            "_ZNSt3__19basic_iosIcNS_11char_traitsIcEEED2Ev": "0xfa3af0"
+          },
+          "got_bindings": {
+            "_ZTVNSt3__118basic_stringstreamIcNS_11char_traitsIcEENS_9allocatorIcEEEE": {
+              "cell": "0x18f9428",
+              "pointee": "0x182c0f8"
+            },
+            "_ZTVNSt3__115basic_stringbufIcNS_11char_traitsIcEENS_9allocatorIcEEEE": {
+              "cell": "0x18f9438",
+              "pointee": "0x182c2f0"
+            },
+            "_ZTTNSt3__118basic_stringstreamIcNS_11char_traitsIcEENS_9allocatorIcEEEE": {
+              "cell": "0x18f9440",
+              "pointee": "0x182c170"
+            }
+          }
+        },
+        {
+          "address": "0x15fa60",
+          "size": 140,
+          "symbol": "_ZNSt3__118basic_stringstreamIcNS_11char_traitsIcEENS_9allocatorIcEEED1Ev",
+          "target_sha256": "b9810cf32b9353ce5ddfbe1c4440782c15977d1664a4091176b5eddf374c5c35",
+          "bindings": {
+            "_ZdlPv": "0x37030",
+            "_ZNSt3__115basic_streambufIcNS_11char_traitsIcEEED2Ev": "0xfa3ad0",
+            "_ZNSt3__114basic_iostreamIcNS_11char_traitsIcEEED2Ev": "0xfa3ae0",
+            "_ZNSt3__19basic_iosIcNS_11char_traitsIcEEED2Ev": "0xfa3af0"
+          },
+          "got_bindings": {
+            "_ZTVNSt3__118basic_stringstreamIcNS_11char_traitsIcEENS_9allocatorIcEEEE": {
+              "cell": "0x18ed930",
+              "pointee": "0x17c97a8"
+            },
+            "_ZTVNSt3__115basic_stringbufIcNS_11char_traitsIcEENS_9allocatorIcEEEE": {
+              "cell": "0x18ec7f0",
+              "pointee": "0x17c9710"
+            },
+            "_ZTTNSt3__118basic_stringstreamIcNS_11char_traitsIcEENS_9allocatorIcEEEE": {
+              "cell": "0x18ed938",
+              "pointee": "0x17c9820"
+            }
+          }
+        },
+        {
+          "address": "0x4fcdb0",
+          "size": 140,
+          "symbol": "_ZNSt3__118basic_stringstreamIcNS_11char_traitsIcEENS_9allocatorIcEEED1Ev",
+          "target_sha256": "2218b44b49069638626e413b71e62a0cdbcbc11747c4768071d0fc4f1ea54214",
+          "bindings": {
+            "_ZdlPv": "0xfa3b40",
+            "_ZNSt3__115basic_streambufIcNS_11char_traitsIcEEED2Ev": "0xfa3ad0",
+            "_ZNSt3__114basic_iostreamIcNS_11char_traitsIcEEED2Ev": "0xfa3ae0",
+            "_ZNSt3__19basic_iosIcNS_11char_traitsIcEEED2Ev": "0xfa3af0"
+          },
+          "got_bindings": {
+            "_ZTVNSt3__118basic_stringstreamIcNS_11char_traitsIcEENS_9allocatorIcEEEE": {
+              "cell": "0x18f9428",
+              "pointee": "0x182c0f8"
+            },
+            "_ZTVNSt3__115basic_stringbufIcNS_11char_traitsIcEENS_9allocatorIcEEEE": {
+              "cell": "0x18f9438",
+              "pointee": "0x182c2f0"
+            },
+            "_ZTTNSt3__118basic_stringstreamIcNS_11char_traitsIcEENS_9allocatorIcEEEE": {
+              "cell": "0x18f9440",
+              "pointee": "0x182c170"
+            }
+          }
+        },
+        {
+          "address": "0x4fd150",
+          "size": 148,
+          "symbol": "_ZThn16_NSt3__118basic_stringstreamIcNS_11char_traitsIcEENS_9allocatorIcEEED0Ev",
+          "target_sha256": "f60072a80a0d8729f8b02084fb0ed58b4f9147b5ba01802cb0c964d1e946b464",
+          "bindings": {
+            "_ZdlPv": "0xfa3b40",
+            "_ZNSt3__115basic_streambufIcNS_11char_traitsIcEEED2Ev": "0xfa3ad0",
+            "_ZNSt3__114basic_iostreamIcNS_11char_traitsIcEEED2Ev": "0xfa3ae0",
+            "_ZNSt3__19basic_iosIcNS_11char_traitsIcEEED2Ev": "0xfa3af0"
+          },
+          "got_bindings": {
+            "_ZTVNSt3__118basic_stringstreamIcNS_11char_traitsIcEENS_9allocatorIcEEEE": {
+              "cell": "0x18f9428",
+              "pointee": "0x182c0f8"
+            },
+            "_ZTVNSt3__115basic_stringbufIcNS_11char_traitsIcEENS_9allocatorIcEEEE": {
+              "cell": "0x18f9438",
+              "pointee": "0x182c2f0"
+            },
+            "_ZTTNSt3__118basic_stringstreamIcNS_11char_traitsIcEENS_9allocatorIcEEEE": {
+              "cell": "0x18f9440",
+              "pointee": "0x182c170"
+            }
+          }
+        },
+        {
+          "address": "0x15fb90",
+          "size": 140,
+          "symbol": "_ZThn16_NSt3__118basic_stringstreamIcNS_11char_traitsIcEENS_9allocatorIcEEED1Ev",
+          "target_sha256": "c2b2de16bd2e0a71e67b4320a02cda04ea3bb4067922473ab217f15fcafcf2c0",
+          "bindings": {
+            "_ZdlPv": "0x37030",
+            "_ZNSt3__115basic_streambufIcNS_11char_traitsIcEEED2Ev": "0xfa3ad0",
+            "_ZNSt3__114basic_iostreamIcNS_11char_traitsIcEEED2Ev": "0xfa3ae0",
+            "_ZNSt3__19basic_iosIcNS_11char_traitsIcEEED2Ev": "0xfa3af0"
+          },
+          "got_bindings": {
+            "_ZTVNSt3__118basic_stringstreamIcNS_11char_traitsIcEENS_9allocatorIcEEEE": {
+              "cell": "0x18ed930",
+              "pointee": "0x17c97a8"
+            },
+            "_ZTVNSt3__115basic_stringbufIcNS_11char_traitsIcEENS_9allocatorIcEEEE": {
+              "cell": "0x18ec7f0",
+              "pointee": "0x17c9710"
+            },
+            "_ZTTNSt3__118basic_stringstreamIcNS_11char_traitsIcEENS_9allocatorIcEEEE": {
+              "cell": "0x18ed938",
+              "pointee": "0x17c9820"
+            }
+          }
+        },
+        {
+          "address": "0x4fcf80",
+          "size": 140,
+          "symbol": "_ZThn16_NSt3__118basic_stringstreamIcNS_11char_traitsIcEENS_9allocatorIcEEED1Ev",
+          "target_sha256": "c52f2a903ca3475393a3b5b45f24da1153a5beb42aaefc5bd36f9d4f5d437bf3",
+          "bindings": {
+            "_ZdlPv": "0xfa3b40",
+            "_ZNSt3__115basic_streambufIcNS_11char_traitsIcEEED2Ev": "0xfa3ad0",
+            "_ZNSt3__114basic_iostreamIcNS_11char_traitsIcEEED2Ev": "0xfa3ae0",
+            "_ZNSt3__19basic_iosIcNS_11char_traitsIcEEED2Ev": "0xfa3af0"
+          },
+          "got_bindings": {
+            "_ZTVNSt3__118basic_stringstreamIcNS_11char_traitsIcEENS_9allocatorIcEEEE": {
+              "cell": "0x18f9428",
+              "pointee": "0x182c0f8"
+            },
+            "_ZTVNSt3__115basic_stringbufIcNS_11char_traitsIcEENS_9allocatorIcEEEE": {
+              "cell": "0x18f9438",
+              "pointee": "0x182c2f0"
+            },
+            "_ZTTNSt3__118basic_stringstreamIcNS_11char_traitsIcEENS_9allocatorIcEEEE": {
+              "cell": "0x18f9440",
+              "pointee": "0x182c170"
+            }
+          }
+        },
+        {
+          "address": "0x4fd1f0",
+          "size": 156,
+          "symbol": "_ZTv0_n24_NSt3__118basic_stringstreamIcNS_11char_traitsIcEENS_9allocatorIcEEED0Ev",
+          "target_sha256": "ca0777cfd0600bd77eac568b7b0bbbae4c05908fbfd87a05ea33ac1dbe3246aa",
+          "bindings": {
+            "_ZdlPv": "0xfa3b40",
+            "_ZNSt3__115basic_streambufIcNS_11char_traitsIcEEED2Ev": "0xfa3ad0",
+            "_ZNSt3__114basic_iostreamIcNS_11char_traitsIcEEED2Ev": "0xfa3ae0",
+            "_ZNSt3__19basic_iosIcNS_11char_traitsIcEEED2Ev": "0xfa3af0"
+          },
+          "got_bindings": {
+            "_ZTVNSt3__118basic_stringstreamIcNS_11char_traitsIcEENS_9allocatorIcEEEE": {
+              "cell": "0x18f9428",
+              "pointee": "0x182c0f8"
+            },
+            "_ZTVNSt3__115basic_stringbufIcNS_11char_traitsIcEENS_9allocatorIcEEEE": {
+              "cell": "0x18f9438",
+              "pointee": "0x182c2f0"
+            },
+            "_ZTTNSt3__118basic_stringstreamIcNS_11char_traitsIcEENS_9allocatorIcEEEE": {
+              "cell": "0x18f9440",
+              "pointee": "0x182c170"
+            }
+          }
+        },
+        {
+          "address": "0x15fcc0",
+          "size": 148,
+          "symbol": "_ZTv0_n24_NSt3__118basic_stringstreamIcNS_11char_traitsIcEENS_9allocatorIcEEED1Ev",
+          "target_sha256": "4fee6b77ee0f6d0e7a0496be3f3c70e7cca833bec653a3b30b797d6262b258d6",
+          "bindings": {
+            "_ZdlPv": "0x37030",
+            "_ZNSt3__115basic_streambufIcNS_11char_traitsIcEEED2Ev": "0xfa3ad0",
+            "_ZNSt3__114basic_iostreamIcNS_11char_traitsIcEEED2Ev": "0xfa3ae0",
+            "_ZNSt3__19basic_iosIcNS_11char_traitsIcEEED2Ev": "0xfa3af0"
+          },
+          "got_bindings": {
+            "_ZTVNSt3__118basic_stringstreamIcNS_11char_traitsIcEENS_9allocatorIcEEEE": {
+              "cell": "0x18ed930",
+              "pointee": "0x17c97a8"
+            },
+            "_ZTVNSt3__115basic_stringbufIcNS_11char_traitsIcEENS_9allocatorIcEEEE": {
+              "cell": "0x18ec7f0",
+              "pointee": "0x17c9710"
+            },
+            "_ZTTNSt3__118basic_stringstreamIcNS_11char_traitsIcEENS_9allocatorIcEEEE": {
+              "cell": "0x18ed938",
+              "pointee": "0x17c9820"
+            }
+          }
+        },
+        {
+          "address": "0x4fd010",
+          "size": 148,
+          "symbol": "_ZTv0_n24_NSt3__118basic_stringstreamIcNS_11char_traitsIcEENS_9allocatorIcEEED1Ev",
+          "target_sha256": "1b4170fdbd3f7756698fc4d66a6eb9f06988c21234b7776636c72f8bf4fc3f96",
+          "bindings": {
+            "_ZdlPv": "0xfa3b40",
+            "_ZNSt3__115basic_streambufIcNS_11char_traitsIcEEED2Ev": "0xfa3ad0",
+            "_ZNSt3__114basic_iostreamIcNS_11char_traitsIcEEED2Ev": "0xfa3ae0",
+            "_ZNSt3__19basic_iosIcNS_11char_traitsIcEEED2Ev": "0xfa3af0"
+          },
+          "got_bindings": {
+            "_ZTVNSt3__118basic_stringstreamIcNS_11char_traitsIcEENS_9allocatorIcEEEE": {
+              "cell": "0x18f9428",
+              "pointee": "0x182c0f8"
+            },
+            "_ZTVNSt3__115basic_stringbufIcNS_11char_traitsIcEENS_9allocatorIcEEEE": {
+              "cell": "0x18f9438",
+              "pointee": "0x182c2f0"
+            },
+            "_ZTTNSt3__118basic_stringstreamIcNS_11char_traitsIcEENS_9allocatorIcEEEE": {
+              "cell": "0x18f9440",
+              "pointee": "0x182c170"
+            }
+          }
+        }
+      ]
     }
   ]
 }
