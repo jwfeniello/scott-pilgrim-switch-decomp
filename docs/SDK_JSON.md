@@ -184,3 +184,18 @@ helpers reproduces their lifetimes and stack slots. Separate return scopes
 preserve return-value construction without a shallow owner copy. An explicit
 copy constructor retains the shared root if copy elision is unavailable.
 All four functions are credited only after complete byte and binding checks.
+
+## Buffer finalization
+
+`FinishJsonBuffer` in `src/SdkJsonBufferFinalize.cpp` matches the complete
+268-byte function at `0x3e8c0`. If an array is present, it appends the pending
+character range to the accumulated string, clears the array's begin pointer,
+and frees the allocation using its stored header offset. It then returns a
+converted copy of the accumulated string.
+
+Two separate, provisional allocator template views select libc++ 8's
+converting string constructor. That constructor reproduces the original
+short- and long-string copying paths, unlike the same-type copy constructor.
+Both allocator bindings resolve to the original engine allocator. This
+is evidence for a matching reconstruction, not proof of the original
+allocator class names or source declarations.

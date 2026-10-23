@@ -415191,6 +415191,69 @@
           }
         }
       ]
+    },
+    {
+      "id": "sdk_json_buffer_finalize",
+      "source": "src/SdkJsonBufferFinalize.cpp",
+      "source_review": "manual_reconstruction",
+      "compiler": "8.0.1",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-std=c++11",
+        "-D_GNU_SOURCE",
+        "-U_WIN32",
+        "-U_WIN64",
+        "-O2",
+        "-mcpu=cortex-a57",
+        "-fno-omit-frame-pointer",
+        "-fPIC",
+        "-fno-strict-aliasing",
+        "-fno-vectorize",
+        "-fno-slp-vectorize",
+        "-fno-exceptions",
+        "-nostdinc++",
+        "-isystem",
+        "vendor/llvm-libcxx-8/include",
+        "-isystem",
+        "vendor/musl/include",
+        "-isystem",
+        "vendor/musl/generated",
+        "-D_LIBCPP_HAS_NO_THREADS",
+        "-D_LIBCPP_HAS_MUSL_LIBC",
+        "-D__CLANG_MAX_ALIGN_T_DEFINED",
+        "-D_LIBCPP_DISABLE_VISIBILITY_ANNOTATIONS",
+        "-funwind-tables",
+        "-mllvm",
+        "-tail-dup-placement-threshold=2",
+        "-I",
+        "src",
+        "-I",
+        "vendor/rapidjson-1.1.0/include",
+        "-mgeneral-regs-only"
+      ],
+      "header_roots": [
+        "vendor/llvm-libcxx-8/include",
+        "vendor/musl/include",
+        "vendor/musl/generated",
+        "vendor/rapidjson-1.1.0/include"
+      ],
+      "functions": [
+        {
+          "address": "0x3e8c0",
+          "size": 268,
+          "symbol": "FinishJsonBuffer",
+          "target_sha256": "9e6f423fb6d2b4bc637b91c1e7fe73f7aafddf597fc95100f2e28e90137e86a9",
+          "bindings": {
+            "_ZNSt3__112basic_stringIcNS_11char_traitsIcEE22SimpleLibraryAllocatorIcLj1EEE6insertIPKcEENS_9enable_ifIXaasr21__is_forward_iteratorIT_EE5valuesr38__libcpp_string_gets_noexcept_iteratorISA_EE5valueENS_11__wrap_iterIPcEEE4typeENSB_IS8_EESA_SA_": "0x45ad0",
+            "EngineFree": "0x37030",
+            "_ZN20SimpleLibraryBindingILj2EE8AllocateEjjjj": "0x36ea0",
+            "memcpy": "0xfa3330",
+            "_ZNKSt3__121__basic_string_commonILb1EE20__throw_length_errorEv": "0xfa3b20"
+          },
+          "got_bindings": {}
+        }
+      ]
     }
   ]
 }
