@@ -417882,6 +417882,2507 @@
           "got_bindings": {}
         }
       ]
+    },
+    {
+      "id": "sdk_map_family_0",
+      "source": "src/SdkMapFamilies.cpp",
+      "source_review": "manual_reconstruction",
+      "compiler": "7.0.1",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-std=c++11",
+        "-D_GNU_SOURCE",
+        "-U_WIN32",
+        "-U_WIN64",
+        "-O2",
+        "-mcpu=cortex-a57",
+        "-fno-omit-frame-pointer",
+        "-fPIC",
+        "-fno-strict-aliasing",
+        "-fno-vectorize",
+        "-fno-slp-vectorize",
+        "-fno-exceptions",
+        "-nostdinc++",
+        "-isystem",
+        "vendor/llvm-libcxx-4/include",
+        "-isystem",
+        "vendor/musl/include",
+        "-isystem",
+        "vendor/musl/generated",
+        "-D_LIBCPP_HAS_NO_THREADS",
+        "-D_LIBCPP_HAS_MUSL_LIBC",
+        "-D__CLANG_MAX_ALIGN_T_DEFINED",
+        "-D_LIBCPP_DISABLE_VISIBILITY_ANNOTATIONS",
+        "-funwind-tables",
+        "-mllvm",
+        "-tail-dup-placement-threshold=4",
+        "-I",
+        "src",
+        "-I",
+        "vendor/rapidjson-1.1.0/include",
+        "-mgeneral-regs-only",
+        "-D__ELF__",
+        "-mllvm",
+        "-stackcoloring-lifetime-start-on-first-use=false",
+        "-DSDK_MAP_KEY=Text",
+        "-DSDK_MAP_VALUE=Text",
+        "-DSDK_MAP_LESS=ExternalLess"
+      ],
+      "header_roots": [
+        "vendor/llvm-libcxx-4/include",
+        "vendor/musl/include",
+        "vendor/musl/generated",
+        "vendor/rapidjson-1.1.0/include"
+      ],
+      "functions": [
+        {
+          "address": "0x167d70",
+          "size": 560,
+          "symbol": "_ZNSt3__16__treeINS_12__value_typeI4TextS2_EENS_19__map_value_compareIS2_S3_12ExternalLessLb1EEE22SimpleLibraryAllocatorIS3_Lj1EEE12__find_equalIS2_EERPNS_16__tree_node_baseIPvEENS_21__tree_const_iteratorIS3_PNS_11__tree_nodeIS3_SC_EElEERPNS_15__tree_end_nodeISE_EESF_RKT_",
+          "target_sha256": "b5fdff81ca6b886ee0bed24f9196cd5e49582748ae6312467e63955699bd4131",
+          "bindings": {
+            "CompareText": "0x7e460"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x161100",
+          "size": 396,
+          "symbol": "_ZNSt3__16__treeINS_12__value_typeI4TextS2_EENS_19__map_value_compareIS2_S3_12ExternalLessLb1EEE22SimpleLibraryAllocatorIS3_Lj1EEE15__emplace_multiIJRKNS_4pairIKS2_S2_EEEEENS_15__tree_iteratorIS3_PNS_11__tree_nodeIS3_PvEElEEDpOT_",
+          "target_sha256": "fec0721faf754c456676e4a875d750d22edce093901e66440d0a8216d3dbb430",
+          "bindings": {
+            "_ZN20SimpleLibraryBindingILj1EE8AllocateEjjjj": "0x36ea0",
+            "CompareText": "0x7e460",
+            "_ZNSt3__127__tree_balance_after_insertIPNS_16__tree_node_baseIPvEEEEvT_S5_": "0x6ff2e0"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x17e350",
+          "size": 268,
+          "symbol": "_ZNSt3__16__treeINS_12__value_typeI4TextS2_EENS_19__map_value_compareIS2_S3_12ExternalLessLb1EEE22SimpleLibraryAllocatorIS3_Lj1EEE5eraseENS_21__tree_const_iteratorIS3_PNS_11__tree_nodeIS3_PvEElEE",
+          "target_sha256": "e9828360e4f6752310cf475e3557b192293ffdaac393358a076cd15b45e60527",
+          "bindings": {
+            "_ZNSt3__113__tree_removeIPNS_16__tree_node_baseIPvEEEEvT_S5_": "0x37380",
+            "_ZN20SimpleLibraryBindingILj1EE4FreeEPv": "0x37030"
+          },
+          "got_bindings": {}
+        }
+      ]
+    },
+    {
+      "id": "sdk_map_family_1",
+      "source": "src/SdkMapFamilies.cpp",
+      "source_review": "manual_reconstruction",
+      "compiler": "8.0.1",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-std=c++11",
+        "-D_GNU_SOURCE",
+        "-U_WIN32",
+        "-U_WIN64",
+        "-O2",
+        "-mcpu=cortex-a57",
+        "-fno-omit-frame-pointer",
+        "-fPIC",
+        "-fno-strict-aliasing",
+        "-fno-vectorize",
+        "-fno-slp-vectorize",
+        "-fno-exceptions",
+        "-nostdinc++",
+        "-isystem",
+        "vendor/llvm-libcxx-4/include",
+        "-isystem",
+        "vendor/musl/include",
+        "-isystem",
+        "vendor/musl/generated",
+        "-D_LIBCPP_HAS_NO_THREADS",
+        "-D_LIBCPP_HAS_MUSL_LIBC",
+        "-D__CLANG_MAX_ALIGN_T_DEFINED",
+        "-D_LIBCPP_DISABLE_VISIBILITY_ANNOTATIONS",
+        "-funwind-tables",
+        "-mllvm",
+        "-tail-dup-placement-threshold=4",
+        "-I",
+        "src",
+        "-I",
+        "vendor/rapidjson-1.1.0/include",
+        "-mgeneral-regs-only",
+        "-D__ELF__",
+        "-mllvm",
+        "-stackcoloring-lifetime-start-on-first-use=false",
+        "-DSDK_MAP_KEY=Text",
+        "-DSDK_MAP_VALUE=Text",
+        "-DSDK_MAP_LESS=InlineLess"
+      ],
+      "header_roots": [
+        "vendor/llvm-libcxx-4/include",
+        "vendor/musl/include",
+        "vendor/musl/generated",
+        "vendor/rapidjson-1.1.0/include"
+      ],
+      "functions": [
+        {
+          "address": "0x18db60",
+          "size": 336,
+          "symbol": "_ZNKSt3__16__treeINS_12__value_typeI4TextS2_EENS_19__map_value_compareIS2_S3_10InlineLessLb1EEE22SimpleLibraryAllocatorIS3_Lj1EEE4findIS2_EENS_21__tree_const_iteratorIS3_PNS_11__tree_nodeIS3_PvEElEERKT_",
+          "target_sha256": "5a29c9ac46b77fc88a89b560b33a910792bdb00a46717b8026c1a8a9cfa69ecc",
+          "bindings": {
+            "memcmp": "0xfa3520"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x1a0730",
+          "size": 336,
+          "symbol": "_ZNKSt3__16__treeINS_12__value_typeI4TextS2_EENS_19__map_value_compareIS2_S3_10InlineLessLb1EEE22SimpleLibraryAllocatorIS3_Lj1EEE4findIS2_EENS_21__tree_const_iteratorIS3_PNS_11__tree_nodeIS3_PvEElEERKT_",
+          "target_sha256": "4cb1f4bbf6f4af83c374f20edc442b589d1c13c833cd4cc417dafedaf2ab0f2d",
+          "bindings": {
+            "memcmp": "0xfa3520"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x1b4570",
+          "size": 336,
+          "symbol": "_ZNKSt3__16__treeINS_12__value_typeI4TextS2_EENS_19__map_value_compareIS2_S3_10InlineLessLb1EEE22SimpleLibraryAllocatorIS3_Lj1EEE4findIS2_EENS_21__tree_const_iteratorIS3_PNS_11__tree_nodeIS3_PvEElEERKT_",
+          "target_sha256": "090b31c2e13e03dfe09dc19792192bd8e017f2daf081607bb3259957d43be08e",
+          "bindings": {
+            "memcmp": "0xfa3520"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x162750",
+          "size": 800,
+          "symbol": "_ZNSt3__16__treeINS_12__value_typeI4TextS2_EENS_19__map_value_compareIS2_S3_10InlineLessLb1EEE22SimpleLibraryAllocatorIS3_Lj1EEE12__find_equalIS2_EERPNS_16__tree_node_baseIPvEENS_21__tree_const_iteratorIS3_PNS_11__tree_nodeIS3_SC_EElEERPNS_15__tree_end_nodeISE_EESF_RKT_",
+          "target_sha256": "c675ccbb40d5c0bcf81bb18a37008db4c46e22dbd31496c10f45ca5298dd5f2d",
+          "bindings": {
+            "memcmp": "0xfa3520",
+            "_ZNSt3__16__treeINS_12__value_typeI4TextS2_EENS_19__map_value_compareIS2_S3_10InlineLessLb1EEE22SimpleLibraryAllocatorIS3_Lj1EEE12__find_equalIS2_EERPNS_16__tree_node_baseIPvEERPNS_15__tree_end_nodeISE_EERKT_": "0x162df0"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x164a30",
+          "size": 800,
+          "symbol": "_ZNSt3__16__treeINS_12__value_typeI4TextS2_EENS_19__map_value_compareIS2_S3_10InlineLessLb1EEE22SimpleLibraryAllocatorIS3_Lj1EEE12__find_equalIS2_EERPNS_16__tree_node_baseIPvEENS_21__tree_const_iteratorIS3_PNS_11__tree_nodeIS3_SC_EElEERPNS_15__tree_end_nodeISE_EESF_RKT_",
+          "target_sha256": "8b5d1d42f8db90ca6f1620ebdd43322f9cd57906fdd5cbce8c463a75b006c6a5",
+          "bindings": {
+            "memcmp": "0xfa3520",
+            "_ZNSt3__16__treeINS_12__value_typeI4TextS2_EENS_19__map_value_compareIS2_S3_10InlineLessLb1EEE22SimpleLibraryAllocatorIS3_Lj1EEE12__find_equalIS2_EERPNS_16__tree_node_baseIPvEERPNS_15__tree_end_nodeISE_EERKT_": "0x164d50"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x1676f0",
+          "size": 800,
+          "symbol": "_ZNSt3__16__treeINS_12__value_typeI4TextS2_EENS_19__map_value_compareIS2_S3_10InlineLessLb1EEE22SimpleLibraryAllocatorIS3_Lj1EEE12__find_equalIS2_EERPNS_16__tree_node_baseIPvEENS_21__tree_const_iteratorIS3_PNS_11__tree_nodeIS3_SC_EElEERPNS_15__tree_end_nodeISE_EESF_RKT_",
+          "target_sha256": "dc1d395136084448f8a955964e965147bae01a065e7996e08c062e2e729aac24",
+          "bindings": {
+            "memcmp": "0xfa3520",
+            "_ZNSt3__16__treeINS_12__value_typeI4TextS2_EENS_19__map_value_compareIS2_S3_10InlineLessLb1EEE22SimpleLibraryAllocatorIS3_Lj1EEE12__find_equalIS2_EERPNS_16__tree_node_baseIPvEERPNS_15__tree_end_nodeISE_EERKT_": "0x167a10"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x162df0",
+          "size": 364,
+          "symbol": "_ZNSt3__16__treeINS_12__value_typeI4TextS2_EENS_19__map_value_compareIS2_S3_10InlineLessLb1EEE22SimpleLibraryAllocatorIS3_Lj1EEE12__find_equalIS2_EERPNS_16__tree_node_baseIPvEERPNS_15__tree_end_nodeISE_EERKT_",
+          "target_sha256": "850d54a8e2b10f51c3c2ce05df9d3cd6aac97017d21efa78c80be14e1e124dfc",
+          "bindings": {
+            "memcmp": "0xfa3520"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x164d50",
+          "size": 364,
+          "symbol": "_ZNSt3__16__treeINS_12__value_typeI4TextS2_EENS_19__map_value_compareIS2_S3_10InlineLessLb1EEE22SimpleLibraryAllocatorIS3_Lj1EEE12__find_equalIS2_EERPNS_16__tree_node_baseIPvEERPNS_15__tree_end_nodeISE_EERKT_",
+          "target_sha256": "bd42923285d650d22237e0458b2b8f6c57f983b118ea2e823fafb57c9d862827",
+          "bindings": {
+            "memcmp": "0xfa3520"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x167a10",
+          "size": 364,
+          "symbol": "_ZNSt3__16__treeINS_12__value_typeI4TextS2_EENS_19__map_value_compareIS2_S3_10InlineLessLb1EEE22SimpleLibraryAllocatorIS3_Lj1EEE12__find_equalIS2_EERPNS_16__tree_node_baseIPvEERPNS_15__tree_end_nodeISE_EERKT_",
+          "target_sha256": "7cfd243d966b427d10d5cba849631207750ae51b9cd0060760312c60841563c1",
+          "bindings": {
+            "memcmp": "0xfa3520"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x169060",
+          "size": 364,
+          "symbol": "_ZNSt3__16__treeINS_12__value_typeI4TextS2_EENS_19__map_value_compareIS2_S3_10InlineLessLb1EEE22SimpleLibraryAllocatorIS3_Lj1EEE12__find_equalIS2_EERPNS_16__tree_node_baseIPvEERPNS_15__tree_end_nodeISE_EERKT_",
+          "target_sha256": "5712a236facfb665e9a48a112a44e12439e9e067bf01ee5eb6e82fd9553affd3",
+          "bindings": {
+            "memcmp": "0xfa3520"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x1946d0",
+          "size": 364,
+          "symbol": "_ZNSt3__16__treeINS_12__value_typeI4TextS2_EENS_19__map_value_compareIS2_S3_10InlineLessLb1EEE22SimpleLibraryAllocatorIS3_Lj1EEE12__find_equalIS2_EERPNS_16__tree_node_baseIPvEERPNS_15__tree_end_nodeISE_EERKT_",
+          "target_sha256": "117e66dc3cc1b3516992ea77a24c30edeba7a6d4ac66a5164569e11713157535",
+          "bindings": {
+            "memcmp": "0xfa3520"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x1a29e0",
+          "size": 364,
+          "symbol": "_ZNSt3__16__treeINS_12__value_typeI4TextS2_EENS_19__map_value_compareIS2_S3_10InlineLessLb1EEE22SimpleLibraryAllocatorIS3_Lj1EEE12__find_equalIS2_EERPNS_16__tree_node_baseIPvEERPNS_15__tree_end_nodeISE_EERKT_",
+          "target_sha256": "c1c38b47d42e9c11102299422342f52d4ea1234c10b82c4cfe3e3d163d63fff6",
+          "bindings": {
+            "memcmp": "0xfa3520"
+          },
+          "got_bindings": {}
+        }
+      ]
+    },
+    {
+      "id": "sdk_map_family_2",
+      "source": "src/SdkMapFamilies.cpp",
+      "source_review": "manual_reconstruction",
+      "compiler": "8.0.1",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-std=c++11",
+        "-D_GNU_SOURCE",
+        "-U_WIN32",
+        "-U_WIN64",
+        "-O2",
+        "-mcpu=cortex-a57",
+        "-fno-omit-frame-pointer",
+        "-fPIC",
+        "-fno-strict-aliasing",
+        "-fno-vectorize",
+        "-fno-slp-vectorize",
+        "-fno-exceptions",
+        "-nostdinc++",
+        "-isystem",
+        "vendor/llvm-libcxx-4/include",
+        "-isystem",
+        "vendor/musl/include",
+        "-isystem",
+        "vendor/musl/generated",
+        "-D_LIBCPP_HAS_NO_THREADS",
+        "-D_LIBCPP_HAS_MUSL_LIBC",
+        "-D__CLANG_MAX_ALIGN_T_DEFINED",
+        "-D_LIBCPP_DISABLE_VISIBILITY_ANNOTATIONS",
+        "-funwind-tables",
+        "-mllvm",
+        "-tail-dup-placement-threshold=4",
+        "-I",
+        "src",
+        "-I",
+        "vendor/rapidjson-1.1.0/include",
+        "-mgeneral-regs-only",
+        "-D__ELF__",
+        "-mllvm",
+        "-stackcoloring-lifetime-start-on-first-use=false",
+        "-DSDK_MAP_KEY=Text",
+        "-DSDK_MAP_VALUE=Temporary",
+        "-DSDK_MAP_LESS=InlineLess"
+      ],
+      "header_roots": [
+        "vendor/llvm-libcxx-4/include",
+        "vendor/musl/include",
+        "vendor/musl/generated",
+        "vendor/rapidjson-1.1.0/include"
+      ],
+      "functions": [
+        {
+          "address": "0x168f30",
+          "size": 304,
+          "symbol": "_ZNSt3__16__treeINS_12__value_typeI4TextNS_12basic_stringIcNS_11char_traitsIcEE22SimpleLibraryAllocatorIcLj1EEEEEENS_19__map_value_compareIS2_S9_10InlineLessLb1EEES6_IS9_Lj1EEE15__emplace_multiIJRKNS_4pairIKS2_S8_EEEEENS_15__tree_iteratorIS9_PNS_11__tree_nodeIS9_PvEElEEDpOT_",
+          "target_sha256": "e410d90ece585ebf2bd5d39fcb64d87c441208ac53742de07df0ca328223170d",
+          "bindings": {
+            "_ZNSt3__16__treeINS_12__value_typeI4TextNS_12basic_stringIcNS_11char_traitsIcEE22SimpleLibraryAllocatorIcLj1EEEEEENS_19__map_value_compareIS2_S9_10InlineLessLb1EEES6_IS9_Lj1EEE16__construct_nodeIJRKNS_4pairIKS2_S8_EEEEENS_10unique_ptrINS_11__tree_nodeIS9_PvEENS_22__tree_node_destructorIS6_ISO_Lj1EEEEEEDpOT_": "0x6ff180",
+            "memcmp": "0xfa3520",
+            "_ZNSt3__127__tree_balance_after_insertIPNS_16__tree_node_baseIPvEEEEvT_S5_": "0x6ff2e0"
+          },
+          "got_bindings": {}
+        }
+      ]
+    },
+    {
+      "id": "sdk_map_family_3",
+      "source": "src/SdkMapFamilies.cpp",
+      "source_review": "manual_reconstruction",
+      "compiler": "8.0.1",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-std=c++11",
+        "-D_GNU_SOURCE",
+        "-U_WIN32",
+        "-U_WIN64",
+        "-O2",
+        "-mcpu=cortex-a57",
+        "-fno-omit-frame-pointer",
+        "-fPIC",
+        "-fno-strict-aliasing",
+        "-fno-vectorize",
+        "-fno-slp-vectorize",
+        "-fno-exceptions",
+        "-nostdinc++",
+        "-isystem",
+        "vendor/llvm-libcxx-4/include",
+        "-isystem",
+        "vendor/musl/include",
+        "-isystem",
+        "vendor/musl/generated",
+        "-D_LIBCPP_HAS_NO_THREADS",
+        "-D_LIBCPP_HAS_MUSL_LIBC",
+        "-D__CLANG_MAX_ALIGN_T_DEFINED",
+        "-D_LIBCPP_DISABLE_VISIBILITY_ANNOTATIONS",
+        "-funwind-tables",
+        "-mllvm",
+        "-tail-dup-placement-threshold=4",
+        "-I",
+        "src",
+        "-I",
+        "vendor/rapidjson-1.1.0/include",
+        "-mgeneral-regs-only",
+        "-D__ELF__",
+        "-mllvm",
+        "-stackcoloring-lifetime-start-on-first-use=false",
+        "-DSDK_MAP_KEY=Temporary",
+        "-DSDK_MAP_VALUE=Text",
+        "-DSDK_MAP_LESS=std::less<Temporary>"
+      ],
+      "header_roots": [
+        "vendor/llvm-libcxx-4/include",
+        "vendor/musl/include",
+        "vendor/musl/generated",
+        "vendor/rapidjson-1.1.0/include"
+      ],
+      "functions": [
+        {
+          "address": "0x560b50",
+          "size": 268,
+          "symbol": "_ZNKSt3__16__treeINS_12__value_typeINS_12basic_stringIcNS_11char_traitsIcEE22SimpleLibraryAllocatorIcLj1EEEE4TextEENS_19__map_value_compareIS7_S9_NS_4lessIS7_EELb1EEES5_IS9_Lj1EEE4findIS7_EENS_21__tree_const_iteratorIS9_PNS_11__tree_nodeIS9_PvEElEERKT_",
+          "target_sha256": "2395caafd0d042ce8a47d15d8ba281611c523b8e64357ca660a1a30f66491375",
+          "bindings": {
+            "memcmp": "0xfa3520"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x492180",
+          "size": 292,
+          "symbol": "_ZNSt3__16__treeINS_12__value_typeINS_12basic_stringIcNS_11char_traitsIcEE22SimpleLibraryAllocatorIcLj1EEEE4TextEENS_19__map_value_compareIS7_S9_NS_4lessIS7_EELb1EEES5_IS9_Lj1EEE12__find_equalIS7_EERPNS_16__tree_node_baseIPvEERPNS_15__tree_end_nodeISK_EERKT_",
+          "target_sha256": "8bd03585f10d8421f7347559ed9ff907a4f59163946584680502f9b0684e902b",
+          "bindings": {
+            "memcmp": "0xfa3520"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x560c60",
+          "size": 292,
+          "symbol": "_ZNSt3__16__treeINS_12__value_typeINS_12basic_stringIcNS_11char_traitsIcEE22SimpleLibraryAllocatorIcLj1EEEE4TextEENS_19__map_value_compareIS7_S9_NS_4lessIS7_EELb1EEES5_IS9_Lj1EEE12__find_equalIS7_EERPNS_16__tree_node_baseIPvEERPNS_15__tree_end_nodeISK_EERKT_",
+          "target_sha256": "332068237c8f3e49d85687813443d11c9e51323d6ec8dac2e92e11e8992ae881",
+          "bindings": {
+            "memcmp": "0xfa3520"
+          },
+          "got_bindings": {}
+        }
+      ]
+    },
+    {
+      "id": "sdk_map_family_4",
+      "source": "src/SdkMapFamilies.cpp",
+      "source_review": "manual_reconstruction",
+      "compiler": "8.0.1",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-std=c++11",
+        "-D_GNU_SOURCE",
+        "-U_WIN32",
+        "-U_WIN64",
+        "-O2",
+        "-mcpu=cortex-a57",
+        "-fomit-frame-pointer",
+        "-fPIC",
+        "-fno-strict-aliasing",
+        "-fno-vectorize",
+        "-fno-slp-vectorize",
+        "-fno-exceptions",
+        "-nostdinc++",
+        "-isystem",
+        "vendor/llvm-libcxx-4/include",
+        "-isystem",
+        "vendor/musl/include",
+        "-isystem",
+        "vendor/musl/generated",
+        "-D_LIBCPP_HAS_NO_THREADS",
+        "-D_LIBCPP_HAS_MUSL_LIBC",
+        "-D__CLANG_MAX_ALIGN_T_DEFINED",
+        "-D_LIBCPP_DISABLE_VISIBILITY_ANNOTATIONS",
+        "-funwind-tables",
+        "-mllvm",
+        "-tail-dup-placement-threshold=4",
+        "-I",
+        "src",
+        "-I",
+        "vendor/rapidjson-1.1.0/include",
+        "-mgeneral-regs-only",
+        "-D__ELF__",
+        "-mllvm",
+        "-stackcoloring-lifetime-start-on-first-use=false",
+        "-DSDK_MAP_KEY=Temporary",
+        "-DSDK_MAP_VALUE=Text",
+        "-DSDK_MAP_LESS=std::less<Temporary>"
+      ],
+      "header_roots": [
+        "vendor/llvm-libcxx-4/include",
+        "vendor/musl/include",
+        "vendor/musl/generated",
+        "vendor/rapidjson-1.1.0/include"
+      ],
+      "functions": [
+        {
+          "address": "0xc3f130",
+          "size": 264,
+          "symbol": "_ZNKSt3__16__treeINS_12__value_typeINS_12basic_stringIcNS_11char_traitsIcEE22SimpleLibraryAllocatorIcLj1EEEE4TextEENS_19__map_value_compareIS7_S9_NS_4lessIS7_EELb1EEES5_IS9_Lj1EEE4findIS7_EENS_21__tree_const_iteratorIS9_PNS_11__tree_nodeIS9_PvEElEERKT_",
+          "target_sha256": "7feeb48c938d8e145e89fee539206ddfc6ab8fc93decd8ce5e3b8c09f712d6b2",
+          "bindings": {
+            "memcmp": "0xfa3520"
+          },
+          "got_bindings": {}
+        }
+      ]
+    },
+    {
+      "id": "sdk_map_family_5",
+      "source": "src/SdkMapFamilies.cpp",
+      "source_review": "manual_reconstruction",
+      "compiler": "8.0.1",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-std=c++11",
+        "-D_GNU_SOURCE",
+        "-U_WIN32",
+        "-U_WIN64",
+        "-O2",
+        "-mcpu=cortex-a57",
+        "-fomit-frame-pointer",
+        "-fPIC",
+        "-fno-strict-aliasing",
+        "-fno-vectorize",
+        "-fno-slp-vectorize",
+        "-fno-exceptions",
+        "-nostdinc++",
+        "-isystem",
+        "vendor/llvm-libcxx-4/include",
+        "-isystem",
+        "vendor/musl/include",
+        "-isystem",
+        "vendor/musl/generated",
+        "-D_LIBCPP_HAS_NO_THREADS",
+        "-D_LIBCPP_HAS_MUSL_LIBC",
+        "-D__CLANG_MAX_ALIGN_T_DEFINED",
+        "-D_LIBCPP_DISABLE_VISIBILITY_ANNOTATIONS",
+        "-funwind-tables",
+        "-mllvm",
+        "-tail-dup-placement-threshold=4",
+        "-I",
+        "src",
+        "-I",
+        "vendor/rapidjson-1.1.0/include",
+        "-mgeneral-regs-only",
+        "-D__ELF__",
+        "-mllvm",
+        "-stackcoloring-lifetime-start-on-first-use=false",
+        "-DSDK_MAP_KEY=uint32_t",
+        "-DSDK_MAP_VALUE=Text",
+        "-DSDK_MAP_LESS=std::less<uint32_t>"
+      ],
+      "header_roots": [
+        "vendor/llvm-libcxx-4/include",
+        "vendor/musl/include",
+        "vendor/musl/generated",
+        "vendor/rapidjson-1.1.0/include"
+      ],
+      "functions": [
+        {
+          "address": "0x7f5b30",
+          "size": 272,
+          "symbol": "_ZNSt3__16__treeINS_12__value_typeIj4TextEENS_19__map_value_compareIjS3_NS_4lessIjEELb1EEE22SimpleLibraryAllocatorIS3_Lj1EEE30__emplace_hint_unique_key_argsIjJNS_4pairIKjS2_EEEEENS_15__tree_iteratorIS3_PNS_11__tree_nodeIS3_PvEElEENS_21__tree_const_iteratorIS3_SJ_lEERKT_DpOT0_",
+          "target_sha256": "a9d5bc520981319aa89f925b7a75b965a704641efaaab1ba6615632cb6d0fdbd",
+          "bindings": {
+            "_ZNSt3__16__treeINS_12__value_typeIj4TextEENS_19__map_value_compareIjS3_NS_4lessIjEELb1EEE22SimpleLibraryAllocatorIS3_Lj1EEE12__find_equalIjEERPNS_16__tree_node_baseIPvEENS_21__tree_const_iteratorIS3_PNS_11__tree_nodeIS3_SD_EElEERPNS_15__tree_end_nodeISF_EESG_RKT_": "0x7f5c40",
+            "_ZN20SimpleLibraryBindingILj1EE8AllocateEjjjj": "0x36ea0",
+            "_ZNSt3__127__tree_balance_after_insertIPNS_16__tree_node_baseIPvEEEEvT_S5_": "0x6ff2e0"
+          },
+          "got_bindings": {}
+        }
+      ]
+    },
+    {
+      "id": "sdk_http_job_constructors",
+      "source": "src/SdkHttpJobConstructors.cpp",
+      "source_review": "manual_reconstruction",
+      "compiler": "8.0.1",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-std=c++11",
+        "-D_GNU_SOURCE",
+        "-U_WIN32",
+        "-U_WIN64",
+        "-O2",
+        "-mcpu=cortex-a57",
+        "-fno-omit-frame-pointer",
+        "-fPIC",
+        "-fno-strict-aliasing",
+        "-fno-vectorize",
+        "-fno-slp-vectorize",
+        "-fno-exceptions",
+        "-nostdinc++",
+        "-isystem",
+        "vendor/llvm-libcxx-4/include",
+        "-isystem",
+        "vendor/musl/include",
+        "-isystem",
+        "vendor/musl/generated",
+        "-D_LIBCPP_HAS_NO_THREADS",
+        "-D_LIBCPP_HAS_MUSL_LIBC",
+        "-D__CLANG_MAX_ALIGN_T_DEFINED",
+        "-D_LIBCPP_DISABLE_VISIBILITY_ANNOTATIONS",
+        "-funwind-tables",
+        "-mllvm",
+        "-tail-dup-placement-threshold=2",
+        "-I",
+        "src",
+        "-I",
+        "vendor/rapidjson-1.1.0/include",
+        "-mgeneral-regs-only",
+        "-D__ELF__",
+        "-mllvm",
+        "-stackcoloring-lifetime-start-on-first-use=false"
+      ],
+      "header_roots": [
+        "vendor/llvm-libcxx-4/include",
+        "vendor/musl/include",
+        "vendor/musl/generated",
+        "vendor/rapidjson-1.1.0/include"
+      ],
+      "functions": [
+        {
+          "address": "0x6efe0",
+          "size": 440,
+          "symbol": "ConstructHttpJob",
+          "target_sha256": "251c326d317ccedb531d368272cdf0852ef4cbfe8371c70c76612f894b486eea",
+          "bindings": {
+            "_ZN7BaseJobC2EPvS0_S0_": "0x90950",
+            "_ZN9AsyncBaseC1EPv": "0x79150",
+            "_ZN8CallbackC1EPv": "0x68d90",
+            "_ZN9AsyncBaseC2EPv": "0x79150",
+            "EngineAllocate": "0x36ea0"
+          },
+          "got_bindings": {
+            "_ZTV8StageJob": {
+              "cell": "0x18ecaa8",
+              "pointee": "0x17c9ae8"
+            },
+            "_ZTV7HttpJob": {
+              "cell": "0x18ecab0",
+              "pointee": "0x17ca178"
+            },
+            "_ZTV10TypedAsync": {
+              "cell": "0x18ec9e8",
+              "pointee": "0x1846b28"
+            },
+            "_ZTV15ResponseStorage": {
+              "cell": "0x18ec9f0",
+              "pointee": "0x1846e28"
+            },
+            "_ZTV12HttpResponse": {
+              "cell": "0x18ec9f8",
+              "pointee": "0x17c6a98"
+            },
+            "_ZTV6Object": {
+              "cell": "0x18ec818",
+              "pointee": "0x17c51f0"
+            }
+          }
+        },
+        {
+          "address": "0x9c9d0",
+          "size": 440,
+          "symbol": "ConstructHttpJob",
+          "target_sha256": "08e686d9c7071fb0b6a35ce0c2c1286c8c1ca472e2cd385c45d0fcf50b570b2a",
+          "bindings": {
+            "_ZN7BaseJobC2EPvS0_S0_": "0x1815d0",
+            "_ZN9AsyncBaseC1EPv": "0x79150",
+            "_ZN8CallbackC1EPv": "0xb4f50",
+            "_ZN9AsyncBaseC2EPv": "0x79150",
+            "EngineAllocate": "0x36ea0"
+          },
+          "got_bindings": {
+            "_ZTV8StageJob": {
+              "cell": "0x18ecd40",
+              "pointee": "0x17cae50"
+            },
+            "_ZTV7HttpJob": {
+              "cell": "0x18ecd48",
+              "pointee": "0x17cade0"
+            },
+            "_ZTV10TypedAsync": {
+              "cell": "0x18ec9e8",
+              "pointee": "0x1846b28"
+            },
+            "_ZTV15ResponseStorage": {
+              "cell": "0x18ec9f0",
+              "pointee": "0x1846e28"
+            },
+            "_ZTV12HttpResponse": {
+              "cell": "0x18ec9f8",
+              "pointee": "0x17c6a98"
+            },
+            "_ZTV6Object": {
+              "cell": "0x18ec818",
+              "pointee": "0x17c51f0"
+            }
+          }
+        },
+        {
+          "address": "0xa8b30",
+          "size": 440,
+          "symbol": "ConstructHttpJob",
+          "target_sha256": "8aead5f5b0752f129b90d1d29a489fad6f8b3e77e05d62c4c9d16568532ede64",
+          "bindings": {
+            "_ZN7BaseJobC2EPvS0_S0_": "0x90950",
+            "_ZN9AsyncBaseC1EPv": "0x79150",
+            "_ZN8CallbackC1EPv": "0xb4f50",
+            "_ZN9AsyncBaseC2EPv": "0x79150",
+            "EngineAllocate": "0x36ea0"
+          },
+          "got_bindings": {
+            "_ZTV8StageJob": {
+              "cell": "0x18ecaa8",
+              "pointee": "0x17c9ae8"
+            },
+            "_ZTV7HttpJob": {
+              "cell": "0x18ecab0",
+              "pointee": "0x17ca178"
+            },
+            "_ZTV10TypedAsync": {
+              "cell": "0x18ec9e8",
+              "pointee": "0x1846b28"
+            },
+            "_ZTV15ResponseStorage": {
+              "cell": "0x18ec9f0",
+              "pointee": "0x1846e28"
+            },
+            "_ZTV12HttpResponse": {
+              "cell": "0x18ec9f8",
+              "pointee": "0x17c6a98"
+            },
+            "_ZTV6Object": {
+              "cell": "0x18ec818",
+              "pointee": "0x17c51f0"
+            }
+          }
+        },
+        {
+          "address": "0xae7e0",
+          "size": 440,
+          "symbol": "ConstructHttpJob",
+          "target_sha256": "924fb2154b5258be9242f97ef6619c5d59d8af43c4e94eb5b6604cda1753966a",
+          "bindings": {
+            "_ZN7BaseJobC2EPvS0_S0_": "0x1834d0",
+            "_ZN9AsyncBaseC1EPv": "0x79150",
+            "_ZN8CallbackC1EPv": "0xb4f50",
+            "_ZN9AsyncBaseC2EPv": "0x79150",
+            "EngineAllocate": "0x36ea0"
+          },
+          "got_bindings": {
+            "_ZTV8StageJob": {
+              "cell": "0x18ecec8",
+              "pointee": "0x17cb0e8"
+            },
+            "_ZTV7HttpJob": {
+              "cell": "0x18eced0",
+              "pointee": "0x17cb078"
+            },
+            "_ZTV10TypedAsync": {
+              "cell": "0x18ec9e8",
+              "pointee": "0x1846b28"
+            },
+            "_ZTV15ResponseStorage": {
+              "cell": "0x18ec9f0",
+              "pointee": "0x1846e28"
+            },
+            "_ZTV12HttpResponse": {
+              "cell": "0x18ec9f8",
+              "pointee": "0x17c6a98"
+            },
+            "_ZTV6Object": {
+              "cell": "0x18ec818",
+              "pointee": "0x17c51f0"
+            }
+          }
+        },
+        {
+          "address": "0xcedb0",
+          "size": 440,
+          "symbol": "ConstructHttpJob",
+          "target_sha256": "a62abbf4266de557fc9f2230d77b1a98d00fdbca8783da12bc47e9cd6f061970",
+          "bindings": {
+            "_ZN7BaseJobC2EPvS0_S0_": "0x1887f0",
+            "_ZN9AsyncBaseC1EPv": "0x79150",
+            "_ZN8CallbackC1EPv": "0x68d90",
+            "_ZN9AsyncBaseC2EPv": "0x79150",
+            "EngineAllocate": "0x36ea0"
+          },
+          "got_bindings": {
+            "_ZTV8StageJob": {
+              "cell": "0x18ed150",
+              "pointee": "0x17ca290"
+            },
+            "_ZTV7HttpJob": {
+              "cell": "0x18ed158",
+              "pointee": "0x17ca220"
+            },
+            "_ZTV10TypedAsync": {
+              "cell": "0x18ec9e8",
+              "pointee": "0x1846b28"
+            },
+            "_ZTV15ResponseStorage": {
+              "cell": "0x18ec9f0",
+              "pointee": "0x1846e28"
+            },
+            "_ZTV12HttpResponse": {
+              "cell": "0x18ec9f8",
+              "pointee": "0x17c6a98"
+            },
+            "_ZTV6Object": {
+              "cell": "0x18ec818",
+              "pointee": "0x17c51f0"
+            }
+          }
+        },
+        {
+          "address": "0xd1a70",
+          "size": 440,
+          "symbol": "ConstructHttpJob",
+          "target_sha256": "aac708cca81e0c62b10a43c929b66c24660c6d93b6703b75d5638d4b181e50af",
+          "bindings": {
+            "_ZN7BaseJobC2EPvS0_S0_": "0x189d70",
+            "_ZN9AsyncBaseC1EPv": "0x79150",
+            "_ZN8CallbackC1EPv": "0x68d90",
+            "_ZN9AsyncBaseC2EPv": "0x79150",
+            "EngineAllocate": "0x36ea0"
+          },
+          "got_bindings": {
+            "_ZTV8StageJob": {
+              "cell": "0x18ed190",
+              "pointee": "0x17ca3c0"
+            },
+            "_ZTV7HttpJob": {
+              "cell": "0x18ed198",
+              "pointee": "0x17ca350"
+            },
+            "_ZTV10TypedAsync": {
+              "cell": "0x18ec9e8",
+              "pointee": "0x1846b28"
+            },
+            "_ZTV15ResponseStorage": {
+              "cell": "0x18ec9f0",
+              "pointee": "0x1846e28"
+            },
+            "_ZTV12HttpResponse": {
+              "cell": "0x18ec9f8",
+              "pointee": "0x17c6a98"
+            },
+            "_ZTV6Object": {
+              "cell": "0x18ec818",
+              "pointee": "0x17c51f0"
+            }
+          }
+        },
+        {
+          "address": "0xf3ee0",
+          "size": 440,
+          "symbol": "ConstructHttpJob",
+          "target_sha256": "58bd90baf78ce351a6862afc6c73c9373977e7d80d372700932c0858ffdc5392",
+          "bindings": {
+            "_ZN7BaseJobC2EPvS0_S0_": "0xfb030",
+            "_ZN9AsyncBaseC1EPv": "0x79150",
+            "_ZN8CallbackC1EPv": "0x68d90",
+            "_ZN9AsyncBaseC2EPv": "0x79150",
+            "EngineAllocate": "0x36ea0"
+          },
+          "got_bindings": {
+            "_ZTV8StageJob": {
+              "cell": "0x18ed368",
+              "pointee": "0x17cb6d8"
+            },
+            "_ZTV7HttpJob": {
+              "cell": "0x18ed370",
+              "pointee": "0x17cb668"
+            },
+            "_ZTV10TypedAsync": {
+              "cell": "0x18ec9e8",
+              "pointee": "0x1846b28"
+            },
+            "_ZTV15ResponseStorage": {
+              "cell": "0x18ec9f0",
+              "pointee": "0x1846e28"
+            },
+            "_ZTV12HttpResponse": {
+              "cell": "0x18ec9f8",
+              "pointee": "0x17c6a98"
+            },
+            "_ZTV6Object": {
+              "cell": "0x18ec818",
+              "pointee": "0x17c51f0"
+            }
+          }
+        },
+        {
+          "address": "0xff640",
+          "size": 440,
+          "symbol": "ConstructHttpJob",
+          "target_sha256": "ea2c04ca998cda8ee43d4aa95adcfa9fdafa16cea8d4abd046dadff5cffa1f42",
+          "bindings": {
+            "_ZN7BaseJobC2EPvS0_S0_": "0x195bd0",
+            "_ZN9AsyncBaseC1EPv": "0x79150",
+            "_ZN8CallbackC1EPv": "0x68d90",
+            "_ZN9AsyncBaseC2EPv": "0x79150",
+            "EngineAllocate": "0x36ea0"
+          },
+          "got_bindings": {
+            "_ZTV8StageJob": {
+              "cell": "0x18ed490",
+              "pointee": "0x17ca4f0"
+            },
+            "_ZTV7HttpJob": {
+              "cell": "0x18ed498",
+              "pointee": "0x17ca480"
+            },
+            "_ZTV10TypedAsync": {
+              "cell": "0x18ec9e8",
+              "pointee": "0x1846b28"
+            },
+            "_ZTV15ResponseStorage": {
+              "cell": "0x18ec9f0",
+              "pointee": "0x1846e28"
+            },
+            "_ZTV12HttpResponse": {
+              "cell": "0x18ec9f8",
+              "pointee": "0x17c6a98"
+            },
+            "_ZTV6Object": {
+              "cell": "0x18ec818",
+              "pointee": "0x17c51f0"
+            }
+          }
+        },
+        {
+          "address": "0x107990",
+          "size": 440,
+          "symbol": "ConstructHttpJob",
+          "target_sha256": "b307e978c28ea8dda04816d47867d2c0698b60018ab5d20936fb042326a399b3",
+          "bindings": {
+            "_ZN7BaseJobC2EPvS0_S0_": "0x197960",
+            "_ZN9AsyncBaseC1EPv": "0x79150",
+            "_ZN8CallbackC1EPv": "0x68d90",
+            "_ZN9AsyncBaseC2EPv": "0x79150",
+            "EngineAllocate": "0x36ea0"
+          },
+          "got_bindings": {
+            "_ZTV8StageJob": {
+              "cell": "0x18ed500",
+              "pointee": "0x17cba60"
+            },
+            "_ZTV7HttpJob": {
+              "cell": "0x18ed508",
+              "pointee": "0x17cb9f0"
+            },
+            "_ZTV10TypedAsync": {
+              "cell": "0x18ec9e8",
+              "pointee": "0x1846b28"
+            },
+            "_ZTV15ResponseStorage": {
+              "cell": "0x18ec9f0",
+              "pointee": "0x1846e28"
+            },
+            "_ZTV12HttpResponse": {
+              "cell": "0x18ec9f8",
+              "pointee": "0x17c6a98"
+            },
+            "_ZTV6Object": {
+              "cell": "0x18ec818",
+              "pointee": "0x17c51f0"
+            }
+          }
+        },
+        {
+          "address": "0x126930",
+          "size": 440,
+          "symbol": "ConstructHttpJob",
+          "target_sha256": "6309215522c19b28f796ff5aee6235dcb4e88700a286a0d68e0f6a64b8b066c6",
+          "bindings": {
+            "_ZN7BaseJobC2EPvS0_S0_": "0x19f240",
+            "_ZN9AsyncBaseC1EPv": "0x79150",
+            "_ZN8CallbackC1EPv": "0xb4f50",
+            "_ZN9AsyncBaseC2EPv": "0x79150",
+            "EngineAllocate": "0x36ea0"
+          },
+          "got_bindings": {
+            "_ZTV8StageJob": {
+              "cell": "0x18ed5e0",
+              "pointee": "0x17ca620"
+            },
+            "_ZTV7HttpJob": {
+              "cell": "0x18ed5e8",
+              "pointee": "0x17ca5b0"
+            },
+            "_ZTV10TypedAsync": {
+              "cell": "0x18ec9e8",
+              "pointee": "0x1846b28"
+            },
+            "_ZTV15ResponseStorage": {
+              "cell": "0x18ec9f0",
+              "pointee": "0x1846e28"
+            },
+            "_ZTV12HttpResponse": {
+              "cell": "0x18ec9f8",
+              "pointee": "0x17c6a98"
+            },
+            "_ZTV6Object": {
+              "cell": "0x18ec818",
+              "pointee": "0x17c51f0"
+            }
+          }
+        },
+        {
+          "address": "0x137fa0",
+          "size": 440,
+          "symbol": "ConstructHttpJob",
+          "target_sha256": "03747e1eb7f3695d31d39575fd2acc6a29befd0e3070cb4bf015a074056c3502",
+          "bindings": {
+            "_ZN7BaseJobC2EPvS0_S0_": "0x1815d0",
+            "_ZN9AsyncBaseC1EPv": "0x79150",
+            "_ZN8CallbackC1EPv": "0x68d90",
+            "_ZN9AsyncBaseC2EPv": "0x79150",
+            "EngineAllocate": "0x36ea0"
+          },
+          "got_bindings": {
+            "_ZTV8StageJob": {
+              "cell": "0x18ecd40",
+              "pointee": "0x17cae50"
+            },
+            "_ZTV7HttpJob": {
+              "cell": "0x18ecd48",
+              "pointee": "0x17cade0"
+            },
+            "_ZTV10TypedAsync": {
+              "cell": "0x18ec9e8",
+              "pointee": "0x1846b28"
+            },
+            "_ZTV15ResponseStorage": {
+              "cell": "0x18ec9f0",
+              "pointee": "0x1846e28"
+            },
+            "_ZTV12HttpResponse": {
+              "cell": "0x18ec9f8",
+              "pointee": "0x17c6a98"
+            },
+            "_ZTV6Object": {
+              "cell": "0x18ec818",
+              "pointee": "0x17c51f0"
+            }
+          }
+        },
+        {
+          "address": "0x13ca60",
+          "size": 440,
+          "symbol": "ConstructHttpJob",
+          "target_sha256": "c4944cc9af4ad2fc5d84eee0e116e5d381ff302e21d2d82b254d4dad817a2088",
+          "bindings": {
+            "_ZN7BaseJobC2EPvS0_S0_": "0x1a9720",
+            "_ZN9AsyncBaseC1EPv": "0x79150",
+            "_ZN8CallbackC1EPv": "0xb4f50",
+            "_ZN9AsyncBaseC2EPv": "0x79150",
+            "EngineAllocate": "0x36ea0"
+          },
+          "got_bindings": {
+            "_ZTV8StageJob": {
+              "cell": "0x18ed7f0",
+              "pointee": "0x17cbd88"
+            },
+            "_ZTV7HttpJob": {
+              "cell": "0x18ed7f8",
+              "pointee": "0x17cbd18"
+            },
+            "_ZTV10TypedAsync": {
+              "cell": "0x18ec9e8",
+              "pointee": "0x1846b28"
+            },
+            "_ZTV15ResponseStorage": {
+              "cell": "0x18ec9f0",
+              "pointee": "0x1846e28"
+            },
+            "_ZTV12HttpResponse": {
+              "cell": "0x18ec9f8",
+              "pointee": "0x17c6a98"
+            },
+            "_ZTV6Object": {
+              "cell": "0x18ec818",
+              "pointee": "0x17c51f0"
+            }
+          }
+        },
+        {
+          "address": "0x1407a0",
+          "size": 440,
+          "symbol": "ConstructHttpJob",
+          "target_sha256": "7612ce2654237290e5e9f55a9ce16c023cb0fdaffb7637a618cfce2154cc457f",
+          "bindings": {
+            "_ZN7BaseJobC2EPvS0_S0_": "0x1a9720",
+            "_ZN9AsyncBaseC1EPv": "0x79150",
+            "_ZN8CallbackC1EPv": "0x68d90",
+            "_ZN9AsyncBaseC2EPv": "0x79150",
+            "EngineAllocate": "0x36ea0"
+          },
+          "got_bindings": {
+            "_ZTV8StageJob": {
+              "cell": "0x18ed7f0",
+              "pointee": "0x17cbd88"
+            },
+            "_ZTV7HttpJob": {
+              "cell": "0x18ed7f8",
+              "pointee": "0x17cbd18"
+            },
+            "_ZTV10TypedAsync": {
+              "cell": "0x18ec9e8",
+              "pointee": "0x1846b28"
+            },
+            "_ZTV15ResponseStorage": {
+              "cell": "0x18ec9f0",
+              "pointee": "0x1846e28"
+            },
+            "_ZTV12HttpResponse": {
+              "cell": "0x18ec9f8",
+              "pointee": "0x17c6a98"
+            },
+            "_ZTV6Object": {
+              "cell": "0x18ec818",
+              "pointee": "0x17c51f0"
+            }
+          }
+        },
+        {
+          "address": "0x1417e0",
+          "size": 440,
+          "symbol": "ConstructHttpJob",
+          "target_sha256": "606c4e8d122f3368363a00aa1c2fc50b658c8ce3f47230638da7c19a0a7b4003",
+          "bindings": {
+            "_ZN7BaseJobC2EPvS0_S0_": "0x1ab1c0",
+            "_ZN9AsyncBaseC1EPv": "0x79150",
+            "_ZN8CallbackC1EPv": "0x68d90",
+            "_ZN9AsyncBaseC2EPv": "0x79150",
+            "EngineAllocate": "0x36ea0"
+          },
+          "got_bindings": {
+            "_ZTV8StageJob": {
+              "cell": "0x18ed838",
+              "pointee": "0x17ca750"
+            },
+            "_ZTV7HttpJob": {
+              "cell": "0x18ed840",
+              "pointee": "0x17ca6e0"
+            },
+            "_ZTV10TypedAsync": {
+              "cell": "0x18ec9e8",
+              "pointee": "0x1846b28"
+            },
+            "_ZTV15ResponseStorage": {
+              "cell": "0x18ec9f0",
+              "pointee": "0x1846e28"
+            },
+            "_ZTV12HttpResponse": {
+              "cell": "0x18ec9f8",
+              "pointee": "0x17c6a98"
+            },
+            "_ZTV6Object": {
+              "cell": "0x18ec818",
+              "pointee": "0x17c51f0"
+            }
+          }
+        },
+        {
+          "address": "0x141b90",
+          "size": 440,
+          "symbol": "ConstructHttpJob",
+          "target_sha256": "4c8da7a075cc0538d3e8d8cef4743573e23b5372939d187ad7d8b35aff3fefc5",
+          "bindings": {
+            "_ZN7BaseJobC2EPvS0_S0_": "0x1ab1c0",
+            "_ZN9AsyncBaseC1EPv": "0x79150",
+            "_ZN8CallbackC1EPv": "0xb4f50",
+            "_ZN9AsyncBaseC2EPv": "0x79150",
+            "EngineAllocate": "0x36ea0"
+          },
+          "got_bindings": {
+            "_ZTV8StageJob": {
+              "cell": "0x18ed838",
+              "pointee": "0x17ca750"
+            },
+            "_ZTV7HttpJob": {
+              "cell": "0x18ed840",
+              "pointee": "0x17ca6e0"
+            },
+            "_ZTV10TypedAsync": {
+              "cell": "0x18ec9e8",
+              "pointee": "0x1846b28"
+            },
+            "_ZTV15ResponseStorage": {
+              "cell": "0x18ec9f0",
+              "pointee": "0x1846e28"
+            },
+            "_ZTV12HttpResponse": {
+              "cell": "0x18ec9f8",
+              "pointee": "0x17c6a98"
+            },
+            "_ZTV6Object": {
+              "cell": "0x18ec818",
+              "pointee": "0x17c51f0"
+            }
+          }
+        },
+        {
+          "address": "0x1439b0",
+          "size": 440,
+          "symbol": "ConstructHttpJob",
+          "target_sha256": "f915f8fc146d2eb2b42d9bd7894622819e5aca1a3b52225179f1541ae8e50449",
+          "bindings": {
+            "_ZN7BaseJobC2EPvS0_S0_": "0x1ac7a0",
+            "_ZN9AsyncBaseC1EPv": "0x79150",
+            "_ZN8CallbackC1EPv": "0x68d90",
+            "_ZN9AsyncBaseC2EPv": "0x79150",
+            "EngineAllocate": "0x36ea0"
+          },
+          "got_bindings": {
+            "_ZTV8StageJob": {
+              "cell": "0x18ed870",
+              "pointee": "0x17ca880"
+            },
+            "_ZTV7HttpJob": {
+              "cell": "0x18ed878",
+              "pointee": "0x17ca810"
+            },
+            "_ZTV10TypedAsync": {
+              "cell": "0x18ec9e8",
+              "pointee": "0x1846b28"
+            },
+            "_ZTV15ResponseStorage": {
+              "cell": "0x18ec9f0",
+              "pointee": "0x1846e28"
+            },
+            "_ZTV12HttpResponse": {
+              "cell": "0x18ec9f8",
+              "pointee": "0x17c6a98"
+            },
+            "_ZTV6Object": {
+              "cell": "0x18ec818",
+              "pointee": "0x17c51f0"
+            }
+          }
+        },
+        {
+          "address": "0x1490b0",
+          "size": 440,
+          "symbol": "ConstructHttpJob",
+          "target_sha256": "978f2a75311e758cb879503bf3d9f236cf72b269952a18b7d1aa397f7b08ceec",
+          "bindings": {
+            "_ZN7BaseJobC2EPvS0_S0_": "0x1aebc0",
+            "_ZN9AsyncBaseC1EPv": "0x79150",
+            "_ZN8CallbackC1EPv": "0xb4f50",
+            "_ZN9AsyncBaseC2EPv": "0x79150",
+            "EngineAllocate": "0x36ea0"
+          },
+          "got_bindings": {
+            "_ZTV8StageJob": {
+              "cell": "0x18ed8b8",
+              "pointee": "0x17ca9b0"
+            },
+            "_ZTV7HttpJob": {
+              "cell": "0x18ed8c0",
+              "pointee": "0x17ca940"
+            },
+            "_ZTV10TypedAsync": {
+              "cell": "0x18ec9e8",
+              "pointee": "0x1846b28"
+            },
+            "_ZTV15ResponseStorage": {
+              "cell": "0x18ec9f0",
+              "pointee": "0x1846e28"
+            },
+            "_ZTV12HttpResponse": {
+              "cell": "0x18ec9f8",
+              "pointee": "0x17c6a98"
+            },
+            "_ZTV6Object": {
+              "cell": "0x18ec818",
+              "pointee": "0x17c51f0"
+            }
+          }
+        },
+        {
+          "address": "0x14b170",
+          "size": 440,
+          "symbol": "ConstructHttpJob",
+          "target_sha256": "042ca27cdbb5c1d9efc2889f31014aea039610a845c0f3208be5707ed0f1ff38",
+          "bindings": {
+            "_ZN7BaseJobC2EPvS0_S0_": "0x1b0300",
+            "_ZN9AsyncBaseC1EPv": "0x79150",
+            "_ZN8CallbackC1EPv": "0x68d90",
+            "_ZN9AsyncBaseC2EPv": "0x79150",
+            "EngineAllocate": "0x36ea0"
+          },
+          "got_bindings": {
+            "_ZTV8StageJob": {
+              "cell": "0x18ed8d8",
+              "pointee": "0x17cbef0"
+            },
+            "_ZTV7HttpJob": {
+              "cell": "0x18ed8e0",
+              "pointee": "0x17cbe80"
+            },
+            "_ZTV10TypedAsync": {
+              "cell": "0x18ec9e8",
+              "pointee": "0x1846b28"
+            },
+            "_ZTV15ResponseStorage": {
+              "cell": "0x18ec9f0",
+              "pointee": "0x1846e28"
+            },
+            "_ZTV12HttpResponse": {
+              "cell": "0x18ec9f8",
+              "pointee": "0x17c6a98"
+            },
+            "_ZTV6Object": {
+              "cell": "0x18ec818",
+              "pointee": "0x17c51f0"
+            }
+          }
+        },
+        {
+          "address": "0x14d5a0",
+          "size": 440,
+          "symbol": "ConstructHttpJob",
+          "target_sha256": "3c6db44866481f927338253629fdf259eaada62cf81037e74b5ae6591a64fcb5",
+          "bindings": {
+            "_ZN7BaseJobC2EPvS0_S0_": "0x1b0300",
+            "_ZN9AsyncBaseC1EPv": "0x79150",
+            "_ZN8CallbackC1EPv": "0xb4f50",
+            "_ZN9AsyncBaseC2EPv": "0x79150",
+            "EngineAllocate": "0x36ea0"
+          },
+          "got_bindings": {
+            "_ZTV8StageJob": {
+              "cell": "0x18ed8d8",
+              "pointee": "0x17cbef0"
+            },
+            "_ZTV7HttpJob": {
+              "cell": "0x18ed8e0",
+              "pointee": "0x17cbe80"
+            },
+            "_ZTV10TypedAsync": {
+              "cell": "0x18ec9e8",
+              "pointee": "0x1846b28"
+            },
+            "_ZTV15ResponseStorage": {
+              "cell": "0x18ec9f0",
+              "pointee": "0x1846e28"
+            },
+            "_ZTV12HttpResponse": {
+              "cell": "0x18ec9f8",
+              "pointee": "0x17c6a98"
+            },
+            "_ZTV6Object": {
+              "cell": "0x18ec818",
+              "pointee": "0x17c51f0"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "sdk_http_job_flow",
+      "source": "src/SdkHttpJobFlow.cpp",
+      "source_review": "manual_reconstruction",
+      "compiler": "8.0.1",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-std=c++11",
+        "-D_GNU_SOURCE",
+        "-U_WIN32",
+        "-U_WIN64",
+        "-O2",
+        "-mcpu=cortex-a57",
+        "-fno-omit-frame-pointer",
+        "-fPIC",
+        "-fno-strict-aliasing",
+        "-fno-vectorize",
+        "-fno-slp-vectorize",
+        "-fno-exceptions",
+        "-nostdinc++",
+        "-isystem",
+        "vendor/llvm-libcxx-4/include",
+        "-isystem",
+        "vendor/musl/include",
+        "-isystem",
+        "vendor/musl/generated",
+        "-D_LIBCPP_HAS_NO_THREADS",
+        "-D_LIBCPP_HAS_MUSL_LIBC",
+        "-D__CLANG_MAX_ALIGN_T_DEFINED",
+        "-D_LIBCPP_DISABLE_VISIBILITY_ANNOTATIONS",
+        "-funwind-tables",
+        "-mllvm",
+        "-tail-dup-placement-threshold=2",
+        "-I",
+        "src",
+        "-I",
+        "vendor/rapidjson-1.1.0/include",
+        "-mgeneral-regs-only",
+        "-D__ELF__",
+        "-mllvm",
+        "-stackcoloring-lifetime-start-on-first-use=false"
+      ],
+      "header_roots": [
+        "vendor/llvm-libcxx-4/include",
+        "vendor/musl/include",
+        "vendor/musl/generated",
+        "vendor/rapidjson-1.1.0/include"
+      ],
+      "functions": [
+        {
+          "address": "0xac830",
+          "size": 1020,
+          "symbol": "StartHttp",
+          "target_sha256": "c473f6a7fe1db7ddfed70a769c314b8a2e72d2b435b9ce534cdae78cd088e5d4",
+          "bindings": {
+            "_ZNSt3__18functionIFvvEE4swapERS2_": "0x17e820",
+            "ConstructSdkText": "0x7e7e0",
+            "pthread_mutex_lock": "0xfa3970",
+            "DeliverResult": "0x7acd0",
+            "pthread_mutex_unlock": "0xfa39c0",
+            "BindAsync": "0x79fa0",
+            "HandleHttpFailure": "0x181f30"
+          },
+          "got_bindings": {
+            "_ZN10JobRuntime13WaitAsyncRestEv": {
+              "cell": "0x18eceb8",
+              "pointee": "0x182c30"
+            }
+          },
+          "literals": {
+            "4a6f62556269736572766963657343616c6c3a3a776169744173796e635265737400": "0x12fe55c"
+          }
+        },
+        {
+          "address": "0x13cc20",
+          "size": 1020,
+          "symbol": "StartHttp",
+          "target_sha256": "87f001c22898d8c0435aac94b04b540c0104b427ecf518886ea9c53c7206f5ea",
+          "bindings": {
+            "_ZNSt3__18functionIFvvEE4swapERS2_": "0x17e820",
+            "ConstructSdkText": "0x7e7e0",
+            "pthread_mutex_lock": "0xfa3970",
+            "DeliverResult": "0x7acd0",
+            "pthread_mutex_unlock": "0xfa39c0",
+            "BindAsync": "0x79fa0",
+            "HandleHttpFailure": "0x1a9b50"
+          },
+          "got_bindings": {
+            "_ZN10JobRuntime13WaitAsyncRestEv": {
+              "cell": "0x18ed800",
+              "pointee": "0x1aa850"
+            }
+          },
+          "literals": {
+            "4a6f62556269736572766963657343616c6c3a3a776169744173796e635265737400": "0x12fe55c"
+          }
+        },
+        {
+          "address": "0x183900",
+          "size": 1020,
+          "symbol": "StartHttp",
+          "target_sha256": "2bb84f15a264f5ee511efe1971e9cc2bb93586560699b31b97a0ce4653d89cf3",
+          "bindings": {
+            "_ZNSt3__18functionIFvvEE4swapERS2_": "0x17e820",
+            "ConstructSdkText": "0x7e7e0",
+            "pthread_mutex_lock": "0xfa3970",
+            "DeliverResult": "0x7acd0",
+            "pthread_mutex_unlock": "0xfa39c0",
+            "BindAsync": "0x79fa0",
+            "HandleHttpFailure": "0x183d00"
+          },
+          "got_bindings": {
+            "_ZN10JobRuntime13WaitAsyncRestEv": {
+              "cell": "0x18ed9f8",
+              "pointee": "0x184a00"
+            }
+          },
+          "literals": {
+            "4a6f62556269736572766963657343616c6c3a3a776169744173796e635265737400": "0x12fe55c"
+          }
+        },
+        {
+          "address": "0x1889e0",
+          "size": 1020,
+          "symbol": "StartHttp",
+          "target_sha256": "2aec2342d0a4962e9b54b1cda1e4de3f09ec59145f21fd4ea003ea1d790035e1",
+          "bindings": {
+            "_ZNSt3__18functionIFvvEE4swapERS2_": "0x17e820",
+            "ConstructSdkText": "0x7e7e0",
+            "pthread_mutex_lock": "0xfa3970",
+            "DeliverResult": "0x7acd0",
+            "pthread_mutex_unlock": "0xfa39c0",
+            "BindAsync": "0x79fa0",
+            "HandleHttpFailure": "0x188de0"
+          },
+          "got_bindings": {
+            "_ZN10JobRuntime13WaitAsyncRestEv": {
+              "cell": "0x18eda18",
+              "pointee": "0x189ae0"
+            }
+          },
+          "literals": {
+            "4a6f62556269736572766963657343616c6c3a3a776169744173796e635265737400": "0x12fe55c"
+          }
+        },
+        {
+          "address": "0x189f60",
+          "size": 1020,
+          "symbol": "StartHttp",
+          "target_sha256": "650781abffae9cec3691bc5bf81a7188683416644aed6ffc51895113fde9ea8c",
+          "bindings": {
+            "_ZNSt3__18functionIFvvEE4swapERS2_": "0x17e820",
+            "ConstructSdkText": "0x7e7e0",
+            "pthread_mutex_lock": "0xfa3970",
+            "DeliverResult": "0x7acd0",
+            "pthread_mutex_unlock": "0xfa39c0",
+            "BindAsync": "0x79fa0",
+            "HandleHttpFailure": "0x18a360"
+          },
+          "got_bindings": {
+            "_ZN10JobRuntime13WaitAsyncRestEv": {
+              "cell": "0x18eda20",
+              "pointee": "0x18b060"
+            }
+          },
+          "literals": {
+            "4a6f62556269736572766963657343616c6c3a3a776169744173796e635265737400": "0x12fe55c"
+          }
+        },
+        {
+          "address": "0x192d80",
+          "size": 1020,
+          "symbol": "StartHttp",
+          "target_sha256": "4d289ce0c4e655efb19e7d449cb76e7ee96aa3453e67d6f69d93b8c9495fc445",
+          "bindings": {
+            "_ZNSt3__18functionIFvvEE4swapERS2_": "0x17e820",
+            "ConstructSdkText": "0x7e7e0",
+            "pthread_mutex_lock": "0xfa3970",
+            "DeliverResult": "0x7acd0",
+            "pthread_mutex_unlock": "0xfa39c0",
+            "BindAsync": "0x79fa0",
+            "HandleHttpFailure": "0x193180"
+          },
+          "got_bindings": {
+            "_ZN10JobRuntime13WaitAsyncRestEv": {
+              "cell": "0x18eda28",
+              "pointee": "0x193e80"
+            }
+          },
+          "literals": {
+            "4a6f62556269736572766963657343616c6c3a3a776169744173796e635265737400": "0x12fe55c"
+          }
+        },
+        {
+          "address": "0x195e30",
+          "size": 1020,
+          "symbol": "StartHttp",
+          "target_sha256": "d3c136d4f91454fd99423518b2057506b60db7a66555e0506a3d9b798972de04",
+          "bindings": {
+            "_ZNSt3__18functionIFvvEE4swapERS2_": "0x17e820",
+            "ConstructSdkText": "0x7e7e0",
+            "pthread_mutex_lock": "0xfa3970",
+            "DeliverResult": "0x7acd0",
+            "pthread_mutex_unlock": "0xfa39c0",
+            "BindAsync": "0x79fa0",
+            "HandleHttpFailure": "0x196230"
+          },
+          "got_bindings": {
+            "_ZN10JobRuntime13WaitAsyncRestEv": {
+              "cell": "0x18eda38",
+              "pointee": "0x196f30"
+            }
+          },
+          "literals": {
+            "4a6f62556269736572766963657343616c6c3a3a776169744173796e635265737400": "0x12fe55c"
+          }
+        },
+        {
+          "address": "0x198150",
+          "size": 1020,
+          "symbol": "StartHttp",
+          "target_sha256": "cebdf8dd393c789f2868f3195561a8cd3815a0e6a4d3d76898df095982d7135f",
+          "bindings": {
+            "_ZNSt3__18functionIFvvEE4swapERS2_": "0x17e820",
+            "ConstructSdkText": "0x7e7e0",
+            "pthread_mutex_lock": "0xfa3970",
+            "DeliverResult": "0x7acd0",
+            "pthread_mutex_unlock": "0xfa39c0",
+            "BindAsync": "0x79fa0",
+            "HandleHttpFailure": "0x198550"
+          },
+          "got_bindings": {
+            "_ZN10JobRuntime13WaitAsyncRestEv": {
+              "cell": "0x18eda50",
+              "pointee": "0x199250"
+            }
+          },
+          "literals": {
+            "4a6f62556269736572766963657343616c6c3a3a776169744173796e635265737400": "0x12fe55c"
+          }
+        },
+        {
+          "address": "0x19f430",
+          "size": 1020,
+          "symbol": "StartHttp",
+          "target_sha256": "396686c10f6b84e4c1895856c405a1e7f54d68cde7f15aee8a7c97927f976950",
+          "bindings": {
+            "_ZNSt3__18functionIFvvEE4swapERS2_": "0x17e820",
+            "ConstructSdkText": "0x7e7e0",
+            "pthread_mutex_lock": "0xfa3970",
+            "DeliverResult": "0x7acd0",
+            "pthread_mutex_unlock": "0xfa39c0",
+            "BindAsync": "0x79fa0",
+            "HandleHttpFailure": "0x19f830"
+          },
+          "got_bindings": {
+            "_ZN10JobRuntime13WaitAsyncRestEv": {
+              "cell": "0x18eda60",
+              "pointee": "0x1a0530"
+            }
+          },
+          "literals": {
+            "4a6f62556269736572766963657343616c6c3a3a776169744173796e635265737400": "0x12fe55c"
+          }
+        },
+        {
+          "address": "0x1a7d60",
+          "size": 1020,
+          "symbol": "StartHttp",
+          "target_sha256": "e6554f86af5c8db4478a725e5f00c7c3ef03e7e9408b472b760de32b7ebf84b9",
+          "bindings": {
+            "_ZNSt3__18functionIFvvEE4swapERS2_": "0x17e820",
+            "ConstructSdkText": "0x7e7e0",
+            "pthread_mutex_lock": "0xfa3970",
+            "DeliverResult": "0x7acd0",
+            "pthread_mutex_unlock": "0xfa39c0",
+            "BindAsync": "0x79fa0",
+            "HandleHttpFailure": "0x1a8160"
+          },
+          "got_bindings": {
+            "_ZN10JobRuntime13WaitAsyncRestEv": {
+              "cell": "0x18eda68",
+              "pointee": "0x1a8e60"
+            }
+          },
+          "literals": {
+            "4a6f62556269736572766963657343616c6c3a3a776169744173796e635265737400": "0x12fe55c"
+          }
+        },
+        {
+          "address": "0x1aca00",
+          "size": 1020,
+          "symbol": "StartHttp",
+          "target_sha256": "3fb1bc8f50ab2ed634c45765caf7c8b7f3ee6bf88bde77a62509f524ceb0087c",
+          "bindings": {
+            "_ZNSt3__18functionIFvvEE4swapERS2_": "0x17e820",
+            "ConstructSdkText": "0x7e7e0",
+            "pthread_mutex_lock": "0xfa3970",
+            "DeliverResult": "0x7acd0",
+            "pthread_mutex_unlock": "0xfa39c0",
+            "BindAsync": "0x79fa0",
+            "HandleHttpFailure": "0x1ace00"
+          },
+          "got_bindings": {
+            "_ZN10JobRuntime13WaitAsyncRestEv": {
+              "cell": "0x18eda80",
+              "pointee": "0x1adb00"
+            }
+          },
+          "literals": {
+            "4a6f62556269736572766963657343616c6c3a3a776169744173796e635265737400": "0x12fe55c"
+          }
+        },
+        {
+          "address": "0x1aedb0",
+          "size": 1020,
+          "symbol": "StartHttp",
+          "target_sha256": "92a5e07fa2a8cae71063c1e9c0291c9775f8d1501099b0c3518e9255604f16ab",
+          "bindings": {
+            "_ZNSt3__18functionIFvvEE4swapERS2_": "0x17e820",
+            "ConstructSdkText": "0x7e7e0",
+            "pthread_mutex_lock": "0xfa3970",
+            "DeliverResult": "0x7acd0",
+            "pthread_mutex_unlock": "0xfa39c0",
+            "BindAsync": "0x79fa0",
+            "HandleHttpFailure": "0x1af1b0"
+          },
+          "got_bindings": {
+            "_ZN10JobRuntime13WaitAsyncRestEv": {
+              "cell": "0x18eda88",
+              "pointee": "0x1afeb0"
+            }
+          },
+          "literals": {
+            "4a6f62556269736572766963657343616c6c3a3a776169744173796e635265737400": "0x12fe55c"
+          }
+        },
+        {
+          "address": "0x1b0730",
+          "size": 1020,
+          "symbol": "StartHttp",
+          "target_sha256": "d8920c5479f4deb51187a6f403806fad3cc821b410177da7fe03952c8176f047",
+          "bindings": {
+            "_ZNSt3__18functionIFvvEE4swapERS2_": "0x17e820",
+            "ConstructSdkText": "0x7e7e0",
+            "pthread_mutex_lock": "0xfa3970",
+            "DeliverResult": "0x7acd0",
+            "pthread_mutex_unlock": "0xfa39c0",
+            "BindAsync": "0x79fa0",
+            "HandleHttpFailure": "0x1b0b30"
+          },
+          "got_bindings": {
+            "_ZN10JobRuntime13WaitAsyncRestEv": {
+              "cell": "0x18eda98",
+              "pointee": "0x1b1830"
+            }
+          },
+          "literals": {
+            "4a6f62556269736572766963657343616c6c3a3a776169744173796e635265737400": "0x12fe55c"
+          }
+        },
+        {
+          "address": "0x182c30",
+          "size": 504,
+          "symbol": "WaitHttp",
+          "target_sha256": "7d330fd3c409ff3156f42fad4794a0629bdf90ebe925e5752039d6af5e03cfc3",
+          "bindings": {
+            "ConstructSdkText": "0x7e7e0",
+            "pthread_mutex_lock": "0xfa3970",
+            "DeliverResult": "0x7acd0",
+            "pthread_mutex_unlock": "0xfa39c0",
+            "HandleHttpFailure": "0x181f30",
+            "FinalizeAsync": "0x7a310"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x184a00",
+          "size": 504,
+          "symbol": "WaitHttp",
+          "target_sha256": "664214b7cc9dc078025317fcc30fffc64335106e0ae3beea1473207ea9dba5b3",
+          "bindings": {
+            "ConstructSdkText": "0x7e7e0",
+            "pthread_mutex_lock": "0xfa3970",
+            "DeliverResult": "0x7acd0",
+            "pthread_mutex_unlock": "0xfa39c0",
+            "HandleHttpFailure": "0x183d00",
+            "FinalizeAsync": "0x7a310"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x189ae0",
+          "size": 504,
+          "symbol": "WaitHttp",
+          "target_sha256": "531d975d616d54bd07928530d4f3d03860303b929fcb1bf79225663939982fd0",
+          "bindings": {
+            "ConstructSdkText": "0x7e7e0",
+            "pthread_mutex_lock": "0xfa3970",
+            "DeliverResult": "0x7acd0",
+            "pthread_mutex_unlock": "0xfa39c0",
+            "HandleHttpFailure": "0x188de0",
+            "FinalizeAsync": "0x7a310"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x18b060",
+          "size": 504,
+          "symbol": "WaitHttp",
+          "target_sha256": "f04a8489a97461584417a7eccad0a928c263ae9d6b8d965d3e013e758c97d201",
+          "bindings": {
+            "ConstructSdkText": "0x7e7e0",
+            "pthread_mutex_lock": "0xfa3970",
+            "DeliverResult": "0x7acd0",
+            "pthread_mutex_unlock": "0xfa39c0",
+            "HandleHttpFailure": "0x18a360",
+            "FinalizeAsync": "0x7a310"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x193e80",
+          "size": 504,
+          "symbol": "WaitHttp",
+          "target_sha256": "4bfdeab68cd1c81ab566790a1b87eaa19c1751482162a32ab9db3f8c0cd482af",
+          "bindings": {
+            "ConstructSdkText": "0x7e7e0",
+            "pthread_mutex_lock": "0xfa3970",
+            "DeliverResult": "0x7acd0",
+            "pthread_mutex_unlock": "0xfa39c0",
+            "HandleHttpFailure": "0x193180",
+            "FinalizeAsync": "0x7a310"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x196f30",
+          "size": 504,
+          "symbol": "WaitHttp",
+          "target_sha256": "61f45eb0b54aeb9f02bd630c7e46c7decb6302f1fb2bbf858d8862b51dd34628",
+          "bindings": {
+            "ConstructSdkText": "0x7e7e0",
+            "pthread_mutex_lock": "0xfa3970",
+            "DeliverResult": "0x7acd0",
+            "pthread_mutex_unlock": "0xfa39c0",
+            "HandleHttpFailure": "0x196230",
+            "FinalizeAsync": "0x7a310"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x199250",
+          "size": 504,
+          "symbol": "WaitHttp",
+          "target_sha256": "edb7277618b395155e89ffbe197281c71691424c6c872fe8f076b4a99df6c941",
+          "bindings": {
+            "ConstructSdkText": "0x7e7e0",
+            "pthread_mutex_lock": "0xfa3970",
+            "DeliverResult": "0x7acd0",
+            "pthread_mutex_unlock": "0xfa39c0",
+            "HandleHttpFailure": "0x198550",
+            "FinalizeAsync": "0x7a310"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x1a0530",
+          "size": 504,
+          "symbol": "WaitHttp",
+          "target_sha256": "a2a274bb20d98f30b784392b49bdff9487f57c6c6a8dfe86ce330bb9f0f316de",
+          "bindings": {
+            "ConstructSdkText": "0x7e7e0",
+            "pthread_mutex_lock": "0xfa3970",
+            "DeliverResult": "0x7acd0",
+            "pthread_mutex_unlock": "0xfa39c0",
+            "HandleHttpFailure": "0x19f830",
+            "FinalizeAsync": "0x7a310"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x1a8e60",
+          "size": 504,
+          "symbol": "WaitHttp",
+          "target_sha256": "07182e5b0dba5b8ccf30746f090037db486f5bb5d7e939177c045b2d57877a43",
+          "bindings": {
+            "ConstructSdkText": "0x7e7e0",
+            "pthread_mutex_lock": "0xfa3970",
+            "DeliverResult": "0x7acd0",
+            "pthread_mutex_unlock": "0xfa39c0",
+            "HandleHttpFailure": "0x1a8160",
+            "FinalizeAsync": "0x7a310"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x1aa850",
+          "size": 504,
+          "symbol": "WaitHttp",
+          "target_sha256": "2b2b78f4f3c58a4c5c7fe4799f8b1e19df3eebddd9840663e6c3fa6d88eff0c3",
+          "bindings": {
+            "ConstructSdkText": "0x7e7e0",
+            "pthread_mutex_lock": "0xfa3970",
+            "DeliverResult": "0x7acd0",
+            "pthread_mutex_unlock": "0xfa39c0",
+            "HandleHttpFailure": "0x1a9b50",
+            "FinalizeAsync": "0x7a310"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x1adb00",
+          "size": 504,
+          "symbol": "WaitHttp",
+          "target_sha256": "b1d44d51ed2738ed733286575a1ad8b5c9f402e1fb1c26c07bd8f61cd372b7f4",
+          "bindings": {
+            "ConstructSdkText": "0x7e7e0",
+            "pthread_mutex_lock": "0xfa3970",
+            "DeliverResult": "0x7acd0",
+            "pthread_mutex_unlock": "0xfa39c0",
+            "HandleHttpFailure": "0x1ace00",
+            "FinalizeAsync": "0x7a310"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x1afeb0",
+          "size": 504,
+          "symbol": "WaitHttp",
+          "target_sha256": "4a605c19b764f54bb56ddf288856b07206d6a2295c5847946109e3c0e7ccfa03",
+          "bindings": {
+            "ConstructSdkText": "0x7e7e0",
+            "pthread_mutex_lock": "0xfa3970",
+            "DeliverResult": "0x7acd0",
+            "pthread_mutex_unlock": "0xfa39c0",
+            "HandleHttpFailure": "0x1af1b0",
+            "FinalizeAsync": "0x7a310"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x1b1830",
+          "size": 504,
+          "symbol": "WaitHttp",
+          "target_sha256": "8cdaa45667375674cdd7258bbc675509449561c771beb4f8a66cdf6f21611c7c",
+          "bindings": {
+            "ConstructSdkText": "0x7e7e0",
+            "pthread_mutex_lock": "0xfa3970",
+            "DeliverResult": "0x7acd0",
+            "pthread_mutex_unlock": "0xfa39c0",
+            "HandleHttpFailure": "0x1b0b30",
+            "FinalizeAsync": "0x7a310"
+          },
+          "got_bindings": {}
+        }
+      ]
+    },
+    {
+      "id": "component_reference_copy",
+      "source": "src/ComponentReferenceCopy.cpp",
+      "source_review": "manual_reconstruction",
+      "compiler": "8.0.1",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-std=c++11",
+        "-O2",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-fomit-frame-pointer"
+      ],
+      "functions": [
+        {
+          "address": "0x794770",
+          "size": 692,
+          "symbol": "_ZN15ComponentAccess22CopyComponentReferenceILj104EEEvPvPKPNS_6HandleE",
+          "target_sha256": "2ee67720bf20717e0bb72d6e1e26f887c08e132d53f7ad8e77ac3ff51fac3d08",
+          "bindings": {
+            "Accessor_Assign": "0x67c0b0",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30",
+            "Accessor_Tracking": "0x1935068",
+            "Accessor_Lock": "0xfa4950",
+            "Accessor_Unlock": "0xfa4960",
+            "_Unwind_Resume": "0xfa4920",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x794a30",
+          "size": 692,
+          "symbol": "_ZN15ComponentAccess22CopyComponentReferenceILj112EEEvPvPKPNS_6HandleE",
+          "target_sha256": "fe9483eed88f9bc334ce38cb50aa8dfcfb6efc1c02a8975bd8e5fcefdee121f7",
+          "bindings": {
+            "Accessor_Assign": "0x67c0b0",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30",
+            "Accessor_Tracking": "0x1935068",
+            "Accessor_Lock": "0xfa4950",
+            "Accessor_Unlock": "0xfa4960",
+            "_Unwind_Resume": "0xfa4920",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x843910",
+          "size": 692,
+          "symbol": "_ZN15ComponentAccess22CopyComponentReferenceILj144EEEvPvPKPNS_6HandleE",
+          "target_sha256": "c99a8d27eb991045fc5001e7d528ac93b48971ed9c220fb0d653d1bcefad3b07",
+          "bindings": {
+            "Accessor_Assign": "0x67c0b0",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30",
+            "Accessor_Tracking": "0x1935068",
+            "Accessor_Lock": "0xfa4950",
+            "Accessor_Unlock": "0xfa4960",
+            "_Unwind_Resume": "0xfa4920",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xb36630",
+          "size": 692,
+          "symbol": "_ZN15ComponentAccess22CopyComponentReferenceILj152EEEvPvPKPNS_6HandleE",
+          "target_sha256": "92049058af1afa889e58144a2470b1e736f439b8a05b57a674474ff58895522e",
+          "bindings": {
+            "Accessor_Assign": "0x67c0b0",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30",
+            "Accessor_Tracking": "0x1935068",
+            "Accessor_Lock": "0xfa4950",
+            "Accessor_Unlock": "0xfa4960",
+            "_Unwind_Resume": "0xfa4920",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xb368f0",
+          "size": 692,
+          "symbol": "_ZN15ComponentAccess22CopyComponentReferenceILj184EEEvPvPKPNS_6HandleE",
+          "target_sha256": "ac08a05e837653d7f6e627edab69fc4d2ac41fe59b014a1678c91de8f3660831",
+          "bindings": {
+            "Accessor_Assign": "0x67c0b0",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30",
+            "Accessor_Tracking": "0x1935068",
+            "Accessor_Lock": "0xfa4950",
+            "Accessor_Unlock": "0xfa4960",
+            "_Unwind_Resume": "0xfa4920",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xb36bb0",
+          "size": 692,
+          "symbol": "_ZN15ComponentAccess22CopyComponentReferenceILj184EEEvPvPKPNS_6HandleE",
+          "target_sha256": "89531acb645d0ae872a22a4d2d0784016d4fbe3704d050267eb73f5d3c7c0c99",
+          "bindings": {
+            "Accessor_Assign": "0x67c0b0",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30",
+            "Accessor_Tracking": "0x1935068",
+            "Accessor_Lock": "0xfa4950",
+            "Accessor_Unlock": "0xfa4960",
+            "_Unwind_Resume": "0xfa4920",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x793f30",
+          "size": 692,
+          "symbol": "_ZN15ComponentAccess22CopyComponentReferenceILj80EEEvPvPKPNS_6HandleE",
+          "target_sha256": "362e091226a57be2ee1d98a1c6652fad2e3920a3968d8bbad04dc0b98808488f",
+          "bindings": {
+            "Accessor_Assign": "0x67c0b0",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30",
+            "Accessor_Tracking": "0x1935068",
+            "Accessor_Lock": "0xfa4950",
+            "Accessor_Unlock": "0xfa4960",
+            "_Unwind_Resume": "0xfa4920",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x7944b0",
+          "size": 692,
+          "symbol": "_ZN15ComponentAccess22CopyComponentReferenceILj80EEEvPvPKPNS_6HandleE",
+          "target_sha256": "964daedf5e4829c3aa91e775fe55dc7258f35a4748537d0e96830d9439797e50",
+          "bindings": {
+            "Accessor_Assign": "0x67c0b0",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30",
+            "Accessor_Tracking": "0x1935068",
+            "Accessor_Lock": "0xfa4950",
+            "Accessor_Unlock": "0xfa4960",
+            "_Unwind_Resume": "0xfa4920",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x7941f0",
+          "size": 692,
+          "symbol": "_ZN15ComponentAccess22CopyComponentReferenceILj88EEEvPvPKPNS_6HandleE",
+          "target_sha256": "6de3e72706096689fd13445722eae0ef8084ec8f0b5f313731433f504877a530",
+          "bindings": {
+            "Accessor_Assign": "0x67c0b0",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30",
+            "Accessor_Tracking": "0x1935068",
+            "Accessor_Lock": "0xfa4950",
+            "Accessor_Unlock": "0xfa4960",
+            "_Unwind_Resume": "0xfa4920",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x843bd0",
+          "size": 692,
+          "symbol": "_ZN15ComponentAccess22CopyComponentReferenceILj88EEEvPvPKPNS_6HandleE",
+          "target_sha256": "79e96074693ef5b44c523db76f1b7c97016ccc901830c32a861c21a3c836d3fd",
+          "bindings": {
+            "Accessor_Assign": "0x67c0b0",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30",
+            "Accessor_Tracking": "0x1935068",
+            "Accessor_Lock": "0xfa4950",
+            "Accessor_Unlock": "0xfa4960",
+            "_Unwind_Resume": "0xfa4920",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xb36e70",
+          "size": 692,
+          "symbol": "_ZN15ComponentAccess22CopyComponentReferenceILj88EEEvPvPKPNS_6HandleE",
+          "target_sha256": "a03420036b34426ce20c516904192ce0d334167f957a13b7a04f08f8e0919b82",
+          "bindings": {
+            "Accessor_Assign": "0x67c0b0",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30",
+            "Accessor_Tracking": "0x1935068",
+            "Accessor_Lock": "0xfa4950",
+            "Accessor_Unlock": "0xfa4960",
+            "_Unwind_Resume": "0xfa4920",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        }
+      ]
+    },
+    {
+      "id": "component_selection",
+      "source": "src/ComponentSelection.cpp",
+      "source_review": "manual_reconstruction",
+      "compiler": "8.0.1",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-std=c++11",
+        "-O2",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-fomit-frame-pointer"
+      ],
+      "functions": [
+        {
+          "address": "0x8cdfb0",
+          "size": 808,
+          "symbol": "_ZN15ComponentAccess15SelectComponentILj104ELj0ELj1072363279EEEvPNS_6TargetIXT_EXT0_EEEj",
+          "target_sha256": "f5b240326a2d5e7e5a2bdf8e7567696ebefca9b09eb2e4cf3e43ea485967a63e",
+          "bindings": {
+            "Accessor_Resolver": "0x191cd10",
+            "Accessor_Resolve": "0x67edd0",
+            "Accessor_Tracking": "0x1935068",
+            "NotifyChange": "0xbf6e80",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30",
+            "Accessor_Lock": "0xfa4950",
+            "Accessor_Unlock": "0xfa4960",
+            "_Unwind_Resume": "0xfa4920",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xc9a9e0",
+          "size": 808,
+          "symbol": "_ZN15ComponentAccess15SelectComponentILj96ELj0ELj1363892056EEEvPNS_6TargetIXT_EXT0_EEEj",
+          "target_sha256": "adc146329095d4a397815331a85056473328faaf57e84f20d95b1f4fad643211",
+          "bindings": {
+            "Accessor_Resolver": "0x191cd10",
+            "Accessor_Resolve": "0x67edd0",
+            "Accessor_Tracking": "0x1935068",
+            "NotifyChange": "0xbf6e80",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30",
+            "Accessor_Lock": "0xfa4950",
+            "Accessor_Unlock": "0xfa4960",
+            "_Unwind_Resume": "0xfa4920",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xc99530",
+          "size": 808,
+          "symbol": "_ZN15ComponentAccess15SelectComponentILj96ELj0ELj1549493942EEEvPNS_6TargetIXT_EXT0_EEEj",
+          "target_sha256": "0c8ffaf51e5d13be3fb00f4f9b3ea5e61d41a74a70ffcd37765222495079a0e3",
+          "bindings": {
+            "Accessor_Resolver": "0x191cd10",
+            "Accessor_Resolve": "0x67edd0",
+            "Accessor_Tracking": "0x1935068",
+            "NotifyChange": "0xbf6e80",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30",
+            "Accessor_Lock": "0xfa4950",
+            "Accessor_Unlock": "0xfa4960",
+            "_Unwind_Resume": "0xfa4920",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xb4de40",
+          "size": 808,
+          "symbol": "_ZN15ComponentAccess15SelectComponentILj96ELj0ELj2092626935EEEvPNS_6TargetIXT_EXT0_EEEj",
+          "target_sha256": "be1fa85496db82e88a09c0aca4521e28ab34f16dc3dc3196d87dfe05159ebbab",
+          "bindings": {
+            "Accessor_Resolver": "0x191cd10",
+            "Accessor_Resolve": "0x67edd0",
+            "Accessor_Tracking": "0x1935068",
+            "NotifyChange": "0xbf6e80",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30",
+            "Accessor_Lock": "0xfa4950",
+            "Accessor_Unlock": "0xfa4960",
+            "_Unwind_Resume": "0xfa4920",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xc815b0",
+          "size": 808,
+          "symbol": "_ZN15ComponentAccess15SelectComponentILj96ELj0ELj308320446EEEvPNS_6TargetIXT_EXT0_EEEj",
+          "target_sha256": "752336c8ea61c72bb7460b7173fe7496fb14f581ed122f69855a581ed2177e65",
+          "bindings": {
+            "Accessor_Resolver": "0x191cd10",
+            "Accessor_Resolve": "0x67edd0",
+            "Accessor_Tracking": "0x1935068",
+            "NotifyChange": "0xbf6e80",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30",
+            "Accessor_Lock": "0xfa4950",
+            "Accessor_Unlock": "0xfa4960",
+            "_Unwind_Resume": "0xfa4920",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xc7ebe0",
+          "size": 808,
+          "symbol": "_ZN15ComponentAccess15SelectComponentILj96ELj0ELj36693834EEEvPNS_6TargetIXT_EXT0_EEEj",
+          "target_sha256": "30ffc0663bb64a0f74805f3632d9bbc56478701e332e6ab45a86619791a5a39c",
+          "bindings": {
+            "Accessor_Resolver": "0x191cd10",
+            "Accessor_Resolve": "0x67edd0",
+            "Accessor_Tracking": "0x1935068",
+            "NotifyChange": "0xbf6e80",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30",
+            "Accessor_Lock": "0xfa4950",
+            "Accessor_Unlock": "0xfa4960",
+            "_Unwind_Resume": "0xfa4920",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xc80540",
+          "size": 808,
+          "symbol": "_ZN15ComponentAccess15SelectComponentILj96ELj0ELj37711792EEEvPNS_6TargetIXT_EXT0_EEEj",
+          "target_sha256": "1e6b88a0614f2391547d2de56784128ec49bbf574b585725167ba2199eb6df59",
+          "bindings": {
+            "Accessor_Resolver": "0x191cd10",
+            "Accessor_Resolve": "0x67edd0",
+            "Accessor_Tracking": "0x1935068",
+            "NotifyChange": "0xbf6e80",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30",
+            "Accessor_Lock": "0xfa4950",
+            "Accessor_Unlock": "0xfa4960",
+            "_Unwind_Resume": "0xfa4920",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xb62360",
+          "size": 808,
+          "symbol": "_ZN15ComponentAccess15SelectComponentILj96ELj0ELj604602073EEEvPNS_6TargetIXT_EXT0_EEEj",
+          "target_sha256": "0c0bfe89415d76f869fdb0ff0fc1f16fdc4ca847ddf4ab8c60fbe27ccd71dab9",
+          "bindings": {
+            "Accessor_Resolver": "0x191cd10",
+            "Accessor_Resolve": "0x67edd0",
+            "Accessor_Tracking": "0x1935068",
+            "NotifyChange": "0xbf6e80",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30",
+            "Accessor_Lock": "0xfa4950",
+            "Accessor_Unlock": "0xfa4960",
+            "_Unwind_Resume": "0xfa4920",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x93c860",
+          "size": 808,
+          "symbol": "_ZN15ComponentAccess15SelectComponentILj96ELj16ELj1230339783EEEvPNS_6TargetIXT_EXT0_EEEj",
+          "target_sha256": "1c8dbb660d2ffeb38320f29764531d7fb1fe29993a18aad7cba61ed9b3700deb",
+          "bindings": {
+            "Accessor_Resolver": "0x191cd10",
+            "Accessor_Resolve": "0x67edd0",
+            "Accessor_Tracking": "0x1935068",
+            "NotifyChange": "0xbf6e80",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30",
+            "Accessor_Lock": "0xfa4950",
+            "Accessor_Unlock": "0xfa4960",
+            "_Unwind_Resume": "0xfa4920",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x93df90",
+          "size": 808,
+          "symbol": "_ZN15ComponentAccess15SelectComponentILj96ELj16ELj1682502063EEEvPNS_6TargetIXT_EXT0_EEEj",
+          "target_sha256": "20585eca52a787c38273cded116808e9d35bc73e31fea2690b520b2c7517f796",
+          "bindings": {
+            "Accessor_Resolver": "0x191cd10",
+            "Accessor_Resolve": "0x67edd0",
+            "Accessor_Tracking": "0x1935068",
+            "NotifyChange": "0xbf6e80",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30",
+            "Accessor_Lock": "0xfa4950",
+            "Accessor_Unlock": "0xfa4960",
+            "_Unwind_Resume": "0xfa4920",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        }
+      ]
+    },
+    {
+      "id": "component_initialize_slots",
+      "source": "src/ComponentInitializeSlots.cpp",
+      "source_review": "manual_reconstruction",
+      "compiler": "8.0.1",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-std=c++11",
+        "-O2",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-fomit-frame-pointer"
+      ],
+      "functions": [
+        {
+          "address": "0x920a50",
+          "size": 780,
+          "symbol": "_Z23InitializeComponentSlotILj160ELj1609868158EEvPvS0_PN13ComponentSlot6SourceE",
+          "target_sha256": "ddc81852480aea1cc9457f4bd0d99c936cbea966291a6a64ce9cf2e9f79b142a",
+          "bindings": {
+            "InitializeBase": "0xbcaa30",
+            "_ZN13ComponentSlot7BindingILj1609868158EE6LookupEPvj": "0x67bef0",
+            "_ZN13ComponentSlot7BindingILj1609868158EE6AssignEPvPKN13SingleRelease4SlotE": "0x67c0b0",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30",
+            "Accessor_Tracking": "0x1935068",
+            "Accessor_Lock": "0xfa4950",
+            "Accessor_Unlock": "0xfa4960",
+            "__clang_call_terminate": "0x6768b8",
+            "_Unwind_Resume": "0xfa4920"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x67bbe0",
+          "size": 780,
+          "symbol": "_Z23InitializeComponentSlotILj80ELj130557421EEvPvS0_PN13ComponentSlot6SourceE",
+          "target_sha256": "de6d630b5bd9fb4d406690e4b9e82d20de82d48ac47030363ade5c2e203e85d7",
+          "bindings": {
+            "InitializeBase": "0x6782a0",
+            "_ZN13ComponentSlot7BindingILj130557421EE6LookupEPvj": "0x67bef0",
+            "_ZN13ComponentSlot7BindingILj130557421EE6AssignEPvPKN13SingleRelease4SlotE": "0x67c0b0",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30",
+            "Accessor_Tracking": "0x1935068",
+            "Accessor_Lock": "0xfa4950",
+            "Accessor_Unlock": "0xfa4960",
+            "__clang_call_terminate": "0x6768b8",
+            "_Unwind_Resume": "0xfa4920"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x76b760",
+          "size": 780,
+          "symbol": "_Z23InitializeComponentSlotILj80ELj1575998007EEvPvS0_PN13ComponentSlot6SourceE",
+          "target_sha256": "1f77db428cdadb102fff8555e63923febc7314ba5e7301b64354614f8e8d018c",
+          "bindings": {
+            "InitializeBase": "0x6782a0",
+            "_ZN13ComponentSlot7BindingILj1575998007EE6LookupEPvj": "0x67bef0",
+            "_ZN13ComponentSlot7BindingILj1575998007EE6AssignEPvPKN13SingleRelease4SlotE": "0x67c0b0",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30",
+            "Accessor_Tracking": "0x1935068",
+            "Accessor_Lock": "0xfa4950",
+            "Accessor_Unlock": "0xfa4960",
+            "__clang_call_terminate": "0x6768b8",
+            "_Unwind_Resume": "0xfa4920"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x706270",
+          "size": 780,
+          "symbol": "_Z23InitializeComponentSlotILj80ELj1959923751EEvPvS0_PN13ComponentSlot6SourceE",
+          "target_sha256": "d935a1fc8ce99cfc80644ea10fd3650cdae5e5e2656a7b3181d809a666678100",
+          "bindings": {
+            "InitializeBase": "0x6782a0",
+            "_ZN13ComponentSlot7BindingILj1959923751EE6LookupEPvj": "0x67bef0",
+            "_ZN13ComponentSlot7BindingILj1959923751EE6AssignEPvPKN13SingleRelease4SlotE": "0x67c0b0",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30",
+            "Accessor_Tracking": "0x1935068",
+            "Accessor_Lock": "0xfa4950",
+            "Accessor_Unlock": "0xfa4960",
+            "__clang_call_terminate": "0x6768b8",
+            "_Unwind_Resume": "0xfa4920"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xc96dd0",
+          "size": 780,
+          "symbol": "_Z23InitializeComponentSlotILj80ELj1980251866EEvPvS0_PN13ComponentSlot6SourceE",
+          "target_sha256": "d5a4c388e9afa6e85db8c5a3c6f0df0957a2f94982d1912d2e89036b78158bf2",
+          "bindings": {
+            "InitializeBase": "0x6782a0",
+            "_ZN13ComponentSlot7BindingILj1980251866EE6LookupEPvj": "0x67bef0",
+            "_ZN13ComponentSlot7BindingILj1980251866EE6AssignEPvPKN13SingleRelease4SlotE": "0x67c0b0",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30",
+            "Accessor_Tracking": "0x1935068",
+            "Accessor_Lock": "0xfa4950",
+            "Accessor_Unlock": "0xfa4960",
+            "__clang_call_terminate": "0x6768b8",
+            "_Unwind_Resume": "0xfa4920"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xc950a0",
+          "size": 780,
+          "symbol": "_Z23InitializeComponentSlotILj80ELj1992834267EEvPvS0_PN13ComponentSlot6SourceE",
+          "target_sha256": "8e8b61555bd05d6428fd565dc073b87f3a0a9cc6fc7f3035eb3acd1fd12289af",
+          "bindings": {
+            "InitializeBase": "0x6782a0",
+            "_ZN13ComponentSlot7BindingILj1992834267EE6LookupEPvj": "0x67bef0",
+            "_ZN13ComponentSlot7BindingILj1992834267EE6AssignEPvPKN13SingleRelease4SlotE": "0x67c0b0",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30",
+            "Accessor_Tracking": "0x1935068",
+            "Accessor_Lock": "0xfa4950",
+            "Accessor_Unlock": "0xfa4960",
+            "__clang_call_terminate": "0x6768b8",
+            "_Unwind_Resume": "0xfa4920"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xbf11a0",
+          "size": 780,
+          "symbol": "_Z23InitializeComponentSlotILj80ELj8808326EEvPvS0_PN13ComponentSlot6SourceE",
+          "target_sha256": "4a43b60e65a206e0a5da0765dee7b829f021de9edb09fab94de4d017476406b2",
+          "bindings": {
+            "InitializeBase": "0x6782a0",
+            "_ZN13ComponentSlot7BindingILj8808326EE6LookupEPvj": "0x67bef0",
+            "_ZN13ComponentSlot7BindingILj8808326EE6AssignEPvPKN13SingleRelease4SlotE": "0x67c0b0",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30",
+            "Accessor_Tracking": "0x1935068",
+            "Accessor_Lock": "0xfa4950",
+            "Accessor_Unlock": "0xfa4960",
+            "__clang_call_terminate": "0x6768b8",
+            "_Unwind_Resume": "0xfa4920"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x736d40",
+          "size": 780,
+          "symbol": "_Z23InitializeComponentSlotILj8ELj130557421EEvPvS0_PN13ComponentSlot6SourceE",
+          "target_sha256": "04e4c238c443f98b0d8f4dec7edc0bdad1e1f56791e4fc457ef4f46f4e9dcb11",
+          "bindings": {
+            "InitializeBase": "0x67dd00",
+            "_ZN13ComponentSlot7BindingILj130557421EE6LookupEPvj": "0x67bef0",
+            "_ZN13ComponentSlot7BindingILj130557421EE6AssignEPvPKN13SingleRelease4SlotE": "0x67c0b0",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30",
+            "Accessor_Tracking": "0x1935068",
+            "Accessor_Lock": "0xfa4950",
+            "Accessor_Unlock": "0xfa4960",
+            "__clang_call_terminate": "0x6768b8",
+            "_Unwind_Resume": "0xfa4920"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xb89250",
+          "size": 780,
+          "symbol": "_Z23InitializeComponentSlotILj8ELj8808326EEvPvS0_PN13ComponentSlot6SourceE",
+          "target_sha256": "fd82a6e9c172b76420cef2d535a6a0a8973cc1b05c043c8aa8013b855ff65ad1",
+          "bindings": {
+            "InitializeBase": "0x67dd00",
+            "_ZN13ComponentSlot7BindingILj8808326EE6LookupEPvj": "0x67bef0",
+            "_ZN13ComponentSlot7BindingILj8808326EE6AssignEPvPKN13SingleRelease4SlotE": "0x67c0b0",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30",
+            "Accessor_Tracking": "0x1935068",
+            "Accessor_Lock": "0xfa4950",
+            "Accessor_Unlock": "0xfa4960",
+            "__clang_call_terminate": "0x6768b8",
+            "_Unwind_Resume": "0xfa4920"
+          },
+          "got_bindings": {}
+        }
+      ]
     }
   ]
 }

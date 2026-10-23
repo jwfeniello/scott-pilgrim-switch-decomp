@@ -1,9 +1,9 @@
 {
   "version": 1,
-  "generated_at": "2026-10-23T19:46:28.384158+00:00",
+  "generated_at": "2026-10-23T20:58:30.682316+00:00",
   "target_elf_sha256": "ea95638e6d6aaa0dc6cddd552a9366799aa1ec3bc07ee201f23f6c151103f5b8",
   "input_sha256": {
-    "config/builds.json": "d255e200f8273cacc18ebce9ece4fa01feec28c1b1d8cae732b79ba0a04a6be1",
+    "config/builds.json": "3a7873f8f04fcaa0975fed41844e4bac601c03a9627541cb57aaf11f5537e6d9",
     "config/functions.tsv": "399e91468a04e0459194c10d68d2210d1157cedefeb19c7851886ca7632fcb18",
     "config/target.json": "23cc6a5227206a953e7668acf5e9ae5c02a25c23b7e7967f0450a814b888241a",
     "src/AbiCfg_aggregate_O2_omit.cpp": "55009ca4f1819fe53803025bf27b93a676c6137877b9d4492828e2e15c89307c",
@@ -31,7 +31,10 @@
     "src/CloneRecordRecoveryKeep.cpp": "4877af2493141eba1e07894007f441aeb3199c0befd06ba3a6a364e42a28a188",
     "src/CloneSingleRecordRecoveryKeep.cpp": "b47a9755f2eff02e3ae61f29cf6532ff25e32d9db989a8fee453912e22512def",
     "src/ComponentAccessor.cpp": "09d0b81df3abcacb946f49ed1ed87ab840ee0656bb6f792fd65d25660eabb260",
+    "src/ComponentInitializeSlots.cpp": "55cc1e5fc9899d4c44bf24cb4bb59c672fb325bec27fd578c36f881ec57dad1d",
+    "src/ComponentReferenceCopy.cpp": "32a4479dafdc0d94ac1169f0fab094ca889b96e7e84224c891289f1b961ccfba",
     "src/ComponentRegistry.cpp": "3dc9d7ceb50583c97a05e43bafe526634d2c5b0f599fac32fe0fdda2440f3910",
+    "src/ComponentSelection.cpp": "2205cc331083af7f5f8d5a4c411400288db48546c4b2cb382c6b0b1f2495acc1",
     "src/ComponentSlotAssign.cpp": "3f66fbb8b81866da5582eba1effd67a8ac4d29ae9b978fdbd65099013fb5e606",
     "src/CounterBufferDestructor.cpp": "0fd2d53ab554a0c017cddc533d4933e64f2370fda484458d110c751a244c8066",
     "src/DeleteWithFrame.cpp": "b4edc0ffefec6d9530d5b789659b2879cb5f361f2c8750a9c39d062f2d935ebe",
@@ -637,6 +640,8 @@
     "src/SdkFrameHeader.cpp": "daa70dd8d65add121c107e2275bddd0092194370387a0997e72903a46137df19",
     "src/SdkHttpHeaderLine.cpp": "2ee0e9b9b79d173dcb2fed702cef99f62e985801cf0c09b962a27364cfcd59f3",
     "src/SdkHttpHeaders.cpp": "41c70524c0053abd3d02a502115355e7d16d0a415ae4ae7e0853901a3916c404",
+    "src/SdkHttpJobConstructors.cpp": "ef98cf7222951d873b0b2d85cdd133e9eca3c6be761743f6cec6db10ebc295a8",
+    "src/SdkHttpJobFlow.cpp": "a04f6130eedd96845e530ceefbbe5969f4530e2bd09dc983f56769a3d9bded3a",
     "src/SdkHttpLine.cpp": "5096da52abe3878b5c05edeefb84182e78bd2db88b61cd0bbca0a3e3add7a771",
     "src/SdkHttpRedirect.cpp": "2b3d3683ec3d6c65c0a67a1c6b560898584232841f9c5e2f83e8b322d70bde4a",
     "src/SdkHttpResponse.cpp": "b79cefe17f7e00ae881ef0e50a301cae67e06fbc2343377cfa3c145507482d0b",
@@ -649,6 +654,7 @@
     "src/SdkJsonConstructors.cpp": "bb19ced43778b9ebe835c9f187462b39484abe3257065d4af213416029115b11",
     "src/SdkJsonDestructors.cpp": "3ef45e070f15fb10f0d81103ce59e5aa157a7ac908830bb9d1f71d76fdb71ce1",
     "src/SdkJsonDocument.cpp": "4d232fbeea58587cc8a60f65ac2d8bb21c26ea17b0deeae70aa4ccfdee057d22",
+    "src/SdkMapFamilies.cpp": "d6c75813c580ea26ff931f904711e013b72185554e12fc54810da621b3f1a4fc",
     "src/SdkOwnerNoBaseOwnerKeepPicUnwind.cpp": "f5b33c74fb068eda3471b1ccdb60accce71daf06bb9cc3c4c4a1068edf667e35",
     "src/SdkOwnerSimpleOwnerKeepPicUnwind.cpp": "8fc2b5afdba4f85a0404131c8b2fb269ec4ce96f7f37f2e73d9f742682950ea7",
     "src/SdkRequestHeader.cpp": "b2b85baf789ee4429b741bb6309bd68f9974728c4f440161166ca3250bd9d750",
@@ -2792,8 +2798,8 @@
     "8.0.1": "dffd62a213ec6cdb4430012a4a41c11e5e32c288f133d5391f9be49e1c5b69de",
     "7.0.1": "c2f0a175157d9aaace8031f8e6d7ea0ed6142b4bcef287105e3ed227301f1002"
   },
-  "exact_functions": 29969,
-  "exact_bytes": 2965332,
+  "exact_functions": 30065,
+  "exact_bytes": 3024724,
   "builds": [
     {
       "id": "probes",
@@ -10084,6 +10090,61 @@
       "id": "sdk_http_response_value",
       "compiler": "8.0.1",
       "object_sha256": "b8a8866d3947974edae74cbe3bb2f63a488e34e8e1b815ec7a38bf74b858e7f2"
+    },
+    {
+      "id": "sdk_map_family_0",
+      "compiler": "7.0.1",
+      "object_sha256": "fdc842c8b01f4b6a023952b5cd9f97379bb9ba9964c458b06260dbdc736bbc3d"
+    },
+    {
+      "id": "sdk_map_family_1",
+      "compiler": "8.0.1",
+      "object_sha256": "512489f9fb2b95a75974170e1b511d715db9ec4ecfc1c5229926be1b6f3d7cb5"
+    },
+    {
+      "id": "sdk_map_family_2",
+      "compiler": "8.0.1",
+      "object_sha256": "0de99eb02a8e66cf0de7395b2798e0f7fb4a8a119d77e8336542b8378d84ae3f"
+    },
+    {
+      "id": "sdk_map_family_3",
+      "compiler": "8.0.1",
+      "object_sha256": "4c5dac5e7b498c7165633a282327f24888d1be27dad8a85fc5e3af419757833b"
+    },
+    {
+      "id": "sdk_map_family_4",
+      "compiler": "8.0.1",
+      "object_sha256": "ac800bdb2485b9b65b4b26df0405b48efe46b407ef8e778317614a360bb7c7b5"
+    },
+    {
+      "id": "sdk_map_family_5",
+      "compiler": "8.0.1",
+      "object_sha256": "e990f61abe42415054af713a45937e3e97c93a3407777d8bb36448722b3fc4d7"
+    },
+    {
+      "id": "sdk_http_job_constructors",
+      "compiler": "8.0.1",
+      "object_sha256": "29db5b26680dd0b8cf68662d92ce10b7c1a786ef48ee1431bf750d54b69a58da"
+    },
+    {
+      "id": "sdk_http_job_flow",
+      "compiler": "8.0.1",
+      "object_sha256": "db8662507258e3b228c51d86b7791f7fd52229aa659c74c224134bd11495f896"
+    },
+    {
+      "id": "component_reference_copy",
+      "compiler": "8.0.1",
+      "object_sha256": "74d9ac22412282922cedff4dd82f6cd59af3ab11965c37d4a3a4529f80c45884"
+    },
+    {
+      "id": "component_selection",
+      "compiler": "8.0.1",
+      "object_sha256": "341fa1bf6d4dbda4f62c22b354e0652ce63e3d672cc8f661482398476a32825a"
+    },
+    {
+      "id": "component_initialize_slots",
+      "compiler": "8.0.1",
+      "object_sha256": "a4fac66f4e7e52a0e9f68e7d31ede8442a62e59d710e7c4a40fa3145db78388f"
     }
   ],
   "matches": [
@@ -11496,6 +11557,17 @@
       "relocation_count": 2
     },
     {
+      "address": "0x6efe0",
+      "size": 440,
+      "exact": true,
+      "target_sha256": "251c326d317ccedb531d368272cdf0852ef4cbfe8371c70c76612f894b486eea",
+      "compiled_sha256": "251c326d317ccedb531d368272cdf0852ef4cbfe8371c70c76612f894b486eea",
+      "source": "src/SdkHttpJobConstructors.cpp",
+      "symbol": "ConstructHttpJob",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 18
+    },
+    {
       "address": "0x70800",
       "size": 24,
       "exact": true,
@@ -12838,6 +12910,17 @@
       "relocation_count": 2
     },
     {
+      "address": "0x9c9d0",
+      "size": 440,
+      "exact": true,
+      "target_sha256": "08e686d9c7071fb0b6a35ce0c2c1286c8c1ca472e2cd385c45d0fcf50b570b2a",
+      "compiled_sha256": "08e686d9c7071fb0b6a35ce0c2c1286c8c1ca472e2cd385c45d0fcf50b570b2a",
+      "source": "src/SdkHttpJobConstructors.cpp",
+      "symbol": "ConstructHttpJob",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 18
+    },
+    {
       "address": "0x9ef90",
       "size": 104,
       "exact": true,
@@ -12893,6 +12976,17 @@
       "relocation_count": 2
     },
     {
+      "address": "0xa8b30",
+      "size": 440,
+      "exact": true,
+      "target_sha256": "8aead5f5b0752f129b90d1d29a489fad6f8b3e77e05d62c4c9d16568532ede64",
+      "compiled_sha256": "8aead5f5b0752f129b90d1d29a489fad6f8b3e77e05d62c4c9d16568532ede64",
+      "source": "src/SdkHttpJobConstructors.cpp",
+      "symbol": "ConstructHttpJob",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 18
+    },
+    {
       "address": "0xa8cf0",
       "size": 8,
       "exact": true,
@@ -12904,6 +12998,17 @@
       "relocation_count": 1
     },
     {
+      "address": "0xac830",
+      "size": 1020,
+      "exact": true,
+      "target_sha256": "c473f6a7fe1db7ddfed70a769c314b8a2e72d2b435b9ce534cdae78cd088e5d4",
+      "compiled_sha256": "c473f6a7fe1db7ddfed70a769c314b8a2e72d2b435b9ce534cdae78cd088e5d4",
+      "source": "src/SdkHttpJobFlow.cpp",
+      "symbol": "StartHttp",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 12
+    },
+    {
       "address": "0xad870",
       "size": 8,
       "exact": true,
@@ -12913,6 +13018,17 @@
       "symbol": "RecoveredLeaf_ad870",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 1
+    },
+    {
+      "address": "0xae7e0",
+      "size": 440,
+      "exact": true,
+      "target_sha256": "924fb2154b5258be9242f97ef6619c5d59d8af43c4e94eb5b6604cda1753966a",
+      "compiled_sha256": "924fb2154b5258be9242f97ef6619c5d59d8af43c4e94eb5b6604cda1753966a",
+      "source": "src/SdkHttpJobConstructors.cpp",
+      "symbol": "ConstructHttpJob",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 18
     },
     {
       "address": "0xb1620",
@@ -13135,6 +13251,17 @@
       "relocation_count": 0
     },
     {
+      "address": "0xcedb0",
+      "size": 440,
+      "exact": true,
+      "target_sha256": "a62abbf4266de557fc9f2230d77b1a98d00fdbca8783da12bc47e9cd6f061970",
+      "compiled_sha256": "a62abbf4266de557fc9f2230d77b1a98d00fdbca8783da12bc47e9cd6f061970",
+      "source": "src/SdkHttpJobConstructors.cpp",
+      "symbol": "ConstructHttpJob",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 18
+    },
+    {
       "address": "0xcfe50",
       "size": 92,
       "exact": true,
@@ -13155,6 +13282,17 @@
       "symbol": "RecoveredLeaf_d1a50",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 1
+    },
+    {
+      "address": "0xd1a70",
+      "size": 440,
+      "exact": true,
+      "target_sha256": "aac708cca81e0c62b10a43c929b66c24660c6d93b6703b75d5638d4b181e50af",
+      "compiled_sha256": "aac708cca81e0c62b10a43c929b66c24660c6d93b6703b75d5638d4b181e50af",
+      "source": "src/SdkHttpJobConstructors.cpp",
+      "symbol": "ConstructHttpJob",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 18
     },
     {
       "address": "0xd62a0",
@@ -13232,6 +13370,17 @@
       "symbol": "RecoveredLeaf_e88c0",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 0
+    },
+    {
+      "address": "0xf3ee0",
+      "size": 440,
+      "exact": true,
+      "target_sha256": "58bd90baf78ce351a6862afc6c73c9373977e7d80d372700932c0858ffdc5392",
+      "compiled_sha256": "58bd90baf78ce351a6862afc6c73c9373977e7d80d372700932c0858ffdc5392",
+      "source": "src/SdkHttpJobConstructors.cpp",
+      "symbol": "ConstructHttpJob",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 18
     },
     {
       "address": "0xf89f0",
@@ -13421,6 +13570,17 @@
       "relocation_count": 2
     },
     {
+      "address": "0xff640",
+      "size": 440,
+      "exact": true,
+      "target_sha256": "ea2c04ca998cda8ee43d4aa95adcfa9fdafa16cea8d4abd046dadff5cffa1f42",
+      "compiled_sha256": "ea2c04ca998cda8ee43d4aa95adcfa9fdafa16cea8d4abd046dadff5cffa1f42",
+      "source": "src/SdkHttpJobConstructors.cpp",
+      "symbol": "ConstructHttpJob",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 18
+    },
+    {
       "address": "0x105de0",
       "size": 44,
       "exact": true,
@@ -13430,6 +13590,17 @@
       "symbol": "RecoveredLeaf_105de0",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 1
+    },
+    {
+      "address": "0x107990",
+      "size": 440,
+      "exact": true,
+      "target_sha256": "b307e978c28ea8dda04816d47867d2c0698b60018ab5d20936fb042326a399b3",
+      "compiled_sha256": "b307e978c28ea8dda04816d47867d2c0698b60018ab5d20936fb042326a399b3",
+      "source": "src/SdkHttpJobConstructors.cpp",
+      "symbol": "ConstructHttpJob",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 18
     },
     {
       "address": "0x112cd0",
@@ -13452,6 +13623,17 @@
       "symbol": "RecoveredLeaf_11fb30",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 1
+    },
+    {
+      "address": "0x126930",
+      "size": 440,
+      "exact": true,
+      "target_sha256": "6309215522c19b28f796ff5aee6235dcb4e88700a286a0d68e0f6a64b8b066c6",
+      "compiled_sha256": "6309215522c19b28f796ff5aee6235dcb4e88700a286a0d68e0f6a64b8b066c6",
+      "source": "src/SdkHttpJobConstructors.cpp",
+      "symbol": "ConstructHttpJob",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 18
     },
     {
       "address": "0x12b930",
@@ -13509,6 +13691,39 @@
       "relocation_count": 1
     },
     {
+      "address": "0x137fa0",
+      "size": 440,
+      "exact": true,
+      "target_sha256": "03747e1eb7f3695d31d39575fd2acc6a29befd0e3070cb4bf015a074056c3502",
+      "compiled_sha256": "03747e1eb7f3695d31d39575fd2acc6a29befd0e3070cb4bf015a074056c3502",
+      "source": "src/SdkHttpJobConstructors.cpp",
+      "symbol": "ConstructHttpJob",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 18
+    },
+    {
+      "address": "0x13ca60",
+      "size": 440,
+      "exact": true,
+      "target_sha256": "c4944cc9af4ad2fc5d84eee0e116e5d381ff302e21d2d82b254d4dad817a2088",
+      "compiled_sha256": "c4944cc9af4ad2fc5d84eee0e116e5d381ff302e21d2d82b254d4dad817a2088",
+      "source": "src/SdkHttpJobConstructors.cpp",
+      "symbol": "ConstructHttpJob",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 18
+    },
+    {
+      "address": "0x13cc20",
+      "size": 1020,
+      "exact": true,
+      "target_sha256": "87f001c22898d8c0435aac94b04b540c0104b427ecf518886ea9c53c7206f5ea",
+      "compiled_sha256": "87f001c22898d8c0435aac94b04b540c0104b427ecf518886ea9c53c7206f5ea",
+      "source": "src/SdkHttpJobFlow.cpp",
+      "symbol": "StartHttp",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 12
+    },
+    {
       "address": "0x1405b0",
       "size": 104,
       "exact": true,
@@ -13531,6 +13746,39 @@
       "relocation_count": 2
     },
     {
+      "address": "0x1407a0",
+      "size": 440,
+      "exact": true,
+      "target_sha256": "7612ce2654237290e5e9f55a9ce16c023cb0fdaffb7637a618cfce2154cc457f",
+      "compiled_sha256": "7612ce2654237290e5e9f55a9ce16c023cb0fdaffb7637a618cfce2154cc457f",
+      "source": "src/SdkHttpJobConstructors.cpp",
+      "symbol": "ConstructHttpJob",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 18
+    },
+    {
+      "address": "0x1417e0",
+      "size": 440,
+      "exact": true,
+      "target_sha256": "606c4e8d122f3368363a00aa1c2fc50b658c8ce3f47230638da7c19a0a7b4003",
+      "compiled_sha256": "606c4e8d122f3368363a00aa1c2fc50b658c8ce3f47230638da7c19a0a7b4003",
+      "source": "src/SdkHttpJobConstructors.cpp",
+      "symbol": "ConstructHttpJob",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 18
+    },
+    {
+      "address": "0x141b90",
+      "size": 440,
+      "exact": true,
+      "target_sha256": "4c8da7a075cc0538d3e8d8cef4743573e23b5372939d187ad7d8b35aff3fefc5",
+      "compiled_sha256": "4c8da7a075cc0538d3e8d8cef4743573e23b5372939d187ad7d8b35aff3fefc5",
+      "source": "src/SdkHttpJobConstructors.cpp",
+      "symbol": "ConstructHttpJob",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 18
+    },
+    {
       "address": "0x142b00",
       "size": 320,
       "exact": true,
@@ -13542,6 +13790,17 @@
       "relocation_count": 0
     },
     {
+      "address": "0x1439b0",
+      "size": 440,
+      "exact": true,
+      "target_sha256": "f915f8fc146d2eb2b42d9bd7894622819e5aca1a3b52225179f1541ae8e50449",
+      "compiled_sha256": "f915f8fc146d2eb2b42d9bd7894622819e5aca1a3b52225179f1541ae8e50449",
+      "source": "src/SdkHttpJobConstructors.cpp",
+      "symbol": "ConstructHttpJob",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 18
+    },
+    {
       "address": "0x148840",
       "size": 4,
       "exact": true,
@@ -13551,6 +13810,39 @@
       "symbol": "RecoveredLeaf_148840",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 1
+    },
+    {
+      "address": "0x1490b0",
+      "size": 440,
+      "exact": true,
+      "target_sha256": "978f2a75311e758cb879503bf3d9f236cf72b269952a18b7d1aa397f7b08ceec",
+      "compiled_sha256": "978f2a75311e758cb879503bf3d9f236cf72b269952a18b7d1aa397f7b08ceec",
+      "source": "src/SdkHttpJobConstructors.cpp",
+      "symbol": "ConstructHttpJob",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 18
+    },
+    {
+      "address": "0x14b170",
+      "size": 440,
+      "exact": true,
+      "target_sha256": "042ca27cdbb5c1d9efc2889f31014aea039610a845c0f3208be5707ed0f1ff38",
+      "compiled_sha256": "042ca27cdbb5c1d9efc2889f31014aea039610a845c0f3208be5707ed0f1ff38",
+      "source": "src/SdkHttpJobConstructors.cpp",
+      "symbol": "ConstructHttpJob",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 18
+    },
+    {
+      "address": "0x14d5a0",
+      "size": 440,
+      "exact": true,
+      "target_sha256": "3c6db44866481f927338253629fdf259eaada62cf81037e74b5ae6591a64fcb5",
+      "compiled_sha256": "3c6db44866481f927338253629fdf259eaada62cf81037e74b5ae6591a64fcb5",
+      "source": "src/SdkHttpJobConstructors.cpp",
+      "symbol": "ConstructHttpJob",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 18
     },
     {
       "address": "0x14d880",
@@ -15203,6 +15495,17 @@
       "relocation_count": 1
     },
     {
+      "address": "0x161100",
+      "size": 396,
+      "exact": true,
+      "target_sha256": "fec0721faf754c456676e4a875d750d22edce093901e66440d0a8216d3dbb430",
+      "compiled_sha256": "fec0721faf754c456676e4a875d750d22edce093901e66440d0a8216d3dbb430",
+      "source": "src/SdkMapFamilies.cpp",
+      "symbol": "_ZNSt3__16__treeINS_12__value_typeI4TextS2_EENS_19__map_value_compareIS2_S3_12ExternalLessLb1EEE22SimpleLibraryAllocatorIS3_Lj1EEE15__emplace_multiIJRKNS_4pairIKS2_S2_EEEEENS_15__tree_iteratorIS3_PNS_11__tree_nodeIS3_PvEElEEDpOT_",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 3
+    },
+    {
       "address": "0x1613c0",
       "size": 64,
       "exact": true,
@@ -15410,6 +15713,28 @@
       "symbol": "RecoveredLeaf_162430",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 3
+    },
+    {
+      "address": "0x162750",
+      "size": 800,
+      "exact": true,
+      "target_sha256": "c675ccbb40d5c0bcf81bb18a37008db4c46e22dbd31496c10f45ca5298dd5f2d",
+      "compiled_sha256": "c675ccbb40d5c0bcf81bb18a37008db4c46e22dbd31496c10f45ca5298dd5f2d",
+      "source": "src/SdkMapFamilies.cpp",
+      "symbol": "_ZNSt3__16__treeINS_12__value_typeI4TextS2_EENS_19__map_value_compareIS2_S3_10InlineLessLb1EEE22SimpleLibraryAllocatorIS3_Lj1EEE12__find_equalIS2_EERPNS_16__tree_node_baseIPvEENS_21__tree_const_iteratorIS3_PNS_11__tree_nodeIS3_SC_EElEERPNS_15__tree_end_nodeISE_EESF_RKT_",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 5
+    },
+    {
+      "address": "0x162df0",
+      "size": 364,
+      "exact": true,
+      "target_sha256": "850d54a8e2b10f51c3c2ce05df9d3cd6aac97017d21efa78c80be14e1e124dfc",
+      "compiled_sha256": "850d54a8e2b10f51c3c2ce05df9d3cd6aac97017d21efa78c80be14e1e124dfc",
+      "source": "src/SdkMapFamilies.cpp",
+      "symbol": "_ZNSt3__16__treeINS_12__value_typeI4TextS2_EENS_19__map_value_compareIS2_S3_10InlineLessLb1EEE22SimpleLibraryAllocatorIS3_Lj1EEE12__find_equalIS2_EERPNS_16__tree_node_baseIPvEERPNS_15__tree_end_nodeISE_EERKT_",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 2
     },
     {
       "address": "0x1630b0",
@@ -15643,6 +15968,28 @@
       "relocation_count": 3
     },
     {
+      "address": "0x164a30",
+      "size": 800,
+      "exact": true,
+      "target_sha256": "8b5d1d42f8db90ca6f1620ebdd43322f9cd57906fdd5cbce8c463a75b006c6a5",
+      "compiled_sha256": "8b5d1d42f8db90ca6f1620ebdd43322f9cd57906fdd5cbce8c463a75b006c6a5",
+      "source": "src/SdkMapFamilies.cpp",
+      "symbol": "_ZNSt3__16__treeINS_12__value_typeI4TextS2_EENS_19__map_value_compareIS2_S3_10InlineLessLb1EEE22SimpleLibraryAllocatorIS3_Lj1EEE12__find_equalIS2_EERPNS_16__tree_node_baseIPvEENS_21__tree_const_iteratorIS3_PNS_11__tree_nodeIS3_SC_EElEERPNS_15__tree_end_nodeISE_EESF_RKT_",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 5
+    },
+    {
+      "address": "0x164d50",
+      "size": 364,
+      "exact": true,
+      "target_sha256": "bd42923285d650d22237e0458b2b8f6c57f983b118ea2e823fafb57c9d862827",
+      "compiled_sha256": "bd42923285d650d22237e0458b2b8f6c57f983b118ea2e823fafb57c9d862827",
+      "source": "src/SdkMapFamilies.cpp",
+      "symbol": "_ZNSt3__16__treeINS_12__value_typeI4TextS2_EENS_19__map_value_compareIS2_S3_10InlineLessLb1EEE22SimpleLibraryAllocatorIS3_Lj1EEE12__find_equalIS2_EERPNS_16__tree_node_baseIPvEERPNS_15__tree_end_nodeISE_EERKT_",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 2
+    },
+    {
       "address": "0x164ec0",
       "size": 120,
       "exact": true,
@@ -15720,6 +16067,28 @@
       "relocation_count": 3
     },
     {
+      "address": "0x1676f0",
+      "size": 800,
+      "exact": true,
+      "target_sha256": "dc1d395136084448f8a955964e965147bae01a065e7996e08c062e2e729aac24",
+      "compiled_sha256": "dc1d395136084448f8a955964e965147bae01a065e7996e08c062e2e729aac24",
+      "source": "src/SdkMapFamilies.cpp",
+      "symbol": "_ZNSt3__16__treeINS_12__value_typeI4TextS2_EENS_19__map_value_compareIS2_S3_10InlineLessLb1EEE22SimpleLibraryAllocatorIS3_Lj1EEE12__find_equalIS2_EERPNS_16__tree_node_baseIPvEENS_21__tree_const_iteratorIS3_PNS_11__tree_nodeIS3_SC_EElEERPNS_15__tree_end_nodeISE_EESF_RKT_",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 5
+    },
+    {
+      "address": "0x167a10",
+      "size": 364,
+      "exact": true,
+      "target_sha256": "7cfd243d966b427d10d5cba849631207750ae51b9cd0060760312c60841563c1",
+      "compiled_sha256": "7cfd243d966b427d10d5cba849631207750ae51b9cd0060760312c60841563c1",
+      "source": "src/SdkMapFamilies.cpp",
+      "symbol": "_ZNSt3__16__treeINS_12__value_typeI4TextS2_EENS_19__map_value_compareIS2_S3_10InlineLessLb1EEE22SimpleLibraryAllocatorIS3_Lj1EEE12__find_equalIS2_EERPNS_16__tree_node_baseIPvEERPNS_15__tree_end_nodeISE_EERKT_",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 2
+    },
+    {
       "address": "0x167b80",
       "size": 120,
       "exact": true,
@@ -15740,6 +16109,17 @@
       "symbol": "_ZNSt3__16__treeINS_12__value_typeI4TextS2_EENS_19__map_value_compareIS2_S3_4LessLb1EEE22SimpleLibraryAllocatorIS3_Lj1EEE30__emplace_hint_unique_key_argsIS2_JRKNS_4pairIKS2_S2_EEEEENS_15__tree_iteratorIS3_PNS_11__tree_nodeIS3_PvEElEENS_21__tree_const_iteratorIS3_SK_lEERKT_DpOT0_",
       "source_review": "manual_reconstruction",
       "relocation_count": 3
+    },
+    {
+      "address": "0x167d70",
+      "size": 560,
+      "exact": true,
+      "target_sha256": "b5fdff81ca6b886ee0bed24f9196cd5e49582748ae6312467e63955699bd4131",
+      "compiled_sha256": "b5fdff81ca6b886ee0bed24f9196cd5e49582748ae6312467e63955699bd4131",
+      "source": "src/SdkMapFamilies.cpp",
+      "symbol": "_ZNSt3__16__treeINS_12__value_typeI4TextS2_EENS_19__map_value_compareIS2_S3_12ExternalLessLb1EEE22SimpleLibraryAllocatorIS3_Lj1EEE12__find_equalIS2_EERPNS_16__tree_node_baseIPvEENS_21__tree_const_iteratorIS3_PNS_11__tree_nodeIS3_SC_EElEERPNS_15__tree_end_nodeISE_EESF_RKT_",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 8
     },
     {
       "address": "0x167fa0",
@@ -15806,6 +16186,28 @@
       "symbol": "_ZN15SdkCompositeAbi6HolderILj1401713EED0Ev",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 4
+    },
+    {
+      "address": "0x168f30",
+      "size": 304,
+      "exact": true,
+      "target_sha256": "e410d90ece585ebf2bd5d39fcb64d87c441208ac53742de07df0ca328223170d",
+      "compiled_sha256": "e410d90ece585ebf2bd5d39fcb64d87c441208ac53742de07df0ca328223170d",
+      "source": "src/SdkMapFamilies.cpp",
+      "symbol": "_ZNSt3__16__treeINS_12__value_typeI4TextNS_12basic_stringIcNS_11char_traitsIcEE22SimpleLibraryAllocatorIcLj1EEEEEENS_19__map_value_compareIS2_S9_10InlineLessLb1EEES6_IS9_Lj1EEE15__emplace_multiIJRKNS_4pairIKS2_S8_EEEEENS_15__tree_iteratorIS9_PNS_11__tree_nodeIS9_PvEElEEDpOT_",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 3
+    },
+    {
+      "address": "0x169060",
+      "size": 364,
+      "exact": true,
+      "target_sha256": "5712a236facfb665e9a48a112a44e12439e9e067bf01ee5eb6e82fd9553affd3",
+      "compiled_sha256": "5712a236facfb665e9a48a112a44e12439e9e067bf01ee5eb6e82fd9553affd3",
+      "source": "src/SdkMapFamilies.cpp",
+      "symbol": "_ZNSt3__16__treeINS_12__value_typeI4TextS2_EENS_19__map_value_compareIS2_S3_10InlineLessLb1EEE22SimpleLibraryAllocatorIS3_Lj1EEE12__find_equalIS2_EERPNS_16__tree_node_baseIPvEERPNS_15__tree_end_nodeISE_EERKT_",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 2
     },
     {
       "address": "0x1694a0",
@@ -17293,6 +17695,17 @@
       "relocation_count": 0
     },
     {
+      "address": "0x17e350",
+      "size": 268,
+      "exact": true,
+      "target_sha256": "e9828360e4f6752310cf475e3557b192293ffdaac393358a076cd15b45e60527",
+      "compiled_sha256": "e9828360e4f6752310cf475e3557b192293ffdaac393358a076cd15b45e60527",
+      "source": "src/SdkMapFamilies.cpp",
+      "symbol": "_ZNSt3__16__treeINS_12__value_typeI4TextS2_EENS_19__map_value_compareIS2_S3_12ExternalLessLb1EEE22SimpleLibraryAllocatorIS3_Lj1EEE5eraseENS_21__tree_const_iteratorIS3_PNS_11__tree_nodeIS3_PvEElEE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 2
+    },
+    {
       "address": "0x17e460",
       "size": 76,
       "exact": true,
@@ -17480,6 +17893,17 @@
       "relocation_count": 4
     },
     {
+      "address": "0x182c30",
+      "size": 504,
+      "exact": true,
+      "target_sha256": "7d330fd3c409ff3156f42fad4794a0629bdf90ebe925e5752039d6af5e03cfc3",
+      "compiled_sha256": "7d330fd3c409ff3156f42fad4794a0629bdf90ebe925e5752039d6af5e03cfc3",
+      "source": "src/SdkHttpJobFlow.cpp",
+      "symbol": "WaitHttp",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 7
+    },
+    {
       "address": "0x183280",
       "size": 536,
       "exact": true,
@@ -17544,6 +17968,28 @@
       "symbol": "_ZN15SdkCompositeAbi5FirstILj1401712EED0Ev",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 6
+    },
+    {
+      "address": "0x183900",
+      "size": 1020,
+      "exact": true,
+      "target_sha256": "2bb84f15a264f5ee511efe1971e9cc2bb93586560699b31b97a0ce4653d89cf3",
+      "compiled_sha256": "2bb84f15a264f5ee511efe1971e9cc2bb93586560699b31b97a0ce4653d89cf3",
+      "source": "src/SdkHttpJobFlow.cpp",
+      "symbol": "StartHttp",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 12
+    },
+    {
+      "address": "0x184a00",
+      "size": 504,
+      "exact": true,
+      "target_sha256": "664214b7cc9dc078025317fcc30fffc64335106e0ae3beea1473207ea9dba5b3",
+      "compiled_sha256": "664214b7cc9dc078025317fcc30fffc64335106e0ae3beea1473207ea9dba5b3",
+      "source": "src/SdkHttpJobFlow.cpp",
+      "symbol": "WaitHttp",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 7
     },
     {
       "address": "0x184de0",
@@ -17854,6 +18300,50 @@
       "relocation_count": 2
     },
     {
+      "address": "0x1889e0",
+      "size": 1020,
+      "exact": true,
+      "target_sha256": "2aec2342d0a4962e9b54b1cda1e4de3f09ec59145f21fd4ea003ea1d790035e1",
+      "compiled_sha256": "2aec2342d0a4962e9b54b1cda1e4de3f09ec59145f21fd4ea003ea1d790035e1",
+      "source": "src/SdkHttpJobFlow.cpp",
+      "symbol": "StartHttp",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 12
+    },
+    {
+      "address": "0x189ae0",
+      "size": 504,
+      "exact": true,
+      "target_sha256": "531d975d616d54bd07928530d4f3d03860303b929fcb1bf79225663939982fd0",
+      "compiled_sha256": "531d975d616d54bd07928530d4f3d03860303b929fcb1bf79225663939982fd0",
+      "source": "src/SdkHttpJobFlow.cpp",
+      "symbol": "WaitHttp",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 7
+    },
+    {
+      "address": "0x189f60",
+      "size": 1020,
+      "exact": true,
+      "target_sha256": "650781abffae9cec3691bc5bf81a7188683416644aed6ffc51895113fde9ea8c",
+      "compiled_sha256": "650781abffae9cec3691bc5bf81a7188683416644aed6ffc51895113fde9ea8c",
+      "source": "src/SdkHttpJobFlow.cpp",
+      "symbol": "StartHttp",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 12
+    },
+    {
+      "address": "0x18b060",
+      "size": 504,
+      "exact": true,
+      "target_sha256": "f04a8489a97461584417a7eccad0a928c263ae9d6b8d965d3e013e758c97d201",
+      "compiled_sha256": "f04a8489a97461584417a7eccad0a928c263ae9d6b8d965d3e013e758c97d201",
+      "source": "src/SdkHttpJobFlow.cpp",
+      "symbol": "WaitHttp",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 7
+    },
+    {
       "address": "0x18b730",
       "size": 424,
       "exact": true,
@@ -17929,6 +18419,17 @@
       "symbol": "_ZN15SdkCompositeAbi6HolderILj1401713EED2Ev",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 3
+    },
+    {
+      "address": "0x18db60",
+      "size": 336,
+      "exact": true,
+      "target_sha256": "5a29c9ac46b77fc88a89b560b33a910792bdb00a46717b8026c1a8a9cfa69ecc",
+      "compiled_sha256": "5a29c9ac46b77fc88a89b560b33a910792bdb00a46717b8026c1a8a9cfa69ecc",
+      "source": "src/SdkMapFamilies.cpp",
+      "symbol": "_ZNKSt3__16__treeINS_12__value_typeI4TextS2_EENS_19__map_value_compareIS2_S3_10InlineLessLb1EEE22SimpleLibraryAllocatorIS3_Lj1EEE4findIS2_EENS_21__tree_const_iteratorIS3_PNS_11__tree_nodeIS3_PvEElEERKT_",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 2
     },
     {
       "address": "0x18ebb0",
@@ -18162,6 +18663,28 @@
       "relocation_count": 4
     },
     {
+      "address": "0x192d80",
+      "size": 1020,
+      "exact": true,
+      "target_sha256": "4d289ce0c4e655efb19e7d449cb76e7ee96aa3453e67d6f69d93b8c9495fc445",
+      "compiled_sha256": "4d289ce0c4e655efb19e7d449cb76e7ee96aa3453e67d6f69d93b8c9495fc445",
+      "source": "src/SdkHttpJobFlow.cpp",
+      "symbol": "StartHttp",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 12
+    },
+    {
+      "address": "0x193e80",
+      "size": 504,
+      "exact": true,
+      "target_sha256": "4bfdeab68cd1c81ab566790a1b87eaa19c1751482162a32ab9db3f8c0cd482af",
+      "compiled_sha256": "4bfdeab68cd1c81ab566790a1b87eaa19c1751482162a32ab9db3f8c0cd482af",
+      "source": "src/SdkHttpJobFlow.cpp",
+      "symbol": "WaitHttp",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 7
+    },
+    {
       "address": "0x1942c0",
       "size": 112,
       "exact": true,
@@ -18171,6 +18694,17 @@
       "symbol": "_ZN15SdkCompositeAbi6HolderILj1401713EED0Ev",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 4
+    },
+    {
+      "address": "0x1946d0",
+      "size": 364,
+      "exact": true,
+      "target_sha256": "117e66dc3cc1b3516992ea77a24c30edeba7a6d4ac66a5164569e11713157535",
+      "compiled_sha256": "117e66dc3cc1b3516992ea77a24c30edeba7a6d4ac66a5164569e11713157535",
+      "source": "src/SdkMapFamilies.cpp",
+      "symbol": "_ZNSt3__16__treeINS_12__value_typeI4TextS2_EENS_19__map_value_compareIS2_S3_10InlineLessLb1EEE22SimpleLibraryAllocatorIS3_Lj1EEE12__find_equalIS2_EERPNS_16__tree_node_baseIPvEERPNS_15__tree_end_nodeISE_EERKT_",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 2
     },
     {
       "address": "0x194e30",
@@ -18215,6 +18749,28 @@
       "symbol": "_ZN15SdkCompositeAbi6HolderILj1401713EED0Ev",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 4
+    },
+    {
+      "address": "0x195e30",
+      "size": 1020,
+      "exact": true,
+      "target_sha256": "d3c136d4f91454fd99423518b2057506b60db7a66555e0506a3d9b798972de04",
+      "compiled_sha256": "d3c136d4f91454fd99423518b2057506b60db7a66555e0506a3d9b798972de04",
+      "source": "src/SdkHttpJobFlow.cpp",
+      "symbol": "StartHttp",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 12
+    },
+    {
+      "address": "0x196f30",
+      "size": 504,
+      "exact": true,
+      "target_sha256": "61f45eb0b54aeb9f02bd630c7e46c7decb6302f1fb2bbf858d8862b51dd34628",
+      "compiled_sha256": "61f45eb0b54aeb9f02bd630c7e46c7decb6302f1fb2bbf858d8862b51dd34628",
+      "source": "src/SdkHttpJobFlow.cpp",
+      "symbol": "WaitHttp",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 7
     },
     {
       "address": "0x197710",
@@ -18292,6 +18848,28 @@
       "symbol": "_ZN15SdkCompositeAbi6HolderILj1401713EED0Ev",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 4
+    },
+    {
+      "address": "0x198150",
+      "size": 1020,
+      "exact": true,
+      "target_sha256": "cebdf8dd393c789f2868f3195561a8cd3815a0e6a4d3d76898df095982d7135f",
+      "compiled_sha256": "cebdf8dd393c789f2868f3195561a8cd3815a0e6a4d3d76898df095982d7135f",
+      "source": "src/SdkHttpJobFlow.cpp",
+      "symbol": "StartHttp",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 12
+    },
+    {
+      "address": "0x199250",
+      "size": 504,
+      "exact": true,
+      "target_sha256": "edb7277618b395155e89ffbe197281c71691424c6c872fe8f076b4a99df6c941",
+      "compiled_sha256": "edb7277618b395155e89ffbe197281c71691424c6c872fe8f076b4a99df6c941",
+      "source": "src/SdkHttpJobFlow.cpp",
+      "symbol": "WaitHttp",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 7
     },
     {
       "address": "0x19ad00",
@@ -18448,6 +19026,39 @@
       "relocation_count": 16
     },
     {
+      "address": "0x19f430",
+      "size": 1020,
+      "exact": true,
+      "target_sha256": "396686c10f6b84e4c1895856c405a1e7f54d68cde7f15aee8a7c97927f976950",
+      "compiled_sha256": "396686c10f6b84e4c1895856c405a1e7f54d68cde7f15aee8a7c97927f976950",
+      "source": "src/SdkHttpJobFlow.cpp",
+      "symbol": "StartHttp",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 12
+    },
+    {
+      "address": "0x1a0530",
+      "size": 504,
+      "exact": true,
+      "target_sha256": "a2a274bb20d98f30b784392b49bdff9487f57c6c6a8dfe86ce330bb9f0f316de",
+      "compiled_sha256": "a2a274bb20d98f30b784392b49bdff9487f57c6c6a8dfe86ce330bb9f0f316de",
+      "source": "src/SdkHttpJobFlow.cpp",
+      "symbol": "WaitHttp",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 7
+    },
+    {
+      "address": "0x1a0730",
+      "size": 336,
+      "exact": true,
+      "target_sha256": "4cb1f4bbf6f4af83c374f20edc442b589d1c13c833cd4cc417dafedaf2ab0f2d",
+      "compiled_sha256": "4cb1f4bbf6f4af83c374f20edc442b589d1c13c833cd4cc417dafedaf2ab0f2d",
+      "source": "src/SdkMapFamilies.cpp",
+      "symbol": "_ZNKSt3__16__treeINS_12__value_typeI4TextS2_EENS_19__map_value_compareIS2_S3_10InlineLessLb1EEE22SimpleLibraryAllocatorIS3_Lj1EEE4findIS2_EENS_21__tree_const_iteratorIS3_PNS_11__tree_nodeIS3_PvEElEERKT_",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 2
+    },
+    {
       "address": "0x1a0aa0",
       "size": 424,
       "exact": true,
@@ -18481,6 +19092,17 @@
       "relocation_count": 16
     },
     {
+      "address": "0x1a29e0",
+      "size": 364,
+      "exact": true,
+      "target_sha256": "c1c38b47d42e9c11102299422342f52d4ea1234c10b82c4cfe3e3d163d63fff6",
+      "compiled_sha256": "c1c38b47d42e9c11102299422342f52d4ea1234c10b82c4cfe3e3d163d63fff6",
+      "source": "src/SdkMapFamilies.cpp",
+      "symbol": "_ZNSt3__16__treeINS_12__value_typeI4TextS2_EENS_19__map_value_compareIS2_S3_10InlineLessLb1EEE22SimpleLibraryAllocatorIS3_Lj1EEE12__find_equalIS2_EERPNS_16__tree_node_baseIPvEERPNS_15__tree_end_nodeISE_EERKT_",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 2
+    },
+    {
       "address": "0x1a75f0",
       "size": 264,
       "exact": true,
@@ -18490,6 +19112,28 @@
       "symbol": "_Z15SetHashCapacityILj1734128EEvP16HashCapacityViewm",
       "source_review": "manual_reconstruction",
       "relocation_count": 4
+    },
+    {
+      "address": "0x1a7d60",
+      "size": 1020,
+      "exact": true,
+      "target_sha256": "e6554f86af5c8db4478a725e5f00c7c3ef03e7e9408b472b760de32b7ebf84b9",
+      "compiled_sha256": "e6554f86af5c8db4478a725e5f00c7c3ef03e7e9408b472b760de32b7ebf84b9",
+      "source": "src/SdkHttpJobFlow.cpp",
+      "symbol": "StartHttp",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 12
+    },
+    {
+      "address": "0x1a8e60",
+      "size": 504,
+      "exact": true,
+      "target_sha256": "07182e5b0dba5b8ccf30746f090037db486f5bb5d7e939177c045b2d57877a43",
+      "compiled_sha256": "07182e5b0dba5b8ccf30746f090037db486f5bb5d7e939177c045b2d57877a43",
+      "source": "src/SdkHttpJobFlow.cpp",
+      "symbol": "WaitHttp",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 7
     },
     {
       "address": "0x1a94d0",
@@ -18558,6 +19202,17 @@
       "relocation_count": 6
     },
     {
+      "address": "0x1aa850",
+      "size": 504,
+      "exact": true,
+      "target_sha256": "2b2b78f4f3c58a4c5c7fe4799f8b1e19df3eebddd9840663e6c3fa6d88eff0c3",
+      "compiled_sha256": "2b2b78f4f3c58a4c5c7fe4799f8b1e19df3eebddd9840663e6c3fa6d88eff0c3",
+      "source": "src/SdkHttpJobFlow.cpp",
+      "symbol": "WaitHttp",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 7
+    },
+    {
       "address": "0x1ac990",
       "size": 112,
       "exact": true,
@@ -18567,6 +19222,50 @@
       "symbol": "_ZN15SdkCompositeAbi6HolderILj1401713EED0Ev",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 4
+    },
+    {
+      "address": "0x1aca00",
+      "size": 1020,
+      "exact": true,
+      "target_sha256": "3fb1bc8f50ab2ed634c45765caf7c8b7f3ee6bf88bde77a62509f524ceb0087c",
+      "compiled_sha256": "3fb1bc8f50ab2ed634c45765caf7c8b7f3ee6bf88bde77a62509f524ceb0087c",
+      "source": "src/SdkHttpJobFlow.cpp",
+      "symbol": "StartHttp",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 12
+    },
+    {
+      "address": "0x1adb00",
+      "size": 504,
+      "exact": true,
+      "target_sha256": "b1d44d51ed2738ed733286575a1ad8b5c9f402e1fb1c26c07bd8f61cd372b7f4",
+      "compiled_sha256": "b1d44d51ed2738ed733286575a1ad8b5c9f402e1fb1c26c07bd8f61cd372b7f4",
+      "source": "src/SdkHttpJobFlow.cpp",
+      "symbol": "WaitHttp",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 7
+    },
+    {
+      "address": "0x1aedb0",
+      "size": 1020,
+      "exact": true,
+      "target_sha256": "92a5e07fa2a8cae71063c1e9c0291c9775f8d1501099b0c3518e9255604f16ab",
+      "compiled_sha256": "92a5e07fa2a8cae71063c1e9c0291c9775f8d1501099b0c3518e9255604f16ab",
+      "source": "src/SdkHttpJobFlow.cpp",
+      "symbol": "StartHttp",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 12
+    },
+    {
+      "address": "0x1afeb0",
+      "size": 504,
+      "exact": true,
+      "target_sha256": "4a605c19b764f54bb56ddf288856b07206d6a2295c5847946109e3c0e7ccfa03",
+      "compiled_sha256": "4a605c19b764f54bb56ddf288856b07206d6a2295c5847946109e3c0e7ccfa03",
+      "source": "src/SdkHttpJobFlow.cpp",
+      "symbol": "WaitHttp",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 7
     },
     {
       "address": "0x1b00b0",
@@ -18635,6 +19334,28 @@
       "relocation_count": 6
     },
     {
+      "address": "0x1b0730",
+      "size": 1020,
+      "exact": true,
+      "target_sha256": "d8920c5479f4deb51187a6f403806fad3cc821b410177da7fe03952c8176f047",
+      "compiled_sha256": "d8920c5479f4deb51187a6f403806fad3cc821b410177da7fe03952c8176f047",
+      "source": "src/SdkHttpJobFlow.cpp",
+      "symbol": "StartHttp",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 12
+    },
+    {
+      "address": "0x1b1830",
+      "size": 504,
+      "exact": true,
+      "target_sha256": "8cdaa45667375674cdd7258bbc675509449561c771beb4f8a66cdf6f21611c7c",
+      "compiled_sha256": "8cdaa45667375674cdd7258bbc675509449561c771beb4f8a66cdf6f21611c7c",
+      "source": "src/SdkHttpJobFlow.cpp",
+      "symbol": "WaitHttp",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 7
+    },
+    {
       "address": "0x1b2520",
       "size": 424,
       "exact": true,
@@ -18677,6 +19398,17 @@
       "symbol": "_ZNSt3__15dequeI15LibraryRecord4022SimpleLibraryAllocatorIS1_Lj1EEE19__add_back_capacityEv",
       "source_review": "library_abi_view",
       "relocation_count": 16
+    },
+    {
+      "address": "0x1b4570",
+      "size": 336,
+      "exact": true,
+      "target_sha256": "090b31c2e13e03dfe09dc19792192bd8e017f2daf081607bb3259957d43be08e",
+      "compiled_sha256": "090b31c2e13e03dfe09dc19792192bd8e017f2daf081607bb3259957d43be08e",
+      "source": "src/SdkMapFamilies.cpp",
+      "symbol": "_ZNKSt3__16__treeINS_12__value_typeI4TextS2_EENS_19__map_value_compareIS2_S3_10InlineLessLb1EEE22SimpleLibraryAllocatorIS3_Lj1EEE4findIS2_EENS_21__tree_const_iteratorIS3_PNS_11__tree_nodeIS3_PvEElEERKT_",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 2
     },
     {
       "address": "0x1b8650",
@@ -112487,6 +113219,17 @@
       "relocation_count": 31
     },
     {
+      "address": "0x492180",
+      "size": 292,
+      "exact": true,
+      "target_sha256": "8bd03585f10d8421f7347559ed9ff907a4f59163946584680502f9b0684e902b",
+      "compiled_sha256": "8bd03585f10d8421f7347559ed9ff907a4f59163946584680502f9b0684e902b",
+      "source": "src/SdkMapFamilies.cpp",
+      "symbol": "_ZNSt3__16__treeINS_12__value_typeINS_12basic_stringIcNS_11char_traitsIcEE22SimpleLibraryAllocatorIcLj1EEEE4TextEENS_19__map_value_compareIS7_S9_NS_4lessIS7_EELb1EEES5_IS9_Lj1EEE12__find_equalIS7_EERPNS_16__tree_node_baseIPvEERPNS_15__tree_end_nodeISK_EERKT_",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 2
+    },
+    {
       "address": "0x4922b0",
       "size": 4,
       "exact": true,
@@ -142242,6 +142985,28 @@
       "relocation_count": 31
     },
     {
+      "address": "0x560b50",
+      "size": 268,
+      "exact": true,
+      "target_sha256": "2395caafd0d042ce8a47d15d8ba281611c523b8e64357ca660a1a30f66491375",
+      "compiled_sha256": "2395caafd0d042ce8a47d15d8ba281611c523b8e64357ca660a1a30f66491375",
+      "source": "src/SdkMapFamilies.cpp",
+      "symbol": "_ZNKSt3__16__treeINS_12__value_typeINS_12basic_stringIcNS_11char_traitsIcEE22SimpleLibraryAllocatorIcLj1EEEE4TextEENS_19__map_value_compareIS7_S9_NS_4lessIS7_EELb1EEES5_IS9_Lj1EEE4findIS7_EENS_21__tree_const_iteratorIS9_PNS_11__tree_nodeIS9_PvEElEERKT_",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 2
+    },
+    {
+      "address": "0x560c60",
+      "size": 292,
+      "exact": true,
+      "target_sha256": "332068237c8f3e49d85687813443d11c9e51323d6ec8dac2e92e11e8992ae881",
+      "compiled_sha256": "332068237c8f3e49d85687813443d11c9e51323d6ec8dac2e92e11e8992ae881",
+      "source": "src/SdkMapFamilies.cpp",
+      "symbol": "_ZNSt3__16__treeINS_12__value_typeINS_12basic_stringIcNS_11char_traitsIcEE22SimpleLibraryAllocatorIcLj1EEEE4TextEENS_19__map_value_compareIS7_S9_NS_4lessIS7_EELb1EEES5_IS9_Lj1EEE12__find_equalIS7_EERPNS_16__tree_node_baseIPvEERPNS_15__tree_end_nodeISK_EERKT_",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 2
+    },
+    {
       "address": "0x560ef0",
       "size": 344,
       "exact": true,
@@ -168147,6 +168912,17 @@
       "relocation_count": 1
     },
     {
+      "address": "0x67bbe0",
+      "size": 780,
+      "exact": true,
+      "target_sha256": "de6d630b5bd9fb4d406690e4b9e82d20de82d48ac47030363ade5c2e203e85d7",
+      "compiled_sha256": "de6d630b5bd9fb4d406690e4b9e82d20de82d48ac47030363ade5c2e203e85d7",
+      "source": "src/ComponentInitializeSlots.cpp",
+      "symbol": "_Z23InitializeComponentSlotILj80ELj130557421EEvPvS0_PN13ComponentSlot6SourceE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 26
+    },
+    {
       "address": "0x67c9e0",
       "size": 24,
       "exact": true,
@@ -174736,6 +175512,17 @@
       "relocation_count": 2
     },
     {
+      "address": "0x706270",
+      "size": 780,
+      "exact": true,
+      "target_sha256": "d935a1fc8ce99cfc80644ea10fd3650cdae5e5e2656a7b3181d809a666678100",
+      "compiled_sha256": "d935a1fc8ce99cfc80644ea10fd3650cdae5e5e2656a7b3181d809a666678100",
+      "source": "src/ComponentInitializeSlots.cpp",
+      "symbol": "_Z23InitializeComponentSlotILj80ELj1959923751EEvPvS0_PN13ComponentSlot6SourceE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 26
+    },
+    {
       "address": "0x7066b0",
       "size": 24,
       "exact": true,
@@ -179246,6 +180033,17 @@
       "relocation_count": 2
     },
     {
+      "address": "0x736d40",
+      "size": 780,
+      "exact": true,
+      "target_sha256": "04e4c238c443f98b0d8f4dec7edc0bdad1e1f56791e4fc457ef4f46f4e9dcb11",
+      "compiled_sha256": "04e4c238c443f98b0d8f4dec7edc0bdad1e1f56791e4fc457ef4f46f4e9dcb11",
+      "source": "src/ComponentInitializeSlots.cpp",
+      "symbol": "_Z23InitializeComponentSlotILj8ELj130557421EEvPvS0_PN13ComponentSlot6SourceE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 26
+    },
+    {
       "address": "0x737050",
       "size": 24,
       "exact": true,
@@ -182709,6 +183507,17 @@
       "symbol": "_Z16DestroyAllocatedILj7780160EEvPv",
       "source_review": "manual_reconstruction",
       "relocation_count": 2
+    },
+    {
+      "address": "0x76b760",
+      "size": 780,
+      "exact": true,
+      "target_sha256": "1f77db428cdadb102fff8555e63923febc7314ba5e7301b64354614f8e8d018c",
+      "compiled_sha256": "1f77db428cdadb102fff8555e63923febc7314ba5e7301b64354614f8e8d018c",
+      "source": "src/ComponentInitializeSlots.cpp",
+      "symbol": "_Z23InitializeComponentSlotILj80ELj1575998007EEvPvS0_PN13ComponentSlot6SourceE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 26
     },
     {
       "address": "0x76ba70",
@@ -186900,6 +187709,61 @@
       "symbol": "RecoveredLeaf_793be0",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 1
+    },
+    {
+      "address": "0x793f30",
+      "size": 692,
+      "exact": true,
+      "target_sha256": "362e091226a57be2ee1d98a1c6652fad2e3920a3968d8bbad04dc0b98808488f",
+      "compiled_sha256": "362e091226a57be2ee1d98a1c6652fad2e3920a3968d8bbad04dc0b98808488f",
+      "source": "src/ComponentReferenceCopy.cpp",
+      "symbol": "_ZN15ComponentAccess22CopyComponentReferenceILj80EEEvPvPKPNS_6HandleE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 24
+    },
+    {
+      "address": "0x7941f0",
+      "size": 692,
+      "exact": true,
+      "target_sha256": "6de3e72706096689fd13445722eae0ef8084ec8f0b5f313731433f504877a530",
+      "compiled_sha256": "6de3e72706096689fd13445722eae0ef8084ec8f0b5f313731433f504877a530",
+      "source": "src/ComponentReferenceCopy.cpp",
+      "symbol": "_ZN15ComponentAccess22CopyComponentReferenceILj88EEEvPvPKPNS_6HandleE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 24
+    },
+    {
+      "address": "0x7944b0",
+      "size": 692,
+      "exact": true,
+      "target_sha256": "964daedf5e4829c3aa91e775fe55dc7258f35a4748537d0e96830d9439797e50",
+      "compiled_sha256": "964daedf5e4829c3aa91e775fe55dc7258f35a4748537d0e96830d9439797e50",
+      "source": "src/ComponentReferenceCopy.cpp",
+      "symbol": "_ZN15ComponentAccess22CopyComponentReferenceILj80EEEvPvPKPNS_6HandleE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 24
+    },
+    {
+      "address": "0x794770",
+      "size": 692,
+      "exact": true,
+      "target_sha256": "2ee67720bf20717e0bb72d6e1e26f887c08e132d53f7ad8e77ac3ff51fac3d08",
+      "compiled_sha256": "2ee67720bf20717e0bb72d6e1e26f887c08e132d53f7ad8e77ac3ff51fac3d08",
+      "source": "src/ComponentReferenceCopy.cpp",
+      "symbol": "_ZN15ComponentAccess22CopyComponentReferenceILj104EEEvPvPKPNS_6HandleE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 24
+    },
+    {
+      "address": "0x794a30",
+      "size": 692,
+      "exact": true,
+      "target_sha256": "fe9483eed88f9bc334ce38cb50aa8dfcfb6efc1c02a8975bd8e5fcefdee121f7",
+      "compiled_sha256": "fe9483eed88f9bc334ce38cb50aa8dfcfb6efc1c02a8975bd8e5fcefdee121f7",
+      "source": "src/ComponentReferenceCopy.cpp",
+      "symbol": "_ZN15ComponentAccess22CopyComponentReferenceILj112EEEvPvPKPNS_6HandleE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 24
     },
     {
       "address": "0x794cf0",
@@ -197473,6 +198337,17 @@
       "relocation_count": 4
     },
     {
+      "address": "0x7f5b30",
+      "size": 272,
+      "exact": true,
+      "target_sha256": "a9d5bc520981319aa89f925b7a75b965a704641efaaab1ba6615632cb6d0fdbd",
+      "compiled_sha256": "a9d5bc520981319aa89f925b7a75b965a704641efaaab1ba6615632cb6d0fdbd",
+      "source": "src/SdkMapFamilies.cpp",
+      "symbol": "_ZNSt3__16__treeINS_12__value_typeIj4TextEENS_19__map_value_compareIjS3_NS_4lessIjEELb1EEE22SimpleLibraryAllocatorIS3_Lj1EEE30__emplace_hint_unique_key_argsIjJNS_4pairIKjS2_EEEEENS_15__tree_iteratorIS3_PNS_11__tree_nodeIS3_PvEElEENS_21__tree_const_iteratorIS3_SJ_lEERKT_DpOT0_",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 3
+    },
+    {
       "address": "0x7f5eb0",
       "size": 4,
       "exact": true,
@@ -203664,6 +204539,28 @@
       "symbol": "_Z11TypeAddressILj8653088EEPKvv",
       "source_review": "manual_reconstruction",
       "relocation_count": 2
+    },
+    {
+      "address": "0x843910",
+      "size": 692,
+      "exact": true,
+      "target_sha256": "c99a8d27eb991045fc5001e7d528ac93b48971ed9c220fb0d653d1bcefad3b07",
+      "compiled_sha256": "c99a8d27eb991045fc5001e7d528ac93b48971ed9c220fb0d653d1bcefad3b07",
+      "source": "src/ComponentReferenceCopy.cpp",
+      "symbol": "_ZN15ComponentAccess22CopyComponentReferenceILj144EEEvPvPKPNS_6HandleE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 24
+    },
+    {
+      "address": "0x843bd0",
+      "size": 692,
+      "exact": true,
+      "target_sha256": "79e96074693ef5b44c523db76f1b7c97016ccc901830c32a861c21a3c836d3fd",
+      "compiled_sha256": "79e96074693ef5b44c523db76f1b7c97016ccc901830c32a861c21a3c836d3fd",
+      "source": "src/ComponentReferenceCopy.cpp",
+      "symbol": "_ZN15ComponentAccess22CopyComponentReferenceILj88EEEvPvPKPNS_6HandleE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 24
     },
     {
       "address": "0x845060",
@@ -218450,6 +219347,17 @@
       "relocation_count": 0
     },
     {
+      "address": "0x8cdfb0",
+      "size": 808,
+      "exact": true,
+      "target_sha256": "f5b240326a2d5e7e5a2bdf8e7567696ebefca9b09eb2e4cf3e43ea485967a63e",
+      "compiled_sha256": "f5b240326a2d5e7e5a2bdf8e7567696ebefca9b09eb2e4cf3e43ea485967a63e",
+      "source": "src/ComponentSelection.cpp",
+      "symbol": "_ZN15ComponentAccess15SelectComponentILj104ELj0ELj1072363279EEEvPNS_6TargetIXT_EXT0_EEEj",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 28
+    },
+    {
       "address": "0x8ce800",
       "size": 24,
       "exact": true,
@@ -224390,6 +225298,17 @@
       "relocation_count": 2
     },
     {
+      "address": "0x920a50",
+      "size": 780,
+      "exact": true,
+      "target_sha256": "ddc81852480aea1cc9457f4bd0d99c936cbea966291a6a64ce9cf2e9f79b142a",
+      "compiled_sha256": "ddc81852480aea1cc9457f4bd0d99c936cbea966291a6a64ce9cf2e9f79b142a",
+      "source": "src/ComponentInitializeSlots.cpp",
+      "symbol": "_Z23InitializeComponentSlotILj160ELj1609868158EEvPvS0_PN13ComponentSlot6SourceE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 26
+    },
+    {
       "address": "0x920d60",
       "size": 24,
       "exact": true,
@@ -227272,6 +228191,17 @@
       "relocation_count": 1
     },
     {
+      "address": "0x93c860",
+      "size": 808,
+      "exact": true,
+      "target_sha256": "1c8dbb660d2ffeb38320f29764531d7fb1fe29993a18aad7cba61ed9b3700deb",
+      "compiled_sha256": "1c8dbb660d2ffeb38320f29764531d7fb1fe29993a18aad7cba61ed9b3700deb",
+      "source": "src/ComponentSelection.cpp",
+      "symbol": "_ZN15ComponentAccess15SelectComponentILj96ELj16ELj1230339783EEEvPNS_6TargetIXT_EXT0_EEEj",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 28
+    },
+    {
       "address": "0x93ccf0",
       "size": 4,
       "exact": true,
@@ -227457,6 +228387,17 @@
       "symbol": "RecoveredLeaf_93dd50",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 1
+    },
+    {
+      "address": "0x93df90",
+      "size": 808,
+      "exact": true,
+      "target_sha256": "20585eca52a787c38273cded116808e9d35bc73e31fea2690b520b2c7517f796",
+      "compiled_sha256": "20585eca52a787c38273cded116808e9d35bc73e31fea2690b520b2c7517f796",
+      "source": "src/ComponentSelection.cpp",
+      "symbol": "_ZN15ComponentAccess15SelectComponentILj96ELj16ELj1682502063EEEvPNS_6TargetIXT_EXT0_EEEj",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 28
     },
     {
       "address": "0x93e420",
@@ -266366,6 +267307,50 @@
       "relocation_count": 0
     },
     {
+      "address": "0xb36630",
+      "size": 692,
+      "exact": true,
+      "target_sha256": "92049058af1afa889e58144a2470b1e736f439b8a05b57a674474ff58895522e",
+      "compiled_sha256": "92049058af1afa889e58144a2470b1e736f439b8a05b57a674474ff58895522e",
+      "source": "src/ComponentReferenceCopy.cpp",
+      "symbol": "_ZN15ComponentAccess22CopyComponentReferenceILj152EEEvPvPKPNS_6HandleE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 24
+    },
+    {
+      "address": "0xb368f0",
+      "size": 692,
+      "exact": true,
+      "target_sha256": "ac08a05e837653d7f6e627edab69fc4d2ac41fe59b014a1678c91de8f3660831",
+      "compiled_sha256": "ac08a05e837653d7f6e627edab69fc4d2ac41fe59b014a1678c91de8f3660831",
+      "source": "src/ComponentReferenceCopy.cpp",
+      "symbol": "_ZN15ComponentAccess22CopyComponentReferenceILj184EEEvPvPKPNS_6HandleE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 24
+    },
+    {
+      "address": "0xb36bb0",
+      "size": 692,
+      "exact": true,
+      "target_sha256": "89531acb645d0ae872a22a4d2d0784016d4fbe3704d050267eb73f5d3c7c0c99",
+      "compiled_sha256": "89531acb645d0ae872a22a4d2d0784016d4fbe3704d050267eb73f5d3c7c0c99",
+      "source": "src/ComponentReferenceCopy.cpp",
+      "symbol": "_ZN15ComponentAccess22CopyComponentReferenceILj184EEEvPvPKPNS_6HandleE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 24
+    },
+    {
+      "address": "0xb36e70",
+      "size": 692,
+      "exact": true,
+      "target_sha256": "a03420036b34426ce20c516904192ce0d334167f957a13b7a04f08f8e0919b82",
+      "compiled_sha256": "a03420036b34426ce20c516904192ce0d334167f957a13b7a04f08f8e0919b82",
+      "source": "src/ComponentReferenceCopy.cpp",
+      "symbol": "_ZN15ComponentAccess22CopyComponentReferenceILj88EEEvPvPKPNS_6HandleE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 24
+    },
+    {
       "address": "0xb37480",
       "size": 24,
       "exact": true,
@@ -268146,6 +269131,17 @@
       "symbol": "_Z21CallbackIdentityEqualILj11853296EEbPK12CallbackViewS2_",
       "source_review": "manual_reconstruction",
       "relocation_count": 0
+    },
+    {
+      "address": "0xb4de40",
+      "size": 808,
+      "exact": true,
+      "target_sha256": "be1fa85496db82e88a09c0aca4521e28ab34f16dc3dc3196d87dfe05159ebbab",
+      "compiled_sha256": "be1fa85496db82e88a09c0aca4521e28ab34f16dc3dc3196d87dfe05159ebbab",
+      "source": "src/ComponentSelection.cpp",
+      "symbol": "_ZN15ComponentAccess15SelectComponentILj96ELj0ELj2092626935EEEvPNS_6TargetIXT_EXT0_EEEj",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 28
     },
     {
       "address": "0xb4e170",
@@ -270269,6 +271265,17 @@
       "symbol": "_Z21CallbackIdentityEqualILj11936528EEbPK12CallbackViewS2_",
       "source_review": "manual_reconstruction",
       "relocation_count": 0
+    },
+    {
+      "address": "0xb62360",
+      "size": 808,
+      "exact": true,
+      "target_sha256": "0c0bfe89415d76f869fdb0ff0fc1f16fdc4ca847ddf4ab8c60fbe27ccd71dab9",
+      "compiled_sha256": "0c0bfe89415d76f869fdb0ff0fc1f16fdc4ca847ddf4ab8c60fbe27ccd71dab9",
+      "source": "src/ComponentSelection.cpp",
+      "symbol": "_ZN15ComponentAccess15SelectComponentILj96ELj0ELj604602073EEEvPNS_6TargetIXT_EXT0_EEEj",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 28
     },
     {
       "address": "0xb62690",
@@ -273976,6 +274983,17 @@
       "symbol": "RecoveredLeaf_b89220",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 2
+    },
+    {
+      "address": "0xb89250",
+      "size": 780,
+      "exact": true,
+      "target_sha256": "fd82a6e9c172b76420cef2d535a6a0a8973cc1b05c043c8aa8013b855ff65ad1",
+      "compiled_sha256": "fd82a6e9c172b76420cef2d535a6a0a8973cc1b05c043c8aa8013b855ff65ad1",
+      "source": "src/ComponentInitializeSlots.cpp",
+      "symbol": "_Z23InitializeComponentSlotILj8ELj8808326EEvPvS0_PN13ComponentSlot6SourceE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 26
     },
     {
       "address": "0xb8b7d0",
@@ -280798,6 +281816,17 @@
       "relocation_count": 0
     },
     {
+      "address": "0xbf11a0",
+      "size": 780,
+      "exact": true,
+      "target_sha256": "4a43b60e65a206e0a5da0765dee7b829f021de9edb09fab94de4d017476406b2",
+      "compiled_sha256": "4a43b60e65a206e0a5da0765dee7b829f021de9edb09fab94de4d017476406b2",
+      "source": "src/ComponentInitializeSlots.cpp",
+      "symbol": "_Z23InitializeComponentSlotILj80ELj8808326EEvPvS0_PN13ComponentSlot6SourceE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 26
+    },
+    {
       "address": "0xbf14b0",
       "size": 24,
       "exact": true,
@@ -287152,6 +288181,17 @@
       "compiled_sha256": "916ec287bcbbab3425ca1131a9c92d2359286c216f8c1fe5c4d5830e644d85ea",
       "source": "src/TypeAddress.cpp",
       "symbol": "_Z11TypeAddressILj12839584EEPKvv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 2
+    },
+    {
+      "address": "0xc3f130",
+      "size": 264,
+      "exact": true,
+      "target_sha256": "7feeb48c938d8e145e89fee539206ddfc6ab8fc93decd8ce5e3b8c09f712d6b2",
+      "compiled_sha256": "7feeb48c938d8e145e89fee539206ddfc6ab8fc93decd8ce5e3b8c09f712d6b2",
+      "source": "src/SdkMapFamilies.cpp",
+      "symbol": "_ZNKSt3__16__treeINS_12__value_typeINS_12basic_stringIcNS_11char_traitsIcEE22SimpleLibraryAllocatorIcLj1EEEE4TextEENS_19__map_value_compareIS7_S9_NS_4lessIS7_EELb1EEES5_IS9_Lj1EEE4findIS7_EENS_21__tree_const_iteratorIS9_PNS_11__tree_nodeIS9_PvEElEERKT_",
       "source_review": "manual_reconstruction",
       "relocation_count": 2
     },
@@ -294680,6 +295720,17 @@
       "relocation_count": 0
     },
     {
+      "address": "0xc7ebe0",
+      "size": 808,
+      "exact": true,
+      "target_sha256": "30ffc0663bb64a0f74805f3632d9bbc56478701e332e6ab45a86619791a5a39c",
+      "compiled_sha256": "30ffc0663bb64a0f74805f3632d9bbc56478701e332e6ab45a86619791a5a39c",
+      "source": "src/ComponentSelection.cpp",
+      "symbol": "_ZN15ComponentAccess15SelectComponentILj96ELj0ELj36693834EEEvPNS_6TargetIXT_EXT0_EEEj",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 28
+    },
+    {
       "address": "0xc7ef10",
       "size": 304,
       "exact": true,
@@ -294966,6 +296017,17 @@
       "relocation_count": 0
     },
     {
+      "address": "0xc80540",
+      "size": 808,
+      "exact": true,
+      "target_sha256": "1e6b88a0614f2391547d2de56784128ec49bbf574b585725167ba2199eb6df59",
+      "compiled_sha256": "1e6b88a0614f2391547d2de56784128ec49bbf574b585725167ba2199eb6df59",
+      "source": "src/ComponentSelection.cpp",
+      "symbol": "_ZN15ComponentAccess15SelectComponentILj96ELj0ELj37711792EEEvPNS_6TargetIXT_EXT0_EEEj",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 28
+    },
+    {
       "address": "0xc80870",
       "size": 4,
       "exact": true,
@@ -295140,6 +296202,17 @@
       "symbol": "_Z21CallbackIdentityEqualILj13112672EEbPK12CallbackViewS2_",
       "source_review": "manual_reconstruction",
       "relocation_count": 0
+    },
+    {
+      "address": "0xc815b0",
+      "size": 808,
+      "exact": true,
+      "target_sha256": "752336c8ea61c72bb7460b7173fe7496fb14f581ed122f69855a581ed2177e65",
+      "compiled_sha256": "752336c8ea61c72bb7460b7173fe7496fb14f581ed122f69855a581ed2177e65",
+      "source": "src/ComponentSelection.cpp",
+      "symbol": "_ZN15ComponentAccess15SelectComponentILj96ELj0ELj308320446EEEvPNS_6TargetIXT_EXT0_EEEj",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 28
     },
     {
       "address": "0xc818e0",
@@ -297166,6 +298239,17 @@
       "relocation_count": 2
     },
     {
+      "address": "0xc950a0",
+      "size": 780,
+      "exact": true,
+      "target_sha256": "8e8b61555bd05d6428fd565dc073b87f3a0a9cc6fc7f3035eb3acd1fd12289af",
+      "compiled_sha256": "8e8b61555bd05d6428fd565dc073b87f3a0a9cc6fc7f3035eb3acd1fd12289af",
+      "source": "src/ComponentInitializeSlots.cpp",
+      "symbol": "_Z23InitializeComponentSlotILj80ELj1992834267EEvPvS0_PN13ComponentSlot6SourceE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 26
+    },
+    {
       "address": "0xc95740",
       "size": 304,
       "exact": true,
@@ -297573,6 +298657,17 @@
       "relocation_count": 2
     },
     {
+      "address": "0xc96dd0",
+      "size": 780,
+      "exact": true,
+      "target_sha256": "d5a4c388e9afa6e85db8c5a3c6f0df0957a2f94982d1912d2e89036b78158bf2",
+      "compiled_sha256": "d5a4c388e9afa6e85db8c5a3c6f0df0957a2f94982d1912d2e89036b78158bf2",
+      "source": "src/ComponentInitializeSlots.cpp",
+      "symbol": "_Z23InitializeComponentSlotILj80ELj1980251866EEvPvS0_PN13ComponentSlot6SourceE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 26
+    },
+    {
       "address": "0xc970e0",
       "size": 12,
       "exact": true,
@@ -297969,6 +299064,17 @@
       "relocation_count": 0
     },
     {
+      "address": "0xc99530",
+      "size": 808,
+      "exact": true,
+      "target_sha256": "0c8ffaf51e5d13be3fb00f4f9b3ea5e61d41a74a70ffcd37765222495079a0e3",
+      "compiled_sha256": "0c8ffaf51e5d13be3fb00f4f9b3ea5e61d41a74a70ffcd37765222495079a0e3",
+      "source": "src/ComponentSelection.cpp",
+      "symbol": "_ZN15ComponentAccess15SelectComponentILj96ELj0ELj1549493942EEEvPNS_6TargetIXT_EXT0_EEEj",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 28
+    },
+    {
       "address": "0xc99860",
       "size": 488,
       "exact": true,
@@ -298165,6 +299271,17 @@
       "symbol": "_Z21CallbackIdentityEqualILj13216144EEbPK12CallbackViewS2_",
       "source_review": "manual_reconstruction",
       "relocation_count": 0
+    },
+    {
+      "address": "0xc9a9e0",
+      "size": 808,
+      "exact": true,
+      "target_sha256": "adc146329095d4a397815331a85056473328faaf57e84f20d95b1f4fad643211",
+      "compiled_sha256": "adc146329095d4a397815331a85056473328faaf57e84f20d95b1f4fad643211",
+      "source": "src/ComponentSelection.cpp",
+      "symbol": "_ZN15ComponentAccess15SelectComponentILj96ELj0ELj1363892056EEEvPNS_6TargetIXT_EXT0_EEEj",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 28
     },
     {
       "address": "0xc9ad10",

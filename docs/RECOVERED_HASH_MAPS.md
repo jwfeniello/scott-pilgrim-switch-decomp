@@ -37,3 +37,20 @@ inspection distinguishes normal execution from its exception-cleanup tail and
 shows that the original copies the pair of labels together. Private prototypes
 with ordinary unordered_map operations and controlled inlining remain research
 only; they receive no exact credit.
+
+## Ordered maps used by the SDK
+
+`SdkMapFamilies.cpp` adds 21 complete matches / 8,508 bytes across six build
+profiles using public libc++ 4 headers and Clang 7/8. These are ordered
+`std::map` operations, including const lookup, insertion-position searches,
+hinted searches, and cleanup with intrusive string-owner destruction.
+
+The instantiations cover reference-counted SDK text, allocator-backed strings,
+and unsigned integer keys. They establish the matched operation and touched ABI
+layout, not every original application-level key/value class identity. Two
+helpers, `0x1676f0` and `0x167d70`, were previously unmatched dependencies of the
+HTTP response value routines.
+
+All 21 bodies pass complete linked-byte comparison. Reversing the external text
+comparator and changing the text release decrement are rejected. No original
+binary data or proprietary SDK headers are included.

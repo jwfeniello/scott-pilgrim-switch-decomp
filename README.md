@@ -16,14 +16,23 @@ Edition** for Nintendo Switch.
 [Progress on decomp.dev](https://decomp.dev/jwfeniello/scott-pilgrim-switch-decomp)
 · [Progress workflow](https://github.com/jwfeniello/scott-pilgrim-switch-decomp/actions/workflows/progress.yml)
 
-**Current locally verified progress: 29,969 exact functions /
-2,965,332 bytes / 18.084971% of executable `.text`.** The original `.text` is 16,396,664 bytes.
+**Current locally verified progress: 30,065 exact functions /
+3,024,724 bytes / 18.447191% of executable `.text`.** The original `.text` is 16,396,664 bytes.
 This includes engine and library infrastructure. The project does not yet rebuild
 or boot the complete game. Original method names and many ABI declarations remain
 provisional. See the [integration plan](docs/INTEGRATION_PLAN.md) for
 the work needed to turn isolated matches into a linked game build.
 
 ## Gameplay understanding
+
+[Component reference operations](docs/COMPONENT_REFERENCE_OPERATIONS.md) add
+30 complete matches / 22,712 bytes for handle assignment, component selection,
+change notification, and property-based slot initialization.
+
+[HTTP job flow](docs/HTTP_JOB_FLOW.md) adds 45 complete matches / 28,172 bytes
+for response-storage construction and request start/wait state transitions.
+Another 21 ordered-map helpers add 8,508 bytes; see
+[recovered container families](docs/RECOVERED_HASH_MAPS.md).
 
 [Service-response research](docs/SERVICE_RESPONSE_CANDIDATE.md) checks 6,912
 bounded delivery/completion cases against the original ARM64 routine, with four
