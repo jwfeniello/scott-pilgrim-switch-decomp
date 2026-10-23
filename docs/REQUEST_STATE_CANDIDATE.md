@@ -151,4 +151,36 @@ reconstruction; they do not prove the original source used identical helpers.
 
 These ABI views retain explicit vtable references and provisional field types.
 They are not yet a portable implementation of the original class hierarchy.
-The other eleven constructors and the state-update family remain uncredited.
+The remaining constructor coverage is described below; the state-update family remains uncredited.
+
+## Eight additional exact context constructors
+
+[MatchmakingContextConstructors.cpp](../src/MatchmakingContextConstructors.cpp)
+shares the recovered request setup while selecting a context layout through
+`REQUEST_CONTEXT`. Its eight builds add **4,132 exact bytes**:
+
+| Selection | Request | Address | Function bytes | Context bytes |
+| --- | --- | --- | --- | --- |
+| 1 | ticket cancellation | `0x4da7d0` | 512 | 32 |
+| 2 | player profile storage | `0x4dc050` | 504 | 32 |
+| 3 | session lock | `0x4ddd20` | 512 | 32 |
+| 4 | reservations | `0x4e1420` | 512 | 48 |
+| 5 | session leave | `0x4e8dc0` | 516 | 48 |
+| 6 | host report | `0x4e2d90` | 532 | 72 |
+| 7 | join report | `0x4e4820` | 532 | 72 |
+| 8 | session update | `0x4e63b0` | 512 | 56 |
+
+Context sizes, store widths, zero and invalid initial values, and self-referential
+list links come from the original constructors. Field names whose semantics are
+not established remain neutral. Request identities come from the existing RTTI
+associations, not from guessing what the initialized fields mean.
+
+All builds use Clang 8.0.1; selection 8 also uses `-mgeneral-regs-only` to reproduce
+the original integer-register zero stores rather than vector stores. This is a
+successful reconstruction profile, not evidence that the original build used
+that flag. The verifier checks each complete body and its individual bindings.
+
+Ten of the thirteen associated constructors now match. Ticket creation, session
+creation, and session join remain uncredited, as do all thirteen state updates.
+Explicit ABI layouts and vtable references still need integration into a complete
+class model before this code can serve as portable matchmaking infrastructure.

@@ -1,9 +1,9 @@
 {
   "version": 1,
-  "generated_at": "2026-10-23T03:40:03.171653+00:00",
+  "generated_at": "2026-10-23T03:47:54.282555+00:00",
   "target_elf_sha256": "ea95638e6d6aaa0dc6cddd552a9366799aa1ec3bc07ee201f23f6c151103f5b8",
   "input_sha256": {
-    "config/builds.json": "d43cca0a29f4c036381093da0406364de36333eb3bfecfcf8ee216ba90c1a7d1",
+    "config/builds.json": "61561491fa19308ec9b353452c4ce1031b522216d6432a46a07a2ba7ba221f77",
     "config/functions.tsv": "399e91468a04e0459194c10d68d2210d1157cedefeb19c7851886ca7632fcb18",
     "config/target.json": "23cc6a5227206a953e7668acf5e9ae5c02a25c23b7e7967f0450a814b888241a",
     "src/AbiCfg_aggregate_O2_omit.cpp": "55009ca4f1819fe53803025bf27b93a676c6137877b9d4492828e2e15c89307c",
@@ -120,6 +120,7 @@
     "src/LibraryWidth40.cpp": "d57d02c493138d924a36cbbc7ad196aeb5fe0b31e087a34f972f164c9070332a",
     "src/LibraryWidth48.cpp": "99cc1643b8cb0c460b479b4dff064169579fd872f81c601e9f4d63500de86ed0",
     "src/LibraryWidth8.cpp": "c808b548ebca6ccc2254acae97f92c0241a2368777bf239fce53ef2513f095c5",
+    "src/MatchmakingContextConstructors.cpp": "1626f0ba4fb0f20a728e6f5bb52e2703a8c71d0a6e74644a67d83fa372d884b6",
     "src/MatchmakingRequestConstructor.cpp": "bf5bc86fd7276ea6f22567b8a960544673b2f673e31710d3ff640317be8417aa",
     "src/MatchmakingRequestDestructor.cpp": "aebe825b8402e0d9668b39e2077314f768350db39e44f4b2b4012c8993a78b7a",
     "src/NarrowCallsCfgRecoveryVoidBool.cpp": "972cd9c0d7701115584ac952b2c0cf491a31f97bbd73b0b56a22bb9a9dfd3e37",
@@ -2737,8 +2738,8 @@
     "7.0.1": "c2f0a175157d9aaace8031f8e6d7ea0ed6142b4bcef287105e3ed227301f1002",
     "8.0.1": "dffd62a213ec6cdb4430012a4a41c11e5e32c288f133d5391f9be49e1c5b69de"
   },
-  "exact_functions": 29854,
-  "exact_bytes": 2902836,
+  "exact_functions": 29862,
+  "exact_bytes": 2906968,
   "builds": [
     {
       "id": "probes",
@@ -9744,6 +9745,46 @@
       "id": "matchmaking_request_constructor",
       "compiler": "8.0.1",
       "object_sha256": "024054d4b3bfd17f20c438fa87456a83a1e90152d9ad7ac48a854cc2db907f38"
+    },
+    {
+      "id": "matchmaking_context_constructor_1",
+      "compiler": "8.0.1",
+      "object_sha256": "7791fc85b6e70c9ab032a6c8836da874177abb4cf81e2aecb59c3dd2000422b6"
+    },
+    {
+      "id": "matchmaking_context_constructor_2",
+      "compiler": "8.0.1",
+      "object_sha256": "aea0c9212a19ea558c0ddab6363fe0f0f59f582eb24c22fac9f0401e59c59a53"
+    },
+    {
+      "id": "matchmaking_context_constructor_3",
+      "compiler": "8.0.1",
+      "object_sha256": "8c4b29eadf7b72d48563b88073e939e5e04d74f3f89945974b1cae274c12b180"
+    },
+    {
+      "id": "matchmaking_context_constructor_4",
+      "compiler": "8.0.1",
+      "object_sha256": "6c58cd01b3134d17a53d804191f5ec42a034da49daaff1f8b87257792bf2f0ea"
+    },
+    {
+      "id": "matchmaking_context_constructor_5",
+      "compiler": "8.0.1",
+      "object_sha256": "c4ad1f2f9bcda267c2306ce8787adf7cb8da97d579503e11b0cf81b6a540fd48"
+    },
+    {
+      "id": "matchmaking_context_constructor_6",
+      "compiler": "8.0.1",
+      "object_sha256": "8744b28856f6afdcf0cc3c22fd80f996f64674a0ec5f3f7f194381ced83501b5"
+    },
+    {
+      "id": "matchmaking_context_constructor_7",
+      "compiler": "8.0.1",
+      "object_sha256": "82867f9d021395fd91b79b7198d991c1d45798a69aca3a42b6a5cb627fedace3"
+    },
+    {
+      "id": "matchmaking_context_constructor_8",
+      "compiler": "8.0.1",
+      "object_sha256": "e27131ceb489d1c8d52fc92019d23a23339fe9b34f9183b322886170f86f2f6e"
     }
   ],
   "matches": [
@@ -123972,6 +124013,17 @@
       "relocation_count": 2
     },
     {
+      "address": "0x4da7d0",
+      "size": 512,
+      "exact": true,
+      "target_sha256": "13f8fdca11c505b1a6232a1b2f3704b5c013be173ec7fe8358dc6fef33dcf805",
+      "compiled_sha256": "13f8fdca11c505b1a6232a1b2f3704b5c013be173ec7fe8358dc6fef33dcf805",
+      "source": "src/MatchmakingContextConstructors.cpp",
+      "symbol": "InitializeRequest",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 25
+    },
+    {
       "address": "0x4da9d0",
       "size": 244,
       "exact": true,
@@ -124577,6 +124629,17 @@
       "relocation_count": 2
     },
     {
+      "address": "0x4dc050",
+      "size": 504,
+      "exact": true,
+      "target_sha256": "751dbdadeb69b28e1a6084839f23ea33478df7ce509f0a0ef82e39cd13940673",
+      "compiled_sha256": "751dbdadeb69b28e1a6084839f23ea33478df7ce509f0a0ef82e39cd13940673",
+      "source": "src/MatchmakingContextConstructors.cpp",
+      "symbol": "InitializeRequest",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 25
+    },
+    {
       "address": "0x4dc250",
       "size": 244,
       "exact": true,
@@ -125169,6 +125232,17 @@
       "symbol": "_Z11TypeAddressILj5102768EEPKvv",
       "source_review": "manual_reconstruction",
       "relocation_count": 2
+    },
+    {
+      "address": "0x4ddd20",
+      "size": 512,
+      "exact": true,
+      "target_sha256": "f9d69dc4d7370fdf7f58ddb69f508b900673eb7a72de518bf0f5ed4e89a8bddc",
+      "compiled_sha256": "f9d69dc4d7370fdf7f58ddb69f508b900673eb7a72de518bf0f5ed4e89a8bddc",
+      "source": "src/MatchmakingContextConstructors.cpp",
+      "symbol": "InitializeRequest",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 25
     },
     {
       "address": "0x4ddf20",
@@ -126381,6 +126455,17 @@
       "relocation_count": 2
     },
     {
+      "address": "0x4e1420",
+      "size": 512,
+      "exact": true,
+      "target_sha256": "01b6cdb9fea3a5ab1d97992bc815a32b562581bd558d458e2382e52ba3f944fa",
+      "compiled_sha256": "01b6cdb9fea3a5ab1d97992bc815a32b562581bd558d458e2382e52ba3f944fa",
+      "source": "src/MatchmakingContextConstructors.cpp",
+      "symbol": "InitializeRequest",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 25
+    },
+    {
       "address": "0x4e1620",
       "size": 244,
       "exact": true,
@@ -126951,6 +127036,17 @@
       "symbol": "_Z11TypeAddressILj5123456EEPKvv",
       "source_review": "manual_reconstruction",
       "relocation_count": 2
+    },
+    {
+      "address": "0x4e2d90",
+      "size": 532,
+      "exact": true,
+      "target_sha256": "98b267b65e3b2e10d794e33ebea3ac0093c8b7454fce52947061886a2773811b",
+      "compiled_sha256": "98b267b65e3b2e10d794e33ebea3ac0093c8b7454fce52947061886a2773811b",
+      "source": "src/MatchmakingContextConstructors.cpp",
+      "symbol": "InitializeRequest",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 25
     },
     {
       "address": "0x4e2fb0",
@@ -127558,6 +127654,17 @@
       "relocation_count": 2
     },
     {
+      "address": "0x4e4820",
+      "size": 532,
+      "exact": true,
+      "target_sha256": "fb9191db267a81077a34b5ead5a95482efc3128da121eadff601027765ff7de8",
+      "compiled_sha256": "fb9191db267a81077a34b5ead5a95482efc3128da121eadff601027765ff7de8",
+      "source": "src/MatchmakingContextConstructors.cpp",
+      "symbol": "InitializeRequest",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 25
+    },
+    {
       "address": "0x4e4a40",
       "size": 244,
       "exact": true,
@@ -128161,6 +128268,17 @@
       "symbol": "_Z11TypeAddressILj5137312EEPKvv",
       "source_review": "manual_reconstruction",
       "relocation_count": 2
+    },
+    {
+      "address": "0x4e63b0",
+      "size": 512,
+      "exact": true,
+      "target_sha256": "79997b673b9e383a54a1b09d2f2f32a7168902036c7790e88a45a7ca684f60b5",
+      "compiled_sha256": "79997b673b9e383a54a1b09d2f2f32a7168902036c7790e88a45a7ca684f60b5",
+      "source": "src/MatchmakingContextConstructors.cpp",
+      "symbol": "InitializeRequest",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 25
     },
     {
       "address": "0x4e65b0",
@@ -129052,6 +129170,17 @@
       "symbol": "_Z11TypeAddressILj5148080EEPKvv",
       "source_review": "manual_reconstruction",
       "relocation_count": 2
+    },
+    {
+      "address": "0x4e8dc0",
+      "size": 516,
+      "exact": true,
+      "target_sha256": "871151af763e85f99e81f1487430ab6a12e1244dbd490d52fd8e7d3f059eac1c",
+      "compiled_sha256": "871151af763e85f99e81f1487430ab6a12e1244dbd490d52fd8e7d3f059eac1c",
+      "source": "src/MatchmakingContextConstructors.cpp",
+      "symbol": "InitializeRequest",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 25
     },
     {
       "address": "0x4e8fd0",
