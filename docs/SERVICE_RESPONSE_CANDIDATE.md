@@ -9,8 +9,8 @@ identity claim for this function.
 The routine parses a response, optionally updates request status, classifies the
 response, formats diagnostics for classification values 2 through 5, delivers the
 result, and conditionally completes the pending request. The diagnostic branch
-contains JSON and stringstream operations. That branch has **not** been behaviorally
-validated; its source remains a provisional candidate.
+contains JSON and stringstream operations. Its JSON-building prefix now has bounded
+checks, but the complete logging branch remains unverified and provisional.
 
 ## Checked paths
 
@@ -85,11 +85,38 @@ key through the field writer's destruction.
 
 These changes follow original instructions and type evidence. They reduce the
 candidate to 3,316 bytes against the original 3,320, but length similarity is not
-an exact match and the logging path remains unverified. The existing 6,912-case
-fixture and four negative controls cover only the documented non-logging paths.
+an exact match. The existing 6,912-case fixture and four negative controls cover
+only the documented non-logging paths; the additional prefix checks below do not
+establish correctness of the complete logging path.
 
 The JSON helper vtables also have original RTTI identities: `0x17c43b8` points
 through typeinfo `0x17c7b20` to `ubiservices::JsonWriter`, and `0x17c4368` points
 through `0x17c7af0` to `ubiservices::Json`. This identifies helper objects used
 inside the handler; it does not validate Ghidra's destructor label for the entire
 response-processing routine.
+
+## JSON-prefix checks
+
+Run the same comparison command with `--json-prefix` to exercise the original and
+compiled handler through JSON construction and transaction-header lookup. Execution
+stops at the call to `ios_base::init`, before stream formatting. This is deliberately
+a partial-path behavior check, with **zero exact-match credit**.
+
+The additional [fixture](../tools/service_response_json_prefix.py) passes **576 cases**:
+positive and high-bit unsigned HTTP/service codes, negative/zero/positive SDK codes,
+empty header trees, root/left/right hits, missing keys on either side, one or several
+JSON owners, optional scratch allocation, and classification values 2 and 5. It
+compares service traces and synthetic heap contents. It also checks full JSON-object
+zero initialization, numeric payload/type flags, selected header text, scratch-base
+recovery, reference-count changes, and temporary document cleanup order.
+
+Five compiled negative controls are rejected: wrong unsigned flags, wrong signed
+flags, reversed header-tree traversal, wrong fallback selection, and wrong scratch
+allocation base. The separate [receipt](../progress/service_response_json_prefix.json)
+records these results and source/header hashes.
+
+Allocation, JSON setters, field lookup, and text comparison use synthetic services;
+their real implementations are not validated here. Because execution stops inside
+the handler, these prefix checks do not check final stack restoration or callee-saved
+register restoration. Stream formatting, final logging, and subsequent cleanup on
+logging paths still need full-path validation.

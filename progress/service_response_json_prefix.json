@@ -1,0 +1,54 @@
+{
+  "cases": 576,
+  "negative_controls_rejected": [
+    "wrong_unsigned_flags",
+    "wrong_signed_flags",
+    "wrong_header_direction",
+    "wrong_header_fallback",
+    "wrong_scratch_base"
+  ],
+  "exact_credit": 0,
+  "original_function": "0x181f30",
+  "compiled_size": 3316,
+  "source_sha256": "8fb9eb83f51b2e6937faf733d6dfee763c0e5f0d19ac45e5dbdf441e09416b1e",
+  "original_sha256": "ea95638e6d6aaa0dc6cddd552a9366799aa1ec3bc07ee201f23f6c151103f5b8",
+  "source_dependencies": {
+    "src/UbisoftStringStream.h": "95ae29b1030a39953cc75f5422aeb03516fb53445999d5f23f2d6dcda9f5484b"
+  },
+  "compiler_flags": [
+    "-target",
+    "aarch64-none-elf",
+    "-std=c++11",
+    "-D_GNU_SOURCE",
+    "-U_WIN32",
+    "-U_WIN64",
+    "-O3",
+    "-mcpu=cortex-a57",
+    "-fno-omit-frame-pointer",
+    "-fPIC",
+    "-fno-strict-aliasing",
+    "-fno-vectorize",
+    "-fno-slp-vectorize",
+    "-fno-exceptions",
+    "-nostdinc++",
+    "-isystem",
+    "${REPO}\\vendor\\llvm-libcxx-8\\include",
+    "-isystem",
+    "${REPO}\\vendor\\musl\\include",
+    "-isystem",
+    "${REPO}\\vendor\\musl\\generated",
+    "-D_LIBCPP_HAS_NO_THREADS",
+    "-D_LIBCPP_HAS_MUSL_LIBC",
+    "-D__CLANG_MAX_ALIGN_T_DEFINED",
+    "-D_LIBCPP_DISABLE_VISIBILITY_ANNOTATIONS",
+    "-funwind-tables",
+    "-iquote",
+    "${REPO}\\src\\wip"
+  ],
+  "limits": [
+    "Execution stops at ios_base::init; no full-function return or stack-restoration check.",
+    "JSON allocation, field lookup, numeric/text setters and text comparison are synthetic.",
+    "Checks numeric payloads, header selection and temporary cleanup before stream initialization.",
+    "Does not check stream formatting, final logging, concurrency or full-game behavior."
+  ]
+}

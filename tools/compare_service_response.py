@@ -7,6 +7,7 @@ parser=argparse.ArgumentParser(description='Compare service-response paths exclu
 parser.add_argument('--original',type=Path,required=True)
 parser.add_argument('--clang8',type=Path,required=True)
 parser.add_argument('--build-dir',type=Path,required=True)
+parser.add_argument('--json-prefix',action='store_true',help='Check JSON construction up to stream initialization, not the complete logging path.')
 args=parser.parse_args()
 repo=ROOT
 from elf import Elf,relocate
@@ -47,11 +48,19 @@ flags=['-target', 'aarch64-none-elf', '-std=c++11', '-D_GNU_SOURCE', '-U_WIN32',
 flags=[str(ROOT/x) if x.startswith("vendor/") else x for x in flags]
 flags += ["-iquote", str(ROOT/"src/wip")]
 def build(source,name):
- obj=compile_family(compiler,source,out/(name+'.o'),dict(flags=flags));code,rels=obj.method('ProcessServiceResponse');code=bytearray(code);cells={}
+ obj=compile_family(compiler,source,out/(name+'.o'),dict(flags=flags));code,rels=obj.method('ProcessServiceResponse');code=bytearray(code);cells={};sections={}
  for r in rels:
   symbol=r['symbol'];target=known.get(symbol,b.STUB+0xf00)
+  record=r['symbol_record']
+  if not symbol and record[3]:
+   section=record[3]
+   if section not in sections:
+    sections[section]=D+0x20000+len(sections)*0x1000
+    data=obj.section_bytes(obj.sections[section]);assert len(data)<=0x1000
+    b.mu.mem_write(sections[section],data)
+   target=sections[section]+record[4]
   if r['kind'] in (311,312):
-   if symbol not in cells:cells[symbol]=D+0x10000+len(cells)*8;b.put(cells[symbol],b.STUB+0xf00)
+   if symbol not in cells:cells[symbol]=D+0x10000+len(cells)*8;b.put(cells[symbol],known.get(symbol,b.STUB+0xf00))
    target=cells[symbol]
   relocate(code,r['offset'],r['kind'],target+r['addend'],b.MODEL)
  return bytes(code)
@@ -69,6 +78,10 @@ def run(entry,case):
  elif case['callback']=='heap':b.put(FN,FV);b.put(R+0x100,FN)
  b.execute(entry,R,INCOMING,RESULT)
  return trace,bytes(b.mu.mem_read(R,0x120)),bytes(b.mu.mem_read(STATUS,64)),bytes(b.mu.mem_read(PENDING,0xa0)),[bytes(b.mu.mem_read(obj,16)) for obj in OBJECTS]
+if args.json_prefix:
+ from service_response_json_prefix import run_fixture
+ run_fixture(sys.modules[__name__])
+ sys.exit(0)
 cases=[]
 for complete_flag,update,flip,state,stopped,owners,callback,transfer,kind,tree in itertools.product((False,True),(False,True),(False,True),(1,4),(False,True),(0,1,3),('none','inline','heap'),(False,True),(-2,0,6),(0,1,2,3)):
  cases.append(dict(complete=complete_flag,update=update,flip=flip,state=state,stopped=stopped,owners=owners,callback=callback,transfer=transfer,kind=kind,tree=tree))
