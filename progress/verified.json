@@ -1,9 +1,9 @@
 {
   "version": 1,
-  "generated_at": "2026-10-23T09:26:17.564784+00:00",
+  "generated_at": "2026-10-23T09:48:08.005842+00:00",
   "target_elf_sha256": "ea95638e6d6aaa0dc6cddd552a9366799aa1ec3bc07ee201f23f6c151103f5b8",
   "input_sha256": {
-    "config/builds.json": "21988e0b121d50e9c04ba168ae8fdecf74e125d8fa012738a6d03d8293a6966e",
+    "config/builds.json": "3ed2de41857eb9f8f498f6bf96373948e2c87b567cbfc6ab9e73a229ad51af81",
     "config/functions.tsv": "399e91468a04e0459194c10d68d2210d1157cedefeb19c7851886ca7632fcb18",
     "config/target.json": "23cc6a5227206a953e7668acf5e9ae5c02a25c23b7e7967f0450a814b888241a",
     "src/AbiCfg_aggregate_O2_omit.cpp": "55009ca4f1819fe53803025bf27b93a676c6137877b9d4492828e2e15c89307c",
@@ -645,6 +645,7 @@
     "src/SdkTextCompare.cpp": "835a2f72f2eef2c6d2dd1d5fdaf12b67099fd33361f7d35061fd6a8873fadafb",
     "src/SdkTextConstructor.cpp": "6f434e50913b4998df643889bd61f20a33582f686e8419560894d7f3a15b83c3",
     "src/SdkTextDetach.cpp": "b4eae43321e1748b06e0f16265353d946f1b33cdd40e02366ddbf86fd26f05c7",
+    "src/SdkTextFindFolded.cpp": "b64f13ad1b48d8bae680ca318f790e314ec9b3073a04c8ce646af75a57983a97",
     "src/SdkTextOperations.cpp": "efd182372e01da7f57a09c803932b65b2114f57c84c9bda0ebf159466619c2af",
     "src/SdkTextReplace.cpp": "3d16ab0e5101da103946f17ec199b58be37e1145775f24254f325d7f3b901772",
     "src/SdkTextReplaceAll.cpp": "6d9b02f4cf8897519100c97b40fb18e71f39cce1fc5ad01aef532ae37f3996f7",
@@ -2771,15 +2772,15 @@
     "vendor/zlib-1.2.11/zutil.h": "9a63f6690fac1620aa3cecee5752af618806da438a256b4a047fbcd289cac159"
   },
   "compiler_versions": {
-    "8.0.1": "clang version 8.0.1 (tags/RELEASE_801/final)",
-    "7.0.1": "clang version 7.0.1 (tags/RELEASE_701/final)"
+    "7.0.1": "clang version 7.0.1 (tags/RELEASE_701/final)",
+    "8.0.1": "clang version 8.0.1 (tags/RELEASE_801/final)"
   },
   "compiler_sha256": {
-    "8.0.1": "dffd62a213ec6cdb4430012a4a41c11e5e32c288f133d5391f9be49e1c5b69de",
-    "7.0.1": "c2f0a175157d9aaace8031f8e6d7ea0ed6142b4bcef287105e3ed227301f1002"
+    "7.0.1": "c2f0a175157d9aaace8031f8e6d7ea0ed6142b4bcef287105e3ed227301f1002",
+    "8.0.1": "dffd62a213ec6cdb4430012a4a41c11e5e32c288f133d5391f9be49e1c5b69de"
   },
-  "exact_functions": 29949,
-  "exact_bytes": 2944368,
+  "exact_functions": 29950,
+  "exact_bytes": 2944768,
   "builds": [
     {
       "id": "probes",
@@ -10000,6 +10001,11 @@
       "id": "sdk_uri_query",
       "compiler": "8.0.1",
       "object_sha256": "fc642e8e0b9ccfcec0d3bca30dc169ecb312dc1dfec12482bbb55c90d36e525d"
+    },
+    {
+      "id": "sdk_text_find_folded",
+      "compiler": "8.0.1",
+      "object_sha256": "7263bbd1ce7c16362f9d0e9d3c73053578c0c1e89184c0dc2b1d384364381d47"
     }
   ],
   "matches": [
@@ -11179,6 +11185,17 @@
       "symbol": "_Z16DestroyWithFrameILj370208EEvPv",
       "source_review": "manual_reconstruction",
       "relocation_count": 2
+    },
+    {
+      "address": "0x5a650",
+      "size": 400,
+      "exact": true,
+      "target_sha256": "7fde00f78e38b89a69b3d99b87e9af24b7e3fee9674b5f4c6841e70f64a089c3",
+      "compiled_sha256": "7fde00f78e38b89a69b3d99b87e9af24b7e3fee9674b5f4c6841e70f64a089c3",
+      "source": "src/SdkTextFindFolded.cpp",
+      "symbol": "FindSdkText",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 9
     },
     {
       "address": "0x5ae00",
