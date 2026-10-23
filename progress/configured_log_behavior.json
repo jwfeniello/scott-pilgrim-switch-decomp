@@ -1,0 +1,34 @@
+{
+  "address": "0x1535e0",
+  "exact_credit": false,
+  "cases": 672,
+  "negative_controls": [
+    {
+      "name": "category",
+      "case_index": 3
+    },
+    {
+      "name": "empty",
+      "case_index": 0
+    },
+    {
+      "name": "json_count",
+      "case_index": 2
+    },
+    {
+      "name": "reference",
+      "case_index": 0
+    }
+  ],
+  "source_sha256": "67e60df3f86db7bd052668375b312f4e19efff26b6e39a76a9d188645e948ec8",
+  "target_elf_sha256": "ea95638e6d6aaa0dc6cddd552a9366799aa1ec3bc07ee201f23f6c151103f5b8",
+  "stream_header_sha256": "95ae29b1030a39953cc75f5422aeb03516fb53445999d5f23f2d6dcda9f5484b",
+  "candidate_sha256": "ba545ec9f29f6b0dd67188d9e92adab2bab8ba61dc7a7b3d0c348b452184e688",
+  "boundary": "complete function return; original exact 352-byte string extraction executes; other services synthetic",
+  "limitations": [
+    "synthetic stream insertion, text/view constructors, allocator, logging and disposal",
+    "injected JSON cursor states",
+    "no concurrency or exceptions",
+    "not whole-game execution"
+  ]
+}
