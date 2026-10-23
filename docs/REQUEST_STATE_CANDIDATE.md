@@ -127,3 +127,28 @@ frame pointer and unwind-table generation. No assembly or byte patches are used.
 This exact family is separate from the still-unmatched 688-byte state-update
 candidate and its 480-case fixture. It does not establish a complete working
 matchmaking subsystem or a complete original class declaration.
+
+## Exact migration constructors
+
+[MatchmakingRequestConstructor.cpp](../src/MatchmakingRequestConstructor.cpp)
+adds complete matches for session migration (`0x4d7040`) and migration-success
+reporting (`0x4d7f30`): **two functions / 1,064 bytes**. Each is 532 bytes;
+all instruction bytes and checked relocation bindings agree with the original.
+
+The constructors transfer the owned relayer into the base constructor, release
+any remaining temporary ownership, initialize the request and operation, construct
+an 80-byte context and its shared control block, and attach a callback if a task
+is present. The task, shared ownership, operation, and disposer fields agree
+with the independently matched destructor layout. The supplied callback handler
+is stored separately from the relayer transferred to the base constructor.
+
+Two ordinary source structures resolved the final code-generation differences:
+callback attachment in an inline helper reproduces the original temporary stack
+layout, and a move constructor initialized through `release()` clears the source
+before storing the destination. A move that stores first gives the same function
+length but a different instruction ordering. These choices establish a matching
+reconstruction; they do not prove the original source used identical helpers.
+
+These ABI views retain explicit vtable references and provisional field types.
+They are not yet a portable implementation of the original class hierarchy.
+The other eleven constructors and the state-update family remain uncredited.
