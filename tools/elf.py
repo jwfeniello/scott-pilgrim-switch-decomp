@@ -147,6 +147,23 @@ def immutable_literal(obj,relocation):
     return content[offset:offset+width]
 
 
+def immutable_section(obj,relocation):
+    """Return a complete relocation-free read-only section and the referenced offset."""
+    symbol = relocation['symbol_record'];index = symbol[3]
+    require(0 < index < len(obj.sections),'Unresolved immutable section')
+    storage = obj.sections[index]
+    require(storage[1] == 1 and storage[2]&2 and not storage[2]&0x15,
+            'Not a nonmergeable immutable section')
+    require(storage[5] > 0,'Empty immutable section')
+    require(not any(s and s[1] in (4,9) and s[7] == index and s[5] for s in obj.sections),
+            'Immutable section contains relocations')
+    offset = symbol[4]+relocation['addend']
+    require(0 <= offset < storage[5],'Invalid immutable section offset')
+    data = obj.data[storage[4]:storage[4]+storage[5]]
+    require(len(data) == storage[5],'Truncated immutable section')
+    return data,offset
+
+
 def link_method(obj,recipe,original,relative):
     code,relocations = obj.method(recipe['symbol']);actual = bytearray(code)
     used = []
@@ -156,6 +173,14 @@ def link_method(obj,recipe,original,relative):
             binding = recipe['got_bindings'][name];target = int(binding['cell'],0)
             require(addend == 0 and relative.get(target) == int(binding['pointee'],0),'Original GOT pointee mismatch')
             require(target%8 == 0 and any(s[0] == 1 and s[1]&2 and s[3] <= target <= s[3]+s[6]-8 for s in original.segments),'GOT outside writable PT_LOAD')
+        elif str(relocation['symbol_record'][3]) in recipe.get('immutable_sections',{}):
+            require(kind not in (282,283),'Branch bound to immutable data')
+            data,offset = immutable_section(obj,relocation)
+            base = int(recipe['immutable_sections'][str(relocation['symbol_record'][3])],0)
+            require(any(s[1] != 8 and s[2]&2 and not s[2]&5 and s[3] <= base < base+len(data) <= s[3]+s[5]
+                        for s in original.sections),'Section destination is not immutable')
+            require(original.at(base,len(data)) == data,'Original immutable section bytes differ')
+            target = base+offset
         elif name in recipe.get('bindings',{}):
             target = int(recipe['bindings'][name],0)+addend
         else:

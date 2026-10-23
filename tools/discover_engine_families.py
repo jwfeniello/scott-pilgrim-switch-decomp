@@ -8,7 +8,7 @@ import struct
 import subprocess
 import tempfile
 
-from elf import Elf,immutable_literal,link_method,require
+from elf import Elf,immutable_literal,immutable_section,link_method,require
 from project import ROOT,digest,load
 
 MASKS = {275:0x9f00001f,311:0x9f00001f,277:0xffc003ff,278:0xffc003ff,
@@ -106,6 +106,14 @@ def recipe_for(obj,symbol,address,size,original,relative):
             mapping = recipe.setdefault('literals',{})
             require(literal.hex() not in mapping or mapping[literal.hex()] == hex(target),'Conflicting literal binding')
             mapping[literal.hex()] = hex(target)
+        elif kind not in (282,283) and storage and not name and storage[1] == 1 and storage[2]&2 and not storage[2]&0x15:
+            data,section_offset = immutable_section(obj,relocation)
+            base = target-section_offset
+            require(original.at(base,len(data)) == data,'Original immutable section differs')
+            mapping = recipe.setdefault('immutable_sections',{})
+            key = str(record[3])
+            require(key not in mapping or mapping[key] == hex(base),'Conflicting immutable section binding')
+            mapping[key] = hex(base)
         else:
             value = hex(target-addend)
             require(name not in recipe['bindings'] or recipe['bindings'][name] == value,'Conflicting symbol binding')

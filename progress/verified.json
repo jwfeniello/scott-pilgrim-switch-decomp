@@ -1,9 +1,9 @@
 {
   "version": 1,
-  "generated_at": "2026-10-23T11:12:41.282027+00:00",
+  "generated_at": "2026-10-23T11:22:53.431325+00:00",
   "target_elf_sha256": "ea95638e6d6aaa0dc6cddd552a9366799aa1ec3bc07ee201f23f6c151103f5b8",
   "input_sha256": {
-    "config/builds.json": "9b2d7de79be896cdd37ff1621291e292fd0ca4ca5b180fa4a2c8d644188b3943",
+    "config/builds.json": "c050c66f4e82cce211836bfb8b3859525d9a29fe74d41a15dc45048cca04fb69",
     "config/functions.tsv": "399e91468a04e0459194c10d68d2210d1157cedefeb19c7851886ca7632fcb18",
     "config/target.json": "23cc6a5227206a953e7668acf5e9ae5c02a25c23b7e7967f0450a814b888241a",
     "src/AbiCfg_aggregate_O2_omit.cpp": "55009ca4f1819fe53803025bf27b93a676c6137877b9d4492828e2e15c89307c",
@@ -640,6 +640,7 @@
     "src/SdkHttpLine.cpp": "5096da52abe3878b5c05edeefb84182e78bd2db88b61cd0bbca0a3e3add7a771",
     "src/SdkHttpRedirect.cpp": "2b3d3683ec3d6c65c0a67a1c6b560898584232841f9c5e2f83e8b322d70bde4a",
     "src/SdkHttpResponse.cpp": "b79cefe17f7e00ae881ef0e50a301cae67e06fbc2343377cfa3c145507482d0b",
+    "src/SdkHttpResult.cpp": "4c5be0a736af3ef4ae45df66a82748102070682232b2633a71738d4a4b98cff0",
     "src/SdkHttpStatus.cpp": "6d94a104ee9749ddc402ae717d7971f64c8c1def911a214604325b209620b27a",
     "src/SdkJson.cpp": "a4935f4d16aa0854610fe7a52d7d59ac674a7038a3a78bd2bbf0272434110a37",
     "src/SdkJsonBuffer.cpp": "c860abd082a874b98e79dbf20d2cc25568ed9e3ce84590f905cb02369988e4ce",
@@ -665,7 +666,7 @@
     "src/SdkUriSlice.cpp": "c5923e889a3cf952b42f28e0aeca168453dd4463a8a146ab58effa3ccca00b1f",
     "src/SdkWebSocketHeaders.cpp": "a51f199b5bdef66882e49390a6dee26d56c3e998c035084a9fac2070be93befa",
     "src/SdkWebSocketStartRequests.cpp": "86e8e0777bb835920e909b8de43c9ee69b39390ef9992e8ac5fadbcc92f539e7",
-    "src/SdkWebSocketValidate.cpp": "e932f3168f58c06521ff5689523b7716b27029f0dfe2a254bd2b95157eb62930",
+    "src/SdkWebSocketValidate.cpp": "5381670b1a437d3747ba9c855dedcba33b7feeabd4be21bed0294d6795ce2a42",
     "src/SdkWideConversion.cpp": "6b909ec8466aacbe57647a331b23855120efd927798dced601c372266ecbbede",
     "src/SharedCallbackConstruction.cpp": "fe897551395d63ff4ab7c40c9ce03c402cda8ef147698b4da58345674fd4a7f8",
     "src/SharedCountDestructor.cpp": "5fad9364c9a06ec0070a86becfd865267eadf0c6a53108037928482cf1630235",
@@ -1483,7 +1484,7 @@
     "src/typed_property_access_wide_instances.inc": "6d1c855d16f02f5787cb8ef642795f0ba54798cd36f4a55898ec2aa284f10306",
     "src/typed_property_access_wider_instances.inc": "8700e28ed0e5b0bb42b798972ee80f42801e6b67227a0f8ed9b9c2c8b7bffc83",
     "src/virtual_result_adapter_instances.inc": "4506d808ac6d0d0dac74021bc5813733b27be23ba0d0672d2e1e24c5093ca01c",
-    "tools/elf.py": "f7fc34e12ad245458cfeaf8d56a16e78a3376cb24b0b351502f9264c69cd3ca9",
+    "tools/elf.py": "989f9398286dfeb0244a8c1d839fae44e725bbc220223a64051bb59bf988a960",
     "tools/project.py": "0879471f16a829e0fd8c063d38d998983bbee1406d474c9436b2cc558cbebd79",
     "tools/verify.py": "5d3491b56d57b6474fd3a63c5ec875aecfec30ab5e0b05608f3fa84f03fbd001",
     "vendor/llvm-libcxx-4/include/CMakeLists.txt": "89b1b25225b193459740ab9fad3329205fb893e66f0ad9207a9a08d45d8f4808",
@@ -2790,8 +2791,8 @@
     "8.0.1": "dffd62a213ec6cdb4430012a4a41c11e5e32c288f133d5391f9be49e1c5b69de",
     "7.0.1": "c2f0a175157d9aaace8031f8e6d7ea0ed6142b4bcef287105e3ed227301f1002"
   },
-  "exact_functions": 29964,
-  "exact_bytes": 2953572,
+  "exact_functions": 29965,
+  "exact_bytes": 2963752,
   "builds": [
     {
       "id": "probes",
@@ -10066,12 +10067,17 @@
     {
       "id": "sdk_websocket_validate",
       "compiler": "8.0.1",
-      "object_sha256": "ddb6891e74dcb01cf92fff2c0d0652acfbe70519fb7154793802cf9bf86157f4"
+      "object_sha256": "57480a4173bad24f14abba9ea8b4fc08e1731127bc9c683a7a04a72b3eb12995"
     },
     {
       "id": "sdk_websocket_start_requests",
       "compiler": "8.0.1",
       "object_sha256": "da39546f5e4a772e9d70debe01b087effeebc0c9c625e3236b82de392d5604c5"
+    },
+    {
+      "id": "sdk_http_result",
+      "compiler": "8.0.1",
+      "object_sha256": "ac0a38edd14e08faa4eb23e4fa6cda856451e95d1705da165c7813ce5a41375c"
     }
   ],
   "matches": [
@@ -11339,6 +11345,17 @@
       "symbol": "_ZNSt3__16vectorIh22SimpleLibraryAllocatorIhLj1EEE6assignIPKcEENS_9enable_ifIXaasr21__is_forward_iteratorIT_EE5valuesr16is_constructibleIhNS_15iterator_traitsIS8_E9referenceEEE5valueEvE4typeES8_S8_",
       "source_review": "manual_reconstruction",
       "relocation_count": 3
+    },
+    {
+      "address": "0x613a0",
+      "size": 10180,
+      "exact": true,
+      "target_sha256": "7f9de46da217046b9dc6245e91f39a548510f7a4fb8ec9518441febd6be30c00",
+      "compiled_sha256": "7f9de46da217046b9dc6245e91f39a548510f7a4fb8ec9518441febd6be30c00",
+      "source": "src/SdkHttpResult.cpp",
+      "symbol": "ResultFromStatus",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 170
     },
     {
       "address": "0x64af0",

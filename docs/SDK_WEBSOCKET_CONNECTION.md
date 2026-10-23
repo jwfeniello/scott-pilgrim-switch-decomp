@@ -31,8 +31,9 @@ entry found by the recovered map comparator. It checks entry presence, not a
 nonempty value. This documents this game's predicate rather than a general
 HTTP redirect policy.
 
-`ValidateHandshake` returns the result helper at `0x613a0` for status other
-than 101. For 101, an optional check compares the expected accept text at
+`ValidateHandshake` passes statuses other than 101 to the
+[matched HTTP-status result mapper](SDK_HTTP_RESULT.md) at `0x613a0`.
+For 101, an optional check compares the expected accept text at
 request offset 168 with the `Sec-WebSocket-Accept` header value. Header lookup
 falls back to the response header object's auxiliary text when absent.
 

@@ -236,7 +236,7 @@ struct Result {
   Result(int c, const Text &t)
       : code(c), message(t), context(nullptr), flags(-1) {}
 };
-extern "C" Result DefaultResult();
+extern "C" Result ResultFromStatus(int);
 struct Handshake {
   unsigned char prefix[168];
   Text expected;
@@ -249,8 +249,9 @@ static bool Matches(const Handshake *request, const Text &value) {
   return request->expected.get()->text == value.get()->text;
 }
 extern "C" Result ValidateHandshake(const Response *self, bool check) {
-  if (ReadStatusCode(self) != 101)
-    return DefaultResult();
+  int status = ReadStatusCode(self);
+  if (status != 101)
+    return ResultFromStatus(status);
   if (check &&
       !Matches(static_cast<const Handshake *>(self->context),
                HeaderValue(self->headers, Text("Sec-WebSocket-Accept"))))
