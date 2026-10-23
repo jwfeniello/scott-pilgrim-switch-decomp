@@ -1,5 +1,5 @@
 // Unmatched reconstruction of original 0x4d7390 (688 bytes).
-// Callback return storage is provisional; original application type names are unknown.
+// Handler return uses an eight-byte indirect-result ABI view; see evidence in the docs.
 // See docs/REQUEST_STATE_CANDIDATE.md for verified scope and limitations.
 #include <stdint.h>
 struct Control {
@@ -26,7 +26,12 @@ struct Event {
  char unknown[40]; Shared data;
  Event(const Status&,const uint64_t&,const Shared&);
 };
-struct CallbackResult { uint64_t data[8]; };
+struct CallbackResult {
+ uint32_t code, detail;
+ // Nontrivial copy preserves the observed X8 indirect-return convention.
+ CallbackResult(const CallbackResult& other):code(other.code),detail(other.detail) {}
+};
+static_assert(sizeof(CallbackResult)==8,"handler result ABI view");
 struct Callback { virtual void Slot0();virtual void Slot1();virtual void Slot2();virtual void Slot3();virtual CallbackResult Invoke(const Event&); };
 struct Operation { char unknown[16];uint32_t state;char unknown14[0x34];Response response; };
 extern "C" { extern __attribute__((visibility("hidden"))) uint64_t GlobalToken; void LogResponse(const Response&); void DetachTask(void*,void*); void RemoveCallback(void*,void(*)(),void*); void CallbackIdentity(); }

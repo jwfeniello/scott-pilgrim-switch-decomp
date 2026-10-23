@@ -2,7 +2,7 @@
 
 `src/wip/RequestState.cpp` reconstructs the routine at `0x4d7390`. It is a
 candidate for a repeated 688-byte family, not an exact match. The current
-Clang 8.0.1 build has the original length and **19 differing instructions**
+Clang 8.0.1 build has the original length and **30 differing instructions**
 after checked external linking. Those differences address different stack
 slots. No instruction is masked or patched, and this work adds **zero exact
 bytes**. Other family members have not been validated with this candidate.
@@ -23,16 +23,34 @@ bytes**. Other family members have not been validated with this candidate.
 - The event payload receives the task pointer before dispatch. A non-null task
   is detached, its callback removed, and the request's task pointer cleared.
 
-Names such as Request, Event, and Operation are descriptive ABI views. This is
-service/request code; it is not identified as the main gameplay engine. The
-callback return type remains unresolved. A provisional 64-byte return object
-models its indirect return-storage calling convention, but the fixture only
-writes 16 bytes of that storage and does not prove the original return size.
+The request's class is identified by original RTTI as
+`storm::mm::helpers::SimpleStormMatchmakingAsyncOperation<SimpleRdvSessionMigrateCallContext, SimpleRdvSessionMigrateCallResult>`
+(the template arguments are also in `storm::mm::helpers`). Its vtable address
+point is `0x1827560`, with this routine in slot `0x10`; RTTI is at `0x18275d0`.
+The mapping tool verifies all thirteen related vtable/RTTI associations. Their
+specializations cover migration, migration-success reporting, ticket creation
+and cancellation, profile storage, session lock/create/update/join/leave,
+reservations, and host/join reporting. The original method name is not recovered.
+
+Constructor `0x4d7040` stores its supplied `storm::Handler*` at offset `0x1f8`.
+The separately supplied owned `SimpleResultRelayer` is passed to the base
+constructor; these must not be conflated. A compatible relayer's vtable slot
+`0x20` is `0xc3a480`, which forwards to slot `0x18` (`0x4a3370` for that class).
+That implementation writes two 32-bit result words through X8. This supports an
+eight-byte indirect-result ABI view, represented with nontrivial copy semantics
+in the candidate. It does not identify the actual dynamic handler supplied to
+this request or prove the complete original C++ return declaration.
+
+The earlier provisional 64-byte return buffer happened to produce only 19
+instruction differences. It has been replaced by the evidence-backed eight-byte
+view even though that currently produces 30 differences. The fixture now writes
+eight bytes, and still passes all comparisons. A smaller diagnostic difference
+alone does not justify keeping an unsupported type declaration.
 
 The source uses a switch for the state cases, direct callback dispatch, and
 unwind-table generation. These reproduce the original branch form and prologue;
-stack placement still differs. Experimental return-storage sizes, alternative
-local declarations, compiler profiles, and stack-coloring settings have not
+stack placement still differs. Alternative local declarations, compiler profiles, and stack-coloring settings
+have not
 produced a complete match.
 
 ## Bounded validation
@@ -58,6 +76,14 @@ full SDK behavior, and whole-game execution are not established.
 ```text
 python tools/compare_request_state.py --original <original.elf> --clang8 <clang++.exe> --build-dir <temporary-directory>
 ```
+
+Type associations can be reproduced with:
+
+```text
+python tools/map_request_state_types.py --original <original.elf>
+```
+
+The receipt is `progress/request_state_types.json`. This adds no exact credit.
 
 The optional Unicorn dependency is needed to run this research check. Its receipt
 is `progress/request_state_behavior.json`; exact totals remain exclusively in

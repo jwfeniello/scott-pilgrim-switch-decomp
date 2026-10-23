@@ -1,0 +1,126 @@
+{
+  "exact_match_credit": false,
+  "original_sha256": "ea95638e6d6aaa0dc6cddd552a9366799aa1ec3bc07ee201f23f6c151103f5b8",
+  "family": [
+    {
+      "address": "0x4d7390",
+      "vtable_address_point": "0x1827560",
+      "update_slot": "0x10",
+      "rtti": "0x18275d0",
+      "name_address": "0x1376490",
+      "rtti_name": "N5storm2mm7helpers36SimpleStormMatchmakingAsyncOperationINS1_34SimpleRdvSessionMigrateCallContextENS1_33SimpleRdvSessionMigrateCallResultEEE",
+      "function_sha256": "c6c0952c94bda634734006f1ac66fd4768962cb68abe6bcd1bdc7a6dfc36a857"
+    },
+    {
+      "address": "0x4d8280",
+      "vtable_address_point": "0x1827800",
+      "update_slot": "0x10",
+      "rtti": "0x1827870",
+      "name_address": "0x1376c55",
+      "rtti_name": "N5storm2mm7helpers36SimpleStormMatchmakingAsyncOperationINS1_34SimpleRdvSessionMigrateCallContextENS1_48SimpleRdvSessionMigrationReportSuccessCallResultEEE",
+      "function_sha256": "149eb747d076b676ebe173286f448fa17861a01a95925209d32745cdbd02f990"
+    },
+    {
+      "address": "0x4d8dd0",
+      "vtable_address_point": "0x1827a18",
+      "update_slot": "0x10",
+      "rtti": "0x1827a88",
+      "name_address": "0x1377295",
+      "rtti_name": "N5storm2mm7helpers36SimpleStormMatchmakingAsyncOperationINS1_32SimpleRdvCreateTicketCallContextENS1_31SimpleRdvCreateTicketCallResultEEE",
+      "function_sha256": "39c57bd13601b1621e8b62c7a155abf1fe6835a9234d8821a3c845a0a38d2583"
+    },
+    {
+      "address": "0x4dab00",
+      "vtable_address_point": "0x1827f98",
+      "update_slot": "0x10",
+      "rtti": "0x1828008",
+      "name_address": "0x1377c23",
+      "rtti_name": "N5storm2mm7helpers36SimpleStormMatchmakingAsyncOperationINS1_32SimpleRdvCancelTicketCallContextENS1_31SimpleRdvCancelTicketCallResultEEE",
+      "function_sha256": "6d39042569229090247d09c39e143d3489b2b5cbf60ed1c710f6e347230a0941"
+    },
+    {
+      "address": "0x4dc380",
+      "vtable_address_point": "0x1828518",
+      "update_slot": "0x10",
+      "rtti": "0x1828588",
+      "name_address": "0x1378522",
+      "rtti_name": "N5storm2mm7helpers36SimpleStormMatchmakingAsyncOperationINS1_38SimpleRdvStorePlayerProfileCallContextENS1_37SimpleRdvStorePlayerProfileCallResultEEE",
+      "function_sha256": "1426a61ca8d6ddfa464a2852266a67b1bb7820b9525e9d524af6af60b4113083"
+    },
+    {
+      "address": "0x4de050",
+      "vtable_address_point": "0x1828ad0",
+      "update_slot": "0x10",
+      "rtti": "0x1828b40",
+      "name_address": "0x1378ed5",
+      "rtti_name": "N5storm2mm7helpers36SimpleStormMatchmakingAsyncOperationINS1_31SimpleRdvSessionLockCallContextENS1_30SimpleRdvSessionLockCallResultEEE",
+      "function_sha256": "88187aa443f58d1bd387be4e7149ab678c3450aa5ca7c10f66106dd5f109a413"
+    },
+    {
+      "address": "0x4df8b0",
+      "vtable_address_point": "0x1829050",
+      "update_slot": "0x10",
+      "rtti": "0x18290c0",
+      "name_address": "0x13797de",
+      "rtti_name": "N5storm2mm7helpers36SimpleStormMatchmakingAsyncOperationINS1_33SimpleRdvSessionCreateCallContextENS1_32SimpleRdvSessionCreateCallResultEEE",
+      "function_sha256": "1d417a8f9886d0056252a7b9446c12f90bf8e35ddf1ebdab9d00fbcc19791efd"
+    },
+    {
+      "address": "0x4e1750",
+      "vtable_address_point": "0x18295f0",
+      "update_slot": "0x10",
+      "rtti": "0x1829660",
+      "name_address": "0x137a154",
+      "rtti_name": "N5storm2mm7helpers36SimpleStormMatchmakingAsyncOperationINS1_35SimpleRdvAddReservationsCallContextENS1_34SimpleRdvAddReservationsCallResultEEE",
+      "function_sha256": "6876a4af5453b8bfae0d8f4481bc2e1776b627b6ebd2ff4f50db4485f78ce704"
+    },
+    {
+      "address": "0x4e30e0",
+      "vtable_address_point": "0x1829b70",
+      "update_slot": "0x10",
+      "rtti": "0x1829be0",
+      "name_address": "0x137ab7d",
+      "rtti_name": "N5storm2mm7helpers36SimpleStormMatchmakingAsyncOperationINS1_30SimpleRdvHostReportCallContextENS1_29SimpleRdvHostReportCallResultEEE",
+      "function_sha256": "e4c4665685184c1734d3c56c830af3a7332c982fe47f4bc58bed768f86aa1d2c"
+    },
+    {
+      "address": "0x4e4b70",
+      "vtable_address_point": "0x182a110",
+      "update_slot": "0x10",
+      "rtti": "0x182a180",
+      "name_address": "0x137b4ce",
+      "rtti_name": "N5storm2mm7helpers36SimpleStormMatchmakingAsyncOperationINS1_30SimpleReportJoinRdvCallContextENS1_36SimpleRdvSessionJoinReportCallResultEEE",
+      "function_sha256": "17f453961d305ac6b67974cfa3d3cc63aeee7738f173283a86e6a48fa99225ea"
+    },
+    {
+      "address": "0x4e66e0",
+      "vtable_address_point": "0x182a6b0",
+      "update_slot": "0x10",
+      "rtti": "0x182a720",
+      "name_address": "0x137be73",
+      "rtti_name": "N5storm2mm7helpers36SimpleStormMatchmakingAsyncOperationINS1_33SimpleRdvSessionUpdateCallContextENS1_32SimpleRdvSessionUpdateCallResultEEE",
+      "function_sha256": "53deb0e87f14f4720b1f22036f38145a9cb138937bd47b47d0ed0fb45cb0b8ff"
+    },
+    {
+      "address": "0x4e7540",
+      "vtable_address_point": "0x182a950",
+      "update_slot": "0x10",
+      "rtti": "0x182a9c0",
+      "name_address": "0x137c5bf",
+      "rtti_name": "N5storm2mm7helpers36SimpleStormMatchmakingAsyncOperationINS1_31SimpleRdvSessionJoinCallContextENS1_30SimpleRdvSessionJoinCallResultEEE",
+      "function_sha256": "40a6264ce2b22dc456aac6c6d449929998ea0e6b17269cef8eefa6989b6f52f2"
+    },
+    {
+      "address": "0x4e9100",
+      "vtable_address_point": "0x182aef0",
+      "update_slot": "0x10",
+      "rtti": "0x182af60",
+      "name_address": "0x137ceea",
+      "rtti_name": "N5storm2mm7helpers36SimpleStormMatchmakingAsyncOperationINS1_32SimpleRdvSessionLeaveCallContextENS1_31SimpleRdvSessionLeaveCallResultEEE",
+      "function_sha256": "a9648df7959354b1b7db3be7ec0e1b93de97620b227e85f4dc61e4dbad3c07aa"
+    }
+  ],
+  "limits": [
+    "Class identities and vtable slots only; original method names and complete class declarations are not recovered."
+  ]
+}

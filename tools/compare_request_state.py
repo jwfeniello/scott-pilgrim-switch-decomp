@@ -31,7 +31,7 @@ def construct():
  b.mu.mem_write(dest,b'\0'*64);b.put(dest,0x1826c98);b.write(dest+8,'<ii',*status);b.write(dest+48,'<QQ',PAYLOAD,EVENTCONTROL)
 def invoke():
  event=b.arg(1);trace.append(('invoke',b.read(event+8,'<ii'),get(PAYLOAD+8)))
- b.mu.mem_write(b.arg(8),b'\0'*16)
+ b.mu.mem_write(b.arg(8),b'\0'*8)
  if force:b.put(EVENTCONTROL+8,0)
 def dispose():trace.append(('dispose',b.arg(0)))
 def weak():trace.append(('weak',b.arg(0)))
@@ -50,7 +50,7 @@ def run(code,args):
 cases=0
 for args in itertools.product((0,2,3,4,5),range(4),(False,True),(-1,0,1),(False,True),(-32768,32767)):
  a=run(original,args);z=run(linked,args);assert a==z,args;cases+=1
-report=dict(source_sha256=hashlib.sha256(source_path.read_bytes()).hexdigest(),original_sha256=hashlib.sha256(e.data).hexdigest(),exact=linked==original,exact_credit=0,cases=cases,recipe=recipe,different_word_offsets=diff,compiled_size=len(linked),compiled_sha256=hashlib.sha256(linked).hexdigest(),limits=['Synthetic deterministic external copy, logging, event constructor, callback, weak-release and task-cleanup services.','Callback return extent not recovered; fixture writes 16 bytes only.','No exception, concurrency, real SDK, or whole-game validation.'])
+report=dict(source_sha256=hashlib.sha256(source_path.read_bytes()).hexdigest(),original_sha256=hashlib.sha256(e.data).hexdigest(),exact=linked==original,exact_credit=0,cases=cases,recipe=recipe,different_word_offsets=diff,compiled_size=len(linked),compiled_sha256=hashlib.sha256(linked).hexdigest(),limits=['Synthetic deterministic external copy, logging, event constructor, callback, weak-release and task-cleanup services.','Eight-byte indirect-result ABI view follows inspected Handler-compatible implementation; the actual supplied dynamic handler is not established.','No exception, concurrency, real SDK, or whole-game validation.'])
 print('PASSED',cases,flush=True)
 
 from discover_engine_families import compile_family
