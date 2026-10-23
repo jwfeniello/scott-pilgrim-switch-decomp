@@ -223,3 +223,49 @@ helper at `0x81300`, then initialize the reference-counted string object.
 The temporary wide string is passed by value to the construction helper; this
 preserves the original stack layout and destruction order. The conversion
 helper itself is still external to this reconstruction.
+
+## Shared string detachment
+
+`SdkTextDetach.cpp` reconstructs the complete 812-byte function at `0x7efe0`.
+When the signed reference count is less than two it returns without allocation.
+Otherwise it creates a new 40-byte string object: the `preserve` argument
+selects either a copy of the current contents or an empty string. It assigns
+the new reference through an acquire/recheck/compare-exchange retention loop,
+releases the former reference, then releases its temporary owner.
+
+The source string is passed directly to the object constructor. A deferred
+string-view conversion preserves initialization and source-access order.
+These are reconstructed source expressions, not recovered original class
+definitions. The full function matches with Clang 8.0.1 and libc++8, including
+its allocator, vtable, and library-call bindings.
+
+## String prefix and replacement wrapper
+
+`SdkTextOperations.cpp` matches the 304-byte prefix function at `0x7f630`
+and the 384-byte replacement wrapper at `0x7f760`. The prefix helper returns
+a string by value, copying the requested byte count when it fits, or the full
+string otherwise. The replacement wrapper obtains character pointers from
+two reference-counted strings and calls `0x7f8e0`, then wraps its returned
+string in a new reference-counted object. The search-and-replace implementation
+at `0x7f8e0` is matched separately in `SdkTextReplace.cpp`.
+
+`SdkTextReplace.cpp` matches all 1,048 bytes of `0x7f8e0`. It searches for
+the first occurrence of a nonempty character string, then combines the prefix,
+replacement, and suffix. An empty search string or no match returns a copy
+of the input. It calls the matched prefix helper and the original string
+append implementation. Its manual search uses the original `i + j <= size`
+bound, including access to the terminator, and preserves the original repeated
+length and atomic-owner reads. This is reconstruction of the original behavior,
+not a generalized replacement API.
+
+`SdkTextWrapping.cpp` matches five separate 316-byte wrappers at `0x47620`,
+`0x47760`, `0x7fd00`, `0x80020`, and `0x80400`. Each obtains a string result
+from its own bound operation and creates a reference-counted string object.
+The first-occurrence replacement wrapper is `0x7fd00`; the shared source name
+`TransformCharacters` is deliberately generic because the other wrappers
+bind different callees. The manifest records each binding independently.
+
+`SdkTextReplaceAll.cpp` matches the 480-byte function at `0x7fe40`. It copies
+the input string, repeatedly finds and replaces the search string, and advances
+by the replacement string's length. It preserves the original loop, including
+its lack of an explicit empty-search guard; no new edge-case policy is added.

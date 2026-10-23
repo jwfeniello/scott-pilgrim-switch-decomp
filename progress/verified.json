@@ -1,9 +1,9 @@
 {
   "version": 1,
-  "generated_at": "2026-10-23T07:11:59.814807+00:00",
+  "generated_at": "2026-10-23T07:26:28.544628+00:00",
   "target_elf_sha256": "ea95638e6d6aaa0dc6cddd552a9366799aa1ec3bc07ee201f23f6c151103f5b8",
   "input_sha256": {
-    "config/builds.json": "e33fb1e03986a1082d3538ba7d78fe4aa5a4aebf6a9e28c4dfb07945a18d8203",
+    "config/builds.json": "b6d83ab8a4ca2e22ac4a0fb1ac6f3aba5a4515a923cc071ca3974d7141c2d527",
     "config/functions.tsv": "399e91468a04e0459194c10d68d2210d1157cedefeb19c7851886ca7632fcb18",
     "config/target.json": "23cc6a5227206a953e7668acf5e9ae5c02a25c23b7e7967f0450a814b888241a",
     "src/AbiCfg_aggregate_O2_omit.cpp": "55009ca4f1819fe53803025bf27b93a676c6137877b9d4492828e2e15c89307c",
@@ -637,6 +637,11 @@
     "src/SdkOwnerSimpleOwnerKeepPicUnwind.cpp": "8fc2b5afdba4f85a0404131c8b2fb269ec4ce96f7f37f2e73d9f742682950ea7",
     "src/SdkTextCompare.cpp": "835a2f72f2eef2c6d2dd1d5fdaf12b67099fd33361f7d35061fd6a8873fadafb",
     "src/SdkTextConstructor.cpp": "6f434e50913b4998df643889bd61f20a33582f686e8419560894d7f3a15b83c3",
+    "src/SdkTextDetach.cpp": "b4eae43321e1748b06e0f16265353d946f1b33cdd40e02366ddbf86fd26f05c7",
+    "src/SdkTextOperations.cpp": "efd182372e01da7f57a09c803932b65b2114f57c84c9bda0ebf159466619c2af",
+    "src/SdkTextReplace.cpp": "3d16ab0e5101da103946f17ec199b58be37e1145775f24254f325d7f3b901772",
+    "src/SdkTextReplaceAll.cpp": "6d9b02f4cf8897519100c97b40fb18e71f39cce1fc5ad01aef532ae37f3996f7",
+    "src/SdkTextWrapping.cpp": "322fd2baad2f87357555c406d7d5503296be3e97267a6975144d3ae54e6f3d73",
     "src/SharedCallbackConstruction.cpp": "fe897551395d63ff4ab7c40c9ce03c402cda8ef147698b4da58345674fd4a7f8",
     "src/SharedCountDestructor.cpp": "5fad9364c9a06ec0070a86becfd865267eadf0c6a53108037928482cf1630235",
     "src/SimdRecovery_abi_bytevector16_omit_direct.cpp": "566d3e9bd45d43c8419d7a2bce96efd4a07e03b1dccc21978346e41e38473129",
@@ -2745,15 +2750,15 @@
     "vendor/zlib-1.2.11/zutil.h": "9a63f6690fac1620aa3cecee5752af618806da438a256b4a047fbcd289cac159"
   },
   "compiler_versions": {
-    "8.0.1": "clang version 8.0.1 (tags/RELEASE_801/final)",
-    "7.0.1": "clang version 7.0.1 (tags/RELEASE_701/final)"
+    "7.0.1": "clang version 7.0.1 (tags/RELEASE_701/final)",
+    "8.0.1": "clang version 8.0.1 (tags/RELEASE_801/final)"
   },
   "compiler_sha256": {
-    "8.0.1": "dffd62a213ec6cdb4430012a4a41c11e5e32c288f133d5391f9be49e1c5b69de",
-    "7.0.1": "c2f0a175157d9aaace8031f8e6d7ea0ed6142b4bcef287105e3ed227301f1002"
+    "7.0.1": "c2f0a175157d9aaace8031f8e6d7ea0ed6142b4bcef287105e3ed227301f1002",
+    "8.0.1": "dffd62a213ec6cdb4430012a4a41c11e5e32c288f133d5391f9be49e1c5b69de"
   },
-  "exact_functions": 29915,
-  "exact_bytes": 2923664,
+  "exact_functions": 29925,
+  "exact_bytes": 2928272,
   "builds": [
     {
       "id": "probes",
@@ -9884,6 +9889,31 @@
       "id": "sdk_text_constructor",
       "compiler": "8.0.1",
       "object_sha256": "99b8d6befdb187ab9046c98cf9bd65be5a71ed718783d1156e1e9ff935f7205d"
+    },
+    {
+      "id": "sdk_text_detach",
+      "compiler": "8.0.1",
+      "object_sha256": "8737e2f8704b729d209e4d4cc30303862b93c0e15c3597b93a30a61476a0d6bf"
+    },
+    {
+      "id": "sdk_text_operations",
+      "compiler": "8.0.1",
+      "object_sha256": "3a1751029801cc0a2692d7d20d906879e7d94eaed3734372033e0c92ef3b6985"
+    },
+    {
+      "id": "sdk_text_replace",
+      "compiler": "8.0.1",
+      "object_sha256": "763372d506cbb670a5b4d27f47823f247085ba662887749dc6853345137e9cbc"
+    },
+    {
+      "id": "sdk_text_wrapping",
+      "compiler": "8.0.1",
+      "object_sha256": "b0dfa01650575c3b47cce06f8b87c97bf7cfa9d47ed50618da48dd8bfea02a5b"
+    },
+    {
+      "id": "sdk_text_replace_all",
+      "compiler": "8.0.1",
+      "object_sha256": "f6e97e51f381ae1bec956c16f793ed7fd0562e4c82ff1298e09397195909f8c0"
     }
   ],
   "matches": [
@@ -10436,6 +10466,28 @@
       "symbol": "RecoveredLeaf_46b90",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 0
+    },
+    {
+      "address": "0x47620",
+      "size": 316,
+      "exact": true,
+      "target_sha256": "8b6137de798c68556d77efd50429527097808e7a6b00af8388d413b794934cbd",
+      "compiled_sha256": "8b6137de798c68556d77efd50429527097808e7a6b00af8388d413b794934cbd",
+      "source": "src/SdkTextWrapping.cpp",
+      "symbol": "TransformSdkText",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 8
+    },
+    {
+      "address": "0x47760",
+      "size": 316,
+      "exact": true,
+      "target_sha256": "0d7715e2cde3670ebd5208bccb6dbd15eaea18b2d08187d8bcf036820cafb1bc",
+      "compiled_sha256": "0d7715e2cde3670ebd5208bccb6dbd15eaea18b2d08187d8bcf036820cafb1bc",
+      "source": "src/SdkTextWrapping.cpp",
+      "symbol": "TransformSdkText",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 8
     },
     {
       "address": "0x47b70",
@@ -11824,6 +11876,17 @@
       "relocation_count": 13
     },
     {
+      "address": "0x7efe0",
+      "size": 812,
+      "exact": true,
+      "target_sha256": "2e6c45c77b0a24ad74ce6d263fcae7f1e48236f5137e466e188f69594609dd6d",
+      "compiled_sha256": "2e6c45c77b0a24ad74ce6d263fcae7f1e48236f5137e466e188f69594609dd6d",
+      "source": "src/SdkTextDetach.cpp",
+      "symbol": "DetachSdkText",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 9
+    },
+    {
       "address": "0x7f310",
       "size": 796,
       "exact": true,
@@ -11833,6 +11896,83 @@
       "symbol": "_ZNSt3__112basic_stringIcNS_11char_traitsIcEE22SimpleLibraryAllocatorIcLj1EEE6insertIPKcEENS_9enable_ifIXaasr21__is_forward_iteratorIT_EE5valuesr38__libcpp_string_gets_noexcept_iteratorISA_EE5valueENS_11__wrap_iterIPcEEE4typeENSB_IS8_EESA_SA_",
       "source_review": "library_abi_view",
       "relocation_count": 10
+    },
+    {
+      "address": "0x7f630",
+      "size": 304,
+      "exact": true,
+      "target_sha256": "dfb9a94ac095922f90b567105a9fd23dd4929a3c5f2a181cc7c957b7d16653d5",
+      "compiled_sha256": "dfb9a94ac095922f90b567105a9fd23dd4929a3c5f2a181cc7c957b7d16653d5",
+      "source": "src/SdkTextOperations.cpp",
+      "symbol": "PrefixSdkText",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 3
+    },
+    {
+      "address": "0x7f760",
+      "size": 384,
+      "exact": true,
+      "target_sha256": "3fc020f1429ff1f2123d0a1fcfddfd0ec9cd4408e6b3be87c6821d6c04d66a7f",
+      "compiled_sha256": "3fc020f1429ff1f2123d0a1fcfddfd0ec9cd4408e6b3be87c6821d6c04d66a7f",
+      "source": "src/SdkTextOperations.cpp",
+      "symbol": "ReplaceSdkText",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 8
+    },
+    {
+      "address": "0x7f8e0",
+      "size": 1048,
+      "exact": true,
+      "target_sha256": "f33d6e501bb2b4f30eab3de97419a0802827293d84c785053f3c9740c7812ff2",
+      "compiled_sha256": "f33d6e501bb2b4f30eab3de97419a0802827293d84c785053f3c9740c7812ff2",
+      "source": "src/SdkTextReplace.cpp",
+      "symbol": "ReplaceCharacters",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 17
+    },
+    {
+      "address": "0x7fd00",
+      "size": 316,
+      "exact": true,
+      "target_sha256": "b357dfac6d118e0119959a6e4324bd265e9dd1fea7dd9f9d0bf819987dae2f7b",
+      "compiled_sha256": "b357dfac6d118e0119959a6e4324bd265e9dd1fea7dd9f9d0bf819987dae2f7b",
+      "source": "src/SdkTextWrapping.cpp",
+      "symbol": "TransformSdkText",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 8
+    },
+    {
+      "address": "0x7fe40",
+      "size": 480,
+      "exact": true,
+      "target_sha256": "96e6316cd56ac165c0912ac52b960d99b26a93059fe0962567ab7ef1e555d6e6",
+      "compiled_sha256": "96e6316cd56ac165c0912ac52b960d99b26a93059fe0962567ab7ef1e555d6e6",
+      "source": "src/SdkTextReplaceAll.cpp",
+      "symbol": "ReplaceAllCharacters",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 11
+    },
+    {
+      "address": "0x80020",
+      "size": 316,
+      "exact": true,
+      "target_sha256": "0ffb6952b6925d4a5ca32260796255fa40150977dd8ee9d7b34ec545a2a58f08",
+      "compiled_sha256": "0ffb6952b6925d4a5ca32260796255fa40150977dd8ee9d7b34ec545a2a58f08",
+      "source": "src/SdkTextWrapping.cpp",
+      "symbol": "TransformSdkText",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 8
+    },
+    {
+      "address": "0x80400",
+      "size": 316,
+      "exact": true,
+      "target_sha256": "15eb2561f5d2b8eb2f16fea13998ebb9142d9d1fdff9bc09dc02943036d34637",
+      "compiled_sha256": "15eb2561f5d2b8eb2f16fea13998ebb9142d9d1fdff9bc09dc02943036d34637",
+      "source": "src/SdkTextWrapping.cpp",
+      "symbol": "TransformSdkText",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 8
     },
     {
       "address": "0x81ac0",
