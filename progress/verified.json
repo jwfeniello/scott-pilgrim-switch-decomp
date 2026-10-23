@@ -1,9 +1,9 @@
 {
   "version": 1,
-  "generated_at": "2026-10-23T10:08:07.543331+00:00",
+  "generated_at": "2026-10-23T10:25:28.022399+00:00",
   "target_elf_sha256": "ea95638e6d6aaa0dc6cddd552a9366799aa1ec3bc07ee201f23f6c151103f5b8",
   "input_sha256": {
-    "config/builds.json": "6a5ecd03bcf2389475d9343fe28b05afc39ccc494334435aa34e2bfcef7eb76a",
+    "config/builds.json": "3541edcd2275343864009d8943f17a8986bbcbd41218a253ddf1784923c87a38",
     "config/functions.tsv": "399e91468a04e0459194c10d68d2210d1157cedefeb19c7851886ca7632fcb18",
     "config/target.json": "23cc6a5227206a953e7668acf5e9ae5c02a25c23b7e7967f0450a814b888241a",
     "src/AbiCfg_aggregate_O2_omit.cpp": "55009ca4f1819fe53803025bf27b93a676c6137877b9d4492828e2e15c89307c",
@@ -629,6 +629,7 @@
     "src/ReferenceVectorDestructor.cpp": "ad016015e62453ab9ca83f41cd079e85d4567455d747f8c34ee3d8b2b29559a6",
     "src/ResultRecoveryOmit.cpp": "4ad2b8a8c10475c7451aea5a7e0efbd2064b552a6ef7daa14bf2f233386266f0",
     "src/SdkBase64.cpp": "9f9c6e5d360d20db3161b89851341d1f004527fc8432a71a9633811597cac74a",
+    "src/SdkByteVectorAssign.cpp": "c231f71df066da1bfbe58055783a682f62fe2b0eb1b9553f559c7c4cc7cefd7b",
     "src/SdkCalendar.cpp": "549941c96e0a56e58b481b7e1a122e4a9377cefec44fd1f43a7672f141c7f145",
     "src/SdkCompositeDestructor.cpp": "1fdca780939983f46d46f7eb2f3dc54172e08692973b6611dd9e87532f07cf2e",
     "src/SdkFrameBuild.cpp": "cb387cecd360a28e6b6f5c3d320fe23d4eaa8c2dccd1d77cec10a5d98f7caa82",
@@ -642,6 +643,7 @@
     "src/SdkJsonDocument.cpp": "4d232fbeea58587cc8a60f65ac2d8bb21c26ea17b0deeae70aa4ccfdee057d22",
     "src/SdkOwnerNoBaseOwnerKeepPicUnwind.cpp": "f5b33c74fb068eda3471b1ccdb60accce71daf06bb9cc3c4c4a1068edf667e35",
     "src/SdkOwnerSimpleOwnerKeepPicUnwind.cpp": "8fc2b5afdba4f85a0404131c8b2fb269ec4ce96f7f37f2e73d9f742682950ea7",
+    "src/SdkRequestHeader.cpp": "b2b85baf789ee4429b741bb6309bd68f9974728c4f440161166ca3250bd9d750",
     "src/SdkTextCaseSubstring.cpp": "10bd589e26ca0fc9702724d569acc3110d0a25898c2839fc7891c3d14ad97993",
     "src/SdkTextCompare.cpp": "835a2f72f2eef2c6d2dd1d5fdaf12b67099fd33361f7d35061fd6a8873fadafb",
     "src/SdkTextConstructor.cpp": "6f434e50913b4998df643889bd61f20a33582f686e8419560894d7f3a15b83c3",
@@ -2773,15 +2775,15 @@
     "vendor/zlib-1.2.11/zutil.h": "9a63f6690fac1620aa3cecee5752af618806da438a256b4a047fbcd289cac159"
   },
   "compiler_versions": {
-    "7.0.1": "clang version 7.0.1 (tags/RELEASE_701/final)",
-    "8.0.1": "clang version 8.0.1 (tags/RELEASE_801/final)"
+    "8.0.1": "clang version 8.0.1 (tags/RELEASE_801/final)",
+    "7.0.1": "clang version 7.0.1 (tags/RELEASE_701/final)"
   },
   "compiler_sha256": {
-    "7.0.1": "c2f0a175157d9aaace8031f8e6d7ea0ed6142b4bcef287105e3ed227301f1002",
-    "8.0.1": "dffd62a213ec6cdb4430012a4a41c11e5e32c288f133d5391f9be49e1c5b69de"
+    "8.0.1": "dffd62a213ec6cdb4430012a4a41c11e5e32c288f133d5391f9be49e1c5b69de",
+    "7.0.1": "c2f0a175157d9aaace8031f8e6d7ea0ed6142b4bcef287105e3ed227301f1002"
   },
-  "exact_functions": 29951,
-  "exact_bytes": 2945488,
+  "exact_functions": 29953,
+  "exact_bytes": 2946016,
   "builds": [
     {
       "id": "probes",
@@ -10012,6 +10014,16 @@
       "id": "sdk_base64",
       "compiler": "8.0.1",
       "object_sha256": "143fc035e6751ae60b63d639a23b7f8eb763853f74c757dcf721e2367dcde264"
+    },
+    {
+      "id": "sdk_request_header",
+      "compiler": "8.0.1",
+      "object_sha256": "869384131bb45d5a289ab9ec482d0b0371826ac9c55d57525a12b6646ec81222"
+    },
+    {
+      "id": "sdk_byte_vector_assign",
+      "compiler": "8.0.1",
+      "object_sha256": "61b31ed5daa2d553865a678db4295bf61317b6dd0c855a17f84f051336ccee48"
     }
   ],
   "matches": [
@@ -11270,6 +11282,17 @@
       "relocation_count": 2
     },
     {
+      "address": "0x603e0",
+      "size": 316,
+      "exact": true,
+      "target_sha256": "e53dc53065f287db2c61cae3cb53fbc0df2cccb4b8b3f3e290a29e49ca838dbe",
+      "compiled_sha256": "e53dc53065f287db2c61cae3cb53fbc0df2cccb4b8b3f3e290a29e49ca838dbe",
+      "source": "src/SdkByteVectorAssign.cpp",
+      "symbol": "_ZNSt3__16vectorIh22SimpleLibraryAllocatorIhLj1EEE6assignIPKcEENS_9enable_ifIXaasr21__is_forward_iteratorIT_EE5valuesr16is_constructibleIhNS_15iterator_traitsIS8_E9referenceEEE5valueEvE4typeES8_S8_",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 3
+    },
+    {
       "address": "0x64af0",
       "size": 8,
       "exact": true,
@@ -12356,6 +12379,17 @@
       "source": "src/CallRecoveryFrame.cpp",
       "symbol": "RecoveredLeaf_83780",
       "source_review": "generated_cxx_abi_view",
+      "relocation_count": 3
+    },
+    {
+      "address": "0x837b0",
+      "size": 212,
+      "exact": true,
+      "target_sha256": "fbd622104d60b04f8c46134d4c26a53bb6aca7679a50e6362cbbbfd91a538ce5",
+      "compiled_sha256": "fbd622104d60b04f8c46134d4c26a53bb6aca7679a50e6362cbbbfd91a538ce5",
+      "source": "src/SdkRequestHeader.cpp",
+      "symbol": "SetRequestHeader",
+      "source_review": "manual_reconstruction",
       "relocation_count": 3
     },
     {
