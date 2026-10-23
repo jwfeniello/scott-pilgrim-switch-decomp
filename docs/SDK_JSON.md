@@ -62,3 +62,42 @@ The JSON array-append routine at `0x44af0`, writer field-selection routine at
 `0x436b0`, and document initializer at `0x45180` remain unmatched. The existing
 response-handler fixture still uses synthetic JSON boundaries. These exact helper
 matches do not by themselves validate the complete logging path or a game build.
+
+## JSON view initializer candidate
+
+[src/wip/JsonFieldInit.cpp](../src/wip/JsonFieldInit.cpp) reconstructs the 368-byte
+initializer at `0x45720`. It clones the supplied view's owner, retains the shared
+document root, copies the member/current-value pointers, records the parent value,
+and copies the requested member name. Up to 15 name bytes plus the terminator fit
+in the 16-byte inline buffer. Longer names use a block with an eight-byte header
+containing the requested byte count and the offset to the character storage.
+
+The compiled candidate is also 368 bytes. After normal relocation to the original
+address, one instruction differs, at function offset `0xf0`: the candidate adds
+nine to the returned length, while the original adds eight to the previously
+computed length-plus-one. This is **not an exact match and receives zero credit**.
+The source is not in the matching-build manifest.
+
+[tools/compare_json_field_init.py](../tools/compare_json_field_init.py) runs both
+versions in the ARM64 harness. **216 cases** compare allocation/copy traces,
+destination fields, source-owner storage, root reference counts, and allocation
+contents, with stack and callee-saved register checks. Cases cover selected name
+lengths from zero through 255, two byte patterns, null/one-owner/multiple-owner
+roots, and null/non-null member and current-value pointers. Three compiled
+negative controls are rejected: an incorrect reference increment, an incorrect
+inline-storage boundary, and an incorrect allocation-header offset.
+
+```text
+python tools/compare_json_field_init.py --original <original.elf> --clang8 <clang++.exe> --build-dir <temporary-directory>
+```
+
+The optional Unicorn dependency is required. The
+[research receipt](../progress/json_field_init_behavior.json) records source and
+original hashes, flags, and the differing instruction offset. Allocation,
+`strlen`, and `memcpy` are synthetic services; allocation failure, giant sizes,
+invalid inputs, concurrency, and full-game behavior are outside these checks.
+
+The field selector at `0x436b0` uses this initializer while constructing returned
+writers and managing temporary shared views. A private reconstruction of that
+larger routine remains unmatched; verifying this dependency does not establish
+the complete field selector's behavior.
