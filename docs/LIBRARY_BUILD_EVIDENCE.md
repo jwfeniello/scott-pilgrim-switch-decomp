@@ -111,6 +111,13 @@ miniupnpc 1.9 still reproduces `parsexml`, `NameValueParserStartElt` and
 `GetValueFromNameValueList`. A private libc++ 4 deque instantiation reproduces
 `move_backward` for three 48-byte-element deques and one hash-table member.
 
+Three `std::deque` base destructors (`0x1740f0` and `0x194e80` for 32-byte
+elements, `0x18b5b0` for 40-byte elements) match libc++ 4 with `std::allocator`
+at the SDK profile (`-O3`, frame pointer, PIC, unwind tables).
+[`src/SdkDequeInstances.cpp`](../src/SdkDequeInstances.cpp) instantiates them
+over placeholder element types of those sizes; the two 32-byte addresses are
+identical instantiations for two element types the original does not name.
+
 ## Limits found in this batch
 
 - **Trap encoding.** 337 unmatched functions (40,860 bytes) contain the original

@@ -488007,6 +488007,645 @@
           "got_bindings": {}
         }
       ]
+    },
+    {
+      "id": "name_map_find_keep_pic_no_float_unwind_o3",
+      "source": "src/NameMapFindKeepPicNoFloatUnwindO3.cpp",
+      "compiler": "8.0.1",
+      "source_review": "manual_reconstruction",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-std=c++11",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-O3",
+        "-fno-omit-frame-pointer",
+        "-fPIC",
+        "-mno-implicit-float",
+        "-funwind-tables",
+        "-nostdinc++",
+        "-isystem",
+        "vendor/llvm-libcxx-4/include",
+        "-isystem",
+        "vendor/musl/include",
+        "-isystem",
+        "vendor/musl/generated",
+        "-D_LIBCPP_HAS_NO_THREADS",
+        "-D_LIBCPP_HAS_MUSL_LIBC",
+        "-D__CLANG_MAX_ALIGN_T_DEFINED",
+        "-D_LIBCPP_DISABLE_VISIBILITY_ANNOTATIONS",
+        "-D_GNU_SOURCE",
+        "-U_WIN32",
+        "-U_WIN64"
+      ],
+      "functions": [
+        {
+          "address": "0x379f40",
+          "size": 384,
+          "symbol": "_ZNSt3__112__hash_tableINS_17__hash_value_typeIN7NameMap4NameENS2_5ValueILj3645248EEEEENS_22__unordered_map_hasherIS3_S6_NS2_8NameHashELb1EEENS_21__unordered_map_equalIS3_S6_NS2_9NameEqualELb1EEENS_9allocatorIS6_EEE4findIS3_EENS_15__hash_iteratorIPNS_11__hash_nodeIS6_PvEEEERKT_",
+          "target_sha256": "1fa764d7a2786e96f7f1c4e6490e2ffda0e094913573672108f1435bf3e82e58",
+          "bindings": {
+            "NameMap_Crc32Table": "0x135d3cc",
+            "memcmp": "0xfa3520"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x386070",
+          "size": 384,
+          "symbol": "_ZNSt3__112__hash_tableINS_17__hash_value_typeIN7NameMap4NameENS2_5ValueILj3694704EEEEENS_22__unordered_map_hasherIS3_S6_NS2_8NameHashELb1EEENS_21__unordered_map_equalIS3_S6_NS2_9NameEqualELb1EEENS_9allocatorIS6_EEE4findIS3_EENS_15__hash_iteratorIPNS_11__hash_nodeIS6_PvEEEERKT_",
+          "target_sha256": "7bce72cf6048390c84068c2eb65f1b6b838f621a2e9c58bdb1f255c8dc27f12b",
+          "bindings": {
+            "NameMap_Crc32Table": "0x135d3cc",
+            "memcmp": "0xfa3520"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x387050",
+          "size": 384,
+          "symbol": "_ZNSt3__112__hash_tableINS_17__hash_value_typeIN7NameMap4NameENS2_5ValueILj3698768EEEEENS_22__unordered_map_hasherIS3_S6_NS2_8NameHashELb1EEENS_21__unordered_map_equalIS3_S6_NS2_9NameEqualELb1EEENS_9allocatorIS6_EEE4findIS3_EENS_15__hash_iteratorIPNS_11__hash_nodeIS6_PvEEEERKT_",
+          "target_sha256": "088d48659205941b3dc3618b8eeee94570b72d4275e4ecdbc6736d5e870fb4bc",
+          "bindings": {
+            "NameMap_Crc32Table": "0x135d3cc",
+            "memcmp": "0xfa3520"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x3ef1a0",
+          "size": 384,
+          "symbol": "_ZNSt3__112__hash_tableINS_17__hash_value_typeIN7NameMap4NameENS2_5ValueILj4125088EEEEENS_22__unordered_map_hasherIS3_S6_NS2_8NameHashELb1EEENS_21__unordered_map_equalIS3_S6_NS2_9NameEqualELb1EEENS_9allocatorIS6_EEE4findIS3_EENS_15__hash_iteratorIPNS_11__hash_nodeIS6_PvEEEERKT_",
+          "target_sha256": "22e6435981b4fd91800eb91488e1fd9d33daf43b3be6bf59080744193c850482",
+          "bindings": {
+            "NameMap_Crc32Table": "0x1368028",
+            "memcmp": "0xfa3520"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x4933a0",
+          "size": 384,
+          "symbol": "_ZNSt3__112__hash_tableINS_17__hash_value_typeIN7NameMap4NameENS2_5ValueILj4797344EEEEENS_22__unordered_map_hasherIS3_S6_NS2_8NameHashELb1EEENS_21__unordered_map_equalIS3_S6_NS2_9NameEqualELb1EEENS_9allocatorIS6_EEE4findIS3_EENS_15__hash_iteratorIPNS_11__hash_nodeIS6_PvEEEERKT_",
+          "target_sha256": "7bc200a0a2fbbbf97af8779596db4f6401d7bb3fd9adf3df895a0bfd5a9dbe58",
+          "bindings": {
+            "NameMap_Crc32Table": "0x136fcf8",
+            "memcmp": "0xfa3520"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x494260",
+          "size": 384,
+          "symbol": "_ZNSt3__112__hash_tableINS_17__hash_value_typeIN7NameMap4NameENS2_5ValueILj4801120EEEEENS_22__unordered_map_hasherIS3_S6_NS2_8NameHashELb1EEENS_21__unordered_map_equalIS3_S6_NS2_9NameEqualELb1EEENS_9allocatorIS6_EEE4findIS3_EENS_15__hash_iteratorIPNS_11__hash_nodeIS6_PvEEEERKT_",
+          "target_sha256": "f77a17bf2f97abb99ad60b0062f0405a3db929b898c6945a7d7a59e5210c684d",
+          "bindings": {
+            "NameMap_Crc32Table": "0x136fcf8",
+            "memcmp": "0xfa3520"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x5ce4c0",
+          "size": 384,
+          "symbol": "_ZNSt3__112__hash_tableINS_17__hash_value_typeIN7NameMap4NameENS2_5ValueILj6087872EEEEENS_22__unordered_map_hasherIS3_S6_NS2_8NameHashELb1EEENS_21__unordered_map_equalIS3_S6_NS2_9NameEqualELb1EEENS_9allocatorIS6_EEE4findIS3_EENS_15__hash_iteratorIPNS_11__hash_nodeIS6_PvEEEERKT_",
+          "target_sha256": "57cf65a83e0a3f0a8379127f556758b1b129d1b94d28d8c7406759710b747761",
+          "bindings": {
+            "NameMap_Crc32Table": "0x1388c48",
+            "memcmp": "0xfa3520"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x5d0c40",
+          "size": 384,
+          "symbol": "_ZNSt3__112__hash_tableINS_17__hash_value_typeIN7NameMap4NameENS2_5ValueILj6097984EEEEENS_22__unordered_map_hasherIS3_S6_NS2_8NameHashELb1EEENS_21__unordered_map_equalIS3_S6_NS2_9NameEqualELb1EEENS_9allocatorIS6_EEE4findIS3_EENS_15__hash_iteratorIPNS_11__hash_nodeIS6_PvEEEERKT_",
+          "target_sha256": "dc12c8abf482c7429db9095beb3d7dfed7e8fa574f6a16c2c38a3d177acef587",
+          "bindings": {
+            "NameMap_Crc32Table": "0x1388c48",
+            "memcmp": "0xfa3520"
+          },
+          "got_bindings": {}
+        }
+      ],
+      "header_roots": [
+        "vendor/llvm-libcxx-4/include",
+        "vendor/musl/include",
+        "vendor/musl/generated"
+      ]
+    },
+    {
+      "id": "lazy_type_registration_root_keep_pic",
+      "source": "src/LazyTypeRegistrationRootKeepPic.cpp",
+      "compiler": "8.0.1",
+      "source_review": "manual_reconstruction",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-std=c++11",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-O2",
+        "-fno-omit-frame-pointer",
+        "-fPIC"
+      ],
+      "functions": [
+        {
+          "address": "0x26ebb0",
+          "size": 220,
+          "symbol": "_Z16RegisterLazyTypeILj2550704ELj1175632311EEP18RegisteredTypeViewv",
+          "target_sha256": "daf65f53ee104c0868139ed1ef710a0fe44dfce908e380e92a1de0237a664497",
+          "bindings": {
+            "_ZN19RegistrationBindingILj2550704EE12EnsureParentEv": "0x2ac850",
+            "_ZN19RegistrationBindingILj2550704EE8RegisterEP18RegisteredTypeViewPK16RegistrationHashPvP17RegistrationCache": "0x6a9390",
+            "__cxa_guard_acquire": "0xfa4130",
+            "__cxa_guard_release": "0xfa4140"
+          },
+          "got_bindings": {
+            "_ZGVZ16RegisterLazyTypeILj2550704ELj1175632311EEP18RegisteredTypeViewvE4info": {
+              "cell": "0x18ee640",
+              "pointee": "0x1904a50"
+            },
+            "_ZZ16RegisterLazyTypeILj2550704ELj1175632311EEP18RegisteredTypeViewvE4info": {
+              "cell": "0x18ee650",
+              "pointee": "0x1904a44"
+            },
+            "_ZGVZ16RegisterLazyTypeILj2550704ELj1175632311EEP18RegisteredTypeViewvE5cache": {
+              "cell": "0x18ee648",
+              "pointee": "0x1904a68"
+            },
+            "_ZZ16RegisterLazyTypeILj2550704ELj1175632311EEP18RegisteredTypeViewvE5cache": {
+              "cell": "0x18ee658",
+              "pointee": "0x1904a58"
+            }
+          }
+        },
+        {
+          "address": "0x287270",
+          "size": 220,
+          "symbol": "_Z16RegisterLazyTypeILj2650736ELj2686546274EEP18RegisteredTypeViewv",
+          "target_sha256": "45d0b893a927489f1eceb6d8dfd110f294c1ddeed18a12fc00f930b0dc152220",
+          "bindings": {
+            "_ZN19RegistrationBindingILj2650736EE12EnsureParentEv": "0x287350",
+            "_ZN19RegistrationBindingILj2650736EE8RegisterEP18RegisteredTypeViewPK16RegistrationHashPvP17RegistrationCache": "0x6a9390",
+            "__cxa_guard_acquire": "0xfa4130",
+            "__cxa_guard_release": "0xfa4140"
+          },
+          "got_bindings": {
+            "_ZGVZ16RegisterLazyTypeILj2650736ELj2686546274EEP18RegisteredTypeViewvE4info": {
+              "cell": "0x18edf60",
+              "pointee": "0x19022d8"
+            },
+            "_ZZ16RegisterLazyTypeILj2650736ELj2686546274EEP18RegisteredTypeViewvE4info": {
+              "cell": "0x18edf68",
+              "pointee": "0x19022cc"
+            },
+            "_ZGVZ16RegisterLazyTypeILj2650736ELj2686546274EEP18RegisteredTypeViewvE5cache": {
+              "cell": "0x18ef580",
+              "pointee": "0x19022f0"
+            },
+            "_ZZ16RegisterLazyTypeILj2650736ELj2686546274EEP18RegisteredTypeViewvE5cache": {
+              "cell": "0x18ef588",
+              "pointee": "0x19022e0"
+            }
+          }
+        },
+        {
+          "address": "0x28f5b0",
+          "size": 220,
+          "symbol": "_Z16RegisterLazyTypeILj2684336ELj1539558318EEP18RegisteredTypeViewv",
+          "target_sha256": "19b89362279e6b9b6a643ba8560aff6122377747dac60c4340b004a613d2d1b3",
+          "bindings": {
+            "_ZN19RegistrationBindingILj2684336EE12EnsureParentEv": "0x28f710",
+            "_ZN19RegistrationBindingILj2684336EE8RegisterEP18RegisteredTypeViewPK16RegistrationHashPvP17RegistrationCache": "0x6a9390",
+            "__cxa_guard_acquire": "0xfa4130",
+            "__cxa_guard_release": "0xfa4140"
+          },
+          "got_bindings": {
+            "_ZGVZ16RegisterLazyTypeILj2684336ELj1539558318EEP18RegisteredTypeViewvE4info": {
+              "cell": "0x18efa20",
+              "pointee": "0x1902a68"
+            },
+            "_ZZ16RegisterLazyTypeILj2684336ELj1539558318EEP18RegisteredTypeViewvE4info": {
+              "cell": "0x18efa30",
+              "pointee": "0x1902a5c"
+            },
+            "_ZGVZ16RegisterLazyTypeILj2684336ELj1539558318EEP18RegisteredTypeViewvE5cache": {
+              "cell": "0x18efa28",
+              "pointee": "0x1902a80"
+            },
+            "_ZZ16RegisterLazyTypeILj2684336ELj1539558318EEP18RegisteredTypeViewvE5cache": {
+              "cell": "0x18efa38",
+              "pointee": "0x1902a70"
+            }
+          }
+        },
+        {
+          "address": "0x28fb30",
+          "size": 220,
+          "symbol": "_Z16RegisterLazyTypeILj2685744ELj1539558318EEP18RegisteredTypeViewv",
+          "target_sha256": "9a5a9f1ff96fa0ed73dc78e1ac8286df84de1610fe95d31660523c18a923f469",
+          "bindings": {
+            "_ZN19RegistrationBindingILj2685744EE12EnsureParentEv": "0x28fc10",
+            "_ZN19RegistrationBindingILj2685744EE8RegisterEP18RegisteredTypeViewPK16RegistrationHashPvP17RegistrationCache": "0x6a9390",
+            "__cxa_guard_acquire": "0xfa4130",
+            "__cxa_guard_release": "0xfa4140"
+          },
+          "got_bindings": {
+            "_ZGVZ16RegisterLazyTypeILj2685744ELj1539558318EEP18RegisteredTypeViewvE4info": {
+              "cell": "0x18efa78",
+              "pointee": "0x1902b20"
+            },
+            "_ZZ16RegisterLazyTypeILj2685744ELj1539558318EEP18RegisteredTypeViewvE4info": {
+              "cell": "0x18efa80",
+              "pointee": "0x1902b14"
+            },
+            "_ZGVZ16RegisterLazyTypeILj2685744ELj1539558318EEP18RegisteredTypeViewvE5cache": {
+              "cell": "0x18efa88",
+              "pointee": "0x1902b38"
+            },
+            "_ZZ16RegisterLazyTypeILj2685744ELj1539558318EEP18RegisteredTypeViewvE5cache": {
+              "cell": "0x18efa90",
+              "pointee": "0x1902b28"
+            }
+          }
+        },
+        {
+          "address": "0x2922a0",
+          "size": 220,
+          "symbol": "_Z16RegisterLazyTypeILj2695840ELj1539558318EEP18RegisteredTypeViewv",
+          "target_sha256": "9d26edb6f552f4994af5be6bf792071e8b244b621a92421b564074974acf4b57",
+          "bindings": {
+            "_ZN19RegistrationBindingILj2695840EE12EnsureParentEv": "0x292400",
+            "_ZN19RegistrationBindingILj2695840EE8RegisterEP18RegisteredTypeViewPK16RegistrationHashPvP17RegistrationCache": "0x6a9390",
+            "__cxa_guard_acquire": "0xfa4130",
+            "__cxa_guard_release": "0xfa4140"
+          },
+          "got_bindings": {
+            "_ZGVZ16RegisterLazyTypeILj2695840ELj1539558318EEP18RegisteredTypeViewvE4info": {
+              "cell": "0x18efc18",
+              "pointee": "0x1902d40"
+            },
+            "_ZZ16RegisterLazyTypeILj2695840ELj1539558318EEP18RegisteredTypeViewvE4info": {
+              "cell": "0x18efc28",
+              "pointee": "0x1902d34"
+            },
+            "_ZGVZ16RegisterLazyTypeILj2695840ELj1539558318EEP18RegisteredTypeViewvE5cache": {
+              "cell": "0x18efc20",
+              "pointee": "0x1902d58"
+            },
+            "_ZZ16RegisterLazyTypeILj2695840ELj1539558318EEP18RegisteredTypeViewvE5cache": {
+              "cell": "0x18efc30",
+              "pointee": "0x1902d48"
+            }
+          }
+        },
+        {
+          "address": "0x30e100",
+          "size": 220,
+          "symbol": "_Z16RegisterLazyTypeILj3203328ELj1539558318EEP18RegisteredTypeViewv",
+          "target_sha256": "8cfae9be8f601c948ec25a92c3f1ed13e41d20389b5fb77cfca2e04d4fc64e1c",
+          "bindings": {
+            "_ZN19RegistrationBindingILj3203328EE12EnsureParentEv": "0x30e1e0",
+            "_ZN19RegistrationBindingILj3203328EE8RegisterEP18RegisteredTypeViewPK16RegistrationHashPvP17RegistrationCache": "0x6a9390",
+            "__cxa_guard_acquire": "0xfa4130",
+            "__cxa_guard_release": "0xfa4140"
+          },
+          "got_bindings": {
+            "_ZGVZ16RegisterLazyTypeILj3203328ELj1539558318EEP18RegisteredTypeViewvE4info": {
+              "cell": "0x18f2c30",
+              "pointee": "0x1907da8"
+            },
+            "_ZZ16RegisterLazyTypeILj3203328ELj1539558318EEP18RegisteredTypeViewvE4info": {
+              "cell": "0x18f2c38",
+              "pointee": "0x1907d9c"
+            },
+            "_ZGVZ16RegisterLazyTypeILj3203328ELj1539558318EEP18RegisteredTypeViewvE5cache": {
+              "cell": "0x18f2c40",
+              "pointee": "0x1907dd0"
+            },
+            "_ZZ16RegisterLazyTypeILj3203328ELj1539558318EEP18RegisteredTypeViewvE5cache": {
+              "cell": "0x18f2c48",
+              "pointee": "0x1907db9"
+            }
+          }
+        },
+        {
+          "address": "0x56ff40",
+          "size": 220,
+          "symbol": "_Z16RegisterLazyTypeILj5701440ELj815102377EEP18RegisteredTypeViewv",
+          "target_sha256": "f64b8566d279e4a1acf7f0f4a4486d361e939915d2fdbca94512dfcfe698dbe8",
+          "bindings": {
+            "_ZN19RegistrationBindingILj5701440EE12EnsureParentEv": "0x570020",
+            "_ZN19RegistrationBindingILj5701440EE8RegisterEP18RegisteredTypeViewPK16RegistrationHashPvP17RegistrationCache": "0x6a9390",
+            "__cxa_guard_acquire": "0xfa4130",
+            "__cxa_guard_release": "0xfa4140"
+          },
+          "got_bindings": {
+            "_ZGVZ16RegisterLazyTypeILj5701440ELj815102377EEP18RegisteredTypeViewvE4info": {
+              "cell": "0x18fa158",
+              "pointee": "0x1915a28"
+            },
+            "_ZZ16RegisterLazyTypeILj5701440ELj815102377EEP18RegisteredTypeViewvE4info": {
+              "cell": "0x18fa168",
+              "pointee": "0x1915a18"
+            },
+            "_ZGVZ16RegisterLazyTypeILj5701440ELj815102377EEP18RegisteredTypeViewvE5cache": {
+              "cell": "0x18fa160",
+              "pointee": "0x1915a40"
+            },
+            "_ZZ16RegisterLazyTypeILj5701440ELj815102377EEP18RegisteredTypeViewvE5cache": {
+              "cell": "0x18fa170",
+              "pointee": "0x1915a30"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "type_registration_once_root_keep_pic_o3",
+      "source": "src/TypeRegistrationOnceRootKeepPicO3.cpp",
+      "compiler": "8.0.1",
+      "source_review": "manual_reconstruction",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-std=c++11",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-O3",
+        "-fno-omit-frame-pointer",
+        "-fPIC"
+      ],
+      "functions": [
+        {
+          "address": "0x26eac0",
+          "size": 232,
+          "symbol": "_Z16RegisterTypeOnceILj2550464EEvPvPK16RegistrationHash",
+          "target_sha256": "405927995ea2bb001c878f52fb3e789d449c43b60fba840443331dd99d8d2cc4",
+          "bindings": {
+            "_ZN11OnceBindingILj2550464EE8RegisterEP18RegisteredTypeViewPK16RegistrationHashPvP17RegistrationCache": "0x6a9390",
+            "__cxa_guard_acquire": "0xfa4130",
+            "__cxa_guard_release": "0xfa4140"
+          },
+          "got_bindings": {
+            "_ZZ16RegisterTypeOnceILj2550464EEvPvPK16RegistrationHashE10registered": {
+              "cell": "0x18ee638",
+              "pointee": "0x1904a70"
+            },
+            "_ZGVZ16RegisterTypeOnceILj2550464EEvPvPK16RegistrationHashE4info": {
+              "cell": "0x18ee640",
+              "pointee": "0x1904a50"
+            },
+            "_ZGVZ16RegisterTypeOnceILj2550464EEvPvPK16RegistrationHashE5cache": {
+              "cell": "0x18ee648",
+              "pointee": "0x1904a68"
+            },
+            "_ZZ16RegisterTypeOnceILj2550464EEvPvPK16RegistrationHashE4info": {
+              "cell": "0x18ee650",
+              "pointee": "0x1904a44"
+            },
+            "_ZZ16RegisterTypeOnceILj2550464EEvPvPK16RegistrationHashE5cache": {
+              "cell": "0x18ee658",
+              "pointee": "0x1904a58"
+            }
+          }
+        },
+        {
+          "address": "0x28f4c0",
+          "size": 232,
+          "symbol": "_Z16RegisterTypeOnceILj2684096EEvPvPK16RegistrationHash",
+          "target_sha256": "67d12f929939647ce0ff0130f6f7f291b9888aea303abc535d18871deca7a8a6",
+          "bindings": {
+            "_ZN11OnceBindingILj2684096EE8RegisterEP18RegisteredTypeViewPK16RegistrationHashPvP17RegistrationCache": "0x6a9390",
+            "__cxa_guard_acquire": "0xfa4130",
+            "__cxa_guard_release": "0xfa4140"
+          },
+          "got_bindings": {
+            "_ZZ16RegisterTypeOnceILj2684096EEvPvPK16RegistrationHashE10registered": {
+              "cell": "0x18efa18",
+              "pointee": "0x1902a88"
+            },
+            "_ZGVZ16RegisterTypeOnceILj2684096EEvPvPK16RegistrationHashE4info": {
+              "cell": "0x18efa20",
+              "pointee": "0x1902a68"
+            },
+            "_ZGVZ16RegisterTypeOnceILj2684096EEvPvPK16RegistrationHashE5cache": {
+              "cell": "0x18efa28",
+              "pointee": "0x1902a80"
+            },
+            "_ZZ16RegisterTypeOnceILj2684096EEvPvPK16RegistrationHashE4info": {
+              "cell": "0x18efa30",
+              "pointee": "0x1902a5c"
+            },
+            "_ZZ16RegisterTypeOnceILj2684096EEvPvPK16RegistrationHashE5cache": {
+              "cell": "0x18efa38",
+              "pointee": "0x1902a70"
+            }
+          }
+        },
+        {
+          "address": "0x2921b0",
+          "size": 232,
+          "symbol": "_Z16RegisterTypeOnceILj2695600EEvPvPK16RegistrationHash",
+          "target_sha256": "64c14d8178c609b9d44d3e7aa3299fccc7a2a2ed3d6386f633e0d1f14ae77b8a",
+          "bindings": {
+            "_ZN11OnceBindingILj2695600EE8RegisterEP18RegisteredTypeViewPK16RegistrationHashPvP17RegistrationCache": "0x6a9390",
+            "__cxa_guard_acquire": "0xfa4130",
+            "__cxa_guard_release": "0xfa4140"
+          },
+          "got_bindings": {
+            "_ZZ16RegisterTypeOnceILj2695600EEvPvPK16RegistrationHashE10registered": {
+              "cell": "0x18efc10",
+              "pointee": "0x1902d60"
+            },
+            "_ZGVZ16RegisterTypeOnceILj2695600EEvPvPK16RegistrationHashE4info": {
+              "cell": "0x18efc18",
+              "pointee": "0x1902d40"
+            },
+            "_ZGVZ16RegisterTypeOnceILj2695600EEvPvPK16RegistrationHashE5cache": {
+              "cell": "0x18efc20",
+              "pointee": "0x1902d58"
+            },
+            "_ZZ16RegisterTypeOnceILj2695600EEvPvPK16RegistrationHashE4info": {
+              "cell": "0x18efc28",
+              "pointee": "0x1902d34"
+            },
+            "_ZZ16RegisterTypeOnceILj2695600EEvPvPK16RegistrationHashE5cache": {
+              "cell": "0x18efc30",
+              "pointee": "0x1902d48"
+            }
+          }
+        },
+        {
+          "address": "0x56fe50",
+          "size": 232,
+          "symbol": "_Z16RegisterTypeOnceILj5701200EEvPvPK16RegistrationHash",
+          "target_sha256": "61e93ab979076f4d2ba719b441855e6093126aac2d35d3b0693cdf885261d684",
+          "bindings": {
+            "_ZN11OnceBindingILj5701200EE8RegisterEP18RegisteredTypeViewPK16RegistrationHashPvP17RegistrationCache": "0x6a9390",
+            "__cxa_guard_acquire": "0xfa4130",
+            "__cxa_guard_release": "0xfa4140"
+          },
+          "got_bindings": {
+            "_ZZ16RegisterTypeOnceILj5701200EEvPvPK16RegistrationHashE10registered": {
+              "cell": "0x18fa150",
+              "pointee": "0x1915a48"
+            },
+            "_ZGVZ16RegisterTypeOnceILj5701200EEvPvPK16RegistrationHashE4info": {
+              "cell": "0x18fa158",
+              "pointee": "0x1915a28"
+            },
+            "_ZGVZ16RegisterTypeOnceILj5701200EEvPvPK16RegistrationHashE5cache": {
+              "cell": "0x18fa160",
+              "pointee": "0x1915a40"
+            },
+            "_ZZ16RegisterTypeOnceILj5701200EEvPvPK16RegistrationHashE4info": {
+              "cell": "0x18fa168",
+              "pointee": "0x1915a18"
+            },
+            "_ZZ16RegisterTypeOnceILj5701200EEvPvPK16RegistrationHashE5cache": {
+              "cell": "0x18fa170",
+              "pointee": "0x1915a30"
+            }
+          }
+        },
+        {
+          "address": "0x57f3d0",
+          "size": 232,
+          "symbol": "_Z16RegisterTypeOnceILj5764048EEvPvPK16RegistrationHash",
+          "target_sha256": "ce2ce09b4d27370e205ca644e7ae820d213334ea0dcc37328f8103c2353448c9",
+          "bindings": {
+            "_ZN11OnceBindingILj5764048EE8RegisterEP18RegisteredTypeViewPK16RegistrationHashPvP17RegistrationCache": "0x6a9390",
+            "__cxa_guard_acquire": "0xfa4130",
+            "__cxa_guard_release": "0xfa4140"
+          },
+          "got_bindings": {
+            "_ZZ16RegisterTypeOnceILj5764048EEvPvPK16RegistrationHashE10registered": {
+              "cell": "0x18fa290",
+              "pointee": "0x1916a60"
+            },
+            "_ZGVZ16RegisterTypeOnceILj5764048EEvPvPK16RegistrationHashE4info": {
+              "cell": "0x18ee5d0",
+              "pointee": "0x191e070"
+            },
+            "_ZGVZ16RegisterTypeOnceILj5764048EEvPvPK16RegistrationHashE5cache": {
+              "cell": "0x18fa298",
+              "pointee": "0x191e088"
+            },
+            "_ZZ16RegisterTypeOnceILj5764048EEvPvPK16RegistrationHashE4info": {
+              "cell": "0x18ee5d8",
+              "pointee": "0x191e078"
+            },
+            "_ZZ16RegisterTypeOnceILj5764048EEvPvPK16RegistrationHashE5cache": {
+              "cell": "0x18fa2a0",
+              "pointee": "0x191e090"
+            }
+          }
+        },
+        {
+          "address": "0x5bf2a0",
+          "size": 232,
+          "symbol": "_Z16RegisterTypeOnceILj6025888EEvPvPK16RegistrationHash",
+          "target_sha256": "6b04fe0cace3b8d979f75591d752472ed2320493d2e795e16e807a4aac05cca7",
+          "bindings": {
+            "_ZN11OnceBindingILj6025888EE8RegisterEP18RegisteredTypeViewPK16RegistrationHashPvP17RegistrationCache": "0x6a9390",
+            "__cxa_guard_acquire": "0xfa4130",
+            "__cxa_guard_release": "0xfa4140"
+          },
+          "got_bindings": {
+            "_ZZ16RegisterTypeOnceILj6025888EEvPvPK16RegistrationHashE10registered": {
+              "cell": "0x18fac98",
+              "pointee": "0x1918838"
+            },
+            "_ZGVZ16RegisterTypeOnceILj6025888EEvPvPK16RegistrationHashE4info": {
+              "cell": "0x18f2c30",
+              "pointee": "0x1907da8"
+            },
+            "_ZGVZ16RegisterTypeOnceILj6025888EEvPvPK16RegistrationHashE5cache": {
+              "cell": "0x18f2c40",
+              "pointee": "0x1907dd0"
+            },
+            "_ZZ16RegisterTypeOnceILj6025888EEvPvPK16RegistrationHashE4info": {
+              "cell": "0x18f2c38",
+              "pointee": "0x1907d9c"
+            },
+            "_ZZ16RegisterTypeOnceILj6025888EEvPvPK16RegistrationHashE5cache": {
+              "cell": "0x18f2c48",
+              "pointee": "0x1907db9"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "sdk_deque_instances_keep_pic_unwind_o3",
+      "source": "src/SdkDequeInstances.cpp",
+      "compiler": "8.0.1",
+      "source_review": "public_library_instantiation",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-std=c++11",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-O3",
+        "-fno-omit-frame-pointer",
+        "-fPIC",
+        "-funwind-tables",
+        "-nostdinc++",
+        "-isystem",
+        "vendor/llvm-libcxx-4/include",
+        "-isystem",
+        "vendor/musl/include",
+        "-isystem",
+        "vendor/musl/generated",
+        "-D_LIBCPP_HAS_NO_THREADS",
+        "-D_LIBCPP_HAS_MUSL_LIBC",
+        "-D__CLANG_MAX_ALIGN_T_DEFINED",
+        "-D_LIBCPP_DISABLE_VISIBILITY_ANNOTATIONS",
+        "-D_GNU_SOURCE",
+        "-U_WIN32",
+        "-U_WIN64"
+      ],
+      "header_roots": [
+        "vendor/llvm-libcxx-4/include",
+        "vendor/musl/include",
+        "vendor/musl/generated"
+      ],
+      "functions": [
+        {
+          "address": "0x1740f0",
+          "size": 336,
+          "symbol": "_ZNSt3__112__deque_baseI7ElementILj32EENS_9allocatorIS2_EEED2Ev",
+          "target_sha256": "239e5df9676ccc96d7916aff596fa6746523445b8637521c8796d0b05efebbff",
+          "bindings": {
+            "_ZdlPv": "0x37030"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x18b5b0",
+          "size": 380,
+          "symbol": "_ZNSt3__112__deque_baseI7ElementILj40EENS_9allocatorIS2_EEED2Ev",
+          "target_sha256": "3ab97cc68637925342c69057f8bfc79020156ebaaac9e855d6d5d6364b21ef18",
+          "bindings": {
+            "_ZdlPv": "0x37030"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x194e80",
+          "size": 336,
+          "symbol": "_ZNSt3__112__deque_baseI7ElementILj32EENS_9allocatorIS2_EEED2Ev",
+          "target_sha256": "102eb6bb3cc15b04cc061d0e862bfe7160e986e37cd96f87a0799f0e55a3bf26",
+          "bindings": {
+            "_ZdlPv": "0x37030"
+          },
+          "got_bindings": {}
+        }
+      ]
     }
   ]
 }
