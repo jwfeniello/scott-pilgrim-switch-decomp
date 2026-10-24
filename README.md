@@ -17,7 +17,7 @@ Edition** for Nintendo Switch.
 · [Progress workflow](https://github.com/jwfeniello/scott-pilgrim-switch-decomp/actions/workflows/progress.yml)
 
 **Current locally verified progress: 33,276 exact functions /
-3,693,984 bytes / 22.528879% of executable `.text`.** The original `.text` is 16,396,664 bytes.
+3,693,984 bytes / 22.528875% of executable `.text`.** The original `.text` is 16,396,664 bytes.
 This includes engine and library infrastructure. The project does not yet rebuild
 or boot the complete game. Original method names and many ABI declarations remain
 provisional. See the [integration plan](docs/INTEGRATION_PLAN.md) for
