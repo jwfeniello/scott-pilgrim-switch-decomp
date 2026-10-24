@@ -16,8 +16,8 @@ Edition** for Nintendo Switch.
 [Progress on decomp.dev](https://decomp.dev/jwfeniello/scott-pilgrim-switch-decomp)
 · [Progress workflow](https://github.com/jwfeniello/scott-pilgrim-switch-decomp/actions/workflows/progress.yml)
 
-**Current locally verified progress: 31,673 exact functions /
-3,577,056 bytes / 21.815755% of executable `.text`.** The original `.text` is 16,396,664 bytes.
+**Current locally verified progress: 32,066 exact functions /
+3,617,192 bytes / 22.060536% of executable `.text`.** The original `.text` is 16,396,664 bytes.
 This includes engine and library infrastructure. The project does not yet rebuild
 or boot the complete game. Original method names and many ABI declarations remain
 provisional. See the [integration plan](docs/INTEGRATION_PLAN.md) for
@@ -31,8 +31,8 @@ accessor, `Onyx::Transform` and `Vector3` value semantics, and adds 17 exact
 functions, including the player game-over coordinator.
 
 [Code without FDEs](docs/NON_FDE_CODE.md) identifies the 222,892-byte block that
-no FDE covers as Nintendo's libcurl 7.64.1 fork and nghttp2 1.38.0. It adds 605
-complete functions / 131,332 bytes there. Each extent's boundaries are proven by
+no FDE covers as Nintendo's libcurl 7.64.1 fork and nghttp2 1.38.0. It adds 628
+complete functions / 143,744 bytes there. Each extent's boundaries are proven by
 calls, tail calls, pointers or adjacent proven functions, and the fork's struct
 and configuration changes are reconstructed from the original's offsets.
 
@@ -198,8 +198,8 @@ local verification evidence; it does not receive the original game binary or
 perform a new original-byte comparison. See [publication setup](docs/PUBLISHING.md).
 
 All 53,675 original `.text` FDE functions appear in the report, including
-unmatched functions, together with the 605 proven extents in code without FDEs.
-The other 428,404 bytes outside FDEs stay unmatched in the denominator. Data matching is not tracked yet. The fully linked measure is
+unmatched functions, together with the 628 proven extents in code without FDEs.
+The other 415,992 bytes outside FDEs stay unmatched in the denominator. Data matching is not tracked yet. The fully linked measure is
 zero because there is no complete linked game build. Unmatched functions are
 grouped by address for navigation; these groups do not claim original source-file
 boundaries.

@@ -12,8 +12,8 @@ denominator, but nothing in it could be credited. It holds:
 - fork-only code mixed into both ranges: the TLS backend over `nnssl*`, socket
   and resolver glue, allocation callbacks. It has no public source.
 
-This batch credits **605 complete functions / 131,332 bytes** here: curl
-344 / 81,324 and nghttp2 261 / 50,008.
+This work credits **628 complete functions / 143,744 bytes** here: curl
+367 / 93,736 and nghttp2 261 / 50,008.
 
 ## How extents are proven
 
@@ -74,7 +74,12 @@ derived `lib/curl_config.h`:
   backend under multi-SSL. NTLM is off (`connectdata` has no NTLM state), and
   so are Unix sockets and `HAVE_SIGNAL`. nghttp2 is on. `SIZEOF_TIME_T` is left
   undefined, so `timediff_t` is `int`; the original compares time differences
-  in 32-bit registers.
+  in 32-bit registers. `SIZEOF_CURL_OFF_T` is 4 even though `curl_off_t` is
+  64-bit: the speed guard in `Curl_pgrsUpdate` compares against
+  `0x7FFFFFFF/1000`.
+- **Protocols.** Only the HTTP and HTTPS handlers exist in the original (their
+  scheme strings are the only ones referenced from handler tables), so every
+  other protocol is disabled with `CURL_DISABLE_*`.
 - **Sockets.** Socket calls and errors use the platform's `nnsocket*` imports,
   for example `nnsocketRecv` and `nnsocketGetLastErrno`. The original calls these
   directly, and the fork configuration maps the BSD names onto them.
@@ -84,9 +89,9 @@ offsets are established, but what they are for is not.
 
 ## What is not credited
 
-- Fork-modified functions, most visibly `Curl_vsetopt` (16,996 bytes, with extra
-  options) and `create_conn` (9,428 bytes), plus several large transfer and
-  header functions that differ in a few places.
+- Fork-modified functions, most visibly `Curl_vsetopt` (16,996 bytes, with
+  options 500–507 and 900 added and a different result path), `create_conn`
+  (9,428 bytes), `multi_runsingle`, `Curl_cookie_add` and `Curl_getinfo`.
 - The fork-only code listed above.
 - Matching bodies whose neighbours leave a boundary unproven.
 

@@ -129,3 +129,21 @@ through 891 source builds. The engine-family control receipts now cover 56
 families. Public library algorithms and generated ABI views have separate repeat
 and source-change rejection receipts. See [the milestone findings](FIFTEEN_PERCENT.md)
 for the additions, compiler/header observations and unresolved declarations.
+
+## Template instance families (22% batch)
+
+Three families of same-shaped functions are reproduced from one template each,
+instantiated once per original address. They add **370 complete functions /
+27,724 bytes**:
+
+| Source | Shape | Functions | Bytes |
+| --- | --- | ---: | ---: |
+| `src/FunctionClone8KeepNoPic.cpp`, `src/FunctionClone8KeepPic.cpp` | `Clone()` of a polymorphic callable holding one pointer | 88 | 4,996 |
+| `src/OwningEventDestructor*.cpp` | Destructor of an event that owns one object at a per-type offset; storage freed through `Storm_Free` | 52 | 4,368 |
+| `src/ForwardingFunctionOmitNoPic.cpp` | libc++ 4 `std::__function::__func` slots for a functor holding captured pointers and another `std::function<void()>` | 230 | 18,360 |
+
+The `std::function` family is an explicit instantiation of the vendored libc++
+`__func` template, so its clone, destroy and destructor slots come from the
+library header unchanged. Each instance's capture size comes from the offset
+of the inner `std::function` in its destructor. Class names are working names;
+the original types behind each instance are not identified.
