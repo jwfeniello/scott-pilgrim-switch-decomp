@@ -16,8 +16,8 @@ Edition** for Nintendo Switch.
 [Progress on decomp.dev](https://decomp.dev/jwfeniello/scott-pilgrim-switch-decomp)
 · [Progress workflow](https://github.com/jwfeniello/scott-pilgrim-switch-decomp/actions/workflows/progress.yml)
 
-**Current locally verified progress: 33,633 exact functions /
-3,899,636 bytes / 23.783106% of executable `.text`.** The original `.text` is 16,396,664 bytes.
+**Current locally verified progress: 33,737 exact functions /
+3,925,020 bytes / 23.937918% of executable `.text`.** The original `.text` is 16,396,664 bytes.
 This includes engine and library infrastructure. The project does not yet rebuild
 or boot the complete game. Original method names and many ABI declarations remain
 provisional. See the [integration plan](docs/INTEGRATION_PLAN.md) for
@@ -56,11 +56,14 @@ calls, tail calls, pointers or adjacent proven functions, and the fork's struct
 and configuration changes are reconstructed from the original's offsets.
 
 [Engine families](docs/ENGINE_FAMILIES.md#template-instance-families-22-batch)
-now include 50 template families / 1,786 functions / 164,228 bytes. Each family is
+now include 55 template families / 1,867 functions / 187,900 bytes. Each family is
 one template instantiated once per original address and credited only there.
-The newest, nine [switch owner destructors](docs/GAMEPLAY_COMPONENTS.md#switch-owner-destructors),
-needed the listener-notification record declared not captured, as the
-original's tail calls show.
+The newest, 53 [Dare pool destructors](docs/ENGINE_FAMILIES.md#dare-pool-destructors),
+match only when their freeing loop is a separate member function that the
+optimizer inlines; written directly in the destructor, it costs a register.
+
+[storm::echo record writers](docs/ECHO_RECORD_WRITER.md) add 44 event writers
+generated from each original field list (offset, type, record tag and name).
 
 [Library build evidence](docs/LIBRARY_BUILD_EVIDENCE.md) adds 740 complete
 functions / 319,460 bytes. Error-call line numbers identify OpenSSL 1.0.2q; the

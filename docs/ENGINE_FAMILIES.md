@@ -138,8 +138,8 @@ and an instance is credited **only at its own address**. For the `std::function`
 family, the key is the destructor's address, and the other slots of the same
 vtable are credited to the same instance. Identical bodies elsewhere are not
 credited to an unrelated instance's symbol, and addresses that other builds
-already credit are skipped. These families add **1,807 complete functions /
-170,232 bytes**:
+already credit are skipped. These families add **1,867 complete functions /
+187,900 bytes**:
 
 | Source (`src/`) | Shape | Functions | Bytes |
 | --- | --- | ---: | ---: |
@@ -186,6 +186,8 @@ already credit are skipped. These families add **1,807 complete functions /
 | `NameMapFind*` | libc++ 4 `unordered_map::find` keyed by a length-prefixed name hashed with a CRC-32 table (SDK `-O3`, unwind tables) | 8 | 3,072 |
 | `LazyTypeRegistrationRoot*` | Lazy type registration for root types: no registry context is resolved before registering | 7 | 1,540 |
 | `TypeRegistrationOnceRoot*` | One-time type registration for root types, without a registry context (`-O3`) | 6 | 1,392 |
+| `DarePoolDestructor*` | `Dare::Private::DarePoolBase<T, N, Policy>` destructors: return each pooled object to the Dare allocator, newest first, then free the pointer array (see [Dare pools](#dare-pool-destructors)) | 53 | 11,200 |
+| `ComponentMapCollectByKey*` | Component map lookup by type key: append the active components of the matching type to a caller-supplied vector | 7 | 6,468 |
 
 The code shapes pin down several details:
 
@@ -208,3 +210,13 @@ The code shapes pin down several details:
 
 Class names are working names; the original types behind each instance are not
 identified.
+
+## Dare pool destructors
+
+`DarePoolBase` frees its pooled objects in a member function that the optimizer
+inlines into the destructor. Writing the same loop directly in the destructor
+body gives different code: the address of the pointer vector is then computed
+once in the entry block and shared with the member-cleanup landing pad, which
+costs an extra callee-saved register. Inlined from a separate member, the body
+arrives with its addresses already folded, and the cleanup recomputes the
+vector address where it needs it, as in the original.

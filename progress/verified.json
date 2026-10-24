@@ -1,9 +1,9 @@
 {
   "version": 1,
-  "generated_at": "2026-10-24T19:32:20.417400+00:00",
+  "generated_at": "2026-10-24T20:30:16.812375+00:00",
   "target_elf_sha256": "ea95638e6d6aaa0dc6cddd552a9366799aa1ec3bc07ee201f23f6c151103f5b8",
   "input_sha256": {
-    "config/builds.json": "72119b9b78b2bbe6a8093043390c568a97c1525eacf079eddd0527f1fc473406",
+    "config/builds.json": "52c7c333faa3e09ce8e350c2b31d240bb833e2daf711faef682b65d84660a0c9",
     "config/functions.tsv": "399e91468a04e0459194c10d68d2210d1157cedefeb19c7851886ca7632fcb18",
     "config/non_fde_functions.tsv": "6a45f5e185454fa0472af00b2cdc9d040d73ca133d1106217e1fbbe3b32a8175",
     "config/target.json": "23cc6a5227206a953e7668acf5e9ae5c02a25c23b7e7967f0450a814b888241a",
@@ -42,6 +42,8 @@
     "src/ComponentAccessor.cpp": "09d0b81df3abcacb946f49ed1ed87ab840ee0656bb6f792fd65d25660eabb260",
     "src/ComponentEventReader.cpp": "8ba855c3269dae4b06f76f96f0e6e5b59ff9235a3c43d089bcaf91ef43b68d6a",
     "src/ComponentInitializeSlots.cpp": "55cc1e5fc9899d4c44bf24cb4bb59c672fb325bec27fd578c36f881ec57dad1d",
+    "src/ComponentMapCollectByKey.h": "ca433de3cf62b21dd59fa5e5a01fc30d37b1699e37e73aa98443f2fefe0fcd28",
+    "src/ComponentMapCollectByKeyOmitNoPic.cpp": "6abf134637aa321dfb23146709cedbf7e4abf97f6855b6e321dc5c52c2f30284",
     "src/ComponentReferenceCopy.cpp": "32a4479dafdc0d94ac1169f0fab094ca889b96e7e84224c891289f1b961ccfba",
     "src/ComponentRegistry.cpp": "3dc9d7ceb50583c97a05e43bafe526634d2c5b0f599fac32fe0fdda2440f3910",
     "src/ComponentSelection.cpp": "2205cc331083af7f5f8d5a4c411400288db48546c4b2cb382c6b0b1f2495acc1",
@@ -62,6 +64,8 @@
     "src/DareFlyweightManagerOmitNoPic.cpp": "f4a72c3d2102c962f991d4797b0c8f7d970fa69d9f690cbf596e055521eb11a9",
     "src/DareListDestructor.h": "4feffbd881317b0701a25b285b6f0eab332a12b60eee57efcb7425199b254a36",
     "src/DareListDestructorOmitNoPic.cpp": "a8c66a27ec2c9f9e6bcc4d686ecfecc4637a39d5041f7bb493a70308da37e70f",
+    "src/DarePoolDestructor.h": "5d5e12508702805c1820af3c8455fc75b63874bbdd99b6efc4b7ce5d6f4d2fad",
+    "src/DarePoolDestructorOmitNoPic.cpp": "9ef59bafabab8111b82c96e79d216050c72a890b8800a0f9997d7b327076b369",
     "src/DareTreeDestroy.h": "c03734845e4ceb601721722d56d6c6c5b7dbd028b99cd9cf5e94ea6c2ac336c9",
     "src/DareTreeDestroyOmitNoPic.cpp": "0be1a8b81a5d0f5fefc04082718db887b6c12df88d1b056a6c38f06fa12a1410",
     "src/DeleteWithFrame.cpp": "b4edc0ffefec6d9530d5b789659b2879cb5f361f2c8750a9c39d062f2d935ebe",
@@ -74,6 +78,8 @@
     "src/EchoEventDestructorKeepPicUnwind1.cpp": "a62cc1b0aff9dbf8591169608d903995618d40c1fbd9e089dd81a3edf6e39716",
     "src/EchoFieldSerialize.h": "ededd8eb6f134c1bcb991eb1a7f83447c8fc9985c57fcc23f5d80e800068dcb4",
     "src/EchoFieldSerializeKeepPicNoFloat.cpp": "ca6cb62e2b86f10300ea83037bdd209ff3d49d48dac98df0f3e526d73998955d",
+    "src/EchoRecordEvents.cpp": "fd28fb0fa61fccb0fdcbb77e3cf67714d9d6d4104245054ed5b8205d06bf44b2",
+    "src/EchoRecordWriter.h": "c45dce65bece6985c7478e08992bc7a15fd4ca822ee64d513dd85f3a81758512",
     "src/EchoTypeDescriptor.h": "2c553f17f0daedb448c3c9002c1a0bab8a40446c37cbc85a35bd3e48299b59e1",
     "src/EchoTypeDescriptorKeepPicUnwindO3.cpp": "5582f6b447c88ff0265a8139fe69bb82f2624154c9b2877f95e48edd7c51521e",
     "src/EngineRegistry.cpp": "cc9796d5c067bfe73eee26a057f039a0b8e0a904923f5954b7dc34ee3736f1fd",
@@ -1039,6 +1045,7 @@
     "src/callback_owner_release_instances.inc": "4cdaa6b1fd0e6e246fed1f75b6c150189139b858d64e0e4ad5fdef16a1a65895",
     "src/circuit_find_property_omit_no_pic_lto_instances.inc": "edcdddfdeb010f1a733600bf53dc886e0061f749d35f8e60a41370c735606296",
     "src/color_property_read_omit_no_pic_instances.inc": "fa2ecd110ae0a5fde0d42ed54ca1d58963fcf4bfc49b05220eae143ae1bcaaac",
+    "src/component_map_collect_by_key_omit_no_pic_instances.inc": "cc950a2fab83623cb88ea1fb590831cacafd11dcab32e61af59c3b17d5db6dcf",
     "src/component_registry_calls.inc": "e32f7d5c03f0991b47ee6598b9e43585f45e476d769f13db130e036b99869587",
     "src/component_registry_declarations.inc": "54030f26efd2bfff5805c0c422a88297994e04ccb1b4d6d9386b1b0b526f96e6",
     "src/component_slot_assign_instances.inc": "8d084a4fd2ec08c73f9ccf30ebc17be3eccd78364c0067a34c7373fac8ffea74",
@@ -1050,6 +1057,7 @@
     "src/counter_buffer_destructor_instances.inc": "8bda63f753a81068c79bdbc32d6960e7e00f076b8a03064e96b61ce985f437f9",
     "src/dare_flyweight_manager_omit_no_pic_instances.inc": "4acc21db3d06b54700b1a228120ff8126c9c06fa7a55347238b78669840a1fe5",
     "src/dare_list_destructor_omit_no_pic_instances.inc": "347d2adc67a2cc566d3c209503a5f9ade5523521215cf8f7d75accf5f94c7fec",
+    "src/dare_pool_destructor_omit_no_pic_instances.inc": "de979427ef67076a37a24835dbeeb1a0e673dd71343e748fa637099d067444f9",
     "src/dare_tree_destroy_omit_no_pic_instances.inc": "c7329ddd89f600ea32b224cb3a4814b7356f6a774ad64bcb4974546315df88e8",
     "src/delete_with_frame_instances.inc": "efa06ea106de0755487caa72ae0e7eef03d07775bf127698c8bcedf76cd5ce9b",
     "src/deleting_wrapper_instances.inc": "4a3fd0c2b018553c9be4d44f3758054c57d3b0b915ae556fd11f388fc60dbff1",
@@ -3892,17 +3900,17 @@
     "vendor/zlib-1.2.11/zutil.h": "9a63f6690fac1620aa3cecee5752af618806da438a256b4a047fbcd289cac159"
   },
   "compiler_versions": {
-    "7.0.1": "clang version 7.0.1 (tags/RELEASE_701/final)",
     "8.0.1": "clang version 8.0.1 (tags/RELEASE_801/final)",
+    "7.0.1": "clang version 7.0.1 (tags/RELEASE_701/final)",
     "lld": "LLD 8.0.1 (compatible with GNU linkers)"
   },
   "compiler_sha256": {
-    "7.0.1": "c2f0a175157d9aaace8031f8e6d7ea0ed6142b4bcef287105e3ed227301f1002",
     "8.0.1": "dffd62a213ec6cdb4430012a4a41c11e5e32c288f133d5391f9be49e1c5b69de",
+    "7.0.1": "c2f0a175157d9aaace8031f8e6d7ea0ed6142b4bcef287105e3ed227301f1002",
     "lld": "c4b3aaea06ff7112c64753047a2ab279fc3fe10dd807fd3c22edfdae99f43eed"
   },
-  "exact_functions": 33633,
-  "exact_bytes": 3899636,
+  "exact_functions": 33737,
+  "exact_bytes": 3925020,
   "builds": [
     {
       "id": "probes",
@@ -12978,6 +12986,21 @@
       "id": "sdk_deque_instances_keep_pic_unwind_o3",
       "compiler": "8.0.1",
       "object_sha256": "6996c3fe8d02a26ee83161824f951d3cfd532c55c1afd43a8acd09c79d7377dd"
+    },
+    {
+      "id": "dare_pool_destructor_omit_no_pic",
+      "compiler": "8.0.1",
+      "object_sha256": "5b4ebda02d053543d51a63806e682ac54f1683f681efd8d33f9542d956f2b437"
+    },
+    {
+      "id": "echo_record_events_keep_pic_unwind_o3",
+      "compiler": "8.0.1",
+      "object_sha256": "9754871dc72c3c13cfcedefbd62cc16e79d09f492d24ffe9fd472963fc51384b"
+    },
+    {
+      "id": "component_map_collect_by_key_omit_no_pic",
+      "compiler": "8.0.1",
+      "object_sha256": "2358a97aa6c14f6a203ce8a362c710fe2fe06209f4fd4e737077345be30fcd0c"
     }
   ],
   "matches": [
@@ -53814,6 +53837,17 @@
       "relocation_count": 4
     },
     {
+      "address": "0x25c9f0",
+      "size": 232,
+      "exact": true,
+      "target_sha256": "5db2b8aa43619b6a6305f1cc816e93efffe641cca01104ca90013e4e4e9d7694",
+      "compiled_sha256": "5db2b8aa43619b6a6305f1cc816e93efffe641cca01104ca90013e4e4e9d7694",
+      "source": "src/EchoRecordEvents.cpp",
+      "symbol": "_ZN11EchoRecords12Event_25c9f05WriteEPNS_6WriterE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 5
+    },
+    {
       "address": "0x25cae0",
       "size": 52,
       "exact": true,
@@ -53825,6 +53859,17 @@
       "relocation_count": 4
     },
     {
+      "address": "0x25cb20",
+      "size": 328,
+      "exact": true,
+      "target_sha256": "3aaab3bcf1756fbaa64b5cbfd060fcdd723f1fb00201c21f38a3f571c7427ce4",
+      "compiled_sha256": "3aaab3bcf1756fbaa64b5cbfd060fcdd723f1fb00201c21f38a3f571c7427ce4",
+      "source": "src/EchoRecordEvents.cpp",
+      "symbol": "_ZN11EchoRecords12Event_25cb205WriteEPNS_6WriterE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 7
+    },
+    {
       "address": "0x25cc70",
       "size": 44,
       "exact": true,
@@ -53834,6 +53879,17 @@
       "symbol": "RecoveredLeaf_25cc70",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 4
+    },
+    {
+      "address": "0x25cca0",
+      "size": 136,
+      "exact": true,
+      "target_sha256": "b4470c55d8b806f6d86f3ea2951ba7a06e7d872edf279bc24ef9db92d712cb85",
+      "compiled_sha256": "b4470c55d8b806f6d86f3ea2951ba7a06e7d872edf279bc24ef9db92d712cb85",
+      "source": "src/EchoRecordEvents.cpp",
+      "symbol": "_ZN11EchoRecords12Event_25cca05WriteEPNS_6WriterE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 3
     },
     {
       "address": "0x25cdb0",
@@ -54144,6 +54200,39 @@
       "relocation_count": 2
     },
     {
+      "address": "0x25f270",
+      "size": 328,
+      "exact": true,
+      "target_sha256": "d4724eb1847dda52b2b59c90c81887931bc79b646fbc5956e08dac92b1e0a51c",
+      "compiled_sha256": "d4724eb1847dda52b2b59c90c81887931bc79b646fbc5956e08dac92b1e0a51c",
+      "source": "src/EchoRecordEvents.cpp",
+      "symbol": "_ZN11EchoRecords12Event_25f2705WriteEPNS_6WriterE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 7
+    },
+    {
+      "address": "0x25f400",
+      "size": 328,
+      "exact": true,
+      "target_sha256": "b3cc1c3fbcfa876e90bde0615afbe48b11187d0efe0e0314f28fa9a7a5a017bf",
+      "compiled_sha256": "b3cc1c3fbcfa876e90bde0615afbe48b11187d0efe0e0314f28fa9a7a5a017bf",
+      "source": "src/EchoRecordEvents.cpp",
+      "symbol": "_ZN11EchoRecords12Event_25f4005WriteEPNS_6WriterE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 7
+    },
+    {
+      "address": "0x260440",
+      "size": 136,
+      "exact": true,
+      "target_sha256": "396e26f09c522ba68f157da16530963bef17354148db867e8c3738a4ec4d821a",
+      "compiled_sha256": "396e26f09c522ba68f157da16530963bef17354148db867e8c3738a4ec4d821a",
+      "source": "src/EchoRecordEvents.cpp",
+      "symbol": "_ZN11EchoRecords12Event_2604405WriteEPNS_6WriterE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 3
+    },
+    {
       "address": "0x260840",
       "size": 4,
       "exact": true,
@@ -54353,6 +54442,17 @@
       "relocation_count": 0
     },
     {
+      "address": "0x262b90",
+      "size": 236,
+      "exact": true,
+      "target_sha256": "8c6324abd393c093a24fd809a9625a9a2e37fecde6ecea69849d30ff1267931a",
+      "compiled_sha256": "8c6324abd393c093a24fd809a9625a9a2e37fecde6ecea69849d30ff1267931a",
+      "source": "src/EchoRecordEvents.cpp",
+      "symbol": "_ZN11EchoRecords12Event_262b905WriteEPNS_6WriterE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 5
+    },
+    {
       "address": "0x262ff0",
       "size": 8,
       "exact": true,
@@ -54384,6 +54484,17 @@
       "symbol": "_ZN9EchoFieldILj2502912ELj56ELj0EE9SerializeEPN5storm6StreamE",
       "source_review": "manual_reconstruction",
       "relocation_count": 5
+    },
+    {
+      "address": "0x2631b0",
+      "size": 136,
+      "exact": true,
+      "target_sha256": "8ff47a6a1b6fdd3a660560de308bedb121b6c973198b7792280b7d3a3b8d2ae7",
+      "compiled_sha256": "8ff47a6a1b6fdd3a660560de308bedb121b6c973198b7792280b7d3a3b8d2ae7",
+      "source": "src/EchoRecordEvents.cpp",
+      "symbol": "_ZN11EchoRecords12Event_2631b05WriteEPNS_6WriterE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 3
     },
     {
       "address": "0x263480",
@@ -62856,6 +62967,17 @@
       "relocation_count": 0
     },
     {
+      "address": "0x28efd0",
+      "size": 136,
+      "exact": true,
+      "target_sha256": "3bc7fcb0ec3b6774cc1a5b762933cdf051c26d926013605350798484e2954358",
+      "compiled_sha256": "3bc7fcb0ec3b6774cc1a5b762933cdf051c26d926013605350798484e2954358",
+      "source": "src/EchoRecordEvents.cpp",
+      "symbol": "_ZN11EchoRecords12Event_28efd05WriteEPNS_6WriterE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 3
+    },
+    {
       "address": "0x28f060",
       "size": 4,
       "exact": true,
@@ -64022,6 +64144,17 @@
       "relocation_count": 0
     },
     {
+      "address": "0x293c20",
+      "size": 136,
+      "exact": true,
+      "target_sha256": "c97958d219f175884acac5a7bf2b18fa32b7f28237dab38d0f9e1e013a288bfb",
+      "compiled_sha256": "c97958d219f175884acac5a7bf2b18fa32b7f28237dab38d0f9e1e013a288bfb",
+      "source": "src/EchoRecordEvents.cpp",
+      "symbol": "_ZN11EchoRecords12Event_293c205WriteEPNS_6WriterE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 3
+    },
+    {
       "address": "0x293cb0",
       "size": 260,
       "exact": true,
@@ -64396,6 +64529,17 @@
       "relocation_count": 0
     },
     {
+      "address": "0x294d90",
+      "size": 136,
+      "exact": true,
+      "target_sha256": "ac412a7af2f775d561fe75b985e4e39ee1f17694fd55e871c51c14f9a66d9c30",
+      "compiled_sha256": "ac412a7af2f775d561fe75b985e4e39ee1f17694fd55e871c51c14f9a66d9c30",
+      "source": "src/EchoRecordEvents.cpp",
+      "symbol": "_ZN11EchoRecords12Event_294d905WriteEPNS_6WriterE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 3
+    },
+    {
       "address": "0x294e20",
       "size": 4,
       "exact": true,
@@ -64748,6 +64892,17 @@
       "relocation_count": 0
     },
     {
+      "address": "0x295f40",
+      "size": 136,
+      "exact": true,
+      "target_sha256": "c3bda53085936aa9dcb982e1cd7629176adc278b24d69e433897142679ee5b57",
+      "compiled_sha256": "c3bda53085936aa9dcb982e1cd7629176adc278b24d69e433897142679ee5b57",
+      "source": "src/EchoRecordEvents.cpp",
+      "symbol": "_ZN11EchoRecords12Event_295f405WriteEPNS_6WriterE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 3
+    },
+    {
       "address": "0x295fd0",
       "size": 4,
       "exact": true,
@@ -64867,6 +65022,17 @@
       "symbol": "_ZN12DispatchableILj2712672ELj168EE8DispatchEP7HandlerILj21EE",
       "source_review": "manual_reconstruction",
       "relocation_count": 0
+    },
+    {
+      "address": "0x296480",
+      "size": 236,
+      "exact": true,
+      "target_sha256": "04cececebf4a968043909d7f5cc62b22c2530fe142b7ef37ef8ab671e468523b",
+      "compiled_sha256": "04cececebf4a968043909d7f5cc62b22c2530fe142b7ef37ef8ab671e468523b",
+      "source": "src/EchoRecordEvents.cpp",
+      "symbol": "_ZN11EchoRecords12Event_2964805WriteEPNS_6WriterE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 5
     },
     {
       "address": "0x296570",
@@ -65738,6 +65904,17 @@
       "relocation_count": 0
     },
     {
+      "address": "0x2993d0",
+      "size": 136,
+      "exact": true,
+      "target_sha256": "56e90b9edf44844952b91970c9e61e59e54337d224bec5b7d1667d1b86f9556b",
+      "compiled_sha256": "56e90b9edf44844952b91970c9e61e59e54337d224bec5b7d1667d1b86f9556b",
+      "source": "src/EchoRecordEvents.cpp",
+      "symbol": "_ZN11EchoRecords12Event_2993d05WriteEPNS_6WriterE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 3
+    },
+    {
       "address": "0x299460",
       "size": 4,
       "exact": true,
@@ -65969,6 +66146,17 @@
       "relocation_count": 0
     },
     {
+      "address": "0x299e40",
+      "size": 136,
+      "exact": true,
+      "target_sha256": "b38e574318e1874f418f34e22e3cacdcd4db37a91bd74523b08ebdc0e4f1925d",
+      "compiled_sha256": "b38e574318e1874f418f34e22e3cacdcd4db37a91bd74523b08ebdc0e4f1925d",
+      "source": "src/EchoRecordEvents.cpp",
+      "symbol": "_ZN11EchoRecords12Event_299e405WriteEPNS_6WriterE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 3
+    },
+    {
       "address": "0x299ed0",
       "size": 4,
       "exact": true,
@@ -66077,6 +66265,17 @@
       "symbol": "_ZN12DispatchableILj2728848ELj248EE8DispatchEP7HandlerILj31EE",
       "source_review": "manual_reconstruction",
       "relocation_count": 0
+    },
+    {
+      "address": "0x29a3b0",
+      "size": 136,
+      "exact": true,
+      "target_sha256": "6ba15cf02fd924ce8eba295904b9cea6282f6c11d4eb1628a0b6855e790fc671",
+      "compiled_sha256": "6ba15cf02fd924ce8eba295904b9cea6282f6c11d4eb1628a0b6855e790fc671",
+      "source": "src/EchoRecordEvents.cpp",
+      "symbol": "_ZN11EchoRecords12Event_29a3b05WriteEPNS_6WriterE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 3
     },
     {
       "address": "0x29a440",
@@ -66198,6 +66397,17 @@
       "symbol": "_ZN12DispatchableILj2730192ELj264EE8DispatchEP7HandlerILj33EE",
       "source_review": "manual_reconstruction",
       "relocation_count": 0
+    },
+    {
+      "address": "0x29a8f0",
+      "size": 136,
+      "exact": true,
+      "target_sha256": "1ec6e0bdb045e28fbc73aefeadfeb1031a821176f83f9b37dda7df62cdc55b6a",
+      "compiled_sha256": "1ec6e0bdb045e28fbc73aefeadfeb1031a821176f83f9b37dda7df62cdc55b6a",
+      "source": "src/EchoRecordEvents.cpp",
+      "symbol": "_ZN11EchoRecords12Event_29a8f05WriteEPNS_6WriterE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 3
     },
     {
       "address": "0x29a980",
@@ -66552,6 +66762,17 @@
       "relocation_count": 0
     },
     {
+      "address": "0x29b9e0",
+      "size": 232,
+      "exact": true,
+      "target_sha256": "dfe752ab9268902db28c18c66e5a460c4a5a576a99d58cfc5704e435da307913",
+      "compiled_sha256": "dfe752ab9268902db28c18c66e5a460c4a5a576a99d58cfc5704e435da307913",
+      "source": "src/EchoRecordEvents.cpp",
+      "symbol": "_ZN11EchoRecords12Event_29b9e05WriteEPNS_6WriterE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 5
+    },
+    {
       "address": "0x29bae0",
       "size": 4,
       "exact": true,
@@ -66594,6 +66815,17 @@
       "symbol": "_ZN12DispatchableILj2735312ELj104EE8DispatchEP7HandlerILj13EE",
       "source_review": "manual_reconstruction",
       "relocation_count": 0
+    },
+    {
+      "address": "0x29bcf0",
+      "size": 232,
+      "exact": true,
+      "target_sha256": "393a34a94411a6abe9b9d721d038d14bb08acd85386108b2e3cb49f351092db5",
+      "compiled_sha256": "393a34a94411a6abe9b9d721d038d14bb08acd85386108b2e3cb49f351092db5",
+      "source": "src/EchoRecordEvents.cpp",
+      "symbol": "_ZN11EchoRecords12Event_29bcf05WriteEPNS_6WriterE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 5
     },
     {
       "address": "0x29bde0",
@@ -66717,6 +66949,17 @@
       "relocation_count": 0
     },
     {
+      "address": "0x29c3c0",
+      "size": 232,
+      "exact": true,
+      "target_sha256": "7762797abf0e9fd02eed7464a0fa77e79224ff5c7881c5f1f430d2b0f62d97ca",
+      "compiled_sha256": "7762797abf0e9fd02eed7464a0fa77e79224ff5c7881c5f1f430d2b0f62d97ca",
+      "source": "src/EchoRecordEvents.cpp",
+      "symbol": "_ZN11EchoRecords12Event_29c3c05WriteEPNS_6WriterE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 5
+    },
+    {
       "address": "0x29c4b0",
       "size": 4,
       "exact": true,
@@ -66838,6 +67081,17 @@
       "relocation_count": 0
     },
     {
+      "address": "0x29c960",
+      "size": 136,
+      "exact": true,
+      "target_sha256": "a88f438c495265bad13ba73d6c9721e96bc1c5da26c7fa9eeaabb7ceb320b258",
+      "compiled_sha256": "a88f438c495265bad13ba73d6c9721e96bc1c5da26c7fa9eeaabb7ceb320b258",
+      "source": "src/EchoRecordEvents.cpp",
+      "symbol": "_ZN11EchoRecords12Event_29c9605WriteEPNS_6WriterE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 3
+    },
+    {
       "address": "0x29c9f0",
       "size": 4,
       "exact": true,
@@ -66957,6 +67211,17 @@
       "symbol": "_ZN12DispatchableILj2739840ELj312EE8DispatchEP7HandlerILj39EE",
       "source_review": "manual_reconstruction",
       "relocation_count": 0
+    },
+    {
+      "address": "0x29cea0",
+      "size": 136,
+      "exact": true,
+      "target_sha256": "5184f35ccfbc667eb5329506e10cc9fdf2e38c0264974c027f0727be4ad87b9b",
+      "compiled_sha256": "5184f35ccfbc667eb5329506e10cc9fdf2e38c0264974c027f0727be4ad87b9b",
+      "source": "src/EchoRecordEvents.cpp",
+      "symbol": "_ZN11EchoRecords12Event_29cea05WriteEPNS_6WriterE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 3
     },
     {
       "address": "0x29cf30",
@@ -67344,6 +67609,17 @@
       "relocation_count": 0
     },
     {
+      "address": "0x29e0d0",
+      "size": 136,
+      "exact": true,
+      "target_sha256": "ed4a7c5b485668d6f1f0b5c260ffa8a55bfb3ff87703097a0da937fef7ae65f6",
+      "compiled_sha256": "ed4a7c5b485668d6f1f0b5c260ffa8a55bfb3ff87703097a0da937fef7ae65f6",
+      "source": "src/EchoRecordEvents.cpp",
+      "symbol": "_ZN11EchoRecords12Event_29e0d05WriteEPNS_6WriterE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 3
+    },
+    {
       "address": "0x29e160",
       "size": 4,
       "exact": true,
@@ -67463,6 +67739,17 @@
       "symbol": "_ZN12DispatchableILj2745840ELj376EE8DispatchEP7HandlerILj47EE",
       "source_review": "manual_reconstruction",
       "relocation_count": 0
+    },
+    {
+      "address": "0x29e610",
+      "size": 136,
+      "exact": true,
+      "target_sha256": "3a751309e9b444c4af0094c36221348c0748c653e4a98d697e27d8693a4d9976",
+      "compiled_sha256": "3a751309e9b444c4af0094c36221348c0748c653e4a98d697e27d8693a4d9976",
+      "source": "src/EchoRecordEvents.cpp",
+      "symbol": "_ZN11EchoRecords12Event_29e6105WriteEPNS_6WriterE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 3
     },
     {
       "address": "0x29e6a0",
@@ -68455,6 +68742,17 @@
       "relocation_count": 0
     },
     {
+      "address": "0x2a2b30",
+      "size": 136,
+      "exact": true,
+      "target_sha256": "8578c9a71347136cd48f690c457fa5141f309b35c39fd9f149dd17551ca9885f",
+      "compiled_sha256": "8578c9a71347136cd48f690c457fa5141f309b35c39fd9f149dd17551ca9885f",
+      "source": "src/EchoRecordEvents.cpp",
+      "symbol": "_ZN11EchoRecords12Event_2a2b305WriteEPNS_6WriterE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 3
+    },
+    {
       "address": "0x2a2bc0",
       "size": 4,
       "exact": true,
@@ -68783,6 +69081,17 @@
       "symbol": "_Z18AdaptVirtualResultILj2767952EE13AdapterResultPvP10ResultHost",
       "source_review": "manual_reconstruction",
       "relocation_count": 0
+    },
+    {
+      "address": "0x2a3c70",
+      "size": 136,
+      "exact": true,
+      "target_sha256": "43a6a9f646a78a64f36c5d91d8d83df23a4e3ce183ea85b50dbeeba372e150b2",
+      "compiled_sha256": "43a6a9f646a78a64f36c5d91d8d83df23a4e3ce183ea85b50dbeeba372e150b2",
+      "source": "src/EchoRecordEvents.cpp",
+      "symbol": "_ZN11EchoRecords12Event_2a3c705WriteEPNS_6WriterE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 3
     },
     {
       "address": "0x2a3d00",
@@ -69289,6 +69598,17 @@
       "symbol": "_ZN12DispatchableILj2775648ELj736EE8DispatchEP7HandlerILj92EE",
       "source_review": "manual_reconstruction",
       "relocation_count": 0
+    },
+    {
+      "address": "0x2a5a80",
+      "size": 136,
+      "exact": true,
+      "target_sha256": "be199ff12916986d638fea3ab3901cbe7a2ed13c68e3d408278e6dcb52c37c7a",
+      "compiled_sha256": "be199ff12916986d638fea3ab3901cbe7a2ed13c68e3d408278e6dcb52c37c7a",
+      "source": "src/EchoRecordEvents.cpp",
+      "symbol": "_ZN11EchoRecords12Event_2a5a805WriteEPNS_6WriterE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 3
     },
     {
       "address": "0x2a5b10",
@@ -80159,6 +80479,17 @@
       "relocation_count": 31
     },
     {
+      "address": "0x2f1a60",
+      "size": 136,
+      "exact": true,
+      "target_sha256": "cf2a5dea59379d9d47eac0a698ce6999764367d00afc581af6202efc0f722126",
+      "compiled_sha256": "cf2a5dea59379d9d47eac0a698ce6999764367d00afc581af6202efc0f722126",
+      "source": "src/EchoRecordEvents.cpp",
+      "symbol": "_ZN11EchoRecords12Event_2f1a605WriteEPNS_6WriterE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 3
+    },
+    {
       "address": "0x2f1af0",
       "size": 260,
       "exact": true,
@@ -86429,6 +86760,28 @@
       "relocation_count": 0
     },
     {
+      "address": "0x31c7b0",
+      "size": 136,
+      "exact": true,
+      "target_sha256": "6243ef22fc5f047fdec920ed99832620b0aedd1d15b7648f0383562782e07d5a",
+      "compiled_sha256": "6243ef22fc5f047fdec920ed99832620b0aedd1d15b7648f0383562782e07d5a",
+      "source": "src/EchoRecordEvents.cpp",
+      "symbol": "_ZN11EchoRecords12Event_31c7b05WriteEPNS_6WriterE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 3
+    },
+    {
+      "address": "0x31c840",
+      "size": 136,
+      "exact": true,
+      "target_sha256": "0e8cd65aeef37fe82cc59f278aef3e2a76a8458b7c2206a039ccacdf0a1ee14a",
+      "compiled_sha256": "0e8cd65aeef37fe82cc59f278aef3e2a76a8458b7c2206a039ccacdf0a1ee14a",
+      "source": "src/EchoRecordEvents.cpp",
+      "symbol": "_ZN11EchoRecords12Event_31c8405WriteEPNS_6WriterE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 3
+    },
+    {
       "address": "0x31c990",
       "size": 4,
       "exact": true,
@@ -87582,6 +87935,17 @@
       "symbol": "RecoveredLeaf_33fe90",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 2
+    },
+    {
+      "address": "0x33fff0",
+      "size": 136,
+      "exact": true,
+      "target_sha256": "5217666be48b011b1808619d7dbce019d2d1bdb9eb2b9f636dd544574020a2a7",
+      "compiled_sha256": "5217666be48b011b1808619d7dbce019d2d1bdb9eb2b9f636dd544574020a2a7",
+      "source": "src/EchoRecordEvents.cpp",
+      "symbol": "_ZN11EchoRecords12Event_33fff05WriteEPNS_6WriterE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 3
     },
     {
       "address": "0x340080",
@@ -123576,6 +123940,17 @@
       "relocation_count": 0
     },
     {
+      "address": "0x43e200",
+      "size": 136,
+      "exact": true,
+      "target_sha256": "1c0a26226dec47db3385109f3b8e8ac39e2a591e47b323cacce0e1d5612a61fa",
+      "compiled_sha256": "1c0a26226dec47db3385109f3b8e8ac39e2a591e47b323cacce0e1d5612a61fa",
+      "source": "src/EchoRecordEvents.cpp",
+      "symbol": "_ZN11EchoRecords12Event_43e2005WriteEPNS_6WriterE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 3
+    },
+    {
       "address": "0x43e290",
       "size": 4,
       "exact": true,
@@ -128339,6 +128714,17 @@
       "relocation_count": 1
     },
     {
+      "address": "0x45f730",
+      "size": 136,
+      "exact": true,
+      "target_sha256": "6454bc2f7777ac8afa2f91d64a0c837cfde4ed46bb94c73596ceb846d793b5a1",
+      "compiled_sha256": "6454bc2f7777ac8afa2f91d64a0c837cfde4ed46bb94c73596ceb846d793b5a1",
+      "source": "src/EchoRecordEvents.cpp",
+      "symbol": "_ZN11EchoRecords12Event_45f7305WriteEPNS_6WriterE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 3
+    },
+    {
       "address": "0x45f7c0",
       "size": 4,
       "exact": true,
@@ -128568,6 +128954,28 @@
       "symbol": "RecoveredLeaf_466210",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 2
+    },
+    {
+      "address": "0x46b490",
+      "size": 136,
+      "exact": true,
+      "target_sha256": "290062d61475dfa635d5704ec0bf8fa8b1f3562b9ef0726d65be0251c0adb772",
+      "compiled_sha256": "290062d61475dfa635d5704ec0bf8fa8b1f3562b9ef0726d65be0251c0adb772",
+      "source": "src/EchoRecordEvents.cpp",
+      "symbol": "_ZN11EchoRecords12Event_46b4905WriteEPNS_6WriterE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 3
+    },
+    {
+      "address": "0x46b520",
+      "size": 324,
+      "exact": true,
+      "target_sha256": "df169768e24e5ae33242f41851df79619ff91d6d6a61f8115bda12e906f1328e",
+      "compiled_sha256": "df169768e24e5ae33242f41851df79619ff91d6d6a61f8115bda12e906f1328e",
+      "source": "src/EchoRecordEvents.cpp",
+      "symbol": "_ZN11EchoRecords12Event_46b5205WriteEPNS_6WriterE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 7
     },
     {
       "address": "0x46b840",
@@ -167037,6 +167445,17 @@
       "relocation_count": 0
     },
     {
+      "address": "0x55d6d0",
+      "size": 136,
+      "exact": true,
+      "target_sha256": "48de0137bcd35f7ee60a58a68d6091f842bc4a1db36f6e0ee6dd81ab7a327f0d",
+      "compiled_sha256": "48de0137bcd35f7ee60a58a68d6091f842bc4a1db36f6e0ee6dd81ab7a327f0d",
+      "source": "src/EchoRecordEvents.cpp",
+      "symbol": "_ZN11EchoRecords12Event_55d6d05WriteEPNS_6WriterE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 3
+    },
+    {
       "address": "0x55d760",
       "size": 4,
       "exact": true,
@@ -173824,6 +174243,17 @@
       "relocation_count": 0
     },
     {
+      "address": "0x5b60d0",
+      "size": 136,
+      "exact": true,
+      "target_sha256": "21cc1a91574d7a7e643e40010b96110f17a8b7d96baa341c89d70b5fbddc8f29",
+      "compiled_sha256": "21cc1a91574d7a7e643e40010b96110f17a8b7d96baa341c89d70b5fbddc8f29",
+      "source": "src/EchoRecordEvents.cpp",
+      "symbol": "_ZN11EchoRecords12Event_5b60d05WriteEPNS_6WriterE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 3
+    },
+    {
       "address": "0x5b61b0",
       "size": 8,
       "exact": true,
@@ -175175,6 +175605,17 @@
       "symbol": "_Z18AdaptVirtualResultILj6040848EE13AdapterResultPvP10ResultHost",
       "source_review": "manual_reconstruction",
       "relocation_count": 0
+    },
+    {
+      "address": "0x5c2d30",
+      "size": 232,
+      "exact": true,
+      "target_sha256": "96982406792ae54df2361e463561d24011dbddb8624e578e056f2ea8463c6612",
+      "compiled_sha256": "96982406792ae54df2361e463561d24011dbddb8624e578e056f2ea8463c6612",
+      "source": "src/EchoRecordEvents.cpp",
+      "symbol": "_ZN11EchoRecords12Event_5c2d305WriteEPNS_6WriterE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 5
     },
     {
       "address": "0x5c2e20",
@@ -181711,6 +182152,17 @@
       "relocation_count": 0
     },
     {
+      "address": "0x5e2e90",
+      "size": 236,
+      "exact": true,
+      "target_sha256": "48b32a6d9b639d7a1c2c67c819581a9606e3813f3f670c8a953db023df3b8138",
+      "compiled_sha256": "48b32a6d9b639d7a1c2c67c819581a9606e3813f3f670c8a953db023df3b8138",
+      "source": "src/EchoRecordEvents.cpp",
+      "symbol": "_ZN11EchoRecords12Event_5e2e905WriteEPNS_6WriterE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 5
+    },
+    {
       "address": "0x5e3300",
       "size": 4,
       "exact": true,
@@ -187178,6 +187630,17 @@
       "relocation_count": 0
     },
     {
+      "address": "0x613890",
+      "size": 136,
+      "exact": true,
+      "target_sha256": "f0dad5e7ba682300eb87e4fe374c821b669a4d3fdb6451b58d09ddb8831852ed",
+      "compiled_sha256": "f0dad5e7ba682300eb87e4fe374c821b669a4d3fdb6451b58d09ddb8831852ed",
+      "source": "src/EchoRecordEvents.cpp",
+      "symbol": "_ZN11EchoRecords12Event_6138905WriteEPNS_6WriterE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 3
+    },
+    {
       "address": "0x613920",
       "size": 4,
       "exact": true,
@@ -188146,6 +188609,17 @@
       "relocation_count": 0
     },
     {
+      "address": "0x616b20",
+      "size": 136,
+      "exact": true,
+      "target_sha256": "559f3c2b224e04aaa97e2a28ac2850e4db98101cc4c04c551eb256c83c682a14",
+      "compiled_sha256": "559f3c2b224e04aaa97e2a28ac2850e4db98101cc4c04c551eb256c83c682a14",
+      "source": "src/EchoRecordEvents.cpp",
+      "symbol": "_ZN11EchoRecords12Event_616b205WriteEPNS_6WriterE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 3
+    },
+    {
       "address": "0x616bb0",
       "size": 236,
       "exact": true,
@@ -188278,6 +188752,17 @@
       "relocation_count": 0
     },
     {
+      "address": "0x617260",
+      "size": 324,
+      "exact": true,
+      "target_sha256": "11f5ba3a307bfaa9a8e191dcf01cb000b2c6be00f5a9f8a865d44d097c86cc47",
+      "compiled_sha256": "11f5ba3a307bfaa9a8e191dcf01cb000b2c6be00f5a9f8a865d44d097c86cc47",
+      "source": "src/EchoRecordEvents.cpp",
+      "symbol": "_ZN11EchoRecords12Event_6172605WriteEPNS_6WriterE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 7
+    },
+    {
       "address": "0x6173b0",
       "size": 4,
       "exact": true,
@@ -188397,6 +188882,17 @@
       "symbol": "_Z18AdaptVirtualResultILj6387760EE13AdapterResultPvP10ResultHost",
       "source_review": "manual_reconstruction",
       "relocation_count": 0
+    },
+    {
+      "address": "0x617850",
+      "size": 136,
+      "exact": true,
+      "target_sha256": "058f1bbf0e5e09ea248965ffbd647e117c15d6bea426a4188493729bc148cc2a",
+      "compiled_sha256": "058f1bbf0e5e09ea248965ffbd647e117c15d6bea426a4188493729bc148cc2a",
+      "source": "src/EchoRecordEvents.cpp",
+      "symbol": "_ZN11EchoRecords12Event_6178505WriteEPNS_6WriterE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 3
     },
     {
       "address": "0x6178e0",
@@ -191510,6 +192006,17 @@
       "symbol": "_Z18AdaptVirtualResultILj6427392EE13AdapterResultPvP10ResultHost",
       "source_review": "manual_reconstruction",
       "relocation_count": 0
+    },
+    {
+      "address": "0x621320",
+      "size": 136,
+      "exact": true,
+      "target_sha256": "6f885a12bb7799638b162156d0608e627cda3933538ae48f791ec05d5e1dc6fb",
+      "compiled_sha256": "6f885a12bb7799638b162156d0608e627cda3933538ae48f791ec05d5e1dc6fb",
+      "source": "src/EchoRecordEvents.cpp",
+      "symbol": "_ZN11EchoRecords12Event_6213205WriteEPNS_6WriterE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 3
     },
     {
       "address": "0x6213b0",
@@ -266587,6 +267094,17 @@
       "relocation_count": 0
     },
     {
+      "address": "0x9b6e70",
+      "size": 924,
+      "exact": true,
+      "target_sha256": "54e20bf871e35bb0e892910e00c239ea4bfb91fac960abe69f87ca1369d4499a",
+      "compiled_sha256": "54e20bf871e35bb0e892910e00c239ea4bfb91fac960abe69f87ca1369d4499a",
+      "source": "src/ComponentMapCollectByKeyOmitNoPic.cpp",
+      "symbol": "_ZN12ComponentMapILj10186352ELj1565677453EE12CollectByKeyEjP12ObjectVectorILj10186352EE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 15
+    },
+    {
       "address": "0x9b7210",
       "size": 372,
       "exact": true,
@@ -268237,6 +268755,17 @@
       "relocation_count": 0
     },
     {
+      "address": "0x9c5700",
+      "size": 924,
+      "exact": true,
+      "target_sha256": "e13e60992508617e78add79845f28c92bbda41cd95f10d8f4b1c715eeada7260",
+      "compiled_sha256": "e13e60992508617e78add79845f28c92bbda41cd95f10d8f4b1c715eeada7260",
+      "source": "src/ComponentMapCollectByKeyOmitNoPic.cpp",
+      "symbol": "_ZN12ComponentMapILj10245888ELj100462108EE12CollectByKeyEjP12ObjectVectorILj10245888EE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 15
+    },
+    {
       "address": "0x9c5aa0",
       "size": 680,
       "exact": true,
@@ -268708,6 +269237,17 @@
       "symbol": "RecoveredLeaf_9cb3a0",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 0
+    },
+    {
+      "address": "0x9cb960",
+      "size": 924,
+      "exact": true,
+      "target_sha256": "67b3ed81167f3acadac1778fef5cdeaf2f8a77fbfd7d247a11f5ff10fd503bbf",
+      "compiled_sha256": "67b3ed81167f3acadac1778fef5cdeaf2f8a77fbfd7d247a11f5ff10fd503bbf",
+      "source": "src/ComponentMapCollectByKeyOmitNoPic.cpp",
+      "symbol": "_ZN12ComponentMapILj10271072ELj184502495EE12CollectByKeyEjP12ObjectVectorILj10271072EE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 15
     },
     {
       "address": "0x9cbd00",
@@ -273493,6 +274033,17 @@
       "symbol": "RecoveredLeaf_a0e640",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 0
+    },
+    {
+      "address": "0xa0ec00",
+      "size": 924,
+      "exact": true,
+      "target_sha256": "c4cdc7e4341f2ccfbf2052dbc8a21f3d15f2e5c983b80925fb52dc46aac4e675",
+      "compiled_sha256": "c4cdc7e4341f2ccfbf2052dbc8a21f3d15f2e5c983b80925fb52dc46aac4e675",
+      "source": "src/ComponentMapCollectByKeyOmitNoPic.cpp",
+      "symbol": "_ZN12ComponentMapILj10546176ELj791409834EE12CollectByKeyEjP12ObjectVectorILj10546176EE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 15
     },
     {
       "address": "0xa0efa0",
@@ -302073,6 +302624,17 @@
       "relocation_count": 28
     },
     {
+      "address": "0xb5da00",
+      "size": 924,
+      "exact": true,
+      "target_sha256": "400dd32d442aa7c24e9505313c812668b3211bd2ea207e63d9e156048aff144a",
+      "compiled_sha256": "400dd32d442aa7c24e9505313c812668b3211bd2ea207e63d9e156048aff144a",
+      "source": "src/ComponentMapCollectByKeyOmitNoPic.cpp",
+      "symbol": "_ZN12ComponentMapILj11917824ELj429100959EE12CollectByKeyEjP12ObjectVectorILj11917824EE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 15
+    },
+    {
       "address": "0xb5dda0",
       "size": 644,
       "exact": true,
@@ -305305,6 +305867,17 @@
       "symbol": "RecoveredLeaf_b6ae80",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 2
+    },
+    {
+      "address": "0xb6b500",
+      "size": 924,
+      "exact": true,
+      "target_sha256": "5f1090c9c6e4f81241ea7031b27968991f2c2daec6dbd8630d194f564c889a11",
+      "compiled_sha256": "5f1090c9c6e4f81241ea7031b27968991f2c2daec6dbd8630d194f564c889a11",
+      "source": "src/ComponentMapCollectByKeyOmitNoPic.cpp",
+      "symbol": "_ZN12ComponentMapILj11973888ELj1058876811EE12CollectByKeyEjP12ObjectVectorILj11973888EE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 15
     },
     {
       "address": "0xb6b8a0",
@@ -309254,6 +309827,17 @@
       "symbol": "_Z15DeleteRawBufferILj12204800ELj136EEvPN13SingleRelease14RawBufferOwnerIXT_EXT0_EEE",
       "source_review": "manual_reconstruction",
       "relocation_count": 8
+    },
+    {
+      "address": "0xba4180",
+      "size": 924,
+      "exact": true,
+      "target_sha256": "844aff5777660594cdedad8ba6761105cd86f22ba942bc1ad918fe791d3868d0",
+      "compiled_sha256": "844aff5777660594cdedad8ba6761105cd86f22ba942bc1ad918fe791d3868d0",
+      "source": "src/ComponentMapCollectByKeyOmitNoPic.cpp",
+      "symbol": "_ZN12ComponentMapILj12206464ELj355965574EE12CollectByKeyEjP12ObjectVectorILj12206464EE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 15
     },
     {
       "address": "0xba4530",
@@ -349989,6 +350573,17 @@
       "relocation_count": 2
     },
     {
+      "address": "0xd151a0",
+      "size": 216,
+      "exact": true,
+      "target_sha256": "369a99b9d10f128f942f3f618e88bea09cb0608d38c9533492014f699a8f867d",
+      "compiled_sha256": "369a99b9d10f128f942f3f618e88bea09cb0608d38c9533492014f699a8f867d",
+      "source": "src/DarePoolDestructorOmitNoPic.cpp",
+      "symbol": "_ZN4Dare7Private12DarePoolBaseILj13717920ELj24736EED1Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 13
+    },
+    {
       "address": "0xd15280",
       "size": 24,
       "exact": true,
@@ -350055,6 +350650,17 @@
       "relocation_count": 2
     },
     {
+      "address": "0xd15490",
+      "size": 216,
+      "exact": true,
+      "target_sha256": "5f2e93223dc627cafe3721f823902e3cd4063fe2b4a45d3a0bb6f2e78e818659",
+      "compiled_sha256": "5f2e93223dc627cafe3721f823902e3cd4063fe2b4a45d3a0bb6f2e78e818659",
+      "source": "src/DarePoolDestructorOmitNoPic.cpp",
+      "symbol": "_ZN4Dare7Private12DarePoolBaseILj13718672ELj28832EED1Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 13
+    },
+    {
       "address": "0xd15570",
       "size": 24,
       "exact": true,
@@ -350088,6 +350694,17 @@
       "relocation_count": 2
     },
     {
+      "address": "0xd15600",
+      "size": 216,
+      "exact": true,
+      "target_sha256": "86ce8d5bc89298191e914cbf2a02c98763b520df2fa57b0cecbae5715ea5f97f",
+      "compiled_sha256": "86ce8d5bc89298191e914cbf2a02c98763b520df2fa57b0cecbae5715ea5f97f",
+      "source": "src/DarePoolDestructorOmitNoPic.cpp",
+      "symbol": "_ZN4Dare7Private12DarePoolBaseILj13719040ELj22688EED1Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 13
+    },
+    {
       "address": "0xd156e0",
       "size": 24,
       "exact": true,
@@ -350119,6 +350736,17 @@
       "symbol": "_Z16DestroyAllocatedILj13719376EEvPv",
       "source_review": "manual_reconstruction",
       "relocation_count": 2
+    },
+    {
+      "address": "0xd15770",
+      "size": 216,
+      "exact": true,
+      "target_sha256": "9b5567992f00dd4121bec9fc2baa287eeaee18641785d7a0549cf79cee113b80",
+      "compiled_sha256": "9b5567992f00dd4121bec9fc2baa287eeaee18641785d7a0549cf79cee113b80",
+      "source": "src/DarePoolDestructorOmitNoPic.cpp",
+      "symbol": "_ZN4Dare7Private12DarePoolBaseILj13719408ELj22688EED1Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 13
     },
     {
       "address": "0xd15850",
@@ -350187,6 +350815,17 @@
       "relocation_count": 2
     },
     {
+      "address": "0xd15a70",
+      "size": 208,
+      "exact": true,
+      "target_sha256": "7959015da3b755a3d77064dad369f30326a87d8ef717b68c5d34c2f23c16c6f2",
+      "compiled_sha256": "7959015da3b755a3d77064dad369f30326a87d8ef717b68c5d34c2f23c16c6f2",
+      "source": "src/DarePoolDestructorOmitNoPic.cpp",
+      "symbol": "_ZN4Dare7Private12DarePoolBaseILj13720176ELj872EED1Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 13
+    },
+    {
       "address": "0xd15b40",
       "size": 24,
       "exact": true,
@@ -350220,6 +350859,17 @@
       "relocation_count": 2
     },
     {
+      "address": "0xd15bd0",
+      "size": 216,
+      "exact": true,
+      "target_sha256": "59d0cf6e60ba2d2b1f9f6e05ff15d7847a0f5ec6050cf81853bfa28b7c3280e6",
+      "compiled_sha256": "59d0cf6e60ba2d2b1f9f6e05ff15d7847a0f5ec6050cf81853bfa28b7c3280e6",
+      "source": "src/DarePoolDestructorOmitNoPic.cpp",
+      "symbol": "_ZN4Dare7Private12DarePoolBaseILj13720528ELj19616EED1Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 13
+    },
+    {
       "address": "0xd15cb0",
       "size": 24,
       "exact": true,
@@ -350251,6 +350901,17 @@
       "symbol": "_Z16DestroyAllocatedILj13720864EEvPv",
       "source_review": "manual_reconstruction",
       "relocation_count": 2
+    },
+    {
+      "address": "0xd15d40",
+      "size": 216,
+      "exact": true,
+      "target_sha256": "2adb6fd8231585dc1057e8f499882f70e5c6650226e9c458490678cad83152f1",
+      "compiled_sha256": "2adb6fd8231585dc1057e8f499882f70e5c6650226e9c458490678cad83152f1",
+      "source": "src/DarePoolDestructorOmitNoPic.cpp",
+      "symbol": "_ZN4Dare7Private12DarePoolBaseILj13720896ELj22688EED1Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 13
     },
     {
       "address": "0xd15e20",
@@ -351232,6 +351893,17 @@
       "relocation_count": 2
     },
     {
+      "address": "0xd23250",
+      "size": 208,
+      "exact": true,
+      "target_sha256": "ea2c3411b1621f8b30df41726c6f4e38b9e1a0cb0d336085f88fb7c69b417a69",
+      "compiled_sha256": "ea2c3411b1621f8b30df41726c6f4e38b9e1a0cb0d336085f88fb7c69b417a69",
+      "source": "src/DarePoolDestructorOmitNoPic.cpp",
+      "symbol": "_ZN4Dare7Private12DarePoolBaseILj13775440ELj3648EED1Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 13
+    },
+    {
       "address": "0xd23320",
       "size": 24,
       "exact": true,
@@ -351265,6 +351937,17 @@
       "relocation_count": 2
     },
     {
+      "address": "0xd233b0",
+      "size": 216,
+      "exact": true,
+      "target_sha256": "5ff54d3cbd93ddbe733a8d2f7fc7239b570d6abf4b968ccf8f3e5b8edc33bfdd",
+      "compiled_sha256": "5ff54d3cbd93ddbe733a8d2f7fc7239b570d6abf4b968ccf8f3e5b8edc33bfdd",
+      "source": "src/DarePoolDestructorOmitNoPic.cpp",
+      "symbol": "_ZN4Dare7Private12DarePoolBaseILj13775792ELj32232EED1Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 13
+    },
+    {
       "address": "0xd23490",
       "size": 24,
       "exact": true,
@@ -351296,6 +351979,17 @@
       "symbol": "_Z16DestroyAllocatedILj13776128EEvPv",
       "source_review": "manual_reconstruction",
       "relocation_count": 2
+    },
+    {
+      "address": "0xd23520",
+      "size": 216,
+      "exact": true,
+      "target_sha256": "f78ed0866735135b4e1cc76b72e27c08aa91fd22027b32be44627376bb3d78c8",
+      "compiled_sha256": "f78ed0866735135b4e1cc76b72e27c08aa91fd22027b32be44627376bb3d78c8",
+      "source": "src/DarePoolDestructorOmitNoPic.cpp",
+      "symbol": "_ZN4Dare7Private12DarePoolBaseILj13776160ELj4624EED1Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 13
     },
     {
       "address": "0xd23600",
@@ -351353,6 +352047,17 @@
       "relocation_count": 1
     },
     {
+      "address": "0xd25430",
+      "size": 216,
+      "exact": true,
+      "target_sha256": "f94ae9fe6b178bdc3ea9898e84a41b4eab2cfca4e0459c00e6e96e5ff7e19ccc",
+      "compiled_sha256": "f94ae9fe6b178bdc3ea9898e84a41b4eab2cfca4e0459c00e6e96e5ff7e19ccc",
+      "source": "src/DarePoolDestructorOmitNoPic.cpp",
+      "symbol": "_ZN4Dare7Private12DarePoolBaseILj13784112ELj11384EED1Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 13
+    },
+    {
       "address": "0xd25510",
       "size": 24,
       "exact": true,
@@ -351386,6 +352091,17 @@
       "relocation_count": 2
     },
     {
+      "address": "0xd255a0",
+      "size": 208,
+      "exact": true,
+      "target_sha256": "4d2a0d72ccad49deff722dede0b28ab986d780f00f127c7c0021cb873472e13e",
+      "compiled_sha256": "4d2a0d72ccad49deff722dede0b28ab986d780f00f127c7c0021cb873472e13e",
+      "source": "src/DarePoolDestructorOmitNoPic.cpp",
+      "symbol": "_ZN4Dare7Private12DarePoolBaseILj13784480ELj3896EED1Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 13
+    },
+    {
       "address": "0xd25670",
       "size": 24,
       "exact": true,
@@ -351417,6 +352133,17 @@
       "symbol": "_Z16DestroyAllocatedILj13784800EEvPv",
       "source_review": "manual_reconstruction",
       "relocation_count": 2
+    },
+    {
+      "address": "0xd25700",
+      "size": 208,
+      "exact": true,
+      "target_sha256": "c79a3f5e1cc319a395e938f5260827d1de2d53a607b3334c6e16b69602f62bc5",
+      "compiled_sha256": "c79a3f5e1cc319a395e938f5260827d1de2d53a607b3334c6e16b69602f62bc5",
+      "source": "src/DarePoolDestructorOmitNoPic.cpp",
+      "symbol": "_ZN4Dare7Private12DarePoolBaseILj13784832ELj3896EED1Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 13
     },
     {
       "address": "0xd257d0",
@@ -352398,6 +353125,17 @@
       "relocation_count": 0
     },
     {
+      "address": "0xd37bb0",
+      "size": 216,
+      "exact": true,
+      "target_sha256": "56b862338776c001ac932f8396daed50660fdf67b950ba1e271f0532d5922de1",
+      "compiled_sha256": "56b862338776c001ac932f8396daed50660fdf67b950ba1e271f0532d5922de1",
+      "source": "src/DarePoolDestructorOmitNoPic.cpp",
+      "symbol": "_ZN4Dare7Private12DarePoolBaseILj13859760ELj5208EED1Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 13
+    },
+    {
       "address": "0xd37c90",
       "size": 24,
       "exact": true,
@@ -352429,6 +353167,17 @@
       "symbol": "_Z16DestroyAllocatedILj13860096EEvPv",
       "source_review": "manual_reconstruction",
       "relocation_count": 2
+    },
+    {
+      "address": "0xd37d20",
+      "size": 208,
+      "exact": true,
+      "target_sha256": "795580343c31fa51ef8934368b30b7104d02d87dbed9e55bdc92a4b6eba1f511",
+      "compiled_sha256": "795580343c31fa51ef8934368b30b7104d02d87dbed9e55bdc92a4b6eba1f511",
+      "source": "src/DarePoolDestructorOmitNoPic.cpp",
+      "symbol": "_ZN4Dare7Private12DarePoolBaseILj13860128ELj2648EED1Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 13
     },
     {
       "address": "0xd37df0",
@@ -352464,6 +353213,17 @@
       "relocation_count": 2
     },
     {
+      "address": "0xd37e80",
+      "size": 208,
+      "exact": true,
+      "target_sha256": "654ef774fb1c658a5d060984b067b16401a16557c9a2f4f201674b5f7aa295da",
+      "compiled_sha256": "654ef774fb1c658a5d060984b067b16401a16557c9a2f4f201674b5f7aa295da",
+      "source": "src/DarePoolDestructorOmitNoPic.cpp",
+      "symbol": "_ZN4Dare7Private12DarePoolBaseILj13860480ELj1624EED1Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 13
+    },
+    {
       "address": "0xd37f50",
       "size": 24,
       "exact": true,
@@ -352495,6 +353255,17 @@
       "symbol": "_Z16DestroyAllocatedILj13860800EEvPv",
       "source_review": "manual_reconstruction",
       "relocation_count": 2
+    },
+    {
+      "address": "0xd37fe0",
+      "size": 208,
+      "exact": true,
+      "target_sha256": "a16541d14f0ab1228e70909272fa47ab7e68ef8a2ee5ef6689b9f4f1376b392f",
+      "compiled_sha256": "a16541d14f0ab1228e70909272fa47ab7e68ef8a2ee5ef6689b9f4f1376b392f",
+      "source": "src/DarePoolDestructorOmitNoPic.cpp",
+      "symbol": "_ZN4Dare7Private12DarePoolBaseILj13860832ELj2136EED1Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 13
     },
     {
       "address": "0xd380b0",
@@ -352530,6 +353301,17 @@
       "relocation_count": 2
     },
     {
+      "address": "0xd38140",
+      "size": 208,
+      "exact": true,
+      "target_sha256": "5e4f6c0ff9e77e7d776b7392790f868afa8f762be0cbb6cc1c11d0f4acb24f86",
+      "compiled_sha256": "5e4f6c0ff9e77e7d776b7392790f868afa8f762be0cbb6cc1c11d0f4acb24f86",
+      "source": "src/DarePoolDestructorOmitNoPic.cpp",
+      "symbol": "_ZN4Dare7Private12DarePoolBaseILj13861184ELj3672EED1Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 13
+    },
+    {
       "address": "0xd38210",
       "size": 24,
       "exact": true,
@@ -352561,6 +353343,17 @@
       "symbol": "_Z16DestroyAllocatedILj13861504EEvPv",
       "source_review": "manual_reconstruction",
       "relocation_count": 2
+    },
+    {
+      "address": "0xd382a0",
+      "size": 216,
+      "exact": true,
+      "target_sha256": "ea77f19ece8fd2239425c929300e771d77f7307e8806008ef5aaace03deeb392",
+      "compiled_sha256": "ea77f19ece8fd2239425c929300e771d77f7307e8806008ef5aaace03deeb392",
+      "source": "src/DarePoolDestructorOmitNoPic.cpp",
+      "symbol": "_ZN4Dare7Private12DarePoolBaseILj13861536ELj5208EED1Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 13
     },
     {
       "address": "0xd38380",
@@ -352596,6 +353389,17 @@
       "relocation_count": 2
     },
     {
+      "address": "0xd38410",
+      "size": 208,
+      "exact": true,
+      "target_sha256": "7d3bbdc89ed66d4a66be45baad71815b385e8e80e8f111e081f19889411100a7",
+      "compiled_sha256": "7d3bbdc89ed66d4a66be45baad71815b385e8e80e8f111e081f19889411100a7",
+      "source": "src/DarePoolDestructorOmitNoPic.cpp",
+      "symbol": "_ZN4Dare7Private12DarePoolBaseILj13861904ELj2136EED1Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 13
+    },
+    {
       "address": "0xd384e0",
       "size": 24,
       "exact": true,
@@ -352627,6 +353431,17 @@
       "symbol": "_Z16DestroyAllocatedILj13862224EEvPv",
       "source_review": "manual_reconstruction",
       "relocation_count": 2
+    },
+    {
+      "address": "0xd38570",
+      "size": 216,
+      "exact": true,
+      "target_sha256": "0b40263d61e0b8d03317a57f0781bf2c67cc0efba98c648bf093235ed9d874b8",
+      "compiled_sha256": "0b40263d61e0b8d03317a57f0781bf2c67cc0efba98c648bf093235ed9d874b8",
+      "source": "src/DarePoolDestructorOmitNoPic.cpp",
+      "symbol": "_ZN4Dare7Private12DarePoolBaseILj13862256ELj6296EED1Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 13
     },
     {
       "address": "0xd38650",
@@ -352662,6 +353477,17 @@
       "relocation_count": 2
     },
     {
+      "address": "0xd386e0",
+      "size": 208,
+      "exact": true,
+      "target_sha256": "01c1089e4bb1a5022580f14f36d7639195499ba1af4c76d8f29ca02b4eec66a3",
+      "compiled_sha256": "01c1089e4bb1a5022580f14f36d7639195499ba1af4c76d8f29ca02b4eec66a3",
+      "source": "src/DarePoolDestructorOmitNoPic.cpp",
+      "symbol": "_ZN4Dare7Private12DarePoolBaseILj13862624ELj2136EED1Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 13
+    },
+    {
       "address": "0xd387b0",
       "size": 24,
       "exact": true,
@@ -352693,6 +353519,17 @@
       "symbol": "_Z16DestroyAllocatedILj13862944EEvPv",
       "source_review": "manual_reconstruction",
       "relocation_count": 2
+    },
+    {
+      "address": "0xd38840",
+      "size": 216,
+      "exact": true,
+      "target_sha256": "c2d9f97c20204aae63dc4de76598ee1b1731ef16ceae91b83760e56b2c05235e",
+      "compiled_sha256": "c2d9f97c20204aae63dc4de76598ee1b1731ef16ceae91b83760e56b2c05235e",
+      "source": "src/DarePoolDestructorOmitNoPic.cpp",
+      "symbol": "_ZN4Dare7Private12DarePoolBaseILj13862976ELj4184EED1Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 13
     },
     {
       "address": "0xd38920",
@@ -352728,6 +353565,17 @@
       "relocation_count": 2
     },
     {
+      "address": "0xd389b0",
+      "size": 208,
+      "exact": true,
+      "target_sha256": "47e94db6777fd8c2ea0fd1dce0ec28abfd2117faf9050b7ec7cbf1a60301e800",
+      "compiled_sha256": "47e94db6777fd8c2ea0fd1dce0ec28abfd2117faf9050b7ec7cbf1a60301e800",
+      "source": "src/DarePoolDestructorOmitNoPic.cpp",
+      "symbol": "_ZN4Dare7Private12DarePoolBaseILj13863344ELj3160EED1Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 13
+    },
+    {
       "address": "0xd38a80",
       "size": 24,
       "exact": true,
@@ -352759,6 +353607,17 @@
       "symbol": "_Z16DestroyAllocatedILj13863664EEvPv",
       "source_review": "manual_reconstruction",
       "relocation_count": 2
+    },
+    {
+      "address": "0xd38b10",
+      "size": 216,
+      "exact": true,
+      "target_sha256": "f8d0f15333538d796f1cb1f5955cc7888b35646beaf9679ad31426540d7b338d",
+      "compiled_sha256": "f8d0f15333538d796f1cb1f5955cc7888b35646beaf9679ad31426540d7b338d",
+      "source": "src/DarePoolDestructorOmitNoPic.cpp",
+      "symbol": "_ZN4Dare7Private12DarePoolBaseILj13863696ELj7768EED1Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 13
     },
     {
       "address": "0xd38bf0",
@@ -352794,6 +353653,17 @@
       "relocation_count": 2
     },
     {
+      "address": "0xd38c80",
+      "size": 208,
+      "exact": true,
+      "target_sha256": "4d2c883310fe1eacd3eb45656a06f0f87c070c87e77a728d6e96153cdd3838f9",
+      "compiled_sha256": "4d2c883310fe1eacd3eb45656a06f0f87c070c87e77a728d6e96153cdd3838f9",
+      "source": "src/DarePoolDestructorOmitNoPic.cpp",
+      "symbol": "_ZN4Dare7Private12DarePoolBaseILj13864064ELj2136EED1Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 13
+    },
+    {
       "address": "0xd38d50",
       "size": 24,
       "exact": true,
@@ -352825,6 +353695,17 @@
       "symbol": "_Z16DestroyAllocatedILj13864384EEvPv",
       "source_review": "manual_reconstruction",
       "relocation_count": 2
+    },
+    {
+      "address": "0xd38de0",
+      "size": 208,
+      "exact": true,
+      "target_sha256": "66b1ad9792449613b23f2f2d39fce5044966d46f594dd6459695affe362546a9",
+      "compiled_sha256": "66b1ad9792449613b23f2f2d39fce5044966d46f594dd6459695affe362546a9",
+      "source": "src/DarePoolDestructorOmitNoPic.cpp",
+      "symbol": "_ZN4Dare7Private12DarePoolBaseILj13864416ELj3160EED1Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 13
     },
     {
       "address": "0xd38eb0",
@@ -352860,6 +353741,17 @@
       "relocation_count": 2
     },
     {
+      "address": "0xd38f40",
+      "size": 208,
+      "exact": true,
+      "target_sha256": "526bdfc974bbab0ed8e66c017f7d00e0439076a94048c289b07d109b1ead1b43",
+      "compiled_sha256": "526bdfc974bbab0ed8e66c017f7d00e0439076a94048c289b07d109b1ead1b43",
+      "source": "src/DarePoolDestructorOmitNoPic.cpp",
+      "symbol": "_ZN4Dare7Private12DarePoolBaseILj13864768ELj2136EED1Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 13
+    },
+    {
       "address": "0xd39010",
       "size": 24,
       "exact": true,
@@ -352891,6 +353783,17 @@
       "symbol": "_Z16DestroyAllocatedILj13865088EEvPv",
       "source_review": "manual_reconstruction",
       "relocation_count": 2
+    },
+    {
+      "address": "0xd390a0",
+      "size": 208,
+      "exact": true,
+      "target_sha256": "dc2cb3f538e615017822423566efa74aad0531f1f2ab761bde74f92a3d70d32e",
+      "compiled_sha256": "dc2cb3f538e615017822423566efa74aad0531f1f2ab761bde74f92a3d70d32e",
+      "source": "src/DarePoolDestructorOmitNoPic.cpp",
+      "symbol": "_ZN4Dare7Private12DarePoolBaseILj13865120ELj2136EED1Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 13
     },
     {
       "address": "0xd39170",
@@ -352926,6 +353829,17 @@
       "relocation_count": 2
     },
     {
+      "address": "0xd39200",
+      "size": 208,
+      "exact": true,
+      "target_sha256": "9777b32f1134b034d0b9a3be1dd6e4d20bac7b5a65dd809c8d1761c5ec419893",
+      "compiled_sha256": "9777b32f1134b034d0b9a3be1dd6e4d20bac7b5a65dd809c8d1761c5ec419893",
+      "source": "src/DarePoolDestructorOmitNoPic.cpp",
+      "symbol": "_ZN4Dare7Private12DarePoolBaseILj13865472ELj2648EED1Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 13
+    },
+    {
       "address": "0xd392d0",
       "size": 24,
       "exact": true,
@@ -352957,6 +353871,17 @@
       "symbol": "_Z16DestroyAllocatedILj13865792EEvPv",
       "source_review": "manual_reconstruction",
       "relocation_count": 2
+    },
+    {
+      "address": "0xd39360",
+      "size": 208,
+      "exact": true,
+      "target_sha256": "5892e80b86227968b9123c74fa45825df0f2945f5121c46252e38020afea5f68",
+      "compiled_sha256": "5892e80b86227968b9123c74fa45825df0f2945f5121c46252e38020afea5f68",
+      "source": "src/DarePoolDestructorOmitNoPic.cpp",
+      "symbol": "_ZN4Dare7Private12DarePoolBaseILj13865824ELj2136EED1Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 13
     },
     {
       "address": "0xd39430",
@@ -352992,6 +353917,17 @@
       "relocation_count": 2
     },
     {
+      "address": "0xd394c0",
+      "size": 208,
+      "exact": true,
+      "target_sha256": "c7465515773b321ea98391eb0ebbae89580b8390ac22886b7234a8b463121066",
+      "compiled_sha256": "c7465515773b321ea98391eb0ebbae89580b8390ac22886b7234a8b463121066",
+      "source": "src/DarePoolDestructorOmitNoPic.cpp",
+      "symbol": "_ZN4Dare7Private12DarePoolBaseILj13866176ELj1624EED1Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 13
+    },
+    {
       "address": "0xd39590",
       "size": 24,
       "exact": true,
@@ -353023,6 +353959,17 @@
       "symbol": "_Z16DestroyAllocatedILj13866496EEvPv",
       "source_review": "manual_reconstruction",
       "relocation_count": 2
+    },
+    {
+      "address": "0xd39620",
+      "size": 208,
+      "exact": true,
+      "target_sha256": "1c462af327ea1388f9694c073fc8c4fa0317c919c0c4492e3f6c693e9dc806fc",
+      "compiled_sha256": "1c462af327ea1388f9694c073fc8c4fa0317c919c0c4492e3f6c693e9dc806fc",
+      "source": "src/DarePoolDestructorOmitNoPic.cpp",
+      "symbol": "_ZN4Dare7Private12DarePoolBaseILj13866528ELj1624EED1Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 13
     },
     {
       "address": "0xd396f0",
@@ -353058,6 +354005,17 @@
       "relocation_count": 2
     },
     {
+      "address": "0xd39780",
+      "size": 208,
+      "exact": true,
+      "target_sha256": "74087e68e45de89741dd3f5df0e359a1d90dfc1bfc1358408ec1d267cf72a5cd",
+      "compiled_sha256": "74087e68e45de89741dd3f5df0e359a1d90dfc1bfc1358408ec1d267cf72a5cd",
+      "source": "src/DarePoolDestructorOmitNoPic.cpp",
+      "symbol": "_ZN4Dare7Private12DarePoolBaseILj13866880ELj1624EED1Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 13
+    },
+    {
       "address": "0xd39850",
       "size": 24,
       "exact": true,
@@ -353089,6 +354047,17 @@
       "symbol": "_Z16DestroyAllocatedILj13867200EEvPv",
       "source_review": "manual_reconstruction",
       "relocation_count": 2
+    },
+    {
+      "address": "0xd398e0",
+      "size": 208,
+      "exact": true,
+      "target_sha256": "aa192626bd59836616afbb9e1dd5f63daf3423bf19f44bbef861f2871b96f661",
+      "compiled_sha256": "aa192626bd59836616afbb9e1dd5f63daf3423bf19f44bbef861f2871b96f661",
+      "source": "src/DarePoolDestructorOmitNoPic.cpp",
+      "symbol": "_ZN4Dare7Private12DarePoolBaseILj13867232ELj3672EED1Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 13
     },
     {
       "address": "0xd399b0",
@@ -353124,6 +354093,17 @@
       "relocation_count": 2
     },
     {
+      "address": "0xd39a40",
+      "size": 208,
+      "exact": true,
+      "target_sha256": "0b5dfe60ba5802461292d2a352adcc2fd7ff5a7548f69a2557ea4a8edf220a9e",
+      "compiled_sha256": "0b5dfe60ba5802461292d2a352adcc2fd7ff5a7548f69a2557ea4a8edf220a9e",
+      "source": "src/DarePoolDestructorOmitNoPic.cpp",
+      "symbol": "_ZN4Dare7Private12DarePoolBaseILj13867584ELj1848EED1Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 13
+    },
+    {
       "address": "0xd39b10",
       "size": 24,
       "exact": true,
@@ -353155,6 +354135,17 @@
       "symbol": "_Z16DestroyAllocatedILj13867904EEvPv",
       "source_review": "manual_reconstruction",
       "relocation_count": 2
+    },
+    {
+      "address": "0xd39ba0",
+      "size": 216,
+      "exact": true,
+      "target_sha256": "0846510cb79d78ab88097ee53b51f67124213c3ea801a0945b786b2fe47fd67a",
+      "compiled_sha256": "0846510cb79d78ab88097ee53b51f67124213c3ea801a0945b786b2fe47fd67a",
+      "source": "src/DarePoolDestructorOmitNoPic.cpp",
+      "symbol": "_ZN4Dare7Private12DarePoolBaseILj13867936ELj16536EED1Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 13
     },
     {
       "address": "0xd39c80",
@@ -353190,6 +354181,17 @@
       "relocation_count": 2
     },
     {
+      "address": "0xd39d10",
+      "size": 216,
+      "exact": true,
+      "target_sha256": "6a3367d7836f7522e0772e638028ca9dff03192766fa9ffee7567fb03026d3f0",
+      "compiled_sha256": "6a3367d7836f7522e0772e638028ca9dff03192766fa9ffee7567fb03026d3f0",
+      "source": "src/DarePoolDestructorOmitNoPic.cpp",
+      "symbol": "_ZN4Dare7Private12DarePoolBaseILj13868304ELj6296EED1Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 13
+    },
+    {
       "address": "0xd39df0",
       "size": 24,
       "exact": true,
@@ -353221,6 +354223,17 @@
       "symbol": "_Z16DestroyAllocatedILj13868640EEvPv",
       "source_review": "manual_reconstruction",
       "relocation_count": 2
+    },
+    {
+      "address": "0xd39e80",
+      "size": 216,
+      "exact": true,
+      "target_sha256": "a2bd6c286f5c059941bf65bb8ea69857b4bef53ecac57e7807004a82978c66bf",
+      "compiled_sha256": "a2bd6c286f5c059941bf65bb8ea69857b4bef53ecac57e7807004a82978c66bf",
+      "source": "src/DarePoolDestructorOmitNoPic.cpp",
+      "symbol": "_ZN4Dare7Private12DarePoolBaseILj13868672ELj8344EED1Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 13
     },
     {
       "address": "0xd39f60",
@@ -353256,6 +354269,17 @@
       "relocation_count": 2
     },
     {
+      "address": "0xd39ff0",
+      "size": 216,
+      "exact": true,
+      "target_sha256": "1a22d914cee42eb9306730ae1f162f066cfa7841d3815eb655ca9cdc9c548a4a",
+      "compiled_sha256": "1a22d914cee42eb9306730ae1f162f066cfa7841d3815eb655ca9cdc9c548a4a",
+      "source": "src/DarePoolDestructorOmitNoPic.cpp",
+      "symbol": "_ZN4Dare7Private12DarePoolBaseILj13869040ELj7320EED1Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 13
+    },
+    {
       "address": "0xd3a0d0",
       "size": 24,
       "exact": true,
@@ -353287,6 +354311,17 @@
       "symbol": "_Z16DestroyAllocatedILj13869376EEvPv",
       "source_review": "manual_reconstruction",
       "relocation_count": 2
+    },
+    {
+      "address": "0xd3a160",
+      "size": 216,
+      "exact": true,
+      "target_sha256": "089a4b02139fe9d28ce52e0ddb5205b55aae5b6af97c12fd358313b6f6cd1e04",
+      "compiled_sha256": "089a4b02139fe9d28ce52e0ddb5205b55aae5b6af97c12fd358313b6f6cd1e04",
+      "source": "src/DarePoolDestructorOmitNoPic.cpp",
+      "symbol": "_ZN4Dare7Private12DarePoolBaseILj13869408ELj7320EED1Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 13
     },
     {
       "address": "0xd3a240",
@@ -353322,6 +354357,17 @@
       "relocation_count": 2
     },
     {
+      "address": "0xd3a2d0",
+      "size": 216,
+      "exact": true,
+      "target_sha256": "a9acf669e698dfd58182610fbe55f2c430f4a38702d232fc0b7a6c372c31c0f5",
+      "compiled_sha256": "a9acf669e698dfd58182610fbe55f2c430f4a38702d232fc0b7a6c372c31c0f5",
+      "source": "src/DarePoolDestructorOmitNoPic.cpp",
+      "symbol": "_ZN4Dare7Private12DarePoolBaseILj13869776ELj19608EED1Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 13
+    },
+    {
       "address": "0xd3a3b0",
       "size": 24,
       "exact": true,
@@ -353353,6 +354399,17 @@
       "symbol": "_Z16DestroyAllocatedILj13870112EEvPv",
       "source_review": "manual_reconstruction",
       "relocation_count": 2
+    },
+    {
+      "address": "0xd3a440",
+      "size": 208,
+      "exact": true,
+      "target_sha256": "2adf245713791f1d5f135f166b356c46e6709d05b4c23948f92192b7c544fea6",
+      "compiled_sha256": "2adf245713791f1d5f135f166b356c46e6709d05b4c23948f92192b7c544fea6",
+      "source": "src/DarePoolDestructorOmitNoPic.cpp",
+      "symbol": "_ZN4Dare7Private12DarePoolBaseILj13870144ELj2648EED1Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 13
     },
     {
       "address": "0xd3a510",
@@ -353388,6 +354445,17 @@
       "relocation_count": 2
     },
     {
+      "address": "0xd3a5a0",
+      "size": 216,
+      "exact": true,
+      "target_sha256": "35ebb733695769edd11c300f24e5f21d573051acdf95e9105e94896c3bf0599c",
+      "compiled_sha256": "35ebb733695769edd11c300f24e5f21d573051acdf95e9105e94896c3bf0599c",
+      "source": "src/DarePoolDestructorOmitNoPic.cpp",
+      "symbol": "_ZN4Dare7Private12DarePoolBaseILj13870496ELj4184EED1Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 13
+    },
+    {
       "address": "0xd3a680",
       "size": 24,
       "exact": true,
@@ -353419,6 +354487,17 @@
       "symbol": "_Z16DestroyAllocatedILj13870832EEvPv",
       "source_review": "manual_reconstruction",
       "relocation_count": 2
+    },
+    {
+      "address": "0xd3a710",
+      "size": 208,
+      "exact": true,
+      "target_sha256": "86b9c9a3cba4fce8b95893561e8a06edface1121ffed1c117a7af5e48cfd2895",
+      "compiled_sha256": "86b9c9a3cba4fce8b95893561e8a06edface1121ffed1c117a7af5e48cfd2895",
+      "source": "src/DarePoolDestructorOmitNoPic.cpp",
+      "symbol": "_ZN4Dare7Private12DarePoolBaseILj13870864ELj1624EED1Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 13
     },
     {
       "address": "0xd3a7e0",
@@ -353454,6 +354533,17 @@
       "relocation_count": 2
     },
     {
+      "address": "0xd3a870",
+      "size": 208,
+      "exact": true,
+      "target_sha256": "0f28864b8faac1379c6317deafdb48c87954169518b0478a7f96d1046ef41d24",
+      "compiled_sha256": "0f28864b8faac1379c6317deafdb48c87954169518b0478a7f96d1046ef41d24",
+      "source": "src/DarePoolDestructorOmitNoPic.cpp",
+      "symbol": "_ZN4Dare7Private12DarePoolBaseILj13871216ELj1624EED1Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 13
+    },
+    {
       "address": "0xd3a940",
       "size": 24,
       "exact": true,
@@ -353485,6 +354575,17 @@
       "symbol": "_Z16DestroyAllocatedILj13871536EEvPv",
       "source_review": "manual_reconstruction",
       "relocation_count": 2
+    },
+    {
+      "address": "0xd3a9d0",
+      "size": 208,
+      "exact": true,
+      "target_sha256": "b2e8e347194ebbe8afd446014793af209b2aaceca5a013c2dd8b701ef021ceae",
+      "compiled_sha256": "b2e8e347194ebbe8afd446014793af209b2aaceca5a013c2dd8b701ef021ceae",
+      "source": "src/DarePoolDestructorOmitNoPic.cpp",
+      "symbol": "_ZN4Dare7Private12DarePoolBaseILj13871568ELj3160EED1Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 13
     },
     {
       "address": "0xd3aaa0",
@@ -353520,6 +354621,17 @@
       "relocation_count": 2
     },
     {
+      "address": "0xd3ab30",
+      "size": 208,
+      "exact": true,
+      "target_sha256": "e29f5bc1f7cab1cbad3543bf06d0eba5256f68e06308f5df113c54194bbf1981",
+      "compiled_sha256": "e29f5bc1f7cab1cbad3543bf06d0eba5256f68e06308f5df113c54194bbf1981",
+      "source": "src/DarePoolDestructorOmitNoPic.cpp",
+      "symbol": "_ZN4Dare7Private12DarePoolBaseILj13871920ELj1112EED1Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 13
+    },
+    {
       "address": "0xd3ac00",
       "size": 24,
       "exact": true,
@@ -353553,6 +354665,17 @@
       "relocation_count": 2
     },
     {
+      "address": "0xd3ac90",
+      "size": 216,
+      "exact": true,
+      "target_sha256": "40a7559f1ed250772aa166647449da65572e1d2348f8a47fe6cf5776e2fd66d8",
+      "compiled_sha256": "40a7559f1ed250772aa166647449da65572e1d2348f8a47fe6cf5776e2fd66d8",
+      "source": "src/DarePoolDestructorOmitNoPic.cpp",
+      "symbol": "_ZN4Dare7Private12DarePoolBaseILj13872272ELj5720EED1Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 13
+    },
+    {
       "address": "0xd3ad70",
       "size": 24,
       "exact": true,
@@ -353584,6 +354707,17 @@
       "symbol": "_Z16DestroyAllocatedILj13872608EEvPv",
       "source_review": "manual_reconstruction",
       "relocation_count": 2
+    },
+    {
+      "address": "0xd3ae00",
+      "size": 208,
+      "exact": true,
+      "target_sha256": "fae50bffd56e81ddfdfe3de2668c13fbf3ef9ac2fb045e506390562f5d89d498",
+      "compiled_sha256": "fae50bffd56e81ddfdfe3de2668c13fbf3ef9ac2fb045e506390562f5d89d498",
+      "source": "src/DarePoolDestructorOmitNoPic.cpp",
+      "symbol": "_ZN4Dare7Private12DarePoolBaseILj13872640ELj1624EED1Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 13
     },
     {
       "address": "0xd3aed0",
@@ -354180,6 +355314,28 @@
       "relocation_count": 1
     },
     {
+      "address": "0xd46050",
+      "size": 208,
+      "exact": true,
+      "target_sha256": "7ed2a737d97ce6a699d237e4f2c3f311800028927ae9b8d1273693a91f9c57aa",
+      "compiled_sha256": "7ed2a737d97ce6a699d237e4f2c3f311800028927ae9b8d1273693a91f9c57aa",
+      "source": "src/DarePoolDestructorOmitNoPic.cpp",
+      "symbol": "_ZN4Dare7Private12DarePoolBaseILj13918288ELj2616EED1Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 13
+    },
+    {
+      "address": "0xd46410",
+      "size": 208,
+      "exact": true,
+      "target_sha256": "a0757d821e5fd74114b909f5ca2c100270aa9d4f3c69db3c5cece9af36f0a7fc",
+      "compiled_sha256": "a0757d821e5fd74114b909f5ca2c100270aa9d4f3c69db3c5cece9af36f0a7fc",
+      "source": "src/DarePoolDestructorOmitNoPic.cpp",
+      "symbol": "_ZN4Dare7Private12DarePoolBaseILj13919248ELj192EED1Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 13
+    },
+    {
       "address": "0xd46860",
       "size": 36,
       "exact": true,
@@ -354464,6 +355620,17 @@
       "symbol": "RecoveredLeaf_d50d20",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 1
+    },
+    {
+      "address": "0xd51120",
+      "size": 208,
+      "exact": true,
+      "target_sha256": "d49b163fb3cb4f40615026b2025da673bdc05e4ad81ba98e81494945c2969a51",
+      "compiled_sha256": "d49b163fb3cb4f40615026b2025da673bdc05e4ad81ba98e81494945c2969a51",
+      "source": "src/DarePoolDestructorOmitNoPic.cpp",
+      "symbol": "_ZN4Dare7Private12DarePoolBaseILj13963552ELj1544EED1Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 13
     },
     {
       "address": "0xd511f0",
