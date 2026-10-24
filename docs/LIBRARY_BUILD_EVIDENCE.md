@@ -149,6 +149,11 @@ the original sizes and ownership; their real names are not recovered.
 `StormMapEraseKey` (7 / 3,808 bytes) covers `unordered_map<unsigned, T>::erase(key)`
 with the same allocator.
 
+[`src/StormHashTables.cpp`](../src/StormHashTables.cpp) adds **11 functions /
+6,880 bytes** of `unordered_map` internals: seven `__rehash` bodies for 16-bit
+keys (the key width shows in the equal-key grouping) and four `__erase_unique`
+bodies for 16- and 64-bit keys.
+
 ## Limits found in this batch
 
 - **Trap encoding.** 337 unmatched functions (40,860 bytes) contain the original

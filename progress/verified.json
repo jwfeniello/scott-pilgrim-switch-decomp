@@ -1,9 +1,9 @@
 {
   "version": 1,
-  "generated_at": "2026-10-24T21:35:35.807481+00:00",
+  "generated_at": "2026-10-24T21:59:57.470410+00:00",
   "target_elf_sha256": "ea95638e6d6aaa0dc6cddd552a9366799aa1ec3bc07ee201f23f6c151103f5b8",
   "input_sha256": {
-    "config/builds.json": "e5a3a50d3cca13b44103055727525c0e25e63d897a0d6a124820a19b61adbbed",
+    "config/builds.json": "2ead7536008f6b68e29feec2ccd8a032afc8d6c8b19f05163e295457a7ff4717",
     "config/functions.tsv": "399e91468a04e0459194c10d68d2210d1157cedefeb19c7851886ca7632fcb18",
     "config/non_fde_functions.tsv": "6a45f5e185454fa0472af00b2cdc9d040d73ca133d1106217e1fbbe3b32a8175",
     "config/target.json": "23cc6a5227206a953e7668acf5e9ae5c02a25c23b7e7967f0450a814b888241a",
@@ -78,8 +78,8 @@
     "src/EchoEventDestructorKeepPicUnwind1.cpp": "a62cc1b0aff9dbf8591169608d903995618d40c1fbd9e089dd81a3edf6e39716",
     "src/EchoFieldSerialize.h": "ededd8eb6f134c1bcb991eb1a7f83447c8fc9985c57fcc23f5d80e800068dcb4",
     "src/EchoFieldSerializeKeepPicNoFloat.cpp": "ca6cb62e2b86f10300ea83037bdd209ff3d49d48dac98df0f3e526d73998955d",
-    "src/EchoRecordEvents.cpp": "fd28fb0fa61fccb0fdcbb77e3cf67714d9d6d4104245054ed5b8205d06bf44b2",
-    "src/EchoRecordWriter.h": "c45dce65bece6985c7478e08992bc7a15fd4ca822ee64d513dd85f3a81758512",
+    "src/EchoRecordEvents.cpp": "8cd911731e4d29df8595a8de26fbecf47e4e4084d7447afb4ce324a0cb61e592",
+    "src/EchoRecordWriter.h": "bdac89817b0fa1624767905f74b75b8690b4d60de2df2b11e8a6ba320d50db85",
     "src/EchoTypeDescriptor.h": "2c553f17f0daedb448c3c9002c1a0bab8a40446c37cbc85a35bd3e48299b59e1",
     "src/EchoTypeDescriptorKeepPicUnwindO3.cpp": "5582f6b447c88ff0265a8139fe69bb82f2624154c9b2877f95e48edd7c51521e",
     "src/EngineRegistry.cpp": "cc9796d5c067bfe73eee26a057f039a0b8e0a904923f5954b7dc34ee3736f1fd",
@@ -989,6 +989,7 @@
     "src/StormDeleteHolderKeepPic.cpp": "cefb38cead3a2c7265a49751f86c3c5e3ebb369c1448532162b05484ec7c971e",
     "src/StormEventBase.cpp": "83a835079733f4ab39e804146140fe18d5c6fbcfc606d82a2f8be2793d938d1c",
     "src/StormEventCleanup.cpp": "bf80d03fd1fbb44ff2a197e2b37d201de99877e4b66761a45d96a6017c1201b2",
+    "src/StormHashTables.cpp": "8b590847e86f8d5cc7756878e9baec6d0b0aff4899dbd025b8cae752c211b42c",
     "src/StormHeaderDelete.h": "1c13b7e9c4ece88c4e002bb7f55cc4af4023cb2f8313a54eee8880bec3eb6143",
     "src/StormHeaderDeleteKeepPicUnwind.cpp": "9a6577bb9ee4bf0dcb636d37ea17b0e1815de20c6d31835e595b7aaf62aeea48",
     "src/StormLayeredClone40.h": "caf8c2cc0a1aef314958c766602aa9d015bc1f2a26437385d727191279003a42",
@@ -3904,17 +3905,17 @@
     "vendor/zlib-1.2.11/zutil.h": "9a63f6690fac1620aa3cecee5752af618806da438a256b4a047fbcd289cac159"
   },
   "compiler_versions": {
-    "8.0.1": "clang version 8.0.1 (tags/RELEASE_801/final)",
     "7.0.1": "clang version 7.0.1 (tags/RELEASE_701/final)",
+    "8.0.1": "clang version 8.0.1 (tags/RELEASE_801/final)",
     "lld": "LLD 8.0.1 (compatible with GNU linkers)"
   },
   "compiler_sha256": {
-    "8.0.1": "dffd62a213ec6cdb4430012a4a41c11e5e32c288f133d5391f9be49e1c5b69de",
     "7.0.1": "c2f0a175157d9aaace8031f8e6d7ea0ed6142b4bcef287105e3ed227301f1002",
+    "8.0.1": "dffd62a213ec6cdb4430012a4a41c11e5e32c288f133d5391f9be49e1c5b69de",
     "lld": "c4b3aaea06ff7112c64753047a2ab279fc3fe10dd807fd3c22edfdae99f43eed"
   },
-  "exact_functions": 33778,
-  "exact_bytes": 3943664,
+  "exact_functions": 33820,
+  "exact_bytes": 3959128,
   "builds": [
     {
       "id": "probes",
@@ -12997,11 +12998,6 @@
       "object_sha256": "5b4ebda02d053543d51a63806e682ac54f1683f681efd8d33f9542d956f2b437"
     },
     {
-      "id": "echo_record_events_keep_pic_unwind_o3",
-      "compiler": "8.0.1",
-      "object_sha256": "9754871dc72c3c13cfcedefbd62cc16e79d09f492d24ffe9fd472963fc51384b"
-    },
-    {
       "id": "component_map_collect_by_key_omit_no_pic",
       "compiler": "8.0.1",
       "object_sha256": "2358a97aa6c14f6a203ce8a362c710fe2fe06209f4fd4e737077345be30fcd0c"
@@ -13015,6 +13011,16 @@
       "id": "storm_vectors_keep_pic_no_float_unwind_o3",
       "compiler": "8.0.1",
       "object_sha256": "54ca489dd592fe3f8386497098e9e0d67a3aa74ca031b24124505236c2338aa2"
+    },
+    {
+      "id": "echo_record_events_keep_pic_no_float_unwind_o3",
+      "compiler": "8.0.1",
+      "object_sha256": "80972a9ce58d5de9d67f7841a8d80a90e5b2ad7f04627ab90ebc123f63f72877"
+    },
+    {
+      "id": "storm_hash_tables_keep_pic_no_float_unwind_o3",
+      "compiler": "8.0.1",
+      "object_sha256": "f207b149770e71ae512b6db45725b6cd2935d5fd437ca8f6aab61f54a40b4f72"
     }
   ],
   "matches": [
@@ -64686,6 +64692,17 @@
       "relocation_count": 0
     },
     {
+      "address": "0x295430",
+      "size": 200,
+      "exact": true,
+      "target_sha256": "587f79551e7884b3ec493cc0f25dd6c7cad8b262beb97d7bab88f0e559871b0f",
+      "compiled_sha256": "587f79551e7884b3ec493cc0f25dd6c7cad8b262beb97d7bab88f0e559871b0f",
+      "source": "src/EchoRecordEvents.cpp",
+      "symbol": "_ZN11EchoRecords12Event_2954305WriteEPNS_6WriterE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 7
+    },
+    {
       "address": "0x295500",
       "size": 4,
       "exact": true,
@@ -64805,6 +64822,17 @@
       "symbol": "_ZN12DispatchableILj2709920ELj152EE8DispatchEP7HandlerILj19EE",
       "source_review": "manual_reconstruction",
       "relocation_count": 0
+    },
+    {
+      "address": "0x2959c0",
+      "size": 200,
+      "exact": true,
+      "target_sha256": "c1e2c7ab015df581a27f8e29eb59fe4cb460502903d8e3a09590683df4088b6a",
+      "compiled_sha256": "c1e2c7ab015df581a27f8e29eb59fe4cb460502903d8e3a09590683df4088b6a",
+      "source": "src/EchoRecordEvents.cpp",
+      "symbol": "_ZN11EchoRecords12Event_2959c05WriteEPNS_6WriterE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 7
     },
     {
       "address": "0x295a90",
@@ -66688,6 +66716,17 @@
       "relocation_count": 0
     },
     {
+      "address": "0x29b440",
+      "size": 200,
+      "exact": true,
+      "target_sha256": "316133f7d62793e9b627dc0bff3a03028465f06bbe009f67cc5b7d857302d615",
+      "compiled_sha256": "316133f7d62793e9b627dc0bff3a03028465f06bbe009f67cc5b7d857302d615",
+      "source": "src/EchoRecordEvents.cpp",
+      "symbol": "_ZN11EchoRecords12Event_29b4405WriteEPNS_6WriterE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 7
+    },
+    {
       "address": "0x29b510",
       "size": 4,
       "exact": true,
@@ -67522,6 +67561,17 @@
       "symbol": "_ZN12DispatchableILj2743088ELj360EE8DispatchEP7HandlerILj45EE",
       "source_review": "manual_reconstruction",
       "relocation_count": 0
+    },
+    {
+      "address": "0x29db50",
+      "size": 200,
+      "exact": true,
+      "target_sha256": "902d1d8aa09d5d9ba88f718055fcf493c7051b0a2ba7b4337fefe369961b5047",
+      "compiled_sha256": "902d1d8aa09d5d9ba88f718055fcf493c7051b0a2ba7b4337fefe369961b5047",
+      "source": "src/EchoRecordEvents.cpp",
+      "symbol": "_ZN11EchoRecords12Event_29db505WriteEPNS_6WriterE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 7
     },
     {
       "address": "0x29dc20",
@@ -75510,6 +75560,39 @@
       "relocation_count": 0
     },
     {
+      "address": "0x2b9270",
+      "size": 420,
+      "exact": true,
+      "target_sha256": "abef1605fe30389082afc41fe91de5e5781c3f071f7611b0bb9864835ffb1cf1",
+      "compiled_sha256": "abef1605fe30389082afc41fe91de5e5781c3f071f7611b0bb9864835ffb1cf1",
+      "source": "src/EchoRecordEvents.cpp",
+      "symbol": "_ZN11EchoRecords12Event_2b92705WriteEPNS_6WriterE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 7
+    },
+    {
+      "address": "0x2ba5d0",
+      "size": 256,
+      "exact": true,
+      "target_sha256": "e836b6842c4ee1d69ad3dd88d3d651ddcb696d9e80e262103988af79c4fe7dad",
+      "compiled_sha256": "e836b6842c4ee1d69ad3dd88d3d651ddcb696d9e80e262103988af79c4fe7dad",
+      "source": "src/EchoRecordEvents.cpp",
+      "symbol": "_ZN11EchoRecords12Event_2ba5d05WriteEPNS_6WriterE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 4
+    },
+    {
+      "address": "0x2ba860",
+      "size": 420,
+      "exact": true,
+      "target_sha256": "c3052facb2ab2c627b98eb5c2e08711980930c2f4da59cce6d15a0a30dd73c8a",
+      "compiled_sha256": "c3052facb2ab2c627b98eb5c2e08711980930c2f4da59cce6d15a0a30dd73c8a",
+      "source": "src/EchoRecordEvents.cpp",
+      "symbol": "_ZN11EchoRecords12Event_2ba8605WriteEPNS_6WriterE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 7
+    },
+    {
       "address": "0x2babd0",
       "size": 8,
       "exact": true,
@@ -75576,6 +75659,28 @@
       "relocation_count": 3
     },
     {
+      "address": "0x2bcf40",
+      "size": 256,
+      "exact": true,
+      "target_sha256": "b886ad23514cedf9680c1c44f48ee070aff6c291d1516d404d63cf3414eee2d0",
+      "compiled_sha256": "b886ad23514cedf9680c1c44f48ee070aff6c291d1516d404d63cf3414eee2d0",
+      "source": "src/EchoRecordEvents.cpp",
+      "symbol": "_ZN11EchoRecords12Event_2bcf405WriteEPNS_6WriterE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 4
+    },
+    {
+      "address": "0x2bd090",
+      "size": 256,
+      "exact": true,
+      "target_sha256": "3026eb99ce44654edf919e894d823bb47d74a35ee720b67d7cbba01ecd4407f3",
+      "compiled_sha256": "3026eb99ce44654edf919e894d823bb47d74a35ee720b67d7cbba01ecd4407f3",
+      "source": "src/EchoRecordEvents.cpp",
+      "symbol": "_ZN11EchoRecords12Event_2bd0905WriteEPNS_6WriterE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 4
+    },
+    {
       "address": "0x2bd190",
       "size": 4,
       "exact": true,
@@ -75596,6 +75701,17 @@
       "symbol": "RecoveredLeaf_2bd1a0",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 1
+    },
+    {
+      "address": "0x2bdfe0",
+      "size": 256,
+      "exact": true,
+      "target_sha256": "b328358bffeb8d277e0f7c0af619f7c98dc666c41177a70ea75a23fcd43755b0",
+      "compiled_sha256": "b328358bffeb8d277e0f7c0af619f7c98dc666c41177a70ea75a23fcd43755b0",
+      "source": "src/EchoRecordEvents.cpp",
+      "symbol": "_ZN11EchoRecords12Event_2bdfe05WriteEPNS_6WriterE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 4
     },
     {
       "address": "0x2be950",
@@ -79899,6 +80015,17 @@
       "relocation_count": 31
     },
     {
+      "address": "0x2ef210",
+      "size": 420,
+      "exact": true,
+      "target_sha256": "44dd67e11e66d0172de49536bec481d9b5426e14cee2e35bf25f7ce0ef30dc12",
+      "compiled_sha256": "44dd67e11e66d0172de49536bec481d9b5426e14cee2e35bf25f7ce0ef30dc12",
+      "source": "src/EchoRecordEvents.cpp",
+      "symbol": "_ZN11EchoRecords12Event_2ef2105WriteEPNS_6WriterE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 7
+    },
+    {
       "address": "0x2ef3d0",
       "size": 4,
       "exact": true,
@@ -80271,6 +80398,17 @@
       "symbol": "_Z18AdaptVirtualResultILj3082688EE13AdapterResultPvP10ResultHost",
       "source_review": "manual_reconstruction",
       "relocation_count": 0
+    },
+    {
+      "address": "0x2f09e0",
+      "size": 208,
+      "exact": true,
+      "target_sha256": "327f9313b1e59529d7f7e85e250f4b07c386392b1223872b72952ad81986f892",
+      "compiled_sha256": "327f9313b1e59529d7f7e85e250f4b07c386392b1223872b72952ad81986f892",
+      "source": "src/EchoRecordEvents.cpp",
+      "symbol": "_ZN11EchoRecords12Event_2f09e05WriteEPNS_6WriterE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 4
     },
     {
       "address": "0x2f0ab0",
@@ -82869,6 +83007,17 @@
       "relocation_count": 0
     },
     {
+      "address": "0x2f93e0",
+      "size": 448,
+      "exact": true,
+      "target_sha256": "75707ce0452d98639a9f7be9915ee7def45eb5179594df930e6054269ba16135",
+      "compiled_sha256": "75707ce0452d98639a9f7be9915ee7def45eb5179594df930e6054269ba16135",
+      "source": "src/EchoRecordEvents.cpp",
+      "symbol": "_ZN11EchoRecords12Event_2f93e05WriteEPNS_6WriterE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 7
+    },
+    {
       "address": "0x2f95b0",
       "size": 4,
       "exact": true,
@@ -82900,6 +83049,17 @@
       "symbol": "_Z16RegisterLazyTypeILj3118768ELj931700363EEP18RegisteredTypeViewPv",
       "source_review": "manual_reconstruction",
       "relocation_count": 31
+    },
+    {
+      "address": "0x2f97a0",
+      "size": 248,
+      "exact": true,
+      "target_sha256": "40ab89be6be5da3c618f6b10d688bcd55d9d856ce8b0717fa62b00f2391a5785",
+      "compiled_sha256": "40ab89be6be5da3c618f6b10d688bcd55d9d856ce8b0717fa62b00f2391a5785",
+      "source": "src/EchoRecordEvents.cpp",
+      "symbol": "_ZN11EchoRecords12Event_2f97a05WriteEPNS_6WriterE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 3
     },
     {
       "address": "0x2f98a0",
@@ -93759,6 +93919,17 @@
       "relocation_count": 0
     },
     {
+      "address": "0x3750f0",
+      "size": 200,
+      "exact": true,
+      "target_sha256": "e67e76250973b7238346d456fb5b90f3ff327a6f4502542f9f0ed8ce876732af",
+      "compiled_sha256": "e67e76250973b7238346d456fb5b90f3ff327a6f4502542f9f0ed8ce876732af",
+      "source": "src/EchoRecordEvents.cpp",
+      "symbol": "_ZN11EchoRecords12Event_3750f05WriteEPNS_6WriterE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 7
+    },
+    {
       "address": "0x3751c0",
       "size": 4,
       "exact": true,
@@ -93988,6 +94159,17 @@
       "symbol": "_Z18AdaptVirtualResultILj3629040EE13AdapterResultPvP10ResultHost",
       "source_review": "manual_reconstruction",
       "relocation_count": 0
+    },
+    {
+      "address": "0x376010",
+      "size": 388,
+      "exact": true,
+      "target_sha256": "24fc0028b11c5be849bfea2cb1af63f7c3b26b575232c22ad04d28410f804f4a",
+      "compiled_sha256": "24fc0028b11c5be849bfea2cb1af63f7c3b26b575232c22ad04d28410f804f4a",
+      "source": "src/EchoRecordEvents.cpp",
+      "symbol": "_ZN11EchoRecords12Event_3760105WriteEPNS_6WriterE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 11
     },
     {
       "address": "0x3761b0",
@@ -94639,6 +94821,17 @@
       "relocation_count": 0
     },
     {
+      "address": "0x377d40",
+      "size": 200,
+      "exact": true,
+      "target_sha256": "f41089872adc47e1c975abc92c51e5a6d6959a1b4aa675df01b8aed4a679a611",
+      "compiled_sha256": "f41089872adc47e1c975abc92c51e5a6d6959a1b4aa675df01b8aed4a679a611",
+      "source": "src/EchoRecordEvents.cpp",
+      "symbol": "_ZN11EchoRecords12Event_377d405WriteEPNS_6WriterE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 7
+    },
+    {
       "address": "0x377e10",
       "size": 4,
       "exact": true,
@@ -94758,6 +94951,17 @@
       "symbol": "_Z18AdaptVirtualResultILj3637936EE13AdapterResultPvP10ResultHost",
       "source_review": "manual_reconstruction",
       "relocation_count": 0
+    },
+    {
+      "address": "0x3782d0",
+      "size": 200,
+      "exact": true,
+      "target_sha256": "fa0dc3e67dc74ea030cd1acc26a2631e5c76cce5ab7cf516f298cc57c3adcd5a",
+      "compiled_sha256": "fa0dc3e67dc74ea030cd1acc26a2631e5c76cce5ab7cf516f298cc57c3adcd5a",
+      "source": "src/EchoRecordEvents.cpp",
+      "symbol": "_ZN11EchoRecords12Event_3782d05WriteEPNS_6WriterE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 7
     },
     {
       "address": "0x3783a0",
@@ -98621,6 +98825,17 @@
       "relocation_count": 4
     },
     {
+      "address": "0x385c80",
+      "size": 672,
+      "exact": true,
+      "target_sha256": "535c20636e05acc5085eeada86e3fa73716069ef9078d61dc82469a2d9143f0c",
+      "compiled_sha256": "535c20636e05acc5085eeada86e3fa73716069ef9078d61dc82469a2d9143f0c",
+      "source": "src/StormHashTables.cpp",
+      "symbol": "_ZNSt3__112__hash_tableINS_17__hash_value_typeItjEENS_22__unordered_map_hasherItS2_NS_4hashItEELb1EEENS_21__unordered_map_equalItS2_NS_8equal_toItEELb1EEE14StormAllocatorIS2_Lj3693696ELj1092632576EEE8__rehashEm",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 11
+    },
+    {
       "address": "0x386070",
       "size": 384,
       "exact": true,
@@ -98630,6 +98845,17 @@
       "symbol": "_ZNSt3__112__hash_tableINS_17__hash_value_typeIN7NameMap4NameENS2_5ValueILj3694704EEEEENS_22__unordered_map_hasherIS3_S6_NS2_8NameHashELb1EEENS_21__unordered_map_equalIS3_S6_NS2_9NameEqualELb1EEENS_9allocatorIS6_EEE4findIS3_EENS_15__hash_iteratorIPNS_11__hash_nodeIS6_PvEEEERKT_",
       "source_review": "manual_reconstruction",
       "relocation_count": 4
+    },
+    {
+      "address": "0x3861f0",
+      "size": 544,
+      "exact": true,
+      "target_sha256": "ed7a4c3b24814dbba4444d7b08e23cfc1d8d2fb4a19121345f5579bfd4617731",
+      "compiled_sha256": "ed7a4c3b24814dbba4444d7b08e23cfc1d8d2fb4a19121345f5579bfd4617731",
+      "source": "src/StormHashTables.cpp",
+      "symbol": "_ZNSt3__112__hash_tableINS_17__hash_value_typeItjEENS_22__unordered_map_hasherItS2_NS_4hashItEELb1EEENS_21__unordered_map_equalItS2_NS_8equal_toItEELb1EEE14StormAllocatorIS2_Lj3695088ELj1092624384EEE14__erase_uniqueItEEmRKT_",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 3
     },
     {
       "address": "0x386410",
@@ -98850,6 +99076,17 @@
       "symbol": "_Z15SetHashCapacityILj3700128EEvP16HashCapacityViewm",
       "source_review": "manual_reconstruction",
       "relocation_count": 4
+    },
+    {
+      "address": "0x3876b0",
+      "size": 672,
+      "exact": true,
+      "target_sha256": "5eca49fd7aca88ff7afc1fb657301861d3fcde8839b29430921d1d4b82ac137f",
+      "compiled_sha256": "5eca49fd7aca88ff7afc1fb657301861d3fcde8839b29430921d1d4b82ac137f",
+      "source": "src/StormHashTables.cpp",
+      "symbol": "_ZNSt3__112__hash_tableINS_17__hash_value_typeItjEENS_22__unordered_map_hasherItS2_NS_4hashItEELb1EEENS_21__unordered_map_equalItS2_NS_8equal_toItEELb1EEE14StormAllocatorIS2_Lj3700400ELj1092632584EEE8__rehashEm",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 11
     },
     {
       "address": "0x387950",
@@ -103934,6 +104171,17 @@
       "relocation_count": 0
     },
     {
+      "address": "0x3ce860",
+      "size": 240,
+      "exact": true,
+      "target_sha256": "4df36c9ae6de45a9188dec72a0a73f65c9e09bf2e0dcac084b0497f332e7b01c",
+      "compiled_sha256": "4df36c9ae6de45a9188dec72a0a73f65c9e09bf2e0dcac084b0497f332e7b01c",
+      "source": "src/EchoRecordEvents.cpp",
+      "symbol": "_ZN11EchoRecords12Event_3ce8605WriteEPNS_6WriterE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 6
+    },
+    {
       "address": "0x3ce950",
       "size": 4,
       "exact": true,
@@ -104319,6 +104567,17 @@
       "relocation_count": 0
     },
     {
+      "address": "0x3cfd30",
+      "size": 240,
+      "exact": true,
+      "target_sha256": "6c4e42676c1a36ceae5d8830084c6837dab396c0fc0a1d805fef47dfd1692584",
+      "compiled_sha256": "6c4e42676c1a36ceae5d8830084c6837dab396c0fc0a1d805fef47dfd1692584",
+      "source": "src/EchoRecordEvents.cpp",
+      "symbol": "_ZN11EchoRecords12Event_3cfd305WriteEPNS_6WriterE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 6
+    },
+    {
       "address": "0x3cfe20",
       "size": 4,
       "exact": true,
@@ -104427,6 +104686,17 @@
       "symbol": "_Z18AdaptVirtualResultILj3998416EE13AdapterResultPvP10ResultHost",
       "source_review": "manual_reconstruction",
       "relocation_count": 0
+    },
+    {
+      "address": "0x3d02f0",
+      "size": 468,
+      "exact": true,
+      "target_sha256": "0d5dc49eebc0a9c68049acd318cf0750eae17f5ca2adb5ca0b44e3c7ba77ff89",
+      "compiled_sha256": "0d5dc49eebc0a9c68049acd318cf0750eae17f5ca2adb5ca0b44e3c7ba77ff89",
+      "source": "src/EchoRecordEvents.cpp",
+      "symbol": "_ZN11EchoRecords12Event_3d02f05WriteEPNS_6WriterE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 13
     },
     {
       "address": "0x3d04d0",
@@ -105375,6 +105645,17 @@
       "relocation_count": 0
     },
     {
+      "address": "0x3d7380",
+      "size": 208,
+      "exact": true,
+      "target_sha256": "9758c8833ed3886b4afd7ab1715c5f2613dbb20f212272fd17461d41f0e2c938",
+      "compiled_sha256": "9758c8833ed3886b4afd7ab1715c5f2613dbb20f212272fd17461d41f0e2c938",
+      "source": "src/EchoRecordEvents.cpp",
+      "symbol": "_ZN11EchoRecords12Event_3d73805WriteEPNS_6WriterE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 4
+    },
+    {
       "address": "0x3d7450",
       "size": 16,
       "exact": true,
@@ -105606,6 +105887,17 @@
       "relocation_count": 0
     },
     {
+      "address": "0x3d7f30",
+      "size": 208,
+      "exact": true,
+      "target_sha256": "fb7bc870c5eaf4c99b3e9e396e6b99aa4a30e5a36efdfcae2407dc77361c324a",
+      "compiled_sha256": "fb7bc870c5eaf4c99b3e9e396e6b99aa4a30e5a36efdfcae2407dc77361c324a",
+      "source": "src/EchoRecordEvents.cpp",
+      "symbol": "_ZN11EchoRecords12Event_3d7f305WriteEPNS_6WriterE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 4
+    },
+    {
       "address": "0x3d8000",
       "size": 4,
       "exact": true,
@@ -105835,6 +106127,17 @@
       "symbol": "_Z18AdaptVirtualResultILj4033248EE13AdapterResultPvP10ResultHost",
       "source_review": "manual_reconstruction",
       "relocation_count": 0
+    },
+    {
+      "address": "0x3d8b00",
+      "size": 664,
+      "exact": true,
+      "target_sha256": "40a34a708ccdbc6a9b370cdbadb08ffb35936cd54c97bb953b44e72575736f66",
+      "compiled_sha256": "40a34a708ccdbc6a9b370cdbadb08ffb35936cd54c97bb953b44e72575736f66",
+      "source": "src/EchoRecordEvents.cpp",
+      "symbol": "_ZN11EchoRecords12Event_3d8b005WriteEPNS_6WriterE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 17
     },
     {
       "address": "0x3d8da0",
@@ -106308,6 +106611,17 @@
       "symbol": "RecoveredLeaf_3dac20",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 0
+    },
+    {
+      "address": "0x3daec0",
+      "size": 400,
+      "exact": true,
+      "target_sha256": "ecd20d2394d8c28a2c2a92634c54dee910941170b19609652f67e5a83eee4e3e",
+      "compiled_sha256": "ecd20d2394d8c28a2c2a92634c54dee910941170b19609652f67e5a83eee4e3e",
+      "source": "src/EchoRecordEvents.cpp",
+      "symbol": "_ZN11EchoRecords12Event_3daec05WriteEPNS_6WriterE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 7
     },
     {
       "address": "0x3db050",
@@ -108519,6 +108833,17 @@
       "symbol": "_Z18AdaptVirtualResultILj4082368EE13AdapterResultPvP10ResultHost",
       "source_review": "manual_reconstruction",
       "relocation_count": 0
+    },
+    {
+      "address": "0x3e4ae0",
+      "size": 208,
+      "exact": true,
+      "target_sha256": "51ebb8b5ac6acb98b7da67c07778908f27d561d219ae26c312d062af6f67a337",
+      "compiled_sha256": "51ebb8b5ac6acb98b7da67c07778908f27d561d219ae26c312d062af6f67a337",
+      "source": "src/EchoRecordEvents.cpp",
+      "symbol": "_ZN11EchoRecords12Event_3e4ae05WriteEPNS_6WriterE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 4
     },
     {
       "address": "0x3e4bb0",
@@ -117332,6 +117657,17 @@
       "relocation_count": 4
     },
     {
+      "address": "0x3eeb00",
+      "size": 672,
+      "exact": true,
+      "target_sha256": "b0adf5425ca6cd8890abc6f9133af66d1ea81ebc0326795750e7644ed30188f4",
+      "compiled_sha256": "b0adf5425ca6cd8890abc6f9133af66d1ea81ebc0326795750e7644ed30188f4",
+      "source": "src/StormHashTables.cpp",
+      "symbol": "_ZNSt3__112__hash_tableINS_17__hash_value_typeItjEENS_22__unordered_map_hasherItS2_NS_4hashItEELb1EEENS_21__unordered_map_equalItS2_NS_8equal_toItEELb1EEE14StormAllocatorIS2_Lj4123392ELj1092657160EEE8__rehashEm",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 11
+    },
+    {
       "address": "0x3eeda0",
       "size": 264,
       "exact": true,
@@ -117374,6 +117710,17 @@
       "symbol": "_Z15SetHashCapacityILj4125472EEvP16HashCapacityViewm",
       "source_review": "manual_reconstruction",
       "relocation_count": 4
+    },
+    {
+      "address": "0x3ef430",
+      "size": 672,
+      "exact": true,
+      "target_sha256": "c501ab84250899248cc74dc194e01f92a747680c586409ea7e469a982d50c9e2",
+      "compiled_sha256": "c501ab84250899248cc74dc194e01f92a747680c586409ea7e469a982d50c9e2",
+      "source": "src/StormHashTables.cpp",
+      "symbol": "_ZNSt3__112__hash_tableINS_17__hash_value_typeItjEENS_22__unordered_map_hasherItS2_NS_4hashItEELb1EEENS_21__unordered_map_equalItS2_NS_8equal_toItEELb1EEE14StormAllocatorIS2_Lj4125744ELj1092657158EEE8__rehashEm",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 11
     },
     {
       "address": "0x3efbe0",
@@ -119046,6 +119393,17 @@
       "symbol": "RecoveredLeaf_413640",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 0
+    },
+    {
+      "address": "0x415770",
+      "size": 200,
+      "exact": true,
+      "target_sha256": "57d693bad96783a887474d9a53d3b383416f225812b9616a1f992fa6c3b601eb",
+      "compiled_sha256": "57d693bad96783a887474d9a53d3b383416f225812b9616a1f992fa6c3b601eb",
+      "source": "src/EchoRecordEvents.cpp",
+      "symbol": "_ZN11EchoRecords12Event_4157705WriteEPNS_6WriterE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 7
     },
     {
       "address": "0x416070",
@@ -128343,6 +128701,17 @@
       "relocation_count": 4
     },
     {
+      "address": "0x457980",
+      "size": 672,
+      "exact": true,
+      "target_sha256": "6c98f85c6301a245a8a68bd0ada6bd64ff4f6896be2ea1b281120a422eca46b5",
+      "compiled_sha256": "6c98f85c6301a245a8a68bd0ada6bd64ff4f6896be2ea1b281120a422eca46b5",
+      "source": "src/StormHashTables.cpp",
+      "symbol": "_ZNSt3__112__hash_tableINS_17__hash_value_typeItjEENS_22__unordered_map_hasherItS2_NS_4hashItEELb1EEENS_21__unordered_map_equalItS2_NS_8equal_toItEELb1EEE14StormAllocatorIS2_Lj4553088ELj1092628481EEE8__rehashEm",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 11
+    },
+    {
       "address": "0x457c20",
       "size": 380,
       "exact": true,
@@ -128363,6 +128732,17 @@
       "symbol": "_ZNSt3__16vectorI11GameRecord816LibraryAllocatorIS1_Lj2ELj1092628481EEE21__push_back_slow_pathIRKS1_EEvOT_",
       "source_review": "library_abi_view",
       "relocation_count": 9
+    },
+    {
+      "address": "0x4580a0",
+      "size": 544,
+      "exact": true,
+      "target_sha256": "80a1cc6bcc92e4182250b43cd251faf97aecf5b872a16b84362dd7b4469be369",
+      "compiled_sha256": "80a1cc6bcc92e4182250b43cd251faf97aecf5b872a16b84362dd7b4469be369",
+      "source": "src/StormHashTables.cpp",
+      "symbol": "_ZNSt3__112__hash_tableINS_17__hash_value_typeImjEENS_22__unordered_map_hasherImS2_NS_4hashImEELb1EEENS_21__unordered_map_equalImS2_NS_8equal_toImEELb1EEE14StormAllocatorIS2_Lj4554912ELj1092624384EEE14__erase_uniqueImEEmRKT_",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 3
     },
     {
       "address": "0x4582c0",
@@ -128409,6 +128789,17 @@
       "relocation_count": 11
     },
     {
+      "address": "0x458be0",
+      "size": 544,
+      "exact": true,
+      "target_sha256": "3a5f15ef9898c66276fc9ab0efcaeb8a3ea9858b890951f533dd9546d61955d8",
+      "compiled_sha256": "3a5f15ef9898c66276fc9ab0efcaeb8a3ea9858b890951f533dd9546d61955d8",
+      "source": "src/StormHashTables.cpp",
+      "symbol": "_ZNSt3__112__hash_tableINS_17__hash_value_typeImjEENS_22__unordered_map_hasherImS2_NS_4hashImEELb1EEENS_21__unordered_map_equalImS2_NS_8equal_toImEELb1EEE14StormAllocatorIS2_Lj4557792ELj1092624384EEE14__erase_uniqueImEEmRKT_",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 3
+    },
+    {
       "address": "0x458e00",
       "size": 264,
       "exact": true,
@@ -128440,6 +128831,28 @@
       "symbol": "_Z15SetHashCapacityILj4559280EEvP16HashCapacityViewm",
       "source_review": "manual_reconstruction",
       "relocation_count": 4
+    },
+    {
+      "address": "0x4592c0",
+      "size": 672,
+      "exact": true,
+      "target_sha256": "146079ef205d6eb0b873d9db2d95b5308f324c507009f3c2ac607c5f85a2f963",
+      "compiled_sha256": "146079ef205d6eb0b873d9db2d95b5308f324c507009f3c2ac607c5f85a2f963",
+      "source": "src/StormHashTables.cpp",
+      "symbol": "_ZNSt3__112__hash_tableINS_17__hash_value_typeItjEENS_22__unordered_map_hasherItS2_NS_4hashItEELb1EEENS_21__unordered_map_equalItS2_NS_8equal_toItEELb1EEE14StormAllocatorIS2_Lj4559552ELj1092628481EEE8__rehashEm",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 11
+    },
+    {
+      "address": "0x459560",
+      "size": 544,
+      "exact": true,
+      "target_sha256": "a29cb9e2f7f54268589a75b7f048874f436d08ba8220624cf6c93ab9d08de7fe",
+      "compiled_sha256": "a29cb9e2f7f54268589a75b7f048874f436d08ba8220624cf6c93ab9d08de7fe",
+      "source": "src/StormHashTables.cpp",
+      "symbol": "_ZNSt3__112__hash_tableINS_17__hash_value_typeItjEENS_22__unordered_map_hasherItS2_NS_4hashItEELb1EEENS_21__unordered_map_equalItS2_NS_8equal_toItEELb1EEE14StormAllocatorIS2_Lj4560224ELj1092624384EEE14__erase_uniqueItEEmRKT_",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 3
     },
     {
       "address": "0x459920",
@@ -170473,6 +170886,17 @@
       "relocation_count": 0
     },
     {
+      "address": "0x576eb0",
+      "size": 136,
+      "exact": true,
+      "target_sha256": "a6024dc694d30ad4c9d311eca9b620f53a8c1ad3f6904b226717bf476a915702",
+      "compiled_sha256": "a6024dc694d30ad4c9d311eca9b620f53a8c1ad3f6904b226717bf476a915702",
+      "source": "src/EchoRecordEvents.cpp",
+      "symbol": "_ZN11EchoRecords12Event_576eb05WriteEPNS_6WriterE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 2
+    },
+    {
       "address": "0x5771d0",
       "size": 16,
       "exact": true,
@@ -171250,6 +171674,17 @@
       "compiled_sha256": "60a43189b9c0dd8d57262f9854073cc25cf2582c7ee1800bb8ef22668c3c2206",
       "source": "src/StormEventBase.cpp",
       "symbol": "InitializeEventBase",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 4
+    },
+    {
+      "address": "0x585bc0",
+      "size": 172,
+      "exact": true,
+      "target_sha256": "a0b2d7d5f36c9a6eea5fd9f94094aaec10e4ce2be5406640d6f637f2fa5f1ae8",
+      "compiled_sha256": "a0b2d7d5f36c9a6eea5fd9f94094aaec10e4ce2be5406640d6f637f2fa5f1ae8",
+      "source": "src/EchoRecordEvents.cpp",
+      "symbol": "_ZN11EchoRecords12Event_585bc05WriteEPNS_6WriterE",
       "source_review": "manual_reconstruction",
       "relocation_count": 4
     },
@@ -174541,6 +174976,17 @@
       "symbol": "RecoveredLeaf_5b1d00",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 1
+    },
+    {
+      "address": "0x5b2ba0",
+      "size": 168,
+      "exact": true,
+      "target_sha256": "69859ba771483b4f366248d29651d5b9b28504266a7218692767c9b340c21d70",
+      "compiled_sha256": "69859ba771483b4f366248d29651d5b9b28504266a7218692767c9b340c21d70",
+      "source": "src/EchoRecordEvents.cpp",
+      "symbol": "_ZN11EchoRecords12Event_5b2ba05WriteEPNS_6WriterE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 3
     },
     {
       "address": "0x5b2da0",
@@ -181737,6 +182183,17 @@
       "relocation_count": 4
     },
     {
+      "address": "0x5cdea0",
+      "size": 672,
+      "exact": true,
+      "target_sha256": "4e6b1f17575f5f24a3a40415b3286c1a7d52b32cfdb20c0d922a276718febbb6",
+      "compiled_sha256": "4e6b1f17575f5f24a3a40415b3286c1a7d52b32cfdb20c0d922a276718febbb6",
+      "source": "src/StormHashTables.cpp",
+      "symbol": "_ZNSt3__112__hash_tableINS_17__hash_value_typeItjEENS_22__unordered_map_hasherItS2_NS_4hashItEELb1EEENS_21__unordered_map_equalItS2_NS_8equal_toItEELb1EEE14StormAllocatorIS2_Lj6086304ELj1092657158EEE8__rehashEm",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 11
+    },
+    {
       "address": "0x5ce4c0",
       "size": 384,
       "exact": true,
@@ -187510,6 +187967,17 @@
       "symbol": "_Z18AdaptVirtualResultILj6361872EE13AdapterResultPvP10ResultHost",
       "source_review": "manual_reconstruction",
       "relocation_count": 0
+    },
+    {
+      "address": "0x611330",
+      "size": 296,
+      "exact": true,
+      "target_sha256": "31f152c0e7c3a420d546b89ec445fa46bdd09d69647b10b31b6ed1c55ae30ed3",
+      "compiled_sha256": "31f152c0e7c3a420d546b89ec445fa46bdd09d69647b10b31b6ed1c55ae30ed3",
+      "source": "src/EchoRecordEvents.cpp",
+      "symbol": "_ZN11EchoRecords12Event_6113305WriteEPNS_6WriterE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 9
     },
     {
       "address": "0x611460",

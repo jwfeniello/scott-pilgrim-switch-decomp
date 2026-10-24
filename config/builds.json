@@ -489408,615 +489408,6 @@
       ]
     },
     {
-      "id": "echo_record_events_keep_pic_unwind_o3",
-      "source": "src/EchoRecordEvents.cpp",
-      "compiler": "8.0.1",
-      "source_review": "manual_reconstruction",
-      "flags": [
-        "-target",
-        "aarch64-none-elf",
-        "-std=c++11",
-        "-mcpu=cortex-a57",
-        "-fno-strict-aliasing",
-        "-O3",
-        "-fno-omit-frame-pointer",
-        "-fPIC",
-        "-funwind-tables"
-      ],
-      "functions": [
-        {
-          "address": "0x25c9f0",
-          "size": 232,
-          "symbol": "_ZN11EchoRecords12Event_25c9f05WriteEPNS_6WriterE",
-          "target_sha256": "5db2b8aa43619b6a6305f1cc816e93efffe641cca01104ca90013e4e4e9d7694",
-          "bindings": {
-            "_ZN11EchoRecords4BaseILj2476528EE5WriteEPNS_6WriterE": "0x576a80"
-          },
-          "got_bindings": {},
-          "literals": {
-            "74696d65536c69636554616b656e00": "0x1306ba1",
-            "74696d65536c6963654c696d697400": "0x13122a1"
-          }
-        },
-        {
-          "address": "0x25cb20",
-          "size": 328,
-          "symbol": "_ZN11EchoRecords12Event_25cb205WriteEPNS_6WriterE",
-          "target_sha256": "3aaab3bcf1756fbaa64b5cbfd060fcdd723f1fb00201c21f38a3f571c7427ce4",
-          "bindings": {
-            "_ZN11EchoRecords4BaseILj2476832EE5WriteEPNS_6WriterE": "0x576a80"
-          },
-          "got_bindings": {},
-          "literals": {
-            "74696d65536c69636554616b656e00": "0x1306ba1",
-            "74696d65536c6963654c696d697400": "0x13122a1",
-            "61626f7274656400": "0x130c748"
-          }
-        },
-        {
-          "address": "0x25cca0",
-          "size": 136,
-          "symbol": "_ZN11EchoRecords12Event_25cca05WriteEPNS_6WriterE",
-          "target_sha256": "b4470c55d8b806f6d86f3ea2951ba7a06e7d872edf279bc24ef9db92d712cb85",
-          "bindings": {
-            "_ZN11EchoRecords4BaseILj2477216EE5WriteEPNS_6WriterE": "0x576a80"
-          },
-          "got_bindings": {},
-          "literals": {
-            "656c617073656454696d6500": "0x1300f6c"
-          }
-        },
-        {
-          "address": "0x25f270",
-          "size": 328,
-          "symbol": "_ZN11EchoRecords12Event_25f2705WriteEPNS_6WriterE",
-          "target_sha256": "d4724eb1847dda52b2b59c90c81887931bc79b646fbc5956e08dac92b1e0a51c",
-          "bindings": {
-            "_ZN11EchoRecords4BaseILj2486896EE5WriteEPNS_6WriterE": "0x576a80"
-          },
-          "got_bindings": {},
-          "literals": {
-            "726571756573746564506f727400": "0x130c750",
-            "62696e64506f727400": "0x12fa0ba",
-            "7375636365737366756c00": "0x13263d9"
-          }
-        },
-        {
-          "address": "0x25f400",
-          "size": 328,
-          "symbol": "_ZN11EchoRecords12Event_25f4005WriteEPNS_6WriterE",
-          "target_sha256": "b3cc1c3fbcfa876e90bde0615afbe48b11187d0efe0e0314f28fa9a7a5a017bf",
-          "bindings": {
-            "_ZN11EchoRecords4BaseILj2487296EE5WriteEPNS_6WriterE": "0x576a80"
-          },
-          "got_bindings": {},
-          "literals": {
-            "726571756573746564506f727400": "0x130c750",
-            "62696e64506f727400": "0x12fa0ba",
-            "7375636365737366756c00": "0x13263d9"
-          }
-        },
-        {
-          "address": "0x260440",
-          "size": 136,
-          "symbol": "_ZN11EchoRecords12Event_2604405WriteEPNS_6WriterE",
-          "target_sha256": "396e26f09c522ba68f157da16530963bef17354148db867e8c3738a4ec4d821a",
-          "bindings": {
-            "_ZN11EchoRecords4BaseILj2491456EE5WriteEPNS_6WriterE": "0x585aa0"
-          },
-          "got_bindings": {},
-          "literals": {
-            "6f626a656374526566496400": "0x12f23db"
-          }
-        },
-        {
-          "address": "0x262b90",
-          "size": 236,
-          "symbol": "_ZN11EchoRecords12Event_262b905WriteEPNS_6WriterE",
-          "target_sha256": "8c6324abd393c093a24fd809a9625a9a2e37fecde6ecea69849d30ff1267931a",
-          "bindings": {
-            "_ZN11EchoRecords4BaseILj2501520EE5WriteEPNS_6WriterE": "0x260e60"
-          },
-          "got_bindings": {},
-          "literals": {
-            "68696572617263686963616c00": "0x13122b0",
-            "7365727665722d636f7272656374656400": "0x131a2a6"
-          }
-        },
-        {
-          "address": "0x2631b0",
-          "size": 136,
-          "symbol": "_ZN11EchoRecords12Event_2631b05WriteEPNS_6WriterE",
-          "target_sha256": "8ff47a6a1b6fdd3a660560de308bedb121b6c973198b7792280b7d3a3b8d2ae7",
-          "bindings": {
-            "_ZN11EchoRecords4BaseILj2503088EE5WriteEPNS_6WriterE": "0x260ad0"
-          },
-          "got_bindings": {},
-          "literals": {
-            "66696e616c4d617374657200": "0x130a8e9"
-          }
-        },
-        {
-          "address": "0x28efd0",
-          "size": 136,
-          "symbol": "_ZN11EchoRecords12Event_28efd05WriteEPNS_6WriterE",
-          "target_sha256": "3bc7fcb0ec3b6774cc1a5b762933cdf051c26d926013605350798484e2954358",
-          "bindings": {
-            "_ZN11EchoRecords4BaseILj2682832EE5WriteEPNS_6WriterE": "0x576a80"
-          },
-          "got_bindings": {},
-          "literals": {
-            "72657175657374496400": "0x1302c8d"
-          }
-        },
-        {
-          "address": "0x293c20",
-          "size": 136,
-          "symbol": "_ZN11EchoRecords12Event_293c205WriteEPNS_6WriterE",
-          "target_sha256": "c97958d219f175884acac5a7bf2b18fa32b7f28237dab38d0f9e1e013a288bfb",
-          "bindings": {
-            "_ZN11EchoRecords4BaseILj2702368EE5WriteEPNS_6WriterE": "0x576a80"
-          },
-          "got_bindings": {},
-          "literals": {
-            "6f626a656374526566496400": "0x12f23db"
-          }
-        },
-        {
-          "address": "0x294d90",
-          "size": 136,
-          "symbol": "_ZN11EchoRecords12Event_294d905WriteEPNS_6WriterE",
-          "target_sha256": "ac412a7af2f775d561fe75b985e4e39ee1f17694fd55e871c51c14f9a66d9c30",
-          "bindings": {
-            "_ZN11EchoRecords4BaseILj2706832EE5WriteEPNS_6WriterE": "0x576a80"
-          },
-          "got_bindings": {},
-          "literals": {
-            "6f626a656374526566496400": "0x12f23db"
-          }
-        },
-        {
-          "address": "0x295f40",
-          "size": 136,
-          "symbol": "_ZN11EchoRecords12Event_295f405WriteEPNS_6WriterE",
-          "target_sha256": "c3bda53085936aa9dcb982e1cd7629176adc278b24d69e433897142679ee5b57",
-          "bindings": {
-            "_ZN11EchoRecords4BaseILj2711360EE5WriteEPNS_6WriterE": "0x576a80"
-          },
-          "got_bindings": {},
-          "literals": {
-            "6f626a656374526566496400": "0x12f23db"
-          }
-        },
-        {
-          "address": "0x296480",
-          "size": 236,
-          "symbol": "_ZN11EchoRecords12Event_2964805WriteEPNS_6WriterE",
-          "target_sha256": "04cececebf4a968043909d7f5cc62b22c2530fe142b7ef37ef8ab671e468523b",
-          "bindings": {
-            "_ZN11EchoRecords4BaseILj2712704EE5WriteEPNS_6WriterE": "0x576a80"
-          },
-          "got_bindings": {},
-          "literals": {
-            "6f626a656374526566496400": "0x12f23db",
-            "646973736f6c766500": "0x1321f16"
-          }
-        },
-        {
-          "address": "0x2993d0",
-          "size": 136,
-          "symbol": "_ZN11EchoRecords12Event_2993d05WriteEPNS_6WriterE",
-          "target_sha256": "56e90b9edf44844952b91970c9e61e59e54337d224bec5b7d1667d1b86f9556b",
-          "bindings": {
-            "_ZN11EchoRecords4BaseILj2724816EE5WriteEPNS_6WriterE": "0x576a80"
-          },
-          "got_bindings": {},
-          "literals": {
-            "6f626a656374526566496400": "0x12f23db"
-          }
-        },
-        {
-          "address": "0x299e40",
-          "size": 136,
-          "symbol": "_ZN11EchoRecords12Event_299e405WriteEPNS_6WriterE",
-          "target_sha256": "b38e574318e1874f418f34e22e3cacdcd4db37a91bd74523b08ebdc0e4f1925d",
-          "bindings": {
-            "_ZN11EchoRecords4BaseILj2727488EE5WriteEPNS_6WriterE": "0x285e90"
-          },
-          "got_bindings": {},
-          "literals": {
-            "6473746578636c7564656450656572496400": "0x1323d5b"
-          }
-        },
-        {
-          "address": "0x29a3b0",
-          "size": 136,
-          "symbol": "_ZN11EchoRecords12Event_29a3b05WriteEPNS_6WriterE",
-          "target_sha256": "6ba15cf02fd924ce8eba295904b9cea6282f6c11d4eb1628a0b6855e790fc671",
-          "bindings": {
-            "_ZN11EchoRecords4BaseILj2728880EE5WriteEPNS_6WriterE": "0x285e90"
-          },
-          "got_bindings": {},
-          "literals": {
-            "64737450656572496400": "0x130e606"
-          }
-        },
-        {
-          "address": "0x29a8f0",
-          "size": 136,
-          "symbol": "_ZN11EchoRecords12Event_29a8f05WriteEPNS_6WriterE",
-          "target_sha256": "1ec6e0bdb045e28fbc73aefeadfeb1031a821176f83f9b37dda7df62cdc55b6a",
-          "bindings": {
-            "_ZN11EchoRecords4BaseILj2730224EE5WriteEPNS_6WriterE": "0x576a80"
-          },
-          "got_bindings": {},
-          "literals": {
-            "6f626a656374526566496400": "0x12f23db"
-          }
-        },
-        {
-          "address": "0x29b9e0",
-          "size": 232,
-          "symbol": "_ZN11EchoRecords12Event_29b9e05WriteEPNS_6WriterE",
-          "target_sha256": "dfe752ab9268902db28c18c66e5a460c4a5a576a99d58cfc5704e435da307913",
-          "bindings": {
-            "_ZN11EchoRecords4BaseILj2734560EE5WriteEPNS_6WriterE": "0x576a80"
-          },
-          "got_bindings": {},
-          "literals": {
-            "6f626a656374526566496400": "0x12f23db",
-            "6261746368496e64657800": "0x12f23e7"
-          }
-        },
-        {
-          "address": "0x29bcf0",
-          "size": 232,
-          "symbol": "_ZN11EchoRecords12Event_29bcf05WriteEPNS_6WriterE",
-          "target_sha256": "393a34a94411a6abe9b9d721d038d14bb08acd85386108b2e3cb49f351092db5",
-          "bindings": {
-            "_ZN11EchoRecords4BaseILj2735344EE5WriteEPNS_6WriterE": "0x576a80"
-          },
-          "got_bindings": {},
-          "literals": {
-            "6f626a656374526566496400": "0x12f23db",
-            "6261746368496e64657800": "0x12f23e7"
-          }
-        },
-        {
-          "address": "0x29c3c0",
-          "size": 232,
-          "symbol": "_ZN11EchoRecords12Event_29c3c05WriteEPNS_6WriterE",
-          "target_sha256": "7762797abf0e9fd02eed7464a0fa77e79224ff5c7881c5f1f430d2b0f62d97ca",
-          "bindings": {
-            "_ZN11EchoRecords4BaseILj2737088EE5WriteEPNS_6WriterE": "0x576a80"
-          },
-          "got_bindings": {},
-          "literals": {
-            "6f626a656374526566496400": "0x12f23db",
-            "6261746368496e64657800": "0x12f23e7"
-          }
-        },
-        {
-          "address": "0x29c960",
-          "size": 136,
-          "symbol": "_ZN11EchoRecords12Event_29c9605WriteEPNS_6WriterE",
-          "target_sha256": "a88f438c495265bad13ba73d6c9721e96bc1c5da26c7fa9eeaabb7ceb320b258",
-          "bindings": {
-            "_ZN11EchoRecords4BaseILj2738528EE5WriteEPNS_6WriterE": "0x576a80"
-          },
-          "got_bindings": {},
-          "literals": {
-            "6f626a656374526566496400": "0x12f23db"
-          }
-        },
-        {
-          "address": "0x29cea0",
-          "size": 136,
-          "symbol": "_ZN11EchoRecords12Event_29cea05WriteEPNS_6WriterE",
-          "target_sha256": "5184f35ccfbc667eb5329506e10cc9fdf2e38c0264974c027f0727be4ad87b9b",
-          "bindings": {
-            "_ZN11EchoRecords4BaseILj2739872EE5WriteEPNS_6WriterE": "0x576a80"
-          },
-          "got_bindings": {},
-          "literals": {
-            "6f626a656374526566496400": "0x12f23db"
-          }
-        },
-        {
-          "address": "0x29e0d0",
-          "size": 136,
-          "symbol": "_ZN11EchoRecords12Event_29e0d05WriteEPNS_6WriterE",
-          "target_sha256": "ed4a7c5b485668d6f1f0b5c260ffa8a55bfb3ff87703097a0da937fef7ae65f6",
-          "bindings": {
-            "_ZN11EchoRecords4BaseILj2744528EE5WriteEPNS_6WriterE": "0x576a80"
-          },
-          "got_bindings": {},
-          "literals": {
-            "6f626a656374526566496400": "0x12f23db"
-          }
-        },
-        {
-          "address": "0x29e610",
-          "size": 136,
-          "symbol": "_ZN11EchoRecords12Event_29e6105WriteEPNS_6WriterE",
-          "target_sha256": "3a751309e9b444c4af0094c36221348c0748c653e4a98d697e27d8693a4d9976",
-          "bindings": {
-            "_ZN11EchoRecords4BaseILj2745872EE5WriteEPNS_6WriterE": "0x576a80"
-          },
-          "got_bindings": {},
-          "literals": {
-            "6f626a656374526566496400": "0x12f23db"
-          }
-        },
-        {
-          "address": "0x2a2b30",
-          "size": 136,
-          "symbol": "_ZN11EchoRecords12Event_2a2b305WriteEPNS_6WriterE",
-          "target_sha256": "8578c9a71347136cd48f690c457fa5141f309b35c39fd9f149dd17551ca9885f",
-          "bindings": {
-            "_ZN11EchoRecords4BaseILj2763568EE5WriteEPNS_6WriterE": "0x2a1cb0"
-          },
-          "got_bindings": {},
-          "literals": {
-            "64737400": "0x132a1d6"
-          }
-        },
-        {
-          "address": "0x2a3c70",
-          "size": 136,
-          "symbol": "_ZN11EchoRecords12Event_2a3c705WriteEPNS_6WriterE",
-          "target_sha256": "43a6a9f646a78a64f36c5d91d8d83df23a4e3ce183ea85b50dbeeba372e150b2",
-          "bindings": {
-            "_ZN11EchoRecords4BaseILj2767984EE5WriteEPNS_6WriterE": "0x2a1cb0"
-          },
-          "got_bindings": {},
-          "literals": {
-            "64737400": "0x132a1d6"
-          }
-        },
-        {
-          "address": "0x2a5a80",
-          "size": 136,
-          "symbol": "_ZN11EchoRecords12Event_2a5a805WriteEPNS_6WriterE",
-          "target_sha256": "be199ff12916986d638fea3ab3901cbe7a2ed13c68e3d408278e6dcb52c37c7a",
-          "bindings": {
-            "_ZN11EchoRecords4BaseILj2775680EE5WriteEPNS_6WriterE": "0x576a80"
-          },
-          "got_bindings": {},
-          "literals": {
-            "74696d656f757400": "0x1304a8b"
-          }
-        },
-        {
-          "address": "0x2f1a60",
-          "size": 136,
-          "symbol": "_ZN11EchoRecords12Event_2f1a605WriteEPNS_6WriterE",
-          "target_sha256": "cf2a5dea59379d9d47eac0a698ce6999764367d00afc581af6202efc0f722126",
-          "bindings": {
-            "_ZN11EchoRecords4BaseILj3086944EE5WriteEPNS_6WriterE": "0x576a80"
-          },
-          "got_bindings": {},
-          "literals": {
-            "73657373696f6e4576656e7400": "0x1308943"
-          }
-        },
-        {
-          "address": "0x31c7b0",
-          "size": 136,
-          "symbol": "_ZN11EchoRecords12Event_31c7b05WriteEPNS_6WriterE",
-          "target_sha256": "6243ef22fc5f047fdec920ed99832620b0aedd1d15b7648f0383562782e07d5a",
-          "bindings": {
-            "_ZN11EchoRecords4BaseILj3262384EE5WriteEPNS_6WriterE": "0x576a80"
-          },
-          "got_bindings": {},
-          "literals": {
-            "7374657000": "0x130e684"
-          }
-        },
-        {
-          "address": "0x31c840",
-          "size": 136,
-          "symbol": "_ZN11EchoRecords12Event_31c8405WriteEPNS_6WriterE",
-          "target_sha256": "0e8cd65aeef37fe82cc59f278aef3e2a76a8458b7c2206a039ccacdf0a1ee14a",
-          "bindings": {
-            "_ZN11EchoRecords4BaseILj3262528EE5WriteEPNS_6WriterE": "0x576a80"
-          },
-          "got_bindings": {},
-          "literals": {
-            "7374657000": "0x130e684"
-          }
-        },
-        {
-          "address": "0x33fff0",
-          "size": 136,
-          "symbol": "_ZN11EchoRecords12Event_33fff05WriteEPNS_6WriterE",
-          "target_sha256": "5217666be48b011b1808619d7dbce019d2d1bdb9eb2b9f636dd544574020a2a7",
-          "bindings": {
-            "_ZN11EchoRecords4BaseILj3407856EE5WriteEPNS_6WriterE": "0x33b550"
-          },
-          "got_bindings": {},
-          "literals": {
-            "7065657253526566496400": "0x12f7c2e"
-          }
-        },
-        {
-          "address": "0x43e200",
-          "size": 136,
-          "symbol": "_ZN11EchoRecords12Event_43e2005WriteEPNS_6WriterE",
-          "target_sha256": "1c0a26226dec47db3385109f3b8e8ac39e2a591e47b323cacce0e1d5612a61fa",
-          "bindings": {
-            "_ZN11EchoRecords4BaseILj4448768EE5WriteEPNS_6WriterE": "0x576a80"
-          },
-          "got_bindings": {},
-          "literals": {
-            "73657373696f6e54696d6500": "0x132dcf7"
-          }
-        },
-        {
-          "address": "0x45f730",
-          "size": 136,
-          "symbol": "_ZN11EchoRecords12Event_45f7305WriteEPNS_6WriterE",
-          "target_sha256": "6454bc2f7777ac8afa2f91d64a0c837cfde4ed46bb94c73596ceb846d793b5a1",
-          "bindings": {
-            "_ZN11EchoRecords4BaseILj4585264EE5WriteEPNS_6WriterE": "0x576a80"
-          },
-          "got_bindings": {},
-          "literals": {
-            "696e697469616c53657373696f6e54696d6500": "0x13282c8"
-          }
-        },
-        {
-          "address": "0x46b490",
-          "size": 136,
-          "symbol": "_ZN11EchoRecords12Event_46b4905WriteEPNS_6WriterE",
-          "target_sha256": "290062d61475dfa635d5704ec0bf8fa8b1f3562b9ef0726d65be0251c0adb772",
-          "bindings": {
-            "_ZN11EchoRecords4BaseILj4633744EE5WriteEPNS_6WriterE": "0x576a80"
-          },
-          "got_bindings": {},
-          "literals": {
-            "67726f75705f7265665f696400": "0x13264b4"
-          }
-        },
-        {
-          "address": "0x46b520",
-          "size": 324,
-          "symbol": "_ZN11EchoRecords12Event_46b5205WriteEPNS_6WriterE",
-          "target_sha256": "df169768e24e5ae33242f41851df79619ff91d6d6a61f8115bda12e906f1328e",
-          "bindings": {
-            "_ZN11EchoRecords4BaseILj4633888EE5WriteEPNS_6WriterE": "0x576a80"
-          },
-          "got_bindings": {},
-          "literals": {
-            "67726f75705f7265665f696400": "0x13264b4",
-            "706565725f696400": "0x13264c1",
-            "636f6e6e65637465645f706565725f636f756e7400": "0x130c842"
-          }
-        },
-        {
-          "address": "0x55d6d0",
-          "size": 136,
-          "symbol": "_ZN11EchoRecords12Event_55d6d05WriteEPNS_6WriterE",
-          "target_sha256": "48de0137bcd35f7ee60a58a68d6091f842bc4a1db36f6e0ee6dd81ab7a327f0d",
-          "bindings": {
-            "_ZN11EchoRecords4BaseILj5625552EE5WriteEPNS_6WriterE": "0x585aa0"
-          },
-          "got_bindings": {},
-          "literals": {
-            "7374657000": "0x130e684"
-          }
-        },
-        {
-          "address": "0x5b60d0",
-          "size": 136,
-          "symbol": "_ZN11EchoRecords12Event_5b60d05WriteEPNS_6WriterE",
-          "target_sha256": "21cc1a91574d7a7e643e40010b96110f17a8b7d96baa341c89d70b5fbddc8f29",
-          "bindings": {
-            "_ZN11EchoRecords4BaseILj5988560EE5WriteEPNS_6WriterE": "0x595530"
-          },
-          "got_bindings": {},
-          "literals": {
-            "76657273696f6e00": "0x1307406"
-          }
-        },
-        {
-          "address": "0x5c2d30",
-          "size": 232,
-          "symbol": "_ZN11EchoRecords12Event_5c2d305WriteEPNS_6WriterE",
-          "target_sha256": "96982406792ae54df2361e463561d24011dbddb8624e578e056f2ea8463c6612",
-          "bindings": {
-            "_ZN11EchoRecords4BaseILj6040880EE5WriteEPNS_6WriterE": "0x576a80"
-          },
-          "got_bindings": {},
-          "literals": {
-            "74696d65536c69636554616b656e00": "0x1306ba1",
-            "74696d65536c6963654c696d697400": "0x13122a1"
-          }
-        },
-        {
-          "address": "0x5e2e90",
-          "size": 236,
-          "symbol": "_ZN11EchoRecords12Event_5e2e905WriteEPNS_6WriterE",
-          "target_sha256": "48b32a6d9b639d7a1c2c67c819581a9606e3813f3f670c8a953db023df3b8138",
-          "bindings": {
-            "_ZN11EchoRecords4BaseILj6172304EE5WriteEPNS_6WriterE": "0x576a80"
-          },
-          "got_bindings": {},
-          "literals": {
-            "656e61626c6500": "0x13240c9",
-            "646576696365466f756e64436f756e7400": "0x12f44b5"
-          }
-        },
-        {
-          "address": "0x613890",
-          "size": 136,
-          "symbol": "_ZN11EchoRecords12Event_6138905WriteEPNS_6WriterE",
-          "target_sha256": "f0dad5e7ba682300eb87e4fe374c821b669a4d3fdb6451b58d09ddb8831852ed",
-          "bindings": {
-            "_ZN11EchoRecords4BaseILj6371472EE5WriteEPNS_6WriterE": "0x576a80"
-          },
-          "got_bindings": {},
-          "literals": {
-            "6c6f63616c506f727400": "0x1303051"
-          }
-        },
-        {
-          "address": "0x616b20",
-          "size": 136,
-          "symbol": "_ZN11EchoRecords12Event_616b205WriteEPNS_6WriterE",
-          "target_sha256": "559f3c2b224e04aaa97e2a28ac2850e4db98101cc4c04c551eb256c83c682a14",
-          "bindings": {
-            "_ZN11EchoRecords4BaseILj6384416EE5WriteEPNS_6WriterE": "0x576a80"
-          },
-          "got_bindings": {},
-          "literals": {
-            "656e61626c6500": "0x13240c9"
-          }
-        },
-        {
-          "address": "0x617260",
-          "size": 324,
-          "symbol": "_ZN11EchoRecords12Event_6172605WriteEPNS_6WriterE",
-          "target_sha256": "11f5ba3a307bfaa9a8e191dcf01cb000b2c6be00f5a9f8a865d44d097c86cc47",
-          "bindings": {
-            "_ZN11EchoRecords4BaseILj6386272EE5WriteEPNS_6WriterE": "0x576a80"
-          },
-          "got_bindings": {},
-          "literals": {
-            "6c6f63616c506f727400": "0x1303051",
-            "726571756573744d6170506f727400": "0x12f27dd",
-            "7265717565737465644d6170506f7274526574727900": "0x131c528"
-          }
-        },
-        {
-          "address": "0x617850",
-          "size": 136,
-          "symbol": "_ZN11EchoRecords12Event_6178505WriteEPNS_6WriterE",
-          "target_sha256": "058f1bbf0e5e09ea248965ffbd647e117c15d6bea426a4188493729bc148cc2a",
-          "bindings": {
-            "_ZN11EchoRecords4BaseILj6387792EE5WriteEPNS_6WriterE": "0x576a80"
-          },
-          "got_bindings": {},
-          "literals": {
-            "6d6170706564506f727400": "0x131a5ea"
-          }
-        },
-        {
-          "address": "0x621320",
-          "size": 136,
-          "symbol": "_ZN11EchoRecords12Event_6213205WriteEPNS_6WriterE",
-          "target_sha256": "6f885a12bb7799638b162156d0608e627cda3933538ae48f791ec05d5e1dc6fb",
-          "bindings": {
-            "_ZN11EchoRecords4BaseILj6427424EE5WriteEPNS_6WriterE": "0x576a80"
-          },
-          "got_bindings": {},
-          "literals": {
-            "6d6170706564506f727400": "0x131a5ea"
-          }
-        }
-      ]
-    },
-    {
       "id": "component_map_collect_by_key_omit_no_pic",
       "source": "src/ComponentMapCollectByKeyOmitNoPic.cpp",
       "compiler": "8.0.1",
@@ -490969,6 +490360,1302 @@
             "_ZTSP6RecordILj6082016EE": {
               "cell": "0x18fabb0",
               "pointee": "0x138b7b9"
+            }
+          },
+          "literals": {
+            "00": "0x1326e41"
+          }
+        }
+      ],
+      "header_roots": [
+        "vendor/llvm-libcxx-4/include",
+        "vendor/musl/include",
+        "vendor/musl/generated"
+      ]
+    },
+    {
+      "id": "echo_record_events_keep_pic_no_float_unwind_o3",
+      "source": "src/EchoRecordEvents.cpp",
+      "compiler": "8.0.1",
+      "source_review": "manual_reconstruction",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-std=c++11",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-O3",
+        "-fno-omit-frame-pointer",
+        "-fPIC",
+        "-funwind-tables",
+        "-mno-implicit-float"
+      ],
+      "functions": [
+        {
+          "address": "0x25c9f0",
+          "size": 232,
+          "symbol": "_ZN11EchoRecords12Event_25c9f05WriteEPNS_6WriterE",
+          "target_sha256": "5db2b8aa43619b6a6305f1cc816e93efffe641cca01104ca90013e4e4e9d7694",
+          "bindings": {
+            "_ZN11EchoRecords4BaseILj2476528EE5WriteEPNS_6WriterE": "0x576a80"
+          },
+          "got_bindings": {},
+          "literals": {
+            "74696d65536c69636554616b656e00": "0x1306ba1",
+            "74696d65536c6963654c696d697400": "0x13122a1"
+          }
+        },
+        {
+          "address": "0x25cb20",
+          "size": 328,
+          "symbol": "_ZN11EchoRecords12Event_25cb205WriteEPNS_6WriterE",
+          "target_sha256": "3aaab3bcf1756fbaa64b5cbfd060fcdd723f1fb00201c21f38a3f571c7427ce4",
+          "bindings": {
+            "_ZN11EchoRecords4BaseILj2476832EE5WriteEPNS_6WriterE": "0x576a80"
+          },
+          "got_bindings": {},
+          "literals": {
+            "74696d65536c69636554616b656e00": "0x1306ba1",
+            "74696d65536c6963654c696d697400": "0x13122a1",
+            "61626f7274656400": "0x130c748"
+          }
+        },
+        {
+          "address": "0x25cca0",
+          "size": 136,
+          "symbol": "_ZN11EchoRecords12Event_25cca05WriteEPNS_6WriterE",
+          "target_sha256": "b4470c55d8b806f6d86f3ea2951ba7a06e7d872edf279bc24ef9db92d712cb85",
+          "bindings": {
+            "_ZN11EchoRecords4BaseILj2477216EE5WriteEPNS_6WriterE": "0x576a80"
+          },
+          "got_bindings": {},
+          "literals": {
+            "656c617073656454696d6500": "0x1300f6c"
+          }
+        },
+        {
+          "address": "0x25f270",
+          "size": 328,
+          "symbol": "_ZN11EchoRecords12Event_25f2705WriteEPNS_6WriterE",
+          "target_sha256": "d4724eb1847dda52b2b59c90c81887931bc79b646fbc5956e08dac92b1e0a51c",
+          "bindings": {
+            "_ZN11EchoRecords4BaseILj2486896EE5WriteEPNS_6WriterE": "0x576a80"
+          },
+          "got_bindings": {},
+          "literals": {
+            "726571756573746564506f727400": "0x130c750",
+            "62696e64506f727400": "0x12fa0ba",
+            "7375636365737366756c00": "0x13263d9"
+          }
+        },
+        {
+          "address": "0x25f400",
+          "size": 328,
+          "symbol": "_ZN11EchoRecords12Event_25f4005WriteEPNS_6WriterE",
+          "target_sha256": "b3cc1c3fbcfa876e90bde0615afbe48b11187d0efe0e0314f28fa9a7a5a017bf",
+          "bindings": {
+            "_ZN11EchoRecords4BaseILj2487296EE5WriteEPNS_6WriterE": "0x576a80"
+          },
+          "got_bindings": {},
+          "literals": {
+            "726571756573746564506f727400": "0x130c750",
+            "62696e64506f727400": "0x12fa0ba",
+            "7375636365737366756c00": "0x13263d9"
+          }
+        },
+        {
+          "address": "0x260440",
+          "size": 136,
+          "symbol": "_ZN11EchoRecords12Event_2604405WriteEPNS_6WriterE",
+          "target_sha256": "396e26f09c522ba68f157da16530963bef17354148db867e8c3738a4ec4d821a",
+          "bindings": {
+            "_ZN11EchoRecords4BaseILj2491456EE5WriteEPNS_6WriterE": "0x585aa0"
+          },
+          "got_bindings": {},
+          "literals": {
+            "6f626a656374526566496400": "0x12f23db"
+          }
+        },
+        {
+          "address": "0x262b90",
+          "size": 236,
+          "symbol": "_ZN11EchoRecords12Event_262b905WriteEPNS_6WriterE",
+          "target_sha256": "8c6324abd393c093a24fd809a9625a9a2e37fecde6ecea69849d30ff1267931a",
+          "bindings": {
+            "_ZN11EchoRecords4BaseILj2501520EE5WriteEPNS_6WriterE": "0x260e60"
+          },
+          "got_bindings": {},
+          "literals": {
+            "68696572617263686963616c00": "0x13122b0",
+            "7365727665722d636f7272656374656400": "0x131a2a6"
+          }
+        },
+        {
+          "address": "0x2631b0",
+          "size": 136,
+          "symbol": "_ZN11EchoRecords12Event_2631b05WriteEPNS_6WriterE",
+          "target_sha256": "8ff47a6a1b6fdd3a660560de308bedb121b6c973198b7792280b7d3a3b8d2ae7",
+          "bindings": {
+            "_ZN11EchoRecords4BaseILj2503088EE5WriteEPNS_6WriterE": "0x260ad0"
+          },
+          "got_bindings": {},
+          "literals": {
+            "66696e616c4d617374657200": "0x130a8e9"
+          }
+        },
+        {
+          "address": "0x28efd0",
+          "size": 136,
+          "symbol": "_ZN11EchoRecords12Event_28efd05WriteEPNS_6WriterE",
+          "target_sha256": "3bc7fcb0ec3b6774cc1a5b762933cdf051c26d926013605350798484e2954358",
+          "bindings": {
+            "_ZN11EchoRecords4BaseILj2682832EE5WriteEPNS_6WriterE": "0x576a80"
+          },
+          "got_bindings": {},
+          "literals": {
+            "72657175657374496400": "0x1302c8d"
+          }
+        },
+        {
+          "address": "0x293c20",
+          "size": 136,
+          "symbol": "_ZN11EchoRecords12Event_293c205WriteEPNS_6WriterE",
+          "target_sha256": "c97958d219f175884acac5a7bf2b18fa32b7f28237dab38d0f9e1e013a288bfb",
+          "bindings": {
+            "_ZN11EchoRecords4BaseILj2702368EE5WriteEPNS_6WriterE": "0x576a80"
+          },
+          "got_bindings": {},
+          "literals": {
+            "6f626a656374526566496400": "0x12f23db"
+          }
+        },
+        {
+          "address": "0x294d90",
+          "size": 136,
+          "symbol": "_ZN11EchoRecords12Event_294d905WriteEPNS_6WriterE",
+          "target_sha256": "ac412a7af2f775d561fe75b985e4e39ee1f17694fd55e871c51c14f9a66d9c30",
+          "bindings": {
+            "_ZN11EchoRecords4BaseILj2706832EE5WriteEPNS_6WriterE": "0x576a80"
+          },
+          "got_bindings": {},
+          "literals": {
+            "6f626a656374526566496400": "0x12f23db"
+          }
+        },
+        {
+          "address": "0x295430",
+          "size": 200,
+          "symbol": "_ZN11EchoRecords12Event_2954305WriteEPNS_6WriterE",
+          "target_sha256": "587f79551e7884b3ec493cc0f25dd6c7cad8b262beb97d7bab88f0e559871b0f",
+          "bindings": {
+            "_ZN11EchoRecords4BaseILj2708528EE5WriteEPNS_6WriterE": "0x576a80",
+            "_ZN11EchoRecords11ShouldWriteEPNS_6WriterEPKv": "0x57d530",
+            "_ZN11EchoRecords11NamedWriterILj2852928EE5WriteEPNS_10NamedFieldEPNS_6WriterEi": "0x2b8840"
+          },
+          "got_bindings": {},
+          "literals": {
+            "6f626a656374526566496400": "0x12f23db",
+            "70656572496400": "0x13263e4"
+          }
+        },
+        {
+          "address": "0x2959c0",
+          "size": 200,
+          "symbol": "_ZN11EchoRecords12Event_2959c05WriteEPNS_6WriterE",
+          "target_sha256": "c1e2c7ab015df581a27f8e29eb59fe4cb460502903d8e3a09590683df4088b6a",
+          "bindings": {
+            "_ZN11EchoRecords4BaseILj2709952EE5WriteEPNS_6WriterE": "0x576a80",
+            "_ZN11EchoRecords11ShouldWriteEPNS_6WriterEPKv": "0x57d530",
+            "_ZN11EchoRecords11NamedWriterILj2852928EE5WriteEPNS_10NamedFieldEPNS_6WriterEi": "0x2b8840"
+          },
+          "got_bindings": {},
+          "literals": {
+            "6f626a656374526566496400": "0x12f23db",
+            "70656572496400": "0x13263e4"
+          }
+        },
+        {
+          "address": "0x295f40",
+          "size": 136,
+          "symbol": "_ZN11EchoRecords12Event_295f405WriteEPNS_6WriterE",
+          "target_sha256": "c3bda53085936aa9dcb982e1cd7629176adc278b24d69e433897142679ee5b57",
+          "bindings": {
+            "_ZN11EchoRecords4BaseILj2711360EE5WriteEPNS_6WriterE": "0x576a80"
+          },
+          "got_bindings": {},
+          "literals": {
+            "6f626a656374526566496400": "0x12f23db"
+          }
+        },
+        {
+          "address": "0x296480",
+          "size": 236,
+          "symbol": "_ZN11EchoRecords12Event_2964805WriteEPNS_6WriterE",
+          "target_sha256": "04cececebf4a968043909d7f5cc62b22c2530fe142b7ef37ef8ab671e468523b",
+          "bindings": {
+            "_ZN11EchoRecords4BaseILj2712704EE5WriteEPNS_6WriterE": "0x576a80"
+          },
+          "got_bindings": {},
+          "literals": {
+            "6f626a656374526566496400": "0x12f23db",
+            "646973736f6c766500": "0x1321f16"
+          }
+        },
+        {
+          "address": "0x2993d0",
+          "size": 136,
+          "symbol": "_ZN11EchoRecords12Event_2993d05WriteEPNS_6WriterE",
+          "target_sha256": "56e90b9edf44844952b91970c9e61e59e54337d224bec5b7d1667d1b86f9556b",
+          "bindings": {
+            "_ZN11EchoRecords4BaseILj2724816EE5WriteEPNS_6WriterE": "0x576a80"
+          },
+          "got_bindings": {},
+          "literals": {
+            "6f626a656374526566496400": "0x12f23db"
+          }
+        },
+        {
+          "address": "0x299e40",
+          "size": 136,
+          "symbol": "_ZN11EchoRecords12Event_299e405WriteEPNS_6WriterE",
+          "target_sha256": "b38e574318e1874f418f34e22e3cacdcd4db37a91bd74523b08ebdc0e4f1925d",
+          "bindings": {
+            "_ZN11EchoRecords4BaseILj2727488EE5WriteEPNS_6WriterE": "0x285e90"
+          },
+          "got_bindings": {},
+          "literals": {
+            "6473746578636c7564656450656572496400": "0x1323d5b"
+          }
+        },
+        {
+          "address": "0x29a3b0",
+          "size": 136,
+          "symbol": "_ZN11EchoRecords12Event_29a3b05WriteEPNS_6WriterE",
+          "target_sha256": "6ba15cf02fd924ce8eba295904b9cea6282f6c11d4eb1628a0b6855e790fc671",
+          "bindings": {
+            "_ZN11EchoRecords4BaseILj2728880EE5WriteEPNS_6WriterE": "0x285e90"
+          },
+          "got_bindings": {},
+          "literals": {
+            "64737450656572496400": "0x130e606"
+          }
+        },
+        {
+          "address": "0x29a8f0",
+          "size": 136,
+          "symbol": "_ZN11EchoRecords12Event_29a8f05WriteEPNS_6WriterE",
+          "target_sha256": "1ec6e0bdb045e28fbc73aefeadfeb1031a821176f83f9b37dda7df62cdc55b6a",
+          "bindings": {
+            "_ZN11EchoRecords4BaseILj2730224EE5WriteEPNS_6WriterE": "0x576a80"
+          },
+          "got_bindings": {},
+          "literals": {
+            "6f626a656374526566496400": "0x12f23db"
+          }
+        },
+        {
+          "address": "0x29b440",
+          "size": 200,
+          "symbol": "_ZN11EchoRecords12Event_29b4405WriteEPNS_6WriterE",
+          "target_sha256": "316133f7d62793e9b627dc0bff3a03028465f06bbe009f67cc5b7d857302d615",
+          "bindings": {
+            "_ZN11EchoRecords4BaseILj2733120EE5WriteEPNS_6WriterE": "0x576a80",
+            "_ZN11EchoRecords11ShouldWriteEPNS_6WriterEPKv": "0x57d530",
+            "_ZN11EchoRecords11NamedWriterILj2852928EE5WriteEPNS_10NamedFieldEPNS_6WriterEi": "0x2b8840"
+          },
+          "got_bindings": {},
+          "literals": {
+            "6f626a656374526566496400": "0x12f23db",
+            "70656572496400": "0x13263e4"
+          }
+        },
+        {
+          "address": "0x29b9e0",
+          "size": 232,
+          "symbol": "_ZN11EchoRecords12Event_29b9e05WriteEPNS_6WriterE",
+          "target_sha256": "dfe752ab9268902db28c18c66e5a460c4a5a576a99d58cfc5704e435da307913",
+          "bindings": {
+            "_ZN11EchoRecords4BaseILj2734560EE5WriteEPNS_6WriterE": "0x576a80"
+          },
+          "got_bindings": {},
+          "literals": {
+            "6f626a656374526566496400": "0x12f23db",
+            "6261746368496e64657800": "0x12f23e7"
+          }
+        },
+        {
+          "address": "0x29bcf0",
+          "size": 232,
+          "symbol": "_ZN11EchoRecords12Event_29bcf05WriteEPNS_6WriterE",
+          "target_sha256": "393a34a94411a6abe9b9d721d038d14bb08acd85386108b2e3cb49f351092db5",
+          "bindings": {
+            "_ZN11EchoRecords4BaseILj2735344EE5WriteEPNS_6WriterE": "0x576a80"
+          },
+          "got_bindings": {},
+          "literals": {
+            "6f626a656374526566496400": "0x12f23db",
+            "6261746368496e64657800": "0x12f23e7"
+          }
+        },
+        {
+          "address": "0x29c3c0",
+          "size": 232,
+          "symbol": "_ZN11EchoRecords12Event_29c3c05WriteEPNS_6WriterE",
+          "target_sha256": "7762797abf0e9fd02eed7464a0fa77e79224ff5c7881c5f1f430d2b0f62d97ca",
+          "bindings": {
+            "_ZN11EchoRecords4BaseILj2737088EE5WriteEPNS_6WriterE": "0x576a80"
+          },
+          "got_bindings": {},
+          "literals": {
+            "6f626a656374526566496400": "0x12f23db",
+            "6261746368496e64657800": "0x12f23e7"
+          }
+        },
+        {
+          "address": "0x29c960",
+          "size": 136,
+          "symbol": "_ZN11EchoRecords12Event_29c9605WriteEPNS_6WriterE",
+          "target_sha256": "a88f438c495265bad13ba73d6c9721e96bc1c5da26c7fa9eeaabb7ceb320b258",
+          "bindings": {
+            "_ZN11EchoRecords4BaseILj2738528EE5WriteEPNS_6WriterE": "0x576a80"
+          },
+          "got_bindings": {},
+          "literals": {
+            "6f626a656374526566496400": "0x12f23db"
+          }
+        },
+        {
+          "address": "0x29cea0",
+          "size": 136,
+          "symbol": "_ZN11EchoRecords12Event_29cea05WriteEPNS_6WriterE",
+          "target_sha256": "5184f35ccfbc667eb5329506e10cc9fdf2e38c0264974c027f0727be4ad87b9b",
+          "bindings": {
+            "_ZN11EchoRecords4BaseILj2739872EE5WriteEPNS_6WriterE": "0x576a80"
+          },
+          "got_bindings": {},
+          "literals": {
+            "6f626a656374526566496400": "0x12f23db"
+          }
+        },
+        {
+          "address": "0x29db50",
+          "size": 200,
+          "symbol": "_ZN11EchoRecords12Event_29db505WriteEPNS_6WriterE",
+          "target_sha256": "902d1d8aa09d5d9ba88f718055fcf493c7051b0a2ba7b4337fefe369961b5047",
+          "bindings": {
+            "_ZN11EchoRecords4BaseILj2743120EE5WriteEPNS_6WriterE": "0x576a80",
+            "_ZN11EchoRecords11ShouldWriteEPNS_6WriterEPKv": "0x57d530",
+            "_ZN11EchoRecords11NamedWriterILj5759104EE5WriteEPNS_10NamedFieldEPNS_6WriterEi": "0x57e080"
+          },
+          "got_bindings": {},
+          "literals": {
+            "6f626a656374526566496400": "0x12f23db",
+            "68616e646c6572526566496400": "0x1304a7e"
+          }
+        },
+        {
+          "address": "0x29e0d0",
+          "size": 136,
+          "symbol": "_ZN11EchoRecords12Event_29e0d05WriteEPNS_6WriterE",
+          "target_sha256": "ed4a7c5b485668d6f1f0b5c260ffa8a55bfb3ff87703097a0da937fef7ae65f6",
+          "bindings": {
+            "_ZN11EchoRecords4BaseILj2744528EE5WriteEPNS_6WriterE": "0x576a80"
+          },
+          "got_bindings": {},
+          "literals": {
+            "6f626a656374526566496400": "0x12f23db"
+          }
+        },
+        {
+          "address": "0x29e610",
+          "size": 136,
+          "symbol": "_ZN11EchoRecords12Event_29e6105WriteEPNS_6WriterE",
+          "target_sha256": "3a751309e9b444c4af0094c36221348c0748c653e4a98d697e27d8693a4d9976",
+          "bindings": {
+            "_ZN11EchoRecords4BaseILj2745872EE5WriteEPNS_6WriterE": "0x576a80"
+          },
+          "got_bindings": {},
+          "literals": {
+            "6f626a656374526566496400": "0x12f23db"
+          }
+        },
+        {
+          "address": "0x2a2b30",
+          "size": 136,
+          "symbol": "_ZN11EchoRecords12Event_2a2b305WriteEPNS_6WriterE",
+          "target_sha256": "8578c9a71347136cd48f690c457fa5141f309b35c39fd9f149dd17551ca9885f",
+          "bindings": {
+            "_ZN11EchoRecords4BaseILj2763568EE5WriteEPNS_6WriterE": "0x2a1cb0"
+          },
+          "got_bindings": {},
+          "literals": {
+            "64737400": "0x132a1d6"
+          }
+        },
+        {
+          "address": "0x2a3c70",
+          "size": 136,
+          "symbol": "_ZN11EchoRecords12Event_2a3c705WriteEPNS_6WriterE",
+          "target_sha256": "43a6a9f646a78a64f36c5d91d8d83df23a4e3ce183ea85b50dbeeba372e150b2",
+          "bindings": {
+            "_ZN11EchoRecords4BaseILj2767984EE5WriteEPNS_6WriterE": "0x2a1cb0"
+          },
+          "got_bindings": {},
+          "literals": {
+            "64737400": "0x132a1d6"
+          }
+        },
+        {
+          "address": "0x2a5a80",
+          "size": 136,
+          "symbol": "_ZN11EchoRecords12Event_2a5a805WriteEPNS_6WriterE",
+          "target_sha256": "be199ff12916986d638fea3ab3901cbe7a2ed13c68e3d408278e6dcb52c37c7a",
+          "bindings": {
+            "_ZN11EchoRecords4BaseILj2775680EE5WriteEPNS_6WriterE": "0x576a80"
+          },
+          "got_bindings": {},
+          "literals": {
+            "74696d656f757400": "0x1304a8b"
+          }
+        },
+        {
+          "address": "0x2b9270",
+          "size": 420,
+          "symbol": "_ZN11EchoRecords12Event_2b92705WriteEPNS_6WriterE",
+          "target_sha256": "abef1605fe30389082afc41fe91de5e5781c3f071f7611b0bb9864835ffb1cf1",
+          "bindings": {
+            "_ZN11EchoRecords4BaseILj2855536EE5WriteEPNS_6WriterE": "0x585aa0",
+            "_ZN11EchoRecords11ShouldWriteEPNS_6WriterEPKv": "0x57d530"
+          },
+          "got_bindings": {},
+          "literals": {
+            "73657373696f6e4775696400": "0x1318446",
+            "73726566696400": "0x132fd35"
+          }
+        },
+        {
+          "address": "0x2ba5d0",
+          "size": 256,
+          "symbol": "_ZN11EchoRecords12Event_2ba5d05WriteEPNS_6WriterE",
+          "target_sha256": "e836b6842c4ee1d69ad3dd88d3d651ddcb696d9e80e262103988af79c4fe7dad",
+          "bindings": {
+            "_ZN11EchoRecords4BaseILj2860496EE5WriteEPNS_6WriterE": "0x2b9270",
+            "_ZN11EchoRecords11ShouldWriteEPNS_6WriterEPKv": "0x57d530"
+          },
+          "got_bindings": {},
+          "literals": {
+            "70656572496400": "0x13263e4"
+          }
+        },
+        {
+          "address": "0x2ba860",
+          "size": 420,
+          "symbol": "_ZN11EchoRecords12Event_2ba8605WriteEPNS_6WriterE",
+          "target_sha256": "c3052facb2ab2c627b98eb5c2e08711980930c2f4da59cce6d15a0a30dd73c8a",
+          "bindings": {
+            "_ZN11EchoRecords4BaseILj2861152EE5WriteEPNS_6WriterE": "0x576a80",
+            "_ZN11EchoRecords11ShouldWriteEPNS_6WriterEPKv": "0x57d530"
+          },
+          "got_bindings": {},
+          "literals": {
+            "73657373696f6e4775696400": "0x1318446",
+            "73726566696400": "0x132fd35"
+          }
+        },
+        {
+          "address": "0x2bcf40",
+          "size": 256,
+          "symbol": "_ZN11EchoRecords12Event_2bcf405WriteEPNS_6WriterE",
+          "target_sha256": "b886ad23514cedf9680c1c44f48ee070aff6c291d1516d404d63cf3414eee2d0",
+          "bindings": {
+            "_ZN11EchoRecords4BaseILj2871104EE5WriteEPNS_6WriterE": "0x2ba860",
+            "_ZN11EchoRecords11ShouldWriteEPNS_6WriterEPKv": "0x57d530"
+          },
+          "got_bindings": {},
+          "literals": {
+            "70656572496400": "0x13263e4"
+          }
+        },
+        {
+          "address": "0x2bd090",
+          "size": 256,
+          "symbol": "_ZN11EchoRecords12Event_2bd0905WriteEPNS_6WriterE",
+          "target_sha256": "3026eb99ce44654edf919e894d823bb47d74a35ee720b67d7cbba01ecd4407f3",
+          "bindings": {
+            "_ZN11EchoRecords4BaseILj2871440EE5WriteEPNS_6WriterE": "0x2ba860",
+            "_ZN11EchoRecords11ShouldWriteEPNS_6WriterEPKv": "0x57d530"
+          },
+          "got_bindings": {},
+          "literals": {
+            "70656572496400": "0x13263e4"
+          }
+        },
+        {
+          "address": "0x2bdfe0",
+          "size": 256,
+          "symbol": "_ZN11EchoRecords12Event_2bdfe05WriteEPNS_6WriterE",
+          "target_sha256": "b328358bffeb8d277e0f7c0af619f7c98dc666c41177a70ea75a23fcd43755b0",
+          "bindings": {
+            "_ZN11EchoRecords4BaseILj2875360EE5WriteEPNS_6WriterE": "0x2ba860",
+            "_ZN11EchoRecords11ShouldWriteEPNS_6WriterEPKv": "0x57d530"
+          },
+          "got_bindings": {},
+          "literals": {
+            "70656572496400": "0x13263e4"
+          }
+        },
+        {
+          "address": "0x2ef210",
+          "size": 420,
+          "symbol": "_ZN11EchoRecords12Event_2ef2105WriteEPNS_6WriterE",
+          "target_sha256": "44dd67e11e66d0172de49536bec481d9b5426e14cee2e35bf25f7ce0ef30dc12",
+          "bindings": {
+            "_ZN11EchoRecords4BaseILj3076624EE5WriteEPNS_6WriterE": "0x576a80",
+            "_ZN11EchoRecords11ShouldWriteEPNS_6WriterEPKv": "0x57d530"
+          },
+          "got_bindings": {},
+          "literals": {
+            "73657373696f6e4775696400": "0x1318446",
+            "73726566696400": "0x132fd35"
+          }
+        },
+        {
+          "address": "0x2f09e0",
+          "size": 208,
+          "symbol": "_ZN11EchoRecords12Event_2f09e05WriteEPNS_6WriterE",
+          "target_sha256": "327f9313b1e59529d7f7e85e250f4b07c386392b1223872b72952ad81986f892",
+          "bindings": {
+            "_ZN11EchoRecords4BaseILj3082720EE5WriteEPNS_6WriterE": "0x2ef210",
+            "_ZN11EchoRecords11ShouldWriteEPNS_6WriterEPKv": "0x57d530"
+          },
+          "got_bindings": {},
+          "literals": {
+            "706565724775696400": "0x131845d"
+          }
+        },
+        {
+          "address": "0x2f1a60",
+          "size": 136,
+          "symbol": "_ZN11EchoRecords12Event_2f1a605WriteEPNS_6WriterE",
+          "target_sha256": "cf2a5dea59379d9d47eac0a698ce6999764367d00afc581af6202efc0f722126",
+          "bindings": {
+            "_ZN11EchoRecords4BaseILj3086944EE5WriteEPNS_6WriterE": "0x576a80"
+          },
+          "got_bindings": {},
+          "literals": {
+            "73657373696f6e4576656e7400": "0x1308943"
+          }
+        },
+        {
+          "address": "0x2f93e0",
+          "size": 448,
+          "symbol": "_ZN11EchoRecords12Event_2f93e05WriteEPNS_6WriterE",
+          "target_sha256": "75707ce0452d98639a9f7be9915ee7def45eb5179594df930e6054269ba16135",
+          "bindings": {
+            "_ZN11EchoRecords11ShouldWriteEPNS_6WriterEPKv": "0x57d530"
+          },
+          "got_bindings": {},
+          "literals": {
+            "73726566696400": "0x132fd35",
+            "73797374656d54696d6500": "0x130c7c7",
+            "73657373696f6e54696d6500": "0x132dcf7"
+          }
+        },
+        {
+          "address": "0x2f97a0",
+          "size": 248,
+          "symbol": "_ZN11EchoRecords12Event_2f97a05WriteEPNS_6WriterE",
+          "target_sha256": "40ab89be6be5da3c618f6b10d688bcd55d9d856ce8b0717fa62b00f2391a5785",
+          "bindings": {
+            "_ZN11EchoRecords11ShouldWriteEPNS_6WriterEPKv": "0x57d530"
+          },
+          "got_bindings": {},
+          "literals": {
+            "73726566696400": "0x132fd35"
+          }
+        },
+        {
+          "address": "0x31c7b0",
+          "size": 136,
+          "symbol": "_ZN11EchoRecords12Event_31c7b05WriteEPNS_6WriterE",
+          "target_sha256": "6243ef22fc5f047fdec920ed99832620b0aedd1d15b7648f0383562782e07d5a",
+          "bindings": {
+            "_ZN11EchoRecords4BaseILj3262384EE5WriteEPNS_6WriterE": "0x576a80"
+          },
+          "got_bindings": {},
+          "literals": {
+            "7374657000": "0x130e684"
+          }
+        },
+        {
+          "address": "0x31c840",
+          "size": 136,
+          "symbol": "_ZN11EchoRecords12Event_31c8405WriteEPNS_6WriterE",
+          "target_sha256": "0e8cd65aeef37fe82cc59f278aef3e2a76a8458b7c2206a039ccacdf0a1ee14a",
+          "bindings": {
+            "_ZN11EchoRecords4BaseILj3262528EE5WriteEPNS_6WriterE": "0x576a80"
+          },
+          "got_bindings": {},
+          "literals": {
+            "7374657000": "0x130e684"
+          }
+        },
+        {
+          "address": "0x33fff0",
+          "size": 136,
+          "symbol": "_ZN11EchoRecords12Event_33fff05WriteEPNS_6WriterE",
+          "target_sha256": "5217666be48b011b1808619d7dbce019d2d1bdb9eb2b9f636dd544574020a2a7",
+          "bindings": {
+            "_ZN11EchoRecords4BaseILj3407856EE5WriteEPNS_6WriterE": "0x33b550"
+          },
+          "got_bindings": {},
+          "literals": {
+            "7065657253526566496400": "0x12f7c2e"
+          }
+        },
+        {
+          "address": "0x3750f0",
+          "size": 200,
+          "symbol": "_ZN11EchoRecords12Event_3750f05WriteEPNS_6WriterE",
+          "target_sha256": "e67e76250973b7238346d456fb5b90f3ff327a6f4502542f9f0ed8ce876732af",
+          "bindings": {
+            "_ZN11EchoRecords4BaseILj3625200EE5WriteEPNS_6WriterE": "0x2ef210",
+            "_ZN11EchoRecords11ShouldWriteEPNS_6WriterEPKv": "0x57d530",
+            "_ZN11EchoRecords11NamedWriterILj2852928EE5WriteEPNS_10NamedFieldEPNS_6WriterEi": "0x2b8840"
+          },
+          "got_bindings": {},
+          "literals": {
+            "70656572496400": "0x13263e4",
+            "73657175656e636500": "0x130c7d2"
+          }
+        },
+        {
+          "address": "0x376010",
+          "size": 388,
+          "symbol": "_ZN11EchoRecords12Event_3760105WriteEPNS_6WriterE",
+          "target_sha256": "24fc0028b11c5be849bfea2cb1af63f7c3b26b575232c22ad04d28410f804f4a",
+          "bindings": {
+            "_ZN11EchoRecords4BaseILj3629072EE5WriteEPNS_6WriterE": "0x576a80",
+            "_ZN11EchoRecords11ShouldWriteEPNS_6WriterEPKv": "0x57d530",
+            "_ZN11EchoRecords11NamedWriterILj2852752EE5WriteEPNS_10NamedFieldEPNS_6WriterEi": "0x2b8790"
+          },
+          "got_bindings": {},
+          "literals": {
+            "73726566696400": "0x132fd35",
+            "73797374656d54696d6500": "0x130c7c7",
+            "73657373696f6e54696d6500": "0x132dcf7",
+            "70656572496400": "0x13263e4"
+          }
+        },
+        {
+          "address": "0x377d40",
+          "size": 200,
+          "symbol": "_ZN11EchoRecords12Event_377d405WriteEPNS_6WriterE",
+          "target_sha256": "f41089872adc47e1c975abc92c51e5a6d6959a1b4aa675df01b8aed4a679a611",
+          "bindings": {
+            "_ZN11EchoRecords4BaseILj3636544EE5WriteEPNS_6WriterE": "0x576a80",
+            "_ZN11EchoRecords11ShouldWriteEPNS_6WriterEPKv": "0x57d530",
+            "_ZN11EchoRecords11NamedWriterILj2852752EE5WriteEPNS_10NamedFieldEPNS_6WriterEi": "0x2b8790"
+          },
+          "got_bindings": {},
+          "literals": {
+            "73726566696400": "0x132fd35",
+            "72656d6f746550656572496400": "0x12ff250"
+          }
+        },
+        {
+          "address": "0x3782d0",
+          "size": 200,
+          "symbol": "_ZN11EchoRecords12Event_3782d05WriteEPNS_6WriterE",
+          "target_sha256": "fa0dc3e67dc74ea030cd1acc26a2631e5c76cce5ab7cf516f298cc57c3adcd5a",
+          "bindings": {
+            "_ZN11EchoRecords4BaseILj3637968EE5WriteEPNS_6WriterE": "0x576a80",
+            "_ZN11EchoRecords11ShouldWriteEPNS_6WriterEPKv": "0x57d530",
+            "_ZN11EchoRecords11NamedWriterILj2852752EE5WriteEPNS_10NamedFieldEPNS_6WriterEi": "0x2b8790"
+          },
+          "got_bindings": {},
+          "literals": {
+            "73726566696400": "0x132fd35",
+            "706175736500": "0x1304acd"
+          }
+        },
+        {
+          "address": "0x3ce860",
+          "size": 240,
+          "symbol": "_ZN11EchoRecords12Event_3ce8605WriteEPNS_6WriterE",
+          "target_sha256": "4df36c9ae6de45a9188dec72a0a73f65c9e09bf2e0dcac084b0497f332e7b01c",
+          "bindings": {
+            "_ZN11EchoRecords4BaseILj3991648EE5WriteEPNS_6WriterE": "0x576a80",
+            "_ZN11EchoRecords11ShouldWriteEPNS_6WriterEPKv": "0x57d530"
+          },
+          "got_bindings": {},
+          "literals": {
+            "63696400": "0x1323dae"
+          }
+        },
+        {
+          "address": "0x3cfd30",
+          "size": 240,
+          "symbol": "_ZN11EchoRecords12Event_3cfd305WriteEPNS_6WriterE",
+          "target_sha256": "6c4e42676c1a36ceae5d8830084c6837dab396c0fc0a1d805fef47dfd1692584",
+          "bindings": {
+            "_ZN11EchoRecords4BaseILj3996976EE5WriteEPNS_6WriterE": "0x576a80",
+            "_ZN11EchoRecords11ShouldWriteEPNS_6WriterEPKv": "0x57d530"
+          },
+          "got_bindings": {},
+          "literals": {
+            "63696400": "0x1323dae"
+          }
+        },
+        {
+          "address": "0x3d02f0",
+          "size": 468,
+          "symbol": "_ZN11EchoRecords12Event_3d02f05WriteEPNS_6WriterE",
+          "target_sha256": "0d5dc49eebc0a9c68049acd318cf0750eae17f5ca2adb5ca0b44e3c7ba77ff89",
+          "bindings": {
+            "_ZN11EchoRecords4BaseILj3998448EE5WriteEPNS_6WriterE": "0x576a80",
+            "_ZN11EchoRecords11ShouldWriteEPNS_6WriterEPKv": "0x57d530",
+            "_ZN11EchoRecords11NamedWriterILj2852752EE5WriteEPNS_10NamedFieldEPNS_6WriterEi": "0x2b8790"
+          },
+          "got_bindings": {},
+          "literals": {
+            "63696400": "0x1323dae",
+            "706565724775696400": "0x131845d",
+            "73726566696400": "0x132fd35"
+          }
+        },
+        {
+          "address": "0x3d7380",
+          "size": 208,
+          "symbol": "_ZN11EchoRecords12Event_3d73805WriteEPNS_6WriterE",
+          "target_sha256": "9758c8833ed3886b4afd7ab1715c5f2613dbb20f212272fd17461d41f0e2c938",
+          "bindings": {
+            "_ZN11EchoRecords4BaseILj4027264EE5WriteEPNS_6WriterE": "0x3d77c0",
+            "_ZN11EchoRecords11ShouldWriteEPNS_6WriterEPKv": "0x57d530"
+          },
+          "got_bindings": {},
+          "literals": {
+            "706565724775696400": "0x131845d"
+          }
+        },
+        {
+          "address": "0x3d7f30",
+          "size": 208,
+          "symbol": "_ZN11EchoRecords12Event_3d7f305WriteEPNS_6WriterE",
+          "target_sha256": "fb7bc870c5eaf4c99b3e9e396e6b99aa4a30e5a36efdfcae2407dc77361c324a",
+          "bindings": {
+            "_ZN11EchoRecords4BaseILj4030256EE5WriteEPNS_6WriterE": "0x3d77c0",
+            "_ZN11EchoRecords11ShouldWriteEPNS_6WriterEPKv": "0x57d530"
+          },
+          "got_bindings": {},
+          "literals": {
+            "706565724775696400": "0x131845d"
+          }
+        },
+        {
+          "address": "0x3d8b00",
+          "size": 664,
+          "symbol": "_ZN11EchoRecords12Event_3d8b005WriteEPNS_6WriterE",
+          "target_sha256": "40a34a708ccdbc6a9b370cdbadb08ffb35936cd54c97bb953b44e72575736f66",
+          "bindings": {
+            "_ZN11EchoRecords4BaseILj4033280EE5WriteEPNS_6WriterE": "0x576a80",
+            "_ZN11EchoRecords11ShouldWriteEPNS_6WriterEPKv": "0x57d530",
+            "_ZN11EchoRecords11NamedWriterILj2852752EE5WriteEPNS_10NamedFieldEPNS_6WriterEi": "0x2b8790"
+          },
+          "got_bindings": {},
+          "literals": {
+            "63696400": "0x1323dae",
+            "706565724775696400": "0x131845d",
+            "73726566696400": "0x132fd35",
+            "72657175657374496400": "0x1302c8d",
+            "6c6f63616c47726f757054696d6500": "0x130c813"
+          }
+        },
+        {
+          "address": "0x3daec0",
+          "size": 400,
+          "symbol": "_ZN11EchoRecords12Event_3daec05WriteEPNS_6WriterE",
+          "target_sha256": "ecd20d2394d8c28a2c2a92634c54dee910941170b19609652f67e5a83eee4e3e",
+          "bindings": {
+            "_ZN11EchoRecords11ShouldWriteEPNS_6WriterEPKv": "0x57d530"
+          },
+          "got_bindings": {},
+          "literals": {
+            "706565724775696400": "0x131845d",
+            "70726f746f636f6c43726300": "0x12f423e",
+            "74696d6500": "0x131a319"
+          }
+        },
+        {
+          "address": "0x3e4ae0",
+          "size": 208,
+          "symbol": "_ZN11EchoRecords12Event_3e4ae05WriteEPNS_6WriterE",
+          "target_sha256": "51ebb8b5ac6acb98b7da67c07778908f27d561d219ae26c312d062af6f67a337",
+          "bindings": {
+            "_ZN11EchoRecords4BaseILj4082400EE5WriteEPNS_6WriterE": "0x3d77c0",
+            "_ZN11EchoRecords11ShouldWriteEPNS_6WriterEPKv": "0x57d530"
+          },
+          "got_bindings": {},
+          "literals": {
+            "706565724775696400": "0x131845d"
+          }
+        },
+        {
+          "address": "0x415770",
+          "size": 200,
+          "symbol": "_ZN11EchoRecords12Event_4157705WriteEPNS_6WriterE",
+          "target_sha256": "57d693bad96783a887474d9a53d3b383416f225812b9616a1f992fa6c3b601eb",
+          "bindings": {
+            "_ZN11EchoRecords4BaseILj4282224EE5WriteEPNS_6WriterE": "0x576a80",
+            "_ZN11EchoRecords11ShouldWriteEPNS_6WriterEPKv": "0x57d530",
+            "_ZN11EchoRecords11NamedWriterILj2852928EE5WriteEPNS_10NamedFieldEPNS_6WriterEi": "0x2b8840"
+          },
+          "got_bindings": {},
+          "literals": {
+            "6f626a656374526566496400": "0x12f23db",
+            "70656572496400": "0x13263e4"
+          }
+        },
+        {
+          "address": "0x43e200",
+          "size": 136,
+          "symbol": "_ZN11EchoRecords12Event_43e2005WriteEPNS_6WriterE",
+          "target_sha256": "1c0a26226dec47db3385109f3b8e8ac39e2a591e47b323cacce0e1d5612a61fa",
+          "bindings": {
+            "_ZN11EchoRecords4BaseILj4448768EE5WriteEPNS_6WriterE": "0x576a80"
+          },
+          "got_bindings": {},
+          "literals": {
+            "73657373696f6e54696d6500": "0x132dcf7"
+          }
+        },
+        {
+          "address": "0x45f730",
+          "size": 136,
+          "symbol": "_ZN11EchoRecords12Event_45f7305WriteEPNS_6WriterE",
+          "target_sha256": "6454bc2f7777ac8afa2f91d64a0c837cfde4ed46bb94c73596ceb846d793b5a1",
+          "bindings": {
+            "_ZN11EchoRecords4BaseILj4585264EE5WriteEPNS_6WriterE": "0x576a80"
+          },
+          "got_bindings": {},
+          "literals": {
+            "696e697469616c53657373696f6e54696d6500": "0x13282c8"
+          }
+        },
+        {
+          "address": "0x46b490",
+          "size": 136,
+          "symbol": "_ZN11EchoRecords12Event_46b4905WriteEPNS_6WriterE",
+          "target_sha256": "290062d61475dfa635d5704ec0bf8fa8b1f3562b9ef0726d65be0251c0adb772",
+          "bindings": {
+            "_ZN11EchoRecords4BaseILj4633744EE5WriteEPNS_6WriterE": "0x576a80"
+          },
+          "got_bindings": {},
+          "literals": {
+            "67726f75705f7265665f696400": "0x13264b4"
+          }
+        },
+        {
+          "address": "0x46b520",
+          "size": 324,
+          "symbol": "_ZN11EchoRecords12Event_46b5205WriteEPNS_6WriterE",
+          "target_sha256": "df169768e24e5ae33242f41851df79619ff91d6d6a61f8115bda12e906f1328e",
+          "bindings": {
+            "_ZN11EchoRecords4BaseILj4633888EE5WriteEPNS_6WriterE": "0x576a80"
+          },
+          "got_bindings": {},
+          "literals": {
+            "67726f75705f7265665f696400": "0x13264b4",
+            "706565725f696400": "0x13264c1",
+            "636f6e6e65637465645f706565725f636f756e7400": "0x130c842"
+          }
+        },
+        {
+          "address": "0x55d6d0",
+          "size": 136,
+          "symbol": "_ZN11EchoRecords12Event_55d6d05WriteEPNS_6WriterE",
+          "target_sha256": "48de0137bcd35f7ee60a58a68d6091f842bc4a1db36f6e0ee6dd81ab7a327f0d",
+          "bindings": {
+            "_ZN11EchoRecords4BaseILj5625552EE5WriteEPNS_6WriterE": "0x585aa0"
+          },
+          "got_bindings": {},
+          "literals": {
+            "7374657000": "0x130e684"
+          }
+        },
+        {
+          "address": "0x576eb0",
+          "size": 136,
+          "symbol": "_ZN11EchoRecords12Event_576eb05WriteEPNS_6WriterE",
+          "target_sha256": "a6024dc694d30ad4c9d311eca9b620f53a8c1ad3f6904b226717bf476a915702",
+          "bindings": {},
+          "got_bindings": {},
+          "literals": {
+            "6775696400": "0x131c132"
+          }
+        },
+        {
+          "address": "0x585bc0",
+          "size": 172,
+          "symbol": "_ZN11EchoRecords12Event_585bc05WriteEPNS_6WriterE",
+          "target_sha256": "a0b2d7d5f36c9a6eea5fd9f94094aaec10e4ce2be5406640d6f637f2fa5f1ae8",
+          "bindings": {},
+          "got_bindings": {},
+          "literals": {
+            "70656572526566496400": "0x1318466"
+          }
+        },
+        {
+          "address": "0x5b2ba0",
+          "size": 168,
+          "symbol": "_ZN11EchoRecords12Event_5b2ba05WriteEPNS_6WriterE",
+          "target_sha256": "69859ba771483b4f366248d29651d5b9b28504266a7218692767c9b340c21d70",
+          "bindings": {
+            "_ZN11EchoRecords4BaseILj5974944EE5WriteEPNS_6WriterE": "0x576a80"
+          },
+          "got_bindings": {},
+          "literals": {
+            "6775696400": "0x131c132"
+          }
+        },
+        {
+          "address": "0x5b60d0",
+          "size": 136,
+          "symbol": "_ZN11EchoRecords12Event_5b60d05WriteEPNS_6WriterE",
+          "target_sha256": "21cc1a91574d7a7e643e40010b96110f17a8b7d96baa341c89d70b5fbddc8f29",
+          "bindings": {
+            "_ZN11EchoRecords4BaseILj5988560EE5WriteEPNS_6WriterE": "0x595530"
+          },
+          "got_bindings": {},
+          "literals": {
+            "76657273696f6e00": "0x1307406"
+          }
+        },
+        {
+          "address": "0x5c2d30",
+          "size": 232,
+          "symbol": "_ZN11EchoRecords12Event_5c2d305WriteEPNS_6WriterE",
+          "target_sha256": "96982406792ae54df2361e463561d24011dbddb8624e578e056f2ea8463c6612",
+          "bindings": {
+            "_ZN11EchoRecords4BaseILj6040880EE5WriteEPNS_6WriterE": "0x576a80"
+          },
+          "got_bindings": {},
+          "literals": {
+            "74696d65536c69636554616b656e00": "0x1306ba1",
+            "74696d65536c6963654c696d697400": "0x13122a1"
+          }
+        },
+        {
+          "address": "0x5e2e90",
+          "size": 236,
+          "symbol": "_ZN11EchoRecords12Event_5e2e905WriteEPNS_6WriterE",
+          "target_sha256": "48b32a6d9b639d7a1c2c67c819581a9606e3813f3f670c8a953db023df3b8138",
+          "bindings": {
+            "_ZN11EchoRecords4BaseILj6172304EE5WriteEPNS_6WriterE": "0x576a80"
+          },
+          "got_bindings": {},
+          "literals": {
+            "656e61626c6500": "0x13240c9",
+            "646576696365466f756e64436f756e7400": "0x12f44b5"
+          }
+        },
+        {
+          "address": "0x611330",
+          "size": 296,
+          "symbol": "_ZN11EchoRecords12Event_6113305WriteEPNS_6WriterE",
+          "target_sha256": "31f152c0e7c3a420d546b89ec445fa46bdd09d69647b10b31b6ed1c55ae30ed3",
+          "bindings": {
+            "_ZN11EchoRecords4BaseILj6361904EE5WriteEPNS_6WriterE": "0x576a80",
+            "_ZN11EchoRecords11ShouldWriteEPNS_6WriterEPKv": "0x57d530",
+            "_ZN11EchoRecords11NamedWriterILj5759104EE5WriteEPNS_10NamedFieldEPNS_6WriterEi": "0x57e080"
+          },
+          "got_bindings": {},
+          "literals": {
+            "68616e646c6572526566496400": "0x1304a7e",
+            "6d70654c6f63616c506f727400": "0x13240fc",
+            "68656164657253697a6500": "0x1326833"
+          }
+        },
+        {
+          "address": "0x613890",
+          "size": 136,
+          "symbol": "_ZN11EchoRecords12Event_6138905WriteEPNS_6WriterE",
+          "target_sha256": "f0dad5e7ba682300eb87e4fe374c821b669a4d3fdb6451b58d09ddb8831852ed",
+          "bindings": {
+            "_ZN11EchoRecords4BaseILj6371472EE5WriteEPNS_6WriterE": "0x576a80"
+          },
+          "got_bindings": {},
+          "literals": {
+            "6c6f63616c506f727400": "0x1303051"
+          }
+        },
+        {
+          "address": "0x616b20",
+          "size": 136,
+          "symbol": "_ZN11EchoRecords12Event_616b205WriteEPNS_6WriterE",
+          "target_sha256": "559f3c2b224e04aaa97e2a28ac2850e4db98101cc4c04c551eb256c83c682a14",
+          "bindings": {
+            "_ZN11EchoRecords4BaseILj6384416EE5WriteEPNS_6WriterE": "0x576a80"
+          },
+          "got_bindings": {},
+          "literals": {
+            "656e61626c6500": "0x13240c9"
+          }
+        },
+        {
+          "address": "0x617260",
+          "size": 324,
+          "symbol": "_ZN11EchoRecords12Event_6172605WriteEPNS_6WriterE",
+          "target_sha256": "11f5ba3a307bfaa9a8e191dcf01cb000b2c6be00f5a9f8a865d44d097c86cc47",
+          "bindings": {
+            "_ZN11EchoRecords4BaseILj6386272EE5WriteEPNS_6WriterE": "0x576a80"
+          },
+          "got_bindings": {},
+          "literals": {
+            "6c6f63616c506f727400": "0x1303051",
+            "726571756573744d6170506f727400": "0x12f27dd",
+            "7265717565737465644d6170506f7274526574727900": "0x131c528"
+          }
+        },
+        {
+          "address": "0x617850",
+          "size": 136,
+          "symbol": "_ZN11EchoRecords12Event_6178505WriteEPNS_6WriterE",
+          "target_sha256": "058f1bbf0e5e09ea248965ffbd647e117c15d6bea426a4188493729bc148cc2a",
+          "bindings": {
+            "_ZN11EchoRecords4BaseILj6387792EE5WriteEPNS_6WriterE": "0x576a80"
+          },
+          "got_bindings": {},
+          "literals": {
+            "6d6170706564506f727400": "0x131a5ea"
+          }
+        },
+        {
+          "address": "0x621320",
+          "size": 136,
+          "symbol": "_ZN11EchoRecords12Event_6213205WriteEPNS_6WriterE",
+          "target_sha256": "6f885a12bb7799638b162156d0608e627cda3933538ae48f791ec05d5e1dc6fb",
+          "bindings": {
+            "_ZN11EchoRecords4BaseILj6427424EE5WriteEPNS_6WriterE": "0x576a80"
+          },
+          "got_bindings": {},
+          "literals": {
+            "6d6170706564506f727400": "0x131a5ea"
+          }
+        }
+      ]
+    },
+    {
+      "id": "storm_hash_tables_keep_pic_no_float_unwind_o3",
+      "source": "src/StormHashTables.cpp",
+      "compiler": "8.0.1",
+      "source_review": "manual_reconstruction",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-std=c++11",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-O3",
+        "-fno-omit-frame-pointer",
+        "-fPIC",
+        "-funwind-tables",
+        "-mno-implicit-float",
+        "-nostdinc++",
+        "-isystem",
+        "vendor/llvm-libcxx-4/include",
+        "-isystem",
+        "vendor/musl/include",
+        "-isystem",
+        "vendor/musl/generated",
+        "-D_LIBCPP_HAS_NO_THREADS",
+        "-D_LIBCPP_HAS_MUSL_LIBC",
+        "-D__CLANG_MAX_ALIGN_T_DEFINED",
+        "-D_LIBCPP_DISABLE_VISIBILITY_ANNOTATIONS",
+        "-D_GNU_SOURCE",
+        "-U_WIN32",
+        "-U_WIN64"
+      ],
+      "functions": [
+        {
+          "address": "0x385c80",
+          "size": 672,
+          "symbol": "_ZNSt3__112__hash_tableINS_17__hash_value_typeItjEENS_22__unordered_map_hasherItS2_NS_4hashItEELb1EEENS_21__unordered_map_equalItS2_NS_8equal_toItEELb1EEE14StormAllocatorIS2_Lj3693696ELj1092632576EEE8__rehashEm",
+          "target_sha256": "535c20636e05acc5085eeada86e3fa73716069ef9078d61dc82469a2d9143f0c",
+          "bindings": {
+            "_ZN12StormBindingILj3693696EE8AllocateEmmjPKcS2_j": "0x56c9f0",
+            "_ZN12StormBindingILj3693696EE4FreeEPvPKcj": "0x56ca00"
+          },
+          "got_bindings": {
+            "_ZTSPNSt3__116__hash_node_baseIPNS_11__hash_nodeINS_17__hash_value_typeItjEEPvEEEE": {
+              "cell": "0x18f4200",
+              "pointee": "0x1360597"
+            }
+          },
+          "literals": {
+            "00": "0x1326e41"
+          }
+        },
+        {
+          "address": "0x3861f0",
+          "size": 544,
+          "symbol": "_ZNSt3__112__hash_tableINS_17__hash_value_typeItjEENS_22__unordered_map_hasherItS2_NS_4hashItEELb1EEENS_21__unordered_map_equalItS2_NS_8equal_toItEELb1EEE14StormAllocatorIS2_Lj3695088ELj1092624384EEE14__erase_uniqueItEEmRKT_",
+          "target_sha256": "ed7a4c3b24814dbba4444d7b08e23cfc1d8d2fb4a19121345f5579bfd4617731",
+          "bindings": {
+            "_ZN12StormBindingILj3695088EE4FreeEPvPKcj": "0x56ca00"
+          },
+          "got_bindings": {},
+          "literals": {
+            "00": "0x1326e41"
+          }
+        },
+        {
+          "address": "0x3876b0",
+          "size": 672,
+          "symbol": "_ZNSt3__112__hash_tableINS_17__hash_value_typeItjEENS_22__unordered_map_hasherItS2_NS_4hashItEELb1EEENS_21__unordered_map_equalItS2_NS_8equal_toItEELb1EEE14StormAllocatorIS2_Lj3700400ELj1092632584EEE8__rehashEm",
+          "target_sha256": "5eca49fd7aca88ff7afc1fb657301861d3fcde8839b29430921d1d4b82ac137f",
+          "bindings": {
+            "_ZN12StormBindingILj3700400EE8AllocateEmmjPKcS2_j": "0x56c9f0",
+            "_ZN12StormBindingILj3700400EE4FreeEPvPKcj": "0x56ca00"
+          },
+          "got_bindings": {
+            "_ZTSPNSt3__116__hash_node_baseIPNS_11__hash_nodeINS_17__hash_value_typeItjEEPvEEEE": {
+              "cell": "0x18f4228",
+              "pointee": "0x1360a6e"
+            }
+          },
+          "literals": {
+            "00": "0x1326e41"
+          }
+        },
+        {
+          "address": "0x3eeb00",
+          "size": 672,
+          "symbol": "_ZNSt3__112__hash_tableINS_17__hash_value_typeItjEENS_22__unordered_map_hasherItS2_NS_4hashItEELb1EEENS_21__unordered_map_equalItS2_NS_8equal_toItEELb1EEE14StormAllocatorIS2_Lj4123392ELj1092657160EEE8__rehashEm",
+          "target_sha256": "b0adf5425ca6cd8890abc6f9133af66d1ea81ebc0326795750e7644ed30188f4",
+          "bindings": {
+            "_ZN12StormBindingILj4123392EE8AllocateEmmjPKcS2_j": "0x56c9f0",
+            "_ZN12StormBindingILj4123392EE4FreeEPvPKcj": "0x56ca00"
+          },
+          "got_bindings": {
+            "_ZTSPNSt3__116__hash_node_baseIPNS_11__hash_nodeINS_17__hash_value_typeItjEEPvEEEE": {
+              "cell": "0x18f56d8",
+              "pointee": "0x13684b7"
+            }
+          },
+          "literals": {
+            "00": "0x1326e41"
+          }
+        },
+        {
+          "address": "0x3ef430",
+          "size": 672,
+          "symbol": "_ZNSt3__112__hash_tableINS_17__hash_value_typeItjEENS_22__unordered_map_hasherItS2_NS_4hashItEELb1EEENS_21__unordered_map_equalItS2_NS_8equal_toItEELb1EEE14StormAllocatorIS2_Lj4125744ELj1092657158EEE8__rehashEm",
+          "target_sha256": "c501ab84250899248cc74dc194e01f92a747680c586409ea7e469a982d50c9e2",
+          "bindings": {
+            "_ZN12StormBindingILj4125744EE8AllocateEmmjPKcS2_j": "0x56c9f0",
+            "_ZN12StormBindingILj4125744EE4FreeEPvPKcj": "0x56ca00"
+          },
+          "got_bindings": {
+            "_ZTSPNSt3__116__hash_node_baseIPNS_11__hash_nodeINS_17__hash_value_typeItjEEPvEEEE": {
+              "cell": "0x18f56e8",
+              "pointee": "0x1368678"
+            }
+          },
+          "literals": {
+            "00": "0x1326e41"
+          }
+        },
+        {
+          "address": "0x457980",
+          "size": 672,
+          "symbol": "_ZNSt3__112__hash_tableINS_17__hash_value_typeItjEENS_22__unordered_map_hasherItS2_NS_4hashItEELb1EEENS_21__unordered_map_equalItS2_NS_8equal_toItEELb1EEE14StormAllocatorIS2_Lj4553088ELj1092628481EEE8__rehashEm",
+          "target_sha256": "6c98f85c6301a245a8a68bd0ada6bd64ff4f6896be2ea1b281120a422eca46b5",
+          "bindings": {
+            "_ZN12StormBindingILj4553088EE8AllocateEmmjPKcS2_j": "0x56c9f0",
+            "_ZN12StormBindingILj4553088EE4FreeEPvPKcj": "0x56ca00"
+          },
+          "got_bindings": {
+            "_ZTSPNSt3__116__hash_node_baseIPNS_11__hash_nodeINS_17__hash_value_typeItjEEPvEEEE": {
+              "cell": "0x18f6b00",
+              "pointee": "0x136c70d"
+            }
+          },
+          "literals": {
+            "00": "0x1326e41"
+          }
+        },
+        {
+          "address": "0x4580a0",
+          "size": 544,
+          "symbol": "_ZNSt3__112__hash_tableINS_17__hash_value_typeImjEENS_22__unordered_map_hasherImS2_NS_4hashImEELb1EEENS_21__unordered_map_equalImS2_NS_8equal_toImEELb1EEE14StormAllocatorIS2_Lj4554912ELj1092624384EEE14__erase_uniqueImEEmRKT_",
+          "target_sha256": "80a1cc6bcc92e4182250b43cd251faf97aecf5b872a16b84362dd7b4469be369",
+          "bindings": {
+            "_ZN12StormBindingILj4554912EE4FreeEPvPKcj": "0x56ca00"
+          },
+          "got_bindings": {},
+          "literals": {
+            "00": "0x1326e41"
+          }
+        },
+        {
+          "address": "0x458be0",
+          "size": 544,
+          "symbol": "_ZNSt3__112__hash_tableINS_17__hash_value_typeImjEENS_22__unordered_map_hasherImS2_NS_4hashImEELb1EEENS_21__unordered_map_equalImS2_NS_8equal_toImEELb1EEE14StormAllocatorIS2_Lj4557792ELj1092624384EEE14__erase_uniqueImEEmRKT_",
+          "target_sha256": "3a5f15ef9898c66276fc9ab0efcaeb8a3ea9858b890951f533dd9546d61955d8",
+          "bindings": {
+            "_ZN12StormBindingILj4557792EE4FreeEPvPKcj": "0x56ca00"
+          },
+          "got_bindings": {},
+          "literals": {
+            "00": "0x1326e41"
+          }
+        },
+        {
+          "address": "0x4592c0",
+          "size": 672,
+          "symbol": "_ZNSt3__112__hash_tableINS_17__hash_value_typeItjEENS_22__unordered_map_hasherItS2_NS_4hashItEELb1EEENS_21__unordered_map_equalItS2_NS_8equal_toItEELb1EEE14StormAllocatorIS2_Lj4559552ELj1092628481EEE8__rehashEm",
+          "target_sha256": "146079ef205d6eb0b873d9db2d95b5308f324c507009f3c2ac607c5f85a2f963",
+          "bindings": {
+            "_ZN12StormBindingILj4559552EE8AllocateEmmjPKcS2_j": "0x56c9f0",
+            "_ZN12StormBindingILj4559552EE4FreeEPvPKcj": "0x56ca00"
+          },
+          "got_bindings": {
+            "_ZTSPNSt3__116__hash_node_baseIPNS_11__hash_nodeINS_17__hash_value_typeItjEEPvEEEE": {
+              "cell": "0x18f6b28",
+              "pointee": "0x136cbb7"
+            }
+          },
+          "literals": {
+            "00": "0x1326e41"
+          }
+        },
+        {
+          "address": "0x459560",
+          "size": 544,
+          "symbol": "_ZNSt3__112__hash_tableINS_17__hash_value_typeItjEENS_22__unordered_map_hasherItS2_NS_4hashItEELb1EEENS_21__unordered_map_equalItS2_NS_8equal_toItEELb1EEE14StormAllocatorIS2_Lj4560224ELj1092624384EEE14__erase_uniqueItEEmRKT_",
+          "target_sha256": "a29cb9e2f7f54268589a75b7f048874f436d08ba8220624cf6c93ab9d08de7fe",
+          "bindings": {
+            "_ZN12StormBindingILj4560224EE4FreeEPvPKcj": "0x56ca00"
+          },
+          "got_bindings": {},
+          "literals": {
+            "00": "0x1326e41"
+          }
+        },
+        {
+          "address": "0x5cdea0",
+          "size": 672,
+          "symbol": "_ZNSt3__112__hash_tableINS_17__hash_value_typeItjEENS_22__unordered_map_hasherItS2_NS_4hashItEELb1EEENS_21__unordered_map_equalItS2_NS_8equal_toItEELb1EEE14StormAllocatorIS2_Lj6086304ELj1092657158EEE8__rehashEm",
+          "target_sha256": "4e6b1f17575f5f24a3a40415b3286c1a7d52b32cfdb20c0d922a276718febbb6",
+          "bindings": {
+            "_ZN12StormBindingILj6086304EE8AllocateEmmjPKcS2_j": "0x56c9f0",
+            "_ZN12StormBindingILj6086304EE4FreeEPvPKcj": "0x56ca00"
+          },
+          "got_bindings": {
+            "_ZTSPNSt3__116__hash_node_baseIPNS_11__hash_nodeINS_17__hash_value_typeItjEEPvEEEE": {
+              "cell": "0x18faf88",
+              "pointee": "0x138b9b0"
             }
           },
           "literals": {
