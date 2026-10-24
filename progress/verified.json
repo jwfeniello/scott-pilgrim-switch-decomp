@@ -1,9 +1,9 @@
 {
   "version": 1,
-  "generated_at": "2026-10-24T08:34:40.608217+00:00",
+  "generated_at": "2026-10-24T08:53:54.949634+00:00",
   "target_elf_sha256": "ea95638e6d6aaa0dc6cddd552a9366799aa1ec3bc07ee201f23f6c151103f5b8",
   "input_sha256": {
-    "config/builds.json": "6394bdd7af41d48a47200efff63496c2b5481716d22de084506c4ba2206ffcd4",
+    "config/builds.json": "57eefbb51f2e83625ec85935f51ea810f837ab5eca88dbc93d18e4f8b4503318",
     "config/functions.tsv": "399e91468a04e0459194c10d68d2210d1157cedefeb19c7851886ca7632fcb18",
     "config/non_fde_functions.tsv": "6a45f5e185454fa0472af00b2cdc9d040d73ca133d1106217e1fbbe3b32a8175",
     "config/target.json": "23cc6a5227206a953e7668acf5e9ae5c02a25c23b7e7967f0450a814b888241a",
@@ -35,6 +35,8 @@
     "src/CfgRecoveryVoid.cpp": "a3dade04cc6bd4601b60f67a397925271f6bec8e6417ba5a62dfd4e495ba8316",
     "src/CloneRecordRecoveryKeep.cpp": "4877af2493141eba1e07894007f441aeb3199c0befd06ba3a6a364e42a28a188",
     "src/CloneSingleRecordRecoveryKeep.cpp": "b47a9755f2eff02e3ae61f29cf6532ff25e32d9db989a8fee453912e22512def",
+    "src/ColorPropertyRead.h": "c7f9e099f9c34415576fc83acfc0818b7fcaa83cb8c7da1ed5e48b2acc2776f0",
+    "src/ColorPropertyReadOmitNoPic.cpp": "c3f5c2c85626b7ee05bbb1730e6c89d1a4cc2404362377627810bc1b1d83493f",
     "src/ComponentAccessor.cpp": "09d0b81df3abcacb946f49ed1ed87ab840ee0656bb6f792fd65d25660eabb260",
     "src/ComponentEventReader.cpp": "8ba855c3269dae4b06f76f96f0e6e5b59ff9235a3c43d089bcaf91ef43b68d6a",
     "src/ComponentInitializeSlots.cpp": "55cc1e5fc9899d4c44bf24cb4bb59c672fb325bec27fd578c36f881ec57dad1d",
@@ -47,6 +49,8 @@
     "src/ComponentSwitchEnable.h": "2d583110f0c0c00dda8109e7822dbf4c9d8821dc5ce187fcb0b4d13917d67cdc",
     "src/ComponentSwitchEnableOmitNoPic.cpp": "806df5b37e22b2b1249597c4dcf260b12bb6d69f0220bc3ac904fd5729ed93e0",
     "src/ComponentVectorSlotCleanup.cpp": "e21ad39bc60bb782fde01ee8c4fde28d51c6940ea2e643729b9559302082c794",
+    "src/ComposeDestructor.h": "6fa2b4a2aa882afc655e12e60f9b5a4f96e06d4e765535a8a683fd2e019ce3ad",
+    "src/ComposeDestructorOmitNoPic.cpp": "57a8f4bc79af7f3d3b9828ccc0238b199924d2ba9de32eea1159dd595c0f543e",
     "src/CounterBufferDestructor.cpp": "0fd2d53ab554a0c017cddc533d4933e64f2370fda484458d110c751a244c8066",
     "src/DareListDestructor.h": "4feffbd881317b0701a25b285b6f0eab332a12b60eee57efcb7425199b254a36",
     "src/DareListDestructorOmitNoPic.cpp": "a8c66a27ec2c9f9e6bcc4d686ecfecc4637a39d5041f7bb493a70308da37e70f",
@@ -115,6 +119,8 @@
     "src/GuardedCallbackDispatch.cpp": "86f35ac35d52791b5d0d03cec38af6fb2b419530fd5640f6c45a6a2f9c4258e1",
     "src/GuardedScalarDispatch.cpp": "ede9e464d4c14e5a777dfd2390d135a30f32e0198e92a3ff49c1cabec5a3f16b",
     "src/GuidHashRebuild.cpp": "18ed8afae2bbb7c0d00f883e01ac4854a9134a4ebd41217c83cf02d9825433c0",
+    "src/HandleHolderRelease.h": "b602b64a30147af89d38fdccc0d04b2e874f2ade6b9fd98b0441147a6c71e2ed",
+    "src/HandleHolderReleaseOmitNoPic.cpp": "967cb589272b63d71be71df476329e178e99c53bf882ec1df239b5342d9c74b4",
     "src/HandlerSlotSwitch.h": "01c05499fa8ffcf16aec48de03cc026b102897882a51218751576e83fd80c1d1",
     "src/HandlerSlotSwitchOmitNoPic.cpp": "58515495d2f0e527a859b1255cdfd5a9e6ab755d10495f75671836b41cdc917b",
     "src/HashCapacity.cpp": "b0a7161f3a106cfa82ca323073696d2bb42ae50e67c8a7fea3cd174a1b969a20",
@@ -862,6 +868,8 @@
     "src/ReferenceSet6.cpp": "017ffaed730b79848143247154024f32121587d598791557bac8522fd56ca799",
     "src/ReferenceSet8.cpp": "15faedb4996691a1da7d540372917b8d4fda8e238f433b097d945d4780ad160b",
     "src/ReferenceVectorDestructor.cpp": "ad016015e62453ab9ca83f41cd079e85d4567455d747f8c34ee3d8b2b29559a6",
+    "src/RegisteredTriggerDestructor.h": "80988aef042953b3cdbcef5f9c3fe4210274d8cec3ade78a5debb458e5a2f190",
+    "src/RegisteredTriggerDestructorOmitNoPic.cpp": "da07a238d680450ccea012eb2e9b5a853dc2f43c130cba225068dd9984970937",
     "src/ResultDispatch.h": "4e63d26eae48a75858a118db2a988e37da07e5027d937e7ab8632b38a3e9680c",
     "src/ResultDispatchKeepPic.cpp": "2c26307bb81aa0bdd9c524901d885220209efbbfb015ec520b95119039e288a2",
     "src/ResultForward.h": "c671ea7377d1a3c959de291cd417fe004865045f93cdf41e5ab4007dd31cd31d",
@@ -937,6 +945,10 @@
     "src/SimdRecovery_profiles_integer_Os_omit.cpp": "ee9c83be06b6d06b287f5d0091696b04e1fa388b446e4c05b20832315853337b",
     "src/SimdRecovery_profiles_void_O3_keep_pic_unwind.cpp": "613610dd97348b203afd3353019c11354772f1fe2364f7c72b2b405930007b3d",
     "src/SingleReferenceDestructor.cpp": "5f1b199028a9a8f167be9b96c121cdf3f892330751618da759ea0fbfdfb9d218",
+    "src/SingleSwitchDisable.h": "84abee6130fd3a5a4e66c907e177f3ff3f1819b65a727c73e0ac4c8d94cb8c69",
+    "src/SingleSwitchDisableOmitNoPic.cpp": "bfe263ab350c9d421d2a62719f3d598e728ee1ac7fac38aa166333293c90e512",
+    "src/SingleSwitchEnable.h": "361718f8a317e035503505e031966e8610d367d3a06b7b3cf327f00377d6d31d",
+    "src/SingleSwitchEnableOmitNoPic.cpp": "0ddf28bd5b5f83bb229cc5b5f8c6f976777904440ee27b90063145c7e871b1f0",
     "src/SmallPoolDestroy.h": "4bb7c925afc8f07ccbcdf70840e80c2e986967aed3a7fe23a735ef5d1526a542",
     "src/SmallPoolDestroyOmitNoPic.cpp": "cabaff0364eb193c28d92e959523a40fdcffb8ce6187596c793824a83d6826e5",
     "src/SpawnerSerialize.h": "ebc6d93e0dde211b963dcc85c34996f2a12c87210c3b97bef248b81bab016781",
@@ -999,11 +1011,13 @@
     "src/callback_identity_instances.inc": "7a0a6b84c12e36248ac19e8c109fc0a477fab05cc36da07c053f64fd936e981b",
     "src/callback_invoke_instances.inc": "86cbddd4c0907933b62e421d7a3bd63c7afcacbb5352e762d484ffccf3fe2a9d",
     "src/callback_owner_release_instances.inc": "4cdaa6b1fd0e6e246fed1f75b6c150189139b858d64e0e4ad5fdef16a1a65895",
+    "src/color_property_read_omit_no_pic_instances.inc": "fa2ecd110ae0a5fde0d42ed54ca1d58963fcf4bfc49b05220eae143ae1bcaaac",
     "src/component_registry_calls.inc": "e32f7d5c03f0991b47ee6598b9e43585f45e476d769f13db130e036b99869587",
     "src/component_registry_declarations.inc": "54030f26efd2bfff5805c0c422a88297994e04ccb1b4d6d9386b1b0b526f96e6",
     "src/component_slot_assign_instances.inc": "8d084a4fd2ec08c73f9ccf30ebc17be3eccd78364c0067a34c7373fac8ffea74",
     "src/component_switch_disable_omit_no_pic_instances.inc": "1c9833ed3b59e2573643d7826fcb2c15b8748bf4f33165d292173926956ef8dc",
     "src/component_switch_enable_omit_no_pic_instances.inc": "0b151c2bf0260c498c10765f9905c2bdc3227ae601f9c753b077c133276d692b",
+    "src/compose_destructor_omit_no_pic_instances.inc": "ec9da9c6f01496b088dfa52a70199d8d3dc3373a5c2540b14e2ea03730b755e3",
     "src/counter_buffer_destructor_instances.inc": "8bda63f753a81068c79bdbc32d6960e7e00f076b8a03064e96b61ce985f437f9",
     "src/dare_list_destructor_omit_no_pic_instances.inc": "347d2adc67a2cc566d3c209503a5f9ade5523521215cf8f7d75accf5f94c7fec",
     "src/dare_tree_destroy_omit_no_pic_instances.inc": "c7329ddd89f600ea32b224cb3a4814b7356f6a774ad64bcb4974546315df88e8",
@@ -1023,8 +1037,8 @@
     "src/function_swap_instances.inc": "adc7468c16b98505670b099e14c5a5dd411a6fafe924c49ce0aabf48e5dd3850",
     "src/gameplay/ComponentAccess.cpp": "b1b34b3a09bc3544f3fffe397604e3d185ea651f571180a3eb13cd58e11cbab5",
     "src/gameplay/ComponentTypes.h": "f7eea015dc032ea1d06d52741b5f5e7724ff5a61171703a57cdf990981e76953",
-    "src/gameplay/OnyxComponents.h": "bb1e8169b2bfc04c4c9170e1bc6a98fd3354aeda59ddefa9435e29008a1b928e",
-    "src/gameplay/PlayerStates.cpp": "e78d2e24c61a3b6c6902991d46ebde24740acb37a2e191a32c9a20580559df70",
+    "src/gameplay/OnyxComponents.h": "7eb6e67ca1fc00a3176f547249f52b2bcaf88bb2ce1dc59402b3aaacc12da3b5",
+    "src/gameplay/PlayerStates.cpp": "a622b65b976d7ab11a2e17e45f597e6d1f5ef7670677545bbea50d95e40e7712",
     "src/gameplay/Statistics.cpp": "cb3304f4a5f95c404193c0c4e2c9c390df85af91aca001dbdf83ab25f71358ae",
     "src/gameplay/Statistics.h": "182a15497caa9568faf4f1e30f7883748d5282dfab2070914139a84ee5a69f90",
     "src/gameplay/StatisticsDetail.cpp": "86586b7a211a5a3b2f482ad00896ec72f08191db720386e11b3ff383464b59a3",
@@ -1732,6 +1746,7 @@
     "src/guarded_callback_buffer_instances.inc": "3e7973f89da18eb10e0c49581d5939c2ae9e94abf169b549ed97c303f809b73b",
     "src/guarded_callback_dispatch_instances.inc": "02901e7808f4df5d2fb8067aed5e6f52e22f3e1bb8773e0cc328f3ef7cbb6d56",
     "src/guarded_scalar_dispatch_instances.inc": "c713fb54a37e3f0e023d2c10b788d848ef2db0d7013e976e42fd88d0f3ebdd8d",
+    "src/handle_holder_release_omit_no_pic_instances.inc": "acdfbbde881ddd462850d008d039cb2c3fc29f72b1200958985d2986245e86f0",
     "src/handler_slot_switch_omit_no_pic_instances.inc": "9a83e9e4755f96e21eb46a451c91cf8bcdbd4444a325b87d2d10fdb3aa66b21f",
     "src/hash_capacity_instances.inc": "9db80965d8ccbbd58facc8fb27f551c8d76935644fdfddcffbb6c01045034a27",
     "src/hash_rebuild_instances.inc": "c7c7a28dbbb16869207a5ca00e0e80c2aa88d4b0110075b5044b0ff9dc0fb133",
@@ -1778,6 +1793,7 @@
     "src/reference_set_6_instances.inc": "c7509899bcb08d9321862f722da13710cadbf35fd1670037cee25a1ba0355959",
     "src/reference_set_8_instances.inc": "dc6a0a91efdc02e3a5ef3d4240eca9dec918be3c4fdd3479cb1be671acb09c01",
     "src/reference_vector_destructor_instances.inc": "fbee4ddf5bd216771eee951dd081b0a17baaa2685228bd9ce69c9fb70f8221c9",
+    "src/registered_trigger_destructor_omit_no_pic_instances.inc": "6d7f0a2ef7fc7433f6be5c54bf84bdc7c8a4833cc5dc2a99987ef401d774e497",
     "src/result_dispatch_keep_pic_instances.inc": "5aef3900f0809432aac588691100237f3629b555fcd5d4f498aaf0a261bba102",
     "src/result_forward_keep_pic_instances.inc": "a191d1ed06ac1e12798aae99e27d0be5d5e8c7fc457ad77ddf3b30a3d0d0fc69",
     "src/sdk_composite_destructor_instances.inc": "abcc12b22347b083d69965c573367ab25fcdeb27431ce32713346dea1c330eea",
@@ -1788,6 +1804,8 @@
     "src/shared_count_destructor_instances.inc": "8173aaea665457199f4d1ed4220d7697e7c7f2bac9aeba2579e933f78d06e97f",
     "src/shared_event_destructor_keep_pic_unwind_instances.inc": "1c3a01f9f9ee5a3e8496edb1405f163b7b0556f0e8cae030abc2b4363ab9f94b",
     "src/single_reference_destructor_instances.inc": "3d5cdde16d376fd08757984d82a7a95965f31fc95e94082ace67b47dde86dc8c",
+    "src/single_switch_disable_omit_no_pic_instances.inc": "26f2270dfa3f9b8192e8a82f88fddc017a8efc8cef8d32eb183db8f21b714fe0",
+    "src/single_switch_enable_omit_no_pic_instances.inc": "bbf0010f8f03e724219759689fb8db7103883f2b6a1210f7dba117b592d9681b",
     "src/small_pool_destroy_omit_no_pic_instances.inc": "bb10f6823b00cea658c5b14c6c4c351b5dde4d3196f8f840216ca6f27378606b",
     "src/spawner_serialize_omit_no_pic_instances.inc": "63e8bef17ada815fab577a00e92ff042b3fa869db5f98769216958ead7414780",
     "src/static_factory_construction_instances.inc": "25858382350436da35222b0636171de5c394a89f1fa389a27c1b2ec2b5d3de51",
@@ -3834,15 +3852,15 @@
     "vendor/zlib-1.2.11/zutil.h": "9a63f6690fac1620aa3cecee5752af618806da438a256b4a047fbcd289cac159"
   },
   "compiler_versions": {
-    "8.0.1": "clang version 8.0.1 (tags/RELEASE_801/final)",
-    "7.0.1": "clang version 7.0.1 (tags/RELEASE_701/final)"
+    "7.0.1": "clang version 7.0.1 (tags/RELEASE_701/final)",
+    "8.0.1": "clang version 8.0.1 (tags/RELEASE_801/final)"
   },
   "compiler_sha256": {
-    "8.0.1": "dffd62a213ec6cdb4430012a4a41c11e5e32c288f133d5391f9be49e1c5b69de",
-    "7.0.1": "c2f0a175157d9aaace8031f8e6d7ea0ed6142b4bcef287105e3ed227301f1002"
+    "7.0.1": "c2f0a175157d9aaace8031f8e6d7ea0ed6142b4bcef287105e3ed227301f1002",
+    "8.0.1": "dffd62a213ec6cdb4430012a4a41c11e5e32c288f133d5391f9be49e1c5b69de"
   },
-  "exact_functions": 33276,
-  "exact_bytes": 3693984,
+  "exact_functions": 33350,
+  "exact_bytes": 3717140,
   "builds": [
     {
       "id": "probes",
@@ -12312,7 +12330,7 @@
     {
       "id": "gameplay_player_states",
       "compiler": "8.0.1",
-      "object_sha256": "f3d29daa57a4e7515e81df2f8a3b71bb736bff3ebd0cf6c2676f0b85278d3670"
+      "object_sha256": "657e5e6ab156348bfc7f7c342f9f38ff03b8b21e0a2966f583cdbbbea6304d24"
     },
     {
       "id": "curl_conncache_os_keep_pic_unwind_nofloat_sections",
@@ -12813,6 +12831,36 @@
       "id": "network_state_result_keep_pic_unwind",
       "compiler": "8.0.1",
       "object_sha256": "578f8490430180a920395ae1f12ceb58568f328434ac8f32e8090faba28503f0"
+    },
+    {
+      "id": "single_switch_disable_omit_no_pic",
+      "compiler": "8.0.1",
+      "object_sha256": "653793ac58215d60da4619aa99e5b4f929025c938585ee878e8e67cc51f65b2a"
+    },
+    {
+      "id": "single_switch_enable_omit_no_pic",
+      "compiler": "8.0.1",
+      "object_sha256": "bf8cdf8554141516c2a42753a8c6ac5ed82d047329da3253df26087677615a98"
+    },
+    {
+      "id": "registered_trigger_destructor_omit_no_pic",
+      "compiler": "8.0.1",
+      "object_sha256": "08e53a5d5ec7afd6fdcdd99e525f723fa948a3d7ec1e515219d50eafc33bfb46"
+    },
+    {
+      "id": "color_property_read_omit_no_pic",
+      "compiler": "8.0.1",
+      "object_sha256": "5e3e5a5af08097076b8aba6fb790604d5e088092a65510c30f326cf326a09ca9"
+    },
+    {
+      "id": "handle_holder_release_omit_no_pic",
+      "compiler": "8.0.1",
+      "object_sha256": "600dc5a17a13be5a5a67ca35ff2e59739635acb8e689e3cf31dfee40c91014e9"
+    },
+    {
+      "id": "compose_destructor_omit_no_pic",
+      "compiler": "8.0.1",
+      "object_sha256": "990edf5b5d0789046afa073c3bc5e0d5b17ce811d684c8ef2370ed74f60a41e4"
     }
   ],
   "matches": [
@@ -195351,6 +195399,17 @@
       "relocation_count": 1
     },
     {
+      "address": "0x68e980",
+      "size": 304,
+      "exact": true,
+      "target_sha256": "fb9acf68ff15d16c04c42e747df8a4ff1e935e2674c7d50bd2fc42e3daf4598e",
+      "compiled_sha256": "fb9acf68ff15d16c04c42e747df8a4ff1e935e2674c7d50bd2fc42e3daf4598e",
+      "source": "src/SingleSwitchDisableOmitNoPic.cpp",
+      "symbol": "_ZN12SingleSwitchILj6875520ELj1818424473ELj80EE7DisableEv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 21
+    },
+    {
       "address": "0x68ec00",
       "size": 12,
       "exact": true,
@@ -195668,6 +195727,17 @@
       "symbol": "RecoveredLeaf_693e40",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 1
+    },
+    {
+      "address": "0x695a40",
+      "size": 356,
+      "exact": true,
+      "target_sha256": "f66749e12328595e224cd7d6b5c2500c26a93605a93c740bdbacfdda7149c064",
+      "compiled_sha256": "f66749e12328595e224cd7d6b5c2500c26a93605a93c740bdbacfdda7149c064",
+      "source": "src/HandleHolderReleaseOmitNoPic.cpp",
+      "symbol": "_ZN12HandleHolderILj6904384ELj8EE7ReleaseEv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 11
     },
     {
       "address": "0x696030",
@@ -204041,6 +204111,17 @@
       "relocation_count": 4
     },
     {
+      "address": "0x720630",
+      "size": 380,
+      "exact": true,
+      "target_sha256": "2769de3d0044e3fec043dbe439d380c97df72ffc3c1e15a748856df6ab7bb177",
+      "compiled_sha256": "2769de3d0044e3fec043dbe439d380c97df72ffc3c1e15a748856df6ab7bb177",
+      "source": "src/ComposeDestructorOmitNoPic.cpp",
+      "symbol": "_ZN7ComposeILj7472688ELj80ELj96EED1Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 15
+    },
+    {
       "address": "0x7207b0",
       "size": 680,
       "exact": true,
@@ -206395,6 +206476,17 @@
       "relocation_count": 8
     },
     {
+      "address": "0x733860",
+      "size": 304,
+      "exact": true,
+      "target_sha256": "854aab076b78ee04cba48179f72055a43c836642c330a3ea75aada318125c1d2",
+      "compiled_sha256": "854aab076b78ee04cba48179f72055a43c836642c330a3ea75aada318125c1d2",
+      "source": "src/SingleSwitchDisableOmitNoPic.cpp",
+      "symbol": "_ZN12SingleSwitchILj7551072ELj2101335766ELj80EE7DisableEv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 21
+    },
+    {
       "address": "0x733f60",
       "size": 4,
       "exact": true,
@@ -206536,6 +206628,17 @@
       "symbol": "_Z16DestroyAllocatedILj7565392EEvPv",
       "source_review": "manual_reconstruction",
       "relocation_count": 2
+    },
+    {
+      "address": "0x737280",
+      "size": 304,
+      "exact": true,
+      "target_sha256": "e3975170270290d493fe512261700638d41f17ff41026f085de822040b0329ca",
+      "compiled_sha256": "e3975170270290d493fe512261700638d41f17ff41026f085de822040b0329ca",
+      "source": "src/SingleSwitchDisableOmitNoPic.cpp",
+      "symbol": "_ZN12SingleSwitchILj7565952ELj1818424473ELj144EE7DisableEv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 21
     },
     {
       "address": "0x737500",
@@ -210276,6 +210379,17 @@
       "symbol": "RecoveredLeaf_76bbe0",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 0
+    },
+    {
+      "address": "0x76c0d0",
+      "size": 356,
+      "exact": true,
+      "target_sha256": "1a640bcda2f121b4fc9af87f149f6d4d2e0620d9d3665aa13742ef11dd1f4416",
+      "compiled_sha256": "1a640bcda2f121b4fc9af87f149f6d4d2e0620d9d3665aa13742ef11dd1f4416",
+      "source": "src/HandleHolderReleaseOmitNoPic.cpp",
+      "symbol": "_ZN12HandleHolderILj7782608ELj40EE7ReleaseEv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 11
     },
     {
       "address": "0x76c9a0",
@@ -217076,6 +217190,17 @@
       "relocation_count": 28
     },
     {
+      "address": "0x7b5560",
+      "size": 356,
+      "exact": true,
+      "target_sha256": "043d655d1441516750dc15f932bb4c749ba8a37ced5ae6855ec186d263677ff4",
+      "compiled_sha256": "043d655d1441516750dc15f932bb4c749ba8a37ced5ae6855ec186d263677ff4",
+      "source": "src/HandleHolderReleaseOmitNoPic.cpp",
+      "symbol": "_ZN12HandleHolderILj8082784ELj8EE7ReleaseEv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 11
+    },
+    {
       "address": "0x7b59b0",
       "size": 824,
       "exact": true,
@@ -221111,6 +221236,17 @@
       "symbol": "_ZN15OptionalPointerILj8174752EED2Ev",
       "source_review": "manual_reconstruction",
       "relocation_count": 7
+    },
+    {
+      "address": "0x7cbd30",
+      "size": 272,
+      "exact": true,
+      "target_sha256": "525ae1c7330641170e1b722cb9a3a8c48c01f8e7ebec3f7c7b7d6fc61872e42a",
+      "compiled_sha256": "525ae1c7330641170e1b722cb9a3a8c48c01f8e7ebec3f7c7b7d6fc61872e42a",
+      "source": "src/RegisteredTriggerDestructorOmitNoPic.cpp",
+      "symbol": "_ZN7TriggerILj8174896ELj80ELj104EED1Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 17
     },
     {
       "address": "0x7cbe40",
@@ -225953,6 +226089,17 @@
       "relocation_count": 0
     },
     {
+      "address": "0x7fb860",
+      "size": 272,
+      "exact": true,
+      "target_sha256": "eadc3723919bf5d6171e79bf6b764134c8c9478a87a2ed363ed7fa56d874eb50",
+      "compiled_sha256": "eadc3723919bf5d6171e79bf6b764134c8c9478a87a2ed363ed7fa56d874eb50",
+      "source": "src/RegisteredTriggerDestructorOmitNoPic.cpp",
+      "symbol": "_ZN7TriggerILj8370272ELj88ELj112EED1Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 17
+    },
+    {
       "address": "0x7fb970",
       "size": 24,
       "exact": true,
@@ -227944,6 +228091,17 @@
       "relocation_count": 4
     },
     {
+      "address": "0x814560",
+      "size": 380,
+      "exact": true,
+      "target_sha256": "9b1cb9a76c4738fcf219032f36cf0ac5e177038cd2c8adc7eed2bc6a3cf83eba",
+      "compiled_sha256": "9b1cb9a76c4738fcf219032f36cf0ac5e177038cd2c8adc7eed2bc6a3cf83eba",
+      "source": "src/ComposeDestructorOmitNoPic.cpp",
+      "symbol": "_ZN7ComposeILj8471904ELj688ELj704EED1Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 15
+    },
+    {
       "address": "0x8146e0",
       "size": 680,
       "exact": true,
@@ -228129,6 +228287,17 @@
       "symbol": "_Z21CallbackIdentityEqualILj8480016EEbPK12CallbackViewS2_",
       "source_review": "manual_reconstruction",
       "relocation_count": 0
+    },
+    {
+      "address": "0x817000",
+      "size": 380,
+      "exact": true,
+      "target_sha256": "153cad8715da571582c6b914893cb77971b3a7b2e5a1eae54bb8730544f25474",
+      "compiled_sha256": "153cad8715da571582c6b914893cb77971b3a7b2e5a1eae54bb8730544f25474",
+      "source": "src/ComposeDestructorOmitNoPic.cpp",
+      "symbol": "_ZN7ComposeILj8482816ELj688ELj704EED1Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 15
     },
     {
       "address": "0x817180",
@@ -229702,6 +229871,17 @@
       "symbol": "_ZN15OptionalPointerILj8573152EED2Ev",
       "source_review": "manual_reconstruction",
       "relocation_count": 7
+    },
+    {
+      "address": "0x82d170",
+      "size": 380,
+      "exact": true,
+      "target_sha256": "3c388d879c4653d727e2a8a11fedc41fd1841e68e9808c2d1575deec6caecaa2",
+      "compiled_sha256": "3c388d879c4653d727e2a8a11fedc41fd1841e68e9808c2d1575deec6caecaa2",
+      "source": "src/ComposeDestructorOmitNoPic.cpp",
+      "symbol": "_ZN7ComposeILj8573296ELj688ELj704EED1Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 15
     },
     {
       "address": "0x82d2f0",
@@ -233070,6 +233250,17 @@
       "relocation_count": 0
     },
     {
+      "address": "0x849680",
+      "size": 272,
+      "exact": true,
+      "target_sha256": "fc8d5ac4dd91e4d295e4c63fe68408f85692e7732b8e25ef2fba18b28b423e90",
+      "compiled_sha256": "fc8d5ac4dd91e4d295e4c63fe68408f85692e7732b8e25ef2fba18b28b423e90",
+      "source": "src/RegisteredTriggerDestructorOmitNoPic.cpp",
+      "symbol": "_ZN7TriggerILj8689280ELj88ELj112EED1Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 17
+    },
+    {
       "address": "0x849790",
       "size": 24,
       "exact": true,
@@ -233752,6 +233943,17 @@
       "relocation_count": 0
     },
     {
+      "address": "0x854d50",
+      "size": 380,
+      "exact": true,
+      "target_sha256": "2c35227daee3265c76fab8b1e82fde258c80e8e6e062458f112b5be62edac3a5",
+      "compiled_sha256": "2c35227daee3265c76fab8b1e82fde258c80e8e6e062458f112b5be62edac3a5",
+      "source": "src/ComposeDestructorOmitNoPic.cpp",
+      "symbol": "_ZN7ComposeILj8736080ELj88ELj104EED1Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 15
+    },
+    {
       "address": "0x854ed0",
       "size": 680,
       "exact": true,
@@ -234377,6 +234579,17 @@
       "symbol": "RecoveredLeaf_85c850",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 0
+    },
+    {
+      "address": "0x85c860",
+      "size": 380,
+      "exact": true,
+      "target_sha256": "8b84cc44edb6659dee1709f30cfa304508948af0e9ca48d78869748bb012045f",
+      "compiled_sha256": "8b84cc44edb6659dee1709f30cfa304508948af0e9ca48d78869748bb012045f",
+      "source": "src/ComposeDestructorOmitNoPic.cpp",
+      "symbol": "_ZN7ComposeILj8767584ELj688ELj704EED1Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 15
     },
     {
       "address": "0x85c9e0",
@@ -245742,6 +245955,17 @@
       "relocation_count": 2
     },
     {
+      "address": "0x8bb2c0",
+      "size": 304,
+      "exact": true,
+      "target_sha256": "129df26baba57f2531ada392915dabf5099d51e08b9d049e4bb7855ffdd76059",
+      "compiled_sha256": "129df26baba57f2531ada392915dabf5099d51e08b9d049e4bb7855ffdd76059",
+      "source": "src/SingleSwitchDisableOmitNoPic.cpp",
+      "symbol": "_ZN12SingleSwitchILj9155264ELj1818424473ELj296EE7DisableEv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 21
+    },
+    {
       "address": "0x8bb3f0",
       "size": 80,
       "exact": true,
@@ -246743,6 +246967,17 @@
       "relocation_count": 2
     },
     {
+      "address": "0x8c7a80",
+      "size": 316,
+      "exact": true,
+      "target_sha256": "f8e1ec69ddd44230ef79bc4d6b78c7f4a82bfe1073b6e30e0315b819cfb0e50d",
+      "compiled_sha256": "f8e1ec69ddd44230ef79bc4d6b78c7f4a82bfe1073b6e30e0315b819cfb0e50d",
+      "source": "src/SingleSwitchEnableOmitNoPic.cpp",
+      "symbol": "_ZN12SingleSwitchILj9206400ELj1818424473ELj144EE6EnableEv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 22
+    },
+    {
       "address": "0x8c7d00",
       "size": 48,
       "exact": true,
@@ -246963,6 +247198,17 @@
       "relocation_count": 2
     },
     {
+      "address": "0x8c8cc0",
+      "size": 316,
+      "exact": true,
+      "target_sha256": "9447aa91580c73ef88050fa586c0107d452a6e51930b3583dbdd1bbbd7ccc580",
+      "compiled_sha256": "9447aa91580c73ef88050fa586c0107d452a6e51930b3583dbdd1bbbd7ccc580",
+      "source": "src/SingleSwitchEnableOmitNoPic.cpp",
+      "symbol": "_ZN12SingleSwitchILj9211072ELj1818424473ELj144EE6EnableEv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 22
+    },
+    {
       "address": "0x8c8f40",
       "size": 48,
       "exact": true,
@@ -247106,6 +247352,17 @@
       "relocation_count": 2
     },
     {
+      "address": "0x8c97c0",
+      "size": 316,
+      "exact": true,
+      "target_sha256": "53c958fef87beabc92ab0165dca84cd5b7c91ac10edc38ed18ba644bce85bcc5",
+      "compiled_sha256": "53c958fef87beabc92ab0165dca84cd5b7c91ac10edc38ed18ba644bce85bcc5",
+      "source": "src/SingleSwitchEnableOmitNoPic.cpp",
+      "symbol": "_ZN12SingleSwitchILj9213888ELj1818424473ELj144EE6EnableEv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 22
+    },
+    {
       "address": "0x8c9a40",
       "size": 48,
       "exact": true,
@@ -247247,6 +247504,17 @@
       "symbol": "_Z16DestroyAllocatedILj9216672EEvPv",
       "source_review": "manual_reconstruction",
       "relocation_count": 2
+    },
+    {
+      "address": "0x8ca2c0",
+      "size": 316,
+      "exact": true,
+      "target_sha256": "fbb366b709465784943297db4e97989bad994d432076506c4110465c637fafc3",
+      "compiled_sha256": "fbb366b709465784943297db4e97989bad994d432076506c4110465c637fafc3",
+      "source": "src/SingleSwitchEnableOmitNoPic.cpp",
+      "symbol": "_ZN12SingleSwitchILj9216704ELj1818424473ELj144EE6EnableEv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 22
     },
     {
       "address": "0x8ca540",
@@ -248811,6 +249079,17 @@
       "relocation_count": 2
     },
     {
+      "address": "0x8de470",
+      "size": 356,
+      "exact": true,
+      "target_sha256": "5d12ad5f50022e5b8d30b04417c02b578b05ee0e1b68b47e243f75ccf6b9a6c8",
+      "compiled_sha256": "5d12ad5f50022e5b8d30b04417c02b578b05ee0e1b68b47e243f75ccf6b9a6c8",
+      "source": "src/HandleHolderReleaseOmitNoPic.cpp",
+      "symbol": "_ZN12HandleHolderILj9299056ELj32EE7ReleaseEv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 11
+    },
+    {
       "address": "0x8de6a0",
       "size": 40,
       "exact": true,
@@ -249106,6 +249385,17 @@
       "symbol": "_Z21CallbackIdentityEqualILj9307616EEbPK12CallbackViewS2_",
       "source_review": "manual_reconstruction",
       "relocation_count": 0
+    },
+    {
+      "address": "0x8e0630",
+      "size": 272,
+      "exact": true,
+      "target_sha256": "298bb3cb47e76f38edd98eb0d99ac4035024e0f0b7623a08c9b033b6c17c0c44",
+      "compiled_sha256": "298bb3cb47e76f38edd98eb0d99ac4035024e0f0b7623a08c9b033b6c17c0c44",
+      "source": "src/RegisteredTriggerDestructorOmitNoPic.cpp",
+      "symbol": "_ZN7TriggerILj9307696ELj80ELj104EED1Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 17
     },
     {
       "address": "0x8e0740",
@@ -249755,6 +250045,17 @@
       "symbol": "RecoveredLeaf_8eb4c0",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 2
+    },
+    {
+      "address": "0x8ebc90",
+      "size": 380,
+      "exact": true,
+      "target_sha256": "f9c1b6d1ffce03e0e0caa57d02c6483d3ab16d6f7ed81eca727e0f615c623d02",
+      "compiled_sha256": "f9c1b6d1ffce03e0e0caa57d02c6483d3ab16d6f7ed81eca727e0f615c623d02",
+      "source": "src/ComposeDestructorOmitNoPic.cpp",
+      "symbol": "_ZN7ComposeILj9354384ELj176ELj192EED1Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 15
     },
     {
       "address": "0x8ebe10",
@@ -251042,6 +251343,17 @@
       "symbol": "RecoveredLeaf_8f63a0",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 6
+    },
+    {
+      "address": "0x8f6410",
+      "size": 272,
+      "exact": true,
+      "target_sha256": "8a8c7f2509b3b054000774693c3af3114a0c42d0374751722957f0bdd1d221d9",
+      "compiled_sha256": "8a8c7f2509b3b054000774693c3af3114a0c42d0374751722957f0bdd1d221d9",
+      "source": "src/RegisteredTriggerDestructorOmitNoPic.cpp",
+      "symbol": "_ZN7TriggerILj9397264ELj168ELj192EED1Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 17
     },
     {
       "address": "0x8f6520",
@@ -253011,6 +253323,17 @@
       "symbol": "_Z16DestroyAllocatedILj9505760EEvPv",
       "source_review": "manual_reconstruction",
       "relocation_count": 2
+    },
+    {
+      "address": "0x911ef0",
+      "size": 380,
+      "exact": true,
+      "target_sha256": "2d6cb9da8807b25ec46235fc26e736ce5dc7dd7c54b5adcb226c7a06364514ad",
+      "compiled_sha256": "2d6cb9da8807b25ec46235fc26e736ce5dc7dd7c54b5adcb226c7a06364514ad",
+      "source": "src/ComposeDestructorOmitNoPic.cpp",
+      "symbol": "_ZN7ComposeILj9510640ELj184ELj200EED1Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 15
     },
     {
       "address": "0x912070",
@@ -255015,6 +255338,17 @@
       "relocation_count": 4
     },
     {
+      "address": "0x92ccf0",
+      "size": 356,
+      "exact": true,
+      "target_sha256": "4aef285cd37b0bd043af052db02666c226b06954f74e9462c0c28d5577794b37",
+      "compiled_sha256": "4aef285cd37b0bd043af052db02666c226b06954f74e9462c0c28d5577794b37",
+      "source": "src/HandleHolderReleaseOmitNoPic.cpp",
+      "symbol": "_ZN12HandleHolderILj9620720ELj16EE7ReleaseEv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 11
+    },
+    {
       "address": "0x92cf20",
       "size": 24,
       "exact": true,
@@ -255838,6 +256172,17 @@
       "symbol": "_Z21CallbackIdentityEqualILj9648384EEbPK12CallbackViewS2_",
       "source_review": "manual_reconstruction",
       "relocation_count": 0
+    },
+    {
+      "address": "0x933950",
+      "size": 272,
+      "exact": true,
+      "target_sha256": "3af33f49bd66121758cbed88aaabde91efb0986a0ff8130a05a28028d203f0e9",
+      "compiled_sha256": "3af33f49bd66121758cbed88aaabde91efb0986a0ff8130a05a28028d203f0e9",
+      "source": "src/RegisteredTriggerDestructorOmitNoPic.cpp",
+      "symbol": "_ZN7TriggerILj9648464ELj88ELj112EED1Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 17
     },
     {
       "address": "0x933a60",
@@ -260009,6 +260354,17 @@
       "relocation_count": 2
     },
     {
+      "address": "0x962d60",
+      "size": 356,
+      "exact": true,
+      "target_sha256": "9061d9c36b31fbdcf1398fe68221f85cb2d497ee714337e303cab0586162fc7a",
+      "compiled_sha256": "9061d9c36b31fbdcf1398fe68221f85cb2d497ee714337e303cab0586162fc7a",
+      "source": "src/HandleHolderReleaseOmitNoPic.cpp",
+      "symbol": "_ZN12HandleHolderILj9842016ELj80EE7ReleaseEv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 11
+    },
+    {
       "address": "0x962ed0",
       "size": 136,
       "exact": true,
@@ -262660,6 +263016,17 @@
       "relocation_count": 0
     },
     {
+      "address": "0x98f9d0",
+      "size": 1048,
+      "exact": true,
+      "target_sha256": "199743df9211b557cc4322b4c4e406c067fccfa30edcaa55f35d98f1e1790b19",
+      "compiled_sha256": "199743df9211b557cc4322b4c4e406c067fccfa30edcaa55f35d98f1e1790b19",
+      "source": "src/gameplay/PlayerStates.cpp",
+      "symbol": "Player_HeldState",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 55
+    },
+    {
       "address": "0x98fdf0",
       "size": 12,
       "exact": true,
@@ -263945,6 +264312,17 @@
       "symbol": "_Z21CallbackIdentityEqualILj10106208EEbPK12CallbackViewS2_",
       "source_review": "manual_reconstruction",
       "relocation_count": 0
+    },
+    {
+      "address": "0x9a35b0",
+      "size": 272,
+      "exact": true,
+      "target_sha256": "ee6fda2de9efabf31eeda7273db413a6afdace315c19bc200d684e558c427047",
+      "compiled_sha256": "ee6fda2de9efabf31eeda7273db413a6afdace315c19bc200d684e558c427047",
+      "source": "src/RegisteredTriggerDestructorOmitNoPic.cpp",
+      "symbol": "_ZN7TriggerILj10106288ELj576ELj600EED1Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 17
     },
     {
       "address": "0x9a36c0",
@@ -265419,6 +265797,17 @@
       "symbol": "_Z21CallbackIdentityEqualILj10199344EEbPK12CallbackViewS2_",
       "source_review": "manual_reconstruction",
       "relocation_count": 0
+    },
+    {
+      "address": "0x9ba180",
+      "size": 272,
+      "exact": true,
+      "target_sha256": "edf812ab84c72e470fbdc0db8458f8112bb6e4f3b5dfb4c5e22b397567b72b6d",
+      "compiled_sha256": "edf812ab84c72e470fbdc0db8458f8112bb6e4f3b5dfb4c5e22b397567b72b6d",
+      "source": "src/RegisteredTriggerDestructorOmitNoPic.cpp",
+      "symbol": "_ZN7TriggerILj10199424ELj512ELj536EED1Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 17
     },
     {
       "address": "0x9ba290",
@@ -267753,6 +268142,17 @@
       "relocation_count": 0
     },
     {
+      "address": "0x9deb70",
+      "size": 356,
+      "exact": true,
+      "target_sha256": "83552746fee2aa727d846c1c78040c671b4aa955a074e32bc53def286eddb66c",
+      "compiled_sha256": "83552746fee2aa727d846c1c78040c671b4aa955a074e32bc53def286eddb66c",
+      "source": "src/HandleHolderReleaseOmitNoPic.cpp",
+      "symbol": "_ZN12HandleHolderILj10349424ELj16EE7ReleaseEv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 11
+    },
+    {
       "address": "0x9e04c0",
       "size": 12,
       "exact": true,
@@ -267806,6 +268206,17 @@
       "symbol": "_Z21CallbackIdentityEqualILj10356032EEbPK12CallbackViewS2_",
       "source_review": "manual_reconstruction",
       "relocation_count": 0
+    },
+    {
+      "address": "0x9e1770",
+      "size": 356,
+      "exact": true,
+      "target_sha256": "86cc805207e7eb7212ec4eaff41e554b18d93c907a54aea2e763ff7f089ff902",
+      "compiled_sha256": "86cc805207e7eb7212ec4eaff41e554b18d93c907a54aea2e763ff7f089ff902",
+      "source": "src/HandleHolderReleaseOmitNoPic.cpp",
+      "symbol": "_ZN12HandleHolderILj10360688ELj104EE7ReleaseEv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 11
     },
     {
       "address": "0x9e18e0",
@@ -272668,6 +273079,17 @@
       "symbol": "_ZN10PlainArrayILj10583056ELj16ELj24EED1Ev",
       "source_review": "manual_reconstruction",
       "relocation_count": 4
+    },
+    {
+      "address": "0xa17c60",
+      "size": 356,
+      "exact": true,
+      "target_sha256": "a27965b89620ebbae866fbb55bcfc867ae6595a386935d0c05797e8adaacfab8",
+      "compiled_sha256": "a27965b89620ebbae866fbb55bcfc867ae6595a386935d0c05797e8adaacfab8",
+      "source": "src/HandleHolderReleaseOmitNoPic.cpp",
+      "symbol": "_ZN12HandleHolderILj10583136ELj104EE7ReleaseEv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 11
     },
     {
       "address": "0xa17dd0",
@@ -286365,6 +286787,17 @@
       "relocation_count": 2
     },
     {
+      "address": "0xac7ba0",
+      "size": 304,
+      "exact": true,
+      "target_sha256": "997fa7c632d588c64e1eb6ab1b260af14b3300e88f76965ce7f382d2282d1abf",
+      "compiled_sha256": "997fa7c632d588c64e1eb6ab1b260af14b3300e88f76965ce7f382d2282d1abf",
+      "source": "src/SingleSwitchDisableOmitNoPic.cpp",
+      "symbol": "_ZN12SingleSwitchILj11303840ELj1818424473ELj80EE7DisableEv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 21
+    },
+    {
       "address": "0xac7cd0",
       "size": 48,
       "exact": true,
@@ -286893,6 +287326,17 @@
       "relocation_count": 0
     },
     {
+      "address": "0xacb670",
+      "size": 272,
+      "exact": true,
+      "target_sha256": "d707a11411d330b795d09bf996b45fba071b57a25f0ab400d6ce3544e10ff3b0",
+      "compiled_sha256": "d707a11411d330b795d09bf996b45fba071b57a25f0ab400d6ce3544e10ff3b0",
+      "source": "src/RegisteredTriggerDestructorOmitNoPic.cpp",
+      "symbol": "_ZN7TriggerILj11318896ELj160ELj184EED1Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 17
+    },
+    {
       "address": "0xacb780",
       "size": 24,
       "exact": true,
@@ -287025,6 +287469,28 @@
       "relocation_count": 2
     },
     {
+      "address": "0xacc4d0",
+      "size": 316,
+      "exact": true,
+      "target_sha256": "d4c1757a6baa95fd070a66452f16916ecfd5a7ea2d7ee00ee4a481c270da267b",
+      "compiled_sha256": "d4c1757a6baa95fd070a66452f16916ecfd5a7ea2d7ee00ee4a481c270da267b",
+      "source": "src/SingleSwitchEnableOmitNoPic.cpp",
+      "symbol": "_ZN12SingleSwitchILj11322576ELj1818424473ELj120EE6EnableEv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 22
+    },
+    {
+      "address": "0xacc610",
+      "size": 304,
+      "exact": true,
+      "target_sha256": "55701ab6b3da271c2b9a7d1e32a9101e2abdaa1ce4047037f2808f869752914f",
+      "compiled_sha256": "55701ab6b3da271c2b9a7d1e32a9101e2abdaa1ce4047037f2808f869752914f",
+      "source": "src/SingleSwitchDisableOmitNoPic.cpp",
+      "symbol": "_ZN12SingleSwitchILj11322896ELj1818424473ELj120EE7DisableEv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 21
+    },
+    {
       "address": "0xacc740",
       "size": 48,
       "exact": true,
@@ -287122,6 +287588,17 @@
       "symbol": "RecoveredLeaf_accaf0",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 5
+    },
+    {
+      "address": "0xaccc60",
+      "size": 304,
+      "exact": true,
+      "target_sha256": "188ebb382b27062130acb1a64bf4a417f3be670129c8660f1e666e417440bf98",
+      "compiled_sha256": "188ebb382b27062130acb1a64bf4a417f3be670129c8660f1e666e417440bf98",
+      "source": "src/SingleSwitchDisableOmitNoPic.cpp",
+      "symbol": "_ZN12SingleSwitchILj11324512ELj2094071288ELj80EE7DisableEv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 21
     },
     {
       "address": "0xaccd90",
@@ -287628,6 +288105,17 @@
       "symbol": "_ZN13SingleRelease13ReleaseSingleILj11342144ELj136EED2Ev",
       "source_review": "manual_reconstruction",
       "relocation_count": 14
+    },
+    {
+      "address": "0xad12c0",
+      "size": 272,
+      "exact": true,
+      "target_sha256": "51c58726ceb37120ffebd59af7fdc3a625dceb1008feaef33fed89cced610bc4",
+      "compiled_sha256": "51c58726ceb37120ffebd59af7fdc3a625dceb1008feaef33fed89cced610bc4",
+      "source": "src/RegisteredTriggerDestructorOmitNoPic.cpp",
+      "symbol": "_ZN7TriggerILj11342528ELj80ELj104EED1Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 17
     },
     {
       "address": "0xad13d0",
@@ -289181,6 +289669,17 @@
       "relocation_count": 0
     },
     {
+      "address": "0xadb3e0",
+      "size": 356,
+      "exact": true,
+      "target_sha256": "08976c95d86d5672772fc88ffd2303898c90ef8efd81a9ca375d76eabb8493d9",
+      "compiled_sha256": "08976c95d86d5672772fc88ffd2303898c90ef8efd81a9ca375d76eabb8493d9",
+      "source": "src/HandleHolderReleaseOmitNoPic.cpp",
+      "symbol": "_ZN12HandleHolderILj11383776ELj8EE7ReleaseEv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 11
+    },
+    {
       "address": "0xadb550",
       "size": 4,
       "exact": true,
@@ -289643,6 +290142,17 @@
       "relocation_count": 0
     },
     {
+      "address": "0xae1b50",
+      "size": 212,
+      "exact": true,
+      "target_sha256": "1f66555ca3790a8991691a201a97eaee2faf6214ec4a8a7762e9db6251b00b01",
+      "compiled_sha256": "1f66555ca3790a8991691a201a97eaee2faf6214ec4a8a7762e9db6251b00b01",
+      "source": "src/ColorPropertyReadOmitNoPic.cpp",
+      "symbol": "_ZN13ColorPropertyILj11410256EE4ReadER7Archive",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 0
+    },
+    {
       "address": "0xae1c30",
       "size": 4,
       "exact": true,
@@ -289665,6 +290175,17 @@
       "relocation_count": 0
     },
     {
+      "address": "0xae1d60",
+      "size": 212,
+      "exact": true,
+      "target_sha256": "1f66555ca3790a8991691a201a97eaee2faf6214ec4a8a7762e9db6251b00b01",
+      "compiled_sha256": "1f66555ca3790a8991691a201a97eaee2faf6214ec4a8a7762e9db6251b00b01",
+      "source": "src/ColorPropertyReadOmitNoPic.cpp",
+      "symbol": "_ZN13ColorPropertyILj11410784EE4ReadER7Archive",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 0
+    },
+    {
       "address": "0xae1e50",
       "size": 8,
       "exact": true,
@@ -289673,6 +290194,17 @@
       "source": "src/LeafPrimitives.cpp",
       "symbol": "RecoveredLeaf_ae1e50",
       "source_review": "generated_cxx_abi_view",
+      "relocation_count": 0
+    },
+    {
+      "address": "0xae1e60",
+      "size": 212,
+      "exact": true,
+      "target_sha256": "1f66555ca3790a8991691a201a97eaee2faf6214ec4a8a7762e9db6251b00b01",
+      "compiled_sha256": "1f66555ca3790a8991691a201a97eaee2faf6214ec4a8a7762e9db6251b00b01",
+      "source": "src/ColorPropertyReadOmitNoPic.cpp",
+      "symbol": "_ZN13ColorPropertyILj11411040EE4ReadER7Archive",
+      "source_review": "manual_reconstruction",
       "relocation_count": 0
     },
     {
@@ -290578,6 +291110,17 @@
       "relocation_count": 0
     },
     {
+      "address": "0xaeb800",
+      "size": 212,
+      "exact": true,
+      "target_sha256": "1f66555ca3790a8991691a201a97eaee2faf6214ec4a8a7762e9db6251b00b01",
+      "compiled_sha256": "1f66555ca3790a8991691a201a97eaee2faf6214ec4a8a7762e9db6251b00b01",
+      "source": "src/ColorPropertyReadOmitNoPic.cpp",
+      "symbol": "_ZN13ColorPropertyILj11450368EE4ReadER7Archive",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 0
+    },
+    {
       "address": "0xaeb8e0",
       "size": 4,
       "exact": true,
@@ -290600,6 +291143,17 @@
       "relocation_count": 0
     },
     {
+      "address": "0xaeba10",
+      "size": 212,
+      "exact": true,
+      "target_sha256": "1f66555ca3790a8991691a201a97eaee2faf6214ec4a8a7762e9db6251b00b01",
+      "compiled_sha256": "1f66555ca3790a8991691a201a97eaee2faf6214ec4a8a7762e9db6251b00b01",
+      "source": "src/ColorPropertyReadOmitNoPic.cpp",
+      "symbol": "_ZN13ColorPropertyILj11450896EE4ReadER7Archive",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 0
+    },
+    {
       "address": "0xaebaf0",
       "size": 4,
       "exact": true,
@@ -290619,6 +291173,17 @@
       "source": "src/generated/FUN_00aebb00.cpp",
       "symbol": "FUN_00aebb00",
       "source_review": "local_model_proposal_abi_review_pending",
+      "relocation_count": 0
+    },
+    {
+      "address": "0xaebc20",
+      "size": 212,
+      "exact": true,
+      "target_sha256": "1f66555ca3790a8991691a201a97eaee2faf6214ec4a8a7762e9db6251b00b01",
+      "compiled_sha256": "1f66555ca3790a8991691a201a97eaee2faf6214ec4a8a7762e9db6251b00b01",
+      "source": "src/ColorPropertyReadOmitNoPic.cpp",
+      "symbol": "_ZN13ColorPropertyILj11451424EE4ReadER7Archive",
+      "source_review": "manual_reconstruction",
       "relocation_count": 0
     },
     {
@@ -292723,6 +293288,17 @@
       "relocation_count": 5
     },
     {
+      "address": "0xafea80",
+      "size": 304,
+      "exact": true,
+      "target_sha256": "078b33acfb57b3c0b72e8ab1612002175e7bd1255f767043e33d0933e43dbaff",
+      "compiled_sha256": "078b33acfb57b3c0b72e8ab1612002175e7bd1255f767043e33d0933e43dbaff",
+      "source": "src/SingleSwitchDisableOmitNoPic.cpp",
+      "symbol": "_ZN12SingleSwitchILj11528832ELj1818424473ELj144EE7DisableEv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 21
+    },
+    {
       "address": "0xaff960",
       "size": 28,
       "exact": true,
@@ -293249,6 +293825,28 @@
       "symbol": "_ZN8RawOwnerILj11606624ELj104ELj0EED0Ev",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 8
+    },
+    {
+      "address": "0xb11b40",
+      "size": 316,
+      "exact": true,
+      "target_sha256": "79b3fd8abbec438c09c58db033e32472c0e16062f7ca9acbdfff83225f0f47d5",
+      "compiled_sha256": "79b3fd8abbec438c09c58db033e32472c0e16062f7ca9acbdfff83225f0f47d5",
+      "source": "src/SingleSwitchEnableOmitNoPic.cpp",
+      "symbol": "_ZN12SingleSwitchILj11606848ELj1818424473ELj80EE6EnableEv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 22
+    },
+    {
+      "address": "0xb11c80",
+      "size": 304,
+      "exact": true,
+      "target_sha256": "41fc783cf1b9c05c8278ffdc06ceee9a21667927d9e252520c6f10ec2e0eacf1",
+      "compiled_sha256": "41fc783cf1b9c05c8278ffdc06ceee9a21667927d9e252520c6f10ec2e0eacf1",
+      "source": "src/SingleSwitchDisableOmitNoPic.cpp",
+      "symbol": "_ZN12SingleSwitchILj11607168ELj1818424473ELj80EE7DisableEv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 21
     },
     {
       "address": "0xb11db0",
@@ -293887,6 +294485,17 @@
       "symbol": "_Z16DestroyAllocatedILj11632736EEvPv",
       "source_review": "manual_reconstruction",
       "relocation_count": 2
+    },
+    {
+      "address": "0xb18080",
+      "size": 316,
+      "exact": true,
+      "target_sha256": "597abdc320e168252f328dee22d24f92833a544626eb87fd19132ffc3fb6b313",
+      "compiled_sha256": "597abdc320e168252f328dee22d24f92833a544626eb87fd19132ffc3fb6b313",
+      "source": "src/SingleSwitchEnableOmitNoPic.cpp",
+      "symbol": "_ZN12SingleSwitchILj11632768ELj1818424473ELj120EE6EnableEv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 22
     },
     {
       "address": "0xb182f0",
@@ -296298,6 +296907,17 @@
       "relocation_count": 4
     },
     {
+      "address": "0xb2cda0",
+      "size": 380,
+      "exact": true,
+      "target_sha256": "3d2318d5a37a316ae7897cb95cd0d61baac80158b6cde2a8e9a1090be936a841",
+      "compiled_sha256": "3d2318d5a37a316ae7897cb95cd0d61baac80158b6cde2a8e9a1090be936a841",
+      "source": "src/ComposeDestructorOmitNoPic.cpp",
+      "symbol": "_ZN7ComposeILj11718048ELj272ELj336EED1Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 15
+    },
+    {
       "address": "0xb2cf20",
       "size": 24,
       "exact": true,
@@ -297981,6 +298601,28 @@
       "relocation_count": 2
     },
     {
+      "address": "0xb46140",
+      "size": 316,
+      "exact": true,
+      "target_sha256": "f291233a1ac3b60c702702439ddb47fbd73a183b08d2dd78bd8b1b5c66ff7f17",
+      "compiled_sha256": "f291233a1ac3b60c702702439ddb47fbd73a183b08d2dd78bd8b1b5c66ff7f17",
+      "source": "src/SingleSwitchEnableOmitNoPic.cpp",
+      "symbol": "_ZN12SingleSwitchILj11821376ELj1818424473ELj120EE6EnableEv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 22
+    },
+    {
+      "address": "0xb46280",
+      "size": 304,
+      "exact": true,
+      "target_sha256": "d570b1285be8c2a30c2198df000c2b9306db8db032bb2fb9b286646b569897b9",
+      "compiled_sha256": "d570b1285be8c2a30c2198df000c2b9306db8db032bb2fb9b286646b569897b9",
+      "source": "src/SingleSwitchDisableOmitNoPic.cpp",
+      "symbol": "_ZN12SingleSwitchILj11821696ELj1818424473ELj120EE7DisableEv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 21
+    },
+    {
       "address": "0xb463b0",
       "size": 48,
       "exact": true,
@@ -298166,6 +298808,17 @@
       "symbol": "_Z16DestroyAllocatedILj11825168EEvPv",
       "source_review": "manual_reconstruction",
       "relocation_count": 2
+    },
+    {
+      "address": "0xb47170",
+      "size": 304,
+      "exact": true,
+      "target_sha256": "8ab0e78b5c9e105443b38c0fe731d83238a76ce4bf4818967d6666fcec79dd4a",
+      "compiled_sha256": "8ab0e78b5c9e105443b38c0fe731d83238a76ce4bf4818967d6666fcec79dd4a",
+      "source": "src/SingleSwitchDisableOmitNoPic.cpp",
+      "symbol": "_ZN12SingleSwitchILj11825520ELj1818424473ELj80EE7DisableEv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 21
     },
     {
       "address": "0xb472a0",
@@ -298982,6 +299635,28 @@
       "relocation_count": 0
     },
     {
+      "address": "0xb4f110",
+      "size": 316,
+      "exact": true,
+      "target_sha256": "df82ef63b84d9973c93b768f0f652caf2c5abad6be9118b85af3f968ecf03420",
+      "compiled_sha256": "df82ef63b84d9973c93b768f0f652caf2c5abad6be9118b85af3f968ecf03420",
+      "source": "src/SingleSwitchEnableOmitNoPic.cpp",
+      "symbol": "_ZN12SingleSwitchILj11858192ELj1818424473ELj224EE6EnableEv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 22
+    },
+    {
+      "address": "0xb4f250",
+      "size": 304,
+      "exact": true,
+      "target_sha256": "fd4ad3f09198595d0f7897e3857374fda97d80a591a30cb9233fb969b7f22e92",
+      "compiled_sha256": "fd4ad3f09198595d0f7897e3857374fda97d80a591a30cb9233fb969b7f22e92",
+      "source": "src/SingleSwitchDisableOmitNoPic.cpp",
+      "symbol": "_ZN12SingleSwitchILj11858512ELj1818424473ELj224EE7DisableEv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 21
+    },
+    {
       "address": "0xb4f380",
       "size": 80,
       "exact": true,
@@ -299521,6 +300196,17 @@
       "relocation_count": 2
     },
     {
+      "address": "0xb54460",
+      "size": 304,
+      "exact": true,
+      "target_sha256": "6306d111867de9b6fd14561a9ed7b75b531d7403279ed9a9021843969a58a954",
+      "compiled_sha256": "6306d111867de9b6fd14561a9ed7b75b531d7403279ed9a9021843969a58a954",
+      "source": "src/SingleSwitchDisableOmitNoPic.cpp",
+      "symbol": "_ZN12SingleSwitchILj11879520ELj1818424473ELj80EE7DisableEv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 21
+    },
+    {
       "address": "0xb54590",
       "size": 268,
       "exact": true,
@@ -299664,6 +300350,17 @@
       "relocation_count": 2
     },
     {
+      "address": "0xb54b90",
+      "size": 380,
+      "exact": true,
+      "target_sha256": "3f677cff0e068f95578b06c512f83f8f88b400da0186bf06a6e37be59941d271",
+      "compiled_sha256": "3f677cff0e068f95578b06c512f83f8f88b400da0186bf06a6e37be59941d271",
+      "source": "src/ComposeDestructorOmitNoPic.cpp",
+      "symbol": "_ZN7ComposeILj11881360ELj152ELj216EED1Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 15
+    },
+    {
       "address": "0xb54d10",
       "size": 24,
       "exact": true,
@@ -299673,6 +300370,17 @@
       "symbol": "_Z16DestroyAllocatedILj11881744EEvPv",
       "source_review": "manual_reconstruction",
       "relocation_count": 2
+    },
+    {
+      "address": "0xb54d30",
+      "size": 316,
+      "exact": true,
+      "target_sha256": "3324415b2230093051566b838731ebb04c2bd56e302d590d2284b9940dde28c9",
+      "compiled_sha256": "3324415b2230093051566b838731ebb04c2bd56e302d590d2284b9940dde28c9",
+      "source": "src/SingleSwitchEnableOmitNoPic.cpp",
+      "symbol": "_ZN12SingleSwitchILj11881776ELj1818424473ELj144EE6EnableEv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 22
     },
     {
       "address": "0xb54fb0",
@@ -301072,6 +301780,17 @@
       "relocation_count": 0
     },
     {
+      "address": "0xb627d0",
+      "size": 272,
+      "exact": true,
+      "target_sha256": "faeda6fe79c49b0d1a811e97dbe2c69d491260644dda423d9b5f3c465051cc9d",
+      "compiled_sha256": "faeda6fe79c49b0d1a811e97dbe2c69d491260644dda423d9b5f3c465051cc9d",
+      "source": "src/RegisteredTriggerDestructorOmitNoPic.cpp",
+      "symbol": "_ZN7TriggerILj11937744ELj136ELj160EED1Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 17
+    },
+    {
       "address": "0xb628e0",
       "size": 24,
       "exact": true,
@@ -301974,6 +302693,17 @@
       "relocation_count": 0
     },
     {
+      "address": "0xb67c40",
+      "size": 212,
+      "exact": true,
+      "target_sha256": "1f66555ca3790a8991691a201a97eaee2faf6214ec4a8a7762e9db6251b00b01",
+      "compiled_sha256": "1f66555ca3790a8991691a201a97eaee2faf6214ec4a8a7762e9db6251b00b01",
+      "source": "src/ColorPropertyReadOmitNoPic.cpp",
+      "symbol": "_ZN13ColorPropertyILj11959360EE4ReadER7Archive",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 0
+    },
+    {
       "address": "0xb67d20",
       "size": 4,
       "exact": true,
@@ -302447,6 +303177,17 @@
       "relocation_count": 0
     },
     {
+      "address": "0xb68620",
+      "size": 212,
+      "exact": true,
+      "target_sha256": "1f66555ca3790a8991691a201a97eaee2faf6214ec4a8a7762e9db6251b00b01",
+      "compiled_sha256": "1f66555ca3790a8991691a201a97eaee2faf6214ec4a8a7762e9db6251b00b01",
+      "source": "src/ColorPropertyReadOmitNoPic.cpp",
+      "symbol": "_ZN13ColorPropertyILj11961888EE4ReadER7Archive",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 0
+    },
+    {
       "address": "0xb68700",
       "size": 4,
       "exact": true,
@@ -302521,6 +303262,17 @@
       "source": "src/GuardRecoveryOmit.cpp",
       "symbol": "RecoveredLeaf_b68830",
       "source_review": "generated_cxx_abi_view",
+      "relocation_count": 0
+    },
+    {
+      "address": "0xb688c0",
+      "size": 212,
+      "exact": true,
+      "target_sha256": "1f66555ca3790a8991691a201a97eaee2faf6214ec4a8a7762e9db6251b00b01",
+      "compiled_sha256": "1f66555ca3790a8991691a201a97eaee2faf6214ec4a8a7762e9db6251b00b01",
+      "source": "src/ColorPropertyReadOmitNoPic.cpp",
+      "symbol": "_ZN13ColorPropertyILj11962560EE4ReadER7Archive",
+      "source_review": "manual_reconstruction",
       "relocation_count": 0
     },
     {
@@ -304427,6 +305179,17 @@
       "relocation_count": 1
     },
     {
+      "address": "0xb86440",
+      "size": 212,
+      "exact": true,
+      "target_sha256": "1f66555ca3790a8991691a201a97eaee2faf6214ec4a8a7762e9db6251b00b01",
+      "compiled_sha256": "1f66555ca3790a8991691a201a97eaee2faf6214ec4a8a7762e9db6251b00b01",
+      "source": "src/ColorPropertyReadOmitNoPic.cpp",
+      "symbol": "_ZN13ColorPropertyILj12084288EE4ReadER7Archive",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 0
+    },
+    {
       "address": "0xb86520",
       "size": 12,
       "exact": true,
@@ -304447,6 +305210,17 @@
       "symbol": "RecoveredLeaf_b86530",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 1
+    },
+    {
+      "address": "0xb86610",
+      "size": 212,
+      "exact": true,
+      "target_sha256": "1f66555ca3790a8991691a201a97eaee2faf6214ec4a8a7762e9db6251b00b01",
+      "compiled_sha256": "1f66555ca3790a8991691a201a97eaee2faf6214ec4a8a7762e9db6251b00b01",
+      "source": "src/ColorPropertyReadOmitNoPic.cpp",
+      "symbol": "_ZN13ColorPropertyILj12084752EE4ReadER7Archive",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 0
     },
     {
       "address": "0xb866f0",
@@ -304502,6 +305276,17 @@
       "symbol": "RecoveredLeaf_b86800",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 1
+    },
+    {
+      "address": "0xb86950",
+      "size": 212,
+      "exact": true,
+      "target_sha256": "1f66555ca3790a8991691a201a97eaee2faf6214ec4a8a7762e9db6251b00b01",
+      "compiled_sha256": "1f66555ca3790a8991691a201a97eaee2faf6214ec4a8a7762e9db6251b00b01",
+      "source": "src/ColorPropertyReadOmitNoPic.cpp",
+      "symbol": "_ZN13ColorPropertyILj12085584EE4ReadER7Archive",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 0
     },
     {
       "address": "0xb86a30",
@@ -305283,6 +306068,17 @@
       "symbol": "_Z21CallbackIdentityEqualILj12119392EEbPK12CallbackViewS2_",
       "source_review": "manual_reconstruction",
       "relocation_count": 0
+    },
+    {
+      "address": "0xb8edb0",
+      "size": 272,
+      "exact": true,
+      "target_sha256": "2d20e0667ab692ced34ad9754db523b13d14adbdc0f16dfb7d0dee5ef8b4d293",
+      "compiled_sha256": "2d20e0667ab692ced34ad9754db523b13d14adbdc0f16dfb7d0dee5ef8b4d293",
+      "source": "src/RegisteredTriggerDestructorOmitNoPic.cpp",
+      "symbol": "_ZN7TriggerILj12119472ELj80ELj104EED1Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 17
     },
     {
       "address": "0xb8eec0",
@@ -306759,6 +307555,17 @@
       "relocation_count": 2
     },
     {
+      "address": "0xba0ab0",
+      "size": 316,
+      "exact": true,
+      "target_sha256": "b60b804abb2b3131885a0c050ecdb8baa0624b1b25b3f586698acba04c6b9569",
+      "compiled_sha256": "b60b804abb2b3131885a0c050ecdb8baa0624b1b25b3f586698acba04c6b9569",
+      "source": "src/SingleSwitchEnableOmitNoPic.cpp",
+      "symbol": "_ZN12SingleSwitchILj12192432ELj1818424473ELj144EE6EnableEv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 22
+    },
+    {
       "address": "0xba0f20",
       "size": 52,
       "exact": true,
@@ -306856,6 +307663,17 @@
       "symbol": "_Z16DestroyAllocatedILj12198592EEvPv",
       "source_review": "manual_reconstruction",
       "relocation_count": 2
+    },
+    {
+      "address": "0xba22e0",
+      "size": 316,
+      "exact": true,
+      "target_sha256": "227f7bca55063e0088b9f2860a4f8bff3829aa169a04c85dd884d662caa5dd4f",
+      "compiled_sha256": "227f7bca55063e0088b9f2860a4f8bff3829aa169a04c85dd884d662caa5dd4f",
+      "source": "src/SingleSwitchEnableOmitNoPic.cpp",
+      "symbol": "_ZN12SingleSwitchILj12198624ELj1818424473ELj144EE6EnableEv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 22
     },
     {
       "address": "0xba2700",
@@ -310805,6 +311623,17 @@
       "symbol": "_Z21CallbackIdentityEqualILj12371280EEbPK12CallbackViewS2_",
       "source_review": "manual_reconstruction",
       "relocation_count": 0
+    },
+    {
+      "address": "0xbcc5a0",
+      "size": 272,
+      "exact": true,
+      "target_sha256": "f161b2e0d0acb4f00b05cd3018b4c0b5d8e76ec90c73ad9fd074c0c513ed9b51",
+      "compiled_sha256": "f161b2e0d0acb4f00b05cd3018b4c0b5d8e76ec90c73ad9fd074c0c513ed9b51",
+      "source": "src/RegisteredTriggerDestructorOmitNoPic.cpp",
+      "symbol": "_ZN7TriggerILj12371360ELj88ELj112EED1Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 17
     },
     {
       "address": "0xbcc6b0",
@@ -333401,6 +334230,17 @@
       "relocation_count": 0
     },
     {
+      "address": "0xc9cfc0",
+      "size": 272,
+      "exact": true,
+      "target_sha256": "4bb18c295f21e2e8e0dc062df3805b4d3ab3e07598cf924ec9f2c78e11cecca9",
+      "compiled_sha256": "4bb18c295f21e2e8e0dc062df3805b4d3ab3e07598cf924ec9f2c78e11cecca9",
+      "source": "src/RegisteredTriggerDestructorOmitNoPic.cpp",
+      "symbol": "_ZN7TriggerILj13225920ELj128ELj152EED1Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 17
+    },
+    {
       "address": "0xc9d0d0",
       "size": 24,
       "exact": true,
@@ -341112,6 +341952,17 @@
       "relocation_count": 4
     },
     {
+      "address": "0xcde270",
+      "size": 272,
+      "exact": true,
+      "target_sha256": "46af737c39a60bf96ccc7ff40dacd4c237963bc62bfff50353b50d376b5f32a7",
+      "compiled_sha256": "46af737c39a60bf96ccc7ff40dacd4c237963bc62bfff50353b50d376b5f32a7",
+      "source": "src/RegisteredTriggerDestructorOmitNoPic.cpp",
+      "symbol": "_ZN7TriggerILj13492848ELj80ELj104EED1Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 17
+    },
+    {
       "address": "0xcde380",
       "size": 800,
       "exact": true,
@@ -342518,6 +343369,17 @@
       "symbol": "_Z20ReleaseCallbackOwnerILj13525200EEvPP13OwnedCallable",
       "source_review": "manual_reconstruction",
       "relocation_count": 4
+    },
+    {
+      "address": "0xce6130",
+      "size": 380,
+      "exact": true,
+      "target_sha256": "a07e16a40ec32944a28215b3d4cd6e2271a3f9f3b8e962be3dae5df186ac66aa",
+      "compiled_sha256": "a07e16a40ec32944a28215b3d4cd6e2271a3f9f3b8e962be3dae5df186ac66aa",
+      "source": "src/ComposeDestructorOmitNoPic.cpp",
+      "symbol": "_ZN7ComposeILj13525296ELj80ELj96EED1Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 15
     },
     {
       "address": "0xce62b0",

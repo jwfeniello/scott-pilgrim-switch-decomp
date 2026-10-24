@@ -138,8 +138,8 @@ and an instance is credited **only at its own address**. For the `std::function`
 family, the key is the destructor's address, and the other slots of the same
 vtable are credited to the same instance. Identical bodies elsewhere are not
 credited to an unrelated instance's symbol, and addresses that other builds
-already credit are skipped. These families add **1,580 complete functions /
-104,516 bytes**:
+already credit are skipped. These families add **1,653 complete functions /
+126,624 bytes**:
 
 | Source (`src/`) | Shape | Functions | Bytes |
 | --- | --- | ---: | ---: |
@@ -171,6 +171,10 @@ already credit are skipped. These families add **1,580 complete functions /
 | `AsynchGenericSignal*` | Signals an asynchronous callback with value 4 | 32 | 1,408 |
 | `DareListDestructor*` | Circular list destructor returning nodes through the Dare allocator | 11 | 1,232 |
 | `NetworkStateResult*` | Returns a result, or the pending one while the network state is 3 | 22 | 704 |
+| `SingleSwitchDisable*`, `SingleSwitchEnable*` | Switch unregister/register for one optional target (enable then refreshes) | 25 | 7,744 |
+| `RegisteredTriggerDestructor*` | Destructor of two registered owned objects: unregister if flagged, destroy, free | 15 | 4,080 |
+| `ComposeDestructor*`, `HandleHolderRelease*` | Release a member component handle, disposing it at the last reference (see [handle disposal](GAMEPLAY_COMPONENTS.md#handle-disposal-and-the-empty-bucket-path)) | 21 | 7,740 |
+| `ColorPropertyRead*` | Reads a four-byte colour material property through the stream | 12 | 2,544 |
 
 The code shapes pin down several details:
 

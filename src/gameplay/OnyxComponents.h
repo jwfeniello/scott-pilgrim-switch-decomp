@@ -78,11 +78,8 @@ __attribute__((always_inline)) inline Allocator* AllocatorFor(void* object) {
     AllocatorManager* manager = Accessor_Allocators;
     return manager->allocators[Accessor_AllocatorIndex(manager, object)];
 }
-struct TrackingLock {
-    TrackingMap* map;
-    __attribute__((always_inline)) TrackingLock(TrackingMap* value) : map(value) { Accessor_Lock(value->mutex); }
-    __attribute__((always_inline)) ~TrackingLock() { if (map) Accessor_Unlock(map->mutex); }
-};
+// The unlock runs in a noexcept context, as a lock guard's destructor would.
+__attribute__((always_inline)) inline void UnlockTracking(TrackingMap* map) noexcept { Accessor_Unlock(map->mutex); }
 // Destroys the component, unregisters the handle and frees both allocations.
 __attribute__((always_inline)) inline void DisposeHandle(ComponentHandle* handle) {
     Component* object = handle->object;
@@ -94,21 +91,30 @@ __attribute__((always_inline)) inline void DisposeHandle(ComponentHandle* handle
     Allocator* allocator = AllocatorFor(handle);
     {
         TrackingMap* map = Accessor_Tracking;
-        TrackingLock lock(map);
+        Accessor_Lock(map->mutex);
         TrackingNode** bucket = &map->buckets[(reinterpret_cast<uintptr_t>(handle) >> 2) % 4003];
-        TrackingNode* previous = nullptr;
         TrackingNode* node = *bucket;
-        while (node) {
-            TrackingNode* next = node->next;
-            if (node->key == handle) {
-                node->next = map->free_head;
-                map->free_head = node;
-                *(previous ? &previous->next : bucket) = next;
-            } else {
-                previous = node;
-            }
-            node = next;
+        // The bucket load proves the map non-null, so the original's empty-bucket
+        // path unlocks without the guard's null check; the goto keeps that shape.
+        if (!node) goto unlock;
+        {
+            TrackingNode* previous = nullptr;
+            do {
+                TrackingNode* next = node->next;
+                if (node->key == handle) {
+                    node->next = map->free_head;
+                    map->free_head = node;
+                    *(previous ? &previous->next : bucket) = next;
+                } else {
+                    previous = node;
+                }
+                node = next;
+            } while (node);
         }
+        if (!map) goto unlocked;
+    unlock:
+        UnlockTracking(map);
+    unlocked:;
     }
     allocator->Free(handle);
 }

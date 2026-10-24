@@ -449688,6 +449688,30 @@
           "literals": {
             "47616d654f7665724d6f76696500": "0x131e665"
           }
+        },
+        {
+          "address": "0x98f9d0",
+          "size": 1048,
+          "symbol": "Player_HeldState",
+          "target_sha256": "199743df9211b557cc4322b4c4e406c067fccfa30edcaa55f35d98f1e1790b19",
+          "bindings": {
+            "_ZGVZN4onyx7Vector34ZeroEvE5value": "0x191f8b8",
+            "_ZZN4onyx7Vector34ZeroEvE5value": "0x191f8c0",
+            "Accessor_Resolver": "0x191cd10",
+            "Accessor_Resolve": "0x67edd0",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30",
+            "Accessor_Tracking": "0x1935068",
+            "Accessor_Lock": "0xfa4950",
+            "Accessor_Unlock": "0xfa4960",
+            "__cxa_guard_acquire": "0xfa4130",
+            "__cxa_guard_release": "0xfa4140",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {},
+          "immutable_sections": {
+            "8": "0x1390dec"
+          }
         }
       ]
     },
@@ -481665,6 +481689,1340 @@
           "target_sha256": "4e4280b1624fc1ae5a6325c42de05d56ba247fd52a7d7b14dec9676bd852db83",
           "bindings": {
             "_ZN20ObjectManagerNetworkILj4334160EE7PendingEv": "0x422270"
+          },
+          "got_bindings": {}
+        }
+      ]
+    },
+    {
+      "id": "single_switch_disable_omit_no_pic",
+      "source": "src/SingleSwitchDisableOmitNoPic.cpp",
+      "compiler": "8.0.1",
+      "source_review": "manual_reconstruction",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-std=c++11",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-O2",
+        "-fomit-frame-pointer",
+        "-fno-pic"
+      ],
+      "functions": [
+        {
+          "address": "0x68e980",
+          "size": 304,
+          "symbol": "_ZN12SingleSwitchILj6875520ELj1818424473ELj80EE7DisableEv",
+          "target_sha256": "fb9acf68ff15d16c04c42e747df8a4ff1e935e2674c7d50bd2fc42e3daf4598e",
+          "bindings": {
+            "_ZN13SwitchBindingILj6875520EE7contextE": "0x1935058",
+            "_ZN13SwitchBindingILj6875520EE8AllocateEPvm": "0xa972b0",
+            "_ZN12SingleSwitchILj6875520ELj1818424473ELj80EE7HandlerERK11SwitchEvent": "0x68f000",
+            "_ZTV14SwitchCallbackILj6875520E12SingleSwitchILj6875520ELj1818424473ELj80EEE": "0x1843088",
+            "_ZN13SwitchBindingILj6875520EE6InvokeEv": "0x68f020",
+            "_ZN13SwitchBindingILj6875520EE8registryE": "0x1935068",
+            "_ZN13SwitchBindingILj6875520EE10UnregisterEPvS1_jS1_": "0xc00d00",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30",
+            "_Unwind_Resume": "0xfa4920",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x733860",
+          "size": 304,
+          "symbol": "_ZN12SingleSwitchILj7551072ELj2101335766ELj80EE7DisableEv",
+          "target_sha256": "854aab076b78ee04cba48179f72055a43c836642c330a3ea75aada318125c1d2",
+          "bindings": {
+            "_ZN13SwitchBindingILj7551072EE7contextE": "0x1935058",
+            "_ZN13SwitchBindingILj7551072EE8AllocateEPvm": "0xa972b0",
+            "_ZN12SingleSwitchILj7551072ELj2101335766ELj80EE7HandlerERK11SwitchEvent": "0x733f60",
+            "_ZTV14SwitchCallbackILj7551072E12SingleSwitchILj7551072ELj2101335766ELj80EEE": "0x1849930",
+            "_ZN13SwitchBindingILj7551072EE6InvokeEv": "0x733f70",
+            "_ZN13SwitchBindingILj7551072EE8registryE": "0x1935068",
+            "_ZN13SwitchBindingILj7551072EE10UnregisterEPvS1_jS1_": "0xc00d00",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30",
+            "_Unwind_Resume": "0xfa4920",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x737280",
+          "size": 304,
+          "symbol": "_ZN12SingleSwitchILj7565952ELj1818424473ELj144EE7DisableEv",
+          "target_sha256": "e3975170270290d493fe512261700638d41f17ff41026f085de822040b0329ca",
+          "bindings": {
+            "_ZN13SwitchBindingILj7565952EE7contextE": "0x1935058",
+            "_ZN13SwitchBindingILj7565952EE8AllocateEPvm": "0xa972b0",
+            "_ZN12SingleSwitchILj7565952ELj1818424473ELj144EE7HandlerERK11SwitchEvent": "0x737870",
+            "_ZTV14SwitchCallbackILj7565952E12SingleSwitchILj7565952ELj1818424473ELj144EEE": "0x1849c18",
+            "_ZN13SwitchBindingILj7565952EE6InvokeEv": "0x737a80",
+            "_ZN13SwitchBindingILj7565952EE8registryE": "0x1935068",
+            "_ZN13SwitchBindingILj7565952EE10UnregisterEPvS1_jS1_": "0xc00d00",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30",
+            "_Unwind_Resume": "0xfa4920",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x8bb2c0",
+          "size": 304,
+          "symbol": "_ZN12SingleSwitchILj9155264ELj1818424473ELj296EE7DisableEv",
+          "target_sha256": "129df26baba57f2531ada392915dabf5099d51e08b9d049e4bb7855ffdd76059",
+          "bindings": {
+            "_ZN13SwitchBindingILj9155264EE7contextE": "0x1935058",
+            "_ZN13SwitchBindingILj9155264EE8AllocateEPvm": "0xa972b0",
+            "_ZN12SingleSwitchILj9155264ELj1818424473ELj296EE7HandlerERK11SwitchEvent": "0x8bb5d0",
+            "_ZTV14SwitchCallbackILj9155264E12SingleSwitchILj9155264ELj1818424473ELj296EEE": "0x1864150",
+            "_ZN13SwitchBindingILj9155264EE6InvokeEv": "0x8bb710",
+            "_ZN13SwitchBindingILj9155264EE8registryE": "0x1935068",
+            "_ZN13SwitchBindingILj9155264EE10UnregisterEPvS1_jS1_": "0xc00d00",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30",
+            "_Unwind_Resume": "0xfa4920",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xac7ba0",
+          "size": 304,
+          "symbol": "_ZN12SingleSwitchILj11303840ELj1818424473ELj80EE7DisableEv",
+          "target_sha256": "997fa7c632d588c64e1eb6ab1b260af14b3300e88f76965ce7f382d2282d1abf",
+          "bindings": {
+            "_ZN13SwitchBindingILj11303840EE7contextE": "0x1935058",
+            "_ZN13SwitchBindingILj11303840EE8AllocateEPvm": "0xa972b0",
+            "_ZN12SingleSwitchILj11303840ELj1818424473ELj80EE7HandlerERK11SwitchEvent": "0xac7d00",
+            "_ZTV14SwitchCallbackILj11303840E12SingleSwitchILj11303840ELj1818424473ELj80EEE": "0x189f898",
+            "_ZN13SwitchBindingILj11303840EE6InvokeEv": "0xac7df0",
+            "_ZN13SwitchBindingILj11303840EE8registryE": "0x1935068",
+            "_ZN13SwitchBindingILj11303840EE10UnregisterEPvS1_jS1_": "0xc00d00",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30",
+            "_Unwind_Resume": "0xfa4920",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xacc610",
+          "size": 304,
+          "symbol": "_ZN12SingleSwitchILj11322896ELj1818424473ELj120EE7DisableEv",
+          "target_sha256": "55701ab6b3da271c2b9a7d1e32a9101e2abdaa1ce4047037f2808f869752914f",
+          "bindings": {
+            "_ZN13SwitchBindingILj11322896EE7contextE": "0x1935058",
+            "_ZN13SwitchBindingILj11322896EE8AllocateEPvm": "0xa972b0",
+            "_ZN12SingleSwitchILj11322896ELj1818424473ELj120EE7HandlerERK11SwitchEvent": "0xacc770",
+            "_ZTV14SwitchCallbackILj11322896E12SingleSwitchILj11322896ELj1818424473ELj120EEE": "0x189fe50",
+            "_ZN13SwitchBindingILj11322896EE6InvokeEv": "0xacc780",
+            "_ZN13SwitchBindingILj11322896EE8registryE": "0x1935068",
+            "_ZN13SwitchBindingILj11322896EE10UnregisterEPvS1_jS1_": "0xc00d00",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30",
+            "_Unwind_Resume": "0xfa4920",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xaccc60",
+          "size": 304,
+          "symbol": "_ZN12SingleSwitchILj11324512ELj2094071288ELj80EE7DisableEv",
+          "target_sha256": "188ebb382b27062130acb1a64bf4a417f3be670129c8660f1e666e417440bf98",
+          "bindings": {
+            "_ZN13SwitchBindingILj11324512EE7contextE": "0x1935058",
+            "_ZN13SwitchBindingILj11324512EE8AllocateEPvm": "0xa972b0",
+            "_ZN12SingleSwitchILj11324512ELj2094071288ELj80EE7HandlerERK11SwitchEvent": "0xacd980",
+            "_ZTV14SwitchCallbackILj11324512E12SingleSwitchILj11324512ELj2094071288ELj80EEE": "0x189ffc8",
+            "_ZN13SwitchBindingILj11324512EE6InvokeEv": "0xacd990",
+            "_ZN13SwitchBindingILj11324512EE8registryE": "0x1935068",
+            "_ZN13SwitchBindingILj11324512EE10UnregisterEPvS1_jS1_": "0xc00d00",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30",
+            "_Unwind_Resume": "0xfa4920",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xafea80",
+          "size": 304,
+          "symbol": "_ZN12SingleSwitchILj11528832ELj1818424473ELj144EE7DisableEv",
+          "target_sha256": "078b33acfb57b3c0b72e8ab1612002175e7bd1255f767043e33d0933e43dbaff",
+          "bindings": {
+            "_ZN13SwitchBindingILj11528832EE7contextE": "0x1935058",
+            "_ZN13SwitchBindingILj11528832EE8AllocateEPvm": "0xa972b0",
+            "_ZN12SingleSwitchILj11528832ELj1818424473ELj144EE7HandlerERK11SwitchEvent": "0xaff870",
+            "_ZTV14SwitchCallbackILj11528832E12SingleSwitchILj11528832ELj1818424473ELj144EEE": "0x18a3cb0",
+            "_ZN13SwitchBindingILj11528832EE6InvokeEv": "0xaff960",
+            "_ZN13SwitchBindingILj11528832EE8registryE": "0x1935068",
+            "_ZN13SwitchBindingILj11528832EE10UnregisterEPvS1_jS1_": "0xc00d00",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30",
+            "_Unwind_Resume": "0xfa4920",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xb11c80",
+          "size": 304,
+          "symbol": "_ZN12SingleSwitchILj11607168ELj1818424473ELj80EE7DisableEv",
+          "target_sha256": "41fc783cf1b9c05c8278ffdc06ceee9a21667927d9e252520c6f10ec2e0eacf1",
+          "bindings": {
+            "_ZN13SwitchBindingILj11607168EE7contextE": "0x1935058",
+            "_ZN13SwitchBindingILj11607168EE8AllocateEPvm": "0xa972b0",
+            "_ZN12SingleSwitchILj11607168ELj1818424473ELj80EE7HandlerERK11SwitchEvent": "0xb127b0",
+            "_ZTV14SwitchCallbackILj11607168E12SingleSwitchILj11607168ELj1818424473ELj80EEE": "0x18a4830",
+            "_ZN13SwitchBindingILj11607168EE6InvokeEv": "0xb127f0",
+            "_ZN13SwitchBindingILj11607168EE8registryE": "0x1935068",
+            "_ZN13SwitchBindingILj11607168EE10UnregisterEPvS1_jS1_": "0xc00d00",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30",
+            "_Unwind_Resume": "0xfa4920",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xb46280",
+          "size": 304,
+          "symbol": "_ZN12SingleSwitchILj11821696ELj1818424473ELj120EE7DisableEv",
+          "target_sha256": "d570b1285be8c2a30c2198df000c2b9306db8db032bb2fb9b286646b569897b9",
+          "bindings": {
+            "_ZN13SwitchBindingILj11821696EE7contextE": "0x1935058",
+            "_ZN13SwitchBindingILj11821696EE8AllocateEPvm": "0xa972b0",
+            "_ZN12SingleSwitchILj11821696ELj1818424473ELj120EE7HandlerERK11SwitchEvent": "0xb463e0",
+            "_ZTV14SwitchCallbackILj11821696E12SingleSwitchILj11821696ELj1818424473ELj120EEE": "0x18a8d10",
+            "_ZN13SwitchBindingILj11821696EE6InvokeEv": "0xb463f0",
+            "_ZN13SwitchBindingILj11821696EE8registryE": "0x1935068",
+            "_ZN13SwitchBindingILj11821696EE10UnregisterEPvS1_jS1_": "0xc00d00",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30",
+            "_Unwind_Resume": "0xfa4920",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xb47170",
+          "size": 304,
+          "symbol": "_ZN12SingleSwitchILj11825520ELj1818424473ELj80EE7DisableEv",
+          "target_sha256": "8ab0e78b5c9e105443b38c0fe731d83238a76ce4bf4818967d6666fcec79dd4a",
+          "bindings": {
+            "_ZN13SwitchBindingILj11825520EE7contextE": "0x1935058",
+            "_ZN13SwitchBindingILj11825520EE8AllocateEPvm": "0xa972b0",
+            "_ZN12SingleSwitchILj11825520ELj1818424473ELj80EE7HandlerERK11SwitchEvent": "0xb47320",
+            "_ZTV14SwitchCallbackILj11825520E12SingleSwitchILj11825520ELj1818424473ELj80EEE": "0x18a90f0",
+            "_ZN13SwitchBindingILj11825520EE6InvokeEv": "0xb47360",
+            "_ZN13SwitchBindingILj11825520EE8registryE": "0x1935068",
+            "_ZN13SwitchBindingILj11825520EE10UnregisterEPvS1_jS1_": "0xc00d00",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30",
+            "_Unwind_Resume": "0xfa4920",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xb4f250",
+          "size": 304,
+          "symbol": "_ZN12SingleSwitchILj11858512ELj1818424473ELj224EE7DisableEv",
+          "target_sha256": "fd4ad3f09198595d0f7897e3857374fda97d80a591a30cb9233fb969b7f22e92",
+          "bindings": {
+            "_ZN13SwitchBindingILj11858512EE7contextE": "0x1935058",
+            "_ZN13SwitchBindingILj11858512EE8AllocateEPvm": "0xa972b0",
+            "_ZN12SingleSwitchILj11858512ELj1818424473ELj224EE7HandlerERK11SwitchEvent": "0xb4fde0",
+            "_ZTV14SwitchCallbackILj11858512E12SingleSwitchILj11858512ELj1818424473ELj224EEE": "0x18a9bd8",
+            "_ZN13SwitchBindingILj11858512EE6InvokeEv": "0xb4fe60",
+            "_ZN13SwitchBindingILj11858512EE8registryE": "0x1935068",
+            "_ZN13SwitchBindingILj11858512EE10UnregisterEPvS1_jS1_": "0xc00d00",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30",
+            "_Unwind_Resume": "0xfa4920",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xb54460",
+          "size": 304,
+          "symbol": "_ZN12SingleSwitchILj11879520ELj1818424473ELj80EE7DisableEv",
+          "target_sha256": "6306d111867de9b6fd14561a9ed7b75b531d7403279ed9a9021843969a58a954",
+          "bindings": {
+            "_ZN13SwitchBindingILj11879520EE7contextE": "0x1935058",
+            "_ZN13SwitchBindingILj11879520EE8AllocateEPvm": "0xa972b0",
+            "_ZN12SingleSwitchILj11879520ELj1818424473ELj80EE7HandlerERK11SwitchEvent": "0xb546e0",
+            "_ZTV14SwitchCallbackILj11879520E12SingleSwitchILj11879520ELj1818424473ELj80EEE": "0x18aa298",
+            "_ZN13SwitchBindingILj11879520EE6InvokeEv": "0xb54720",
+            "_ZN13SwitchBindingILj11879520EE8registryE": "0x1935068",
+            "_ZN13SwitchBindingILj11879520EE10UnregisterEPvS1_jS1_": "0xc00d00",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30",
+            "_Unwind_Resume": "0xfa4920",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        }
+      ]
+    },
+    {
+      "id": "single_switch_enable_omit_no_pic",
+      "source": "src/SingleSwitchEnableOmitNoPic.cpp",
+      "compiler": "8.0.1",
+      "source_review": "manual_reconstruction",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-std=c++11",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-O2",
+        "-fomit-frame-pointer",
+        "-fno-pic"
+      ],
+      "functions": [
+        {
+          "address": "0x8c7a80",
+          "size": 316,
+          "symbol": "_ZN12SingleSwitchILj9206400ELj1818424473ELj144EE6EnableEv",
+          "target_sha256": "f8e1ec69ddd44230ef79bc4d6b78c7f4a82bfe1073b6e30e0315b819cfb0e50d",
+          "bindings": {
+            "_ZN13SwitchBindingILj9206400EE7contextE": "0x1935058",
+            "_ZN13SwitchBindingILj9206400EE8AllocateEPvm": "0xa972b0",
+            "_ZN12SingleSwitchILj9206400ELj1818424473ELj144EE7HandlerERK11SwitchEvent": "0x8c8090",
+            "_ZTV14SwitchCallbackILj9206400E12SingleSwitchILj9206400ELj1818424473ELj144EEE": "0x18652a0",
+            "_ZN13SwitchBindingILj9206400EE6InvokeEv": "0x8c80a0",
+            "_ZN13SwitchBindingILj9206400EE8registryE": "0x1935068",
+            "_ZN13SwitchBindingILj9206400EE8RegisterEPvS1_jS1_m": "0xbf6b10",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30",
+            "_ZN12SingleSwitchILj9206400ELj1818424473ELj144EE7RefreshEv": "0x8c8160",
+            "_Unwind_Resume": "0xfa4920",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x8c8cc0",
+          "size": 316,
+          "symbol": "_ZN12SingleSwitchILj9211072ELj1818424473ELj144EE6EnableEv",
+          "target_sha256": "9447aa91580c73ef88050fa586c0107d452a6e51930b3583dbdd1bbbd7ccc580",
+          "bindings": {
+            "_ZN13SwitchBindingILj9211072EE7contextE": "0x1935058",
+            "_ZN13SwitchBindingILj9211072EE8AllocateEPvm": "0xa972b0",
+            "_ZN12SingleSwitchILj9211072ELj1818424473ELj144EE7HandlerERK11SwitchEvent": "0x8c92d0",
+            "_ZTV14SwitchCallbackILj9211072E12SingleSwitchILj9211072ELj1818424473ELj144EEE": "0x1865700",
+            "_ZN13SwitchBindingILj9211072EE6InvokeEv": "0x8c92e0",
+            "_ZN13SwitchBindingILj9211072EE8registryE": "0x1935068",
+            "_ZN13SwitchBindingILj9211072EE8RegisterEPvS1_jS1_m": "0xbf6b10",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30",
+            "_ZN12SingleSwitchILj9211072ELj1818424473ELj144EE7RefreshEv": "0x8c93a0",
+            "_Unwind_Resume": "0xfa4920",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x8c97c0",
+          "size": 316,
+          "symbol": "_ZN12SingleSwitchILj9213888ELj1818424473ELj144EE6EnableEv",
+          "target_sha256": "53c958fef87beabc92ab0165dca84cd5b7c91ac10edc38ed18ba644bce85bcc5",
+          "bindings": {
+            "_ZN13SwitchBindingILj9213888EE7contextE": "0x1935058",
+            "_ZN13SwitchBindingILj9213888EE8AllocateEPvm": "0xa972b0",
+            "_ZN12SingleSwitchILj9213888ELj1818424473ELj144EE7HandlerERK11SwitchEvent": "0x8c9dd0",
+            "_ZTV14SwitchCallbackILj9213888E12SingleSwitchILj9213888ELj1818424473ELj144EEE": "0x1865a00",
+            "_ZN13SwitchBindingILj9213888EE6InvokeEv": "0x8c9de0",
+            "_ZN13SwitchBindingILj9213888EE8registryE": "0x1935068",
+            "_ZN13SwitchBindingILj9213888EE8RegisterEPvS1_jS1_m": "0xbf6b10",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30",
+            "_ZN12SingleSwitchILj9213888ELj1818424473ELj144EE7RefreshEv": "0x8c9ea0",
+            "_Unwind_Resume": "0xfa4920",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x8ca2c0",
+          "size": 316,
+          "symbol": "_ZN12SingleSwitchILj9216704ELj1818424473ELj144EE6EnableEv",
+          "target_sha256": "fbb366b709465784943297db4e97989bad994d432076506c4110465c637fafc3",
+          "bindings": {
+            "_ZN13SwitchBindingILj9216704EE7contextE": "0x1935058",
+            "_ZN13SwitchBindingILj9216704EE8AllocateEPvm": "0xa972b0",
+            "_ZN12SingleSwitchILj9216704ELj1818424473ELj144EE7HandlerERK11SwitchEvent": "0x8ca8d0",
+            "_ZTV14SwitchCallbackILj9216704E12SingleSwitchILj9216704ELj1818424473ELj144EEE": "0x1865d00",
+            "_ZN13SwitchBindingILj9216704EE6InvokeEv": "0x8ca8e0",
+            "_ZN13SwitchBindingILj9216704EE8registryE": "0x1935068",
+            "_ZN13SwitchBindingILj9216704EE8RegisterEPvS1_jS1_m": "0xbf6b10",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30",
+            "_ZN12SingleSwitchILj9216704ELj1818424473ELj144EE7RefreshEv": "0x8ca9a0",
+            "_Unwind_Resume": "0xfa4920",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xacc4d0",
+          "size": 316,
+          "symbol": "_ZN12SingleSwitchILj11322576ELj1818424473ELj120EE6EnableEv",
+          "target_sha256": "d4c1757a6baa95fd070a66452f16916ecfd5a7ea2d7ee00ee4a481c270da267b",
+          "bindings": {
+            "_ZN13SwitchBindingILj11322576EE7contextE": "0x1935058",
+            "_ZN13SwitchBindingILj11322576EE8AllocateEPvm": "0xa972b0",
+            "_ZN12SingleSwitchILj11322576ELj1818424473ELj120EE7HandlerERK11SwitchEvent": "0xacc770",
+            "_ZTV14SwitchCallbackILj11322576E12SingleSwitchILj11322576ELj1818424473ELj120EEE": "0x189fe50",
+            "_ZN13SwitchBindingILj11322576EE6InvokeEv": "0xacc780",
+            "_ZN13SwitchBindingILj11322576EE8registryE": "0x1935068",
+            "_ZN13SwitchBindingILj11322576EE8RegisterEPvS1_jS1_m": "0xbf6b10",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30",
+            "_ZN12SingleSwitchILj11322576ELj1818424473ELj120EE7RefreshEv": "0xacc840",
+            "_Unwind_Resume": "0xfa4920",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xb11b40",
+          "size": 316,
+          "symbol": "_ZN12SingleSwitchILj11606848ELj1818424473ELj80EE6EnableEv",
+          "target_sha256": "79b3fd8abbec438c09c58db033e32472c0e16062f7ca9acbdfff83225f0f47d5",
+          "bindings": {
+            "_ZN13SwitchBindingILj11606848EE7contextE": "0x1935058",
+            "_ZN13SwitchBindingILj11606848EE8AllocateEPvm": "0xa972b0",
+            "_ZN12SingleSwitchILj11606848ELj1818424473ELj80EE7HandlerERK11SwitchEvent": "0xb127b0",
+            "_ZTV14SwitchCallbackILj11606848E12SingleSwitchILj11606848ELj1818424473ELj80EEE": "0x18a4830",
+            "_ZN13SwitchBindingILj11606848EE6InvokeEv": "0xb127f0",
+            "_ZN13SwitchBindingILj11606848EE8registryE": "0x1935068",
+            "_ZN13SwitchBindingILj11606848EE8RegisterEPvS1_jS1_m": "0xbf6b10",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30",
+            "_ZN12SingleSwitchILj11606848ELj1818424473ELj80EE7RefreshEv": "0xb128b0",
+            "_Unwind_Resume": "0xfa4920",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xb18080",
+          "size": 316,
+          "symbol": "_ZN12SingleSwitchILj11632768ELj1818424473ELj120EE6EnableEv",
+          "target_sha256": "597abdc320e168252f328dee22d24f92833a544626eb87fd19132ffc3fb6b313",
+          "bindings": {
+            "_ZN13SwitchBindingILj11632768EE7contextE": "0x1935058",
+            "_ZN13SwitchBindingILj11632768EE8AllocateEPvm": "0xa972b0",
+            "_ZN12SingleSwitchILj11632768ELj1818424473ELj120EE7HandlerERK11SwitchEvent": "0xb19ab0",
+            "_ZTV14SwitchCallbackILj11632768E12SingleSwitchILj11632768ELj1818424473ELj120EEE": "0x18a4fc0",
+            "_ZN13SwitchBindingILj11632768EE6InvokeEv": "0xb19af0",
+            "_ZN13SwitchBindingILj11632768EE8registryE": "0x1935068",
+            "_ZN13SwitchBindingILj11632768EE8RegisterEPvS1_jS1_m": "0xbf6b10",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30",
+            "_ZN12SingleSwitchILj11632768ELj1818424473ELj120EE7RefreshEv": "0xb19bb0",
+            "_Unwind_Resume": "0xfa4920",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xb46140",
+          "size": 316,
+          "symbol": "_ZN12SingleSwitchILj11821376ELj1818424473ELj120EE6EnableEv",
+          "target_sha256": "f291233a1ac3b60c702702439ddb47fbd73a183b08d2dd78bd8b1b5c66ff7f17",
+          "bindings": {
+            "_ZN13SwitchBindingILj11821376EE7contextE": "0x1935058",
+            "_ZN13SwitchBindingILj11821376EE8AllocateEPvm": "0xa972b0",
+            "_ZN12SingleSwitchILj11821376ELj1818424473ELj120EE7HandlerERK11SwitchEvent": "0xb463e0",
+            "_ZTV14SwitchCallbackILj11821376E12SingleSwitchILj11821376ELj1818424473ELj120EEE": "0x18a8d10",
+            "_ZN13SwitchBindingILj11821376EE6InvokeEv": "0xb463f0",
+            "_ZN13SwitchBindingILj11821376EE8registryE": "0x1935068",
+            "_ZN13SwitchBindingILj11821376EE8RegisterEPvS1_jS1_m": "0xbf6b10",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30",
+            "_ZN12SingleSwitchILj11821376ELj1818424473ELj120EE7RefreshEv": "0xb464b0",
+            "_Unwind_Resume": "0xfa4920",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xb4f110",
+          "size": 316,
+          "symbol": "_ZN12SingleSwitchILj11858192ELj1818424473ELj224EE6EnableEv",
+          "target_sha256": "df82ef63b84d9973c93b768f0f652caf2c5abad6be9118b85af3f968ecf03420",
+          "bindings": {
+            "_ZN13SwitchBindingILj11858192EE7contextE": "0x1935058",
+            "_ZN13SwitchBindingILj11858192EE8AllocateEPvm": "0xa972b0",
+            "_ZN12SingleSwitchILj11858192ELj1818424473ELj224EE7HandlerERK11SwitchEvent": "0xb4fde0",
+            "_ZTV14SwitchCallbackILj11858192E12SingleSwitchILj11858192ELj1818424473ELj224EEE": "0x18a9bd8",
+            "_ZN13SwitchBindingILj11858192EE6InvokeEv": "0xb4fe60",
+            "_ZN13SwitchBindingILj11858192EE8registryE": "0x1935068",
+            "_ZN13SwitchBindingILj11858192EE8RegisterEPvS1_jS1_m": "0xbf6b10",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30",
+            "_ZN12SingleSwitchILj11858192ELj1818424473ELj224EE7RefreshEv": "0xb4ff20",
+            "_Unwind_Resume": "0xfa4920",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xb54d30",
+          "size": 316,
+          "symbol": "_ZN12SingleSwitchILj11881776ELj1818424473ELj144EE6EnableEv",
+          "target_sha256": "3324415b2230093051566b838731ebb04c2bd56e302d590d2284b9940dde28c9",
+          "bindings": {
+            "_ZN13SwitchBindingILj11881776EE7contextE": "0x1935058",
+            "_ZN13SwitchBindingILj11881776EE8AllocateEPvm": "0xa972b0",
+            "_ZN12SingleSwitchILj11881776ELj1818424473ELj144EE7HandlerERK11SwitchEvent": "0xb554b0",
+            "_ZTV14SwitchCallbackILj11881776E12SingleSwitchILj11881776ELj1818424473ELj144EEE": "0x18aa540",
+            "_ZN13SwitchBindingILj11881776EE6InvokeEv": "0xb554d0",
+            "_ZN13SwitchBindingILj11881776EE8registryE": "0x1935068",
+            "_ZN13SwitchBindingILj11881776EE8RegisterEPvS1_jS1_m": "0xbf6b10",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30",
+            "_ZN12SingleSwitchILj11881776ELj1818424473ELj144EE7RefreshEv": "0xb55590",
+            "_Unwind_Resume": "0xfa4920",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xba0ab0",
+          "size": 316,
+          "symbol": "_ZN12SingleSwitchILj12192432ELj1818424473ELj144EE6EnableEv",
+          "target_sha256": "b60b804abb2b3131885a0c050ecdb8baa0624b1b25b3f586698acba04c6b9569",
+          "bindings": {
+            "_ZN13SwitchBindingILj12192432EE7contextE": "0x1935058",
+            "_ZN13SwitchBindingILj12192432EE8AllocateEPvm": "0xa972b0",
+            "_ZN12SingleSwitchILj12192432ELj1818424473ELj144EE7HandlerERK11SwitchEvent": "0xba1350",
+            "_ZTV14SwitchCallbackILj12192432E12SingleSwitchILj12192432ELj1818424473ELj144EEE": "0x18b0cc8",
+            "_ZN13SwitchBindingILj12192432EE6InvokeEv": "0xba1410",
+            "_ZN13SwitchBindingILj12192432EE8registryE": "0x1935068",
+            "_ZN13SwitchBindingILj12192432EE8RegisterEPvS1_jS1_m": "0xbf6b10",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30",
+            "_ZN12SingleSwitchILj12192432ELj1818424473ELj144EE7RefreshEv": "0xba14d0",
+            "_Unwind_Resume": "0xfa4920",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xba22e0",
+          "size": 316,
+          "symbol": "_ZN12SingleSwitchILj12198624ELj1818424473ELj144EE6EnableEv",
+          "target_sha256": "227f7bca55063e0088b9f2860a4f8bff3829aa169a04c85dd884d662caa5dd4f",
+          "bindings": {
+            "_ZN13SwitchBindingILj12198624EE7contextE": "0x1935058",
+            "_ZN13SwitchBindingILj12198624EE8AllocateEPvm": "0xa972b0",
+            "_ZN12SingleSwitchILj12198624ELj1818424473ELj144EE7HandlerERK11SwitchEvent": "0xba2e30",
+            "_ZTV14SwitchCallbackILj12198624E12SingleSwitchILj12198624ELj1818424473ELj144EEE": "0x18b0ee0",
+            "_ZN13SwitchBindingILj12198624EE6InvokeEv": "0xba2ef0",
+            "_ZN13SwitchBindingILj12198624EE8registryE": "0x1935068",
+            "_ZN13SwitchBindingILj12198624EE8RegisterEPvS1_jS1_m": "0xbf6b10",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30",
+            "_ZN12SingleSwitchILj12198624ELj1818424473ELj144EE7RefreshEv": "0xba2fb0",
+            "_Unwind_Resume": "0xfa4920",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        }
+      ]
+    },
+    {
+      "id": "registered_trigger_destructor_omit_no_pic",
+      "source": "src/RegisteredTriggerDestructorOmitNoPic.cpp",
+      "compiler": "8.0.1",
+      "source_review": "manual_reconstruction",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-std=c++11",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-O2",
+        "-fomit-frame-pointer",
+        "-fno-pic"
+      ],
+      "functions": [
+        {
+          "address": "0x7cbd30",
+          "size": 272,
+          "symbol": "_ZN7TriggerILj8174896ELj80ELj104EED1Ev",
+          "target_sha256": "525ae1c7330641170e1b722cb9a3a8c48c01f8e7ebec3f7c7b7d6fc61872e42a",
+          "bindings": {
+            "_ZTV7TriggerILj8174896ELj80ELj104EE": "0x1850798",
+            "_ZN12RegistrationILj8174896ELj1EE10UnregisterEv": "0x7cca30",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30",
+            "_ZN12RegistrationILj8174896ELj0EE10UnregisterEv": "0x7ccdb0",
+            "_ZN11TriggerBaseILj8174896ELj80EED2Ev": "0x677400",
+            "_ZN11ObjectOwnerILj8174896ELj0EED2Ev": "0x7cd0d0",
+            "__clang_call_terminate": "0x6768b8",
+            "_ZN11ObjectOwnerILj8174896ELj1EED2Ev": "0x7ccd50"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x7fb860",
+          "size": 272,
+          "symbol": "_ZN7TriggerILj8370272ELj88ELj112EED1Ev",
+          "target_sha256": "eadc3723919bf5d6171e79bf6b764134c8c9478a87a2ed363ed7fa56d874eb50",
+          "bindings": {
+            "_ZTV7TriggerILj8370272ELj88ELj112EE": "0x18526a0",
+            "_ZN12RegistrationILj8370272ELj1EE10UnregisterEv": "0x7cd520",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30",
+            "_ZN12RegistrationILj8370272ELj0EE10UnregisterEv": "0x7cca30",
+            "_ZN11TriggerBaseILj8370272ELj88EED2Ev": "0x7fb550",
+            "_ZN11ObjectOwnerILj8370272ELj0EED2Ev": "0x7ccd50",
+            "__clang_call_terminate": "0x6768b8",
+            "_ZN11ObjectOwnerILj8370272ELj1EED2Ev": "0x7cd840"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x849680",
+          "size": 272,
+          "symbol": "_ZN7TriggerILj8689280ELj88ELj112EED1Ev",
+          "target_sha256": "fc8d5ac4dd91e4d295e4c63fe68408f85692e7732b8e25ef2fba18b28b423e90",
+          "bindings": {
+            "_ZTV7TriggerILj8689280ELj88ELj112EE": "0x18585a8",
+            "_ZN12RegistrationILj8689280ELj1EE10UnregisterEv": "0x848630",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30",
+            "_ZN12RegistrationILj8689280ELj0EE10UnregisterEv": "0x8489b0",
+            "_ZN11TriggerBaseILj8689280ELj88EED2Ev": "0x848d30",
+            "_ZN11ObjectOwnerILj8689280ELj0EED2Ev": "0x848cd0",
+            "__clang_call_terminate": "0x6768b8",
+            "_ZN11ObjectOwnerILj8689280ELj1EED2Ev": "0x848950"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x8e0630",
+          "size": 272,
+          "symbol": "_ZN7TriggerILj9307696ELj80ELj104EED1Ev",
+          "target_sha256": "298bb3cb47e76f38edd98eb0d99ac4035024e0f0b7623a08c9b033b6c17c0c44",
+          "bindings": {
+            "_ZTV7TriggerILj9307696ELj80ELj104EE": "0x18671d8",
+            "_ZN12RegistrationILj9307696ELj1EE10UnregisterEv": "0x8df850",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30",
+            "_ZN12RegistrationILj9307696ELj0EE10UnregisterEv": "0x8dfbd0",
+            "_ZN11TriggerBaseILj9307696ELj80EED2Ev": "0x677400",
+            "_ZN11ObjectOwnerILj9307696ELj0EED2Ev": "0x8dfef0",
+            "__clang_call_terminate": "0x6768b8",
+            "_ZN11ObjectOwnerILj9307696ELj1EED2Ev": "0x8dfb70"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x8f6410",
+          "size": 272,
+          "symbol": "_ZN7TriggerILj9397264ELj168ELj192EED1Ev",
+          "target_sha256": "8a8c7f2509b3b054000774693c3af3114a0c42d0374751722957f0bdd1d221d9",
+          "bindings": {
+            "_ZTV7TriggerILj9397264ELj168ELj192EE": "0x1869890",
+            "_ZN12RegistrationILj9397264ELj1EE10UnregisterEv": "0x8f77c0",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30",
+            "_ZN12RegistrationILj9397264ELj0EE10UnregisterEv": "0x763220",
+            "_ZN11TriggerBaseILj9397264ELj168EED2Ev": "0x8f7b40",
+            "_ZN11ObjectOwnerILj9397264ELj0EED2Ev": "0x763540",
+            "__clang_call_terminate": "0x6768b8",
+            "_ZN11ObjectOwnerILj9397264ELj1EED2Ev": "0x8f7ae0"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x933950",
+          "size": 272,
+          "symbol": "_ZN7TriggerILj9648464ELj88ELj112EED1Ev",
+          "target_sha256": "3af33f49bd66121758cbed88aaabde91efb0986a0ff8130a05a28028d203f0e9",
+          "bindings": {
+            "_ZTV7TriggerILj9648464ELj88ELj112EE": "0x186e930",
+            "_ZN12RegistrationILj9648464ELj1EE10UnregisterEv": "0x933040",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30",
+            "_ZN12RegistrationILj9648464ELj0EE10UnregisterEv": "0x71def0",
+            "_ZN11TriggerBaseILj9648464ELj88EED2Ev": "0x9333c0",
+            "_ZN11ObjectOwnerILj9648464ELj0EED2Ev": "0x71e210",
+            "__clang_call_terminate": "0x6768b8",
+            "_ZN11ObjectOwnerILj9648464ELj1EED2Ev": "0x933360"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x9a35b0",
+          "size": 272,
+          "symbol": "_ZN7TriggerILj10106288ELj576ELj600EED1Ev",
+          "target_sha256": "ee6fda2de9efabf31eeda7273db413a6afdace315c19bc200d684e558c427047",
+          "bindings": {
+            "_ZTV7TriggerILj10106288ELj576ELj600EE": "0x1878f78",
+            "_ZN12RegistrationILj10106288ELj1EE10UnregisterEv": "0x9a2870",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30",
+            "_ZN12RegistrationILj10106288ELj0EE10UnregisterEv": "0x9a2bf0",
+            "_ZN11TriggerBaseILj10106288ELj576EED2Ev": "0x9470c0",
+            "_ZN11ObjectOwnerILj10106288ELj0EED2Ev": "0x9a2f10",
+            "__clang_call_terminate": "0x6768b8",
+            "_ZN11ObjectOwnerILj10106288ELj1EED2Ev": "0x9a2b90"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x9ba180",
+          "size": 272,
+          "symbol": "_ZN7TriggerILj10199424ELj512ELj536EED1Ev",
+          "target_sha256": "edf812ab84c72e470fbdc0db8458f8112bb6e4f3b5dfb4c5e22b397567b72b6d",
+          "bindings": {
+            "_ZTV7TriggerILj10199424ELj512ELj536EE": "0x187a358",
+            "_ZN12RegistrationILj10199424ELj1EE10UnregisterEv": "0x9b8f30",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30",
+            "_ZN12RegistrationILj10199424ELj0EE10UnregisterEv": "0x9b92b0",
+            "_ZN11TriggerBaseILj10199424ELj512EED2Ev": "0x9b9630",
+            "_ZN11ObjectOwnerILj10199424ELj0EED2Ev": "0x9b95d0",
+            "__clang_call_terminate": "0x6768b8",
+            "_ZN11ObjectOwnerILj10199424ELj1EED2Ev": "0x9b9250"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xacb670",
+          "size": 272,
+          "symbol": "_ZN7TriggerILj11318896ELj160ELj184EED1Ev",
+          "target_sha256": "d707a11411d330b795d09bf996b45fba071b57a25f0ab400d6ce3544e10ff3b0",
+          "bindings": {
+            "_ZTV7TriggerILj11318896ELj160ELj184EE": "0x189faf0",
+            "_ZN12RegistrationILj11318896ELj1EE10UnregisterEv": "0xaca610",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30",
+            "_ZN12RegistrationILj11318896ELj0EE10UnregisterEv": "0xaca990",
+            "_ZN11TriggerBaseILj11318896ELj160EED2Ev": "0xacad10",
+            "_ZN11ObjectOwnerILj11318896ELj0EED2Ev": "0xacacb0",
+            "__clang_call_terminate": "0x6768b8",
+            "_ZN11ObjectOwnerILj11318896ELj1EED2Ev": "0xaca930"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xad12c0",
+          "size": 272,
+          "symbol": "_ZN7TriggerILj11342528ELj80ELj104EED1Ev",
+          "target_sha256": "51c58726ceb37120ffebd59af7fdc3a625dceb1008feaef33fed89cced610bc4",
+          "bindings": {
+            "_ZTV7TriggerILj11342528ELj80ELj104EE": "0x18a0818",
+            "_ZN12RegistrationILj11342528ELj1EE10UnregisterEv": "0xad13d0",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30",
+            "_ZN12RegistrationILj11342528ELj0EE10UnregisterEv": "0xad1750",
+            "_ZN11TriggerBaseILj11342528ELj80EED2Ev": "0x677400",
+            "_ZN11ObjectOwnerILj11342528ELj0EED2Ev": "0xad1a70",
+            "__clang_call_terminate": "0x6768b8",
+            "_ZN11ObjectOwnerILj11342528ELj1EED2Ev": "0xad16f0"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xb627d0",
+          "size": 272,
+          "symbol": "_ZN7TriggerILj11937744ELj136ELj160EED1Ev",
+          "target_sha256": "faeda6fe79c49b0d1a811e97dbe2c69d491260644dda423d9b5f3c465051cc9d",
+          "bindings": {
+            "_ZTV7TriggerILj11937744ELj136ELj160EE": "0x18ab618",
+            "_ZN12RegistrationILj11937744ELj1EE10UnregisterEv": "0x8f77c0",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30",
+            "_ZN12RegistrationILj11937744ELj0EE10UnregisterEv": "0x763220",
+            "_ZN11TriggerBaseILj11937744ELj136EED2Ev": "0xb61900",
+            "_ZN11ObjectOwnerILj11937744ELj0EED2Ev": "0x763540",
+            "__clang_call_terminate": "0x6768b8",
+            "_ZN11ObjectOwnerILj11937744ELj1EED2Ev": "0x8f7ae0"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xb8edb0",
+          "size": 272,
+          "symbol": "_ZN7TriggerILj12119472ELj80ELj104EED1Ev",
+          "target_sha256": "2d20e0667ab692ced34ad9754db523b13d14adbdc0f16dfb7d0dee5ef8b4d293",
+          "bindings": {
+            "_ZTV7TriggerILj12119472ELj80ELj104EE": "0x18af338",
+            "_ZN12RegistrationILj12119472ELj1EE10UnregisterEv": "0xb8df30",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30",
+            "_ZN12RegistrationILj12119472ELj0EE10UnregisterEv": "0xb8e2b0",
+            "_ZN11TriggerBaseILj12119472ELj80EED2Ev": "0x677400",
+            "_ZN11ObjectOwnerILj12119472ELj0EED2Ev": "0xb8e5d0",
+            "__clang_call_terminate": "0x6768b8",
+            "_ZN11ObjectOwnerILj12119472ELj1EED2Ev": "0xb8e250"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xbcc5a0",
+          "size": 272,
+          "symbol": "_ZN7TriggerILj12371360ELj88ELj112EED1Ev",
+          "target_sha256": "f161b2e0d0acb4f00b05cd3018b4c0b5d8e76ec90c73ad9fd074c0c513ed9b51",
+          "bindings": {
+            "_ZTV7TriggerILj12371360ELj88ELj112EE": "0x18b4510",
+            "_ZN12RegistrationILj12371360ELj1EE10UnregisterEv": "0x8f77c0",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30",
+            "_ZN12RegistrationILj12371360ELj0EE10UnregisterEv": "0x763220",
+            "_ZN11TriggerBaseILj12371360ELj88EED2Ev": "0xbcc290",
+            "_ZN11ObjectOwnerILj12371360ELj0EED2Ev": "0x763540",
+            "__clang_call_terminate": "0x6768b8",
+            "_ZN11ObjectOwnerILj12371360ELj1EED2Ev": "0x8f7ae0"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xc9cfc0",
+          "size": 272,
+          "symbol": "_ZN7TriggerILj13225920ELj128ELj152EED1Ev",
+          "target_sha256": "4bb18c295f21e2e8e0dc062df3805b4d3ab3e07598cf924ec9f2c78e11cecca9",
+          "bindings": {
+            "_ZTV7TriggerILj13225920ELj128ELj152EE": "0x18c2c78",
+            "_ZN12RegistrationILj13225920ELj1EE10UnregisterEv": "0xc9be70",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30",
+            "_ZN12RegistrationILj13225920ELj0EE10UnregisterEv": "0xc9c1f0",
+            "_ZN11TriggerBaseILj13225920ELj128EED2Ev": "0xc9c570",
+            "_ZN11ObjectOwnerILj13225920ELj0EED2Ev": "0xc9c510",
+            "__clang_call_terminate": "0x6768b8",
+            "_ZN11ObjectOwnerILj13225920ELj1EED2Ev": "0xc9c190"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xcde270",
+          "size": 272,
+          "symbol": "_ZN7TriggerILj13492848ELj80ELj104EED1Ev",
+          "target_sha256": "46af737c39a60bf96ccc7ff40dacd4c237963bc62bfff50353b50d376b5f32a7",
+          "bindings": {
+            "_ZTV7TriggerILj13492848ELj80ELj104EE": "0x18c9eb0",
+            "_ZN12RegistrationILj13492848ELj1EE10UnregisterEv": "0xcde380",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30",
+            "_ZN12RegistrationILj13492848ELj0EE10UnregisterEv": "0xcde700",
+            "_ZN11TriggerBaseILj13492848ELj80EED2Ev": "0x677400",
+            "_ZN11ObjectOwnerILj13492848ELj0EED2Ev": "0xcdea20",
+            "__clang_call_terminate": "0x6768b8",
+            "_ZN11ObjectOwnerILj13492848ELj1EED2Ev": "0xcde6a0"
+          },
+          "got_bindings": {}
+        }
+      ]
+    },
+    {
+      "id": "color_property_read_omit_no_pic",
+      "source": "src/ColorPropertyReadOmitNoPic.cpp",
+      "compiler": "8.0.1",
+      "source_review": "manual_reconstruction",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-std=c++11",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-O2",
+        "-fomit-frame-pointer",
+        "-fno-pic"
+      ],
+      "functions": [
+        {
+          "address": "0xae1b50",
+          "size": 212,
+          "symbol": "_ZN13ColorPropertyILj11410256EE4ReadER7Archive",
+          "target_sha256": "1f66555ca3790a8991691a201a97eaee2faf6214ec4a8a7762e9db6251b00b01",
+          "bindings": {},
+          "got_bindings": {}
+        },
+        {
+          "address": "0xae1d60",
+          "size": 212,
+          "symbol": "_ZN13ColorPropertyILj11410784EE4ReadER7Archive",
+          "target_sha256": "1f66555ca3790a8991691a201a97eaee2faf6214ec4a8a7762e9db6251b00b01",
+          "bindings": {},
+          "got_bindings": {}
+        },
+        {
+          "address": "0xae1e60",
+          "size": 212,
+          "symbol": "_ZN13ColorPropertyILj11411040EE4ReadER7Archive",
+          "target_sha256": "1f66555ca3790a8991691a201a97eaee2faf6214ec4a8a7762e9db6251b00b01",
+          "bindings": {},
+          "got_bindings": {}
+        },
+        {
+          "address": "0xaeb800",
+          "size": 212,
+          "symbol": "_ZN13ColorPropertyILj11450368EE4ReadER7Archive",
+          "target_sha256": "1f66555ca3790a8991691a201a97eaee2faf6214ec4a8a7762e9db6251b00b01",
+          "bindings": {},
+          "got_bindings": {}
+        },
+        {
+          "address": "0xaeba10",
+          "size": 212,
+          "symbol": "_ZN13ColorPropertyILj11450896EE4ReadER7Archive",
+          "target_sha256": "1f66555ca3790a8991691a201a97eaee2faf6214ec4a8a7762e9db6251b00b01",
+          "bindings": {},
+          "got_bindings": {}
+        },
+        {
+          "address": "0xaebc20",
+          "size": 212,
+          "symbol": "_ZN13ColorPropertyILj11451424EE4ReadER7Archive",
+          "target_sha256": "1f66555ca3790a8991691a201a97eaee2faf6214ec4a8a7762e9db6251b00b01",
+          "bindings": {},
+          "got_bindings": {}
+        },
+        {
+          "address": "0xb67c40",
+          "size": 212,
+          "symbol": "_ZN13ColorPropertyILj11959360EE4ReadER7Archive",
+          "target_sha256": "1f66555ca3790a8991691a201a97eaee2faf6214ec4a8a7762e9db6251b00b01",
+          "bindings": {},
+          "got_bindings": {}
+        },
+        {
+          "address": "0xb68620",
+          "size": 212,
+          "symbol": "_ZN13ColorPropertyILj11961888EE4ReadER7Archive",
+          "target_sha256": "1f66555ca3790a8991691a201a97eaee2faf6214ec4a8a7762e9db6251b00b01",
+          "bindings": {},
+          "got_bindings": {}
+        },
+        {
+          "address": "0xb688c0",
+          "size": 212,
+          "symbol": "_ZN13ColorPropertyILj11962560EE4ReadER7Archive",
+          "target_sha256": "1f66555ca3790a8991691a201a97eaee2faf6214ec4a8a7762e9db6251b00b01",
+          "bindings": {},
+          "got_bindings": {}
+        },
+        {
+          "address": "0xb86440",
+          "size": 212,
+          "symbol": "_ZN13ColorPropertyILj12084288EE4ReadER7Archive",
+          "target_sha256": "1f66555ca3790a8991691a201a97eaee2faf6214ec4a8a7762e9db6251b00b01",
+          "bindings": {},
+          "got_bindings": {}
+        },
+        {
+          "address": "0xb86610",
+          "size": 212,
+          "symbol": "_ZN13ColorPropertyILj12084752EE4ReadER7Archive",
+          "target_sha256": "1f66555ca3790a8991691a201a97eaee2faf6214ec4a8a7762e9db6251b00b01",
+          "bindings": {},
+          "got_bindings": {}
+        },
+        {
+          "address": "0xb86950",
+          "size": 212,
+          "symbol": "_ZN13ColorPropertyILj12085584EE4ReadER7Archive",
+          "target_sha256": "1f66555ca3790a8991691a201a97eaee2faf6214ec4a8a7762e9db6251b00b01",
+          "bindings": {},
+          "got_bindings": {}
+        }
+      ]
+    },
+    {
+      "id": "handle_holder_release_omit_no_pic",
+      "source": "src/HandleHolderReleaseOmitNoPic.cpp",
+      "compiler": "8.0.1",
+      "source_review": "manual_reconstruction",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-std=c++11",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-O2",
+        "-fomit-frame-pointer",
+        "-fno-pic"
+      ],
+      "functions": [
+        {
+          "address": "0x695a40",
+          "size": 356,
+          "symbol": "_ZN12HandleHolderILj6904384ELj8EE7ReleaseEv",
+          "target_sha256": "f66749e12328595e224cd7d6b5c2500c26a93605a93c740bdbacfdda7149c064",
+          "bindings": {
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30",
+            "Accessor_Tracking": "0x1935068",
+            "Accessor_Lock": "0xfa4950",
+            "Accessor_Unlock": "0xfa4960",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x76c0d0",
+          "size": 356,
+          "symbol": "_ZN12HandleHolderILj7782608ELj40EE7ReleaseEv",
+          "target_sha256": "1a640bcda2f121b4fc9af87f149f6d4d2e0620d9d3665aa13742ef11dd1f4416",
+          "bindings": {
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30",
+            "Accessor_Tracking": "0x1935068",
+            "Accessor_Lock": "0xfa4950",
+            "Accessor_Unlock": "0xfa4960",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x7b5560",
+          "size": 356,
+          "symbol": "_ZN12HandleHolderILj8082784ELj8EE7ReleaseEv",
+          "target_sha256": "043d655d1441516750dc15f932bb4c749ba8a37ced5ae6855ec186d263677ff4",
+          "bindings": {
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30",
+            "Accessor_Tracking": "0x1935068",
+            "Accessor_Lock": "0xfa4950",
+            "Accessor_Unlock": "0xfa4960",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x8de470",
+          "size": 356,
+          "symbol": "_ZN12HandleHolderILj9299056ELj32EE7ReleaseEv",
+          "target_sha256": "5d12ad5f50022e5b8d30b04417c02b578b05ee0e1b68b47e243f75ccf6b9a6c8",
+          "bindings": {
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30",
+            "Accessor_Tracking": "0x1935068",
+            "Accessor_Lock": "0xfa4950",
+            "Accessor_Unlock": "0xfa4960",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x92ccf0",
+          "size": 356,
+          "symbol": "_ZN12HandleHolderILj9620720ELj16EE7ReleaseEv",
+          "target_sha256": "4aef285cd37b0bd043af052db02666c226b06954f74e9462c0c28d5577794b37",
+          "bindings": {
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30",
+            "Accessor_Tracking": "0x1935068",
+            "Accessor_Lock": "0xfa4950",
+            "Accessor_Unlock": "0xfa4960",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x962d60",
+          "size": 356,
+          "symbol": "_ZN12HandleHolderILj9842016ELj80EE7ReleaseEv",
+          "target_sha256": "9061d9c36b31fbdcf1398fe68221f85cb2d497ee714337e303cab0586162fc7a",
+          "bindings": {
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30",
+            "Accessor_Tracking": "0x1935068",
+            "Accessor_Lock": "0xfa4950",
+            "Accessor_Unlock": "0xfa4960",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x9deb70",
+          "size": 356,
+          "symbol": "_ZN12HandleHolderILj10349424ELj16EE7ReleaseEv",
+          "target_sha256": "83552746fee2aa727d846c1c78040c671b4aa955a074e32bc53def286eddb66c",
+          "bindings": {
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30",
+            "Accessor_Tracking": "0x1935068",
+            "Accessor_Lock": "0xfa4950",
+            "Accessor_Unlock": "0xfa4960",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x9e1770",
+          "size": 356,
+          "symbol": "_ZN12HandleHolderILj10360688ELj104EE7ReleaseEv",
+          "target_sha256": "86cc805207e7eb7212ec4eaff41e554b18d93c907a54aea2e763ff7f089ff902",
+          "bindings": {
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30",
+            "Accessor_Tracking": "0x1935068",
+            "Accessor_Lock": "0xfa4950",
+            "Accessor_Unlock": "0xfa4960",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xa17c60",
+          "size": 356,
+          "symbol": "_ZN12HandleHolderILj10583136ELj104EE7ReleaseEv",
+          "target_sha256": "a27965b89620ebbae866fbb55bcfc867ae6595a386935d0c05797e8adaacfab8",
+          "bindings": {
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30",
+            "Accessor_Tracking": "0x1935068",
+            "Accessor_Lock": "0xfa4950",
+            "Accessor_Unlock": "0xfa4960",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xadb3e0",
+          "size": 356,
+          "symbol": "_ZN12HandleHolderILj11383776ELj8EE7ReleaseEv",
+          "target_sha256": "08976c95d86d5672772fc88ffd2303898c90ef8efd81a9ca375d76eabb8493d9",
+          "bindings": {
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30",
+            "Accessor_Tracking": "0x1935068",
+            "Accessor_Lock": "0xfa4950",
+            "Accessor_Unlock": "0xfa4960",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        }
+      ]
+    },
+    {
+      "id": "compose_destructor_omit_no_pic",
+      "source": "src/ComposeDestructorOmitNoPic.cpp",
+      "compiler": "8.0.1",
+      "source_review": "manual_reconstruction",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-std=c++11",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-O2",
+        "-fomit-frame-pointer",
+        "-fno-pic"
+      ],
+      "functions": [
+        {
+          "address": "0x720630",
+          "size": 380,
+          "symbol": "_ZN7ComposeILj7472688ELj80ELj96EED1Ev",
+          "target_sha256": "2769de3d0044e3fec043dbe439d380c97df72ffc3c1e15a748856df6ab7bb177",
+          "bindings": {
+            "_ZTV7ComposeILj7472688ELj80ELj96EE": "0x1848a00",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30",
+            "Accessor_Tracking": "0x1935068",
+            "Accessor_Lock": "0xfa4950",
+            "Accessor_Unlock": "0xfa4960",
+            "_ZN13ComposeMemberILj7472688ELj16EED1Ev": "0x7207b0",
+            "_ZN11ComposeBaseILj7472688ELj80EED2Ev": "0x677400",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x814560",
+          "size": 380,
+          "symbol": "_ZN7ComposeILj8471904ELj688ELj704EED1Ev",
+          "target_sha256": "9b1cb9a76c4738fcf219032f36cf0ac5e177038cd2c8adc7eed2bc6a3cf83eba",
+          "bindings": {
+            "_ZTV7ComposeILj8471904ELj688ELj704EE": "0x18542b0",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30",
+            "Accessor_Tracking": "0x1935068",
+            "Accessor_Lock": "0xfa4950",
+            "Accessor_Unlock": "0xfa4960",
+            "_ZN13ComposeMemberILj8471904ELj16EED1Ev": "0x8146e0",
+            "_ZN11ComposeBaseILj8471904ELj688EED2Ev": "0x8017c0",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x817000",
+          "size": 380,
+          "symbol": "_ZN7ComposeILj8482816ELj688ELj704EED1Ev",
+          "target_sha256": "153cad8715da571582c6b914893cb77971b3a7b2e5a1eae54bb8730544f25474",
+          "bindings": {
+            "_ZTV7ComposeILj8482816ELj688ELj704EE": "0x1854660",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30",
+            "Accessor_Tracking": "0x1935068",
+            "Accessor_Lock": "0xfa4950",
+            "Accessor_Unlock": "0xfa4960",
+            "_ZN13ComposeMemberILj8482816ELj16EED1Ev": "0x817180",
+            "_ZN11ComposeBaseILj8482816ELj688EED2Ev": "0x8017c0",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x82d170",
+          "size": 380,
+          "symbol": "_ZN7ComposeILj8573296ELj688ELj704EED1Ev",
+          "target_sha256": "3c388d879c4653d727e2a8a11fedc41fd1841e68e9808c2d1575deec6caecaa2",
+          "bindings": {
+            "_ZTV7ComposeILj8573296ELj688ELj704EE": "0x1855b58",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30",
+            "Accessor_Tracking": "0x1935068",
+            "Accessor_Lock": "0xfa4950",
+            "Accessor_Unlock": "0xfa4960",
+            "_ZN13ComposeMemberILj8573296ELj16EED1Ev": "0x8146e0",
+            "_ZN11ComposeBaseILj8573296ELj688EED2Ev": "0x8017c0",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x854d50",
+          "size": 380,
+          "symbol": "_ZN7ComposeILj8736080ELj88ELj104EED1Ev",
+          "target_sha256": "2c35227daee3265c76fab8b1e82fde258c80e8e6e062458f112b5be62edac3a5",
+          "bindings": {
+            "_ZTV7ComposeILj8736080ELj88ELj104EE": "0x1859710",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30",
+            "Accessor_Tracking": "0x1935068",
+            "Accessor_Lock": "0xfa4950",
+            "Accessor_Unlock": "0xfa4960",
+            "_ZN13ComposeMemberILj8736080ELj16EED1Ev": "0x854ed0",
+            "_ZN11ComposeBaseILj8736080ELj88EED2Ev": "0x677400",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x85c860",
+          "size": 380,
+          "symbol": "_ZN7ComposeILj8767584ELj688ELj704EED1Ev",
+          "target_sha256": "8b84cc44edb6659dee1709f30cfa304508948af0e9ca48d78869748bb012045f",
+          "bindings": {
+            "_ZTV7ComposeILj8767584ELj688ELj704EE": "0x185a608",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30",
+            "Accessor_Tracking": "0x1935068",
+            "Accessor_Lock": "0xfa4950",
+            "Accessor_Unlock": "0xfa4960",
+            "_ZN13ComposeMemberILj8767584ELj16EED1Ev": "0x85ca90",
+            "_ZN11ComposeBaseILj8767584ELj688EED2Ev": "0x8017c0",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x8ebc90",
+          "size": 380,
+          "symbol": "_ZN7ComposeILj9354384ELj176ELj192EED1Ev",
+          "target_sha256": "f9c1b6d1ffce03e0e0caa57d02c6483d3ab16d6f7ed81eca727e0f615c623d02",
+          "bindings": {
+            "_ZTV7ComposeILj9354384ELj176ELj192EE": "0x1868328",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30",
+            "Accessor_Tracking": "0x1935068",
+            "Accessor_Lock": "0xfa4950",
+            "Accessor_Unlock": "0xfa4960",
+            "_ZN13ComposeMemberILj9354384ELj16EED1Ev": "0x8ec430",
+            "_ZN11ComposeBaseILj9354384ELj176EED2Ev": "0x8e1930",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x911ef0",
+          "size": 380,
+          "symbol": "_ZN7ComposeILj9510640ELj184ELj200EED1Ev",
+          "target_sha256": "2d6cb9da8807b25ec46235fc26e736ce5dc7dd7c54b5adcb226c7a06364514ad",
+          "bindings": {
+            "_ZTV7ComposeILj9510640ELj184ELj200EE": "0x186bdb0",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30",
+            "Accessor_Tracking": "0x1935068",
+            "Accessor_Lock": "0xfa4950",
+            "Accessor_Unlock": "0xfa4960",
+            "_ZN13ComposeMemberILj9510640ELj16EED1Ev": "0x854ed0",
+            "_ZN11ComposeBaseILj9510640ELj184EED2Ev": "0x912070",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xb2cda0",
+          "size": 380,
+          "symbol": "_ZN7ComposeILj11718048ELj272ELj336EED1Ev",
+          "target_sha256": "3d2318d5a37a316ae7897cb95cd0d61baac80158b6cde2a8e9a1090be936a841",
+          "bindings": {
+            "_ZTV7ComposeILj11718048ELj272ELj336EE": "0x18a6cc8",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30",
+            "Accessor_Tracking": "0x1935068",
+            "Accessor_Lock": "0xfa4950",
+            "Accessor_Unlock": "0xfa4960",
+            "_ZN13ComposeMemberILj11718048ELj64EED1Ev": "0x7098c0",
+            "_ZN11ComposeBaseILj11718048ELj272EED2Ev": "0xb2cbb0",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xb54b90",
+          "size": 380,
+          "symbol": "_ZN7ComposeILj11881360ELj152ELj216EED1Ev",
+          "target_sha256": "3f677cff0e068f95578b06c512f83f8f88b400da0186bf06a6e37be59941d271",
+          "bindings": {
+            "_ZTV7ComposeILj11881360ELj152ELj216EE": "0x18aa370",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30",
+            "Accessor_Tracking": "0x1935068",
+            "Accessor_Lock": "0xfa4950",
+            "Accessor_Unlock": "0xfa4960",
+            "_ZN13ComposeMemberILj11881360ELj64EED1Ev": "0x7098c0",
+            "_ZN11ComposeBaseILj11881360ELj152EED2Ev": "0xb549b0",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xce6130",
+          "size": 380,
+          "symbol": "_ZN7ComposeILj13525296ELj80ELj96EED1Ev",
+          "target_sha256": "a07e16a40ec32944a28215b3d4cd6e2271a3f9f3b8e962be3dae5df186ac66aa",
+          "bindings": {
+            "_ZTV7ComposeILj13525296ELj80ELj96EE": "0x18ca880",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30",
+            "Accessor_Tracking": "0x1935068",
+            "Accessor_Lock": "0xfa4950",
+            "Accessor_Unlock": "0xfa4960",
+            "_ZN13ComposeMemberILj13525296ELj16EED1Ev": "0x7207b0",
+            "_ZN11ComposeBaseILj13525296ELj80EED2Ev": "0x677400",
+            "__clang_call_terminate": "0x6768b8"
           },
           "got_bindings": {}
         }

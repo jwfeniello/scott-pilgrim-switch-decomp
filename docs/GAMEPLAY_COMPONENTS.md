@@ -76,12 +76,26 @@ The two handlers selected through the player's member-function-pointer state slo
   on every iteration, as a container loop does. Only if every player matches does
   it read the game-mode value; outside 8–12 it requests the hashed `GameOverMovie`
   event. The event ID is an 8-byte object of which only the hash is written.
-- **Held state (`0x98f9d0`, 1,048 bytes): 1,047 of 1,048 words match.** On entry
-  it zeroes two motion vectors and conditionally resumes control. It sets action
-  mode 13, restores saved values unless the anchor is kept, and sets byte `+0x199`
-  on the type-checked playfield object. Exit also releases the owned component
-  handle (destroy, untrack, free). One branch differs: the original's
-  empty-bucket path skips the tracking-map null check.
+- **Held state (`0x98f9d0`, 1,048 bytes): exact.** On entry it zeroes two
+  motion vectors and conditionally resumes control. It sets action mode 13,
+  restores saved values unless the anchor is kept, and sets byte `+0x199` on the
+  type-checked playfield object. Exit also releases the owned component handle
+  (destroy, untrack, free).
+
+## Handle disposal and the empty-bucket path
+
+Releasing a component handle removes it from a tracking map under a mutex. In
+the original, when the handle's bucket is empty, control goes straight to the
+unlock and skips the lock guard's `map != null` test. That is sound, because the
+bucket load already dereferenced the map. Public Clang 7, 8, 9 and 10 do not
+perform that threading from the RAII form, so `DisposeHandle` in
+[`OnyxComponents.h`](../src/gameplay/OnyxComponents.h) writes that path
+explicitly with a `goto`, and runs the unlock in a `noexcept` helper (as a lock
+guard's destructor would).
+
+This made the held state exact. It also reproduces the same inlined disposal in
+the `HandleHolder` and `Compose` families. The same inlined code appears in 490
+still-unmatched functions (about 1 MB), so it is no longer a blocker for them.
 
 ## Near misses
 

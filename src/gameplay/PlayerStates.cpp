@@ -369,8 +369,7 @@ __attribute__((always_inline)) inline Playfield* PlayerPlayfield(Player* self) {
 }
 
 // State at virtual +0x790: stops motion while active and marks the playfield.
-// Not credited: 1,047 of 1,048 instruction words match; the original's empty
-// tracking-bucket branch skips the tracking-map null check that this source keeps.
+// The handle release on exit uses DisposeHandle's explicit empty-bucket path.
 extern "C" int Player_HeldState(Player* self, int event) {
     switch (event) {
     case 10000:

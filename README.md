@@ -16,8 +16,8 @@ Edition** for Nintendo Switch.
 [Progress on decomp.dev](https://decomp.dev/jwfeniello/scott-pilgrim-switch-decomp)
 · [Progress workflow](https://github.com/jwfeniello/scott-pilgrim-switch-decomp/actions/workflows/progress.yml)
 
-**Current locally verified progress: 33,276 exact functions /
-3,693,984 bytes / 22.528875% of executable `.text`.** The original `.text` is 16,396,664 bytes.
+**Current locally verified progress: 33,350 exact functions /
+3,717,140 bytes / 22.670099% of executable `.text`.** The original `.text` is 16,396,664 bytes.
 This includes engine and library infrastructure. The project does not yet rebuild
 or boot the complete game. Original method names and many ABI declarations remain
 provisional. See the [integration plan](docs/INTEGRATION_PLAN.md) for
@@ -28,7 +28,9 @@ the work needed to turn isolated matches into a linked game build.
 [Gameplay components and actor state](docs/GAMEPLAY_COMPONENTS.md) names all 793
 recovered component type IDs from factory RTTI. It recovers the cached-component
 accessor, `Onyx::Transform` and `Vector3` value semantics, and adds 17 exact
-functions, including the player game-over coordinator.
+functions, including the player game-over coordinator. The held state is now
+exact as well, because the handle disposal writes the original's empty-bucket
+path explicitly.
 
 [Code without FDEs](docs/NON_FDE_CODE.md) identifies the 222,892-byte block that
 no FDE covers as Nintendo's libcurl 7.64.1 fork and nghttp2 1.38.0. It adds 628
@@ -37,7 +39,7 @@ calls, tail calls, pointers or adjacent proven functions, and the fork's struct
 and configuration changes are reconstructed from the original's offsets.
 
 [Engine families](docs/ENGINE_FAMILIES.md#template-instance-families-22-batch)
-now include 36 template families / 1,580 functions / 104,516 bytes. Each family is
+now include 42 template families / 1,653 functions / 126,624 bytes. Each family is
 one template instantiated once per original address and credited only there.
 
 [Library build evidence](docs/LIBRARY_BUILD_EVIDENCE.md) adds 740 complete
