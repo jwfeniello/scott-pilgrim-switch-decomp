@@ -2,7 +2,7 @@
 
 `src/wip/RequestState.cpp` reconstructs the routine at `0x4d7390`. It is a
 candidate for a repeated 688-byte family, not an exact match. The current
-Clang 8.0.1 build has the original length and **30 differing instructions**
+Clang 8.0.1 build has the original length and **41 differing instructions**
 after checked external linking. Those differences address different stack
 slots. No instruction is masked or patched, and this work adds **zero exact
 bytes**. Other family members have not been validated with this candidate.
@@ -11,7 +11,8 @@ bytes**. Other family members have not been validated with this candidate.
 
 - Either byte flag at request offsets `0x47` and `0x44` causes an early return.
 - The operation pointer is at `0x200`, and its state is at offset `0x10`.
-- States 3 and 4 invoke request virtual slot `0x28`, copy and log a response,
+- States 3 and 4 invoke request virtual slot `0x28`, copy a response and look up
+  its error description (the returned pointer is discarded),
   construct an event carrying a signed 16-bit response code, and invoke a
   callback through slot `0x20`.
 - State 2 invokes request virtual slot `0x20` and dispatches a status-1 event.
@@ -56,18 +57,19 @@ produced a complete match.
 ## Bounded validation
 
 `tools/compare_request_state.py` executes the original and the compiled candidate
-at the same address in separate reset fixtures. **480 cases** compare call order,
+at the same address in separate reset fixtures. **960 cases** compare call order,
 status/token/owner arguments, request fields, control counters and payload memory.
 They cover five states, all four combinations of the two early-return flags,
 null/non-null tasks and owner controls, two initial owner counts, two signed
-response-code extremes, and callback-triggered disposal. The harness checks
+response-code extremes, both values of the trailing error byte, and
+callback-triggered disposal. The harness checks
 stack balance and preserved registers and poisons caller-saved registers at
 stub calls.
 
 Three separately compiled defective implementations are rejected: wrong state
 selection, disposal at the wrong counter value, and failing to clear the task.
 
-Response copying, logging, event construction, callback execution, weak release,
+Response copying, error-description lookup, event construction, callback execution, weak release,
 and task services are deterministic synthetic stubs. In particular, the fixture
 constructor supplies a separate event control block; it does not validate the
 real event constructor's ownership effects. Exception handling, concurrency,
@@ -125,7 +127,7 @@ scope gives complete byte equality with ordinary Clang 8.0.1 O2, PIC, preserved
 frame pointer and unwind-table generation. No assembly or byte patches are used.
 
 This exact family is separate from the still-unmatched 688-byte state-update
-candidate and its 480-case fixture. It does not establish a complete working
+candidate and its 960-case fixture. It does not establish a complete working
 matchmaking subsystem or a complete original class declaration.
 
 ## Exact migration constructors

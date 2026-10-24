@@ -1,9 +1,9 @@
 {
   "version": 1,
-  "generated_at": "2026-10-23T22:20:48.178913+00:00",
+  "generated_at": "2026-10-24T00:32:29.937416+00:00",
   "target_elf_sha256": "ea95638e6d6aaa0dc6cddd552a9366799aa1ec3bc07ee201f23f6c151103f5b8",
   "input_sha256": {
-    "config/builds.json": "ee2ad5f0edc7dfcb13178f89d16f648390db65df13ea31de100b9e40f12bdcd8",
+    "config/builds.json": "9650b10c426d9370059c126fd80064c2a52aebf4f45a54e53a47d605d31ae4ef",
     "config/functions.tsv": "399e91468a04e0459194c10d68d2210d1157cedefeb19c7851886ca7632fcb18",
     "config/target.json": "23cc6a5227206a953e7668acf5e9ae5c02a25c23b7e7967f0450a814b888241a",
     "src/AbiCfg_aggregate_O2_omit.cpp": "55009ca4f1819fe53803025bf27b93a676c6137877b9d4492828e2e15c89307c",
@@ -135,6 +135,7 @@
     "src/LibraryWidth48.cpp": "99cc1643b8cb0c460b479b4dff064169579fd872f81c601e9f4d63500de86ed0",
     "src/LibraryWidth8.cpp": "c808b548ebca6ccc2254acae97f92c0241a2368777bf239fce53ef2513f095c5",
     "src/MatchmakingContextConstructors.cpp": "f0e540b3eb9dfad7bfb1de0afadf03ae02de3ad62e523dc53de69b0f9f38068d",
+    "src/MatchmakingErrorDescription.cpp": "42dc95365d17b41921b95ee57f255beb63b743406739a3bd791ee5bc2a60de07",
     "src/MatchmakingRequestConstructor.cpp": "bf5bc86fd7276ea6f22567b8a960544673b2f673e31710d3ff640317be8417aa",
     "src/MatchmakingRequestDestructor.cpp": "aebe825b8402e0d9668b39e2077314f768350db39e44f4b2b4012c8993a78b7a",
     "src/NarrowCallsCfgRecoveryVoidBool.cpp": "972cd9c0d7701115584ac952b2c0cf491a31f97bbd73b0b56a22bb9a9dfd3e37",
@@ -671,6 +672,9 @@
     "src/SdkOwnerNoBaseOwnerKeepPicUnwind.cpp": "f5b33c74fb068eda3471b1ccdb60accce71daf06bb9cc3c4c4a1068edf667e35",
     "src/SdkOwnerSimpleOwnerKeepPicUnwind.cpp": "8fc2b5afdba4f85a0404131c8b2fb269ec4ce96f7f37f2e73d9f742682950ea7",
     "src/SdkRequestHeader.cpp": "b2b85baf789ee4429b741bb6309bd68f9974728c4f440161166ca3250bd9d750",
+    "src/SdkResultAbi.h": "f14333acea74ea80e5c79ae1b6a1e5c4be9476e42b9845e564ec1e7f30babe64",
+    "src/SdkResultCopy.cpp": "f7933c7efdf7ce04f0e887872b24d051b0d9360db282b3d80296b31ad24d6145",
+    "src/SdkResultSupport.cpp": "d7858efbfd9c1fbd120d145515b831cf3ca817b6e4accd3d7045bf84b14f49a3",
     "src/SdkTextCaseSubstring.cpp": "10bd589e26ca0fc9702724d569acc3110d0a25898c2839fc7891c3d14ad97993",
     "src/SdkTextCompare.cpp": "835a2f72f2eef2c6d2dd1d5fdaf12b67099fd33361f7d35061fd6a8873fadafb",
     "src/SdkTextConstructor.cpp": "6f434e50913b4998df643889bd61f20a33582f686e8419560894d7f3a15b83c3",
@@ -2808,15 +2812,15 @@
     "vendor/zlib-1.2.11/zutil.h": "9a63f6690fac1620aa3cecee5752af618806da438a256b4a047fbcd289cac159"
   },
   "compiler_versions": {
-    "8.0.1": "clang version 8.0.1 (tags/RELEASE_801/final)",
-    "7.0.1": "clang version 7.0.1 (tags/RELEASE_701/final)"
+    "7.0.1": "clang version 7.0.1 (tags/RELEASE_701/final)",
+    "8.0.1": "clang version 8.0.1 (tags/RELEASE_801/final)"
   },
   "compiler_sha256": {
-    "8.0.1": "dffd62a213ec6cdb4430012a4a41c11e5e32c288f133d5391f9be49e1c5b69de",
-    "7.0.1": "c2f0a175157d9aaace8031f8e6d7ea0ed6142b4bcef287105e3ed227301f1002"
+    "7.0.1": "c2f0a175157d9aaace8031f8e6d7ea0ed6142b4bcef287105e3ed227301f1002",
+    "8.0.1": "dffd62a213ec6cdb4430012a4a41c11e5e32c288f133d5391f9be49e1c5b69de"
   },
-  "exact_functions": 30306,
-  "exact_bytes": 3122192,
+  "exact_functions": 30311,
+  "exact_bytes": 3123888,
   "builds": [
     {
       "id": "probes",
@@ -10357,6 +10361,21 @@
       "id": "hud_pool_cleanup",
       "compiler": "8.0.1",
       "object_sha256": "2f0a8cbe140faa132951f8ecb372f1cfc1cee8de28fc6423cb6ae66405478634"
+    },
+    {
+      "id": "matchmaking_error_description",
+      "compiler": "8.0.1",
+      "object_sha256": "249ca635f9f7956948f9a0bd369903355288963b1f2cd980b4b53557d683558c"
+    },
+    {
+      "id": "sdk_result_support",
+      "compiler": "8.0.1",
+      "object_sha256": "fd548edf1318acb1192d9f79ea3bfb6fd76d1f2546b99053da4ffe626beef492"
+    },
+    {
+      "id": "sdk_result_copy",
+      "compiler": "8.0.1",
+      "object_sha256": "227e870f5fd76f62af32c1b44a95953d7eccef98185d1dd159b2aeb94efc9f95"
     }
   ],
   "matches": [
@@ -124420,6 +124439,17 @@
       "relocation_count": 0
     },
     {
+      "address": "0x4ce310",
+      "size": 1292,
+      "exact": true,
+      "target_sha256": "b6a0fa8a5699dd58f13cf2b30798d590e37f69bfd8828cb15d1af376723245b6",
+      "compiled_sha256": "b6a0fa8a5699dd58f13cf2b30798d590e37f69bfd8828cb15d1af376723245b6",
+      "source": "src/MatchmakingErrorDescription.cpp",
+      "symbol": "DescribeMatchmakingError",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 120
+    },
+    {
       "address": "0x4cef20",
       "size": 16,
       "exact": true,
@@ -133198,6 +133228,17 @@
       "relocation_count": 1
     },
     {
+      "address": "0x4eb360",
+      "size": 108,
+      "exact": true,
+      "target_sha256": "bbb54101042817c4562b0e308d51e6d1d2dcbe15c54100ff04b01b34d21e6447",
+      "compiled_sha256": "bbb54101042817c4562b0e308d51e6d1d2dcbe15c54100ff04b01b34d21e6447",
+      "source": "src/SdkResultSupport.cpp",
+      "symbol": "_ZN12SdkResultAbi4TextC1EPKc",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 3
+    },
+    {
       "address": "0x4eb3d0",
       "size": 64,
       "exact": true,
@@ -133207,6 +133248,28 @@
       "symbol": "RecoveredLeaf_4eb3d0",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 1
+    },
+    {
+      "address": "0x4eb410",
+      "size": 108,
+      "exact": true,
+      "target_sha256": "88097681dda7b81141d6c49676343bf13197897bfe62c23de78f2e900bbae21c",
+      "compiled_sha256": "88097681dda7b81141d6c49676343bf13197897bfe62c23de78f2e900bbae21c",
+      "source": "src/SdkResultSupport.cpp",
+      "symbol": "_ZN12SdkResultAbi4TextC1EPKc",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 3
+    },
+    {
+      "address": "0x4eb480",
+      "size": 108,
+      "exact": true,
+      "target_sha256": "bf9ce637e7f3da846dbc6027502816dd5d897fa9352b89a6a9ac2f559ad36c3f",
+      "compiled_sha256": "bf9ce637e7f3da846dbc6027502816dd5d897fa9352b89a6a9ac2f559ad36c3f",
+      "source": "src/SdkResultSupport.cpp",
+      "symbol": "_ZN12SdkResultAbi4TextC1ERKS0_",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 3
     },
     {
       "address": "0x4eb580",
@@ -133236,9 +133299,9 @@
       "exact": true,
       "target_sha256": "c557feda8d76df1ecba0e6db93d60fffb0e3272d2d91dee7d77d270b6d69bcc0",
       "compiled_sha256": "c557feda8d76df1ecba0e6db93d60fffb0e3272d2d91dee7d77d270b6d69bcc0",
-      "source": "src/GuardRecoveryOmit.cpp",
-      "symbol": "RecoveredLeaf_4eb5e0",
-      "source_review": "generated_cxx_abi_view",
+      "source": "src/SdkResultSupport.cpp",
+      "symbol": "_ZN12SdkResultAbi4TextD1Ev",
+      "source_review": "manual_reconstruction",
       "relocation_count": 1
     },
     {
@@ -134820,9 +134883,9 @@
       "exact": true,
       "target_sha256": "634114c68b220ff7a02dc05a03ebe0579a79c5cd4d1ca25613cad6c89ec0db4e",
       "compiled_sha256": "634114c68b220ff7a02dc05a03ebe0579a79c5cd4d1ca25613cad6c89ec0db4e",
-      "source": "src/CallRecoveryFrame.cpp",
-      "symbol": "RecoveredLeaf_4f5ce0",
-      "source_review": "generated_cxx_abi_view",
+      "source": "src/SdkResultCopy.cpp",
+      "symbol": "_ZN12SdkResultAbi6ResultC1ERKS0_",
+      "source_review": "manual_reconstruction",
       "relocation_count": 1
     },
     {
@@ -134846,6 +134909,17 @@
       "symbol": "RecoveredLeaf_4f5e90",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 5
+    },
+    {
+      "address": "0x4f5ff0",
+      "size": 80,
+      "exact": true,
+      "target_sha256": "43b1d9c428f605ac623d330815ef7c4ab7662f7bdc50fa3ad1a016a1779d145d",
+      "compiled_sha256": "43b1d9c428f605ac623d330815ef7c4ab7662f7bdc50fa3ad1a016a1779d145d",
+      "source": "src/SdkResultSupport.cpp",
+      "symbol": "_ZN12SdkResultAbi5EqualERKNS_6ResultES2_",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 1
     },
     {
       "address": "0x4f6350",

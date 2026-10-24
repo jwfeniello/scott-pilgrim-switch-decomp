@@ -305325,16 +305325,6 @@
           "got_bindings": {}
         },
         {
-          "address": "0x4f5ce0",
-          "size": 76,
-          "symbol": "RecoveredLeaf_4f5ce0",
-          "target_sha256": "634114c68b220ff7a02dc05a03ebe0579a79c5cd4d1ca25613cad6c89ec0db4e",
-          "bindings": {
-            "RecoveredCall_4f5ce0_0": "0x4eb480"
-          },
-          "got_bindings": {}
-        },
-        {
           "address": "0x4f5d90",
           "size": 128,
           "symbol": "RecoveredLeaf_4f5d90",
@@ -310540,16 +310530,6 @@
           "symbol": "RecoveredLeaf_4d2800",
           "target_sha256": "3c944d8c4d4aa11205058ba841d9fbd3d424ab6a2b433a2b024930c1041a2890",
           "bindings": {},
-          "got_bindings": {}
-        },
-        {
-          "address": "0x4eb5e0",
-          "size": 20,
-          "symbol": "RecoveredLeaf_4eb5e0",
-          "target_sha256": "c557feda8d76df1ecba0e6db93d60fffb0e3272d2d91dee7d77d270b6d69bcc0",
-          "bindings": {
-            "LeafTarget_4eb5e0": "0x37030"
-          },
           "got_bindings": {}
         },
         {
@@ -428324,6 +428304,195 @@
             "Accessor_Allocators": "0x1926bd8",
             "Accessor_AllocatorIndex": "0xa82b30",
             "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        }
+      ]
+    },
+    {
+      "id": "matchmaking_error_description",
+      "source": "src/MatchmakingErrorDescription.cpp",
+      "source_review": "manual_reconstruction",
+      "compiler": "8.0.1",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-std=c++11",
+        "-O2",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-fno-omit-frame-pointer",
+        "-fPIC",
+        "-funwind-tables",
+        "-fno-exceptions"
+      ],
+      "functions": [
+        {
+          "address": "0x4ce310",
+          "size": 1292,
+          "symbol": "DescribeMatchmakingError",
+          "target_sha256": "b6a0fa8a5699dd58f13cf2b30798d590e37f69bfd8828cb15d1af376723245b6",
+          "bindings": {
+            "_ZN17MatchmakingErrors15InvalidArgumentEv": "0x53a220",
+            "_ZN12SdkResultAbi5EqualERKNS_6ResultES2_": "0x4f5ff0",
+            "_ZN12SdkResultAbi4TextD1Ev": "0x4eb5e0",
+            "_ZN17MatchmakingErrors14UnknownSessionEv": "0x53a240",
+            "_ZN17MatchmakingErrors14NotEnoughSlotsEv": "0x53a260",
+            "_ZN17MatchmakingErrors10NotTheHostEv": "0x53a280",
+            "_ZN17MatchmakingErrors11NotTheScoutEv": "0x53a2a0",
+            "_ZN17MatchmakingErrors14InvalidSessionEv": "0x53a2c0",
+            "_ZN17MatchmakingErrors17UnknownInvitationEv": "0x53a2e0",
+            "_ZN17MatchmakingErrors10NotAMemberEv": "0x53a300",
+            "_ZN17MatchmakingErrors14AlreadyAMemberEv": "0x53a320",
+            "_ZN17MatchmakingErrors13NoReservationEv": "0x53a340",
+            "_ZN17MatchmakingErrors13UnknownTicketEv": "0x53a360",
+            "_ZN17MatchmakingErrors13NoSessionHostEv": "0x53a380",
+            "_ZN17MatchmakingErrors14TicketRejectedEv": "0x53a3a0",
+            "_ZN17MatchmakingErrors15InvalidPlatformEv": "0x53a3c0",
+            "_ZN17MatchmakingErrors13SessionLockedEv": "0x53a3e0",
+            "_ZN17MatchmakingErrors10NotAllowedEv": "0x53a400",
+            "_ZN17MatchmakingErrors17TemporarilyBannedEv": "0x53a420",
+            "_ZN17MatchmakingErrors17PrivilegeRequiredEv": "0x53a440",
+            "_ZN17MatchmakingErrors14TicketMismatchEv": "0x53a460",
+            "_ZN17MatchmakingErrors18PlayerNotConnectedEv": "0x53a480",
+            "_ZN17MatchmakingErrors10OverbookedEv": "0x53a4a0",
+            "_ZN17MatchmakingErrors15TicketQueueFullEv": "0x53a4c0",
+            "_ZN17MatchmakingErrors15ValidationErrorEv": "0x53a4e0",
+            "_ZN17MatchmakingErrors23CallerPrivilegeRequiredEv": "0x53a500"
+          },
+          "got_bindings": {},
+          "literals": {
+            "4d617463686d616b696e67436c69656e743a3a496e76616c6964417267756d656e74202d2052657475726e6564207768656e2074686520636c69656e7420737570706c69657320696e76616c696420706172616d657465727320746f20616e20524d432e00": "0x12f24cf",
+            "4d617463686d616b696e67436c69656e743a3a556e6b6e6f776e53657373696f6e202d2052657475726e6564207768656e2074686520636c69656e742070617373657320616e20696e76616c69642073657373696f6e2049442e00": "0x13184ef",
+            "4d617463686d616b696e67436c69656e743a3a4e6f74456e6f756768536c6f7473202d2052657475726e6564207768656e2074686520636c69656e7420617474656d70747320746f206a6f696e20612066756c6c2073657373696f6e2e00": "0x131c198",
+            "4d617463686d616b696e67436c69656e743a3a4e6f74546865486f7374202d2052657475726e6564207768656e2074686520636c69656e742069732064656e69656420612070726976696c65676564206f7065726174696f6e2e00": "0x1326503",
+            "4d617463686d616b696e67436c69656e743a3a4e6f7454686553636f7574202d2052657475726e6564207768656e2074686520636c69656e742069732064656e69656420612070726976696c65676564206f7065726174696f6e2e00": "0x1322023",
+            "4d617463686d616b696e67436c69656e743a3a496e76616c696453657373696f6e202d20466967757265206f757420696620746869732069732065766572792072657475726e656420746f206120636c69656e742e00": "0x132832c",
+            "4d617463686d616b696e67436c69656e743a3a556e6b6e6f776e496e7669746174696f6e202d2052657475726e6564207768656e2074686520636c69656e7420617474656d70747320746f206163636570742061207374616c6520696e7669746174696f6e2e00": "0x13200df",
+            "4d617463686d616b696e67436c69656e743a3a4e6f74414d656d626572202d2052657475726e6564207768656e2074686520706c61796572206973206e6f74206120636f6e6669726d65642073657373696f6e206d656d6265722e00": "0x1308973",
+            "4d617463686d616b696e67436c69656e743a3a416c7265616479414d656d626572202d2052657475726e6564207768656e2074686520706c6179657220697320616c7265616479206120636f6e6669726d65642073657373696f6e206d656d62657200": "0x12ff2b8",
+            "4d617463686d616b696e67436c69656e743a3a4e6f5265736572766174696f6e202d2052657475726e6564207768656e2074686520706c6179657220646f6573206e6f7420686176652061207265736572766174696f6e206f6e20612073657373696f6e2e00": "0x131df78",
+            "4d617463686d616b696e67436c69656e743a3a556e6b6e6f776e5469636b6574202d2052657475726e6564207768656e2074686520636c69656e742070617373657320616e20696e76616c6964207469636b65742049442e00": "0x132bf79",
+            "4d617463686d616b696e67436c69656e743a3a4e6f53657373696f6e486f7374202d2052657475726e6564207768656e207468652073657373696f6e20686173206e6f20686f73742e00": "0x1306c3d",
+            "4d617463686d616b696e67436c69656e743a3a5469636b657452656a6563746564202d2052657475726e6564207768656e20746865207469636b65742069732072656a65637465642e00": "0x131a344",
+            "4d617463686d616b696e67436c69656e743a3a496e76616c6964506c6174666f726d202d2052657475726e6564207768656e20746865206f7065726174696f6e2063616e6e6f742062652075736564206f6e207468652063757272656e7420706c6174666f726d2e00": "0x130e6bf",
+            "4d617463686d616b696e67436c69656e743a3a53657373696f6e4c6f636b6564202d2052657475726e6564207768656e20746865206f7065726174696f6e2069732064656e6965642e00": "0x12f7c96",
+            "4d617463686d616b696e67436c69656e743a3a4e6f74416c6c6f776564202d2052657475726e6564207768656e20746865206f7065726174696f6e2069732064656e69656400": "0x1301060",
+            "4d617463686d616b696e67436c69656e743a3a54656d706f726172696c7942616e6e6564202d2052657475726e6564207768656e2074686520706c617965722069732074656d706f726172696c792062616e6e65642e00": "0x1328382",
+            "4d617463686d616b696e67436c69656e743a3a50726976696c6567655265717569726564202d2052657475726e6564207768656e2074686520706c61796572206973206c696b656c792061207069726174652e00": "0x131c1f6",
+            "4d617463686d616b696e67436c69656e743a3a5469636b65744d69736d61746368202d2052657475726e6564207768656e20636f6e6669726d696e672f6465636c696e696e672061207265736572766174696f6e2077697468207468652077726f6e67207469636b65742049442e00": "0x13010a6",
+            "4d617463686d616b696e67436c69656e743a3a506c617965724e6f74436f6e6e6563746564202d2052657475726e6564207768656e206372656174696e672061207469636b657420636f6e7461696e696e6720706c61796572732074686174206172656e277420636f6e6e65637465642e00": "0x1306c87",
+            "4d617463686d616b696e67436c69656e743a3a4f766572626f6f6b6564202d2052657475726e6564207768656e20617474656d7074696e6720746f20636f6e6669726d206120736c6f74206f6e20612073657373696f6e20746861742773206265656e206f766572626f6f6b65642e00": "0x13283d9",
+            "4d617463686d616b696e67436c69656e743a3a5469636b6574517565756546756c6c202d2052657475726e6564207768656e206372656174696e672061207469636b6574207768656e2074686572652061726520746f6f206d616e79207469636b65747320696e207468652071756575652e00": "0x12f2534",
+            "4d617463686d616b696e67436c69656e743a3a56616c69646174696f6e4572726f72202d2052657475726e6564207768656e206120706c6179657220646f65736e2774206861766520746865206e65636573736172792070726976696c6567657320746f206d616b6520612063616c6c2e00": "0x132207f",
+            "4d617463686d616b696e67436c69656e743a3a43616c6c657250726976696c6567655265717569726564202d2052657475726e6564207768656e206120706c6179657220646f65736e2774206861766520746865206e65636573736172792070726976696c6567657320746f206d616b6520612063616c6c2e00": "0x1306cf9"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sdk_result_support",
+      "source": "src/SdkResultSupport.cpp",
+      "source_review": "manual_reconstruction",
+      "compiler": "8.0.1",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-std=c++11",
+        "-O3",
+        "-mcpu=cortex-a57",
+        "-fPIC",
+        "-fno-strict-aliasing",
+        "-fno-omit-frame-pointer",
+        "-fno-exceptions",
+        "-funwind-tables",
+        "-fno-inline-functions"
+      ],
+      "functions": [
+        {
+          "address": "0x4eb360",
+          "size": 108,
+          "symbol": "_ZN12SdkResultAbi4TextC1EPKc",
+          "target_sha256": "bbb54101042817c4562b0e308d51e6d1d2dcbe15c54100ff04b01b34d21e6447",
+          "bindings": {
+            "strlen": "0xfa3360",
+            "Allocate": "0x36ea0",
+            "strcpy": "0xfa3560"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x4eb410",
+          "size": 108,
+          "symbol": "_ZN12SdkResultAbi4TextC1EPKc",
+          "target_sha256": "88097681dda7b81141d6c49676343bf13197897bfe62c23de78f2e900bbae21c",
+          "bindings": {
+            "strlen": "0xfa3360",
+            "Allocate": "0x36ea0",
+            "strcpy": "0xfa3560"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x4eb480",
+          "size": 108,
+          "symbol": "_ZN12SdkResultAbi4TextC1ERKS0_",
+          "target_sha256": "bf9ce637e7f3da846dbc6027502816dd5d897fa9352b89a6a9ac2f559ad36c3f",
+          "bindings": {
+            "strlen": "0xfa3360",
+            "Allocate": "0x36ea0",
+            "strcpy": "0xfa3560"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x4f5ff0",
+          "size": 80,
+          "symbol": "_ZN12SdkResultAbi5EqualERKNS_6ResultES2_",
+          "target_sha256": "43b1d9c428f605ac623d330815ef7c4ab7662f7bdc50fa3ad1a016a1779d145d",
+          "bindings": {
+            "_Z9TextEqualPKcS0_": "0x4eb680"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x4eb5e0",
+          "size": 20,
+          "symbol": "_ZN12SdkResultAbi4TextD1Ev",
+          "target_sha256": "c557feda8d76df1ecba0e6db93d60fffb0e3272d2d91dee7d77d270b6d69bcc0",
+          "bindings": {
+            "Free": "0x37030"
+          },
+          "got_bindings": {}
+        }
+      ]
+    },
+    {
+      "id": "sdk_result_copy",
+      "source": "src/SdkResultCopy.cpp",
+      "source_review": "manual_reconstruction",
+      "compiler": "8.0.1",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-std=c++11",
+        "-O3",
+        "-mcpu=cortex-a57",
+        "-fPIC",
+        "-fno-strict-aliasing",
+        "-fno-omit-frame-pointer",
+        "-fno-exceptions",
+        "-funwind-tables",
+        "-fno-inline-functions"
+      ],
+      "functions": [
+        {
+          "address": "0x4f5ce0",
+          "size": 76,
+          "symbol": "_ZN12SdkResultAbi6ResultC1ERKS0_",
+          "target_sha256": "634114c68b220ff7a02dc05a03ebe0579a79c5cd4d1ca25613cad6c89ec0db4e",
+          "bindings": {
+            "_ZN12SdkResultAbi4TextC1ERKS0_": "0x4eb480"
           },
           "got_bindings": {}
         }

@@ -16,14 +16,18 @@ Edition** for Nintendo Switch.
 [Progress on decomp.dev](https://decomp.dev/jwfeniello/scott-pilgrim-switch-decomp)
 · [Progress workflow](https://github.com/jwfeniello/scott-pilgrim-switch-decomp/actions/workflows/progress.yml)
 
-**Current locally verified progress: 30,306 exact functions /
-3,122,192 bytes / 19.041629% of executable `.text`.** The original `.text` is 16,396,664 bytes.
+**Current locally verified progress: 30,311 exact functions /
+3,123,888 bytes / 19.051973% of executable `.text`.** The original `.text` is 16,396,664 bytes.
 This includes engine and library infrastructure. The project does not yet rebuild
 or boot the complete game. Original method names and many ABI declarations remain
 provisional. See the [integration plan](docs/INTEGRATION_PLAN.md) for
 the work needed to turn isolated matches into a linked game build.
 
 ## Gameplay understanding
+
+[SDK result layout and error descriptions](docs/SDK_RESULT_LAYOUT.md) add five
+complete matches / 1,696 bytes. The shared 40-byte result layout also replaces
+two generated routines and corrects the request-state candidate and its fixture.
 
 [HUD pools and event lifetimes](docs/HUD_AND_EVENT_LIFETIMES.md) add 127 complete
 functions / 42,044 bytes. This includes 64 destructors for 32 RTTI-identified HUD
@@ -101,7 +105,7 @@ types remain unrecovered.
 seek, put-back, and string-assignment routines from public libc++ source.
 
 [Request-state reconstruction](docs/REQUEST_STATE_CANDIDATE.md) adds a typed
-688-byte candidate and 480 bounded original-versus-compiled checks. It still
+688-byte candidate and 960 bounded original-versus-compiled checks. It still
 differs in stack placement and receives zero exact credit. Original RTTI now
 identifies thirteen Storm matchmaking specializations, and their complete
 destructors add **13 exact functions / 3,172 bytes**.
