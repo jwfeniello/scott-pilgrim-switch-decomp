@@ -1,0 +1,10 @@
+{
+  "tag": "VER-2-9",
+  "tag_object": "840f64e7510e451f0f26438b1d3a515cd8d9e4e1",
+  "url": "https://api.github.com/repos/freetype/freetype/tarball/VER-2-9",
+  "archive_sha256": "ceb0eed36b4fb49f0e4dc7cae26c38cf1cc82ceb9108431ed2f9e434b749d944",
+  "vendored": "Only upstream files reached by the promoted module builds, plus FTL/GPLv2 license texts; bytes unchanged.",
+  "configuration": "Upstream default ftoption.h with FT_CONFIG_OPTION_NO_ASSEMBLER defined on the command line (no inline assembly).",
+  "version_evidence": "Every FreeType-specific string observed in the original font code exists in 2.9 through 2.10.4; 2.8.1 lacks several and 2.11 drops the warping property. 2.9 reproduces the largest set of complete bodies.",
+  "limitations": "Isolated complete-body matches do not establish the original FreeType revision, configuration, linked data, or a complete library build."
+}

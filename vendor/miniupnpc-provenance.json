@@ -1,0 +1,8 @@
+{
+  "tag": "miniupnpc_1_9",
+  "url": "https://api.github.com/repos/miniupnp/miniupnp/tarball/miniupnpc_1_9",
+  "archive_sha256": "31aa31fbd95c63ad959cd29d58383cd5d4e672fe32199ec1d2af548f09c084cc",
+  "vendored": "Only upstream miniupnpc headers reached by promoted builds, plus LICENSE; bytes unchanged.",
+  "evidence": "The original contains MiniUPnP source paths under Storm/SDKs/Private/External/MiniUPnP and a MiniUPnPc user agent; the fork differs from upstream (custom logger.c).",
+  "limitations": "Isolated complete-body matches do not establish the original fork revision or configuration."
+}

@@ -8,7 +8,7 @@ import struct
 import subprocess
 import tempfile
 
-from elf import Elf,immutable_literal,immutable_section,link_method,require
+from elf import Elf,binding_key,immutable_literal,immutable_section,link_method,require
 from project import ROOT,digest,load
 
 MASKS = {275:0x9f00001f,311:0x9f00001f,277:0xffc003ff,278:0xffc003ff,
@@ -120,9 +120,9 @@ def recipe_for(obj,symbol,address,size,original,relative):
             require(key not in mapping or mapping[key] == hex(base),'Conflicting immutable section binding')
             mapping[key] = hex(base)
         else:
-            value = hex(target-addend)
-            require(name not in recipe['bindings'] or recipe['bindings'][name] == value,'Conflicting symbol binding')
-            recipe['bindings'][name] = value
+            value = hex(target-addend);key = binding_key(obj,relocation)
+            require(key not in recipe['bindings'] or recipe['bindings'][key] == value,'Conflicting symbol binding')
+            recipe['bindings'][key] = value
     linked,applied = link_method(obj,recipe,original,relative)
     require(linked == raw,'Complete comparison failed at '+hex(address))
     return recipe,dict(address=hex(address),size=size,exact=True,target_sha256=digest(raw),compiled_sha256=digest(linked),relocation_count=len(applied))

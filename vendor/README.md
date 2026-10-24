@@ -87,3 +87,25 @@ The writer's hexadecimal digit table is adapted to lowercase to match the
 observed original data. See [the source-view notes](../docs/RAPIDJSON.md).
 The fixture retains the upstream `license.txt`.
 
+## Public FreeType 2.9 source fixture
+
+`freetype-2.9` contains only the upstream files reached by the promoted builds,
+from the official [`VER-2-9` tag](https://github.com/freetype/freetype/tree/VER-2-9),
+plus the FTL, license summary and GPLv2 texts. Bytes are unchanged; the tag object,
+archive hash and limits are in `freetype-provenance.json`, and every vendored file
+hash is in `freetype_sha256.json`. All builds define `FT_CONFIG_OPTION_NO_ASSEMBLER`
+so that no credited body depends on FreeType's AArch64 inline-assembly `FT_MulFix`.
+`freetype-2.9-configs/no_environment_properties` is a derived `ftoption.h` that only
+disables `FT_CONFIG_OPTION_ENVIRONMENT_PROPERTIES`. The `src/FreeType29_Unity_*.c`
+views include the unchanged module files in one translation unit. See
+[library build evidence](../docs/LIBRARY_BUILD_EVIDENCE.md) for the version and
+build-shape evidence and its limits.
+
+## Public miniupnpc 1.9 source fixture
+
+`miniupnpc-1.9` contains the upstream headers reached by the promoted
+`src/MiniUpnpc19_*.c` views and the upstream `LICENSE`, from the official
+[`miniupnpc_1_9` tag](https://github.com/miniupnp/miniupnp/tree/miniupnpc_1_9).
+Provenance is in `miniupnpc-provenance.json` and file hashes in
+`miniupnpc_sha256.json`. The original Storm fork is not upstream; three bodies
+match exactly and the rest of the fork remains unmatched.

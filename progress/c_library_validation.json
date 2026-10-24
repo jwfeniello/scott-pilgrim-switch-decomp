@@ -864,12 +864,12 @@
       "source_sha256": "8a3bd00e4cce868ce7586aee9c96d3eba9997fb94c1645d2e0037a9b8818b435",
       "identical_repeat_objects": true,
       "repeat_object_sha256": "a3aa1051f66f288b728eb1c77d2301b2c0dcde70832c7dc16d0026927bbcb16c",
-      "repeated_exact_functions": 1,
-      "exact_bytes": 776,
+      "repeated_exact_functions": 2,
+      "exact_bytes": 1380,
       "negative_control": "added_external_side_effect_in_every_C_definition",
-      "rejected_functions": 1,
+      "rejected_functions": 2,
       "rejection_causes": {
-        "ValueError: Unresolved literal symbol": 1
+        "ValueError: Unresolved literal symbol": 2
       }
     },
     {
@@ -1579,12 +1579,12 @@
       "source_sha256": "b0c1592fb5ef9ca7a754179d295123053f345a9a199db07dbc5b2d35a3463f39",
       "identical_repeat_objects": true,
       "repeat_object_sha256": "0db7ed6710f10900f10d9ed703249266ad24cca14d08b3995c83d4e0b317c45b",
-      "repeated_exact_functions": 3,
-      "exact_bytes": 472,
+      "repeated_exact_functions": 4,
+      "exact_bytes": 584,
       "negative_control": "added_external_side_effect_in_every_C_definition",
-      "rejected_functions": 3,
+      "rejected_functions": 4,
       "rejection_causes": {
-        "ValueError: Unresolved literal symbol": 3
+        "ValueError: Unresolved literal symbol": 4
       }
     },
     {
@@ -2229,12 +2229,12 @@
       "source_sha256": "fbd72e7757b3bbdee2da0c5da1e10d6455d3e685f49837e12657e5563188424e",
       "identical_repeat_objects": true,
       "repeat_object_sha256": "8d6e0cd484fe42fbf0bc3a1da676dc0f40dffc4b1e8939658d94ea64aa280cff",
-      "repeated_exact_functions": 1,
-      "exact_bytes": 260,
+      "repeated_exact_functions": 2,
+      "exact_bytes": 524,
       "negative_control": "added_external_side_effect_in_every_C_definition",
-      "rejected_functions": 1,
+      "rejected_functions": 2,
       "rejection_causes": {
-        "ValueError: Unresolved literal symbol": 1
+        "ValueError: Unresolved literal symbol": 2
       }
     },
     {
@@ -2567,12 +2567,12 @@
       "source_sha256": "001911e00473fff34dce1f6b993226d0740f13154c324a4f63e832e5b3b5c703",
       "identical_repeat_objects": true,
       "repeat_object_sha256": "66df004a911fdc9431b1bbe5a7c25d285b24fc3f1d0bf44f8d969fb26a886cb0",
-      "repeated_exact_functions": 1,
-      "exact_bytes": 196,
+      "repeated_exact_functions": 2,
+      "exact_bytes": 240,
       "negative_control": "added_external_side_effect_in_every_C_definition",
-      "rejected_functions": 1,
+      "rejected_functions": 2,
       "rejection_causes": {
-        "ValueError: Unresolved literal symbol": 1
+        "ValueError: Unresolved literal symbol": 2
       }
     },
     {
@@ -2827,12 +2827,12 @@
       "source_sha256": "8ba26819e58bcf6ea5b85ec8a592e70dfd9e6f73fa3dd2190a5b1bf431611f2b",
       "identical_repeat_objects": true,
       "repeat_object_sha256": "0146ad4aa6e24a5066f38f572b56d8469120f7233ec85815d4e9770a1b854115",
-      "repeated_exact_functions": 1,
-      "exact_bytes": 136,
+      "repeated_exact_functions": 2,
+      "exact_bytes": 368,
       "negative_control": "added_external_side_effect_in_every_C_definition",
-      "rejected_functions": 1,
+      "rejected_functions": 2,
       "rejection_causes": {
-        "ValueError: Unresolved literal symbol": 1
+        "ValueError: Unresolved literal symbol": 2
       }
     },
     {
@@ -3516,12 +3516,12 @@
       "source_sha256": "40c23d71de6cfb7b4ca8d5391093bc13beb9bf0a52a089ae7d83d745999c7292",
       "identical_repeat_objects": true,
       "repeat_object_sha256": "5db91c3de466dfa4eb929e2937a1fce34eb70ddee9090ac7e83230f5062cb2f4",
-      "repeated_exact_functions": 1,
-      "exact_bytes": 40,
+      "repeated_exact_functions": 2,
+      "exact_bytes": 76,
       "negative_control": "added_external_side_effect_in_every_C_definition",
-      "rejected_functions": 1,
+      "rejected_functions": 2,
       "rejection_causes": {
-        "ValueError: Unresolved literal symbol": 1
+        "ValueError: Unresolved literal symbol": 2
       }
     },
     {
@@ -3737,12 +3737,12 @@
       "source_sha256": "23522b35f28937480ae0a73b4a400a4a048dc7ab6dba787db76acd267bd68c5e",
       "identical_repeat_objects": true,
       "repeat_object_sha256": "c9d62d180f3d6abf003c5315e809ae84ed3deec934f4148db5fbf528c1b1c640",
-      "repeated_exact_functions": 3,
-      "exact_bytes": 2332,
+      "repeated_exact_functions": 4,
+      "exact_bytes": 3188,
       "negative_control": "added_external_side_effect_in_every_C_definition",
-      "rejected_functions": 3,
+      "rejected_functions": 4,
       "rejection_causes": {
-        "ValueError: Unresolved literal symbol": 3
+        "ValueError: Unresolved literal symbol": 4
       }
     },
     {
@@ -3867,12 +3867,12 @@
       "source_sha256": "0ff3a7f6d519b7db5a053c758fe341de7722051c95ed6f342b22ca1a5ae2e99e",
       "identical_repeat_objects": true,
       "repeat_object_sha256": "b6e600581f9bf5c715b6c30d4f4d3b91ee446642a60b2d308318bf2c6b1638fe",
-      "repeated_exact_functions": 2,
-      "exact_bytes": 952,
+      "repeated_exact_functions": 3,
+      "exact_bytes": 1380,
       "negative_control": "added_external_side_effect_in_every_C_definition",
-      "rejected_functions": 2,
+      "rejected_functions": 3,
       "rejection_causes": {
-        "ValueError: Unresolved literal symbol": 2
+        "ValueError: Unresolved literal symbol": 3
       }
     },
     {
@@ -3919,12 +3919,12 @@
       "source_sha256": "14db77090b4328a78f2b0b007ae1e08578dcf2cbada758cc6e11ccd5bc63bfa5",
       "identical_repeat_objects": true,
       "repeat_object_sha256": "d5d9bffed4c7fc691819985c50c7255fef5fda6235a8d6a70fc256fec03922eb",
-      "repeated_exact_functions": 3,
-      "exact_bytes": 896,
+      "repeated_exact_functions": 12,
+      "exact_bytes": 2864,
       "negative_control": "added_external_side_effect_in_every_C_definition",
-      "rejected_functions": 3,
+      "rejected_functions": 12,
       "rejection_causes": {
-        "ValueError: Unresolved literal symbol": 3
+        "ValueError: Unresolved literal symbol": 12
       }
     },
     {
@@ -3945,12 +3945,12 @@
       "source_sha256": "4e1874ee45eb2deca4413c19445400bd822a05b9d542e1a41be61e9e183e98d8",
       "identical_repeat_objects": true,
       "repeat_object_sha256": "6f7692f4d49239b76044a1c1c2fe8a71ace918f75f2af190b067765b0b3276bd",
-      "repeated_exact_functions": 2,
-      "exact_bytes": 740,
+      "repeated_exact_functions": 4,
+      "exact_bytes": 1312,
       "negative_control": "added_external_side_effect_in_every_C_definition",
-      "rejected_functions": 2,
+      "rejected_functions": 4,
       "rejection_causes": {
-        "ValueError: Unresolved literal symbol": 2
+        "ValueError: Unresolved literal symbol": 4
       }
     },
     {
@@ -4088,12 +4088,12 @@
       "source_sha256": "32d714c9a2c9fda4058f15f2828938cf3185fed462057a5d952b18c06493377c",
       "identical_repeat_objects": true,
       "repeat_object_sha256": "3b70d3d45f3cd284e4a489295cc36fcc4848a228e01f6779c25986a01febf840",
-      "repeated_exact_functions": 2,
-      "exact_bytes": 568,
+      "repeated_exact_functions": 3,
+      "exact_bytes": 732,
       "negative_control": "added_external_side_effect_in_every_C_definition",
-      "rejected_functions": 2,
+      "rejected_functions": 3,
       "rejection_causes": {
-        "ValueError: Unresolved literal symbol": 2
+        "ValueError: Unresolved literal symbol": 3
       }
     },
     {
@@ -4114,12 +4114,12 @@
       "source_sha256": "1fc0b7f33eb7e9a7789dcff1c67b34b4a14113d3a51500454a75144fe9e1c985",
       "identical_repeat_objects": true,
       "repeat_object_sha256": "d909816f8acd8ec1a573e7064b4725f30259c5f55f16e9a06026bd8c3ccebfc0",
-      "repeated_exact_functions": 2,
-      "exact_bytes": 552,
+      "repeated_exact_functions": 5,
+      "exact_bytes": 1484,
       "negative_control": "added_external_side_effect_in_every_C_definition",
-      "rejected_functions": 2,
+      "rejected_functions": 5,
       "rejection_causes": {
-        "ValueError: Unresolved literal symbol": 2
+        "ValueError: Unresolved literal symbol": 5
       }
     },
     {
@@ -4400,12 +4400,12 @@
       "source_sha256": "9829974d25dc5c4f31553ba1cef6a793132d510e0774192e45e1548ec88564fe",
       "identical_repeat_objects": true,
       "repeat_object_sha256": "0b9ce793b62ee86d0b480efe1676e9557951a5a78a879155e78d563d26dca3bc",
-      "repeated_exact_functions": 1,
-      "exact_bytes": 284,
+      "repeated_exact_functions": 2,
+      "exact_bytes": 528,
       "negative_control": "added_external_side_effect_in_every_C_definition",
-      "rejected_functions": 1,
+      "rejected_functions": 2,
       "rejection_causes": {
-        "ValueError: Unresolved literal symbol": 1
+        "ValueError: Unresolved literal symbol": 2
       }
     },
     {
@@ -4413,12 +4413,12 @@
       "source_sha256": "092a78e554a94a8fe6ec6b1c8b9322d1f6d7c833f276366092e9843547f63203",
       "identical_repeat_objects": true,
       "repeat_object_sha256": "a66f078fdbcdd4e25bbfb96ee27c46e38d7acc66c2c811baa3836e6677645175",
-      "repeated_exact_functions": 1,
-      "exact_bytes": 284,
+      "repeated_exact_functions": 2,
+      "exact_bytes": 528,
       "negative_control": "added_external_side_effect_in_every_C_definition",
-      "rejected_functions": 1,
+      "rejected_functions": 2,
       "rejection_causes": {
-        "ValueError: Unresolved literal symbol": 1
+        "ValueError: Unresolved literal symbol": 2
       }
     },
     {
@@ -4491,12 +4491,12 @@
       "source_sha256": "193de45335881206f9c1d3ddd98b6e12ebc0cc9a7985d771a79ab78311d4a185",
       "identical_repeat_objects": true,
       "repeat_object_sha256": "358ff905913112301fed257c992bfe44afe94bf5d0f72ba07157cea79f33ba6c",
-      "repeated_exact_functions": 1,
-      "exact_bytes": 204,
+      "repeated_exact_functions": 2,
+      "exact_bytes": 1200,
       "negative_control": "added_external_side_effect_in_every_C_definition",
-      "rejected_functions": 1,
+      "rejected_functions": 2,
       "rejection_causes": {
-        "ValueError: Unresolved literal symbol": 1
+        "ValueError: Unresolved literal symbol": 2
       }
     },
     {
@@ -4517,12 +4517,12 @@
       "source_sha256": "380fac89bd225f6ba8da9e7225ea2a545d8df5a32853749e4b1c65849952e0a5",
       "identical_repeat_objects": true,
       "repeat_object_sha256": "1b35ff8b2a7c5cee0bd3a6750e02a98c2213fbe624c3defecb3d89a707465654",
-      "repeated_exact_functions": 1,
-      "exact_bytes": 172,
+      "repeated_exact_functions": 3,
+      "exact_bytes": 512,
       "negative_control": "added_external_side_effect_in_every_C_definition",
-      "rejected_functions": 1,
+      "rejected_functions": 3,
       "rejection_causes": {
-        "ValueError: Unresolved literal symbol": 1
+        "ValueError: Unresolved literal symbol": 3
       }
     },
     {
@@ -4543,12 +4543,12 @@
       "source_sha256": "045087f1ef70d8bb8c223f5e3284646a378a868636dad35a0fd43417c99bc68e",
       "identical_repeat_objects": true,
       "repeat_object_sha256": "555f2440c3fac6594d2b31669d07b66e96c1ea61f8332b277823a24b02ee5b7f",
-      "repeated_exact_functions": 1,
-      "exact_bytes": 164,
+      "repeated_exact_functions": 2,
+      "exact_bytes": 888,
       "negative_control": "added_external_side_effect_in_every_C_definition",
-      "rejected_functions": 1,
+      "rejected_functions": 2,
       "rejection_causes": {
-        "ValueError: Unresolved literal symbol": 1
+        "ValueError: Unresolved literal symbol": 2
       }
     },
     {
@@ -4803,12 +4803,12 @@
       "source_sha256": "effd4ea7cec44961825814c1580ff1d210491176e712ce4300408b98a84091dd",
       "identical_repeat_objects": true,
       "repeat_object_sha256": "c916c3d82bc1b36ada3d58b2996624fed5689bb5b2b8c8098f00ba902d6e52af",
-      "repeated_exact_functions": 1,
-      "exact_bytes": 2540,
+      "repeated_exact_functions": 2,
+      "exact_bytes": 5260,
       "negative_control": "added_external_side_effect_in_every_C_definition",
-      "rejected_functions": 1,
+      "rejected_functions": 2,
       "rejection_causes": {
-        "ValueError: Unresolved literal symbol": 1
+        "ValueError: Unresolved literal symbol": 2
       }
     },
     {
@@ -4816,12 +4816,12 @@
       "source_sha256": "db7c40a2a2c3ff5b9c65514ebd73dbe052ea373650b0799a6837e774e9dc4a9e",
       "identical_repeat_objects": true,
       "repeat_object_sha256": "5c7e6efa4f524510f1ff7c2b1211f66903f43fc2bd24c74823ca113b925180be",
-      "repeated_exact_functions": 2,
-      "exact_bytes": 2424,
+      "repeated_exact_functions": 3,
+      "exact_bytes": 4116,
       "negative_control": "added_external_side_effect_in_every_C_definition",
-      "rejected_functions": 2,
+      "rejected_functions": 3,
       "rejection_causes": {
-        "ValueError: Unresolved literal symbol": 2
+        "ValueError: Unresolved literal symbol": 3
       }
     },
     {
@@ -5089,12 +5089,12 @@
       "source_sha256": "90baf925243ed26a7a85667fa5e74c4592eaf379bb940360c10478702330d5d7",
       "identical_repeat_objects": true,
       "repeat_object_sha256": "6858b6453524dd5bf0d7403cd4e4013dee2b9d85ebf8d485cfb20c8dc9f9cf36",
-      "repeated_exact_functions": 1,
-      "exact_bytes": 476,
+      "repeated_exact_functions": 2,
+      "exact_bytes": 744,
       "negative_control": "added_external_side_effect_in_every_C_definition",
-      "rejected_functions": 1,
+      "rejected_functions": 2,
       "rejection_causes": {
-        "ValueError: Unresolved literal symbol": 1
+        "ValueError: Unresolved literal symbol": 2
       }
     },
     {
@@ -5245,12 +5245,12 @@
       "source_sha256": "d5270b30bcba59462adfaffaaa6341f383558df5caf2c58ec8a9931a8d73a830",
       "identical_repeat_objects": true,
       "repeat_object_sha256": "d20c38d2a46cccf0971f162758bb959673c8d99b042b6439087306edda3a99ba",
-      "repeated_exact_functions": 1,
-      "exact_bytes": 172,
+      "repeated_exact_functions": 2,
+      "exact_bytes": 1160,
       "negative_control": "added_external_side_effect_in_every_C_definition",
-      "rejected_functions": 1,
+      "rejected_functions": 2,
       "rejection_causes": {
-        "ValueError: Unresolved literal symbol": 1
+        "ValueError: Unresolved literal symbol": 2
       }
     },
     {
@@ -5440,12 +5440,12 @@
       "source_sha256": "61e6f3633445160dbced8f044f9bb5e289ddf2ad187f09e3150e20c0b28591dc",
       "identical_repeat_objects": true,
       "repeat_object_sha256": "9196845d8e038e117971dffb0381c63cd55c46bbc011094ceb6499506760dabc",
-      "repeated_exact_functions": 3,
-      "exact_bytes": 2244,
+      "repeated_exact_functions": 5,
+      "exact_bytes": 4104,
       "negative_control": "added_external_side_effect_in_every_C_definition",
-      "rejected_functions": 3,
+      "rejected_functions": 5,
       "rejection_causes": {
-        "ValueError: Unresolved literal symbol": 3
+        "ValueError: Unresolved literal symbol": 5
       }
     },
     {
@@ -5674,12 +5674,12 @@
       "source_sha256": "1272d2e1be642a6b33e50bb5d9380d5a9130464a81bb4cc5af314cfca0bc61b8",
       "identical_repeat_objects": true,
       "repeat_object_sha256": "bfbdb5aadb0eec2055785b0c43bb9203c7aaf978f49ea974a8ea2eda7d628c07",
-      "repeated_exact_functions": 6,
-      "exact_bytes": 1344,
+      "repeated_exact_functions": 10,
+      "exact_bytes": 1824,
       "negative_control": "added_external_side_effect_in_every_C_definition",
-      "rejected_functions": 6,
+      "rejected_functions": 10,
       "rejection_causes": {
-        "ValueError: Unresolved literal symbol": 6
+        "ValueError: Unresolved literal symbol": 10
       }
     },
     {
@@ -5713,12 +5713,12 @@
       "source_sha256": "4a5b066880d6bf608fcd42ea5b06a5971fc7bdfce05f282c42ec0b37d772264a",
       "identical_repeat_objects": true,
       "repeat_object_sha256": "d2a9f0855df5b67d55129b6d2e4c67e2fb9b968fc8ec8c683b85bfacbeb4a79d",
-      "repeated_exact_functions": 3,
-      "exact_bytes": 792,
+      "repeated_exact_functions": 6,
+      "exact_bytes": 2496,
       "negative_control": "added_external_side_effect_in_every_C_definition",
-      "rejected_functions": 3,
+      "rejected_functions": 6,
       "rejection_causes": {
-        "ValueError: Unresolved literal symbol": 3
+        "ValueError: Unresolved literal symbol": 6
       }
     },
     {
@@ -5739,12 +5739,12 @@
       "source_sha256": "4d2295079fc58c69e3f974b196c697f7961e093dae2596917bc9e51db0f5376a",
       "identical_repeat_objects": true,
       "repeat_object_sha256": "11f94a0aff8f052fcf4b2f3a42f33c5ba1e7dcf0a055c5f3b24ea4dcd19da7f6",
-      "repeated_exact_functions": 1,
-      "exact_bytes": 660,
+      "repeated_exact_functions": 2,
+      "exact_bytes": 2616,
       "negative_control": "added_external_side_effect_in_every_C_definition",
-      "rejected_functions": 1,
+      "rejected_functions": 2,
       "rejection_causes": {
-        "ValueError: Unresolved literal symbol": 1
+        "ValueError: Unresolved literal symbol": 2
       }
     },
     {
@@ -5778,34 +5778,8 @@
       "source_sha256": "4edcf7fbd205de1d7a9cf8782b02e738ce574a57ca252910d1ebba60673cc5da",
       "identical_repeat_objects": true,
       "repeat_object_sha256": "25b4458a0a876d6d6491bf064d23cc76d8e3b8baeb4f08887ba54b3221ce041d",
-      "repeated_exact_functions": 1,
-      "exact_bytes": 444,
-      "negative_control": "added_external_side_effect_in_every_C_definition",
-      "rejected_functions": 1,
-      "rejection_causes": {
-        "ValueError: Unresolved literal symbol": 1
-      }
-    },
-    {
-      "id": "openssl_q_sections_crypto_bn_bn_lib_O3_omit",
-      "source_sha256": "ce5d4e94ea38386e0096d58c5d47b4baefecd8c7b9315cae3145a89d3b2b1dca",
-      "identical_repeat_objects": true,
-      "repeat_object_sha256": "fdd9d93a8dc17864b4f666dc89f8897075160ad309b8e0ec173953c5955ca7e4",
-      "repeated_exact_functions": 3,
-      "exact_bytes": 416,
-      "negative_control": "added_external_side_effect_in_every_C_definition",
-      "rejected_functions": 3,
-      "rejection_causes": {
-        "ValueError: Unresolved literal symbol": 3
-      }
-    },
-    {
-      "id": "openssl_q_sections_crypto_x509v3_v3_purp_O3_omit",
-      "source_sha256": "cf98df260b09a2a689789e79986f0e6f31e303c303019fcb7859ae0cbfcad21d",
-      "identical_repeat_objects": true,
-      "repeat_object_sha256": "f8049fd30a335cd515b5bb1ca98b4395cea90ad38522aa9567ef8cf3b705816b",
       "repeated_exact_functions": 2,
-      "exact_bytes": 308,
+      "exact_bytes": 584,
       "negative_control": "added_external_side_effect_in_every_C_definition",
       "rejected_functions": 2,
       "rejection_causes": {
@@ -5813,16 +5787,42 @@
       }
     },
     {
+      "id": "openssl_q_sections_crypto_bn_bn_lib_O3_omit",
+      "source_sha256": "ce5d4e94ea38386e0096d58c5d47b4baefecd8c7b9315cae3145a89d3b2b1dca",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "fdd9d93a8dc17864b4f666dc89f8897075160ad309b8e0ec173953c5955ca7e4",
+      "repeated_exact_functions": 4,
+      "exact_bytes": 848,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 4,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 4
+      }
+    },
+    {
+      "id": "openssl_q_sections_crypto_x509v3_v3_purp_O3_omit",
+      "source_sha256": "cf98df260b09a2a689789e79986f0e6f31e303c303019fcb7859ae0cbfcad21d",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "f8049fd30a335cd515b5bb1ca98b4395cea90ad38522aa9567ef8cf3b705816b",
+      "repeated_exact_functions": 3,
+      "exact_bytes": 544,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 3,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 3
+      }
+    },
+    {
       "id": "openssl_q_sections_crypto_asn1_tasn_enc_O2_omit",
       "source_sha256": "35aae4ebed83b3d6d36759c617639dfb59061932f1ceca7dbe4fad9e4d25290e",
       "identical_repeat_objects": true,
       "repeat_object_sha256": "97394dc3ac6d28a8de1d26af25e4b6ba7334a8a1ac4edfd924bdc13ab382785d",
-      "repeated_exact_functions": 1,
-      "exact_bytes": 288,
+      "repeated_exact_functions": 2,
+      "exact_bytes": 1228,
       "negative_control": "added_external_side_effect_in_every_C_definition",
-      "rejected_functions": 1,
+      "rejected_functions": 2,
       "rejection_causes": {
-        "ValueError: Unresolved literal symbol": 1
+        "ValueError: Unresolved literal symbol": 2
       }
     },
     {
@@ -5921,12 +5921,12 @@
       "source_sha256": "80d051a7819208ab486e6c61914849727fc2cf754e78010bf16d2431d0406307",
       "identical_repeat_objects": true,
       "repeat_object_sha256": "9570e9fae94e2362f1d96d31c71755754f25a8cd03048324e89e236207374402",
-      "repeated_exact_functions": 2,
-      "exact_bytes": 184,
+      "repeated_exact_functions": 4,
+      "exact_bytes": 876,
       "negative_control": "added_external_side_effect_in_every_C_definition",
-      "rejected_functions": 2,
+      "rejected_functions": 4,
       "rejection_causes": {
-        "ValueError: Unresolved literal symbol": 2
+        "ValueError: Unresolved literal symbol": 4
       }
     },
     {
@@ -5934,12 +5934,12 @@
       "source_sha256": "189a20b353522653eecce7bda3b565d1cc85a19476fe3e292f1616d192d1bdb3",
       "identical_repeat_objects": true,
       "repeat_object_sha256": "573e5ccc27c8a5b5b03d3ee1627b7ba0ff80333e931d5d50033cfc45f9dafcca",
-      "repeated_exact_functions": 2,
-      "exact_bytes": 124,
+      "repeated_exact_functions": 4,
+      "exact_bytes": 3416,
       "negative_control": "added_external_side_effect_in_every_C_definition",
-      "rejected_functions": 2,
+      "rejected_functions": 4,
       "rejection_causes": {
-        "ValueError: Unresolved literal symbol": 2
+        "ValueError: Unresolved literal symbol": 4
       }
     },
     {
@@ -5962,6 +5962,2268 @@
       "repeat_object_sha256": "614f54f97622f8c5b212b0a7bdd69a05d9b7893714a54bfcc1b86c25b815acc2",
       "repeated_exact_functions": 1,
       "exact_bytes": 88,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 1,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 1
+      }
+    },
+    {
+      "id": "openssl_q_sections_ssl_t1_lib_O3_novec",
+      "source_sha256": "6c6750601c989e0d11fa0f25172878c8c825e9c2b4067bdc6e9affcbb716defc",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "a5a5d827789991e21d44b5085d4bf617faa85075695941167668f4589deeba5a",
+      "repeated_exact_functions": 9,
+      "exact_bytes": 9648,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 9,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 9
+      }
+    },
+    {
+      "id": "openssl_q_sections_crypto_ec_ec_mult_O3_novec",
+      "source_sha256": "7f5e0b71497c1800398101e1d4f2cc69746ec70c090f233e253c2fd19af82db5",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "d5fabe15ebf56115349b5c6d7760adb3f54eb1cf9d6bff21f721eae96cb22d68",
+      "repeated_exact_functions": 2,
+      "exact_bytes": 4564,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 2,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 2
+      }
+    },
+    {
+      "id": "openssl_q_sections_ssl_s3_srvr_O3_novec",
+      "source_sha256": "6d3b9e73002bacf95e1044e16090008e76356d1a5fbed15aa341f58a2b65a252",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "b2769ece786ccaf552aff65504cca893b0cec6d76f67c6c37c2068915a4bd2bd",
+      "repeated_exact_functions": 1,
+      "exact_bytes": 3604,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 1,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 1
+      }
+    },
+    {
+      "id": "openssl_q_sections_ssl_s3_clnt_O3_novec",
+      "source_sha256": "cf3a1a7d2e1d8eb20accf60fdf027a6fde89a0d072f08f4aa3689df127b9b7f7",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "0d1e95a6b1cead8a075f3bf00e734dc2752d17a5dccec6a1b4b5d9576535dc16",
+      "repeated_exact_functions": 2,
+      "exact_bytes": 3348,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 2,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 2
+      }
+    },
+    {
+      "id": "openssl_q_sections_crypto_pkcs7_pk7_doit_O3_novec",
+      "source_sha256": "00794474bf440bf44f6b24954eb8c11db3d561b736b532769b7c8b5a38595d8d",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "90b6783b9faa1fc6e163fbe9781467d33518ba41af620754e850403544b12f20",
+      "repeated_exact_functions": 2,
+      "exact_bytes": 3044,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 2,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 2
+      }
+    },
+    {
+      "id": "openssl_q_sections_ssl_d1_srvr_O3_novec",
+      "source_sha256": "8e12ee6f7432712761f22d96a4ada33a5dbb4e3430117ec1e9d1f38264773520",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "bef5c65894c4a1dac88bad595ad7695eb77ced425a7d4f7bc3dba5aabde9951c",
+      "repeated_exact_functions": 1,
+      "exact_bytes": 2984,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 1,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 1
+      }
+    },
+    {
+      "id": "openssl_q_sections_crypto_x509v3_pcy_tree_O3_novec",
+      "source_sha256": "b468eb7d4b77b525503af6196385771490d42454d7ec30ad863713d9014118c1",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "5a1b5d82c1b0f0c8768f8e82e46c2b9b2565af1a85f60421c2487573962a2218",
+      "repeated_exact_functions": 1,
+      "exact_bytes": 2760,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 1,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 1
+      }
+    },
+    {
+      "id": "openssl_q_sections_ssl_s3_lib_O3_novec",
+      "source_sha256": "3230d58b9738b21929bf949abc979325d2f05079039a9b7d9ecbfc1e24d3af77",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "e484dc51b5671820157b9ac7451b008f53045612d900647bb66c951462e269ce",
+      "repeated_exact_functions": 1,
+      "exact_bytes": 2740,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 1,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 1
+      }
+    },
+    {
+      "id": "openssl_q_sections_crypto_x509v3_v3_alt_O3_novec",
+      "source_sha256": "4b932ca793eeda9548e6bfc22dad428f5b6f92d77a6ca9e371c656cfb888e6c5",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "bdf9a0a5913aad17efa0ff39b7e0b46544d1c626efd0aa672a776ccc3191a195",
+      "repeated_exact_functions": 3,
+      "exact_bytes": 2344,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 3,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 3
+      }
+    },
+    {
+      "id": "openssl_q_sections_ssl_ssl_ciph_O3_novec",
+      "source_sha256": "c6f3a3f57cd28943016b0e3a87beb40515e45770fc5f4748754f5cdacba30527",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "8d47f92dff18ad54057d899f3511319aff4d61c8611951b1acb83fade14513a7",
+      "repeated_exact_functions": 3,
+      "exact_bytes": 2152,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 3,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 3
+      }
+    },
+    {
+      "id": "openssl_q_sections_crypto_rsa_rsa_pss_O3_novec",
+      "source_sha256": "31078abdf7689e35ab41108cbe6f6cd6c474e5cf6631668586f6cefaa7e58213",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "02a7b97ef62a23581352c0fde6bf73d570281f5ebf606f6e4b0690a7651a0f23",
+      "repeated_exact_functions": 2,
+      "exact_bytes": 1752,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 2,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 2
+      }
+    },
+    {
+      "id": "openssl_q_sections_crypto_asn1_a_strex_O2_novec",
+      "source_sha256": "72f65f07028dbfa24738f9fec201385de4543989ab20bbbed06f8c7e0c31824f",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "d0a6a416745da6396e9f6111d2ea89390696eb763eebd2280331e32c39346113",
+      "repeated_exact_functions": 2,
+      "exact_bytes": 1680,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 2,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 2
+      }
+    },
+    {
+      "id": "openssl_q_sections_crypto_mem_O3_novec",
+      "source_sha256": "e53a9878cf678631eaf2a658600cbfdf50c445ba854c55a80947b1d0dac21417",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "b6a3b3113eb3ce446514b4736e243f661c8331c8a8277393c14f4abffc9a5e32",
+      "repeated_exact_functions": 7,
+      "exact_bytes": 1464,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 7,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 7
+      }
+    },
+    {
+      "id": "openssl_q_sections_crypto_asn1_a_mbstr_O3_novec",
+      "source_sha256": "d9d0b499070af9087527d568e39f14a9a5b5fca9ce854185aa46d09c4e4fc85c",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "891dbf55ab39fed2c0f5d9444ed12f537a848bbf2d8e5bc63318d49f3f576110",
+      "repeated_exact_functions": 1,
+      "exact_bytes": 1444,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 1,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 1
+      }
+    },
+    {
+      "id": "openssl_q_sections_crypto_x509_x509_txt_O3_novec",
+      "source_sha256": "748512d9df513fc138313591c359c8bd9da683387c4414d346481365e8fa3aac",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "0f6afb71028cb529be7b120e2d1b5c339865af8d4c24b299fa86f2402b28735e",
+      "repeated_exact_functions": 1,
+      "exact_bytes": 1392,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 1,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 1
+      }
+    },
+    {
+      "id": "openssl_q_sections_crypto_mem_dbg_O3_novec",
+      "source_sha256": "7351b399f873c25604fd5b3bd4a91d4d6b9499efce7d962a0d7549580406cba7",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "5a6e9b8a4f75928eb41d2bb1346065762e7b7b1283b3bdaf03fad992042fcfe9",
+      "repeated_exact_functions": 3,
+      "exact_bytes": 1276,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 3,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 3
+      }
+    },
+    {
+      "id": "openssl_q_sections_crypto_x509v3_v3_crld_O3_novec",
+      "source_sha256": "5fceba911daa301d943701566fd84d3915d039298c90b4721ab9277f89c77a21",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "083766f6c14ef45262395b0fc99c59806c9e5c627f9ee50e39a2cb8a2653783d",
+      "repeated_exact_functions": 2,
+      "exact_bytes": 1252,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 2,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 2
+      }
+    },
+    {
+      "id": "openssl_q_sections_crypto_bio_bss_file_O3_novec",
+      "source_sha256": "051452fab5cafb570a7ba2253ec4e93655e05b8c03341fe3052dd40dd4827990",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "fbd9229b6395b4876084172919948067ae2ba55d8265b5049175c6e75f64effa",
+      "repeated_exact_functions": 2,
+      "exact_bytes": 956,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 2,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 2
+      }
+    },
+    {
+      "id": "openssl_q_sections_crypto_asn1_x_name_O2_novec",
+      "source_sha256": "85d6ce96c5d04615cab56973f09b7fc8c4fb282368cce173c6ef1cb860c2e156",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "ad9b5d9f9cf56116145f067f28bb56fda9be33f7e9b9a452f1f9db61a338a23b",
+      "repeated_exact_functions": 2,
+      "exact_bytes": 944,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 2,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 2
+      }
+    },
+    {
+      "id": "openssl_q_sections_crypto_asn1_ameth_lib_O3_novec",
+      "source_sha256": "42d51ed39c6209a48dc799724cce9c0696fdff64a8ce6904e785219ab54e649f",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "51d03c652b6b34a84feee3c782e6b8525d3d81cc3b8e4397bbd1d27a1b2074aa",
+      "repeated_exact_functions": 2,
+      "exact_bytes": 580,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 2,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 2
+      }
+    },
+    {
+      "id": "openssl_q_sections_crypto_ex_data_O3_novec",
+      "source_sha256": "53486a3929b9ca8f68a88caa193ee1d4e0eb63f49d0c6a3bf71e843e302c14dd",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "acf2a3898f6ac56f98d2c9279bcbbf361cb5db585035c20ada322ac9c009ca9d",
+      "repeated_exact_functions": 1,
+      "exact_bytes": 516,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 1,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 1
+      }
+    },
+    {
+      "id": "openssl_q_sections_crypto_rand_md_rand_O3_novec",
+      "source_sha256": "d7dbecbe9949b622c3f838d2a3d32e1d07c696c68784a4f1efca1ce0bde1fc63",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "a3b5f029735cd71cc49cb29aaf0c1eff27036659e5b5102d6f128ab5bc0428c3",
+      "repeated_exact_functions": 1,
+      "exact_bytes": 352,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 1,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 1
+      }
+    },
+    {
+      "id": "openssl_q_sections_crypto_engine_eng_table_O2_novec",
+      "source_sha256": "413afcd67ff1bfa74f15f4a3d969a446f6a15600448ed651ea462e83544dbac0",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "931850db47aa7789844013b1547617cb0c30d0af1e536893c06b9a4a722f5050",
+      "repeated_exact_functions": 1,
+      "exact_bytes": 316,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 1,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 1
+      }
+    },
+    {
+      "id": "openssl_q_sections_crypto_asn1_tasn_new_O3_novec",
+      "source_sha256": "cf6ff953fe00dcf7ddd4b34ca1e87ef0e94b1c861a709d1dc80c7cd9c021adab",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "4382c1884c45f1b706775079725b9fe0f06f13748413b8dc6738f9025929ed36",
+      "repeated_exact_functions": 1,
+      "exact_bytes": 296,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 1,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 1
+      }
+    },
+    {
+      "id": "openssl_q_sections_crypto_asn1_asn1_gen_O2_novec",
+      "source_sha256": "bec06a6677af7a3cfdc070bc5e2ebb0cbeda489b1b45cb2d7c989d7de2982520",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "4faa1115c28b7f5a1495a2e5510d2a90228e4b45c079d0699a1aa4506f3c39a8",
+      "repeated_exact_functions": 1,
+      "exact_bytes": 292,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 1,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 1
+      }
+    },
+    {
+      "id": "openssl_q_sections_crypto_objects_o_names_O3_novec",
+      "source_sha256": "715b8c4a9e5d428c3244292a9f3f76ee9b28c5312a6cddeffe67d5ad931f1815",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "d3278bef5f27da9cd26e55a4f3e000118f7403222b798a07a68a44be09788e51",
+      "repeated_exact_functions": 1,
+      "exact_bytes": 288,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 1,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 1
+      }
+    },
+    {
+      "id": "openssl_q_sections_crypto_x509_x509_trs_O3_novec",
+      "source_sha256": "664eb9116f10701517eecb12ed9ab8b938c915b31dac41af268e3fc223c1cb32",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "b1132fdebf460865716225113bf598a7ec3fa4db1122897b0e91d3f656c4ebaa",
+      "repeated_exact_functions": 1,
+      "exact_bytes": 284,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 1,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 1
+      }
+    },
+    {
+      "id": "openssl_q_sections_crypto_asn1_a_strnid_O2_novec",
+      "source_sha256": "354600f0442333872d094f592511fef09c814facd742c900e2f1ec9f3f3e8f4d",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "94619c9cbc3a4ab5c277839fd7ba3a3ed96af19c9c960138216246ee6331dade",
+      "repeated_exact_functions": 1,
+      "exact_bytes": 256,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 1,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 1
+      }
+    },
+    {
+      "id": "openssl_q_sections_crypto_asn1_a_d2i_fp_O2_novec",
+      "source_sha256": "949e0386f4e4b277bb4ddaf6f342fcf619e531163d8674e78c4a7f4273d91411",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "47671ebba6ba066ab0dd27eb6ceb52733492e4dc143d07e20c3582f1d74e4d2a",
+      "repeated_exact_functions": 1,
+      "exact_bytes": 212,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 1,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 1
+      }
+    },
+    {
+      "id": "openssl_q_sections_crypto_x509v3_v3_cpols_O2_novec",
+      "source_sha256": "e2d0ff895eb96e1c3e356b3198ef2976338599adc9956cc16ffb7e3af6ba7ba7",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "e126c618abe652ee5f26c852b770f343edea0674c21930fc192b46f2d5ebe723",
+      "repeated_exact_functions": 1,
+      "exact_bytes": 208,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 1,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 1
+      }
+    },
+    {
+      "id": "openssl_q_sections_crypto_ec_ec_curve_O2_keep_pic",
+      "source_sha256": "d1869217129d6a7092197adbc13cdf1f638fd5e5bf6ecfc3a9bf2619a5663911",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "f25aa1ce3cfb62f353d5fde7ef4b3c4ad7ec46ff3e91d4486665e9b4a3464321",
+      "repeated_exact_functions": 1,
+      "exact_bytes": 192,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 1,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 1
+      }
+    },
+    {
+      "id": "openssl_q_sections_crypto_objects_obj_xref_O2_novec",
+      "source_sha256": "2182e60bc35b1c12ddc0003b3e8aa0ed34b5f2c5806194903e76630a209d83ac",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "6a96b79195d320bdd7eb5e528f0a2ee8e72458301c6e1a13100b22f5f8ec54c4",
+      "repeated_exact_functions": 1,
+      "exact_bytes": 144,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 1,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 1
+      }
+    },
+    {
+      "id": "openssl_q_sections_ssl_ssl_rsa_O2_novec",
+      "source_sha256": "e382c7e1adf4269fbf4df1d2bb7ad747f80f5fcef10f5dc8d88a4b3d80438032",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "83d93202087a1f97d7c3039025d8da601de906c53a03bb6dfd90d61c7a8f0fe9",
+      "repeated_exact_functions": 1,
+      "exact_bytes": 124,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 1,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 1
+      }
+    },
+    {
+      "id": "openssl_q_sections_crypto_x509v3_v3_ncons_O2_novec",
+      "source_sha256": "9266bc338fcfc18ce66f8180284eab165a4d4716ad77896721b51cf84244bd2d",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "f247850432eae588276f4a985dad67c99ae669f88e11c6c04cec50f028886933",
+      "repeated_exact_functions": 1,
+      "exact_bytes": 84,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 1,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 1
+      }
+    },
+    {
+      "id": "openssl_q_sections_crypto_asn1_asn1_err_O2_novec",
+      "source_sha256": "6e56323f43a45e1a7f03f7896725d7c1d961861749cf8fe41b754990728360e3",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "dc6828ed25c26d980593e91456bba0c0fa842a345b118a12d50f4612ee648e5b",
+      "repeated_exact_functions": 1,
+      "exact_bytes": 60,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 1,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 1
+      }
+    },
+    {
+      "id": "openssl_q_sections_crypto_asn1_asn1_par_O2_keep_pic",
+      "source_sha256": "bd8d9ec41d74c1bf26499ca3275141a09fb23ae4ffd0b9cc0144d43315d72274",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "7569fa66e3db02eb734a8109a9e71546b2a5417bbea3aae5872c2c21d027811f",
+      "repeated_exact_functions": 1,
+      "exact_bytes": 52,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 1,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 1
+      }
+    },
+    {
+      "id": "openssl_q_pie_crypto_bn_bn_nist_O3_novec",
+      "source_sha256": "7d6d804d40dbc6acc0133ea28dce811598c2319abb710fd8f3648801c5e405aa",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "cc0ec0a1f409e7361650880dfdb70b1545cf5692436cff957522bffcfcc9fb0a",
+      "repeated_exact_functions": 5,
+      "exact_bytes": 5668,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 5,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 5
+      }
+    },
+    {
+      "id": "openssl_q_pie_crypto_x509_x509_vfy_O3_novec",
+      "source_sha256": "4d2295079fc58c69e3f974b196c697f7961e093dae2596917bc9e51db0f5376a",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "468ce8170bbd688fd4741dfb4e9c5809ccccca8a0c942a7a138816571e8bbb72",
+      "repeated_exact_functions": 4,
+      "exact_bytes": 5360,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 4,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 4
+      }
+    },
+    {
+      "id": "openssl_q_sections_crypto_dh_dh_ameth_O3_omit",
+      "source_sha256": "d11e177002dc1a9bf0484c0325ada97d6069d00e8ffb5b5f54692c80643b2911",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "1aa6e5d219c2c70fc44fb2213dbd292b50114a809227866e31c1211a1e065164",
+      "repeated_exact_functions": 11,
+      "exact_bytes": 3488,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 11,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 11
+      }
+    },
+    {
+      "id": "openssl_q_pie_ssl_ssl_ciph_O3_novec",
+      "source_sha256": "c6f3a3f57cd28943016b0e3a87beb40515e45770fc5f4748754f5cdacba30527",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "ef05efea1695ac3101aa045326196e19760c8080043f1b418b6c9a461139d2a1",
+      "repeated_exact_functions": 1,
+      "exact_bytes": 3468,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 1,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 1
+      }
+    },
+    {
+      "id": "openssl_q_pie_crypto_err_err_O3_novec",
+      "source_sha256": "1272d2e1be642a6b33e50bb5d9380d5a9130464a81bb4cc5af314cfca0bc61b8",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "8f80eee343129356771ce0d44cfcab66e48abc4d2c031c0ac4af0f624382f011",
+      "repeated_exact_functions": 12,
+      "exact_bytes": 3444,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 12,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 12
+      }
+    },
+    {
+      "id": "openssl_q_sections_crypto_rsa_rsa_pmeth_O3_omit",
+      "source_sha256": "99c695cd225f46ea0d0795e5d1bf9bc18c813942d01237fcb3f78ccc96195c45",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "ae1de2931a3ceb1668121e73ee17c4c1ba6de0e118c4762357d26eb9c56d291b",
+      "repeated_exact_functions": 9,
+      "exact_bytes": 3412,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 9,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 9
+      }
+    },
+    {
+      "id": "openssl_q_pie_crypto_objects_obj_dat_O3_novec",
+      "source_sha256": "836f198db9d337545e2be6a060b36b563d3ad4b9882bb4f1a031e1ad1cb9e86d",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "0f2b5e093e6b58f31ecb8c0b92ba54318fae8e83edbe0bed79628cbad4f1ae07",
+      "repeated_exact_functions": 8,
+      "exact_bytes": 3400,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 8,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 8
+      }
+    },
+    {
+      "id": "openssl_q_pie_crypto_asn1_asn1_gen_O3_novec",
+      "source_sha256": "bec06a6677af7a3cfdc070bc5e2ebb0cbeda489b1b45cb2d7c989d7de2982520",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "f8e147d18bbb490edc62abf76dbf9d08fbe4d0df18d8678c82ec080505e55163",
+      "repeated_exact_functions": 2,
+      "exact_bytes": 3360,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 2,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 2
+      }
+    },
+    {
+      "id": "openssl_q_pie_crypto_dsa_dsa_ameth_O3_omit",
+      "source_sha256": "25b081ad04d80d0f588fdf935a710793c480b8e81fca360a389ddd10debbd5be",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "b70bb8da8b4abc1b57f53b9b1c06ff3b27a81a70c3be4b1a4fb60c9d2c491bd1",
+      "repeated_exact_functions": 10,
+      "exact_bytes": 3352,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 10,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 10
+      }
+    },
+    {
+      "id": "openssl_q_pie_ssl_t1_lib_O3_novec",
+      "source_sha256": "6c6750601c989e0d11fa0f25172878c8c825e9c2b4067bdc6e9affcbb716defc",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "470259d24fd58f7daa23663140ccafe7494ac4f5e2ba6982b0d403b3c34786e0",
+      "repeated_exact_functions": 1,
+      "exact_bytes": 2760,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 1,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 1
+      }
+    },
+    {
+      "id": "openssl_q_sections_crypto_ec_ec_ameth_O3_omit",
+      "source_sha256": "9a29f5c23a38dd9570db1e70651e46b1bf54ab3ba68a0104f8dda9f14dfc454f",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "105a6fa7483f76131bfa4b6fa0eb7d8cb5a8b08dfe66ef715d6599c4dfb4cea8",
+      "repeated_exact_functions": 11,
+      "exact_bytes": 2720,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 11,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 11
+      }
+    },
+    {
+      "id": "openssl_q_pie_ssl_s3_clnt_O2_novec",
+      "source_sha256": "cf3a1a7d2e1d8eb20accf60fdf027a6fde89a0d072f08f4aa3689df127b9b7f7",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "ec775090f4f98b41437d44c7b62473752ac41b5deaa5bb7d23e4d2f92cc90794",
+      "repeated_exact_functions": 2,
+      "exact_bytes": 2672,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 2,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 2
+      }
+    },
+    {
+      "id": "openssl_q_sections_crypto_rsa_rsa_ameth_O3_omit",
+      "source_sha256": "396543a50ef580c80dc49631c6c988b9030d387b06764286dd553f3af4e88947",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "006145bb1488cd7b71f78f67493c34292644c93b417701fe183969b9004bd242",
+      "repeated_exact_functions": 8,
+      "exact_bytes": 2608,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 8,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 8
+      }
+    },
+    {
+      "id": "openssl_q_pie_crypto_evp_e_aes_O3_novec",
+      "source_sha256": "ac163487534c88f213db87a9938773f4e70d8d1c1e2ae2e7e73641ab4efea381",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "eb3ea505ccf589a5c4c3e1f24e289071941ea003e72fe7932368195cc21cc9a3",
+      "repeated_exact_functions": 6,
+      "exact_bytes": 2548,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 6,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 6
+      }
+    },
+    {
+      "id": "openssl_q_sections_crypto_ec_ec_pmeth_O3_omit",
+      "source_sha256": "d3985fd3bd64509d39151fe2195967be59d318e61e73bf7b4bc6e362896a86dc",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "6da269088b8c03a80729a10a5216b0e6a68707467a25ef11148f1c051acb52da",
+      "repeated_exact_functions": 7,
+      "exact_bytes": 2544,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 7,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 7
+      }
+    },
+    {
+      "id": "openssl_q_pie_crypto_x509v3_v3_cpols_O3_novec",
+      "source_sha256": "e2d0ff895eb96e1c3e356b3198ef2976338599adc9956cc16ffb7e3af6ba7ba7",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "666eaf178153d5efcdf43de47bdf555cabaefa3ff750949d61d4e402fe98fc17",
+      "repeated_exact_functions": 1,
+      "exact_bytes": 2224,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 1,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 1
+      }
+    },
+    {
+      "id": "openssl_q_pie_crypto_rsa_rsa_eay_O3_novec",
+      "source_sha256": "61e6f3633445160dbced8f044f9bb5e289ddf2ad187f09e3150e20c0b28591dc",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "558ceb3fdfa75339db4fa88b95e5c1bf4fe491e36175c72de9f284dbb5214c80",
+      "repeated_exact_functions": 1,
+      "exact_bytes": 1916,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 1,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 1
+      }
+    },
+    {
+      "id": "openssl_q_pie_crypto_bn_bn_sqrt_O3_novec",
+      "source_sha256": "24e54e36924061978ac66fb965a3a687f8b6beca801ee4660277ff99260c2150",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "05e6509e201751eb1f24fa3f36a761b5b95fad03809187dbb757d6b337e746c1",
+      "repeated_exact_functions": 1,
+      "exact_bytes": 1844,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 1,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 1
+      }
+    },
+    {
+      "id": "openssl_q_pie_ssl_ssl_cert_O3_novec",
+      "source_sha256": "eb9b5424ba05c0cff3923fb0067ec380c0a05b9d96868ddffb602e5dd7d2d780",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "a47a36b599bebfedd30f46c160cc280f849e1f0f6e0cd46450c0c0472584d828",
+      "repeated_exact_functions": 6,
+      "exact_bytes": 1648,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 6,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 6
+      }
+    },
+    {
+      "id": "openssl_q_pie_crypto_x509v3_v3_purp_O3_novec",
+      "source_sha256": "cf98df260b09a2a689789e79986f0e6f31e303c303019fcb7859ae0cbfcad21d",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "27ae3a32b56b1557118a67d6d1eb8448f858f3b320e975eb61e41b0f3bb6e8bf",
+      "repeated_exact_functions": 1,
+      "exact_bytes": 1576,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 1,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 1
+      }
+    },
+    {
+      "id": "openssl_q_pie_crypto_ec_ec_curve_O3_novec",
+      "source_sha256": "d1869217129d6a7092197adbc13cdf1f638fd5e5bf6ecfc3a9bf2619a5663911",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "1b6315c711a5fdd2a8ffdf4596010cf0fc077c45fdd581f404e9be5349252204",
+      "repeated_exact_functions": 2,
+      "exact_bytes": 1512,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 2,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 2
+      }
+    },
+    {
+      "id": "openssl_q_pie_crypto_evp_p_lib_O3_omit",
+      "source_sha256": "4db17a612821991f2c2b80b9986d5a069a05148ba9440f7b73b889e79ec28ff4",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "82f1519c2049f041dcd4a58c10a2527aac9880b1e86688acd2ede21e7a654796",
+      "repeated_exact_functions": 12,
+      "exact_bytes": 1300,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 12,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 12
+      }
+    },
+    {
+      "id": "openssl_q_pie_ssl_t1_enc_O3_novec",
+      "source_sha256": "4edcf7fbd205de1d7a9cf8782b02e738ce574a57ca252910d1ebba60673cc5da",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "c5989c92fa8dfaa5ff1c91e0ff7858899678fc4bb12efca3f996ac65e19068ec",
+      "repeated_exact_functions": 1,
+      "exact_bytes": 1300,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 1,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 1
+      }
+    },
+    {
+      "id": "openssl_q_sections_crypto_dsa_dsa_pmeth_O3_omit",
+      "source_sha256": "b7237490a57f8251b0bf8cd98c31145d184e30d27a0d507dfca86557f00a39f4",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "79c6d397bb7188958713e84b6be16fb9c120ceb87337aca697e7d5b5168e544f",
+      "repeated_exact_functions": 6,
+      "exact_bytes": 1296,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 6,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 6
+      }
+    },
+    {
+      "id": "openssl_q_pie_crypto_x509v3_v3_crld_O3_novec",
+      "source_sha256": "5fceba911daa301d943701566fd84d3915d039298c90b4721ab9277f89c77a21",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "8c2348de23a2c9fc8c209beca4a65a0b4aaebe25ad5a52c36ed1c32939d783c7",
+      "repeated_exact_functions": 3,
+      "exact_bytes": 1264,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 3,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 3
+      }
+    },
+    {
+      "id": "openssl_q_pie_crypto_x509v3_v3_alt_O3_novec",
+      "source_sha256": "4b932ca793eeda9548e6bfc22dad428f5b6f92d77a6ca9e371c656cfb888e6c5",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "c9e0e22c8f73126589af365b92400e462281d0cf2109e4b387eae6ccc0f06079",
+      "repeated_exact_functions": 3,
+      "exact_bytes": 1224,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 3,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 3
+      }
+    },
+    {
+      "id": "openssl_q_pie_ssl_s3_srvr_O2_novec",
+      "source_sha256": "6d3b9e73002bacf95e1044e16090008e76356d1a5fbed15aa341f58a2b65a252",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "dc6daadfa8d3d0bbf5e4baa8bb3af310ea52972960d502e8d7ddebb8f2aee733",
+      "repeated_exact_functions": 1,
+      "exact_bytes": 1144,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 1,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 1
+      }
+    },
+    {
+      "id": "openssl_q_sections_crypto_evp_pmeth_lib_O3_omit",
+      "source_sha256": "dd9756e0142ad8d20774616575c70e32431eacefb4e855813763127f4c9e64e9",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "e2d664c666b444de6f44febec5ce8ce3b54608020655ddb243fbc91f9c2207df",
+      "repeated_exact_functions": 4,
+      "exact_bytes": 1132,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 4,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 4
+      }
+    },
+    {
+      "id": "openssl_q_pie_crypto_x509_x509_lu_O3_novec",
+      "source_sha256": "63b7f4bb452f69d3b5b1fca1059309e3d5bde433068670b559a73d06b19600b6",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "9236ba2bab8032dc68f61e306aa4b2e629fd71ed1be14a4fb81059e0226ab99f",
+      "repeated_exact_functions": 2,
+      "exact_bytes": 972,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 2,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 2
+      }
+    },
+    {
+      "id": "openssl_q_pie_crypto_pkcs12_p12_kiss_O3_novec",
+      "source_sha256": "67cbc2f39ea95cf4a98d33585d95465422bae35e74bada0456921f6c7494a7a8",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "073a9af3e86bf84a87e020671d7579fc6aa1d9981a8640cf30435a07a2153a55",
+      "repeated_exact_functions": 1,
+      "exact_bytes": 916,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 1,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 1
+      }
+    },
+    {
+      "id": "openssl_q_pie_ssl_ssl_lib_O2_novec",
+      "source_sha256": "5aa25904b16f4edcba6b57ac38bdbd0a65eebf190c1d9b0949d4cb0cb0699a37",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "11184973ffa7b525db580306157a6408ef868ab3f0e2ee3d20364b9df46ff7e8",
+      "repeated_exact_functions": 2,
+      "exact_bytes": 876,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 2,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 2
+      }
+    },
+    {
+      "id": "openssl_q_pie_crypto_x509v3_pcy_cache_O2_novec",
+      "source_sha256": "ef692806fdd8d3fd6a906c83bc8eaa43fc336ab50effe0d618a9eeba5adf19a4",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "c99a2d1c9577b1affbc9cb4cbff1109e7042a533e2ea946020eb087fee4fc914",
+      "repeated_exact_functions": 2,
+      "exact_bytes": 848,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 2,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 2
+      }
+    },
+    {
+      "id": "openssl_q_sections_crypto_hmac_hm_pmeth_O3_omit",
+      "source_sha256": "74e7be8df0774e2cb63a5bf72d81da56115fcb40f7052c37954d62b2b2d2bfca",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "cb5da2b3f69a1295c45d3e0940976cf7e24836fc4123d5440cb7d0a65dce31e1",
+      "repeated_exact_functions": 5,
+      "exact_bytes": 820,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 5,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 5
+      }
+    },
+    {
+      "id": "openssl_q_pie_crypto_evp_evp_pbe_O2_novec",
+      "source_sha256": "ecde00fa7a45349fd758d322d491f7dd44c26321b1e197686b9cb1dcdd1c31fa",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "101b70730402fd9d2c64f0ea99e8d14b59630e0a93c7c83752e72e5846437578",
+      "repeated_exact_functions": 2,
+      "exact_bytes": 704,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 2,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 2
+      }
+    },
+    {
+      "id": "openssl_q_pie_crypto_x509v3_v3_pci_O3_novec",
+      "source_sha256": "3b75f2453af092339735f56c99bea087831060a8d6ec9c677a063d22de569cc7",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "404208306157603d285bc63676e70567c8fabef76767d2b0d6a00f14091a2216",
+      "repeated_exact_functions": 1,
+      "exact_bytes": 668,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 1,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 1
+      }
+    },
+    {
+      "id": "openssl_q_pie_crypto_bn_bn_mod_O2_novec",
+      "source_sha256": "bb213455b9253f9aac78ca4bf1dd32665d32833084aea2ad969c0da837f3bb66",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "2ea23470ae2e3a49c26c36b4f76d63b12e9fac57b7342ee30ea1dadbec574eb0",
+      "repeated_exact_functions": 4,
+      "exact_bytes": 616,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 4,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 4
+      }
+    },
+    {
+      "id": "openssl_q_pie_ssl_s3_lib_O2_novec",
+      "source_sha256": "3230d58b9738b21929bf949abc979325d2f05079039a9b7d9ecbfc1e24d3af77",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "a2a225030cd9420bcd620830d55d50fcb23eb9618693c071e734a7bb8a896042",
+      "repeated_exact_functions": 2,
+      "exact_bytes": 596,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 2,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 2
+      }
+    },
+    {
+      "id": "openssl_q_pie_crypto_asn1_t_x509_O3_novec",
+      "source_sha256": "4e7e9a765c8ed1f282ce0a437ceecdff85c33136edcb066da8416326853e7143",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "154a969f723e7576b6f974ab7bc89378d215fae862277d36cac0330e47bb320e",
+      "repeated_exact_functions": 1,
+      "exact_bytes": 552,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 1,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 1
+      }
+    },
+    {
+      "id": "openssl_q_sections_crypto_pkcs7_pk7_lib_O3_omit",
+      "source_sha256": "8ed73693a5aeaaf3e4cc6a4ca2b174e154b329fe0943f315c9abc055e4d65e5a",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "4e9633553eb0cb9c1863d01a2170572ccdf76bedb455110589aac9f2e7c460d0",
+      "repeated_exact_functions": 2,
+      "exact_bytes": 548,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 2,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 2
+      }
+    },
+    {
+      "id": "openssl_q_sections_crypto_engine_tb_asnmth_O2_omit",
+      "source_sha256": "df354a854b06471880706b2658f9434e38d1cf90a43409c100a4c04e169af6e7",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "358c34b5b1307f56aea1efe766e5f2df329b0ff0b503d4f76ed0f1850c820c4c",
+      "repeated_exact_functions": 4,
+      "exact_bytes": 544,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 4,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 4
+      }
+    },
+    {
+      "id": "openssl_q_pie_crypto_x509_x509_vpm_O3_novec",
+      "source_sha256": "5ff4e8de6f1431e4940b8da530649d0a2124e586c10fbddf432054f487a6a10c",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "d3c27a34c99163cadee892580020ebfd32569bcb1544f8a265426018d05fe0fd",
+      "repeated_exact_functions": 3,
+      "exact_bytes": 468,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 3,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 3
+      }
+    },
+    {
+      "id": "openssl_q_sections_crypto_dh_dh_pmeth_O3_omit",
+      "source_sha256": "7d6ec9710a67e7b76196faf224b64dffe295de00d5e5909be715ebc58acdefee",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "4db16ea298314c5f2b769068f144b345879bb6396315c45b0cca0c47e826f2dc",
+      "repeated_exact_functions": 2,
+      "exact_bytes": 424,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 2,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 2
+      }
+    },
+    {
+      "id": "openssl_q_pie_crypto_x509v3_v3_info_O2_novec",
+      "source_sha256": "a4fa0feab40ebb2cff629142c966cfac72e4a4c46b68fede28d633ef4b4b8409",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "e74b72c511541526f200258c11fbe05f8811bca4224427424266fe2e730d5be0",
+      "repeated_exact_functions": 1,
+      "exact_bytes": 424,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 1,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 1
+      }
+    },
+    {
+      "id": "openssl_q_sections_crypto_cmac_cm_pmeth_O3_omit",
+      "source_sha256": "7a181c07f847b917349f06491278ce7f3fb214856114cdc2be6e595a94674ce1",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "dc77df02b66d56e20580a792afae68eec95b85823c033b5d6fb3d093afbc3b6f",
+      "repeated_exact_functions": 2,
+      "exact_bytes": 408,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 2,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 2
+      }
+    },
+    {
+      "id": "openssl_q_pie_crypto_x509v3_pcy_map_O3_novec",
+      "source_sha256": "7b06a00ea938e789f64d89a67960192dc9f9b583bfdee06c01515710ce8c051c",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "fcddeefa7ec1da97b9f4de303ee56d75528677a64c3cd6452af03ad36f7646e1",
+      "repeated_exact_functions": 1,
+      "exact_bytes": 356,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 1,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 1
+      }
+    },
+    {
+      "id": "openssl_q_pie_crypto_ec_ecp_nist_O3_novec",
+      "source_sha256": "97fb01ddbeb1eabdb0986c694158badafff7f102c5191fa0d8d56312d361771d",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "dbce210a60ab6204a2ea269b6b55a83b67dd1ed4d1e489ad74c83a6688c63184",
+      "repeated_exact_functions": 1,
+      "exact_bytes": 352,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 1,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 1
+      }
+    },
+    {
+      "id": "openssl_q_sections_crypto_evp_evp_pkey_O2_omit",
+      "source_sha256": "c8b2956f59cd845ad4900d99bed82ca48241003f3c8816fb721a58aae4150837",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "2169154d96740304425307b7220c9d788b6c3173c5aafcf815e867a3c21b5480",
+      "repeated_exact_functions": 1,
+      "exact_bytes": 296,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 1,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 1
+      }
+    },
+    {
+      "id": "openssl_q_pie_crypto_x509v3_v3_extku_O2_novec",
+      "source_sha256": "f586bab5f5252a20d71b8ac426a95428d8e766e2756d9234cdb6dc58ad9f2100",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "fe959a9dcb81884c35a004dd6e5e1a638b06aaff93081cce074a6167f3bcde08",
+      "repeated_exact_functions": 1,
+      "exact_bytes": 264,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 1,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 1
+      }
+    },
+    {
+      "id": "openssl_q_sections_crypto_hmac_hm_ameth_O3_omit",
+      "source_sha256": "9f39ecfa564c8cc5179adc525e4a0db8c1d4eb728476841f41f78b052a6e7eba",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "7165af0e8cb31864ad63770ed1a842985bb901a6c8aff4573759705af18b9ad6",
+      "repeated_exact_functions": 2,
+      "exact_bytes": 252,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 2,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 2
+      }
+    },
+    {
+      "id": "openssl_q_pie_crypto_x509v3_pcy_tree_O2_novec",
+      "source_sha256": "b468eb7d4b77b525503af6196385771490d42454d7ec30ad863713d9014118c1",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "d498eccac2fa9e08071ee7c78815868afa30b6af90c4d9197f9c8cb59945376c",
+      "repeated_exact_functions": 1,
+      "exact_bytes": 184,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 1,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 1
+      }
+    },
+    {
+      "id": "openssl_q_pie_crypto_objects_obj_xref_O2_novec",
+      "source_sha256": "2182e60bc35b1c12ddc0003b3e8aa0ed34b5f2c5806194903e76630a209d83ac",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "ebb4a8055812fcfb01b729307cf2b7946efc6764ba81e7c6f6d9456905564696",
+      "repeated_exact_functions": 1,
+      "exact_bytes": 148,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 1,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 1
+      }
+    },
+    {
+      "id": "openssl_q_pie_crypto_evp_names_O2_novec",
+      "source_sha256": "f2c2de20066ffbf0e54e953e321fb30a2ca4acc128f3bfcb4ce271e9542d7d5d",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "feccaf0ed11d14e50d8173d3d14c129fcf31b615f17e807c242b5a7b302a5aad",
+      "repeated_exact_functions": 1,
+      "exact_bytes": 68,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 1,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 1
+      }
+    },
+    {
+      "id": "openssl_q_pie_crypto_x509v3_pcy_data_O2_novec",
+      "source_sha256": "687d67f299cfd37fa1dbdbfda746bc6747a137b7cd713e59b817bdc196d41db7",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "c815e62e97f5d50f12193a6d3114f00a0624c94ce3b57d75f646967ab9f983b3",
+      "repeated_exact_functions": 1,
+      "exact_bytes": 68,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 1,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 1
+      }
+    },
+    {
+      "id": "openssl_q_c7sections_crypto_x509v3_v3_utl_O3_novec",
+      "source_sha256": "451476a0fe6840ac570fbf9dc6da199ece28014c4a05303c23d85f4fa6344228",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "006801f569131d4f899265be4c7385f8756237b60179d41e43d9b70cf59f1490",
+      "repeated_exact_functions": 1,
+      "exact_bytes": 960,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 1,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 1
+      }
+    },
+    {
+      "id": "openssl_q_c7pie_crypto_x509_x509_vfy_O3_novec",
+      "source_sha256": "4d2295079fc58c69e3f974b196c697f7961e093dae2596917bc9e51db0f5376a",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "e3443734b4ccfaaf592521f03fa48651f76c28cb2c6ca97ee99e1c44b11d8364",
+      "repeated_exact_functions": 1,
+      "exact_bytes": 780,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 1,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 1
+      }
+    },
+    {
+      "id": "openssl_q_c7sections_crypto_dsa_dsa_lib_O3_novec",
+      "source_sha256": "fc0646befc0dc6754b802a2c5895fe1d6666ff866111550ae3d47e43ffa6e12a",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "73a98804b57d5d07eb5bbd5973e584d4e23a380623e8da26b26ba6c9e2801a78",
+      "repeated_exact_functions": 1,
+      "exact_bytes": 440,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 1,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 1
+      }
+    },
+    {
+      "id": "openssl_q_c7sections_crypto_dh_dh_lib_O3_novec",
+      "source_sha256": "46e0e5627d2441e16a1b5becc69db32d1fe0560e5f6b363393dc60405918f546",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "7bd8bc607de4549ad1614322c69ce9bf3de231c8840235ae44b40f7950464ace",
+      "repeated_exact_functions": 1,
+      "exact_bytes": 436,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 1,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 1
+      }
+    },
+    {
+      "id": "openssl_q_c7pie_crypto_err_err_O3_novec",
+      "source_sha256": "1272d2e1be642a6b33e50bb5d9380d5a9130464a81bb4cc5af314cfca0bc61b8",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "85287758736c7e8cc64f5875d44abf345f33273454bb0e3a25b9a561aa26ca54",
+      "repeated_exact_functions": 1,
+      "exact_bytes": 332,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 1,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 1
+      }
+    },
+    {
+      "id": "openssl_q_nofloat_pie_ssl_s3_srvr_O3_novec",
+      "source_sha256": "6d3b9e73002bacf95e1044e16090008e76356d1a5fbed15aa341f58a2b65a252",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "3320fc633ddca7d8edcaa0ff3b2a088af5ca6a32e91e59f3bdf82bd92c0adb3a",
+      "repeated_exact_functions": 4,
+      "exact_bytes": 8364,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 4,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 4
+      }
+    },
+    {
+      "id": "openssl_q_nofloat_pie_ssl_s3_clnt_O3_novec",
+      "source_sha256": "cf3a1a7d2e1d8eb20accf60fdf027a6fde89a0d072f08f4aa3689df127b9b7f7",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "71962a2d93b4fd3e39549a8d011efdcf764eaee6f2b19fff62e44800ea96c8ed",
+      "repeated_exact_functions": 3,
+      "exact_bytes": 6304,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 3,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 3
+      }
+    },
+    {
+      "id": "openssl_q_nofloat_pie_ssl_d1_pkt_O3_novec",
+      "source_sha256": "37495ee0b69a3d6d3c3841aa56993f66560011ce8fc1418c27abd218d9a931ea",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "67a9d868882b8db9c2a8c28bea1d2123a291b1668ad07cbb4eb356a48257dce5",
+      "repeated_exact_functions": 3,
+      "exact_bytes": 4732,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 3,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 3
+      }
+    },
+    {
+      "id": "openssl_q_nofloat_pie_crypto_rand_md_rand_O3_novec",
+      "source_sha256": "d7dbecbe9949b622c3f838d2a3d32e1d07c696c68784a4f1efca1ce0bde1fc63",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "9fe7de8ed0bd493f77e8e4898f53d4f8852695b3b0791d8998a2c2e75f23a4b8",
+      "repeated_exact_functions": 2,
+      "exact_bytes": 3564,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 2,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 2
+      }
+    },
+    {
+      "id": "openssl_q_nofloat_pie_ssl_d1_both_O3_novec",
+      "source_sha256": "a59cc3ea6b933b788b04442d5259a759d75b022523a0186a04882d5f1762649f",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "6c7e5964464114071fb69ad15a8ba2718737c64cf6446e8d4e1c4d1b2009f1f5",
+      "repeated_exact_functions": 3,
+      "exact_bytes": 3508,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 3,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 3
+      }
+    },
+    {
+      "id": "openssl_q_nofloat_pie_ssl_t1_lib_O3_novec",
+      "source_sha256": "6c6750601c989e0d11fa0f25172878c8c825e9c2b4067bdc6e9affcbb716defc",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "dc92381cee54738b83e7d1e4c3eea3c293e20fb2187e7fd38b6743909e01f5bf",
+      "repeated_exact_functions": 2,
+      "exact_bytes": 3152,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 2,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 2
+      }
+    },
+    {
+      "id": "openssl_q_nofloat_pie_ssl_s23_clnt_O3_novec",
+      "source_sha256": "8a4612c094fda969ec4dc140f4a6ffddb9b4850f41c970a4aa7092572fdcec22",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "ad03c17f55cc23a9a45ce4da96f45416b4bd2b7976710493b5bee10f066b177b",
+      "repeated_exact_functions": 1,
+      "exact_bytes": 2988,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 1,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 1
+      }
+    },
+    {
+      "id": "openssl_q_nofloat_pie_ssl_d1_clnt_O3_novec",
+      "source_sha256": "9f3cf32f76b4526d84e630ac1052397def2bd271503a3d6820bdd0f47bad66ce",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "d118e2dfd54247d0534e9f718f69c1b8ed8d38a734253275f77e334b5bfc56ed",
+      "repeated_exact_functions": 1,
+      "exact_bytes": 2468,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 1,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 1
+      }
+    },
+    {
+      "id": "openssl_q_nofloat_pie_ssl_s3_cbc_O3_novec",
+      "source_sha256": "96e987c5240eb1bc52ace6ddb20bf8ceb85981113dcada7345402ed21aeb079a",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "c0d170b2bbd0ca24b9ee3ea726f8444c0dec439baeaf3dd5c5caacee0f028fd7",
+      "repeated_exact_functions": 1,
+      "exact_bytes": 2148,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 1,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 1
+      }
+    },
+    {
+      "id": "openssl_q_nofloat_pie_ssl_s23_srvr_O3_novec",
+      "source_sha256": "d7f282075c69e0d036156214c336dc19f3402320b04f2b49509871b4481c5e5b",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "ae911c5034359ee3ff107215d65227758b518753cad2ad0518e31ca585b44a88",
+      "repeated_exact_functions": 1,
+      "exact_bytes": 1824,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 1,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 1
+      }
+    },
+    {
+      "id": "openssl_q_nofloat_pie_ssl_ssl_lib_O3_novec",
+      "source_sha256": "5aa25904b16f4edcba6b57ac38bdbd0a65eebf190c1d9b0949d4cb0cb0699a37",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "137208ba9c81800a5a76ef4531dc1fa432cb82a1d13882b91150df5186b9a990",
+      "repeated_exact_functions": 2,
+      "exact_bytes": 1684,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 2,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 2
+      }
+    },
+    {
+      "id": "openssl_q_nofloat_pie_ssl_s3_lib_O3_novec",
+      "source_sha256": "3230d58b9738b21929bf949abc979325d2f05079039a9b7d9ecbfc1e24d3af77",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "590a8db4acfc4124833fc226d120029624eb73cdaaed38f4b96d2c93aa295ef6",
+      "repeated_exact_functions": 1,
+      "exact_bytes": 1660,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 1,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 1
+      }
+    },
+    {
+      "id": "openssl_q_nofloat_pie_crypto_evp_evp_enc_O3_novec",
+      "source_sha256": "b07a1448c594c47c9dc8f3334a145becfcc028139bca6f9203f521a2509677dd",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "fc1d1792400d734d079e5863b62d3d47a1c6b9d68ce5d69e1c64eb28188417cc",
+      "repeated_exact_functions": 2,
+      "exact_bytes": 1500,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 2,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 2
+      }
+    },
+    {
+      "id": "openssl_q_nofloat_pie_ssl_ssl_cert_O3_novec",
+      "source_sha256": "eb9b5424ba05c0cff3923fb0067ec380c0a05b9d96868ddffb602e5dd7d2d780",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "3e6629b90147150264209db62510c0c6df86af8b119b8001c0a5b9ee962562a3",
+      "repeated_exact_functions": 1,
+      "exact_bytes": 1252,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 1,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 1
+      }
+    },
+    {
+      "id": "openssl_q_nofloat_pie_crypto_asn1_x_crl_O3_novec",
+      "source_sha256": "121225a77e30d2d67b78bae1888f24f37c841764375332fa5ea94c03e97aab46",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "666439ad0dbafd4556e801fc0588011bc79217509da5f34e01c2fa9b3e881563",
+      "repeated_exact_functions": 1,
+      "exact_bytes": 1160,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 1,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 1
+      }
+    },
+    {
+      "id": "openssl_q_nofloat_pie_crypto_bn_bn_mul_O3_novec",
+      "source_sha256": "4013e0159e94906a881677aea1a6c4b3a969c2a371bc251a49735982ca28a3a0",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "10a101d10473c7d33dec5516fc21d87ddc7d077dc1dc6005b940ca7b327ebb30",
+      "repeated_exact_functions": 1,
+      "exact_bytes": 1140,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 1,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 1
+      }
+    },
+    {
+      "id": "openssl_q_nofloat_pie_crypto_rsa_rsa_sign_O2_novec",
+      "source_sha256": "5e9a053aeee747ac762c288882ddbcf87ae56bb9bbd6ee805e7334759b027caf",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "720785a4dcfa27dc4fd783063f4d9657a6ec7bb3c0bf0728483fb292690e9aea",
+      "repeated_exact_functions": 1,
+      "exact_bytes": 1016,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 1,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 1
+      }
+    },
+    {
+      "id": "openssl_q_nofloat_pie_crypto_modes_cbc128_O2_novec",
+      "source_sha256": "2b2340b946aad6ea06f56376c9b7713ed55d04b0cfcf686b26b714aac6c2318b",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "caf032f572a4b1d3010c0c06cefdd70faab2622f82c40a091de193727ae91164",
+      "repeated_exact_functions": 2,
+      "exact_bytes": 1000,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 2,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 2
+      }
+    },
+    {
+      "id": "openssl_q_nofloat_pie_ssl_d1_lib_O3_novec",
+      "source_sha256": "d7a101e9eaf5974e940ad4c55dedca82fe83f8d13e75ce98d4779fd3d3034306",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "e09802a8847e87122624d8265d1e7fa730c65a729609cd60435b96b869d0d046",
+      "repeated_exact_functions": 3,
+      "exact_bytes": 920,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 3,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 3
+      }
+    },
+    {
+      "id": "openssl_q_nofloat_pie_crypto_dh_dh_pmeth_O3_omit",
+      "source_sha256": "7d6ec9710a67e7b76196faf224b64dffe295de00d5e5909be715ebc58acdefee",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "b989e6792ab2d13df8c79b5868fae9040352b7ba0a10ea2f9b447a736eddd1a3",
+      "repeated_exact_functions": 3,
+      "exact_bytes": 884,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 3,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 3
+      }
+    },
+    {
+      "id": "openssl_q_nofloat_pie_ssl_ssl_sess_O3_novec",
+      "source_sha256": "4a5b066880d6bf608fcd42ea5b06a5971fc7bdfce05f282c42ec0b37d772264a",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "c411e2a0db50b6eb12824ccd7bcf129f8c890c47a805e52ba80c81ae15856a0c",
+      "repeated_exact_functions": 1,
+      "exact_bytes": 876,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 1,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 1
+      }
+    },
+    {
+      "id": "openssl_q_nofloat_pie_crypto_modes_gcm128_O3_novec",
+      "source_sha256": "86c9fcc866cd07a4fda4282d0c1843180539087f41cc7ba86de944dc9c7fc634",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "8201e63f6d0a1cd710eac2058002b6d8f79e8f36c80be937351f96e3af2038a8",
+      "repeated_exact_functions": 1,
+      "exact_bytes": 776,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 1,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 1
+      }
+    },
+    {
+      "id": "openssl_q_nofloat_pie_crypto_sha_sha256_O3_novec",
+      "source_sha256": "2c6577df5f78adcc8e1b073e4cd8aadb06616893c1df6860eecaf9e55dea8c06",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "01193f89a28bd988404a4e55b0de9c171bc2756642811430ffcc1fcb804f3fb1",
+      "repeated_exact_functions": 4,
+      "exact_bytes": 720,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 4,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 4
+      }
+    },
+    {
+      "id": "openssl_q_nofloat_pie_crypto_evp_digest_O3_novec",
+      "source_sha256": "47330634b80cfc8187e5560b39515d6a8cb95fcc722e4b61eb60f990dd6de470",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "de04b4f7b7eb1fb38a56b5f87f167f63ab9fe08164aa55065deaa689394cb751",
+      "repeated_exact_functions": 2,
+      "exact_bytes": 676,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 2,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 2
+      }
+    },
+    {
+      "id": "openssl_q_nofloat_pie_crypto_asn1_a_object_O3_novec",
+      "source_sha256": "aef9529ff44b79ea6891c5c02b51f06ee6195a64002e784642978bbed09911e6",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "8dbef306168eeeb2b75defa321302a8cf2dac66b7beea8e18e3badb61d3192c9",
+      "repeated_exact_functions": 2,
+      "exact_bytes": 668,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 2,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 2
+      }
+    },
+    {
+      "id": "openssl_q_nofloat_pie_ssl_t1_enc_O2_novec",
+      "source_sha256": "4edcf7fbd205de1d7a9cf8782b02e738ce574a57ca252910d1ebba60673cc5da",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "e19cc0889371b80b978154dde260943344a650a0303d204530043f655bc21157",
+      "repeated_exact_functions": 1,
+      "exact_bytes": 616,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 1,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 1
+      }
+    },
+    {
+      "id": "openssl_q_nofloat_pie_crypto_stack_stack_O2_novec",
+      "source_sha256": "19fc1ca20774fbf2175e7baf436998dccbfee082cbd84cebe3e0c463e0e42984",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "5587dc72dcf76ea4b21c7df0ee8289f773ef7663d6b7e2a158cb314f1edf38a0",
+      "repeated_exact_functions": 2,
+      "exact_bytes": 524,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 2,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 2
+      }
+    },
+    {
+      "id": "openssl_q_nofloat_pie_crypto_bn_bn_lib_O3_novec",
+      "source_sha256": "ce5d4e94ea38386e0096d58c5d47b4baefecd8c7b9315cae3145a89d3b2b1dca",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "44570f66c0ed80baf94bc02f5013600bcf2f8bcc7ccb29b333ce343b07f2cf13",
+      "repeated_exact_functions": 2,
+      "exact_bytes": 520,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 2,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 2
+      }
+    },
+    {
+      "id": "openssl_q_nofloat_pie_crypto_rsa_rsa_lib_O3_novec",
+      "source_sha256": "e2bffc4de5fad7b877d407397875dd4ac766b7124445f4c534e16b33062d061d",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "b9c9f847066a4d012ff72be545537f036c96c39bd5fd754fe7d25d21a99162ef",
+      "repeated_exact_functions": 1,
+      "exact_bytes": 508,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 1,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 1
+      }
+    },
+    {
+      "id": "openssl_q_nofloat_pie_crypto_bio_b_print_O2_novec",
+      "source_sha256": "569e0881c18097b8ca3351acff99c2b0748cb6535b1dc030a4f1e50f46e7762d",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "0057cbe54ac2b6e291fa1a492aa246f8fc6b4ba2f1fcce955b1f2c81fba5c2d8",
+      "repeated_exact_functions": 3,
+      "exact_bytes": 492,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 3,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 3
+      }
+    },
+    {
+      "id": "openssl_q_nofloat_pie_ssl_s3_enc_O2_novec",
+      "source_sha256": "0ed484bbc547a5451912da86205e3e6498868cfe76458099cdae19bdc4e11e00",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "a593a612b39a055dbfabaf92c4e1a9b43a3b9268179c697c0f31dd9a8492bada",
+      "repeated_exact_functions": 1,
+      "exact_bytes": 460,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 1,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 1
+      }
+    },
+    {
+      "id": "openssl_q_nofloat_pie_crypto_x509v3_v3_utl_O2_novec",
+      "source_sha256": "451476a0fe6840ac570fbf9dc6da199ece28014c4a05303c23d85f4fa6344228",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "b227555673422524b8eec7ae9cf35b036a75a439a7c4a4837ae1690dd4a7ef37",
+      "repeated_exact_functions": 1,
+      "exact_bytes": 404,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 1,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 1
+      }
+    },
+    {
+      "id": "openssl_q_nofloat_pie_crypto_ec_ec_ameth_O3_omit",
+      "source_sha256": "9a29f5c23a38dd9570db1e70651e46b1bf54ab3ba68a0104f8dda9f14dfc454f",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "b421227ef395c054096b3fd183f4f894050374944c578a19c0dc2bcea2fb1c1d",
+      "repeated_exact_functions": 1,
+      "exact_bytes": 360,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 1,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 1
+      }
+    },
+    {
+      "id": "openssl_q_nofloat_pie_crypto_md4_md4_dgst_O2_novec",
+      "source_sha256": "5b6d49c6c7a86d575f8c1a8946f0ac936aa46d2e1f80750cef7e76f364aeaf4e",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "0fffcddc600dff9e160dcf900699221a4328f0ff1513aee8dccd40494a2ad1c9",
+      "repeated_exact_functions": 2,
+      "exact_bytes": 328,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 2,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 2
+      }
+    },
+    {
+      "id": "openssl_q_nofloat_pie_crypto_ec_ec_pmeth_O3_omit",
+      "source_sha256": "d3985fd3bd64509d39151fe2195967be59d318e61e73bf7b4bc6e362896a86dc",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "a31c224261b7b675e500c9c220e77b907a1f5d0608fe1ab2f7dfc68f138e1cc2",
+      "repeated_exact_functions": 2,
+      "exact_bytes": 304,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 2,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 2
+      }
+    },
+    {
+      "id": "openssl_q_nofloat_pie_crypto_ec_ec_key_O3_novec",
+      "source_sha256": "533686c13589e96160ac20f974bd1c10a736cc6e29dc5779fed411d606ab1e94",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "8c65369b99f5045244bdb4252cd461f0a199ddbee86e421ce313c6f3c75484a3",
+      "repeated_exact_functions": 2,
+      "exact_bytes": 300,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 2,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 2
+      }
+    },
+    {
+      "id": "openssl_q_nofloat_pie_crypto_bn_bn_blind_O2_novec",
+      "source_sha256": "be9a4ae0680c88b5798799052cfcf1b721a458715615218faa0d330aea193f71",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "5226c79288255704127e706adbab895c0c556f88e06cc59f0b29774108231011",
+      "repeated_exact_functions": 1,
+      "exact_bytes": 284,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 1,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 1
+      }
+    },
+    {
+      "id": "openssl_q_nofloat_pie_crypto_ripemd_rmd_dgst_O2_novec",
+      "source_sha256": "5da9ba7c9cd16f07b5b1638f844daf0db6bbc7db8694cfb753c7bfafc1827c33",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "074b1acc1deae46b16a29cd0ca7267a559dbab19c1d48e1fbca65b272a36a45a",
+      "repeated_exact_functions": 1,
+      "exact_bytes": 260,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 1,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 1
+      }
+    },
+    {
+      "id": "openssl_q_nofloat_pie_crypto_hmac_hmac_O2_novec",
+      "source_sha256": "8cd1d11b8d39eb2a20f5ac7518ee89a9bc4e8a31f263a7f5bf8e5841ac0202c5",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "525d701aad996a6d0b12cfd219885b9fad879ac866776916b3e845b50398c270",
+      "repeated_exact_functions": 1,
+      "exact_bytes": 248,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 1,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 1
+      }
+    },
+    {
+      "id": "openssl_q_nofloat_pie_crypto_bio_bio_lib_O3_novec",
+      "source_sha256": "3cbec044dddd79169ac523c5689ff1fbbbc630e19c87f8fc09a91570464c1a57",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "54b34d178f9f60a50208dd732272a765d6c12ab8784aeea0b4f6786e8f686ff4",
+      "repeated_exact_functions": 1,
+      "exact_bytes": 220,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 1,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 1
+      }
+    },
+    {
+      "id": "openssl_q_nofloat_pie_crypto_cryptlib_O2_novec",
+      "source_sha256": "80d051a7819208ab486e6c61914849727fc2cf754e78010bf16d2431d0406307",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "c392f0f16087c64ac49910ede5e694425e7c023a7d8256c03b99fa021078dde8",
+      "repeated_exact_functions": 1,
+      "exact_bytes": 124,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 1,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 1
+      }
+    },
+    {
+      "id": "openssl_q_c7_nofloat_pie_ssl_d1_pkt_O3_novec",
+      "source_sha256": "37495ee0b69a3d6d3c3841aa56993f66560011ce8fc1418c27abd218d9a931ea",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "92a55fd446d566ba08d3dfa0e2d31a01dc35df0868781c7bddc01d7943f72a0c",
+      "repeated_exact_functions": 1,
+      "exact_bytes": 124,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 1,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 1
+      }
+    },
+    {
+      "id": "openssl_q_nofloat_pie_crypto_err_err_O2_novec",
+      "source_sha256": "1272d2e1be642a6b33e50bb5d9380d5a9130464a81bb4cc5af314cfca0bc61b8",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "1e502742886b72e29ee3015bed5f215b442fe44d7e71e995344cdd6ec089f716",
+      "repeated_exact_functions": 1,
+      "exact_bytes": 104,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 1,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 1
+      }
+    },
+    {
+      "id": "openssl_q_nofloat_pie_crypto_bn_bn_ctx_O2_novec",
+      "source_sha256": "ee47778c44ee1ba56db9eb13f4534be718aad50d7d674b7da2d34c528665b1dd",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "dcc0d233f5690c98a53f4755a4f2a91aa360e7ea29b733e0a947bc1c929b5439",
+      "repeated_exact_functions": 1,
+      "exact_bytes": 96,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 1,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 1
+      }
+    },
+    {
+      "id": "openssl_q_nofloat_pie_ssl_tls_srp_O2_novec",
+      "source_sha256": "64f10e4676a88f134b74548bcebce35491d775496e870f8e63a00265a84c78a3",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "5d2052e0f436feff8b559e325a1967e879aca993586ec39f1dcf29e8b850e5a8",
+      "repeated_exact_functions": 1,
+      "exact_bytes": 92,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 1,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 1
+      }
+    },
+    {
+      "id": "openssl_q_nofloat_pie_crypto_buffer_buffer_O2_novec",
+      "source_sha256": "1b3efd399f4e2bca5d3212351adfafca310f119c71c93f914c7eb212575c371a",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "857414e2f659b371f114f26b920b4e2e1ebb720a5a5ae5b2446302737a478720",
+      "repeated_exact_functions": 1,
+      "exact_bytes": 84,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 1,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 1
+      }
+    },
+    {
+      "id": "zlib_inflate_o3_keep_pic_nofloat_sections",
+      "source_sha256": "cc7043000483b67978f92826fbe47a3ee6829564c0ff456b7d885251f68892b9",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "f07a2000f8174bdec8355e2a5935334147309459c5307b6bf0865dbd7cbe1c49",
+      "repeated_exact_functions": 2,
+      "exact_bytes": 8204,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 2,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 2
+      }
+    },
+    {
+      "id": "zlib_inffast_o2_omit_nofloat_sections",
+      "source_sha256": "9c86a9fbcbfb6f7636632bbfb8633cb5ede97e8b14348b8a8a8f0933f7e7fc8e",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "f4d1c811467ae69f5b6a4f3d7f34a44feaf363785fb61f8c9107730c27bb9de5",
+      "repeated_exact_functions": 1,
+      "exact_bytes": 1772,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 1,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 1
+      }
+    },
+    {
+      "id": "zlib_inftrees_o2_omit_nofloat_sections",
+      "source_sha256": "c51dc0ff46ad00a27ef48ad7b57326d66a243c8c79f0aed413be6ca98f0230cc",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "952e71b0153acfc80b63ef7853472c75ef3db652e68b4a5409bc9294e82bddad",
+      "repeated_exact_functions": 1,
+      "exact_bytes": 1648,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 1,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 1
+      }
+    },
+    {
+      "id": "freetype_2_9_base_ftbase_o2_omit_sections",
+      "source_sha256": "bb1b7872ed2c23c69b6a09db7478b1a9eb207c06a282852e48f4282e6bb1edee",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "c6d3c839e7f643f8d63f0b68b6d16d522b4577e5e4dd80e766ac3b4faaffcbb0",
+      "repeated_exact_functions": 14,
+      "exact_bytes": 5908,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 14,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 14
+      }
+    },
+    {
+      "id": "freetype_2_9_sfnt_sfnt_o2_omit_sections",
+      "source_sha256": "be462e8728bd37d4197c7514182e8cfc561b0244958f463bc9fce240fc9f167a",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "356f7f2bf18b4b685dbb06c1c27eccb0b45ea117d9640a190b31fe36b8c823de",
+      "repeated_exact_functions": 35,
+      "exact_bytes": 5504,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 35,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 35
+      }
+    },
+    {
+      "id": "freetype_2_9_psaux_psaux_o2_omit_sections",
+      "source_sha256": "6dc435336ae6e4a6b4ed0422db1e4b95796d9dfd139c34dca91fa7f5352b165d",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "dea64b77d6f60a580c428e130a5830a8e862ac7dc37472e6877c8882a3f41630",
+      "repeated_exact_functions": 26,
+      "exact_bytes": 4168,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 26,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 26
+      }
+    },
+    {
+      "id": "freetype_2_9_cff_cff_o2_omit_sections",
+      "source_sha256": "e15ae43dfd8dd8677cd16b683a19b92274fc308d20b2d092a6bcdc61f441484e",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "37cce57229da9ae7ed41d4fd80af0d4b6dd4b8902561c6bbdbf706b2500b2eca",
+      "repeated_exact_functions": 15,
+      "exact_bytes": 3280,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 15,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 15
+      }
+    },
+    {
+      "id": "freetype_2_9_truetype_truetype_o2_omit_sections",
+      "source_sha256": "f2b122e24b2e300e2dd5bd97a2d22189855ada9b3c17aa9fe432d06ae597c76c",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "3686113e4187739144a6848dcdc96113b042b76251e4537568e85465280bc1c7",
+      "repeated_exact_functions": 20,
+      "exact_bytes": 3052,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 20,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 20
+      }
+    },
+    {
+      "id": "freetype_2_9_type1_type1_o2_omit_pie",
+      "source_sha256": "2018d0fd90a341f1b14bcf71988b2a3f18788d7a302033d5f13fd38da4279259",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "bb3e77d8d8a29c9b59d247c65e28e83ba0612b05e0a7b1ba2b264f1366de3940",
+      "repeated_exact_functions": 10,
+      "exact_bytes": 2848,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 10,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 10
+      }
+    },
+    {
+      "id": "freetype_2_9_autofit_autofit_o2_omit_sections",
+      "source_sha256": "2c162a85af10f5f8df90bb81dee659ad2dcbec6f63f16c34288c3c7e8b65733e",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "ced2e81b32843df98db4fbc00b88346237b7b6f05962edb7a8ac6b968d58e40a",
+      "repeated_exact_functions": 5,
+      "exact_bytes": 2032,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 5,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 5
+      }
+    },
+    {
+      "id": "freetype_2_9_psaux_psaux_o3_omit_sections",
+      "source_sha256": "6dc435336ae6e4a6b4ed0422db1e4b95796d9dfd139c34dca91fa7f5352b165d",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "003a99c91888ec33440b4b6ef5e850a1827e3541b3346a6b3ebdbc41cc80823e",
+      "repeated_exact_functions": 4,
+      "exact_bytes": 1580,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 4,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 4
+      }
+    },
+    {
+      "id": "freetype_2_9_type42_type42_o2_omit_sections",
+      "source_sha256": "f0f2a822b40cd52b9f616ae41088713851eb0cb8db54ddf4f2fc997398766839",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "da4fbc3cfe69720156139518dca915b9e00d98223f9a3c055e353032a345cea7",
+      "repeated_exact_functions": 3,
+      "exact_bytes": 1448,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 3,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 3
+      }
+    },
+    {
+      "id": "freetype_2_9_raster_raster_o2_omit_sections",
+      "source_sha256": "bf942a654acfda5d1180a0154f5a60e62ec5a72c58d88584020065200642943c",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "3c7bb439191ccec1848022845ba583a79d7bd48989bcdbe61045ef1201e54ff8",
+      "repeated_exact_functions": 6,
+      "exact_bytes": 1324,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 6,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 6
+      }
+    },
+    {
+      "id": "freetype_2_9_smooth_smooth_o2_omit_sections",
+      "source_sha256": "ce487cab2983736c0db7874911a6fed593fb6d349c2027296bfc4f6590f9fe7e",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "e52603a810b168605d660617a1dee2938b6ddba5c6388162ddc5481d11b4aae1",
+      "repeated_exact_functions": 1,
+      "exact_bytes": 948,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 1,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 1
+      }
+    },
+    {
+      "id": "freetype_2_9_pcf_pcf_o2_omit_sections",
+      "source_sha256": "f827f425ec5e81465b4a2596a6c2d27345472e9c1306d281fdb06758d744a91b",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "96d86854f4e225dc82b3ec323f4d07a3d6a4e1850bb427c3f6d1babec2e29a66",
+      "repeated_exact_functions": 5,
+      "exact_bytes": 664,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 5,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 5
+      }
+    },
+    {
+      "id": "freetype_2_9_gzip_ftgzip_o2_omit_sections",
+      "source_sha256": "464b90696a0304ce160555112fb743eb58bfb3561a217d2aca3813c0c35ac6c6",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "e8c2341933437fc5bf5744788d1bb6540f4de042530a0822ba11ad32afad5006",
+      "repeated_exact_functions": 2,
+      "exact_bytes": 592,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 2,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 2
+      }
+    },
+    {
+      "id": "freetype_2_9_pshinter_pshinter_o2_omit_sections",
+      "source_sha256": "a7ad84abc9d848f6111310de130558107632fbeb0ab5fe57e47ccb01a8c5250b",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "2b16318faca75cbb817cd7b63eb17eacfb688b7426a2a28e049a048bf6f80b47",
+      "repeated_exact_functions": 4,
+      "exact_bytes": 556,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 4,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 4
+      }
+    },
+    {
+      "id": "freetype_2_9_bdf_bdf_o2_omit_sections",
+      "source_sha256": "04497b18f19c5acbffa3c0956e5eca0e93164f3b790dc1a482e2302cb9c9deb5",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "c2aafe7cff8ce3354c8e4b52e89d98cbd27c9dfe713ad374c387106a5e88fbd1",
+      "repeated_exact_functions": 4,
+      "exact_bytes": 508,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 4,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 4
+      }
+    },
+    {
+      "id": "freetype_2_9_psnames_psnames_o2_omit_sections",
+      "source_sha256": "57802de8165d76929cf1155a6bdd9bd3ca5ca2da1143578647e25da4ee11574d",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "ff40e343d07f56abf8e4b964210bb5132040476062de7a81b7f6ecc5259d760a",
+      "repeated_exact_functions": 5,
+      "exact_bytes": 448,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 5,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 5
+      }
+    },
+    {
+      "id": "freetype_2_9_pfr_pfr_o2_omit_sections",
+      "source_sha256": "f15d8b2baa11a244a43879ec76e9d3837cb18717e0dbcfdfbbf22b34c88fbdf3",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "288e2388c03cd15f3592b9e532de525ce809a5954a4279d7822cf18fbdb5b79f",
+      "repeated_exact_functions": 3,
+      "exact_bytes": 248,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 3,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 3
+      }
+    },
+    {
+      "id": "freetype_2_9_cid_type1cid_o2_omit_sections",
+      "source_sha256": "2075f7b76d3d70197936396034f17b909cbdaccbd30823db743a899f256b5950",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "829b9bc307c6dbf8747d18ddc2bc02d8c0b1f9ce0846c6876ec75a336cbcb63b",
+      "repeated_exact_functions": 3,
+      "exact_bytes": 164,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 3,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 3
+      }
+    },
+    {
+      "id": "freetype_2_9_sfnt_sfnt_o3_omit_sections",
+      "source_sha256": "be462e8728bd37d4197c7514182e8cfc561b0244958f463bc9fce240fc9f167a",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "f785365f0f41e3f0a2b7a463900df7ebe747fbe1e3afec33a762bfdc6d542d2e",
+      "repeated_exact_functions": 1,
+      "exact_bytes": 136,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 1,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 1
+      }
+    },
+    {
+      "id": "freetype_2_9_base_ftsystem_o2_omit_sections",
+      "source_sha256": "8049e31a9c5ff59695785641e2c9d17d0fcb0f7bf670c30a1e90a6094e303edf",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "ef1902bca217f9e9451a22714179bac72b07476d8c68e6ac1836705c6b307968",
+      "repeated_exact_functions": 1,
+      "exact_bytes": 100,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 1,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 1
+      }
+    },
+    {
+      "id": "freetype_2_9_cff_cff_o3_omit_sections",
+      "source_sha256": "e15ae43dfd8dd8677cd16b683a19b92274fc308d20b2d092a6bcdc61f441484e",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "63f4ea097fc6736b7475b91f52d4d6c8338703f9da0f0a081fbde7d6e80c1793",
+      "repeated_exact_functions": 1,
+      "exact_bytes": 64,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 1,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 1
+      }
+    },
+    {
+      "id": "freetype_2_9_base_ftglyph_o2_omit_sections",
+      "source_sha256": "bf39839872cc57a52299a924d9a84acd82a60d9c9b8daae0b72778be7308b76e",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "9b3ede82e34ec8254f9ca8f204288d116810c7d66ff1eb3efaaeda94400214b4",
+      "repeated_exact_functions": 1,
+      "exact_bytes": 60,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 1,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 1
+      }
+    },
+    {
+      "id": "freetype_2_9_winfonts_winfnt_o2_omit_sections",
+      "source_sha256": "a51bcea4446921d3d7e29505311bf595533525fb70298b9172bd470a3b29391a",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "d371fb97eb8516d3dff54611d3a1eb4f461898c55c05836a18b0c4fc33075128",
+      "repeated_exact_functions": 1,
+      "exact_bytes": 56,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 1,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 1
+      }
+    },
+    {
+      "id": "freetype_2_9_unity_o2_omit_pie",
+      "source_sha256": "669ade5fe2c967425d8352304f35b3fd5a4c70a133bdb88e730032db2af45484",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "f927ee52797204a18907d28cd6b1a11434420e69189eca220aecf9bc4c8881f3",
+      "repeated_exact_functions": 93,
+      "exact_bytes": 32792,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 93,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 93
+      }
+    },
+    {
+      "id": "freetype_2_9_unity_o3_omit_sections",
+      "source_sha256": "669ade5fe2c967425d8352304f35b3fd5a4c70a133bdb88e730032db2af45484",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "78981fac88d4c4aed2e72b059fd3f2dfec7675b9b7ec81506f365c6599bd3c3d",
+      "repeated_exact_functions": 10,
+      "exact_bytes": 5720,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 10,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 10
+      }
+    },
+    {
+      "id": "freetype_2_9_unity_o2_omit_signedcharsections",
+      "source_sha256": "669ade5fe2c967425d8352304f35b3fd5a4c70a133bdb88e730032db2af45484",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "76aff93ac3caca1f993826c07745ff96fa0e7904911c42a482d24f1325a65512",
+      "repeated_exact_functions": 3,
+      "exact_bytes": 676,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 3,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 3
+      }
+    },
+    {
+      "id": "miniupnpc_1_9_upnpreplyparse_o2pic_nofloat_sections",
+      "source_sha256": "b531a434db1573da1544b29773341cd80a1359db533d261dfb417253dc29c1be",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "020738a8c85dbb9e6a3a8782d1f45d5d2d0cb113266272cc87780b90abc194e5",
+      "repeated_exact_functions": 1,
+      "exact_bytes": 88,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 1,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 1
+      }
+    },
+    {
+      "id": "miniupnpc_1_9_upnpreplyparse_o3pic_nofloat_sections",
+      "source_sha256": "b531a434db1573da1544b29773341cd80a1359db533d261dfb417253dc29c1be",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "7c5a77a17f3366e1adacfa89e1200091c22641c7f60e52c88fcb9092eb0235d0",
+      "repeated_exact_functions": 1,
+      "exact_bytes": 92,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 1,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 1
+      }
+    },
+    {
+      "id": "miniupnpc_1_9_minixml_o3pic_nofloat_sections",
+      "source_sha256": "f6d5417c28360037dd61a0c0e6e579078ac15d67c7284e33f45a8d40323ec026",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "61b25e776011228baec4db2055f2985594f0140360e147516b84886bea89b19d",
+      "repeated_exact_functions": 1,
+      "exact_bytes": 1376,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 1,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 1
+      }
+    },
+    {
+      "id": "freetype_2_9_base_ftbase_o2_omit_sections_no_environment_properties",
+      "source_sha256": "16a4db81b468c4172416a1e5f477558ad3b173a671f38aa5c7df0d7fe66ff5a5",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "a3a00f7d3385618a851ef9a1cbfb937ec0c4408c3245ad0ed986e23fc390f27b",
+      "repeated_exact_functions": 1,
+      "exact_bytes": 324,
+      "negative_control": "added_external_side_effect_in_every_C_definition",
+      "rejected_functions": 1,
+      "rejection_causes": {
+        "ValueError: Unresolved literal symbol": 1
+      }
+    },
+    {
+      "id": "freetype_2_9_autofit_autofit_o2_omit_sections_no_environment_properties",
+      "source_sha256": "c992d90bed09b32001c5c9538c29ea8ce3ca0a824f57555a8f5ae9e0475be907",
+      "identical_repeat_objects": true,
+      "repeat_object_sha256": "72e2a65dd0e3eb0b3a1ec9fae3b8bf800356e497abc55de4a68c63e148731e49",
+      "repeated_exact_functions": 1,
+      "exact_bytes": 524,
       "negative_control": "added_external_side_effect_in_every_C_definition",
       "rejected_functions": 1,
       "rejection_causes": {

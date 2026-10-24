@@ -9,7 +9,7 @@ import tempfile
 import unittest
 from types import SimpleNamespace
 
-from elf import immutable_literal,immutable_section,link_method,relocate
+from elf import binding_key,immutable_literal,immutable_section,link_method,relocate
 from project import ROOT,input_hashes,load,validated_snapshot
 from report import make_report
 from check_publish import check_report
@@ -102,6 +102,31 @@ class RelocationTests(unittest.TestCase):
         original.sections[0]=(0,1,3,0x1000,0,8,0,0,2,0)
         with self.assertRaisesRegex(ValueError,'destination is not immutable'):
             link_method(obj,recipe,original,{})
+
+    def test_unnamed_section_symbols_bind_per_section(self):
+        text = (0,1,6,0,0,16,0,0,4,0)
+        bss = (0,8,3,0,0,8,0,0,8,0)
+        strings = (0,1,0x32,0,16,4,0,0,1,1)
+        code = struct.pack('<IIIIII',0x90000000,0x91000000,0x90000001,0x91000021,0x90000002,0x91000042)
+        def pair(offset,section,addend):
+            low = dict(symbol='',kind=277,offset=offset+4,addend=addend,symbol_record=(0,3,0,section,0,0))
+            return [dict(low,kind=275,offset=offset),low]
+        rels = pair(0,1,8)+pair(8,2,0)+pair(16,3,0)
+        names = {1:'.text',2:'.bss',3:'.rodata.str1.1'}
+        obj = SimpleNamespace(data=bytes(16)+b'tag\0',sections=[(),text,bss,strings],
+                              method=lambda _: (code,rels),section_name=names.__getitem__)
+        self.assertEqual([binding_key(obj,r) for r in rels[1::2]],['@.text','@.bss','@.rodata.str1.1'])
+        original = SimpleNamespace(sections=[(0,1,2,0x9000,0,4,0,0,1,0)],
+                                   at=lambda address,size:b'tag\0'[:size])
+        recipe = dict(symbol='example',address='0x3000',literals={'74616700':'0x9000'},
+                      bindings={'@.text':'0x3100','@.bss':'0x5000'})
+        linked,used = link_method(obj,recipe,original,{})
+        self.assertEqual([u['target'] for u in used],['0x3108','0x3108','0x5000','0x5000','0x9000','0x9000'])
+        # Legacy receipts used the empty name; a literal never resolves through it.
+        legacy = dict(recipe,bindings={'':'0x3100'})
+        rels[:] = pair(0,1,8)+pair(16,3,0)
+        linked,used = link_method(obj,legacy,original,{})
+        self.assertEqual([u['target'] for u in used],['0x3108','0x3108','0x9000','0x9000'])
 
     def test_string_literals_check_content_termination_and_storage(self):
         section = (0,1,0x32,0,0,4,0,0,1,1)

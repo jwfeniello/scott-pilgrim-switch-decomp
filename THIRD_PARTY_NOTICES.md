@@ -35,3 +35,19 @@ The RapidJSON v1.1.0 headers retain their upstream copyright and license notices
 See `vendor/rapidjson-1.1.0/license.txt` for the MIT license and additional
 upstream third-party notices. The lowercase hexadecimal writer-table adaptation
 is documented in `vendor/rapidjson-provenance.json`.
+
+# FreeType
+
+Portions of this software are copyright © 2018 The FreeType Project
+(www.freetype.org). All rights reserved. The public FreeType 2.9 files under
+`vendor/freetype-2.9` are distributed under the FreeType License; the complete
+texts are in `vendor/freetype-2.9/docs/FTL.TXT` and `docs/LICENSE.TXT` (FreeType
+is dual-licensed under the FTL and GPLv2; `docs/GPLv2.TXT` is included for
+completeness). The derived configuration in `vendor/freetype-2.9-configs` only
+disables `FT_CONFIG_OPTION_ENVIRONMENT_PROPERTIES`.
+
+# MiniUPnPc
+
+The public miniupnpc 1.9 headers under `vendor/miniupnpc-1.9` and the source views
+in `src/MiniUpnpc19_*.c` retain their upstream notices. Copyright (c) 2005-2014
+Thomas Bernard; the complete BSD-style license is in `vendor/miniupnpc-1.9/LICENSE`.

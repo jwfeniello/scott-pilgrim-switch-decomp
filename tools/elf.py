@@ -25,6 +25,11 @@ class Elf:
 
     def section_bytes(self,section):return self.data[section[4]:section[4]+section[5]]
 
+    def section_name(self,index):
+        require(0 < index < len(self.sections),'Unresolved section index')
+        strings = self.section_bytes(self.sections[self.header[13]])
+        return strings[self.sections[index][0]:].split(b'\0',1)[0].decode()
+
     def at(self,address,size):
         matches = [s for s in self.sections if s[1] != 8 and s[3] <= address < address+size <= s[3]+s[5]]
         require(len(matches) == 1,f'Unmapped original bytes {address:#x}/{size}')
@@ -151,6 +156,19 @@ def relocate(code,offset,kind,target,address):
     struct.pack_into('<I',code,offset,word)
 
 
+def binding_key(obj,relocation):
+    """Named symbols bind by name; unnamed section symbols bind per section."""
+    if relocation['symbol']:return relocation['symbol']
+    index = relocation['symbol_record'][3]
+    return '@'+obj.section_name(index) if 0 < index < len(obj.sections) else ''
+
+
+def is_literal_relocation(obj,relocation):
+    index = relocation['symbol_record'][3]
+    return (relocation['kind'] not in (282,283) and 0 < index < len(obj.sections)
+            and bool(obj.sections[index][2]&0x10))
+
+
 def immutable_literal(obj,relocation):
     symbol = relocation['symbol_record']
     require(0 < symbol[3] < len(obj.sections),'Unresolved literal symbol')
@@ -208,8 +226,11 @@ def link_method(obj,recipe,original,relative):
                         for s in original.sections),'Section destination is not immutable')
             require(original.at(base,len(data)) == data,'Original immutable section bytes differ')
             target = base+offset
-        elif name in recipe.get('bindings',{}):
-            target = int(recipe['bindings'][name],0)+addend
+        elif not is_literal_relocation(obj,relocation) and (
+                binding_key(obj,relocation) in recipe.get('bindings',{}) or name in recipe.get('bindings',{})):
+            # Older receipts recorded unnamed section symbols under the empty name.
+            key = binding_key(obj,relocation)
+            target = int(recipe['bindings'][key if key in recipe['bindings'] else name],0)+addend
         else:
             literal = immutable_literal(obj,relocation);width = len(literal)
             target = int(recipe['literals'][literal.hex()],0)
