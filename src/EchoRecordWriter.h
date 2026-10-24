@@ -2,6 +2,8 @@
 // storm::echo record writer: events append typed, named 128-byte records (at most 100) to a stream.
 #pragma once
 #include <stdint.h>
+#include <string>
+#include <typeinfo>
 using Size=__SIZE_TYPE__;
 namespace EchoRecords {
 struct NameView { const char* data; Size size; NameView() : data(nullptr), size(0) {} NameView(const char* d, Size s) : data(d), size(s) {} };
@@ -41,9 +43,9 @@ struct Writer {
     }
 };
 // Parent-class serialization, called first by every event writer.
-template<unsigned Key> struct Base { void Write(Writer* writer); };
+template<unsigned Key> struct Base { void Write(Writer* writer); void Write(Writer* writer, int mode); };
 // Field kinds beyond plain values: GUIDs, references with a reserved null value,
-// and named fields checked (and possibly written) out of line.
+// named fields checked (and possibly written) out of line, and text records.
 struct Guid { char bytes[19]; };
 // Out-of-line check before a named field is written.
 bool ShouldWrite(Writer* writer, const void* field);
@@ -52,7 +54,15 @@ struct NamedField {
     const char* name; Size length; const void* value;
     template<Size N, class T> NamedField(const char (&text)[N], const T& v) : name(text), length(N - 1), value(&v) {}
 };
-template<unsigned Helper> struct NamedWriter { static void Write(NamedField* field, Writer* writer, int mode = 0); };
+// Named field with two value addresses (for example text storage and its length).
+struct NamedPair {
+    const char* name; Size length; const void* value; const void* extra;
+    template<Size N, class T, class U> NamedPair(const char (&text)[N], const T& v, const U& e) : name(text), length(N - 1), value(&v), extra(&e) {}
+};
+template<unsigned Helper> struct NamedWriter {
+    static void Write(NamedField* field, Writer* writer); static void Write(NamedField* field, Writer* writer, int mode);
+    static void Write(NamedPair* field, Writer* writer); static void Write(NamedPair* field, Writer* writer, int mode);
+};
 __attribute__((always_inline)) inline NameView TakeName(Writer* writer, NameView name) {
     NameView& pending = writer->pending;
     if (pending.size) { name = pending; pending.data = nullptr; pending.size = 0; }
@@ -92,5 +102,70 @@ __attribute__((always_inline)) inline void WriteNamedGuid(Writer* writer, const 
 }
 __attribute__((always_inline)) inline void WriteNamedReference(Writer* writer, const NamedField& field) {
     WriteReference(writer, NameView(field.name, field.length), *static_cast<const uint32_t*>(field.value), 0xffffffffu);
+}
+// Members written by an out-of-line writer after the check; only their address is used here.
+struct Opaque { char first; };
+template<unsigned Helper> struct MemberWriter { static void Write(const void* field, Writer* writer); static void Write(const void* field, Writer* writer, int mode); };
+// Text records (type 3): the record's library string at offset 0x38 is cleared, then filled
+// by an out-of-line converter of the field.
+struct Text { void* words[3]; };
+void AssignText(Text* text, const char* data, Size size);
+template<unsigned Converter> struct TextWriter { static void Write(const void* field, Text* text); };
+template<unsigned Converter, Size N, class T> __attribute__((always_inline)) inline void WriteText(Writer* writer, const char (&label)[N], const T& value) {
+    Record* record = writer->Next(); NameView name = TakeName(writer, NameView(label, N - 1));
+    record->type = 3; record->name = name.data; record->length = name.size;
+    Text* text = reinterpret_cast<Text*>(reinterpret_cast<char*>(record) + 0x38);
+    AssignText(text, nullptr, 0);
+    TextWriter<Converter>::Write(&value, text);
+}
+// Local library string handed to a named-field writer; freed through the Storm allocator when long.
+void FreeText(void* data, const char* file, uint32_t line) noexcept;
+struct LocalText {
+    uint64_t first; uint64_t size; void* data;
+    LocalText() : first(0), size(0), data(nullptr) {}
+    ~LocalText() { if (first & 1) FreeText(data, "", 0); }
+};
+// Optional nested objects, written out of line (possibly under a pending name).
+struct Object;
+template<unsigned Helper> struct NestedWriter { static void Write(Object* object, Writer* writer); static void Write(Object* object, Writer* writer, int mode); };
+// Library strings over the Storm allocator; character storage is tagged with typeid(char).
+void* AllocText(Size size, Size alignment, uint32_t flags, const char* type, const char* file, uint32_t line);
+template<class T> struct TextAllocator {
+    using value_type = T;
+    template<class U> struct rebind { using other = TextAllocator<U>; };
+    TextAllocator() noexcept {}
+    template<class U> TextAllocator(const TextAllocator<U>&) noexcept {}
+    T* allocate(Size count) { return static_cast<T*>(AllocText(sizeof(T) * count, alignof(T), 0x41201007u, typeid(T).name(), "", 0)); }
+    void deallocate(T* value, Size) noexcept { FreeText(value, "", 0); }
+};
+template<class T, class U> bool operator==(const TextAllocator<T>&, const TextAllocator<U>&) { return true; }
+template<class T, class U> bool operator!=(const TextAllocator<T>&, const TextAllocator<U>&) { return false; }
+typedef std::basic_string<char, std::char_traits<char>, TextAllocator<char> > StormText;
+// Storage view of a library string (short form: length in the first byte, characters after it).
+struct TextLayout {
+    union { struct { Size capacity; Size size; char* data; } large; struct { unsigned char size; char data[23]; } small; };
+};
+template<unsigned N> struct Slots : Slots<N - 1> { virtual void Pad(char (*)[N]); };
+template<> struct Slots<0> {};
+template<unsigned Slot> struct TextSource : Slots<Slot> { virtual StormText Text() const; };
+// Text records from a string taken by value (a copy of a member, or a returned string).
+template<Size N> __attribute__((always_inline)) inline void WriteTextValue(Writer* writer, const char (&label)[N], const StormText& value) {
+    Record* record = writer->Next(); NameView name = TakeName(writer, NameView(label, N - 1));
+    const TextLayout& text = reinterpret_cast<const TextLayout&>(value);
+    bool short_form = (text.small.size & 1) == 0;
+    const char* data = short_form ? text.small.data : text.large.data;
+    Size length = short_form ? Size(text.small.size >> 1) : text.large.size;
+    record->type = 3; record->name = name.data; record->length = name.size;
+    AssignText(reinterpret_cast<Text*>(reinterpret_cast<char*>(record) + 0x38), data, length);
+}
+template<Size N> __attribute__((always_inline)) inline void WriteTextCopy(Writer* writer, const char (&label)[N], StormText value) {
+    WriteTextValue(writer, label, value);
+}
+// Named pairs are built as a temporary and copied into the checked local.
+template<unsigned Helper> __attribute__((always_inline)) inline void WriteNamedPair(Writer* writer, const NamedPair& pair) {
+    NamedPair f = pair; if (ShouldWrite(writer, &f)) NamedWriter<Helper>::Write(&f, writer);
+}
+template<unsigned Helper> __attribute__((always_inline)) inline void WriteNamedPair(Writer* writer, const NamedPair& pair, int mode) {
+    NamedPair f = pair; if (ShouldWrite(writer, &f)) NamedWriter<Helper>::Write(&f, writer, mode);
 }
 }
