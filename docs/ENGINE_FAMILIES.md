@@ -138,8 +138,8 @@ and an instance is credited **only at its own address**. For the `std::function`
 family, the key is the destructor's address, and the other slots of the same
 vtable are credited to the same instance. Identical bodies elsewhere are not
 credited to an unrelated instance's symbol, and addresses that other builds
-already credit are skipped. These families add **1,867 complete functions /
-187,900 bytes**:
+already credit are skipped. These families add **1,874 complete functions /
+191,708 bytes**:
 
 | Source (`src/`) | Shape | Functions | Bytes |
 | --- | --- | ---: | ---: |
@@ -188,6 +188,7 @@ already credit are skipped. These families add **1,867 complete functions /
 | `TypeRegistrationOnceRoot*` | One-time type registration for root types, without a registry context (`-O3`) | 6 | 1,392 |
 | `DarePoolDestructor*` | `Dare::Private::DarePoolBase<T, N, Policy>` destructors: return each pooled object to the Dare allocator, newest first, then free the pointer array (see [Dare pools](#dare-pool-destructors)) | 53 | 11,200 |
 | `ComponentMapCollectByKey*` | Component map lookup by type key: append the active components of the matching type to a caller-supplied vector | 7 | 6,468 |
+| `StormMapEraseKey*` | libc++ 4 `unordered_map<unsigned, T>::erase(key)` with nodes freed through `Storm_Free` (see [Storm STL allocator](LIBRARY_BUILD_EVIDENCE.md#storm-stl-allocator)) | 7 | 3,808 |
 
 The code shapes pin down several details:
 

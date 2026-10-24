@@ -118,6 +118,37 @@ at the SDK profile (`-O3`, frame pointer, PIC, unwind tables).
 over placeholder element types of those sizes; the two 32-byte addresses are
 identical instantiations for two element types the original does not name.
 
+## Storm STL allocator
+
+SDK containers allocate through `Storm_Alloc(size, alignment, flags, tag, "", 0)`
+and free through `Storm_Free(pointer, "", 0)`. The tag is `typeid(T).name()` of
+the allocated type. For a class type the name string is defined in the
+executable and loaded through the GOT; for a fundamental type such as
+`unsigned int` the code loads the imported `type_info` and reads its name
+field. The flags differ per container.
+
+The allocator also declares `construct` and `destroy`. With them, libc++ moves
+elements one at a time during reallocation instead of using `memcpy`, even for
+trivially copyable types. Without them, no vector of a trivial type matches.
+
+[`src/StormVectors.cpp`](../src/StormVectors.cpp) instantiates libc++ 4
+`std::vector` internals once per original address (`-O3`, frame pointer, PIC,
+no implicit float, unwind tables). **34 functions / 14,836 bytes** match exactly:
+
+| Operation | Element types | Functions |
+| --- | --- | ---: |
+| `__push_back_slow_path` | `unique_ptr` of a polymorphic type (default and Storm deleters), `uint8_t`, `uint16_t`, `uint32_t` | 21 |
+| `__append(n)` and `__append(n, value)` | class pointer, `uint8_t`, `uint32_t` | 10 |
+| `reserve` | `unique_ptr` (default and Storm deleters) | 3 |
+
+The Storm deleter destroys the object through its virtual destructor and frees
+the most-derived storage with `Storm_Delete`. It must be `noexcept`; otherwise
+the vector gains a terminate landing pad. Element types are placeholders with
+the original sizes and ownership; their real names are not recovered.
+
+`StormMapEraseKey` (7 / 3,808 bytes) covers `unordered_map<unsigned, T>::erase(key)`
+with the same allocator.
+
 ## Limits found in this batch
 
 - **Trap encoding.** 337 unmatched functions (40,860 bytes) contain the original
