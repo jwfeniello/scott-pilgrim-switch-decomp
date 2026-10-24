@@ -109,6 +109,8 @@ def input_hashes(root=ROOT):
     header_roots = set()
     for build in builds:
         add_source(build['source'])
+        for name in build.get('lto_sources',[])+([build['keep_source']] if 'keep_source' in build else []):
+            add_source(name)
         for name in build.get('header_roots',[]):
             if name in header_roots:continue
             header_roots.add(name)

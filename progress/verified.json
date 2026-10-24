@@ -1,9 +1,9 @@
 {
   "version": 1,
-  "generated_at": "2026-10-24T18:32:57.232000+00:00",
+  "generated_at": "2026-10-24T19:10:08.373029+00:00",
   "target_elf_sha256": "ea95638e6d6aaa0dc6cddd552a9366799aa1ec3bc07ee201f23f6c151103f5b8",
   "input_sha256": {
-    "config/builds.json": "2e17df330d04ba3858cc9d035020e5355e7b7ade7d9ecdad0eb0fbc521d6a84c",
+    "config/builds.json": "877d4bd8d1ff8d29201c9acac6f529d48e9525d2e72873fcc6a3b91a1f9b6995",
     "config/functions.tsv": "399e91468a04e0459194c10d68d2210d1157cedefeb19c7851886ca7632fcb18",
     "config/non_fde_functions.tsv": "6a45f5e185454fa0472af00b2cdc9d040d73ca133d1106217e1fbbe3b32a8175",
     "config/target.json": "23cc6a5227206a953e7668acf5e9ae5c02a25c23b7e7967f0450a814b888241a",
@@ -58,6 +58,8 @@
     "src/ComposeRenderUnitDestructor.h": "35be21aa4c48b199c78900264fa866e5fc5b08a02135b2e7f75f49dfb58758c9",
     "src/ComposeRenderUnitDestructorOmitNoPic.cpp": "179f6064c0fa369f3edfc0ede645e6d488e2b67767aec0bc91b1c7f07f13690c",
     "src/CounterBufferDestructor.cpp": "0fd2d53ab554a0c017cddc533d4933e64f2370fda484458d110c751a244c8066",
+    "src/DareFlyweightManager.h": "f4081973439b84b9d04ce2ea9ed7465420fee840146daa4eef2d9f4536a3d1aa",
+    "src/DareFlyweightManagerOmitNoPic.cpp": "f4a72c3d2102c962f991d4797b0c8f7d970fa69d9f690cbf596e055521eb11a9",
     "src/DareListDestructor.h": "4feffbd881317b0701a25b285b6f0eab332a12b60eee57efcb7425199b254a36",
     "src/DareListDestructorOmitNoPic.cpp": "a8c66a27ec2c9f9e6bcc4d686ecfecc4637a39d5041f7bb493a70308da37e70f",
     "src/DareTreeDestroy.h": "c03734845e4ceb601721722d56d6c6c5b7dbd028b99cd9cf5e94ea6c2ac336c9",
@@ -72,6 +74,8 @@
     "src/EchoEventDestructorKeepPicUnwind1.cpp": "a62cc1b0aff9dbf8591169608d903995618d40c1fbd9e089dd81a3edf6e39716",
     "src/EchoFieldSerialize.h": "ededd8eb6f134c1bcb991eb1a7f83447c8fc9985c57fcc23f5d80e800068dcb4",
     "src/EchoFieldSerializeKeepPicNoFloat.cpp": "ca6cb62e2b86f10300ea83037bdd209ff3d49d48dac98df0f3e526d73998955d",
+    "src/EchoTypeDescriptor.h": "2c553f17f0daedb448c3c9002c1a0bab8a40446c37cbc85a35bd3e48299b59e1",
+    "src/EchoTypeDescriptorKeepPicUnwindO3.cpp": "5582f6b447c88ff0265a8139fe69bb82f2624154c9b2877f95e48edd7c51521e",
     "src/EngineRegistry.cpp": "cc9796d5c067bfe73eee26a057f039a0b8e0a904923f5954b7dc34ee3736f1fd",
     "src/ExpandedRecoveryOmit.cpp": "3faaabdd49b2aacefcb4a9c501d0880639c602f77541cd0c33663e80bf783342",
     "src/FactoryConstruction.cpp": "b8fe4d92c0fd50863506c569cd3fe68ef5b44fe9ed1e2ddcd3b79b24be460f89",
@@ -88,6 +92,8 @@
     "src/FloatCfgVoidOmitDirect.cpp": "2579d40d7a44057ed741ebf421c795b02e626468566ebb4218288bafb749208d",
     "src/ForwardingFunction.h": "4bc2baf0b205552d33723c7c4cbef3a3a955f0dfb843886f762bfb28add66ebf",
     "src/ForwardingFunctionOmitNoPic.cpp": "82d383da0a42d47cdc70fbfac60b49865ac502cd5a2259efffd0277c998aaeae",
+    "src/FreeType29LtoKeep.c": "9034e0e81bfbc18d26292c5eba2cb2f7dac3b981220514deec4a4428620b78e8",
+    "src/FreeType29LtoRoots.c": "fdc7931bfb60f9c66245e2cdf4541dc3e2fd8057f29fc4ecb49dbc521b07b0f6",
     "src/FreeType29_Unity_O2_omit_Pie.c": "669ade5fe2c967425d8352304f35b3fd5a4c70a133bdb88e730032db2af45484",
     "src/FreeType29_Unity_O2_omit_SignedCharSections.c": "669ade5fe2c967425d8352304f35b3fd5a4c70a133bdb88e730032db2af45484",
     "src/FreeType29_Unity_O3_omit_Sections.c": "669ade5fe2c967425d8352304f35b3fd5a4c70a133bdb88e730032db2af45484",
@@ -993,6 +999,8 @@
     "src/TypeRegistrationOnce.cpp": "852d88a5a82b18ad8984fb41a66fe7630fb7fd22979356342bbc1ebdcca91511",
     "src/TypeRegistrationOnceGame.h": "02b606fd58f78fdf8932cc727a0122b3acb5004806144bc5f680139d757200a4",
     "src/TypeRegistrationOnceGameOmitNoPic.cpp": "da5d53835ffc1703f88164028342e51915d07c7549b63fecc1c9f9c098a10b84",
+    "src/TypeRegistryMap.h": "0bb2f337d8c4e16316d373e490c17120dbe2322f6a8bb58ec138904cc5a84927",
+    "src/TypeRegistryMapKeepPicNoFloatUnwindO3.cpp": "ddd58646bf666f36aba0b32440f51ac4605859eae7673a1113f1c7b900c1368d",
     "src/TypedCfgFloatOmitDirect.cpp": "02d7b390df4ba0b5d244515a4d512c42d85bb58e3095ba0f59c3405a6ccde8e8",
     "src/TypedCfgIntegerKeepPicUnwind.cpp": "70a28d0146a1bef5f1cfcc31b4ec1e7845050313004f31d23864d69a8b1dbcdc",
     "src/TypedCfgIntegerOmitDirect.cpp": "979d6c2aa35f38be36b0f1cf71e6bd9243b1c0a1eda7e12d9932794a10b3f14c",
@@ -1033,6 +1041,7 @@
     "src/compose_destructor_omit_no_pic_instances.inc": "ec9da9c6f01496b088dfa52a70199d8d3dc3373a5c2540b14e2ea03730b755e3",
     "src/compose_render_unit_destructor_omit_no_pic_instances.inc": "a473a137a4d5b75205aea55b4fb69ff05efc4b979f2aeb5c883c0a2a0e4886f9",
     "src/counter_buffer_destructor_instances.inc": "8bda63f753a81068c79bdbc32d6960e7e00f076b8a03064e96b61ce985f437f9",
+    "src/dare_flyweight_manager_omit_no_pic_instances.inc": "4acc21db3d06b54700b1a228120ff8126c9c06fa7a55347238b78669840a1fe5",
     "src/dare_list_destructor_omit_no_pic_instances.inc": "347d2adc67a2cc566d3c209503a5f9ade5523521215cf8f7d75accf5f94c7fec",
     "src/dare_tree_destroy_omit_no_pic_instances.inc": "c7329ddd89f600ea32b224cb3a4814b7356f6a774ad64bcb4974546315df88e8",
     "src/delete_with_frame_instances.inc": "efa06ea106de0755487caa72ae0e7eef03d07775bf127698c8bcedf76cd5ce9b",
@@ -1042,6 +1051,7 @@
     "src/echo_event_destructor_keep_pic_unwind0_instances.inc": "c64a12d3a03a3a8da433ec7821ed0aed6fc638965350201fb3b6bc2535fcef0a",
     "src/echo_event_destructor_keep_pic_unwind1_instances.inc": "8a9a88faa383009ec009bd1ba0fd1eedef05424b68ad05bf89ee89b2ab7dbb6e",
     "src/echo_field_serialize_keep_pic_no_float_instances.inc": "2736f6b430beb7cb3d94dd6b046f097494e17386abedd1e92b6a41c07c6181d3",
+    "src/echo_type_descriptor_keep_pic_unwind_o3_instances.inc": "36a0098b387d0a0685380fe7df9c3438c49a7fb67695b4b712cf8a1cf8b4cf71",
     "src/engine_registry_calls.inc": "9841670c768ab4a75f57e76e1353d41409e99efa56f25c2bbc5f821fece8dfa4",
     "src/engine_registry_declarations.inc": "0d0dd43aa44198c8e70048e84ec4414843449754ac0193d35eddf502fc9b006c",
     "src/factory_construction_instances.inc": "2d195de6c86983e5a5be8bc2ea60b9f7f899e8cd9a11b363d0182447cb420f8c",
@@ -1839,13 +1849,14 @@
     "src/type_payload_instances.inc": "399bec983f472a2e41b386512aef53e2d412318290f503108881c25c51d953f8",
     "src/type_registration_once_game_omit_no_pic_instances.inc": "feb60de195d7e0fa1bc7e3ccb7d6986e7c2500116cd6a2166e28c1e8d1a1cd48",
     "src/type_registration_once_instances.inc": "9a8527c40ee441d4e81bdb6f93e88ce633def1c95298190024c27d156841bc6e",
+    "src/type_registry_map_keep_pic_no_float_unwind_o3_instances.inc": "471d68f0d01e1e6ac765d1d8d87993414ceee84cdd53b1164c2dadbdc8e02f24",
     "src/typed_property_access_instances.inc": "fe16f4c8c3a6b19222a6827f87c55a88924f322abf7bc1367486a9fc8927c7d1",
     "src/typed_property_access_wide_instances.inc": "6d1c855d16f02f5787cb8ef642795f0ba54798cd36f4a55898ec2aa284f10306",
     "src/typed_property_access_wider_instances.inc": "8700e28ed0e5b0bb42b798972ee80f42801e6b67227a0f8ed9b9c2c8b7bffc83",
     "src/virtual_result_adapter_instances.inc": "4506d808ac6d0d0dac74021bc5813733b27be23ba0d0672d2e1e24c5093ca01c",
     "tools/elf.py": "52d5b6fd83c1d4d4fe31f321ff6e71c2dc975cba345de196e63e61a78f026309",
-    "tools/project.py": "742be056152af6e6d71bc17fb40a40cb6b522afbb629fc1c2077901a529f54ce",
-    "tools/verify.py": "9ee566730c7ecf321ebab517e308bebcbba165c67b0c637ae3324bf989a8f7e3",
+    "tools/project.py": "c3752d7130830b00f50c120ea1a8520a2d45b60e5655c92977bece0fbed11b85",
+    "tools/verify.py": "3b7bad60a7e8b28cde404d1a83bb28f772d69ec0d4a4d72697d39d82b47eb8dc",
     "vendor/curl-7.64.1-sdk/COPYING": "8c8824f50e73a021f5dde1fccbf69685939247399a33a32abab1fa448c9ddabb",
     "vendor/curl-7.64.1-sdk/include/curl/curl.h": "f66aa716e2fde8cb6b3fee2ae2944772d6fca0642ea9c203c1ec905c5a2ed72d",
     "vendor/curl-7.64.1-sdk/include/curl/curlver.h": "43e0bae3905c9a6a1ff1541e6486372a1f9451c2dd302dd85fe64b9a42f55067",
@@ -3871,15 +3882,17 @@
     "vendor/zlib-1.2.11/zutil.h": "9a63f6690fac1620aa3cecee5752af618806da438a256b4a047fbcd289cac159"
   },
   "compiler_versions": {
+    "7.0.1": "clang version 7.0.1 (tags/RELEASE_701/final)",
     "8.0.1": "clang version 8.0.1 (tags/RELEASE_801/final)",
-    "7.0.1": "clang version 7.0.1 (tags/RELEASE_701/final)"
+    "lld": "LLD 8.0.1 (compatible with GNU linkers)"
   },
   "compiler_sha256": {
+    "7.0.1": "c2f0a175157d9aaace8031f8e6d7ea0ed6142b4bcef287105e3ed227301f1002",
     "8.0.1": "dffd62a213ec6cdb4430012a4a41c11e5e32c288f133d5391f9be49e1c5b69de",
-    "7.0.1": "c2f0a175157d9aaace8031f8e6d7ea0ed6142b4bcef287105e3ed227301f1002"
+    "lld": "c4b3aaea06ff7112c64753047a2ab279fc3fe10dd807fd3c22edfdae99f43eed"
   },
-  "exact_functions": 33439,
-  "exact_bytes": 3793564,
+  "exact_functions": 33609,
+  "exact_bytes": 3892580,
   "builds": [
     {
       "id": "probes",
@@ -12915,6 +12928,26 @@
       "id": "type_registration_once_game_omit_no_pic",
       "compiler": "8.0.1",
       "object_sha256": "3964b336913926f0e7ca02e0f394779e05885b8c8eed67f8bfd583de65bd4051"
+    },
+    {
+      "id": "echo_type_descriptor_keep_pic_unwind_o3",
+      "compiler": "8.0.1",
+      "object_sha256": "5e10c9cf59c5e06280c6a22a9327cf38b201af1374b6ac04c6d8819f6cf0e46d"
+    },
+    {
+      "id": "dare_flyweight_manager_omit_no_pic",
+      "compiler": "8.0.1",
+      "object_sha256": "3082cfccaf6cee459d682ab4696db9c940f0ba718b4b72a63f72e227aad3047b"
+    },
+    {
+      "id": "type_registry_map_keep_pic_no_float_unwind_o3",
+      "compiler": "8.0.1",
+      "object_sha256": "f7806dba103fd34ddc758a6c18a2ea03d4b5e7feb0857845e3465d5054b70f0b"
+    },
+    {
+      "id": "freetype_2_9_lto_pie",
+      "compiler": "8.0.1",
+      "object_sha256": "044006aa2ed7bfbe5e24f111284e652814fe54a418063cc4d249c050df059ffa"
     }
   ],
   "matches": [
@@ -55632,6 +55665,17 @@
       "relocation_count": 0
     },
     {
+      "address": "0x270ff0",
+      "size": 112,
+      "exact": true,
+      "target_sha256": "66185d83d230c3fcb1704623d84d342113655f2ca2b213830780c534da9ac0f4",
+      "compiled_sha256": "66185d83d230c3fcb1704623d84d342113655f2ca2b213830780c534da9ac0f4",
+      "source": "src/EchoTypeDescriptorKeepPicUnwindO3.cpp",
+      "symbol": "_ZN8EchoType3GetILj2559984ELi3ELi3EEEPNS_10DescriptorEv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 17
+    },
+    {
       "address": "0x271060",
       "size": 104,
       "exact": true,
@@ -55784,6 +55828,17 @@
       "symbol": "_Z18AdaptVirtualResultILj2562304EE13AdapterResultPvP10ResultHost",
       "source_review": "manual_reconstruction",
       "relocation_count": 0
+    },
+    {
+      "address": "0x271920",
+      "size": 112,
+      "exact": true,
+      "target_sha256": "c82e7f20add13df81a9c4302c66ce2955671558223e8e3e9f6a1ad833b437713",
+      "compiled_sha256": "c82e7f20add13df81a9c4302c66ce2955671558223e8e3e9f6a1ad833b437713",
+      "source": "src/EchoTypeDescriptorKeepPicUnwindO3.cpp",
+      "symbol": "_ZN8EchoType3GetILj2562336ELi3ELi3EEEPNS_10DescriptorEv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 17
     },
     {
       "address": "0x2719a0",
@@ -59163,6 +59218,17 @@
       "relocation_count": 0
     },
     {
+      "address": "0x27ef30",
+      "size": 112,
+      "exact": true,
+      "target_sha256": "21afddf7a289169fe416908eaf891d888307d98f968ed0c02d74430e75062f48",
+      "compiled_sha256": "21afddf7a289169fe416908eaf891d888307d98f968ed0c02d74430e75062f48",
+      "source": "src/EchoTypeDescriptorKeepPicUnwindO3.cpp",
+      "symbol": "_ZN8EchoType3GetILj2617136ELi3ELi3EEEPNS_10DescriptorEv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 17
+    },
+    {
       "address": "0x27efa0",
       "size": 192,
       "exact": true,
@@ -59216,6 +59282,17 @@
       "symbol": "_Z18AdaptVirtualResultILj2618128EE13AdapterResultPvP10ResultHost",
       "source_review": "manual_reconstruction",
       "relocation_count": 0
+    },
+    {
+      "address": "0x27f330",
+      "size": 112,
+      "exact": true,
+      "target_sha256": "0458e48016cb3a07b2d3d38fb1815de40d696966d7bc7430af9370a265b0f15d",
+      "compiled_sha256": "0458e48016cb3a07b2d3d38fb1815de40d696966d7bc7430af9370a265b0f15d",
+      "source": "src/EchoTypeDescriptorKeepPicUnwindO3.cpp",
+      "symbol": "_ZN8EchoType3GetILj2618160ELi3ELi3EEEPNS_10DescriptorEv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 17
     },
     {
       "address": "0x27f4d0",
@@ -59326,6 +59403,17 @@
       "symbol": "_Z18AdaptVirtualResultILj2620512EE13AdapterResultPvP10ResultHost",
       "source_review": "manual_reconstruction",
       "relocation_count": 0
+    },
+    {
+      "address": "0x27fc80",
+      "size": 112,
+      "exact": true,
+      "target_sha256": "cbe67d8ed5b4fd22a988329279e8fbb3bd27bead802e27a80e7a5d9641a32bb9",
+      "compiled_sha256": "cbe67d8ed5b4fd22a988329279e8fbb3bd27bead802e27a80e7a5d9641a32bb9",
+      "source": "src/EchoTypeDescriptorKeepPicUnwindO3.cpp",
+      "symbol": "_ZN8EchoType3GetILj2620544ELi4ELi3EEEPNS_10DescriptorEv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 17
     },
     {
       "address": "0x27fcf0",
@@ -59458,6 +59546,17 @@
       "symbol": "_Z18AdaptVirtualResultILj2622688EE13AdapterResultPvP10ResultHost",
       "source_review": "manual_reconstruction",
       "relocation_count": 0
+    },
+    {
+      "address": "0x280500",
+      "size": 112,
+      "exact": true,
+      "target_sha256": "cc3406f68e531a497b2003c4411f234680394409e2da6ae78c9c5d23e2f383b7",
+      "compiled_sha256": "cc3406f68e531a497b2003c4411f234680394409e2da6ae78c9c5d23e2f383b7",
+      "source": "src/EchoTypeDescriptorKeepPicUnwindO3.cpp",
+      "symbol": "_ZN8EchoType3GetILj2622720ELi3ELi3EEEPNS_10DescriptorEv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 17
     },
     {
       "address": "0x280570",
@@ -60934,6 +61033,17 @@
       "relocation_count": 0
     },
     {
+      "address": "0x285e20",
+      "size": 112,
+      "exact": true,
+      "target_sha256": "3916cab51d5be5f1aca6c8b8f5808f5e6a3578695eddec91f3acf76aa7267e32",
+      "compiled_sha256": "3916cab51d5be5f1aca6c8b8f5808f5e6a3578695eddec91f3acf76aa7267e32",
+      "source": "src/EchoTypeDescriptorKeepPicUnwindO3.cpp",
+      "symbol": "_ZN8EchoType3GetILj2645536ELi3ELi2EEEPNS_10DescriptorEv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 17
+    },
+    {
       "address": "0x286050",
       "size": 116,
       "exact": true,
@@ -61506,6 +61616,50 @@
       "relocation_count": 1
     },
     {
+      "address": "0x2877d0",
+      "size": 640,
+      "exact": true,
+      "target_sha256": "4ed1e030d1901a10d67d886d69350b328f1fd64ccf83f923481a8aba49f2df44",
+      "compiled_sha256": "4ed1e030d1901a10d67d886d69350b328f1fd64ccf83f923481a8aba49f2df44",
+      "source": "src/TypeRegistryMapKeepPicNoFloatUnwindO3.cpp",
+      "symbol": "_ZN12TypeRegistry8RegistryILj2652112ELj12ELj0EE3AddEPKNS_7TypeKeyE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 29
+    },
+    {
+      "address": "0x287c20",
+      "size": 640,
+      "exact": true,
+      "target_sha256": "2fe8bdd4b54e857f2436ab23636dc1cf185811ee1630ee527dcf97948d2c1ed5",
+      "compiled_sha256": "2fe8bdd4b54e857f2436ab23636dc1cf185811ee1630ee527dcf97948d2c1ed5",
+      "source": "src/TypeRegistryMapKeepPicNoFloatUnwindO3.cpp",
+      "symbol": "_ZN12TypeRegistry8RegistryILj2653216ELj12ELj0EE3AddEPKNS_7TypeKeyE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 29
+    },
+    {
+      "address": "0x288700",
+      "size": 644,
+      "exact": true,
+      "target_sha256": "1d89f8342d4ebcd5d936016a73c20cba470fc956d054db4cc30094d14d38c194",
+      "compiled_sha256": "1d89f8342d4ebcd5d936016a73c20cba470fc956d054db4cc30094d14d38c194",
+      "source": "src/TypeRegistryMapKeepPicNoFloatUnwindO3.cpp",
+      "symbol": "_ZN12TypeRegistry8RegistryILj2656000ELj16ELj1EE3AddEPKNS_7TypeKeyE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 29
+    },
+    {
+      "address": "0x288ab0",
+      "size": 644,
+      "exact": true,
+      "target_sha256": "cd982323ec35ba774e29dc7fbe7d11918c0a44e7d474a8c2659c2973ab5a20e1",
+      "compiled_sha256": "cd982323ec35ba774e29dc7fbe7d11918c0a44e7d474a8c2659c2973ab5a20e1",
+      "source": "src/TypeRegistryMapKeepPicNoFloatUnwindO3.cpp",
+      "symbol": "_ZN12TypeRegistry8RegistryILj2656944ELj20ELj1EE3AddEPKNS_7TypeKeyE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 29
+    },
+    {
       "address": "0x288e70",
       "size": 240,
       "exact": true,
@@ -61592,6 +61746,28 @@
       "symbol": "_Z15GetLazyTypeInfoILj2660112ELj9ELj2550547936EEPvv",
       "source_review": "manual_reconstruction",
       "relocation_count": 31
+    },
+    {
+      "address": "0x289b50",
+      "size": 644,
+      "exact": true,
+      "target_sha256": "914fd4e16e67c5989fd3f5c17c7ed59dab1f9371e99fe2d0f4372c97376d54a1",
+      "compiled_sha256": "914fd4e16e67c5989fd3f5c17c7ed59dab1f9371e99fe2d0f4372c97376d54a1",
+      "source": "src/TypeRegistryMapKeepPicNoFloatUnwindO3.cpp",
+      "symbol": "_ZN12TypeRegistry8RegistryILj2661200ELj16ELj1EE3AddEPKNS_7TypeKeyE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 29
+    },
+    {
+      "address": "0x28a480",
+      "size": 644,
+      "exact": true,
+      "target_sha256": "8fcbfe2c27c9d32007e57eb7ebfb6faa24d7b088de29312a34f6b43c94d150d6",
+      "compiled_sha256": "8fcbfe2c27c9d32007e57eb7ebfb6faa24d7b088de29312a34f6b43c94d150d6",
+      "source": "src/TypeRegistryMapKeepPicNoFloatUnwindO3.cpp",
+      "symbol": "_ZN12TypeRegistry8RegistryILj2663552ELj16ELj1EE3AddEPKNS_7TypeKeyE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 29
     },
     {
       "address": "0x28a840",
@@ -62419,6 +62595,17 @@
       "relocation_count": 0
     },
     {
+      "address": "0x28e850",
+      "size": 112,
+      "exact": true,
+      "target_sha256": "756765582dba3b1d30ffde8294cffd69456326bf1ad51e4299a87f3c3a9b733f",
+      "compiled_sha256": "756765582dba3b1d30ffde8294cffd69456326bf1ad51e4299a87f3c3a9b733f",
+      "source": "src/EchoTypeDescriptorKeepPicUnwindO3.cpp",
+      "symbol": "_ZN8EchoType3GetILj2680912ELi3ELi2EEEPNS_10DescriptorEv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 17
+    },
+    {
       "address": "0x28e8c0",
       "size": 100,
       "exact": true,
@@ -62824,6 +63011,17 @@
       "symbol": "_Z18AdaptVirtualResultILj2687712EE13AdapterResultPvP10ResultHost",
       "source_review": "manual_reconstruction",
       "relocation_count": 0
+    },
+    {
+      "address": "0x290300",
+      "size": 112,
+      "exact": true,
+      "target_sha256": "c592e04c97e772ff8e1f95d56b6b40423d96d28cb7436104a9f6a0f1b236979a",
+      "compiled_sha256": "c592e04c97e772ff8e1f95d56b6b40423d96d28cb7436104a9f6a0f1b236979a",
+      "source": "src/EchoTypeDescriptorKeepPicUnwindO3.cpp",
+      "symbol": "_ZN8EchoType3GetILj2687744ELi3ELi2EEEPNS_10DescriptorEv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 17
     },
     {
       "address": "0x290370",
@@ -76851,6 +77049,17 @@
       "relocation_count": 0
     },
     {
+      "address": "0x2e6760",
+      "size": 112,
+      "exact": true,
+      "target_sha256": "4d681c55202daf16992c9a7dfc0cfae6d9dce12fb712b2c59cca8ee1470bc3ba",
+      "compiled_sha256": "4d681c55202daf16992c9a7dfc0cfae6d9dce12fb712b2c59cca8ee1470bc3ba",
+      "source": "src/EchoTypeDescriptorKeepPicUnwindO3.cpp",
+      "symbol": "_ZN8EchoType3GetILj3041120ELi3ELi3EEEPNS_10DescriptorEv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 17
+    },
+    {
       "address": "0x2e67d0",
       "size": 100,
       "exact": true,
@@ -77080,6 +77289,17 @@
       "symbol": "_Z18AdaptVirtualResultILj3044720EE13AdapterResultPvP10ResultHost",
       "source_review": "manual_reconstruction",
       "relocation_count": 0
+    },
+    {
+      "address": "0x2e7590",
+      "size": 112,
+      "exact": true,
+      "target_sha256": "e1952f888e238282f017c111047ca4b6aeffe832bcce47f27e8831076d65e10a",
+      "compiled_sha256": "e1952f888e238282f017c111047ca4b6aeffe832bcce47f27e8831076d65e10a",
+      "source": "src/EchoTypeDescriptorKeepPicUnwindO3.cpp",
+      "symbol": "_ZN8EchoType3GetILj3044752ELi3ELi3EEEPNS_10DescriptorEv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 17
     },
     {
       "address": "0x2e7600",
@@ -79126,6 +79346,17 @@
       "symbol": "_Z18AdaptVirtualResultILj3076128EE13AdapterResultPvP10ResultHost",
       "source_review": "manual_reconstruction",
       "relocation_count": 0
+    },
+    {
+      "address": "0x2ef040",
+      "size": 112,
+      "exact": true,
+      "target_sha256": "f7bcdd8057f9fd9cac6e189974a3ced22a8815877f59406bbe3a631bc8db990f",
+      "compiled_sha256": "f7bcdd8057f9fd9cac6e189974a3ced22a8815877f59406bbe3a631bc8db990f",
+      "source": "src/EchoTypeDescriptorKeepPicUnwindO3.cpp",
+      "symbol": "_ZN8EchoType3GetILj3076160ELi3ELi2EEEPNS_10DescriptorEv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 17
     },
     {
       "address": "0x2ef0b0",
@@ -82329,6 +82560,17 @@
       "relocation_count": 31
     },
     {
+      "address": "0x2fa6f0",
+      "size": 112,
+      "exact": true,
+      "target_sha256": "71ff070ddcf2052232ceb0106082802b46616a21bbd6053173235d4d4b4275e8",
+      "compiled_sha256": "71ff070ddcf2052232ceb0106082802b46616a21bbd6053173235d4d4b4275e8",
+      "source": "src/EchoTypeDescriptorKeepPicUnwindO3.cpp",
+      "symbol": "_ZN8EchoType3GetILj3122928ELi3ELi2EEEPNS_10DescriptorEv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 17
+    },
+    {
       "address": "0x2fa760",
       "size": 236,
       "exact": true,
@@ -82549,6 +82791,28 @@
       "relocation_count": 5
     },
     {
+      "address": "0x2fb9f0",
+      "size": 640,
+      "exact": true,
+      "target_sha256": "9fbd72fb6644a7975fe56170434921e9e0d3a1fc3b7b0c6eb3aea54d1f9962df",
+      "compiled_sha256": "9fbd72fb6644a7975fe56170434921e9e0d3a1fc3b7b0c6eb3aea54d1f9962df",
+      "source": "src/TypeRegistryMapKeepPicNoFloatUnwindO3.cpp",
+      "symbol": "_ZN12TypeRegistry8RegistryILj3127792ELj12ELj0EE3AddEPKNS_7TypeKeyE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 29
+    },
+    {
+      "address": "0x2fbe00",
+      "size": 644,
+      "exact": true,
+      "target_sha256": "66a3e2b005be929106c8181402010db7f8c9103fbe28632a678d0b218cef8c7b",
+      "compiled_sha256": "66a3e2b005be929106c8181402010db7f8c9103fbe28632a678d0b218cef8c7b",
+      "source": "src/TypeRegistryMapKeepPicNoFloatUnwindO3.cpp",
+      "symbol": "_ZN12TypeRegistry8RegistryILj3128832ELj16ELj1EE3AddEPKNS_7TypeKeyE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 29
+    },
+    {
       "address": "0x2fc170",
       "size": 236,
       "exact": true,
@@ -82657,6 +82921,17 @@
       "symbol": "RecoveredLeaf_2fce00",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 1
+    },
+    {
+      "address": "0x2fcf40",
+      "size": 644,
+      "exact": true,
+      "target_sha256": "b04fd7d7ce5da34b06540a74dbb1839c3c8c03adf88945e21cddaa006d04b900",
+      "compiled_sha256": "b04fd7d7ce5da34b06540a74dbb1839c3c8c03adf88945e21cddaa006d04b900",
+      "source": "src/TypeRegistryMapKeepPicNoFloatUnwindO3.cpp",
+      "symbol": "_ZN12TypeRegistry8RegistryILj3133248ELj16ELj1EE3AddEPKNS_7TypeKeyE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 29
     },
     {
       "address": "0x2fd2b0",
@@ -88522,6 +88797,17 @@
       "relocation_count": 0
     },
     {
+      "address": "0x35dcf0",
+      "size": 112,
+      "exact": true,
+      "target_sha256": "efa2411394dc44318ed51c4aeb46bd2e42e039453c253754aa7c21a9415a0c2e",
+      "compiled_sha256": "efa2411394dc44318ed51c4aeb46bd2e42e039453c253754aa7c21a9415a0c2e",
+      "source": "src/EchoTypeDescriptorKeepPicUnwindO3.cpp",
+      "symbol": "_ZN8EchoType3GetILj3529968ELi4ELi2EEEPNS_10DescriptorEv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 17
+    },
+    {
       "address": "0x35dd60",
       "size": 16,
       "exact": true,
@@ -89180,6 +89466,17 @@
       "symbol": "_Z18AdaptVirtualResultILj3539008EE13AdapterResultPvP10ResultHost",
       "source_review": "manual_reconstruction",
       "relocation_count": 0
+    },
+    {
+      "address": "0x360060",
+      "size": 112,
+      "exact": true,
+      "target_sha256": "db1759d8be95fb3e3b0edf1793e6abcc0e8dc8325f1865f9f5141baafb935a42",
+      "compiled_sha256": "db1759d8be95fb3e3b0edf1793e6abcc0e8dc8325f1865f9f5141baafb935a42",
+      "source": "src/EchoTypeDescriptorKeepPicUnwindO3.cpp",
+      "symbol": "_ZN8EchoType3GetILj3539040ELi4ELi3EEEPNS_10DescriptorEv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 17
     },
     {
       "address": "0x360200",
@@ -92128,6 +92425,39 @@
       "symbol": "RecoveredLeaf_36c740",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 0
+    },
+    {
+      "address": "0x36c760",
+      "size": 644,
+      "exact": true,
+      "target_sha256": "23edc0dd6cb3bf53a2b06b08a850c4a89008edc86e22ca930583bb695371533b",
+      "compiled_sha256": "23edc0dd6cb3bf53a2b06b08a850c4a89008edc86e22ca930583bb695371533b",
+      "source": "src/TypeRegistryMapKeepPicNoFloatUnwindO3.cpp",
+      "symbol": "_ZN12TypeRegistry8RegistryILj3589984ELj20ELj1EE3AddEPKNS_7TypeKeyE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 29
+    },
+    {
+      "address": "0x3706e0",
+      "size": 644,
+      "exact": true,
+      "target_sha256": "f4e7477f82ec0909168c8be06604688b5857c9b63ccc5549abe929bec4d8a8eb",
+      "compiled_sha256": "f4e7477f82ec0909168c8be06604688b5857c9b63ccc5549abe929bec4d8a8eb",
+      "source": "src/TypeRegistryMapKeepPicNoFloatUnwindO3.cpp",
+      "symbol": "_ZN12TypeRegistry8RegistryILj3606240ELj20ELj1EE3AddEPKNS_7TypeKeyE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 29
+    },
+    {
+      "address": "0x370d20",
+      "size": 644,
+      "exact": true,
+      "target_sha256": "dc6d1ba03f42cdd0b1e4a54dec0c71f21c2d34b4b45e2565ada492039c0ff54a",
+      "compiled_sha256": "dc6d1ba03f42cdd0b1e4a54dec0c71f21c2d34b4b45e2565ada492039c0ff54a",
+      "source": "src/TypeRegistryMapKeepPicNoFloatUnwindO3.cpp",
+      "symbol": "_ZN12TypeRegistry8RegistryILj3607840ELj20ELj1EE3AddEPKNS_7TypeKeyE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 29
     },
     {
       "address": "0x3717d0",
@@ -100149,6 +100479,17 @@
       "relocation_count": 0
     },
     {
+      "address": "0x3c2b90",
+      "size": 112,
+      "exact": true,
+      "target_sha256": "e712f014f19424049e7ea986d3eacaef1530ff802440a72fbfa4c5f071d2f1db",
+      "compiled_sha256": "e712f014f19424049e7ea986d3eacaef1530ff802440a72fbfa4c5f071d2f1db",
+      "source": "src/EchoTypeDescriptorKeepPicUnwindO3.cpp",
+      "symbol": "_ZN8EchoType3GetILj3943312ELi3ELi3EEEPNS_10DescriptorEv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 17
+    },
+    {
       "address": "0x3c2c00",
       "size": 100,
       "exact": true,
@@ -100279,6 +100620,17 @@
       "symbol": "_Z18AdaptVirtualResultILj3945328EE13AdapterResultPvP10ResultHost",
       "source_review": "manual_reconstruction",
       "relocation_count": 0
+    },
+    {
+      "address": "0x3c3390",
+      "size": 112,
+      "exact": true,
+      "target_sha256": "1ac5d376e18e66e80a21f0703c8f28da1affeec16d22d3f6c83b089ac67ca753",
+      "compiled_sha256": "1ac5d376e18e66e80a21f0703c8f28da1affeec16d22d3f6c83b089ac67ca753",
+      "source": "src/EchoTypeDescriptorKeepPicUnwindO3.cpp",
+      "symbol": "_ZN8EchoType3GetILj3945360ELi3ELi3EEEPNS_10DescriptorEv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 17
     },
     {
       "address": "0x3c3410",
@@ -101590,6 +101942,17 @@
       "relocation_count": 0
     },
     {
+      "address": "0x3c7e10",
+      "size": 112,
+      "exact": true,
+      "target_sha256": "05b7829921225804ff338725cc5d08d95a668f116f1895e8f6c1e35d31d95b58",
+      "compiled_sha256": "05b7829921225804ff338725cc5d08d95a668f116f1895e8f6c1e35d31d95b58",
+      "source": "src/EchoTypeDescriptorKeepPicUnwindO3.cpp",
+      "symbol": "_ZN8EchoType3GetILj3964432ELi4ELi3EEEPNS_10DescriptorEv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 17
+    },
+    {
       "address": "0x3c7e80",
       "size": 48,
       "exact": true,
@@ -101973,6 +102336,17 @@
       "symbol": "_Z18AdaptVirtualResultILj3977648EE13AdapterResultPvP10ResultHost",
       "source_review": "manual_reconstruction",
       "relocation_count": 0
+    },
+    {
+      "address": "0x3cb1d0",
+      "size": 112,
+      "exact": true,
+      "target_sha256": "301539fbd54dab77c8a931a89ab4aabcd17ca71da30b945fc1942d44878fdd40",
+      "compiled_sha256": "301539fbd54dab77c8a931a89ab4aabcd17ca71da30b945fc1942d44878fdd40",
+      "source": "src/EchoTypeDescriptorKeepPicUnwindO3.cpp",
+      "symbol": "_ZN8EchoType3GetILj3977680ELi3ELi2EEEPNS_10DescriptorEv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 17
     },
     {
       "address": "0x3cb2f0",
@@ -103614,6 +103988,17 @@
       "relocation_count": 11
     },
     {
+      "address": "0x3d1c90",
+      "size": 640,
+      "exact": true,
+      "target_sha256": "52677fa561dc430df76aec4ab55ddc97a7a8090e60324146bf37817061c589ab",
+      "compiled_sha256": "52677fa561dc430df76aec4ab55ddc97a7a8090e60324146bf37817061c589ab",
+      "source": "src/TypeRegistryMapKeepPicNoFloatUnwindO3.cpp",
+      "symbol": "_ZN12TypeRegistry8RegistryILj4005008ELj12ELj0EE3AddEPKNS_7TypeKeyE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 29
+    },
+    {
       "address": "0x3d23d0",
       "size": 236,
       "exact": true,
@@ -103768,6 +104153,17 @@
       "relocation_count": 28
     },
     {
+      "address": "0x3d3af0",
+      "size": 644,
+      "exact": true,
+      "target_sha256": "beb526b741e75172c13e15d7458b3f944a212f1d897c223e63cb4075dc0e5a8a",
+      "compiled_sha256": "beb526b741e75172c13e15d7458b3f944a212f1d897c223e63cb4075dc0e5a8a",
+      "source": "src/TypeRegistryMapKeepPicNoFloatUnwindO3.cpp",
+      "symbol": "_ZN12TypeRegistry8RegistryILj4012784ELj16ELj1EE3AddEPKNS_7TypeKeyE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 29
+    },
+    {
       "address": "0x3d3e80",
       "size": 236,
       "exact": true,
@@ -103832,6 +104228,17 @@
       "symbol": "_Z16RegisterTypeOnceILj4015888EEvPvPK16RegistrationHash",
       "source_review": "manual_reconstruction",
       "relocation_count": 28
+    },
+    {
+      "address": "0x3d4800",
+      "size": 644,
+      "exact": true,
+      "target_sha256": "eedd6a29801e3b2dcb8007607d211c670a6050c228d20ad1fe510bff6df5b1b8",
+      "compiled_sha256": "eedd6a29801e3b2dcb8007607d211c670a6050c228d20ad1fe510bff6df5b1b8",
+      "source": "src/TypeRegistryMapKeepPicNoFloatUnwindO3.cpp",
+      "symbol": "_ZN12TypeRegistry8RegistryILj4016128ELj16ELj1EE3AddEPKNS_7TypeKeyE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 29
     },
     {
       "address": "0x3d4b90",
@@ -105616,6 +106023,17 @@
       "relocation_count": 0
     },
     {
+      "address": "0x3ddcf0",
+      "size": 640,
+      "exact": true,
+      "target_sha256": "21bf8343e4dd220fcf2efbeaa75be44ea0e4b9776c20fa1af94d2c5ba0f9cace",
+      "compiled_sha256": "21bf8343e4dd220fcf2efbeaa75be44ea0e4b9776c20fa1af94d2c5ba0f9cace",
+      "source": "src/TypeRegistryMapKeepPicNoFloatUnwindO3.cpp",
+      "symbol": "_ZN12TypeRegistry8RegistryILj4054256ELj12ELj0EE3AddEPKNS_7TypeKeyE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 29
+    },
+    {
       "address": "0x3de0b0",
       "size": 240,
       "exact": true,
@@ -105779,6 +106197,17 @@
       "symbol": "_Z15GetLazyTypeInfoILj4061952ELj9ELj465643447EEPvv",
       "source_review": "manual_reconstruction",
       "relocation_count": 31
+    },
+    {
+      "address": "0x3dfc10",
+      "size": 640,
+      "exact": true,
+      "target_sha256": "a595092e5e871aebf456beedc70acc30c03f08ff3d68ced772fa3f3ac445cdbc",
+      "compiled_sha256": "a595092e5e871aebf456beedc70acc30c03f08ff3d68ced772fa3f3ac445cdbc",
+      "source": "src/TypeRegistryMapKeepPicNoFloatUnwindO3.cpp",
+      "symbol": "_ZN12TypeRegistry8RegistryILj4062224ELj12ELj0EE3AddEPKNS_7TypeKeyE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 29
     },
     {
       "address": "0x3dffa0",
@@ -123370,6 +123799,17 @@
       "relocation_count": 31
     },
     {
+      "address": "0x43f700",
+      "size": 640,
+      "exact": true,
+      "target_sha256": "a5bb9cb809b653cd8ac6043a78f1bdcd6a75799a8f81cb22fcd25b7125e74f9f",
+      "compiled_sha256": "a5bb9cb809b653cd8ac6043a78f1bdcd6a75799a8f81cb22fcd25b7125e74f9f",
+      "source": "src/TypeRegistryMapKeepPicNoFloatUnwindO3.cpp",
+      "symbol": "_ZN12TypeRegistry8RegistryILj4454144ELj12ELj0EE3AddEPKNS_7TypeKeyE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 29
+    },
+    {
       "address": "0x43faa0",
       "size": 240,
       "exact": true,
@@ -123500,6 +123940,28 @@
       "symbol": "_Z16RegisterTypeOnceILj4466576EEvPvPK16RegistrationHash",
       "source_review": "manual_reconstruction",
       "relocation_count": 28
+    },
+    {
+      "address": "0x442b70",
+      "size": 640,
+      "exact": true,
+      "target_sha256": "71d8dde979341f58ef3b700cc58ea979fadfc531f699dcd6b6bb2eb1f1cf1029",
+      "compiled_sha256": "71d8dde979341f58ef3b700cc58ea979fadfc531f699dcd6b6bb2eb1f1cf1029",
+      "source": "src/TypeRegistryMapKeepPicNoFloatUnwindO3.cpp",
+      "symbol": "_ZN12TypeRegistry8RegistryILj4467568ELj12ELj0EE3AddEPKNS_7TypeKeyE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 29
+    },
+    {
+      "address": "0x442f20",
+      "size": 640,
+      "exact": true,
+      "target_sha256": "1744cfd2fadb44f2590ba7942092d9e134bf86d2d5bed865bd1a96d54ae71b62",
+      "compiled_sha256": "1744cfd2fadb44f2590ba7942092d9e134bf86d2d5bed865bd1a96d54ae71b62",
+      "source": "src/TypeRegistryMapKeepPicNoFloatUnwindO3.cpp",
+      "symbol": "_ZN12TypeRegistry8RegistryILj4468512ELj12ELj0EE3AddEPKNS_7TypeKeyE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 29
     },
     {
       "address": "0x4432d0",
@@ -132410,6 +132872,17 @@
       "symbol": "RecoveredLeaf_485310",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 1
+    },
+    {
+      "address": "0x485320",
+      "size": 640,
+      "exact": true,
+      "target_sha256": "c2f7d8194553de2a636b387680d9e8073398b0d44f45a66027cbf61a974000bb",
+      "compiled_sha256": "c2f7d8194553de2a636b387680d9e8073398b0d44f45a66027cbf61a974000bb",
+      "source": "src/TypeRegistryMapKeepPicNoFloatUnwindO3.cpp",
+      "symbol": "_ZN12TypeRegistry8RegistryILj4739872ELj12ELj0EE3AddEPKNS_7TypeKeyE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 29
     },
     {
       "address": "0x485780",
@@ -359903,6 +360376,204 @@
       "relocation_count": 2
     },
     {
+      "address": "0xd9fae0",
+      "size": 112,
+      "exact": true,
+      "target_sha256": "294e3b060b447920a77be8f3a2e06b263fda8ff26c92f2f6e294da80d5602145",
+      "compiled_sha256": "294e3b060b447920a77be8f3a2e06b263fda8ff26c92f2f6e294da80d5602145",
+      "source": "src/DareFlyweightManagerOmitNoPic.cpp",
+      "symbol": "_ZN4Dare16FlyweightManagerILj14285536ELj24ELj48EED0Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 8
+    },
+    {
+      "address": "0xd9fb50",
+      "size": 112,
+      "exact": true,
+      "target_sha256": "7c1c2119c49609ce4ebdd3c3673000a836f9f2329e46adfbaf4dac6de2caa802",
+      "compiled_sha256": "7c1c2119c49609ce4ebdd3c3673000a836f9f2329e46adfbaf4dac6de2caa802",
+      "source": "src/DareFlyweightManagerOmitNoPic.cpp",
+      "symbol": "_ZN4Dare16FlyweightManagerILj14285648ELj24ELj48EED0Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 8
+    },
+    {
+      "address": "0xd9fd80",
+      "size": 112,
+      "exact": true,
+      "target_sha256": "4073ecf4d97b4ddf2f92edf837ba7c15d784af12de005d73da98d7d29c2c82fa",
+      "compiled_sha256": "4073ecf4d97b4ddf2f92edf837ba7c15d784af12de005d73da98d7d29c2c82fa",
+      "source": "src/DareFlyweightManagerOmitNoPic.cpp",
+      "symbol": "_ZN4Dare16FlyweightManagerILj14286208ELj32ELj56EED0Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 8
+    },
+    {
+      "address": "0xd9fdf0",
+      "size": 112,
+      "exact": true,
+      "target_sha256": "c7b7e75c8221e46e6566b4df90913ead0321d0da1e91fa2af7c6ee0fbd18e58a",
+      "compiled_sha256": "c7b7e75c8221e46e6566b4df90913ead0321d0da1e91fa2af7c6ee0fbd18e58a",
+      "source": "src/DareFlyweightManagerOmitNoPic.cpp",
+      "symbol": "_ZN4Dare16FlyweightManagerILj14286320ELj32ELj56EED0Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 8
+    },
+    {
+      "address": "0xda0020",
+      "size": 112,
+      "exact": true,
+      "target_sha256": "8a28c75970dda4d4885cff9db12934bcac16f4df3d902c882a551f0bc176c7fa",
+      "compiled_sha256": "8a28c75970dda4d4885cff9db12934bcac16f4df3d902c882a551f0bc176c7fa",
+      "source": "src/DareFlyweightManagerOmitNoPic.cpp",
+      "symbol": "_ZN4Dare16FlyweightManagerILj14286880ELj32ELj56EED0Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 8
+    },
+    {
+      "address": "0xda0090",
+      "size": 112,
+      "exact": true,
+      "target_sha256": "b1d70a2b13e89c9e9c628776b92958e4fc8967571734670bc7ab1feee19b739a",
+      "compiled_sha256": "b1d70a2b13e89c9e9c628776b92958e4fc8967571734670bc7ab1feee19b739a",
+      "source": "src/DareFlyweightManagerOmitNoPic.cpp",
+      "symbol": "_ZN4Dare16FlyweightManagerILj14286992ELj32ELj56EED0Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 8
+    },
+    {
+      "address": "0xda02c0",
+      "size": 112,
+      "exact": true,
+      "target_sha256": "1384c6eb84d43d30b388e19aba066f7fba874b1aa578d0d5e42ffb8a577e81ed",
+      "compiled_sha256": "1384c6eb84d43d30b388e19aba066f7fba874b1aa578d0d5e42ffb8a577e81ed",
+      "source": "src/DareFlyweightManagerOmitNoPic.cpp",
+      "symbol": "_ZN4Dare16FlyweightManagerILj14287552ELj32ELj56EED0Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 8
+    },
+    {
+      "address": "0xda0330",
+      "size": 112,
+      "exact": true,
+      "target_sha256": "d9b6ee96dce1f12e3a64620da5d83e7ebd2772b4eee1cf743ecb9eafe26003f6",
+      "compiled_sha256": "d9b6ee96dce1f12e3a64620da5d83e7ebd2772b4eee1cf743ecb9eafe26003f6",
+      "source": "src/DareFlyweightManagerOmitNoPic.cpp",
+      "symbol": "_ZN4Dare16FlyweightManagerILj14287664ELj32ELj56EED0Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 8
+    },
+    {
+      "address": "0xda0520",
+      "size": 112,
+      "exact": true,
+      "target_sha256": "6f76e26b6257cdceb5444b809f375b32ed0c65d118d5bd91a2307fe18a6fe486",
+      "compiled_sha256": "6f76e26b6257cdceb5444b809f375b32ed0c65d118d5bd91a2307fe18a6fe486",
+      "source": "src/DareFlyweightManagerOmitNoPic.cpp",
+      "symbol": "_ZN4Dare16FlyweightManagerILj14288160ELj24ELj48EED0Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 8
+    },
+    {
+      "address": "0xda0590",
+      "size": 112,
+      "exact": true,
+      "target_sha256": "aee1eb9a926dc884f2a23e5426551a638f856346e74624481b0fe6768aae4435",
+      "compiled_sha256": "aee1eb9a926dc884f2a23e5426551a638f856346e74624481b0fe6768aae4435",
+      "source": "src/DareFlyweightManagerOmitNoPic.cpp",
+      "symbol": "_ZN4Dare16FlyweightManagerILj14288272ELj24ELj48EED0Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 8
+    },
+    {
+      "address": "0xda0780",
+      "size": 112,
+      "exact": true,
+      "target_sha256": "180614b916569c8cc465b2e5c085a91123f153358511015b310f3ded03981622",
+      "compiled_sha256": "180614b916569c8cc465b2e5c085a91123f153358511015b310f3ded03981622",
+      "source": "src/DareFlyweightManagerOmitNoPic.cpp",
+      "symbol": "_ZN4Dare16FlyweightManagerILj14288768ELj24ELj48EED0Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 8
+    },
+    {
+      "address": "0xda07f0",
+      "size": 112,
+      "exact": true,
+      "target_sha256": "d4ebaecdd8a88b48bf01e2c52513f98d15a13b3218207bb441cafb75b7226928",
+      "compiled_sha256": "d4ebaecdd8a88b48bf01e2c52513f98d15a13b3218207bb441cafb75b7226928",
+      "source": "src/DareFlyweightManagerOmitNoPic.cpp",
+      "symbol": "_ZN4Dare16FlyweightManagerILj14288880ELj24ELj48EED0Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 8
+    },
+    {
+      "address": "0xda0a20",
+      "size": 112,
+      "exact": true,
+      "target_sha256": "bf731b0f46b2a6609425f40210463272fbf5db8fbd628c1eee035b02e6ada862",
+      "compiled_sha256": "bf731b0f46b2a6609425f40210463272fbf5db8fbd628c1eee035b02e6ada862",
+      "source": "src/DareFlyweightManagerOmitNoPic.cpp",
+      "symbol": "_ZN4Dare16FlyweightManagerILj14289440ELj32ELj56EED0Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 8
+    },
+    {
+      "address": "0xda0a90",
+      "size": 112,
+      "exact": true,
+      "target_sha256": "bb7b6bcbeb3c94ca443b6dec4f26442503a26556ad5c428c648474846bc53b6e",
+      "compiled_sha256": "bb7b6bcbeb3c94ca443b6dec4f26442503a26556ad5c428c648474846bc53b6e",
+      "source": "src/DareFlyweightManagerOmitNoPic.cpp",
+      "symbol": "_ZN4Dare16FlyweightManagerILj14289552ELj32ELj56EED0Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 8
+    },
+    {
+      "address": "0xda0c80",
+      "size": 112,
+      "exact": true,
+      "target_sha256": "5c24b10d9672fba4e3f11b4331a054a498d2ea4a5a3d9a8314e4ee210fb327c6",
+      "compiled_sha256": "5c24b10d9672fba4e3f11b4331a054a498d2ea4a5a3d9a8314e4ee210fb327c6",
+      "source": "src/DareFlyweightManagerOmitNoPic.cpp",
+      "symbol": "_ZN4Dare16FlyweightManagerILj14290048ELj24ELj48EED0Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 8
+    },
+    {
+      "address": "0xda0cf0",
+      "size": 112,
+      "exact": true,
+      "target_sha256": "c4f9c44be6eefea4d03acf7c969dc01b43404e7e9f3d3e9d18be7c63ed13b7eb",
+      "compiled_sha256": "c4f9c44be6eefea4d03acf7c969dc01b43404e7e9f3d3e9d18be7c63ed13b7eb",
+      "source": "src/DareFlyweightManagerOmitNoPic.cpp",
+      "symbol": "_ZN4Dare16FlyweightManagerILj14290160ELj24ELj48EED0Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 8
+    },
+    {
+      "address": "0xda1170",
+      "size": 112,
+      "exact": true,
+      "target_sha256": "c710b2f1c20fc859f0129a99fd2e6ede2461881c2fb817976cb19da68081738f",
+      "compiled_sha256": "c710b2f1c20fc859f0129a99fd2e6ede2461881c2fb817976cb19da68081738f",
+      "source": "src/DareFlyweightManagerOmitNoPic.cpp",
+      "symbol": "_ZN4Dare16FlyweightManagerILj14291312ELj24ELj48EED0Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 8
+    },
+    {
+      "address": "0xda11e0",
+      "size": 112,
+      "exact": true,
+      "target_sha256": "d887dbf2d462b6a8de4dc2b64156c7b9b56e57917a0cd5cd6c1214f56783a554",
+      "compiled_sha256": "d887dbf2d462b6a8de4dc2b64156c7b9b56e57917a0cd5cd6c1214f56783a554",
+      "source": "src/DareFlyweightManagerOmitNoPic.cpp",
+      "symbol": "_ZN4Dare16FlyweightManagerILj14291424ELj24ELj48EED0Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 8
+    },
+    {
       "address": "0xda1250",
       "size": 12,
       "exact": true,
@@ -359989,6 +360660,28 @@
       "symbol": "RecoveredLeaf_da15c0",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 2
+    },
+    {
+      "address": "0xda19f0",
+      "size": 112,
+      "exact": true,
+      "target_sha256": "ddfc9b9ce27e6a2ff93575b3af99b708d891db2c009b597c760ca54670d4c303",
+      "compiled_sha256": "ddfc9b9ce27e6a2ff93575b3af99b708d891db2c009b597c760ca54670d4c303",
+      "source": "src/DareFlyweightManagerOmitNoPic.cpp",
+      "symbol": "_ZN4Dare16FlyweightManagerILj14293488ELj24ELj48EED0Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 8
+    },
+    {
+      "address": "0xda1a60",
+      "size": 112,
+      "exact": true,
+      "target_sha256": "53d3f63e6961332b44c4917a7dcaa350f358583b260f01725b165fa61ab4f1ba",
+      "compiled_sha256": "53d3f63e6961332b44c4917a7dcaa350f358583b260f01725b165fa61ab4f1ba",
+      "source": "src/DareFlyweightManagerOmitNoPic.cpp",
+      "symbol": "_ZN4Dare16FlyweightManagerILj14293600ELj24ELj48EED0Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 8
     },
     {
       "address": "0xda1ad0",
@@ -370991,6 +371684,17 @@
       "relocation_count": 0
     },
     {
+      "address": "0xe0f660",
+      "size": 432,
+      "exact": true,
+      "target_sha256": "5e6d806d2947f58b3ba3cc11942c27258689a51ae7b2334af88460a4fb3d2ebe",
+      "compiled_sha256": "5e6d806d2947f58b3ba3cc11942c27258689a51ae7b2334af88460a4fb3d2ebe",
+      "source": "src/FreeType29LtoRoots.c",
+      "symbol": "af_shaper_get_cluster",
+      "source_review": "public_library_lto_build",
+      "relocation_count": 0
+    },
+    {
       "address": "0xe105a0",
       "size": 1284,
       "exact": true,
@@ -371046,6 +371750,39 @@
       "relocation_count": 1
     },
     {
+      "address": "0xe10cd0",
+      "size": 444,
+      "exact": true,
+      "target_sha256": "757dd6f8992713ecf8dfa1b4f9a5dbea0afbdad0323345fbb602bf125f4042fe",
+      "compiled_sha256": "757dd6f8992713ecf8dfa1b4f9a5dbea0afbdad0323345fbb602bf125f4042fe",
+      "source": "src/FreeType29LtoRoots.c",
+      "symbol": "FT_New_GlyphSlot",
+      "source_review": "public_library_lto_build",
+      "relocation_count": 4
+    },
+    {
+      "address": "0xe10e90",
+      "size": 376,
+      "exact": true,
+      "target_sha256": "c0f4bf16a1b2a4229b6dfc2c12e1be87dea29ab04e556c63e81473c486ba73b9",
+      "compiled_sha256": "c0f4bf16a1b2a4229b6dfc2c12e1be87dea29ab04e556c63e81473c486ba73b9",
+      "source": "src/FreeType29LtoRoots.c",
+      "symbol": "ft_glyphslot_done",
+      "source_review": "public_library_lto_build",
+      "relocation_count": 0
+    },
+    {
+      "address": "0xe12410",
+      "size": 808,
+      "exact": true,
+      "target_sha256": "c4601494769d60062f3e6022dd80341d9af8bf0a2f193600ff63afc5105fdaa6",
+      "compiled_sha256": "c4601494769d60062f3e6022dd80341d9af8bf0a2f193600ff63afc5105fdaa6",
+      "source": "src/FreeType29LtoRoots.c",
+      "symbol": "open_face",
+      "source_review": "public_library_lto_build",
+      "relocation_count": 1
+    },
+    {
       "address": "0xe12740",
       "size": 1444,
       "exact": true,
@@ -371057,6 +371794,17 @@
       "relocation_count": 7
     },
     {
+      "address": "0xe12cf0",
+      "size": 3376,
+      "exact": true,
+      "target_sha256": "48ddd2aae3607548bbd52b2e11a4d2935ee66f812ae6c6ac7785d7c88d333106",
+      "compiled_sha256": "48ddd2aae3607548bbd52b2e11a4d2935ee66f812ae6c6ac7785d7c88d333106",
+      "source": "src/FreeType29LtoRoots.c",
+      "symbol": "IsMacResource",
+      "source_review": "public_library_lto_build",
+      "relocation_count": 17
+    },
+    {
       "address": "0xe13a20",
       "size": 364,
       "exact": true,
@@ -371065,6 +371813,17 @@
       "source": "src/FreeType29_base_ftbase_O2_omit_Sections.c",
       "symbol": "FT_New_Size",
       "source_review": "library_abi_view",
+      "relocation_count": 1
+    },
+    {
+      "address": "0xe13b90",
+      "size": 556,
+      "exact": true,
+      "target_sha256": "0572b03d811150fbdaedd07df298faf72af1070c43c9e23bafd83b7d0c5a910d",
+      "compiled_sha256": "0572b03d811150fbdaedd07df298faf72af1070c43c9e23bafd83b7d0c5a910d",
+      "source": "src/FreeType29LtoRoots.c",
+      "symbol": "destroy_face",
+      "source_review": "public_library_lto_build",
       "relocation_count": 1
     },
     {
@@ -371178,6 +371937,28 @@
       "relocation_count": 7
     },
     {
+      "address": "0xe14430",
+      "size": 808,
+      "exact": true,
+      "target_sha256": "f34c0c08451645ccc46525423365b62ed24f84fa894ac41dc03f42f8a3141248",
+      "compiled_sha256": "f34c0c08451645ccc46525423365b62ed24f84fa894ac41dc03f42f8a3141248",
+      "source": "src/FreeType29LtoRoots.c",
+      "symbol": "raccess_guess_apple_generic",
+      "source_review": "public_library_lto_build",
+      "relocation_count": 0
+    },
+    {
+      "address": "0xe14760",
+      "size": 1496,
+      "exact": true,
+      "target_sha256": "a4aa230ff80ef177e98f16bc1f4a79a86a3454c41bd789332df9066935209263",
+      "compiled_sha256": "a4aa230ff80ef177e98f16bc1f4a79a86a3454c41bd789332df9066935209263",
+      "source": "src/FreeType29LtoRoots.c",
+      "symbol": "FT_Raccess_Get_DataOffsets",
+      "source_review": "public_library_lto_build",
+      "relocation_count": 5
+    },
+    {
       "address": "0xe14d40",
       "size": 364,
       "exact": true,
@@ -371222,6 +372003,39 @@
       "relocation_count": 0
     },
     {
+      "address": "0xe15000",
+      "size": 308,
+      "exact": true,
+      "target_sha256": "06cff70545e660cea330e73476b18e8ead41945533eed6419d9d0e62965b2180",
+      "compiled_sha256": "06cff70545e660cea330e73476b18e8ead41945533eed6419d9d0e62965b2180",
+      "source": "src/FreeType29LtoRoots.c",
+      "symbol": "FT_Select_Metrics",
+      "source_review": "public_library_lto_build",
+      "relocation_count": 0
+    },
+    {
+      "address": "0xe15140",
+      "size": 792,
+      "exact": true,
+      "target_sha256": "47d8acc21a6acc6338797c6eb265c321f89fefc6b0b5b3a8c2fc786e382b4b3d",
+      "compiled_sha256": "47d8acc21a6acc6338797c6eb265c321f89fefc6b0b5b3a8c2fc786e382b4b3d",
+      "source": "src/FreeType29LtoRoots.c",
+      "symbol": "FT_Request_Metrics",
+      "source_review": "public_library_lto_build",
+      "relocation_count": 2
+    },
+    {
+      "address": "0xe15460",
+      "size": 428,
+      "exact": true,
+      "target_sha256": "57cae77978ccc96b0af092ed1ca3e7580835f68d14b8e2d62756bd2737f5d9c5",
+      "compiled_sha256": "57cae77978ccc96b0af092ed1ca3e7580835f68d14b8e2d62756bd2737f5d9c5",
+      "source": "src/FreeType29LtoRoots.c",
+      "symbol": "FT_Request_Size",
+      "source_review": "public_library_lto_build",
+      "relocation_count": 2
+    },
+    {
       "address": "0xe15610",
       "size": 488,
       "exact": true,
@@ -371231,6 +372045,28 @@
       "symbol": "FT_CMap_New",
       "source_review": "library_abi_view",
       "relocation_count": 2
+    },
+    {
+      "address": "0xe15800",
+      "size": 672,
+      "exact": true,
+      "target_sha256": "86a2b3108e5e3fc5281b60db6b01cced26b55390609c73ab62a60a64aa8aebe2",
+      "compiled_sha256": "86a2b3108e5e3fc5281b60db6b01cced26b55390609c73ab62a60a64aa8aebe2",
+      "source": "src/FreeType29LtoRoots.c",
+      "symbol": "FT_Add_Module",
+      "source_review": "public_library_lto_build",
+      "relocation_count": 3
+    },
+    {
+      "address": "0xe15aa0",
+      "size": 604,
+      "exact": true,
+      "target_sha256": "4b7a504e8448e8c39554765d5000c301b7ca25d0939599264460fb99c959b83b",
+      "compiled_sha256": "4b7a504e8448e8c39554765d5000c301b7ca25d0939599264460fb99c959b83b",
+      "source": "src/FreeType29LtoRoots.c",
+      "symbol": "FT_Remove_Module",
+      "source_review": "public_library_lto_build",
+      "relocation_count": 1
     },
     {
       "address": "0xe15d00",
@@ -371275,6 +372111,17 @@
       "symbol": "FT_Stream_ReadFields",
       "source_review": "library_abi_view",
       "relocation_count": 3
+    },
+    {
+      "address": "0xe16a50",
+      "size": 124,
+      "exact": true,
+      "target_sha256": "835f26fa630b8d44e9ea1781767d64b7514ef6f4dfb5f07dac7e9d6847bc9b47",
+      "compiled_sha256": "835f26fa630b8d44e9ea1781767d64b7514ef6f4dfb5f07dac7e9d6847bc9b47",
+      "source": "src/FreeType29LtoRoots.c",
+      "symbol": "ft_bitmap_glyph_init",
+      "source_review": "public_library_lto_build",
+      "relocation_count": 1
     },
     {
       "address": "0xe16ad0",
@@ -371343,6 +372190,17 @@
       "relocation_count": 4
     },
     {
+      "address": "0xe16dc0",
+      "size": 304,
+      "exact": true,
+      "target_sha256": "e62beec0dcc0e7ef772af10d2dd0362c7e42003e5bdc9daca22660a949928f69",
+      "compiled_sha256": "e62beec0dcc0e7ef772af10d2dd0362c7e42003e5bdc9daca22660a949928f69",
+      "source": "src/FreeType29LtoRoots.c",
+      "symbol": "ft_outline_glyph_transform",
+      "source_review": "public_library_lto_build",
+      "relocation_count": 0
+    },
+    {
       "address": "0xe17060",
       "size": 52,
       "exact": true,
@@ -371374,6 +372232,17 @@
       "symbol": "RecoveredLeaf_e18cb0",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 1
+    },
+    {
+      "address": "0xe18d80",
+      "size": 484,
+      "exact": true,
+      "target_sha256": "b715ca7b4e6193814be3898afcbf3ce0ff563b3120f97d2d2058705e663a3a52",
+      "compiled_sha256": "b715ca7b4e6193814be3898afcbf3ce0ff563b3120f97d2d2058705e663a3a52",
+      "source": "src/FreeType29LtoRoots.c",
+      "symbol": "BDF_Glyph_Load",
+      "source_review": "public_library_lto_build",
+      "relocation_count": 2
     },
     {
       "address": "0xe18f70",
@@ -371486,6 +372355,17 @@
       "relocation_count": 1
     },
     {
+      "address": "0xe1ac60",
+      "size": 1616,
+      "exact": true,
+      "target_sha256": "9ecda5d0eae5a1c3acf0df37a8fb02403f1da230de71c1c4a7136e517eae58e0",
+      "compiled_sha256": "9ecda5d0eae5a1c3acf0df37a8fb02403f1da230de71c1c4a7136e517eae58e0",
+      "source": "src/FreeType29LtoRoots.c",
+      "symbol": "_bdf_parse_properties",
+      "source_review": "public_library_lto_build",
+      "relocation_count": 35
+    },
+    {
       "address": "0xe1d420",
       "size": 24,
       "exact": true,
@@ -371539,6 +372419,17 @@
       "symbol": "RecoveredLeaf_e1d5d0",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 1
+    },
+    {
+      "address": "0xe1d5e0",
+      "size": 332,
+      "exact": true,
+      "target_sha256": "76d873db3bdad541749c8815798adb52425cf44ad13064ae162c229194bb5621",
+      "compiled_sha256": "76d873db3bdad541749c8815798adb52425cf44ad13064ae162c229194bb5621",
+      "source": "src/FreeType29LtoRoots.c",
+      "symbol": "ft_raster1_transform",
+      "source_review": "public_library_lto_build",
+      "relocation_count": 0
     },
     {
       "address": "0xe1d8b0",
@@ -371596,6 +372487,39 @@
       "relocation_count": 0
     },
     {
+      "address": "0xe1e060",
+      "size": 920,
+      "exact": true,
+      "target_sha256": "5695a494c72b7c4bea3131adf6b15353f97a66226adb3a5bad15b9f636d14944",
+      "compiled_sha256": "5695a494c72b7c4bea3131adf6b15353f97a66226adb3a5bad15b9f636d14944",
+      "source": "src/FreeType29LtoRoots.c",
+      "symbol": "gray_convert_glyph_inner",
+      "source_review": "public_library_lto_build",
+      "relocation_count": 10
+    },
+    {
+      "address": "0xe1e400",
+      "size": 436,
+      "exact": true,
+      "target_sha256": "c8cd17bee612c197dd624e350e59801e473c9b2606dd175adaaed4597b4764c3",
+      "compiled_sha256": "c8cd17bee612c197dd624e350e59801e473c9b2606dd175adaaed4597b4764c3",
+      "source": "src/FreeType29LtoRoots.c",
+      "symbol": "gray_conic_to",
+      "source_review": "public_library_lto_build",
+      "relocation_count": 1
+    },
+    {
+      "address": "0xe1e5c0",
+      "size": 692,
+      "exact": true,
+      "target_sha256": "740cc483ce80003f06172862beef8fcd9b28ac46db52370766ad28ac820f6c5f",
+      "compiled_sha256": "740cc483ce80003f06172862beef8fcd9b28ac46db52370766ad28ac820f6c5f",
+      "source": "src/FreeType29LtoRoots.c",
+      "symbol": "gray_cubic_to",
+      "source_review": "public_library_lto_build",
+      "relocation_count": 1
+    },
+    {
       "address": "0xe1e880",
       "size": 948,
       "exact": true,
@@ -371605,6 +372529,17 @@
       "symbol": "gray_render_line",
       "source_review": "library_abi_view",
       "relocation_count": 6
+    },
+    {
+      "address": "0xe1ec40",
+      "size": 284,
+      "exact": true,
+      "target_sha256": "393dbda1df096cb3a2f6101b2530cf19c821a4a5f9a69d9e423dcfba40c3b6e0",
+      "compiled_sha256": "393dbda1df096cb3a2f6101b2530cf19c821a4a5f9a69d9e423dcfba40c3b6e0",
+      "source": "src/FreeType29LtoRoots.c",
+      "symbol": "gray_set_cell",
+      "source_review": "public_library_lto_build",
+      "relocation_count": 1
     },
     {
       "address": "0xe1f880",
@@ -371739,6 +372674,17 @@
       "relocation_count": 2
     },
     {
+      "address": "0xe21d20",
+      "size": 84,
+      "exact": true,
+      "target_sha256": "1be83238ee5dc529b7965715039841e02faf84dd900551458790afb6c9f34881",
+      "compiled_sha256": "1be83238ee5dc529b7965715039841e02faf84dd900551458790afb6c9f34881",
+      "source": "src/FreeType29LtoRoots.c",
+      "symbol": "sfnt_table_info",
+      "source_review": "public_library_lto_build",
+      "relocation_count": 0
+    },
+    {
       "address": "0xe21d80",
       "size": 160,
       "exact": true,
@@ -371871,6 +372817,17 @@
       "relocation_count": 3
     },
     {
+      "address": "0xe26710",
+      "size": 212,
+      "exact": true,
+      "target_sha256": "a7450a25e65b97ed444f586b8bf8c09f810a76d66f4c7b732bc07c9af12e366a",
+      "compiled_sha256": "a7450a25e65b97ed444f586b8bf8c09f810a76d66f4c7b732bc07c9af12e366a",
+      "source": "src/FreeType29LtoRoots.c",
+      "symbol": "tt_face_free_ps_names",
+      "source_review": "public_library_lto_build",
+      "relocation_count": 0
+    },
+    {
       "address": "0xe267f0",
       "size": 416,
       "exact": true,
@@ -371915,6 +372872,17 @@
       "relocation_count": 0
     },
     {
+      "address": "0xe28390",
+      "size": 172,
+      "exact": true,
+      "target_sha256": "aba8d4ea10d9f8e29d0b316c9131bab9653c68756e6cf047d347e49ef0de9430",
+      "compiled_sha256": "aba8d4ea10d9f8e29d0b316c9131bab9653c68756e6cf047d347e49ef0de9430",
+      "source": "src/FreeType29LtoRoots.c",
+      "symbol": "sfnt_get_name_id",
+      "source_review": "public_library_lto_build",
+      "relocation_count": 0
+    },
+    {
       "address": "0xe28440",
       "size": 152,
       "exact": true,
@@ -371946,6 +372914,50 @@
       "symbol": "tt_sbit_decoder_load_image",
       "source_review": "library_abi_view",
       "relocation_count": 15
+    },
+    {
+      "address": "0xe28ea0",
+      "size": 1052,
+      "exact": true,
+      "target_sha256": "34a24c19290cb7db98d1cbb5397365dd6621a03aee0903af997844e457557fe8",
+      "compiled_sha256": "34a24c19290cb7db98d1cbb5397365dd6621a03aee0903af997844e457557fe8",
+      "source": "src/FreeType29LtoRoots.c",
+      "symbol": "tt_sbit_decoder_load_bit_aligned",
+      "source_review": "public_library_lto_build",
+      "relocation_count": 0
+    },
+    {
+      "address": "0xe292c0",
+      "size": 304,
+      "exact": true,
+      "target_sha256": "41925b1e5c5f37832463b2ac68d8b1e02e400f4e342e19172207fced8d22bd06",
+      "compiled_sha256": "41925b1e5c5f37832463b2ac68d8b1e02e400f4e342e19172207fced8d22bd06",
+      "source": "src/FreeType29LtoRoots.c",
+      "symbol": "tt_sbit_decoder_load_compound",
+      "source_review": "public_library_lto_build",
+      "relocation_count": 1
+    },
+    {
+      "address": "0xe293f0",
+      "size": 1104,
+      "exact": true,
+      "target_sha256": "57f03c25292b32b53e00b8735fd57c06a44b978a06eccfe2a9ca6b98da074a20",
+      "compiled_sha256": "57f03c25292b32b53e00b8735fd57c06a44b978a06eccfe2a9ca6b98da074a20",
+      "source": "src/FreeType29LtoRoots.c",
+      "symbol": "tt_sbit_decoder_load_byte_aligned",
+      "source_review": "public_library_lto_build",
+      "relocation_count": 0
+    },
+    {
+      "address": "0xe29840",
+      "size": 580,
+      "exact": true,
+      "target_sha256": "eb642f1c925f990f36ba2717b79b52936f8ae2a763fad68e6f648f79ecbc10cc",
+      "compiled_sha256": "eb642f1c925f990f36ba2717b79b52936f8ae2a763fad68e6f648f79ecbc10cc",
+      "source": "src/FreeType29LtoRoots.c",
+      "symbol": "tt_face_build_cmaps",
+      "source_review": "public_library_lto_build",
+      "relocation_count": 4
     },
     {
       "address": "0xe29a90",
@@ -372432,6 +373444,28 @@
       "relocation_count": 0
     },
     {
+      "address": "0xe2c920",
+      "size": 640,
+      "exact": true,
+      "target_sha256": "185791979900da09570613bf7ec9fd9483c03c8dca988448cb6134c1768ebf09",
+      "compiled_sha256": "185791979900da09570613bf7ec9fd9483c03c8dca988448cb6134c1768ebf09",
+      "source": "src/FreeType29LtoRoots.c",
+      "symbol": "tt_cmap4_next",
+      "source_review": "public_library_lto_build",
+      "relocation_count": 0
+    },
+    {
+      "address": "0xe2cba0",
+      "size": 1508,
+      "exact": true,
+      "target_sha256": "e61129710a07f95c6ea244b8f936dec1a19a773955708677322256f1f6154e50",
+      "compiled_sha256": "e61129710a07f95c6ea244b8f936dec1a19a773955708677322256f1f6154e50",
+      "source": "src/FreeType29LtoRoots.c",
+      "symbol": "tt_cmap4_char_map_binary",
+      "source_review": "public_library_lto_build",
+      "relocation_count": 1
+    },
+    {
       "address": "0xe2d190",
       "size": 236,
       "exact": true,
@@ -372553,6 +373587,28 @@
       "relocation_count": 0
     },
     {
+      "address": "0xe2d780",
+      "size": 564,
+      "exact": true,
+      "target_sha256": "dc4bd8968be7d72dbb21f4534919beca488b2a7d1dd274c876bcd0fb0b204b10",
+      "compiled_sha256": "dc4bd8968be7d72dbb21f4534919beca488b2a7d1dd274c876bcd0fb0b204b10",
+      "source": "src/FreeType29LtoRoots.c",
+      "symbol": "inflateInit2_",
+      "source_review": "public_library_lto_build",
+      "relocation_count": 8
+    },
+    {
+      "address": "0xe2d9c0",
+      "size": 6616,
+      "exact": true,
+      "target_sha256": "226b1440c456c2029df5be8e4fc4f7b8c791f95ff36128e0e2e454901662494e",
+      "compiled_sha256": "226b1440c456c2029df5be8e4fc4f7b8c791f95ff36128e0e2e454901662494e",
+      "source": "src/FreeType29LtoRoots.c",
+      "symbol": "inflate",
+      "source_review": "public_library_lto_build",
+      "relocation_count": 92
+    },
+    {
       "address": "0xe2f3a0",
       "size": 328,
       "exact": true,
@@ -372562,6 +373618,17 @@
       "symbol": "inflate_flush",
       "source_review": "library_abi_view",
       "relocation_count": 2
+    },
+    {
+      "address": "0xe2f4f0",
+      "size": 1660,
+      "exact": true,
+      "target_sha256": "19246c7cd8a81464fd3d25151ab2628ac33d24ffaf1996ee9ddece66332ec4b0",
+      "compiled_sha256": "19246c7cd8a81464fd3d25151ab2628ac33d24ffaf1996ee9ddece66332ec4b0",
+      "source": "src/FreeType29LtoRoots.c",
+      "symbol": "huft_build",
+      "source_review": "public_library_lto_build",
+      "relocation_count": 0
     },
     {
       "address": "0xe2fb70",
@@ -372586,6 +373653,28 @@
       "relocation_count": 0
     },
     {
+      "address": "0xe2fbd0",
+      "size": 212,
+      "exact": true,
+      "target_sha256": "27560588dfe73d48dd9290e3647cac842805082ede4619f68bdec3e7014b1fbd",
+      "compiled_sha256": "27560588dfe73d48dd9290e3647cac842805082ede4619f68bdec3e7014b1fbd",
+      "source": "src/FreeType29LtoRoots.c",
+      "symbol": "inflateEnd",
+      "source_review": "public_library_lto_build",
+      "relocation_count": 0
+    },
+    {
+      "address": "0xe2fcb0",
+      "size": 628,
+      "exact": true,
+      "target_sha256": "bf924005edbea11b95323e63bbc66a954f7a3f11b2b8bc7b9c84667ee375ab57",
+      "compiled_sha256": "bf924005edbea11b95323e63bbc66a954f7a3f11b2b8bc7b9c84667ee375ab57",
+      "source": "src/FreeType29LtoRoots.c",
+      "symbol": "adler32",
+      "source_review": "public_library_lto_build",
+      "relocation_count": 0
+    },
+    {
       "address": "0xe2ff30",
       "size": 44,
       "exact": true,
@@ -372594,6 +373683,17 @@
       "source": "src/CallRecoveryOmit.cpp",
       "symbol": "RecoveredLeaf_e2ff30",
       "source_review": "generated_cxx_abi_view",
+      "relocation_count": 0
+    },
+    {
+      "address": "0xe302e0",
+      "size": 332,
+      "exact": true,
+      "target_sha256": "76d873db3bdad541749c8815798adb52425cf44ad13064ae162c229194bb5621",
+      "compiled_sha256": "76d873db3bdad541749c8815798adb52425cf44ad13064ae162c229194bb5621",
+      "source": "src/FreeType29LtoRoots.c",
+      "symbol": "ft_raster1_transform",
+      "source_review": "public_library_lto_build",
       "relocation_count": 0
     },
     {
@@ -372641,6 +373741,17 @@
       "relocation_count": 0
     },
     {
+      "address": "0xe30640",
+      "size": 672,
+      "exact": true,
+      "target_sha256": "2ae031af19e82ff21344c9cbf66f1fd649f0b32d916ee9a5cefa766b30c628a9",
+      "compiled_sha256": "2ae031af19e82ff21344c9cbf66f1fd649f0b32d916ee9a5cefa766b30c628a9",
+      "source": "src/FreeType29LtoRoots.c",
+      "symbol": "ft_black_render",
+      "source_review": "public_library_lto_build",
+      "relocation_count": 18
+    },
+    {
       "address": "0xe308e0",
       "size": 24,
       "exact": true,
@@ -372663,6 +373774,17 @@
       "relocation_count": 0
     },
     {
+      "address": "0xe30940",
+      "size": 348,
+      "exact": true,
+      "target_sha256": "cb1beff5d1a2b8641aa17f8176b621577afd1ba6474193339a9b67d7ba15124f",
+      "compiled_sha256": "cb1beff5d1a2b8641aa17f8176b621577afd1ba6474193339a9b67d7ba15124f",
+      "source": "src/FreeType29LtoRoots.c",
+      "symbol": "Vertical_Sweep_Span",
+      "source_review": "public_library_lto_build",
+      "relocation_count": 1
+    },
+    {
       "address": "0xe30aa0",
       "size": 380,
       "exact": true,
@@ -372683,6 +373805,17 @@
       "symbol": "RecoveredLeaf_e30c20",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 0
+    },
+    {
+      "address": "0xe30c40",
+      "size": 4124,
+      "exact": true,
+      "target_sha256": "dcfd27c4ebdcf64271c512a8ca7dd2a97a2051c32f8f79114e9f191eb03d6a0d",
+      "compiled_sha256": "dcfd27c4ebdcf64271c512a8ca7dd2a97a2051c32f8f79114e9f191eb03d6a0d",
+      "source": "src/FreeType29LtoRoots.c",
+      "symbol": "Render_Single_Pass",
+      "source_review": "public_library_lto_build",
+      "relocation_count": 8
     },
     {
       "address": "0xe31c60",
@@ -372729,6 +373862,39 @@
       "relocation_count": 0
     },
     {
+      "address": "0xe31ec0",
+      "size": 992,
+      "exact": true,
+      "target_sha256": "1a70c1ac4f90542c8db793072b9c3da9cd9e116907032ff6c3458ae191cfc9ee",
+      "compiled_sha256": "1a70c1ac4f90542c8db793072b9c3da9cd9e116907032ff6c3458ae191cfc9ee",
+      "source": "src/FreeType29LtoRoots.c",
+      "symbol": "Line_To",
+      "source_review": "public_library_lto_build",
+      "relocation_count": 2
+    },
+    {
+      "address": "0xe322a0",
+      "size": 852,
+      "exact": true,
+      "target_sha256": "ce01a8a7d04a0d6891965b7d3ba633e904d297bda5e312eb77497df3afb83153",
+      "compiled_sha256": "ce01a8a7d04a0d6891965b7d3ba633e904d297bda5e312eb77497df3afb83153",
+      "source": "src/FreeType29LtoRoots.c",
+      "symbol": "Conic_To",
+      "source_review": "public_library_lto_build",
+      "relocation_count": 4
+    },
+    {
+      "address": "0xe32600",
+      "size": 928,
+      "exact": true,
+      "target_sha256": "1d61c8e96c27fc80c8acf91325e8c0e063078af79561b84126f996c0f70cf44a",
+      "compiled_sha256": "1d61c8e96c27fc80c8acf91325e8c0e063078af79561b84126f996c0f70cf44a",
+      "source": "src/FreeType29LtoRoots.c",
+      "symbol": "Cubic_To",
+      "source_review": "public_library_lto_build",
+      "relocation_count": 4
+    },
+    {
       "address": "0xe329a0",
       "size": 180,
       "exact": true,
@@ -372737,6 +373903,17 @@
       "source": "src/FreeType29_raster_raster_O2_omit_Sections.c",
       "symbol": "Split_Cubic",
       "source_review": "library_abi_view",
+      "relocation_count": 0
+    },
+    {
+      "address": "0xe32a60",
+      "size": 496,
+      "exact": true,
+      "target_sha256": "4cb98ea72f0fd149bf0a7d3b6d3b5d13df4eaca0e4db8fede48428b247d981b9",
+      "compiled_sha256": "4cb98ea72f0fd149bf0a7d3b6d3b5d13df4eaca0e4db8fede48428b247d981b9",
+      "source": "src/FreeType29LtoRoots.c",
+      "symbol": "Bezier_Up",
+      "source_review": "public_library_lto_build",
       "relocation_count": 0
     },
     {
@@ -372828,6 +374005,17 @@
       "relocation_count": 7
     },
     {
+      "address": "0xe343d0",
+      "size": 708,
+      "exact": true,
+      "target_sha256": "7d8eb60a9daece2b111d3c3f5ec88cc6daa2c0b55bf79827dd2bc6da3a3fee8b",
+      "compiled_sha256": "7d8eb60a9daece2b111d3c3f5ec88cc6daa2c0b55bf79827dd2bc6da3a3fee8b",
+      "source": "src/FreeType29LtoRoots.c",
+      "symbol": "ps_hints_t1reset",
+      "source_review": "public_library_lto_build",
+      "relocation_count": 2
+    },
+    {
       "address": "0xe35d10",
       "size": 40,
       "exact": true,
@@ -372837,6 +374025,17 @@
       "symbol": "RecoveredLeaf_e35d10",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 0
+    },
+    {
+      "address": "0xe35d40",
+      "size": 572,
+      "exact": true,
+      "target_sha256": "39069da1faa5445982fe887200855f27a30b03878061b5da54f30307783ea115",
+      "compiled_sha256": "39069da1faa5445982fe887200855f27a30b03878061b5da54f30307783ea115",
+      "source": "src/FreeType29LtoRoots.c",
+      "symbol": "t2_hints_stems",
+      "source_review": "public_library_lto_build",
+      "relocation_count": 1
     },
     {
       "address": "0xe35f80",
@@ -372858,6 +374057,17 @@
       "source": "src/FreeType29_pshinter_pshinter_O2_omit_Sections.c",
       "symbol": "ps_hints_t2counter",
       "source_review": "library_abi_view",
+      "relocation_count": 2
+    },
+    {
+      "address": "0xe360a0",
+      "size": 848,
+      "exact": true,
+      "target_sha256": "5532c90e5ac4506d43e0121b3241fe771013054112478c584fba85ecad665365",
+      "compiled_sha256": "5532c90e5ac4506d43e0121b3241fe771013054112478c584fba85ecad665365",
+      "source": "src/FreeType29LtoRoots.c",
+      "symbol": "ps_dimension_set_mask_bits",
+      "source_review": "public_library_lto_build",
       "relocation_count": 2
     },
     {
@@ -372891,6 +374101,28 @@
       "source": "src/FreeType29_Unity_O3_omit_Sections.c",
       "symbol": "psh_glyph_interpolate_strong_points",
       "source_review": "library_abi_view",
+      "relocation_count": 0
+    },
+    {
+      "address": "0xe37890",
+      "size": 1276,
+      "exact": true,
+      "target_sha256": "715e956c38a4fecd375c22e0fdc5a84d587e6ef735ec1b9ba840aa8adaaece22",
+      "compiled_sha256": "715e956c38a4fecd375c22e0fdc5a84d587e6ef735ec1b9ba840aa8adaaece22",
+      "source": "src/FreeType29LtoRoots.c",
+      "symbol": "ps_dimension_end",
+      "source_review": "public_library_lto_build",
+      "relocation_count": 2
+    },
+    {
+      "address": "0xe37d90",
+      "size": 1228,
+      "exact": true,
+      "target_sha256": "7eab468a9d2891f22db4b1eb373bc4d952bf9847e8abade9abbff2b9f6c8cf06",
+      "compiled_sha256": "7eab468a9d2891f22db4b1eb373bc4d952bf9847e8abade9abbff2b9f6c8cf06",
+      "source": "src/FreeType29LtoRoots.c",
+      "symbol": "psh_blues_set_zones",
+      "source_review": "public_library_lto_build",
       "relocation_count": 0
     },
     {
@@ -372936,6 +374168,17 @@
       "symbol": "RecoveredLeaf_e38290",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 5
+    },
+    {
+      "address": "0xe382d0",
+      "size": 680,
+      "exact": true,
+      "target_sha256": "3384d8ac5cf0b30c2a6364cab583eb0e06dfb0c239fce823ff2cc597f039946e",
+      "compiled_sha256": "3384d8ac5cf0b30c2a6364cab583eb0e06dfb0c239fce823ff2cc597f039946e",
+      "source": "src/FreeType29LtoRoots.c",
+      "symbol": "ps_unicode_value",
+      "source_review": "public_library_lto_build",
+      "relocation_count": 2
     },
     {
       "address": "0xe38580",
@@ -373037,6 +374280,50 @@
       "relocation_count": 0
     },
     {
+      "address": "0xe39160",
+      "size": 400,
+      "exact": true,
+      "target_sha256": "3b87cc2d3d693959e31815068906162e38964526b8f621ffe5ebf40710026260",
+      "compiled_sha256": "3b87cc2d3d693959e31815068906162e38964526b8f621ffe5ebf40710026260",
+      "source": "src/FreeType29LtoRoots.c",
+      "symbol": "ps_decoder_init",
+      "source_review": "public_library_lto_build",
+      "relocation_count": 9
+    },
+    {
+      "address": "0xe392f0",
+      "size": 1288,
+      "exact": true,
+      "target_sha256": "e8f7f4a9612381482732b847a1c803c95c8ee5c696c99f7cf4d64b271fc8a972",
+      "compiled_sha256": "e8f7f4a9612381482732b847a1c803c95c8ee5c696c99f7cf4d64b271fc8a972",
+      "source": "src/FreeType29LtoRoots.c",
+      "symbol": "t1_make_subfont",
+      "source_review": "public_library_lto_build",
+      "relocation_count": 1
+    },
+    {
+      "address": "0xe39800",
+      "size": 368,
+      "exact": true,
+      "target_sha256": "e4e3dc2908542c66971cee355aa88ad244548c0676b42f4ca634475a7dabf939",
+      "compiled_sha256": "e4e3dc2908542c66971cee355aa88ad244548c0676b42f4ca634475a7dabf939",
+      "source": "src/FreeType29LtoRoots.c",
+      "symbol": "cff_decoder_init",
+      "source_review": "public_library_lto_build",
+      "relocation_count": 3
+    },
+    {
+      "address": "0xe39970",
+      "size": 228,
+      "exact": true,
+      "target_sha256": "666050cff28b283fd26ea42a41cb34d58a19629e78a79f56ae407a8bd3aba03e",
+      "compiled_sha256": "666050cff28b283fd26ea42a41cb34d58a19629e78a79f56ae407a8bd3aba03e",
+      "source": "src/FreeType29LtoRoots.c",
+      "symbol": "cff_decoder_prepare",
+      "source_review": "public_library_lto_build",
+      "relocation_count": 0
+    },
+    {
       "address": "0xe3aa00",
       "size": 80,
       "exact": true,
@@ -373068,6 +374355,28 @@
       "symbol": "cf2_builder_lineTo",
       "source_review": "library_abi_view",
       "relocation_count": 3
+    },
+    {
+      "address": "0xe3ad00",
+      "size": 552,
+      "exact": true,
+      "target_sha256": "bbb2b375413dc86531b5c3e9d55223002a507b2db02a5ea1f19233250bc1cc59",
+      "compiled_sha256": "bbb2b375413dc86531b5c3e9d55223002a507b2db02a5ea1f19233250bc1cc59",
+      "source": "src/FreeType29LtoRoots.c",
+      "symbol": "cf2_builder_cubeTo",
+      "source_review": "public_library_lto_build",
+      "relocation_count": 3
+    },
+    {
+      "address": "0xe430f0",
+      "size": 576,
+      "exact": true,
+      "target_sha256": "ef524b9cedc220e14691e651f0651b9f9469c155bdcd682c71959fc386e4b184",
+      "compiled_sha256": "ef524b9cedc220e14691e651f0651b9f9469c155bdcd682c71959fc386e4b184",
+      "source": "src/FreeType29LtoRoots.c",
+      "symbol": "cf2_doStems",
+      "source_review": "public_library_lto_build",
+      "relocation_count": 1
     },
     {
       "address": "0xe43330",
@@ -373103,6 +374412,17 @@
       "relocation_count": 5
     },
     {
+      "address": "0xe44b10",
+      "size": 936,
+      "exact": true,
+      "target_sha256": "6aa108cf5e629a3841021027bdbcf7d5bd375bb8c32b2fdf87404b9f5c7b051a",
+      "compiled_sha256": "6aa108cf5e629a3841021027bdbcf7d5bd375bb8c32b2fdf87404b9f5c7b051a",
+      "source": "src/FreeType29LtoRoots.c",
+      "symbol": "cf2_doFlex",
+      "source_review": "public_library_lto_build",
+      "relocation_count": 2
+    },
+    {
       "address": "0xe44ec0",
       "size": 432,
       "exact": true,
@@ -373111,6 +374431,17 @@
       "source": "src/FreeType29_Unity_O2_omit_Pie.c",
       "symbol": "cf2_glyphpath_computeOffset",
       "source_review": "library_abi_view",
+      "relocation_count": 0
+    },
+    {
+      "address": "0xe452b0",
+      "size": 236,
+      "exact": true,
+      "target_sha256": "60fbd90f8c0d62d269b50fc2269b98459f424a67625b160142496861ea8b116a",
+      "compiled_sha256": "60fbd90f8c0d62d269b50fc2269b98459f424a67625b160142496861ea8b116a",
+      "source": "src/FreeType29LtoRoots.c",
+      "symbol": "cf2_hintmap_map",
+      "source_review": "public_library_lto_build",
       "relocation_count": 0
     },
     {
@@ -373257,6 +374588,17 @@
       "relocation_count": 3
     },
     {
+      "address": "0xe46b60",
+      "size": 1188,
+      "exact": true,
+      "target_sha256": "0545fe60ea708c4eb58e0fd8b88d4523ccdab72418ee0dc8d3d4948b7d84960f",
+      "compiled_sha256": "0545fe60ea708c4eb58e0fd8b88d4523ccdab72418ee0dc8d3d4948b7d84960f",
+      "source": "src/FreeType29LtoRoots.c",
+      "symbol": "afm_parser_read_vals",
+      "source_review": "public_library_lto_build",
+      "relocation_count": 11
+    },
+    {
       "address": "0xe47010",
       "size": 32,
       "exact": true,
@@ -373266,6 +374608,17 @@
       "symbol": "afm_compare_kern_pairs",
       "source_review": "library_abi_view",
       "relocation_count": 0
+    },
+    {
+      "address": "0xe47030",
+      "size": 2272,
+      "exact": true,
+      "target_sha256": "7887503f7c38a2ae13a67e790c5ddab5bbb2c21ec3da5821c0df7346c3657631",
+      "compiled_sha256": "7887503f7c38a2ae13a67e790c5ddab5bbb2c21ec3da5821c0df7346c3657631",
+      "source": "src/FreeType29LtoRoots.c",
+      "symbol": "PS_Conv_ToFixed",
+      "source_review": "public_library_lto_build",
+      "relocation_count": 10
     },
     {
       "address": "0xe47910",
@@ -373422,6 +374775,17 @@
       "relocation_count": 0
     },
     {
+      "address": "0xe47c10",
+      "size": 204,
+      "exact": true,
+      "target_sha256": "5445892b59401fbd8bf1a03872f3dc74b5d0e2d662f8b71f5e14bac9d11d5852",
+      "compiled_sha256": "5445892b59401fbd8bf1a03872f3dc74b5d0e2d662f8b71f5e14bac9d11d5852",
+      "source": "src/FreeType29LtoRoots.c",
+      "symbol": "ps_builder_init",
+      "source_review": "public_library_lto_build",
+      "relocation_count": 6
+    },
+    {
       "address": "0xe47ce0",
       "size": 36,
       "exact": true,
@@ -373453,6 +374817,17 @@
       "symbol": "RecoveredLeaf_e47ef0",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 0
+    },
+    {
+      "address": "0xe47f60",
+      "size": 532,
+      "exact": true,
+      "target_sha256": "3d758665c56ea99fecd8c16fa7b800756feda317942f6aa96e6cb71c8639fab0",
+      "compiled_sha256": "3d758665c56ea99fecd8c16fa7b800756feda317942f6aa96e6cb71c8639fab0",
+      "source": "src/FreeType29LtoRoots.c",
+      "symbol": "t1_decoder_parse_metrics",
+      "source_review": "public_library_lto_build",
+      "relocation_count": 2
     },
     {
       "address": "0xe48180",
@@ -373576,6 +374951,28 @@
       "relocation_count": 0
     },
     {
+      "address": "0xe48760",
+      "size": 696,
+      "exact": true,
+      "target_sha256": "d5786c1a5a7864897ac135751b63840426152b1627376f77850d58e4a6b27885",
+      "compiled_sha256": "d5786c1a5a7864897ac135751b63840426152b1627376f77850d58e4a6b27885",
+      "source": "src/FreeType29LtoRoots.c",
+      "symbol": "ps_parser_skip_PS_token",
+      "source_review": "public_library_lto_build",
+      "relocation_count": 6
+    },
+    {
+      "address": "0xe48a20",
+      "size": 868,
+      "exact": true,
+      "target_sha256": "fbeeaea460942a92eb20f7228c313db1d8debe2122475c99741d5493bde2cb14",
+      "compiled_sha256": "fbeeaea460942a92eb20f7228c313db1d8debe2122475c99741d5493bde2cb14",
+      "source": "src/FreeType29LtoRoots.c",
+      "symbol": "ps_parser_to_int",
+      "source_review": "public_library_lto_build",
+      "relocation_count": 4
+    },
+    {
       "address": "0xe48d90",
       "size": 144,
       "exact": true,
@@ -373587,6 +374984,28 @@
       "relocation_count": 1
     },
     {
+      "address": "0xe48e20",
+      "size": 640,
+      "exact": true,
+      "target_sha256": "6c9abc352aa5084753e8023e8cf48c8ca196132b0058b1ea5e708bb2520e90e0",
+      "compiled_sha256": "6c9abc352aa5084753e8023e8cf48c8ca196132b0058b1ea5e708bb2520e90e0",
+      "source": "src/FreeType29LtoRoots.c",
+      "symbol": "ps_parser_to_bytes",
+      "source_review": "public_library_lto_build",
+      "relocation_count": 4
+    },
+    {
+      "address": "0xe490a0",
+      "size": 1092,
+      "exact": true,
+      "target_sha256": "c09da390cba79ed7468e8357641db789e6bb33607ebc9f926bd43ab589a63d60",
+      "compiled_sha256": "c09da390cba79ed7468e8357641db789e6bb33607ebc9f926bd43ab589a63d60",
+      "source": "src/FreeType29LtoRoots.c",
+      "symbol": "ps_parser_to_coord_array",
+      "source_review": "public_library_lto_build",
+      "relocation_count": 4
+    },
+    {
       "address": "0xe494f0",
       "size": 148,
       "exact": true,
@@ -373596,6 +375015,17 @@
       "symbol": "ps_parser_to_fixed_array",
       "source_review": "library_abi_view",
       "relocation_count": 1
+    },
+    {
+      "address": "0xe49590",
+      "size": 760,
+      "exact": true,
+      "target_sha256": "77e61562fd8a42dbc45f36144685c515b4cb65993b8cd82866637222d93c7136",
+      "compiled_sha256": "77e61562fd8a42dbc45f36144685c515b4cb65993b8cd82866637222d93c7136",
+      "source": "src/FreeType29LtoRoots.c",
+      "symbol": "ps_parser_to_token",
+      "source_review": "public_library_lto_build",
+      "relocation_count": 4
     },
     {
       "address": "0xe49890",
@@ -373620,6 +375050,17 @@
       "relocation_count": 3
     },
     {
+      "address": "0xe4a800",
+      "size": 612,
+      "exact": true,
+      "target_sha256": "74493a2d2d487afa9d621b7824bd3218805f1b0f2a5b955f4b798c3e4eeac27c",
+      "compiled_sha256": "74493a2d2d487afa9d621b7824bd3218805f1b0f2a5b955f4b798c3e4eeac27c",
+      "source": "src/FreeType29LtoRoots.c",
+      "symbol": "ps_tofixedarray",
+      "source_review": "public_library_lto_build",
+      "relocation_count": 2
+    },
+    {
       "address": "0xe4aa70",
       "size": 368,
       "exact": true,
@@ -373640,6 +375081,17 @@
       "symbol": "skip_procedure",
       "source_review": "library_abi_view",
       "relocation_count": 1
+    },
+    {
+      "address": "0xe4b100",
+      "size": 720,
+      "exact": true,
+      "target_sha256": "a203200de673e6671eb3c7c591e422d9320e42e8d79a047aacdd890c1c69fbe5",
+      "compiled_sha256": "a203200de673e6671eb3c7c591e422d9320e42e8d79a047aacdd890c1c69fbe5",
+      "source": "src/FreeType29LtoRoots.c",
+      "symbol": "ps_table_add",
+      "source_review": "public_library_lto_build",
+      "relocation_count": 3
     },
     {
       "address": "0xe4b3d0",
@@ -373785,6 +375237,17 @@
       "relocation_count": 1
     },
     {
+      "address": "0xe4fe30",
+      "size": 544,
+      "exact": true,
+      "target_sha256": "33a716009b0d7af8a93878c42ac2b6536bffeac3ef3b0ce3ecb2f9ffeb669ce7",
+      "compiled_sha256": "33a716009b0d7af8a93878c42ac2b6536bffeac3ef3b0ce3ecb2f9ffeb669ce7",
+      "source": "src/FreeType29LtoRoots.c",
+      "symbol": "ft_gzip_file_io",
+      "source_review": "public_library_lto_build",
+      "relocation_count": 3
+    },
+    {
       "address": "0xe50050",
       "size": 124,
       "exact": true,
@@ -373895,6 +375358,17 @@
       "relocation_count": 0
     },
     {
+      "address": "0xe51970",
+      "size": 208,
+      "exact": true,
+      "target_sha256": "860bec3f61b114c06f603ec9d751b975cf8fe0e4e8279a4745ea7381b2986d4c",
+      "compiled_sha256": "860bec3f61b114c06f603ec9d751b975cf8fe0e4e8279a4745ea7381b2986d4c",
+      "source": "src/FreeType29LtoRoots.c",
+      "symbol": "FNT_Size_Request",
+      "source_review": "public_library_lto_build",
+      "relocation_count": 1
+    },
+    {
       "address": "0xe51a40",
       "size": 88,
       "exact": true,
@@ -373983,6 +375457,17 @@
       "relocation_count": 20
     },
     {
+      "address": "0xe52bf0",
+      "size": 564,
+      "exact": true,
+      "target_sha256": "da50ba8f4408fa5063fcfce782156377235b07b6e85673b7a12458421ce92483",
+      "compiled_sha256": "da50ba8f4408fa5063fcfce782156377235b07b6e85673b7a12458421ce92483",
+      "source": "src/FreeType29LtoRoots.c",
+      "symbol": "T42_Face_Done",
+      "source_review": "public_library_lto_build",
+      "relocation_count": 1
+    },
+    {
       "address": "0xe52e30",
       "size": 72,
       "exact": true,
@@ -374013,6 +375498,17 @@
       "source": "src/FreeType29_type42_type42_O2_omit_Sections.c",
       "symbol": "T42_GlyphSlot_Init",
       "source_review": "library_abi_view",
+      "relocation_count": 1
+    },
+    {
+      "address": "0xe52fa0",
+      "size": 360,
+      "exact": true,
+      "target_sha256": "b87c9ca3e39cbf59a08cb33d01e71dfb76385ee5d4b1368cf0c3567000c84908",
+      "compiled_sha256": "b87c9ca3e39cbf59a08cb33d01e71dfb76385ee5d4b1368cf0c3567000c84908",
+      "source": "src/FreeType29LtoRoots.c",
+      "symbol": "T42_GlyphSlot_Load",
+      "source_review": "public_library_lto_build",
       "relocation_count": 1
     },
     {
@@ -374159,6 +375655,17 @@
       "relocation_count": 10
     },
     {
+      "address": "0xe55ba0",
+      "size": 304,
+      "exact": true,
+      "target_sha256": "46d69f5845a237b0e7127bba3c5bc1612351e749e3733ff34fe88fff6a10cfa1",
+      "compiled_sha256": "46d69f5845a237b0e7127bba3c5bc1612351e749e3733ff34fe88fff6a10cfa1",
+      "source": "src/FreeType29LtoRoots.c",
+      "symbol": "pfr_face_done",
+      "source_review": "public_library_lto_build",
+      "relocation_count": 0
+    },
+    {
       "address": "0xe55cd0",
       "size": 76,
       "exact": true,
@@ -374203,6 +375710,39 @@
       "relocation_count": 2
     },
     {
+      "address": "0xe58480",
+      "size": 444,
+      "exact": true,
+      "target_sha256": "7c3f24d670bd3cac13158b15ceb387a8987c5d826175515e102232b8af38f134",
+      "compiled_sha256": "7c3f24d670bd3cac13158b15ceb387a8987c5d826175515e102232b8af38f134",
+      "source": "src/FreeType29LtoRoots.c",
+      "symbol": "pfr_extra_item_load_stem_snaps",
+      "source_review": "public_library_lto_build",
+      "relocation_count": 1
+    },
+    {
+      "address": "0xe58640",
+      "size": 348,
+      "exact": true,
+      "target_sha256": "ee31f6f3320e23fb6f2830fc44582be24e8107ab698edb96114e999221c60658",
+      "compiled_sha256": "ee31f6f3320e23fb6f2830fc44582be24e8107ab698edb96114e999221c60658",
+      "source": "src/FreeType29LtoRoots.c",
+      "symbol": "pfr_extra_item_load_kerning_pairs",
+      "source_review": "public_library_lto_build",
+      "relocation_count": 0
+    },
+    {
+      "address": "0xe587a0",
+      "size": 892,
+      "exact": true,
+      "target_sha256": "3a50f334873989079b28ca43d2afa3aa29763f72406b721db0698dcf062e71aa",
+      "compiled_sha256": "3a50f334873989079b28ca43d2afa3aa29763f72406b721db0698dcf062e71aa",
+      "source": "src/FreeType29LtoRoots.c",
+      "symbol": "pfr_extra_item_load_bitmap_info",
+      "source_review": "public_library_lto_build",
+      "relocation_count": 1
+    },
+    {
       "address": "0xe58b20",
       "size": 96,
       "exact": true,
@@ -374233,6 +375773,17 @@
       "source": "src/FreeType29_pfr_pfr_O2_omit_Sections.c",
       "symbol": "pfr_cmap_char_index",
       "source_review": "library_abi_view",
+      "relocation_count": 0
+    },
+    {
+      "address": "0xe58be0",
+      "size": 136,
+      "exact": true,
+      "target_sha256": "8d977f52738d992c8cc7fc5badc35fecaed6d284518ed62990fc3aa68f52155f",
+      "compiled_sha256": "8d977f52738d992c8cc7fc5badc35fecaed6d284518ed62990fc3aa68f52155f",
+      "source": "src/FreeType29LtoRoots.c",
+      "symbol": "pfr_cmap_char_next",
+      "source_review": "public_library_lto_build",
       "relocation_count": 0
     },
     {
@@ -374289,6 +375840,17 @@
       "symbol": "RecoveredLeaf_e58dd0",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 25
+    },
+    {
+      "address": "0xe5a5d0",
+      "size": 464,
+      "exact": true,
+      "target_sha256": "400d59d13a68d27cc8f4e70bf94a20b23096899a26b85eced0c59fd76bd1a986",
+      "compiled_sha256": "400d59d13a68d27cc8f4e70bf94a20b23096899a26b85eced0c59fd76bd1a986",
+      "source": "src/FreeType29LtoRoots.c",
+      "symbol": "cid_face_done",
+      "source_review": "public_library_lto_build",
+      "relocation_count": 0
     },
     {
       "address": "0xe5a7a0",
@@ -374533,6 +376095,17 @@
       "relocation_count": 0
     },
     {
+      "address": "0xe60650",
+      "size": 456,
+      "exact": true,
+      "target_sha256": "3b958e2e28826b1c6199c9defa592e2a2c7c4f508c2fa9587426185e583fe520",
+      "compiled_sha256": "3b958e2e28826b1c6199c9defa592e2a2c7c4f508c2fa9587426185e583fe520",
+      "source": "src/FreeType29LtoRoots.c",
+      "symbol": "cff_get_advances",
+      "source_review": "public_library_lto_build",
+      "relocation_count": 2
+    },
+    {
       "address": "0xe60820",
       "size": 704,
       "exact": true,
@@ -374574,6 +376147,17 @@
       "source": "src/TypedCfgVoidOmitDirect.cpp",
       "symbol": "RecoveredLeaf_e61b00",
       "source_review": "generated_cxx_abi_view",
+      "relocation_count": 0
+    },
+    {
+      "address": "0xe62040",
+      "size": 1248,
+      "exact": true,
+      "target_sha256": "6575bf8f6fc0465965b00069703e7529aec5855b1dd755e3aa648933d5a8ce89",
+      "compiled_sha256": "6575bf8f6fc0465965b00069703e7529aec5855b1dd755e3aa648933d5a8ce89",
+      "source": "src/FreeType29LtoRoots.c",
+      "symbol": "cff_make_private_dict",
+      "source_review": "public_library_lto_build",
       "relocation_count": 0
     },
     {
@@ -374676,6 +376260,17 @@
       "relocation_count": 0
     },
     {
+      "address": "0xe635a0",
+      "size": 1936,
+      "exact": true,
+      "target_sha256": "8b2a7c2d6552a69971df51949082639fff6526e591785692bb317e8c93bc98e3",
+      "compiled_sha256": "8b2a7c2d6552a69971df51949082639fff6526e591785692bb317e8c93bc98e3",
+      "source": "src/FreeType29LtoRoots.c",
+      "symbol": "cff_parser_run",
+      "source_review": "public_library_lto_build",
+      "relocation_count": 7
+    },
+    {
       "address": "0xe64060",
       "size": 912,
       "exact": true,
@@ -374698,6 +376293,17 @@
       "relocation_count": 3
     },
     {
+      "address": "0xe648a0",
+      "size": 1252,
+      "exact": true,
+      "target_sha256": "f60fa62292ff4418eb5d22252160aa5ca9c2c628cd6aeae5815092385e1b6e82",
+      "compiled_sha256": "f60fa62292ff4418eb5d22252160aa5ca9c2c628cd6aeae5815092385e1b6e82",
+      "source": "src/FreeType29LtoRoots.c",
+      "symbol": "cff_parse_font_bbox",
+      "source_review": "public_library_lto_build",
+      "relocation_count": 4
+    },
+    {
       "address": "0xe64d90",
       "size": 684,
       "exact": true,
@@ -374707,6 +376313,17 @@
       "symbol": "cff_parse_private_dict",
       "source_review": "library_abi_view",
       "relocation_count": 2
+    },
+    {
+      "address": "0xe65040",
+      "size": 388,
+      "exact": true,
+      "target_sha256": "a9945c497f80de7f29175ff029011aef083e60e2059d1fb2bc42f89a262d22f7",
+      "compiled_sha256": "a9945c497f80de7f29175ff029011aef083e60e2059d1fb2bc42f89a262d22f7",
+      "source": "src/FreeType29LtoRoots.c",
+      "symbol": "cff_parse_multiple_master",
+      "source_review": "public_library_lto_build",
+      "relocation_count": 1
     },
     {
       "address": "0xe651d0",
@@ -374740,6 +376357,17 @@
       "symbol": "cff_parse_vsindex",
       "source_review": "library_abi_view",
       "relocation_count": 1
+    },
+    {
+      "address": "0xe65750",
+      "size": 1656,
+      "exact": true,
+      "target_sha256": "afc2b30615cb721db0500ef46bdd5973eb0d3480fd0cd217a5c9f80e9f628859",
+      "compiled_sha256": "afc2b30615cb721db0500ef46bdd5973eb0d3480fd0cd217a5c9f80e9f628859",
+      "source": "src/FreeType29LtoRoots.c",
+      "symbol": "cff_parse_blend",
+      "source_review": "public_library_lto_build",
+      "relocation_count": 6
     },
     {
       "address": "0xe66160",
@@ -375072,6 +376700,28 @@
       "relocation_count": 0
     },
     {
+      "address": "0xe69070",
+      "size": 148,
+      "exact": true,
+      "target_sha256": "27d9106360c9460d15ba9cf2a8ec2d6278d1c1d3b7c12aba3de5ccb6b4b925f1",
+      "compiled_sha256": "27d9106360c9460d15ba9cf2a8ec2d6278d1c1d3b7c12aba3de5ccb6b4b925f1",
+      "source": "src/FreeType29LtoRoots.c",
+      "symbol": "Get_Kerning",
+      "source_review": "public_library_lto_build",
+      "relocation_count": 0
+    },
+    {
+      "address": "0xe69950",
+      "size": 316,
+      "exact": true,
+      "target_sha256": "d9f099c474e872696c6b2e2c17a35c743355968edae810e510cf70a4d60f2bf4",
+      "compiled_sha256": "d9f099c474e872696c6b2e2c17a35c743355968edae810e510cf70a4d60f2bf4",
+      "source": "src/FreeType29LtoRoots.c",
+      "symbol": "T1_Get_Advances",
+      "source_review": "public_library_lto_build",
+      "relocation_count": 4
+    },
+    {
       "address": "0xe69a90",
       "size": 228,
       "exact": true,
@@ -375114,6 +376764,17 @@
       "symbol": "afm_compare_kern_pairs",
       "source_review": "library_abi_view",
       "relocation_count": 0
+    },
+    {
+      "address": "0xe69e90",
+      "size": 416,
+      "exact": true,
+      "target_sha256": "5a7bc3d13973678d76a8242852f87949e2e3dd0de23ccf5328d09aaf597c54ff",
+      "compiled_sha256": "5a7bc3d13973678d76a8242852f87949e2e3dd0de23ccf5328d09aaf597c54ff",
+      "source": "src/FreeType29LtoRoots.c",
+      "symbol": "T1_Done_Blend",
+      "source_review": "public_library_lto_build",
+      "relocation_count": 1
     },
     {
       "address": "0xe6a030",
@@ -375235,6 +376896,50 @@
       "symbol": "RecoveredLeaf_e6c6a0",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 0
+    },
+    {
+      "address": "0xe6c6c0",
+      "size": 112,
+      "exact": true,
+      "target_sha256": "d1117702cf5fd5741f56856f32d9b410ab2fc2300378ffebbcc674c52f88c354",
+      "compiled_sha256": "d1117702cf5fd5741f56856f32d9b410ab2fc2300378ffebbcc674c52f88c354",
+      "source": "src/FreeType29LtoRoots.c",
+      "symbol": "T1_Get_Multi_Master",
+      "source_review": "public_library_lto_build",
+      "relocation_count": 0
+    },
+    {
+      "address": "0xe6cb60",
+      "size": 396,
+      "exact": true,
+      "target_sha256": "5d076075d94809a1a58fec6bf42c927e146d73d119e5178763b8026fafa6c026",
+      "compiled_sha256": "5d076075d94809a1a58fec6bf42c927e146d73d119e5178763b8026fafa6c026",
+      "source": "src/FreeType29LtoRoots.c",
+      "symbol": "T1_Get_MM_Blend",
+      "source_review": "public_library_lto_build",
+      "relocation_count": 2
+    },
+    {
+      "address": "0xe6ccf0",
+      "size": 772,
+      "exact": true,
+      "target_sha256": "3fc6bee81d654fc70a54dab3f674a3c37d3431a3fe8f4353423399f3bef25473",
+      "compiled_sha256": "3fc6bee81d654fc70a54dab3f674a3c37d3431a3fe8f4353423399f3bef25473",
+      "source": "src/FreeType29LtoRoots.c",
+      "symbol": "T1_Get_MM_Var",
+      "source_review": "public_library_lto_build",
+      "relocation_count": 11
+    },
+    {
+      "address": "0xe6d000",
+      "size": 148,
+      "exact": true,
+      "target_sha256": "55699bdc2bf4e496c4ff067f25c87f1de7fbe6df7635c60524c2c0c49e11439c",
+      "compiled_sha256": "55699bdc2bf4e496c4ff067f25c87f1de7fbe6df7635c60524c2c0c49e11439c",
+      "source": "src/FreeType29LtoRoots.c",
+      "symbol": "T1_Set_Var_Design",
+      "source_review": "public_library_lto_build",
+      "relocation_count": 1
     },
     {
       "address": "0xe6d0a0",
@@ -375432,6 +377137,39 @@
       "source": "src/StructuredRecoveryOmit.cpp",
       "symbol": "RecoveredLeaf_e70f10",
       "source_review": "generated_cxx_abi_view",
+      "relocation_count": 0
+    },
+    {
+      "address": "0xe70f40",
+      "size": 304,
+      "exact": true,
+      "target_sha256": "708dd06a74b2da0cd43ea38e1872cfd6571d11a6667fc8ed24c4519f3cbffea2",
+      "compiled_sha256": "708dd06a74b2da0cd43ea38e1872cfd6571d11a6667fc8ed24c4519f3cbffea2",
+      "source": "src/FreeType29LtoRoots.c",
+      "symbol": "tt_get_advances",
+      "source_review": "public_library_lto_build",
+      "relocation_count": 0
+    },
+    {
+      "address": "0xe711a0",
+      "size": 84,
+      "exact": true,
+      "target_sha256": "585c9daa01ee77d594d5c819d0078ac0a66807a422d58c9b3b4b99bf9568a760",
+      "compiled_sha256": "585c9daa01ee77d594d5c819d0078ac0a66807a422d58c9b3b4b99bf9568a760",
+      "source": "src/FreeType29LtoRoots.c",
+      "symbol": "tt_size_select",
+      "source_review": "public_library_lto_build",
+      "relocation_count": 2
+    },
+    {
+      "address": "0xe785e0",
+      "size": 412,
+      "exact": true,
+      "target_sha256": "966a173ac09518fe520e36029d4b6672a1db6e1a82ff7e4d7d13b65bfb27bb41",
+      "compiled_sha256": "966a173ac09518fe520e36029d4b6672a1db6e1a82ff7e4d7d13b65bfb27bb41",
+      "source": "src/FreeType29LtoRoots.c",
+      "symbol": "tt_size_done_bytecode",
+      "source_review": "public_library_lto_build",
       "relocation_count": 0
     },
     {
@@ -375754,6 +377492,17 @@
       "relocation_count": 0
     },
     {
+      "address": "0xe7ab00",
+      "size": 708,
+      "exact": true,
+      "target_sha256": "135ef98f574295be8a9dc9f99ee7a00e4d2b35085353d714a71d724bf7a4b1f5",
+      "compiled_sha256": "135ef98f574295be8a9dc9f99ee7a00e4d2b35085353d714a71d724bf7a4b1f5",
+      "source": "src/FreeType29LtoRoots.c",
+      "symbol": "TT_Hint_Glyph",
+      "source_review": "public_library_lto_build",
+      "relocation_count": 2
+    },
+    {
       "address": "0xe7b010",
       "size": 384,
       "exact": true,
@@ -375762,6 +377511,28 @@
       "source": "src/FreeType29_Unity_O2_omit_Pie.c",
       "symbol": "ft_var_apply_tuple",
       "source_review": "library_abi_view",
+      "relocation_count": 0
+    },
+    {
+      "address": "0xe7b5e0",
+      "size": 600,
+      "exact": true,
+      "target_sha256": "6cc7394f5b41f038e991266fa84ccba58e59a7f56c28dc8b20117a98f4053b9d",
+      "compiled_sha256": "6cc7394f5b41f038e991266fa84ccba58e59a7f56c28dc8b20117a98f4053b9d",
+      "source": "src/FreeType29LtoRoots.c",
+      "symbol": "tt_done_blend",
+      "source_review": "public_library_lto_build",
+      "relocation_count": 3
+    },
+    {
+      "address": "0xe7b840",
+      "size": 264,
+      "exact": true,
+      "target_sha256": "97d9c177c4bff9a98edca0899aa901b441c14869addf344a9feb86cbee290b84",
+      "compiled_sha256": "97d9c177c4bff9a98edca0899aa901b441c14869addf344a9feb86cbee290b84",
+      "source": "src/FreeType29LtoRoots.c",
+      "symbol": "ft_var_done_item_variation_store",
+      "source_review": "public_library_lto_build",
       "relocation_count": 0
     },
     {
@@ -375774,6 +377545,17 @@
       "symbol": "TT_Set_Named_Instance",
       "source_review": "library_abi_view",
       "relocation_count": 3
+    },
+    {
+      "address": "0xe7bca0",
+      "size": 440,
+      "exact": true,
+      "target_sha256": "3f3b7a7c7c1992c5f5f870f7c9fcaa34f431003ab779d3cd1615bfbbbbb69187",
+      "compiled_sha256": "3f3b7a7c7c1992c5f5f870f7c9fcaa34f431003ab779d3cd1615bfbbbbb69187",
+      "source": "src/FreeType29LtoRoots.c",
+      "symbol": "tt_apply_mvar",
+      "source_review": "public_library_lto_build",
+      "relocation_count": 2
     },
     {
       "address": "0xe7bfc0",
@@ -375831,6 +377613,28 @@
       "relocation_count": 3
     },
     {
+      "address": "0xe80ea0",
+      "size": 216,
+      "exact": true,
+      "target_sha256": "02808eb06be94134c60a5ed16d7652f71d1ea22902ef5c24f71ee04f910fa5be",
+      "compiled_sha256": "02808eb06be94134c60a5ed16d7652f71d1ea22902ef5c24f71ee04f910fa5be",
+      "source": "src/FreeType29LtoRoots.c",
+      "symbol": "tt_hadvance_adjust",
+      "source_review": "public_library_lto_build",
+      "relocation_count": 2
+    },
+    {
+      "address": "0xe80f80",
+      "size": 216,
+      "exact": true,
+      "target_sha256": "3cc97818bac7c4eb3cf992119c26e9ca65d05e37270acb89f631ef76999db1f5",
+      "compiled_sha256": "3cc97818bac7c4eb3cf992119c26e9ca65d05e37270acb89f631ef76999db1f5",
+      "source": "src/FreeType29LtoRoots.c",
+      "symbol": "tt_vadvance_adjust",
+      "source_review": "public_library_lto_build",
+      "relocation_count": 2
+    },
+    {
       "address": "0xe81610",
       "size": 64,
       "exact": true,
@@ -375840,6 +377644,28 @@
       "symbol": "RecoveredLeaf_e81610",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 1
+    },
+    {
+      "address": "0xe81650",
+      "size": 432,
+      "exact": true,
+      "target_sha256": "97da56e8227c0d8dfd9a1bf151b1f0848b186edf58d0a78104c16702de183c50",
+      "compiled_sha256": "97da56e8227c0d8dfd9a1bf151b1f0848b186edf58d0a78104c16702de183c50",
+      "source": "src/FreeType29LtoRoots.c",
+      "symbol": "TT_Get_MM_Blend",
+      "source_review": "public_library_lto_build",
+      "relocation_count": 4
+    },
+    {
+      "address": "0xe81800",
+      "size": 432,
+      "exact": true,
+      "target_sha256": "3bb200f6144c114d2dbda70fbbec44e8aaed0b270115080c1c2788d1ee786eff",
+      "compiled_sha256": "3bb200f6144c114d2dbda70fbbec44e8aaed0b270115080c1c2788d1ee786eff",
+      "source": "src/FreeType29LtoRoots.c",
+      "symbol": "TT_Get_Var_Design",
+      "source_review": "public_library_lto_build",
+      "relocation_count": 4
     },
     {
       "address": "0xe819b0",
@@ -375941,6 +377767,17 @@
       "relocation_count": 0
     },
     {
+      "address": "0xe82bb0",
+      "size": 136,
+      "exact": true,
+      "target_sha256": "fc82036a6f51d201a8a5507e6a79bc007cd8766f80b97682d123d778cc56a0ae",
+      "compiled_sha256": "fc82036a6f51d201a8a5507e6a79bc007cd8766f80b97682d123d778cc56a0ae",
+      "source": "src/FreeType29LtoRoots.c",
+      "symbol": "af_cjk_hints_init",
+      "source_review": "public_library_lto_build",
+      "relocation_count": 0
+    },
+    {
       "address": "0xe82c40",
       "size": 4,
       "exact": true,
@@ -375974,6 +377811,28 @@
       "relocation_count": 1
     },
     {
+      "address": "0xe87040",
+      "size": 556,
+      "exact": true,
+      "target_sha256": "f54617207cec1d5179d1d3042cfd8211f740c86e428161d9818e89eb7477fc93",
+      "compiled_sha256": "f54617207cec1d5179d1d3042cfd8211f740c86e428161d9818e89eb7477fc93",
+      "source": "src/FreeType29LtoRoots.c",
+      "symbol": "af_latin_hints_link_segments",
+      "source_review": "public_library_lto_build",
+      "relocation_count": 0
+    },
+    {
+      "address": "0xe87270",
+      "size": 728,
+      "exact": true,
+      "target_sha256": "a312ff9811ce51353be479c8ca78871240d113786ae2fe054e184fc1d2de7c18",
+      "compiled_sha256": "a312ff9811ce51353be479c8ca78871240d113786ae2fe054e184fc1d2de7c18",
+      "source": "src/FreeType29LtoRoots.c",
+      "symbol": "af_sort_and_quantize_widths",
+      "source_review": "public_library_lto_build",
+      "relocation_count": 0
+    },
+    {
       "address": "0xe87fd0",
       "size": 68,
       "exact": true,
@@ -375993,6 +377852,17 @@
       "source": "src/PhiRecoveryOmit.cpp",
       "symbol": "RecoveredLeaf_e88020",
       "source_review": "generated_cxx_abi_view",
+      "relocation_count": 0
+    },
+    {
+      "address": "0xe88040",
+      "size": 136,
+      "exact": true,
+      "target_sha256": "fc82036a6f51d201a8a5507e6a79bc007cd8766f80b97682d123d778cc56a0ae",
+      "compiled_sha256": "fc82036a6f51d201a8a5507e6a79bc007cd8766f80b97682d123d778cc56a0ae",
+      "source": "src/FreeType29LtoRoots.c",
+      "symbol": "af_cjk_hints_init",
+      "source_review": "public_library_lto_build",
       "relocation_count": 0
     },
     {
@@ -376018,6 +377888,28 @@
       "relocation_count": 0
     },
     {
+      "address": "0xe895c0",
+      "size": 156,
+      "exact": true,
+      "target_sha256": "d1531ef95d879f74fca763cfd05270deaec66291767d3052df26cc83dbcc2ffa",
+      "compiled_sha256": "d1531ef95d879f74fca763cfd05270deaec66291767d3052df26cc83dbcc2ffa",
+      "source": "src/FreeType29LtoRoots.c",
+      "symbol": "af_latin_hints_init",
+      "source_review": "public_library_lto_build",
+      "relocation_count": 0
+    },
+    {
+      "address": "0xe89f90",
+      "size": 1868,
+      "exact": true,
+      "target_sha256": "3dd9d8853ca0d7e37547f837939266d754d6786b3b7e2f03225193c400a90b71",
+      "compiled_sha256": "3dd9d8853ca0d7e37547f837939266d754d6786b3b7e2f03225193c400a90b71",
+      "source": "src/FreeType29LtoRoots.c",
+      "symbol": "af_latin_hint_edges",
+      "source_review": "public_library_lto_build",
+      "relocation_count": 7
+    },
+    {
       "address": "0xe8a6e0",
       "size": 624,
       "exact": true,
@@ -376038,6 +377930,17 @@
       "symbol": "RecoveredLeaf_e8adb0",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 0
+    },
+    {
+      "address": "0xe8ade0",
+      "size": 116,
+      "exact": true,
+      "target_sha256": "d0cde97b4646d31ebc1c16749792fd9b23f739fc618698fcded4202d8bb27eb7",
+      "compiled_sha256": "d0cde97b4646d31ebc1c16749792fd9b23f739fc618698fcded4202d8bb27eb7",
+      "source": "src/FreeType29LtoRoots.c",
+      "symbol": "af_dummy_hints_apply",
+      "source_review": "public_library_lto_build",
+      "relocation_count": 1
     },
     {
       "address": "0xe8c450",

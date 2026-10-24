@@ -86,7 +86,7 @@ original-byte comparisons. No complete linked game or data matching is claimed.
 
 ```powershell
 python tools/test_engine_family_build.py --original "C:\path\Scott_Switch.elf" --clang8 "C:\path\llvm801\bin\clang++.exe" --build-dir "D:\scott-build\engine-families"
-python tools/verify.py --original "C:\path\Scott_Switch.elf" --clang7 "C:\path\llvm701\bin\clang++.exe" --clang8 "C:\path\llvm801\bin\clang++.exe" --build-dir "D:\scott-build"
+python tools/verify.py --original "C:\path\Scott_Switch.elf" --clang7 "C:\path\llvm701\bin\clang++.exe" --clang8 "C:\path\llvm801\bin\clang++.exe" --lld8 "C:\path\llvm801\bin\ld.lld.exe" --build-dir "D:\scott-build"
 python tools/report.py --out build/report.json
 ```
 
@@ -138,8 +138,8 @@ and an instance is credited **only at its own address**. For the `std::function`
 family, the key is the destructor's address, and the other slots of the same
 vtable are credited to the same instance. Identical bodies elsewhere are not
 credited to an unrelated instance's symbol, and addresses that other builds
-already credit are skipped. These families add **1,732 complete functions /
-146,376 bytes**:
+already credit are skipped. These families add **1,786 complete functions /
+164,228 bytes**:
 
 | Source (`src/`) | Shape | Functions | Bytes |
 | --- | --- | ---: | ---: |
@@ -180,6 +180,9 @@ already credit are skipped. These families add **1,732 complete functions /
 | `CircuitFindProperty*` | Circuit reflection lookup over the guarded property lists; built [two-step](COMPILERS.md#game-code--o3-optimization--o2-code-generation) | 14 | 3,528 |
 | `TypeRegistrationOnceGame*` | Game-side copies of one-time type registration (frame pointer omitted) | 14 | 3,192 |
 | `ComposeRenderUnitDestructor*` | `Compose` destructor over a component whose render-unit member frees an allocator-owned buffer | 6 | 2,736 |
+| `TypeRegistryMap*` | SDK type registry: check a lazily registered type, create a libc++ 4 `unordered_map` with the Storm allocator, insert the type hash (`-O3`, unwind tables) | 21 | 13,484 |
+| `DareFlyweightManager*` | `Dare::FlyweightManager<T>` deleting destructors: trim the slot array, return it to the Dare allocator | 20 | 2,240 |
+| `EchoTypeDescriptor*` | `storm::echo` event type descriptor: guarded static built from category, kind and parent (`-O3`, unwind tables) | 19 | 2,128 |
 
 The code shapes pin down several details:
 

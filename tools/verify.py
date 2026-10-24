@@ -17,10 +17,37 @@ def compiler_version(compiler,expected):
     return result.stdout.splitlines()[0]
 
 
-def build_commands(build,compiler,root,build_dir):
+def linker_version(linker,expected):
+    result = subprocess.run([str(linker),'--version'],capture_output=True,text=True,check=True,
+                            creationflags=getattr(subprocess,'CREATE_NO_WINDOW',0))
+    require(result.stdout.startswith('LLD '+expected+' '),'Incorrect linker version: '+result.stdout.splitlines()[0])
+    return result.stdout.splitlines()[0]
+
+
+def build_output(build,build_dir):
+    """Object whose functions the build's recipes describe."""
+    if build.get('kind') == 'lto':return Path(build_dir)/(build['id']+'.elf.lto.o')
+    return Path(build_dir)/(build['id']+'.o')
+
+
+def build_commands(build,compiler,root,build_dir,linker=None):
     """Compiler commands for one build. With `codegen_flags`, `flags` optimize the IR
-    (emitted as bitcode) and a second step only generates code, as an LTO link does."""
+    (emitted as bitcode) and a second step only generates code, as an LTO link does.
+    An `lto` build compiles `source` and `lto_sources` to bitcode, a native keep-alive
+    object from `keep_source`, and links them with ld.lld; `--save-temps` keeps the
+    link-time code-generation object the recipes describe."""
     source,output = str(Path(root)/build['source']),str(Path(build_dir)/(build['id']+'.o'))
+    if build.get('kind') == 'lto':
+        require(linker is not None,'LTO build needs ld.lld: '+build['id'])
+        require('-flto' in build['flags'] and '-flto' not in build['keep_flags'],'LTO flags must mark bitcode objects only: '+build['id'])
+        objects,commands = [],[]
+        for index,name in enumerate([build['source'],*build['lto_sources']]):
+            objects.append(str(Path(build_dir)/f"{build['id']}.{index}.o"))
+            commands.append([str(compiler),*build['flags'],'-c',str(Path(root)/name),'-o',objects[-1]])
+        keep = str(Path(build_dir)/(build['id']+'.keep.o'))
+        commands.append([str(compiler),*build['keep_flags'],'-c',str(Path(root)/build['keep_source']),'-o',keep])
+        commands.append([str(linker),'-o',str(Path(build_dir)/(build['id']+'.elf')),*build['link_flags'],'--save-temps',keep,*objects])
+        return commands
     if 'codegen_flags' not in build:
         return [[str(compiler),*build['flags'],'-c',source,'-o',output]]
     codegen = build['codegen_flags']
@@ -31,7 +58,7 @@ def build_commands(build,compiler,root,build_dir):
             [str(compiler),*codegen,'-c',bitcode,'-o',output]]
 
 
-def verify(original_path,compilers,build_dir,root=ROOT,only=None,jobs=1):
+def verify(original_path,compilers,build_dir,root=ROOT,only=None,jobs=1,linker=None):
     require(jobs > 0,'Compiler job count must be positive')
     root,build_dir = Path(root),Path(build_dir);target,functions = inventory(root)
     original = Elf(original_path)
@@ -49,11 +76,14 @@ def verify(original_path,compilers,build_dir,root=ROOT,only=None,jobs=1):
     require(bool(builds),'No selected build')
     require(len({b['id']for b in builds}) == len(builds),'Duplicate build output ID')
     versions = {version:compiler_version(compilers[version],version)for version in {b['compiler']for b in builds}}
+    if any(b.get('kind') == 'lto' for b in builds):
+        require(linker is not None,'LTO builds need --lld8')
+        versions['lld'] = linker_version(linker,'8.0.1')
     build_dir.mkdir(parents=True,exist_ok=True)
     relative = original.relative_relocations();matches = [];failures = [];receipts = []
     def compile_build(build):
-        output = build_dir/(build['id']+'.o')
-        for command in build_commands(build,compilers[build['compiler']],root,build_dir):
+        output = build_output(build,build_dir)
+        for command in build_commands(build,compilers[build['compiler']],root,build_dir,linker):
             result = subprocess.run(command,capture_output=True,text=True,
                                     cwd=root,
                                     creationflags=getattr(subprocess,'CREATE_NO_WINDOW',0),
@@ -85,7 +115,7 @@ def verify(original_path,compilers,build_dir,root=ROOT,only=None,jobs=1):
     require(not failures,'Complete byte comparison failed: '+str(failures[:5]))
     snapshot = dict(version=1,generated_at=dt.datetime.now(dt.timezone.utc).isoformat(),
                     target_elf_sha256=target['sha256'],input_sha256=input_hashes(root),
-                    compiler_versions=versions,compiler_sha256={k:digest(Path(compilers[k]).read_bytes())for k in versions},
+                    compiler_versions=versions,compiler_sha256={k:digest(Path(linker if k == 'lld' else compilers[k]).read_bytes())for k in versions},
                     exact_functions=len(matches),exact_bytes=sum(r['size']for r in matches),
                     builds=receipts,matches=sorted(matches,key=lambda r:int(r['address'],0)))
     if not only:
@@ -102,11 +132,13 @@ def main():
     parser.add_argument('--original',type=Path,default=ROOT/'orig/Scott_Switch.elf')
     parser.add_argument('--clang7',type=Path,default=os.environ.get('SCOTT_CLANG7','toolchains/llvm701/bin/clang++'))
     parser.add_argument('--clang8',type=Path,default=os.environ.get('SCOTT_CLANG8','toolchains/llvm801/bin/clang++'))
+    parser.add_argument('--lld8',type=Path,default=os.environ.get('SCOTT_LLD8','toolchains/llvm801/bin/ld.lld'))
     parser.add_argument('--build-dir',type=Path,default=ROOT/'build/verify')
     parser.add_argument('--only',help='Verify one build without updating the public snapshot')
     parser.add_argument('--jobs',type=int,default=1,help='Concurrent compiler processes (default: 1)')
     args = parser.parse_args()
-    verify(args.original,{'7.0.1':args.clang7.resolve(),'8.0.1':args.clang8.resolve()},args.build_dir.resolve(),only=args.only,jobs=args.jobs)
+    verify(args.original,{'7.0.1':args.clang7.resolve(),'8.0.1':args.clang8.resolve()},args.build_dir.resolve(),only=args.only,jobs=args.jobs,
+           linker=args.lld8.resolve())
 
 
 if __name__ == '__main__':main()

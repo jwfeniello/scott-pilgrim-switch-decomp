@@ -16,8 +16,8 @@ Edition** for Nintendo Switch.
 [Progress on decomp.dev](https://decomp.dev/jwfeniello/scott-pilgrim-switch-decomp)
 · [Progress workflow](https://github.com/jwfeniello/scott-pilgrim-switch-decomp/actions/workflows/progress.yml)
 
-**Current locally verified progress: 33,439 exact functions /
-3,793,564 bytes / 23.136194% of executable `.text`.** The original `.text` is 16,396,664 bytes.
+**Current locally verified progress: 33,609 exact functions /
+3,892,580 bytes / 23.740073% of executable `.text`.** The original `.text` is 16,396,664 bytes.
 This includes engine and library infrastructure. The project does not yet rebuild
 or boot the complete game. Original method names and many ABI declarations remain
 provisional. See the [integration plan](docs/INTEGRATION_PLAN.md) for
@@ -31,6 +31,11 @@ accessor, `Onyx::Transform` and `Vector3` value semantics, and adds 17 exact
 functions, including the player game-over coordinator. The held state is now
 exact as well, because the handle disposal writes the original's empty-bucket
 path explicitly.
+
+[The game executable is an LTO build](docs/LTO_BUILD.md): game code calls FreeType
+internals that only exist there if LTO inlined API bodies into it. Linking FreeType
+2.9 with the public LLVM 8.0.1 `ld.lld` adds 110 exact functions / 81,164 bytes that
+no separate build reproduces; FreeType also needs strict aliasing.
 
 [Compiler profiles](docs/COMPILERS.md#game-code--o3-optimization--o2-code-generation)
 now describe a two-step build: some game functions need `-O3` optimization with
@@ -51,7 +56,7 @@ calls, tail calls, pointers or adjacent proven functions, and the fork's struct
 and configuration changes are reconstructed from the original's offsets.
 
 [Engine families](docs/ENGINE_FAMILIES.md#template-instance-families-22-batch)
-now include 47 template families / 1,732 functions / 146,376 bytes. Each family is
+now include 50 template families / 1,786 functions / 164,228 bytes. Each family is
 one template instantiated once per original address and credited only there.
 The newest, nine [switch owner destructors](docs/GAMEPLAY_COMPONENTS.md#switch-owner-destructors),
 needed the listener-notification record declared not captured, as the
@@ -188,7 +193,7 @@ for these isolated function comparisons.
 From the repository root, with your own paths:
 
 ```powershell
-python tools/verify.py --original "C:\path\Scott_Switch.elf" --clang7 "C:\path\llvm701\bin\clang++.exe" --clang8 "C:\path\llvm801\bin\clang++.exe" --build-dir "D:\scott-build"
+python tools/verify.py --original "C:\path\Scott_Switch.elf" --clang7 "C:\path\llvm701\bin\clang++.exe" --clang8 "C:\path\llvm801\bin\clang++.exe" --lld8 "C:\path\llvm801\bin\ld.lld.exe" --build-dir "D:\scott-build"
 python tools/report.py
 python -m unittest discover -s tools -p "test_*.py" -v
 ```

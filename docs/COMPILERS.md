@@ -35,7 +35,9 @@ the linker validates the entire literal including its terminator against an
 immutable original section. See [the three family findings](TYPE_AND_CALLBACK_FAMILIES.md).
 
 Specify compiler paths with `--clang7` / `--clang8` or the environment variables
-`SCOTT_CLANG7` / `SCOTT_CLANG8`. Installations remain outside the repository.
+`SCOTT_CLANG7` / `SCOTT_CLANG8`. LTO builds also need `ld.lld` from the LLVM 8.0.1
+release (`--lld8` / `SCOTT_LLD8`); see [the LTO build](LTO_BUILD.md). Installations
+remain outside the repository.
 
 The 15% checkpoint also records `-O3` library builds with public libc++ 4 and
 musl header fixtures, allocator ABI views and explicit internal helper

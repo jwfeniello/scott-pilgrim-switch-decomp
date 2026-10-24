@@ -1,0 +1,27 @@
+/* Native (non-LTO) references that keep the call wrappers alive as link roots. */
+extern char call_FT_Init_FreeType[];
+extern char call_FT_Done_FreeType[];
+extern char call_FT_New_Memory_Face[];
+extern char call_FT_Done_Face[];
+extern char call_FT_Set_Char_Size[];
+extern char call_FT_Set_Pixel_Sizes[];
+extern char call_FT_Get_Char_Index[];
+extern char call_FT_Load_Glyph[];
+extern char call_FT_Load_Char[];
+extern char call_FT_Render_Glyph[];
+extern char call_FT_Get_Kerning[];
+extern char call_FT_Get_Glyph[];
+extern char call_FT_Glyph_To_Bitmap[];
+extern char call_FT_Done_Glyph[];
+extern char call_FT_Glyph_Copy[];
+extern char call_FT_Stroker_New[];
+extern char call_FT_Stroker_Set[];
+extern char call_FT_Stroker_Done[];
+extern char call_FT_Glyph_Stroke[];
+extern char call_FT_Glyph_StrokeBorder[];
+extern char call_FT_Outline_Embolden[];
+extern char call_FT_Select_Charmap[];
+extern char call_FT_Glyph_Get_CBox[];
+extern char call_FT_Outline_Translate[];
+extern char call_FT_Set_Transform[];
+void* const ft_keep[] = {call_FT_Init_FreeType,call_FT_Done_FreeType,call_FT_New_Memory_Face,call_FT_Done_Face,call_FT_Set_Char_Size,call_FT_Set_Pixel_Sizes,call_FT_Get_Char_Index,call_FT_Load_Glyph,call_FT_Load_Char,call_FT_Render_Glyph,call_FT_Get_Kerning,call_FT_Get_Glyph,call_FT_Glyph_To_Bitmap,call_FT_Done_Glyph,call_FT_Glyph_Copy,call_FT_Stroker_New,call_FT_Stroker_Set,call_FT_Stroker_Done,call_FT_Glyph_Stroke,call_FT_Glyph_StrokeBorder,call_FT_Outline_Embolden,call_FT_Select_Charmap,call_FT_Glyph_Get_CBox,call_FT_Outline_Translate,call_FT_Set_Transform};

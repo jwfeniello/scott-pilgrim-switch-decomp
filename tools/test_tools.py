@@ -130,6 +130,22 @@ class BuildCommandTests(unittest.TestCase):
         with self.assertRaises(Exception):
             build_commands(build,'clang','/r','/b')
 
+    def test_lto_commands(self):
+        from verify import build_commands,build_output
+        build = dict(id='l',kind='lto',source='src/Roots.c',lto_sources=['vendor/a.c','vendor/b.c'],keep_source='src/Keep.c',
+                     flags=['-O3','-flto'],keep_flags=['-O2'],link_flags=['--lto-O2'])
+        commands = build_commands(build,'clang','/r','/b','lld')
+        self.assertEqual(len(commands),5)
+        self.assertTrue(all('-flto' in c for c in commands[:3]) and '-flto' not in commands[3])
+        self.assertEqual(commands[-1][0],'lld')
+        self.assertIn('--save-temps',commands[-1])
+        self.assertTrue(str(build_output(build,'/b')).endswith('l.elf.lto.o'))
+        with self.assertRaises(Exception):
+            build_commands(build,'clang','/r','/b')
+        build['keep_flags'] = ['-flto']
+        with self.assertRaises(Exception):
+            build_commands(build,'clang','/r','/b','lld')
+
 
 class RelocationTests(unittest.TestCase):
     def test_unnamed_jump_table_and_strings_are_bound_separately(self):
