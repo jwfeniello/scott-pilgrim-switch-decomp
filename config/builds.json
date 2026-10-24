@@ -449443,6 +449443,253 @@
           "got_bindings": {}
         }
       ]
+    },
+    {
+      "id": "gameplay_component_access",
+      "source": "src/gameplay/ComponentAccess.cpp",
+      "compiler": "8.0.1",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-std=c++11",
+        "-O2",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-fomit-frame-pointer",
+        "-fno-pic",
+        "-fno-delete-null-pointer-checks"
+      ],
+      "header_roots": [
+        "src/gameplay"
+      ],
+      "functions": [
+        {
+          "address": "0x709f10",
+          "size": 108,
+          "symbol": "RolloffGraphics_Transform",
+          "target_sha256": "33f3c27dc6d92b0e7154e4e87e7234d31144fdf0261d73a1f8fb53ddb3724656",
+          "bindings": {
+            "Accessor_Resolver": "0x191cd10",
+            "Accessor_Resolve": "0x67edd0"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x709f80",
+          "size": 108,
+          "symbol": "RolloffGraphics_Transform",
+          "target_sha256": "a041d37269315dfb942a70bed8a96b325bb5506a83ecec8e4e99f06387ef9fed",
+          "bindings": {
+            "Accessor_Resolver": "0x191cd10",
+            "Accessor_Resolve": "0x67edd0"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x7214b0",
+          "size": 116,
+          "symbol": "Scene_ViewX",
+          "target_sha256": "d181d07663d4464f95561133f44f82b01f79227ebd2723d54c81526cd6479a8e",
+          "bindings": {
+            "Scene_Root": "0x191f8b0",
+            "Accessor_Resolver": "0x191cd10",
+            "Accessor_Resolve": "0x67edd0"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x721580",
+          "size": 120,
+          "symbol": "Scene_ViewVector64",
+          "target_sha256": "413ce4ddc3fea90269e63bee45e1521676dd11608b551cccc4646843ce3d149f",
+          "bindings": {
+            "Scene_Root": "0x191f8b0",
+            "Accessor_Resolver": "0x191cd10",
+            "Accessor_Resolve": "0x67edd0"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x721600",
+          "size": 120,
+          "symbol": "Scene_ViewVector58",
+          "target_sha256": "87b029b0c21dc35027db9a6fd4f49c5ab5af8d0d8f42f4ee105c8aab0ba484a8",
+          "bindings": {
+            "Scene_Root": "0x191f8b0",
+            "Accessor_Resolver": "0x191cd10",
+            "Accessor_Resolve": "0x67edd0"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x7ae780",
+          "size": 120,
+          "symbol": "LevelSection_RoundedDepth",
+          "target_sha256": "0298249351089373d79e75fd3ecd0b5a00efbcfe333f3c34622dcf5c4fae53aa",
+          "bindings": {
+            "Accessor_Resolver": "0x191cd10",
+            "Accessor_Resolve": "0x67edd0"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x8be880",
+          "size": 132,
+          "symbol": "ShadowAnimatedObject_Position",
+          "target_sha256": "863f829e7771ee21d74e19a79479f5c83e938868f7daedea1c81805e8befb56f",
+          "bindings": {
+            "Accessor_Resolver": "0x191cd10",
+            "Accessor_Resolve": "0x67edd0"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x8cd9f0",
+          "size": 104,
+          "symbol": "AnimationInfoHolder_CurrentFlag2",
+          "target_sha256": "e8829342261c08f237503354792ee057e194e984a245a5e354c0d284ee30950e",
+          "bindings": {
+            "Accessor_Resolver": "0x191cd10",
+            "Accessor_Resolve": "0x67edd0"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x93fc90",
+          "size": 92,
+          "symbol": "AnimatedAiActor_ForwardQuery",
+          "target_sha256": "8b82c4ae4f06d0b45ba2cc619755b9ae3ccea4976fbd885ec8fab1867300d28c",
+          "bindings": {
+            "Accessor_Resolver": "0x191cd10",
+            "Accessor_Resolve": "0x67edd0"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xc5eb20",
+          "size": 124,
+          "symbol": "TransformOwner_CopyPosition",
+          "target_sha256": "3b9a92976c1f9ec71eb828e6289dc516ab9df5b6e1deb9dc59ace7f396d42006",
+          "bindings": {
+            "Accessor_Resolver": "0x191cd10",
+            "Accessor_Resolve": "0x67edd0"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xc5eba0",
+          "size": 152,
+          "symbol": "TransformOwner_SetPosition",
+          "target_sha256": "7cc75f2d97b7306cfa00322262a96c4f90b5d18e1d25bacc9e62f4c245f4dd11",
+          "bindings": {
+            "Accessor_Resolver": "0x191cd10",
+            "Accessor_Resolve": "0x67edd0",
+            "Transform_Invalidate": "0x68f3b0"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xc5edc0",
+          "size": 124,
+          "symbol": "TransformOwner_CopyVector70",
+          "target_sha256": "507e27bac94352ef5c96cd7b86cef3dbf5568919704156be24e4038b039b2581",
+          "bindings": {
+            "Accessor_Resolver": "0x191cd10",
+            "Accessor_Resolve": "0x67edd0"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xc5ee40",
+          "size": 124,
+          "symbol": "TransformOwner_CopyVector58",
+          "target_sha256": "ee1818f980c456069532bb1777f56f2e85bd10e9b0148b9b87d77c58ec050d47",
+          "bindings": {
+            "Accessor_Resolver": "0x191cd10",
+            "Accessor_Resolve": "0x67edd0"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xc5eec0",
+          "size": 124,
+          "symbol": "TransformOwner_CopyVector64",
+          "target_sha256": "1ef7bebc0f71fed96a7f269ee240bf0d82782fb3b79b8996906e60b165efd804",
+          "bindings": {
+            "Accessor_Resolver": "0x191cd10",
+            "Accessor_Resolve": "0x67edd0"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xcd3ee0",
+          "size": 112,
+          "symbol": "SimpleObstacle_Position",
+          "target_sha256": "76f60e840d0e108bff183a48c2838b63ddfae7fde68eea2e0f1bc66e8bc21624",
+          "bindings": {
+            "Accessor_Resolver": "0x191cd10",
+            "Accessor_Resolve": "0x67edd0"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xcd3f90",
+          "size": 112,
+          "symbol": "SimpleObstacle_OwnerPosition",
+          "target_sha256": "01740641383673b6eb32a2ed531a7218e5ae51196c1a9b7cc82c72c34adfe6b6",
+          "bindings": {
+            "Accessor_Resolver": "0x191cd10",
+            "Accessor_Resolve": "0x67edd0"
+          },
+          "got_bindings": {}
+        }
+      ]
+    },
+    {
+      "id": "gameplay_player_states",
+      "source": "src/gameplay/PlayerStates.cpp",
+      "compiler": "8.0.1",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-std=c++11",
+        "-O2",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-fomit-frame-pointer",
+        "-fno-pic",
+        "-fno-delete-null-pointer-checks",
+        "-ffunction-sections",
+        "-fdata-sections"
+      ],
+      "header_roots": [
+        "src/gameplay"
+      ],
+      "functions": [
+        {
+          "address": "0x98f270",
+          "size": 484,
+          "symbol": "Player_GameOverState",
+          "target_sha256": "9b74b6c200dfd30c4053375f3db79e259edfb8db2647e2815e3c63b53228efdd",
+          "bindings": {
+            "Level_Item": "0x7725e0",
+            "Accessor_Resolver": "0x191cd10",
+            "Accessor_Resolve": "0x67edd0",
+            "Game_Context": "0x770d70",
+            "Script_Runner": "0x6ea720",
+            "Script_Prepare": "0x7731c0",
+            "Script_Hash": "0xbfbce0",
+            "Script_Request": "0x778670"
+          },
+          "got_bindings": {},
+          "immutable_sections": {
+            "5": "0x1390ddc"
+          },
+          "literals": {
+            "47616d654f7665724d6f76696500": "0x131e665"
+          }
+        }
+      ]
     }
   ]
 }

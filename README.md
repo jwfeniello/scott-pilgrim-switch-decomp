@@ -16,14 +16,19 @@ Edition** for Nintendo Switch.
 [Progress on decomp.dev](https://decomp.dev/jwfeniello/scott-pilgrim-switch-decomp)
 · [Progress workflow](https://github.com/jwfeniello/scott-pilgrim-switch-decomp/actions/workflows/progress.yml)
 
-**Current locally verified progress: 31,051 exact functions /
-3,443,348 bytes / 21.000296% of executable `.text`.** The original `.text` is 16,396,664 bytes.
+**Current locally verified progress: 31,068 exact functions /
+3,445,724 bytes / 21.014787% of executable `.text`.** The original `.text` is 16,396,664 bytes.
 This includes engine and library infrastructure. The project does not yet rebuild
 or boot the complete game. Original method names and many ABI declarations remain
 provisional. See the [integration plan](docs/INTEGRATION_PLAN.md) for
 the work needed to turn isolated matches into a linked game build.
 
 ## Gameplay understanding
+
+[Gameplay components and actor state](docs/GAMEPLAY_COMPONENTS.md) names all 793
+recovered component type IDs from factory RTTI. It recovers the cached-component
+accessor, `Onyx::Transform` and `Vector3` value semantics, and adds 17 exact
+functions, including the player game-over coordinator.
 
 [Library build evidence](docs/LIBRARY_BUILD_EVIDENCE.md) adds 740 complete
 functions / 319,460 bytes. Error-call line numbers identify OpenSSL 1.0.2q; the
