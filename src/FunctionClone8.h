@@ -1,6 +1,5 @@
 // Working names and ABI views; complete original declarations remain unknown.
-// A polymorphic callable holding one pointer-sized capture; Clone() copies it
-// into a new heap object.
+// Clone() of a polymorphic callable holding one pointer-sized capture.
 #include <stdint.h>
 struct FunctionBase { virtual ~FunctionBase(); virtual FunctionBase* Clone() const = 0; };
 struct Capture { void* value; };

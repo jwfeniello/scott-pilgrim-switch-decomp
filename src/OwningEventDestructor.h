@@ -1,6 +1,5 @@
 // Working names and ABI views; complete original declarations remain unknown.
-// An event that owns one polymorphic object at a per-type offset and deletes it
-// on destruction; storage is released through Storm_Free.
+// Event destructors that delete one owned object at a per-type offset; storage freed through Storm_Free.
 #include <stdint.h>
 extern "C" void Storm_Free(void* pointer, const char* tag, int line) noexcept;
 struct Owned { virtual ~Owned(); };

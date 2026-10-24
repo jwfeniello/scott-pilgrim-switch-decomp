@@ -132,18 +132,50 @@ for the additions, compiler/header observations and unresolved declarations.
 
 ## Template instance families (22% batch)
 
-Three families of same-shaped functions are reproduced from one template each,
-instantiated once per original address. They add **370 complete functions /
-27,724 bytes**:
+Same-shaped functions are reproduced from one template per family,
+instantiated once per original address. Each instance's key is that address,
+and an instance is credited **only at its own address**. For the `std::function`
+family, the key is the destructor's address, and the other slots of the same
+vtable are credited to the same instance. Identical bodies elsewhere are not
+credited to an unrelated instance's symbol, and addresses that other builds
+already credit are skipped. These families add **870 complete functions /
+73,316 bytes**:
 
-| Source | Shape | Functions | Bytes |
+| Source (`src/`) | Shape | Functions | Bytes |
 | --- | --- | ---: | ---: |
-| `src/FunctionClone8KeepNoPic.cpp`, `src/FunctionClone8KeepPic.cpp` | `Clone()` of a polymorphic callable holding one pointer | 88 | 4,996 |
-| `src/OwningEventDestructor*.cpp` | Destructor of an event that owns one object at a per-type offset; storage freed through `Storm_Free` | 52 | 4,368 |
-| `src/ForwardingFunctionOmitNoPic.cpp` | libc++ 4 `std::__function::__func` slots for a functor holding captured pointers and another `std::function<void()>` | 230 | 18,360 |
+| `ForwardingFunction*` | libc++ 4 `std::function` slots for a functor holding captured pointers and another `std::function<void()>` | 230 | 18,360 |
+| `FunctionClone8*` | `Clone()` of a polymorphic callable holding one pointer | 88 | 4,996 |
+| `EchoEventDestructor*` | `storm::echo` event destructors (complete and deleting) that free a heap text buffer | 71 | 4,688 |
+| `OwningEventDestructor*` | Event destructor deleting one owned object; storage freed through `Storm_Free` | 52 | 4,368 |
+| `StormTypeFactory*` | `storm::DynamicTypeFactory<T>::Create`: Storm allocation of a value-initialized product | 46 | 4,048 |
+| `HandlerSlotSwitch*` | Swaps a member-function-pointer handler, notifying codes 0x2711–0x2713 | 18 | 3,600 |
+| `StormCopyClone*` | `Clone()` through Storm allocation and an out-of-line copy constructor | 43 | 3,440 |
+| `SmallPoolDestroy*` | Destroys a pool singleton and returns it to the allocator manager | 33 | 3,432 |
+| `OnyxArrayDestructor*` | Allocator-managed array destructor | 34 | 3,128 |
+| `AllocatorTreeDestroy*` | Recursive tree destroy through the allocator manager | 31 | 3,100 |
+| `SessionMessageDestructor*` | `storm::echo` session message destructors with a polymorphic payload | 34 | 2,856 |
+| `StormDeleteHolder*` | Destroys a held object and frees its most-derived storage | 32 | 2,432 |
+| `StormLayeredClone40*`, `StormLayeredClone56*` | Three-level copy-construct clones (40- and 56-byte events) | 25 | 3,680 |
+| `HudPoolRelease*` | Clears a HUD pool slot bit, then destroys the object | 32 | 2,048 |
+| `OwnedBufferDestructor*` | Deleting destructor that frees one owned buffer | 19 | 1,824 |
+| `DareTreeDestroy*` | Recursive tree destroy through the Dare allocator | 18 | 1,728 |
+| `PolyArrayOwnerDestructor*`, `PlainArrayDestructor*` | Array destructors that clear the size and free the data | 36 | 3,084 |
+| `DescriptorEquals*` | Chained equality of a base and two net values | 17 | 1,360 |
+| `SharedEventDestructor*` | Destructor releasing a libc++ `shared_ptr` member | 11 | 1,144 |
 
-The `std::function` family is an explicit instantiation of the vendored libc++
-`__func` template, so its clone, destroy and destructor slots come from the
-library header unchanged. Each instance's capture size comes from the offset
-of the inner `std::function` in its destructor. Class names are working names;
-the original types behind each instance are not identified.
+The code shapes pin down several details:
+
+- **`std::function` slots.** `ForwardingFunction` explicitly instantiates the
+  vendored libc++ 4 `__func` template.
+- **Reference counting.** In the `shared_ptr` release, `__release_shared` is
+  inlined, as in libc++ 5 and later. `SharedEventDestructor.h` therefore uses a
+  small ABI view of the control block instead of the libc++ 4 headers.
+- **Constructor order.** The Storm factory product zeroes the object, loads its
+  type, then writes the fields and finally the vptr. That only happens with an
+  implicit derived constructor over a base whose default constructor delegates.
+- **Storm settings.** The Storm clones and factories need `-fPIC` (vtables come
+  through the GOT). The 56-byte clone also needs `-mno-implicit-float`, like the
+  rest of the SDK region.
+
+Class names are working names; the original types behind each instance are not
+identified.

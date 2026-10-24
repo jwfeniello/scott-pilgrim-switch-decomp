@@ -16,8 +16,8 @@ Edition** for Nintendo Switch.
 [Progress on decomp.dev](https://decomp.dev/jwfeniello/scott-pilgrim-switch-decomp)
 · [Progress workflow](https://github.com/jwfeniello/scott-pilgrim-switch-decomp/actions/workflows/progress.yml)
 
-**Current locally verified progress: 32,066 exact functions /
-3,617,192 bytes / 22.060536% of executable `.text`.** The original `.text` is 16,396,664 bytes.
+**Current locally verified progress: 32,566 exact functions /
+3,662,784 bytes / 22.338593% of executable `.text`.** The original `.text` is 16,396,664 bytes.
 This includes engine and library infrastructure. The project does not yet rebuild
 or boot the complete game. Original method names and many ABI declarations remain
 provisional. See the [integration plan](docs/INTEGRATION_PLAN.md) for
@@ -35,6 +35,10 @@ no FDE covers as Nintendo's libcurl 7.64.1 fork and nghttp2 1.38.0. It adds 628
 complete functions / 143,744 bytes there. Each extent's boundaries are proven by
 calls, tail calls, pointers or adjacent proven functions, and the fork's struct
 and configuration changes are reconstructed from the original's offsets.
+
+[Engine families](docs/ENGINE_FAMILIES.md#template-instance-families-22-batch)
+now include 21 template families / 870 functions / 73,316 bytes. Each family is
+one template instantiated once per original address and credited only there.
 
 [Library build evidence](docs/LIBRARY_BUILD_EVIDENCE.md) adds 740 complete
 functions / 319,460 bytes. Error-call line numbers identify OpenSSL 1.0.2q; the
