@@ -1,0 +1,74 @@
+--- a/lib/curl_memory.h
++++ b/lib/curl_memory.h
+@@ -98,11 +98,13 @@
+ #define CURL_DID_MEMORY_FUNC_TYPEDEFS
+ #endif
+ 
+-extern curl_malloc_callback Curl_cmalloc;
+-extern curl_free_callback Curl_cfree;
+-extern curl_realloc_callback Curl_crealloc;
+-extern curl_strdup_callback Curl_cstrdup;
+-extern curl_calloc_callback Curl_ccalloc;
++/* SDK fork: allocation entry points are functions that dispatch through a
++   callback table (direct calls at 0x28728..0x28768 in the original). */
++extern void *Curl_cmalloc(size_t size);
++extern void Curl_cfree(void *ptr);
++extern void *Curl_crealloc(void *ptr, size_t size);
++extern char *Curl_cstrdup(const char *str);
++extern void *Curl_ccalloc(size_t nmemb, size_t size);
+ #if defined(WIN32) && defined(UNICODE)
+ extern curl_wcsdup_callback Curl_cwcsdup;
+ #endif
+--- a/lib/urldata.h
++++ b/lib/urldata.h
+@@ -221,6 +221,11 @@
+   char *egdsocket;       /* path to file containing the EGD daemon socket */
+   char *cipher_list;     /* list of ciphers to use */
+   char *cipher_list13;   /* list of TLS 1.3 cipher suites to use */
++  /* SDK fork: six pointer-sized fields and a flag precede the bits (the
++     original reads verifypeer..sessionid at offset 0x79). Their uses are
++     outside the upstream sources. */
++  void *sdk_reserved[6];
++  bool sdk_flag;
+   bit verifypeer:1;      /* set TRUE if this is desired */
+   bit verifyhost:1;      /* set TRUE if CN/SAN must match hostname */
+   bit verifystatus:1;    /* set TRUE if certificate status must be checked */
+@@ -1517,6 +1522,8 @@
+   long use_port;     /* which port to use (when not using default) */
+   unsigned long httpauth;  /* kind of HTTP authentication to use (bitmask) */
+   unsigned long proxyauth; /* kind of proxy authentication to use (bitmask) */
++  /* SDK fork: three byte-sized options set by the fork's setopt cases. */
++  unsigned char sdk_options[3];
+   unsigned long socks5auth;/* kind of SOCKS5 authentication to use (bitmask) */
+   long followlocation; /* as in HTTP Location: */
+   long maxredirs;    /* maximum no. of http(s) redirects to follow, set to -1
+--- a/lib/curl_setup_once.h
++++ b/lib/curl_setup_once.h
+@@ -260,6 +260,8 @@
+ #  define sclose(x)  close_s((x))
+ #elif defined(USE_LWIPSOCK)
+ #  define sclose(x)  lwip_close((x))
++#elif defined(CURL_SDK_SOCKETS)
++#  define sclose(x)  nnsocketClose((x))
+ #else
+ #  define sclose(x)  close((x))
+ #endif
+@@ -407,9 +409,18 @@
+  * (or equivalent) on this platform to hide platform details to code using it.
+  */
+ 
++#ifdef CURL_SDK_SOCKETS
++int nnsocketGetLastErrno(void);
++int nnsocketSetLastErrno(int error);
++int nnsocketClose(int socket);
++#endif
+ #ifdef USE_WINSOCK
+ #define SOCKERRNO         ((int)WSAGetLastError())
+ #define SET_SOCKERRNO(x)  (WSASetLastError((int)(x)))
++#elif defined(CURL_SDK_SOCKETS)
++/* SDK fork: socket errors come from the platform socket library. */
++#define SOCKERRNO         (nnsocketGetLastErrno())
++#define SET_SOCKERRNO(x)  (nnsocketSetLastErrno((int)(x)))
+ #else
+ #define SOCKERRNO         (errno)
+ #define SET_SOCKERRNO(x)  (errno = (x))

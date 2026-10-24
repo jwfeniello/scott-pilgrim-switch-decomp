@@ -7,7 +7,7 @@ from pathlib import Path
 import subprocess
 
 from elf import Elf,link_method,require
-from project import ROOT,digest,inventory,input_hashes,load
+from project import ROOT,check_non_fde_evidence,digest,inventory,input_hashes,load,non_fde_inventory
 
 
 def compiler_version(compiler,expected):
@@ -25,6 +25,9 @@ def verify(original_path,compilers,build_dir,root=ROOT,only=None,jobs=1):
     spans = original.unwind_ranges()
     require(spans == {address:row['size']for address,row in functions.items()},'Original complete FDE inventory differs')
     require(original.named['.text'][3] == int(target['text_address'],0) and original.named['.text'][5] == target['text_size'],'Original .text denominator differs')
+    extents = non_fde_inventory(root,target,functions)
+    check_non_fde_evidence(original,spans,extents)
+    spans = {**spans,**{address:row['size']for address,row in extents.items()}}
     builds = load(root/'config/builds.json')['builds']
     if only:builds = [b for b in builds if b['id'] == only]
     require(bool(builds),'No selected build')
@@ -47,7 +50,7 @@ def verify(original_path,compilers,build_dir,root=ROOT,only=None,jobs=1):
             receipts.append(dict(id=build['id'],compiler=build['compiler'],object_sha256=digest(obj.data)))
             for recipe in build['functions']:
                 address = int(recipe['address'],0)
-                require(recipe['size'] == spans[address],'Recipe does not cover the full original FDE')
+                require(address in spans and recipe['size'] == spans[address],'Recipe does not cover a full FDE or proven extent')
                 linked,relocations = link_method(obj,recipe,original,relative)
                 expected = original.at(address,spans[address])
                 require(digest(expected) == recipe['target_sha256'],'Original function hash differs from manifest')

@@ -1,0 +1,9 @@
+{
+  "upstream": "curl 7.64.1",
+  "tag": "curl-7_64_1",
+  "url": "https://api.github.com/repos/curl/curl/tarball/curl-7_64_1",
+  "archive_sha256": "6b15104ad3a35775e4cfb087193b6a8a65037163cc60e1183b65abbaef237110",
+  "vendored": "Upstream lib/ and include/curl/ sources and headers with three headers edited (vendor/curl-7.64.1-sdk.patch) and a reconstructed lib/curl_config.h.",
+  "evidence": "The original contains libcurl/7.64.1 and NintendoSDK_libcurl strings, calls nnsocket*/nnos* imports from curl code, dispatches allocation through a callback table, and uses the struct offsets reproduced by the edits.",
+  "limitations": "The SDK fork itself is not public. The edits and configuration reproduce the matched functions; fields added by the fork are unnamed and the fork-only code (TLS backend, resolver, socket glue) is not reconstructed."
+}

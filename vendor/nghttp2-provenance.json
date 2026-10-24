@@ -1,0 +1,8 @@
+{
+  "upstream": "nghttp2 1.38.0",
+  "url": "https://github.com/nghttp2/nghttp2/releases/download/v1.38.0/nghttp2-1.38.0.tar.gz",
+  "archive_sha256": "fe9a75ec44e3a2e8f7f0cb83ad91e663bbc4c5085baf37b57ee2610846d7cf5d",
+  "vendored": "Upstream lib/*.c, lib/*.h, lib/includes/nghttp2 headers and COPYING; bytes unchanged.",
+  "evidence": "The original contains the 1.38.0 version string and nghttp2 frame/HPACK error strings next to the curl code.",
+  "limitations": "Only complete matched bodies are credited; the build configuration is inferred."
+}

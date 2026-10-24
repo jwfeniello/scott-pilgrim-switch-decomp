@@ -51,3 +51,18 @@ disables `FT_CONFIG_OPTION_ENVIRONMENT_PROPERTIES`.
 The public miniupnpc 1.9 headers under `vendor/miniupnpc-1.9` and the source views
 in `src/MiniUpnpc19_*.c` retain their upstream notices. Copyright (c) 2005-2014
 Thomas Bernard; the complete BSD-style license is in `vendor/miniupnpc-1.9/LICENSE`.
+
+# curl
+
+The curl 7.64.1 files under `vendor/curl-7.64.1-sdk` retain their upstream
+notices. Copyright (c) 1996 - 2019, Daniel Stenberg, <daniel@haxx.se>, and many
+contributors; the complete curl license is in `vendor/curl-7.64.1-sdk/COPYING`.
+Three headers are edited to reconstruct the platform fork
+(`vendor/curl-7.64.1-sdk.patch`), and `lib/curl_config.h` is a derived
+configuration.
+
+# nghttp2
+
+The nghttp2 1.38.0 files under `vendor/nghttp2-1.38.0` are unchanged. Copyright
+(c) 2012, 2014, 2015, 2016 Tatsuhiro Tsujikawa and nghttp2 contributors; the
+complete MIT license is in `vendor/nghttp2-1.38.0/COPYING`.

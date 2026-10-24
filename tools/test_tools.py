@@ -10,7 +10,7 @@ import unittest
 from types import SimpleNamespace
 
 from elf import binding_key,immutable_literal,immutable_section,link_method,relocate
-from project import ROOT,input_hashes,load,validated_snapshot
+from project import ROOT,all_functions,check_non_fde_evidence,input_hashes,load,non_fde_inventory,validated_snapshot
 from report import make_report
 from check_publish import check_report
 
@@ -22,12 +22,15 @@ class ReportTests(unittest.TestCase):
         snapshot = load(ROOT/'progress/verified.json')
         self.assertEqual(int(m['total_code']),16396664)
         self.assertEqual(int(m['matched_code']),snapshot['exact_bytes'])
-        self.assertEqual(m['total_functions'],53675)
+        target,functions = all_functions()
+        proven = sum(row['size']for row in functions.values()if 'start' in row)
+        self.assertEqual(m['total_functions'],len(functions))
+        self.assertEqual(len(functions)-sum('start' in row for row in functions.values()),53675)
         self.assertEqual(m['matched_functions'],snapshot['exact_functions'])
         self.assertAlmostEqual(m['matched_code_percent'],100*snapshot['exact_bytes']/16396664)
         self.assertEqual(int(m['complete_code']),0)
         unknown = next(u for u in report['units']if u['name']=='unmatched/text_without_fde')
-        self.assertEqual(int(unknown['measures']['total_code']),559736)
+        self.assertEqual(int(unknown['measures']['total_code']),559736-proven)
         self.assertEqual(unknown['functions'],[])
 
     def test_stale_source_and_tampered_snapshot(self):
@@ -63,6 +66,53 @@ class ReportTests(unittest.TestCase):
                 unit['functions'][0]['fuzzy_match_percent']=99
                 break
         with self.assertRaises(ValueError):check_report(changed)
+
+
+class NonFdeTests(unittest.TestCase):
+    """Boundary evidence for exact functions in code that no FDE covers."""
+    def original(self,calls=(),jumps=(),pointers=()):
+        return SimpleNamespace(direct_branches=lambda:(list(calls),list(jumps)),
+                               relative_relocations=lambda:{0x9000+8*i:t for i,t in enumerate(pointers)})
+
+    def extents(self,*rows):
+        return {a:dict(address=hex(a),size=n,name='f',start=s,end=e)for a,n,s,e in rows}
+
+    def test_calls_tails_pointers_and_adjacency_are_accepted(self):
+        spans = {0x100:0x20,0x400:0x10}
+        extents = self.extents((0x120,0x20,'after_function','before_function'),
+                               (0x140,0x40,'after_function','call'),
+                               (0x180,0x10,'call','tail'),(0x190,0x30,'tail','pointer'),
+                               (0x3f0,0x10,'pointer','before_function'))
+        # The call and tail branches come from inside FDE functions or listed extents.
+        original = self.original(calls=[(0x104,0x180)],jumps=[(0x404,0x190)],pointers=[0x1c0,0x3f0])
+        check_non_fde_evidence(original,spans,extents)
+
+    def test_unsupported_or_unproven_boundaries_are_rejected(self):
+        spans = {0x100:0x20}
+        cases = (
+            ('no_evidence',self.extents((0x200,0x10,'call','call')),self.original()),
+            ('call_from_unproven_code',self.extents((0x200,0x10,'call','pointer')),
+             self.original(calls=[(0x300,0x200)],pointers=[0x210])),
+            ('jump_inside_same_extent',self.extents((0x200,0x20,'tail','pointer')),
+             self.original(jumps=[(0x204,0x200)],pointers=[0x220])),
+            ('gap_after_function',self.extents((0x124,0x10,'after_function','pointer')),
+             self.original(pointers=[0x134])),
+        )
+        for label,extents,original in cases:
+            with self.subTest(label=label):
+                with self.assertRaisesRegex(ValueError,'boundary evidence'):
+                    check_non_fde_evidence(original,spans,extents)
+
+    def test_inventory_rejects_overlap_and_unknown_evidence(self):
+        target = dict(text_address='0x100',text_size=0x1000,unmatched_text_without_fde_bytes=0x100)
+        functions = {0x100:dict(address='0x100',size=0x20,name='a')}
+        for label,row in (('overlap',('0x110','16','f','call','call')),('evidence',('0x200','16','f','guess','call')),
+                          ('outside',('0x2000','16','f','call','call'))):
+            with self.subTest(label=label):
+                with tempfile.TemporaryDirectory(dir=os.environ.get('SCOTT_TEST_TMP')) as temporary:
+                    (Path(temporary)/'config').mkdir()
+                    (Path(temporary)/'config/non_fde_functions.tsv').write_text('\t'.join(row)+'\n')
+                    with self.assertRaises(ValueError):non_fde_inventory(temporary,target,functions)
 
 
 class RelocationTests(unittest.TestCase):

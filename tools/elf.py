@@ -95,6 +95,17 @@ class Elf:
             previous_end = address+size
         return spans
 
+    def direct_branches(self):
+        """(source, target) pairs for every BL and unconditional B word in .text."""
+        if hasattr(self,'_direct_branches'):return self._direct_branches
+        text = self.named['.text'];calls = [];jumps = []
+        for index,word in enumerate(struct.unpack_from(f'<{text[5]//4}I',self.data,text[4])):
+            if word&0x7c000000 != 0x14000000:continue
+            source = text[3]+4*index;target = source+4*((word&0x3ffffff)-((word&0x2000000)<<1))
+            (calls if word&0x80000000 else jumps).append((source,target))
+        self._direct_branches = calls,jumps
+        return self._direct_branches
+
     def symbols(self):
         if hasattr(self,'_symbols'):return self._symbols
         table = self.named['.symtab'];strings = self.section_bytes(self.sections[table[6]])

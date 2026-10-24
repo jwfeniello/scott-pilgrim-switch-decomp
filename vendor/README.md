@@ -109,3 +109,21 @@ build-shape evidence and its limits.
 Provenance is in `miniupnpc-provenance.json` and file hashes in
 `miniupnpc_sha256.json`. The original Storm fork is not upstream; three bodies
 match exactly and the rest of the fork remains unmatched.
+
+## curl 7.64.1 SDK fork reconstruction and nghttp2 1.38.0
+
+`curl-7.64.1-sdk` contains the upstream curl 7.64.1 `lib/` and `include/curl/`
+files from the official [`curl-7_64_1` tag](https://github.com/curl/curl/tree/curl-7_64_1),
+with three headers edited to match the platform fork the game links. The edits
+are listed in `curl-7.64.1-sdk.patch`. `lib/curl_config.h` is a derived
+configuration: CMake output for a generic aarch64 target, edited to the settings
+the original code requires. `nghttp2-1.38.0` contains unchanged upstream library
+sources and headers from the official
+[`v1.38.0` release](https://github.com/nghttp2/nghttp2/releases/tag/v1.38.0).
+Archive hashes are in `curl-sdk-provenance.json` and `nghttp2-provenance.json`,
+and file hashes in `curl_sdk_sha256.json` and `nghttp2_sha256.json`.
+
+Both libraries sit in `.text` code that has no FDE. How their extents are proven
+is described in [`docs/NON_FDE_CODE.md`](../docs/NON_FDE_CODE.md). The fork's
+own code (its TLS backend, resolver and socket glue) has no public source and is
+not reconstructed.

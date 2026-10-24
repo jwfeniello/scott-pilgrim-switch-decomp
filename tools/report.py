@@ -39,8 +39,10 @@ def make_report(root=ROOT):
         units.append(dict(name=group,measures=measures(size,exact_bytes,len(rows),exact_count),
                           sections=[dict(name='.text',size=str(size),fuzzy_match_percent=100*exact_bytes/size)],
                           functions=items,metadata=metadata))
-    # Bytes outside validated FDEs stay in the whole-.text denominator at zero.
-    unattributed = target['text_size']-target['fde_code_bytes']
+    # Bytes outside validated FDEs and proven non-FDE extents stay in the
+    # whole-.text denominator at zero.
+    proven = sum(row['size']for row in functions.values()if 'start' in row)
+    unattributed = target['text_size']-target['fde_code_bytes']-proven
     if unattributed:
         units.append(dict(name='unmatched/text_without_fde',measures=measures(unattributed,0,0,0),
                           sections=[dict(name='.text',size=str(unattributed),fuzzy_match_percent=0)],

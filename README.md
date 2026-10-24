@@ -16,8 +16,8 @@ Edition** for Nintendo Switch.
 [Progress on decomp.dev](https://decomp.dev/jwfeniello/scott-pilgrim-switch-decomp)
 · [Progress workflow](https://github.com/jwfeniello/scott-pilgrim-switch-decomp/actions/workflows/progress.yml)
 
-**Current locally verified progress: 31,068 exact functions /
-3,445,724 bytes / 21.014787% of executable `.text`.** The original `.text` is 16,396,664 bytes.
+**Current locally verified progress: 31,673 exact functions /
+3,577,056 bytes / 21.815755% of executable `.text`.** The original `.text` is 16,396,664 bytes.
 This includes engine and library infrastructure. The project does not yet rebuild
 or boot the complete game. Original method names and many ABI declarations remain
 provisional. See the [integration plan](docs/INTEGRATION_PLAN.md) for
@@ -29,6 +29,12 @@ the work needed to turn isolated matches into a linked game build.
 recovered component type IDs from factory RTTI. It recovers the cached-component
 accessor, `Onyx::Transform` and `Vector3` value semantics, and adds 17 exact
 functions, including the player game-over coordinator.
+
+[Code without FDEs](docs/NON_FDE_CODE.md) identifies the 222,892-byte block that
+no FDE covers as Nintendo's libcurl 7.64.1 fork and nghttp2 1.38.0. It adds 605
+complete functions / 131,332 bytes there. Each extent's boundaries are proven by
+calls, tail calls, pointers or adjacent proven functions, and the fork's struct
+and configuration changes are reconstructed from the original's offsets.
 
 [Library build evidence](docs/LIBRARY_BUILD_EVIDENCE.md) adds 740 complete
 functions / 319,460 bytes. Error-call line numbers identify OpenSSL 1.0.2q; the
@@ -168,7 +174,8 @@ python -m unittest discover -s tools -p "test_*.py" -v
 
 The verifier compiles ordinary C and C++, resolves checked standard ELF relocations
 against original symbol bindings, and compares every byte of each complete
-original FDE function extent. It rejects extra compiler bytes as well as missing
+original FDE function extent, or of a proven extent in code without FDEs
+(`config/non_fde_functions.tsv`, rechecked against the original). It rejects extra compiler bytes as well as missing
 or different bytes. Source code is compiled, never executed. Outputs go to the
 chosen build directory. `--jobs 4` optionally runs four compiler processes;
 byte comparisons and receipt order remain deterministic. `--only BUILD_ID` checks one entry from
@@ -191,8 +198,8 @@ local verification evidence; it does not receive the original game binary or
 perform a new original-byte comparison. See [publication setup](docs/PUBLISHING.md).
 
 All 53,675 original `.text` FDE functions appear in the report, including
-unmatched functions. Another 559,736 bytes outside these FDEs stay unmatched in
-the denominator. Data matching is not tracked yet. The fully linked measure is
+unmatched functions, together with the 605 proven extents in code without FDEs.
+The other 428,404 bytes outside FDEs stay unmatched in the denominator. Data matching is not tracked yet. The fully linked measure is
 zero because there is no complete linked game build. Unmatched functions are
 grouped by address for navigation; these groups do not claim original source-file
 boundaries.
