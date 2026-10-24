@@ -1,13 +1,6 @@
 {
   "unmatched": [
     {
-      "source": "src/wip/MetadataRegistry.cpp",
-      "address": "0x667260",
-      "size": 47908,
-      "exact": false,
-      "note": "13 differing instruction words in last verified workspace build; zero matching credit"
-    },
-    {
       "source": "src/wip/UpdateComponents.cpp",
       "address": "0x323280",
       "size": 560,

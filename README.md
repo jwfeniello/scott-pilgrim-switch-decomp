@@ -16,8 +16,8 @@ Edition** for Nintendo Switch.
 [Progress on decomp.dev](https://decomp.dev/jwfeniello/scott-pilgrim-switch-decomp)
 · [Progress workflow](https://github.com/jwfeniello/scott-pilgrim-switch-decomp/actions/workflows/progress.yml)
 
-**Current locally verified progress: 33,350 exact functions /
-3,717,140 bytes / 22.670099% of executable `.text`.** The original `.text` is 16,396,664 bytes.
+**Current locally verified progress: 33,360 exact functions /
+3,771,744 bytes / 23.003118% of executable `.text`.** The original `.text` is 16,396,664 bytes.
 This includes engine and library infrastructure. The project does not yet rebuild
 or boot the complete game. Original method names and many ABI declarations remain
 provisional. See the [integration plan](docs/INTEGRATION_PLAN.md) for
@@ -32,6 +32,12 @@ functions, including the player game-over coordinator. The held state is now
 exact as well, because the handle disposal writes the original's empty-bucket
 path explicitly.
 
+[Circuit factories and property reflection](docs/METADATA_REGISTRY.md) is now an
+exact match: the 47,908-byte initializer that registers 160 gameplay factories
+and 41 circuit properties. Its last 13 differing words came from register
+allocation, not scheduling. A search over all 720 record field orders found the
+single shared order that matches.
+
 [Code without FDEs](docs/NON_FDE_CODE.md) identifies the 222,892-byte block that
 no FDE covers as Nintendo's libcurl 7.64.1 fork and nghttp2 1.38.0. It adds 628
 complete functions / 143,744 bytes there. Each extent's boundaries are proven by
@@ -39,8 +45,11 @@ calls, tail calls, pointers or adjacent proven functions, and the fork's struct
 and configuration changes are reconstructed from the original's offsets.
 
 [Engine families](docs/ENGINE_FAMILIES.md#template-instance-families-22-batch)
-now include 42 template families / 1,653 functions / 126,624 bytes. Each family is
+now include 43 template families / 1,662 functions / 133,320 bytes. Each family is
 one template instantiated once per original address and credited only there.
+The newest, nine [switch owner destructors](docs/GAMEPLAY_COMPONENTS.md#switch-owner-destructors),
+needed the listener-notification record declared not captured, as the
+original's tail calls show.
 
 [Library build evidence](docs/LIBRARY_BUILD_EVIDENCE.md) adds 740 complete
 functions / 319,460 bytes. Error-call line numbers identify OpenSSL 1.0.2q; the

@@ -1,9 +1,9 @@
 {
   "version": 1,
-  "generated_at": "2026-10-24T08:53:54.949634+00:00",
+  "generated_at": "2026-10-24T09:28:43.211561+00:00",
   "target_elf_sha256": "ea95638e6d6aaa0dc6cddd552a9366799aa1ec3bc07ee201f23f6c151103f5b8",
   "input_sha256": {
-    "config/builds.json": "57eefbb51f2e83625ec85935f51ea810f837ab5eca88dbc93d18e4f8b4503318",
+    "config/builds.json": "2f1a3fafbb3350ac81933ceb11a7144ba9b3d256563c1f285631a28aad1f2ac6",
     "config/functions.tsv": "399e91468a04e0459194c10d68d2210d1157cedefeb19c7851886ca7632fcb18",
     "config/non_fde_functions.tsv": "6a45f5e185454fa0472af00b2cdc9d040d73ca133d1106217e1fbbe3b32a8175",
     "config/target.json": "23cc6a5227206a953e7668acf5e9ae5c02a25c23b7e7967f0450a814b888241a",
@@ -44,6 +44,8 @@
     "src/ComponentRegistry.cpp": "3dc9d7ceb50583c97a05e43bafe526634d2c5b0f599fac32fe0fdda2440f3910",
     "src/ComponentSelection.cpp": "2205cc331083af7f5f8d5a4c411400288db48546c4b2cb382c6b0b1f2495acc1",
     "src/ComponentSlotAssign.cpp": "3f66fbb8b81866da5582eba1effd67a8ac4d29ae9b978fdbd65099013fb5e606",
+    "src/ComponentSwitchDestructor.h": "003aed941e05ab7a336cd85a7bedd1cdf6facc01aa3e2506256bd12fe157c6dd",
+    "src/ComponentSwitchDestructorOmitNoPic.cpp": "c181d5d35fcb95ef82c8a96ce23db6aa41f15301ee592f5c6f0e7cb3407354e2",
     "src/ComponentSwitchDisable.h": "5c8f7460a00cadca3695f8abea40eeab2811a6cb3f7fa3d816622bb46e5efb9f",
     "src/ComponentSwitchDisableOmitNoPic.cpp": "6e45c2595dacbee33bfd4e82aaae3943bc5458c3b70e91a78525de92fc29f88d",
     "src/ComponentSwitchEnable.h": "2d583110f0c0c00dda8109e7822dbf4c9d8821dc5ce187fcb0b4d13917d67cdc",
@@ -201,6 +203,7 @@
     "src/MatchmakingErrorDescription.cpp": "42dc95365d17b41921b95ee57f255beb63b743406739a3bd791ee5bc2a60de07",
     "src/MatchmakingRequestConstructor.cpp": "bf5bc86fd7276ea6f22567b8a960544673b2f673e31710d3ff640317be8417aa",
     "src/MatchmakingRequestDestructor.cpp": "aebe825b8402e0d9668b39e2077314f768350db39e44f4b2b4012c8993a78b7a",
+    "src/MetadataRegistry.cpp": "582cac7a03bf48d6be2390416ab202105ac242d50b9d9fb61ce9ceab4a235f6f",
     "src/MiniUpnpc19_minixml_O3pic_NoFloatSections.c": "f6d5417c28360037dd61a0c0e6e579078ac15d67c7284e33f45a8d40323ec026",
     "src/MiniUpnpc19_upnpreplyparse_O2pic_NoFloatSections.c": "b531a434db1573da1544b29773341cd80a1359db533d261dfb417253dc29c1be",
     "src/MiniUpnpc19_upnpreplyparse_O3pic_NoFloatSections.c": "b531a434db1573da1544b29773341cd80a1359db533d261dfb417253dc29c1be",
@@ -1015,6 +1018,7 @@
     "src/component_registry_calls.inc": "e32f7d5c03f0991b47ee6598b9e43585f45e476d769f13db130e036b99869587",
     "src/component_registry_declarations.inc": "54030f26efd2bfff5805c0c422a88297994e04ccb1b4d6d9386b1b0b526f96e6",
     "src/component_slot_assign_instances.inc": "8d084a4fd2ec08c73f9ccf30ebc17be3eccd78364c0067a34c7373fac8ffea74",
+    "src/component_switch_destructor_omit_no_pic_instances.inc": "1eac50ca74b624f918ff4badd5ee64aca0cbceb72a9658fea0e3a6a9bdb18f15",
     "src/component_switch_disable_omit_no_pic_instances.inc": "1c9833ed3b59e2573643d7826fcb2c15b8748bf4f33165d292173926956ef8dc",
     "src/component_switch_enable_omit_no_pic_instances.inc": "0b151c2bf0260c498c10765f9905c2bdc3227ae601f9c753b077c133276d692b",
     "src/compose_destructor_omit_no_pic_instances.inc": "ec9da9c6f01496b088dfa52a70199d8d3dc3373a5c2540b14e2ea03730b755e3",
@@ -1761,6 +1765,9 @@
     "src/lazy_type_info_omit_instances.inc": "d7a1e211b4700a097015f385739bdb1416677ef0e49e7a409a763cb2a8e453bf",
     "src/lazy_type_registration_instances.inc": "38828e6198c64d1d5c778371f56c6c4b39da79c4aea017ab83563dc6d2e9bd8f",
     "src/lazy_type_registration_omit_instances.inc": "a76ff4fd5d263e34241377f1a9aeb070b37f8bdfd68a8e9062b27ce1adab5d94",
+    "src/metadata_accessors.inc": "b41aacd8846350bd9a6ff75434702834f8bf3566c45801ec9e8def29cbb9b7dc",
+    "src/metadata_calls.inc": "d412a9451ceea22c8ce2eb1fc46917015f2dba043eda5c47a6aad094ac9b1694",
+    "src/metadata_declarations.inc": "5e26b7c83cdf240d03ad74185af94f5a3c1ff14cecbef6a8a06755d9ff4f00bf",
     "src/net_copy_factory_omit_pic_instances.inc": "1c2d5303ffa40617742ede8f19506a17c2c4573b3b8a1a7ca7176dec0406ec6d",
     "src/net_default_factory_omit_pic_instances.inc": "3854c401ec3556d42b4a50e8562dd6fd73d538decca5c603908d6c28cec45237",
     "src/net_property_delete_omit_no_pic0_instances.inc": "df304abde6f4b72a71655b2c7bd88652e8af4f431aa632410ad6467d1c896db8",
@@ -3859,8 +3866,8 @@
     "7.0.1": "c2f0a175157d9aaace8031f8e6d7ea0ed6142b4bcef287105e3ed227301f1002",
     "8.0.1": "dffd62a213ec6cdb4430012a4a41c11e5e32c288f133d5391f9be49e1c5b69de"
   },
-  "exact_functions": 33350,
-  "exact_bytes": 3717140,
+  "exact_functions": 33360,
+  "exact_bytes": 3771744,
   "builds": [
     {
       "id": "probes",
@@ -12861,6 +12868,16 @@
       "id": "compose_destructor_omit_no_pic",
       "compiler": "8.0.1",
       "object_sha256": "990edf5b5d0789046afa073c3bc5e0d5b17ce811d684c8ef2370ed74f60a41e4"
+    },
+    {
+      "id": "metadataregistry",
+      "compiler": "8.0.1",
+      "object_sha256": "d127a614ae16f977e76dc40b4ca7c578f962657667d23b6d5d66f98c8ee607ae"
+    },
+    {
+      "id": "component_switch_destructor_omit_no_pic",
+      "compiler": "8.0.1",
+      "object_sha256": "90e1f1d8da9b0fa193e427884fc4482ba7f2e1142526600a08f06260e5a76fd2"
     }
   ],
   "matches": [
@@ -193078,6 +193095,17 @@
       "relocation_count": 156
     },
     {
+      "address": "0x667260",
+      "size": 47908,
+      "exact": true,
+      "target_sha256": "d3a72429ae7327a3d88d101005df2d412437bf0b934d2ef0efcb8bdc0089fab6",
+      "compiled_sha256": "d3a72429ae7327a3d88d101005df2d412437bf0b934d2ef0efcb8bdc0089fab6",
+      "source": "src/MetadataRegistry.cpp",
+      "symbol": "InitializeMetadataRegistryCandidate",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 6449
+    },
+    {
       "address": "0x673280",
       "size": 196,
       "exact": true,
@@ -257175,6 +257203,17 @@
       "relocation_count": 1
     },
     {
+      "address": "0x93bf70",
+      "size": 744,
+      "exact": true,
+      "target_sha256": "6f00a20f04a6fb782fb06f4f67f00878dfb286896fce6ea3c2adad73809a7913",
+      "compiled_sha256": "6f00a20f04a6fb782fb06f4f67f00878dfb286896fce6ea3c2adad73809a7913",
+      "source": "src/ComponentSwitchDestructorOmitNoPic.cpp",
+      "symbol": "_ZN20ComponentSwitchOwnerILj9682800ELj1818424473ELj120EED1Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 32
+    },
+    {
       "address": "0x93c260",
       "size": 36,
       "exact": true,
@@ -257393,6 +257432,17 @@
       "symbol": "RecoveredLeaf_93d670",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 5
+    },
+    {
+      "address": "0x93d6a0",
+      "size": 744,
+      "exact": true,
+      "target_sha256": "e6723ce3878a93b3ee7f2b979dbc1556d7514dbb95fa3d9389afd6cabe431c28",
+      "compiled_sha256": "e6723ce3878a93b3ee7f2b979dbc1556d7514dbb95fa3d9389afd6cabe431c28",
+      "source": "src/ComponentSwitchDestructorOmitNoPic.cpp",
+      "symbol": "_ZN20ComponentSwitchOwnerILj9688736ELj1818424473ELj120EED1Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 32
     },
     {
       "address": "0x93d990",
@@ -299316,6 +299366,17 @@
       "relocation_count": 4
     },
     {
+      "address": "0xb4d3f0",
+      "size": 744,
+      "exact": true,
+      "target_sha256": "eb1324a8dea7d2bd043860e53674d32c7142625c03af48900140b4d9a4fa6664",
+      "compiled_sha256": "eb1324a8dea7d2bd043860e53674d32c7142625c03af48900140b4d9a4fa6664",
+      "source": "src/ComponentSwitchDestructorOmitNoPic.cpp",
+      "symbol": "_ZN20ComponentSwitchOwnerILj11850736ELj1818424473ELj120EED1Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 32
+    },
+    {
       "address": "0xb4d6e0",
       "size": 488,
       "exact": true,
@@ -301569,6 +301630,17 @@
       "symbol": "_Z14InvokeCallbackILj11933920EEvP10InvokeViewRK5Event",
       "source_review": "manual_reconstruction",
       "relocation_count": 0
+    },
+    {
+      "address": "0xb61900",
+      "size": 744,
+      "exact": true,
+      "target_sha256": "c2143dd5267192cbf92aba14dd21d33257b26c4217c8f7b33d8b9503410adf2c",
+      "compiled_sha256": "c2143dd5267192cbf92aba14dd21d33257b26c4217c8f7b33d8b9503410adf2c",
+      "source": "src/ComponentSwitchDestructorOmitNoPic.cpp",
+      "symbol": "_ZN20ComponentSwitchOwnerILj11933952ELj1818424473ELj120EED1Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 32
     },
     {
       "address": "0xb61bf0",
@@ -329940,6 +330012,17 @@
       "relocation_count": 4
     },
     {
+      "address": "0xc7e190",
+      "size": 744,
+      "exact": true,
+      "target_sha256": "c724a99eed3831074cbf48431c5706dc4793b179919c30941eac4aa64d3448b7",
+      "compiled_sha256": "c724a99eed3831074cbf48431c5706dc4793b179919c30941eac4aa64d3448b7",
+      "source": "src/ComponentSwitchDestructorOmitNoPic.cpp",
+      "symbol": "_ZN20ComponentSwitchOwnerILj13099408ELj1818424473ELj120EED1Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 32
+    },
+    {
       "address": "0xc7e480",
       "size": 488,
       "exact": true,
@@ -330259,6 +330342,17 @@
       "relocation_count": 0
     },
     {
+      "address": "0xc7faf0",
+      "size": 744,
+      "exact": true,
+      "target_sha256": "bae5dd82c689007e9ef42e1a53e204618a7e7e8a83f33c191ed574992ce2f828",
+      "compiled_sha256": "bae5dd82c689007e9ef42e1a53e204618a7e7e8a83f33c191ed574992ce2f828",
+      "source": "src/ComponentSwitchDestructorOmitNoPic.cpp",
+      "symbol": "_ZN20ComponentSwitchOwnerILj13105904ELj1818424473ELj120EED1Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 32
+    },
+    {
       "address": "0xc7fde0",
       "size": 488,
       "exact": true,
@@ -330466,6 +330560,17 @@
       "symbol": "_Z14InvokeCallbackILj13110080EEvP10InvokeViewRK5Event",
       "source_review": "manual_reconstruction",
       "relocation_count": 0
+    },
+    {
+      "address": "0xc80b60",
+      "size": 744,
+      "exact": true,
+      "target_sha256": "3a2be96d2aaeebc7df10d59a7e99b6e71d0a1127dba4fcdff78dc4dc89e3c20c",
+      "compiled_sha256": "3a2be96d2aaeebc7df10d59a7e99b6e71d0a1127dba4fcdff78dc4dc89e3c20c",
+      "source": "src/ComponentSwitchDestructorOmitNoPic.cpp",
+      "symbol": "_ZN20ComponentSwitchOwnerILj13110112ELj1818424473ELj120EED1Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 32
     },
     {
       "address": "0xc80e50",
@@ -333394,6 +333499,17 @@
       "relocation_count": 1
     },
     {
+      "address": "0xc98c20",
+      "size": 744,
+      "exact": true,
+      "target_sha256": "896cca605d478e23dd739a6d3aa2aee7effa2509026dc1052b0cc21d63274ec5",
+      "compiled_sha256": "896cca605d478e23dd739a6d3aa2aee7effa2509026dc1052b0cc21d63274ec5",
+      "source": "src/ComponentSwitchDestructorOmitNoPic.cpp",
+      "symbol": "_ZN20ComponentSwitchOwnerILj13208608ELj1818424473ELj120EED1Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 32
+    },
+    {
       "address": "0xc98f10",
       "size": 100,
       "exact": true,
@@ -333623,6 +333739,17 @@
       "symbol": "RecoveredLeaf_c9a080",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 4
+    },
+    {
+      "address": "0xc9a0d0",
+      "size": 744,
+      "exact": true,
+      "target_sha256": "7cdfe4ecda5ba6fdde8e4149e2ef700d2ffcf733cbd2dbb6c670027798bd0900",
+      "compiled_sha256": "7cdfe4ecda5ba6fdde8e4149e2ef700d2ffcf733cbd2dbb6c670027798bd0900",
+      "source": "src/ComponentSwitchDestructorOmitNoPic.cpp",
+      "symbol": "_ZN20ComponentSwitchOwnerILj13213904ELj1818424473ELj120EED1Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 32
     },
     {
       "address": "0xc9a3c0",

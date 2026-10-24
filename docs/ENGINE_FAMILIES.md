@@ -138,8 +138,8 @@ and an instance is credited **only at its own address**. For the `std::function`
 family, the key is the destructor's address, and the other slots of the same
 vtable are credited to the same instance. Identical bodies elsewhere are not
 credited to an unrelated instance's symbol, and addresses that other builds
-already credit are skipped. These families add **1,653 complete functions /
-126,624 bytes**:
+already credit are skipped. These families add **1,662 complete functions /
+133,320 bytes**:
 
 | Source (`src/`) | Shape | Functions | Bytes |
 | --- | --- | ---: | ---: |
@@ -175,6 +175,7 @@ already credit are skipped. These families add **1,653 complete functions /
 | `RegisteredTriggerDestructor*` | Destructor of two registered owned objects: unregister if flagged, destroy, free | 15 | 4,080 |
 | `ComposeDestructor*`, `HandleHolderRelease*` | Release a member component handle, disposing it at the last reference (see [handle disposal](GAMEPLAY_COMPONENTS.md#handle-disposal-and-the-empty-bucket-path)) | 21 | 7,740 |
 | `ColorPropertyRead*` | Reads a four-byte colour material property through the stream | 12 | 2,544 |
+| `ComponentSwitchDestructor*` | Switch owner destructor: clears the target, notifies listeners, then tail-calls the base destructor (see [switch owner destructors](GAMEPLAY_COMPONENTS.md#switch-owner-destructors)) | 9 | 6,696 |
 
 The code shapes pin down several details:
 

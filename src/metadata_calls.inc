@@ -97,7 +97,7 @@
     register_variable_property(ListGuard_1936800, List_1936808, Property_1936830, Vtable_18bdee0, Name_12ffa9e, 3, 156); // To
     register_variable_property(ListGuard_1936800, List_1936808, Property_1936850, Vtable_18bdf38, Name_131c9b1, 3, 160); // AutoToggleDirection
     register_function_property(ListGuard_1936800, List_1936808, Property_1936870, Vtable_18bde88, Name_13052a8, 3, &AccessorHost::Accessor_c60c20, &AccessorHost::Accessor_c60c30); // Duration
-    register_u32_value_property(ListGuard_19368f0, List_19368f8, Property_19368b0, Vtable_18bdf90, Name_130ed5f, 1, &AccessorHost::Accessor_c60c70, nullptr); // Value
+    register_function_property(ListGuard_19368f0, List_19368f8, Property_19368b0, Vtable_18bdf90, Name_130ed5f, 1, &AccessorHost::Accessor_c60c70, nullptr); // Value
     register_variable_property(ListGuard_19368f0, List_19368f8, Property_1936900, Vtable_18bdfe8, Name_12ffa99, 3, 152); // From
     register_variable_property(ListGuard_19368f0, List_19368f8, Property_1936920, Vtable_18bdfe8, Name_12ffa9e, 3, 156); // To
     register_variable_property(ListGuard_19368f0, List_19368f8, Property_1936940, Vtable_18be040, Name_131c9b1, 3, 160); // AutoToggleDirection

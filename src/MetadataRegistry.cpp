@@ -85,25 +85,10 @@ static __attribute__((always_inline)) inline void register_function_property(
         const void** vtable, const char* name, uint32_t flags, Accessor getter, Accessor setter) {
     property.next = nullptr;
     property.name = name;
-    property.vtable = vtable;
     property.flags = flags;
+    property.vtable = vtable;
     property.getter = getter;
     property.setter = setter;
-    link_property(guard, list, property);
-}
-
-// The readonly U32 Value registration has a distinct construction order.
-// This preserves the observed register allocation through the following lists;
-// its remaining local instruction-scheduling differences are reported strictly.
-static __attribute__((always_inline)) inline void register_u32_value_property(
-        uint64_t& guard, Property*& list, FunctionProperty& property,
-        const void** vtable, const char* name, uint32_t flags, Accessor getter, Accessor setter) {
-    property.next = nullptr;
-    property.getter = getter;
-    property.setter = setter;
-    property.name = name;
-    property.vtable = vtable;
-    property.flags = flags;
     link_property(guard, list, property);
 }
 

@@ -97,6 +97,29 @@ This made the held state exact. It also reproduces the same inlined disposal in
 the `HandleHolder` and `Compose` families. The same inlined code appears in 490
 still-unmatched functions (about 1 MB), so it is no longer a blocker for them.
 
+## Switch owner destructors
+
+Nine component switch owners share one 744-byte destructor
+([`ComponentSwitchDestructor.h`](../src/ComponentSwitchDestructor.h)). It takes a
+temporary reference to the target handle, clears the handle's object, and calls
+the listener notification `0xbf6e80` with hash `0x6c62f499` and a stack record
+`{current = null, previous}`. That is the same call and record as in
+`ComponentSelection.cpp`. It then drops the reference, disposing the handle at
+zero, and tail-calls the base destructor.
+
+Two details were needed:
+
+- **The tail call.** LLVM marks no call as a tail call after a stack object's
+  address escapes, unless the receiving parameter is `nocapture`. The original
+  tail-calls after passing the record in 18 functions. The only call-then-return
+  case that is not a tail call is an `invoke` inside an exception
+  specification, and LLVM never tail-calls an invoke. So the original compiler
+  treated the record as not captured. The declaration states this with
+  `__attribute__((noescape))`. Without it, none of the nine match.
+- **One terminate handler.** Inside the `noexcept` destructor, the disposal
+  calls `Accessor_Unlock` directly. Routing it through the `noexcept`
+  `UnlockTracking` helper adds two extra `__clang_call_terminate` pads.
+
 ## Near misses
 
 - **Jump action setup (`0x8e8dd0`).** It computes the start point (relative to the
