@@ -43,3 +43,16 @@ instantiations. Shared callback construction uses `-funwind-tables`, which
 changes frame setup scheduling on the tested Clang build. These observations
 do not identify the original NX compiler or prove an original library version.
 See [the milestone findings](FIFTEEN_PERCENT.md) and [header provenance](../vendor/README.md).
+
+## Newer public Clang is further from the original
+
+Official LLVM 9.0.1 and 10.0.0 Windows releases (GPG signatures by the LLVM
+release managers verified) were tested and are not used by any build. On 150
+randomly chosen Clang 8 builds (2,123 exact functions), the same sources and flags
+reproduce 2,121 functions with Clang 8.0.1, 489 with Clang 9.0.1 and 119 with
+Clang 10.0.0. Of 93 FreeType single-translation-unit matches, Clang 9 reproduces
+8 and Clang 10 none. Neither closes the gameplay near misses described in
+[gameplay components](GAMEPLAY_COMPONENTS.md). The original NX compiler is
+therefore closest to the LLVM 7/8 generation. Its remaining differences, such as
+the `0xe7ffdefe` trap encoding and some instruction-scheduling choices, do not
+come from a newer public release.
