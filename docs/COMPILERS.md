@@ -44,6 +44,31 @@ changes frame setup scheduling on the tested Clang build. These observations
 do not identify the original NX compiler or prove an original library version.
 See [the milestone findings](FIFTEEN_PERCENT.md) and [header provenance](../vendor/README.md).
 
+## Game code: -O3 optimization, -O2 code generation
+
+Some game functions need `-O3` optimization but `-O2` code generation, the
+combination an LTO build produces (the compile step optimizes at `-O3`; the
+linker generates code at its default `-O2`). Builds can express this with
+`codegen_flags`: `tools/verify.py` then compiles `flags` to bitcode and runs a
+second, code-generation-only step (`-Xclang -disable-llvm-optzns`).
+
+- **Circuit property lookups (`0xcc10a0` and 13 more).** The original has the
+  loop unswitched on its type test. Clang 8 does that only at `-O3`, since `-O2`
+  limits unswitching to trivial cases. A single-step `-O3` build then
+  duplicates the epilogues and the guard path, which `-O2` code generation does
+  not. Only the two-step build matches all 14.
+- **FreeType.** The single-translation-unit FreeType source built this way adds
+  nine exact functions (8,764 bytes) that neither `-O2` nor `-O3` reproduces.
+- **Consistency.** Rebuilding a random sample of 100 existing `-O2` builds this
+  way still reproduces 10,508 of their 10,509 functions (the exception is a zlib
+  `inflate` build). The game-side lazy type-hash copies match both ways.
+- **Scope.** SDK-side builds (frame pointer kept, PIC) do not follow this: the
+  760 lazy type-hash functions there need `-O3` code generation and match none
+  of the two-step builds. This fits SDK libraries compiled normally and the game
+  executable built with LTO. It is inferred from code shape and not otherwise
+  established. True LTO also inlines across translation units, which this
+  two-step build does not reproduce.
+
 ## Newer public Clang is further from the original
 
 Official LLVM 9.0.1 and 10.0.0 Windows releases (GPG signatures by the LLVM

@@ -138,8 +138,8 @@ and an instance is credited **only at its own address**. For the `std::function`
 family, the key is the destructor's address, and the other slots of the same
 vtable are credited to the same instance. Identical bodies elsewhere are not
 credited to an unrelated instance's symbol, and addresses that other builds
-already credit are skipped. These families add **1,662 complete functions /
-133,320 bytes**:
+already credit are skipped. These families add **1,732 complete functions /
+146,376 bytes**:
 
 | Source (`src/`) | Shape | Functions | Bytes |
 | --- | --- | ---: | ---: |
@@ -176,6 +176,10 @@ already credit are skipped. These families add **1,662 complete functions /
 | `ComposeDestructor*`, `HandleHolderRelease*` | Release a member component handle, disposing it at the last reference (see [handle disposal](GAMEPLAY_COMPONENTS.md#handle-disposal-and-the-empty-bucket-path)) | 21 | 7,740 |
 | `ColorPropertyRead*` | Reads a four-byte colour material property through the stream | 12 | 2,544 |
 | `ComponentSwitchDestructor*` | Switch owner destructor: clears the target, notifies listeners, then tail-calls the base destructor (see [switch owner destructors](GAMEPLAY_COMPONENTS.md#switch-owner-destructors)) | 9 | 6,696 |
+| `EchoFieldSerialize*` | `storm::echo` event `Serialize`: base fields, then one named field (`peerId`, `srefid` or `handlerRefId`) through the stream visitor | 36 | 3,600 |
+| `CircuitFindProperty*` | Circuit reflection lookup over the guarded property lists; built [two-step](COMPILERS.md#game-code--o3-optimization--o2-code-generation) | 14 | 3,528 |
+| `TypeRegistrationOnceGame*` | Game-side copies of one-time type registration (frame pointer omitted) | 14 | 3,192 |
+| `ComposeRenderUnitDestructor*` | `Compose` destructor over a component whose render-unit member frees an allocator-owned buffer | 6 | 2,736 |
 
 The code shapes pin down several details:
 

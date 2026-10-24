@@ -115,6 +115,22 @@ class NonFdeTests(unittest.TestCase):
                     with self.assertRaises(ValueError):non_fde_inventory(temporary,target,functions)
 
 
+class BuildCommandTests(unittest.TestCase):
+    def test_single_and_two_step_commands(self):
+        from verify import build_commands
+        single = build_commands(dict(id='a',source='src/A.cpp',flags=['-O2']),'clang','/r','/b')
+        self.assertEqual(len(single),1)
+        self.assertEqual(single[0][:2],['clang','-O2'])
+        build = dict(id='b',source='src/B.cpp',flags=['-O3'],codegen_flags=['-O2','-Xclang','-disable-llvm-optzns'])
+        first,second = build_commands(build,'clang','/r','/b')
+        self.assertIn('-emit-llvm',first)
+        self.assertEqual(first[-1],second[second.index('-c')+1])
+        self.assertTrue(second[-1].endswith('b.o'))
+        build['codegen_flags'] = ['-O2']
+        with self.assertRaises(Exception):
+            build_commands(build,'clang','/r','/b')
+
+
 class RelocationTests(unittest.TestCase):
     def test_unnamed_jump_table_and_strings_are_bound_separately(self):
         table = (0,1,2,0,0,8,0,0,2,0)

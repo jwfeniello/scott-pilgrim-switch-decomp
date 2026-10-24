@@ -16,8 +16,8 @@ Edition** for Nintendo Switch.
 [Progress on decomp.dev](https://decomp.dev/jwfeniello/scott-pilgrim-switch-decomp)
 · [Progress workflow](https://github.com/jwfeniello/scott-pilgrim-switch-decomp/actions/workflows/progress.yml)
 
-**Current locally verified progress: 33,360 exact functions /
-3,771,744 bytes / 23.003118% of executable `.text`.** The original `.text` is 16,396,664 bytes.
+**Current locally verified progress: 33,439 exact functions /
+3,793,564 bytes / 23.136194% of executable `.text`.** The original `.text` is 16,396,664 bytes.
 This includes engine and library infrastructure. The project does not yet rebuild
 or boot the complete game. Original method names and many ABI declarations remain
 provisional. See the [integration plan](docs/INTEGRATION_PLAN.md) for
@@ -32,6 +32,12 @@ functions, including the player game-over coordinator. The held state is now
 exact as well, because the handle disposal writes the original's empty-bucket
 path explicitly.
 
+[Compiler profiles](docs/COMPILERS.md#game-code--o3-optimization--o2-code-generation)
+now describe a two-step build: some game functions need `-O3` optimization with
+`-O2` code generation, as an LTO build produces. It reproduces the circuit property
+lookups and nine more FreeType functions, and still reproduces 10,508 of 10,509
+sampled existing matches.
+
 [Circuit factories and property reflection](docs/METADATA_REGISTRY.md) is now an
 exact match: the 47,908-byte initializer that registers 160 gameplay factories
 and 41 circuit properties. Its last 13 differing words came from register
@@ -45,7 +51,7 @@ calls, tail calls, pointers or adjacent proven functions, and the fork's struct
 and configuration changes are reconstructed from the original's offsets.
 
 [Engine families](docs/ENGINE_FAMILIES.md#template-instance-families-22-batch)
-now include 43 template families / 1,662 functions / 133,320 bytes. Each family is
+now include 47 template families / 1,732 functions / 146,376 bytes. Each family is
 one template instantiated once per original address and credited only there.
 The newest, nine [switch owner destructors](docs/GAMEPLAY_COMPONENTS.md#switch-owner-destructors),
 needed the listener-notification record declared not captured, as the

@@ -17,6 +17,20 @@ def compiler_version(compiler,expected):
     return result.stdout.splitlines()[0]
 
 
+def build_commands(build,compiler,root,build_dir):
+    """Compiler commands for one build. With `codegen_flags`, `flags` optimize the IR
+    (emitted as bitcode) and a second step only generates code, as an LTO link does."""
+    source,output = str(Path(root)/build['source']),str(Path(build_dir)/(build['id']+'.o'))
+    if 'codegen_flags' not in build:
+        return [[str(compiler),*build['flags'],'-c',source,'-o',output]]
+    codegen = build['codegen_flags']
+    require(any(codegen[i:i+2] == ['-Xclang','-disable-llvm-optzns'] for i in range(len(codegen))),
+            'Code generation step must disable IR optimization: '+build['id'])
+    bitcode = str(Path(build_dir)/(build['id']+'.bc'))
+    return [[str(compiler),*build['flags'],'-emit-llvm','-c',source,'-o',bitcode],
+            [str(compiler),*codegen,'-c',bitcode,'-o',output]]
+
+
 def verify(original_path,compilers,build_dir,root=ROOT,only=None,jobs=1):
     require(jobs > 0,'Compiler job count must be positive')
     root,build_dir = Path(root),Path(build_dir);target,functions = inventory(root)
@@ -39,12 +53,12 @@ def verify(original_path,compilers,build_dir,root=ROOT,only=None,jobs=1):
     relative = original.relative_relocations();matches = [];failures = [];receipts = []
     def compile_build(build):
         output = build_dir/(build['id']+'.o')
-        command = [str(compilers[build['compiler']]),*build['flags'],'-c',str(root/build['source']),'-o',str(output)]
-        result = subprocess.run(command,capture_output=True,text=True,
-                                cwd=root,
-                                creationflags=getattr(subprocess,'CREATE_NO_WINDOW',0),
-                                env=dict(os.environ,TMP=str(build_dir.resolve()),TEMP=str(build_dir.resolve())))
-        require(result.returncode == 0,'Compile failed for '+build['id']+'\n'+result.stderr)
+        for command in build_commands(build,compilers[build['compiler']],root,build_dir):
+            result = subprocess.run(command,capture_output=True,text=True,
+                                    cwd=root,
+                                    creationflags=getattr(subprocess,'CREATE_NO_WINDOW',0),
+                                    env=dict(os.environ,TMP=str(build_dir.resolve()),TEMP=str(build_dir.resolve())))
+            require(result.returncode == 0,'Compile failed for '+build['id']+'\n'+result.stderr)
         return build,output
     with ThreadPoolExecutor(max_workers=jobs) as pool:
         for index,(build,output) in enumerate(pool.map(compile_build,builds)):
