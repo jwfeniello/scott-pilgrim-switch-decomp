@@ -493303,6 +493303,11 @@
             "6d6170706564506f727400": "0x131a5ea"
           }
         }
+      ],
+      "header_roots": [
+        "vendor/llvm-libcxx-4/include",
+        "vendor/musl/include",
+        "vendor/musl/generated"
       ]
     },
     {
@@ -493572,6 +493577,442 @@
           "literals": {
             "68616e646c6572526566496400": "0x1304a7e",
             "636f6f6b696500": "0x12fc3fc"
+          }
+        }
+      ],
+      "header_roots": [
+        "vendor/llvm-libcxx-4/include",
+        "vendor/musl/include",
+        "vendor/musl/generated"
+      ]
+    },
+    {
+      "id": "echo_event_constructors_keep_pic_no_float_unwind_noexc_strict_o3",
+      "source": "src/EchoEventConstructors.cpp",
+      "compiler": "8.0.1",
+      "source_review": "manual_reconstruction",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-std=c++11",
+        "-mcpu=cortex-a57",
+        "-fstrict-aliasing",
+        "-O3",
+        "-fno-omit-frame-pointer",
+        "-fPIC",
+        "-funwind-tables",
+        "-mno-implicit-float",
+        "-fno-exceptions",
+        "-nostdinc++",
+        "-isystem",
+        "vendor/llvm-libcxx-8/include",
+        "-isystem",
+        "vendor/musl/include",
+        "-isystem",
+        "vendor/musl/generated",
+        "-D_LIBCPP_HAS_NO_ATOMIC_HEADER",
+        "-D_LIBCPP_HAS_THREAD_API_PTHREAD",
+        "-D_LIBCPP_HAS_MUSL_LIBC",
+        "-D__CLANG_MAX_ALIGN_T_DEFINED",
+        "-D_LIBCPP_DISABLE_VISIBILITY_ANNOTATIONS",
+        "-D_GNU_SOURCE",
+        "-U_WIN32",
+        "-U_WIN64"
+      ],
+      "header_roots": [
+        "vendor/llvm-libcxx-8/include",
+        "vendor/musl/include",
+        "vendor/musl/generated"
+      ],
+      "functions": [
+        {
+          "address": "0x25f230",
+          "size": 56,
+          "symbol": "_ZN5storm4echo3lan8outEvent28MatchmakingPortBindingResultC2Ettb",
+          "target_sha256": "35399b09b3d1816ce179c4c62aec0298c772de34406419bed0ffc4cf07d0f45a",
+          "bindings": {
+            "_ZN5storm4echo13DefaultCookieE": "0x1905f58"
+          },
+          "got_bindings": {
+            "_ZTVN5storm4echo3lan8outEvent28MatchmakingPortBindingResultE": {
+              "cell": "0x18ede88",
+              "pointee": "0x17f02c0"
+            }
+          }
+        },
+        {
+          "address": "0x25f3c0",
+          "size": 56,
+          "symbol": "_ZN5storm4echo3lan8outEvent26DiscoveryPortBindingResultC2Ettb",
+          "target_sha256": "9690f5ce007d8358d0e4054fddd60999430150ea343c5661d0c562be864e8924",
+          "bindings": {
+            "_ZN5storm4echo13DefaultCookieE": "0x1905f58"
+          },
+          "got_bindings": {
+            "_ZTVN5storm4echo3lan8outEvent26DiscoveryPortBindingResultE": {
+              "cell": "0x18ede90",
+              "pointee": "0x17f0350"
+            }
+          }
+        },
+        {
+          "address": "0x261020",
+          "size": 60,
+          "symbol": "_ZN5storm4echo6object8outEvent14MasterResolvedC2EjjNSt3__110shared_ptrINS0_6ObjectEEEj",
+          "target_sha256": "c1f65b345bc8a1888be0fdecf42c7edeecfb65d260e6e3d3f7a6c4a70023040d",
+          "bindings": {
+            "_ZN5storm4echo13DefaultCookieE": "0x1905f58"
+          },
+          "got_bindings": {
+            "_ZTVN5storm4echo6object8outEvent14MasterResolvedE": {
+              "cell": "0x18edf08",
+              "pointee": "0x17f07e8"
+            }
+          }
+        },
+        {
+          "address": "0x261190",
+          "size": 60,
+          "symbol": "_ZN5storm4echo6object8outEvent15ReplicaResolvedC2EjjNSt3__110shared_ptrINS0_6ObjectEEEj",
+          "target_sha256": "2615f25801a741eeff25bc010234233e7893c20cf6949323b4f6a413e3b3a94e",
+          "bindings": {
+            "_ZN5storm4echo13DefaultCookieE": "0x1905f58"
+          },
+          "got_bindings": {
+            "_ZTVN5storm4echo6object8outEvent15ReplicaResolvedE": {
+              "cell": "0x18edf10",
+              "pointee": "0x17f0878"
+            }
+          }
+        },
+        {
+          "address": "0x261300",
+          "size": 56,
+          "symbol": "_ZN5storm4echo6object8outEvent16LoopbackResolvedC2EjjNSt3__110shared_ptrINS0_6ObjectEEE",
+          "target_sha256": "b5c2d08618e1cda7044f578f2ab64506abfb1f0bdacaf20456f5c4791b2f0891",
+          "bindings": {
+            "_ZN5storm4echo13DefaultCookieE": "0x1905f58"
+          },
+          "got_bindings": {
+            "_ZTVN5storm4echo6object8outEvent16LoopbackResolvedE": {
+              "cell": "0x18edf18",
+              "pointee": "0x17f0908"
+            }
+          }
+        },
+        {
+          "address": "0x261350",
+          "size": 60,
+          "symbol": "_ZN5storm4echo6object8outEvent20ResolvedReplicaReadyC2EjjNSt3__110shared_ptrINS0_6ObjectEEEj",
+          "target_sha256": "f4179350af3c48dbbc9b523b30a5b16484142d4ebebe2b3c760ef9799c684873",
+          "bindings": {
+            "_ZN5storm4echo13DefaultCookieE": "0x1905f58"
+          },
+          "got_bindings": {
+            "_ZTVN5storm4echo6object8outEvent20ResolvedReplicaReadyE": {
+              "cell": "0x18edf20",
+              "pointee": "0x17f0998"
+            }
+          }
+        },
+        {
+          "address": "0x2614c0",
+          "size": 60,
+          "symbol": "_ZN5storm4echo6object8outEvent15RejectedReplicaC2EjjNSt3__110shared_ptrINS0_6ObjectEEEj",
+          "target_sha256": "445b6820626cfc6f8c2bb6a0c49b2dcc20e350b9befa1f8af4767df295a75259",
+          "bindings": {
+            "_ZN5storm4echo13DefaultCookieE": "0x1905f58"
+          },
+          "got_bindings": {
+            "_ZTVN5storm4echo6object8outEvent15RejectedReplicaE": {
+              "cell": "0x18edf28",
+              "pointee": "0x17f0a28"
+            }
+          }
+        },
+        {
+          "address": "0x261570",
+          "size": 56,
+          "symbol": "_ZN5storm4echo6object8outEvent21ResolvedLoopbackReadyC2EjjNSt3__110shared_ptrINS0_6ObjectEEE",
+          "target_sha256": "8c47128be2ff5a5f5ef7b0e935fd63277a294769a1d9ef65c644b1c065bc0c35",
+          "bindings": {
+            "_ZN5storm4echo13DefaultCookieE": "0x1905f58"
+          },
+          "got_bindings": {
+            "_ZTVN5storm4echo6object8outEvent21ResolvedLoopbackReadyE": {
+              "cell": "0x18edf30",
+              "pointee": "0x17f0ab8"
+            }
+          }
+        },
+        {
+          "address": "0x2615c0",
+          "size": 60,
+          "symbol": "_ZN5storm4echo6object8outEvent10MasterGoneC2EjjNSt3__110shared_ptrINS0_6ObjectEEEj",
+          "target_sha256": "4316b9af2d6b70f57f7d349ff9f2f86b0bdd4908aea7cea50bab3d81c040685a",
+          "bindings": {
+            "_ZN5storm4echo13DefaultCookieE": "0x1905f58"
+          },
+          "got_bindings": {
+            "_ZTVN5storm4echo6object8outEvent10MasterGoneE": {
+              "cell": "0x18edf38",
+              "pointee": "0x17f0b48"
+            }
+          }
+        },
+        {
+          "address": "0x261730",
+          "size": 60,
+          "symbol": "_ZN5storm4echo6object8outEvent11ReplicaGoneC2EjjNSt3__110shared_ptrINS0_6ObjectEEEj",
+          "target_sha256": "a98c8b841d710c48c71e3d2e9f4a1598c75f0e861187df687f123499c160fd69",
+          "bindings": {
+            "_ZN5storm4echo13DefaultCookieE": "0x1905f58"
+          },
+          "got_bindings": {
+            "_ZTVN5storm4echo6object8outEvent11ReplicaGoneE": {
+              "cell": "0x18edf40",
+              "pointee": "0x17f0bd8"
+            }
+          }
+        },
+        {
+          "address": "0x2617e0",
+          "size": 56,
+          "symbol": "_ZN5storm4echo6object8outEvent12LoopbackGoneC2EjjNSt3__110shared_ptrINS0_6ObjectEEE",
+          "target_sha256": "fec94d5a974a9aada6ec646d1fed7fce837d3405b6fc02572177a83b79382440",
+          "bindings": {
+            "_ZN5storm4echo13DefaultCookieE": "0x1905f58"
+          },
+          "got_bindings": {
+            "_ZTVN5storm4echo6object8outEvent12LoopbackGoneE": {
+              "cell": "0x18edf48",
+              "pointee": "0x17f0c68"
+            }
+          }
+        },
+        {
+          "address": "0x263170",
+          "size": 64,
+          "symbol": "_ZN5storm4echo6object8outEvent17FinalMasterUpdateC2EbjjNSt3__110shared_ptrINS0_6ObjectEEE",
+          "target_sha256": "b9d6419e396687353dcbcd0b315cbed7521202a482d665117ba4037ead6c05fa",
+          "bindings": {
+            "_ZN5storm4echo13DefaultCookieE": "0x1905f58"
+          },
+          "got_bindings": {
+            "_ZTVN5storm4echo6object8outEvent17FinalMasterUpdateE": {
+              "cell": "0x18ee020",
+              "pointee": "0x17f1208"
+            }
+          }
+        },
+        {
+          "address": "0x263240",
+          "size": 60,
+          "symbol": "_ZN5storm4echo6object8outEvent18MasterRoleMigratedC2EjjjjNSt3__110shared_ptrINS0_6ObjectEEE",
+          "target_sha256": "1925fd0c27eceaba9b65328e864d8750131e10c30183feeeb7f0bf723f96b81c",
+          "bindings": {
+            "_ZN5storm4echo13DefaultCookieE": "0x1905f58"
+          },
+          "got_bindings": {
+            "_ZTVN5storm4echo6object8outEvent18MasterRoleMigratedE": {
+              "cell": "0x18ee028",
+              "pointee": "0x17f1298"
+            }
+          }
+        },
+        {
+          "address": "0x263440",
+          "size": 60,
+          "symbol": "_ZN5storm4echo6object8outEvent14MasterRoleLostC2EjjjNSt3__110shared_ptrINS0_6ObjectEEE",
+          "target_sha256": "748f98895587f15efa03f821063237d5b1f35e2002909eb1c6e3ed4291fb6134",
+          "bindings": {
+            "_ZN5storm4echo13DefaultCookieE": "0x1905f58"
+          },
+          "got_bindings": {
+            "_ZTVN5storm4echo6object8outEvent14MasterRoleLostE": {
+              "cell": "0x18ee030",
+              "pointee": "0x17f1328"
+            }
+          }
+        },
+        {
+          "address": "0x2635f0",
+          "size": 76,
+          "symbol": "_ZN5storm4echo6object8outEvent18GiveMasterRoleFailC2EjjNSt3__110shared_ptrINS0_6ObjectEEEjRKNS0_5WordsILj2EEE",
+          "target_sha256": "1f2864f4523f90ed5ce017a14009d35c5f9aa9dae3917d4ef5e7a9b7e12ec7e9",
+          "bindings": {
+            "_ZN5storm4echo13DefaultCookieE": "0x1905f58"
+          },
+          "got_bindings": {
+            "_ZTVN5storm4echo6object8outEvent18GiveMasterRoleFailE": {
+              "cell": "0x18ee040",
+              "pointee": "0x17f1448"
+            }
+          }
+        },
+        {
+          "address": "0x2636e0",
+          "size": 56,
+          "symbol": "_ZN5storm4echo6object8outEvent17ReplaceGoneMasterC2EjjNSt3__110shared_ptrINS0_6ObjectEEE",
+          "target_sha256": "63f1cc5aac5ba6d7a089c9154742264ffe55032f39360447e3f9b85b370763d3",
+          "bindings": {
+            "_ZN5storm4echo13DefaultCookieE": "0x1905f58"
+          },
+          "got_bindings": {
+            "_ZTVN5storm4echo6object8outEvent17ReplaceGoneMasterE": {
+              "cell": "0x18ee048",
+              "pointee": "0x17f14d8"
+            }
+          }
+        },
+        {
+          "address": "0x263730",
+          "size": 72,
+          "symbol": "_ZN5storm4echo6object8outEvent21AcquireMasterRoleFailC2EjjNSt3__110shared_ptrINS0_6ObjectEEERKNS0_5WordsILj2EEE",
+          "target_sha256": "332a52b69ea006e7f9946b05e09ab49d46ab6955bb121450b0f9a59c6a7a04a7",
+          "bindings": {
+            "_ZN5storm4echo13DefaultCookieE": "0x1905f58"
+          },
+          "got_bindings": {
+            "_ZTVN5storm4echo6object8outEvent21AcquireMasterRoleFailE": {
+              "cell": "0x18ee050",
+              "pointee": "0x17f1568"
+            }
+          }
+        },
+        {
+          "address": "0x2637e0",
+          "size": 56,
+          "symbol": "_ZN5storm4echo6object8outEvent21SessionMigrationStartC2EjjNSt3__110shared_ptrINS0_6ObjectEEE",
+          "target_sha256": "44d8dda725aba7fdca6493683de2e20149c8ba1ba729961db5156ec0b27f0afd",
+          "bindings": {
+            "_ZN5storm4echo13DefaultCookieE": "0x1905f58"
+          },
+          "got_bindings": {
+            "_ZTVN5storm4echo6object8outEvent21SessionMigrationStartE": {
+              "cell": "0x18ee058",
+              "pointee": "0x17f15f8"
+            }
+          }
+        },
+        {
+          "address": "0x263830",
+          "size": 56,
+          "symbol": "_ZN5storm4echo6object8outEvent19SessionMigrationEndC2EjjNSt3__110shared_ptrINS0_6ObjectEEE",
+          "target_sha256": "a45774a387f4b294a37c0f4b593de72a489d735d083f1c1e452866dd121831b7",
+          "bindings": {
+            "_ZN5storm4echo13DefaultCookieE": "0x1905f58"
+          },
+          "got_bindings": {
+            "_ZTVN5storm4echo6object8outEvent19SessionMigrationEndE": {
+              "cell": "0x18ee060",
+              "pointee": "0x17f1688"
+            }
+          }
+        },
+        {
+          "address": "0x263880",
+          "size": 68,
+          "symbol": "_ZN5storm4echo6object8outEvent33MementoTransmissionThresholdRaiseC2EjjNSt3__110shared_ptrINS0_6ObjectEEERKNS0_5WordsILj1EEEj",
+          "target_sha256": "c16da46862024cc762a7cc86a8ab3d1133929b0a65f461cd1948139b8579a34b",
+          "bindings": {
+            "_ZN5storm4echo13DefaultCookieE": "0x1905f58"
+          },
+          "got_bindings": {
+            "_ZTVN5storm4echo6object8outEvent33MementoTransmissionThresholdRaiseE": {
+              "cell": "0x18ee068",
+              "pointee": "0x17f1718"
+            }
+          }
+        },
+        {
+          "address": "0x2639c0",
+          "size": 68,
+          "symbol": "_ZN5storm4echo6object8outEvent33MementoTransmissionThresholdClearC2EjjNSt3__110shared_ptrINS0_6ObjectEEERKNS0_5WordsILj1EEEj",
+          "target_sha256": "95df27a3481fc0a4d21e0754173993bd862df8fe0b88f92ff7a06282148d8edd",
+          "bindings": {
+            "_ZN5storm4echo13DefaultCookieE": "0x1905f58"
+          },
+          "got_bindings": {
+            "_ZTVN5storm4echo6object8outEvent33MementoTransmissionThresholdClearE": {
+              "cell": "0x18ee070",
+              "pointee": "0x17f17a8"
+            }
+          }
+        },
+        {
+          "address": "0x263b00",
+          "size": 60,
+          "symbol": "_ZN5storm4echo6object8outEvent33MessageTransmissionThresholdRaiseC2EjjNSt3__110shared_ptrINS0_6ObjectEEEj",
+          "target_sha256": "e5ab50d79ac3928ce820b0000c0e24536e7c1b396030cd8ea019385ec6f3ea17",
+          "bindings": {
+            "_ZN5storm4echo13DefaultCookieE": "0x1905f58"
+          },
+          "got_bindings": {
+            "_ZTVN5storm4echo6object8outEvent33MessageTransmissionThresholdRaiseE": {
+              "cell": "0x18ee078",
+              "pointee": "0x17f1838"
+            }
+          }
+        },
+        {
+          "address": "0x263bb0",
+          "size": 80,
+          "symbol": "_ZN5storm4echo6object8outEvent33MessageTransmissionThresholdClearC2EjjRKNSt3__110shared_ptrINS0_6ObjectEEEj",
+          "target_sha256": "0a3ddd559848bd77dd94bd77e90552db4d0ca6af97a8db889ee4225ab9a62514",
+          "bindings": {
+            "_ZN5storm4echo13DefaultCookieE": "0x1905f58"
+          },
+          "got_bindings": {
+            "_ZTVN5storm4echo6object8outEvent33MessageTransmissionThresholdClearE": {
+              "cell": "0x18ee080",
+              "pointee": "0x17f18c8"
+            }
+          }
+        },
+        {
+          "address": "0x264010",
+          "size": 60,
+          "symbol": "_ZN5storm4echo6object8outEvent14AddReplicaFailC2EjjNSt3__110shared_ptrINS0_6ObjectEEEj",
+          "target_sha256": "65294a7168811b7e5dc981fb5d20a5d20e9ed82014c7610560f7cc85d56ecefb",
+          "bindings": {
+            "_ZN5storm4echo13DefaultCookieE": "0x1905f58"
+          },
+          "got_bindings": {
+            "_ZTVN5storm4echo6object8outEvent14AddReplicaFailE": {
+              "cell": "0x18ee098",
+              "pointee": "0x17f1a78"
+            }
+          }
+        },
+        {
+          "address": "0x2640c0",
+          "size": 84,
+          "symbol": "_ZN5storm4echo6object8outEvent9ReadyFailC2ERKNS0_5WordsILj1EEEjjRKNSt3__110shared_ptrINS0_6ObjectEEE",
+          "target_sha256": "bd66ebcffd20ceb76f3d4bc5583859f2b65f37929cb56e1cb001762efa7c339a",
+          "bindings": {
+            "_ZN5storm4echo13DefaultCookieE": "0x1905f58"
+          },
+          "got_bindings": {
+            "_ZTVN5storm4echo6object8outEvent9ReadyFailE": {
+              "cell": "0x18ee0a0",
+              "pointee": "0x17f1b08"
+            }
+          }
+        },
+        {
+          "address": "0x264200",
+          "size": 84,
+          "symbol": "_ZN5storm4echo6object8outEvent15OversizeMessageC2ERKNS0_5WordsILj1EEEjjjRKNSt3__110shared_ptrINS0_6ObjectEEE",
+          "target_sha256": "2df39e25c04131292c76ffb69714a0f7c721b5b98c73235618676abe5d9c328e",
+          "bindings": {
+            "_ZN5storm4echo13DefaultCookieE": "0x1905f58"
+          },
+          "got_bindings": {
+            "_ZTVN5storm4echo6object8outEvent15OversizeMessageE": {
+              "cell": "0x18ee0a8",
+              "pointee": "0x17f1b98"
+            }
           }
         }
       ]

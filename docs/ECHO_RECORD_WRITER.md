@@ -86,6 +86,27 @@ The event list is generated from IDA pseudocode by a piece parser; each piece
 becomes one statement in the event's `Write`. Accesses through a typed `this`
 pointer (`a1 + 7` on a `_QWORD *`) are rewritten as byte offsets first.
 
+## Event constructors
+
+[`src/EchoEventConstructors.cpp`](../src/EchoEventConstructors.cpp) adds 26 event
+constructors (1,644 bytes). Their class names come from the vtables they install
+(for example `storm::echo::object::outEvent::MasterResolved`). Three facts were
+needed:
+
+- **Strict aliasing.** Without it the base class's vtable store survives next to
+  the derived one.
+- **Default cookie argument.** The base constructor takes the cookie as a default
+  argument (a module-local global, `0x1905f58`), so it is loaded before the
+  handler reference is set to -1.
+- **An intermediate object-event base** takes two identifiers and a
+  `std::shared_ptr` by value. That is why the original moves or copies the
+  pointer before any base initialization. Copies inline the atomic reference
+  increment, which libc++ 8 does and libc++ 4 does not, so this build uses the
+  libc++ 8 headers.
+
+Member names and parameter types are provisional. Constructors with nested
+allocations or other bodies (about 48) are not reconstructed.
+
 ## Limits
 
 - One float writer (`0x29eb60`) differs because its name length equals its type
