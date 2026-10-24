@@ -1,0 +1,12 @@
+// Keys label distinct original function extents.
+DARE_LIST(0xcf30d0u)
+DARE_LIST(0xcf3490u)
+DARE_LIST(0xcf6750u)
+DARE_LIST(0xcf67c0u)
+DARE_LIST(0xcf7be0u)
+DARE_LIST(0xd1eda0u)
+DARE_LIST(0xd1ee10u)
+DARE_LIST(0xd658b0u)
+DARE_LIST(0xd65920u)
+DARE_LIST(0xd65af0u)
+DARE_LIST(0xdb12f0u)

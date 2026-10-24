@@ -29,6 +29,8 @@ def verify(original_path,compilers,build_dir,root=ROOT,only=None,jobs=1):
     check_non_fde_evidence(original,spans,extents)
     spans = {**spans,**{address:row['size']for address,row in extents.items()}}
     builds = load(root/'config/builds.json')['builds']
+    addresses = [recipe['address']for build in builds for recipe in build['functions']]
+    require(len(addresses) == len(set(addresses)),'Duplicate reconstruction address')
     if only:builds = [b for b in builds if b['id'] == only]
     require(bool(builds),'No selected build')
     require(len({b['id']for b in builds}) == len(builds),'Duplicate build output ID')

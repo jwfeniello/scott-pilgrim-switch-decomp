@@ -138,8 +138,8 @@ and an instance is credited **only at its own address**. For the `std::function`
 family, the key is the destructor's address, and the other slots of the same
 vtable are credited to the same instance. Identical bodies elsewhere are not
 credited to an unrelated instance's symbol, and addresses that other builds
-already credit are skipped. These families add **870 complete functions /
-73,316 bytes**:
+already credit are skipped. These families add **1,580 complete functions /
+104,516 bytes**:
 
 | Source (`src/`) | Shape | Functions | Bytes |
 | --- | --- | ---: | ---: |
@@ -162,6 +162,15 @@ already credit are skipped. These families add **870 complete functions /
 | `PolyArrayOwnerDestructor*`, `PlainArrayDestructor*` | Array destructors that clear the size and free the data | 36 | 3,084 |
 | `DescriptorEquals*` | Chained equality of a base and two net values | 17 | 1,360 |
 | `SharedEventDestructor*` | Destructor releasing a libc++ `shared_ptr` member | 11 | 1,144 |
+| `StormOperatorDelete*`, `StormHeaderDelete*`, `NetPropertyDelete*` | Static `operator delete` thunks freeing through `Storm_Free` (with or without an 8-byte header) | 347 | 6,388 |
+| `ComponentSwitchDisable*`, `ComponentSwitchEnable*` | `Onyx::Switch` unregister/register of a member-function callback with every target | 28 | 9,760 |
+| `ServiceComponentFactory*` | Component factory: registry allocator, base constructor, pool array and service members | 14 | 3,360 |
+| `ResultDispatch*`, `ResultForward*` | Double dispatch and one-argument forwarding to a virtual slot returning a non-trivial result | 222 | 4,176 |
+| `NetCopyFactory*`, `NetDefaultFactory*` | Storm factories using a placement `operator new(file, line)` with its matching delete | 22 | 2,684 |
+| `SpawnerSerialize*` | Spawner serialization: base, two members and a `u32` through the stream | 12 | 1,488 |
+| `AsynchGenericSignal*` | Signals an asynchronous callback with value 4 | 32 | 1,408 |
+| `DareListDestructor*` | Circular list destructor returning nodes through the Dare allocator | 11 | 1,232 |
+| `NetworkStateResult*` | Returns a result, or the pending one while the network state is 3 | 22 | 704 |
 
 The code shapes pin down several details:
 
@@ -173,6 +182,11 @@ The code shapes pin down several details:
 - **Constructor order.** The Storm factory product zeroes the object, loads its
   type, then writes the fields and finally the vptr. That only happens with an
   implicit derived constructor over a base whose default constructor delegates.
+- **Callback records.** The switch callback record is constructed with only its
+  member pointer, and `invoke`/`owner` are bound after the handle is taken. The
+  registry call receives a copy of the target loaded before the call.
+- **Return slots.** The dispatch and forward thunks avoid `x8`, so their result
+  is returned through the indirect-result register.
 - **Storm settings.** The Storm clones and factories need `-fPIC` (vtables come
   through the GOT). The 56-byte clone also needs `-mno-implicit-float`, like the
   rest of the SDK region.
