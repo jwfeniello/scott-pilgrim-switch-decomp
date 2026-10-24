@@ -25,6 +25,12 @@ the work needed to turn isolated matches into a linked game build.
 
 ## Gameplay understanding
 
+[Game classes and state machines](docs/GAME_CLASSES.md) recovers the inheritance of
+all 668 `SPTG` game classes from RTTI, including the declared component
+dependencies of each (`Onyx::Component::Compose<Parent, Dependencies>`): the
+seven playable characters, every boss and enemy type, and the hierarchical state
+machines their states run (events 10000–10003, parent state first).
+
 [Gameplay components and actor state](docs/GAMEPLAY_COMPONENTS.md) names all 793
 recovered component type IDs from factory RTTI. It recovers the cached-component
 accessor, `Onyx::Transform` and `Vector3` value semantics, and adds 17 exact

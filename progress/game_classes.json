@@ -1,0 +1,5649 @@
+{
+ "source": "RTTI __si_class_type_info chains of Scott_Switch.elf",
+ "classes": {
+  "SPTG::AchievementBroker": {
+   "parent": null,
+   "dependencies": []
+  },
+  "SPTG::AchievementBrokerNative": {
+   "parent": "SPTG::AchievementBroker",
+   "dependencies": []
+  },
+  "SPTG::AchievementData": {
+   "parent": "Onyx::Component::Base",
+   "dependencies": []
+  },
+  "SPTG::AchievementManager": {
+   "parent": "Onyx::Phase",
+   "dependencies": [
+    {
+     "kind": "Singleton",
+     "type": "Onyx::Flow::Engine"
+    },
+    {
+     "kind": "Weak",
+     "type": "Onyx::TrueTypedef<SPTG::AchievementData,SPTG::__ONYX_UniqueAchievementData_Xenon>"
+    },
+    {
+     "kind": "Weak",
+     "type": "Onyx::TrueTypedef<SPTG::AchievementData,SPTG::__ONYX_UniqueAchievementData_PS3>"
+    }
+   ]
+  },
+  "SPTG::ActionGroupOr": {
+   "parent": "Onyx::ActionGroup",
+   "dependencies": []
+  },
+  "SPTG::ActionStep": {
+   "parent": "Onyx::ActionComponent",
+   "dependencies": [
+    {
+     "kind": "Singleton",
+     "type": "SPTG::LevelItemAccessor"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::GameplayFlow"
+    }
+   ]
+  },
+  "SPTG::ActionTrigger": {
+   "parent": "Onyx::Component::Base",
+   "dependencies": [
+    {
+     "kind": "Singleton",
+     "type": "SPTG::GameplayFlow"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::LevelItemAccessor"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::PauseHandler"
+    },
+    {
+     "kind": "Weak",
+     "type": "Onyx::ActionComponent"
+    },
+    {
+     "kind": "Weak",
+     "type": "SPTG::ActorActionComponent"
+    }
+   ]
+  },
+  "SPTG::ActiveNotCharacterActorAction": {
+   "parent": "Onyx::ActionComponent",
+   "dependencies": [
+    {
+     "kind": "Singleton",
+     "type": "SPTG::AnimatedAiActorCatalog"
+    }
+   ]
+  },
+  "SPTG::ActorActionComponent": {
+   "parent": "Onyx::ActionComponent",
+   "dependencies": []
+  },
+  "SPTG::ActorActionSequence": {
+   "parent": "SPTG::ActorActionComponent",
+   "dependencies": []
+  },
+  "SPTG::ActorActivateAction": {
+   "parent": "SPTG::ActorActionComponent",
+   "dependencies": [
+    {
+     "kind": "Weak",
+     "type": "SPTG::SpawnEnemyAction"
+    },
+    {
+     "kind": "Weak",
+     "type": "SPTG::ActorActionComponent"
+    }
+   ]
+  },
+  "SPTG::ActorAddGraphicMasterAction": {
+   "parent": "SPTG::ActorActionComponent",
+   "dependencies": [
+    {
+     "kind": "Strong",
+     "type": "SPTG::GraphicsObject"
+    }
+   ]
+  },
+  "SPTG::ActorAnimationAction": {
+   "parent": "SPTG::ActorActionComponent",
+   "dependencies": []
+  },
+  "SPTG::ActorAnimationDrivenSpawnAction": {
+   "parent": "SPTG::ActorActionComponent",
+   "dependencies": [
+    {
+     "kind": "Weak",
+     "type": "SPTG::SpawnEnemyAction"
+    },
+    {
+     "kind": "Strong",
+     "type": "SPTG::AnimatedObject"
+    },
+    {
+     "kind": "Strong",
+     "type": "Onyx::Animator"
+    }
+   ]
+  },
+  "SPTG::ActorCircleNavigationAction": {
+   "parent": "SPTG::ActorActionComponent",
+   "dependencies": [
+    {
+     "kind": "Strong",
+     "type": "SPTG::LevelSection"
+    }
+   ]
+  },
+  "SPTG::ActorDropAction": {
+   "parent": "SPTG::ActorActionComponent",
+   "dependencies": []
+  },
+  "SPTG::ActorEdgeNavigationAction": {
+   "parent": "SPTG::ActorActionComponent",
+   "dependencies": [
+    {
+     "kind": "Strong",
+     "type": "SPTG::LevelSection"
+    }
+   ]
+  },
+  "SPTG::ActorEnterConveyorBeltAction": {
+   "parent": "SPTG::ActorActionComponent",
+   "dependencies": []
+  },
+  "SPTG::ActorJumpAction": {
+   "parent": "SPTG::ActorActionComponent",
+   "dependencies": []
+  },
+  "SPTG::ActorJumpFromBehindAction": {
+   "parent": "SPTG::ActorActionComponent",
+   "dependencies": [
+    {
+     "kind": "Weak",
+     "type": "SPTG::SpawnEnemyAction"
+    }
+   ]
+  },
+  "SPTG::ActorLeaveConveyorBeltAction": {
+   "parent": "SPTG::ActorActionComponent",
+   "dependencies": []
+  },
+  "SPTG::ActorMoveAction": {
+   "parent": "SPTG::ActorActionComponent",
+   "dependencies": []
+  },
+  "SPTG::ActorMoveFromBehindAction": {
+   "parent": "SPTG::ActorActionComponent",
+   "dependencies": [
+    {
+     "kind": "Weak",
+     "type": "SPTG::SpawnEnemyAction"
+    }
+   ]
+  },
+  "SPTG::ActorMoveWithGravityAction": {
+   "parent": "SPTG::ActorMoveAction",
+   "dependencies": []
+  },
+  "SPTG::ActorObject": {
+   "parent": "SPTG::PlayfieldObject",
+   "dependencies": [
+    {
+     "kind": "Strong",
+     "type": "SPTG::SideScrollerCollision"
+    },
+    {
+     "kind": "Strong",
+     "type": "Onyx::Transform"
+    }
+   ]
+  },
+  "SPTG::ActorObjectCatalog": {
+   "parent": "Onyx::Catalog<SPTG::ActorObject,Onyx::Meta::Null>",
+   "dependencies": []
+  },
+  "SPTG::ActorObjectUpdatePhase": {
+   "parent": "SPTG::SPTG_Phase",
+   "dependencies": [
+    {
+     "kind": "Strong",
+     "type": "SPTG::ActorObjectCatalog"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::PauseHandler"
+    }
+   ]
+  },
+  "SPTG::ActorPickupAction": {
+   "parent": "SPTG::ActorActionComponent",
+   "dependencies": []
+  },
+  "SPTG::ActorPlayEmoteAction": {
+   "parent": "SPTG::ActorActionComponent",
+   "dependencies": []
+  },
+  "SPTG::ActorShowAction": {
+   "parent": "SPTG::ActorActionComponent",
+   "dependencies": []
+  },
+  "SPTG::ActorTrapAction": {
+   "parent": "SPTG::ActorActionComponent",
+   "dependencies": [
+    {
+     "kind": "Singleton",
+     "type": "SPTG::LevelWindowAccessor"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::HudStatusManager"
+    }
+   ]
+  },
+  "SPTG::ActorUnspawnAction": {
+   "parent": "SPTG::ActorActionComponent",
+   "dependencies": []
+  },
+  "SPTG::AnimatedAiActor": {
+   "parent": "SPTG::SPTG_AIComponent",
+   "dependencies": [
+    {
+     "kind": "Singleton",
+     "type": "SPTG::LevelItemAccessor"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::LevelWindowAccessor"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::LevelAIManager"
+    },
+    {
+     "kind": "Strong",
+     "type": "SPTG::ActorObject"
+    },
+    {
+     "kind": "Strong",
+     "type": "SPTG::AnimationController"
+    },
+    {
+     "kind": "Weak",
+     "type": "SPTG::ShadowAnimatedObject"
+    }
+   ]
+  },
+  "SPTG::AnimatedAiActorAction": {
+   "parent": "Onyx::ActionComponent",
+   "dependencies": [
+    {
+     "kind": "Strong",
+     "type": "SPTG::AnimatedAiActor"
+    }
+   ]
+  },
+  "SPTG::AnimatedAiActorCatalog": {
+   "parent": "Onyx::Catalog<SPTG::AnimatedAiActor,Onyx::Meta::Null>",
+   "dependencies": []
+  },
+  "SPTG::AnimatedEditorGraphicsObject": {
+   "parent": "SPTG::EditorGraphicsObject<SPTG::AnimatedObject>",
+   "dependencies": []
+  },
+  "SPTG::AnimatedObject": {
+   "parent": "SPTG::GraphicsObject",
+   "dependencies": [
+    {
+     "kind": "Strong",
+     "type": "SPTG::AnimationInfoHolder"
+    }
+   ]
+  },
+  "SPTG::AnimatedObjectLocalizationSwitch": {
+   "parent": "SPTG::AnimationLocalization<SPTG::AnimatedObject>",
+   "dependencies": []
+  },
+  "SPTG::AnimationController": {
+   "parent": "Onyx::Component::Base",
+   "dependencies": [
+    {
+     "kind": "Strong",
+     "type": "Onyx::BasicAnimator"
+    }
+   ]
+  },
+  "SPTG::AnimationDescriptor": {
+   "parent": "Onyx::AnimatedObjectDescriptor",
+   "dependencies": []
+  },
+  "SPTG::AnimationHUDLocalizationSwitch": {
+   "parent": "SPTG::AnimationLocalization<SPTG::AnimationInfoHolderSwitch>",
+   "dependencies": []
+  },
+  "SPTG::AnimationInfoHolder": {
+   "parent": "Onyx::Component::Base",
+   "dependencies": [
+    {
+     "kind": "Strong",
+     "type": "Onyx::Animation"
+    }
+   ]
+  },
+  "SPTG::AnimationInfoHolderBank": {
+   "parent": "SPTG::AnimationController",
+   "dependencies": [
+    {
+     "kind": "Strong",
+     "type": "Onyx::BankQuery"
+    }
+   ]
+  },
+  "SPTG::AnimationInfoHolderSwitch": {
+   "parent": "Onyx::Switch<SPTG::AnimationController,SPTG::AnimationInfoHolder,Onyx::Meta::Null>",
+   "dependencies": []
+  },
+  "SPTG::AnimationLocalization<SPTG::AnimatedObject>": {
+   "parent": "Onyx::Switch<Onyx::Component::Base,SPTG::AnimatedObject,Onyx::Meta::Collection<Onyx::Component::Dependency::Singleton<Onyx::Localization::Localization,Onyx::Meta::Null>,Onyx::Component::Dependency::Weak<SPTG::SpriteAnimationPrinter,Onyx::Meta::Null>,Onyx::Meta::Null,Onyx::Meta::Null,Onyx::Meta::Null,Onyx::Meta::Null,Onyx::Meta::Null,Onyx::Meta::Null,Onyx::Meta::Null,Onyx::Meta::Null,Onyx::Meta::Null,Onyx::Meta::Null>>",
+   "dependencies": []
+  },
+  "SPTG::AnimationLocalization<SPTG::AnimationInfoHolderSwitch>": {
+   "parent": "Onyx::Switch<Onyx::Component::Base,SPTG::AnimationInfoHolderSwitch,Onyx::Meta::Collection<Onyx::Component::Dependency::Singleton<Onyx::Localization::Localization,Onyx::Meta::Null>,Onyx::Component::Dependency::Weak<SPTG::SpriteAnimationPrinter,Onyx::Meta::Null>,Onyx::Meta::Null,Onyx::Meta::Null,Onyx::Meta::Null,Onyx::Meta::Null,Onyx::Meta::Null,Onyx::Meta::Null,Onyx::Meta::Null,Onyx::Meta::Null,Onyx::Meta::Null,Onyx::Meta::Null>>",
+   "dependencies": []
+  },
+  "SPTG::AnimationPlayer": {
+   "parent": "Onyx::Component::Base",
+   "dependencies": []
+  },
+  "SPTG::AnimationSet": {
+   "parent": "Onyx::Component::Base",
+   "dependencies": []
+  },
+  "SPTG::AreaClear": {
+   "parent": "SPTG::FlashMenu",
+   "dependencies": [
+    {
+     "kind": "Singleton",
+     "type": "Onyx::Profile"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::PauseHandler"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::LevelItemAccessor"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::SwitchLevelGate"
+    },
+    {
+     "kind": "Singleton",
+     "type": "Onyx::Localization::Localization"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::GameStatisticsBureau"
+    }
+   ]
+  },
+  "SPTG::AreaClear::AreaClearBridge": {
+   "parent": "SPTG::FlashMenu::FlashMenuBridge",
+   "dependencies": []
+  },
+  "SPTG::ArenaModeAction": {
+   "parent": "Onyx::ActionComponent",
+   "dependencies": [
+    {
+     "kind": "Singleton",
+     "type": "SPTG::LevelItemAccessor"
+    }
+   ]
+  },
+  "SPTG::AsyncTask<Onyx::Function<void ()(SPTG::EventRecordGot &)>>": {
+   "parent": "SPTG::BaseAsyncTask",
+   "dependencies": []
+  },
+  "SPTG::AsyncTask<Onyx::Function<void ()(SPTG::EventRecordSet const&)>>": {
+   "parent": "SPTG::BaseAsyncTask",
+   "dependencies": []
+  },
+  "SPTG::AsyncTask<Onyx::Function<void ()(void)>>": {
+   "parent": "SPTG::BaseAsyncTask",
+   "dependencies": []
+  },
+  "SPTG::AttractMode": {
+   "parent": "SPTG::BootupFlash",
+   "dependencies": [
+    {
+     "kind": "Singleton",
+     "type": "SPTG::SwitchLevelGate"
+    }
+   ]
+  },
+  "SPTG::AttractMode::AttractModeBridge": {
+   "parent": "SPTG::BootupFlash::BootupFlashBridge",
+   "dependencies": []
+  },
+  "SPTG::AudioAction": {
+   "parent": "Onyx::ActionComponent",
+   "dependencies": [
+    {
+     "kind": "Weak",
+     "type": "SPTG::AudioEventPlayer"
+    },
+    {
+     "kind": "Weak",
+     "type": "Onyx::DareAudio::AudioComponent"
+    }
+   ]
+  },
+  "SPTG::AudioController": {
+   "parent": "SPTG::IAudioController",
+   "dependencies": []
+  },
+  "SPTG::AudioEventComponent": {
+   "parent": "Onyx::Component::Base",
+   "dependencies": [
+    {
+     "kind": "Weak",
+     "type": "SPTG::AudioEventPlayer"
+    },
+    {
+     "kind": "Weak",
+     "type": "Onyx::DareAudio::AudioComponent"
+    }
+   ]
+  },
+  "SPTG::AudioEventMerger": {
+   "parent": "Onyx::Component::Base",
+   "dependencies": [
+    {
+     "kind": "Strong",
+     "type": "SPTG::MergeStrategyInterface"
+    }
+   ]
+  },
+  "SPTG::AudioEventPlayer": {
+   "parent": "Onyx::DareAudio::AudioData",
+   "dependencies": []
+  },
+  "SPTG::AudioListPlayer": {
+   "parent": "Onyx::Component::Base",
+   "dependencies": [
+    {
+     "kind": "Strong",
+     "type": "SPTG::AudioEventPlayer"
+    }
+   ]
+  },
+  "SPTG::AudioTypeSwitch<E_SoundMaterial>": {
+   "parent": "Onyx::DareAudio::SwitchComponent",
+   "dependencies": []
+  },
+  "SPTG::BaseAsyncTask": {
+   "parent": "Onyx::Task",
+   "dependencies": []
+  },
+  "SPTG::BaseBossAI": {
+   "parent": "SPTG::SPTG_AIComponent",
+   "dependencies": [
+    {
+     "kind": "Singleton",
+     "type": "SPTG::LevelItemAccessor"
+    }
+   ]
+  },
+  "SPTG::BaseCharacter": {
+   "parent": "SPTG::AnimatedAiActor",
+   "dependencies": [
+    {
+     "kind": "Singleton",
+     "type": "SPTG::HudStatusManager"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::LevelSecretManager"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::ControllableTextureLoader"
+    },
+    {
+     "kind": "Weak",
+     "type": "SPTG::SpriteAnimationPrinter"
+    }
+   ]
+  },
+  "SPTG::BaseSpawnInfo": {
+   "parent": null,
+   "dependencies": []
+  },
+  "SPTG::BattleRoyalModeAction": {
+   "parent": "Onyx::ActionComponent",
+   "dependencies": [
+    {
+     "kind": "Singleton",
+     "type": "SPTG::LevelItemAccessor"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::FlashMenuPhase"
+    }
+   ]
+  },
+  "SPTG::BitmapFont": {
+   "parent": "Onyx::Component::Base",
+   "dependencies": [
+    {
+     "kind": "Strong",
+     "type": "Onyx::Graphics::Texture"
+    },
+    {
+     "kind": "Weak",
+     "type": "SPTG::BitmapFont"
+    }
+   ]
+  },
+  "SPTG::BitmapFontTextComponent": {
+   "parent": "SPTG::GraphicsObject",
+   "dependencies": [
+    {
+     "kind": "Strong",
+     "type": "SPTG::BitmapFont"
+    }
+   ]
+  },
+  "SPTG::BlockCameraAction": {
+   "parent": "Onyx::ActionComponent",
+   "dependencies": [
+    {
+     "kind": "Singleton",
+     "type": "SPTG::LevelWindowAccessor"
+    }
+   ]
+  },
+  "SPTG::BootupFlash": {
+   "parent": "SPTG::FlashMenu",
+   "dependencies": [
+    {
+     "kind": "Singleton",
+     "type": "Onyx::Localization::Localization"
+    }
+   ]
+  },
+  "SPTG::BootupFlash::BootupFlashBridge": {
+   "parent": "SPTG::FlashMenu::FlashMenuBridge",
+   "dependencies": []
+  },
+  "SPTG::Boss": {
+   "parent": "SPTG::Enemy",
+   "dependencies": [
+    {
+     "kind": "Singleton",
+     "type": "SPTG::GameplayFlow"
+    },
+    {
+     "kind": "Weak",
+     "type": "SPTG::InteractiveEffet"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::AnimatedAiActorCatalog"
+    },
+    {
+     "kind": "Weak",
+     "type": "SPTG::MaterialModifierHolder"
+    },
+    {
+     "kind": "Singleton",
+     "type": "Onyx::Profile"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::SelectedActorRecorder"
+    }
+   ]
+  },
+  "SPTG::BossFightVS": {
+   "parent": "SPTG::FlashMenu",
+   "dependencies": [
+    {
+     "kind": "Singleton",
+     "type": "SPTG::LevelItemAccessor"
+    },
+    {
+     "kind": "Singleton",
+     "type": "Onyx::Localization::Localization"
+    }
+   ]
+  },
+  "SPTG::BossFightVS::BossFightVSBridge": {
+   "parent": "SPTG::FlashMenu::FlashMenuBridge",
+   "dependencies": []
+  },
+  "SPTG::Boundary": {
+   "parent": "Onyx::Component::Base",
+   "dependencies": [
+    {
+     "kind": "Strong",
+     "type": "Onyx::Transform"
+    }
+   ]
+  },
+  "SPTG::BoundaryGraphics": {
+   "parent": "SPTG::FillLineListShape",
+   "dependencies": [
+    {
+     "kind": "Strong",
+     "type": "SPTG::Boundary"
+    }
+   ]
+  },
+  "SPTG::BreakableObject": {
+   "parent": "SPTG::AnimatedAiActor",
+   "dependencies": [
+    {
+     "kind": "Weak",
+     "type": "Onyx::TrueTypedef<SPTG::AnimationController,SPTG::__ONYX_UniqueFX_AnimationController>"
+    },
+    {
+     "kind": "Weak",
+     "type": "Onyx::TrueTypedef<SPTG::AnimatedObject,SPTG::__ONYX_UniqueFX_AnimatedObject>"
+    },
+    {
+     "kind": "Weak",
+     "type": "SPTG::ActionTrigger"
+    }
+   ]
+  },
+  "SPTG::CameraBlock": {
+   "parent": "Onyx::Component::Base",
+   "dependencies": []
+  },
+  "SPTG::CameraBlockRestriction": {
+   "parent": "SPTG::CameraRestriction",
+   "dependencies": [
+    {
+     "kind": "Strong",
+     "type": "SPTG::CameraBlock"
+    }
+   ]
+  },
+  "SPTG::CameraCutScenePositionProvider": {
+   "parent": "SPTG::CameraPositionProvider",
+   "dependencies": []
+  },
+  "SPTG::CameraMoveToCheckPointAction": {
+   "parent": "Onyx::ActionComponent",
+   "dependencies": [
+    {
+     "kind": "Singleton",
+     "type": "SPTG::LevelWindowAccessor"
+    }
+   ]
+  },
+  "SPTG::CameraPositionProvider": {
+   "parent": "Onyx::Component::Base",
+   "dependencies": []
+  },
+  "SPTG::CameraRestriction": {
+   "parent": "Onyx::Component::Base",
+   "dependencies": []
+  },
+  "SPTG::CameraShaker": {
+   "parent": "Onyx::Component::Base",
+   "dependencies": [
+    {
+     "kind": "Singleton",
+     "type": "SPTG::LevelItemAccessor"
+    }
+   ]
+  },
+  "SPTG::CameraSpeedRestriction": {
+   "parent": "SPTG::CameraRestriction",
+   "dependencies": []
+  },
+  "SPTG::CameraTrackBoundary": {
+   "parent": "SPTG::Boundary",
+   "dependencies": [
+    {
+     "kind": "Singleton",
+     "type": "SPTG::LevelWindowAccessor"
+    }
+   ]
+  },
+  "SPTG::CameraTrackPlayerPositionProvider": {
+   "parent": "SPTG::CameraPositionProvider",
+   "dependencies": [
+    {
+     "kind": "Singleton",
+     "type": "SPTG::LevelItemAccessor"
+    }
+   ]
+  },
+  "SPTG::CameraTrackRestriction": {
+   "parent": "SPTG::CameraRestriction",
+   "dependencies": [
+    {
+     "kind": "Singleton",
+     "type": "SPTG::LevelWindowAccessor"
+    }
+   ]
+  },
+  "SPTG::CameraTrigger": {
+   "parent": "Onyx::Component::Base",
+   "dependencies": [
+    {
+     "kind": "Singleton",
+     "type": "SPTG::GameplayFlow"
+    }
+   ]
+  },
+  "SPTG::CameraTriggerCatalog": {
+   "parent": "Onyx::Catalog<SPTG::CameraTrigger,Onyx::Meta::Null>",
+   "dependencies": []
+  },
+  "SPTG::ChangeColorMaterialEffector": {
+   "parent": "SPTG::MaterialEffectorBase",
+   "dependencies": []
+  },
+  "SPTG::ChangeLayerAlphaAction": {
+   "parent": "Onyx::ActionComponent",
+   "dependencies": [
+    {
+     "kind": "Singleton",
+     "type": "SPTG::LevelWindowAccessor"
+    }
+   ]
+  },
+  "SPTG::ChangeOccFactorOnTime": {
+   "parent": "SPTG::AudioController",
+   "dependencies": []
+  },
+  "SPTG::ChangeOccObs": {
+   "parent": "SPTG::AudioController",
+   "dependencies": []
+  },
+  "SPTG::ChangeSoundEffect": {
+   "parent": "SPTG::AudioController",
+   "dependencies": []
+  },
+  "SPTG::ChangeVolume": {
+   "parent": "SPTG::AudioController",
+   "dependencies": []
+  },
+  "SPTG::ChangeVolumeMTT": {
+   "parent": "SPTG::AudioController",
+   "dependencies": []
+  },
+  "SPTG::CharacterData": {
+   "parent": "SPTG::FlashMenu",
+   "dependencies": [
+    {
+     "kind": "Singleton",
+     "type": "Onyx::Profile"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::ContentInstaller"
+    }
+   ]
+  },
+  "SPTG::CharacterData::CharacterDataBridge": {
+   "parent": "SPTG::FlashMenu::FlashMenuBridge",
+   "dependencies": []
+  },
+  "SPTG::CharacterIcon": {
+   "parent": "Onyx::Component::Base",
+   "dependencies": [
+    {
+     "kind": "Singleton",
+     "type": "SPTG::SelectedActorRecorder"
+    },
+    {
+     "kind": "Strong",
+     "type": "Onyx::Transform"
+    },
+    {
+     "kind": "Strong",
+     "type": "Onyx::TrueTypedef<SPTG::AnimatedObject,SPTG::__ONYX_UniqueMrChauIcon>"
+    },
+    {
+     "kind": "Strong",
+     "type": "Onyx::TrueTypedef<SPTG::AnimatedObject,SPTG::__ONYX_UniqueTwinsIcon>"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::LevelItemAccessor"
+    }
+   ]
+  },
+  "SPTG::CharacterStatusBar": {
+   "parent": "SPTG::FlashMenu",
+   "dependencies": []
+  },
+  "SPTG::CharacterStatusBar::CharacterStatusBarBridge": {
+   "parent": "SPTG::FlashMenu::FlashMenuBridge",
+   "dependencies": []
+  },
+  "SPTG::ChaseModeAction": {
+   "parent": "Onyx::ActionComponent",
+   "dependencies": [
+    {
+     "kind": "Singleton",
+     "type": "SPTG::LevelItemAccessor"
+    },
+    {
+     "kind": "Weak",
+     "type": "SPTG::ActorActionComponent"
+    }
+   ]
+  },
+  "SPTG::Chau": {
+   "parent": "SPTG::Boss",
+   "dependencies": [
+    {
+     "kind": "Singleton",
+     "type": "SPTG::FlashMenuPhase"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::PauseHandler"
+    }
+   ]
+  },
+  "SPTG::CheckLevelUnlokcedAction": {
+   "parent": "Onyx::ActionComponent",
+   "dependencies": [
+    {
+     "kind": "Singleton",
+     "type": "SPTG::WorldMapInformationBroker"
+    }
+   ]
+  },
+  "SPTG::CheckPoint": {
+   "parent": "Onyx::Component::Base",
+   "dependencies": [
+    {
+     "kind": "Singleton",
+     "type": "SPTG::GameplayFlow"
+    },
+    {
+     "kind": "Weak",
+     "type": "Onyx::ActionComponent"
+    }
+   ]
+  },
+  "SPTG::CheckPointCatalog": {
+   "parent": "Onyx::Catalog<SPTG::CheckPoint,Onyx::Meta::Null>",
+   "dependencies": []
+  },
+  "SPTG::CheckPointSelectAction": {
+   "parent": "Onyx::ActionComponent",
+   "dependencies": [
+    {
+     "kind": "Singleton",
+     "type": "SPTG::CheckPointCatalog"
+    }
+   ]
+  },
+  "SPTG::ConfirmBox": {
+   "parent": "SPTG::FlashMenu",
+   "dependencies": [
+    {
+     "kind": "Singleton",
+     "type": "Onyx::Localization::Localization"
+    }
+   ]
+  },
+  "SPTG::ConfirmBox::ConfirmBoxBridge": {
+   "parent": "SPTG::FlashMenu::FlashMenuBridge",
+   "dependencies": []
+  },
+  "SPTG::ContentInstaller": {
+   "parent": "Onyx::Component::Base",
+   "dependencies": [
+    {
+     "kind": "Singleton",
+     "type": "Onyx::Flow::Engine"
+    },
+    {
+     "kind": "Singleton",
+     "type": "Onyx::Profile"
+    }
+   ]
+  },
+  "SPTG::ControlMenu": {
+   "parent": "SPTG::FlashMenu",
+   "dependencies": []
+  },
+  "SPTG::ControlMenu::ControlMenuBridge": {
+   "parent": "SPTG::FlashMenu::FlashMenuBridge",
+   "dependencies": []
+  },
+  "SPTG::ControllableInstance": {
+   "parent": "SPTG::ObjectSpawnedInstance<SPTG::ControllableSpawner,SPTG::ControllablePlayer,Onyx::Meta::Collection<Onyx::Component::Dependency::Singleton<SPTG::LevelItemAccessor,Onyx::Meta::Null>,Onyx::Meta::Null,Onyx::Meta::Null,Onyx::Meta::Null,Onyx::Meta::Null,Onyx::Meta::Null,Onyx::Meta::Null,Onyx::Meta::Null,Onyx::Meta::Null,Onyx::Meta::Null,Onyx::Meta::Null,Onyx::Meta::Null>>",
+   "dependencies": []
+  },
+  "SPTG::ControllableKim": {
+   "parent": "SPTG::ControllablePlayer",
+   "dependencies": []
+  },
+  "SPTG::ControllableKnives": {
+   "parent": "SPTG::ControllablePlayer",
+   "dependencies": []
+  },
+  "SPTG::ControllableNegaScott": {
+   "parent": "SPTG::ControllablePlayer",
+   "dependencies": []
+  },
+  "SPTG::ControllablePlayer": {
+   "parent": "SPTG::BaseCharacter",
+   "dependencies": [
+    {
+     "kind": "Weak",
+     "type": "SPTG::MaterialModifierHolder"
+    },
+    {
+     "kind": "Strong",
+     "type": "SPTG::PlayerInfo"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::PersistentDataManager"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::SelectedActorRecorder"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::FlashMenuPhase"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::PauseHandler"
+    },
+    {
+     "kind": "Singleton",
+     "type": "Onyx::Localization::Localization"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::GameStatisticsBureau"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::SwitchLevelGate"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::ItemRegistry"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::InGameHUD"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::WorldMapInformationBroker"
+    }
+   ]
+  },
+  "SPTG::ControllablePlayerCatalog": {
+   "parent": "Onyx::SortedCatalog<SPTG::ControllablePlayer,Onyx::Meta::Collection<Onyx::Component::Dependency::Singleton<SPTG::PauseHandler,Onyx::Meta::Null>,Onyx::Meta::Null,Onyx::Meta::Null,Onyx::Meta::Null,Onyx::Meta::Null,Onyx::Meta::Null,Onyx::Meta::Null,Onyx::Meta::Null,Onyx::Meta::Null,Onyx::Meta::Null,Onyx::Meta::Null,Onyx::Meta::Null>>",
+   "dependencies": []
+  },
+  "SPTG::ControllableRamona": {
+   "parent": "SPTG::ControllablePlayer",
+   "dependencies": []
+  },
+  "SPTG::ControllableRemoteSpawner": {
+   "parent": "SPTG::SPTG_AIComponent",
+   "dependencies": [
+    {
+     "kind": "Singleton",
+     "type": "SPTG::LevelItemAccessor"
+    }
+   ]
+  },
+  "SPTG::ControllableScott": {
+   "parent": "SPTG::ControllablePlayer",
+   "dependencies": []
+  },
+  "SPTG::ControllableSpawnInfo": {
+   "parent": "Onyx::Event::Base",
+   "dependencies": []
+  },
+  "SPTG::ControllableSpawner": {
+   "parent": "SPTG::ObjectSpawner<SPTG::ControllablePlayer,SPTG::ControllableSpawnInfo,SPTG::ControllableType>",
+   "dependencies": []
+  },
+  "SPTG::ControllableSpawnerCatalog": {
+   "parent": "SPTG::ObjectSpawnerCatalog<SPTG::ControllablePlayer,SPTG::ControllableSpawner,SPTG::ControllableSpawnInfo,Onyx::Meta::Collection<Onyx::Component::Dependency::Dynamic<Onyx::TrueTypedef<SPTG::ControllablePlayer,SPTG::__ONYX_UniqueControllablePlayer01>,Onyx::Meta::Null>,Onyx::Component::Dependency::Dynamic<Onyx::TrueTypedef<SPTG::ControllablePlayer,SPTG::__ONYX_UniqueControllablePlayer02>,Onyx::Meta::Null>,Onyx::Component::Dependency::Dynamic<Onyx::TrueTypedef<SPTG::ControllablePlayer,SPTG::__ONYX_UniqueControllablePlayer03>,Onyx::Meta::Null>,Onyx::Component::Dependency::Dynamic<Onyx::TrueTypedef<SPTG::ControllablePlayer,SPTG::__ONYX_UniqueControllablePlayer04>,Onyx::Meta::Null>,Onyx::Component::Dependency::Strong<SPTG::PadControllerRepository,Onyx::Meta::Null>,Onyx::Meta::Null,Onyx::Meta::Null,Onyx::Meta::Null,Onyx::Meta::Null,Onyx::Meta::Null,Onyx::Meta::Null,Onyx::Meta::Null>>",
+   "dependencies": []
+  },
+  "SPTG::ControllableStephen": {
+   "parent": "SPTG::ControllablePlayer",
+   "dependencies": []
+  },
+  "SPTG::ControllableTextureDescriptor": {
+   "parent": "Onyx::Descriptor",
+   "dependencies": []
+  },
+  "SPTG::ControllableTextureLoader": {
+   "parent": "Onyx::Component::Base",
+   "dependencies": []
+  },
+  "SPTG::ControllableTriggerSpawner": {
+   "parent": "SPTG::SPTG_AIComponent",
+   "dependencies": [
+    {
+     "kind": "Singleton",
+     "type": "SPTG::LevelItemAccessor"
+    }
+   ]
+  },
+  "SPTG::ControllableUiSpawner": {
+   "parent": "SPTG::SPTG_AIComponent",
+   "dependencies": [
+    {
+     "kind": "Singleton",
+     "type": "SPTG::LevelItemAccessor"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::SelectedActorRecorder"
+    }
+   ]
+  },
+  "SPTG::ControllableWallace": {
+   "parent": "SPTG::ControllablePlayer",
+   "dependencies": []
+  },
+  "SPTG::ControllerDisconnectionMessage": {
+   "parent": "SPTG::FlashMenu",
+   "dependencies": [
+    {
+     "kind": "Singleton",
+     "type": "Onyx::SystemNotifications"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::LevelItemAccessor"
+    },
+    {
+     "kind": "Singleton",
+     "type": "Onyx::Localization::Localization"
+    }
+   ]
+  },
+  "SPTG::CycleAnimationAction": {
+   "parent": "Onyx::ActionComponent",
+   "dependencies": [
+    {
+     "kind": "Strong",
+     "type": "SPTG::AnimatedObject"
+    },
+    {
+     "kind": "Strong",
+     "type": "Onyx::Animator"
+    }
+   ]
+  },
+  "SPTG::DLCSentry": {
+   "parent": "Onyx::Component::Base",
+   "dependencies": [
+    {
+     "kind": "Singleton",
+     "type": "SPTG::ContentInstaller"
+    }
+   ]
+  },
+  "SPTG::DebugMenu": {
+   "parent": "SPTG::FlashMenu",
+   "dependencies": [
+    {
+     "kind": "Singleton",
+     "type": "SPTG::LevelItemAccessor"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::PauseHandler"
+    }
+   ]
+  },
+  "SPTG::DebugMenu::DebugMenuBridge": {
+   "parent": "SPTG::FlashMenu::FlashMenuBridge",
+   "dependencies": []
+  },
+  "SPTG::Details::UninstallContentTask": {
+   "parent": "Onyx::Task",
+   "dependencies": []
+  },
+  "SPTG::DialogBox": {
+   "parent": "SPTG::FlashMenu",
+   "dependencies": [
+    {
+     "kind": "Singleton",
+     "type": "Onyx::Localization::Localization"
+    }
+   ]
+  },
+  "SPTG::DialogBox::DialogBoxBridge": {
+   "parent": "SPTG::FlashMenu::FlashMenuBridge",
+   "dependencies": []
+  },
+  "SPTG::DialogManager": {
+   "parent": "Onyx::Component::Base",
+   "dependencies": [
+    {
+     "kind": "Singleton",
+     "type": "SPTG::FlashMenuPhase"
+    },
+    {
+     "kind": "Singleton",
+     "type": "Onyx::Localization::Localization"
+    }
+   ]
+  },
+  "SPTG::DialogManager::HideDialog(std::__1::function<void ()(void)>)::$_12": {
+   "parent": null,
+   "dependencies": []
+  },
+  "SPTG::DialogManager::ShowDialog(int,unsigned int,std::__1::function<void ()(void)>,bool)::$_11": {
+   "parent": null,
+   "dependencies": []
+  },
+  "SPTG::DialogManager::ShowDialog(int,unsigned int,std::__1::function<void ()(void)>,std::__1::function<void ()(void)>,bool)::$_10": {
+   "parent": null,
+   "dependencies": []
+  },
+  "SPTG::DodgeBallModeAction": {
+   "parent": "Onyx::ActionComponent",
+   "dependencies": [
+    {
+     "kind": "Singleton",
+     "type": "SPTG::LevelItemAccessor"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::LevelWindowAccessor"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::FlashMenuPhase"
+    }
+   ]
+  },
+  "SPTG::DropCoinSwitch": {
+   "parent": "Onyx::DareAudio::SwitchComponent",
+   "dependencies": [
+    {
+     "kind": "Strong",
+     "type": "SPTG::Pickup"
+    }
+   ]
+  },
+  "SPTG::DropInAction": {
+   "parent": "Onyx::ActionComponent",
+   "dependencies": [
+    {
+     "kind": "Singleton",
+     "type": "SPTG::LevelItemAccessor"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::SelectedActorRecorder"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::PersistentDataManager"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::GameStatisticsBureau"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::HudStatusManager"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::SwitchLevelGate"
+    },
+    {
+     "kind": "Singleton",
+     "type": "Onyx::Localization::Localization"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::InGameHUD"
+    },
+    {
+     "kind": "Singleton",
+     "type": "Onyx::Profile"
+    },
+    {
+     "kind": "Strong",
+     "type": "SPTG::HudObject"
+    }
+   ]
+  },
+  "SPTG::EditorGraphicsObject<SPTG::AnimatedObject>": {
+   "parent": "Onyx::Graphics::Visual",
+   "dependencies": [
+    {
+     "kind": "Strong",
+     "type": "SPTG::AnimatedObject"
+    }
+   ]
+  },
+  "SPTG::EditorGraphicsObject<SPTG::FlashObject>": {
+   "parent": "Onyx::Graphics::Visual",
+   "dependencies": [
+    {
+     "kind": "Strong",
+     "type": "SPTG::FlashObject"
+    }
+   ]
+  },
+  "SPTG::EditorGraphicsObject<SPTG::RepeatObject>": {
+   "parent": "Onyx::Graphics::Visual",
+   "dependencies": [
+    {
+     "kind": "Strong",
+     "type": "SPTG::RepeatObject"
+    }
+   ]
+  },
+  "SPTG::EditorGraphicsObject<SPTG::StaticObject>": {
+   "parent": "Onyx::Graphics::Visual",
+   "dependencies": [
+    {
+     "kind": "Strong",
+     "type": "SPTG::StaticObject"
+    }
+   ]
+  },
+  "SPTG::EndLeaderboardTask": {
+   "parent": "SPTG::AsyncTask<Onyx::Function<void ()(void)>>",
+   "dependencies": []
+  },
+  "SPTG::EndingCredits": {
+   "parent": "SPTG::FlashMenu",
+   "dependencies": [
+    {
+     "kind": "Singleton",
+     "type": "SPTG::SwitchLevelGate"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::GameDifficultyAccessor"
+    }
+   ]
+  },
+  "SPTG::EndingCredits::EndingCreditsBridge": {
+   "parent": "SPTG::FlashMenu::FlashMenuBridge",
+   "dependencies": []
+  },
+  "SPTG::Enemy": {
+   "parent": "SPTG::BaseCharacter",
+   "dependencies": [
+    {
+     "kind": "Singleton",
+     "type": "SPTG::GameDifficultyAccessor"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::SwitchLevelGate"
+    },
+    {
+     "kind": "Weak",
+     "type": "SPTG::GraphicsObject"
+    },
+    {
+     "kind": "Weak",
+     "type": "Onyx::Animator"
+    }
+   ]
+  },
+  "SPTG::EnemyAerial": {
+   "parent": "SPTG::Enemy",
+   "dependencies": []
+  },
+  "SPTG::EnemyAlberta": {
+   "parent": "SPTG::EnemyNormal",
+   "dependencies": []
+  },
+  "SPTG::EnemyArZee": {
+   "parent": "SPTG::EnemyShooter",
+   "dependencies": []
+  },
+  "SPTG::EnemyCatalog": {
+   "parent": "Onyx::SortedCatalog<SPTG::Enemy,Onyx::Meta::Collection<Onyx::Component::Dependency::Singleton<SPTG::PauseHandler,Onyx::Meta::Null>,Onyx::Meta::Null,Onyx::Meta::Null,Onyx::Meta::Null,Onyx::Meta::Null,Onyx::Meta::Null,Onyx::Meta::Null,Onyx::Meta::Null,Onyx::Meta::Null,Onyx::Meta::Null,Onyx::Meta::Null,Onyx::Meta::Null>>",
+   "dependencies": []
+  },
+  "SPTG::EnemyChargingCrowd": {
+   "parent": "SPTG::EnemyOneHitWonder",
+   "dependencies": []
+  },
+  "SPTG::EnemyChubby": {
+   "parent": "SPTG::Enemy",
+   "dependencies": []
+  },
+  "SPTG::EnemyCollectiveAI": {
+   "parent": "SPTG::SPTG_Phase",
+   "dependencies": [
+    {
+     "kind": "Singleton",
+     "type": "SPTG::LevelItemAccessor"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::PauseHandler"
+    }
+   ]
+  },
+  "SPTG::EnemyForestElves": {
+   "parent": "SPTG::EnemyOneHitWonder",
+   "dependencies": []
+  },
+  "SPTG::EnemyGeeOne": {
+   "parent": "SPTG::EnemyGiant",
+   "dependencies": []
+  },
+  "SPTG::EnemyGiant": {
+   "parent": "SPTG::Enemy",
+   "dependencies": []
+  },
+  "SPTG::EnemyGodzilla": {
+   "parent": "SPTG::Enemy",
+   "dependencies": []
+  },
+  "SPTG::EnemyGuyOnFire": {
+   "parent": "SPTG::EnemyOneHitWonder",
+   "dependencies": []
+  },
+  "SPTG::EnemyHanzo": {
+   "parent": "SPTG::Enemy",
+   "dependencies": []
+  },
+  "SPTG::EnemyInstance": {
+   "parent": "SPTG::ObjectSpawnedInstance<SPTG::EnemySpawner,SPTG::Enemy,Onyx::Meta::Null>",
+   "dependencies": []
+  },
+  "SPTG::EnemyJake": {
+   "parent": "SPTG::EnemyNormal",
+   "dependencies": []
+  },
+  "SPTG::EnemyJetPackMatt": {
+   "parent": "SPTG::Enemy",
+   "dependencies": []
+  },
+  "SPTG::EnemyMini": {
+   "parent": "SPTG::Enemy",
+   "dependencies": []
+  },
+  "SPTG::EnemyNormal": {
+   "parent": "SPTG::Enemy",
+   "dependencies": []
+  },
+  "SPTG::EnemyOneHitWonder": {
+   "parent": "SPTG::Enemy",
+   "dependencies": []
+  },
+  "SPTG::EnemyPaparazzi": {
+   "parent": "SPTG::Enemy",
+   "dependencies": []
+  },
+  "SPTG::EnemySasuke": {
+   "parent": "SPTG::EnemyOneHitWonder",
+   "dependencies": []
+  },
+  "SPTG::EnemyShooter": {
+   "parent": "SPTG::Enemy",
+   "dependencies": []
+  },
+  "SPTG::EnemySpawnInfo": {
+   "parent": "SPTG::BaseSpawnInfo",
+   "dependencies": []
+  },
+  "SPTG::EnemySpawner": {
+   "parent": "SPTG::ObjectSpawner<SPTG::Enemy,SPTG::EnemySpawnInfo,SPTG::EnemyType>",
+   "dependencies": []
+  },
+  "SPTG::EnemySpawnerCatalog": {
+   "parent": "SPTG::ObjectSpawnerCatalog<SPTG::Enemy,SPTG::EnemySpawner,SPTG::EnemySpawnInfo,Onyx::Meta::Null>",
+   "dependencies": []
+  },
+  "SPTG::EnemySpeedy": {
+   "parent": "SPTG::Enemy",
+   "dependencies": []
+  },
+  "SPTG::EnemyStuntman": {
+   "parent": "SPTG::EnemyOneHitWonder",
+   "dependencies": []
+  },
+  "SPTG::EnemyThief": {
+   "parent": "SPTG::Enemy",
+   "dependencies": []
+  },
+  "SPTG::EnemyWolverine": {
+   "parent": "SPTG::Enemy",
+   "dependencies": []
+  },
+  "SPTG::EnemyZombie": {
+   "parent": "SPTG::Enemy",
+   "dependencies": []
+  },
+  "SPTG::Envy": {
+   "parent": "SPTG::TagTeamMember",
+   "dependencies": []
+  },
+  "SPTG::EnvyLynetteAI": {
+   "parent": "SPTG::BaseBossAI",
+   "dependencies": []
+  },
+  "SPTG::EventExecute": {
+   "parent": "Onyx::Event::Base",
+   "dependencies": []
+  },
+  "SPTG::EventTrigger": {
+   "parent": "Onyx::TriggerComponent",
+   "dependencies": []
+  },
+  "SPTG::ExModeGameOver": {
+   "parent": "SPTG::FlashMenu",
+   "dependencies": [
+    {
+     "kind": "Singleton",
+     "type": "SPTG::PauseHandler"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::SwitchLevelGate"
+    },
+    {
+     "kind": "Singleton",
+     "type": "Onyx::Profile"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::LevelItemAccessor"
+    }
+   ]
+  },
+  "SPTG::ExModeGameOver::ExModeGameOverBridge": {
+   "parent": "SPTG::FlashMenu::FlashMenuBridge",
+   "dependencies": []
+  },
+  "SPTG::ExModeResult": {
+   "parent": "SPTG::FlashMenu",
+   "dependencies": [
+    {
+     "kind": "Strong",
+     "type": "SPTG::ExtraModeScoringAction"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::PauseHandler"
+    },
+    {
+     "kind": "Strong",
+     "type": "SPTG::Leaderboard"
+    },
+    {
+     "kind": "Strong",
+     "type": "SPTG::NetworkingInitializer"
+    },
+    {
+     "kind": "Singleton",
+     "type": "Onyx::Localization::Localization"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::SwitchLevelGate"
+    }
+   ]
+  },
+  "SPTG::ExModeResult::ExModeResultBridge": {
+   "parent": "SPTG::FlashMenu::FlashMenuBridge",
+   "dependencies": []
+  },
+  "SPTG::ExModeResultExtra": {
+   "parent": "SPTG::FlashMenu",
+   "dependencies": [
+    {
+     "kind": "Weak",
+     "type": "SPTG::BattleRoyalModeAction"
+    },
+    {
+     "kind": "Weak",
+     "type": "SPTG::DodgeBallModeAction"
+    },
+    {
+     "kind": "Singleton",
+     "type": "Onyx::Localization::Localization"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::PauseHandler"
+    }
+   ]
+  },
+  "SPTG::ExtraGameMode": {
+   "parent": "SPTG::FlashMenu",
+   "dependencies": [
+    {
+     "kind": "Singleton",
+     "type": "SPTG::PauseHandler"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::SwitchLevelGate"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::LevelSecretManager"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::ContentInstaller"
+    }
+   ]
+  },
+  "SPTG::ExtraGameMode::ExtraGameModeBridge": {
+   "parent": "SPTG::FlashMenu::FlashMenuBridge",
+   "dependencies": []
+  },
+  "SPTG::ExtraModePauseMenu": {
+   "parent": "SPTG::PauseMenuMovie",
+   "dependencies": []
+  },
+  "SPTG::ExtraModePauseMenu::ExtraModePauseMenuBridge": {
+   "parent": "SPTG::FlashMenu::FlashMenuBridge",
+   "dependencies": []
+  },
+  "SPTG::ExtraModeScoringAction": {
+   "parent": "Onyx::ActionComponent",
+   "dependencies": [
+    {
+     "kind": "Singleton",
+     "type": "SPTG::LevelWindowAccessor"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::LevelItemAccessor"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::FlashMenuPhase"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::GameDifficultyAccessor"
+    },
+    {
+     "kind": "Strong",
+     "type": "SPTG::TimerAction"
+    },
+    {
+     "kind": "Strong",
+     "type": "SPTG::Leaderboard"
+    },
+    {
+     "kind": "Weak",
+     "type": "Onyx::Transform"
+    },
+    {
+     "kind": "Weak",
+     "type": "SPTG::BitmapFontTextComponent"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::SwitchLevelGate"
+    },
+    {
+     "kind": "Singleton",
+     "type": "Onyx::Profile"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::PersistentDataManager"
+    }
+   ]
+  },
+  "SPTG::FillLineListGroupShape": {
+   "parent": "Onyx::Graphics::ShapeComponent",
+   "dependencies": []
+  },
+  "SPTG::FillLineListShape": {
+   "parent": "Onyx::Graphics::ShapeComponent",
+   "dependencies": []
+  },
+  "SPTG::FixPlayerRespawnAction": {
+   "parent": "Onyx::ActionComponent",
+   "dependencies": [
+    {
+     "kind": "Singleton",
+     "type": "SPTG::LevelItemAccessor"
+    }
+   ]
+  },
+  "SPTG::FlashColorMaterialEffector": {
+   "parent": "SPTG::MaterialEffectorBase",
+   "dependencies": []
+  },
+  "SPTG::FlashEditorGraphicsObject": {
+   "parent": "SPTG::EditorGraphicsObject<SPTG::FlashObject>",
+   "dependencies": []
+  },
+  "SPTG::FlashMainMenuAutoSpawner": {
+   "parent": "SPTG::SPTG_AIComponent",
+   "dependencies": [
+    {
+     "kind": "Singleton",
+     "type": "Onyx::Profile"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::FlashMenuPhase"
+    }
+   ]
+  },
+  "SPTG::FlashMenu": {
+   "parent": "Onyx::Fire::FireVisual",
+   "dependencies": [
+    {
+     "kind": "Singleton",
+     "type": "SPTG::LevelWindowAccessor"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::FlashMenuPhase"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::PersistentDataManager"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::SelectedActorRecorder"
+    }
+   ]
+  },
+  "SPTG::FlashMenu::FlashMenuBridge": {
+   "parent": "fire::ActionScriptBridge",
+   "dependencies": []
+  },
+  "SPTG::FlashMenu::ShowDialog(int,unsigned int,std::__1::function<void ()(void)>,std::__1::function<void ()(void)>)::$_13": {
+   "parent": null,
+   "dependencies": []
+  },
+  "SPTG::FlashMenuAutoSpawner": {
+   "parent": "SPTG::SPTG_AIComponent",
+   "dependencies": [
+    {
+     "kind": "Singleton",
+     "type": "SPTG::FlashMenuPhase"
+    }
+   ]
+  },
+  "SPTG::FlashMenuBootup": {
+   "parent": "SPTG::SPTG_AIComponent",
+   "dependencies": [
+    {
+     "kind": "Singleton",
+     "type": "SPTG::FlashMenuPhase"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::SwitchLevelGate"
+    }
+   ]
+  },
+  "SPTG::FlashMenuCatalog": {
+   "parent": "Onyx::Catalog<SPTG::FlashMenu,Onyx::Meta::Null>",
+   "dependencies": []
+  },
+  "SPTG::FlashMenuInstance": {
+   "parent": "SPTG::ObjectSpawnedInstance<SPTG::FlashMenuSpawner,SPTG::FlashMenu,Onyx::Meta::Null>",
+   "dependencies": []
+  },
+  "SPTG::FlashMenuPhase": {
+   "parent": "SPTG::SPTG_Phase",
+   "dependencies": [
+    {
+     "kind": "Singleton",
+     "type": "SPTG::PauseHandler"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::LevelWindowAccessor"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::LevelItemAccessor"
+    },
+    {
+     "kind": "Strong",
+     "type": "SPTG::FlashMenuCatalog"
+    },
+    {
+     "kind": "Strong",
+     "type": "SPTG::FlashMenuSpawnerCatalog"
+    },
+    {
+     "kind": "Singleton",
+     "type": "Onyx::Localization::Localization"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::SelectedActorRecorder"
+    },
+    {
+     "kind": "Singleton",
+     "type": "Onyx::Profile"
+    }
+   ]
+  },
+  "SPTG::FlashMenuPhase::SwitchMenu(SPTG::Hash const&,unsigned int)::$_16": {
+   "parent": null,
+   "dependencies": []
+  },
+  "SPTG::FlashMenuPhase::SwitchMenu(SPTG::Hash const&,unsigned int)::$_17": {
+   "parent": null,
+   "dependencies": []
+  },
+  "SPTG::FlashMenuSpawner": {
+   "parent": "SPTG::ObjectPackage<SPTG::FlashMenu>",
+   "dependencies": [
+    {
+     "kind": "Weak",
+     "type": "SPTG::FlashMenu"
+    }
+   ]
+  },
+  "SPTG::FlashMenuSpawnerCatalog": {
+   "parent": "SPTG::ObjectPackageCatalog<SPTG::FlashMenu,SPTG::FlashMenuSpawner,Onyx::Meta::Null>",
+   "dependencies": []
+  },
+  "SPTG::FlashObject": {
+   "parent": "SPTG::GraphicsObject",
+   "dependencies": []
+  },
+  "SPTG::Friend": {
+   "parent": "SPTG::FriendNative",
+   "dependencies": [
+    {
+     "kind": "Singleton",
+     "type": "Onyx::Profile"
+    }
+   ]
+  },
+  "SPTG::FriendNative": {
+   "parent": "Onyx::Component::Base",
+   "dependencies": []
+  },
+  "SPTG::GUIObject": {
+   "parent": "Onyx::Component::Base",
+   "dependencies": [
+    {
+     "kind": "Weak",
+     "type": "SPTG::BitmapFontTextComponent"
+    }
+   ]
+  },
+  "SPTG::GUIObjectDirector": {
+   "parent": "Onyx::Director<SPTG::GUIObject,Onyx::Meta::Collection<Onyx::Component::Dependency::Singleton<SPTG::LevelItemAccessor,Onyx::Meta::Null>,Onyx::Meta::Null,Onyx::Meta::Null,Onyx::Meta::Null,Onyx::Meta::Null,Onyx::Meta::Null,Onyx::Meta::Null,Onyx::Meta::Null,Onyx::Meta::Null,Onyx::Meta::Null,Onyx::Meta::Null,Onyx::Meta::Null>>",
+   "dependencies": []
+  },
+  "SPTG::GameDifficultyAccessor": {
+   "parent": "Onyx::Component::Base",
+   "dependencies": []
+  },
+  "SPTG::GameOver": {
+   "parent": "SPTG::FlashMenu",
+   "dependencies": [
+    {
+     "kind": "Singleton",
+     "type": "Onyx::Profile"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::PauseHandler"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::SwitchLevelGate"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::LevelItemAccessor"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::SPTG_PressPhase"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::SPTG_AnimatePhase"
+    },
+    {
+     "kind": "Strong",
+     "type": "SPTG::Network::MatchmakingDiscoverer"
+    }
+   ]
+  },
+  "SPTG::GameOver::GameOverBridge": {
+   "parent": "SPTG::FlashMenu::FlashMenuBridge",
+   "dependencies": []
+  },
+  "SPTG::GameOver::StartMovie(void)::$_18": {
+   "parent": null,
+   "dependencies": []
+  },
+  "SPTG::GamePauseMonitor": {
+   "parent": "Onyx::Component::Base",
+   "dependencies": [
+    {
+     "kind": "Singleton",
+     "type": "SPTG::PauseHandler"
+    }
+   ]
+  },
+  "SPTG::GamePausedMessage": {
+   "parent": "SPTG::FlashMenu",
+   "dependencies": [
+    {
+     "kind": "Singleton",
+     "type": "Onyx::SystemNotifications"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::LevelItemAccessor"
+    },
+    {
+     "kind": "Singleton",
+     "type": "Onyx::Localization::Localization"
+    }
+   ]
+  },
+  "SPTG::GamePurchaseMenu": {
+   "parent": "SPTG::FlashMenu",
+   "dependencies": [
+    {
+     "kind": "Singleton",
+     "type": "Onyx::Profile"
+    },
+    {
+     "kind": "Singleton",
+     "type": "Onyx::SystemNotifications"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::SwitchLevelGate"
+    },
+    {
+     "kind": "Singleton",
+     "type": "Onyx::Localization::Localization"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::LevelItemAccessor"
+    }
+   ]
+  },
+  "SPTG::GamePurchaseMenu::GamePurchaseMenuBridge": {
+   "parent": "SPTG::FlashMenu::FlashMenuBridge",
+   "dependencies": []
+  },
+  "SPTG::GamePurchaser": {
+   "parent": "Onyx::Component::Base",
+   "dependencies": [
+    {
+     "kind": "Singleton",
+     "type": "Onyx::Profile"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::FlashMenuPhase"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::SwitchLevelGate"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::PauseHandler"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::PersistentDataManager"
+    },
+    {
+     "kind": "Singleton",
+     "type": "Onyx::SystemNotifications"
+    }
+   ]
+  },
+  "SPTG::GameSession": {
+   "parent": "Onyx::Phase",
+   "dependencies": [
+    {
+     "kind": "Singleton",
+     "type": "Onyx::Profile"
+    }
+   ]
+  },
+  "SPTG::GameStatisticsBureau": {
+   "parent": "Onyx::Phase",
+   "dependencies": [
+    {
+     "kind": "Singleton",
+     "type": "Onyx::Profile"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::PersistentDataManager"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::LevelItemAccessor"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::ItemRegistry"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::SelectedActorRecorder"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::GameDifficultyAccessor"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::SwitchLevelGate"
+    },
+    {
+     "kind": "Singleton",
+     "type": "Onyx::SystemNotifications"
+    }
+   ]
+  },
+  "SPTG::GameplayFlow": {
+   "parent": "SPTG::SPTG_Phase",
+   "dependencies": [
+    {
+     "kind": "Singleton",
+     "type": "SPTG::PauseHandler"
+    },
+    {
+     "kind": "Singleton",
+     "type": "Onyx::Flow::Game"
+    }
+   ]
+  },
+  "SPTG::GateSwitcher": {
+   "parent": "Onyx::Component::Base",
+   "dependencies": []
+  },
+  "SPTG::Gideon": {
+   "parent": "SPTG::Boss",
+   "dependencies": []
+  },
+  "SPTG::GigaGideon": {
+   "parent": "SPTG::Boss",
+   "dependencies": []
+  },
+  "SPTG::GigaGideonAI": {
+   "parent": "SPTG::BaseBossAI",
+   "dependencies": []
+  },
+  "SPTG::GraphicsMenu": {
+   "parent": "SPTG::FlashMenu",
+   "dependencies": [
+    {
+     "kind": "Singleton",
+     "type": "Onyx::Profile"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::LevelItemAccessor"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::SwitchLevelGate"
+    }
+   ]
+  },
+  "SPTG::GraphicsMenu::GraphicsMenuBridge": {
+   "parent": "SPTG::FlashMenu::FlashMenuBridge",
+   "dependencies": []
+  },
+  "SPTG::GraphicsObject": {
+   "parent": "Onyx::Component::Base",
+   "dependencies": [
+    {
+     "kind": "Strong",
+     "type": "Onyx::Transform"
+    },
+    {
+     "kind": "Weak",
+     "type": "Onyx::Graphics::MaterialModifierStack"
+    }
+   ]
+  },
+  "SPTG::GraphicsObjectCatalog": {
+   "parent": "Onyx::Catalog<SPTG::GraphicsObject,Onyx::Meta::Null>",
+   "dependencies": []
+  },
+  "SPTG::GrayScreenTrigger": {
+   "parent": "Onyx::TriggerComponent",
+   "dependencies": [
+    {
+     "kind": "Strong",
+     "type": "Onyx::Graphics::Texture"
+    },
+    {
+     "kind": "Strong",
+     "type": "Onyx::Graphics::QuadShape"
+    },
+    {
+     "kind": "Strong",
+     "type": "Onyx::ViewToTexture"
+    },
+    {
+     "kind": "Strong",
+     "type": "SPTG::LevelCamera"
+    },
+    {
+     "kind": "Strong",
+     "type": "Onyx::Transform"
+    },
+    {
+     "kind": "Strong",
+     "type": "Onyx::View"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::PauseHandler"
+    }
+   ]
+  },
+  "SPTG::GunTurrets": {
+   "parent": "SPTG::BreakableObject",
+   "dependencies": []
+  },
+  "SPTG::HelpAndOptions": {
+   "parent": "SPTG::FlashMenu",
+   "dependencies": [
+    {
+     "kind": "Singleton",
+     "type": "SPTG::SwitchLevelGate"
+    }
+   ]
+  },
+  "SPTG::HelpAndOptions::HelpAndOptionsBridge": {
+   "parent": "SPTG::FlashMenu::FlashMenuBridge",
+   "dependencies": []
+  },
+  "SPTG::HideInteractiveObjectsAction": {
+   "parent": "Onyx::ActionComponent",
+   "dependencies": [
+    {
+     "kind": "Singleton",
+     "type": "SPTG::LevelItemAccessor"
+    }
+   ]
+  },
+  "SPTG::HideObjectAction": {
+   "parent": "Onyx::ActionComponent",
+   "dependencies": [
+    {
+     "kind": "Strong",
+     "type": "SPTG::GraphicsObject"
+    },
+    {
+     "kind": "Weak",
+     "type": "Onyx::Animator"
+    }
+   ]
+  },
+  "SPTG::HipsterChick": {
+   "parent": "SPTG::Boss",
+   "dependencies": []
+  },
+  "SPTG::HollowSection": {
+   "parent": "SPTG::LevelSection",
+   "dependencies": []
+  },
+  "SPTG::HowToPlay": {
+   "parent": "SPTG::FlashMenu",
+   "dependencies": [
+    {
+     "kind": "Singleton",
+     "type": "Onyx::Localization::Localization"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::ContentInstaller"
+    }
+   ]
+  },
+  "SPTG::HowToPlay::HowToPlayBridge": {
+   "parent": "SPTG::FlashMenu::FlashMenuBridge",
+   "dependencies": []
+  },
+  "SPTG::HudFiniteNumberCounter": {
+   "parent": "Onyx::Component::Base",
+   "dependencies": [
+    {
+     "kind": "Strong",
+     "type": "Onyx::Transform"
+    },
+    {
+     "kind": "Weak",
+     "type": "Onyx::TrueTypedef<SPTG::AnimatedObject,SPTG::__ONYX_UniqueAdditionalText>"
+    },
+    {
+     "kind": "Weak",
+     "type": "Onyx::TrueTypedef<SPTG::AnimationController,SPTG::__ONYX_UniqueTextAnimController>"
+    }
+   ]
+  },
+  "SPTG::HudObject": {
+   "parent": "Onyx::Component::Base",
+   "dependencies": [
+    {
+     "kind": "Strong",
+     "type": "SPTG::GraphicsObject"
+    },
+    {
+     "kind": "Strong",
+     "type": "SPTG::AnimationController"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::LevelWindowAccessor"
+    }
+   ]
+  },
+  "SPTG::HudObjectCatalog": {
+   "parent": "Onyx::Catalog<SPTG::HudObject,Onyx::Meta::Null>",
+   "dependencies": []
+  },
+  "SPTG::HudObjectInstance": {
+   "parent": "SPTG::ObjectSpawnedInstance<SPTG::HudObjectSpawner,SPTG::HudObject,Onyx::Meta::Null>",
+   "dependencies": []
+  },
+  "SPTG::HudObjectSpawner": {
+   "parent": "SPTG::ObjectPackage<SPTG::HudObject>",
+   "dependencies": [
+    {
+     "kind": "Weak",
+     "type": "SPTG::HudObject"
+    }
+   ]
+  },
+  "SPTG::HudObjectSpawnerCatalog": {
+   "parent": "SPTG::ObjectPackageCatalog<SPTG::HudObject,SPTG::HudObjectSpawner,Onyx::Meta::Null>",
+   "dependencies": []
+  },
+  "SPTG::HudStatus": {
+   "parent": null,
+   "dependencies": []
+  },
+  "SPTG::HudStatusBEATINGHEART": {
+   "parent": "SPTG::HudStatus",
+   "dependencies": []
+  },
+  "SPTG::HudStatusDAMAGE": {
+   "parent": "SPTG::HudStatus",
+   "dependencies": []
+  },
+  "SPTG::HudStatusDROPIN": {
+   "parent": "SPTG::HudStatus",
+   "dependencies": []
+  },
+  "SPTG::HudStatusFX_1Up": {
+   "parent": "SPTG::HudStatus",
+   "dependencies": []
+  },
+  "SPTG::HudStatusFX_BLOCK": {
+   "parent": "SPTG::HudStatus",
+   "dependencies": []
+  },
+  "SPTG::HudStatusFX_CAMERAUNBLOCK_GO_DOWN": {
+   "parent": "SPTG::HudStatus",
+   "dependencies": []
+  },
+  "SPTG::HudStatusFX_CAMERAUNBLOCK_GO_LEFT": {
+   "parent": "SPTG::HudStatus",
+   "dependencies": []
+  },
+  "SPTG::HudStatusFX_CAMERAUNBLOCK_GO_RIGHT": {
+   "parent": "SPTG::HudStatus",
+   "dependencies": []
+  },
+  "SPTG::HudStatusFX_CAMERAUNBLOCK_GO_UP": {
+   "parent": "SPTG::HudStatus",
+   "dependencies": []
+  },
+  "SPTG::HudStatusFX_EMOTICON": {
+   "parent": "SPTG::HudStatus",
+   "dependencies": []
+  },
+  "SPTG::HudStatusFX_HITSTRONG": {
+   "parent": "SPTG::HudStatus",
+   "dependencies": []
+  },
+  "SPTG::HudStatusFX_HITWEAK": {
+   "parent": "SPTG::HudStatus",
+   "dependencies": []
+  },
+  "SPTG::HudStatusFX_KEY_DISAPPEAR": {
+   "parent": "SPTG::HudStatus",
+   "dependencies": []
+  },
+  "SPTG::HudStatusFX_LAND": {
+   "parent": "SPTG::HudStatus",
+   "dependencies": []
+  },
+  "SPTG::HudStatusFX_LANDONWATER": {
+   "parent": "SPTG::HudStatus",
+   "dependencies": []
+  },
+  "SPTG::HudStatusFX_LEVELUP": {
+   "parent": "SPTG::HudStatus",
+   "dependencies": []
+  },
+  "SPTG::HudStatusFX_LEVELUP_STRIPE": {
+   "parent": "SPTG::HudStatus",
+   "dependencies": []
+  },
+  "SPTG::HudStatusFX_PLAYERNAME": {
+   "parent": "SPTG::HudStatus",
+   "dependencies": []
+  },
+  "SPTG::HudStatusFX_SLIDE": {
+   "parent": "SPTG::HudStatus",
+   "dependencies": []
+  },
+  "SPTG::HudStatusFX_TEXT": {
+   "parent": "SPTG::HudStatus",
+   "dependencies": []
+  },
+  "SPTG::HudStatusFX_VEGANPOLICE": {
+   "parent": "SPTG::HudStatus",
+   "dependencies": []
+  },
+  "SPTG::HudStatusGUTS": {
+   "parent": "SPTG::HudStatus",
+   "dependencies": []
+  },
+  "SPTG::HudStatusGUTSDAMAGE": {
+   "parent": "SPTG::HudStatus",
+   "dependencies": []
+  },
+  "SPTG::HudStatusHEARTS": {
+   "parent": "SPTG::HudStatus",
+   "dependencies": []
+  },
+  "SPTG::HudStatusHPRECOVERY": {
+   "parent": "SPTG::HudStatus",
+   "dependencies": []
+  },
+  "SPTG::HudStatusKIMAREACLEAR": {
+   "parent": "SPTG::HudStatus",
+   "dependencies": []
+  },
+  "SPTG::HudStatusLIFE": {
+   "parent": "SPTG::HudStatus",
+   "dependencies": []
+  },
+  "SPTG::HudStatusMONEY": {
+   "parent": "SPTG::HudStatus",
+   "dependencies": []
+  },
+  "SPTG::HudStatusMONEYINFO": {
+   "parent": "SPTG::HudStatus",
+   "dependencies": []
+  },
+  "SPTG::HudStatusManager": {
+   "parent": "Onyx::Component::Base",
+   "dependencies": [
+    {
+     "kind": "Strong",
+     "type": "SPTG::HudObjectCatalog"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::InGameHUD"
+    }
+   ]
+  },
+  "SPTG::HudStatusPLEASEWAIT": {
+   "parent": "SPTG::HudStatus",
+   "dependencies": []
+  },
+  "SPTG::HudStatusPOS_TEXT": {
+   "parent": "SPTG::HudStatus",
+   "dependencies": []
+  },
+  "SPTG::HudStatusRATIONS": {
+   "parent": "SPTG::HudStatus",
+   "dependencies": []
+  },
+  "SPTG::HudStatusSCOTTAREACLEAR": {
+   "parent": "SPTG::HudStatus",
+   "dependencies": []
+  },
+  "SPTG::IAudioController": {
+   "parent": null,
+   "dependencies": []
+  },
+  "SPTG::InGameHUD": {
+   "parent": "Onyx::Phase",
+   "dependencies": [
+    {
+     "kind": "Singleton",
+     "type": "SPTG::FlashMenuPhase"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::LevelWindowAccessor"
+    },
+    {
+     "kind": "Singleton",
+     "type": "Onyx::Localization::Localization"
+    }
+   ]
+  },
+  "SPTG::InGameHUDMovie": {
+   "parent": "SPTG::FlashMenu",
+   "dependencies": [
+    {
+     "kind": "Singleton",
+     "type": "Onyx::Localization::Localization"
+    }
+   ]
+  },
+  "SPTG::InGameHUDMovie::InGameHUDMovieBridge": {
+   "parent": "SPTG::FlashMenu::FlashMenuBridge",
+   "dependencies": []
+  },
+  "SPTG::InShopStatus": {
+   "parent": "SPTG::FlashMenu",
+   "dependencies": []
+  },
+  "SPTG::InteractiveEffet": {
+   "parent": "SPTG::SPTG_AIComponent",
+   "dependencies": [
+    {
+     "kind": "Strong",
+     "type": "Onyx::TrueTypedef<SPTG::AnimationController,SPTG::__ONYX_UniqueFXIE_AnimationController>"
+    },
+    {
+     "kind": "Strong",
+     "type": "Onyx::TrueTypedef<SPTG::AnimatedObject,SPTG::__ONYX_UniqueFXIE_AnimatedObject>"
+    },
+    {
+     "kind": "Weak",
+     "type": "SPTG::MaterialModifierHolder"
+    }
+   ]
+  },
+  "SPTG::InteractiveObject": {
+   "parent": "SPTG::AnimatedAiActor",
+   "dependencies": [
+    {
+     "kind": "Singleton",
+     "type": "SPTG::HudStatusManager"
+    }
+   ]
+  },
+  "SPTG::InteractiveObjectCatalog": {
+   "parent": "Onyx::SortedCatalog<SPTG::InteractiveObject,Onyx::Meta::Collection<Onyx::Component::Dependency::Singleton<SPTG::PauseHandler,Onyx::Meta::Null>,Onyx::Component::Dependency::Singleton<SPTG::LevelWindowAccessor,Onyx::Meta::Null>,Onyx::Meta::Null,Onyx::Meta::Null,Onyx::Meta::Null,Onyx::Meta::Null,Onyx::Meta::Null,Onyx::Meta::Null,Onyx::Meta::Null,Onyx::Meta::Null,Onyx::Meta::Null,Onyx::Meta::Null>>",
+   "dependencies": []
+  },
+  "SPTG::InteractiveObjectEx": {
+   "parent": "SPTG::InteractiveObject",
+   "dependencies": []
+  },
+  "SPTG::InteractiveObjectInstance": {
+   "parent": "SPTG::ObjectSpawnedInstance<SPTG::InteractiveObjectSpawner,SPTG::InteractiveObject,Onyx::Meta::Null>",
+   "dependencies": []
+  },
+  "SPTG::InteractiveObjectSpawnInfo": {
+   "parent": "SPTG::BaseSpawnInfo",
+   "dependencies": []
+  },
+  "SPTG::InteractiveObjectSpawner": {
+   "parent": "SPTG::ObjectSpawner<SPTG::InteractiveObject,SPTG::InteractiveObjectSpawnInfo,SPTG::InteractiveObjectType>",
+   "dependencies": []
+  },
+  "SPTG::InteractiveObjectSpawnerCatalog": {
+   "parent": "SPTG::ObjectSpawnerCatalog<SPTG::InteractiveObject,SPTG::InteractiveObjectSpawner,SPTG::InteractiveObjectSpawnInfo,Onyx::Meta::Null>",
+   "dependencies": []
+  },
+  "SPTG::Item": {
+   "parent": "Onyx::Component::Base",
+   "dependencies": [
+    {
+     "kind": "Singleton",
+     "type": "SPTG::ItemRegistry"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::ItemLocalizer"
+    }
+   ]
+  },
+  "SPTG::ItemLocalizer": {
+   "parent": "Onyx::Component::Base",
+   "dependencies": [
+    {
+     "kind": "Singleton",
+     "type": "Onyx::Localization::Localization"
+    }
+   ]
+  },
+  "SPTG::ItemRegistry": {
+   "parent": "Onyx::Component::Base",
+   "dependencies": []
+  },
+  "SPTG::ItemShop": {
+   "parent": "Onyx::Component::Base",
+   "dependencies": [
+    {
+     "kind": "Singleton",
+     "type": "SPTG::PauseHandler"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::ItemRegistry"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::LevelWindowAccessor"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::LevelItemAccessor"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::FlashMenuPhase"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::ItemLocalizer"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::HudStatusManager"
+    }
+   ]
+  },
+  "SPTG::JoinGameMenu": {
+   "parent": "SPTG::FlashMenu",
+   "dependencies": [
+    {
+     "kind": "Singleton",
+     "type": "SPTG::SwitchLevelGate"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::GameDifficultyAccessor"
+    },
+    {
+     "kind": "Strong",
+     "type": "SPTG::Network::MatchmakingDiscoverer"
+    }
+   ]
+  },
+  "SPTG::JoinGameMenu::JoinGameMenuBridge": {
+   "parent": "SPTG::FlashMenu::FlashMenuBridge",
+   "dependencies": []
+  },
+  "SPTG::KenKyle": {
+   "parent": "SPTG::Boss",
+   "dependencies": []
+  },
+  "SPTG::KeyboardMenu": {
+   "parent": "SPTG::FlashMenu",
+   "dependencies": []
+  },
+  "SPTG::KeyboardMenu::KeyboardMenuBridge": {
+   "parent": "SPTG::FlashMenu::FlashMenuBridge",
+   "dependencies": []
+  },
+  "SPTG::KillAllEnemiesAction": {
+   "parent": "Onyx::ActionComponent",
+   "dependencies": [
+    {
+     "kind": "Singleton",
+     "type": "SPTG::LevelItemAccessor"
+    }
+   ]
+  },
+  "SPTG::KissMovie": {
+   "parent": "SPTG::FlashMenu",
+   "dependencies": [
+    {
+     "kind": "Singleton",
+     "type": "SPTG::LevelItemAccessor"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::PauseHandler"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::SwitchLevelGate"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::WorldMapInformationBroker"
+    },
+    {
+     "kind": "Strong",
+     "type": "SPTG::Network::MatchmakingDiscoverer"
+    },
+    {
+     "kind": "Singleton",
+     "type": "Onyx::Localization::Localization"
+    },
+    {
+     "kind": "Singleton",
+     "type": "Onyx::Profile"
+    }
+   ]
+  },
+  "SPTG::KissMovie::KissMovieBridge": {
+   "parent": "SPTG::FlashMenu::FlashMenuBridge",
+   "dependencies": []
+  },
+  "SPTG::KnivesKim": {
+   "parent": "SPTG::Striker",
+   "dependencies": []
+  },
+  "SPTG::KnivesNegaScott": {
+   "parent": "SPTG::Striker",
+   "dependencies": []
+  },
+  "SPTG::KnivesRamona": {
+   "parent": "SPTG::Striker",
+   "dependencies": []
+  },
+  "SPTG::KnivesScott": {
+   "parent": "SPTG::Striker",
+   "dependencies": []
+  },
+  "SPTG::KnivesStills": {
+   "parent": "SPTG::Striker",
+   "dependencies": []
+  },
+  "SPTG::LaserBeams": {
+   "parent": "SPTG::AnimatedAiActor",
+   "dependencies": []
+  },
+  "SPTG::Layer": {
+   "parent": "Onyx::Component::Base",
+   "dependencies": [
+    {
+     "kind": "Strong",
+     "type": "SPTG::GraphicsObjectCatalog"
+    },
+    {
+     "kind": "Weak",
+     "type": "Onyx::TrueTypedef<SPTG::Layer,SPTG::__ONYX_UniqueParentLayer>"
+    }
+   ]
+  },
+  "SPTG::LayerCatalog": {
+   "parent": "Onyx::Catalog<SPTG::Layer,Onyx::Meta::Null>",
+   "dependencies": []
+  },
+  "SPTG::Leaderboard": {
+   "parent": "SPTG::LeaderboardNative",
+   "dependencies": [
+    {
+     "kind": "Strong",
+     "type": "SPTG::GameSession"
+    },
+    {
+     "kind": "Strong",
+     "type": "SPTG::Friend"
+    },
+    {
+     "kind": "Singleton",
+     "type": "Onyx::Profile"
+    },
+    {
+     "kind": "Singleton",
+     "type": "Onyx::Flow::Engine"
+    }
+   ]
+  },
+  "SPTG::LeaderboardAgency": {
+   "parent": "Onyx::Phase",
+   "dependencies": [
+    {
+     "kind": "Singleton",
+     "type": "SPTG::PersistentDataManager"
+    },
+    {
+     "kind": "Strong",
+     "type": "SPTG::Leaderboard"
+    },
+    {
+     "kind": "Strong",
+     "type": "SPTG::NetworkingInitializer"
+    }
+   ]
+  },
+  "SPTG::LeaderboardMenu": {
+   "parent": "SPTG::FlashMenu",
+   "dependencies": [
+    {
+     "kind": "Strong",
+     "type": "SPTG::Leaderboard"
+    },
+    {
+     "kind": "Strong",
+     "type": "SPTG::NetworkingInitializer"
+    },
+    {
+     "kind": "Singleton",
+     "type": "Onyx::Profile"
+    },
+    {
+     "kind": "Singleton",
+     "type": "Onyx::Localization::Localization"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::SwitchLevelGate"
+    }
+   ]
+  },
+  "SPTG::LeaderboardMenu::LeaderboardMenuBridge": {
+   "parent": "SPTG::FlashMenu::FlashMenuBridge",
+   "dependencies": []
+  },
+  "SPTG::LeaderboardNative": {
+   "parent": "Onyx::Phase",
+   "dependencies": []
+  },
+  "SPTG::LevelAIManager": {
+   "parent": "Onyx::Component::Base",
+   "dependencies": [
+    {
+     "kind": "Singleton",
+     "type": "SPTG::LevelWindowAccessor"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::LevelItemAccessor"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::PileOnMgr"
+    }
+   ]
+  },
+  "SPTG::LevelBoundary": {
+   "parent": "SPTG::Boundary",
+   "dependencies": [
+    {
+     "kind": "Singleton",
+     "type": "SPTG::LevelWindowAccessor"
+    }
+   ]
+  },
+  "SPTG::LevelCamera": {
+   "parent": "SPTG::SPTG_Phase",
+   "dependencies": [
+    {
+     "kind": "Singleton",
+     "type": "SPTG::PauseHandler"
+    },
+    {
+     "kind": "Strong",
+     "type": "Onyx::Transform"
+    },
+    {
+     "kind": "Strong",
+     "type": "Onyx::TrueTypedef<Onyx::Transform,SPTG::__ONYX_UniqueTransformWithShake>"
+    },
+    {
+     "kind": "Strong",
+     "type": "Onyx::CameraComponent"
+    },
+    {
+     "kind": "Strong",
+     "type": "SPTG::CameraTrackPlayerPositionProvider"
+    },
+    {
+     "kind": "Strong",
+     "type": "SPTG::CameraCutScenePositionProvider"
+    },
+    {
+     "kind": "Strong",
+     "type": "SPTG::CameraBlock"
+    },
+    {
+     "kind": "Strong",
+     "type": "SPTG::CameraShaker"
+    },
+    {
+     "kind": "Strong",
+     "type": "SPTG::ParallaxUpdater"
+    },
+    {
+     "kind": "Strong",
+     "type": "SPTG::CameraTriggerCatalog"
+    }
+   ]
+  },
+  "SPTG::LevelGate": {
+   "parent": "Onyx::Flow::Gate",
+   "dependencies": [
+    {
+     "kind": "Singleton",
+     "type": "SPTG::LevelStageCatalog"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::SwitchLevelGate"
+    }
+   ]
+  },
+  "SPTG::LevelItemAccessor": {
+   "parent": "Onyx::Component::Base",
+   "dependencies": [
+    {
+     "kind": "Strong",
+     "type": "SPTG::ControllablePlayerCatalog"
+    },
+    {
+     "kind": "Strong",
+     "type": "SPTG::EnemyCatalog"
+    },
+    {
+     "kind": "Strong",
+     "type": "SPTG::InteractiveObjectCatalog"
+    },
+    {
+     "kind": "Strong",
+     "type": "SPTG::EnemySpawnerCatalog"
+    },
+    {
+     "kind": "Strong",
+     "type": "SPTG::ControllableSpawnerCatalog"
+    },
+    {
+     "kind": "Strong",
+     "type": "SPTG::InteractiveObjectSpawnerCatalog"
+    },
+    {
+     "kind": "Strong",
+     "type": "SPTG::PickupSpawnerCatalog"
+    },
+    {
+     "kind": "Strong",
+     "type": "SPTG::ProjectileSpawnerCatalog"
+    },
+    {
+     "kind": "Strong",
+     "type": "SPTG::NPCCatalog"
+    },
+    {
+     "kind": "Strong",
+     "type": "SPTG::StrikerCatalog"
+    },
+    {
+     "kind": "Strong",
+     "type": "SPTG::PadControllerRepository"
+    }
+   ]
+  },
+  "SPTG::LevelSafePoint": {
+   "parent": "Onyx::Component::Base",
+   "dependencies": [
+    {
+     "kind": "Singleton",
+     "type": "SPTG::LevelWindowAccessor"
+    }
+   ]
+  },
+  "SPTG::LevelSecretManager": {
+   "parent": "Onyx::Phase",
+   "dependencies": [
+    {
+     "kind": "Singleton",
+     "type": "SPTG::LevelItemAccessor"
+    },
+    {
+     "kind": "Singleton",
+     "type": "Onyx::Profile"
+    }
+   ]
+  },
+  "SPTG::LevelSection": {
+   "parent": "SPTG::PlayfieldCollision",
+   "dependencies": [
+    {
+     "kind": "Weak",
+     "type": "SPTG::ActionTrigger"
+    },
+    {
+     "kind": "Weak",
+     "type": "Onyx::TrueTypedef<Onyx::ActionComponent,SPTG::__ONYX_UniqueOnActorEnterAction>"
+    },
+    {
+     "kind": "Weak",
+     "type": "Onyx::TrueTypedef<Onyx::ActionComponent,SPTG::__ONYX_UniqueOnActorLeaveAction>"
+    },
+    {
+     "kind": "Weak",
+     "type": "SPTG::SectionZOffsetAdjust"
+    },
+    {
+     "kind": "Weak",
+     "type": "SPTG::SectionActorPresenceLogic"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::LevelItemAccessor"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::GameplayFlow"
+    }
+   ]
+  },
+  "SPTG::LevelSectionAction": {
+   "parent": "Onyx::ActionComponent",
+   "dependencies": [
+    {
+     "kind": "Strong",
+     "type": "SPTG::LevelSection"
+    }
+   ]
+  },
+  "SPTG::LevelSectionCatalog": {
+   "parent": "Onyx::Catalog<SPTG::LevelSection,Onyx::Meta::Null>",
+   "dependencies": []
+  },
+  "SPTG::LevelSectionGraphics": {
+   "parent": "SPTG::FillLineListShape",
+   "dependencies": [
+    {
+     "kind": "Strong",
+     "type": "SPTG::PlayfieldCollision"
+    }
+   ]
+  },
+  "SPTG::LevelStage": {
+   "parent": "Onyx::Flow::Gate",
+   "dependencies": []
+  },
+  "SPTG::LevelStageCatalog": {
+   "parent": "Onyx::Catalog<SPTG::LevelStage,Onyx::Meta::Null>",
+   "dependencies": []
+  },
+  "SPTG::LevelWindowAccessor": {
+   "parent": "Onyx::Component::Base",
+   "dependencies": [
+    {
+     "kind": "Strong",
+     "type": "SPTG::LayerCatalog"
+    },
+    {
+     "kind": "Strong",
+     "type": "SPTG::LevelCamera"
+    }
+   ]
+  },
+  "SPTG::LineDrawer": {
+   "parent": "Onyx::Graphics::Visual",
+   "dependencies": []
+  },
+  "SPTG::LoadLevelStageAction": {
+   "parent": "Onyx::ActionComponent",
+   "dependencies": [
+    {
+     "kind": "Singleton",
+     "type": "SPTG::LevelStageCatalog"
+    }
+   ]
+  },
+  "SPTG::LoadingNotifier": {
+   "parent": "Onyx::Component::Base",
+   "dependencies": [
+    {
+     "kind": "Singleton",
+     "type": "SPTG::FlashMenuPhase"
+    }
+   ]
+  },
+  "SPTG::LoadingScreen": {
+   "parent": "SPTG::FlashMenu",
+   "dependencies": []
+  },
+  "SPTG::LobbyScreenMenu": {
+   "parent": "SPTG::FlashMenu",
+   "dependencies": [
+    {
+     "kind": "Singleton",
+     "type": "SPTG::SwitchLevelGate"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::WorldMapInformationBroker"
+    },
+    {
+     "kind": "Singleton",
+     "type": "Onyx::Profile"
+    },
+    {
+     "kind": "Singleton",
+     "type": "Onyx::Localization::Localization"
+    },
+    {
+     "kind": "Strong",
+     "type": "SPTG::Network::MatchmakingDiscoverer"
+    }
+   ]
+  },
+  "SPTG::LobbyScreenMenu::LobbyScreenMenuBridge": {
+   "parent": "SPTG::FlashMenu::FlashMenuBridge",
+   "dependencies": []
+  },
+  "SPTG::LobbyScreenMenu::StartMultiplayerGame(unsigned int)::$_29": {
+   "parent": null,
+   "dependencies": []
+  },
+  "SPTG::LobbyScreenMenu::TickMovie(void)::$_30": {
+   "parent": null,
+   "dependencies": []
+  },
+  "SPTG::LucasLee": {
+   "parent": "SPTG::Boss",
+   "dependencies": [
+    {
+     "kind": "Strong",
+     "type": "Onyx::TrueTypedef<Onyx::ActionComponent,SPTG::__ONYX_UniqueAC_SpawnSkatebearders>"
+    },
+    {
+     "kind": "Strong",
+     "type": "Onyx::TrueTypedef<Onyx::ActionComponent,SPTG::__ONYX_UniqueAC_DeathCutscene>"
+    }
+   ]
+  },
+  "SPTG::Lynette": {
+   "parent": "SPTG::TagTeamMember",
+   "dependencies": []
+  },
+  "SPTG::MainMenuBase": {
+   "parent": "SPTG::FlashMenu",
+   "dependencies": [
+    {
+     "kind": "Singleton",
+     "type": "SPTG::LevelSecretManager"
+    },
+    {
+     "kind": "Strong",
+     "type": "SPTG::NetworkingInitializer"
+    },
+    {
+     "kind": "Strong",
+     "type": "SPTG::Network::MatchmakingDiscoverer"
+    },
+    {
+     "kind": "Singleton",
+     "type": "Onyx::Profile"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::ContentInstaller"
+    },
+    {
+     "kind": "Singleton",
+     "type": "Onyx::SystemNotifications"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::SwitchLevelGate"
+    },
+    {
+     "kind": "Singleton",
+     "type": "Onyx::Localization::Localization"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::DialogManager"
+    }
+   ]
+  },
+  "SPTG::MainMenuBase::DoUbisoftWelcome(void)::$_19": {
+   "parent": null,
+   "dependencies": []
+  },
+  "SPTG::MainMenuBase::DoUbisoftWelcome(void)::$_19::operator() const(Onyx::ProfileCallbackResult)::{lambda(void)#1}": {
+   "parent": null,
+   "dependencies": []
+  },
+  "SPTG::MainMenuBase::DoUbisoftWelcome(void)::$_20": {
+   "parent": null,
+   "dependencies": []
+  },
+  "SPTG::MainMenuBase::DoUbisoftWelcome(void)::$_21": {
+   "parent": null,
+   "dependencies": []
+  },
+  "SPTG::MainMenuBase::MainMenuBaseBridge": {
+   "parent": "SPTG::FlashMenu::FlashMenuBridge",
+   "dependencies": []
+  },
+  "SPTG::MainMenuBase::SelectInMainMenu(wchar_t const*,unsigned int)::$_23": {
+   "parent": null,
+   "dependencies": []
+  },
+  "SPTG::MainMenuBase::SelectInMainMenu(wchar_t const*,unsigned int)::$_24": {
+   "parent": null,
+   "dependencies": []
+  },
+  "SPTG::MainMenuBase::SelectInMainMenu(wchar_t const*,unsigned int)::$_25": {
+   "parent": null,
+   "dependencies": []
+  },
+  "SPTG::MainMenuBase::TickMovie(void)::$_22": {
+   "parent": null,
+   "dependencies": []
+  },
+  "SPTG::MainMenuBase::TransitionFromLoginToLeaderboards(unsigned int,Onyx::ProfileCallbackResult)::$_27": {
+   "parent": null,
+   "dependencies": []
+  },
+  "SPTG::MainMenuBase::TransitionFromLoginToMultiplayer(unsigned int,Onyx::ProfileCallbackResult)::$_26": {
+   "parent": null,
+   "dependencies": []
+  },
+  "SPTG::MainMenuBase::TransitionFromLoginToUbisoftClub(unsigned int,Onyx::ProfileCallbackResult)::$_28": {
+   "parent": null,
+   "dependencies": []
+  },
+  "SPTG::MainMenuBase::TransitionFromLoginToUbisoftClub(unsigned int,Onyx::ProfileCallbackResult)::$_28::operator() const(void)::{lambda(bool)#1}": {
+   "parent": null,
+   "dependencies": []
+  },
+  "SPTG::MainMenu_PS3_Full": {
+   "parent": "SPTG::MainMenuBase",
+   "dependencies": []
+  },
+  "SPTG::MainMenu_PS3_Trail": {
+   "parent": "SPTG::MainMenuBase",
+   "dependencies": []
+  },
+  "SPTG::MainMenu_XBOX_Full": {
+   "parent": "SPTG::MainMenuBase",
+   "dependencies": []
+  },
+  "SPTG::MainMenu_XBOX_Trail": {
+   "parent": "SPTG::MainMenuBase",
+   "dependencies": []
+  },
+  "SPTG::MaterialEffectorBase": {
+   "parent": null,
+   "dependencies": []
+  },
+  "SPTG::MaterialModifierHolder": {
+   "parent": "Onyx::Component::Base",
+   "dependencies": []
+  },
+  "SPTG::MechanismObject": {
+   "parent": "SPTG::AnimatedAiActor",
+   "dependencies": [
+    {
+     "kind": "Weak",
+     "type": "Onyx::TrueTypedef<SPTG::AnimationController,SPTG::__ONYX_UniqueFX_AnimationController>"
+    },
+    {
+     "kind": "Weak",
+     "type": "Onyx::TrueTypedef<SPTG::AnimatedObject,SPTG::__ONYX_UniqueFX_AnimatedObject>"
+    },
+    {
+     "kind": "Weak",
+     "type": "SPTG::ActionTrigger"
+    }
+   ]
+  },
+  "SPTG::MergeStrategyInterface": {
+   "parent": "Onyx::Component::Base",
+   "dependencies": []
+  },
+  "SPTG::MithrilSkateboard": {
+   "parent": "SPTG::Pickup",
+   "dependencies": []
+  },
+  "SPTG::MoveIconInWorldMapAction": {
+   "parent": "Onyx::ActionComponent",
+   "dependencies": [
+    {
+     "kind": "Singleton",
+     "type": "SPTG::LevelWindowAccessor"
+    },
+    {
+     "kind": "Strong",
+     "type": "SPTG::CharacterIcon"
+    },
+    {
+     "kind": "Strong",
+     "type": "SPTG::WorldMapNavigator"
+    }
+   ]
+  },
+  "SPTG::MoveList": {
+   "parent": "SPTG::FlashMenu",
+   "dependencies": []
+  },
+  "SPTG::MoveList::MoveListBridge": {
+   "parent": "SPTG::FlashMenu::FlashMenuBridge",
+   "dependencies": []
+  },
+  "SPTG::MultiplayerGameMenu": {
+   "parent": "SPTG::FlashMenu",
+   "dependencies": [
+    {
+     "kind": "Singleton",
+     "type": "SPTG::SwitchLevelGate"
+    },
+    {
+     "kind": "Singleton",
+     "type": "Onyx::Profile"
+    }
+   ]
+  },
+  "SPTG::MultiplayerGameMenu::MultiplayerGameMenuBridge": {
+   "parent": "SPTG::FlashMenu::FlashMenuBridge",
+   "dependencies": []
+  },
+  "SPTG::NPC": {
+   "parent": "SPTG::BaseCharacter",
+   "dependencies": []
+  },
+  "SPTG::NPCCatalog": {
+   "parent": "Onyx::SortedCatalog<SPTG::NPC,Onyx::Meta::Collection<Onyx::Component::Dependency::Singleton<SPTG::PauseHandler,Onyx::Meta::Null>,Onyx::Meta::Null,Onyx::Meta::Null,Onyx::Meta::Null,Onyx::Meta::Null,Onyx::Meta::Null,Onyx::Meta::Null,Onyx::Meta::Null,Onyx::Meta::Null,Onyx::Meta::Null,Onyx::Meta::Null,Onyx::Meta::Null>>",
+   "dependencies": []
+  },
+  "SPTG::NegaScott": {
+   "parent": "SPTG::Boss",
+   "dependencies": []
+  },
+  "SPTG::Network::Matchmaker": {
+   "parent": null,
+   "dependencies": []
+  },
+  "SPTG::Network::MatchmakingDirector": {
+   "parent": "Onyx::Director<SPTG::Network::MatchmakingDiscoverer,Onyx::Meta::Null>",
+   "dependencies": []
+  },
+  "SPTG::Network::MatchmakingDiscoverer": {
+   "parent": "Onyx::Component::Base",
+   "dependencies": [
+    {
+     "kind": "Singleton",
+     "type": "Onyx::SystemNotifications"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::SwitchLevelGate"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::FlashMenuPhase"
+    },
+    {
+     "kind": "Singleton",
+     "type": "Onyx::Profile"
+    },
+    {
+     "kind": "Singleton",
+     "type": "Onyx::Localization::Localization"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::PersistentDataManager"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::LevelItemAccessor"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::GameDifficultyAccessor"
+    }
+   ]
+  },
+  "SPTG::Network::MatchmakingDiscoverer::CreateMatchInternal(SPTG::Network::MatchInfo const&)::$_34": {
+   "parent": null,
+   "dependencies": []
+  },
+  "SPTG::Network::MatchmakingDiscoverer::CreateMatchInternal(SPTG::Network::MatchInfo const&)::$_34::operator() const(storm::EResult)::{lambda(storm::SimpleObjectHandler *)#1}": {
+   "parent": null,
+   "dependencies": []
+  },
+  "SPTG::Network::MatchmakingDiscoverer::CreateMatchInternal(SPTG::Network::MatchInfo const&)::$_34::operator() const(storm::EResult)::{lambda(storm::SimpleObjectHandler *)#1}::operator() const(storm::SimpleObjectHandler *)::{lambda(storm::SimpleObjectHandler *)#1}": {
+   "parent": null,
+   "dependencies": []
+  },
+  "SPTG::Network::MatchmakingDiscoverer::ForwardPlayerJoinedEvent(EE_US::PlayerObjectHandler *)::$_47": {
+   "parent": null,
+   "dependencies": []
+  },
+  "SPTG::Network::MatchmakingDiscoverer::ForwardPlayerLeftEvent(EE_US::PlayerObjectHandler *)::$_48": {
+   "parent": null,
+   "dependencies": []
+  },
+  "SPTG::Network::MatchmakingDiscoverer::ForwardPlayerLeftEvent(EE_US::PlayerObjectHandler *)::$_49": {
+   "parent": null,
+   "dependencies": []
+  },
+  "SPTG::Network::MatchmakingDiscoverer::HandleInviteAccept(SPTG::FlashMenu *)::$_40": {
+   "parent": null,
+   "dependencies": []
+  },
+  "SPTG::Network::MatchmakingDiscoverer::HandleInviteAccept(SPTG::FlashMenu *)::$_40::operator() const(Onyx::ProfileCallbackResult)::{lambda(void)#1}": {
+   "parent": null,
+   "dependencies": []
+  },
+  "SPTG::Network::MatchmakingDiscoverer::JoinInvite(void)::$_35": {
+   "parent": null,
+   "dependencies": []
+  },
+  "SPTG::Network::MatchmakingDiscoverer::OnCreateSession(storm::echo::session::resultEvent::Create const&)::$_43": {
+   "parent": null,
+   "dependencies": []
+  },
+  "SPTG::Network::MatchmakingDiscoverer::OnGameStarted(void)::$_44": {
+   "parent": null,
+   "dependencies": []
+  },
+  "SPTG::Network::MatchmakingDiscoverer::OnLeaveMatch(void)::$_50": {
+   "parent": null,
+   "dependencies": []
+  },
+  "SPTG::Network::MatchmakingDiscoverer::OnLeftSession(void)::$_45": {
+   "parent": null,
+   "dependencies": []
+  },
+  "SPTG::Network::MatchmakingDiscoverer::OnLeftSession(void)::$_46": {
+   "parent": null,
+   "dependencies": []
+  },
+  "SPTG::Network::MatchmakingDiscoverer::OnMatchJoined(storm::echo::SessionDescriptor const&)::$_42": {
+   "parent": null,
+   "dependencies": []
+  },
+  "SPTG::Network::MatchmakingDiscoverer::ProbeMatches(void)::{lambda(storm::EResult)#1}": {
+   "parent": null,
+   "dependencies": []
+  },
+  "SPTG::Network::MatchmakingDiscoverer::ProbeMatches(void)::{lambda(storm::SimpleMatchmakingMatchedAsHostEvent const&)#1}": {
+   "parent": null,
+   "dependencies": []
+  },
+  "SPTG::Network::MatchmakingDiscoverer::ProbeMatches(void)::{lambda(storm::SimpleMatchmakingMatchedAsPeerEvent const&)#1}": {
+   "parent": null,
+   "dependencies": []
+  },
+  "SPTG::Network::MatchmakingDiscoverer::ProbeMatches(void)::{lambda(storm::SimpleMatchmakingNotMatchedEvent const&)#1}": {
+   "parent": null,
+   "dependencies": []
+  },
+  "SPTG::Network::MatchmakingDiscoverer::ProbeMatches(void)::{lambda(storm::echo::session::outEvent::SessionJoined const&)#1}": {
+   "parent": null,
+   "dependencies": []
+  },
+  "SPTG::Network::MatchmakingDiscoverer::ShowDelayedInvitePopup(void)::$_38": {
+   "parent": null,
+   "dependencies": []
+  },
+  "SPTG::Network::MatchmakingDiscoverer::ShowDelayedInvitePopup(void)::$_39": {
+   "parent": null,
+   "dependencies": []
+  },
+  "SPTG::Network::MatchmakingDiscoverer::UpdateService(void)::$_41": {
+   "parent": null,
+   "dependencies": []
+  },
+  "SPTG::Network::NativeMatchmaker": {
+   "parent": "SPTG::Network::NativeMatchmakerGeneric",
+   "dependencies": []
+  },
+  "SPTG::Network::NativeMatchmakerGeneric": {
+   "parent": "SPTG::Network::Matchmaker",
+   "dependencies": []
+  },
+  "SPTG::NetworkInitTrigger": {
+   "parent": "Onyx::Component::Base",
+   "dependencies": []
+  },
+  "SPTG::NetworkPhase": {
+   "parent": "SPTG::SPTG_Phase",
+   "dependencies": [
+    {
+     "kind": "Singleton",
+     "type": "SPTG::LevelItemAccessor"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::LevelWindowAccessor"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::AnimatedAiActorCatalog"
+    }
+   ]
+  },
+  "SPTG::NetworkPhase::DetermineCommonSpawnStep(void)::$_53": {
+   "parent": null,
+   "dependencies": []
+  },
+  "SPTG::NetworkPhase::OnLeaveSession(void)::$_52": {
+   "parent": null,
+   "dependencies": []
+  },
+  "SPTG::NetworkPhase::RequestSynchronizedGameTick(std::__1::function<void ()(void)>,std::__1::function<void ()(void)>)::$_51": {
+   "parent": null,
+   "dependencies": []
+  },
+  "SPTG::NetworkingInitializer": {
+   "parent": "Onyx::Component::Base",
+   "dependencies": []
+  },
+  "SPTG::NewMoveAnimationLoader": {
+   "parent": "SPTG::SPTG_AIComponent",
+   "dependencies": [
+    {
+     "kind": "Singleton",
+     "type": "SPTG::HudObjectSpawnerCatalog"
+    },
+    {
+     "kind": "Singleton",
+     "type": "Onyx::Localization::Localization"
+    }
+   ]
+  },
+  "SPTG::NewMoveUnlocked": {
+   "parent": "SPTG::FlashMenu",
+   "dependencies": [
+    {
+     "kind": "Singleton",
+     "type": "SPTG::PauseHandler"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::LevelItemAccessor"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::SwitchLevelGate"
+    }
+   ]
+  },
+  "SPTG::NotificationFilterEvent": {
+   "parent": "Onyx::Component::Base",
+   "dependencies": [
+    {
+     "kind": "Strong",
+     "type": "Onyx::DareAudio::AudioNotificationComponent"
+    }
+   ]
+  },
+  "SPTG::NotificationsDispatcher": {
+   "parent": "Onyx::Component::Base",
+   "dependencies": [
+    {
+     "kind": "Singleton",
+     "type": "Onyx::SystemNotifications"
+    },
+    {
+     "kind": "Singleton",
+     "type": "Onyx::Profile"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::FlashMenuPhase"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::SelectedActorRecorder"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::LevelItemAccessor"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::SwitchLevelGate"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::PersistentDataManager"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::PauseHandler"
+    }
+   ]
+  },
+  "SPTG::ObjectPackage<SPTG::FlashMenu>": {
+   "parent": "SPTG::ObjectPackageBase",
+   "dependencies": [
+    {
+     "kind": "Weak",
+     "type": "Onyx::Package"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::UnspawnManager"
+    }
+   ]
+  },
+  "SPTG::ObjectPackage<SPTG::HudObject>": {
+   "parent": "SPTG::ObjectPackageBase",
+   "dependencies": [
+    {
+     "kind": "Weak",
+     "type": "Onyx::Package"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::UnspawnManager"
+    }
+   ]
+  },
+  "SPTG::ObjectPackageBase": {
+   "parent": "Onyx::Component::Base",
+   "dependencies": []
+  },
+  "SPTG::ObjectPackageCatalog<SPTG::FlashMenu,SPTG::FlashMenuSpawner,Onyx::Meta::Null>": {
+   "parent": "Onyx::Catalog<SPTG::FlashMenuSpawner,Onyx::Meta::Null>",
+   "dependencies": []
+  },
+  "SPTG::ObjectPackageCatalog<SPTG::HudObject,SPTG::HudObjectSpawner,Onyx::Meta::Null>": {
+   "parent": "Onyx::Catalog<SPTG::HudObjectSpawner,Onyx::Meta::Null>",
+   "dependencies": []
+  },
+  "SPTG::ObjectSpawnedInstance<SPTG::ControllableSpawner,SPTG::ControllablePlayer,Onyx::Meta::Collection<Onyx::Component::Dependency::Singleton<SPTG::LevelItemAccessor,Onyx::Meta::Null>,Onyx::Meta::Null,Onyx::Meta::Null,Onyx::Meta::Null,Onyx::Meta::Null,Onyx::Meta::Null,Onyx::Meta::Null,Onyx::Meta::Null,Onyx::Meta::Null,Onyx::Meta::Null,Onyx::Meta::Null,Onyx::Meta::Null>>": {
+   "parent": "Onyx::Component::Base",
+   "dependencies": [
+    {
+     "kind": "Singleton",
+     "type": "SPTG::LevelItemAccessor"
+    },
+    {
+     "kind": "Strong",
+     "type": "SPTG::ControllableSpawner"
+    },
+    {
+     "kind": "Strong",
+     "type": "SPTG::ControllablePlayer"
+    }
+   ]
+  },
+  "SPTG::ObjectSpawnedInstance<SPTG::EnemySpawner,SPTG::Enemy,Onyx::Meta::Null>": {
+   "parent": "Onyx::Component::Base",
+   "dependencies": [
+    {
+     "kind": "Strong",
+     "type": "SPTG::EnemySpawner"
+    },
+    {
+     "kind": "Strong",
+     "type": "SPTG::Enemy"
+    }
+   ]
+  },
+  "SPTG::ObjectSpawnedInstance<SPTG::FlashMenuSpawner,SPTG::FlashMenu,Onyx::Meta::Null>": {
+   "parent": "Onyx::Component::Base",
+   "dependencies": [
+    {
+     "kind": "Strong",
+     "type": "SPTG::FlashMenuSpawner"
+    },
+    {
+     "kind": "Strong",
+     "type": "SPTG::FlashMenu"
+    }
+   ]
+  },
+  "SPTG::ObjectSpawnedInstance<SPTG::HudObjectSpawner,SPTG::HudObject,Onyx::Meta::Null>": {
+   "parent": "Onyx::Component::Base",
+   "dependencies": [
+    {
+     "kind": "Strong",
+     "type": "SPTG::HudObjectSpawner"
+    },
+    {
+     "kind": "Strong",
+     "type": "SPTG::HudObject"
+    }
+   ]
+  },
+  "SPTG::ObjectSpawnedInstance<SPTG::InteractiveObjectSpawner,SPTG::InteractiveObject,Onyx::Meta::Null>": {
+   "parent": "Onyx::Component::Base",
+   "dependencies": [
+    {
+     "kind": "Strong",
+     "type": "SPTG::InteractiveObjectSpawner"
+    },
+    {
+     "kind": "Strong",
+     "type": "SPTG::InteractiveObject"
+    }
+   ]
+  },
+  "SPTG::ObjectSpawnedInstance<SPTG::PickupSpawner,SPTG::Pickup,Onyx::Meta::Null>": {
+   "parent": "Onyx::Component::Base",
+   "dependencies": [
+    {
+     "kind": "Strong",
+     "type": "SPTG::PickupSpawner"
+    },
+    {
+     "kind": "Strong",
+     "type": "SPTG::Pickup"
+    }
+   ]
+  },
+  "SPTG::ObjectSpawnedInstance<SPTG::ProjectileSpawner,SPTG::Projectile,Onyx::Meta::Null>": {
+   "parent": "Onyx::Component::Base",
+   "dependencies": [
+    {
+     "kind": "Strong",
+     "type": "SPTG::ProjectileSpawner"
+    },
+    {
+     "kind": "Strong",
+     "type": "SPTG::Projectile"
+    }
+   ]
+  },
+  "SPTG::ObjectSpawnedInstance<SPTG::StrikerSpawner,SPTG::Striker,Onyx::Meta::Null>": {
+   "parent": "Onyx::Component::Base",
+   "dependencies": [
+    {
+     "kind": "Strong",
+     "type": "SPTG::StrikerSpawner"
+    },
+    {
+     "kind": "Strong",
+     "type": "SPTG::Striker"
+    }
+   ]
+  },
+  "SPTG::ObjectSpawner<SPTG::ControllablePlayer,SPTG::ControllableSpawnInfo,SPTG::ControllableType>": {
+   "parent": "SPTG::ObjectSpawnerBase",
+   "dependencies": [
+    {
+     "kind": "Strong",
+     "type": "Onyx::Spawner"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::UnspawnManager"
+    }
+   ]
+  },
+  "SPTG::ObjectSpawner<SPTG::Enemy,SPTG::EnemySpawnInfo,SPTG::EnemyType>": {
+   "parent": "SPTG::ObjectSpawnerBase",
+   "dependencies": [
+    {
+     "kind": "Strong",
+     "type": "Onyx::Spawner"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::UnspawnManager"
+    }
+   ]
+  },
+  "SPTG::ObjectSpawner<SPTG::InteractiveObject,SPTG::InteractiveObjectSpawnInfo,SPTG::InteractiveObjectType>": {
+   "parent": "SPTG::ObjectSpawnerBase",
+   "dependencies": [
+    {
+     "kind": "Strong",
+     "type": "Onyx::Spawner"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::UnspawnManager"
+    }
+   ]
+  },
+  "SPTG::ObjectSpawner<SPTG::Pickup,SPTG::PickupSpawnInfo,SPTG::PickupType>": {
+   "parent": "SPTG::ObjectSpawnerBase",
+   "dependencies": [
+    {
+     "kind": "Strong",
+     "type": "Onyx::Spawner"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::UnspawnManager"
+    }
+   ]
+  },
+  "SPTG::ObjectSpawner<SPTG::Projectile,SPTG::ProjectileSpawnInfo,SPTG::ProjectileType>": {
+   "parent": "SPTG::ObjectSpawnerBase",
+   "dependencies": [
+    {
+     "kind": "Strong",
+     "type": "Onyx::Spawner"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::UnspawnManager"
+    }
+   ]
+  },
+  "SPTG::ObjectSpawner<SPTG::Striker,SPTG::StrikerSpawnInfo,SPTG::StrikerType>": {
+   "parent": "SPTG::ObjectSpawnerBase",
+   "dependencies": [
+    {
+     "kind": "Strong",
+     "type": "Onyx::Spawner"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::UnspawnManager"
+    }
+   ]
+  },
+  "SPTG::ObjectSpawnerBase": {
+   "parent": "Onyx::Component::Base",
+   "dependencies": []
+  },
+  "SPTG::ObjectSpawnerCatalog<SPTG::ControllablePlayer,SPTG::ControllableSpawner,SPTG::ControllableSpawnInfo,Onyx::Meta::Collection<Onyx::Component::Dependency::Dynamic<Onyx::TrueTypedef<SPTG::ControllablePlayer,SPTG::__ONYX_UniqueControllablePlayer01>,Onyx::Meta::Null>,Onyx::Component::Dependency::Dynamic<Onyx::TrueTypedef<SPTG::ControllablePlayer,SPTG::__ONYX_UniqueControllablePlayer02>,Onyx::Meta::Null>,Onyx::Component::Dependency::Dynamic<Onyx::TrueTypedef<SPTG::ControllablePlayer,SPTG::__ONYX_UniqueControllablePlayer03>,Onyx::Meta::Null>,Onyx::Component::Dependency::Dynamic<Onyx::TrueTypedef<SPTG::ControllablePlayer,SPTG::__ONYX_UniqueControllablePlayer04>,Onyx::Meta::Null>,Onyx::Component::Dependency::Strong<SPTG::PadControllerRepository,Onyx::Meta::Null>,Onyx::Meta::Null,Onyx::Meta::Null,Onyx::Meta::Null,Onyx::Meta::Null,Onyx::Meta::Null,Onyx::Meta::Null,Onyx::Meta::Null>>": {
+   "parent": "Onyx::Catalog<SPTG::ControllableSpawner,Onyx::Meta::Collection<Onyx::Component::Dependency::Dynamic<Onyx::TrueTypedef<SPTG::ControllablePlayer,SPTG::__ONYX_UniqueControllablePlayer01>,Onyx::Meta::Null>,Onyx::Component::Dependency::Dynamic<Onyx::TrueTypedef<SPTG::ControllablePlayer,SPTG::__ONYX_UniqueControllablePlayer02>,Onyx::Meta::Null>,Onyx::Component::Dependency::Dynamic<Onyx::TrueTypedef<SPTG::ControllablePlayer,SPTG::__ONYX_UniqueControllablePlayer03>,Onyx::Meta::Null>,Onyx::Component::Dependency::Dynamic<Onyx::TrueTypedef<SPTG::ControllablePlayer,SPTG::__ONYX_UniqueControllablePlayer04>,Onyx::Meta::Null>,Onyx::Component::Dependency::Strong<SPTG::PadControllerRepository,Onyx::Meta::Null>,Onyx::Meta::Null,Onyx::Meta::Null,Onyx::Meta::Null,Onyx::Meta::Null,Onyx::Meta::Null,Onyx::Meta::Null,Onyx::Meta::Null>>",
+   "dependencies": []
+  },
+  "SPTG::ObjectSpawnerCatalog<SPTG::Enemy,SPTG::EnemySpawner,SPTG::EnemySpawnInfo,Onyx::Meta::Null>": {
+   "parent": "Onyx::Catalog<SPTG::EnemySpawner,Onyx::Meta::Null>",
+   "dependencies": []
+  },
+  "SPTG::ObjectSpawnerCatalog<SPTG::InteractiveObject,SPTG::InteractiveObjectSpawner,SPTG::InteractiveObjectSpawnInfo,Onyx::Meta::Null>": {
+   "parent": "Onyx::Catalog<SPTG::InteractiveObjectSpawner,Onyx::Meta::Null>",
+   "dependencies": []
+  },
+  "SPTG::ObjectSpawnerCatalog<SPTG::Pickup,SPTG::PickupSpawner,SPTG::PickupSpawnInfo,Onyx::Meta::Null>": {
+   "parent": "Onyx::Catalog<SPTG::PickupSpawner,Onyx::Meta::Null>",
+   "dependencies": []
+  },
+  "SPTG::ObjectSpawnerCatalog<SPTG::Projectile,SPTG::ProjectileSpawner,SPTG::ProjectileSpawnInfo,Onyx::Meta::Null>": {
+   "parent": "Onyx::Catalog<SPTG::ProjectileSpawner,Onyx::Meta::Null>",
+   "dependencies": []
+  },
+  "SPTG::ObjectSpawnerCatalog<SPTG::Striker,SPTG::StrikerSpawner,SPTG::StrikerSpawnInfo,Onyx::Meta::Null>": {
+   "parent": "Onyx::Catalog<SPTG::StrikerSpawner,Onyx::Meta::Null>",
+   "dependencies": []
+  },
+  "SPTG::PadControlModifier": {
+   "parent": "Onyx::ActionComponent",
+   "dependencies": [
+    {
+     "kind": "Singleton",
+     "type": "SPTG::LevelItemAccessor"
+    }
+   ]
+  },
+  "SPTG::PadController": {
+   "parent": null,
+   "dependencies": []
+  },
+  "SPTG::PadControllerRepository": {
+   "parent": "Onyx::Component::Base",
+   "dependencies": [
+    {
+     "kind": "Singleton",
+     "type": "SPTG::SelectedActorRecorder"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::PersistentDataManager"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::PauseHandler"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::LevelItemAccessor"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::FlashMenuPhase"
+    }
+   ]
+  },
+  "SPTG::PadControllerStrategy": {
+   "parent": null,
+   "dependencies": []
+  },
+  "SPTG::PadControllerStrategyStandard": {
+   "parent": "SPTG::PadControllerStrategy",
+   "dependencies": []
+  },
+  "SPTG::ParallaxUpdater": {
+   "parent": "Onyx::Component::Base",
+   "dependencies": [
+    {
+     "kind": "Singleton",
+     "type": "SPTG::LevelWindowAccessor"
+    }
+   ]
+  },
+  "SPTG::Patel": {
+   "parent": "SPTG::Boss",
+   "dependencies": []
+  },
+  "SPTG::PauseAnimatedAiActorAction": {
+   "parent": "Onyx::ActionComponent",
+   "dependencies": []
+  },
+  "SPTG::PauseHandler": {
+   "parent": "SPTG::SPTG_Phase",
+   "dependencies": []
+  },
+  "SPTG::PauseLayerConnector": {
+   "parent": "Onyx::Component::Base",
+   "dependencies": [
+    {
+     "kind": "Singleton",
+     "type": "SPTG::PauseHandler"
+    }
+   ]
+  },
+  "SPTG::PauseMenuMovie": {
+   "parent": "SPTG::FlashMenu",
+   "dependencies": [
+    {
+     "kind": "Singleton",
+     "type": "SPTG::PauseHandler"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::LevelItemAccessor"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::SwitchLevelGate"
+    },
+    {
+     "kind": "Singleton",
+     "type": "Onyx::Localization::Localization"
+    },
+    {
+     "kind": "Singleton",
+     "type": "Onyx::Profile"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::ItemRegistry"
+    },
+    {
+     "kind": "Singleton",
+     "type": "Onyx::SystemNotifications"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::DialogManager"
+    }
+   ]
+  },
+  "SPTG::PauseMenuMovie::PauseMenuBridge": {
+   "parent": "SPTG::FlashMenu::FlashMenuBridge",
+   "dependencies": []
+  },
+  "SPTG::PauseMenuMovie::TickMovie(void)::$_31": {
+   "parent": null,
+   "dependencies": []
+  },
+  "SPTG::PauseMenuMovie::TickMovie(void)::$_32": {
+   "parent": null,
+   "dependencies": []
+  },
+  "SPTG::PersistentDataAgency": {
+   "parent": "Onyx::Component::Base",
+   "dependencies": [
+    {
+     "kind": "Singleton",
+     "type": "SPTG::FlashMenuPhase"
+    },
+    {
+     "kind": "Strong",
+     "type": "SPTG::SaveOverlay"
+    },
+    {
+     "kind": "Strong",
+     "type": "SPTG::NetworkingInitializer"
+    },
+    {
+     "kind": "Singleton",
+     "type": "Onyx::Profile"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::SwitchLevelGate"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::ContentInstaller"
+    },
+    {
+     "kind": "Singleton",
+     "type": "Onyx::Localization::Localization"
+    }
+   ]
+  },
+  "SPTG::PersistentDataManager": {
+   "parent": "Onyx::Phase",
+   "dependencies": [
+    {
+     "kind": "Singleton",
+     "type": "Onyx::Profile"
+    },
+    {
+     "kind": "Strong",
+     "type": "Onyx::Savegame"
+    },
+    {
+     "kind": "Strong",
+     "type": "SPTG::Leaderboard"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::PersistentDataAgency"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::DialogManager"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::LevelSecretManager"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::LevelItemAccessor"
+    },
+    {
+     "kind": "Strong",
+     "type": "SPTG::NetworkingInitializer"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::ContentInstaller"
+    },
+    {
+     "kind": "Singleton",
+     "type": "Onyx::SystemNotifications"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::FlashMenuPhase"
+    }
+   ]
+  },
+  "SPTG::Pickup": {
+   "parent": "SPTG::AnimatedAiActor",
+   "dependencies": []
+  },
+  "SPTG::PickupCatalog": {
+   "parent": "Onyx::Catalog<SPTG::Pickup,Onyx::Meta::Null>",
+   "dependencies": []
+  },
+  "SPTG::PickupInstance": {
+   "parent": "SPTG::ObjectSpawnedInstance<SPTG::PickupSpawner,SPTG::Pickup,Onyx::Meta::Null>",
+   "dependencies": []
+  },
+  "SPTG::PickupSpawnInfo": {
+   "parent": "SPTG::BaseSpawnInfo",
+   "dependencies": []
+  },
+  "SPTG::PickupSpawner": {
+   "parent": "SPTG::ObjectSpawner<SPTG::Pickup,SPTG::PickupSpawnInfo,SPTG::PickupType>",
+   "dependencies": []
+  },
+  "SPTG::PickupSpawnerCatalog": {
+   "parent": "SPTG::ObjectSpawnerCatalog<SPTG::Pickup,SPTG::PickupSpawner,SPTG::PickupSpawnInfo,Onyx::Meta::Null>",
+   "dependencies": []
+  },
+  "SPTG::PileOnMgr": {
+   "parent": "Onyx::Component::Base",
+   "dependencies": [
+    {
+     "kind": "Singleton",
+     "type": "SPTG::LevelItemAccessor"
+    }
+   ]
+  },
+  "SPTG::Piniata": {
+   "parent": "SPTG::BreakableObject",
+   "dependencies": []
+  },
+  "SPTG::PlaySound": {
+   "parent": "SPTG::AudioController",
+   "dependencies": []
+  },
+  "SPTG::PlayerInfo": {
+   "parent": "Onyx::Component::Base",
+   "dependencies": [
+    {
+     "kind": "Weak",
+     "type": "SPTG::HudFiniteNumberCounter"
+    },
+    {
+     "kind": "Weak",
+     "type": "Onyx::TrueTypedef<SPTG::HudFiniteNumberCounter,SPTG::__ONYX_UniqueHudComboHit>"
+    }
+   ]
+  },
+  "SPTG::PlayerSynchronizer": {
+   "parent": "Onyx::Component::Base",
+   "dependencies": [
+    {
+     "kind": "Singleton",
+     "type": "SPTG::SelectedActorRecorder"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::PersistentDataManager"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::FlashMenuPhase"
+    }
+   ]
+  },
+  "SPTG::PlayerSynchronizer::AssignToFirstAvailableSynchronizer(EE_US::PlayerObjectHandler *)::$_57": {
+   "parent": null,
+   "dependencies": []
+  },
+  "SPTG::PlayerSynchronizer::AssignToFirstAvailableSynchronizer(EE_US::PlayerObjectHandler *)::$_57::operator() const(void)::{lambda(EE::Vector<SPTG::PlayerSynchronizer*,EE::HeapAllocator<EE::VectorAllocator<SPTG::PlayerSynchronizer*>>> &)#1}": {
+   "parent": null,
+   "dependencies": []
+  },
+  "SPTG::PlayerSynchronizer::OnBecomeReady(void)::$_60": {
+   "parent": null,
+   "dependencies": []
+  },
+  "SPTG::PlayerSynchronizer::OnPlayerLeftLocal(EE_US::PlayerObjectHandler *)::$_58": {
+   "parent": null,
+   "dependencies": []
+  },
+  "SPTG::PlayerSynchronizer::OnSessionLeft(void)::$_59": {
+   "parent": null,
+   "dependencies": []
+  },
+  "SPTG::PlayerSynchronizer::PlayerSynchronizer(void)::$_55": {
+   "parent": null,
+   "dependencies": []
+  },
+  "SPTG::PlayerSynchronizer::~PlayerSynchronizer()::$_56": {
+   "parent": null,
+   "dependencies": []
+  },
+  "SPTG::PlayerSynchronizerStatic::SortAllSynchronizers(void)::$_54": {
+   "parent": null,
+   "dependencies": []
+  },
+  "SPTG::PlayersReadyDetector": {
+   "parent": "SPTG::SPTG_AIComponent",
+   "dependencies": [
+    {
+     "kind": "Singleton",
+     "type": "SPTG::LevelItemAccessor"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::NotificationsDispatcher"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::SelectedActorRecorder"
+    }
+   ]
+  },
+  "SPTG::PlayersReadyDetector::DetectAllPlayersIsReady(void)::$_6": {
+   "parent": null,
+   "dependencies": []
+  },
+  "SPTG::PlayersReadyDetector::DetectAllPlayersIsReady(void)::$_7": {
+   "parent": null,
+   "dependencies": []
+  },
+  "SPTG::PlayersReadyDetector::DetectAllPlayersIsReady(void)::$_8": {
+   "parent": null,
+   "dependencies": []
+  },
+  "SPTG::PlayfieldActor": {
+   "parent": "SPTG::PlayfieldCollision",
+   "dependencies": []
+  },
+  "SPTG::PlayfieldActorCatalog": {
+   "parent": "Onyx::Catalog<SPTG::PlayfieldActor,Onyx::Meta::Null>",
+   "dependencies": []
+  },
+  "SPTG::PlayfieldCollision": {
+   "parent": "Onyx::Component::Base",
+   "dependencies": [
+    {
+     "kind": "Strong",
+     "type": "Onyx::Transform"
+    }
+   ]
+  },
+  "SPTG::PlayfieldCollisionCameraBlockSolver": {
+   "parent": "Onyx::Component::Base",
+   "dependencies": [
+    {
+     "kind": "Singleton",
+     "type": "SPTG::LevelWindowAccessor"
+    }
+   ]
+  },
+  "SPTG::PlayfieldCollisionDraw": {
+   "parent": "SPTG::SPTG_Phase",
+   "dependencies": [
+    {
+     "kind": "Weak",
+     "type": "SPTG::LevelSectionCatalog"
+    },
+    {
+     "kind": "Weak",
+     "type": "SPTG::PlayfieldActorCatalog"
+    },
+    {
+     "kind": "Weak",
+     "type": "SPTG::FillLineListGroupShape"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::LevelWindowAccessor"
+    }
+   ]
+  },
+  "SPTG::PlayfieldCollisionLevelSectionSolver": {
+   "parent": "Onyx::Component::Base",
+   "dependencies": [
+    {
+     "kind": "Strong",
+     "type": "SPTG::LevelSectionCatalog"
+    }
+   ]
+  },
+  "SPTG::PlayfieldCollisionSolver": {
+   "parent": "SPTG::SPTG_Phase",
+   "dependencies": [
+    {
+     "kind": "Strong",
+     "type": "SPTG::PlayfieldActorCatalog"
+    },
+    {
+     "kind": "Strong",
+     "type": "SPTG::PlayfieldCollisionLevelSectionSolver"
+    },
+    {
+     "kind": "Strong",
+     "type": "SPTG::PlayfieldCollisionCameraBlockSolver"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::PauseHandler"
+    }
+   ]
+  },
+  "SPTG::PlayfieldObject": {
+   "parent": "Onyx::Component::Base",
+   "dependencies": [
+    {
+     "kind": "Strong",
+     "type": "SPTG::GraphicsObject"
+    },
+    {
+     "kind": "Weak",
+     "type": "SPTG::PlayfieldCollision"
+    }
+   ]
+  },
+  "SPTG::PopupBox": {
+   "parent": "SPTG::FlashMenu",
+   "dependencies": []
+  },
+  "SPTG::Projectile": {
+   "parent": "SPTG::AnimatedAiActor",
+   "dependencies": []
+  },
+  "SPTG::ProjectileInstance": {
+   "parent": "SPTG::ObjectSpawnedInstance<SPTG::ProjectileSpawner,SPTG::Projectile,Onyx::Meta::Null>",
+   "dependencies": []
+  },
+  "SPTG::ProjectileSpawnInfo": {
+   "parent": "SPTG::BaseSpawnInfo",
+   "dependencies": []
+  },
+  "SPTG::ProjectileSpawner": {
+   "parent": "SPTG::ObjectSpawner<SPTG::Projectile,SPTG::ProjectileSpawnInfo,SPTG::ProjectileType>",
+   "dependencies": []
+  },
+  "SPTG::ProjectileSpawnerCatalog": {
+   "parent": "SPTG::ObjectSpawnerCatalog<SPTG::Projectile,SPTG::ProjectileSpawner,SPTG::ProjectileSpawnInfo,Onyx::Meta::Null>",
+   "dependencies": []
+  },
+  "SPTG::PublisherScreen": {
+   "parent": "SPTG::FlashMenu",
+   "dependencies": []
+  },
+  "SPTG::PublisherScreen::PublisherScreenBridge": {
+   "parent": "SPTG::FlashMenu::FlashMenuBridge",
+   "dependencies": []
+  },
+  "SPTG::RTCCameraModeAction": {
+   "parent": "Onyx::ActionComponent",
+   "dependencies": [
+    {
+     "kind": "Singleton",
+     "type": "SPTG::LevelWindowAccessor"
+    }
+   ]
+  },
+  "SPTG::ReadLeaderboardTask": {
+   "parent": "SPTG::AsyncTask<Onyx::Function<void ()(SPTG::EventRecordGot &)>>",
+   "dependencies": []
+  },
+  "SPTG::Readme": {
+   "parent": "SPTG::FlashMenu",
+   "dependencies": []
+  },
+  "SPTG::Readme::ReadmeBridge": {
+   "parent": "SPTG::FlashMenu::FlashMenuBridge",
+   "dependencies": []
+  },
+  "SPTG::Renderer2DPlane": {
+   "parent": null,
+   "dependencies": []
+  },
+  "SPTG::Renderer2DUnit": {
+   "parent": "Onyx::Graphics::RenderUnit",
+   "dependencies": []
+  },
+  "SPTG::RepeatEditorGraphicsObject": {
+   "parent": "SPTG::EditorGraphicsObject<SPTG::RepeatObject>",
+   "dependencies": []
+  },
+  "SPTG::RepeatObject": {
+   "parent": "SPTG::StaticObject",
+   "dependencies": [
+    {
+     "kind": "Singleton",
+     "type": "SPTG::LevelWindowAccessor"
+    }
+   ]
+  },
+  "SPTG::Roxy": {
+   "parent": "SPTG::Boss",
+   "dependencies": []
+  },
+  "SPTG::RoxyMirror": {
+   "parent": "SPTG::Boss",
+   "dependencies": []
+  },
+  "SPTG::SPTGRenderer": {
+   "parent": "Onyx::Graphics::Visual",
+   "dependencies": [
+    {
+     "kind": "Singleton",
+     "type": "SPTG::LevelWindowAccessor"
+    },
+    {
+     "kind": "Strong",
+     "type": "Onyx::Graphics::Renderer"
+    },
+    {
+     "kind": "Strong",
+     "type": "SPTG::LevelCamera"
+    },
+    {
+     "kind": "Strong",
+     "type": "Onyx::CameraComponent"
+    },
+    {
+     "kind": "Strong",
+     "type": "Onyx::Graphics::Texture"
+    },
+    {
+     "kind": "Strong",
+     "type": "SPTG::LineDrawer"
+    }
+   ]
+  },
+  "SPTG::SPTGSavegame": {
+   "parent": "Onyx::Phase",
+   "dependencies": [
+    {
+     "kind": "Strong",
+     "type": "Onyx::Savegame"
+    }
+   ]
+  },
+  "SPTG::SPTG_AIComponent": {
+   "parent": "Onyx::AIComponent",
+   "dependencies": []
+  },
+  "SPTG::SPTG_AIDirector": {
+   "parent": "Onyx::Director<SPTG::SPTG_AIComponent,Onyx::Meta::Collection<Onyx::Component::Dependency::Singleton<SPTG::LevelWindowAccessor,Onyx::Meta::Null>,Onyx::Meta::Null,Onyx::Meta::Null,Onyx::Meta::Null,Onyx::Meta::Null,Onyx::Meta::Null,Onyx::Meta::Null,Onyx::Meta::Null,Onyx::Meta::Null,Onyx::Meta::Null,Onyx::Meta::Null,Onyx::Meta::Null>>",
+   "dependencies": []
+  },
+  "SPTG::SPTG_AIDirectorPhase": {
+   "parent": "SPTG::SPTG_Phase",
+   "dependencies": [
+    {
+     "kind": "Singleton",
+     "type": "SPTG::SPTG_AIDirector"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::PauseHandler"
+    }
+   ]
+  },
+  "SPTG::SPTG_Animate": {
+   "parent": "Onyx::Director<Onyx::Animator,Onyx::Meta::Null>",
+   "dependencies": []
+  },
+  "SPTG::SPTG_AnimatePhase": {
+   "parent": "SPTG::SPTG_Phase",
+   "dependencies": [
+    {
+     "kind": "Singleton",
+     "type": "SPTG::SPTG_Animate"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::PauseHandler"
+    }
+   ]
+  },
+  "SPTG::SPTG_Flow": {
+   "parent": "Onyx::Phase",
+   "dependencies": [
+    {
+     "kind": "Singleton",
+     "type": "SPTG::LevelItemAccessor"
+    }
+   ]
+  },
+  "SPTG::SPTG_HudDirectorPhase": {
+   "parent": "SPTG::SPTG_Phase",
+   "dependencies": [
+    {
+     "kind": "Singleton",
+     "type": "SPTG::HudStatusManager"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::PauseHandler"
+    }
+   ]
+  },
+  "SPTG::SPTG_MaterialModifier": {
+   "parent": "Onyx::Graphics::MaterialModifier",
+   "dependencies": []
+  },
+  "SPTG::SPTG_Phase": {
+   "parent": "Onyx::Component::Base",
+   "dependencies": [
+    {
+     "kind": "Singleton",
+     "type": "SPTG::SPTG_Flow"
+    }
+   ]
+  },
+  "SPTG::SPTG_Press": {
+   "parent": "Onyx::Director<Onyx::AnimationPrinter,Onyx::Meta::Null>",
+   "dependencies": []
+  },
+  "SPTG::SPTG_PressPhase": {
+   "parent": "SPTG::SPTG_Phase",
+   "dependencies": [
+    {
+     "kind": "Singleton",
+     "type": "SPTG::SPTG_Press"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::PauseHandler"
+    }
+   ]
+  },
+  "SPTG::SaveOverlay": {
+   "parent": "Onyx::Component::Base",
+   "dependencies": [
+    {
+     "kind": "Strong",
+     "type": "SPTG::AnimatedObject"
+    },
+    {
+     "kind": "Strong",
+     "type": "SPTG::SpriteAnimationPrinter"
+    },
+    {
+     "kind": "Strong",
+     "type": "Onyx::BasicAnimator"
+    }
+   ]
+  },
+  "SPTG::SaveOverlay::VisualOverlay": {
+   "parent": "Onyx::Graphics::Visual",
+   "dependencies": []
+  },
+  "SPTG::SectionActorPresenceLogic": {
+   "parent": "Onyx::Component::Base",
+   "dependencies": [
+    {
+     "kind": "Weak",
+     "type": "Onyx::TrueTypedef<Onyx::ActionComponent,SPTG::__ONYX_UniqueEnterAction>"
+    },
+    {
+     "kind": "Weak",
+     "type": "Onyx::TrueTypedef<Onyx::ActionComponent,SPTG::__ONYX_UniqueLeaveAction>"
+    },
+    {
+     "kind": "Weak",
+     "type": "Onyx::TrueTypedef<SPTG::ActorActionComponent,SPTG::__ONYX_UniqueActorCheckInAction>"
+    },
+    {
+     "kind": "Weak",
+     "type": "Onyx::TrueTypedef<SPTG::ActorActionComponent,SPTG::__ONYX_UniqueActorCheckOutAction>"
+    },
+    {
+     "kind": "Weak",
+     "type": "Onyx::ActionComponent"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::GameplayFlow"
+    }
+   ]
+  },
+  "SPTG::SectionZOffsetAdjust": {
+   "parent": "Onyx::Component::Base",
+   "dependencies": []
+  },
+  "SPTG::SelectCharacter": {
+   "parent": "SPTG::FlashMenu",
+   "dependencies": [
+    {
+     "kind": "Singleton",
+     "type": "SPTG::PauseHandler"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::SwitchLevelGate"
+    },
+    {
+     "kind": "Strong",
+     "type": "SPTG::NetworkingInitializer"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::GameDifficultyAccessor"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::WorldMapInformationBroker"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::GameStatisticsBureau"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::LevelSecretManager"
+    },
+    {
+     "kind": "Singleton",
+     "type": "Onyx::Profile"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::ContentInstaller"
+    },
+    {
+     "kind": "Strong",
+     "type": "SPTG::Network::MatchmakingDiscoverer"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::LevelItemAccessor"
+    }
+   ]
+  },
+  "SPTG::SelectCharacter::SelectCharacterBridge": {
+   "parent": "SPTG::FlashMenu::FlashMenuBridge",
+   "dependencies": []
+  },
+  "SPTG::SelectDifficulty": {
+   "parent": "SPTG::FlashMenu",
+   "dependencies": [
+    {
+     "kind": "Singleton",
+     "type": "SPTG::GameDifficultyAccessor"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::SwitchLevelGate"
+    },
+    {
+     "kind": "Singleton",
+     "type": "Onyx::Profile"
+    }
+   ]
+  },
+  "SPTG::SelectDifficulty::SelectDifficultyBridge": {
+   "parent": "SPTG::FlashMenu::FlashMenuBridge",
+   "dependencies": []
+  },
+  "SPTG::SelectedActorRecorder": {
+   "parent": "Onyx::Component::Base",
+   "dependencies": [
+    {
+     "kind": "Singleton",
+     "type": "SPTG::ControllableTextureLoader"
+    }
+   ]
+  },
+  "SPTG::ServerListMenu": {
+   "parent": "SPTG::FlashMenu",
+   "dependencies": [
+    {
+     "kind": "Singleton",
+     "type": "SPTG::SwitchLevelGate"
+    },
+    {
+     "kind": "Strong",
+     "type": "SPTG::Network::MatchmakingDiscoverer"
+    }
+   ]
+  },
+  "SPTG::ServerListMenu::ServerListMenuBridge": {
+   "parent": "SPTG::FlashMenu::FlashMenuBridge",
+   "dependencies": []
+  },
+  "SPTG::ServerSettingMenu": {
+   "parent": "SPTG::FlashMenu",
+   "dependencies": [
+    {
+     "kind": "Singleton",
+     "type": "SPTG::SwitchLevelGate"
+    },
+    {
+     "kind": "Singleton",
+     "type": "Onyx::Profile"
+    }
+   ]
+  },
+  "SPTG::ServerSettingMenu::ServerSettingMenuBridge": {
+   "parent": "SPTG::FlashMenu::FlashMenuBridge",
+   "dependencies": []
+  },
+  "SPTG::SessionSelection": {
+   "parent": "Onyx::Component::Base",
+   "dependencies": [
+    {
+     "kind": "Strong",
+     "type": "SPTG::Network::MatchmakingDiscoverer"
+    }
+   ]
+  },
+  "SPTG::SessionSelector": {
+   "parent": "Onyx::Component::Base",
+   "dependencies": []
+  },
+  "SPTG::SetFlashMenuVisibilityAction": {
+   "parent": "Onyx::ActionComponent",
+   "dependencies": [
+    {
+     "kind": "Singleton",
+     "type": "SPTG::FlashMenuPhase"
+    }
+   ]
+  },
+  "SPTG::SetGameModeAction": {
+   "parent": "Onyx::ActionComponent",
+   "dependencies": [
+    {
+     "kind": "Singleton",
+     "type": "SPTG::LevelWindowAccessor"
+    }
+   ]
+  },
+  "SPTG::SetHudEnableAction": {
+   "parent": "Onyx::ActionComponent",
+   "dependencies": [
+    {
+     "kind": "Singleton",
+     "type": "SPTG::HudStatusManager"
+    }
+   ]
+  },
+  "SPTG::SetLayerVisibilityAction": {
+   "parent": "Onyx::ActionComponent",
+   "dependencies": [
+    {
+     "kind": "Singleton",
+     "type": "SPTG::LevelWindowAccessor"
+    }
+   ]
+  },
+  "SPTG::SetMainPlayerFlashMenuVisibilityAction": {
+   "parent": "SPTG::SetFlashMenuVisibilityAction",
+   "dependencies": [
+    {
+     "kind": "Singleton",
+     "type": "SPTG::LevelItemAccessor"
+    }
+   ]
+  },
+  "SPTG::SetPopupBoxVisibilityAction": {
+   "parent": "SPTG::SetFlashMenuVisibilityAction",
+   "dependencies": [
+    {
+     "kind": "Weak",
+     "type": "SPTG::ActorActionSequence"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::LevelWindowAccessor"
+    },
+    {
+     "kind": "Singleton",
+     "type": "Onyx::Localization::Localization"
+    }
+   ]
+  },
+  "SPTG::SetTrackingCameraModeAction": {
+   "parent": "Onyx::ActionComponent",
+   "dependencies": [
+    {
+     "kind": "Singleton",
+     "type": "SPTG::LevelWindowAccessor"
+    }
+   ]
+  },
+  "SPTG::SettingMenu": {
+   "parent": "SPTG::FlashMenu",
+   "dependencies": [
+    {
+     "kind": "Singleton",
+     "type": "Onyx::Profile"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::LevelItemAccessor"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::SwitchLevelGate"
+    }
+   ]
+  },
+  "SPTG::SettingMenu::SettingMenuBridge": {
+   "parent": "SPTG::FlashMenu::FlashMenuBridge",
+   "dependencies": []
+  },
+  "SPTG::ShadowAnimatedObject": {
+   "parent": "SPTG::AnimatedObject",
+   "dependencies": [
+    {
+     "kind": "Strong",
+     "type": "Onyx::BasicAnimator"
+    }
+   ]
+  },
+  "SPTG::ShakerSettingsWrapper": {
+   "parent": "Onyx::Component::Base",
+   "dependencies": []
+  },
+  "SPTG::ShopMenu": {
+   "parent": "SPTG::FlashMenu",
+   "dependencies": [
+    {
+     "kind": "Singleton",
+     "type": "SPTG::LevelItemAccessor"
+    }
+   ]
+  },
+  "SPTG::ShopMenu::ShopMenuBridge": {
+   "parent": "SPTG::FlashMenu::FlashMenuBridge",
+   "dependencies": []
+  },
+  "SPTG::ShowObjectAction": {
+   "parent": "Onyx::ActionComponent",
+   "dependencies": [
+    {
+     "kind": "Strong",
+     "type": "SPTG::GraphicsObject"
+    },
+    {
+     "kind": "Weak",
+     "type": "Onyx::Animator"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::LevelWindowAccessor"
+    }
+   ]
+  },
+  "SPTG::SideScrollerCollision": {
+   "parent": "Onyx::Component::Base",
+   "dependencies": [
+    {
+     "kind": "Strong",
+     "type": "Onyx::Transform"
+    }
+   ]
+  },
+  "SPTG::SideScrollerCollisionDraw": {
+   "parent": "SPTG::SPTG_Phase",
+   "dependencies": [
+    {
+     "kind": "Singleton",
+     "type": "SPTG::AnimatedAiActorCatalog"
+    },
+    {
+     "kind": "Weak",
+     "type": "SPTG::FillLineListGroupShape"
+    }
+   ]
+  },
+  "SPTG::SideScrollerCollisionPhase": {
+   "parent": "SPTG::SPTG_Phase",
+   "dependencies": [
+    {
+     "kind": "Singleton",
+     "type": "SPTG::AnimatedAiActorCatalog"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::PauseHandler"
+    }
+   ]
+  },
+  "SPTG::SimpleMergeStrategy": {
+   "parent": "SPTG::MergeStrategyInterface",
+   "dependencies": []
+  },
+  "SPTG::SlopeSection": {
+   "parent": "SPTG::LevelSection",
+   "dependencies": []
+  },
+  "SPTG::SmallPoolBase": {
+   "parent": null,
+   "dependencies": []
+  },
+  "SPTG::SoundMaterialSwitch": {
+   "parent": "SPTG::AudioTypeSwitch<E_SoundMaterial>",
+   "dependencies": [
+    {
+     "kind": "Weak",
+     "type": "SPTG::AnimatedAiActor"
+    }
+   ]
+  },
+  "SPTG::SoundTest": {
+   "parent": "SPTG::FlashMenu",
+   "dependencies": [
+    {
+     "kind": "Strong",
+     "type": "SPTG::AudioListPlayer"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::SwitchLevelGate"
+    },
+    {
+     "kind": "Strong",
+     "type": "Onyx::TrueTypedef<SPTG::AudioListPlayer,SPTG::__ONYX_UniqueSoundListPlayer>"
+    }
+   ]
+  },
+  "SPTG::SoundTest::SoundTestBridge": {
+   "parent": "SPTG::FlashMenu::FlashMenuBridge",
+   "dependencies": []
+  },
+  "SPTG::SoundTestModeAction": {
+   "parent": "Onyx::ActionComponent",
+   "dependencies": [
+    {
+     "kind": "Singleton",
+     "type": "SPTG::LevelItemAccessor"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::SwitchLevelGate"
+    },
+    {
+     "kind": "Weak",
+     "type": "Onyx::TrueTypedef<SPTG::AudioListPlayer,SPTG::__ONYX_UniqueSoundList>"
+    }
+   ]
+  },
+  "SPTG::SpawnControllableAction": {
+   "parent": "Onyx::ActionComponent",
+   "dependencies": [
+    {
+     "kind": "Singleton",
+     "type": "SPTG::LevelItemAccessor"
+    }
+   ]
+  },
+  "SPTG::SpawnEnemyAction": {
+   "parent": "Onyx::ActionComponent",
+   "dependencies": [
+    {
+     "kind": "Singleton",
+     "type": "SPTG::LevelItemAccessor"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::GameplayFlow"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::SelectedActorRecorder"
+    }
+   ]
+  },
+  "SPTG::SpawnInteractiveObjectAction": {
+   "parent": "Onyx::ActionComponent",
+   "dependencies": [
+    {
+     "kind": "Singleton",
+     "type": "SPTG::LevelItemAccessor"
+    },
+    {
+     "kind": "Weak",
+     "type": "SPTG::SpawnEnemyAction"
+    }
+   ]
+  },
+  "SPTG::SpawnInteractiveObjectActionEx": {
+   "parent": "Onyx::ActionComponent",
+   "dependencies": [
+    {
+     "kind": "Singleton",
+     "type": "SPTG::LevelItemAccessor"
+    },
+    {
+     "kind": "Weak",
+     "type": "Onyx::Transform"
+    }
+   ]
+  },
+  "SPTG::SpawnMoneyAction": {
+   "parent": "SPTG::ActorActionComponent",
+   "dependencies": [
+    {
+     "kind": "Weak",
+     "type": "Onyx::Transform"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::LevelItemAccessor"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::LevelSecretManager"
+    }
+   ]
+  },
+  "SPTG::SpawnPickupAction": {
+   "parent": "Onyx::ActionComponent",
+   "dependencies": [
+    {
+     "kind": "Singleton",
+     "type": "SPTG::LevelItemAccessor"
+    }
+   ]
+  },
+  "SPTG::SpawnProjectileAction": {
+   "parent": "Onyx::ActionComponent",
+   "dependencies": [
+    {
+     "kind": "Singleton",
+     "type": "SPTG::LevelItemAccessor"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::GameplayFlow"
+    }
+   ]
+  },
+  "SPTG::SpriteAnimationPrinter": {
+   "parent": "Onyx::AnimationStatePrinter",
+   "dependencies": [
+    {
+     "kind": "Strong",
+     "type": "SPTG::AnimatedObject"
+    }
+   ]
+  },
+  "SPTG::StartCameraShakeAction": {
+   "parent": "Onyx::ActionComponent",
+   "dependencies": [
+    {
+     "kind": "Singleton",
+     "type": "SPTG::LevelWindowAccessor"
+    }
+   ]
+  },
+  "SPTG::StartEnemyAction": {
+   "parent": "SPTG::ActorActionComponent",
+   "dependencies": [
+    {
+     "kind": "Weak",
+     "type": "SPTG::ActorActionComponent"
+    }
+   ]
+  },
+  "SPTG::StartLeaderboardTask": {
+   "parent": "SPTG::AsyncTask<Onyx::Function<void ()(void)>>",
+   "dependencies": []
+  },
+  "SPTG::StartPadVibrationAction": {
+   "parent": "Onyx::ActionComponent",
+   "dependencies": [
+    {
+     "kind": "Singleton",
+     "type": "SPTG::LevelItemAccessor"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::SelectedActorRecorder"
+    }
+   ]
+  },
+  "SPTG::StartPlayerAction": {
+   "parent": "Onyx::ActionComponent",
+   "dependencies": [
+    {
+     "kind": "Singleton",
+     "type": "SPTG::LevelItemAccessor"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::GameplayFlow"
+    }
+   ]
+  },
+  "SPTG::StaticAnimatedObject": {
+   "parent": "SPTG::AnimatedObject",
+   "dependencies": [
+    {
+     "kind": "Strong",
+     "type": "Onyx::BasicAnimator"
+    }
+   ]
+  },
+  "SPTG::StaticEditorGraphicsObject": {
+   "parent": "SPTG::EditorGraphicsObject<SPTG::StaticObject>",
+   "dependencies": []
+  },
+  "SPTG::StaticObject": {
+   "parent": "SPTG::GraphicsObject",
+   "dependencies": [
+    {
+     "kind": "Strong",
+     "type": "Onyx::Graphics::Texture"
+    }
+   ]
+  },
+  "SPTG::StatisticsNotifier": {
+   "parent": "Onyx::Component::Base",
+   "dependencies": [
+    {
+     "kind": "Singleton",
+     "type": "SPTG::GameStatisticsBureau"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::LevelItemAccessor"
+    }
+   ]
+  },
+  "SPTG::StatusScreen": {
+   "parent": "SPTG::FlashMenu",
+   "dependencies": [
+    {
+     "kind": "Singleton",
+     "type": "SPTG::LevelItemAccessor"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::ItemRegistry"
+    }
+   ]
+  },
+  "SPTG::StatusScreen::StatusScreenBridge": {
+   "parent": "SPTG::FlashMenu::FlashMenuBridge",
+   "dependencies": []
+  },
+  "SPTG::StopCameraShakeAction": {
+   "parent": "Onyx::ActionComponent",
+   "dependencies": [
+    {
+     "kind": "Singleton",
+     "type": "SPTG::LevelWindowAccessor"
+    }
+   ]
+  },
+  "SPTG::StopPadVibrationAction": {
+   "parent": "Onyx::ActionComponent",
+   "dependencies": [
+    {
+     "kind": "Singleton",
+     "type": "SPTG::LevelItemAccessor"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::SelectedActorRecorder"
+    }
+   ]
+  },
+  "SPTG::StopSound": {
+   "parent": "SPTG::AudioController",
+   "dependencies": []
+  },
+  "SPTG::Striker": {
+   "parent": "SPTG::AnimatedAiActor",
+   "dependencies": []
+  },
+  "SPTG::StrikerCatalog": {
+   "parent": "SPTG::ObjectSpawnerCatalog<SPTG::Striker,SPTG::StrikerSpawner,SPTG::StrikerSpawnInfo,Onyx::Meta::Null>",
+   "dependencies": []
+  },
+  "SPTG::StrikerInstance": {
+   "parent": "SPTG::ObjectSpawnedInstance<SPTG::StrikerSpawner,SPTG::Striker,Onyx::Meta::Null>",
+   "dependencies": []
+  },
+  "SPTG::StrikerMrChau": {
+   "parent": "SPTG::Striker",
+   "dependencies": []
+  },
+  "SPTG::StrikerMrsChau": {
+   "parent": "SPTG::Striker",
+   "dependencies": []
+  },
+  "SPTG::StrikerSpawnInfo": {
+   "parent": "SPTG::BaseSpawnInfo",
+   "dependencies": []
+  },
+  "SPTG::StrikerSpawner": {
+   "parent": "SPTG::ObjectSpawner<SPTG::Striker,SPTG::StrikerSpawnInfo,SPTG::StrikerType>",
+   "dependencies": []
+  },
+  "SPTG::StrikerYeti": {
+   "parent": "SPTG::Striker",
+   "dependencies": [
+    {
+     "kind": "Weak",
+     "type": "SPTG::LineDrawer"
+    },
+    {
+     "kind": "Weak",
+     "type": "Onyx::TrueTypedef<Onyx::ActionComponent,SPTG::__ONYX_UniqueBeginSpeedLine>"
+    },
+    {
+     "kind": "Weak",
+     "type": "Onyx::TrueTypedef<Onyx::ActionComponent,SPTG::__ONYX_UniqueEndSpeedLine>"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::GameplayFlow"
+    }
+   ]
+  },
+  "SPTG::SuperFightingRobotAI": {
+   "parent": "SPTG::Boss",
+   "dependencies": [
+    {
+     "kind": "Strong",
+     "type": "SPTG::SuperFightingRobotHead"
+    },
+    {
+     "kind": "Strong",
+     "type": "SPTG::SuperFightingRobotTorso"
+    },
+    {
+     "kind": "Strong",
+     "type": "Onyx::TrueTypedef<SPTG::SuperFightingRobotHand,SPTG::__ONYX_UniqueRobotLeftHand>"
+    },
+    {
+     "kind": "Strong",
+     "type": "Onyx::TrueTypedef<SPTG::SuperFightingRobotHand,SPTG::__ONYX_UniqueRobotRightHand>"
+    },
+    {
+     "kind": "Strong",
+     "type": "Onyx::TrueTypedef<SPTG::SuperFightingRobotShoulder,SPTG::__ONYX_UniqueRobotLeftShoulder>"
+    },
+    {
+     "kind": "Strong",
+     "type": "Onyx::TrueTypedef<SPTG::SuperFightingRobotShoulder,SPTG::__ONYX_UniqueRobotRightShoulder>"
+    },
+    {
+     "kind": "Strong",
+     "type": "Onyx::TrueTypedef<SPTG::SuperFightingRobotTorso,SPTG::__ONYX_UniqueRobotSmallBody>"
+    },
+    {
+     "kind": "Strong",
+     "type": "Onyx::Transform"
+    }
+   ]
+  },
+  "SPTG::SuperFightingRobotHand": {
+   "parent": "SPTG::Boss",
+   "dependencies": [
+    {
+     "kind": "Strong",
+     "type": "SPTG::AnimatedObject"
+    },
+    {
+     "kind": "Strong",
+     "type": "Onyx::TrueTypedef<Onyx::BasicAnimator,SPTG::__ONYX_UniqueAdditionalBasicAnimator>"
+    },
+    {
+     "kind": "Strong",
+     "type": "Onyx::TrueTypedef<SPTG::GraphicsObject,SPTG::__ONYX_UniqueAdditionalGraphicsObject>"
+    },
+    {
+     "kind": "Weak",
+     "type": "SPTG::SuperFightingRobotShoulder"
+    },
+    {
+     "kind": "Weak",
+     "type": "SPTG::SuperFightingRobotHead"
+    }
+   ]
+  },
+  "SPTG::SuperFightingRobotHead": {
+   "parent": "SPTG::Boss",
+   "dependencies": []
+  },
+  "SPTG::SuperFightingRobotShoulder": {
+   "parent": "SPTG::Boss",
+   "dependencies": []
+  },
+  "SPTG::SuperFightingRobotTorso": {
+   "parent": "SPTG::Boss",
+   "dependencies": []
+  },
+  "SPTG::SuperGideon": {
+   "parent": "SPTG::Boss",
+   "dependencies": []
+  },
+  "SPTG::SuperGideonAI": {
+   "parent": "SPTG::BaseBossAI",
+   "dependencies": []
+  },
+  "SPTG::SwitchLevelGate": {
+   "parent": "Onyx::Component::Base",
+   "dependencies": [
+    {
+     "kind": "Singleton",
+     "type": "SPTG::SelectedActorRecorder"
+    },
+    {
+     "kind": "Singleton",
+     "type": "Onyx::Profile"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::FlashMenuPhase"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::LevelItemAccessor"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::LevelWindowAccessor"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::PersistentDataManager"
+    }
+   ]
+  },
+  "SPTG::SwitchLevelGateAction": {
+   "parent": "Onyx::ActionComponent",
+   "dependencies": [
+    {
+     "kind": "Singleton",
+     "type": "SPTG::SwitchLevelGate"
+    }
+   ]
+  },
+  "SPTG::SyncSimPhase": {
+   "parent": "SPTG::SPTG_Phase",
+   "dependencies": []
+  },
+  "SPTG::TSmallPool<SPTG::HudStatusBEATINGHEART>": {
+   "parent": "SPTG::SmallPoolBase",
+   "dependencies": []
+  },
+  "SPTG::TSmallPool<SPTG::HudStatusDAMAGE>": {
+   "parent": "SPTG::SmallPoolBase",
+   "dependencies": []
+  },
+  "SPTG::TSmallPool<SPTG::HudStatusDROPIN>": {
+   "parent": "SPTG::SmallPoolBase",
+   "dependencies": []
+  },
+  "SPTG::TSmallPool<SPTG::HudStatusFX_1Up>": {
+   "parent": "SPTG::SmallPoolBase",
+   "dependencies": []
+  },
+  "SPTG::TSmallPool<SPTG::HudStatusFX_BLOCK>": {
+   "parent": "SPTG::SmallPoolBase",
+   "dependencies": []
+  },
+  "SPTG::TSmallPool<SPTG::HudStatusFX_CAMERAUNBLOCK_GO_DOWN>": {
+   "parent": "SPTG::SmallPoolBase",
+   "dependencies": []
+  },
+  "SPTG::TSmallPool<SPTG::HudStatusFX_CAMERAUNBLOCK_GO_LEFT>": {
+   "parent": "SPTG::SmallPoolBase",
+   "dependencies": []
+  },
+  "SPTG::TSmallPool<SPTG::HudStatusFX_CAMERAUNBLOCK_GO_RIGHT>": {
+   "parent": "SPTG::SmallPoolBase",
+   "dependencies": []
+  },
+  "SPTG::TSmallPool<SPTG::HudStatusFX_CAMERAUNBLOCK_GO_UP>": {
+   "parent": "SPTG::SmallPoolBase",
+   "dependencies": []
+  },
+  "SPTG::TSmallPool<SPTG::HudStatusFX_EMOTICON>": {
+   "parent": "SPTG::SmallPoolBase",
+   "dependencies": []
+  },
+  "SPTG::TSmallPool<SPTG::HudStatusFX_HITSTRONG>": {
+   "parent": "SPTG::SmallPoolBase",
+   "dependencies": []
+  },
+  "SPTG::TSmallPool<SPTG::HudStatusFX_HITWEAK>": {
+   "parent": "SPTG::SmallPoolBase",
+   "dependencies": []
+  },
+  "SPTG::TSmallPool<SPTG::HudStatusFX_KEY_DISAPPEAR>": {
+   "parent": "SPTG::SmallPoolBase",
+   "dependencies": []
+  },
+  "SPTG::TSmallPool<SPTG::HudStatusFX_LAND>": {
+   "parent": "SPTG::SmallPoolBase",
+   "dependencies": []
+  },
+  "SPTG::TSmallPool<SPTG::HudStatusFX_LANDONWATER>": {
+   "parent": "SPTG::SmallPoolBase",
+   "dependencies": []
+  },
+  "SPTG::TSmallPool<SPTG::HudStatusFX_LEVELUP>": {
+   "parent": "SPTG::SmallPoolBase",
+   "dependencies": []
+  },
+  "SPTG::TSmallPool<SPTG::HudStatusFX_LEVELUP_STRIPE>": {
+   "parent": "SPTG::SmallPoolBase",
+   "dependencies": []
+  },
+  "SPTG::TSmallPool<SPTG::HudStatusFX_PLAYERNAME>": {
+   "parent": "SPTG::SmallPoolBase",
+   "dependencies": []
+  },
+  "SPTG::TSmallPool<SPTG::HudStatusFX_SLIDE>": {
+   "parent": "SPTG::SmallPoolBase",
+   "dependencies": []
+  },
+  "SPTG::TSmallPool<SPTG::HudStatusFX_TEXT>": {
+   "parent": "SPTG::SmallPoolBase",
+   "dependencies": []
+  },
+  "SPTG::TSmallPool<SPTG::HudStatusFX_VEGANPOLICE>": {
+   "parent": "SPTG::SmallPoolBase",
+   "dependencies": []
+  },
+  "SPTG::TSmallPool<SPTG::HudStatusGUTS>": {
+   "parent": "SPTG::SmallPoolBase",
+   "dependencies": []
+  },
+  "SPTG::TSmallPool<SPTG::HudStatusGUTSDAMAGE>": {
+   "parent": "SPTG::SmallPoolBase",
+   "dependencies": []
+  },
+  "SPTG::TSmallPool<SPTG::HudStatusHEARTS>": {
+   "parent": "SPTG::SmallPoolBase",
+   "dependencies": []
+  },
+  "SPTG::TSmallPool<SPTG::HudStatusHPRECOVERY>": {
+   "parent": "SPTG::SmallPoolBase",
+   "dependencies": []
+  },
+  "SPTG::TSmallPool<SPTG::HudStatusKIMAREACLEAR>": {
+   "parent": "SPTG::SmallPoolBase",
+   "dependencies": []
+  },
+  "SPTG::TSmallPool<SPTG::HudStatusLIFE>": {
+   "parent": "SPTG::SmallPoolBase",
+   "dependencies": []
+  },
+  "SPTG::TSmallPool<SPTG::HudStatusMONEY>": {
+   "parent": "SPTG::SmallPoolBase",
+   "dependencies": []
+  },
+  "SPTG::TSmallPool<SPTG::HudStatusMONEYINFO>": {
+   "parent": "SPTG::SmallPoolBase",
+   "dependencies": []
+  },
+  "SPTG::TSmallPool<SPTG::HudStatusPLEASEWAIT>": {
+   "parent": "SPTG::SmallPoolBase",
+   "dependencies": []
+  },
+  "SPTG::TSmallPool<SPTG::HudStatusPOS_TEXT>": {
+   "parent": "SPTG::SmallPoolBase",
+   "dependencies": []
+  },
+  "SPTG::TSmallPool<SPTG::HudStatusRATIONS>": {
+   "parent": "SPTG::SmallPoolBase",
+   "dependencies": []
+  },
+  "SPTG::TSmallPool<SPTG::HudStatusSCOTTAREACLEAR>": {
+   "parent": "SPTG::SmallPoolBase",
+   "dependencies": []
+  },
+  "SPTG::TagTeamMember": {
+   "parent": "SPTG::Boss",
+   "dependencies": []
+  },
+  "SPTG::TimerAction": {
+   "parent": "Onyx::ActionComponent",
+   "dependencies": [
+    {
+     "kind": "Weak",
+     "type": "SPTG::TimerActionVisual"
+    }
+   ]
+  },
+  "SPTG::TimerActionVisual": {
+   "parent": "Onyx::Component::Base",
+   "dependencies": [
+    {
+     "kind": "Strong",
+     "type": "SPTG::BitmapFontTextComponent"
+    },
+    {
+     "kind": "Strong",
+     "type": "Onyx::Transform"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::LevelWindowAccessor"
+    }
+   ]
+  },
+  "SPTG::TitleScreen": {
+   "parent": "SPTG::FlashMenu",
+   "dependencies": [
+    {
+     "kind": "Singleton",
+     "type": "SPTG::LevelSecretManager"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::SwitchLevelGate"
+    },
+    {
+     "kind": "Singleton",
+     "type": "Onyx::Localization::Localization"
+    },
+    {
+     "kind": "Singleton",
+     "type": "Onyx::Profile"
+    }
+   ]
+  },
+  "SPTG::TitleScreen::TitleScreenBridge": {
+   "parent": "SPTG::FlashMenu::FlashMenuBridge",
+   "dependencies": []
+  },
+  "SPTG::Todd": {
+   "parent": "SPTG::Boss",
+   "dependencies": [
+    {
+     "kind": "Strong",
+     "type": "Onyx::TrueTypedef<Onyx::ActionComponent,SPTG::__ONYX_UniqueAC_BeginFreakout>"
+    },
+    {
+     "kind": "Strong",
+     "type": "Onyx::TrueTypedef<Onyx::ActionComponent,SPTG::__ONYX_UniqueAC_EndFreakout>"
+    },
+    {
+     "kind": "Strong",
+     "type": "Onyx::TrueTypedef<Onyx::ActionComponent,SPTG::__ONYX_UniqueAC_ShowVeganAlley>"
+    },
+    {
+     "kind": "Strong",
+     "type": "Onyx::TrueTypedef<Onyx::ActionComponent,SPTG::__ONYX_UniqueAC_HideVeganAlley>"
+    },
+    {
+     "kind": "Strong",
+     "type": "Onyx::TrueTypedef<Onyx::ActionComponent,SPTG::__ONYX_UniqueAC_ShowWarning>"
+    },
+    {
+     "kind": "Strong",
+     "type": "Onyx::TrueTypedef<Onyx::ActionComponent,SPTG::__ONYX_UniqueAC_HideWarning>"
+    },
+    {
+     "kind": "Strong",
+     "type": "Onyx::TrueTypedef<SPTG::InteractiveEffet,SPTG::__ONYX_UniqueIE_VeganPoliceBeam>"
+    },
+    {
+     "kind": "Strong",
+     "type": "Onyx::TrueTypedef<SPTG::InteractiveEffet,SPTG::__ONYX_UniqueIE_VeganPolice>"
+    }
+   ]
+  },
+  "SPTG::ToddAI": {
+   "parent": "SPTG::BaseBossAI",
+   "dependencies": []
+  },
+  "SPTG::UnblockCameraAction": {
+   "parent": "Onyx::ActionComponent",
+   "dependencies": [
+    {
+     "kind": "Singleton",
+     "type": "SPTG::LevelWindowAccessor"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::HudStatusManager"
+    }
+   ]
+  },
+  "SPTG::UnlockNegaScottAction": {
+   "parent": "Onyx::ActionComponent",
+   "dependencies": [
+    {
+     "kind": "Singleton",
+     "type": "SPTG::SwitchLevelGate"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::PersistentDataManager"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::LevelItemAccessor"
+    },
+    {
+     "kind": "Singleton",
+     "type": "Onyx::Profile"
+    }
+   ]
+  },
+  "SPTG::UnspawnManager": {
+   "parent": "SPTG::SPTG_Phase",
+   "dependencies": []
+  },
+  "SPTG::VisitItemShopAction": {
+   "parent": "SPTG::ActorActionComponent",
+   "dependencies": [
+    {
+     "kind": "Strong",
+     "type": "SPTG::ItemShop"
+    }
+   ]
+  },
+  "SPTG::VolumeMonitor": {
+   "parent": "Onyx::Phase",
+   "dependencies": [
+    {
+     "kind": "Singleton",
+     "type": "SPTG::PersistentDataManager"
+    }
+   ]
+  },
+  "SPTG::WaitAllSpawnedDead": {
+   "parent": "Onyx::ActionComponent",
+   "dependencies": [
+    {
+     "kind": "Singleton",
+     "type": "SPTG::LevelItemAccessor"
+    },
+    {
+     "kind": "Strong",
+     "type": "SPTG::SpawnEnemyAction"
+    }
+   ]
+  },
+  "SPTG::WaitForActionEnd": {
+   "parent": "SPTG::ActorActionComponent",
+   "dependencies": []
+  },
+  "SPTG::WaitForAllPickupsCollected": {
+   "parent": "Onyx::ActionComponent",
+   "dependencies": [
+    {
+     "kind": "Strong",
+     "type": "SPTG::PickupCatalog"
+    }
+   ]
+  },
+  "SPTG::WaitForButtonPress": {
+   "parent": "SPTG::ActorActionComponent",
+   "dependencies": []
+  },
+  "SPTG::WaitForEventCount": {
+   "parent": "Onyx::ActionComponent",
+   "dependencies": [
+    {
+     "kind": "Singleton",
+     "type": "SPTG::LevelItemAccessor"
+    }
+   ]
+  },
+  "SPTG::WaitForHit": {
+   "parent": "SPTG::ActorActionComponent",
+   "dependencies": [
+    {
+     "kind": "Strong",
+     "type": "SPTG::ActorActionComponent"
+    }
+   ]
+  },
+  "SPTG::WorldClearAction": {
+   "parent": "Onyx::ActionComponent",
+   "dependencies": [
+    {
+     "kind": "Singleton",
+     "type": "SPTG::LevelItemAccessor"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::PersistentDataManager"
+    }
+   ]
+  },
+  "SPTG::WorldMap": {
+   "parent": "SPTG::FlashMenu",
+   "dependencies": [
+    {
+     "kind": "Singleton",
+     "type": "Onyx::Profile"
+    }
+   ]
+  },
+  "SPTG::WorldMapInformationBroker": {
+   "parent": "Onyx::Component::Base",
+   "dependencies": [
+    {
+     "kind": "Singleton",
+     "type": "SPTG::PersistentDataManager"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::SelectedActorRecorder"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::SwitchLevelGate"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::LevelSecretManager"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::PersistentDataAgency"
+    }
+   ]
+  },
+  "SPTG::WorldMapNavigator": {
+   "parent": "SPTG::SPTG_Phase",
+   "dependencies": [
+    {
+     "kind": "Singleton",
+     "type": "SPTG::PersistentDataManager"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::LevelWindowAccessor"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::SelectedActorRecorder"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::LevelItemAccessor"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::FlashMenuPhase"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::WorldMapInformationBroker"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::SwitchLevelGate"
+    },
+    {
+     "kind": "Strong",
+     "type": "SPTG::WorldMapWaypointCatalog"
+    },
+    {
+     "kind": "Strong",
+     "type": "SPTG::CharacterIcon"
+    },
+    {
+     "kind": "Strong",
+     "type": "Onyx::Transform"
+    },
+    {
+     "kind": "Strong",
+     "type": "SPTG::Network::MatchmakingDiscoverer"
+    }
+   ]
+  },
+  "SPTG::WorldMapNavigator::LaunchLevel_State(unsigned int)::$_61": {
+   "parent": null,
+   "dependencies": []
+  },
+  "SPTG::WorldMapNavigator::LaunchLevel_State(unsigned int)::$_62": {
+   "parent": null,
+   "dependencies": []
+  },
+  "SPTG::WorldMapWaypoint": {
+   "parent": "Onyx::Component::Base",
+   "dependencies": [
+    {
+     "kind": "Weak",
+     "type": "Onyx::TrueTypedef<SPTG::WorldMapWaypoint,SPTG::__ONYX_UniqueWaypoint_Up>"
+    },
+    {
+     "kind": "Weak",
+     "type": "Onyx::TrueTypedef<SPTG::WorldMapWaypoint,SPTG::__ONYX_UniqueWaypoint_Down>"
+    },
+    {
+     "kind": "Weak",
+     "type": "Onyx::TrueTypedef<SPTG::WorldMapWaypoint,SPTG::__ONYX_UniqueWaypoint_Left>"
+    },
+    {
+     "kind": "Weak",
+     "type": "Onyx::TrueTypedef<SPTG::WorldMapWaypoint,SPTG::__ONYX_UniqueWaypoint_Right>"
+    },
+    {
+     "kind": "Weak",
+     "type": "Onyx::TrueTypedef<SPTG::WorldMapWaypoint,SPTG::__ONYX_UniqueWaypoint_AutoMove>"
+    },
+    {
+     "kind": "Strong",
+     "type": "Onyx::Transform"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::SwitchLevelGate"
+    },
+    {
+     "kind": "Weak",
+     "type": "SPTG::AnimatedObject"
+    },
+    {
+     "kind": "Singleton",
+     "type": "SPTG::FlashMenuPhase"
+    },
+    {
+     "kind": "Singleton",
+     "type": "Onyx::Localization::Localization"
+    }
+   ]
+  },
+  "SPTG::WorldMapWaypointCatalog": {
+   "parent": "Onyx::Catalog<SPTG::WorldMapWaypoint,Onyx::Meta::Null>",
+   "dependencies": []
+  },
+  "SPTG::WriteLeaderboardTask": {
+   "parent": "SPTG::AsyncTask<Onyx::Function<void ()(SPTG::EventRecordSet const&)>>",
+   "dependencies": []
+  }
+ }
+}
