@@ -1,9 +1,9 @@
 {
   "version": 1,
-  "generated_at": "2026-10-24T22:46:22.464653+00:00",
+  "generated_at": "2026-10-24T23:29:10.676111+00:00",
   "target_elf_sha256": "ea95638e6d6aaa0dc6cddd552a9366799aa1ec3bc07ee201f23f6c151103f5b8",
   "input_sha256": {
-    "config/builds.json": "bcbf5a4a0c35ee64be3505866ab9257fdf22c7a630d4c9f3d6ab5bb140308c56",
+    "config/builds.json": "0492983971192afe995d294be60856a08cb95539c1430887dbe515e1554585a5",
     "config/functions.tsv": "399e91468a04e0459194c10d68d2210d1157cedefeb19c7851886ca7632fcb18",
     "config/non_fde_functions.tsv": "6a45f5e185454fa0472af00b2cdc9d040d73ca133d1106217e1fbbe3b32a8175",
     "config/target.json": "23cc6a5227206a953e7668acf5e9ae5c02a25c23b7e7967f0450a814b888241a",
@@ -78,8 +78,9 @@
     "src/EchoEventDestructorKeepPicUnwind1.cpp": "a62cc1b0aff9dbf8591169608d903995618d40c1fbd9e089dd81a3edf6e39716",
     "src/EchoFieldSerialize.h": "ededd8eb6f134c1bcb991eb1a7f83447c8fc9985c57fcc23f5d80e800068dcb4",
     "src/EchoFieldSerializeKeepPicNoFloat.cpp": "ca6cb62e2b86f10300ea83037bdd209ff3d49d48dac98df0f3e526d73998955d",
-    "src/EchoRecordEvents.cpp": "a6b23dcf16698ec40b40835f94d66c5ce28b2e0b9222ee24172197dc89e9b09b",
-    "src/EchoRecordWriter.h": "8c84f7f085742738385399f5766627149464e92f24a233503c2272df9e7e7582",
+    "src/EchoFieldWriters.cpp": "ba4611f35ab75fcb8c588d31b721a1f44aa18430f5fb58b0e8bc830865b6a385",
+    "src/EchoRecordEvents.cpp": "c9faacfebf37560fcbfe9704c8ca1e1ebde5e12d8fe5c3d0ccc4f5c64cf20144",
+    "src/EchoRecordWriter.h": "55a58ba3f675b93070fdf721257c95038816748684e7d138cb4ec004ea4cef8c",
     "src/EchoTypeDescriptor.h": "2c553f17f0daedb448c3c9002c1a0bab8a40446c37cbc85a35bd3e48299b59e1",
     "src/EchoTypeDescriptorKeepPicUnwindO3.cpp": "5582f6b447c88ff0265a8139fe69bb82f2624154c9b2877f95e48edd7c51521e",
     "src/EngineRegistry.cpp": "cc9796d5c067bfe73eee26a057f039a0b8e0a904923f5954b7dc34ee3736f1fd",
@@ -3905,17 +3906,17 @@
     "vendor/zlib-1.2.11/zutil.h": "9a63f6690fac1620aa3cecee5752af618806da438a256b4a047fbcd289cac159"
   },
   "compiler_versions": {
-    "8.0.1": "clang version 8.0.1 (tags/RELEASE_801/final)",
     "7.0.1": "clang version 7.0.1 (tags/RELEASE_701/final)",
+    "8.0.1": "clang version 8.0.1 (tags/RELEASE_801/final)",
     "lld": "LLD 8.0.1 (compatible with GNU linkers)"
   },
   "compiler_sha256": {
-    "8.0.1": "dffd62a213ec6cdb4430012a4a41c11e5e32c288f133d5391f9be49e1c5b69de",
     "7.0.1": "c2f0a175157d9aaace8031f8e6d7ea0ed6142b4bcef287105e3ed227301f1002",
+    "8.0.1": "dffd62a213ec6cdb4430012a4a41c11e5e32c288f133d5391f9be49e1c5b69de",
     "lld": "c4b3aaea06ff7112c64753047a2ab279fc3fe10dd807fd3c22edfdae99f43eed"
   },
-  "exact_functions": 33910,
-  "exact_bytes": 3990556,
+  "exact_functions": 33924,
+  "exact_bytes": 3996400,
   "builds": [
     {
       "id": "probes",
@@ -13015,12 +13016,17 @@
     {
       "id": "echo_record_events_keep_pic_no_float_unwind_noexc_o3",
       "compiler": "8.0.1",
-      "object_sha256": "a6374ade9b1183e427a4615e40835db6cb7b312fdf32ea7401a583fc181777f2"
+      "object_sha256": "5decfbb60b2c5a0776cb25f6904f8e842d46aa68bfb7b1c264e017eb330a2044"
     },
     {
       "id": "storm_hash_tables_keep_pic_no_float_unwind_o3",
       "compiler": "8.0.1",
       "object_sha256": "f207b149770e71ae512b6db45725b6cd2935d5fd437ca8f6aab61f54a40b4f72"
+    },
+    {
+      "id": "echo_field_writers_keep_pic_no_float_unwind_noexc_o3",
+      "compiler": "8.0.1",
+      "object_sha256": "c91397514da0b7b55c04d14fe148c9b17d00ef2b4d5b926951b75d4703aeb5d2"
     }
   ],
   "matches": [
@@ -54039,7 +54045,7 @@
       "target_sha256": "eb0f24580981cdf147f15bbbabc93061d0e3ea7fc2f9b0046609e828ecc69d0c",
       "compiled_sha256": "eb0f24580981cdf147f15bbbabc93061d0e3ea7fc2f9b0046609e828ecc69d0c",
       "source": "src/EchoRecordEvents.cpp",
-      "symbol": "_ZN11EchoRecords12Event_25db605WriteEPNS_6WriterEi",
+      "symbol": "_ZN11EchoRecords12Event_25db605WriteEPNS_6WriterEh",
       "source_review": "manual_reconstruction",
       "relocation_count": 5
     },
@@ -54262,6 +54268,39 @@
       "symbol": "_ZN11EchoRecords12Event_25f4005WriteEPNS_6WriterE",
       "source_review": "manual_reconstruction",
       "relocation_count": 7
+    },
+    {
+      "address": "0x25f600",
+      "size": 476,
+      "exact": true,
+      "target_sha256": "819e2640a25c4c0c48d200a6c32ea5172110a19345e548f2b164e7a9eb02acfe",
+      "compiled_sha256": "819e2640a25c4c0c48d200a6c32ea5172110a19345e548f2b164e7a9eb02acfe",
+      "source": "src/EchoRecordEvents.cpp",
+      "symbol": "_ZN11EchoRecords12Event_25f6005WriteEPNS_6WriterEh",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 12
+    },
+    {
+      "address": "0x25f890",
+      "size": 368,
+      "exact": true,
+      "target_sha256": "c1f21133e252864ada3f4c87d8579dfd947e15de956e77bbc0534a0ee4ba09e0",
+      "compiled_sha256": "c1f21133e252864ada3f4c87d8579dfd947e15de956e77bbc0534a0ee4ba09e0",
+      "source": "src/EchoRecordEvents.cpp",
+      "symbol": "_ZN11EchoRecords12Event_25f8905WriteEPNS_6WriterEh",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 13
+    },
+    {
+      "address": "0x260290",
+      "size": 424,
+      "exact": true,
+      "target_sha256": "82be41de9500644e10776399105c87b1226db7b33da31aec1070489b80c0172a",
+      "compiled_sha256": "82be41de9500644e10776399105c87b1226db7b33da31aec1070489b80c0172a",
+      "source": "src/EchoRecordEvents.cpp",
+      "symbol": "_ZN11EchoRecords12Event_2602905WriteEPNS_6WriterE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 12
     },
     {
       "address": "0x260440",
@@ -54880,6 +54919,17 @@
       "relocation_count": 4
     },
     {
+      "address": "0x26a590",
+      "size": 460,
+      "exact": true,
+      "target_sha256": "e92b69bf8d50b7784ab6ca5ab80a3d4dc509d253b3fe153e03788df134107fb4",
+      "compiled_sha256": "e92b69bf8d50b7784ab6ca5ab80a3d4dc509d253b3fe153e03788df134107fb4",
+      "source": "src/EchoRecordEvents.cpp",
+      "symbol": "_ZN11EchoRecords12Event_26a5905WriteEPNS_6WriterEh",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 18
+    },
+    {
       "address": "0x26a8a0",
       "size": 324,
       "exact": true,
@@ -54900,6 +54950,17 @@
       "symbol": "_ZN11EchoRecords12Event_26a9f05WriteEPNS_6WriterE",
       "source_review": "manual_reconstruction",
       "relocation_count": 14
+    },
+    {
+      "address": "0x26b070",
+      "size": 220,
+      "exact": true,
+      "target_sha256": "409fcffc8cc0f9a38589368f384865f4984d220aea21d6bc698a78268ebe887a",
+      "compiled_sha256": "409fcffc8cc0f9a38589368f384865f4984d220aea21d6bc698a78268ebe887a",
+      "source": "src/EchoRecordEvents.cpp",
+      "symbol": "_ZN11EchoRecords12Event_26b0705WriteEPNS_6WriterEh",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 9
     },
     {
       "address": "0x26b260",
@@ -55040,7 +55101,7 @@
       "target_sha256": "b80c29cac1cd961eeeeb555865c4657ccaa3d90eaa05b7b9647700a0622ef74e",
       "compiled_sha256": "b80c29cac1cd961eeeeb555865c4657ccaa3d90eaa05b7b9647700a0622ef74e",
       "source": "src/EchoRecordEvents.cpp",
-      "symbol": "_ZN11EchoRecords12Event_26d9905WriteEPNS_6WriterEi",
+      "symbol": "_ZN11EchoRecords12Event_26d9905WriteEPNS_6WriterEh",
       "source_review": "manual_reconstruction",
       "relocation_count": 4
     },
@@ -55128,7 +55189,7 @@
       "target_sha256": "a15bc856150a4a25623170407e95c9338fa2a9b37f32e045191a9452f581c7db",
       "compiled_sha256": "a15bc856150a4a25623170407e95c9338fa2a9b37f32e045191a9452f581c7db",
       "source": "src/EchoRecordEvents.cpp",
-      "symbol": "_ZN11EchoRecords12Event_26dcf05WriteEPNS_6WriterEi",
+      "symbol": "_ZN11EchoRecords12Event_26dcf05WriteEPNS_6WriterEh",
       "source_review": "manual_reconstruction",
       "relocation_count": 4
     },
@@ -64522,7 +64583,7 @@
       "target_sha256": "7efb1ee3613cd12c25d71e3c2af10eb6179af470f82bd05728acf1d880b65042",
       "compiled_sha256": "7efb1ee3613cd12c25d71e3c2af10eb6179af470f82bd05728acf1d880b65042",
       "source": "src/EchoRecordEvents.cpp",
-      "symbol": "_ZN11EchoRecords12Event_2942805WriteEPNS_6WriterEi",
+      "symbol": "_ZN11EchoRecords12Event_2942805WriteEPNS_6WriterEh",
       "source_review": "manual_reconstruction",
       "relocation_count": 5
     },
@@ -69868,7 +69929,7 @@
       "target_sha256": "78b911a063061870e56c0ba1133b2a94a9a79d0470edede656453a0dbacaf6f3",
       "compiled_sha256": "78b911a063061870e56c0ba1133b2a94a9a79d0470edede656453a0dbacaf6f3",
       "source": "src/EchoRecordEvents.cpp",
-      "symbol": "_ZN11EchoRecords12Event_2a54205WriteEPNS_6WriterEi",
+      "symbol": "_ZN11EchoRecords12Event_2a54205WriteEPNS_6WriterEh",
       "source_review": "manual_reconstruction",
       "relocation_count": 4
     },
@@ -71320,7 +71381,7 @@
       "target_sha256": "2b600771b1ebe1f588d944d05134511da2ee6d2e38ec65a96374bd0381b26b9c",
       "compiled_sha256": "2b600771b1ebe1f588d944d05134511da2ee6d2e38ec65a96374bd0381b26b9c",
       "source": "src/EchoRecordEvents.cpp",
-      "symbol": "_ZN11EchoRecords12Event_2a9e305WriteEPNS_6WriterEi",
+      "symbol": "_ZN11EchoRecords12Event_2a9e305WriteEPNS_6WriterEh",
       "source_review": "manual_reconstruction",
       "relocation_count": 19
     },
@@ -71452,7 +71513,7 @@
       "target_sha256": "57b949fac58bd5d540b87532c34fa3b3dc6c9cc3177618768bcd55fc3e29fe15",
       "compiled_sha256": "57b949fac58bd5d540b87532c34fa3b3dc6c9cc3177618768bcd55fc3e29fe15",
       "source": "src/EchoRecordEvents.cpp",
-      "symbol": "_ZN11EchoRecords12Event_2aa5905WriteEPNS_6WriterEi",
+      "symbol": "_ZN11EchoRecords12Event_2aa5905WriteEPNS_6WriterEh",
       "source_review": "manual_reconstruction",
       "relocation_count": 23
     },
@@ -71606,7 +71667,7 @@
       "target_sha256": "26d2c50a4f62d376453e27ed76e4559993b05e9ae0a2954a5d220b5293e9a547",
       "compiled_sha256": "26d2c50a4f62d376453e27ed76e4559993b05e9ae0a2954a5d220b5293e9a547",
       "source": "src/EchoRecordEvents.cpp",
-      "symbol": "_ZN11EchoRecords12Event_2aaf805WriteEPNS_6WriterEi",
+      "symbol": "_ZN11EchoRecords12Event_2aaf805WriteEPNS_6WriterEh",
       "source_review": "manual_reconstruction",
       "relocation_count": 27
     },
@@ -76028,7 +76089,7 @@
       "target_sha256": "07da6fc5f6df8edeef259dbe66e6914a8004ee883c29ac439cd9e5f4d6b25ad6",
       "compiled_sha256": "07da6fc5f6df8edeef259dbe66e6914a8004ee883c29ac439cd9e5f4d6b25ad6",
       "source": "src/EchoRecordEvents.cpp",
-      "symbol": "_ZN11EchoRecords12Event_2bbb805WriteEPNS_6WriterEi",
+      "symbol": "_ZN11EchoRecords12Event_2bbb805WriteEPNS_6WriterEh",
       "source_review": "manual_reconstruction",
       "relocation_count": 9
     },
@@ -76039,7 +76100,7 @@
       "target_sha256": "f17b12546252aaaddae13684b3d3796eb197a825dae80270078c78e23e6e992e",
       "compiled_sha256": "f17b12546252aaaddae13684b3d3796eb197a825dae80270078c78e23e6e992e",
       "source": "src/EchoRecordEvents.cpp",
-      "symbol": "_ZN11EchoRecords12Event_2bc2605WriteEPNS_6WriterEi",
+      "symbol": "_ZN11EchoRecords12Event_2bc2605WriteEPNS_6WriterEh",
       "source_review": "manual_reconstruction",
       "relocation_count": 11
     },
@@ -76050,7 +76111,7 @@
       "target_sha256": "14257853fa99b0ac279529c1ea1ba3b45482aa9f539f5d070b58f17f124f94e7",
       "compiled_sha256": "14257853fa99b0ac279529c1ea1ba3b45482aa9f539f5d070b58f17f124f94e7",
       "source": "src/EchoRecordEvents.cpp",
-      "symbol": "_ZN11EchoRecords12Event_2bcd105WriteEPNS_6WriterEi",
+      "symbol": "_ZN11EchoRecords12Event_2bcd105WriteEPNS_6WriterEh",
       "source_review": "manual_reconstruction",
       "relocation_count": 13
     },
@@ -80593,7 +80654,7 @@
       "target_sha256": "c1ae0e87294eb718ac786a6438c0d0fdccc3f86c0a44609eaa8cd86ad0d4ce87",
       "compiled_sha256": "c1ae0e87294eb718ac786a6438c0d0fdccc3f86c0a44609eaa8cd86ad0d4ce87",
       "source": "src/EchoRecordEvents.cpp",
-      "symbol": "_ZN11EchoRecords12Event_2efd305WriteEPNS_6WriterEi",
+      "symbol": "_ZN11EchoRecords12Event_2efd305WriteEPNS_6WriterEh",
       "source_review": "manual_reconstruction",
       "relocation_count": 8
     },
@@ -81814,7 +81875,7 @@
       "target_sha256": "84e9b46bd27e1bf9ce22883a9f2514140e213e068c720097bfeb432ea1f18a76",
       "compiled_sha256": "84e9b46bd27e1bf9ce22883a9f2514140e213e068c720097bfeb432ea1f18a76",
       "source": "src/EchoRecordEvents.cpp",
-      "symbol": "_ZN11EchoRecords12Event_2f45205WriteEPNS_6WriterEi",
+      "symbol": "_ZN11EchoRecords12Event_2f45205WriteEPNS_6WriterEh",
       "source_review": "manual_reconstruction",
       "relocation_count": 4
     },
@@ -82056,7 +82117,7 @@
       "target_sha256": "dea794968f47fedde511cfb0d492d4880bdbf28a3b922d47d1671f47c251bbbd",
       "compiled_sha256": "dea794968f47fedde511cfb0d492d4880bdbf28a3b922d47d1671f47c251bbbd",
       "source": "src/EchoRecordEvents.cpp",
-      "symbol": "_ZN11EchoRecords12Event_2f52a05WriteEPNS_6WriterEi",
+      "symbol": "_ZN11EchoRecords12Event_2f52a05WriteEPNS_6WriterEh",
       "source_review": "manual_reconstruction",
       "relocation_count": 4
     },
@@ -82716,7 +82777,7 @@
       "target_sha256": "81ab8e0e19c531f0a8013dd65a15348774fe49e5ad3c603f99542d82f1dd7927",
       "compiled_sha256": "81ab8e0e19c531f0a8013dd65a15348774fe49e5ad3c603f99542d82f1dd7927",
       "source": "src/EchoRecordEvents.cpp",
-      "symbol": "_ZN11EchoRecords12Event_2f6ed05WriteEPNS_6WriterEi",
+      "symbol": "_ZN11EchoRecords12Event_2f6ed05WriteEPNS_6WriterEh",
       "source_review": "manual_reconstruction",
       "relocation_count": 4
     },
@@ -87699,7 +87760,7 @@
       "target_sha256": "5fe90151585bdd6cda3dee4d902619db13d4f53595aa2ef407fdae4f7bafd743",
       "compiled_sha256": "5fe90151585bdd6cda3dee4d902619db13d4f53595aa2ef407fdae4f7bafd743",
       "source": "src/EchoRecordEvents.cpp",
-      "symbol": "_ZN11EchoRecords12Event_328d505WriteEPNS_6WriterEi",
+      "symbol": "_ZN11EchoRecords12Event_328d505WriteEPNS_6WriterEh",
       "source_review": "manual_reconstruction",
       "relocation_count": 16
     },
@@ -87721,7 +87782,7 @@
       "target_sha256": "d161a5ab2263424b5faba3bfa190619d0600704c37b90d25e3a348a299da70a6",
       "compiled_sha256": "d161a5ab2263424b5faba3bfa190619d0600704c37b90d25e3a348a299da70a6",
       "source": "src/EchoRecordEvents.cpp",
-      "symbol": "_ZN11EchoRecords12Event_3294805WriteEPNS_6WriterEi",
+      "symbol": "_ZN11EchoRecords12Event_3294805WriteEPNS_6WriterEh",
       "source_review": "manual_reconstruction",
       "relocation_count": 14
     },
@@ -87732,7 +87793,7 @@
       "target_sha256": "4d94bf2c990930b390f3198c6af058bded898457d364437edf8b5ce7072cf5a4",
       "compiled_sha256": "4d94bf2c990930b390f3198c6af058bded898457d364437edf8b5ce7072cf5a4",
       "source": "src/EchoRecordEvents.cpp",
-      "symbol": "_ZN11EchoRecords12Event_329d505WriteEPNS_6WriterEi",
+      "symbol": "_ZN11EchoRecords12Event_329d505WriteEPNS_6WriterEh",
       "source_review": "manual_reconstruction",
       "relocation_count": 9
     },
@@ -94596,7 +94657,7 @@
       "target_sha256": "9104d289d90ef108c335c8f12b1e908e59a91af3873b5a0e090466fa58beadcd",
       "compiled_sha256": "9104d289d90ef108c335c8f12b1e908e59a91af3873b5a0e090466fa58beadcd",
       "source": "src/EchoRecordEvents.cpp",
-      "symbol": "_ZN11EchoRecords12Event_3757405WriteEPNS_6WriterEi",
+      "symbol": "_ZN11EchoRecords12Event_3757405WriteEPNS_6WriterEh",
       "source_review": "manual_reconstruction",
       "relocation_count": 12
     },
@@ -94739,7 +94800,7 @@
       "target_sha256": "24fc0028b11c5be849bfea2cb1af63f7c3b26b575232c22ad04d28410f804f4a",
       "compiled_sha256": "24fc0028b11c5be849bfea2cb1af63f7c3b26b575232c22ad04d28410f804f4a",
       "source": "src/EchoRecordEvents.cpp",
-      "symbol": "_ZN11EchoRecords12Event_3760105WriteEPNS_6WriterEi",
+      "symbol": "_ZN11EchoRecords12Event_3760105WriteEPNS_6WriterEh",
       "source_review": "manual_reconstruction",
       "relocation_count": 11
     },
@@ -100376,13 +100437,24 @@
       "relocation_count": 5
     },
     {
+      "address": "0x38df20",
+      "size": 416,
+      "exact": true,
+      "target_sha256": "189d3580e3d29b1a892e93cef97c3a739b36356e6713ec6e07439f08906c2046",
+      "compiled_sha256": "189d3580e3d29b1a892e93cef97c3a739b36356e6713ec6e07439f08906c2046",
+      "source": "src/EchoRecordEvents.cpp",
+      "symbol": "_ZN11EchoRecords12Event_38df205WriteEPNS_6WriterEh",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 16
+    },
+    {
       "address": "0x38e510",
       "size": 244,
       "exact": true,
       "target_sha256": "cfc8185a6f33343c1cf5a1423173af152e23656a8195ecfa8dd20709bfac51cd",
       "compiled_sha256": "cfc8185a6f33343c1cf5a1423173af152e23656a8195ecfa8dd20709bfac51cd",
       "source": "src/EchoRecordEvents.cpp",
-      "symbol": "_ZN11EchoRecords12Event_38e5105WriteEPNS_6WriterEi",
+      "symbol": "_ZN11EchoRecords12Event_38e5105WriteEPNS_6WriterEh",
       "source_review": "manual_reconstruction",
       "relocation_count": 9
     },
@@ -100404,7 +100476,7 @@
       "target_sha256": "521373be7dd57f9a59f306378c732c4b7276a4b208d0e74d6a4ead679a516466",
       "compiled_sha256": "521373be7dd57f9a59f306378c732c4b7276a4b208d0e74d6a4ead679a516466",
       "source": "src/EchoRecordEvents.cpp",
-      "symbol": "_ZN11EchoRecords12Event_38eea05WriteEPNS_6WriterEi",
+      "symbol": "_ZN11EchoRecords12Event_38eea05WriteEPNS_6WriterEh",
       "source_review": "manual_reconstruction",
       "relocation_count": 16
     },
@@ -100459,7 +100531,7 @@
       "target_sha256": "b1427edb12571fc1e28ca011b2cd9d1deb2f29309df66850f9f2e09a5f5f587f",
       "compiled_sha256": "b1427edb12571fc1e28ca011b2cd9d1deb2f29309df66850f9f2e09a5f5f587f",
       "source": "src/EchoRecordEvents.cpp",
-      "symbol": "_ZN11EchoRecords12Event_38f8605WriteEPNS_6WriterEi",
+      "symbol": "_ZN11EchoRecords12Event_38f8605WriteEPNS_6WriterEh",
       "source_review": "manual_reconstruction",
       "relocation_count": 8
     },
@@ -100470,7 +100542,7 @@
       "target_sha256": "ff2d6536f809af73d4971d098e632b8a465bf09a2b493c24d8ac2bc7941dba4f",
       "compiled_sha256": "ff2d6536f809af73d4971d098e632b8a465bf09a2b493c24d8ac2bc7941dba4f",
       "source": "src/EchoRecordEvents.cpp",
-      "symbol": "_ZN11EchoRecords12Event_38f9505WriteEPNS_6WriterEi",
+      "symbol": "_ZN11EchoRecords12Event_38f9505WriteEPNS_6WriterEh",
       "source_review": "manual_reconstruction",
       "relocation_count": 8
     },
@@ -104221,7 +104293,7 @@
       "target_sha256": "660a4090ce14c6e5464d5ddb3176e8d1595e3ffde1761dcf5056d8fa85bfbaf5",
       "compiled_sha256": "660a4090ce14c6e5464d5ddb3176e8d1595e3ffde1761dcf5056d8fa85bfbaf5",
       "source": "src/EchoRecordEvents.cpp",
-      "symbol": "_ZN11EchoRecords12Event_3cbf205WriteEPNS_6WriterEi",
+      "symbol": "_ZN11EchoRecords12Event_3cbf205WriteEPNS_6WriterEh",
       "source_review": "manual_reconstruction",
       "relocation_count": 12
     },
@@ -104760,7 +104832,7 @@
       "target_sha256": "5b6d2ab27fd4fbd6b58a1a5d10e4ec59271e82bbac5aa20ed7bee155ae14f77a",
       "compiled_sha256": "5b6d2ab27fd4fbd6b58a1a5d10e4ec59271e82bbac5aa20ed7bee155ae14f77a",
       "source": "src/EchoRecordEvents.cpp",
-      "symbol": "_ZN11EchoRecords12Event_3ce1f05WriteEPNS_6WriterEi",
+      "symbol": "_ZN11EchoRecords12Event_3ce1f05WriteEPNS_6WriterEh",
       "source_review": "manual_reconstruction",
       "relocation_count": 25
     },
@@ -105024,7 +105096,7 @@
       "target_sha256": "e710cf0dc09dd098a7c6a9329a84fa658c8b3476ac11aca4e5cbe1d55d7a15cf",
       "compiled_sha256": "e710cf0dc09dd098a7c6a9329a84fa658c8b3476ac11aca4e5cbe1d55d7a15cf",
       "source": "src/EchoRecordEvents.cpp",
-      "symbol": "_ZN11EchoRecords12Event_3cef505WriteEPNS_6WriterEi",
+      "symbol": "_ZN11EchoRecords12Event_3cef505WriteEPNS_6WriterEh",
       "source_review": "manual_reconstruction",
       "relocation_count": 10
     },
@@ -105508,7 +105580,7 @@
       "target_sha256": "871e49b6e42c633583ef2303a58c5354f306519e363f87d5b398a0a84370e6d3",
       "compiled_sha256": "871e49b6e42c633583ef2303a58c5354f306519e363f87d5b398a0a84370e6d3",
       "source": "src/EchoRecordEvents.cpp",
-      "symbol": "_ZN11EchoRecords12Event_3d0aa05WriteEPNS_6WriterEi",
+      "symbol": "_ZN11EchoRecords12Event_3d0aa05WriteEPNS_6WriterEh",
       "source_review": "manual_reconstruction",
       "relocation_count": 10
     },
@@ -105629,7 +105701,7 @@
       "target_sha256": "3e08c096e37ced73cbce5f3cc3aad276320040bac7e600a879dcdb1fe9bdc370",
       "compiled_sha256": "3e08c096e37ced73cbce5f3cc3aad276320040bac7e600a879dcdb1fe9bdc370",
       "source": "src/EchoRecordEvents.cpp",
-      "symbol": "_ZN11EchoRecords12Event_3d11b05WriteEPNS_6WriterEi",
+      "symbol": "_ZN11EchoRecords12Event_3d11b05WriteEPNS_6WriterEh",
       "source_review": "manual_reconstruction",
       "relocation_count": 10
     },
@@ -106366,7 +106438,7 @@
       "target_sha256": "9758c8833ed3886b4afd7ab1715c5f2613dbb20f212272fd17461d41f0e2c938",
       "compiled_sha256": "9758c8833ed3886b4afd7ab1715c5f2613dbb20f212272fd17461d41f0e2c938",
       "source": "src/EchoRecordEvents.cpp",
-      "symbol": "_ZN11EchoRecords12Event_3d73805WriteEPNS_6WriterEi",
+      "symbol": "_ZN11EchoRecords12Event_3d73805WriteEPNS_6WriterEh",
       "source_review": "manual_reconstruction",
       "relocation_count": 4
     },
@@ -106608,7 +106680,7 @@
       "target_sha256": "fb7bc870c5eaf4c99b3e9e396e6b99aa4a30e5a36efdfcae2407dc77361c324a",
       "compiled_sha256": "fb7bc870c5eaf4c99b3e9e396e6b99aa4a30e5a36efdfcae2407dc77361c324a",
       "source": "src/EchoRecordEvents.cpp",
-      "symbol": "_ZN11EchoRecords12Event_3d7f305WriteEPNS_6WriterEi",
+      "symbol": "_ZN11EchoRecords12Event_3d7f305WriteEPNS_6WriterEh",
       "source_review": "manual_reconstruction",
       "relocation_count": 4
     },
@@ -106850,7 +106922,7 @@
       "target_sha256": "40a34a708ccdbc6a9b370cdbadb08ffb35936cd54c97bb953b44e72575736f66",
       "compiled_sha256": "40a34a708ccdbc6a9b370cdbadb08ffb35936cd54c97bb953b44e72575736f66",
       "source": "src/EchoRecordEvents.cpp",
-      "symbol": "_ZN11EchoRecords12Event_3d8b005WriteEPNS_6WriterEi",
+      "symbol": "_ZN11EchoRecords12Event_3d8b005WriteEPNS_6WriterEh",
       "source_review": "manual_reconstruction",
       "relocation_count": 17
     },
@@ -106971,7 +107043,7 @@
       "target_sha256": "2cff6b5b4fa0ce16dfb31dd55e2c5a01dda87cb85b72c2a70505711ca1cd222a",
       "compiled_sha256": "2cff6b5b4fa0ce16dfb31dd55e2c5a01dda87cb85b72c2a70505711ca1cd222a",
       "source": "src/EchoRecordEvents.cpp",
-      "symbol": "_ZN11EchoRecords12Event_3d93705WriteEPNS_6WriterEi",
+      "symbol": "_ZN11EchoRecords12Event_3d93705WriteEPNS_6WriterEh",
       "source_review": "manual_reconstruction",
       "relocation_count": 10
     },
@@ -107092,7 +107164,7 @@
       "target_sha256": "735b6a792006409bb89e1a78b823a34fbfcf58a702a5a454688634c2e4735cf8",
       "compiled_sha256": "735b6a792006409bb89e1a78b823a34fbfcf58a702a5a454688634c2e4735cf8",
       "source": "src/EchoRecordEvents.cpp",
-      "symbol": "_ZN11EchoRecords12Event_3d9a305WriteEPNS_6WriterEi",
+      "symbol": "_ZN11EchoRecords12Event_3d9a305WriteEPNS_6WriterEh",
       "source_review": "manual_reconstruction",
       "relocation_count": 5
     },
@@ -109578,7 +109650,7 @@
       "target_sha256": "51ebb8b5ac6acb98b7da67c07778908f27d561d219ae26c312d062af6f67a337",
       "compiled_sha256": "51ebb8b5ac6acb98b7da67c07778908f27d561d219ae26c312d062af6f67a337",
       "source": "src/EchoRecordEvents.cpp",
-      "symbol": "_ZN11EchoRecords12Event_3e4ae05WriteEPNS_6WriterEi",
+      "symbol": "_ZN11EchoRecords12Event_3e4ae05WriteEPNS_6WriterEh",
       "source_review": "manual_reconstruction",
       "relocation_count": 4
     },
@@ -120138,7 +120210,7 @@
       "target_sha256": "10513a039cf100fe1945fdb27b04bf6abab322f297f8aaf66c3a3c40ec845cfa",
       "compiled_sha256": "10513a039cf100fe1945fdb27b04bf6abab322f297f8aaf66c3a3c40ec845cfa",
       "source": "src/EchoRecordEvents.cpp",
-      "symbol": "_ZN11EchoRecords12Event_4155805WriteEPNS_6WriterEi",
+      "symbol": "_ZN11EchoRecords12Event_4155805WriteEPNS_6WriterEh",
       "source_review": "manual_reconstruction",
       "relocation_count": 16
     },
@@ -130214,7 +130286,7 @@
       "target_sha256": "c5a5f51879c2db32c132b962cbfcac52fa6617fef45a3a37d261a3929007ff19",
       "compiled_sha256": "c5a5f51879c2db32c132b962cbfcac52fa6617fef45a3a37d261a3929007ff19",
       "source": "src/EchoRecordEvents.cpp",
-      "symbol": "_ZN11EchoRecords12Event_45f5805WriteEPNS_6WriterEi",
+      "symbol": "_ZN11EchoRecords12Event_45f5805WriteEPNS_6WriterEh",
       "source_review": "manual_reconstruction",
       "relocation_count": 14
     },
@@ -130239,6 +130311,39 @@
       "symbol": "RecoveredLeaf_45f7c0",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 1
+    },
+    {
+      "address": "0x45f7d0",
+      "size": 272,
+      "exact": true,
+      "target_sha256": "6a3caf6d3a2ca7c11db1fc23d85aff2090deb7a12dd854fdc3e4da8f94265a42",
+      "compiled_sha256": "6a3caf6d3a2ca7c11db1fc23d85aff2090deb7a12dd854fdc3e4da8f94265a42",
+      "source": "src/EchoRecordEvents.cpp",
+      "symbol": "_ZN11EchoRecords12Event_45f7d05WriteEPNS_6WriterEh",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 8
+    },
+    {
+      "address": "0x45f8e0",
+      "size": 272,
+      "exact": true,
+      "target_sha256": "7110e2d1f57c0ca41415f84464714735a99e947c4180957dc2ec7f00d67247ee",
+      "compiled_sha256": "7110e2d1f57c0ca41415f84464714735a99e947c4180957dc2ec7f00d67247ee",
+      "source": "src/EchoRecordEvents.cpp",
+      "symbol": "_ZN11EchoRecords12Event_45f8e05WriteEPNS_6WriterEh",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 8
+    },
+    {
+      "address": "0x45f9f0",
+      "size": 272,
+      "exact": true,
+      "target_sha256": "096e9aa9fcace991aa349a64102098547abd07dc4807d9e4982bf8071f557685",
+      "compiled_sha256": "096e9aa9fcace991aa349a64102098547abd07dc4807d9e4982bf8071f557685",
+      "source": "src/EchoRecordEvents.cpp",
+      "symbol": "_ZN11EchoRecords12Event_45f9f05WriteEPNS_6WriterEh",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 8
     },
     {
       "address": "0x45fb00",
@@ -171656,6 +171761,17 @@
       "relocation_count": 0
     },
     {
+      "address": "0x576a80",
+      "size": 372,
+      "exact": true,
+      "target_sha256": "de5371abc712b095e049a443d1b19e7c02ce8e124c9a5f7997721fbf35c812aa",
+      "compiled_sha256": "de5371abc712b095e049a443d1b19e7c02ce8e124c9a5f7997721fbf35c812aa",
+      "source": "src/EchoFieldWriters.cpp",
+      "symbol": "_ZN11EchoRecords9EventBase5WriteEPNS_6WriterEh",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 8
+    },
+    {
       "address": "0x576eb0",
       "size": 136,
       "exact": true,
@@ -172454,7 +172570,7 @@
       "target_sha256": "a05932051b2248eb01969bc7f481060b170c089c199fb3cbe269680294567517",
       "compiled_sha256": "a05932051b2248eb01969bc7f481060b170c089c199fb3cbe269680294567517",
       "source": "src/EchoRecordEvents.cpp",
-      "symbol": "_ZN11EchoRecords12Event_585aa05WriteEPNS_6WriterEi",
+      "symbol": "_ZN11EchoRecords12Event_585aa05WriteEPNS_6WriterEh",
       "source_review": "manual_reconstruction",
       "relocation_count": 8
     },
@@ -175924,6 +176040,17 @@
       "relocation_count": 2
     },
     {
+      "address": "0x5b5a80",
+      "size": 384,
+      "exact": true,
+      "target_sha256": "7c03714ac15ca5904bd45688e71e0f2634d33086c4b86d72a80fb6c0d611f32e",
+      "compiled_sha256": "7c03714ac15ca5904bd45688e71e0f2634d33086c4b86d72a80fb6c0d611f32e",
+      "source": "src/EchoRecordEvents.cpp",
+      "symbol": "_ZN11EchoRecords12Event_5b5a805WriteEPNS_6WriterEh",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 9
+    },
+    {
       "address": "0x5b5ca0",
       "size": 12,
       "exact": true,
@@ -175966,6 +176093,17 @@
       "symbol": "RecoveredLeaf_5b6a50",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 1
+    },
+    {
+      "address": "0x5b6e80",
+      "size": 1172,
+      "exact": true,
+      "target_sha256": "729290289c59820429208b831b0654e91ff13d3df4827c3de2c549c92df411e1",
+      "compiled_sha256": "729290289c59820429208b831b0654e91ff13d3df4827c3de2c549c92df411e1",
+      "source": "src/EchoRecordEvents.cpp",
+      "symbol": "_ZN11EchoRecords12Event_5b6e805WriteEPNS_6WriterEh",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 29
     },
     {
       "address": "0x5b7670",
@@ -177173,7 +177311,7 @@
       "target_sha256": "c9836682ae8db05be0afb4ecdd150d27172defc8fb92f678c5c4300c08ea1886",
       "compiled_sha256": "c9836682ae8db05be0afb4ecdd150d27172defc8fb92f678c5c4300c08ea1886",
       "source": "src/EchoRecordEvents.cpp",
-      "symbol": "_ZN11EchoRecords12Event_5c27b05WriteEPNS_6WriterEi",
+      "symbol": "_ZN11EchoRecords12Event_5c27b05WriteEPNS_6WriterEh",
       "source_review": "manual_reconstruction",
       "relocation_count": 6
     },
@@ -183861,7 +183999,7 @@
       "target_sha256": "8aeb33bf12da21ac9f75b98b8cf73ab2c593e649ece849ce8e5031f7dddd6dd6",
       "compiled_sha256": "8aeb33bf12da21ac9f75b98b8cf73ab2c593e649ece849ce8e5031f7dddd6dd6",
       "source": "src/EchoRecordEvents.cpp",
-      "symbol": "_ZN11EchoRecords12Event_5e15905WriteEPNS_6WriterEi",
+      "symbol": "_ZN11EchoRecords12Event_5e15905WriteEPNS_6WriterEh",
       "source_review": "manual_reconstruction",
       "relocation_count": 14
     },
@@ -184477,7 +184615,7 @@
       "target_sha256": "3cd3617725017417fa72e2c06da4352e396782fe179d4e76e7721b1578d062e0",
       "compiled_sha256": "3cd3617725017417fa72e2c06da4352e396782fe179d4e76e7721b1578d062e0",
       "source": "src/EchoRecordEvents.cpp",
-      "symbol": "_ZN11EchoRecords12Event_5fc0c05WriteEPNS_6WriterEi",
+      "symbol": "_ZN11EchoRecords12Event_5fc0c05WriteEPNS_6WriterEh",
       "source_review": "manual_reconstruction",
       "relocation_count": 12
     },
@@ -184488,7 +184626,7 @@
       "target_sha256": "68f9ff892bb6da2e550e5b3bffcf5e6581ee365e8d745bb723467a68982b21e7",
       "compiled_sha256": "68f9ff892bb6da2e550e5b3bffcf5e6581ee365e8d745bb723467a68982b21e7",
       "source": "src/EchoRecordEvents.cpp",
-      "symbol": "_ZN11EchoRecords12Event_5fc2705WriteEPNS_6WriterEi",
+      "symbol": "_ZN11EchoRecords12Event_5fc2705WriteEPNS_6WriterEh",
       "source_review": "manual_reconstruction",
       "relocation_count": 10
     },
@@ -184499,9 +184637,20 @@
       "target_sha256": "12965117c5f0bc8aeb19070d710178e41e3ae591271b7e75857da65a575f7137",
       "compiled_sha256": "12965117c5f0bc8aeb19070d710178e41e3ae591271b7e75857da65a575f7137",
       "source": "src/EchoRecordEvents.cpp",
-      "symbol": "_ZN11EchoRecords12Event_5fc4005WriteEPNS_6WriterEi",
+      "symbol": "_ZN11EchoRecords12Event_5fc4005WriteEPNS_6WriterEh",
       "source_review": "manual_reconstruction",
       "relocation_count": 12
+    },
+    {
+      "address": "0x5fc820",
+      "size": 368,
+      "exact": true,
+      "target_sha256": "b0eaa637e98e38ff98bddbad6a4c63dba7458bee3752ad5f843557489bbbc0a8",
+      "compiled_sha256": "b0eaa637e98e38ff98bddbad6a4c63dba7458bee3752ad5f843557489bbbc0a8",
+      "source": "src/EchoRecordEvents.cpp",
+      "symbol": "_ZN11EchoRecords12Event_5fc8205WriteEPNS_6WriterEh",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 9
     },
     {
       "address": "0x5fc990",
@@ -184521,9 +184670,20 @@
       "target_sha256": "6b10ec40c5a2205e188fe97ae7acad00f53913b671f9fcd5ca3ea82c30210a33",
       "compiled_sha256": "6b10ec40c5a2205e188fe97ae7acad00f53913b671f9fcd5ca3ea82c30210a33",
       "source": "src/EchoRecordEvents.cpp",
-      "symbol": "_ZN11EchoRecords12Event_5fcac05WriteEPNS_6WriterEi",
+      "symbol": "_ZN11EchoRecords12Event_5fcac05WriteEPNS_6WriterEh",
       "source_review": "manual_reconstruction",
       "relocation_count": 5
+    },
+    {
+      "address": "0x5fcb90",
+      "size": 368,
+      "exact": true,
+      "target_sha256": "f4ffc8d7639c87734c614757c2489c1f6ac088952f16c5948abf61bb4d02f26b",
+      "compiled_sha256": "f4ffc8d7639c87734c614757c2489c1f6ac088952f16c5948abf61bb4d02f26b",
+      "source": "src/EchoRecordEvents.cpp",
+      "symbol": "_ZN11EchoRecords12Event_5fcb905WriteEPNS_6WriterEh",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 9
     },
     {
       "address": "0x5fcd00",
@@ -188844,7 +189004,7 @@
       "target_sha256": "31f152c0e7c3a420d546b89ec445fa46bdd09d69647b10b31b6ed1c55ae30ed3",
       "compiled_sha256": "31f152c0e7c3a420d546b89ec445fa46bdd09d69647b10b31b6ed1c55ae30ed3",
       "source": "src/EchoRecordEvents.cpp",
-      "symbol": "_ZN11EchoRecords12Event_6113305WriteEPNS_6WriterEi",
+      "symbol": "_ZN11EchoRecords12Event_6113305WriteEPNS_6WriterEh",
       "source_review": "manual_reconstruction",
       "relocation_count": 9
     },
@@ -189086,7 +189246,7 @@
       "target_sha256": "6c87efa8422507331603f38f511a071cbacc0b99a7fb31a5f88695fff32946c1",
       "compiled_sha256": "6c87efa8422507331603f38f511a071cbacc0b99a7fb31a5f88695fff32946c1",
       "source": "src/EchoRecordEvents.cpp",
-      "symbol": "_ZN11EchoRecords12Event_611ee05WriteEPNS_6WriterEi",
+      "symbol": "_ZN11EchoRecords12Event_611ee05WriteEPNS_6WriterEh",
       "source_review": "manual_reconstruction",
       "relocation_count": 11
     },
@@ -189218,7 +189378,7 @@
       "target_sha256": "b6a8ef9165a7a89ef0e6840957006ee86d81de91af6fa4d039619d2f1405f5f7",
       "compiled_sha256": "b6a8ef9165a7a89ef0e6840957006ee86d81de91af6fa4d039619d2f1405f5f7",
       "source": "src/EchoRecordEvents.cpp",
-      "symbol": "_ZN11EchoRecords12Event_6125d05WriteEPNS_6WriterEi",
+      "symbol": "_ZN11EchoRecords12Event_6125d05WriteEPNS_6WriterEh",
       "source_review": "manual_reconstruction",
       "relocation_count": 14
     },
@@ -189339,7 +189499,7 @@
       "target_sha256": "90aaaee72f970a28794c7497eb6fdb19b7fbe632468012312ee45f9ba3df43b3",
       "compiled_sha256": "90aaaee72f970a28794c7497eb6fdb19b7fbe632468012312ee45f9ba3df43b3",
       "source": "src/EchoRecordEvents.cpp",
-      "symbol": "_ZN11EchoRecords12Event_612e805WriteEPNS_6WriterEi",
+      "symbol": "_ZN11EchoRecords12Event_612e805WriteEPNS_6WriterEh",
       "source_review": "manual_reconstruction",
       "relocation_count": 29
     },
@@ -189823,7 +189983,7 @@
       "target_sha256": "cf480b6e83508a7a5d9bbeb8747874981d7a3fc3dd2b04cda735d635882f54f3",
       "compiled_sha256": "cf480b6e83508a7a5d9bbeb8747874981d7a3fc3dd2b04cda735d635882f54f3",
       "source": "src/EchoRecordEvents.cpp",
-      "symbol": "_ZN11EchoRecords12Event_614a505WriteEPNS_6WriterEi",
+      "symbol": "_ZN11EchoRecords12Event_614a505WriteEPNS_6WriterEh",
       "source_review": "manual_reconstruction",
       "relocation_count": 18
     },
@@ -189933,7 +190093,7 @@
       "target_sha256": "85319d901f416def90cc440a510b07a161c3bc8fd6017fdb445ab944a222deb4",
       "compiled_sha256": "85319d901f416def90cc440a510b07a161c3bc8fd6017fdb445ab944a222deb4",
       "source": "src/EchoRecordEvents.cpp",
-      "symbol": "_ZN11EchoRecords12Event_6152705WriteEPNS_6WriterEi",
+      "symbol": "_ZN11EchoRecords12Event_6152705WriteEPNS_6WriterEh",
       "source_review": "manual_reconstruction",
       "relocation_count": 5
     },
@@ -190087,7 +190247,7 @@
       "target_sha256": "5b8dd64638ec5d3ccb4c4f70bdf058fc62f1f2d96442a1b5933f07622fb89fe3",
       "compiled_sha256": "5b8dd64638ec5d3ccb4c4f70bdf058fc62f1f2d96442a1b5933f07622fb89fe3",
       "source": "src/EchoRecordEvents.cpp",
-      "symbol": "_ZN11EchoRecords12Event_615b105WriteEPNS_6WriterEi",
+      "symbol": "_ZN11EchoRecords12Event_615b105WriteEPNS_6WriterEh",
       "source_review": "manual_reconstruction",
       "relocation_count": 14
     },
@@ -191154,7 +191314,7 @@
       "target_sha256": "92a2bf0ca6c33fa7bb7154aafa801d8aae37219ca95658b8e23c04836ae8d299",
       "compiled_sha256": "92a2bf0ca6c33fa7bb7154aafa801d8aae37219ca95658b8e23c04836ae8d299",
       "source": "src/EchoRecordEvents.cpp",
-      "symbol": "_ZN11EchoRecords12Event_6197c05WriteEPNS_6WriterEi",
+      "symbol": "_ZN11EchoRecords12Event_6197c05WriteEPNS_6WriterEh",
       "source_review": "manual_reconstruction",
       "relocation_count": 17
     },
@@ -191935,7 +192095,7 @@
       "target_sha256": "41a01e6484cd4824208198a54e026a8f12510a7646fb68ed02badbe7ce5ccd71",
       "compiled_sha256": "41a01e6484cd4824208198a54e026a8f12510a7646fb68ed02badbe7ce5ccd71",
       "source": "src/EchoRecordEvents.cpp",
-      "symbol": "_ZN11EchoRecords12Event_61b1d05WriteEPNS_6WriterEi",
+      "symbol": "_ZN11EchoRecords12Event_61b1d05WriteEPNS_6WriterEh",
       "source_review": "manual_reconstruction",
       "relocation_count": 7
     },
@@ -192496,7 +192656,7 @@
       "target_sha256": "11fd9aa6680be795e30def88c6cec02b12bbe66117bca07c15fb1ec8bf9b6657",
       "compiled_sha256": "11fd9aa6680be795e30def88c6cec02b12bbe66117bca07c15fb1ec8bf9b6657",
       "source": "src/EchoRecordEvents.cpp",
-      "symbol": "_ZN11EchoRecords12Event_61d3805WriteEPNS_6WriterEi",
+      "symbol": "_ZN11EchoRecords12Event_61d3805WriteEPNS_6WriterEh",
       "source_review": "manual_reconstruction",
       "relocation_count": 23
     },
@@ -193046,7 +193206,7 @@
       "target_sha256": "117858e1e5214fe29b995cecc83a6a31ee328fe761aa3ff4cf507ce892a7dbd6",
       "compiled_sha256": "117858e1e5214fe29b995cecc83a6a31ee328fe761aa3ff4cf507ce892a7dbd6",
       "source": "src/EchoRecordEvents.cpp",
-      "symbol": "_ZN11EchoRecords12Event_61eab05WriteEPNS_6WriterEi",
+      "symbol": "_ZN11EchoRecords12Event_61eab05WriteEPNS_6WriterEh",
       "source_review": "manual_reconstruction",
       "relocation_count": 5
     },
@@ -193134,7 +193294,7 @@
       "target_sha256": "c44fdca707832a36f0d8ffce9d6ce9fcddeccb604c10fed74b0db7adc3015751",
       "compiled_sha256": "c44fdca707832a36f0d8ffce9d6ce9fcddeccb604c10fed74b0db7adc3015751",
       "source": "src/EchoRecordEvents.cpp",
-      "symbol": "_ZN11EchoRecords12Event_61ee705WriteEPNS_6WriterEi",
+      "symbol": "_ZN11EchoRecords12Event_61ee705WriteEPNS_6WriterEh",
       "source_review": "manual_reconstruction",
       "relocation_count": 5
     },

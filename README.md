@@ -16,8 +16,8 @@ Edition** for Nintendo Switch.
 [Progress on decomp.dev](https://decomp.dev/jwfeniello/scott-pilgrim-switch-decomp)
 · [Progress workflow](https://github.com/jwfeniello/scott-pilgrim-switch-decomp/actions/workflows/progress.yml)
 
-**Current locally verified progress: 33,910 exact functions /
-3,990,556 bytes / 24.337609% of executable `.text`.** The original `.text` is 16,396,664 bytes.
+**Current locally verified progress: 33,924 exact functions /
+3,996,400 bytes / 24.373251% of executable `.text`.** The original `.text` is 16,396,664 bytes.
 This includes engine and library infrastructure. The project does not yet rebuild
 or boot the complete game. Original method names and many ABI declarations remain
 provisional. See the [integration plan](docs/INTEGRATION_PLAN.md) for
@@ -62,9 +62,10 @@ The newest, 53 [Dare pool destructors](docs/ENGINE_FAMILIES.md#dare-pool-destruc
 match only when their freeing loop is a separate member function that the
 optimizer inlines; written directly in the destructor, it costs a register.
 
-[storm::echo record writers](docs/ECHO_RECORD_WRITER.md) add 165 event writers
+[storm::echo record writers](docs/ECHO_RECORD_WRITER.md) add 178 event writers and their parent writer
 generated from each original field list (offset, type, record tag and name),
-including text records over a libc++ 4 string with the Storm allocator.
+including text records over a libc++ 4 string with the Storm allocator and
+arrays whose element records are renamed by index.
 [Storm STL allocator](docs/LIBRARY_BUILD_EVIDENCE.md#storm-stl-allocator) containers
 add 34 vector and 11 hash-table internals: the allocator tags allocations with `typeid(T).name()` and
 declares `construct`, which turns reallocation copies into element-wise moves.

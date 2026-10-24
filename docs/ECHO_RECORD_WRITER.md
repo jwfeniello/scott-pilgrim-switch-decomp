@@ -10,8 +10,12 @@ record per field.
 [`src/EchoRecordEvents.cpp`](../src/EchoRecordEvents.cpp) holds the events. The
 event list is generated from the field list read from each original function:
 field offset, type, record tag and name. Struct names are the original
-addresses. **165 functions / 47,728 bytes** match exactly (`-O3`, frame pointer
+addresses. **178 event writers / 53,200 bytes** match exactly (`-O3`, frame pointer
 kept, PIC, no implicit float, unwind tables, no exceptions, libc++ 4 headers).
+[`src/EchoFieldWriters.cpp`](../src/EchoFieldWriters.cpp) adds the parent writer
+most events call first (`0x576a80`, handler and cookie references written only in
+mode 2). It is a separate translation unit so the events keep calling it out of
+line.
 
 The writers are built without exceptions: with landing pads, the writers that
 destroy a local string differ. All earlier matches still match with
@@ -62,6 +66,22 @@ Other field kinds:
   short-form test written as `(size & 1) == 0` matches, while the library's own
   accessors schedule differently.
 
+- **Mode**: the writers' third argument is an 8-bit value (compared as a byte).
+  Some fields are written only in mode 2, either in a block or after an early
+  `if (mode != 2) return;`. Some others are written only when a leading 32-bit
+  member is at least 1.
+- **String views and C strings**: a `{data, size}` member is written as text
+  directly. Enumeration names come from a name table with a default for values
+  out of range; the text length comes from `strlen`. The table is a hidden
+  external array, addressed directly.
+- **Arrays**: vectors, sets and maps (libc++ 4 containers) write each element in
+  turn: a plain record, a checked member writer or a nested writer under a pending
+  name. When the element's first record fits, its name is replaced by
+  `<name>#<index>`, built in the record's name storage (offset `0x18`) with an
+  out-of-line formatter (`0x589f30`). The record count is read before the element,
+  the index is taken before the name is copied, and the new name is read through
+  a reference so its loads are speculated.
+
 The event list is generated from IDA pseudocode by a piece parser; each piece
 becomes one statement in the event's `Write`. Accesses through a typed `this`
 pointer (`a1 + 7` on a `_QWORD *`) are rewritten as byte offsets first.
@@ -70,6 +90,9 @@ pointer (`a1 + 7` on a `_QWORD *`) are rewritten as byte offsets first.
 
 - One float writer (`0x29eb60`) differs because its name length equals its type
   tag (7), which changes how the constant is shared. It is not credited.
-- About 75 more event writers use the same stream but also write containers,
-  enumeration names, string views or formatted index names. They are not
-  reconstructed.
+- Six vector writers differ only in register assignment (index and record base
+  registers swap); the map and set writers with the same element code match.
+- The named reference writers (`0x2b8790`, `0x2b8840`) differ by two words: the
+  original keeps the null record's address add separate from its store.
+- About 60 more event writers combine these pieces with bit-flag text, nested
+  containers or inline enumeration switches. They are not reconstructed.

@@ -3,6 +3,9 @@
 #pragma once
 #include <stdint.h>
 #include <string>
+#include <vector>
+#include <set>
+#include <map>
 #include <typeinfo>
 using Size=__SIZE_TYPE__;
 namespace EchoRecords {
@@ -43,7 +46,7 @@ struct Writer {
     }
 };
 // Parent-class serialization, called first by every event writer.
-template<unsigned Key> struct Base { void Write(Writer* writer); void Write(Writer* writer, int mode); };
+template<unsigned Key> struct Base { void Write(Writer* writer); void Write(Writer* writer, uint8_t mode); };
 // Field kinds beyond plain values: GUIDs, references with a reserved null value,
 // named fields checked (and possibly written) out of line, and text records.
 struct Guid { char bytes[19]; };
@@ -60,8 +63,8 @@ struct NamedPair {
     template<Size N, class T, class U> NamedPair(const char (&text)[N], const T& v, const U& e) : name(text), length(N - 1), value(&v), extra(&e) {}
 };
 template<unsigned Helper> struct NamedWriter {
-    static void Write(NamedField* field, Writer* writer); static void Write(NamedField* field, Writer* writer, int mode);
-    static void Write(NamedPair* field, Writer* writer); static void Write(NamedPair* field, Writer* writer, int mode);
+    static void Write(NamedField* field, Writer* writer); static void Write(NamedField* field, Writer* writer, uint8_t mode);
+    static void Write(NamedPair* field, Writer* writer); static void Write(NamedPair* field, Writer* writer, uint8_t mode);
 };
 __attribute__((always_inline)) inline NameView TakeName(Writer* writer, NameView name) {
     NameView& pending = writer->pending;
@@ -105,7 +108,7 @@ __attribute__((always_inline)) inline void WriteNamedReference(Writer* writer, c
 }
 // Members written by an out-of-line writer after the check; only their address is used here.
 struct Opaque { char first; };
-template<unsigned Helper> struct MemberWriter { static void Write(const void* field, Writer* writer); static void Write(const void* field, Writer* writer, int mode); };
+template<unsigned Helper> struct MemberWriter { static void Write(const void* field, Writer* writer); static void Write(const void* field, Writer* writer, uint8_t mode); };
 // Text records (type 3): the record's library string at offset 0x38 is cleared, then filled
 // by an out-of-line converter of the field.
 struct Text { void* words[3]; };
@@ -127,7 +130,7 @@ struct LocalText {
 };
 // Optional nested objects, written out of line (possibly under a pending name).
 struct Object;
-template<unsigned Helper> struct NestedWriter { static void Write(Object* object, Writer* writer); static void Write(Object* object, Writer* writer, int mode); };
+template<unsigned Helper> struct NestedWriter { static void Write(Object* object, Writer* writer); static void Write(Object* object, Writer* writer, uint8_t mode); };
 // Library strings over the Storm allocator; character storage is tagged with typeid(char).
 void* AllocText(Size size, Size alignment, uint32_t flags, const char* type, const char* file, uint32_t line);
 template<class T> struct TextAllocator {
@@ -165,7 +168,46 @@ template<Size N> __attribute__((always_inline)) inline void WriteTextCopy(Writer
 template<unsigned Helper> __attribute__((always_inline)) inline void WriteNamedPair(Writer* writer, const NamedPair& pair) {
     NamedPair f = pair; if (ShouldWrite(writer, &f)) NamedWriter<Helper>::Write(&f, writer);
 }
-template<unsigned Helper> __attribute__((always_inline)) inline void WriteNamedPair(Writer* writer, const NamedPair& pair, int mode) {
+template<unsigned Helper> __attribute__((always_inline)) inline void WriteNamedPair(Writer* writer, const NamedPair& pair, uint8_t mode) {
     NamedPair f = pair; if (ShouldWrite(writer, &f)) NamedWriter<Helper>::Write(&f, writer, mode);
 }
+// Array writers: each element is written, then its first record is renamed "#index" when it fits;
+// the new name is kept in the record's name storage (offset 0x18).
+template<unsigned Key, Size N> struct Element { char bytes[N]; };
+template<unsigned Key, Size N> struct alignas(8) ElementKey { char bytes[N]; bool operator<(const ElementKey& other) const; };
+template<unsigned Key, Size Offset> struct Field { char before[Offset]; uint32_t value; };
+void AppendFormat(Text* text, Size limit, const char* format, ...);
+__attribute__((always_inline)) inline NameView TextView(const TextLayout& text) {
+    unsigned char size = text.small.size;
+    const char* long_data = text.large.data; Size long_size = text.large.size;
+    bool short_form = (size & 1) == 0;
+    const char* data = short_form ? text.small.data : long_data;
+    Size length = short_form ? Size(size >> 1) : long_size;
+    return NameView(data, length);
+}
+__attribute__((always_inline)) inline void NameElement(Writer* writer, Size slot, Size& index) {
+    if (slot < 100) {
+        Record* record = &writer->records[slot];
+        Text* text = reinterpret_cast<Text*>(reinterpret_cast<char*>(record) + 0x18);
+        Size number = index++;
+        AssignText(text, record->name, record->length);
+        AppendFormat(text, 10, "#%zu", number);
+        NameView name = TextView(*reinterpret_cast<const TextLayout*>(text));
+        record->name = name.data; record->length = name.size;
+    }
+}
+// Text record from a name view (a string-view member or an enumeration name).
+template<Size N> __attribute__((always_inline)) inline void WriteTextView(Writer* writer, const char (&label)[N], NameView text) {
+    Record* record = writer->Next(); NameView name = TakeName(writer, NameView(label, N - 1));
+    record->type = 3; record->name = name.data; record->length = name.size;
+    AssignText(reinterpret_cast<Text*>(reinterpret_cast<char*>(record) + 0x38), text.data, text.size);
+}
+// Text record from a C string (assigned with its length from strlen), for example an enumeration name
+// taken from a name table with a default for values out of range.
+template<Size N> __attribute__((always_inline)) inline void WriteTextC(Writer* writer, const char (&label)[N], const char* text) {
+    Record* record = writer->Next(); NameView name = TakeName(writer, NameView(label, N - 1));
+    record->type = 3; record->name = name.data; record->length = name.size;
+    AssignText(reinterpret_cast<Text*>(reinterpret_cast<char*>(record) + 0x38), text, __builtin_strlen(text));
+}
+template<unsigned Key> struct NameTable { __attribute__((visibility("hidden"))) static const char* const names[]; };
 }

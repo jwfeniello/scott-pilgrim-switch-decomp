@@ -65,9 +65,9 @@ struct Event_25db60 : Base<0x25db60u> {
     Opaque field_32;
     char pad_33[7];
     uint16_t field_40;
-    void Write(Writer* writer, int mode);
+    void Write(Writer* writer, uint8_t mode);
 };
-void Event_25db60::Write(Writer* writer, int mode) {
+void Event_25db60::Write(Writer* writer, uint8_t mode) {
     Base<0x25db60u>::Write(writer, mode);
     if (ShouldWrite(writer, &field_32)) MemberWriter<0x587fc0u>::Write(&field_32, writer, mode);
     writer->WriteUnsigned("port", field_40);
@@ -97,6 +97,62 @@ void Event_25f400::Write(Writer* writer) {
     writer->WriteUnsigned("requestedPort", field_32);
     writer->WriteUnsigned("bindPort", field_34);
     writer->WriteBool("successful", field_36);
+}
+struct Event_25f600 : Base<0x25f600u> {
+    char pad_0[32];
+    uint32_t field_32;
+    uint32_t field_36;
+    Object* field_40;
+    Object* field_48;
+    Guid field_56;
+    void Write(Writer* writer, uint8_t mode);
+};
+void Event_25f600::Write(Writer* writer, uint8_t mode) {
+    Base<0x25f600u>::Write(writer, mode);
+    writer->WriteUnsigned("networkReqId", field_32);
+    writer->WriteUnsigned("reqId", field_36);
+    if (field_40) { NestedWriter<0x2c3210u>::Write(field_40, writer, mode); }
+    if (Object* object = field_48) { writer->pending = NameView("host", 4); NestedWriter<0x5bd940u>::Write(object, writer, mode); }
+    { NamedGuidField f("sessionGuid", field_56); if (ShouldWrite(writer, &f)) WriteNamedGuid(writer, f); }
+}
+struct Event_25f890 : Base<0x25f890u> {
+    char pad_0[32];
+    uint32_t field_32;
+    uint32_t field_36;
+    Object* field_40;
+    Object* field_48;
+    Opaque field_56;
+    void Write(Writer* writer, uint8_t mode);
+};
+void Event_25f890::Write(Writer* writer, uint8_t mode) {
+    Base<0x25f890u>::Write(writer, mode);
+    writer->WriteUnsigned("networkReqId", field_32);
+    writer->WriteUnsigned("reqId", field_36);
+    if (field_40) { NestedWriter<0x25ee50u>::Write(field_40, writer); }
+    if (Object* object = field_48) { writer->pending = NameView("host", 4); NestedWriter<0x5bd940u>::Write(object, writer, mode); }
+    if (ShouldWrite(writer, &field_56)) { writer->pending = NameView("groupGuid", 9); MemberWriter<0x576eb0u>::Write(&field_56, writer, 0); }
+}
+struct Event_260290 : Base<0x260290u> {
+    char pad_0[32];
+    int32_t field_32;
+    char pad_36[12];
+    uint32_t field_48;
+    char pad_52[4];
+    Object* field_56;
+    uint32_t field_64;
+    uint32_t field_68;
+    uint32_t field_72;
+    void Write(Writer* writer);
+};
+void Event_260290::Write(Writer* writer) {
+    Base<0x260290u>::Write(writer);
+    writer->WriteUnsigned("objectRefId", field_48);
+    if (field_56) { NestedWriter<0x268bf0u>::Write(field_56, writer); }
+    writer->WriteSigned("role", field_64);
+    { NamedField f("srefid", field_68); if (ShouldWrite(writer, &f)) NamedWriter<0x2b8790u>::Write(&f, writer, 0); }
+    if (field_32 >= 1) {
+    writer->WriteUnsigned("syncBatchBitIdx", field_72);
+    }
 }
 struct Event_260440 : Base<0x260440u> {
     char pad_0[48];
@@ -197,6 +253,31 @@ void Event_269a10::Write(Writer* writer) {
     writer->WriteSigned("role", field_32);
     if (field_40) { NestedWriter<0x268bf0u>::Write(field_40, writer); }
 }
+struct Event_26a590 : Base<0x26a590u> {
+    char pad_0[32];
+    uint32_t field_32;
+    char pad_36[4];
+    Object* field_40;
+    char pad_48[8];
+    uint32_t field_56;
+    uint32_t field_60;
+    Opaque field_64;
+    char pad_65[7];
+    Opaque field_72;
+    char pad_73[19];
+    bool field_92;
+    void Write(Writer* writer, uint8_t mode);
+};
+void Event_26a590::Write(Writer* writer, uint8_t mode) {
+    Base<0x26a590u>::Write(writer, mode);
+    writer->WriteSigned("role", field_32);
+    if (field_40) { NestedWriter<0x268bf0u>::Write(field_40, writer); }
+    { NamedField f("srefid", field_56); if (ShouldWrite(writer, &f)) NamedWriter<0x2b8790u>::Write(&f, writer, 0); }
+    { NamedField f("peerId", field_60); if (ShouldWrite(writer, &f)) NamedWriter<0x2b8840u>::Write(&f, writer, 0); }
+    if (ShouldWrite(writer, &field_64)) MemberWriter<0x268e40u>::Write(&field_64, writer, mode);
+    if (ShouldWrite(writer, &field_72)) MemberWriter<0x2690e0u>::Write(&field_72, writer);
+    writer->WriteBool("finalMasterEnabled", field_92);
+}
 struct Event_26a8a0 : Base<0x26a8a0u> {
     char pad_0[32];
     uint32_t field_32;
@@ -232,6 +313,19 @@ void Event_26a9f0::Write(Writer* writer) {
     { NamedField f("srefid", field_56); if (ShouldWrite(writer, &f)) NamedWriter<0x2b8790u>::Write(&f, writer, 0); }
     { NamedField f("peerId", field_60); if (ShouldWrite(writer, &f)) NamedWriter<0x2b8840u>::Write(&f, writer, 0); }
     writer->WriteUnsigned("objectRefId", field_64);
+}
+struct Event_26b070 : Base<0x26b070u> {
+    char pad_0[32];
+    Object* field_32;
+    Object* field_40;
+    uint32_t field_48;
+    void Write(Writer* writer, uint8_t mode);
+};
+void Event_26b070::Write(Writer* writer, uint8_t mode) {
+    Base<0x26b070u>::Write(writer, mode);
+    if (Object* object = field_32) { writer->pending = NameView("src", 3); NestedWriter<0x5bd940u>::Write(object, writer, mode); }
+    if (Object* object = field_40) { writer->pending = NameView("dst", 3); NestedWriter<0x5bd940u>::Write(object, writer, mode); }
+    writer->WriteUnsigned("rttValue", field_48);
 }
 struct Event_26c470 : Base<0x26c470u> {
     char pad_0[32];
@@ -270,9 +364,9 @@ struct Event_26d990 : Base<0x26d990u> {
     char pad_0[32];
     Object* field_32;
     uint32_t field_40;
-    void Write(Writer* writer, int mode);
+    void Write(Writer* writer, uint8_t mode);
 };
-void Event_26d990::Write(Writer* writer, int mode) {
+void Event_26d990::Write(Writer* writer, uint8_t mode) {
     Base<0x26d990u>::Write(writer, mode);
     if (field_32) { NestedWriter<0x5bd940u>::Write(field_32, writer, mode); }
     writer->WriteUnsigned("pingValue", field_40);
@@ -281,9 +375,9 @@ struct Event_26dcf0 : Base<0x26dcf0u> {
     char pad_0[32];
     Object* field_32;
     bool field_40;
-    void Write(Writer* writer, int mode);
+    void Write(Writer* writer, uint8_t mode);
 };
-void Event_26dcf0::Write(Writer* writer, int mode) {
+void Event_26dcf0::Write(Writer* writer, uint8_t mode) {
     Base<0x26dcf0u>::Write(writer, mode);
     if (field_32) { NestedWriter<0x5bd940u>::Write(field_32, writer, mode); }
     writer->WriteBool("causedByPeerLost", field_40);
@@ -363,9 +457,9 @@ struct Event_294280 : Base<0x294280u> {
     char pad_0[32];
     uint32_t field_32;
     Opaque field_36;
-    void Write(Writer* writer, int mode);
+    void Write(Writer* writer, uint8_t mode);
 };
-void Event_294280::Write(Writer* writer, int mode) {
+void Event_294280::Write(Writer* writer, uint8_t mode) {
     Base<0x294280u>::Write(writer, mode);
     writer->WriteUnsigned("objectRefId", field_32);
     if (ShouldWrite(writer, &field_36)) MemberWriter<0x268e40u>::Write(&field_36, writer, mode);
@@ -662,9 +756,9 @@ struct Event_2a5420 : Base<0x2a5420u> {
     char pad_0[32];
     Object* field_32;
     uint32_t field_40;
-    void Write(Writer* writer, int mode);
+    void Write(Writer* writer, uint8_t mode);
 };
-void Event_2a5420::Write(Writer* writer, int mode) {
+void Event_2a5420::Write(Writer* writer, uint8_t mode) {
     Base<0x2a5420u>::Write(writer, mode);
     if (field_32) { NestedWriter<0x5bd940u>::Write(field_32, writer, mode); }
     writer->WriteUnsigned("timeout", field_40);
@@ -724,9 +818,9 @@ struct Event_2a9e30 : Base<0x2a9e30u> {
     char pad_44[4];
     uint32_t field_48;
     bool field_52;
-    void Write(Writer* writer, int mode);
+    void Write(Writer* writer, uint8_t mode);
 };
-void Event_2a9e30::Write(Writer* writer, int mode) {
+void Event_2a9e30::Write(Writer* writer, uint8_t mode) {
     Base<0x2a9e30u>::Write(writer, mode);
     WriteText<0xc22610u>(writer, "peerChannelType", field_32);
     WriteText<0xc22610u>(writer, "protocolType", field_36);
@@ -742,9 +836,9 @@ struct Event_2aa590 : Base<0x2aa590u> {
     uint32_t field_44;
     uint32_t field_48;
     bool field_52;
-    void Write(Writer* writer, int mode);
+    void Write(Writer* writer, uint8_t mode);
 };
-void Event_2aa590::Write(Writer* writer, int mode) {
+void Event_2aa590::Write(Writer* writer, uint8_t mode) {
     Base<0x2aa590u>::Write(writer, mode);
     WriteText<0xc22610u>(writer, "peerChannelTypeName", field_32);
     WriteText<0xc22610u>(writer, "protocolType", field_36);
@@ -762,9 +856,9 @@ struct Event_2aaf80 : Base<0x2aaf80u> {
     uint32_t field_48;
     uint32_t field_52;
     bool field_56;
-    void Write(Writer* writer, int mode);
+    void Write(Writer* writer, uint8_t mode);
 };
-void Event_2aaf80::Write(Writer* writer, int mode) {
+void Event_2aaf80::Write(Writer* writer, uint8_t mode) {
     Base<0x2aaf80u>::Write(writer, mode);
     WriteText<0xc22610u>(writer, "sessionTypeId", field_32);
     WriteText<0xc22610u>(writer, "peerChannelTypeName", field_36);
@@ -815,9 +909,9 @@ struct Event_2bbb80 : Base<0x2bbb80u> {
     Opaque field_72;
     char pad_73[79];
     Opaque field_152;
-    void Write(Writer* writer, int mode);
+    void Write(Writer* writer, uint8_t mode);
 };
-void Event_2bbb80::Write(Writer* writer, int mode) {
+void Event_2bbb80::Write(Writer* writer, uint8_t mode) {
     Base<0x2bbb80u>::Write(writer, mode);
     { NamedField f("peerId", field_56); if (ShouldWrite(writer, &f)) WriteNamedReference(writer, f); }
     if (field_64) { NestedWriter<0x5bd940u>::Write(field_64, writer, mode); }
@@ -834,9 +928,9 @@ struct Event_2bc260 : Base<0x2bc260u> {
     Opaque field_80;
     char pad_81[79];
     Opaque field_160;
-    void Write(Writer* writer, int mode);
+    void Write(Writer* writer, uint8_t mode);
 };
-void Event_2bc260::Write(Writer* writer, int mode) {
+void Event_2bc260::Write(Writer* writer, uint8_t mode) {
     Base<0x2bc260u>::Write(writer, mode);
     { NamedField f("peerId", field_56); if (ShouldWrite(writer, &f)) WriteNamedReference(writer, f); }
     if (field_64) { NestedWriter<0x5bd940u>::Write(field_64, writer, mode); }
@@ -856,9 +950,9 @@ struct Event_2bcd10 : Base<0x2bcd10u> {
     Opaque field_104;
     char pad_105[7];
     Opaque field_112;
-    void Write(Writer* writer, int mode);
+    void Write(Writer* writer, uint8_t mode);
 };
-void Event_2bcd10::Write(Writer* writer, int mode) {
+void Event_2bcd10::Write(Writer* writer, uint8_t mode) {
     Base<0x2bcd10u>::Write(writer, mode);
     { NamedField f("peerId", field_56); if (ShouldWrite(writer, &f)) WriteNamedReference(writer, f); }
     if (field_64) { NestedWriter<0x5bd940u>::Write(field_64, writer, mode); }
@@ -911,9 +1005,9 @@ struct Event_2efd30 : Base<0x2efd30u> {
     uint32_t field_64;
     char pad_68[4];
     uint64_t field_72;
-    void Write(Writer* writer, int mode);
+    void Write(Writer* writer, uint8_t mode);
 };
-void Event_2efd30::Write(Writer* writer, int mode) {
+void Event_2efd30::Write(Writer* writer, uint8_t mode) {
     Base<0x2efd30u>::Write(writer, mode);
     if (field_56) { NestedWriter<0x2c3210u>::Write(field_56, writer, mode); }
     { NamedField f("handlerRefId", field_64); if (ShouldWrite(writer, &f)) NamedWriter<0x57e080u>::Write(&f, writer, 0); }
@@ -986,9 +1080,9 @@ struct Event_2f4520 : Base<0x2f4520u> {
     bool field_32;
     char pad_33[7];
     Object* field_40;
-    void Write(Writer* writer, int mode);
+    void Write(Writer* writer, uint8_t mode);
 };
-void Event_2f4520::Write(Writer* writer, int mode) {
+void Event_2f4520::Write(Writer* writer, uint8_t mode) {
     Base<0x2f4520u>::Write(writer, mode);
     writer->WriteBool("sessionEvent", field_32);
     if (field_40) { NestedWriter<0x26d620u>::Write(field_40, writer, mode); }
@@ -998,9 +1092,9 @@ struct Event_2f52a0 : Base<0x2f52a0u> {
     bool field_32;
     char pad_33[7];
     Object* field_40;
-    void Write(Writer* writer, int mode);
+    void Write(Writer* writer, uint8_t mode);
 };
-void Event_2f52a0::Write(Writer* writer, int mode) {
+void Event_2f52a0::Write(Writer* writer, uint8_t mode) {
     Base<0x2f52a0u>::Write(writer, mode);
     writer->WriteBool("sessionEvent", field_32);
     if (field_40) { NestedWriter<0x26d620u>::Write(field_40, writer, mode); }
@@ -1009,9 +1103,9 @@ struct Event_2f6ed0 : Base<0x2f6ed0u> {
     char pad_0[56];
     Object* field_56;
     uint32_t field_64;
-    void Write(Writer* writer, int mode);
+    void Write(Writer* writer, uint8_t mode);
 };
-void Event_2f6ed0::Write(Writer* writer, int mode) {
+void Event_2f6ed0::Write(Writer* writer, uint8_t mode) {
     Base<0x2f6ed0u>::Write(writer, mode);
     if (field_56) { NestedWriter<0x2c3210u>::Write(field_56, writer, mode); }
     writer->WriteUnsigned("hostMigrationId", field_64);
@@ -1082,9 +1176,9 @@ struct Event_328d50 : Base<0x328d50u> {
     Guid field_148;
     char pad_167[1];
     uint32_t field_168;
-    void Write(Writer* writer, int mode);
+    void Write(Writer* writer, uint8_t mode);
 };
-void Event_328d50::Write(Writer* writer, int mode) {
+void Event_328d50::Write(Writer* writer, uint8_t mode) {
     Base<0x328d50u>::Write(writer, mode);
     writer->WriteUnsigned("remoteSRefId", field_56);
     { NamedField f("peerId", field_60); if (ShouldWrite(writer, &f)) NamedWriter<0x2b8840u>::Write(&f, writer, 0); }
@@ -1106,9 +1200,9 @@ struct Event_329480 : Base<0x329480u> {
     Opaque field_112;
     char pad_113[7];
     Opaque field_120;
-    void Write(Writer* writer, int mode);
+    void Write(Writer* writer, uint8_t mode);
 };
-void Event_329480::Write(Writer* writer, int mode) {
+void Event_329480::Write(Writer* writer, uint8_t mode) {
     Base<0x329480u>::Write(writer, mode);
     { NamedField f("peerId", field_56); if (ShouldWrite(writer, &f)) NamedWriter<0x2b8840u>::Write(&f, writer, 0); }
     if (field_64) { NestedWriter<0x5bd940u>::Write(field_64, writer, mode); }
@@ -1121,9 +1215,9 @@ struct Event_329d50 : Base<0x329d50u> {
     uint32_t field_56;
     uint32_t field_60;
     Opaque field_64;
-    void Write(Writer* writer, int mode);
+    void Write(Writer* writer, uint8_t mode);
 };
-void Event_329d50::Write(Writer* writer, int mode) {
+void Event_329d50::Write(Writer* writer, uint8_t mode) {
     Base<0x329d50u>::Write(writer, mode);
     { NamedField f("peerId", field_56); if (ShouldWrite(writer, &f)) NamedWriter<0x2b8840u>::Write(&f, writer, 0); }
     writer->WriteUnsigned("latency", field_60);
@@ -1231,9 +1325,9 @@ struct Event_375740 : Base<0x375740u> {
     Opaque field_88;
     char pad_89[23];
     Opaque field_112;
-    void Write(Writer* writer, int mode);
+    void Write(Writer* writer, uint8_t mode);
 };
-void Event_375740::Write(Writer* writer, int mode) {
+void Event_375740::Write(Writer* writer, uint8_t mode) {
     Base<0x375740u>::Write(writer, mode);
     { NamedField f("peerId", field_56); if (ShouldWrite(writer, &f)) NamedWriter<0x2b8840u>::Write(&f, writer, 0); }
     if (field_64) { NestedWriter<0x5bd940u>::Write(field_64, writer, mode); }
@@ -1247,9 +1341,9 @@ struct Event_376010 : Base<0x376010u> {
     uint64_t field_40;
     uint64_t field_48;
     uint32_t field_56;
-    void Write(Writer* writer, int mode);
+    void Write(Writer* writer, uint8_t mode);
 };
-void Event_376010::Write(Writer* writer, int mode) {
+void Event_376010::Write(Writer* writer, uint8_t mode) {
     Base<0x376010u>::Write(writer, mode);
     { NamedField f("srefid", field_32); if (ShouldWrite(writer, &f)) NamedWriter<0x2b8790u>::Write(&f, writer, 0); }
     writer->WriteUnsigned("systemTime", field_40);
@@ -1278,14 +1372,39 @@ void Event_3782d0::Write(Writer* writer) {
     { NamedField f("srefid", field_32); if (ShouldWrite(writer, &f)) NamedWriter<0x2b8790u>::Write(&f, writer, 0); }
     writer->WriteBool("pause", field_36);
 }
+struct Event_38df20 : Base<0x38df20u> {
+    char pad_0[32];
+    int32_t field_32;
+    char pad_36[12];
+    uint32_t field_48;
+    char pad_52[4];
+    Object* field_56;
+    Object* field_64;
+    Opaque field_72;
+    char pad_73[11];
+    uint32_t field_84;
+    Guid field_88;
+    void Write(Writer* writer, uint8_t mode);
+};
+void Event_38df20::Write(Writer* writer, uint8_t mode) {
+    Base<0x38df20u>::Write(writer, mode);
+    { NamedField f("srefid", field_48); if (ShouldWrite(writer, &f)) NamedWriter<0x2b8790u>::Write(&f, writer, 0); }
+    if (field_32 >= 1) {
+    if (field_56) { NestedWriter<0x25ee50u>::Write(field_56, writer, mode); }
+    if (field_64) { NestedWriter<0x5bd940u>::Write(field_64, writer, mode); }
+    if (ShouldWrite(writer, &field_72)) MemberWriter<0x38ddf0u>::Write(&field_72, writer);
+    }
+    { NamedField f("peerId", field_84); if (ShouldWrite(writer, &f)) NamedWriter<0x2b8840u>::Write(&f, writer, 0); }
+    { NamedGuidField f("peerGuid", field_88); if (ShouldWrite(writer, &f)) WriteNamedGuid(writer, f); }
+}
 struct Event_38e510 : Base<0x38e510u> {
     char pad_0[48];
     uint32_t field_48;
     uint16_t field_52;
     Opaque field_54;
-    void Write(Writer* writer, int mode);
+    void Write(Writer* writer, uint8_t mode);
 };
-void Event_38e510::Write(Writer* writer, int mode) {
+void Event_38e510::Write(Writer* writer, uint8_t mode) {
     Base<0x38e510u>::Write(writer, mode);
     { NamedField f("srefid", field_48); if (ShouldWrite(writer, &f)) NamedWriter<0x2b8790u>::Write(&f, writer, 0); }
     if (ShouldWrite(writer, &field_54)) MemberWriter<0x576eb0u>::Write(&field_54, writer, 0);
@@ -1301,9 +1420,9 @@ struct Event_38eea0 : Base<0x38eea0u> {
     Opaque field_56;
     char pad_57[23];
     Opaque field_80;
-    void Write(Writer* writer, int mode);
+    void Write(Writer* writer, uint8_t mode);
 };
-void Event_38eea0::Write(Writer* writer, int mode) {
+void Event_38eea0::Write(Writer* writer, uint8_t mode) {
     Base<0x38eea0u>::Write(writer, mode);
     { NamedField f("srefid", field_32); if (ShouldWrite(writer, &f)) NamedWriter<0x2b8790u>::Write(&f, writer, 0); }
     { NamedField f("peerId", field_36); if (ShouldWrite(writer, &f)) NamedWriter<0x2b8840u>::Write(&f, writer, 0); }
@@ -1345,9 +1464,9 @@ struct Event_38f860 : Base<0x38f860u> {
     char pad_36[12];
     Object* field_48;
     uint16_t field_56;
-    void Write(Writer* writer, int mode);
+    void Write(Writer* writer, uint8_t mode);
 };
-void Event_38f860::Write(Writer* writer, int mode) {
+void Event_38f860::Write(Writer* writer, uint8_t mode) {
     Base<0x38f860u>::Write(writer, mode);
     { NamedField f("srefid", field_32); if (ShouldWrite(writer, &f)) NamedWriter<0x2b8790u>::Write(&f, writer, 0); }
     if (field_48) { NestedWriter<0x5bd940u>::Write(field_48, writer, mode); }
@@ -1359,9 +1478,9 @@ struct Event_38f950 : Base<0x38f950u> {
     char pad_36[4];
     Object* field_40;
     uint16_t field_48;
-    void Write(Writer* writer, int mode);
+    void Write(Writer* writer, uint8_t mode);
 };
-void Event_38f950::Write(Writer* writer, int mode) {
+void Event_38f950::Write(Writer* writer, uint8_t mode) {
     Base<0x38f950u>::Write(writer, mode);
     { NamedField f("srefid", field_32); if (ShouldWrite(writer, &f)) NamedWriter<0x2b8790u>::Write(&f, writer, 0); }
     if (field_40) { NestedWriter<0x5bd940u>::Write(field_40, writer, mode); }
@@ -1375,9 +1494,9 @@ struct Event_3cbf20 : Base<0x3cbf20u> {
     uint32_t field_48;
     char pad_52[4];
     uint64_t field_56;
-    void Write(Writer* writer, int mode);
+    void Write(Writer* writer, uint8_t mode);
 };
-void Event_3cbf20::Write(Writer* writer, int mode) {
+void Event_3cbf20::Write(Writer* writer, uint8_t mode) {
     Base<0x3cbf20u>::Write(writer, mode);
     { NamedField f("srefid", field_32); if (ShouldWrite(writer, &f)) NamedWriter<0x2b8790u>::Write(&f, writer, 0); }
     { NamedField f("handlerRefId", field_48); if (ShouldWrite(writer, &f)) NamedWriter<0x57e080u>::Write(&f, writer, 0); }
@@ -1412,9 +1531,9 @@ struct Event_3ce1f0 : Base<0x3ce1f0u> {
     uint32_t field_80;
     char pad_84[4];
     uint64_t field_88;
-    void Write(Writer* writer, int mode);
+    void Write(Writer* writer, uint8_t mode);
 };
-void Event_3ce1f0::Write(Writer* writer, int mode) {
+void Event_3ce1f0::Write(Writer* writer, uint8_t mode) {
     Base<0x3ce1f0u>::Write(writer, mode);
     if (ShouldWrite(writer, &field_32)) WriteReference(writer, "cid", field_32, uint16_t(0xffff));
     { NamedGuidField f("peerGuid", field_34); if (ShouldWrite(writer, &f)) WriteNamedGuid(writer, f); }
@@ -1440,9 +1559,9 @@ struct Event_3cef50 : Base<0x3cef50u> {
     Opaque field_40;
     char pad_41[23];
     Opaque field_64;
-    void Write(Writer* writer, int mode);
+    void Write(Writer* writer, uint8_t mode);
 };
-void Event_3cef50::Write(Writer* writer, int mode) {
+void Event_3cef50::Write(Writer* writer, uint8_t mode) {
     Base<0x3cef50u>::Write(writer, mode);
     if (ShouldWrite(writer, &field_32)) WriteReference(writer, "cid", field_32, uint16_t(0xffff));
     WriteNamedPair<0x57e130u>(writer, NamedPair("reason", field_64, field_40), 0);
@@ -1494,9 +1613,9 @@ struct Event_3d0aa0 : Base<0x3d0aa0u> {
     Opaque field_40;
     char pad_41[23];
     Opaque field_64;
-    void Write(Writer* writer, int mode);
+    void Write(Writer* writer, uint8_t mode);
 };
-void Event_3d0aa0::Write(Writer* writer, int mode) {
+void Event_3d0aa0::Write(Writer* writer, uint8_t mode) {
     Base<0x3d0aa0u>::Write(writer, mode);
     if (ShouldWrite(writer, &field_32)) WriteReference(writer, "cid", field_32, uint16_t(0xffff));
     WriteNamedPair<0x57e130u>(writer, NamedPair("reason", field_64, field_40), 0);
@@ -1508,9 +1627,9 @@ struct Event_3d11b0 : Base<0x3d11b0u> {
     Opaque field_40;
     char pad_41[23];
     Opaque field_64;
-    void Write(Writer* writer, int mode);
+    void Write(Writer* writer, uint8_t mode);
 };
-void Event_3d11b0::Write(Writer* writer, int mode) {
+void Event_3d11b0::Write(Writer* writer, uint8_t mode) {
     Base<0x3d11b0u>::Write(writer, mode);
     if (ShouldWrite(writer, &field_32)) WriteReference(writer, "cid", field_32, uint16_t(0xffff));
     WriteNamedPair<0x57e130u>(writer, NamedPair("reason", field_64, field_40), 0);
@@ -1518,18 +1637,18 @@ void Event_3d11b0::Write(Writer* writer, int mode) {
 struct Event_3d7380 : Base<0x3d7380u> {
     char pad_0[39];
     Guid field_39;
-    void Write(Writer* writer, int mode);
+    void Write(Writer* writer, uint8_t mode);
 };
-void Event_3d7380::Write(Writer* writer, int mode) {
+void Event_3d7380::Write(Writer* writer, uint8_t mode) {
     Base<0x3d7380u>::Write(writer, mode);
     { NamedGuidField f("peerGuid", field_39); if (ShouldWrite(writer, &f)) WriteNamedGuid(writer, f); }
 }
 struct Event_3d7f30 : Base<0x3d7f30u> {
     char pad_0[39];
     Guid field_39;
-    void Write(Writer* writer, int mode);
+    void Write(Writer* writer, uint8_t mode);
 };
-void Event_3d7f30::Write(Writer* writer, int mode) {
+void Event_3d7f30::Write(Writer* writer, uint8_t mode) {
     Base<0x3d7f30u>::Write(writer, mode);
     { NamedGuidField f("peerGuid", field_39); if (ShouldWrite(writer, &f)) WriteNamedGuid(writer, f); }
 }
@@ -1543,9 +1662,9 @@ struct Event_3d8b00 : Base<0x3d8b00u> {
     uint16_t field_72;
     char pad_74[6];
     uint64_t field_80;
-    void Write(Writer* writer, int mode);
+    void Write(Writer* writer, uint8_t mode);
 };
-void Event_3d8b00::Write(Writer* writer, int mode) {
+void Event_3d8b00::Write(Writer* writer, uint8_t mode) {
     Base<0x3d8b00u>::Write(writer, mode);
     if (ShouldWrite(writer, &field_32)) WriteReference(writer, "cid", field_32, uint16_t(0xffff));
     { NamedGuidField f("peerGuid", field_34); if (ShouldWrite(writer, &f)) WriteNamedGuid(writer, f); }
@@ -1560,9 +1679,9 @@ struct Event_3d9370 : Base<0x3d9370u> {
     Opaque field_40;
     char pad_41[23];
     Opaque field_64;
-    void Write(Writer* writer, int mode);
+    void Write(Writer* writer, uint8_t mode);
 };
-void Event_3d9370::Write(Writer* writer, int mode) {
+void Event_3d9370::Write(Writer* writer, uint8_t mode) {
     Base<0x3d9370u>::Write(writer, mode);
     if (ShouldWrite(writer, &field_32)) WriteReference(writer, "cid", field_32, uint16_t(0xffff));
     WriteNamedPair<0x57e130u>(writer, NamedPair("reason", field_64, field_40), 0);
@@ -1572,9 +1691,9 @@ struct Event_3d9a30 : Base<0x3d9a30u> {
     Guid field_39;
     char pad_58[6];
     Object* field_64;
-    void Write(Writer* writer, int mode);
+    void Write(Writer* writer, uint8_t mode);
 };
-void Event_3d9a30::Write(Writer* writer, int mode) {
+void Event_3d9a30::Write(Writer* writer, uint8_t mode) {
     Base<0x3d9a30u>::Write(writer, mode);
     { NamedGuidField f("peerGuid", field_39); if (ShouldWrite(writer, &f)) WriteNamedGuid(writer, f); }
     if (field_64) { NestedWriter<0x5bd940u>::Write(field_64, writer, mode); }
@@ -1596,9 +1715,9 @@ void Event_3daec0::Write(Writer* writer) {
 struct Event_3e4ae0 : Base<0x3e4ae0u> {
     char pad_0[39];
     Guid field_39;
-    void Write(Writer* writer, int mode);
+    void Write(Writer* writer, uint8_t mode);
 };
-void Event_3e4ae0::Write(Writer* writer, int mode) {
+void Event_3e4ae0::Write(Writer* writer, uint8_t mode) {
     Base<0x3e4ae0u>::Write(writer, mode);
     { NamedGuidField f("peerGuid", field_39); if (ShouldWrite(writer, &f)) WriteNamedGuid(writer, f); }
 }
@@ -1611,9 +1730,9 @@ struct Event_415580 : Base<0x415580u> {
     char pad_52[4];
     uint64_t field_56;
     bool field_64;
-    void Write(Writer* writer, int mode);
+    void Write(Writer* writer, uint8_t mode);
 };
-void Event_415580::Write(Writer* writer, int mode) {
+void Event_415580::Write(Writer* writer, uint8_t mode) {
     Base<0x415580u>::Write(writer, mode);
     { NamedField f("srefid", field_32); if (ShouldWrite(writer, &f)) NamedWriter<0x2b8790u>::Write(&f, writer, 0); }
     writer->WriteSigned("role", field_36);
@@ -1645,9 +1764,9 @@ void Event_43e200::Write(Writer* writer) {
 struct Event_45f580 : Base<0x45f580u> {
     char pad_0[32];
     StormText field_32;
-    void Write(Writer* writer, int mode);
+    void Write(Writer* writer, uint8_t mode);
 };
-void Event_45f580::Write(Writer* writer, int mode) {
+void Event_45f580::Write(Writer* writer, uint8_t mode) {
     Base<0x45f580u>::Write(writer, mode);
     WriteTextCopy(writer, "reason", field_32);
 }
@@ -1659,6 +1778,39 @@ struct Event_45f730 : Base<0x45f730u> {
 void Event_45f730::Write(Writer* writer) {
     Base<0x45f730u>::Write(writer);
     writer->WriteUnsigned("initialSessionTime", field_32);
+}
+struct Event_45f7d0 : Base<0x45f7d0u> {
+    char pad_0[32];
+    NameView field_32;
+    uint32_t field_48;
+    void Write(Writer* writer, uint8_t mode);
+};
+void Event_45f7d0::Write(Writer* writer, uint8_t mode) {
+    Base<0x45f7d0u>::Write(writer, mode);
+    WriteTextView(writer, "reason", field_32);
+    WriteText<0xc22610u>(writer, "reasonId", field_48);
+}
+struct Event_45f8e0 : Base<0x45f8e0u> {
+    char pad_0[32];
+    NameView field_32;
+    uint32_t field_48;
+    void Write(Writer* writer, uint8_t mode);
+};
+void Event_45f8e0::Write(Writer* writer, uint8_t mode) {
+    Base<0x45f8e0u>::Write(writer, mode);
+    WriteTextView(writer, "reason", field_32);
+    WriteText<0xc22610u>(writer, "reasonId", field_48);
+}
+struct Event_45f9f0 : Base<0x45f9f0u> {
+    char pad_0[32];
+    NameView field_32;
+    uint32_t field_48;
+    void Write(Writer* writer, uint8_t mode);
+};
+void Event_45f9f0::Write(Writer* writer, uint8_t mode) {
+    Base<0x45f9f0u>::Write(writer, mode);
+    WriteTextView(writer, "reason", field_32);
+    WriteText<0xc22610u>(writer, "reasonId", field_48);
 }
 struct Event_46b490 : Base<0x46b490u> {
     char pad_0[32];
@@ -1715,9 +1867,9 @@ struct Event_585aa0 : Base<0x585aa0u> {
     Opaque field_32;
     char pad_33[7];
     uint64_t field_40;
-    void Write(Writer* writer, int mode);
+    void Write(Writer* writer, uint8_t mode);
 };
-void Event_585aa0::Write(Writer* writer, int mode) {
+void Event_585aa0::Write(Writer* writer, uint8_t mode) {
     Base<0x585aa0u>::Write(writer, mode);
     if (ShouldWrite(writer, &field_32)) MemberWriter<0x587fc0u>::Write(&field_32, writer, mode);
     if (ShouldWrite(writer, &field_40)) WriteReference(writer, "cookie", field_40, ~uint64_t(0));
@@ -1744,6 +1896,24 @@ void Event_5b2ba0::Write(Writer* writer) {
     Base<0x5b2ba0u>::Write(writer);
     WriteGuid(writer, "guid", field_32);
 }
+struct Event_5b5a80 : Base<0x5b5a80u> {
+    char pad_0[273];
+    uint8_t field_273;
+    char pad_274[2];
+    uint32_t field_276;
+    Opaque field_280;
+    char pad_281[15];
+    bool field_296;
+    void Write(Writer* writer, uint8_t mode);
+};
+void Event_5b5a80::Write(Writer* writer, uint8_t mode) {
+    Base<0x5b5a80u>::Write(writer, mode);
+    writer->WriteUnsigned("version", field_273);
+    writer->WriteUnsigned("id", field_276);
+    if (mode != 2) return;
+    if (ShouldWrite(writer, &field_280)) MemberWriter<0x5948d0u>::Write(&field_280, writer);
+    writer->WriteBool("request", field_296);
+}
 struct Event_5b60d0 : Base<0x5b60d0u> {
     char pad_0[273];
     uint8_t field_273;
@@ -1753,6 +1923,40 @@ void Event_5b60d0::Write(Writer* writer) {
     Base<0x5b60d0u>::Write(writer);
     writer->WriteUnsigned("version", field_273);
 }
+struct Event_5b6e80 : Base<0x5b6e80u> {
+    char pad_0[52];
+    int32_t field_52;
+    char pad_56[280];
+    uint16_t field_336;
+    uint16_t field_338;
+    uint32_t field_340;
+    bool field_344;
+    char pad_345[3];
+    uint32_t field_348;
+    bool field_352;
+    char pad_353[1];
+    uint16_t field_354;
+    bool field_356;
+    char pad_357[3];
+    uint32_t field_360;
+    uint32_t field_364;
+    void Write(Writer* writer, uint8_t mode);
+};
+void Event_5b6e80::Write(Writer* writer, uint8_t mode) {
+    Base<0x5b6e80u>::Write(writer, mode);
+    WriteTextC(writer, "protocol", unsigned(field_52) <= 3 ? NameTable<0x5b6e80u>::names[field_52] : "Unknown");
+    writer->WriteUnsigned("transmissionId", field_336);
+    writer->WriteUnsigned("orderId", field_354);
+    writer->WriteUnsigned("confirmedId", field_338);
+    if (mode != 2) return;
+    writer->WriteUnsigned("confirmedIdBits", field_340);
+    writer->WriteBool("immediateAck", field_344);
+    writer->WriteUnsigned("allocated", field_348);
+    writer->WriteBool("containsAck", field_352);
+    writer->WriteBool("orderIdSet", field_356);
+    writer->WriteUnsigned("expPaddingSize", field_360);
+    writer->WriteUnsigned("expDatagramSize", field_364);
+}
 struct Event_5c27b0 : Base<0x5c27b0u> {
     char pad_0[336];
     Opaque field_336;
@@ -1760,9 +1964,9 @@ struct Event_5c27b0 : Base<0x5c27b0u> {
     Opaque field_360;
     char pad_361[3];
     bool field_364;
-    void Write(Writer* writer, int mode);
+    void Write(Writer* writer, uint8_t mode);
 };
-void Event_5c27b0::Write(Writer* writer, int mode) {
+void Event_5c27b0::Write(Writer* writer, uint8_t mode) {
     WriteNamedPair<0x57e130u>(writer, NamedPair("reason", field_360, field_336), mode);
     writer->WriteBool("sendDrop", field_364);
 }
@@ -1780,9 +1984,9 @@ void Event_5c2d30::Write(Writer* writer) {
 struct Event_5e1590 : Base<0x5e1590u> {
     char pad_0[32];
     StormText field_32;
-    void Write(Writer* writer, int mode);
+    void Write(Writer* writer, uint8_t mode);
 };
-void Event_5e1590::Write(Writer* writer, int mode) {
+void Event_5e1590::Write(Writer* writer, uint8_t mode) {
     Base<0x5e1590u>::Write(writer, mode);
     WriteTextCopy(writer, "punchGuid", field_32);
 }
@@ -1805,9 +2009,9 @@ struct Event_5fc0c0 : Base<0x5fc0c0u> {
     char pad_300[4];
     uint64_t field_304;
     Opaque field_312;
-    void Write(Writer* writer, int mode);
+    void Write(Writer* writer, uint8_t mode);
 };
-void Event_5fc0c0::Write(Writer* writer, int mode) {
+void Event_5fc0c0::Write(Writer* writer, uint8_t mode) {
     Base<0x5fc0c0u>::Write(writer, mode);
     if (ShouldWrite(writer, &field_48)) MemberWriter<0x5f5fe0u>::Write(&field_48, writer, mode);
     writer->WriteUnsigned("clientHandlerRefId", field_296);
@@ -1820,9 +2024,9 @@ struct Event_5fc270 : Base<0x5fc270u> {
     char pad_52[4];
     uint64_t field_56;
     Opaque field_64;
-    void Write(Writer* writer, int mode);
+    void Write(Writer* writer, uint8_t mode);
 };
-void Event_5fc270::Write(Writer* writer, int mode) {
+void Event_5fc270::Write(Writer* writer, uint8_t mode) {
     Base<0x5fc270u>::Write(writer, mode);
     writer->WriteUnsigned("clientHandlerRefId", field_48);
     if (ShouldWrite(writer, &field_56)) WriteReference(writer, "cookie", field_56, ~uint64_t(0));
@@ -1836,14 +2040,32 @@ struct Event_5fc400 : Base<0x5fc400u> {
     char pad_300[4];
     uint64_t field_304;
     Opaque field_312;
-    void Write(Writer* writer, int mode);
+    void Write(Writer* writer, uint8_t mode);
 };
-void Event_5fc400::Write(Writer* writer, int mode) {
+void Event_5fc400::Write(Writer* writer, uint8_t mode) {
     Base<0x5fc400u>::Write(writer, mode);
     if (ShouldWrite(writer, &field_48)) MemberWriter<0x5f5fe0u>::Write(&field_48, writer, mode);
     writer->WriteUnsigned("clientHandlerRefId", field_296);
     if (ShouldWrite(writer, &field_304)) WriteReference(writer, "cookie", field_304, ~uint64_t(0));
     if (ShouldWrite(writer, &field_312)) MemberWriter<0x5f5ca0u>::Write(&field_312, writer, mode);
+}
+struct Event_5fc820 : Base<0x5fc820u> {
+    char pad_0[48];
+    std::map<ElementKey<0x5fc820u, 176>, Element<0x5fc820u, 1> > field_48;
+    void Write(Writer* writer, uint8_t mode);
+};
+void Event_5fc820::Write(Writer* writer, uint8_t mode) {
+    Base<0x5fc820u>::Write(writer, mode);
+    if (mode == 2) {
+        {
+            Size index = 0;
+            for (const auto& entry : field_48) {
+                Size slot = writer->count;
+                if (ShouldWrite(writer, &entry.second)) { writer->pending = NameView("device", 6); MemberWriter<0x5f5ca0u>::Write(&entry.second, writer, mode); }
+                NameElement(writer, slot, index);
+            }
+        }
+    }
 }
 struct Event_5fc990 : Base<0x5fc990u> {
     char pad_0[48];
@@ -1862,12 +2084,30 @@ struct Event_5fcac0 : Base<0x5fcac0u> {
     uint16_t field_48;
     char pad_50[6];
     Opaque field_56;
-    void Write(Writer* writer, int mode);
+    void Write(Writer* writer, uint8_t mode);
 };
-void Event_5fcac0::Write(Writer* writer, int mode) {
+void Event_5fcac0::Write(Writer* writer, uint8_t mode) {
     Base<0x5fcac0u>::Write(writer, mode);
     writer->WriteUnsigned("externalPort", field_48);
     if (ShouldWrite(writer, &field_56)) MemberWriter<0x5f5ca0u>::Write(&field_56, writer, mode);
+}
+struct Event_5fcb90 : Base<0x5fcb90u> {
+    char pad_0[32];
+    std::map<ElementKey<0x5fcb90u, 0>, Element<0x5fcb90u, 1> > field_32;
+    void Write(Writer* writer, uint8_t mode);
+};
+void Event_5fcb90::Write(Writer* writer, uint8_t mode) {
+    Base<0x5fcb90u>::Write(writer, mode);
+    if (mode == 2) {
+        {
+            Size index = 0;
+            for (const auto& entry : field_32) {
+                Size slot = writer->count;
+                if (ShouldWrite(writer, &entry.second)) { writer->pending = NameView("addr", 4); MemberWriter<0x57bcb0u>::Write(&entry.second, writer, mode); }
+                NameElement(writer, slot, index);
+            }
+        }
+    }
 }
 struct Event_611330 : Base<0x611330u> {
     char pad_0[32];
@@ -1875,9 +2115,9 @@ struct Event_611330 : Base<0x611330u> {
     uint16_t field_36;
     char pad_38[26];
     uint64_t field_64;
-    void Write(Writer* writer, int mode);
+    void Write(Writer* writer, uint8_t mode);
 };
-void Event_611330::Write(Writer* writer, int mode) {
+void Event_611330::Write(Writer* writer, uint8_t mode) {
     Base<0x611330u>::Write(writer, mode);
     { NamedField f("handlerRefId", field_32); if (ShouldWrite(writer, &f)) NamedWriter<0x57e080u>::Write(&f, writer, 0); }
     writer->WriteUnsigned("mpeLocalPort", field_36);
@@ -1890,9 +2130,9 @@ struct Event_611ee0 : Base<0x611ee0u> {
     Opaque field_40;
     char pad_41[199];
     uint64_t field_240;
-    void Write(Writer* writer, int mode);
+    void Write(Writer* writer, uint8_t mode);
 };
-void Event_611ee0::Write(Writer* writer, int mode) {
+void Event_611ee0::Write(Writer* writer, uint8_t mode) {
     Base<0x611ee0u>::Write(writer, mode);
     { NamedField f("handlerRefId", field_32); if (ShouldWrite(writer, &f)) NamedWriter<0x57e080u>::Write(&f, writer, 0); }
     if (ShouldWrite(writer, &field_40)) { writer->pending = NameView("src", 3); MemberWriter<0x57bcb0u>::Write(&field_40, writer, mode); }
@@ -1901,9 +2141,9 @@ void Event_611ee0::Write(Writer* writer, int mode) {
 struct Event_6125d0 : Base<0x6125d0u> {
     char pad_0[32];
     StormText field_32;
-    void Write(Writer* writer, int mode);
+    void Write(Writer* writer, uint8_t mode);
 };
-void Event_6125d0::Write(Writer* writer, int mode) {
+void Event_6125d0::Write(Writer* writer, uint8_t mode) {
     Base<0x6125d0u>::Write(writer, mode);
     WriteTextCopy(writer, "configOption", field_32);
 }
@@ -1913,9 +2153,9 @@ struct Event_612e80 : Base<0x612e80u> {
     char pad_33[7];
     StormText field_40;
     StormText field_64;
-    void Write(Writer* writer, int mode);
+    void Write(Writer* writer, uint8_t mode);
 };
-void Event_612e80::Write(Writer* writer, int mode) {
+void Event_612e80::Write(Writer* writer, uint8_t mode) {
     Base<0x612e80u>::Write(writer, mode);
     writer->WriteBool("enable", field_32);
     WriteTextCopy(writer, "detectServerUrl1", field_40);
@@ -1934,9 +2174,9 @@ struct Event_614a50 : Base<0x614a50u> {
     char pad_0[32];
     StormText field_32;
     uint32_t field_56;
-    void Write(Writer* writer, int mode);
+    void Write(Writer* writer, uint8_t mode);
 };
-void Event_614a50::Write(Writer* writer, int mode) {
+void Event_614a50::Write(Writer* writer, uint8_t mode) {
     Base<0x614a50u>::Write(writer, mode);
     WriteTextCopy(writer, "gatewayBehavior", field_32);
     { NamedField f("handlerRefId", field_56); if (ShouldWrite(writer, &f)) NamedWriter<0x57e080u>::Write(&f, writer, 0); }
@@ -1946,9 +2186,9 @@ struct Event_615270 : Base<0x615270u> {
     Opaque field_32;
     char pad_33[71];
     uint32_t field_104;
-    void Write(Writer* writer, int mode);
+    void Write(Writer* writer, uint8_t mode);
 };
-void Event_615270::Write(Writer* writer, int mode) {
+void Event_615270::Write(Writer* writer, uint8_t mode) {
     Base<0x615270u>::Write(writer, mode);
     if (ShouldWrite(writer, &field_32)) MemberWriter<0x5e1100u>::Write(&field_32, writer, 0);
     writer->WriteUnsigned("keepAliveTime", field_104);
@@ -1956,9 +2196,9 @@ void Event_615270::Write(Writer* writer, int mode) {
 struct Event_615b10 : Base<0x615b10u> {
     char pad_0[32];
     StormText field_32;
-    void Write(Writer* writer, int mode);
+    void Write(Writer* writer, uint8_t mode);
 };
-void Event_615b10::Write(Writer* writer, int mode) {
+void Event_615b10::Write(Writer* writer, uint8_t mode) {
     Base<0x615b10u>::Write(writer, mode);
     WriteTextCopy(writer, "serverUrl", field_32);
 }
@@ -2006,9 +2246,9 @@ struct Event_6197c0 : Base<0x6197c0u> {
     uint16_t field_232;
     char pad_234[2];
     uint32_t field_236;
-    void Write(Writer* writer, int mode);
+    void Write(Writer* writer, uint8_t mode);
 };
-void Event_6197c0::Write(Writer* writer, int mode) {
+void Event_6197c0::Write(Writer* writer, uint8_t mode) {
     Base<0x6197c0u>::Write(writer, mode);
     writer->WriteUnsigned("loginTimeout", field_32);
     writer->WriteUnsigned("loginRetryCount", field_36);
@@ -2025,9 +2265,9 @@ struct Event_61b1d0 : Base<0x61b1d0u> {
     uint32_t field_48;
     char pad_52[4];
     Opaque field_56;
-    void Write(Writer* writer, int mode);
+    void Write(Writer* writer, uint8_t mode);
 };
-void Event_61b1d0::Write(Writer* writer, int mode) {
+void Event_61b1d0::Write(Writer* writer, uint8_t mode) {
     Base<0x61b1d0u>::Write(writer, mode);
     if (ShouldWrite(writer, &field_32)) MemberWriter<0x631d00u>::Write(&field_32, writer, mode);
     writer->WriteUnsigned("signature", field_48);
@@ -2046,9 +2286,9 @@ struct Event_61d380 : Base<0x61d380u> {
     uint32_t field_80;
     uint32_t field_84;
     bool field_88;
-    void Write(Writer* writer, int mode);
+    void Write(Writer* writer, uint8_t mode);
 };
-void Event_61d380::Write(Writer* writer, int mode) {
+void Event_61d380::Write(Writer* writer, uint8_t mode) {
     Base<0x61d380u>::Write(writer, mode);
     if (ShouldWrite(writer, &field_32)) MemberWriter<0x631d00u>::Write(&field_32, writer, mode);
     if (field_48) { NestedWriter<0x5e1100u>::Write(field_48, writer, mode); }
@@ -2065,9 +2305,9 @@ struct Event_61eab0 : Base<0x61eab0u> {
     Opaque field_32;
     char pad_33[175];
     uint64_t field_208;
-    void Write(Writer* writer, int mode);
+    void Write(Writer* writer, uint8_t mode);
 };
-void Event_61eab0::Write(Writer* writer, int mode) {
+void Event_61eab0::Write(Writer* writer, uint8_t mode) {
     Base<0x61eab0u>::Write(writer, mode);
     if (ShouldWrite(writer, &field_32)) MemberWriter<0x57bcb0u>::Write(&field_32, writer, mode);
     writer->WriteUnsigned("probeStartTime", field_208);
@@ -2077,9 +2317,9 @@ struct Event_61ee70 : Base<0x61ee70u> {
     Opaque field_32;
     char pad_33[175];
     uint64_t field_208;
-    void Write(Writer* writer, int mode);
+    void Write(Writer* writer, uint8_t mode);
 };
-void Event_61ee70::Write(Writer* writer, int mode) {
+void Event_61ee70::Write(Writer* writer, uint8_t mode) {
     Base<0x61ee70u>::Write(writer, mode);
     if (ShouldWrite(writer, &field_32)) MemberWriter<0x57bcb0u>::Write(&field_32, writer, mode);
     writer->WriteUnsigned("probeStartTime", field_208);
