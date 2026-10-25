@@ -1,9 +1,9 @@
 {
   "version": 1,
-  "generated_at": "2026-10-25T16:19:00.926893+00:00",
+  "generated_at": "2026-10-25T16:31:29.968181+00:00",
   "target_elf_sha256": "ea95638e6d6aaa0dc6cddd552a9366799aa1ec3bc07ee201f23f6c151103f5b8",
   "input_sha256": {
-    "config/builds.json": "7f86a6073d0ce6cef6031d425b6dc7e508ac30740392a064b7bb850a182eb9fe",
+    "config/builds.json": "46b3416827775217746236d64e0e23335026d7f526a2f022136dd5ffda04741a",
     "config/functions.tsv": "399e91468a04e0459194c10d68d2210d1157cedefeb19c7851886ca7632fcb18",
     "config/non_fde_functions.tsv": "6a45f5e185454fa0472af00b2cdc9d040d73ca133d1106217e1fbbe3b32a8175",
     "config/target.json": "23cc6a5227206a953e7668acf5e9ae5c02a25c23b7e7967f0450a814b888241a",
@@ -42,7 +42,7 @@
     "src/ColorPropertyReadOmitNoPic.cpp": "c3f5c2c85626b7ee05bbb1730e6c89d1a4cc2404362377627810bc1b1d83493f",
     "src/ComponentAccessor.cpp": "09d0b81df3abcacb946f49ed1ed87ab840ee0656bb6f792fd65d25660eabb260",
     "src/ComponentEventReader.cpp": "8ba855c3269dae4b06f76f96f0e6e5b59ff9235a3c43d089bcaf91ef43b68d6a",
-    "src/ComponentEventSubscribe.cpp": "f183f23aa9a7c2d1349d9fbc7d1507f4409bd90f0cc0b3b39dc3c355d2469520",
+    "src/ComponentEventSubscribe.cpp": "85ca37bf92a13ecb3e186806151e179d0d3d8cc6c503ad6751c82281dcedef2f",
     "src/ComponentInitializeSlots.cpp": "55cc1e5fc9899d4c44bf24cb4bb59c672fb325bec27fd578c36f881ec57dad1d",
     "src/ComponentMapCollectByKey.h": "ca433de3cf62b21dd59fa5e5a01fc30d37b1699e37e73aa98443f2fefe0fcd28",
     "src/ComponentMapCollectByKeyOmitNoPic.cpp": "6abf134637aa321dfb23146709cedbf7e4abf97f6855b6e321dc5c52c2f30284",
@@ -3945,17 +3945,17 @@
     "vendor/zlib-1.2.11/zutil.h": "9a63f6690fac1620aa3cecee5752af618806da438a256b4a047fbcd289cac159"
   },
   "compiler_versions": {
-    "8.0.1": "clang version 8.0.1 (tags/RELEASE_801/final)",
     "7.0.1": "clang version 7.0.1 (tags/RELEASE_701/final)",
+    "8.0.1": "clang version 8.0.1 (tags/RELEASE_801/final)",
     "lld": "LLD 8.0.1 (compatible with GNU linkers)"
   },
   "compiler_sha256": {
-    "8.0.1": "dffd62a213ec6cdb4430012a4a41c11e5e32c288f133d5391f9be49e1c5b69de",
     "7.0.1": "c2f0a175157d9aaace8031f8e6d7ea0ed6142b4bcef287105e3ed227301f1002",
+    "8.0.1": "dffd62a213ec6cdb4430012a4a41c11e5e32c288f133d5391f9be49e1c5b69de",
     "lld": "c4b3aaea06ff7112c64753047a2ab279fc3fe10dd807fd3c22edfdae99f43eed"
   },
-  "exact_functions": 34600,
-  "exact_bytes": 4342288,
+  "exact_functions": 34616,
+  "exact_bytes": 4347928,
   "builds": [
     {
       "id": "probes",
@@ -13158,14 +13158,14 @@
       "object_sha256": "0edd825c53dfd0936cdaf0d2790162d32f887da5a503cb4c5a3e2eb9c034ac08"
     },
     {
-      "id": "component_event_subscribe",
-      "compiler": "8.0.1",
-      "object_sha256": "0f5fd3a99220fd644a6e641f753cc6392269a9cca21e178b0d385b179645153c"
-    },
-    {
       "id": "event_senders",
       "compiler": "8.0.1",
       "object_sha256": "7b1a58c1ac0ba94c7e8ba8b21d3007c8ccfc9a2552eaf3f1a14845591c343322"
+    },
+    {
+      "id": "component_event_subscribe",
+      "compiler": "8.0.1",
+      "object_sha256": "3fb0e073b4fb9c33c06e266619538518161df865e3a3e4dac658adc69b0eea95"
     }
   ],
   "matches": [
@@ -199730,6 +199730,17 @@
       "relocation_count": 1
     },
     {
+      "address": "0x68e830",
+      "size": 336,
+      "exact": true,
+      "target_sha256": "90b8f051a909e42824c103f502344016568aea80777d6f58f291ec709fc5a9ef",
+      "compiled_sha256": "90b8f051a909e42824c103f502344016568aea80777d6f58f291ec709fc5a9ef",
+      "source": "src/ComponentEventSubscribe.cpp",
+      "symbol": "_ZN22HandleSubscriber68e8306EnableEv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 22
+    },
+    {
       "address": "0x68e980",
       "size": 304,
       "exact": true,
@@ -251936,6 +251947,17 @@
       "relocation_count": 2
     },
     {
+      "address": "0x8c0ed0",
+      "size": 316,
+      "exact": true,
+      "target_sha256": "52464e7f9392fd9f753e26cf357ea4aa2f0dfd7f8a0577c459c4d83671bbf109",
+      "compiled_sha256": "52464e7f9392fd9f753e26cf357ea4aa2f0dfd7f8a0577c459c4d83671bbf109",
+      "source": "src/ComponentEventSubscribe.cpp",
+      "symbol": "_ZN18StepsThenSubscribeILj9178832ELj1818424473ELj408EE6EnableEv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 24
+    },
+    {
       "address": "0x8c16f0",
       "size": 4,
       "exact": true,
@@ -262032,6 +262054,17 @@
       "symbol": "_ZN4SPTG23NotificationFilterEvent5Slot4ERN4onyx7ArchiveEPN13ComponentSlot6SourceE",
       "source_review": "manual_reconstruction",
       "relocation_count": 27
+    },
+    {
+      "address": "0x933d50",
+      "size": 380,
+      "exact": true,
+      "target_sha256": "4de1bad68334ff0770a8eb5f37b8074b868708db79de673a43646c1cf7043b7f",
+      "compiled_sha256": "4de1bad68334ff0770a8eb5f37b8074b868708db79de673a43646c1cf7043b7f",
+      "source": "src/ComponentEventSubscribe.cpp",
+      "symbol": "_ZN14LinkSubscriberILj9649488ELj500275287ELj795136029ELj80ELj0ELj104ELj0EE6EnableEv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 24
     },
     {
       "address": "0x934040",
@@ -296827,6 +296860,17 @@
       "relocation_count": 11
     },
     {
+      "address": "0xac68f0",
+      "size": 384,
+      "exact": true,
+      "target_sha256": "014099849f85e064c8850e7af7c11996899704451e80208ca1b4453d8c758272",
+      "compiled_sha256": "014099849f85e064c8850e7af7c11996899704451e80208ca1b4453d8c758272",
+      "source": "src/ComponentEventSubscribe.cpp",
+      "symbol": "_ZN14LinkSubscriberILj11299056ELj1044721973ELj741541411ELj80ELj0ELj104ELj2EE6EnableEv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 25
+    },
+    {
       "address": "0xac6a70",
       "size": 88,
       "exact": true,
@@ -305385,6 +305429,17 @@
       "relocation_count": 2
     },
     {
+      "address": "0xb1cff0",
+      "size": 344,
+      "exact": true,
+      "target_sha256": "e749620206836a1c59eb8f9f9b92ee5df03cbf8003b61a76cd88ca1232055125",
+      "compiled_sha256": "e749620206836a1c59eb8f9f9b92ee5df03cbf8003b61a76cd88ca1232055125",
+      "source": "src/ComponentEventSubscribe.cpp",
+      "symbol": "_ZN14ListSubscriberILj11653104ELj1818424473ELj96EE6EnableEv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 21
+    },
+    {
       "address": "0xb1d2b0",
       "size": 88,
       "exact": true,
@@ -305891,6 +305946,17 @@
       "relocation_count": 2
     },
     {
+      "address": "0xb1f5d0",
+      "size": 344,
+      "exact": true,
+      "target_sha256": "f267ead07d07d615d1a88e0a4d7d3d97a45f3f3cf589857ab513218d3f967ea9",
+      "compiled_sha256": "f267ead07d07d615d1a88e0a4d7d3d97a45f3f3cf589857ab513218d3f967ea9",
+      "source": "src/ComponentEventSubscribe.cpp",
+      "symbol": "_ZN14ListSubscriberILj11662800ELj1818424473ELj96EE6EnableEv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 21
+    },
+    {
       "address": "0xb1f730",
       "size": 340,
       "exact": true,
@@ -306276,6 +306342,17 @@
       "relocation_count": 9
     },
     {
+      "address": "0xb22230",
+      "size": 352,
+      "exact": true,
+      "target_sha256": "80e4a24febca2fc28de52c18ed28fa80b94756ffffbeaa418e5024e450eabab3",
+      "compiled_sha256": "80e4a24febca2fc28de52c18ed28fa80b94756ffffbeaa418e5024e450eabab3",
+      "source": "src/ComponentEventSubscribe.cpp",
+      "symbol": "_ZN28CountingListSubscriberb222306EnableEv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 21
+    },
+    {
       "address": "0xb22390",
       "size": 340,
       "exact": true,
@@ -306615,6 +306692,17 @@
       "symbol": "RecoveredLeaf_b25ee0",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 5
+    },
+    {
+      "address": "0xb25f50",
+      "size": 344,
+      "exact": true,
+      "target_sha256": "a0c8d9721e4f8633a9aab0146f6c7691d31484611370a09c3b050065986177f9",
+      "compiled_sha256": "a0c8d9721e4f8633a9aab0146f6c7691d31484611370a09c3b050065986177f9",
+      "source": "src/ComponentEventSubscribe.cpp",
+      "symbol": "_ZN14ListSubscriberILj11689808ELj1818424473ELj104EE6EnableEv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 21
     },
     {
       "address": "0xb260b0",
@@ -307451,6 +307539,17 @@
       "symbol": "_Z16DestroyAllocatedILj11718432EEvPv",
       "source_review": "manual_reconstruction",
       "relocation_count": 2
+    },
+    {
+      "address": "0xb2cf40",
+      "size": 308,
+      "exact": true,
+      "target_sha256": "05aebfaad596ef0504be58698d8e7ed7948411a63bd90da49c044db5f4c1ea12",
+      "compiled_sha256": "05aebfaad596ef0504be58698d8e7ed7948411a63bd90da49c044db5f4c1ea12",
+      "source": "src/ComponentEventSubscribe.cpp",
+      "symbol": "_ZN17SubscribeThenStepILj11718464ELj1818424473ELj264EE6EnableEv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 23
     },
     {
       "address": "0xb2d1b0",
@@ -309664,6 +309763,17 @@
       "relocation_count": 2
     },
     {
+      "address": "0xb4b470",
+      "size": 344,
+      "exact": true,
+      "target_sha256": "5b176c638f9357256a20e7671775c0dce9ab53e2559ea7ee8fb8eae8d875ed7f",
+      "compiled_sha256": "5b176c638f9357256a20e7671775c0dce9ab53e2559ea7ee8fb8eae8d875ed7f",
+      "source": "src/ComponentEventSubscribe.cpp",
+      "symbol": "_ZN14ListSubscriberILj11842672ELj1818424473ELj96EE6EnableEv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 21
+    },
+    {
       "address": "0xb4b5d0",
       "size": 340,
       "exact": true,
@@ -311532,6 +311642,17 @@
       "symbol": "RecoveredLeaf_b5f040",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 5
+    },
+    {
+      "address": "0xb5f1d0",
+      "size": 308,
+      "exact": true,
+      "target_sha256": "b5286997ee69486ed6fa47ef21b7321a59024bcc5c29c55294247b725ef7f52e",
+      "compiled_sha256": "b5286997ee69486ed6fa47ef21b7321a59024bcc5c29c55294247b725ef7f52e",
+      "source": "src/ComponentEventSubscribe.cpp",
+      "symbol": "_ZN17SubscribeThenStepILj11923920ELj1818424473ELj104EE6EnableEv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 23
     },
     {
       "address": "0xb5f5d0",
@@ -318937,6 +319058,17 @@
       "relocation_count": 4
     },
     {
+      "address": "0xba85d0",
+      "size": 352,
+      "exact": true,
+      "target_sha256": "d6036ab09109ab399549d7a20d073b8c237b9f191783f03b47803bc96a9829e5",
+      "compiled_sha256": "d6036ab09109ab399549d7a20d073b8c237b9f191783f03b47803bc96a9829e5",
+      "source": "src/ComponentEventSubscribe.cpp",
+      "symbol": "_ZN22ListSubscriberThenStepILj12223952ELj1818424473ELj176EE6EnableEv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 22
+    },
+    {
       "address": "0xba8730",
       "size": 340,
       "exact": true,
@@ -321311,6 +321443,17 @@
       "symbol": "_Z16DestroyAllocatedILj12326224EEvPv",
       "source_review": "manual_reconstruction",
       "relocation_count": 2
+    },
+    {
+      "address": "0xbc1570",
+      "size": 352,
+      "exact": true,
+      "target_sha256": "7f83d27bbd2ba7aadad195aea9ad65632b1dd06fb110fdf32f8fde850a799695",
+      "compiled_sha256": "7f83d27bbd2ba7aadad195aea9ad65632b1dd06fb110fdf32f8fde850a799695",
+      "source": "src/ComponentEventSubscribe.cpp",
+      "symbol": "_ZN27FlaggedListSubscriberbc15706EnableEv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 21
     },
     {
       "address": "0xbc16d0",
@@ -346085,6 +346228,17 @@
       "relocation_count": 11
     },
     {
+      "address": "0xca1940",
+      "size": 392,
+      "exact": true,
+      "target_sha256": "6582118e29d7657264029dca279487e29c8a222ce5a2a8e100946f8c58b5d904",
+      "compiled_sha256": "6582118e29d7657264029dca279487e29c8a222ce5a2a8e100946f8c58b5d904",
+      "source": "src/ComponentEventSubscribe.cpp",
+      "symbol": "_ZN16SourceSubscriberILj13244736ELj451821527ELj1357167494ELj88ELj104ELj120EE6EnableEv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 24
+    },
+    {
       "address": "0xca1f00",
       "size": 36,
       "exact": true,
@@ -352828,6 +352982,17 @@
       "relocation_count": 11
     },
     {
+      "address": "0xcd69c0",
+      "size": 392,
+      "exact": true,
+      "target_sha256": "945001f56d961fd55054572b34d64cfb9c69327cea4613d587255b88e8633533",
+      "compiled_sha256": "945001f56d961fd55054572b34d64cfb9c69327cea4613d587255b88e8633533",
+      "source": "src/ComponentEventSubscribe.cpp",
+      "symbol": "_ZN14LinkSubscriberILj13461952ELj1355810450ELj859665138ELj88ELj0ELj112ELj1EE6EnableEv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 24
+    },
+    {
       "address": "0xcd6b50",
       "size": 196,
       "exact": true,
@@ -354322,6 +354487,17 @@
       "symbol": "_Z21CallbackIdentityEqualILj13500448EEbPK12CallbackViewS2_",
       "source_review": "manual_reconstruction",
       "relocation_count": 0
+    },
+    {
+      "address": "0xce01e0",
+      "size": 392,
+      "exact": true,
+      "target_sha256": "4ebba264d357f99ccf16f07f5629640c15b3a57a8793744f935e88b961b6bdaf",
+      "compiled_sha256": "4ebba264d357f99ccf16f07f5629640c15b3a57a8793744f935e88b961b6bdaf",
+      "source": "src/ComponentEventSubscribe.cpp",
+      "symbol": "_ZN14LinkSubscriberILj13500896ELj1041532488ELj1042638853ELj80ELj8ELj112ELj1EE6EnableEv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 24
     },
     {
       "address": "0xce0500",
