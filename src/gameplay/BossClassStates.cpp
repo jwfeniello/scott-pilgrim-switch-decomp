@@ -2552,4 +2552,54 @@ bool LucasLee::Slot162() {
     return Enemy::Slot162();
 }
 
+// KenKyle slot 240 (0xa4d520): when the twin has +0xd28 raised, raises it here
+// too. Otherwise, once the twin is down (+0x160 used up, slot 95 failing) in
+// action mode 5, 6, 8 or 9, runs 0x996c30 with +0x10e0 while the twin's +0xd54
+// is below +0x10e4, then Boss's slot 240.
+void KenKyle::Slot240() {
+    KenKyle* other = Twin(this);
+    if (other->flagD28) {
+        flagD28 = 1;
+        return;
+    }
+    if (!(other->value160 <= 0.0f) || other->Slot95()) return;
+    switch (other->actionMode) {
+    case 5:
+    case 6:
+    case 8:
+    case 9:
+        break;
+    default:
+        return;
+    }
+    if (Twin(this)->valueD54 < limit10e4) Call996c30(value10e0, 0, 0, nullptr);
+    Boss::Slot240();
+}
+
+// Slot 259 (TagTeamMember 0xa25eb0, Lynette 0xa634c0, Envy 0xa68360): whether
+// +0xd80 is set; Envy also needs +0xd84, Lynette +0xd85 and state 244 or 282.
+// Not matched here; the address is credited to an earlier byte-level build
+// (FUN_00a25eb0, which returns the byte as a 32-bit value).
+bool TagTeamMember::Slot259() {
+    return flagD80;
+}
+bool Lynette::Slot259() {
+    if (!flagD85) return false;
+    if (InState(this, State244Ptr()) || InState(this, State282Ptr())) return flagD80;
+    return false;
+}
+// Matches, but the address is credited to an earlier byte-level build.
+bool Envy::Slot259() {
+    return flagD84 && flagD80;
+}
+
+// Patel slot 13 (0xa3faf0): Boss's slot 13, then, with +0x7b8 set, each
+// HipsterChick's slot 94.
+// Not yet matched (not credited).
+void Patel::Slot13() {
+    UpdateBoss13();
+    if (!flag7b8) return;
+    for (uint32_t i = 0; i < chickCount; ++i) onyx::Get<HipsterChick, onyx_types::type_4a52c0d7>(chicks[i])->Slot94();
+}
+
 }  // namespace SPTG

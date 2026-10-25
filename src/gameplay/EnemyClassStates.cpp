@@ -869,4 +869,67 @@ void EnemyShooter::Slot19() {
     valueC5c = 0;
 }
 
+// EnemyJake slot 19 (0xa026b0): after Enemy's slot 19, resets the sensor at
+// +0x11c8 and the state values, and raises +0x11c1.
+void EnemyJake::Slot19() {
+    Enemy::Slot19();
+    sensor.Reset();
+    value11f0 = 0;
+    timer11f4 = 0.0f;
+    flag11f8 = 0;
+    flag11c1 = 1;
+}
+
+// EnemyJake slots 252 (0x9f4c20) and 254 (0x9f4d40): AI mode 7 with 0x94fde0
+// on entry, AI mode 6 with 0x9500f0 on exit. State 252 attacks with animation
+// 177 and then goes to 250; state 254 waits +0x11b8 seconds, then clears
+// +0x11f8 and goes to 96.
+int EnemyJake::State252(int event) {
+    switch (event) {
+    case kStateUpdate:
+        if (!AnimationDone()) return kStateHandled;
+        states.Transition(State250Ptr());
+        return kStateParentTookOver;
+    case kStateEnter:
+        aiMode = 7;
+        PlayAnimation(177, 0, 1, 1.0f);
+        StartAttack(&attack1140.attack, false, 1, nullptr);
+        Call94fde0();
+        return kStateHandled;
+    case kStateExit:
+        aiMode = 6;
+        Call9500f0();
+        return kStateHandled;
+    case kStateEvent3:
+        return kStateHandled;
+    default:
+        return kStateUnhandled;
+    }
+}
+int EnemyJake::State254(int event) {
+    switch (event) {
+    case kStateUpdate:
+        timer11f4 += Move_FrameDelta;
+        if (timer11f4 > limit11b8) {
+            flag11f8 = 0;
+            states.Transition(State96Ptr());
+            return kStateParentTookOver;
+        }
+        return kStateHandled;
+    case kStateEnter:
+        aiMode = 7;
+        timer11f4 = 0.0f;
+        Call94fde0();
+        return kStateHandled;
+    case kStateExit:
+        aiMode = 6;
+        Call9500f0();
+        return kStateHandled;
+    case kStateEvent3:
+        return kStateHandled;
+    default:
+        return kStateUnhandled;
+    }
+}
+
 }  // namespace SPTG

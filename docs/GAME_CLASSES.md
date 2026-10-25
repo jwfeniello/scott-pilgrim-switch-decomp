@@ -504,8 +504,8 @@ that form: they need `__builtin_assume`, which drops side effects.
 [`EnemyClasses.h`](../src/gameplay/EnemyClasses.h) declares all 24 regular enemy
 classes with their own states (after Enemy's slot 233, each followed by its
 getter) and the overrides the sources define.
-[`EnemyClassStates.cpp`](../src/gameplay/EnemyClassStates.cpp) matches 70 of
-their functions (12,368 bytes), mostly small.
+[`EnemyClassStates.cpp`](../src/gameplay/EnemyClassStates.cpp) matches 73 of
+their functions (12,880 bytes), mostly small.
 
 The class hierarchy comes from the RTTI, where each class derives from
 `Onyx::Component::Compose<Base>`. Most classes derive from Enemy. EnemyStuntman,
@@ -611,8 +611,8 @@ Slots 96, 116 and 200 are written out but not credited. In each, the original
 merges the "handled" returns into a shared tail (for 96 and 116, the exit
 case's) that this build duplicates.
 
-[`BossClassStates.cpp`](../src/gameplay/BossClassStates.cpp) matches 125
-functions of the boss classes (34,100 bytes). Most are hooks that inline
+[`BossClassStates.cpp`](../src/gameplay/BossClassStates.cpp) matches 127
+functions of the boss classes (34,468 bytes). Most are hooks that inline
 Boss's version and add a class detail:
 
 - **Slot 234** maps an attack request's kind to a state. Each class tests its
@@ -680,6 +680,11 @@ Boss's version and add a class detail:
   state 198.
 - **Slot 82:** Lynette refuses it in four of her states and Todd in five,
   before Boss's test.
+- **Slot 259** (TagTeamMember and up) reports whether `+0xd80` is set; Lynette
+  also needs `+0xd85` and state 244 or 282. Envy's version matches too, but
+  its address is credited to an earlier byte-level build. **Ken & Kyle's slot
+  240** raises `+0xd28` with the twin. Once the twin is down in action mode 5,
+  6, 8 or 9, it runs 0x996c30 and then Boss's slot 240.
 - **Damage:** Todd totals his damage and raises `+0xd89` once it reaches
   `+0x119c`. SuperGideon rolls 1–100 against `+0x111c` each time the damage
   since the last roll reaches `+0x1118`. Lynette inlines TagTeamMember's

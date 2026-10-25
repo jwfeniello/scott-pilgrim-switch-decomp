@@ -22,7 +22,7 @@ struct TagTeamMember : Boss {
     virtual bool Slot238();                                                  // slot 238, overrides Boss
     virtual int State244(int event); virtual State State244Ptr();   // slots 244, 245, overrides Boss
     SPTG_SLOT(258)
-    SPTG_SLOT(259)
+    virtual bool Slot259();                                                  // slot 259
     SPTG_SLOT(260)
     SPTG_SLOT(261)
     virtual int State262(int event); virtual State State262Ptr();   // slots 262, 263
@@ -228,7 +228,7 @@ struct KenKyle : Boss {
     uint8_t flagD4e;             // +0xd4e
     char padding_d4f[0x1];
     float timeD50;               // +0xd50: reset in state 198
-    int32_t valueD54;            // +0xd54
+    float valueD54;              // +0xd54
     onyx::ComponentHandle* twin; // +0xd58: the other of Ken and Kyle
     char padding_d60[0x8];
     AttackSlot attackD68;        // +0xd68: requested every update with kind 20
@@ -246,6 +246,8 @@ struct KenKyle : Boss {
     float chance10d4;            // +0x10d4: percent
     char padding_10d8[0x4];
     float range10dc;             // +0x10dc: the twin joins states 246 and 248 within this distance
+    float value10e0;             // +0x10e0: passed to 0x996c30 by slot 240
+    float limit10e4;             // +0x10e4
 };
 // vtable 0x18949c8, 268 slots
 struct LucasLee : Boss {
@@ -339,7 +341,7 @@ struct Lynette : TagTeamMember {
     SPTG_SLOT(241)   // overrides TagTeamMember
     virtual int State244(int event); virtual State State244Ptr();   // slots 244, 245, overrides TagTeamMember
     virtual int State254(int event); virtual State State254Ptr();   // slots 254, 255, overrides TagTeamMember
-    SPTG_SLOT(259)   // overrides TagTeamMember
+    virtual bool Slot259();                                                  // slot 259, overrides TagTeamMember
     SPTG_SLOT(260)   // overrides TagTeamMember
     virtual int State262(int event); virtual State State262Ptr();   // slots 262, 263, overrides TagTeamMember
     virtual int State264(int event); virtual State State264Ptr();   // slots 264, 265, overrides TagTeamMember
@@ -374,6 +376,7 @@ struct Patel : Boss {
     float Slot170();
     void Update();
     void CallA41ca0();   // 0xa41ca0
+    void Slot13();
     virtual void Slot234(int kind);                                          // slot 234, overrides Boss
     SPTG_SLOT(235)   // overrides Boss
     virtual bool Slot237(const AttackSlot& request);                         // slot 237, overrides Boss
@@ -419,7 +422,7 @@ struct Envy : TagTeamMember {
     SPTG_SLOT(241)   // overrides TagTeamMember
     virtual int State244(int event); virtual State State244Ptr();   // slots 244, 245, overrides TagTeamMember
     virtual int State254(int event); virtual State State254Ptr();   // slots 254, 255, overrides TagTeamMember
-    SPTG_SLOT(259)   // overrides TagTeamMember
+    virtual bool Slot259();                                                  // slot 259, overrides TagTeamMember
     SPTG_SLOT(260)   // overrides TagTeamMember
     virtual int State262(int event); virtual State State262Ptr();   // slots 262, 263, overrides TagTeamMember
     virtual int State268(int event); virtual State State268Ptr();   // slots 268, 269

@@ -342,6 +342,8 @@ struct BaseCharacter : onyx::Component {
     void ActorSlot33(void* data);                      // 0x940170: AnimatedAiActor's slot 33
     void ActorSlot13();                                // 0x945670: AnimatedAiActor's slot 13
     void Call945c40();                                 // 0x945c40
+    void Call94fde0();                                 // 0x94fde0
+    void Call9500f0();                                 // 0x9500f0
     void Update976670(float time);                     // 0x976670
 
     // Slot 82's test, shared with overrides that inline it: held, not slot 85,

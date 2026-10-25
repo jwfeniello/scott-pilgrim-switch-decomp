@@ -278,9 +278,21 @@ struct EnemyChargingCrowd : EnemyOneHitWonder {
 };
 // vtable 0x1883ec0, 256 slots
 struct EnemyJake : EnemyNormal {
+    void Slot19();
     virtual int State250(int event); virtual State State250Ptr();   // slots 250, 251
     virtual int State252(int event); virtual State State252Ptr();   // slots 252, 253
     virtual int State254(int event); virtual State State254Ptr();   // slots 254, 255
+
+    char padding_1041[0xff];
+    AttackSlot attack1140;       // +0x1140: started in state 252
+    float limit11b8;             // +0x11b8: how long state 254 lasts
+    char padding_11bc[0x5];
+    uint8_t flag11c1;            // +0x11c1
+    char padding_11c2[0x6];
+    EnemySensor sensor;          // +0x11c8
+    int32_t value11f0;           // +0x11f0
+    float timer11f4;             // +0x11f4
+    uint8_t flag11f8;            // +0x11f8
 };
 // vtable 0x1885e68, 248 slots
 struct EnemyGeeOne : EnemyGiant {
