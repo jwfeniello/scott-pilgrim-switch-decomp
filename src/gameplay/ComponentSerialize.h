@@ -17,6 +17,18 @@ struct OnyxActionComponent {
 
 namespace SPTG {
 
+// SPTG::FlashMenu's slot 4 (0x7ffe10), SPTG::SPTG_Phase's (0x76b760) and
+// SPTG::BreakableObject's (0xa10790).
+struct FlashMenuBase {
+    void Slot4(onyx::Archive& archive, ComponentSlot::Source* source);
+};
+struct PhaseBase {
+    void Slot4(onyx::Archive& archive, ComponentSlot::Source* source);
+};
+struct BreakableObjectBase {
+    void Slot4(onyx::Archive& archive, ComponentSlot::Source* source);
+};
+
 // The actions derive from Onyx::ActionComponent, the others from
 // Onyx::Component::Base. PlayfieldCollisionView is SPTG::PlayfieldCollision
 // (named apart from the gameplay headers' declaration).
@@ -278,6 +290,115 @@ struct ControllableTriggerSpawner : OnyxComponentBase {
     int32_t value88;             // +0x88
     int32_t value8c;             // +0x8c
     int32_t value90;             // +0x90
+};
+
+// GamePurchaseMenu
+struct GamePurchaseMenu : FlashMenuBase {
+    void Slot4(onyx::Archive& archive, ComponentSlot::Source* source);   // 0x85be10
+    char padding_0[0x2b0];
+    void* slot2b0;               // +0x2b0
+    void* slot2b8;               // +0x2b8
+    void* slot2c0;               // +0x2c0
+    void* slot2c8;               // +0x2c8
+    void* slot2d0;               // +0x2d0
+    char padding_2d8[0x8];
+    int32_t value2e0;            // +0x2e0
+};
+// ExModeResultExtra
+struct ExModeResultExtra : FlashMenuBase {
+    void Slot4(onyx::Archive& archive, ComponentSlot::Source* source);   // 0x86a6f0
+    char padding_0[0x2b0];
+    void* slot2b0;               // +0x2b0
+    void* slot2b8;               // +0x2b8
+    onyx::ComponentHandle* handle2c0; // +0x2c0
+    onyx::ComponentHandle* handle2c8; // +0x2c8
+    char padding_2d0[0x8];
+    int32_t value2d8;            // +0x2d8
+    int32_t value2dc;            // +0x2dc
+};
+// ExModeGameOver
+struct ExModeGameOver : FlashMenuBase {
+    void Slot4(onyx::Archive& archive, ComponentSlot::Source* source);   // 0x86c750
+    char padding_0[0x2b0];
+    void* slot2b0;               // +0x2b0
+    void* slot2b8;               // +0x2b8
+    void* slot2c0;               // +0x2c0
+    void* slot2c8;               // +0x2c8
+    char padding_2d0[0x8];
+    int32_t value2d8;            // +0x2d8
+    int32_t value2dc;            // +0x2dc
+    uint8_t flag2e0;             // +0x2e0
+};
+// LevelCamera
+struct LevelCamera : PhaseBase {
+    void Slot4(onyx::Archive& archive, ComponentSlot::Source* source);   // 0x88ab80
+    char padding_0[0x60];
+    onyx::ComponentHandle* handle60; // +0x60
+    onyx::ComponentHandle* handle68; // +0x68
+    onyx::ComponentHandle* handle70; // +0x70
+    onyx::ComponentHandle* handle78; // +0x78
+    onyx::ComponentHandle* handle80; // +0x80
+    onyx::ComponentHandle* handle88; // +0x88
+    onyx::ComponentHandle* handle90; // +0x90
+    onyx::ComponentHandle* handle98; // +0x98
+    onyx::ComponentHandle* handleA0; // +0xa0
+    void* slotA8;                // +0xa8
+    char padding_b0[0xc];
+    int32_t valueBc;             // +0xbc
+};
+// SetPopupBoxVisibilityAction
+struct SetPopupBoxVisibilityAction : OnyxActionComponent {
+    void Slot4(onyx::Archive& archive, ComponentSlot::Source* source);   // 0x910c00
+    char padding_0[0xa0];
+    void* slotA0;                // +0xa0
+    uint32_t idA8;               // +0xa8
+    int32_t valueAc;             // +0xac
+    uint8_t flagB0;              // +0xb0
+    char padding_b1[0x7];
+    void* slotB8;                // +0xb8
+    void* slotC0;                // +0xc0
+    onyx::ComponentHandle* handleC8; // +0xc8
+    int32_t valueD0;             // +0xd0
+    int32_t valueD4;             // +0xd4
+    int32_t valueD8;             // +0xd8
+};
+// GunTurrets
+struct GunTurrets : BreakableObjectBase {
+    void Slot4(onyx::Archive& archive, ComponentSlot::Source* source);   // 0xa135d0
+    char padding_0[0x2b0];
+    int32_t value2b0;            // +0x2b0
+    int32_t value2b4;            // +0x2b4
+    int32_t value2b8;            // +0x2b8
+    int32_t value2bc;            // +0x2bc
+    int32_t value2c0;            // +0x2c0
+    int32_t value2c4;            // +0x2c4
+    int32_t value2c8;            // +0x2c8
+    int32_t value2cc;            // +0x2cc
+    int32_t value2d0;            // +0x2d0
+};
+// SectionActorPresenceLogic
+struct SectionActorPresenceLogic : OnyxComponentBase {
+    void Slot4(onyx::Archive& archive, ComponentSlot::Source* source);   // 0x7ae990
+    char padding_0[0x50];
+    void* slot50;                // +0x50
+    onyx::ComponentHandle* handle58; // +0x58
+    onyx::ComponentHandle* handle60; // +0x60
+    onyx::ComponentHandle* handle68; // +0x68
+    onyx::ComponentHandle* handle70; // +0x70
+    onyx::ComponentHandle* handle78; // +0x78
+    int32_t value80;             // +0x80
+    uint8_t flag84;              // +0x84
+    char padding_85[0x3];
+    int32_t value88;             // +0x88
+    uint8_t flag8c;              // +0x8c
+    char padding_8d[0x3];
+    int32_t value90;             // +0x90
+    uint8_t flag94;              // +0x94
+    uint8_t flag95;              // +0x95
+    char padding_96[0x2];
+    int32_t value98;             // +0x98
+    uint8_t flag9c;              // +0x9c
+    uint8_t flag9d;              // +0x9d
 };
 
 }  // namespace SPTG

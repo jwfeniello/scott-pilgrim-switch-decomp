@@ -249,4 +249,104 @@ void ControllableTriggerSpawner::Slot4(onyx::Archive& archive, ComponentSlot::So
     onyx::Transfer(archive, value90);
 }
 
+// 0x85be10
+void GamePurchaseMenu::Slot4(onyx::Archive& archive, ComponentSlot::Source* source) {
+    FlashMenuBase::Slot4(archive, source);
+    AssignComponentSlot<7786432u, 569228434u>(&slot2b0, source);
+    AssignComponentSlot<7750592u, 1558270838u>(&slot2b8, source);
+    AssignComponentSlot<7752160u, 1051727473u>(&slot2c0, source);
+    AssignComponentSlot<7961936u, 1836584131u>(&slot2c8, source);
+    AssignComponentSlot<7961152u, 1447053823u>(&slot2d0, source);
+    onyx::TransferAs<uint32_t>(archive, value2e0);
+}
+
+// 0x86a6f0
+void ExModeResultExtra::Slot4(onyx::Archive& archive, ComponentSlot::Source* source) {
+    FlashMenuBase::Slot4(archive, source);
+    AssignComponentSlot<7960368u, 184116580u>(&slot2b0, source);
+    AssignComponentSlot<7750592u, 1558270838u>(&slot2b8, source);
+    onyx::TransferHandle(handle2c0, archive, source);
+    onyx::TransferHandle(handle2c8, archive, source);
+    onyx::Transfer(archive, value2d8);
+    onyx::TransferAs<uint32_t>(archive, value2dc);
+}
+
+// 0x86c750
+void ExModeGameOver::Slot4(onyx::Archive& archive, ComponentSlot::Source* source) {
+    FlashMenuBase::Slot4(archive, source);
+    AssignComponentSlot<7786432u, 569228434u>(&slot2b0, source);
+    AssignComponentSlot<7961152u, 1447053823u>(&slot2b8, source);
+    AssignComponentSlot<7752160u, 1051727473u>(&slot2c0, source);
+    AssignComponentSlot<7960368u, 184116580u>(&slot2c8, source);
+    onyx::Transfer(archive, value2d8);
+    onyx::Transfer(archive, value2dc);
+    onyx::Transfer(archive, flag2e0);
+}
+
+// 0x88ab80
+void LevelCamera::Slot4(onyx::Archive& archive, ComponentSlot::Source* source) {
+    PhaseBase::Slot4(archive, source);
+    onyx::TransferHandle(handle60, archive, source);
+    onyx::TransferHandle(handle68, archive, source);
+    onyx::TransferHandle(handle70, archive, source);
+    onyx::TransferHandle(handle78, archive, source);
+    onyx::TransferHandle(handle80, archive, source);
+    onyx::TransferHandle(handle88, archive, source);
+    onyx::TransferHandle(handle90, archive, source);
+    onyx::TransferHandle(handle98, archive, source);
+    onyx::TransferHandle(handleA0, archive, source);
+    AssignComponentSlot<7960368u, 184116580u>(&slotA8, source);
+    onyx::TransferAs<uint32_t>(archive, valueBc);
+}
+
+// 0x910c00
+void SetPopupBoxVisibilityAction::Slot4(onyx::Archive& archive, ComponentSlot::Source* source) {
+    OnyxActionComponent::Slot4(archive, source);
+    AssignComponentSlot<7751376u, 2069148984u>(&slotA0, source);
+    onyx::TransferId(idA8, archive);
+    onyx::TransferAs<uint32_t>(archive, valueAc);
+    onyx::Transfer(archive, flagB0);
+    AssignComponentSlot<7750592u, 1558270838u>(&slotB8, source);
+    AssignComponentSlot<7788000u, 1742971629u>(&slotC0, source);
+    onyx::TransferHandle(handleC8, archive, source);
+    onyx::Transfer(archive, valueD0);
+    onyx::Transfer(archive, valueD4);
+    onyx::Transfer(archive, valueD8);
+}
+
+// 0xa135d0
+void GunTurrets::Slot4(onyx::Archive& archive, ComponentSlot::Source* source) {
+    BreakableObjectBase::Slot4(archive, source);
+    onyx::Transfer(archive, value2b0);
+    onyx::Transfer(archive, value2b4);
+    onyx::TransferAs<uint32_t>(archive, value2b8);
+    onyx::Transfer(archive, value2bc);
+    onyx::Transfer(archive, value2c0);
+    onyx::Transfer(archive, value2c4);
+    onyx::Transfer(archive, value2c8);
+    onyx::Transfer(archive, value2cc);
+    onyx::Transfer(archive, value2d0);
+}
+
+// 0x7ae990
+void SectionActorPresenceLogic::Slot4(onyx::Archive& archive, ComponentSlot::Source* source) {
+    OnyxComponentBase::Slot4(archive, source);
+    AssignComponentSlot<8049456u, 1954509136u>(&slot50, source);
+    onyx::TransferHandle(handle58, archive, source);
+    onyx::TransferHandle(handle60, archive, source);
+    onyx::TransferHandle(handle68, archive, source);
+    onyx::TransferHandle(handle70, archive, source);
+    onyx::TransferHandle(handle78, archive, source);
+    onyx::TransferAs<uint32_t>(archive, value80);
+    onyx::Transfer(archive, flag84);
+    onyx::TransferAs<uint32_t>(archive, value88);
+    onyx::Transfer(archive, flag8c);
+    onyx::TransferAs<uint32_t>(archive, value90);
+    onyx::Transfer(archive, flag94);
+    onyx::Transfer(archive, flag95);
+    onyx::TransferAs<uint32_t>(archive, value98);
+    onyx::Transfer(archive, flag9c);
+    onyx::Transfer(archive, flag9d);
+}
+
 }  // namespace SPTG
