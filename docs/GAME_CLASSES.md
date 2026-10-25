@@ -185,10 +185,10 @@ case kStateExit:
 }
 ```
 
-With this form, 33 jump-table states match so far: 28 enemy attack states, four
-Pickup states and one Piniata state. About 350 remain. They are mostly one-off
-shapes spread over about 60 classes, so each needs its class reconstructed
-first.
+Not every state has it: in some originals the exit case already does work, or
+is merged with other events, and then the plain spelling matches. The default
+case's position also matters: some states need it last, others need it before
+a last exit case. Each state is checked both ways.
 
 ## Build profile for game classes
 
@@ -297,12 +297,77 @@ In a state written with `switch`, the case listed first in the source becomes
 the fall-through block of the compare chain. The damaged state matches only with
 the enter case first.
 
-## Enemy attack states
+## BaseCharacter states
+
+[`BaseCharacter.h`](../src/gameplay/BaseCharacter.h) describes
+`SPTG::BaseCharacter` (vtable `0x1874998`, 159 slots), the base of enemies,
+bosses and `SPTG::ControllablePlayer`. Its states sit at slots 96–145, each
+followed by its getter. Slot 96 is the default state: it reports the four state
+events as handled and does nothing else. The character's state machine is at
+`+0x208`.
+
+Fields used so far include the effect and partner handles (`+0x58`, `+0x68`),
+the level singleton (`+0x90`, shared with Pickup through
+[`Level.h`](../src/gameplay/Level.h)), the current animation (`+0x1a0`), the
+motion vectors (`+0x1a4`, `+0x1b0`), the mount (`+0x238`) and the action mode
+(`+0x500`). Which of them belong to BaseCharacter rather than a subclass is
+not settled.
+
+[`BaseCharacterStates.cpp`](../src/gameplay/BaseCharacterStates.cpp) matches
+four of its states (1,232 bytes):
+
+- **Slot 114**: action mode 9, stops all motion and plays animation 16; exit
+  clears the action mode.
+- **Slot 134**: with a mount, tells the mount (slot 35), plays animation 48 or
+  64 depending on the mount, and has the mount play animation 104. When the
+  animation ends it moves to slot 102; on landing, to slot 104.
+- **Slot 138**: plays animation 116; on landing, back to slot 96. Exit clears
+  the action mode.
+- **Slot 144**: stops all motion; back to slot 96 once the animation is done
+  and the flag at `+0x748` is set.
+
+## Enemy states
 
 [`Enemy.h`](../src/gameplay/Enemy.h) describes `SPTG::Enemy` (vtable
-`0x187d618`, 234 slots) as far as its states use it. Each regular enemy class
-appends its own states after slot 233, each followed by its getter. Enemy's own
-states at slots 96 and 180 are shared targets; EnemyNormal overrides slot 96.
+`0x187d618`, 234 slots). It derives from BaseCharacter, overrides several of its
+states and adds its own at slots 172–227. An overriding state runs the base
+state first and stops if the base state has already switched states (result 2).
+
+[`EnemyStates.cpp`](../src/gameplay/EnemyStates.cpp) matches eight of them
+(2,004 bytes):
+
+- **Approach** (slot 180): counts down the frames left in the state. While time
+  is left, the targeted player (`+0x820` indexes the target list at `+0x848`)
+  is not out, is closer than the attack range (`+0x91c`) plus 10, the AI mode is
+  0 or 1 and the target's action mode is not 6, the enemy keeps approaching
+  (slot 167). Otherwise it returns to slot 96.
+- **Slot 116**: after the base state, sends message 3 from the enemy to every
+  player (`Catalog<ControllablePlayer>` through the level singleton) and resets
+  the AI fields (target index 4, AI mode 6). When the animation ends it moves to
+  slot 200.
+- **Slot 136**: hides the effect while active. Once the held partner has been
+  held for the delay at `+0x9cc`, the partner reacts, plays the recovery
+  animation for the hit animation it was in (a switch the compiler turns into a
+  lookup table), and is released.
+- **Slot 186**: stops all motion, loops animation 114, and once both the
+  animation and the delay at `+0x984` are done, passes the value at `+0x980` to
+  the target (slot 90).
+- **Slots 100 and 102**: after the base state, with a mount, run slot 31 and
+  play animation 2 or 5.
+- **Slot 126**: after the base state, rolls a random chance on exit (`0x9dd6b0`,
+  a subtractive random generator) against the percentage at `+0x920`.
+- **Slot 172**: sets AI mode 6 while active and hands over to slot 96 once
+  `0x9dcb90` allows it.
+
+Slot 136 also shows that the compiler fills a lookup table's unused entries
+with the first case's result. The original's unused entries are 0, so its first
+case maps to recovery animation 0.
+
+## Enemy attack states
+
+Each regular enemy class appends its own states after Enemy's slot 233, each
+followed by its getter. Enemy's own states at slots 96 and 180 are shared
+targets; EnemyNormal overrides slot 96.
 
 [`EnemyAttackStates.cpp`](../src/gameplay/EnemyAttackStates.cpp) matches 28
 attack states (7,056 bytes) in ten classes: EnemyZombie, EnemyWolverine,

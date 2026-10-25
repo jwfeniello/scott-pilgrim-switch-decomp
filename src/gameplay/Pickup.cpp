@@ -2,6 +2,7 @@
 // Class and method names come from RTTI where possible; member and method names
 // otherwise describe observed behavior and are provisional. Virtual slots are
 // numbered from the original vtable (0x1878f78).
+#include "Level.h"
 #include "OnyxComponents.h"
 #include "OnyxEvents.h"
 #include "StateMachine.h"
@@ -27,10 +28,7 @@ struct AnimationControl : onyx::Component {
     virtual void SetPaused(bool paused);   // slot 21: sets bit 3 of the current animation's flags
 };
 
-struct LevelItemAccessor { char padding[0x70]; onyx::ComponentHandle* pickupSpawners; };  // +0x70
 struct UnspawnManager;
-// A singleton dependency slot; Get resolves the service on first use (out of line).
-template<class T> struct Singleton { onyx::ComponentHandle* handle; T* Get(); };
 
 // Allocator that list nodes come from (virtual Allocate at slot 2).
 struct NodeAllocator { virtual void Slot0(); virtual void Slot1(); virtual void* Allocate(uint64_t size); };

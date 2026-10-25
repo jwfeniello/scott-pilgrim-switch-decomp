@@ -1,70 +1,97 @@
-// SPTG::Enemy (vtable 0x187d618) as far as the enemy states use it. Every
-// regular enemy class derives from it and appends its own states after slot
-// 233, each followed by a getter that returns it. Names are provisional.
+// SPTG::Enemy (vtable 0x187d618, 234 slots) as far as the enemy states use it.
+// Every regular enemy class derives from it and appends its own states after
+// slot 233, each followed by a getter that returns it. Fields below are placed
+// in Enemy even where they may belong to BaseCharacter. Names are provisional.
 #pragma once
-#include "OnyxComponents.h"
-#include "StateMachine.h"
-
-extern "C" float Move_FrameDelta;   // seconds since the last frame (0x1924d70)
+#include "BaseCharacter.h"
 
 namespace SPTG {
 
-struct BaseCharacter;
-// One of the enemy's attack descriptors (0x78 bytes each, from +0xba8).
-struct EnemyAttack { char data[0x78]; };
-
-#define SPTG_SLOT(n) virtual void Slot##n();
-struct Enemy {
-    typedef StateMachine<Enemy>::State State;
-    virtual ~Enemy();                                                          // slots 0, 1
-    SPTG_SLOT(2) SPTG_SLOT(3) SPTG_SLOT(4) SPTG_SLOT(5) SPTG_SLOT(6) SPTG_SLOT(7) SPTG_SLOT(8) SPTG_SLOT(9)
-    SPTG_SLOT(10) SPTG_SLOT(11) SPTG_SLOT(12) SPTG_SLOT(13) SPTG_SLOT(14) SPTG_SLOT(15) SPTG_SLOT(16) SPTG_SLOT(17)
-    SPTG_SLOT(18) SPTG_SLOT(19) SPTG_SLOT(20) SPTG_SLOT(21)
-    virtual void PlayAnimation(int animation, int a, int b, float speed);  // slot 22
-    SPTG_SLOT(23) SPTG_SLOT(24) SPTG_SLOT(25) SPTG_SLOT(26)
-    virtual bool AnimationDone();                                          // slot 27
-    SPTG_SLOT(28) SPTG_SLOT(29) SPTG_SLOT(30) SPTG_SLOT(31) SPTG_SLOT(32) SPTG_SLOT(33) SPTG_SLOT(34) SPTG_SLOT(35)
-    SPTG_SLOT(36) SPTG_SLOT(37) SPTG_SLOT(38) SPTG_SLOT(39) SPTG_SLOT(40) SPTG_SLOT(41) SPTG_SLOT(42) SPTG_SLOT(43)
-    virtual void StartAttack(EnemyAttack* attack, bool flag, int source, BaseCharacter* attacker); // slot 44
-    SPTG_SLOT(45) SPTG_SLOT(46) SPTG_SLOT(47) SPTG_SLOT(48) SPTG_SLOT(49) SPTG_SLOT(50) SPTG_SLOT(51) SPTG_SLOT(52)
-    SPTG_SLOT(53) SPTG_SLOT(54) SPTG_SLOT(55) SPTG_SLOT(56) SPTG_SLOT(57) SPTG_SLOT(58) SPTG_SLOT(59) SPTG_SLOT(60)
-    SPTG_SLOT(61) SPTG_SLOT(62) SPTG_SLOT(63) SPTG_SLOT(64) SPTG_SLOT(65) SPTG_SLOT(66) SPTG_SLOT(67) SPTG_SLOT(68)
-    SPTG_SLOT(69) SPTG_SLOT(70) SPTG_SLOT(71) SPTG_SLOT(72) SPTG_SLOT(73) SPTG_SLOT(74) SPTG_SLOT(75) SPTG_SLOT(76)
-    SPTG_SLOT(77) SPTG_SLOT(78) SPTG_SLOT(79) SPTG_SLOT(80) SPTG_SLOT(81) SPTG_SLOT(82) SPTG_SLOT(83) SPTG_SLOT(84)
-    SPTG_SLOT(85) SPTG_SLOT(86) SPTG_SLOT(87) SPTG_SLOT(88) SPTG_SLOT(89) SPTG_SLOT(90) SPTG_SLOT(91) SPTG_SLOT(92)
-    SPTG_SLOT(93) SPTG_SLOT(94) SPTG_SLOT(95)
-    virtual int State96(int event);                                        // slot 96
-    virtual State State96Ptr();                                            // slot 97
-    SPTG_SLOT(98) SPTG_SLOT(99) SPTG_SLOT(100) SPTG_SLOT(101) SPTG_SLOT(102) SPTG_SLOT(103) SPTG_SLOT(104) SPTG_SLOT(105)
-    SPTG_SLOT(106) SPTG_SLOT(107) SPTG_SLOT(108) SPTG_SLOT(109) SPTG_SLOT(110) SPTG_SLOT(111) SPTG_SLOT(112) SPTG_SLOT(113)
-    SPTG_SLOT(114) SPTG_SLOT(115) SPTG_SLOT(116) SPTG_SLOT(117) SPTG_SLOT(118) SPTG_SLOT(119) SPTG_SLOT(120) SPTG_SLOT(121)
-    SPTG_SLOT(122) SPTG_SLOT(123) SPTG_SLOT(124) SPTG_SLOT(125) SPTG_SLOT(126) SPTG_SLOT(127) SPTG_SLOT(128) SPTG_SLOT(129)
-    SPTG_SLOT(130) SPTG_SLOT(131) SPTG_SLOT(132) SPTG_SLOT(133) SPTG_SLOT(134) SPTG_SLOT(135) SPTG_SLOT(136) SPTG_SLOT(137)
-    SPTG_SLOT(138) SPTG_SLOT(139) SPTG_SLOT(140) SPTG_SLOT(141) SPTG_SLOT(142) SPTG_SLOT(143) SPTG_SLOT(144) SPTG_SLOT(145)
-    SPTG_SLOT(146) SPTG_SLOT(147) SPTG_SLOT(148) SPTG_SLOT(149) SPTG_SLOT(150) SPTG_SLOT(151) SPTG_SLOT(152) SPTG_SLOT(153)
-    SPTG_SLOT(154) SPTG_SLOT(155) SPTG_SLOT(156) SPTG_SLOT(157) SPTG_SLOT(158) SPTG_SLOT(159) SPTG_SLOT(160) SPTG_SLOT(161)
-    SPTG_SLOT(162) SPTG_SLOT(163) SPTG_SLOT(164) SPTG_SLOT(165) SPTG_SLOT(166) SPTG_SLOT(167) SPTG_SLOT(168) SPTG_SLOT(169)
-    SPTG_SLOT(170) SPTG_SLOT(171) SPTG_SLOT(172) SPTG_SLOT(173) SPTG_SLOT(174) SPTG_SLOT(175) SPTG_SLOT(176) SPTG_SLOT(177)
-    SPTG_SLOT(178) SPTG_SLOT(179)
-    virtual int State180(int event);                                       // slot 180
-    virtual State State180Ptr();                                           // slot 181
-    SPTG_SLOT(182) SPTG_SLOT(183) SPTG_SLOT(184) SPTG_SLOT(185) SPTG_SLOT(186) SPTG_SLOT(187) SPTG_SLOT(188) SPTG_SLOT(189)
-    SPTG_SLOT(190) SPTG_SLOT(191) SPTG_SLOT(192) SPTG_SLOT(193) SPTG_SLOT(194) SPTG_SLOT(195) SPTG_SLOT(196) SPTG_SLOT(197)
-    SPTG_SLOT(198) SPTG_SLOT(199) SPTG_SLOT(200) SPTG_SLOT(201) SPTG_SLOT(202) SPTG_SLOT(203) SPTG_SLOT(204) SPTG_SLOT(205)
-    SPTG_SLOT(206) SPTG_SLOT(207) SPTG_SLOT(208) SPTG_SLOT(209) SPTG_SLOT(210) SPTG_SLOT(211) SPTG_SLOT(212) SPTG_SLOT(213)
-    SPTG_SLOT(214) SPTG_SLOT(215) SPTG_SLOT(216) SPTG_SLOT(217) SPTG_SLOT(218) SPTG_SLOT(219) SPTG_SLOT(220) SPTG_SLOT(221)
-    SPTG_SLOT(222) SPTG_SLOT(223) SPTG_SLOT(224) SPTG_SLOT(225) SPTG_SLOT(226) SPTG_SLOT(227) SPTG_SLOT(228) SPTG_SLOT(229)
-    SPTG_SLOT(230) SPTG_SLOT(231) SPTG_SLOT(232) SPTG_SLOT(233)
-
-    char padding_8[0x200];
-    StateMachine<Enemy> states;   // +0x208
-    char padding_230[0x580];
-    float stateTime;              // +0x7b0: time spent in the current state
-    char padding_7b4[0x3f4];
-    EnemyAttack attacks[7];       // +0xba8
+// A player the enemy may target, with its distance (0x18 bytes).
+struct TargetEntry {
+    char padding_0[0xc];
+    float distance;                   // +0xc
+    onyx::ComponentHandle* actor;     // +0x10
 };
-static_assert(__builtin_offsetof(Enemy, states) == 0x208, "Enemy states");
+
+struct Enemy : BaseCharacter {
+    int State96(int event);                                          // slot 96, overrides BaseCharacter
+    int State100(int event);                                         // slot 100, overrides BaseCharacter
+    int State102(int event);                                         // slot 102, overrides BaseCharacter
+    int State116(int event);                                         // slot 116, overrides BaseCharacter
+    int State126(int event);                                         // slot 126, overrides BaseCharacter
+    int State136(int event);                                         // slot 136, overrides BaseCharacter
+    SPTG_SLOT(159) SPTG_SLOT(160) SPTG_SLOT(161) SPTG_SLOT(162) SPTG_SLOT(163) SPTG_SLOT(164) SPTG_SLOT(165) SPTG_SLOT(166)
+    virtual void Approach();             // runs while the approach state continues // slot 167
+    SPTG_SLOT(168) SPTG_SLOT(169) SPTG_SLOT(170) SPTG_SLOT(171)
+    virtual int State172(int event); virtual State State172Ptr();            // slots 172, 173
+    virtual int State174(int event); virtual State State174Ptr();            // slots 174, 175
+    virtual int State176(int event); virtual State State176Ptr();            // slots 176, 177
+    virtual int State178(int event); virtual State State178Ptr();            // slots 178, 179
+    virtual int State180(int event); virtual State State180Ptr();            // slots 180, 181
+    virtual int State182(int event); virtual State State182Ptr();            // slots 182, 183
+    virtual int State184(int event); virtual State State184Ptr();            // slots 184, 185
+    virtual int State186(int event); virtual State State186Ptr();            // slots 186, 187
+    virtual int State188(int event); virtual State State188Ptr();            // slots 188, 189
+    virtual int State190(int event); virtual State State190Ptr();            // slots 190, 191
+    virtual int State192(int event); virtual State State192Ptr();            // slots 192, 193
+    virtual int State194(int event); virtual State State194Ptr();            // slots 194, 195
+    virtual int State196(int event); virtual State State196Ptr();            // slots 196, 197
+    virtual int State198(int event); virtual State State198Ptr();            // slots 198, 199
+    virtual int State200(int event); virtual State State200Ptr();            // slots 200, 201
+    virtual int State202(int event); virtual State State202Ptr();            // slots 202, 203
+    virtual int State204(int event); virtual State State204Ptr();            // slots 204, 205
+    virtual int State206(int event); virtual State State206Ptr();            // slots 206, 207
+    virtual int State208(int event); virtual State State208Ptr();            // slots 208, 209
+    virtual int State210(int event); virtual State State210Ptr();            // slots 210, 211
+    virtual int State212(int event); virtual State State212Ptr();            // slots 212, 213
+    virtual int State214(int event); virtual State State214Ptr();            // slots 214, 215
+    virtual int State216(int event); virtual State State216Ptr();            // slots 216, 217
+    virtual int State218(int event); virtual State State218Ptr();            // slots 218, 219
+    virtual int State220(int event); virtual State State220Ptr();            // slots 220, 221
+    virtual int State222(int event); virtual State State222Ptr();            // slots 222, 223
+    virtual int State224(int event); virtual State State224Ptr();            // slots 224, 225
+    virtual int State226(int event); virtual State State226Ptr();            // slots 226, 227
+    SPTG_SLOT(228) SPTG_SLOT(229) SPTG_SLOT(230) SPTG_SLOT(231) SPTG_SLOT(232) SPTG_SLOT(233)
+
+    char padding_749[0x67];
+    float stateTime;             // +0x7b0: time spent in the current state
+    char padding_7b4[0x4];
+    uint8_t flag7b8;             // +0x7b8
+    uint8_t flag7b9;             // +0x7b9
+    char padding_7ba[0x62];
+    uint8_t approachCountdown;   // +0x81c: frames left in the approach state
+    char padding_81d[0x3];
+    uint32_t targetIndex;        // +0x820: index into targets
+    int32_t aiMode;              // +0x824
+    char padding_828[0x20];
+    uint64_t targetCount;        // +0x848
+    TargetEntry* targets;        // +0x850
+    char padding_858[0x8];
+    onyx::ComponentHandle* target; // +0x860: the player being attacked
+    char padding_868[0x8];
+    uint8_t chanceResult;        // +0x870: set by RollChance
+    char padding_871[0xb];
+    int32_t mode87c;             // +0x87c
+    char padding_880[0x9c];
+    float attackRange;           // +0x91c
+    float chance;                // +0x920: percent, compared with a random roll
+    char padding_924[0x5c];
+    float value980;              // +0x980
+    float delay984;              // +0x984
+    char padding_988[0x44];
+    float partnerDelay;          // +0x9cc
+    char padding_9d0[0x119];
+    uint8_t flagAe9;             // +0xae9
+    char padding_aea[0xbe];
+    Attack attacks[7];           // +0xba8
+
+    bool LeaveCheck();   // 0x9dcb90: lets state 172 hand over to state 96
+    void RollChance();   // 0x9dd6b0: when slot 36 holds, rolls the random chance at +0x920
+    void Update9dc4c0(); // 0x9dc4c0: runs each update of state 186
+};
 static_assert(__builtin_offsetof(Enemy, stateTime) == 0x7b0, "Enemy state time");
+static_assert(__builtin_offsetof(Enemy, aiMode) == 0x824, "Enemy AI mode");
 static_assert(__builtin_offsetof(Enemy, attacks) == 0xba8, "Enemy attacks");
 
 }  // namespace SPTG
