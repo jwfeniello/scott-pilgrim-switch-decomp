@@ -83,7 +83,7 @@ struct Todd : Boss {
     int32_t valueD94;            // +0xd94
     char padding_d98[0x1c];
     int32_t hitsDb4;             // +0xdb4: hits taken in state 260
-    char padding_db8[0x4];
+    float valueDb8;              // +0xdb8
     float damageDbc;             // +0xdbc: damage taken in state 270
     char padding_dc0[0x18];
     AttackSlot attackDd8;        // +0xdd8: requested every update with kind 20; passed to 0xa255e0
@@ -94,6 +94,8 @@ struct Todd : Boss {
     float value1198;             // +0x1198: returned by slot 59
     float limit119c;             // +0x119c
     float limit11a0;             // +0x11a0
+    char padding_11a4[0xc];
+    float limit11b0;             // +0x11b0: slot 237 accepts kind 11 once +0xdb8 reaches it
 };
 // vtable 0x1896e38, 284 slots
 struct GigaGideon : Boss {
@@ -250,6 +252,8 @@ struct LucasLee : Boss {
     void ReactTo(BaseCharacter* other, int reaction, void* data);
     bool Slot82();
     void Update();
+    void PlayAnimation(int animation, bool a, bool b, float speed);
+    bool Slot162();
     int State108(int event); State State108Ptr();   // slots 108, 109, override Boss
     virtual void Slot234(int kind);                                          // slot 234, overrides Boss
     SPTG_SLOT(235)   // overrides Boss
@@ -272,7 +276,9 @@ struct LucasLee : Boss {
     AttackSlot attackE48;        // +0xe48: requested every update with kind 11
     AttackSlot attackEc0;        // +0xec0: requested every update with kind 174; started in state 266
     AttackSlot attackF38;        // +0xf38: requested every update with kind 178
-    char padding_fb0[0x40];
+    char padding_fb0[0x20];
+    uint8_t flagFd0;             // +0xfd0: switches to the other animation set
+    char padding_fd1[0x1f];
     int32_t countFf0;            // +0xff0
 };
 // vtable 0x1891ed8, 272 slots

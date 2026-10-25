@@ -117,7 +117,7 @@ struct BaseCharacter : onyx::Component {
     virtual void Slot19();                                                   // slot 19
     SPTG_SLOT(20)
     virtual void ReactTo(BaseCharacter* other, int reaction, void* data);    // slot 21
-    virtual void PlayAnimation(int animation, int a, int b, float speed);    // slot 22
+    virtual void PlayAnimation(int animation, bool a, bool b, float speed);  // slot 22
     SPTG_SLOT(23) SPTG_SLOT(24)
     virtual void SetAnimationSpeed(float speed);                             // slot 25
     virtual void SetAnimationPaused(bool paused);                            // slot 26
@@ -211,7 +211,9 @@ struct BaseCharacter : onyx::Component {
     virtual bool Slot148(bool* out);                                         // slot 148
     virtual float Slot149();                                                 // slot 149
     virtual float Slot150();                                                 // slot 150
-    SPTG_SLOT(151) SPTG_SLOT(152) SPTG_SLOT(153) SPTG_SLOT(154) SPTG_SLOT(155)
+    SPTG_SLOT(151) SPTG_SLOT(152)
+    virtual void Slot153(uint32_t* flags);                                   // slot 153
+    SPTG_SLOT(154) SPTG_SLOT(155)
     virtual bool Slot156();                                                  // slot 156
     SPTG_SLOT(157)
     virtual bool Slot158();                                                  // slot 158
@@ -220,7 +222,8 @@ struct BaseCharacter : onyx::Component {
     Holder* attachment;          // +0x40: what the actor is attached to
     char padding_48[0x8];
     uint8_t flag50;              // +0x50
-    char padding_51[0x7];
+    char padding_51[0x3];
+    int32_t value54;             // +0x54: copied to +0x230 by slot 13
     onyx::ComponentHandle* effectHandle; // +0x58
     char padding_60[0x8];
     onyx::ComponentHandle* partnerHandle; // +0x68
@@ -267,7 +270,8 @@ struct BaseCharacter : onyx::Component {
     Singleton<CharacterSettings> settings; // +0x1f8
     char padding_200[0x8];
     StateMachine<BaseCharacter> states; // +0x208
-    char padding_230[0x8];
+    int32_t value230;            // +0x230
+    char padding_234[0x4];
     onyx::ComponentHandle* mountHandle; // +0x238
     onyx::ComponentHandle* held; // +0x240: owned reference, dropped by ReleaseHeld
     char padding_248[0x10];
@@ -315,7 +319,7 @@ struct BaseCharacter : onyx::Component {
     uint32_t flags504;           // +0x504: bit flags
     char padding_508[0xc];
     float value514;              // +0x514: slot 93 switches state at or below this
-    char padding_518[0x4];
+    float rate518;               // +0x518: +0x328 regained per second (slot 13)
     float stunDuration;          // +0x51c
     float stunDuration2;         // +0x520
     float value524;              // +0x524
@@ -336,6 +340,8 @@ struct BaseCharacter : onyx::Component {
     void RecordHit(void* hit);                         // 0x977190
     void ActorSlot32();                                // 0x93fec0: AnimatedAiActor's slot 32
     void ActorSlot33(void* data);                      // 0x940170: AnimatedAiActor's slot 33
+    void ActorSlot13();                                // 0x945670: AnimatedAiActor's slot 13
+    void Call945c40();                                 // 0x945c40
     void Update976670(float time);                     // 0x976670
 
     // Slot 82's test, shared with overrides that inline it: held, not slot 85,

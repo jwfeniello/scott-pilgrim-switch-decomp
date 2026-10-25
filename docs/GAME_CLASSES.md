@@ -343,12 +343,14 @@ of its states (7,668 bytes). "Stops" means both motion vectors are zeroed.
 
 ## BaseCharacter hooks
 
-[`BaseCharacter.cpp`](../src/gameplay/BaseCharacter.cpp) matches 17 of
-BaseCharacter's other virtuals (1,600 bytes). Most are small hooks that do one
+[`BaseCharacter.cpp`](../src/gameplay/BaseCharacter.cpp) matches 20 of
+BaseCharacter's other virtuals (2,020 bytes). Most are small hooks that do one
 thing and switch states:
 
 | Slot | Address | Behavior |
 | --- | --- | --- |
+| 7 | `0x96be30` | Reset: starts the state machine in state 96 (owner first), runs `0x945c40` and slot 153, and refills `+0x328`, `+0x32c` and `+0x160` from slots 149, 150 and 57 |
+| 13 | `0x96bf80` | After AnimatedAiActor's slot 13 (`0x945670`): updates the state machine; outside state 106, `+0x328` regains `+0x518` per second up to slot 149; then slot 154 |
 | 25, 26 | `0x96c8b0`, `0x96c980` | Animation speed and pause: passed to the animation component (`+0x70`, type `0x29fbe438`) and, with `+0x338` set, to the mount |
 | 32, 33 | `0x96ce30`, `0x96ce90` | After AnimatedAiActor's slot (`0x93fec0`, `0x940170`): restore the saved motion values and go to 108, or go to 136 |
 | 35 | `0x96cf00` | Starts the attack at `+0x530`, or `+0x588` with its flag set |
@@ -358,7 +360,7 @@ thing and switch states:
 | 80, 83 | `0x970710`, `0x970820` | Whether in state 106; slot 83 also holds in action modes 2 and 4 |
 | 82 | `0x970770` | Held, on the ground, not slot 85, not `+0x141`, and outside action modes 3, 5, 6, 8 and 11 |
 | 86 | `0x9708e0` | Plays animation 17 |
-| 89 | `0x970b90` | Adds to `+0x32c`, kept between 0 and slot 150 |
+| 89, 90 | `0x970b90`, `0x970be0` | Adds to `+0x32c`, kept between 0 and slot 150; or takes from it, kept between 0 and `+0x2f8` |
 | 92, 93 | `0x970dd0`, `0x970e20` | Go to 108 after slot 75; or lower `+0x328` by a hit and go to 118 at or below `+0x514` |
 | 154 | `0x975f30` | Counts the timer at `+0x770` down and runs `0x976670` |
 | 158 | `0x976630` | False while the game state's `+0xe0` is set, else a settings flag (singleton at `+0x1f8`) |
@@ -502,8 +504,8 @@ that form: they need `__builtin_assume`, which drops side effects.
 [`EnemyClasses.h`](../src/gameplay/EnemyClasses.h) declares all 24 regular enemy
 classes with their own states (after Enemy's slot 233, each followed by its
 getter) and the overrides the sources define.
-[`EnemyClassStates.cpp`](../src/gameplay/EnemyClassStates.cpp) matches 62 of
-their functions (10,492 bytes), mostly small.
+[`EnemyClassStates.cpp`](../src/gameplay/EnemyClassStates.cpp) matches 70 of
+their functions (12,368 bytes), mostly small.
 
 The class hierarchy comes from the RTTI, where each class derives from
 `Onyx::Component::Compose<Base>`. Most classes derive from Enemy. EnemyStuntman,
@@ -518,8 +520,9 @@ timer at `+0xbc8`) are the ones EnemyStuntman's update resets.
 EnemyStuntman's state 234 is written out but not credited.
 
 Enemy's own fields end at `+0xb79`; everything after belongs to the class.
-Classes with attacks keep them as 0x78-byte slots from `+0xb90` (EnemyNormal,
-EnemyGiant and EnemyHanzo have 7). EnemyStuntman and EnemyGuyOnFire keep an
+Classes with attacks keep them as 0x78-byte slots from `+0xb90`. EnemyNormal
+has 7, EnemyHanzo 8, EnemyGodzilla 4 and EnemyGiant 10 (ending at `+0x1040`);
+the states use the slots after the ones the update requests. EnemyStuntman and EnemyGuyOnFire keep an
 `EnemySensor` at `+0xb90` (reset by 0x9dea60, checked by 0x9ddab0) where the
 attack classes have their first slot, so the slots cannot be Enemy's.
 EnemyGuyOnFire's own slot sits at `+0xbd0` and ends where its attack delay
@@ -608,8 +611,8 @@ Slots 96, 116 and 200 are written out but not credited. In each, the original
 merges the "handled" returns into a shared tail (for 96 and 116, the exit
 case's) that this build duplicates.
 
-[`BossClassStates.cpp`](../src/gameplay/BossClassStates.cpp) matches 120
-functions of the boss classes (33,668 bytes). Most are hooks that inline
+[`BossClassStates.cpp`](../src/gameplay/BossClassStates.cpp) matches 125
+functions of the boss classes (34,100 bytes). Most are hooks that inline
 Boss's version and add a class detail:
 
 - **Slot 234** maps an attack request's kind to a state. Each class tests its
@@ -621,7 +624,14 @@ Boss's version and add a class detail:
   slot 13 unchanged (`Boss::UpdateBoss13`). TagTeamMember, GigaGideon and
   SuperGideon add a countdown or an effect update.
 - **Slot 237** filters attack requests by kind (Chau and Patel refuse 31, 39, 45
-  and 61; Boss also refuses 32). **Slot 238** tests the animation playing.
+  and 61; Boss also refuses 32). Gideon refuses 32, 39, 45 and 61. Todd takes
+  kind 11 only once `+0xdb8` reaches `+0x11b0`. Lucas Lee takes 11 and 19 only
+  with `+0xfd0` clear and 174 only with it set. **Slot 238** tests the
+  animation playing.
+- **Lucas Lee's second animation set:** while `+0xfd0` is raised, his slot 22
+  plays a counterpart for animations 0, 1, 7, 12, 13 and 87, and slot 162
+  refuses. Slot 22 passes both flags on with `& 1`, so BaseCharacter's
+  `PlayAnimation` takes them as `bool`.
 - **Class state overrides** run Boss's state and raise a flag between entry and
   exit (Todd 98 and 248, Envy 198), or play an extra animation (Todd 106).
 - **State 172:** Chau, GigaGideon, Ken & Kyle and SuperGideon carry a copy of

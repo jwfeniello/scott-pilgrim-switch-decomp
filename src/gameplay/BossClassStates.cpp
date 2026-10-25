@@ -2472,4 +2472,84 @@ int Patel::State262(int event) {
     }
 }
 
+// Slot 237 (Gideon 0xa60c80, Lucas Lee 0xa480f0, Todd 0xa22300): attack
+// request filters. Gideon refuses kinds 32, 39, 45 and 61; Lucas Lee and Todd
+// also 31. Lucas Lee takes 11 and 19 only with +0xfd0 clear and 174 only with
+// it set; Todd takes 11 once +0xdb8 reaches +0x11b0, unless the target's slot
+// 85 holds.
+bool Gideon::Slot237(const AttackSlot& request) {
+    switch (request.kind) {
+    case 32:
+    case 39:
+    case 45:
+    case 61:
+        return false;
+    }
+    return true;
+}
+bool LucasLee::Slot237(const AttackSlot& request) {
+    switch (request.kind) {
+    case 31:
+    case 32:
+    case 39:
+    case 45:
+    case 61:
+        return false;
+    case 11:
+    case 19:
+        return !flagFd0;
+    case 174:
+        return flagFd0;
+    }
+    return true;
+}
+bool Todd::Slot237(const AttackSlot& request) {
+    switch (request.kind) {
+    case 31:
+    case 32:
+    case 39:
+    case 45:
+    case 61:
+        return false;
+    case 11:
+        if (valueDb8 >= limit11b0) return !static_cast<BaseCharacter*>(target->object)->Slot85();
+        return false;
+    }
+    return true;
+}
+
+// Lucas Lee's other animation set, used while +0xfd0 is raised.
+static inline int LucasLeeAnimation(int animation) {
+    switch (animation) {
+    case 0: return 44;
+    case 1: return 43;
+    case 7: return 42;
+    case 12: return 97;
+    case 13: return 91;
+    case 87: return 86;
+    }
+    return animation;
+}
+
+// LucasLee slot 22 (0xa47de0): plays the other set's animation while +0xfd0 is
+// raised.
+void LucasLee::PlayAnimation(int animation, bool a, bool b, float speed) {
+    if (flagFd0) animation = LucasLeeAnimation(animation);
+    BaseCharacter::PlayAnimation(animation, a, b, speed);
+}
+
+// LucasLee slot 239 (0xa48170): whether the animation playing is the given one
+// or its counterpart in the other set.
+// Not yet matched (not credited).
+bool LucasLee::Slot239(int anim) {
+    return animation == LucasLeeAnimation(anim) || animation == anim;
+}
+
+// LucasLee slot 162 (0xa48050): never while +0xfd0 is raised; otherwise
+// Enemy's.
+bool LucasLee::Slot162() {
+    if (flagFd0) return false;
+    return Enemy::Slot162();
+}
+
 }  // namespace SPTG

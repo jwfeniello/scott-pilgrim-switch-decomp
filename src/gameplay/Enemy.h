@@ -45,7 +45,9 @@ struct Enemy : BaseCharacter {
     int State116(int event);                                         // slot 116, overrides BaseCharacter
     int State126(int event);                                         // slot 126, overrides BaseCharacter
     int State136(int event);                                         // slot 136, overrides BaseCharacter
-    SPTG_SLOT(159) SPTG_SLOT(160) SPTG_SLOT(161) SPTG_SLOT(162) SPTG_SLOT(163) SPTG_SLOT(164) SPTG_SLOT(165)
+    SPTG_SLOT(159) SPTG_SLOT(160) SPTG_SLOT(161)
+    virtual bool Slot162();                                                  // slot 162
+    SPTG_SLOT(163) SPTG_SLOT(164) SPTG_SLOT(165)
     virtual void Slot166(int kind);                                          // slot 166
     virtual void Approach();             // runs while the approach state continues // slot 167
     virtual bool Slot168();                                                  // slot 168

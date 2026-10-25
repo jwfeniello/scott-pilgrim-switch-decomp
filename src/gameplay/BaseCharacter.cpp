@@ -162,4 +162,46 @@ bool BaseCharacter::Slot158() {
     return values->flag5ad;
 }
 
+// Slot 7 (0x96be30): starts the state machine in the state at slot 96 (setting
+// the owner first, unlike StateMachine::Start), runs
+// 0x945c40 and slot 153 on +0x504, and refills +0x328 (slot 149), +0x32c (slot
+// 150) and +0x160 (slot 57), resetting the scaled values.
+void BaseCharacter::Slot7() {
+    State initial = State96Ptr();
+    states.owner = this;
+    states.next = initial;
+    states.current = initial;
+    (this->*initial)(kStateEnter);
+    Call945c40();
+    Slot153(&flags504);
+    value328 = Slot149();
+    scaled2f8 = base2f4;
+    value32c = Slot150();
+    scaled9c = base98;
+    value160 = Slot57();
+}
+
+// Slot 13 (0x96bf80): AnimatedAiActor's slot 13; copies +0x54 to +0x230 and
+// updates the state machine. Outside the state at slot 106, +0x328 regains
+// +0x518 per second up to slot 149. Then slot 154.
+void BaseCharacter::Slot13() {
+    ActorSlot13();
+    value230 = value54;
+    states.Update();
+    State state = State106Ptr();
+    if (!(states.current == state)) {
+        value328 += rate518 * Move_FrameDelta;
+        float limit = Slot149();
+        if (value328 > limit) value328 = limit;
+    }
+    Slot154();
+}
+
+// Slot 90 (0x970be0): lowers +0x32c by `value`, kept between 0 and +0x2f8.
+void BaseCharacter::Slot90(float value) {
+    float lowered = value32c - value;
+    float clamped = lowered < 0.0f ? 0.0f : lowered;
+    value32c = scaled2f8 < clamped ? scaled2f8 : clamped;
+}
+
 }  // namespace SPTG

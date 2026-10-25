@@ -739,4 +739,134 @@ int EnemyStuntman::State234(int event) {
     return kStateUnhandled;
 }
 
+// Slot 82 (EnemyGiant 0x9fb550, also EnemyGeeOne's; EnemyGodzilla 0x9f9130):
+// never in the class's attack state (Giant 246, Godzilla 238); otherwise
+// BaseCharacter's test.
+bool EnemyGiant::Slot82() {
+    State state = State246Ptr();
+    if (states.current == state) return false;
+    return CanSlot82();
+}
+bool EnemyGodzilla::Slot82() {
+    State state = State238Ptr();
+    if (states.current == state) return false;
+    return CanSlot82();
+}
+
+// EnemyGiant slot 246 (0x9fd010) and EnemyGodzilla slot 238 (0x9f9b70):
+// animation 206 with the attack in the tenth (Godzilla: fourth) slot; once it
+// is done, slot 96.
+int EnemyGiant::State246(int event) {
+    switch (event) {
+    case kStateUpdate:
+        stateTime += Move_FrameDelta;
+        if (!AnimationDone()) return kStateHandled;
+        states.Transition(State96Ptr());
+        return kStateParentTookOver;
+    case kStateEnter:
+        PlayAnimation(206, 0, 1, 1.0f);
+        StartAttack(&attacks[9].attack, false, 1, nullptr);
+        stateTime = 0.0f;
+        return kStateHandled;
+    case kStateEvent3:
+        return kStateHandled;
+    default:
+        return kStateUnhandled;
+    case kStateExit:
+        states.AssertOwner(this);
+        return kStateHandled;
+    }
+}
+int EnemyGodzilla::State238(int event) {
+    switch (event) {
+    case kStateUpdate:
+        stateTime += Move_FrameDelta;
+        if (!AnimationDone()) return kStateHandled;
+        states.Transition(State96Ptr());
+        return kStateParentTookOver;
+    case kStateEnter:
+        PlayAnimation(206, 0, 1, 1.0f);
+        StartAttack(&attacks[3].attack, false, 1, nullptr);
+        stateTime = 0.0f;
+        return kStateHandled;
+    case kStateEvent3:
+        return kStateHandled;
+    default:
+        return kStateUnhandled;
+    case kStateExit:
+        states.AssertOwner(this);
+        return kStateHandled;
+    }
+}
+
+// EnemyHanzo slot 242 (0x9f7610) and EnemyGodzilla slot 236 (0x9f9a50): runs
+// 0x9dc4c0 in mode 2, attacks (the eighth slot; Godzilla: the third) with
+// animation 25 in action mode 6; once the animation is done, slot 122
+// (Godzilla: 96). Exit restores action mode 0.
+int EnemyHanzo::State242(int event) {
+    switch (event) {
+    case kStateUpdate:
+        if (!AnimationDone()) return kStateHandled;
+        states.Transition(State122Ptr());
+        return kStateParentTookOver;
+    case kStateEnter:
+        mode87c = 2;
+        Update9dc4c0();
+        mode87c = 3;
+        StartAttack(&attacks[7].attack, false, 1, nullptr);
+        PlayAnimation(25, 0, 0, 1.0f);
+        actionMode = 6;
+        return kStateHandled;
+    case kStateExit:
+        actionMode = 0;
+        return kStateHandled;
+    case kStateEvent3:
+        return kStateHandled;
+    default:
+        return kStateUnhandled;
+    }
+}
+int EnemyGodzilla::State236(int event) {
+    switch (event) {
+    case kStateUpdate:
+        if (!AnimationDone()) return kStateHandled;
+        states.Transition(State96Ptr());
+        return kStateParentTookOver;
+    case kStateEnter:
+        mode87c = 2;
+        Update9dc4c0();
+        mode87c = 3;
+        StartAttack(&attacks[2].attack, false, 1, nullptr);
+        PlayAnimation(25, 0, 0, 1.0f);
+        actionMode = 6;
+        return kStateHandled;
+    case kStateExit:
+        actionMode = 0;
+        return kStateHandled;
+    case kStateEvent3:
+        return kStateHandled;
+    default:
+        return kStateUnhandled;
+    }
+}
+
+// Slot 19 (EnemyAerial 0xa026b0, EnemyShooter 0x9ebd60): after Enemy's slot 19,
+// resets the class's sensor, flags and vectors.
+void EnemyAerial::Slot19() {
+    Enemy::Slot19();
+    sensor.Reset();
+    valueDa8 = 0;
+    flagDac = 0;
+    vectorDb0 = onyx::Vector3::Zero();
+    valueDbc = 0;
+    flagDc0 = 0;
+}
+void EnemyShooter::Slot19() {
+    Enemy::Slot19();
+    flagC40 = 0;
+    vectorC44 = onyx::Vector3::Zero();
+    vectorC50 = onyx::Vector3::Zero();
+    valueC5c = 0;
+}
+
 }  // namespace SPTG
