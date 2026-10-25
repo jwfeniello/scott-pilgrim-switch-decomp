@@ -494111,6 +494111,53 @@
             "_ZN4SPTG7Spawner6RemoveEj": "0x690410"
           },
           "got_bindings": {}
+        },
+        {
+          "address": "0x9a4550",
+          "size": 184,
+          "symbol": "_ZN4SPTG6Pickup7State78Ei",
+          "target_sha256": "1cf02e1906ee8bf4226a5856e994ceca52ba6ffb601e7e7e4a8d8cace4237a88",
+          "bindings": {
+            "_ZN4SPTG12StateMachineINS_6PickupEE10TransitionEMS1_FiiE": "0x9a5210"
+          },
+          "got_bindings": {},
+          "immutable_sections": {
+            "18": "0x1390e3e"
+          }
+        },
+        {
+          "address": "0x9a4940",
+          "size": 400,
+          "symbol": "_ZN4SPTG6Pickup21CollectedStateHandlerEi",
+          "target_sha256": "9c8170fb6689858cb31a11d79892fe640ba6e536a65502619c96494048df2043",
+          "bindings": {
+            "_ZN4SPTG6Pickup10TryCollectEv": "0x9a4c40",
+            "_ZN4SPTG12StateMachineINS_6PickupEE10TransitionEMS1_FiiE": "0x9a5210",
+            "_ZGVZN4onyx7Vector34ZeroEvE5value": "0x191f8b8",
+            "_ZZN4onyx7Vector34ZeroEvE5value": "0x191f8c0",
+            "__cxa_guard_acquire": "0xfa4130",
+            "__cxa_guard_release": "0xfa4140"
+          },
+          "got_bindings": {},
+          "immutable_sections": {
+            "24": "0x1390e46"
+          }
+        },
+        {
+          "address": "0x9a4ae0",
+          "size": 332,
+          "symbol": "_ZN4SPTG6Pickup7State84Ei",
+          "target_sha256": "1f04d530ca1a61eb4b4303ce0b39bf9c7f9a0f6019f044615136f105552ecbea",
+          "bindings": {
+            "_ZGVZN4onyx7Vector34ZeroEvE5value": "0x191f8b8",
+            "_ZZN4onyx7Vector34ZeroEvE5value": "0x191f8c0",
+            "__cxa_guard_acquire": "0xfa4130",
+            "__cxa_guard_release": "0xfa4140"
+          },
+          "got_bindings": {},
+          "immutable_sections": {
+            "27": "0x1390e4a"
+          }
         }
       ]
     },
@@ -494157,6 +494204,19 @@
             "_ZN4SPTG15BreakableObject10TakeDamageEPKNS_3HitEPNS_5ActorE": "0x941820"
           },
           "got_bindings": {}
+        },
+        {
+          "address": "0xa12080",
+          "size": 184,
+          "symbol": "_ZN4SPTG7Piniata7State82Ei",
+          "target_sha256": "3244ce9c82fbc30ae446b716cc33cb47429cdf39227850208003df3f6af9187f",
+          "bindings": {
+            "_ZN4SPTG12StateMachineINS_7PiniataEE10TransitionEMS1_FiiE": "0xa121d0"
+          },
+          "got_bindings": {},
+          "immutable_sections": {
+            "18": "0x139127b"
+          }
         },
         {
           "address": "0xa12150",
@@ -494223,6 +494283,424 @@
             "554e4b4e4f574e20": "0x1331ae0",
             "50524f4a45435420": "0x1331000",
             "0c0000000c000000ffffff7fffffff7f": "0x1334730"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gameplay_enemy_attacks",
+      "source": "src/gameplay/EnemyAttackStates.cpp",
+      "compiler": "8.0.1",
+      "source_review": "manual_reconstruction",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-std=c++11",
+        "-O2",
+        "-mcpu=cortex-a57",
+        "-fstrict-aliasing",
+        "-fomit-frame-pointer",
+        "-fno-pic",
+        "-fno-delete-null-pointer-checks",
+        "-ffunction-sections",
+        "-fdata-sections",
+        "-mllvm",
+        "-no-stack-coloring"
+      ],
+      "header_roots": [
+        "src/gameplay"
+      ],
+      "functions": [
+        {
+          "address": "0x9e87c0",
+          "size": 252,
+          "symbol": "_ZN4SPTG11EnemyZombie8State234Ei",
+          "target_sha256": "306803838ff627c9bfed60974bf86d0d578016dd3ce6567d3a68f7fb82653da2",
+          "bindings": {
+            "Move_FrameDelta": "0x1924d70",
+            "_ZN4SPTG12StateMachineINS_5EnemyEE10TransitionEMS1_FiiE": "0x812930"
+          },
+          "got_bindings": {},
+          "immutable_sections": {
+            "5": "0x139105f"
+          }
+        },
+        {
+          "address": "0x9e88d0",
+          "size": 252,
+          "symbol": "_ZN4SPTG11EnemyZombie8State236Ei",
+          "target_sha256": "28b472cca32aa0fbaa69e4c63c79a25e4482fe84df2013d352282774d5872245",
+          "bindings": {
+            "Move_FrameDelta": "0x1924d70",
+            "_ZN4SPTG12StateMachineINS_5EnemyEE10TransitionEMS1_FiiE": "0x812930"
+          },
+          "got_bindings": {},
+          "immutable_sections": {
+            "8": "0x1391063"
+          }
+        },
+        {
+          "address": "0x9e89e0",
+          "size": 252,
+          "symbol": "_ZN4SPTG11EnemyZombie8State238Ei",
+          "target_sha256": "5d6e1140350a568353ab94a60fd3e8f885d4a223ecd408d76956454b7d742d24",
+          "bindings": {
+            "Move_FrameDelta": "0x1924d70",
+            "_ZN4SPTG12StateMachineINS_5EnemyEE10TransitionEMS1_FiiE": "0x812930"
+          },
+          "got_bindings": {},
+          "immutable_sections": {
+            "11": "0x1391067"
+          }
+        },
+        {
+          "address": "0x9e8af0",
+          "size": 252,
+          "symbol": "_ZN4SPTG11EnemyZombie8State240Ei",
+          "target_sha256": "6cb7f7e0a390c7671f0460bb6470713bc04b65890db5a4bbbb95378a4101cf7c",
+          "bindings": {
+            "Move_FrameDelta": "0x1924d70",
+            "_ZN4SPTG12StateMachineINS_5EnemyEE10TransitionEMS1_FiiE": "0x812930"
+          },
+          "got_bindings": {},
+          "immutable_sections": {
+            "14": "0x139106b"
+          }
+        },
+        {
+          "address": "0x9e8c00",
+          "size": 252,
+          "symbol": "_ZN4SPTG11EnemyZombie8State242Ei",
+          "target_sha256": "320119596009d5551454acc3d669d988550851ddc9a2be192675a378efb8d470",
+          "bindings": {
+            "Move_FrameDelta": "0x1924d70",
+            "_ZN4SPTG12StateMachineINS_5EnemyEE10TransitionEMS1_FiiE": "0x812930"
+          },
+          "got_bindings": {},
+          "immutable_sections": {
+            "17": "0x139106f"
+          }
+        },
+        {
+          "address": "0x9e9bd0",
+          "size": 252,
+          "symbol": "_ZN4SPTG14EnemyWolverine8State234Ei",
+          "target_sha256": "0dceec90d251c03ecd446268760324ab3ae5a89e1b1e5d242d2809c4764fcaae",
+          "bindings": {
+            "Move_FrameDelta": "0x1924d70",
+            "_ZN4SPTG12StateMachineINS_5EnemyEE10TransitionEMS1_FiiE": "0x812930"
+          },
+          "got_bindings": {},
+          "immutable_sections": {
+            "20": "0x1391077"
+          }
+        },
+        {
+          "address": "0x9e9ce0",
+          "size": 252,
+          "symbol": "_ZN4SPTG14EnemyWolverine8State236Ei",
+          "target_sha256": "87c247c9b20766e1e7e0892e970d76c3db28214e8f50fa3457880e5a6964d2b8",
+          "bindings": {
+            "Move_FrameDelta": "0x1924d70",
+            "_ZN4SPTG12StateMachineINS_5EnemyEE10TransitionEMS1_FiiE": "0x812930"
+          },
+          "got_bindings": {},
+          "immutable_sections": {
+            "23": "0x139107b"
+          }
+        },
+        {
+          "address": "0x9eb2f0",
+          "size": 252,
+          "symbol": "_ZN4SPTG11EnemySpeedy8State234Ei",
+          "target_sha256": "839fa0cfff55e23a02634e8ffc464e44e1e2f38fd4c60ef9209480e82eea2141",
+          "bindings": {
+            "Move_FrameDelta": "0x1924d70",
+            "_ZN4SPTG12StateMachineINS_5EnemyEE10TransitionEMS1_FiiE": "0x812930"
+          },
+          "got_bindings": {},
+          "immutable_sections": {
+            "26": "0x1391099"
+          }
+        },
+        {
+          "address": "0x9eb400",
+          "size": 252,
+          "symbol": "_ZN4SPTG11EnemySpeedy8State236Ei",
+          "target_sha256": "e33cf1672de70c4bdaf8241636ec716e097b8b91ef69b553d7fb895a62b8c9e4",
+          "bindings": {
+            "Move_FrameDelta": "0x1924d70",
+            "_ZN4SPTG12StateMachineINS_5EnemyEE10TransitionEMS1_FiiE": "0x812930"
+          },
+          "got_bindings": {},
+          "immutable_sections": {
+            "29": "0x139109d"
+          }
+        },
+        {
+          "address": "0x9ed0f0",
+          "size": 252,
+          "symbol": "_ZN4SPTG14EnemyPaparazzi8State234Ei",
+          "target_sha256": "00035d4e6fc6dd8d85b4b50ce1a20443959333bdf6f1a62c991b335d1be28290",
+          "bindings": {
+            "Move_FrameDelta": "0x1924d70",
+            "_ZN4SPTG12StateMachineINS_5EnemyEE10TransitionEMS1_FiiE": "0x812930"
+          },
+          "got_bindings": {},
+          "immutable_sections": {
+            "32": "0x13910ad"
+          }
+        },
+        {
+          "address": "0x9ed200",
+          "size": 252,
+          "symbol": "_ZN4SPTG14EnemyPaparazzi8State236Ei",
+          "target_sha256": "e767202ef5311e5b6f5025332794d3c65725bd2b7de827373676cc57d36fb3b2",
+          "bindings": {
+            "Move_FrameDelta": "0x1924d70",
+            "_ZN4SPTG12StateMachineINS_5EnemyEE10TransitionEMS1_FiiE": "0x812930"
+          },
+          "got_bindings": {},
+          "immutable_sections": {
+            "35": "0x13910b1"
+          }
+        },
+        {
+          "address": "0x9ef620",
+          "size": 252,
+          "symbol": "_ZN4SPTG11EnemyNormal8State236Ei",
+          "target_sha256": "4a85006a94804654f954a204e2879a2a96220106b712904019c5eb345af056cd",
+          "bindings": {
+            "Move_FrameDelta": "0x1924d70",
+            "_ZN4SPTG12StateMachineINS_5EnemyEE10TransitionEMS1_FiiE": "0x812930"
+          },
+          "got_bindings": {},
+          "immutable_sections": {
+            "38": "0x1391104"
+          }
+        },
+        {
+          "address": "0x9ef730",
+          "size": 252,
+          "symbol": "_ZN4SPTG11EnemyNormal8State238Ei",
+          "target_sha256": "b30b4ac2338c09cea2bf9cef96f4e1b3967415c0cc7ea6ea3018f34340354366",
+          "bindings": {
+            "Move_FrameDelta": "0x1924d70",
+            "_ZN4SPTG12StateMachineINS_5EnemyEE10TransitionEMS1_FiiE": "0x812930"
+          },
+          "got_bindings": {},
+          "immutable_sections": {
+            "41": "0x1391108"
+          }
+        },
+        {
+          "address": "0x9ef840",
+          "size": 252,
+          "symbol": "_ZN4SPTG11EnemyNormal8State240Ei",
+          "target_sha256": "d81d1e3fa615a54a8e37c283db468dbd2a59d97821909f420680ad7f6489a9de",
+          "bindings": {
+            "Move_FrameDelta": "0x1924d70",
+            "_ZN4SPTG12StateMachineINS_5EnemyEE10TransitionEMS1_FiiE": "0x812930"
+          },
+          "got_bindings": {},
+          "immutable_sections": {
+            "44": "0x139110c"
+          }
+        },
+        {
+          "address": "0x9ef950",
+          "size": 252,
+          "symbol": "_ZN4SPTG11EnemyNormal8State242Ei",
+          "target_sha256": "91fc49c2700a8b8f6c13116b816f9013673981bdaefc4d48dcf5035bebb63ed9",
+          "bindings": {
+            "Move_FrameDelta": "0x1924d70",
+            "_ZN4SPTG12StateMachineINS_5EnemyEE10TransitionEMS1_FiiE": "0x812930"
+          },
+          "got_bindings": {},
+          "immutable_sections": {
+            "47": "0x1391110"
+          }
+        },
+        {
+          "address": "0x9efa60",
+          "size": 252,
+          "symbol": "_ZN4SPTG11EnemyNormal8State244Ei",
+          "target_sha256": "943bbdbe07a7c77843365b528d1aac8dc15bc1f9d93299987506df0d4a743492",
+          "bindings": {
+            "Move_FrameDelta": "0x1924d70",
+            "_ZN4SPTG12StateMachineINS_5EnemyEE10TransitionEMS1_FiiE": "0x812930"
+          },
+          "got_bindings": {},
+          "immutable_sections": {
+            "50": "0x1391114"
+          }
+        },
+        {
+          "address": "0x9f09e0",
+          "size": 252,
+          "symbol": "_ZN4SPTG9EnemyMini8State234Ei",
+          "target_sha256": "4fdb0de2fe34841b9327fb72639552147ea39e21d376ac0952d9df288b61c969",
+          "bindings": {
+            "Move_FrameDelta": "0x1924d70",
+            "_ZN4SPTG12StateMachineINS_5EnemyEE10TransitionEMS1_FiiE": "0x812930"
+          },
+          "got_bindings": {},
+          "immutable_sections": {
+            "53": "0x1391120"
+          }
+        },
+        {
+          "address": "0x9f71d0",
+          "size": 252,
+          "symbol": "_ZN4SPTG10EnemyHanzo8State234Ei",
+          "target_sha256": "4378d7a2fa60b88e11d6237f77d1d4cda3d0081ef490d648c32a99e248ccbacb",
+          "bindings": {
+            "Move_FrameDelta": "0x1924d70",
+            "_ZN4SPTG12StateMachineINS_5EnemyEE10TransitionEMS1_FiiE": "0x812930"
+          },
+          "got_bindings": {},
+          "immutable_sections": {
+            "56": "0x1391168"
+          }
+        },
+        {
+          "address": "0x9f72e0",
+          "size": 252,
+          "symbol": "_ZN4SPTG10EnemyHanzo8State236Ei",
+          "target_sha256": "7c4c5aed11a050bfa2223e3967046e7e21d79806e9b23a4cb7e0861ec0169d72",
+          "bindings": {
+            "Move_FrameDelta": "0x1924d70",
+            "_ZN4SPTG12StateMachineINS_5EnemyEE10TransitionEMS1_FiiE": "0x812930"
+          },
+          "got_bindings": {},
+          "immutable_sections": {
+            "59": "0x139116c"
+          }
+        },
+        {
+          "address": "0x9f73f0",
+          "size": 252,
+          "symbol": "_ZN4SPTG10EnemyHanzo8State238Ei",
+          "target_sha256": "a89f26cf8308e2981e81c3527aae260fffca073483ce1bfbebc2a9f4735f4bb5",
+          "bindings": {
+            "Move_FrameDelta": "0x1924d70",
+            "_ZN4SPTG12StateMachineINS_5EnemyEE10TransitionEMS1_FiiE": "0x812930"
+          },
+          "got_bindings": {},
+          "immutable_sections": {
+            "62": "0x1391170"
+          }
+        },
+        {
+          "address": "0x9f7500",
+          "size": 252,
+          "symbol": "_ZN4SPTG10EnemyHanzo8State240Ei",
+          "target_sha256": "7555fad1be8c3e99a779f760245cd0bb67bc36a3c5c13dc98c94c09d2139ec1c",
+          "bindings": {
+            "Move_FrameDelta": "0x1924d70",
+            "_ZN4SPTG12StateMachineINS_5EnemyEE10TransitionEMS1_FiiE": "0x812930"
+          },
+          "got_bindings": {},
+          "immutable_sections": {
+            "65": "0x1391174"
+          }
+        },
+        {
+          "address": "0x9f9940",
+          "size": 252,
+          "symbol": "_ZN4SPTG13EnemyGodzilla8State234Ei",
+          "target_sha256": "beb73beb6d44b1a51e91a1abdfe234ac4820f5e49ccb35831cc54063406f91ed",
+          "bindings": {
+            "Move_FrameDelta": "0x1924d70",
+            "_ZN4SPTG12StateMachineINS_5EnemyEE10TransitionEMS1_FiiE": "0x812930"
+          },
+          "got_bindings": {},
+          "immutable_sections": {
+            "68": "0x139119e"
+          }
+        },
+        {
+          "address": "0x9fc010",
+          "size": 252,
+          "symbol": "_ZN4SPTG10EnemyGiant8State234Ei",
+          "target_sha256": "f0a28724d10f131472a499d6c02f9e86fffd4b3346b0d6081e607ddbd4405f5b",
+          "bindings": {
+            "Move_FrameDelta": "0x1924d70",
+            "_ZN4SPTG12StateMachineINS_5EnemyEE10TransitionEMS1_FiiE": "0x812930"
+          },
+          "got_bindings": {},
+          "immutable_sections": {
+            "71": "0x1391200"
+          }
+        },
+        {
+          "address": "0x9fc120",
+          "size": 252,
+          "symbol": "_ZN4SPTG10EnemyGiant8State236Ei",
+          "target_sha256": "bc663705c7750e848b455a21caaea85a6295e56c14ce4eea2c657d8f56f1ff90",
+          "bindings": {
+            "Move_FrameDelta": "0x1924d70",
+            "_ZN4SPTG12StateMachineINS_5EnemyEE10TransitionEMS1_FiiE": "0x812930"
+          },
+          "got_bindings": {},
+          "immutable_sections": {
+            "74": "0x1391204"
+          }
+        },
+        {
+          "address": "0x9fc230",
+          "size": 252,
+          "symbol": "_ZN4SPTG10EnemyGiant8State238Ei",
+          "target_sha256": "22dde25d500dd7516b7f7e323ed8601d43d1cedfc37235cba87ec668972a6d0a",
+          "bindings": {
+            "Move_FrameDelta": "0x1924d70",
+            "_ZN4SPTG12StateMachineINS_5EnemyEE10TransitionEMS1_FiiE": "0x812930"
+          },
+          "got_bindings": {},
+          "immutable_sections": {
+            "77": "0x1391208"
+          }
+        },
+        {
+          "address": "0x9fc340",
+          "size": 252,
+          "symbol": "_ZN4SPTG10EnemyGiant8State240Ei",
+          "target_sha256": "4bc3e88391535c556e00f9374fada819d9889e561d503fd9dcfbb59bb97a0dd4",
+          "bindings": {
+            "Move_FrameDelta": "0x1924d70",
+            "_ZN4SPTG12StateMachineINS_5EnemyEE10TransitionEMS1_FiiE": "0x812930"
+          },
+          "got_bindings": {},
+          "immutable_sections": {
+            "80": "0x139120c"
+          }
+        },
+        {
+          "address": "0x9ff920",
+          "size": 252,
+          "symbol": "_ZN4SPTG11EnemyChubby8State238Ei",
+          "target_sha256": "5f1b164471e0fce09620d854d2f0f01cbd7de17afa3279a92db345b6d8948d38",
+          "bindings": {
+            "Move_FrameDelta": "0x1924d70",
+            "_ZN4SPTG12StateMachineINS_5EnemyEE10TransitionEMS1_FiiE": "0x812930"
+          },
+          "got_bindings": {},
+          "immutable_sections": {
+            "83": "0x1391237"
+          }
+        },
+        {
+          "address": "0x9ffa30",
+          "size": 252,
+          "symbol": "_ZN4SPTG11EnemyChubby8State240Ei",
+          "target_sha256": "28554cac1edd6434f8d4e46a1cd761a72c881e26849ca1667ba1e9e5be742c0d",
+          "bindings": {
+            "Move_FrameDelta": "0x1924d70",
+            "_ZN4SPTG12StateMachineINS_5EnemyEE10TransitionEMS1_FiiE": "0x812930"
+          },
+          "got_bindings": {},
+          "immutable_sections": {
+            "86": "0x139123b"
           }
         }
       ]

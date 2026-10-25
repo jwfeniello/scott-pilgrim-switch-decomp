@@ -193,6 +193,29 @@ int Piniata::BrokenState(int event) {
     return kStateUnhandled;
 }
 
+// Slot 82 (0xa12080): plays animation 13 on entry; once it is done, switches
+// to the damaged state.
+int Piniata::State82(int event) {
+    switch (event) {
+    case kStateUpdate:
+        if (AnimationDone()) {
+            states.Transition(DamagedStatePtr());
+            return kStateParentTookOver;
+        }
+        return kStateHandled;
+    case kStateEnter:
+        PlayAnimation(13, 0, 0, 1.0f);
+        return kStateHandled;
+    case kStateEvent3:
+        return kStateHandled;
+    default:
+        return kStateUnhandled;
+    case kStateExit:
+        states.AssertOwner(this);
+        return kStateHandled;
+    }
+}
+
 // Slot 84 (0xa12150): the idle state plays animation 16 on entry.
 int Piniata::IdleState(int event) {
     switch (event) {

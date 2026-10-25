@@ -16,6 +16,16 @@ struct AnimatedAiActor {
 // Object an item is attached to; its ID decides whether the item stays held.
 struct Holder { uint32_t key; uint32_t id; };
 extern Holder NoHolder;
+extern "C" float Move_FrameDelta;   // seconds since the last frame (0x1924d70)
+
+// The actor's animation component (type 0x29fbe438).
+struct AnimationControl : onyx::Component {
+    virtual void Slot3(); virtual void Slot4(); virtual void Slot5(); virtual void Slot6(); virtual void Slot7();
+    virtual void Slot8(); virtual void Slot9(); virtual void Slot10(); virtual void Slot11(); virtual void Slot12();
+    virtual void Slot13(); virtual void Slot14(); virtual void Slot15(); virtual void Slot16(); virtual void Slot17();
+    virtual void Slot18(); virtual void Slot19(); virtual void Slot20();
+    virtual void SetPaused(bool paused);   // slot 21: sets bit 3 of the current animation's flags
+};
 
 struct LevelItemAccessor { char padding[0x70]; onyx::ComponentHandle* pickupSpawners; };  // +0x70
 struct UnspawnManager;
@@ -105,13 +115,14 @@ struct Pickup : AnimatedAiActor {
     virtual void Slot18(); virtual void Slot19(); virtual void Slot20(); virtual void Slot21();
     virtual void PlayAnimation(int animation, int a, int b, float speed);  // slot 22
     virtual void Slot23(); virtual void Slot24(); virtual void Slot25(); virtual void Slot26();
-    virtual void Slot27(); virtual void Slot28(); virtual void Slot29(); virtual void Slot30(); virtual void Slot31();
+    virtual bool AnimationDone();                                 // slot 27
+    virtual void Slot28(); virtual void Slot29(); virtual void Slot30(); virtual void Slot31();
     virtual void Slot32(); virtual void Slot33(); virtual void Slot34(); virtual void Slot35(); virtual void Slot36();
     virtual void Slot37();
     virtual bool OnContact(void* other, const Contact* contact);  // slot 38
     virtual void Slot39(); virtual void Slot40(); virtual void Slot41(); virtual void Slot42(); virtual void Slot43();
     virtual void Slot44(); virtual void Slot45(); virtual void Slot46(); virtual void Slot47(); virtual void Slot48();
-    virtual void Slot49(); virtual void Slot50(); virtual void Slot51(); virtual void Slot52(); virtual void Slot53();
+    virtual void Slot49(); virtual void Slot50(); virtual void Slot51(); virtual bool IsOnGround(); virtual void Slot53();  // slot 52
     virtual void Slot54();
     virtual bool IsHeld();                                        // slot 55: byte +0x238
     virtual void Slot56();
@@ -132,11 +143,16 @@ struct Pickup : AnimatedAiActor {
 
     char padding_8[0x38];
     Holder* holder;                  // +0x40
-    char padding_48[0x48];
+    char padding_48[0x28];
+    onyx::ComponentHandle* animation;   // +0x70
+    char padding_78[0x18];
     Singleton<LevelItemAccessor> levelItems;   // +0x90
     uint32_t value98;                // +0x98
     uint32_t previousValue98;        // +0x9c
-    char padding_a0[0x8c];
+    char padding_a0[0x58];
+    float savedZ;                    // +0xf8
+    float savedC4;                   // +0xfc
+    char padding_100[0x2c];
     uint32_t contactValue;           // +0x12c
     char padding_130[0x11];
     bool blocked;                    // +0x141
@@ -144,22 +160,45 @@ struct Pickup : AnimatedAiActor {
     float scale;                     // +0x160
     char padding_164[0x2c];
     uint32_t ignoredActors[4];       // +0x190
-    char padding_1a0[0x50];
+    char padding_1a0[0x4];
+    onyx::Vector3 motion;            // +0x1a4
+    onyx::Vector3 motionTarget;      // +0x1b0
+    char padding_1bc[0x8];
+    float motionC4;                  // +0x1c4
+    char padding_1c8[0x28];
     StateMachine<Pickup> states;     // +0x1f0
-    char padding_218[0x24];
+    char padding_218[0x18];
+    float idleDuration;              // +0x230
+    float restitution;               // +0x234: scales the vertical motion on each bounce
+    uint8_t held;                    // +0x238
+    uint8_t pauseWhenResting;        // +0x239
+    char padding_23a[0x2];
     uint32_t spawnerId;              // +0x23c
     char padding_240[0x18];
     onyx::EventCallback* collectCallback;   // +0x258
     onyx::EventTarget* collectTarget;       // +0x260
-    char padding_268[0x18];
+    char padding_268[0x8];
+    uint8_t resting;                 // +0x270
+    char padding_271[0x3];
+    float idleTimer;                 // +0x274
+    uint8_t skipCollect;             // +0x278
+    char padding_279[0x7];
     bool spawnedFlag;                // +0x280
     Queue<QueuedEvent>* placedEvents;   // +0x288
     Queue<QueuedEvent>* spawnedEvents;  // +0x290
     void HandleQueued(QueuedEvent& event);  // 0x9a52e0
+    bool TryCollect();               // 0x9a4c40: a nearby player picks the item up
 };
 static_assert(__builtin_offsetof(Pickup, holder) == 0x40, "Pickup holder");
 static_assert(__builtin_offsetof(Pickup, scale) == 0x160, "Pickup scale");
 static_assert(__builtin_offsetof(Pickup, ignoredActors) == 0x190, "Pickup ignored actors");
+static_assert(__builtin_offsetof(Pickup, animation) == 0x70, "Pickup animation");
+static_assert(__builtin_offsetof(Pickup, savedZ) == 0xf8, "Pickup saved depth");
+static_assert(__builtin_offsetof(Pickup, motion) == 0x1a4, "Pickup motion");
+static_assert(__builtin_offsetof(Pickup, motionC4) == 0x1c4, "Pickup motion c4");
+static_assert(__builtin_offsetof(Pickup, idleDuration) == 0x230, "Pickup idle duration");
+static_assert(__builtin_offsetof(Pickup, resting) == 0x270, "Pickup resting flag");
+static_assert(__builtin_offsetof(Pickup, skipCollect) == 0x278, "Pickup collect flag");
 static_assert(__builtin_offsetof(Pickup, states) == 0x1f0, "Pickup states");
 static_assert(__builtin_offsetof(Pickup, levelItems) == 0x90, "Pickup level items");
 static_assert(__builtin_offsetof(Pickup, spawnerId) == 0x23c, "Pickup spawner id");
@@ -242,6 +281,139 @@ void Pickup::NotifySpawner(bool spawned) {
         Spawner* spawner = onyx::Find<Spawner, onyx_types::type_78bdb701>(owner->spawner);
         Holder* h = holder ? holder : &NoHolder;
         spawner->Remove(h->key);
+    }
+}
+
+// Slot 78 (0x9a4550): plays animation 189 on entry; once it is done, switches
+// to the initial state.
+int Pickup::State78(int event) {
+    switch (event) {
+    case kStateUpdate:
+        if (AnimationDone()) {
+            states.Transition(InitialState());
+            return kStateParentTookOver;
+        }
+        return kStateHandled;
+    case kStateEnter:
+        PlayAnimation(189, 0, 0, 1.0f);
+        return kStateHandled;
+    case kStateEvent3:
+        return kStateHandled;
+    default:
+        return kStateUnhandled;
+    case kStateExit:
+        states.AssertOwner(this);
+        return kStateHandled;
+    }
+}
+
+// Slot 80 (0x9a4620): the idle state. Entry plays animation 0 and starts the
+// idle timer. While the timer runs, each landing reflects the vertical motion,
+// scaled by the restitution, until the bounce is weaker than 0.5; then the item
+// rests: animation 95 plays, motion stops and the animation may be paused. In
+// the air after resting, the saved depth values are restored. Once the timer has
+// run out, landing switches to the collected state. Unless skipped, a nearby
+// player can collect the item at any time, which switches to the state at slot 84.
+// Not yet byte-identical, so not credited: when the item comes to rest, the
+// original keeps the motion vector's address in a callee-saved register across
+// the animation call, and this source does not.
+int Pickup::IdleState(int event) {
+    switch (event) {
+    case kStateUpdate:
+        if (idleTimer <= 0.0f) {
+            if (IsOnGround()) {
+                skipCollect = 0;
+                states.Transition(CollectedState());
+                return kStateParentTookOver;
+            }
+        } else {
+            idleTimer -= Move_FrameDelta;
+            if (IsOnGround()) {
+                skipCollect = 0;
+                if (!resting) {
+                    float bounce = motion.z * restitution;
+                    if (bounce < -0.5f) {
+                        motion.z = -bounce;
+                    } else {
+                        PlayAnimation(95, 1, 0, 1.0f);
+                        resting = 1;
+                        motion = onyx::Vector3::Zero();
+                        motionTarget = onyx::Vector3::Zero();
+                        if (pauseWhenResting) onyx::Get<AnimationControl, 0x29fbe438u>(animation)->SetPaused(true);
+                    }
+                }
+            } else if (resting) {
+                motionTarget.z = savedZ;
+                motionC4 = savedC4;
+            }
+        }
+        if (!skipCollect && TryCollect()) {
+            states.Transition(State84Ptr());
+            return kStateParentTookOver;
+        }
+        return kStateHandled;
+    case kStateEnter:
+        PlayAnimation(0, 1, 0, 1.0f);
+        idleTimer = idleDuration;
+        resting = 0;
+        return kStateHandled;
+    case kStateEvent3:
+        return kStateHandled;
+    default:
+        return kStateUnhandled;
+    case kStateExit:
+        states.AssertOwner(this);
+        onyx::Get<AnimationControl, 0x29fbe438u>(animation)->SetPaused(false);
+        return kStateHandled;
+    }
+}
+
+// Slot 82 (0x9a4940): plays animation 16 and stops moving on entry. Each update
+// first lets a nearby player collect the item (0x9a4c40) and on success switches to the
+// state at slot 84; otherwise the spawner is notified once the animation is done.
+int Pickup::CollectedStateHandler(int event) {
+    switch (event) {
+    case kStateUpdate:
+        if (TryCollect()) {
+            states.Transition(State84Ptr());
+            return kStateParentTookOver;
+        }
+        if (AnimationDone()) NotifySpawner(true);
+        return kStateHandled;
+    case kStateEnter:
+        PlayAnimation(16, 0, 0, 1.0f);
+        motion = onyx::Vector3::Zero();
+        motionTarget = onyx::Vector3::Zero();
+        return kStateHandled;
+    case kStateEvent3:
+        return kStateHandled;
+    default:
+        return kStateUnhandled;
+    case kStateExit:
+        states.AssertOwner(this);
+        return kStateHandled;
+    }
+}
+
+// Slot 84 (0x9a4ae0): plays animation 100 and stops moving on entry; once the
+// animation is done the spawner is notified.
+int Pickup::State84(int event) {
+    switch (event) {
+    case kStateUpdate:
+        if (AnimationDone()) NotifySpawner(true);
+        return kStateHandled;
+    case kStateEnter:
+        PlayAnimation(100, 0, 0, 1.0f);
+        motion = onyx::Vector3::Zero();
+        motionTarget = onyx::Vector3::Zero();
+        return kStateHandled;
+    case kStateEvent3:
+        return kStateHandled;
+    default:
+        return kStateUnhandled;
+    case kStateExit:
+        states.AssertOwner(this);
+        return kStateHandled;
     }
 }
 

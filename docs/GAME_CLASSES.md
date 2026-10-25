@@ -155,15 +155,40 @@ starting point for reconstructing character behavior.
 ### Matching state handlers
 
 Small handlers that only call their parent state and set fields match directly.
-Most handlers that switch over all four events do not yet. The original lowers
-that switch to a four-entry jump table: the exit case (10002) has its own block,
-which it shares with the update case's "stay in this state" path. Public Clang 8
-merges exit with event 10003 into one range and emits compares instead. Editing
-our optimized IR to put a lifetime-end marker in that shared block reproduces the
-original EnemyZombie handler (`0x9e87c0`) exactly. So the original source has
-something in that block that disappears only during code generation. No source
-spelling, optimization level, LTO setting or LLVM 7/9/10 build tried so far
-produces it.
+Handlers that switch over all four events lower to a four-entry jump table in
+the original. Their exit case (10002) gets its own block even when it does
+nothing. Without something in that block, Clang 8 merges it with event 10003
+(both return 1), and the switch turns into compares.
+
+Editing our optimized IR shows what the block needs. Any instruction that emits
+no machine code works there: a lifetime-end marker, `llvm.sideeffect`, or an
+assumption. Each makes the EnemyZombie handler (`0x9e87c0`) exact. In C++ source
+only two constructs leave such an instruction behind: `__builtin_assume` with a
+condition the optimizer cannot fold, and a local variable annotation. An
+assumption is far more likely, probably from a release-mode assertion macro.
+Conditions on the event fold away. Conditions on members survive and give the
+same code.
+
+[`StateMachine.h`](../src/gameplay/StateMachine.h) models it as
+`states.AssertOwner(this)` in the exit case. The asserted condition itself is
+unknown. The default case must come before the exit case, which is listed last:
+
+```cpp
+switch (event) {
+case kStateUpdate: ...
+case kStateEnter: ...
+case kStateEvent3: return kStateHandled;
+default: return kStateUnhandled;
+case kStateExit:
+    states.AssertOwner(this);
+    return kStateHandled;
+}
+```
+
+With this form, 33 jump-table states match so far: 28 enemy attack states, four
+Pickup states and one Piniata state. About 350 remain. They are mostly one-off
+shapes spread over about 60 classes, so each needs its class reconstructed
+first.
 
 ## Build profile for game classes
 
@@ -220,15 +245,31 @@ exactly (1,656 bytes), next to the 16 small slots already matched:
 
 Slots 78–85 are four states, each followed by a getter that returns it as a
 virtual member pointer (`{vtable offset, 1}`): slot 81 returns the initial state
-(slot 80) and slot 83 the collected state (slot 82). The four state handlers
-have the jump-table shape described above. Slot 4 (1,632 bytes) loads the item
-from a stream and registers its event bindings; it is not reconstructed yet.
+(slot 80) and slot 83 the collected state (slot 82). Three of the states match
+(916 bytes):
+
+- **State 78**: plays animation 189; once it is done, switches to the initial
+  state.
+- **Collected state** (slot 82): plays animation 16 and stops all motion. Each
+  update first lets a nearby player collect the item (`0x9a4c40`, which compares
+  player positions with the radius and depth at `+0x228`/`+0x22c`). On success it
+  switches to state 84; otherwise the spawner is notified once the animation is
+  done.
+- **State 84**: plays animation 100 and stops all motion; once the animation is
+  done the spawner is notified.
+
+The initial state (slot 80) is written out but not credited. It runs an idle
+timer and bounces the item on each landing: the vertical motion is reflected
+and scaled by the restitution at `+0x234`. When a bounce is weaker than 0.5 the
+item comes to rest, plays animation 95 and stops moving. One register-allocation
+detail still differs. Slot 4 (1,632 bytes) loads the item from a stream and
+registers its event bindings; it is not reconstructed yet.
 
 ## Piniatas
 
 `SPTG::Piniata` (vtable `0x1889c08`) is a breakable object that loses health as
 it is hit and shrinks. [`src/gameplay/Piniata.cpp`](../src/gameplay/Piniata.cpp)
-matches six functions (1,788 bytes):
+matches seven functions (1,972 bytes):
 
 - **Hit** (slot 38): a hit of kind 0 or 2 that passes the hit check
   (`0xa114d0`) while the piniata still has health damages it, sends the hit event
@@ -246,10 +287,38 @@ matches six functions (1,788 bytes):
   broken event (hash `0x1b7fbfc1`) and releases the debris; when the animation
   ends the piniata is released.
 - **Idle state** (slot 84): plays animation 16 on entry.
+- **State 82**: plays animation 13; once it is done, switches to the damaged
+  state.
 
-Not yet reconstructed: the reset (slot 7, which sorts the damage stages), the
-hit check, and the state at slot 82 (jump-table shape).
+Not yet reconstructed: the reset (slot 7, which sorts the damage stages) and
+the hit check.
 
 In a state written with `switch`, the case listed first in the source becomes
 the fall-through block of the compare chain. The damaged state matches only with
 the enter case first.
+
+## Enemy attack states
+
+[`Enemy.h`](../src/gameplay/Enemy.h) describes `SPTG::Enemy` (vtable
+`0x187d618`, 234 slots) as far as its states use it. Each regular enemy class
+appends its own states after slot 233, each followed by its getter. Enemy's own
+states at slots 96 and 180 are shared targets; EnemyNormal overrides slot 96.
+
+[`EnemyAttackStates.cpp`](../src/gameplay/EnemyAttackStates.cpp) matches 28
+attack states (7,056 bytes) in ten classes: EnemyZombie, EnemyWolverine,
+EnemySpeedy, EnemyPaparazzi, EnemyNormal, EnemyMini, EnemyHanzo, EnemyGodzilla,
+EnemyGiant and EnemyChubby. On entry, a state starts one of the enemy's seven
+attack descriptors (`0x78` bytes each, from `+0xba8`), plays the attack's
+animation and resets the state time (`+0x7b0`). Each update adds the frame time.
+When the animation is done, the state switches to its next state:
+
+- Slot 180 or slot 96 for single attacks (animations 11, 19, 20 and 21).
+- Another attack state for combos. EnemyZombie's slot 234 (animation 20) leads
+  to slot 236 (animation 21); EnemyNormal's slot 236 leads to slot 238.
+- Slot 96 for the attacks on animations 31 and 32. These states play the
+  animation before starting the attack.
+
+Virtual slot 44 starts an attack. It records the descriptor, takes a new attack
+ID from a global counter, and scales the descriptor's first value by factors
+from the attacker and from the enemy. With source 1 the enemy itself is the
+attacker.
