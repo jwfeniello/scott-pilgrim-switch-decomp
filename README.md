@@ -2,7 +2,7 @@
 BUILD FLAGS, AND LIBRARY VERSIONS USED TO BUILD THIS GAME.**
 
 If you have relevant version information or access to a compatible toolchain,
-please [open an issue](https://github.com/jwfeniello/scott-pilgrim-switch-decomp/issues).
+please [open an issue](https://github.com/jwfeniello/scott-pilgrim-switch-decomp/issues) or contact me via discord (clickbate).
 Compiler `--version` output, build IDs, SDK version details, and library revision
 information would help us identify and reproduce the original build. The exact
 SDK/compiler revision is still unknown; SDK 10.6.0 has not been confirmed.
