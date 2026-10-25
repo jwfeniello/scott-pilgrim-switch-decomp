@@ -69,4 +69,35 @@ template<uint32_t Hash> __attribute__((always_inline)) inline void SendEvent(Eve
     if (target && target->listener) Event_Notify(Accessor_Tracking, target->listener, Hash, &payload);
 }
 
+// The same with a payload the caller has already built.
+template<uint32_t Hash, class Payload> __attribute__((always_inline)) inline void SendEvent(EventCallback*& callback, EventTarget*& target, Payload& payload) {
+    if (!(target && (target->flags & 2)) && !Settings().enabled) return;
+    if (callback) callback->invoke(callback, reinterpret_cast<EventPayload*>(&payload));
+    if (target && target->listener) Event_Notify(Accessor_Tracking, target->listener, Hash, reinterpret_cast<EventPayload*>(&payload));
+}
+
+// Value events: the callback and the listener each get their own payload,
+// constructed in place from the same arguments (none value-initializes it).
+template<class T> struct ValuePayload {
+    T value;
+    template<class... Args> __attribute__((always_inline)) ValuePayload(const Args&... args) : value(args...) {}
+    ~ValuePayload() {}
+};
+// The listener half is a separate inline step; this gives the two payloads
+// the stack slot order the original code has.
+template<uint32_t Hash, class T, class... Args> __attribute__((always_inline)) inline void NotifyValue(EventTarget*& target, const Args&... args) {
+    if (target && target->listener) {
+        ValuePayload<T> payload(args...);
+        Event_Notify(Accessor_Tracking, target->listener, Hash, reinterpret_cast<EventPayload*>(&payload));
+    }
+}
+template<uint32_t Hash, class T, class... Args> __attribute__((always_inline)) inline void SendValue(EventCallback*& callback, EventTarget*& target, const Args&... args) {
+    if (!(target && (target->flags & 2)) && !Settings().enabled) return;
+    if (callback) {
+        ValuePayload<T> payload(args...);
+        callback->invoke(callback, reinterpret_cast<EventPayload*>(&payload));
+    }
+    NotifyValue<Hash, T>(target, args...);
+}
+
 }  // namespace onyx

@@ -1,9 +1,9 @@
 {
   "version": 1,
-  "generated_at": "2026-10-25T15:55:51.624706+00:00",
+  "generated_at": "2026-10-25T16:19:00.926893+00:00",
   "target_elf_sha256": "ea95638e6d6aaa0dc6cddd552a9366799aa1ec3bc07ee201f23f6c151103f5b8",
   "input_sha256": {
-    "config/builds.json": "16f0e13f1722bef95cfdec737dc1567da68c08539d0e637c54e2ac0e8d003868",
+    "config/builds.json": "7f86a6073d0ce6cef6031d425b6dc7e508ac30740392a064b7bb850a182eb9fe",
     "config/functions.tsv": "399e91468a04e0459194c10d68d2210d1157cedefeb19c7851886ca7632fcb18",
     "config/non_fde_functions.tsv": "6a45f5e185454fa0472af00b2cdc9d040d73ca133d1106217e1fbbe3b32a8175",
     "config/target.json": "23cc6a5227206a953e7668acf5e9ae5c02a25c23b7e7967f0450a814b888241a",
@@ -42,7 +42,7 @@
     "src/ColorPropertyReadOmitNoPic.cpp": "c3f5c2c85626b7ee05bbb1730e6c89d1a4cc2404362377627810bc1b1d83493f",
     "src/ComponentAccessor.cpp": "09d0b81df3abcacb946f49ed1ed87ab840ee0656bb6f792fd65d25660eabb260",
     "src/ComponentEventReader.cpp": "8ba855c3269dae4b06f76f96f0e6e5b59ff9235a3c43d089bcaf91ef43b68d6a",
-    "src/ComponentEventSubscribe.cpp": "d1abf1b5d537f5cfc250a0e6fee1b7733d3cb1601b5d37e0dd2e7ed63b88fcac",
+    "src/ComponentEventSubscribe.cpp": "f183f23aa9a7c2d1349d9fbc7d1507f4409bd90f0cc0b3b39dc3c355d2469520",
     "src/ComponentInitializeSlots.cpp": "55cc1e5fc9899d4c44bf24cb4bb59c672fb325bec27fd578c36f881ec57dad1d",
     "src/ComponentMapCollectByKey.h": "ca433de3cf62b21dd59fa5e5a01fc30d37b1699e37e73aa98443f2fefe0fcd28",
     "src/ComponentMapCollectByKeyOmitNoPic.cpp": "6abf134637aa321dfb23146709cedbf7e4abf97f6855b6e321dc5c52c2f30284",
@@ -1108,9 +1108,10 @@
     "src/gameplay/EnemyClassStates.cpp": "a9170a03cb338b076566144a7dc27ac47eeb17fa98f8685afc647cf07e62b36e",
     "src/gameplay/EnemyClasses.h": "91eed6a1f371f2f2c280780721a803f3d3a631816d7d96eb07a131cc8a4b7815",
     "src/gameplay/EnemyStates.cpp": "dea914d5e3b2bcf7bb15619300bc05716c04a2d448f66f503fc43d88daf7eab1",
+    "src/gameplay/EventSenders.cpp": "80dcb0c9a7096c377b15cdfa64ea8522f615d47b96f0d367179e9419fce77564",
     "src/gameplay/Level.h": "7ab38fea1bca50d1428fdd3adba49a2182b816c206129d60028f90a43fc706b5",
     "src/gameplay/OnyxComponents.h": "d74a410e5c144c7e8c9de589b80d0270a8f4e81045f8e3089351a0a97d7aee5b",
-    "src/gameplay/OnyxEvents.h": "0d834213367973300f831e3d5914758b5058020b6f79b53ba3dfe887300e47bc",
+    "src/gameplay/OnyxEvents.h": "4dae045efa260333bd4b5699695b7728ce3b5195f34a4f3cdb595fa3e539c121",
     "src/gameplay/OnyxSerialize.cpp": "304335de146116fb3488bbbbd2231f576e5c067c59eacd8173a69e177b298a83",
     "src/gameplay/OnyxSerialize.h": "261241fa3a1ed7e6d9530fcee4f1038587ad121cc3d63a068b0f1161fc382d34",
     "src/gameplay/Pickup.cpp": "c28f066ee424674d3aaca6174f774e2b6cff757fb0552339e2320fc3eb5ed2bf",
@@ -3944,17 +3945,17 @@
     "vendor/zlib-1.2.11/zutil.h": "9a63f6690fac1620aa3cecee5752af618806da438a256b4a047fbcd289cac159"
   },
   "compiler_versions": {
-    "7.0.1": "clang version 7.0.1 (tags/RELEASE_701/final)",
     "8.0.1": "clang version 8.0.1 (tags/RELEASE_801/final)",
+    "7.0.1": "clang version 7.0.1 (tags/RELEASE_701/final)",
     "lld": "LLD 8.0.1 (compatible with GNU linkers)"
   },
   "compiler_sha256": {
-    "7.0.1": "c2f0a175157d9aaace8031f8e6d7ea0ed6142b4bcef287105e3ed227301f1002",
     "8.0.1": "dffd62a213ec6cdb4430012a4a41c11e5e32c288f133d5391f9be49e1c5b69de",
+    "7.0.1": "c2f0a175157d9aaace8031f8e6d7ea0ed6142b4bcef287105e3ed227301f1002",
     "lld": "c4b3aaea06ff7112c64753047a2ab279fc3fe10dd807fd3c22edfdae99f43eed"
   },
-  "exact_functions": 34549,
-  "exact_bytes": 4326268,
+  "exact_functions": 34600,
+  "exact_bytes": 4342288,
   "builds": [
     {
       "id": "probes",
@@ -13160,6 +13161,11 @@
       "id": "component_event_subscribe",
       "compiler": "8.0.1",
       "object_sha256": "0f5fd3a99220fd644a6e641f753cc6392269a9cca21e178b0d385b179645153c"
+    },
+    {
+      "id": "event_senders",
+      "compiler": "8.0.1",
+      "object_sha256": "7b1a58c1ac0ba94c7e8ba8b21d3007c8ccfc9a2552eaf3f1a14845591c343322"
     }
   ],
   "matches": [
@@ -198019,6 +198025,17 @@
       "relocation_count": 0
     },
     {
+      "address": "0x678db0",
+      "size": 320,
+      "exact": true,
+      "target_sha256": "f6c2f0e30e6e202c87d5768a5a38c0033d39f2b8502194d3ee0e0e127cf59931",
+      "compiled_sha256": "f6c2f0e30e6e202c87d5768a5a38c0033d39f2b8502194d3ee0e0e127cf59931",
+      "source": "src/gameplay/EventSenders.cpp",
+      "symbol": "_ZN13DefaultSenderILj6786480ELj133225177ELj0E13PayloadU32U64E4SendEv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 28
+    },
+    {
       "address": "0x678ef0",
       "size": 4,
       "exact": true,
@@ -198138,6 +198155,17 @@
       "symbol": "_Z14InvokeCallbackILj6788080EEvP10InvokeViewRK5Event",
       "source_review": "manual_reconstruction",
       "relocation_count": 0
+    },
+    {
+      "address": "0x679410",
+      "size": 320,
+      "exact": true,
+      "target_sha256": "15d9ff704251c84f2af6a83a6276d50c4602317d685e9c6ebf3574579ca3a112",
+      "compiled_sha256": "15d9ff704251c84f2af6a83a6276d50c4602317d685e9c6ebf3574579ca3a112",
+      "source": "src/gameplay/EventSenders.cpp",
+      "symbol": "_ZN13DefaultSenderILj6788112ELj1986898944ELj0E14PayloadU32BoolE4SendEv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 28
     },
     {
       "address": "0x679550",
@@ -198787,6 +198815,17 @@
       "symbol": "_Z14InvokeCallbackILj6814640EEvP10InvokeViewRK5Event",
       "source_review": "manual_reconstruction",
       "relocation_count": 0
+    },
+    {
+      "address": "0x67fbd0",
+      "size": 328,
+      "exact": true,
+      "target_sha256": "929dbdadaf80be503013559a53dc4a76e0025fed46bdc1f12f4546629901a3a2",
+      "compiled_sha256": "929dbdadaf80be503013559a53dc4a76e0025fed46bdc1f12f4546629901a3a2",
+      "source": "src/gameplay/EventSenders.cpp",
+      "symbol": "_ZN13DefaultSenderILj6814672ELj786693866ELj0E15PayloadZeroFourE4SendEv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 32
     },
     {
       "address": "0x67fd20",
@@ -206885,6 +206924,17 @@
       "relocation_count": 0
     },
     {
+      "address": "0x70d6c0",
+      "size": 336,
+      "exact": true,
+      "target_sha256": "c7f3703c6dab5411ffa57692a9a0624bb30f03e5d24be24b29a11d1c97290a64",
+      "compiled_sha256": "c7f3703c6dab5411ffa57692a9a0624bb30f03e5d24be24b29a11d1c97290a64",
+      "source": "src/gameplay/EventSenders.cpp",
+      "symbol": "_ZN13DefaultSenderILj7395008ELj699895122ELj0E21PayloadI32x2ByteU32x2E4SendEv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 28
+    },
+    {
       "address": "0x70d810",
       "size": 4,
       "exact": true,
@@ -207380,6 +207430,17 @@
       "relocation_count": 0
     },
     {
+      "address": "0x7189d0",
+      "size": 304,
+      "exact": true,
+      "target_sha256": "8f04f5aa0bd5de93f3636e7faa9571e2f1fa12f524feaa7c1e17fb15c15d4bbf",
+      "compiled_sha256": "8f04f5aa0bd5de93f3636e7faa9571e2f1fa12f524feaa7c1e17fb15c15d4bbf",
+      "source": "src/gameplay/EventSenders.cpp",
+      "symbol": "_ZN13DefaultSenderILj7440848ELj1929521303ELj0E22PayloadUninitialized16E4SendEv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 28
+    },
+    {
       "address": "0x718b00",
       "size": 4,
       "exact": true,
@@ -207776,6 +207837,17 @@
       "relocation_count": 0
     },
     {
+      "address": "0x71b010",
+      "size": 304,
+      "exact": true,
+      "target_sha256": "2409f707d253a6404ef22fc7c67e49d904ae9f1fe87d58ab3fc99bb407f91722",
+      "compiled_sha256": "2409f707d253a6404ef22fc7c67e49d904ae9f1fe87d58ab3fc99bb407f91722",
+      "source": "src/gameplay/EventSenders.cpp",
+      "symbol": "_ZN12Sender71b0104SendE8Pair64x2",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 27
+    },
+    {
       "address": "0x71b140",
       "size": 28,
       "exact": true,
@@ -207829,6 +207901,17 @@
       "symbol": "_Z14InvokeCallbackILj7452176EEvP10InvokeViewRK5Event",
       "source_review": "manual_reconstruction",
       "relocation_count": 0
+    },
+    {
+      "address": "0x71b630",
+      "size": 304,
+      "exact": true,
+      "target_sha256": "0827e5856563323c5852c35505071d941d887404718b490ad734fa8c0fac6bce",
+      "compiled_sha256": "0827e5856563323c5852c35505071d941d887404718b490ad734fa8c0fac6bce",
+      "source": "src/gameplay/EventSenders.cpp",
+      "symbol": "_ZN13DefaultSenderILj7452208ELj1835974517ELj0E22PayloadUninitialized16E4SendEv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 28
     },
     {
       "address": "0x71b760",
@@ -208183,6 +208266,17 @@
       "relocation_count": 0
     },
     {
+      "address": "0x71dd90",
+      "size": 312,
+      "exact": true,
+      "target_sha256": "6f3538ef10e3fd946ba3e2d88e4f043340044c6ca3a80720ac176945c29e8561",
+      "compiled_sha256": "6f3538ef10e3fd946ba3e2d88e4f043340044c6ca3a80720ac176945c29e8561",
+      "source": "src/gameplay/EventSenders.cpp",
+      "symbol": "_ZN12Sender71dd904SendEjmjj",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 27
+    },
+    {
       "address": "0x71ded0",
       "size": 28,
       "exact": true,
@@ -208236,6 +208330,17 @@
       "symbol": "_Z14InvokeCallbackILj7463840EEvP10InvokeViewRK5Event",
       "source_review": "manual_reconstruction",
       "relocation_count": 0
+    },
+    {
+      "address": "0x71e3c0",
+      "size": 304,
+      "exact": true,
+      "target_sha256": "ff5426232783be4c1faaf0b34e514a349b8617450d77f771caadd54eaaf44857",
+      "compiled_sha256": "ff5426232783be4c1faaf0b34e514a349b8617450d77f771caadd54eaaf44857",
+      "source": "src/gameplay/EventSenders.cpp",
+      "symbol": "_ZN13DefaultSenderILj7463872ELj795136029ELj0E22PayloadUninitialized24E4SendEv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 28
     },
     {
       "address": "0x71e4f0",
@@ -219766,6 +219871,17 @@
       "relocation_count": 5
     },
     {
+      "address": "0x798ad0",
+      "size": 300,
+      "exact": true,
+      "target_sha256": "18f3833fe24d6870feb43aa0c6cc8a9342349bfa890788abc180894d84a06f76",
+      "compiled_sha256": "18f3833fe24d6870feb43aa0c6cc8a9342349bfa890788abc180894d84a06f76",
+      "source": "src/gameplay/EventSenders.cpp",
+      "symbol": "_ZN11EventSenderILj7965392ELj1826253220ELj152EE4SendEv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 27
+    },
+    {
       "address": "0x798c00",
       "size": 28,
       "exact": true,
@@ -224210,6 +224326,17 @@
       "relocation_count": 0
     },
     {
+      "address": "0x7c1a20",
+      "size": 336,
+      "exact": true,
+      "target_sha256": "ee087198a1fb6f83a42fb41b5c8837cf0f934ca60ba96bba0de1cb5c01e33032",
+      "compiled_sha256": "ee087198a1fb6f83a42fb41b5c8837cf0f934ca60ba96bba0de1cb5c01e33032",
+      "source": "src/gameplay/EventSenders.cpp",
+      "symbol": "_ZN13DefaultSenderILj8133152ELj2024368740ELj0E12PayloadU32x5E4SendEv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 32
+    },
+    {
       "address": "0x7c1b70",
       "size": 4,
       "exact": true,
@@ -224461,6 +224588,17 @@
       "symbol": "_Z14InvokeCallbackILj8136352EEvP10InvokeViewRK5Event",
       "source_review": "manual_reconstruction",
       "relocation_count": 0
+    },
+    {
+      "address": "0x7c26c0",
+      "size": 320,
+      "exact": true,
+      "target_sha256": "114824319b33918a6174a10915826465eecb7dda0239186a6eabc0cdd5c316ec",
+      "compiled_sha256": "114824319b33918a6174a10915826465eecb7dda0239186a6eabc0cdd5c316ec",
+      "source": "src/gameplay/EventSenders.cpp",
+      "symbol": "_ZN11ValueSenderILj8136384ELj627353705ELj0EjLj2EE4SendEv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 28
     },
     {
       "address": "0x7c2800",
@@ -226091,6 +226229,17 @@
       "relocation_count": 26
     },
     {
+      "address": "0x7cc500",
+      "size": 320,
+      "exact": true,
+      "target_sha256": "7a368b92a15c856299132dd0fa5e3d8887c13157cad510ccf4047dcef1c62393",
+      "compiled_sha256": "7a368b92a15c856299132dd0fa5e3d8887c13157cad510ccf4047dcef1c62393",
+      "source": "src/gameplay/EventSenders.cpp",
+      "symbol": "_ZN11ValueSenderILj8176896ELj1021315899ELj0EbLb1EE4SendEv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 28
+    },
+    {
       "address": "0x7cc640",
       "size": 28,
       "exact": true,
@@ -226144,6 +226293,17 @@
       "symbol": "_Z23DispatchGuardedCallbackILj8177408ELj1980669536EEvP12DispatchViewPv",
       "source_review": "manual_reconstruction",
       "relocation_count": 26
+    },
+    {
+      "address": "0x7cc830",
+      "size": 320,
+      "exact": true,
+      "target_sha256": "c0b0ba025de023001dd7bedfe9803e6077e7669ec3c3b846b7ef9ebcc345d5b4",
+      "compiled_sha256": "c0b0ba025de023001dd7bedfe9803e6077e7669ec3c3b846b7ef9ebcc345d5b4",
+      "source": "src/gameplay/EventSenders.cpp",
+      "symbol": "_ZN13DefaultSenderILj8177712ELj1980669536ELj0E19PayloadZeroMinusOneE4SendEv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 28
     },
     {
       "address": "0x7cc970",
@@ -226243,6 +226403,17 @@
       "symbol": "_Z14InvokeCallbackILj8180640EEvP10InvokeViewRK5Event",
       "source_review": "manual_reconstruction",
       "relocation_count": 0
+    },
+    {
+      "address": "0x7cd3c0",
+      "size": 312,
+      "exact": true,
+      "target_sha256": "277b32134d72a1924464041083bf5df0567e4b2941cddced257149be542509c5",
+      "compiled_sha256": "277b32134d72a1924464041083bf5df0567e4b2941cddced257149be542509c5",
+      "source": "src/gameplay/EventSenders.cpp",
+      "symbol": "_ZN12Sender7cd3c04SendEv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 27
     },
     {
       "address": "0x7cd500",
@@ -230062,6 +230233,17 @@
       "relocation_count": 0
     },
     {
+      "address": "0x7ea6c0",
+      "size": 336,
+      "exact": true,
+      "target_sha256": "09252739a22c03ac3945f6d9c823eefc9f2accb0b1971dd6076cbc14e9801db9",
+      "compiled_sha256": "09252739a22c03ac3945f6d9c823eefc9f2accb0b1971dd6076cbc14e9801db9",
+      "source": "src/gameplay/EventSenders.cpp",
+      "symbol": "_ZN13DefaultSenderILj8300224ELj333497891ELj0E16PayloadByteU32x2E4SendEv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 32
+    },
+    {
       "address": "0x7ea810",
       "size": 4,
       "exact": true,
@@ -232427,6 +232609,17 @@
       "relocation_count": 1
     },
     {
+      "address": "0x809e80",
+      "size": 300,
+      "exact": true,
+      "target_sha256": "4b6c96220244aec85942d93c8975011ff944c50462c9e63beee8d4d893de513f",
+      "compiled_sha256": "4b6c96220244aec85942d93c8975011ff944c50462c9e63beee8d4d893de513f",
+      "source": "src/gameplay/EventSenders.cpp",
+      "symbol": "_ZN11EventSenderILj8429184ELj1219292175ELj504EE4SendEv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 27
+    },
+    {
       "address": "0x809fb0",
       "size": 68,
       "exact": true,
@@ -233426,6 +233619,17 @@
       "symbol": "RecoveredIdentity_819e00_0_0",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 0
+    },
+    {
+      "address": "0x81a880",
+      "size": 328,
+      "exact": true,
+      "target_sha256": "628ead1de24df5d7882350189090ee78cf2c01a9c8c0ed310dce5df26cec5356",
+      "compiled_sha256": "628ead1de24df5d7882350189090ee78cf2c01a9c8c0ed310dce5df26cec5356",
+      "source": "src/gameplay/EventSenders.cpp",
+      "symbol": "_ZN12Sender81a8804SendEv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 31
     },
     {
       "address": "0x81ac00",
@@ -240160,6 +240364,17 @@
       "relocation_count": 0
     },
     {
+      "address": "0x8626d0",
+      "size": 328,
+      "exact": true,
+      "target_sha256": "e69002719c486fadef59618b039aab22d908820b30d05f42ab35883771d93a0a",
+      "compiled_sha256": "e69002719c486fadef59618b039aab22d908820b30d05f42ab35883771d93a0a",
+      "source": "src/gameplay/EventSenders.cpp",
+      "symbol": "_ZN12Sender8626d04SendEv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 29
+    },
+    {
       "address": "0x862820",
       "size": 4,
       "exact": true,
@@ -241854,6 +242069,17 @@
       "relocation_count": 0
     },
     {
+      "address": "0x876e90",
+      "size": 300,
+      "exact": true,
+      "target_sha256": "ce38e1e7fc25c8b1a7838d89143b156911d8720e776cab469a3d5d6f40e8c8fd",
+      "compiled_sha256": "ce38e1e7fc25c8b1a7838d89143b156911d8720e776cab469a3d5d6f40e8c8fd",
+      "source": "src/gameplay/EventSenders.cpp",
+      "symbol": "_ZN11EventSenderILj8875664ELj1219292172ELj432EE4SendEv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 27
+    },
+    {
       "address": "0x876fc0",
       "size": 68,
       "exact": true,
@@ -242404,6 +242630,17 @@
       "relocation_count": 0
     },
     {
+      "address": "0x87a860",
+      "size": 300,
+      "exact": true,
+      "target_sha256": "0e7aac689d98099ebfbb9676dc1847b4bfa807de4c473b35eaa8b6d104386ddc",
+      "compiled_sha256": "0e7aac689d98099ebfbb9676dc1847b4bfa807de4c473b35eaa8b6d104386ddc",
+      "source": "src/gameplay/EventSenders.cpp",
+      "symbol": "_ZN11EventSenderILj8890464ELj1219292175ELj504EE4SendEv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 27
+    },
+    {
       "address": "0x87a990",
       "size": 20,
       "exact": true,
@@ -242919,6 +243156,17 @@
       "symbol": "_Z14InvokeCallbackILj8908976EEvP10InvokeViewRK5Event",
       "source_review": "manual_reconstruction",
       "relocation_count": 0
+    },
+    {
+      "address": "0x87f0d0",
+      "size": 320,
+      "exact": true,
+      "target_sha256": "66b8cc8fad7dc0328a8ce76c3a06f0f77c0aa65972d32a6980b617ba44a38776",
+      "compiled_sha256": "66b8cc8fad7dc0328a8ce76c3a06f0f77c0aa65972d32a6980b617ba44a38776",
+      "source": "src/gameplay/EventSenders.cpp",
+      "symbol": "_ZN11ValueSenderILj8909008ELj1978092089ELj0EiLin1EE4SendEv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 28
     },
     {
       "address": "0x87f210",
@@ -246021,6 +246269,17 @@
       "symbol": "RecoveredLeaf_899c30",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 3
+    },
+    {
+      "address": "0x899c70",
+      "size": 308,
+      "exact": true,
+      "target_sha256": "6d05b0bb462367462721e3d3331018ea4bb2c44093daf46e3d584789a9f7379d",
+      "compiled_sha256": "6d05b0bb462367462721e3d3331018ea4bb2c44093daf46e3d584789a9f7379d",
+      "source": "src/gameplay/EventSenders.cpp",
+      "symbol": "_ZN10MarkSenderILj9018480ELj626789118ELj8ELj156EbE4SendEv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 27
     },
     {
       "address": "0x899db0",
@@ -249334,6 +249593,17 @@
       "relocation_count": 0
     },
     {
+      "address": "0x8af450",
+      "size": 312,
+      "exact": true,
+      "target_sha256": "620ef013ade65420a8fd4b8b02429cf7fd4db4130d0ced0634f41a7a208fccf7",
+      "compiled_sha256": "620ef013ade65420a8fd4b8b02429cf7fd4db4130d0ced0634f41a7a208fccf7",
+      "source": "src/gameplay/EventSenders.cpp",
+      "symbol": "_ZN11ValueSenderILj9106512ELj1595363645ELj0EbLb0EE4SendEv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 28
+    },
+    {
       "address": "0x8af590",
       "size": 4,
       "exact": true,
@@ -249992,6 +250262,17 @@
       "symbol": "_Z14InvokeCallbackILj9126544EEvP10InvokeViewRK5Event",
       "source_review": "manual_reconstruction",
       "relocation_count": 0
+    },
+    {
+      "address": "0x8b42b0",
+      "size": 312,
+      "exact": true,
+      "target_sha256": "1951f1e5da694dbadc379dae748f79b38959985d0c25e8e67888027f6ea94d20",
+      "compiled_sha256": "1951f1e5da694dbadc379dae748f79b38959985d0c25e8e67888027f6ea94d20",
+      "source": "src/gameplay/EventSenders.cpp",
+      "symbol": "_ZN11ValueSenderILj9126576ELj1656690419ELj0EbLb0EE4SendEv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 28
     },
     {
       "address": "0x8b43f0",
@@ -254339,6 +254620,17 @@
       "relocation_count": 0
     },
     {
+      "address": "0x8df6f0",
+      "size": 308,
+      "exact": true,
+      "target_sha256": "8b9eb150b4e9baa3a6149542915b051e176d8df1cf10fbce30897e060321a175",
+      "compiled_sha256": "8b9eb150b4e9baa3a6149542915b051e176d8df1cf10fbce30897e060321a175",
+      "source": "src/gameplay/EventSenders.cpp",
+      "symbol": "_ZN12Sender8df6f04SendEv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 27
+    },
+    {
       "address": "0x8df830",
       "size": 28,
       "exact": true,
@@ -257813,6 +258105,17 @@
       "symbol": "RecoveredLeaf_906f10",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 0
+    },
+    {
+      "address": "0x906f20",
+      "size": 308,
+      "exact": true,
+      "target_sha256": "c0d9127a2f932f7b334bc61fc0d228d2741d0074d5e6f5f48742cb6f509179bc",
+      "compiled_sha256": "c0d9127a2f932f7b334bc61fc0d228d2741d0074d5e6f5f48742cb6f509179bc",
+      "source": "src/gameplay/EventSenders.cpp",
+      "symbol": "_ZN10MarkSenderILj9465632ELj979710136ELj128ELj152EtE4SendEv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 27
     },
     {
       "address": "0x907060",
@@ -261520,6 +261823,17 @@
       "symbol": "_Z11TypeAddressILj9645776EEPKvv",
       "source_review": "manual_reconstruction",
       "relocation_count": 2
+    },
+    {
+      "address": "0x932ee0",
+      "size": 316,
+      "exact": true,
+      "target_sha256": "f5063d1bc0418966826086fc3e3b6cfeef682a9fc921a84c03f81364d31b2686",
+      "compiled_sha256": "f5063d1bc0418966826086fc3e3b6cfeef682a9fc921a84c03f81364d31b2686",
+      "source": "src/gameplay/EventSenders.cpp",
+      "symbol": "_ZN12Sender932ee04SendEPK14IdHolder932ee0",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 27
     },
     {
       "address": "0x933020",
@@ -279397,6 +279711,17 @@
       "relocation_count": 5
     },
     {
+      "address": "0xa05dd0",
+      "size": 312,
+      "exact": true,
+      "target_sha256": "0b2b52fbd0cf8a0a4012ac51dbab174dc8db7f53daab52f4d815f626e505486e",
+      "compiled_sha256": "0b2b52fbd0cf8a0a4012ac51dbab174dc8db7f53daab52f4d815f626e505486e",
+      "source": "src/gameplay/EventSenders.cpp",
+      "symbol": "_ZN12EnableSenderILj10509776ELj1142377283ELj144EE6EnableEv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 27
+    },
+    {
       "address": "0xa05f10",
       "size": 56,
       "exact": true,
@@ -296524,6 +296849,17 @@
       "relocation_count": 0
     },
     {
+      "address": "0xac6ce0",
+      "size": 312,
+      "exact": true,
+      "target_sha256": "1229b25c5b528d1cdac36936bd72bd89b2e9413077608c0553ecce3ba98c01b1",
+      "compiled_sha256": "1229b25c5b528d1cdac36936bd72bd89b2e9413077608c0553ecce3ba98c01b1",
+      "source": "src/gameplay/EventSenders.cpp",
+      "symbol": "_ZN12EnableSenderILj11300064ELj1142377283ELj74EE6EnableEv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 27
+    },
+    {
       "address": "0xac6e20",
       "size": 304,
       "exact": true,
@@ -296632,6 +296968,17 @@
       "symbol": "RecoveredLeaf_ac7530",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 2
+    },
+    {
+      "address": "0xac7590",
+      "size": 312,
+      "exact": true,
+      "target_sha256": "545fc37e3fba3c0f1f11bd77f929db22b57587f6383dc759f236069a9332dcc6",
+      "compiled_sha256": "545fc37e3fba3c0f1f11bd77f929db22b57587f6383dc759f236069a9332dcc6",
+      "source": "src/gameplay/EventSenders.cpp",
+      "symbol": "_ZN11ValueSenderILj11302288ELj741541411ELj0EmLm0EE4SendEv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 28
     },
     {
       "address": "0xac76d0",
@@ -298141,6 +298488,17 @@
       "relocation_count": 0
     },
     {
+      "address": "0xad1c20",
+      "size": 312,
+      "exact": true,
+      "target_sha256": "0a6b631239f060fc6de837a45a8399a2f5b9577aecba1e7aa7f7f7c715161c70",
+      "compiled_sha256": "0a6b631239f060fc6de837a45a8399a2f5b9577aecba1e7aa7f7f7c715161c70",
+      "source": "src/gameplay/EventSenders.cpp",
+      "symbol": "_ZN13DefaultSenderILj11344928ELj936511799ELj0E12PayloadU64x2E4SendEv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 28
+    },
+    {
       "address": "0xad1d60",
       "size": 4,
       "exact": true,
@@ -298194,6 +298552,17 @@
       "symbol": "_Z14InvokeCallbackILj11345712EEvP10InvokeViewRK5Event",
       "source_review": "manual_reconstruction",
       "relocation_count": 0
+    },
+    {
+      "address": "0xad1f50",
+      "size": 312,
+      "exact": true,
+      "target_sha256": "6dd8a94623d6014e9904c2c001df882be976e96eda51a2d6451d1efde00b6d97",
+      "compiled_sha256": "6dd8a94623d6014e9904c2c001df882be976e96eda51a2d6451d1efde00b6d97",
+      "source": "src/gameplay/EventSenders.cpp",
+      "symbol": "_ZN13DefaultSenderILj11345744ELj2070719571ELj0E12PayloadU64x2E4SendEv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 28
     },
     {
       "address": "0xad2090",
@@ -299010,6 +299379,17 @@
       "relocation_count": 0
     },
     {
+      "address": "0xad7310",
+      "size": 312,
+      "exact": true,
+      "target_sha256": "98851d5a4e25682a09c4f1762731621ed2a81546a813da98d127eb5aa211913e",
+      "compiled_sha256": "98851d5a4e25682a09c4f1762731621ed2a81546a813da98d127eb5aa211913e",
+      "source": "src/gameplay/EventSenders.cpp",
+      "symbol": "_ZN11ValueSenderILj11367184ELj883368044ELj0EmLm0EE4SendEv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 28
+    },
+    {
       "address": "0xad7450",
       "size": 4,
       "exact": true,
@@ -299063,6 +299443,17 @@
       "symbol": "_Z14InvokeCallbackILj11367968EEvP10InvokeViewRK5Event",
       "source_review": "manual_reconstruction",
       "relocation_count": 0
+    },
+    {
+      "address": "0xad7640",
+      "size": 312,
+      "exact": true,
+      "target_sha256": "246f855dd64ec0f8487c8946034bd850e8a7c56676fae8d7ba32e075c9048f77",
+      "compiled_sha256": "246f855dd64ec0f8487c8946034bd850e8a7c56676fae8d7ba32e075c9048f77",
+      "source": "src/gameplay/EventSenders.cpp",
+      "symbol": "_ZN11ValueSenderILj11368000ELj255658764ELj0EmLm0EE4SendEv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 28
     },
     {
       "address": "0xad7780",
@@ -299316,6 +299707,17 @@
       "symbol": "_Z23DispatchGuardedCallbackILj11376640ELj2081638728EEvP12DispatchViewPv",
       "source_review": "manual_reconstruction",
       "relocation_count": 26
+    },
+    {
+      "address": "0xad9930",
+      "size": 312,
+      "exact": true,
+      "target_sha256": "dd494590b5532be641038b1b13571fddcd2218393e279709a153e7ab6f957e3f",
+      "compiled_sha256": "dd494590b5532be641038b1b13571fddcd2218393e279709a153e7ab6f957e3f",
+      "source": "src/gameplay/EventSenders.cpp",
+      "symbol": "_ZN11ValueSenderILj11376944ELj2081638728ELj0EmLm0EE4SendEv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 28
     },
     {
       "address": "0xad9a70",
@@ -306567,6 +306969,17 @@
       "relocation_count": 26
     },
     {
+      "address": "0xb28bd0",
+      "size": 312,
+      "exact": true,
+      "target_sha256": "a59a7f15c79b191eb11216b5d55030b5f9ff8293c8e70bad11a3d9f4c34fb76b",
+      "compiled_sha256": "a59a7f15c79b191eb11216b5d55030b5f9ff8293c8e70bad11a3d9f4c34fb76b",
+      "source": "src/gameplay/EventSenders.cpp",
+      "symbol": "_ZN11ValueSenderILj11701200ELj913605653ELj0EmLm0EE4SendEv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 28
+    },
+    {
       "address": "0xb28d10",
       "size": 28,
       "exact": true,
@@ -310879,6 +311292,17 @@
       "relocation_count": 26
     },
     {
+      "address": "0xb5e160",
+      "size": 312,
+      "exact": true,
+      "target_sha256": "4856aa9379e1b01084f765c3114d5b7c476045b709ec7dffc7ac622e9a0fd405",
+      "compiled_sha256": "4856aa9379e1b01084f765c3114d5b7c476045b709ec7dffc7ac622e9a0fd405",
+      "source": "src/gameplay/EventSenders.cpp",
+      "symbol": "_ZN11ValueSenderILj11919712ELj2127702888ELj0EmLm0EE4SendEv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 28
+    },
+    {
       "address": "0xb5e2a0",
       "size": 28,
       "exact": true,
@@ -315015,6 +315439,17 @@
       "relocation_count": 0
     },
     {
+      "address": "0xb78c50",
+      "size": 320,
+      "exact": true,
+      "target_sha256": "261e168399409cd70f51695a396a16869987a02552f1e91c6143e50d37d4ca11",
+      "compiled_sha256": "261e168399409cd70f51695a396a16869987a02552f1e91c6143e50d37d4ca11",
+      "source": "src/gameplay/EventSenders.cpp",
+      "symbol": "_ZN11ValueSenderILj12029008ELj407957822ELj0EhLh8EE4SendEv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 28
+    },
+    {
       "address": "0xb78d90",
       "size": 4,
       "exact": true,
@@ -317600,6 +318035,17 @@
       "relocation_count": 0
     },
     {
+      "address": "0xb9a4b0",
+      "size": 320,
+      "exact": true,
+      "target_sha256": "4bc063d371151de0051064b8c34568c422dbc715a08b2ddc635bf1b4bb78308b",
+      "compiled_sha256": "4bc063d371151de0051064b8c34568c422dbc715a08b2ddc635bf1b4bb78308b",
+      "source": "src/gameplay/EventSenders.cpp",
+      "symbol": "_ZN13DefaultSenderILj12166320ELj1719610386ELj0E12PayloadU64x3E4SendEv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 28
+    },
+    {
       "address": "0xb9a5f0",
       "size": 4,
       "exact": true,
@@ -317653,6 +318099,17 @@
       "symbol": "_Z14InvokeCallbackILj12167104EEvP10InvokeViewRK5Event",
       "source_review": "manual_reconstruction",
       "relocation_count": 0
+    },
+    {
+      "address": "0xb9a7e0",
+      "size": 320,
+      "exact": true,
+      "target_sha256": "cd2023d2f23eb0d40d749446ce9ef4b6896281692cb99a74eae8bdcaa4e027ff",
+      "compiled_sha256": "cd2023d2f23eb0d40d749446ce9ef4b6896281692cb99a74eae8bdcaa4e027ff",
+      "source": "src/gameplay/EventSenders.cpp",
+      "symbol": "_ZN13DefaultSenderILj12167136ELj752256576ELj0E12PayloadU64x3E4SendEv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 28
     },
     {
       "address": "0xb9a920",
@@ -321184,6 +321641,17 @@
       "symbol": "_Z14InvokeCallbackILj12346848EEvP10InvokeViewRK5Event",
       "source_review": "manual_reconstruction",
       "relocation_count": 0
+    },
+    {
+      "address": "0xbc6600",
+      "size": 320,
+      "exact": true,
+      "target_sha256": "62dc8086c551942b08a3897f3a939f9dcbb699ab5dfd996f3745f79f3f389f2b",
+      "compiled_sha256": "62dc8086c551942b08a3897f3a939f9dcbb699ab5dfd996f3745f79f3f389f2b",
+      "source": "src/gameplay/EventSenders.cpp",
+      "symbol": "_ZN13DefaultSenderILj12346880ELj1086868552ELj0E13PayloadU64U32E4SendEv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 28
     },
     {
       "address": "0xbc6740",
@@ -338775,6 +339243,17 @@
       "relocation_count": 3
     },
     {
+      "address": "0xc70510",
+      "size": 308,
+      "exact": true,
+      "target_sha256": "ac87593a318d7af9282f123cfb26306249a0699a30d911734e32cbbf5e5dbcdb",
+      "compiled_sha256": "ac87593a318d7af9282f123cfb26306249a0699a30d911734e32cbbf5e5dbcdb",
+      "source": "src/gameplay/EventSenders.cpp",
+      "symbol": "_ZN10MarkSenderILj13042960ELj626789118ELj8ELj153EbE4SendEv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 27
+    },
+    {
       "address": "0xc70650",
       "size": 28,
       "exact": true,
@@ -340095,6 +340574,17 @@
       "relocation_count": 0
     },
     {
+      "address": "0xc79960",
+      "size": 320,
+      "exact": true,
+      "target_sha256": "359c8b0c4e4c7d567c2da3bcb070740fbf20a0ebdc0e27153be4582a7cc05049",
+      "compiled_sha256": "359c8b0c4e4c7d567c2da3bcb070740fbf20a0ebdc0e27153be4582a7cc05049",
+      "source": "src/gameplay/EventSenders.cpp",
+      "symbol": "_ZN11ValueSenderILj13080928ELj1602474636ELj0EhLh8EE4SendEv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 28
+    },
+    {
       "address": "0xc79aa0",
       "size": 4,
       "exact": true,
@@ -340346,6 +340836,17 @@
       "symbol": "_Z23DispatchGuardedCallbackILj13094320ELj1457727362EEvP12DispatchViewPv",
       "source_review": "manual_reconstruction",
       "relocation_count": 26
+    },
+    {
+      "address": "0xc7cee0",
+      "size": 312,
+      "exact": true,
+      "target_sha256": "87d90e2afd5ec1fbdf9f0ee7b59723df93285a135da7e94eeeabe04b67dd23a5",
+      "compiled_sha256": "87d90e2afd5ec1fbdf9f0ee7b59723df93285a135da7e94eeeabe04b67dd23a5",
+      "source": "src/gameplay/EventSenders.cpp",
+      "symbol": "_ZN11ValueSenderILj13094624ELj1457727362ELj0EmLm0EE4SendEv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 28
     },
     {
       "address": "0xc7d020",
@@ -343041,6 +343542,17 @@
       "symbol": "_Z23DispatchGuardedCallbackILj13185104ELj960097512EEvP12DispatchViewPv",
       "source_review": "manual_reconstruction",
       "relocation_count": 26
+    },
+    {
+      "address": "0xc93180",
+      "size": 320,
+      "exact": true,
+      "target_sha256": "0e43deae0b878ee8dd377eea4face7550b6891da47dd27d71df8766493a49ce1",
+      "compiled_sha256": "0e43deae0b878ee8dd377eea4face7550b6891da47dd27d71df8766493a49ce1",
+      "source": "src/gameplay/EventSenders.cpp",
+      "symbol": "_ZN10CopySenderILj13185408ELj960097512ELj0E12PayloadColorE4SendEv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 28
     },
     {
       "address": "0xc932c0",
@@ -348796,6 +349308,17 @@
       "relocation_count": 26
     },
     {
+      "address": "0xcc4da0",
+      "size": 312,
+      "exact": true,
+      "target_sha256": "4399a345ad0cd6ceaaab6a60ecd4c1dd710d6bb68c55ba3d7b2f413004eca50e",
+      "compiled_sha256": "4399a345ad0cd6ceaaab6a60ecd4c1dd710d6bb68c55ba3d7b2f413004eca50e",
+      "source": "src/gameplay/EventSenders.cpp",
+      "symbol": "_ZN11ValueSenderILj13389216ELj929176771ELj0EbLb0EE4SendEv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 28
+    },
+    {
       "address": "0xcc4ee0",
       "size": 28,
       "exact": true,
@@ -349192,6 +349715,17 @@
       "relocation_count": 3
     },
     {
+      "address": "0xcc59d0",
+      "size": 316,
+      "exact": true,
+      "target_sha256": "8634871e99bf0ddad070408e0d4d3c824a3e124f6da9c8d2d942f5b54aaf0bd3",
+      "compiled_sha256": "8634871e99bf0ddad070408e0d4d3c824a3e124f6da9c8d2d942f5b54aaf0bd3",
+      "source": "src/gameplay/EventSenders.cpp",
+      "symbol": "_ZN12Sendercc59d04SendEv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 27
+    },
+    {
       "address": "0xcc5b10",
       "size": 252,
       "exact": true,
@@ -349379,6 +349913,17 @@
       "relocation_count": 3
     },
     {
+      "address": "0xcc6550",
+      "size": 308,
+      "exact": true,
+      "target_sha256": "759344c41fe98a66401700f43fd3a2ea88f59f4e3aa9c15bcc02ac3d3aab8ff2",
+      "compiled_sha256": "759344c41fe98a66401700f43fd3a2ea88f59f4e3aa9c15bcc02ac3d3aab8ff2",
+      "source": "src/gameplay/EventSenders.cpp",
+      "symbol": "_ZN11FieldSenderILj13395280ELj1363167774EE4SendEv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 27
+    },
+    {
       "address": "0xcc6690",
       "size": 252,
       "exact": true,
@@ -349476,6 +350021,17 @@
       "symbol": "_ZN4Onyx8Gameplay8Circuits27U32ConstantPublisherCircuit5Slot4ERN4onyx7ArchiveEPN13ComponentSlot6SourceE",
       "source_review": "manual_reconstruction",
       "relocation_count": 3
+    },
+    {
+      "address": "0xcc6ac0",
+      "size": 308,
+      "exact": true,
+      "target_sha256": "8134f955a1b139725d2908cf26ba593f85b366dedbf15a2537102e1a2bde2d80",
+      "compiled_sha256": "8134f955a1b139725d2908cf26ba593f85b366dedbf15a2537102e1a2bde2d80",
+      "source": "src/gameplay/EventSenders.cpp",
+      "symbol": "_ZN11FieldSenderILj13396672ELj293927663EE4SendEv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 27
     },
     {
       "address": "0xcc6c00",
@@ -350653,6 +351209,17 @@
       "symbol": "RecoveredLeaf_cc9b20",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 2
+    },
+    {
+      "address": "0xcc9b60",
+      "size": 300,
+      "exact": true,
+      "target_sha256": "6039e2ceae4d38b807b3dc93916634aab73c9df88968c3b7de0c76fd40f7c2b9",
+      "compiled_sha256": "6039e2ceae4d38b807b3dc93916634aab73c9df88968c3b7de0c76fd40f7c2b9",
+      "source": "src/gameplay/EventSenders.cpp",
+      "symbol": "_ZN11EventSenderILj13409120ELj13611869ELj80EE4SendEv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 27
     },
     {
       "address": "0xcc9c90",

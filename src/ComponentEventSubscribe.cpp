@@ -36,7 +36,7 @@ template<unsigned Key> struct DelegateHolder {
         }
     }
 };
-// Mode: 1 sets the active flag (bit 2 of +0x38) first, 2 calls the parent's
+// Mode: 1 sets the active flag (0x2 in +0x38) first, 2 calls the parent's
 // enable first, 3 does both.
 template<unsigned Key, uint32_t Hash, unsigned TargetOffset, unsigned Mode> struct EventSubscriber {
     char padding_0[0x38];

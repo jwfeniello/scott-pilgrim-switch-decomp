@@ -226,6 +226,24 @@ static. Its layout is the one
 [`GuardedCallbackDispatch.cpp`](../src/GuardedCallbackDispatch.cpp) already
 matches out of line.
 
+Two send forms appear:
+
+- `SendEvent` passes one payload: the callback fills it, then the listener
+  receives it. An overload takes a payload the caller built from a field or from
+  the arguments.
+- `SendValue` builds one payload for the callback and another for the listener
+  from the same arguments. The listener half is its own inline step, which gives
+  the two payloads the stack slots in the original order. Struct payloads are
+  constructed field by field (padding is not written), except one colour that is
+  built once and copied.
+
+[`EventSenders.cpp`](../src/gameplay/EventSenders.cpp) matches 51 component
+methods built on these forms. Most send from a member callback/target pair with
+a constant, default-constructed or uninitialized payload; some first set or test
+a field. They build with stack coloring on, the compiler default. The value
+form's separate payloads might explain the per-branch slots that the Pickup and
+Enemy builds above get by turning coloring off. That has not been tested.
+
 ## Pickups
 
 `SPTG::Pickup` (vtable `0x1878f78`, 87 slots) is reconstructed in
