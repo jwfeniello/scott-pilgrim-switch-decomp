@@ -536,10 +536,17 @@ an id, resolved when loading).
 
 Classes outside the characters serialize the same way.
 [`ComponentSerialize.h`](../src/gameplay/ComponentSerialize.h) holds ABI views
-of 30 of them. They are actions on `Onyx::ActionComponent` (0xbcaa30), other
+of 59 of them. They are actions on `Onyx::ActionComponent` (0xbcaa30), other
 components on `Onyx::Component::Base` (0x6782a0), menus on `SPTG::FlashMenu`
-(0x7ffe10), the level camera on `SPTG::SPTG_Phase` (0x76b760) and the gun
-turrets on `SPTG::BreakableObject` (0xa10790). Each view places the
+(0x7ffe10), the level camera and the network phase on `SPTG::SPTG_Phase`
+(0x76b760) and the gun turrets on `SPTG::BreakableObject` (0xa10790).
+`SPTG::AnimatedAiActor` (0x945fe0) is the base of BaseCharacter, the pickups,
+projectiles, laser beams, mechanisms and interactive objects. It moves a block
+at `+0x58` through its own serializer (0x946580: five handles and a
+reference-counted resource, the fields BaseCharacter's header calls the
+effect, partner and animation handles, the actor object and the services),
+fills the slots at `+0x88` and `+0x90`, then moves 4-byte settings from
+`+0x98` to `+0x128` and one at `+0x180`. Each view places the
 serialized fields at their offsets with padding between. The functions
 follow the original's operations in order: the parent call,
 `AssignComponentSlot` instances, handle, id (0x8012a0) and list transfers,
@@ -548,6 +555,26 @@ and field transfers with their sizes. One class
 `TransferAs`, which shows the original used both forms. The file builds with
 default stack coloring: `SectionActorPresenceLogic` needs its copies to share
 a stack slot, and the other views match either way.
+
+Members with serializers that many classes share are declared in
+[`Archive.h`](../src/gameplay/Archive.h): a 0x28-byte `ReferenceList`
+(0x682f80, 245 callers: a count, then each reference's key pair, resolved
+through the source) and a vector of points (0x884c60, 12-byte elements),
+which returns the archive so the next transfer uses it. Vectors of 4-byte
+values are moved inline (`onyx::TransferVector`): the count through a local,
+`Vector::Resize` (0x70c0a0), then each element.
+
+Callback lists (0x18 bytes: data, owner, a changed flag) are restored by
+`DeserializeCallbacks` ([`DeserializeCallbacks.h`](../src/DeserializeCallbacks.h)).
+The component sets itself as the list's owner first. Many serializers expand
+the reading loop in place instead of calling an instance, so the loop lives in
+the shared header. The expanded copies show where the callback's invoke
+pointer is stored: after the new callback is published to the slot passed to
+`Process`. Storing it there in the shared loop also reproduces the 37
+out-of-line instances. Each expansion has its own key and host type, so its
+handlers (the typed and generic members, which differ per class) bind
+separately. A third form calls a per-entry function in a loop (for example
+GateSwitcher and PlayerSynchronizer); it is not modeled yet.
 
 The playable characters
 ([`PlayerClasses.h`](../src/gameplay/PlayerClasses.h)) run ControllablePlayer's
@@ -562,7 +589,13 @@ Matched: the seven playable classes, EnemyNormal, EnemyJake, EnemyGeeOne,
 EnemyMini, EnemyStuntman,
 EnemySasuke, EnemyJetPackMatt, EnemyShooter, Ken & Kyle, NegaScott, Lynette
 (which also moves TagTeamMember's fields), SuperGideon, the robot's head and
-hand, Todd and Enemy itself. Todd's slot 4 moves eight component handles from `+0xd48`, so Boss's own
+hand, Todd, Enemy itself, and (in
+[`ClassSerialize.cpp`](../src/gameplay/ClassSerialize.cpp), which builds with
+default stack coloring because their copies share slots) Boss, Chau,
+SuperFightingRobotAI and EnemyAerial. Boss's slot 4 (0xa181e0) moves two
+component slots and two handles from `+0xb88`, its two attack slots, the
+settings from `+0xca8`, the points at `+0xcd8`, a reference at `+0xd00` and the
+callback list at `+0xd30`, so Boss's own fields end at `+0xd48`. Todd's slot 4 moves eight component handles from `+0xd48`, so Boss's own
 fields end before `+0xd48`. The flags at `+0xd49` and `+0xd4a` belong to the
 classes that use them: Gideon, SuperGideon, Ken & Kyle and NegaScott.
 

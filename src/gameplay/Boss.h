@@ -94,18 +94,30 @@ struct Boss : Enemy {
     virtual int State254(int event); virtual State State254Ptr();   // slots 254, 255
     virtual int State256(int event); virtual State State256Ptr();   // slots 256, 257
 
-    char padding_b79[0x2f];
+    char padding_b79[0xf];
+    void* slotB88;               // +0xb88: filled by AssignComponentSlot
+    void* slotB90;               // +0xb90
+    onyx::ComponentHandle* handleB98; // +0xb98
+    void* slotBa0;               // +0xba0
     onyx::ComponentHandle* handleBa8; // +0xba8
-    char padding_bb0[0x8];
+    void* slotBb0;               // +0xbb0
     AttackSlot attacks[2];       // +0xbb8: the second is requested every update with kind 1
-    char padding_ca8[0xc];
+    int32_t valueCa8;            // +0xca8
+    int32_t valueCac;            // +0xcac
+    int32_t valueCb0;            // +0xcb0
     uint32_t limitCb4;           // +0xcb4
     float limitCb8;              // +0xcb8
-    char padding_cbc[0x10];
+    int32_t valueCbc;            // +0xcbc
+    int32_t valueCc0;            // +0xcc0
+    int32_t valueCc4;            // +0xcc4
+    int32_t valueCc8;            // +0xcc8
     float chanceCcc;             // +0xccc: percent, rolled by slot 233
     uint8_t flagCd0;             // +0xcd0
     uint8_t flagCd1;             // +0xcd1
-    char padding_cd2[0x36];
+    char padding_cd2[0x6];
+    onyx::Vector<onyx::Vector3> pointsCd8; // +0xcd8
+    char padding_cf8[0x8];
+    void* referenceD00;          // +0xd00: moved by TransferReference
     int32_t valueD08;            // +0xd08
     float timerD0c;              // +0xd0c
     char padding_d10[0x14];
@@ -116,6 +128,8 @@ struct Boss : Enemy {
     uint8_t flagD28;             // +0xd28
     uint8_t flagD29;             // +0xd29
     uint8_t flagD2a;             // +0xd2a
+    char padding_d2b[0x5];
+    CallbackList callbacksD30;   // +0xd30
 };
 
 }  // namespace SPTG

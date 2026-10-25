@@ -4,12 +4,17 @@
 // Names are provisional; src/SpawnerSerialize.h models the same pair.
 #pragma once
 #include <stdint.h>
+#include "Vector.h"
 
 // Passed along with the archive (slot 4's second argument). The same type
 // feeds AssignComponentSlot (src/ComponentSlotAssign.cpp), which fills
 // component slots from it.
 namespace ComponentSlot { struct Source; }
 template<unsigned Key, uint32_t Hash> void AssignComponentSlot(void* self, ComponentSlot::Source* source);
+// The callback-list readers (src/DeserializeCallbacks.h). A serializer passes
+// the archive as the reader, the source as the descriptors and the list as the
+// host.
+#include "../DeserializeCallbacks.h"
 
 namespace onyx {
 
@@ -50,6 +55,18 @@ void TransferHandle(ComponentHandle*& handle, Archive& archive, ComponentSlot::S
 // Moves a 4-byte id that has its own encoding (0x8012a0).
 void TransferId(uint32_t& id, Archive& archive);
 
+// A vector of points moves through a function of its own (0x884c60), which
+// returns the archive.
+Archive& TransferPoints(Archive& archive, Vector<Vector3>& points);
+
+// A vector goes as its count, through a local, and then each element.
+template<class T> inline void TransferVector(Archive& archive, Vector<T>& vector) {
+    uint32_t count;
+    Transfer(archive, count);
+    vector.Resize(count);
+    for (uint64_t i = 0; i < count; ++i) Transfer(archive, vector.data[i]);
+}
+
 }  // namespace onyx
 
 namespace SPTG {
@@ -69,4 +86,38 @@ struct PairList {
     char data[0x50];
     void Serialize(onyx::Archive& archive);   // 0xc1f2b0
 };
+// A 0x28-byte list of component references, restored by 0x682f80 (which many
+// components share): a count, then each reference's key pair, resolved
+// through the source. Contents otherwise unknown.
+struct ReferenceList {
+    char data[0x28];
+    void Serialize(onyx::Archive& archive, ComponentSlot::Source* source);   // 0x682f80
+};
+// A callback list a component restores through one of the DeserializeCallbacks
+// instances (0x18 bytes); the component sets itself as the owner first.
+struct CallbackList {
+    void* data;
+    void* owner;    // +0x8
+    bool changed;   // +0x10: raised as callbacks are read
+};
+template<unsigned Key, uint32_t Hash>
+inline void TransferCallbackList(onyx::Archive& archive, ComponentSlot::Source* source, CallbackList& list, void* owner) {
+    list.owner = owner;
+    DeserializeCallbacks<Key, Hash>(reinterpret_cast<DecodeReader*>(&archive), source, reinterpret_cast<DecodeHost*>(&list));
+}
+// The same read with the loop expanded in place, as some serializers have it.
+// Key names the expansion's bindings, and the host type gives each expansion
+// handlers of its own.
+template<unsigned Key> struct KeyedDecodeHost : DecodeHost {
+    void Typed(const DecodeEvent& event);
+    void Generic(const DecodeEvent& event);
+};
+template<unsigned Key, uint32_t Hash>
+__attribute__((always_inline)) inline void ReadCallbackList(onyx::Archive& archive, ComponentSlot::Source* source, CallbackList& list, void* owner) {
+    list.owner = owner;
+    DecodeReader* reader = reinterpret_cast<DecodeReader*>(&archive);
+    uint32_t count;
+    reader->Read(&count, 4);
+    DecodeLoop<Key, Hash>(reader, source, reinterpret_cast<KeyedDecodeHost<Key>*>(&list), count);
+}
 }  // namespace SPTG

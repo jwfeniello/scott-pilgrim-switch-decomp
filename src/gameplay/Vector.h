@@ -17,6 +17,7 @@ template<class T> struct Vector {
     // and the rest up to start at `tail` (out of line, one instance per element
     // type). The caller stores the result.
     T* Reserve(uint64_t tail, uint64_t index, uint64_t required);
+    void Resize(uint64_t count);   // out of line, one instance per element size
     __attribute__((always_inline)) void PushBack(const T& item) {
         uint64_t count = size + 1;
         if (capacity < count) data = Reserve(count, size, count);

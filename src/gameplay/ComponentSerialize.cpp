@@ -349,4 +349,480 @@ void SectionActorPresenceLogic::Slot4(onyx::Archive& archive, ComponentSlot::Sou
     onyx::Transfer(archive, flag9d);
 }
 
+// 0x945fe0
+void AnimatedAiActorView::Slot4(onyx::Archive& archive, ComponentSlot::Source* source) {
+    OnyxComponentBase::Slot4(archive, source);
+    block58.Serialize(archive, source);
+    AssignComponentSlot<7788000u, 1742971629u>(&slot88, source);
+    AssignComponentSlot<7786432u, 569228434u>(&slot90, source);
+    onyx::Transfer(archive, value98);
+    onyx::Transfer(archive, valueA0);
+    onyx::Transfer(archive, valueA4);
+    onyx::Transfer(archive, valueA8);
+    onyx::Transfer(archive, valueAc);
+    onyx::Transfer(archive, valueB0);
+    onyx::Transfer(archive, valueB4);
+    onyx::Transfer(archive, valueB8);
+    onyx::Transfer(archive, valueBc);
+    onyx::Transfer(archive, valueC0);
+    onyx::Transfer(archive, valueC4);
+    onyx::Transfer(archive, valueC8);
+    onyx::Transfer(archive, valueCc);
+    onyx::Transfer(archive, valueD0);
+    onyx::Transfer(archive, valueD4);
+    onyx::Transfer(archive, valueD8);
+    onyx::Transfer(archive, valueDc);
+    onyx::Transfer(archive, valueE0);
+    onyx::Transfer(archive, valueE4);
+    onyx::Transfer(archive, valueE8);
+    onyx::Transfer(archive, valueEc);
+    onyx::Transfer(archive, valueF0);
+    onyx::Transfer(archive, valueF4);
+    onyx::Transfer(archive, valueF8);
+    onyx::Transfer(archive, valueFc);
+    onyx::Transfer(archive, flag100);
+    onyx::Transfer(archive, value104);
+    onyx::Transfer(archive, value108);
+    onyx::Transfer(archive, value10c);
+    onyx::Transfer(archive, value110);
+    onyx::Transfer(archive, value114);
+    onyx::Transfer(archive, value118);
+    onyx::Transfer(archive, value11c);
+    onyx::Transfer(archive, value120);
+    onyx::Transfer(archive, value124);
+    onyx::Transfer(archive, value128);
+    onyx::TransferAs<uint32_t>(archive, value180);
+}
+
+// 0x9c4890
+void InteractiveObject::Slot4(onyx::Archive& archive, ComponentSlot::Source* source) {
+    AnimatedAiActorView::Slot4(archive, source);
+    AssignComponentSlot<8990432u, 1141032170u>(&slot1e8, source);
+    TransferCallbackList<9814480u, 977138339u>(archive, source, callbacks1f0, this);
+    TransferCallbackList<9815136u, 525437237u>(archive, source, callbacks208, this);
+    TransferCallbackList<9815792u, 2145151923u>(archive, source, callbacks220, this);
+    TransferCallbackList<9816448u, 1223436034u>(archive, source, callbacks238, this);
+    attack280.Serialize(archive);
+    attack2d8.Serialize(archive);
+    attack330.Serialize(archive);
+    attack388.Serialize(archive);
+    onyx::Transfer(archive, value3e0);
+    onyx::Transfer(archive, value3e4);
+    onyx::Transfer(archive, value3e8);
+    onyx::Transfer(archive, value3ec);
+    onyx::Transfer(archive, value3f0);
+    onyx::Transfer(archive, flag3f4);
+    onyx::Transfer(archive, flag3f5);
+    onyx::Transfer(archive, flag3f6);
+    onyx::Transfer(archive, value3f8);
+    onyx::Transfer(archive, value3fc);
+    onyx::TransferAs<uint32_t>(archive, value400);
+    onyx::Transfer(archive, value404);
+    onyx::Transfer(archive, value408);
+    onyx::Transfer(archive, value40c);
+    onyx::Transfer(archive, value410);
+    onyx::Transfer(archive, flag414);
+    onyx::Transfer(archive, value418);
+    onyx::Transfer(archive, value41c);
+    onyx::Transfer(archive, value420);
+    onyx::Transfer(archive, value424);
+    onyx::Transfer(archive, value428);
+    onyx::Transfer(archive, value42c);
+    onyx::Transfer(archive, value430);
+    onyx::TransferAs<uint32_t>(archive, value434);
+    onyx::Transfer(archive, flag438);
+    onyx::Transfer(archive, flag439);
+    onyx::Transfer(archive, flag43a);
+    onyx::Transfer(archive, flag43b);
+    onyx::Transfer(archive, flag43c);
+}
+
+// 0x84fe10
+void LeaderboardMenu::Slot4(onyx::Archive& archive, ComponentSlot::Source* source) {
+    FlashMenuBase::Slot4(archive, source);
+    AssignComponentSlot<7752160u, 1051727473u>(&slot2b0, source);
+    AssignComponentSlot<7750592u, 1558270838u>(&slot2b8, source);
+    AssignComponentSlot<7961152u, 1447053823u>(&slot2c0, source);
+    onyx::TransferHandle(handle2c8, archive, source);
+    onyx::TransferHandle(handle2d0, archive, source);
+    TransferCallbackList<7914256u, 1961557269u>(archive, source, callbacks2f0, this);
+    onyx::Transfer(archive, value31c);
+}
+
+// 0x8ad400
+void HudObject::Slot4(onyx::Archive& archive, ComponentSlot::Source* source) {
+    OnyxComponentBase::Slot4(archive, source);
+    AssignComponentSlot<7788000u, 1742971629u>(&slot50, source);
+    references58.Serialize(archive, source);
+    references80.Serialize(archive, source);
+    onyx::TransferHandle(handleA8, archive, source);
+    onyx::TransferHandle(handleB0, archive, source);
+    onyx::TransferAs<uint32_t>(archive, valueB8);
+}
+
+// 0xa15710
+void BaseBossAI::Slot4(onyx::Archive& archive, ComponentSlot::Source* source) {
+    OnyxComponentBase::Slot4(archive, source);
+    AssignComponentSlot<7786432u, 569228434u>(&slot58, source);
+    ReadCallbackList<10573584u, 817469290u>(archive, source, callbacksC0, this);
+}
+
+// 0x928230
+void ActionStepView::Slot4(onyx::Archive& archive, ComponentSlot::Source* source) {
+    OnyxActionComponent::Slot4(archive, source);
+    referencesA0.Serialize(archive, source);
+    AssignComponentSlot<8049456u, 1954509136u>(&slotC8, source);
+    AssignComponentSlot<7786432u, 569228434u>(&slotD0, source);
+    ReadCallbackList<9601584u, 1610208407u>(archive, source, callbacksD8, this);
+}
+
+// 0x933a80
+void NotificationFilterEvent::Slot4(onyx::Archive& archive, ComponentSlot::Source* source) {
+    OnyxComponentBase::Slot4(archive, source);
+    onyx::TransferHandle(handle50, archive, source);
+    ReadCallbackList<9648768u, 1398044915u>(archive, source, callbacks70, this);
+    onyx::Transfer(archive, value88);
+}
+
+// 0x8f2470
+void WaitForEventCount::Slot4(onyx::Archive& archive, ComponentSlot::Source* source) {
+    OnyxActionComponent::Slot4(archive, source);
+    AssignComponentSlot<7786432u, 569228434u>(&slotA0, source);
+    ReadCallbackList<9380976u, 961447673u>(archive, source, callbacksA8, this);
+    onyx::Transfer(archive, flagC0);
+    onyx::Transfer(archive, valueC4);
+    onyx::Transfer(archive, flagC8);
+}
+
+// 0x79b950
+void StatisticsNotifier::Slot4(onyx::Archive& archive, ComponentSlot::Source* source) {
+    OnyxComponentBase::Slot4(archive, source);
+    AssignComponentSlot<7786432u, 569228434u>(&slot50, source);
+    AssignComponentSlot<7975184u, 521608489u>(&slot58, source);
+    ReadCallbackList<7977296u, 1041959824u>(archive, source, callbacks60, this);
+    onyx::TransferAs<uint32_t>(archive, value78);
+    onyx::Transfer(archive, value88);
+    onyx::Transfer(archive, value8c);
+}
+
+// 0x921860
+void ChaseModeAction::Slot4(onyx::Archive& archive, ComponentSlot::Source* source) {
+    OnyxActionComponent::Slot4(archive, source);
+    onyx::TransferHandle(handleA0, archive, source);
+    AssignComponentSlot<7786432u, 569228434u>(&slotA8, source);
+    ReadCallbackList<9574496u, 1365801958u>(archive, source, callbacksB0, this);
+    onyx::Transfer(archive, valueD0);
+    onyx::TransferPoints(archive, pointsD8);
+    onyx::Transfer(archive, flag100);
+    onyx::Transfer(archive, flag101);
+}
+
+// 0x9ba2b0
+void MechanismObject::Slot4(onyx::Archive& archive, ComponentSlot::Source* source) {
+    AnimatedAiActorView::Slot4(archive, source);
+    onyx::TransferHandle(handle1e8, archive, source);
+    onyx::TransferHandle(handle1f0, archive, source);
+    onyx::TransferHandle(handle1f8, archive, source);
+    TransferCallbackList<10201728u, 1409658169u>(archive, source, callbacks200, this);
+    ReadCallbackList<10199728u, 605302477u>(archive, source, callbacks218, this);
+    onyx::Transfer(archive, flag230);
+    onyx::TransferAs<uint32_t>(archive, value234);
+}
+
+// 0x8f6540
+void TimerAction::Slot4(onyx::Archive& archive, ComponentSlot::Source* source) {
+    OnyxActionComponent::Slot4(archive, source);
+    onyx::TransferHandle(handleA0, archive, source);
+    TransferCallbackList<7755584u, 497209192u>(archive, source, callbacksA8, this);
+    ReadCallbackList<9397568u, 865905804u>(archive, source, callbacksC0, this);
+    onyx::Transfer(archive, flagD8);
+    onyx::Transfer(archive, flagD9);
+    onyx::TransferAs<uint32_t>(archive, valueDc);
+    onyx::Transfer(archive, valueE0);
+    onyx::Transfer(archive, flagE4);
+    onyx::Transfer(archive, valueE8);
+}
+
+// 0x8ef9a0
+void ActionTrigger::Slot4(onyx::Archive& archive, ComponentSlot::Source* source) {
+    OnyxComponentBase::Slot4(archive, source);
+    references50.Serialize(archive, source);
+    onyx::TransferHandle(handle78, archive, source);
+    onyx::TransferHandle(handle80, archive, source);
+    AssignComponentSlot<7960368u, 184116580u>(&slot88, source);
+    AssignComponentSlot<7786432u, 569228434u>(&slot90, source);
+    AssignComponentSlot<8049456u, 1954509136u>(&slot98, source);
+    TransferCallbackList<7755584u, 497209192u>(archive, source, callbacksA8, this);
+    ReadCallbackList<9370016u, 1268207738u>(archive, source, callbacksC0, this);
+    TransferCallbackList<8972784u, 1392422097u>(archive, source, callbacksD8, this);
+    onyx::TransferAs<uint32_t>(archive, value124);
+    onyx::Transfer(archive, flag128);
+    onyx::TransferAs<uint32_t>(archive, value12c);
+    onyx::Transfer(archive, flag130);
+}
+
+// 0x8e2e30
+void ActorTrapAction::Slot4(onyx::Archive& archive, ComponentSlot::Source* source) {
+    OnyxActionComponent::Slot4(archive, source);
+    onyx::Transfer(archive, flagA8);
+    onyx::Transfer(archive, flagA9);
+    AssignComponentSlot<8990432u, 1141032170u>(&slotB0, source);
+    AssignComponentSlot<7788000u, 1742971629u>(&slotB8, source);
+    ReadCallbackList<9317936u, 1559097766u>(archive, source, callbacksC0, this);
+    onyx::TransferAs<uint32_t>(archive, valueD8);
+    onyx::Transfer(archive, valueDc);
+    onyx::Transfer(archive, valueE0);
+    onyx::Transfer(archive, valueE4);
+    onyx::Transfer(archive, valueE8);
+    onyx::TransferAs<uint32_t>(archive, valueEc);
+    onyx::Transfer(archive, flagF0);
+    onyx::Transfer(archive, flagF1);
+    onyx::TransferAs<uint32_t>(archive, valueF4);
+    onyx::TransferAs<uint32_t>(archive, valueF8);
+    attack100.Serialize(archive);
+    onyx::Transfer(archive, value158);
+}
+
+// 0x824b50
+void PublisherScreen::Slot4(onyx::Archive& archive, ComponentSlot::Source* source) {
+    FlashMenuBase::Slot4(archive, source);
+    ReadCallbackList<8538960u, 1415881008u>(archive, source, callbacks2b8, this);
+    ReadCallbackList<8538961u, 972712643u>(archive, source, callbacks2d0, this);
+}
+
+// 0x8497b0
+void LoadingNotifier::Slot4(onyx::Archive& archive, ComponentSlot::Source* source) {
+    OnyxComponentBase::Slot4(archive, source);
+    AssignComponentSlot<7751376u, 2069148984u>(&slot50, source);
+    ReadCallbackList<8689584u, 1556176369u>(archive, source, callbacks58, this);
+    ReadCallbackList<8689585u, 1028106914u>(archive, source, callbacks70, this);
+}
+
+// 0x934f90
+void GamePauseMonitor::Slot4(onyx::Archive& archive, ComponentSlot::Source* source) {
+    OnyxComponentBase::Slot4(archive, source);
+    AssignComponentSlot<7960368u, 184116580u>(&slot50, source);
+    ReadCallbackList<9654160u, 1121389207u>(archive, source, callbacks58, this);
+    ReadCallbackList<9654161u, 1280632713u>(archive, source, callbacks70, this);
+}
+
+// 0x7cb660
+void NetworkPhase::Slot4(onyx::Archive& archive, ComponentSlot::Source* source) {
+    PhaseBase::Slot4(archive, source);
+    AssignComponentSlot<8168064u, 1233810745u>(&slot60, source);
+    AssignComponentSlot<7788000u, 1742971629u>(&slot68, source);
+    AssignComponentSlot<7786432u, 569228434u>(&slot70, source);
+    ReadCallbackList<8173152u, 54615259u>(archive, source, callbacks78, this);
+    ReadCallbackList<8173153u, 1817378438u>(archive, source, callbacks90, this);
+}
+
+// 0x909290
+void CheckLevelUnlokcedAction::Slot4(onyx::Archive& archive, ComponentSlot::Source* source) {
+    OnyxActionComponent::Slot4(archive, source);
+    AssignComponentSlot<7785648u, 484521086u>(&slotA0, source);
+    ReadCallbackList<9474704u, 568581114u>(archive, source, callbacksA8, this);
+    ReadCallbackList<9474705u, 1067635171u>(archive, source, callbacksC0, this);
+    onyx::TransferAs<uint32_t>(archive, valueD8);
+}
+
+// 0x79a3f0
+void GamePurchaser::Slot4(onyx::Archive& archive, ComponentSlot::Source* source) {
+    OnyxComponentBase::Slot4(archive, source);
+    AssignComponentSlot<7961936u, 1836584131u>(&slot50, source);
+    AssignComponentSlot<7784864u, 623346953u>(&slot58, source);
+    AssignComponentSlot<7960368u, 184116580u>(&slot60, source);
+    AssignComponentSlot<7752160u, 1051727473u>(&slot68, source);
+    AssignComponentSlot<7751376u, 2069148984u>(&slot70, source);
+    AssignComponentSlot<7961152u, 1447053823u>(&slot78, source);
+    ReadCallbackList<7971824u, 1751228548u>(archive, source, callbacks80, this);
+    ReadCallbackList<7971825u, 1826253220u>(archive, source, callbacks98, this);
+}
+
+// 0x8870c0
+void CameraTrigger::Slot4(onyx::Archive& archive, ComponentSlot::Source* source) {
+    OnyxComponentBase::Slot4(archive, source);
+    references50.Serialize(archive, source);
+    references78.Serialize(archive, source);
+    AssignComponentSlot<8049456u, 1954509136u>(&slotA0, source);
+    ReadCallbackList<8941760u, 384712501u>(archive, source, callbacksA8, this);
+    ReadCallbackList<8941761u, 136412464u>(archive, source, callbacksC0, this);
+    onyx::Transfer(archive, flagD8);
+    onyx::TransferAs<uint32_t>(archive, valueDc);
+    onyx::TransferAs<uint32_t>(archive, valueE0);
+    onyx::Transfer(archive, valueE4);
+    onyx::Transfer(archive, valueE8);
+    onyx::Transfer(archive, valueEc);
+}
+
+// 0x9a36f0
+void PickupView::Slot4(onyx::Archive& archive, ComponentSlot::Source* source) {
+    AnimatedAiActorView::Slot4(archive, source);
+    onyx::TransferAs<uint32_t>(archive, value220);
+    onyx::Transfer(archive, value224);
+    onyx::Transfer(archive, value228);
+    onyx::Transfer(archive, value22c);
+    onyx::Transfer(archive, value230);
+    onyx::Transfer(archive, value234);
+    onyx::Transfer(archive, flag238);
+    onyx::Transfer(archive, flag239);
+    onyx::Transfer(archive, flag23a);
+    onyx::TransferAs<uint32_t>(archive, value23c);
+    ReadCallbackList<10106608u, 1707325712u>(archive, source, callbacks240, this);
+    ReadCallbackList<10106609u, 1407128491u>(archive, source, callbacks258, this);
+}
+
+// 0x915880
+void ExtraModeScoringAction::Slot4(onyx::Archive& archive, ComponentSlot::Source* source) {
+    OnyxActionComponent::Slot4(archive, source);
+    AssignComponentSlot<7784864u, 623346953u>(&slotA0, source);
+    AssignComponentSlot<7961152u, 1447053823u>(&slotA8, source);
+    AssignComponentSlot<7752160u, 1051727473u>(&slotB0, source);
+    onyx::TransferHandle(handleB8, archive, source);
+    onyx::TransferHandle(handleC0, archive, source);
+    onyx::TransferHandle(handleC8, archive, source);
+    onyx::TransferHandle(handleD0, archive, source);
+    AssignComponentSlot<7998976u, 1330418336u>(&slotD8, source);
+    AssignComponentSlot<7751376u, 2069148984u>(&slotE0, source);
+    AssignComponentSlot<7786432u, 569228434u>(&slotE8, source);
+    AssignComponentSlot<7788000u, 1742971629u>(&slotF0, source);
+    ReadCallbackList<9525376u, 525022405u>(archive, source, callbacksF8, this);
+    ReadCallbackList<9525377u, 759912897u>(archive, source, callbacks110, this);
+    TransferCallbackList<7910320u, 1219292172u>(archive, source, callbacks128, this);
+    onyx::TransferAs<uint32_t>(archive, value140);
+    onyx::Transfer(archive, value144);
+    onyx::Transfer(archive, value148);
+    onyx::Transfer(archive, value14c);
+    onyx::Transfer(archive, value150);
+    onyx::Transfer(archive, value154);
+    onyx::Transfer(archive, value158);
+    onyx::Transfer(archive, value15c);
+    onyx::Transfer(archive, value160);
+    onyx::Transfer(archive, flag164);
+}
+
+// 0x9bc5e0
+void LaserBeams::Slot4(onyx::Archive& archive, ComponentSlot::Source* source) {
+    AnimatedAiActorView::Slot4(archive, source);
+    ReadCallbackList<10208736u, 865841734u>(archive, source, callbacks1f0, this);
+    ReadCallbackList<10208737u, 1163560383u>(archive, source, callbacks208, this);
+    ReadCallbackList<10208738u, 1512849600u>(archive, source, callbacks220, this);
+    onyx::Transfer(archive, value240);
+    onyx::Transfer(archive, flag244);
+    attack248.Serialize(archive);
+    onyx::TransferAs<uint32_t>(archive, value2a0);
+}
+
+// 0x958dd0
+void Projectile::Slot4(onyx::Archive& archive, ComponentSlot::Source* source) {
+    AnimatedAiActorView::Slot4(archive, source);
+    TransferCallbackList<9814480u, 977138339u>(archive, source, callbacks1f0, this);
+    TransferCallbackList<9815136u, 525437237u>(archive, source, callbacks208, this);
+    TransferCallbackList<9815792u, 2145151923u>(archive, source, callbacks220, this);
+    TransferCallbackList<9816448u, 1223436034u>(archive, source, callbacks238, this);
+    ReadCallbackList<9801168u, 1212750988u>(archive, source, callbacks250, this);
+    ReadCallbackList<9801169u, 362302269u>(archive, source, callbacks268, this);
+    onyx::Transfer(archive, value2b0);
+    onyx::Transfer(archive, value2b4);
+    onyx::Transfer(archive, flag2b8);
+    onyx::Transfer(archive, flag2b9);
+    onyx::Transfer(archive, flag2ba);
+    onyx::Transfer(archive, flag2bb);
+    onyx::Transfer(archive, flag2bc);
+    onyx::Transfer(archive, flag2bd);
+    onyx::Transfer(archive, flag2be);
+    onyx::Transfer(archive, flag2bf);
+    onyx::TransferAs<uint32_t>(archive, value2c0);
+    onyx::Transfer(archive, value2c4);
+    onyx::Transfer(archive, value2c8);
+    onyx::Transfer(archive, value2cc);
+    attack2d0.Serialize(archive);
+    onyx::TransferAs<uint32_t>(archive, value328);
+    onyx::TransferAs<uint32_t>(archive, value32c);
+    onyx::Transfer(archive, flag330);
+    onyx::Transfer(archive, value334);
+    onyx::Transfer(archive, value338);
+    onyx::Transfer(archive, flag33c);
+    onyx::Transfer(archive, flag33d);
+    onyx::TransferAs<uint32_t>(archive, value340);
+    onyx::Transfer(archive, flag344);
+}
+
+// 0x77b7b0
+void WorldMapNavigator::Slot4(onyx::Archive& archive, ComponentSlot::Source* source) {
+    PhaseBase::Slot4(archive, source);
+    onyx::TransferHandle(handle60, archive, source);
+    onyx::TransferHandle(handle68, archive, source);
+    onyx::TransferHandle(handle70, archive, source);
+    onyx::TransferHandle(handle78, archive, source);
+    AssignComponentSlot<7752160u, 1051727473u>(&slot80, source);
+    AssignComponentSlot<7785648u, 484521086u>(&slot88, source);
+    AssignComponentSlot<7751376u, 2069148984u>(&slot90, source);
+    AssignComponentSlot<7786432u, 569228434u>(&slot98, source);
+    AssignComponentSlot<7787216u, 840570882u>(&slotA0, source);
+    AssignComponentSlot<7788000u, 1742971629u>(&slotA8, source);
+    AssignComponentSlot<7784864u, 623346953u>(&slotB0, source);
+    TransferCallbackList<7755584u, 497209192u>(archive, source, callbacksB8, this);
+    TransferCallbackList<7756240u, 979710136u>(archive, source, callbacksD0, this);
+    TransferCallbackList<7910320u, 1219292172u>(archive, source, callbacksE8, this);
+    ReadCallbackList<7845808u, 1299720492u>(archive, source, callbacks100, this);
+    TransferCallbackList<7910976u, 1219292173u>(archive, source, callbacks118, this);
+    ReadCallbackList<7845809u, 1416370927u>(archive, source, callbacks130, this);
+    ReadCallbackList<7845810u, 451892332u>(archive, source, callbacks148, this);
+    TransferCallbackList<7911632u, 1611789091u>(archive, source, callbacks160, this);
+    TransferCallbackList<7912288u, 1611789096u>(archive, source, callbacks178, this);
+    TransferCallbackList<7912944u, 747518037u>(archive, source, callbacks190, this);
+    TransferCallbackList<7913600u, 708121210u>(archive, source, callbacks1a8, this);
+    TransferCallbackList<7914256u, 1961557269u>(archive, source, callbacks1c0, this);
+    TransferCallbackList<7914912u, 1088585585u>(archive, source, callbacks1d8, this);
+    TransferCallbackList<7914256u, 1961557269u>(archive, source, callbacks1f0, this);
+    TransferCallbackList<7914912u, 1088585585u>(archive, source, callbacks208, this);
+    TransferCallbackList<7914256u, 1961557269u>(archive, source, callbacks220, this);
+    TransferCallbackList<7914912u, 1088585585u>(archive, source, callbacks238, this);
+    onyx::Transfer(archive, value280);
+}
+
+// 0x7df4d0
+void MatchmakingDiscoverer::Slot4(onyx::Archive& archive, ComponentSlot::Source* source) {
+    OnyxComponentBase::Slot4(archive, source);
+    AssignComponentSlot<7998976u, 1330418336u>(&slot50, source);
+    AssignComponentSlot<7786432u, 569228434u>(&slot58, source);
+    AssignComponentSlot<7784864u, 623346953u>(&slot60, source);
+    AssignComponentSlot<7750592u, 1558270838u>(&slot68, source);
+    AssignComponentSlot<7961152u, 1447053823u>(&slot70, source);
+    AssignComponentSlot<7751376u, 2069148984u>(&slot78, source);
+    AssignComponentSlot<7752160u, 1051727473u>(&slot80, source);
+    AssignComponentSlot<7961936u, 1836584131u>(&slot88, source);
+    ReadCallbackList<8254672u, 683257529u>(archive, source, callbacks90, this);
+    ReadCallbackList<8254673u, 1191414401u>(archive, source, callbacksA8, this);
+    ReadCallbackList<8254674u, 1852788095u>(archive, source, callbacksC0, this);
+    ReadCallbackList<8254675u, 1050573974u>(archive, source, callbacksD8, this);
+    ReadCallbackList<8254676u, 1179039918u>(archive, source, callbacksF0, this);
+    TransferCallbackList<8258576u, 1637873838u>(archive, source, callbacks108, this);
+    ReadCallbackList<8254677u, 354979524u>(archive, source, callbacks120, this);
+    TransferCallbackList<7913600u, 708121210u>(archive, source, callbacks138, this);
+    TransferCallbackList<8259232u, 382012037u>(archive, source, callbacks150, this);
+    TransferCallbackList<8259888u, 2123455150u>(archive, source, callbacks168, this);
+    TransferCallbackList<7912944u, 747518037u>(archive, source, callbacks1a8, this);
+    TransferCallbackList<8260544u, 1407320313u>(archive, source, callbacks1c0, this);
+    TransferCallbackList<8261200u, 812874154u>(archive, source, callbacks1d8, this);
+    TransferCallbackList<8261856u, 1611788584u>(archive, source, callbacks1f0, this);
+}
+
+// 0x8e0760
+void EventTrigger::Slot4(onyx::Archive& archive, ComponentSlot::Source* source) {
+    OnyxComponentBase::Slot4(archive, source);
+    onyx::Transfer(archive, flag4a);
+    ReadCallbackList<9308000u, 796465125u>(archive, source, callbacks50, this);
+    ReadCallbackList<9308001u, 796465032u>(archive, source, callbacks68, this);
+}
+
+// 0x86e760
+void DialogBox::Slot4(onyx::Archive& archive, ComponentSlot::Source* source) {
+    FlashMenuBase::Slot4(archive, source);
+    AssignComponentSlot<7750592u, 1558270838u>(&slot2b0, source);
+    ReadCallbackList<8841056u, 3135025122u>(archive, source, callbacks2b8, this);
+    ReadCallbackList<8841057u, 3135025121u>(archive, source, callbacks2d0, this);
+    onyx::Transfer(archive, value2e8);
+}
+
 }  // namespace SPTG

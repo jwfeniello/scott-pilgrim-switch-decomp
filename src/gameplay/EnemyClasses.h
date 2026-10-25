@@ -261,6 +261,7 @@ struct EnemyChubby : Enemy {
 };
 // vtable 0x18885a0, 240 slots
 struct EnemyAerial : Enemy {
+    void Slot4(onyx::Archive& archive, ComponentSlot::Source* source);
     void SetSolid(bool solid);
     int State108(int event);
     void Slot19();
@@ -271,7 +272,45 @@ struct EnemyAerial : Enemy {
     int Statea04890(int event);   // 0xa04890, not virtual
     virtual State Statea04890Ptr();   // slot 239: returns the state at 0xa04890
 
-    char padding_b79[0x207];
+    char padding_b79[0x17];
+    CallbackList callbacksB90;   // +0xb90
+    int32_t valueBa8;            // +0xba8: serialized through a uint32_t
+    int32_t valueBac;            // +0xbac
+    int32_t valueBb0;            // +0xbb0
+    int32_t valueBb4;            // +0xbb4
+    int32_t valueBb8;            // +0xbb8
+    char padding_bbc[0x4];
+    AttackSlot attackBc0;        // +0xbc0
+    uint8_t flagC38;             // +0xc38
+    char padding_c39[0x7];
+    AttackSlot attackC40;        // +0xc40
+    int32_t valueCb8;            // +0xcb8
+    uint8_t flagCbc;             // +0xcbc
+    char padding_cbd[0x3];
+    int32_t valueCc0;            // +0xcc0
+    uint8_t flagCc4;             // +0xcc4
+    uint8_t flagCc5;             // +0xcc5
+    uint8_t flagCc6;             // +0xcc6
+    char padding_cc7[0x1];
+    AttackSlot attackCc8;        // +0xcc8
+    int32_t valueD40;            // +0xd40
+    int32_t valueD44;            // +0xd44
+    int32_t valueD48;            // +0xd48
+    int32_t valueD4c;            // +0xd4c
+    int32_t valueD50;            // +0xd50: serialized through a uint32_t
+    int32_t valueD54;            // +0xd54
+    int32_t valueD58;            // +0xd58
+    int32_t valueD5c;            // +0xd5c
+    uint8_t flagD60;             // +0xd60
+    char padding_d61[0x3];
+    int32_t valueD64;            // +0xd64: serialized through a uint32_t
+    uint8_t flagD68;             // +0xd68
+    char padding_d69[0x3];
+    int32_t valueD6c;            // +0xd6c: serialized through a uint32_t
+    int32_t valueD70;            // +0xd70
+    int32_t valueD74;            // +0xd74
+    int32_t valueD78;            // +0xd78
+    char padding_d7c[0x4];
     EnemySensor sensor;          // +0xd80
     int32_t valueDa8;            // +0xda8
     uint8_t flagDac;             // +0xdac
