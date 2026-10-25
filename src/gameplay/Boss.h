@@ -17,6 +17,21 @@ struct BossEffect : onyx::Component {
     char padding_8[0x10];
     uint8_t flag18;   // +0x18
 };
+// SPTG::ProjectileSpawnInfo (vtable 0x186a108, 0x70 bytes), which several
+// bosses embed (HipsterChick's destructor resets the one at +0xdc8). Its
+// serialization (0x8fd4c0) follows its destructors in the binary.
+struct ProjectileSpawnInfo {
+    virtual ~ProjectileSpawnInfo();
+    char data_8[0x68];
+    void Serialize(onyx::Archive& archive);   // 0x8fd4c0
+};
+static_assert(sizeof(ProjectileSpawnInfo) == 0x70, "ProjectileSpawnInfo size");
+// A 0x50-byte member some bosses serialize with 0xc1f2b0: a count, then a
+// vector of 4-byte pairs. Contents otherwise unknown.
+struct PairList {
+    char data[0x50];
+    void Serialize(onyx::Archive& archive);   // 0xc1f2b0
+};
 // SPTG::PlayfieldCollision (component type 0x21350526), behind ActorObject::playfield.
 struct PlayfieldCollision : TypedComponent {
     static const uint32_t kType = 0x21350526u;
@@ -28,7 +43,7 @@ struct PlayfieldCollision : TypedComponent {
 
 // vtable 0x188b950, 258 slots
 struct Boss : Enemy {
-    void Slot4(onyx::Archive& archive);
+    void Slot4(onyx::Archive& archive, onyx::ArchiveContext* context);
     void Update();
     void Slot13();
     bool Slot33(void* data);
@@ -107,9 +122,6 @@ struct Boss : Enemy {
     uint8_t flagD28;             // +0xd28
     uint8_t flagD29;             // +0xd29
     uint8_t flagD2a;             // +0xd2a
-    char padding_d2b[0x1e];
-    uint8_t flagD49;             // +0xd49
-    uint8_t flagD4a;             // +0xd4a
 };
 
 }  // namespace SPTG

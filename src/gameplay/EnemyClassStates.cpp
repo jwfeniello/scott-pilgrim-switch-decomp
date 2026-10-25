@@ -937,32 +937,32 @@ int EnemyJake::State254(int event) {
 // (0x9e6310), other fields through the archive. A few 4-byte fields go
 // through a uint32_t copy, which suggests another type in the original.
 // EnemyNormal 0x9ee710:
-void EnemyNormal::Slot4(onyx::Archive& archive) {
-    Enemy::Slot4(archive);
+void EnemyNormal::Slot4(onyx::Archive& archive, onyx::ArchiveContext* context) {
+    Enemy::Slot4(archive, context);
     for (int i = 0; i < 10; ++i) attacks[i].Serialize(archive);
     onyx::Transfer(archive, flag1040);
     attack1048.Serialize(archive);
     attack10c0.Serialize(archive);
 }
 // EnemyJake 0x9f29e0:
-void EnemyJake::Slot4(onyx::Archive& archive) {
-    EnemyNormal::Slot4(archive);
+void EnemyJake::Slot4(onyx::Archive& archive, onyx::ArchiveContext* context) {
+    EnemyNormal::Slot4(archive, context);
     attack1140.Serialize(archive);
     onyx::Transfer(archive, limit11b8);
     onyx::Transfer(archive, value11bc);
     onyx::Transfer(archive, flag11c0);
 }
 // EnemyGeeOne 0x9fd620:
-void EnemyGeeOne::Slot4(onyx::Archive& archive) {
-    EnemyGiant::Slot4(archive);
+void EnemyGeeOne::Slot4(onyx::Archive& archive, onyx::ArchiveContext* context) {
+    EnemyGiant::Slot4(archive, context);
     onyx::TransferAs<uint32_t>(archive, value1048);
     onyx::Transfer(archive, value104c);
     onyx::Transfer(archive, value1050);
     onyx::Transfer(archive, value1054);
 }
 // EnemyMini 0x9efff0:
-void EnemyMini::Slot4(onyx::Archive& archive) {
-    Enemy::Slot4(archive);
+void EnemyMini::Slot4(onyx::Archive& archive, onyx::ArchiveContext* context) {
+    Enemy::Slot4(archive, context);
     attacks[0].Serialize(archive);
     attacks[1].Serialize(archive);
     onyx::Transfer(archive, flagC80);
@@ -975,8 +975,8 @@ void EnemyMini::Slot4(onyx::Archive& archive) {
 
 // EnemyStuntman 0x9cc080 and EnemySasuke 0x9e4ab0 (EnemyOneHitWonder has no slot
 // 4 of its own, so each moves its fields too):
-void EnemyStuntman::Slot4(onyx::Archive& archive) {
-    EnemyOneHitWonder::Slot4(archive);
+void EnemyStuntman::Slot4(onyx::Archive& archive, onyx::ArchiveContext* context) {
+    EnemyOneHitWonder::Slot4(archive, context);
     onyx::Transfer(archive, valueBbc);
     onyx::Transfer(archive, flagBc0);
     onyx::Transfer(archive, timeLimitBc4);
@@ -989,8 +989,8 @@ void EnemyStuntman::Slot4(onyx::Archive& archive) {
     onyx::Transfer(archive, reach.y);
     onyx::Transfer(archive, reach.z);
 }
-void EnemySasuke::Slot4(onyx::Archive& archive) {
-    EnemyOneHitWonder::Slot4(archive);
+void EnemySasuke::Slot4(onyx::Archive& archive, onyx::ArchiveContext* context) {
+    EnemyOneHitWonder::Slot4(archive, context);
     onyx::Transfer(archive, valueBbc);
     onyx::Transfer(archive, flagBc0);
     onyx::Transfer(archive, timeLimitBc4);
@@ -1005,8 +1005,8 @@ void EnemySasuke::Slot4(onyx::Archive& archive) {
     onyx::Transfer(archive, valueBf0);
 }
 // EnemyJetPackMatt 0x9f0c90 and EnemyShooter 0x9eb900:
-void EnemyJetPackMatt::Slot4(onyx::Archive& archive) {
-    Enemy::Slot4(archive);
+void EnemyJetPackMatt::Slot4(onyx::Archive& archive, onyx::ArchiveContext* context) {
+    Enemy::Slot4(archive, context);
     onyx::TransferAs<uint32_t>(archive, valueB8c);
     attacks[0].Serialize(archive);
     onyx::Transfer(archive, valueC08);
@@ -1022,8 +1022,8 @@ void EnemyJetPackMatt::Slot4(onyx::Archive& archive) {
     onyx::Transfer(archive, valueC30);
     onyx::Transfer(archive, valueC34);
 }
-void EnemyShooter::Slot4(onyx::Archive& archive) {
-    Enemy::Slot4(archive);
+void EnemyShooter::Slot4(onyx::Archive& archive, onyx::ArchiveContext* context) {
+    Enemy::Slot4(archive, context);
     onyx::TransferAs<uint32_t>(archive, valueB8c);
     attacks[0].Serialize(archive);
     onyx::Transfer(archive, valueC08);

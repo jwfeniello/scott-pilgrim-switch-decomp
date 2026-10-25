@@ -7,6 +7,10 @@
 
 namespace onyx {
 
+struct ComponentHandle;
+// Passed along with the archive (slot 4's second argument); contents unknown.
+struct ArchiveContext;
+
 struct Stream {
     virtual void Slot0(); virtual void Slot1(); virtual void Slot2();
     virtual void Slot3(); virtual void Slot4(); virtual void Slot5();
@@ -31,5 +35,12 @@ template<class S, class T> inline void TransferAs(Archive& archive, T& field) {
     Transfer(archive, value);
     field = value;
 }
+
+// Moves a reference to an object: a flag, then the object's id, resolved
+// through a registry when loading (0x997120 for the references seen).
+template<class T> void TransferReference(Archive& archive, T*& object);
+
+// Moves a component handle (0x67dd00).
+void TransferHandle(ComponentHandle*& handle, Archive& archive, ArchiveContext* context);
 
 }  // namespace onyx

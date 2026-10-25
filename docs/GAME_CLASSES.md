@@ -517,11 +517,18 @@ below the previous call's, which is how the original lays out two of them
 (EnemyShooter). EnemyOneHitWonder has no slot 4, so EnemyStuntman and
 EnemySasuke each move its fields themselves.
 
+Slot 4 takes a second argument, a context it passes on to the parent and to
+handle transfers (0x67dd00). Members with their own serializers are
+`ProjectileSpawnInfo` (0x8fd4c0) and a 0x50-byte `PairList` (0xc1f2b0, a count
+and a vector of pairs). Object references go through 0x997120 (a flag, then
+an id, resolved when loading).
+
 Matched: EnemyNormal, EnemyJake, EnemyGeeOne, EnemyMini, EnemyStuntman,
-EnemySasuke, EnemyJetPackMatt, EnemyShooter and Ken & Kyle. Todd's and the
-robot hand's slot 4 move component handles at `+0xd48`. Boss's own fields
-therefore end before `+0xd48`, and the flags at `+0xd49` and `+0xd4a`
-(declared on Boss for now) belong to the classes that use them.
+EnemySasuke, EnemyJetPackMatt, EnemyShooter, Ken & Kyle, NegaScott, Lynette
+(which also moves TagTeamMember's fields), SuperGideon, the robot's head and
+Todd. Todd's slot 4 moves eight component handles from `+0xd48`, so Boss's own
+fields end before `+0xd48`. The flags at `+0xd49` and `+0xd4a` belong to the
+classes that use them: Gideon, SuperGideon, Ken & Kyle and NegaScott.
 
 ## Enemy class states
 
@@ -635,8 +642,8 @@ Slots 96, 116 and 200 are written out but not credited. In each, the original
 merges the "handled" returns into a shared tail (for 96 and 116, the exit
 case's) that this build duplicates.
 
-[`BossClassStates.cpp`](../src/gameplay/BossClassStates.cpp) matches 128
-functions of the boss classes (35,228 bytes). Most are hooks that inline
+[`BossClassStates.cpp`](../src/gameplay/BossClassStates.cpp) matches 133
+functions of the boss classes (39,500 bytes). Most are hooks that inline
 Boss's version and add a class detail:
 
 - **Slot 234** maps an attack request's kind to a state. Each class tests its

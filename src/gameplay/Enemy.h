@@ -34,7 +34,7 @@ struct Enemy : BaseCharacter {
     void Update();                                                   // slot 16, overrides BaseCharacter
     void Slot13();                                                   // slot 13, overrides BaseCharacter (0x9cc340)
     void Slot7();                                                    // slot 7, overrides BaseCharacter (0x9e0590)
-    void Slot4(onyx::Archive& archive);                               // slot 4, overrides BaseCharacter (0x9e06c0)
+    void Slot4(onyx::Archive& archive, onyx::ArchiveContext* context);                               // slot 4, overrides BaseCharacter (0x9e06c0)
     void Slot19();                                                   // slot 19, overrides BaseCharacter (0x9de160)
     float TakeDamage(const void* hit, BaseCharacter* other);         // slot 69, overrides BaseCharacter
     int State96(int event);                                          // slot 96, overrides BaseCharacter

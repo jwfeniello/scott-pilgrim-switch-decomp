@@ -29,10 +29,10 @@ struct TagTeamMember : Boss {
     virtual int State264(int event); virtual State State264Ptr();   // slots 264, 265
     virtual int State266(int event); virtual State State266Ptr();   // slots 266, 267
 
-    char padding_d4b[0x1];
+    char padding_d2b[0x21];
     float healthD4c;             // +0xd4c: copied to +0xd7c by Lynette's update
     float timeD50;               // +0xd50: copied to +0xd78 when hit in state 266
-    char padding_d54[0x4];
+    int32_t valueD54;            // +0xd54
     uint8_t flagD58;             // +0xd58
     uint8_t flagD59;             // +0xd59
     uint8_t flagD5a;             // +0xd5a
@@ -53,6 +53,7 @@ struct Todd : Boss {
     void Update();
     float TakeDamage(const void* hit, BaseCharacter* other);
     bool Slot82();
+    void Slot4(onyx::Archive& archive, onyx::ArchiveContext* context);
     int State98(int event); State State98Ptr();   // slots 98, 99, override Boss
     int State106(int event); State State106Ptr();   // slots 106, 107, override Boss
     int State122(int event); State State122Ptr();   // slots 122, 123, override Boss
@@ -74,7 +75,8 @@ struct Todd : Boss {
     virtual int State268(int event); virtual State State268Ptr();   // slots 268, 269
     virtual int State270(int event); virtual State State270Ptr();   // slots 270, 271
 
-    char padding_d4b[0x3d];
+    char padding_d2b[0x1d];
+    onyx::ComponentHandle* handlesD48[8]; // +0xd48: moved by slot 4
     uint8_t flagD88;             // +0xd88: raised in states 98 and 248
     uint8_t flagD89;             // +0xd89
     char padding_d8a[0x2];
@@ -88,14 +90,49 @@ struct Todd : Boss {
     char padding_dc0[0x18];
     AttackSlot attackDd8;        // +0xdd8: requested every update with kind 20; passed to 0xa255e0
     AttackSlot attackE50;        // +0xe50: requested every update with kind 11
-    char padding_ec8[0xf0];
+    AttackSlot attackEc8;        // +0xec8
+    AttackSlot attackF40;        // +0xf40
     AttackSlot attackFb8;        // +0xfb8: requested every update with kind 28
-    char padding_1030[0x168];
+    AttackSlot attack1030;       // +0x1030
+    AttackSlot attack10a8;       // +0x10a8
+    ProjectileSpawnInfo projectile; // +0x1120
+    int32_t value1190;           // +0x1190
+    int32_t value1194;           // +0x1194
     float value1198;             // +0x1198: returned by slot 59
     float limit119c;             // +0x119c
     float limit11a0;             // +0x11a0
-    char padding_11a4[0xc];
+    int32_t value11a4;           // +0x11a4
+    int32_t value11a8;           // +0x11a8
+    int32_t value11ac;           // +0x11ac
     float limit11b0;             // +0x11b0: slot 237 accepts kind 11 once +0xdb8 reaches it
+    int32_t value11b4;           // +0x11b4
+    int32_t value11b8;           // +0x11b8
+    int32_t value11bc;           // +0x11bc
+    int32_t value11c0;           // +0x11c0
+    int32_t value11c4;           // +0x11c4
+    int32_t value11c8;           // +0x11c8
+    int32_t value11cc;           // +0x11cc
+    int32_t value11d0;           // +0x11d0
+    int32_t value11d4;           // +0x11d4
+    int32_t value11d8;           // +0x11d8
+    int32_t value11dc;           // +0x11dc
+    int32_t value11e0;           // +0x11e0
+    int32_t value11e4;           // +0x11e4
+    int32_t value11e8;           // +0x11e8
+    int32_t value11ec;           // +0x11ec
+    int32_t value11f0;           // +0x11f0
+    int32_t value11f4;           // +0x11f4
+    int32_t value11f8;           // +0x11f8
+    int32_t value11fc;           // +0x11fc
+    int32_t value1200;           // +0x1200
+    int32_t value1204;           // +0x1204
+    int32_t value1208;           // +0x1208
+    int32_t value120c;           // +0x120c
+    int32_t value1210;           // +0x1210
+    int32_t value1214;           // +0x1214
+    int32_t value1218;           // +0x1218
+    int32_t value121c;           // +0x121c
+    uint8_t flag1220;            // +0x1220
 };
 // vtable 0x1896e38, 284 slots
 struct GigaGideon : Boss {
@@ -125,7 +162,7 @@ struct GigaGideon : Boss {
     virtual int State280(int event); virtual State State280Ptr();   // slots 280, 281
     virtual int State282(int event); virtual State State282Ptr();   // slots 282, 283
 
-    char padding_d4b[0x9];
+    char padding_d2b[0x29];
     float valueD54;              // +0xd54
     char padding_d58[0xd];
     uint8_t flagD65;             // +0xd65
@@ -157,7 +194,9 @@ struct Gideon : Boss {
     virtual int State254(int event); virtual State State254Ptr();   // slots 254, 255, overrides Boss
     virtual int State258(int event); virtual State State258Ptr();   // slots 258, 259
 
-    char padding_d4b[0x5];
+    char padding_d2b[0x1e];
+    uint8_t flagD49;             // +0xd49
+    char padding_d4a[0x6];
     AttackSlot attackD50;        // +0xd50: requested every update with kind 20
     AttackSlot attackDc8;        // +0xdc8: requested every update with kind 11
     AttackSlot attackE40;        // +0xe40: requested every update with kind 31
@@ -172,6 +211,7 @@ struct SuperGideon : Boss {
     void Slot13();
     bool Slot82();
     float TakeDamage(const void* hit, BaseCharacter* other);
+    void Slot4(onyx::Archive& archive, onyx::ArchiveContext* context);
     int State122(int event); State State122Ptr();   // slots 122, 123, override Boss
     int State172(int event); State State172Ptr();   // slots 172, 173, override Boss
     int State186(int event); State State186Ptr();   // slots 186, 187, override Boss
@@ -185,15 +225,34 @@ struct SuperGideon : Boss {
     virtual int State262(int event); virtual State State262Ptr();   // slots 262, 263
     virtual int State264(int event); virtual State State264Ptr();   // slots 264, 265
 
+    char padding_d2b[0x1e];
+    uint8_t flagD49;             // +0xd49
+    uint8_t flagD4a;             // +0xd4a
     char padding_d4b[0x1];
     float damageD4c;             // +0xd4c: damage since the last roll
-    char padding_d50[0x3c8];
+    char padding_d50[0x8];
+    AttackSlot attacksD58[6];    // +0xd58
+    ProjectileSpawnInfo projectiles[2]; // +0x1028
+    int32_t value1108;           // +0x1108
+    int32_t value110c;           // +0x110c
+    int32_t value1110;           // +0x1110
+    int32_t value1114;           // +0x1114
     float limit1118;             // +0x1118
     float chance111c;            // +0x111c: percent
-    char padding_1120[0x10];
+    int32_t value1120;           // +0x1120
+    int32_t value1124;           // +0x1124
+    int32_t value1128;           // +0x1128
+    int32_t value112c;           // +0x112c
     float value1130;             // +0x1130: scales slot 57 in state 244
-    char padding_1134[0x5c];
+    int32_t value1134;           // +0x1134
+    int32_t value1138;           // +0x1138
+    char padding_113c[0x4];
+    PairList list1140;           // +0x1140
     BossEffect* effect;          // +0x1190
+    int32_t value1198;           // +0x1198
+    int32_t value119c;           // +0x119c
+    int32_t value11a0;           // +0x11a0
+    uint8_t flag11a4;            // +0x11a4
 };
 // vtable 0x1895a88, 272 slots
 struct KenKyle : Boss {
@@ -202,7 +261,7 @@ struct KenKyle : Boss {
     void Update();
     bool Slot82();
     void CallA506f0(int32_t value);   // 0xa506f0
-    void Slot4(onyx::Archive& archive);
+    void Slot4(onyx::Archive& archive, onyx::ArchiveContext* context);
     int State114(int event); State State114Ptr();   // slots 114, 115, override Boss
     int State122(int event); State State122Ptr();   // slots 122, 123, override Boss
     int State172(int event); State State172Ptr();   // slots 172, 173, override Boss
@@ -223,6 +282,9 @@ struct KenKyle : Boss {
     virtual int State268(int event); virtual State State268Ptr();   // slots 268, 269
     virtual int State270(int event); virtual State State270Ptr();   // slots 270, 271
 
+    char padding_d2b[0x1e];
+    uint8_t flagD49;             // +0xd49
+    char padding_d4a[0x1];
     uint8_t flagD4b;             // +0xd4b: the twins take turns: one has it set
     char padding_d4c[0x1];
     uint8_t flagD4d;             // +0xd4d: raised while in state 260
@@ -279,7 +341,7 @@ struct LucasLee : Boss {
     virtual int State264(int event); virtual State State264Ptr();   // slots 264, 265
     virtual int State266(int event); virtual State State266Ptr();   // slots 266, 267
 
-    char padding_d4b[0xd];
+    char padding_d2b[0x2d];
     AttackSlot attackD58;        // +0xd58: requested every update with kind 19
     AttackSlot attackDd0;        // +0xdd0: requested every update with kind 31
     AttackSlot attackE48;        // +0xe48: requested every update with kind 11
@@ -304,7 +366,7 @@ struct Roxy : Boss {
     virtual int State268(int event); virtual State State268Ptr();   // slots 268, 269
     virtual int State270(int event); virtual State State270Ptr();   // slots 270, 271
 
-    char padding_d4b[0xb5];
+    char padding_d2b[0xd5];
     AttackSlot attackE00;        // +0xe00: started in state 264
     AttackSlot attackE78;        // +0xe78: started in state 268
     AttackSlot attackEf0;        // +0xef0: started in state 266
@@ -331,7 +393,7 @@ struct Chau : Boss {
     virtual int State262(int event); virtual State State262Ptr();   // slots 262, 263
     virtual int State264(int event); virtual State State264Ptr();   // slots 264, 265
 
-    char padding_d4b[0x69];
+    char padding_d2b[0x89];
     uint32_t phaseDb4;           // +0xdb4: set from health by slot 69
     char padding_db8[0x408];
     float phaseStep;             // +0x11c0
@@ -342,6 +404,7 @@ struct Lynette : TagTeamMember {
     void Update();
     float TakeDamage(const void* hit, BaseCharacter* other);
     bool Slot82();
+    void Slot4(onyx::Archive& archive, onyx::ArchiveContext* context);
     virtual void Slot234(int kind);                                          // slot 234, overrides TagTeamMember
     virtual bool Slot237(const AttackSlot& request);                         // slot 237, overrides TagTeamMember
     virtual bool Slot238();                                                  // slot 238, overrides TagTeamMember
@@ -368,13 +431,19 @@ struct Lynette : TagTeamMember {
     AttackSlot attackDc8;        // +0xdc8: requested every update with kind 20
     AttackSlot attack;           // +0xe40: requested every update with kind 11
     AttackSlot attackEb8;        // +0xeb8: requested every update with kind 180
-    char padding_f30[0x8];
+    int32_t valueF30;            // +0xf30: serialized through a uint32_t
+    int32_t valueF34;            // +0xf34
     float limitF38;              // +0xf38
     float limitF3c;              // +0xf3c
     float limitF40;              // +0xf40
     float limitF44;              // +0xf44
-    char padding_f48[0x10];
+    int32_t valueF48;            // +0xf48
+    int32_t valueF4c;            // +0xf4c
+    int32_t valueF50;            // +0xf50
+    int32_t valueF54;            // +0xf54
     float limitF58;              // +0xf58
+    char padding_f5c[0x4];
+    PairList listF60;            // +0xf60
 };
 // vtable 0x1892fb8, 269 slots
 struct Patel : Boss {
@@ -397,7 +466,7 @@ struct Patel : Boss {
     virtual int State266(int event); virtual State State266Ptr();   // slots 266, 267
     SPTG_SLOT(268)
 
-    char padding_d4b[0xd];
+    char padding_d2b[0x2d];
     uint32_t chickCount;         // +0xd58
     char padding_d5c[0x4];
     onyx::ComponentHandle** chicks; // +0xd60: HipsterChick handles
@@ -454,6 +523,7 @@ struct Envy : TagTeamMember {
 // vtable 0x1894150, 266 slots
 struct NegaScott : Boss {
     void Slot13();
+    void Slot4(onyx::Archive& archive, onyx::ArchiveContext* context);
     virtual void Slot234(int kind);                                          // slot 234, overrides Boss
     SPTG_SLOT(235)   // overrides Boss
     virtual int State244(int event); virtual State State244Ptr();   // slots 244, 245, overrides Boss
@@ -462,6 +532,21 @@ struct NegaScott : Boss {
     virtual int State260(int event); virtual State State260Ptr();   // slots 260, 261
     virtual int State262(int event); virtual State State262Ptr();   // slots 262, 263
     virtual int State264(int event); virtual State State264Ptr();   // slots 264, 265
+
+    char padding_d2b[0x1f];
+    uint8_t flagD4a;             // +0xd4a
+    char padding_d4b[0x5];
+    AttackSlot attacksD50[9];    // +0xd50
+    ProjectileSpawnInfo projectile; // +0x1188
+    float value11f8;             // +0x11f8
+    float value11fc;             // +0x11fc
+    float value1200;             // +0x1200
+    float value1204;             // +0x1204
+    float value1208;             // +0x1208
+    float value120c;             // +0x120c
+    float value1210;             // +0x1210
+    float value1214;             // +0x1214
+    float value1218;             // +0x1218
 };
 // vtable 0x1893860, 272 slots
 struct HipsterChick : Boss {
@@ -481,7 +566,7 @@ struct HipsterChick : Boss {
     virtual int State268(int event); virtual State State268Ptr();   // slots 268, 269
     virtual int State270(int event); virtual State State270Ptr();   // slots 270, 271
 
-    char padding_d4b[0x5];
+    char padding_d2b[0x25];
     AttackSlot attack;           // +0xd50: requested every update with kind 0
     char padding_dc8[0x9c];
     float attackPeriod;          // +0xe64
@@ -512,7 +597,7 @@ struct SuperFightingRobotAI : Boss {
     virtual int State280(int event); virtual State State280Ptr();   // slots 280, 281
     virtual int State282(int event); virtual State State282Ptr();   // slots 282, 283
 
-    char padding_d4b[0x1d];
+    char padding_d2b[0x3d];
     onyx::ComponentHandle* hand2; // +0xd68: SuperFightingRobotHand
     onyx::ComponentHandle* hand1; // +0xd70: SuperFightingRobotHand
 };
@@ -535,7 +620,7 @@ struct SuperFightingRobotHand : Boss {
     virtual int State270(int event); virtual State State270Ptr();   // slots 270, 271
     virtual int State272(int event); virtual State State272Ptr();   // slots 272, 273
 
-    char padding_d4b[0x255];
+    char padding_d2b[0x275];
     int32_t hitsFa0;             // +0xfa0
     char padding_fa4[0xc];
     SuperFightingRobotAI* owner; // +0xfb0: set by the robot
@@ -553,7 +638,23 @@ struct SuperFightingRobotShoulder : Boss {
 };
 // vtable 0x188e2d0, 258 slots
 struct SuperFightingRobotHead : Boss {
+    void Slot4(onyx::Archive& archive, onyx::ArchiveContext* context);
 
+    char padding_d2b[0x25];
+    PairList listD50;            // +0xd50
+    int32_t valueDa0;            // +0xda0: serialized through a uint32_t
+    int32_t valueDa4;            // +0xda4
+    int32_t valueDa8;            // +0xda8
+    char padding_dac[0x4];
+    ProjectileSpawnInfo projectile; // +0xdb0
+    int32_t valueE20;            // +0xe20
+    int32_t valueE24;            // +0xe24
+    int32_t valueE28;            // +0xe28
+    int32_t valueE2c;            // +0xe2c
+    int32_t valueE30;            // +0xe30
+    int32_t valueE34;            // +0xe34
+    int32_t valueE38;            // +0xe38
+    int32_t valueE3c;            // +0xe3c
 };
 
 }  // namespace SPTG

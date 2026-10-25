@@ -111,7 +111,7 @@ struct BaseCharacter : onyx::Component {
     typedef StateMachine<BaseCharacter>::State State;
     virtual ~BaseCharacter();                                                    // slots 0, 1
     SPTG_SLOT(3)
-    virtual void Slot4(onyx::Archive& archive);                              // slot 4
+    virtual void Slot4(onyx::Archive& archive, onyx::ArchiveContext* context); // slot 4
     SPTG_SLOT(5) SPTG_SLOT(6) SPTG_SLOT(7) SPTG_SLOT(8) SPTG_SLOT(9) SPTG_SLOT(10) SPTG_SLOT(11)
     virtual bool IsA(uint32_t type);                                         // slot 12
     SPTG_SLOT(13) SPTG_SLOT(14) SPTG_SLOT(15)
