@@ -1,65 +1,26 @@
-// The regular enemy classes (all derive from SPTG::Enemy): their own states
-// after slot 233, each followed by its getter, and the overrides the sources
-// define. Names are provisional.
+// The regular enemy classes: their own states after slot 233, each followed by
+// its getter, and the overrides the sources define. Most derive from
+// SPTG::Enemy; the RTTI (Onyx::Component::Compose<Base>) puts five under
+// EnemyOneHitWonder and four under EnemyNormal, EnemyGiant and EnemyShooter.
+// Names are provisional.
 #pragma once
 #include "Enemy.h"
 
 namespace SPTG {
 
-// vtable 0x187c648, 241 slots
-struct EnemyStuntman : Enemy {
-    int State108(int event);
-    float TakeDamage(const void* hit, BaseCharacter* other);
-    void Update();
-    virtual int State234(int event); virtual State State234Ptr();   // slots 234, 235
-    virtual int State236(int event); virtual State State236Ptr();   // slots 236, 237
-    virtual int State238(int event); virtual State State238Ptr();   // slots 238, 239
-    int State9da590(int event);   // 0x9da590, not virtual
-    virtual State State9da590Ptr();   // slot 240: returns the state at 0x9da590
-
-    char padding_b79[0x17];
-    EnemySensor sensor;          // +0xb90
-    int32_t valueBb8;            // +0xbb8
-    char padding_bbc[0xc];
-    int32_t valueBc8;            // +0xbc8
-    uint8_t flagBcc;             // +0xbcc
-};
 // vtable 0x187ce88, 240 slots
 struct EnemyOneHitWonder : Enemy {
     virtual int State234(int event); virtual State State234Ptr();   // slots 234, 235
     virtual int State236(int event); virtual State State236Ptr();   // slots 236, 237
     virtual int State238(int event); virtual State State238Ptr();   // slots 238, 239
-};
-// vtable 0x187e2f8, 241 slots
-struct EnemySasuke : Enemy {
-    virtual int State234(int event); virtual State State234Ptr();   // slots 234, 235
-    virtual int State236(int event); virtual State State236Ptr();   // slots 236, 237
-    virtual int State238(int event); virtual State State238Ptr();   // slots 238, 239
-    int State9e5360(int event);   // 0x9e5360, not virtual
-    virtual State State9e5360Ptr();   // slot 240: returns the state at 0x9e5360
-};
-// vtable 0x187eaa8, 240 slots
-struct EnemyGuyOnFire : Enemy {
-    int State96(int event);
-    int State176(int event);
-    virtual int State234(int event); virtual State State234Ptr();   // slots 234, 235
-    virtual int State236(int event); virtual State State236Ptr();   // slots 236, 237
-    virtual int State238(int event); virtual State State238Ptr();   // slots 238, 239
 
     char padding_b79[0x17];
     EnemySensor sensor;          // +0xb90
-    char padding_bb8[0x18];
-    AttackSlot attack;           // +0xbd0
-    float attackDelay;           // +0xc48
-    float attackTimer;           // +0xc4c
-    uint8_t attackPending;       // +0xc50
-};
-// vtable 0x187f250, 242 slots
-struct EnemyChargingCrowd : Enemy {
-    virtual int State234(int event); virtual State State234Ptr();   // slots 234, 235
-    virtual int State236(int event); virtual State State236Ptr();   // slots 236, 237
-    virtual int State238(int event); virtual State State238Ptr();   // slots 238, 239
-    virtual int State240(int event); virtual State State240Ptr();   // slots 240, 241
+    int32_t valueBb8;            // +0xbb8
+    char padding_bbc[0x8];
+    float timeLimitBc4;          // +0xbc4: state 238 returns to 96 after this long
+    float timerBc8;              // +0xbc8
+    uint8_t flagBcc;             // +0xbcc
 };
 // vtable 0x187fa08, 244 slots
 struct EnemyZombie : Enemy {
@@ -173,20 +134,6 @@ struct EnemyJetPackMatt : Enemy {
     char padding_b79[0x17];
     AttackSlot attacks[1];       // +0xb90
 };
-// vtable 0x1883ec0, 256 slots
-struct EnemyJake : Enemy {
-    virtual int State234(int event); virtual State State234Ptr();   // slots 234, 235
-    virtual int State236(int event); virtual State State236Ptr();   // slots 236, 237
-    virtual int State238(int event); virtual State State238Ptr();   // slots 238, 239
-    virtual int State240(int event); virtual State State240Ptr();   // slots 240, 241
-    virtual int State242(int event); virtual State State242Ptr();   // slots 242, 243
-    virtual int State244(int event); virtual State State244Ptr();   // slots 244, 245
-    virtual int State246(int event); virtual State State246Ptr();   // slots 246, 247
-    virtual int State248(int event); virtual State State248Ptr();   // slots 248, 249
-    virtual int State250(int event); virtual State State250Ptr();   // slots 250, 251
-    virtual int State252(int event); virtual State State252Ptr();   // slots 252, 253
-    virtual int State254(int event); virtual State State254Ptr();   // slots 254, 255
-};
 // vtable 0x1884700, 246 slots
 struct EnemyHanzo : Enemy {
     bool Slot34Check();
@@ -248,24 +195,6 @@ struct EnemyGiant : Enemy {
     char padding_ed8[0x168];
     int32_t value1040;           // +0x1040
 };
-// vtable 0x1885e68, 248 slots
-struct EnemyGeeOne : Enemy {
-    virtual int State234(int event); virtual State State234Ptr();   // slots 234, 235
-    virtual int State236(int event); virtual State State236Ptr();   // slots 236, 237
-    virtual int State238(int event); virtual State State238Ptr();   // slots 238, 239
-    virtual int State240(int event); virtual State State240Ptr();   // slots 240, 241
-    virtual int State242(int event); virtual State State242Ptr();   // slots 242, 243
-    virtual int State244(int event); virtual State State244Ptr();   // slots 244, 245
-    virtual int State246(int event); virtual State State246Ptr();   // slots 246, 247
-};
-// vtable 0x1886668, 242 slots
-struct EnemyForestElves : Enemy {
-    float TakeDamage(const void* hit, BaseCharacter* other);
-    virtual int State234(int event); virtual State State234Ptr();   // slots 234, 235
-    virtual int State236(int event); virtual State State236Ptr();   // slots 236, 237
-    virtual int State238(int event); virtual State State238Ptr();   // slots 238, 239
-    virtual int State240(int event); virtual State State240Ptr();   // slots 240, 241
-};
 // vtable 0x1886e20, 244 slots
 struct EnemyChubby : Enemy {
     void Update();
@@ -281,23 +210,6 @@ struct EnemyChubby : Enemy {
     AttackSlot attacks[3];       // +0xb90
     uint8_t flagCf8;             // +0xcf8
 };
-// vtable 0x18875e8, 240 slots
-struct EnemyArZee : Enemy {
-    virtual int State234(int event); virtual State State234Ptr();   // slots 234, 235
-    virtual int State236(int event); virtual State State236Ptr();   // slots 236, 237
-    virtual int State238(int event); virtual State State238Ptr();   // slots 238, 239
-};
-// vtable 0x1887da8, 250 slots
-struct EnemyAlberta : Enemy {
-    virtual int State234(int event); virtual State State234Ptr();   // slots 234, 235
-    virtual int State236(int event); virtual State State236Ptr();   // slots 236, 237
-    virtual int State238(int event); virtual State State238Ptr();   // slots 238, 239
-    virtual int State240(int event); virtual State State240Ptr();   // slots 240, 241
-    virtual int State242(int event); virtual State State242Ptr();   // slots 242, 243
-    virtual int State244(int event); virtual State State244Ptr();   // slots 244, 245
-    virtual int State246(int event); virtual State State246Ptr();   // slots 246, 247
-    virtual int State248(int event); virtual State State248Ptr();   // slots 248, 249
-};
 // vtable 0x18885a0, 240 slots
 struct EnemyAerial : Enemy {
     void SetSolid(bool solid);
@@ -308,6 +220,68 @@ struct EnemyAerial : Enemy {
     virtual State Statea04af0Ptr();   // slot 238: returns the state at 0xa04af0
     int Statea04890(int event);   // 0xa04890, not virtual
     virtual State Statea04890Ptr();   // slot 239: returns the state at 0xa04890
+};
+// vtable 0x187c648, 241 slots
+struct EnemyStuntman : EnemyOneHitWonder {
+    int State108(int event);
+    float TakeDamage(const void* hit, BaseCharacter* other);
+    void Update();
+    virtual int State234(int event); virtual State State234Ptr();   // slots 234, 235, overrides EnemyOneHitWonder
+    int State9da590(int event);   // 0x9da590, not virtual
+    virtual State State9da590Ptr();   // slot 240: returns the state at 0x9da590
+
+    char padding_bcd[0x17];
+    onyx::Vector3 reach;         // +0xbe4: how close a target must be on each axis
+    float minX;                  // +0xbf0: the range of X positions state 234 acts in
+    float maxX;                  // +0xbf4
+    uint8_t flagBf8;             // +0xbf8
+};
+// vtable 0x187e2f8, 241 slots
+struct EnemySasuke : EnemyOneHitWonder {
+    virtual int State234(int event); virtual State State234Ptr();   // slots 234, 235, overrides EnemyOneHitWonder
+    int State9e5360(int event);   // 0x9e5360, not virtual
+    virtual State State9e5360Ptr();   // slot 240: returns the state at 0x9e5360
+};
+// vtable 0x187eaa8, 240 slots
+struct EnemyGuyOnFire : EnemyOneHitWonder {
+    int State96(int event);
+    int State176(int event);
+
+    char padding_bcd[0x3];
+    AttackSlot attack;           // +0xbd0
+    float attackDelay;           // +0xc48
+    float attackTimer;           // +0xc4c
+    uint8_t attackPending;       // +0xc50
+};
+// vtable 0x187f250, 242 slots
+struct EnemyChargingCrowd : EnemyOneHitWonder {
+    virtual int State234(int event); virtual State State234Ptr();   // slots 234, 235, overrides EnemyOneHitWonder
+    virtual int State240(int event); virtual State State240Ptr();   // slots 240, 241
+};
+// vtable 0x1883ec0, 256 slots
+struct EnemyJake : EnemyNormal {
+    virtual int State250(int event); virtual State State250Ptr();   // slots 250, 251
+    virtual int State252(int event); virtual State State252Ptr();   // slots 252, 253
+    virtual int State254(int event); virtual State State254Ptr();   // slots 254, 255
+};
+// vtable 0x1885e68, 248 slots
+struct EnemyGeeOne : EnemyGiant {
+
+};
+// vtable 0x1886668, 242 slots
+struct EnemyForestElves : EnemyOneHitWonder {
+    float TakeDamage(const void* hit, BaseCharacter* other);
+    virtual int State234(int event); virtual State State234Ptr();   // slots 234, 235, overrides EnemyOneHitWonder
+    virtual int State240(int event); virtual State State240Ptr();   // slots 240, 241
+};
+// vtable 0x18875e8, 240 slots
+struct EnemyArZee : EnemyShooter {
+    virtual int State234(int event); virtual State State234Ptr();   // slots 234, 235, overrides EnemyShooter
+    virtual int State238(int event); virtual State State238Ptr();   // slots 238, 239
+};
+// vtable 0x1887da8, 250 slots
+struct EnemyAlberta : EnemyNormal {
+
 };
 
 }  // namespace SPTG

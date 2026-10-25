@@ -22,8 +22,7 @@ struct AttackRange { float min, max, unused; };
 
 // A player the enemy may target, with its distance (0x18 bytes).
 struct TargetEntry {
-    float offsetX;                    // +0x0
-    char padding_4[0x8];
+    onyx::Vector3 offset;             // +0x0: from the enemy to the player
     float distance;                   // +0xc
     onyx::ComponentHandle* actor;     // +0x10
 };

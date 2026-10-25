@@ -400,7 +400,7 @@ int Enemy::State194(int event) {
         stateTime = 0.0f;
         dashDelay = dashDelayBase;
         float perSecond = dashSpeed * 60.0f;
-        dashDelay += (__builtin_fabsf(targets[targetIndex].offsetX) - perSecond * (dashHold + dashDelay)) / perSecond;
+        dashDelay += (__builtin_fabsf(targets[targetIndex].offset.x) - perSecond * (dashHold + dashDelay)) / perSecond;
         return kStateHandled;
     }
     case kStateEvent3:

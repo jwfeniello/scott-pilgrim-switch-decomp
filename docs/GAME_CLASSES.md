@@ -502,8 +502,20 @@ that form: they need `__builtin_assume`, which drops side effects.
 [`EnemyClasses.h`](../src/gameplay/EnemyClasses.h) declares all 24 regular enemy
 classes with their own states (after Enemy's slot 233, each followed by its
 getter) and the overrides the sources define.
-[`EnemyClassStates.cpp`](../src/gameplay/EnemyClassStates.cpp) matches 60 of
-their functions (9,760 bytes), mostly small.
+[`EnemyClassStates.cpp`](../src/gameplay/EnemyClassStates.cpp) matches 62 of
+their functions (10,492 bytes), mostly small.
+
+The class hierarchy comes from the RTTI, where each class derives from
+`Onyx::Component::Compose<Base>`. Most classes derive from Enemy. EnemyStuntman,
+EnemySasuke, EnemyGuyOnFire, EnemyChargingCrowd and EnemyForestElves derive
+from EnemyOneHitWonder. EnemyJake and EnemyAlberta derive from EnemyNormal,
+EnemyGeeOne from EnemyGiant, and EnemyArZee from EnemyShooter. Functions a
+subclass inherits sit at one address in every vtable that uses them, which is
+how EnemyNormal's slot 33 serves EnemyJake and EnemyAlberta.
+EnemyOneHitWonder's states 236 (stop, then remove) and 238 (stop, wait
+`+0xbc4` seconds, back to 96) match. Its fields (the sensor at `+0xb90`, the
+timer at `+0xbc8`) are the ones EnemyStuntman's update resets.
+EnemyStuntman's state 234 is written out but not credited.
 
 Enemy's own fields end at `+0xb79`; everything after belongs to the class.
 Classes with attacks keep them as 0x78-byte slots from `+0xb90` (EnemyNormal,

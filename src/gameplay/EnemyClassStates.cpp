@@ -495,7 +495,7 @@ void EnemyStuntman::Update() {
     value160 = 1.0f;
     sensor.Reset();
     valueBb8 = 0;
-    valueBc8 = 0;
+    timerBc8 = 0.0f;
     flagBcc = 0;
 }
 
@@ -643,6 +643,100 @@ void EnemyChubby::Update() {
     RequestAttack(attacks[0], 11);
     RequestAttack(attacks[2], 39);
     RequestAttack(attacks[1], 32);
+}
+
+// EnemyOneHitWonder slot 236 (0x9da280, inherited by its five subclasses): entry
+// stops the enemy in action mode 5 and AI mode 6; each update removes it.
+int EnemyOneHitWonder::State236(int event) {
+    switch (event) {
+    case kStateUpdate:
+        Remove(true);
+        return kStateHandled;
+    case kStateEnter:
+        actionMode = 5;
+        motion = onyx::Vector3::Zero();
+        motionTarget = onyx::Vector3::Zero();
+        targetIndex = 4;
+        aiMode = 6;
+        mode87c = 3;
+        flag7b8 = 1;
+        flag7b9 = 1;
+        return kStateHandled;
+    case kStateEvent3:
+        return kStateHandled;
+    default:
+        return kStateUnhandled;
+    case kStateExit:
+        states.AssertOwner(this);
+        return kStateHandled;
+    }
+}
+
+// EnemyOneHitWonder slot 238 (0x9da3f0): entry stops the enemy and starts a
+// timer; once it passes +0xbc4, clears +0xbcc and returns to slot 96.
+int EnemyOneHitWonder::State238(int event) {
+    switch (event) {
+    case kStateUpdate:
+        timerBc8 += Move_FrameDelta;
+        if (timerBc8 > timeLimitBc4) {
+            flagBcc = 0;
+            states.Transition(State96Ptr());
+            return kStateParentTookOver;
+        }
+        return kStateHandled;
+    case kStateEnter:
+        timerBc8 = 0.0f;
+        motion = onyx::Vector3::Zero();
+        motionTarget = onyx::Vector3::Zero();
+        return kStateHandled;
+    case kStateEvent3:
+        return kStateHandled;
+    default:
+        return kStateUnhandled;
+    case kStateExit:
+        states.AssertOwner(this);
+        return kStateHandled;
+    }
+}
+
+// EnemyStuntman slot 234 (0x9da030): after EnemyOneHitWonder's state, times the
+// state; while still in it, with the stuntman's X position inside its range and
+// the current target within reach on every axis, saves the motion and switches
+// to the state at 0x9da590. Not yet matched (not credited): the x and y reach
+// tests match (they compile to one vector compare), but the original shares
+// one "handled" return block between the entry, exit and early exits.
+int EnemyStuntman::State234(int event) {
+    int result = EnemyOneHitWonder::State234(event);
+    if (result == kStateParentTookOver) return result;
+    switch (event) {
+    case kStateEnter:
+        value334 = 0.0f;
+        return kStateHandled;
+    case kStateUpdate: {
+        value334 += Move_FrameDelta;
+        if (flagBf8) return kStateHandled;
+        State state = State234Ptr();
+        if (!(states.current == state)) return kStateHandled;
+        ActorObject* actor = onyx::Find<ActorObject, onyx_types::type_6492d61d>(actorObject);
+        float x = onyx::Get<onyx::Transform, onyx::kTransform>(actor->transform)->position.x;
+        if (x >= minX && x <= maxX && targetIndex < targetCount) {
+            const TargetEntry& target = targets[targetIndex];
+            if ((reach.x >= __builtin_fabsf(target.offset.x)) & (reach.y >= __builtin_fabsf(target.offset.y)) &&
+                reach.z >= __builtin_fabsf(target.offset.z)) {
+                flagBf8 = 1;
+                savedMotion.x = motion.x;
+                savedMotion.y = motion.y;
+                savedMotion.z = motion.z;
+                states.Transition(State9da590Ptr());
+                return kStateParentTookOver;
+            }
+        }
+        return kStateHandled;
+    }
+    case kStateExit:
+        return kStateHandled;
+    }
+    return kStateUnhandled;
 }
 
 }  // namespace SPTG
