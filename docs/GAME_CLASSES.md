@@ -151,3 +151,37 @@ slots (see [player action states](PLAYER_ACTION_STATES.md)).
 
 About 271 game functions (222 KB) compare against these event values. They are the
 starting point for reconstructing character behavior.
+
+### Matching state handlers
+
+Small handlers that only call their parent state and set fields match directly.
+Most handlers that switch over all four events do not yet. The original lowers
+that switch to a four-entry jump table: the exit case (10002) has its own block,
+which it shares with the update case's "stay in this state" path. Public Clang 8
+merges exit with event 10003 into one range and emits compares instead. Editing
+our optimized IR to put a lifetime-end marker in that shared block reproduces the
+original EnemyZombie handler (`0x9e87c0`) exactly. So the original source has
+something in that block that disappears only during code generation. No source
+spelling, optimization level, LTO setting or LLVM 7/9/10 build tried so far
+produces it.
+
+## Pickups
+
+`SPTG::Pickup` (vtable `0x1878f78`, 87 slots) is reconstructed in
+[`src/gameplay/Pickup.cpp`](../src/gameplay/Pickup.cpp) with its state machine
+([`StateMachine.h`](../src/gameplay/StateMachine.h)). Three more functions match
+exactly (420 bytes), next to the 16 small slots already matched:
+
+- **Reset** (slot 7): resets the actor, then starts the state machine in the
+  initial state and sends it the enter event.
+- **Update** (slot 16): an item that is not held is released when its holder's
+  ID is outside 10001–999999 or it has no holder. It then keeps the frame's value
+  and refreshes its scale.
+- **Touch** (slot 38): an actor touching the item collects it, unless that actor
+  is one of four ignored actors (at `+0x190`), collection is blocked, or the item
+  is already in its collected state.
+
+Slots 78–85 are four states, each followed by a getter that returns it as a
+virtual member pointer (`{vtable offset, 1}`): slot 81 returns the initial state
+(slot 80) and slot 83 the collected state (slot 82). The four state handlers
+have the jump-table shape described above.

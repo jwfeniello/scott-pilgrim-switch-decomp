@@ -1,9 +1,9 @@
 {
   "version": 1,
-  "generated_at": "2026-10-24T23:51:10.064217+00:00",
+  "generated_at": "2026-10-25T00:17:56.756885+00:00",
   "target_elf_sha256": "ea95638e6d6aaa0dc6cddd552a9366799aa1ec3bc07ee201f23f6c151103f5b8",
   "input_sha256": {
-    "config/builds.json": "2fc1f675a8ec06ccc891fecedcee9058419d12586d624f91ef63bf368a1e6c30",
+    "config/builds.json": "2b3c4f8bfd87ad74e8c2a474c2b2d0cab86faab693fab29bd8f9325f60a292ef",
     "config/functions.tsv": "399e91468a04e0459194c10d68d2210d1157cedefeb19c7851886ca7632fcb18",
     "config/non_fde_functions.tsv": "6a45f5e185454fa0472af00b2cdc9d040d73ca133d1106217e1fbbe3b32a8175",
     "config/target.json": "23cc6a5227206a953e7668acf5e9ae5c02a25c23b7e7967f0450a814b888241a",
@@ -1084,7 +1084,9 @@
     "src/gameplay/ComponentAccess.cpp": "b1b34b3a09bc3544f3fffe397604e3d185ea651f571180a3eb13cd58e11cbab5",
     "src/gameplay/ComponentTypes.h": "f7eea015dc032ea1d06d52741b5f5e7724ff5a61171703a57cdf990981e76953",
     "src/gameplay/OnyxComponents.h": "7eb6e67ca1fc00a3176f547249f52b2bcaf88bb2ce1dc59402b3aaacc12da3b5",
+    "src/gameplay/Pickup.cpp": "f18c14ad43131b716e1deff55113a6afa60a899bb6f78b87bf57bbeb00f9b329",
     "src/gameplay/PlayerStates.cpp": "a622b65b976d7ab11a2e17e45f597e6d1f5ef7670677545bbea50d95e40e7712",
+    "src/gameplay/StateMachine.h": "22092e7618466835ff9c420566b9784fc843bc098706e6675e21b131dd69b7ce",
     "src/gameplay/Statistics.cpp": "cb3304f4a5f95c404193c0c4e2c9c390df85af91aca001dbdf83ab25f71358ae",
     "src/gameplay/Statistics.h": "182a15497caa9568faf4f1e30f7883748d5282dfab2070914139a84ee5a69f90",
     "src/gameplay/StatisticsDetail.cpp": "86586b7a211a5a3b2f482ad00896ec72f08191db720386e11b3ff383464b59a3",
@@ -3907,17 +3909,17 @@
     "vendor/zlib-1.2.11/zutil.h": "9a63f6690fac1620aa3cecee5752af618806da438a256b4a047fbcd289cac159"
   },
   "compiler_versions": {
-    "8.0.1": "clang version 8.0.1 (tags/RELEASE_801/final)",
     "7.0.1": "clang version 7.0.1 (tags/RELEASE_701/final)",
+    "8.0.1": "clang version 8.0.1 (tags/RELEASE_801/final)",
     "lld": "LLD 8.0.1 (compatible with GNU linkers)"
   },
   "compiler_sha256": {
-    "8.0.1": "dffd62a213ec6cdb4430012a4a41c11e5e32c288f133d5391f9be49e1c5b69de",
     "7.0.1": "c2f0a175157d9aaace8031f8e6d7ea0ed6142b4bcef287105e3ed227301f1002",
+    "8.0.1": "dffd62a213ec6cdb4430012a4a41c11e5e32c288f133d5391f9be49e1c5b69de",
     "lld": "c4b3aaea06ff7112c64753047a2ab279fc3fe10dd807fd3c22edfdae99f43eed"
   },
-  "exact_functions": 33950,
-  "exact_bytes": 3998044,
+  "exact_functions": 33953,
+  "exact_bytes": 3998464,
   "builds": [
     {
       "id": "probes",
@@ -13033,6 +13035,11 @@
       "id": "echo_event_constructors_keep_pic_no_float_unwind_noexc_strict_o3",
       "compiler": "8.0.1",
       "object_sha256": "d675c58f4f69eee00cf564303f0738a02ac89951304bf74984b2fc8a82cd6d16"
+    },
+    {
+      "id": "gameplay_pickup",
+      "compiler": "8.0.1",
+      "object_sha256": "f41c54326c40fa2b80d9bd19651d492eae3b29b4a82066bf3c28e70d33e525a7"
     }
   ],
   "matches": [
@@ -268622,6 +268629,17 @@
       "relocation_count": 0
     },
     {
+      "address": "0x9a3d50",
+      "size": 76,
+      "exact": true,
+      "target_sha256": "b4471f23b299519ac824456ed56e908a9aaa89b0638a249b7990d29209395c27",
+      "compiled_sha256": "b4471f23b299519ac824456ed56e908a9aaa89b0638a249b7990d29209395c27",
+      "source": "src/gameplay/Pickup.cpp",
+      "symbol": "_ZN4SPTG6Pickup5ResetEv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 1
+    },
+    {
       "address": "0x9a3da0",
       "size": 12,
       "exact": true,
@@ -268655,6 +268673,17 @@
       "relocation_count": 1
     },
     {
+      "address": "0x9a3e40",
+      "size": 132,
+      "exact": true,
+      "target_sha256": "85923f982184e6a9c0f76c7ff742e20ca61b85649c971ff05fc6dab204fc84c1",
+      "compiled_sha256": "85923f982184e6a9c0f76c7ff742e20ca61b85649c971ff05fc6dab204fc84c1",
+      "source": "src/gameplay/Pickup.cpp",
+      "symbol": "_ZN4SPTG6Pickup6UpdateEv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 3
+    },
+    {
       "address": "0x9a4220",
       "size": 72,
       "exact": true,
@@ -268663,6 +268692,17 @@
       "source": "src/FloatCallsVoidOmitDirect.cpp",
       "symbol": "RecoveredLeaf_9a4220",
       "source_review": "generated_cxx_abi_view",
+      "relocation_count": 1
+    },
+    {
+      "address": "0x9a4270",
+      "size": 212,
+      "exact": true,
+      "target_sha256": "a959b21d0608eb296f6dcbf3d33889e44a482b993a1a99a1434d6e942cadea46",
+      "compiled_sha256": "a959b21d0608eb296f6dcbf3d33889e44a482b993a1a99a1434d6e942cadea46",
+      "source": "src/gameplay/Pickup.cpp",
+      "symbol": "_ZN4SPTG6Pickup9OnContactEPvPKNS_7ContactE",
+      "source_review": "manual_reconstruction",
       "relocation_count": 1
     },
     {

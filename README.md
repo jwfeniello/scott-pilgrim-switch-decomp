@@ -16,8 +16,8 @@ Edition** for Nintendo Switch.
 [Progress on decomp.dev](https://decomp.dev/jwfeniello/scott-pilgrim-switch-decomp)
 · [Progress workflow](https://github.com/jwfeniello/scott-pilgrim-switch-decomp/actions/workflows/progress.yml)
 
-**Current locally verified progress: 33,950 exact functions /
-3,998,044 bytes / 24.383277% of executable `.text`.** The original `.text` is 16,396,664 bytes.
+**Current locally verified progress: 33,953 exact functions /
+3,998,464 bytes / 24.385838% of executable `.text`.** The original `.text` is 16,396,664 bytes.
 This includes engine and library infrastructure. The project does not yet rebuild
 or boot the complete game. Original method names and many ABI declarations remain
 provisional. See the [integration plan](docs/INTEGRATION_PLAN.md) for
@@ -30,6 +30,7 @@ all 668 `SPTG` game classes from RTTI, including the declared component
 dependencies of each (`Onyx::Component::Compose<Parent, Dependencies>`): the
 seven playable characters, every boss and enemy type, and the hierarchical state
 machines their states run (events 10000–10003, parent state first).
+`SPTG::Pickup` is the first class reconstructed on top of it.
 
 [Gameplay components and actor state](docs/GAMEPLAY_COMPONENTS.md) names all 793
 recovered component type IDs from factory RTTI. It recovers the cached-component
