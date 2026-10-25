@@ -338,14 +338,15 @@ of its states (4,300 bytes). "Stops" means both motion vectors are zeroed.
 states and adds its own at slots 172–227. An overriding state runs the base
 state first and stops if the base state has already switched states (result 2).
 
-[`EnemyStates.cpp`](../src/gameplay/EnemyStates.cpp) matches 13 of them
-(4,436 bytes):
+[`EnemyStates.cpp`](../src/gameplay/EnemyStates.cpp) matches 13 of them, plus
+the chance roll they use (4,820 bytes in all):
 
 | Slot | Address | Behavior |
 | --- | --- | --- |
 | 100, 102 | `0x9cef60`, `0x9cf000` | After the base state, with a mount, run slot 31 and play animation 2 or 5 |
 | 116 | `0x9cf500` | After the base state, sends message 3 to every player (`Catalog<ControllablePlayer>` through the level singleton) and resets the AI fields; animation end goes to 200 |
-| 126 | `0x9cf670` | After the base state, rolls a random chance on exit (`0x9dd6b0`, a subtractive random generator) against the percentage at `+0x920` |
+| 126 | `0x9cf670` | After the base state, rolls the chance on exit |
+| — | `0x9dd6b0` | The chance roll: with a mount, rolls 0–100 against the percentage at `+0x920`; a failed roll sets AI mode 6 |
 | 136 | `0x9cf6e0` | Releases a held partner after `+0x9cc` seconds; the partner plays the recovery animation for its hit animation (a lookup table) |
 | 172 | `0x9d03c0` | AI mode 6 while active; hands over to 96 once `0x9dcb90` allows |
 | 174 | `0x9d0490` | Faces the target player's X position (through its ActorObject's Transform) and runs `0x9db820` each update |
@@ -355,6 +356,10 @@ state first and stops if the base state has already switched states (result 2).
 | 198 | `0x9d40b0` | Plays the special attack's animation and starts it (`+0x898`) |
 | 222 | `0x9d8f00` | AI mode 7, animation 209, hides the effect and raises an ActorObject flag; takes `+0x9c8` from the game difficulty |
 | 226 | `0x9d98c0` | Idle entry: animation 0, or 44/60 with a mount (the mount plays 100); stops |
+
+Slot 108 (allies roll to assist) and BaseCharacter's slot 140 (landing after a
+throw) are written out in the sources but not credited. Both differ only in loop
+layout or instruction scheduling so far.
 
 An attack slot is `0x78` bytes: the attack data StartAttack receives (`0x58`
 bytes), then the animation (`+0x58`) and a kind (`+0x6c`). Keeping the animation
@@ -388,3 +393,23 @@ Virtual slot 44 starts an attack. It records the descriptor, takes a new attack
 ID from a global counter, and scales the descriptor's first value by factors
 from the attacker and from the enemy. With source 1 the enemy itself is the
 attacker.
+
+## Random numbers
+
+[`Random.h`](../src/gameplay/Random.h) models the game's random generator
+(pointer at `0x192ae70`) as its callers inline it. It is Knuth's subtractive
+generator: a 55-entry table, modulus 1,000,000,000, two indices that wrap from
+55 back to 1. A recursive spin lock guards it. The owner is the thread ID from
+`nn::os::GetThreadId(nn::os::GetCurrentThread())`, folded to 32 bits, and is
+taken and released with compare-and-swap loops. A range helper returns
+`min + (T)(value × 1e-9 × 10000) % (max − min + 1)` and counts every call in a
+global (`0x1935254`): the chance roll uses `0..100` unsigned, and the assist
+roll in slot 108 `1..100` signed.
+
+Two details came from matching the chance roll exactly. The `nn::os` functions
+are declared `noexcept`; without it, Clang adds a terminate handler to the lock's
+destructor. And the unlock computes the thread ID without using it. The form
+that keeps those calls is an assertion that evaluates its expression and lets
+the optimizer assume it (`SPTG_ASSERT` in
+[`Assert.h`](../src/gameplay/Assert.h)). The state exit cases do not match with
+that form: they need `__builtin_assume`, which drops side effects.

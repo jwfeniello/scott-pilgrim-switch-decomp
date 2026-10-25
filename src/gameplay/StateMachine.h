@@ -26,11 +26,12 @@ template<class Owner> struct StateMachine {
         current = initial;
         (self->*initial)(kStateEnter);
     }
-    // The exit case of most original states holds an instruction that emits no
+    // The exit case of many original states holds an instruction that emits no
     // code, which keeps the case in its own jump-table block. An assumption is
     // the only source construct found that does this, so it is most likely a
     // release-mode assertion. Its condition is unknown; this owner check stands
-    // in for it (see docs/GAME_CLASSES.md#matching-state-handlers).
+    // in for it (see docs/GAME_CLASSES.md#matching-state-handlers). Spelled with
+    // SPTG_ASSERT instead, these states no longer match.
     __attribute__((always_inline)) void AssertOwner(const Owner* self) const { __builtin_assume(owner == self); }
 };
 

@@ -18,6 +18,7 @@ struct Enemy : BaseCharacter {
     int State96(int event);                                          // slot 96, overrides BaseCharacter
     int State100(int event);                                         // slot 100, overrides BaseCharacter
     int State102(int event);                                         // slot 102, overrides BaseCharacter
+    int State108(int event);                                         // slot 108, overrides BaseCharacter
     int State116(int event);                                         // slot 116, overrides BaseCharacter
     int State126(int event);                                         // slot 126, overrides BaseCharacter
     int State136(int event);                                         // slot 136, overrides BaseCharacter
@@ -85,10 +86,13 @@ struct Enemy : BaseCharacter {
     char padding_910[0xc];
     float attackRange;           // +0x91c
     float chance;                // +0x920: percent, compared with a random roll
-    char padding_924[0x5c];
+    char padding_924[0x54];
+    uint8_t flags978;            // +0x978
+    char padding_979[0x7];
     float value980;              // +0x980
     float delay984;              // +0x984
-    char padding_988[0x24];
+    char padding_988[0x20];
+    float assistChance;          // +0x9a8: percent
     float delay9ac;              // +0x9ac
     char padding_9b0[0x18];
     int32_t value9c8;            // +0x9c8
@@ -109,5 +113,13 @@ struct Enemy : BaseCharacter {
 static_assert(__builtin_offsetof(Enemy, stateTime) == 0x7b0, "Enemy state time");
 static_assert(__builtin_offsetof(Enemy, aiMode) == 0x824, "Enemy AI mode");
 static_assert(__builtin_offsetof(Enemy, attacks) == 0xba8, "Enemy attacks");
+
+// Onyx::Catalog<Enemy> (component type 0x5f5cdd73).
+struct EnemyCatalog : onyx::Component {
+    char padding_8[0x78];
+    uint64_t count;     // +0x80
+    char padding_88[0x8];
+    Enemy** enemies;    // +0x90
+};
 
 }  // namespace SPTG

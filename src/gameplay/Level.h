@@ -11,7 +11,8 @@ template<class T> struct Singleton { onyx::ComponentHandle* handle; T* Get(); };
 struct LevelItemAccessor {
     char padding[0x70];
     onyx::ComponentHandle* pickupSpawners;   // +0x70, Catalog<PickupSpawner>
-    char padding_78[0x28];
+    char padding_78[0x20];
+    onyx::ComponentHandle* enemies;          // +0x98, Catalog<Enemy>
     onyx::ComponentHandle* players;          // +0xa0, Catalog<ControllablePlayer>
 };
 static_assert(__builtin_offsetof(LevelItemAccessor, players) == 0xa0, "LevelItemAccessor players");

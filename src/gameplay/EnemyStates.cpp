@@ -3,6 +3,7 @@
 // switched states. Names are provisional.
 #include "ComponentTypes.h"
 #include "Enemy.h"
+#include "Random.h"
 
 namespace SPTG {
 
@@ -116,6 +117,26 @@ int Enemy::State172(int event) {
         flag3ba = 0;
         return kStateHandled;
     }
+}
+
+// Slot 108 (0x9dd830): after the base state, on entry, every other enemy on the
+// same target that is active, in AI mode 3 or lower, without +0x874 set and with
+// bit 3 of +0x978 rolls 1-100 against its assist chance; on success its +0x874
+// becomes 3. Not yet byte-identical, so not credited: the original's loop keeps
+// the catalog bounds in registers on the paths that skip an enemy early.
+int Enemy::State108(int event) {
+    if (BaseCharacter::State108(event) == kStateParentTookOver) return kStateParentTookOver;
+    if (event != kStateEnter) return kStateUnhandled;
+    EnemyCatalog* catalog = onyx::Get<EnemyCatalog, onyx_types::type_5f5cdd73>(level.Get()->enemies);
+    for (Enemy** i = catalog->enemies; i != catalog->enemies + catalog->count; ++i) {
+        Enemy* other = *i;
+        if (other->flag50 || other->targetIndex != targetIndex || other == this || other->aiMode > 3) continue;
+        if (other->value874 == 0 && (other->flags978 & 8)) {
+            uint32_t roll = RandomRange(1, 100);
+            if (roll <= other->assistChance) other->value874 = 3;
+        }
+    }
+    return kStateHandled;
 }
 
 // Slot 116 (0x9cf500): after the base state, entry sends message 3 from this
@@ -371,6 +392,19 @@ int Enemy::State222(int event) {
         return kStateHandled;
     default:
         return kStateUnhandled;
+    }
+}
+
+// 0x9dd6b0: when slot 36 holds, rolls 0-100 against the chance at +0x920 and
+// records the result; a failed roll sets AI mode 6.
+void Enemy::RollChance() {
+    if (!Slot36Check()) return;
+    uint32_t roll = RandomRange(0u, 100u);
+    if (roll <= chance) {
+        chanceResult = 1;
+    } else {
+        aiMode = 6;
+        chanceResult = 0;
     }
 }
 

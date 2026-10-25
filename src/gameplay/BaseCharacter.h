@@ -41,8 +41,10 @@ struct ActorObject : onyx::Component {
 };
 // The component behind ActorObject::flags.
 struct ActorFlags : onyx::Component {
-    char padding_8[0x110];
-    uint8_t flag118;   // +0x118
+    char padding_8[0x71];
+    uint8_t facingLeft;   // +0x79
+    char padding_7a[0x9e];
+    uint8_t flag118;      // +0x118
 };
 // Reached through the singleton at +0x80 (getters 0x992bf0, 0x992f30); probably
 // Enemy's GameDifficultyAccessor dependency.
@@ -79,8 +81,9 @@ struct BaseCharacter : onyx::Component {
     virtual bool IsOnGround();                                               // slot 52
     SPTG_SLOT(53) SPTG_SLOT(54) SPTG_SLOT(55) SPTG_SLOT(56) SPTG_SLOT(57) SPTG_SLOT(58) SPTG_SLOT(59) SPTG_SLOT(60)
     SPTG_SLOT(61) SPTG_SLOT(62) SPTG_SLOT(63) SPTG_SLOT(64) SPTG_SLOT(65) SPTG_SLOT(66) SPTG_SLOT(67) SPTG_SLOT(68)
-    SPTG_SLOT(69) SPTG_SLOT(70) SPTG_SLOT(71) SPTG_SLOT(72) SPTG_SLOT(73) SPTG_SLOT(74) SPTG_SLOT(75) SPTG_SLOT(76)
-    SPTG_SLOT(77) SPTG_SLOT(78) SPTG_SLOT(79) SPTG_SLOT(80)
+    virtual void Slot69(void* data, void* extra);                            // slot 69
+    SPTG_SLOT(70) SPTG_SLOT(71) SPTG_SLOT(72) SPTG_SLOT(73) SPTG_SLOT(74) SPTG_SLOT(75) SPTG_SLOT(76) SPTG_SLOT(77)
+    SPTG_SLOT(78) SPTG_SLOT(79) SPTG_SLOT(80)
     virtual float Slot81();                                                  // slot 81
     SPTG_SLOT(82) SPTG_SLOT(83) SPTG_SLOT(84) SPTG_SLOT(85)
     virtual void Slot86();                                                   // slot 86
@@ -119,7 +122,9 @@ struct BaseCharacter : onyx::Component {
     virtual bool Slot156();                                                  // slot 156
     SPTG_SLOT(157) SPTG_SLOT(158)
 
-    char padding_8[0x50];
+    char padding_8[0x48];
+    uint8_t flag50;              // +0x50
+    char padding_51[0x7];
     onyx::ComponentHandle* effectHandle; // +0x58
     char padding_60[0x8];
     onyx::ComponentHandle* partnerHandle; // +0x68
@@ -128,7 +133,12 @@ struct BaseCharacter : onyx::Component {
     Singleton<GameDifficultyAccessor> difficultyAccessor; // +0x80
     char padding_88[0x8];
     Singleton<LevelItemAccessor> level; // +0x90
-    char padding_98[0x98];
+    char padding_98[0x14];
+    float throwSpeed;            // +0xac: horizontal speed after landing from a throw
+    char padding_b0[0x48];
+    float groundZ;               // +0xf8
+    float groundC4;              // +0xfc
+    char padding_100[0x30];
     uint8_t flag130;             // +0x130
     char padding_131[0x2f];
     float value160;              // +0x160
@@ -151,7 +161,15 @@ struct BaseCharacter : onyx::Component {
     float timer330;              // +0x330
     char padding_334[0x4];
     uint8_t flag338;             // +0x338
-    char padding_339[0x81];
+    uint8_t flag339;             // +0x339
+    char padding_33a[0x6];
+    char block340[0x64];         // +0x340: passed to slot 69
+    float positionX;             // +0x3a4
+    float positionYZ;            // +0x3a8: position Y plus Z
+    char padding_3ac[0x4];
+    float restitution;           // +0x3b0
+    char padding_3b4[0x5];
+    uint8_t skipFrame;           // +0x3b9: set on entry; the first update is skipped
     uint8_t flag3ba;             // +0x3ba
     char padding_3bb[0x145];
     int32_t actionMode;          // +0x500

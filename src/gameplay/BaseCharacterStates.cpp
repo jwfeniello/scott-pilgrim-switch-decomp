@@ -1,6 +1,7 @@
 // SPTG::BaseCharacter's own states, shared by enemies, bosses and players (see
 // docs/GAME_CLASSES.md#basecharacter-states). Names are provisional.
 #include "BaseCharacter.h"
+#include "ComponentTypes.h"
 
 namespace SPTG {
 
@@ -317,6 +318,53 @@ int BaseCharacter::State134(int event) {
                 if (Slot36Check()) static_cast<BaseCharacter*>(mountHandle->object)->PlayAnimation(104, 0, 0, 1.0f);
             }
         }
+        return kStateHandled;
+    case kStateEvent3:
+        return kStateHandled;
+    default:
+        return kStateUnhandled;
+    case kStateExit:
+        states.AssertOwner(this);
+        return kStateHandled;
+    }
+}
+
+// Slot 140 (0x975100): landing after a throw. The first update after entry is
+// skipped. On the ground in animation 171 or 172, the character slides at the
+// throw speed in its facing direction, bounces with the restitution and
+// restores the ground depth values; with +0x339 set it also records its
+// position and passes +0x340 to slot 69. Then it switches to slot 142.
+// Not yet byte-identical, so not credited: the original schedules the fall
+// speed load and the two position stores differently.
+int BaseCharacter::State140(int event) {
+    switch (event) {
+    case kStateUpdate:
+        if (!skipFrame && IsOnGround() && (animation == 171 || animation == 172)) {
+            float fall = motion.z;
+            float speed = throwSpeed;
+            ActorObject* actor = onyx::Find<ActorObject, onyx_types::type_6492d61d>(actorObject);
+            bool left = onyx::Get<ActorFlags, 0x2eae5813u>(actor->flags)->facingLeft;
+            motionTarget.x = 0.0f;
+            motionTarget.y = 0.0f;
+            motion.x = speed * (left ? -1.0f : 1.0f);
+            motionTarget.z = groundZ;
+            motionC4 = groundC4;
+            motion.z = -(fall * restitution);
+            if (flag339) {
+                ActorObject* object = onyx::Find<ActorObject, onyx_types::type_6492d61d>(actorObject);
+                onyx::Transform* transform = onyx::Get<onyx::Transform, onyx::kTransform>(object->transform);
+                positionX = transform->position.x;
+                positionYZ = transform->position.y + transform->position.z;
+                Slot69(block340, nullptr);
+                flag339 = 0;
+            }
+            states.Transition(State142Ptr());
+            return kStateParentTookOver;
+        }
+        skipFrame = 0;
+        return kStateHandled;
+    case kStateEnter:
+        skipFrame = 1;
         return kStateHandled;
     case kStateEvent3:
         return kStateHandled;
