@@ -13,6 +13,8 @@ See [compiler profiles](docs/COMPILERS.md) for what currently works.
 Matching reconstruction of **Scott Pilgrim vs. The World: The Game – Complete
 Edition** for Nintendo Switch.
 
+**AI USAGE**: Codex, Claude, and other models are used heavily in the progress of this decomp. While not completely vibecoded, major parts of this are made with AI. 
+
 [Progress on decomp.dev](https://decomp.dev/jwfeniello/scott-pilgrim-switch-decomp)
 · [Progress workflow](https://github.com/jwfeniello/scott-pilgrim-switch-decomp/actions/workflows/progress.yml)
 
