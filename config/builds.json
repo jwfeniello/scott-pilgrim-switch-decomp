@@ -494028,12 +494028,14 @@
         "-std=c++11",
         "-O2",
         "-mcpu=cortex-a57",
-        "-fno-strict-aliasing",
+        "-fstrict-aliasing",
         "-fomit-frame-pointer",
         "-fno-pic",
         "-fno-delete-null-pointer-checks",
         "-ffunction-sections",
-        "-fdata-sections"
+        "-fdata-sections",
+        "-mllvm",
+        "-no-stack-coloring"
       ],
       "header_roots": [
         "src/gameplay"
@@ -494061,12 +494063,116 @@
           "got_bindings": {}
         },
         {
+          "address": "0x9a3ed0",
+          "size": 848,
+          "symbol": "_ZN4SPTG6Pickup7CollectEv",
+          "target_sha256": "f51c1f09f986954dc9bb99736e3a97ecbeb86f591fc9dec8686add3dff98c229",
+          "bindings": {
+            "_ZN4SPTG6Pickup12HandleQueuedERNS_11QueuedEventE": "0x9a52e0",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30",
+            "Onyx_ProjectSettings": "0x1935070",
+            "Accessor_Tracking": "0x1935068",
+            "Event_Notify": "0xbf6e80",
+            "_ZGVZN4onyx8SettingsEvE8defaults": "0x1935078",
+            "_ZZN4onyx8SettingsEvE8defaults": "0x1935080",
+            "__cxa_guard_acquire": "0xfa4130",
+            "__cxa_guard_release": "0xfa4140",
+            "_Unwind_Resume": "0xfa4920"
+          },
+          "got_bindings": {},
+          "literals": {
+            "554e4b4e4f574e20": "0x1331ae0",
+            "50524f4a45435420": "0x1331000",
+            "0c0000000c000000ffffff7fffffff7f": "0x1334730"
+          }
+        },
+        {
           "address": "0x9a4270",
           "size": 212,
           "symbol": "_ZN4SPTG6Pickup9OnContactEPvPKNS_7ContactE",
           "target_sha256": "a959b21d0608eb296f6dcbf3d33889e44a482b993a1a99a1434d6e942cadea46",
           "bindings": {
             "_ZN4SPTG12StateMachineINS_6PickupEE10TransitionEMS1_FiiE": "0x9a5210"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x9a4380",
+          "size": 388,
+          "symbol": "_ZN4SPTG6Pickup13NotifySpawnerEb",
+          "target_sha256": "40085e624551570ad01b67f76770fd72ad2ed1aa6816cf7734128cd1fcbab78d",
+          "bindings": {
+            "_ZN4SPTG9SingletonINS_17LevelItemAccessorEE3GetEv": "0x7725e0",
+            "Accessor_Resolver": "0x191cd10",
+            "Accessor_Resolve": "0x67edd0",
+            "_ZN4SPTG9SingletonINS_14UnspawnManagerEE3GetEv": "0x7766f0",
+            "_ZN4SPTG8NoHolderE": "0x191b6c0",
+            "_ZN4SPTG7Spawner6RemoveEj": "0x690410"
+          },
+          "got_bindings": {}
+        }
+      ]
+    },
+    {
+      "id": "gameplay_piniata",
+      "source": "src/gameplay/Piniata.cpp",
+      "compiler": "8.0.1",
+      "source_review": "manual_reconstruction",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-std=c++11",
+        "-O2",
+        "-mcpu=cortex-a57",
+        "-fstrict-aliasing",
+        "-fomit-frame-pointer",
+        "-fno-pic",
+        "-fno-delete-null-pointer-checks",
+        "-ffunction-sections",
+        "-fdata-sections",
+        "-mllvm",
+        "-no-stack-coloring"
+      ],
+      "header_roots": [
+        "src/gameplay"
+      ],
+      "functions": [
+        {
+          "address": "0xa11430",
+          "size": 132,
+          "symbol": "_ZN4SPTG7Piniata6UpdateEv",
+          "target_sha256": "a3f8defb39b3769d9340b18871be5d9f2dc8b3112a3cf18f17d9420ab976a9f9",
+          "bindings": {
+            "_ZN4SPTG15BreakableObject6UpdateEv": "0x945670"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xa11c70",
+          "size": 76,
+          "symbol": "_ZN4SPTG7Piniata11ShrinkScaleEv",
+          "target_sha256": "7b85710783457c2d51d109de8a6d8eb70d5c5c2af0434d5053ca830a7e3eed21",
+          "bindings": {
+            "_ZN4SPTG15BreakableObject5ScaleEv": "0x941820"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xa12150",
+          "size": 100,
+          "symbol": "_ZN4SPTG7Piniata9IdleStateEi",
+          "target_sha256": "391426261a3b85caed54d899ccb045bd82c029b782ed6a1dd74b94b79e7ed82a",
+          "bindings": {},
+          "got_bindings": {}
+        },
+        {
+          "address": "0xa130e0",
+          "size": 308,
+          "symbol": "_ZN4SPTG7Piniata12DamagedStateEi",
+          "target_sha256": "8fe0a6521a3e8a81639c6ebe0d5806afe65cb009458d45ff5d373dd0416ea78f",
+          "bindings": {
+            "_ZN4SPTG12StateMachineINS_7PiniataEE10TransitionEMS1_FiiE": "0xa121d0"
           },
           "got_bindings": {}
         }

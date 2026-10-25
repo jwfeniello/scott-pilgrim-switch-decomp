@@ -17,6 +17,8 @@ template<class Owner> struct StateMachine {
     State current;
     State next;
     void Transition(State state);
+    // Sends the current state the per-frame update event.
+    __attribute__((always_inline)) void Update() { (owner->*current)(kStateUpdate); }
     // Starts the machine in `initial` and sends it the enter event.
     __attribute__((always_inline)) void Start(Owner* self, State initial) {
         next = initial;

@@ -165,23 +165,80 @@ something in that block that disappears only during code generation. No source
 spelling, optimization level, LTO setting or LLVM 7/9/10 build tried so far
 produces it.
 
+## Build profile for game classes
+
+The game-class sources (`gameplay_pickup`, `gameplay_piniata`) build with
+`-fstrict-aliasing` and `-mllvm -no-stack-coloring`:
+
+- **No stack-slot sharing.** Pickup's collect function sends the same event in
+  two branches, and the original gives each branch's event payload its own stack
+  slot. Clang 8 merges the two slots unless stack coloring is off. Rebuilding
+  every other non-LTO game-region build with `-no-stack-coloring` changes only
+  two of about 17,000 credited functions, both FreeType library code. So game
+  code shows no sign of slot sharing, and Collect requires its absence.
+- **Strict aliasing.** The same function reuses a list's size after unlinking a
+  node, which needs type-based alias analysis. All other Pickup and Piniata
+  functions match either way. Other game builds keep `-fno-strict-aliasing`.
+- **Exceptions are on.** The original keeps landing pads (bare `_Unwind_Resume`
+  calls) where an event payload with an empty user-provided destructor is live.
+  LLVM 8 cannot delete a cleanup that still holds a lifetime marker.
+
+## Events and project settings
+
+[`OnyxEvents.h`](../src/gameplay/OnyxEvents.h) models the completion events that
+about 1,000 game functions send. An event is sent when the target's flag bit 1
+is set or the project settings enable events. The callback fills a payload, and
+the target's listener is notified through `0xbf6e80` with a 32-bit hash. The
+settings are a global pointer with a built-in default ("UNKNOWN PROJECT NAME",
+count 13, limits 12, 12, `INT_MAX`, `INT_MAX`), created on first use by a guarded
+static. Its layout is the one
+[`GuardedCallbackDispatch.cpp`](../src/GuardedCallbackDispatch.cpp) already
+matches out of line.
+
 ## Pickups
 
 `SPTG::Pickup` (vtable `0x1878f78`, 87 slots) is reconstructed in
 [`src/gameplay/Pickup.cpp`](../src/gameplay/Pickup.cpp) with its state machine
-([`StateMachine.h`](../src/gameplay/StateMachine.h)). Three more functions match
-exactly (420 bytes), next to the 16 small slots already matched:
+([`StateMachine.h`](../src/gameplay/StateMachine.h)). Five more functions match
+exactly (1,656 bytes), next to the 16 small slots already matched:
 
 - **Reset** (slot 7): resets the actor, then starts the state machine in the
   initial state and sends it the enter event.
 - **Update** (slot 16): an item that is not held is released when its holder's
   ID is outside 10001–999999 or it has no holder. It then keeps the frame's value
   and refreshes its scale.
+- **Collect** (slot 17): plays the collect animation, holds the item, handles and
+  removes the next record from the spawned or placed queue, and sends the collect
+  event (hash `0x53df13ab`).
 - **Touch** (slot 38): an actor touching the item collects it, unless that actor
   is one of four ignored actors (at `+0x190`), collection is blocked, or the item
   is already in its collected state.
+- **Spawner notice** (slot 70): releases the item and finds its
+  `SPTG::PickupSpawner` in the level's spawner catalog (spawner 13 has none). A
+  spawned item is pushed onto the spawner's list; otherwise the spawner drops
+  the holder's entry through its `Onyx::Spawner`.
 
 Slots 78–85 are four states, each followed by a getter that returns it as a
 virtual member pointer (`{vtable offset, 1}`): slot 81 returns the initial state
 (slot 80) and slot 83 the collected state (slot 82). The four state handlers
-have the jump-table shape described above.
+have the jump-table shape described above. Slot 4 (1,632 bytes) loads the item
+from a stream and registers its event bindings; it is not reconstructed yet.
+
+## Piniatas
+
+`SPTG::Piniata` (vtable `0x1889c08`) is a breakable object that shrinks as it is
+hit. [`src/gameplay/Piniata.cpp`](../src/gameplay/Piniata.cpp) matches four
+functions (616 bytes):
+
+- **Update** (slot 13): updates the object and its current state, then hides an
+  effect while a trigger component is active (both weak references).
+- **Shrink** (slot 69): a shrinking piniata above scale 1 loses one unit and
+  reports 1; otherwise it reports its scale.
+- **Damaged state** (slot 78): on entry, plays the animation of the last damage
+  stage whose threshold is at least health ÷ maximum health. Once the animation
+  is done with no health left, it switches to the broken state.
+- **Idle state** (slot 84): plays animation 16 on entry.
+
+In a state written with `switch`, the case listed first in the source becomes
+the fall-through block of the compare chain. The damaged state matches only with
+the enter case first.
