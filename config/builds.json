@@ -502766,6 +502766,31 @@
           "got_bindings": {}
         },
         {
+          "address": "0x9b6a80",
+          "size": 1008,
+          "symbol": "_ZN17ComponentRegistryILj10185344ELj1565677453EE10CollectAllEP11PointerListIP9ComponentE",
+          "target_sha256": "409e2de3263030a390c1b84de0d771d284db60a01d9f8b6ff9088524be5d8ff5",
+          "bindings": {
+            "memcpy": "0xfa3330",
+            "memmove": "0xfa33b0",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x9b7420",
+          "size": 136,
+          "symbol": "_ZN17CollectionCallingILj10187808ELj1565677453ELj112ELj10185344EE7RefreshEPK6VectorIjE",
+          "target_sha256": "fc143cd27bccdf0b66c591955d38ef02653010f8a642d1712f6b4603c1d233ab",
+          "bindings": {
+            "NoHolder": "0x191b6c0",
+            "_ZN17ComponentRegistryILj10185344ELj1565677453EE10CollectAllEP11PointerListIP9ComponentE": "0x9b6a80",
+            "_ZN17ComponentRegistryILj10185344ELj1565677453EE12CollectByKeyEjP11PointerListIP9ComponentE": "0x9b6e70"
+          },
+          "got_bindings": {}
+        },
+        {
           "address": "0x9bd450",
           "size": 1964,
           "symbol": "_ZN10CollectionILj10212432ELj1806313218ELj112EE7RefreshEPK6VectorIjE",
@@ -502776,6 +502801,31 @@
             "memmove": "0xfa33b0",
             "Accessor_Allocators": "0x1926bd8",
             "Accessor_AllocatorIndex": "0xa82b30"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x9c5310",
+          "size": 1008,
+          "symbol": "_ZN17ComponentRegistryILj10244880ELj100462108EE10CollectAllEP11PointerListIP9ComponentE",
+          "target_sha256": "fe55a786e0813fd0c8a1d6416d26cdba0808648bf52aed58150229fd5fce9eb2",
+          "bindings": {
+            "memcpy": "0xfa3330",
+            "memmove": "0xfa33b0",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x9c5e20",
+          "size": 136,
+          "symbol": "_ZN17CollectionCallingILj10247712ELj100462108ELj120ELj10244880EE7RefreshEPK6VectorIjE",
+          "target_sha256": "8ae7983ac1e1e2161ee2ef2f2a31b7306fc61042a180785263b6329461cfbebb",
+          "bindings": {
+            "NoHolder": "0x191b6c0",
+            "_ZN17ComponentRegistryILj10244880ELj100462108EE10CollectAllEP11PointerListIP9ComponentE": "0x9c5310",
+            "_ZN17ComponentRegistryILj10244880ELj100462108EE12CollectByKeyEjP11PointerListIP9ComponentE": "0x9c5700"
           },
           "got_bindings": {}
         },
@@ -502794,6 +502844,31 @@
           "got_bindings": {}
         },
         {
+          "address": "0x9cb570",
+          "size": 1008,
+          "symbol": "_ZN17ComponentRegistryILj10270064ELj184502495EE10CollectAllEP11PointerListIP9ComponentE",
+          "target_sha256": "d6e4ee2a72a2a71b7beeaa2d9170f754e86d7dfb6e38a6d79c3b380796c8876c",
+          "bindings": {
+            "memcpy": "0xfa3330",
+            "memmove": "0xfa33b0",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x9cbd80",
+          "size": 136,
+          "symbol": "_ZN17CollectionCallingILj10272128ELj184502495ELj112ELj10270064EE7RefreshEPK6VectorIjE",
+          "target_sha256": "42885f3cf8b597edc6cc7ee552cbc22ef007101b5b56db17c53c7f5efd3577ce",
+          "bindings": {
+            "NoHolder": "0x191b6c0",
+            "_ZN17ComponentRegistryILj10270064ELj184502495EE10CollectAllEP11PointerListIP9ComponentE": "0x9cb570",
+            "_ZN17ComponentRegistryILj10270064ELj184502495EE12CollectByKeyEjP11PointerListIP9ComponentE": "0x9cb960"
+          },
+          "got_bindings": {}
+        },
+        {
           "address": "0xa0a090",
           "size": 1964,
           "symbol": "_ZN10CollectionILj10526864ELj1734408193ELj144EE7RefreshEPK6VectorIjE",
@@ -502804,6 +502879,31 @@
             "memmove": "0xfa33b0",
             "Accessor_Allocators": "0x1926bd8",
             "Accessor_AllocatorIndex": "0xa82b30"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xa0e810",
+          "size": 1008,
+          "symbol": "_ZN17ComponentRegistryILj10545168ELj791409834EE10CollectAllEP11PointerListIP9ComponentE",
+          "target_sha256": "157e726b5b1fd75bb400653e41fe80627030c9449c50a56eae9a7dcb04f7dd98",
+          "bindings": {
+            "memcpy": "0xfa3330",
+            "memmove": "0xfa33b0",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xa0f020",
+          "size": 136,
+          "symbol": "_ZN17CollectionCallingILj10547232ELj791409834ELj112ELj10545168EE7RefreshEPK6VectorIjE",
+          "target_sha256": "e6a0105241cba0b7ac3c49d05e0e66dbc8c37a346dfbdf60de510f1a9a4571f6",
+          "bindings": {
+            "NoHolder": "0x191b6c0",
+            "_ZN17ComponentRegistryILj10545168ELj791409834EE10CollectAllEP11PointerListIP9ComponentE": "0xa0e810",
+            "_ZN17ComponentRegistryILj10545168ELj791409834EE12CollectByKeyEjP11PointerListIP9ComponentE": "0xa0ec00"
           },
           "got_bindings": {}
         },
@@ -502892,6 +502992,68 @@
           "got_bindings": {}
         },
         {
+          "address": "0xb582d0",
+          "size": 136,
+          "symbol": "_ZN17CollectionCallingILj11895504ELj429100959ELj120ELj11916816EE7RefreshEPK6VectorIjE",
+          "target_sha256": "065e46242eba5f235599a6e09c359d623d4a9644482f30cff15d1ff61aed3eb4",
+          "bindings": {
+            "NoHolder": "0x191b6c0",
+            "_ZN17ComponentRegistryILj11916816ELj429100959EE10CollectAllEP11PointerListIP9ComponentE": "0xb5d610",
+            "_ZN17ComponentRegistryILj11916816ELj429100959EE12CollectByKeyEjP11PointerListIP9ComponentE": "0xb5da00"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xb5d610",
+          "size": 1008,
+          "symbol": "_ZN17ComponentRegistryILj11916816ELj429100959EE10CollectAllEP11PointerListIP9ComponentE",
+          "target_sha256": "17a59b1d56db20fec150c2bfdd2ad838c867f21721ac2a16eedfaa66bcae95d7",
+          "bindings": {
+            "memcpy": "0xfa3330",
+            "memmove": "0xfa33b0",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xb617a0",
+          "size": 136,
+          "symbol": "_ZN17CollectionCallingILj11933600ELj429100959ELj104ELj11916816EE7RefreshEPK6VectorIjE",
+          "target_sha256": "c03e29f499a078f81a552bc24b2151f9c86769513e8996a470cacce26746e209",
+          "bindings": {
+            "NoHolder": "0x191b6c0",
+            "_ZN17ComponentRegistryILj11916816ELj429100959EE10CollectAllEP11PointerListIP9ComponentE": "0xb5d610",
+            "_ZN17ComponentRegistryILj11916816ELj429100959EE12CollectByKeyEjP11PointerListIP9ComponentE": "0xb5da00"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xb6aed0",
+          "size": 136,
+          "symbol": "_ZN17CollectionCallingILj11972304ELj1058876811ELj112ELj11972880EE7RefreshEPK6VectorIjE",
+          "target_sha256": "7c4927a519feb9bb244eb5fba852027392c5a6165a268bb0ebc683d6df72e650",
+          "bindings": {
+            "NoHolder": "0x191b6c0",
+            "_ZN17ComponentRegistryILj11972880ELj1058876811EE10CollectAllEP11PointerListIP9ComponentE": "0xb6b110",
+            "_ZN17ComponentRegistryILj11972880ELj1058876811EE12CollectByKeyEjP11PointerListIP9ComponentE": "0xb6b500"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xb6b110",
+          "size": 1008,
+          "symbol": "_ZN17ComponentRegistryILj11972880ELj1058876811EE10CollectAllEP11PointerListIP9ComponentE",
+          "target_sha256": "13d4f0b1ebd23f110646efed70aac019c82a7a6ceb49742aff62b42d6f2bd9d4",
+          "bindings": {
+            "memcpy": "0xfa3330",
+            "memmove": "0xfa33b0",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30"
+          },
+          "got_bindings": {}
+        },
+        {
           "address": "0xb6f080",
           "size": 1964,
           "symbol": "_ZN10CollectionILj11989120ELj427376694ELj112EE7RefreshEPK6VectorIjE",
@@ -502902,6 +503064,18 @@
             "memmove": "0xfa33b0",
             "Accessor_Allocators": "0x1926bd8",
             "Accessor_AllocatorIndex": "0xa82b30"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xb70d10",
+          "size": 136,
+          "symbol": "_ZN17CollectionCallingILj11996432ELj429100959ELj112ELj11916816EE7RefreshEPK6VectorIjE",
+          "target_sha256": "9fe04e47d95db512cb0798299a389d855f5e0fc45957cd7e8067730dd383fc08",
+          "bindings": {
+            "NoHolder": "0x191b6c0",
+            "_ZN17ComponentRegistryILj11916816ELj429100959EE10CollectAllEP11PointerListIP9ComponentE": "0xb5d610",
+            "_ZN17ComponentRegistryILj11916816ELj429100959EE12CollectByKeyEjP11PointerListIP9ComponentE": "0xb5da00"
           },
           "got_bindings": {}
         },
@@ -502920,6 +503094,18 @@
           "got_bindings": {}
         },
         {
+          "address": "0xb72c80",
+          "size": 136,
+          "symbol": "_ZN17CollectionCallingILj12004480ELj1058876811ELj112ELj11972880EE7RefreshEPK6VectorIjE",
+          "target_sha256": "578393026ed6a0110e492a8f3e2557364911a6d085068b37336f0f35431e76d1",
+          "bindings": {
+            "NoHolder": "0x191b6c0",
+            "_ZN17ComponentRegistryILj11972880ELj1058876811EE10CollectAllEP11PointerListIP9ComponentE": "0xb6b110",
+            "_ZN17ComponentRegistryILj11972880ELj1058876811EE12CollectByKeyEjP11PointerListIP9ComponentE": "0xb6b500"
+          },
+          "got_bindings": {}
+        },
+        {
           "address": "0xb98900",
           "size": 1964,
           "symbol": "_ZN10CollectionILj12159232ELj1044721973ELj104EE7RefreshEPK6VectorIjE",
@@ -502930,6 +503116,43 @@
             "memmove": "0xfa33b0",
             "Accessor_Allocators": "0x1926bd8",
             "Accessor_AllocatorIndex": "0xa82b30"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xba3ba0",
+          "size": 136,
+          "symbol": "_ZN17CollectionCallingILj12204960ELj355965574ELj104ELj12205456EE7RefreshEPK6VectorIjE",
+          "target_sha256": "3346526dafe69c4c278895441ba36e60757c26515068457448cd76bd973a3236",
+          "bindings": {
+            "NoHolder": "0x191b6c0",
+            "_ZN17ComponentRegistryILj12205456ELj355965574EE10CollectAllEP11PointerListIP9ComponentE": "0xba3d90",
+            "_ZN17ComponentRegistryILj12205456ELj355965574EE12CollectByKeyEjP11PointerListIP9ComponentE": "0xba4180"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xba3d90",
+          "size": 1008,
+          "symbol": "_ZN17ComponentRegistryILj12205456ELj355965574EE10CollectAllEP11PointerListIP9ComponentE",
+          "target_sha256": "adf9cc7c4c28cc70a75cfc463a88fbac934a5733e688b07c6390221d54e9966c",
+          "bindings": {
+            "memcpy": "0xfa3330",
+            "memmove": "0xfa33b0",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xba4690",
+          "size": 136,
+          "symbol": "_ZN17CollectionCallingILj12207760ELj355965574ELj128ELj12205456EE7RefreshEPK6VectorIjE",
+          "target_sha256": "9984a798d81ee50482a94b5f3f5cc009a22f82f060bfe172610fdbf9c1406943",
+          "bindings": {
+            "NoHolder": "0x191b6c0",
+            "_ZN17ComponentRegistryILj12205456ELj355965574EE10CollectAllEP11PointerListIP9ComponentE": "0xba3d90",
+            "_ZN17ComponentRegistryILj12205456ELj355965574EE12CollectByKeyEjP11PointerListIP9ComponentE": "0xba4180"
           },
           "got_bindings": {}
         },

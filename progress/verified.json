@@ -1,9 +1,9 @@
 {
   "version": 1,
-  "generated_at": "2026-10-25T15:25:57.139851+00:00",
+  "generated_at": "2026-10-25T15:32:12.954485+00:00",
   "target_elf_sha256": "ea95638e6d6aaa0dc6cddd552a9366799aa1ec3bc07ee201f23f6c151103f5b8",
   "input_sha256": {
-    "config/builds.json": "613abb02f5705afe45341680c4423f0ebc7d9bb9ccf1cf71d08b1fffa4e13cd0",
+    "config/builds.json": "923b03fc740d62d0436a13975f77945bb7bf908cce3e051cb6248874c5617d86",
     "config/functions.tsv": "399e91468a04e0459194c10d68d2210d1157cedefeb19c7851886ca7632fcb18",
     "config/non_fde_functions.tsv": "6a45f5e185454fa0472af00b2cdc9d040d73ca133d1106217e1fbbe3b32a8175",
     "config/target.json": "23cc6a5227206a953e7668acf5e9ae5c02a25c23b7e7967f0450a814b888241a",
@@ -28,7 +28,7 @@
     "src/CallbackIdentity.cpp": "871e947aec75dc0fb5b5ae4ac96e26818265164af94bbfb3d99cc3eb79463550",
     "src/CallbackInvoke.cpp": "154c6e752e434b69551de8be741605aeb418a8b020d489d1170c32b454085c50",
     "src/CallbackOwnerRelease.cpp": "068635b3af8b85fcd96dd865562b88b754a6782b570081aba33dc03022c7c23b",
-    "src/CatalogRefresh.cpp": "3b2605017502f874d4d440edafd23100e589da38b48d9a2421f7cbbc6f02341e",
+    "src/CatalogRefresh.cpp": "3d03ead00f6a9d1486725bbc05c3477c95a4522ef7484689b34e0a32f2691acf",
     "src/CfgAtomicNoexceptOmit.cpp": "59dfdce91b2d0312e3c0da23293896b78d26fce4ed6f6902a5cbc11c868e84a4",
     "src/CfgAtomicNormalKeep.cpp": "45a406f54d3570bee0daaf6d47efd657097fe215b1e49251d7ced08ce1be4fb8",
     "src/CfgAtomicNormalOmit.cpp": "6e8760cac5dae0937869ecdfa5134a0bda6fe124df2a810fa38d876e2616e84b",
@@ -1051,7 +1051,7 @@
     "src/callback_identity_instances.inc": "7a0a6b84c12e36248ac19e8c109fc0a477fab05cc36da07c053f64fd936e981b",
     "src/callback_invoke_instances.inc": "86cbddd4c0907933b62e421d7a3bd63c7afcacbb5352e762d484ffccf3fe2a9d",
     "src/callback_owner_release_instances.inc": "4cdaa6b1fd0e6e246fed1f75b6c150189139b858d64e0e4ad5fdef16a1a65895",
-    "src/catalog_refresh_instances.inc": "02a47d0a468b1c9b0ceed27f75f56f834f73f3ff652f6c891556dfa373a511ab",
+    "src/catalog_refresh_instances.inc": "f31d25b4f290227f31e1940dcb20aa1050c32516d91f2d35e9fd2e4a69f32a97",
     "src/circuit_find_property_omit_no_pic_lto_instances.inc": "edcdddfdeb010f1a733600bf53dc886e0061f749d35f8e60a41370c735606296",
     "src/color_property_read_omit_no_pic_instances.inc": "fa2ecd110ae0a5fde0d42ed54ca1d58963fcf4bfc49b05220eae143ae1bcaaac",
     "src/component_map_collect_by_key_omit_no_pic_instances.inc": "cc950a2fab83623cb88ea1fb590831cacafd11dcab32e61af59c3b17d5db6dcf",
@@ -3941,17 +3941,17 @@
     "vendor/zlib-1.2.11/zutil.h": "9a63f6690fac1620aa3cecee5752af618806da438a256b4a047fbcd289cac159"
   },
   "compiler_versions": {
-    "7.0.1": "clang version 7.0.1 (tags/RELEASE_701/final)",
     "8.0.1": "clang version 8.0.1 (tags/RELEASE_801/final)",
+    "7.0.1": "clang version 7.0.1 (tags/RELEASE_701/final)",
     "lld": "LLD 8.0.1 (compatible with GNU linkers)"
   },
   "compiler_sha256": {
-    "7.0.1": "c2f0a175157d9aaace8031f8e6d7ea0ed6142b4bcef287105e3ed227301f1002",
     "8.0.1": "dffd62a213ec6cdb4430012a4a41c11e5e32c288f133d5391f9be49e1c5b69de",
+    "7.0.1": "c2f0a175157d9aaace8031f8e6d7ea0ed6142b4bcef287105e3ed227301f1002",
     "lld": "c4b3aaea06ff7112c64753047a2ab279fc3fe10dd807fd3c22edfdae99f43eed"
   },
-  "exact_functions": 34507,
-  "exact_bytes": 4307560,
+  "exact_functions": 34525,
+  "exact_bytes": 4316112,
   "builds": [
     {
       "id": "probes",
@@ -13146,7 +13146,7 @@
     {
       "id": "catalog_refresh",
       "compiler": "8.0.1",
-      "object_sha256": "3392996e44063837fbfd86d6b12c792c47073c72fc516a97e9068b2e9f7d04bc"
+      "object_sha256": "1c5c6c741dbb0f5276662069bd01f78148dc51e7287cb12c8982a09f88ab50a1"
     }
   ],
   "matches": [
@@ -271409,6 +271409,17 @@
       "relocation_count": 0
     },
     {
+      "address": "0x9b6a80",
+      "size": 1008,
+      "exact": true,
+      "target_sha256": "409e2de3263030a390c1b84de0d771d284db60a01d9f8b6ff9088524be5d8ff5",
+      "compiled_sha256": "409e2de3263030a390c1b84de0d771d284db60a01d9f8b6ff9088524be5d8ff5",
+      "source": "src/CatalogRefresh.cpp",
+      "symbol": "_ZN17ComponentRegistryILj10185344ELj1565677453EE10CollectAllEP11PointerListIP9ComponentE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 15
+    },
+    {
       "address": "0x9b6e70",
       "size": 924,
       "exact": true,
@@ -271440,6 +271451,17 @@
       "symbol": "_Z15DeleteRawBufferILj10187680ELj144EEvPN13SingleRelease14RawBufferOwnerIXT_EXT0_EEE",
       "source_review": "manual_reconstruction",
       "relocation_count": 8
+    },
+    {
+      "address": "0x9b7420",
+      "size": 136,
+      "exact": true,
+      "target_sha256": "fc143cd27bccdf0b66c591955d38ef02653010f8a642d1712f6b4603c1d233ab",
+      "compiled_sha256": "fc143cd27bccdf0b66c591955d38ef02653010f8a642d1712f6b4603c1d233ab",
+      "source": "src/CatalogRefresh.cpp",
+      "symbol": "_ZN17CollectionCallingILj10187808ELj1565677453ELj112ELj10185344EE7RefreshEPK6VectorIjE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 4
     },
     {
       "address": "0x9b7540",
@@ -273125,6 +273147,17 @@
       "relocation_count": 0
     },
     {
+      "address": "0x9c5310",
+      "size": 1008,
+      "exact": true,
+      "target_sha256": "fe55a786e0813fd0c8a1d6416d26cdba0808648bf52aed58150229fd5fce9eb2",
+      "compiled_sha256": "fe55a786e0813fd0c8a1d6416d26cdba0808648bf52aed58150229fd5fce9eb2",
+      "source": "src/CatalogRefresh.cpp",
+      "symbol": "_ZN17ComponentRegistryILj10244880ELj100462108EE10CollectAllEP11PointerListIP9ComponentE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 15
+    },
+    {
       "address": "0x9c5700",
       "size": 924,
       "exact": true,
@@ -273155,6 +273188,17 @@
       "source": "src/ExpandedRecoveryOmit.cpp",
       "symbol": "RecoveredLeaf_9c5d50",
       "source_review": "generated_cxx_abi_view",
+      "relocation_count": 4
+    },
+    {
+      "address": "0x9c5e20",
+      "size": 136,
+      "exact": true,
+      "target_sha256": "8ae7983ac1e1e2161ee2ef2f2a31b7306fc61042a180785263b6329461cfbebb",
+      "compiled_sha256": "8ae7983ac1e1e2161ee2ef2f2a31b7306fc61042a180785263b6329461cfbebb",
+      "source": "src/CatalogRefresh.cpp",
+      "symbol": "_ZN17CollectionCallingILj10247712ELj100462108ELj120ELj10244880EE7RefreshEPK6VectorIjE",
+      "source_review": "manual_reconstruction",
       "relocation_count": 4
     },
     {
@@ -273620,6 +273664,17 @@
       "relocation_count": 0
     },
     {
+      "address": "0x9cb570",
+      "size": 1008,
+      "exact": true,
+      "target_sha256": "d6e4ee2a72a2a71b7beeaa2d9170f754e86d7dfb6e38a6d79c3b380796c8876c",
+      "compiled_sha256": "d6e4ee2a72a2a71b7beeaa2d9170f754e86d7dfb6e38a6d79c3b380796c8876c",
+      "source": "src/CatalogRefresh.cpp",
+      "symbol": "_ZN17ComponentRegistryILj10270064ELj184502495EE10CollectAllEP11PointerListIP9ComponentE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 15
+    },
+    {
       "address": "0x9cb960",
       "size": 924,
       "exact": true,
@@ -273640,6 +273695,17 @@
       "symbol": "_Z15DeleteRawBufferILj10272000ELj144EEvPN13SingleRelease14RawBufferOwnerIXT_EXT0_EEE",
       "source_review": "manual_reconstruction",
       "relocation_count": 8
+    },
+    {
+      "address": "0x9cbd80",
+      "size": 136,
+      "exact": true,
+      "target_sha256": "42885f3cf8b597edc6cc7ee552cbc22ef007101b5b56db17c53c7f5efd3577ce",
+      "compiled_sha256": "42885f3cf8b597edc6cc7ee552cbc22ef007101b5b56db17c53c7f5efd3577ce",
+      "source": "src/CatalogRefresh.cpp",
+      "symbol": "_ZN17CollectionCallingILj10272128ELj184502495ELj112ELj10270064EE7RefreshEPK6VectorIjE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 4
     },
     {
       "address": "0x9cbf10",
@@ -279945,6 +280011,17 @@
       "relocation_count": 0
     },
     {
+      "address": "0xa0e810",
+      "size": 1008,
+      "exact": true,
+      "target_sha256": "157e726b5b1fd75bb400653e41fe80627030c9449c50a56eae9a7dcb04f7dd98",
+      "compiled_sha256": "157e726b5b1fd75bb400653e41fe80627030c9449c50a56eae9a7dcb04f7dd98",
+      "source": "src/CatalogRefresh.cpp",
+      "symbol": "_ZN17ComponentRegistryILj10545168ELj791409834EE10CollectAllEP11PointerListIP9ComponentE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 15
+    },
+    {
       "address": "0xa0ec00",
       "size": 924,
       "exact": true,
@@ -279965,6 +280042,17 @@
       "symbol": "_Z15DeleteRawBufferILj10547104ELj144EEvPN13SingleRelease14RawBufferOwnerIXT_EXT0_EEE",
       "source_review": "manual_reconstruction",
       "relocation_count": 8
+    },
+    {
+      "address": "0xa0f020",
+      "size": 136,
+      "exact": true,
+      "target_sha256": "e6a0105241cba0b7ac3c49d05e0e66dbc8c37a346dfbdf60de510f1a9a4571f6",
+      "compiled_sha256": "e6a0105241cba0b7ac3c49d05e0e66dbc8c37a346dfbdf60de510f1a9a4571f6",
+      "source": "src/CatalogRefresh.cpp",
+      "symbol": "_ZN17CollectionCallingILj10547232ELj791409834ELj112ELj10545168EE7RefreshEPK6VectorIjE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 4
     },
     {
       "address": "0xa0f4a0",
@@ -310492,6 +310580,17 @@
       "relocation_count": 0
     },
     {
+      "address": "0xb582d0",
+      "size": 136,
+      "exact": true,
+      "target_sha256": "065e46242eba5f235599a6e09c359d623d4a9644482f30cff15d1ff61aed3eb4",
+      "compiled_sha256": "065e46242eba5f235599a6e09c359d623d4a9644482f30cff15d1ff61aed3eb4",
+      "source": "src/CatalogRefresh.cpp",
+      "symbol": "_ZN17CollectionCallingILj11895504ELj429100959ELj120ELj11916816EE7RefreshEPK6VectorIjE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 4
+    },
+    {
       "address": "0xb59f70",
       "size": 824,
       "exact": true,
@@ -310512,6 +310611,17 @@
       "symbol": "ResolveComponentAccessorCandidate",
       "source_review": "manual_reconstruction",
       "relocation_count": 28
+    },
+    {
+      "address": "0xb5d610",
+      "size": 1008,
+      "exact": true,
+      "target_sha256": "17a59b1d56db20fec150c2bfdd2ad838c867f21721ac2a16eedfaa66bcae95d7",
+      "compiled_sha256": "17a59b1d56db20fec150c2bfdd2ad838c867f21721ac2a16eedfaa66bcae95d7",
+      "source": "src/CatalogRefresh.cpp",
+      "symbol": "_ZN17ComponentRegistryILj11916816ELj429100959EE10CollectAllEP11PointerListIP9ComponentE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 15
     },
     {
       "address": "0xb5da00",
@@ -311392,6 +311502,17 @@
       "symbol": "_Z21MatchesFourIdentitiesILj11933488ELj1575998005ELj129449108ELj1835297344ELj120045685EEbPvj",
       "source_review": "manual_reconstruction",
       "relocation_count": 0
+    },
+    {
+      "address": "0xb617a0",
+      "size": 136,
+      "exact": true,
+      "target_sha256": "c03e29f499a078f81a552bc24b2151f9c86769513e8996a470cacce26746e209",
+      "compiled_sha256": "c03e29f499a078f81a552bc24b2151f9c86769513e8996a470cacce26746e209",
+      "source": "src/CatalogRefresh.cpp",
+      "symbol": "_ZN17CollectionCallingILj11933600ELj429100959ELj104ELj11916816EE7RefreshEPK6VectorIjE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 4
     },
     {
       "address": "0xb61890",
@@ -313803,6 +313924,28 @@
       "relocation_count": 2
     },
     {
+      "address": "0xb6aed0",
+      "size": 136,
+      "exact": true,
+      "target_sha256": "7c4927a519feb9bb244eb5fba852027392c5a6165a268bb0ebc683d6df72e650",
+      "compiled_sha256": "7c4927a519feb9bb244eb5fba852027392c5a6165a268bb0ebc683d6df72e650",
+      "source": "src/CatalogRefresh.cpp",
+      "symbol": "_ZN17CollectionCallingILj11972304ELj1058876811ELj112ELj11972880EE7RefreshEPK6VectorIjE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 4
+    },
+    {
+      "address": "0xb6b110",
+      "size": 1008,
+      "exact": true,
+      "target_sha256": "13d4f0b1ebd23f110646efed70aac019c82a7a6ceb49742aff62b42d6f2bd9d4",
+      "compiled_sha256": "13d4f0b1ebd23f110646efed70aac019c82a7a6ceb49742aff62b42d6f2bd9d4",
+      "source": "src/CatalogRefresh.cpp",
+      "symbol": "_ZN17ComponentRegistryILj11972880ELj1058876811EE10CollectAllEP11PointerListIP9ComponentE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 15
+    },
+    {
       "address": "0xb6b500",
       "size": 924,
       "exact": true,
@@ -314243,6 +314386,17 @@
       "relocation_count": 8
     },
     {
+      "address": "0xb70d10",
+      "size": 136,
+      "exact": true,
+      "target_sha256": "9fe04e47d95db512cb0798299a389d855f5e0fc45957cd7e8067730dd383fc08",
+      "compiled_sha256": "9fe04e47d95db512cb0798299a389d855f5e0fc45957cd7e8067730dd383fc08",
+      "source": "src/CatalogRefresh.cpp",
+      "symbol": "_ZN17CollectionCallingILj11996432ELj429100959ELj112ELj11916816EE7RefreshEPK6VectorIjE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 4
+    },
+    {
       "address": "0xb70ed0",
       "size": 24,
       "exact": true,
@@ -314417,6 +314571,17 @@
       "symbol": "_Z15DeleteRawBufferILj12004352ELj144EEvPN13SingleRelease14RawBufferOwnerIXT_EXT0_EEE",
       "source_review": "manual_reconstruction",
       "relocation_count": 8
+    },
+    {
+      "address": "0xb72c80",
+      "size": 136,
+      "exact": true,
+      "target_sha256": "578393026ed6a0110e492a8f3e2557364911a6d085068b37336f0f35431e76d1",
+      "compiled_sha256": "578393026ed6a0110e492a8f3e2557364911a6d085068b37336f0f35431e76d1",
+      "source": "src/CatalogRefresh.cpp",
+      "symbol": "_ZN17CollectionCallingILj12004480ELj1058876811ELj112ELj11972880EE7RefreshEPK6VectorIjE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 4
     },
     {
       "address": "0xb72e40",
@@ -317807,6 +317972,28 @@
       "relocation_count": 8
     },
     {
+      "address": "0xba3ba0",
+      "size": 136,
+      "exact": true,
+      "target_sha256": "3346526dafe69c4c278895441ba36e60757c26515068457448cd76bd973a3236",
+      "compiled_sha256": "3346526dafe69c4c278895441ba36e60757c26515068457448cd76bd973a3236",
+      "source": "src/CatalogRefresh.cpp",
+      "symbol": "_ZN17CollectionCallingILj12204960ELj355965574ELj104ELj12205456EE7RefreshEPK6VectorIjE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 4
+    },
+    {
+      "address": "0xba3d90",
+      "size": 1008,
+      "exact": true,
+      "target_sha256": "adf9cc7c4c28cc70a75cfc463a88fbac934a5733e688b07c6390221d54e9966c",
+      "compiled_sha256": "adf9cc7c4c28cc70a75cfc463a88fbac934a5733e688b07c6390221d54e9966c",
+      "source": "src/CatalogRefresh.cpp",
+      "symbol": "_ZN17ComponentRegistryILj12205456ELj355965574EE10CollectAllEP11PointerListIP9ComponentE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 15
+    },
+    {
       "address": "0xba4180",
       "size": 924,
       "exact": true,
@@ -317848,6 +318035,17 @@
       "source": "src/CallRecoveryOmit.cpp",
       "symbol": "RecoveredLeaf_ba4620",
       "source_review": "generated_cxx_abi_view",
+      "relocation_count": 4
+    },
+    {
+      "address": "0xba4690",
+      "size": 136,
+      "exact": true,
+      "target_sha256": "9984a798d81ee50482a94b5f3f5cc009a22f82f060bfe172610fdbf9c1406943",
+      "compiled_sha256": "9984a798d81ee50482a94b5f3f5cc009a22f82f060bfe172610fdbf9c1406943",
+      "source": "src/CatalogRefresh.cpp",
+      "symbol": "_ZN17CollectionCallingILj12207760ELj355965574ELj128ELj12205456EE7RefreshEPK6VectorIjE",
+      "source_review": "manual_reconstruction",
       "relocation_count": 4
     },
     {
