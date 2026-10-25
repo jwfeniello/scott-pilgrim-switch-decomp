@@ -226,18 +226,29 @@ from a stream and registers its event bindings; it is not reconstructed yet.
 
 ## Piniatas
 
-`SPTG::Piniata` (vtable `0x1889c08`) is a breakable object that shrinks as it is
-hit. [`src/gameplay/Piniata.cpp`](../src/gameplay/Piniata.cpp) matches four
-functions (616 bytes):
+`SPTG::Piniata` (vtable `0x1889c08`) is a breakable object that loses health as
+it is hit and shrinks. [`src/gameplay/Piniata.cpp`](../src/gameplay/Piniata.cpp)
+matches six functions (1,788 bytes):
 
-- **Update** (slot 13): updates the object and its current state, then hides an
-  effect while a trigger component is active (both weak references).
-- **Shrink** (slot 69): a shrinking piniata above scale 1 loses one unit and
-  reports 1; otherwise it reports its scale.
+- **Hit** (slot 38): a hit of kind 0 or 2 that passes the hit check
+  (`0xa114d0`) while the piniata still has health damages it, sends the hit event
+  (hash `0x5405ad39`) and updates the damage-stage animation. It then shows the
+  hit effect where the hit landed (through the effect's `Onyx::Transform`) and
+  fires the trigger.
+- **Damage** (slot 69): applies the hit through the base class; a shrinking
+  piniata above scale 1 then loses one unit and reports 1.
+- **Update** (slot 13): updates the object and its current state, then hides the
+  effect while the trigger is active (both weak references).
 - **Damaged state** (slot 78): on entry, plays the animation of the last damage
   stage whose threshold is at least health ÷ maximum health. Once the animation
   is done with no health left, it switches to the broken state.
+- **Broken state** (slot 80): plays animation 212, stops being solid, sends the
+  broken event (hash `0x1b7fbfc1`) and releases the debris; when the animation
+  ends the piniata is released.
 - **Idle state** (slot 84): plays animation 16 on entry.
+
+Not yet reconstructed: the reset (slot 7, which sorts the damage stages), the
+hit check, and the state at slot 82 (jump-table shape).
 
 In a state written with `switch`, the case listed first in the source becomes
 the fall-through block of the compare chain. The damaged state matches only with

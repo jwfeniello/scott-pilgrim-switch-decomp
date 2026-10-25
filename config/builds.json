@@ -494151,10 +494151,10 @@
         {
           "address": "0xa11c70",
           "size": 76,
-          "symbol": "_ZN4SPTG7Piniata11ShrinkScaleEv",
+          "symbol": "_ZN4SPTG7Piniata10TakeDamageEPKNS_3HitEPNS_5ActorE",
           "target_sha256": "7b85710783457c2d51d109de8a6d8eb70d5c5c2af0434d5053ca830a7e3eed21",
           "bindings": {
-            "_ZN4SPTG15BreakableObject5ScaleEv": "0x941820"
+            "_ZN4SPTG15BreakableObject10TakeDamageEPKNS_3HitEPNS_5ActorE": "0x941820"
           },
           "got_bindings": {}
         },
@@ -494167,6 +494167,32 @@
           "got_bindings": {}
         },
         {
+          "address": "0xa12e10",
+          "size": 708,
+          "symbol": "_ZN4SPTG7Piniata5OnHitEPNS_5ActorEPKNS_3HitE",
+          "target_sha256": "2758638b2c7a5ee21c4236a4e54bdee9f0a1da80e289ed55eb25b0adc483d408",
+          "bindings": {
+            "_ZN4SPTG7Piniata8CheckHitEPNS_5ActorEPKNS_3HitE": "0xa114d0",
+            "Onyx_ProjectSettings": "0x1935070",
+            "_ZGVZN4onyx8SettingsEvE8defaults": "0x1935078",
+            "_ZZN4onyx8SettingsEvE8defaults": "0x1935080",
+            "Accessor_Tracking": "0x1935068",
+            "Event_Notify": "0xbf6e80",
+            "Accessor_Resolver": "0x191cd10",
+            "Accessor_Resolve": "0x67edd0",
+            "Transform_Invalidate": "0x68f3b0",
+            "__cxa_guard_acquire": "0xfa4130",
+            "__cxa_guard_release": "0xfa4140",
+            "_Unwind_Resume": "0xfa4920"
+          },
+          "got_bindings": {},
+          "literals": {
+            "554e4b4e4f574e20": "0x1331ae0",
+            "50524f4a45435420": "0x1331000",
+            "0c0000000c000000ffffff7fffffff7f": "0x1334730"
+          }
+        },
+        {
           "address": "0xa130e0",
           "size": 308,
           "symbol": "_ZN4SPTG7Piniata12DamagedStateEi",
@@ -494175,6 +494201,29 @@
             "_ZN4SPTG12StateMachineINS_7PiniataEE10TransitionEMS1_FiiE": "0xa121d0"
           },
           "got_bindings": {}
+        },
+        {
+          "address": "0xa13230",
+          "size": 464,
+          "symbol": "_ZN4SPTG7Piniata11BrokenStateEi",
+          "target_sha256": "23b0d840692f35556d15eca16d4b1036e120a1495c718133038eca0eaa0ad707",
+          "bindings": {
+            "Onyx_ProjectSettings": "0x1935070",
+            "Accessor_Tracking": "0x1935068",
+            "Event_Notify": "0xbf6e80",
+            "_ZGVZN4onyx8SettingsEvE8defaults": "0x1935078",
+            "_ZZN4onyx8SettingsEvE8defaults": "0x1935080",
+            "_ZN4SPTG13PiniataDebris7ReleaseEPv": "0x7b4890",
+            "__cxa_guard_acquire": "0xfa4130",
+            "__cxa_guard_release": "0xfa4140",
+            "_Unwind_Resume": "0xfa4920"
+          },
+          "got_bindings": {},
+          "literals": {
+            "554e4b4e4f574e20": "0x1331ae0",
+            "50524f4a45435420": "0x1331000",
+            "0c0000000c000000ffffff7fffffff7f": "0x1334730"
+          }
         }
       ]
     }

@@ -1,9 +1,9 @@
 {
   "version": 1,
-  "generated_at": "2026-10-25T01:05:10.351206+00:00",
+  "generated_at": "2026-10-25T01:12:20.831104+00:00",
   "target_elf_sha256": "ea95638e6d6aaa0dc6cddd552a9366799aa1ec3bc07ee201f23f6c151103f5b8",
   "input_sha256": {
-    "config/builds.json": "8b130db8c1b48c48bb29af6f321a55e7dd2a40b44834fb82b8760640577d2ed1",
+    "config/builds.json": "869a800a987042c918aa60277718fd75984b3a9d78748b682b8252195661059f",
     "config/functions.tsv": "399e91468a04e0459194c10d68d2210d1157cedefeb19c7851886ca7632fcb18",
     "config/non_fde_functions.tsv": "6a45f5e185454fa0472af00b2cdc9d040d73ca133d1106217e1fbbe3b32a8175",
     "config/target.json": "23cc6a5227206a953e7668acf5e9ae5c02a25c23b7e7967f0450a814b888241a",
@@ -1086,7 +1086,7 @@
     "src/gameplay/OnyxComponents.h": "7eb6e67ca1fc00a3176f547249f52b2bcaf88bb2ce1dc59402b3aaacc12da3b5",
     "src/gameplay/OnyxEvents.h": "0d834213367973300f831e3d5914758b5058020b6f79b53ba3dfe887300e47bc",
     "src/gameplay/Pickup.cpp": "b0da7e5dd74f4f5f7c9d29f69a1a3789823a8eed1f9ea4fc3dd829ac5ea6bf6c",
-    "src/gameplay/Piniata.cpp": "f08ed04afb0f6c113d6b73ec5e9d206816da4fc4278cc0f3a22db782e439568c",
+    "src/gameplay/Piniata.cpp": "6ef0434e7d04c57814e66c7adc0562b632d577c453fd50d9363e000c63e26c23",
     "src/gameplay/PlayerStates.cpp": "a622b65b976d7ab11a2e17e45f597e6d1f5ef7670677545bbea50d95e40e7712",
     "src/gameplay/StateMachine.h": "1ee7e4828abbe76af2ec4f8906329354c3b153e4e12cdbd6c1c784469d5b0e78",
     "src/gameplay/Statistics.cpp": "cb3304f4a5f95c404193c0c4e2c9c390df85af91aca001dbdf83ab25f71358ae",
@@ -3911,17 +3911,17 @@
     "vendor/zlib-1.2.11/zutil.h": "9a63f6690fac1620aa3cecee5752af618806da438a256b4a047fbcd289cac159"
   },
   "compiler_versions": {
-    "7.0.1": "clang version 7.0.1 (tags/RELEASE_701/final)",
     "8.0.1": "clang version 8.0.1 (tags/RELEASE_801/final)",
+    "7.0.1": "clang version 7.0.1 (tags/RELEASE_701/final)",
     "lld": "LLD 8.0.1 (compatible with GNU linkers)"
   },
   "compiler_sha256": {
-    "7.0.1": "c2f0a175157d9aaace8031f8e6d7ea0ed6142b4bcef287105e3ed227301f1002",
     "8.0.1": "dffd62a213ec6cdb4430012a4a41c11e5e32c288f133d5391f9be49e1c5b69de",
+    "7.0.1": "c2f0a175157d9aaace8031f8e6d7ea0ed6142b4bcef287105e3ed227301f1002",
     "lld": "c4b3aaea06ff7112c64753047a2ab279fc3fe10dd807fd3c22edfdae99f43eed"
   },
-  "exact_functions": 33959,
-  "exact_bytes": 4000316,
+  "exact_functions": 33961,
+  "exact_bytes": 4001488,
   "builds": [
     {
       "id": "probes",
@@ -13046,7 +13046,7 @@
     {
       "id": "gameplay_piniata",
       "compiler": "8.0.1",
-      "object_sha256": "9e2c2094ca82aa24d1d779389fd917beebd591734ec11849ce148312566769e0"
+      "object_sha256": "4a2ed4e1090553762df95cc5640f64d71a7ffbeb4e75289082a36fe36102f8cc"
     }
   ],
   "matches": [
@@ -276837,7 +276837,7 @@
       "target_sha256": "7b85710783457c2d51d109de8a6d8eb70d5c5c2af0434d5053ca830a7e3eed21",
       "compiled_sha256": "7b85710783457c2d51d109de8a6d8eb70d5c5c2af0434d5053ca830a7e3eed21",
       "source": "src/gameplay/Piniata.cpp",
-      "symbol": "_ZN4SPTG7Piniata11ShrinkScaleEv",
+      "symbol": "_ZN4SPTG7Piniata10TakeDamageEPKNS_3HitEPNS_5ActorE",
       "source_review": "manual_reconstruction",
       "relocation_count": 1
     },
@@ -277051,6 +277051,17 @@
       "relocation_count": 1
     },
     {
+      "address": "0xa12e10",
+      "size": 708,
+      "exact": true,
+      "target_sha256": "2758638b2c7a5ee21c4236a4e54bdee9f0a1da80e289ed55eb25b0adc483d408",
+      "compiled_sha256": "2758638b2c7a5ee21c4236a4e54bdee9f0a1da80e289ed55eb25b0adc483d408",
+      "source": "src/gameplay/Piniata.cpp",
+      "symbol": "_ZN4SPTG7Piniata5OnHitEPNS_5ActorEPKNS_3HitE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 30
+    },
+    {
       "address": "0xa130e0",
       "size": 308,
       "exact": true,
@@ -277071,6 +277082,17 @@
       "symbol": "RecoveredLeaf_a13220",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 0
+    },
+    {
+      "address": "0xa13230",
+      "size": 464,
+      "exact": true,
+      "target_sha256": "23b0d840692f35556d15eca16d4b1036e120a1495c718133038eca0eaa0ad707",
+      "compiled_sha256": "23b0d840692f35556d15eca16d4b1036e120a1495c718133038eca0eaa0ad707",
+      "source": "src/gameplay/Piniata.cpp",
+      "symbol": "_ZN4SPTG7Piniata11BrokenStateEi",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 28
     },
     {
       "address": "0xa13400",
