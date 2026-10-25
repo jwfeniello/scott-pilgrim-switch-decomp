@@ -1055,4 +1055,49 @@ struct AchievementData : OnyxComponentBase {
     onyx::String string150;      // +0x150
 };
 
+// BitmapFont
+struct BitmapFont : OnyxComponentBase {
+    void Slot4(onyx::Archive& archive, ComponentSlot::Source* source);   // 0x8ccde0
+    char padding_0[0x50];
+    onyx::ComponentHandle* handle50; // +0x50
+    onyx::ComponentHandle* handle58; // +0x58
+    onyx::String string60;       // +0x60
+    int32_t value70;             // +0x70
+    int32_t value74;             // +0x74
+    int32_t value78;             // +0x78
+    char padding_7c[0x4];
+    onyx::Vector<int32_t> vector80; // +0x80
+    char padding_a0[0x8];
+    onyx::Vector<float> vectorA8; // +0xa8
+    char padding_c8[0x8];
+    int32_t valueD0;             // +0xd0
+};
+
+// GateSwitcher
+struct GateSwitcher : OnyxComponentBase {
+    void Slot4(onyx::Archive& archive, ComponentSlot::Source* source);   // 0x8038d0
+    char padding_0[0x50];
+    EventSlot event50;           // +0x50
+};
+// PlayerSynchronizer
+struct PlayerSynchronizer : OnyxComponentBase {
+    void Slot4(onyx::Archive& archive, ComponentSlot::Source* source);   // 0x7c8c80
+    char padding_0[0x50];
+    onyx::ComponentHandle* handle50; // +0x50
+    void* slot58;                // +0x58
+    void* slot60;                // +0x60
+    void* slot68;                // +0x68
+    EventSlot event70;           // +0x70
+};
+// NetworkingInitializer
+struct NetworkingInitializer : OnyxComponentBase {
+    void Slot4(onyx::Archive& archive, ComponentSlot::Source* source);   // 0x7ce630
+    char padding_0[0x50];
+    EventSlot event50;           // +0x50
+    EventSlot event68;           // +0x68
+    EventSlot event80;           // +0x80
+    EventSlot event98;           // +0x98
+    EventSlot eventB0;           // +0xb0
+};
+
 }  // namespace SPTG

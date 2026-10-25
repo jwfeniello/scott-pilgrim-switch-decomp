@@ -4,13 +4,21 @@
 // Names are provisional; src/SpawnerSerialize.h models the same pair.
 #pragma once
 #include <stdint.h>
+#include "Level.h"
 #include "OnyxEvents.h"
 #include "Vector.h"
 
 // Passed along with the archive (slot 4's second argument). The same type
 // feeds AssignComponentSlot (src/ComponentSlotAssign.cpp), which fills
 // component slots from it.
-namespace ComponentSlot { struct Source; }
+namespace ComponentSlot {
+struct Source {
+    void* owner;
+    virtual ~Source();
+    virtual void Read();                       // slot 2 (src/ComponentSlotAssign.cpp)
+    virtual void Attach(SPTG::Holder* holder);   // slot 3
+};
+}
 template<unsigned Key, uint32_t Hash> void AssignComponentSlot(void* self, ComponentSlot::Source* source);
 // The callback-list readers (src/DeserializeCallbacks.h). A serializer passes
 // the archive as the reader, the source as the descriptors and the list as the
@@ -52,6 +60,12 @@ template<class T> void TransferReference(Archive& archive, T*& object);
 
 // Moves a component handle (0x67dd00).
 void TransferHandle(ComponentHandle*& handle, Archive& archive, ComponentSlot::Source* source);
+
+// Some components hand a handle they moved to the source (its slot 3), with
+// NoHolder standing in for a missing one.
+inline void AttachHandle(ComponentSlot::Source* source, ComponentHandle* handle) {
+    source->Attach(handle ? reinterpret_cast<SPTG::Holder*>(handle) : &SPTG::NoHolder);
+}
 
 // Moves a 4-byte id that has its own encoding (0x8012a0).
 void TransferId(uint32_t& id, Archive& archive);
@@ -166,5 +180,16 @@ __attribute__((always_inline)) inline void ReadEventSlot(onyx::Archive& archive,
     uint32_t count;
     reader->Read(&count, 4);
     DecodeLoop<Key, Hash>(reader, source, reinterpret_cast<KeyedDecodeHost<Key>*>(&slot), count);
+}
+// A third form reads each entry through a function of its own (one per event
+// type; ReadEventEntry's key names it), in a loop over the count.
+typedef void (*EventEntryReader)(DecodeReader* reader, void* descriptors, DecodeHost* host);
+template<unsigned Key> void ReadEventEntry(DecodeReader* reader, void* descriptors, DecodeHost* host);
+__attribute__((always_inline)) inline void ReadEventEntries(onyx::Archive& archive, ComponentSlot::Source* source, EventSlot& slot, void* component, EventEntryReader read) {
+    slot.target = static_cast<onyx::EventTarget*>(component);
+    DecodeReader* reader = reinterpret_cast<DecodeReader*>(&archive);
+    uint32_t count;
+    reader->Read(&count, 4);
+    for (uint32_t i = 0; i < count; ++i) read(reader, source, reinterpret_cast<DecodeHost*>(&slot));
 }
 }  // namespace SPTG

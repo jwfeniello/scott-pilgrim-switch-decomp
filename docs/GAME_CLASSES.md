@@ -536,7 +536,7 @@ an id, resolved when loading).
 
 Classes outside the characters serialize the same way.
 [`ComponentSerialize.h`](../src/gameplay/ComponentSerialize.h) holds ABI views
-of 67 of them. They are actions on `Onyx::ActionComponent` (0xbcaa30), other
+of 71 of them. They are actions on `Onyx::ActionComponent` (0xbcaa30), other
 components on `Onyx::Component::Base` (0x6782a0), menus on `SPTG::FlashMenu`
 (0x7ffe10), the level camera and the network phase on `SPTG::SPTG_Phase`
 (0x76b760) and the gun turrets on `SPTG::BreakableObject` (0xa10790).
@@ -555,6 +555,20 @@ and field transfers with their sizes. One class
 `TransferAs`, which shows the original used both forms. The file builds with
 default stack coloring: `SectionActorPresenceLogic` needs its copies to share
 a stack slot, and the other views match either way.
+
+The Onyx engine's components serialize the same way.
+[`OnyxSerialize.h`](../src/gameplay/OnyxSerialize.h) holds 78 views of them and
+of game classes built on them (`SPTG::FlashMenu`, `LevelSection`,
+`LevelStage`), named after their RTTI, plus two templates whose instances
+share one slot 4: `Onyx::Switch<Owner, Target>` (seven instances: a reference
+list of targets and a handle) and
+`Onyx::Gameplay::Circuits::Detail::BaseValuePublisherCircuit<T>` (four: an
+event whose entries each value type reads with its own function).
+`Onyx::ActionComponent`'s own slot 4 (0xbcaa30) matches there; the action
+views in `ComponentSerialize.h` still derive from an empty stand-in for it.
+Some components hand a handle they just moved to the source's slot 3
+(`onyx::AttachHandle`), with `NoHolder` (0x191b6c0) standing in for a missing
+one, and some byte fields move through a 32-bit copy.
 
 Members with serializers that many classes share are declared in
 [`Archive.h`](../src/gameplay/Archive.h): a 0x28-byte `ReferenceList`
@@ -582,8 +596,10 @@ pointer is stored: after the new callback is published to the slot passed to
 `Process`. Storing it there in the shared loop also reproduces the 37
 out-of-line instances. Each expansion has its own key and host type, so its
 handlers (the typed and generic members, which differ per class) bind
-separately. A third form calls a per-entry function in a loop (for example
-GateSwitcher and PlayerSynchronizer); it is not modeled yet.
+separately. A third form reads the count and then calls a
+function of the event's own for each entry (`ReadEventEntries`, for example
+GateSwitcher, PlayerSynchronizer and the publisher circuits); those per-entry
+functions are not matched yet.
 
 Strings (0x10 bytes, a reference-counted buffer at `+0x8`) move through
 0x683650, which returns the archive; consecutive strings chain on it, written

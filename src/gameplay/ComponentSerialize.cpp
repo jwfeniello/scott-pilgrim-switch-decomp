@@ -934,4 +934,44 @@ void AchievementData::Slot4(onyx::Archive& archive, ComponentSlot::Source* sourc
     archive << string150;
 }
 
+// 0x8ccde0
+void BitmapFont::Slot4(onyx::Archive& archive, ComponentSlot::Source* source) {
+    OnyxComponentBase::Slot4(archive, source);
+    onyx::TransferHandle(handle50, archive, source);
+    onyx::TransferHandle(handle58, archive, source);
+    archive << string60;
+    onyx::Transfer(archive, value70);
+    onyx::Transfer(archive, value74);
+    onyx::Transfer(archive, value78);
+    onyx::TransferVector(archive, vector80);
+    onyx::TransferVector(archive, vectorA8);
+    onyx::Transfer(archive, valueD0);
+}
+
+// 0x8038d0
+void GateSwitcher::Slot4(onyx::Archive& archive, ComponentSlot::Source* source) {
+    OnyxComponentBase::Slot4(archive, source);
+    ReadEventEntries(archive, source, event50, this, ReadEventEntry<8403296u>);
+}
+
+// 0x7c8c80
+void PlayerSynchronizer::Slot4(onyx::Archive& archive, ComponentSlot::Source* source) {
+    OnyxComponentBase::Slot4(archive, source);
+    onyx::TransferHandle(handle50, archive, source);
+    AssignComponentSlot<7751376u, 2069148984u>(&slot58, source);
+    AssignComponentSlot<7784864u, 623346953u>(&slot60, source);
+    AssignComponentSlot<7787216u, 840570882u>(&slot68, source);
+    ReadEventEntries(archive, source, event70, this, ReadEventEntry<8162976u>);
+}
+
+// 0x7ce630
+void NetworkingInitializer::Slot4(onyx::Archive& archive, ComponentSlot::Source* source) {
+    OnyxComponentBase::Slot4(archive, source);
+    TransferEventSlot<8175280u, 1980669536u>(archive, source, event50, this);
+    TransferEventSlot<8175936u, 1021315899u>(archive, source, event68, this);
+    ReadEventEntries(archive, source, event80, this, ReadEventEntry<8140688u>);
+    ReadEventSlot<8185392u, 2030908036u>(archive, source, event98, this);
+    TransferEventSlot<8186208u, 987537066u>(archive, source, eventB0, this);
+}
+
 }  // namespace SPTG
