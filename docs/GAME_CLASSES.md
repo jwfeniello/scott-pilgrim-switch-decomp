@@ -568,7 +568,11 @@ event whose entries each value type reads with its own function).
 chains to, restores the two events every component has (`+0x8`, type
 0x255c0afe, and `+0x20`, type 0x44174b43: the events ActorFlags' blinking
 sends, and the one slot 2 sends when it sets bit 2 of `+0x38`), then moves the
-flags at `+0x38`. Its destructor (0x677400) unregisters and frees the same two
+flags at `+0x38`. Ten classes register a handler for their active state
+changing ([`ActivationEvents.cpp`](../src/gameplay/ActivationEvents.cpp)): it
+sends the `+0x8` event when the component is deactivated and the `+0x20` one
+when it is activated (one class sends two events of its own instead). Its
+destructor (0x677400) unregisters and frees the same two
 events (`RootTrigger` in
 [`RegisteredTriggerDestructor.h`](../src/RegisteredTriggerDestructor.h)).
 `Onyx::ActionComponent`'s own slot 4 (0xbcaa30) matches there; the action
