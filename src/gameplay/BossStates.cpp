@@ -9,10 +9,7 @@ namespace SPTG {
 // Slot 13 (0xa18750): after Enemy's slot 13, counts +0xd0c up to +0xcb8 (once
 // there, clears +0xd08), then runs slot 242.
 void Boss::Slot13() {
-    Enemy::Slot13();
-    if (timerD0c < limitCb8) timerD0c += Move_FrameDelta;
-    else valueD08 = 0;
-    Slot242();
+    UpdateBoss13();
 }
 
 // Slot 16 (0xa187b0): Enemy's update, then the boss's second attack is
@@ -38,8 +35,7 @@ bool Boss::Slot33(void* data) {
 // Slot 69 (0xa18ed0): in action mode 6, a hit from a character whose slot 50 is
 // 0 raises +0xd27; then Enemy's damage handling.
 float Boss::TakeDamage(const void* hit, BaseCharacter* other) {
-    if (actionMode == 6 && other->Slot50() == 0) flagD27 = 1;
-    return TakeEnemyDamage(hit, other);
+    return TakeBossDamage(hit, other);
 }
 
 // Slot 82 (0xa18f90): never in slot 85, else BaseCharacter's test.
@@ -98,7 +94,7 @@ int Boss::State200(int event) {
 
 // Slot 234 (0xa1b620): switches to slot 246 for kind 1, else to slot 198.
 void Boss::Slot234(int kind) {
-    states.Transition(kind == 1 ? State246Ptr() : State198Ptr());
+    TransitionForKind(kind);
 }
 
 // Slot 237 (0xa1b680): accepts an attack request unless its kind is 31, 32, 39,

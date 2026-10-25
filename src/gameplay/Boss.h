@@ -11,11 +11,19 @@ struct TypedComponent : onyx::Component {
     SPTG_SLOT(3) SPTG_SLOT(4) SPTG_SLOT(5) SPTG_SLOT(6) SPTG_SLOT(7) SPTG_SLOT(8) SPTG_SLOT(9) SPTG_SLOT(10) SPTG_SLOT(11)
     virtual bool IsA(uint32_t type);   // slot 12
 };
+// A component GigaGideon keeps at +0x12b8; slot 13 runs its slot 3 while +0x18 is clear.
+struct BossEffect : onyx::Component {
+    SPTG_SLOT(3)
+    char padding_8[0x10];
+    uint8_t flag18;   // +0x18
+};
 // SPTG::PlayfieldCollision (component type 0x21350526), behind ActorObject::playfield.
 struct PlayfieldCollision : TypedComponent {
     static const uint32_t kType = 0x21350526u;
     char padding_8[0x120];
     uint8_t flag128;   // +0x128
+    char padding_129[0x7];
+    uint32_t flags130; // +0x130
 };
 
 // vtable 0x188b950, 258 slots
@@ -27,6 +35,24 @@ struct Boss : Enemy {
     bool Slot82();
     void Slot86();
     void Slot233(const uint8_t* trigger);
+    bool OnHit(BaseCharacter* other, void* hit);
+    bool Slot168();
+    // Slot 69's body, which some classes inline (see Boss::TakeDamage).
+    __attribute__((always_inline)) float TakeBossDamage(const void* hit, BaseCharacter* other) {
+        if (actionMode == 6 && other->Slot50() == 0) flagD27 = 1;
+        return TakeEnemyDamage(hit, other);
+    }
+    // Slot 234's choice, which the classes inline after their own kinds.
+    __attribute__((always_inline)) void TransitionForKind(int kind) {
+        states.Transition(kind == 1 ? State246Ptr() : State198Ptr());
+    }
+    // Slot 13's body, which several classes inline (see Boss::Slot13).
+    __attribute__((always_inline)) void UpdateBoss13() {
+        Enemy::Slot13();
+        if (timerD0c < limitCb8) timerD0c += Move_FrameDelta;
+        else valueD08 = 0;
+        Slot242();
+    }
     bool CheckA1e720();   // 0xa1e720
     bool CheckA1e820();   // 0xa1e820
     int State96(int event); State State96Ptr();   // slots 96, 97, override Enemy
@@ -43,7 +69,7 @@ struct Boss : Enemy {
     SPTG_SLOT(236)
     virtual bool Slot237(const AttackSlot& request);                         // slot 237
     virtual bool Slot238();                                                  // slot 238
-    SPTG_SLOT(239)
+    virtual bool Slot239(int animation);                                     // slot 239
     virtual void Slot240();                                                  // slot 240
     SPTG_SLOT(241)
     virtual void Slot242();                                                  // slot 242
@@ -73,6 +99,9 @@ struct Boss : Enemy {
     uint8_t flagD28;             // +0xd28
     uint8_t flagD29;             // +0xd29
     uint8_t flagD2a;             // +0xd2a
+    char padding_d2b[0x1e];
+    uint8_t flagD49;             // +0xd49
+    uint8_t flagD4a;             // +0xd4a
 };
 
 }  // namespace SPTG

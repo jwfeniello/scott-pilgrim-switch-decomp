@@ -607,3 +607,35 @@ load as the original does.
 Slots 96, 116 and 200 are written out but not credited. In each, the original
 merges the "handled" returns into a shared tail (for 96 and 116, the exit
 case's) that this build duplicates.
+
+[`BossClassStates.cpp`](../src/gameplay/BossClassStates.cpp) matches 72
+functions of the boss classes (10,636 bytes). Most are hooks that inline
+Boss's version and add a class detail:
+
+- **Slot 234** maps an attack request's kind to a state. Each class tests its
+  own kinds (Envy 79; Gideon 28 and 79; Lucas Lee 174 and 178; Lynette 11,
+  20 and 180; NegaScott 79, 190, 193 and 195) and then inlines Boss's choice
+  (`Boss::TransitionForKind`: 246 for kind 1, else 198). Calling both getters
+  through Boss is what lets one vtable load serve them.
+- **Slot 13:** NegaScott, RoxyMirror and SuperFightingRobotAI inline Boss's
+  slot 13 unchanged (`Boss::UpdateBoss13`). TagTeamMember, GigaGideon and
+  SuperGideon add a countdown or an effect update.
+- **Slot 237** filters attack requests by kind (Chau and Patel refuse 31, 39, 45
+  and 61; Boss also refuses 32). **Slot 238** tests the animation playing.
+- **Class state overrides** run Boss's state and raise a flag between entry and
+  exit (Todd 98 and 248, Envy 198), or play an extra animation (Todd 106).
+- **State 172:** Chau, GigaGideon, Ken & Kyle and SuperGideon carry a copy of
+  Enemy's state 172 that reports only the update as handled. The original
+  computes that result at the end as `event == kStateUpdate`, with an event 3
+  case that returns the initial 0.
+- **Damage (slot 69):** Roxy inlines Boss's handling (`Boss::TakeBossDamage`);
+  TagTeamMember also drains its own health at `+0xd7c`, Ken & Kyle start a
+  recovery, Chau derives a phase from its health, and the robot hand counts hits.
+- **Patel** summons HipsterChicks (handles at `+0xd60`) and sends each one's
+  slot 94 from its slot 13. **Ken & Kyle** watch each other (`+0xd58`) and leave
+  state 114 when the twin is down.
+- **SuperFightingRobotAI** makes itself the owner of both hands
+  (`SuperFightingRobotHand`, component type `0x37bd3ac0`) on reset. Its hands
+  wait for targets before attacking.
+
+Patel's slot 170 is written out but not credited.

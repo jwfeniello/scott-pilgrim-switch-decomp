@@ -91,6 +91,8 @@ struct NpcCatalog : onyx::Component {
 
 // Reached through the singleton at +0x1f8 (getter 0x78c910).
 struct CharacterSettings { char padding[0x5ad]; uint8_t flag5ad; };   // +0x5ad
+// The hit TakeDamage receives; only +0x14 is known so far.
+struct DamageHit { char padding_0[0x14]; int32_t value14; };
 // What slot 93 receives; only the amount at +0x4 is known.
 struct HitValue { uint32_t value0; float amount; };
 // The object behind the global at 0x1924bc0; slot 158 fails while +0xe0 is set.
@@ -146,19 +148,24 @@ struct BaseCharacter : onyx::Component {
     SPTG_SLOT(54)
     virtual bool IsHeld();                                                   // slot 55
     virtual void SetSolid(bool solid);                                       // slot 56
-    SPTG_SLOT(57) SPTG_SLOT(58) SPTG_SLOT(59) SPTG_SLOT(60) SPTG_SLOT(61) SPTG_SLOT(62) SPTG_SLOT(63)
+    virtual float Slot57();                                                  // slot 57
+    SPTG_SLOT(58)
+    virtual float Slot59();                                                  // slot 59
+    SPTG_SLOT(60) SPTG_SLOT(61) SPTG_SLOT(62) SPTG_SLOT(63)
     virtual float Slot64(float amount);                                      // slot 64
     SPTG_SLOT(65) SPTG_SLOT(66) SPTG_SLOT(67)
     virtual void Slot68();                                                   // slot 68
     virtual float TakeDamage(const void* hit, BaseCharacter* other);         // slot 69
     virtual void Remove(bool flag);                                          // slot 70
     virtual void Release();                                                  // slot 71
-    SPTG_SLOT(72) SPTG_SLOT(73)
+    SPTG_SLOT(72)
+    virtual bool Slot73();                                                   // slot 73
     virtual void Slot74(const float* point, bool flag, float value);         // slot 74
     virtual void Slot75(void* data, void* extra);                            // slot 75
     SPTG_SLOT(76)
     virtual float Slot77();                                                  // slot 77
-    SPTG_SLOT(78) SPTG_SLOT(79)
+    SPTG_SLOT(78)
+    virtual bool Slot79();                                                   // slot 79
     virtual bool Slot80();                                                   // slot 80
     virtual float Slot81();                                                  // slot 81
     virtual bool Slot82();                                                   // slot 82
@@ -172,7 +179,7 @@ struct BaseCharacter : onyx::Component {
     virtual void Slot91(float x);                                            // slot 91
     virtual void Slot92(void* data);                                         // slot 92
     virtual void Slot93(const HitValue* hit);                                // slot 93
-    SPTG_SLOT(94)
+    virtual void Slot94();                                                   // slot 94
     virtual bool Slot95();                                                   // slot 95
     virtual int State96(int event); virtual State State96Ptr();              // slots 96, 97
     virtual int State98(int event); virtual State State98Ptr();              // slots 98, 99
@@ -228,7 +235,9 @@ struct BaseCharacter : onyx::Component {
     char padding_b0[0x48];
     float groundZ;               // +0xf8
     float groundC4;              // +0xfc
-    char padding_100[0x30];
+    uint8_t flag100;             // +0x100
+    char padding_101[0x2b];
+    int32_t value12c;            // +0x12c
     uint8_t flag130;             // +0x130
     char padding_131[0x10];
     uint8_t flag141;             // +0x141
@@ -290,7 +299,8 @@ struct BaseCharacter : onyx::Component {
     char padding_3b4[0x5];
     uint8_t skipFrame;           // +0x3b9: set on entry; the first update is skipped
     uint8_t flag3ba;             // +0x3ba
-    char padding_3bb[0x5];
+    uint8_t flag3bb;             // +0x3bb
+    char padding_3bc[0x4];
     onyx::EventCallback* event3c0Callback; // +0x3c0
     onyx::EventTarget* event3c0Target; // +0x3c8
     char padding_3d0[0xb8];
@@ -307,7 +317,9 @@ struct BaseCharacter : onyx::Component {
     char padding_518[0x4];
     float stunDuration;          // +0x51c
     float stunDuration2;         // +0x520
-    char padding_524[0xc];
+    float value524;              // +0x524
+    float value528;              // +0x528
+    char padding_52c[0x4];
     Attack attack530;            // +0x530: started by slot 35
     Attack attack588;            // +0x588: started by slot 35 with its flag set
     char padding_5e0[0x168];
@@ -351,6 +363,7 @@ static_assert(__builtin_offsetof(BaseCharacter, actionMode) == 0x500, "BaseChara
 // SPTG::ControllablePlayer: its first own virtual (slot 159) receives messages.
 struct ControllablePlayer : BaseCharacter {
     virtual void OnMessage(CharacterMessage* message);   // slot 159
+    void Notify80f430(int value);                        // 0x80f430
 };
 // A character that passes IsA(0x2f2bf4aa) (registered as Onyx::Component::Bucket)
 // also receives messages at slot 159.

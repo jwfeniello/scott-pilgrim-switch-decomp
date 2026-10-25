@@ -33,6 +33,8 @@ struct Enemy : BaseCharacter {
     int Slot45();                                                    // slot 45, overrides BaseCharacter
     void Update();                                                   // slot 16, overrides BaseCharacter
     void Slot13();                                                   // slot 13, overrides BaseCharacter (0x9cc340)
+    void Slot7();                                                    // slot 7, overrides BaseCharacter (0x9e0590)
+    void Slot19();                                                   // slot 19, overrides BaseCharacter (0x9de160)
     float TakeDamage(const void* hit, BaseCharacter* other);         // slot 69, overrides BaseCharacter
     int State96(int event);                                          // slot 96, overrides BaseCharacter
     int State98(int event);                                          // slot 98, overrides BaseCharacter
@@ -46,7 +48,8 @@ struct Enemy : BaseCharacter {
     SPTG_SLOT(159) SPTG_SLOT(160) SPTG_SLOT(161) SPTG_SLOT(162) SPTG_SLOT(163) SPTG_SLOT(164) SPTG_SLOT(165)
     virtual void Slot166(int kind);                                          // slot 166
     virtual void Approach();             // runs while the approach state continues // slot 167
-    SPTG_SLOT(168) SPTG_SLOT(169)
+    virtual bool Slot168();                                                  // slot 168
+    SPTG_SLOT(169)
     virtual float Slot170();                                                 // slot 170
     virtual float Slot171();                                                 // slot 171
     virtual int State172(int event); virtual State State172Ptr();            // slots 172, 173
@@ -133,7 +136,8 @@ struct Enemy : BaseCharacter {
     AttackRange range1;          // +0x950
     AttackRange range2;          // +0x95c
     AttackRange range3;          // +0x968
-    char padding_974[0x4];
+    uint8_t flag974;             // +0x974
+    char padding_975[0x3];
     uint32_t flags978;           // +0x978: bit flags
     char padding_97c[0x4];
     float value980;              // +0x980
