@@ -23,7 +23,9 @@ struct Enemy : BaseCharacter {
     int State136(int event);                                         // slot 136, overrides BaseCharacter
     SPTG_SLOT(159) SPTG_SLOT(160) SPTG_SLOT(161) SPTG_SLOT(162) SPTG_SLOT(163) SPTG_SLOT(164) SPTG_SLOT(165) SPTG_SLOT(166)
     virtual void Approach();             // runs while the approach state continues // slot 167
-    SPTG_SLOT(168) SPTG_SLOT(169) SPTG_SLOT(170) SPTG_SLOT(171)
+    SPTG_SLOT(168) SPTG_SLOT(169)
+    virtual float Slot170();                                                 // slot 170
+    SPTG_SLOT(171)
     virtual int State172(int event); virtual State State172Ptr();            // slots 172, 173
     virtual int State174(int event); virtual State State174Ptr();            // slots 174, 175
     virtual int State176(int event); virtual State State176Ptr();            // slots 176, 177
@@ -54,12 +56,15 @@ struct Enemy : BaseCharacter {
     virtual int State226(int event); virtual State State226Ptr();            // slots 226, 227
     SPTG_SLOT(228) SPTG_SLOT(229) SPTG_SLOT(230) SPTG_SLOT(231) SPTG_SLOT(232) SPTG_SLOT(233)
 
-    char padding_749[0x67];
+    char padding_749[0x63];
+    float value7ac;              // +0x7ac
     float stateTime;             // +0x7b0: time spent in the current state
     char padding_7b4[0x4];
     uint8_t flag7b8;             // +0x7b8
     uint8_t flag7b9;             // +0x7b9
-    char padding_7ba[0x62];
+    char padding_7ba[0x59];
+    uint8_t flag813;             // +0x813
+    char padding_814[0x8];
     uint8_t approachCountdown;   // +0x81c: frames left in the approach state
     char padding_81d[0x3];
     uint32_t targetIndex;        // +0x820: index into targets
@@ -71,24 +76,35 @@ struct Enemy : BaseCharacter {
     onyx::ComponentHandle* target; // +0x860: the player being attacked
     char padding_868[0x8];
     uint8_t chanceResult;        // +0x870: set by RollChance
-    char padding_871[0xb];
+    char padding_871[0x3];
+    int32_t value874;            // +0x874
+    char padding_878[0x4];
     int32_t mode87c;             // +0x87c
-    char padding_880[0x9c];
+    char padding_880[0x18];
+    AttackSlot specialAttack;    // +0x898
+    char padding_910[0xc];
     float attackRange;           // +0x91c
     float chance;                // +0x920: percent, compared with a random roll
     char padding_924[0x5c];
     float value980;              // +0x980
     float delay984;              // +0x984
-    char padding_988[0x44];
+    char padding_988[0x24];
+    float delay9ac;              // +0x9ac
+    char padding_9b0[0x18];
+    int32_t value9c8;            // +0x9c8
     float partnerDelay;          // +0x9cc
-    char padding_9d0[0x119];
+    char padding_9d0[0x2];
+    uint8_t flag9d2;             // +0x9d2
+    char padding_9d3[0x116];
     uint8_t flagAe9;             // +0xae9
     char padding_aea[0xbe];
-    Attack attacks[7];           // +0xba8
+    AttackSlot attacks[7];       // +0xba8
 
     bool LeaveCheck();   // 0x9dcb90: lets state 172 hand over to state 96
     void RollChance();   // 0x9dd6b0: when slot 36 holds, rolls the random chance at +0x920
     void Update9dc4c0(); // 0x9dc4c0: runs each update of state 186
+    void Update9db820(float time, float value);   // 0x9db820
+    void Enter9db480();  // 0x9db480
 };
 static_assert(__builtin_offsetof(Enemy, stateTime) == 0x7b0, "Enemy state time");
 static_assert(__builtin_offsetof(Enemy, aiMode) == 0x824, "Enemy AI mode");

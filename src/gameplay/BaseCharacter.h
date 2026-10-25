@@ -11,8 +11,17 @@ extern "C" float Move_FrameDelta;   // seconds since the last frame (0x1924d70)
 
 namespace SPTG {
 
-// One of a character's attack descriptors (0x78 bytes).
-struct Attack { char data[0x78]; };
+// An attack descriptor, as StartAttack receives it.
+struct Attack { char data[0x58]; };
+// An attack with the animation that goes with it (0x78 bytes).
+struct AttackSlot {
+    Attack attack;
+    int32_t animation;   // +0x58
+    char padding_5c[0x10];
+    int32_t kind;        // +0x6c
+    char padding_70[0x8];
+};
+static_assert(sizeof(AttackSlot) == 0x78, "AttackSlot size");
 struct BaseCharacter;
 // A message one character sends another (see ControllablePlayer::OnMessage).
 struct CharacterMessage {
@@ -23,6 +32,23 @@ struct CharacterMessage {
 };
 
 #define SPTG_SLOT(n) virtual void Slot##n();
+// SPTG::ActorObject (component type 0x6492d61d).
+struct ActorObject : onyx::Component {
+    char padding_8[0x48];
+    onyx::ComponentHandle* playfield;   // +0x50
+    onyx::ComponentHandle* flags;       // +0x58, component type 0x2eae5813
+    onyx::ComponentHandle* transform;   // +0x60, Onyx::Transform
+};
+// The component behind ActorObject::flags.
+struct ActorFlags : onyx::Component {
+    char padding_8[0x110];
+    uint8_t flag118;   // +0x118
+};
+// Reached through the singleton at +0x80 (getters 0x992bf0, 0x992f30); probably
+// Enemy's GameDifficultyAccessor dependency.
+struct GameDifficulty { char padding[0x108]; int32_t value108; };   // +0x108
+struct GameDifficultyAccessor { char padding[0x50]; Singleton<GameDifficulty> difficulty; };   // +0x50
+
 // A visual effect component whose visibility flag the states toggle.
 struct CharacterEffect : onyx::Component {
     char padding_8[0x70];
@@ -54,10 +80,14 @@ struct BaseCharacter : onyx::Component {
     SPTG_SLOT(53) SPTG_SLOT(54) SPTG_SLOT(55) SPTG_SLOT(56) SPTG_SLOT(57) SPTG_SLOT(58) SPTG_SLOT(59) SPTG_SLOT(60)
     SPTG_SLOT(61) SPTG_SLOT(62) SPTG_SLOT(63) SPTG_SLOT(64) SPTG_SLOT(65) SPTG_SLOT(66) SPTG_SLOT(67) SPTG_SLOT(68)
     SPTG_SLOT(69) SPTG_SLOT(70) SPTG_SLOT(71) SPTG_SLOT(72) SPTG_SLOT(73) SPTG_SLOT(74) SPTG_SLOT(75) SPTG_SLOT(76)
-    SPTG_SLOT(77) SPTG_SLOT(78) SPTG_SLOT(79) SPTG_SLOT(80) SPTG_SLOT(81) SPTG_SLOT(82) SPTG_SLOT(83) SPTG_SLOT(84)
-    SPTG_SLOT(85) SPTG_SLOT(86) SPTG_SLOT(87) SPTG_SLOT(88) SPTG_SLOT(89)
+    SPTG_SLOT(77) SPTG_SLOT(78) SPTG_SLOT(79) SPTG_SLOT(80)
+    virtual float Slot81();                                                  // slot 81
+    SPTG_SLOT(82) SPTG_SLOT(83) SPTG_SLOT(84) SPTG_SLOT(85)
+    virtual void Slot86();                                                   // slot 86
+    SPTG_SLOT(87) SPTG_SLOT(88) SPTG_SLOT(89)
     virtual void Slot90(float value);                                        // slot 90
-    SPTG_SLOT(91) SPTG_SLOT(92) SPTG_SLOT(93) SPTG_SLOT(94) SPTG_SLOT(95)
+    virtual void Slot91(float x);                                            // slot 91
+    SPTG_SLOT(92) SPTG_SLOT(93) SPTG_SLOT(94) SPTG_SLOT(95)
     virtual int State96(int event); virtual State State96Ptr();              // slots 96, 97
     virtual int State98(int event); virtual State State98Ptr();              // slots 98, 99
     virtual int State100(int event); virtual State State100Ptr();            // slots 100, 101
@@ -83,27 +113,41 @@ struct BaseCharacter : onyx::Component {
     virtual int State140(int event); virtual State State140Ptr();            // slots 140, 141
     virtual int State142(int event); virtual State State142Ptr();            // slots 142, 143
     virtual int State144(int event); virtual State State144Ptr();            // slots 144, 145
-    SPTG_SLOT(146) SPTG_SLOT(147) SPTG_SLOT(148) SPTG_SLOT(149) SPTG_SLOT(150) SPTG_SLOT(151) SPTG_SLOT(152) SPTG_SLOT(153)
-    SPTG_SLOT(154) SPTG_SLOT(155) SPTG_SLOT(156) SPTG_SLOT(157) SPTG_SLOT(158)
+    SPTG_SLOT(146) SPTG_SLOT(147)
+    virtual bool Slot148(bool* out);                                         // slot 148
+    SPTG_SLOT(149) SPTG_SLOT(150) SPTG_SLOT(151) SPTG_SLOT(152) SPTG_SLOT(153) SPTG_SLOT(154) SPTG_SLOT(155)
+    virtual bool Slot156();                                                  // slot 156
+    SPTG_SLOT(157) SPTG_SLOT(158)
 
     char padding_8[0x50];
     onyx::ComponentHandle* effectHandle; // +0x58
     char padding_60[0x8];
     onyx::ComponentHandle* partnerHandle; // +0x68
-    char padding_70[0x20];
+    char padding_70[0x8];
+    onyx::ComponentHandle* actorObject; // +0x78
+    Singleton<GameDifficultyAccessor> difficultyAccessor; // +0x80
+    char padding_88[0x8];
     Singleton<LevelItemAccessor> level; // +0x90
     char padding_98[0x98];
     uint8_t flag130;             // +0x130
-    char padding_131[0x6f];
+    char padding_131[0x2f];
+    float value160;              // +0x160
+    char padding_164[0x3c];
     int32_t animation;           // +0x1a0: the animation playing
     onyx::Vector3 motion;        // +0x1a4
     onyx::Vector3 motionTarget;  // +0x1b0
-    char padding_1bc[0x4c];
+    char padding_1bc[0x8];
+    float motionC4;              // +0x1c4
+    char padding_1c8[0x40];
     StateMachine<BaseCharacter> states; // +0x208
     char padding_230[0x8];
     onyx::ComponentHandle* mountHandle; // +0x238
     onyx::ComponentHandle* held; // +0x240: owned reference, dropped by ReleaseHeld
-    char padding_248[0xe8];
+    char padding_248[0x74];
+    float savedZ;                // +0x2bc: restored into motionTarget.z
+    float savedC4;               // +0x2c0: restored into motionC4
+    char padding_2c4[0x68];
+    float value32c;              // +0x32c
     float timer330;              // +0x330
     char padding_334[0x4];
     uint8_t flag338;             // +0x338
@@ -111,11 +155,16 @@ struct BaseCharacter : onyx::Component {
     uint8_t flag3ba;             // +0x3ba
     char padding_3bb[0x145];
     int32_t actionMode;          // +0x500
-    char padding_504[0x244];
+    char padding_504[0x18];
+    float stunDuration;          // +0x51c
+    float stunDuration2;         // +0x520
+    char padding_524[0x224];
     uint8_t flag748;             // +0x748
 
     void ReleaseHeld(bool flag, float x, float y);   // 0x976fb0: drops the reference at +0x240
+    void Apply8e5750(int value);                       // 0x8e5750
     BaseCharacter* Mount() { return mountHandle ? static_cast<BaseCharacter*>(mountHandle->object) : nullptr; }
+    CharacterEffect* Effect() { return effectHandle ? static_cast<CharacterEffect*>(effectHandle->object) : nullptr; }
 };
 static_assert(__builtin_offsetof(BaseCharacter, states) == 0x208, "BaseCharacter states");
 static_assert(__builtin_offsetof(BaseCharacter, actionMode) == 0x500, "BaseCharacter action mode");

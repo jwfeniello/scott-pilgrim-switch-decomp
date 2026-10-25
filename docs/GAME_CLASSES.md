@@ -313,18 +313,23 @@ motion vectors (`+0x1a4`, `+0x1b0`), the mount (`+0x238`) and the action mode
 (`+0x500`). Which of them belong to BaseCharacter rather than a subclass is
 not settled.
 
-[`BaseCharacterStates.cpp`](../src/gameplay/BaseCharacterStates.cpp) matches
-four of its states (1,232 bytes):
+[`BaseCharacterStates.cpp`](../src/gameplay/BaseCharacterStates.cpp) matches 12
+of its states (4,300 bytes). "Stops" means both motion vectors are zeroed.
 
-- **Slot 114**: action mode 9, stops all motion and plays animation 16; exit
-  clears the action mode.
-- **Slot 134**: with a mount, tells the mount (slot 35), plays animation 48 or
-  64 depending on the mount, and has the mount play animation 104. When the
-  animation ends it moves to slot 102; on landing, to slot 104.
-- **Slot 138**: plays animation 116; on landing, back to slot 96. Exit clears
-  the action mode.
-- **Slot 144**: stops all motion; back to slot 96 once the animation is done
-  and the flag at `+0x748` is set.
+| Slot | Address | Behavior |
+| --- | --- | --- |
+| 98 | `0x970f00` | Grounded: stops, action mode 1, animation 12; leaving the ground goes to 102 |
+| 102 | `0x9713b0` | Airborne: restores the saved depth values; animation 5, or 56/72 with a mount (the mount plays 112); landing goes to 104 |
+| 112 | `0x972b70` | Recovery: stops, action mode 6, animation 16. After slot 81's time limit, with health goes to 122; otherwise slot 148 picks 124 or 122, else slot 156 picks 114 or 116 |
+| 114 | `0x972dd0` | Action mode 9, stops, animation 16 |
+| 118 | `0x973230` | Stun: timer from `+0x51c`, action mode 2, stops, slot 86; back to 96 when the timer runs out |
+| 120 | `0x9733e0` | Second stun: timer from `+0x520`, action mode 4, stops, animation 18 |
+| 122 | `0x9735a0` | Knockdown: stops, animation 27, action mode 7, flag `+0x3ba`; back to 96 when the animation ends |
+| 124 | `0x973740` | As 122, then goes to 120 |
+| 134 | `0x974e00` | With a mount, animation 48/64 and the mount plays 104; animation end goes to 102, landing to 104 |
+| 136 | `0x974f90` | Hides the effect while active |
+| 138 | `0x975030` | Animation 116; landing goes back to 96 |
+| 144 | `0x9757a0` | Stops; back to 96 once the animation is done and `+0x748` is set |
 
 ## Enemy states
 
@@ -333,31 +338,27 @@ four of its states (1,232 bytes):
 states and adds its own at slots 172–227. An overriding state runs the base
 state first and stops if the base state has already switched states (result 2).
 
-[`EnemyStates.cpp`](../src/gameplay/EnemyStates.cpp) matches eight of them
-(2,004 bytes):
+[`EnemyStates.cpp`](../src/gameplay/EnemyStates.cpp) matches 13 of them
+(4,436 bytes):
 
-- **Approach** (slot 180): counts down the frames left in the state. While time
-  is left, the targeted player (`+0x820` indexes the target list at `+0x848`)
-  is not out, is closer than the attack range (`+0x91c`) plus 10, the AI mode is
-  0 or 1 and the target's action mode is not 6, the enemy keeps approaching
-  (slot 167). Otherwise it returns to slot 96.
-- **Slot 116**: after the base state, sends message 3 from the enemy to every
-  player (`Catalog<ControllablePlayer>` through the level singleton) and resets
-  the AI fields (target index 4, AI mode 6). When the animation ends it moves to
-  slot 200.
-- **Slot 136**: hides the effect while active. Once the held partner has been
-  held for the delay at `+0x9cc`, the partner reacts, plays the recovery
-  animation for the hit animation it was in (a switch the compiler turns into a
-  lookup table), and is released.
-- **Slot 186**: stops all motion, loops animation 114, and once both the
-  animation and the delay at `+0x984` are done, passes the value at `+0x980` to
-  the target (slot 90).
-- **Slots 100 and 102**: after the base state, with a mount, run slot 31 and
-  play animation 2 or 5.
-- **Slot 126**: after the base state, rolls a random chance on exit (`0x9dd6b0`,
-  a subtractive random generator) against the percentage at `+0x920`.
-- **Slot 172**: sets AI mode 6 while active and hands over to slot 96 once
-  `0x9dcb90` allows it.
+| Slot | Address | Behavior |
+| --- | --- | --- |
+| 100, 102 | `0x9cef60`, `0x9cf000` | After the base state, with a mount, run slot 31 and play animation 2 or 5 |
+| 116 | `0x9cf500` | After the base state, sends message 3 to every player (`Catalog<ControllablePlayer>` through the level singleton) and resets the AI fields; animation end goes to 200 |
+| 126 | `0x9cf670` | After the base state, rolls a random chance on exit (`0x9dd6b0`, a subtractive random generator) against the percentage at `+0x920` |
+| 136 | `0x9cf6e0` | Releases a held partner after `+0x9cc` seconds; the partner plays the recovery animation for its hit animation (a lookup table) |
+| 172 | `0x9d03c0` | AI mode 6 while active; hands over to 96 once `0x9dcb90` allows |
+| 174 | `0x9d0490` | Faces the target player's X position (through its ActorObject's Transform) and runs `0x9db820` each update |
+| 180 | `0x9d1c60` | Approach: counts down; keeps approaching (slot 167) while the target is in range + 10, not out, and the AI mode is 0 or 1 |
+| 186 | `0x9d28a0` | Loops animation 114; once done and `+0x984` seconds have passed, passes `+0x980` to the target (slot 90) |
+| 192 | `0x9d3780` | Loops animation 117, AI mode 7; goes to 96 after the animation and `+0x9ac` seconds, or to 102 when off the ground |
+| 198 | `0x9d40b0` | Plays the special attack's animation and starts it (`+0x898`) |
+| 222 | `0x9d8f00` | AI mode 7, animation 209, hides the effect and raises an ActorObject flag; takes `+0x9c8` from the game difficulty |
+| 226 | `0x9d98c0` | Idle entry: animation 0, or 44/60 with a mount (the mount plays 100); stops |
+
+An attack slot is `0x78` bytes: the attack data StartAttack receives (`0x58`
+bytes), then the animation (`+0x58`) and a kind (`+0x6c`). Keeping the animation
+outside the attack data is what makes the special attack state match.
 
 Slot 136 also shows that the compiler fills a lookup table's unused entries
 with the first case's result. The original's unused entries are 0, so its first

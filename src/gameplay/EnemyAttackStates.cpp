@@ -79,7 +79,7 @@ int EnemyZombie::State234(int event) {
         }
         return kStateHandled;
     case kStateEnter:
-        StartAttack(&attacks[0], false, 1, nullptr);
+        StartAttack(&attacks[0].attack, false, 1, nullptr);
         PlayAnimation(20, 0, 1, 1.0f);
         stateTime = 0.0f;
         return kStateHandled;
@@ -105,7 +105,7 @@ int EnemyZombie::State236(int event) {
         }
         return kStateHandled;
     case kStateEnter:
-        StartAttack(&attacks[0], false, 1, nullptr);
+        StartAttack(&attacks[0].attack, false, 1, nullptr);
         PlayAnimation(21, 0, 1, 1.0f);
         stateTime = 0.0f;
         return kStateHandled;
@@ -132,7 +132,7 @@ int EnemyZombie::State238(int event) {
         return kStateHandled;
     case kStateEnter:
         PlayAnimation(31, 0, 1, 1.0f);
-        StartAttack(&attacks[2], false, 1, nullptr);
+        StartAttack(&attacks[2].attack, false, 1, nullptr);
         stateTime = 0.0f;
         return kStateHandled;
     case kStateEvent3:
@@ -157,7 +157,7 @@ int EnemyZombie::State240(int event) {
         }
         return kStateHandled;
     case kStateEnter:
-        StartAttack(&attacks[1], false, 1, nullptr);
+        StartAttack(&attacks[1].attack, false, 1, nullptr);
         PlayAnimation(11, 0, 1, 1.0f);
         stateTime = 0.0f;
         return kStateHandled;
@@ -184,7 +184,7 @@ int EnemyZombie::State242(int event) {
         return kStateHandled;
     case kStateEnter:
         PlayAnimation(32, 0, 1, 1.0f);
-        StartAttack(&attacks[3], false, 1, nullptr);
+        StartAttack(&attacks[3].attack, false, 1, nullptr);
         stateTime = 0.0f;
         return kStateHandled;
     case kStateEvent3:
@@ -209,7 +209,7 @@ int EnemyWolverine::State234(int event) {
         }
         return kStateHandled;
     case kStateEnter:
-        StartAttack(&attacks[0], false, 1, nullptr);
+        StartAttack(&attacks[0].attack, false, 1, nullptr);
         PlayAnimation(11, 0, 1, 1.0f);
         stateTime = 0.0f;
         return kStateHandled;
@@ -236,7 +236,7 @@ int EnemyWolverine::State236(int event) {
         return kStateHandled;
     case kStateEnter:
         PlayAnimation(32, 0, 1, 1.0f);
-        StartAttack(&attacks[1], false, 1, nullptr);
+        StartAttack(&attacks[1].attack, false, 1, nullptr);
         stateTime = 0.0f;
         return kStateHandled;
     case kStateEvent3:
@@ -261,7 +261,7 @@ int EnemySpeedy::State234(int event) {
         }
         return kStateHandled;
     case kStateEnter:
-        StartAttack(&attacks[0], false, 1, nullptr);
+        StartAttack(&attacks[0].attack, false, 1, nullptr);
         PlayAnimation(20, 0, 1, 1.0f);
         stateTime = 0.0f;
         return kStateHandled;
@@ -288,7 +288,7 @@ int EnemySpeedy::State236(int event) {
         return kStateHandled;
     case kStateEnter:
         PlayAnimation(31, 0, 1, 1.0f);
-        StartAttack(&attacks[4], false, 1, nullptr);
+        StartAttack(&attacks[4].attack, false, 1, nullptr);
         stateTime = 0.0f;
         return kStateHandled;
     case kStateEvent3:
@@ -313,7 +313,7 @@ int EnemyPaparazzi::State234(int event) {
         }
         return kStateHandled;
     case kStateEnter:
-        StartAttack(&attacks[0], false, 1, nullptr);
+        StartAttack(&attacks[0].attack, false, 1, nullptr);
         PlayAnimation(11, 0, 1, 1.0f);
         stateTime = 0.0f;
         return kStateHandled;
@@ -339,7 +339,7 @@ int EnemyPaparazzi::State236(int event) {
         }
         return kStateHandled;
     case kStateEnter:
-        StartAttack(&attacks[1], false, 1, nullptr);
+        StartAttack(&attacks[1].attack, false, 1, nullptr);
         PlayAnimation(19, 0, 1, 1.0f);
         stateTime = 0.0f;
         return kStateHandled;
@@ -365,7 +365,7 @@ int EnemyNormal::State236(int event) {
         }
         return kStateHandled;
     case kStateEnter:
-        StartAttack(&attacks[0], false, 1, nullptr);
+        StartAttack(&attacks[0].attack, false, 1, nullptr);
         PlayAnimation(20, 0, 1, 1.0f);
         stateTime = 0.0f;
         return kStateHandled;
@@ -391,7 +391,7 @@ int EnemyNormal::State238(int event) {
         }
         return kStateHandled;
     case kStateEnter:
-        StartAttack(&attacks[0], false, 1, nullptr);
+        StartAttack(&attacks[0].attack, false, 1, nullptr);
         PlayAnimation(21, 0, 1, 1.0f);
         stateTime = 0.0f;
         return kStateHandled;
@@ -417,7 +417,7 @@ int EnemyNormal::State240(int event) {
         }
         return kStateHandled;
     case kStateEnter:
-        StartAttack(&attacks[1], false, 1, nullptr);
+        StartAttack(&attacks[1].attack, false, 1, nullptr);
         PlayAnimation(11, 0, 1, 1.0f);
         stateTime = 0.0f;
         return kStateHandled;
@@ -444,7 +444,7 @@ int EnemyNormal::State242(int event) {
         return kStateHandled;
     case kStateEnter:
         PlayAnimation(31, 0, 1, 1.0f);
-        StartAttack(&attacks[5], false, 1, nullptr);
+        StartAttack(&attacks[5].attack, false, 1, nullptr);
         stateTime = 0.0f;
         return kStateHandled;
     case kStateEvent3:
@@ -470,7 +470,7 @@ int EnemyNormal::State244(int event) {
         return kStateHandled;
     case kStateEnter:
         PlayAnimation(32, 0, 1, 1.0f);
-        StartAttack(&attacks[6], false, 1, nullptr);
+        StartAttack(&attacks[6].attack, false, 1, nullptr);
         stateTime = 0.0f;
         return kStateHandled;
     case kStateEvent3:
@@ -495,7 +495,7 @@ int EnemyMini::State234(int event) {
         }
         return kStateHandled;
     case kStateEnter:
-        StartAttack(&attacks[1], false, 1, nullptr);
+        StartAttack(&attacks[1].attack, false, 1, nullptr);
         PlayAnimation(11, 0, 1, 1.0f);
         stateTime = 0.0f;
         return kStateHandled;
@@ -521,7 +521,7 @@ int EnemyHanzo::State234(int event) {
         }
         return kStateHandled;
     case kStateEnter:
-        StartAttack(&attacks[0], false, 1, nullptr);
+        StartAttack(&attacks[0].attack, false, 1, nullptr);
         PlayAnimation(20, 0, 1, 1.0f);
         stateTime = 0.0f;
         return kStateHandled;
@@ -547,7 +547,7 @@ int EnemyHanzo::State236(int event) {
         }
         return kStateHandled;
     case kStateEnter:
-        StartAttack(&attacks[1], false, 1, nullptr);
+        StartAttack(&attacks[1].attack, false, 1, nullptr);
         PlayAnimation(11, 0, 1, 1.0f);
         stateTime = 0.0f;
         return kStateHandled;
@@ -574,7 +574,7 @@ int EnemyHanzo::State238(int event) {
         return kStateHandled;
     case kStateEnter:
         PlayAnimation(31, 0, 1, 1.0f);
-        StartAttack(&attacks[5], false, 1, nullptr);
+        StartAttack(&attacks[5].attack, false, 1, nullptr);
         stateTime = 0.0f;
         return kStateHandled;
     case kStateEvent3:
@@ -600,7 +600,7 @@ int EnemyHanzo::State240(int event) {
         return kStateHandled;
     case kStateEnter:
         PlayAnimation(32, 0, 1, 1.0f);
-        StartAttack(&attacks[6], false, 1, nullptr);
+        StartAttack(&attacks[6].attack, false, 1, nullptr);
         stateTime = 0.0f;
         return kStateHandled;
     case kStateEvent3:
@@ -625,7 +625,7 @@ int EnemyGodzilla::State234(int event) {
         }
         return kStateHandled;
     case kStateEnter:
-        StartAttack(&attacks[0], false, 1, nullptr);
+        StartAttack(&attacks[0].attack, false, 1, nullptr);
         PlayAnimation(11, 0, 1, 1.0f);
         stateTime = 0.0f;
         return kStateHandled;
@@ -651,7 +651,7 @@ int EnemyGiant::State234(int event) {
         }
         return kStateHandled;
     case kStateEnter:
-        StartAttack(&attacks[0], false, 1, nullptr);
+        StartAttack(&attacks[0].attack, false, 1, nullptr);
         PlayAnimation(20, 0, 1, 1.0f);
         stateTime = 0.0f;
         return kStateHandled;
@@ -677,7 +677,7 @@ int EnemyGiant::State236(int event) {
         }
         return kStateHandled;
     case kStateEnter:
-        StartAttack(&attacks[1], false, 1, nullptr);
+        StartAttack(&attacks[1].attack, false, 1, nullptr);
         PlayAnimation(11, 0, 1, 1.0f);
         stateTime = 0.0f;
         return kStateHandled;
@@ -704,7 +704,7 @@ int EnemyGiant::State238(int event) {
         return kStateHandled;
     case kStateEnter:
         PlayAnimation(31, 0, 1, 1.0f);
-        StartAttack(&attacks[5], false, 1, nullptr);
+        StartAttack(&attacks[5].attack, false, 1, nullptr);
         stateTime = 0.0f;
         return kStateHandled;
     case kStateEvent3:
@@ -730,7 +730,7 @@ int EnemyGiant::State240(int event) {
         return kStateHandled;
     case kStateEnter:
         PlayAnimation(32, 0, 1, 1.0f);
-        StartAttack(&attacks[6], false, 1, nullptr);
+        StartAttack(&attacks[6].attack, false, 1, nullptr);
         stateTime = 0.0f;
         return kStateHandled;
     case kStateEvent3:
@@ -755,7 +755,7 @@ int EnemyChubby::State238(int event) {
         }
         return kStateHandled;
     case kStateEnter:
-        StartAttack(&attacks[0], false, 1, nullptr);
+        StartAttack(&attacks[0].attack, false, 1, nullptr);
         PlayAnimation(11, 0, 1, 1.0f);
         stateTime = 0.0f;
         return kStateHandled;
@@ -782,7 +782,7 @@ int EnemyChubby::State240(int event) {
         return kStateHandled;
     case kStateEnter:
         PlayAnimation(32, 0, 1, 1.0f);
-        StartAttack(&attacks[1], false, 1, nullptr);
+        StartAttack(&attacks[1].attack, false, 1, nullptr);
         stateTime = 0.0f;
         return kStateHandled;
     case kStateEvent3:
