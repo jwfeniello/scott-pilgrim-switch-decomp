@@ -565,3 +565,45 @@ EnemyGuyOnFire's own slot sits at `+0xbd0` and ends where its attack delay
   EnemyJetPackMatt, EnemyGodzilla, EnemyPaparazzi, EnemyMini, EnemyWolverine and
   EnemyChubby request each of their attacks with the hit kind their slot 166
   answers (EnemyChubby in the order 0, 2, 1).
+
+## Bosses
+
+[`Boss.h`](../src/gameplay/Boss.h) describes `SPTG::Boss` (vtable `0x188b950`,
+258 slots), which derives from Enemy. It adds slots 234–257; the last seven
+pairs are states and their getters. It also overrides about 40 Enemy and
+BaseCharacter slots, including nine states with their getters.
+[`BossClasses.h`](../src/gameplay/BossClasses.h) declares the 20 boss classes,
+generated like the enemy classes. All derive from Boss, except Lynette and Envy,
+which derive from `TagTeamMember`. The family has about 267 KB of unmatched code
+in 329 functions.
+
+[`BossStates.cpp`](../src/gameplay/BossStates.cpp) matches 15 of Boss's own
+functions (3,100 bytes):
+
+| Slot | Address | Behavior |
+| --- | --- | --- |
+| 13 | `0xa18750` | After Enemy's slot 13, counts `+0xd0c` up to `+0xcb8` (then clears `+0xd08`) and runs slot 242 |
+| 16 | `0xa187b0` | Enemy's update, then requests the second attack slot (`+0xc30`) with kind 1 |
+| 33 | `0xa188e0` | In action mode 6, goes to 252 or 122 and refuses; otherwise BaseCharacter's slot 33 |
+| 69 | `0xa18ed0` | A hit in action mode 6 from a character whose slot 50 is 0 raises `+0xd27`; then Enemy's damage handling |
+| 82, 86 | `0xa18f90`, `0xa19060` | Slot 85 refuses, else BaseCharacter's test; animation 17 |
+| 108 | `0xa19c20` | After Enemy's state, on entry runs slot 240 unless `+0xd28` is set, `+0x160` is positive or slot 95 holds |
+| 122 | `0xa1a170` | Knockdown: stops, animation 27, action mode 7; standing on a flagged `PlayfieldCollision` raises `+0xd26`; then 244 |
+| 198 | `0xa1b100` | Special attack: after Enemy's state, passes the target's X position to slot 91; then 244 |
+| 233 | `0xa1b470` | When triggered in state 244, rolls 1–100 against `+0xccc` |
+| 234, 237, 238 | `0xa1b620`.. | Go to 246 for kind 1 (else 198); refuse attack requests of kinds 31, 32, 39, 45, 61; whether animation 0, 1 or 7 plays |
+| 252 | `0xa1da40` | Stops, starts the first attack with animation 131 in action mode 6; then 122 |
+| 256 | `0xa1e390` | Animation 283 with `+0x3ba` raised; then 200 |
+
+Some Boss functions inline their parent's body: the update, damage handling,
+and BaseCharacter's slots 33 and 82. The headers give those bodies as inline
+helpers (`Enemy::UpdateEnemy`, `Enemy::TakeEnemyDamage`,
+`BaseCharacter::CanSlot82`), and the parents' own versions call the same
+helpers. The generator also declares every inherited state pair a class
+overrides. A boss calling the getters `State122Ptr` and `State252Ptr` then calls
+them through the same class, which lets the compiler hoist the shared vtable
+load as the original does.
+
+Slots 96, 116 and 200 are written out but not credited. In each, the original
+merges the "handled" returns into a shared tail (for 96 and 116, the exit
+case's) that this build duplicates.

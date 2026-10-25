@@ -99,19 +99,7 @@ bool BaseCharacter::Slot80() {
 // Slot 82 (0x970770): only while held (slot 55), not slot 85, on the ground,
 // without +0x141 and outside action modes 3, 5, 6, 8 and 11.
 bool BaseCharacter::Slot82() {
-    if (!IsHeld()) return false;
-    if (Slot85()) return false;
-    if (!IsOnGround()) return false;
-    if (flag141) return false;
-    switch (actionMode) {
-    case 3:
-    case 5:
-    case 6:
-    case 8:
-    case 11:
-        return false;
-    }
-    return true;
+    return CanSlot82();
 }
 
 // Slot 83 (0x970820): in action mode 2 or 4, or below the +0x514 threshold while

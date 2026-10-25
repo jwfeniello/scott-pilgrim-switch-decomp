@@ -33,12 +33,7 @@ int Enemy::Slot45() {
 // sends the current state the damage event and passes the damage to the other
 // character (slot 43) and to 0x995a30.
 float Enemy::TakeDamage(const void* hit, BaseCharacter* other) {
-    float damage = BaseCharacter::TakeDamage(hit, other);
-    flag811 = 1;
-    states.Send(kStateDamaged);
-    if (other) other->Slot43(damage);
-    Apply995a30(damage);
-    return damage;
+    return TakeEnemyDamage(hit, other);
 }
 
 // Slot 229 (0x9d9bc0): scales the three base values by the scaling's factor and

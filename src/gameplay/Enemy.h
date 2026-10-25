@@ -32,6 +32,7 @@ struct Enemy : BaseCharacter {
     void Slot41(bool a, bool b, bool c, void* data, BaseCharacter* other, float scale, float f1, float f2, float f3);   // slot 41, overrides BaseCharacter
     int Slot45();                                                    // slot 45, overrides BaseCharacter
     void Update();                                                   // slot 16, overrides BaseCharacter
+    void Slot13();                                                   // slot 13, overrides BaseCharacter (0x9cc340)
     float TakeDamage(const void* hit, BaseCharacter* other);         // slot 69, overrides BaseCharacter
     int State96(int event);                                          // slot 96, overrides BaseCharacter
     int State98(int event);                                          // slot 98, overrides BaseCharacter
@@ -80,7 +81,8 @@ struct Enemy : BaseCharacter {
     virtual void Slot229();                                                  // slot 229
     SPTG_SLOT(230)
     virtual bool Slot231();                                                  // slot 231
-    SPTG_SLOT(232) SPTG_SLOT(233)
+    SPTG_SLOT(232)
+    virtual void Slot233(const uint8_t* trigger);                            // slot 233
 
     char padding_775[0x2b];
     Singleton<EnemyScaling> scaling; // +0x7a0: getter 0x7a1bc0
@@ -165,7 +167,9 @@ struct Enemy : BaseCharacter {
     int32_t bonusMode2;          // +0x9ec
     char padding_9f0[0x4];
     int32_t bonusMode3;          // +0x9f4
-    char padding_9f8[0x4c];
+    char padding_9f8[0x10];
+    int32_t valueA08;            // +0xa08
+    char padding_a0c[0x38];
     onyx::Vector3 backOffPoint;  // +0xa44: the point state 208 backs away from
     float backOffDistance;       // +0xa50
     char padding_a54[0x84];
@@ -193,6 +197,16 @@ struct Enemy : BaseCharacter {
     void RequestAttack(AttackSlot& slot, int kind) {
         slot.kind = kind;
         attackList.PushBack(slot);
+    }
+
+    // The damage handling Enemy and Boss share (see Enemy::TakeDamage).
+    __attribute__((always_inline)) float TakeEnemyDamage(const void* hit, BaseCharacter* other) {
+        float damage = BaseCharacter::TakeDamage(hit, other);
+        flag811 = 1;
+        states.Send(kStateDamaged);
+        if (other) other->Slot43(damage);
+        Apply995a30(damage);
+        return damage;
     }
 
     // The actor update Enemy and its classes share (see Enemy::Update).

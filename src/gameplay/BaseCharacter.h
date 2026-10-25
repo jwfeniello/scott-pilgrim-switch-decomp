@@ -323,6 +323,24 @@ struct BaseCharacter : onyx::Component {
     void ActorSlot32();                                // 0x93fec0: AnimatedAiActor's slot 32
     void ActorSlot33(void* data);                      // 0x940170: AnimatedAiActor's slot 33
     void Update976670(float time);                     // 0x976670
+
+    // Slot 82's test, shared with overrides that inline it: held, not slot 85,
+    // on the ground, no +0x141, and outside action modes 3, 5, 6, 8 and 11.
+    __attribute__((always_inline)) bool CanSlot82() {
+        if (!IsHeld()) return false;
+        if (Slot85()) return false;
+        if (!IsOnGround()) return false;
+        if (flag141) return false;
+        switch (actionMode) {
+        case 3:
+        case 5:
+        case 6:
+        case 8:
+        case 11:
+            return false;
+        }
+        return true;
+    }
     void Apply8e5750(int value);                       // 0x8e5750
     BaseCharacter* Mount() { return mountHandle ? static_cast<BaseCharacter*>(mountHandle->object) : nullptr; }
     CharacterEffect* Effect() { return effectHandle ? static_cast<CharacterEffect*>(effectHandle->object) : nullptr; }
