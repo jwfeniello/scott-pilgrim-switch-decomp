@@ -536,14 +536,18 @@ an id, resolved when loading).
 
 Classes outside the characters serialize the same way.
 [`ComponentSerialize.h`](../src/gameplay/ComponentSerialize.h) holds ABI views
-of 23 of them: actions on `Onyx::ActionComponent` (0xbcaa30) and other
-components on `Onyx::Component::Base` (0x6782a0). Each view places the
+of 30 of them. They are actions on `Onyx::ActionComponent` (0xbcaa30), other
+components on `Onyx::Component::Base` (0x6782a0), menus on `SPTG::FlashMenu`
+(0x7ffe10), the level camera on `SPTG::SPTG_Phase` (0x76b760) and the gun
+turrets on `SPTG::BreakableObject` (0xa10790). Each view places the
 serialized fields at their offsets with padding between. The functions
 follow the original's operations in order: the parent call,
 `AssignComponentSlot` instances, handle, id (0x8012a0) and list transfers,
 and field transfers with their sizes. One class
 (`SPTG_MaterialModifier`) only matches with plain local copies instead of
-`TransferAs`, which shows the original used both forms.
+`TransferAs`, which shows the original used both forms. The file builds with
+default stack coloring: `SectionActorPresenceLogic` needs its copies to share
+a stack slot, and the other views match either way.
 
 The playable characters
 ([`PlayerClasses.h`](../src/gameplay/PlayerClasses.h)) run ControllablePlayer's
