@@ -922,4 +922,16 @@ void ItemShop::Slot4(onyx::Archive& archive, ComponentSlot::Source* source) {
     onyx::TransferAs<uint32_t>(archive, value15c);
 }
 
+// 0x7a3890
+void AchievementData::Slot4(onyx::Archive& archive, ComponentSlot::Source* source) {
+    OnyxComponentBase::Slot4(archive, source);
+    onyx::TransferAs<uint32_t>(archive, value4c);
+    onyx::Transfer(archive, value50);
+    onyx::TransferVector(archive, vector58);
+    onyx::TransferVectorInPlace(archive, vector80);
+    archive << stringA8 << stringB8 << stringC8 << stringD8 << stringE8 << stringF8 << string108 << string118 << string128 << string138;
+    onyx::Transfer(archive, flag148);
+    archive << string150;
+}
+
 }  // namespace SPTG

@@ -536,7 +536,7 @@ an id, resolved when loading).
 
 Classes outside the characters serialize the same way.
 [`ComponentSerialize.h`](../src/gameplay/ComponentSerialize.h) holds ABI views
-of 66 of them. They are actions on `Onyx::ActionComponent` (0xbcaa30), other
+of 67 of them. They are actions on `Onyx::ActionComponent` (0xbcaa30), other
 components on `Onyx::Component::Base` (0x6782a0), menus on `SPTG::FlashMenu`
 (0x7ffe10), the level camera and the network phase on `SPTG::SPTG_Phase`
 (0x76b760) and the gun turrets on `SPTG::BreakableObject` (0xa10790).
@@ -562,7 +562,12 @@ Members with serializers that many classes share are declared in
 through the source) and a vector of points (0x884c60, 12-byte elements),
 which returns the archive so the next transfer uses it. Vectors of 4-byte
 values are moved inline (`onyx::TransferVector`): the count through a local,
-`Vector::Resize` (0x70c0a0), then each element.
+`Vector::Resize`, then each element. `Resize` itself matches
+([`Vector.cpp`](../src/gameplay/Vector.cpp)): two identical 4-byte instances
+(0x70c0a0 and 0x6994f0) clear the vector for a zero count, keep it when the
+count is unchanged or smaller, and otherwise grow the buffer. Growing copies
+the elements, frees the old buffer, and keeps it instead when the allocator
+hands it back. Some classes (AchievementData) expand the resize in place.
 
 Events a component sends (`EventSlot`, 0x18 bytes: the callback and target
 that `onyx::SendEvent` takes, then a flag raised as the callback is read) are

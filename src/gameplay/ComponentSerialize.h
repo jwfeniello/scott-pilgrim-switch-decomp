@@ -1029,4 +1029,30 @@ struct ItemShop : OnyxComponentBase {
     int32_t value15c;            // +0x15c
 };
 
+// AchievementData
+struct AchievementData : OnyxComponentBase {
+    void Slot4(onyx::Archive& archive, ComponentSlot::Source* source);   // 0x7a3890
+    char padding_0[0x4c];
+    int32_t value4c;             // +0x4c
+    int32_t value50;             // +0x50
+    char padding_54[0x4];
+    onyx::Vector<uint32_t> vector58; // +0x58
+    char padding_78[0x8];
+    onyx::Vector<uint8_t> vector80; // +0x80
+    char padding_a0[0x8];
+    onyx::String stringA8;       // +0xa8
+    onyx::String stringB8;       // +0xb8
+    onyx::String stringC8;       // +0xc8
+    onyx::String stringD8;       // +0xd8
+    onyx::String stringE8;       // +0xe8
+    onyx::String stringF8;       // +0xf8
+    onyx::String string108;      // +0x108
+    onyx::String string118;      // +0x118
+    onyx::String string128;      // +0x128
+    onyx::String string138;      // +0x138
+    uint8_t flag148;             // +0x148
+    char padding_149[0x7];
+    onyx::String string150;      // +0x150
+};
+
 }  // namespace SPTG

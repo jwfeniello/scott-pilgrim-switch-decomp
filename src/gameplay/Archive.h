@@ -71,16 +71,10 @@ struct String {
 Archive& TransferString(Archive& archive, String& string);
 inline Archive& operator<<(Archive& archive, String& string) { return TransferString(archive, string); }
 
-// An allocator as arrays keep it (its slot 2 allocates).
-struct ArrayAllocator {
-    virtual void Slot0();
-    virtual void Slot1();
-    virtual void* Allocate(uint32_t size);
-};
 // An array filled once from its allocator (0x20 bytes): the elements run from
 // begin to end. The last field is not known.
 template<class T> struct Array {
-    ArrayAllocator* allocator;
+    Allocator* allocator;
     T* begin;
     T* end;
     void* unknown18;
@@ -108,6 +102,13 @@ template<class T> inline void TransferVector(Archive& archive, Vector<T>& vector
     uint32_t count;
     Transfer(archive, count);
     vector.Resize(count);
+    for (uint64_t i = 0; i < count; ++i) Transfer(archive, vector.data[i]);
+}
+// The same with the resize expanded in place.
+template<class T> __attribute__((always_inline)) inline void TransferVectorInPlace(Archive& archive, Vector<T>& vector) {
+    uint32_t count;
+    Transfer(archive, count);
+    vector.SetCount(count);
     for (uint64_t i = 0; i < count; ++i) Transfer(archive, vector.data[i]);
 }
 

@@ -68,7 +68,8 @@ template<class T, uint32_t TypeId> __attribute__((always_inline)) inline T* Find
 
 // Allocation manager and handle tracking used when the last reference goes away.
 struct Allocator {
-    virtual void Slot0(); virtual void Slot1(); virtual void Slot2();
+    virtual void Slot0(); virtual void Slot1();
+    virtual void* Allocate(uint32_t size);   // slot 2
     virtual void Slot3(); virtual void Slot4(); virtual void Slot5();
     virtual void Free(void*);
 };
