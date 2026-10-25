@@ -608,8 +608,8 @@ Slots 96, 116 and 200 are written out but not credited. In each, the original
 merges the "handled" returns into a shared tail (for 96 and 116, the exit
 case's) that this build duplicates.
 
-[`BossClassStates.cpp`](../src/gameplay/BossClassStates.cpp) matches 72
-functions of the boss classes (10,636 bytes). Most are hooks that inline
+[`BossClassStates.cpp`](../src/gameplay/BossClassStates.cpp) matches 80
+functions of the boss classes (13,496 bytes). Most are hooks that inline
 Boss's version and add a class detail:
 
 - **Slot 234** maps an attack request's kind to a state. Each class tests its
@@ -638,4 +638,9 @@ Boss's version and add a class detail:
   (`SuperFightingRobotHand`, component type `0x37bd3ac0`) on reset. Its hands
   wait for targets before attacking.
 
-Patel's slot 170 is written out but not credited.
+Patel's slot 170, Patel's state 256, Ken & Kyle's hit check and the state
+244 of TagTeamMember, Lynette and Todd are written out but not credited.
+
+Many boss states differ from a first draft only in the order of their cases or
+in the exit case's assumption. Trying every order of a state's cases, with and
+without the assumption, settled SuperGideon's state 186 and Todd's state 262.

@@ -875,4 +875,337 @@ int GigaGideon::State116(int event) {
     }
 }
 
+// Slot 244 (TagTeamMember 0xa25d50, Lynette 0xa630d0, Todd 0xa22500): the boss's
+// approach, as NegaScott's: entry sets the AI mode by target and plays
+// animation 7; an update first checks the class's exits, then runs Boss's.
+// Not yet matched (not credited): no case order reproduces the original's
+// block layout.
+int TagTeamMember::State244(int event) {
+    switch (event) {
+    case kStateUpdate:
+        if (flagD5a) {
+            if (!(timerD78 > 0.0f)) {
+                states.Transition(State264Ptr());
+                return kStateParentTookOver;
+            }
+        } else if (!flagD5b) {
+            states.Transition(State262Ptr());
+            return kStateParentTookOver;
+        }
+        {
+            int result = Boss::State244(kStateUpdate);
+            if (result != kStateParentTookOver) return kStateHandled;
+            return result;
+        }
+    case kStateEnter:
+        aiMode = target && target->object ? 1 : 6;
+        if (!Slot239(7)) PlayAnimation(7, 1, 0, 1.0f);
+        value7ac = 0.0f;
+        flag813 = 1;
+        mode87c = 2;
+        return kStateHandled;
+    case kStateExit:
+        flag813 = 0;
+        mode87c = 3;
+        return kStateHandled;
+    case kStateEvent3:
+        return kStateHandled;
+    default:
+        return kStateUnhandled;
+    }
+}
+int Lynette::State244(int event) {
+    switch (event) {
+    case kStateUpdate:
+        if (flagD80 || flagD84) {
+            states.Transition(State276Ptr());
+            return kStateParentTookOver;
+        }
+        if (flagD5a) {
+            if (!(timerD78 > 0.0f)) {
+                states.Transition(State264Ptr());
+                return kStateParentTookOver;
+            }
+        } else if (!flagD5b) {
+            states.Transition(State262Ptr());
+            return kStateParentTookOver;
+        }
+        {
+            int result = Boss::State244(kStateUpdate);
+            if (result != kStateParentTookOver) return kStateHandled;
+            return result;
+        }
+    case kStateEnter:
+        aiMode = target && target->object ? 1 : 6;
+        if (!Slot239(7)) PlayAnimation(7, 1, 0, 1.0f);
+        value7ac = 0.0f;
+        flag813 = 1;
+        mode87c = 2;
+        return kStateHandled;
+    case kStateExit:
+        flag813 = 0;
+        mode87c = 3;
+        return kStateHandled;
+    case kStateEvent3:
+        return kStateHandled;
+    default:
+        return kStateUnhandled;
+    }
+}
+int Todd::State244(int event) {
+    switch (event) {
+    case kStateUpdate:
+        if (flagD89) {
+            flagD89 = 0;
+            valueD94 = 0;
+            states.Transition(State264Ptr());
+            return kStateParentTookOver;
+        }
+        if (Boss::State244(kStateUpdate) == kStateParentTookOver) return kStateParentTookOver;
+        return kStateHandled;
+    case kStateEnter:
+        aiMode = target && target->object ? 1 : 6;
+        if (!Slot239(7)) PlayAnimation(7, 1, 0, 1.0f);
+        value7ac = 0.0f;
+        flag813 = 1;
+        mode87c = 2;
+        flagD88 = 1;
+        CallA254a0(0.0f);
+        return kStateHandled;
+    case kStateExit:
+        flag813 = 0;
+        mode87c = 3;
+        flagD88 = 0;
+        return kStateHandled;
+    case kStateEvent3:
+        return kStateHandled;
+    default:
+        return kStateUnhandled;
+    }
+}
+
+// Patel slot 256 (0xa40400): animations 150, 151 and 152 in turn with +0x3ba
+// raised; once 152 is done, switches to slot 200. Not yet matched (not
+// credited).
+int Patel::State256(int event) {
+    switch (event) {
+    case kStateUpdate:
+        if (animation != 152) {
+            if (animation == 151) {
+                if (AnimationDone()) PlayAnimation(152, 0, 0, 1.0f);
+            } else if (animation == 150 && AnimationDone()) {
+                PlayAnimation(151, 0, 0, 1.0f);
+            }
+            return kStateHandled;
+        }
+        if (!AnimationDone()) return kStateHandled;
+        states.Transition(State200Ptr());
+        return kStateParentTookOver;
+    case kStateEnter:
+        flag3ba = 1;
+        PlayAnimation(150, 0, 0, 1.0f);
+        return kStateHandled;
+    case kStateExit:
+        flag3ba = 0;
+        return kStateHandled;
+    case kStateEvent3:
+        return kStateHandled;
+    default:
+        return kStateUnhandled;
+    }
+}
+
+// KenKyle slot 38 (0xa4c300): outside its states 258, 260 and 262 it is Boss's
+// hit check; in them it refuses a hit it has recorded and records any other.
+// Not yet matched (not credited): one test compiles to tbz instead of cbz.
+bool KenKyle::OnHit(BaseCharacter* other, void* hit) {
+    State first = State258Ptr();
+    if (!(states.current == first)) {
+        State second = State260Ptr();
+        if (!(states.current == second)) {
+            State third = State262Ptr();
+            if (!(states.current == third)) return Boss::OnHit(other, hit);
+        }
+    }
+    int32_t id = static_cast<const int32_t*>(hit)[17];
+    if (recentHits[0] == id || recentHits[1] == id || recentHits[2] == id || recentHits[3] == id) return false;
+    RecordHit(hit);
+    return true;
+}
+
+// HipsterChick slot 108 (0xa43050): entry stops the chick; each update switches
+// to slot 106.
+int HipsterChick::State108(int event) {
+    switch (event) {
+    case kStateUpdate:
+        states.Transition(State106Ptr());
+        return kStateParentTookOver;
+    case kStateEnter:
+        motion = onyx::Vector3::Zero();
+        motionTarget = onyx::Vector3::Zero();
+        // Falls through.
+    case kStateExit:
+        states.AssertOwner(this);
+        return kStateHandled;
+    case kStateEvent3:
+        return kStateHandled;
+    default:
+        return kStateUnhandled;
+    }
+}
+
+// Patel slot 69 (0xa3fe80): Boss's damage handling; in mode 1 (or 3), once
+// health falls to (1 - +0xd74) (or twice that) of slot 57, moves to mode 2 (4).
+float Patel::TakeDamage(const void* hit, BaseCharacter* other) {
+    float damage = TakeBossDamage(hit, other);
+    if (modeChanged) return damage;
+    float health;
+    float limit;
+    if (modeFfc == 3) {
+        health = value160;
+        limit = Slot57() * (1.0f - (healthStep + healthStep));
+    } else if (modeFfc == 1) {
+        health = value160;
+        limit = Slot57() * (1.0f - healthStep);
+    } else {
+        return damage;
+    }
+    if (health <= limit) {
+        if (modeFfc == 1) modeFfc = 2;
+        else if (modeFfc == 3) modeFfc = 4;
+        modeChanged = 1;
+    }
+    return damage;
+}
+
+// SuperFightingRobotHand slot 260 (0xa2b930): the hand's idle: entry stops it
+// and plays animation 0 with +0x3ba raised until exit.
+int SuperFightingRobotHand::State260(int event) {
+    switch (event) {
+    case kStateUpdate:
+    case kStateEvent3:
+        return kStateHandled;
+    case kStateEnter:
+        flag3ba = 1;
+        motion = onyx::Vector3::Zero();
+        motionTarget = onyx::Vector3::Zero();
+        PlayAnimation(0, 1, 0, 1.0f);
+        return kStateHandled;
+    case kStateExit:
+        flag3ba = 0;
+        return kStateHandled;
+    }
+    return kStateUnhandled;
+}
+
+// Envy slot 82 (0xa672e0): never in its states 268 or 266; otherwise Boss's
+// test.
+bool Envy::Slot82() {
+    State first = State268Ptr();
+    if (states.current == first) return false;
+    State second = State266Ptr();
+    if (states.current == second) return false;
+    if (Slot85()) return false;
+    return CanSlot82();
+}
+
+// Animation states: stop or raise a flag on entry, switch on when the
+// animation is done (SuperGideon 186 0xa53410, GigaGideon 264 0xa5bf20,
+// LucasLee 258 0xa49800).
+int SuperGideon::State186(int event) {
+    switch (event) {
+    case kStateUpdate:
+        if (AnimationDone()) {
+            states.Transition(State96Ptr());
+            return kStateParentTookOver;
+        }
+        return kStateHandled;
+    case kStateEnter:
+        motion = onyx::Vector3::Zero();
+        motionTarget = onyx::Vector3::Zero();
+        PlayAnimation(114, 1, 0, 1.0f);
+        return kStateHandled;
+    case kStateExit:
+        states.AssertOwner(this);
+        return kStateHandled;
+    case kStateEvent3:
+        return kStateHandled;
+    default:
+        return kStateUnhandled;
+    }
+}
+int GigaGideon::State264(int event) {
+    switch (event) {
+    case kStateUpdate:
+        if (AnimationDone()) {
+            states.Transition(State266Ptr());
+            return kStateParentTookOver;
+        }
+        return kStateHandled;
+    case kStateEnter:
+        motion = onyx::Vector3::Zero();
+        motionTarget = onyx::Vector3::Zero();
+        PlayAnimation(29, 0, 0, 1.0f);
+        flag3ba = 1;
+        return kStateHandled;
+    case kStateExit:
+        flag3ba = 0;
+        return kStateHandled;
+    case kStateEvent3:
+        return kStateHandled;
+    default:
+        return kStateUnhandled;
+    }
+}
+int LucasLee::State258(int event) {
+    switch (event) {
+    case kStateUpdate:
+        if (AnimationDone()) {
+            states.Transition(State244Ptr());
+            return kStateParentTookOver;
+        }
+        return kStateHandled;
+    case kStateEnter:
+        PlayAnimation(87, 0, 1, 1.0f);
+        motion = onyx::Vector3::Zero();
+        motionTarget = onyx::Vector3::Zero();
+        flag3bb = 1;
+        return kStateHandled;
+    case kStateExit:
+        flag3bb = 0;
+        return kStateHandled;
+    case kStateEvent3:
+        return kStateHandled;
+    default:
+        return kStateUnhandled;
+    }
+}
+
+// Todd slot 262 (0xa233a0): plays animation 97 with +0x3bb raised until exit;
+// when it is done, raises +0xd25 and switches to slot 244.
+int Todd::State262(int event) {
+    switch (event) {
+    case kStateUpdate:
+        if (AnimationDone()) {
+            flagD25 = 1;
+            states.Transition(State244Ptr());
+            return kStateParentTookOver;
+        }
+        return kStateHandled;
+    case kStateEnter:
+        PlayAnimation(97, 0, 1, 1.0f);
+        motion = onyx::Vector3::Zero();
+        motionTarget = onyx::Vector3::Zero();
+        flag3bb = 1;
+        return kStateHandled;
+    case kStateEvent3:
+        return kStateHandled;
+    default:
+        return kStateUnhandled;
+    case kStateExit:
+        flag3bb = 0;
+        return kStateHandled;
+    }
+}
+
 }  // namespace SPTG

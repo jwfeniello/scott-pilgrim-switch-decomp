@@ -24,13 +24,15 @@ struct TagTeamMember : Boss {
 
     char padding_d4b[0xf];
     uint8_t flagD5a;             // +0xd5a
-    char padding_d5b[0x1d];
+    uint8_t flagD5b;             // +0xd5b
+    char padding_d5c[0x1c];
     float timerD78;              // +0xd78: counted down by slot 13
     float healthD7c;             // +0xd7c: lowered by every hit
     uint8_t flagD80;             // +0xd80: set once +0xd7c runs out
     uint8_t flagD81;             // +0xd81
     char padding_d82[0x1];
     uint8_t flagD83;             // +0xd83
+    uint8_t flagD84;             // +0xd84
 };
 // vtable 0x188a8a0, 272 slots
 struct Todd : Boss {
@@ -58,7 +60,10 @@ struct Todd : Boss {
 
     char padding_d4b[0x3d];
     uint8_t flagD88;             // +0xd88: raised in states 98 and 248
-    char padding_d89[0x40f];
+    uint8_t flagD89;             // +0xd89
+    char padding_d8a[0xa];
+    int32_t valueD94;            // +0xd94
+    char padding_d98[0x400];
     float value1198;             // +0x1198: returned by slot 59
 };
 // vtable 0x1896e38, 284 slots
@@ -111,7 +116,6 @@ struct Gideon : Boss {
 // vtable 0x1896478, 266 slots
 struct SuperGideon : Boss {
     bool Slot73();
-    void CallA254a0(float value);   // 0xa254a0
     void Slot13();
     bool Slot82();
     int State122(int event); State State122Ptr();   // slots 122, 123, override Boss
@@ -133,6 +137,7 @@ struct SuperGideon : Boss {
 // vtable 0x1895a88, 272 slots
 struct KenKyle : Boss {
     float TakeDamage(const void* hit, BaseCharacter* other);
+    bool OnHit(BaseCharacter* other, void* hit);
     int State114(int event); State State114Ptr();   // slots 114, 115, override Boss
     int State122(int event); State State122Ptr();   // slots 122, 123, override Boss
     int State172(int event); State State172Ptr();   // slots 172, 173, override Boss
@@ -245,6 +250,7 @@ struct Lynette : TagTeamMember {
 // vtable 0x1892fb8, 269 slots
 struct Patel : Boss {
     bool OnHit(BaseCharacter* other, void* hit);
+    float TakeDamage(const void* hit, BaseCharacter* other);
     float Slot170();
     virtual void Slot234(int kind);                                          // slot 234, overrides Boss
     SPTG_SLOT(235)   // overrides Boss
@@ -263,13 +269,16 @@ struct Patel : Boss {
     uint32_t chickCount;         // +0xd58
     char padding_d5c[0x4];
     onyx::ComponentHandle** chicks; // +0xd60: HipsterChick handles
-    char padding_d68[0x10];
+    char padding_d68[0xc];
+    float healthStep;            // +0xd74: health fraction lost before the next mode
     float scaleD78;              // +0xd78: scales slot 170 in mode 4
     char padding_d7c[0x280];
     int32_t modeFfc;             // +0xffc
+    uint8_t modeChanged;         // +0x1000
 };
 // vtable 0x1898a48, 274 slots
 struct Envy : TagTeamMember {
+    bool Slot82();
     int State122(int event); State State122Ptr();   // slots 122, 123, override TagTeamMember
     int State186(int event); State State186Ptr();   // slots 186, 187, override TagTeamMember
     int State198(int event); State State198Ptr();   // slots 198, 199, override TagTeamMember

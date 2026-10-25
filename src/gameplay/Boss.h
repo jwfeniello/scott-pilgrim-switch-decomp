@@ -55,6 +55,7 @@ struct Boss : Enemy {
     }
     bool CheckA1e720();   // 0xa1e720
     bool CheckA1e820();   // 0xa1e820
+    void CallA254a0(float value);   // 0xa254a0
     int State96(int event); State State96Ptr();   // slots 96, 97, override Enemy
     int State98(int event); State State98Ptr();   // slots 98, 99, override Enemy
     int State106(int event); State State106Ptr();   // slots 106, 107, override Enemy
@@ -82,7 +83,9 @@ struct Boss : Enemy {
     virtual int State254(int event); virtual State State254Ptr();   // slots 254, 255
     virtual int State256(int event); virtual State State256Ptr();   // slots 256, 257
 
-    char padding_b79[0x3f];
+    char padding_b79[0x2f];
+    onyx::ComponentHandle* handleBa8; // +0xba8
+    char padding_bb0[0x8];
     AttackSlot attacks[2];       // +0xbb8: the second is requested every update with kind 1
     char padding_ca8[0x10];
     float limitCb8;              // +0xcb8
@@ -93,7 +96,8 @@ struct Boss : Enemy {
     char padding_cd2[0x36];
     int32_t valueD08;            // +0xd08
     float timerD0c;              // +0xd0c
-    char padding_d10[0x16];
+    char padding_d10[0x15];
+    uint8_t flagD25;             // +0xd25
     uint8_t flagD26;             // +0xd26
     uint8_t flagD27;             // +0xd27
     uint8_t flagD28;             // +0xd28

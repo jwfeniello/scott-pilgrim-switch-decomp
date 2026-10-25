@@ -256,7 +256,7 @@ struct BaseCharacter : onyx::Component {
     char padding_17d[0xb];
     float animationSpeed;        // +0x188
     float value18c;              // +0x18c: set on the mount by state 130
-    char padding_190[0x10];
+    int32_t recentHits[4];       // +0x190: IDs of the last hits taken (see RecordHit)
     int32_t animation;           // +0x1a0: the animation playing
     onyx::Vector3 motion;        // +0x1a4
     onyx::Vector3 motionTarget;  // +0x1b0
@@ -332,6 +332,7 @@ struct BaseCharacter : onyx::Component {
     uint8_t flag774;             // +0x774
 
     void ReleaseHeld(bool flag, float x, float y);   // 0x976fb0: drops the reference at +0x240
+    void RecordHit(void* hit);                         // 0x977190
     void ActorSlot32();                                // 0x93fec0: AnimatedAiActor's slot 32
     void ActorSlot33(void* data);                      // 0x940170: AnimatedAiActor's slot 33
     void Update976670(float time);                     // 0x976670

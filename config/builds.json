@@ -494093,6 +494093,23 @@
           }
         },
         {
+          "address": "0xa233a0",
+          "size": 380,
+          "symbol": "_ZN4SPTG4Todd8State262Ei",
+          "target_sha256": "cc578e8f0dc2ceba9fa0635884c1634b33528698c8da37e974b1420babad3a88",
+          "bindings": {
+            "_ZN4SPTG12StateMachineINS_13BaseCharacterEE10TransitionEMS1_FiiE": "0x812930",
+            "_ZGVZN4onyx7Vector34ZeroEvE5value": "0x191f8b8",
+            "_ZZN4onyx7Vector34ZeroEvE5value": "0x191f8c0",
+            "__cxa_guard_acquire": "0xfa4130",
+            "__cxa_guard_release": "0xfa4140"
+          },
+          "got_bindings": {},
+          "immutable_sections": {
+            "180": "0x1391336"
+          }
+        },
+        {
           "address": "0xa25a70",
           "size": 104,
           "symbol": "_ZN4SPTG13TagTeamMember6Slot13Ev",
@@ -494172,6 +494189,22 @@
             "_ZN4SPTG12StateMachineINS_13BaseCharacterEE10TransitionEMS1_FiiE": "0x812930"
           },
           "got_bindings": {}
+        },
+        {
+          "address": "0xa2b930",
+          "size": 340,
+          "symbol": "_ZN4SPTG22SuperFightingRobotHand8State260Ei",
+          "target_sha256": "b5706b539a40cbaae413fd5d61e5af55802fa04adee34872ceba2bb4ab4df507",
+          "bindings": {
+            "_ZGVZN4onyx7Vector34ZeroEvE5value": "0x191f8b8",
+            "_ZZN4onyx7Vector34ZeroEvE5value": "0x191f8c0",
+            "__cxa_guard_acquire": "0xfa4130",
+            "__cxa_guard_release": "0xfa4140"
+          },
+          "got_bindings": {},
+          "immutable_sections": {
+            "167": "0x13913f4"
+          }
         },
         {
           "address": "0xa317d0",
@@ -494272,6 +494305,17 @@
           "got_bindings": {}
         },
         {
+          "address": "0xa3fe80",
+          "size": 340,
+          "symbol": "_ZN4SPTG5Patel10TakeDamageEPKvPNS_13BaseCharacterE",
+          "target_sha256": "e8023e2abbe0c5ba8cb530f0e64e36badf49c017c533c65c48ddbe427d621166",
+          "bindings": {
+            "_ZN4SPTG13BaseCharacter10TakeDamageEPKvPS0_": "0x96ee50",
+            "_ZN4SPTG5Enemy11Apply995a30Ef": "0x995a30"
+          },
+          "got_bindings": {}
+        },
+        {
           "address": "0xa40050",
           "size": 124,
           "symbol": "_ZN4SPTG5Patel7Slot234Ei",
@@ -494365,6 +494409,23 @@
           "got_bindings": {},
           "immutable_sections": {
             "79": "0x13914c0"
+          }
+        },
+        {
+          "address": "0xa43050",
+          "size": 340,
+          "symbol": "_ZN4SPTG12HipsterChick8State108Ei",
+          "target_sha256": "ea932a540afd9fa11d5c5707331c97d0b71740d581d423358e8d6229780654bd",
+          "bindings": {
+            "_ZN4SPTG12StateMachineINS_13BaseCharacterEE10TransitionEMS1_FiiE": "0x812930",
+            "_ZGVZN4onyx7Vector34ZeroEvE5value": "0x191f8b8",
+            "_ZZN4onyx7Vector34ZeroEvE5value": "0x191f8c0",
+            "__cxa_guard_acquire": "0xfa4130",
+            "__cxa_guard_release": "0xfa4140"
+          },
+          "got_bindings": {},
+          "immutable_sections": {
+            "162": "0x13914c8"
           }
         },
         {
@@ -494475,6 +494536,23 @@
           "got_bindings": {}
         },
         {
+          "address": "0xa49800",
+          "size": 368,
+          "symbol": "_ZN4SPTG8LucasLee8State258Ei",
+          "target_sha256": "0557f25f2ed94d5d526f62284105b45598b6b9039539ec99079b938078a89ed2",
+          "bindings": {
+            "_ZN4SPTG12StateMachineINS_13BaseCharacterEE10TransitionEMS1_FiiE": "0x812930",
+            "_ZGVZN4onyx7Vector34ZeroEvE5value": "0x191f8b8",
+            "_ZZN4onyx7Vector34ZeroEvE5value": "0x191f8c0",
+            "__cxa_guard_acquire": "0xfa4130",
+            "__cxa_guard_release": "0xfa4140"
+          },
+          "got_bindings": {},
+          "immutable_sections": {
+            "177": "0x139151c"
+          }
+        },
+        {
           "address": "0xa4c450",
           "size": 268,
           "symbol": "_ZN4SPTG7KenKyle10TakeDamageEPKvPNS_13BaseCharacterE",
@@ -494554,7 +494632,7 @@
           "target_sha256": "c5d7052b810dbaa46ae2dcd2b710cc5ea60d9b71132f61f088873083e65abc0a",
           "bindings": {
             "_ZN4SPTG4Boss8State122Ei": "0xa1a170",
-            "_ZN4SPTG11SuperGideon10CallA254a0Ef": "0xa254a0"
+            "_ZN4SPTG4Boss10CallA254a0Ef": "0xa254a0"
           },
           "got_bindings": {}
         },
@@ -494570,6 +494648,23 @@
           "got_bindings": {},
           "immutable_sections": {
             "98": "0x1391582"
+          }
+        },
+        {
+          "address": "0xa53410",
+          "size": 364,
+          "symbol": "_ZN4SPTG11SuperGideon8State186Ei",
+          "target_sha256": "b8d2e9ddca2d9db8892eed7810cf32353cd661beef7df403427f75d7ead3b168",
+          "bindings": {
+            "_ZN4SPTG12StateMachineINS_13BaseCharacterEE10TransitionEMS1_FiiE": "0x812930",
+            "_ZGVZN4onyx7Vector34ZeroEvE5value": "0x191f8b8",
+            "_ZZN4onyx7Vector34ZeroEvE5value": "0x191f8c0",
+            "__cxa_guard_acquire": "0xfa4130",
+            "__cxa_guard_release": "0xfa4140"
+          },
+          "got_bindings": {},
+          "immutable_sections": {
+            "171": "0x1391586"
           }
         },
         {
@@ -494655,6 +494750,23 @@
           "got_bindings": {}
         },
         {
+          "address": "0xa5bf20",
+          "size": 368,
+          "symbol": "_ZN4SPTG10GigaGideon8State264Ei",
+          "target_sha256": "e2a6860f2ed5d89503b7ba97f7fc208a81b95177a6a77680ee079cc3cee8dcc2",
+          "bindings": {
+            "_ZN4SPTG12StateMachineINS_13BaseCharacterEE10TransitionEMS1_FiiE": "0x812930",
+            "_ZGVZN4onyx7Vector34ZeroEvE5value": "0x191f8b8",
+            "_ZZN4onyx7Vector34ZeroEvE5value": "0x191f8c0",
+            "__cxa_guard_acquire": "0xfa4130",
+            "__cxa_guard_release": "0xfa4140"
+          },
+          "got_bindings": {},
+          "immutable_sections": {
+            "174": "0x13915ee"
+          }
+        },
+        {
           "address": "0xa605c0",
           "size": 128,
           "symbol": "_ZN4SPTG6Gideon7State98Ei",
@@ -494700,6 +494812,14 @@
           "size": 52,
           "symbol": "_ZN4SPTG7Lynette7Slot238Ev",
           "target_sha256": "6adce15da0afe1190abd9f9247e83a70ba416680a3842521aecd60fbf3d2b9be",
+          "bindings": {},
+          "got_bindings": {}
+        },
+        {
+          "address": "0xa672e0",
+          "size": 360,
+          "symbol": "_ZN4SPTG4Envy6Slot82Ev",
+          "target_sha256": "de25a5a7fb302c61210415151ff11e3eef9060a2f851a3bacf23209260917b4e",
           "bindings": {},
           "got_bindings": {}
         },
