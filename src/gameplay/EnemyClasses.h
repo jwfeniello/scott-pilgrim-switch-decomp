@@ -17,7 +17,9 @@ struct EnemyOneHitWonder : Enemy {
     char padding_b79[0x17];
     EnemySensor sensor;          // +0xb90
     int32_t valueBb8;            // +0xbb8
-    char padding_bbc[0x8];
+    int32_t valueBbc;            // +0xbbc
+    uint8_t flagBc0;             // +0xbc0
+    char padding_bc1[0x3];
     float timeLimitBc4;          // +0xbc4: state 238 returns to 96 after this long
     float timerBc8;              // +0xbc8
     uint8_t flagBcc;             // +0xbcc
@@ -74,14 +76,27 @@ struct EnemyShooter : Enemy {
     void Update();
     void Slot166(int kind);
     void Slot19();
+    void Slot4(onyx::Archive& archive);
     virtual int State234(int event); virtual State State234Ptr();   // slots 234, 235
     virtual int State236(int event); virtual State State236Ptr();   // slots 236, 237
 
-    char padding_b79[0x17];
+    char padding_b79[0x13];
+    int32_t valueB8c;            // +0xb8c: serialized through a uint32_t
     AttackSlot attacks[1];       // +0xb90
-    char padding_c08[0x1c];
-    int32_t valueC24;            // +0xc24
-    char padding_c28[0x18];
+    int32_t valueC08;            // +0xc08
+    int32_t valueC0c;            // +0xc0c
+    int32_t valueC10;            // +0xc10
+    int32_t valueC14;            // +0xc14
+    int32_t valueC18;            // +0xc18
+    int32_t valueC1c;            // +0xc1c
+    int32_t valueC20;            // +0xc20
+    int32_t valueC24;            // +0xc24: serialized through a uint32_t
+    int32_t valueC28;            // +0xc28
+    int32_t valueC2c;            // +0xc2c
+    int32_t valueC30;            // +0xc30
+    int32_t valueC34;            // +0xc34
+    int32_t valueC38;            // +0xc38
+    int32_t valueC3c;            // +0xc3c
     uint8_t flagC40;             // +0xc40
     char padding_c41[0x3];
     onyx::Vector3 vectorC44;     // +0xc44
@@ -106,6 +121,7 @@ struct EnemyNormal : Enemy {
     bool Slot34Check();
     int State196(int event);
     bool Slot33(void* data);
+    void Slot4(onyx::Archive& archive);
     virtual int State234(int event); virtual State State234Ptr();   // slots 234, 235
     virtual int State236(int event); virtual State State236Ptr();   // slots 236, 237
     virtual int State238(int event); virtual State State238Ptr();   // slots 238, 239
@@ -116,30 +132,54 @@ struct EnemyNormal : Enemy {
     virtual int State248(int event); virtual State State248Ptr();   // slots 248, 249
 
     char padding_b79[0x17];
-    AttackSlot attacks[7];       // +0xb90
-    char padding_ed8[0x168];
+    AttackSlot attacks[10];      // +0xb90
     uint8_t flag1040;            // +0x1040: enables the switch to slot 246 in slot 33
+    char padding_1041[0x7];
+    AttackSlot attack1048;       // +0x1048
+    AttackSlot attack10c0;       // +0x10c0
 };
 // vtable 0x1882fa8, 236 slots
 struct EnemyMini : Enemy {
     void Update();
     void Slot166(int kind);
+    void Slot4(onyx::Archive& archive);
     virtual int State234(int event); virtual State State234Ptr();   // slots 234, 235
 
     char padding_b79[0x17];
     AttackSlot attacks[2];       // +0xb90
+    uint8_t flagC80;             // +0xc80
+    char padding_c81[0x3];
+    int32_t valueC84;            // +0xc84: serialized through a uint32_t
+    int32_t valueC88;            // +0xc88
+    int32_t valueC8c;            // +0xc8c
+    int32_t valueC90;            // +0xc90
+    uint8_t flagC94;             // +0xc94
 };
 // vtable 0x1883730, 237 slots
 struct EnemyJetPackMatt : Enemy {
     void Update();
     void Slot166(int kind);
     int State200(int event);
+    void Slot4(onyx::Archive& archive);
     virtual int State234(int event); virtual State State234Ptr();   // slots 234, 235
     int State9f25b0(int event);   // 0x9f25b0, not virtual
     virtual State State9f25b0Ptr();   // slot 236: returns the state at 0x9f25b0
 
-    char padding_b79[0x17];
+    char padding_b79[0x13];
+    int32_t valueB8c;            // +0xb8c: serialized through a uint32_t
     AttackSlot attacks[1];       // +0xb90
+    int32_t valueC08;            // +0xc08
+    int32_t valueC0c;            // +0xc0c
+    int32_t valueC10;            // +0xc10
+    int32_t valueC14;            // +0xc14
+    int32_t valueC18;            // +0xc18
+    int32_t valueC1c;            // +0xc1c
+    int32_t valueC20;            // +0xc20
+    int32_t valueC24;            // +0xc24
+    int32_t valueC28;            // +0xc28
+    int32_t valueC2c;            // +0xc2c
+    int32_t valueC30;            // +0xc30
+    int32_t valueC34;            // +0xc34
 };
 // vtable 0x1884700, 246 slots
 struct EnemyHanzo : Enemy {
@@ -189,6 +229,7 @@ struct EnemyGiant : Enemy {
     bool Check9fd3e0();   // 0x9fd3e0
     void Slot166(int kind);
     bool Slot82();
+    void Slot4(onyx::Archive& archive);
     virtual int State234(int event); virtual State State234Ptr();   // slots 234, 235
     virtual int State236(int event); virtual State State236Ptr();   // slots 236, 237
     virtual int State238(int event); virtual State State238Ptr();   // slots 238, 239
@@ -244,11 +285,17 @@ struct EnemyStuntman : EnemyOneHitWonder {
     int State108(int event);
     float TakeDamage(const void* hit, BaseCharacter* other);
     void Update();
+    void Slot4(onyx::Archive& archive);
     virtual int State234(int event); virtual State State234Ptr();   // slots 234, 235, overrides EnemyOneHitWonder
     int State9da590(int event);   // 0x9da590, not virtual
     virtual State State9da590Ptr();   // slot 240: returns the state at 0x9da590
 
-    char padding_bcd[0x17];
+    char padding_bcd[0x3];
+    int32_t valueBd0;            // +0xbd0: slot 4 moves these, +0xbd4 through a uint32_t
+    int32_t valueBd4;            // +0xbd4
+    int32_t valueBd8;            // +0xbd8
+    int32_t valueBdc;            // +0xbdc
+    int32_t valueBe0;            // +0xbe0
     onyx::Vector3 reach;         // +0xbe4: how close a target must be on each axis
     float minX;                  // +0xbf0: the range of X positions state 234 acts in
     float maxX;                  // +0xbf4
@@ -256,9 +303,21 @@ struct EnemyStuntman : EnemyOneHitWonder {
 };
 // vtable 0x187e2f8, 241 slots
 struct EnemySasuke : EnemyOneHitWonder {
+    void Slot4(onyx::Archive& archive);
     virtual int State234(int event); virtual State State234Ptr();   // slots 234, 235, overrides EnemyOneHitWonder
     int State9e5360(int event);   // 0x9e5360, not virtual
     virtual State State9e5360Ptr();   // slot 240: returns the state at 0x9e5360
+
+    char padding_bcd[0x3];
+    int32_t valueBd0;            // +0xbd0: slot 4 moves these, +0xbd4 through a uint32_t
+    int32_t valueBd4;            // +0xbd4
+    int32_t valueBd8;            // +0xbd8
+    int32_t valueBdc;            // +0xbdc
+    int32_t valueBe0;            // +0xbe0
+    int32_t valueBe4;            // +0xbe4
+    int32_t valueBe8;            // +0xbe8
+    int32_t valueBec;            // +0xbec
+    int32_t valueBf0;            // +0xbf0
 };
 // vtable 0x187eaa8, 240 slots
 struct EnemyGuyOnFire : EnemyOneHitWonder {
@@ -279,14 +338,16 @@ struct EnemyChargingCrowd : EnemyOneHitWonder {
 // vtable 0x1883ec0, 256 slots
 struct EnemyJake : EnemyNormal {
     void Slot19();
+    void Slot4(onyx::Archive& archive);
     virtual int State250(int event); virtual State State250Ptr();   // slots 250, 251
     virtual int State252(int event); virtual State State252Ptr();   // slots 252, 253
     virtual int State254(int event); virtual State State254Ptr();   // slots 254, 255
 
-    char padding_1041[0xff];
+    char padding_1138[0x8];
     AttackSlot attack1140;       // +0x1140: started in state 252
     float limit11b8;             // +0x11b8: how long state 254 lasts
-    char padding_11bc[0x5];
+    int32_t value11bc;           // +0x11bc
+    uint8_t flag11c0;            // +0x11c0
     uint8_t flag11c1;            // +0x11c1
     char padding_11c2[0x6];
     EnemySensor sensor;          // +0x11c8
@@ -296,7 +357,13 @@ struct EnemyJake : EnemyNormal {
 };
 // vtable 0x1885e68, 248 slots
 struct EnemyGeeOne : EnemyGiant {
+    void Slot4(onyx::Archive& archive);
 
+    char padding_1044[0x4];
+    int32_t value1048;           // +0x1048: serialized through a uint32_t
+    int32_t value104c;           // +0x104c
+    int32_t value1050;           // +0x1050
+    int32_t value1054;           // +0x1054
 };
 // vtable 0x1886668, 242 slots
 struct EnemyForestElves : EnemyOneHitWonder {

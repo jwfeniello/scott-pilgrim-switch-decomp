@@ -2602,4 +2602,33 @@ void Patel::Slot13() {
     for (uint32_t i = 0; i < chickCount; ++i) onyx::Get<HipsterChick, onyx_types::type_4a52c0d7>(chicks[i])->Slot94();
 }
 
+// KenKyle slot 4 (0xa4b5f0): Boss's serialization, then the seven attack slots
+// and the settings from +0x10b0 to +0x10ec (see Archive.h).
+void KenKyle::Slot4(onyx::Archive& archive) {
+    Boss::Slot4(archive);
+    attackD68.Serialize(archive);
+    attackDe0.Serialize(archive);
+    attackE58.Serialize(archive);
+    attackEd0.Serialize(archive);
+    attackF48.Serialize(archive);
+    attackFc0.Serialize(archive);
+    attack1038.Serialize(archive);
+    onyx::Transfer(archive, value10b0);
+    onyx::Transfer(archive, value10b4);
+    onyx::Transfer(archive, limit10b8);
+    onyx::Transfer(archive, range10bc);
+    onyx::Transfer(archive, value10c0);
+    onyx::Transfer(archive, value10c4);
+    onyx::Transfer(archive, value10c8);
+    onyx::Transfer(archive, value10cc);
+    onyx::Transfer(archive, value10d0);
+    onyx::Transfer(archive, chance10d4);
+    onyx::Transfer(archive, value10d8);
+    onyx::Transfer(archive, range10dc);
+    onyx::Transfer(archive, value10e0);
+    onyx::Transfer(archive, limit10e4);
+    onyx::Transfer(archive, value10e8);
+    onyx::Transfer(archive, value10ec);
+}
+
 }  // namespace SPTG

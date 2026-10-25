@@ -202,6 +202,7 @@ struct KenKyle : Boss {
     void Update();
     bool Slot82();
     void CallA506f0(int32_t value);   // 0xa506f0
+    void Slot4(onyx::Archive& archive);
     int State114(int event); State State114Ptr();   // slots 114, 115, override Boss
     int State122(int event); State State122Ptr();   // slots 122, 123, override Boss
     int State172(int event); State State172Ptr();   // slots 172, 173, override Boss
@@ -236,18 +237,24 @@ struct KenKyle : Boss {
     AttackSlot attackE58;        // +0xe58: requested every update with kind 31
     AttackSlot attackEd0;        // +0xed0: requested every update with kind 32
     AttackSlot attackF48;        // +0xf48: requested every update with kind 79
-    char padding_fc0[0xf8];
+    AttackSlot attackFc0;        // +0xfc0
+    AttackSlot attack1038;       // +0x1038
+    int32_t value10b0;           // +0x10b0
+    int32_t value10b4;           // +0x10b4
     float limit10b8;             // +0x10b8
     float range10bc;             // +0x10bc: how close the twins meet in state 260
-    char padding_10c0[0x4];
+    int32_t value10c0;           // +0x10c0
     float value10c4;             // +0x10c4
     float value10c8;             // +0x10c8
-    char padding_10cc[0x8];
+    int32_t value10cc;           // +0x10cc
+    int32_t value10d0;           // +0x10d0
     float chance10d4;            // +0x10d4: percent
-    char padding_10d8[0x4];
+    int32_t value10d8;           // +0x10d8
     float range10dc;             // +0x10dc: the twin joins states 246 and 248 within this distance
     float value10e0;             // +0x10e0: passed to 0x996c30 by slot 240
     float limit10e4;             // +0x10e4
+    int32_t value10e8;           // +0x10e8
+    int32_t value10ec;           // +0x10ec
 };
 // vtable 0x18949c8, 268 slots
 struct LucasLee : Boss {

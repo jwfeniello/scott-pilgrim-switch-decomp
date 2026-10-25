@@ -28,6 +28,7 @@ struct PlayfieldCollision : TypedComponent {
 
 // vtable 0x188b950, 258 slots
 struct Boss : Enemy {
+    void Slot4(onyx::Archive& archive);
     void Update();
     void Slot13();
     bool Slot33(void* data);

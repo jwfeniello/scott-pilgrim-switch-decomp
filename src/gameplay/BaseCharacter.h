@@ -4,6 +4,7 @@
 // Names are provisional.
 #pragma once
 #include "Animation.h"
+#include "Archive.h"
 #include "Level.h"
 #include "OnyxComponents.h"
 #include "OnyxEvents.h"
@@ -34,6 +35,7 @@ struct AttackSlot {
     Attack attack;       // +0x18
     int32_t kind;        // +0x70
     uint8_t flag74;      // +0x74
+    void Serialize(onyx::Archive& archive);   // 0x9e6310
 };
 static_assert(sizeof(AttackSlot) == 0x78, "AttackSlot size");
 struct BaseCharacter;
@@ -108,8 +110,9 @@ struct CharacterEffect : onyx::Component {
 struct BaseCharacter : onyx::Component {
     typedef StateMachine<BaseCharacter>::State State;
     virtual ~BaseCharacter();                                                    // slots 0, 1
-    SPTG_SLOT(3) SPTG_SLOT(4) SPTG_SLOT(5) SPTG_SLOT(6) SPTG_SLOT(7) SPTG_SLOT(8) SPTG_SLOT(9) SPTG_SLOT(10)
-    SPTG_SLOT(11)
+    SPTG_SLOT(3)
+    virtual void Slot4(onyx::Archive& archive);                              // slot 4
+    SPTG_SLOT(5) SPTG_SLOT(6) SPTG_SLOT(7) SPTG_SLOT(8) SPTG_SLOT(9) SPTG_SLOT(10) SPTG_SLOT(11)
     virtual bool IsA(uint32_t type);                                         // slot 12
     SPTG_SLOT(13) SPTG_SLOT(14) SPTG_SLOT(15)
     virtual void Update();                                                   // slot 16

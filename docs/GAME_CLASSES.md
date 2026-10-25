@@ -499,13 +499,37 @@ the optimizer assume it (`SPTG_ASSERT` in
 [`Assert.h`](../src/gameplay/Assert.h)). The state exit cases do not match with
 that form: they need `__builtin_assume`, which drops side effects.
 
+## Serialization (slot 4)
+
+Every character class serializes its fields in slot 4
+([`Archive.h`](../src/gameplay/Archive.h)). The function runs the parent's
+slot 4, then moves its own fields in layout order. Attack slots go through
+`AttackSlot::Serialize` (0x9e6310), and other fields go through the archive's
+stream (its slot 6 returns the bytes moved, added to the archive's position).
+Because each field is moved with its size, these functions record the class
+layouts. EnemyNormal has ten attack slots before `+0x1040` and two more after
+it. Ken & Kyle have seven, then 4-byte settings from `+0x10b0` to `+0x10ec`.
+
+Some 4-byte fields go through a `uint32_t` copy (`onyx::TransferAs`), which
+suggests another type in the original, such as an enum. The copies only
+match when made by an inline helper. Inlined, each call's copy is placed
+below the previous call's, which is how the original lays out two of them
+(EnemyShooter). EnemyOneHitWonder has no slot 4, so EnemyStuntman and
+EnemySasuke each move its fields themselves.
+
+Matched: EnemyNormal, EnemyJake, EnemyGeeOne, EnemyMini, EnemyStuntman,
+EnemySasuke, EnemyJetPackMatt, EnemyShooter and Ken & Kyle. Todd's and the
+robot hand's slot 4 move component handles at `+0xd48`. Boss's own fields
+therefore end before `+0xd48`, and the flags at `+0xd49` and `+0xd4a`
+(declared on Boss for now) belong to the classes that use them.
+
 ## Enemy class states
 
 [`EnemyClasses.h`](../src/gameplay/EnemyClasses.h) declares all 24 regular enemy
 classes with their own states (after Enemy's slot 233, each followed by its
 getter) and the overrides the sources define.
-[`EnemyClassStates.cpp`](../src/gameplay/EnemyClassStates.cpp) matches 73 of
-their functions (12,880 bytes), mostly small.
+[`EnemyClassStates.cpp`](../src/gameplay/EnemyClassStates.cpp) matches 81 of
+their functions (15,828 bytes), mostly small.
 
 The class hierarchy comes from the RTTI, where each class derives from
 `Onyx::Component::Compose<Base>`. Most classes derive from Enemy. EnemyStuntman,
@@ -611,8 +635,8 @@ Slots 96, 116 and 200 are written out but not credited. In each, the original
 merges the "handled" returns into a shared tail (for 96 and 116, the exit
 case's) that this build duplicates.
 
-[`BossClassStates.cpp`](../src/gameplay/BossClassStates.cpp) matches 127
-functions of the boss classes (34,468 bytes). Most are hooks that inline
+[`BossClassStates.cpp`](../src/gameplay/BossClassStates.cpp) matches 128
+functions of the boss classes (35,228 bytes). Most are hooks that inline
 Boss's version and add a class detail:
 
 - **Slot 234** maps an attack request's kind to a state. Each class tests its
