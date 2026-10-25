@@ -341,6 +341,39 @@ of its states (7,668 bytes). "Stops" means both motion vectors are zeroed.
 | 142 | `0x975390` | Down after a throw: faces, drops the held reference, animation 95; once landed and done, recovers (112) or picks 114/116 |
 | 144 | `0x9757a0` | Stops; back to 96 once the animation is done and `+0x748` is set |
 
+## BaseCharacter hooks
+
+[`BaseCharacter.cpp`](../src/gameplay/BaseCharacter.cpp) matches 17 of
+BaseCharacter's other virtuals (1,600 bytes). Most are small hooks that do one
+thing and switch states:
+
+| Slot | Address | Behavior |
+| --- | --- | --- |
+| 25, 26 | `0x96c8b0`, `0x96c980` | Animation speed and pause: passed to the animation component (`+0x70`, type `0x29fbe438`) and, with `+0x338` set, to the mount |
+| 32, 33 | `0x96ce30`, `0x96ce90` | After AnimatedAiActor's slot (`0x93fec0`, `0x940170`): restore the saved motion values and go to 108, or go to 136 |
+| 35 | `0x96cf00` | Starts the attack at `+0x530`, or `+0x588` with its flag set |
+| 53 | `0x96e4b0` | Drops the held reference and goes to 100 |
+| 64 | `0x96ede0` | Takes an amount from `+0x160`, then from `+0x32c`; returns what was taken |
+| 74 | `0x96f740` | Records a point, a flag and a value; goes to 110 |
+| 80, 83 | `0x970710`, `0x970820` | Whether in state 106; slot 83 also holds in action modes 2 and 4 |
+| 82 | `0x970770` | Held, on the ground, not slot 85, not `+0x141`, and outside action modes 3, 5, 6, 8 and 11 |
+| 86 | `0x9708e0` | Plays animation 17 |
+| 89 | `0x970b90` | Adds to `+0x32c`, kept between 0 and slot 150 |
+| 92, 93 | `0x970dd0`, `0x970e20` | Go to 108 after slot 75; or lower `+0x328` by a hit and go to 118 at or below `+0x514` |
+| 154 | `0x975f30` | Counts the timer at `+0x770` down and runs `0x976670` |
+| 158 | `0x976630` | False while the game state's `+0xe0` is set, else a settings flag (singleton at `+0x1f8`) |
+
+Three details decide whether these match:
+
+- A clamp to zero written as a select (`v < 0 ? 0 : v`, or an `if`) compiles to
+  `fmax`, as in the original. `fmaxf` compiles to `fmaxnm`.
+- Slot 93 loads the hit's amount before `+0x328`, which is clang's order for
+  `value -= amount`.
+- Slot 74 copies its point with three separate 32-bit loads and stores. Copied
+  from one `Vector3` member into another, struct-path alias analysis proves
+  the first two independent and merges them into one 64-bit copy, so the point
+  arrives as `const float*`.
+
 ## Enemy states
 
 [`Enemy.h`](../src/gameplay/Enemy.h) describes `SPTG::Enemy` (vtable
@@ -390,6 +423,14 @@ outside the attack data is what makes the special attack state match.
 Slot 136 also shows that the compiler fills a lookup table's unused entries
 with the first case's result. The original's unused entries are 0, so its first
 case maps to recovery animation 0.
+
+[`Enemy.cpp`](../src/gameplay/Enemy.cpp) matches four of Enemy's other
+virtuals (420 bytes): the actor update (slot 16), damage (69), and slots 41 and
+45. Each update resets three scaled values (`+0x9c`, `+0x2f8`, `+0x910`) to
+their bases (`+0x98`, `+0x2f4`, the special attack's `+0x74`). Slot 229 then
+scales them by a factor from the singleton at `+0x7a0` and adds an integer
+bonus for its mode. Slot 229 is written out but not credited. Only the order of
+two address computations differs.
 
 ## Enemy attack states
 
@@ -441,8 +482,8 @@ that form: they need `__builtin_assume`, which drops side effects.
 [`EnemyClasses.h`](../src/gameplay/EnemyClasses.h) declares all 24 regular enemy
 classes with their own states (after Enemy's slot 233, each followed by its
 getter) and the overrides the sources define.
-[`EnemyClassStates.cpp`](../src/gameplay/EnemyClassStates.cpp) matches 46 of
-their functions (5,380 bytes), mostly small.
+[`EnemyClassStates.cpp`](../src/gameplay/EnemyClassStates.cpp) matches 52 of
+their functions (6,600 bytes), mostly small.
 
 Enemy's own fields end at `+0xb79`; everything after belongs to the class.
 Classes with attacks keep them as 0x78-byte slots from `+0xba8` (EnemyNormal,
@@ -460,7 +501,16 @@ matched functions are:
   target's slot 83.
 - Slot 166, a hit hook: saves the motion, clears `+0x15c` and, for certain hit
   kinds, switches to a class state (EnemyGodzilla, EnemyJetPackMatt, EnemyThief,
-  EnemyPaparazzi, EnemyMini). The motion is copied field by field.
+  EnemyPaparazzi, EnemyMini, EnemyWolverine, EnemyChubby, EnemyShooter). The
+  motion is copied field by field. EnemyZombie, EnemySpeedy, EnemyHanzo and
+  EnemyGiant (shared with EnemyGeeOne) take more kinds through a switch; kinds 8
+  and 79 lower and raise a flag before the same state.
+- Some classes have states that are not virtual: EnemyHanzo's slots 244 and 245
+  return `{&function, 0}` for states at `0x9f7ef0` and `0x9f7750`. The generator
+  declares these from the getter's code.
+- EnemyGodzilla replaces BaseCharacter's jump state (slot 100), and EnemyNormal
+  (shared with EnemyJake and EnemyAlberta) writes out BaseCharacter's slot 33
+  after its own check.
 - Slot 34, a grab check: refused in one of the class's states or with `+0x141`
   set, otherwise allowed only in action mode 6 (EnemyGiant, EnemyGodzilla,
   EnemyHanzo, EnemyNormal). EnemyGodzilla also refuses hits in Enemy's dash

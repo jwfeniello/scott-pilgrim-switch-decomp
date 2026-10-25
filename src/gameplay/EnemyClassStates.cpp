@@ -329,21 +329,21 @@ void EnemyGodzilla::ReactTo(BaseCharacter*, int reaction, void*) {
 
 // Slot 33 (EnemyGiant 0x9fb430, EnemyGodzilla 0x9f8f90, EnemyHanzo 0x9f61b0): in
 // action mode 6, switches to a class state unless already in it.
-bool EnemyGiant::Slot33() {
+bool EnemyGiant::Slot33(void*) {
     if (actionMode == 6) {
         State target = State244Ptr();
         if (!(states.current == target)) states.Transition(State244Ptr());
     }
     return false;
 }
-bool EnemyGodzilla::Slot33() {
+bool EnemyGodzilla::Slot33(void*) {
     if (actionMode == 6) {
         State target = State236Ptr();
         if (!(states.current == target)) states.Transition(State236Ptr());
     }
     return false;
 }
-bool EnemyHanzo::Slot33() {
+bool EnemyHanzo::Slot33(void*) {
     if (actionMode == 6) {
         State target = State242Ptr();
         if (!(states.current == target)) states.Transition(State242Ptr());
@@ -486,7 +486,8 @@ int EnemyGuyOnFire::State176(int event) {
 
 // EnemyStuntman slot 16 (0x9cccb0): the actor update. A stuntman that is not
 // held is released (slot 71) when its attachment's ID is outside 10001-999999.
-// Each frame then keeps the frame's values, runs slot 229 and resets +0x32c,
+// Each frame then resets the scaled values to their bases, runs slot 229 (which
+// scales them again) and resets +0x32c,
 // +0x160, the sensor and its counters.
 void EnemyStuntman::Update() {
     BaseCharacter::Update();
@@ -494,9 +495,9 @@ void EnemyStuntman::Update() {
         const Holder* h = attachment ? attachment : &NoHolder;
         if (h->id - 10001u >= 989999u) Release();
     }
-    previousValue98 = value98;
-    previousValue2f4 = value2f4;
-    value910 = specialAttack.value74;
+    scaled9c = base98;
+    scaled2f8 = base2f4;
+    scaled910 = specialAttack.base74;
     Slot229();
     value32c = 0.0f;
     value160 = 1.0f;
@@ -504,6 +505,108 @@ void EnemyStuntman::Update() {
     valueBb8 = 0;
     valueBc8 = 0;
     flagBcc = 0;
+}
+
+// Slot 166 (EnemyZombie 0x9e81d0, EnemySpeedy 0x9eb0e0, EnemyHanzo 0x9f6a60,
+// EnemyGiant 0x9fb710): as above, with more hit kinds. Kinds 8 and 79 lower and
+// raise a flag and switch to the same state.
+void EnemyZombie::Slot166(int kind) {
+    savedMotion.x = motion.x;
+    savedMotion.y = motion.y;
+    savedMotion.z = motion.z;
+    value15c = 0.0f;
+    switch (kind) {
+    case 11: states.Transition(State240Ptr()); break;
+    case 20: states.Transition(State234Ptr()); break;
+    case 31: states.Transition(State238Ptr()); break;
+    case 32: states.Transition(State242Ptr()); break;
+    case 202: states.Transition(State202Ptr()); break;
+    }
+}
+void EnemySpeedy::Slot166(int kind) {
+    savedMotion.x = motion.x;
+    savedMotion.y = motion.y;
+    savedMotion.z = motion.z;
+    value15c = 0.0f;
+    switch (kind) {
+    case 8: flag9c4 = 0; states.Transition(State196Ptr()); break;
+    case 20: states.Transition(State234Ptr()); break;
+    case 31: states.Transition(State236Ptr()); break;
+    case 33: states.Transition(State194Ptr()); break;
+    case 79: flag9c4 = 1; states.Transition(State196Ptr()); break;
+    }
+}
+void EnemyHanzo::Slot166(int kind) {
+    savedMotion.x = motion.x;
+    savedMotion.y = motion.y;
+    savedMotion.z = motion.z;
+    value15c = 0.0f;
+    switch (kind) {
+    case 8: flag9c4 = 0; states.Transition(State9f7ef0Ptr()); break;
+    case 11: states.Transition(State236Ptr()); break;
+    case 20: states.Transition(State234Ptr()); break;
+    case 31: states.Transition(State238Ptr()); break;
+    case 32: states.Transition(State240Ptr()); break;
+    case 33: states.Transition(State194Ptr()); break;
+    case 79: flag9c4 = 1; states.Transition(State9f7ef0Ptr()); break;
+    }
+}
+void EnemyGiant::Slot166(int kind) {
+    savedMotion.x = motion.x;
+    savedMotion.y = motion.y;
+    savedMotion.z = motion.z;
+    value15c = 0.0f;
+    switch (kind) {
+    case 8: flagB89 = 0; states.Transition(State196Ptr()); break;
+    case 11: states.Transition(State236Ptr()); break;
+    case 20: states.Transition(State234Ptr()); break;
+    case 31: states.Transition(State238Ptr()); break;
+    case 32: states.Transition(State240Ptr()); break;
+    case 33: states.Transition(State194Ptr()); break;
+    case 45:
+    case 61: states.Transition(State130Ptr()); break;
+    case 79: flagB89 = 1; states.Transition(State196Ptr()); break;
+    case 89: states.Transition(State242Ptr()); break;
+    }
+}
+
+// EnemyGodzilla slot 100 (0x9f9230): replaces BaseCharacter's state: entry plays
+// animation 0; once falling or level and on the ground, switches to slot 104.
+int EnemyGodzilla::State100(int event) {
+    switch (event) {
+    case kStateUpdate:
+        if (motion.z <= 0.0f && IsOnGround()) {
+            states.Transition(State104Ptr());
+            return kStateParentTookOver;
+        }
+        return kStateHandled;
+    case kStateEnter:
+        PlayAnimation(0, 1, 0, 1.0f);
+        return kStateHandled;
+    case kStateEvent3:
+        return kStateHandled;
+    default:
+        return kStateUnhandled;
+    case kStateExit:
+        states.AssertOwner(this);
+        return kStateHandled;
+    }
+}
+
+// EnemyNormal slot 33 (0x9eef10, shared by EnemyJake and EnemyAlberta): with
+// +0x1040 set in action mode 6, switches to slot 246 unless already in it;
+// otherwise does what BaseCharacter's slot 33 does.
+bool EnemyNormal::Slot33(void* data) {
+    if (flag1040 && actionMode == 6) {
+        State target = State246Ptr();
+        if (!(states.current == target)) {
+            states.Transition(State246Ptr());
+            return false;
+        }
+    }
+    ActorSlot33(data);
+    states.Transition(State136Ptr());
+    return true;
 }
 
 }  // namespace SPTG

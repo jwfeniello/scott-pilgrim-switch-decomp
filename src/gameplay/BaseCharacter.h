@@ -3,6 +3,7 @@
 // returns it; slot 96 handles the four state events and does nothing else.
 // Names are provisional.
 #pragma once
+#include "Animation.h"
 #include "Level.h"
 #include "OnyxComponents.h"
 #include "OnyxEvents.h"
@@ -21,7 +22,7 @@ struct AttackSlot {
     char padding_5c[0x10];
     int32_t kind;        // +0x6c
     float speedScale;    // +0x70
-    uint32_t value74;    // +0x74
+    float base74;        // +0x74: Enemy scales its special attack's into +0x910
 };
 static_assert(sizeof(AttackSlot) == 0x78, "AttackSlot size");
 struct BaseCharacter;
@@ -77,6 +78,14 @@ struct NpcCatalog : onyx::Component {
     BaseCharacter** npcs;    // +0x90
 };
 
+// Reached through the singleton at +0x1f8 (getter 0x78c910).
+struct CharacterSettings { char padding[0x5ad]; uint8_t flag5ad; };   // +0x5ad
+// What slot 93 receives; only the amount at +0x4 is known.
+struct HitValue { uint32_t value0; float amount; };
+// The object behind the global at 0x1924bc0; slot 158 fails while +0xe0 is set.
+struct GameState { char padding[0xe0]; uint8_t flagE0; };
+extern "C" GameState* Game_State;   // 0x1924bc0
+
 // A visual effect component whose visibility flag the states toggle.
 struct CharacterEffect : onyx::Component {
     char padding_8[0x70];
@@ -96,48 +105,63 @@ struct BaseCharacter : onyx::Component {
     SPTG_SLOT(20)
     virtual void ReactTo(BaseCharacter* other, int reaction, void* data);    // slot 21
     virtual void PlayAnimation(int animation, int a, int b, float speed);    // slot 22
-    SPTG_SLOT(23) SPTG_SLOT(24) SPTG_SLOT(25) SPTG_SLOT(26)
+    SPTG_SLOT(23) SPTG_SLOT(24)
+    virtual void SetAnimationSpeed(float speed);                             // slot 25
+    virtual void SetAnimationPaused(bool paused);                            // slot 26
     virtual bool AnimationDone();                                            // slot 27
     virtual void Slot28(bool flag);                                          // slot 28
     SPTG_SLOT(29)
     virtual void TurnAround();                                               // slot 30
     virtual void Slot31Action();                                             // slot 31
-    SPTG_SLOT(32)
-    virtual bool Slot33();                                                   // slot 33
+    virtual void Slot32();                                                   // slot 32
+    virtual bool Slot33(void* data);                                         // slot 33
     virtual bool Slot34Check();                                              // slot 34
     virtual void Slot35(bool flag, BaseCharacter* other);                    // slot 35
     virtual bool Slot36Check();      // flag +0x338 and a live mount at +0x238 // slot 36
     SPTG_SLOT(37)
     virtual bool OnHit(BaseCharacter* other, void* hit);                     // slot 38
-    SPTG_SLOT(39) SPTG_SLOT(40) SPTG_SLOT(41) SPTG_SLOT(42)
+    SPTG_SLOT(39) SPTG_SLOT(40)
+    virtual void Slot41(bool a, bool b, bool c, void* data, BaseCharacter* other, float scale, float f1, float f2, float f3); // slot 41
+    SPTG_SLOT(42)
     virtual void Slot43(float value);                                        // slot 43
     virtual void StartAttack(Attack* attack, bool flag, int source, BaseCharacter* attacker); // slot 44
-    SPTG_SLOT(45) SPTG_SLOT(46) SPTG_SLOT(47) SPTG_SLOT(48)
+    virtual int Slot45();                                                    // slot 45
+    SPTG_SLOT(46) SPTG_SLOT(47) SPTG_SLOT(48)
     virtual int Slot49();                                                    // slot 49
     virtual int Slot50();                                                    // slot 50
     virtual bool IsOut();             // checked before targeting a player   // slot 51
     virtual bool IsOnGround();                                               // slot 52
-    SPTG_SLOT(53) SPTG_SLOT(54)
+    virtual void Slot53();                                                   // slot 53
+    SPTG_SLOT(54)
     virtual bool IsHeld();                                                   // slot 55
     virtual void SetSolid(bool solid);                                       // slot 56
-    SPTG_SLOT(57) SPTG_SLOT(58) SPTG_SLOT(59) SPTG_SLOT(60) SPTG_SLOT(61) SPTG_SLOT(62) SPTG_SLOT(63) SPTG_SLOT(64)
+    SPTG_SLOT(57) SPTG_SLOT(58) SPTG_SLOT(59) SPTG_SLOT(60) SPTG_SLOT(61) SPTG_SLOT(62) SPTG_SLOT(63)
+    virtual float Slot64(float amount);                                      // slot 64
     SPTG_SLOT(65) SPTG_SLOT(66) SPTG_SLOT(67)
     virtual void Slot68();                                                   // slot 68
     virtual float TakeDamage(const void* hit, BaseCharacter* other);         // slot 69
     virtual void Remove(bool flag);                                          // slot 70
     virtual void Release();                                                  // slot 71
-    SPTG_SLOT(72) SPTG_SLOT(73) SPTG_SLOT(74) SPTG_SLOT(75) SPTG_SLOT(76)
+    SPTG_SLOT(72) SPTG_SLOT(73)
+    virtual void Slot74(const float* point, bool flag, float value);         // slot 74
+    virtual void Slot75(void* data, void* extra);                            // slot 75
+    SPTG_SLOT(76)
     virtual float Slot77();                                                  // slot 77
-    SPTG_SLOT(78) SPTG_SLOT(79) SPTG_SLOT(80)
+    SPTG_SLOT(78) SPTG_SLOT(79)
+    virtual bool Slot80();                                                   // slot 80
     virtual float Slot81();                                                  // slot 81
-    SPTG_SLOT(82)
+    virtual bool Slot82();                                                   // slot 82
     virtual bool Slot83();                                                   // slot 83
-    SPTG_SLOT(84) SPTG_SLOT(85)
+    SPTG_SLOT(84)
+    virtual bool Slot85();                                                   // slot 85
     virtual void Slot86();                                                   // slot 86
-    SPTG_SLOT(87) SPTG_SLOT(88) SPTG_SLOT(89)
+    SPTG_SLOT(87) SPTG_SLOT(88)
+    virtual void Slot89(float amount);                                       // slot 89
     virtual void Slot90(float value);                                        // slot 90
     virtual void Slot91(float x);                                            // slot 91
-    SPTG_SLOT(92) SPTG_SLOT(93) SPTG_SLOT(94)
+    virtual void Slot92(void* data);                                         // slot 92
+    virtual void Slot93(const HitValue* hit);                                // slot 93
+    SPTG_SLOT(94)
     virtual bool Slot95();                                                   // slot 95
     virtual int State96(int event); virtual State State96Ptr();              // slots 96, 97
     virtual int State98(int event); virtual State State98Ptr();              // slots 98, 99
@@ -167,9 +191,11 @@ struct BaseCharacter : onyx::Component {
     SPTG_SLOT(146) SPTG_SLOT(147)
     virtual bool Slot148(bool* out);                                         // slot 148
     virtual float Slot149();                                                 // slot 149
-    SPTG_SLOT(150) SPTG_SLOT(151) SPTG_SLOT(152) SPTG_SLOT(153) SPTG_SLOT(154) SPTG_SLOT(155)
+    virtual float Slot150();                                                 // slot 150
+    SPTG_SLOT(151) SPTG_SLOT(152) SPTG_SLOT(153) SPTG_SLOT(154) SPTG_SLOT(155)
     virtual bool Slot156();                                                  // slot 156
-    SPTG_SLOT(157) SPTG_SLOT(158)
+    SPTG_SLOT(157)
+    virtual bool Slot158();                                                  // slot 158
 
     char padding_8[0x38];
     Holder* attachment;          // +0x40: what the actor is attached to
@@ -179,13 +205,13 @@ struct BaseCharacter : onyx::Component {
     onyx::ComponentHandle* effectHandle; // +0x58
     char padding_60[0x8];
     onyx::ComponentHandle* partnerHandle; // +0x68
-    char padding_70[0x8];
+    onyx::ComponentHandle* animationHandle; // +0x70: AnimationControl (type 0x29fbe438)
     onyx::ComponentHandle* actorObject; // +0x78
     Singleton<GameServices> services; // +0x80
     char padding_88[0x8];
     Singleton<LevelItemAccessor> level; // +0x90
-    uint32_t value98;            // +0x98
-    uint32_t previousValue98;    // +0x9c
+    float base98;                // +0x98: scaled into +0x9c
+    float scaled9c;              // +0x9c
     char padding_a0[0xc];
     float throwSpeed;            // +0xac: horizontal speed after landing from a throw
     char padding_b0[0x48];
@@ -195,14 +221,20 @@ struct BaseCharacter : onyx::Component {
     uint8_t flag130;             // +0x130
     char padding_131[0x10];
     uint8_t flag141;             // +0x141
-    char padding_142[0x1a];
+    char padding_142[0xa];
+    float value14c;              // +0x14c: the animation speed applies while not positive
+    char padding_150[0xc];
     float value15c;              // +0x15c
     float value160;              // +0x160
     char padding_164[0x1];
     uint8_t flag165;             // +0x165
-    char padding_166[0x16];
+    char padding_166[0x2];
+    onyx::Vector3 point168;      // +0x168: set by slot 74
+    float value174;              // +0x174
+    float value178;              // +0x178
     uint8_t flag17c;             // +0x17c
-    char padding_17d[0xf];
+    char padding_17d[0xb];
+    float animationSpeed;        // +0x188
     float value18c;              // +0x18c: set on the mount by state 130
     char padding_190[0x10];
     int32_t animation;           // +0x1a0: the animation playing
@@ -210,12 +242,16 @@ struct BaseCharacter : onyx::Component {
     onyx::Vector3 motionTarget;  // +0x1b0
     char padding_1bc[0x8];
     float motionC4;              // +0x1c4
-    char padding_1c8[0x40];
+    char padding_1c8[0x30];
+    Singleton<CharacterSettings> settings; // +0x1f8
+    char padding_200[0x8];
     StateMachine<BaseCharacter> states; // +0x208
     char padding_230[0x8];
     onyx::ComponentHandle* mountHandle; // +0x238
     onyx::ComponentHandle* held; // +0x240: owned reference, dropped by ReleaseHeld
-    char padding_248[0x74];
+    char padding_248[0x10];
+    Attack attack258;            // +0x258: started by Enemy's slot 41
+    char padding_2b0[0xc];
     float savedZ;                // +0x2bc: restored into motionTarget.z
     float savedC4;               // +0x2c0: restored into motionC4
     float value2c4;              // +0x2c4
@@ -225,8 +261,8 @@ struct BaseCharacter : onyx::Component {
     char padding_2e8[0x4];
     float slideSpeed;            // +0x2ec
     char padding_2f0[0x4];
-    uint32_t value2f4;           // +0x2f4
-    uint32_t previousValue2f4;   // +0x2f8
+    float base2f4;               // +0x2f4: scaled into +0x2f8
+    float scaled2f8;             // +0x2f8
     char padding_2fc[0x2c];
     float value328;              // +0x328
     float value32c;              // +0x32c
@@ -254,16 +290,28 @@ struct BaseCharacter : onyx::Component {
     onyx::ComponentHandle* holder2; // +0x4e0: used unless holderMode is 1
     char padding_4e8[0x18];
     int32_t actionMode;          // +0x500
-    char padding_504[0x18];
+    uint32_t flags504;           // +0x504: bit flags
+    char padding_508[0xc];
+    float value514;              // +0x514: slot 93 switches state at or below this
+    char padding_518[0x4];
     float stunDuration;          // +0x51c
     float stunDuration2;         // +0x520
-    char padding_524[0x224];
+    char padding_524[0xc];
+    Attack attack530;            // +0x530: started by slot 35
+    Attack attack588;            // +0x588: started by slot 35 with its flag set
+    char padding_5e0[0x168];
     uint8_t flag748;             // +0x748
     char padding_749[0x7];
     onyx::EventCallback* event750Callback; // +0x750
     onyx::EventTarget* event750Target; // +0x758
+    char padding_760[0x10];
+    float timer770;              // +0x770: counted down by slot 154
+    uint8_t flag774;             // +0x774
 
     void ReleaseHeld(bool flag, float x, float y);   // 0x976fb0: drops the reference at +0x240
+    void ActorSlot32();                                // 0x93fec0: AnimatedAiActor's slot 32
+    void ActorSlot33(void* data);                      // 0x940170: AnimatedAiActor's slot 33
+    void Update976670(float time);                     // 0x976670
     void Apply8e5750(int value);                       // 0x8e5750
     BaseCharacter* Mount() { return mountHandle ? static_cast<BaseCharacter*>(mountHandle->object) : nullptr; }
     CharacterEffect* Effect() { return effectHandle ? static_cast<CharacterEffect*>(effectHandle->object) : nullptr; }

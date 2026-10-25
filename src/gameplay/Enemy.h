@@ -13,6 +13,9 @@ struct EnemySensor {
     void Reset();   // 0x9dea60
 };
 
+// Reached through the singleton at +0x7a0: picks the bonus and scales the base values.
+struct EnemyScaling { char padding[0x4c]; int32_t mode; float scale; };   // +0x4c, +0x50
+
 // A distance band (12 bytes).
 struct AttackRange { float min, max, unused; };
 
@@ -26,6 +29,10 @@ struct TargetEntry {
 
 struct Enemy : BaseCharacter {
     bool OnHit(BaseCharacter* other, void* hit);                     // slot 38, overrides BaseCharacter (0x9cd330)
+    void Slot41(bool a, bool b, bool c, void* data, BaseCharacter* other, float scale, float f1, float f2, float f3);   // slot 41, overrides BaseCharacter
+    int Slot45();                                                    // slot 45, overrides BaseCharacter
+    void Update();                                                   // slot 16, overrides BaseCharacter
+    float TakeDamage(const void* hit, BaseCharacter* other);         // slot 69, overrides BaseCharacter
     int State96(int event);                                          // slot 96, overrides BaseCharacter
     int State98(int event);                                          // slot 98, overrides BaseCharacter
     int State100(int event);                                         // slot 100, overrides BaseCharacter
@@ -75,7 +82,9 @@ struct Enemy : BaseCharacter {
     virtual bool Slot231();                                                  // slot 231
     SPTG_SLOT(232) SPTG_SLOT(233)
 
-    char padding_760[0x4c];
+    char padding_775[0x2b];
+    Singleton<EnemyScaling> scaling; // +0x7a0: getter 0x7a1bc0
+    char padding_7a8[0x4];
     float value7ac;              // +0x7ac
     float stateTime;             // +0x7b0: time spent in the current state
     char padding_7b4[0x4];
@@ -106,7 +115,7 @@ struct Enemy : BaseCharacter {
     int32_t mode87c;             // +0x87c
     char padding_880[0x18];
     AttackSlot specialAttack;    // +0x898
-    uint32_t value910;           // +0x910
+    float scaled910;             // +0x910
     char padding_914[0x8];
     float attackRange;           // +0x91c
     float chance;                // +0x920: percent, compared with a random roll
@@ -145,7 +154,13 @@ struct Enemy : BaseCharacter {
     char padding_9d3[0x1];
     float blinkDuration;         // +0x9d4
     float blinkPeriod;           // +0x9d8
-    char padding_9dc[0x68];
+    char padding_9dc[0x8];
+    int32_t bonus;               // +0x9e4: added to the scaled values, by scaling mode
+    char padding_9e8[0x4];
+    int32_t bonusMode2;          // +0x9ec
+    char padding_9f0[0x4];
+    int32_t bonusMode3;          // +0x9f4
+    char padding_9f8[0x4c];
     onyx::Vector3 backOffPoint;  // +0xa44: the point state 208 backs away from
     float backOffDistance;       // +0xa50
     char padding_a54[0x84];

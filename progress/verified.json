@@ -1,9 +1,9 @@
 {
   "version": 1,
-  "generated_at": "2026-10-25T06:33:53.198888+00:00",
+  "generated_at": "2026-10-25T06:58:06.600651+00:00",
   "target_elf_sha256": "ea95638e6d6aaa0dc6cddd552a9366799aa1ec3bc07ee201f23f6c151103f5b8",
   "input_sha256": {
-    "config/builds.json": "5344ce23664e692c18bcfa0bd88b58a5d895d7c583101cc608583a9a438292a2",
+    "config/builds.json": "604a0a46e4250ddef569f12889881e68cb92f957268b5052e27d2201ae7560b6",
     "config/functions.tsv": "399e91468a04e0459194c10d68d2210d1157cedefeb19c7851886ca7632fcb18",
     "config/non_fde_functions.tsv": "6a45f5e185454fa0472af00b2cdc9d040d73ca133d1106217e1fbbe3b32a8175",
     "config/target.json": "23cc6a5227206a953e7668acf5e9ae5c02a25c23b7e7967f0450a814b888241a",
@@ -1081,20 +1081,23 @@
     "src/function_clone8_keep_no_pic_instances.inc": "687da27070a0ba51678c7cdf4e75cf0007177378c40f6d1c63445078770ab97c",
     "src/function_clone8_keep_pic_instances.inc": "311a256b3152534efd3d25a3a8e9cc3fd850f04f83d70e0a8b465845e55feb3f",
     "src/function_swap_instances.inc": "adc7468c16b98505670b099e14c5a5dd411a6fafe924c49ce0aabf48e5dd3850",
+    "src/gameplay/Animation.h": "f2481a0c60ce1f6288400a332c76534f539729dde0638e1ea6c077d9dec40193",
     "src/gameplay/Assert.h": "e8ad90fa17cd27c0eefb31341b98ee091197fb3aeb84363fb473339d67770dcc",
-    "src/gameplay/BaseCharacter.h": "c2fe8b5c81b03eae05a16789648b76ed5c22a4667f347113ae1588cfc1c6c895",
+    "src/gameplay/BaseCharacter.cpp": "da629e974e5f70d37767a3b6e9ee74448f0e19b8009e5789dd97d3cd10650e4f",
+    "src/gameplay/BaseCharacter.h": "05f9dde343ba22d9f514554ea1820879d3946d77e6d03d18abcde764d075ee91",
     "src/gameplay/BaseCharacterStates.cpp": "cdae9d956bb4c49edbc76421e036def4dae71b0137ce523cbe2c540c8d89aafa",
     "src/gameplay/ComponentAccess.cpp": "b1b34b3a09bc3544f3fffe397604e3d185ea651f571180a3eb13cd58e11cbab5",
     "src/gameplay/ComponentTypes.h": "f7eea015dc032ea1d06d52741b5f5e7724ff5a61171703a57cdf990981e76953",
-    "src/gameplay/Enemy.h": "2e1f8b930c2dd9bd57d77d5a26983a0a7482d854469407bc703904e09adf876d",
+    "src/gameplay/Enemy.cpp": "ef8a402884155ba77a4ae2250d850d6577650d407fb4aedba51122d0b5a3c1d0",
+    "src/gameplay/Enemy.h": "6568d7868451d7c16a496c57e871fa1ceae4a9ab1f5a48b26d9990aeedcc070a",
     "src/gameplay/EnemyAttackStates.cpp": "40c206398172e031a38f74e9243592a04c535166ef4ea3ba4cf2119291e02a6b",
-    "src/gameplay/EnemyClassStates.cpp": "7d0e4d68e659ba823aeaeaa55ec698daa0f4610558dedb6d6b0aba56716e56f1",
-    "src/gameplay/EnemyClasses.h": "b3b19a510052858ec7a1e09fce34666c11cc117d0aa34ac8d63c61df5718c972",
+    "src/gameplay/EnemyClassStates.cpp": "2c7ba0392fe29648280cda09e01ab9f397756ac1d38b15d4a308c8cc9e415306",
+    "src/gameplay/EnemyClasses.h": "3a73bf04fc0d0deb77c2e525e8394a12ac68eac40afb549cd5e1c14a22285060",
     "src/gameplay/EnemyStates.cpp": "efe3d3d55c33487bca186d9d0e4764adc89bcc8b68e88397f63518e0fdc32ad8",
     "src/gameplay/Level.h": "7ab38fea1bca50d1428fdd3adba49a2182b816c206129d60028f90a43fc706b5",
     "src/gameplay/OnyxComponents.h": "31431bc5dc8f482d54c28fc586301a2c585a87f1a1d3f6e8f8cf92540b34a023",
     "src/gameplay/OnyxEvents.h": "0d834213367973300f831e3d5914758b5058020b6f79b53ba3dfe887300e47bc",
-    "src/gameplay/Pickup.cpp": "6b339344330156af262846505b8b5fc6125a209ea91bd1e876067876993f8d1d",
+    "src/gameplay/Pickup.cpp": "c28f066ee424674d3aaca6174f774e2b6cff757fb0552339e2320fc3eb5ed2bf",
     "src/gameplay/Piniata.cpp": "b58df17b37594f99648c896e1d496a9061acdac7ea07e3f3f03f0112bd8c6519",
     "src/gameplay/PlayerStates.cpp": "a622b65b976d7ab11a2e17e45f597e6d1f5ef7670677545bbea50d95e40e7712",
     "src/gameplay/Random.h": "5e343748d9efadc76cd3b008c9cf5d5a87c7756feefdcb5eadac5bc9f29b0d5c",
@@ -3921,17 +3924,17 @@
     "vendor/zlib-1.2.11/zutil.h": "9a63f6690fac1620aa3cecee5752af618806da438a256b4a047fbcd289cac159"
   },
   "compiler_versions": {
-    "8.0.1": "clang version 8.0.1 (tags/RELEASE_801/final)",
     "7.0.1": "clang version 7.0.1 (tags/RELEASE_701/final)",
+    "8.0.1": "clang version 8.0.1 (tags/RELEASE_801/final)",
     "lld": "LLD 8.0.1 (compatible with GNU linkers)"
   },
   "compiler_sha256": {
-    "8.0.1": "dffd62a213ec6cdb4430012a4a41c11e5e32c288f133d5391f9be49e1c5b69de",
     "7.0.1": "c2f0a175157d9aaace8031f8e6d7ea0ed6142b4bcef287105e3ed227301f1002",
+    "8.0.1": "dffd62a213ec6cdb4430012a4a41c11e5e32c288f133d5391f9be49e1c5b69de",
     "lld": "c4b3aaea06ff7112c64753047a2ab279fc3fe10dd807fd3c22edfdae99f43eed"
   },
-  "exact_functions": 34076,
-  "exact_bytes": 4033632,
+  "exact_functions": 34103,
+  "exact_bytes": 4036872,
   "builds": [
     {
       "id": "probes",
@@ -13049,9 +13052,14 @@
       "object_sha256": "d675c58f4f69eee00cf564303f0738a02ac89951304bf74984b2fc8a82cd6d16"
     },
     {
-      "id": "gameplay_enemy_classes",
+      "id": "gameplay_basecharacter",
       "compiler": "8.0.1",
-      "object_sha256": "dbc2bc8c59653422d6b9a6294c04af46cd39251f44dbaa1c422e634ac4f5a9f2"
+      "object_sha256": "45714d3ec47596f14706324e1d6d1e6f161af98f8e0ea7b36cdb8ae96f0cbdb4"
+    },
+    {
+      "id": "gameplay_enemy",
+      "compiler": "8.0.1",
+      "object_sha256": "9aebf6ba3c33085584d0a36123e21f3347cffcd4eb2b6068a63404cf17bc4963"
     },
     {
       "id": "gameplay_enemy_attacks",
@@ -13077,6 +13085,11 @@
       "id": "gameplay_piniata",
       "compiler": "8.0.1",
       "object_sha256": "fa3cdecaea5a248188ad564a84055121fee5c1ff0274f5e5f86d2e03147819c9"
+    },
+    {
+      "id": "gameplay_enemy_classes",
+      "compiler": "8.0.1",
+      "object_sha256": "bc48595359542c8506cb48ca302cd167af7d72d9f74faf961e8d8fd274bcb723"
     }
   ],
   "matches": [
@@ -265718,6 +265731,50 @@
       "relocation_count": 2
     },
     {
+      "address": "0x96c8b0",
+      "size": 204,
+      "exact": true,
+      "target_sha256": "662b994e012b45903c0cc7a1c0bdcbe4d36112656666084067b196f8b4de3945",
+      "compiled_sha256": "662b994e012b45903c0cc7a1c0bdcbe4d36112656666084067b196f8b4de3945",
+      "source": "src/gameplay/BaseCharacter.cpp",
+      "symbol": "_ZN4SPTG13BaseCharacter17SetAnimationSpeedEf",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 3
+    },
+    {
+      "address": "0x96c980",
+      "size": 164,
+      "exact": true,
+      "target_sha256": "b1232e80b7025ef0771929394f98aa0091d04880178a6c3be1109b13062a2765",
+      "compiled_sha256": "b1232e80b7025ef0771929394f98aa0091d04880178a6c3be1109b13062a2765",
+      "source": "src/gameplay/BaseCharacter.cpp",
+      "symbol": "_ZN4SPTG13BaseCharacter18SetAnimationPausedEb",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 3
+    },
+    {
+      "address": "0x96ce30",
+      "size": 84,
+      "exact": true,
+      "target_sha256": "d23904d266eb02d2f615dc293772a724cbd7bec569ed5ba2a9272cf34151ef9a",
+      "compiled_sha256": "d23904d266eb02d2f615dc293772a724cbd7bec569ed5ba2a9272cf34151ef9a",
+      "source": "src/gameplay/BaseCharacter.cpp",
+      "symbol": "_ZN4SPTG13BaseCharacter6Slot32Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 2
+    },
+    {
+      "address": "0x96ce90",
+      "size": 76,
+      "exact": true,
+      "target_sha256": "6d9bf73c49c938a4186a82c64133167b9eab5eca219e922d609aa3f5f4f1439f",
+      "compiled_sha256": "6d9bf73c49c938a4186a82c64133167b9eab5eca219e922d609aa3f5f4f1439f",
+      "source": "src/gameplay/BaseCharacter.cpp",
+      "symbol": "_ZN4SPTG13BaseCharacter6Slot33EPv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 2
+    },
+    {
       "address": "0x96cee0",
       "size": 32,
       "exact": true,
@@ -265726,6 +265783,17 @@
       "source": "src/TypedCfgUint32TOmitDirect.cpp",
       "symbol": "RecoveredLeaf_96cee0",
       "source_review": "generated_cxx_abi_view",
+      "relocation_count": 0
+    },
+    {
+      "address": "0x96cf00",
+      "size": 40,
+      "exact": true,
+      "target_sha256": "859bc63d8ffc01c8ecfe6235605674c40f620a977abfb8a36582d5e54eca9374",
+      "compiled_sha256": "859bc63d8ffc01c8ecfe6235605674c40f620a977abfb8a36582d5e54eca9374",
+      "source": "src/gameplay/BaseCharacter.cpp",
+      "symbol": "_ZN4SPTG13BaseCharacter6Slot35EbPS0_",
+      "source_review": "manual_reconstruction",
       "relocation_count": 0
     },
     {
@@ -265762,6 +265830,17 @@
       "relocation_count": 0
     },
     {
+      "address": "0x96e4b0",
+      "size": 80,
+      "exact": true,
+      "target_sha256": "eb2c56196221056fca63141cba69672c8f2bfc05dcffadc4d197476e83ef77bb",
+      "compiled_sha256": "eb2c56196221056fca63141cba69672c8f2bfc05dcffadc4d197476e83ef77bb",
+      "source": "src/gameplay/BaseCharacter.cpp",
+      "symbol": "_ZN4SPTG13BaseCharacter6Slot53Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 2
+    },
+    {
       "address": "0x96e500",
       "size": 16,
       "exact": true,
@@ -265795,6 +265874,17 @@
       "relocation_count": 0
     },
     {
+      "address": "0x96ede0",
+      "size": 88,
+      "exact": true,
+      "target_sha256": "08110f67ae1b83b35b17d3e7d44035536a41cdb10370f020671404b3977084f6",
+      "compiled_sha256": "08110f67ae1b83b35b17d3e7d44035536a41cdb10370f020671404b3977084f6",
+      "source": "src/gameplay/BaseCharacter.cpp",
+      "symbol": "_ZN4SPTG13BaseCharacter6Slot64Ef",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 0
+    },
+    {
       "address": "0x96ee40",
       "size": 16,
       "exact": true,
@@ -265804,6 +265894,17 @@
       "symbol": "FUN_0096ee40",
       "source_review": "local_model_proposal_abi_review_pending",
       "relocation_count": 0
+    },
+    {
+      "address": "0x96f740",
+      "size": 88,
+      "exact": true,
+      "target_sha256": "475a3ae0669ca035f0e73584ad0a7e38d1464724fa92d5809bfebc6668df42cc",
+      "compiled_sha256": "475a3ae0669ca035f0e73584ad0a7e38d1464724fa92d5809bfebc6668df42cc",
+      "source": "src/gameplay/BaseCharacter.cpp",
+      "symbol": "_ZN4SPTG13BaseCharacter6Slot74EPKfbf",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 1
     },
     {
       "address": "0x970700",
@@ -265817,6 +265918,17 @@
       "relocation_count": 0
     },
     {
+      "address": "0x970710",
+      "size": 80,
+      "exact": true,
+      "target_sha256": "cd56f082ae8faf289051ddf1d2b01f3554d4ab018461b4260506709566714153",
+      "compiled_sha256": "cd56f082ae8faf289051ddf1d2b01f3554d4ab018461b4260506709566714153",
+      "source": "src/gameplay/BaseCharacter.cpp",
+      "symbol": "_ZN4SPTG13BaseCharacter6Slot80Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 0
+    },
+    {
       "address": "0x970760",
       "size": 8,
       "exact": true,
@@ -265825,6 +265937,28 @@
       "source": "src/generated/FUN_00970760.cpp",
       "symbol": "FUN_00970760",
       "source_review": "local_model_proposal_abi_review_pending",
+      "relocation_count": 0
+    },
+    {
+      "address": "0x970770",
+      "size": 168,
+      "exact": true,
+      "target_sha256": "84bbabb1ead0c4e4ba568cecf0503789513dde38cfac7592cc4c3b1ca48b1588",
+      "compiled_sha256": "84bbabb1ead0c4e4ba568cecf0503789513dde38cfac7592cc4c3b1ca48b1588",
+      "source": "src/gameplay/BaseCharacter.cpp",
+      "symbol": "_ZN4SPTG13BaseCharacter6Slot82Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 0
+    },
+    {
+      "address": "0x970820",
+      "size": 148,
+      "exact": true,
+      "target_sha256": "82c6a1d8ef1100cfaba9f829baa6d2e7dd798cdc1d69d1e6a3c826b2f05a5cbb",
+      "compiled_sha256": "82c6a1d8ef1100cfaba9f829baa6d2e7dd798cdc1d69d1e6a3c826b2f05a5cbb",
+      "source": "src/gameplay/BaseCharacter.cpp",
+      "symbol": "_ZN4SPTG13BaseCharacter6Slot83Ev",
+      "source_review": "manual_reconstruction",
       "relocation_count": 0
     },
     {
@@ -265850,6 +265984,17 @@
       "relocation_count": 0
     },
     {
+      "address": "0x9708e0",
+      "size": 28,
+      "exact": true,
+      "target_sha256": "3a4671ea818b9cfd0bf9675d95e9e29738a0ea981b69c79018768335aa008da7",
+      "compiled_sha256": "3a4671ea818b9cfd0bf9675d95e9e29738a0ea981b69c79018768335aa008da7",
+      "source": "src/gameplay/BaseCharacter.cpp",
+      "symbol": "_ZN4SPTG13BaseCharacter6Slot86Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 0
+    },
+    {
       "address": "0x970b80",
       "size": 8,
       "exact": true,
@@ -265859,6 +266004,39 @@
       "symbol": "RecoveredLeaf_970b80",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 0
+    },
+    {
+      "address": "0x970b90",
+      "size": 68,
+      "exact": true,
+      "target_sha256": "5d583c405988c9d6c44b124b3024d3f1bdb536ac5d4c245f6766d9288f12d398",
+      "compiled_sha256": "5d583c405988c9d6c44b124b3024d3f1bdb536ac5d4c245f6766d9288f12d398",
+      "source": "src/gameplay/BaseCharacter.cpp",
+      "symbol": "_ZN4SPTG13BaseCharacter6Slot89Ef",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 0
+    },
+    {
+      "address": "0x970dd0",
+      "size": 80,
+      "exact": true,
+      "target_sha256": "74b196d01296c30952f919ddf8f5242f40c5a4e1bdf13fc2600175f8447074a8",
+      "compiled_sha256": "74b196d01296c30952f919ddf8f5242f40c5a4e1bdf13fc2600175f8447074a8",
+      "source": "src/gameplay/BaseCharacter.cpp",
+      "symbol": "_ZN4SPTG13BaseCharacter6Slot92EPv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 1
+    },
+    {
+      "address": "0x970e20",
+      "size": 88,
+      "exact": true,
+      "target_sha256": "9ea6624145c45a9fc23b49bacac06c9faf82bf6ae2649f9b808c9a4663ecbdfc",
+      "compiled_sha256": "9ea6624145c45a9fc23b49bacac06c9faf82bf6ae2649f9b808c9a4663ecbdfc",
+      "source": "src/gameplay/BaseCharacter.cpp",
+      "symbol": "_ZN4SPTG13BaseCharacter6Slot93EPKNS_8HitValueE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 1
     },
     {
       "address": "0x970e80",
@@ -266411,6 +266589,17 @@
       "relocation_count": 0
     },
     {
+      "address": "0x975f30",
+      "size": 52,
+      "exact": true,
+      "target_sha256": "3899882236c0ed36dddb85a781a18c2437b569e5608c77b5239b8339bc092e19",
+      "compiled_sha256": "3899882236c0ed36dddb85a781a18c2437b569e5608c77b5239b8339bc092e19",
+      "source": "src/gameplay/BaseCharacter.cpp",
+      "symbol": "_ZN4SPTG13BaseCharacter7Slot154Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 3
+    },
+    {
       "address": "0x976390",
       "size": 8,
       "exact": true,
@@ -266420,6 +266609,17 @@
       "symbol": "RecoveredLeaf_976390",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 0
+    },
+    {
+      "address": "0x976630",
+      "size": 64,
+      "exact": true,
+      "target_sha256": "be75d01ba8f1918f75a0ed75a73592d30394c59d7c7980fcb524beea85ff70b4",
+      "compiled_sha256": "be75d01ba8f1918f75a0ed75a73592d30394c59d7c7980fcb524beea85ff70b4",
+      "source": "src/gameplay/BaseCharacter.cpp",
+      "symbol": "_ZN4SPTG13BaseCharacter7Slot158Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 3
     },
     {
       "address": "0x977690",
@@ -272032,6 +272232,28 @@
       "relocation_count": 0
     },
     {
+      "address": "0x9cd820",
+      "size": 80,
+      "exact": true,
+      "target_sha256": "bc436ec774b6dc573a6c9a7e3f0a9b00a2e0d0a67b5a9c22260863db96b3c1d3",
+      "compiled_sha256": "bc436ec774b6dc573a6c9a7e3f0a9b00a2e0d0a67b5a9c22260863db96b3c1d3",
+      "source": "src/gameplay/Enemy.cpp",
+      "symbol": "_ZN4SPTG5Enemy6Slot41EbbbPvPNS_13BaseCharacterEffff",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 1
+    },
+    {
+      "address": "0x9cd870",
+      "size": 72,
+      "exact": true,
+      "target_sha256": "bd1123016b0bf77f32919958bfc6c58d9bfca233eda0ccf75c9a7e7e1c239fe0",
+      "compiled_sha256": "bd1123016b0bf77f32919958bfc6c58d9bfca233eda0ccf75c9a7e7e1c239fe0",
+      "source": "src/gameplay/Enemy.cpp",
+      "symbol": "_ZN4SPTG5Enemy6Slot45Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 0
+    },
+    {
       "address": "0x9cde90",
       "size": 76,
       "exact": true,
@@ -273187,6 +273409,28 @@
       "relocation_count": 2
     },
     {
+      "address": "0x9e1fa0",
+      "size": 140,
+      "exact": true,
+      "target_sha256": "e637f41697f1efab43fb8c17f74c9d0be74872d6343f0fdedf6e1cc3ff2601ba",
+      "compiled_sha256": "e637f41697f1efab43fb8c17f74c9d0be74872d6343f0fdedf6e1cc3ff2601ba",
+      "source": "src/gameplay/Enemy.cpp",
+      "symbol": "_ZN4SPTG5Enemy6UpdateEv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 3
+    },
+    {
+      "address": "0x9e2030",
+      "size": 128,
+      "exact": true,
+      "target_sha256": "a4a2ce9957896d57580472d739a87a87854b743f4ced01c3afa58c07db5891b6",
+      "compiled_sha256": "a4a2ce9957896d57580472d739a87a87854b743f4ced01c3afa58c07db5891b6",
+      "source": "src/gameplay/Enemy.cpp",
+      "symbol": "_ZN4SPTG5Enemy10TakeDamageEPKvPNS_13BaseCharacterE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 2
+    },
+    {
       "address": "0x9e3140",
       "size": 12,
       "exact": true,
@@ -273658,6 +273902,17 @@
       "symbol": "FUN_009e81c0",
       "source_review": "local_model_proposal_abi_review_pending",
       "relocation_count": 0
+    },
+    {
+      "address": "0x9e81d0",
+      "size": 176,
+      "exact": true,
+      "target_sha256": "b86c55f151d7503e64ed57ab3358adc4ebb7925867831ca980d1edada0aaf542",
+      "compiled_sha256": "b86c55f151d7503e64ed57ab3358adc4ebb7925867831ca980d1edada0aaf542",
+      "source": "src/gameplay/EnemyClassStates.cpp",
+      "symbol": "_ZN4SPTG11EnemyZombie7Slot166Ei",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 3
     },
     {
       "address": "0x9e84b0",
@@ -274199,6 +274454,17 @@
       "relocation_count": 0
     },
     {
+      "address": "0x9eb0e0",
+      "size": 180,
+      "exact": true,
+      "target_sha256": "e5e1823d7e6fba2ef2ee7417423108c72b86838d1a5ec80363b58c8ac9d55cb7",
+      "compiled_sha256": "e5e1823d7e6fba2ef2ee7417423108c72b86838d1a5ec80363b58c8ac9d55cb7",
+      "source": "src/gameplay/EnemyClassStates.cpp",
+      "symbol": "_ZN4SPTG11EnemySpeedy7Slot166Ei",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 3
+    },
+    {
       "address": "0x9eb1a0",
       "size": 48,
       "exact": true,
@@ -274637,6 +274903,17 @@
       "symbol": "_Z11TypeAddressILj10414240EEPKvv",
       "source_review": "manual_reconstruction",
       "relocation_count": 2
+    },
+    {
+      "address": "0x9eef10",
+      "size": 232,
+      "exact": true,
+      "target_sha256": "77e7180000569576f59004a6309c0c8c1aaa759d3e5a8460a9e048d5b25046f6",
+      "compiled_sha256": "77e7180000569576f59004a6309c0c8c1aaa759d3e5a8460a9e048d5b25046f6",
+      "source": "src/gameplay/EnemyClassStates.cpp",
+      "symbol": "_ZN4SPTG11EnemyNormal6Slot33EPv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 3
     },
     {
       "address": "0x9ef000",
@@ -275426,7 +275703,7 @@
       "target_sha256": "42dd6f4f09f1235faee9a1d5822c6bcda94c422400603e374bc7f9419e075a49",
       "compiled_sha256": "42dd6f4f09f1235faee9a1d5822c6bcda94c422400603e374bc7f9419e075a49",
       "source": "src/gameplay/EnemyClassStates.cpp",
-      "symbol": "_ZN4SPTG10EnemyHanzo6Slot33Ev",
+      "symbol": "_ZN4SPTG10EnemyHanzo6Slot33EPv",
       "source_review": "manual_reconstruction",
       "relocation_count": 1
     },
@@ -275451,6 +275728,17 @@
       "symbol": "RecoveredLeaf_9f6a50",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 0
+    },
+    {
+      "address": "0x9f6a60",
+      "size": 204,
+      "exact": true,
+      "target_sha256": "54622f7b962dc327756bb7a4fd1f60ffaee8ee3ecdc22f897e91977ce28423b0",
+      "compiled_sha256": "54622f7b962dc327756bb7a4fd1f60ffaee8ee3ecdc22f897e91977ce28423b0",
+      "source": "src/gameplay/EnemyClassStates.cpp",
+      "symbol": "_ZN4SPTG10EnemyHanzo7Slot166Ei",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 3
     },
     {
       "address": "0x9f71b0",
@@ -275690,7 +275978,7 @@
       "target_sha256": "f359360a0621ddcecd6d6612f0a6148de5bd7d602ca0e1ca2219e2f90a80e910",
       "compiled_sha256": "f359360a0621ddcecd6d6612f0a6148de5bd7d602ca0e1ca2219e2f90a80e910",
       "source": "src/gameplay/EnemyClassStates.cpp",
-      "symbol": "_ZN4SPTG13EnemyGodzilla6Slot33Ev",
+      "symbol": "_ZN4SPTG13EnemyGodzilla6Slot33EPv",
       "source_review": "manual_reconstruction",
       "relocation_count": 1
     },
@@ -275715,6 +276003,17 @@
       "symbol": "_ZN4SPTG13EnemyGodzilla5OnHitEPNS_13BaseCharacterEPv",
       "source_review": "manual_reconstruction",
       "relocation_count": 1
+    },
+    {
+      "address": "0x9f9230",
+      "size": 208,
+      "exact": true,
+      "target_sha256": "b42238bbf4d80b098a6f7afb6eff9764e69a565ce66d1ecfdb6f803646c6710b",
+      "compiled_sha256": "b42238bbf4d80b098a6f7afb6eff9764e69a565ce66d1ecfdb6f803646c6710b",
+      "source": "src/gameplay/EnemyClassStates.cpp",
+      "symbol": "_ZN4SPTG13EnemyGodzilla8State100Ei",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 3
     },
     {
       "address": "0x9f9300",
@@ -275943,7 +276242,7 @@
       "target_sha256": "e35a64db2a54d7c91d7920f29d30db50b03adad9df3984c2dfb59ae7b3cd128e",
       "compiled_sha256": "e35a64db2a54d7c91d7920f29d30db50b03adad9df3984c2dfb59ae7b3cd128e",
       "source": "src/gameplay/EnemyClassStates.cpp",
-      "symbol": "_ZN4SPTG10EnemyGiant6Slot33Ev",
+      "symbol": "_ZN4SPTG10EnemyGiant6Slot33EPv",
       "source_review": "manual_reconstruction",
       "relocation_count": 1
     },
@@ -275990,6 +276289,17 @@
       "symbol": "RecoveredLeaf_9fb700",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 0
+    },
+    {
+      "address": "0x9fb710",
+      "size": 220,
+      "exact": true,
+      "target_sha256": "c867b65672a29c2f9b32c40dd1f7c6002eca1b32ea8dcef061e2235584161199",
+      "compiled_sha256": "c867b65672a29c2f9b32c40dd1f7c6002eca1b32ea8dcef061e2235584161199",
+      "source": "src/gameplay/EnemyClassStates.cpp",
+      "symbol": "_ZN4SPTG10EnemyGiant7Slot166Ei",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 3
     },
     {
       "address": "0x9fba40",

@@ -2,6 +2,7 @@
 // Class and method names come from RTTI where possible; member and method names
 // otherwise describe observed behavior and are provisional. Virtual slots are
 // numbered from the original vtable (0x1878f78).
+#include "Animation.h"
 #include "Level.h"
 #include "OnyxComponents.h"
 #include "OnyxEvents.h"
@@ -16,14 +17,6 @@ struct AnimatedAiActor {
 
 extern "C" float Move_FrameDelta;   // seconds since the last frame (0x1924d70)
 
-// The actor's animation component (type 0x29fbe438).
-struct AnimationControl : onyx::Component {
-    virtual void Slot3(); virtual void Slot4(); virtual void Slot5(); virtual void Slot6(); virtual void Slot7();
-    virtual void Slot8(); virtual void Slot9(); virtual void Slot10(); virtual void Slot11(); virtual void Slot12();
-    virtual void Slot13(); virtual void Slot14(); virtual void Slot15(); virtual void Slot16(); virtual void Slot17();
-    virtual void Slot18(); virtual void Slot19(); virtual void Slot20();
-    virtual void SetPaused(bool paused);   // slot 21: sets bit 3 of the current animation's flags
-};
 
 struct UnspawnManager;
 
