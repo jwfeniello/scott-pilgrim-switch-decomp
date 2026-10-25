@@ -5,6 +5,7 @@
 #pragma once
 #include "Level.h"
 #include "OnyxComponents.h"
+#include "OnyxEvents.h"
 #include "StateMachine.h"
 
 extern "C" float Move_FrameDelta;   // seconds since the last frame (0x1924d70)
@@ -29,6 +30,14 @@ struct CharacterMessage {
     BaseCharacter* receiver;
     void* data;
     BaseCharacter* sender;
+    CharacterMessage() {}
+    // A message of `kind` from `from`; the receiver is filled in when sending.
+    __attribute__((always_inline)) CharacterMessage(int32_t messageKind, BaseCharacter* from) {
+        receiver = nullptr;
+        data = nullptr;
+        sender = from;
+        kind = messageKind;
+    }
 };
 
 #define SPTG_SLOT(n) virtual void Slot##n();
@@ -41,14 +50,19 @@ struct ActorObject : onyx::Component {
 };
 // The component behind ActorObject::flags.
 struct ActorFlags : onyx::Component {
-    char padding_8[0x71];
+    onyx::EventCallback* blinkOffCallback;   // +0x8, event 0x255c0afe
+    onyx::EventTarget* blinkOffTarget;       // +0x10
+    char padding_18[0x8];
+    onyx::EventCallback* blinkOnCallback;    // +0x20, event 0x44174b43
+    onyx::EventTarget* blinkOnTarget;        // +0x28
+    char padding_30[0x49];
     uint8_t facingLeft;   // +0x79
     char padding_7a[0x9e];
     uint8_t flag118;      // +0x118
 };
 // Reached through the singleton at +0x80 (getters 0x992bf0, 0x992f30); probably
 // Enemy's GameDifficultyAccessor dependency.
-struct GameDifficulty { char padding[0x108]; int32_t value108; };   // +0x108
+struct GameDifficulty { char padding[0x108]; float value108; };   // +0x108
 struct GameDifficultyAccessor { char padding[0x50]; Singleton<GameDifficulty> difficulty; };   // +0x50
 
 // A visual effect component whose visibility flag the states toggle.
@@ -61,13 +75,15 @@ struct BaseCharacter : onyx::Component {
     typedef StateMachine<BaseCharacter>::State State;
     virtual ~BaseCharacter();                                                    // slots 0, 1
     SPTG_SLOT(3) SPTG_SLOT(4) SPTG_SLOT(5) SPTG_SLOT(6) SPTG_SLOT(7) SPTG_SLOT(8) SPTG_SLOT(9) SPTG_SLOT(10)
-    SPTG_SLOT(11) SPTG_SLOT(12) SPTG_SLOT(13) SPTG_SLOT(14) SPTG_SLOT(15) SPTG_SLOT(16) SPTG_SLOT(17) SPTG_SLOT(18)
-    SPTG_SLOT(19) SPTG_SLOT(20)
+    SPTG_SLOT(11)
+    virtual bool IsA(uint32_t type);                                         // slot 12
+    SPTG_SLOT(13) SPTG_SLOT(14) SPTG_SLOT(15) SPTG_SLOT(16) SPTG_SLOT(17) SPTG_SLOT(18) SPTG_SLOT(19) SPTG_SLOT(20)
     virtual void ReactTo(BaseCharacter* other, int reaction, void* data);    // slot 21
     virtual void PlayAnimation(int animation, int a, int b, float speed);    // slot 22
     SPTG_SLOT(23) SPTG_SLOT(24) SPTG_SLOT(25) SPTG_SLOT(26)
     virtual bool AnimationDone();                                            // slot 27
-    SPTG_SLOT(28) SPTG_SLOT(29) SPTG_SLOT(30)
+    SPTG_SLOT(28) SPTG_SLOT(29)
+    virtual void TurnAround();                                               // slot 30
     virtual void Slot31Action();                                             // slot 31
     SPTG_SLOT(32) SPTG_SLOT(33) SPTG_SLOT(34)
     virtual void Slot35(bool flag, BaseCharacter* other);                    // slot 35
@@ -80,9 +96,12 @@ struct BaseCharacter : onyx::Component {
     virtual bool IsOut();             // checked before targeting a player   // slot 51
     virtual bool IsOnGround();                                               // slot 52
     SPTG_SLOT(53) SPTG_SLOT(54) SPTG_SLOT(55) SPTG_SLOT(56) SPTG_SLOT(57) SPTG_SLOT(58) SPTG_SLOT(59) SPTG_SLOT(60)
-    SPTG_SLOT(61) SPTG_SLOT(62) SPTG_SLOT(63) SPTG_SLOT(64) SPTG_SLOT(65) SPTG_SLOT(66) SPTG_SLOT(67) SPTG_SLOT(68)
+    SPTG_SLOT(61) SPTG_SLOT(62) SPTG_SLOT(63) SPTG_SLOT(64) SPTG_SLOT(65) SPTG_SLOT(66) SPTG_SLOT(67)
+    virtual void Slot68();                                                   // slot 68
     virtual void Slot69(void* data, void* extra);                            // slot 69
-    SPTG_SLOT(70) SPTG_SLOT(71) SPTG_SLOT(72) SPTG_SLOT(73) SPTG_SLOT(74) SPTG_SLOT(75) SPTG_SLOT(76) SPTG_SLOT(77)
+    virtual void Remove(bool flag);                                          // slot 70
+    SPTG_SLOT(71) SPTG_SLOT(72) SPTG_SLOT(73) SPTG_SLOT(74) SPTG_SLOT(75) SPTG_SLOT(76)
+    virtual float Slot77();                                                  // slot 77
     SPTG_SLOT(78) SPTG_SLOT(79) SPTG_SLOT(80)
     virtual float Slot81();                                                  // slot 81
     SPTG_SLOT(82) SPTG_SLOT(83) SPTG_SLOT(84) SPTG_SLOT(85)
@@ -142,7 +161,11 @@ struct BaseCharacter : onyx::Component {
     uint8_t flag130;             // +0x130
     char padding_131[0x2f];
     float value160;              // +0x160
-    char padding_164[0x3c];
+    char padding_164[0x18];
+    uint8_t flag17c;             // +0x17c
+    char padding_17d[0xf];
+    float value18c;              // +0x18c: set on the mount by state 130
+    char padding_190[0x10];
     int32_t animation;           // +0x1a0: the animation playing
     onyx::Vector3 motion;        // +0x1a4
     onyx::Vector3 motionTarget;  // +0x1b0
@@ -156,10 +179,16 @@ struct BaseCharacter : onyx::Component {
     char padding_248[0x74];
     float savedZ;                // +0x2bc: restored into motionTarget.z
     float savedC4;               // +0x2c0: restored into motionC4
-    char padding_2c4[0x68];
+    float value2c4;              // +0x2c4
+    char padding_2c8[0x18];
+    float jumpBackSpeed;         // +0x2e0
+    float slideThreshold;        // +0x2e4
+    char padding_2e8[0x4];
+    float slideSpeed;            // +0x2ec
+    char padding_2f0[0x3c];
     float value32c;              // +0x32c
     float timer330;              // +0x330
-    char padding_334[0x4];
+    float value334;              // +0x334
     uint8_t flag338;             // +0x338
     uint8_t flag339;             // +0x339
     char padding_33a[0x6];
@@ -171,13 +200,25 @@ struct BaseCharacter : onyx::Component {
     char padding_3b4[0x5];
     uint8_t skipFrame;           // +0x3b9: set on entry; the first update is skipped
     uint8_t flag3ba;             // +0x3ba
-    char padding_3bb[0x145];
+    char padding_3bb[0x5];
+    onyx::EventCallback* event3c0Callback; // +0x3c0
+    onyx::EventTarget* event3c0Target; // +0x3c8
+    char padding_3d0[0xb8];
+    onyx::ComponentHandle* holder; // +0x488
+    char padding_490[0x48];
+    int32_t holderMode;          // +0x4d8
+    char padding_4dc[0x4];
+    onyx::ComponentHandle* holder2; // +0x4e0: used unless holderMode is 1
+    char padding_4e8[0x18];
     int32_t actionMode;          // +0x500
     char padding_504[0x18];
     float stunDuration;          // +0x51c
     float stunDuration2;         // +0x520
     char padding_524[0x224];
     uint8_t flag748;             // +0x748
+    char padding_749[0x7];
+    onyx::EventCallback* event750Callback; // +0x750
+    onyx::EventTarget* event750Target; // +0x758
 
     void ReleaseHeld(bool flag, float x, float y);   // 0x976fb0: drops the reference at +0x240
     void Apply8e5750(int value);                       // 0x8e5750
@@ -191,6 +232,16 @@ static_assert(__builtin_offsetof(BaseCharacter, actionMode) == 0x500, "BaseChara
 struct ControllablePlayer : BaseCharacter {
     virtual void OnMessage(CharacterMessage* message);   // slot 159
 };
+// A character that passes IsA(0x2f2bf4aa) (registered as Onyx::Component::Bucket)
+// also receives messages at slot 159.
+struct MessageReceiver : BaseCharacter {
+    static const uint32_t kType = 0x2f2bf4aau;
+    virtual void OnMessage(CharacterMessage* message);   // slot 159
+};
+// A checked cast: the character if it is non-null and passes IsA(T::kType).
+template<class T> __attribute__((always_inline)) inline T* Cast(BaseCharacter* character) {
+    return character && character->IsA(T::kType) ? static_cast<T*>(character) : nullptr;
+}
 // Onyx::Catalog<ControllablePlayer> (component type 0x0bf4a9b7).
 struct PlayerCatalog : onyx::Component {
     char padding_8[0x78];

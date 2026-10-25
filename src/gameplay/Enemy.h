@@ -16,6 +16,7 @@ struct TargetEntry {
 
 struct Enemy : BaseCharacter {
     int State96(int event);                                          // slot 96, overrides BaseCharacter
+    int State98(int event);                                          // slot 98, overrides BaseCharacter
     int State100(int event);                                         // slot 100, overrides BaseCharacter
     int State102(int event);                                         // slot 102, overrides BaseCharacter
     int State108(int event);                                         // slot 108, overrides BaseCharacter
@@ -26,7 +27,7 @@ struct Enemy : BaseCharacter {
     virtual void Approach();             // runs while the approach state continues // slot 167
     SPTG_SLOT(168) SPTG_SLOT(169)
     virtual float Slot170();                                                 // slot 170
-    SPTG_SLOT(171)
+    virtual float Slot171();                                                 // slot 171
     virtual int State172(int event); virtual State State172Ptr();            // slots 172, 173
     virtual int State174(int event); virtual State State174Ptr();            // slots 174, 175
     virtual int State176(int event); virtual State State176Ptr();            // slots 176, 177
@@ -55,15 +56,19 @@ struct Enemy : BaseCharacter {
     virtual int State222(int event); virtual State State222Ptr();            // slots 222, 223
     virtual int State224(int event); virtual State State224Ptr();            // slots 224, 225
     virtual int State226(int event); virtual State State226Ptr();            // slots 226, 227
-    SPTG_SLOT(228) SPTG_SLOT(229) SPTG_SLOT(230) SPTG_SLOT(231) SPTG_SLOT(232) SPTG_SLOT(233)
+    SPTG_SLOT(228) SPTG_SLOT(229) SPTG_SLOT(230)
+    virtual bool Slot231();                                                  // slot 231
+    SPTG_SLOT(232) SPTG_SLOT(233)
 
-    char padding_749[0x63];
+    char padding_760[0x4c];
     float value7ac;              // +0x7ac
     float stateTime;             // +0x7b0: time spent in the current state
     char padding_7b4[0x4];
     uint8_t flag7b8;             // +0x7b8
     uint8_t flag7b9;             // +0x7b9
-    char padding_7ba[0x59];
+    char padding_7ba[0x1a];
+    float jumpSpeed7d4;          // +0x7d4
+    char padding_7d8[0x3b];
     uint8_t flag813;             // +0x813
     char padding_814[0x8];
     uint8_t approachCountdown;   // +0x81c: frames left in the approach state
@@ -94,14 +99,22 @@ struct Enemy : BaseCharacter {
     char padding_988[0x20];
     float assistChance;          // +0x9a8: percent
     float delay9ac;              // +0x9ac
-    char padding_9b0[0x18];
-    int32_t value9c8;            // +0x9c8
+    char padding_9b0[0x14];
+    uint8_t flag9c4;             // +0x9c4
+    char padding_9c5[0x3];
+    float value9c8;              // +0x9c8
     float partnerDelay;          // +0x9cc
-    char padding_9d0[0x2];
+    bool removeFlag;             // +0x9d0: passed to Remove
+    char padding_9d1[0x1];
     uint8_t flag9d2;             // +0x9d2
-    char padding_9d3[0x116];
+    char padding_9d3[0x1];
+    float blinkDuration;         // +0x9d4
+    float blinkPeriod;           // +0x9d8
+    char padding_9dc[0x10d];
     uint8_t flagAe9;             // +0xae9
-    char padding_aea[0xbe];
+    char padding_aea[0x8e];
+    uint8_t flagB78;             // +0xb78
+    char padding_b79[0x2f];
     AttackSlot attacks[7];       // +0xba8
 
     bool LeaveCheck();   // 0x9dcb90: lets state 172 hand over to state 96
@@ -109,6 +122,7 @@ struct Enemy : BaseCharacter {
     void Update9dc4c0(); // 0x9dc4c0: runs each update of state 186
     void Update9db820(float time, float value);   // 0x9db820
     void Enter9db480();  // 0x9db480
+    void Call996c30(float value, int a, int b, void* c);   // 0x996c30
 };
 static_assert(__builtin_offsetof(Enemy, stateTime) == 0x7b0, "Enemy state time");
 static_assert(__builtin_offsetof(Enemy, aiMode) == 0x824, "Enemy AI mode");

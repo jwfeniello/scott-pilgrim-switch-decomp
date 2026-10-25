@@ -78,6 +78,71 @@ int BaseCharacter::State98(int event) {
     }
 }
 
+// Slot 100 (0x971090): the jump. Entry plays animation 2, or with a mount 53 or
+// 69 depending on the mount (the mount plays 109). The rise (2, 53, 69) is
+// followed by the air animation (3, 54, 70; mount 110) and, once falling, the
+// fall (4, 55, 71; mount 111); when the fall animation is done the character
+// moves to slot 102. Landing while not rising switches to slot 104.
+int BaseCharacter::State100(int event) {
+    switch (event) {
+    case kStateUpdate:
+        switch (animation) {
+        case 2: case 53: case 69:
+            if (AnimationDone()) {
+                if (Slot36Check()) {
+                    if (BaseCharacter* mount = Mount()) {
+                        PlayAnimation(mount->Slot49() == 0 ? 54 : 70, 1, 0, 1.0f);
+                        if (Slot36Check()) static_cast<BaseCharacter*>(mountHandle->object)->PlayAnimation(110, 1, 0, 1.0f);
+                    }
+                } else {
+                    PlayAnimation(3, 1, 0, 1.0f);
+                }
+            }
+            break;
+        case 3: case 54: case 70:
+            if (motion.z < 0.0f) {
+                if (Slot36Check()) {
+                    if (BaseCharacter* mount = Mount()) {
+                        PlayAnimation(mount->Slot49() == 0 ? 55 : 71, 0, 0, 1.0f);
+                        if (Slot36Check()) static_cast<BaseCharacter*>(mountHandle->object)->PlayAnimation(111, 0, 0, 1.0f);
+                    }
+                } else {
+                    PlayAnimation(4, 0, 0, 1.0f);
+                }
+            }
+            break;
+        case 4: case 55: case 71:
+            if (AnimationDone()) {
+                states.Transition(State102Ptr());
+                return kStateParentTookOver;
+            }
+            break;
+        }
+        if (IsOnGround() && motion.z <= 0.0f) {
+            states.Transition(State104Ptr());
+            return kStateParentTookOver;
+        }
+        return kStateHandled;
+    case kStateEnter:
+        if (Slot36Check()) {
+            if (BaseCharacter* mount = Mount()) {
+                PlayAnimation(mount->Slot49() == 0 ? 53 : 69, 0, 0, 1.0f);
+                if (Slot36Check()) static_cast<BaseCharacter*>(mountHandle->object)->PlayAnimation(109, 0, 0, 1.0f);
+            }
+        } else {
+            PlayAnimation(2, 0, 0, 1.0f);
+        }
+        return kStateHandled;
+    case kStateEvent3:
+        return kStateHandled;
+    default:
+        return kStateUnhandled;
+    case kStateExit:
+        states.AssertOwner(this);
+        return kStateHandled;
+    }
+}
+
 // Slot 102 (0x9713b0): the airborne state. Entry restores the saved depth
 // values and plays animation 5, or with a mount (slot 36) animation 56 or 72
 // depending on the mount, with the mount playing animation 112. Landing switches
@@ -177,6 +242,44 @@ int BaseCharacter::State114(int event) {
     default:
         return kStateUnhandled;
     }
+}
+
+// Slot 116 (0x972f30): entry notifies the holder (+0x488, or +0x4e0 unless the
+// holder mode is 1): it runs its slot 68 and, if it receives messages, gets
+// message 2 from this character. This character gets message 26 if it receives
+// messages itself. Then action mode 5, event 0x2c285404, all motion stopped and
+// animation 16.
+int BaseCharacter::State116(int event) {
+    switch (event) {
+    case kStateExit:
+    case kStateEvent3:
+    case kStateUpdate:
+        return kStateHandled;
+    case kStateEnter: {
+        BaseCharacter* other = holder ? static_cast<BaseCharacter*>(holder->object) : nullptr;
+        if (other && holderMode != 1) other = holder2 ? static_cast<BaseCharacter*>(holder2->object) : nullptr;
+        if (other) {
+            other->Slot68();
+            if (MessageReceiver* receiver = Cast<MessageReceiver>(other)) {
+                CharacterMessage message(2, this);
+                message.receiver = receiver;
+                receiver->OnMessage(&message);
+            }
+        }
+        if (IsA(MessageReceiver::kType)) {
+            CharacterMessage message(26, nullptr);
+            message.receiver = this;
+            static_cast<MessageReceiver*>(this)->OnMessage(&message);
+        }
+        actionMode = 5;
+        onyx::SendEvent<0x2c285404u>(event750Callback, event750Target);
+        motion = onyx::Vector3::Zero();
+        motionTarget = onyx::Vector3::Zero();
+        PlayAnimation(16, 0, 0, 1.0f);
+        return kStateHandled;
+    }
+    }
+    return kStateUnhandled;
 }
 
 // Slot 118 (0x973230): the stun state. Entry starts the timer from the stun
@@ -291,6 +394,49 @@ int BaseCharacter::State124(int event) {
         actionMode = 0;
         flag3ba = 0;
         return kStateHandled;
+    }
+}
+
+// Slot 130 (0x974590): a slide. Entry stops when the horizontal speed is under
+// the slide threshold, otherwise sets the target speed to the slide speed in
+// the facing direction. With a mount, the mount gets slot 77's value at +0x18c
+// and slot 35, and plays animation 101 while this character plays 45 or 61.
+// Exit stops all motion; once the animation is done, back to slot 96.
+int BaseCharacter::State130(int event) {
+    switch (event) {
+    case kStateUpdate:
+        if (AnimationDone()) {
+            states.Transition(State96Ptr());
+            return kStateParentTookOver;
+        }
+        return kStateHandled;
+    case kStateEnter:
+        if (__builtin_fabsf(motion.x) < slideThreshold) {
+            motion = onyx::Vector3::Zero();
+        } else {
+            ActorObject* actor = onyx::Find<ActorObject, onyx_types::type_6492d61d>(actorObject);
+            float direction = onyx::Get<ActorFlags, 0x2eae5813u>(actor->flags)->facingLeft ? -1.0f : 1.0f;
+            motionTarget.x = slideSpeed * direction;
+        }
+        if (Slot36Check()) {
+            float value = Slot77();
+            BaseCharacter* mounted = static_cast<BaseCharacter*>(mountHandle->object);
+            mounted->value18c = value;
+            mounted->Slot35(false, this);
+            if (BaseCharacter* mount = Mount()) {
+                PlayAnimation(mount->Slot49() == 0 ? 45 : 61, 0, 0, 1.0f);
+                if (Slot36Check()) static_cast<BaseCharacter*>(mountHandle->object)->PlayAnimation(101, 0, 0, 1.0f);
+            }
+        }
+        return kStateHandled;
+    case kStateExit:
+        motion = onyx::Vector3::Zero();
+        motionTarget = onyx::Vector3::Zero();
+        return kStateHandled;
+    case kStateEvent3:
+        return kStateHandled;
+    default:
+        return kStateUnhandled;
     }
 }
 

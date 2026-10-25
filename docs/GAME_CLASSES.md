@@ -204,6 +204,12 @@ The game-class sources (`gameplay_pickup`, `gameplay_piniata`) build with
 - **Strict aliasing.** The same function reuses a list's size after unlinking a
   node, which needs type-based alias analysis. All other Pickup and Piniata
   functions match either way. Other game builds keep `-fno-strict-aliasing`.
+- **Stack coloring is not settled.** BaseCharacter's slot 116 shares one stack
+  slot between two messages and an event payload, which needs stack coloring on
+  (so its build drops `-no-stack-coloring`). Pickup's collect and Enemy's slot
+  200 give each event payload its own slot, which with these sources needs it
+  off. Coloring on is the compiler default, so those two sources may not have
+  the original variable scopes yet.
 - **Exceptions are on.** The original keeps landing pads (bare `_Unwind_Resume`
   calls) where an event payload with an empty user-provided destructor is live.
   LLVM 8 cannot delete a cleanup that still holds a lifetime marker.
@@ -313,19 +319,22 @@ motion vectors (`+0x1a4`, `+0x1b0`), the mount (`+0x238`) and the action mode
 (`+0x500`). Which of them belong to BaseCharacter rather than a subclass is
 not settled.
 
-[`BaseCharacterStates.cpp`](../src/gameplay/BaseCharacterStates.cpp) matches 12
-of its states (4,300 bytes). "Stops" means both motion vectors are zeroed.
+[`BaseCharacterStates.cpp`](../src/gameplay/BaseCharacterStates.cpp) matches 15
+of its states (6,644 bytes). "Stops" means both motion vectors are zeroed.
 
 | Slot | Address | Behavior |
 | --- | --- | --- |
 | 98 | `0x970f00` | Grounded: stops, action mode 1, animation 12; leaving the ground goes to 102 |
+| 100 | `0x971090` | Jump: animation 2 (53/69 with a mount); rise → air (3/54/70) → fall (4/55/71) once falling; the fall's end goes to 102, landing to 104 |
 | 102 | `0x9713b0` | Airborne: restores the saved depth values; animation 5, or 56/72 with a mount (the mount plays 112); landing goes to 104 |
 | 112 | `0x972b70` | Recovery: stops, action mode 6, animation 16. After slot 81's time limit, with health goes to 122; otherwise slot 148 picks 124 or 122, else slot 156 picks 114 or 116 |
 | 114 | `0x972dd0` | Action mode 9, stops, animation 16 |
+| 116 | `0x972f30` | Notifies the holder (`+0x488`, or `+0x4e0`) and itself with messages 2 and 26 when they pass `IsA(0x2f2bf4aa)`; action mode 5, event `0x2c285404`, stops, animation 16 |
 | 118 | `0x973230` | Stun: timer from `+0x51c`, action mode 2, stops, slot 86; back to 96 when the timer runs out |
 | 120 | `0x9733e0` | Second stun: timer from `+0x520`, action mode 4, stops, animation 18 |
 | 122 | `0x9735a0` | Knockdown: stops, animation 27, action mode 7, flag `+0x3ba`; back to 96 when the animation ends |
 | 124 | `0x973740` | As 122, then goes to 120 |
+| 130 | `0x974590` | Slide: stops under the slide threshold, else slides in the facing direction; with a mount, plays the mount animations |
 | 134 | `0x974e00` | With a mount, animation 48/64 and the mount plays 104; animation end goes to 102, landing to 104 |
 | 136 | `0x974f90` | Hides the effect while active |
 | 138 | `0x975030` | Animation 116; landing goes back to 96 |
@@ -338,11 +347,12 @@ of its states (4,300 bytes). "Stops" means both motion vectors are zeroed.
 states and adds its own at slots 172–227. An overriding state runs the base
 state first and stops if the base state has already switched states (result 2).
 
-[`EnemyStates.cpp`](../src/gameplay/EnemyStates.cpp) matches 13 of them, plus
-the chance roll they use (4,820 bytes in all):
+[`EnemyStates.cpp`](../src/gameplay/EnemyStates.cpp) matches 17 of them, plus
+the chance roll they use (7,936 bytes in all):
 
 | Slot | Address | Behavior |
 | --- | --- | --- |
+| 98 | `0x9cec40` | Grounded: stops, action mode 1, animation 29 then 12, event `0x78572030`; half a second into 12 goes to 96, leaving the ground to 102 |
 | 100, 102 | `0x9cef60`, `0x9cf000` | After the base state, with a mount, run slot 31 and play animation 2 or 5 |
 | 116 | `0x9cf500` | After the base state, sends message 3 to every player (`Catalog<ControllablePlayer>` through the level singleton) and resets the AI fields; animation end goes to 200 |
 | 126 | `0x9cf670` | After the base state, rolls the chance on exit |
@@ -353,7 +363,10 @@ the chance roll they use (4,820 bytes in all):
 | 180 | `0x9d1c60` | Approach: counts down; keeps approaching (slot 167) while the target is in range + 10, not out, and the AI mode is 0 or 1 |
 | 186 | `0x9d28a0` | Loops animation 114; once done and `+0x984` seconds have passed, passes `+0x980` to the target (slot 90) |
 | 192 | `0x9d3780` | Loops animation 117, AI mode 7; goes to 96 after the animation and `+0x9ac` seconds, or to 102 when off the ground |
+| 196 | `0x9d3e10` | Jump back: speed from `+0x7d4` or away from the facing; animation 2 → 3 → 8 (falling) → 6 (landed) → slot 96 |
 | 198 | `0x9d40b0` | Plays the special attack's animation and starts it (`+0x898`) |
+| 200 | `0x9d4250` | Blinks out: the timer's parity picks the actor's blink-on or blink-off event; at the end runs `0x996c30` and removes the enemy (slot 70) |
+| 218 | `0x9d7da0` | Walk: advances `+0x334`, runs `0x9db820`, turns around when travel and facing disagree |
 | 222 | `0x9d8f00` | AI mode 7, animation 209, hides the effect and raises an ActorObject flag; takes `+0x9c8` from the game difficulty |
 | 226 | `0x9d98c0` | Idle entry: animation 0, or 44/60 with a mount (the mount plays 100); stops |
 

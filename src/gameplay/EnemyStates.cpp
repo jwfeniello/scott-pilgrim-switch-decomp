@@ -7,6 +7,49 @@
 
 namespace SPTG {
 
+// Slot 98 (0x9cec40): Enemy's grounded state. Entry stops all motion, sets
+// action mode 1, plays animation 29 and sends event 0x78572030; exit clears the
+// action mode and +0x813. Animation 29 is followed by animation 12, and half a
+// second into 12 the enemy moves to slot 96. Leaving the ground switches to 102.
+int Enemy::State98(int event) {
+    switch (event) {
+    case kStateUpdate:
+        if (!IsOnGround()) {
+            states.Transition(State102Ptr());
+            return kStateParentTookOver;
+        }
+        switch (animation) {
+        case 29:
+            if (AnimationDone()) PlayAnimation(12, 1, 0, 1.0f);
+            break;
+        case 12:
+            stateTime += Move_FrameDelta;
+            if (stateTime > 0.5f) {
+                states.Transition(State96Ptr());
+                return kStateParentTookOver;
+            }
+            break;
+        }
+        return kStateHandled;
+    case kStateEnter:
+        motion = onyx::Vector3::Zero();
+        motionTarget = onyx::Vector3::Zero();
+        actionMode = 1;
+        PlayAnimation(29, 0, 0, 1.0f);
+        onyx::SendEvent<0x78572030u>(event3c0Callback, event3c0Target);
+        stateTime = 0.0f;
+        return kStateHandled;
+    case kStateEvent3:
+        return kStateHandled;
+    default:
+        return kStateUnhandled;
+    case kStateExit:
+        flag813 = 0;
+        actionMode = 0;
+        return kStateHandled;
+    }
+}
+
 // Slot 100 (0x9cef60): after the base state, on entry, when slot 36 holds,
 // runs slot 31 and plays animation 2.
 int Enemy::State100(int event) {
@@ -272,6 +315,57 @@ int Enemy::State186(int event) {
     }
 }
 
+// Slot 196 (0x9d3e10): a jump back. Entry releases anything held (with the
+// ratio +0x334 / +0x2c4, at most 1), sets the horizontal speed (0 with +0x9c4
+// set, else +0x7d4 if positive, else the jump-back speed away from the facing
+// direction) and plays animation 2. Each update follows the animation: 2 leads
+// to 3; 3 to 8 once falling; 8 to 6 on landing; when 6 is done, slot 96.
+int Enemy::State196(int event) {
+    switch (event) {
+    case kStateUpdate:
+        switch (animation) {
+        case 2:
+            if (AnimationDone()) PlayAnimation(3, 1, 0, 1.0f);
+            break;
+        case 3:
+            if (motion.z <= 0.0f) PlayAnimation(8, 1, 0, 1.0f);
+            break;
+        case 6:
+            if (AnimationDone()) {
+                states.Transition(State96Ptr());
+                return kStateParentTookOver;
+            }
+            break;
+        case 8:
+            if (IsOnGround() && motion.z <= 0.0f) PlayAnimation(6, 1, 0, 1.0f);
+            break;
+        }
+        return kStateHandled;
+    case kStateEnter: {
+        ReleaseHeld(false, __builtin_fminf(value334 / value2c4, 1.0f), 0.0f);
+        float speed = 0.0f;
+        if (!flag9c4) {
+            speed = jumpSpeed7d4;
+            if (!(speed > 0.0f)) {
+                ActorObject* actor = onyx::Find<ActorObject, onyx_types::type_6492d61d>(actorObject);
+                float direction = onyx::Get<ActorFlags, 0x2eae5813u>(actor->flags)->facingLeft ? -1.0f : 1.0f;
+                speed = jumpBackSpeed * direction;
+            }
+        }
+        motion.x = speed;
+        PlayAnimation(2, 1, 0, 1.0f);
+        return kStateHandled;
+    }
+    case kStateEvent3:
+        return kStateHandled;
+    default:
+        return kStateUnhandled;
+    case kStateExit:
+        states.AssertOwner(this);
+        return kStateHandled;
+    }
+}
+
 // Slot 198 (0x9d40b0): plays the special attack's animation, stops all motion
 // and starts the special attack; once the animation is done, switches to the
 // state at slot 96.
@@ -356,6 +450,90 @@ int Enemy::State192(int event) {
     case kStateExit:
         value874 = 0;
         aiMode = 6;
+        return kStateHandled;
+    }
+}
+
+// Slot 218 (0x9d7da0): walking. Each update advances the timer at +0x334, runs
+// 0x9db820 with it and slot 171, and turns around (slot 30) when the direction
+// of travel and the facing disagree. Entry runs 0x9db480 unless slot 231 holds,
+// in which case it plays the walk animation (1, or 43/59 with a mount, the
+// mount playing 99); then as slot 174. Exit is as slot 174's.
+int Enemy::State218(int event) {
+    switch (event) {
+    case kStateUpdate: {
+        value334 += Move_FrameDelta;
+        Update9db820(value334, Slot171());
+        float speed = motion.x;
+        ActorObject* actor = onyx::Find<ActorObject, onyx_types::type_6492d61d>(actorObject);
+        bool movingRight = speed > 0.0f;
+        bool facingRight = !onyx::Get<ActorFlags, 0x2eae5813u>(actor->flags)->facingLeft;
+        if (movingRight != facingRight) TurnAround();
+        return kStateHandled;
+    }
+    case kStateEnter:
+        value334 = 0.0f;
+        if (!Slot231()) {
+            Enter9db480();
+        } else if (Slot36Check()) {
+            if (BaseCharacter* mount = Mount()) {
+                PlayAnimation(mount->Slot49() == 0 ? 43 : 59, 1, 0, 1.0f);
+                if (Slot36Check()) static_cast<BaseCharacter*>(mountHandle->object)->PlayAnimation(99, 1, 0, 1.0f);
+            }
+        } else {
+            PlayAnimation(1, 1, 0, 1.0f);
+        }
+        if (specialAttack.kind >= 2 && specialAttack.kind <= 4) flag813 = 0;
+        mode87c = 2;
+        flag9d2 = 0;
+        motionTarget = onyx::Vector3::Zero();
+        return kStateHandled;
+    case kStateEvent3:
+        return kStateHandled;
+    default:
+        return kStateUnhandled;
+    case kStateExit:
+        flag813 = 0;
+        if (!flag9d2) motion = onyx::Vector3::Zero();
+        mode87c = 3;
+        return kStateHandled;
+    }
+}
+
+// Slot 200 (0x9d4250): blinking out. Entry starts the timer from the blink
+// duration. While it runs (and +0x17c is clear) the actor blinks: the parity of
+// timer / blink period picks the blink-on or blink-off event of the actor's
+// flags component. When it has run out, 0x996c30 runs (unless +0xb78 is set),
+// and the enemy is removed (slot 70).
+int Enemy::State200(int event) {
+    switch (event) {
+    case kStateUpdate:
+        if (timer330 > 0.0f) {
+            if (!flag17c) {
+                timer330 -= Move_FrameDelta;
+                uint32_t phase = uint32_t(timer330 / blinkPeriod);
+                ActorObject* actor = onyx::Find<ActorObject, onyx_types::type_6492d61d>(actorObject);
+                ActorFlags* flags = onyx::Find<ActorFlags, 0x2eae5813u>(actor->flags);
+                if (phase & 1)
+                    onyx::SendEvent<0x255c0afeu>(flags->blinkOffCallback, flags->blinkOffTarget);
+                else
+                    onyx::SendEvent<0x44174b43u>(flags->blinkOnCallback, flags->blinkOnTarget);
+                return kStateHandled;
+            }
+        } else if (!flag17c && !flagB78) {
+            Call996c30(value9c8, 0, 0, nullptr);
+        }
+        Remove(removeFlag);
+        return kStateHandled;
+    case kStateEnter:
+        timer330 = blinkDuration;
+        return kStateHandled;
+    case kStateEvent3:
+        return kStateHandled;
+    default:
+        return kStateUnhandled;
+    case kStateExit:
+        states.AssertOwner(this);
         return kStateHandled;
     }
 }
