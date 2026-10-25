@@ -608,8 +608,8 @@ Slots 96, 116 and 200 are written out but not credited. In each, the original
 merges the "handled" returns into a shared tail (for 96 and 116, the exit
 case's) that this build duplicates.
 
-[`BossClassStates.cpp`](../src/gameplay/BossClassStates.cpp) matches 80
-functions of the boss classes (13,496 bytes). Most are hooks that inline
+[`BossClassStates.cpp`](../src/gameplay/BossClassStates.cpp) matches 94
+functions of the boss classes (19,148 bytes). Most are hooks that inline
 Boss's version and add a class detail:
 
 - **Slot 234** maps an attack request's kind to a state. Each class tests its
@@ -637,6 +637,23 @@ Boss's version and add a class detail:
 - **SuperFightingRobotAI** makes itself the owner of both hands
   (`SuperFightingRobotHand`, component type `0x37bd3ac0`) on reset. Its hands
   wait for targets before attacking.
+- **Stagger (slot 186):** Ken & Kyle, Todd and Envy replace Enemy's stagger
+  with animation 114 held for a class time (`+0x10b8`, `+0x11a0`, `+0xf90`),
+  then slot 96.
+- **HipsterChick** attacks again every `+0xe64` seconds in state 262. States
+  106 and 258 choose the next state from the mode at `+0xe88` (2 leads to 262,
+  4 to 268 or 266).
+- **Envy** state 270 starts its attack with animation 117, switches to
+  animation 11 after `+0xf84` seconds, then goes to 244. State 272 holds
+  animation 96 for `+0xf9c` seconds and raises `+0xd84` on exit.
+- **Hit checks (slot 38) and knockdowns:** Gideon copies the hit's `+0x5c` to
+  `+0x12c` and, when it is 1, raises `+0xd49` one time in five. Ken & Kyle's state 122 rolls 1–100 against
+  `+0x10d4` and flips the twins' turn. Todd's state 122 goes to 258 when
+  0xa255e0 passes on its `+0xdd8` data.
+
+Branches show which way the source wrote a comparison. `b.ls` or `b.le` after
+a float compare means the original tested the positive form (`stateTime <= 0`,
+`stateTime > limit`), not an early return on the opposite.
 
 Patel's slot 170, Patel's state 256, Ken & Kyle's hit check and the state
 244 of TagTeamMember, Lynette and Todd are written out but not credited.

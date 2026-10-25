@@ -56,6 +56,7 @@ struct Boss : Enemy {
     bool CheckA1e720();   // 0xa1e720
     bool CheckA1e820();   // 0xa1e820
     void CallA254a0(float value);   // 0xa254a0
+    bool CheckA255e0(void* data);   // 0xa255e0
     int State96(int event); State State96Ptr();   // slots 96, 97, override Enemy
     int State98(int event); State State98Ptr();   // slots 98, 99, override Enemy
     int State106(int event); State State106Ptr();   // slots 106, 107, override Enemy

@@ -22,10 +22,12 @@ struct TagTeamMember : Boss {
     virtual int State264(int event); virtual State State264Ptr();   // slots 264, 265
     virtual int State266(int event); virtual State State266Ptr();   // slots 266, 267
 
-    char padding_d4b[0xf];
+    char padding_d4b[0xe];
+    uint8_t flagD59;             // +0xd59
     uint8_t flagD5a;             // +0xd5a
     uint8_t flagD5b;             // +0xd5b
-    char padding_d5c[0x1c];
+    char padding_d5c[0x18];
+    uint32_t valueD74;           // +0xd74
     float timerD78;              // +0xd78: counted down by slot 13
     float healthD7c;             // +0xd7c: lowered by every hit
     uint8_t flagD80;             // +0xd80: set once +0xd7c runs out
@@ -63,8 +65,12 @@ struct Todd : Boss {
     uint8_t flagD89;             // +0xd89
     char padding_d8a[0xa];
     int32_t valueD94;            // +0xd94
-    char padding_d98[0x400];
+    char padding_d98[0x40];
+    char dataDd8[0x10];          // +0xdd8: passed to 0xa255e0
+    char padding_de8[0x3b0];
     float value1198;             // +0x1198: returned by slot 59
+    char padding_119c[0x4];
+    float limit11a0;             // +0x11a0
 };
 // vtable 0x1896e38, 284 slots
 struct GigaGideon : Boss {
@@ -105,6 +111,7 @@ struct GigaGideon : Boss {
 // vtable 0x18977d0, 260 slots
 struct Gideon : Boss {
     bool Slot168();
+    bool OnHit(BaseCharacter* other, void* hit);
     int State98(int event); State State98Ptr();   // slots 98, 99, override Boss
     int State196(int event); State State196Ptr();   // slots 196, 197, override Boss
     virtual void Slot234(int kind);                                          // slot 234, overrides Boss
@@ -112,6 +119,9 @@ struct Gideon : Boss {
     virtual bool Slot237(const AttackSlot& request);                         // slot 237, overrides Boss
     virtual int State254(int event); virtual State State254Ptr();   // slots 254, 255, overrides Boss
     virtual int State258(int event); virtual State State258Ptr();   // slots 258, 259
+
+    char padding_d4b[0x2d5];
+    AttackSlot attack;           // +0x1020
 };
 // vtable 0x1896478, 266 slots
 struct SuperGideon : Boss {
@@ -158,11 +168,19 @@ struct KenKyle : Boss {
     virtual int State268(int event); virtual State State268Ptr();   // slots 268, 269
     virtual int State270(int event); virtual State State270Ptr();   // slots 270, 271
 
-    char padding_d4b[0x3];
+    uint8_t flagD4b;             // +0xd4b: the twins take turns: one has it set
+    char padding_d4c[0x2];
     uint8_t flagD4e;             // +0xd4e
     char padding_d4f[0x5];
     int32_t valueD54;            // +0xd54
     onyx::ComponentHandle* twin; // +0xd58: the other of Ken and Kyle
+    char padding_d60[0x358];
+    float limit10b8;             // +0x10b8
+    char padding_10bc[0x8];
+    float value10c4;             // +0x10c4
+    float value10c8;             // +0x10c8
+    char padding_10cc[0x8];
+    float chance10d4;            // +0x10d4: percent
 };
 // vtable 0x18949c8, 268 slots
 struct LucasLee : Boss {
@@ -246,6 +264,9 @@ struct Lynette : TagTeamMember {
     virtual int State278(int event); virtual State State278Ptr();   // slots 278, 279
     virtual int State280(int event); virtual State State280Ptr();   // slots 280, 281
     virtual int State282(int event); virtual State State282Ptr();   // slots 282, 283
+
+    char padding_d85[0xbb];
+    AttackSlot attack;           // +0xe40
 };
 // vtable 0x1892fb8, 269 slots
 struct Patel : Boss {
@@ -292,6 +313,15 @@ struct Envy : TagTeamMember {
     virtual int State268(int event); virtual State State268Ptr();   // slots 268, 269
     virtual int State270(int event); virtual State State270Ptr();   // slots 270, 271
     virtual int State272(int event); virtual State State272Ptr();   // slots 272, 273
+
+    char padding_d85[0x13];
+    AttackSlot attack;           // +0xd98
+    char padding_e10[0x174];
+    float limitF84;              // +0xf84
+    char padding_f88[0x8];
+    float limitF90;              // +0xf90
+    char padding_f94[0x8];
+    float limitF9c;              // +0xf9c
 };
 // vtable 0x1894150, 266 slots
 struct NegaScott : Boss {
@@ -325,7 +355,9 @@ struct HipsterChick : Boss {
 
     char padding_d4b[0x5];
     AttackSlot attack;           // +0xd50: requested every update with kind 0
-    char padding_dc8[0xbc];
+    char padding_dc8[0x9c];
+    float attackPeriod;          // +0xe64
+    char padding_e68[0x1c];
     int32_t valueE84;            // +0xe84
     int32_t valueE88;            // +0xe88
     uint8_t flagE8c;             // +0xe8c

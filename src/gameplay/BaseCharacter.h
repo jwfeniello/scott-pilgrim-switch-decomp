@@ -153,7 +153,8 @@ struct BaseCharacter : onyx::Component {
     virtual float Slot59();                                                  // slot 59
     SPTG_SLOT(60) SPTG_SLOT(61) SPTG_SLOT(62) SPTG_SLOT(63)
     virtual float Slot64(float amount);                                      // slot 64
-    SPTG_SLOT(65) SPTG_SLOT(66) SPTG_SLOT(67)
+    virtual void Slot65(float amount);                                       // slot 65
+    SPTG_SLOT(66) SPTG_SLOT(67)
     virtual void Slot68();                                                   // slot 68
     virtual float TakeDamage(const void* hit, BaseCharacter* other);         // slot 69
     virtual void Remove(bool flag);                                          // slot 70

@@ -194,6 +194,7 @@ struct Enemy : BaseCharacter {
     void Apply995a30(float damage);                         // 0x995a30
     bool Check9ddab0(EnemySensor* sensor);                  // 0x9ddab0
     bool Check994610();                                     // 0x994610
+    void Call9dc2d0(uint32_t value);                        // 0x9dc2d0
 
     // Requests a class attack for this frame, with the hit kind slot 166
     // answers. Plain inline (not forced), so it is optimized on its own before

@@ -2,6 +2,7 @@
 // are provisional.
 #include "BossClasses.h"
 #include "ComponentTypes.h"
+#include "Random.h"
 
 namespace SPTG {
 
@@ -1206,6 +1207,355 @@ int Todd::State262(int event) {
         flag3bb = 0;
         return kStateHandled;
     }
+}
+
+// Slot 186, Enemy's stagger, as Ken & Kyle (0xa4cbe0), Todd (0xa21d40) and Envy
+// (0xa674c0) replace it: animation 114 for at least the class's time, then slot
+// 96 (Todd: 244).
+int KenKyle::State186(int event) {
+    switch (event) {
+    case kStateUpdate:
+        stateTime += Move_FrameDelta;
+        if (AnimationDone() && stateTime > limit10b8) {
+            states.Transition(State96Ptr());
+            return kStateParentTookOver;
+        }
+        return kStateHandled;
+    case kStateEnter:
+        PlayAnimation(114, 1, 0, 1.0f);
+        motion = onyx::Vector3::Zero();
+        motionTarget = onyx::Vector3::Zero();
+        stateTime = 0.0f;
+        return kStateHandled;
+    case kStateExit:
+        states.AssertOwner(this);
+        return kStateHandled;
+    case kStateEvent3:
+        return kStateHandled;
+    default:
+        return kStateUnhandled;
+    }
+}
+int Todd::State186(int event) {
+    switch (event) {
+    case kStateUpdate:
+        stateTime += Move_FrameDelta;
+        if (AnimationDone() && stateTime > limit11a0) {
+            states.Transition(State244Ptr());
+            return kStateParentTookOver;
+        }
+        return kStateHandled;
+    case kStateEnter:
+        PlayAnimation(114, 1, 0, 1.0f);
+        motion = onyx::Vector3::Zero();
+        motionTarget = onyx::Vector3::Zero();
+        stateTime = 0.0f;
+        return kStateHandled;
+    case kStateExit:
+        states.AssertOwner(this);
+        return kStateHandled;
+    case kStateEvent3:
+        return kStateHandled;
+    default:
+        return kStateUnhandled;
+    }
+}
+int Envy::State186(int event) {
+    switch (event) {
+    case kStateUpdate:
+        stateTime += Move_FrameDelta;
+        if (AnimationDone() && stateTime > limitF90) {
+            states.Transition(State96Ptr());
+            return kStateParentTookOver;
+        }
+        return kStateHandled;
+    case kStateEnter:
+        motion = onyx::Vector3::Zero();
+        motionTarget = onyx::Vector3::Zero();
+        PlayAnimation(114, 1, 0, 1.0f);
+        stateTime = 0.0f;
+        return kStateHandled;
+    case kStateExit:
+        states.AssertOwner(this);
+        return kStateHandled;
+    case kStateEvent3:
+        return kStateHandled;
+    default:
+        return kStateUnhandled;
+    }
+}
+
+// KenKyle slot 270 (0xa50030): stops, plays animation 183 and applies +0x10c4
+// (slot 65) and +0x10c8 (slot 89); then slot 244.
+int KenKyle::State270(int event) {
+    switch (event) {
+    case kStateUpdate:
+        if (AnimationDone()) {
+            states.Transition(State244Ptr());
+            return kStateParentTookOver;
+        }
+        return kStateHandled;
+    case kStateEnter:
+        motion = onyx::Vector3::Zero();
+        motionTarget = onyx::Vector3::Zero();
+        PlayAnimation(183, 0, 0, 1.0f);
+        Slot65(value10c4);
+        Slot89(value10c8);
+        return kStateHandled;
+    case kStateExit:
+        states.AssertOwner(this);
+        return kStateHandled;
+    case kStateEvent3:
+        return kStateHandled;
+    default:
+        return kStateUnhandled;
+    }
+}
+
+// Lynette slot 268 (0xa63980) and Gideon slot 258 (0xa614b0): stop and start
+// the class's attack with its animation; then slot 244.
+int Lynette::State268(int event) {
+    switch (event) {
+    case kStateUpdate:
+        if (AnimationDone()) {
+            states.Transition(State244Ptr());
+            return kStateParentTookOver;
+        }
+        return kStateHandled;
+    case kStateEnter:
+        motion = onyx::Vector3::Zero();
+        motionTarget = onyx::Vector3::Zero();
+        StartAttack(&attack.attack, false, 1, nullptr);
+        PlayAnimation(11, 0, 1, 1.0f);
+        return kStateHandled;
+    case kStateExit:
+        states.AssertOwner(this);
+        return kStateHandled;
+    case kStateEvent3:
+        return kStateHandled;
+    default:
+        return kStateUnhandled;
+    }
+}
+int Gideon::State258(int event) {
+    switch (event) {
+    case kStateUpdate:
+        if (AnimationDone()) {
+            states.Transition(State244Ptr());
+            return kStateParentTookOver;
+        }
+        return kStateHandled;
+    case kStateEnter:
+        motion = onyx::Vector3::Zero();
+        motionTarget = onyx::Vector3::Zero();
+        flag3ba = 1;
+        PlayAnimation(25, 0, 1, 1.0f);
+        StartAttack(&attack.attack, false, 1, nullptr);
+        return kStateHandled;
+    case kStateExit:
+        flag3ba = 0;
+        return kStateHandled;
+    case kStateEvent3:
+        return kStateHandled;
+    default:
+        return kStateUnhandled;
+    }
+}
+
+// HipsterChick slot 262 (0xa43460): stops and attacks again every +0xe64
+// seconds.
+int HipsterChick::State262(int event) {
+    switch (event) {
+    case kStateUpdate:
+        stateTime -= Move_FrameDelta;
+        if (stateTime <= 0.0f) {
+            stateTime = attackPeriod;
+            StartAttack(&attack.attack, false, 1, nullptr);
+        }
+        return kStateHandled;
+    case kStateEnter:
+        motion = onyx::Vector3::Zero();
+        motionTarget = onyx::Vector3::Zero();
+        PlayAnimation(0, 1, 0, 1.0f);
+        StartAttack(&attack.attack, false, 1, nullptr);
+        stateTime = attackPeriod;
+        return kStateHandled;
+    case kStateExit:
+        states.AssertOwner(this);
+        return kStateHandled;
+    case kStateEvent3:
+        return kStateHandled;
+    default:
+        return kStateUnhandled;
+    }
+}
+
+// HipsterChick slots 106 (0xa42ea0) and 258 (0xa431c0): once the animation is
+// done, mode 4 leads to slot 268 (106) or 266 (258), mode 2 to slot 262.
+int HipsterChick::State106(int event) {
+    switch (event) {
+    case kStateUpdate:
+        if (valueE88 == 2) {
+            if (!AnimationDone()) return kStateHandled;
+            states.Transition(State262Ptr());
+        } else {
+            if (valueE88 != 4 || !AnimationDone()) return kStateHandled;
+            states.Transition(State268Ptr());
+        }
+        return kStateParentTookOver;
+    case kStateEnter:
+        motion = onyx::Vector3::Zero();
+        motionTarget = onyx::Vector3::Zero();
+        PlayAnimation(13, 0, 0, 1.0f);
+        return kStateHandled;
+    case kStateExit:
+        states.AssertOwner(this);
+        return kStateHandled;
+    case kStateEvent3:
+        return kStateHandled;
+    default:
+        return kStateUnhandled;
+    }
+}
+int HipsterChick::State258(int event) {
+    switch (event) {
+    case kStateUpdate:
+        if (valueE88 == 2) {
+            if (!AnimationDone()) return kStateHandled;
+            states.Transition(State262Ptr());
+        } else {
+            if (valueE88 != 4 || !AnimationDone()) return kStateHandled;
+            states.Transition(State266Ptr());
+        }
+        return kStateParentTookOver;
+    case kStateEnter:
+        PlayAnimation(143, 0, 0, 1.0f);
+        motion = onyx::Vector3::Zero();
+        motionTarget = onyx::Vector3::Zero();
+        flag3ba = 1;
+        return kStateHandled;
+    case kStateExit:
+        flag3ba = 0;
+        return kStateHandled;
+    case kStateEvent3:
+        return kStateHandled;
+    default:
+        return kStateUnhandled;
+    }
+}
+
+// Envy slot 272 (0xa68d60): animation 96 for at least +0xf9c seconds, then slot
+// 264; exit raises +0xd84.
+int Envy::State272(int event) {
+    switch (event) {
+    case kStateUpdate:
+        stateTime += Move_FrameDelta;
+        if (stateTime > limitF9c && AnimationDone()) {
+            states.Transition(State264Ptr());
+            return kStateParentTookOver;
+        }
+        return kStateHandled;
+    case kStateEnter:
+        flag3ba = 1;
+        stateTime = 0.0f;
+        motion = onyx::Vector3::Zero();
+        motionTarget = onyx::Vector3::Zero();
+        PlayAnimation(96, 0, 0, 1.0f);
+        return kStateHandled;
+    case kStateExit:
+        flag3ba = 0;
+        flagD84 = 1;
+        return kStateHandled;
+    case kStateEvent3:
+        return kStateHandled;
+    default:
+        return kStateUnhandled;
+    }
+}
+
+// Envy slot 270 (0xa68bc0): starts its attack with animation 117; after +0xf84
+// seconds and the animation, animation 11; once that is done, slot 244.
+int Envy::State270(int event) {
+    switch (event) {
+    case kStateUpdate:
+        if (animation == 117) {
+            stateTime += Move_FrameDelta;
+            if (stateTime > limitF84 && AnimationDone()) PlayAnimation(11, 0, 0, 1.0f);
+        } else if (animation == 11) {
+            if (AnimationDone()) {
+                states.Transition(State244Ptr());
+                return kStateParentTookOver;
+            }
+        }
+        return kStateHandled;
+    case kStateEnter:
+        flag3ba = 1;
+        stateTime = 0.0f;
+        mode87c = 2;
+        Call9dc2d0(valueD74);
+        mode87c = 3;
+        StartAttack(&attack.attack, false, 1, nullptr);
+        PlayAnimation(117, 1, 0, 1.0f);
+        return kStateHandled;
+    case kStateEvent3:
+        return kStateHandled;
+    default:
+        return kStateUnhandled;
+    case kStateExit:
+        flag3ba = 0;
+        flagD59 = 0;
+        return kStateHandled;
+    }
+}
+
+// Todd slot 122 (0xa215a0): knocked down: stops, animation 27; once it is done,
+// slot 258 if 0xa255e0 passes (and +0xd89 is clear), else slot 244. Exit runs
+// 0xa254a0.
+int Todd::State122(int event) {
+    switch (event) {
+    case kStateUpdate:
+        if (!AnimationDone()) return kStateHandled;
+        if (flagD89 || !CheckA255e0(dataDd8)) states.Transition(State244Ptr());
+        else states.Transition(State258Ptr());
+        return kStateParentTookOver;
+    case kStateEnter:
+        motion = onyx::Vector3::Zero();
+        motionTarget = onyx::Vector3::Zero();
+        PlayAnimation(27, 0, 1, 1.0f);
+        return kStateHandled;
+    case kStateExit:
+        CallA254a0(0.0f);
+        return kStateHandled;
+    case kStateEvent3:
+        return kStateHandled;
+    default:
+        return kStateUnhandled;
+    }
+}
+
+// Gideon slot 38 (0xa60420): records the hit's +0x5c in +0x12c; for 1 (unless
+// slot 79 holds) raises +0xd49 one time in five; then Boss's hit check.
+bool Gideon::OnHit(BaseCharacter* other, void* hit) {
+    value12c = static_cast<const int32_t*>(hit)[23];
+    if (value12c == 1 && !Slot79()) flagD49 = RandomRange(0, 4) == 0;
+    else flagD49 = false;
+    return Boss::OnHit(other, hit);
+}
+
+// KenKyle slot 122 (0xa4c930): after Boss's state, entry rolls 1-100 against
+// +0x10d4; on success it raises +0xd49 and +0xd4b and flips the twin's turn.
+int KenKyle::State122(int event) {
+    int result = Boss::State122(event);
+    if (result == kStateParentTookOver) return result;
+    if (event != kStateEnter) return kStateUnhandled;
+    uint32_t roll = RandomRange(1, 100);
+    if (chance10d4 >= roll) {
+        flagD49 = 1;
+        flagD4b = 1;
+        KenKyle* other = static_cast<KenKyle*>(twin->object);
+        other->flagD4b = static_cast<KenKyle*>(other->twin->object)->flagD4b ^ 1;
+    }
+    return kStateHandled;
 }
 
 }  // namespace SPTG
