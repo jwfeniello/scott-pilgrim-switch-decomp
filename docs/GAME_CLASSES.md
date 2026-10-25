@@ -608,8 +608,8 @@ Slots 96, 116 and 200 are written out but not credited. In each, the original
 merges the "handled" returns into a shared tail (for 96 and 116, the exit
 case's) that this build duplicates.
 
-[`BossClassStates.cpp`](../src/gameplay/BossClassStates.cpp) matches 113
-functions of the boss classes (29,400 bytes). Most are hooks that inline
+[`BossClassStates.cpp`](../src/gameplay/BossClassStates.cpp) matches 120
+functions of the boss classes (33,668 bytes). Most are hooks that inline
 Boss's version and add a class detail:
 
 - **Slot 234** maps an attack request's kind to a state. Each class tests its
@@ -662,7 +662,12 @@ Boss's version and add a class detail:
   out, they leave for the next state.
 - **Joint attacks:** when Ken or Kyle enters state 246 or 248, the twin joins
   if both target the same player within `+0x10dc` and the twin's slot 238
-  holds.
+  holds. State 198 does the same through 0xa506f0.
+- **Turning attacks:** Patel's 264 and 266 and Roxy's 264, 266 and 268 stop,
+  pass the target player's X position to slot 91 and attack. Patel's 264
+  repeats the attack `+0xd70` times. The actor is looked up with
+  `onyx::Find` (it may be gone), the transform with `onyx::Get`, as in Boss's
+  state 198.
 - **Slot 82:** Lynette refuses it in four of her states and Todd in five,
   before Boss's test.
 - **Damage:** Todd totals his damage and raises `+0xd89` once it reaches

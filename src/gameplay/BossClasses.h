@@ -198,6 +198,8 @@ struct KenKyle : Boss {
     float TakeDamage(const void* hit, BaseCharacter* other);
     bool OnHit(BaseCharacter* other, void* hit);
     void Update();
+    bool Slot82();
+    void CallA506f0(int32_t value);   // 0xa506f0
     int State114(int event); State State114Ptr();   // slots 114, 115, override Boss
     int State122(int event); State State122Ptr();   // slots 122, 123, override Boss
     int State172(int event); State State172Ptr();   // slots 172, 173, override Boss
@@ -219,9 +221,11 @@ struct KenKyle : Boss {
     virtual int State270(int event); virtual State State270Ptr();   // slots 270, 271
 
     uint8_t flagD4b;             // +0xd4b: the twins take turns: one has it set
-    char padding_d4c[0x2];
+    char padding_d4c[0x1];
+    uint8_t flagD4d;             // +0xd4d: raised while in state 260
     uint8_t flagD4e;             // +0xd4e
-    char padding_d4f[0x5];
+    char padding_d4f[0x1];
+    float timeD50;               // +0xd50: reset in state 198
     int32_t valueD54;            // +0xd54
     onyx::ComponentHandle* twin; // +0xd58: the other of Ken and Kyle
     char padding_d60[0x8];
@@ -232,7 +236,8 @@ struct KenKyle : Boss {
     AttackSlot attackF48;        // +0xf48: requested every update with kind 79
     char padding_fc0[0xf8];
     float limit10b8;             // +0x10b8
-    char padding_10bc[0x8];
+    float range10bc;             // +0x10bc: how close the twins meet in state 260
+    char padding_10c0[0x4];
     float value10c4;             // +0x10c4
     float value10c8;             // +0x10c8
     char padding_10cc[0x8];
@@ -362,6 +367,7 @@ struct Patel : Boss {
     float TakeDamage(const void* hit, BaseCharacter* other);
     float Slot170();
     void Update();
+    void CallA41ca0();   // 0xa41ca0
     virtual void Slot234(int kind);                                          // slot 234, overrides Boss
     SPTG_SLOT(235)   // overrides Boss
     virtual bool Slot237(const AttackSlot& request);                         // slot 237, overrides Boss
@@ -379,15 +385,20 @@ struct Patel : Boss {
     uint32_t chickCount;         // +0xd58
     char padding_d5c[0x4];
     onyx::ComponentHandle** chicks; // +0xd60: HipsterChick handles
-    char padding_d68[0xc];
+    char padding_d68[0x8];
+    uint32_t attackCount;        // +0xd70: attacks in state 264
     float healthStep;            // +0xd74: health fraction lost before the next mode
     float scaleD78;              // +0xd78: scales slot 170 in mode 4
-    char padding_d7c[0x14];
+    char padding_d7c[0xc];
+    float periodD88;             // +0xd88
+    char padding_d8c[0x4];
     AttackSlot attackD90;        // +0xd90: requested every update with kind 20
     AttackSlot attackE08;        // +0xe08: requested every update with kind 32
     AttackSlot attackE80;        // +0xe80: requested every update with kind 11
     AttackSlot attackEf8;        // +0xef8: requested every update with kind 79
-    char padding_f70[0x8c];
+    AttackSlot attackF70;        // +0xf70: started every +0xd88 seconds in state 262
+    char padding_fe8[0x10];
+    float attacksDone;           // +0xff8: counted in state 264
     int32_t modeFfc;             // +0xffc
     uint8_t modeChanged;         // +0x1000
 };

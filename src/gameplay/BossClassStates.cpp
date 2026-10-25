@@ -1916,9 +1916,11 @@ int SuperFightingRobotHand::State106(int event) {
     case kStateUpdate:
         timer330 -= Move_FrameDelta;
         if (valueD08 < limitCb4) {
-            if (timer330 > 0.0f) return kStateHandled;
-            states.Transition(State264Ptr());
-            return kStateParentTookOver;
+            if (timer330 <= 0.0f) {
+                states.Transition(State264Ptr());
+                return kStateParentTookOver;
+            }
+            return kStateHandled;
         }
         valueD08 = 0;
         switch (RandomRange(0, 1)) {
@@ -2189,7 +2191,6 @@ void Patel::Update() {
 // Patel slot 266 (0xa41a40) and Roxy slots 264 (0xa3e090), 266 (0xa3e2e0) and
 // 268 (0xa3e530): stop, turn to the target player's X position (slot 91) and
 // attack; once the animation is done, slot 244 (Roxy 268: 246).
-// Not yet matched (not credited).
 int Patel::State266(int event) {
     switch (event) {
     case kStateUpdate:
@@ -2200,20 +2201,21 @@ int Patel::State266(int event) {
         motion = onyx::Vector3::Zero();
         motionTarget = onyx::Vector3::Zero();
         BaseCharacter* player = static_cast<BaseCharacter*>(target->object);
-        ActorObject* actor = onyx::Get<ActorObject, onyx_types::type_6492d61d>(player->actorObject);
+        ActorObject* actor = onyx::Find<ActorObject, onyx_types::type_6492d61d>(player->actorObject);
         Slot91(onyx::Get<onyx::Transform, onyx::kTransform>(actor->transform)->position.x);
         PlayAnimation(32, 0, 1, 1.0f);
         StartAttack(&attackE08.attack, false, 1, nullptr);
         return kStateHandled;
     }
     case kStateExit:
+        states.AssertOwner(this);
+        return kStateHandled;
     case kStateEvent3:
         return kStateHandled;
     default:
         return kStateUnhandled;
     }
 }
-// Not yet matched (not credited).
 int Roxy::State264(int event) {
     switch (event) {
     case kStateUpdate:
@@ -2224,20 +2226,21 @@ int Roxy::State264(int event) {
         motion = onyx::Vector3::Zero();
         motionTarget = onyx::Vector3::Zero();
         BaseCharacter* player = static_cast<BaseCharacter*>(target->object);
-        ActorObject* actor = onyx::Get<ActorObject, onyx_types::type_6492d61d>(player->actorObject);
+        ActorObject* actor = onyx::Find<ActorObject, onyx_types::type_6492d61d>(player->actorObject);
         Slot91(onyx::Get<onyx::Transform, onyx::kTransform>(actor->transform)->position.x);
         PlayAnimation(31, 0, 1, 1.0f);
         StartAttack(&attackE00.attack, false, 1, nullptr);
         return kStateHandled;
     }
     case kStateExit:
+        states.AssertOwner(this);
+        return kStateHandled;
     case kStateEvent3:
         return kStateHandled;
     default:
         return kStateUnhandled;
     }
 }
-// Not yet matched (not credited).
 int Roxy::State266(int event) {
     switch (event) {
     case kStateUpdate:
@@ -2248,20 +2251,21 @@ int Roxy::State266(int event) {
         motion = onyx::Vector3::Zero();
         motionTarget = onyx::Vector3::Zero();
         BaseCharacter* player = static_cast<BaseCharacter*>(target->object);
-        ActorObject* actor = onyx::Get<ActorObject, onyx_types::type_6492d61d>(player->actorObject);
+        ActorObject* actor = onyx::Find<ActorObject, onyx_types::type_6492d61d>(player->actorObject);
         Slot91(onyx::Get<onyx::Transform, onyx::kTransform>(actor->transform)->position.x);
         PlayAnimation(180, 0, 1, 1.0f);
         StartAttack(&attackEf0.attack, false, 1, nullptr);
         return kStateHandled;
     }
     case kStateExit:
+        states.AssertOwner(this);
+        return kStateHandled;
     case kStateEvent3:
         return kStateHandled;
     default:
         return kStateUnhandled;
     }
 }
-// Not yet matched (not credited).
 int Roxy::State268(int event) {
     switch (event) {
     case kStateUpdate:
@@ -2272,13 +2276,195 @@ int Roxy::State268(int event) {
         motion = onyx::Vector3::Zero();
         motionTarget = onyx::Vector3::Zero();
         BaseCharacter* player = static_cast<BaseCharacter*>(target->object);
-        ActorObject* actor = onyx::Get<ActorObject, onyx_types::type_6492d61d>(player->actorObject);
+        ActorObject* actor = onyx::Find<ActorObject, onyx_types::type_6492d61d>(player->actorObject);
         Slot91(onyx::Get<onyx::Transform, onyx::kTransform>(actor->transform)->position.x);
         PlayAnimation(174, 0, 1, 1.0f);
         StartAttack(&attackE78.attack, false, 1, nullptr);
         return kStateHandled;
     }
     case kStateExit:
+        states.AssertOwner(this);
+        return kStateHandled;
+    case kStateEvent3:
+        return kStateHandled;
+    default:
+        return kStateUnhandled;
+    }
+}
+
+// KenKyle slot 82 (0xa4c560): never in states 258, 260, 262, 266, 264 or 268;
+// otherwise Boss's test.
+bool KenKyle::Slot82() {
+    State first = State258Ptr();
+    if (states.current == first) return false;
+    State second = State260Ptr();
+    if (states.current == second) return false;
+    State third = State262Ptr();
+    if (states.current == third) return false;
+    State fourth = State266Ptr();
+    if (states.current == fourth) return false;
+    State fifth = State264Ptr();
+    if (states.current == fifth) return false;
+    State sixth = State268Ptr();
+    if (states.current == sixth) return false;
+    if (Slot85()) return false;
+    return CanSlot82();
+}
+
+// Patel slot 264 (0xa417b0): stops, turns to the target player's X position and
+// attacks (0xa41ca0, then the attack at +0xd90); each time the animation is done
+// it attacks again, +0xd70 times in all; then slot 244.
+int Patel::State264(int event) {
+    switch (event) {
+    case kStateUpdate:
+        if (!AnimationDone()) return kStateHandled;
+        if (attacksDone >= attackCount) {
+            states.Transition(State244Ptr());
+            return kStateParentTookOver;
+        }
+        attacksDone += 1.0f;
+        StartAttack(&attackD90.attack, false, 1, nullptr);
+        CallA41ca0();
+        return kStateHandled;
+    case kStateEnter: {
+        attacksDone = 0.0f;
+        motion = onyx::Vector3::Zero();
+        motionTarget = onyx::Vector3::Zero();
+        BaseCharacter* player = static_cast<BaseCharacter*>(target->object);
+        ActorObject* actor = onyx::Find<ActorObject, onyx_types::type_6492d61d>(player->actorObject);
+        Slot91(onyx::Get<onyx::Transform, onyx::kTransform>(actor->transform)->position.x);
+        CallA41ca0();
+        StartAttack(&attackD90.attack, false, 1, nullptr);
+        return kStateHandled;
+    }
+    case kStateExit:
+        states.AssertOwner(this);
+        return kStateHandled;
+    case kStateEvent3:
+        return kStateHandled;
+    default:
+        return kStateUnhandled;
+    }
+}
+
+// KenKyle slot 198 (0xa4d1f0): Boss's special attack, as Enemy's state with a
+// turn to the target player's X position. When the twin targets the same
+// player within +0x10dc and its slot 238 holds, both run 0xa506f0 with +0x878.
+// Once the animation is done and +0xd50 seconds have passed, slot 244.
+int KenKyle::State198(int event) {
+    switch (event) {
+    case kStateUpdate:
+        stateTime += Move_FrameDelta;
+        if (!AnimationDone()) return kStateHandled;
+        if (stateTime >= timeD50) {
+            states.Transition(State244Ptr());
+            return kStateParentTookOver;
+        }
+        return kStateHandled;
+    case kStateEnter: {
+        int result = Enemy::State198(event);
+        if (result == kStateParentTookOver) return result;
+        BaseCharacter* player = static_cast<BaseCharacter*>(target->object);
+        ActorObject* actor = onyx::Find<ActorObject, onyx_types::type_6492d61d>(player->actorObject);
+        Slot91(onyx::Get<onyx::Transform, onyx::kTransform>(actor->transform)->position.x);
+        stateTime = 0.0f;
+        timeD50 = 0.0f;
+        if (SameTarget(this, Twin(this)) && TargetDistance(this, targetIndex) <= range10dc &&
+            TargetDistance(Twin(this), targetIndex) <= range10dc && Twin(this)->Slot238()) {
+            CallA506f0(value878);
+            Twin(this)->CallA506f0(value878);
+        }
+        return kStateHandled;
+    }
+    case kStateExit:
+        states.AssertOwner(this);
+        return kStateHandled;
+    case kStateEvent3:
+        return kStateHandled;
+    default:
+        return kStateUnhandled;
+    }
+}
+
+// The distance between two characters on X and Y.
+static inline float DistanceXY(BaseCharacter* first, BaseCharacter* second) {
+    ActorObject* a = onyx::Find<ActorObject, onyx_types::type_6492d61d>(first->actorObject);
+    onyx::Vector3 p = onyx::Get<onyx::Transform, onyx::kTransform>(a->transform)->position;
+    ActorObject* b = onyx::Find<ActorObject, onyx_types::type_6492d61d>(second->actorObject);
+    onyx::Vector3 q = onyx::Get<onyx::Transform, onyx::kTransform>(b->transform)->position;
+    float dx = p.x - q.x;
+    float dy = p.y - q.y;
+    return __builtin_sqrtf(dx * dx + dy * dy);
+}
+
+// KenKyle slot 260 (0xa4e750): stops with animation 114 and +0xd4d raised and
+// waits for the twin; once the twin is in this state too and within +0x10bc
+// (on X and Y), slot 262.
+// Not yet matched (not credited).
+int KenKyle::State260(int event) {
+    switch (event) {
+    case kStateUpdate:
+        if (DistanceXY(Twin(this), this) <= range10bc && Twin(this)->flagD4d) {
+            states.Transition(State262Ptr());
+            return kStateParentTookOver;
+        }
+        return kStateHandled;
+    case kStateEnter:
+        flagD4d = 1;
+        motion = onyx::Vector3::Zero();
+        motionTarget = onyx::Vector3::Zero();
+        PlayAnimation(114, 1, 0, 1.0f);
+        flag3bb = 1;
+        return kStateHandled;
+    case kStateExit:
+        flagD4d = 0;
+        flag3bb = 0;
+        return kStateHandled;
+    case kStateEvent3:
+        return kStateHandled;
+    default:
+        return kStateUnhandled;
+    }
+}
+
+// Patel slot 262 (0xa414a0): with +0x3ba raised, animation 177, then 178 until
+// every HipsterChick is out, then 179; once that is done, slot 244. Every
+// +0xd88 seconds the attack at +0xf70 starts again. Exit sets the mode at
+// +0xffc to 3.
+// Not yet matched (not credited).
+int Patel::State262(int event) {
+    switch (event) {
+    case kStateUpdate:
+        stateTime -= Move_FrameDelta;
+        if (stateTime <= 0.0f) {
+            stateTime = periodD88;
+            StartAttack(&attackF70.attack, false, 1, nullptr);
+        }
+        if (animation == 177) {
+            if (AnimationDone()) PlayAnimation(178, 1, 0, 1.0f);
+        } else if (animation == 178) {
+            for (uint32_t i = 0; i < chickCount; ++i)
+                if (!onyx::Get<HipsterChick, onyx_types::type_4a52c0d7>(chicks[i])->IsOut()) return kStateHandled;
+            PlayAnimation(179, 0, 0, 1.0f);
+        } else if (animation == 179) {
+            if (AnimationDone()) {
+                states.Transition(State244Ptr());
+                return kStateParentTookOver;
+            }
+        }
+        return kStateHandled;
+    case kStateEnter:
+        flag3ba = 1;
+        PlayAnimation(177, 0, 1, 1.0f);
+        motion = onyx::Vector3::Zero();
+        motionTarget = onyx::Vector3::Zero();
+        stateTime = periodD88;
+        StartAttack(&attackF70.attack, false, 1, nullptr);
+        return kStateHandled;
+    case kStateExit:
+        flag3ba = 0;
+        modeFfc = 3;
+        return kStateHandled;
     case kStateEvent3:
         return kStateHandled;
     default:

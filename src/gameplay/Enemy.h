@@ -118,7 +118,7 @@ struct Enemy : BaseCharacter {
     uint8_t chanceResult;        // +0x870: set by RollChance
     char padding_871[0x3];
     int32_t value874;            // +0x874
-    char padding_878[0x4];
+    int32_t value878;            // +0x878
     int32_t mode87c;             // +0x87c
     AttackSlot specialAttack;    // +0x880
     char padding_8f8[0xc];
