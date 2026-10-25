@@ -1,71 +1,9 @@
 // Attack states shared by the regular enemies (see docs/GAME_CLASSES.md#enemy-attack-states).
 // Each starts one of the enemy's attacks with its animation and, once the
 // animation is done, moves on to a fixed next state. Names are provisional.
-#include "Enemy.h"
+#include "EnemyClasses.h"
 
 namespace SPTG {
-
-// vtable 0x187fa08
-struct EnemyZombie : Enemy {
-    virtual int State234(int event); virtual State State234Ptr();   // slots 234, 235
-    virtual int State236(int event); virtual State State236Ptr();   // slots 236, 237
-    virtual int State238(int event); virtual State State238Ptr();   // slots 238, 239
-    virtual int State240(int event); virtual State State240Ptr();   // slots 240, 241
-    virtual int State242(int event); virtual State State242Ptr();   // slots 242, 243
-};
-// vtable 0x18801d0
-struct EnemyWolverine : Enemy {
-    virtual int State234(int event); virtual State State234Ptr();   // slots 234, 235
-    virtual int State236(int event); virtual State State236Ptr();   // slots 236, 237
-};
-// vtable 0x18810e0
-struct EnemySpeedy : Enemy {
-    virtual int State234(int event); virtual State State234Ptr();   // slots 234, 235
-    virtual int State236(int event); virtual State State236Ptr();   // slots 236, 237
-};
-// vtable 0x1882018
-struct EnemyPaparazzi : Enemy {
-    virtual int State234(int event); virtual State State234Ptr();   // slots 234, 235
-    virtual int State236(int event); virtual State State236Ptr();   // slots 236, 237
-};
-// vtable 0x18827b0
-struct EnemyNormal : Enemy {
-    virtual int State234(int event); virtual State State234Ptr();   // slots 234, 235
-    virtual int State236(int event); virtual State State236Ptr();   // slots 236, 237
-    virtual int State238(int event); virtual State State238Ptr();   // slots 238, 239
-    virtual int State240(int event); virtual State State240Ptr();   // slots 240, 241
-    virtual int State242(int event); virtual State State242Ptr();   // slots 242, 243
-    virtual int State244(int event); virtual State State244Ptr();   // slots 244, 245
-};
-// vtable 0x1882fa8
-struct EnemyMini : Enemy {
-    virtual int State234(int event); virtual State State234Ptr();   // slots 234, 235
-};
-// vtable 0x1884700
-struct EnemyHanzo : Enemy {
-    virtual int State234(int event); virtual State State234Ptr();   // slots 234, 235
-    virtual int State236(int event); virtual State State236Ptr();   // slots 236, 237
-    virtual int State238(int event); virtual State State238Ptr();   // slots 238, 239
-    virtual int State240(int event); virtual State State240Ptr();   // slots 240, 241
-};
-// vtable 0x1884ed8
-struct EnemyGodzilla : Enemy {
-    virtual int State234(int event); virtual State State234Ptr();   // slots 234, 235
-};
-// vtable 0x1885680
-struct EnemyGiant : Enemy {
-    virtual int State234(int event); virtual State State234Ptr();   // slots 234, 235
-    virtual int State236(int event); virtual State State236Ptr();   // slots 236, 237
-    virtual int State238(int event); virtual State State238Ptr();   // slots 238, 239
-    virtual int State240(int event); virtual State State240Ptr();   // slots 240, 241
-};
-// vtable 0x1886e20
-struct EnemyChubby : Enemy {
-    virtual int State234(int event); virtual State State234Ptr();   // slots 234, 235
-    virtual int State236(int event); virtual State State236Ptr();   // slots 236, 237
-    virtual int State238(int event); virtual State State238Ptr();   // slots 238, 239
-    virtual int State240(int event); virtual State State240Ptr();   // slots 240, 241
-};
 
 // Slot 234 (0x9e87c0): starts attack 0 and plays animation 20; once the animation is done,
 // switches to the state at slot 236.

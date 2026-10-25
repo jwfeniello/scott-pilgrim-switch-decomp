@@ -443,7 +443,7 @@ int Enemy::State196(int event) {
         ReleaseHeld(false, __builtin_fminf(value334 / value2c4, 1.0f), 0.0f);
         float speed = 0.0f;
         if (!flag9c4) {
-            speed = jumpSpeed7d4;
+            speed = savedMotion.x;
             if (!(speed > 0.0f)) {
                 ActorObject* actor = onyx::Find<ActorObject, onyx_types::type_6492d61d>(actorObject);
                 float direction = onyx::Get<ActorFlags, 0x2eae5813u>(actor->flags)->facingLeft ? -1.0f : 1.0f;

@@ -19,6 +19,7 @@ struct TargetEntry {
 };
 
 struct Enemy : BaseCharacter {
+    bool OnHit(BaseCharacter* other, void* hit);                     // slot 38, overrides BaseCharacter (0x9cd330)
     int State96(int event);                                          // slot 96, overrides BaseCharacter
     int State98(int event);                                          // slot 98, overrides BaseCharacter
     int State100(int event);                                         // slot 100, overrides BaseCharacter
@@ -28,7 +29,8 @@ struct Enemy : BaseCharacter {
     int State116(int event);                                         // slot 116, overrides BaseCharacter
     int State126(int event);                                         // slot 126, overrides BaseCharacter
     int State136(int event);                                         // slot 136, overrides BaseCharacter
-    SPTG_SLOT(159) SPTG_SLOT(160) SPTG_SLOT(161) SPTG_SLOT(162) SPTG_SLOT(163) SPTG_SLOT(164) SPTG_SLOT(165) SPTG_SLOT(166)
+    SPTG_SLOT(159) SPTG_SLOT(160) SPTG_SLOT(161) SPTG_SLOT(162) SPTG_SLOT(163) SPTG_SLOT(164) SPTG_SLOT(165)
+    virtual void Slot166(int kind);                                          // slot 166
     virtual void Approach();             // runs while the approach state continues // slot 167
     SPTG_SLOT(168) SPTG_SLOT(169)
     virtual float Slot170();                                                 // slot 170
@@ -72,8 +74,8 @@ struct Enemy : BaseCharacter {
     uint8_t flag7b8;             // +0x7b8
     uint8_t flag7b9;             // +0x7b9
     char padding_7ba[0x1a];
-    float jumpSpeed7d4;          // +0x7d4
-    char padding_7d8[0x3b];
+    onyx::Vector3 savedMotion;   // +0x7d4
+    char padding_7e0[0x33];
     uint8_t flag813;             // +0x813
     int32_t rangeType;           // +0x814: picks one of the four attack ranges
     char padding_818[0x4];
@@ -97,7 +99,9 @@ struct Enemy : BaseCharacter {
     char padding_910[0xc];
     float attackRange;           // +0x91c
     float chance;                // +0x920: percent, compared with a random roll
-    char padding_924[0x20];
+    char padding_924[0x1c];
+    uint8_t flag940;             // +0x940
+    char padding_941[0x3];
     AttackRange range0;          // +0x944
     AttackRange range1;          // +0x950
     AttackRange range2;          // +0x95c

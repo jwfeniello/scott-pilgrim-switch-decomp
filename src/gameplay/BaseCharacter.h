@@ -89,7 +89,9 @@ struct BaseCharacter : onyx::Component {
     SPTG_SLOT(3) SPTG_SLOT(4) SPTG_SLOT(5) SPTG_SLOT(6) SPTG_SLOT(7) SPTG_SLOT(8) SPTG_SLOT(9) SPTG_SLOT(10)
     SPTG_SLOT(11)
     virtual bool IsA(uint32_t type);                                         // slot 12
-    SPTG_SLOT(13) SPTG_SLOT(14) SPTG_SLOT(15) SPTG_SLOT(16) SPTG_SLOT(17) SPTG_SLOT(18) SPTG_SLOT(19) SPTG_SLOT(20)
+    SPTG_SLOT(13) SPTG_SLOT(14) SPTG_SLOT(15) SPTG_SLOT(16) SPTG_SLOT(17) SPTG_SLOT(18)
+    virtual void Slot19();                                                   // slot 19
+    SPTG_SLOT(20)
     virtual void ReactTo(BaseCharacter* other, int reaction, void* data);    // slot 21
     virtual void PlayAnimation(int animation, int a, int b, float speed);    // slot 22
     SPTG_SLOT(23) SPTG_SLOT(24) SPTG_SLOT(25) SPTG_SLOT(26)
@@ -98,18 +100,23 @@ struct BaseCharacter : onyx::Component {
     SPTG_SLOT(29)
     virtual void TurnAround();                                               // slot 30
     virtual void Slot31Action();                                             // slot 31
-    SPTG_SLOT(32) SPTG_SLOT(33) SPTG_SLOT(34)
+    SPTG_SLOT(32) SPTG_SLOT(33)
+    virtual bool Slot34Check();                                              // slot 34
     virtual void Slot35(bool flag, BaseCharacter* other);                    // slot 35
     virtual bool Slot36Check();      // flag +0x338 and a live mount at +0x238 // slot 36
-    SPTG_SLOT(37) SPTG_SLOT(38) SPTG_SLOT(39) SPTG_SLOT(40) SPTG_SLOT(41) SPTG_SLOT(42) SPTG_SLOT(43)
+    SPTG_SLOT(37)
+    virtual bool OnHit(BaseCharacter* other, void* hit);                     // slot 38
+    SPTG_SLOT(39) SPTG_SLOT(40) SPTG_SLOT(41) SPTG_SLOT(42) SPTG_SLOT(43)
     virtual void StartAttack(Attack* attack, bool flag, int source, BaseCharacter* attacker); // slot 44
     SPTG_SLOT(45) SPTG_SLOT(46) SPTG_SLOT(47) SPTG_SLOT(48)
     virtual int Slot49();                                                    // slot 49
     virtual int Slot50();                                                    // slot 50
     virtual bool IsOut();             // checked before targeting a player   // slot 51
     virtual bool IsOnGround();                                               // slot 52
-    SPTG_SLOT(53) SPTG_SLOT(54) SPTG_SLOT(55) SPTG_SLOT(56) SPTG_SLOT(57) SPTG_SLOT(58) SPTG_SLOT(59) SPTG_SLOT(60)
-    SPTG_SLOT(61) SPTG_SLOT(62) SPTG_SLOT(63) SPTG_SLOT(64) SPTG_SLOT(65) SPTG_SLOT(66) SPTG_SLOT(67)
+    SPTG_SLOT(53) SPTG_SLOT(54) SPTG_SLOT(55)
+    virtual void SetSolid(bool solid);                                       // slot 56
+    SPTG_SLOT(57) SPTG_SLOT(58) SPTG_SLOT(59) SPTG_SLOT(60) SPTG_SLOT(61) SPTG_SLOT(62) SPTG_SLOT(63) SPTG_SLOT(64)
+    SPTG_SLOT(65) SPTG_SLOT(66) SPTG_SLOT(67)
     virtual void Slot68();                                                   // slot 68
     virtual void Slot69(void* data, void* extra);                            // slot 69
     virtual void Remove(bool flag);                                          // slot 70
@@ -117,7 +124,9 @@ struct BaseCharacter : onyx::Component {
     virtual float Slot77();                                                  // slot 77
     SPTG_SLOT(78) SPTG_SLOT(79) SPTG_SLOT(80)
     virtual float Slot81();                                                  // slot 81
-    SPTG_SLOT(82) SPTG_SLOT(83) SPTG_SLOT(84) SPTG_SLOT(85)
+    SPTG_SLOT(82)
+    virtual bool Slot83();                                                   // slot 83
+    SPTG_SLOT(84) SPTG_SLOT(85)
     virtual void Slot86();                                                   // slot 86
     SPTG_SLOT(87) SPTG_SLOT(88) SPTG_SLOT(89)
     virtual void Slot90(float value);                                        // slot 90
@@ -174,7 +183,10 @@ struct BaseCharacter : onyx::Component {
     float groundC4;              // +0xfc
     char padding_100[0x30];
     uint8_t flag130;             // +0x130
-    char padding_131[0x2f];
+    char padding_131[0x10];
+    uint8_t flag141;             // +0x141
+    char padding_142[0x1a];
+    float value15c;              // +0x15c
     float value160;              // +0x160
     char padding_164[0x1];
     uint8_t flag165;             // +0x165

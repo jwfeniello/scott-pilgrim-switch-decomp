@@ -435,3 +435,26 @@ that keeps those calls is an assertion that evaluates its expression and lets
 the optimizer assume it (`SPTG_ASSERT` in
 [`Assert.h`](../src/gameplay/Assert.h)). The state exit cases do not match with
 that form: they need `__builtin_assume`, which drops side effects.
+
+## Enemy class states
+
+[`EnemyClasses.h`](../src/gameplay/EnemyClasses.h) declares all 24 regular enemy
+classes with their own states (after Enemy's slot 233, each followed by its
+getter) and the overrides the sources define.
+[`EnemyClassStates.cpp`](../src/gameplay/EnemyClassStates.cpp) matches 26 of
+their functions (2,428 bytes), mostly small:
+
+- Base-state overrides that run Enemy's or BaseCharacter's state first, then
+  play an animation (EnemyGodzilla 124), start one of the class's attacks
+  (EnemyNormal, EnemySpeedy and EnemyThief 194) or raise and lower a flag
+  (EnemyAerial and EnemyStuntman 108).
+- The approach hook (slot 167): EnemyGodzilla and EnemySpeedy go straight to
+  their own state 234; EnemyWolverine and EnemyChubby pick a state by the
+  target's slot 83.
+- Slot 166, a hit hook: saves the motion, clears `+0x15c` and, for certain hit
+  kinds, switches to a class state (EnemyGodzilla, EnemyJetPackMatt, EnemyThief,
+  EnemyPaparazzi, EnemyMini). The motion is copied field by field.
+- Slot 34, a grab check: refused in one of the class's states or with `+0x141`
+  set, otherwise allowed only in action mode 6 (EnemyGiant, EnemyGodzilla,
+  EnemyHanzo, EnemyNormal). EnemyGodzilla also refuses hits in Enemy's dash
+  state (slot 38).
