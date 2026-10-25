@@ -5,6 +5,8 @@
 #include "Enemy.h"
 #include "Random.h"
 
+extern "C" void Move_ApplyPosition(void* component, const void* position);   // 0x85fd70
+
 namespace SPTG {
 
 // Slot 98 (0x9cec40): Enemy's grounded state. Entry stops all motion, sets
@@ -182,6 +184,41 @@ int Enemy::State108(int event) {
     return kStateHandled;
 }
 
+// Slot 112 (0x9cf120): after the base recovery state, on entry, every NPC
+// reacts to this enemy (reaction 0) and +0x130 is cleared. An enemy without
+// +0x874 set may then counter: with bit 1 of +0x978 it rolls 1-100 against one
+// of two chances (by health against the threshold); success applies 0x8e5750
+// with 124, sets +0x874 to 1 and the special attack's kind to 4. Failing that,
+// with bit 5 it rolls against the follow-up chance and sets +0x874 to 5. Mode 3.
+int Enemy::State112(int event) {
+    if (BaseCharacter::State112(event) == kStateParentTookOver) return kStateParentTookOver;
+    if (event != kStateEnter) return kStateUnhandled;
+    NpcCatalog* catalog = onyx::Get<NpcCatalog, onyx_types::type_3fb2ecb4>(services.Get()->npcs.Get()->catalog);
+    for (BaseCharacter** i = catalog->npcs; i != catalog->npcs + catalog->count; ++i) (*i)->ReactTo(this, 0, nullptr);
+    flag130 = 0;
+    if (value874 == 0) {
+        bool skip = false;
+        if (flags978 & 2) {
+            uint32_t roll = RandomRange(1, 100);
+            float chance = value160 <= counterHealthThreshold ? counterChance : counterChanceHealthy;
+            if (roll <= chance) {
+                Apply8e5750(124);
+                value874 = 1;
+                specialAttack.kind = 4;
+                skip = true;
+            } else if (value874 != 0) {
+                skip = true;
+            }
+        }
+        if (!skip && (flags978 & 0x20)) {
+            uint32_t roll2 = RandomRange(1, 100);
+            if (roll2 <= followUpChance) value874 = 5;
+        }
+    }
+    mode87c = 3;
+    return kStateHandled;
+}
+
 // Slot 116 (0x9cf500): after the base state, entry sends message 3 from this
 // enemy to every player and resets the AI fields (target index 4, AI mode 6).
 // Once the animation is done, switches to the state at slot 200.
@@ -305,6 +342,67 @@ int Enemy::State186(int event) {
         mode87c = 2;
         timer330 = 0.0f;
         return kStateHandled;
+    case kStateEvent3:
+        return kStateHandled;
+    default:
+        return kStateUnhandled;
+    case kStateExit:
+        states.AssertOwner(this);
+        return kStateHandled;
+    }
+}
+
+// Slot 194 (0x9d3970): a timed dash. Entry stops, loops animation 1, faces the
+// dash direction at the dash speed and works out the delay before dashing from
+// the target's x offset (at 60 frames a second). After the delay the enemy
+// dashes (animation 34, speed scaled by the special attack's scale); after the
+// hold time it stops (animation 35) and, once that is done, returns to slot 96.
+// Not yet byte-identical, so not credited: the original orders the loads and
+// stores of the delay computation differently.
+int Enemy::State194(int event) {
+    switch (event) {
+    case kStateUpdate:
+        switch (animation) {
+        case 1:
+            stateTime += Move_FrameDelta;
+            value334 += Move_FrameDelta;
+            if (stateTime > dashDelay) {
+                ActorObject* actor = onyx::Find<ActorObject, onyx_types::type_6492d61d>(actorObject);
+                float direction = onyx::Get<ActorFlags, 0x2eae5813u>(actor->flags)->facingLeft ? -1.0f : 1.0f;
+                motion.x = specialAttack.speedScale * (dashSpeed * direction);
+                PlayAnimation(34, 0, 1, 1.0f);
+                stateTime = 0.0f;
+            }
+            break;
+        case 35:
+            if (AnimationDone()) {
+                states.Transition(State96Ptr());
+                return kStateParentTookOver;
+            }
+            break;
+        case 34:
+            stateTime += Move_FrameDelta;
+            if (stateTime > dashHold) {
+                motion = onyx::Vector3::Zero();
+                motionTarget = onyx::Vector3::Zero();
+                PlayAnimation(35, 0, 1, 1.0f);
+            }
+            break;
+        }
+        return kStateHandled;
+    case kStateEnter: {
+        motion = onyx::Vector3::Zero();
+        motionTarget = onyx::Vector3::Zero();
+        PlayAnimation(1, 1, 0, 1.0f);
+        ActorObject* actor = onyx::Find<ActorObject, onyx_types::type_6492d61d>(actorObject);
+        float direction = onyx::Get<ActorFlags, 0x2eae5813u>(actor->flags)->facingLeft ? -1.0f : 1.0f;
+        motion.x = dashSpeed * direction;
+        stateTime = 0.0f;
+        dashDelay = dashDelayBase;
+        float perSecond = dashSpeed * 60.0f;
+        dashDelay += (__builtin_fabsf(targets[targetIndex].offsetX) - perSecond * (dashHold + dashDelay)) / perSecond;
+        return kStateHandled;
+    }
     case kStateEvent3:
         return kStateHandled;
     default:
@@ -454,6 +552,108 @@ int Enemy::State192(int event) {
     }
 }
 
+// Slot 206 (0x9d5450): holding the ring around the back-off point. AI mode 7,
+// +0xad8 raised, animation 7 and the target motion stopped on entry. When the
+// target comes within the ring distance (how far the target is from the ring,
+// rounded up) it switches to slot 208. Otherwise it moves out or in until
+// within 1 of the back-off distance, then is placed on the ring (1.1 times the
+// distance, toward its side) and switches to slot 204.
+int Enemy::State206(int event) {
+    switch (event) {
+    case kStateUpdate: {
+        ActorObject* actor = onyx::Find<ActorObject, onyx_types::type_6492d61d>(actorObject);
+        onyx::Vector3 position = onyx::Get<onyx::Transform, onyx::kTransform>(actor->transform)->position;
+        BaseCharacter* player = static_cast<BaseCharacter*>(target->object);
+        ActorObject* playerActor = onyx::Find<ActorObject, onyx_types::type_6492d61d>(player->actorObject);
+        onyx::Vector3 targetPosition = onyx::Get<onyx::Transform, onyx::kTransform>(playerActor->transform)->position;
+        float targetDistance = (targetPosition - position).Length();
+        float ring = __builtin_ceilf(__builtin_fabsf((targetPosition - backOffPoint).Length() - backOffDistance));
+        if (targetDistance <= ring) {
+            states.Transition(State208Ptr());
+            return kStateParentTookOver;
+        }
+        onyx::Vector3 offset = backOffPoint - position;
+        float distance = offset.Length();
+        onyx::Vector3 direction = offset / offset.Length();
+        onyx::Vector3 velocity;
+        if (distance < backOffDistance - 1.0f) {
+            velocity = -(direction * Slot170());
+        } else if (distance > backOffDistance + 1.0f) {
+            velocity = direction * Slot170();
+        } else {
+            onyx::Vector3 point = backOffPoint - direction * (backOffDistance * 1.1f);
+            Move_ApplyPosition(onyx::Find<ActorObject, onyx_types::type_6492d61d>(actorObject), &point);
+            states.Transition(State204Ptr());
+            return kStateParentTookOver;
+        }
+        motion = velocity;
+        return kStateHandled;
+    }
+    case kStateEnter:
+        flagAd8 = 1;
+        aiMode = 7;
+        PlayAnimation(7, 1, 0, 1.0f);
+        motionTarget = onyx::Vector3::Zero();
+        return kStateHandled;
+    case kStateEvent3:
+        return kStateHandled;
+    default:
+        return kStateUnhandled;
+    case kStateExit:
+        aiMode = 6;
+        flagAd8 = 0;
+        return kStateHandled;
+    }
+}
+
+// Slot 208 (0x9d58d0): backing off. AI mode 7 while active (6 after) and the
+// flag at +0xad8 raised. Each update measures the distance to the back-off point
+// and to the target; once the target is at least the middle of the current
+// attack range away and the enemy is at least the back-off distance from the
+// point, it switches to slot 96. Otherwise it moves away from the point at
+// slot 170's speed.
+int Enemy::State208(int event) {
+    switch (event) {
+    case kStateUpdate: {
+        ActorObject* actor = onyx::Find<ActorObject, onyx_types::type_6492d61d>(actorObject);
+        onyx::Vector3 position = onyx::Get<onyx::Transform, onyx::kTransform>(actor->transform)->position;
+        onyx::Vector3 offset = backOffPoint - position;
+        float distance = offset.Length();
+        BaseCharacter* player = static_cast<BaseCharacter*>(target->object);
+        ActorObject* playerActor = onyx::Find<ActorObject, onyx_types::type_6492d61d>(player->actorObject);
+        onyx::Vector3 targetPosition = onyx::Get<onyx::Transform, onyx::kTransform>(playerActor->transform)->position;
+        float targetDistance = (targetPosition - position).Length();
+        float range;
+        switch (rangeType) {
+        case 0: range = range0.min + (range0.max - range0.min) * 0.5f; break;
+        case 1: range = range1.min + (range1.max - range1.min) * 0.5f; break;
+        case 2: range = range2.min + (range2.max - range2.min) * 0.5f; break;
+        case 3: range = range3.min + (range3.max - range3.min) * 0.5f; break;
+        }
+        float reach = __builtin_sqrtf(range * range + 0.0f * 0.0f);
+        if (distance >= backOffDistance && targetDistance >= reach) {
+            states.Transition(State96Ptr());
+            return kStateParentTookOver;
+        }
+        onyx::Vector3 direction = offset / offset.Length();
+        motion = -(direction * Slot170());
+        return kStateHandled;
+    }
+    case kStateEnter:
+        aiMode = 7;
+        flagAd8 = 1;
+        return kStateHandled;
+    case kStateEvent3:
+        return kStateHandled;
+    default:
+        return kStateUnhandled;
+    case kStateExit:
+        aiMode = 6;
+        flagAd8 = 0;
+        return kStateHandled;
+    }
+}
+
 // Slot 218 (0x9d7da0): walking. Each update advances the timer at +0x334, runs
 // 0x9db820 with it and slot 171, and turns around (slot 30) when the direction
 // of travel and the facing disagree. Entry runs 0x9db480 unless slot 231 holds,
@@ -552,7 +752,7 @@ int Enemy::State222(int event) {
         if (CharacterEffect* effect = Effect()) effect->visible = 0;
         ActorObject* actor = onyx::Find<ActorObject, onyx_types::type_6492d61d>(actorObject);
         onyx::Get<ActorFlags, 0x2eae5813u>(actor->flags)->flag118 = 1;
-        value9c8 = difficultyAccessor.Get()->difficulty.Get()->value108;
+        value9c8 = services.Get()->difficulty.Get()->value108;
         value160 = 0.0f;
         value32c = 0.0f;
         flag3ba = 1;

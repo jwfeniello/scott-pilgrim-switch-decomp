@@ -319,8 +319,8 @@ motion vectors (`+0x1a4`, `+0x1b0`), the mount (`+0x238`) and the action mode
 (`+0x500`). Which of them belong to BaseCharacter rather than a subclass is
 not settled.
 
-[`BaseCharacterStates.cpp`](../src/gameplay/BaseCharacterStates.cpp) matches 15
-of its states (6,644 bytes). "Stops" means both motion vectors are zeroed.
+[`BaseCharacterStates.cpp`](../src/gameplay/BaseCharacterStates.cpp) matches 16
+of its states (7,668 bytes). "Stops" means both motion vectors are zeroed.
 
 | Slot | Address | Behavior |
 | --- | --- | --- |
@@ -338,6 +338,7 @@ of its states (6,644 bytes). "Stops" means both motion vectors are zeroed.
 | 134 | `0x974e00` | With a mount, animation 48/64 and the mount plays 104; animation end goes to 102, landing to 104 |
 | 136 | `0x974f90` | Hides the effect while active |
 | 138 | `0x975030` | Animation 116; landing goes back to 96 |
+| 142 | `0x975390` | Down after a throw: faces, drops the held reference, animation 95; once landed and done, recovers (112) or picks 114/116 |
 | 144 | `0x9757a0` | Stops; back to 96 once the animation is done and `+0x748` is set |
 
 ## Enemy states
@@ -347,13 +348,14 @@ of its states (6,644 bytes). "Stops" means both motion vectors are zeroed.
 states and adds its own at slots 172–227. An overriding state runs the base
 state first and stops if the base state has already switched states (result 2).
 
-[`EnemyStates.cpp`](../src/gameplay/EnemyStates.cpp) matches 17 of them, plus
-the chance roll they use (7,936 bytes in all):
+[`EnemyStates.cpp`](../src/gameplay/EnemyStates.cpp) matches 20 of them, plus
+the chance roll they use (10,940 bytes in all):
 
 | Slot | Address | Behavior |
 | --- | --- | --- |
 | 98 | `0x9cec40` | Grounded: stops, action mode 1, animation 29 then 12, event `0x78572030`; half a second into 12 goes to 96, leaving the ground to 102 |
 | 100, 102 | `0x9cef60`, `0x9cf000` | After the base state, with a mount, run slot 31 and play animation 2 or 5 |
+| 112 | `0x9cf120` | Recovery override: every NPC reacts; may roll a counter (chance by health) or a follow-up |
 | 116 | `0x9cf500` | After the base state, sends message 3 to every player (`Catalog<ControllablePlayer>` through the level singleton) and resets the AI fields; animation end goes to 200 |
 | 126 | `0x9cf670` | After the base state, rolls the chance on exit |
 | — | `0x9dd6b0` | The chance roll: with a mount, rolls 0–100 against the percentage at `+0x920`; a failed roll sets AI mode 6 |
@@ -366,13 +368,20 @@ the chance roll they use (7,936 bytes in all):
 | 196 | `0x9d3e10` | Jump back: speed from `+0x7d4` or away from the facing; animation 2 → 3 → 8 (falling) → 6 (landed) → slot 96 |
 | 198 | `0x9d40b0` | Plays the special attack's animation and starts it (`+0x898`) |
 | 200 | `0x9d4250` | Blinks out: the timer's parity picks the actor's blink-on or blink-off event; at the end runs `0x996c30` and removes the enemy (slot 70) |
+| 206 | `0x9d5450` | Holds a ring around the back-off point: moves in or out, then snaps onto it (1.1 × the distance) and goes to 204; goes to 208 if the target comes close |
+| 208 | `0x9d58d0` | Backs away from the back-off point until it and the target are far enough (the middle of the current attack range) |
 | 218 | `0x9d7da0` | Walk: advances `+0x334`, runs `0x9db820`, turns around when travel and facing disagree |
 | 222 | `0x9d8f00` | AI mode 7, animation 209, hides the effect and raises an ActorObject flag; takes `+0x9c8` from the game difficulty |
 | 226 | `0x9d98c0` | Idle entry: animation 0, or 44/60 with a mount (the mount plays 100); stops |
 
-Slot 108 (allies roll to assist) and BaseCharacter's slot 140 (landing after a
-throw) are written out in the sources but not credited. Both differ only in loop
+Slot 108 (allies roll to assist), slot 194 (a timed dash) and BaseCharacter's
+slot 140 (landing after a throw) are written out in the sources but not
+credited. Both differ only in loop
 layout or instruction scheduling so far.
+
+States 206 and 208 use `onyx::Vector3` arithmetic, which the compiler partly
+vectorizes. They match only with `operator-` assigning the result field by
+field.
 
 An attack slot is `0x78` bytes: the attack data StartAttack receives (`0x58`
 bytes), then the animation (`+0x58`) and a kind (`+0x6c`). Keeping the animation

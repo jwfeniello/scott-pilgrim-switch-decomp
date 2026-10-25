@@ -522,6 +522,54 @@ int BaseCharacter::State140(int event) {
     }
 }
 
+// Slot 142 (0x975390): down after a throw. Entry passes the facing to slot 28,
+// drops the held reference, plays animation 95, sets action mode 8 and resets
+// the timer (clearing +0x165 unless +0x130 is set). On the ground all motion
+// stops; once the animation is done a character with health (or slot 95) moves
+// to slot 112, else slot 156 picks 114, else slot 50 picks 116. Exit stores slot
+// 149's value at +0x328, sets action mode 8 and raises +0x165.
+int BaseCharacter::State142(int event) {
+    switch (event) {
+    case kStateUpdate:
+        if (IsOnGround()) {
+            motion = onyx::Vector3::Zero();
+            motionTarget = onyx::Vector3::Zero();
+            if (AnimationDone()) {
+                if (value160 > 0.0f || Slot95()) {
+                    states.Transition(State112Ptr());
+                } else if (Slot156()) {
+                    states.Transition(State114Ptr());
+                } else if (Slot50()) {
+                    states.Transition(State116Ptr());
+                } else {
+                    return kStateHandled;
+                }
+                return kStateParentTookOver;
+            }
+        }
+        return kStateHandled;
+    case kStateEnter: {
+        ActorObject* actor = onyx::Find<ActorObject, onyx_types::type_6492d61d>(actorObject);
+        Slot28(!onyx::Get<ActorFlags, 0x2eae5813u>(actor->flags)->facingLeft);
+        onyx::ResetHandle(held);
+        PlayAnimation(95, 0, 0, 1.0f);
+        actionMode = 8;
+        timer330 = 0.0f;
+        if (!flag130) flag165 = 0;
+        return kStateHandled;
+    }
+    case kStateExit:
+        value328 = Slot149();
+        actionMode = 8;
+        flag165 = 1;
+        return kStateHandled;
+    case kStateEvent3:
+        return kStateHandled;
+    default:
+        return kStateUnhandled;
+    }
+}
+
 // Slot 144 (0x9757a0): stops all motion on entry; once the animation is done
 // and the flag at +0x748 is set, switches to the state at slot 96.
 int BaseCharacter::State144(int event) {

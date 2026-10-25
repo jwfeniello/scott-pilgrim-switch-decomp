@@ -16,6 +16,18 @@ struct Vector3 {
     Vector3(const Vector3& o) : x(o.x), y(o.y), z(o.z) {}
     Vector3& operator=(const Vector3&) = default;
     static Vector3 Zero() { static const Vector3 value(0.0f, 0.0f, 0.0f); return value; }
+    Vector3 operator-(const Vector3& o) const {
+        Vector3 result;
+        result.x = x - o.x;
+        result.y = y - o.y;
+        result.z = z - o.z;
+        return result;
+    }
+    Vector3 operator-() const { return Vector3(-x, -y, -z); }
+    Vector3 operator*(float s) const { return Vector3(x * s, y * s, z * s); }
+    Vector3 operator/(float s) const { return Vector3(x / s, y / s, z / s); }
+    float LengthSquared() const { return x * x + y * y + z * z; }
+    float Length() const { return __builtin_sqrtf(LengthSquared()); }
 };
 
 struct Component {

@@ -7,9 +7,13 @@
 
 namespace SPTG {
 
+// A distance band (12 bytes).
+struct AttackRange { float min, max, unused; };
+
 // A player the enemy may target, with its distance (0x18 bytes).
 struct TargetEntry {
-    char padding_0[0xc];
+    float offsetX;                    // +0x0
+    char padding_4[0x8];
     float distance;                   // +0xc
     onyx::ComponentHandle* actor;     // +0x10
 };
@@ -20,6 +24,7 @@ struct Enemy : BaseCharacter {
     int State100(int event);                                         // slot 100, overrides BaseCharacter
     int State102(int event);                                         // slot 102, overrides BaseCharacter
     int State108(int event);                                         // slot 108, overrides BaseCharacter
+    int State112(int event);                                         // slot 112, overrides BaseCharacter
     int State116(int event);                                         // slot 116, overrides BaseCharacter
     int State126(int event);                                         // slot 126, overrides BaseCharacter
     int State136(int event);                                         // slot 136, overrides BaseCharacter
@@ -70,7 +75,8 @@ struct Enemy : BaseCharacter {
     float jumpSpeed7d4;          // +0x7d4
     char padding_7d8[0x3b];
     uint8_t flag813;             // +0x813
-    char padding_814[0x8];
+    int32_t rangeType;           // +0x814: picks one of the four attack ranges
+    char padding_818[0x4];
     uint8_t approachCountdown;   // +0x81c: frames left in the approach state
     char padding_81d[0x3];
     uint32_t targetIndex;        // +0x820: index into targets
@@ -91,15 +97,29 @@ struct Enemy : BaseCharacter {
     char padding_910[0xc];
     float attackRange;           // +0x91c
     float chance;                // +0x920: percent, compared with a random roll
-    char padding_924[0x54];
-    uint8_t flags978;            // +0x978
-    char padding_979[0x7];
+    char padding_924[0x20];
+    AttackRange range0;          // +0x944
+    AttackRange range1;          // +0x950
+    AttackRange range2;          // +0x95c
+    AttackRange range3;          // +0x968
+    char padding_974[0x4];
+    uint32_t flags978;           // +0x978: bit flags
+    char padding_97c[0x4];
     float value980;              // +0x980
     float delay984;              // +0x984
-    char padding_988[0x20];
+    char padding_988[0xc];
+    float counterChanceHealthy;  // +0x994: percent, while health is above the threshold
+    float counterChance;         // +0x998: percent
+    float counterHealthThreshold; // +0x99c
+    float followUpChance;        // +0x9a0: percent
+    char padding_9a4[0x4];
     float assistChance;          // +0x9a8: percent
     float delay9ac;              // +0x9ac
-    char padding_9b0[0x14];
+    float dashSpeed;             // +0x9b0
+    float dashHold;              // +0x9b4: seconds in the dash animation
+    float dashDelayBase;         // +0x9b8
+    char padding_9bc[0x4];
+    float dashDelay;             // +0x9c0: seconds before the dash
     uint8_t flag9c4;             // +0x9c4
     char padding_9c5[0x3];
     float value9c8;              // +0x9c8
@@ -110,7 +130,12 @@ struct Enemy : BaseCharacter {
     char padding_9d3[0x1];
     float blinkDuration;         // +0x9d4
     float blinkPeriod;           // +0x9d8
-    char padding_9dc[0x10d];
+    char padding_9dc[0x68];
+    onyx::Vector3 backOffPoint;  // +0xa44: the point state 208 backs away from
+    float backOffDistance;       // +0xa50
+    char padding_a54[0x84];
+    uint8_t flagAd8;             // +0xad8
+    char padding_ad9[0x10];
     uint8_t flagAe9;             // +0xae9
     char padding_aea[0x8e];
     uint8_t flagB78;             // +0xb78

@@ -20,7 +20,8 @@ struct AttackSlot {
     int32_t animation;   // +0x58
     char padding_5c[0x10];
     int32_t kind;        // +0x6c
-    char padding_70[0x8];
+    float speedScale;    // +0x70
+    char padding_74[0x4];
 };
 static_assert(sizeof(AttackSlot) == 0x78, "AttackSlot size");
 struct BaseCharacter;
@@ -60,10 +61,21 @@ struct ActorFlags : onyx::Component {
     char padding_7a[0x9e];
     uint8_t flag118;      // +0x118
 };
-// Reached through the singleton at +0x80 (getters 0x992bf0, 0x992f30); probably
-// Enemy's GameDifficultyAccessor dependency.
+// Game services reached through the singleton at +0x80 (getter 0x992bf0).
 struct GameDifficulty { char padding[0x108]; float value108; };   // +0x108
-struct GameDifficultyAccessor { char padding[0x50]; Singleton<GameDifficulty> difficulty; };   // +0x50
+struct NpcAccessor { char padding[0x60]; onyx::ComponentHandle* catalog; };   // +0x60, Catalog<NPC>
+struct GameServices {
+    char padding[0x50];
+    Singleton<GameDifficulty> difficulty;   // +0x50 (getter 0x992f30)
+    Singleton<NpcAccessor> npcs;            // +0x58 (getter 0x7725e0)
+};
+// Onyx::Catalog<SPTG::NPC> (component type 0x3fb2ecb4).
+struct NpcCatalog : onyx::Component {
+    char padding_8[0x78];
+    uint64_t count;          // +0x80
+    char padding_88[0x8];
+    BaseCharacter** npcs;    // +0x90
+};
 
 // A visual effect component whose visibility flag the states toggle.
 struct CharacterEffect : onyx::Component {
@@ -82,7 +94,8 @@ struct BaseCharacter : onyx::Component {
     virtual void PlayAnimation(int animation, int a, int b, float speed);    // slot 22
     SPTG_SLOT(23) SPTG_SLOT(24) SPTG_SLOT(25) SPTG_SLOT(26)
     virtual bool AnimationDone();                                            // slot 27
-    SPTG_SLOT(28) SPTG_SLOT(29)
+    virtual void Slot28(bool flag);                                          // slot 28
+    SPTG_SLOT(29)
     virtual void TurnAround();                                               // slot 30
     virtual void Slot31Action();                                             // slot 31
     SPTG_SLOT(32) SPTG_SLOT(33) SPTG_SLOT(34)
@@ -92,7 +105,7 @@ struct BaseCharacter : onyx::Component {
     virtual void StartAttack(Attack* attack, bool flag, int source, BaseCharacter* attacker); // slot 44
     SPTG_SLOT(45) SPTG_SLOT(46) SPTG_SLOT(47) SPTG_SLOT(48)
     virtual int Slot49();                                                    // slot 49
-    SPTG_SLOT(50)
+    virtual int Slot50();                                                    // slot 50
     virtual bool IsOut();             // checked before targeting a player   // slot 51
     virtual bool IsOnGround();                                               // slot 52
     SPTG_SLOT(53) SPTG_SLOT(54) SPTG_SLOT(55) SPTG_SLOT(56) SPTG_SLOT(57) SPTG_SLOT(58) SPTG_SLOT(59) SPTG_SLOT(60)
@@ -109,7 +122,8 @@ struct BaseCharacter : onyx::Component {
     SPTG_SLOT(87) SPTG_SLOT(88) SPTG_SLOT(89)
     virtual void Slot90(float value);                                        // slot 90
     virtual void Slot91(float x);                                            // slot 91
-    SPTG_SLOT(92) SPTG_SLOT(93) SPTG_SLOT(94) SPTG_SLOT(95)
+    SPTG_SLOT(92) SPTG_SLOT(93) SPTG_SLOT(94)
+    virtual bool Slot95();                                                   // slot 95
     virtual int State96(int event); virtual State State96Ptr();              // slots 96, 97
     virtual int State98(int event); virtual State State98Ptr();              // slots 98, 99
     virtual int State100(int event); virtual State State100Ptr();            // slots 100, 101
@@ -137,7 +151,8 @@ struct BaseCharacter : onyx::Component {
     virtual int State144(int event); virtual State State144Ptr();            // slots 144, 145
     SPTG_SLOT(146) SPTG_SLOT(147)
     virtual bool Slot148(bool* out);                                         // slot 148
-    SPTG_SLOT(149) SPTG_SLOT(150) SPTG_SLOT(151) SPTG_SLOT(152) SPTG_SLOT(153) SPTG_SLOT(154) SPTG_SLOT(155)
+    virtual float Slot149();                                                 // slot 149
+    SPTG_SLOT(150) SPTG_SLOT(151) SPTG_SLOT(152) SPTG_SLOT(153) SPTG_SLOT(154) SPTG_SLOT(155)
     virtual bool Slot156();                                                  // slot 156
     SPTG_SLOT(157) SPTG_SLOT(158)
 
@@ -149,7 +164,7 @@ struct BaseCharacter : onyx::Component {
     onyx::ComponentHandle* partnerHandle; // +0x68
     char padding_70[0x8];
     onyx::ComponentHandle* actorObject; // +0x78
-    Singleton<GameDifficultyAccessor> difficultyAccessor; // +0x80
+    Singleton<GameServices> services; // +0x80
     char padding_88[0x8];
     Singleton<LevelItemAccessor> level; // +0x90
     char padding_98[0x14];
@@ -161,7 +176,9 @@ struct BaseCharacter : onyx::Component {
     uint8_t flag130;             // +0x130
     char padding_131[0x2f];
     float value160;              // +0x160
-    char padding_164[0x18];
+    char padding_164[0x1];
+    uint8_t flag165;             // +0x165
+    char padding_166[0x16];
     uint8_t flag17c;             // +0x17c
     char padding_17d[0xf];
     float value18c;              // +0x18c: set on the mount by state 130
@@ -185,7 +202,8 @@ struct BaseCharacter : onyx::Component {
     float slideThreshold;        // +0x2e4
     char padding_2e8[0x4];
     float slideSpeed;            // +0x2ec
-    char padding_2f0[0x3c];
+    char padding_2f0[0x38];
+    float value328;              // +0x328
     float value32c;              // +0x32c
     float timer330;              // +0x330
     float value334;              // +0x334
