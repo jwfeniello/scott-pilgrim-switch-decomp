@@ -1,9 +1,9 @@
 {
   "version": 1,
-  "generated_at": "2026-10-25T15:37:31.630252+00:00",
+  "generated_at": "2026-10-25T15:55:51.624706+00:00",
   "target_elf_sha256": "ea95638e6d6aaa0dc6cddd552a9366799aa1ec3bc07ee201f23f6c151103f5b8",
   "input_sha256": {
-    "config/builds.json": "8bc4c30ccd1e2fb509a3ffe596cb48d1c3b4beb42982ff2aa35f53cc91e9b808",
+    "config/builds.json": "16f0e13f1722bef95cfdec737dc1567da68c08539d0e637c54e2ac0e8d003868",
     "config/functions.tsv": "399e91468a04e0459194c10d68d2210d1157cedefeb19c7851886ca7632fcb18",
     "config/non_fde_functions.tsv": "6a45f5e185454fa0472af00b2cdc9d040d73ca133d1106217e1fbbe3b32a8175",
     "config/target.json": "23cc6a5227206a953e7668acf5e9ae5c02a25c23b7e7967f0450a814b888241a",
@@ -42,6 +42,7 @@
     "src/ColorPropertyReadOmitNoPic.cpp": "c3f5c2c85626b7ee05bbb1730e6c89d1a4cc2404362377627810bc1b1d83493f",
     "src/ComponentAccessor.cpp": "09d0b81df3abcacb946f49ed1ed87ab840ee0656bb6f792fd65d25660eabb260",
     "src/ComponentEventReader.cpp": "8ba855c3269dae4b06f76f96f0e6e5b59ff9235a3c43d089bcaf91ef43b68d6a",
+    "src/ComponentEventSubscribe.cpp": "d1abf1b5d537f5cfc250a0e6fee1b7733d3cb1601b5d37e0dd2e7ed63b88fcac",
     "src/ComponentInitializeSlots.cpp": "55cc1e5fc9899d4c44bf24cb4bb59c672fb325bec27fd578c36f881ec57dad1d",
     "src/ComponentMapCollectByKey.h": "ca433de3cf62b21dd59fa5e5a01fc30d37b1699e37e73aa98443f2fefe0fcd28",
     "src/ComponentMapCollectByKeyOmitNoPic.cpp": "6abf134637aa321dfb23146709cedbf7e4abf97f6855b6e321dc5c52c2f30284",
@@ -1078,6 +1079,7 @@
     "src/echo_type_descriptor_keep_pic_unwind_o3_instances.inc": "36a0098b387d0a0685380fe7df9c3438c49a7fb67695b4b712cf8a1cf8b4cf71",
     "src/engine_registry_calls.inc": "9841670c768ab4a75f57e76e1353d41409e99efa56f25c2bbc5f821fece8dfa4",
     "src/engine_registry_declarations.inc": "0d0dd43aa44198c8e70048e84ec4414843449754ac0193d35eddf502fc9b006c",
+    "src/event_subscriber_instances.inc": "503c9279c4fbbf5dc2255936d32d7953840cbd4e7fd5012b35d95b1a99bccb70",
     "src/factory_construction_instances.inc": "2d195de6c86983e5a5be8bc2ea60b9f7f899e8cd9a11b363d0182447cb420f8c",
     "src/factory_construction_omit_instances.inc": "8eae5c998fd824bc7b4230f265ba3561cb6e065d15336ead457448dea0e80830",
     "src/forwarding_function_omit_no_pic_instances.inc": "52b35b246b514a1f9ee9717bd429073a3471e6839bbadd573810a6bf43fceed8",
@@ -3951,8 +3953,8 @@
     "8.0.1": "dffd62a213ec6cdb4430012a4a41c11e5e32c288f133d5391f9be49e1c5b69de",
     "lld": "c4b3aaea06ff7112c64753047a2ab279fc3fe10dd807fd3c22edfdae99f43eed"
   },
-  "exact_functions": 34535,
-  "exact_bytes": 4321992,
+  "exact_functions": 34549,
+  "exact_bytes": 4326268,
   "builds": [
     {
       "id": "probes",
@@ -13153,6 +13155,11 @@
       "id": "gameplay_activation_events",
       "compiler": "8.0.1",
       "object_sha256": "0edd825c53dfd0936cdaf0d2790162d32f887da5a503cb4c5a3e2eb9c034ac08"
+    },
+    {
+      "id": "component_event_subscribe",
+      "compiler": "8.0.1",
+      "object_sha256": "0f5fd3a99220fd644a6e641f753cc6392269a9cca21e178b0d385b179645153c"
     }
   ],
   "matches": [
@@ -206955,6 +206962,17 @@
       "relocation_count": 2
     },
     {
+      "address": "0x70dcc0",
+      "size": 308,
+      "exact": true,
+      "target_sha256": "ae0c302bb08254c8f9f8e4a241626a49965f1c709a4aef56294214f18adda6c6",
+      "compiled_sha256": "ae0c302bb08254c8f9f8e4a241626a49965f1c709a4aef56294214f18adda6c6",
+      "source": "src/ComponentEventSubscribe.cpp",
+      "symbol": "_ZN15EventSubscriberILj7396544ELj1818424473ELj80ELj1EE6EnableEv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 21
+    },
+    {
       "address": "0x70e750",
       "size": 36,
       "exact": true,
@@ -207679,6 +207697,17 @@
       "symbol": "_Z21CallbackIdentityEqualILj7449040EEbPK12CallbackViewS2_",
       "source_review": "manual_reconstruction",
       "relocation_count": 0
+    },
+    {
+      "address": "0x71abe0",
+      "size": 308,
+      "exact": true,
+      "target_sha256": "32d82448d7b5ce58ad5ab982e34ca3683df1cc1d500736758efc6b8998b9349e",
+      "compiled_sha256": "32d82448d7b5ce58ad5ab982e34ca3683df1cc1d500736758efc6b8998b9349e",
+      "source": "src/ComponentEventSubscribe.cpp",
+      "symbol": "_ZN15EventSubscriberILj7449568ELj1818424473ELj104ELj1EE6EnableEv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 21
     },
     {
       "address": "0x71aed0",
@@ -210880,6 +210909,17 @@
       "symbol": "RecoveredLeaf_7336e0",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 8
+    },
+    {
+      "address": "0x733720",
+      "size": 312,
+      "exact": true,
+      "target_sha256": "7a4d909f78d01559109f80b36421fdf113c0089b6b58fbab557ec86d826a57d2",
+      "compiled_sha256": "7a4d909f78d01559109f80b36421fdf113c0089b6b58fbab557ec86d826a57d2",
+      "source": "src/ComponentEventSubscribe.cpp",
+      "symbol": "_ZN15EventSubscriberILj7550752ELj2101335766ELj80ELj3EE6EnableEv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 22
     },
     {
       "address": "0x733860",
@@ -262769,6 +262809,17 @@
       "relocation_count": 5
     },
     {
+      "address": "0x93c2c0",
+      "size": 300,
+      "exact": true,
+      "target_sha256": "24bf6c11ff48e24cb1770b6b76b51679105986f0a0b8244194f75ee2eec4b1c6",
+      "compiled_sha256": "24bf6c11ff48e24cb1770b6b76b51679105986f0a0b8244194f75ee2eec4b1c6",
+      "source": "src/ComponentEventSubscribe.cpp",
+      "symbol": "_ZN15EventSubscriberILj9683648ELj2101335766ELj136ELj2EE6EnableEv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 22
+    },
+    {
       "address": "0x93c620",
       "size": 4,
       "exact": true,
@@ -263009,6 +263060,17 @@
       "symbol": "RecoveredLeaf_93d9c0",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 5
+    },
+    {
+      "address": "0x93d9f0",
+      "size": 300,
+      "exact": true,
+      "target_sha256": "e1285d173ea6b13c847985530e9d08dffcc5b872031acfb7712fba0aa3b826a2",
+      "compiled_sha256": "e1285d173ea6b13c847985530e9d08dffcc5b872031acfb7712fba0aa3b826a2",
+      "source": "src/ComponentEventSubscribe.cpp",
+      "symbol": "_ZN15EventSubscriberILj9689584ELj2101335766ELj136ELj2EE6EnableEv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 22
     },
     {
       "address": "0x93dd50",
@@ -297452,6 +297514,17 @@
       "relocation_count": 5
     },
     {
+      "address": "0xaccb20",
+      "size": 308,
+      "exact": true,
+      "target_sha256": "a1f37090f3d6d5622e70c83ee0ad041a980d41bbbbca3da1ec7e36f266f69b04",
+      "compiled_sha256": "a1f37090f3d6d5622e70c83ee0ad041a980d41bbbbca3da1ec7e36f266f69b04",
+      "source": "src/ComponentEventSubscribe.cpp",
+      "symbol": "_ZN15EventSubscriberILj11324192ELj2094071288ELj80ELj1EE6EnableEv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 21
+    },
+    {
       "address": "0xaccc60",
       "size": 304,
       "exact": true,
@@ -307726,6 +307799,17 @@
       "relocation_count": 8
     },
     {
+      "address": "0xb39000",
+      "size": 312,
+      "exact": true,
+      "target_sha256": "7a8f59dea2d6a3d0e52cfe2c52d30669ea6ae55da0f30ffe900954e0b23f2854",
+      "compiled_sha256": "7a8f59dea2d6a3d0e52cfe2c52d30669ea6ae55da0f30ffe900954e0b23f2854",
+      "source": "src/ComponentEventSubscribe.cpp",
+      "symbol": "_ZN15EventSubscriberILj11767808ELj1818424473ELj152ELj3EE6EnableEv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 22
+    },
+    {
       "address": "0xb39280",
       "size": 64,
       "exact": true,
@@ -308846,6 +308930,17 @@
       "symbol": "_Z16DestroyAllocatedILj11825168EEvPv",
       "source_review": "manual_reconstruction",
       "relocation_count": 2
+    },
+    {
+      "address": "0xb47030",
+      "size": 308,
+      "exact": true,
+      "target_sha256": "5712c6f7a4f830c0a418e971dd578a04a63c26a08083f9812c4762a575d312bc",
+      "compiled_sha256": "5712c6f7a4f830c0a418e971dd578a04a63c26a08083f9812c4762a575d312bc",
+      "source": "src/ComponentEventSubscribe.cpp",
+      "symbol": "_ZN15EventSubscriberILj11825200ELj1818424473ELj80ELj1EE6EnableEv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 21
     },
     {
       "address": "0xb47170",
@@ -310254,6 +310349,17 @@
       "symbol": "_Z16DestroyAllocatedILj11879168EEvPv",
       "source_review": "manual_reconstruction",
       "relocation_count": 2
+    },
+    {
+      "address": "0xb54320",
+      "size": 308,
+      "exact": true,
+      "target_sha256": "3679cefba78d4a53bd9de9626faa0f63d97e748a40668f38a3caeeb82c9d3e6b",
+      "compiled_sha256": "3679cefba78d4a53bd9de9626faa0f63d97e748a40668f38a3caeeb82c9d3e6b",
+      "source": "src/ComponentEventSubscribe.cpp",
+      "symbol": "_ZN15EventSubscriberILj11879200ELj1818424473ELj80ELj1EE6EnableEv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 21
     },
     {
       "address": "0xb54460",
@@ -316922,6 +317028,17 @@
       "relocation_count": 5
     },
     {
+      "address": "0xb953f0",
+      "size": 300,
+      "exact": true,
+      "target_sha256": "2d42f50ff9f39dbbf1dd9802c3f06f9d927707a51dd2914009f37d216dcc2572",
+      "compiled_sha256": "2d42f50ff9f39dbbf1dd9802c3f06f9d927707a51dd2914009f37d216dcc2572",
+      "source": "src/ComponentEventSubscribe.cpp",
+      "symbol": "_ZN15EventSubscriberILj12145648ELj1818424473ELj264ELj2EE6EnableEv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 22
+    },
+    {
       "address": "0xb956a0",
       "size": 64,
       "exact": true,
@@ -317041,6 +317158,17 @@
       "symbol": "RecoveredLeaf_b96110",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 5
+    },
+    {
+      "address": "0xb96140",
+      "size": 300,
+      "exact": true,
+      "target_sha256": "a2a06869582b99d9344c8df5cd3a531bde767a81eef8cf5535b67feec5b5935a",
+      "compiled_sha256": "a2a06869582b99d9344c8df5cd3a531bde767a81eef8cf5535b67feec5b5935a",
+      "source": "src/ComponentEventSubscribe.cpp",
+      "symbol": "_ZN15EventSubscriberILj12149056ELj1818424473ELj264ELj2EE6EnableEv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 22
     },
     {
       "address": "0xb963f0",
@@ -317175,6 +317303,17 @@
       "relocation_count": 5
     },
     {
+      "address": "0xb96ee0",
+      "size": 300,
+      "exact": true,
+      "target_sha256": "c5c79d9341d4695e3957c5dba782401da0909335af8a245a1d1a4775663d2f4d",
+      "compiled_sha256": "c5c79d9341d4695e3957c5dba782401da0909335af8a245a1d1a4775663d2f4d",
+      "source": "src/ComponentEventSubscribe.cpp",
+      "symbol": "_ZN15EventSubscriberILj12152544ELj1818424473ELj264ELj2EE6EnableEv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 22
+    },
+    {
       "address": "0xb97190",
       "size": 64,
       "exact": true,
@@ -317294,6 +317433,17 @@
       "symbol": "RecoveredLeaf_b97c90",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 5
+    },
+    {
+      "address": "0xb97cc0",
+      "size": 300,
+      "exact": true,
+      "target_sha256": "09a5fc46295aa524cbea41eebcdec0aad01288c10241e6757006d4b4e99e3e75",
+      "compiled_sha256": "09a5fc46295aa524cbea41eebcdec0aad01288c10241e6757006d4b4e99e3e75",
+      "source": "src/ComponentEventSubscribe.cpp",
+      "symbol": "_ZN15EventSubscriberILj12156096ELj1818424473ELj264ELj2EE6EnableEv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 22
     },
     {
       "address": "0xb97f70",
@@ -345905,6 +346055,17 @@
       "symbol": "_Z16DestroyAllocatedILj13266624EEvPv",
       "source_review": "manual_reconstruction",
       "relocation_count": 2
+    },
+    {
+      "address": "0xca6ee0",
+      "size": 312,
+      "exact": true,
+      "target_sha256": "8977a20203edea83c45fd27b700f213b8543c2236d1b196689de72a9c29307f3",
+      "compiled_sha256": "8977a20203edea83c45fd27b700f213b8543c2236d1b196689de72a9c29307f3",
+      "source": "src/ComponentEventSubscribe.cpp",
+      "symbol": "_ZN15EventSubscriberILj13266656ELj1818424473ELj144ELj3EE6EnableEv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 22
     },
     {
       "address": "0xca78c0",

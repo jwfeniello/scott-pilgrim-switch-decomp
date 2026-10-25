@@ -503487,6 +503487,321 @@
           }
         }
       ]
+    },
+    {
+      "id": "component_event_subscribe",
+      "source": "src/ComponentEventSubscribe.cpp",
+      "compiler": "8.0.1",
+      "source_review": "manual_reconstruction",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-std=c++11",
+        "-O2",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-fomit-frame-pointer",
+        "-fno-pic",
+        "-fno-delete-null-pointer-checks",
+        "-ffunction-sections",
+        "-fdata-sections",
+        "-mllvm",
+        "-no-stack-coloring"
+      ],
+      "header_roots": [
+        "src/gameplay"
+      ],
+      "functions": [
+        {
+          "address": "0x70dcc0",
+          "size": 308,
+          "symbol": "_ZN15EventSubscriberILj7396544ELj1818424473ELj80ELj1EE6EnableEv",
+          "target_sha256": "ae0c302bb08254c8f9f8e4a241626a49965f1c709a4aef56294214f18adda6c6",
+          "bindings": {
+            "_ZN19SubscriptionBindingILj7396544EE7contextE": "0x1935058",
+            "_ZN19SubscriptionBindingILj7396544EE8AllocateEPvm": "0xa972b0",
+            "_ZN15EventSubscriberILj7396544ELj1818424473ELj80ELj1EE7OnEventERK5Event": "0x70e850",
+            "_ZTV14MemberDelegateILj7396544E15EventSubscriberILj7396544ELj1818424473ELj80ELj1EEE": "0x1847c18",
+            "_ZN19SubscriptionBindingILj7396544EE6InvokeEv": "0x70e890",
+            "_ZN19SubscriptionBindingILj7396544EE7managerE": "0x1935068",
+            "_ZN19SubscriptionBindingILj7396544EE7ProcessEPvS1_jS1_m": "0xbf6b10",
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
+            "_Unwind_Resume": "0xfa4920",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x71abe0",
+          "size": 308,
+          "symbol": "_ZN15EventSubscriberILj7449568ELj1818424473ELj104ELj1EE6EnableEv",
+          "target_sha256": "32d82448d7b5ce58ad5ab982e34ca3683df1cc1d500736758efc6b8998b9349e",
+          "bindings": {
+            "_ZN19SubscriptionBindingILj7449568EE7contextE": "0x1935058",
+            "_ZN19SubscriptionBindingILj7449568EE8AllocateEPvm": "0xa972b0",
+            "_ZN15EventSubscriberILj7449568ELj1818424473ELj104ELj1EE7OnEventERK5Event": "0x71af10",
+            "_ZTV14MemberDelegateILj7449568E15EventSubscriberILj7449568ELj1818424473ELj104ELj1EEE": "0x1848210",
+            "_ZN19SubscriptionBindingILj7449568EE6InvokeEv": "0x71af50",
+            "_ZN19SubscriptionBindingILj7449568EE7managerE": "0x1935068",
+            "_ZN19SubscriptionBindingILj7449568EE7ProcessEPvS1_jS1_m": "0xbf6b10",
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
+            "_Unwind_Resume": "0xfa4920",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x733720",
+          "size": 312,
+          "symbol": "_ZN15EventSubscriberILj7550752ELj2101335766ELj80ELj3EE6EnableEv",
+          "target_sha256": "7a4d909f78d01559109f80b36421fdf113c0089b6b58fbab557ec86d826a57d2",
+          "bindings": {
+            "_ZN15EventSubscriberILj7550752ELj2101335766ELj80ELj3EE10BaseEnableEv": "0x734030",
+            "_ZN19SubscriptionBindingILj7550752EE7contextE": "0x1935058",
+            "_ZN19SubscriptionBindingILj7550752EE8AllocateEPvm": "0xa972b0",
+            "_ZN15EventSubscriberILj7550752ELj2101335766ELj80ELj3EE7OnEventERK5Event": "0x733f60",
+            "_ZTV14MemberDelegateILj7550752E15EventSubscriberILj7550752ELj2101335766ELj80ELj3EEE": "0x1849930",
+            "_ZN19SubscriptionBindingILj7550752EE6InvokeEv": "0x733f70",
+            "_ZN19SubscriptionBindingILj7550752EE7managerE": "0x1935068",
+            "_ZN19SubscriptionBindingILj7550752EE7ProcessEPvS1_jS1_m": "0xbf6b10",
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
+            "_Unwind_Resume": "0xfa4920",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x93c2c0",
+          "size": 300,
+          "symbol": "_ZN15EventSubscriberILj9683648ELj2101335766ELj136ELj2EE6EnableEv",
+          "target_sha256": "24bf6c11ff48e24cb1770b6b76b51679105986f0a0b8244194f75ee2eec4b1c6",
+          "bindings": {
+            "_ZN15EventSubscriberILj9683648ELj2101335766ELj136ELj2EE10BaseEnableEv": "0x93cf30",
+            "_ZN19SubscriptionBindingILj9683648EE7contextE": "0x1935058",
+            "_ZN19SubscriptionBindingILj9683648EE8AllocateEPvm": "0xa972b0",
+            "_ZN15EventSubscriberILj9683648ELj2101335766ELj136ELj2EE7OnEventERK5Event": "0x93ccf0",
+            "_ZTV14MemberDelegateILj9683648E15EventSubscriberILj9683648ELj2101335766ELj136ELj2EEE": "0x186f980",
+            "_ZN19SubscriptionBindingILj9683648EE6InvokeEv": "0x93cd00",
+            "_ZN19SubscriptionBindingILj9683648EE7managerE": "0x1935068",
+            "_ZN19SubscriptionBindingILj9683648EE7ProcessEPvS1_jS1_m": "0xbf6b10",
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
+            "_Unwind_Resume": "0xfa4920",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x93d9f0",
+          "size": 300,
+          "symbol": "_ZN15EventSubscriberILj9689584ELj2101335766ELj136ELj2EE6EnableEv",
+          "target_sha256": "e1285d173ea6b13c847985530e9d08dffcc5b872031acfb7712fba0aa3b826a2",
+          "bindings": {
+            "_ZN15EventSubscriberILj9689584ELj2101335766ELj136ELj2EE10BaseEnableEv": "0x93e660",
+            "_ZN19SubscriptionBindingILj9689584EE7contextE": "0x1935058",
+            "_ZN19SubscriptionBindingILj9689584EE8AllocateEPvm": "0xa972b0",
+            "_ZN15EventSubscriberILj9689584ELj2101335766ELj136ELj2EE7OnEventERK5Event": "0x93e420",
+            "_ZTV14MemberDelegateILj9689584E15EventSubscriberILj9689584ELj2101335766ELj136ELj2EEE": "0x186fc50",
+            "_ZN19SubscriptionBindingILj9689584EE6InvokeEv": "0x93e430",
+            "_ZN19SubscriptionBindingILj9689584EE7managerE": "0x1935068",
+            "_ZN19SubscriptionBindingILj9689584EE7ProcessEPvS1_jS1_m": "0xbf6b10",
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
+            "_Unwind_Resume": "0xfa4920",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xaccb20",
+          "size": 308,
+          "symbol": "_ZN15EventSubscriberILj11324192ELj2094071288ELj80ELj1EE6EnableEv",
+          "target_sha256": "a1f37090f3d6d5622e70c83ee0ad041a980d41bbbbca3da1ec7e36f266f69b04",
+          "bindings": {
+            "_ZN19SubscriptionBindingILj11324192EE7contextE": "0x1935058",
+            "_ZN19SubscriptionBindingILj11324192EE8AllocateEPvm": "0xa972b0",
+            "_ZN15EventSubscriberILj11324192ELj2094071288ELj80ELj1EE7OnEventERK5Event": "0xacd980",
+            "_ZTV14MemberDelegateILj11324192E15EventSubscriberILj11324192ELj2094071288ELj80ELj1EEE": "0x189ffc8",
+            "_ZN19SubscriptionBindingILj11324192EE6InvokeEv": "0xacd990",
+            "_ZN19SubscriptionBindingILj11324192EE7managerE": "0x1935068",
+            "_ZN19SubscriptionBindingILj11324192EE7ProcessEPvS1_jS1_m": "0xbf6b10",
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
+            "_Unwind_Resume": "0xfa4920",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xb39000",
+          "size": 312,
+          "symbol": "_ZN15EventSubscriberILj11767808ELj1818424473ELj152ELj3EE6EnableEv",
+          "target_sha256": "7a8f59dea2d6a3d0e52cfe2c52d30669ea6ae55da0f30ffe900954e0b23f2854",
+          "bindings": {
+            "_ZN15EventSubscriberILj11767808ELj1818424473ELj152ELj3EE10BaseEnableEv": "0xb39670",
+            "_ZN19SubscriptionBindingILj11767808EE7contextE": "0x1935058",
+            "_ZN19SubscriptionBindingILj11767808EE8AllocateEPvm": "0xa972b0",
+            "_ZN15EventSubscriberILj11767808ELj1818424473ELj152ELj3EE7OnEventERK5Event": "0xb39400",
+            "_ZTV14MemberDelegateILj11767808E15EventSubscriberILj11767808ELj1818424473ELj152ELj3EEE": "0x18a7bd8",
+            "_ZN19SubscriptionBindingILj11767808EE6InvokeEv": "0xb39440",
+            "_ZN19SubscriptionBindingILj11767808EE7managerE": "0x1935068",
+            "_ZN19SubscriptionBindingILj11767808EE7ProcessEPvS1_jS1_m": "0xbf6b10",
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
+            "_Unwind_Resume": "0xfa4920",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xb47030",
+          "size": 308,
+          "symbol": "_ZN15EventSubscriberILj11825200ELj1818424473ELj80ELj1EE6EnableEv",
+          "target_sha256": "5712c6f7a4f830c0a418e971dd578a04a63c26a08083f9812c4762a575d312bc",
+          "bindings": {
+            "_ZN19SubscriptionBindingILj11825200EE7contextE": "0x1935058",
+            "_ZN19SubscriptionBindingILj11825200EE8AllocateEPvm": "0xa972b0",
+            "_ZN15EventSubscriberILj11825200ELj1818424473ELj80ELj1EE7OnEventERK5Event": "0xb47320",
+            "_ZTV14MemberDelegateILj11825200E15EventSubscriberILj11825200ELj1818424473ELj80ELj1EEE": "0x18a90f0",
+            "_ZN19SubscriptionBindingILj11825200EE6InvokeEv": "0xb47360",
+            "_ZN19SubscriptionBindingILj11825200EE7managerE": "0x1935068",
+            "_ZN19SubscriptionBindingILj11825200EE7ProcessEPvS1_jS1_m": "0xbf6b10",
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
+            "_Unwind_Resume": "0xfa4920",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xb54320",
+          "size": 308,
+          "symbol": "_ZN15EventSubscriberILj11879200ELj1818424473ELj80ELj1EE6EnableEv",
+          "target_sha256": "3679cefba78d4a53bd9de9626faa0f63d97e748a40668f38a3caeeb82c9d3e6b",
+          "bindings": {
+            "_ZN19SubscriptionBindingILj11879200EE7contextE": "0x1935058",
+            "_ZN19SubscriptionBindingILj11879200EE8AllocateEPvm": "0xa972b0",
+            "_ZN15EventSubscriberILj11879200ELj1818424473ELj80ELj1EE7OnEventERK5Event": "0xb546e0",
+            "_ZTV14MemberDelegateILj11879200E15EventSubscriberILj11879200ELj1818424473ELj80ELj1EEE": "0x18aa298",
+            "_ZN19SubscriptionBindingILj11879200EE6InvokeEv": "0xb54720",
+            "_ZN19SubscriptionBindingILj11879200EE7managerE": "0x1935068",
+            "_ZN19SubscriptionBindingILj11879200EE7ProcessEPvS1_jS1_m": "0xbf6b10",
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
+            "_Unwind_Resume": "0xfa4920",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xb953f0",
+          "size": 300,
+          "symbol": "_ZN15EventSubscriberILj12145648ELj1818424473ELj264ELj2EE6EnableEv",
+          "target_sha256": "2d42f50ff9f39dbbf1dd9802c3f06f9d927707a51dd2914009f37d216dcc2572",
+          "bindings": {
+            "_ZN15EventSubscriberILj12145648ELj1818424473ELj264ELj2EE10BaseEnableEv": "0xb94df0",
+            "_ZN19SubscriptionBindingILj12145648EE7contextE": "0x1935058",
+            "_ZN19SubscriptionBindingILj12145648EE8AllocateEPvm": "0xa972b0",
+            "_ZN15EventSubscriberILj12145648ELj1818424473ELj264ELj2EE7OnEventERK5Event": "0xb95de0",
+            "_ZTV14MemberDelegateILj12145648E15EventSubscriberILj12145648ELj1818424473ELj264ELj2EEE": "0x18afea0",
+            "_ZN19SubscriptionBindingILj12145648EE6InvokeEv": "0xb95df0",
+            "_ZN19SubscriptionBindingILj12145648EE7managerE": "0x1935068",
+            "_ZN19SubscriptionBindingILj12145648EE7ProcessEPvS1_jS1_m": "0xbf6b10",
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
+            "_Unwind_Resume": "0xfa4920",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xb96140",
+          "size": 300,
+          "symbol": "_ZN15EventSubscriberILj12149056ELj1818424473ELj264ELj2EE6EnableEv",
+          "target_sha256": "a2a06869582b99d9344c8df5cd3a531bde767a81eef8cf5535b67feec5b5935a",
+          "bindings": {
+            "_ZN15EventSubscriberILj12149056ELj1818424473ELj264ELj2EE10BaseEnableEv": "0xb94df0",
+            "_ZN19SubscriptionBindingILj12149056EE7contextE": "0x1935058",
+            "_ZN19SubscriptionBindingILj12149056EE8AllocateEPvm": "0xa972b0",
+            "_ZN15EventSubscriberILj12149056ELj1818424473ELj264ELj2EE7OnEventERK5Event": "0xb96b80",
+            "_ZTV14MemberDelegateILj12149056E15EventSubscriberILj12149056ELj1818424473ELj264ELj2EEE": "0x18b00c8",
+            "_ZN19SubscriptionBindingILj12149056EE6InvokeEv": "0xb96b90",
+            "_ZN19SubscriptionBindingILj12149056EE7managerE": "0x1935068",
+            "_ZN19SubscriptionBindingILj12149056EE7ProcessEPvS1_jS1_m": "0xbf6b10",
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
+            "_Unwind_Resume": "0xfa4920",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xb96ee0",
+          "size": 300,
+          "symbol": "_ZN15EventSubscriberILj12152544ELj1818424473ELj264ELj2EE6EnableEv",
+          "target_sha256": "c5c79d9341d4695e3957c5dba782401da0909335af8a245a1d1a4775663d2f4d",
+          "bindings": {
+            "_ZN15EventSubscriberILj12152544ELj1818424473ELj264ELj2EE10BaseEnableEv": "0xb94df0",
+            "_ZN19SubscriptionBindingILj12152544EE7contextE": "0x1935058",
+            "_ZN19SubscriptionBindingILj12152544EE8AllocateEPvm": "0xa972b0",
+            "_ZN15EventSubscriberILj12152544ELj1818424473ELj264ELj2EE7OnEventERK5Event": "0xb97960",
+            "_ZTV14MemberDelegateILj12152544E15EventSubscriberILj12152544ELj1818424473ELj264ELj2EEE": "0x18b02f0",
+            "_ZN19SubscriptionBindingILj12152544EE6InvokeEv": "0xb97970",
+            "_ZN19SubscriptionBindingILj12152544EE7managerE": "0x1935068",
+            "_ZN19SubscriptionBindingILj12152544EE7ProcessEPvS1_jS1_m": "0xbf6b10",
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
+            "_Unwind_Resume": "0xfa4920",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xb97cc0",
+          "size": 300,
+          "symbol": "_ZN15EventSubscriberILj12156096ELj1818424473ELj264ELj2EE6EnableEv",
+          "target_sha256": "09a5fc46295aa524cbea41eebcdec0aad01288c10241e6757006d4b4e99e3e75",
+          "bindings": {
+            "_ZN15EventSubscriberILj12156096ELj1818424473ELj264ELj2EE10BaseEnableEv": "0xb94df0",
+            "_ZN19SubscriptionBindingILj12156096EE7contextE": "0x1935058",
+            "_ZN19SubscriptionBindingILj12156096EE8AllocateEPvm": "0xa972b0",
+            "_ZN15EventSubscriberILj12156096ELj1818424473ELj264ELj2EE7OnEventERK5Event": "0xb98720",
+            "_ZTV14MemberDelegateILj12156096E15EventSubscriberILj12156096ELj1818424473ELj264ELj2EEE": "0x18b0518",
+            "_ZN19SubscriptionBindingILj12156096EE6InvokeEv": "0xb98730",
+            "_ZN19SubscriptionBindingILj12156096EE7managerE": "0x1935068",
+            "_ZN19SubscriptionBindingILj12156096EE7ProcessEPvS1_jS1_m": "0xbf6b10",
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
+            "_Unwind_Resume": "0xfa4920",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xca6ee0",
+          "size": 312,
+          "symbol": "_ZN15EventSubscriberILj13266656ELj1818424473ELj144ELj3EE6EnableEv",
+          "target_sha256": "8977a20203edea83c45fd27b700f213b8543c2236d1b196689de72a9c29307f3",
+          "bindings": {
+            "_ZN15EventSubscriberILj13266656ELj1818424473ELj144ELj3EE10BaseEnableEv": "0xca79e0",
+            "_ZN19SubscriptionBindingILj13266656EE7contextE": "0x1935058",
+            "_ZN19SubscriptionBindingILj13266656EE8AllocateEPvm": "0xa972b0",
+            "_ZN15EventSubscriberILj13266656ELj1818424473ELj144ELj3EE7OnEventERK5Event": "0xca7910",
+            "_ZTV14MemberDelegateILj13266656E15EventSubscriberILj13266656ELj1818424473ELj144ELj3EEE": "0x18c3bf0",
+            "_ZN19SubscriptionBindingILj13266656EE6InvokeEv": "0xca7920",
+            "_ZN19SubscriptionBindingILj13266656EE7managerE": "0x1935068",
+            "_ZN19SubscriptionBindingILj13266656EE7ProcessEPvS1_jS1_m": "0xbf6b10",
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
+            "_Unwind_Resume": "0xfa4920",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        }
+      ]
     }
   ]
 }
