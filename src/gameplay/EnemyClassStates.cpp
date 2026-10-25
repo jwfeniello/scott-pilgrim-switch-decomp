@@ -466,7 +466,7 @@ int EnemyGuyOnFire::State176(int event) {
     if (Enemy::State176(event) == kStateParentTookOver) return kStateParentTookOver;
     switch (event) {
     case kStateEnter:
-        StartAttack(&attack, false, 1, nullptr);
+        StartAttack(&attack.attack, false, 1, nullptr);
         attackTimer = 0.0f;
         attackPending = 0;
         return kStateHandled;
@@ -474,7 +474,7 @@ int EnemyGuyOnFire::State176(int event) {
         if (attackPending) {
             attackTimer += Move_FrameDelta;
             if (attackTimer >= attackDelay) {
-                StartAttack(&attack, false, 1, nullptr);
+                StartAttack(&attack.attack, false, 1, nullptr);
                 attackTimer = 0.0f;
                 attackPending = 0;
             }
@@ -490,15 +490,7 @@ int EnemyGuyOnFire::State176(int event) {
 // scales them again) and resets +0x32c,
 // +0x160, the sensor and its counters.
 void EnemyStuntman::Update() {
-    BaseCharacter::Update();
-    if (!IsHeld()) {
-        const Holder* h = attachment ? attachment : &NoHolder;
-        if (h->id - 10001u >= 989999u) Release();
-    }
-    scaled9c = base98;
-    scaled2f8 = base2f4;
-    scaled910 = specialAttack.base74;
-    Slot229();
+    UpdateEnemy();
     value32c = 0.0f;
     value160 = 1.0f;
     sensor.Reset();
@@ -607,6 +599,50 @@ bool EnemyNormal::Slot33(void* data) {
     ActorSlot33(data);
     states.Transition(State136Ptr());
     return true;
+}
+
+// Slot 16, the actor update (EnemyThief 0x9ea0d0, EnemyShooter 0x9ebc30, also
+// EnemyArZee's, EnemyJetPackMatt 0x9f1160, EnemyGodzilla 0x9f8da0, EnemyPaparazzi
+// 0x9ecd30, EnemyMini 0x9f01d0, EnemyWolverine 0x9e93f0, EnemyChubby 0x9fee90):
+// Enemy's update, then each of the class's attacks is requested with the hit
+// kind its slot 166 answers.
+void EnemyThief::Update() {
+    UpdateEnemy();
+    RequestAttack(attacks[0], 33);
+}
+void EnemyShooter::Update() {
+    UpdateEnemy();
+    RequestAttack(attacks[0], 20);
+}
+void EnemyJetPackMatt::Update() {
+    UpdateEnemy();
+    RequestAttack(attacks[0], 11);
+}
+void EnemyGodzilla::Update() {
+    UpdateEnemy();
+    RequestAttack(attacks[0], 11);
+}
+void EnemyPaparazzi::Update() {
+    UpdateEnemy();
+    RequestAttack(attacks[0], 11);
+    RequestAttack(attacks[1], 19);
+}
+void EnemyMini::Update() {
+    UpdateEnemy();
+    RequestAttack(attacks[0], 8);
+    RequestAttack(attacks[1], 11);
+}
+void EnemyWolverine::Update() {
+    UpdateEnemy();
+    RequestAttack(attacks[0], 11);
+    RequestAttack(attacks[1], 32);
+    RequestAttack(attacks[2], 33);
+}
+void EnemyChubby::Update() {
+    UpdateEnemy();
+    RequestAttack(attacks[0], 11);
+    RequestAttack(attacks[2], 39);
+    RequestAttack(attacks[1], 32);
 }
 
 }  // namespace SPTG

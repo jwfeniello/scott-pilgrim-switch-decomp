@@ -13,16 +13,27 @@ extern "C" float Move_FrameDelta;   // seconds since the last frame (0x1924d70)
 
 namespace SPTG {
 
-// An attack descriptor, as StartAttack receives it.
-struct Attack { char data[0x58]; };
-// An attack with the animation that goes with it (0x78 bytes).
+// An attack descriptor, as StartAttack receives it (0x58 bytes). A copy starts
+// with +0x2c clear and no shared handle, then assigns.
+struct Attack {
+    char data_0[0x2c];
+    int32_t value2c;                  // +0x2c
+    char data_30[0x20];
+    onyx::ComponentHandle* shared;    // +0x50: reference-counted
+    Attack(const Attack& other) : value2c(0), shared(nullptr) { *this = other; }
+    Attack& operator=(const Attack& other);   // 0x8e4450
+};
+static_assert(sizeof(Attack) == 0x58, "Attack size");
+// An attack an enemy can request (0x78 bytes): the attack states start its
+// attack, and Enemy's attack list (+0x7e8) holds copies. The kind is the hit
+// kind the class's slot 166 answers; the special attack's state plays it as an
+// animation.
 struct AttackSlot {
-    Attack attack;
-    int32_t animation;   // +0x58
-    char padding_5c[0x10];
-    int32_t kind;        // +0x6c
-    float speedScale;    // +0x70
-    float base74;        // +0x74: Enemy scales its special attack's into +0x910
+    uint64_t header[2];  // +0x0: contents unknown, copied whole
+    uint8_t flag10;      // +0x10
+    Attack attack;       // +0x18
+    int32_t kind;        // +0x70
+    uint8_t flag74;      // +0x74
 };
 static_assert(sizeof(AttackSlot) == 0x78, "AttackSlot size");
 struct BaseCharacter;

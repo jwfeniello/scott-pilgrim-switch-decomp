@@ -8,15 +8,7 @@ namespace SPTG {
 // (slot 71) when its attachment's ID is outside 10001-999999. The scaled values
 // are then reset to their bases and scaled again (slot 229).
 void Enemy::Update() {
-    BaseCharacter::Update();
-    if (!IsHeld()) {
-        const Holder* h = attachment ? attachment : &NoHolder;
-        if (h->id - 10001u >= 989999u) Release();
-    }
-    scaled9c = base98;
-    scaled2f8 = base2f4;
-    scaled910 = specialAttack.base74;
-    Slot229();
+    UpdateEnemy();
 }
 
 // Slot 41 (0x9cd820): raises +0x130, runs BaseCharacter's slot 41 and starts the
@@ -60,7 +52,7 @@ void Enemy::Slot229() {
     EnemyScaling* values = scaling.Get();
     scaled9c = base98 * values->scale + extra;
     scaled2f8 = values->scale * base2f4 + extra;
-    scaled910 = values->scale * specialAttack.base74 + extra;
+    scaled910 = values->scale * base90c + extra;
     Slot66();
     value32c = Slot150();
 }

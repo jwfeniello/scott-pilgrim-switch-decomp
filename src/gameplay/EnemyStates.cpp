@@ -204,7 +204,7 @@ int Enemy::State112(int event) {
             if (roll <= chance) {
                 Apply8e5750(124);
                 value874 = 1;
-                specialAttack.kind = 4;
+                specialType = 4;
                 skip = true;
             } else if (value874 != 0) {
                 skip = true;
@@ -270,7 +270,7 @@ int Enemy::State174(int event) {
         return kStateHandled;
     case kStateEnter: {
         value7ac = 0.0f;
-        if (specialAttack.kind >= 2 && specialAttack.kind <= 4) flag813 = 0;
+        if (specialType >= 2 && specialType <= 4) flag813 = 0;
         BaseCharacter* player = static_cast<BaseCharacter*>(target->object);
         ActorObject* actor = onyx::Find<ActorObject, onyx_types::type_6492d61d>(player->actorObject);
         Slot91(onyx::Get<onyx::Transform, onyx::kTransform>(actor->transform)->position.x);
@@ -369,7 +369,7 @@ int Enemy::State194(int event) {
             if (stateTime > dashDelay) {
                 ActorObject* actor = onyx::Find<ActorObject, onyx_types::type_6492d61d>(actorObject);
                 float direction = onyx::Get<ActorFlags, 0x2eae5813u>(actor->flags)->facingLeft ? -1.0f : 1.0f;
-                motion.x = specialAttack.speedScale * (dashSpeed * direction);
+                motion.x = specialSpeedScale * (dashSpeed * direction);
                 PlayAnimation(34, 0, 1, 1.0f);
                 stateTime = 0.0f;
             }
@@ -476,7 +476,7 @@ int Enemy::State198(int event) {
         }
         return kStateHandled;
     case kStateEnter:
-        PlayAnimation(specialAttack.animation, 0, 1, 1.0f);
+        PlayAnimation(specialAttack.kind, 0, 1, 1.0f);
         motion = onyx::Vector3::Zero();
         motionTarget = onyx::Vector3::Zero();
         StartAttack(&specialAttack.attack, false, 1, nullptr);
@@ -683,7 +683,7 @@ int Enemy::State218(int event) {
         } else {
             PlayAnimation(1, 1, 0, 1.0f);
         }
-        if (specialAttack.kind >= 2 && specialAttack.kind <= 4) flag813 = 0;
+        if (specialType >= 2 && specialType <= 4) flag813 = 0;
         mode87c = 2;
         flag9d2 = 0;
         motionTarget = onyx::Vector3::Zero();

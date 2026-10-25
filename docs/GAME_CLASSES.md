@@ -416,9 +416,29 @@ States 206 and 208 use `onyx::Vector3` arithmetic, which the compiler partly
 vectorizes. They match only with `operator-` assigning the result field by
 field.
 
-An attack slot is `0x78` bytes: the attack data StartAttack receives (`0x58`
-bytes), then the animation (`+0x58`) and a kind (`+0x6c`). Keeping the animation
-outside the attack data is what makes the special attack state match.
+An attack slot (`AttackSlot`) is `0x78` bytes: 16 bytes copied whole, a flag
+(`+0x10`), the attack data StartAttack receives (`+0x18`, `0x58` bytes), a kind
+(`+0x70`) and a flag (`+0x74`). The special attack's state plays the kind as an
+animation. Keeping it outside the attack data is what makes that state match.
+The slot layout comes from the class updates: each frame, a class copies its
+slots into Enemy's attack list at `+0x7e8` (an `onyx::Vector`), and the copy
+covers the whole `0x78` bytes. The special attack is therefore a slot at
+`+0x880`, and the type and speed scale after it (`+0x904`, `+0x908`) are
+Enemy fields.
+
+Copying a slot is a 17-byte copy, then the attack's copy constructor (it clears
+`+0x2c` and the shared handle at `+0x50`, then assigns through `0x8e4450`),
+then the kind and flag. Three details decide the match:
+
+- The 16-byte header must be made of wide elements (`uint64_t[2]` here; floats
+  or pointers work too). As `char[16]`, the copy's source address is recomputed
+  inside the block that copies.
+- The push is plain `inline` (`Enemy::RequestAttack`), not forced inline, so it
+  is optimized before it is inlined. Its list address then sits in the grow
+  branch, and a second push computes it again instead of keeping it in a
+  register.
+- `onyx::Vector::PushBack` stores the buffer that the out-of-line `Reserve`
+  returns (`0x9e8d10` for this element type).
 
 Slot 136 also shows that the compiler fills a lookup table's unused entries
 with the first case's result. The original's unused entries are 0, so its first
@@ -482,15 +502,16 @@ that form: they need `__builtin_assume`, which drops side effects.
 [`EnemyClasses.h`](../src/gameplay/EnemyClasses.h) declares all 24 regular enemy
 classes with their own states (after Enemy's slot 233, each followed by its
 getter) and the overrides the sources define.
-[`EnemyClassStates.cpp`](../src/gameplay/EnemyClassStates.cpp) matches 52 of
-their functions (6,600 bytes), mostly small.
+[`EnemyClassStates.cpp`](../src/gameplay/EnemyClassStates.cpp) matches 60 of
+their functions (9,760 bytes), mostly small.
 
 Enemy's own fields end at `+0xb79`; everything after belongs to the class.
-Classes with attacks keep them as 0x78-byte slots from `+0xba8` (EnemyNormal,
+Classes with attacks keep them as 0x78-byte slots from `+0xb90` (EnemyNormal,
 EnemyGiant and EnemyHanzo have 7). EnemyStuntman and EnemyGuyOnFire keep an
 `EnemySensor` at `+0xb90` (reset by 0x9dea60, checked by 0x9ddab0) where the
-attack classes have their first slot, so the slots cannot be Enemy's. The
-matched functions are:
+attack classes have their first slot, so the slots cannot be Enemy's.
+EnemyGuyOnFire's own slot sits at `+0xbd0` and ends where its attack delay
+(`+0xc48`) begins. The matched functions are:
 
 - Base-state overrides that run Enemy's or BaseCharacter's state first, then
   play an animation (EnemyGodzilla 124), start one of the class's attacks
@@ -526,6 +547,9 @@ matched functions are:
   with a one-shot removal (slot 200); EnemyZombie times its attack 4 (slot 202);
   EnemyGiant leaves its idle and approach states for slot 242 once 0x9fd3e0
   passes.
-- EnemyStuntman's actor update (slot 16) calls BaseCharacter's update (0x945380),
-  skipping Enemy's. Like Pickup's, it releases the stuntman when it is no longer
-  held, then copies the frame's values every frame.
+- Actor updates (slot 16) inline Enemy's update (`Enemy::UpdateEnemy`, which
+  calls BaseCharacter's update `0x945380` directly). EnemyStuntman then resets
+  its sensor and counters. EnemyThief, EnemyShooter (shared with EnemyArZee),
+  EnemyJetPackMatt, EnemyGodzilla, EnemyPaparazzi, EnemyMini, EnemyWolverine and
+  EnemyChubby request each of their attacks with the hit kind their slot 166
+  answers (EnemyChubby in the order 0, 2, 1).

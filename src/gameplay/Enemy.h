@@ -4,6 +4,7 @@
 // in Enemy even where they may belong to BaseCharacter. Names are provisional.
 #pragma once
 #include "BaseCharacter.h"
+#include "Vector.h"
 
 namespace SPTG {
 
@@ -92,7 +93,9 @@ struct Enemy : BaseCharacter {
     uint8_t flag7b9;             // +0x7b9
     char padding_7ba[0x1a];
     onyx::Vector3 savedMotion;   // +0x7d4
-    char padding_7e0[0x31];
+    char padding_7e0[0x8];
+    onyx::Vector<AttackSlot> attackList; // +0x7e8: attacks requested this frame
+    char padding_808[0x9];
     uint8_t flag811;             // +0x811: set when taking damage
     char padding_812[0x1];
     uint8_t flag813;             // +0x813
@@ -113,8 +116,11 @@ struct Enemy : BaseCharacter {
     int32_t value874;            // +0x874
     char padding_878[0x4];
     int32_t mode87c;             // +0x87c
-    char padding_880[0x18];
-    AttackSlot specialAttack;    // +0x898
+    AttackSlot specialAttack;    // +0x880
+    char padding_8f8[0xc];
+    int32_t specialType;         // +0x904
+    float specialSpeedScale;     // +0x908: scales the dash speed
+    float base90c;               // +0x90c: scaled into +0x910
     float scaled910;             // +0x910
     char padding_914[0x8];
     float attackRange;           // +0x91c
@@ -181,6 +187,27 @@ struct Enemy : BaseCharacter {
     void Apply995a30(float damage);                         // 0x995a30
     bool Check9ddab0(EnemySensor* sensor);                  // 0x9ddab0
     bool Check994610();                                     // 0x994610
+
+    // Requests a class attack for this frame, with the hit kind slot 166
+    // answers. Plain inline (not forced), so it is optimized on its own before
+    // it is inlined into each class's update.
+    void RequestAttack(AttackSlot& slot, int kind) {
+        slot.kind = kind;
+        attackList.PushBack(slot);
+    }
+
+    // The actor update Enemy and its classes share (see Enemy::Update).
+    __attribute__((always_inline)) void UpdateEnemy() {
+        BaseCharacter::Update();
+        if (!IsHeld()) {
+            const Holder* h = attachment ? attachment : &NoHolder;
+            if (h->id - 10001u >= 989999u) Release();
+        }
+        scaled9c = base98;
+        scaled2f8 = base2f4;
+        scaled910 = base90c;
+        Slot229();
+    }
 };
 static_assert(__builtin_offsetof(Enemy, stateTime) == 0x7b0, "Enemy state time");
 static_assert(__builtin_offsetof(Enemy, aiMode) == 0x824, "Enemy AI mode");
