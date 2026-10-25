@@ -305,9 +305,3 @@ assets, proprietary SDK files and compiler installations are not distributed.
 Reconstructed project source and tools are licensed under [MIT](LICENSE).
 Vendored library sources and headers retain their upstream licenses; see
 [third-party notices](THIRD_PARTY_NOTICES.md).
-
-The requested 15% milestone is reached. See [milestone findings](docs/FIFTEEN_PERCENT.md)
-and [C++ ABI recovery](docs/LEAF_RECOVERY.md) for validation and declaration limits.
-
-The next requested target is 25%. See [ongoing findings](docs/TWENTY_FIVE_PERCENT.md)
-for the current verified checkpoint and library source limitations.
