@@ -36,4 +36,12 @@ template<unsigned Key, unsigned A, unsigned B> struct Trigger : TriggerBase<Key,
     ~Trigger() override;
 };
 template<unsigned Key, unsigned A, unsigned B> Trigger<Key, A, B>::~Trigger() {}
+// The same with no parent destructor after it: Onyx::Component::Base's own,
+// whose two registrations are the events every component has (+0x8, +0x20).
+template<unsigned Key> struct RootTrigger {
+    virtual ~RootTrigger();
+    Registration<Key, 0> first;
+    Registration<Key, 1> second;
+};
+template<unsigned Key> RootTrigger<Key>::~RootTrigger() {}
 #define REGISTERED_TRIGGER(Key, A, B) template struct Trigger<Key, A, B>;

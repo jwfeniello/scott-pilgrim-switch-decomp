@@ -564,6 +564,13 @@ share one slot 4: `Onyx::Switch<Owner, Target>` (seven instances: a reference
 list of targets and a handle) and
 `Onyx::Gameplay::Circuits::Detail::BaseValuePublisherCircuit<T>` (four: an
 event whose entries each value type reads with its own function).
+`Onyx::Component::Base`'s own slot 4 (0x6782a0), which every component's
+chains to, restores the two events every component has (`+0x8`, type
+0x255c0afe, and `+0x20`, type 0x44174b43: the events ActorFlags' blinking
+sends, and the one slot 2 sends when it sets bit 2 of `+0x38`), then moves the
+flags at `+0x38`. Its destructor (0x677400) unregisters and frees the same two
+events (`RootTrigger` in
+[`RegisteredTriggerDestructor.h`](../src/RegisteredTriggerDestructor.h)).
 `Onyx::ActionComponent`'s own slot 4 (0xbcaa30) matches there; the action
 views in `ComponentSerialize.h` still derive from an empty stand-in for it.
 Some components hand a handle they just moved to the source's slot 3

@@ -1,6 +1,16 @@
 // Slot 4 of Onyx engine components (see OnyxSerialize.h and
 // docs/GAME_CLASSES.md).
 #include "OnyxSerialize.h"
+namespace Onyx { namespace Component {
+
+// 0x6782a0
+void Base::Slot4(onyx::Archive& archive, ComponentSlot::Source* source) {
+    SPTG::ReadEventSlot<6783648u, 0x255c0afeu>(archive, source, event8, this);
+    SPTG::ReadEventSlot<6783649u, 0x44174b43u>(archive, source, event20, this);
+    onyx::Transfer(archive, value38);
+}
+
+} }  // namespace Onyx::Component
 
 namespace Onyx {
 

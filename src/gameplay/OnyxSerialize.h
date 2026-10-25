@@ -7,6 +7,21 @@
 // stand-ins.
 #pragma once
 #include "ComponentSerialize.h"
+namespace Onyx { namespace Component {
+
+// Onyx::Component::Base's own slot 4 (0x6782a0), which every component's
+// chains to: the two events every component has (types 0x255c0afe and
+// 0x44174b43, the ones ActorFlags' blinking sends) and a 4-byte value. The
+// other views derive from the empty ::OnyxComponentBase stand-in instead.
+struct Base {
+    virtual ~Base();
+    SPTG::EventSlot event8;      // +0x8
+    SPTG::EventSlot event20;     // +0x20
+    uint32_t value38;            // +0x38
+    void Slot4(onyx::Archive& archive, ComponentSlot::Source* source);
+};
+
+} }  // namespace Onyx::Component
 namespace Onyx {
 
 // Onyx::Switch<Owner, Target, Meta::Null>: the targets it switches between (a
