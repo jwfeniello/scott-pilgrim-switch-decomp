@@ -204,4 +204,71 @@ void BaseCharacter::Slot90(float value) {
     value32c = scaled2f8 < clamped ? scaled2f8 : clamped;
 }
 
+// BaseCharacter 0x96a2f0: AnimatedAiActor's, a handle and three component
+// slots, the attack at +0x258, the settings, nine event slots (read in place)
+// and the two attacks of slot 35.
+void BaseCharacter::Slot4(onyx::Archive& archive, ComponentSlot::Source* source) {
+    ActorSlot4(archive, source);
+    onyx::TransferHandle(handle1e8, archive, source);
+    AssignComponentSlot<9864096u, 42196088u>(&slot1f0, source);
+    AssignComponentSlot<7920224u, 493361733u>(&settings, source);
+    AssignComponentSlot<8990432u, 1141032170u>(&slot200, source);
+    attack258.Serialize(archive);
+    onyx::Transfer(archive, value2b0);
+    onyx::Transfer(archive, value2b4);
+    onyx::Transfer(archive, value2b8);
+    onyx::Transfer(archive, savedZ);
+    onyx::Transfer(archive, savedC4);
+    onyx::Transfer(archive, value2c4);
+    onyx::Transfer(archive, value2c8);
+    onyx::Transfer(archive, value2cc);
+    onyx::Transfer(archive, value2d0);
+    onyx::Transfer(archive, value2d4);
+    onyx::Transfer(archive, value2d8);
+    onyx::Transfer(archive, value2dc);
+    onyx::Transfer(archive, jumpBackSpeed);
+    onyx::Transfer(archive, slideThreshold);
+    onyx::Transfer(archive, value2e8);
+    onyx::Transfer(archive, slideSpeed);
+    onyx::Transfer(archive, value2f0);
+    onyx::Transfer(archive, base2f4);
+    onyx::Transfer(archive, value2fc);
+    onyx::Transfer(archive, value300);
+    onyx::Transfer(archive, value304);
+    onyx::Transfer(archive, value308);
+    onyx::Transfer(archive, value30c);
+    onyx::Transfer(archive, value310);
+    onyx::Transfer(archive, value314);
+    onyx::Transfer(archive, value318);
+    onyx::Transfer(archive, value31c);
+    onyx::Transfer(archive, value320);
+    onyx::Transfer(archive, value324);
+    onyx::Transfer(archive, restitution);
+    onyx::Transfer(archive, value3b4);
+    ReadEventSlot<9872112u, 2018975792u>(archive, source, event3c0, this);
+    ReadEventSlot<9872113u, 259057763u>(archive, source, event3d8, this);
+    ReadEventSlot<9872114u, 455822691u>(archive, source, event3f0, this);
+    ReadEventSlot<9872115u, 1975766783u>(archive, source, event408, this);
+    ReadEventSlot<9872116u, 2050208753u>(archive, source, event420, this);
+    ReadEventSlot<9872117u, 1251657038u>(archive, source, event438, this);
+    ReadEventSlot<9872118u, 1740419639u>(archive, source, event450, this);
+    ReadEventSlot<9872119u, 870019213u>(archive, source, event468, this);
+    onyx::Transfer(archive, value50c);
+    onyx::Transfer(archive, value514);
+    onyx::Transfer(archive, rate518);
+    onyx::Transfer(archive, stunDuration);
+    onyx::Transfer(archive, stunDuration2);
+    onyx::Transfer(archive, value524);
+    onyx::Transfer(archive, value528);
+    attack530.Serialize(archive);
+    attack588.Serialize(archive);
+    onyx::Transfer(archive, value5e0);
+    onyx::Transfer(archive, value5e4);
+    onyx::Transfer(archive, value5e8);
+    onyx::Transfer(archive, value5ec);
+    ReadEventSlot<9872120u, 740840452u>(archive, source, event750, this);
+    onyx::Transfer(archive, flag775);
+    onyx::Transfer(archive, value778);
+}
+
 }  // namespace SPTG

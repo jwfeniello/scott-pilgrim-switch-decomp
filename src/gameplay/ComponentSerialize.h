@@ -465,10 +465,10 @@ struct InteractiveObject : AnimatedAiActorView {
     void Slot4(onyx::Archive& archive, ComponentSlot::Source* source);   // 0x9c4890
     char padding_184[0x64];
     void* slot1e8;               // +0x1e8
-    CallbackList callbacks1f0;   // +0x1f0
-    CallbackList callbacks208;   // +0x208
-    CallbackList callbacks220;   // +0x220
-    CallbackList callbacks238;   // +0x238
+    EventSlot event1f0;   // +0x1f0
+    EventSlot event208;   // +0x208
+    EventSlot event220;   // +0x220
+    EventSlot event238;   // +0x238
     char padding_250[0x30];
     Attack attack280;            // +0x280
     Attack attack2d8;            // +0x2d8
@@ -517,7 +517,7 @@ struct LeaderboardMenu : FlashMenuBase {
     onyx::ComponentHandle* handle2c8; // +0x2c8
     onyx::ComponentHandle* handle2d0; // +0x2d0
     char padding_2d8[0x18];
-    CallbackList callbacks2f0;   // +0x2f0
+    EventSlot event2f0;   // +0x2f0
     char padding_308[0x14];
     int32_t value31c;            // +0x31c
 };
@@ -538,7 +538,7 @@ struct BaseBossAI : OnyxComponentBase {
     char padding_0[0x58];
     void* slot58;                // +0x58
     char padding_60[0x60];
-    CallbackList callbacksC0;    // +0xc0
+    EventSlot eventC0;    // +0xc0
 };
 // ActionStep (named apart from another declaration)
 struct ActionStepView : OnyxActionComponent {
@@ -547,7 +547,7 @@ struct ActionStepView : OnyxActionComponent {
     ReferenceList referencesA0;  // +0xa0
     void* slotC8;                // +0xc8
     void* slotD0;                // +0xd0
-    CallbackList callbacksD8;    // +0xd8
+    EventSlot eventD8;    // +0xd8
 };
 // NotificationFilterEvent
 struct NotificationFilterEvent : OnyxComponentBase {
@@ -555,7 +555,7 @@ struct NotificationFilterEvent : OnyxComponentBase {
     char padding_0[0x50];
     onyx::ComponentHandle* handle50; // +0x50
     char padding_58[0x18];
-    CallbackList callbacks70;    // +0x70
+    EventSlot event70;    // +0x70
     int32_t value88;             // +0x88
 };
 // WaitForEventCount
@@ -563,7 +563,7 @@ struct WaitForEventCount : OnyxActionComponent {
     void Slot4(onyx::Archive& archive, ComponentSlot::Source* source);   // 0x8f2470
     char padding_0[0xa0];
     void* slotA0;                // +0xa0
-    CallbackList callbacksA8;    // +0xa8
+    EventSlot eventA8;    // +0xa8
     uint8_t flagC0;              // +0xc0
     char padding_c1[0x3];
     int32_t valueC4;             // +0xc4
@@ -575,7 +575,7 @@ struct StatisticsNotifier : OnyxComponentBase {
     char padding_0[0x50];
     void* slot50;                // +0x50
     void* slot58;                // +0x58
-    CallbackList callbacks60;    // +0x60
+    EventSlot event60;    // +0x60
     int32_t value78;             // +0x78
     char padding_7c[0xc];
     int32_t value88;             // +0x88
@@ -587,7 +587,7 @@ struct ChaseModeAction : OnyxActionComponent {
     char padding_0[0xa0];
     onyx::ComponentHandle* handleA0; // +0xa0
     void* slotA8;                // +0xa8
-    CallbackList callbacksB0;    // +0xb0
+    EventSlot eventB0;    // +0xb0
     char padding_c8[0x8];
     int32_t valueD0;             // +0xd0
     char padding_d4[0x4];
@@ -603,8 +603,8 @@ struct MechanismObject : AnimatedAiActorView {
     onyx::ComponentHandle* handle1e8; // +0x1e8
     onyx::ComponentHandle* handle1f0; // +0x1f0
     onyx::ComponentHandle* handle1f8; // +0x1f8
-    CallbackList callbacks200;   // +0x200
-    CallbackList callbacks218;   // +0x218
+    EventSlot event200;   // +0x200
+    EventSlot event218;   // +0x218
     uint8_t flag230;             // +0x230
     char padding_231[0x3];
     int32_t value234;            // +0x234
@@ -614,8 +614,8 @@ struct TimerAction : OnyxActionComponent {
     void Slot4(onyx::Archive& archive, ComponentSlot::Source* source);   // 0x8f6540
     char padding_0[0xa0];
     onyx::ComponentHandle* handleA0; // +0xa0
-    CallbackList callbacksA8;    // +0xa8
-    CallbackList callbacksC0;    // +0xc0
+    EventSlot eventA8;    // +0xa8
+    EventSlot eventC0;    // +0xc0
     uint8_t flagD8;              // +0xd8
     uint8_t flagD9;              // +0xd9
     char padding_da[0x2];
@@ -636,9 +636,9 @@ struct ActionTrigger : OnyxComponentBase {
     void* slot90;                // +0x90
     void* slot98;                // +0x98
     char padding_a0[0x8];
-    CallbackList callbacksA8;    // +0xa8
-    CallbackList callbacksC0;    // +0xc0
-    CallbackList callbacksD8;    // +0xd8
+    EventSlot eventA8;    // +0xa8
+    EventSlot eventC0;    // +0xc0
+    EventSlot eventD8;    // +0xd8
     char padding_f0[0x34];
     int32_t value124;            // +0x124
     uint8_t flag128;             // +0x128
@@ -655,7 +655,7 @@ struct ActorTrapAction : OnyxActionComponent {
     char padding_aa[0x6];
     void* slotB0;                // +0xb0
     void* slotB8;                // +0xb8
-    CallbackList callbacksC0;    // +0xc0
+    EventSlot eventC0;    // +0xc0
     int32_t valueD8;             // +0xd8
     int32_t valueDc;             // +0xdc
     int32_t valueE0;             // +0xe0
@@ -675,24 +675,24 @@ struct ActorTrapAction : OnyxActionComponent {
 struct PublisherScreen : FlashMenuBase {
     void Slot4(onyx::Archive& archive, ComponentSlot::Source* source);   // 0x824b50
     char padding_0[0x2b8];
-    CallbackList callbacks2b8;   // +0x2b8
-    CallbackList callbacks2d0;   // +0x2d0
+    EventSlot event2b8;   // +0x2b8
+    EventSlot event2d0;   // +0x2d0
 };
 // LoadingNotifier
 struct LoadingNotifier : OnyxComponentBase {
     void Slot4(onyx::Archive& archive, ComponentSlot::Source* source);   // 0x8497b0
     char padding_0[0x50];
     void* slot50;                // +0x50
-    CallbackList callbacks58;    // +0x58
-    CallbackList callbacks70;    // +0x70
+    EventSlot event58;    // +0x58
+    EventSlot event70;    // +0x70
 };
 // GamePauseMonitor
 struct GamePauseMonitor : OnyxComponentBase {
     void Slot4(onyx::Archive& archive, ComponentSlot::Source* source);   // 0x934f90
     char padding_0[0x50];
     void* slot50;                // +0x50
-    CallbackList callbacks58;    // +0x58
-    CallbackList callbacks70;    // +0x70
+    EventSlot event58;    // +0x58
+    EventSlot event70;    // +0x70
 };
 // NetworkPhase
 struct NetworkPhase : PhaseBase {
@@ -701,16 +701,16 @@ struct NetworkPhase : PhaseBase {
     void* slot60;                // +0x60
     void* slot68;                // +0x68
     void* slot70;                // +0x70
-    CallbackList callbacks78;    // +0x78
-    CallbackList callbacks90;    // +0x90
+    EventSlot event78;    // +0x78
+    EventSlot event90;    // +0x90
 };
 // CheckLevelUnlokcedAction
 struct CheckLevelUnlokcedAction : OnyxActionComponent {
     void Slot4(onyx::Archive& archive, ComponentSlot::Source* source);   // 0x909290
     char padding_0[0xa0];
     void* slotA0;                // +0xa0
-    CallbackList callbacksA8;    // +0xa8
-    CallbackList callbacksC0;    // +0xc0
+    EventSlot eventA8;    // +0xa8
+    EventSlot eventC0;    // +0xc0
     int32_t valueD8;             // +0xd8
 };
 // GamePurchaser
@@ -723,8 +723,8 @@ struct GamePurchaser : OnyxComponentBase {
     void* slot68;                // +0x68
     void* slot70;                // +0x70
     void* slot78;                // +0x78
-    CallbackList callbacks80;    // +0x80
-    CallbackList callbacks98;    // +0x98
+    EventSlot event80;    // +0x80
+    EventSlot event98;    // +0x98
 };
 // CameraTrigger
 struct CameraTrigger : OnyxComponentBase {
@@ -733,8 +733,8 @@ struct CameraTrigger : OnyxComponentBase {
     ReferenceList references50;  // +0x50
     ReferenceList references78;  // +0x78
     void* slotA0;                // +0xa0
-    CallbackList callbacksA8;    // +0xa8
-    CallbackList callbacksC0;    // +0xc0
+    EventSlot eventA8;    // +0xa8
+    EventSlot eventC0;    // +0xc0
     uint8_t flagD8;              // +0xd8
     char padding_d9[0x3];
     int32_t valueDc;             // +0xdc
@@ -758,8 +758,8 @@ struct PickupView : AnimatedAiActorView {
     uint8_t flag23a;             // +0x23a
     char padding_23b[0x1];
     int32_t value23c;            // +0x23c
-    CallbackList callbacks240;   // +0x240
-    CallbackList callbacks258;   // +0x258
+    EventSlot event240;   // +0x240
+    EventSlot event258;   // +0x258
 };
 // ExtraModeScoringAction
 struct ExtraModeScoringAction : OnyxActionComponent {
@@ -776,9 +776,9 @@ struct ExtraModeScoringAction : OnyxActionComponent {
     void* slotE0;                // +0xe0
     void* slotE8;                // +0xe8
     void* slotF0;                // +0xf0
-    CallbackList callbacksF8;    // +0xf8
-    CallbackList callbacks110;   // +0x110
-    CallbackList callbacks128;   // +0x128
+    EventSlot eventF8;    // +0xf8
+    EventSlot event110;   // +0x110
+    EventSlot event128;   // +0x128
     int32_t value140;            // +0x140
     int32_t value144;            // +0x144
     int32_t value148;            // +0x148
@@ -794,9 +794,9 @@ struct ExtraModeScoringAction : OnyxActionComponent {
 struct LaserBeams : AnimatedAiActorView {
     void Slot4(onyx::Archive& archive, ComponentSlot::Source* source);   // 0x9bc5e0
     char padding_184[0x6c];
-    CallbackList callbacks1f0;   // +0x1f0
-    CallbackList callbacks208;   // +0x208
-    CallbackList callbacks220;   // +0x220
+    EventSlot event1f0;   // +0x1f0
+    EventSlot event208;   // +0x208
+    EventSlot event220;   // +0x220
     char padding_238[0x8];
     int32_t value240;            // +0x240
     uint8_t flag244;             // +0x244
@@ -808,12 +808,12 @@ struct LaserBeams : AnimatedAiActorView {
 struct Projectile : AnimatedAiActorView {
     void Slot4(onyx::Archive& archive, ComponentSlot::Source* source);   // 0x958dd0
     char padding_184[0x6c];
-    CallbackList callbacks1f0;   // +0x1f0
-    CallbackList callbacks208;   // +0x208
-    CallbackList callbacks220;   // +0x220
-    CallbackList callbacks238;   // +0x238
-    CallbackList callbacks250;   // +0x250
-    CallbackList callbacks268;   // +0x268
+    EventSlot event1f0;   // +0x1f0
+    EventSlot event208;   // +0x208
+    EventSlot event220;   // +0x220
+    EventSlot event238;   // +0x238
+    EventSlot event250;   // +0x250
+    EventSlot event268;   // +0x268
     char padding_280[0x30];
     int32_t value2b0;            // +0x2b0
     int32_t value2b4;            // +0x2b4
@@ -857,23 +857,23 @@ struct WorldMapNavigator : PhaseBase {
     void* slotA0;                // +0xa0
     void* slotA8;                // +0xa8
     void* slotB0;                // +0xb0
-    CallbackList callbacksB8;    // +0xb8
-    CallbackList callbacksD0;    // +0xd0
-    CallbackList callbacksE8;    // +0xe8
-    CallbackList callbacks100;   // +0x100
-    CallbackList callbacks118;   // +0x118
-    CallbackList callbacks130;   // +0x130
-    CallbackList callbacks148;   // +0x148
-    CallbackList callbacks160;   // +0x160
-    CallbackList callbacks178;   // +0x178
-    CallbackList callbacks190;   // +0x190
-    CallbackList callbacks1a8;   // +0x1a8
-    CallbackList callbacks1c0;   // +0x1c0
-    CallbackList callbacks1d8;   // +0x1d8
-    CallbackList callbacks1f0;   // +0x1f0
-    CallbackList callbacks208;   // +0x208
-    CallbackList callbacks220;   // +0x220
-    CallbackList callbacks238;   // +0x238
+    EventSlot eventB8;    // +0xb8
+    EventSlot eventD0;    // +0xd0
+    EventSlot eventE8;    // +0xe8
+    EventSlot event100;   // +0x100
+    EventSlot event118;   // +0x118
+    EventSlot event130;   // +0x130
+    EventSlot event148;   // +0x148
+    EventSlot event160;   // +0x160
+    EventSlot event178;   // +0x178
+    EventSlot event190;   // +0x190
+    EventSlot event1a8;   // +0x1a8
+    EventSlot event1c0;   // +0x1c0
+    EventSlot event1d8;   // +0x1d8
+    EventSlot event1f0;   // +0x1f0
+    EventSlot event208;   // +0x208
+    EventSlot event220;   // +0x220
+    EventSlot event238;   // +0x238
     char padding_250[0x30];
     int32_t value280;            // +0x280
 };
@@ -889,21 +889,21 @@ struct MatchmakingDiscoverer : OnyxComponentBase {
     void* slot78;                // +0x78
     void* slot80;                // +0x80
     void* slot88;                // +0x88
-    CallbackList callbacks90;    // +0x90
-    CallbackList callbacksA8;    // +0xa8
-    CallbackList callbacksC0;    // +0xc0
-    CallbackList callbacksD8;    // +0xd8
-    CallbackList callbacksF0;    // +0xf0
-    CallbackList callbacks108;   // +0x108
-    CallbackList callbacks120;   // +0x120
-    CallbackList callbacks138;   // +0x138
-    CallbackList callbacks150;   // +0x150
-    CallbackList callbacks168;   // +0x168
+    EventSlot event90;    // +0x90
+    EventSlot eventA8;    // +0xa8
+    EventSlot eventC0;    // +0xc0
+    EventSlot eventD8;    // +0xd8
+    EventSlot eventF0;    // +0xf0
+    EventSlot event108;   // +0x108
+    EventSlot event120;   // +0x120
+    EventSlot event138;   // +0x138
+    EventSlot event150;   // +0x150
+    EventSlot event168;   // +0x168
     char padding_180[0x28];
-    CallbackList callbacks1a8;   // +0x1a8
-    CallbackList callbacks1c0;   // +0x1c0
-    CallbackList callbacks1d8;   // +0x1d8
-    CallbackList callbacks1f0;   // +0x1f0
+    EventSlot event1a8;   // +0x1a8
+    EventSlot event1c0;   // +0x1c0
+    EventSlot event1d8;   // +0x1d8
+    EventSlot event1f0;   // +0x1f0
 };
 
 // EventTrigger
@@ -912,17 +912,121 @@ struct EventTrigger : OnyxComponentBase {
     char padding_0[0x4a];
     uint8_t flag4a;              // +0x4a
     char padding_4b[0x5];
-    CallbackList callbacks50;    // +0x50
-    CallbackList callbacks68;    // +0x68
+    EventSlot event50;    // +0x50
+    EventSlot event68;    // +0x68
 };
 // DialogBox
 struct DialogBox : FlashMenuBase {
     void Slot4(onyx::Archive& archive, ComponentSlot::Source* source);   // 0x86e760
     char padding_0[0x2b0];
     void* slot2b0;               // +0x2b0
-    CallbackList callbacks2b8;   // +0x2b8
-    CallbackList callbacks2d0;   // +0x2d0
+    EventSlot event2b8;   // +0x2b8
+    EventSlot event2d0;   // +0x2d0
     int32_t value2e8;            // +0x2e8
+};
+
+// AudioListPlayer
+struct AudioListPlayer : OnyxComponentBase {
+    void Slot4(onyx::Archive& archive, ComponentSlot::Source* source);   // 0x936320
+    char padding_0[0x50];
+    onyx::ComponentHandle* handle50; // +0x50
+    int32_t value58;             // +0x58
+    char padding_5c[0x4];
+    onyx::Vector<uint32_t> vector60; // +0x60
+};
+// MoveIconInWorldMapAction
+struct MoveIconInWorldMapAction : OnyxActionComponent {
+    void Slot4(onyx::Archive& archive, ComponentSlot::Source* source);   // 0x8f0a20
+    char padding_0[0xa0];
+    onyx::ComponentHandle* handleA0; // +0xa0
+    onyx::ComponentHandle* handleA8; // +0xa8
+    void* slotB0;                // +0xb0
+    int32_t valueB8;             // +0xb8
+    int32_t valueBc;             // +0xbc
+    onyx::String stringC0;       // +0xc0
+    onyx::String stringD0;       // +0xd0
+    uint8_t flagE0;              // +0xe0
+};
+// AnimationInfoHolderBank
+struct AnimationInfoHolderBank : OnyxComponentBase {
+    void Slot4(onyx::Archive& archive, ComponentSlot::Source* source);   // 0x8ceb90
+    char padding_0[0x50];
+    onyx::ComponentHandle* handle50; // +0x50
+    onyx::ComponentHandle* handle58; // +0x58
+    onyx::Array<int32_t> array60; // +0x60
+};
+// ActorEdgeNavigationAction
+struct ActorEdgeNavigationAction : OnyxActionComponent {
+    void Slot4(onyx::Archive& archive, ComponentSlot::Source* source);   // 0x8e98a0
+    char padding_0[0xa8];
+    uint8_t flagA8;              // +0xa8
+    uint8_t flagA9;              // +0xa9
+    char padding_aa[0x6];
+    onyx::ComponentHandle* handleB0; // +0xb0
+    onyx::Array<uint8_t> arrayB8; // +0xb8
+};
+// PlayerInfo
+struct PlayerInfo : OnyxComponentBase {
+    void Slot4(onyx::Archive& archive, ComponentSlot::Source* source);   // 0x95d090
+    char padding_0[0x50];
+    onyx::ComponentHandle* handle50; // +0x50
+    onyx::ComponentHandle* handle58; // +0x58
+    char padding_60[0x10];
+    onyx::Array<int32_t> array70; // +0x70
+    int32_t value90;             // +0x90
+    uint8_t flag94;              // +0x94
+};
+// WorldMapWaypoint
+struct WorldMapWaypoint : OnyxComponentBase {
+    void Slot4(onyx::Archive& archive, ComponentSlot::Source* source);   // 0x7655b0
+    char padding_0[0x50];
+    void* slot50;                // +0x50
+    void* slot58;                // +0x58
+    onyx::ComponentHandle* handle60; // +0x60
+    void* slot68;                // +0x68
+    onyx::ComponentHandle* handle70; // +0x70
+    onyx::ComponentHandle* handle78; // +0x78
+    onyx::ComponentHandle* handle80; // +0x80
+    onyx::ComponentHandle* handle88; // +0x88
+    onyx::ComponentHandle* handle90; // +0x90
+    onyx::ComponentHandle* handle98; // +0x98
+    EventSlot eventA0;           // +0xa0
+    EventSlot eventB8;           // +0xb8
+    int32_t valueD0;             // +0xd0
+    int32_t valueD4;             // +0xd4
+    onyx::String stringD8;       // +0xd8
+};
+// ItemShop
+struct ItemShop : OnyxComponentBase {
+    void Slot4(onyx::Archive& archive, ComponentSlot::Source* source);   // 0x892550
+    char padding_0[0x50];
+    ReferenceList references50;  // +0x50
+    ReferenceList references78;  // +0x78
+    void* slotA0;                // +0xa0
+    void* slotA8;                // +0xa8
+    void* slotB0;                // +0xb0
+    void* slotB8;                // +0xb8
+    void* slotC0;                // +0xc0
+    void* slotC8;                // +0xc8
+    void* slotD0;                // +0xd0
+    onyx::Vector<uint32_t> vectorD8; // +0xd8
+    char padding_f8[0x8];
+    onyx::Vector<uint32_t> vector100; // +0x100
+    char padding_120[0x8];
+    int32_t value128;            // +0x128
+    int32_t value12c;            // +0x12c
+    int32_t value130;            // +0x130
+    int32_t value134;            // +0x134
+    int32_t value138;            // +0x138
+    int32_t value13c;            // +0x13c
+    int32_t value140;            // +0x140
+    int32_t value144;            // +0x144
+    int32_t value148;            // +0x148
+    int32_t value14c;            // +0x14c
+    int32_t value150;            // +0x150
+    int32_t value154;            // +0x154
+    int32_t value158;            // +0x158
+    int32_t value15c;            // +0x15c
 };
 
 }  // namespace SPTG

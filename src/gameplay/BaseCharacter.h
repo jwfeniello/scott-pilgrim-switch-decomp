@@ -270,9 +270,11 @@ struct BaseCharacter : onyx::Component {
     onyx::Vector3 motionTarget;  // +0x1b0
     char padding_1bc[0x8];
     float motionC4;              // +0x1c4
-    char padding_1c8[0x30];
+    char padding_1c8[0x20];
+    onyx::ComponentHandle* handle1e8; // +0x1e8
+    void* slot1f0;               // +0x1f0: filled by AssignComponentSlot
     Singleton<CharacterSettings> settings; // +0x1f8
-    char padding_200[0x8];
+    void* slot200;               // +0x200: filled by AssignComponentSlot
     StateMachine<BaseCharacter> states; // +0x208
     int32_t value230;            // +0x230
     char padding_234[0x4];
@@ -280,19 +282,36 @@ struct BaseCharacter : onyx::Component {
     onyx::ComponentHandle* held; // +0x240: owned reference, dropped by ReleaseHeld
     char padding_248[0x10];
     Attack attack258;            // +0x258: started by Enemy's slot 41
-    char padding_2b0[0xc];
+    int32_t value2b0;            // +0x2b0
+    int32_t value2b4;            // +0x2b4
+    int32_t value2b8;            // +0x2b8
     float savedZ;                // +0x2bc: restored into motionTarget.z
     float savedC4;               // +0x2c0: restored into motionC4
     float value2c4;              // +0x2c4
-    char padding_2c8[0x18];
+    int32_t value2c8;            // +0x2c8
+    int32_t value2cc;            // +0x2cc
+    int32_t value2d0;            // +0x2d0
+    int32_t value2d4;            // +0x2d4
+    int32_t value2d8;            // +0x2d8
+    int32_t value2dc;            // +0x2dc
     float jumpBackSpeed;         // +0x2e0
     float slideThreshold;        // +0x2e4
-    char padding_2e8[0x4];
+    int32_t value2e8;            // +0x2e8
     float slideSpeed;            // +0x2ec
-    char padding_2f0[0x4];
+    int32_t value2f0;            // +0x2f0
     float base2f4;               // +0x2f4: scaled into +0x2f8
     float scaled2f8;             // +0x2f8
-    char padding_2fc[0x2c];
+    int32_t value2fc;            // +0x2fc
+    int32_t value300;            // +0x300
+    int32_t value304;            // +0x304
+    int32_t value308;            // +0x308
+    int32_t value30c;            // +0x30c
+    int32_t value310;            // +0x310
+    int32_t value314;            // +0x314
+    int32_t value318;            // +0x318
+    int32_t value31c;            // +0x31c
+    int32_t value320;            // +0x320
+    int32_t value324;            // +0x324
     float value328;              // +0x328
     float value32c;              // +0x32c
     float timer330;              // +0x330
@@ -305,14 +324,21 @@ struct BaseCharacter : onyx::Component {
     float positionYZ;            // +0x3a8: position Y plus Z
     char padding_3ac[0x4];
     float restitution;           // +0x3b0
-    char padding_3b4[0x5];
+    int32_t value3b4;            // +0x3b4
+    char padding_3b8[0x1];
     uint8_t skipFrame;           // +0x3b9: set on entry; the first update is skipped
     uint8_t flag3ba;             // +0x3ba
     uint8_t flag3bb;             // +0x3bb
     char padding_3bc[0x4];
-    onyx::EventCallback* event3c0Callback; // +0x3c0
-    onyx::EventTarget* event3c0Target; // +0x3c8
-    char padding_3d0[0xb8];
+    EventSlot event3c0;          // +0x3c0: sent when Enemy state 98 starts
+    EventSlot event3d8;          // +0x3d8
+    EventSlot event3f0;          // +0x3f0
+    EventSlot event408;          // +0x408
+    EventSlot event420;          // +0x420
+    EventSlot event438;          // +0x438
+    EventSlot event450;          // +0x450
+    EventSlot event468;          // +0x468
+    char padding_480[0x8];
     onyx::ComponentHandle* holder; // +0x488
     char padding_490[0x48];
     int32_t holderMode;          // +0x4d8
@@ -321,7 +347,9 @@ struct BaseCharacter : onyx::Component {
     char padding_4e8[0x18];
     int32_t actionMode;          // +0x500
     uint32_t flags504;           // +0x504: bit flags
-    char padding_508[0xc];
+    char padding_508[0x4];
+    int32_t value50c;            // +0x50c
+    char padding_510[0x4];
     float value514;              // +0x514: slot 93 switches state at or below this
     float rate518;               // +0x518: +0x328 regained per second (slot 13)
     float stunDuration;          // +0x51c
@@ -331,17 +359,24 @@ struct BaseCharacter : onyx::Component {
     char padding_52c[0x4];
     Attack attack530;            // +0x530: started by slot 35
     Attack attack588;            // +0x588: started by slot 35 with its flag set
-    char padding_5e0[0x168];
+    int32_t value5e0;            // +0x5e0
+    int32_t value5e4;            // +0x5e4
+    int32_t value5e8;            // +0x5e8
+    int32_t value5ec;            // +0x5ec
+    char padding_5f0[0x158];
     uint8_t flag748;             // +0x748
     char padding_749[0x7];
-    onyx::EventCallback* event750Callback; // +0x750
-    onyx::EventTarget* event750Target; // +0x758
-    char padding_760[0x10];
+    EventSlot event750;          // +0x750: sent when state 116 starts
+    char padding_768[0x8];
     float timer770;              // +0x770: counted down by slot 154
     uint8_t flag774;             // +0x774
+    uint8_t flag775;             // +0x775
+    char padding_776[0x2];
+    int32_t value778;            // +0x778
 
     void ReleaseHeld(bool flag, float x, float y);   // 0x976fb0: drops the reference at +0x240
     void RecordHit(void* hit);                         // 0x977190
+    void ActorSlot4(onyx::Archive& archive, ComponentSlot::Source* source);   // 0x945fe0: AnimatedAiActor's slot 4
     void ActorSlot32();                                // 0x93fec0: AnimatedAiActor's slot 32
     void ActorSlot33(void* data);                      // 0x940170: AnimatedAiActor's slot 33
     void ActorSlot13();                                // 0x945670: AnimatedAiActor's slot 13
@@ -379,7 +414,194 @@ struct ControllablePlayer : BaseCharacter {
     void Slot4(onyx::Archive& archive, ComponentSlot::Source* source);   // slot 4 (0x978660)
     virtual void OnMessage(CharacterMessage* message);   // slot 159
     void Notify80f430(int value);                        // 0x80f430
+
+    char padding_77c[0xc];
+    void* slot788;               // +0x788
+    void* slot790;               // +0x790
+    void* slot798;               // +0x798
+    void* slot7a0;               // +0x7a0
+    void* slot7a8;               // +0x7a8
+    void* slot7b0;               // +0x7b0
+    void* slot7b8;               // +0x7b8
+    void* slot7c0;               // +0x7c0
+    void* slot7c8;               // +0x7c8
+    void* slot7d0;               // +0x7d0
+    onyx::ComponentHandle* handle7d8; // +0x7d8
+    onyx::ComponentHandle* handle7e0; // +0x7e0
+    char padding_7e8[0x18];
+    EventSlot event800;          // +0x800
+    EventSlot event818;          // +0x818
+    EventSlot event830;          // +0x830
+    EventSlot event848;          // +0x848
+    int32_t value860;            // +0x860
+    int32_t value864;            // +0x864
+    int32_t value868;            // +0x868
+    int32_t value86c;            // +0x86c
+    int32_t value870;            // +0x870
+    int32_t value874;            // +0x874
+    int32_t value878;            // +0x878
+    int32_t value87c;            // +0x87c
+    int32_t value880;            // +0x880
+    int32_t value884;            // +0x884
+    int32_t value888;            // +0x888
+    int32_t value88c;            // +0x88c
+    int32_t value890;            // +0x890
+    int32_t value894;            // +0x894
+    int32_t value898;            // +0x898
+    int32_t value89c;            // +0x89c
+    int32_t value8a0;            // +0x8a0
+    int32_t value8a4;            // +0x8a4
+    int32_t value8a8;            // +0x8a8
+    int32_t value8ac;            // +0x8ac
+    int32_t value8b0;            // +0x8b0
+    int32_t value8b4;            // +0x8b4
+    int32_t value8b8;            // +0x8b8
+    int32_t value8bc;            // +0x8bc
+    int32_t value8c0;            // +0x8c0
+    int32_t value8c4;            // +0x8c4
+    int32_t value8c8;            // +0x8c8
+    int32_t value8cc;            // +0x8cc
+    int32_t value8d0;            // +0x8d0
+    int32_t value8d4;            // +0x8d4
+    int32_t value8d8;            // +0x8d8
+    char padding_8dc[0x4];
+    Attack attack8e0;            // +0x8e0
+    Attack attack938;            // +0x938
+    Attack attack990;            // +0x990
+    Attack attack9e8;            // +0x9e8
+    Attack attackA40;            // +0xa40
+    Attack attackA98;            // +0xa98
+    Attack attackAf0;            // +0xaf0
+    Attack attackB48;            // +0xb48
+    Attack attackBa0;            // +0xba0
+    Attack attackBf8;            // +0xbf8
+    Attack attackC50;            // +0xc50
+    Attack attackCa8;            // +0xca8
+    Attack attackD00;            // +0xd00
+    Attack attackD58;            // +0xd58
+    Attack attackDb0;            // +0xdb0
+    Attack attackE08;            // +0xe08
+    Attack attackE60;            // +0xe60
+    Attack attackEb8;            // +0xeb8
+    Attack attackF10;            // +0xf10
+    Attack attackF68;            // +0xf68
+    Attack attackFc0;            // +0xfc0
+    Attack attack1018;           // +0x1018
+    Attack attack1070;           // +0x1070
+    Attack attack10c8;           // +0x10c8
+    Attack attack1120;           // +0x1120
+    Attack attack1178;           // +0x1178
+    uint8_t flag11d0;            // +0x11d0
+    char padding_11d1[0x3];
+    int32_t value11d4;           // +0x11d4
+    int32_t value11d8;           // +0x11d8
+    int32_t value11dc;           // +0x11dc
+    uint8_t flag11e0;            // +0x11e0
+    char padding_11e1[0x3];
+    int32_t value11e4;           // +0x11e4
+    int32_t value11e8;           // +0x11e8
+    int32_t value11ec;           // +0x11ec
+    uint8_t flag11f0;            // +0x11f0
+    char padding_11f1[0x3];
+    int32_t value11f4;           // +0x11f4
+    int32_t value11f8;           // +0x11f8
+    int32_t value11fc;           // +0x11fc
+    int32_t value1200;           // +0x1200
+    int32_t value1204;           // +0x1204
+    int32_t value1208;           // +0x1208
+    int32_t value120c;           // +0x120c
+    int32_t value1210;           // +0x1210
+    int32_t value1214;           // +0x1214
+    int32_t value1218;           // +0x1218
+    int32_t value121c;           // +0x121c
+    int32_t value1220;           // +0x1220
+    int32_t value1224;           // +0x1224
+    int32_t value1228;           // +0x1228
+    int32_t value122c;           // +0x122c
+    int32_t value1230;           // +0x1230
+    int32_t value1234;           // +0x1234
+    char padding_1238[0x10];
+    int32_t value1248;           // +0x1248
+    char padding_124c[0x4];
+    int32_t value1250;           // +0x1250
+    int32_t value1254;           // +0x1254
+    uint8_t flag1258;            // +0x1258
+    char padding_1259[0xf];
+    int32_t value1268;           // +0x1268
+    int32_t value126c;           // +0x126c
+    int32_t value1270;           // +0x1270
+    char padding_1274[0xc];
+    int32_t value1280;           // +0x1280
+    int32_t value1284;           // +0x1284
+    uint8_t flag1288;            // +0x1288
+    char padding_1289[0x3];
+    int32_t value128c;           // +0x128c
+    int32_t value1290;           // +0x1290
+    int32_t value1294;           // +0x1294
+    int32_t value1298;           // +0x1298
+    int32_t value129c;           // +0x129c
+    int32_t value12a0;           // +0x12a0
+    int32_t value12a4;           // +0x12a4
+    int32_t value12a8;           // +0x12a8
+    int32_t value12ac;           // +0x12ac
+    int32_t value12b0;           // +0x12b0
+    int32_t value12b4;           // +0x12b4
+    int32_t value12b8;           // +0x12b8
+    char padding_12bc[0x4];
+    int32_t value12c0;           // +0x12c0
+    int32_t value12c4;           // +0x12c4
+    int32_t value12c8;           // +0x12c8
+    int32_t value12cc;           // +0x12cc
+    int32_t value12d0;           // +0x12d0
+    int32_t value12d4;           // +0x12d4
+    int32_t value12d8;           // +0x12d8
+    int32_t value12dc;           // +0x12dc
+    uint8_t flag12e0;            // +0x12e0
+    char padding_12e1[0x3];
+    int32_t value12e4;           // +0x12e4
+    int32_t value12e8;           // +0x12e8
+    uint8_t flag12ec;            // +0x12ec
+    char padding_12ed[0x3];
+    int32_t value12f0;           // +0x12f0
+    int32_t value12f4;           // +0x12f4
+    int32_t value12f8;           // +0x12f8
+    int32_t value12fc;           // +0x12fc
+    int32_t value1300;           // +0x1300
+    int32_t value1304;           // +0x1304
+    uint8_t flag1308;            // +0x1308
+    char padding_1309[0x4f];
+    void* reference1358;         // +0x1358
+    void* reference1360;         // +0x1360
+    void* reference1368;         // +0x1368
+    void* reference1370;         // +0x1370
+    void* reference1378;         // +0x1378
+    void* reference1380;         // +0x1380
+    void* reference1388;         // +0x1388
+    int32_t value1390;           // +0x1390
+    int32_t value1394;           // +0x1394
+    int32_t value1398;           // +0x1398
+    int32_t value139c;           // +0x139c
+    int32_t value13a0;           // +0x13a0
+    int32_t value13a4;           // +0x13a4
+    int32_t value13a8;           // +0x13a8
+    int32_t value13ac;           // +0x13ac
+    char padding_13b0[0x11c];
+    int32_t value14cc;           // +0x14cc
+    int32_t value14d0;           // +0x14d0
+    int32_t value14d4;           // +0x14d4
+    int32_t value14d8;           // +0x14d8
+    int32_t value14dc;           // +0x14dc
+    int32_t value14e0;           // +0x14e0
+    int32_t value14e4;           // +0x14e4
+    char padding_14e8[0x8];
+    int32_t value14f0;           // +0x14f0
+    char padding_14f4[0x24];
+    int32_t value1518;           // +0x1518
+    int32_t value151c;           // +0x151c
+    uint8_t flag1520;            // +0x1520
+    char padding_1521[0x3f];     // up to +0x1560, where the playable classes' fields begin
 };
+static_assert(sizeof(ControllablePlayer) == 0x1560, "ControllablePlayer size");
 // A character that passes IsA(0x2f2bf4aa) (registered as Onyx::Component::Bucket)
 // also receives messages at slot 159.
 struct MessageReceiver : BaseCharacter {

@@ -536,7 +536,7 @@ an id, resolved when loading).
 
 Classes outside the characters serialize the same way.
 [`ComponentSerialize.h`](../src/gameplay/ComponentSerialize.h) holds ABI views
-of 59 of them. They are actions on `Onyx::ActionComponent` (0xbcaa30), other
+of 66 of them. They are actions on `Onyx::ActionComponent` (0xbcaa30), other
 components on `Onyx::Component::Base` (0x6782a0), menus on `SPTG::FlashMenu`
 (0x7ffe10), the level camera and the network phase on `SPTG::SPTG_Phase`
 (0x76b760) and the gun turrets on `SPTG::BreakableObject` (0xa10790).
@@ -564,9 +564,13 @@ which returns the archive so the next transfer uses it. Vectors of 4-byte
 values are moved inline (`onyx::TransferVector`): the count through a local,
 `Vector::Resize` (0x70c0a0), then each element.
 
-Callback lists (0x18 bytes: data, owner, a changed flag) are restored by
-`DeserializeCallbacks` ([`DeserializeCallbacks.h`](../src/DeserializeCallbacks.h)).
-The component sets itself as the list's owner first. Many serializers expand
+Events a component sends (`EventSlot`, 0x18 bytes: the callback and target
+that `onyx::SendEvent` takes, then a flag raised as the callback is read) are
+restored by `DeserializeCallbacks`
+([`DeserializeCallbacks.h`](../src/DeserializeCallbacks.h)). The component makes
+itself the event's target first. BaseCharacter's two events at `+0x3c0` (sent
+when Enemy's state 98 starts) and `+0x750` (sent when state 116 starts) are
+such slots, as are the seven between them. Many serializers expand
 the reading loop in place instead of calling an instance, so the loop lives in
 the shared header. The expanded copies show where the callback's invoke
 pointer is stored: after the new callback is published to the slot passed to
@@ -576,10 +580,22 @@ handlers (the typed and generic members, which differ per class) bind
 separately. A third form calls a per-entry function in a loop (for example
 GateSwitcher and PlayerSynchronizer); it is not modeled yet.
 
+Strings (0x10 bytes, a reference-counted buffer at `+0x8`) move through
+0x683650, which returns the archive; consecutive strings chain on it, written
+here as `archive << a << b`. Some classes keep arrays that an allocator fills
+once (`onyx::Array`: the allocator, then the elements' range): the count goes
+through a local, a nonzero count allocates the elements and clears them, and
+then each element moves. The end address is computed as integers, size first,
+as the original does. A field set from another after loading (for example
+ControllablePlayer's `+0x11d8 = +0x11dc`) shows up as a plain copy between
+transfers.
+
 The playable characters
 ([`PlayerClasses.h`](../src/gameplay/PlayerClasses.h)) run ControllablePlayer's
 slot 4 (0x978660), then their own fields from `+0x1560`. ControllablePlayer's
-own fields are not declared yet, so each class pads up to its first field.
+slot 4 moves its fields from `+0x788` to `+0x1520`, so the header declares it up
+to `+0x1560`. It in turn runs BaseCharacter's (0x96a2f0, 6,972 bytes), which
+runs AnimatedAiActor's.
 Wallace and Stephen share a layout of four `Attack`s
 (`Attack::Serialize`, 0x8e4630). After loading some values, Kim, Ramona,
 Wallace and Stephen set the field just before from them, for example
@@ -592,7 +608,8 @@ EnemySasuke, EnemyJetPackMatt, EnemyShooter, Ken & Kyle, NegaScott, Lynette
 hand, Todd, Enemy itself, and (in
 [`ClassSerialize.cpp`](../src/gameplay/ClassSerialize.cpp), which builds with
 default stack coloring because their copies share slots) Boss, Chau,
-SuperFightingRobotAI and EnemyAerial. Boss's slot 4 (0xa181e0) moves two
+SuperFightingRobotAI, EnemyAerial, ControllablePlayer and NPC. BaseCharacter's
+is in `BaseCharacter.cpp`. Boss's slot 4 (0xa181e0) moves two
 component slots and two handles from `+0xb88`, its two attack slots, the
 settings from `+0xca8`, the points at `+0xcd8`, a reference at `+0xd00` and the
 callback list at `+0xd30`, so Boss's own fields end at `+0xd48`. Todd's slot 4 moves eight component handles from `+0xd48`, so Boss's own

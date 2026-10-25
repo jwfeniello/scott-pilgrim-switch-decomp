@@ -272,7 +272,7 @@ int BaseCharacter::State116(int event) {
             static_cast<MessageReceiver*>(this)->OnMessage(&message);
         }
         actionMode = 5;
-        onyx::SendEvent<0x2c285404u>(event750Callback, event750Target);
+        onyx::SendEvent<0x2c285404u>(event750.callback, event750.target);
         motion = onyx::Vector3::Zero();
         motionTarget = onyx::Vector3::Zero();
         PlayAnimation(16, 0, 0, 1.0f);

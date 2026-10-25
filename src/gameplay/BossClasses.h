@@ -424,7 +424,7 @@ struct Chau : Boss {
     char padding_11e8[0x8];
     onyx::Vector<int32_t> vector11f0; // +0x11f0
     char padding_1210[0x8];
-    CallbackList callbacks1218;  // +0x1218
+    EventSlot event1218;         // +0x1218
 };
 // vtable 0x1898018, 284 slots
 struct Lynette : TagTeamMember {
@@ -633,9 +633,9 @@ struct SuperFightingRobotAI : Boss {
     onyx::ComponentHandle* hand1; // +0xd70: SuperFightingRobotHand
     onyx::ComponentHandle* handleD78; // +0xd78
     onyx::ComponentHandle* handleD80; // +0xd80
-    CallbackList callbacksD88;   // +0xd88
-    CallbackList callbacksDa0;   // +0xda0
-    CallbackList callbacksDb8;   // +0xdb8
+    EventSlot eventD88;          // +0xd88
+    EventSlot eventDa0;          // +0xda0
+    EventSlot eventDb8;          // +0xdb8
     char padding_dd0[0x30];
     int32_t valueE00;            // +0xe00
     int32_t valueE04;            // +0xe04

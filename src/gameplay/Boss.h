@@ -129,7 +129,7 @@ struct Boss : Enemy {
     uint8_t flagD29;             // +0xd29
     uint8_t flagD2a;             // +0xd2a
     char padding_d2b[0x5];
-    CallbackList callbacksD30;   // +0xd30
+    EventSlot eventD30;          // +0xd30
 };
 
 }  // namespace SPTG

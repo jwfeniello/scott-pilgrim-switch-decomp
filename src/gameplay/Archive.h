@@ -4,6 +4,7 @@
 // Names are provisional; src/SpawnerSerialize.h models the same pair.
 #pragma once
 #include <stdint.h>
+#include "OnyxEvents.h"
 #include "Vector.h"
 
 // Passed along with the archive (slot 4's second argument). The same type
@@ -59,6 +60,49 @@ void TransferId(uint32_t& id, Archive& archive);
 // returns the archive.
 Archive& TransferPoints(Archive& archive, Vector<Vector3>& points);
 
+// A reference-counted string (0x10 bytes; the shared buffer is at +0x8). It
+// moves through 0x683650, which returns the archive, and consecutive strings
+// chain on it.
+struct StringBuffer;
+struct String {
+    void* unknown0;
+    StringBuffer* buffer;   // +0x8
+};
+Archive& TransferString(Archive& archive, String& string);
+inline Archive& operator<<(Archive& archive, String& string) { return TransferString(archive, string); }
+
+// An allocator as arrays keep it (its slot 2 allocates).
+struct ArrayAllocator {
+    virtual void Slot0();
+    virtual void Slot1();
+    virtual void* Allocate(uint32_t size);
+};
+// An array filled once from its allocator (0x20 bytes): the elements run from
+// begin to end. The last field is not known.
+template<class T> struct Array {
+    ArrayAllocator* allocator;
+    T* begin;
+    T* end;
+    void* unknown18;
+    // Allocates `count` cleared elements (none for a zero count).
+    __attribute__((always_inline)) void Fill(uint32_t count) {
+        if (!count) return;
+        T* elements = static_cast<T*>(allocator->Allocate(count * uint32_t(sizeof(T))));
+        begin = elements;
+        __builtin_memset(elements, 0, count * sizeof(T));
+        // The original adds the size to the address as integers.
+        end = reinterpret_cast<T*>(count * sizeof(T) + reinterpret_cast<uint64_t>(elements));
+    }
+};
+// An array goes as its count, through a local, then is filled and each
+// element moved.
+template<class T> inline void TransferArray(Archive& archive, Array<T>& array) {
+    uint32_t count;
+    Transfer(archive, count);
+    array.Fill(count);
+    for (uint64_t i = 0; i < count; ++i) Transfer(archive, array.begin[i]);
+}
+
 // A vector goes as its count, through a local, and then each element.
 template<class T> inline void TransferVector(Archive& archive, Vector<T>& vector) {
     uint32_t count;
@@ -93,17 +137,19 @@ struct ReferenceList {
     char data[0x28];
     void Serialize(onyx::Archive& archive, ComponentSlot::Source* source);   // 0x682f80
 };
-// A callback list a component restores through one of the DeserializeCallbacks
-// instances (0x18 bytes); the component sets itself as the owner first.
-struct CallbackList {
-    void* data;
-    void* owner;    // +0x8
-    bool changed;   // +0x10: raised as callbacks are read
+// An event a component sends (0x18 bytes, see OnyxEvents.h): its callback and
+// target, and a flag raised as the callback is read. Slot 4 makes the component
+// the target, then restores the callback through one of the
+// DeserializeCallbacks instances, which see the slot as their host.
+struct EventSlot {
+    onyx::EventCallback* callback;
+    onyx::EventTarget* target;   // +0x8
+    bool changed;                // +0x10
 };
 template<unsigned Key, uint32_t Hash>
-inline void TransferCallbackList(onyx::Archive& archive, ComponentSlot::Source* source, CallbackList& list, void* owner) {
-    list.owner = owner;
-    DeserializeCallbacks<Key, Hash>(reinterpret_cast<DecodeReader*>(&archive), source, reinterpret_cast<DecodeHost*>(&list));
+inline void TransferEventSlot(onyx::Archive& archive, ComponentSlot::Source* source, EventSlot& slot, void* component) {
+    slot.target = static_cast<onyx::EventTarget*>(component);
+    DeserializeCallbacks<Key, Hash>(reinterpret_cast<DecodeReader*>(&archive), source, reinterpret_cast<DecodeHost*>(&slot));
 }
 // The same read with the loop expanded in place, as some serializers have it.
 // Key names the expansion's bindings, and the host type gives each expansion
@@ -113,11 +159,11 @@ template<unsigned Key> struct KeyedDecodeHost : DecodeHost {
     void Generic(const DecodeEvent& event);
 };
 template<unsigned Key, uint32_t Hash>
-__attribute__((always_inline)) inline void ReadCallbackList(onyx::Archive& archive, ComponentSlot::Source* source, CallbackList& list, void* owner) {
-    list.owner = owner;
+__attribute__((always_inline)) inline void ReadEventSlot(onyx::Archive& archive, ComponentSlot::Source* source, EventSlot& slot, void* component) {
+    slot.target = static_cast<onyx::EventTarget*>(component);
     DecodeReader* reader = reinterpret_cast<DecodeReader*>(&archive);
     uint32_t count;
     reader->Read(&count, 4);
-    DecodeLoop<Key, Hash>(reader, source, reinterpret_cast<KeyedDecodeHost<Key>*>(&list), count);
+    DecodeLoop<Key, Hash>(reader, source, reinterpret_cast<KeyedDecodeHost<Key>*>(&slot), count);
 }
 }  // namespace SPTG

@@ -273,7 +273,7 @@ struct EnemyAerial : Enemy {
     virtual State Statea04890Ptr();   // slot 239: returns the state at 0xa04890
 
     char padding_b79[0x17];
-    CallbackList callbacksB90;   // +0xb90
+    EventSlot eventB90;          // +0xb90
     int32_t valueBa8;            // +0xba8: serialized through a uint32_t
     int32_t valueBac;            // +0xbac
     int32_t valueBb0;            // +0xbb0

@@ -90,7 +90,7 @@ struct Enemy : BaseCharacter {
     SPTG_SLOT(232)
     virtual void Slot233(const uint8_t* trigger);                            // slot 233
 
-    char padding_775[0x13];
+    char padding_77c[0xc];
     onyx::ComponentHandle* handle788; // +0x788
     onyx::ComponentHandle* handle790; // +0x790
     void* slot798;               // +0x798: filled by AssignComponentSlot

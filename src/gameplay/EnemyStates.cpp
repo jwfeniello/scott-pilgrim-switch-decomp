@@ -38,7 +38,7 @@ int Enemy::State98(int event) {
         motionTarget = onyx::Vector3::Zero();
         actionMode = 1;
         PlayAnimation(29, 0, 0, 1.0f);
-        onyx::SendEvent<0x78572030u>(event3c0Callback, event3c0Target);
+        onyx::SendEvent<0x78572030u>(event3c0.callback, event3c0.target);
         stateTime = 0.0f;
         return kStateHandled;
     case kStateEvent3:
