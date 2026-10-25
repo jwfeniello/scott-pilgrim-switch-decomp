@@ -88,7 +88,8 @@ struct Boss : Enemy {
     onyx::ComponentHandle* handleBa8; // +0xba8
     char padding_bb0[0x8];
     AttackSlot attacks[2];       // +0xbb8: the second is requested every update with kind 1
-    char padding_ca8[0x10];
+    char padding_ca8[0xc];
+    uint32_t limitCb4;           // +0xcb4
     float limitCb8;              // +0xcb8
     char padding_cbc[0x10];
     float chanceCcc;             // +0xccc: percent, rolled by slot 233
@@ -97,7 +98,8 @@ struct Boss : Enemy {
     char padding_cd2[0x36];
     int32_t valueD08;            // +0xd08
     float timerD0c;              // +0xd0c
-    char padding_d10[0x15];
+    char padding_d10[0x14];
+    uint8_t flagD24;             // +0xd24
     uint8_t flagD25;             // +0xd25
     uint8_t flagD26;             // +0xd26
     uint8_t flagD27;             // +0xd27

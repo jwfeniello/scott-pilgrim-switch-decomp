@@ -608,8 +608,8 @@ Slots 96, 116 and 200 are written out but not credited. In each, the original
 merges the "handled" returns into a shared tail (for 96 and 116, the exit
 case's) that this build duplicates.
 
-[`BossClassStates.cpp`](../src/gameplay/BossClassStates.cpp) matches 94
-functions of the boss classes (19,148 bytes). Most are hooks that inline
+[`BossClassStates.cpp`](../src/gameplay/BossClassStates.cpp) matches 113
+functions of the boss classes (29,400 bytes). Most are hooks that inline
 Boss's version and add a class detail:
 
 - **Slot 234** maps an attack request's kind to a state. Each class tests its
@@ -651,9 +651,30 @@ Boss's version and add a class detail:
   `+0x10d4` and flips the twins' turn. Todd's state 122 goes to 258 when
   0xa255e0 passes on its `+0xdd8` data.
 
+- **Updates (slot 16):** Todd, Lynette, Envy, Patel, Gideon, Ken & Kyle and
+  Lucas Lee run Boss's update and then request each of their attacks with a
+  hit kind, three to five per class. Lucas Lee requests kinds 174 and 178, the
+  kinds his slot 234 maps to states. Lynette and Envy also refill `+0xd7c` from
+  `+0xd4c` every update.
+- **Guards:** Lynette's states 274, 278 and 280 and Envy's 268 loop a guard
+  animation. A hit while time and absorbed damage (`+0xd88` and `+0xd90`,
+  added up by Lynette's slot 69) remain plays animation 13. Once either runs
+  out, they leave for the next state.
+- **Joint attacks:** when Ken or Kyle enters state 246 or 248, the twin joins
+  if both target the same player within `+0x10dc` and the twin's slot 238
+  holds.
+- **Slot 82:** Lynette refuses it in four of her states and Todd in five,
+  before Boss's test.
+- **Damage:** Todd totals his damage and raises `+0xd89` once it reaches
+  `+0x119c`. SuperGideon rolls 1–100 against `+0x111c` each time the damage
+  since the last roll reaches `+0x1118`. Lynette inlines TagTeamMember's
+  handling (`TagTeamMember::TakeTagTeamDamage`).
+
 Branches show which way the source wrote a comparison. `b.ls` or `b.le` after
 a float compare means the original tested the positive form (`stateTime <= 0`,
-`stateTime > limit`), not an early return on the opposite.
+`stateTime > limit`), not an early return on the opposite. When a getter call
+comes before the read of the current state, the original called it first,
+as in `InState(this, State274Ptr())` or `State state = ...Ptr();`.
 
 Patel's slot 170, Patel's state 256, Ken & Kyle's hit check and the state
 244 of TagTeamMember, Lynette and Todd are written out but not credited.
