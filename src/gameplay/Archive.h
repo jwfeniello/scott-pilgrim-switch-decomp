@@ -47,4 +47,26 @@ template<class T> void TransferReference(Archive& archive, T*& object);
 // Moves a component handle (0x67dd00).
 void TransferHandle(ComponentHandle*& handle, Archive& archive, ComponentSlot::Source* source);
 
+// Moves a 4-byte id that has its own encoding (0x8012a0).
+void TransferId(uint32_t& id, Archive& archive);
+
 }  // namespace onyx
+
+namespace SPTG {
+
+// SPTG::ProjectileSpawnInfo (vtable 0x186a108, 0x70 bytes), which several
+// bosses embed (HipsterChick's destructor resets the one at +0xdc8). Its
+// serialization (0x8fd4c0) follows its destructors in the binary.
+struct ProjectileSpawnInfo {
+    virtual ~ProjectileSpawnInfo();
+    char data_8[0x68];
+    void Serialize(onyx::Archive& archive);   // 0x8fd4c0
+};
+static_assert(sizeof(ProjectileSpawnInfo) == 0x70, "ProjectileSpawnInfo size");
+// A 0x50-byte member some bosses serialize with 0xc1f2b0: a count, then a
+// vector of 4-byte pairs. Contents otherwise unknown.
+struct PairList {
+    char data[0x50];
+    void Serialize(onyx::Archive& archive);   // 0xc1f2b0
+};
+}  // namespace SPTG

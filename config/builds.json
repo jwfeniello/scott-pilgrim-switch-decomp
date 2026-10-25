@@ -493778,8 +493778,8 @@
       ]
     },
     {
-      "id": "gameplay_player_classes",
-      "source": "src/gameplay/PlayerClasses.cpp",
+      "id": "gameplay_component_serialize",
+      "source": "src/gameplay/ComponentSerialize.cpp",
       "compiler": "8.0.1",
       "source_review": "manual_reconstruction",
       "flags": [
@@ -493802,74 +493802,260 @@
       ],
       "functions": [
         {
-          "address": "0x997930",
-          "size": 392,
-          "symbol": "_ZN4SPTG19ControllableWallace5Slot4ERN4onyx7ArchiveEPN13ComponentSlot6SourceE",
-          "target_sha256": "a95e38444af9863c720dc8cf531459447cff18765ea1a72999fe0e4159052790",
+          "address": "0x7ae610",
+          "size": 160,
+          "symbol": "_ZN4SPTG22PlayfieldCollisionView5Slot4ERN4onyx7ArchiveEPN13ComponentSlot6SourceE",
+          "target_sha256": "ad959710383df79d1eb6313eb477d8d2ab3a6db6c96bde7abfe17b14a194c326",
           "bindings": {
-            "_ZN4SPTG18ControllablePlayer5Slot4ERN4onyx7ArchiveEPN13ComponentSlot6SourceE": "0x978660",
-            "_ZN4SPTG6Attack9SerializeERN4onyx7ArchiveE": "0x8e4630"
+            "_ZN17OnyxComponentBase5Slot4ERN4onyx7ArchiveEPN13ComponentSlot6SourceE": "0x6782a0",
+            "_ZN4onyx14TransferHandleERPNS_15ComponentHandleERNS_7ArchiveEPN13ComponentSlot6SourceE": "0x67dd00",
+            "_ZN4SPTG8PairList9SerializeERN4onyx7ArchiveE": "0xc1f2b0"
           },
           "got_bindings": {}
         },
         {
-          "address": "0x999060",
-          "size": 392,
-          "symbol": "_ZN4SPTG19ControllableStephen5Slot4ERN4onyx7ArchiveEPN13ComponentSlot6SourceE",
-          "target_sha256": "5305dafe5f553759a6dfb64fd2ee7a19f45c251c53e64d25207b85815cd3e03f",
+          "address": "0x7ae820",
+          "size": 156,
+          "symbol": "_ZN4SPTG20SectionZOffsetAdjust5Slot4ERN4onyx7ArchiveEPN13ComponentSlot6SourceE",
+          "target_sha256": "45cfbc1991ddc1892841bbca109b801bf7cea5b696ac6f59f1615057663ece4a",
           "bindings": {
-            "_ZN4SPTG18ControllablePlayer5Slot4ERN4onyx7ArchiveEPN13ComponentSlot6SourceE": "0x978660",
-            "_ZN4SPTG6Attack9SerializeERN4onyx7ArchiveE": "0x8e4630"
+            "_ZN17OnyxComponentBase5Slot4ERN4onyx7ArchiveEPN13ComponentSlot6SourceE": "0x6782a0"
           },
           "got_bindings": {}
         },
         {
-          "address": "0x999a80",
-          "size": 72,
-          "symbol": "_ZN4SPTG17ControllableScott5Slot4ERN4onyx7ArchiveEPN13ComponentSlot6SourceE",
-          "target_sha256": "bb7759337e2c8976eea5069a88313ab80e2c57345160ac27c492444c25767fac",
+          "address": "0x7b9170",
+          "size": 232,
+          "symbol": "_ZN4SPTG14PlayfieldActor5Slot4ERN4onyx7ArchiveEPN13ComponentSlot6SourceE",
+          "target_sha256": "44dcdf8f490091aac79aeb5d10a7faa8c67d00c61b98a3736987ddd66db18852",
           "bindings": {
-            "_ZN4SPTG18ControllablePlayer5Slot4ERN4onyx7ArchiveEPN13ComponentSlot6SourceE": "0x978660"
+            "_ZN17OnyxComponentBase5Slot4ERN4onyx7ArchiveEPN13ComponentSlot6SourceE": "0x6782a0",
+            "_ZN4onyx14TransferHandleERPNS_15ComponentHandleERNS_7ArchiveEPN13ComponentSlot6SourceE": "0x67dd00",
+            "_ZN4SPTG8PairList9SerializeERN4onyx7ArchiveE": "0xc1f2b0"
           },
           "got_bindings": {}
         },
         {
-          "address": "0x99a120",
+          "address": "0x8beab0",
+          "size": 164,
+          "symbol": "_ZN4SPTG21SPTG_MaterialModifier5Slot4ERN4onyx7ArchiveEPN13ComponentSlot6SourceE",
+          "target_sha256": "978341f51b533dace5b4efcb46ade85c5b7839f48727dcb99882cf69a9dee57b",
+          "bindings": {
+            "_ZN17OnyxComponentBase5Slot4ERN4onyx7ArchiveEPN13ComponentSlot6SourceE": "0x6782a0",
+            "_ZN4onyx14TransferHandleERPNS_15ComponentHandleERNS_7ArchiveEPN13ComponentSlot6SourceE": "0x67dd00"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x8e52b0",
+          "size": 156,
+          "symbol": "_ZN4SPTG20ActorPlayEmoteAction5Slot4ERN4onyx7ArchiveEPN13ComponentSlot6SourceE",
+          "target_sha256": "e0424995133c3648cfd98345db6b71e9d9799a8114bb29c182b0e217db34e595",
+          "bindings": {
+            "_ZN19OnyxActionComponent5Slot4ERN4onyx7ArchiveEPN13ComponentSlot6SourceE": "0xbcaa30"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x8e6970",
+          "size": 364,
+          "symbol": "_ZN4SPTG25ActorMoveFromBehindAction5Slot4ERN4onyx7ArchiveEPN13ComponentSlot6SourceE",
+          "target_sha256": "9326134924b6424e6755bc352fe02c719405021d1c9d2f095b6f1341161cb798",
+          "bindings": {
+            "_ZN19OnyxActionComponent5Slot4ERN4onyx7ArchiveEPN13ComponentSlot6SourceE": "0xbcaa30",
+            "_ZN4onyx14TransferHandleERPNS_15ComponentHandleERNS_7ArchiveEPN13ComponentSlot6SourceE": "0x67dd00"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x8ec7c0",
+          "size": 300,
+          "symbol": "_ZN4SPTG20ActorAnimationAction5Slot4ERN4onyx7ArchiveEPN13ComponentSlot6SourceE",
+          "target_sha256": "fdeb0965343454cb017329d500a11e37e35d0ff97101f765d73186067dc2192a",
+          "bindings": {
+            "_ZN19OnyxActionComponent5Slot4ERN4onyx7ArchiveEPN13ComponentSlot6SourceE": "0xbcaa30"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x8f1370",
+          "size": 120,
+          "symbol": "_ZN4SPTG16WorldClearAction5Slot4ERN4onyx7ArchiveEPN13ComponentSlot6SourceE",
+          "target_sha256": "2fc6450eccfae898a1524df23bb0ba076857d2b52359ecfb4f8dde3c7754b675",
+          "bindings": {
+            "_ZN19OnyxActionComponent5Slot4ERN4onyx7ArchiveEPN13ComponentSlot6SourceE": "0xbcaa30",
+            "_Z19AssignComponentSlotILj7784864ELj623346953EEvPvPN13ComponentSlot6SourceE": "0x76c9a0",
+            "_Z19AssignComponentSlotILj7786432ELj569228434EEvPvPN13ComponentSlot6SourceE": "0x76cfc0"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x8f3590",
+          "size": 228,
+          "symbol": "_ZN4SPTG18WaitForButtonPress5Slot4ERN4onyx7ArchiveEPN13ComponentSlot6SourceE",
+          "target_sha256": "3d2936e8f6ac28c3d4ead907e7b249a5dccaff02b2b811723626c520401a1a6f",
+          "bindings": {
+            "_ZN19OnyxActionComponent5Slot4ERN4onyx7ArchiveEPN13ComponentSlot6SourceE": "0xbcaa30"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x8f3ce0",
+          "size": 148,
+          "symbol": "_ZN4SPTG26WaitForAllPickupsCollected5Slot4ERN4onyx7ArchiveEPN13ComponentSlot6SourceE",
+          "target_sha256": "5a2f78c07cf1c451e9c3dc8004177f61fadc19751d26d5e7b0ae4706a94bce48",
+          "bindings": {
+            "_ZN19OnyxActionComponent5Slot4ERN4onyx7ArchiveEPN13ComponentSlot6SourceE": "0xbcaa30",
+            "_ZN4onyx14TransferHandleERPNS_15ComponentHandleERNS_7ArchiveEPN13ComponentSlot6SourceE": "0x67dd00"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x8f4aa0",
+          "size": 192,
+          "symbol": "_ZN4SPTG19UnblockCameraAction5Slot4ERN4onyx7ArchiveEPN13ComponentSlot6SourceE",
+          "target_sha256": "bf06c26fa64a5522977e80707cd4cad5d304913b1e90ab697887d6aa9bb4ace0",
+          "bindings": {
+            "_ZN19OnyxActionComponent5Slot4ERN4onyx7ArchiveEPN13ComponentSlot6SourceE": "0xbcaa30",
+            "_Z19AssignComponentSlotILj8990432ELj1141032170EEvPvPN13ComponentSlot6SourceE": "0x892ee0",
+            "_Z19AssignComponentSlotILj7788000ELj1742971629EEvPvPN13ComponentSlot6SourceE": "0x76d5e0"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x8fa7a0",
+          "size": 264,
+          "symbol": "_ZN4SPTG23StartPadVibrationAction5Slot4ERN4onyx7ArchiveEPN13ComponentSlot6SourceE",
+          "target_sha256": "d44f5693100e4d96e4f3e9aa0d15cea41f65dfee9c4bcee3b560cbf8095c64fe",
+          "bindings": {
+            "_ZN19OnyxActionComponent5Slot4ERN4onyx7ArchiveEPN13ComponentSlot6SourceE": "0xbcaa30",
+            "_Z19AssignComponentSlotILj7787216ELj840570882EEvPvPN13ComponentSlot6SourceE": "0x76d2d0",
+            "_Z19AssignComponentSlotILj7786432ELj569228434EEvPvPN13ComponentSlot6SourceE": "0x76cfc0"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x8faea0",
           "size": 360,
-          "symbol": "_ZN4SPTG18ControllableRamona5Slot4ERN4onyx7ArchiveEPN13ComponentSlot6SourceE",
-          "target_sha256": "95428badab0647fceffd8f538cc0b5af72292d76f55983bf67dbdafb8f652273",
+          "symbol": "_ZN4SPTG22StartCameraShakeAction5Slot4ERN4onyx7ArchiveEPN13ComponentSlot6SourceE",
+          "target_sha256": "4300d538a2cd5bc3321c282a68a5adbd952c0590ff3412c9e4bedd05eacc2b26",
           "bindings": {
-            "_ZN4SPTG18ControllablePlayer5Slot4ERN4onyx7ArchiveEPN13ComponentSlot6SourceE": "0x978660"
+            "_ZN19OnyxActionComponent5Slot4ERN4onyx7ArchiveEPN13ComponentSlot6SourceE": "0xbcaa30",
+            "_Z19AssignComponentSlotILj7788000ELj1742971629EEvPvPN13ComponentSlot6SourceE": "0x76d5e0"
           },
           "got_bindings": {}
         },
         {
-          "address": "0x99b350",
-          "size": 512,
-          "symbol": "_ZN4SPTG21ControllableNegaScott5Slot4ERN4onyx7ArchiveEPN13ComponentSlot6SourceE",
-          "target_sha256": "42a30c98b668b22842f434fce0cbbc0acbc3219d87d8f26e093d2352ca16c1d3",
+          "address": "0x906ea0",
+          "size": 108,
+          "symbol": "_ZN4SPTG17SetGameModeAction5Slot4ERN4onyx7ArchiveEPN13ComponentSlot6SourceE",
+          "target_sha256": "d22b043a39d535bd1912fce0ac820705cad750db441a5fdfe8a07b1d1d520850",
           "bindings": {
-            "_ZN4SPTG18ControllablePlayer5Slot4ERN4onyx7ArchiveEPN13ComponentSlot6SourceE": "0x978660"
+            "_ZN19OnyxActionComponent5Slot4ERN4onyx7ArchiveEPN13ComponentSlot6SourceE": "0xbcaa30",
+            "_Z19AssignComponentSlotILj7788000ELj1742971629EEvPvPN13ComponentSlot6SourceE": "0x76d5e0"
           },
           "got_bindings": {}
         },
         {
-          "address": "0x99c7a0",
-          "size": 272,
-          "symbol": "_ZN4SPTG18ControllableKnives5Slot4ERN4onyx7ArchiveEPN13ComponentSlot6SourceE",
-          "target_sha256": "5f9f6396668063b0f3441e72357cb17113dd40dd122c5f81c779e8adc82dfda7",
+          "address": "0x90a730",
+          "size": 120,
+          "symbol": "_ZN4SPTG24SetLayerVisibilityAction5Slot4ERN4onyx7ArchiveEPN13ComponentSlot6SourceE",
+          "target_sha256": "388caac2431855cbdecdfa1ed9d8ba5d87bcf0c9b12cb4e19b282cbe10c71f91",
           "bindings": {
-            "_ZN4SPTG18ControllablePlayer5Slot4ERN4onyx7ArchiveEPN13ComponentSlot6SourceE": "0x978660"
+            "_ZN19OnyxActionComponent5Slot4ERN4onyx7ArchiveEPN13ComponentSlot6SourceE": "0xbcaa30",
+            "_Z19AssignComponentSlotILj7788000ELj1742971629EEvPvPN13ComponentSlot6SourceE": "0x76d5e0",
+            "_ZN4onyx10TransferIdERjRNS_7ArchiveE": "0x8012a0"
           },
           "got_bindings": {}
         },
         {
-          "address": "0x99e500",
-          "size": 248,
-          "symbol": "_ZN4SPTG15ControllableKim5Slot4ERN4onyx7ArchiveEPN13ComponentSlot6SourceE",
-          "target_sha256": "89e0927d2525584a9bc2eb00bd4dad52d58063c93cdf45a7e834eb8ddc0caf0e",
+          "address": "0x90b140",
+          "size": 220,
+          "symbol": "_ZN4SPTG19VisitItemShopAction5Slot4ERN4onyx7ArchiveEPN13ComponentSlot6SourceE",
+          "target_sha256": "f14f470df05ea21f00792809ca97b11c3d32f72a97880c56e796b3f0ac7687c9",
           "bindings": {
-            "_ZN4SPTG18ControllablePlayer5Slot4ERN4onyx7ArchiveEPN13ComponentSlot6SourceE": "0x978660"
+            "_ZN19OnyxActionComponent5Slot4ERN4onyx7ArchiveEPN13ComponentSlot6SourceE": "0xbcaa30",
+            "_ZN4onyx14TransferHandleERPNS_15ComponentHandleERNS_7ArchiveEPN13ComponentSlot6SourceE": "0x67dd00"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x90d8d0",
+          "size": 340,
+          "symbol": "_ZN4SPTG28SpawnInteractiveObjectAction5Slot4ERN4onyx7ArchiveEPN13ComponentSlot6SourceE",
+          "target_sha256": "f86c7a82e6ffc691c94b0ffb90cea75f0312d28765a00da78907967f08edcbad",
+          "bindings": {
+            "_ZN19OnyxActionComponent5Slot4ERN4onyx7ArchiveEPN13ComponentSlot6SourceE": "0xbcaa30",
+            "_ZN4onyx14TransferHandleERPNS_15ComponentHandleERNS_7ArchiveEPN13ComponentSlot6SourceE": "0x67dd00",
+            "_Z19AssignComponentSlotILj7786432ELj569228434EEvPvPN13ComponentSlot6SourceE": "0x76cfc0"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x90edb0",
+          "size": 216,
+          "symbol": "_ZN4SPTG18SetHudEnableAction5Slot4ERN4onyx7ArchiveEPN13ComponentSlot6SourceE",
+          "target_sha256": "bdba9a9339b933a1bbc90250d7c8dda9be25431e87b6558f24f50f9043d4cd83",
+          "bindings": {
+            "_ZN19OnyxActionComponent5Slot4ERN4onyx7ArchiveEPN13ComponentSlot6SourceE": "0xbcaa30",
+            "_Z19AssignComponentSlotILj8990432ELj1141032170EEvPvPN13ComponentSlot6SourceE": "0x892ee0"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x912a10",
+          "size": 156,
+          "symbol": "_ZN4SPTG28SetFlashMenuVisibilityAction5Slot4ERN4onyx7ArchiveEPN13ComponentSlot6SourceE",
+          "target_sha256": "19c492ba9d3b7519ae784c1ddc0fea6dd28e9ee83bb8117fb7a1a802b4b7c311",
+          "bindings": {
+            "_ZN19OnyxActionComponent5Slot4ERN4onyx7ArchiveEPN13ComponentSlot6SourceE": "0xbcaa30",
+            "_Z19AssignComponentSlotILj7751376ELj2069148984EEvPvPN13ComponentSlot6SourceE": "0x7646d0",
+            "_ZN4onyx10TransferIdERjRNS_7ArchiveE": "0x8012a0"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x912c50",
+          "size": 252,
+          "symbol": "_ZN4SPTG22FixPlayerRespawnAction5Slot4ERN4onyx7ArchiveEPN13ComponentSlot6SourceE",
+          "target_sha256": "6b6a0a58e966bbf3167b91fbc97b911bc4ef626c1c164604b4a57d04c9bf67fb",
+          "bindings": {
+            "_ZN19OnyxActionComponent5Slot4ERN4onyx7ArchiveEPN13ComponentSlot6SourceE": "0xbcaa30",
+            "_Z19AssignComponentSlotILj7786432ELj569228434EEvPvPN13ComponentSlot6SourceE": "0x76cfc0"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x92c5c0",
+          "size": 108,
+          "symbol": "_ZN4SPTG9DLCSentry5Slot4ERN4onyx7ArchiveEPN13ComponentSlot6SourceE",
+          "target_sha256": "c3dde064072dae63b8aad4996b6777a1a457408b14d56e8fe2462d5cd74fcefd",
+          "bindings": {
+            "_ZN17OnyxComponentBase5Slot4ERN4onyx7ArchiveEPN13ComponentSlot6SourceE": "0x6782a0",
+            "_Z19AssignComponentSlotILj8491792ELj368592075EEvPvPN13ComponentSlot6SourceE": "0x819310"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xa05f50",
+          "size": 352,
+          "symbol": "_ZN4SPTG21ControllableUiSpawner5Slot4ERN4onyx7ArchiveEPN13ComponentSlot6SourceE",
+          "target_sha256": "207db5204207b0ed1705460e8c8e2c7b6bbb9257eb30ba596190683947d6b77e",
+          "bindings": {
+            "_ZN17OnyxComponentBase5Slot4ERN4onyx7ArchiveEPN13ComponentSlot6SourceE": "0x6782a0",
+            "_Z19AssignComponentSlotILj7787216ELj840570882EEvPvPN13ComponentSlot6SourceE": "0x76d2d0",
+            "_Z19AssignComponentSlotILj7786432ELj569228434EEvPvPN13ComponentSlot6SourceE": "0x76cfc0"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xa08be0",
+          "size": 412,
+          "symbol": "_ZN4SPTG26ControllableTriggerSpawner5Slot4ERN4onyx7ArchiveEPN13ComponentSlot6SourceE",
+          "target_sha256": "db8a2f12c090e15caa4b60aef226c39b1f58b6a50ebb8f7e15b984a48c87c053",
+          "bindings": {
+            "_ZN17OnyxComponentBase5Slot4ERN4onyx7ArchiveEPN13ComponentSlot6SourceE": "0x6782a0",
+            "_Z19AssignComponentSlotILj7786432ELj569228434EEvPvPN13ComponentSlot6SourceE": "0x76cfc0"
           },
           "got_bindings": {}
         }
@@ -498615,6 +498801,104 @@
           "target_sha256": "d914af2d09a3b9504fac65fc41721975787fed7bbce5feb2ecd5c4cf4b0b978f",
           "bindings": {
             "_ZN4SPTG5Enemy8State108Ei": "0x9dd830"
+          },
+          "got_bindings": {}
+        }
+      ]
+    },
+    {
+      "id": "gameplay_player_classes",
+      "source": "src/gameplay/PlayerClasses.cpp",
+      "compiler": "8.0.1",
+      "source_review": "manual_reconstruction",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-std=c++11",
+        "-O2",
+        "-mcpu=cortex-a57",
+        "-fstrict-aliasing",
+        "-fomit-frame-pointer",
+        "-fno-pic",
+        "-fno-delete-null-pointer-checks",
+        "-ffunction-sections",
+        "-fdata-sections",
+        "-mllvm",
+        "-no-stack-coloring"
+      ],
+      "header_roots": [
+        "src/gameplay"
+      ],
+      "functions": [
+        {
+          "address": "0x997930",
+          "size": 392,
+          "symbol": "_ZN4SPTG19ControllableWallace5Slot4ERN4onyx7ArchiveEPN13ComponentSlot6SourceE",
+          "target_sha256": "a95e38444af9863c720dc8cf531459447cff18765ea1a72999fe0e4159052790",
+          "bindings": {
+            "_ZN4SPTG18ControllablePlayer5Slot4ERN4onyx7ArchiveEPN13ComponentSlot6SourceE": "0x978660",
+            "_ZN4SPTG6Attack9SerializeERN4onyx7ArchiveE": "0x8e4630"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x999060",
+          "size": 392,
+          "symbol": "_ZN4SPTG19ControllableStephen5Slot4ERN4onyx7ArchiveEPN13ComponentSlot6SourceE",
+          "target_sha256": "5305dafe5f553759a6dfb64fd2ee7a19f45c251c53e64d25207b85815cd3e03f",
+          "bindings": {
+            "_ZN4SPTG18ControllablePlayer5Slot4ERN4onyx7ArchiveEPN13ComponentSlot6SourceE": "0x978660",
+            "_ZN4SPTG6Attack9SerializeERN4onyx7ArchiveE": "0x8e4630"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x999a80",
+          "size": 72,
+          "symbol": "_ZN4SPTG17ControllableScott5Slot4ERN4onyx7ArchiveEPN13ComponentSlot6SourceE",
+          "target_sha256": "bb7759337e2c8976eea5069a88313ab80e2c57345160ac27c492444c25767fac",
+          "bindings": {
+            "_ZN4SPTG18ControllablePlayer5Slot4ERN4onyx7ArchiveEPN13ComponentSlot6SourceE": "0x978660"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x99a120",
+          "size": 360,
+          "symbol": "_ZN4SPTG18ControllableRamona5Slot4ERN4onyx7ArchiveEPN13ComponentSlot6SourceE",
+          "target_sha256": "95428badab0647fceffd8f538cc0b5af72292d76f55983bf67dbdafb8f652273",
+          "bindings": {
+            "_ZN4SPTG18ControllablePlayer5Slot4ERN4onyx7ArchiveEPN13ComponentSlot6SourceE": "0x978660"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x99b350",
+          "size": 512,
+          "symbol": "_ZN4SPTG21ControllableNegaScott5Slot4ERN4onyx7ArchiveEPN13ComponentSlot6SourceE",
+          "target_sha256": "42a30c98b668b22842f434fce0cbbc0acbc3219d87d8f26e093d2352ca16c1d3",
+          "bindings": {
+            "_ZN4SPTG18ControllablePlayer5Slot4ERN4onyx7ArchiveEPN13ComponentSlot6SourceE": "0x978660"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x99c7a0",
+          "size": 272,
+          "symbol": "_ZN4SPTG18ControllableKnives5Slot4ERN4onyx7ArchiveEPN13ComponentSlot6SourceE",
+          "target_sha256": "5f9f6396668063b0f3441e72357cb17113dd40dd122c5f81c779e8adc82dfda7",
+          "bindings": {
+            "_ZN4SPTG18ControllablePlayer5Slot4ERN4onyx7ArchiveEPN13ComponentSlot6SourceE": "0x978660"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x99e500",
+          "size": 248,
+          "symbol": "_ZN4SPTG15ControllableKim5Slot4ERN4onyx7ArchiveEPN13ComponentSlot6SourceE",
+          "target_sha256": "89e0927d2525584a9bc2eb00bd4dad52d58063c93cdf45a7e834eb8ddc0caf0e",
+          "bindings": {
+            "_ZN4SPTG18ControllablePlayer5Slot4ERN4onyx7ArchiveEPN13ComponentSlot6SourceE": "0x978660"
           },
           "got_bindings": {}
         }

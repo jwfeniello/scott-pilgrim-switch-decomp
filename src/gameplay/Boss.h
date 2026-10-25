@@ -17,15 +17,6 @@ struct BossEffect : onyx::Component {
     char padding_8[0x10];
     uint8_t flag18;   // +0x18
 };
-// SPTG::ProjectileSpawnInfo (vtable 0x186a108, 0x70 bytes), which several
-// bosses embed (HipsterChick's destructor resets the one at +0xdc8). Its
-// serialization (0x8fd4c0) follows its destructors in the binary.
-struct ProjectileSpawnInfo {
-    virtual ~ProjectileSpawnInfo();
-    char data_8[0x68];
-    void Serialize(onyx::Archive& archive);   // 0x8fd4c0
-};
-static_assert(sizeof(ProjectileSpawnInfo) == 0x70, "ProjectileSpawnInfo size");
 // What the robot's hand keeps at +0xd70 (0x18 bytes): its owner at +0x8, set
 // to the hand before slot 4 restores the rest (0xa304b0, a DeserializeCallbacks
 // instance).
@@ -35,12 +26,6 @@ struct HandCallbacks {
     void* extra;
 };
 void TransferCallbacks(onyx::Archive& archive, ComponentSlot::Source* source, HandCallbacks* callbacks);   // 0xa304b0
-// A 0x50-byte member some bosses serialize with 0xc1f2b0: a count, then a
-// vector of 4-byte pairs. Contents otherwise unknown.
-struct PairList {
-    char data[0x50];
-    void Serialize(onyx::Archive& archive);   // 0xc1f2b0
-};
 // SPTG::PlayfieldCollision (component type 0x21350526), behind ActorObject::playfield.
 struct PlayfieldCollision : TypedComponent {
     static const uint32_t kType = 0x21350526u;

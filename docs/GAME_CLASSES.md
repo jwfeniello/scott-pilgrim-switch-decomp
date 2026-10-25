@@ -534,6 +534,17 @@ a `DeserializeCallbacks` instance). Members with their own serializers are
 and a vector of pairs). Object references go through 0x997120 (a flag, then
 an id, resolved when loading).
 
+Classes outside the characters serialize the same way.
+[`ComponentSerialize.h`](../src/gameplay/ComponentSerialize.h) holds ABI views
+of 23 of them: actions on `Onyx::ActionComponent` (0xbcaa30) and other
+components on `Onyx::Component::Base` (0x6782a0). Each view places the
+serialized fields at their offsets with padding between. Two lab
+generators produce these functions from the original's operations: the
+parent call, `AssignComponentSlot` instances, handle, id (0x8012a0) and list
+transfers, and field transfers with their sizes. One class
+(`SPTG_MaterialModifier`) only matches with plain local copies instead of
+`TransferAs`, which shows the original used both forms.
+
 The playable characters
 ([`PlayerClasses.h`](../src/gameplay/PlayerClasses.h)) run ControllablePlayer's
 slot 4 (0x978660), then their own fields from `+0x1560`. ControllablePlayer's
