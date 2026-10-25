@@ -23,6 +23,7 @@ struct Attack {
     onyx::ComponentHandle* shared;    // +0x50: reference-counted
     Attack(const Attack& other) : value2c(0), shared(nullptr) { *this = other; }
     Attack& operator=(const Attack& other);   // 0x8e4450
+    void Serialize(onyx::Archive& archive);   // 0x8e4630
 };
 static_assert(sizeof(Attack) == 0x58, "Attack size");
 // An attack an enemy can request (0x78 bytes): the attack states start its
@@ -375,6 +376,7 @@ static_assert(__builtin_offsetof(BaseCharacter, actionMode) == 0x500, "BaseChara
 
 // SPTG::ControllablePlayer: its first own virtual (slot 159) receives messages.
 struct ControllablePlayer : BaseCharacter {
+    void Slot4(onyx::Archive& archive, ComponentSlot::Source* source);   // slot 4 (0x978660)
     virtual void OnMessage(CharacterMessage* message);   // slot 159
     void Notify80f430(int value);                        // 0x80f430
 };

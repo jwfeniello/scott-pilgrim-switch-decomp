@@ -493778,6 +493778,104 @@
       ]
     },
     {
+      "id": "gameplay_player_classes",
+      "source": "src/gameplay/PlayerClasses.cpp",
+      "compiler": "8.0.1",
+      "source_review": "manual_reconstruction",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-std=c++11",
+        "-O2",
+        "-mcpu=cortex-a57",
+        "-fstrict-aliasing",
+        "-fomit-frame-pointer",
+        "-fno-pic",
+        "-fno-delete-null-pointer-checks",
+        "-ffunction-sections",
+        "-fdata-sections",
+        "-mllvm",
+        "-no-stack-coloring"
+      ],
+      "header_roots": [
+        "src/gameplay"
+      ],
+      "functions": [
+        {
+          "address": "0x997930",
+          "size": 392,
+          "symbol": "_ZN4SPTG19ControllableWallace5Slot4ERN4onyx7ArchiveEPN13ComponentSlot6SourceE",
+          "target_sha256": "a95e38444af9863c720dc8cf531459447cff18765ea1a72999fe0e4159052790",
+          "bindings": {
+            "_ZN4SPTG18ControllablePlayer5Slot4ERN4onyx7ArchiveEPN13ComponentSlot6SourceE": "0x978660",
+            "_ZN4SPTG6Attack9SerializeERN4onyx7ArchiveE": "0x8e4630"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x999060",
+          "size": 392,
+          "symbol": "_ZN4SPTG19ControllableStephen5Slot4ERN4onyx7ArchiveEPN13ComponentSlot6SourceE",
+          "target_sha256": "5305dafe5f553759a6dfb64fd2ee7a19f45c251c53e64d25207b85815cd3e03f",
+          "bindings": {
+            "_ZN4SPTG18ControllablePlayer5Slot4ERN4onyx7ArchiveEPN13ComponentSlot6SourceE": "0x978660",
+            "_ZN4SPTG6Attack9SerializeERN4onyx7ArchiveE": "0x8e4630"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x999a80",
+          "size": 72,
+          "symbol": "_ZN4SPTG17ControllableScott5Slot4ERN4onyx7ArchiveEPN13ComponentSlot6SourceE",
+          "target_sha256": "bb7759337e2c8976eea5069a88313ab80e2c57345160ac27c492444c25767fac",
+          "bindings": {
+            "_ZN4SPTG18ControllablePlayer5Slot4ERN4onyx7ArchiveEPN13ComponentSlot6SourceE": "0x978660"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x99a120",
+          "size": 360,
+          "symbol": "_ZN4SPTG18ControllableRamona5Slot4ERN4onyx7ArchiveEPN13ComponentSlot6SourceE",
+          "target_sha256": "95428badab0647fceffd8f538cc0b5af72292d76f55983bf67dbdafb8f652273",
+          "bindings": {
+            "_ZN4SPTG18ControllablePlayer5Slot4ERN4onyx7ArchiveEPN13ComponentSlot6SourceE": "0x978660"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x99b350",
+          "size": 512,
+          "symbol": "_ZN4SPTG21ControllableNegaScott5Slot4ERN4onyx7ArchiveEPN13ComponentSlot6SourceE",
+          "target_sha256": "42a30c98b668b22842f434fce0cbbc0acbc3219d87d8f26e093d2352ca16c1d3",
+          "bindings": {
+            "_ZN4SPTG18ControllablePlayer5Slot4ERN4onyx7ArchiveEPN13ComponentSlot6SourceE": "0x978660"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x99c7a0",
+          "size": 272,
+          "symbol": "_ZN4SPTG18ControllableKnives5Slot4ERN4onyx7ArchiveEPN13ComponentSlot6SourceE",
+          "target_sha256": "5f9f6396668063b0f3441e72357cb17113dd40dd122c5f81c779e8adc82dfda7",
+          "bindings": {
+            "_ZN4SPTG18ControllablePlayer5Slot4ERN4onyx7ArchiveEPN13ComponentSlot6SourceE": "0x978660"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x99e500",
+          "size": 248,
+          "symbol": "_ZN4SPTG15ControllableKim5Slot4ERN4onyx7ArchiveEPN13ComponentSlot6SourceE",
+          "target_sha256": "89e0927d2525584a9bc2eb00bd4dad52d58063c93cdf45a7e834eb8ddc0caf0e",
+          "bindings": {
+            "_ZN4SPTG18ControllablePlayer5Slot4ERN4onyx7ArchiveEPN13ComponentSlot6SourceE": "0x978660"
+          },
+          "got_bindings": {}
+        }
+      ]
+    },
+    {
       "id": "gameplay_enemy",
       "source": "src/gameplay/Enemy.cpp",
       "compiler": "8.0.1",

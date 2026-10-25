@@ -534,7 +534,17 @@ a `DeserializeCallbacks` instance). Members with their own serializers are
 and a vector of pairs). Object references go through 0x997120 (a flag, then
 an id, resolved when loading).
 
-Matched: EnemyNormal, EnemyJake, EnemyGeeOne, EnemyMini, EnemyStuntman,
+The playable characters
+([`PlayerClasses.h`](../src/gameplay/PlayerClasses.h)) run ControllablePlayer's
+slot 4 (0x978660), then their own fields from `+0x1560`. ControllablePlayer's
+own fields are not declared yet, so each class pads up to its first field.
+Wallace and Stephen share a layout of four `Attack`s
+(`Attack::Serialize`, 0x8e4630). After loading some values, Kim, Ramona,
+Wallace and Stephen set the field just before from them, for example
+`+0x1560 = +0x1564`.
+
+Matched: the seven playable classes, EnemyNormal, EnemyJake, EnemyGeeOne,
+EnemyMini, EnemyStuntman,
 EnemySasuke, EnemyJetPackMatt, EnemyShooter, Ken & Kyle, NegaScott, Lynette
 (which also moves TagTeamMember's fields), SuperGideon, the robot's head and
 hand, Todd and Enemy itself. Todd's slot 4 moves eight component handles from `+0xd48`, so Boss's own
