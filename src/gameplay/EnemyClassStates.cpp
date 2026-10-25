@@ -227,4 +227,283 @@ bool EnemyGodzilla::OnHit(BaseCharacter* other, void* hit) {
     return Enemy::OnHit(other, hit);
 }
 
+// Slot 196 (EnemyGiant 0x9fbf70, EnemyNormal 0x9ef510, EnemySpeedy 0x9eb250):
+// after Enemy's jump back, entry starts one of two attacks by a flag.
+int EnemyGiant::State196(int event) {
+    if (Enemy::State196(event) == kStateParentTookOver) return kStateParentTookOver;
+    if (event != kStateEnter) return kStateUnhandled;
+    if (flagB89)
+        StartAttack(&attacks[4].attack, false, 1, nullptr);
+    else
+        StartAttack(&attacks[3].attack, false, 1, nullptr);
+    return kStateHandled;
+}
+int EnemyNormal::State196(int event) {
+    if (Enemy::State196(event) == kStateParentTookOver) return kStateParentTookOver;
+    if (event != kStateEnter) return kStateUnhandled;
+    if (flag9c4)
+        StartAttack(&attacks[4].attack, false, 1, nullptr);
+    else
+        StartAttack(&attacks[3].attack, false, 1, nullptr);
+    return kStateHandled;
+}
+int EnemySpeedy::State196(int event) {
+    if (Enemy::State196(event) == kStateParentTookOver) return kStateParentTookOver;
+    if (event != kStateEnter) return kStateUnhandled;
+    if (flag9c4)
+        StartAttack(&attacks[3].attack, false, 1, nullptr);
+    else
+        StartAttack(&attacks[2].attack, false, 1, nullptr);
+    return kStateHandled;
+}
+
+// Slot 166 (EnemyWolverine 0x9e9650, EnemyChubby 0x9ff560): three hit kinds.
+void EnemyWolverine::Slot166(int kind) {
+    savedMotion.x = motion.x;
+    savedMotion.y = motion.y;
+    savedMotion.z = motion.z;
+    value15c = 0.0f;
+    if (kind == 11) states.Transition(State234Ptr());
+    else if (kind == 32) states.Transition(State236Ptr());
+    else if (kind == 33) states.Transition(State194Ptr());
+}
+void EnemyChubby::Slot166(int kind) {
+    savedMotion.x = motion.x;
+    savedMotion.y = motion.y;
+    savedMotion.z = motion.z;
+    value15c = 0.0f;
+    if (kind == 11) {
+        states.Transition(State238Ptr());
+    } else if (kind == 32) {
+        states.Transition(State240Ptr());
+    } else if (kind == 39) {
+        flagCf8 = 0;
+        states.Transition(State236Ptr());
+    }
+}
+
+// EnemyStuntman slot 69 (0x9ce090): takes the damage through the base class,
+// raises +0x811, sends the current state the damage event, passes the damage to
+// the other character (slot 43) and to 0x995a30, and clears +0x328.
+float EnemyStuntman::TakeDamage(const void* hit, BaseCharacter* other) {
+    float damage = BaseCharacter::TakeDamage(hit, other);
+    flag811 = 1;
+    states.Send(kStateDamaged);
+    if (other) other->Slot43(damage);
+    Apply995a30(damage);
+    value328 = 0.0f;
+    return damage;
+}
+
+// EnemyGuyOnFire slot 96 (0x9e61b0): replaces Enemy's state; each update switches
+// to slot 176 once 0x9ddab0 passes for its sensor.
+int EnemyGuyOnFire::State96(int event) {
+    switch (event) {
+    case kStateUpdate:
+        if (Check9ddab0(&sensor)) {
+            states.Transition(State176Ptr());
+            return kStateParentTookOver;
+        }
+        return kStateHandled;
+    case kStateEnter:
+    case kStateEvent3:
+        return kStateHandled;
+    }
+    return kStateUnhandled;
+}
+
+// Slot 21 (EnemyGiant 0x9fb390, EnemyGodzilla 0x9f8ef0): reaction 1 switches to
+// a class state unless already in it.
+void EnemyGiant::ReactTo(BaseCharacter*, int reaction, void*) {
+    if (reaction != 1) return;
+    State target = State246Ptr();
+    if (states.current == target) return;
+    states.Transition(State246Ptr());
+}
+void EnemyGodzilla::ReactTo(BaseCharacter*, int reaction, void*) {
+    if (reaction != 1) return;
+    State target = State238Ptr();
+    if (states.current == target) return;
+    states.Transition(State238Ptr());
+}
+
+// Slot 33 (EnemyGiant 0x9fb430, EnemyGodzilla 0x9f8f90, EnemyHanzo 0x9f61b0): in
+// action mode 6, switches to a class state unless already in it.
+bool EnemyGiant::Slot33() {
+    if (actionMode == 6) {
+        State target = State244Ptr();
+        if (!(states.current == target)) states.Transition(State244Ptr());
+    }
+    return false;
+}
+bool EnemyGodzilla::Slot33() {
+    if (actionMode == 6) {
+        State target = State236Ptr();
+        if (!(states.current == target)) states.Transition(State236Ptr());
+    }
+    return false;
+}
+bool EnemyHanzo::Slot33() {
+    if (actionMode == 6) {
+        State target = State242Ptr();
+        if (!(states.current == target)) states.Transition(State242Ptr());
+    }
+    return false;
+}
+
+// Slots 96 and 174 (EnemyGiant 0x9fb650, 0x9fba40): after Enemy's state, entry
+// clears +0x1040 and each update switches to slot 242 once 0x9fd3e0 passes.
+int EnemyGiant::State96(int event) {
+    int result = Enemy::State96(event);
+    if (result == kStateParentTookOver) return result;
+    switch (event) {
+    case kStateEnter:
+        value1040 = 0;
+        return kStateHandled;
+    case kStateUpdate:
+        if (Check9fd3e0()) {
+            states.Transition(State242Ptr());
+            return kStateParentTookOver;
+        }
+        return kStateHandled;
+    }
+    return kStateUnhandled;
+}
+int EnemyGiant::State174(int event) {
+    int result = Enemy::State174(event);
+    if (result == kStateParentTookOver) return result;
+    switch (event) {
+    case kStateEnter:
+        value1040 = 0;
+        return kStateHandled;
+    case kStateUpdate:
+        if (Check9fd3e0()) {
+            states.Transition(State242Ptr());
+            return kStateParentTookOver;
+        }
+        return kStateHandled;
+    }
+    return kStateUnhandled;
+}
+
+// EnemyForestElves slot 69 (0x9fe190): as Stuntman's, then sets +0x328 to 100
+// and runs 0x996c30.
+float EnemyForestElves::TakeDamage(const void* hit, BaseCharacter* other) {
+    float damage = BaseCharacter::TakeDamage(hit, other);
+    flag811 = 1;
+    states.Send(kStateDamaged);
+    if (other) other->Slot43(damage);
+    Apply995a30(damage);
+    value328 = 100.0f;
+    Call996c30(value9c8, 0, 0, nullptr);
+    return damage;
+}
+
+// EnemyShooter slot 166 (0x9ebe50): hit kind 20 switches to state 236 or 234
+// (by +0xc24) when 0x994610 passes, else raises +0xb49 and switches to slot 176.
+void EnemyShooter::Slot166(int kind) {
+    savedMotion.x = motion.x;
+    savedMotion.y = motion.y;
+    savedMotion.z = motion.z;
+    value15c = 0.0f;
+    if (kind != 20) return;
+    if (Check994610()) {
+        if (valueC24) states.Transition(State236Ptr());
+        else states.Transition(State234Ptr());
+    } else {
+        flagB49 = 1;
+        states.Transition(State176Ptr());
+    }
+}
+
+// EnemyJetPackMatt slot 200 (0x9f1e00): replaces Enemy's blink state: entry sets
+// the timer to 1; the first update with time left runs 0x996c30 and removes the
+// enemy (slot 70).
+int EnemyJetPackMatt::State200(int event) {
+    switch (event) {
+    case kStateUpdate:
+        if (timer330 > 0.0f) {
+            timer330 = -1.0f;
+            Call996c30(value9c8, 0, 0, nullptr);
+            Remove(true);
+        }
+        return kStateHandled;
+    case kStateEnter:
+        timer330 = 1.0f;
+        return kStateHandled;
+    case kStateEvent3:
+        return kStateHandled;
+    default:
+        return kStateUnhandled;
+    case kStateExit:
+        states.AssertOwner(this);
+        return kStateHandled;
+    }
+}
+
+// EnemyZombie slot 202 (0x9e8700): after Enemy's state, entry starts attack 4 and
+// resets the state time; each update advances it.
+int EnemyZombie::State202(int event) {
+    if (Enemy::State202(event) == kStateParentTookOver) return kStateParentTookOver;
+    switch (event) {
+    case kStateEnter:
+        StartAttack(&attacks[4].attack, false, 1, nullptr);
+        stateTime = 0.0f;
+        return kStateHandled;
+    case kStateUpdate:
+        stateTime += Move_FrameDelta;
+        return kStateHandled;
+    case kStateExit:
+        return kStateHandled;
+    }
+    return kStateUnhandled;
+}
+
+// EnemyGuyOnFire slot 176 (0x9e6250): after Enemy's state, entry starts the
+// class's attack; with an attack pending, an update starts it once the delay has
+// passed.
+int EnemyGuyOnFire::State176(int event) {
+    if (Enemy::State176(event) == kStateParentTookOver) return kStateParentTookOver;
+    switch (event) {
+    case kStateEnter:
+        StartAttack(&attack, false, 1, nullptr);
+        attackTimer = 0.0f;
+        attackPending = 0;
+        return kStateHandled;
+    case kStateUpdate:
+        if (attackPending) {
+            attackTimer += Move_FrameDelta;
+            if (attackTimer >= attackDelay) {
+                StartAttack(&attack, false, 1, nullptr);
+                attackTimer = 0.0f;
+                attackPending = 0;
+            }
+        }
+        return kStateHandled;
+    }
+    return kStateUnhandled;
+}
+
+// EnemyStuntman slot 16 (0x9cccb0): the actor update. A stuntman that is not
+// held is released (slot 71) when its attachment's ID is outside 10001-999999.
+// Each frame then keeps the frame's values, runs slot 229 and resets +0x32c,
+// +0x160, the sensor and its counters.
+void EnemyStuntman::Update() {
+    BaseCharacter::Update();
+    if (!IsHeld()) {
+        const Holder* h = attachment ? attachment : &NoHolder;
+        if (h->id - 10001u >= 989999u) Release();
+    }
+    previousValue98 = value98;
+    previousValue2f4 = value2f4;
+    value910 = specialAttack.value74;
+    Slot229();
+    value32c = 0.0f;
+    value160 = 1.0f;
+    sensor.Reset();
+    valueBb8 = 0;
+    valueBc8 = 0;
+    flagBcc = 0;
+}
+
 }  // namespace SPTG

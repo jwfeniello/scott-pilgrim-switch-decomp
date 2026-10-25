@@ -7,6 +7,12 @@
 
 namespace SPTG {
 
+// An object some enemy classes keep (at +0xb90, +0xd80 or +0x11c8).
+struct EnemySensor {
+    char data[0x28];
+    void Reset();   // 0x9dea60
+};
+
 // A distance band (12 bytes).
 struct AttackRange { float min, max, unused; };
 
@@ -63,7 +69,9 @@ struct Enemy : BaseCharacter {
     virtual int State222(int event); virtual State State222Ptr();            // slots 222, 223
     virtual int State224(int event); virtual State State224Ptr();            // slots 224, 225
     virtual int State226(int event); virtual State State226Ptr();            // slots 226, 227
-    SPTG_SLOT(228) SPTG_SLOT(229) SPTG_SLOT(230)
+    SPTG_SLOT(228)
+    virtual void Slot229();                                                  // slot 229
+    SPTG_SLOT(230)
     virtual bool Slot231();                                                  // slot 231
     SPTG_SLOT(232) SPTG_SLOT(233)
 
@@ -75,7 +83,9 @@ struct Enemy : BaseCharacter {
     uint8_t flag7b9;             // +0x7b9
     char padding_7ba[0x1a];
     onyx::Vector3 savedMotion;   // +0x7d4
-    char padding_7e0[0x33];
+    char padding_7e0[0x31];
+    uint8_t flag811;             // +0x811: set when taking damage
+    char padding_812[0x1];
     uint8_t flag813;             // +0x813
     int32_t rangeType;           // +0x814: picks one of the four attack ranges
     char padding_818[0x4];
@@ -96,7 +106,8 @@ struct Enemy : BaseCharacter {
     int32_t mode87c;             // +0x87c
     char padding_880[0x18];
     AttackSlot specialAttack;    // +0x898
-    char padding_910[0xc];
+    uint32_t value910;           // +0x910
+    char padding_914[0x8];
     float attackRange;           // +0x91c
     float chance;                // +0x920: percent, compared with a random roll
     char padding_924[0x1c];
@@ -141,10 +152,10 @@ struct Enemy : BaseCharacter {
     uint8_t flagAd8;             // +0xad8
     char padding_ad9[0x10];
     uint8_t flagAe9;             // +0xae9
-    char padding_aea[0x8e];
+    char padding_aea[0x5f];
+    uint8_t flagB49;             // +0xb49
+    char padding_b4a[0x2e];
     uint8_t flagB78;             // +0xb78
-    char padding_b79[0x2f];
-    AttackSlot attacks[7];       // +0xba8
 
     bool LeaveCheck();   // 0x9dcb90: lets state 172 hand over to state 96
     void RollChance();   // 0x9dd6b0: when slot 36 holds, rolls the random chance at +0x920
@@ -152,10 +163,13 @@ struct Enemy : BaseCharacter {
     void Update9db820(float time, float value);   // 0x9db820
     void Enter9db480();  // 0x9db480
     void Call996c30(float value, int a, int b, void* c);   // 0x996c30
+    void Apply995a30(float damage);                         // 0x995a30
+    bool Check9ddab0(EnemySensor* sensor);                  // 0x9ddab0
+    bool Check994610();                                     // 0x994610
 };
 static_assert(__builtin_offsetof(Enemy, stateTime) == 0x7b0, "Enemy state time");
 static_assert(__builtin_offsetof(Enemy, aiMode) == 0x824, "Enemy AI mode");
-static_assert(__builtin_offsetof(Enemy, attacks) == 0xba8, "Enemy attacks");
+static_assert(__builtin_offsetof(Enemy, flagB78) == 0xb78, "Enemy end");
 
 // Onyx::Catalog<Enemy> (component type 0x5f5cdd73).
 struct EnemyCatalog : onyx::Component {

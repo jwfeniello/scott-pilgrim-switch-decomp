@@ -14,9 +14,6 @@ struct AnimatedAiActor {
     void Update();  // 0x945380
 };
 
-// Object an item is attached to; its ID decides whether the item stays held.
-struct Holder { uint32_t key; uint32_t id; };
-extern Holder NoHolder;
 extern "C" float Move_FrameDelta;   // seconds since the last frame (0x1924d70)
 
 // The actor's animation component (type 0x29fbe438).

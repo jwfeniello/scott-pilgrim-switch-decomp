@@ -21,7 +21,7 @@ struct AttackSlot {
     char padding_5c[0x10];
     int32_t kind;        // +0x6c
     float speedScale;    // +0x70
-    char padding_74[0x4];
+    uint32_t value74;    // +0x74
 };
 static_assert(sizeof(AttackSlot) == 0x78, "AttackSlot size");
 struct BaseCharacter;
@@ -89,7 +89,9 @@ struct BaseCharacter : onyx::Component {
     SPTG_SLOT(3) SPTG_SLOT(4) SPTG_SLOT(5) SPTG_SLOT(6) SPTG_SLOT(7) SPTG_SLOT(8) SPTG_SLOT(9) SPTG_SLOT(10)
     SPTG_SLOT(11)
     virtual bool IsA(uint32_t type);                                         // slot 12
-    SPTG_SLOT(13) SPTG_SLOT(14) SPTG_SLOT(15) SPTG_SLOT(16) SPTG_SLOT(17) SPTG_SLOT(18)
+    SPTG_SLOT(13) SPTG_SLOT(14) SPTG_SLOT(15)
+    virtual void Update();                                                   // slot 16
+    SPTG_SLOT(17) SPTG_SLOT(18)
     virtual void Slot19();                                                   // slot 19
     SPTG_SLOT(20)
     virtual void ReactTo(BaseCharacter* other, int reaction, void* data);    // slot 21
@@ -100,27 +102,31 @@ struct BaseCharacter : onyx::Component {
     SPTG_SLOT(29)
     virtual void TurnAround();                                               // slot 30
     virtual void Slot31Action();                                             // slot 31
-    SPTG_SLOT(32) SPTG_SLOT(33)
+    SPTG_SLOT(32)
+    virtual bool Slot33();                                                   // slot 33
     virtual bool Slot34Check();                                              // slot 34
     virtual void Slot35(bool flag, BaseCharacter* other);                    // slot 35
     virtual bool Slot36Check();      // flag +0x338 and a live mount at +0x238 // slot 36
     SPTG_SLOT(37)
     virtual bool OnHit(BaseCharacter* other, void* hit);                     // slot 38
-    SPTG_SLOT(39) SPTG_SLOT(40) SPTG_SLOT(41) SPTG_SLOT(42) SPTG_SLOT(43)
+    SPTG_SLOT(39) SPTG_SLOT(40) SPTG_SLOT(41) SPTG_SLOT(42)
+    virtual void Slot43(float value);                                        // slot 43
     virtual void StartAttack(Attack* attack, bool flag, int source, BaseCharacter* attacker); // slot 44
     SPTG_SLOT(45) SPTG_SLOT(46) SPTG_SLOT(47) SPTG_SLOT(48)
     virtual int Slot49();                                                    // slot 49
     virtual int Slot50();                                                    // slot 50
     virtual bool IsOut();             // checked before targeting a player   // slot 51
     virtual bool IsOnGround();                                               // slot 52
-    SPTG_SLOT(53) SPTG_SLOT(54) SPTG_SLOT(55)
+    SPTG_SLOT(53) SPTG_SLOT(54)
+    virtual bool IsHeld();                                                   // slot 55
     virtual void SetSolid(bool solid);                                       // slot 56
     SPTG_SLOT(57) SPTG_SLOT(58) SPTG_SLOT(59) SPTG_SLOT(60) SPTG_SLOT(61) SPTG_SLOT(62) SPTG_SLOT(63) SPTG_SLOT(64)
     SPTG_SLOT(65) SPTG_SLOT(66) SPTG_SLOT(67)
     virtual void Slot68();                                                   // slot 68
-    virtual void Slot69(void* data, void* extra);                            // slot 69
+    virtual float TakeDamage(const void* hit, BaseCharacter* other);         // slot 69
     virtual void Remove(bool flag);                                          // slot 70
-    SPTG_SLOT(71) SPTG_SLOT(72) SPTG_SLOT(73) SPTG_SLOT(74) SPTG_SLOT(75) SPTG_SLOT(76)
+    virtual void Release();                                                  // slot 71
+    SPTG_SLOT(72) SPTG_SLOT(73) SPTG_SLOT(74) SPTG_SLOT(75) SPTG_SLOT(76)
     virtual float Slot77();                                                  // slot 77
     SPTG_SLOT(78) SPTG_SLOT(79) SPTG_SLOT(80)
     virtual float Slot81();                                                  // slot 81
@@ -165,7 +171,9 @@ struct BaseCharacter : onyx::Component {
     virtual bool Slot156();                                                  // slot 156
     SPTG_SLOT(157) SPTG_SLOT(158)
 
-    char padding_8[0x48];
+    char padding_8[0x38];
+    Holder* attachment;          // +0x40: what the actor is attached to
+    char padding_48[0x8];
     uint8_t flag50;              // +0x50
     char padding_51[0x7];
     onyx::ComponentHandle* effectHandle; // +0x58
@@ -176,7 +184,9 @@ struct BaseCharacter : onyx::Component {
     Singleton<GameServices> services; // +0x80
     char padding_88[0x8];
     Singleton<LevelItemAccessor> level; // +0x90
-    char padding_98[0x14];
+    uint32_t value98;            // +0x98
+    uint32_t previousValue98;    // +0x9c
+    char padding_a0[0xc];
     float throwSpeed;            // +0xac: horizontal speed after landing from a throw
     char padding_b0[0x48];
     float groundZ;               // +0xf8
@@ -214,7 +224,10 @@ struct BaseCharacter : onyx::Component {
     float slideThreshold;        // +0x2e4
     char padding_2e8[0x4];
     float slideSpeed;            // +0x2ec
-    char padding_2f0[0x38];
+    char padding_2f0[0x4];
+    uint32_t value2f4;           // +0x2f4
+    uint32_t previousValue2f4;   // +0x2f8
+    char padding_2fc[0x2c];
     float value328;              // +0x328
     float value32c;              // +0x32c
     float timer330;              // +0x330

@@ -7,6 +7,8 @@
 namespace SPTG {
 
 enum StateEvent { kStateUpdate = 10000, kStateEnter = 10001, kStateExit = 10002, kStateEvent3 = 10003 };
+// Sent to the current state when the character takes damage.
+enum { kStateDamaged = 20000 };
 enum StateResult { kStateUnhandled = 0, kStateHandled = 1, kStateParentTookOver = 2 };
 
 // The owner, the current state and the requested state. Transition is
@@ -19,6 +21,8 @@ template<class Owner> struct StateMachine {
     void Transition(State state);
     // Sends the current state the per-frame update event.
     __attribute__((always_inline)) void Update() { (owner->*current)(kStateUpdate); }
+    // Sends the current state any event.
+    __attribute__((always_inline)) int Send(int event) { return (owner->*current)(event); }
     // Starts the machine in `initial` and sends it the enter event.
     __attribute__((always_inline)) void Start(Owner* self, State initial) {
         next = initial;

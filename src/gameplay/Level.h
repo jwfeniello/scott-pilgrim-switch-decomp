@@ -6,6 +6,10 @@
 namespace SPTG {
 
 // A singleton dependency slot; Get resolves the service on first use (out of line).
+// Object an actor is attached to; its ID decides whether the actor stays held.
+struct Holder { uint32_t key; uint32_t id; };
+extern Holder NoHolder;   // 0x191b6c0
+
 template<class T> struct Singleton { onyx::ComponentHandle* handle; T* Get(); };
 
 struct LevelItemAccessor {

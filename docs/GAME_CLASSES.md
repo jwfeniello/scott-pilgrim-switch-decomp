@@ -441,8 +441,15 @@ that form: they need `__builtin_assume`, which drops side effects.
 [`EnemyClasses.h`](../src/gameplay/EnemyClasses.h) declares all 24 regular enemy
 classes with their own states (after Enemy's slot 233, each followed by its
 getter) and the overrides the sources define.
-[`EnemyClassStates.cpp`](../src/gameplay/EnemyClassStates.cpp) matches 26 of
-their functions (2,428 bytes), mostly small:
+[`EnemyClassStates.cpp`](../src/gameplay/EnemyClassStates.cpp) matches 46 of
+their functions (5,380 bytes), mostly small.
+
+Enemy's own fields end at `+0xb79`; everything after belongs to the class.
+Classes with attacks keep them as 0x78-byte slots from `+0xba8` (EnemyNormal,
+EnemyGiant and EnemyHanzo have 7). EnemyStuntman and EnemyGuyOnFire keep an
+`EnemySensor` at `+0xb90` (reset by 0x9dea60, checked by 0x9ddab0) where the
+attack classes have their first slot, so the slots cannot be Enemy's. The
+matched functions are:
 
 - Base-state overrides that run Enemy's or BaseCharacter's state first, then
   play an animation (EnemyGodzilla 124), start one of the class's attacks
@@ -458,3 +465,17 @@ their functions (2,428 bytes), mostly small:
   set, otherwise allowed only in action mode 6 (EnemyGiant, EnemyGodzilla,
   EnemyHanzo, EnemyNormal). EnemyGodzilla also refuses hits in Enemy's dash
   state (slot 38).
+- Slot 33 and the reaction hook (slot 21): EnemyGiant, EnemyGodzilla and
+  EnemyHanzo switch to a class state in action mode 6 or on reaction 1, unless
+  already in it.
+- Damage (slot 69): EnemyStuntman and EnemyForestElves take the damage through
+  BaseCharacter, send the current state event 20000 (`kStateDamaged`), and pass
+  the damage to the attacker's slot 43 and to 0x995a30.
+- Class timers: EnemyGuyOnFire waits for its sensor (slot 96), then fires its
+  attack after a delay (slot 176); EnemyJetPackMatt replaces Enemy's blink state
+  with a one-shot removal (slot 200); EnemyZombie times its attack 4 (slot 202);
+  EnemyGiant leaves its idle and approach states for slot 242 once 0x9fd3e0
+  passes.
+- EnemyStuntman's actor update (slot 16) calls BaseCharacter's update (0x945380),
+  skipping Enemy's. Like Pickup's, it releases the stuntman when it is no longer
+  held, then copies the frame's values every frame.

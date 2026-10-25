@@ -479,7 +479,7 @@ int BaseCharacter::State134(int event) {
 // skipped. On the ground in animation 171 or 172, the character slides at the
 // throw speed in its facing direction, bounces with the restitution and
 // restores the ground depth values; with +0x339 set it also records its
-// position and passes +0x340 to slot 69. Then it switches to slot 142.
+// position and applies the hit at +0x340 (slot 69). Then it switches to slot 142.
 // Not yet byte-identical, so not credited: the original schedules the fall
 // speed load and the two position stores differently.
 int BaseCharacter::State140(int event) {
@@ -501,7 +501,7 @@ int BaseCharacter::State140(int event) {
                 onyx::Transform* transform = onyx::Get<onyx::Transform, onyx::kTransform>(object->transform);
                 positionX = transform->position.x;
                 positionYZ = transform->position.y + transform->position.z;
-                Slot69(block340, nullptr);
+                TakeDamage(block340, nullptr);
                 flag339 = 0;
             }
             states.Transition(State142Ptr());
