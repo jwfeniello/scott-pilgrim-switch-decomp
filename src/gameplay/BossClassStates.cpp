@@ -2604,8 +2604,8 @@ void Patel::Slot13() {
 
 // KenKyle slot 4 (0xa4b5f0): Boss's serialization, then the seven attack slots
 // and the settings from +0x10b0 to +0x10ec (see Archive.h).
-void KenKyle::Slot4(onyx::Archive& archive, onyx::ArchiveContext* context) {
-    Boss::Slot4(archive, context);
+void KenKyle::Slot4(onyx::Archive& archive, ComponentSlot::Source* source) {
+    Boss::Slot4(archive, source);
     attackD68.Serialize(archive);
     attackDe0.Serialize(archive);
     attackE58.Serialize(archive);
@@ -2633,8 +2633,8 @@ void KenKyle::Slot4(onyx::Archive& archive, onyx::ArchiveContext* context) {
 
 // Slot 4, serialization (see Archive.h): Boss's, then the class's fields.
 // NegaScott 0xa44db0:
-void NegaScott::Slot4(onyx::Archive& archive, onyx::ArchiveContext* context) {
-    Boss::Slot4(archive, context);
+void NegaScott::Slot4(onyx::Archive& archive, ComponentSlot::Source* source) {
+    Boss::Slot4(archive, source);
     for (int i = 0; i < 9; ++i) attacksD50[i].Serialize(archive);
     projectile.Serialize(archive);
     onyx::Transfer(archive, value11f8);
@@ -2648,8 +2648,8 @@ void NegaScott::Slot4(onyx::Archive& archive, onyx::ArchiveContext* context) {
     onyx::Transfer(archive, value1218);
 }
 // Lynette 0xa61fc0 (TagTeamMember has no slot 4, so Lynette moves its fields):
-void Lynette::Slot4(onyx::Archive& archive, onyx::ArchiveContext* context) {
-    Boss::Slot4(archive, context);
+void Lynette::Slot4(onyx::Archive& archive, ComponentSlot::Source* source) {
+    Boss::Slot4(archive, source);
     onyx::Transfer(archive, healthD4c);
     onyx::Transfer(archive, timeD50);
     onyx::Transfer(archive, valueD54);
@@ -2671,8 +2671,8 @@ void Lynette::Slot4(onyx::Archive& archive, onyx::ArchiveContext* context) {
     listF60.Serialize(archive);
 }
 // SuperFightingRobotHead 0xa26ee0:
-void SuperFightingRobotHead::Slot4(onyx::Archive& archive, onyx::ArchiveContext* context) {
-    Boss::Slot4(archive, context);
+void SuperFightingRobotHead::Slot4(onyx::Archive& archive, ComponentSlot::Source* source) {
+    Boss::Slot4(archive, source);
     listD50.Serialize(archive);
     onyx::TransferAs<uint32_t>(archive, valueDa0);
     onyx::TransferAs<uint32_t>(archive, valueDa4);
@@ -2689,8 +2689,8 @@ void SuperFightingRobotHead::Slot4(onyx::Archive& archive, onyx::ArchiveContext*
 }
 
 // SuperGideon 0xa52700:
-void SuperGideon::Slot4(onyx::Archive& archive, onyx::ArchiveContext* context) {
-    Boss::Slot4(archive, context);
+void SuperGideon::Slot4(onyx::Archive& archive, ComponentSlot::Source* source) {
+    Boss::Slot4(archive, source);
     for (int i = 0; i < 6; ++i) attacksD58[i].Serialize(archive);
     projectiles[0].Serialize(archive);
     projectiles[1].Serialize(archive);
@@ -2717,9 +2717,9 @@ void SuperGideon::Slot4(onyx::Archive& archive, onyx::ArchiveContext* context) {
 
 // Todd 0xa1fb50: Boss's, then eight handles, seven attack slots, the projectile
 // and the settings from +0x1190.
-void Todd::Slot4(onyx::Archive& archive, onyx::ArchiveContext* context) {
-    Boss::Slot4(archive, context);
-    for (int i = 0; i < 8; ++i) onyx::TransferHandle(handlesD48[i], archive, context);
+void Todd::Slot4(onyx::Archive& archive, ComponentSlot::Source* source) {
+    Boss::Slot4(archive, source);
+    for (int i = 0; i < 8; ++i) onyx::TransferHandle(handlesD48[i], archive, source);
     attackDd8.Serialize(archive);
     attackE50.Serialize(archive);
     attackEc8.Serialize(archive);
@@ -2765,6 +2765,51 @@ void Todd::Slot4(onyx::Archive& archive, onyx::ArchiveContext* context) {
     onyx::Transfer(archive, value1218);
     onyx::Transfer(archive, value121c);
     onyx::Transfer(archive, flag1220);
+}
+
+// SuperFightingRobotHand 0xa287c0: Boss's, then five handles, the callbacks
+// (owned by the hand), three attack slots and the settings from +0xef0.
+void SuperFightingRobotHand::Slot4(onyx::Archive& archive, ComponentSlot::Source* source) {
+    Boss::Slot4(archive, source);
+    onyx::TransferHandle(handleD48, archive, source);
+    onyx::TransferHandle(handleD50, archive, source);
+    onyx::TransferHandle(handleD58, archive, source);
+    onyx::TransferHandle(handleD60, archive, source);
+    onyx::TransferHandle(handleD68, archive, source);
+    callbacks.owner = this;
+    TransferCallbacks(archive, source, &callbacks);
+    attackD88.Serialize(archive);
+    attackE00.Serialize(archive);
+    attackE78.Serialize(archive);
+    onyx::Transfer(archive, valueEf0);
+    onyx::Transfer(archive, valueEf4);
+    onyx::Transfer(archive, valueEf8);
+    onyx::Transfer(archive, valueEfc);
+    onyx::Transfer(archive, valueF00);
+    onyx::Transfer(archive, valueF04);
+    onyx::Transfer(archive, valueF08);
+    onyx::Transfer(archive, valueF0c);
+    onyx::Transfer(archive, valueF10);
+    onyx::Transfer(archive, valueF14);
+    onyx::Transfer(archive, valueF18);
+    onyx::Transfer(archive, valueF1c);
+    onyx::Transfer(archive, valueF20);
+    onyx::Transfer(archive, valueF24);
+    onyx::Transfer(archive, valueF28);
+    onyx::Transfer(archive, valueF2c);
+    onyx::Transfer(archive, valueF30);
+    onyx::Transfer(archive, valueF34);
+    onyx::Transfer(archive, valueF38);
+    onyx::Transfer(archive, valueF3c);
+    onyx::Transfer(archive, valueF40);
+    onyx::TransferAs<uint32_t>(archive, valueF44);
+    onyx::Transfer(archive, flagF48);
+    onyx::Transfer(archive, flagF49);
+    onyx::Transfer(archive, valueF4c);
+    onyx::Transfer(archive, valueF50);
+    onyx::Transfer(archive, valueF54);
+    onyx::Transfer(archive, valueF58);
+    onyx::Transfer(archive, valueF5c);
 }
 
 }  // namespace SPTG

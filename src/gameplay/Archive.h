@@ -5,11 +5,15 @@
 #pragma once
 #include <stdint.h>
 
+// Passed along with the archive (slot 4's second argument). The same type
+// feeds AssignComponentSlot (src/ComponentSlotAssign.cpp), which fills
+// component slots from it.
+namespace ComponentSlot { struct Source; }
+template<unsigned Key, uint32_t Hash> void AssignComponentSlot(void* self, ComponentSlot::Source* source);
+
 namespace onyx {
 
 struct ComponentHandle;
-// Passed along with the archive (slot 4's second argument); contents unknown.
-struct ArchiveContext;
 
 struct Stream {
     virtual void Slot0(); virtual void Slot1(); virtual void Slot2();
@@ -41,6 +45,6 @@ template<class S, class T> inline void TransferAs(Archive& archive, T& field) {
 template<class T> void TransferReference(Archive& archive, T*& object);
 
 // Moves a component handle (0x67dd00).
-void TransferHandle(ComponentHandle*& handle, Archive& archive, ArchiveContext* context);
+void TransferHandle(ComponentHandle*& handle, Archive& archive, ComponentSlot::Source* source);
 
 }  // namespace onyx

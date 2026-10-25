@@ -53,7 +53,7 @@ struct Todd : Boss {
     void Update();
     float TakeDamage(const void* hit, BaseCharacter* other);
     bool Slot82();
-    void Slot4(onyx::Archive& archive, onyx::ArchiveContext* context);
+    void Slot4(onyx::Archive& archive, ComponentSlot::Source* source);
     int State98(int event); State State98Ptr();   // slots 98, 99, override Boss
     int State106(int event); State State106Ptr();   // slots 106, 107, override Boss
     int State122(int event); State State122Ptr();   // slots 122, 123, override Boss
@@ -211,7 +211,7 @@ struct SuperGideon : Boss {
     void Slot13();
     bool Slot82();
     float TakeDamage(const void* hit, BaseCharacter* other);
-    void Slot4(onyx::Archive& archive, onyx::ArchiveContext* context);
+    void Slot4(onyx::Archive& archive, ComponentSlot::Source* source);
     int State122(int event); State State122Ptr();   // slots 122, 123, override Boss
     int State172(int event); State State172Ptr();   // slots 172, 173, override Boss
     int State186(int event); State State186Ptr();   // slots 186, 187, override Boss
@@ -261,7 +261,7 @@ struct KenKyle : Boss {
     void Update();
     bool Slot82();
     void CallA506f0(int32_t value);   // 0xa506f0
-    void Slot4(onyx::Archive& archive, onyx::ArchiveContext* context);
+    void Slot4(onyx::Archive& archive, ComponentSlot::Source* source);
     int State114(int event); State State114Ptr();   // slots 114, 115, override Boss
     int State122(int event); State State122Ptr();   // slots 122, 123, override Boss
     int State172(int event); State State172Ptr();   // slots 172, 173, override Boss
@@ -404,7 +404,7 @@ struct Lynette : TagTeamMember {
     void Update();
     float TakeDamage(const void* hit, BaseCharacter* other);
     bool Slot82();
-    void Slot4(onyx::Archive& archive, onyx::ArchiveContext* context);
+    void Slot4(onyx::Archive& archive, ComponentSlot::Source* source);
     virtual void Slot234(int kind);                                          // slot 234, overrides TagTeamMember
     virtual bool Slot237(const AttackSlot& request);                         // slot 237, overrides TagTeamMember
     virtual bool Slot238();                                                  // slot 238, overrides TagTeamMember
@@ -523,7 +523,7 @@ struct Envy : TagTeamMember {
 // vtable 0x1894150, 266 slots
 struct NegaScott : Boss {
     void Slot13();
-    void Slot4(onyx::Archive& archive, onyx::ArchiveContext* context);
+    void Slot4(onyx::Archive& archive, ComponentSlot::Source* source);
     virtual void Slot234(int kind);                                          // slot 234, overrides Boss
     SPTG_SLOT(235)   // overrides Boss
     virtual int State244(int event); virtual State State244Ptr();   // slots 244, 245, overrides Boss
@@ -604,6 +604,7 @@ struct SuperFightingRobotAI : Boss {
 // vtable 0x188eb08, 274 slots
 struct SuperFightingRobotHand : Boss {
     float TakeDamage(const void* hit, BaseCharacter* other);
+    void Slot4(onyx::Archive& archive, ComponentSlot::Source* source);
     int State96(int event); State State96Ptr();   // slots 96, 97, override Boss
     int State106(int event); State State106Ptr();   // slots 106, 107, override Boss
     int State108(int event); State State108Ptr();   // slots 108, 109, override Boss
@@ -620,7 +621,47 @@ struct SuperFightingRobotHand : Boss {
     virtual int State270(int event); virtual State State270Ptr();   // slots 270, 271
     virtual int State272(int event); virtual State State272Ptr();   // slots 272, 273
 
-    char padding_d2b[0x275];
+    char padding_d2b[0x1d];
+    onyx::ComponentHandle* handleD48; // +0xd48: state 270 plays animation 38 on this and +0xd50
+    onyx::ComponentHandle* handleD50; // +0xd50
+    onyx::ComponentHandle* handleD58; // +0xd58
+    onyx::ComponentHandle* handleD60; // +0xd60
+    onyx::ComponentHandle* handleD68; // +0xd68
+    HandCallbacks callbacks;     // +0xd70
+    AttackSlot attackD88;        // +0xd88
+    AttackSlot attackE00;        // +0xe00
+    AttackSlot attackE78;        // +0xe78
+    int32_t valueEf0;            // +0xef0
+    int32_t valueEf4;            // +0xef4
+    int32_t valueEf8;            // +0xef8
+    int32_t valueEfc;            // +0xefc
+    int32_t valueF00;            // +0xf00
+    int32_t valueF04;            // +0xf04
+    int32_t valueF08;            // +0xf08
+    int32_t valueF0c;            // +0xf0c
+    int32_t valueF10;            // +0xf10
+    int32_t valueF14;            // +0xf14
+    int32_t valueF18;            // +0xf18
+    int32_t valueF1c;            // +0xf1c
+    int32_t valueF20;            // +0xf20
+    int32_t valueF24;            // +0xf24
+    int32_t valueF28;            // +0xf28
+    int32_t valueF2c;            // +0xf2c
+    int32_t valueF30;            // +0xf30
+    int32_t valueF34;            // +0xf34
+    int32_t valueF38;            // +0xf38
+    int32_t valueF3c;            // +0xf3c
+    int32_t valueF40;            // +0xf40
+    int32_t valueF44;            // +0xf44: serialized through a uint32_t
+    uint8_t flagF48;             // +0xf48
+    uint8_t flagF49;             // +0xf49
+    char padding_f4a[0x2];
+    int32_t valueF4c;            // +0xf4c
+    int32_t valueF50;            // +0xf50
+    int32_t valueF54;            // +0xf54
+    int32_t valueF58;            // +0xf58
+    int32_t valueF5c;            // +0xf5c
+    char padding_f60[0x40];
     int32_t hitsFa0;             // +0xfa0
     char padding_fa4[0xc];
     SuperFightingRobotAI* owner; // +0xfb0: set by the robot
@@ -638,7 +679,7 @@ struct SuperFightingRobotShoulder : Boss {
 };
 // vtable 0x188e2d0, 258 slots
 struct SuperFightingRobotHead : Boss {
-    void Slot4(onyx::Archive& archive, onyx::ArchiveContext* context);
+    void Slot4(onyx::Archive& archive, ComponentSlot::Source* source);
 
     char padding_d2b[0x25];
     PairList listD50;            // +0xd50

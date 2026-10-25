@@ -26,6 +26,15 @@ struct ProjectileSpawnInfo {
     void Serialize(onyx::Archive& archive);   // 0x8fd4c0
 };
 static_assert(sizeof(ProjectileSpawnInfo) == 0x70, "ProjectileSpawnInfo size");
+// What the robot's hand keeps at +0xd70 (0x18 bytes): its owner at +0x8, set
+// to the hand before slot 4 restores the rest (0xa304b0, a DeserializeCallbacks
+// instance).
+struct HandCallbacks {
+    void* data;
+    struct BaseCharacter* owner;
+    void* extra;
+};
+void TransferCallbacks(onyx::Archive& archive, ComponentSlot::Source* source, HandCallbacks* callbacks);   // 0xa304b0
 // A 0x50-byte member some bosses serialize with 0xc1f2b0: a count, then a
 // vector of 4-byte pairs. Contents otherwise unknown.
 struct PairList {
@@ -43,7 +52,7 @@ struct PlayfieldCollision : TypedComponent {
 
 // vtable 0x188b950, 258 slots
 struct Boss : Enemy {
-    void Slot4(onyx::Archive& archive, onyx::ArchiveContext* context);
+    void Slot4(onyx::Archive& archive, ComponentSlot::Source* source);
     void Update();
     void Slot13();
     bool Slot33(void* data);

@@ -18,7 +18,7 @@ struct EnemySensor {
 struct EnemyScaling { char padding[0x4c]; int32_t mode; float scale; };   // +0x4c, +0x50
 
 // A distance band (12 bytes).
-struct AttackRange { float min, max, unused; };
+struct AttackRange { float min, max, extra; };   // extra: serialized, not read by the matched states
 
 // A player the enemy may target, with its distance (0x18 bytes).
 struct TargetEntry {
@@ -34,7 +34,7 @@ struct Enemy : BaseCharacter {
     void Update();                                                   // slot 16, overrides BaseCharacter
     void Slot13();                                                   // slot 13, overrides BaseCharacter (0x9cc340)
     void Slot7();                                                    // slot 7, overrides BaseCharacter (0x9e0590)
-    void Slot4(onyx::Archive& archive, onyx::ArchiveContext* context);                               // slot 4, overrides BaseCharacter (0x9e06c0)
+    void Slot4(onyx::Archive& archive, ComponentSlot::Source* source);                               // slot 4, overrides BaseCharacter (0x9e06c0)
     void Slot19();                                                   // slot 19, overrides BaseCharacter (0x9de160)
     float TakeDamage(const void* hit, BaseCharacter* other);         // slot 69, overrides BaseCharacter
     int State96(int event);                                          // slot 96, overrides BaseCharacter
@@ -90,7 +90,10 @@ struct Enemy : BaseCharacter {
     SPTG_SLOT(232)
     virtual void Slot233(const uint8_t* trigger);                            // slot 233
 
-    char padding_775[0x2b];
+    char padding_775[0x13];
+    onyx::ComponentHandle* handle788; // +0x788
+    onyx::ComponentHandle* handle790; // +0x790
+    void* slot798;               // +0x798: filled by AssignComponentSlot
     Singleton<EnemyScaling> scaling; // +0x7a0: getter 0x7a1bc0
     char padding_7a8[0x4];
     float value7ac;              // +0x7ac
@@ -124,15 +127,24 @@ struct Enemy : BaseCharacter {
     int32_t value878;            // +0x878
     int32_t mode87c;             // +0x87c
     AttackSlot specialAttack;    // +0x880
-    char padding_8f8[0xc];
+    int32_t value8f8;            // +0x8f8: serialized through a uint32_t
+    int32_t value8fc;            // +0x8fc: serialized through a uint32_t
+    int32_t value900;            // +0x900: serialized through a uint32_t
     int32_t specialType;         // +0x904
     float specialSpeedScale;     // +0x908: scales the dash speed
     float base90c;               // +0x90c: scaled into +0x910
     float scaled910;             // +0x910
-    char padding_914[0x8];
+    int32_t value914;            // +0x914: serialized through a uint32_t
+    int32_t value918;            // +0x918
     float attackRange;           // +0x91c
     float chance;                // +0x920: percent, compared with a random roll
-    char padding_924[0x1c];
+    int32_t value924;            // +0x924
+    int32_t value928;            // +0x928
+    int32_t value92c;            // +0x92c
+    int32_t value930;            // +0x930
+    int32_t value934;            // +0x934
+    int32_t value938;            // +0x938
+    int32_t value93c;            // +0x93c
     uint8_t flag940;             // +0x940
     char padding_941[0x3];
     AttackRange range0;          // +0x944
@@ -142,41 +154,53 @@ struct Enemy : BaseCharacter {
     uint8_t flag974;             // +0x974
     char padding_975[0x3];
     uint32_t flags978;           // +0x978: bit flags
-    char padding_97c[0x4];
+    int32_t value97c;            // +0x97c
     float value980;              // +0x980
     float delay984;              // +0x984
-    char padding_988[0xc];
+    int32_t value988;            // +0x988
+    int32_t value98c;            // +0x98c
+    int32_t value990;            // +0x990
     float counterChanceHealthy;  // +0x994: percent, while health is above the threshold
     float counterChance;         // +0x998: percent
     float counterHealthThreshold; // +0x99c
     float followUpChance;        // +0x9a0: percent
-    char padding_9a4[0x4];
+    int32_t value9a4;            // +0x9a4
     float assistChance;          // +0x9a8: percent
     float delay9ac;              // +0x9ac
     float dashSpeed;             // +0x9b0
     float dashHold;              // +0x9b4: seconds in the dash animation
     float dashDelayBase;         // +0x9b8
-    char padding_9bc[0x4];
+    int32_t value9bc;            // +0x9bc
     float dashDelay;             // +0x9c0: seconds before the dash
     uint8_t flag9c4;             // +0x9c4
     char padding_9c5[0x3];
     float value9c8;              // +0x9c8
     float partnerDelay;          // +0x9cc
     bool removeFlag;             // +0x9d0: passed to Remove
-    char padding_9d1[0x1];
+    uint8_t flag9d1;             // +0x9d1
     uint8_t flag9d2;             // +0x9d2
     char padding_9d3[0x1];
     float blinkDuration;         // +0x9d4
     float blinkPeriod;           // +0x9d8
-    char padding_9dc[0x8];
+    int32_t value9dc;            // +0x9dc
+    int32_t value9e0;            // +0x9e0
     int32_t bonus;               // +0x9e4: added to the scaled values, by scaling mode
-    char padding_9e8[0x4];
+    int32_t value9e8;            // +0x9e8
     int32_t bonusMode2;          // +0x9ec
-    char padding_9f0[0x4];
+    int32_t value9f0;            // +0x9f0
     int32_t bonusMode3;          // +0x9f4
-    char padding_9f8[0x10];
+    int32_t value9f8;            // +0x9f8
+    int32_t value9fc;            // +0x9fc
+    int32_t valueA00;            // +0xa00
+    int32_t valueA04;            // +0xa04
     int32_t valueA08;            // +0xa08
-    char padding_a0c[0x38];
+    int32_t valueA0c;            // +0xa0c
+    int32_t valueA10;            // +0xa10
+    int32_t valueA14;            // +0xa14
+    int32_t valueA18;            // +0xa18
+    int32_t valueA1c;            // +0xa1c
+    int32_t valueA20;            // +0xa20
+    char padding_a24[0x20];
     onyx::Vector3 backOffPoint;  // +0xa44: the point state 208 backs away from
     float backOffDistance;       // +0xa50
     char padding_a54[0x84];
@@ -185,7 +209,10 @@ struct Enemy : BaseCharacter {
     uint8_t flagAe9;             // +0xae9
     char padding_aea[0x5f];
     uint8_t flagB49;             // +0xb49
-    char padding_b4a[0x2e];
+    char padding_b4a[0x2];
+    int32_t valueB4c;            // +0xb4c
+    int32_t valueB50;            // +0xb50
+    char padding_b54[0x24];
     uint8_t flagB78;             // +0xb78
 
     bool LeaveCheck();   // 0x9dcb90: lets state 172 hand over to state 96

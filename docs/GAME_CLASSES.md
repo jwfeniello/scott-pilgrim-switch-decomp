@@ -517,8 +517,19 @@ below the previous call's, which is how the original lays out two of them
 (EnemyShooter). EnemyOneHitWonder has no slot 4, so EnemyStuntman and
 EnemySasuke each move its fields themselves.
 
-Slot 4 takes a second argument, a context it passes on to the parent and to
-handle transfers (0x67dd00). Members with their own serializers are
+Slot 4 takes a second argument, a `ComponentSlot::Source*`. Slot 4 passes it
+on to the parent, to handle transfers (0x67dd00) and to
+`AssignComponentSlot`, the template instances that fill component slots and
+singletons ([`ComponentSlotAssign.cpp`](../src/ComponentSlotAssign.cpp)).
+Enemy's slot 4 (0x9e06c0, 2,896 bytes) assigns two (`+0x798` and the scaling
+singleton at `+0x7a0`) after two handles, then moves its settings from
+`+0x8f8` to `+0xa20`. These include the special attack's type and speed,
+the four attack ranges (all three values of each, so the third is now
+`extra`), the counter chances, the dash and blink settings and the bonus
+modes. Its temporaries share one stack slot, so `Enemy.cpp` builds with
+default stack coloring; its other functions match either way. The robot
+hand restores a callback list at `+0xd70` after setting its owner (0xa304b0,
+a `DeserializeCallbacks` instance). Members with their own serializers are
 `ProjectileSpawnInfo` (0x8fd4c0) and a 0x50-byte `PairList` (0xc1f2b0, a count
 and a vector of pairs). Object references go through 0x997120 (a flag, then
 an id, resolved when loading).
@@ -526,7 +537,7 @@ an id, resolved when loading).
 Matched: EnemyNormal, EnemyJake, EnemyGeeOne, EnemyMini, EnemyStuntman,
 EnemySasuke, EnemyJetPackMatt, EnemyShooter, Ken & Kyle, NegaScott, Lynette
 (which also moves TagTeamMember's fields), SuperGideon, the robot's head and
-Todd. Todd's slot 4 moves eight component handles from `+0xd48`, so Boss's own
+hand, Todd and Enemy itself. Todd's slot 4 moves eight component handles from `+0xd48`, so Boss's own
 fields end before `+0xd48`. The flags at `+0xd49` and `+0xd4a` belong to the
 classes that use them: Gideon, SuperGideon, Ken & Kyle and NegaScott.
 
@@ -642,8 +653,8 @@ Slots 96, 116 and 200 are written out but not credited. In each, the original
 merges the "handled" returns into a shared tail (for 96 and 116, the exit
 case's) that this build duplicates.
 
-[`BossClassStates.cpp`](../src/gameplay/BossClassStates.cpp) matches 133
-functions of the boss classes (39,500 bytes). Most are hooks that inline
+[`BossClassStates.cpp`](../src/gameplay/BossClassStates.cpp) matches 134
+functions of the boss classes (40,740 bytes). Most are hooks that inline
 Boss's version and add a class detail:
 
 - **Slot 234** maps an attack request's kind to a state. Each class tests its

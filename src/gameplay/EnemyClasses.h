@@ -76,7 +76,7 @@ struct EnemyShooter : Enemy {
     void Update();
     void Slot166(int kind);
     void Slot19();
-    void Slot4(onyx::Archive& archive, onyx::ArchiveContext* context);
+    void Slot4(onyx::Archive& archive, ComponentSlot::Source* source);
     virtual int State234(int event); virtual State State234Ptr();   // slots 234, 235
     virtual int State236(int event); virtual State State236Ptr();   // slots 236, 237
 
@@ -121,7 +121,7 @@ struct EnemyNormal : Enemy {
     bool Slot34Check();
     int State196(int event);
     bool Slot33(void* data);
-    void Slot4(onyx::Archive& archive, onyx::ArchiveContext* context);
+    void Slot4(onyx::Archive& archive, ComponentSlot::Source* source);
     virtual int State234(int event); virtual State State234Ptr();   // slots 234, 235
     virtual int State236(int event); virtual State State236Ptr();   // slots 236, 237
     virtual int State238(int event); virtual State State238Ptr();   // slots 238, 239
@@ -142,7 +142,7 @@ struct EnemyNormal : Enemy {
 struct EnemyMini : Enemy {
     void Update();
     void Slot166(int kind);
-    void Slot4(onyx::Archive& archive, onyx::ArchiveContext* context);
+    void Slot4(onyx::Archive& archive, ComponentSlot::Source* source);
     virtual int State234(int event); virtual State State234Ptr();   // slots 234, 235
 
     char padding_b79[0x17];
@@ -160,7 +160,7 @@ struct EnemyJetPackMatt : Enemy {
     void Update();
     void Slot166(int kind);
     int State200(int event);
-    void Slot4(onyx::Archive& archive, onyx::ArchiveContext* context);
+    void Slot4(onyx::Archive& archive, ComponentSlot::Source* source);
     virtual int State234(int event); virtual State State234Ptr();   // slots 234, 235
     int State9f25b0(int event);   // 0x9f25b0, not virtual
     virtual State State9f25b0Ptr();   // slot 236: returns the state at 0x9f25b0
@@ -229,7 +229,7 @@ struct EnemyGiant : Enemy {
     bool Check9fd3e0();   // 0x9fd3e0
     void Slot166(int kind);
     bool Slot82();
-    void Slot4(onyx::Archive& archive, onyx::ArchiveContext* context);
+    void Slot4(onyx::Archive& archive, ComponentSlot::Source* source);
     virtual int State234(int event); virtual State State234Ptr();   // slots 234, 235
     virtual int State236(int event); virtual State State236Ptr();   // slots 236, 237
     virtual int State238(int event); virtual State State238Ptr();   // slots 238, 239
@@ -285,7 +285,7 @@ struct EnemyStuntman : EnemyOneHitWonder {
     int State108(int event);
     float TakeDamage(const void* hit, BaseCharacter* other);
     void Update();
-    void Slot4(onyx::Archive& archive, onyx::ArchiveContext* context);
+    void Slot4(onyx::Archive& archive, ComponentSlot::Source* source);
     virtual int State234(int event); virtual State State234Ptr();   // slots 234, 235, overrides EnemyOneHitWonder
     int State9da590(int event);   // 0x9da590, not virtual
     virtual State State9da590Ptr();   // slot 240: returns the state at 0x9da590
@@ -303,7 +303,7 @@ struct EnemyStuntman : EnemyOneHitWonder {
 };
 // vtable 0x187e2f8, 241 slots
 struct EnemySasuke : EnemyOneHitWonder {
-    void Slot4(onyx::Archive& archive, onyx::ArchiveContext* context);
+    void Slot4(onyx::Archive& archive, ComponentSlot::Source* source);
     virtual int State234(int event); virtual State State234Ptr();   // slots 234, 235, overrides EnemyOneHitWonder
     int State9e5360(int event);   // 0x9e5360, not virtual
     virtual State State9e5360Ptr();   // slot 240: returns the state at 0x9e5360
@@ -338,7 +338,7 @@ struct EnemyChargingCrowd : EnemyOneHitWonder {
 // vtable 0x1883ec0, 256 slots
 struct EnemyJake : EnemyNormal {
     void Slot19();
-    void Slot4(onyx::Archive& archive, onyx::ArchiveContext* context);
+    void Slot4(onyx::Archive& archive, ComponentSlot::Source* source);
     virtual int State250(int event); virtual State State250Ptr();   // slots 250, 251
     virtual int State252(int event); virtual State State252Ptr();   // slots 252, 253
     virtual int State254(int event); virtual State State254Ptr();   // slots 254, 255
@@ -357,7 +357,7 @@ struct EnemyJake : EnemyNormal {
 };
 // vtable 0x1885e68, 248 slots
 struct EnemyGeeOne : EnemyGiant {
-    void Slot4(onyx::Archive& archive, onyx::ArchiveContext* context);
+    void Slot4(onyx::Archive& archive, ComponentSlot::Source* source);
 
     char padding_1044[0x4];
     int32_t value1048;           // +0x1048: serialized through a uint32_t

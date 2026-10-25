@@ -52,4 +52,90 @@ void Enemy::Slot229() {
     value32c = Slot150();
 }
 
+// Slot 4 (0x9e06c0): BaseCharacter's serialization, then Enemy's own fields
+// (see Archive.h): two handles, two component slots and the settings from
+// +0x8f8 to +0xa20.
+void Enemy::Slot4(onyx::Archive& archive, ComponentSlot::Source* source) {
+    BaseCharacter::Slot4(archive, source);
+    onyx::TransferHandle(handle788, archive, source);
+    onyx::TransferHandle(handle790, archive, source);
+    AssignComponentSlot<7752160u, 1051727473u>(&slot798, source);
+    AssignComponentSlot<7998976u, 1330418336u>(&scaling, source);
+    onyx::TransferAs<uint32_t>(archive, value8f8);
+    onyx::TransferAs<uint32_t>(archive, value8fc);
+    onyx::TransferAs<uint32_t>(archive, value900);
+    onyx::TransferAs<uint32_t>(archive, specialType);
+    onyx::Transfer(archive, specialSpeedScale);
+    onyx::Transfer(archive, base90c);
+    onyx::TransferAs<uint32_t>(archive, value914);
+    onyx::Transfer(archive, value918);
+    onyx::Transfer(archive, attackRange);
+    onyx::Transfer(archive, chance);
+    onyx::Transfer(archive, value924);
+    onyx::Transfer(archive, value928);
+    onyx::Transfer(archive, value92c);
+    onyx::Transfer(archive, value930);
+    onyx::Transfer(archive, value934);
+    onyx::Transfer(archive, value938);
+    onyx::Transfer(archive, value93c);
+    onyx::Transfer(archive, flag940);
+    onyx::Transfer(archive, range0.min);
+    onyx::Transfer(archive, range0.max);
+    onyx::Transfer(archive, range0.extra);
+    onyx::Transfer(archive, range1.min);
+    onyx::Transfer(archive, range1.max);
+    onyx::Transfer(archive, range1.extra);
+    onyx::Transfer(archive, range2.min);
+    onyx::Transfer(archive, range2.max);
+    onyx::Transfer(archive, range2.extra);
+    onyx::Transfer(archive, range3.min);
+    onyx::Transfer(archive, range3.max);
+    onyx::Transfer(archive, range3.extra);
+    onyx::Transfer(archive, flag974);
+    onyx::Transfer(archive, flags978);
+    onyx::Transfer(archive, value97c);
+    onyx::Transfer(archive, value980);
+    onyx::Transfer(archive, delay984);
+    onyx::Transfer(archive, value988);
+    onyx::Transfer(archive, value98c);
+    onyx::Transfer(archive, value990);
+    onyx::Transfer(archive, counterChanceHealthy);
+    onyx::Transfer(archive, counterChance);
+    onyx::Transfer(archive, counterHealthThreshold);
+    onyx::Transfer(archive, followUpChance);
+    onyx::Transfer(archive, value9a4);
+    onyx::Transfer(archive, assistChance);
+    onyx::Transfer(archive, delay9ac);
+    onyx::Transfer(archive, dashSpeed);
+    onyx::Transfer(archive, dashHold);
+    onyx::Transfer(archive, dashDelayBase);
+    onyx::Transfer(archive, value9bc);
+    onyx::Transfer(archive, value9c8);
+    onyx::Transfer(archive, partnerDelay);
+    onyx::Transfer(archive, removeFlag);
+    onyx::Transfer(archive, flag9d1);
+    onyx::Transfer(archive, blinkDuration);
+    onyx::Transfer(archive, blinkPeriod);
+    onyx::Transfer(archive, value9dc);
+    onyx::Transfer(archive, value9e0);
+    onyx::Transfer(archive, bonus);
+    onyx::Transfer(archive, value9e8);
+    onyx::Transfer(archive, bonusMode2);
+    onyx::Transfer(archive, value9f0);
+    onyx::Transfer(archive, bonusMode3);
+    onyx::Transfer(archive, value9f8);
+    onyx::Transfer(archive, value9fc);
+    onyx::Transfer(archive, valueA00);
+    onyx::Transfer(archive, valueA04);
+    onyx::TransferAs<uint32_t>(archive, valueA08);
+    onyx::Transfer(archive, valueA0c);
+    onyx::Transfer(archive, valueA10);
+    onyx::Transfer(archive, valueA14);
+    onyx::Transfer(archive, valueA18);
+    onyx::Transfer(archive, valueA1c);
+    onyx::Transfer(archive, valueA20);
+    onyx::Transfer(archive, valueB4c);
+    onyx::Transfer(archive, valueB50);
+}
+
 }  // namespace SPTG
