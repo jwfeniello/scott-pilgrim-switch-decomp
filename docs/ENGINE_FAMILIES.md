@@ -188,6 +188,7 @@ already credit are skipped. These families add **1,874 complete functions /
 | `TypeRegistrationOnceRoot*` | One-time type registration for root types, without a registry context (`-O3`) | 6 | 1,392 |
 | `DarePoolDestructor*` | `Dare::Private::DarePoolBase<T, N, Policy>` destructors: return each pooled object to the Dare allocator, newest first, then free the pointer array (see [Dare pools](#dare-pool-destructors)) | 53 | 11,200 |
 | `ComponentMapCollectByKey*` | Component map lookup by type key: append the active components of the matching type to a caller-supplied vector | 7 | 6,468 |
+| `CatalogRefresh` | `Onyx::Catalog<T>` / `Onyx::Director<T>` refresh (catalog slot 13, director slot 14): rebuild the list of active `T` components from the component registry, all of them or those under the filter's keys, growing the list by half its capacity (the component map's collection, expanded in place) | 43 | 84,452 |
 | `StormMapEraseKey*` | libc++ 4 `unordered_map<unsigned, T>::erase(key)` with nodes freed through `Storm_Free` (see [Storm STL allocator](LIBRARY_BUILD_EVIDENCE.md#storm-stl-allocator)) | 7 | 3,808 |
 
 The code shapes pin down several details:
