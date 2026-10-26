@@ -1,3 +1,5 @@
+<img width="1896" height="830" alt="Scott Pilgrim wordmark with The Decomp" src="https://github.com/user-attachments/assets/4dd015a0-f0c4-4541-9e32-92047b8b4597" />
+
 **WE ARE LOOKING FOR THE ORIGINAL NINTENDO SWITCH SDK, CLANG FOR NX COMPILER,
 BUILD FLAGS, AND LIBRARY VERSIONS USED TO BUILD THIS GAME.**
 
