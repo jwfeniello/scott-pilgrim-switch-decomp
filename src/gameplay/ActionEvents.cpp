@@ -1883,4 +1883,610 @@ void ValueForwarder::Forward(int32_t* value) {
     onyx::SendEvent<0x4e51bd4fu>(x->callback, x->target, payload);
 }
 
+// An actor action's actor, what moves it and what draws it.
+struct ActorGraphic : onyx::Component { char padding_8[0x71]; bool hidden; };
+struct ActorBody : onyx::Component {
+    char padding_8[0x50];
+    ComponentHandle* graphic;   // +0x58
+};
+struct ActionActor : onyx::Component {
+    virtual void S3(); virtual void S4(); virtual void S5(); virtual void S6(); virtual void S7(); virtual void S8(); virtual void S9();
+    virtual void S10(); virtual void S11(); virtual void S12(); virtual void S13(); virtual void S14(); virtual void S15(); virtual void S16(); virtual void S17(); virtual void S18(); virtual void S19();
+    virtual void S20(); virtual void S21(); virtual void S22();
+    virtual void PlayAnimation(uint32_t animation, uint32_t loops, int mode);  // slot 23
+    virtual void S24(); virtual void S25(); virtual void S26(); virtual void S27(); virtual void S28(); virtual void S29();
+    virtual void Flip();        // slot 30
+    char padding_8[0x70];
+    ComponentHandle* body;      // +0x78
+    char padding_80[0xc4];
+    int32_t depth;              // +0x144
+};
+void MoveBody(ActorBody* body, const MapPosition* position);
+void AddGraphic(void* master, void* graphic, int a);
+
+struct ActorAddGraphicMasterAction : ActorActionBase {
+    char padding_a8[8];
+    ComponentHandle* master;    // +0xb0
+    void Start();
+    void BaseStart();
+};
+struct GraphicMaster : onyx::Component {};
+void ActorAddGraphicMasterAction::Start() {
+    BaseStart();
+    GraphicMaster* to = onyx::Lookup<GraphicMaster, 783177747u>(master);
+    ActionActor* x = static_cast<ActionActor*>(actor->object);
+    ActorBody* b = onyx::Lookup<ActorBody, 1687344669u>(x->body);
+    ActorGraphic* g = onyx::Lookup<ActorGraphic, 783177747u>(b->graphic);
+    AddGraphic(to, g, 0);
+    onyx::SendEvent<ActionFinished>(callback, target);
+}
+
+struct ActorAnimationAction : ActorActionBase {
+    char padding_a8[3];
+    bool loops;                 // +0xab
+    bool hidden;                // +0xac
+    bool keepFacing;            // +0xad
+    bool waits;                 // +0xae
+    uint32_t animation;         // +0xb0
+    void Start();
+    void BaseStart();
+};
+void ActorAnimationAction::Start() {
+    BaseStart();
+    static_cast<ActionActor*>(actor->object)->PlayAnimation(animation, loops, 0);
+    if (!keepFacing) {
+        ActionActor* x = static_cast<ActionActor*>(actor->object);
+        uint8_t want = hidden;
+        ActorBody* b = onyx::Lookup<ActorBody, 1687344669u>(x->body);
+        ActorGraphic* g = onyx::Get<ActorGraphic, 783177747u>(b->graphic);
+        if (want == (g->hidden ^ 1)) static_cast<ActionActor*>(actor->object)->Flip();
+    }
+    if (!waits) onyx::SendEvent<ActionFinished>(callback, target);
+}
+
+// SPTG::ActorMoveAction walks the actor in a straight line, keeping its depth with its z.
+struct ActorMoveAction : ActorActionBase {
+    char padding_a8[0x2c];
+    MapPosition from;           // +0xd4
+    MapPosition to;             // +0xe0
+    float duration;             // +0xec
+    float elapsed;              // +0xf0
+    void Update();
+    __attribute__((always_inline)) void Place(const MapPosition& position) {
+        ActionActor* x = static_cast<ActionActor*>(actor->object);
+        ActorBody* b = onyx::Lookup<ActorBody, 1687344669u>(x->body);
+        MoveBody(b, &position);
+        x->depth = static_cast<int32_t>(position.z);
+    }
+};
+void ActorMoveAction::Update() {
+    ActorActionBase::Update();
+    if (!active) return;
+    float end = duration;
+    float t = GameDelta + elapsed;
+    elapsed = t;
+    if (end != 0.0f && t <= end) {
+        float k = t / end;
+        MapPosition position = from + (to - from) * k;
+        float z = position.z;
+        ActionActor* x = static_cast<ActionActor*>(actor->object);
+        ActorBody* b = onyx::Lookup<ActorBody, 1687344669u>(x->body);
+        MoveBody(b, &position);
+        x->depth = static_cast<int32_t>(z);
+        return;
+    }
+    Place(to);
+    onyx::EventPayload finished;
+    onyx::SendEvent<ActionFinished>(callback, target, finished);
+}
+
+// SPTG::HideObjectAction hides an object and can stop the actor's animation with it.
+struct ActorAnimation { float start; float current; char padding_8[4]; uint8_t flags; };
+struct HideableActor : onyx::Component {
+    virtual void S3(); virtual void S4(); virtual void S5(); virtual void S6(); virtual void S7(); virtual void S8(); virtual void S9();
+    virtual void S10(); virtual void S11(); virtual void S12(); virtual void S13(); virtual void S14(); virtual void S15();
+    virtual ActorAnimation* Animation();    // slot 16
+};
+struct HideableObject : onyx::Component {
+    char padding_8[0x50];
+    ComponentHandle* renderer;  // +0x58
+    char padding_60[0x18];
+    bool visible;               // +0x78
+};
+struct ObjectRenderer : onyx::Component {};
+void RendererHide(ObjectRenderer* renderer, int a);
+struct HideObjectAction {
+    char padding_0[0x80];
+    EventCallback* callback;    // +0x80
+    EventTarget* target;        // +0x88
+    char padding_90[8];
+    uint16_t state;             // +0x98
+    char padding_9a[6];
+    ComponentHandle* actor;     // +0xa0
+    ComponentHandle* object;    // +0xa8
+    bool stops;                 // +0xb0
+    bool hidesRenderer;         // +0xb1
+    void Start();
+};
+void HideObjectAction::Start() {
+    state = 1;
+    onyx::Get<HideableObject, 783177747u>(object)->visible = false;
+    HideableActor* x = onyx::Peek<HideableActor>(actor);
+    if (x && stops) {
+        ActorAnimation* a = x->Animation();
+        uint8_t f = a->flags;
+        a->current = (f & 1) ? a->start : 0.0f;
+        a->flags = f & 0xfb;
+        static_cast<HideableActor*>(actor->object)->Animation()->flags |= 8;
+    }
+    if (hidesRenderer) {
+        HideableObject* o = onyx::Lookup<HideableObject, 783177747u>(object);
+        RendererHide(onyx::Lookup<ObjectRenderer, 36693834u>(o->renderer), 0);
+    }
+    onyx::SendEvent<ActionFinished>(callback, target);
+}
+
+// SPTG::StartCameraShakeAction starts a shake, from a preset or from its own settings.
+struct ShakePreset : onyx::Component { char padding_8[0x44]; char settings[1]; };
+struct ShakeSlot { char data[40]; };
+struct CameraShaker : onyx::Component {
+    char padding_8[0x68];
+    ComponentHandle** presets;  // +0x70
+    char padding_78[0x20];
+    ShakeSlot* slots;           // +0x98
+    int32_t FreeSlot();
+};
+void ShakeStart(ShakeSlot* slot, const char* settings);
+struct ShakeRig : onyx::Component {
+    char padding_8[0x68];
+    ComponentHandle* shaker;    // +0x70
+};
+struct RigHolder { char padding_0[0x50]; ComponentHandle* rig; };
+struct StartCameraShakeAction {
+    char padding_0[0x80];
+    EventCallback* callback;    // +0x80
+    EventTarget* target;        // +0x88
+    char padding_90[8];
+    uint16_t state;             // +0x98
+    char padding_9a[6];
+    void* holder;               // +0xa0
+    bool usesPreset;            // +0xa8
+    char padding_a9[3];
+    char settings[0x18];        // +0xac
+    uint32_t preset;            // +0xc4
+    int32_t started;            // +0xc8
+    void Start();
+};
+void StartCameraShakeAction::Start() {
+    ShakeRig* rig = onyx::Lookup<ShakeRig, 1743956557u>(SingletonGet<RigHolder>(&holder)->rig);
+    state = 1;
+    int32_t slot;
+    CameraShaker* shaker;
+    const char* from;
+    if (usesPreset) {
+        uint32_t id = preset;
+        shaker = onyx::Lookup<CameraShaker, 1037755499u>(rig->shaker);
+        ShakePreset* p = onyx::Peek<ShakePreset>(shaker->presets[id]);
+        slot = shaker->FreeSlot();
+        if (slot < 0) goto done;
+        from = p->settings;
+    } else {
+        shaker = onyx::Lookup<CameraShaker, 1037755499u>(rig->shaker);
+        slot = shaker->FreeSlot();
+        if (slot < 0) goto done;
+        from = settings;
+    }
+    ShakeStart(&shaker->slots[slot], from);
+done:
+    started = slot;
+    onyx::SendEvent<ActionFinished>(callback, target);
+}
+
+// SPTG::UnspawnManager applies what was queued during the frame.
+struct UnspawnNotice {
+    char padding_0[0x70];
+    EventCallback* callback;    // +0x70
+    EventTarget* target;        // +0x78
+};
+struct UnspawnObject;
+struct UnspawnEntry { UnspawnObject* object; int32_t reason; };
+void UnspawnNow(UnspawnObject* object);
+void UnspawnWithReason(UnspawnObject* object, int32_t reason);
+struct UnspawnManager {
+    char padding_0[0x70];
+    uint64_t entryCount;        // +0x70
+    UnspawnEntry* entries;      // +0x78
+    char padding_80[0x18];
+    uint64_t objectCount;       // +0x98
+    char padding_a0[8];
+    UnspawnObject** objects;    // +0xa8
+    char padding_b0[0x10];
+    uint64_t noticeCount;       // +0xc0
+    char padding_c8[8];
+    UnspawnNotice** notices;    // +0xd0
+    void Update(uint8_t mode);
+};
+void UnspawnManager::Update(uint8_t mode) {
+    if (mode & 3) {
+        if (objectCount) {
+            UnspawnObject** it = objects;
+            do {
+                UnspawnNow(*it);
+                ++it;
+            } while (it != objects + objectCount);
+        }
+        if (entryCount) {
+            UnspawnEntry* it = entries;
+            do {
+                UnspawnWithReason(it->object, it->reason);
+                ++it;
+            } while (it != entries + entryCount);
+        }
+        if (noticeCount) {
+            UnspawnNotice** it = notices;
+            do {
+                UnspawnNotice* x = *it;
+                onyx::SendEvent<0x36dc3035u>(x->callback, x->target);
+                ++it;
+            } while (it != notices + noticeCount);
+        }
+        objectCount = 0;
+        entryCount = 0;
+        noticeCount = 0;
+    }
+}
+
+// Six buttons of one screen, each telling what its object leads to. Nothing names this class.
+struct ChainTarget : onyx::Component {
+    char padding_8[0x18];
+    EventCallback* callback;    // +0x20
+    EventTarget* target;        // +0x28
+};
+struct ChainBody : onyx::Component { char padding_8[0x48]; ComponentHandle* next; };
+struct ChainOwner : onyx::Component { char padding_8[0x70]; ComponentHandle* body; };
+struct ChainedButtons {
+    char padding_0[0xd58];
+    ComponentHandle* first;     // +0xd58
+    ComponentHandle* second;    // +0xd60
+    ComponentHandle* third;     // +0xd68
+    ComponentHandle* fourth;    // +0xd70
+    ComponentHandle* fifth;     // +0xd78
+    ComponentHandle* sixth;     // +0xd80
+    template<uint32_t OwnerType> __attribute__((always_inline)) static void Fire(ComponentHandle*& handle) {
+        ChainOwner* owner = onyx::Lookup<ChainOwner, OwnerType>(handle);
+        ChainBody* body = onyx::Get<ChainBody, 1687344669u>(owner->body);
+        ChainTarget* x = onyx::Peek<ChainTarget>(body->next);
+        if (x) onyx::SendEvent<0x44174b43u>(x->callback, x->target);
+    }
+    void FireFirst();
+    void FireSecond();
+    void FireThird();
+    void FireFourth();
+    void FireFifth();
+    void FireSixth();
+};
+void ChainedButtons::FireFirst() { Fire<0x19ac00b3u>(first); }
+void ChainedButtons::FireSecond() { Fire<0x19ac00b3u>(second); }
+void ChainedButtons::FireThird() { Fire<0x37bd3ac0u>(third); }
+void ChainedButtons::FireFourth() { Fire<0x37bd3ac0u>(fourth); }
+void ChainedButtons::FireFifth() { Fire<0x15d09a06u>(fifth); }
+void ChainedButtons::FireSixth() { Fire<0x2bc021adu>(sixth); }
+
+// Onyx::Gameplay::DistanceTrigger fires while its two objects are close enough.
+struct DistanceObject : onyx::Component { char padding_8[0x74]; onyx::Vector3 position; };
+struct DistanceTrigger {
+    char padding_0[0x50];
+    ComponentHandle* first;     // +0x50
+    ComponentHandle* second;    // +0x58
+    EventCallback* callback;    // +0x60
+    EventTarget* target;        // +0x68
+    char padding_70[0x20];
+    float radius;               // +0x90
+    bool inside;                // +0x94
+    void Update();
+    void BaseUpdate();
+};
+void DistanceTrigger::Update() {
+    BaseUpdate();
+    DistanceObject* a = onyx::Get<DistanceObject, 36693834u>(second);
+    onyx::Vector3 from = a->position;
+    DistanceObject* b = onyx::Get<DistanceObject, 36693834u>(first);
+    onyx::Vector3 to = b->position;
+    bool close = (to - from).LengthSquared() <= radius;
+    inside = close;
+    if (close) onyx::SendEvent<0x1be25733u>(callback, target);
+}
+
+// SPTG::WorldMap's first frame, then the check that only runs with progress turned off.
+struct DebugConsole { char padding_0[0x5f8]; void* thread; };
+extern DebugConsole* Console;
+unsigned long ThreadCurrentId();
+__attribute__((always_inline)) inline unsigned long ThisThread() noexcept { return ThreadCurrentId(); }
+bool ConsoleBusy(DebugConsole* console);
+void ConsoleOpen(int a);
+struct WorldMap {
+    char padding_0[0x1c8];
+    EventCallback* callback;    // +0x1c8
+    EventTarget* target;        // +0x1d0
+    char padding_1d8[0xd8];
+    char pending[8];            // +0x2b0
+    bool started;               // +0x2b8
+    void Slot29();
+    void BaseSlot29();
+    static void Reset(char* pending);
+};
+void WorldMap::Slot29() {
+    BaseSlot29();
+    if (!started) {
+        started = true;
+        onyx::SendEvent<0x48acec0du>(callback, target);
+    }
+    if (DisableProgress == 1) {
+        Reset(pending);
+        DebugConsole* console = Console;
+        if (console->thread) {
+            ThisThread();
+            console = Console;
+        }
+        if (!ConsoleBusy(console)) ConsoleOpen(1);
+    }
+}
+
+// The end of Ex mode. The class name is a stand-in.
+__attribute__((always_inline)) inline void ShowControllerMessage(MovieHost* movie) {
+    MovieName name;
+    name.hash = HashName("ControllerDisconnectionMessageMovie");
+    ShowMovie(movie, &name);
+    CommitMovie(movie);
+}
+void PlayMovieFlags(MovieHost* host, MovieName* name, int flags);
+struct GameOverScreen {
+    char padding_0[0x170];
+    void* host;                 // +0x170
+    char padding_178[0x80];
+    EventCallback* callback;    // +0x1f8
+    EventTarget* target;        // +0x200
+    char padding_208[0x68];
+    bool shown;                 // +0x270
+    char padding_271[0x50];
+    bool success;               // +0x2c1
+    void Show();
+};
+void GameOverScreen::Show() {
+    onyx::SendEvent<0x48acec0fu>(callback, target);
+    bool won = success;
+    shown = true;
+    MovieHost* movie = SingletonGet<MovieHost>(&host);
+    if (won) {
+        MovieName name;
+        name.hash = HashName("ExModeSuccessGameOverMovie");
+        PlayMovieFlags(movie, &name, 32);
+    } else {
+        ShowControllerMessage(movie);
+    }
+}
+
+// Events sent with a default-constructed value: the callback and the listener each get their own.
+struct ZeroVector { onyx::Vector3 value; ZeroVector() : value(onyx::Vector3::Zero()) {} };
+template<uint32_t Hash> struct ZeroVectorEvent {
+    EventCallback* callback;
+    EventTarget* target;
+    void Send();
+};
+template<uint32_t Hash> void ZeroVectorEvent<Hash>::Send() {
+    if (!(target && (target->flags & 2)) && !onyx::Settings().enabled) return;
+    if (callback) {
+        onyx::ValuePayload<ZeroVector> payload;
+        callback->invoke(callback, reinterpret_cast<onyx::EventPayload*>(&payload));
+    }
+    if (target) {
+        ComponentHandle* to = target->listener;
+        if (to) {
+            onyx::ValuePayload<ZeroVector> payload;
+            Event_Notify(Accessor_Tracking, to, Hash, reinterpret_cast<onyx::EventPayload*>(&payload));
+        }
+    }
+}
+template struct ZeroVectorEvent<0x2fdfd54bu>;
+template struct ZeroVectorEvent<0x333d72f2u>;
+
+struct SpawnOptions { int32_t a, b, c; bool d; int32_t e; SpawnOptions() : a(4), b(1), c(2), d(false), e(0) {} };
+struct SpawnOptionsEvent {
+    EventCallback* callback;
+    EventTarget* target;
+    void Send();
+};
+void SpawnOptionsEvent::Send() { onyx::SendValue<0x6e6f4d7fu, SpawnOptions>(callback, target); }
+
+struct ControllableSpawnInfo {
+    virtual void Key();
+    int32_t a, b;
+    char padding_10[0x14];
+    int32_t c;
+    ControllableSpawnInfo() : a(-1), b(7), c(6) {}
+};
+struct ControllableSpawnEvent {
+    EventCallback* callback;
+    EventTarget* target;
+    void Send();
+};
+void ControllableSpawnEvent::Send() { onyx::SendValue<0x1b2247fdu, ControllableSpawnInfo>(callback, target); }
+
+// SPTG::SuperGideonAI reports once when its actor is idle in animation 187.
+#define ACTOR_SLOTS(p) virtual void p##0(); virtual void p##1(); virtual void p##2(); virtual void p##3(); virtual void p##4(); virtual void p##5(); virtual void p##6(); virtual void p##7(); virtual void p##8(); virtual void p##9();
+struct GideonActor : onyx::Component {
+    typedef void (GideonActor::*State)();
+    virtual void S3(); virtual void S4(); virtual void S5(); virtual void S6(); virtual void S7(); virtual void S8(); virtual void S9();
+    ACTOR_SLOTS(A1) ACTOR_SLOTS(A2) ACTOR_SLOTS(A3) ACTOR_SLOTS(A4) ACTOR_SLOTS(A5) ACTOR_SLOTS(A6) ACTOR_SLOTS(A7) ACTOR_SLOTS(A8) ACTOR_SLOTS(A9) ACTOR_SLOTS(A10) ACTOR_SLOTS(A11) ACTOR_SLOTS(A12)
+    ACTOR_SLOTS(A13) ACTOR_SLOTS(A14) ACTOR_SLOTS(A15) ACTOR_SLOTS(A16) ACTOR_SLOTS(A17) ACTOR_SLOTS(A18) ACTOR_SLOTS(A19) ACTOR_SLOTS(A20) ACTOR_SLOTS(A21) ACTOR_SLOTS(A22) ACTOR_SLOTS(A23) ACTOR_SLOTS(A24)
+    virtual void B0(); virtual void B1(); virtual void B2(); virtual void B3(); virtual void B4(); virtual void B5(); virtual void B6();
+    virtual State IdlePtr();    // slot 257
+    char padding_8[0x198];
+    int32_t animation;          // +0x1a0
+    char padding_1a4[0x6c];
+    State current;              // +0x210
+    char padding_220[0xb08];
+    bool enraged;               // +0xd28
+    char padding_d29[0x3f];
+    bool raged;                 // +0xd68
+};
+struct SuperGideonAI {
+    char padding_0[0xe0];
+    ComponentHandle* actor;     // +0xe0
+    bool reported;              // +0xe8
+    EventCallback* callback;    // +0xf0
+    EventTarget* target;        // +0xf8
+    int Slot25(int event);
+    int BaseSlot25(int event);
+};
+int SuperGideonAI::Slot25(int event) {
+    int result = BaseSlot25(event);
+    if (result != 2) {
+        if (event == 10000) {
+            if (!reported) {
+                GideonActor* x = static_cast<GideonActor*>(actor->object);
+                auto idle = x->IdlePtr();
+                if (x->current == idle && x->animation == 187) {
+                    reported = true;
+                    onyx::SendEvent<0x6c9df3bdu>(callback, target);
+                }
+            }
+            return 1;
+        }
+        return 0;
+    }
+    return result;
+}
+
+struct GigaGideonAI {
+    typedef void (GigaGideonAI::*State)();
+    virtual void S0(); virtual void S1(); virtual void S2(); virtual void S3(); virtual void S4(); virtual void S5(); virtual void S6(); virtual void S7(); virtual void S8(); virtual void S9();
+    virtual void S10(); virtual void S11(); virtual void S12(); virtual void S13(); virtual void S14(); virtual void S15(); virtual void S16(); virtual void S17(); virtual void S18(); virtual void S19();
+    virtual void S20(); virtual void S21();
+    virtual State DeadPtr();    // slot 22
+    virtual void S23(); virtual void S24(); virtual void S25();
+    virtual State AttackPtr();  // slot 26
+    char padding_8[0x88];
+    struct Machine { void Transition(State next); } states;     // +0x90
+    char padding_91[0x4f];
+    ComponentHandle* actor;     // +0xe0
+    bool raged;                 // +0xe8
+    EventCallback* callback;    // +0xf0
+    EventTarget* target;        // +0xf8
+    int Slot23(int event);
+    int Alive();
+};
+int GigaGideonAI::Slot23(int event) {
+    if (static_cast<unsigned>(event - 10001) < 3) return 1;
+    if (event != 10000) return 0;
+    if (Alive()) {
+        GideonActor* x = onyx::Peek<GideonActor>(actor);
+        if (!x) return 1;
+        bool now = x->raged;
+        if (now && !raged) {
+            onyx::SendEvent<0x5478af9bu>(callback, target);
+            x = static_cast<GideonActor*>(actor->object);
+        }
+        raged = now;
+        if (!x->enraged) return 1;
+        states.Transition(AttackPtr());
+    } else {
+        states.Transition(DeadPtr());
+    }
+    return 2;
+}
+
+// A boss arms each of its lasers; the laser's own event comes after.
+struct ArmedLaser {
+    virtual void S0(); virtual void S1(); virtual void S2(); virtual void S3(); virtual void S4(); virtual void S5(); virtual void S6(); virtual void S7(); virtual void S8(); virtual void S9();
+    virtual void S10(); virtual void S11(); virtual void S12(); virtual void S13(); virtual void S14(); virtual void S15(); virtual void S16(); virtual void S17(); virtual void S18(); virtual void S19();
+    virtual void S20(); virtual void S21(); virtual void S22(); virtual void S23(); virtual void S24();
+    virtual void Fire(float rate);  // slot 25
+    char padding_8[0x144];
+    float timer;                // +0x14c
+    float rate;                 // +0x150
+    char padding_154[0x34];
+    int32_t mark;               // +0x188
+};
+struct LaserList { char padding_0[0x80]; uint64_t count; char padding_88[8]; ArmedLaser** items; };
+struct BossLasers {
+    char padding_0[0xba0];
+    void* lasers;               // +0xba0
+    char padding_ba8[0x180];
+    bool armed;                 // +0xd28
+    EventCallback* callback;    // +0xd30
+    EventTarget* target;        // +0xd38
+    void Arm();
+};
+void BossLasers::Arm() {
+    LaserList* list = SingletonGet<LaserList>(&lasers);
+    if (list->count) {
+        ArmedLaser** it = list->items;
+        do {
+            ArmedLaser* x = *it++;
+            int32_t mark = x->mark;
+            x->timer = 0.0f;
+            x->rate = 0.3f;
+            x->Fire(0.3f);
+            x->mark = mark;
+            x->timer = 3.0f;
+        } while (it != list->items + list->count);
+    }
+    onyx::SendEvent<0x3b6730ccu>(callback, target);
+    armed = true;
+}
+
+// A selector that fades what plays now, then reports the new choice. The name is a stand-in.
+bool SoundIsPlaying(int64_t sound);
+void SoundSetVolume(int64_t sound, float volume);
+struct MusicPlayer : onyx::Component {
+    char padding_8[0x58];
+    EventCallback* callback;    // +0x60
+    EventTarget* target;        // +0x68
+    char padding_70[0x20];
+    int32_t choice;             // +0x90
+    char padding_94[0x54];
+    int64_t sound;              // +0xe8
+};
+struct MusicSelector {
+    char padding_0[0x50];
+    ComponentHandle* player;    // +0x50
+    float volume;               // +0x58
+    char padding_5c[0x14];
+    uint64_t count;             // +0x70
+    int32_t* choices;           // +0x78
+    void Select(uint32_t index);
+};
+void MusicSelector::Select(uint32_t index) {
+    int64_t sound = onyx::Get<MusicPlayer, 193862069u>(player)->sound;
+    if (sound != -1 && SoundIsPlaying(sound)) SoundSetVolume(sound, volume);
+    if (count > index) {
+        MusicPlayer* x = onyx::Get<MusicPlayer, 193862069u>(player);
+        int32_t value = choices[index];
+        if (x->choice != value) x->choice = value;
+        onyx::SendEvent<0x6f4bbfc1u>(x->callback, x->target);
+    }
+}
+
+// The step of a group that starts the child it has reached.
+struct StepChild : onyx::Component {
+    char padding_8[0x48];
+    EventCallback* callback;    // +0x50
+    EventTarget* target;        // +0x58
+};
+struct GroupStep {
+    char padding_0[0xb8];
+    uint32_t count;             // +0xb8
+    ComponentHandle** children; // +0xc0
+    char padding_c8[0x68];
+    uint32_t current;           // +0x130
+    void StartCurrent();
+};
+void GroupStep::StartCurrent() {
+    uint32_t i = current;
+    if (i >= count) return;
+    StepChild* x = onyx::Peek<StepChild>(children[i]);
+    onyx::SendEvent<0x1da2cf68u>(x->callback, x->target);
+}
+
 }  // namespace SPTG

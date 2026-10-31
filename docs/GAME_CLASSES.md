@@ -542,8 +542,7 @@ singleton at `+0x7a0`) after two handles, then moves its settings from
 `+0x8f8` to `+0xa20`. These include the special attack's type and speed,
 the four attack ranges (all three values of each, so the third is now
 `extra`), the counter chances, the dash and blink settings and the bonus
-modes. Its temporaries share one stack slot, so `Enemy.cpp` builds with
-default stack coloring; its other functions match either way. The robot
+modes. Its temporaries share one stack slot. The robot
 hand restores a callback list at `+0xd70` after setting its owner (0xa304b0,
 a `DeserializeCallbacks` instance). Members with their own serializers are
 `ProjectileSpawnInfo` (0x8fd4c0) and a 0x50-byte `PairList` (0xc1f2b0, a count
@@ -568,9 +567,7 @@ follow the original's operations in order: the parent call,
 `AssignComponentSlot` instances, handle, id (0x8012a0) and list transfers,
 and field transfers with their sizes. One class
 (`SPTG_MaterialModifier`) only matches with plain local copies instead of
-`TransferAs`, which shows the original used both forms. The file builds with
-default stack coloring: `SectionActorPresenceLogic` needs its copies to share
-a stack slot, and the other views match either way.
+`TransferAs`, which shows the original used both forms. `SectionActorPresenceLogic` needs its copies to share a stack slot.
 
 The Onyx engine's components serialize the same way.
 [`OnyxSerialize.h`](../src/gameplay/OnyxSerialize.h) holds 78 views of them and
@@ -654,8 +651,7 @@ EnemyMini, EnemyStuntman,
 EnemySasuke, EnemyJetPackMatt, EnemyShooter, Ken & Kyle, NegaScott, Lynette
 (which also moves TagTeamMember's fields), SuperGideon, the robot's head and
 hand, Todd, Enemy itself, and (in
-[`ClassSerialize.cpp`](../src/gameplay/ClassSerialize.cpp), which builds with
-default stack coloring because their copies share slots) Boss, Chau,
+[`ClassSerialize.cpp`](../src/gameplay/ClassSerialize.cpp)) Boss, Chau,
 SuperFightingRobotAI, EnemyAerial, ControllablePlayer and NPC. BaseCharacter's
 is in `BaseCharacter.cpp`. Boss's slot 4 (0xa181e0) moves two
 component slots and two handles from `+0xb88`, its two attack slots, the
@@ -941,5 +937,17 @@ handlers: most match on the first or second try, and the misses are usually a fi
 - `SPTG::LeaderboardAgency` waits for a ring buffer to drain: the size is `tail >= head ? tail - head : capacity - head + tail`.
 - `Onyx::AnyKeyInputTrigger` scans 27 keys over the first 16 of up to 32 pad slots and ignores key 9.
 - `SPTG::WorldClearAction` finds the session's current player and sets the cleared bit for the world, plus the unlocked bit for the next world up to world 12. Both are skipped when the global at 0x1924CB0 is set.
+
+### Actors, bosses and value events
+
+- `SPTG::ActorMoveAction` walks its actor from +0xd4 to +0xe0 over the time at +0xec, and sets the actor's depth at +0x144 from z. `ActorAnimationAction` flips the actor when its graphic's facing disagrees with what it wants. `ActorAddGraphicMasterAction` hands the actor's graphic to another object.
+- `SPTG::SuperGideonAI` reports once when its actor sits in the idle state in animation 187. `SPTG::GigaGideonAI` reports the rising edge of the flag at +0xd68 on its actor and attacks when +0xd28 is set.
+- `SPTG::UnspawnManager` applies three queues once per frame: objects, objects with a reason, and notices, then empties all three.
+- `Onyx::Gameplay::DistanceTrigger` fires while the squared distance between two objects is within the value at +0x90.
+- `SPTG::StartCameraShakeAction` takes a free slot from the shaker and starts it from a preset or from its own settings. It stores the slot, or the failure, either way.
+- Six methods at 0xa37f50 to 0xa38900 each walk one handle to its owner, then its body, then the object to tell. The owner types differ by pair, so the handles hold different classes.
+- Some events carry a default-built value with its own memory. The value is built once for the callback and once for the listener, in the same stack slot once it is large enough. `ControllableSpawnInfo` is one, with a real vtable.
+
+Two near misses is the count for each batch, listed here so they are not lost: `ActorMoveFromBehindAction::Update` (0x8e6ae0) differs in the operand order of one `fadd`, and the group update at 0xbcafc0 differs only in two swapped registers.
 
 Two near misses are left out on purpose. `Onyx::AnimaticInstance::Update` (0xaf5b10) has a second landing pad around its restart call, so something with a destructor lives across that call and nothing visible uses it. `SPTG::TimerAction::Update` (0x8f68f0) differs only in the order of three instructions in two blocks.
