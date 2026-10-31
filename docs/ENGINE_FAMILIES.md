@@ -275,6 +275,55 @@ Not matched from this family: `0xaef180` (two registers swapped), `0x92d180`, `0
 `0x897ec0`, `0x9019f0`, and eight 496-byte functions whose follow-up call is a `bl` where this
 template produces a tail call.
 
+## Component listener registration
+
+[`ComponentEventRegister.cpp`](../src/ComponentEventRegister.cpp) has 16 functions / 9,240 bytes: a
+component's enable step, the counterpart of the removal family above. It builds a delegate to
+the component's callback and appends it to a listener list. Some set the active flag or make a
+call first. The list comes from a global or a singleton.
+
+The node is built on the stack and copied into allocated memory: a link hooks itself between
+two neighbours, and copying one takes its place. Copying the delegate holder clones the
+delegate, which is why these functions clone and free once around the append.
+
+These compile only with `-fstrict-aliasing`, unlike the removal family's build.
+
+## Component factories
+
+[`ComponentFactories.cpp`](../src/gameplay/ComponentFactories.cpp) has 156 functions / 16,584 bytes.
+Each allocates a component through its type's allocator and constructs it in place, with the
+constructor inlined. There are 566 such factories in the game (253 KB); this file holds the ones
+whose constructors only write fields. The rest bind callbacks, read guarded statics or make calls.
+
+RTTI gives each class its real name and its parent chain, for example:
+
+    SPTG::ActorObjectUpdatePhase
+      : Onyx::Component::Compose<SPTG::SPTG_Phase, ...>
+      : SPTG::SPTG_Phase
+      : Onyx::Component::Compose<Onyx::Component::Base, ...>
+      : Onyx::Component::Base
+
+The field names are offsets, and the types come from the width of each write. Which class in
+the chain owns a field is not established, so each class has one `Layout` view holding them all.
+
+The order of the writes follows the C++ construction order, and the chain above is why:
+
+- A parent's constructor runs before the class's vtable is set, so its fields are written first.
+  `ActorObjectUpdatePhase` zeroes +0x50, +0x60 and +0x68, sets its vtable, and only then sets
+  +0x5c and +0x58 in its own constructor body.
+- A vector member writes its three zero fields before its allocator, and a list member does the
+  same around its self-linked head. This shows up across many classes.
+
+The source was generated: a tool reads the original's writes, proposes a split between parent
+and class, and keeps the first split the compiler reproduces exactly. So the split in any one
+class is the first that fits, and it can be wrong where several do. Where it is ambiguous the
+fields sit in the class's constructor rather than the `Layout`'s. Values and offsets are fixed
+by the original either way.
+
+These also need `-fstrict-aliasing`: without it the allocator load cannot move past the stores.
+That and the listener registration above suggest the game's code was built with strict aliasing
+on, and the `-fno-strict-aliasing` builds elsewhere may just be cases where it makes no difference.
+
 ## What a match establishes
 
 A match means the source compiles to the original function's exact bytes, with its
