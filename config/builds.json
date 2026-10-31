@@ -509807,6 +509807,127 @@
       ],
       "functions": [
         {
+          "address": "0x70e850",
+          "size": 56,
+          "symbol": "_ZN4SPTG15ChangedNotifierILj7399504EE7ChangedEv",
+          "target_sha256": "5782232741028c1b664a96fb0ab4a53f5bb456ea15d40103f845292429034d97",
+          "bindings": {
+            "Accessor_Tracking": "0x1935068",
+            "Event_Notify": "0xbf6e80",
+            "_Unwind_Resume": "0xfa4920"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x719f40",
+          "size": 56,
+          "symbol": "_ZN4SPTG15ChangedNotifierILj7446336EE7ChangedEv",
+          "target_sha256": "2ad1653c28e942bee07a9a01fdc442ebbe41e8bd159d984d031f005f123accae",
+          "bindings": {
+            "Accessor_Tracking": "0x1935068",
+            "Event_Notify": "0xbf6e80",
+            "_Unwind_Resume": "0xfa4920"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x71af10",
+          "size": 56,
+          "symbol": "_ZN4SPTG15ChangedNotifierILj7450384EE7ChangedEv",
+          "target_sha256": "1de201f404cd98944809c2257ed5b42acd06ab238ddeefb2cb1ef77d4e1891b7",
+          "bindings": {
+            "Accessor_Tracking": "0x1935068",
+            "Event_Notify": "0xbf6e80",
+            "_Unwind_Resume": "0xfa4920"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x7393d0",
+          "size": 56,
+          "symbol": "_ZN4SPTG15ChangedNotifierILj7574480EE7ChangedEv",
+          "target_sha256": "6b0f4aae998634e4097d166bac54d71081c5fa93a7c3d403edc23f4ca0333047",
+          "bindings": {
+            "Accessor_Tracking": "0x1935068",
+            "Event_Notify": "0xbf6e80",
+            "_Unwind_Resume": "0xfa4920"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x775450",
+          "size": 356,
+          "symbol": "_ZN4SPTG16ControllerNotice4ShowEv",
+          "target_sha256": "ea6dba7556c00df9b075026631b61071cdfd030c43e0f435736feacfd4ecedb7",
+          "bindings": {
+            "_ZN4SPTG12SingletonGetINS_9MovieHostEEEPT_Pv": "0x6ea720",
+            "_ZN4SPTG8HashNameEPKc": "0xbfbce0",
+            "_ZN4SPTG9ShowMovieEPNS_9MovieHostEPNS_9MovieNameE": "0x7755c0",
+            "_ZN4SPTG11CommitMovieEPNS_9MovieHostE": "0x775660",
+            "Onyx_ProjectSettings": "0x1935070",
+            "_ZGVZN4onyx8SettingsEvE8defaults": "0x1935078",
+            "_ZZN4onyx8SettingsEvE8defaults": "0x1935080",
+            "Accessor_Tracking": "0x1935068",
+            "Event_Notify": "0xbf6e80",
+            "__cxa_guard_acquire": "0xfa4130",
+            "__cxa_guard_release": "0xfa4140",
+            "_Unwind_Resume": "0xfa4920"
+          },
+          "got_bindings": {},
+          "literals": {
+            "436f6e74726f6c6c6572446973636f6e6e656374696f6e4d6573736167654d6f76696500": "0x12f4787",
+            "554e4b4e4f574e20": "0x1331ae0",
+            "50524f4a45435420": "0x1331000",
+            "0c0000000c000000ffffff7fffffff7f": "0x1334730"
+          }
+        },
+        {
+          "address": "0x7bb270",
+          "size": 392,
+          "symbol": "_ZN4SPTG10DeepSender4SendEv",
+          "target_sha256": "34c027b0acbc4aff18a74438780a5dd59a0ec7f882053be3f99459e4d7455a34",
+          "bindings": {
+            "Accessor_Resolver": "0x191cd10",
+            "Accessor_Resolve": "0x67edd0",
+            "Onyx_ProjectSettings": "0x1935070",
+            "Accessor_Tracking": "0x1935068",
+            "Event_Notify": "0xbf6e80",
+            "_ZGVZN4onyx8SettingsEvE8defaults": "0x1935078",
+            "_ZZN4onyx8SettingsEvE8defaults": "0x1935080",
+            "__cxa_guard_acquire": "0xfa4130",
+            "__cxa_guard_release": "0xfa4140",
+            "_Unwind_Resume": "0xfa4920"
+          },
+          "got_bindings": {},
+          "literals": {
+            "554e4b4e4f574e20": "0x1331ae0",
+            "50524f4a45435420": "0x1331000",
+            "0c0000000c000000ffffff7fffffff7f": "0x1334730"
+          }
+        },
+        {
+          "address": "0x7fca50",
+          "size": 576,
+          "symbol": "_ZN4SPTG9TwoEventsILj8374864ELj1219292175ELj504ELj1219292172ELj432EE4SendEv",
+          "target_sha256": "bda7ae6bce5383e3f77af4b956a778c109ef771c55ef0a474da7536a5bbaf9aa",
+          "bindings": {
+            "Onyx_ProjectSettings": "0x1935070",
+            "Accessor_Tracking": "0x1935068",
+            "Event_Notify": "0xbf6e80",
+            "_ZGVZN4onyx8SettingsEvE8defaults": "0x1935078",
+            "_ZZN4onyx8SettingsEvE8defaults": "0x1935080",
+            "__cxa_guard_acquire": "0xfa4130",
+            "__cxa_guard_release": "0xfa4140",
+            "_Unwind_Resume": "0xfa4920"
+          },
+          "got_bindings": {},
+          "literals": {
+            "554e4b4e4f574e20": "0x1331ae0",
+            "50524f4a45435420": "0x1331000",
+            "0c0000000c000000ffffff7fffffff7f": "0x1334730"
+          }
+        },
+        {
           "address": "0x8252b0",
           "size": 364,
           "symbol": "_ZN4SPTG15PublisherScreen6UpdateEv",
@@ -510109,6 +510230,31 @@
           }
         },
         {
+          "address": "0x8f4420",
+          "size": 404,
+          "symbol": "_ZN4SPTG18WaitAllSpawnedDead6UpdateEv",
+          "target_sha256": "b39abc9b9244bc269480b96a9148f16cb837a2a7ca749e903d0dddb2e4c66737",
+          "bindings": {
+            "_ZN4SPTG14AllSpawnedDeadEPNS_10SpawnCheckE": "0x8f45e0",
+            "Onyx_ProjectSettings": "0x1935070",
+            "Accessor_Tracking": "0x1935068",
+            "Event_Notify": "0xbf6e80",
+            "Accessor_Resolver": "0x191cd10",
+            "Accessor_Resolve": "0x67edd0",
+            "_ZGVZN4onyx8SettingsEvE8defaults": "0x1935078",
+            "_ZZN4onyx8SettingsEvE8defaults": "0x1935080",
+            "__cxa_guard_acquire": "0xfa4130",
+            "__cxa_guard_release": "0xfa4140",
+            "_Unwind_Resume": "0xfa4920"
+          },
+          "got_bindings": {},
+          "literals": {
+            "554e4b4e4f574e20": "0x1331ae0",
+            "50524f4a45435420": "0x1331000",
+            "0c0000000c000000ffffff7fffffff7f": "0x1334730"
+          }
+        },
+        {
           "address": "0x8f8830",
           "size": 484,
           "symbol": "_ZN4SPTG12CameraAction9StopShakeEv",
@@ -510207,6 +510353,29 @@
           }
         },
         {
+          "address": "0x908210",
+          "size": 596,
+          "symbol": "_ZN4SPTG21SwitchLevelGateAction5StartEv",
+          "target_sha256": "641faffe50a257485bb7de13b61e7a10df634d35250c68eef09ef6f357cf0ec4",
+          "bindings": {
+            "_ZN4SPTG12SingletonGetINS_10GateHolderEEEPT_Pv": "0x770d70",
+            "Onyx_ProjectSettings": "0x1935070",
+            "Accessor_Tracking": "0x1935068",
+            "Event_Notify": "0xbf6e80",
+            "_ZGVZN4onyx8SettingsEvE8defaults": "0x1935078",
+            "_ZZN4onyx8SettingsEvE8defaults": "0x1935080",
+            "__cxa_guard_acquire": "0xfa4130",
+            "__cxa_guard_release": "0xfa4140",
+            "_Unwind_Resume": "0xfa4920"
+          },
+          "got_bindings": {},
+          "literals": {
+            "554e4b4e4f574e20": "0x1331ae0",
+            "50524f4a45435420": "0x1331000",
+            "0c0000000c000000ffffff7fffffff7f": "0x1334730"
+          }
+        },
+        {
           "address": "0x90a510",
           "size": 424,
           "symbol": "_ZN4SPTG18LevelSectionAction5StartEv",
@@ -510225,6 +510394,34 @@
             "_Unwind_Resume": "0xfa4920"
           },
           "got_bindings": {},
+          "literals": {
+            "554e4b4e4f574e20": "0x1331ae0",
+            "50524f4a45435420": "0x1331000",
+            "0c0000000c000000ffffff7fffffff7f": "0x1334730"
+          }
+        },
+        {
+          "address": "0x925cb0",
+          "size": 512,
+          "symbol": "_ZN4SPTG20KillAllEnemiesAction5StartEv",
+          "target_sha256": "cc4c376b4d7a02632b38ac43dbae781507df87ee88847dd89b09e15924ed6e83",
+          "bindings": {
+            "_ZN4SPTG12SingletonGetINS_10KillHolderEEEPT_Pv": "0x7725e0",
+            "Accessor_Resolver": "0x191cd10",
+            "Accessor_Resolve": "0x67edd0",
+            "Onyx_ProjectSettings": "0x1935070",
+            "Accessor_Tracking": "0x1935068",
+            "Event_Notify": "0xbf6e80",
+            "_ZGVZN4onyx8SettingsEvE8defaults": "0x1935078",
+            "_ZZN4onyx8SettingsEvE8defaults": "0x1935080",
+            "__cxa_guard_acquire": "0xfa4130",
+            "__cxa_guard_release": "0xfa4140",
+            "_Unwind_Resume": "0xfa4920"
+          },
+          "got_bindings": {},
+          "immutable_sections": {
+            "173": "0x14dec60"
+          },
           "literals": {
             "554e4b4e4f574e20": "0x1331ae0",
             "50524f4a45435420": "0x1331000",
@@ -510329,6 +510526,54 @@
           "size": 468,
           "symbol": "_ZN4SPTG11StrikerYeti6EnableEv",
           "target_sha256": "c4e150703155973c1836cd5e9e3fe1b951b9a8df25628e1943e602833d6fec9f",
+          "bindings": {
+            "Accessor_Resolver": "0x191cd10",
+            "Accessor_Resolve": "0x67edd0",
+            "Onyx_ProjectSettings": "0x1935070",
+            "Accessor_Tracking": "0x1935068",
+            "Event_Notify": "0xbf6e80",
+            "_ZGVZN4onyx8SettingsEvE8defaults": "0x1935078",
+            "_ZZN4onyx8SettingsEvE8defaults": "0x1935080",
+            "__cxa_guard_acquire": "0xfa4130",
+            "__cxa_guard_release": "0xfa4140",
+            "_Unwind_Resume": "0xfa4920"
+          },
+          "got_bindings": {},
+          "literals": {
+            "554e4b4e4f574e20": "0x1331ae0",
+            "50524f4a45435420": "0x1331000",
+            "0c0000000c000000ffffff7fffffff7f": "0x1334730"
+          }
+        },
+        {
+          "address": "0x94fde0",
+          "size": 440,
+          "symbol": "_ZN4SPTG16TypedOwnerSender5FoundEv",
+          "target_sha256": "681e2fee0ec314dbb5f121c9eb652f3a53266d9a06a21c01b7e36bd6da1b677b",
+          "bindings": {
+            "Accessor_Resolver": "0x191cd10",
+            "Accessor_Resolve": "0x67edd0",
+            "Onyx_ProjectSettings": "0x1935070",
+            "Accessor_Tracking": "0x1935068",
+            "Event_Notify": "0xbf6e80",
+            "_ZGVZN4onyx8SettingsEvE8defaults": "0x1935078",
+            "_ZZN4onyx8SettingsEvE8defaults": "0x1935080",
+            "__cxa_guard_acquire": "0xfa4130",
+            "__cxa_guard_release": "0xfa4140",
+            "_Unwind_Resume": "0xfa4920"
+          },
+          "got_bindings": {},
+          "literals": {
+            "554e4b4e4f574e20": "0x1331ae0",
+            "50524f4a45435420": "0x1331000",
+            "0c0000000c000000ffffff7fffffff7f": "0x1334730"
+          }
+        },
+        {
+          "address": "0x9500f0",
+          "size": 440,
+          "symbol": "_ZN4SPTG16TypedOwnerSender4LostEv",
+          "target_sha256": "fb96b4f427546aad617e98e4126243111312e8cfb468b57d5cc94f8f7a8e7f0b",
           "bindings": {
             "Accessor_Resolver": "0x191cd10",
             "Accessor_Resolve": "0x67edd0",
@@ -510485,6 +510730,177 @@
           }
         },
         {
+          "address": "0xafafb0",
+          "size": 56,
+          "symbol": "_ZN4SPTG15ChangedNotifierILj11513776EE7ChangedEv",
+          "target_sha256": "d07afb50f89b228282130b1ca88e6ade9d60698c3c647ff94109fee29040f1db",
+          "bindings": {
+            "Accessor_Tracking": "0x1935068",
+            "Event_Notify": "0xbf6e80",
+            "_Unwind_Resume": "0xfa4920"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xb127b0",
+          "size": 64,
+          "symbol": "_ZN4SPTG15ChangedNotifierILj11610032EE13ChangedBeforeEv",
+          "target_sha256": "b9927ba0432c281de9c1193680243fccce194700c88683873283f604e065e5b9",
+          "bindings": {
+            "_ZN4SPTG15ChangedNotifierILj11610032EE6BeforeEv": "0xb128b0",
+            "Accessor_Tracking": "0x1935068",
+            "Event_Notify": "0xbf6e80",
+            "_Unwind_Resume": "0xfa4920"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xb16c10",
+          "size": 56,
+          "symbol": "_ZN4SPTG15ChangedNotifierILj11627536EE7ChangedEv",
+          "target_sha256": "b3fa4843e3c65daaf26d7374eb8d70d1f1fc83fe3971c4f480096aa95de6c349",
+          "bindings": {
+            "Accessor_Tracking": "0x1935068",
+            "Event_Notify": "0xbf6e80",
+            "_Unwind_Resume": "0xfa4920"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xb17f50",
+          "size": 56,
+          "symbol": "_ZN4SPTG15ChangedNotifierILj11632464EE7ChangedEv",
+          "target_sha256": "890c0c0414ff1d81d4658e85f70c8afb9b5ec2f416ad6a00ffe5003b6a88907f",
+          "bindings": {
+            "Accessor_Tracking": "0x1935068",
+            "Event_Notify": "0xbf6e80",
+            "_Unwind_Resume": "0xfa4920"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xb19ab0",
+          "size": 64,
+          "symbol": "_ZN4SPTG15ChangedNotifierILj11639472EE13ChangedBeforeEv",
+          "target_sha256": "518118cde00f212d7012ea3abb1a57a2a12fedc454cee83313e9aa48b5b25b9b",
+          "bindings": {
+            "_ZN4SPTG15ChangedNotifierILj11639472EE6BeforeEv": "0xb19bb0",
+            "Accessor_Tracking": "0x1935068",
+            "Event_Notify": "0xbf6e80",
+            "_Unwind_Resume": "0xfa4920"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xb1d5b0",
+          "size": 64,
+          "symbol": "_ZN4SPTG16ChangedWithIndex5ResetEv",
+          "target_sha256": "66580421b497425e713f3afcf883892fa54eaeb634579772249b1d7858944a40",
+          "bindings": {
+            "Accessor_Tracking": "0x1935068",
+            "Event_Notify": "0xbf6e80",
+            "_Unwind_Resume": "0xfa4920"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xb1fc30",
+          "size": 56,
+          "symbol": "_ZN4SPTG15ChangedNotifierILj11664432EE7ChangedEv",
+          "target_sha256": "af07562e5e8ed3afc844811cf467e528efadeac8f842ce1e299813b622367a48",
+          "bindings": {
+            "Accessor_Tracking": "0x1935068",
+            "Event_Notify": "0xbf6e80",
+            "_Unwind_Resume": "0xfa4920"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xb41fa0",
+          "size": 56,
+          "symbol": "_ZN4SPTG15ChangedNotifierILj11804576EE7ChangedEv",
+          "target_sha256": "cf3e42350e707cf17d082de8d6e844d8513fea64737af0e325e1ab6d3a34e110",
+          "bindings": {
+            "Accessor_Tracking": "0x1935068",
+            "Event_Notify": "0xbf6e80",
+            "_Unwind_Resume": "0xfa4920"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xb47320",
+          "size": 56,
+          "symbol": "_ZN4SPTG15ChangedNotifierILj11825952EE7ChangedEv",
+          "target_sha256": "3e243eddddc094bec099460780f8ab1e3e82788dd4e286f7dc7c642511864ec5",
+          "bindings": {
+            "Accessor_Tracking": "0x1935068",
+            "Event_Notify": "0xbf6e80",
+            "_Unwind_Resume": "0xfa4920"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xb4b7a0",
+          "size": 56,
+          "symbol": "_ZN4SPTG15ChangedNotifierILj11843488EE7ChangedEv",
+          "target_sha256": "53e1148f120a3f6f9712ab7139aaeba0709a60cc06c5852e97e8732e43811903",
+          "bindings": {
+            "Accessor_Tracking": "0x1935068",
+            "Event_Notify": "0xbf6e80",
+            "_Unwind_Resume": "0xfa4920"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xb51bc0",
+          "size": 56,
+          "symbol": "_ZN4SPTG15ChangedNotifierILj11869120EE7ChangedEv",
+          "target_sha256": "61806ded066111196cfa09d919f41b03194c0ae6b96583d00c69df5c540c2046",
+          "bindings": {
+            "Accessor_Tracking": "0x1935068",
+            "Event_Notify": "0xbf6e80",
+            "_Unwind_Resume": "0xfa4920"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xb546e0",
+          "size": 56,
+          "symbol": "_ZN4SPTG15ChangedNotifierILj11880160EE7ChangedEv",
+          "target_sha256": "720e27155befde7d30e9e5ffaf6d384a0a841658832b1fb367cf5e5a7701712e",
+          "bindings": {
+            "Accessor_Tracking": "0x1935068",
+            "Event_Notify": "0xbf6e80",
+            "_Unwind_Resume": "0xfa4920"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xb70810",
+          "size": 56,
+          "symbol": "_ZN4SPTG15ChangedNotifierILj11995152EE7ChangedEv",
+          "target_sha256": "9c8a45881cc5777ffb8e9aed377286df66c27a38cb6206b2daf525dc47657060",
+          "bindings": {
+            "Accessor_Tracking": "0x1935068",
+            "Event_Notify": "0xbf6e80",
+            "_Unwind_Resume": "0xfa4920"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xb70870",
+          "size": 68,
+          "symbol": "_ZN4SPTG15ChangedNotifierILj11995248EE12ChangedAfterEv",
+          "target_sha256": "e0aab27f2fc2f24337b7856e7b1747f75475cbc1b86524749e448b2e000cab91",
+          "bindings": {
+            "Accessor_Tracking": "0x1935068",
+            "Event_Notify": "0xbf6e80",
+            "_ZN4SPTG15ChangedNotifierILj11995248EE5AfterEv": "0xb708c0",
+            "_Unwind_Resume": "0xfa4920"
+          },
+          "got_bindings": {}
+        },
+        {
           "address": "0xbc34d0",
           "size": 396,
           "symbol": "_ZN4SPTG14UseCountSwitch6SwitchEPN4onyx15ComponentHandleE",
@@ -510564,6 +510980,28 @@
           "bindings": {
             "Accessor_Resolver": "0x191cd10",
             "Accessor_Resolve": "0x67edd0",
+            "Onyx_ProjectSettings": "0x1935070",
+            "Accessor_Tracking": "0x1935068",
+            "Event_Notify": "0xbf6e80",
+            "_ZGVZN4onyx8SettingsEvE8defaults": "0x1935078",
+            "_ZZN4onyx8SettingsEvE8defaults": "0x1935080",
+            "__cxa_guard_acquire": "0xfa4130",
+            "__cxa_guard_release": "0xfa4140",
+            "_Unwind_Resume": "0xfa4920"
+          },
+          "got_bindings": {},
+          "literals": {
+            "554e4b4e4f574e20": "0x1331ae0",
+            "50524f4a45435420": "0x1331000",
+            "0c0000000c000000ffffff7fffffff7f": "0x1334730"
+          }
+        },
+        {
+          "address": "0xc7cb50",
+          "size": 596,
+          "symbol": "_ZN4SPTG16CollisionTrigger6UpdateEv",
+          "target_sha256": "17a8cb90c31de8c4efba1825c3de51d17645b18983e24c30a2324d17efdd0497",
+          "bindings": {
             "Onyx_ProjectSettings": "0x1935070",
             "Accessor_Tracking": "0x1935068",
             "Event_Notify": "0xbf6e80",

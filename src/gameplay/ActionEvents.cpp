@@ -822,4 +822,305 @@ void UseCountSwitch::Switch(ComponentHandle* previous) {
     onyx::SendEvent<0x7cd0fdf8u>(callback, target);
 }
 
+template<class T> T* SingletonGet(void* slot);
+
+// Each killable reports a kind; a table maps kinds to the mask's bits.
+struct Killable {
+    virtual void S0(); virtual void S1(); virtual void S2(); virtual void S3(); virtual void S4(); virtual void S5(); virtual void S6(); virtual void S7(); virtual void S8(); virtual void S9();
+    virtual void S10(); virtual void S11(); virtual void S12(); virtual void S13(); virtual void S14(); virtual void S15(); virtual void S16(); virtual void S17(); virtual void S18(); virtual void S19();
+    virtual void S20(); virtual void S21(); virtual void S22(); virtual void S23(); virtual void S24(); virtual void S25(); virtual void S26(); virtual void S27(); virtual void S28(); virtual void S29();
+    virtual void S30(); virtual void S31(); virtual void S32(); virtual void S33(); virtual void S34(); virtual void S35(); virtual void S36(); virtual void S37(); virtual void S38(); virtual void S39();
+    virtual void S40(); virtual void S41(); virtual void S42(); virtual void S43(); virtual void S44(); virtual void S45(); virtual void S46(); virtual void S47(); virtual void S48(); virtual void S49();
+    virtual void S50(); virtual void S51(); virtual void S52(); virtual void S53(); virtual void S54(); virtual void S55(); virtual void S56(); virtual void S57(); virtual void S58(); virtual void S59();
+    virtual void S60(); virtual void S61(); virtual void S62(); virtual void S63(); virtual void S64(); virtual void S65(); virtual void S66(); virtual void S67(); virtual void S68(); virtual void S69();
+    virtual void S70(); virtual void S71(); virtual void S72(); virtual void S73(); virtual void S74(); virtual void S75(); virtual void S76(); virtual void S77(); virtual void S78(); virtual void S79();
+    virtual void S80(); virtual void S81(); virtual void S82(); virtual void S83(); virtual void S84(); virtual void S85(); virtual void S86(); virtual void S87(); virtual void S88(); virtual void S89();
+    virtual void S90(); virtual void S91(); virtual void S92(); virtual void S93();
+    virtual void Kill();     // slot 94
+    virtual void S95(); virtual void S96(); virtual void S97(); virtual void S98(); virtual void S99();
+    virtual void S100(); virtual void S101(); virtual void S102(); virtual void S103(); virtual void S104(); virtual void S105(); virtual void S106(); virtual void S107(); virtual void S108(); virtual void S109();
+    virtual void S110(); virtual void S111(); virtual void S112(); virtual void S113(); virtual void S114(); virtual void S115(); virtual void S116(); virtual void S117(); virtual void S118(); virtual void S119();
+    virtual void S120(); virtual void S121(); virtual void S122(); virtual void S123(); virtual void S124(); virtual void S125(); virtual void S126(); virtual void S127(); virtual void S128(); virtual void S129();
+    virtual void S130(); virtual void S131(); virtual void S132(); virtual void S133(); virtual void S134(); virtual void S135(); virtual void S136(); virtual void S137(); virtual void S138(); virtual void S139();
+    virtual void S140(); virtual void S141(); virtual void S142(); virtual void S143(); virtual void S144(); virtual void S145(); virtual void S146(); virtual void S147(); virtual void S148(); virtual void S149();
+    virtual void S150(); virtual void S151(); virtual void S152(); virtual void S153(); virtual void S154(); virtual void S155(); virtual void S156(); virtual void S157(); virtual void S158(); virtual void S159();
+    virtual int Kind();      // slot 160
+};
+struct KillableList : onyx::Component {
+    char padding_8[0x78];
+    uint64_t count;       // +0x80
+    char padding_88[8];
+    Killable** items;     // +0x90
+};
+struct KillHolder { char padding[0x98]; ComponentHandle* killables; };
+struct KillAllEnemiesAction {
+    char padding_0[0x80];
+    EventCallback* callback;     // +0x80
+    EventTarget* target;         // +0x88
+    char padding_90[8];
+    uint16_t state;              // +0x98
+    char padding_9a[6];
+    void* level;                 // +0xa0
+    uint32_t mask;               // +0xa8
+    void Start();
+};
+void KillAllEnemiesAction::Start() {
+    state = 1;
+    KillableList* list = onyx::Get<KillableList, 1599921523u>(SingletonGet<KillHolder>(&level)->killables);
+    if (list->count) {
+        Killable** it = list->items;
+        do {
+            Killable* k = *it;
+            uint32_t bit;
+            switch (k->Kind()) {
+                case 6: bit = 8; break;
+                case 7: bit = 2; break;
+                case 8: bit = 4; break;
+                default: bit = 1; break;
+            }
+            if (mask & bit) k->Kill();
+            ++it;
+        } while (it != list->items + list->count);
+    }
+    onyx::SendEvent<ActionFinished>(callback, target);
+}
+
+struct TypedOwner {
+    virtual void S0(); virtual void S1(); virtual void S2(); virtual void S3(); virtual void S4(); virtual void S5(); virtual void S6(); virtual void S7(); virtual void S8(); virtual void S9(); virtual void S10(); virtual void S11();
+    virtual bool IsA(uint32_t type);
+    char padding_8[0];
+    EventCallback* lostCallback;    // +0x08
+    EventTarget* lostTarget;        // +0x10
+    char padding_18[8];
+    EventCallback* foundCallback;   // +0x20
+    EventTarget* foundTarget;       // +0x28
+};
+struct ActorView : onyx::Component {
+    char padding_8[0x48];
+    ComponentHandle* owner;         // +0x50
+};
+struct TypedOwnerSender {
+    char padding_0[0x78];
+    ComponentHandle* actor;         // +0x78
+    TypedOwner* Owner();
+    void Found();
+    void Lost();
+};
+__attribute__((always_inline)) inline TypedOwner* TypedOwnerSender::Owner() {
+    ActorView* a = onyx::Get<ActorView, 1687344669u>(actor);
+    ComponentHandle* h = a->owner;
+    TypedOwner* o = h ? reinterpret_cast<TypedOwner*>(h->object) : nullptr;
+    if (o && !o->IsA(557122854u)) o = nullptr;
+    return o;
+}
+void TypedOwnerSender::Found() {
+    TypedOwner* o = Owner();
+    onyx::SendEvent<0x44174b43u>(o->foundCallback, o->foundTarget);
+}
+void TypedOwnerSender::Lost() {
+    TypedOwner* o = Owner();
+    onyx::SendEvent<0x255c0afeu>(o->lostCallback, o->lostTarget);
+}
+
+struct DeepSenderTarget : onyx::Component {
+    char padding_8[0xa0];
+    EventCallback* callback;        // +0xa8
+    EventTarget* target;            // +0xb0
+};
+struct DeepSender {
+    char padding_0[0x50];
+    ComponentHandle* handle;        // +0x50
+    void Send();
+};
+void DeepSender::Send() {
+    DeepSenderTarget* x = onyx::Lookup<DeepSenderTarget, 432006661u>(handle);
+    onyx::SendEvent<0x47038a81u>(x->callback, x->target);
+}
+
+// A step list: the current step's object, or the finished event past the end.
+struct StepTarget : onyx::Component {};
+struct StepRunner { void Run(StepTarget* step, int flags); };
+struct ActionStep {
+    char padding_0[0x80];
+    EventCallback* callback;        // +0x80
+    EventTarget* target;            // +0x88
+    char padding_90[0x20];
+    uint64_t count;                 // +0xb0
+    ComponentHandle** steps;        // +0xb8
+    char padding_c0[8];
+    void* runner;                   // +0xc8
+    char padding_d0[0x20];
+    uint32_t index;                 // +0xf0
+    StepRunner* Runner(void* slot);
+    void Next();
+};
+const uint32_t StepType = 309210931u;
+
+// A graphics component telling its own listener that it changed. The payload names the component
+// twice, and the listener is at +0x40 of every class that does this.
+struct ChangedEvent { void* source; void* component; ~ChangedEvent() {} };
+const uint32_t GraphicsChanged = 0x6c62f499u;
+
+template<unsigned Key> struct ChangedNotifier {
+    char padding_0[0x40];
+    ComponentHandle* listener;      // +0x40
+    __attribute__((always_inline)) void Notify() {
+        ComponentHandle* to = listener;
+        ChangedEvent payload{this, this};
+        Event_Notify(Accessor_Tracking, to, GraphicsChanged, reinterpret_cast<onyx::EventPayload*>(&payload));
+    }
+    void Changed();
+    void Before();
+    void After();
+    void ChangedBefore();
+    void ChangedAfter();
+};
+template<unsigned Key> void ChangedNotifier<Key>::Changed() { Notify(); }
+template<unsigned Key> void ChangedNotifier<Key>::ChangedBefore() { Before(); Notify(); }
+template<unsigned Key> void ChangedNotifier<Key>::ChangedAfter() { Notify(); After(); }
+template void ChangedNotifier<0x70e850u>::Changed();
+template void ChangedNotifier<0x719f40u>::Changed();
+template void ChangedNotifier<0x71af10u>::Changed();
+template void ChangedNotifier<0x7393d0u>::Changed();
+template void ChangedNotifier<0xafafb0u>::Changed();
+template void ChangedNotifier<0xb16c10u>::Changed();
+template void ChangedNotifier<0xb17f50u>::Changed();
+template void ChangedNotifier<0xb1fc30u>::Changed();
+template void ChangedNotifier<0xb41fa0u>::Changed();
+template void ChangedNotifier<0xb47320u>::Changed();
+template void ChangedNotifier<0xb4b7a0u>::Changed();
+template void ChangedNotifier<0xb51bc0u>::Changed();
+template void ChangedNotifier<0xb546e0u>::Changed();
+template void ChangedNotifier<0xb70810u>::Changed();
+template void ChangedNotifier<0xb127b0u>::ChangedBefore();
+template void ChangedNotifier<0xb19ab0u>::ChangedBefore();
+template void ChangedNotifier<0xb70870u>::ChangedAfter();
+
+// Clears a current index first.
+struct ChangedWithIndex {
+    char padding_0[0x40];
+    ComponentHandle* listener;      // +0x40
+    char padding_48[0x30];
+    int32_t index;                  // +0x78
+    void Reset();
+};
+void ChangedWithIndex::Reset() {
+    index = -1;
+    ComponentHandle* to = listener;
+    ChangedEvent payload{this, this};
+    Event_Notify(Accessor_Tracking, to, GraphicsChanged, reinterpret_cast<onyx::EventPayload*>(&payload));
+}
+
+template<class T> T* SingletonGet(void* slot);
+
+// Two events in turn.
+template<unsigned Key, uint32_t Hash1, unsigned Off1, uint32_t Hash2, unsigned Off2> struct TwoEvents {
+    struct Pair { EventCallback* callback; EventTarget* target; };
+    __attribute__((always_inline)) Pair& At(unsigned off) { return *reinterpret_cast<Pair*>(reinterpret_cast<char*>(this) + off); }
+    void Send();
+};
+template<unsigned Key, uint32_t Hash1, unsigned Off1, uint32_t Hash2, unsigned Off2> void TwoEvents<Key, Hash1, Off1, Hash2, Off2>::Send() {
+    Pair& a = At(Off1);
+    onyx::EventPayload first;
+    onyx::SendEvent<Hash1>(a.callback, a.target, first);
+    Pair& b = At(Off2);
+    onyx::EventPayload second;
+    onyx::SendEvent<Hash2>(b.callback, b.target, second);
+}
+template struct TwoEvents<0x7fca50u, 0x48acec0fu, 0x1f8u, 0x48acec0cu, 0x1b0u>;
+
+struct SpawnCheck;
+bool AllSpawnedDead(SpawnCheck* check);
+struct WaitAllSpawnedDead {
+    char padding_0[0x80];
+    EventCallback* callback;     // +0x80
+    EventTarget* target;         // +0x88
+    char padding_90[0x10];
+    ComponentHandle* spawner;    // +0xa0
+    void Update();
+};
+struct SpawnerCheck : onyx::Component {};
+void WaitAllSpawnedDead::Update() {
+    SpawnerCheck* x = onyx::Lookup<SpawnerCheck, 311400331u>(spawner);
+    if (AllSpawnedDead(reinterpret_cast<SpawnCheck*>(x))) onyx::SendEvent<ActionFinished>(callback, target);
+}
+
+struct GateHolder {
+    char padding_0[0xb0];
+    EventCallback* callback;     // +0xb0
+    EventTarget* target;         // +0xb8
+};
+struct ValueHolder32 { uint32_t value; ~ValueHolder32() {} };
+struct SwitchLevelGateAction {
+    char padding_0[0x68];
+    EventCallback* stopCallback; // +0x68
+    EventTarget* stopTarget;     // +0x70
+    char padding_78[0x28];
+    void* gate;                  // +0xa0
+    uint32_t value;              // +0xa8
+    void Start();
+};
+void SwitchLevelGateAction::Start() {
+    GateHolder* x = SingletonGet<GateHolder>(&gate);
+    ValueHolder32 payload{value};
+    onyx::SendEvent<0x75e74a39u>(x->callback, x->target, payload);
+    onyx::EventPayload stop;
+    onyx::SendEvent<ActionStop>(stopCallback, stopTarget, stop);
+}
+
+// A collision trigger reports where it was hit, then that it fired.
+struct HitPosition { float x, y, z; };
+struct CollisionTrigger {
+    char padding_0[0x20];
+    EventCallback* firedCallback;   // +0x20
+    EventTarget* firedTarget;       // +0x28
+    char padding_30[0x40];
+    bool pending;                   // +0x70
+    char padding_71[7];
+    HitPosition* position;          // +0x78 is the address, not read here
+    char padding_80[0x30];
+    EventCallback* hitCallback;     // +0xb0
+    EventTarget* hitTarget;         // +0xb8
+    void Update();
+};
+struct PointerPayload { void* value; ~PointerPayload() {} };
+void CollisionTrigger::Update() {
+    if (pending) {
+        PointerPayload hit{&position};
+        onyx::SendEvent<0x56e32782u>(hitCallback, hitTarget, hit);
+        onyx::EventPayload fired;
+        onyx::SendEvent<0x44174b43u>(firedCallback, firedTarget, fired);
+    }
+    pending = false;
+}
+
+// The controller-disconnected screen, shown once.
+uint32_t HashName(const char* name);
+struct MovieHost;
+struct MovieName { uint32_t hash; char rest[4]; };
+void ShowMovie(MovieHost* host, MovieName* name);
+void CommitMovie(MovieHost* host);
+struct ControllerNotice {
+    char padding_0[0x170];
+    void* host;                     // +0x170
+    char padding_178[0x158];
+    EventCallback* callback;        // +0x2d0
+    EventTarget* target;            // +0x2d8
+    char padding_2e0[0xc];
+    bool shown;                     // +0x2ec
+    void Show();
+};
+void ControllerNotice::Show() {
+    if (!shown) {
+        shown = true;
+        MovieHost* movie = SingletonGet<MovieHost>(&host);
+        MovieName name;
+        name.hash = HashName("ControllerDisconnectionMessageMovie");
+        ShowMovie(movie, &name);
+        CommitMovie(movie);
+        onyx::EventPayload event;
+        onyx::SendEvent<0x40e27f71u>(callback, target, event);
+    }
+}
+
 }  // namespace SPTG
