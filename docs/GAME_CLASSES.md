@@ -895,3 +895,9 @@ The compiler's choices show how these were written:
 
 Slots 64 to 66 change +0x160 (health, going by how they use it), with slot 64 taking any
 remainder from +0x32c. Not matched: `State249`, which differs by one instruction's order.
+
+[`PlayerAttackStates.cpp`](../src/gameplay/PlayerAttackStates.cpp) has 9 attack states. On entry
+each starts one of the player's `Attack` members and plays an animation, and when the
+animation ends it returns to `State96`. Their case order and exit-case assertion follow
+[Matching state handlers](#matching-state-handlers). `State165`, `State175` and `State177` have
+the same shape but differ in register choice in every form tried, so they are left out.

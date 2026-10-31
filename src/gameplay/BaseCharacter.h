@@ -271,7 +271,8 @@ struct BaseCharacter : onyx::Component {
     int32_t animation;           // +0x1a0: the animation playing
     onyx::Vector3 motion;        // +0x1a4
     onyx::Vector3 motionTarget;  // +0x1b0
-    char padding_1bc[0x8];
+    float value1bc;              // +0x1bc
+    char padding_1c0[0x4];
     float motionC4;              // +0x1c4
     char padding_1c8[0x20];
     onyx::ComponentHandle* handle1e8; // +0x1e8
@@ -341,7 +342,7 @@ struct BaseCharacter : onyx::Component {
     EventSlot event438;          // +0x438
     EventSlot event450;          // +0x450
     EventSlot event468;          // +0x468
-    char padding_480[0x8];
+    onyx::ComponentHandle* handle480; // +0x480
     onyx::ComponentHandle* holder; // +0x488
     char padding_490[0x48];
     int32_t holderMode;          // +0x4d8
@@ -458,22 +459,56 @@ struct ControllablePlayer : BaseCharacter {
     void Slot91(float x) override;
     int State126(int event) override;
     int State138(int event) override;
-    SPTG_SLOT(160) SPTG_SLOT(161) SPTG_SLOT(162) SPTG_SLOT(163) SPTG_SLOT(164) SPTG_SLOT(165) SPTG_SLOT(166) SPTG_SLOT(167)
-    SPTG_SLOT(168) SPTG_SLOT(169) SPTG_SLOT(170) SPTG_SLOT(171) SPTG_SLOT(172) SPTG_SLOT(173) SPTG_SLOT(174) SPTG_SLOT(175)
-    SPTG_SLOT(176) SPTG_SLOT(177) SPTG_SLOT(178) SPTG_SLOT(179) SPTG_SLOT(180) SPTG_SLOT(181) SPTG_SLOT(182) SPTG_SLOT(183)
-    SPTG_SLOT(184) SPTG_SLOT(185) SPTG_SLOT(186) SPTG_SLOT(187) SPTG_SLOT(188) SPTG_SLOT(189) SPTG_SLOT(190) SPTG_SLOT(191)
-    SPTG_SLOT(192) SPTG_SLOT(193) SPTG_SLOT(194) SPTG_SLOT(195) SPTG_SLOT(196) SPTG_SLOT(197) SPTG_SLOT(198) SPTG_SLOT(199)
-    SPTG_SLOT(200) SPTG_SLOT(201) SPTG_SLOT(202) SPTG_SLOT(203) SPTG_SLOT(204) SPTG_SLOT(205) SPTG_SLOT(206) SPTG_SLOT(207)
-    SPTG_SLOT(208) SPTG_SLOT(209) SPTG_SLOT(210) SPTG_SLOT(211) SPTG_SLOT(212) SPTG_SLOT(213) SPTG_SLOT(214) SPTG_SLOT(215)
-    SPTG_SLOT(216) SPTG_SLOT(217) SPTG_SLOT(218) SPTG_SLOT(219) SPTG_SLOT(220) SPTG_SLOT(221) SPTG_SLOT(222) SPTG_SLOT(223)
-    SPTG_SLOT(224) SPTG_SLOT(225) SPTG_SLOT(226) SPTG_SLOT(227) SPTG_SLOT(228) SPTG_SLOT(229) SPTG_SLOT(230) SPTG_SLOT(231)
-    SPTG_SLOT(232) SPTG_SLOT(233) SPTG_SLOT(234) SPTG_SLOT(235) SPTG_SLOT(236) SPTG_SLOT(237) SPTG_SLOT(238) SPTG_SLOT(239)
-    SPTG_SLOT(240) SPTG_SLOT(241) SPTG_SLOT(242)
+    SPTG_SLOT(160)
+    virtual int State161(int event); virtual State State161Ptr();              // slots 161, 162
+    virtual int State163(int event); virtual State State163Ptr();              // slots 163, 164
+    virtual int State165(int event); virtual State State165Ptr();              // slots 165, 166
+    virtual int State167(int event); virtual State State167Ptr();              // slots 167, 168
+    virtual int State169(int event); virtual State State169Ptr();              // slots 169, 170
+    virtual int State171(int event); virtual State State171Ptr();              // slots 171, 172
+    virtual int State173(int event); virtual State State173Ptr();              // slots 173, 174
+    virtual int State175(int event); virtual State State175Ptr();              // slots 175, 176
+    virtual int State177(int event); virtual State State177Ptr();              // slots 177, 178
+    virtual int State179(int event); virtual State State179Ptr();              // slots 179, 180
+    virtual int State181(int event); virtual State State181Ptr();              // slots 181, 182
+    virtual int State183(int event); virtual State State183Ptr();              // slots 183, 184
+    virtual int State185(int event); virtual State State185Ptr();              // slots 185, 186
+    virtual int State187(int event); virtual State State187Ptr();              // slots 187, 188
+    virtual int State189(int event); virtual State State189Ptr();              // slots 189, 190
+    virtual int State191(int event); virtual State State191Ptr();              // slots 191, 192
+    virtual int State193(int event); virtual State State193Ptr();              // slots 193, 194
+    virtual int State195(int event); virtual State State195Ptr();              // slots 195, 196
+    virtual int State197(int event); virtual State State197Ptr();              // slots 197, 198
+    virtual int State199(int event); virtual State State199Ptr();              // slots 199, 200
+    virtual int State201(int event); virtual State State201Ptr();              // slots 201, 202
+    virtual int State203(int event); virtual State State203Ptr();              // slots 203, 204
+    virtual int State205(int event); virtual State State205Ptr();              // slots 205, 206
+    virtual int State207(int event); virtual State State207Ptr();              // slots 207, 208
+    virtual int State209(int event); virtual State State209Ptr();              // slots 209, 210
+    virtual int State211(int event); virtual State State211Ptr();              // slots 211, 212
+    virtual int State213(int event); virtual State State213Ptr();              // slots 213, 214
+    virtual int State215(int event); virtual State State215Ptr();              // slots 215, 216
+    virtual int State217(int event); virtual State State217Ptr();              // slots 217, 218
+    virtual int State219(int event); virtual State State219Ptr();              // slots 219, 220
+    virtual int State221(int event); virtual State State221Ptr();              // slots 221, 222
+    virtual int State223(int event); virtual State State223Ptr();              // slots 223, 224
+    virtual int State225(int event); virtual State State225Ptr();              // slots 225, 226
+    virtual int State227(int event); virtual State State227Ptr();              // slots 227, 228
+    virtual int State229(int event); virtual State State229Ptr();              // slots 229, 230
+    virtual int State231(int event); virtual State State231Ptr();              // slots 231, 232
+    virtual int State233(int event); virtual State State233Ptr();              // slots 233, 234
+    virtual int State235(int event); virtual State State235Ptr();              // slots 235, 236
+    virtual int State237(int event); virtual State State237Ptr();              // slots 237, 238
+    virtual int State239(int event); virtual State State239Ptr();              // slots 239, 240
+    virtual int State241(int event); virtual State State241Ptr();              // slots 241, 242
     virtual int State243(int event); virtual State State243Ptr();              // slots 243, 244
-    SPTG_SLOT(245) SPTG_SLOT(246) SPTG_SLOT(247) SPTG_SLOT(248)
+    virtual int State245(int event); virtual State State245Ptr();              // slots 245, 246
+    virtual int State247(int event); virtual State State247Ptr();              // slots 247, 248
     virtual int State249(int event); virtual State State249Ptr();              // slots 249, 250
     virtual int State251(int event); virtual State State251Ptr();              // slots 251, 252
-    SPTG_SLOT(253) SPTG_SLOT(254) SPTG_SLOT(255) SPTG_SLOT(256)
+    virtual int State253(int event); virtual State State253Ptr();              // slots 253, 254
+    virtual int Slot255(int event);                          // slot 255
+    SPTG_SLOT(256)
     virtual void Slot257();                                  // slot 257
 
     char padding_77c[0xc];
@@ -653,7 +688,9 @@ struct ControllablePlayer : BaseCharacter {
     uint8_t flag13c1;            // +0x13c1
     char padding_13c2[0x16];
     float value13d8;             // +0x13d8
-    char padding_13dc[0x34];
+    char padding_13dc[0x15];
+    uint8_t flag13f1;            // +0x13f1
+    char padding_13f2[0x1e];
     float value1410;             // +0x1410
     int32_t value1414;           // +0x1414
     char padding_1418[0x4];
@@ -670,7 +707,8 @@ struct ControllablePlayer : BaseCharacter {
     int32_t value14e4;           // +0x14e4
     char padding_14e8[0x8];
     int32_t value14f0;           // +0x14f0
-    char padding_14f4[0xc];
+    int32_t value14f4;           // +0x14f4
+    char padding_14f8[0x8];
     PlayerInput* input;          // +0x1500
     char padding_1508[0x10];
     int32_t value1518;           // +0x1518
