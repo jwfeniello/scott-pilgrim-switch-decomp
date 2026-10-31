@@ -421238,14 +421238,14 @@
       ],
       "functions": [
         {
-          "address": "0x920a50",
+          "address": "0x67bbe0",
           "size": 780,
-          "symbol": "_Z23InitializeComponentSlotILj160ELj1609868158EEvPvS0_PN13ComponentSlot6SourceE",
-          "target_sha256": "ddc81852480aea1cc9457f4bd0d99c936cbea966291a6a64ce9cf2e9f79b142a",
+          "symbol": "_Z23InitializeComponentSlotILj80ELj130557421EEvPvS0_PN13ComponentSlot6SourceE",
+          "target_sha256": "de6d630b5bd9fb4d406690e4b9e82d20de82d48ac47030363ade5c2e203e85d7",
           "bindings": {
-            "InitializeBase": "0xbcaa30",
-            "_ZN13ComponentSlot7BindingILj1609868158EE6LookupEPvj": "0x67bef0",
-            "_ZN13ComponentSlot7BindingILj1609868158EE6AssignEPvPKN13SingleRelease4SlotE": "0x67c0b0",
+            "InitializeBase": "0x6782a0",
+            "_ZN13ComponentSlot7BindingILj130557421EE6LookupEPvj": "0x67bef0",
+            "_ZN13ComponentSlot7BindingILj130557421EE6AssignEPvPKN13SingleRelease4SlotE": "0x67c0b0",
             "Accessor_Allocators": "0x1926bd8",
             "Accessor_AllocatorIndex": "0xa82b30",
             "Accessor_Tracking": "0x1935068",
@@ -421257,12 +421257,89 @@
           "got_bindings": {}
         },
         {
-          "address": "0x67bbe0",
+          "address": "0x6a3960",
           "size": 780,
-          "symbol": "_Z23InitializeComponentSlotILj80ELj130557421EEvPvS0_PN13ComponentSlot6SourceE",
-          "target_sha256": "de6d630b5bd9fb4d406690e4b9e82d20de82d48ac47030363ade5c2e203e85d7",
+          "symbol": "_Z9LoadStep3ILj6961504ELj1322925378ELj40ELi1ELi2ELj48EEvPvS0_PN13ComponentSlot6SourceE",
+          "target_sha256": "aa8e1f8a441018ac504232e2198befd6a5722c75f99b015b17ba2d5dabe307cd",
+          "bindings": {
+            "_ZN8LoadStepILj6961504EE7Before3EPvS1_PN13ComponentSlot6SourceE": "0x682f80",
+            "_ZN13ComponentSlot7BindingILj6961504EE6LookupEPvj": "0x67bef0",
+            "_ZN13ComponentSlot7BindingILj6961504EE6AssignEPvPKN13SingleRelease4SlotE": "0x67c0b0",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30",
+            "Accessor_Tracking": "0x1935068",
+            "Accessor_Lock": "0xfa4950",
+            "Accessor_Unlock": "0xfa4960",
+            "_ZN8LoadStepILj6961504EE6After2EPvPN13ComponentSlot6SourceE": "0x69a820",
+            "__clang_call_terminate": "0x6768b8",
+            "_Unwind_Resume": "0xfa4920"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x706270",
+          "size": 780,
+          "symbol": "_Z23InitializeComponentSlotILj80ELj1959923751EEvPvS0_PN13ComponentSlot6SourceE",
+          "target_sha256": "d935a1fc8ce99cfc80644ea10fd3650cdae5e5e2656a7b3181d809a666678100",
           "bindings": {
             "InitializeBase": "0x6782a0",
+            "_ZN13ComponentSlot7BindingILj1959923751EE6LookupEPvj": "0x67bef0",
+            "_ZN13ComponentSlot7BindingILj1959923751EE6AssignEPvPKN13SingleRelease4SlotE": "0x67c0b0",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30",
+            "Accessor_Tracking": "0x1935068",
+            "Accessor_Lock": "0xfa4950",
+            "Accessor_Unlock": "0xfa4960",
+            "__clang_call_terminate": "0x6768b8",
+            "_Unwind_Resume": "0xfa4920"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x727e20",
+          "size": 780,
+          "symbol": "_Z9LoadStep3ILj7503392ELj1894242481ELj0ELi0ELi3ELj8EEvPvS0_PN13ComponentSlot6SourceE",
+          "target_sha256": "78879b8f215360a1af83c36f383482b759194bef319fe49c1936649fd30daeae",
+          "bindings": {
+            "_ZN13ComponentSlot7BindingILj7503392EE6LookupEPvj": "0x67bef0",
+            "_ZN13ComponentSlot7BindingILj7503392EE6AssignEPvPKN13SingleRelease4SlotE": "0x67c0b0",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30",
+            "Accessor_Tracking": "0x1935068",
+            "Accessor_Lock": "0xfa4950",
+            "Accessor_Unlock": "0xfa4960",
+            "_ZN8LoadStepILj7503392EE6After3EPvS1_PN13ComponentSlot6SourceE": "0x67dd00",
+            "__clang_call_terminate": "0x6768b8",
+            "_Unwind_Resume": "0xfa4920"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x733390",
+          "size": 780,
+          "symbol": "_Z9LoadStep3ILj7549840ELj1558270838ELj0ELi0ELi3ELj8EEvPvS0_PN13ComponentSlot6SourceE",
+          "target_sha256": "3ada12afe3a5314c75535a292dad2493cfc8b9cdf47a7e2df9f6cd3ce587b5cf",
+          "bindings": {
+            "_ZN13ComponentSlot7BindingILj7549840EE6LookupEPvj": "0x67bef0",
+            "_ZN13ComponentSlot7BindingILj7549840EE6AssignEPvPKN13SingleRelease4SlotE": "0x67c0b0",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30",
+            "Accessor_Tracking": "0x1935068",
+            "Accessor_Lock": "0xfa4950",
+            "Accessor_Unlock": "0xfa4960",
+            "_ZN8LoadStepILj7549840EE6After3EPvS1_PN13ComponentSlot6SourceE": "0x67dd00",
+            "__clang_call_terminate": "0x6768b8",
+            "_Unwind_Resume": "0xfa4920"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x736d40",
+          "size": 780,
+          "symbol": "_Z23InitializeComponentSlotILj8ELj130557421EEvPvS0_PN13ComponentSlot6SourceE",
+          "target_sha256": "04e4c238c443f98b0d8f4dec7edc0bdad1e1f56791e4fc457ef4f46f4e9dcb11",
+          "bindings": {
+            "InitializeBase": "0x67dd00",
             "_ZN13ComponentSlot7BindingILj130557421EE6LookupEPvj": "0x67bef0",
             "_ZN13ComponentSlot7BindingILj130557421EE6AssignEPvPKN13SingleRelease4SlotE": "0x67c0b0",
             "Accessor_Allocators": "0x1926bd8",
@@ -421295,14 +421372,14 @@
           "got_bindings": {}
         },
         {
-          "address": "0x706270",
+          "address": "0x89a110",
           "size": 780,
-          "symbol": "_Z23InitializeComponentSlotILj80ELj1959923751EEvPvS0_PN13ComponentSlot6SourceE",
-          "target_sha256": "d935a1fc8ce99cfc80644ea10fd3650cdae5e5e2656a7b3181d809a666678100",
+          "symbol": "_Z9LoadStep2ILj9019664ELj1915592367ELj8ELi1ELi0ELj0EEvPvPN13ComponentSlot6SourceE",
+          "target_sha256": "faa528ac470785f238cde71cce1fbf986a67a51b8cab8cb98b72d2cc3dad8ce1",
           "bindings": {
-            "InitializeBase": "0x6782a0",
-            "_ZN13ComponentSlot7BindingILj1959923751EE6LookupEPvj": "0x67bef0",
-            "_ZN13ComponentSlot7BindingILj1959923751EE6AssignEPvPKN13SingleRelease4SlotE": "0x67c0b0",
+            "_ZN8LoadStepILj9019664EE7Before2EPvPN13ComponentSlot6SourceE": "0x7643c0",
+            "_ZN13ComponentSlot7BindingILj9019664EE6LookupEPvj": "0x67bef0",
+            "_ZN13ComponentSlot7BindingILj9019664EE6AssignEPvPKN13SingleRelease4SlotE": "0x67c0b0",
             "Accessor_Allocators": "0x1926bd8",
             "Accessor_AllocatorIndex": "0xa82b30",
             "Accessor_Tracking": "0x1935068",
@@ -421314,14 +421391,14 @@
           "got_bindings": {}
         },
         {
-          "address": "0xc96dd0",
+          "address": "0x8d1780",
           "size": 780,
-          "symbol": "_Z23InitializeComponentSlotILj80ELj1980251866EEvPvS0_PN13ComponentSlot6SourceE",
-          "target_sha256": "d5a4c388e9afa6e85db8c5a3c6f0df0957a2f94982d1912d2e89036b78158bf2",
+          "symbol": "_Z9LoadStep2ILj9246592ELj772397096ELj8ELi1ELi0ELj0EEvPvPN13ComponentSlot6SourceE",
+          "target_sha256": "cf4b79307d75eccfaa5887c772b237632064786559b1da94a69b1f7b3d5690fc",
           "bindings": {
-            "InitializeBase": "0x6782a0",
-            "_ZN13ComponentSlot7BindingILj1980251866EE6LookupEPvj": "0x67bef0",
-            "_ZN13ComponentSlot7BindingILj1980251866EE6AssignEPvPKN13SingleRelease4SlotE": "0x67c0b0",
+            "_ZN8LoadStepILj9246592EE7Before2EPvPN13ComponentSlot6SourceE": "0x76d2d0",
+            "_ZN13ComponentSlot7BindingILj9246592EE6LookupEPvj": "0x67bef0",
+            "_ZN13ComponentSlot7BindingILj9246592EE6AssignEPvPKN13SingleRelease4SlotE": "0x67c0b0",
             "Accessor_Allocators": "0x1926bd8",
             "Accessor_AllocatorIndex": "0xa82b30",
             "Accessor_Tracking": "0x1935068",
@@ -421333,14 +421410,109 @@
           "got_bindings": {}
         },
         {
-          "address": "0xc950a0",
-          "size": 780,
-          "symbol": "_Z23InitializeComponentSlotILj80ELj1992834267EEvPvS0_PN13ComponentSlot6SourceE",
-          "target_sha256": "8e8b61555bd05d6428fd565dc073b87f3a0a9cc6fc7f3035eb3acd1fd12289af",
+          "address": "0x8de160",
+          "size": 772,
+          "symbol": "_Z9LoadStep2ILj9298272ELj1968354784ELj0ELi0ELi2ELj8EEvPvPN13ComponentSlot6SourceE",
+          "target_sha256": "5867025333d25abb7f0402bc3c127b1c5997a3924f16e826ea44d7cfe0a2f1a9",
           "bindings": {
-            "InitializeBase": "0x6782a0",
-            "_ZN13ComponentSlot7BindingILj1992834267EE6LookupEPvj": "0x67bef0",
-            "_ZN13ComponentSlot7BindingILj1992834267EE6AssignEPvPKN13SingleRelease4SlotE": "0x67c0b0",
+            "_ZN13ComponentSlot7BindingILj9298272EE6LookupEPvj": "0x67bef0",
+            "_ZN13ComponentSlot7BindingILj9298272EE6AssignEPvPKN13SingleRelease4SlotE": "0x67c0b0",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30",
+            "Accessor_Tracking": "0x1935068",
+            "Accessor_Lock": "0xfa4950",
+            "Accessor_Unlock": "0xfa4960",
+            "_ZN8LoadStepILj9298272EE6After2EPvPN13ComponentSlot6SourceE": "0x797730",
+            "__clang_call_terminate": "0x6768b8",
+            "_Unwind_Resume": "0xfa4920"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x920a50",
+          "size": 780,
+          "symbol": "_Z23InitializeComponentSlotILj160ELj1609868158EEvPvS0_PN13ComponentSlot6SourceE",
+          "target_sha256": "ddc81852480aea1cc9457f4bd0d99c936cbea966291a6a64ce9cf2e9f79b142a",
+          "bindings": {
+            "InitializeBase": "0xbcaa30",
+            "_ZN13ComponentSlot7BindingILj1609868158EE6LookupEPvj": "0x67bef0",
+            "_ZN13ComponentSlot7BindingILj1609868158EE6AssignEPvPKN13SingleRelease4SlotE": "0x67c0b0",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30",
+            "Accessor_Tracking": "0x1935068",
+            "Accessor_Lock": "0xfa4950",
+            "Accessor_Unlock": "0xfa4960",
+            "__clang_call_terminate": "0x6768b8",
+            "_Unwind_Resume": "0xfa4920"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x938ed0",
+          "size": 780,
+          "symbol": "_Z9LoadStep2ILj9670352ELj1233420703ELj8ELi1ELi0ELj0EEvPvPN13ComponentSlot6SourceE",
+          "target_sha256": "6bdc2311511f355f526df3a12b6e15bdbd6dac2186f1487cfb54fb083c9a4469",
+          "bindings": {
+            "_ZN8LoadStepILj9670352EE7Before2EPvPN13ComponentSlot6SourceE": "0x797730",
+            "_ZN13ComponentSlot7BindingILj9670352EE6LookupEPvj": "0x67bef0",
+            "_ZN13ComponentSlot7BindingILj9670352EE6AssignEPvPKN13SingleRelease4SlotE": "0x67c0b0",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30",
+            "Accessor_Tracking": "0x1935068",
+            "Accessor_Lock": "0xfa4950",
+            "Accessor_Unlock": "0xfa4960",
+            "__clang_call_terminate": "0x6768b8",
+            "_Unwind_Resume": "0xfa4920"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x93ab60",
+          "size": 780,
+          "symbol": "_Z9LoadStep2ILj9677664ELj1093777614ELj8ELi1ELi0ELj0EEvPvPN13ComponentSlot6SourceE",
+          "target_sha256": "9a226c7823248af50e593b49263dc9716e607dc3d057503e29c815fa3d38066b",
+          "bindings": {
+            "_ZN8LoadStepILj9677664EE7Before2EPvPN13ComponentSlot6SourceE": "0x797730",
+            "_ZN13ComponentSlot7BindingILj9677664EE6LookupEPvj": "0x67bef0",
+            "_ZN13ComponentSlot7BindingILj9677664EE6AssignEPvPKN13SingleRelease4SlotE": "0x67c0b0",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30",
+            "Accessor_Tracking": "0x1935068",
+            "Accessor_Lock": "0xfa4950",
+            "Accessor_Unlock": "0xfa4960",
+            "__clang_call_terminate": "0x6768b8",
+            "_Unwind_Resume": "0xfa4920"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x9520f0",
+          "size": 780,
+          "symbol": "_Z9LoadStep2ILj9773296ELj1786864916ELj8ELi1ELi0ELj0EEvPvPN13ComponentSlot6SourceE",
+          "target_sha256": "2932fcb9f0acf3cacc06dcf35d96f1c5e25a24cd835635c43bfc686e3e344f7d",
+          "bindings": {
+            "_ZN8LoadStepILj9773296EE7Before2EPvPN13ComponentSlot6SourceE": "0x797730",
+            "_ZN13ComponentSlot7BindingILj9773296EE6LookupEPvj": "0x67bef0",
+            "_ZN13ComponentSlot7BindingILj9773296EE6AssignEPvPKN13SingleRelease4SlotE": "0x67c0b0",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30",
+            "Accessor_Tracking": "0x1935068",
+            "Accessor_Lock": "0xfa4950",
+            "Accessor_Unlock": "0xfa4960",
+            "__clang_call_terminate": "0x6768b8",
+            "_Unwind_Resume": "0xfa4920"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xb89250",
+          "size": 780,
+          "symbol": "_Z23InitializeComponentSlotILj8ELj8808326EEvPvS0_PN13ComponentSlot6SourceE",
+          "target_sha256": "fd82a6e9c172b76420cef2d535a6a0a8973cc1b05c043c8aa8013b855ff65ad1",
+          "bindings": {
+            "InitializeBase": "0x67dd00",
+            "_ZN13ComponentSlot7BindingILj8808326EE6LookupEPvj": "0x67bef0",
+            "_ZN13ComponentSlot7BindingILj8808326EE6AssignEPvPKN13SingleRelease4SlotE": "0x67c0b0",
             "Accessor_Allocators": "0x1926bd8",
             "Accessor_AllocatorIndex": "0xa82b30",
             "Accessor_Tracking": "0x1935068",
@@ -421371,14 +421543,14 @@
           "got_bindings": {}
         },
         {
-          "address": "0x736d40",
+          "address": "0xc950a0",
           "size": 780,
-          "symbol": "_Z23InitializeComponentSlotILj8ELj130557421EEvPvS0_PN13ComponentSlot6SourceE",
-          "target_sha256": "04e4c238c443f98b0d8f4dec7edc0bdad1e1f56791e4fc457ef4f46f4e9dcb11",
+          "symbol": "_Z23InitializeComponentSlotILj80ELj1992834267EEvPvS0_PN13ComponentSlot6SourceE",
+          "target_sha256": "8e8b61555bd05d6428fd565dc073b87f3a0a9cc6fc7f3035eb3acd1fd12289af",
           "bindings": {
-            "InitializeBase": "0x67dd00",
-            "_ZN13ComponentSlot7BindingILj130557421EE6LookupEPvj": "0x67bef0",
-            "_ZN13ComponentSlot7BindingILj130557421EE6AssignEPvPKN13SingleRelease4SlotE": "0x67c0b0",
+            "InitializeBase": "0x6782a0",
+            "_ZN13ComponentSlot7BindingILj1992834267EE6LookupEPvj": "0x67bef0",
+            "_ZN13ComponentSlot7BindingILj1992834267EE6AssignEPvPKN13SingleRelease4SlotE": "0x67c0b0",
             "Accessor_Allocators": "0x1926bd8",
             "Accessor_AllocatorIndex": "0xa82b30",
             "Accessor_Tracking": "0x1935068",
@@ -421390,14 +421562,14 @@
           "got_bindings": {}
         },
         {
-          "address": "0xb89250",
+          "address": "0xc96dd0",
           "size": 780,
-          "symbol": "_Z23InitializeComponentSlotILj8ELj8808326EEvPvS0_PN13ComponentSlot6SourceE",
-          "target_sha256": "fd82a6e9c172b76420cef2d535a6a0a8973cc1b05c043c8aa8013b855ff65ad1",
+          "symbol": "_Z23InitializeComponentSlotILj80ELj1980251866EEvPvS0_PN13ComponentSlot6SourceE",
+          "target_sha256": "d5a4c388e9afa6e85db8c5a3c6f0df0957a2f94982d1912d2e89036b78158bf2",
           "bindings": {
-            "InitializeBase": "0x67dd00",
-            "_ZN13ComponentSlot7BindingILj8808326EE6LookupEPvj": "0x67bef0",
-            "_ZN13ComponentSlot7BindingILj8808326EE6AssignEPvPKN13SingleRelease4SlotE": "0x67c0b0",
+            "InitializeBase": "0x6782a0",
+            "_ZN13ComponentSlot7BindingILj1980251866EE6LookupEPvj": "0x67bef0",
+            "_ZN13ComponentSlot7BindingILj1980251866EE6AssignEPvPKN13SingleRelease4SlotE": "0x67c0b0",
             "Accessor_Allocators": "0x1926bd8",
             "Accessor_AllocatorIndex": "0xa82b30",
             "Accessor_Tracking": "0x1935068",
@@ -508874,6 +509046,739 @@
             "_ZN4Onyx9Component4BaseC2Ev": "0x6764e0",
             "AllocatorContext": "0x1935058",
             "_ZTVN4Onyx8WaypointE": "0x18be5b8"
+          },
+          "got_bindings": {}
+        }
+      ]
+    },
+    {
+      "id": "component_factories_static",
+      "source": "src/gameplay/ComponentFactoriesStatic.cpp",
+      "compiler": "8.0.1",
+      "source_review": "manual_reconstruction",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-std=c++11",
+        "-O2",
+        "-mcpu=cortex-a57",
+        "-fstrict-aliasing",
+        "-fomit-frame-pointer",
+        "-fno-pic",
+        "-fno-delete-null-pointer-checks",
+        "-ffunction-sections",
+        "-fdata-sections"
+      ],
+      "header_roots": [
+        "src/gameplay"
+      ],
+      "functions": [
+        {
+          "address": "0x7042c0",
+          "size": 272,
+          "symbol": "_Z37Create_Onyx_DareAudio_RolloffGraphicsv",
+          "target_sha256": "50b0e638887e9b1bfd8671ea6bee04a5e77d329daf4f596fc27daf4f2cef9b8e",
+          "bindings": {
+            "GenericFactoryManager": "0x191c9c8",
+            "GenericFactoryResolve": "0x676160",
+            "_ZN4Onyx9Component4BaseC2Ev": "0x6764e0",
+            "_ZTVN4Onyx9DareAudio21RolloffGraphicsLayoutE": "0x18a1278",
+            "_ZGVZN7Vector33OneEvE5value": "0x191e520",
+            "_ZZN7Vector33OneEvE5value": "0x191e528",
+            "_ZTVN4Onyx9DareAudio15RolloffGraphicsE": "0x18477b0",
+            "AllocatorContext": "0x1935058",
+            "__cxa_guard_acquire": "0xfa4130",
+            "__cxa_guard_release": "0xfa4140"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x749d30",
+          "size": 272,
+          "symbol": "_Z21Create_SPTG_PileOnMgrv",
+          "target_sha256": "b11bab15b469a03a787c38a8016b9a07cb344bff5b3ecf60653066557550933f",
+          "bindings": {
+            "GenericFactoryManager": "0x191c9c8",
+            "GenericFactoryResolve": "0x676160",
+            "_ZN4Onyx9Component4BaseC2Ev": "0x6764e0",
+            "_ZTVN4SPTG9PileOnMgrE": "0x18788a0",
+            "Symbol_186a5a0": "0x186a5a0",
+            "AllocatorContext": "0x1935058",
+            "_ZGVZN7Vector34ZeroEvE5value": "0x191f8b8",
+            "_ZZN7Vector34ZeroEvE5value": "0x191f8c0",
+            "__cxa_guard_acquire": "0xfa4130",
+            "__cxa_guard_release": "0xfa4140"
+          },
+          "got_bindings": {},
+          "literals": {
+            "ffffffff43000000": "0x1331358",
+            "0600000000000000": "0x1330c40"
+          }
+        },
+        {
+          "address": "0x74fb10",
+          "size": 188,
+          "symbol": "_Z39Create_SPTG_ActorCircleNavigationActionv",
+          "target_sha256": "465d2ac88a449cf72e75ebad348547b54fac82536ad490a29a87b6bbdb958ea2",
+          "bindings": {
+            "GenericFactoryManager": "0x191c9c8",
+            "GenericFactoryResolve": "0x676160",
+            "_ZN4Onyx15ActionComponentC2Ev": "0xbc97a0",
+            "_ZTVN4SPTG27ActorCircleNavigationActionE": "0x18681c8",
+            "AllocatorContext": "0x1935058",
+            "_ZGVZN7Vector34ZeroEvE5value": "0x191f8b8",
+            "_ZZN7Vector34ZeroEvE5value": "0x191f8c0",
+            "__cxa_guard_acquire": "0xfa4130",
+            "__cxa_guard_release": "0xfa4140"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x74fd20",
+          "size": 264,
+          "symbol": "_Z27Create_SPTG_ActorJumpActionv",
+          "target_sha256": "e7eff05a9fc54785d662b12698887f5d923a659a415fe68be700317f800468cf",
+          "bindings": {
+            "GenericFactoryManager": "0x191c9c8",
+            "GenericFactoryResolve": "0x676160",
+            "_ZN4Onyx15ActionComponentC2Ev": "0xbc97a0",
+            "_ZTVN4SPTG15ActorJumpActionE": "0x1867e58",
+            "_ZGVZN7Vector34ZeroEvE5value": "0x191f8b8",
+            "_ZZN7Vector34ZeroEvE5value": "0x191f8c0",
+            "__cxa_guard_acquire": "0xfa4130",
+            "__cxa_guard_release": "0xfa4140"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x74ff40",
+          "size": 168,
+          "symbol": "_Z37Create_SPTG_ActorMoveFromBehindActionv",
+          "target_sha256": "077012a995cc04f771e8bc0f01c63f4520562000dbfd6db4c6fe57f5f46b4da5",
+          "bindings": {
+            "GenericFactoryManager": "0x191c9c8",
+            "GenericFactoryResolve": "0x676160",
+            "_ZN4Onyx15ActionComponentC2Ev": "0xbc97a0",
+            "_ZTVN4SPTG25ActorMoveFromBehindActionE": "0x1867b00",
+            "_ZGVZN7Vector34ZeroEvE5value": "0x191f8b8",
+            "_ZZN7Vector34ZeroEvE5value": "0x191f8c0",
+            "__cxa_guard_acquire": "0xfa4130",
+            "__cxa_guard_release": "0xfa4140"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x75fd40",
+          "size": 208,
+          "symbol": "_Z30Create_SPTG_PlayfieldCollisionv",
+          "target_sha256": "eef069cf88f8ada75e1774cdf75f117be5682ac719d0a455d00058afc943f1ce",
+          "bindings": {
+            "GenericFactoryManager": "0x191c9c8",
+            "GenericFactoryResolve": "0x676160",
+            "_ZN4Onyx9Component4BaseC2Ev": "0x6764e0",
+            "_ZTVN4SPTG18PlayfieldCollisionE": "0x184e4f8",
+            "_ZGVZN7Vector39ZeroOtherEvE5value": "0x1925130",
+            "_ZZN7Vector39ZeroOtherEvE5value": "0x1925138",
+            "AllocatorContext": "0x1935058",
+            "__cxa_guard_acquire": "0xfa4130",
+            "__cxa_guard_release": "0xfa4140"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xab9040",
+          "size": 444,
+          "symbol": "_Z36Create_Onyx_Collision_CircleGraphicsv",
+          "target_sha256": "c93967ca6784288e3eefc73035729d9329e980994d2bb1f4d5f1474ce5a2e7d4",
+          "bindings": {
+            "GenericFactoryManager": "0x191c9c8",
+            "GenericFactoryResolve": "0x676160",
+            "_ZN4Onyx9Component4BaseC2Ev": "0x6764e0",
+            "_ZTVN4Onyx9Collision20CircleGraphicsLayoutE": "0x18a1278",
+            "_ZGVZN7Vector33OneEvE5value": "0x191e520",
+            "_ZZN7Vector33OneEvE5value": "0x191e528",
+            "_ZTVN4Onyx9Collision14CircleGraphicsE": "0x18b0d10",
+            "AllocatorContext": "0x1935058",
+            "_ZGVZN7Vector34ZeroEvE5value": "0x191f8b8",
+            "_ZZN7Vector34ZeroEvE5value": "0x191f8c0",
+            "__cxa_guard_acquire": "0xfa4130",
+            "__cxa_guard_release": "0xfa4140"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xab9200",
+          "size": 436,
+          "symbol": "_Z37Create_Onyx_Collision_PolygonGraphicsv",
+          "target_sha256": "fce37057b67352be6626d3b7460ee0e91df7bc78c6e000c61ce62deed183cba0",
+          "bindings": {
+            "GenericFactoryManager": "0x191c9c8",
+            "GenericFactoryResolve": "0x676160",
+            "_ZN4Onyx9Component4BaseC2Ev": "0x6764e0",
+            "_ZTVN4Onyx9Collision21PolygonGraphicsLayoutE": "0x18a1278",
+            "_ZGVZN7Vector33OneEvE5value": "0x191e520",
+            "_ZZN7Vector33OneEvE5value": "0x191e528",
+            "_ZTVN4Onyx9Collision15PolygonGraphicsE": "0x18b0af8",
+            "AllocatorContext": "0x1935058",
+            "_ZGVZN7Vector34ZeroEvE5value": "0x191f8b8",
+            "_ZZN7Vector34ZeroEvE5value": "0x191f8c0",
+            "__cxa_guard_acquire": "0xfa4130",
+            "__cxa_guard_release": "0xfa4140"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xabe8e0",
+          "size": 248,
+          "symbol": "_Z36Create_Onyx_Graphics_RawMeshGraphicsv",
+          "target_sha256": "966337e162259cc59672b2c36e6b93d9df5d30b21b9d7f4a7430d23846fa2944",
+          "bindings": {
+            "GenericFactoryManager": "0x191c9c8",
+            "GenericFactoryResolve": "0x676160",
+            "_ZN4Onyx9Component4BaseC2Ev": "0x6764e0",
+            "_ZTVN4Onyx8Graphics21RawMeshGraphicsLayoutE": "0x18a1278",
+            "_ZGVZN7Vector33OneEvE5value": "0x191e520",
+            "_ZZN7Vector33OneEvE5value": "0x191e528",
+            "_ZTVN4Onyx8Graphics15RawMeshGraphicsE": "0x18aa370",
+            "AllocatorContext": "0x1935058",
+            "__cxa_guard_acquire": "0xfa4130",
+            "__cxa_guard_release": "0xfa4140"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xabf830",
+          "size": 212,
+          "symbol": "_Z49Create_Onyx_Graphics_Particle_EmitterBaseGraphicsv",
+          "target_sha256": "3cabed76ce4ca6acb91c5a0ca8b96f0453dbb1b835ab90c1a727c08b916b4e8d",
+          "bindings": {
+            "GenericFactoryManager": "0x191c9c8",
+            "GenericFactoryResolve": "0x676160",
+            "_ZN4Onyx9Component4BaseC2Ev": "0x6764e0",
+            "_ZTVN4Onyx8Graphics8Particle25EmitterBaseGraphicsLayoutE": "0x18a1278",
+            "_ZGVZN7Vector33OneEvE5value": "0x191e520",
+            "_ZZN7Vector33OneEvE5value": "0x191e528",
+            "_ZTVN4Onyx8Graphics8Particle19EmitterBaseGraphicsE": "0x18a7d08",
+            "__cxa_guard_acquire": "0xfa4130",
+            "__cxa_guard_release": "0xfa4140"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xabf910",
+          "size": 236,
+          "symbol": "_Z50Create_Onyx_Graphics_Particle_EmitterGroupGraphicsv",
+          "target_sha256": "fa633f66d61598f45abe2526a621f086ab83c88ec3ebd9cbc6709494fcb5f151",
+          "bindings": {
+            "GenericFactoryManager": "0x191c9c8",
+            "GenericFactoryResolve": "0x676160",
+            "_ZN4Onyx9Component4BaseC2Ev": "0x6764e0",
+            "_ZTVN4Onyx8Graphics8Particle26EmitterGroupGraphicsLayoutE": "0x18a1278",
+            "_ZGVZN7Vector33OneEvE5value": "0x191e520",
+            "_ZZN7Vector33OneEvE5value": "0x191e528",
+            "AllocatorContext": "0x1935058",
+            "_ZTVN4Onyx8Graphics8Particle20EmitterGroupGraphicsE": "0x18a7838",
+            "__cxa_guard_acquire": "0xfa4130",
+            "__cxa_guard_release": "0xfa4140"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xabfa00",
+          "size": 216,
+          "symbol": "_Z53Create_Onyx_Graphics_Particle_EmitterInstanceGraphicsv",
+          "target_sha256": "8ac430ab6f35f5bf4f0505766191b2e61177dddc5fe41005fdf89e3c93eee3ec",
+          "bindings": {
+            "GenericFactoryManager": "0x191c9c8",
+            "GenericFactoryResolve": "0x676160",
+            "_ZN4Onyx9Component4BaseC2Ev": "0x6764e0",
+            "_ZTVN4Onyx8Graphics8Particle29EmitterInstanceGraphicsLayoutE": "0x18a1278",
+            "_ZGVZN7Vector33OneEvE5value": "0x191e520",
+            "_ZZN7Vector33OneEvE5value": "0x191e528",
+            "_ZTVN4Onyx8Graphics8Particle23EmitterInstanceGraphicsE": "0x18a7af0",
+            "__cxa_guard_acquire": "0xfa4130",
+            "__cxa_guard_release": "0xfa4140"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xabfae0",
+          "size": 236,
+          "symbol": "_Z54Create_Onyx_Graphics_Particle_EmitterSequencerGraphicsv",
+          "target_sha256": "804ea9d1a41aeb49ef150968189985034673a52bd306a0b98c6e68a9cb808279",
+          "bindings": {
+            "GenericFactoryManager": "0x191c9c8",
+            "GenericFactoryResolve": "0x676160",
+            "_ZN4Onyx9Component4BaseC2Ev": "0x6764e0",
+            "_ZTVN4Onyx8Graphics8Particle30EmitterSequencerGraphicsLayoutE": "0x18a1278",
+            "_ZGVZN7Vector33OneEvE5value": "0x191e520",
+            "_ZZN7Vector33OneEvE5value": "0x191e528",
+            "AllocatorContext": "0x1935058",
+            "_ZTVN4Onyx8Graphics8Particle24EmitterSequencerGraphicsE": "0x18a7750",
+            "__cxa_guard_acquire": "0xfa4130",
+            "__cxa_guard_release": "0xfa4140"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xabfbd0",
+          "size": 216,
+          "symbol": "_Z51Create_Onyx_Graphics_Particle_EmitterSimpleGraphicsv",
+          "target_sha256": "e5f02878fda54b7a1c9f01d6f5ac3f649a914ba7ae001050cfb9b3ba6f91b15d",
+          "bindings": {
+            "GenericFactoryManager": "0x191c9c8",
+            "GenericFactoryResolve": "0x676160",
+            "_ZN4Onyx9Component4BaseC2Ev": "0x6764e0",
+            "_ZTVN4Onyx8Graphics8Particle27EmitterSimpleGraphicsLayoutE": "0x18a1278",
+            "_ZGVZN7Vector33OneEvE5value": "0x191e520",
+            "_ZZN7Vector33OneEvE5value": "0x191e528",
+            "_ZTVN4Onyx8Graphics8Particle21EmitterSimpleGraphicsE": "0x18a7568",
+            "__cxa_guard_acquire": "0xfa4130",
+            "__cxa_guard_release": "0xfa4140"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xac0be0",
+          "size": 288,
+          "symbol": "_Z50Create_Onyx_Graphics_Particle_Emitter_EmitterGroupv",
+          "target_sha256": "835267d01d0b05280898392795afe07d3372b649b12943b569f6bdc9c7660c77",
+          "bindings": {
+            "GenericFactoryManager": "0x191c9c8",
+            "GenericFactoryResolve": "0x676160",
+            "_ZN4Onyx9Component4BaseC2Ev": "0x6764e0",
+            "AllocatorContext": "0x1935058",
+            "_ZTVN4Onyx8Graphics8Particle7Emitter12EmitterGroupE": "0x18a5848",
+            "_ZGVZN7Vector34ZeroEvE5value": "0x191f8b8",
+            "_ZZN7Vector34ZeroEvE5value": "0x191f8c0",
+            "__cxa_guard_acquire": "0xfa4130",
+            "__cxa_guard_release": "0xfa4140"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xac16f0",
+          "size": 284,
+          "symbol": "_Z61Create_Onyx_Graphics_Particle_GraphicSource_GraphicSourceMeshv",
+          "target_sha256": "0226e5288e5bf32e557a3a8b9e551a35286693d79243bc0258a6bae8b30a9943",
+          "bindings": {
+            "GenericFactoryManager": "0x191c9c8",
+            "GenericFactoryResolve": "0x676160",
+            "_ZN4Onyx9Component4BaseC2Ev": "0x6764e0",
+            "_ZTVN4Onyx8Graphics8Particle13GraphicSource17GraphicSourceMeshE": "0x18a4eb0",
+            "_ZGVZN7Vector34ZeroEvE5value": "0x191f8b8",
+            "_ZZN7Vector34ZeroEvE5value": "0x191f8c0",
+            "__cxa_guard_acquire": "0xfa4130",
+            "__cxa_guard_release": "0xfa4140"
+          },
+          "got_bindings": {},
+          "literals": {
+            "0200000000000000": "0x1330f80"
+          }
+        },
+        {
+          "address": "0xac19b0",
+          "size": 288,
+          "symbol": "_Z65Create_Onyx_Graphics_Particle_GraphicSource_GraphicSourceTrianglev",
+          "target_sha256": "b8aa15c85f23e6adb693db6673888223907d78f76bb1f126499a452cc6a9f58a",
+          "bindings": {
+            "GenericFactoryManager": "0x191c9c8",
+            "GenericFactoryResolve": "0x676160",
+            "_ZN4Onyx9Component4BaseC2Ev": "0x6764e0",
+            "_ZTVN4Onyx8Graphics8Particle13GraphicSource21GraphicSourceTriangleE": "0x18a4ae0",
+            "_ZGVZN7Vector34ZeroEvE5value": "0x191f8b8",
+            "_ZZN7Vector34ZeroEvE5value": "0x191f8c0",
+            "__cxa_guard_acquire": "0xfa4130",
+            "__cxa_guard_release": "0xfa4140"
+          },
+          "got_bindings": {},
+          "literals": {
+            "0200000000000000": "0x1330f80"
+          }
+        },
+        {
+          "address": "0xac2830",
+          "size": 248,
+          "symbol": "_Z32Create_Onyx_SkinnedMeshComponentv",
+          "target_sha256": "06898a7f35e23e502ca52bc184532d22ea3459663b053f5c2f3f17d53860233f",
+          "bindings": {
+            "GenericFactoryManager": "0x191c9c8",
+            "GenericFactoryResolve": "0x676160",
+            "_ZN4Onyx9Component4BaseC2Ev": "0x6764e0",
+            "_ZTVN4Onyx26SkinnedMeshComponentLayoutE": "0x18a1278",
+            "_ZGVZN7Vector33OneEvE5value": "0x191e520",
+            "_ZZN7Vector33OneEvE5value": "0x191e528",
+            "_ZTVN4Onyx20SkinnedMeshComponentE": "0x18a35c8",
+            "AllocatorContext": "0x1935058",
+            "__cxa_guard_acquire": "0xfa4130",
+            "__cxa_guard_release": "0xfa4140"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xac4820",
+          "size": 200,
+          "symbol": "_Z27Create_Onyx_Graphics_Visualv",
+          "target_sha256": "6d37f41a954210d14b8e7133746d54a063b9392b1c58c85824e1c5510447d956",
+          "bindings": {
+            "GenericFactoryManager": "0x191c9c8",
+            "GenericFactoryResolve": "0x676160",
+            "_ZN4Onyx9Component4BaseC2Ev": "0x6764e0",
+            "_ZTVN4Onyx8Graphics6VisualE": "0x18a1278",
+            "_ZGVZN7Vector33OneEvE5value": "0x191e520",
+            "_ZZN7Vector33OneEvE5value": "0x191e528",
+            "__cxa_guard_acquire": "0xfa4130",
+            "__cxa_guard_release": "0xfa4140"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xc5a580",
+          "size": 372,
+          "symbol": "_Z22Create_Onyx_MoveActionv",
+          "target_sha256": "9bd190f3588dbbd418b64318106cad70e0105a0ab52a1a5bb9b8156a462ffba3",
+          "bindings": {
+            "GenericFactoryManager": "0x191c9c8",
+            "GenericFactoryResolve": "0x676160",
+            "_ZN4Onyx15ActionComponentC2Ev": "0xbc97a0",
+            "_ZTVN4Onyx10MoveActionE": "0x18cb9a0",
+            "_ZGVZN7Vector34ZeroEvE5value": "0x191f8b8",
+            "_ZZN7Vector34ZeroEvE5value": "0x191f8c0",
+            "__cxa_guard_acquire": "0xfa4130",
+            "__cxa_guard_release": "0xfa4140"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xc5c930",
+          "size": 164,
+          "symbol": "_Z28Create_Onyx_Target2DOrienterv",
+          "target_sha256": "03c1840ab4bdef6dead7dc45c2458200e16e95ff209d3656dd0eb15c25cd8fe3",
+          "bindings": {
+            "GenericFactoryManager": "0x191c9c8",
+            "GenericFactoryResolve": "0x676160",
+            "_ZN11Base_cdc240C2Ev": "0xcdc240",
+            "_ZTVN4Onyx16Target2DOrienterE": "0x18ca050",
+            "_ZGVZN7Vector34ZeroEvE5value": "0x191f8b8",
+            "_ZZN7Vector34ZeroEvE5value": "0x191f8c0",
+            "__cxa_guard_acquire": "0xfa4130",
+            "__cxa_guard_release": "0xfa4140"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xc5cd10",
+          "size": 184,
+          "symbol": "_Z35Create_Onyx_CollisionRollingAlignerv",
+          "target_sha256": "d72a4516aff22bfb6851afb03838186820e8f9a6dce3a4484cf6e4bf23727fa2",
+          "bindings": {
+            "GenericFactoryManager": "0x191c9c8",
+            "GenericFactoryResolve": "0x676160",
+            "_ZN4Onyx9Component4BaseC2Ev": "0x6764e0",
+            "_ZTVN4Onyx29CollisionRollingAlignerLayoutE": "0x18c93c0",
+            "_ZGVZN7Vector35UnitZEvE5value": "0x191e0d0",
+            "_ZZN7Vector35UnitZEvE5value": "0x191e0d8",
+            "_ZTVN4Onyx23CollisionRollingAlignerE": "0x18c9460",
+            "__cxa_guard_acquire": "0xfa4130",
+            "__cxa_guard_release": "0xfa4140"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xc5cdd0",
+          "size": 168,
+          "symbol": "_Z26Create_Onyx_RollingAlignerv",
+          "target_sha256": "023f3ce85dd5037d16b12f62dc82d920dc1c347b051909ea7a576b920f9ff714",
+          "bindings": {
+            "GenericFactoryManager": "0x191c9c8",
+            "GenericFactoryResolve": "0x676160",
+            "_ZN4Onyx9Component4BaseC2Ev": "0x6764e0",
+            "_ZTVN4Onyx14RollingAlignerE": "0x18c93c0",
+            "_ZGVZN7Vector35UnitZEvE5value": "0x191e0d0",
+            "_ZZN7Vector35UnitZEvE5value": "0x191e0d8",
+            "__cxa_guard_acquire": "0xfa4130",
+            "__cxa_guard_release": "0xfa4140"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xc5d520",
+          "size": 192,
+          "symbol": "_Z26Create_Onyx_WanderBehaviorv",
+          "target_sha256": "803b1b923fc7317c3c8f252c0dec5da220b092f4b70f726fa9080efa5b927773",
+          "bindings": {
+            "GenericFactoryManager": "0x191c9c8",
+            "GenericFactoryResolve": "0x676160",
+            "_ZN4Onyx9Component4BaseC2Ev": "0x6764e0",
+            "_ZTVN4Onyx14WanderBehaviorE": "0x18c83e0",
+            "_ZGVZN7Vector34ZeroEvE5value": "0x191f8b8",
+            "_ZZN7Vector34ZeroEvE5value": "0x191f8c0",
+            "__cxa_guard_acquire": "0xfa4130",
+            "__cxa_guard_release": "0xfa4140"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xc64400",
+          "size": 436,
+          "symbol": "_Z29Create_Onyx_BarChartComponentv",
+          "target_sha256": "0111ec4f86863bc225716caeb2db3da77d6061ea0a44285e3caf99f373aa9c46",
+          "bindings": {
+            "GenericFactoryManager": "0x191c9c8",
+            "GenericFactoryResolve": "0x676160",
+            "_ZN4Onyx9Component4BaseC2Ev": "0x6764e0",
+            "_ZTVN4Onyx23BarChartComponentLayoutE": "0x18a1278",
+            "_ZGVZN7Vector33OneEvE5value": "0x191e520",
+            "_ZZN7Vector33OneEvE5value": "0x191e528",
+            "_ZTVN4Onyx17BarChartComponentE": "0x18c30d0",
+            "AllocatorContext": "0x1935058",
+            "_ZGVZN7Vector34ZeroEvE5value": "0x191f8b8",
+            "_ZZN7Vector34ZeroEvE5value": "0x191f8c0",
+            "__cxa_guard_acquire": "0xfa4130",
+            "__cxa_guard_release": "0xfa4140"
+          },
+          "got_bindings": {},
+          "literals": {
+            "0000c84200002041": "0x1330fc8"
+          }
+        },
+        {
+          "address": "0xc65450",
+          "size": 252,
+          "symbol": "_Z53Create_Onyx_Graphics_SkinnedMeshInstanceLevelOfDetailv",
+          "target_sha256": "b6076c816c75bc1ad8dce94c65ae3176e78049bf74b2cd71aa00f32fe36c04c1",
+          "bindings": {
+            "GenericFactoryManager": "0x191c9c8",
+            "GenericFactoryResolve": "0x676160",
+            "_ZN4Onyx9Component4BaseC2Ev": "0x6764e0",
+            "_ZTVN4Onyx8Graphics38SkinnedMeshInstanceLevelOfDetailLayoutE": "0x18a1278",
+            "_ZGVZN7Vector33OneEvE5value": "0x191e520",
+            "_ZZN7Vector33OneEvE5value": "0x191e528",
+            "AllocatorContext": "0x1935058",
+            "_ZTVN4Onyx8Graphics32SkinnedMeshInstanceLevelOfDetailE": "0x18c22b0",
+            "__cxa_guard_acquire": "0xfa4130",
+            "__cxa_guard_release": "0xfa4140"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xc66240",
+          "size": 380,
+          "symbol": "_Z27Create_Onyx_SkyBoxComponentv",
+          "target_sha256": "c0303b1696e3c2e9fd944f1dda7734678d5f47e4588cf5ef7d99415b2ced4bd4",
+          "bindings": {
+            "GenericFactoryManager": "0x191c9c8",
+            "GenericFactoryResolve": "0x676160",
+            "_ZN4Onyx9Component4BaseC2Ev": "0x6764e0",
+            "_ZTVN4Onyx21SkyBoxComponentLayoutE": "0x18a1278",
+            "_ZGVZN7Vector33OneEvE5value": "0x191e520",
+            "_ZZN7Vector33OneEvE5value": "0x191e528",
+            "_ZTVN4Onyx15SkyBoxComponentE": "0x18c12e8",
+            "Symbol_18c13c8": "0x18c13c8",
+            "__cxa_guard_acquire": "0xfa4130",
+            "__cxa_guard_release": "0xfa4140"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xc66ba0",
+          "size": 184,
+          "symbol": "_Z29Create_Onyx_TranslationFilterv",
+          "target_sha256": "255b2e8d206cd966e380adeb922a497686f56022b2b477d1f3e59a1c86de54c6",
+          "bindings": {
+            "GenericFactoryManager": "0x191c9c8",
+            "GenericFactoryResolve": "0x676160",
+            "_ZN4Onyx9Component4BaseC2Ev": "0x6764e0",
+            "_ZTVN4Onyx17TranslationFilterE": "0x18c0c78",
+            "_ZGVZN7Vector34ZeroEvE5value": "0x191f8b8",
+            "_ZZN7Vector34ZeroEvE5value": "0x191f8c0",
+            "__cxa_guard_acquire": "0xfa4130",
+            "__cxa_guard_release": "0xfa4140"
+          },
+          "got_bindings": {}
+        }
+      ]
+    },
+    {
+      "id": "component_factories_callbacks",
+      "source": "src/gameplay/ComponentFactoriesCallbacks.cpp",
+      "compiler": "8.0.1",
+      "source_review": "manual_reconstruction",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-std=c++11",
+        "-O2",
+        "-mcpu=cortex-a57",
+        "-fstrict-aliasing",
+        "-fomit-frame-pointer",
+        "-fno-pic",
+        "-fno-delete-null-pointer-checks",
+        "-ffunction-sections",
+        "-fdata-sections"
+      ],
+      "header_roots": [
+        "src/gameplay"
+      ],
+      "functions": [
+        {
+          "address": "0x703a50",
+          "size": 948,
+          "symbol": "_Z36Create_Onyx_DareAudio_AudioComponentv",
+          "target_sha256": "408d91a14f2699f7a22b66ab8808c28e5cb9060db06986d9716de9f0399a8c4b",
+          "bindings": {
+            "GenericFactoryManager": "0x191c9c8",
+            "GenericFactoryResolve": "0x676160",
+            "_ZN4Onyx9Component4BaseC2Ev": "0x6764e0",
+            "_ZTVN4Onyx9DareAudio14AudioComponentE": "0x18480a8",
+            "AllocatorContext": "0x1935058",
+            "_ZN4Onyx7Details16AllocateFunctionEPvm": "0xa972b0",
+            "_ZNK4Onyx9DareAudio14AudioComponent3F70ERK12Event_71a300": "0x71a240",
+            "_ZTVN4Onyx7Details20FunctionInternalHookINS_19MemberFunctionConstINS_9DareAudio14AudioComponentEFvRK12Event_71a300EEEEE": "0x1848120",
+            "_ZN4Onyx7Details20FunctionInternalHookINS_19MemberFunctionConstINS_9DareAudio14AudioComponentEFvRK12Event_71a300EEEE6InvokeEv": "0x71a300",
+            "_ZNK4Onyx7Details20FunctionInternalHookINS_19MemberFunctionConstINS_9DareAudio14AudioComponentEFvRK12Event_71a300EEEE5CloneEv": "0x71a990",
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
+            "_ZNK4Onyx9DareAudio14AudioComponent3F78ERK12Event_71a300": "0x71a320",
+            "__clang_call_terminate": "0x6768b8",
+            "_ZTVN4Onyx9DareAudio20AudioComponentLayoutE": "0x1848150",
+            "_ZN4Onyx9DareAudio20AudioComponentLayout1MD1Ev": "0x71a390",
+            "_ZN4Onyx9Component4BaseD2Ev": "0x677400",
+            "_Unwind_Resume": "0xfa4920"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x744990",
+          "size": 552,
+          "symbol": "_Z19Create_SPTG_Piniatav",
+          "target_sha256": "98ffef9cbd545763b63e846372c68ce5e498a12a4172d84a7eff21175712698e",
+          "bindings": {
+            "GenericFactoryManager": "0x191c9c8",
+            "GenericFactoryResolve": "0x676160",
+            "_ZN4SPTG15BreakableObjectC2Ev": "0xa0f0b0",
+            "_ZTVN4SPTG7PiniataE": "0x1889c08",
+            "AllocatorContext": "0x1935058",
+            "_ZN4Onyx7Details16AllocateFunctionEPvm": "0xa972b0",
+            "_ZN4SPTG7Piniata4F2b0ERK12EventOnEnter": "0xa0f440",
+            "_ZTVN4Onyx7Details20FunctionInternalHookINS_14MemberFunctionIN4SPTG7PiniataEFvRK12EventOnEnterEEEEE": "0x1889ed0",
+            "_ZN4Onyx7Details20FunctionInternalHookINS_14MemberFunctionIN4SPTG7PiniataEFvRK12EventOnEnterEEEE6InvokeEv": "0xa0f4a0",
+            "_ZNK4Onyx7Details20FunctionInternalHookINS_14MemberFunctionIN4SPTG7PiniataEFvRK12EventOnEnterEEEE5CloneEv": "0xa12970",
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
+            "__clang_call_terminate": "0x6768b8",
+            "_ZN4Onyx8ListenerIFvRK12EventOnEnterEE10DisconnectEPv": "0xa0f4c0",
+            "_ZN4SPTG13PiniataLayoutD2Ev": "0xa0f840",
+            "_Unwind_Resume": "0xfa4920",
+            "_ZN4Onyx8FunctionIFvRK12EventOnEnterEED2Ev": "0xa0f7e0"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x744d40",
+          "size": 604,
+          "symbol": "_Z37Create_SPTG_ControllableRemoteSpawnerv",
+          "target_sha256": "7ef6d911dfcf9b0d6c73ca302000ca82b9084b7152d47e5911b3aa2c7ba7501a",
+          "bindings": {
+            "GenericFactoryManager": "0x191c9c8",
+            "GenericFactoryResolve": "0x676160",
+            "_ZN4Onyx9Component4BaseC2Ev": "0x6764e0",
+            "_ZTVN4SPTG25ControllableRemoteSpawnerE": "0x18897c8",
+            "Symbol_186a780": "0x186a780",
+            "AllocatorContext": "0x1935058",
+            "_ZN4Onyx7Details16AllocateFunctionEPvm": "0xa972b0",
+            "_ZN4SPTG25ControllableRemoteSpawner3F60ERK12Event_a0c770": "0xa0c610",
+            "_ZTVN4Onyx7Details20FunctionInternalHookINS_14MemberFunctionIN4SPTG25ControllableRemoteSpawnerEFvRK12Event_a0c770EEEEE": "0x1889880",
+            "_ZN4Onyx7Details20FunctionInternalHookINS_14MemberFunctionIN4SPTG25ControllableRemoteSpawnerEFvRK12Event_a0c770EEEE6InvokeEv": "0xa0c770",
+            "_ZNK4Onyx7Details20FunctionInternalHookINS_14MemberFunctionIN4SPTG25ControllableRemoteSpawnerEFvRK12Event_a0c770EEEE5CloneEv": "0xa0ce80",
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
+            "__clang_call_terminate": "0x6768b8",
+            "_ZN4Onyx8ListenerIFvRK12Event_a0c770EE10DisconnectEPv": "0xa0c790",
+            "_ZN4SPTG31ControllableRemoteSpawnerLayoutD2Ev": "0xa09410",
+            "_Unwind_Resume": "0xfa4920",
+            "_ZN4Onyx8FunctionIFvRK12Event_a0c770EED2Ev": "0xa0cab0"
+          },
+          "got_bindings": {},
+          "literals": {
+            "ffffffff07000000": "0x1331208"
+          }
+        },
+        {
+          "address": "0x74cf90",
+          "size": 572,
+          "symbol": "_Z22Create_SPTG_ActionStepv",
+          "target_sha256": "9bf2347590a3a297f12842a1f02236304e54eae930d4ef107046d0682ab56699",
+          "bindings": {
+            "GenericFactoryManager": "0x191c9c8",
+            "GenericFactoryResolve": "0x676160",
+            "_ZN4Onyx15ActionComponentC2Ev": "0xbc97a0",
+            "AllocatorContext": "0x1935058",
+            "_ZTVN4SPTG10ActionStepE": "0x186d718",
+            "_ZN4Onyx7Details16AllocateFunctionEPvm": "0xa972b0",
+            "_ZN4SPTG10ActionStep3Fd8ERK9EventStep": "0x927460",
+            "_ZTVN4Onyx7Details20FunctionInternalHookINS_14MemberFunctionIN4SPTG10ActionStepEFvRK9EventStepEEEEE": "0x186d7b0",
+            "_ZN4Onyx7Details20FunctionInternalHookINS_14MemberFunctionIN4SPTG10ActionStepEFvRK9EventStepEEEE6InvokeEv": "0x927470",
+            "_ZNK4Onyx7Details20FunctionInternalHookINS_14MemberFunctionIN4SPTG10ActionStepEFvRK9EventStepEEEE5CloneEv": "0x927e80",
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
+            "__clang_call_terminate": "0x6768b8",
+            "_ZN4Onyx8ListenerIFvRK9EventStepEE10DisconnectEPv": "0x927490",
+            "_ZN4SPTG16ActionStepLayoutD2Ev": "0x927810",
+            "_Unwind_Resume": "0xfa4920",
+            "_ZN4Onyx8FunctionIFvRK9EventStepEED2Ev": "0x9277b0"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xab6760",
+          "size": 564,
+          "symbol": "_Z28Create_Onyx_ScreenPositionerv",
+          "target_sha256": "1bc92b4833acb37cc530128df417b4cfd6e31ead07e98480e2b60018ff88e5a1",
+          "bindings": {
+            "GenericFactoryManager": "0x191c9c8",
+            "GenericFactoryResolve": "0x676160",
+            "_ZN4Onyx9Component4BaseC2Ev": "0x6764e0",
+            "_ZTVN4Onyx16ScreenPositionerE": "0x18b3e68",
+            "AllocatorContext": "0x1935058",
+            "_ZN4Onyx7Details16AllocateFunctionEPvm": "0xa972b0",
+            "_ZN4Onyx16ScreenPositioner3F58ERK14EventPreRender": "0xbc89c0",
+            "_ZTVN4Onyx7Details20FunctionInternalHookINS_14MemberFunctionINS_16ScreenPositionerEFvRK14EventPreRenderEEEEE": "0x18b3ee0",
+            "_ZN4Onyx7Details20FunctionInternalHookINS_14MemberFunctionINS_16ScreenPositionerEFvRK14EventPreRenderEEEE6InvokeEv": "0xbc8b10",
+            "_ZNK4Onyx7Details20FunctionInternalHookINS_14MemberFunctionINS_16ScreenPositionerEFvRK14EventPreRenderEEEE5CloneEv": "0xbc8b40",
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
+            "__clang_call_terminate": "0x6768b8",
+            "_ZN4Onyx8ListenerIFvRK14EventPreRenderEE10DisconnectEPv": "0xb5e800",
+            "_ZN4Onyx22ScreenPositionerLayoutD2Ev": "0x7094c0",
+            "_Unwind_Resume": "0xfa4920",
+            "_ZN4Onyx8FunctionIFvRK14EventPreRenderEED2Ev": "0xb5eb20"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xbe5cc0",
+          "size": 556,
+          "symbol": "_Z41Create_Onyx_Localization_LanguageSelectorv",
+          "target_sha256": "459c4b97a5e667ba260bd17c242f24eaff49f703c64114e3048ac642e338250b",
+          "bindings": {
+            "GenericFactoryManager": "0x191c9c8",
+            "GenericFactoryResolve": "0x676160",
+            "_ZN4Onyx9Component4BaseC2Ev": "0x6764e0",
+            "_ZTVN4Onyx12Localization16LanguageSelectorE": "0x18b5108",
+            "AllocatorContext": "0x1935058",
+            "_ZN4Onyx7Details16AllocateFunctionEPvm": "0xa972b0",
+            "_ZN4Onyx12Localization16LanguageSelector3F58ERK19EventChangeLanguage": "0xbf0190",
+            "_ZTVN4Onyx7Details20FunctionInternalHookINS_14MemberFunctionINS_12Localization16LanguageSelectorEFvRK19EventChangeLanguageEEEEE": "0x18b5180",
+            "_ZN4Onyx7Details20FunctionInternalHookINS_14MemberFunctionINS_12Localization16LanguageSelectorEFvRK19EventChangeLanguageEEEE6InvokeEv": "0xbf02d0",
+            "_ZNK4Onyx7Details20FunctionInternalHookINS_14MemberFunctionINS_12Localization16LanguageSelectorEFvRK19EventChangeLanguageEEEE5CloneEv": "0xbf0300",
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
+            "__clang_call_terminate": "0x6768b8",
+            "_ZN4Onyx8ListenerIFvRK19EventChangeLanguageEE10DisconnectEPv": "0xbe9df0",
+            "_ZN4Onyx12Localization22LanguageSelectorLayoutD2Ev": "0x8936b0",
+            "_Unwind_Resume": "0xfa4920",
+            "_ZN4Onyx8FunctionIFvRK19EventChangeLanguageEED2Ev": "0xbea110"
           },
           "got_bindings": {}
         }

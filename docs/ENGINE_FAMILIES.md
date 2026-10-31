@@ -275,6 +275,16 @@ Not matched from this family: `0xaef180` (two registers swapped), `0x92d180`, `0
 `0x897ec0`, `0x9019f0`, and eight 496-byte functions whose follow-up call is a `bl` where this
 template produces a tail call.
 
+## Dependency load steps
+
+[`ComponentInitializeSlots.cpp`](../src/ComponentInitializeSlots.cpp) gained 9 functions / 7,020 bytes.
+A component's dependencies load as a chain: each step looks up one dependency by its type hash, reads
+it from the source and assigns it to a slot, then calls the next step. RTTI shows the shape behind
+this: `Onyx::Component::Compose<Base, Meta::Collection<Dependency::Strong<T>, ...>>`.
+
+These only match without `-fno-delete-null-pointer-checks`. With that flag the lock's null check
+stays on a path where the original has already dropped it.
+
 ## Component listener registration
 
 [`ComponentEventRegister.cpp`](../src/ComponentEventRegister.cpp) has 16 functions / 9,240 bytes: a
@@ -319,6 +329,25 @@ and class, and keeps the first split the compiler reproduces exactly. So the spl
 class is the first that fits, and it can be wrong where several do. Where it is ambiguous the
 fields sit in the class's constructor rather than the `Layout`'s. Values and offsets are fixed
 by the original either way.
+
+Two more files hold factories with more going on in the constructor:
+
+- [`ComponentFactoriesStatic.cpp`](../src/gameplay/ComponentFactoriesStatic.cpp), 28 functions / 7,256
+  bytes, copies guarded statics such as `Vector3::Zero()` into members. The static's guard is a
+  block boundary, so the writes on each side keep their order. Each member is copied in turn:
+  the original loads and stores `x, y` and then loads and stores `z`, which a `memcpy` would not do.
+- [`ComponentFactoriesCallbacks.cpp`](../src/gameplay/ComponentFactoriesCallbacks.cpp), 6 functions /
+  3,796 bytes, binds member callbacks. RTTI gives the real callback types, such as
+  `Onyx::Details::FunctionInternalHook<Onyx::MemberFunction<SPTG::Piniata, void(const EventOnEnter&)>>`.
+
+In a callback factory the `Listener` member is built first (null callback, flag clear), then the
+constructor body sets its owner and binds it. A class with two listeners shows this, because the
+second listener's owner is written after the first bind. The exception table agrees: if binding
+throws, the cleanup checks the flag, disconnects, and destroys the callback.
+
+About 90 more callback factories are not matched. In most of them only the position of one store
+differs: the flag write comes before the callback's null write. No order of the writes in the source
+reproduces that, and neither does natural inlining in place of `always_inline`.
 
 These also need `-fstrict-aliasing`: without it the allocator load cannot move past the stores.
 That and the listener registration above suggest the game's code was built with strict aliasing
