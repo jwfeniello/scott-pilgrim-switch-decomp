@@ -9,15 +9,8 @@
 // path jumps straight to the code that uses the object, which it does not do when the two reads
 // are written as one expression with a null test after it.
 //
-// Most of these send through onyx::SendEvent's own payload. Where the stack layout says otherwise
-// (a method sending two events with the first payload above the second), the payloads are locals
-// of the method. This file builds with stack coloring off, as the state handlers do: with it on,
-// payloads in separate branches share a slot, and the original keeps them apart.
-//
-// That flag stands in for something not yet identified. EmitterSequencer.cpp matches only with
-// coloring on, because two named scoped payloads share a slot there, so the original compiler did
-// color. What keeps these event payloads apart is probably how they are created; passing the event
-// by value gives the right slots but not the right block layout.
+// Most of these send through onyx::SendEvent's own payload. Where the stack layout says otherwise,
+// the payloads are locals of the method.
 #include "BaseCharacter.h"
 #include "OnyxEvents.h"
 
@@ -1107,7 +1100,7 @@ void CollisionTrigger::Update() {
 // The controller-disconnected screen, shown once.
 uint32_t HashName(const char* name);
 struct MovieHost;
-struct MovieName { uint32_t hash; char rest[4]; };
+struct MovieName { uint32_t hash; };
 void ShowMovie(MovieHost* host, MovieName* name);
 void CommitMovie(MovieHost* host);
 struct ControllerNotice {

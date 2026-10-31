@@ -38,9 +38,11 @@ struct EventTarget {
     char padding_39[7];
     ComponentHandle* listener;
 };
-// Data an event carries; the callback fills it. The empty user-provided
-// destructor makes the sends run under an exception cleanup.
-struct EventPayload { uint64_t data; EventPayload() {} ~EventPayload() {} };
+// An event with no data, Onyx's EventEmpty. The empty user-provided destructor makes the sends run
+// under an exception cleanup. Being empty matters: LLVM only merges stack slots when a function's
+// locals total at least 16 bytes, so two of these keep separate slots. 8-byte alignment comes from
+// AArch64's preferred alignment for aggregates.
+struct EventPayload { EventPayload() {} ~EventPayload() {} };
 struct EventCallback {
     void* context;
     void (*invoke)(EventCallback* self, EventPayload* payload);

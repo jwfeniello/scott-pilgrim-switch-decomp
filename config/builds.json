@@ -494300,9 +494300,7 @@
         "-fno-pic",
         "-fno-delete-null-pointer-checks",
         "-ffunction-sections",
-        "-fdata-sections",
-        "-mllvm",
-        "-no-stack-coloring"
+        "-fdata-sections"
       ],
       "header_roots": [
         "src/gameplay"
@@ -494506,9 +494504,7 @@
         "-fno-pic",
         "-fno-delete-null-pointer-checks",
         "-ffunction-sections",
-        "-fdata-sections",
-        "-mllvm",
-        "-no-stack-coloring"
+        "-fdata-sections"
       ],
       "header_roots": [
         "src/gameplay"
@@ -494924,9 +494920,7 @@
         "-fno-pic",
         "-fno-delete-null-pointer-checks",
         "-ffunction-sections",
-        "-fdata-sections",
-        "-mllvm",
-        "-no-stack-coloring"
+        "-fdata-sections"
       ],
       "header_roots": [
         "src/gameplay"
@@ -495613,9 +495607,7 @@
         "-fno-pic",
         "-fno-delete-null-pointer-checks",
         "-ffunction-sections",
-        "-fdata-sections",
-        "-mllvm",
-        "-no-stack-coloring"
+        "-fdata-sections"
       ],
       "header_roots": [
         "src/gameplay"
@@ -495757,9 +495749,7 @@
         "-fno-pic",
         "-fno-delete-null-pointer-checks",
         "-ffunction-sections",
-        "-fdata-sections",
-        "-mllvm",
-        "-no-stack-coloring"
+        "-fdata-sections"
       ],
       "header_roots": [
         "src/gameplay"
@@ -495883,9 +495873,7 @@
         "-fno-pic",
         "-fno-delete-null-pointer-checks",
         "-ffunction-sections",
-        "-fdata-sections",
-        "-mllvm",
-        "-no-stack-coloring"
+        "-fdata-sections"
       ],
       "header_roots": [
         "src/gameplay"
@@ -497576,9 +497564,7 @@
         "-fno-pic",
         "-fno-delete-null-pointer-checks",
         "-ffunction-sections",
-        "-fdata-sections",
-        "-mllvm",
-        "-no-stack-coloring"
+        "-fdata-sections"
       ],
       "header_roots": [
         "src/gameplay"
@@ -498511,9 +498497,7 @@
         "-fno-pic",
         "-fno-delete-null-pointer-checks",
         "-ffunction-sections",
-        "-fdata-sections",
-        "-mllvm",
-        "-no-stack-coloring"
+        "-fdata-sections"
       ],
       "header_roots": [
         "src/gameplay"
@@ -503430,9 +503414,7 @@
         "-fno-pic",
         "-fno-delete-null-pointer-checks",
         "-ffunction-sections",
-        "-fdata-sections",
-        "-mllvm",
-        "-no-stack-coloring"
+        "-fdata-sections"
       ],
       "header_roots": [
         "src/gameplay"
@@ -504828,9 +504810,7 @@
         "-fno-pic",
         "-fno-delete-null-pointer-checks",
         "-ffunction-sections",
-        "-fdata-sections",
-        "-mllvm",
-        "-no-stack-coloring"
+        "-fdata-sections"
       ],
       "header_roots": [
         "src/gameplay"
@@ -509800,9 +509780,7 @@
         "-fno-pic",
         "-fno-delete-null-pointer-checks",
         "-ffunction-sections",
-        "-fdata-sections",
-        "-mllvm",
-        "-no-stack-coloring"
+        "-fdata-sections"
       ],
       "header_roots": [
         "src/gameplay"

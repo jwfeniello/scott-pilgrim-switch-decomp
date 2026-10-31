@@ -40,7 +40,7 @@ def member_value(raw,location):
     return value*location['scale']-location.get('delta',0)
 
 
-def relocation_target(raw,address,offset,kind):
+def relocation_target(raw,address,offset,kind,high_offsets=()):
     instruction = word(raw,offset)
     if kind in (282,283):
         require(instruction&0xfc000000 == (0x14000000 if kind == 282 else 0x94000000),'Wrong original branch')
@@ -50,7 +50,10 @@ def relocation_target(raw,address,offset,kind):
     require(kind in (277,278,284,285,286,299,312),'Unsupported discovery relocation')
     require(instruction&0xffc00000 == 0x91000000 if kind == 277 else instruction&0x3b000000 == 0x39000000,'Wrong original low relocation opcode')
     base = (instruction>>5)&31
-    for high_offset in range(offset-4,-1,-4):
+    # The compiled object says which ADRP belongs to this relocation. Scanning back alone can stop
+    # at another ADRP of the same register when a cold block sits between the two.
+    paired = [h for h in sorted(high_offsets,reverse=True) if h < offset]+[h for h in sorted(high_offsets) if h > offset]
+    for high_offset in [*paired,*range(offset-4,-1,-4)]:
         high = word(raw,high_offset)
         if high&0x9f00001f == 0x90000000|base:
             immediate = ((high>>29)&3)|(((high>>5)&0x7ffff)<<2)
@@ -87,11 +90,14 @@ def recipe_for(obj,symbol,address,size,original,relative):
     raw = original.at(address,size);code,relocations = obj.method(symbol)
     require(len(code) == size,'Compiler size differs')
     recipe = dict(address=hex(address),size=size,symbol=symbol,target_sha256=digest(raw),bindings={},got_bindings={})
+    highs = {}
+    for relocation in relocations:
+        if relocation['kind'] in (275,311):highs.setdefault((relocation['symbol'],relocation['addend']),[]).append(relocation['offset'])
     for relocation in relocations:
         kind,name,offset,addend = (relocation[k]for k in ('kind','symbol','offset','addend'))
         require(kind in MASKS,'Unsupported family relocation')
         if kind in (275,311):continue
-        target = relocation_target(raw,address,offset,kind)
+        target = relocation_target(raw,address,offset,kind,highs.get((name,addend),()))
         if kind == 312:
             require(addend == 0,'Nonzero GOT addend')
             if target in relative:

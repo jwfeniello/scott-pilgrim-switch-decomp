@@ -193,23 +193,23 @@ a last exit case. Each state is checked both ways.
 ## Build profile for game classes
 
 The game-class sources (`gameplay_pickup`, `gameplay_piniata`) build with
-`-fstrict-aliasing` and `-mllvm -no-stack-coloring`:
+`-fstrict-aliasing`:
 
-- **No stack-slot sharing.** Pickup's collect function sends the same event in
-  two branches, and the original gives each branch's event payload its own stack
-  slot. Clang 8 merges the two slots unless stack coloring is off. Rebuilding
-  every other non-LTO game-region build with `-no-stack-coloring` changes only
-  two of about 17,000 credited functions, both FreeType library code. So game
-  code shows no sign of slot sharing, and Collect requires its absence.
+- **Events are empty, and that decides stack slots.** Pickup's collect function
+  sends the same event in two branches, and the original gives each branch's
+  payload its own stack slot. Other functions share a slot between two payloads.
+  Both come from one rule in LLVM 8: stack slots are only merged when a function's
+  locals total at least 16 bytes. The event payload is an empty class, as Onyx's
+  `EventEmpty` in the RTTI suggests. It is 1 byte, but AArch64 prefers 8-byte
+  alignment for aggregates, so it looks like an 8-byte slot in the code. Two of
+  them total 2 bytes and stay apart. Two 16-byte `ChangedEvent` payloads, two
+  20-byte option structs or two 12-byte vectors reach the cutoff and share a slot.
+  This repository used to model the payload as 8 bytes of data and turn stack
+  coloring off in 11 builds to make up for it. With the empty class all 433
+  functions in those builds stay exact without that flag.
 - **Strict aliasing.** The same function reuses a list's size after unlinking a
   node, which needs type-based alias analysis. All other Pickup and Piniata
   functions match either way. Other game builds keep `-fno-strict-aliasing`.
-- **Stack coloring is not settled.** BaseCharacter's slot 116 shares one stack
-  slot between two messages and an event payload, which needs stack coloring on
-  (so its build drops `-no-stack-coloring`). Pickup's collect and Enemy's slot
-  200 give each event payload its own slot, which with these sources needs it
-  off. Coloring on is the compiler default, so those two sources may not have
-  the original variable scopes yet.
 - **Exceptions are on.** The original keeps landing pads (bare `_Unwind_Resume`
   calls) where an event payload with an empty user-provided destructor is live.
   LLVM 8 cannot delete a cleanup that still holds a lifetime marker.
@@ -240,9 +240,7 @@ Two send forms appear:
 [`EventSenders.cpp`](../src/gameplay/EventSenders.cpp) matches 51 component
 methods built on these forms. Most send from a member callback/target pair with
 a constant, default-constructed or uninitialized payload; some first set or test
-a field. They build with stack coloring on, the compiler default. The value
-form's separate payloads might explain the per-branch slots that the Pickup and
-Enemy builds above get by turning coloring off. That has not been tested.
+a field.
 
 ## Pickups
 

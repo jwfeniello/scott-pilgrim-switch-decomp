@@ -1,7 +1,7 @@
 // Onyx::Graphics::Particle::Emitter::EmitterSequencer starts each emitter when the one before it ends.
 //
-// This one builds with default stack coloring, unlike ActionEvents.cpp: the two payloads below are
-// separate scoped locals and the original keeps them in one stack slot.
+// The two payloads below are separate scoped locals. Each is 16 bytes, so together they reach LLVM's
+// cutoff for merging stack slots and the original keeps them in one slot.
 #include "OnyxEvents.h"
 
 namespace onyx {
