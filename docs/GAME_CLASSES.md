@@ -869,3 +869,29 @@ Patel's slot 170, Patel's state 256, Ken & Kyle's hit check and the state
 Many boss states differ from a first draft only in the order of their cases or
 in the exit case's assumption. Trying every order of a state's cases, with and
 without the assumption, settled SuperGideon's state 186 and Todd's state 262.
+
+## ControllablePlayer stats and states
+
+[`PlayerStats.cpp`](../src/gameplay/PlayerStats.cpp) and
+[`ControllablePlayerStates.cpp`](../src/gameplay/ControllablePlayerStates.cpp) hold 21 of the
+class's methods. RTTI gives the class name; method and field names are provisional.
+
+The fields at +0x860 to +0x898 are floats, shown by the original's float loads (they
+were first declared as integers from the serializer alone). Four look like stats
+(+0x860, +0x864, +0x868, +0x86c) and the rest per-character values they scale:
+
+- `value / 100 * max(stat, 0) + 1` for multipliers (slots 58, 60, 152).
+- `low + (high - low) / 100 * max(stat, 0)`, clamped to the two ends (slots 57, 149, 150).
+
+What each stat means has not been established.
+
+The compiler's choices show how these were written:
+
+- `fmax` rather than `fmaxnm` means the maximum is `a < b ? b : a`, the form of `std::max`,
+  which passes a NaN in `a` through. Slot 151's one `fmaxnm` is the same helper with the
+  constant first, `max(1.0f, x)`.
+- The `lt` and `le` conditions in slots 64 and 65 come from plain `if`/`else` blocks that
+  the backend turned into conditional selects, not from `?:`.
+
+Slots 64 to 66 change +0x160 (health, going by how they use it), with slot 64 taking any
+remainder from +0x32c. Not matched: `State249`, which differs by one instruction's order.

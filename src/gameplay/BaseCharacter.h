@@ -137,7 +137,8 @@ struct BaseCharacter : onyx::Component {
     virtual bool Slot36Check();      // flag +0x338 and a live mount at +0x238 // slot 36
     SPTG_SLOT(37)
     virtual bool OnHit(BaseCharacter* other, void* hit);                     // slot 38
-    SPTG_SLOT(39) SPTG_SLOT(40)
+    SPTG_SLOT(39)
+    virtual float Slot40();                                                  // slot 40
     virtual void Slot41(bool a, bool b, bool c, void* data, BaseCharacter* other, float scale, float f1, float f2, float f3); // slot 41
     SPTG_SLOT(42)
     virtual void Slot43(float value);                                        // slot 43
@@ -153,9 +154,10 @@ struct BaseCharacter : onyx::Component {
     virtual bool IsHeld();                                                   // slot 55
     virtual void SetSolid(bool solid);                                       // slot 56
     virtual float Slot57();                                                  // slot 57
-    SPTG_SLOT(58)
+    virtual float Slot58(bool flag);                                         // slot 58
     virtual float Slot59();                                                  // slot 59
-    SPTG_SLOT(60) SPTG_SLOT(61) SPTG_SLOT(62) SPTG_SLOT(63)
+    virtual float Slot60();                                                  // slot 60
+    SPTG_SLOT(61) SPTG_SLOT(62) SPTG_SLOT(63)
     virtual float Slot64(float amount);                                      // slot 64
     virtual void Slot65(float amount);                                       // slot 65
     SPTG_SLOT(66) SPTG_SLOT(67)
@@ -215,7 +217,8 @@ struct BaseCharacter : onyx::Component {
     virtual bool Slot148(bool* out);                                         // slot 148
     virtual float Slot149();                                                 // slot 149
     virtual float Slot150();                                                 // slot 150
-    SPTG_SLOT(151) SPTG_SLOT(152)
+    virtual float Slot151();                                                 // slot 151
+    virtual float Slot152();                                                 // slot 152
     virtual void Slot153(uint32_t* flags);                                   // slot 153
     SPTG_SLOT(154) SPTG_SLOT(155)
     virtual bool Slot156();                                                  // slot 156
@@ -301,7 +304,7 @@ struct BaseCharacter : onyx::Component {
     int32_t value2f0;            // +0x2f0
     float base2f4;               // +0x2f4: scaled into +0x2f8
     float scaled2f8;             // +0x2f8
-    int32_t value2fc;            // +0x2fc
+    float value2fc;              // +0x2fc
     int32_t value300;            // +0x300
     int32_t value304;            // +0x304
     int32_t value308;            // +0x308
@@ -349,7 +352,9 @@ struct BaseCharacter : onyx::Component {
     uint32_t flags504;           // +0x504: bit flags
     char padding_508[0x4];
     int32_t value50c;            // +0x50c
-    char padding_510[0x4];
+    char padding_510[0x1];
+    uint8_t flag511;             // +0x511
+    char padding_512[0x2];
     float value514;              // +0x514: slot 93 switches state at or below this
     float rate518;               // +0x518: +0x328 regained per second (slot 13)
     float stunDuration;          // +0x51c
@@ -409,11 +414,67 @@ struct BaseCharacter : onyx::Component {
 static_assert(__builtin_offsetof(BaseCharacter, states) == 0x208, "BaseCharacter states");
 static_assert(__builtin_offsetof(BaseCharacter, actionMode) == 0x500, "BaseCharacter action mode");
 
+// What ControllablePlayer +0x1500 points to. Held lets the player read its bits by
+// index; the other names are provisional.
+struct PlayerInput {
+    char padding_0[0x8];
+    uint8_t flag8;       // +0x8
+    char padding_9[0x1a7];
+    uint64_t value1b0;   // +0x1b0
+    char padding_1b8[0x8];
+    uint64_t held;       // +0x1c0
+    char padding_1c8[0x8];
+    uint64_t value1d0;   // +0x1d0
+    char padding_1d8[0xc];
+    uint8_t flag1e4;     // +0x1e4
+    char padding_1e5[0xb];
+    uint16_t value1f0;   // +0x1f0
+};
 // SPTG::ControllablePlayer: its first own virtual (slot 159) receives messages.
 struct ControllablePlayer : BaseCharacter {
     void Slot4(onyx::Archive& archive, ComponentSlot::Source* source);   // slot 4 (0x978660)
     virtual void OnMessage(CharacterMessage* message);   // slot 159
+    void Notify995d50();                                 // 0x995d50
     void Notify80f430(int value);                        // 0x80f430
+    void OnHealthLost(float amount);                     // 0x995a30
+    void OnHealthChanged(float amount);                  // 0x995700
+    float Slot40() override;
+    int Slot45() override;
+    float Slot57() override;
+    float Slot58(bool flag) override;
+    float Slot59() override;
+    float Slot60() override;
+    float Slot64(float amount) override;
+    void Slot65(float amount) override;
+    void Slot66() override;
+    float Slot149() override;
+    float Slot150() override;
+    float Slot151() override;
+    float Slot152() override;
+    void Slot20() override;
+    void TurnAround() override;
+    bool Slot34Check() override;
+    void Slot43(float value) override;
+    void Slot91(float x) override;
+    int State126(int event) override;
+    int State138(int event) override;
+    SPTG_SLOT(160) SPTG_SLOT(161) SPTG_SLOT(162) SPTG_SLOT(163) SPTG_SLOT(164) SPTG_SLOT(165) SPTG_SLOT(166) SPTG_SLOT(167)
+    SPTG_SLOT(168) SPTG_SLOT(169) SPTG_SLOT(170) SPTG_SLOT(171) SPTG_SLOT(172) SPTG_SLOT(173) SPTG_SLOT(174) SPTG_SLOT(175)
+    SPTG_SLOT(176) SPTG_SLOT(177) SPTG_SLOT(178) SPTG_SLOT(179) SPTG_SLOT(180) SPTG_SLOT(181) SPTG_SLOT(182) SPTG_SLOT(183)
+    SPTG_SLOT(184) SPTG_SLOT(185) SPTG_SLOT(186) SPTG_SLOT(187) SPTG_SLOT(188) SPTG_SLOT(189) SPTG_SLOT(190) SPTG_SLOT(191)
+    SPTG_SLOT(192) SPTG_SLOT(193) SPTG_SLOT(194) SPTG_SLOT(195) SPTG_SLOT(196) SPTG_SLOT(197) SPTG_SLOT(198) SPTG_SLOT(199)
+    SPTG_SLOT(200) SPTG_SLOT(201) SPTG_SLOT(202) SPTG_SLOT(203) SPTG_SLOT(204) SPTG_SLOT(205) SPTG_SLOT(206) SPTG_SLOT(207)
+    SPTG_SLOT(208) SPTG_SLOT(209) SPTG_SLOT(210) SPTG_SLOT(211) SPTG_SLOT(212) SPTG_SLOT(213) SPTG_SLOT(214) SPTG_SLOT(215)
+    SPTG_SLOT(216) SPTG_SLOT(217) SPTG_SLOT(218) SPTG_SLOT(219) SPTG_SLOT(220) SPTG_SLOT(221) SPTG_SLOT(222) SPTG_SLOT(223)
+    SPTG_SLOT(224) SPTG_SLOT(225) SPTG_SLOT(226) SPTG_SLOT(227) SPTG_SLOT(228) SPTG_SLOT(229) SPTG_SLOT(230) SPTG_SLOT(231)
+    SPTG_SLOT(232) SPTG_SLOT(233) SPTG_SLOT(234) SPTG_SLOT(235) SPTG_SLOT(236) SPTG_SLOT(237) SPTG_SLOT(238) SPTG_SLOT(239)
+    SPTG_SLOT(240) SPTG_SLOT(241) SPTG_SLOT(242)
+    virtual int State243(int event); virtual State State243Ptr();              // slots 243, 244
+    SPTG_SLOT(245) SPTG_SLOT(246) SPTG_SLOT(247) SPTG_SLOT(248)
+    virtual int State249(int event); virtual State State249Ptr();              // slots 249, 250
+    virtual int State251(int event); virtual State State251Ptr();              // slots 251, 252
+    SPTG_SLOT(253) SPTG_SLOT(254) SPTG_SLOT(255) SPTG_SLOT(256)
+    virtual void Slot257();                                  // slot 257
 
     char padding_77c[0xc];
     void* slot788;               // +0x788
@@ -428,26 +489,27 @@ struct ControllablePlayer : BaseCharacter {
     void* slot7d0;               // +0x7d0
     onyx::ComponentHandle* handle7d8; // +0x7d8
     onyx::ComponentHandle* handle7e0; // +0x7e0
-    char padding_7e8[0x18];
+    uint8_t flag7e8;             // +0x7e8
+    char padding_7e9[0x17];
     EventSlot event800;          // +0x800
     EventSlot event818;          // +0x818
     EventSlot event830;          // +0x830
     EventSlot event848;          // +0x848
-    int32_t value860;            // +0x860
-    int32_t value864;            // +0x864
-    int32_t value868;            // +0x868
-    int32_t value86c;            // +0x86c
+    float value860;              // +0x860
+    float value864;              // +0x864
+    float value868;              // +0x868
+    float value86c;              // +0x86c
     int32_t value870;            // +0x870
-    int32_t value874;            // +0x874
-    int32_t value878;            // +0x878
-    int32_t value87c;            // +0x87c
-    int32_t value880;            // +0x880
-    int32_t value884;            // +0x884
-    int32_t value888;            // +0x888
-    int32_t value88c;            // +0x88c
-    int32_t value890;            // +0x890
-    int32_t value894;            // +0x894
-    int32_t value898;            // +0x898
+    float value874;              // +0x874
+    float value878;              // +0x878
+    float value87c;              // +0x87c
+    float value880;              // +0x880
+    float value884;              // +0x884
+    float value888;              // +0x888
+    float value88c;              // +0x88c
+    float value890;              // +0x890
+    float value894;              // +0x894
+    float value898;              // +0x898
     int32_t value89c;            // +0x89c
     int32_t value8a0;            // +0x8a0
     int32_t value8a4;            // +0x8a4
@@ -545,7 +607,7 @@ struct ControllablePlayer : BaseCharacter {
     int32_t value12a8;           // +0x12a8
     int32_t value12ac;           // +0x12ac
     int32_t value12b0;           // +0x12b0
-    int32_t value12b4;           // +0x12b4
+    float value12b4;             // +0x12b4
     int32_t value12b8;           // +0x12b8
     char padding_12bc[0x4];
     int32_t value12c0;           // +0x12c0
@@ -585,7 +647,20 @@ struct ControllablePlayer : BaseCharacter {
     int32_t value13a4;           // +0x13a4
     int32_t value13a8;           // +0x13a8
     int32_t value13ac;           // +0x13ac
-    char padding_13b0[0x11c];
+    char padding_13b0[0x1];
+    uint8_t flag13b1;            // +0x13b1
+    char padding_13b2[0xf];
+    uint8_t flag13c1;            // +0x13c1
+    char padding_13c2[0x16];
+    float value13d8;             // +0x13d8
+    char padding_13dc[0x34];
+    float value1410;             // +0x1410
+    int32_t value1414;           // +0x1414
+    char padding_1418[0x4];
+    int32_t value141c;           // +0x141c
+    char padding_1420[0xc];
+    float value142c[6];          // +0x142c
+    char padding_1444[0x88];
     int32_t value14cc;           // +0x14cc
     int32_t value14d0;           // +0x14d0
     int32_t value14d4;           // +0x14d4
@@ -595,11 +670,15 @@ struct ControllablePlayer : BaseCharacter {
     int32_t value14e4;           // +0x14e4
     char padding_14e8[0x8];
     int32_t value14f0;           // +0x14f0
-    char padding_14f4[0x24];
+    char padding_14f4[0xc];
+    PlayerInput* input;          // +0x1500
+    char padding_1508[0x10];
     int32_t value1518;           // +0x1518
     int32_t value151c;           // +0x151c
     uint8_t flag1520;            // +0x1520
-    char padding_1521[0x3f];     // up to +0x1560, where the playable classes' fields begin
+    char padding_1521[0x4];
+    uint8_t flag1525;            // +0x1525
+    char padding_1526[0x3a];     // up to +0x1560, where the playable classes' fields begin
 };
 static_assert(sizeof(ControllablePlayer) == 0x1560, "ControllablePlayer size");
 // A character that passes IsA(0x2f2bf4aa) (registered as Onyx::Component::Bucket)
