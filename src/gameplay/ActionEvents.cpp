@@ -13,6 +13,11 @@
 // (a method sending two events with the first payload above the second), the payloads are locals
 // of the method. This file builds with stack coloring off, as the state handlers do: with it on,
 // payloads in separate branches share a slot, and the original keeps them apart.
+//
+// That flag stands in for something not yet identified. EmitterSequencer.cpp matches only with
+// coloring on, because two named scoped payloads share a slot there, so the original compiler did
+// color. What keeps these event payloads apart is probably how they are created; passing the event
+// by value gives the right slots but not the right block layout.
 #include "BaseCharacter.h"
 #include "OnyxEvents.h"
 
@@ -1404,6 +1409,485 @@ void WeakSwitch::Send(bool value) {
     if (!x) return;
     if (!value) onyx::SendEvent<0x584ca479u>(x->falseCallback, x->falseTarget);
     else onyx::SendEvent<0xcc5dbbcu>(x->trueCallback, x->trueTarget);
+}
+
+// Onyx::MenuEventScheme and the menu it drives. The menu class has no name of its own here: its
+// methods are not in any vtable.
+struct MenuItem {
+    char padding_0[0x50];
+    EventCallback* focusedCallback;     // +0x50
+    EventTarget* focusedTarget;         // +0x58
+    char padding_60[8];
+    EventCallback* unfocusedCallback;   // +0x68
+    EventTarget* unfocusedTarget;       // +0x70
+    char padding_78[0x20];
+    EventCallback* releaseCallback;     // +0x98
+    EventTarget* releaseTarget;         // +0xa0
+};
+struct FocusChange { MenuItem* item; void* source; ~FocusChange() {} };
+struct ItemPayload { MenuItem* item; ~ItemPayload() {} };
+struct MenuListener : onyx::Component {
+    virtual void S3(); virtual void S4(); virtual void S5(); virtual void S6(); virtual void S7(); virtual void S8(); virtual void S9(); virtual void S10(); virtual void S11(); virtual void S12();
+    virtual void Focused(FocusChange* change);  // slot 13
+    virtual void Blurred(FocusChange* change);  // slot 14
+    char padding_8[0x30];
+    uint8_t flags;                              // +0x38
+};
+struct Menu {
+    char padding_0[0x78];
+    uint64_t listenerCount;     // +0x78
+    ComponentHandle** listeners;// +0x80
+    char padding_88[0x38];
+    MenuItem* current;          // +0xc0
+    void* currentSource;        // +0xc8
+    void ClearCurrent(void* source);
+    void SetCurrent(MenuItem* item, void* source);
+};
+void Menu::ClearCurrent(void* source) {
+    FocusChange change;
+    if (currentSource) {
+        change.item = current;
+        change.source = source;
+        uint32_t n = static_cast<uint32_t>(listenerCount);
+        if (n) {
+            uint64_t i = 0;
+            do {
+                MenuListener* x = onyx::Peek<MenuListener>(listeners[i]);
+                if (x && (x->flags & 1)) x->Blurred(&change);
+                ++i;
+            } while (i < n);
+        }
+        currentSource = nullptr;
+    }
+    MenuItem* item = current;
+    if (item) {
+        change.item = item;
+        change.source = source;
+        onyx::SendEvent<0x7b6cac53u>(item->unfocusedCallback, item->unfocusedTarget, change);
+        current = nullptr;
+    }
+}
+void Menu::SetCurrent(MenuItem* item, void* source) {
+    if (current == item) return;
+    ClearCurrent(source);
+    FocusChange change;
+    change.item = item;
+    change.source = nullptr;
+    onyx::SendEvent<0x37d20937u>(item->focusedCallback, item->focusedTarget, change);
+    change.item = item;
+    change.source = source;
+    uint32_t n = static_cast<uint32_t>(listenerCount);
+    if (n) {
+        uint64_t i = 0;
+        do {
+            MenuListener* x = onyx::Peek<MenuListener>(listeners[i]);
+            if (x && (x->flags & 1)) x->Focused(&change);
+            ++i;
+        } while (i < n);
+    }
+    currentSource = source;
+    current = item;
+}
+struct MenuEventScheme {
+    char padding_0[0xf0];
+    uint32_t state;             // +0xf0
+    uint32_t parameter;         // +0xf4
+    bool pressed;               // +0xf8
+    MenuItem* item;             // +0x100
+    void Release();
+    void Select(Menu* menu, MenuItem* target);
+};
+void MenuEventScheme::Release() {
+    if (pressed) {
+        MenuItem* it = item;
+        ItemPayload payload{it};
+        onyx::SendEvent<0xf3d0b0cu>(it->releaseCallback, it->releaseTarget, payload);
+        pressed = false;
+    }
+}
+void MenuEventScheme::Select(Menu* menu, MenuItem* target) {
+    if (target) {
+        menu->SetCurrent(target, this);
+        return;
+    }
+    if (pressed) {
+        MenuItem* it = item;
+        ItemPayload payload{nullptr};
+        onyx::SendEvent<0xf3d0b0cu>(it->releaseCallback, it->releaseTarget, payload);
+        pressed = false;
+    }
+    state = 0;
+    parameter = 0;
+}
+
+struct EmitterChild : onyx::Component {
+    virtual void S3(); virtual void S4(); virtual void S5(); virtual void S6(); virtual void S7(); virtual void S8(); virtual void S9(); virtual void S10(); virtual void S11(); virtual void S12();
+    virtual void Attached();                // slot 13
+    char padding_8[0x58];
+    void* owner;                            // +0x60
+};
+struct EmitterOwner {
+    char padding_0[0x40];
+    ComponentHandle* listener;              // +0x40
+    char padding_48[0x10];
+    ComponentHandle* child;                 // +0x58
+    void Attach();
+};
+void EmitterOwner::Attach() {
+    EmitterChild* x = onyx::Lookup<EmitterChild, 1125278855u>(child);
+    if (x) {
+        x->owner = this;
+        x->Attached();
+    }
+    ComponentHandle* to = listener;
+    ChangedEvent payload{this, this};
+    Event_Notify(Accessor_Tracking, to, GraphicsChanged, reinterpret_cast<onyx::EventPayload*>(&payload));
+}
+
+// Onyx::Gameplay::Circuits::F32CurveValuePublisherCircuit plays a curve and publishes its value.
+struct F32Range { float low, high; };
+struct F32Curve { virtual void S0(); virtual void S1(); virtual float Evaluate(float t); virtual F32Range Range(); };
+struct FloatPayload { float value; ~FloatPayload() {} };
+struct F32CurveValuePublisherCircuit {
+    char padding_0[0x50];
+    EventCallback* callback;    // +0x50
+    EventTarget* target;        // +0x58
+    char padding_60[0x20];
+    F32Curve* curve;            // +0x80
+    float time;                 // +0x88
+    bool loops;                 // +0x8c
+    void Update();
+};
+void F32CurveValuePublisherCircuit::Update() {
+    if (!curve) return;
+    F32Range range = curve->Range();
+    float t = FrameDelta + time;
+    bool loop = loops;
+    time = t;
+    if (loop) {
+        if (t > range.high) {
+            float span = range.high - range.low;
+            do t -= span; while (t > range.high);
+            time = t;
+        }
+    } else {
+        t = Clamp(t, range.low, range.high);
+        time = t;
+    }
+    FloatPayload payload{curve->Evaluate(t)};
+    onyx::SendEvent<0x51404a1eu>(callback, target, payload);
+}
+
+// Compose<TimedVisualEffect, ...> runs until its time is up.
+struct TimedVisualEffect {
+    virtual void S0(); virtual void S1(); virtual void S2(); virtual void S3(); virtual void S4(); virtual void S5(); virtual void S6(); virtual void S7(); virtual void S8(); virtual void S9();
+    virtual void S10(); virtual void S11(); virtual void S12(); virtual void S13(); virtual void S14(); virtual void S15();
+    virtual void Stop();        // slot 16
+    virtual void S17(); virtual void S18();
+    virtual void Apply();       // slot 19
+    char padding_8[0x78];
+    bool active;                // +0x80
+    EventCallback* callback;    // +0x88
+    EventTarget* target;        // +0x90
+    char padding_98[8];
+    float elapsed;              // +0xa0
+    float duration;             // +0xa4
+    void Update();
+};
+void TimedVisualEffect::Update() {
+    if (!active) return;
+    float t = FrameDelta + elapsed;
+    elapsed = t;
+    float limit = duration;
+    if (t >= limit && limit != 0.0f) {
+        Stop();
+        onyx::SendEvent<0x2853a9fcu>(callback, target);
+        if (!active) return;
+    }
+    Apply();
+}
+
+// Onyx::AnyKeyInputTrigger fires when any pad holds any key but the one left out of the mask.
+struct InputPad { virtual void S0(); virtual void S1(); virtual void S2(); virtual void S3(); virtual void S4(); virtual void S5(); virtual void S6(); virtual void S7(); virtual void S8(); virtual void S9();
+    virtual void S10(); virtual void S11(); virtual void S12(); virtual void S13(); virtual void S14(); virtual void S15(); virtual void S16(); virtual void S17(); virtual void S18(); virtual void S19();
+    virtual void S20(); virtual void S21(); virtual void S22(); virtual void S23(); virtual void S24(); virtual void S25(); virtual void S26(); virtual void S27(); virtual void S28(); virtual void S29();
+    virtual void S30(); virtual void S31(); virtual void S32(); virtual void S33(); virtual void S34(); virtual void S35(); virtual void S36(); virtual void S37(); virtual void S38(); virtual void S39();
+    virtual void S40(); virtual void S41(); virtual void S42(); virtual void S43(); virtual void S44(); virtual void S45(); virtual void S46(); virtual void S47(); virtual void S48(); virtual void S49();
+    virtual void S50(); virtual void S51(); virtual void S52(); virtual void S53(); virtual void S54(); virtual void S55(); virtual void S56(); virtual void S57(); virtual void S58(); virtual void S59();
+    virtual void S60(); virtual void S61(); virtual void S62(); virtual void S63(); virtual void S64(); virtual void S65(); virtual void S66();
+    virtual bool KeyDown(uint32_t key);     // slot 67
+};
+struct PadSlot { InputPad** pad; void* padding; };
+struct InputSystem { char padding_0[0x18]; uint64_t count; PadSlot* slots; };
+extern InputSystem* Input;
+struct AnyKeyInputTrigger {
+    char padding_0[0x50];
+    EventCallback* callback;    // +0x50
+    EventTarget* target;        // +0x58
+    void Update();
+};
+void AnyKeyInputTrigger::Update() {
+    InputSystem* input = Input;
+    uint32_t keys = 0;
+    for (uint32_t key = 0; key != 27; ++key) {
+        uint32_t held = 0;
+        for (uint64_t i = 0; i < 32; ++i) {
+            if (input->count <= i) break;
+            if (static_cast<uint32_t>(i) <= 15) {
+                InputPad** pad = input->slots[i].pad;
+                if (pad && *pad) {
+                    uint32_t bit = 1u << i;
+                    held |= (*pad)->KeyDown(key) ? bit : 0;
+                }
+            }
+        }
+        uint32_t bit = 1u << key;
+        keys = held ? keys | bit : keys & ~bit;
+    }
+    if (keys & 0xfffffdffu) onyx::SendEvent<0x6201e15u>(callback, target);
+}
+
+// SPTG::MoveIconInWorldMapAction moves an icon along a straight line.
+typedef onyx::Vector3 MapPosition;
+inline MapPosition operator+(const MapPosition& a, const MapPosition& b) { return MapPosition(a.x + b.x, a.y + b.y, a.z + b.z); }
+struct MoveIconInWorldMapAction {
+    char padding_0[0x80];
+    EventCallback* callback;    // +0x80
+    EventTarget* target;        // +0x88
+    char padding_90[8];
+    bool active;                // +0x98
+    char padding_99[0x4b];
+    MapPosition from;           // +0xe4
+    MapPosition to;             // +0xf0
+    float elapsed;              // +0xfc
+    float duration;             // +0x100
+    void Update();
+    void MoveIcon(const MapPosition& position);
+};
+void MoveIconInWorldMapAction::Update() {
+    if (!active) return;
+    float t = GameDelta + elapsed;
+    elapsed = t;
+    float end = duration;
+    MapPosition position;
+    if (t < end) {
+        position = from + ((to - from) * t) / end;
+        MoveIcon(position);
+        return;
+    }
+    MoveIcon(to);
+    onyx::EventPayload fired;
+    onyx::SendEvent<ActionFinished>(callback, target, fired);
+}
+
+// SPTG::WaitForAllPickupsCollected finishes when no pickup of its kind is left.
+struct LevelPickup { char padding_0[0x220]; int32_t kind; };
+struct PickupList : onyx::Component { char padding_8[0x78]; uint64_t count; char padding_88[8]; LevelPickup** items; };
+struct WaitForAllPickupsCollected {
+    char padding_0[0x80];
+    EventCallback* callback;    // +0x80
+    EventTarget* target;        // +0x88
+    char padding_90[0x10];
+    ComponentHandle* pickups;   // +0xa0
+    int32_t kind;               // +0xa8
+    char padding_ac;
+    bool done;                  // +0xad
+    void Update();
+};
+void WaitForAllPickupsCollected::Update() {
+    PickupList* list = onyx::Get<PickupList, 1900011522u>(pickups);
+    LevelPickup** begin = list->items;
+    uint64_t count = list->count;
+    LevelPickup** it = begin;
+    LevelPickup** end = begin + count;
+    if (count) {
+        do {
+            if ((*it)->kind == kind) break;
+            ++it;
+        } while (it != end);
+    }
+    if (it == end) {
+        done = true;
+        onyx::SendEvent<ActionFinished>(callback, target);
+    }
+}
+
+// SPTG::WorldClearAction records a cleared world on the current player's save.
+struct ClearRecord : onyx::Component { char padding_8[0x5c]; uint32_t cleared; uint32_t unlocked; };
+struct ClearPlayer : onyx::Component {
+    char padding_8[0x7d0];
+    ComponentHandle* record;    // +0x7d8
+    char padding_7e0[0xd28];
+    int32_t id;                 // +0x1508
+};
+struct ClearPlayers : onyx::Component { char padding_8[0x78]; uint64_t count; char padding_88[8]; ClearPlayer** items; };
+struct ClearLevel { char padding_0[0xa0]; ComponentHandle* players; };
+struct ClearSession { char padding_0[0x1828]; int32_t player; };
+extern uint8_t DisableProgress;
+struct WorldClearAction {
+    char padding_0[0x80];
+    EventCallback* callback;    // +0x80
+    EventTarget* target;        // +0x88
+    char padding_90[0x10];
+    void* session;              // +0xa0
+    void* level;                // +0xa8
+    uint32_t world;             // +0xb0
+    void Start();
+};
+void WorldClearAction::Start() {
+    ComponentHandle*& players = SingletonGet<ClearLevel>(&level)->players;
+    ClearPlayers* list = onyx::Get<ClearPlayers, 200583607u>(players);
+    if (list->count) {
+        ClearPlayer** it = list->items;
+        for (;;) {
+            if ((*it)->id == SingletonGet<ClearSession>(&session)->player) break;
+            if (++it == list->items + list->count) goto finish;
+        }
+        {
+            ClearRecord* record = onyx::Lookup<ClearRecord, 1180775934u>((*it)->record);
+            if (!(DisableProgress & 1)) {
+                uint32_t w = world;
+                record->cleared |= 1u << w;
+                if (w <= 11) record->unlocked |= 1u << (w + 1);
+            }
+        }
+    }
+finish:
+    onyx::SendEvent<ActionFinished>(callback, target);
+}
+
+// SPTG::CheckPointCatalog leaves the checkpoint it is on.
+struct CheckPointManager;
+void CheckPointLeave(CheckPointManager* manager, onyx::Component* object, int a);
+struct CheckPointEntry {
+    char padding_0[0x50];
+    ComponentHandle* object;    // +0x50
+    void* manager;              // +0x58
+    EventCallback* callback;    // +0x60
+    EventTarget* target;        // +0x68
+    char padding_70[8];
+    int32_t id;                 // +0x78
+};
+struct CheckPointCatalog {
+    char padding_0[0x80];
+    uint64_t count;             // +0x80
+    char padding_88[8];
+    CheckPointEntry** items;    // +0x90
+    char padding_98[8];
+    int32_t current;            // +0xa0
+    void Leave();
+};
+void CheckPointCatalog::Leave() {
+    int32_t id = current;
+    if (id == -1) return;
+    uint64_t n = count;
+    if (!n) return;
+    CheckPointEntry** it = items;
+    CheckPointEntry** end = it + n;
+    CheckPointEntry* entry;
+    for (;;) {
+        entry = *it++;
+        if (id == entry->id) break;
+        if (it == end) return;
+    }
+    if (entry->object && entry->object->object) {
+        onyx::Component* object = entry->object->object;
+        CheckPointLeave(SingletonGet<CheckPointManager>(&entry->manager), object, 0);
+    }
+    onyx::SendEvent<0x52feacd1u>(entry->callback, entry->target);
+    current = -1;
+}
+
+// SPTG::LeaderboardAgency tells the board once its queue has drained.
+struct LeaderboardQueue : onyx::Component {
+    char padding_8[0x118];
+    uint64_t busy;              // +0x120
+    char padding_128[0x10];
+    uint64_t head;              // +0x138
+    uint64_t tail;              // +0x140
+    char padding_148[8];
+    uint64_t capacity;          // +0x150
+};
+struct LeaderboardOwner : onyx::Component {
+    char padding_8[0x90];
+    EventCallback* callback;    // +0x98
+    EventTarget* target;        // +0xa0
+};
+struct LeaderboardAgency {
+    char padding_0[0x58];
+    ComponentHandle* owner;     // +0x58
+    ComponentHandle* queue;     // +0x60
+    char padding_68[8];
+    bool waiting;               // +0x70
+    void Update(uint8_t mode);
+};
+void LeaderboardAgency::Update(uint8_t mode) {
+    if (!(mode & 3)) return;
+    LeaderboardQueue* q = onyx::Lookup<LeaderboardQueue, 1496058556u>(queue);
+    if (q->busy) return;
+    uint64_t head = q->head;
+    uint64_t tail = q->tail;
+    uint64_t size = tail >= head ? tail - head : q->capacity - head + tail;
+    if (size || !waiting) return;
+    waiting = false;
+    LeaderboardOwner* x = onyx::Lookup<LeaderboardOwner, 119343446u>(owner);
+    onyx::SendEvent<0x790d3284u>(x->callback, x->target);
+}
+
+// SPTG::TitleScreen clears the input it recorded, then says so.
+struct RecordedInput {
+    char padding_0[0xa8];
+    uint32_t count;             // +0xa8
+    char padding_ac[0x400];
+    char padding_4ac[0x108];
+    char marks[0x80];           // +0x5b4
+};
+struct TitleScreen {
+    char padding_0[0x1f8];
+    EventCallback* callback;    // +0x1f8
+    EventTarget* target;        // +0x200
+    char padding_208[0xc0];
+    void* recorded;             // +0x2c8
+    void Clear();
+};
+void TitleScreen::Clear() {
+    RecordedInput* input = SingletonGet<RecordedInput>(&recorded);
+    if (input->count) {
+        __builtin_memset(input->marks, 0, sizeof input->marks);
+        __builtin_memset(&input->count, 0, 0x404);
+    }
+    onyx::SendEvent<0x48acec0fu>(callback, target);
+}
+
+// A console command that fires an event.
+struct ConsoleReply { ConsoleReply(const char* text); char data[0x20]; };
+struct ConsoleEventCommand {
+    char padding_0[0x50];
+    EventCallback* callback;    // +0x50
+    EventTarget* target;        // +0x58
+    ConsoleReply Run();
+};
+ConsoleReply ConsoleEventCommand::Run() {
+    onyx::SendEvent<0x2e900d26u>(callback, target);
+    return ConsoleReply("Done.");
+}
+
+// The name is a stand-in; this forwards an integer to a singleton's event.
+struct ValueReceiver {
+    char padding_0[0x68];
+    EventCallback* callback;    // +0x68
+    EventTarget* target;        // +0x70
+};
+struct IntPayload { int32_t value; ~IntPayload() {} };
+struct ValueForwarder {
+    char padding_0[0x50];
+    void* receiver;             // +0x50
+    void Forward(int32_t* value);
+};
+void ValueForwarder::Forward(int32_t* value) {
+    ValueReceiver* x = SingletonGet<ValueReceiver>(&receiver);
+    IntPayload payload{*value};
+    onyx::SendEvent<0x4e51bd4fu>(x->callback, x->target, payload);
 }
 
 }  // namespace SPTG

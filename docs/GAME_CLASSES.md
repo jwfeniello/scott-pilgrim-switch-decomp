@@ -935,3 +935,13 @@ where the original jumps straight past it.
 
 Writing these by hand from the decompiler has a high hit rate compared with the earlier state
 handlers: most match on the first or second try, and the misses are usually a field offset.
+
+### Menus and timers
+
+- `Onyx::MenuEventScheme` holds the item it acts on at +0x100 and whether it is pressed at +0xf8. Releasing sends 0xf3d0b0c with the item as payload, or with no item when a scheme is cleared by selecting nothing.
+- The menu it drives keeps the current item at +0xc0 and what selected it at +0xc8. Changing item blurs the old one, tells it, focuses the new one and tells each listener through virtual slots 13 and 14. Listeners only hear this when bit 0 of their flags at +0x38 is set. The payload in all of these is the item and the source.
+- `SPTG::LeaderboardAgency` waits for a ring buffer to drain: the size is `tail >= head ? tail - head : capacity - head + tail`.
+- `Onyx::AnyKeyInputTrigger` scans 27 keys over the first 16 of up to 32 pad slots and ignores key 9.
+- `SPTG::WorldClearAction` finds the session's current player and sets the cleared bit for the world, plus the unlocked bit for the next world up to world 12. Both are skipped when the global at 0x1924CB0 is set.
+
+Two near misses are left out on purpose. `Onyx::AnimaticInstance::Update` (0xaf5b10) has a second landing pad around its restart call, so something with a destructor lives across that call and nothing visible uses it. `SPTG::TimerAction::Update` (0x8f68f0) differs only in the order of three instructions in two blocks.
