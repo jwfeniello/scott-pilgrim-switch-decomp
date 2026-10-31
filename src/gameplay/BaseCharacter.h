@@ -169,7 +169,7 @@ struct BaseCharacter : onyx::Component {
     virtual bool Slot73();                                                   // slot 73
     virtual void Slot74(const float* point, bool flag, float value);         // slot 74
     virtual void Slot75(void* data, void* extra);                            // slot 75
-    SPTG_SLOT(76)
+    virtual void Slot76();                                                   // slot 76
     virtual float Slot77();                                                  // slot 77
     SPTG_SLOT(78)
     virtual bool Slot79();                                                   // slot 79
@@ -180,7 +180,8 @@ struct BaseCharacter : onyx::Component {
     SPTG_SLOT(84)
     virtual bool Slot85();                                                   // slot 85
     virtual void Slot86();                                                   // slot 86
-    SPTG_SLOT(87) SPTG_SLOT(88)
+    virtual void Slot87(void* data, bool a, bool b, BaseCharacter* other);   // slot 87
+    virtual bool Slot88(float amount);                                       // slot 88
     virtual void Slot89(float amount);                                       // slot 89
     virtual void Slot90(float value);                                        // slot 90
     virtual void Slot91(float x);                                            // slot 91
@@ -453,6 +454,10 @@ struct ControllablePlayer : BaseCharacter {
     float Slot151() override;
     float Slot152() override;
     void Slot20() override;
+    void Slot76() override;
+    void Slot87(void* data, bool a, bool b, BaseCharacter* other) override;
+    bool Slot88(float amount) override;
+    int State114(int event) override;
     void TurnAround() override;
     bool Slot34Check() override;
     void Slot43(float value) override;
@@ -708,9 +713,12 @@ struct ControllablePlayer : BaseCharacter {
     char padding_14e8[0x8];
     int32_t value14f0;           // +0x14f0
     int32_t value14f4;           // +0x14f4
-    char padding_14f8[0x8];
+    char padding_14f8[0x1];
+    uint8_t flag14f9;            // +0x14f9
+    char padding_14fa[0x6];
     PlayerInput* input;          // +0x1500
-    char padding_1508[0x10];
+    uint32_t playerIndex;        // +0x1508
+    char padding_150c[0xc];
     int32_t value1518;           // +0x1518
     int32_t value151c;           // +0x151c
     uint8_t flag1520;            // +0x1520

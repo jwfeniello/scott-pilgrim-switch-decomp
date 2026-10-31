@@ -1,9 +1,9 @@
 {
   "version": 1,
-  "generated_at": "2026-10-31T20:22:03.233223+00:00",
+  "generated_at": "2026-10-31T20:36:49.589267+00:00",
   "target_elf_sha256": "ea95638e6d6aaa0dc6cddd552a9366799aa1ec3bc07ee201f23f6c151103f5b8",
   "input_sha256": {
-    "config/builds.json": "c4916d1043fe7166bc501826c9cd129cf2a41d7cc186b7b20cae92d5b4da8ef0",
+    "config/builds.json": "3f3e08ef6f65304f6f1396a57b53dd47993afe25bd5d9d810ec3776a1539c4d0",
     "config/functions.tsv": "399e91468a04e0459194c10d68d2210d1157cedefeb19c7851886ca7632fcb18",
     "config/non_fde_functions.tsv": "6a45f5e185454fa0472af00b2cdc9d040d73ca133d1106217e1fbbe3b32a8175",
     "config/target.json": "23cc6a5227206a953e7668acf5e9ae5c02a25c23b7e7967f0450a814b888241a",
@@ -43,6 +43,7 @@
     "src/ComponentAccessor.cpp": "09d0b81df3abcacb946f49ed1ed87ab840ee0656bb6f792fd65d25660eabb260",
     "src/ComponentEventReader.cpp": "8ba855c3269dae4b06f76f96f0e6e5b59ff9235a3c43d089bcaf91ef43b68d6a",
     "src/ComponentEventSubscribe.cpp": "63586533cddc6e328063e9d1c2591e77b05a6114f99d84a22f953cfb7841fa50",
+    "src/ComponentEventUnsubscribe.cpp": "ca45bc437a79b39ae3aaf3f8d3f9bc628291df54de8b3b6bca89dab7230f8532",
     "src/ComponentInitializeSlots.cpp": "55cc1e5fc9899d4c44bf24cb4bb59c672fb325bec27fd578c36f881ec57dad1d",
     "src/ComponentMapCollectByKey.h": "ca433de3cf62b21dd59fa5e5a01fc30d37b1699e37e73aa98443f2fefe0fcd28",
     "src/ComponentMapCollectByKeyOmitNoPic.cpp": "6abf134637aa321dfb23146709cedbf7e4abf97f6855b6e321dc5c52c2f30284",
@@ -1092,7 +1093,7 @@
     "src/gameplay/Archive.h": "fb90a7676c2af179940a461fd2f746753d4dc1c638332f911b7d191ae563af17",
     "src/gameplay/Assert.h": "e8ad90fa17cd27c0eefb31341b98ee091197fb3aeb84363fb473339d67770dcc",
     "src/gameplay/BaseCharacter.cpp": "c174a5d2e3f7afa44b737aadf2ef8102c2a2a1e7786b4e0537843827eab075f2",
-    "src/gameplay/BaseCharacter.h": "731eecca3eb2429cf91f962a39ebe66ad7ff539f29a94ae22f7ef24ccaf07859",
+    "src/gameplay/BaseCharacter.h": "a1180826490d172a43fbe287b1eb8c0ddaa4e13ecab34e36de1d713c462fa7a2",
     "src/gameplay/BaseCharacterStates.cpp": "ba2cb9989d90ff3231471ff3d1be9d44fdab4286b0970189d851216be55de7ac",
     "src/gameplay/Boss.h": "5bce9fad6a7da01a83bcefa05026e1a340c2a3cc8ada69888c51c90fd7834904",
     "src/gameplay/BossClassStates.cpp": "f8dacbe4e6c8dcb48b4696cd9a3349ee002e4f420f952d565c25efdfdc07642a",
@@ -1121,6 +1122,7 @@
     "src/gameplay/PlayerAttackStates.cpp": "d087947752dfa248bee6ed4d66d1bbd48a35281a32c4647d0c861e19138eb45d",
     "src/gameplay/PlayerClasses.cpp": "29ab5a08e06729a8289207e0fcd82c4fd068aa738e2899560c15776bf42e5898",
     "src/gameplay/PlayerClasses.h": "d99afe6152392cc15844429e88d05af3a6a4d338af5db9e08ccd26d457113ddb",
+    "src/gameplay/PlayerOverrides.cpp": "ae21d7389a7e679a9ef9a6cdbfb28e4b182a5752a0ed7c3b9d72f486b02f121c",
     "src/gameplay/PlayerStates.cpp": "a622b65b976d7ab11a2e17e45f597e6d1f5ef7670677545bbea50d95e40e7712",
     "src/gameplay/PlayerStats.cpp": "3e6c385f96cb4f95ca8b84cdeded83fee39d6f1dc6d7bab3f054f4ed0fd98ce5",
     "src/gameplay/Random.h": "5e343748d9efadc76cd3b008c9cf5d5a87c7756feefdcb5eadac5bc9f29b0d5c",
@@ -3949,17 +3951,17 @@
     "vendor/zlib-1.2.11/zutil.h": "9a63f6690fac1620aa3cecee5752af618806da438a256b4a047fbcd289cac159"
   },
   "compiler_versions": {
-    "7.0.1": "clang version 7.0.1 (tags/RELEASE_701/final)",
     "8.0.1": "clang version 8.0.1 (tags/RELEASE_801/final)",
+    "7.0.1": "clang version 7.0.1 (tags/RELEASE_701/final)",
     "lld": "LLD 8.0.1 (compatible with GNU linkers)"
   },
   "compiler_sha256": {
-    "7.0.1": "c2f0a175157d9aaace8031f8e6d7ea0ed6142b4bcef287105e3ed227301f1002",
     "8.0.1": "dffd62a213ec6cdb4430012a4a41c11e5e32c288f133d5391f9be49e1c5b69de",
+    "7.0.1": "c2f0a175157d9aaace8031f8e6d7ea0ed6142b4bcef287105e3ed227301f1002",
     "lld": "c4b3aaea06ff7112c64753047a2ab279fc3fe10dd807fd3c22edfdae99f43eed"
   },
-  "exact_functions": 34672,
-  "exact_bytes": 4361816,
+  "exact_functions": 34685,
+  "exact_bytes": 4366952,
   "builds": [
     {
       "id": "probes",
@@ -13114,17 +13116,17 @@
     {
       "id": "gameplay_boss_classes",
       "compiler": "8.0.1",
-      "object_sha256": "a8d292169c95d65d1c67bca6a97455b6f3fb8f04febc9a54cfc461a8484e7053"
+      "object_sha256": "9b1cd37902bef522a88e8d6d3a3835107ea71363d9e5a6de298399d6420b35f5"
     },
     {
       "id": "gameplay_enemy_classes",
       "compiler": "8.0.1",
-      "object_sha256": "dc4cd92911cfe771158dbb75053d74dab67e0a108c288374d82b6223143d9de9"
+      "object_sha256": "602dc66701ec83c19902fcf6d2ea2bdb5b92be34f866d2b7f42ad2d825d3d15b"
     },
     {
       "id": "gameplay_player_classes",
       "compiler": "8.0.1",
-      "object_sha256": "a6769bde5e12f78ab033cf9e436bf6e2d3c626da6834e47a4361daa88ebe9fe5"
+      "object_sha256": "336499f532f40810c32124b1ddc3098e6b9dd494d6463dfadbc3c564a74c9621"
     },
     {
       "id": "gameplay_basecharacter",
@@ -13144,7 +13146,7 @@
     {
       "id": "gameplay_class_serialize",
       "compiler": "8.0.1",
-      "object_sha256": "6cfdabe4ee6f5cafda21a0a57c73d58fe9ba60dc927e1193c9e7a1bb6b10f54a"
+      "object_sha256": "1060be084249282f077dee52b3a3a844a6d8567348e4c4ecf6338456eebcdb41"
     },
     {
       "id": "gameplay_onyx_serialize",
@@ -13190,6 +13192,16 @@
       "id": "gameplay_player_attack_states",
       "compiler": "8.0.1",
       "object_sha256": "57740de1fe453bd1b418cdf610b3d038b00a17d5fa21fd60d360189cc435af72"
+    },
+    {
+      "id": "gameplay_player_overrides",
+      "compiler": "8.0.1",
+      "object_sha256": "dd9b21bf866d0afc3309021d7043571e0dc6dec23b6326af7e689ba7a9fba77d"
+    },
+    {
+      "id": "component_event_unsubscribe",
+      "compiler": "8.0.1",
+      "object_sha256": "f615b68202ab4b8727a438fc2a1ba45e55c65e68bbf55b0bd5e22abd4d3c5152"
     }
   ],
   "matches": [
@@ -201052,6 +201064,17 @@
       "relocation_count": 8
     },
     {
+      "address": "0x69f630",
+      "size": 488,
+      "exact": true,
+      "target_sha256": "91a863dd8c7bd6e105e5a54a0a143ff001324c2ec7fd1fa1b3c7930998bc067a",
+      "compiled_sha256": "91a863dd8c7bd6e105e5a54a0a143ff001324c2ec7fd1fa1b3c7930998bc067a",
+      "source": "src/ComponentEventUnsubscribe.cpp",
+      "symbol": "_ZN17ListenerComponentILj6944304EE10FromGlobalILb0ELj320ELj1EEEvv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 25
+    },
+    {
       "address": "0x69f940",
       "size": 12,
       "exact": true,
@@ -202691,6 +202714,17 @@
       "relocation_count": 0
     },
     {
+      "address": "0x6b9ea0",
+      "size": 488,
+      "exact": true,
+      "target_sha256": "8f18f13cb0d8134773747a0ebf13b55b48f3bce9467d2a6f6acfe938e13a28a6",
+      "compiled_sha256": "8f18f13cb0d8134773747a0ebf13b55b48f3bce9467d2a6f6acfe938e13a28a6",
+      "source": "src/ComponentEventUnsubscribe.cpp",
+      "symbol": "_ZN17ListenerComponentILj7052960EE10FromGlobalILb0ELj320ELj1EEEvv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 25
+    },
+    {
       "address": "0x6ba320",
       "size": 372,
       "exact": true,
@@ -202997,6 +203031,17 @@
       "symbol": "_Z20MatchesTwoIdentitiesILj7096608ELj783549709ELj129449108EEbPvj",
       "source_review": "manual_reconstruction",
       "relocation_count": 0
+    },
+    {
+      "address": "0x6c8ea0",
+      "size": 488,
+      "exact": true,
+      "target_sha256": "1e56f59445a20baedfbe4e71edb702626bfff869c13f543fc54afa44799a536b",
+      "compiled_sha256": "1e56f59445a20baedfbe4e71edb702626bfff869c13f543fc54afa44799a536b",
+      "source": "src/ComponentEventUnsubscribe.cpp",
+      "symbol": "_ZN17ListenerComponentILj7114400EE10FromGlobalILb0ELj320ELj1EEEvv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 25
     },
     {
       "address": "0x6c91b0",
@@ -216804,6 +216849,17 @@
       "relocation_count": 2
     },
     {
+      "address": "0x77b5c0",
+      "size": 492,
+      "exact": true,
+      "target_sha256": "8432afb4e8a592c149a1640bba1017490f0518d552955564b6b3c110ef11b580",
+      "compiled_sha256": "8432afb4e8a592c149a1640bba1017490f0518d552955564b6b3c110ef11b580",
+      "source": "src/ComponentEventUnsubscribe.cpp",
+      "symbol": "_ZN17ListenerComponentILj7845312EE13FromSingletonILb0ELj152ELj136ELj1EEEvv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 24
+    },
+    {
       "address": "0x77b7b0",
       "size": 2284,
       "exact": true,
@@ -222632,6 +222688,17 @@
       "symbol": "RecoveredLeaf_7ba100",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 4
+    },
+    {
+      "address": "0x7ba390",
+      "size": 480,
+      "exact": true,
+      "target_sha256": "b25c03828c9db6e8930f6fc5420983bc0f0abe38d04430749fa6996f6a90e833",
+      "compiled_sha256": "b25c03828c9db6e8930f6fc5420983bc0f0abe38d04430749fa6996f6a90e833",
+      "source": "src/ComponentEventUnsubscribe.cpp",
+      "symbol": "_ZN17ListenerComponentILj8102800EE13FromSingletonILb0ELj112ELj80ELj0EEEvv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 24
     },
     {
       "address": "0x7baae0",
@@ -245877,6 +245944,17 @@
       "relocation_count": 2
     },
     {
+      "address": "0x895dd0",
+      "size": 480,
+      "exact": true,
+      "target_sha256": "6287d66daf254b5e3c82366fe6fd6388db64d1f05e4450ba18574cf005547e93",
+      "compiled_sha256": "6287d66daf254b5e3c82366fe6fd6388db64d1f05e4450ba18574cf005547e93",
+      "source": "src/ComponentEventUnsubscribe.cpp",
+      "symbol": "_ZN17ListenerComponentILj9002448EE13FromSingletonILb0ELj112ELj96ELj0EEEvv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 24
+    },
+    {
       "address": "0x896240",
       "size": 28,
       "exact": true,
@@ -252268,6 +252346,17 @@
       "relocation_count": 8
     },
     {
+      "address": "0x8c4f70",
+      "size": 480,
+      "exact": true,
+      "target_sha256": "964354e7049d71ec287e86e71d269cae6b772e554be9f645df09a75fb02f0cd9",
+      "compiled_sha256": "964354e7049d71ec287e86e71d269cae6b772e554be9f645df09a75fb02f0cd9",
+      "source": "src/ComponentEventUnsubscribe.cpp",
+      "symbol": "_ZN17ListenerComponentILj9195376EE13FromSingletonILb0ELj112ELj80ELj0EEEvv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 24
+    },
+    {
       "address": "0x8c6e90",
       "size": 28,
       "exact": true,
@@ -256105,6 +256194,17 @@
       "symbol": "_ZN4SPTG13ActionTrigger5Slot4ERN4onyx7ArchiveEPN13ComponentSlot6SourceE",
       "source_review": "manual_reconstruction",
       "relocation_count": 34
+    },
+    {
+      "address": "0x8f0040",
+      "size": 480,
+      "exact": true,
+      "target_sha256": "0f6dd59541fc2e946495200c35700010b930357ffa90e63a47613710dfd14d17",
+      "compiled_sha256": "0f6dd59541fc2e946495200c35700010b930357ffa90e63a47613710dfd14d17",
+      "source": "src/ComponentEventUnsubscribe.cpp",
+      "symbol": "_ZN17ListenerComponentILj9371712EE13FromSingletonILb0ELj112ELj136ELj0EEEvv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 24
     },
     {
       "address": "0x8f0300",
@@ -268812,6 +268912,17 @@
       "relocation_count": 1
     },
     {
+      "address": "0x97e280",
+      "size": 140,
+      "exact": true,
+      "target_sha256": "568d582bb6298a62977975bc1889ce0f582fb23f2257301170205da4867686e6",
+      "compiled_sha256": "568d582bb6298a62977975bc1889ce0f582fb23f2257301170205da4867686e6",
+      "source": "src/gameplay/PlayerOverrides.cpp",
+      "symbol": "_ZN4SPTG18ControllablePlayer6Slot20Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 2
+    },
+    {
       "address": "0x97e4e0",
       "size": 216,
       "exact": true,
@@ -268977,6 +269088,17 @@
       "relocation_count": 1
     },
     {
+      "address": "0x97ffa0",
+      "size": 196,
+      "exact": true,
+      "target_sha256": "1d9c7e2c4999f91f89c7eaf3748df2865e88c4215f1dc37d0f7590c7261e45b3",
+      "compiled_sha256": "1d9c7e2c4999f91f89c7eaf3748df2865e88c4215f1dc37d0f7590c7261e45b3",
+      "source": "src/gameplay/PlayerOverrides.cpp",
+      "symbol": "_ZN4SPTG18ControllablePlayer6Slot76Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 4
+    },
+    {
       "address": "0x980190",
       "size": 64,
       "exact": true,
@@ -268986,6 +269108,28 @@
       "symbol": "RecoveredLeaf_980190",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 0
+    },
+    {
+      "address": "0x9801d0",
+      "size": 228,
+      "exact": true,
+      "target_sha256": "23d55c57ff11194e130fb6b5491ea573e9a5c3800787b5bda129075bd6fd90b4",
+      "compiled_sha256": "23d55c57ff11194e130fb6b5491ea573e9a5c3800787b5bda129075bd6fd90b4",
+      "source": "src/gameplay/PlayerOverrides.cpp",
+      "symbol": "_ZN4SPTG18ControllablePlayer6Slot87EPvbbPNS_13BaseCharacterE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 7
+    },
+    {
+      "address": "0x9802c0",
+      "size": 228,
+      "exact": true,
+      "target_sha256": "e0fe9ae6d724b6e3ff75a45c23c05f8a1eca8bd943df67b987e5fe76d5acd32a",
+      "compiled_sha256": "e0fe9ae6d724b6e3ff75a45c23c05f8a1eca8bd943df67b987e5fe76d5acd32a",
+      "source": "src/gameplay/PlayerOverrides.cpp",
+      "symbol": "_ZN4SPTG18ControllablePlayer6Slot88Ef",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 1
     },
     {
       "address": "0x980770",
@@ -333897,6 +334041,17 @@
       "symbol": "RecoveredLeaf_c47ca0",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 3
+    },
+    {
+      "address": "0xc48580",
+      "size": 468,
+      "exact": true,
+      "target_sha256": "69104df07749454aaddc101eee021b33ceb2f0ee7c9594cbcb96dc8088cd244c",
+      "compiled_sha256": "69104df07749454aaddc101eee021b33ceb2f0ee7c9594cbcb96dc8088cd244c",
+      "source": "src/ComponentEventUnsubscribe.cpp",
+      "symbol": "_ZN17ListenerComponentILj12879232EE10FromGlobalILb1ELj320ELj0EEEvv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 25
     },
     {
       "address": "0xc48910",

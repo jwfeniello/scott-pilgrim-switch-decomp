@@ -256,6 +256,25 @@ Not matched:
 - `Init` and `Allocate`. The original stores the free-list head once per unrolled pair
   of iterations, and this has not been reproduced.
 
+## Component listener removal
+
+[`ComponentEventUnsubscribe.cpp`](../src/ComponentEventUnsubscribe.cpp) has 9 functions / 4,344
+bytes: a component's disable step, the counterpart of `ComponentEventSubscribe.cpp`. It builds
+a delegate equal to the one its enable step registered, walks a listener list comparing with
+`Equals`, and frees every entry that matches. Then it may clear the active flag (0x2 in +0x38)
+or make a follow-up call. The list comes from a global, a member or a singleton, at an offset
+that depends on the owner class. The `Key` argument is a stand-in for those classes, which RTTI
+names in comments on each instance line.
+
+The original's exception table shaped the types. Destroying the delegate unwinds to a terminate
+pad and freeing the node to a cleanup pad, so the node holds its delegate in a member with a
+destructor. There is only one cleanup pad, so `prev` and `next` are declared before the loop: a
+local inside the body gets its own lifetime scope and a second pad.
+
+Not matched from this family: `0xaef180` (two registers swapped), `0x92d180`, `0x8dd620`,
+`0x897ec0`, `0x9019f0`, and eight 496-byte functions whose follow-up call is a `bl` where this
+template produces a tail call.
+
 ## What a match establishes
 
 A match means the source compiles to the original function's exact bytes, with its

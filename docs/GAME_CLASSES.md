@@ -896,6 +896,11 @@ The compiler's choices show how these were written:
 Slots 64 to 66 change +0x160 (health, going by how they use it), with slot 64 taking any
 remainder from +0x32c. Not matched: `State249`, which differs by one instruction's order.
 
+[`PlayerOverrides.cpp`](../src/gameplay/PlayerOverrides.cpp) has 4 overrides: slots 20, 76, 87 and
+88. Slot 76 forwards to the base only when the actor's playfield object passes
+`IsA(0x21350526)`. Slot 88 applies slot 65 when the player is in `State114`, then sends message
+27 and moves to `State243`. Slot 20 clears an entry of the table reached through +0x7b8.
+
 [`PlayerAttackStates.cpp`](../src/gameplay/PlayerAttackStates.cpp) has 9 attack states. On entry
 each starts one of the player's `Attack` members and plays an animation, and when the
 animation ends it returns to `State96`. Their case order and exit-case assertion follow
