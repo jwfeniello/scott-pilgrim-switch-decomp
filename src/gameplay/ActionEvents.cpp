@@ -8,6 +8,11 @@
 // inline step, Peek, before and after. The original's control flow needs that shape: the cached
 // path jumps straight to the code that uses the object, which it does not do when the two reads
 // are written as one expression with a null test after it.
+//
+// Most of these send through onyx::SendEvent's own payload. Where the stack layout says otherwise
+// (a method sending two events with the first payload above the second), the payloads are locals
+// of the method. This file builds with stack coloring off, as the state handlers do: with it on,
+// payloads in separate branches share a slot, and the original keeps them apart.
 #include "BaseCharacter.h"
 #include "OnyxEvents.h"
 
@@ -1121,6 +1126,284 @@ void ControllerNotice::Show() {
         onyx::EventPayload event;
         onyx::SendEvent<0x40e27f71u>(callback, target, event);
     }
+}
+
+// The enable and disable events every component has: +0x08 and +0x20.
+struct ChildEvents : onyx::Component {
+    EventCallback* lostCallback;    // +0x08
+    EventTarget* lostTarget;        // +0x10
+    char padding_18[8];
+    EventCallback* foundCallback;   // +0x20
+    EventTarget* foundTarget;       // +0x28
+};
+const uint32_t ChildEnabled = 0x44174b43u;
+const uint32_t ChildDisabled = 0x255c0afeu;
+
+// Onyx::DebugComponent turns its children on and off with itself.
+struct DebugComponent {
+    char padding_0[0x60];
+    uint64_t count;                 // +0x60
+    ComponentHandle** children;     // +0x68
+    void Disable();
+    void Enable();
+};
+void DebugComponent::Disable() {
+    uint32_t n = static_cast<uint32_t>(count);
+    if (n) {
+        uint64_t i = 0;
+        do {
+            ChildEvents* x = onyx::Peek<ChildEvents>(children[i]);
+            if (x) onyx::SendEvent<ChildDisabled>(x->lostCallback, x->lostTarget);
+            ++i;
+        } while (i < n);
+    }
+}
+void DebugComponent::Enable() {
+    uint32_t n = static_cast<uint32_t>(count);
+    if (n) {
+        uint64_t i = 0;
+        do {
+            ChildEvents* x = onyx::Peek<ChildEvents>(children[i]);
+            if (x) onyx::SendEvent<ChildEnabled>(x->foundCallback, x->foundTarget);
+            ++i;
+        } while (i < n);
+    }
+}
+
+struct Predicate { virtual void S0(); virtual void S1(); virtual bool Test(); };
+struct PredicateTrigger {
+    char padding_0[0x20];
+    EventCallback* enabledCallback; // +0x20
+    EventTarget* enabledTarget;     // +0x28
+    char padding_30[0x20];
+    EventCallback* callback;        // +0x50
+    EventTarget* target;            // +0x58
+    char padding_60[8];
+    Predicate* predicate;           // +0x68
+    void Update();
+};
+void PredicateTrigger::Update() {
+    Predicate* p = predicate;
+    if (!p || !p->Test()) return;
+    onyx::EventPayload fired;
+    onyx::SendEvent<0x7e7bcf3eu>(callback, target, fired);
+    onyx::EventPayload enabled;
+    onyx::SendEvent<ChildEnabled>(enabledCallback, enabledTarget, enabled);
+}
+
+struct TimeElapsedTrigger {
+    char padding_0[0x20];
+    EventCallback* enabledCallback; // +0x20
+    EventTarget* enabledTarget;     // +0x28
+    char padding_30[0x20];
+    EventCallback* callback;        // +0x50
+    EventTarget* target;            // +0x58
+    char padding_60[0x38];
+    bool repeat;                    // +0x98
+    bool active;                    // +0x99
+    char padding_9a[0xe];
+    float remaining;                // +0xa8
+    float period;                   // +0xac
+    bool counting;                  // +0xb0
+    void Update();
+};
+void TimeElapsedTrigger::Update() {
+    if (active && counting) {
+        float delta = FrameDelta;
+        float value = Max(0.0f, remaining - delta);
+        remaining = value;
+        if (__builtin_fabsf(value) <= 0.000001f) {
+            if (!repeat) {
+                active = false;
+                onyx::SendEvent<ChildEnabled>(enabledCallback, enabledTarget);
+            }
+            onyx::SendEvent<0x646aedccu>(callback, target);
+            remaining = period;
+            counting = true;
+        }
+    }
+}
+
+// The step every actor action starts its update with: finish when the actor is in its idle state.
+struct ActorActionBase {
+    char padding_0[0x80];
+    EventCallback* callback;    // +0x80
+    EventTarget* target;        // +0x88
+    char padding_90[8];
+    bool active;                // +0x98
+    char padding_99[7];
+    ComponentHandle* actor;     // +0xa0
+    void Update();
+};
+void ActorActionBase::Update() {
+    if (active) {
+        ControllablePlayer* c = onyx::Peek<ControllablePlayer>(actor);
+        if (c && c->IsA(0x2f2bf4aau)) {
+            auto idle = c->State233Ptr();
+            if (c->states.current == idle) onyx::SendEvent<ActionFinished>(callback, target);
+        }
+    }
+}
+
+// Shows, hides or toggles a popup box.
+struct SetPopupBoxVisibilityAction {
+    virtual void S0(); virtual void S1(); virtual void S2(); virtual void S3(); virtual void S4(); virtual void S5(); virtual void S6(); virtual void S7(); virtual void S8(); virtual void S9();
+    virtual void S10(); virtual void S11(); virtual void S12(); virtual void S13(); virtual void S14(); virtual void S15(); virtual void S16();
+    virtual bool IsVisible();   // slot 17
+    virtual void Show();        // slot 18
+    virtual void Hide();        // slot 19
+    char padding_8[0x78];
+    EventCallback* callback;    // +0x80
+    EventTarget* target;        // +0x88
+    char padding_90[8];
+    uint16_t state;             // +0x98
+    char padding_9a[0x12];
+    int32_t mode;               // +0xac
+    bool waits;                 // +0xb0
+    void Start();
+};
+void SetPopupBoxVisibilityAction::Start() {
+    state = 1;
+    bool visible = IsVisible();
+    switch (mode) {
+        case 0: if (!visible) Show(); break;
+        case 1: if (visible) Hide(); break;
+        case 2: if (visible) Hide(); else Show(); break;
+    }
+    if (!waits) onyx::SendEvent<ActionFinished>(callback, target);
+}
+
+extern uint8_t AllLevelsUnlocked;
+struct SaveSettings { char padding[0xe0]; bool unlockAll; };
+extern SaveSettings* CurrentSave;
+struct SaveProgress { char padding[0xc8]; uint32_t unlocked; };
+struct CheckLevelUnlokcedAction {
+    char padding_0[0xa0];
+    void* progress;                 // +0xa0
+    EventCallback* lockedCallback;  // +0xa8
+    EventTarget* lockedTarget;      // +0xb0
+    char padding_b8[8];
+    EventCallback* openCallback;    // +0xc0
+    EventTarget* openTarget;        // +0xc8
+    char padding_d0[8];
+    int32_t level;                  // +0xd8
+    void Start();
+};
+void CheckLevelUnlokcedAction::Start() {
+    SaveProgress* save = SingletonGet<SaveProgress>(&progress);
+    uint32_t mask;
+    if ((AllLevelsUnlocked & 1) || (CurrentSave && CurrentSave->unlockAll)) mask = 15359;
+    else mask = save->unlocked;
+    if (!((1u << level) & mask)) onyx::SendEvent<0x3fa2d1e3u>(openCallback, openTarget);
+    else onyx::SendEvent<0x21e3dbfau>(lockedCallback, lockedTarget);
+}
+
+// A projectile hitting something: ignore its own team, and what it has already hit.
+struct HitInfo { char padding_0[0x44]; int32_t team; char padding_48[0x14]; int32_t power; };
+struct HitSource {
+    virtual void S0(); virtual void S1(); virtual void S2(); virtual void S3(); virtual void S4(); virtual void S5(); virtual void S6(); virtual void S7(); virtual void S8(); virtual void S9();
+    virtual void S10(); virtual void S11(); virtual void S12(); virtual void S13(); virtual void S14(); virtual void S15(); virtual void S16(); virtual void S17(); virtual void S18(); virtual void S19();
+    virtual void S20(); virtual void S21(); virtual void S22(); virtual void S23(); virtual void S24(); virtual void S25(); virtual void S26(); virtual void S27(); virtual void S28(); virtual void S29();
+    virtual void S30(); virtual void S31(); virtual void S32(); virtual void S33(); virtual void S34(); virtual void S35(); virtual void S36(); virtual void S37(); virtual void S38(); virtual void S39();
+    virtual void S40(); virtual void S41(); virtual void S42(); virtual void S43(); virtual void S44(); virtual void S45(); virtual void S46(); virtual void S47(); virtual void S48(); virtual void S49();
+    virtual int Kind();   // slot 50
+};
+struct Projectile {
+    char padding_0[0x12c];
+    int32_t power;              // +0x12c
+    char padding_130[0x11];
+    bool dead;                  // +0x141
+    char padding_142[0x1a];
+    uint32_t flags;             // +0x15c
+    char padding_160[0x30];
+    int32_t teams[4];           // +0x190
+    char padding_1a0[0x68];
+    EventCallback* callback;    // +0x208
+    EventTarget* target;        // +0x210
+    bool Hit(HitSource* source, HitInfo* info);
+};
+bool Projectile::Hit(HitSource* source, HitInfo* info) {
+    if (source->Kind() == 7) return false;
+    power = info->power;
+    int32_t team = info->team;
+    if (teams[0] == team || teams[1] == team || teams[2] == team || teams[3] == team || dead) return false;
+    uint32_t f = flags;
+    if (!(f & 0x80)) {
+        flags = f | 0x80;
+        onyx::SendEvent<0x1f518935u>(callback, target);
+    }
+    return true;
+}
+
+struct LocalLeaderboard {
+    char padding_0[0xe8];
+    EventCallback* callback;    // +0xe8
+    EventTarget* target;        // +0xf0
+    char padding_f8[0x68];
+    void* listPrev;             // +0x160
+    void* listNext;             // +0x168
+    void* listRoot;             // +0x170
+    uint32_t count;             // +0x178
+    char padding_17c[4];
+    uint32_t total;             // +0x180
+    void Clear(bool* full);
+    static void DestroyEntries(void* root);
+};
+void LocalLeaderboard::Clear(bool* full) {
+    onyx::SendEvent<0x13e0c623u>(callback, target, *full);
+    if (*full) {
+        void** head = &listPrev;
+        DestroyEntries(listRoot);
+        listRoot = nullptr;
+        listPrev = head;
+        listNext = head;
+        count = 0;
+        total = 0;
+    }
+}
+
+struct MovieName;
+extern const char MovieIntro[];
+struct MovieState { uint32_t time; char padding_4[4]; uint16_t status; char padding_a[0xe]; char name[1]; };
+void PlayMovie(void* player, const char* file, int a, char* out);
+struct KissMovieView {
+    char padding_0[0xa0];
+    char player[0x60];          // +0xa0
+    char padding_100[0x80];
+    EventCallback* callback;    // +0x180
+    EventTarget* target;        // +0x188
+    char padding_190[0xd0];
+    MovieState* state;          // +0x260
+    void Start();
+};
+void KissMovieView::Start() {
+    MovieState* s = state;
+    s->status = 1;
+    s->time = 0;
+    PlayMovie(player, MovieIntro, 1, reinterpret_cast<char*>(s) + 0x18);
+    onyx::SendEvent<0x48acec0au>(callback, target);
+}
+
+// Sends one of two events on its owner. The name is a stand-in: nothing names this class.
+struct WeakSwitch {
+    struct Owner {
+        char padding_0[0x100];
+        EventCallback* trueCallback;    // +0x100
+        EventTarget* trueTarget;        // +0x108
+        char padding_110[8];
+        EventCallback* falseCallback;   // +0x118
+        EventTarget* falseTarget;       // +0x120
+    };
+    void* padding;
+    Owner* owner;
+    void Send(bool value);
+};
+void WeakSwitch::Send(bool value) {
+    if (!this) return;
+    Owner* x = owner;
+    if (!x) return;
+    if (!value) onyx::SendEvent<0x584ca479u>(x->falseCallback, x->falseTarget);
+    else onyx::SendEvent<0xcc5dbbcu>(x->trueCallback, x->trueTarget);
 }
 
 }  // namespace SPTG
