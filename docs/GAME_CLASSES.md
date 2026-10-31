@@ -906,3 +906,32 @@ each starts one of the player's `Attack` members and plays an animation, and whe
 animation ends it returns to `State96`. Their case order and exit-case assertion follow
 [Matching state handlers](#matching-state-handlers). `State165`, `State175` and `State177` have
 the same shape but differ in register choice in every form tried, so they are left out.
+
+## Actions and their events
+
+[`ActionEvents.cpp`](../src/gameplay/ActionEvents.cpp) holds methods of the game's scripted actions and
+similar components that do one step and then send an Onyx event. RTTI names most of the classes:
+`ActorPlayEmoteAction`, `ActorPickupAction`, `ActorDropAction`, `WaitForEventCount`, `DelayAction`,
+`RotateToCamAction`, `ShowObjectAction`, `StartEnemyAction`, `LevelSectionAction`,
+`KillAllEnemiesAction`, `TimerCircuit`, `LaserBeams`, `StrikerYeti`, `PublisherScreen`, `PlaySound`.
+
+An action keeps its finished event at +0x80 and an active flag at +0x98. Event `0x3a6530b8` is the
+one most of them send when they finish. The hash values are real; what the names mean is inferred
+from the classes that use them.
+
+Some behaviour is clear from the code:
+
+- `DelayAction` adds a clock's delta to its elapsed time and finishes when it reaches the duration.
+- `TimerCircuit` clamps its time to the float range, finishes at its limit and restarts if set to.
+- `RotateToCamAction` turns by the step between frames and finishes at its duration.
+- `WaitForEventCount` finishes once its count reaches the required number.
+- `LaserBeams` fires for a set time while in state 216.
+
+These dependencies are read through a cached handle: use the object if it is there, otherwise resolve
+it by its type hash, wake it and read it again. When a method tests the result for null, the code only
+has the original's shape if the read goes through a small inline step (`Peek`) before and after the
+resolve. Written as one expression followed by a null test, the cached path falls through to the test
+where the original jumps straight past it.
+
+Writing these by hand from the decompiler has a high hit rate compared with the earlier state
+handlers: most match on the first or second try, and the misses are usually a field offset.
