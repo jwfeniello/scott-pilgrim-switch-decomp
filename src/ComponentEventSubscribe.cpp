@@ -128,6 +128,8 @@ struct HandleSubscriber68e830 {
 };
 void HandleSubscriber68e830::Enable() {
     flags |= 2;
+    // The cast only adapts this typed field to the shared helper; it is not a
+    // claim about the original code.
     SubscribeMember<0x68e830u>(this, &HandleSubscriber68e830::OnEvent, reinterpret_cast<void* const&>(target), 0x6c62f499u);
     if (target && target->object) AttachTarget68e830_Attach(target->object, this, false);
 }

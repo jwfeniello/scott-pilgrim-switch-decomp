@@ -223,3 +223,52 @@ once in the entry block and shared with the member-cleanup landing pad, which
 costs an extra callee-saved register. Inlined from a separate member, the body
 arrives with its addresses already folded, and the cleanup recomputes the
 vector address where it needs it, as in the original.
+
+## SndGear object pools
+
+RTTI names this family: `SndGear::BasicObjectPool<T, DareGearContainerInterface, SndGear::NulLock>`
+and its subclass `BasicDarePool<T, SndGear::NulLock>`, for eight pooled types
+(`Dare::Private::ManagerVoiceForVirtualPlayer<V>` for three manager voices,
+`Dare::Private::Voice`, `Dare::Private::EESourceVoiceSW`, `CVirtualPlayerVoice`,
+`CBlockMemory` and `CDataBlockMemory`).
+[`SndGearObjectPool.cpp`](../src/SndGearObjectPool.cpp) instantiates those templates,
+so its symbols are the real mangled names rather than address labels. Member names
+and the block layout's names are provisional.
+
+26 functions / 9,288 bytes match: 8 complete destructors, 12 deleting destructors
+(8 for the pool, 4 for `BasicDarePool`) and 6 `Free` functions.
+
+`Free` destroys the object differently per type: through virtual slot 15
+(`ManagerVoiceForVirtualPlayer`), through slot 1 (`Voice`), by a direct call
+(`EESourceVoiceSW`), or not at all (`CVirtualPlayerVoice`).
+
+The block list is modelled with a node base class: its ends are typed as blocks and
+its links as nodes. That is an inference. With a single pointer type LLVM merges the
+paths that update a link and an end, and the original keeps them apart.
+
+Not matched:
+
+- `Free` for `CBlockMemory` and `CDataBlockMemory`. The original keeps the block's free
+  count in a register across the list updates; the other six reload it.
+- `Clear`. It is byte-exact only with an extra cast on the read of `first`, whose sole
+  effect is which register holds a value. Nothing else supports that spelling, so it
+  is left out.
+- `Init` and `Allocate`. The original stores the free-list head once per unrolled pair
+  of iterations, and this has not been reproduced.
+
+## What a match establishes
+
+A match means the source compiles to the original function's exact bytes, with its
+relocations resolved to the original's targets. It does not mean the source is what
+the developers wrote. Source in this project falls into four levels:
+
+- **Recovered.** Names and structure the game itself records, such as RTTI class names.
+- **Inferred.** A shape that explains the code across many functions, such as the pool's
+  node base class or the two event send forms in `OnyxEvents.h`.
+- **Stand-ins.** `Key` template arguments, `char padding[...]` views and types named by
+  layout. These often fold several original classes into one template, so those
+  families say less about the real types than their byte counts suggest.
+- **Spellings with no support beyond matching.** They behave correctly, but only the
+  bytes favour them. Known cases are labelled where they occur: the assignment order in
+  `PayloadU64U32`, `Aligned32`, and the cast in `HandleSubscriber68e830`. Older families
+  have not been audited for this.

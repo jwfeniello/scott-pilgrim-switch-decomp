@@ -505294,6 +505294,363 @@
           "got_bindings": {}
         }
       ]
+    },
+    {
+      "id": "sndgear_object_pool",
+      "source": "src/SndGearObjectPool.cpp",
+      "compiler": "8.0.1",
+      "source_review": "manual_reconstruction",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-std=c++11",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-O2",
+        "-fomit-frame-pointer",
+        "-fno-pic"
+      ],
+      "functions": [
+        {
+          "address": "0xcf3da0",
+          "size": 280,
+          "symbol": "_ZN7SndGear15BasicObjectPoolIN4Dare7Private28ManagerVoiceForVirtualPlayerINS2_17ManagerThemeVoiceEEE26DareGearContainerInterfaceNS_7NulLockEED2Ev",
+          "target_sha256": "6eb7417b368d0e63ffd941ea195ebe6390cee4cf8ca7c8b23f839b5a22b2158b",
+          "bindings": {
+            "_ZTVN7SndGear15BasicObjectPoolIN4Dare7Private28ManagerVoiceForVirtualPlayerINS2_17ManagerThemeVoiceEEE26DareGearContainerInterfaceNS_7NulLockEEE": "0x18cbdb0",
+            "Dare_AllocatorEnabled": "0x191fb00",
+            "Dare_Allocator": "0x191faf8",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xcf3ec0",
+          "size": 280,
+          "symbol": "_ZN7SndGear15BasicObjectPoolIN4Dare7Private28ManagerVoiceForVirtualPlayerINS2_16ManagerToolVoiceEEE26DareGearContainerInterfaceNS_7NulLockEED2Ev",
+          "target_sha256": "4f893b0775d58a84c27a73155f7688de077742b3c614927d3528a88f0ccd5aa3",
+          "bindings": {
+            "_ZTVN7SndGear15BasicObjectPoolIN4Dare7Private28ManagerVoiceForVirtualPlayerINS2_16ManagerToolVoiceEEE26DareGearContainerInterfaceNS_7NulLockEEE": "0x18cbd50",
+            "Dare_AllocatorEnabled": "0x191fb00",
+            "Dare_Allocator": "0x191faf8",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xcf3fe0",
+          "size": 280,
+          "symbol": "_ZN7SndGear15BasicObjectPoolIN4Dare7Private28ManagerVoiceForVirtualPlayerINS2_20ManagerHardwareVoiceEEE26DareGearContainerInterfaceNS_7NulLockEED2Ev",
+          "target_sha256": "4c3c5f107ea44995d1f15bedcf9316ada9654473d6cbb0b33c47b25113f78239",
+          "bindings": {
+            "_ZTVN7SndGear15BasicObjectPoolIN4Dare7Private28ManagerVoiceForVirtualPlayerINS2_20ManagerHardwareVoiceEEE26DareGearContainerInterfaceNS_7NulLockEEE": "0x18cbce0",
+            "Dare_AllocatorEnabled": "0x191fb00",
+            "Dare_Allocator": "0x191faf8",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xcf4100",
+          "size": 280,
+          "symbol": "_ZN7SndGear15BasicObjectPoolIN4Dare7Private28ManagerVoiceForVirtualPlayerINS2_20ManagerHardwareVoiceEEE26DareGearContainerInterfaceNS_7NulLockEED0Ev",
+          "target_sha256": "e89607e0b0ce5498e24f7df6584474e0a339a5f8238efde8851e49d56721973b",
+          "bindings": {
+            "_ZTVN7SndGear15BasicObjectPoolIN4Dare7Private28ManagerVoiceForVirtualPlayerINS2_20ManagerHardwareVoiceEEE26DareGearContainerInterfaceNS_7NulLockEEE": "0x18cbce0",
+            "Dare_AllocatorEnabled": "0x191fb00",
+            "Dare_Allocator": "0x191faf8",
+            "_ZdlPv": "0xfa3b40",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xcf4480",
+          "size": 620,
+          "symbol": "_ZN7SndGear15BasicObjectPoolIN4Dare7Private28ManagerVoiceForVirtualPlayerINS2_20ManagerHardwareVoiceEEE26DareGearContainerInterfaceNS_7NulLockEE4FreeEPvb",
+          "target_sha256": "1a1ab3efaa33c75acfcab0517413d975bffbfd32f6f34ca7ec26114c7f2b475d",
+          "bindings": {
+            "Dare_AllocatorEnabled": "0x191fb00",
+            "Dare_Allocator": "0x191faf8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xcf4b00",
+          "size": 280,
+          "symbol": "_ZN7SndGear15BasicObjectPoolIN4Dare7Private28ManagerVoiceForVirtualPlayerINS2_16ManagerToolVoiceEEE26DareGearContainerInterfaceNS_7NulLockEED0Ev",
+          "target_sha256": "1fb7931aa0e0ef2d08789a1f74434f7b6b040e0b8ac6bcf67cf97f5b87f740b6",
+          "bindings": {
+            "_ZTVN7SndGear15BasicObjectPoolIN4Dare7Private28ManagerVoiceForVirtualPlayerINS2_16ManagerToolVoiceEEE26DareGearContainerInterfaceNS_7NulLockEEE": "0x18cbd50",
+            "Dare_AllocatorEnabled": "0x191fb00",
+            "Dare_Allocator": "0x191faf8",
+            "_ZdlPv": "0xfa3b40",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xcf4e80",
+          "size": 620,
+          "symbol": "_ZN7SndGear15BasicObjectPoolIN4Dare7Private28ManagerVoiceForVirtualPlayerINS2_16ManagerToolVoiceEEE26DareGearContainerInterfaceNS_7NulLockEE4FreeEPvb",
+          "target_sha256": "a2279dd082d7b8e3f9a306e3f17089a292ab04c558ef54dc1fc000bfb2e4a1c0",
+          "bindings": {
+            "Dare_AllocatorEnabled": "0x191fb00",
+            "Dare_Allocator": "0x191faf8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xcf5500",
+          "size": 280,
+          "symbol": "_ZN7SndGear15BasicObjectPoolIN4Dare7Private28ManagerVoiceForVirtualPlayerINS2_17ManagerThemeVoiceEEE26DareGearContainerInterfaceNS_7NulLockEED0Ev",
+          "target_sha256": "88041d22a1f51a903836e1b723475948276ae2ca4486e049a7a55bdcf150cb2c",
+          "bindings": {
+            "_ZTVN7SndGear15BasicObjectPoolIN4Dare7Private28ManagerVoiceForVirtualPlayerINS2_17ManagerThemeVoiceEEE26DareGearContainerInterfaceNS_7NulLockEEE": "0x18cbdb0",
+            "Dare_AllocatorEnabled": "0x191fb00",
+            "Dare_Allocator": "0x191faf8",
+            "_ZdlPv": "0xfa3b40",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xcf5880",
+          "size": 620,
+          "symbol": "_ZN7SndGear15BasicObjectPoolIN4Dare7Private28ManagerVoiceForVirtualPlayerINS2_17ManagerThemeVoiceEEE26DareGearContainerInterfaceNS_7NulLockEE4FreeEPvb",
+          "target_sha256": "e63b79e0e67be58b4323a88fe7958dc3d63bd7d3c63c7df82beb7cb188ad080b",
+          "bindings": {
+            "Dare_AllocatorEnabled": "0x191fb00",
+            "Dare_Allocator": "0x191faf8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xcf5f00",
+          "size": 280,
+          "symbol": "_ZN13BasicDarePoolIN4Dare7Private28ManagerVoiceForVirtualPlayerINS1_17ManagerThemeVoiceEEEN7SndGear7NulLockEED0Ev",
+          "target_sha256": "35e12318dd121f27d8ed94deeb7c5d8df9bfe04abd6a172399f79f5c025de7d9",
+          "bindings": {
+            "_ZTVN7SndGear15BasicObjectPoolIN4Dare7Private28ManagerVoiceForVirtualPlayerINS2_17ManagerThemeVoiceEEE26DareGearContainerInterfaceNS_7NulLockEEE": "0x18cbdb0",
+            "Dare_AllocatorEnabled": "0x191fb00",
+            "Dare_Allocator": "0x191faf8",
+            "_ZdlPv": "0xfa3b40",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xcf6040",
+          "size": 280,
+          "symbol": "_ZN13BasicDarePoolIN4Dare7Private28ManagerVoiceForVirtualPlayerINS1_16ManagerToolVoiceEEEN7SndGear7NulLockEED0Ev",
+          "target_sha256": "3697b882fc43e582a578bdd0936dc3c3e38d947fed9a9146da8e1abee12f5e78",
+          "bindings": {
+            "_ZTVN7SndGear15BasicObjectPoolIN4Dare7Private28ManagerVoiceForVirtualPlayerINS2_16ManagerToolVoiceEEE26DareGearContainerInterfaceNS_7NulLockEEE": "0x18cbd50",
+            "Dare_AllocatorEnabled": "0x191fb00",
+            "Dare_Allocator": "0x191faf8",
+            "_ZdlPv": "0xfa3b40",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xcf6180",
+          "size": 280,
+          "symbol": "_ZN13BasicDarePoolIN4Dare7Private28ManagerVoiceForVirtualPlayerINS1_20ManagerHardwareVoiceEEEN7SndGear7NulLockEED0Ev",
+          "target_sha256": "28efa267ed53c55efcf5fadb16768ec913604f63ecc9c11dc3b40421f1d00349",
+          "bindings": {
+            "_ZTVN7SndGear15BasicObjectPoolIN4Dare7Private28ManagerVoiceForVirtualPlayerINS2_20ManagerHardwareVoiceEEE26DareGearContainerInterfaceNS_7NulLockEEE": "0x18cbce0",
+            "Dare_AllocatorEnabled": "0x191fb00",
+            "Dare_Allocator": "0x191faf8",
+            "_ZdlPv": "0xfa3b40",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xcf7ac0",
+          "size": 280,
+          "symbol": "_ZN7SndGear15BasicObjectPoolI19CVirtualPlayerVoice26DareGearContainerInterfaceNS_7NulLockEED2Ev",
+          "target_sha256": "001eb4ab63097ac879a9dc7025144c329f808f57f98e4d5b117af1c2eaea5655",
+          "bindings": {
+            "_ZTVN7SndGear15BasicObjectPoolI19CVirtualPlayerVoice26DareGearContainerInterfaceNS_7NulLockEEE": "0x18cc0d8",
+            "Dare_AllocatorEnabled": "0x191fb00",
+            "Dare_Allocator": "0x191faf8",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xcf7c50",
+          "size": 280,
+          "symbol": "_ZN7SndGear15BasicObjectPoolI19CVirtualPlayerVoice26DareGearContainerInterfaceNS_7NulLockEED0Ev",
+          "target_sha256": "3b6f49fe21bc10b875fa52ffe2255d8438990d1b74fcce214c35f97d7b83e77b",
+          "bindings": {
+            "_ZTVN7SndGear15BasicObjectPoolI19CVirtualPlayerVoice26DareGearContainerInterfaceNS_7NulLockEEE": "0x18cc0d8",
+            "Dare_AllocatorEnabled": "0x191fb00",
+            "Dare_Allocator": "0x191faf8",
+            "_ZdlPv": "0xfa3b40",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xcf7fd0",
+          "size": 596,
+          "symbol": "_ZN7SndGear15BasicObjectPoolI19CVirtualPlayerVoice26DareGearContainerInterfaceNS_7NulLockEE4FreeEPvb",
+          "target_sha256": "d13fbef18963b35c6d33dc4b4c21abcc71f641dd3da9142f17defb6330065037",
+          "bindings": {
+            "Dare_AllocatorEnabled": "0x191fb00",
+            "Dare_Allocator": "0x191faf8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xd11af0",
+          "size": 280,
+          "symbol": "_ZN13BasicDarePoolI19CVirtualPlayerVoiceN7SndGear7NulLockEED0Ev",
+          "target_sha256": "f16e9f7acf7f5635e7100273308cf4ead2df7dacd5222d1172b3cc9daf0ece99",
+          "bindings": {
+            "_ZTVN7SndGear15BasicObjectPoolI19CVirtualPlayerVoice26DareGearContainerInterfaceNS_7NulLockEEE": "0x18cc0d8",
+            "Dare_AllocatorEnabled": "0x191fb00",
+            "Dare_Allocator": "0x191faf8",
+            "_ZdlPv": "0xfa3b40",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xda4410",
+          "size": 280,
+          "symbol": "_ZN7SndGear15BasicObjectPoolI12CBlockMemory26DareGearContainerInterfaceNS_7NulLockEED2Ev",
+          "target_sha256": "f5332518fb9064329e5aacf11ce16dbd65df4b60ea5a15da085a81d4512e87de",
+          "bindings": {
+            "_ZTVN7SndGear15BasicObjectPoolI12CBlockMemory26DareGearContainerInterfaceNS_7NulLockEEE": "0x18d69d0",
+            "Dare_AllocatorEnabled": "0x191fb00",
+            "Dare_Allocator": "0x191faf8",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xda4530",
+          "size": 280,
+          "symbol": "_ZN7SndGear15BasicObjectPoolI12CBlockMemory26DareGearContainerInterfaceNS_7NulLockEED0Ev",
+          "target_sha256": "eedab86ea6dec0e808d26507a2e8495376db8348009e5a93416b8f4ea6755e28",
+          "bindings": {
+            "_ZTVN7SndGear15BasicObjectPoolI12CBlockMemory26DareGearContainerInterfaceNS_7NulLockEEE": "0x18d69d0",
+            "Dare_AllocatorEnabled": "0x191fb00",
+            "Dare_Allocator": "0x191faf8",
+            "_ZdlPv": "0xfa3b40",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xda5a00",
+          "size": 280,
+          "symbol": "_ZN7SndGear15BasicObjectPoolI16CDataBlockMemory26DareGearContainerInterfaceNS_7NulLockEED2Ev",
+          "target_sha256": "d5e5c184e4a1da38a60487746abe7c63470c0cfc01877411b48ce26f0338ae36",
+          "bindings": {
+            "_ZTVN7SndGear15BasicObjectPoolI16CDataBlockMemory26DareGearContainerInterfaceNS_7NulLockEEE": "0x18d6b20",
+            "Dare_AllocatorEnabled": "0x191fb00",
+            "Dare_Allocator": "0x191faf8",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xda5b20",
+          "size": 280,
+          "symbol": "_ZN7SndGear15BasicObjectPoolI16CDataBlockMemory26DareGearContainerInterfaceNS_7NulLockEED0Ev",
+          "target_sha256": "a458b199939f238ade7f7a574415742ac866a3590beea37d2cdf48fd72de4efc",
+          "bindings": {
+            "_ZTVN7SndGear15BasicObjectPoolI16CDataBlockMemory26DareGearContainerInterfaceNS_7NulLockEEE": "0x18d6b20",
+            "Dare_AllocatorEnabled": "0x191fb00",
+            "Dare_Allocator": "0x191faf8",
+            "_ZdlPv": "0xfa3b40",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xda62f0",
+          "size": 280,
+          "symbol": "_ZN7SndGear15BasicObjectPoolIN4Dare7Private15EESourceVoiceSWE26DareGearContainerInterfaceNS_7NulLockEED2Ev",
+          "target_sha256": "1be622a5b1e3a2ddbbef6fd097adb1f3ef7b41fb7aa1b70a0601941c369d3020",
+          "bindings": {
+            "_ZTVN7SndGear15BasicObjectPoolIN4Dare7Private15EESourceVoiceSWE26DareGearContainerInterfaceNS_7NulLockEEE": "0x18d6eb0",
+            "Dare_AllocatorEnabled": "0x191fb00",
+            "Dare_Allocator": "0x191faf8",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xda69e0",
+          "size": 280,
+          "symbol": "_ZN7SndGear15BasicObjectPoolIN4Dare7Private5VoiceE26DareGearContainerInterfaceNS_7NulLockEED2Ev",
+          "target_sha256": "02f386cc083962adc22e3da39283fc350c32140734b485cde46ea31bd4534df2",
+          "bindings": {
+            "_ZTVN7SndGear15BasicObjectPoolIN4Dare7Private5VoiceE26DareGearContainerInterfaceNS_7NulLockEEE": "0x18d71e0",
+            "Dare_AllocatorEnabled": "0x191fb00",
+            "Dare_Allocator": "0x191faf8",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xda6ba0",
+          "size": 280,
+          "symbol": "_ZN7SndGear15BasicObjectPoolIN4Dare7Private5VoiceE26DareGearContainerInterfaceNS_7NulLockEED0Ev",
+          "target_sha256": "5900dd3d8d7fa8320ea4d64822453df28211658cef8c9a02f7e8aa804b6436b4",
+          "bindings": {
+            "_ZTVN7SndGear15BasicObjectPoolIN4Dare7Private5VoiceE26DareGearContainerInterfaceNS_7NulLockEEE": "0x18d71e0",
+            "Dare_AllocatorEnabled": "0x191fb00",
+            "Dare_Allocator": "0x191faf8",
+            "_ZdlPv": "0xfa3b40",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xda6f20",
+          "size": 620,
+          "symbol": "_ZN7SndGear15BasicObjectPoolIN4Dare7Private5VoiceE26DareGearContainerInterfaceNS_7NulLockEE4FreeEPvb",
+          "target_sha256": "040039be277b0aabc4d465eeeb9c6c7a0e4ddfa45efce384c4d59d56ad4d8e21",
+          "bindings": {
+            "Dare_AllocatorEnabled": "0x191fb00",
+            "Dare_Allocator": "0x191faf8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xdabb90",
+          "size": 280,
+          "symbol": "_ZN7SndGear15BasicObjectPoolIN4Dare7Private15EESourceVoiceSWE26DareGearContainerInterfaceNS_7NulLockEED0Ev",
+          "target_sha256": "f292805c4a887f2242ea3196065eac35adffd1ab3533f10b9a825d0f268cb76d",
+          "bindings": {
+            "_ZTVN7SndGear15BasicObjectPoolIN4Dare7Private15EESourceVoiceSWE26DareGearContainerInterfaceNS_7NulLockEEE": "0x18d6eb0",
+            "Dare_AllocatorEnabled": "0x191fb00",
+            "Dare_Allocator": "0x191faf8",
+            "_ZdlPv": "0xfa3b40",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xdabf10",
+          "size": 612,
+          "symbol": "_ZN7SndGear15BasicObjectPoolIN4Dare7Private15EESourceVoiceSWE26DareGearContainerInterfaceNS_7NulLockEE4FreeEPvb",
+          "target_sha256": "2e1896d20c7571d7b6ed0e5ee0e33eae1392846f99d3494b6d27a8037302550b",
+          "bindings": {
+            "_ZN4Dare7Private15EESourceVoiceSWD1Ev": "0xdac590",
+            "Dare_AllocatorEnabled": "0x191fb00",
+            "Dare_Allocator": "0x191faf8"
+          },
+          "got_bindings": {}
+        }
+      ]
     }
   ]
 }

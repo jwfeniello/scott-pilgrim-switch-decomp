@@ -55,7 +55,8 @@ struct PayloadU32U64 { uint32_t a; uint64_t b; PayloadU32U64() : a(0), b(0) {} }
 struct PayloadU32Bool { uint32_t a; bool b; PayloadU32Bool() : a(0), b(false) {} };
 struct PayloadU64x2 { uint64_t a, b; PayloadU64x2() : a(0), b(0) {} };
 struct PayloadU64x3 { uint64_t a, b, c; PayloadU64x3() : a(0), b(0), c(0) {} };
-// The 32-bit field is stored before the 64-bit one.
+// The 32-bit field is stored before the 64-bit one. This assignment order is
+// kept only because it reproduces that store order; nothing else supports it.
 struct PayloadU64U32 { uint64_t a; uint32_t b; PayloadU64U32() { b = 0; a = 0; } };
 struct PayloadU32x5 { uint32_t a, b, c, d, e; PayloadU32x5() : a(15), b(4), c(0), d(1), e(0) {} };
 struct PayloadByteU32x2 { uint8_t a; uint32_t b, c; PayloadByteU32x2() : a(0), b(1), c(0xffffffffu) {} };
@@ -219,7 +220,8 @@ void Sender81a880::Send() {
 }
 
 // One payload built by the caller, filled by the callback and then sent.
-// A 32-bit value in an 8-byte-aligned payload.
+// A 32-bit value in an 8-byte-aligned payload. The alignment is inferred only
+// from the stack slot the original uses; the real type is unknown.
 struct alignas(8) Aligned32 { uint32_t value; Aligned32(uint32_t v) : value(v) {} };
 template<unsigned Key, uint32_t Hash> struct FieldSender {
     char padding[0x50];

@@ -1,9 +1,9 @@
 {
   "version": 1,
-  "generated_at": "2026-10-25T16:31:29.968181+00:00",
+  "generated_at": "2026-10-31T19:54:14.644212+00:00",
   "target_elf_sha256": "ea95638e6d6aaa0dc6cddd552a9366799aa1ec3bc07ee201f23f6c151103f5b8",
   "input_sha256": {
-    "config/builds.json": "46b3416827775217746236d64e0e23335026d7f526a2f022136dd5ffda04741a",
+    "config/builds.json": "6d3401d294f865f7c1cfe81825f8dc1f45c796253411de64aba2a36f08adf863",
     "config/functions.tsv": "399e91468a04e0459194c10d68d2210d1157cedefeb19c7851886ca7632fcb18",
     "config/non_fde_functions.tsv": "6a45f5e185454fa0472af00b2cdc9d040d73ca133d1106217e1fbbe3b32a8175",
     "config/target.json": "23cc6a5227206a953e7668acf5e9ae5c02a25c23b7e7967f0450a814b888241a",
@@ -42,7 +42,7 @@
     "src/ColorPropertyReadOmitNoPic.cpp": "c3f5c2c85626b7ee05bbb1730e6c89d1a4cc2404362377627810bc1b1d83493f",
     "src/ComponentAccessor.cpp": "09d0b81df3abcacb946f49ed1ed87ab840ee0656bb6f792fd65d25660eabb260",
     "src/ComponentEventReader.cpp": "8ba855c3269dae4b06f76f96f0e6e5b59ff9235a3c43d089bcaf91ef43b68d6a",
-    "src/ComponentEventSubscribe.cpp": "85ca37bf92a13ecb3e186806151e179d0d3d8cc6c503ad6751c82281dcedef2f",
+    "src/ComponentEventSubscribe.cpp": "63586533cddc6e328063e9d1c2591e77b05a6114f99d84a22f953cfb7841fa50",
     "src/ComponentInitializeSlots.cpp": "55cc1e5fc9899d4c44bf24cb4bb59c672fb325bec27fd578c36f881ec57dad1d",
     "src/ComponentMapCollectByKey.h": "ca433de3cf62b21dd59fa5e5a01fc30d37b1699e37e73aa98443f2fefe0fcd28",
     "src/ComponentMapCollectByKeyOmitNoPic.cpp": "6abf134637aa321dfb23146709cedbf7e4abf97f6855b6e321dc5c52c2f30284",
@@ -982,6 +982,7 @@
     "src/SingleSwitchEnableOmitNoPic.cpp": "0ddf28bd5b5f83bb229cc5b5f8c6f976777904440ee27b90063145c7e871b1f0",
     "src/SmallPoolDestroy.h": "4bb7c925afc8f07ccbcdf70840e80c2e986967aed3a7fe23a735ef5d1526a542",
     "src/SmallPoolDestroyOmitNoPic.cpp": "cabaff0364eb193c28d92e959523a40fdcffb8ce6187596c793824a83d6826e5",
+    "src/SndGearObjectPool.cpp": "ea79fd37e730dea4557047a6a3903747813cdd10d63e24f493a91b7ac4ad65d0",
     "src/SpawnerSerialize.h": "ebc6d93e0dde211b963dcc85c34996f2a12c87210c3b97bef248b81bab016781",
     "src/SpawnerSerializeOmitNoPic.cpp": "7a60eabe6c342ed0db13748a5eb32d201206c681e6463e942521795c30d349a8",
     "src/StackRecoveryOmit.cpp": "05323bb32ec2bad72e25856259ddf8eba49e5599ad308568b7b60a92e2d83436",
@@ -1108,7 +1109,7 @@
     "src/gameplay/EnemyClassStates.cpp": "a9170a03cb338b076566144a7dc27ac47eeb17fa98f8685afc647cf07e62b36e",
     "src/gameplay/EnemyClasses.h": "91eed6a1f371f2f2c280780721a803f3d3a631816d7d96eb07a131cc8a4b7815",
     "src/gameplay/EnemyStates.cpp": "dea914d5e3b2bcf7bb15619300bc05716c04a2d448f66f503fc43d88daf7eab1",
-    "src/gameplay/EventSenders.cpp": "80dcb0c9a7096c377b15cdfa64ea8522f615d47b96f0d367179e9419fce77564",
+    "src/gameplay/EventSenders.cpp": "96d7d8707c5fd3995518f2b5aa7cc5e0812de0a92ea69a28b22c939d21deb67d",
     "src/gameplay/Level.h": "7ab38fea1bca50d1428fdd3adba49a2182b816c206129d60028f90a43fc706b5",
     "src/gameplay/OnyxComponents.h": "d74a410e5c144c7e8c9de589b80d0270a8f4e81045f8e3089351a0a97d7aee5b",
     "src/gameplay/OnyxEvents.h": "4dae045efa260333bd4b5699695b7728ce3b5195f34a4f3cdb595fa3e539c121",
@@ -3945,17 +3946,17 @@
     "vendor/zlib-1.2.11/zutil.h": "9a63f6690fac1620aa3cecee5752af618806da438a256b4a047fbcd289cac159"
   },
   "compiler_versions": {
-    "7.0.1": "clang version 7.0.1 (tags/RELEASE_701/final)",
     "8.0.1": "clang version 8.0.1 (tags/RELEASE_801/final)",
+    "7.0.1": "clang version 7.0.1 (tags/RELEASE_701/final)",
     "lld": "LLD 8.0.1 (compatible with GNU linkers)"
   },
   "compiler_sha256": {
-    "7.0.1": "c2f0a175157d9aaace8031f8e6d7ea0ed6142b4bcef287105e3ed227301f1002",
     "8.0.1": "dffd62a213ec6cdb4430012a4a41c11e5e32c288f133d5391f9be49e1c5b69de",
+    "7.0.1": "c2f0a175157d9aaace8031f8e6d7ea0ed6142b4bcef287105e3ed227301f1002",
     "lld": "c4b3aaea06ff7112c64753047a2ab279fc3fe10dd807fd3c22edfdae99f43eed"
   },
-  "exact_functions": 34616,
-  "exact_bytes": 4347928,
+  "exact_functions": 34642,
+  "exact_bytes": 4357216,
   "builds": [
     {
       "id": "probes",
@@ -13166,6 +13167,11 @@
       "id": "component_event_subscribe",
       "compiler": "8.0.1",
       "object_sha256": "3fb0e073b4fb9c33c06e266619538518161df865e3a3e4dac658adc69b0eea95"
+    },
+    {
+      "id": "sndgear_object_pool",
+      "compiler": "8.0.1",
+      "object_sha256": "2dc57950a958effe6fca51ffb9db9ba44cee8678022954afbd8bf41d5dab0ebc"
     }
   ],
   "matches": [
@@ -358295,6 +358301,50 @@
       "relocation_count": 0
     },
     {
+      "address": "0xcf3da0",
+      "size": 280,
+      "exact": true,
+      "target_sha256": "6eb7417b368d0e63ffd941ea195ebe6390cee4cf8ca7c8b23f839b5a22b2158b",
+      "compiled_sha256": "6eb7417b368d0e63ffd941ea195ebe6390cee4cf8ca7c8b23f839b5a22b2158b",
+      "source": "src/SndGearObjectPool.cpp",
+      "symbol": "_ZN7SndGear15BasicObjectPoolIN4Dare7Private28ManagerVoiceForVirtualPlayerINS2_17ManagerThemeVoiceEEE26DareGearContainerInterfaceNS_7NulLockEED2Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 12
+    },
+    {
+      "address": "0xcf3ec0",
+      "size": 280,
+      "exact": true,
+      "target_sha256": "4f893b0775d58a84c27a73155f7688de077742b3c614927d3528a88f0ccd5aa3",
+      "compiled_sha256": "4f893b0775d58a84c27a73155f7688de077742b3c614927d3528a88f0ccd5aa3",
+      "source": "src/SndGearObjectPool.cpp",
+      "symbol": "_ZN7SndGear15BasicObjectPoolIN4Dare7Private28ManagerVoiceForVirtualPlayerINS2_16ManagerToolVoiceEEE26DareGearContainerInterfaceNS_7NulLockEED2Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 12
+    },
+    {
+      "address": "0xcf3fe0",
+      "size": 280,
+      "exact": true,
+      "target_sha256": "4c3c5f107ea44995d1f15bedcf9316ada9654473d6cbb0b33c47b25113f78239",
+      "compiled_sha256": "4c3c5f107ea44995d1f15bedcf9316ada9654473d6cbb0b33c47b25113f78239",
+      "source": "src/SndGearObjectPool.cpp",
+      "symbol": "_ZN7SndGear15BasicObjectPoolIN4Dare7Private28ManagerVoiceForVirtualPlayerINS2_20ManagerHardwareVoiceEEE26DareGearContainerInterfaceNS_7NulLockEED2Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 12
+    },
+    {
+      "address": "0xcf4100",
+      "size": 280,
+      "exact": true,
+      "target_sha256": "e89607e0b0ce5498e24f7df6584474e0a339a5f8238efde8851e49d56721973b",
+      "compiled_sha256": "e89607e0b0ce5498e24f7df6584474e0a339a5f8238efde8851e49d56721973b",
+      "source": "src/SndGearObjectPool.cpp",
+      "symbol": "_ZN7SndGear15BasicObjectPoolIN4Dare7Private28ManagerVoiceForVirtualPlayerINS2_20ManagerHardwareVoiceEEE26DareGearContainerInterfaceNS_7NulLockEED0Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 13
+    },
+    {
       "address": "0xcf4470",
       "size": 16,
       "exact": true,
@@ -358304,6 +358354,28 @@
       "symbol": "RecoveredLeaf_cf4470",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 0
+    },
+    {
+      "address": "0xcf4480",
+      "size": 620,
+      "exact": true,
+      "target_sha256": "1a1ab3efaa33c75acfcab0517413d975bffbfd32f6f34ca7ec26114c7f2b475d",
+      "compiled_sha256": "1a1ab3efaa33c75acfcab0517413d975bffbfd32f6f34ca7ec26114c7f2b475d",
+      "source": "src/SndGearObjectPool.cpp",
+      "symbol": "_ZN7SndGear15BasicObjectPoolIN4Dare7Private28ManagerVoiceForVirtualPlayerINS2_20ManagerHardwareVoiceEEE26DareGearContainerInterfaceNS_7NulLockEE4FreeEPvb",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 8
+    },
+    {
+      "address": "0xcf4b00",
+      "size": 280,
+      "exact": true,
+      "target_sha256": "1fb7931aa0e0ef2d08789a1f74434f7b6b040e0b8ac6bcf67cf97f5b87f740b6",
+      "compiled_sha256": "1fb7931aa0e0ef2d08789a1f74434f7b6b040e0b8ac6bcf67cf97f5b87f740b6",
+      "source": "src/SndGearObjectPool.cpp",
+      "symbol": "_ZN7SndGear15BasicObjectPoolIN4Dare7Private28ManagerVoiceForVirtualPlayerINS2_16ManagerToolVoiceEEE26DareGearContainerInterfaceNS_7NulLockEED0Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 13
     },
     {
       "address": "0xcf4e70",
@@ -358317,6 +358389,28 @@
       "relocation_count": 0
     },
     {
+      "address": "0xcf4e80",
+      "size": 620,
+      "exact": true,
+      "target_sha256": "a2279dd082d7b8e3f9a306e3f17089a292ab04c558ef54dc1fc000bfb2e4a1c0",
+      "compiled_sha256": "a2279dd082d7b8e3f9a306e3f17089a292ab04c558ef54dc1fc000bfb2e4a1c0",
+      "source": "src/SndGearObjectPool.cpp",
+      "symbol": "_ZN7SndGear15BasicObjectPoolIN4Dare7Private28ManagerVoiceForVirtualPlayerINS2_16ManagerToolVoiceEEE26DareGearContainerInterfaceNS_7NulLockEE4FreeEPvb",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 8
+    },
+    {
+      "address": "0xcf5500",
+      "size": 280,
+      "exact": true,
+      "target_sha256": "88041d22a1f51a903836e1b723475948276ae2ca4486e049a7a55bdcf150cb2c",
+      "compiled_sha256": "88041d22a1f51a903836e1b723475948276ae2ca4486e049a7a55bdcf150cb2c",
+      "source": "src/SndGearObjectPool.cpp",
+      "symbol": "_ZN7SndGear15BasicObjectPoolIN4Dare7Private28ManagerVoiceForVirtualPlayerINS2_17ManagerThemeVoiceEEE26DareGearContainerInterfaceNS_7NulLockEED0Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 13
+    },
+    {
       "address": "0xcf5870",
       "size": 16,
       "exact": true,
@@ -358326,6 +358420,28 @@
       "symbol": "RecoveredLeaf_cf5870",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 0
+    },
+    {
+      "address": "0xcf5880",
+      "size": 620,
+      "exact": true,
+      "target_sha256": "e63b79e0e67be58b4323a88fe7958dc3d63bd7d3c63c7df82beb7cb188ad080b",
+      "compiled_sha256": "e63b79e0e67be58b4323a88fe7958dc3d63bd7d3c63c7df82beb7cb188ad080b",
+      "source": "src/SndGearObjectPool.cpp",
+      "symbol": "_ZN7SndGear15BasicObjectPoolIN4Dare7Private28ManagerVoiceForVirtualPlayerINS2_17ManagerThemeVoiceEEE26DareGearContainerInterfaceNS_7NulLockEE4FreeEPvb",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 8
+    },
+    {
+      "address": "0xcf5f00",
+      "size": 280,
+      "exact": true,
+      "target_sha256": "35e12318dd121f27d8ed94deeb7c5d8df9bfe04abd6a172399f79f5c025de7d9",
+      "compiled_sha256": "35e12318dd121f27d8ed94deeb7c5d8df9bfe04abd6a172399f79f5c025de7d9",
+      "source": "src/SndGearObjectPool.cpp",
+      "symbol": "_ZN13BasicDarePoolIN4Dare7Private28ManagerVoiceForVirtualPlayerINS1_17ManagerThemeVoiceEEEN7SndGear7NulLockEED0Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 13
     },
     {
       "address": "0xcf6020",
@@ -358350,6 +358466,17 @@
       "relocation_count": 1
     },
     {
+      "address": "0xcf6040",
+      "size": 280,
+      "exact": true,
+      "target_sha256": "3697b882fc43e582a578bdd0936dc3c3e38d947fed9a9146da8e1abee12f5e78",
+      "compiled_sha256": "3697b882fc43e582a578bdd0936dc3c3e38d947fed9a9146da8e1abee12f5e78",
+      "source": "src/SndGearObjectPool.cpp",
+      "symbol": "_ZN13BasicDarePoolIN4Dare7Private28ManagerVoiceForVirtualPlayerINS1_16ManagerToolVoiceEEEN7SndGear7NulLockEED0Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 13
+    },
+    {
       "address": "0xcf6160",
       "size": 4,
       "exact": true,
@@ -358370,6 +358497,17 @@
       "symbol": "RecoveredLeaf_cf6170",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 1
+    },
+    {
+      "address": "0xcf6180",
+      "size": 280,
+      "exact": true,
+      "target_sha256": "28efa267ed53c55efcf5fadb16768ec913604f63ecc9c11dc3b40421f1d00349",
+      "compiled_sha256": "28efa267ed53c55efcf5fadb16768ec913604f63ecc9c11dc3b40421f1d00349",
+      "source": "src/SndGearObjectPool.cpp",
+      "symbol": "_ZN13BasicDarePoolIN4Dare7Private28ManagerVoiceForVirtualPlayerINS1_20ManagerHardwareVoiceEEEN7SndGear7NulLockEED0Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 13
     },
     {
       "address": "0xcf62a0",
@@ -358427,6 +358565,17 @@
       "relocation_count": 0
     },
     {
+      "address": "0xcf7ac0",
+      "size": 280,
+      "exact": true,
+      "target_sha256": "001eb4ab63097ac879a9dc7025144c329f808f57f98e4d5b117af1c2eaea5655",
+      "compiled_sha256": "001eb4ab63097ac879a9dc7025144c329f808f57f98e4d5b117af1c2eaea5655",
+      "source": "src/SndGearObjectPool.cpp",
+      "symbol": "_ZN7SndGear15BasicObjectPoolI19CVirtualPlayerVoice26DareGearContainerInterfaceNS_7NulLockEED2Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 12
+    },
+    {
       "address": "0xcf7be0",
       "size": 112,
       "exact": true,
@@ -358438,6 +358587,17 @@
       "relocation_count": 5
     },
     {
+      "address": "0xcf7c50",
+      "size": 280,
+      "exact": true,
+      "target_sha256": "3b6f49fe21bc10b875fa52ffe2255d8438990d1b74fcce214c35f97d7b83e77b",
+      "compiled_sha256": "3b6f49fe21bc10b875fa52ffe2255d8438990d1b74fcce214c35f97d7b83e77b",
+      "source": "src/SndGearObjectPool.cpp",
+      "symbol": "_ZN7SndGear15BasicObjectPoolI19CVirtualPlayerVoice26DareGearContainerInterfaceNS_7NulLockEED0Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 13
+    },
+    {
       "address": "0xcf7fc0",
       "size": 16,
       "exact": true,
@@ -358447,6 +358607,17 @@
       "symbol": "RecoveredLeaf_cf7fc0",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 0
+    },
+    {
+      "address": "0xcf7fd0",
+      "size": 596,
+      "exact": true,
+      "target_sha256": "d13fbef18963b35c6d33dc4b4c21abcc71f641dd3da9142f17defb6330065037",
+      "compiled_sha256": "d13fbef18963b35c6d33dc4b4c21abcc71f641dd3da9142f17defb6330065037",
+      "source": "src/SndGearObjectPool.cpp",
+      "symbol": "_ZN7SndGear15BasicObjectPoolI19CVirtualPlayerVoice26DareGearContainerInterfaceNS_7NulLockEE4FreeEPvb",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 8
     },
     {
       "address": "0xcf8750",
@@ -360097,6 +360268,17 @@
       "symbol": "_Z16DestroyAllocatedILj13703888EEvPv",
       "source_review": "manual_reconstruction",
       "relocation_count": 2
+    },
+    {
+      "address": "0xd11af0",
+      "size": 280,
+      "exact": true,
+      "target_sha256": "f16e9f7acf7f5635e7100273308cf4ead2df7dacd5222d1172b3cc9daf0ece99",
+      "compiled_sha256": "f16e9f7acf7f5635e7100273308cf4ead2df7dacd5222d1172b3cc9daf0ece99",
+      "source": "src/SndGearObjectPool.cpp",
+      "symbol": "_ZN13BasicDarePoolI19CVirtualPlayerVoiceN7SndGear7NulLockEED0Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 13
     },
     {
       "address": "0xd11c10",
@@ -372067,6 +372249,28 @@
       "relocation_count": 2
     },
     {
+      "address": "0xda4410",
+      "size": 280,
+      "exact": true,
+      "target_sha256": "f5332518fb9064329e5aacf11ce16dbd65df4b60ea5a15da085a81d4512e87de",
+      "compiled_sha256": "f5332518fb9064329e5aacf11ce16dbd65df4b60ea5a15da085a81d4512e87de",
+      "source": "src/SndGearObjectPool.cpp",
+      "symbol": "_ZN7SndGear15BasicObjectPoolI12CBlockMemory26DareGearContainerInterfaceNS_7NulLockEED2Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 12
+    },
+    {
+      "address": "0xda4530",
+      "size": 280,
+      "exact": true,
+      "target_sha256": "eedab86ea6dec0e808d26507a2e8495376db8348009e5a93416b8f4ea6755e28",
+      "compiled_sha256": "eedab86ea6dec0e808d26507a2e8495376db8348009e5a93416b8f4ea6755e28",
+      "source": "src/SndGearObjectPool.cpp",
+      "symbol": "_ZN7SndGear15BasicObjectPoolI12CBlockMemory26DareGearContainerInterfaceNS_7NulLockEED0Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 13
+    },
+    {
       "address": "0xda48a0",
       "size": 16,
       "exact": true,
@@ -372133,6 +372337,28 @@
       "relocation_count": 8
     },
     {
+      "address": "0xda5a00",
+      "size": 280,
+      "exact": true,
+      "target_sha256": "d5e5c184e4a1da38a60487746abe7c63470c0cfc01877411b48ce26f0338ae36",
+      "compiled_sha256": "d5e5c184e4a1da38a60487746abe7c63470c0cfc01877411b48ce26f0338ae36",
+      "source": "src/SndGearObjectPool.cpp",
+      "symbol": "_ZN7SndGear15BasicObjectPoolI16CDataBlockMemory26DareGearContainerInterfaceNS_7NulLockEED2Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 12
+    },
+    {
+      "address": "0xda5b20",
+      "size": 280,
+      "exact": true,
+      "target_sha256": "a458b199939f238ade7f7a574415742ac866a3590beea37d2cdf48fd72de4efc",
+      "compiled_sha256": "a458b199939f238ade7f7a574415742ac866a3590beea37d2cdf48fd72de4efc",
+      "source": "src/SndGearObjectPool.cpp",
+      "symbol": "_ZN7SndGear15BasicObjectPoolI16CDataBlockMemory26DareGearContainerInterfaceNS_7NulLockEED0Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 13
+    },
+    {
       "address": "0xda5e90",
       "size": 16,
       "exact": true,
@@ -372177,6 +372403,28 @@
       "relocation_count": 1
     },
     {
+      "address": "0xda62f0",
+      "size": 280,
+      "exact": true,
+      "target_sha256": "1be622a5b1e3a2ddbbef6fd097adb1f3ef7b41fb7aa1b70a0601941c369d3020",
+      "compiled_sha256": "1be622a5b1e3a2ddbbef6fd097adb1f3ef7b41fb7aa1b70a0601941c369d3020",
+      "source": "src/SndGearObjectPool.cpp",
+      "symbol": "_ZN7SndGear15BasicObjectPoolIN4Dare7Private15EESourceVoiceSWE26DareGearContainerInterfaceNS_7NulLockEED2Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 12
+    },
+    {
+      "address": "0xda69e0",
+      "size": 280,
+      "exact": true,
+      "target_sha256": "02f386cc083962adc22e3da39283fc350c32140734b485cde46ea31bd4534df2",
+      "compiled_sha256": "02f386cc083962adc22e3da39283fc350c32140734b485cde46ea31bd4534df2",
+      "source": "src/SndGearObjectPool.cpp",
+      "symbol": "_ZN7SndGear15BasicObjectPoolIN4Dare7Private5VoiceE26DareGearContainerInterfaceNS_7NulLockEED2Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 12
+    },
+    {
       "address": "0xda6b50",
       "size": 76,
       "exact": true,
@@ -372188,6 +372436,17 @@
       "relocation_count": 5
     },
     {
+      "address": "0xda6ba0",
+      "size": 280,
+      "exact": true,
+      "target_sha256": "5900dd3d8d7fa8320ea4d64822453df28211658cef8c9a02f7e8aa804b6436b4",
+      "compiled_sha256": "5900dd3d8d7fa8320ea4d64822453df28211658cef8c9a02f7e8aa804b6436b4",
+      "source": "src/SndGearObjectPool.cpp",
+      "symbol": "_ZN7SndGear15BasicObjectPoolIN4Dare7Private5VoiceE26DareGearContainerInterfaceNS_7NulLockEED0Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 13
+    },
+    {
       "address": "0xda6f10",
       "size": 16,
       "exact": true,
@@ -372197,6 +372456,17 @@
       "symbol": "RecoveredLeaf_da6f10",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 0
+    },
+    {
+      "address": "0xda6f20",
+      "size": 620,
+      "exact": true,
+      "target_sha256": "040039be277b0aabc4d465eeeb9c6c7a0e4ddfa45efce384c4d59d56ad4d8e21",
+      "compiled_sha256": "040039be277b0aabc4d465eeeb9c6c7a0e4ddfa45efce384c4d59d56ad4d8e21",
+      "source": "src/SndGearObjectPool.cpp",
+      "symbol": "_ZN7SndGear15BasicObjectPoolIN4Dare7Private5VoiceE26DareGearContainerInterfaceNS_7NulLockEE4FreeEPvb",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 8
     },
     {
       "address": "0xda7af0",
@@ -372408,6 +372678,17 @@
       "relocation_count": 1
     },
     {
+      "address": "0xdabb90",
+      "size": 280,
+      "exact": true,
+      "target_sha256": "f292805c4a887f2242ea3196065eac35adffd1ab3533f10b9a825d0f268cb76d",
+      "compiled_sha256": "f292805c4a887f2242ea3196065eac35adffd1ab3533f10b9a825d0f268cb76d",
+      "source": "src/SndGearObjectPool.cpp",
+      "symbol": "_ZN7SndGear15BasicObjectPoolIN4Dare7Private15EESourceVoiceSWE26DareGearContainerInterfaceNS_7NulLockEED0Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 13
+    },
+    {
       "address": "0xdabf00",
       "size": 16,
       "exact": true,
@@ -372417,6 +372698,17 @@
       "symbol": "RecoveredLeaf_dabf00",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 0
+    },
+    {
+      "address": "0xdabf10",
+      "size": 612,
+      "exact": true,
+      "target_sha256": "2e1896d20c7571d7b6ed0e5ee0e33eae1392846f99d3494b6d27a8037302550b",
+      "compiled_sha256": "2e1896d20c7571d7b6ed0e5ee0e33eae1392846f99d3494b6d27a8037302550b",
+      "source": "src/SndGearObjectPool.cpp",
+      "symbol": "_ZN7SndGear15BasicObjectPoolIN4Dare7Private15EESourceVoiceSWE26DareGearContainerInterfaceNS_7NulLockEE4FreeEPvb",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 9
     },
     {
       "address": "0xdac8e0",
