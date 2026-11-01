@@ -2202,7 +2202,7 @@ int Patel::State266(int event) {
         motionTarget = onyx::Vector3::Zero();
         BaseCharacter* player = static_cast<BaseCharacter*>(target->object);
         ActorObject* actor = onyx::Find<ActorObject, onyx_types::type_6492d61d>(player->actorObject);
-        Slot91(onyx::Get<onyx::Transform, onyx::kTransform>(actor->transform)->position.x);
+        FaceX(onyx::Get<onyx::Transform, onyx::kTransform>(actor->transform)->position.x);
         PlayAnimation(32, 0, 1, 1.0f);
         StartAttack(&attackE08.attack, false, 1, nullptr);
         return kStateHandled;
@@ -2227,7 +2227,7 @@ int Roxy::State264(int event) {
         motionTarget = onyx::Vector3::Zero();
         BaseCharacter* player = static_cast<BaseCharacter*>(target->object);
         ActorObject* actor = onyx::Find<ActorObject, onyx_types::type_6492d61d>(player->actorObject);
-        Slot91(onyx::Get<onyx::Transform, onyx::kTransform>(actor->transform)->position.x);
+        FaceX(onyx::Get<onyx::Transform, onyx::kTransform>(actor->transform)->position.x);
         PlayAnimation(31, 0, 1, 1.0f);
         StartAttack(&attackE00.attack, false, 1, nullptr);
         return kStateHandled;
@@ -2252,7 +2252,7 @@ int Roxy::State266(int event) {
         motionTarget = onyx::Vector3::Zero();
         BaseCharacter* player = static_cast<BaseCharacter*>(target->object);
         ActorObject* actor = onyx::Find<ActorObject, onyx_types::type_6492d61d>(player->actorObject);
-        Slot91(onyx::Get<onyx::Transform, onyx::kTransform>(actor->transform)->position.x);
+        FaceX(onyx::Get<onyx::Transform, onyx::kTransform>(actor->transform)->position.x);
         PlayAnimation(180, 0, 1, 1.0f);
         StartAttack(&attackEf0.attack, false, 1, nullptr);
         return kStateHandled;
@@ -2277,7 +2277,7 @@ int Roxy::State268(int event) {
         motionTarget = onyx::Vector3::Zero();
         BaseCharacter* player = static_cast<BaseCharacter*>(target->object);
         ActorObject* actor = onyx::Find<ActorObject, onyx_types::type_6492d61d>(player->actorObject);
-        Slot91(onyx::Get<onyx::Transform, onyx::kTransform>(actor->transform)->position.x);
+        FaceX(onyx::Get<onyx::Transform, onyx::kTransform>(actor->transform)->position.x);
         PlayAnimation(174, 0, 1, 1.0f);
         StartAttack(&attackE78.attack, false, 1, nullptr);
         return kStateHandled;
@@ -2332,7 +2332,7 @@ int Patel::State264(int event) {
         motionTarget = onyx::Vector3::Zero();
         BaseCharacter* player = static_cast<BaseCharacter*>(target->object);
         ActorObject* actor = onyx::Find<ActorObject, onyx_types::type_6492d61d>(player->actorObject);
-        Slot91(onyx::Get<onyx::Transform, onyx::kTransform>(actor->transform)->position.x);
+        FaceX(onyx::Get<onyx::Transform, onyx::kTransform>(actor->transform)->position.x);
         CallA41ca0();
         StartAttack(&attackD90.attack, false, 1, nullptr);
         return kStateHandled;
@@ -2366,7 +2366,7 @@ int KenKyle::State198(int event) {
         if (result == kStateParentTookOver) return result;
         BaseCharacter* player = static_cast<BaseCharacter*>(target->object);
         ActorObject* actor = onyx::Find<ActorObject, onyx_types::type_6492d61d>(player->actorObject);
-        Slot91(onyx::Get<onyx::Transform, onyx::kTransform>(actor->transform)->position.x);
+        FaceX(onyx::Get<onyx::Transform, onyx::kTransform>(actor->transform)->position.x);
         stateTime = 0.0f;
         timeD50 = 0.0f;
         if (SameTarget(this, Twin(this)) && TargetDistance(this, targetIndex) <= range10dc &&

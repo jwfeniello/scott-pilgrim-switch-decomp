@@ -192,7 +192,7 @@ int BaseCharacter::State112(int event) {
                 states.Transition(State122Ptr());
             } else {
                 bool second;
-                if (Slot148(&second)) {
+                if (HealWithGuts(&second)) {
                     if (second) states.Transition(State124Ptr());
                     else states.Transition(State122Ptr());
                 } else if (Slot156()) {

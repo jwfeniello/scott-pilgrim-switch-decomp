@@ -25,8 +25,8 @@ void ControllablePlayer::Slot76() {
         BaseCharacter::Slot76();
 }
 
-void ControllablePlayer::Slot87(void* data, bool a, bool b, BaseCharacter* other) {
-    BaseCharacter::Slot87(data, a, b, other);
+void ControllablePlayer::PlayAnimationOn(int animation, bool loop, bool flag, BaseCharacter* other, float speed) {
+    BaseCharacter::PlayAnimationOn(animation, loop, flag, other, speed);
     if (other) {
         ActorObject* actor = onyx::Find<ActorObject, onyx_types::type_6492d61d>(other->actorObject);
         ActorFlags* flags = onyx::Get<ActorFlags, 0x2eae5813u>(actor->flags);

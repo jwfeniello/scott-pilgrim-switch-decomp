@@ -273,7 +273,7 @@ int Enemy::State174(int event) {
         if (specialType >= 2 && specialType <= 4) flag813 = 0;
         BaseCharacter* player = static_cast<BaseCharacter*>(target->object);
         ActorObject* actor = onyx::Find<ActorObject, onyx_types::type_6492d61d>(player->actorObject);
-        Slot91(onyx::Get<onyx::Transform, onyx::kTransform>(actor->transform)->position.x);
+        FaceX(onyx::Get<onyx::Transform, onyx::kTransform>(actor->transform)->position.x);
         Enter9db480();
         mode87c = 2;
         flag9d2 = 0;

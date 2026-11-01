@@ -120,11 +120,11 @@ struct Player {
     virtual void Slot84();
     virtual void Slot85();
     virtual void Slot86();
-    virtual void Slot87();
+    virtual void PlayAnimationOn();
     virtual void Slot88();
     virtual void AddGuts();
     virtual void LoseGuts();
-    virtual void Slot91();
+    virtual void FaceX();
     virtual void Slot92();
     virtual void Slot93();
     virtual void Slot94();
@@ -181,7 +181,7 @@ struct Player {
     virtual void Slot145();
     virtual void Slot146();
     virtual void Slot147();
-    virtual void Slot148();
+    virtual void HealWithGuts();
     virtual void Slot149();
     virtual void MaxGuts();
     virtual void GutsCostScale();

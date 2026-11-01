@@ -206,6 +206,14 @@ A few more things decide these handlers' code:
   callee-saved register from before the jump (`mov w20, #1` ahead of `br x10`). They
   match with `int result = kStateHandled;` and `case kStateEvent3: return result;`.
   The others match with plain returns.
+- **Calling a state change last.** Many of the calls to `Transition` that end a
+  function are plain calls followed by a return, not tail calls. An assumption right after
+  the call stops the tail call and emits no code, so `PlayAnimationOn` (`0x970900`) matches
+  with `states.AssertOwner(this)` after it. This is the same no-code assumption as in the
+  exit cases.
+- **Declared parameter types show up in callers.** `SetFacing` takes an `int`. Its own code
+  looks the same with a `uint8_t`, but `PlayAnimationOn` only schedules its load of the
+  argument correctly with the wider type.
 - **Loads after slow paths.** A value read before an accessor's slow path stays in a
   callee-saved register across it. `slideSpeed * FacingSign()` holds the speed in
   `d8`; computing the sign into a local first gives the original's code.

@@ -12,8 +12,8 @@ void ControllablePlayer::TurnAround() {
     flag13c1 = flags->facingLeft ^ 1;
 }
 
-void ControllablePlayer::Slot91(float x) {
-    BaseCharacter::Slot91(x);
+void ControllablePlayer::FaceX(float x) {
+    BaseCharacter::FaceX(x);
     ActorObject* actor = onyx::Find<ActorObject, onyx_types::type_6492d61d>(actorObject);
     ActorFlags* flags = onyx::Get<ActorFlags, 0x2eae5813u>(actor->flags);
     flag13c1 = flags->facingLeft ^ 1;

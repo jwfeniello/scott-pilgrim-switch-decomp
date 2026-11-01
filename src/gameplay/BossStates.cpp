@@ -261,7 +261,7 @@ int Boss::State198(int event) {
         if (result == kStateParentTookOver) return result;
         BaseCharacter* player = static_cast<BaseCharacter*>(target->object);
         ActorObject* actor = onyx::Find<ActorObject, onyx_types::type_6492d61d>(player->actorObject);
-        Slot91(onyx::Get<onyx::Transform, onyx::kTransform>(actor->transform)->position.x);
+        FaceX(onyx::Get<onyx::Transform, onyx::kTransform>(actor->transform)->position.x);
         return kStateHandled;
     }
     case kStateEvent3:

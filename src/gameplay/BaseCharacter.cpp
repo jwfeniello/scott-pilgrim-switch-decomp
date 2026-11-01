@@ -8,7 +8,7 @@ extern "C" int32_t Attack_NextId;   // 0x1925328
 namespace SPTG {
 
 // Slot 28 (0x93fcf0): which way the character faces.
-void BaseCharacter::SetFacing(uint8_t left) {
+void BaseCharacter::SetFacing(int left) {
     ActorFlags* flags = onyx::Get<ActorFlags, 0x2eae5813u>(onyx::Find<ActorObject, 0x6492d61du>(actorObject)->flags);
     flags->facingLeft = left & 1;
 }
@@ -331,6 +331,79 @@ void BaseCharacter::Slot4(onyx::Archive& archive, ComponentSlot::Source* source)
     ReadEventSlot<9872120u, 740840452u>(archive, source, event750, this);
     onyx::Transfer(archive, flag775);
     onyx::Transfer(archive, value778);
+}
+
+// Out, in the air or in slot 84's or 85's condition, it only slows for a moment. Otherwise it stops and
+// moves to the state at slot 106.
+void BaseCharacter::Slot42() {
+    if (IsOut() || !IsOnGround() || Slot85() || Slot84()) {
+        if (hitStopLeft <= 0.0f) {
+            hitStopSpeed = 0.1f;
+            float speed = animationSpeed;
+            SetAnimationSpeed(0.1f);
+            animationSpeed = speed;
+            hitStopLeft = 1.0f;
+        }
+    } else {
+        motion = onyx::Vector3::Zero();
+        motionTarget = onyx::Vector3::Zero();
+        value12c = 1;
+        timer330 = value524;
+        states.Transition(State106Ptr());
+    }
+}
+
+// Buys health with guts: +0x310 health at +0x30c guts each, or as much as the guts left will buy. Returns
+// false when there are none, or +0x511 is set.
+bool BaseCharacter::HealWithGuts(bool* out) {
+    bool healed = false;
+    if (flag511 || __builtin_fabsf(guts) <= 0.000001f) {
+        healed = false;
+    } else {
+        float amount = value310;
+        float limit = MaxHealth();
+        amount = amount < limit ? amount : limit;
+        float cost = __builtin_ceilf(value30c * amount * GutsCostScale());
+        float available = guts;
+        if (cost > available || __builtin_fabsf(cost - available) <= 0.000002f) {
+            float rate = value30c;
+            if (__builtin_fabsf(rate) <= 0.000001f) amount = value310;
+            else amount = __builtin_ceilf(available / rate);
+            cost = available;
+        }
+        if (cost < available || __builtin_fabsf(cost - available) <= 0.000002f) {
+            GainHealth(amount);
+            LoseGuts(cost);
+        }
+        healed = true;
+    }
+    if (out) *out = healed;
+    return healed;
+}
+
+// Turns around when `x` is on the other side from the way the actor faces.
+void BaseCharacter::FaceX(float x) {
+    ActorObject* actor = onyx::Find<ActorObject, onyx_types::type_6492d61d>(actorObject);
+    float offset = x - onyx::Get<onyx::Transform, onyx::kTransform>(actor->transform)->position.x;
+    ActorFlags* flags = onyx::Get<ActorFlags, 0x2eae5813u>(onyx::Find<ActorObject, onyx_types::type_6492d61d>(actorObject)->flags);
+    if ((offset > 0.0f) != !flags->facingLeft) TurnAround();
+}
+
+// Plays an animation and moves onto `other`, facing the way it faces, then switches to the state at slot 144.
+void BaseCharacter::PlayAnimationOn(int animation, bool loop, bool flag, BaseCharacter* other, float speed) {
+    PlayAnimation(animation, loop, false, 1.0f);
+    SetAnimationSpeed(speed);
+    flag748 = flag;
+    if (other) {
+        ActorObject* actor = onyx::Find<ActorObject, onyx_types::type_6492d61d>(actorObject);
+        ActorObject* target = onyx::Find<ActorObject, onyx_types::type_6492d61d>(other->actorObject);
+        ActorFlags* flags = onyx::Find<ActorFlags, 0x2eae5813u>(target->flags);
+        onyx::Vector3 position = onyx::Get<onyx::Transform, onyx::kTransform>(target->transform)->Position();
+        SetFacing(flags->facingLeft);
+        onyx::Find<onyx::Transform, onyx::kTransform>(actor->transform)->SetPosition(position);
+    }
+    states.Transition(State144Ptr());
+    states.AssertOwner(this);
 }
 
 }  // namespace SPTG

@@ -138,7 +138,7 @@ struct BaseCharacter : onyx::Component {
     virtual void SetAnimationSpeed(float speed);                             // slot 25
     virtual void SetAnimationPaused(bool paused);                            // slot 26
     virtual bool AnimationDone();                                            // slot 27
-    virtual void SetFacing(uint8_t left);                                          // slot 28
+    virtual void SetFacing(int left);                                          // slot 28
     SPTG_SLOT(29)
     virtual void TurnAround();                                               // slot 30
     virtual void Slot31Action();                                             // slot 31
@@ -190,14 +190,14 @@ struct BaseCharacter : onyx::Component {
     virtual float Slot81();                                                  // slot 81
     virtual bool Slot82();                                                   // slot 82
     virtual bool Slot83();                                                   // slot 83
-    SPTG_SLOT(84)
+    virtual bool Slot84();                                                   // slot 84
     virtual bool Slot85();                                                   // slot 85
     virtual void Slot86();                                                   // slot 86
-    virtual void Slot87(void* data, bool a, bool b, BaseCharacter* other);   // slot 87
+    virtual void PlayAnimationOn(int animation, bool loop, bool flag, BaseCharacter* other, float speed); // slot 87
     virtual bool Slot88(float amount);                                       // slot 88
     virtual void AddGuts(float amount);                                      // slot 89
     virtual void LoseGuts(float value);                                        // slot 90
-    virtual void Slot91(float x);                                            // slot 91
+    virtual void FaceX(float x);                                            // slot 91
     virtual void Slot92(void* data);                                         // slot 92
     virtual void Slot93(const HitValue* hit);                                // slot 93
     virtual void Slot94();                                                   // slot 94
@@ -228,7 +228,7 @@ struct BaseCharacter : onyx::Component {
     virtual int State142(int event); virtual State State142Ptr();            // slots 142, 143
     virtual int State144(int event); virtual State State144Ptr();            // slots 144, 145
     SPTG_SLOT(146) SPTG_SLOT(147)
-    virtual bool Slot148(bool* out);                                         // slot 148
+    virtual bool HealWithGuts(bool* out);                                         // slot 148
     virtual float Slot149();                                                 // slot 149
     virtual float MaxGuts();                                                 // slot 150
     virtual float GutsCostScale();                                                 // slot 151
@@ -328,8 +328,8 @@ struct BaseCharacter : onyx::Component {
     int32_t value300;            // +0x300
     int32_t value304;            // +0x304
     int32_t value308;            // +0x308
-    int32_t value30c;            // +0x30c
-    int32_t value310;            // +0x310
+    float value30c;              // +0x30c
+    float value310;              // +0x310
     float chargeGain;            // +0x314: the most an attack is scaled by a full charge
     float chargeTime;            // +0x318: the time a full charge takes
     int32_t value31c;            // +0x31c
@@ -482,7 +482,23 @@ struct AttackInput {
     };
     AttackInput() { bits = 0; value0 = 0; }
 };
+// A player's saved progress: the moves learned and the worlds cleared.
+struct PlayerRecord : onyx::Component {
+    char padding_8[0x59];
+    uint8_t moves;               // +0x61
+    char padding_62[0x32];
+    uint8_t allMoves;            // +0x94
+};
+enum PlayerMove {
+    kMoveAirKick = 0x04,
+    kMoveAirAttack = 0x10,
+};
 struct ControllablePlayer : BaseCharacter {
+    PlayerRecord* Record() { return onyx::Get<PlayerRecord, 1180775934u>(handle7d8); }
+    bool KnowsMove(int move) {
+        PlayerRecord* record = Record();
+        return (record->moves & move) || record->allMoves;
+    }
     void ReadAttackInput(AttackInput* out);              // 0x991a20
     bool ReadMoveInput(PlayerInput* from, onyx::Vector3* out);  // 0x9913a0
     void TurnToMoveInput();                              // 0x993550
@@ -507,13 +523,13 @@ struct ControllablePlayer : BaseCharacter {
     float Slot152() override;
     void Slot20() override;
     void Slot76() override;
-    void Slot87(void* data, bool a, bool b, BaseCharacter* other) override;
+    void PlayAnimationOn(int animation, bool loop, bool flag, BaseCharacter* other, float speed) override;
     bool Slot88(float amount) override;
     int State114(int event) override;
     void TurnAround() override;
     bool Slot34Check() override;
     void Slot43(float value) override;
-    void Slot91(float x) override;
+    void FaceX(float x) override;
     int State126(int event) override;
     int State138(int event) override;
     SPTG_SLOT(160)
@@ -565,7 +581,7 @@ struct ControllablePlayer : BaseCharacter {
     virtual int State251(int event); virtual State State251Ptr();              // slots 251, 252
     virtual int State253(int event); virtual State State253Ptr();              // slots 253, 254
     virtual int Slot255(int event);                          // slot 255
-    SPTG_SLOT(256)
+    virtual int AirInput(int event);                         // slot 256
     virtual void Slot257();                                  // slot 257
 
     char padding_77c[0xc];
@@ -681,7 +697,7 @@ struct ControllablePlayer : BaseCharacter {
     int32_t value1254;           // +0x1254
     uint8_t flag1258;            // +0x1258
     char padding_1259[0xf];
-    int32_t value1268;           // +0x1268
+    float value1268;             // +0x1268
     int32_t value126c;           // +0x126c
     int32_t value1270;           // +0x1270
     char padding_1274[0xc];
@@ -756,7 +772,9 @@ struct ControllablePlayer : BaseCharacter {
     int32_t value141c;           // +0x141c
     char padding_1420[0xc];
     float value142c[6];          // +0x142c
-    char padding_1444[0x88];
+    char padding_1444[0x7c];
+    int32_t airAttackCount;      // +0x14c0: since the last landing
+    char padding_14c4[0x8];
     int32_t value14cc;           // +0x14cc
     int32_t value14d0;           // +0x14d0
     int32_t value14d4;           // +0x14d4
