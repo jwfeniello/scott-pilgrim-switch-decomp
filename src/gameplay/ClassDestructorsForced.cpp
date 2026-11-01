@@ -491,6 +491,14 @@ namespace Onyx {
 struct AnimaticInstance : Baseaf4310 { ListenerOut<183775494> member_98; ListenerOut<183775493> member_b0; ListenerOut<183775492> member_c8; ListenerOut<183775491> member_e0; ListenerOut<183775490> member_f8; Member<183775489> member_110; virtual void Key(); ~AnimaticInstance(); };
 AnimaticInstance::~AnimaticInstance() {  }
 }
+struct Buffer190738434 { uint64_t w0; uint64_t w8; uint64_t w10; uint64_t w18; void* w20; __attribute__((always_inline)) void Destroy() { w10 = 0; if (w20) FreeObject(w20); w20 = 0; w8 = 0; w10 = 0; } };
+struct Baseb5e700 { virtual ~Baseb5e700(); char padding[96]; };
+struct Levelb5e700_2 : Baseb5e700 { Member<190738435> member_68; virtual void Key2(); DT_INLINE ~Levelb5e700_2() {} };
+struct Levelb5e700_1 : Levelb5e700_2 { char padding_69[15]; Auto<Buffer190738434> member_78; virtual void Key1(); DT_INLINE ~Levelb5e700_1() {} };
+namespace Onyx { 
+struct RenderDirectorBase : Levelb5e700_1 { char padding_a0[8]; ListenerOut<190738433> member_a8; virtual void Key(); ~RenderDirectorBase(); };
+RenderDirectorBase::~RenderDirectorBase() {  }
+}
 struct Baseb99bb0 { virtual ~Baseb99bb0(); char padding[80]; };
 namespace Onyx { namespace Collision { 
 struct Collision2D : Baseb99bb0 { ListenerInline<194624258> member_58; ListenerInline<194624257> member_70; virtual void Key(); ~Collision2D(); };
@@ -540,6 +548,20 @@ namespace Onyx { namespace Graphics {
 struct SetAmbientGroup : Basec96750 { ListenerOut<211186947> member_58; ListenerOut<211186946> member_70; ListenerOut<211186945> member_88; virtual void Key(); ~SetAmbientGroup(); };
 SetAmbientGroup::~SetAmbientGroup() {  }
 }}
+struct Buffer211990018 { uint64_t w0; uint64_t w8; uint64_t w10; uint64_t w18; void* w20; __attribute__((always_inline)) void Destroy() { w10 = 0; if (w20) FreeObject(w20); w20 = 0; w8 = 0; w10 = 0; } };
+struct Baseca2b60 { virtual ~Baseca2b60(); char padding[104]; };
+struct Levelca2b60_1 : Baseca2b60 { Auto<Buffer211990018> member_70; virtual void Key1(); DT_INLINE ~Levelca2b60_1() {} };
+namespace Onyx { 
+struct WaypointLinkGraphicsCatalog : Levelca2b60_1 { char padding_98[8]; ListenerOut<211990017> member_a0; virtual void Key(); ~WaypointLinkGraphicsCatalog(); };
+WaypointLinkGraphicsCatalog::~WaypointLinkGraphicsCatalog() {  }
+}
+struct Buffer213222146 { uint64_t w0; uint64_t w8; uint64_t w10; uint64_t w18; void* w20; __attribute__((always_inline)) void Destroy() { w10 = 0; if (w20) FreeObject(w20); w20 = 0; w8 = 0; w10 = 0; } };
+struct Basecb5830 { virtual ~Basecb5830(); char padding[104]; };
+struct Levelcb5830_1 : Basecb5830 { Auto<Buffer213222146> member_70; virtual void Key1(); DT_INLINE ~Levelcb5830_1() {} };
+namespace Onyx { 
+struct DirectionalArrowCatalog : Levelcb5830_1 { char padding_98[8]; ListenerOut<213222145> member_a0; virtual void Key(); ~DirectionalArrowCatalog(); };
+DirectionalArrowCatalog::~DirectionalArrowCatalog() {  }
+}
 struct Basecd12d0 { virtual ~Basecd12d0(); char padding[72]; };
 struct Levelcd12d0_1 : Basecd12d0 { Member<215035138> member_50; virtual void Key1(); DT_INLINE ~Levelcd12d0_1() {} };
 namespace Onyx { 
@@ -578,4 +600,11 @@ struct Levelceb930_1 : Baseceb930 { Member<216765194> member_50; virtual void Ke
 namespace Onyx { 
 struct Character : Levelceb930_1 { char padding_51[63]; ListenerOut<216765193> member_90; ListenerOut<216765192> member_a8; ListenerOut<216765191> member_c0; ListenerOut<216765190> member_d8; ListenerOut<216765189> member_f0; ListenerOut<216765188> member_108; ListenerOut<216765187> member_120; ListenerOut<216765186> member_138; ListenerOut<216765185> member_150; virtual void Key(); ~Character(); };
 Character::~Character() {  }
+}
+struct Buffer216947202 { uint64_t w0; uint64_t w8; uint64_t w10; uint64_t w18; void* w20; __attribute__((always_inline)) void Destroy() { w10 = 0; if (w20) FreeObject(w20); w20 = 0; w8 = 0; w10 = 0; } };
+struct Basecee5a0 { virtual ~Basecee5a0(); char padding[104]; };
+struct Levelcee5a0_1 : Basecee5a0 { Auto<Buffer216947202> member_70; virtual void Key1(); DT_INLINE ~Levelcee5a0_1() {} };
+namespace Onyx { 
+struct BillboardCatalog : Levelcee5a0_1 { char padding_98[8]; ListenerOut<216947201> member_a0; virtual void Key(); ~BillboardCatalog(); };
+BillboardCatalog::~BillboardCatalog() {  }
 }

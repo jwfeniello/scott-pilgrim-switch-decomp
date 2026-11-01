@@ -512399,6 +512399,19 @@
           "got_bindings": {}
         },
         {
+          "address": "0x793ad0",
+          "size": 272,
+          "symbol": "_ZN4Onyx13DrawnGraphicsILj7944912ELj152EE6Slot20EPNS_8DrawListE",
+          "target_sha256": "a28da4cdefbbed34bcc58c66756e83c75a38cce058a5294b58f36762f1d7c5ac",
+          "bindings": {
+            "memcpy": "0xfa3330",
+            "memmove": "0xfa33b0",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30"
+          },
+          "got_bindings": {}
+        },
+        {
           "address": "0x7ebde0",
           "size": 76,
           "symbol": "_ZN4SPTG9AsyncTaskILj8306144EE4TickEi",
@@ -512420,6 +512433,195 @@
           "symbol": "_ZN4SPTG9AsyncTaskILj8367200EE4TickEi",
           "target_sha256": "460b975c3e7ae0aa16ad7352ca80990e0ea4115c739b8cf5c5f4a305781319f2",
           "bindings": {},
+          "got_bindings": {}
+        },
+        {
+          "address": "0x8250d0",
+          "size": 468,
+          "symbol": "_ZN4SPTG11FlashScreenILj8540368EE12Slot27NotifyEv",
+          "target_sha256": "f295fc651b90d6c9b43e846b55d378aae500f2162937feb4006118f26cbbcce5",
+          "bindings": {
+            "MovieLock": "0xfa4950",
+            "_ZN4SPTG13DefaultSpriteEv": "0xf97b20",
+            "MovieUnlock": "0xfa4960",
+            "_ZN4SPTG14CaptureRunningE": "0x1925158",
+            "_ZN4SPTG7CaptureE": "0x1924bc0",
+            "SystemTick": "0xfa3b00",
+            "_ZN4SPTG9TickStartE": "0x195b648",
+            "_ZN4SPTG13TickFrequencyE": "0x195b670",
+            "_ZN4SPTG11FlashScreenILj8540368EE10BaseSlot27Ev": "0x7ff900",
+            "Onyx_ProjectSettings": "0x1935070",
+            "Accessor_Tracking": "0x1935068",
+            "Event_Notify": "0xbf6e80",
+            "_ZGVZN4onyx8SettingsEvE8defaults": "0x1935078",
+            "_ZZN4onyx8SettingsEvE8defaults": "0x1935080",
+            "__cxa_guard_acquire": "0xfa4130",
+            "__cxa_guard_release": "0xfa4140",
+            "_Unwind_Resume": "0xfa4920"
+          },
+          "got_bindings": {},
+          "literals": {
+            "554e4b4e4f574e20": "0x1331ae0",
+            "50524f4a45435420": "0x1331000",
+            "0c0000000c000000ffffff7fffffff7f": "0x1334730"
+          }
+        },
+        {
+          "address": "0x8528a0",
+          "size": 196,
+          "symbol": "_ZN4SPTG11FlashScreenILj8726688EE6Slot27Ev",
+          "target_sha256": "baa7d2b37d525d227abe44d3a97fa3738646805346ff12cb2844240bf2cf9fa4",
+          "bindings": {
+            "MovieLock": "0xfa4950",
+            "_ZN4SPTG13DefaultSpriteEv": "0xf97b20",
+            "MovieUnlock": "0xfa4960",
+            "_ZN4SPTG14CaptureRunningE": "0x1925158",
+            "_ZN4SPTG7CaptureE": "0x1924bc0",
+            "SystemTick": "0xfa3b00",
+            "_ZN4SPTG9TickStartE": "0x195b648",
+            "_ZN4SPTG13TickFrequencyE": "0x195b670",
+            "_ZN4SPTG11FlashScreenILj8726688EE10BaseSlot27Ev": "0x7ff900",
+            "_Unwind_Resume": "0xfa4920"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x876cb0",
+          "size": 468,
+          "symbol": "_ZN4SPTG11FlashScreenILj8875184EE12Slot27NotifyEv",
+          "target_sha256": "1e1a40bb0288c365b248078d93c18b3ddf008b4b2f7023e65110126349e3ef7e",
+          "bindings": {
+            "MovieLock": "0xfa4950",
+            "_ZN4SPTG13DefaultSpriteEv": "0xf97b20",
+            "MovieUnlock": "0xfa4960",
+            "_ZN4SPTG14CaptureRunningE": "0x1925158",
+            "_ZN4SPTG7CaptureE": "0x1924bc0",
+            "SystemTick": "0xfa3b00",
+            "_ZN4SPTG9TickStartE": "0x195b648",
+            "_ZN4SPTG13TickFrequencyE": "0x195b670",
+            "_ZN4SPTG11FlashScreenILj8875184EE10BaseSlot27Ev": "0x7ff900",
+            "Onyx_ProjectSettings": "0x1935070",
+            "Accessor_Tracking": "0x1935068",
+            "Event_Notify": "0xbf6e80",
+            "_ZGVZN4onyx8SettingsEvE8defaults": "0x1935078",
+            "_ZZN4onyx8SettingsEvE8defaults": "0x1935080",
+            "__cxa_guard_acquire": "0xfa4130",
+            "__cxa_guard_release": "0xfa4140",
+            "_Unwind_Resume": "0xfa4920"
+          },
+          "got_bindings": {},
+          "literals": {
+            "554e4b4e4f574e20": "0x1331ae0",
+            "50524f4a45435420": "0x1331000",
+            "0c0000000c000000ffffff7fffffff7f": "0x1334730"
+          }
+        },
+        {
+          "address": "0x8a1e40",
+          "size": 224,
+          "symbol": "_ZN4SPTG11HudStatusFXILj9051712EE6UpdateEv",
+          "target_sha256": "74e0dc1a03df6b85364665f0c6588ea642d0d39c552f031906e0d31745058dc4",
+          "bindings": {
+            "_ZN4SPTG9GameDeltaE": "0x1924d70",
+            "Accessor_Resolver": "0x191cd10",
+            "Accessor_Resolve": "0x67edd0"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x8a4f70",
+          "size": 224,
+          "symbol": "_ZN4SPTG11HudStatusFXILj9064304EE6UpdateEv",
+          "target_sha256": "c5e4fe4da6f8334f54bef1dfbe48d9a73eac8af24571617fa646552340420067",
+          "bindings": {
+            "_ZN4SPTG9GameDeltaE": "0x1924d70",
+            "Accessor_Resolver": "0x191cd10",
+            "Accessor_Resolve": "0x67edd0"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x8a7340",
+          "size": 224,
+          "symbol": "_ZN4SPTG11HudStatusFXILj9073472EE6UpdateEv",
+          "target_sha256": "5b394430120fd763e767ec8e71946867ca4f4b7d35a21560f9d73bbf3aa4cfb4",
+          "bindings": {
+            "_ZN4SPTG9GameDeltaE": "0x1924d70",
+            "Accessor_Resolver": "0x191cd10",
+            "Accessor_Resolve": "0x67edd0"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x8a7f40",
+          "size": 224,
+          "symbol": "_ZN4SPTG11HudStatusFXILj9076544EE6UpdateEv",
+          "target_sha256": "507466539eb1afd9ffe4a31eef00ffe6d356a9a8abb2d5c771d69c96573b5523",
+          "bindings": {
+            "_ZN4SPTG9GameDeltaE": "0x1924d70",
+            "Accessor_Resolver": "0x191cd10",
+            "Accessor_Resolve": "0x67edd0"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x8a8330",
+          "size": 224,
+          "symbol": "_ZN4SPTG11HudStatusFXILj9077552EE6UpdateEv",
+          "target_sha256": "699de6599880a28c0bc7779a4b96bb3f0e3a3e506c3b7468ac1ac90bcd347e67",
+          "bindings": {
+            "_ZN4SPTG9GameDeltaE": "0x1924d70",
+            "Accessor_Resolver": "0x191cd10",
+            "Accessor_Resolve": "0x67edd0"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x8a8720",
+          "size": 224,
+          "symbol": "_ZN4SPTG11HudStatusFXILj9078560EE6UpdateEv",
+          "target_sha256": "2c37c95b91eb2ccbde1eca5fe4003e092a017cd33ace4257d1bd4b6c95a03663",
+          "bindings": {
+            "_ZN4SPTG9GameDeltaE": "0x1924d70",
+            "Accessor_Resolver": "0x191cd10",
+            "Accessor_Resolve": "0x67edd0"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x8a8b10",
+          "size": 224,
+          "symbol": "_ZN4SPTG11HudStatusFXILj9079568EE6UpdateEv",
+          "target_sha256": "7182fc482dc2e8c18cdefca4fe2c40650f7b7b83f5a229d3629efa870b42da23",
+          "bindings": {
+            "_ZN4SPTG9GameDeltaE": "0x1924d70",
+            "Accessor_Resolver": "0x191cd10",
+            "Accessor_Resolve": "0x67edd0"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x8a8f00",
+          "size": 224,
+          "symbol": "_ZN4SPTG11HudStatusFXILj9080576EE6UpdateEv",
+          "target_sha256": "90033cfc31b9af99d5e02e4c9791f9da67fc22d0b53b3c252a961f6dc8011ea3",
+          "bindings": {
+            "_ZN4SPTG9GameDeltaE": "0x1924d70",
+            "Accessor_Resolver": "0x191cd10",
+            "Accessor_Resolve": "0x67edd0"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x8a92f0",
+          "size": 224,
+          "symbol": "_ZN4SPTG11HudStatusFXILj9081584EE6UpdateEv",
+          "target_sha256": "28b876a65e8a1528a67332bd2773f78a2d7576d39c631ff38ef23607865480bf",
+          "bindings": {
+            "_ZN4SPTG9GameDeltaE": "0x1924d70",
+            "Accessor_Resolver": "0x191cd10",
+            "Accessor_Resolve": "0x67edd0"
+          },
           "got_bindings": {}
         },
         {
@@ -512672,11 +512874,78 @@
           "got_bindings": {}
         },
         {
+          "address": "0xae6cb0",
+          "size": 276,
+          "symbol": "_ZN4Onyx12HeldGraphicsILj11431088ELj72EE3AddEPNS_8DrawListE",
+          "target_sha256": "1119d4592edb6a0808f9060bcc67f6f5e1ad8d4c1c087083fd5362a01fe876e4",
+          "bindings": {
+            "memcpy": "0xfa3330",
+            "memmove": "0xfa33b0",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30"
+          },
+          "got_bindings": {}
+        },
+        {
           "address": "0xaed000",
           "size": 68,
           "symbol": "_ZN4SPTG23AnimaticElementInstance5Slot5EPv",
           "target_sha256": "41ce8e5d248528aa715ed45030ae5c1ab2ffd7d3108601f2376ac80f51625070",
           "bindings": {},
+          "got_bindings": {}
+        },
+        {
+          "address": "0xafebb0",
+          "size": 272,
+          "symbol": "_ZN4Onyx13DrawnGraphicsILj11529136ELj152EE6Slot20EPNS_8DrawListE",
+          "target_sha256": "993ecf20c458f588b6ff79b8891ef44b91b17f7c02a1edbe85e6d7490ada7950",
+          "bindings": {
+            "memcpy": "0xfa3330",
+            "memmove": "0xfa33b0",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xb2d310",
+          "size": 276,
+          "symbol": "_ZN4Onyx12HeldGraphicsILj11719440ELj344EE3AddEPNS_8DrawListE",
+          "target_sha256": "b5f411742cd762582e7b49710c05f1066fbee0f7df49812ecfa0dfbd1058a7df",
+          "bindings": {
+            "memcpy": "0xfa3330",
+            "memmove": "0xfa33b0",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xb2e620",
+          "size": 296,
+          "symbol": "_ZN4Onyx15RebuiltGraphicsILj11724320ELj272EE6Slot20EPNS_8DrawListE",
+          "target_sha256": "7b62d844dfe8751ff63452de7dbd19ab565014e91ec5c1c26135e4ad8b5ba730",
+          "bindings": {
+            "_ZN4Onyx15RebuiltGraphicsILj11724320ELj272EE7RebuildEv": "0xb2e7e0",
+            "memcpy": "0xfa3330",
+            "memmove": "0xfa33b0",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xb2f2b0",
+          "size": 296,
+          "symbol": "_ZN4Onyx15RebuiltGraphicsILj11727536ELj276EE6Slot20EPNS_8DrawListE",
+          "target_sha256": "78d19cbf0e3cadfbad07519bea1eb7b4982c22a98eef05a4a8771a84c92009ee",
+          "bindings": {
+            "_ZN4Onyx15RebuiltGraphicsILj11727536ELj276EE7RebuildEv": "0xb2f470",
+            "memcpy": "0xfa3330",
+            "memmove": "0xfa33b0",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30"
+          },
           "got_bindings": {}
         },
         {
@@ -512689,6 +512958,20 @@
             "Accessor_Resolver": "0x191cd10",
             "Accessor_Resolve": "0x67edd0",
             "_ZN4Onyx11DrawListAddEPvS0_i": "0xae6dd0"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xb30540",
+          "size": 296,
+          "symbol": "_ZN4Onyx15RebuiltGraphicsILj11732288ELj272EE6Slot20EPNS_8DrawListE",
+          "target_sha256": "0633875d373ddfea35783b161cd80f76502f8a1e5f732925709d5701a992bb96",
+          "bindings": {
+            "_ZN4Onyx15RebuiltGraphicsILj11732288ELj272EE7RebuildEv": "0xb30700",
+            "memcpy": "0xfa3330",
+            "memmove": "0xfa33b0",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30"
           },
           "got_bindings": {}
         },
@@ -512711,11 +512994,65 @@
           "got_bindings": {}
         },
         {
+          "address": "0xb52d00",
+          "size": 272,
+          "symbol": "_ZN4Onyx13DrawnGraphicsILj11873536ELj280EE6Slot20EPNS_8DrawListE",
+          "target_sha256": "41225ba164f8739095f0598d2dcf31e7214edb9bef015e55d45fa2d4bd705ec3",
+          "bindings": {
+            "memcpy": "0xfa3330",
+            "memmove": "0xfa33b0",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xb55080",
+          "size": 276,
+          "symbol": "_ZN4Onyx12HeldGraphicsILj11882624ELj224EE3AddEPNS_8DrawListE",
+          "target_sha256": "59868b4ce89bd63196b5fa53d6bc654f5921cced7f16503a83c62d234d07434d",
+          "bindings": {
+            "memcpy": "0xfa3330",
+            "memmove": "0xfa33b0",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30"
+          },
+          "got_bindings": {}
+        },
+        {
           "address": "0xb61830",
           "size": 72,
           "symbol": "_ZN4Onyx15GraphicsUpdater6Slot15EPNS_11UpdatedListE",
           "target_sha256": "5865aa4cf95245fd2018cae6769d28e8cf555df31fcb17de8327c19c1583ab08",
           "bindings": {},
+          "got_bindings": {}
+        },
+        {
+          "address": "0xb91e00",
+          "size": 296,
+          "symbol": "_ZN4Onyx15RebuiltGraphicsILj12131840ELj264EE6Slot20EPNS_8DrawListE",
+          "target_sha256": "61505b401dc8ceb4642eaa44773e52622824e7164cee430c99e0b562b2f33353",
+          "bindings": {
+            "_ZN4Onyx15RebuiltGraphicsILj12131840ELj264EE7RebuildEv": "0xb91fe0",
+            "memcpy": "0xfa3330",
+            "memmove": "0xfa33b0",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xb95750",
+          "size": 296,
+          "symbol": "_ZN4Onyx15RebuiltGraphicsILj12146512ELj272EE6Slot20EPNS_8DrawListE",
+          "target_sha256": "c08ba9852d8fc771ca982c26ba46e41677c1101a0d6e088b888b64b7202cbe56",
+          "bindings": {
+            "_ZN4Onyx15RebuiltGraphicsILj12146512ELj272EE7RebuildEv": "0xb95910",
+            "memcpy": "0xfa3330",
+            "memmove": "0xfa33b0",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30"
+          },
           "got_bindings": {}
         },
         {
@@ -512728,6 +513065,74 @@
             "Accessor_Resolver": "0x191cd10",
             "Accessor_Resolve": "0x67edd0",
             "_ZN4Onyx11DrawListAddEPvS0_i": "0xae6dd0"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xb96460",
+          "size": 296,
+          "symbol": "_ZN4Onyx15RebuiltGraphicsILj12149856ELj272EE6Slot20EPNS_8DrawListE",
+          "target_sha256": "7ecbcd4f128b8d39752c4a72db679150b58578029440f05da8897b672ae78a86",
+          "bindings": {
+            "_ZN4Onyx15RebuiltGraphicsILj12149856ELj272EE7RebuildEv": "0xb96620",
+            "memcpy": "0xfa3330",
+            "memmove": "0xfa33b0",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xb972d0",
+          "size": 296,
+          "symbol": "_ZN4Onyx15RebuiltGraphicsILj12153552ELj272EE6Slot20EPNS_8DrawListE",
+          "target_sha256": "6cd722206701e815bddfbbfebe0351d4e8967552eb22c80ef1c51a0dd4afa643",
+          "bindings": {
+            "_ZN4Onyx15RebuiltGraphicsILj12153552ELj272EE7RebuildEv": "0xb97490",
+            "memcpy": "0xfa3330",
+            "memmove": "0xfa33b0",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xb98030",
+          "size": 296,
+          "symbol": "_ZN4Onyx15RebuiltGraphicsILj12156976ELj272EE6Slot20EPNS_8DrawListE",
+          "target_sha256": "fcf829e3978a76f6ad418cb45d29c71ef6d7e6bde1ba1a95ae2247d8d124e926",
+          "bindings": {
+            "_ZN4Onyx15RebuiltGraphicsILj12156976ELj272EE7RebuildEv": "0xb981f0",
+            "memcpy": "0xfa3330",
+            "memmove": "0xfa33b0",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xba0f60",
+          "size": 276,
+          "symbol": "_ZN4Onyx12HeldGraphicsILj12193632ELj224EE3AddEPNS_8DrawListE",
+          "target_sha256": "6bd26f2ebb3e89a06406fd434e775a10bb95a78245f82b3770defb6dc5f1e804",
+          "bindings": {
+            "memcpy": "0xfa3330",
+            "memmove": "0xfa33b0",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xba2790",
+          "size": 276,
+          "symbol": "_ZN4Onyx12HeldGraphicsILj12199824ELj224EE3AddEPNS_8DrawListE",
+          "target_sha256": "77273ab7da6495ad16e9207fe9a0d59ab15603bbd4df48442bac25d7ff674c7d",
+          "bindings": {
+            "memcpy": "0xfa3330",
+            "memmove": "0xfa33b0",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30"
           },
           "got_bindings": {}
         },
@@ -512781,6 +513186,32 @@
           "symbol": "_ZN4Onyx34AxisPairGreaterThanStateDescriptor5Slot3EPNS_10AxisSourceE",
           "target_sha256": "bad739284c7a9fffa1723aa696506ab53588f1fed8708034fc9d9bc8f89c73a9",
           "bindings": {},
+          "got_bindings": {}
+        },
+        {
+          "address": "0xcabba0",
+          "size": 272,
+          "symbol": "_ZN4Onyx13DrawnGraphicsILj13286304ELj200EE6Slot20EPNS_8DrawListE",
+          "target_sha256": "40a0761a839c94f4e7c522fb9abdcedd2a9f563e06f88e9d1af428863563b082",
+          "bindings": {
+            "memcpy": "0xfa3330",
+            "memmove": "0xfa33b0",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xcadd00",
+          "size": 272,
+          "symbol": "_ZN4Onyx13DrawnGraphicsILj13294848ELj192EE6Slot20EPNS_8DrawListE",
+          "target_sha256": "3fafbaba9992f67df06451509882a4080e7a40779b27515ca4fe238ef71732ef",
+          "bindings": {
+            "memcpy": "0xfa3330",
+            "memmove": "0xfa33b0",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30"
+          },
           "got_bindings": {}
         },
         {
@@ -512882,6 +513313,19 @@
             "DecodeAllocatorIndex": "0xa82b30",
             "_ZN10Base686f60D2Ev": "0x677400",
             "_ZdlPv": "0xfa3b40",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x6b7760",
+          "size": 104,
+          "symbol": "_ZN4Onyx4Flow13UnloadingTaskD2Ev",
+          "target_sha256": "9c1655620c515cbfc69dcebf1bdf3d5f0493baa0461b053b6f18c100f2c6a539",
+          "bindings": {
+            "_ZTVN4Onyx4Flow13UnloadingTaskE": "0x1844b40",
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
             "__clang_call_terminate": "0x6768b8"
           },
           "got_bindings": {}
@@ -513006,6 +513450,35 @@
             "DecodeAllocatorManager": "0x1926bd8",
             "DecodeAllocatorIndex": "0xa82b30",
             "_ZN10Base7ae4d0D2Ev": "0x7094c0",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x7b9070",
+          "size": 108,
+          "symbol": "_ZN4SPTG14PlayfieldActorD2Ev",
+          "target_sha256": "31aecf8aafe5137a66df2b510f09ebc14a81bea804be1d3e0b635859a547105e",
+          "bindings": {
+            "_ZTVN4SPTG14PlayfieldActorE": "0x184ee38",
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
+            "_ZN10Base7b9070D2Ev": "0x7ae4d0",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x7b90e0",
+          "size": 116,
+          "symbol": "_ZN4SPTG14PlayfieldActorD0Ev",
+          "target_sha256": "a5a12107a1435c5f30a580a85f483386f27591aaca6d8a9a711e74fdd30b0244",
+          "bindings": {
+            "_ZTVN4SPTG14PlayfieldActorE": "0x184ee38",
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
+            "_ZN10Base7b9070D2Ev": "0x7ae4d0",
+            "_ZdlPv": "0xfa3b40",
             "__clang_call_terminate": "0x6768b8"
           },
           "got_bindings": {}
@@ -513397,6 +513870,36 @@
           "got_bindings": {}
         },
         {
+          "address": "0x94aa40",
+          "size": 180,
+          "symbol": "_ZN4SPTG14StrikerCatalogD2Ev",
+          "target_sha256": "27716cdbafe81f00fe64f50b94ac40d290a901daf74063df053c10cdff2ca690",
+          "bindings": {
+            "_ZTVN4SPTG14StrikerCatalogE": "0x1870e48",
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
+            "_ZTV13Level94aa40_1": "0x1870ed0",
+            "_ZN10Base94aa40D2Ev": "0x6c8ae0",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x953900",
+          "size": 180,
+          "symbol": "_ZN4SPTG24ProjectileSpawnerCatalogD2Ev",
+          "target_sha256": "d03507b206ad7da0235fea03e6bc093ac38292a1f2ae97d71c3c6a6fc57f1d28",
+          "bindings": {
+            "_ZTVN4SPTG24ProjectileSpawnerCatalogE": "0x1872ae8",
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
+            "_ZTV13Level953900_1": "0x1872b70",
+            "_ZN10Base953900D2Ev": "0x6c8ae0",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
           "address": "0x95cf60",
           "size": 132,
           "symbol": "_ZN4SPTG10PlayerInfoD2Ev",
@@ -513424,6 +513927,86 @@
             "_ZTV13Level95cf60_1": "0x1873398",
             "_ZN6MemberILm157087234EED1Ev": "0x95cc10",
             "_ZN10Base95cf60D2Ev": "0x677400",
+            "_ZdlPv": "0xfa3b40",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x99fec0",
+          "size": 180,
+          "symbol": "_ZN4SPTG20PickupSpawnerCatalogD2Ev",
+          "target_sha256": "602f7448f5c26390253c73458d2cf12eb6c34863b5aef654d31a4887b4ea4651",
+          "bindings": {
+            "_ZTVN4SPTG20PickupSpawnerCatalogE": "0x1878a68",
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
+            "_ZTV13Level99fec0_1": "0x1878af0",
+            "_ZN10Base99fec0D2Ev": "0x6c8ae0",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x9bd2c0",
+          "size": 180,
+          "symbol": "_ZN4SPTG31InteractiveObjectSpawnerCatalogD2Ev",
+          "target_sha256": "21cd5231362fe9a9bae77df95e49892abef7d1ba07059a996da0f8a00f4de478",
+          "bindings": {
+            "_ZTVN4SPTG31InteractiveObjectSpawnerCatalogE": "0x187ae00",
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
+            "_ZTV13Level9bd2c0_1": "0x187ae88",
+            "_ZN10Base9bd2c0D2Ev": "0x6c8ae0",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x9c4ff0",
+          "size": 128,
+          "symbol": "_ZN4SPTG24InteractiveObjectCatalogD2Ev",
+          "target_sha256": "04beb8a62b1dc9bb99b2c7ef41247c11b3f5fe930ddad60246b67a19e1631cbc",
+          "bindings": {
+            "_ZTVN4SPTG24InteractiveObjectCatalogE": "0x187bb38",
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
+            "_ZTV13Level9c4ff0_1": "0x187bbc0",
+            "_ZN6MemberILm163905282EED1Ev": "0x9c5aa0",
+            "_ZN10Base9c4ff0D2Ev": "0x6c8ae0",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x9c5070",
+          "size": 136,
+          "symbol": "_ZN4SPTG24InteractiveObjectCatalogD0Ev",
+          "target_sha256": "bedae6c5a4ac3a85979271d005bbf8caa89faa61f1532a309cb62f65b3cd0250",
+          "bindings": {
+            "_ZTVN4SPTG24InteractiveObjectCatalogE": "0x187bb38",
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
+            "_ZTV13Level9c4ff0_1": "0x187bbc0",
+            "_ZN6MemberILm163905282EED1Ev": "0x9c5aa0",
+            "_ZN10Base9c4ff0D2Ev": "0x6c8ae0",
+            "_ZdlPv": "0xfa3b40",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x9c5d90",
+          "size": 136,
+          "symbol": "_ZN11Class9c5d90D0Ev",
+          "target_sha256": "8afc53971dd870dd67149797efc1dcdcc1a797db645eb4f3f14e8305fbfbac45",
+          "bindings": {
+            "_ZTV11Class9c5d90": "0x187bb38",
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
+            "_ZTV13Level9c5d90_1": "0x187bbc0",
+            "_ZN6MemberILm163961090EED1Ev": "0x9c5aa0",
+            "_ZN10Base9c5d90D2Ev": "0x6c8ae0",
             "_ZdlPv": "0xfa3b40",
             "__clang_call_terminate": "0x6768b8"
           },
@@ -513459,6 +514042,21 @@
           "got_bindings": {}
         },
         {
+          "address": "0x9c6880",
+          "size": 180,
+          "symbol": "_ZN4SPTG19EnemySpawnerCatalogD2Ev",
+          "target_sha256": "8bacec0a351153fef9955396c4b86c9f97ad9edab73771ac9d705f3a380724d0",
+          "bindings": {
+            "_ZTVN4SPTG19EnemySpawnerCatalogE": "0x187bf60",
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
+            "_ZTV13Level9c6880_1": "0x187bfe8",
+            "_ZN10Base9c6880D2Ev": "0x6c8ae0",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
           "address": "0xa05810",
           "size": 108,
           "symbol": "_ZN4SPTG21SelectedActorRecorderD2Ev",
@@ -513485,6 +514083,38 @@
             "_ZN6MemberILm168132866EED1Ev": "0xa05550",
             "_ZN10Basea05810D2Ev": "0xa05640",
             "_ZdlPv": "0xfa3b40",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xa0a840",
+          "size": 180,
+          "symbol": "_ZN11Classa0a840D2Ev",
+          "target_sha256": "443860d7dbabacd1836d89227229e21101a008f88743d47558c863d1a99eaa44",
+          "bindings": {
+            "_ZTV11Classa0a840": "0x1889478",
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
+            "_ZTV13Levela0a840_1": "0x1889500",
+            "_ZN10Basea0a840D2Ev": "0xa09890",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xa0ab40",
+          "size": 204,
+          "symbol": "_ZN4SPTG26ControllableSpawnerCatalogD2Ev",
+          "target_sha256": "6880c996e6484efe98b65979408cab35ce4ed4437553ccaff92cfb7a79aedf3c",
+          "bindings": {
+            "_ZTVN4SPTG26ControllableSpawnerCatalogE": "0x18893f0",
+            "_ZN18PlainPointerMemberILm168473601EE6DeleteEPv": "0xa09820",
+            "_ZTV13Levela0ab40_1": "0x1889478",
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
+            "_ZTV13Levela0ab40_2": "0x1889500",
+            "_ZN10Basea0ab40D2Ev": "0xa09890",
             "__clang_call_terminate": "0x6768b8"
           },
           "got_bindings": {}
@@ -513948,16 +514578,124 @@
           "got_bindings": {}
         },
         {
+          "address": "0xb469b0",
+          "size": 428,
+          "symbol": "_ZN4Onyx8Graphics15MorphBaseTargetD2Ev",
+          "target_sha256": "cbc51d8abf99df6d8a72d74543d27c9cf46b53be125da778bb54ab50ede49714",
+          "bindings": {
+            "_ZTVN4Onyx8Graphics15MorphBaseTargetE": "0x18a8fb8",
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
+            "_ZN10Baseb469b0D2Ev": "0x677400",
+            "__clang_call_terminate": "0x6768b8",
+            "_ZN4AutoI15Buffer189176578ED2Ev": "0xb46db0",
+            "_ZN4AutoI15Buffer189176579ED2Ev": "0xb46db0",
+            "_ZN4AutoI15Buffer189176580ED2Ev": "0xb46e10",
+            "_ZN4AutoI15Buffer189176581ED2Ev": "0xb46e10"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xb5eeb0",
+          "size": 128,
+          "symbol": "_ZN11Classb5eeb0D2Ev",
+          "target_sha256": "8583173e201473c27cfa5124160d21afe2e332ee374b8f7696571b84a4f302a0",
+          "bindings": {
+            "_ZTV11Classb5eeb0": "0x18aaa40",
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
+            "_ZTV13Levelb5eeb0_1": "0x18aaad0",
+            "_ZN6MemberILm190769922EED1Ev": "0xb5eb80",
+            "_ZN10Baseb5eeb0D2Ev": "0x6a1060",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xb653f0",
+          "size": 128,
+          "symbol": "_ZN4Onyx8Graphics17NewMaterialSystem14MaterialSystemD2Ev",
+          "target_sha256": "a58d001dac7e08435310f0678c803cef0251f595628f8b439465c5a0cffd1289",
+          "bindings": {
+            "_ZTVN4Onyx8Graphics17NewMaterialSystem14MaterialSystemE": "0x18abd08",
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
+            "_ZTV13Levelb653f0_1": "0x18abd80",
+            "_ZN6MemberILm191184642EED1Ev": "0xb64e00",
+            "_ZN10Baseb653f0D2Ev": "0x677400",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xb65470",
+          "size": 136,
+          "symbol": "_ZN4Onyx8Graphics17NewMaterialSystem14MaterialSystemD0Ev",
+          "target_sha256": "d1b585eca30166f0f2ea90d0af5242fc7e9204c9803fe677e985001dd0291aad",
+          "bindings": {
+            "_ZTVN4Onyx8Graphics17NewMaterialSystem14MaterialSystemE": "0x18abd08",
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
+            "_ZTV13Levelb653f0_1": "0x18abd80",
+            "_ZN6MemberILm191184642EED1Ev": "0xb64e00",
+            "_ZN10Baseb653f0D2Ev": "0x677400",
+            "_ZdlPv": "0xfa3b40",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xb72ec0",
+          "size": 116,
+          "symbol": "_ZN4Onyx8Graphics20EvolutionDevelopment24BasicRendererTransparentD2Ev",
+          "target_sha256": "ca5f30d8acb4d6bb93af11305ff977e5d85c64b5f0918791b8a076f00b1ccde5",
+          "bindings": {
+            "_ZTVN4Onyx8Graphics20EvolutionDevelopment24BasicRendererTransparentE": "0x18ae348",
+            "_ZTV15Nested192080897": "0x18ae328",
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
           "address": "0xb72f40",
           "size": 112,
           "symbol": "_ZN4Onyx8Graphics20EvolutionDevelopment24BasicRendererTransparentD0Ev",
           "target_sha256": "9eef6c9ca83bf7d4d7a1a5b274d04d7004b5ae599d8bcf5e44b70e3b5a7e456a",
           "bindings": {
             "_ZTVN4Onyx8Graphics20EvolutionDevelopment24BasicRendererTransparentE": "0x18ae348",
-            "_ZTV15Nested192082945": "0x18ae328",
+            "_ZTV15Nested192080897": "0x18ae328",
             "DecodeAllocatorManager": "0x1926bd8",
             "DecodeAllocatorIndex": "0xa82b30",
             "_ZdlPv": "0xfa3b40",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xb72fb0",
+          "size": 104,
+          "symbol": "_ZN4Onyx8Graphics20EvolutionDevelopment14MaterialScript20DrawRenderUnitHelperD2Ev",
+          "target_sha256": "b77154fc249cf45a0ede880d44c910fe248b459d8bb1f898e89766a2146574df",
+          "bindings": {
+            "_ZTVN4Onyx8Graphics20EvolutionDevelopment14MaterialScript20DrawRenderUnitHelperE": "0x18ae328",
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xb73090",
+          "size": 116,
+          "symbol": "_ZN4Onyx8Graphics20EvolutionDevelopment19BasicRendererOpaqueD2Ev",
+          "target_sha256": "f34713c4c61effb4b568dcf00c221d67f4666958ae9c0d3257179d6128e6265c",
+          "bindings": {
+            "_ZTVN4Onyx8Graphics20EvolutionDevelopment19BasicRendererOpaqueE": "0x18ae308",
+            "_ZTV15Nested192088321": "0x18ae328",
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
             "__clang_call_terminate": "0x6768b8"
           },
           "got_bindings": {}
@@ -513969,10 +514707,24 @@
           "target_sha256": "dab27e35e2d2c05aad06423ee91083ed46c005970ea5c589dc20df07f7a70a8c",
           "bindings": {
             "_ZTVN4Onyx8Graphics20EvolutionDevelopment19BasicRendererOpaqueE": "0x18ae308",
-            "_ZTV15Nested192090369": "0x18ae328",
+            "_ZTV15Nested192088321": "0x18ae328",
             "DecodeAllocatorManager": "0x1926bd8",
             "DecodeAllocatorIndex": "0xa82b30",
             "_ZdlPv": "0xfa3b40",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xb83440",
+          "size": 116,
+          "symbol": "_ZN4Onyx8Graphics20EvolutionDevelopment13RendererUnlitD2Ev",
+          "target_sha256": "9ee0784d8cbbb3d0c2daeb3ebea55d531245d58e9d8faee2ff057d3752ba4211",
+          "bindings": {
+            "_ZTVN4Onyx8Graphics20EvolutionDevelopment13RendererUnlitE": "0x18aeb50",
+            "_ZTV15Nested193152001": "0x18ae328",
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
             "__clang_call_terminate": "0x6768b8"
           },
           "got_bindings": {}
@@ -513984,10 +514736,24 @@
           "target_sha256": "291f5a650b4fdaaa4ec5f8cb8f7742df94a1b402004122b2df8cb20b87c66b56",
           "bindings": {
             "_ZTVN4Onyx8Graphics20EvolutionDevelopment13RendererUnlitE": "0x18aeb50",
-            "_ZTV15Nested193154049": "0x18ae328",
+            "_ZTV15Nested193152001": "0x18ae328",
             "DecodeAllocatorManager": "0x1926bd8",
             "DecodeAllocatorIndex": "0xa82b30",
             "_ZdlPv": "0xfa3b40",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xb83590",
+          "size": 116,
+          "symbol": "_ZN4Onyx8Graphics20EvolutionDevelopment19BasicRendererSkyBoxD2Ev",
+          "target_sha256": "bac77677b54ba78be0c52168a1beee13716d7e5203066e83a54302d7748d345b",
+          "bindings": {
+            "_ZTVN4Onyx8Graphics20EvolutionDevelopment19BasicRendererSkyBoxE": "0x18aead0",
+            "_ZTV15Nested193157377": "0x18ae328",
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
             "__clang_call_terminate": "0x6768b8"
           },
           "got_bindings": {}
@@ -513999,7 +514765,7 @@
           "target_sha256": "f31885944491cc26ce50f24add11d49ac634f7f3257bea72255ea843fbb26435",
           "bindings": {
             "_ZTVN4Onyx8Graphics20EvolutionDevelopment19BasicRendererSkyBoxE": "0x18aead0",
-            "_ZTV15Nested193159425": "0x18ae328",
+            "_ZTV15Nested193157377": "0x18ae328",
             "DecodeAllocatorManager": "0x1926bd8",
             "DecodeAllocatorIndex": "0xa82b30",
             "_ZdlPv": "0xfa3b40",
@@ -514066,6 +514832,21 @@
             "_ZN18PlainPointerMemberILm195579394EE6DeleteEPv": "0xba82b0",
             "_ZN10Baseba84e0D2Ev": "0xba8320",
             "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xbb6a00",
+          "size": 208,
+          "symbol": "_ZN4Onyx8Behavior9GeneratorD2Ev",
+          "target_sha256": "7b444121d819b832de57c565134c90e2572fabc1d3d67d91e6eda4359666d054",
+          "bindings": {
+            "_ZTVN4Onyx8Behavior9GeneratorE": "0x18b23f0",
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
+            "_ZN10Basebb6a00D2Ev": "0xbb6950",
+            "__clang_call_terminate": "0x6768b8",
+            "_ZN4AutoI15Buffer196517890ED2Ev": "0xbb25c0"
           },
           "got_bindings": {}
         },
@@ -514143,6 +514924,22 @@
             "_ZTV11Classbbda10": "0x18b2d88",
             "DecodeAllocatorManager": "0x1926bd8",
             "DecodeAllocatorIndex": "0xa82b30",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xbbfbe0",
+          "size": 124,
+          "symbol": "_ZN4Onyx13TransitionnerD2Ev",
+          "target_sha256": "52202f619ab3d96d77c17ce26839f35028df63e4a6f87b63e981403d8f8a0310",
+          "bindings": {
+            "_ZTVN4Onyx13TransitionnerE": "0x18b32d8",
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
+            "_ZN6MemberILm197115394EED1Ev": "0xaee590",
+            "_ZN6MemberILm197115395EED1Ev": "0xbb19b0",
+            "_ZN10Basebbfbe0D2Ev": "0xbbf9a0",
             "__clang_call_terminate": "0x6768b8"
           },
           "got_bindings": {}
@@ -514451,6 +515248,21 @@
             "_ZN10Basec82b20D2Ev": "0x677400",
             "_ZN13Levelc82b20_1D2Ev": "0xc831b0",
             "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xc97f40",
+          "size": 204,
+          "symbol": "_ZN4Onyx18PrimitiveComponentD2Ev",
+          "target_sha256": "8723d61cf6237960cacb044ea69ab9d76aef90599aa7f1a7cff7a4a0519dfcda",
+          "bindings": {
+            "_ZTVN4Onyx18PrimitiveComponentE": "0x18c1ef8",
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
+            "_ZN10Basec97f40D2Ev": "0x88fb50",
+            "__clang_call_terminate": "0x6768b8",
+            "_ZN4AutoI15Buffer211284994ED2Ev": "0xb46db0"
           },
           "got_bindings": {}
         },
@@ -515378,6 +516190,25 @@
           "got_bindings": {}
         },
         {
+          "address": "0xb5e700",
+          "size": 256,
+          "symbol": "_ZN4Onyx18RenderDirectorBaseD2Ev",
+          "target_sha256": "9798de5f5812e43d903be719c1d9cce0375adf515ed9addde615d365d0ebc0b9",
+          "bindings": {
+            "_ZTVN4Onyx18RenderDirectorBaseE": "0x18aa9b0",
+            "_ZN11ListenerOutILm190738433EE10DisconnectEPv": "0xb5e800",
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
+            "_ZTV13Levelb5e700_1": "0x18aaa40",
+            "_ZTV13Levelb5e700_2": "0x18aaad0",
+            "_ZN6MemberILm190738435EED1Ev": "0xb5eb80",
+            "_ZN10Baseb5e700D2Ev": "0x6a1060",
+            "_ZN4AutoI13PlainFunctionILm190738433EEED2Ev": "0xb5eb20",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
           "address": "0xb99bb0",
           "size": 1776,
           "symbol": "_ZN4Onyx9Collision11Collision2DD2Ev",
@@ -515574,6 +516405,40 @@
           "got_bindings": {}
         },
         {
+          "address": "0xca2b60",
+          "size": 236,
+          "symbol": "_ZN4Onyx27WaypointLinkGraphicsCatalogD2Ev",
+          "target_sha256": "dff6bb86b908883b6fd4923a15a3ffebc5fc610dcdcd3cce02cd39f1b4972b7a",
+          "bindings": {
+            "_ZTVN4Onyx27WaypointLinkGraphicsCatalogE": "0x18c3468",
+            "_ZN11ListenerOutILm211990017EE10DisconnectEPv": "0xb5e800",
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
+            "_ZTV13Levelca2b60_1": "0x18c3520",
+            "_ZN10Baseca2b60D2Ev": "0x6c8ae0",
+            "_ZN4AutoI13PlainFunctionILm211990017EEED2Ev": "0xb5eb20",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xcb5830",
+          "size": 236,
+          "symbol": "_ZN4Onyx23DirectionalArrowCatalogD2Ev",
+          "target_sha256": "72756906f0ec4d12f6bd7e2fdc6cca3f4bebed43776a726f923e0f9c05d42395",
+          "bindings": {
+            "_ZTVN4Onyx23DirectionalArrowCatalogE": "0x18c4750",
+            "_ZN11ListenerOutILm213222145EE10DisconnectEPv": "0xb5e800",
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
+            "_ZTV13Levelcb5830_1": "0x18c4808",
+            "_ZN10Basecb5830D2Ev": "0x6c8ae0",
+            "_ZN4AutoI13PlainFunctionILm213222145EEED2Ev": "0xb5eb20",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
           "address": "0xcd12d0",
           "size": 176,
           "symbol": "_ZN4Onyx22CollisionWalkLocomotorD2Ev",
@@ -515761,6 +516626,23 @@
             "_ZN4AutoI13PlainFunctionILm216765187EEED2Ev": "0xce8210",
             "_ZN4AutoI13PlainFunctionILm216765186EEED2Ev": "0xce7e90",
             "_ZN4AutoI13PlainFunctionILm216765185EEED2Ev": "0xce7b10"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xcee5a0",
+          "size": 236,
+          "symbol": "_ZN4Onyx16BillboardCatalogD2Ev",
+          "target_sha256": "f662f9e48d9188c4e06c7efac6694d2c3764eaf4452b1c1d59bab3b04233c05d",
+          "bindings": {
+            "_ZTVN4Onyx16BillboardCatalogE": "0x18cb048",
+            "_ZN11ListenerOutILm216947201EE10DisconnectEPv": "0xb5e800",
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
+            "_ZTV13Levelcee5a0_1": "0x18cb100",
+            "_ZN10Basecee5a0D2Ev": "0x6c8ae0",
+            "_ZN4AutoI13PlainFunctionILm216947201EEED2Ev": "0xb5eb20",
+            "__clang_call_terminate": "0x6768b8"
           },
           "got_bindings": {}
         }

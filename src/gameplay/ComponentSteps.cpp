@@ -512,3 +512,205 @@ void ActorJumpFromBehindAction::Slot15(void* arg) {
     BaseSlot15(arg);
 }
 }  // namespace SPTG
+
+namespace Onyx {
+using onyx::ComponentHandle;
+
+// The renderer's list of things to draw. Adding to it grows the buffer by half when it is full.
+struct DrawList {
+    struct Pool { virtual void S0(); virtual void S1(); virtual void* Allocate(uint32_t size); };
+    Pool* pool;                 // +0x00
+    uint64_t capacity;          // +0x08
+    uint64_t count;             // +0x10
+    char padding_18[8];
+    void* items;                // +0x20
+    __attribute__((always_inline)) void PushBack(void* value) {
+        uint64_t n = count;
+        uint64_t next = n + 1;
+        void* data;
+        if (capacity >= next) {
+            data = items;
+        } else {
+            uint64_t grown = capacity + (capacity >> 1);
+            uint64_t want = grown >= next ? grown : next;
+            if (static_cast<uint32_t>(want)) {
+                void* old = items;
+                data = pool->Allocate(static_cast<uint32_t>(8 * want));
+                capacity = want;
+                if (old && data) {
+                    if (data != old) __builtin_memcpy(data, old, 8 * n);
+                    uint64_t tail = count - n;
+                    if (tail) __builtin_memmove(static_cast<void**>(data) + next - tail, static_cast<void**>(old) + n, 8 * tail);
+                    if (data != old) onyx::AllocatorFor(old)->Free(old);
+                }
+            } else {
+                data = nullptr;
+                capacity = want;
+            }
+            n = count;
+            next = n + 1;
+            items = data;
+        }
+        static_cast<void**>(data)[n] = value;
+        count = next;
+    }
+};
+
+// Graphics components add their draw call to the list.
+template<unsigned Key, unsigned DrawOffset> struct DrawnGraphics {
+    char padding_0[DrawOffset];
+    char draw;
+    void Slot20(DrawList* list);
+};
+template<unsigned Key, unsigned DrawOffset> void DrawnGraphics<Key, DrawOffset>::Slot20(DrawList* list) { list->PushBack(&draw); }
+template struct DrawnGraphics<0x793ad0, 152>;
+template struct DrawnGraphics<0xafebb0, 152>;
+template struct DrawnGraphics<0xb52d00, 280>;
+template struct DrawnGraphics<0xcabba0, 200>;
+template struct DrawnGraphics<0xcadd00, 192>;
+
+// Some rebuild first when something changed.
+template<unsigned Key, unsigned DirtyOffset> struct RebuiltGraphics {
+    char padding_0[152];
+    char draw[DirtyOffset - 152];
+    bool dirty;
+    void Slot20(DrawList* list);
+    void Rebuild();
+};
+template<unsigned Key, unsigned DirtyOffset> void RebuiltGraphics<Key, DirtyOffset>::Slot20(DrawList* list) {
+    if (dirty) {
+        Rebuild();
+        dirty = false;
+    }
+    list->PushBack(draw);
+}
+template struct RebuiltGraphics<0xb2e620, 272>;
+template struct RebuiltGraphics<0xb2f2b0, 276>;
+template struct RebuiltGraphics<0xb30540, 272>;
+template struct RebuiltGraphics<0xb91e00, 264>;
+template struct RebuiltGraphics<0xb95750, 272>;
+template struct RebuiltGraphics<0xb96460, 272>;
+template struct RebuiltGraphics<0xb972d0, 272>;
+template struct RebuiltGraphics<0xb98030, 272>;
+
+// Others only add what they already hold.
+template<unsigned Key, unsigned Offset> struct HeldGraphics {
+    char padding_0[Offset];
+    void* held;
+    void Add(DrawList* list);
+};
+template<unsigned Key, unsigned Offset> void HeldGraphics<Key, Offset>::Add(DrawList* list) {
+    void* value = held;
+    if (value) list->PushBack(value);
+}
+template struct HeldGraphics<0xae6cb0, 72>;
+template struct HeldGraphics<0xb2d310, 344>;
+template struct HeldGraphics<0xb55080, 224>;
+template struct HeldGraphics<0xba0f60, 224>;
+template struct HeldGraphics<0xba2790, 224>;
+}  // namespace Onyx
+
+namespace SPTG {
+using onyx::ComponentHandle;
+using onyx::EventCallback;
+using onyx::EventTarget;
+extern float GameDelta;
+
+// HUD effects run for as long as their object says, or for two seconds with no owner.
+struct HudEffectObject : onyx::Component {
+    virtual void S3(); virtual void S4(); virtual void S5(); virtual void S6(); virtual void S7(); virtual void S8(); virtual void S9();
+    virtual void S10(); virtual void S11(); virtual void S12(); virtual void S13(); virtual void S14(); virtual void S15(); virtual void S16(); virtual void S17(); virtual void S18(); virtual void S19();
+    virtual bool Finished();    // slot 20
+};
+struct HudEffectOwner : onyx::Component { char padding_8[0xa0]; ComponentHandle* effect; };
+template<unsigned Key> struct HudStatusFX {
+    char padding_0[0x18];
+    ComponentHandle* owner;     // +0x18
+    float elapsed;              // +0x20
+    char padding_24[0x18];
+    bool started;               // +0x3c
+    bool Update();
+};
+template<unsigned Key> bool HudStatusFX<Key>::Update() {
+    HudEffectOwner* o = onyx::Peek<HudEffectOwner>(owner);
+    if (!started && o) started = true;
+    float delta = GameDelta;
+    bool done;
+    float value;
+    if (o) {
+        done = onyx::Get<HudEffectObject, 704373816u>(o->effect)->Finished();
+        value = elapsed;
+    } else {
+        value = elapsed;
+        done = value > 2.0f;
+    }
+    elapsed = delta + value;
+    return done;
+}
+template struct HudStatusFX<0x8a1e40>;
+template struct HudStatusFX<0x8a4f70>;
+template struct HudStatusFX<0x8a7340>;
+template struct HudStatusFX<0x8a7f40>;
+template struct HudStatusFX<0x8a8330>;
+template struct HudStatusFX<0x8a8720>;
+template struct HudStatusFX<0x8a8b10>;
+template struct HudStatusFX<0x8a8f00>;
+template struct HudStatusFX<0x8a92f0>;
+
+// Flash screens hand their movie the sprite to show under the movie's lock, note the time, and let
+// the base class draw.
+struct FlashHost { char padding_0[0x10]; void* mutex; };
+struct FlashMovie { char padding_0[0x58]; FlashHost* host; char padding_60[0x40]; void* sprite; };
+extern "C" { void MovieLock(void*) noexcept; void MovieUnlock(void*) noexcept; long SystemTick(); }
+struct MovieGuard {
+    FlashMovie* movie;
+    __attribute__((always_inline)) explicit MovieGuard(FlashMovie* m) : movie(m) { MovieLock(m->host->mutex); }
+    __attribute__((always_inline)) ~MovieGuard() { MovieUnlock(movie->host->mutex); }
+};
+void* DefaultSprite();
+extern uint8_t CaptureRunning;
+struct CaptureState { char padding_0[0x128]; long time; };
+extern CaptureState* Capture;
+extern long TickStart;
+extern long TickFrequency;
+template<unsigned Key> struct FlashScreen {
+    char padding_0[0xa8];
+    FlashMovie* movie;          // +0xa8
+    char padding_b0[0x118];
+    EventCallback* callback;    // +0x1c8
+    EventTarget* target;        // +0x1d0
+    char padding_1d8[0x68];
+    long drawn;                 // +0x240
+    void* sprite;               // +0x248
+    void BaseSlot27();
+    __attribute__((always_inline)) void Refresh() {
+        FlashMovie* m = movie;
+        if (m) {
+            void* s = sprite;
+            MovieGuard guard(m);
+            FlashMovie* current = movie;
+            if (!s) s = DefaultSprite();
+            current->sprite = s;
+        }
+        long now;
+        if (CaptureRunning == 1) {
+            CaptureState* c = Capture;
+            now = c ? c->time : 0;
+        } else {
+            now = 1000000 * (SystemTick() - TickStart) / TickFrequency;
+        }
+        drawn = now;
+        BaseSlot27();
+    }
+    void Slot27();
+    void Slot27Notify();
+};
+template<unsigned Key> void FlashScreen<Key>::Slot27() { Refresh(); }
+template<unsigned Key> void FlashScreen<Key>::Slot27Notify() {
+    Refresh();
+    onyx::SendEvent<1219292173u>(callback, target);
+}
+template struct FlashScreen<0x8528a0>;
+template struct FlashScreen<0x8250d0>;
+template struct FlashScreen<0x876cb0>;
+}  // namespace SPTG
