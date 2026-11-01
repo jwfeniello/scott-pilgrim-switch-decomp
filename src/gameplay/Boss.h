@@ -94,7 +94,7 @@ struct Boss : Enemy {
     virtual int State254(int event); virtual State State254Ptr();   // slots 254, 255
     virtual int State256(int event); virtual State State256Ptr();   // slots 256, 257
 
-    char padding_b79[0xf];
+    char padding_b7a[0xe];
     void* slotB88;               // +0xb88: filled by AssignComponentSlot
     void* slotB90;               // +0xb90
     onyx::ComponentHandle* handleB98; // +0xb98

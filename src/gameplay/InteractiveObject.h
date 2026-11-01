@@ -14,6 +14,7 @@ struct InteractiveObject : AnimatedAiActor {
     void Slot35(bool flag, BaseCharacter* other) override;                   // slot 35
     bool Slot37() override;                                                  // slot 37
     void Slot43(float value) override;                                       // slot 43
+    void Remove(bool respawn) override;                                      // slot 70
     void Slot74(const float* point, bool flag, float value) override;        // slot 74
     virtual int State78(int event); virtual State State78Ptr();              // slots 78, 79
     virtual int State80(int event); virtual State State80Ptr();              // slots 80, 81
@@ -38,8 +39,12 @@ struct InteractiveObject : AnimatedAiActor {
     float fallZ;                     // +0x3ec: what it falls with
     float fallC4;                    // +0x3f0
     uint8_t emptyLook;               // +0x3f4: stands in animation 170 instead of 0
-    char padding_3f5[0x47];
+    char padding_3f5[0x3f];
+    uint32_t spawnerId;              // +0x434: which spawner placed it, or 51
+    char padding_438[0x4];
     uint8_t slidesInAnimation9;      // +0x43c
+    char padding_43d[0x11];
+    bool removedForRespawn;          // +0x44e
 };
 static_assert(__builtin_offsetof(InteractiveObject, states) == 0x250, "InteractiveObject states");
 static_assert(__builtin_offsetof(InteractiveObject, attack388) == 0x388, "InteractiveObject attack388");

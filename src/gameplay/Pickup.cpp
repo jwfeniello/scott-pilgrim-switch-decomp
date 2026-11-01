@@ -7,6 +7,7 @@
 #include "OnyxComponents.h"
 #include "OnyxEvents.h"
 #include "StateMachine.h"
+#include "Spawner.h"
 
 namespace SPTG {
 
@@ -17,29 +18,6 @@ struct AnimatedAiActor {
 
 extern "C" float Move_FrameDelta;   // seconds since the last frame (0x1924d70)
 
-
-struct UnspawnManager;
-
-// Allocator that list nodes come from (virtual Allocate at slot 2).
-struct NodeAllocator { virtual void Slot0(); virtual void Slot1(); virtual void* Allocate(uint64_t size); };
-// Doubly linked list with its allocator stored in front of the sentinel.
-template<class T> struct List {
-    struct Node { Node* next; Node* previous; T value; };
-    NodeAllocator* allocator;
-    Node* first;        // sentinel next
-    Node* last;         // sentinel previous
-    uint64_t size;
-    __attribute__((always_inline)) void PushFront(T value) {
-        Node* old = first;
-        Node* node = static_cast<Node*>(allocator->Allocate(sizeof(Node)));
-        node->next = old;
-        node->previous = reinterpret_cast<Node*>(&first);
-        old->previous = node;
-        first = node;
-        node->value = value;
-        ++size;
-    }
-};
 
 struct Pickup;
 // Queue of pending records (libc++ list layout: prev, next, value); nodes go back
@@ -63,25 +41,8 @@ template<class T> struct Queue {
     }
 };
 struct QueuedEvent { char data[0x10]; };
-struct Spawner : onyx::Component { void Remove(uint32_t key); };  // 0x690410
-// SPTG::PickupSpawner: places pickups and keeps the ones it spawned.
-struct PickupSpawner : onyx::Component {
-    char padding_8[0x48];
-    Singleton<UnspawnManager> unspawn;       // +0x50
-    onyx::ComponentHandle* spawner;          // +0x58
-    char padding_60[0x50];
-    List<Pickup*> spawned;                   // +0xb0
-    char padding_d0[0x8];
-    uint32_t id;                             // +0xd8
-};
-struct PickupSpawnerCatalog : onyx::Component {
-    char padding_8[0x78];
-    uint64_t count;                          // +0x80
-    char padding_88[0x8];
-    PickupSpawner** spawners;                // +0x90
-};
-static_assert(__builtin_offsetof(PickupSpawner, spawned) == 0xb0, "PickupSpawner list");
-static_assert(__builtin_offsetof(PickupSpawner, id) == 0xd8, "PickupSpawner id");
+typedef ActorSpawner<Pickup> PickupSpawner;
+typedef ActorSpawnerCatalog<Pickup> PickupSpawnerCatalog;
 
 // What touched the pickup: the actor's ID and a value the pickup records.
 struct Contact {

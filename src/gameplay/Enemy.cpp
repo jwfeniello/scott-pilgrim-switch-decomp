@@ -1,6 +1,7 @@
 // SPTG::Enemy's own virtuals other than its states (see
 // docs/GAME_CLASSES.md#enemy-states). Names are provisional.
 #include "Enemy.h"
+#include "Spawner.h"
 
 namespace SPTG {
 
@@ -127,7 +128,7 @@ void Enemy::Slot4(onyx::Archive& archive, ComponentSlot::Source* source) {
     onyx::Transfer(archive, value9fc);
     onyx::Transfer(archive, valueA00);
     onyx::Transfer(archive, valueA04);
-    onyx::TransferAs<uint32_t>(archive, valueA08);
+    onyx::TransferAs<uint32_t>(archive, spawnerId);
     onyx::Transfer(archive, valueA0c);
     onyx::Transfer(archive, valueA10);
     onyx::Transfer(archive, valueA14);
@@ -177,6 +178,33 @@ bool Enemy::Slot46(BaseCharacter* other) {
         return free & (kind == 2);
     }
     return result;
+}
+
+// Leaves the level. The spawner that placed it either keeps it to spawn again or removes it.
+void Enemy::Remove(bool respawn) {
+    Release();
+    if (spawnerId == 67) return;
+    removedForRespawn = respawn;
+    LevelItemAccessor* items = level.Get();
+    ActorSpawnerCatalog<Enemy>* catalog = onyx::Get<ActorSpawnerCatalog<Enemy>, onyx_types::type_4a2d83cc>(items->enemySpawners);
+    const uint32_t id = spawnerId;
+    ActorSpawner<Enemy>** i = catalog->spawners;
+    ActorSpawner<Enemy>** end = i + catalog->count;
+    if (i == end) return;
+    while ((*i)->id != id) {
+        ++i;
+        if (i == end) return;
+    }
+    ActorSpawner<Enemy>* owner = *i;
+    if (!owner) return;
+    if (respawn) {
+        owner->spawned.PushFront(this);
+    } else {
+        owner->unspawn.Get();
+        Spawner* spawner = onyx::Find<Spawner, onyx_types::type_78bdb701>(owner->spawner);
+        Holder* h = attachment ? attachment : &NoHolder;
+        spawner->Remove(h->key);
+    }
 }
 
 }  // namespace SPTG

@@ -3,6 +3,7 @@
 #include "BaseCharacter.h"
 
 extern "C" int32_t Attack_NextId;   // 0x1925328
+extern "C" void Transform_AddChild(onyx::Transform* parent, onyx::Transform* child, bool keepPosition);   // 0x68f0e0
 
 namespace SPTG {
 
@@ -109,6 +110,25 @@ int AnimatedAiActor::StartAttack(Attack* attack, bool flag, int source, BaseChar
     recentHits[2] = recentHits[3];
     recentHits[3] = last;
     return currentAttack->id;
+}
+
+// Slot 16: with a shadow, moves it to the actor and makes it a child of the actor's transform. Also copies +0x120
+// to the flags.
+void AnimatedAiActor::Update() {
+    flag50 = 0;
+    flag51 = 1;
+    ShadowAnimatedObject* shadow = shadowHandle ? static_cast<ShadowAnimatedObject*>(shadowHandle->object) : nullptr;
+    ActorObject* actor = onyx::Find<ActorObject, onyx_types::type_6492d61d>(actorObject);
+    ActorFlags* flags = onyx::Find<ActorFlags, 0x2eae5813u>(actor->flags);
+    if (shadow) {
+        ActorObject* again = onyx::Find<ActorObject, onyx_types::type_6492d61d>(actorObject);
+        onyx::Vector3 position = onyx::Get<onyx::Transform, onyx::kTransform>(again->transform)->Position();
+        onyx::Find<onyx::Transform, onyx::kTransform>(shadow->transform)->SetPosition(position);
+        onyx::Transform* parent = onyx::Find<onyx::Transform, onyx::kTransform>(again->transform);
+        Transform_AddChild(parent, onyx::Find<onyx::Transform, onyx::kTransform>(shadow->transform), true);
+        flags->SetShadow(shadow, false);
+    }
+    flags->value7c = value120;
 }
 
 }  // namespace SPTG

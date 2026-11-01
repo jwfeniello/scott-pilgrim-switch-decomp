@@ -78,6 +78,7 @@ struct ActorObject : onyx::Component {
     onyx::ComponentHandle* flags;       // +0x58, component type 0x2eae5813
     onyx::ComponentHandle* transform;   // +0x60, Onyx::Transform
 };
+struct ShadowAnimatedObject;
 // The component behind ActorObject::flags.
 struct ActorFlags : onyx::Component {
     onyx::EventCallback* blinkOffCallback;   // +0x8, event 0x255c0afe
@@ -88,8 +89,11 @@ struct ActorFlags : onyx::Component {
     char padding_30[0x49];
     uint8_t facingLeft;   // +0x79
     uint8_t flag7a;       // +0x7a
-    char padding_7b[0x9d];
+    char padding_7b[0x1];
+    onyx::Vector2 value7c;        // +0x7c
+    char padding_84[0x94];
     uint8_t flag118;      // +0x118
+    void SetShadow(ShadowAnimatedObject* shadow, bool flag);   // 0x811870
 };
 // SPTG::LevelAIManager (type 0x2b951b8a), reached through the singleton at +0x80 (getter 0x992bf0).
 struct GameDifficulty { char padding[0x108]; float value108; };   // +0x108
@@ -146,7 +150,9 @@ extern "C" GameState* Game_State;   // 0x1924bc0
 
 // SPTG::ShadowAnimatedObject: the actor's shadow, a weak dependency. It follows the actor, and states hide it.
 struct ShadowAnimatedObject : onyx::Component {
-    char padding_8[0x70];
+    char padding_8[0x50];
+    onyx::ComponentHandle* transform;   // +0x58
+    char padding_60[0x18];
     uint8_t visible;   // +0x78
 };
 
@@ -222,7 +228,8 @@ struct AnimatedAiActor : onyx::Component {
     Holder* attachment;          // +0x40: what the actor is attached to
     char padding_48[0x8];
     uint8_t flag50;              // +0x50
-    char padding_51[0x3];
+    uint8_t flag51;              // +0x51
+    char padding_52[0x2];
     int32_t value54;             // +0x54: copied to +0x230 by slot 13
     onyx::ComponentHandle* shadowHandle; // +0x58
     char padding_60[0x8];
@@ -246,7 +253,9 @@ struct AnimatedAiActor : onyx::Component {
     uint8_t flag100;             // +0x100
     char padding_101[0x3];
     float brakeForce;            // +0x104: how hard it slows down
-    char padding_108[0x24];
+    char padding_108[0x18];
+    onyx::Vector2 value120;      // +0x120: copied to ActorFlags +0x7c by slot 16
+    char padding_128[0x4];
     int32_t value12c;            // +0x12c
     uint8_t flag130;             // +0x130
     char padding_131[0x7];
@@ -258,7 +267,8 @@ struct AnimatedAiActor : onyx::Component {
     char padding_148[0x4];
     float hitStopLeft;           // +0x14c: the animation speed applies while not positive
     float hitStopSpeed;          // +0x150
-    char padding_154[0x8];
+    float liftHeight;            // +0x154: how high InteractiveObject's state 88 lifts it
+    char padding_158[0x4];
     float value15c;              // +0x15c
     float health;              // +0x160
     char padding_164[0x1];
@@ -513,6 +523,32 @@ struct BaseCharacter : AnimatedAiActor {
     }
     void Apply8e5750(int value);                       // 0x8e5750
     void HoldAnimation(float time, float speed);
+    // Slot 148's body, which the player's override inlines.
+    __attribute__((always_inline)) bool BuyHealth(bool* out) {
+        bool healed = false;
+        if (flag511 || __builtin_fabsf(guts) <= 0.000001f) {
+            healed = false;
+        } else {
+            float amount = value310;
+            float limit = MaxHealth();
+            amount = amount < limit ? amount : limit;
+            float cost = __builtin_ceilf(value30c * amount * GutsCostScale());
+            float available = guts;
+            if (cost > available || __builtin_fabsf(cost - available) <= 0.000002f) {
+                float rate = value30c;
+                if (__builtin_fabsf(rate) <= 0.000001f) amount = value310;
+                else amount = __builtin_ceilf(available / rate);
+                cost = available;
+            }
+            if (cost < available || __builtin_fabsf(cost - available) <= 0.000002f) {
+                GainHealth(amount);
+                LoseGuts(cost);
+            }
+            healed = true;
+        }
+        if (out) *out = healed;
+        return healed;
+    }
     BaseCharacter* Mount() { return mountHandle ? static_cast<BaseCharacter*>(mountHandle->object) : nullptr; }
     ShadowAnimatedObject* Shadow() { return shadowHandle ? static_cast<ShadowAnimatedObject*>(shadowHandle->object) : nullptr; }
 };
@@ -588,6 +624,19 @@ enum PlayerMove {
     kMoveAirKick = 0x04,
     kMoveAirAttack = 0x10,
 };
+struct Item;
+struct ItemRegistryNode {
+    ItemRegistryNode* children[2];
+    char padding_10[0x10];
+    int32_t id;              // +0x20
+    Item* item;              // +0x28
+};
+// SPTG::ItemRegistry: the game's items, in a binary tree by id.
+struct ItemRegistry {
+    char padding_0[0x50];
+    ItemRegistryNode end;    // +0x50, the tree's end marker; its root is at +0x60
+    __attribute__((always_inline)) ItemRegistryNode* Root() { return *reinterpret_cast<ItemRegistryNode**>(reinterpret_cast<char*>(this) + 0x60); }
+};
 // One thing an item does when used.
 enum ItemEffectKind {
     kItemHealth,
@@ -602,6 +651,7 @@ enum ItemEffectKind {
     kItemLearnMove,
     kItemEffect10,
 };
+struct Item;
 struct ItemEffect {
     int32_t kind;
     int32_t amount;
@@ -670,6 +720,7 @@ struct ControllablePlayer : BaseCharacter {
     void RestoreHealth() override;
     float Slot149() override;
     float MaxGuts() override;
+    bool HealWithGuts(bool* out) override;
     float GutsCostScale() override;
     float Slot152() override;
     void Slot20() override;
@@ -739,7 +790,7 @@ struct ControllablePlayer : BaseCharacter {
     char padding_77c[0xc];
     void* worldMapBroker;               // +0x788
     Singleton<InGameHUD> hud;    // +0x790
-    void* itemRegistry;               // +0x798
+    Singleton<ItemRegistry> itemRegistry;               // +0x798
     void* levelGate;               // +0x7a0
     void* statistics;               // +0x7a8
     void* localization;               // +0x7b0

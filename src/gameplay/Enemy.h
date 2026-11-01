@@ -38,6 +38,7 @@ struct SwitchLevelGateAccess {
 };
 
 struct Enemy : BaseCharacter {
+    void Remove(bool respawn);                                       // slot 70, overrides BaseCharacter
     bool Slot46(BaseCharacter* other);                               // slot 46, overrides BaseCharacter
     void SetSolid(bool solid);                                       // slot 56, overrides BaseCharacter
     bool OnHit(BaseCharacter* other, void* hit);                     // slot 38, overrides BaseCharacter (0x9cd330)
@@ -207,7 +208,7 @@ struct Enemy : BaseCharacter {
     int32_t value9fc;            // +0x9fc
     int32_t valueA00;            // +0xa00
     int32_t valueA04;            // +0xa04
-    int32_t valueA08;            // +0xa08
+    uint32_t spawnerId;          // +0xa08: which spawner placed it, or 67
     int32_t valueA0c;            // +0xa0c
     int32_t valueA10;            // +0xa10
     int32_t valueA14;            // +0xa14
@@ -228,6 +229,7 @@ struct Enemy : BaseCharacter {
     float valueB50;              // +0xb50
     char padding_b54[0x24];
     uint8_t flagB78;             // +0xb78
+    bool removedForRespawn;      // +0xb79
 
     bool LeaveCheck();   // 0x9dcb90: lets state 172 hand over to state 96
     void RollChance();   // 0x9dd6b0: when slot 36 holds, rolls the random chance at +0x920

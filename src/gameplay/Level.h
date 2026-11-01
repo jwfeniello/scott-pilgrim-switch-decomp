@@ -15,7 +15,9 @@ template<class T> struct Singleton { onyx::ComponentHandle* handle; T* Get(); };
 struct LevelItemAccessor {
     char padding[0x70];
     onyx::ComponentHandle* pickupSpawners;   // +0x70, Catalog<PickupSpawner>
-    char padding_78[0x18];
+    onyx::ComponentHandle* interactiveSpawners;  // +0x78, Catalog<InteractiveObjectSpawner>
+    char padding_80[0x8];
+    onyx::ComponentHandle* enemySpawners;    // +0x88, Catalog<EnemySpawner>
     onyx::ComponentHandle* interactiveObjects;  // +0x90, Catalog<InteractiveObject>
     onyx::ComponentHandle* enemies;          // +0x98, Catalog<Enemy>
     onyx::ComponentHandle* players;          // +0xa0, Catalog<ControllablePlayer>

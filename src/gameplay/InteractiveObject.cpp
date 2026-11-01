@@ -1,5 +1,6 @@
 // SPTG::InteractiveObject: what a character can get on. See InteractiveObject.h.
 #include "InteractiveObject.h"
+#include "Spawner.h"
 
 namespace SPTG {
 
@@ -125,6 +126,59 @@ int InteractiveObject::State78(int event) {
         break;
     }
     return result;
+}
+
+// Lifted: the animation stops and it rises until it reaches its height, then falls again on the way out.
+int InteractiveObject::State88(int event) {
+    int result = kStateHandled;
+    switch (event) {
+    case kStateUpdate: {
+        ActorObject* actor = onyx::Find<ActorObject, onyx_types::type_6492d61d>(actorObject);
+        if (onyx::Get<onyx::Transform, onyx::kTransform>(actor->transform)->position.z >= liftHeight) motion.z = 0.0f;
+        return kStateHandled;
+    }
+    case kStateEnter:
+        SetAnimationSpeed(0.0f);
+        motion = onyx::Vector3::Zero();
+        motionTarget = onyx::Vector3::Zero();
+        motion.z = 1.0f;
+        return kStateHandled;
+    case kStateExit:
+        SetAnimationSpeed(1.0f);
+        motionTarget.z = fallZ;
+        return kStateHandled;
+    case kStateEvent3:
+        return result;
+    default:
+        return kStateUnhandled;
+    }
+}
+
+// Leaves the level. The spawner that placed it either keeps it to spawn again or removes it.
+void InteractiveObject::Remove(bool respawn) {
+    Release();
+    if (spawnerId == 51) return;
+    removedForRespawn = respawn;
+    LevelItemAccessor* items = level.Get();
+    ActorSpawnerCatalog<InteractiveObject>* catalog = onyx::Get<ActorSpawnerCatalog<InteractiveObject>, onyx_types::type_43f66d96>(items->interactiveSpawners);
+    const uint32_t id = spawnerId;
+    ActorSpawner<InteractiveObject>** i = catalog->spawners;
+    ActorSpawner<InteractiveObject>** end = i + catalog->count;
+    if (i == end) return;
+    while ((*i)->id != id) {
+        ++i;
+        if (i == end) return;
+    }
+    ActorSpawner<InteractiveObject>* owner = *i;
+    if (!owner) return;
+    if (respawn) {
+        owner->spawned.PushFront(this);
+    } else {
+        owner->unspawn.Get();
+        Spawner* spawner = onyx::Find<Spawner, onyx_types::type_78bdb701>(owner->spawner);
+        Holder* h = attachment ? attachment : &NoHolder;
+        spawner->Remove(h->key);
+    }
 }
 
 }  // namespace SPTG

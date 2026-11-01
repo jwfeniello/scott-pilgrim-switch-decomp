@@ -336,29 +336,7 @@ void BaseCharacter::Slot42() {
 // Buys health with guts: +0x310 health at +0x30c guts each, or as much as the guts left will buy. Returns
 // false when there are none, or +0x511 is set.
 bool BaseCharacter::HealWithGuts(bool* out) {
-    bool healed = false;
-    if (flag511 || __builtin_fabsf(guts) <= 0.000001f) {
-        healed = false;
-    } else {
-        float amount = value310;
-        float limit = MaxHealth();
-        amount = amount < limit ? amount : limit;
-        float cost = __builtin_ceilf(value30c * amount * GutsCostScale());
-        float available = guts;
-        if (cost > available || __builtin_fabsf(cost - available) <= 0.000002f) {
-            float rate = value30c;
-            if (__builtin_fabsf(rate) <= 0.000001f) amount = value310;
-            else amount = __builtin_ceilf(available / rate);
-            cost = available;
-        }
-        if (cost < available || __builtin_fabsf(cost - available) <= 0.000002f) {
-            GainHealth(amount);
-            LoseGuts(cost);
-        }
-        healed = true;
-    }
-    if (out) *out = healed;
-    return healed;
+    return BuyHealth(out);
 }
 
 // Turns around when `x` is on the other side from the way the actor faces.

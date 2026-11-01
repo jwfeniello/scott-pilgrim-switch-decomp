@@ -68,7 +68,7 @@ int Boss::State200(int event) {
     switch (event) {
     case kStateUpdate:
         if (flagD29) {
-            if (valueA08 == 25) Remove(false);
+            if (spawnerId == 25) Remove(false);
             else Remove(removeFlag);
             flagD29 = 0;
             flagD2a = 1;
