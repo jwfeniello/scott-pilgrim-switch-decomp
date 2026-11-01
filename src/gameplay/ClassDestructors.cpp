@@ -401,6 +401,10 @@ namespace Onyx { namespace Flow {
 struct UnloadingTask { Auto<Buffer112686593> member_8; virtual void Key(); virtual ~UnloadingTask(); };
 UnloadingTask::~UnloadingTask() {  }
 }}
+namespace Onyx { namespace Graphics { 
+struct RenderSurfaceNative { char padding_8[32]; AutoInline<PlainSharedKeep<114251265>> member_28; virtual void Key(); virtual ~RenderSurfaceNative(); };
+RenderSurfaceNative::~RenderSurfaceNative() {  }
+}}
 struct Nested114291458 { virtual void Key(); char padding_8[8]; AutoInline<PlainCounted<7314653315, 1>> member_10; AutoInline<PlainCounted<7314653314, 3>> member_18; AutoInline<PlainCounted<7314653313, 3>> member_20; DT_INLINE ~Nested114291458() {} };
 namespace EE { 
 struct GlyphData { char padding_8[8]; Nested114291458 member_10; char padding_38[24]; AutoInline<PlainCounted<114291457, 1>> member_50; virtual void Key(); virtual ~GlyphData(); };
@@ -411,30 +415,60 @@ struct Base6ec140 { virtual ~Base6ec140(); char padding[8]; };
 struct Class6ec140 : Base6ec140 { AutoInline<PlainAtomicCounted<116134913, 2>> member_10; virtual void Key(); ~Class6ec140(); };
 Class6ec140::~Class6ec140() {  }
 
+struct Base6ec1a0 { virtual ~Base6ec1a0(); char padding[8]; };
+
+struct Class6ec1a0 : Base6ec1a0 { AutoInline<PlainAtomicCounted<116136449, 2>> member_10; virtual void Key(); ~Class6ec1a0(); };
+Class6ec1a0::~Class6ec1a0() {  }
+
 struct Base6f5190 { virtual ~Base6f5190(); char padding[8]; };
 
 struct Class6f5190 : Base6f5190 { AutoInline<PlainAtomicCounted<116726017, 2>> member_10; virtual void Key(); ~Class6f5190(); };
 Class6f5190::~Class6f5190() {  }
+
+struct Base6f51f0 { virtual ~Base6f51f0(); char padding[8]; };
+
+struct Class6f51f0 : Base6f51f0 { AutoInline<PlainAtomicCounted<116727553, 2>> member_10; virtual void Key(); ~Class6f51f0(); };
+Class6f51f0::~Class6f51f0() {  }
 
 struct Base6f5a60 { virtual ~Base6f5a60(); char padding[8]; };
 
 struct Class6f5a60 : Base6f5a60 { AutoInline<PlainAtomicCounted<116762113, 2>> member_10; virtual void Key(); ~Class6f5a60(); };
 Class6f5a60::~Class6f5a60() {  }
 
+struct Base6f5ac0 { virtual ~Base6f5ac0(); char padding[8]; };
+
+struct Class6f5ac0 : Base6f5ac0 { AutoInline<PlainAtomicCounted<116763649, 2>> member_10; virtual void Key(); ~Class6f5ac0(); };
+Class6f5ac0::~Class6f5ac0() {  }
+
 struct Base6f5cd0 { virtual ~Base6f5cd0(); char padding[8]; };
 
 struct Class6f5cd0 : Base6f5cd0 { AutoInline<PlainAtomicCounted<116772097, 2>> member_10; virtual void Key(); ~Class6f5cd0(); };
 Class6f5cd0::~Class6f5cd0() {  }
+
+struct Base6f5d30 { virtual ~Base6f5d30(); char padding[8]; };
+
+struct Class6f5d30 : Base6f5d30 { AutoInline<PlainAtomicCounted<116773633, 2>> member_10; virtual void Key(); ~Class6f5d30(); };
+Class6f5d30::~Class6f5d30() {  }
 
 struct Base701480 { virtual ~Base701480(); char padding[8]; };
 
 struct Class701480 : Base701480 { AutoInline<PlainAtomicCounted<117524481, 2>> member_10; virtual void Key(); ~Class701480(); };
 Class701480::~Class701480() {  }
 
+struct Base7014e0 { virtual ~Base7014e0(); char padding[8]; };
+
+struct Class7014e0 : Base7014e0 { AutoInline<PlainAtomicCounted<117526017, 2>> member_10; virtual void Key(); ~Class7014e0(); };
+Class7014e0::~Class7014e0() {  }
+
 struct Base702340 { virtual ~Base702340(); char padding[8]; };
 
 struct Class702340 : Base702340 { AutoInline<PlainAtomicCounted<117584897, 2>> member_10; virtual void Key(); ~Class702340(); };
 Class702340::~Class702340() {  }
+
+struct Base7023a0 { virtual ~Base7023a0(); char padding[8]; };
+
+struct Class7023a0 : Base7023a0 { AutoInline<PlainAtomicCounted<117586433, 2>> member_10; virtual void Key(); ~Class7023a0(); };
+Class7023a0::~Class7023a0() {  }
 
 struct Base709730 { virtual ~Base709730(); char padding[80]; };
 namespace Onyx { namespace DareAudio { 
@@ -450,6 +484,10 @@ AudioComponent::~AudioComponent() {  }
 
 struct Class7326f0 { char padding_8[56]; AutoInline<PlainSharedPointer<120745729, 1176, true, 1>> member_40; virtual void Key(); virtual ~Class7326f0(); };
 Class7326f0::~Class7326f0() {  }
+
+
+struct Class732790 { char padding_8[56]; AutoInline<PlainSharedPointer<120748289, 1176, true, 1>> member_40; virtual void Key(); virtual ~Class732790(); };
+Class732790::~Class732790() {  }
 
 struct Buffer121164545 { uint64_t w0; void* w8; __attribute__((always_inline)) void Destroy() { if (w8) FreeObject(w8); w8 = 0; } };
 struct Base738d30 { virtual ~Base738d30(); char padding[72]; };
@@ -509,15 +547,30 @@ struct Base7f5650 { virtual ~Base7f5650(); char padding[8]; };
 struct Class7f5650 : Base7f5650 { AutoInline<PlainAtomicCounted<133522689, 2>> member_10; virtual void Key(); ~Class7f5650(); };
 Class7f5650::~Class7f5650() {  }
 
+struct Base7f56b0 { virtual ~Base7f56b0(); char padding[8]; };
+
+struct Class7f56b0 : Base7f56b0 { AutoInline<PlainAtomicCounted<133524225, 2>> member_10; virtual void Key(); ~Class7f56b0(); };
+Class7f56b0::~Class7f56b0() {  }
+
 struct Base7f5760 { virtual ~Base7f5760(); char padding[8]; };
 
 struct Class7f5760 : Base7f5760 { AutoInline<PlainAtomicCounted<133527041, 2>> member_10; virtual void Key(); ~Class7f5760(); };
 Class7f5760::~Class7f5760() {  }
 
+struct Base7f57c0 { virtual ~Base7f57c0(); char padding[8]; };
+
+struct Class7f57c0 : Base7f57c0 { AutoInline<PlainAtomicCounted<133528577, 2>> member_10; virtual void Key(); ~Class7f57c0(); };
+Class7f57c0::~Class7f57c0() {  }
+
 struct Base7f5a60 { virtual ~Base7f5a60(); char padding[8]; };
 
 struct Class7f5a60 : Base7f5a60 { AutoInline<PlainAtomicCounted<133539329, 2>> member_10; virtual void Key(); ~Class7f5a60(); };
 Class7f5a60::~Class7f5a60() {  }
+
+struct Base7f5ac0 { virtual ~Base7f5ac0(); char padding[8]; };
+
+struct Class7f5ac0 : Base7f5ac0 { AutoInline<PlainAtomicCounted<133540865, 2>> member_10; virtual void Key(); ~Class7f5ac0(); };
+Class7f5ac0::~Class7f5ac0() {  }
 
 struct Base808560 { virtual ~Base808560(); char padding[680]; };
 struct Level808560_1 : Base808560 { Member<134764034> member_2b0; virtual void Key1(); DT_INLINE ~Level808560_1() {} };
@@ -630,6 +683,14 @@ namespace SPTG {
 struct Item : Level893db0_1 { char padding_51[39]; AutoInline<PlainSharedBuffer<143907587>> member_78; char padding_80[24]; Auto<Buffer143907586> member_98; char padding_a8[16]; AutoInline<PlainSharedBuffer<143907585>> member_b8; virtual void Key(); ~Item(); };
 Item::~Item() {  }
 }
+
+struct Class8b9c90 { char padding_8[40]; AutoInline<PlainSharedKeep<146393345>> member_30; virtual void Key(); virtual ~Class8b9c90(); };
+Class8b9c90::~Class8b9c90() {  }
+
+
+struct Class8b9e90 { char padding_8[40]; AutoInline<PlainSharedKeep<146401537>> member_30; virtual void Key(); virtual ~Class8b9e90(); };
+Class8b9e90::~Class8b9e90() {  }
+
 struct Buffer146626818 { uint64_t w0; void* w8; __attribute__((always_inline)) void Destroy() { w0 = 0; if (w8) FreeObject(w8); } };
 struct Buffer9384116417 { uint64_t w0; void* w8; __attribute__((always_inline)) void Destroy() { w0 = 0; if (w8) FreeObject(w8); } };
 struct Nested146626819 { virtual void Key(); char padding_8[72]; Auto<Buffer9384116417> member_50; DT_INLINE ~Nested146626819() {} };
@@ -646,6 +707,10 @@ namespace Onyx { namespace Graphics {
 struct ShapeComponent : Base8be540 { Nested146691073 member_98; virtual void Key(); ~ShapeComponent(); };
 ShapeComponent::~ShapeComponent() {  }
 }}
+
+struct Class8cc810 { char padding_8[40]; AutoInline<PlainSharedKeep<147620097>> member_30; virtual void Key(); virtual ~Class8cc810(); };
+Class8cc810::~Class8cc810() {  }
+
 struct Buffer147639041 { uint64_t w0; void* w8; __attribute__((always_inline)) void Destroy() { w0 = 0; if (w8) FreeObject(w8); } };
 struct Buffer147639042 { uint64_t w0; void* w8; __attribute__((always_inline)) void Destroy() { w0 = 0; if (w8) FreeObject(w8); } };
 struct Base8cccb0 { virtual ~Base8cccb0(); char padding[72]; };
@@ -732,6 +797,11 @@ struct Nested154646273 { virtual void Key(); AutoInline<PlainSlotOwned<989736147
 struct Class937b70 { char padding_8[32]; Nested154646273 member_28; virtual void Key(); virtual ~Class937b70(); };
 Class937b70::~Class937b70() {  }
 
+struct Nested154648321 { virtual void Key(); AutoInline<PlainSlotOwned<9897492545, 1>> member_8; DT_INLINE ~Nested154648321() {} };
+
+struct Class937bf0 { char padding_8[32]; Nested154648321 member_28; virtual void Key(); virtual ~Class937bf0(); };
+Class937bf0::~Class937bf0() {  }
+
 struct Base937dc0 { virtual ~Base937dc0(); char padding[152]; };
 struct Level937dc0_1 : Base937dc0 { Member<154655746> member_a0; virtual void Key1(); DT_INLINE ~Level937dc0_1() {} };
 namespace SPTG { 
@@ -798,8 +868,16 @@ struct Class9ab4a0 { AutoInline<PlainSharedPointer<162220545, 1176, true, 0>> me
 Class9ab4a0::~Class9ab4a0() {  }
 
 
+struct Class9ab540 { AutoInline<PlainSharedPointer<162223105, 1176, true, 0>> member_8; virtual void Key(); virtual ~Class9ab540(); };
+Class9ab540::~Class9ab540() {  }
+
+
 struct Class9acec0 { AutoInline<PlainSharedPointer<162327553, 1176, true, 0>> member_8; virtual void Key(); virtual ~Class9acec0(); };
 Class9acec0::~Class9acec0() {  }
+
+
+struct Class9acf60 { AutoInline<PlainSharedPointer<162330113, 1176, true, 0>> member_8; virtual void Key(); virtual ~Class9acf60(); };
+Class9acf60::~Class9acf60() {  }
 
 struct Buffer163395585 { uint64_t w0; uint64_t w8; void* w10; __attribute__((always_inline)) void Destroy() { w8 = 0; if (w10) FreeObject(w10); } };
 struct Buffer163395586 { uint64_t w0; uint64_t w8; uint64_t w10; uint64_t w18; void* w20; __attribute__((always_inline)) void Destroy() { w10 = 0; if (w20) FreeObject(w20); w20 = 0; w8 = 0; w10 = 0; } };
@@ -883,6 +961,10 @@ namespace SPTG {
 struct ControllableSpawnerCatalog : Levela0ab40_1 { char padding_e0[24]; AutoInline<PlainPointerMember<168473601>> member_f8; virtual void Key(); ~ControllableSpawnerCatalog(); };
 ControllableSpawnerCatalog::~ControllableSpawnerCatalog() {  }
 }
+
+struct Classadf9a0 { char padding_8[40]; AutoInline<PlainSharedKeep<182426113>> member_30; virtual void Key(); virtual ~Classadf9a0(); };
+Classadf9a0::~Classadf9a0() {  }
+
 struct Buffer184078082 { uint64_t w0; uint64_t w8; uint64_t w10; void* w18; __attribute__((always_inline)) void Destroy() { w10 = 0; if (w18) FreeObject(w18); } };
 struct Baseaf8cf0 { virtual ~Baseaf8cf0(); char padding[72]; };
 struct Levelaf8cf0_2 : Baseaf8cf0 { Member<184078084> member_50; virtual void Key2(); DT_INLINE ~Levelaf8cf0_2() {} };
@@ -1106,8 +1188,16 @@ struct Classba5eb0 { char padding_8[16]; AutoInline<PlainSharedPointer<195422977
 Classba5eb0::~Classba5eb0() {  }
 
 
+struct Classba5f40 { char padding_8[16]; AutoInline<PlainSharedPointer<195425281, 1176, true, 2>> member_18; virtual void Key(); virtual ~Classba5f40(); };
+Classba5f40::~Classba5f40() {  }
+
+
 struct Classba6600 { char padding_8[16]; AutoInline<PlainSharedPointer<195452929, 1176, true, 2>> member_18; virtual void Key(); virtual ~Classba6600(); };
 Classba6600::~Classba6600() {  }
+
+
+struct Classba6690 { char padding_8[16]; AutoInline<PlainSharedPointer<195455233, 1176, true, 2>> member_18; virtual void Key(); virtual ~Classba6690(); };
+Classba6690::~Classba6690() {  }
 
 struct Baseba78e0 { virtual ~Baseba78e0(); char padding[72]; };
 struct Levelba78e0_1 : Baseba78e0 { Member<195530243> member_50; virtual void Key1(); DT_INLINE ~Levelba78e0_1() {} };
@@ -1124,6 +1214,10 @@ inline StateMachine::~StateMachine() {  }
 
 struct Classbad530 { char padding_8[16]; AutoInline<PlainSharedPointer<195908353, 1176, true, 2>> member_18; virtual void Key(); virtual ~Classbad530(); };
 Classbad530::~Classbad530() {  }
+
+
+struct Classbad5c0 { char padding_8[16]; AutoInline<PlainSharedPointer<195910657, 1176, true, 2>> member_18; virtual void Key(); virtual ~Classbad5c0(); };
+Classbad5c0::~Classbad5c0() {  }
 
 struct Basebb64e0 { virtual ~Basebb64e0(); char padding[104]; };
 namespace Onyx { namespace Behavior { 
@@ -1217,6 +1311,10 @@ struct Damper : Basebf1550 { PlainFunction<200365313> member_58; virtual void Ke
 Damper::~Damper() { member_58.Destroy(); }
 
 namespace Onyx { 
+struct StringDescriptor { char padding_8[8]; AutoInline<PlainSharedKeep<200408321>> member_10; virtual void Key(); virtual ~StringDescriptor(); };
+StringDescriptor::~StringDescriptor() {  }
+}
+namespace Onyx { 
 struct XorPredicate { PlainFunction<200414721> member_8; PlainFunction<200414722> member_10; virtual void Key(); virtual ~XorPredicate() __attribute__((used)); };
 inline XorPredicate::~XorPredicate() { member_8.Destroy(); member_10.Destroy(); }
 }
@@ -1249,6 +1347,11 @@ struct Basec1cc90 { virtual ~Basec1cc90(); char padding[8]; };
 struct Classc1cc90 : Basec1cc90 { AutoInline<PlainAtomicCounted<203213057, 2>> member_10; virtual void Key(); ~Classc1cc90(); };
 Classc1cc90::~Classc1cc90() {  }
 
+struct Basec1ccf0 { virtual ~Basec1ccf0(); char padding[8]; };
+
+struct Classc1ccf0 : Basec1ccf0 { AutoInline<PlainAtomicCounted<203214593, 2>> member_10; virtual void Key(); ~Classc1ccf0(); };
+Classc1ccf0::~Classc1ccf0() {  }
+
 struct Basec56dd0 { virtual ~Basec56dd0(); char padding[856]; };
 namespace Onyx { namespace Strategy { 
 struct Write : Basec56dd0 { AutoInline<PlainSharedBuffer<207019265>> member_360; virtual void Key(); ~Write(); };
@@ -1267,6 +1370,10 @@ Read::~Read() {  }
 
 struct Classc58c90 { char padding_8[8]; AutoInline<PlainSharedPointer<207145217, 1176, true, 3>> member_10; virtual void Key(); virtual ~Classc58c90(); };
 Classc58c90::~Classc58c90() {  }
+
+
+struct Classc58cf0 { char padding_8[8]; AutoInline<PlainSharedPointer<207146753, 1176, true, 3>> member_10; virtual void Key(); virtual ~Classc58cf0(); };
+Classc58cf0::~Classc58cf0() {  }
 
 struct Basec6e350 { virtual ~Basec6e350(); char padding[72]; };
 struct Levelc6e350_1 : Basec6e350 { Member<208549122> member_50; virtual void Key1(); DT_INLINE ~Levelc6e350_1() {} };
