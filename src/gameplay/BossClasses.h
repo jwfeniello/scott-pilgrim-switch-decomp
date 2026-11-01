@@ -627,7 +627,8 @@ struct NegaScott : Boss {
 
     char padding_d48[0x2];
     uint8_t flagD4a;             // +0xd4a
-    char padding_d4b[0x5];
+    char padding_d4b[0x1];
+    float valueD4c;              // +0xd4c: passed to 0xa254a0 on landing in state 264
     AttackSlot attacksD50[9];    // +0xd50
     ProjectileSpawnInfo projectile; // +0x1188
     float value11f8;             // +0x11f8

@@ -1498,4 +1498,86 @@ void EnemyGiant::Approach() {
     }
 }
 
+// EnemyZombie slot 174 (0x9e84c0): Enemy's, and with +0xde8 raised it stops after animation 7, stays in 210 for a while and then
+// runs 0x9db480.
+int EnemyZombie::State174(int event) {
+    int result = Enemy::State174(event);
+    if (result == kStateParentTookOver) return result;
+    switch (event) {
+    case kStateEnter:
+        waitTimer = 0.0f;
+        return kStateHandled;
+    case kStateUpdate:
+        if (!flagDe8) return kStateHandled;
+        if (animation == 7) {
+            if (AnimationDone()) {
+                motion = onyx::Vector3::Zero();
+                motionTarget = onyx::Vector3::Zero();
+                PlayAnimation(210, 0, 0, 1.0f);
+                waitTimer = 0.0f;
+            }
+        } else if (animation == 210) {
+            waitTimer += Move_FrameDelta;
+            if (waitTimer > waitDec) {
+                Call9db480();
+            } else {
+                motion = onyx::Vector3::Zero();
+                motionTarget = onyx::Vector3::Zero();
+            }
+        }
+        return kStateHandled;
+    }
+    return kStateUnhandled;
+}
+
+// EnemyJetPackMatt slot 106 (0x9f1980): knocked out of the air. It waits out +0x330, then plays 91 after 13 and 92 after 14, and
+// stops and goes to state 96 after those or after 263, which replaces them with bit 1 of +0x780 set.
+int EnemyJetPackMatt::State106(int event) {
+    int result = kStateHandled;
+    switch (event) {
+    case kStateUpdate:
+        if (timer330 <= 0.0f) {
+            if (AnimationDone()) {
+                switch (animation) {
+                case 13:
+                    PlayAnimation(91, 0, 0, 1.0f);
+                    break;
+                case 14:
+                    PlayAnimation(92, 0, 0, 1.0f);
+                    break;
+                case 91:
+                case 92:
+                    motion = onyx::Vector3::Zero();
+                    motionTarget = onyx::Vector3::Zero();
+                    // Falls through.
+                case 263:
+                    states.Transition(State96Ptr());
+                    return kStateParentTookOver;
+                }
+            }
+        } else {
+            timer330 -= Move_FrameDelta;
+        }
+        break;
+    case kStateEnter:
+        if (flags780 & 2) {
+            motion = onyx::Vector3::Zero();
+            motionTarget = onyx::Vector3::Zero();
+            PlayAnimation(263, 0, 0, 1.0f);
+        } else {
+            PlayAnimation(value12c == 1 ? 13 : 14, 0, 0, 1.0f);
+        }
+        break;
+    default:
+        result = kStateUnhandled;
+        break;
+    case kStateExit:
+        states.AssertOwner(this);
+        break;
+    case kStateEvent3:
+        break;
+    }
+    return result;
+}
+
 }  // namespace SPTG

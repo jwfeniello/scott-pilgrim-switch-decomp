@@ -1,9 +1,9 @@
 {
   "version": 1,
-  "generated_at": "2026-11-01T22:28:45.732280+00:00",
+  "generated_at": "2026-11-01T22:36:18.231246+00:00",
   "target_elf_sha256": "ea95638e6d6aaa0dc6cddd552a9366799aa1ec3bc07ee201f23f6c151103f5b8",
   "input_sha256": {
-    "config/builds.json": "7a163087b374c6502b316fb60a34c295b7865e96592926beb37a13282bedadeb",
+    "config/builds.json": "8172b8bf3d3e2cbbe6a4275fb8ec6370713d6c46b53a7f0019316fa77e123e4d",
     "config/functions.tsv": "399e91468a04e0459194c10d68d2210d1157cedefeb19c7851886ca7632fcb18",
     "config/non_fde_functions.tsv": "6a45f5e185454fa0472af00b2cdc9d040d73ca133d1106217e1fbbe3b32a8175",
     "config/target.json": "23cc6a5227206a953e7668acf5e9ae5c02a25c23b7e7967f0450a814b888241a",
@@ -1129,8 +1129,8 @@
     "src/gameplay/BaseCharacter.h": "363dd03a0662c8bbba5bad23f3c1f3ab21dd11d0cf5af555ab9af1f7da55ceea",
     "src/gameplay/BaseCharacterStates.cpp": "6fbbb252bc5521a5681f438c6a06f9de86bf714b44faa5b8baf858530db9403e",
     "src/gameplay/Boss.h": "74c7dd773389902ee862d3afa2cdd3634263953fd23756849ef74de5107a6a90",
-    "src/gameplay/BossClassStates.cpp": "2dc05f0bf297fee9197e6dfbf332699ab02e7a0f7068741956ce728450114e7c",
-    "src/gameplay/BossClasses.h": "150723ffc2857ff4e9428fa537eb4139fc404e48b9842c29ab8ddad919fc6e5e",
+    "src/gameplay/BossClassStates.cpp": "8938a48e3ac28d6672debec4a6702acc7dfe7e61bc42b5888439bef94a74757b",
+    "src/gameplay/BossClasses.h": "4f1817901a8bf88add798a6aa560c1433ab45d8aa8d615572038e6ace11f31bc",
     "src/gameplay/BossStates.cpp": "94fe578cffecc6def2e4cf7c1dad18a7f138cee5a6fff266452ca801fce92435",
     "src/gameplay/BreakableObject.cpp": "6a12d0a6bb0bf0cb9d50b16a4fbfb943af2d800999ed9ac3bc660da660cde351",
     "src/gameplay/BreakableObject.h": "02d45f6dc901706749390eff10ca7cec9565ac47f90e46543eef984af3e70763",
@@ -1151,10 +1151,10 @@
     "src/gameplay/ControllablePlayerStates.cpp": "35aac965ed1b41f298b48143b0a1e4581728c63d5d85443eb7a9dff7f347f79c",
     "src/gameplay/EmitterSequencer.cpp": "2cb8de43644d29ceb9f44f41ad0eadfaaa9b6e39336bcf297864829d0e213acc",
     "src/gameplay/Enemy.cpp": "e92b19e865b4cdd6a40d1b6d7c34387296e6fe3d7e294ec8b882ae62d395f5b3",
-    "src/gameplay/Enemy.h": "d7736ad5d25c3b1395a1e76fdcda44c7dcd2c96a5348e2b3c5e99aac99ed1604",
+    "src/gameplay/Enemy.h": "f5ef3ace7227d06ada1da06cbf9be5bdcb60c94cb9b46d5a94445259c97cb5ed",
     "src/gameplay/EnemyAttackStates.cpp": "40c206398172e031a38f74e9243592a04c535166ef4ea3ba4cf2119291e02a6b",
-    "src/gameplay/EnemyClassStates.cpp": "314fb1601c5041882ab44d75749680a9ee488c8ef2f6c8eddcd4478b5ca5292d",
-    "src/gameplay/EnemyClasses.h": "99e5d88fb580c8a4952324d7299f147e6a0f26ec73a591d68145959198dafffa",
+    "src/gameplay/EnemyClassStates.cpp": "35e6e098eb77508a9b2b29e1040c02ffd83c535cba3bf957115878ced23ec885",
+    "src/gameplay/EnemyClasses.h": "fe062e2db7fc9014abc37cf9b47eeb19cb134a97c082cb2e5398da1128fea0d4",
     "src/gameplay/EnemyStates.cpp": "f4f572c115a765f27b0dc517f19392577c23775bac9625474b950e17700bdbed",
     "src/gameplay/EventSenders.cpp": "96d7d8707c5fd3995518f2b5aa7cc5e0812de0a92ea69a28b22c939d21deb67d",
     "src/gameplay/GeneratedSerialize.cpp": "0e00aac052499ade138e71b38be31d397d28f565fea31196dda1f8b7bc904a39",
@@ -4008,17 +4008,17 @@
     "vendor/zlib-1.2.11/zutil.h": "9a63f6690fac1620aa3cecee5752af618806da438a256b4a047fbcd289cac159"
   },
   "compiler_versions": {
-    "8.0.1": "clang version 8.0.1 (tags/RELEASE_801/final)",
     "7.0.1": "clang version 7.0.1 (tags/RELEASE_701/final)",
+    "8.0.1": "clang version 8.0.1 (tags/RELEASE_801/final)",
     "lld": "LLD 8.0.1 (compatible with GNU linkers)"
   },
   "compiler_sha256": {
-    "8.0.1": "dffd62a213ec6cdb4430012a4a41c11e5e32c288f133d5391f9be49e1c5b69de",
     "7.0.1": "c2f0a175157d9aaace8031f8e6d7ea0ed6142b4bcef287105e3ed227301f1002",
+    "8.0.1": "dffd62a213ec6cdb4430012a4a41c11e5e32c288f133d5391f9be49e1c5b69de",
     "lld": "c4b3aaea06ff7112c64753047a2ab279fc3fe10dd807fd3c22edfdae99f43eed"
   },
-  "exact_functions": 38756,
-  "exact_bytes": 5108532,
+  "exact_functions": 38758,
+  "exact_bytes": 5109756,
   "builds": [
     {
       "id": "probes",
@@ -13491,11 +13491,6 @@
       "object_sha256": "9b267e1aad477b87ef3abe5f88a453c1804f408f4fa6d4985712677f335f9277"
     },
     {
-      "id": "gameplay_enemy_classes",
-      "compiler": "8.0.1",
-      "object_sha256": "cb17ff3f8d54f749fece5406bff99db87c4e360d5c51c341579bed76797f5d5b"
-    },
-    {
       "id": "gameplay_boss",
       "compiler": "8.0.1",
       "object_sha256": "65b421065555e8cabb42a1d0ae108b0893c76ef5a1780bbc968fa1505bdf302c"
@@ -13503,7 +13498,12 @@
     {
       "id": "gameplay_boss_classes",
       "compiler": "8.0.1",
-      "object_sha256": "cc544c380a0b4549357f1b0e3335edbc55dc1418e5f01e5c65e5bff522e2636f"
+      "object_sha256": "4bfc72334949b2ab342b3f038d0c22db5172faa79290b947e10c7349b7a86013"
+    },
+    {
+      "id": "gameplay_enemy_classes",
+      "compiler": "8.0.1",
+      "object_sha256": "43d502937696f2ed1f1105881ae027ba6fa2d021c08625c809ed2f3b1bf442fc"
     }
   ],
   "matches": [
@@ -307164,6 +307164,17 @@
       "relocation_count": 0
     },
     {
+      "address": "0x9e84c0",
+      "size": 548,
+      "exact": true,
+      "target_sha256": "9589c29893a6e6891d9f577c8e960bfe13064ee088a3dbb2dc7d2edb4fbc241e",
+      "compiled_sha256": "9589c29893a6e6891d9f577c8e960bfe13064ee088a3dbb2dc7d2edb4fbc241e",
+      "source": "src/gameplay/EnemyClassStates.cpp",
+      "symbol": "_ZN4SPTG11EnemyZombie8State174Ei",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 40
+    },
+    {
       "address": "0x9e86f0",
       "size": 12,
       "exact": true,
@@ -308856,6 +308867,17 @@
       "symbol": "_ZN4SPTG16EnemyJetPackMatt15FollowPlayfieldEv",
       "source_review": "manual_reconstruction",
       "relocation_count": 10
+    },
+    {
+      "address": "0x9f1980",
+      "size": 676,
+      "exact": true,
+      "target_sha256": "44a1948c2aa2cefe006623dcc3b794b80b368a9dfb12e7eb27b3d19c88a9046b",
+      "compiled_sha256": "44a1948c2aa2cefe006623dcc3b794b80b368a9dfb12e7eb27b3d19c88a9046b",
+      "source": "src/gameplay/EnemyClassStates.cpp",
+      "symbol": "_ZN4SPTG16EnemyJetPackMatt8State106Ei",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 41
     },
     {
       "address": "0x9f1c30",

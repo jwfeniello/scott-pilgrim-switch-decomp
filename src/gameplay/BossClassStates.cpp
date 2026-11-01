@@ -3692,4 +3692,53 @@ int SuperFightingRobotHand::State270(int event) {
     return result;
 }
 
+// NegaScott slot 264 (0xa46aa0): jumps with animation 145, turns to the target and attacks on the way down in 79 and 80, and
+// on landing goes to state 104. Not yet matched: the animation switch's compares come out in a different order.
+int NegaScott::State264(int event) {
+    int result = kStateHandled;
+    switch (event) {
+    case kStateEnter:
+        result = kStateHandled;
+        PlayAnimation(145, 0, 1, 1.0f);
+        motion.z = value1218;
+        StartAttack(&attacksD50[8].attack, false, 1, nullptr);
+        break;
+    case kStateUpdate:
+        switch (animation) {
+        case 145:
+            if (AnimationDone() && !IsOnGround()) {
+                PlayAnimation(79, 0, 1, 1.0f);
+                FaceX(onyx::Get<onyx::Transform, onyx::kTransform>(onyx::Find<ActorObject, 0x6492d61du>(static_cast<AnimatedAiActor*>(target->object)->actorObject)->transform)->position.x);
+                result = kStateHandled;
+                StartAttack(&attacksD50[4].attack, false, 1, nullptr);
+                return result;
+            }
+            break;
+        case 79:
+            if (AnimationDone() && !IsOnGround()) {
+                result = kStateHandled;
+                PlayAnimation(80, 1, 1, 1.0f);
+                return result;
+            }
+            break;
+        case 80:
+            break;
+        default:
+            return kStateHandled;
+        }
+        if (IsOnGround() && motion.z <= 0.0f) {
+            CallA254a0(valueD4c);
+            states.Transition(State104Ptr());
+            result = kStateParentTookOver;
+        }
+        break;
+    case kStateEvent3:
+        break;
+    default:
+        result = kStateUnhandled;
+        break;
+    }
+    return result;
+}
+
 }  // namespace SPTG

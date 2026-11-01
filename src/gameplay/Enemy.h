@@ -155,7 +155,9 @@ struct Enemy : BaseCharacter {
     SPTG_SLOT(232)
     virtual void Slot233(const uint8_t* trigger);                            // slot 233
 
-    char padding_77c[0xc];
+    char padding_77c[0x4];
+    uint8_t flags780;            // +0x780: bit 1 picks EnemyJetPackMatt's other way of being knocked out
+    char padding_781[0x7];
     onyx::ComponentHandle* handle788; // +0x788
     onyx::ComponentHandle* handle790; // +0x790
     Singleton<SwitchLevelGateAccess> levelGate; // +0x798: filled by AssignComponentSlot, getter 0x770d70

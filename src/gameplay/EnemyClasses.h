@@ -26,6 +26,8 @@ struct EnemyOneHitWonder : Enemy {
 };
 // vtable 0x187fa08, 244 slots
 struct EnemyZombie : Enemy {
+    int State174(int event);
+    void Call9db480();   // 0x9db480
     int State202(int event);
     void Slot166(int kind);
     virtual int State234(int event); virtual State State234Ptr();   // slots 234, 235
@@ -36,6 +38,10 @@ struct EnemyZombie : Enemy {
 
     char padding_b7a[0x16];
     AttackSlot attacks[5];       // +0xb90
+    uint8_t flagDe8;             // +0xde8: state 174 waits in animation 210 after 7
+    char padding_de9[0x3];
+    float waitDec;               // +0xdec
+    float waitTimer;             // +0xdf0
 };
 // vtable 0x18801d0, 238 slots
 struct EnemyWolverine : Enemy {
@@ -165,6 +171,7 @@ struct EnemyMini : Enemy {
 };
 // vtable 0x1883730, 237 slots
 struct EnemyJetPackMatt : Enemy {
+    int State106(int event);
     void Spawn(const EnemySpawnInfo* info) override;
     void FollowPlayfield() override;
     void Update();
