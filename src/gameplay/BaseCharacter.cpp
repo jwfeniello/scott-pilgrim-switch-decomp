@@ -30,7 +30,7 @@ int BaseCharacter::StartAttack(Attack* attack, bool flag, int source, BaseCharac
     float value = scaling->Slot40();
     currentAttack->value40 = value;
     currentAttack->SetSource(source, attacker);
-    value15c = 0;
+    sentEvents = 0;
     int last = currentAttack->id;
     recentHits[0] = recentHits[1];
     recentHits[1] = recentHits[2];

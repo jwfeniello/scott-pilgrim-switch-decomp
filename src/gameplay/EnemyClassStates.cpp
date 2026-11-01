@@ -58,21 +58,21 @@ void EnemyGodzilla::Slot166(int kind) {
     savedMotion.x = motion.x;
     savedMotion.y = motion.y;
     savedMotion.z = motion.z;
-    value15c = 0.0f;
+    sentEvents = 0;
     if (kind == 11) states.Transition(State234Ptr());
 }
 void EnemyJetPackMatt::Slot166(int kind) {
     savedMotion.x = motion.x;
     savedMotion.y = motion.y;
     savedMotion.z = motion.z;
-    value15c = 0.0f;
+    sentEvents = 0;
     if (kind == 11) states.Transition(State234Ptr());
 }
 void EnemyThief::Slot166(int kind) {
     savedMotion.x = motion.x;
     savedMotion.y = motion.y;
     savedMotion.z = motion.z;
-    value15c = 0.0f;
+    sentEvents = 0;
     if (kind == 33) states.Transition(State194Ptr());
 }
 
@@ -175,7 +175,7 @@ void EnemyPaparazzi::Slot166(int kind) {
     savedMotion.x = motion.x;
     savedMotion.y = motion.y;
     savedMotion.z = motion.z;
-    value15c = 0.0f;
+    sentEvents = 0;
     if (kind == 11) states.Transition(State234Ptr());
     else if (kind == 19) states.Transition(State236Ptr());
 }
@@ -183,7 +183,7 @@ void EnemyMini::Slot166(int kind) {
     savedMotion.x = motion.x;
     savedMotion.y = motion.y;
     savedMotion.z = motion.z;
-    value15c = 0.0f;
+    sentEvents = 0;
     if (kind == 8) {
         flag9c4 = 0;
         states.Transition(State196Ptr());
@@ -262,7 +262,7 @@ void EnemyWolverine::Slot166(int kind) {
     savedMotion.x = motion.x;
     savedMotion.y = motion.y;
     savedMotion.z = motion.z;
-    value15c = 0.0f;
+    sentEvents = 0;
     if (kind == 11) states.Transition(State234Ptr());
     else if (kind == 32) states.Transition(State236Ptr());
     else if (kind == 33) states.Transition(State194Ptr());
@@ -271,7 +271,7 @@ void EnemyChubby::Slot166(int kind) {
     savedMotion.x = motion.x;
     savedMotion.y = motion.y;
     savedMotion.z = motion.z;
-    value15c = 0.0f;
+    sentEvents = 0;
     if (kind == 11) {
         states.Transition(State238Ptr());
     } else if (kind == 32) {
@@ -405,7 +405,7 @@ void EnemyShooter::Slot166(int kind) {
     savedMotion.x = motion.x;
     savedMotion.y = motion.y;
     savedMotion.z = motion.z;
-    value15c = 0.0f;
+    sentEvents = 0;
     if (kind != 20) return;
     if (Check994610()) {
         if (valueC24) states.Transition(State236Ptr());
@@ -506,7 +506,7 @@ void EnemyZombie::Slot166(int kind) {
     savedMotion.x = motion.x;
     savedMotion.y = motion.y;
     savedMotion.z = motion.z;
-    value15c = 0.0f;
+    sentEvents = 0;
     switch (kind) {
     case 11: states.Transition(State240Ptr()); break;
     case 20: states.Transition(State234Ptr()); break;
@@ -519,7 +519,7 @@ void EnemySpeedy::Slot166(int kind) {
     savedMotion.x = motion.x;
     savedMotion.y = motion.y;
     savedMotion.z = motion.z;
-    value15c = 0.0f;
+    sentEvents = 0;
     switch (kind) {
     case 8: flag9c4 = 0; states.Transition(State196Ptr()); break;
     case 20: states.Transition(State234Ptr()); break;
@@ -532,7 +532,7 @@ void EnemyHanzo::Slot166(int kind) {
     savedMotion.x = motion.x;
     savedMotion.y = motion.y;
     savedMotion.z = motion.z;
-    value15c = 0.0f;
+    sentEvents = 0;
     switch (kind) {
     case 8: flag9c4 = 0; states.Transition(State9f7ef0Ptr()); break;
     case 11: states.Transition(State236Ptr()); break;
@@ -547,7 +547,7 @@ void EnemyGiant::Slot166(int kind) {
     savedMotion.x = motion.x;
     savedMotion.y = motion.y;
     savedMotion.z = motion.z;
-    value15c = 0.0f;
+    sentEvents = 0;
     switch (kind) {
     case 8: flagB89 = 0; states.Transition(State196Ptr()); break;
     case 11: states.Transition(State236Ptr()); break;

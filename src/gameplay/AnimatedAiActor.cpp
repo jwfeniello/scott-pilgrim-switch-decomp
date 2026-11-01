@@ -7,6 +7,26 @@ extern "C" void Transform_AddChild(onyx::Transform* parent, onyx::Transform* chi
 
 namespace SPTG {
 
+// An attack landed: its hit stop holds this actor's animation, and with kind 2 the attack's owner's too.
+void AnimatedAiActor::AttackLanded(AnimatedAiActor* target) {
+    Attack* landed = currentAttack;
+    attackLanded = 1;
+    float speed = landed->hitStopSpeed;
+    uint32_t kind = landed->kind;
+    float time = landed->hitStopTime;
+    if (kind <= 3 && time > 0.0f && hitStopLeft <= 0.0f) {
+        hitStopSpeed = speed;
+        float saved = animationSpeed;
+        SetAnimationSpeed(speed);
+        animationSpeed = saved;
+        hitStopLeft = time;
+    }
+    if (kind == 2) {
+        AnimatedAiActor* other = landed->shared ? static_cast<AnimatedAiActor*>(landed->shared->object) : nullptr;
+        other->HoldAnimation(time, speed);
+    }
+}
+
 // Starts an animation. With a partner whose transform has a parent, also takes the partner's facing.
 void AnimatedAiActor::PlayAnimation(int anim, bool loop, bool scaled, float speed) {
     onyx::Get<AnimationController, kAnimationControllerType>(animationHandle)->Play(anim, loop);
@@ -103,7 +123,7 @@ int AnimatedAiActor::StartAttack(Attack* attack, bool flag, int source, BaseChar
     float value = scaling->Slot40();
     currentAttack->value40 = value;
     currentAttack->SetSource(source, attacker);
-    value15c = 0;
+    sentEvents = 0;
     int last = currentAttack->id;
     recentHits[0] = recentHits[1];
     recentHits[1] = recentHits[2];

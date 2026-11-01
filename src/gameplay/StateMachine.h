@@ -27,8 +27,8 @@ template<class Owner> struct StateMachine {
     __attribute__((always_inline)) bool IsIn(State state) const { return current == state; }
     // Starts the machine in `initial` and sends it the enter event.
     __attribute__((always_inline)) void Start(Owner* self, State initial) {
-        next = initial;
         owner = self;
+        next = initial;
         current = initial;
         (self->*initial)(kStateEnter);
     }

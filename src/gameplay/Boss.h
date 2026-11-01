@@ -7,10 +7,6 @@
 namespace SPTG {
 
 // A component that answers IsA at slot 12, as SPTG components do.
-struct TypedComponent : onyx::Component {
-    SPTG_SLOT(3) SPTG_SLOT(4) SPTG_SLOT(5) SPTG_SLOT(6) SPTG_SLOT(7) SPTG_SLOT(8) SPTG_SLOT(9) SPTG_SLOT(10) SPTG_SLOT(11)
-    virtual bool IsA(uint32_t type);   // slot 12
-};
 // A component GigaGideon keeps at +0x12b8; slot 13 runs its slot 3 while +0x18 is clear.
 struct BossEffect : onyx::Component {
     SPTG_SLOT(3)
@@ -26,14 +22,6 @@ struct HandCallbacks {
     void* extra;
 };
 void TransferCallbacks(onyx::Archive& archive, ComponentSlot::Source* source, HandCallbacks* callbacks);   // 0xa304b0
-// SPTG::PlayfieldCollision (component type 0x21350526), behind ActorObject::playfield.
-struct PlayfieldCollision : TypedComponent {
-    static const uint32_t kType = 0x21350526u;
-    char padding_8[0x120];
-    uint8_t flag128;   // +0x128
-    char padding_129[0x7];
-    uint32_t flags130; // +0x130
-};
 
 // vtable 0x188b950, 258 slots
 struct Boss : Enemy {

@@ -1026,6 +1026,33 @@ animation ends it returns to `State96`. Their case order and exit-case assertion
 [Matching state handlers](#matching-state-handlers). `State165`, `State175` and `State177` have
 the same shape but differ in register choice in every form tried, so they are left out.
 
+## Projectiles
+
+`SPTG::Projectile` (vtable `0x1872ec8`, 82 slots) comes straight from `AnimatedAiActor` and has its
+own state machine at `+0x280`. Slots 78 to 81 only return its four states, which are not virtual
+themselves:
+
+| Slot | State | Address | What it does |
+|---|---|---|---|
+| 78 | `WaitingState` | `0x95b810` | Starts the attack, then waits. `waitFor` (`+0x358`) says for what: 1 until on screen, 2 until a player is near, 3 until the camera block is active. Then it flies. |
+| 79 | `FlyingState` | `0x95b130` | Takes `launchMotion` (`+0x35c`) and `flightTime` (`+0x2b0`), plays animation 189 and then `flyAnimation`. A landing can shake the camera, send an event, bounce it, burst it, or return it to waiting. |
+| 80 | `BurstState` | `0x95ae60` | Stops, plays animation 16 and sends its event. When the animation ends it calls `Remove` or `Release`. |
+| 81 | `GoneState` | `0x95ae30` | Does nothing, and leaves the exit event unhandled. |
+
+The on-screen test in `WaitingState` compares against the camera position with a view of 384 by 216,
+the game's native resolution as the code uses it. `SendFlightOver` (`0x95bde0`) sends one of two
+events, once, depending on whether the attack landed on a character: `AttackLanded` tests the target
+with `IsA(0x1cfe99c7)`, which `BaseCharacter`'s `IsA` answers. `sentEvents` (`+0x15c`) holds which
+one-shot events have gone out: bit `0x40` for this, `0x80` for `Hit`.
+
+Everything except `WaitingState`, `FlyingState` and the larger slots is exact. Those two are in
+`Projectile.cpp` marked as not yet matched.
+
+`AttackLanded` also shows that an inline helper can change the code. A hand-written
+`kind <= 3 && time > 0.0f && hitStopLeft <= 0.0f` stays one test until selection splits it, and the
+`kind > 3` path still reaches the `kind == 2` test. The same test through an inline `HoldAnimation`
+lets jump threading skip that second test, so the loads sink past the branch and the bytes differ.
+
 ## Actions and their events
 
 [`ActionEvents.cpp`](../src/gameplay/ActionEvents.cpp) holds methods of the game's scripted actions and

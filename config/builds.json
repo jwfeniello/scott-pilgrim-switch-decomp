@@ -567083,138 +567083,6 @@
       ]
     },
     {
-      "id": "gameplay_actor",
-      "source": "src/gameplay/AnimatedAiActor.cpp",
-      "compiler": "8.0.1",
-      "source_review": "manual_reconstruction",
-      "flags": [
-        "-target",
-        "aarch64-none-elf",
-        "-std=c++11",
-        "-O2",
-        "-mcpu=cortex-a57",
-        "-fstrict-aliasing",
-        "-fomit-frame-pointer",
-        "-fno-pic",
-        "-fno-delete-null-pointer-checks",
-        "-ffunction-sections",
-        "-fdata-sections"
-      ],
-      "header_roots": [
-        "src/gameplay"
-      ],
-      "functions": [
-        {
-          "address": "0x93f750",
-          "size": 772,
-          "symbol": "_ZN4SPTG15AnimatedAiActor13PlayAnimationEibbf",
-          "target_sha256": "fc271ba376652b738790b59740300d16d0dfc2ae265b4a8a4038b2f0927739e9",
-          "bindings": {
-            "Accessor_Resolver": "0x191cd10",
-            "Accessor_Resolve": "0x67edd0"
-          },
-          "got_bindings": {}
-        },
-        {
-          "address": "0x93fb90",
-          "size": 136,
-          "symbol": "_ZN4SPTG15AnimatedAiActor17SetAnimationSpeedEf",
-          "target_sha256": "20c1ed6a5d984c22745f3f8f9e6343d9b11e8abbe89800d43592a3230461914c",
-          "bindings": {
-            "Accessor_Resolver": "0x191cd10",
-            "Accessor_Resolve": "0x67edd0"
-          },
-          "got_bindings": {}
-        },
-        {
-          "address": "0x93fcf0",
-          "size": 204,
-          "symbol": "_ZN4SPTG15AnimatedAiActor9SetFacingEi",
-          "target_sha256": "f563e8bef8524c713378053adb353386343a5ccd79f749a0b2276fdc9b3b7259",
-          "bindings": {
-            "Accessor_Resolver": "0x191cd10",
-            "Accessor_Resolve": "0x67edd0"
-          },
-          "got_bindings": {}
-        },
-        {
-          "address": "0x93fdd0",
-          "size": 220,
-          "symbol": "_ZN4SPTG15AnimatedAiActor10TurnAroundEv",
-          "target_sha256": "f520ec471ef5988d77f68b8e3b6608bcf686ebbb003376d415cee40013e3ee05",
-          "bindings": {
-            "Accessor_Resolver": "0x191cd10",
-            "Accessor_Resolve": "0x67edd0"
-          },
-          "got_bindings": {}
-        },
-        {
-          "address": "0x941070",
-          "size": 232,
-          "symbol": "_ZN4SPTG15AnimatedAiActor11StartAttackEPNS_6AttackEbiPNS_13BaseCharacterE",
-          "target_sha256": "8ac4d069464f2b19e6592ea772f79eb6f42a51ac754ae702b9b3c2aa9566cc72",
-          "bindings": {
-            "_ZN4SPTG6AttackaSERKS0_": "0x8e4450",
-            "Attack_NextId": "0x1925328",
-            "_ZN4SPTG6Attack9SetSourceEiPNS_13BaseCharacterE": "0x8e24f0"
-          },
-          "got_bindings": {}
-        },
-        {
-          "address": "0x9415b0",
-          "size": 264,
-          "symbol": "_ZN4SPTG15AnimatedAiActor10IsOnGroundEv",
-          "target_sha256": "5891b827e88865a42c29779b6208b9d29c85ab09dfc1b1c2bc713804cf3082e8",
-          "bindings": {
-            "Accessor_Resolver": "0x191cd10",
-            "Accessor_Resolve": "0x67edd0"
-          },
-          "got_bindings": {},
-          "literals": {
-            "bd378635": "0x1331fdc"
-          }
-        },
-        {
-          "address": "0x941770",
-          "size": 32,
-          "symbol": "_ZN4SPTG15AnimatedAiActor10LoseHealthEf",
-          "target_sha256": "2cfc61fbac3fa01e9493149318639a8d2d6df2cf4054621ffd0293d7ecef28c3",
-          "bindings": {},
-          "got_bindings": {}
-        },
-        {
-          "address": "0x941790",
-          "size": 76,
-          "symbol": "_ZN4SPTG15AnimatedAiActor10GainHealthEf",
-          "target_sha256": "a6a05809263bf1d87eb67bf35957a6d0476f198a0ff3a07b3d29f36399d58280",
-          "bindings": {},
-          "got_bindings": {}
-        },
-        {
-          "address": "0x942bc0",
-          "size": 44,
-          "symbol": "_ZN4SPTG15AnimatedAiActor6Slot74EPKfbf",
-          "target_sha256": "31ce7b556840a8899c7a53c3dcaea4e31dce13fe82f5fe8f7d07ee71b57f12de",
-          "bindings": {},
-          "got_bindings": {}
-        },
-        {
-          "address": "0x945380",
-          "size": 748,
-          "symbol": "_ZN4SPTG15AnimatedAiActor6UpdateEv",
-          "target_sha256": "e9a7cb92ac110e1e2bb3a11ea9dd41c0933a2cb17be998e4602f6a8b69d6b8f2",
-          "bindings": {
-            "Accessor_Resolver": "0x191cd10",
-            "Accessor_Resolve": "0x67edd0",
-            "Transform_Invalidate": "0x68f3b0",
-            "Transform_AddChild": "0x68f0e0",
-            "_ZN4SPTG10ActorFlags9SetShadowEPNS_20ShadowAnimatedObjectEb": "0x811870"
-          },
-          "got_bindings": {}
-        }
-      ]
-    },
-    {
       "id": "gameplay_boss",
       "source": "src/gameplay/BossStates.cpp",
       "compiler": "8.0.1",
@@ -569231,6 +569099,276 @@
           "target_sha256": "9dda8c6668ef3de6d3f0aab6af8c5e3f85ff4cfe72439c7e9e0531f27dab1cc9",
           "bindings": {},
           "got_bindings": {}
+        }
+      ]
+    },
+    {
+      "id": "gameplay_actor",
+      "source": "src/gameplay/AnimatedAiActor.cpp",
+      "compiler": "8.0.1",
+      "source_review": "manual_reconstruction",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-std=c++11",
+        "-O2",
+        "-mcpu=cortex-a57",
+        "-fstrict-aliasing",
+        "-fomit-frame-pointer",
+        "-fno-pic",
+        "-fno-delete-null-pointer-checks",
+        "-ffunction-sections",
+        "-fdata-sections"
+      ],
+      "header_roots": [
+        "src/gameplay"
+      ],
+      "functions": [
+        {
+          "address": "0x93f750",
+          "size": 772,
+          "symbol": "_ZN4SPTG15AnimatedAiActor13PlayAnimationEibbf",
+          "target_sha256": "fc271ba376652b738790b59740300d16d0dfc2ae265b4a8a4038b2f0927739e9",
+          "bindings": {
+            "Accessor_Resolver": "0x191cd10",
+            "Accessor_Resolve": "0x67edd0"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x93fb90",
+          "size": 136,
+          "symbol": "_ZN4SPTG15AnimatedAiActor17SetAnimationSpeedEf",
+          "target_sha256": "20c1ed6a5d984c22745f3f8f9e6343d9b11e8abbe89800d43592a3230461914c",
+          "bindings": {
+            "Accessor_Resolver": "0x191cd10",
+            "Accessor_Resolve": "0x67edd0"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x93fcf0",
+          "size": 204,
+          "symbol": "_ZN4SPTG15AnimatedAiActor9SetFacingEi",
+          "target_sha256": "f563e8bef8524c713378053adb353386343a5ccd79f749a0b2276fdc9b3b7259",
+          "bindings": {
+            "Accessor_Resolver": "0x191cd10",
+            "Accessor_Resolve": "0x67edd0"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x93fdd0",
+          "size": 220,
+          "symbol": "_ZN4SPTG15AnimatedAiActor10TurnAroundEv",
+          "target_sha256": "f520ec471ef5988d77f68b8e3b6608bcf686ebbb003376d415cee40013e3ee05",
+          "bindings": {
+            "Accessor_Resolver": "0x191cd10",
+            "Accessor_Resolve": "0x67edd0"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x940d00",
+          "size": 216,
+          "symbol": "_ZN4SPTG15AnimatedAiActor12AttackLandedEPS0_",
+          "target_sha256": "e3e2a3c63e2037102975440569a86e8b65cbb3a6445c4cbd45bc4e85543ca3e0",
+          "bindings": {},
+          "got_bindings": {}
+        },
+        {
+          "address": "0x941070",
+          "size": 232,
+          "symbol": "_ZN4SPTG15AnimatedAiActor11StartAttackEPNS_6AttackEbiPNS_13BaseCharacterE",
+          "target_sha256": "8ac4d069464f2b19e6592ea772f79eb6f42a51ac754ae702b9b3c2aa9566cc72",
+          "bindings": {
+            "_ZN4SPTG6AttackaSERKS0_": "0x8e4450",
+            "Attack_NextId": "0x1925328",
+            "_ZN4SPTG6Attack9SetSourceEiPNS_13BaseCharacterE": "0x8e24f0"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x9415b0",
+          "size": 264,
+          "symbol": "_ZN4SPTG15AnimatedAiActor10IsOnGroundEv",
+          "target_sha256": "5891b827e88865a42c29779b6208b9d29c85ab09dfc1b1c2bc713804cf3082e8",
+          "bindings": {
+            "Accessor_Resolver": "0x191cd10",
+            "Accessor_Resolve": "0x67edd0"
+          },
+          "got_bindings": {},
+          "literals": {
+            "bd378635": "0x1331fdc"
+          }
+        },
+        {
+          "address": "0x941770",
+          "size": 32,
+          "symbol": "_ZN4SPTG15AnimatedAiActor10LoseHealthEf",
+          "target_sha256": "2cfc61fbac3fa01e9493149318639a8d2d6df2cf4054621ffd0293d7ecef28c3",
+          "bindings": {},
+          "got_bindings": {}
+        },
+        {
+          "address": "0x941790",
+          "size": 76,
+          "symbol": "_ZN4SPTG15AnimatedAiActor10GainHealthEf",
+          "target_sha256": "a6a05809263bf1d87eb67bf35957a6d0476f198a0ff3a07b3d29f36399d58280",
+          "bindings": {},
+          "got_bindings": {}
+        },
+        {
+          "address": "0x942bc0",
+          "size": 44,
+          "symbol": "_ZN4SPTG15AnimatedAiActor6Slot74EPKfbf",
+          "target_sha256": "31ce7b556840a8899c7a53c3dcaea4e31dce13fe82f5fe8f7d07ee71b57f12de",
+          "bindings": {},
+          "got_bindings": {}
+        },
+        {
+          "address": "0x945380",
+          "size": 748,
+          "symbol": "_ZN4SPTG15AnimatedAiActor6UpdateEv",
+          "target_sha256": "e9a7cb92ac110e1e2bb3a11ea9dd41c0933a2cb17be998e4602f6a8b69d6b8f2",
+          "bindings": {
+            "Accessor_Resolver": "0x191cd10",
+            "Accessor_Resolve": "0x67edd0",
+            "Transform_Invalidate": "0x68f3b0",
+            "Transform_AddChild": "0x68f0e0",
+            "_ZN4SPTG10ActorFlags9SetShadowEPNS_20ShadowAnimatedObjectEb": "0x811870"
+          },
+          "got_bindings": {}
+        }
+      ]
+    },
+    {
+      "id": "gameplay_projectile",
+      "source": "src/gameplay/Projectile.cpp",
+      "compiler": "8.0.1",
+      "source_review": "manual_reconstruction",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-std=c++11",
+        "-O2",
+        "-mcpu=cortex-a57",
+        "-fstrict-aliasing",
+        "-fomit-frame-pointer",
+        "-fno-pic",
+        "-fno-delete-null-pointer-checks",
+        "-ffunction-sections",
+        "-fdata-sections"
+      ],
+      "header_roots": [
+        "src/gameplay"
+      ],
+      "functions": [
+        {
+          "address": "0x959680",
+          "size": 80,
+          "symbol": "_ZN4SPTG10Projectile5Slot7Ev",
+          "target_sha256": "1e2f72e864b4c974e11c26d94cad3c50abf7ab8cdee7907ec17cd803cf1252c9",
+          "bindings": {
+            "_ZN4SPTG15AnimatedAiActor5Slot7Ev": "0x945c40"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x95a7e0",
+          "size": 40,
+          "symbol": "_ZN4SPTG10Projectile6Slot19Ev",
+          "target_sha256": "849b225c97ed2f37c861d455dd0acce33ec22be6eb2b189d8acde92afeb0d29e",
+          "bindings": {
+            "_ZN4SPTG15AnimatedAiActor6Slot19Ev": "0x944e50"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x95a9b0",
+          "size": 424,
+          "symbol": "_ZN4SPTG10Projectile12AttackLandedEPNS_15AnimatedAiActorE",
+          "target_sha256": "59617d7751f9cf3f7e1fd49e0f910ea0850a6e74d018231fc4fd163f0ddc250a",
+          "bindings": {
+            "_ZN4SPTG10Projectile14SendFlightOverEb": "0x95bde0",
+            "_ZN4SPTG12StateMachineINS_10ProjectileEE10TransitionEMS1_FiiE": "0x95b740"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x95ac10",
+          "size": 388,
+          "symbol": "_ZN4SPTG10Projectile6RemoveEb",
+          "target_sha256": "507e0e137e19a33c262a06bbcfe0225e785ba705b7a11f3d162415b30d76e98d",
+          "bindings": {
+            "_ZN4SPTG9SingletonINS_17LevelItemAccessorEE3GetEv": "0x7725e0",
+            "Accessor_Resolver": "0x191cd10",
+            "Accessor_Resolve": "0x67edd0",
+            "_ZN4SPTG9SingletonINS_14UnspawnManagerEE3GetEv": "0x7766f0",
+            "_ZN4SPTG8NoHolderE": "0x191b6c0",
+            "_ZN4SPTG7Spawner6RemoveEj": "0x690410"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x95ae30",
+          "size": 40,
+          "symbol": "_ZN4SPTG10Projectile9GoneStateEi",
+          "target_sha256": "9beebbfe1cd2e3ac7fe1e13a3e10b3b9ba86393223c927c3e5d2500fa67c48e5",
+          "bindings": {},
+          "got_bindings": {},
+          "literals": {
+            "01000000010000000000000001000000": "0x1333d80"
+          }
+        },
+        {
+          "address": "0x95ae60",
+          "size": 720,
+          "symbol": "_ZN4SPTG10Projectile10BurstStateEi",
+          "target_sha256": "af9638c2629141822af65d79b807de1299ba93a6c0771eaf2ec2f0db6e1a27b5",
+          "bindings": {
+            "_ZGVZN4onyx7Vector34ZeroEvE5value": "0x191f8b8",
+            "_ZZN4onyx7Vector34ZeroEvE5value": "0x191f8c0",
+            "Onyx_ProjectSettings": "0x1935070",
+            "Accessor_Tracking": "0x1935068",
+            "Event_Notify": "0xbf6e80",
+            "_ZGVZN4onyx8SettingsEvE8defaults": "0x1935078",
+            "_ZZN4onyx8SettingsEvE8defaults": "0x1935080",
+            "__cxa_guard_acquire": "0xfa4130",
+            "__cxa_guard_release": "0xfa4140",
+            "_Unwind_Resume": "0xfa4920"
+          },
+          "got_bindings": {},
+          "immutable_sections": {
+            "20": "0x1390bf8"
+          },
+          "literals": {
+            "554e4b4e4f574e20": "0x1331ae0",
+            "50524f4a45435420": "0x1331000",
+            "0c0000000c000000ffffff7fffffff7f": "0x1334730"
+          }
+        },
+        {
+          "address": "0x95bde0",
+          "size": 600,
+          "symbol": "_ZN4SPTG10Projectile14SendFlightOverEb",
+          "target_sha256": "8d733a1fdfad8111be8a1b2aeec699607ff670b3a73935a524db0aec251b00e5",
+          "bindings": {
+            "Onyx_ProjectSettings": "0x1935070",
+            "Accessor_Tracking": "0x1935068",
+            "Event_Notify": "0xbf6e80",
+            "_ZGVZN4onyx8SettingsEvE8defaults": "0x1935078",
+            "_ZZN4onyx8SettingsEvE8defaults": "0x1935080",
+            "__cxa_guard_acquire": "0xfa4130",
+            "__cxa_guard_release": "0xfa4140",
+            "_Unwind_Resume": "0xfa4920"
+          },
+          "got_bindings": {},
+          "literals": {
+            "554e4b4e4f574e20": "0x1331ae0",
+            "50524f4a45435420": "0x1331000",
+            "0c0000000c000000ffffff7fffffff7f": "0x1334730"
+          }
         }
       ]
     }

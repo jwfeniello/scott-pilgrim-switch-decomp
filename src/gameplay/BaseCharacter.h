@@ -79,6 +79,18 @@ struct ActorObject : onyx::Component {
     onyx::ComponentHandle* transform;   // +0x60, Onyx::Transform
 };
 struct ShadowAnimatedObject;
+struct TypedComponent : onyx::Component {
+    SPTG_SLOT(3) SPTG_SLOT(4) SPTG_SLOT(5) SPTG_SLOT(6) SPTG_SLOT(7) SPTG_SLOT(8) SPTG_SLOT(9) SPTG_SLOT(10) SPTG_SLOT(11)
+    virtual bool IsA(uint32_t type);   // slot 12
+};
+// SPTG::PlayfieldCollision (component type 0x21350526), behind ActorObject::playfield.
+struct PlayfieldCollision : TypedComponent {
+    static const uint32_t kType = 0x21350526u;
+    char padding_8[0x120];
+    uint8_t flag128;   // +0x128
+    char padding_129[0x7];
+    uint32_t flags130; // +0x130
+};
 // The component behind ActorObject::flags.
 struct ActorFlags : onyx::Component {
     onyx::EventCallback* blinkOffCallback;   // +0x8, event 0x255c0afe
@@ -86,7 +98,10 @@ struct ActorFlags : onyx::Component {
     char padding_18[0x8];
     onyx::EventCallback* blinkOnCallback;    // +0x20, event 0x44174b43
     onyx::EventTarget* blinkOnTarget;        // +0x28
-    char padding_30[0x49];
+    char padding_30[0x8];
+    uint8_t componentFlags;   // +0x38
+    char padding_39[0x3f];
+    uint8_t visible;      // +0x78
     uint8_t facingLeft;   // +0x79
     uint8_t flag7a;       // +0x7a
     char padding_7b[0x1];
@@ -96,6 +111,8 @@ struct ActorFlags : onyx::Component {
     void SetShadow(ShadowAnimatedObject* shadow, bool flag);   // 0x811870
 };
 // SPTG::LevelAIManager (type 0x2b951b8a), reached through the singleton at +0x80 (getter 0x992bf0).
+// What the singleton at AnimatedAiActor +0x88 gives (getter 0x774b50).
+struct CameraAccessor { char padding[0x50]; onyx::ComponentHandle* levelCamera; };   // +0x50, LevelCamera
 struct GameDifficulty { char padding[0x108]; float value108; };   // +0x108
 struct NpcAccessor { char padding[0x60]; onyx::ComponentHandle* catalog; };   // +0x60, Catalog<NPC>
 struct LevelAIManager {
@@ -188,7 +205,7 @@ struct AnimatedAiActor : onyx::Component {
     virtual bool IsMounted();      // flag +0x338 and a live mount at +0x238 // slot 36
     virtual bool Slot37();                                                   // slot 37
     virtual bool OnHit(BaseCharacter* other, void* hit);                     // slot 38
-    SPTG_SLOT(39)
+    virtual void AttackLanded(AnimatedAiActor* target);                      // slot 39
     virtual float Slot40();                                                  // slot 40
     virtual void Slot41(bool a, bool b, bool c, void* data, BaseCharacter* other, float scale, float f1, float f2, float f3); // slot 41
     SPTG_SLOT(42)
@@ -237,7 +254,7 @@ struct AnimatedAiActor : onyx::Component {
     onyx::ComponentHandle* animationHandle; // +0x70: AnimationController (type 0x29fbe438)
     onyx::ComponentHandle* actorObject; // +0x78
     Singleton<LevelAIManager> levelAI; // +0x80
-    char padding_88[0x8];
+    Singleton<CameraAccessor> camera;  // +0x88
     Singleton<LevelItemAccessor> level; // +0x90
     float base98;                // +0x98: scaled into +0x9c
     float scaled9c;              // +0x9c
@@ -271,7 +288,7 @@ struct AnimatedAiActor : onyx::Component {
     float hitStopSpeed;          // +0x150
     float liftHeight;            // +0x154: how high InteractiveObject's state 88 lifts it
     char padding_158[0x4];
-    float value15c;              // +0x15c
+    uint32_t sentEvents;         // +0x15c: one bit for each one-shot event already sent
     float health;              // +0x160
     char padding_164[0x1];
     uint8_t flag165;             // +0x165
@@ -293,6 +310,16 @@ struct AnimatedAiActor : onyx::Component {
     char padding_1c8[0x18];
     onyx::ComponentHandle* handle1e0; // +0x1e0
     void Call944010();           // 0x944010
+    // Holds the animation for a moment, unless it is being held already.
+    __attribute__((always_inline)) void HoldAnimation(float time, float speed) {
+        if (time > 0.0f && hitStopLeft <= 0.0f) {
+            hitStopSpeed = speed;
+            float saved = animationSpeed;
+            SetAnimationSpeed(speed);
+            animationSpeed = saved;
+            hitStopLeft = time;
+        }
+    }
     // -1 facing left, 1 facing right.
     __attribute__((always_inline)) float FacingSign() {
         ActorObject* actor = onyx::Find<ActorObject, onyx_types::type_6492d61d>(actorObject);
