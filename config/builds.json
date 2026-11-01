@@ -513713,1789 +513713,6 @@
       ]
     },
     {
-      "id": "lib_storm_ubi_destructors",
-      "source": "src/StormUbiDestructors.cpp",
-      "compiler": "8.0.1",
-      "source_review": "generated_cxx_abi_view",
-      "flags": [
-        "-target",
-        "aarch64-none-elf",
-        "-std=c++11",
-        "-O2",
-        "-mcpu=cortex-a57",
-        "-fno-strict-aliasing",
-        "-fno-omit-frame-pointer",
-        "-fPIC",
-        "-fno-exceptions",
-        "-funwind-tables",
-        "-ffunction-sections",
-        "-fdata-sections"
-      ],
-      "functions": [
-        {
-          "address": "0x91c40",
-          "size": 164,
-          "symbol": "_ZN11ubiservices15WebSocketStreamD2Ev",
-          "target_sha256": "bc3704f1c0233ff203e88a4eac154a08186f27f4d19cb177baa9b1c785868fe6",
-          "bindings": {},
-          "got_bindings": {
-            "_ZTVN11ubiservices15WebSocketStreamE": {
-              "cell": "0x18ecc68",
-              "pointee": "0x17c5410"
-            }
-          }
-        },
-        {
-          "address": "0xe68e0",
-          "size": 32,
-          "symbol": "_ZN11ubiservices15EventConfigInfoD2Ev",
-          "target_sha256": "df8a3bb2ec87ba94044fd07cc4afda78809fb596af1beef3626b20876eec05f7",
-          "bindings": {
-            "_ZN6LcTreeILm22878721EE7DestroyEPS0_Pv": "0x164ec0"
-          },
-          "got_bindings": {
-            "_ZTVN11ubiservices15EventConfigInfoE": {
-              "cell": "0x18ed1f0",
-              "pointee": "0x17c6238"
-            }
-          }
-        },
-        {
-          "address": "0xfced0",
-          "size": 164,
-          "symbol": "_ZN11ubiservices12HttpResponseD2Ev",
-          "target_sha256": "0ccb2fb8ff5848561ccefb5e7fa588bef9c0f383d707621eb19bd94af2a6297d",
-          "bindings": {
-            "_ZN6LcTreeILm16578563EE7DestroyEPS0_Pv": "0x701100"
-          },
-          "got_bindings": {
-            "_ZTVN11ubiservices12HttpResponseE": {
-              "cell": "0x18ec9f8",
-              "pointee": "0x17c6a98"
-            }
-          }
-        },
-        {
-          "address": "0xfcf80",
-          "size": 172,
-          "symbol": "_ZN11ubiservices12HttpResponseD0Ev",
-          "target_sha256": "1c085dc5fe181f7570b8d82e566cffaa50538e90381627895f8d34b657a27f47",
-          "bindings": {
-            "_ZN6LcTreeILm16578563EE7DestroyEPS0_Pv": "0x701100",
-            "_Z7UbiFreePv": "0x37030"
-          },
-          "got_bindings": {
-            "_ZTVN11ubiservices12HttpResponseE": {
-              "cell": "0x18ec9f8",
-              "pointee": "0x17c6a98"
-            }
-          }
-        },
-        {
-          "address": "0x114f20",
-          "size": 164,
-          "symbol": "_ZN11ubiservices23NotificationUbiServicesD2Ev",
-          "target_sha256": "f3dc60b6530770385f89144710ce169dd7770291329f139f77a3a5d555d7d50d",
-          "bindings": {},
-          "got_bindings": {
-            "_ZTVN11ubiservices23NotificationUbiServicesE": {
-              "cell": "0x18ecc88",
-              "pointee": "0x17c7100"
-            }
-          }
-        },
-        {
-          "address": "0x11e1c0",
-          "size": 164,
-          "symbol": "_ZN11ubiservices16ClubNotificationD2Ev",
-          "target_sha256": "3f4bf477f74e2e2159b36c7585ae9613945c0edfd3026478440667788bcb02d7",
-          "bindings": {},
-          "got_bindings": {
-            "_ZTVN11ubiservices16ClubNotificationE": {
-              "cell": "0x18ed0a0",
-              "pointee": "0x17c5f68"
-            }
-          }
-        },
-        {
-          "address": "0x11e270",
-          "size": 164,
-          "symbol": "_ZN11ubiservices18FriendNotificationD2Ev",
-          "target_sha256": "6c66ee0b8b82d080ee8d35576d8e3db37ad0aa89ff83b14f4fac9d748ebbcc34",
-          "bindings": {},
-          "got_bindings": {
-            "_ZTVN11ubiservices18FriendNotificationE": {
-              "cell": "0x18ed320",
-              "pointee": "0x17c6878"
-            }
-          }
-        },
-        {
-          "address": "0x150770",
-          "size": 416,
-          "symbol": "_ZN11ubiservices19WebSocketConnectionD2Ev",
-          "target_sha256": "54abb4524b12c2dd2e9cab8be00f7a205a520c8cac930f609c78daed76e5ed93",
-          "bindings": {
-            "_ZN6LcTreeILm22050566EE7DestroyEPS0_Pv": "0x701100"
-          },
-          "got_bindings": {
-            "_ZTVN11ubiservices19WebSocketConnectionE": {
-              "cell": "0x18ed908",
-              "pointee": "0x17c7aa0"
-            },
-            "_ZTV14Nested22050563": {
-              "cell": "0x18ec9f8",
-              "pointee": "0x17c6a98"
-            }
-          }
-        },
-        {
-          "address": "0x1554a0",
-          "size": 168,
-          "symbol": "_ZN11ubiservices24JobExtendedStorageUploadD2Ev",
-          "target_sha256": "0b38c986d51aaf239436e8e5bfed6892b56776ddce712b21e9c4a6c6b72cade5",
-          "bindings": {
-            "_Z7UbiFreePv": "0x37030",
-            "_ZN8LcMemberILm22366725EED1Ev": "0xcb0f0",
-            "_ZN10Base1554a0D2Ev": "0x156370"
-          },
-          "got_bindings": {
-            "_ZTVN11ubiservices24JobExtendedStorageUploadE": {
-              "cell": "0x18ed178",
-              "pointee": "0x17c6090"
-            },
-            "_ZTV14Nested22366723": {
-              "cell": "0x18ec920",
-              "pointee": "0x17c6ab8"
-            }
-          }
-        },
-        {
-          "address": "0x155fc0",
-          "size": 176,
-          "symbol": "_ZN11ubiservices23EventInfoPlayerPlayTimeD0Ev",
-          "target_sha256": "bb58694b110d74e76ab8364bf2d2b219f4501803338aa3d73f5be1daf9149510",
-          "bindings": {
-            "_Z7UbiFreePv": "0x37030"
-          },
-          "got_bindings": {
-            "_ZTVN11ubiservices23EventInfoPlayerPlayTimeE": {
-              "cell": "0x18ed238",
-              "pointee": "0x17c6548"
-            }
-          }
-        },
-        {
-          "address": "0x156850",
-          "size": 176,
-          "symbol": "_ZN11ubiservices15EventInfoCustomD0Ev",
-          "target_sha256": "3cca66fd9215ae6532ac98bb74072d1f184c6fc5b9b030fff5d29ade867eb151",
-          "bindings": {
-            "_Z7UbiFreePv": "0x37030"
-          },
-          "got_bindings": {
-            "_ZTVN11ubiservices15EventInfoCustomE": {
-              "cell": "0x18ed238",
-              "pointee": "0x17c6548"
-            }
-          }
-        },
-        {
-          "address": "0x156930",
-          "size": 180,
-          "symbol": "_ZN11ubiservices23EventInfoPlayerPlayTimeD2Ev",
-          "target_sha256": "e0c7903a8a2915d3d18c230c9b7a10abd316909443ef1a8b00e666e93ecb2e5f",
-          "bindings": {
-            "_Z7UbiFreePv": "0x37030"
-          },
-          "got_bindings": {
-            "_ZTVN11ubiservices23EventInfoPlayerPlayTimeE": {
-              "cell": "0x18ed238",
-              "pointee": "0x17c6548"
-            }
-          }
-        },
-        {
-          "address": "0x1569f0",
-          "size": 176,
-          "symbol": "_ZN11ubiservices26EventInfoPlayerAchievementD0Ev",
-          "target_sha256": "178bdbc1214c9e6a9f6cc31a6e11cef4915b353d8cd5a69776242e12928b6bae",
-          "bindings": {
-            "_Z7UbiFreePv": "0x37030"
-          },
-          "got_bindings": {
-            "_ZTVN11ubiservices26EventInfoPlayerAchievementE": {
-              "cell": "0x18ed238",
-              "pointee": "0x17c6548"
-            }
-          }
-        },
-        {
-          "address": "0x1571b0",
-          "size": 120,
-          "symbol": "_ZN11ubiservices13HttpStreamPutD2Ev",
-          "target_sha256": "c24f2f4352d1bafd47f5c6b410b3c95943e26b88eacd9acaad3d1a6dd7c3b8a4",
-          "bindings": {
-            "_ZN10Base157230D2Ev": "0xc3520"
-          },
-          "got_bindings": {
-            "_ZTVN11ubiservices13HttpStreamPutE": {
-              "cell": "0x18ed480",
-              "pointee": "0x17c6c40"
-            },
-            "_ZTV14Nested22487809": {
-              "cell": "0x18ec920",
-              "pointee": "0x17c6ab8"
-            }
-          }
-        },
-        {
-          "address": "0x157230",
-          "size": 128,
-          "symbol": "_ZN11ubiservices13HttpStreamPutD0Ev",
-          "target_sha256": "0b1ad2c159d2871fb91d855a6b2c237920feb3e54b0a740997ddc7868211f990",
-          "bindings": {
-            "_ZN10Base157230D2Ev": "0xc3520",
-            "_Z7UbiFreePv": "0x37030"
-          },
-          "got_bindings": {
-            "_ZTVN11ubiservices13HttpStreamPutE": {
-              "cell": "0x18ed480",
-              "pointee": "0x17c6c40"
-            },
-            "_ZTV14Nested22487809": {
-              "cell": "0x18ec920",
-              "pointee": "0x17c6ab8"
-            }
-          }
-        },
-        {
-          "address": "0x1572b0",
-          "size": 176,
-          "symbol": "_ZN11ubiservices21JobRequestLeaderboardD2Ev",
-          "target_sha256": "1ad7bbdc0321f58afffa7b12a9ca1278474d82c0457e258baf2f91a1bf0532aa",
-          "bindings": {
-            "_Z7UbiFreePv": "0x37030",
-            "_ZN10Base157360D2Ev": "0x16ab30"
-          },
-          "got_bindings": {
-            "_ZTVN11ubiservices21JobRequestLeaderboardE": {
-              "cell": "0x18ed488",
-              "pointee": "0x17c6c78"
-            }
-          }
-        },
-        {
-          "address": "0x157360",
-          "size": 184,
-          "symbol": "_ZN11ubiservices21JobRequestLeaderboardD0Ev",
-          "target_sha256": "2a2a8f961a581e199f3ddc79a3c51b5a73abe08160bd536763e4e29dc434aae1",
-          "bindings": {
-            "_Z7UbiFreePv": "0x37030",
-            "_ZN10Base157360D2Ev": "0x16ab30"
-          },
-          "got_bindings": {
-            "_ZTVN11ubiservices21JobRequestLeaderboardE": {
-              "cell": "0x18ed488",
-              "pointee": "0x17c6c78"
-            }
-          }
-        },
-        {
-          "address": "0x1578d0",
-          "size": 160,
-          "symbol": "_ZN11ubiservices29JobRequestLeaderboardCenteredD2Ev",
-          "target_sha256": "50784eaed2d150de908c34e2b1cc61eec503435868fd7f4e32feb5b71151a6be",
-          "bindings": {
-            "_ZN10Base157970D2Ev": "0x16ab30"
-          },
-          "got_bindings": {
-            "_ZTVN11ubiservices29JobRequestLeaderboardCenteredE": {
-              "cell": "0x18ed4d8",
-              "pointee": "0x17c6ce8"
-            }
-          }
-        },
-        {
-          "address": "0x157970",
-          "size": 168,
-          "symbol": "_ZN11ubiservices29JobRequestLeaderboardCenteredD0Ev",
-          "target_sha256": "ff876e63dcb2308ebf0120fb844926f8ecff406589b19f31c7f651e7925030e5",
-          "bindings": {
-            "_ZN10Base157970D2Ev": "0x16ab30",
-            "_Z7UbiFreePv": "0x37030"
-          },
-          "got_bindings": {
-            "_ZTVN11ubiservices29JobRequestLeaderboardCenteredE": {
-              "cell": "0x18ed4d8",
-              "pointee": "0x17c6ce8"
-            }
-          }
-        },
-        {
-          "address": "0x157c50",
-          "size": 132,
-          "symbol": "_ZN11ubiservices21JobRetryWebSocketInitD2Ev",
-          "target_sha256": "78fc403c7e0932c6fd9a2ac402fe59a2e40fe3100f5b5d271cf3f73fc832958a",
-          "bindings": {
-            "_ZN18NestedBase22531585D2Ev": "0x792d0",
-            "_ZN10Base157ce0D2Ev": "0x156370"
-          },
-          "got_bindings": {
-            "_ZTVN11ubiservices21JobRetryWebSocketInitE": {
-              "cell": "0x18ed588",
-              "pointee": "0x17c6f38"
-            },
-            "_ZTV14Nested22531585": {
-              "cell": "0x18ec7c0",
-              "pointee": "0x1845f68"
-            }
-          }
-        },
-        {
-          "address": "0x157ce0",
-          "size": 140,
-          "symbol": "_ZN11ubiservices21JobRetryWebSocketInitD0Ev",
-          "target_sha256": "23e2e6d4f25f18ce03a9de97a6734f0d6a7f9c0b3c7375306d769663edb3d639",
-          "bindings": {
-            "_ZN18NestedBase22531585D2Ev": "0x792d0",
-            "_ZN10Base157ce0D2Ev": "0x156370",
-            "_Z7UbiFreePv": "0x37030"
-          },
-          "got_bindings": {
-            "_ZTVN11ubiservices21JobRetryWebSocketInitE": {
-              "cell": "0x18ed588",
-              "pointee": "0x17c6f38"
-            },
-            "_ZTV14Nested22531585": {
-              "cell": "0x18ec7c0",
-              "pointee": "0x1845f68"
-            }
-          }
-        },
-        {
-          "address": "0x15a090",
-          "size": 160,
-          "symbol": "_ZN11ubiservices29JobRequestOwnUserLocalizationD2Ev",
-          "target_sha256": "4713a01c8a59b2a9db5a191ed12b9fe5260054344c32307936842960830d3b0f",
-          "bindings": {
-            "_ZN10Base15a130D2Ev": "0x16bd80"
-          },
-          "got_bindings": {
-            "_ZTVN11ubiservices29JobRequestOwnUserLocalizationE": {
-              "cell": "0x18ed520",
-              "pointee": "0x17c78c8"
-            }
-          }
-        },
-        {
-          "address": "0x15a130",
-          "size": 168,
-          "symbol": "_ZN11ubiservices29JobRequestOwnUserLocalizationD0Ev",
-          "target_sha256": "01edb4ea5f583e59e30113d38a62575d80a92dcbf7a77f922fd2c9001387024c",
-          "bindings": {
-            "_ZN10Base15a130D2Ev": "0x16bd80",
-            "_Z7UbiFreePv": "0x37030"
-          },
-          "got_bindings": {
-            "_ZTVN11ubiservices29JobRequestOwnUserLocalizationE": {
-              "cell": "0x18ed520",
-              "pointee": "0x17c78c8"
-            }
-          }
-        },
-        {
-          "address": "0x15b510",
-          "size": 36,
-          "symbol": "_ZN11ubiservices6String15InternalContentD2Ev",
-          "target_sha256": "676b9312ba558629079d01dc15e3f0dbf81781363a7b97e834a90beeb04e6055",
-          "bindings": {
-            "_Z7UbiFreePv": "0x37030"
-          },
-          "got_bindings": {
-            "_ZTVN11ubiservices6String15InternalContentE": {
-              "cell": "0x18ec818",
-              "pointee": "0x17c51f0"
-            }
-          }
-        },
-        {
-          "address": "0x15b580",
-          "size": 160,
-          "symbol": "_ZN11ubiservices25WebSocketHandshakeRequestD2Ev",
-          "target_sha256": "08ea0a7132b900ac032c09ec7692c07a0e517c8bd82995d06dedf2def4ad6198",
-          "bindings": {
-            "_ZN10Base15b620D2Ev": "0xc3520"
-          },
-          "got_bindings": {
-            "_ZTVN11ubiservices25WebSocketHandshakeRequestE": {
-              "cell": "0x18ecb50",
-              "pointee": "0x17c5218"
-            }
-          }
-        },
-        {
-          "address": "0x15b620",
-          "size": 168,
-          "symbol": "_ZN11ubiservices25WebSocketHandshakeRequestD0Ev",
-          "target_sha256": "b58303d0b0b6aa0da5e52fa1fa939a4c379f6ae950b5cf57f5bc38cceef47149",
-          "bindings": {
-            "_ZN10Base15b620D2Ev": "0xc3520",
-            "_Z7UbiFreePv": "0x37030"
-          },
-          "got_bindings": {
-            "_ZTVN11ubiservices25WebSocketHandshakeRequestE": {
-              "cell": "0x18ecb50",
-              "pointee": "0x17c5218"
-            }
-          }
-        },
-        {
-          "address": "0x15d040",
-          "size": 160,
-          "symbol": "_ZN11ubiservices16ClubNotificationD0Ev",
-          "target_sha256": "5d6e8dcfef40ed97aec6531152ddcc19872b639ff65bef24a724d3a1424b99ed",
-          "bindings": {
-            "_Z7UbiFreePv": "0x37030"
-          },
-          "got_bindings": {
-            "_ZTVN11ubiservices16ClubNotificationE": {
-              "cell": "0x18ed0a0",
-              "pointee": "0x17c5f68"
-            }
-          }
-        },
-        {
-          "address": "0x15d1a0",
-          "size": 56,
-          "symbol": "_ZN11ubiservices15EventConfigInfoD0Ev",
-          "target_sha256": "fc55cdb0d3220212f72e8c61d75e827dd1ec6a316c7c1551e5ef832800650a34",
-          "bindings": {
-            "_ZN6LcTreeILm22878721EE7DestroyEPS0_Pv": "0x164ec0",
-            "_Z7UbiFreePv": "0x37030"
-          },
-          "got_bindings": {
-            "_ZTVN11ubiservices15EventConfigInfoE": {
-              "cell": "0x18ed1f0",
-              "pointee": "0x17c6238"
-            }
-          }
-        },
-        {
-          "address": "0x15d6e0",
-          "size": 104,
-          "symbol": "_ZN11ubiservices20JobQueueUnsentEventsD2Ev",
-          "target_sha256": "496d8a9f659c78c988c52b3eef7a8f8381cf616f442f259266f202707cf0efd7",
-          "bindings": {
-            "_ZN10Base15d750D2Ev": "0x156370"
-          },
-          "got_bindings": {
-            "_ZTVN11ubiservices20JobQueueUnsentEventsE": {
-              "cell": "0x18ed200",
-              "pointee": "0x17c6388"
-            }
-          }
-        },
-        {
-          "address": "0x15d750",
-          "size": 112,
-          "symbol": "_ZN11ubiservices20JobQueueUnsentEventsD0Ev",
-          "target_sha256": "142c8555331d35e170b8f80ac00965a09cc85e4e302623b7c889790586c8164f",
-          "bindings": {
-            "_ZN10Base15d750D2Ev": "0x156370",
-            "_Z7UbiFreePv": "0x37030"
-          },
-          "got_bindings": {
-            "_ZTVN11ubiservices20JobQueueUnsentEventsE": {
-              "cell": "0x18ed200",
-              "pointee": "0x17c6388"
-            }
-          }
-        },
-        {
-          "address": "0x15dbc0",
-          "size": 160,
-          "symbol": "_ZN11ubiservices18FriendNotificationD0Ev",
-          "target_sha256": "dac0eab58b0207045735e371e0c95c0a52717060bb47687f3490c15a071faa6d",
-          "bindings": {
-            "_Z7UbiFreePv": "0x37030"
-          },
-          "got_bindings": {
-            "_ZTVN11ubiservices18FriendNotificationE": {
-              "cell": "0x18ed320",
-              "pointee": "0x17c6878"
-            }
-          }
-        },
-        {
-          "address": "0x15ef50",
-          "size": 104,
-          "symbol": "_ZN11ubiservices19JobManageConnectionD2Ev",
-          "target_sha256": "c79f0514709f71983ced06d2bff5e167dc8cda448e37a049fbc3369cfe38c37f",
-          "bindings": {
-            "_ZN10Base15efc0D2Ev": "0x156370"
-          },
-          "got_bindings": {
-            "_ZTVN11ubiservices19JobManageConnectionE": {
-              "cell": "0x18ed568",
-              "pointee": "0x17c6ec8"
-            }
-          }
-        },
-        {
-          "address": "0x15efc0",
-          "size": 112,
-          "symbol": "_ZN11ubiservices19JobManageConnectionD0Ev",
-          "target_sha256": "5ede08a89c320e681bf955154e4bfe621963c55ac88bca2726450adc7f1fa6ba",
-          "bindings": {
-            "_ZN10Base15efc0D2Ev": "0x156370",
-            "_Z7UbiFreePv": "0x37030"
-          },
-          "got_bindings": {
-            "_ZTVN11ubiservices19JobManageConnectionE": {
-              "cell": "0x18ed568",
-              "pointee": "0x17c6ec8"
-            }
-          }
-        },
-        {
-          "address": "0x15f180",
-          "size": 160,
-          "symbol": "_ZN11ubiservices23NotificationUbiServicesD0Ev",
-          "target_sha256": "1aa4e557100c285883bce117740e094a3febfcfa751fda9bdcff6a651672c7d7",
-          "bindings": {
-            "_Z7UbiFreePv": "0x37030"
-          },
-          "got_bindings": {
-            "_ZTVN11ubiservices23NotificationUbiServicesE": {
-              "cell": "0x18ecc88",
-              "pointee": "0x17c7100"
-            }
-          }
-        },
-        {
-          "address": "0x168600",
-          "size": 32,
-          "symbol": "_ZN11ubiservices15PopulationCacheD2Ev",
-          "target_sha256": "a24084533756c483184ce67823e4e5e08e014b4fa8568ec4588ed766dab55ea9",
-          "bindings": {
-            "_ZN6LcTreeILm23618049EE7DestroyEPS0_Pv": "0x168020"
-          },
-          "got_bindings": {
-            "_ZTVN11ubiservices15PopulationCacheE": {
-              "cell": "0x18ed7d0",
-              "pointee": "0x17c9f80"
-            }
-          }
-        },
-        {
-          "address": "0x168620",
-          "size": 56,
-          "symbol": "_ZN11ubiservices15PopulationCacheD0Ev",
-          "target_sha256": "d88da592bf417ba3f36848ffd7e7e32e8abfa57eb424f14c4ce49b17865c08e1",
-          "bindings": {
-            "_ZN6LcTreeILm23618049EE7DestroyEPS0_Pv": "0x168020",
-            "_Z7UbiFreePv": "0x37030"
-          },
-          "got_bindings": {
-            "_ZTVN11ubiservices15PopulationCacheE": {
-              "cell": "0x18ed7d0",
-              "pointee": "0x17c9f80"
-            }
-          }
-        },
-        {
-          "address": "0x16c400",
-          "size": 32,
-          "symbol": "_ZN11Class16c400D2Ev",
-          "target_sha256": "498aabf512c0e3628faf55d0dd793d8bb4f06aef1cc09ffd2ce3ca4bf7e314aa",
-          "bindings": {
-            "_ZN6LcTreeILm23871489EE7DestroyEPS0_Pv": "0x163b20"
-          },
-          "got_bindings": {
-            "_ZTV11Class16c400": {
-              "cell": "0x18ec7b0",
-              "pointee": "0x17caa70"
-            }
-          }
-        },
-        {
-          "address": "0x16c420",
-          "size": 56,
-          "symbol": "_ZN11Class16c420D0Ev",
-          "target_sha256": "f7c41887048543a85ee37548eef1f45609e9796e29d0f6d86982a93679c95217",
-          "bindings": {
-            "_ZN6LcTreeILm23872001EE7DestroyEPS0_Pv": "0x163b20",
-            "_Z7UbiFreePv": "0x37030"
-          },
-          "got_bindings": {
-            "_ZTV11Class16c420": {
-              "cell": "0x18ec7b0",
-              "pointee": "0x17caa70"
-            }
-          }
-        },
-        {
-          "address": "0x181ae0",
-          "size": 32,
-          "symbol": "_ZN11Class181ae0D2Ev",
-          "target_sha256": "b2d8f960cc0288a307b3ed89ce3066709547d92f452bfe2dc227b81a83137815",
-          "bindings": {
-            "_ZN6LcTreeILm25275905EE7DestroyEPS0_Pv": "0x162f60"
-          },
-          "got_bindings": {
-            "_ZTV11Class181ae0": {
-              "cell": "0x18ecd08",
-              "pointee": "0x17caf80"
-            }
-          }
-        },
-        {
-          "address": "0x181b00",
-          "size": 56,
-          "symbol": "_ZN11Class181b00D0Ev",
-          "target_sha256": "cda63987e1884c6a76fc9d79969846ba355f86dc259c8aca798a376ef9ea3368",
-          "bindings": {
-            "_ZN6LcTreeILm25276417EE7DestroyEPS0_Pv": "0x162f60",
-            "_Z7UbiFreePv": "0x37030"
-          },
-          "got_bindings": {
-            "_ZTV11Class181b00": {
-              "cell": "0x18ecd08",
-              "pointee": "0x17caf80"
-            }
-          }
-        },
-        {
-          "address": "0x181e50",
-          "size": 92,
-          "symbol": "_ZN11Class181e50D2Ev",
-          "target_sha256": "055a24b1e18a0efcf26c35168e98134aaed7d748f301ac8645cf553b894f4a82",
-          "bindings": {},
-          "got_bindings": {
-            "_ZTV11Class181e50": {
-              "cell": "0x18ece60",
-              "pointee": "0x17cb038"
-            },
-            "_ZTV14Nested25289985": {
-              "cell": "0x18ec840",
-              "pointee": "0x1845b98"
-            }
-          }
-        },
-        {
-          "address": "0x181eb0",
-          "size": 120,
-          "symbol": "_ZN11Class181eb0D0Ev",
-          "target_sha256": "c3289458e897194c4599cdbfbf513357f9345fc938c8b52e1c3258141a1e3167",
-          "bindings": {
-            "_Z7UbiFreePv": "0x37030"
-          },
-          "got_bindings": {
-            "_ZTV11Class181eb0": {
-              "cell": "0x18ece60",
-              "pointee": "0x17cb038"
-            },
-            "_ZTV14Nested25291521": {
-              "cell": "0x18ec840",
-              "pointee": "0x1845b98"
-            }
-          }
-        },
-        {
-          "address": "0x192d20",
-          "size": 32,
-          "symbol": "_ZN11Class192d20D2Ev",
-          "target_sha256": "3567c3b5cf1c2b7141f3ba7bd72ba4a234a4cdfaa89907ff3057f00bf47cd724",
-          "bindings": {
-            "_ZN6LcTreeILm26399233EE7DestroyEPS0_Pv": "0x169680"
-          },
-          "got_bindings": {
-            "_ZTV11Class192d20": {
-              "cell": "0x18ed3c0",
-              "pointee": "0x17cb880"
-            }
-          }
-        },
-        {
-          "address": "0x192d40",
-          "size": 56,
-          "symbol": "_ZN11Class192d40D0Ev",
-          "target_sha256": "5d96c91d153181439630a85f0c6962718686d0566c6ed32e6cdee43bd080825d",
-          "bindings": {
-            "_ZN6LcTreeILm26399745EE7DestroyEPS0_Pv": "0x169680",
-            "_Z7UbiFreePv": "0x37030"
-          },
-          "got_bindings": {
-            "_ZTV11Class192d40": {
-              "cell": "0x18ed3c0",
-              "pointee": "0x17cb880"
-            }
-          }
-        },
-        {
-          "address": "0x194330",
-          "size": 32,
-          "symbol": "_ZN11Class194330D2Ev",
-          "target_sha256": "09d874c104feb484eb10d12242913ee32f1c5de8f9d971997b627c7af6efabab",
-          "bindings": {
-            "_ZN6LcTreeILm26489601EE7DestroyEPS0_Pv": "0x1688a0"
-          },
-          "got_bindings": {
-            "_ZTV11Class194330": {
-              "cell": "0x18ed430",
-              "pointee": "0x17cb8f8"
-            }
-          }
-        },
-        {
-          "address": "0x194350",
-          "size": 56,
-          "symbol": "_ZN11Class194350D0Ev",
-          "target_sha256": "f57d31339f7d933c11b23ae5c2f6cb62a2187214f94e3d92e6d172674370b7c3",
-          "bindings": {
-            "_ZN6LcTreeILm26490113EE7DestroyEPS0_Pv": "0x1688a0",
-            "_Z7UbiFreePv": "0x37030"
-          },
-          "got_bindings": {
-            "_ZTV11Class194350": {
-              "cell": "0x18ed430",
-              "pointee": "0x17cb8f8"
-            }
-          }
-        },
-        {
-          "address": "0x197e00",
-          "size": 164,
-          "symbol": "_ZN11Class197e00D2Ev",
-          "target_sha256": "75958a34241a25da244baecde16de1adfeab23c7bf87358984cb28b6fc56a9cc",
-          "bindings": {},
-          "got_bindings": {
-            "_ZTV11Class197e00": {
-              "cell": "0x18ed510",
-              "pointee": "0x17cbb58"
-            }
-          }
-        },
-        {
-          "address": "0x197eb0",
-          "size": 160,
-          "symbol": "_ZN11Class197eb0D0Ev",
-          "target_sha256": "df5663be1278c70512b6534ba0ee2ecb94259bfce7d01a74f9a81b31b371ebe6",
-          "bindings": {
-            "_Z7UbiFreePv": "0x37030"
-          },
-          "got_bindings": {
-            "_ZTV11Class197eb0": {
-              "cell": "0x18ed510",
-              "pointee": "0x17cbb58"
-            }
-          }
-        },
-        {
-          "address": "0x2621c0",
-          "size": 68,
-          "symbol": "_ZN5storm28NetPropertyDeserializationOpD2Ev",
-          "target_sha256": "0026a21ea10de8451b19d760f94912821bcb24caa7700dd3c480c089d5118aeb",
-          "bindings": {
-            "_Z9StormFreePvPKci": "0x56ca00"
-          },
-          "got_bindings": {
-            "_ZTVN5storm28NetPropertyDeserializationOpE": {
-              "cell": "0x18edfa8",
-              "pointee": "0x17f4b70"
-            },
-            "_ZTV14Nested43143425": {
-              "cell": "0x18edf78",
-              "pointee": "0x1833ad8"
-            }
-          },
-          "literals": {
-            "00": "0x1326e41"
-          }
-        },
-        {
-          "address": "0x27b490",
-          "size": 64,
-          "symbol": "_ZN5storm4echo9voicechat25SessionChatterGoneMessageD0Ev",
-          "target_sha256": "f7157681038edb8e51dfc1784fc6bd188697525a87a3ddf0e8575f6a0fa5135d",
-          "bindings": {
-            "_ZN8LcMemberILm41634049EED1Ev": "0x576000",
-            "_Z9StormFreePvPKci": "0x56ca00"
-          },
-          "got_bindings": {
-            "_ZTVN5storm4echo9voicechat25SessionChatterGoneMessageE": {
-              "cell": "0x18eee30",
-              "pointee": "0x17ef9f8"
-            }
-          },
-          "literals": {
-            "00": "0x1326e41"
-          }
-        },
-        {
-          "address": "0x27b8f0",
-          "size": 64,
-          "symbol": "_ZN5storm4echo9voicechat31SessionChatterDiscoveredMessageD0Ev",
-          "target_sha256": "486f528bdffa5d1770de63869c880ef4528232c19a03135ab0324e3827f27083",
-          "bindings": {
-            "_ZN8LcMemberILm41651969EED1Ev": "0x576000",
-            "_Z9StormFreePvPKci": "0x56ca00"
-          },
-          "got_bindings": {
-            "_ZTVN5storm4echo9voicechat31SessionChatterDiscoveredMessageE": {
-              "cell": "0x18eee58",
-              "pointee": "0x17efa88"
-            }
-          },
-          "literals": {
-            "00": "0x1326e41"
-          }
-        },
-        {
-          "address": "0x2800d0",
-          "size": 108,
-          "symbol": "_ZN5storm4echo3lan8outEvent17DiscoveredSessionD0Ev",
-          "target_sha256": "1f342723c01e9e61fee58f6039614029d4f7b5d51006d5bb40125fc69af21bf2",
-          "bindings": {
-            "_Z9StormFreePvPKci": "0x56ca00"
-          },
-          "got_bindings": {
-            "_ZTVN5storm4echo3lan8outEvent17DiscoveredSessionE": {
-              "cell": "0x18ede98",
-              "pointee": "0x17f03e0"
-            }
-          },
-          "literals": {
-            "00": "0x1326e41"
-          }
-        },
-        {
-          "address": "0x2805e0",
-          "size": 108,
-          "symbol": "_ZN5storm4echo3lan8outEvent15DiscoveredGroupD0Ev",
-          "target_sha256": "df9078df5ee329a88ed415bea7774f0495549f02e28c4fe3c4a21d1f1a369e89",
-          "bindings": {
-            "_Z9StormFreePvPKci": "0x56ca00"
-          },
-          "got_bindings": {
-            "_ZTVN5storm4echo3lan8outEvent15DiscoveredGroupE": {
-              "cell": "0x18edea0",
-              "pointee": "0x17f0470"
-            }
-          },
-          "literals": {
-            "00": "0x1326e41"
-          }
-        },
-        {
-          "address": "0x2832e0",
-          "size": 108,
-          "symbol": "_ZN5storm4echo4peer8outEvent8RttEventD0Ev",
-          "target_sha256": "9436c4dfae5c8696fe963137fcc436ef1c4ec85a445674613c6e10b372f756a0",
-          "bindings": {
-            "_Z9StormFreePvPKci": "0x56ca00"
-          },
-          "got_bindings": {
-            "_ZTVN5storm4echo4peer8outEvent8RttEventE": {
-              "cell": "0x18ee4f8",
-              "pointee": "0x17f2280"
-            }
-          },
-          "literals": {
-            "00": "0x1326e41"
-          }
-        },
-        {
-          "address": "0x292510",
-          "size": 92,
-          "symbol": "_ZN5storm28NetPropertyDeserializationOpD0Ev",
-          "target_sha256": "ab5208fb1a36ef37538fd583dfe5a5d4792c8d159b9b3aa6bed288c8a09eaa83",
-          "bindings": {
-            "_Z9StormFreePvPKci": "0x56ca00",
-            "_ZdlPv": "0xfa3b40"
-          },
-          "got_bindings": {
-            "_ZTVN5storm28NetPropertyDeserializationOpE": {
-              "cell": "0x18edfa8",
-              "pointee": "0x17f4b70"
-            },
-            "_ZTV14Nested43143425": {
-              "cell": "0x18edf78",
-              "pointee": "0x1833ad8"
-            }
-          },
-          "literals": {
-            "00": "0x1326e41"
-          }
-        },
-        {
-          "address": "0x2e6840",
-          "size": 108,
-          "symbol": "_ZN5storm4echo7session11resultEvent6CreateD0Ev",
-          "target_sha256": "691ebb4e0d12db8d980ac28260edac844e2b8e911f7f78b1e933c4aaaa29dc15",
-          "bindings": {
-            "_Z9StormFreePvPKci": "0x56ca00"
-          },
-          "got_bindings": {
-            "_ZTVN5storm4echo7session11resultEvent6CreateE": {
-              "cell": "0x18f1218",
-              "pointee": "0x17fa198"
-            }
-          },
-          "literals": {
-            "00": "0x1326e41"
-          }
-        },
-        {
-          "address": "0x2e85e0",
-          "size": 144,
-          "symbol": "_ZN5storm4echo7session8outEvent18HostMigrationStartD0Ev",
-          "target_sha256": "775ad6f9611d80916b06fe7504d500d73179f53934c75044f87a265dc2594204",
-          "bindings": {
-            "_Z9StormFreePvPKci": "0x56ca00"
-          },
-          "got_bindings": {
-            "_ZTVN5storm4echo7session8outEvent18HostMigrationStartE": {
-              "cell": "0x18f12a0",
-              "pointee": "0x17fa8e8"
-            }
-          },
-          "literals": {
-            "00": "0x1326e41"
-          }
-        },
-        {
-          "address": "0x2e9a70",
-          "size": 184,
-          "symbol": "_ZN5storm4echo7session11resultEvent4JoinD0Ev",
-          "target_sha256": "b62ec94d3cab01ffb12191f977fd7c2768369c1ebd967cad8796b0888060262d",
-          "bindings": {
-            "_Z9StormFreePvPKci": "0x56ca00"
-          },
-          "got_bindings": {
-            "_ZTVN5storm4echo7session11resultEvent4JoinE": {
-              "cell": "0x18f1220",
-              "pointee": "0x17fa228"
-            }
-          },
-          "literals": {
-            "00": "0x1326e41"
-          }
-        },
-        {
-          "address": "0x2e9ec0",
-          "size": 112,
-          "symbol": "_ZN5storm4echo7session11resultEvent9AddPlayerD0Ev",
-          "target_sha256": "638e454a16a5f481c9256c481ef34eabd1a8efbaf28e5705acae2b83c2a2aecf",
-          "bindings": {
-            "_Z9StormFreePvPKci": "0x56ca00"
-          },
-          "got_bindings": {
-            "_ZTVN5storm4echo7session11resultEvent9AddPlayerE": {
-              "cell": "0x18f1228",
-              "pointee": "0x17fa2b8"
-            }
-          },
-          "literals": {
-            "00": "0x1326e41"
-          }
-        },
-        {
-          "address": "0x2ea2d0",
-          "size": 132,
-          "symbol": "_ZN5storm4echo7session8outEvent14SessionCreatedD0Ev",
-          "target_sha256": "d3979976cc72488a70bbb78464cf8ab99e4a9e480a4312d922a5e34ec9c170d3",
-          "bindings": {
-            "_Z9StormFreePvPKci": "0x56ca00"
-          },
-          "got_bindings": {
-            "_ZTVN5storm4echo7session8outEvent14SessionCreatedE": {
-              "cell": "0x18f1240",
-              "pointee": "0x17fa468"
-            }
-          },
-          "literals": {
-            "00": "0x1326e41"
-          }
-        },
-        {
-          "address": "0x2ea700",
-          "size": 132,
-          "symbol": "_ZN5storm4echo7session8outEvent13SessionJoinedD0Ev",
-          "target_sha256": "79ede73ae3fdd0be303364d8bb6c62f532c394cd004bb26fc364e9ba8986858d",
-          "bindings": {
-            "_Z9StormFreePvPKci": "0x56ca00"
-          },
-          "got_bindings": {
-            "_ZTVN5storm4echo7session8outEvent13SessionJoinedE": {
-              "cell": "0x18f1248",
-              "pointee": "0x17fa4f8"
-            }
-          },
-          "literals": {
-            "00": "0x1326e41"
-          }
-        },
-        {
-          "address": "0x2eab00",
-          "size": 88,
-          "symbol": "_ZN5storm4echo7session8outEvent14PeerDiscoveredD0Ev",
-          "target_sha256": "b15e6ae2a6077cf9b48fb1ef72ee6890b2bbba13aa58d66579e3d4590d09f842",
-          "bindings": {
-            "_ZN8LcMemberILm48934913EED1Ev": "0x578410",
-            "_Z9StormFreePvPKci": "0x56ca00"
-          },
-          "got_bindings": {
-            "_ZTVN5storm4echo7session8outEvent14PeerDiscoveredE": {
-              "cell": "0x18f1250",
-              "pointee": "0x17fa588"
-            }
-          },
-          "literals": {
-            "00": "0x1326e41"
-          }
-        },
-        {
-          "address": "0x2eb010",
-          "size": 88,
-          "symbol": "_ZN5storm4echo7session8outEvent13PeerConnectedD0Ev",
-          "target_sha256": "73d816aed5a64998f270adb1b7702d5774826c5e269f266a3930c01df8316128",
-          "bindings": {
-            "_ZN8LcMemberILm48955649EED1Ev": "0x578410",
-            "_Z9StormFreePvPKci": "0x56ca00"
-          },
-          "got_bindings": {
-            "_ZTVN5storm4echo7session8outEvent13PeerConnectedE": {
-              "cell": "0x18f1270",
-              "pointee": "0x17fa618"
-            }
-          },
-          "literals": {
-            "00": "0x1326e41"
-          }
-        },
-        {
-          "address": "0x2eb550",
-          "size": 112,
-          "symbol": "_ZN5storm4echo7session8outEvent8PeerGoneD0Ev",
-          "target_sha256": "eb6a1c805ccdd84eff7bc8aec5070ac9d545fc95c43b5bab7d56c0d3da8f6ef4",
-          "bindings": {
-            "_Z9StormFreePvPKci": "0x56ca00"
-          },
-          "got_bindings": {
-            "_ZTVN5storm4echo7session8outEvent8PeerGoneE": {
-              "cell": "0x18f1280",
-              "pointee": "0x17fa6a8"
-            }
-          },
-          "literals": {
-            "00": "0x1326e41"
-          }
-        },
-        {
-          "address": "0x2ebda0",
-          "size": 108,
-          "symbol": "_ZN5storm4echo7session8outEvent11HostElectedD0Ev",
-          "target_sha256": "43749713333e7ffc56722a5c1419f64c94edb5099b95246cf03a59a8ad468be0",
-          "bindings": {
-            "_Z9StormFreePvPKci": "0x56ca00"
-          },
-          "got_bindings": {
-            "_ZTVN5storm4echo7session8outEvent11HostElectedE": {
-              "cell": "0x18f12b8",
-              "pointee": "0x17faa08"
-            }
-          },
-          "literals": {
-            "00": "0x1326e41"
-          }
-        },
-        {
-          "address": "0x3169a0",
-          "size": 52,
-          "symbol": "_ZN5storm4echo9voicechat37ChatterRegisterProtocolMainInitParamsD2Ev",
-          "target_sha256": "e4b290562a30ac85cb4d13206743057444dfdbf8b2df627ff76e9e4d48d35532",
-          "bindings": {
-            "_Z9StormFreePvPKci": "0x56ca00"
-          },
-          "got_bindings": {
-            "_ZTVN5storm4echo9voicechat37ChatterRegisterProtocolMainInitParamsE": {
-              "cell": "0x18f2d80",
-              "pointee": "0x1805430"
-            }
-          },
-          "literals": {
-            "00": "0x1326e41"
-          }
-        },
-        {
-          "address": "0x3605b0",
-          "size": 144,
-          "symbol": "_ZN5storm4echo7session8internal8outEvent18HostMigrationStartD0Ev",
-          "target_sha256": "3c72ed94caeb2776952bff47ee04ecc740225916797bbcbb779956131ccb4bde",
-          "bindings": {
-            "_Z9StormFreePvPKci": "0x56ca00"
-          },
-          "got_bindings": {
-            "_ZTVN5storm4echo7session8internal8outEvent18HostMigrationStartE": {
-              "cell": "0x18f3098",
-              "pointee": "0x1801640"
-            }
-          },
-          "literals": {
-            "00": "0x1326e41"
-          }
-        },
-        {
-          "address": "0x360bf0",
-          "size": 52,
-          "symbol": "_ZN5storm4echo28ProductEchoImplMainInitEventD2Ev",
-          "target_sha256": "208add0fb6b8bd611f4b6e352883ab7c7e186a6f927e7c19facf945f89e5a5f5",
-          "bindings": {
-            "_Z9StormFreePvPKci": "0x56ca00"
-          },
-          "got_bindings": {
-            "_ZTVN5storm4echo28ProductEchoImplMainInitEventE": {
-              "cell": "0x18f2d28",
-              "pointee": "0x1804698"
-            }
-          },
-          "literals": {
-            "00": "0x1326e41"
-          }
-        },
-        {
-          "address": "0x360c30",
-          "size": 88,
-          "symbol": "_ZN5storm4echo28ProductEchoImplMainInitEventD0Ev",
-          "target_sha256": "09e7bf22f38da20dd6c2a64a6f7e66ad07031c73f4e3eee57964ea99e5450495",
-          "bindings": {
-            "_Z9StormFreePvPKci": "0x56ca00"
-          },
-          "got_bindings": {
-            "_ZTVN5storm4echo28ProductEchoImplMainInitEventE": {
-              "cell": "0x18f2d28",
-              "pointee": "0x1804698"
-            }
-          },
-          "literals": {
-            "00": "0x1326e41"
-          }
-        },
-        {
-          "address": "0x36b5a0",
-          "size": 76,
-          "symbol": "_ZN5storm4echo9voicechat37ChatterRegisterProtocolMainInitParamsD0Ev",
-          "target_sha256": "82d0a409b07253ec4a5de1886654d8f82fcf949cb8489f7d17ce269e69880e05",
-          "bindings": {
-            "_Z9StormFreePvPKci": "0x56ca00",
-            "_ZdlPv": "0xfa3b40"
-          },
-          "got_bindings": {
-            "_ZTVN5storm4echo9voicechat37ChatterRegisterProtocolMainInitParamsE": {
-              "cell": "0x18f2d80",
-              "pointee": "0x1805430"
-            }
-          },
-          "literals": {
-            "00": "0x1326e41"
-          }
-        },
-        {
-          "address": "0x3c2760",
-          "size": 52,
-          "symbol": "_ZN5storm4echo15CTransmissionIdD2Ev",
-          "target_sha256": "b1bad72ba7fd6080507d907e70fef1016c44794ced40bd110b29f40f43334991",
-          "bindings": {
-            "_Z9StormFreePvPKci": "0x56ca00"
-          },
-          "got_bindings": {
-            "_ZTVN5storm4echo15CTransmissionIdE": {
-              "cell": "0x18f3608",
-              "pointee": "0x1808cf0"
-            }
-          },
-          "literals": {
-            "00": "0x1326e41"
-          }
-        },
-        {
-          "address": "0x3c27a0",
-          "size": 76,
-          "symbol": "_ZN5storm4echo15CTransmissionIdD0Ev",
-          "target_sha256": "568ec103de028e60cf7a8c20c9a170cc3ef741d1e9d75bf41703cb213137c386",
-          "bindings": {
-            "_Z9StormFreePvPKci": "0x56ca00",
-            "_ZdlPv": "0xfa3b40"
-          },
-          "got_bindings": {
-            "_ZTVN5storm4echo15CTransmissionIdE": {
-              "cell": "0x18f3608",
-              "pointee": "0x1808cf0"
-            }
-          },
-          "literals": {
-            "00": "0x1326e41"
-          }
-        },
-        {
-          "address": "0x3c2c70",
-          "size": 108,
-          "symbol": "_ZN5storm4echo5group11resultEvent6CreateD0Ev",
-          "target_sha256": "43136344d6396ee71be56e0146b40cf4756026a468a128189f4d225186ef2fff",
-          "bindings": {
-            "_Z9StormFreePvPKci": "0x56ca00"
-          },
-          "got_bindings": {
-            "_ZTVN5storm4echo5group11resultEvent6CreateE": {
-              "cell": "0x18f43e8",
-              "pointee": "0x1808ee8"
-            }
-          },
-          "literals": {
-            "00": "0x1326e41"
-          }
-        },
-        {
-          "address": "0x3c4490",
-          "size": 112,
-          "symbol": "_ZN5storm4echo5group11resultEvent14RequestAddPeerD0Ev",
-          "target_sha256": "33c18bf6f10522c7257ea641d3313c886e3e8e6b7e4dad788fe43287030aef7c",
-          "bindings": {
-            "_Z9StormFreePvPKci": "0x56ca00"
-          },
-          "got_bindings": {
-            "_ZTVN5storm4echo5group11resultEvent14RequestAddPeerE": {
-              "cell": "0x18f42c0",
-              "pointee": "0x1808f78"
-            }
-          },
-          "literals": {
-            "00": "0x1326e41"
-          }
-        },
-        {
-          "address": "0x3c5530",
-          "size": 112,
-          "symbol": "_ZN5storm4echo5group11resultEvent9AddPlayerD0Ev",
-          "target_sha256": "a17cef1f838a1d0e7bdbb5ed57933cc1da85608cb7aecb353b09e11d171fbadb",
-          "bindings": {
-            "_Z9StormFreePvPKci": "0x56ca00"
-          },
-          "got_bindings": {
-            "_ZTVN5storm4echo5group11resultEvent9AddPlayerE": {
-              "cell": "0x18f42d0",
-              "pointee": "0x18091b8"
-            }
-          },
-          "literals": {
-            "00": "0x1326e41"
-          }
-        },
-        {
-          "address": "0x3c61b0",
-          "size": 112,
-          "symbol": "_ZN5storm4echo5group8outEvent8PeerGoneD0Ev",
-          "target_sha256": "115616f0ff3a2d6debf83bc6223b101df952c062be7914fc0fbb8a5e5b36eb4a",
-          "bindings": {
-            "_Z9StormFreePvPKci": "0x56ca00"
-          },
-          "got_bindings": {
-            "_ZTVN5storm4echo5group8outEvent8PeerGoneE": {
-              "cell": "0x18f42e8",
-              "pointee": "0x18093f8"
-            }
-          },
-          "literals": {
-            "00": "0x1326e41"
-          }
-        },
-        {
-          "address": "0x3c6e30",
-          "size": 108,
-          "symbol": "_ZN5storm4echo5group8outEvent14AddPeerRequestD0Ev",
-          "target_sha256": "a576c43f2bf2c5802c47cb51bf2015aa62fd89a59b4ef21da868bdba34d1be88",
-          "bindings": {
-            "_Z9StormFreePvPKci": "0x56ca00"
-          },
-          "got_bindings": {
-            "_ZTVN5storm4echo5group8outEvent14AddPeerRequestE": {
-              "cell": "0x18f4818",
-              "pointee": "0x1809758"
-            }
-          },
-          "literals": {
-            "00": "0x1326e41"
-          }
-        },
-        {
-          "address": "0x3cd320",
-          "size": 108,
-          "symbol": "_ZN5storm4echo5group7inEvent14RequestAddPeerD0Ev",
-          "target_sha256": "54aeb8f46b9bbd1cc39c2b99a33bacadbca305daf84656ded724f522d595384d",
-          "bindings": {
-            "_Z9StormFreePvPKci": "0x56ca00"
-          },
-          "got_bindings": {
-            "_ZTVN5storm4echo5group7inEvent14RequestAddPeerE": {
-              "cell": "0x18f4338",
-              "pointee": "0x180bcc8"
-            }
-          },
-          "literals": {
-            "00": "0x1326e41"
-          }
-        },
-        {
-          "address": "0x3fc1a0",
-          "size": 52,
-          "symbol": "_ZN5storm26NetPropertySerializationOpD2Ev",
-          "target_sha256": "a9e53a97f09ff700fc4246e005db10f622f64d0895e3dcd5a18fa027ee136fa1",
-          "bindings": {
-            "_Z9StormFreePvPKci": "0x56ca00"
-          },
-          "got_bindings": {
-            "_ZTVN5storm26NetPropertySerializationOpE": {
-              "cell": "0x18edf88",
-              "pointee": "0x1833a38"
-            }
-          },
-          "literals": {
-            "00": "0x1326e41"
-          }
-        },
-        {
-          "address": "0x430840",
-          "size": 88,
-          "symbol": "_ZN5storm4echo6object8internal7inEvent6CreateD0Ev",
-          "target_sha256": "e680bfef18b72597cb9b7bd43f1fe1cab13d8b17cdbb80be37716f3a7b4dc1ab",
-          "bindings": {
-            "_ZN8LcMemberILm70288385EED1Ev": "0x26ea70",
-            "_Z9StormFreePvPKci": "0x56ca00"
-          },
-          "got_bindings": {
-            "_ZTVN5storm4echo6object8internal7inEvent6CreateE": {
-              "cell": "0x18f5ba8",
-              "pointee": "0x1812a30"
-            }
-          },
-          "literals": {
-            "00": "0x1326e41"
-          }
-        },
-        {
-          "address": "0x431460",
-          "size": 76,
-          "symbol": "_ZN5storm23NetPropertySetTouchedOpD0Ev",
-          "target_sha256": "cc7f9334f1ad55e246c2dcbba1f2ad71792c09ce9762a5e6aca25d6580938b6b",
-          "bindings": {
-            "_Z9StormFreePvPKci": "0x56ca00",
-            "_ZdlPv": "0xfa3b40"
-          },
-          "got_bindings": {
-            "_ZTVN5storm23NetPropertySetTouchedOpE": {
-              "cell": "0x18edf88",
-              "pointee": "0x1833a38"
-            }
-          },
-          "literals": {
-            "00": "0x1326e41"
-          }
-        },
-        {
-          "address": "0x4a79d0",
-          "size": 48,
-          "symbol": "_ZN5storm20SimpleSessionHandlerD0Ev",
-          "target_sha256": "32dc167ff2209dd23174747c1786d5be54f61d881522951cf9b2b1e98b4d38b0",
-          "bindings": {
-            "_ZN10Base4a79d0D2Ev": "0x4a7340",
-            "_Z9StormFreePvPKci": "0x56ca00"
-          },
-          "got_bindings": {},
-          "literals": {
-            "00": "0x1326e41"
-          }
-        },
-        {
-          "address": "0x5095c0",
-          "size": 68,
-          "symbol": "_ZN5storm2mm20CompressionAlgorithmD2Ev",
-          "target_sha256": "3f73174aa162cc4a7784e9f3790ed835c05a1558cb5ea4e898fac4e1b3551b17",
-          "bindings": {
-            "_ZN8LcMemberILm84499457EED1Ev": "0x4f30c0",
-            "_ZN8LcMemberILm84499458EED1Ev": "0x4f30c0",
-            "_ZN8LcMemberILm84499459EED1Ev": "0x4ee1e0"
-          },
-          "got_bindings": {
-            "_ZTVN5storm2mm20CompressionAlgorithmE": {
-              "cell": "0x18f94c0",
-              "pointee": "0x182c808"
-            }
-          }
-        },
-        {
-          "address": "0x52cef0",
-          "size": 56,
-          "symbol": "_ZN5storm2mm27ClientProtocolRequestBrokerD2Ev",
-          "target_sha256": "c768ab0bfa14f262620ef1606555c5e57814e1ffc27e6bc31340106c6cd17b55",
-          "bindings": {
-            "_ZN6LcTreeILm86831873EE7DestroyEPS0_Pv": "0x521ad0",
-            "_ZN10Base52cf30D2Ev": "0x530ec0"
-          },
-          "got_bindings": {
-            "_ZTVN5storm2mm27ClientProtocolRequestBrokerE": {
-              "cell": "0x18f9958",
-              "pointee": "0x182e640"
-            }
-          }
-        },
-        {
-          "address": "0x52cf30",
-          "size": 64,
-          "symbol": "_ZN5storm2mm27ClientProtocolRequestBrokerD0Ev",
-          "target_sha256": "d244bed2829ba1b6ee94214f4e39831d319370602cd1d0e6bba87723a692e729",
-          "bindings": {
-            "_ZN6LcTreeILm86831873EE7DestroyEPS0_Pv": "0x521ad0",
-            "_ZN10Base52cf30D2Ev": "0x530ec0",
-            "_ZdlPv": "0x4eb340"
-          },
-          "got_bindings": {
-            "_ZTVN5storm2mm27ClientProtocolRequestBrokerE": {
-              "cell": "0x18f9958",
-              "pointee": "0x182e640"
-            }
-          }
-        },
-        {
-          "address": "0x530ec0",
-          "size": 56,
-          "symbol": "_ZN5storm2mm30ProtocolRequestBrokerInterfaceD2Ev",
-          "target_sha256": "28119035810ca9bc875f04b163b25f01fbcd156a06097af75f16f5b7e1411a71",
-          "bindings": {
-            "_ZN8LcMemberILm87092225EED1Ev": "0x51d670",
-            "_ZN8LcMemberILm87092226EED1Ev": "0x5192b0"
-          },
-          "got_bindings": {
-            "_ZTVN5storm2mm30ProtocolRequestBrokerInterfaceE": {
-              "cell": "0x18f9a60",
-              "pointee": "0x182ee28"
-            }
-          }
-        },
-        {
-          "address": "0x57f310",
-          "size": 52,
-          "symbol": "_ZN5storm10DataBufferD2Ev",
-          "target_sha256": "5af5c2c43906e294fd35dfa52d701f0527e4d764229f1d8f515bc648cc39d6c9",
-          "bindings": {
-            "_Z9StormFreePvPKci": "0x56ca00"
-          },
-          "got_bindings": {
-            "_ZTVN5storm10DataBufferE": {
-              "cell": "0x18eef00",
-              "pointee": "0x1832958"
-            }
-          },
-          "literals": {
-            "00": "0x1326e41"
-          }
-        },
-        {
-          "address": "0x57f350",
-          "size": 76,
-          "symbol": "_ZN5storm10DataBufferD0Ev",
-          "target_sha256": "6ef8af113392a42bec18cac87c21b08da96ec346af91a1b504c8da6b54dc4ba3",
-          "bindings": {
-            "_Z9StormFreePvPKci": "0x56ca00",
-            "_ZdlPv": "0xfa3b40"
-          },
-          "got_bindings": {
-            "_ZTVN5storm10DataBufferE": {
-              "cell": "0x18eef00",
-              "pointee": "0x1832958"
-            }
-          },
-          "literals": {
-            "00": "0x1326e41"
-          }
-        },
-        {
-          "address": "0x5854a0",
-          "size": 48,
-          "symbol": "_ZN5storm6common13NetworkHelper31NetworkInterfaceDiscoveredEventD0Ev",
-          "target_sha256": "b76eadc0e93d0bcd42e490b6340879eb608742f09f46993b487394ab231cceaf",
-          "bindings": {
-            "_ZN10Base5854a0D2Ev": "0x585340",
-            "_Z9StormFreePvPKci": "0x56ca00"
-          },
-          "got_bindings": {},
-          "literals": {
-            "00": "0x1326e41"
-          }
-        },
-        {
-          "address": "0x5857f0",
-          "size": 48,
-          "symbol": "_ZN5storm6common13NetworkHelper25NetworkInterfaceLostEventD0Ev",
-          "target_sha256": "2d11ed58ce99410008ca0e10688179d5a2082d177fb2932ed87e5f8b4c4ae1e4",
-          "bindings": {
-            "_ZN10Base5857f0D2Ev": "0x585690",
-            "_Z9StormFreePvPKci": "0x56ca00"
-          },
-          "got_bindings": {},
-          "literals": {
-            "00": "0x1326e41"
-          }
-        },
-        {
-          "address": "0x58d4c0",
-          "size": 76,
-          "symbol": "_ZN5storm26NetPropertySerializationOpD0Ev",
-          "target_sha256": "858bd57b6487cc150a5b3ee9a0bc880b998b8c162fc7f6116d1d3b7eb2ea3b8a",
-          "bindings": {
-            "_Z9StormFreePvPKci": "0x56ca00",
-            "_ZdlPv": "0xfa3b40"
-          },
-          "got_bindings": {
-            "_ZTVN5storm26NetPropertySerializationOpE": {
-              "cell": "0x18edf88",
-              "pointee": "0x1833a38"
-            }
-          },
-          "literals": {
-            "00": "0x1326e41"
-          }
-        },
-        {
-          "address": "0x58d650",
-          "size": 52,
-          "symbol": "_ZN5storm33NetPropertyTouchedBitsRetrievalOpD2Ev",
-          "target_sha256": "579710f3259672c696f69d1dfcf7369456325e1bc8b0cf45e43088e9d18bc6fa",
-          "bindings": {
-            "_Z9StormFreePvPKci": "0x56ca00"
-          },
-          "got_bindings": {
-            "_ZTVN5storm33NetPropertyTouchedBitsRetrievalOpE": {
-              "cell": "0x18edf78",
-              "pointee": "0x1833ad8"
-            }
-          },
-          "literals": {
-            "00": "0x1326e41"
-          }
-        },
-        {
-          "address": "0x58d690",
-          "size": 76,
-          "symbol": "_ZN5storm33NetPropertyTouchedBitsRetrievalOpD0Ev",
-          "target_sha256": "43d1cae86a3fef4f6704e7f4b70c6313373514f7bc81711ac93dc4a6a88cb4ee",
-          "bindings": {
-            "_Z9StormFreePvPKci": "0x56ca00",
-            "_ZdlPv": "0xfa3b40"
-          },
-          "got_bindings": {
-            "_ZTVN5storm33NetPropertyTouchedBitsRetrievalOpE": {
-              "cell": "0x18edf78",
-              "pointee": "0x1833ad8"
-            }
-          },
-          "literals": {
-            "00": "0x1326e41"
-          }
-        },
-        {
-          "address": "0x58d960",
-          "size": 64,
-          "symbol": "_ZN5storm6common13NetworkHelper16DNSResolvedEventD0Ev",
-          "target_sha256": "54db2198b49b1edabcefc64687c76f4a609c206c760cc78a0917b776426068c9",
-          "bindings": {
-            "_ZN8LcMemberILm93165057EED1Ev": "0x578410",
-            "_Z9StormFreePvPKci": "0x56ca00"
-          },
-          "got_bindings": {
-            "_ZTVN5storm6common13NetworkHelper16DNSResolvedEventE": {
-              "cell": "0x18fa5f8",
-              "pointee": "0x18333c0"
-            }
-          },
-          "literals": {
-            "00": "0x1326e41"
-          }
-        },
-        {
-          "address": "0x58e350",
-          "size": 48,
-          "symbol": "_ZN5storm6common8Tracking17TrackingDataEventD0Ev",
-          "target_sha256": "d8b79a3b12b9eb4c414827e50945f0b83d7651b1dd640189438e5aaa1136e932",
-          "bindings": {
-            "_ZN10Base58e350D2Ev": "0x58e250",
-            "_Z9StormFreePvPKci": "0x56ca00"
-          },
-          "got_bindings": {},
-          "literals": {
-            "00": "0x1326e41"
-          }
-        },
-        {
-          "address": "0x5b8fa0",
-          "size": 48,
-          "symbol": "_ZN5storm14PeerDescriptorD0Ev",
-          "target_sha256": "323dfcf791dc73e61d944a2160c19c92352026752222ea7fc5b4fadac634b4ce",
-          "bindings": {
-            "_ZN10Base5b8fa0D2Ev": "0x5b8cf0",
-            "_Z9StormFreePvPKci": "0x56ca00"
-          },
-          "got_bindings": {},
-          "literals": {
-            "00": "0x1326e41"
-          }
-        },
-        {
-          "address": "0x5c1f90",
-          "size": 32,
-          "symbol": "_ZN5storm9transport19PacketEventObserverD2Ev",
-          "target_sha256": "fb1e39ea25116d0a97fe3fd894b0ddd47560869b5d5fb966c23c92dd40fb5c5f",
-          "bindings": {
-            "_ZN6LcTreeILm96598785EE7DestroyEPS0_Pv": "0x3e1a00"
-          },
-          "got_bindings": {
-            "_ZTVN5storm9transport19PacketEventObserverE": {
-              "cell": "0x18f4a68",
-              "pointee": "0x1836d70"
-            }
-          }
-        },
-        {
-          "address": "0x5c1fb0",
-          "size": 56,
-          "symbol": "_ZN5storm9transport19PacketEventObserverD0Ev",
-          "target_sha256": "61d4c0893d63b7663aa7c2c5c70dc14748133e9c4fef67918c5927ce7777255c",
-          "bindings": {
-            "_ZN6LcTreeILm96598785EE7DestroyEPS0_Pv": "0x3e1a00",
-            "_ZdlPv": "0xfa3b40"
-          },
-          "got_bindings": {
-            "_ZTVN5storm9transport19PacketEventObserverE": {
-              "cell": "0x18f4a68",
-              "pointee": "0x1836d70"
-            }
-          }
-        },
-        {
-          "address": "0x5c2e70",
-          "size": 64,
-          "symbol": "_ZN5storm9transport13internalEvent20UpdateLinkRecvPacketD0Ev",
-          "target_sha256": "8591ebc3d80e5daf5a29929acc80bb8404acb0acf9f365c263f4be562bc90e9f",
-          "bindings": {
-            "_ZN8LcMemberILm96659201EED1Ev": "0x578410",
-            "_Z9StormFreePvPKci": "0x56ca00"
-          },
-          "got_bindings": {
-            "_ZTVN5storm9transport13internalEvent20UpdateLinkRecvPacketE": {
-              "cell": "0x18fab68",
-              "pointee": "0x18374f8"
-            }
-          },
-          "literals": {
-            "00": "0x1326e41"
-          }
-        },
-        {
-          "address": "0x5dcae0",
-          "size": 92,
-          "symbol": "_ZN5storm5punch27ProductPunchClientImpl_MainD2Ev",
-          "target_sha256": "3afc2b8daaa0016edc21f5081aea78d21707fa6dc94f75411a28a780202342ae",
-          "bindings": {
-            "_Z9StormFreePvPKci": "0x56ca00",
-            "_ZN10Base5dcb40D2Ev": "0x54c050"
-          },
-          "got_bindings": {
-            "_ZTVN5storm5punch27ProductPunchClientImpl_MainE": {
-              "cell": "0x18fb200",
-              "pointee": "0x183a2f8"
-            },
-            "_ZTV14Nested98350081": {
-              "cell": "0x18fb1f0",
-              "pointee": "0x183a780"
-            }
-          },
-          "literals": {
-            "00": "0x1326e41"
-          }
-        },
-        {
-          "address": "0x5dcb40",
-          "size": 100,
-          "symbol": "_ZN5storm5punch27ProductPunchClientImpl_MainD0Ev",
-          "target_sha256": "62e054f36e71bc81881eb87dace2f3db04969fed638606f2e468434ef9f2e7b6",
-          "bindings": {
-            "_Z9StormFreePvPKci": "0x56ca00",
-            "_ZN10Base5dcb40D2Ev": "0x54c050",
-            "_ZdlPv": "0xfa3b40"
-          },
-          "got_bindings": {
-            "_ZTVN5storm5punch27ProductPunchClientImpl_MainE": {
-              "cell": "0x18fb200",
-              "pointee": "0x183a2f8"
-            },
-            "_ZTV14Nested98350081": {
-              "cell": "0x18fb1f0",
-              "pointee": "0x183a780"
-            }
-          },
-          "literals": {
-            "00": "0x1326e41"
-          }
-        },
-        {
-          "address": "0x5e3530",
-          "size": 100,
-          "symbol": "_ZN5storm5punch15PunchMpeAdapterD2Ev",
-          "target_sha256": "cabe4e595c61693dc5a590200d68cee65afe3a56993028a134517ad184314430",
-          "bindings": {
-            "_ZN8LcMemberILm98785793EED1Ev": "0x5e54e0",
-            "_ZN6LcTreeILm98785794EE7DestroyEPS0_Pv": "0x617e20",
-            "_ZN8LcMemberILm98785795EED1Ev": "0x57ef40",
-            "_Z9StormFreePvPKci": "0x56ca00",
-            "_ZN10Base5e35a0D2Ev": "0x577290"
-          },
-          "got_bindings": {
-            "_ZTVN5storm5punch15PunchMpeAdapterE": {
-              "cell": "0x18fb368",
-              "pointee": "0x183b038"
-            }
-          },
-          "literals": {
-            "00": "0x1326e41"
-          }
-        },
-        {
-          "address": "0x5e35a0",
-          "size": 108,
-          "symbol": "_ZN5storm5punch15PunchMpeAdapterD0Ev",
-          "target_sha256": "e1eefa8ecfa237ca1fc356ef8e249cab9bfc4602828ae11a5d5f0b1e6743f014",
-          "bindings": {
-            "_ZN8LcMemberILm98785793EED1Ev": "0x5e54e0",
-            "_ZN6LcTreeILm98785794EE7DestroyEPS0_Pv": "0x617e20",
-            "_ZN8LcMemberILm98785795EED1Ev": "0x57ef40",
-            "_Z9StormFreePvPKci": "0x56ca00",
-            "_ZN10Base5e35a0D2Ev": "0x577290",
-            "_ZdlPv": "0xfa3b40"
-          },
-          "got_bindings": {
-            "_ZTVN5storm5punch15PunchMpeAdapterE": {
-              "cell": "0x18fb368",
-              "pointee": "0x183b038"
-            }
-          },
-          "literals": {
-            "00": "0x1326e41"
-          }
-        }
-      ]
-    },
-    {
       "id": "gameplay_class_destructors",
       "source": "src/gameplay/ClassDestructors.cpp",
       "compiler": "8.0.1",
@@ -522976,6 +521193,2960 @@
             "_ZN13Levelcc4400_1D2Ev": "0xcc3490"
           },
           "got_bindings": {}
+        }
+      ]
+    },
+    {
+      "id": "lib_storm_ubi_destructors",
+      "source": "src/StormUbiDestructors.cpp",
+      "compiler": "8.0.1",
+      "source_review": "generated_cxx_abi_view",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-std=c++11",
+        "-O2",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-fno-omit-frame-pointer",
+        "-fPIC",
+        "-fno-exceptions",
+        "-funwind-tables",
+        "-ffunction-sections",
+        "-fdata-sections"
+      ],
+      "functions": [
+        {
+          "address": "0x5a500",
+          "size": 276,
+          "symbol": "_ZN11ubiservices19HttpRequestInternalD2Ev",
+          "target_sha256": "09c67a730f3319e11159d96c3daaa9e5bcd7a4290937a27e6b14bc5efd471f88",
+          "bindings": {},
+          "got_bindings": {
+            "_ZTVN11ubiservices19HttpRequestInternalE": {
+              "cell": "0x18ec9c0",
+              "pointee": "0x17c4c90"
+            }
+          }
+        },
+        {
+          "address": "0x66690",
+          "size": 272,
+          "symbol": "_ZN11ubiservices19HttpRequestInternalD0Ev",
+          "target_sha256": "efffb82cc5fd3878a528bb00aca13fd21c287686fb2ea02231547f51b5284236",
+          "bindings": {
+            "_Z7UbiFreePv": "0x37030"
+          },
+          "got_bindings": {
+            "_ZTVN11ubiservices19HttpRequestInternalE": {
+              "cell": "0x18ec9c0",
+              "pointee": "0x17c4c90"
+            }
+          }
+        },
+        {
+          "address": "0x91c40",
+          "size": 164,
+          "symbol": "_ZN11ubiservices15WebSocketStreamD2Ev",
+          "target_sha256": "bc3704f1c0233ff203e88a4eac154a08186f27f4d19cb177baa9b1c785868fe6",
+          "bindings": {},
+          "got_bindings": {
+            "_ZTVN11ubiservices15WebSocketStreamE": {
+              "cell": "0x18ecc68",
+              "pointee": "0x17c5410"
+            }
+          }
+        },
+        {
+          "address": "0xdfc20",
+          "size": 420,
+          "symbol": "_ZN11ubiservices18EventInfoGameStartD2Ev",
+          "target_sha256": "f24b4a70b8b28a7ed0ec6bf6a9427cb12f96e6ce861b680d3205833a8b13993a",
+          "bindings": {
+            "_Z7UbiFreePv": "0x37030"
+          },
+          "got_bindings": {
+            "_ZTVN11ubiservices18EventInfoGameStartE": {
+              "cell": "0x18ed228",
+              "pointee": "0x17c6698"
+            },
+            "_ZTV12Leveldfc20_1": {
+              "cell": "0x18ed238",
+              "pointee": "0x17c6548"
+            }
+          }
+        },
+        {
+          "address": "0xe68e0",
+          "size": 32,
+          "symbol": "_ZN11ubiservices15EventConfigInfoD2Ev",
+          "target_sha256": "df8a3bb2ec87ba94044fd07cc4afda78809fb596af1beef3626b20876eec05f7",
+          "bindings": {
+            "_ZN6LcTreeILm22878721EE7DestroyEPS0_Pv": "0x164ec0"
+          },
+          "got_bindings": {
+            "_ZTVN11ubiservices15EventConfigInfoE": {
+              "cell": "0x18ed1f0",
+              "pointee": "0x17c6238"
+            }
+          }
+        },
+        {
+          "address": "0xfced0",
+          "size": 164,
+          "symbol": "_ZN11ubiservices12HttpResponseD2Ev",
+          "target_sha256": "0ccb2fb8ff5848561ccefb5e7fa588bef9c0f383d707621eb19bd94af2a6297d",
+          "bindings": {
+            "_ZN6LcTreeILm16578563EE7DestroyEPS0_Pv": "0x701100"
+          },
+          "got_bindings": {
+            "_ZTVN11ubiservices12HttpResponseE": {
+              "cell": "0x18ec9f8",
+              "pointee": "0x17c6a98"
+            }
+          }
+        },
+        {
+          "address": "0xfcf80",
+          "size": 172,
+          "symbol": "_ZN11ubiservices12HttpResponseD0Ev",
+          "target_sha256": "1c085dc5fe181f7570b8d82e566cffaa50538e90381627895f8d34b657a27f47",
+          "bindings": {
+            "_ZN6LcTreeILm16578563EE7DestroyEPS0_Pv": "0x701100",
+            "_Z7UbiFreePv": "0x37030"
+          },
+          "got_bindings": {
+            "_ZTVN11ubiservices12HttpResponseE": {
+              "cell": "0x18ec9f8",
+              "pointee": "0x17c6a98"
+            }
+          }
+        },
+        {
+          "address": "0x10bb70",
+          "size": 308,
+          "symbol": "_ZN11ubiservices29EventInfoPlayerNewsImpressionD2Ev",
+          "target_sha256": "1cdc49b636435c8d14ae5b1287f2154cd32336f5058312a84a9d97232b6e5439",
+          "bindings": {
+            "_Z7UbiFreePv": "0x37030"
+          },
+          "got_bindings": {
+            "_ZTVN11ubiservices29EventInfoPlayerNewsImpressionE": {
+              "cell": "0x18ed2f0",
+              "pointee": "0x17c6718"
+            },
+            "_ZTV13Level156aa0_1": {
+              "cell": "0x18ed238",
+              "pointee": "0x17c6548"
+            }
+          }
+        },
+        {
+          "address": "0x114f20",
+          "size": 164,
+          "symbol": "_ZN11ubiservices23NotificationUbiServicesD2Ev",
+          "target_sha256": "f3dc60b6530770385f89144710ce169dd7770291329f139f77a3a5d555d7d50d",
+          "bindings": {},
+          "got_bindings": {
+            "_ZTVN11ubiservices23NotificationUbiServicesE": {
+              "cell": "0x18ecc88",
+              "pointee": "0x17c7100"
+            }
+          }
+        },
+        {
+          "address": "0x11e1c0",
+          "size": 164,
+          "symbol": "_ZN11ubiservices16ClubNotificationD2Ev",
+          "target_sha256": "3f4bf477f74e2e2159b36c7585ae9613945c0edfd3026478440667788bcb02d7",
+          "bindings": {},
+          "got_bindings": {
+            "_ZTVN11ubiservices16ClubNotificationE": {
+              "cell": "0x18ed0a0",
+              "pointee": "0x17c5f68"
+            }
+          }
+        },
+        {
+          "address": "0x11e270",
+          "size": 164,
+          "symbol": "_ZN11ubiservices18FriendNotificationD2Ev",
+          "target_sha256": "6c66ee0b8b82d080ee8d35576d8e3db37ad0aa89ff83b14f4fac9d748ebbcc34",
+          "bindings": {},
+          "got_bindings": {
+            "_ZTVN11ubiservices18FriendNotificationE": {
+              "cell": "0x18ed320",
+              "pointee": "0x17c6878"
+            }
+          }
+        },
+        {
+          "address": "0x11ef40",
+          "size": 332,
+          "symbol": "_ZN11ubiservices18NotificationCustomD2Ev",
+          "target_sha256": "3c7a995fdd9c0f04db18f8c9928fe117251a418a620418baed226b05f0886cae",
+          "bindings": {},
+          "got_bindings": {
+            "_ZTVN11ubiservices18NotificationCustomE": {
+              "cell": "0x18ed580",
+              "pointee": "0x17c70d8"
+            }
+          }
+        },
+        {
+          "address": "0x150770",
+          "size": 416,
+          "symbol": "_ZN11ubiservices19WebSocketConnectionD2Ev",
+          "target_sha256": "54abb4524b12c2dd2e9cab8be00f7a205a520c8cac930f609c78daed76e5ed93",
+          "bindings": {
+            "_ZN6LcTreeILm22050566EE7DestroyEPS0_Pv": "0x701100"
+          },
+          "got_bindings": {
+            "_ZTVN11ubiservices19WebSocketConnectionE": {
+              "cell": "0x18ed908",
+              "pointee": "0x17c7aa0"
+            },
+            "_ZTV14Nested22050563": {
+              "cell": "0x18ec9f8",
+              "pointee": "0x17c6a98"
+            }
+          }
+        },
+        {
+          "address": "0x1531d0",
+          "size": 248,
+          "symbol": "_ZN11ubiservices23JobWebSocketWriteStreamD2Ev",
+          "target_sha256": "e2791605c7fb4a29c3ce176259d97e0130874518dea0aac186f6611a6c283df9",
+          "bindings": {
+            "_ZN18NestedBase22224131D2Ev": "0x792d0"
+          },
+          "got_bindings": {
+            "_ZTVN11ubiservices23JobWebSocketWriteStreamE": {
+              "cell": "0x18ecc48",
+              "pointee": "0x17c5370"
+            },
+            "_ZTV13Level1531d0_1": {
+              "cell": "0x18ecb90",
+              "pointee": "0x17c9b48"
+            },
+            "_ZTV14Nested22224131": {
+              "cell": "0x18ec7c0",
+              "pointee": "0x1845f68"
+            }
+          }
+        },
+        {
+          "address": "0x1545e0",
+          "size": 1076,
+          "symbol": "_ZN11ubiservices21SessionInfoClientImplD2Ev",
+          "target_sha256": "a30a30e03d7c96bceb16a44633f2820d046d37f175531ef6a078aeca17ae8f57",
+          "bindings": {},
+          "got_bindings": {
+            "_ZTVN11ubiservices21SessionInfoClientImplE": {
+              "cell": "0x18ecfb0",
+              "pointee": "0x17c5d80"
+            },
+            "_ZTV13Level1545e0_1": {
+              "cell": "0x18ecfa8",
+              "pointee": "0x17c5d50"
+            }
+          }
+        },
+        {
+          "address": "0x1554a0",
+          "size": 168,
+          "symbol": "_ZN11ubiservices24JobExtendedStorageUploadD2Ev",
+          "target_sha256": "0b38c986d51aaf239436e8e5bfed6892b56776ddce712b21e9c4a6c6b72cade5",
+          "bindings": {
+            "_Z7UbiFreePv": "0x37030",
+            "_ZN8LcMemberILm22366725EED1Ev": "0xcb0f0",
+            "_ZN10Base1554a0D2Ev": "0x156370"
+          },
+          "got_bindings": {
+            "_ZTVN11ubiservices24JobExtendedStorageUploadE": {
+              "cell": "0x18ed178",
+              "pointee": "0x17c6090"
+            },
+            "_ZTV14Nested22366723": {
+              "cell": "0x18ec920",
+              "pointee": "0x17c6ab8"
+            }
+          }
+        },
+        {
+          "address": "0x155fc0",
+          "size": 176,
+          "symbol": "_ZN11ubiservices23EventInfoPlayerPlayTimeD0Ev",
+          "target_sha256": "bb58694b110d74e76ab8364bf2d2b219f4501803338aa3d73f5be1daf9149510",
+          "bindings": {
+            "_Z7UbiFreePv": "0x37030"
+          },
+          "got_bindings": {
+            "_ZTVN11ubiservices23EventInfoPlayerPlayTimeE": {
+              "cell": "0x18ed238",
+              "pointee": "0x17c6548"
+            }
+          }
+        },
+        {
+          "address": "0x1565f0",
+          "size": 304,
+          "symbol": "_ZN11ubiservices21EventInfoContextStartD0Ev",
+          "target_sha256": "77324991ec0729d46fc783dec443f8ccf99e9182fea4384982fec5cccb98f8cf",
+          "bindings": {
+            "_Z7UbiFreePv": "0x37030"
+          },
+          "got_bindings": {
+            "_ZTVN11ubiservices21EventInfoContextStartE": {
+              "cell": "0x18ed2c0",
+              "pointee": "0x17c6590"
+            },
+            "_ZTV13Level1565f0_1": {
+              "cell": "0x18ed238",
+              "pointee": "0x17c6548"
+            }
+          }
+        },
+        {
+          "address": "0x156720",
+          "size": 304,
+          "symbol": "_ZN11ubiservices20EventInfoContextStopD0Ev",
+          "target_sha256": "c0975470eecb96986c96010371a5b0008a86a49f2826a3f4adcd456a9d57de32",
+          "bindings": {
+            "_Z7UbiFreePv": "0x37030"
+          },
+          "got_bindings": {
+            "_ZTVN11ubiservices20EventInfoContextStopE": {
+              "cell": "0x18ed2d0",
+              "pointee": "0x17c65d8"
+            },
+            "_ZTV13Level156720_1": {
+              "cell": "0x18ed238",
+              "pointee": "0x17c6548"
+            }
+          }
+        },
+        {
+          "address": "0x156850",
+          "size": 176,
+          "symbol": "_ZN11ubiservices15EventInfoCustomD0Ev",
+          "target_sha256": "3cca66fd9215ae6532ac98bb74072d1f184c6fc5b9b030fff5d29ade867eb151",
+          "bindings": {
+            "_Z7UbiFreePv": "0x37030"
+          },
+          "got_bindings": {
+            "_ZTVN11ubiservices15EventInfoCustomE": {
+              "cell": "0x18ed238",
+              "pointee": "0x17c6548"
+            }
+          }
+        },
+        {
+          "address": "0x156930",
+          "size": 180,
+          "symbol": "_ZN11ubiservices23EventInfoPlayerPlayTimeD2Ev",
+          "target_sha256": "e0c7903a8a2915d3d18c230c9b7a10abd316909443ef1a8b00e666e93ecb2e5f",
+          "bindings": {
+            "_Z7UbiFreePv": "0x37030"
+          },
+          "got_bindings": {
+            "_ZTVN11ubiservices23EventInfoPlayerPlayTimeE": {
+              "cell": "0x18ed238",
+              "pointee": "0x17c6548"
+            }
+          }
+        },
+        {
+          "address": "0x1569f0",
+          "size": 176,
+          "symbol": "_ZN11ubiservices26EventInfoPlayerAchievementD0Ev",
+          "target_sha256": "178bdbc1214c9e6a9f6cc31a6e11cef4915b353d8cd5a69776242e12928b6bae",
+          "bindings": {
+            "_Z7UbiFreePv": "0x37030"
+          },
+          "got_bindings": {
+            "_ZTVN11ubiservices26EventInfoPlayerAchievementE": {
+              "cell": "0x18ed238",
+              "pointee": "0x17c6548"
+            }
+          }
+        },
+        {
+          "address": "0x156aa0",
+          "size": 304,
+          "symbol": "_ZN11ubiservices29EventInfoPlayerNewsImpressionD0Ev",
+          "target_sha256": "9515dc10d008c87e37ec25f54e53b73e8f9c2e0c756db3405cb25f9eefb9e513",
+          "bindings": {
+            "_Z7UbiFreePv": "0x37030"
+          },
+          "got_bindings": {
+            "_ZTVN11ubiservices29EventInfoPlayerNewsImpressionE": {
+              "cell": "0x18ed2f0",
+              "pointee": "0x17c6718"
+            },
+            "_ZTV13Level156aa0_1": {
+              "cell": "0x18ed238",
+              "pointee": "0x17c6548"
+            }
+          }
+        },
+        {
+          "address": "0x156bd0",
+          "size": 304,
+          "symbol": "_ZN11ubiservices26EventInfoPlayerProgressionD0Ev",
+          "target_sha256": "2c4a408b66486b7b50bea81313014d68583dbc96f368b60ca275e56ad4b0e971",
+          "bindings": {
+            "_Z7UbiFreePv": "0x37030"
+          },
+          "got_bindings": {
+            "_ZTVN11ubiservices26EventInfoPlayerProgressionE": {
+              "cell": "0x18ed300",
+              "pointee": "0x17c67a0"
+            },
+            "_ZTV13Level156bd0_1": {
+              "cell": "0x18ed238",
+              "pointee": "0x17c6548"
+            }
+          }
+        },
+        {
+          "address": "0x1571b0",
+          "size": 120,
+          "symbol": "_ZN11ubiservices13HttpStreamPutD2Ev",
+          "target_sha256": "c24f2f4352d1bafd47f5c6b410b3c95943e26b88eacd9acaad3d1a6dd7c3b8a4",
+          "bindings": {
+            "_ZN10Base157230D2Ev": "0xc3520"
+          },
+          "got_bindings": {
+            "_ZTVN11ubiservices13HttpStreamPutE": {
+              "cell": "0x18ed480",
+              "pointee": "0x17c6c40"
+            },
+            "_ZTV14Nested22487809": {
+              "cell": "0x18ec920",
+              "pointee": "0x17c6ab8"
+            }
+          }
+        },
+        {
+          "address": "0x157230",
+          "size": 128,
+          "symbol": "_ZN11ubiservices13HttpStreamPutD0Ev",
+          "target_sha256": "0b1ad2c159d2871fb91d855a6b2c237920feb3e54b0a740997ddc7868211f990",
+          "bindings": {
+            "_ZN10Base157230D2Ev": "0xc3520",
+            "_Z7UbiFreePv": "0x37030"
+          },
+          "got_bindings": {
+            "_ZTVN11ubiservices13HttpStreamPutE": {
+              "cell": "0x18ed480",
+              "pointee": "0x17c6c40"
+            },
+            "_ZTV14Nested22487809": {
+              "cell": "0x18ec920",
+              "pointee": "0x17c6ab8"
+            }
+          }
+        },
+        {
+          "address": "0x1572b0",
+          "size": 176,
+          "symbol": "_ZN11ubiservices21JobRequestLeaderboardD2Ev",
+          "target_sha256": "1ad7bbdc0321f58afffa7b12a9ca1278474d82c0457e258baf2f91a1bf0532aa",
+          "bindings": {
+            "_Z7UbiFreePv": "0x37030",
+            "_ZN10Base157360D2Ev": "0x16ab30"
+          },
+          "got_bindings": {
+            "_ZTVN11ubiservices21JobRequestLeaderboardE": {
+              "cell": "0x18ed488",
+              "pointee": "0x17c6c78"
+            }
+          }
+        },
+        {
+          "address": "0x157360",
+          "size": 184,
+          "symbol": "_ZN11ubiservices21JobRequestLeaderboardD0Ev",
+          "target_sha256": "2a2a8f961a581e199f3ddc79a3c51b5a73abe08160bd536763e4e29dc434aae1",
+          "bindings": {
+            "_Z7UbiFreePv": "0x37030",
+            "_ZN10Base157360D2Ev": "0x16ab30"
+          },
+          "got_bindings": {
+            "_ZTVN11ubiservices21JobRequestLeaderboardE": {
+              "cell": "0x18ed488",
+              "pointee": "0x17c6c78"
+            }
+          }
+        },
+        {
+          "address": "0x1578d0",
+          "size": 160,
+          "symbol": "_ZN11ubiservices29JobRequestLeaderboardCenteredD2Ev",
+          "target_sha256": "50784eaed2d150de908c34e2b1cc61eec503435868fd7f4e32feb5b71151a6be",
+          "bindings": {
+            "_ZN10Base157970D2Ev": "0x16ab30"
+          },
+          "got_bindings": {
+            "_ZTVN11ubiservices29JobRequestLeaderboardCenteredE": {
+              "cell": "0x18ed4d8",
+              "pointee": "0x17c6ce8"
+            }
+          }
+        },
+        {
+          "address": "0x157970",
+          "size": 168,
+          "symbol": "_ZN11ubiservices29JobRequestLeaderboardCenteredD0Ev",
+          "target_sha256": "ff876e63dcb2308ebf0120fb844926f8ecff406589b19f31c7f651e7925030e5",
+          "bindings": {
+            "_ZN10Base157970D2Ev": "0x16ab30",
+            "_Z7UbiFreePv": "0x37030"
+          },
+          "got_bindings": {
+            "_ZTVN11ubiservices29JobRequestLeaderboardCenteredE": {
+              "cell": "0x18ed4d8",
+              "pointee": "0x17c6ce8"
+            }
+          }
+        },
+        {
+          "address": "0x157c50",
+          "size": 132,
+          "symbol": "_ZN11ubiservices21JobRetryWebSocketInitD2Ev",
+          "target_sha256": "78fc403c7e0932c6fd9a2ac402fe59a2e40fe3100f5b5d271cf3f73fc832958a",
+          "bindings": {
+            "_ZN18NestedBase22531585D2Ev": "0x792d0",
+            "_ZN10Base157ce0D2Ev": "0x156370"
+          },
+          "got_bindings": {
+            "_ZTVN11ubiservices21JobRetryWebSocketInitE": {
+              "cell": "0x18ed588",
+              "pointee": "0x17c6f38"
+            },
+            "_ZTV14Nested22531585": {
+              "cell": "0x18ec7c0",
+              "pointee": "0x1845f68"
+            }
+          }
+        },
+        {
+          "address": "0x157ce0",
+          "size": 140,
+          "symbol": "_ZN11ubiservices21JobRetryWebSocketInitD0Ev",
+          "target_sha256": "23e2e6d4f25f18ce03a9de97a6734f0d6a7f9c0b3c7375306d769663edb3d639",
+          "bindings": {
+            "_ZN18NestedBase22531585D2Ev": "0x792d0",
+            "_ZN10Base157ce0D2Ev": "0x156370",
+            "_Z7UbiFreePv": "0x37030"
+          },
+          "got_bindings": {
+            "_ZTVN11ubiservices21JobRetryWebSocketInitE": {
+              "cell": "0x18ed588",
+              "pointee": "0x17c6f38"
+            },
+            "_ZTV14Nested22531585": {
+              "cell": "0x18ec7c0",
+              "pointee": "0x1845f68"
+            }
+          }
+        },
+        {
+          "address": "0x157d70",
+          "size": 188,
+          "symbol": "_ZN11ubiservices22JobTerminateConnectionD2Ev",
+          "target_sha256": "da26802579cebea7fbe82627a63abd1f11722fc27c6e7ad3bfbfd893190ba75d",
+          "bindings": {
+            "_ZN18NestedBase22536961D2Ev": "0x792d0",
+            "_ZN10Base157e30D2Ev": "0x156370"
+          },
+          "got_bindings": {
+            "_ZTVN11ubiservices22JobTerminateConnectionE": {
+              "cell": "0x18ed308",
+              "pointee": "0x17c6fa8"
+            },
+            "_ZTV14Nested22536961": {
+              "cell": "0x18ec7c0",
+              "pointee": "0x1845f68"
+            }
+          }
+        },
+        {
+          "address": "0x157e30",
+          "size": 196,
+          "symbol": "_ZN11ubiservices22JobTerminateConnectionD0Ev",
+          "target_sha256": "cfaea2ae7996c3142490dd6be39bd982ccce53643db749ca33412f9614eab147",
+          "bindings": {
+            "_ZN18NestedBase22536961D2Ev": "0x792d0",
+            "_ZN10Base157e30D2Ev": "0x156370",
+            "_Z7UbiFreePv": "0x37030"
+          },
+          "got_bindings": {
+            "_ZTVN11ubiservices22JobTerminateConnectionE": {
+              "cell": "0x18ed308",
+              "pointee": "0x17c6fa8"
+            },
+            "_ZTV14Nested22536961": {
+              "cell": "0x18ec7c0",
+              "pointee": "0x1845f68"
+            }
+          }
+        },
+        {
+          "address": "0x15a090",
+          "size": 160,
+          "symbol": "_ZN11ubiservices29JobRequestOwnUserLocalizationD2Ev",
+          "target_sha256": "4713a01c8a59b2a9db5a191ed12b9fe5260054344c32307936842960830d3b0f",
+          "bindings": {
+            "_ZN10Base15a130D2Ev": "0x16bd80"
+          },
+          "got_bindings": {
+            "_ZTVN11ubiservices29JobRequestOwnUserLocalizationE": {
+              "cell": "0x18ed520",
+              "pointee": "0x17c78c8"
+            }
+          }
+        },
+        {
+          "address": "0x15a130",
+          "size": 168,
+          "symbol": "_ZN11ubiservices29JobRequestOwnUserLocalizationD0Ev",
+          "target_sha256": "01edb4ea5f583e59e30113d38a62575d80a92dcbf7a77f922fd2c9001387024c",
+          "bindings": {
+            "_ZN10Base15a130D2Ev": "0x16bd80",
+            "_Z7UbiFreePv": "0x37030"
+          },
+          "got_bindings": {
+            "_ZTVN11ubiservices29JobRequestOwnUserLocalizationE": {
+              "cell": "0x18ed520",
+              "pointee": "0x17c78c8"
+            }
+          }
+        },
+        {
+          "address": "0x15ad40",
+          "size": 276,
+          "symbol": "_ZN11ubiservices26HttpEngineConfigCommonDataD2Ev",
+          "target_sha256": "bbe5974532ed5a160621006a94ee485d35ceaf0a5f10391560ee6a0df97ee05d",
+          "bindings": {},
+          "got_bindings": {
+            "_ZTVN11ubiservices26HttpEngineConfigCommonDataE": {
+              "cell": "0x18eca50",
+              "pointee": "0x17c4bc8"
+            }
+          }
+        },
+        {
+          "address": "0x15ae60",
+          "size": 272,
+          "symbol": "_ZN11ubiservices26HttpEngineConfigCommonDataD0Ev",
+          "target_sha256": "f936f506c9855d533586372296e4a36a5a681973f1617e8b5c915c9603ad870d",
+          "bindings": {
+            "_Z7UbiFreePv": "0x37030"
+          },
+          "got_bindings": {
+            "_ZTVN11ubiservices26HttpEngineConfigCommonDataE": {
+              "cell": "0x18eca50",
+              "pointee": "0x17c4bc8"
+            }
+          }
+        },
+        {
+          "address": "0x15b1b0",
+          "size": 140,
+          "symbol": "_ZN11ubiservices16JobSendRemoteLogD2Ev",
+          "target_sha256": "e8179c677b33f0baea5a7a7eecfc0bf1340fa7d3fe6981b7206a4a5525ec7fb8",
+          "bindings": {
+            "_ZN8LcMemberILm22750209EED1Ev": "0x71b90",
+            "_Z7UbiFreePv": "0x37030",
+            "_ZN10Base15b240D2Ev": "0x156370"
+          },
+          "got_bindings": {
+            "_ZTVN11ubiservices16JobSendRemoteLogE": {
+              "cell": "0x18ecae8",
+              "pointee": "0x17c4de0"
+            }
+          }
+        },
+        {
+          "address": "0x15b240",
+          "size": 148,
+          "symbol": "_ZN11ubiservices16JobSendRemoteLogD0Ev",
+          "target_sha256": "54b7fe4d30a57afb89406f007078ae4fd8613c231e37f7e06d4c4d133b6b2e54",
+          "bindings": {
+            "_ZN8LcMemberILm22750209EED1Ev": "0x71b90",
+            "_Z7UbiFreePv": "0x37030",
+            "_ZN10Base15b240D2Ev": "0x156370"
+          },
+          "got_bindings": {
+            "_ZTVN11ubiservices16JobSendRemoteLogE": {
+              "cell": "0x18ecae8",
+              "pointee": "0x17c4de0"
+            }
+          }
+        },
+        {
+          "address": "0x15b510",
+          "size": 36,
+          "symbol": "_ZN11ubiservices6String15InternalContentD2Ev",
+          "target_sha256": "676b9312ba558629079d01dc15e3f0dbf81781363a7b97e834a90beeb04e6055",
+          "bindings": {
+            "_Z7UbiFreePv": "0x37030"
+          },
+          "got_bindings": {
+            "_ZTVN11ubiservices6String15InternalContentE": {
+              "cell": "0x18ec818",
+              "pointee": "0x17c51f0"
+            }
+          }
+        },
+        {
+          "address": "0x15b580",
+          "size": 160,
+          "symbol": "_ZN11ubiservices25WebSocketHandshakeRequestD2Ev",
+          "target_sha256": "08ea0a7132b900ac032c09ec7692c07a0e517c8bd82995d06dedf2def4ad6198",
+          "bindings": {
+            "_ZN10Base15b620D2Ev": "0xc3520"
+          },
+          "got_bindings": {
+            "_ZTVN11ubiservices25WebSocketHandshakeRequestE": {
+              "cell": "0x18ecb50",
+              "pointee": "0x17c5218"
+            }
+          }
+        },
+        {
+          "address": "0x15b620",
+          "size": 168,
+          "symbol": "_ZN11ubiservices25WebSocketHandshakeRequestD0Ev",
+          "target_sha256": "b58303d0b0b6aa0da5e52fa1fa939a4c379f6ae950b5cf57f5bc38cceef47149",
+          "bindings": {
+            "_ZN10Base15b620D2Ev": "0xc3520",
+            "_Z7UbiFreePv": "0x37030"
+          },
+          "got_bindings": {
+            "_ZTVN11ubiservices25WebSocketHandshakeRequestE": {
+              "cell": "0x18ecb50",
+              "pointee": "0x17c5218"
+            }
+          }
+        },
+        {
+          "address": "0x15c000",
+          "size": 288,
+          "symbol": "_ZN11ubiservices17JobGetSessionInfoD2Ev",
+          "target_sha256": "688b1f8f46d771bfe9354c8daa80c384e6ab2d2afa4020824f92c047e680a09b",
+          "bindings": {
+            "_ZN10Base15c120D2Ev": "0x183280"
+          },
+          "got_bindings": {
+            "_ZTVN11ubiservices17JobGetSessionInfoE": {
+              "cell": "0x18ecee0",
+              "pointee": "0x17c58d8"
+            },
+            "_ZTV14Nested22811138": {
+              "cell": "0x18ecee8",
+              "pointee": "0x1846200"
+            }
+          }
+        },
+        {
+          "address": "0x15c120",
+          "size": 296,
+          "symbol": "_ZN11ubiservices17JobGetSessionInfoD0Ev",
+          "target_sha256": "6377b4c3333018345aabc3441e73cdc66102c81b68263d32a4c43985834a5d42",
+          "bindings": {
+            "_ZN10Base15c120D2Ev": "0x183280",
+            "_Z7UbiFreePv": "0x37030"
+          },
+          "got_bindings": {
+            "_ZTVN11ubiservices17JobGetSessionInfoE": {
+              "cell": "0x18ecee0",
+              "pointee": "0x17c58d8"
+            },
+            "_ZTV14Nested22811138": {
+              "cell": "0x18ecee8",
+              "pointee": "0x1846200"
+            }
+          }
+        },
+        {
+          "address": "0x15c7c0",
+          "size": 272,
+          "symbol": "_ZN11ubiservices44JobUpdateSessionInfoWithLatestFirstPartyDataD2Ev",
+          "target_sha256": "82190750fd50dfdc2f3a57228cbe8337390a50f1bd5dc86d01d119e0255d8174",
+          "bindings": {
+            "_ZN18NestedBase22842626D2Ev": "0x792d0",
+            "_ZN18NestedBase22842628D2Ev": "0x792d0",
+            "_ZN10Base15c8d0D2Ev": "0x156370"
+          },
+          "got_bindings": {
+            "_ZTVN11ubiservices44JobUpdateSessionInfoWithLatestFirstPartyDataE": {
+              "cell": "0x18ecf90",
+              "pointee": "0x17c5ae8"
+            },
+            "_ZTV14Nested22842626": {
+              "cell": "0x18ece58",
+              "pointee": "0x17ca1e8"
+            },
+            "_ZTV14Nested22842628": {
+              "cell": "0x18ec7c0",
+              "pointee": "0x1845f68"
+            }
+          }
+        },
+        {
+          "address": "0x15c8d0",
+          "size": 280,
+          "symbol": "_ZN11ubiservices44JobUpdateSessionInfoWithLatestFirstPartyDataD0Ev",
+          "target_sha256": "ac003194f90b6636f9599b1c0ba54dcf00e59904a4571bc24888bbe6ac73e106",
+          "bindings": {
+            "_ZN18NestedBase22842626D2Ev": "0x792d0",
+            "_ZN18NestedBase22842628D2Ev": "0x792d0",
+            "_ZN10Base15c8d0D2Ev": "0x156370",
+            "_Z7UbiFreePv": "0x37030"
+          },
+          "got_bindings": {
+            "_ZTVN11ubiservices44JobUpdateSessionInfoWithLatestFirstPartyDataE": {
+              "cell": "0x18ecf90",
+              "pointee": "0x17c5ae8"
+            },
+            "_ZTV14Nested22842626": {
+              "cell": "0x18ece58",
+              "pointee": "0x17ca1e8"
+            },
+            "_ZTV14Nested22842628": {
+              "cell": "0x18ec7c0",
+              "pointee": "0x1845f68"
+            }
+          }
+        },
+        {
+          "address": "0x15c9f0",
+          "size": 332,
+          "symbol": "_ZN11ubiservices19SessionInfoBaseImplD2Ev",
+          "target_sha256": "9ea0d742341517d0bf1a2be2d5e43e6f42fdb17ce2a04075d74e449d4a6244f5",
+          "bindings": {},
+          "got_bindings": {
+            "_ZTVN11ubiservices19SessionInfoBaseImplE": {
+              "cell": "0x18ecfa8",
+              "pointee": "0x17c5d50"
+            }
+          }
+        },
+        {
+          "address": "0x15d040",
+          "size": 160,
+          "symbol": "_ZN11ubiservices16ClubNotificationD0Ev",
+          "target_sha256": "5d6e8dcfef40ed97aec6531152ddcc19872b639ff65bef24a724d3a1424b99ed",
+          "bindings": {
+            "_Z7UbiFreePv": "0x37030"
+          },
+          "got_bindings": {
+            "_ZTVN11ubiservices16ClubNotificationE": {
+              "cell": "0x18ed0a0",
+              "pointee": "0x17c5f68"
+            }
+          }
+        },
+        {
+          "address": "0x15d1a0",
+          "size": 56,
+          "symbol": "_ZN11ubiservices15EventConfigInfoD0Ev",
+          "target_sha256": "fc55cdb0d3220212f72e8c61d75e827dd1ec6a316c7c1551e5ef832800650a34",
+          "bindings": {
+            "_ZN6LcTreeILm22878721EE7DestroyEPS0_Pv": "0x164ec0",
+            "_Z7UbiFreePv": "0x37030"
+          },
+          "got_bindings": {
+            "_ZTVN11ubiservices15EventConfigInfoE": {
+              "cell": "0x18ed1f0",
+              "pointee": "0x17c6238"
+            }
+          }
+        },
+        {
+          "address": "0x15d6e0",
+          "size": 104,
+          "symbol": "_ZN11ubiservices20JobQueueUnsentEventsD2Ev",
+          "target_sha256": "496d8a9f659c78c988c52b3eef7a8f8381cf616f442f259266f202707cf0efd7",
+          "bindings": {
+            "_ZN10Base15d750D2Ev": "0x156370"
+          },
+          "got_bindings": {
+            "_ZTVN11ubiservices20JobQueueUnsentEventsE": {
+              "cell": "0x18ed200",
+              "pointee": "0x17c6388"
+            }
+          }
+        },
+        {
+          "address": "0x15d750",
+          "size": 112,
+          "symbol": "_ZN11ubiservices20JobQueueUnsentEventsD0Ev",
+          "target_sha256": "142c8555331d35e170b8f80ac00965a09cc85e4e302623b7c889790586c8164f",
+          "bindings": {
+            "_ZN10Base15d750D2Ev": "0x156370",
+            "_Z7UbiFreePv": "0x37030"
+          },
+          "got_bindings": {
+            "_ZTVN11ubiservices20JobQueueUnsentEventsE": {
+              "cell": "0x18ed200",
+              "pointee": "0x17c6388"
+            }
+          }
+        },
+        {
+          "address": "0x15dbc0",
+          "size": 160,
+          "symbol": "_ZN11ubiservices18FriendNotificationD0Ev",
+          "target_sha256": "dac0eab58b0207045735e371e0c95c0a52717060bb47687f3490c15a071faa6d",
+          "bindings": {
+            "_Z7UbiFreePv": "0x37030"
+          },
+          "got_bindings": {
+            "_ZTVN11ubiservices18FriendNotificationE": {
+              "cell": "0x18ed320",
+              "pointee": "0x17c6878"
+            }
+          }
+        },
+        {
+          "address": "0x15e670",
+          "size": 244,
+          "symbol": "_ZN11ubiservices14JobRequestNewsD2Ev",
+          "target_sha256": "a152448fb54fd1d3e15c8dbc9e2f773fc94f234583b20006588e89ad8dcd2cb6",
+          "bindings": {
+            "_ZN18NestedBase22968067D2Ev": "0x792d0",
+            "_ZN10Base15e770D2Ev": "0x197710"
+          },
+          "got_bindings": {
+            "_ZTVN11ubiservices14JobRequestNewsE": {
+              "cell": "0x18ed4f0",
+              "pointee": "0x17c6de8"
+            },
+            "_ZTV14Nested22968067": {
+              "cell": "0x18ed080",
+              "pointee": "0x17ca080"
+            }
+          }
+        },
+        {
+          "address": "0x15e770",
+          "size": 252,
+          "symbol": "_ZN11ubiservices14JobRequestNewsD0Ev",
+          "target_sha256": "34871527e6b1e3c6823e9fa47f8851cfbbd9ceda017763e807eae06b1c0135b0",
+          "bindings": {
+            "_ZN18NestedBase22968067D2Ev": "0x792d0",
+            "_ZN10Base15e770D2Ev": "0x197710",
+            "_Z7UbiFreePv": "0x37030"
+          },
+          "got_bindings": {
+            "_ZTVN11ubiservices14JobRequestNewsE": {
+              "cell": "0x18ed4f0",
+              "pointee": "0x17c6de8"
+            },
+            "_ZTV14Nested22968067": {
+              "cell": "0x18ed080",
+              "pointee": "0x17ca080"
+            }
+          }
+        },
+        {
+          "address": "0x15ed20",
+          "size": 272,
+          "symbol": "_ZN11ubiservices21JobInitiateConnectionD2Ev",
+          "target_sha256": "e133196eb809f2c0f780ff94f12ffa085306d3bfe936ef86f6a1ee393f333358",
+          "bindings": {
+            "_ZN18NestedBase22995713D2Ev": "0x792d0",
+            "_ZN18NestedBase22995715D2Ev": "0x792d0",
+            "_ZN10Base15ee30D2Ev": "0x156370"
+          },
+          "got_bindings": {
+            "_ZTVN11ubiservices21JobInitiateConnectionE": {
+              "cell": "0x18ed540",
+              "pointee": "0x17c6e58"
+            },
+            "_ZTV14Nested22995713": {
+              "cell": "0x18ec7c0",
+              "pointee": "0x1845f68"
+            },
+            "_ZTV14Nested22995715": {
+              "cell": "0x18ecbb8",
+              "pointee": "0x17c9ba8"
+            }
+          }
+        },
+        {
+          "address": "0x15ee30",
+          "size": 280,
+          "symbol": "_ZN11ubiservices21JobInitiateConnectionD0Ev",
+          "target_sha256": "e450ceb05bd69d852d67fe71121b6a4b966da6ba016a85f913e814b6839d014d",
+          "bindings": {
+            "_ZN18NestedBase22995713D2Ev": "0x792d0",
+            "_ZN18NestedBase22995715D2Ev": "0x792d0",
+            "_ZN10Base15ee30D2Ev": "0x156370",
+            "_Z7UbiFreePv": "0x37030"
+          },
+          "got_bindings": {
+            "_ZTVN11ubiservices21JobInitiateConnectionE": {
+              "cell": "0x18ed540",
+              "pointee": "0x17c6e58"
+            },
+            "_ZTV14Nested22995713": {
+              "cell": "0x18ec7c0",
+              "pointee": "0x1845f68"
+            },
+            "_ZTV14Nested22995715": {
+              "cell": "0x18ecbb8",
+              "pointee": "0x17c9ba8"
+            }
+          }
+        },
+        {
+          "address": "0x15ef50",
+          "size": 104,
+          "symbol": "_ZN11ubiservices19JobManageConnectionD2Ev",
+          "target_sha256": "c79f0514709f71983ced06d2bff5e167dc8cda448e37a049fbc3369cfe38c37f",
+          "bindings": {
+            "_ZN10Base15efc0D2Ev": "0x156370"
+          },
+          "got_bindings": {
+            "_ZTVN11ubiservices19JobManageConnectionE": {
+              "cell": "0x18ed568",
+              "pointee": "0x17c6ec8"
+            }
+          }
+        },
+        {
+          "address": "0x15efc0",
+          "size": 112,
+          "symbol": "_ZN11ubiservices19JobManageConnectionD0Ev",
+          "target_sha256": "5ede08a89c320e681bf955154e4bfe621963c55ac88bca2726450adc7f1fa6ba",
+          "bindings": {
+            "_ZN10Base15efc0D2Ev": "0x156370",
+            "_Z7UbiFreePv": "0x37030"
+          },
+          "got_bindings": {
+            "_ZTVN11ubiservices19JobManageConnectionE": {
+              "cell": "0x18ed568",
+              "pointee": "0x17c6ec8"
+            }
+          }
+        },
+        {
+          "address": "0x15f030",
+          "size": 328,
+          "symbol": "_ZN11ubiservices18NotificationCustomD0Ev",
+          "target_sha256": "8ca3048e48fe8bed3ac01c521da9e1c53937cc46fae56a300a29c0dc5d5544cf",
+          "bindings": {
+            "_Z7UbiFreePv": "0x37030"
+          },
+          "got_bindings": {
+            "_ZTVN11ubiservices18NotificationCustomE": {
+              "cell": "0x18ed580",
+              "pointee": "0x17c70d8"
+            }
+          }
+        },
+        {
+          "address": "0x15f180",
+          "size": 160,
+          "symbol": "_ZN11ubiservices23NotificationUbiServicesD0Ev",
+          "target_sha256": "1aa4e557100c285883bce117740e094a3febfcfa751fda9bdcff6a651672c7d7",
+          "bindings": {
+            "_Z7UbiFreePv": "0x37030"
+          },
+          "got_bindings": {
+            "_ZTVN11ubiservices23NotificationUbiServicesE": {
+              "cell": "0x18ecc88",
+              "pointee": "0x17c7100"
+            }
+          }
+        },
+        {
+          "address": "0x168600",
+          "size": 32,
+          "symbol": "_ZN11ubiservices15PopulationCacheD2Ev",
+          "target_sha256": "a24084533756c483184ce67823e4e5e08e014b4fa8568ec4588ed766dab55ea9",
+          "bindings": {
+            "_ZN6LcTreeILm23618049EE7DestroyEPS0_Pv": "0x168020"
+          },
+          "got_bindings": {
+            "_ZTVN11ubiservices15PopulationCacheE": {
+              "cell": "0x18ed7d0",
+              "pointee": "0x17c9f80"
+            }
+          }
+        },
+        {
+          "address": "0x168620",
+          "size": 56,
+          "symbol": "_ZN11ubiservices15PopulationCacheD0Ev",
+          "target_sha256": "d88da592bf417ba3f36848ffd7e7e32e8abfa57eb424f14c4ce49b17865c08e1",
+          "bindings": {
+            "_ZN6LcTreeILm23618049EE7DestroyEPS0_Pv": "0x168020",
+            "_Z7UbiFreePv": "0x37030"
+          },
+          "got_bindings": {
+            "_ZTVN11ubiservices15PopulationCacheE": {
+              "cell": "0x18ed7d0",
+              "pointee": "0x17c9f80"
+            }
+          }
+        },
+        {
+          "address": "0x16c400",
+          "size": 32,
+          "symbol": "_ZN11Class16c400D2Ev",
+          "target_sha256": "498aabf512c0e3628faf55d0dd793d8bb4f06aef1cc09ffd2ce3ca4bf7e314aa",
+          "bindings": {
+            "_ZN6LcTreeILm23871489EE7DestroyEPS0_Pv": "0x163b20"
+          },
+          "got_bindings": {
+            "_ZTV11Class16c400": {
+              "cell": "0x18ec7b0",
+              "pointee": "0x17caa70"
+            }
+          }
+        },
+        {
+          "address": "0x16c420",
+          "size": 56,
+          "symbol": "_ZN11Class16c420D0Ev",
+          "target_sha256": "f7c41887048543a85ee37548eef1f45609e9796e29d0f6d86982a93679c95217",
+          "bindings": {
+            "_ZN6LcTreeILm23872001EE7DestroyEPS0_Pv": "0x163b20",
+            "_Z7UbiFreePv": "0x37030"
+          },
+          "got_bindings": {
+            "_ZTV11Class16c420": {
+              "cell": "0x18ec7b0",
+              "pointee": "0x17caa70"
+            }
+          }
+        },
+        {
+          "address": "0x181ae0",
+          "size": 32,
+          "symbol": "_ZN11Class181ae0D2Ev",
+          "target_sha256": "b2d8f960cc0288a307b3ed89ce3066709547d92f452bfe2dc227b81a83137815",
+          "bindings": {
+            "_ZN6LcTreeILm25275905EE7DestroyEPS0_Pv": "0x162f60"
+          },
+          "got_bindings": {
+            "_ZTV11Class181ae0": {
+              "cell": "0x18ecd08",
+              "pointee": "0x17caf80"
+            }
+          }
+        },
+        {
+          "address": "0x181b00",
+          "size": 56,
+          "symbol": "_ZN11Class181b00D0Ev",
+          "target_sha256": "cda63987e1884c6a76fc9d79969846ba355f86dc259c8aca798a376ef9ea3368",
+          "bindings": {
+            "_ZN6LcTreeILm25276417EE7DestroyEPS0_Pv": "0x162f60",
+            "_Z7UbiFreePv": "0x37030"
+          },
+          "got_bindings": {
+            "_ZTV11Class181b00": {
+              "cell": "0x18ecd08",
+              "pointee": "0x17caf80"
+            }
+          }
+        },
+        {
+          "address": "0x181e50",
+          "size": 92,
+          "symbol": "_ZN11Class181e50D2Ev",
+          "target_sha256": "055a24b1e18a0efcf26c35168e98134aaed7d748f301ac8645cf553b894f4a82",
+          "bindings": {},
+          "got_bindings": {
+            "_ZTV11Class181e50": {
+              "cell": "0x18ece60",
+              "pointee": "0x17cb038"
+            },
+            "_ZTV14Nested25289985": {
+              "cell": "0x18ec840",
+              "pointee": "0x1845b98"
+            }
+          }
+        },
+        {
+          "address": "0x181eb0",
+          "size": 120,
+          "symbol": "_ZN11Class181eb0D0Ev",
+          "target_sha256": "c3289458e897194c4599cdbfbf513357f9345fc938c8b52e1c3258141a1e3167",
+          "bindings": {
+            "_Z7UbiFreePv": "0x37030"
+          },
+          "got_bindings": {
+            "_ZTV11Class181eb0": {
+              "cell": "0x18ece60",
+              "pointee": "0x17cb038"
+            },
+            "_ZTV14Nested25291521": {
+              "cell": "0x18ec840",
+              "pointee": "0x1845b98"
+            }
+          }
+        },
+        {
+          "address": "0x192d20",
+          "size": 32,
+          "symbol": "_ZN11Class192d20D2Ev",
+          "target_sha256": "3567c3b5cf1c2b7141f3ba7bd72ba4a234a4cdfaa89907ff3057f00bf47cd724",
+          "bindings": {
+            "_ZN6LcTreeILm26399233EE7DestroyEPS0_Pv": "0x169680"
+          },
+          "got_bindings": {
+            "_ZTV11Class192d20": {
+              "cell": "0x18ed3c0",
+              "pointee": "0x17cb880"
+            }
+          }
+        },
+        {
+          "address": "0x192d40",
+          "size": 56,
+          "symbol": "_ZN11Class192d40D0Ev",
+          "target_sha256": "5d96c91d153181439630a85f0c6962718686d0566c6ed32e6cdee43bd080825d",
+          "bindings": {
+            "_ZN6LcTreeILm26399745EE7DestroyEPS0_Pv": "0x169680",
+            "_Z7UbiFreePv": "0x37030"
+          },
+          "got_bindings": {
+            "_ZTV11Class192d40": {
+              "cell": "0x18ed3c0",
+              "pointee": "0x17cb880"
+            }
+          }
+        },
+        {
+          "address": "0x194330",
+          "size": 32,
+          "symbol": "_ZN11Class194330D2Ev",
+          "target_sha256": "09d874c104feb484eb10d12242913ee32f1c5de8f9d971997b627c7af6efabab",
+          "bindings": {
+            "_ZN6LcTreeILm26489601EE7DestroyEPS0_Pv": "0x1688a0"
+          },
+          "got_bindings": {
+            "_ZTV11Class194330": {
+              "cell": "0x18ed430",
+              "pointee": "0x17cb8f8"
+            }
+          }
+        },
+        {
+          "address": "0x194350",
+          "size": 56,
+          "symbol": "_ZN11Class194350D0Ev",
+          "target_sha256": "f57d31339f7d933c11b23ae5c2f6cb62a2187214f94e3d92e6d172674370b7c3",
+          "bindings": {
+            "_ZN6LcTreeILm26490113EE7DestroyEPS0_Pv": "0x1688a0",
+            "_Z7UbiFreePv": "0x37030"
+          },
+          "got_bindings": {
+            "_ZTV11Class194350": {
+              "cell": "0x18ed430",
+              "pointee": "0x17cb8f8"
+            }
+          }
+        },
+        {
+          "address": "0x197e00",
+          "size": 164,
+          "symbol": "_ZN11Class197e00D2Ev",
+          "target_sha256": "75958a34241a25da244baecde16de1adfeab23c7bf87358984cb28b6fc56a9cc",
+          "bindings": {},
+          "got_bindings": {
+            "_ZTV11Class197e00": {
+              "cell": "0x18ed510",
+              "pointee": "0x17cbb58"
+            }
+          }
+        },
+        {
+          "address": "0x197eb0",
+          "size": 160,
+          "symbol": "_ZN11Class197eb0D0Ev",
+          "target_sha256": "df5663be1278c70512b6534ba0ee2ecb94259bfce7d01a74f9a81b31b371ebe6",
+          "bindings": {
+            "_Z7UbiFreePv": "0x37030"
+          },
+          "got_bindings": {
+            "_ZTV11Class197eb0": {
+              "cell": "0x18ed510",
+              "pointee": "0x17cbb58"
+            }
+          }
+        },
+        {
+          "address": "0x2621c0",
+          "size": 68,
+          "symbol": "_ZN5storm28NetPropertyDeserializationOpD2Ev",
+          "target_sha256": "0026a21ea10de8451b19d760f94912821bcb24caa7700dd3c480c089d5118aeb",
+          "bindings": {
+            "_Z9StormFreePvPKci": "0x56ca00"
+          },
+          "got_bindings": {
+            "_ZTVN5storm28NetPropertyDeserializationOpE": {
+              "cell": "0x18edfa8",
+              "pointee": "0x17f4b70"
+            },
+            "_ZTV14Nested43143425": {
+              "cell": "0x18edf78",
+              "pointee": "0x1833ad8"
+            }
+          },
+          "literals": {
+            "00": "0x1326e41"
+          }
+        },
+        {
+          "address": "0x274780",
+          "size": 156,
+          "symbol": "_ZN5storm4echo6object8outEvent14ReplicaMessageD0Ev",
+          "target_sha256": "6cf74af75148447b95de213bc804670d896be5472910772383204b94d707f243",
+          "bindings": {
+            "_ZN13LcSharedCount11ReleaseWeakEv": "0xfa4310",
+            "_Z9StormFreePvPKci": "0x56ca00"
+          },
+          "got_bindings": {
+            "_ZTVN5storm4echo6object8outEvent14ReplicaMessageE": {
+              "cell": "0x18edf58",
+              "pointee": "0x17f0cf8"
+            },
+            "_ZTV13Level274780_1": {
+              "cell": "0x18ee008",
+              "pointee": "0x17f0620"
+            }
+          },
+          "literals": {
+            "00": "0x1326e41"
+          }
+        },
+        {
+          "address": "0x275060",
+          "size": 148,
+          "symbol": "_ZN5storm4echo6object8outEvent13MasterUnicastD2Ev",
+          "target_sha256": "38793ec71d91b718f8d10ae387415ed6d7c3951adb1899a134e43d70773805ec",
+          "bindings": {
+            "_ZN13LcSharedCount11ReleaseWeakEv": "0xfa4310"
+          },
+          "got_bindings": {
+            "_ZTVN5storm4echo6object8outEvent13MasterUnicastE": {
+              "cell": "0x18edf58",
+              "pointee": "0x17f0cf8"
+            },
+            "_ZTV13Level275a20_1": {
+              "cell": "0x18ee008",
+              "pointee": "0x17f0620"
+            }
+          }
+        },
+        {
+          "address": "0x275100",
+          "size": 156,
+          "symbol": "_ZN5storm4echo6object8outEvent15LoopbackMessageD0Ev",
+          "target_sha256": "fda844969b2618481bdad40c5ce2f50c5187bb4e928900433be4abdc0b22e2b8",
+          "bindings": {
+            "_ZN13LcSharedCount11ReleaseWeakEv": "0xfa4310",
+            "_Z9StormFreePvPKci": "0x56ca00"
+          },
+          "got_bindings": {
+            "_ZTVN5storm4echo6object8outEvent15LoopbackMessageE": {
+              "cell": "0x18edf58",
+              "pointee": "0x17f0cf8"
+            },
+            "_ZTV13Level275100_1": {
+              "cell": "0x18ee008",
+              "pointee": "0x17f0620"
+            }
+          },
+          "literals": {
+            "00": "0x1326e41"
+          }
+        },
+        {
+          "address": "0x275590",
+          "size": 156,
+          "symbol": "_ZN5storm4echo6object8outEvent15MasterBroadcastD0Ev",
+          "target_sha256": "2bbd7f67ee5feb2183ff646a65e187abb29de6d5cd00f7f6c4366bf8ca0a8420",
+          "bindings": {
+            "_ZN13LcSharedCount11ReleaseWeakEv": "0xfa4310",
+            "_Z9StormFreePvPKci": "0x56ca00"
+          },
+          "got_bindings": {
+            "_ZTVN5storm4echo6object8outEvent15MasterBroadcastE": {
+              "cell": "0x18edf58",
+              "pointee": "0x17f0cf8"
+            },
+            "_ZTV13Level275590_1": {
+              "cell": "0x18ee008",
+              "pointee": "0x17f0620"
+            }
+          },
+          "literals": {
+            "00": "0x1326e41"
+          }
+        },
+        {
+          "address": "0x275a20",
+          "size": 156,
+          "symbol": "_ZN5storm4echo6object8outEvent13MasterUnicastD0Ev",
+          "target_sha256": "383c6c633889e161bffb566b1974b79897fe85ee2b077200141b93ab5b0b9963",
+          "bindings": {
+            "_ZN13LcSharedCount11ReleaseWeakEv": "0xfa4310",
+            "_Z9StormFreePvPKci": "0x56ca00"
+          },
+          "got_bindings": {
+            "_ZTVN5storm4echo6object8outEvent13MasterUnicastE": {
+              "cell": "0x18edf58",
+              "pointee": "0x17f0cf8"
+            },
+            "_ZTV13Level275a20_1": {
+              "cell": "0x18ee008",
+              "pointee": "0x17f0620"
+            }
+          },
+          "literals": {
+            "00": "0x1326e41"
+          }
+        },
+        {
+          "address": "0x2794c0",
+          "size": 152,
+          "symbol": "_ZN5storm4echo6object8outEvent4ScanD2Ev",
+          "target_sha256": "5c6847b74499a2817032cdd9fb1f8aa2d4fd4fdcdd6c322f32b2ab5054376576",
+          "bindings": {
+            "_Z9StormFreePvPKci": "0x56ca00",
+            "_ZN13LcSharedCount11ReleaseWeakEv": "0xfa4310"
+          },
+          "got_bindings": {
+            "_ZTVN5storm4echo6object8outEvent4ScanE": {
+              "cell": "0x18ee090",
+              "pointee": "0x17f19e8"
+            },
+            "_ZTV13Level279560_1": {
+              "cell": "0x18ee008",
+              "pointee": "0x17f0620"
+            }
+          },
+          "literals": {
+            "00": "0x1326e41"
+          }
+        },
+        {
+          "address": "0x279560",
+          "size": 160,
+          "symbol": "_ZN5storm4echo6object8outEvent4ScanD0Ev",
+          "target_sha256": "b48e56817b860578104dc006f462ad99138f4888c8106c1628524bb2c34168c9",
+          "bindings": {
+            "_Z9StormFreePvPKci": "0x56ca00",
+            "_ZN13LcSharedCount11ReleaseWeakEv": "0xfa4310"
+          },
+          "got_bindings": {
+            "_ZTVN5storm4echo6object8outEvent4ScanE": {
+              "cell": "0x18ee090",
+              "pointee": "0x17f19e8"
+            },
+            "_ZTV13Level279560_1": {
+              "cell": "0x18ee008",
+              "pointee": "0x17f0620"
+            }
+          },
+          "literals": {
+            "00": "0x1326e41"
+          }
+        },
+        {
+          "address": "0x27b490",
+          "size": 64,
+          "symbol": "_ZN5storm4echo9voicechat25SessionChatterGoneMessageD0Ev",
+          "target_sha256": "f7157681038edb8e51dfc1784fc6bd188697525a87a3ddf0e8575f6a0fa5135d",
+          "bindings": {
+            "_ZN8LcMemberILm41634049EED1Ev": "0x576000",
+            "_Z9StormFreePvPKci": "0x56ca00"
+          },
+          "got_bindings": {
+            "_ZTVN5storm4echo9voicechat25SessionChatterGoneMessageE": {
+              "cell": "0x18eee30",
+              "pointee": "0x17ef9f8"
+            }
+          },
+          "literals": {
+            "00": "0x1326e41"
+          }
+        },
+        {
+          "address": "0x27b8f0",
+          "size": 64,
+          "symbol": "_ZN5storm4echo9voicechat31SessionChatterDiscoveredMessageD0Ev",
+          "target_sha256": "486f528bdffa5d1770de63869c880ef4528232c19a03135ab0324e3827f27083",
+          "bindings": {
+            "_ZN8LcMemberILm41651969EED1Ev": "0x576000",
+            "_Z9StormFreePvPKci": "0x56ca00"
+          },
+          "got_bindings": {
+            "_ZTVN5storm4echo9voicechat31SessionChatterDiscoveredMessageE": {
+              "cell": "0x18eee58",
+              "pointee": "0x17efa88"
+            }
+          },
+          "literals": {
+            "00": "0x1326e41"
+          }
+        },
+        {
+          "address": "0x2800d0",
+          "size": 108,
+          "symbol": "_ZN5storm4echo3lan8outEvent17DiscoveredSessionD0Ev",
+          "target_sha256": "1f342723c01e9e61fee58f6039614029d4f7b5d51006d5bb40125fc69af21bf2",
+          "bindings": {
+            "_Z9StormFreePvPKci": "0x56ca00"
+          },
+          "got_bindings": {
+            "_ZTVN5storm4echo3lan8outEvent17DiscoveredSessionE": {
+              "cell": "0x18ede98",
+              "pointee": "0x17f03e0"
+            }
+          },
+          "literals": {
+            "00": "0x1326e41"
+          }
+        },
+        {
+          "address": "0x2805e0",
+          "size": 108,
+          "symbol": "_ZN5storm4echo3lan8outEvent15DiscoveredGroupD0Ev",
+          "target_sha256": "df9078df5ee329a88ed415bea7774f0495549f02e28c4fe3c4a21d1f1a369e89",
+          "bindings": {
+            "_Z9StormFreePvPKci": "0x56ca00"
+          },
+          "got_bindings": {
+            "_ZTVN5storm4echo3lan8outEvent15DiscoveredGroupE": {
+              "cell": "0x18edea0",
+              "pointee": "0x17f0470"
+            }
+          },
+          "literals": {
+            "00": "0x1326e41"
+          }
+        },
+        {
+          "address": "0x280fa0",
+          "size": 180,
+          "symbol": "_ZN5storm4echo6object8outEvent11ReadMementoD2Ev",
+          "target_sha256": "81f732d560ead5c7291406931ea9bf0d1cc7c27eeb0da1d3a9ae1c16c314970c",
+          "bindings": {
+            "_ZN13LcSharedCount11ReleaseWeakEv": "0xfa4310"
+          },
+          "got_bindings": {
+            "_ZTVN5storm4echo6object8outEvent11ReadMementoE": {
+              "cell": "0x18edfd8",
+              "pointee": "0x17f1040"
+            },
+            "_ZTV13Level281060_1": {
+              "cell": "0x18ee008",
+              "pointee": "0x17f0620"
+            }
+          }
+        },
+        {
+          "address": "0x281060",
+          "size": 188,
+          "symbol": "_ZN5storm4echo6object8outEvent11ReadMementoD0Ev",
+          "target_sha256": "18cf59a74c7c927898a1ea31696e9c95faaec0ec12dc4d399a7159f6a0c1fbf8",
+          "bindings": {
+            "_ZN13LcSharedCount11ReleaseWeakEv": "0xfa4310",
+            "_Z9StormFreePvPKci": "0x56ca00"
+          },
+          "got_bindings": {
+            "_ZTVN5storm4echo6object8outEvent11ReadMementoE": {
+              "cell": "0x18edfd8",
+              "pointee": "0x17f1040"
+            },
+            "_ZTV13Level281060_1": {
+              "cell": "0x18ee008",
+              "pointee": "0x17f0620"
+            }
+          },
+          "literals": {
+            "00": "0x1326e41"
+          }
+        },
+        {
+          "address": "0x281a00",
+          "size": 148,
+          "symbol": "_ZN5storm4echo6object8outEvent18MasterRoleAcquiredD2Ev",
+          "target_sha256": "51abb7a21cb8c077b8c21601c02f30fccd537dbd2e240610eb8f1f70b764274c",
+          "bindings": {
+            "_ZN13LcSharedCount11ReleaseWeakEv": "0xfa4310"
+          },
+          "got_bindings": {
+            "_ZTVN5storm4echo6object8outEvent18MasterRoleAcquiredE": {
+              "cell": "0x18ee018",
+              "pointee": "0x17f1178"
+            },
+            "_ZTV13Level281aa0_1": {
+              "cell": "0x18ee008",
+              "pointee": "0x17f0620"
+            }
+          }
+        },
+        {
+          "address": "0x281aa0",
+          "size": 156,
+          "symbol": "_ZN5storm4echo6object8outEvent18MasterRoleAcquiredD0Ev",
+          "target_sha256": "a0f6916f276182d35b44cb2f5d351f55f15df622abae6e4111141ab4e62f28c4",
+          "bindings": {
+            "_ZN13LcSharedCount11ReleaseWeakEv": "0xfa4310",
+            "_Z9StormFreePvPKci": "0x56ca00"
+          },
+          "got_bindings": {
+            "_ZTVN5storm4echo6object8outEvent18MasterRoleAcquiredE": {
+              "cell": "0x18ee018",
+              "pointee": "0x17f1178"
+            },
+            "_ZTV13Level281aa0_1": {
+              "cell": "0x18ee008",
+              "pointee": "0x17f0620"
+            }
+          },
+          "literals": {
+            "00": "0x1326e41"
+          }
+        },
+        {
+          "address": "0x281f00",
+          "size": 172,
+          "symbol": "_ZN5storm4echo6object8outEvent14GiveMasterRoleD2Ev",
+          "target_sha256": "f9e3bbf46a34586c03de512bb9f8db2348137efc34a4e5c910f7aa2728e1f7d4",
+          "bindings": {
+            "_ZN13LcSharedCount11ReleaseWeakEv": "0xfa4310"
+          },
+          "got_bindings": {
+            "_ZTVN5storm4echo6object8outEvent14GiveMasterRoleE": {
+              "cell": "0x18ee038",
+              "pointee": "0x17f13b8"
+            },
+            "_ZTV13Level281fb0_1": {
+              "cell": "0x18ee008",
+              "pointee": "0x17f0620"
+            }
+          }
+        },
+        {
+          "address": "0x281fb0",
+          "size": 180,
+          "symbol": "_ZN5storm4echo6object8outEvent14GiveMasterRoleD0Ev",
+          "target_sha256": "9ce4e467d78b699787d65b8a7ee3f754cb41652cb906adc4121cadd9650ed929",
+          "bindings": {
+            "_ZN13LcSharedCount11ReleaseWeakEv": "0xfa4310",
+            "_Z9StormFreePvPKci": "0x56ca00"
+          },
+          "got_bindings": {
+            "_ZTVN5storm4echo6object8outEvent14GiveMasterRoleE": {
+              "cell": "0x18ee038",
+              "pointee": "0x17f13b8"
+            },
+            "_ZTV13Level281fb0_1": {
+              "cell": "0x18ee008",
+              "pointee": "0x17f0620"
+            }
+          },
+          "literals": {
+            "00": "0x1326e41"
+          }
+        },
+        {
+          "address": "0x282450",
+          "size": 148,
+          "symbol": "_ZN5storm4echo6object8outEvent13MementoTooBigD2Ev",
+          "target_sha256": "e0a685912b6a822104745dbe5d877c0639bffa0d4fc8cab8bdbe84d5180987ed",
+          "bindings": {
+            "_ZN13LcSharedCount11ReleaseWeakEv": "0xfa4310"
+          },
+          "got_bindings": {
+            "_ZTVN5storm4echo6object8outEvent13MementoTooBigE": {
+              "cell": "0x18ee088",
+              "pointee": "0x17f1958"
+            },
+            "_ZTV13Level2824f0_1": {
+              "cell": "0x18ee008",
+              "pointee": "0x17f0620"
+            }
+          }
+        },
+        {
+          "address": "0x2824f0",
+          "size": 156,
+          "symbol": "_ZN5storm4echo6object8outEvent13MementoTooBigD0Ev",
+          "target_sha256": "2449a76282d8eaf98750a93688103d290d12e1d48481d67b0903eed807c4b30b",
+          "bindings": {
+            "_ZN13LcSharedCount11ReleaseWeakEv": "0xfa4310",
+            "_Z9StormFreePvPKci": "0x56ca00"
+          },
+          "got_bindings": {
+            "_ZTVN5storm4echo6object8outEvent13MementoTooBigE": {
+              "cell": "0x18ee088",
+              "pointee": "0x17f1958"
+            },
+            "_ZTV13Level2824f0_1": {
+              "cell": "0x18ee008",
+              "pointee": "0x17f0620"
+            }
+          },
+          "literals": {
+            "00": "0x1326e41"
+          }
+        },
+        {
+          "address": "0x282dd0",
+          "size": 180,
+          "symbol": "_ZN5storm4echo14objectObserver8outEvent10DiscoveredD2Ev",
+          "target_sha256": "06c5c08e0884d13c7804b95dd552f9e1eb467a115876c8b0d63283f416c9fc4f",
+          "bindings": {
+            "_ZN13LcSharedCount11ReleaseWeakEv": "0xfa4310"
+          },
+          "got_bindings": {
+            "_ZTVN5storm4echo14objectObserver8outEvent10DiscoveredE": {
+              "cell": "0x18ee470",
+              "pointee": "0x17f1fb0"
+            },
+            "_ZTV13Level282e90_1": {
+              "cell": "0x18ee478",
+              "pointee": "0x17f1f20"
+            }
+          }
+        },
+        {
+          "address": "0x282e90",
+          "size": 188,
+          "symbol": "_ZN5storm4echo14objectObserver8outEvent10DiscoveredD0Ev",
+          "target_sha256": "b00e14c51e1b0816a4c57785105f4cedb44de9478674ff70f2ed437ade793337",
+          "bindings": {
+            "_ZN13LcSharedCount11ReleaseWeakEv": "0xfa4310",
+            "_Z9StormFreePvPKci": "0x56ca00"
+          },
+          "got_bindings": {
+            "_ZTVN5storm4echo14objectObserver8outEvent10DiscoveredE": {
+              "cell": "0x18ee470",
+              "pointee": "0x17f1fb0"
+            },
+            "_ZTV13Level282e90_1": {
+              "cell": "0x18ee478",
+              "pointee": "0x17f1f20"
+            }
+          },
+          "literals": {
+            "00": "0x1326e41"
+          }
+        },
+        {
+          "address": "0x2832e0",
+          "size": 108,
+          "symbol": "_ZN5storm4echo4peer8outEvent8RttEventD0Ev",
+          "target_sha256": "9436c4dfae5c8696fe963137fcc436ef1c4ec85a445674613c6e10b372f756a0",
+          "bindings": {
+            "_Z9StormFreePvPKci": "0x56ca00"
+          },
+          "got_bindings": {
+            "_ZTVN5storm4echo4peer8outEvent8RttEventE": {
+              "cell": "0x18ee4f8",
+              "pointee": "0x17f2280"
+            }
+          },
+          "literals": {
+            "00": "0x1326e41"
+          }
+        },
+        {
+          "address": "0x292510",
+          "size": 92,
+          "symbol": "_ZN5storm28NetPropertyDeserializationOpD0Ev",
+          "target_sha256": "ab5208fb1a36ef37538fd583dfe5a5d4792c8d159b9b3aa6bed288c8a09eaa83",
+          "bindings": {
+            "_Z9StormFreePvPKci": "0x56ca00",
+            "_ZdlPv": "0xfa3b40"
+          },
+          "got_bindings": {
+            "_ZTVN5storm28NetPropertyDeserializationOpE": {
+              "cell": "0x18edfa8",
+              "pointee": "0x17f4b70"
+            },
+            "_ZTV14Nested43143425": {
+              "cell": "0x18edf78",
+              "pointee": "0x1833ad8"
+            }
+          },
+          "literals": {
+            "00": "0x1326e41"
+          }
+        },
+        {
+          "address": "0x2e6840",
+          "size": 108,
+          "symbol": "_ZN5storm4echo7session11resultEvent6CreateD0Ev",
+          "target_sha256": "691ebb4e0d12db8d980ac28260edac844e2b8e911f7f78b1e933c4aaaa29dc15",
+          "bindings": {
+            "_Z9StormFreePvPKci": "0x56ca00"
+          },
+          "got_bindings": {
+            "_ZTVN5storm4echo7session11resultEvent6CreateE": {
+              "cell": "0x18f1218",
+              "pointee": "0x17fa198"
+            }
+          },
+          "literals": {
+            "00": "0x1326e41"
+          }
+        },
+        {
+          "address": "0x2e8550",
+          "size": 136,
+          "symbol": "_ZN5storm4echo7session8outEvent18HostMigrationStartD2Ev",
+          "target_sha256": "f4475c38332a073a60d05d5b5ff2e2fef25896301b4b8604faf8462529af1125",
+          "bindings": {
+            "_Z9StormFreePvPKci": "0x56ca00"
+          },
+          "got_bindings": {
+            "_ZTVN5storm4echo7session8outEvent18HostMigrationStartE": {
+              "cell": "0x18f12a0",
+              "pointee": "0x17fa8e8"
+            }
+          },
+          "literals": {
+            "00": "0x1326e41"
+          }
+        },
+        {
+          "address": "0x2e85e0",
+          "size": 144,
+          "symbol": "_ZN5storm4echo7session8outEvent18HostMigrationStartD0Ev",
+          "target_sha256": "775ad6f9611d80916b06fe7504d500d73179f53934c75044f87a265dc2594204",
+          "bindings": {
+            "_Z9StormFreePvPKci": "0x56ca00"
+          },
+          "got_bindings": {
+            "_ZTVN5storm4echo7session8outEvent18HostMigrationStartE": {
+              "cell": "0x18f12a0",
+              "pointee": "0x17fa8e8"
+            }
+          },
+          "literals": {
+            "00": "0x1326e41"
+          }
+        },
+        {
+          "address": "0x2e99c0",
+          "size": 176,
+          "symbol": "_ZN5storm4echo7session11resultEvent4JoinD2Ev",
+          "target_sha256": "5b10883bcfcf4921a75e9f74da2c5b9992391269c4450911ad9311bc48595a9f",
+          "bindings": {
+            "_Z9StormFreePvPKci": "0x56ca00"
+          },
+          "got_bindings": {
+            "_ZTVN5storm4echo7session11resultEvent4JoinE": {
+              "cell": "0x18f1220",
+              "pointee": "0x17fa228"
+            }
+          },
+          "literals": {
+            "00": "0x1326e41"
+          }
+        },
+        {
+          "address": "0x2e9a70",
+          "size": 184,
+          "symbol": "_ZN5storm4echo7session11resultEvent4JoinD0Ev",
+          "target_sha256": "b62ec94d3cab01ffb12191f977fd7c2768369c1ebd967cad8796b0888060262d",
+          "bindings": {
+            "_Z9StormFreePvPKci": "0x56ca00"
+          },
+          "got_bindings": {
+            "_ZTVN5storm4echo7session11resultEvent4JoinE": {
+              "cell": "0x18f1220",
+              "pointee": "0x17fa228"
+            }
+          },
+          "literals": {
+            "00": "0x1326e41"
+          }
+        },
+        {
+          "address": "0x2e9e50",
+          "size": 104,
+          "symbol": "_ZN5storm4echo7session11resultEvent9AddPlayerD2Ev",
+          "target_sha256": "688f809c1db103e2b6adb0088262f43b8f1218d366db99ec4d87d29c9faab191",
+          "bindings": {
+            "_Z9StormFreePvPKci": "0x56ca00"
+          },
+          "got_bindings": {
+            "_ZTVN5storm4echo7session11resultEvent9AddPlayerE": {
+              "cell": "0x18f1228",
+              "pointee": "0x17fa2b8"
+            }
+          },
+          "literals": {
+            "00": "0x1326e41"
+          }
+        },
+        {
+          "address": "0x2e9ec0",
+          "size": 112,
+          "symbol": "_ZN5storm4echo7session11resultEvent9AddPlayerD0Ev",
+          "target_sha256": "638e454a16a5f481c9256c481ef34eabd1a8efbaf28e5705acae2b83c2a2aecf",
+          "bindings": {
+            "_Z9StormFreePvPKci": "0x56ca00"
+          },
+          "got_bindings": {
+            "_ZTVN5storm4echo7session11resultEvent9AddPlayerE": {
+              "cell": "0x18f1228",
+              "pointee": "0x17fa2b8"
+            }
+          },
+          "literals": {
+            "00": "0x1326e41"
+          }
+        },
+        {
+          "address": "0x2ea2d0",
+          "size": 132,
+          "symbol": "_ZN5storm4echo7session8outEvent14SessionCreatedD0Ev",
+          "target_sha256": "d3979976cc72488a70bbb78464cf8ab99e4a9e480a4312d922a5e34ec9c170d3",
+          "bindings": {
+            "_Z9StormFreePvPKci": "0x56ca00"
+          },
+          "got_bindings": {
+            "_ZTVN5storm4echo7session8outEvent14SessionCreatedE": {
+              "cell": "0x18f1240",
+              "pointee": "0x17fa468"
+            }
+          },
+          "literals": {
+            "00": "0x1326e41"
+          }
+        },
+        {
+          "address": "0x2ea700",
+          "size": 132,
+          "symbol": "_ZN5storm4echo7session8outEvent13SessionJoinedD0Ev",
+          "target_sha256": "79ede73ae3fdd0be303364d8bb6c62f532c394cd004bb26fc364e9ba8986858d",
+          "bindings": {
+            "_Z9StormFreePvPKci": "0x56ca00"
+          },
+          "got_bindings": {
+            "_ZTVN5storm4echo7session8outEvent13SessionJoinedE": {
+              "cell": "0x18f1248",
+              "pointee": "0x17fa4f8"
+            }
+          },
+          "literals": {
+            "00": "0x1326e41"
+          }
+        },
+        {
+          "address": "0x2eaab0",
+          "size": 80,
+          "symbol": "_ZN5storm4echo7session8outEvent14PeerDiscoveredD2Ev",
+          "target_sha256": "d6a5b9c5de8d91328536eac026c9e4dde13c322fcd2efc5f764f67f30290976b",
+          "bindings": {
+            "_ZN8LcMemberILm48934913EED1Ev": "0x578410"
+          },
+          "got_bindings": {
+            "_ZTVN5storm4echo7session8outEvent14PeerDiscoveredE": {
+              "cell": "0x18f1250",
+              "pointee": "0x17fa588"
+            }
+          }
+        },
+        {
+          "address": "0x2eab00",
+          "size": 88,
+          "symbol": "_ZN5storm4echo7session8outEvent14PeerDiscoveredD0Ev",
+          "target_sha256": "b15e6ae2a6077cf9b48fb1ef72ee6890b2bbba13aa58d66579e3d4590d09f842",
+          "bindings": {
+            "_ZN8LcMemberILm48934913EED1Ev": "0x578410",
+            "_Z9StormFreePvPKci": "0x56ca00"
+          },
+          "got_bindings": {
+            "_ZTVN5storm4echo7session8outEvent14PeerDiscoveredE": {
+              "cell": "0x18f1250",
+              "pointee": "0x17fa588"
+            }
+          },
+          "literals": {
+            "00": "0x1326e41"
+          }
+        },
+        {
+          "address": "0x2eafc0",
+          "size": 80,
+          "symbol": "_ZN5storm4echo7session8outEvent13PeerConnectedD2Ev",
+          "target_sha256": "890d731ae52a9fc65b9ef8f6d4b89731ecd9bbd7f09af2b3c1ebc8b432a7c294",
+          "bindings": {
+            "_ZN8LcMemberILm48955649EED1Ev": "0x578410"
+          },
+          "got_bindings": {
+            "_ZTVN5storm4echo7session8outEvent13PeerConnectedE": {
+              "cell": "0x18f1270",
+              "pointee": "0x17fa618"
+            }
+          }
+        },
+        {
+          "address": "0x2eb010",
+          "size": 88,
+          "symbol": "_ZN5storm4echo7session8outEvent13PeerConnectedD0Ev",
+          "target_sha256": "73d816aed5a64998f270adb1b7702d5774826c5e269f266a3930c01df8316128",
+          "bindings": {
+            "_ZN8LcMemberILm48955649EED1Ev": "0x578410",
+            "_Z9StormFreePvPKci": "0x56ca00"
+          },
+          "got_bindings": {
+            "_ZTVN5storm4echo7session8outEvent13PeerConnectedE": {
+              "cell": "0x18f1270",
+              "pointee": "0x17fa618"
+            }
+          },
+          "literals": {
+            "00": "0x1326e41"
+          }
+        },
+        {
+          "address": "0x2eb4e0",
+          "size": 104,
+          "symbol": "_ZN5storm4echo7session8outEvent8PeerGoneD2Ev",
+          "target_sha256": "5abf35366646a82e1efe6fa704b437b2a70bdec4cdbd2e900eb95687fd33d467",
+          "bindings": {
+            "_Z9StormFreePvPKci": "0x56ca00"
+          },
+          "got_bindings": {
+            "_ZTVN5storm4echo7session8outEvent8PeerGoneE": {
+              "cell": "0x18f1280",
+              "pointee": "0x17fa6a8"
+            }
+          },
+          "literals": {
+            "00": "0x1326e41"
+          }
+        },
+        {
+          "address": "0x2eb550",
+          "size": 112,
+          "symbol": "_ZN5storm4echo7session8outEvent8PeerGoneD0Ev",
+          "target_sha256": "eb6a1c805ccdd84eff7bc8aec5070ac9d545fc95c43b5bab7d56c0d3da8f6ef4",
+          "bindings": {
+            "_Z9StormFreePvPKci": "0x56ca00"
+          },
+          "got_bindings": {
+            "_ZTVN5storm4echo7session8outEvent8PeerGoneE": {
+              "cell": "0x18f1280",
+              "pointee": "0x17fa6a8"
+            }
+          },
+          "literals": {
+            "00": "0x1326e41"
+          }
+        },
+        {
+          "address": "0x2ebda0",
+          "size": 108,
+          "symbol": "_ZN5storm4echo7session8outEvent11HostElectedD0Ev",
+          "target_sha256": "43749713333e7ffc56722a5c1419f64c94edb5099b95246cf03a59a8ad468be0",
+          "bindings": {
+            "_Z9StormFreePvPKci": "0x56ca00"
+          },
+          "got_bindings": {
+            "_ZTVN5storm4echo7session8outEvent11HostElectedE": {
+              "cell": "0x18f12b8",
+              "pointee": "0x17faa08"
+            }
+          },
+          "literals": {
+            "00": "0x1326e41"
+          }
+        },
+        {
+          "address": "0x3169a0",
+          "size": 52,
+          "symbol": "_ZN5storm4echo9voicechat37ChatterRegisterProtocolMainInitParamsD2Ev",
+          "target_sha256": "e4b290562a30ac85cb4d13206743057444dfdbf8b2df627ff76e9e4d48d35532",
+          "bindings": {
+            "_Z9StormFreePvPKci": "0x56ca00"
+          },
+          "got_bindings": {
+            "_ZTVN5storm4echo9voicechat37ChatterRegisterProtocolMainInitParamsE": {
+              "cell": "0x18f2d80",
+              "pointee": "0x1805430"
+            }
+          },
+          "literals": {
+            "00": "0x1326e41"
+          }
+        },
+        {
+          "address": "0x360520",
+          "size": 136,
+          "symbol": "_ZN5storm4echo7session8internal8outEvent18HostMigrationStartD2Ev",
+          "target_sha256": "0f05ae0b4b7f71828945cb3379de83485b18e125c76d1c97cf6331d3b0fc8cd3",
+          "bindings": {
+            "_Z9StormFreePvPKci": "0x56ca00"
+          },
+          "got_bindings": {
+            "_ZTVN5storm4echo7session8internal8outEvent18HostMigrationStartE": {
+              "cell": "0x18f3098",
+              "pointee": "0x1801640"
+            }
+          },
+          "literals": {
+            "00": "0x1326e41"
+          }
+        },
+        {
+          "address": "0x3605b0",
+          "size": 144,
+          "symbol": "_ZN5storm4echo7session8internal8outEvent18HostMigrationStartD0Ev",
+          "target_sha256": "3c72ed94caeb2776952bff47ee04ecc740225916797bbcbb779956131ccb4bde",
+          "bindings": {
+            "_Z9StormFreePvPKci": "0x56ca00"
+          },
+          "got_bindings": {
+            "_ZTVN5storm4echo7session8internal8outEvent18HostMigrationStartE": {
+              "cell": "0x18f3098",
+              "pointee": "0x1801640"
+            }
+          },
+          "literals": {
+            "00": "0x1326e41"
+          }
+        },
+        {
+          "address": "0x360bf0",
+          "size": 52,
+          "symbol": "_ZN5storm4echo28ProductEchoImplMainInitEventD2Ev",
+          "target_sha256": "208add0fb6b8bd611f4b6e352883ab7c7e186a6f927e7c19facf945f89e5a5f5",
+          "bindings": {
+            "_Z9StormFreePvPKci": "0x56ca00"
+          },
+          "got_bindings": {
+            "_ZTVN5storm4echo28ProductEchoImplMainInitEventE": {
+              "cell": "0x18f2d28",
+              "pointee": "0x1804698"
+            }
+          },
+          "literals": {
+            "00": "0x1326e41"
+          }
+        },
+        {
+          "address": "0x360c30",
+          "size": 88,
+          "symbol": "_ZN5storm4echo28ProductEchoImplMainInitEventD0Ev",
+          "target_sha256": "09e7bf22f38da20dd6c2a64a6f7e66ad07031c73f4e3eee57964ea99e5450495",
+          "bindings": {
+            "_Z9StormFreePvPKci": "0x56ca00"
+          },
+          "got_bindings": {
+            "_ZTVN5storm4echo28ProductEchoImplMainInitEventE": {
+              "cell": "0x18f2d28",
+              "pointee": "0x1804698"
+            }
+          },
+          "literals": {
+            "00": "0x1326e41"
+          }
+        },
+        {
+          "address": "0x36b5a0",
+          "size": 76,
+          "symbol": "_ZN5storm4echo9voicechat37ChatterRegisterProtocolMainInitParamsD0Ev",
+          "target_sha256": "82d0a409b07253ec4a5de1886654d8f82fcf949cb8489f7d17ce269e69880e05",
+          "bindings": {
+            "_Z9StormFreePvPKci": "0x56ca00",
+            "_ZdlPv": "0xfa3b40"
+          },
+          "got_bindings": {
+            "_ZTVN5storm4echo9voicechat37ChatterRegisterProtocolMainInitParamsE": {
+              "cell": "0x18f2d80",
+              "pointee": "0x1805430"
+            }
+          },
+          "literals": {
+            "00": "0x1326e41"
+          }
+        },
+        {
+          "address": "0x375390",
+          "size": 144,
+          "symbol": "_ZN5storm4echo7session7inEvent13PeerGoneReplyD0Ev",
+          "target_sha256": "a05696295a5ee471e09eaaedd9c48df73dca767838b1e870ea7a751695c739be",
+          "bindings": {
+            "_Z9StormFreePvPKci": "0x56ca00",
+            "_ZN13LcSharedCount11ReleaseWeakEv": "0xfa4310"
+          },
+          "got_bindings": {
+            "_ZTVN5storm4echo7session7inEvent13PeerGoneReplyE": {
+              "cell": "0x18f3458",
+              "pointee": "0x1806418"
+            }
+          },
+          "literals": {
+            "00": "0x1326e41"
+          }
+        },
+        {
+          "address": "0x3a13d0",
+          "size": 120,
+          "symbol": "_ZN5storm4echo5group14PeerConnectionD0Ev",
+          "target_sha256": "c6da0b205a61639ee89e0672a01601eea5469703c3882ea110bccb1b99de6100",
+          "bindings": {
+            "_ZN6LcTreeILm60898561EE7DestroyEPS0_Pv": "0x3da260",
+            "_ZN13LcSharedCount11ReleaseWeakEv": "0xfa4310",
+            "_ZN10Base3a13d0D2Ev": "0x56a940",
+            "_ZdlPv": "0xfa3b40"
+          },
+          "got_bindings": {
+            "_ZTVN5storm4echo5group14PeerConnectionE": {
+              "cell": "0x18f4670",
+              "pointee": "0x1809ff8"
+            }
+          }
+        },
+        {
+          "address": "0x3c2760",
+          "size": 52,
+          "symbol": "_ZN5storm4echo15CTransmissionIdD2Ev",
+          "target_sha256": "b1bad72ba7fd6080507d907e70fef1016c44794ced40bd110b29f40f43334991",
+          "bindings": {
+            "_Z9StormFreePvPKci": "0x56ca00"
+          },
+          "got_bindings": {
+            "_ZTVN5storm4echo15CTransmissionIdE": {
+              "cell": "0x18f3608",
+              "pointee": "0x1808cf0"
+            }
+          },
+          "literals": {
+            "00": "0x1326e41"
+          }
+        },
+        {
+          "address": "0x3c27a0",
+          "size": 76,
+          "symbol": "_ZN5storm4echo15CTransmissionIdD0Ev",
+          "target_sha256": "568ec103de028e60cf7a8c20c9a170cc3ef741d1e9d75bf41703cb213137c386",
+          "bindings": {
+            "_Z9StormFreePvPKci": "0x56ca00",
+            "_ZdlPv": "0xfa3b40"
+          },
+          "got_bindings": {
+            "_ZTVN5storm4echo15CTransmissionIdE": {
+              "cell": "0x18f3608",
+              "pointee": "0x1808cf0"
+            }
+          },
+          "literals": {
+            "00": "0x1326e41"
+          }
+        },
+        {
+          "address": "0x3c2c70",
+          "size": 108,
+          "symbol": "_ZN5storm4echo5group11resultEvent6CreateD0Ev",
+          "target_sha256": "43136344d6396ee71be56e0146b40cf4756026a468a128189f4d225186ef2fff",
+          "bindings": {
+            "_Z9StormFreePvPKci": "0x56ca00"
+          },
+          "got_bindings": {
+            "_ZTVN5storm4echo5group11resultEvent6CreateE": {
+              "cell": "0x18f43e8",
+              "pointee": "0x1808ee8"
+            }
+          },
+          "literals": {
+            "00": "0x1326e41"
+          }
+        },
+        {
+          "address": "0x3c4420",
+          "size": 104,
+          "symbol": "_ZN5storm4echo5group11resultEvent14RequestAddPeerD2Ev",
+          "target_sha256": "6015f1552392244e442cf5bbaf6122450686a858b0f891c2d8d9606b93ca48bf",
+          "bindings": {
+            "_Z9StormFreePvPKci": "0x56ca00"
+          },
+          "got_bindings": {
+            "_ZTVN5storm4echo5group11resultEvent14RequestAddPeerE": {
+              "cell": "0x18f42c0",
+              "pointee": "0x1808f78"
+            }
+          },
+          "literals": {
+            "00": "0x1326e41"
+          }
+        },
+        {
+          "address": "0x3c4490",
+          "size": 112,
+          "symbol": "_ZN5storm4echo5group11resultEvent14RequestAddPeerD0Ev",
+          "target_sha256": "33c18bf6f10522c7257ea641d3313c886e3e8e6b7e4dad788fe43287030aef7c",
+          "bindings": {
+            "_Z9StormFreePvPKci": "0x56ca00"
+          },
+          "got_bindings": {
+            "_ZTVN5storm4echo5group11resultEvent14RequestAddPeerE": {
+              "cell": "0x18f42c0",
+              "pointee": "0x1808f78"
+            }
+          },
+          "literals": {
+            "00": "0x1326e41"
+          }
+        },
+        {
+          "address": "0x3c54c0",
+          "size": 104,
+          "symbol": "_ZN5storm4echo5group11resultEvent9AddPlayerD2Ev",
+          "target_sha256": "06c5d18c62cd53942231b88aa5da11c00f9b7c4a4c9303141c3f2d234b0d0490",
+          "bindings": {
+            "_Z9StormFreePvPKci": "0x56ca00"
+          },
+          "got_bindings": {
+            "_ZTVN5storm4echo5group11resultEvent9AddPlayerE": {
+              "cell": "0x18f42d0",
+              "pointee": "0x18091b8"
+            }
+          },
+          "literals": {
+            "00": "0x1326e41"
+          }
+        },
+        {
+          "address": "0x3c5530",
+          "size": 112,
+          "symbol": "_ZN5storm4echo5group11resultEvent9AddPlayerD0Ev",
+          "target_sha256": "a17cef1f838a1d0e7bdbb5ed57933cc1da85608cb7aecb353b09e11d171fbadb",
+          "bindings": {
+            "_Z9StormFreePvPKci": "0x56ca00"
+          },
+          "got_bindings": {
+            "_ZTVN5storm4echo5group11resultEvent9AddPlayerE": {
+              "cell": "0x18f42d0",
+              "pointee": "0x18091b8"
+            }
+          },
+          "literals": {
+            "00": "0x1326e41"
+          }
+        },
+        {
+          "address": "0x3c6140",
+          "size": 104,
+          "symbol": "_ZN5storm4echo5group8outEvent8PeerGoneD2Ev",
+          "target_sha256": "4fe396e1c1e82b92ab6897a3c7b4a538601e4b9033f3250ce47c29efe0880e0a",
+          "bindings": {
+            "_Z9StormFreePvPKci": "0x56ca00"
+          },
+          "got_bindings": {
+            "_ZTVN5storm4echo5group8outEvent8PeerGoneE": {
+              "cell": "0x18f42e8",
+              "pointee": "0x18093f8"
+            }
+          },
+          "literals": {
+            "00": "0x1326e41"
+          }
+        },
+        {
+          "address": "0x3c61b0",
+          "size": 112,
+          "symbol": "_ZN5storm4echo5group8outEvent8PeerGoneD0Ev",
+          "target_sha256": "115616f0ff3a2d6debf83bc6223b101df952c062be7914fc0fbb8a5e5b36eb4a",
+          "bindings": {
+            "_Z9StormFreePvPKci": "0x56ca00"
+          },
+          "got_bindings": {
+            "_ZTVN5storm4echo5group8outEvent8PeerGoneE": {
+              "cell": "0x18f42e8",
+              "pointee": "0x18093f8"
+            }
+          },
+          "literals": {
+            "00": "0x1326e41"
+          }
+        },
+        {
+          "address": "0x3c6e30",
+          "size": 108,
+          "symbol": "_ZN5storm4echo5group8outEvent14AddPeerRequestD0Ev",
+          "target_sha256": "a576c43f2bf2c5802c47cb51bf2015aa62fd89a59b4ef21da868bdba34d1be88",
+          "bindings": {
+            "_Z9StormFreePvPKci": "0x56ca00"
+          },
+          "got_bindings": {
+            "_ZTVN5storm4echo5group8outEvent14AddPeerRequestE": {
+              "cell": "0x18f4818",
+              "pointee": "0x1809758"
+            }
+          },
+          "literals": {
+            "00": "0x1326e41"
+          }
+        },
+        {
+          "address": "0x3cd320",
+          "size": 108,
+          "symbol": "_ZN5storm4echo5group7inEvent14RequestAddPeerD0Ev",
+          "target_sha256": "54aeb8f46b9bbd1cc39c2b99a33bacadbca305daf84656ded724f522d595384d",
+          "bindings": {
+            "_Z9StormFreePvPKci": "0x56ca00"
+          },
+          "got_bindings": {
+            "_ZTVN5storm4echo5group7inEvent14RequestAddPeerE": {
+              "cell": "0x18f4338",
+              "pointee": "0x180bcc8"
+            }
+          },
+          "literals": {
+            "00": "0x1326e41"
+          }
+        },
+        {
+          "address": "0x3fc1a0",
+          "size": 52,
+          "symbol": "_ZN5storm26NetPropertySerializationOpD2Ev",
+          "target_sha256": "a9e53a97f09ff700fc4246e005db10f622f64d0895e3dcd5a18fa027ee136fa1",
+          "bindings": {
+            "_Z9StormFreePvPKci": "0x56ca00"
+          },
+          "got_bindings": {
+            "_ZTVN5storm26NetPropertySerializationOpE": {
+              "cell": "0x18edf88",
+              "pointee": "0x1833a38"
+            }
+          },
+          "literals": {
+            "00": "0x1326e41"
+          }
+        },
+        {
+          "address": "0x42aff0",
+          "size": 80,
+          "symbol": "_ZN5storm4echo6object8internal7inEvent6CreateD2Ev",
+          "target_sha256": "ad50e39917f6c50659b9db701d81833290ef4b6c4e42513421fb6e935f92194d",
+          "bindings": {
+            "_ZN8LcMemberILm70288385EED1Ev": "0x26ea70"
+          },
+          "got_bindings": {
+            "_ZTVN5storm4echo6object8internal7inEvent6CreateE": {
+              "cell": "0x18f5ba8",
+              "pointee": "0x1812a30"
+            }
+          }
+        },
+        {
+          "address": "0x430840",
+          "size": 88,
+          "symbol": "_ZN5storm4echo6object8internal7inEvent6CreateD0Ev",
+          "target_sha256": "e680bfef18b72597cb9b7bd43f1fe1cab13d8b17cdbb80be37716f3a7b4dc1ab",
+          "bindings": {
+            "_ZN8LcMemberILm70288385EED1Ev": "0x26ea70",
+            "_Z9StormFreePvPKci": "0x56ca00"
+          },
+          "got_bindings": {
+            "_ZTVN5storm4echo6object8internal7inEvent6CreateE": {
+              "cell": "0x18f5ba8",
+              "pointee": "0x1812a30"
+            }
+          },
+          "literals": {
+            "00": "0x1326e41"
+          }
+        },
+        {
+          "address": "0x431460",
+          "size": 76,
+          "symbol": "_ZN5storm23NetPropertySetTouchedOpD0Ev",
+          "target_sha256": "cc7f9334f1ad55e246c2dcbba1f2ad71792c09ce9762a5e6aca25d6580938b6b",
+          "bindings": {
+            "_Z9StormFreePvPKci": "0x56ca00",
+            "_ZdlPv": "0xfa3b40"
+          },
+          "got_bindings": {
+            "_ZTVN5storm23NetPropertySetTouchedOpE": {
+              "cell": "0x18edf88",
+              "pointee": "0x1833a38"
+            }
+          },
+          "literals": {
+            "00": "0x1326e41"
+          }
+        },
+        {
+          "address": "0x4a79d0",
+          "size": 48,
+          "symbol": "_ZN5storm20SimpleSessionHandlerD0Ev",
+          "target_sha256": "32dc167ff2209dd23174747c1786d5be54f61d881522951cf9b2b1e98b4d38b0",
+          "bindings": {
+            "_ZN10Base4a79d0D2Ev": "0x4a7340",
+            "_Z9StormFreePvPKci": "0x56ca00"
+          },
+          "got_bindings": {},
+          "literals": {
+            "00": "0x1326e41"
+          }
+        },
+        {
+          "address": "0x5095c0",
+          "size": 68,
+          "symbol": "_ZN5storm2mm20CompressionAlgorithmD2Ev",
+          "target_sha256": "3f73174aa162cc4a7784e9f3790ed835c05a1558cb5ea4e898fac4e1b3551b17",
+          "bindings": {
+            "_ZN8LcMemberILm84499457EED1Ev": "0x4f30c0",
+            "_ZN8LcMemberILm84499458EED1Ev": "0x4f30c0",
+            "_ZN8LcMemberILm84499459EED1Ev": "0x4ee1e0"
+          },
+          "got_bindings": {
+            "_ZTVN5storm2mm20CompressionAlgorithmE": {
+              "cell": "0x18f94c0",
+              "pointee": "0x182c808"
+            }
+          }
+        },
+        {
+          "address": "0x52cef0",
+          "size": 56,
+          "symbol": "_ZN5storm2mm27ClientProtocolRequestBrokerD2Ev",
+          "target_sha256": "c768ab0bfa14f262620ef1606555c5e57814e1ffc27e6bc31340106c6cd17b55",
+          "bindings": {
+            "_ZN6LcTreeILm86831873EE7DestroyEPS0_Pv": "0x521ad0",
+            "_ZN10Base52cf30D2Ev": "0x530ec0"
+          },
+          "got_bindings": {
+            "_ZTVN5storm2mm27ClientProtocolRequestBrokerE": {
+              "cell": "0x18f9958",
+              "pointee": "0x182e640"
+            }
+          }
+        },
+        {
+          "address": "0x52cf30",
+          "size": 64,
+          "symbol": "_ZN5storm2mm27ClientProtocolRequestBrokerD0Ev",
+          "target_sha256": "d244bed2829ba1b6ee94214f4e39831d319370602cd1d0e6bba87723a692e729",
+          "bindings": {
+            "_ZN6LcTreeILm86831873EE7DestroyEPS0_Pv": "0x521ad0",
+            "_ZN10Base52cf30D2Ev": "0x530ec0",
+            "_ZdlPv": "0x4eb340"
+          },
+          "got_bindings": {
+            "_ZTVN5storm2mm27ClientProtocolRequestBrokerE": {
+              "cell": "0x18f9958",
+              "pointee": "0x182e640"
+            }
+          }
+        },
+        {
+          "address": "0x530ec0",
+          "size": 56,
+          "symbol": "_ZN5storm2mm30ProtocolRequestBrokerInterfaceD2Ev",
+          "target_sha256": "28119035810ca9bc875f04b163b25f01fbcd156a06097af75f16f5b7e1411a71",
+          "bindings": {
+            "_ZN8LcMemberILm87092225EED1Ev": "0x51d670",
+            "_ZN8LcMemberILm87092226EED1Ev": "0x5192b0"
+          },
+          "got_bindings": {
+            "_ZTVN5storm2mm30ProtocolRequestBrokerInterfaceE": {
+              "cell": "0x18f9a60",
+              "pointee": "0x182ee28"
+            }
+          }
+        },
+        {
+          "address": "0x5430e0",
+          "size": 140,
+          "symbol": "_ZN5storm2mm18MatchmakingRequestD2Ev",
+          "target_sha256": "99a3cabb3d4d10580e680e94c633ca79127b4e975cfebf20ae7f2ea10796ed02",
+          "bindings": {
+            "_ZN6LcTreeILm88280577EE7DestroyEPS0_Pv": "0x4dff20",
+            "_Z7UbiFreePv": "0x37030",
+            "_ZN6LcTreeILm88280579EE7DestroyEPS0_Pv": "0x4ddcc0"
+          },
+          "got_bindings": {
+            "_ZTVN5storm2mm18MatchmakingRequestE": {
+              "cell": "0x18f9b00",
+              "pointee": "0x182f3e0"
+            }
+          }
+        },
+        {
+          "address": "0x543210",
+          "size": 140,
+          "symbol": "_ZN5storm2mm23_DDL_MatchmakingRequestD2Ev",
+          "target_sha256": "b01bec47bd49923afd7ba7f71d03b995ef1b30cec77a89105e6664396dd2c7ff",
+          "bindings": {
+            "_ZN6LcTreeILm88285441EE7DestroyEPS0_Pv": "0x4dff20",
+            "_Z7UbiFreePv": "0x37030",
+            "_ZN6LcTreeILm88285443EE7DestroyEPS0_Pv": "0x4ddcc0"
+          },
+          "got_bindings": {
+            "_ZTVN5storm2mm23_DDL_MatchmakingRequestE": {
+              "cell": "0x18f9b00",
+              "pointee": "0x182f3e0"
+            }
+          }
+        },
+        {
+          "address": "0x54c0e0",
+          "size": 144,
+          "symbol": "_ZN5storm11ParentActorD0Ev",
+          "target_sha256": "f01d626cb2e7e945b23bff99cef63133cef96b21254b2a62d6be862c20b9cb73",
+          "bindings": {
+            "_Z9StormFreePvPKci": "0x56ca00",
+            "_ZdlPv": "0xfa3b40"
+          },
+          "got_bindings": {
+            "_ZTVN5storm11ParentActorE": {
+              "cell": "0x18f9bf8",
+              "pointee": "0x182fb50"
+            }
+          },
+          "literals": {
+            "00": "0x1326e41"
+          }
+        },
+        {
+          "address": "0x57f310",
+          "size": 52,
+          "symbol": "_ZN5storm10DataBufferD2Ev",
+          "target_sha256": "5af5c2c43906e294fd35dfa52d701f0527e4d764229f1d8f515bc648cc39d6c9",
+          "bindings": {
+            "_Z9StormFreePvPKci": "0x56ca00"
+          },
+          "got_bindings": {
+            "_ZTVN5storm10DataBufferE": {
+              "cell": "0x18eef00",
+              "pointee": "0x1832958"
+            }
+          },
+          "literals": {
+            "00": "0x1326e41"
+          }
+        },
+        {
+          "address": "0x57f350",
+          "size": 76,
+          "symbol": "_ZN5storm10DataBufferD0Ev",
+          "target_sha256": "6ef8af113392a42bec18cac87c21b08da96ec346af91a1b504c8da6b54dc4ba3",
+          "bindings": {
+            "_Z9StormFreePvPKci": "0x56ca00",
+            "_ZdlPv": "0xfa3b40"
+          },
+          "got_bindings": {
+            "_ZTVN5storm10DataBufferE": {
+              "cell": "0x18eef00",
+              "pointee": "0x1832958"
+            }
+          },
+          "literals": {
+            "00": "0x1326e41"
+          }
+        },
+        {
+          "address": "0x5854a0",
+          "size": 48,
+          "symbol": "_ZN5storm6common13NetworkHelper31NetworkInterfaceDiscoveredEventD0Ev",
+          "target_sha256": "b76eadc0e93d0bcd42e490b6340879eb608742f09f46993b487394ab231cceaf",
+          "bindings": {
+            "_ZN10Base5854a0D2Ev": "0x585340",
+            "_Z9StormFreePvPKci": "0x56ca00"
+          },
+          "got_bindings": {},
+          "literals": {
+            "00": "0x1326e41"
+          }
+        },
+        {
+          "address": "0x5857f0",
+          "size": 48,
+          "symbol": "_ZN5storm6common13NetworkHelper25NetworkInterfaceLostEventD0Ev",
+          "target_sha256": "2d11ed58ce99410008ca0e10688179d5a2082d177fb2932ed87e5f8b4c4ae1e4",
+          "bindings": {
+            "_ZN10Base5857f0D2Ev": "0x585690",
+            "_Z9StormFreePvPKci": "0x56ca00"
+          },
+          "got_bindings": {},
+          "literals": {
+            "00": "0x1326e41"
+          }
+        },
+        {
+          "address": "0x58d4c0",
+          "size": 76,
+          "symbol": "_ZN5storm26NetPropertySerializationOpD0Ev",
+          "target_sha256": "858bd57b6487cc150a5b3ee9a0bc880b998b8c162fc7f6116d1d3b7eb2ea3b8a",
+          "bindings": {
+            "_Z9StormFreePvPKci": "0x56ca00",
+            "_ZdlPv": "0xfa3b40"
+          },
+          "got_bindings": {
+            "_ZTVN5storm26NetPropertySerializationOpE": {
+              "cell": "0x18edf88",
+              "pointee": "0x1833a38"
+            }
+          },
+          "literals": {
+            "00": "0x1326e41"
+          }
+        },
+        {
+          "address": "0x58d650",
+          "size": 52,
+          "symbol": "_ZN5storm33NetPropertyTouchedBitsRetrievalOpD2Ev",
+          "target_sha256": "579710f3259672c696f69d1dfcf7369456325e1bc8b0cf45e43088e9d18bc6fa",
+          "bindings": {
+            "_Z9StormFreePvPKci": "0x56ca00"
+          },
+          "got_bindings": {
+            "_ZTVN5storm33NetPropertyTouchedBitsRetrievalOpE": {
+              "cell": "0x18edf78",
+              "pointee": "0x1833ad8"
+            }
+          },
+          "literals": {
+            "00": "0x1326e41"
+          }
+        },
+        {
+          "address": "0x58d690",
+          "size": 76,
+          "symbol": "_ZN5storm33NetPropertyTouchedBitsRetrievalOpD0Ev",
+          "target_sha256": "43d1cae86a3fef4f6704e7f4b70c6313373514f7bc81711ac93dc4a6a88cb4ee",
+          "bindings": {
+            "_Z9StormFreePvPKci": "0x56ca00",
+            "_ZdlPv": "0xfa3b40"
+          },
+          "got_bindings": {
+            "_ZTVN5storm33NetPropertyTouchedBitsRetrievalOpE": {
+              "cell": "0x18edf78",
+              "pointee": "0x1833ad8"
+            }
+          },
+          "literals": {
+            "00": "0x1326e41"
+          }
+        },
+        {
+          "address": "0x58d960",
+          "size": 64,
+          "symbol": "_ZN5storm6common13NetworkHelper16DNSResolvedEventD0Ev",
+          "target_sha256": "54db2198b49b1edabcefc64687c76f4a609c206c760cc78a0917b776426068c9",
+          "bindings": {
+            "_ZN8LcMemberILm93165057EED1Ev": "0x578410",
+            "_Z9StormFreePvPKci": "0x56ca00"
+          },
+          "got_bindings": {
+            "_ZTVN5storm6common13NetworkHelper16DNSResolvedEventE": {
+              "cell": "0x18fa5f8",
+              "pointee": "0x18333c0"
+            }
+          },
+          "literals": {
+            "00": "0x1326e41"
+          }
+        },
+        {
+          "address": "0x58e350",
+          "size": 48,
+          "symbol": "_ZN5storm6common8Tracking17TrackingDataEventD0Ev",
+          "target_sha256": "d8b79a3b12b9eb4c414827e50945f0b83d7651b1dd640189438e5aaa1136e932",
+          "bindings": {
+            "_ZN10Base58e350D2Ev": "0x58e250",
+            "_Z9StormFreePvPKci": "0x56ca00"
+          },
+          "got_bindings": {},
+          "literals": {
+            "00": "0x1326e41"
+          }
+        },
+        {
+          "address": "0x5b8fa0",
+          "size": 48,
+          "symbol": "_ZN5storm14PeerDescriptorD0Ev",
+          "target_sha256": "323dfcf791dc73e61d944a2160c19c92352026752222ea7fc5b4fadac634b4ce",
+          "bindings": {
+            "_ZN10Base5b8fa0D2Ev": "0x5b8cf0",
+            "_Z9StormFreePvPKci": "0x56ca00"
+          },
+          "got_bindings": {},
+          "literals": {
+            "00": "0x1326e41"
+          }
+        },
+        {
+          "address": "0x5c1f90",
+          "size": 32,
+          "symbol": "_ZN5storm9transport19PacketEventObserverD2Ev",
+          "target_sha256": "fb1e39ea25116d0a97fe3fd894b0ddd47560869b5d5fb966c23c92dd40fb5c5f",
+          "bindings": {
+            "_ZN6LcTreeILm96598785EE7DestroyEPS0_Pv": "0x3e1a00"
+          },
+          "got_bindings": {
+            "_ZTVN5storm9transport19PacketEventObserverE": {
+              "cell": "0x18f4a68",
+              "pointee": "0x1836d70"
+            }
+          }
+        },
+        {
+          "address": "0x5c1fb0",
+          "size": 56,
+          "symbol": "_ZN5storm9transport19PacketEventObserverD0Ev",
+          "target_sha256": "61d4c0893d63b7663aa7c2c5c70dc14748133e9c4fef67918c5927ce7777255c",
+          "bindings": {
+            "_ZN6LcTreeILm96598785EE7DestroyEPS0_Pv": "0x3e1a00",
+            "_ZdlPv": "0xfa3b40"
+          },
+          "got_bindings": {
+            "_ZTVN5storm9transport19PacketEventObserverE": {
+              "cell": "0x18f4a68",
+              "pointee": "0x1836d70"
+            }
+          }
+        },
+        {
+          "address": "0x5c2e70",
+          "size": 64,
+          "symbol": "_ZN5storm9transport13internalEvent20UpdateLinkRecvPacketD0Ev",
+          "target_sha256": "8591ebc3d80e5daf5a29929acc80bb8404acb0acf9f365c263f4be562bc90e9f",
+          "bindings": {
+            "_ZN8LcMemberILm96659201EED1Ev": "0x578410",
+            "_Z9StormFreePvPKci": "0x56ca00"
+          },
+          "got_bindings": {
+            "_ZTVN5storm9transport13internalEvent20UpdateLinkRecvPacketE": {
+              "cell": "0x18fab68",
+              "pointee": "0x18374f8"
+            }
+          },
+          "literals": {
+            "00": "0x1326e41"
+          }
+        },
+        {
+          "address": "0x5d6450",
+          "size": 120,
+          "symbol": "_ZN5storm5punch13detectNatType15EventInitializeD2Ev",
+          "target_sha256": "b005c90409a5a3f8a3b2c66aa8cbc13a1fb6f9cdc88a216beb93e2bc64d934b3",
+          "bindings": {
+            "_ZN8LcMemberILm97928449EED1Ev": "0x578410",
+            "_ZN8LcMemberILm97928450EED1Ev": "0x578410",
+            "_ZN13LcSharedCount11ReleaseWeakEv": "0xfa4310"
+          },
+          "got_bindings": {
+            "_ZTVN5storm5punch13detectNatType15EventInitializeE": {
+              "cell": "0x18fb0e0",
+              "pointee": "0x183d1a0"
+            }
+          }
+        },
+        {
+          "address": "0x5dcae0",
+          "size": 92,
+          "symbol": "_ZN5storm5punch27ProductPunchClientImpl_MainD2Ev",
+          "target_sha256": "3afc2b8daaa0016edc21f5081aea78d21707fa6dc94f75411a28a780202342ae",
+          "bindings": {
+            "_Z9StormFreePvPKci": "0x56ca00",
+            "_ZN10Base5dcb40D2Ev": "0x54c050"
+          },
+          "got_bindings": {
+            "_ZTVN5storm5punch27ProductPunchClientImpl_MainE": {
+              "cell": "0x18fb200",
+              "pointee": "0x183a2f8"
+            },
+            "_ZTV14Nested98350081": {
+              "cell": "0x18fb1f0",
+              "pointee": "0x183a780"
+            }
+          },
+          "literals": {
+            "00": "0x1326e41"
+          }
+        },
+        {
+          "address": "0x5dcb40",
+          "size": 100,
+          "symbol": "_ZN5storm5punch27ProductPunchClientImpl_MainD0Ev",
+          "target_sha256": "62e054f36e71bc81881eb87dace2f3db04969fed638606f2e468434ef9f2e7b6",
+          "bindings": {
+            "_Z9StormFreePvPKci": "0x56ca00",
+            "_ZN10Base5dcb40D2Ev": "0x54c050",
+            "_ZdlPv": "0xfa3b40"
+          },
+          "got_bindings": {
+            "_ZTVN5storm5punch27ProductPunchClientImpl_MainE": {
+              "cell": "0x18fb200",
+              "pointee": "0x183a2f8"
+            },
+            "_ZTV14Nested98350081": {
+              "cell": "0x18fb1f0",
+              "pointee": "0x183a780"
+            }
+          },
+          "literals": {
+            "00": "0x1326e41"
+          }
+        },
+        {
+          "address": "0x5e3530",
+          "size": 100,
+          "symbol": "_ZN5storm5punch15PunchMpeAdapterD2Ev",
+          "target_sha256": "cabe4e595c61693dc5a590200d68cee65afe3a56993028a134517ad184314430",
+          "bindings": {
+            "_ZN8LcMemberILm98785793EED1Ev": "0x5e54e0",
+            "_ZN6LcTreeILm98785794EE7DestroyEPS0_Pv": "0x617e20",
+            "_ZN8LcMemberILm98785795EED1Ev": "0x57ef40",
+            "_Z9StormFreePvPKci": "0x56ca00",
+            "_ZN10Base5e35a0D2Ev": "0x577290"
+          },
+          "got_bindings": {
+            "_ZTVN5storm5punch15PunchMpeAdapterE": {
+              "cell": "0x18fb368",
+              "pointee": "0x183b038"
+            }
+          },
+          "literals": {
+            "00": "0x1326e41"
+          }
+        },
+        {
+          "address": "0x5e35a0",
+          "size": 108,
+          "symbol": "_ZN5storm5punch15PunchMpeAdapterD0Ev",
+          "target_sha256": "e1eefa8ecfa237ca1fc356ef8e249cab9bfc4602828ae11a5d5f0b1e6743f014",
+          "bindings": {
+            "_ZN8LcMemberILm98785793EED1Ev": "0x5e54e0",
+            "_ZN6LcTreeILm98785794EE7DestroyEPS0_Pv": "0x617e20",
+            "_ZN8LcMemberILm98785795EED1Ev": "0x57ef40",
+            "_Z9StormFreePvPKci": "0x56ca00",
+            "_ZN10Base5e35a0D2Ev": "0x577290",
+            "_ZdlPv": "0xfa3b40"
+          },
+          "got_bindings": {
+            "_ZTVN5storm5punch15PunchMpeAdapterE": {
+              "cell": "0x18fb368",
+              "pointee": "0x183b038"
+            }
+          },
+          "literals": {
+            "00": "0x1326e41"
+          }
         }
       ]
     }
