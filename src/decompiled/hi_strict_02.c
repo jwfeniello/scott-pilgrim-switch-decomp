@@ -51,8 +51,11 @@ typedef struct RecoveredSdkResult { short code; const char *unknown08; unsigned 
 #define atomic_load(p) __atomic_load_n(p, 2)
 void* memcpy(void*, const void*, size_t); void* memset(void*, int, size_t); void* memmove(void*, const void*, size_t); int memcmp(const void*, const void*, size_t); size_t strlen(const char*); int strcmp(const char*, const char*); char* strcpy(char*, const char*); char* strncpy(char*, const char*, size_t); int strncmp(const char*, const char*, size_t); void free(void*); void* malloc(size_t); float fabsf(float); float sqrtf(float); float floorf(float); float ceilf(float);
 extern void* off_18D7E00[];
+extern __int64 qword_1926BD8;
+unsigned char sub_A82B30();
 __int64 sub_DB7270();
 __int64 sub_DFB850();
+__int64 sub_F9F3E0();
 
 // N7SndGear12ClassFactoryE, virtual slot 0
 __int64 __fastcall sub_DB7510(__int64 a1)
@@ -78,5 +81,62 @@ int __fastcall sub_DFE090(__int64 a1)
     return 0;
   else
     return (*(int (__fastcall **)(_QWORD))(**(_QWORD **)(a1 + 104) + 24LL))(*(_QWORD *)(a1 + 104));
+}
+
+// N4fire18DefaultBasicStringIwEE, virtual slot 2
+__int64 __fastcall sub_F9F370(__int64 a1, char *a2)
+{
+  char *v4; // x8
+  int v5; // t1
+  unsigned __int64 v6; // x21
+  __int64 v7; // x8
+
+  v4 = a2;
+  do
+  {
+    v5 = *(_DWORD *)v4;
+    v4 += 4;
+  }
+  while ( v5 != 0 );
+  v6 = (unsigned int)((unsigned __int64)(v4 - a2) >> 2) - 1;
+  sub_F9F3E0((_QWORD *)(a1 + 8), v6);
+  v7 = *(_QWORD *)(a1 + 16);
+  if ( v7 != 0 )
+    memcpy(*(void **)(v7 + 24), a2, 4 * v6);
+  return a1;
+}
+
+void sub_FA1410(__int64 result)
+{
+  _QWORD *v1; // x19
+  _QWORD *v3; // x22
+  _QWORD *v4; // x19
+  __int64 v5; // x0
+
+  if ( result != 0 )
+  {
+    v1 = (_QWORD *)result;
+    do
+    {
+      sub_FA1410(*v1);
+      v3 = (_QWORD *)v1[1];
+      v4 = v1 - 8;
+      v5 = *(_QWORD *)((qword_1926BD8) + 8LL * (unsigned __int8)sub_A82B30(qword_1926BD8, v4) + 880);
+      result = (*(__int64 (__fastcall **)(__int64, _QWORD *))(*(_QWORD *)v5 + 48LL))(v5, v4);
+      v1 = v3;
+    }
+    while ( v3 != nullptr );
+  }
+  return;
+}
+
+double __fastcall sub_FA1D80(double a1, double a2, double a3, double a4)
+{
+  return a1 / a4 * (a1 / a4 * a3) * (a1 / a4 * 2.70158 + -1.70158) + a2;
+}
+
+double __fastcall sub_FA1DB0(double a1, double a2, double a3, double a4)
+{
+  return ((a1 / a4 + -1.0) * (a1 / a4 + -1.0) * ((a1 / a4 + -1.0) * 2.70158 + 1.70158) + 1.0) * a3 + a2;
 }
 

@@ -20,9 +20,9 @@ Edition** for Nintendo Switch.
 [Progress on decomp.dev](https://decomp.dev/jwfeniello/scott-pilgrim-switch-decomp)
 · [Progress workflow](https://github.com/jwfeniello/scott-pilgrim-switch-decomp/actions/workflows/progress.yml)
 
-**Current locally verified progress: 38,375 exact functions /
-5,015,844 bytes / 30.590637% of executable `.text`.** The original `.text` is 16,396,664 bytes.
-Of that, 2,481 functions / 306,984 bytes (1.872% of `.text`) are the decompiler's text compiled
+**Current locally verified progress: 38,553 exact functions /
+5,043,876 bytes / 30.761599% of executable `.text`.** The original `.text` is 16,396,664 bytes.
+Of that, 2,659 functions / 335,016 bytes (2.043% of `.text`) are the decompiler's text compiled
 as C, unreviewed: [what those matches do and do not show](docs/DECOMPILER_TEXT.md).
 This includes engine and library infrastructure. The project does not yet rebuild
 or boot the complete game. Original method names and many ABI declarations remain

@@ -52,6 +52,8 @@ void* memcpy(void*, const void*, size_t); void* memset(void*, int, size_t); void
 __int64 Recovered_ResultTextCopy(...);
 __int64 _Znwm(...);
 extern char goff_18EDD08[];
+extern char goff_18EDE60[];
+extern char goff_18EDE70[];
 extern char goff_18EDEF0[];
 extern char goff_18EED80[];
 extern char goff_18EED90[];
@@ -74,12 +76,16 @@ extern char goff_18F34A8[];
 extern char goff_18F34E0[];
 extern char goff_18F39E8[];
 extern char goff_18F5BB0[];
+extern char goff_18F7078[];
+extern char goff_18F7098[];
 extern char goff_18F9B90[];
 extern char goff_18F9B98[];
 extern char goff_18FA210[];
 __int64 std____shared_weak_count____release_weak(...);
 __attribute__((visibility("hidden"))) __int64 sub_264540(...);
 __attribute__((visibility("hidden"))) __int64 sub_268070(...);
+__attribute__((visibility("hidden"))) __int64 sub_2C1B30(...);
+__attribute__((visibility("hidden"))) __int64 sub_2C31E0(...);
 __attribute__((visibility("hidden"))) __int64 sub_4EC680(...);
 __attribute__((visibility("hidden"))) __int64 sub_51D050(...);
 __attribute__((visibility("hidden"))) __int64 sub_51D3A0(...);
@@ -88,6 +94,9 @@ __attribute__((visibility("hidden"))) __int64 sub_56C9F0(...);
 __attribute__((visibility("hidden"))) __int64 sub_56DC80(...);
 __attribute__((visibility("hidden"))) __int64 sub_5753C0(...);
 __attribute__((visibility("hidden"))) __int64 sub_576650(...);
+__attribute__((visibility("hidden"))) __int64 sub_57F050(...);
+__attribute__((visibility("hidden"))) __int64 sub_57F1C0(...);
+__attribute__((visibility("hidden"))) __int64 sub_583240(...);
 extern __attribute__((visibility("hidden"))) char unk_1326E41;
 
 // N5storm4echo7session18SessionBaseMessageE, virtual slot 5
@@ -981,6 +990,55 @@ __int64 __fastcall sub_446670(__int64 a1, __int64 a2, unsigned int a3)
   *(_WORD *)(v6 + 32) = 0;
   new ((void*)(&v9)) Big(((Big(*)(__typeof__(v6), __typeof__(a1), __typeof__(0)))sub_5753C0)(v6, a1, 0));
   return v6;
+}
+Big sub_47BF20(__int64 a1, int a2, unsigned int a3)
+{
+  Big ret_;
+  _QWORD *a4 = (_QWORD *)&ret_;
+
+  __int64 (__fastcall **v8)(); // x0
+  __int64 result; // x0
+  _QWORD v10[4];
+
+  v8 = (long long (**)())(sub_583240());
+  sub_57F050(v10, v8);
+  v10[0] = (_QWORD)(((__int64 *)goff_18EDE70 + 2));
+  (*(int*)((char*)v10 + 28)) = 0;
+  v10[1] = (_QWORD)(((__int64 *)goff_18EDE70 + 24));
+  if ( a2 != 0 )
+  {
+    (*(int*)((char*)v10 + 28)) = a2;
+    sub_57F1C0(v10);
+  }
+  sub_2C31E0(a1, goff_18F7078, v10);
+  result = sub_2C1B30(a1, a3);
+  *a4 = 1;
+  return ret_;
+  return ret_;
+}
+Big sub_47C0B0(__int64 a1, char a2)
+{
+  Big ret_;
+  _QWORD *a3 = (_QWORD *)&ret_;
+
+  __int64 (__fastcall **v6)(); // x0
+  __int64 result; // x0
+  _QWORD v8[4];
+
+  v6 = (long long (**)())(sub_583240());
+  sub_57F050(v8, v6);
+  v8[0] = (_QWORD)(((__int64 *)((__int64*)goff_18EDE60) + 2));
+  (*(char*)((char*)v8 + 26)) = 0;
+  v8[1] = (_QWORD)(((__int64 *)((__int64*)goff_18EDE60) + 24));
+  if ( (a2 & 1) != 0 )
+  {
+    (*(char*)((char*)v8 + 26)) = 1;
+    sub_57F1C0(v8);
+  }
+  result = sub_2C31E0(a1, goff_18F7098, v8);
+  *a3 = 1;
+  return ret_;
+  return ret_;
 }
 __int64 __fastcall sub_549110(
         __int64 a1,

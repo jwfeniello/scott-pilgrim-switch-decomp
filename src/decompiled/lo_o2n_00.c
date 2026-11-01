@@ -57,6 +57,7 @@ extern __attribute__((visibility("hidden"))) __int64 qword_191B6C0;
 extern __attribute__((visibility("hidden"))) __int64 qword_191CD10;
 extern __attribute__((visibility("hidden"))) __int64 qword_191DCE8;
 extern __attribute__((visibility("hidden"))) __int64 qword_1926BD8;
+extern __attribute__((visibility("hidden"))) __int64 qword_1935058;
 extern __attribute__((visibility("hidden"))) __int64 qword_1935138;
 __attribute__((visibility("hidden"))) __int64 sub_1E7720();
 __attribute__((visibility("hidden"))) __int64 sub_1E7A80();
@@ -93,7 +94,10 @@ __attribute__((visibility("hidden"))) __int64 sub_250A30();
 __attribute__((visibility("hidden"))) __int64 sub_2518E0();
 __attribute__((visibility("hidden"))) __int64 sub_2518F0();
 __attribute__((visibility("hidden"))) __int64 sub_252400();
+__attribute__((visibility("hidden"))) __int64 sub_6782A0();
 __attribute__((visibility("hidden"))) __int64 sub_67EDD0();
+__attribute__((visibility("hidden"))) __int64 sub_682F80();
+__attribute__((visibility("hidden"))) __int64 sub_683650();
 __attribute__((visibility("hidden"))) __int64 sub_690410();
 __attribute__((visibility("hidden"))) __int64 sub_69BDF0();
 __attribute__((visibility("hidden"))) unsigned char sub_A82B30();
@@ -483,6 +487,37 @@ __int64 __fastcall sub_687250(__int64 a1)
     return (*(__int64 (__fastcall **)(__int64, __int64))(*(_QWORD *)v8 + 48LL))(v8, v6);
   }
   return result;
+}
+
+// N4Onyx8Graphics17NewMaterialSystem10ShaderFileE, virtual slot 4
+__int64 __fastcall sub_687B40(__int64 a1, __int64 a2, __int64 a3)
+{
+  unsigned int *v6; // x21
+  __int64 v7; // x1
+  __int64 v8; // x1
+
+  sub_6782A0();
+  sub_682F80(a1 + 80, a2, a3);
+  v6 = (unsigned int *)(a1 + 120);
+  *(_QWORD *)a2 += ({ __auto_type h0_ = *(_QWORD *)(a2 + 8); __auto_type h1_ = a1 + 120; (*(unsigned int (__fastcall **)(_QWORD, __int64, __int64))(**(_QWORD **)(a2 + 8) + 48LL))(h0_, h1_, 4); });
+  if ( *(_DWORD *)(a1 + 120) != 0 )
+  {
+    if ( ({ __auto_type h0_ = *(_QWORD *)(a2 + 8); (*(unsigned int (__fastcall **)(_QWORD))(**(_QWORD **)(a2 + 8) + 16LL))(h0_); }) != 0 )
+    {
+      v7 = *(_QWORD *)(a1 + 128);
+    }
+    else
+    {
+      v8 = *v6;
+      if ( (_DWORD)v8 != 0 )
+        v7 = ({ __auto_type h0_ = *(_QWORD *)(qword_1935058 + 1368); (*(__int64 (__fastcall **)(_QWORD, __int64, __int64))(**(_QWORD **)(qword_1935058 + 1368) + 24LL))(h0_, v8, 4); });
+      else
+        v7 = 0;
+      *(_QWORD *)(a1 + 128) = v7;
+    }
+    *(_QWORD *)a2 += ({ __auto_type h0_ = *(_QWORD *)(a2 + 8); __auto_type h2_ = *v6; (*(unsigned int (__fastcall **)(_QWORD, __int64, _QWORD))(**(_QWORD **)(a2 + 8) + 48LL))(h0_, v7, h2_); });
+  }
+  return sub_683650(a2, a1 + 136);
 }
 
 __int64 __fastcall sub_68FA30(char *a1)

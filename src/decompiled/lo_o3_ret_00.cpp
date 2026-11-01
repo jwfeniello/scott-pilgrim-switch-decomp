@@ -49,6 +49,9 @@ struct Big { char data[4096]; };
 inline void* operator new(size_t, void* where) noexcept { return where; }
 extern "C" {
 void* memcpy(void*, const void*, size_t); void* memset(void*, int, size_t); void* memmove(void*, const void*, size_t); int memcmp(const void*, const void*, size_t); size_t strlen(const char*); int strcmp(const char*, const char*); char* strcpy(char*, const char*); char* strncpy(char*, const char*, size_t); int strncmp(const char*, const char*, size_t); void free(void*) noexcept; void* malloc(size_t); float fabsf(float); float sqrtf(float); float floorf(float); float ceilf(float);
+__int64 nn__ldn__CloseAccessPoint(...) noexcept;
+__int64 nn__ldn__CloseStation(...) noexcept;
+__int64 nn__ldn__GetState(...) noexcept;
 __attribute__((visibility("hidden"))) __int64 sub_313860(...);
 __attribute__((visibility("hidden"))) __int64 sub_313F70(...);
 __attribute__((visibility("hidden"))) __int64 sub_3145B0(...);
@@ -240,4 +243,56 @@ Big sub_464F60(_QWORD *result)
   return ret_;
 }
 
+// N5storm19SimpleLDNControllerE, virtual slot 123
+Big sub_49F340(char *a1)
+{
+  Big ret_;
+  __int64 a2 = (__int64)&ret_;
+
+  char *result; // x0
+  int v5; // w8
+  int v6; // w8
+  int v7; // w9
+  __int64 v8_b_[2];
+
+  *(_QWORD *)a2 = 1;
+  *(_DWORD *)(a2 + 8) = 0;
+  result = (char *)nn__ldn__GetState(a1);
+  switch ( (int)(__int64)result )
+  {
+    case 2:
+      result = (char *)nn__ldn__CloseAccessPoint(result);
+      goto LABEL_5;
+    case 3:
+    case 5:
+      *(_QWORD *)a2 = 4293967296LL;
+      break;
+    case 4:
+      result = (char *)nn__ldn__CloseStation(result);
+LABEL_5:
+      if ( (_DWORD)(__int64)result != 0 )
+        v5 = -1000000;
+      else
+        v5 = 1;
+      *(_DWORD *)a2 = v5;
+      *(_DWORD *)(a2 + 4) = 0;
+      *(_DWORD *)(a2 + 8) = (_DWORD)(__int64)result;
+      break;
+    case 6:
+      new ((void*)(&(*v8_b_))) Big((*(Big(**)(char *))(*(_QWORD *)a1 + 888LL))(a1));
+      v6 = (*(int*)((char*)v8_b_ + 8));
+      if ( (*(int*)((char*)v8_b_ + 8)) != 0 )
+        v7 = -1000000;
+      else
+        v7 = 1;
+      *(_DWORD *)a2 = v7;
+      *(_DWORD *)(a2 + 4) = 0;
+      *(_DWORD *)(a2 + 8) = v6;
+      break;
+    default:
+      return ret_;
+  }
+  return ret_;
+  return ret_;
+}
 }

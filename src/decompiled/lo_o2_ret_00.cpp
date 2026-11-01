@@ -3446,6 +3446,75 @@ Big sub_42D500(__int64 a1, __int64 unused1, __int64 a2, char a3)
   return ret_;
 }
 
+// N5storm4echo23NetObjectAgentOperation18CActivationMementoE, virtual slot 0
+Big sub_439450(__int64 a1, char a2, __int64 a3)
+{
+  Big ret_;
+  _QWORD *a4 = (_QWORD *)&ret_;
+
+  __int64 result; // x0
+  int v8; // w8
+
+  if ( *(_BYTE *)(a1 + 32) != 0 )
+  {
+    result = ({ __auto_type h1_ = ((1 << a2) & *(_DWORD *)(a1 + 24)) == 0; (*(__int64 (__fastcall **)(__int64, bool))(*(_QWORD *)a3 + 216LL))(a3, h1_); });
+  }
+  else
+  {
+    result = ({ __auto_type h1_ = *(unsigned __int8 *)(a1 + 33); (*(__int64 (__fastcall **)(__int64, _QWORD))(*(_QWORD *)a3 + 216LL))(a3, h1_); });
+    v8 = 1 << a2;
+    if ( *(_BYTE *)(a1 + 33) != 0 )
+      *(_DWORD *)(a1 + 28) |= v8;
+    else
+      *(_DWORD *)(a1 + 24) |= v8;
+  }
+  *a4 = 1;
+  return ret_;
+  return ret_;
+}
+
+// N5storm4echo23NetObjectAgentOperation15CAddSessionPeerE, virtual slot 0
+Big sub_439510(__int64 a1, __int64 unused1, __int64 a2)
+{
+  Big ret_;
+  _QWORD *a3 = (_QWORD *)&ret_;
+
+  __int64 result; // x0
+
+  result = ({ __auto_type h1_ = *(unsigned int *)(a1 + 16); __auto_type h2_ = *(unsigned int *)(a1 + 20); __auto_type h3_ = *(unsigned int *)(a1 + 32); __auto_type h4_ = *(_QWORD *)(a1 + 24); (*(__int64 (__fastcall **)(__int64, _QWORD, _QWORD, _QWORD, _QWORD))(*(_QWORD *)a2 + 40LL))(a2, h1_, h2_, h3_, h4_); });
+  *a3 = 1;
+  return ret_;
+  return ret_;
+}
+
+// N5storm4echo23NetObjectAgentOperation18CRemoveSessionPeerE, virtual slot 0
+Big sub_439570(__int64 a1, __int64 unused1, __int64 a2)
+{
+  Big ret_;
+  _QWORD *a3 = (_QWORD *)&ret_;
+
+  __int64 result; // x0
+
+  result = ({ __auto_type h1_ = *(unsigned int *)(a1 + 8); __auto_type h2_ = *(unsigned int *)(a1 + 12); (*(__int64 (__fastcall **)(__int64, _QWORD, _QWORD))(*(_QWORD *)a2 + 48LL))(a2, h1_, h2_); });
+  *a3 = 1;
+  return ret_;
+  return ret_;
+}
+
+// N5storm4echo23NetObjectAgentOperation23CSendMementosToLoopbackE, virtual slot 0
+Big sub_43BF50(__int64 a1, __int64 unused1, __int64 a2)
+{
+  Big ret_;
+  _QWORD *a3 = (_QWORD *)&ret_;
+
+  __int64 result; // x0
+
+  result = ({ __auto_type h1_ = *(_QWORD *)(a1 + 8); __auto_type h2_ = *(_QWORD *)(a1 + 16); (*(__int64 (__fastcall **)(__int64, _QWORD, _QWORD))(*(_QWORD *)a2 + 264LL))(a2, h1_, h2_); });
+  *a3 = 1;
+  return ret_;
+  return ret_;
+}
+
 // N5storm10DataNumberIjLNS_19DataNumberQualifier11EQualifiersE4ELj0EEE, virtual slot 5
 Big sub_444BF0(__int64 a1, __int64 a2)
 {

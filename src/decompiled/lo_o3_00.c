@@ -116,6 +116,7 @@ __attribute__((visibility("hidden"))) __int64 sub_14EA00();
 __attribute__((visibility("hidden"))) __int64 sub_14EBE0();
 __attribute__((visibility("hidden"))) __int64 sub_257400();
 __attribute__((visibility("hidden"))) _Bool sub_260850();
+__attribute__((visibility("hidden"))) _Bool sub_269850();
 __attribute__((visibility("hidden"))) __int64 sub_28B5F0();
 __attribute__((visibility("hidden"))) __int64 sub_2C2960();
 __attribute__((visibility("hidden"))) _Bool sub_2C2F70();
@@ -672,6 +673,71 @@ bool __fastcall sub_258EE0(__int64 a1, __int64 a2)
   return false;
 }
 
+// N5storm4echo6object8outEvent14MasterResolvedE, virtual slot 13
+_Bool __fastcall sub_2610C0(__int64 a1, __int64 a2)
+{
+  _Bool v4; // w0
+
+  if ( (sub_260850(a1, a2)) == 0 )
+    return 0;
+  v4 = sub_589530(a2, (_BYTE *)(a1 + 56), 0x20u, 1);
+  *(_DWORD *)(a1 + 56) = __builtin_bswap32(*(_DWORD *)(a1 + 56));
+  return v4 & 1;
+}
+
+// N5storm4echo6object8outEvent15ReplicaResolvedE, virtual slot 13
+_Bool __fastcall sub_261230(__int64 a1, __int64 a2)
+{
+  _Bool v4; // w0
+
+  if ( (sub_260850(a1, a2)) == 0 )
+    return 0;
+  v4 = sub_589530(a2, (_BYTE *)(a1 + 56), 0x20u, 1);
+  *(_DWORD *)(a1 + 56) = __builtin_bswap32(*(_DWORD *)(a1 + 56));
+  return v4 & 1;
+}
+
+// N5storm4echo6object8outEvent20ResolvedReplicaReadyE, virtual slot 13
+_Bool __fastcall sub_2613F0(__int64 a1, __int64 a2)
+{
+  _Bool v4; // w0
+
+  if ( (sub_260850(a1, a2)) == 0 )
+    return 0;
+  v4 = sub_589530(a2, (_BYTE *)(a1 + 56), 0x20u, 1);
+  *(_DWORD *)(a1 + 56) = __builtin_bswap32(*(_DWORD *)(a1 + 56));
+  return v4 & 1;
+}
+
+// N5storm4echo6object8outEvent10MasterGoneE, virtual slot 13
+_Bool __fastcall sub_261660(__int64 a1, __int64 a2)
+{
+  _Bool v4; // w0
+
+  if ( (sub_260850(a1, a2)) == 0 )
+    return 0;
+  v4 = sub_589530(a2, (_BYTE *)(a1 + 56), 0x20u, 1);
+  *(_DWORD *)(a1 + 56) = __builtin_bswap32(*(_DWORD *)(a1 + 56));
+  return v4 & 1;
+}
+
+// N5storm4echo6object8outEvent18MasterRoleMigratedE, virtual slot 13
+_Bool __fastcall sub_263300(__int64 a1, __int64 a2)
+{
+  _Bool v4; // w0
+  _Bool v5; // w0
+
+  if ( (sub_260850(a1, a2)) == 0 )
+    return 0;
+  v4 = sub_589530(a2, (_BYTE *)(a1 + 56), 0x20u, 1);
+  *(_DWORD *)(a1 + 56) = __builtin_bswap32(*(_DWORD *)(a1 + 56));
+  if ( (v4 & 1) == 0 )
+    return 0;
+  v5 = sub_589530(a2, (_BYTE *)(a1 + 60), 0x20u, 1);
+  *(_DWORD *)(a1 + 60) = __builtin_bswap32(*(_DWORD *)(a1 + 60));
+  return v5 & 1;
+}
+
 // N5storm4echo6object8outEvent9ReadyFailE, virtual slot 13
 int __fastcall sub_264180(__int64 a1, __int64 a2)
 {
@@ -700,6 +766,59 @@ int __fastcall sub_264180(__int64 a1, __int64 a2)
     }
   }
   return result;
+}
+
+// N5storm4echo14objectObserver8outEvent4GoneE, virtual slot 13
+_Bool __fastcall sub_26A820(__int64 a1, __int64 a2)
+{
+  _Bool v4; // w0
+  _Bool v5; // w0
+
+  if ( (sub_269850(a1, a2)) == 0 )
+    return 0;
+  v4 = sub_589530(a2, (_BYTE *)(a1 + 56), 0x20u, 1);
+  *(_DWORD *)(a1 + 56) = __builtin_bswap32(*(_DWORD *)(a1 + 56));
+  if ( (v4 & 1) == 0 )
+    return 0;
+  v5 = sub_589530(a2, (_BYTE *)(a1 + 60), 0x20u, 1);
+  *(_DWORD *)(a1 + 60) = __builtin_bswap32(*(_DWORD *)(a1 + 60));
+  return v5 & 1;
+}
+
+// N5storm4echo6object8outEvent15RejectedReplicaE, virtual slot 13
+_Bool __fastcall sub_273560(__int64 a1, __int64 a2)
+{
+  _Bool v4; // w0
+
+  if ( (sub_260850(a1, a2)) == 0 )
+    return 0;
+  v4 = sub_589530(a2, (_BYTE *)(a1 + 56), 0x20u, 1);
+  *(_DWORD *)(a1 + 56) = __builtin_bswap32(*(_DWORD *)(a1 + 56));
+  return v4 & 1;
+}
+
+// N5storm4echo6object8outEvent11ReplicaGoneE, virtual slot 13
+_Bool __fastcall sub_274250(__int64 a1, __int64 a2)
+{
+  _Bool v4; // w0
+
+  if ( (sub_260850(a1, a2)) == 0 )
+    return 0;
+  v4 = sub_589530(a2, (_BYTE *)(a1 + 56), 0x20u, 1);
+  *(_DWORD *)(a1 + 56) = __builtin_bswap32(*(_DWORD *)(a1 + 56));
+  return v4 & 1;
+}
+
+// N5storm4echo6object8outEvent14AddReplicaFailE, virtual slot 13
+_Bool __fastcall sub_274720(__int64 a1, __int64 a2)
+{
+  _Bool v4; // w0
+
+  if ( (sub_260850(a1, a2)) == 0 )
+    return 0;
+  v4 = sub_589530(a2, (_BYTE *)(a1 + 56), 0x20u, 1);
+  *(_DWORD *)(a1 + 56) = __builtin_bswap32(*(_DWORD *)(a1 + 56));
+  return v4 & 1;
 }
 
 // N5storm15NetPropertyDataINS_4GUIDENS_20NetPropertyDataTraitIS1_EEEE, virtual slot 19
