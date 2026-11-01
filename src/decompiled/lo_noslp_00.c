@@ -81,6 +81,7 @@ extern char goff_18F33F0[];
 extern char goff_18F3418[];
 extern char goff_18F3420[];
 extern char goff_18F3428[];
+extern char goff_18F3430[];
 extern char goff_18F3440[];
 extern char goff_18F3448[];
 extern char goff_18F3498[];
@@ -1580,6 +1581,76 @@ _QWORD *__fastcall sub_37F690(__int64 a1, __int64 a2, unsigned int a3)
   v5[11] = v13;
   v5[10] = v12;
   *((_DWORD *)v5 + 25) = 0;
+  return v5;
+}
+
+// N5storm18DynamicTypeFactoryINS_4echo7session26SessionHostTransferMessageEEE, virtual slot 2
+_QWORD *__fastcall sub_37F8C0(__int64 a1, __int64 a2, unsigned int a3)
+{
+  _QWORD *v3; // x0
+  __int64 *v4; // x22
+  _QWORD *v5; // x19
+  __int64 **v6; // x20
+  __int64 v7; // x0
+  __int64 *v8; // x8
+  __int64 v9; // x0
+  __int64 *v10; // x8
+  __int64 v11; // x9
+  __int64 *v12; // x24
+  __int64 v13; // x0
+  __int64 v14; // x0
+  __int64 *v15; // x8
+  __int64 v16; // x0
+  __int64 *v17; // x8
+
+  v3 = (_QWORD *)sub_56C9F0(200, 8, 1092624384, 0LL, a2, a3);
+  v4 = ((__int64 *)((__int64*)goff_18EDD08) + 2);
+  *v3 = ((__int64 *)((__int64*)goff_18F3010) + 2);
+  v5 = v3;
+  v3[1] = v4;
+  v6 = (__int64 **)(v3 + 1);
+  v7 = sub_56DC80(v3 + 1);
+  v8 = ((__int64 *)((__int64*)goff_18EED90) + 2);
+  v5[2] = v7;
+  *((_WORD *)v5 + 12) = 1;
+  *v6 = v8;
+  v5[6] = v4;
+  v9 = sub_56DC80(v5 + 6);
+  v10 = goff_18F2620;
+  *((_BYTE *)v5 + 64) = 1;
+  v11 = ((__int64*)goff_18F3430);
+  v5[7] = v9;
+  v12 = v10 + 2;
+  v5[6] = v10 + 2;
+  *((_DWORD *)v5 + 17) = -1;
+  v5[9] = 0;
+  *v5 = v11 + 16;
+  v5[10] = v4;
+  v13 = sub_56DC80(v5 + 10);
+  *((_BYTE *)v5 + 96) = 1;
+  v5[11] = v13;
+  v5[10] = v12;
+  *((_DWORD *)v5 + 25) = 0;
+  v5[13] = v4;
+  v14 = sub_56DC80(v5 + 13);
+  v15 = goff_18EEE10;
+  v5[14] = v14;
+  *((_WORD *)v5 + 60) = 1;
+  v5[13] = v15 + 2;
+  v5[16] = v4;
+  v16 = sub_56DC80(v5 + 16);
+  *((_BYTE *)v5 + 144) = 1;
+  v17 = ((__int64 *)((__int64*)goff_18EED80) + 2);
+  v5[17] = v16;
+  v5[16] = v17;
+  v5[20] = 0;
+  v5[21] = 0;
+  v5[19] = 0;
+  v5[22] = v4;
+  v5[23] = sub_56DC80(v5 + 22);
+  *((_BYTE *)v5 + 192) = 1;
+  v5[22] = ((__int64 *)goff_18F2678 + 2);
+  *((_DWORD *)v5 + 49) = -1;
   return v5;
 }
 

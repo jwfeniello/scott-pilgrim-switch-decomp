@@ -111,6 +111,7 @@ __int64 std__shared_timed_mutex__lock_shared(...);
 __int64 std__shared_timed_mutex__unlock(...);
 __int64 std__shared_timed_mutex__unlock_shared(...);
 __int64 std__string__basic_string(...);
+__attribute__((visibility("hidden"))) __int64 sub_18DA10(...);
 __attribute__((visibility("hidden"))) __int64 sub_1E54D0(...);
 __attribute__((visibility("hidden"))) __int64 sub_257590(...);
 __attribute__((visibility("hidden"))) __int64 sub_257C10(...);
@@ -260,8 +261,10 @@ __attribute__((visibility("hidden"))) __int64 sub_697BF0(...);
 __attribute__((visibility("hidden"))) __int64 sub_6D140(...);
 __attribute__((visibility("hidden"))) __int64 sub_7E7E0(...);
 __attribute__((visibility("hidden"))) __int64 sub_C22610(...);
+__attribute__((visibility("hidden"))) __int64 sub_D63E0(...);
 __attribute__((visibility("hidden"))) __int64 sub_E86C0(...);
 __attribute__((visibility("hidden"))) __int64 sub_E94A0(...);
+__attribute__((visibility("hidden"))) __int64 sub_EA1F0(...);
 extern __attribute__((visibility("hidden"))) char unk_1326E41;
 extern __attribute__((visibility("hidden"))) char unk_13610B8;
 
@@ -346,6 +349,91 @@ Big sub_411A0(__int64 a1)
   }
   return ret_;
   return ret_;
+}
+unsigned __int64 __fastcall sub_DCAE0(__int64 a1, __int64 a2, __int64 a3, __int64 a4, __int64 a5, __int64 *a6, int a7)
+{
+  unsigned __int64 v14; // x0
+  unsigned int *v15; // x8
+  __int64 *v16; // x27
+  unsigned __int64 *v17; // x1
+  unsigned int v18; // w9
+  __int64 v19; // x23
+  __int64 v20; // x24
+  unsigned __int64 v21; // x0
+  unsigned int *v22; // x8
+  unsigned int v23; // w9
+  unsigned int v24; // w9
+  unsigned __int64 result; // x0
+  unsigned int *v26; // x8
+  unsigned __int64 *v27; // x19
+  unsigned int v28; // w9
+  unsigned __int64 v29; // [xsp+8h] [xbp-48h] BYREF
+
+  v14 = sub_36EA0(0x28u, 4u, 0, 1086324736);
+  *(_DWORD *)(v14 + 8) = 0;
+  v15 = (unsigned int *)(v14 + 8);
+  v16 = ((__int64*)goff_18EC818);
+  *(_QWORD *)(v14 + 24) = 0;
+  *(_QWORD *)(v14 + 32) = 0;
+  *(_QWORD *)(v14 + 16) = 0;
+  *(_QWORD *)v14 = (_QWORD)(v16 + 2);
+  *(_QWORD *)(a1 + 8) = 0;
+  v17 = (unsigned __int64 *)(a1 + 8);
+  if ( v14 != 0 )
+  {
+    v18 = __atomic_fetch_add(v15, 1, 5);
+    __atomic_exchange_n(v17, v14, 5);
+  }
+  else
+  {
+    __atomic_exchange_n(v17, 0, 5);
+  }
+  *(_BYTE *)(a1 + 16) = 0;
+  sub_EA1F0(a1 + 24, v17, a2, a3, a4, a5);
+  *(_QWORD *)(a1 + 144) = 0;
+  *(_QWORD *)(a1 + 152) = 0;
+  *(_QWORD *)(a1 + 136) = a1 + 144;
+  v19 = *a6;
+  v20 = a6[1];
+  if ( *a6 != v20 )
+  {
+    do
+    {
+      new ((void*)(&v29)) Big(((Big(*)(__typeof__(*(_DWORD *)v19), __typeof__((unsigned __int64 *)(v19 + 8))))sub_D63E0)(*(_DWORD *)v19, (unsigned __int64 *)(v19 + 8)));
+      sub_18DA10(a1 + 136, &v29, &v29);
+      v21 = __atomic_exchange_n(&v29, 0, 5);
+      if ( v21 != 0 )
+      {
+        v22 = (unsigned int *)(v21 + 8);
+        v24 = __atomic_sub_fetch(v22, 1, 5);
+        if ( v24 == 0 )
+          (*(void (__fastcall **)(unsigned __int64))(*(_QWORD *)v21 + 16LL))(v21);
+      }
+      v19 += 16;
+    }
+    while ( v19 != v20 );
+  }
+  *(_DWORD *)(a1 + 160) = a7;
+  *(_DWORD *)(a1 + 164) = 0;
+  result = sub_36EA0(0x28u, 4u, 0, 1086324736);
+  *(_DWORD *)(result + 8) = 0;
+  v26 = (unsigned int *)(result + 8);
+  *(_QWORD *)result = (_QWORD)(v16 + 2);
+  *(_QWORD *)(result + 24) = 0;
+  *(_QWORD *)(result + 32) = 0;
+  *(_QWORD *)(result + 16) = 0;
+  *(_QWORD *)(a1 + 168) = 0;
+  v27 = (unsigned __int64 *)(a1 + 168);
+  if ( result != 0 )
+  {
+    v28 = __atomic_fetch_add(v26, 1, 5);
+    __atomic_exchange_n(v27, result, 5);
+  }
+  else
+  {
+    __atomic_exchange_n(v27, 0, 5);
+  }
+  return result;
 }
 void sub_E9A10(
         _QWORD *a1,

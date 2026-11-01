@@ -61,6 +61,7 @@ __attribute__((visibility("hidden"))) __int64 sub_4F4A80();
 __attribute__((visibility("hidden"))) __int64 sub_4F6A30();
 __attribute__((visibility("hidden"))) __int64 sub_51DD50();
 __attribute__((visibility("hidden"))) __int64 sub_51E060();
+__attribute__((visibility("hidden"))) __int64 sub_5484D0();
 __attribute__((visibility("hidden"))) __int64 sub_55A080();
 __attribute__((visibility("hidden"))) __int64 sub_56CA00();
 __attribute__((visibility("hidden"))) __int64 sub_579100();
@@ -204,6 +205,22 @@ __int64 __fastcall sub_548360(__int64 a1, __int64 a2)
   v3 = sub_4EB320(416, &unk_1326E41, 0);
   result = sub_51E060();
   *(_QWORD *)(v2 + 56) = v3;
+  return result;
+}
+
+__int64 __fastcall sub_5487D0(__int64 a1)
+{
+  __int64 v2; // x0
+  __int64 v3; // x20
+  __int64 result; // x0
+
+  sub_5484D0();
+  v2 = *(_QWORD *)(a1 + 72);
+  if ( v2 != 0 )
+    (*(void (__fastcall **)(__int64))(*(_QWORD *)v2 + 8LL))(v2);
+  v3 = sub_4EB320(416, &unk_1326E41, 0);
+  result = sub_51E060();
+  *(_QWORD *)(a1 + 72) = v3;
   return result;
 }
 
