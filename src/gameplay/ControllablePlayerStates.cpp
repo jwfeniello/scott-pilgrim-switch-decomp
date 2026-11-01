@@ -392,4 +392,133 @@ int ControllablePlayer::State247(int event) {
     return result;
 }
 
+// A sliding attack: starts, holds its middle animation until the slide slows down, then finishes.
+int ControllablePlayer::State179(int event) {
+    int result = kStateHandled;
+    switch (event) {
+    case kStateUpdate: {
+        int current = animation;
+        if (current == 33) {
+            if (AnimationDone()) {
+                result = kStateHandled;
+                PlayAnimation(34, true, true, 1.0f);
+                return result;
+            }
+        } else if (current == 34) {
+            if (__builtin_fabsf(motion.x) < slideStopSpeed) {
+                result = kStateHandled;
+                PlayAnimation(35, false, true, 1.0f);
+                return result;
+            }
+        } else if (current == 35 && AnimationDone()) {
+            states.Transition(State96Ptr());
+            return kStateParentTookOver;
+        }
+        return kStateHandled;
+    }
+    case kStateEnter: {
+        float speed = slideAttackSpeed;
+        float x = speed * FacingSign();
+        float scale = SpeedScale();
+        result = kStateHandled;
+        motionTarget.x = x * scale;
+        value1bc = 0.0f;
+        StartAttack(&attackC50, false, 1, nullptr);
+        PlayAnimation(33, false, true, 1.0f);
+        return result;
+    }
+    case kStateEvent3:
+        return result;
+    default:
+        return kStateUnhandled;
+    case kStateExit:
+        result = kStateHandled;
+        motionTarget.x = 0.0f;
+        motion.x = 0.0f;
+        return result;
+    }
+}
+
+// A second sliding attack, the same as State179 on its own animations and attack.
+int ControllablePlayer::State181(int event) {
+    int result = kStateHandled;
+    switch (event) {
+    case kStateUpdate: {
+        int current = animation;
+        if (current == 36) {
+            if (AnimationDone()) {
+                result = kStateHandled;
+                PlayAnimation(37, true, true, 1.0f);
+                return result;
+            }
+        } else if (current == 37) {
+            if (__builtin_fabsf(motion.x) < slideStopSpeed) {
+                result = kStateHandled;
+                PlayAnimation(38, false, false, 1.0f);
+                return result;
+            }
+        } else if (current == 38 && AnimationDone()) {
+            states.Transition(State96Ptr());
+            return kStateParentTookOver;
+        }
+        return kStateHandled;
+    }
+    case kStateEnter: {
+        float speed = slideAttackSpeed;
+        float x = speed * FacingSign();
+        float scale = SpeedScale();
+        result = kStateHandled;
+        motionTarget.x = x * scale;
+        value1bc = 0.0f;
+        StartAttack(&attackCa8, false, 1, nullptr);
+        PlayAnimation(36, false, true, 1.0f);
+        return result;
+    }
+    case kStateEvent3:
+        return result;
+    default:
+        return kStateUnhandled;
+    case kStateExit:
+        result = kStateHandled;
+        motionTarget.x = 0.0f;
+        motion.x = 0.0f;
+        return result;
+    }
+}
+
+// A step along the way the actor faces, ending on the state its button says.
+int ControllablePlayer::State235(int event) {
+    int result = kStateHandled;
+    switch (event) {
+    case kStateUpdate:
+        if (!IsOnGround()) {
+            states.Transition(State102Ptr());
+        } else {
+            if (!AnimationDone()) return kStateHandled;
+            if (input->held & (1ull << value141c)) states.Transition(State98Ptr());
+            else states.Transition(State96Ptr());
+        }
+        return kStateParentTookOver;
+    case kStateEnter: {
+        motion = onyx::Vector3::Zero();
+        motionTarget = onyx::Vector3::Zero();
+        PlayAnimation(9, false, false, 1.0f);
+        float sign = FacingSign();
+        result = kStateHandled;
+        flag3ba = 1;
+        motion.x = value8d0 * sign;
+        return result;
+    }
+    case kStateEvent3:
+        return result;
+    default:
+        return kStateUnhandled;
+    case kStateExit:
+        result = kStateHandled;
+        motion.x = 0.0f;
+        flag3ba = 0;
+        return result;
+    }
+}
+
 }  // namespace SPTG

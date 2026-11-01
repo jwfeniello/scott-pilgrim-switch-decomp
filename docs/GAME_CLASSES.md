@@ -214,6 +214,17 @@ A few more things decide these handlers' code:
 - **Declared parameter types show up in callers.** `SetFacing` takes an `int`. Its own code
   looks the same with a `uint8_t`, but `PlayAnimationOn` only schedules its load of the
   argument correctly with the wider type.
+- **A case's position changes the order inside it.** A constant result can land before the
+  stores of an exit case or between them. The original's order comes out with the exit case
+  listed last, after `default`, as in `BaseCharacter::State122`. `State179`, `State181` and
+  `State235` match this way.
+- **Sharing a compare keeps its form.** LLVM rewrites `x > 9 ? 9 : x` into a minimum unless the
+  compare has another use. `UseItem` caps the count at +0x870 and also uses the compare's
+  opposite, which gives the original's two separate compares:
+  `bool over = lives > 9; value870 = over ? 9 : lives; used |= !over;`
+- **Sinking identical calls.** When every arm of an `if`/`else` ends in `states.Transition(...)`,
+  LLVM sinks the calls into one block, down to the virtual call that gets the state. `State235`
+  needs one `Transition` per arm, not a ternary inside one call.
 - **Loads after slow paths.** A value read before an accessor's slow path stays in a
   callee-saved register across it. `slideSpeed * FacingSign()` holds the speed in
   `d8`; computing the sign into a local first gives the original's code.
@@ -947,15 +958,14 @@ A character can ride an `SPTG::InteractiveObject`. `BaseCharacter` keeps the han
 
 ### Items
 
-`ControllablePlayer::UseItem` (`0x80e9a0`, not matched yet: it differs by one conditional select)
-shows how an item works. An item holds a list of effects, each with a kind and an amount. These are
+`ControllablePlayer::UseItem` (`0x80e9a0`) shows how an item works. An item holds a list of effects, each with a kind and an amount. These are
 the kinds, which also back up the stat names above:
 
 | Kind | Effect |
 |---|---|
 | 0 | `GainHealth` |
 | 1 | `AddGuts` |
-| 2 | `0x80ecc0`, which adds to an amount at +0x13ec and can set bits in the player's record |
+| 2 | `0x80ecc0`: experience. It adds to +0x13ec, works out the level from a table in the player's record, and sets a bit in the record's moves for each level gained |
 | 3 | Adds to the count at +0x870, kept to 9 at most |
 | 4 to 7 | Adds to `statDefense`, `statSpeed`, `statWill` or `statStrength`, kept between 0 and 100 |
 | 8 | Sets the flag at +0x13f8 |

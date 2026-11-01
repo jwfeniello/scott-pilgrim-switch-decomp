@@ -113,4 +113,86 @@ float ControllablePlayer::Slot152() {
     return value894 / 100.0f * Max(statStrength, 0.0f) + 1.0f;
 }
 
+// What an item does when used. Returns whether any of its effects did anything.
+bool ControllablePlayer::UseItem(Item* item) {
+    if (!item->effectCount) return false;
+    bool used = false;
+    for (uint32_t i = 0; i < item->effectCount; ++i) {
+        ItemEffect& effect = item->effects[i];
+        switch (effect.kind) {
+        case kItemHealth:
+            GainHealth(effect.amount);
+            used = true;
+            break;
+        case kItemGuts:
+            AddGuts(effect.amount);
+            used = true;
+            break;
+        case kItemExperience:
+            GainExperience(effect.amount);
+            used = true;
+            break;
+        case kItemLives: {
+            uint32_t lives = effect.amount + value870;
+            bool over = lives > 9;
+            value870 = over ? 9 : lives;
+            used |= !over;
+            break;
+        }
+        case kItemDefense: {
+            float amount = effect.amount;
+            float before = statDefense;
+            float after = Clamp(before + amount, 0.0f, 100.0f);
+            bool changed = before != after;
+            statDefense = after;
+            used |= changed;
+            break;
+        }
+        case kItemSpeed: {
+            float amount = effect.amount;
+            float before = statSpeed;
+            float after = Clamp(before + amount, 0.0f, 100.0f);
+            bool changed = before != after;
+            statSpeed = after;
+            used |= changed;
+            break;
+        }
+        case kItemWill: {
+            float amount = effect.amount;
+            float before = statWill;
+            float after = Clamp(before + amount, 0.0f, 100.0f);
+            bool changed = before != after;
+            statWill = after;
+            used |= changed;
+            break;
+        }
+        case kItemStrength: {
+            float amount = effect.amount;
+            float before = statStrength;
+            float after = Clamp(before + amount, 0.0f, 100.0f);
+            bool changed = before != after;
+            statStrength = after;
+            used |= changed;
+            break;
+        }
+        case kItemFlag:
+            used = true;
+            flag13f8 = 1;
+            break;
+        case kItemLearnMove:
+            used |= LearnMove(effect.move);
+            break;
+        case kItemEffect10:
+            used |= Effect10();
+            break;
+        }
+    }
+    if (!used) return false;
+    CharacterMessage message(7, nullptr);
+    message.receiver = this;
+    message.dataValue = item->id;
+    OnMessage(&message);
+    return true;
+}
+
 }  // namespace SPTG
