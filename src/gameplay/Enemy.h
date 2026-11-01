@@ -27,7 +27,19 @@ struct TargetEntry {
     onyx::ComponentHandle* actor;     // +0x10
 };
 
+// What a level gate singleton (SPTG::SwitchLevelGate) gives the enemy states.
+struct LevelGateState : onyx::Component {
+    char padding_8[0x110];
+    int32_t mode;   // +0x118
+};
+struct SwitchLevelGateAccess {
+    char padding[0xa8];
+    onyx::ComponentHandle* state;   // +0xa8, a LevelGateState
+};
+
 struct Enemy : BaseCharacter {
+    bool Slot46(BaseCharacter* other);                               // slot 46, overrides BaseCharacter
+    void SetSolid(bool solid);                                       // slot 56, overrides BaseCharacter
     bool OnHit(BaseCharacter* other, void* hit);                     // slot 38, overrides BaseCharacter (0x9cd330)
     void Slot41(bool a, bool b, bool c, void* data, BaseCharacter* other, float scale, float f1, float f2, float f3);   // slot 41, overrides BaseCharacter
     int Slot45();                                                    // slot 45, overrides BaseCharacter
@@ -45,6 +57,8 @@ struct Enemy : BaseCharacter {
     int State112(int event);                                         // slot 112, overrides BaseCharacter
     int State116(int event);                                         // slot 116, overrides BaseCharacter
     int State126(int event);                                         // slot 126, overrides BaseCharacter
+    void LoseGuts(float amount);                                     // slot 90, overrides BaseCharacter
+    onyx::Vector2 Slot147();                                         // slot 147, overrides BaseCharacter
     int State136(int event);                                         // slot 136, overrides BaseCharacter
     SPTG_SLOT(159) SPTG_SLOT(160) SPTG_SLOT(161)
     virtual bool Slot162();                                                  // slot 162
@@ -93,7 +107,7 @@ struct Enemy : BaseCharacter {
     char padding_77c[0xc];
     onyx::ComponentHandle* handle788; // +0x788
     onyx::ComponentHandle* handle790; // +0x790
-    void* slot798;               // +0x798: filled by AssignComponentSlot
+    Singleton<SwitchLevelGateAccess> levelGate; // +0x798: filled by AssignComponentSlot, getter 0x770d70
     Singleton<EnemyScaling> scaling; // +0x7a0: getter 0x7a1bc0
     char padding_7a8[0x4];
     float value7ac;              // +0x7ac
@@ -157,8 +171,8 @@ struct Enemy : BaseCharacter {
     int32_t value97c;            // +0x97c
     float value980;              // +0x980
     float delay984;              // +0x984
-    int32_t value988;            // +0x988
-    int32_t value98c;            // +0x98c
+    float gutsChance;            // +0x988: the percent chance LoseGuts rolls
+    float gutsChanceLimit;       // +0x98c: only at or below this much guts
     int32_t value990;            // +0x990
     float counterChanceHealthy;  // +0x994: percent, while health is above the threshold
     float counterChance;         // +0x998: percent
@@ -210,8 +224,8 @@ struct Enemy : BaseCharacter {
     char padding_aea[0x5f];
     uint8_t flagB49;             // +0xb49
     char padding_b4a[0x2];
-    int32_t valueB4c;            // +0xb4c
-    int32_t valueB50;            // +0xb50
+    float valueB4c;              // +0xb4c
+    float valueB50;              // +0xb50
     char padding_b54[0x24];
     uint8_t flagB78;             // +0xb78
 

@@ -59,7 +59,7 @@ void Enemy::Slot4(onyx::Archive& archive, ComponentSlot::Source* source) {
     BaseCharacter::Slot4(archive, source);
     onyx::TransferHandle(handle788, archive, source);
     onyx::TransferHandle(handle790, archive, source);
-    AssignComponentSlot<7752160u, 1051727473u>(&slot798, source);
+    AssignComponentSlot<7752160u, 1051727473u>(&levelGate, source);
     AssignComponentSlot<7998976u, 1330418336u>(&scaling, source);
     onyx::TransferAs<uint32_t>(archive, value8f8);
     onyx::TransferAs<uint32_t>(archive, value8fc);
@@ -96,8 +96,8 @@ void Enemy::Slot4(onyx::Archive& archive, ComponentSlot::Source* source) {
     onyx::Transfer(archive, value97c);
     onyx::Transfer(archive, value980);
     onyx::Transfer(archive, delay984);
-    onyx::Transfer(archive, value988);
-    onyx::Transfer(archive, value98c);
+    onyx::Transfer(archive, gutsChance);
+    onyx::Transfer(archive, gutsChanceLimit);
     onyx::Transfer(archive, value990);
     onyx::Transfer(archive, counterChanceHealthy);
     onyx::Transfer(archive, counterChance);
@@ -136,6 +136,47 @@ void Enemy::Slot4(onyx::Archive& archive, ComponentSlot::Source* source) {
     onyx::Transfer(archive, valueA20);
     onyx::Transfer(archive, valueB4c);
     onyx::Transfer(archive, valueB50);
+}
+
+// Where a thrower lets go, relative to the actor. During animation 139 it adds this enemy's own offset.
+onyx::Vector2 Enemy::Slot147() {
+    if (animation != 139) return value320;
+    float x = value320.x;
+    float sign = FacingSign();
+    onyx::Vector2 point;
+    point.x = x + valueB4c * sign;
+    point.y = value320.y + valueB50;
+    return point;
+}
+
+// Adds a push set per enemy to its motion, against the way it faces, and goes to the state at slot 108.
+void Enemy::Slot228() {
+    float backward = pushBack;
+    float y = pushY;
+    float z = pushZ;
+    float sign = FacingSign();
+    float x = motion.x - backward * sign;
+    float newY = y + motion.y;
+    float newZ = z + motion.z;
+    motionTarget.z = groundZ;
+    motion.x = x;
+    motion.y = newY;
+    motion.z = newZ;
+    motionC4 = groundC4;
+    states.Transition(State108Ptr());
+}
+
+// Whether this enemy can act on `other`: only when `other`'s slot 45 is 0 or 2. When the level's mode is 12,
+// `other` must also have a slot 50 of 3 and no partner.
+bool Enemy::Slot46(BaseCharacter* other) {
+    if (Slot85()) return false;
+    int kind = other->Slot45() | 2;
+    bool result = kind == 2;
+    if (static_cast<LevelGateState*>(levelGate.Get()->state->object)->mode == 12) {
+        bool free = other->Slot50() == 3 && (!other->partnerHandle || !other->partnerHandle->object);
+        return free & (kind == 2);
+    }
+    return result;
 }
 
 }  // namespace SPTG

@@ -186,7 +186,7 @@ struct BaseCharacter : onyx::Component {
     virtual void Slot43(float value);                                        // slot 43
     virtual int StartAttack(Attack* attack, bool flag, int source, BaseCharacter* attacker); // slot 44
     virtual int Slot45();                                                    // slot 45
-    SPTG_SLOT(46) SPTG_SLOT(47) SPTG_SLOT(48)
+    virtual bool Slot46(BaseCharacter* other);  /* slot 46 */ SPTG_SLOT(47) SPTG_SLOT(48)
     virtual int Slot49();                                                    // slot 49
     virtual int Slot50();                                                    // slot 50
     virtual bool IsOut();             // checked before targeting a player   // slot 51
@@ -257,7 +257,8 @@ struct BaseCharacter : onyx::Component {
     virtual int State140(int event); virtual State State140Ptr();            // slots 140, 141
     virtual int State142(int event); virtual State State142Ptr();            // slots 142, 143
     virtual int State144(int event); virtual State State144Ptr();            // slots 144, 145
-    SPTG_SLOT(146) SPTG_SLOT(147)
+    SPTG_SLOT(146)
+    virtual onyx::Vector2 Slot147();                                         // slot 147
     virtual bool HealWithGuts(bool* out);                                         // slot 148
     virtual float Slot149();                                                 // slot 149
     virtual float MaxGuts();                                                 // slot 150
@@ -287,7 +288,11 @@ struct BaseCharacter : onyx::Component {
     float scaled9c;              // +0x9c
     char padding_a0[0xc];
     float throwSpeed;            // +0xac: horizontal speed after landing from a throw
-    char padding_b0[0x48];
+    char padding_b0[0x8];
+    float pushBack;              // +0xb8: Enemy::Slot228's push, against the way it faces
+    float pushY;                 // +0xbc
+    float pushZ;                 // +0xc0
+    char padding_c4[0x34];
     float groundZ;               // +0xf8
     float groundC4;              // +0xfc
     uint8_t flag100;             // +0x100
@@ -363,8 +368,7 @@ struct BaseCharacter : onyx::Component {
     float chargeGain;            // +0x314: the most an attack is scaled by a full charge
     float chargeTime;            // +0x318: the time a full charge takes
     int32_t value31c;            // +0x31c
-    int32_t value320;            // +0x320
-    int32_t value324;            // +0x324
+    onyx::Vector2 value320;      // +0x320
     float value328;              // +0x328
     float guts;              // +0x32c
     float timer330;              // +0x330

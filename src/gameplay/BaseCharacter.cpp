@@ -303,8 +303,8 @@ void BaseCharacter::Slot4(onyx::Archive& archive, ComponentSlot::Source* source)
     onyx::Transfer(archive, chargeGain);
     onyx::Transfer(archive, chargeTime);
     onyx::Transfer(archive, value31c);
-    onyx::Transfer(archive, value320);
-    onyx::Transfer(archive, value324);
+    onyx::Transfer(archive, value320.x);
+    onyx::Transfer(archive, value320.y);
     onyx::Transfer(archive, restitution);
     onyx::Transfer(archive, value3b4);
     ReadEventSlot<9872112u, 2018975792u>(archive, source, event3c0, this);

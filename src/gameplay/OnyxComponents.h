@@ -30,6 +30,14 @@ struct Vector3 {
     float Length() const { return __builtin_sqrtf(LengthSquared()); }
 };
 
+// Like Vector3, returned through memory.
+struct Vector2 {
+    float x, y;
+    Vector2() {}
+    Vector2(const Vector2& o) : x(o.x), y(o.y) {}
+    Vector2& operator=(const Vector2&) = default;
+};
+
 struct Component {
     virtual ~Component();
     virtual void EnsureReady();
