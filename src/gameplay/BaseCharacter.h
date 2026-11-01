@@ -428,6 +428,12 @@ struct BaseCharacter : onyx::Component {
     }
     void Apply8e5750(int value);                       // 0x8e5750
     void HoldAnimation(float time, float speed);
+    // -1 facing left, 1 facing right.
+    __attribute__((always_inline)) float FacingSign() {
+        ActorObject* actor = onyx::Find<ActorObject, onyx_types::type_6492d61d>(actorObject);
+        ActorFlags* flags = onyx::Get<ActorFlags, 0x2eae5813u>(actor->flags);
+        return flags->facingLeft ? -1.0f : 1.0f;
+    }
     BaseCharacter* Mount() { return mountHandle ? static_cast<BaseCharacter*>(mountHandle->object) : nullptr; }
     CharacterEffect* Effect() { return effectHandle ? static_cast<CharacterEffect*>(effectHandle->object) : nullptr; }
 };
@@ -449,9 +455,24 @@ struct PlayerInput {
     uint8_t flag1e4;     // +0x1e4
     char padding_1e5[0xb];
     uint16_t value1f0;   // +0x1f0
+    void Call8f80d0();   // 0x8f80d0
+    void Call8fabf0();   // 0x8fabf0
 };
 // SPTG::ControllablePlayer: its first own virtual (slot 159) receives messages.
+// What a player's attack input reads as (0x991a20).
+struct AttackInput {
+    int32_t value0;
+    union {
+        uint16_t bits;
+        struct {
+            uint8_t pressed;   // +0x4
+            uint8_t value5;    // +0x5
+        };
+    };
+    AttackInput() { bits = 0; value0 = 0; }
+};
 struct ControllablePlayer : BaseCharacter {
+    void ReadAttackInput(AttackInput* out);              // 0x991a20
     void Slot4(onyx::Archive& archive, ComponentSlot::Source* source);   // slot 4 (0x978660)
     virtual void OnMessage(CharacterMessage* message);   // slot 159
     void Notify995d50();                                 // 0x995d50
@@ -624,14 +645,14 @@ struct ControllablePlayer : BaseCharacter {
     uint8_t flag11f0;            // +0x11f0
     char padding_11f1[0x3];
     int32_t value11f4;           // +0x11f4
-    int32_t value11f8;           // +0x11f8
-    int32_t value11fc;           // +0x11fc
-    int32_t value1200;           // +0x1200
-    int32_t value1204;           // +0x1204
-    int32_t value1208;           // +0x1208
-    int32_t value120c;           // +0x120c
-    int32_t value1210;           // +0x1210
-    int32_t value1214;           // +0x1214
+    float slideStopSpeed;        // +0x11f8
+    float slideAttackSpeed;      // +0x11fc
+    float kickSpeed;              // +0x1200
+    float kickY;                  // +0x1204
+    float kickZ;                  // +0x1208
+    float dashSpeed;              // +0x120c
+    float dashY;                  // +0x1210
+    float dashZ;                  // +0x1214
     int32_t value1218;           // +0x1218
     int32_t value121c;           // +0x121c
     int32_t value1220;           // +0x1220
@@ -707,11 +728,13 @@ struct ControllablePlayer : BaseCharacter {
     int32_t value13ac;           // +0x13ac
     char padding_13b0[0x1];
     uint8_t flag13b1;            // +0x13b1
-    char padding_13b2[0xf];
+    char padding_13b2[0xe];
+    uint8_t flag13c0;            // +0x13c0
     uint8_t flag13c1;            // +0x13c1
     char padding_13c2[0x16];
     float value13d8;             // +0x13d8
-    char padding_13dc[0x15];
+    char padding_13dc[0x14];
+    uint8_t flag13f0;            // +0x13f0
     uint8_t flag13f1;            // +0x13f1
     char padding_13f2[0x1e];
     float value1410;             // +0x1410

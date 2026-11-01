@@ -91,4 +91,211 @@ void ControllablePlayer::Slot257() {
     else value1410 = 0.0f;
 }
 
+// A jump attack: plays its rising animation until it lands, ending on the landing state.
+int ControllablePlayer::State185(int event) {
+    int result = kStateHandled;
+    switch (event) {
+    case kStateUpdate:
+        if (AnimationDone()) {
+            int current = animation;
+            if (current == 79) PlayAnimation(80, true, false, 1.0f);
+            else if (current == 76) PlayAnimation(77, true, false, 1.0f);
+        }
+        if (IsOnGround() && motion.z <= 0.0f) {
+            states.Transition(State104Ptr());
+            result = kStateParentTookOver;
+            break;
+        }
+        result = kStateHandled;
+        break;
+    case kStateEnter:
+        result = kStateHandled;
+        if (flag13f1) {
+            StartAttack(&attackAf0, false, 1, nullptr);
+            PlayAnimation(76, false, false, 1.0f);
+        } else {
+            StartAttack(&attackA98, false, 1, nullptr);
+            PlayAnimation(79, false, false, 1.0f);
+        }
+        break;
+    case kStateExit:
+        motion.x = 0;
+        result = kStateHandled;
+        break;
+    case kStateEvent3:
+        return result;
+    default:
+        result = kStateUnhandled;
+        break;
+    }
+    return result;
+}
+
+// A dash in the direction the actor faces, ending when its animation does.
+int ControllablePlayer::State193(int event) {
+    int result = kStateHandled;
+    switch (event) {
+    case kStateUpdate:
+        if (!AnimationDone()) return kStateHandled;
+        states.Transition(State102Ptr());
+        return kStateParentTookOver;
+    case kStateEnter: {
+        float sign = FacingSign();
+        motionTarget.z = savedZ;
+        motionC4 = savedC4;
+        motion.x = sign * dashSpeed;
+        motion.y = dashY;
+        motion.z = dashZ;
+        PlayAnimation(85, false, false, 1.0f);
+        return kStateHandled;
+    }
+    case kStateExit:
+        states.AssertOwner(this);
+        return kStateHandled;
+    case kStateEvent3:
+        return result;
+    default:
+        return kStateUnhandled;
+    }
+}
+
+// Standing attack that can chain: on the animation's end, a held attack input with time left restarts it.
+int ControllablePlayer::State167(int event) {
+    int result = kStateHandled;
+    switch (event) {
+    case kStateUpdate: {
+        if (!AnimationDone()) {
+            result = kStateHandled;
+            break;
+        }
+        AttackInput input;
+        ReadAttackInput(&input);
+        if (input.pressed && value142c[1] > 0.0f) goto start;
+        states.Transition(State96Ptr());
+        result = kStateParentTookOver;
+        break;
+    }
+    case kStateEnter:
+        motion = onyx::Vector3::Zero();
+        motionTarget = onyx::Vector3::Zero();
+    start:
+        result = kStateHandled;
+        StartAttack(&attack9e8, false, 1, nullptr);
+        PlayAnimation(39, false, true, 1.0f);
+        break;
+    case kStateExit:
+        states.AssertOwner(this);
+        result = kStateHandled;
+        break;
+    case kStateEvent3:
+        return result;
+    default:
+        result = kStateUnhandled;
+        break;
+    }
+    return result;
+}
+
+// An attack that keeps some of the run into it: slowly moving it stops dead, otherwise it slides at slideSpeed.
+int ControllablePlayer::State173(int event) {
+    int result = kStateHandled;
+    switch (event) {
+    case kStateUpdate:
+        if (!AnimationDone()) return kStateHandled;
+        states.Transition(State96Ptr());
+        return kStateParentTookOver;
+    case kStateEnter: {
+        StartAttack(&attack938, false, 1, nullptr);
+        float speed = __builtin_fabsf(motion.x);
+        float limit = jumpBackSpeed;
+        value1bc = 0.0f;
+        float target;
+        if (speed > limit) {
+            float sign = FacingSign();
+            target = slideSpeed * sign;
+        } else {
+            target = 0.0f;
+            motion.x = 0.0f;
+        }
+        motionTarget.x = target;
+        result = kStateHandled;
+        PlayAnimation(11, false, true, 1.0f);
+        return result;
+    }
+    case kStateExit:
+        states.AssertOwner(this);
+        return kStateHandled;
+    case kStateEvent3:
+        return result;
+    default:
+        return kStateUnhandled;
+    }
+}
+
+// A jump kick along a set direction, until the character lands.
+int ControllablePlayer::State189(int event) {
+    int result = kStateHandled;
+    switch (event) {
+    case kStateUpdate:
+        if (animation == 82 && AnimationDone()) PlayAnimation(83, false, false, 1.0f);
+        if (!IsOnGround()) return kStateHandled;
+        states.Transition(State104Ptr());
+        return kStateParentTookOver;
+    case kStateEnter: {
+        float sign = FacingSign();
+        float x = sign * kickSpeed;
+        float y = kickY;
+        float z = kickZ;
+        motion.x = x;
+        motion.y = y;
+        motion.z = z;
+        motionTarget = onyx::Vector3::Zero();
+        result = kStateHandled;
+        StartAttack(&attackB48, false, 1, nullptr);
+        PlayAnimation(82, false, false, 1.0f);
+        return result;
+    }
+    case kStateExit:
+        motion.x = 0;
+        return kStateHandled;
+    case kStateEvent3:
+        return result;
+    default:
+        return kStateUnhandled;
+    }
+}
+
+// A jump kick along the same direction as State189, on its own animations and attack.
+int ControllablePlayer::State191(int event) {
+    int result = kStateHandled;
+    switch (event) {
+    case kStateUpdate:
+        if (animation == 284 && AnimationDone()) PlayAnimation(285, false, false, 1.0f);
+        if (!IsOnGround()) return kStateHandled;
+        states.Transition(State104Ptr());
+        return kStateParentTookOver;
+    case kStateEnter: {
+        float sign = FacingSign();
+        float x = sign * kickSpeed;
+        float y = kickY;
+        float z = kickZ;
+        motion.x = x;
+        motion.y = y;
+        motion.z = z;
+        motionTarget = onyx::Vector3::Zero();
+        result = kStateHandled;
+        StartAttack(&attackBa0, false, 1, nullptr);
+        PlayAnimation(284, false, false, 1.0f);
+        return result;
+    }
+    case kStateExit:
+        motion.x = 0;
+        return kStateHandled;
+    case kStateEvent3:
+        return result;
+    default:
+        return kStateUnhandled;
+    }
+}
+
 }  // namespace SPTG

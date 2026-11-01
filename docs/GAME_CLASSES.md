@@ -190,6 +190,26 @@ is merged with other events, and then the plain spelling matches. The default
 case's position also matters: some states need it last, others need it before
 a last exit case. Each state is checked both ways.
 
+A few more things decide these handlers' code:
+
+- **Multiplication order follows memory order, not the source.** LLVM 8's
+  Reassociate pass sorts a commutative operation's operands by rank, lower rank on
+  the left, even for floats. Each load, store and call in a block gets the next
+  rank, and an expression gets one more than its highest operand. So
+  `sign * dashSpeed` stays that way round only when another load or store sits
+  between the flag the sign comes from and the load of `dashSpeed`. State193
+  (`0x988ee0`) matches with its other copies done first.
+- **A compare chain's order is reversed.** `if (current == 33) ... else if
+  (current == 34) ... else if (current == 35)` gives the original's compares against
+  35, then 34, then 33.
+- **Keeping the result in a register.** Some originals hold the result in a
+  callee-saved register from before the jump (`mov w20, #1` ahead of `br x10`). They
+  match with `int result = kStateHandled;` and `case kStateEvent3: return result;`.
+  The others match with plain returns.
+- **Loads after slow paths.** A value read before an accessor's slow path stays in a
+  callee-saved register across it. `slideSpeed * FacingSign()` holds the speed in
+  `d8`; computing the sign into a local first gives the original's code.
+
 ## Build profile for game classes
 
 The game-class sources (`gameplay_pickup`, `gameplay_piniata`) build with
