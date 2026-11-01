@@ -521,4 +521,17 @@ int ControllablePlayer::State235(int event) {
     }
 }
 
+// Whether a direction or an attack button went down since the last call. Remembers the directions.
+bool ControllablePlayer::AnyInputPressed() {
+    onyx::Vector3 move;
+    ReadMoveInput(input, &move);
+    bool pressed = (move.x != 0.0f && lastMove.x == 0.0f) || (move.y != 0.0f && lastMove.y == 0.0f) ||
+                   input->JustPressed(0x10) || input->JustPressed(0x20) || input->JustPressed(0x40) ||
+                   input->JustPressed(0x80) || input->JustPressed(0x200) || input->JustPressed(0x100);
+    lastMove.x = move.x;
+    lastMove.y = move.y;
+    lastMove.z = move.z;
+    return pressed;
+}
+
 }  // namespace SPTG

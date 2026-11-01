@@ -162,7 +162,7 @@ struct BaseCharacter : onyx::Component {
     virtual void Slot19();                                                   // slot 19
     SPTG_SLOT(20)
     virtual void ReactTo(BaseCharacter* other, int reaction, void* data);    // slot 21
-    virtual void PlayAnimation(int animation, bool a, bool b, float speed);  // slot 22
+    virtual void PlayAnimation(int animation, bool loop, bool scaled, float speed); // slot 22
     virtual void PlayMountedAnimation(int animation, bool a, bool b);        // slot 23
     virtual void PlayFacingAnimation(int animation, uint8_t flags);          // slot 24
     virtual void SetAnimationSpeed(float speed);                             // slot 25
@@ -482,6 +482,19 @@ struct PlayerInputSource {
     char padding_0[0x18];
     PlayerInputOwner* owner;  // +0x18
 };
+// The part of SPTG::InGameHUD that shows each player's status.
+struct HudPlayerPanel {
+    char padding_0[0x2c1];
+    uint8_t showingStatus[4];        // +0x2c1
+    void SetStatus(int status, int player);   // 0x7b5cf0
+};
+struct LevelWindowAccessor;
+struct InGameHUD {
+    char padding_0[0x60];
+    Singleton<LevelWindowAccessor> window;    // +0x60
+    char padding_68[0x8];
+    HudPlayerPanel* panel;                    // +0x70
+};
 struct PlayerInput {
     char padding_0[0x8];
     uint8_t flag8;       // +0x8
@@ -495,8 +508,11 @@ struct PlayerInput {
     uint64_t value1d0;   // +0x1d0
     char padding_1d8[0xc];
     uint8_t flag1e4;     // +0x1e4
-    char padding_1e5[0xb];
+    char padding_1e5[0x3];
+    int32_t value1e8;    // +0x1e8
+    char padding_1ec[0x4];
     uint16_t value1f0;   // +0x1f0
+    bool JustPressed(uint64_t button) { return (held & button) && !(value1d0 & button); }
     void Call8f80d0();   // 0x8f80d0
     void Call8fabf0(int32_t value);   // 0x8fabf0
 };
@@ -561,6 +577,33 @@ struct ControllablePlayer : BaseCharacter {
     }
     void ReadAttackInput(AttackInput* out);              // 0x991a20
     bool ReadMoveInput(PlayerInput* from, onyx::Vector3* out);  // 0x9913a0
+    bool AnyInputPressed();                              // 0x993270
+    // The HUD prompt to mash buttons, for players on this machine.
+    __attribute__((always_inline)) void ShowMashPrompt() {
+        if (!Game_State || !Game_State->flagE0 || input->value1e8 == 1) {
+            InGameHUD* screen = hud.Get();
+            uint32_t player = playerIndex;
+            screen->window.Get();
+            if (player <= 3) {
+                if (HudPlayerPanel* panel = screen->panel) {
+                    panel->showingStatus[player] = 1;
+                    panel->SetStatus(6, player);
+                }
+            }
+        }
+    }
+    __attribute__((always_inline)) void HideMashPrompt() {
+        if (!Game_State || !Game_State->flagE0 || input->value1e8 == 1) {
+            InGameHUD* screen = hud.Get();
+            uint32_t player = playerIndex;
+            if (player <= 3) {
+                if (HudPlayerPanel* panel = screen->panel) {
+                    panel->showingStatus[player] = 0;
+                    panel->SetStatus(-1, player);
+                }
+            }
+        }
+    }
     void TurnToMoveInput();                              // 0x993550
     void Slot4(onyx::Archive& archive, ComponentSlot::Source* source);   // slot 4 (0x978660)
     virtual void OnMessage(CharacterMessage* message);   // slot 159
@@ -590,6 +633,7 @@ struct ControllablePlayer : BaseCharacter {
     bool CanMount() override;
     void Slot43(float value) override;
     void FaceX(float x) override;
+    int State120(int event) override;
     int State126(int event) override;
     int State138(int event) override;
     SPTG_SLOT(160)
@@ -646,7 +690,7 @@ struct ControllablePlayer : BaseCharacter {
 
     char padding_77c[0xc];
     void* slot788;               // +0x788
-    void* slot790;               // +0x790
+    Singleton<InGameHUD> hud;    // +0x790
     void* slot798;               // +0x798
     void* slot7a0;               // +0x7a0
     void* slot7a8;               // +0x7a8
@@ -693,7 +737,7 @@ struct ControllablePlayer : BaseCharacter {
     int32_t value8cc;            // +0x8cc
     float value8d0;              // +0x8d0
     float value8d4;              // +0x8d4
-    int32_t value8d8;            // +0x8d8
+    float mashStep;              // +0x8d8: what a press takes off the stun timer (State120)
     char padding_8dc[0x4];
     Attack attack8e0;            // +0x8e0
     Attack attack938;            // +0x938
@@ -807,7 +851,7 @@ struct ControllablePlayer : BaseCharacter {
     void* reference1378;         // +0x1378
     void* reference1380;         // +0x1380
     void* reference1388;         // +0x1388
-    int32_t value1390;           // +0x1390
+    uint32_t mashNeeded;         // +0x1390: presses it takes to break free (State245)
     int32_t value1394;           // +0x1394
     int32_t value1398;           // +0x1398
     int32_t value139c;           // +0x139c
@@ -820,7 +864,9 @@ struct ControllablePlayer : BaseCharacter {
     char padding_13b2[0xe];
     uint8_t flag13c0;            // +0x13c0
     uint8_t flag13c1;            // +0x13c1
-    char padding_13c2[0x16];
+    char padding_13c2[0x2];
+    onyx::Vector3 lastMove;      // +0x13c4: the directions AnyInputPressed saw
+    char padding_13d0[0x8];
     float value13d8;             // +0x13d8
     char padding_13dc[0x14];
     uint8_t flag13f0;            // +0x13f0
@@ -835,7 +881,9 @@ struct ControllablePlayer : BaseCharacter {
     int32_t value141c;           // +0x141c
     char padding_1420[0xc];
     float value142c[6];          // +0x142c
-    char padding_1444[0x7c];
+    char padding_1444[0x18];
+    uint32_t mashCount;          // +0x145c: presses so far
+    char padding_1460[0x60];
     int32_t airAttackCount;      // +0x14c0: since the last landing
     char padding_14c4[0x8];
     int32_t value14cc;           // +0x14cc

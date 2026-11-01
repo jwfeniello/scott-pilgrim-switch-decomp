@@ -172,7 +172,7 @@ void EnemyAerial::Slot4(onyx::Archive& archive, ComponentSlot::Source* source) {
 void ControllablePlayer::Slot4(onyx::Archive& archive, ComponentSlot::Source* source) {
     BaseCharacter::Slot4(archive, source);
     AssignComponentSlot<7785648u, 484521086u>(&slot788, source);
-    AssignComponentSlot<9042288u, 2024365970u>(&slot790, source);
+    AssignComponentSlot<9042288u, 2024365970u>(&hud, source);
     AssignComponentSlot<7999760u, 205210938u>(&slot798, source);
     AssignComponentSlot<7752160u, 1051727473u>(&slot7a0, source);
     AssignComponentSlot<7975184u, 521608489u>(&slot7a8, source);
@@ -217,7 +217,7 @@ void ControllablePlayer::Slot4(onyx::Archive& archive, ComponentSlot::Source* so
     onyx::Transfer(archive, value8cc);
     onyx::Transfer(archive, value8d0);
     onyx::Transfer(archive, value8d4);
-    onyx::Transfer(archive, value8d8);
+    onyx::Transfer(archive, mashStep);
     attack8e0.Serialize(archive);
     attack938.Serialize(archive);
     attack990.Serialize(archive);
@@ -318,7 +318,7 @@ void ControllablePlayer::Slot4(onyx::Archive& archive, ComponentSlot::Source* so
     onyx::TransferReference(archive, reference1378);
     onyx::TransferReference(archive, reference1380);
     onyx::TransferReference(archive, reference1388);
-    onyx::Transfer(archive, value1390);
+    onyx::Transfer(archive, mashNeeded);
     onyx::Transfer(archive, value1394);
     onyx::Transfer(archive, value1398);
     onyx::Transfer(archive, value139c);

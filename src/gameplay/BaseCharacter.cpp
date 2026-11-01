@@ -459,4 +459,33 @@ void BaseCharacter::MountNearby() {
     if (MountObject* object = catalog->FindMount(position)) SetMount(object->self);
 }
 
+// Starts an animation. With a partner whose transform has a parent, also takes the partner's facing.
+void BaseCharacter::PlayAnimation(int anim, bool loop, bool scaled, float speed) {
+    onyx::Get<AnimationControl, kAnimationControlType>(animationHandle)->Play(anim, loop);
+    if (partnerHandle && partnerHandle->object) {
+        BaseCharacter* partner = static_cast<BaseCharacter*>(partnerHandle->object);
+        ActorObject* actor = onyx::Find<ActorObject, onyx_types::type_6492d61d>(actorObject);
+        onyx::Transform* transform = onyx::Get<onyx::Transform, onyx::kTransform>(actor->transform);
+        void** parent = static_cast<void**>(transform->hierarchy);
+        if (parent && *parent) {
+            ActorObject* other = onyx::Find<ActorObject, onyx_types::type_6492d61d>(partner->actorObject);
+            ActorFlags* from = onyx::Find<ActorFlags, 0x2eae5813u>(other->flags);
+            ActorFlags* flags = onyx::Find<ActorFlags, 0x2eae5813u>(onyx::Find<ActorObject, onyx_types::type_6492d61d>(actorObject)->flags);
+            flags->facingLeft = from->facingLeft;
+            flags->flag7a = from->flag7a;
+        }
+    }
+    if (scaled) speed *= SpeedScale();
+    SetAnimationSpeed(speed);
+    animation = anim;
+}
+
+// At or below ground height and not moving up.
+bool BaseCharacter::IsOnGround() {
+    onyx::Transform* transform = onyx::Get<onyx::Transform, onyx::kTransform>(onyx::Find<ActorObject, 0x6492d61du>(actorObject)->transform);
+    if (groundHeight < (int)transform->position.z) return false;
+    if (__builtin_fabsf(motion.z) <= 0.000001f) return true;
+    return motion.z < 0.0f;
+}
+
 }  // namespace SPTG
