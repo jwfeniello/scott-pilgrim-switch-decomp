@@ -53,9 +53,12 @@ struct EnemyThief : Enemy {
     void Update();
     void Slot166(int kind);
     int State194(int event);
+    void AttackLanded(AnimatedAiActor* target) override;
 
     char padding_b7a[0x16];
     AttackSlot attacks[1];       // +0xb90
+    float moneyStolen;           // +0xc08: what a landed attack takes from a player
+    char stealEffect[0x4];       // +0xc0c: passed along with the amount
 };
 // vtable 0x18810e0, 239 slots
 struct EnemySpeedy : Enemy {
@@ -247,6 +250,7 @@ struct EnemyGiant : Enemy {
 // vtable 0x1886e20, 244 slots
 struct EnemyChubby : Enemy {
     void Update();
+    int State136(int event) override;
     void Approach();
     void Slot166(int kind);
     virtual int State234(int event); virtual State State234Ptr();   // slots 234, 235
@@ -362,6 +366,7 @@ struct EnemySasuke : EnemyOneHitWonder {
 struct EnemyGuyOnFire : EnemyOneHitWonder {
     int State96(int event);
     int State176(int event);
+    void AttackLanded(AnimatedAiActor* target) override;
 
     char padding_bcd[0x3];
     AttackSlot attack;           // +0xbd0
@@ -371,8 +376,13 @@ struct EnemyGuyOnFire : EnemyOneHitWonder {
 };
 // vtable 0x187f250, 242 slots
 struct EnemyChargingCrowd : EnemyOneHitWonder {
+    void AttackLanded(AnimatedAiActor* target) override;
     virtual int State234(int event); virtual State State234Ptr();   // slots 234, 235, overrides EnemyOneHitWonder
     virtual int State240(int event); virtual State State240Ptr();   // slots 240, 241
+
+    char padding_bcd[0x103];
+    float attackTimer;           // +0xcd0
+    uint8_t attackPending;       // +0xcd4
 };
 // vtable 0x1883ec0, 256 slots
 struct EnemyJake : EnemyNormal {
@@ -409,6 +419,11 @@ struct EnemyForestElves : EnemyOneHitWonder {
     float TakeDamage(const void* hit, BaseCharacter* other);
     virtual int State234(int event); virtual State State234Ptr();   // slots 234, 235, overrides EnemyOneHitWonder
     virtual int State240(int event); virtual State State240Ptr();   // slots 240, 241
+
+    char padding_bcd[0x3];
+    float waitTime;              // +0xbd0
+    char padding_bd4[0x8];
+    uint8_t waiting;             // +0xbdc
 };
 // vtable 0x18875e8, 240 slots
 struct EnemyArZee : EnemyShooter {

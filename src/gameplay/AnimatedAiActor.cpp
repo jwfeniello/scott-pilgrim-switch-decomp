@@ -7,24 +7,9 @@ extern "C" void Transform_AddChild(onyx::Transform* parent, onyx::Transform* chi
 
 namespace SPTG {
 
-// An attack landed: its hit stop holds this actor's animation, and with kind 2 the attack's owner's too.
+// An attack landed.
 void AnimatedAiActor::AttackLanded(AnimatedAiActor* target) {
-    Attack* landed = currentAttack;
-    attackLanded = 1;
-    float speed = landed->hitStopSpeed;
-    uint32_t kind = landed->kind;
-    float time = landed->hitStopTime;
-    if (kind <= 3 && time > 0.0f && hitStopLeft <= 0.0f) {
-        hitStopSpeed = speed;
-        float saved = animationSpeed;
-        SetAnimationSpeed(speed);
-        animationSpeed = saved;
-        hitStopLeft = time;
-    }
-    if (kind == 2) {
-        AnimatedAiActor* other = landed->shared ? static_cast<AnimatedAiActor*>(landed->shared->object) : nullptr;
-        other->HoldAnimation(time, speed);
-    }
+    HoldForLandedAttack();
 }
 
 // Pauses or resumes the animation.

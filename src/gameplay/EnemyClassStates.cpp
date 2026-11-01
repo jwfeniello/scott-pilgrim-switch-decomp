@@ -1042,4 +1042,129 @@ void EnemyShooter::Slot4(onyx::Archive& archive, ComponentSlot::Source* source) 
     onyx::Transfer(archive, valueC3c);
 }
 
+// A thief's landed attack takes money from a player who isn't down.
+void EnemyThief::AttackLanded(AnimatedAiActor* target) {
+    if (moneyStolen > 0.0f && target->Slot50() == 0 && target->IsA(onyx_types::type_2f2bf4aa)) {
+        ControllablePlayer* player = static_cast<ControllablePlayer*>(target);
+        if (player->money > moneyStolen && !player->Slot79()) {
+            float amount = moneyStolen;
+            player->SpendMoney(amount);
+            player->Call996c30(amount, 1, 2, stealEffect);
+        }
+    }
+}
+
+void EnemyGuyOnFire::AttackLanded(AnimatedAiActor* target) {
+    HoldForLandedAttack();
+    attackTimer = 0.0f;
+    attackPending = 1;
+}
+
+void EnemyChargingCrowd::AttackLanded(AnimatedAiActor* target) {
+    HoldForLandedAttack();
+    attackTimer = 0.0f;
+    attackPending = 1;
+}
+
+int EnemyNormal::State246(int event) {
+    switch (event) {
+    case kStateUpdate:
+        if (!AnimationDone()) return kStateHandled;
+        states.Transition(State122Ptr());
+        return kStateParentTookOver;
+    case kStateEnter:
+        mode87c = 2;
+        Update9dc4c0();
+        mode87c = 3;
+        StartAttack(&attack1048.attack, false, 1, nullptr);
+        PlayAnimation(25, 0, 0, 1.0f);
+        actionMode = 6;
+        return kStateHandled;
+    case kStateExit:
+        actionMode = 0;
+        return kStateHandled;
+    case kStateEvent3:
+        return kStateHandled;
+    default:
+        return kStateUnhandled;
+    }
+}
+
+int EnemyGiant::State244(int event) {
+    switch (event) {
+    case kStateUpdate:
+        if (!AnimationDone()) return kStateHandled;
+        states.Transition(State122Ptr());
+        return kStateParentTookOver;
+    case kStateEnter:
+        mode87c = 2;
+        Update9dc4c0();
+        mode87c = 3;
+        StartAttack(&attacks[7].attack, false, 1, nullptr);
+        PlayAnimation(25, 0, 1, 1.0f);
+        SetAnimationSpeed(1.5f);
+        actionMode = 6;
+        return kStateHandled;
+    case kStateExit:
+        actionMode = 0;
+        SetAnimationSpeed(1.0f);
+        return kStateHandled;
+    case kStateEvent3:
+        return kStateHandled;
+    default:
+        return kStateUnhandled;
+    }
+}
+
+// Waits with the shadow hidden, then has the partner it is holding let go.
+int EnemyChubby::State136(int event) {
+    switch (event) {
+    case kStateUpdate:
+        timer330 += Move_FrameDelta;
+        if (timer330 >= partnerDelay && partnerHandle && partnerHandle->object) {
+            static_cast<BaseCharacter*>(partnerHandle->object)->ReactTo(this, 2, nullptr);
+            static_cast<BaseCharacter*>(partnerHandle->object)->Dismount();
+            flagCf8 = 1;
+            states.Transition(State236Ptr());
+            return kStateParentTookOver;
+        }
+        return kStateHandled;
+    case kStateEnter:
+        timer330 = 0.0f;
+        if (shadowHandle && shadowHandle->object) static_cast<ShadowAnimatedObject*>(shadowHandle->object)->visible = 0;
+        return kStateHandled;
+    case kStateExit:
+        if (shadowHandle && shadowHandle->object) static_cast<ShadowAnimatedObject*>(shadowHandle->object)->visible = 1;
+        return kStateHandled;
+    case kStateEvent3:
+        return kStateHandled;
+    default:
+        return kStateUnhandled;
+    }
+}
+
+// Stands still for waitTime, then goes to the state at slot 234.
+int EnemyForestElves::State240(int event) {
+    switch (event) {
+    case kStateEnter:
+        motion = onyx::Vector3::Zero();
+        motionTarget = onyx::Vector3::Zero();
+        PlayAnimation(0, true, false, 1.0f);
+        timer330 = 0.0f;
+        waiting = 1;
+        return kStateHandled;
+    case kStateUpdate:
+        timer330 += Move_FrameDelta;
+        if (timer330 > waitTime) {
+            states.Transition(State234Ptr());
+            return kStateParentTookOver;
+        }
+        return kStateHandled;
+    case kStateEvent3:
+        return kStateHandled;
+    default:
+        return kStateUnhandled;
+    }
+}
+
 }  // namespace SPTG

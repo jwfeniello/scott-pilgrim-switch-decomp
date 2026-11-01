@@ -325,6 +325,25 @@ struct AnimatedAiActor : onyx::Component {
     char padding_1c8[0x18];
     onyx::ComponentHandle* handle1e0; // +0x1e0
     void Call944010();           // 0x944010
+    // An attack landed: its hit stop holds this actor's animation, and with kind 2 the attack's owner's too.
+    __attribute__((always_inline)) void HoldForLandedAttack() {
+        Attack* landed = currentAttack;
+        attackLanded = 1;
+        float speed = landed->hitStopSpeed;
+        uint32_t kind = landed->kind;
+        float time = landed->hitStopTime;
+        if (kind <= 3 && time > 0.0f && hitStopLeft <= 0.0f) {
+            hitStopSpeed = speed;
+            float saved = animationSpeed;
+            SetAnimationSpeed(speed);
+            animationSpeed = saved;
+            hitStopLeft = time;
+        }
+        if (kind == 2) {
+            AnimatedAiActor* other = landed->shared ? static_cast<AnimatedAiActor*>(landed->shared->object) : nullptr;
+            other->HoldAnimation(time, speed);
+        }
+    }
     // Holds the animation for a moment, unless it is being held already.
     __attribute__((always_inline)) void HoldAnimation(float time, float speed) {
         if (time > 0.0f && hitStopLeft <= 0.0f) {
@@ -721,6 +740,23 @@ struct ControllablePlayer : BaseCharacter {
     void ReadAttackInput(AttackInput* out);              // 0x991a20
     bool ReadMoveInput(PlayerInput* from, onyx::Vector3* out);  // 0x9913a0
     void Call80f6e0();                                          // 0x80f6e0
+    void Call996c30(float amount, int a, int b, void* effect);  // 0x996c30
+    // Takes `amount` from the player's money. A negative amount is money earned, and counts towards the total.
+    __attribute__((always_inline)) void SpendMoney(float amount) {
+        money -= amount;
+        money = RoundMoney(money, 9999.95f);
+        if (amount < 0.0f) {
+            moneyEarned -= amount;
+            moneyEarned = RoundMoney(moneyEarned, 1000000000.0f);
+        }
+    }
+    // Keeps a sum between 0 and `limit`, in whole multiples of 0.05.
+    __attribute__((always_inline)) static float RoundMoney(float value, float limit) {
+        if (value < 0.0f) value = 0.0f;
+        else if (value > limit) value = limit;
+        float cents = value / 0.05f;
+        return static_cast<int>(cents + (cents > 0.0f ? 0.5f : -0.5f)) * 0.05f;
+    }
     int Call9983e0(int theme);                                  // 0x9983e0
     void Call994b40(int theme);                                 // 0x994b40
     // Pays for a striker: guts, and health for what the guts don't cover.
@@ -1026,7 +1062,9 @@ struct ControllablePlayer : BaseCharacter {
     onyx::Vector3 lastMove;      // +0x13c4: the directions AnyInputPressed saw
     char padding_13d0[0x8];
     float value13d8;             // +0x13d8
-    char padding_13dc[0x14];
+    char padding_13dc[0xc];
+    float money;                 // +0x13e8: kept in whole multiples of 0.05
+    char padding_13ec[0x4];
     uint8_t flag13f0;            // +0x13f0
     uint8_t flag13f1;            // +0x13f1
     char padding_13f2[0x2];
@@ -1039,7 +1077,8 @@ struct ControllablePlayer : BaseCharacter {
     int32_t value141c;           // +0x141c
     char padding_1420[0xc];
     float value142c[6];          // +0x142c
-    char padding_1444[0x18];
+    char padding_1444[0x14];
+    float moneyEarned;           // +0x1458
     uint32_t mashCount;          // +0x145c: presses so far
     char padding_1460[0x28];
     void* activeStriker;              // +0x1488: the striker this player has called in, cleared as it leaves
