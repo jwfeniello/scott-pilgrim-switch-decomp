@@ -1,9 +1,9 @@
 {
   "version": 1,
-  "generated_at": "2026-11-01T05:42:44.052528+00:00",
+  "generated_at": "2026-11-01T05:45:56.073528+00:00",
   "target_elf_sha256": "ea95638e6d6aaa0dc6cddd552a9366799aa1ec3bc07ee201f23f6c151103f5b8",
   "input_sha256": {
-    "config/builds.json": "9327ab7aa5b91d9dec35a07092bc6349a8599bb720fdac2903ea28a40f506d5b",
+    "config/builds.json": "f24267fcd42da0d7c4c6a9079b7cca51aa99e03c09637ab55a7431b7aac0a2a4",
     "config/functions.tsv": "399e91468a04e0459194c10d68d2210d1157cedefeb19c7851886ca7632fcb18",
     "config/non_fde_functions.tsv": "6a45f5e185454fa0472af00b2cdc9d040d73ca133d1106217e1fbbe3b32a8175",
     "config/target.json": "23cc6a5227206a953e7668acf5e9ae5c02a25c23b7e7967f0450a814b888241a",
@@ -3961,13 +3961,13 @@
     "vendor/zlib-1.2.11/zutil.h": "9a63f6690fac1620aa3cecee5752af618806da438a256b4a047fbcd289cac159"
   },
   "compiler_versions": {
-    "7.0.1": "clang version 7.0.1 (tags/RELEASE_701/final)",
     "8.0.1": "clang version 8.0.1 (tags/RELEASE_801/final)",
+    "7.0.1": "clang version 7.0.1 (tags/RELEASE_701/final)",
     "lld": "LLD 8.0.1 (compatible with GNU linkers)"
   },
   "compiler_sha256": {
-    "7.0.1": "c2f0a175157d9aaace8031f8e6d7ea0ed6142b4bcef287105e3ed227301f1002",
     "8.0.1": "dffd62a213ec6cdb4430012a4a41c11e5e32c288f133d5391f9be49e1c5b69de",
+    "7.0.1": "c2f0a175157d9aaace8031f8e6d7ea0ed6142b4bcef287105e3ed227301f1002",
     "lld": "c4b3aaea06ff7112c64753047a2ab279fc3fe10dd807fd3c22edfdae99f43eed"
   },
   "exact_functions": 35428,
@@ -255053,7 +255053,7 @@
       "compiled_sha256": "70bd864d106af1fd3e67d139ebdcb4acb39c3abbac81765f621df8ac19028341",
       "source": "src/gameplay/ComponentHookSteps.cpp",
       "symbol": "_ZN4SPTG20LevelSectionGraphics4StepEv",
-      "source_review": "manual_reconstruction",
+      "source_review": "generated_cxx_abi_view",
       "relocation_count": 22
     },
     {
@@ -303442,7 +303442,7 @@
       "compiled_sha256": "4260a89e59923186a82b1705d43e6e865d7f024731d7d7e7dc6c42cf96aec3ab",
       "source": "src/gameplay/ComponentHookSteps.cpp",
       "symbol": "_ZN4Onyx14AttachmentBone4StepEv",
-      "source_review": "manual_reconstruction",
+      "source_review": "generated_cxx_abi_view",
       "relocation_count": 22
     },
     {
@@ -312110,7 +312110,7 @@
       "compiled_sha256": "92a2786983385ccdd8febd6c72bf6c39499a8da0f4c756d0dec35994d750075b",
       "source": "src/gameplay/ComponentHookSteps.cpp",
       "symbol": "_ZN4Onyx8Graphics8Particle7Emitter15EmitterInstance4StepEv",
-      "source_review": "manual_reconstruction",
+      "source_review": "generated_cxx_abi_view",
       "relocation_count": 22
     },
     {
@@ -313848,7 +313848,7 @@
       "compiled_sha256": "8b9a0921ab7cf8e6abcba80ae6444fd8a613c5b259b1c2523565fcba0312f9f8",
       "source": "src/gameplay/ComponentHookSteps.cpp",
       "symbol": "_ZN4Onyx8Graphics8Particle18VolumeMeshGraphics4StepEv",
-      "source_review": "manual_reconstruction",
+      "source_review": "generated_cxx_abi_view",
       "relocation_count": 23
     },
     {
@@ -314695,7 +314695,7 @@
       "compiled_sha256": "8433d7584f3c7d0b581e5766885d7f1c41b0623fb636f7b0169b6eaf522e06fc",
       "source": "src/gameplay/ComponentHookSteps.cpp",
       "symbol": "_ZN4Onyx8Graphics8Particle23EmitterInstanceGraphics4StepEv",
-      "source_review": "manual_reconstruction",
+      "source_review": "generated_cxx_abi_view",
       "relocation_count": 22
     },
     {
@@ -315454,7 +315454,7 @@
       "compiled_sha256": "461f3c24abc31a2c51fa097c247a104ea358f16bf53940ae18c75a64977cbe8f",
       "source": "src/gameplay/ComponentHookSteps.cpp",
       "symbol": "_ZN4Onyx8Graphics13MorphInstance4StepEv",
-      "source_review": "manual_reconstruction",
+      "source_review": "generated_cxx_abi_view",
       "relocation_count": 22
     },
     {
@@ -318336,7 +318336,7 @@
       "compiled_sha256": "2b2807e2db1a9204690bd7702b5db205dd3629ee264b520010914cd2d9db0a42",
       "source": "src/gameplay/ComponentHookSteps.cpp",
       "symbol": "_ZN4Onyx4View4StepEv",
-      "source_review": "manual_reconstruction",
+      "source_review": "generated_cxx_abi_view",
       "relocation_count": 22
     },
     {
@@ -324078,7 +324078,7 @@
       "compiled_sha256": "d25b758fde82fb1b797bd78347437917c7fc1823b6dca03058e8896099151b90",
       "source": "src/gameplay/ComponentHookSteps.cpp",
       "symbol": "_ZN4Onyx8Graphics14CameraGraphics4StepEv",
-      "source_review": "manual_reconstruction",
+      "source_review": "generated_cxx_abi_view",
       "relocation_count": 22
     },
     {
@@ -324518,7 +324518,7 @@
       "compiled_sha256": "daacc47935243cf3e56bf7d9b8b0085afb7afb5f73783490fbdd75d49b5b5bf7",
       "source": "src/gameplay/ComponentHookSteps.cpp",
       "symbol": "_ZN4Onyx9Collision14SphereGraphics4StepEv",
-      "source_review": "manual_reconstruction",
+      "source_review": "generated_cxx_abi_view",
       "relocation_count": 22
     },
     {
@@ -324683,7 +324683,7 @@
       "compiled_sha256": "37f3e72b8953b633da8f1bb3cc4dc81567d1a66f30430016703fd9421e130976",
       "source": "src/gameplay/ComponentHookSteps.cpp",
       "symbol": "_ZN4Onyx9Collision13PlaneGraphics4StepEv",
-      "source_review": "manual_reconstruction",
+      "source_review": "generated_cxx_abi_view",
       "relocation_count": 22
     },
     {
@@ -324848,7 +324848,7 @@
       "compiled_sha256": "82f3dfccd33bee346ce99ebf3686eb757023dc7cdf693776ba7cac185126adc9",
       "source": "src/gameplay/ComponentHookSteps.cpp",
       "symbol": "_ZN4Onyx9Collision15CapsuleGraphics4StepEv",
-      "source_review": "manual_reconstruction",
+      "source_review": "generated_cxx_abi_view",
       "relocation_count": 22
     },
     {
@@ -325002,7 +325002,7 @@
       "compiled_sha256": "75cecbbbf6bf038ae501ce848972ce13527df28f94b9a012bd3cbf1522151fc3",
       "source": "src/gameplay/ComponentHookSteps.cpp",
       "symbol": "_ZN4Onyx9Collision22AxisAlignedBoxGraphics4StepEv",
-      "source_review": "manual_reconstruction",
+      "source_review": "generated_cxx_abi_view",
       "relocation_count": 22
     },
     {
