@@ -63,6 +63,7 @@ struct EnemyThief : Enemy {
 // vtable 0x18810e0, 239 slots
 struct EnemySpeedy : Enemy {
     void Approach();
+    bool OnHit(BaseCharacter* other, void* hit) override;
     int State194(int event);
     int State196(int event);
     void Slot166(int kind);
@@ -71,7 +72,8 @@ struct EnemySpeedy : Enemy {
     int State9eb520(int event);   // 0x9eb520, not virtual
     virtual State State9eb520Ptr();   // slot 238: returns the state at 0x9eb520
 
-    char padding_b7a[0x16];
+    char padding_b7a[0x12];
+    float dodgeDirection;        // +0xb8c: which way the last dodge went
     AttackSlot attacks[5];       // +0xb90
 };
 // vtable 0x1881880, 238 slots
@@ -161,6 +163,7 @@ struct EnemyMini : Enemy {
 // vtable 0x1883730, 237 slots
 struct EnemyJetPackMatt : Enemy {
     void Update();
+    bool IsOnGround() override;
     void Slot166(int kind);
     int State200(int event);
     void Slot4(onyx::Archive& archive, ComponentSlot::Source* source);
@@ -183,6 +186,7 @@ struct EnemyJetPackMatt : Enemy {
     int32_t valueC2c;            // +0xc2c
     int32_t valueC30;            // +0xc30
     int32_t valueC34;            // +0xc34
+    uint8_t flying;              // +0xc38
 };
 // vtable 0x1884700, 246 slots
 struct EnemyHanzo : Enemy {

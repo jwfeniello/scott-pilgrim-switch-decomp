@@ -242,6 +242,11 @@ A few more things decide these handlers' code:
 - **Narrow loads hide wider fields.** `ldrb [x, #0x61]` with `tbnz #7`, and `ldrb [x, #0x62]` with `tbnz #0`, are
   bits 15 and 16 of a 32-bit field at `+0x60`, narrowed by selection. Read as bytes they come out as
   `ldrsb` and `tbnz #31`. `PlayerInfoView::moves` turned out to be this, and it is now declared as 32 bits.
+- **Which case falls through.** Selection sorts a small switch by value, then swaps whichever case's block comes
+  next into last place so it falls through. A compare chain that runs from the highest value down
+  (`cmp #152`, `cmp #151`, `cmp #150`) means the lowest case comes first in the source: a `switch` on the
+  animation with `case 150` first, not an `if` chain from the top. `Patel::State256` and
+  `LucasLee::State266` match that way.
 - **Testing several states.** `if (states.IsIn(a()) || states.IsIn(b()))` with the work inside
   the `if` is the form that matches. Selection then sees the work as the next block and inverts the
   condition, which gives `cbz`. The same test written with early returns selects `tbnz`, and a later

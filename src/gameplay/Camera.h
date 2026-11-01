@@ -10,10 +10,7 @@ struct CameraBlock : onyx::Component {
     char padding_8[0x44];
     int32_t active;                  // +0x4c
     char padding_50[0x4];
-    float left;                      // +0x54
-    float top;                       // +0x58
-    float right;                     // +0x5c
-    float bottom;                    // +0x60
+    ScreenRect rect;                 // +0x54
 };
 // One running shake (40 bytes).
 struct ShakeSlot {

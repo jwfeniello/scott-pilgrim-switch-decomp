@@ -1230,4 +1230,30 @@ void EnemyArZee::Slot19() {
     vectorCb4 = onyx::Vector3::Zero();
 }
 
+// A hit from source 1 that is new, while on the ground and able to dodge, is dodged: it is recorded and the dodge state
+// takes over. Anything else goes to Enemy's check.
+bool EnemySpeedy::OnHit(BaseCharacter* other, void* hit) {
+    const HitRecord* record = static_cast<const HitRecord*>(hit);
+    if (record->source != 1) return Enemy::OnHit(other, hit);
+    int32_t id = record->id;
+    if (recentHits[0] == id || recentHits[1] == id || recentHits[2] == id || recentHits[3] == id || !IsOnGround() || actionMode == 8 || (Slot79() && !record->unstoppable) || IsOut()) return Enemy::OnHit(other, hit);
+    int32_t last = record->id;
+    recentHits[0] = recentHits[1];
+    recentHits[1] = recentHits[2];
+    recentHits[2] = recentHits[3];
+    recentHits[3] = last;
+    dodgeDirection = record->fromRight ? 1.0f : -1.0f;
+    states.Transition(State9eb520Ptr());
+    return false;
+}
+
+// In the air it counts as on the ground only when +0xc38 is clear; otherwise as any actor.
+bool EnemyJetPackMatt::IsOnGround() {
+    if (!flying) return true;
+    onyx::Transform* transform = onyx::Get<onyx::Transform, onyx::kTransform>(onyx::Find<ActorObject, onyx_types::type_6492d61d>(actorObject)->transform);
+    if (groundHeight < (int)transform->position.z) return false;
+    if (__builtin_fabsf(motion.z) <= 0.000001f) return true;
+    return motion.z < 0.0f;
+}
+
 }  // namespace SPTG

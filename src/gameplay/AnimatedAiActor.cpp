@@ -1,6 +1,6 @@
 // SPTG::AnimatedAiActor's own functions: the ones BaseCharacter and InteractiveObject inherit or call. See
 // BaseCharacter.h for the class.
-#include "BaseCharacter.h"
+#include "Camera.h"
 
 extern "C" int32_t Attack_NextId;   // 0x1925328
 extern "C" void Transform_AddChild(onyx::Transform* parent, onyx::Transform* child, bool keepPosition);   // 0x68f0e0
@@ -191,6 +191,26 @@ int AnimatedAiActor::Slot41(bool a, bool b, bool c, void* data, BaseCharacter* o
     onyx::Find<onyx::Transform, onyx::kTransform>(actor->transform)->SetPosition(moved);
     if (flag141) Call944010();
     return 0;
+}
+
+// The camera block's edges when one is active, otherwise the camera position and a 384 by 216 view. Not yet matched
+// (not credited): the original moves the outer two edges through integer registers.
+void AnimatedAiActor::GetScreenRect(ScreenRect* out) {
+    LevelCamera* levelCamera = onyx::Find<LevelCamera, onyx_types::type_67f2aa4d>(camera.Get()->levelCamera);
+    CameraBlock* block = onyx::Get<CameraBlock, onyx_types::type_55e5c01c>(levelCamera->block);
+    ScreenRect rect;
+    if (block->active) {
+        rect = onyx::Get<CameraBlock, onyx_types::type_55e5c01c>(levelCamera->block)->rect;
+    } else {
+        onyx::Transform* view = onyx::Get<onyx::Transform, onyx::kTransform>(levelCamera->transform);
+        float left = view->position.x;
+        float bottom = view->position.y;
+        rect.left = left;
+        rect.top = bottom + 216.0f;
+        rect.right = left + 384.0f;
+        rect.bottom = bottom;
+    }
+    *out = rect;
 }
 
 }  // namespace SPTG

@@ -51,6 +51,19 @@ struct AttackSlot {
 };
 static_assert(sizeof(AttackSlot) == 0x78, "AttackSlot size");
 struct BaseCharacter;
+// The record a hit passes to OnHit. Its fields are named as the code that reads them uses them.
+struct HitRecord {
+    char padding_0[0xc];
+    int32_t source;          // +0xc
+    char padding_10[0x23];
+    uint8_t unstoppable;     // +0x33: gets through what slot 79 would otherwise dodge
+    char padding_34[0x10];
+    int32_t id;              // +0x44
+    char padding_48[0x10];
+    uint8_t flags;           // +0x58
+    char padding_59[0x3];
+    int32_t fromRight;       // +0x5c
+};
 // A message one character sends another (see ControllablePlayer::OnMessage).
 struct CharacterMessage {
     int32_t kind;
@@ -190,6 +203,8 @@ struct ShadowAnimatedObject : onyx::Component {
     void SetGroundHeight(int height, float z);   // 0x85fc20
 };
 
+// What the screen covers: the camera block's edges when one is active, otherwise the camera position and a 384 by 216 view.
+struct ScreenRect { float left, top, right, bottom; };
 // SPTG::AnimatedAiActor (vtable 0x1870698, 78 slots), the base of BaseCharacter and InteractiveObject. Its own
 // functions are the ones BaseCharacter's vtable keeps; the rest BaseCharacter overrides. The first fields not
 // in here are BaseCharacter's and InteractiveObject's, both from +0x1e8.
@@ -330,6 +345,7 @@ struct AnimatedAiActor : onyx::Component {
     char padding_1c8[0x18];
     onyx::ComponentHandle* handle1e0; // +0x1e0
     void Call944010();           // 0x944010
+    void GetScreenRect(ScreenRect* out);  // 0x95c040
     // An attack landed: its hit stop holds this actor's animation, and with kind 2 the attack's owner's too.
     __attribute__((always_inline)) void HoldForLandedAttack() {
         Attack* landed = currentAttack;

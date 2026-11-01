@@ -952,22 +952,25 @@ int Lynette::State244(int event) {
 }
 
 // Patel slot 256 (0xa40400): animations 150, 151 and 152 in turn with +0x3ba
-// raised; once 152 is done, switches to slot 200. Not yet matched (not
-// credited).
+// raised; once 152 is done, switches to slot 200.
 int Patel::State256(int event) {
     switch (event) {
     case kStateUpdate:
-        if (animation != 152) {
-            if (animation == 151) {
-                if (AnimationDone()) PlayAnimation(152, 0, 0, 1.0f);
-            } else if (animation == 150 && AnimationDone()) {
-                PlayAnimation(151, 0, 0, 1.0f);
+        switch (animation) {
+        case 150:
+            if (AnimationDone()) PlayAnimation(151, 0, 0, 1.0f);
+            break;
+        case 151:
+            if (AnimationDone()) PlayAnimation(152, 0, 0, 1.0f);
+            break;
+        case 152:
+            if (AnimationDone()) {
+                states.Transition(State200Ptr());
+                return kStateParentTookOver;
             }
-            return kStateHandled;
+            break;
         }
-        if (!AnimationDone()) return kStateHandled;
-        states.Transition(State200Ptr());
-        return kStateParentTookOver;
+        return kStateHandled;
     case kStateEnter:
         flag3ba = 1;
         PlayAnimation(150, 0, 0, 1.0f);
@@ -2062,21 +2065,22 @@ int Envy::State268(int event) {
 }
 
 // LucasLee slot 266 (0xa4a810): animation 174 with the attack at +0xec0; each
-// time it ends it plays again (175 after the first, counted at +0xff0) with the
-// attack; once 175 is done, slot 244.
-// Not yet matched (not credited).
+// time it ends it plays again (175 after the first, counted at +0xff0) with
+// the attack; once 175 is done, slot 244.
 int LucasLee::State266(int event) {
     switch (event) {
     case kStateUpdate:
         if (!AnimationDone()) return kStateHandled;
-        if (animation == 175) {
-            states.Transition(State244Ptr());
-            return kStateParentTookOver;
-        }
-        if (animation == 174) {
-            PlayAnimation(countFf0 ? 175 : 174, 0, 1, 1.0f);
+        switch (animation) {
+        case 174:
+            if (countFf0) PlayAnimation(175, 0, 1, 1.0f);
+            else PlayAnimation(174, 0, 1, 1.0f);
             ++countFf0;
             StartAttack(&attackEc0.attack, false, 1, nullptr);
+            break;
+        case 175:
+            states.Transition(State244Ptr());
+            return kStateParentTookOver;
         }
         return kStateHandled;
     case kStateEnter:

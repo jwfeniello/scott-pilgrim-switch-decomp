@@ -25,8 +25,6 @@ struct EnemyList {
         if (data) onyx::AllocatorFor(data)->Free(data);
     }
 };
-// The screen as Striker tests it.
-struct ScreenRect { float left, top, right, bottom; };
 bool EnemyOnScreen(Enemy* enemy, const ScreenRect* rect);   // 0x948ba0
 
 struct Striker : AnimatedAiActor {
