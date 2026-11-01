@@ -292,6 +292,7 @@ struct Enemy : BaseCharacter {
     void Update9dc4c0(); // 0x9dc4c0: runs each update of state 186
     void PlaceAtSpawn(const EnemySpawnInfo* info);   // 0x9dd110
     static int RollWeight(uint8_t total);            // 0x9dcfd0
+    void Call995c50(int kind);                       // 0x995c50
     // Slot 169's test: whether the actor is within half of a range of the origin, along x and in depth.
     __attribute__((always_inline)) bool WithinRange(float min, float max, float depth) {
         onyx::Transform* transform = onyx::Get<onyx::Transform, onyx::kTransform>(onyx::Find<ActorObject, 0x6492d61du>(actorObject)->transform);

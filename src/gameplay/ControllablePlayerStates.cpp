@@ -738,4 +738,95 @@ int ControllablePlayer::State136(int event) {
     return kStateUnhandled;
 }
 
+// Slot 94 (0x980850): knocked out. Unless it's out already it lets go, loses all health and guts, and goes down: from
+// state 114 to 116, otherwise to 108, and not at all from 108, 112 or 116.
+void ControllablePlayer::Slot94() {
+    flag511 = 1;
+    if (!IsOut()) {
+        Dismount();
+        health = 0.0f;
+        guts = 0.0f;
+        if (!states.IsIn(State108Ptr()) && !states.IsIn(State112Ptr()) && !states.IsIn(State116Ptr())) {
+            if (states.IsIn(State114Ptr())) states.Transition(State116Ptr());
+            else states.Transition(State108Ptr());
+        }
+        actionMode = 5;
+    }
+}
+
+// Slot 122 (0x983310): BaseCharacter's, and exit stops the two actions at +0x1368 and +0x1378 and starts
+// the one at +0x1370, with the actor flags' +0x50 and the material modifiers filled in.
+int ControllablePlayer::State122(int event) {
+    int result = BaseCharacter::State122(event);
+    if (result == kStateParentTookOver) return result;
+    if (event != kStateExit) return kStateUnhandled;
+    if (reference1370) {
+        if (reference1368) static_cast<PlayerReferenceAction*>(reference1368)->Stop();
+        if (reference1378) static_cast<PlayerReferenceAction*>(reference1378)->Stop();
+        PlayerReferenceAction* action = static_cast<PlayerReferenceAction*>(reference1370);
+        onyx::ComponentHandle* handle = onyx::Get<ActorFlags, 0x2eae5813u>(onyx::Find<ActorObject, 0x6492d61du>(actorObject)->flags)->handle50;
+        void* target = handle ? handle->object : nullptr;
+        void* modifiers = materialModifiers ? materialModifiers->object : nullptr;
+        action->target = target;
+        action->modifiers = modifiers;
+        static_cast<PlayerReferenceAction*>(reference1370)->EnsureReady();
+    }
+    flag511 = 0;
+    return kStateHandled;
+}
+
+// Slot 237 (0x98f700): stands in animation 30. A stick move goes to state 161 when dashing and 163 otherwise, and how a
+// dash is read depends on the player's saved settings. When the animation ends it goes to state 96.
+int ControllablePlayer::State237(int event) {
+    int result = kStateHandled;
+    switch (event) {
+    case kStateUpdate: {
+        result = Call993350();
+        if (result == kStateParentTookOver) break;
+        onyx::Vector3 move;
+        if (ReadMoveInput(input, &move)) {
+            TurnToMoveInput();
+            uint64_t dash = input->held & 0x300000000ull;
+            if (persistentData.Get()->players[playerIndex].value154) {
+                if (dash) states.Transition(State161Ptr());
+                else states.Transition(State163Ptr());
+            } else {
+                if ((input->value1b0 & 1) | dash | (input->value1b0 & 2)) states.Transition(State161Ptr());
+                else states.Transition(State163Ptr());
+            }
+            result = kStateParentTookOver;
+            break;
+        }
+        if (AnimationDone()) {
+            states.Transition(State96Ptr());
+            result = kStateParentTookOver;
+            break;
+        }
+        result = Slot255(kStateUpdate);
+        if (result == kStateParentTookOver) break;
+        if (Call9936a0() != kStateParentTookOver) {
+            result = kStateHandled;
+        } else {
+            states.AssertOwner(this);
+            result = kStateParentTookOver;
+        }
+        break;
+    }
+    default:
+        result = kStateUnhandled;
+        break;
+    case kStateEnter:
+        PlayAnimation(30, 0, 0, 1.0f);
+        value334 = 0.0f;
+        // Falls through.
+    case kStateExit:
+        states.AssertOwner(this);
+        result = kStateHandled;
+        break;
+    case kStateEvent3:
+        break;
+    }
+    return result;
+}
+
 }  // namespace SPTG

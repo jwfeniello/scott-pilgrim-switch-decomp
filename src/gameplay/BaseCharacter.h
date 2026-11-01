@@ -147,7 +147,9 @@ struct ActorFlags : onyx::Component {
     onyx::EventTarget* blinkOnTarget;        // +0x28
     char padding_30[0x8];
     uint8_t componentFlags;   // +0x38
-    char padding_39[0x3f];
+    char padding_39[0x17];
+    onyx::ComponentHandle* handle50;  // +0x50
+    char padding_58[0x20];
     uint8_t visible;      // +0x78
     uint8_t facingLeft;   // +0x79
     uint8_t flag7a;       // +0x7a
@@ -520,8 +522,8 @@ struct BaseCharacter : AnimatedAiActor {
     onyx::ComponentHandle* held; // +0x240: owned reference, dropped by ReleaseHeld
     char padding_248[0x10];
     Attack attack258;            // +0x258: started by Enemy's slot 41
-    int32_t value2b0;            // +0x2b0
-    int32_t value2b4;            // +0x2b4
+    float value2b0;              // +0x2b0: with +0x2b4, the upward speed of EnemyChubby's jump
+    float value2b4;              // +0x2b4
     int32_t value2b8;            // +0x2b8
     float savedZ;                // +0x2bc: restored into motionTarget.z
     float savedC4;               // +0x2c0: restored into motionC4
@@ -688,6 +690,21 @@ struct HudPlayerPanel {
     void SetStatus(int status, int player);   // 0x7b5cf0
 };
 struct LevelWindowAccessor;
+// One player's saved settings (0x5b4 bytes), reached through the singleton at +0x7d0.
+struct PersistentPlayerRecord {
+    char padding_0[0x154];
+    int32_t value154;        // +0x154: picks how dash input is read in state 237
+    char padding_158[0x45c];
+};
+static_assert(sizeof(PersistentPlayerRecord) == 0x5b4, "PersistentPlayerRecord size");
+struct PersistentData { PersistentPlayerRecord players[4]; };
+// One of the actions a player keeps as references. Slot 4 stops it, and slot 2 starts it with these two filled in.
+struct PlayerReferenceAction : onyx::Component {
+    SPTG_SLOT(3)
+    virtual void Stop();
+    void* target;            // +0x8
+    void* modifiers;         // +0x10
+};
 struct InGameHUD {
     char padding_0[0x60];
     Singleton<LevelWindowAccessor> window;    // +0x60
@@ -882,6 +899,10 @@ struct ControllablePlayer : BaseCharacter {
     int State102(int event) override;
     int State104(int event) override;
     int State114(int event) override;
+    int State122(int event) override;
+    int Call993350();                    // 0x993350: returns 2 when it has changed state
+    int Call9936a0();                    // 0x9936a0: the same
+    void Slot94() override;
     int State136(int event) override;
     void Slot68() override;
     bool Slot156() override;
@@ -980,7 +1001,7 @@ struct ControllablePlayer : BaseCharacter {
     void* pauseHandler;               // +0x7b8
     void* flashMenuPhase;               // +0x7c0
     void* selectedActors;               // +0x7c8
-    void* persistentData;               // +0x7d0
+    Singleton<PersistentData> persistentData; // +0x7d0: getter 0x777710
     onyx::ComponentHandle* playerInfo; // +0x7d8
     onyx::ComponentHandle* materialModifiers; // +0x7e0
     uint8_t flag7e8;             // +0x7e8

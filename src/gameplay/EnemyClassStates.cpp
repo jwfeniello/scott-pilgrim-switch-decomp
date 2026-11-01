@@ -1323,4 +1323,83 @@ void EnemyNormal::Slot166(int kind) {
     }
 }
 
+// EnemyChubby slot 242 (0x9ffb40): stops and plays animation 97, then loops 114, and when that ends goes to state 96.
+int EnemyChubby::State242(int event) {
+    int result = kStateHandled;
+    switch (event) {
+    case kStateUpdate:
+        if (animation == 97) {
+            if (AnimationDone()) {
+                result = kStateHandled;
+                PlayAnimation(114, 1, 0, 1.0f);
+            }
+        } else if (animation == 114) {
+            if (AnimationDone()) {
+                states.Transition(State96Ptr());
+                result = kStateParentTookOver;
+            }
+        }
+        break;
+    default:
+        result = kStateUnhandled;
+        break;
+    case kStateEnter:
+        PlayAnimation(97, 0, 1, 1.0f);
+        motion = onyx::Vector3::Zero();
+        motionTarget = onyx::Vector3::Zero();
+        // Falls through.
+    case kStateExit:
+        states.AssertOwner(this);
+        result = kStateHandled;
+        break;
+    case kStateEvent3:
+        break;
+    }
+    return result;
+}
+
+// EnemyChubby slot 236 (0x9ff6e0): jumps forward with its third attack, and lands in state 96 when the animation is over.
+int EnemyChubby::State236(int event) {
+    int result = kStateHandled;
+    switch (event) {
+    case kStateUpdate:
+        stateTime += Move_FrameDelta;
+        if (attackLanded) Call995c50(3);
+        if (AnimationDone() && IsOnGround() && motion.z <= 0.0f) {
+            states.Transition(State96Ptr());
+            result = kStateParentTookOver;
+        } else {
+            result = kStateHandled;
+        }
+        break;
+    default:
+        result = kStateUnhandled;
+        break;
+    case kStateEnter: {
+        motion.z = value2b0 + value2b4;
+        float speed = 0.0f;
+        if (!flagCf8) {
+            float sign = FacingSign();
+            speed = jumpBackSpeed * sign;
+        }
+        motionTarget.z = savedZ;
+        motionC4 = savedC4;
+        motion.x = speed;
+        motionTarget.x = 0.0f;
+        PlayAnimation(39, 0, 0, 1.0f);
+        result = kStateHandled;
+        StartAttack(&attacks[2].attack, false, 1, nullptr);
+        stateTime = 0.0f;
+        break;
+    }
+    case kStateExit:
+        states.AssertOwner(this);
+        result = kStateHandled;
+        break;
+    case kStateEvent3:
+        break;
+    }
+    return result;
+}
+
 }  // namespace SPTG

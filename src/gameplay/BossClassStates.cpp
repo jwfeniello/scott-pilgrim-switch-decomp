@@ -2779,10 +2779,10 @@ void SuperFightingRobotHand::Slot4(onyx::Archive& archive, ComponentSlot::Source
     onyx::Transfer(archive, valueEf8);
     onyx::Transfer(archive, valueEfc);
     onyx::Transfer(archive, valueF00);
-    onyx::Transfer(archive, valueF04);
+    onyx::Transfer(archive, speedF04);
     onyx::Transfer(archive, valueF08);
     onyx::Transfer(archive, valueF0c);
-    onyx::Transfer(archive, valueF10);
+    onyx::Transfer(archive, speedF10);
     onyx::Transfer(archive, valueF14);
     onyx::Transfer(archive, valueF18);
     onyx::Transfer(archive, valueF1c);
@@ -3164,6 +3164,124 @@ bool Lynette::Slot46(BaseCharacter* other) {
     if (static_cast<LevelGateState*>(levelGate.Get()->state->object)->mode == 12) {
         bool free = other->Slot50() == 3 && (!other->partnerHandle || !other->partnerHandle->object);
         return free & (kind == 2);
+    }
+    return result;
+}
+
+// Envy slot 69 (0xa67140): a player's hit during their state 165 raises +0xd83, and in state 268 she counts the damage.
+float Envy::TakeDamage(const void* hit, BaseCharacter* other) {
+    if (other && other->Slot50() == 0 && static_cast<const HitRecord*>(hit)->fromRight == 0) {
+        ControllablePlayer* player = static_cast<ControllablePlayer*>(other);
+        if (InState(player, player->State165Ptr())) flagD83 = 1;
+    }
+    if (InState(this, State268Ptr())) damageTaken += *static_cast<const float*>(hit);
+    return TakeTagTeamDamage(hit, other);
+}
+
+// Envy slot 244 (0xa679d0): the approach. +0xd83 sends her to state 268, +0xd80 to 272, and a target that's out to 186.
+// Otherwise it's like Lynette's: 264 once +0xd78 runs out with +0xd5a set, 262 without either flag, and else Boss's.
+int Envy::State244(int event) {
+    int result = kStateHandled;
+    switch (event) {
+    case kStateUpdate:
+        if (flagD83) {
+            flagD83 = 0;
+            states.Transition(State268Ptr());
+            result = kStateParentTookOver;
+            break;
+        }
+        if (flagD80) {
+            states.Transition(State272Ptr());
+            result = kStateParentTookOver;
+            break;
+        }
+        if (target && target->object && static_cast<BaseCharacter*>(target->object)->IsOut()) {
+            states.Transition(State186Ptr());
+            result = kStateParentTookOver;
+            break;
+        }
+        if (flagD5a) {
+            if (!(timerD78 > 0.0f)) {
+                states.Transition(State264Ptr());
+                result = kStateParentTookOver;
+                break;
+            }
+        } else if (!flagD5b) {
+            states.Transition(State262Ptr());
+            result = kStateParentTookOver;
+            break;
+        }
+        if (Boss::State244(kStateUpdate) == kStateParentTookOver) {
+            states.AssertOwner(this);
+            result = kStateParentTookOver;
+        } else {
+            result = kStateHandled;
+        }
+        break;
+    case kStateEnter:
+        aiMode = target && target->object ? 1 : 6;
+        if (!Slot239(7)) PlayAnimation(7, 1, 0, 1.0f);
+        result = kStateHandled;
+        value7ac = 0.0f;
+        flag813 = 1;
+        mode87c = 2;
+        break;
+    case kStateEvent3:
+        break;
+    default:
+        result = kStateUnhandled;
+        break;
+    case kStateExit:
+        flag813 = 0;
+        mode87c = 3;
+        break;
+    }
+    return result;
+}
+
+// SuperFightingRobotHand slot 13 (0xa291f0): at no health it goes to state 262 unless +0xfb8 or that state already holds.
+// At half health it tells the robot once, through state 274, and goes to state 260. Then Boss's slot 13.
+void SuperFightingRobotHand::Slot13() {
+    if (health <= 0.0f && !flagFb8 && !states.IsIn(State262Ptr())) {
+        states.Transition(State262Ptr());
+    } else if (!halfHealthDone && health <= MaxHealth() * 0.5f && CheckA30210()) {
+        halfHealthDone = 1;
+        owner->states.Transition(owner->State274Ptr());
+        states.Transition(State260Ptr());
+    }
+    UpdateBoss13();
+}
+
+// SuperFightingRobotHand slot 246 (0xa2ac90): stands still on the way in and out. Each update moves it, and when that's
+// done it goes to state 264.
+int SuperFightingRobotHand::State246(int event) {
+    int result = kStateHandled;
+    switch (event) {
+    case kStateUpdate:
+        if (!target || !target->object) CheckA1e820();
+        if (CallA2fae0(flagF49, speedF04 * speedF10)) {
+            states.Transition(State264Ptr());
+            result = kStateParentTookOver;
+        } else {
+            result = kStateHandled;
+        }
+        break;
+    case kStateEnter:
+        motion = onyx::Vector3::Zero();
+        motionTarget = onyx::Vector3::Zero();
+        result = kStateHandled;
+        break;
+    case kStateExit:
+        
+        motion = onyx::Vector3::Zero();
+        motionTarget = onyx::Vector3::Zero();
+        result = kStateHandled;
+        break;
+    case kStateEvent3:
+        break;
+    default:
+        result = kStateUnhandled;
+        break;
     }
     return result;
 }

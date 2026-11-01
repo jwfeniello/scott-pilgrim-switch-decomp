@@ -270,6 +270,15 @@ A few more things decide these handlers' code:
 - Changing a field's type to suit one function can break others. `facingLeft` as `bool` gives `State136`'s `eor` but breaks
   `TurnAround`, `FaceX` and two states, so it stays `uint8_t` and `State136` stays unmatched.
 
+- A form that keeps working for a state with a jump table: `int result = kStateHandled;` first, the update case first, then
+  `default`, then enter falling through into exit, then `kStateEvent3` with only a `break`. Exit needs `states.AssertOwner(this);`
+  or enter and exit become one range and the table is lost, because selection needs four clusters to build one
+  (`ControllablePlayer::State237`, `EnemyChubby::State242`). Where the blocks sit follows the order of the cases.
+- A `ldrb` passed straight to a `bool` parameter means the field is a `bool`. As `uint8_t` it compiles to a compare and `cset`
+  (`SuperFightingRobotHand::flagF49`).
+- A value multiplied by a function's result, loaded after the call, needs the call in a local first:
+  `float sign = FacingSign(); speed = jumpBackSpeed * sign;` (`EnemyChubby::State236`).
+
 ## Build profile for game classes
 
 The game-class sources (`gameplay_pickup`, `gameplay_piniata`) build with
@@ -951,6 +960,10 @@ Boss's version and add a class detail:
 - **Lynette's slot 237** refuses kind 1 when the current target is in range of her kind 180 attack
   (`AttackSlot::InRange`), and kind 180 when any target is within `closeRange`. An attack slot's first 16 bytes turned
   out to be its range in x and z, and the y range is `+0x10` of the attack.
+- **Envy:** a player's hit during their state 165 raises `flagD83`, which sends her to state 268 from her approach. In state
+  268 she counts the damage she takes. The approach otherwise follows Lynette's, with the target going out as an extra exit.
+- **SuperFightingRobotHand:** at half health it tells the robot once (`halfHealthDone`, the robot's state 274) and goes to state
+  260. At no health it goes to state 262.
 - **Damage (slot 69):** Roxy inlines Boss's handling (`Boss::TakeBossDamage`);
   TagTeamMember also drains its own health at `+0xd7c`, Ken & Kyle start a
   recovery, Chau derives a phase from its health, and the robot hand counts hits.
@@ -1071,8 +1084,13 @@ within 0.1 unless the playfield's `+0x128` is set. It also clears `airAttackCoun
 with the facing kept up to date. `Slot68` counts its calls and runs `0x80f6e0` every so many, a random number between
 `+0x12ac` and `+0x12b0`. `Slot156` needs at least two players outside state 233.
 
-`State104`, `Slot68` and `Slot156` are matched. `State100`, `State102`, `State114` and `State136` are written but not
-matched, and each one's comment says what still differs.
+`Slot94` is being knocked out: it lets go, loses all health and guts, and goes to state 108, or 116 from 114. `State122`'s exit
+stops two of the actions the player keeps as references and starts a third. `State237` stands in animation 30 until the stick
+moves. Whether that goes to state 161 or 163 depends on a dash, and how a dash is read depends on the player's saved settings
+(`PersistentPlayerRecord`, 0x5b4 bytes each).
+
+`State104`, `State122`, `State237`, `Slot68`, `Slot94` and `Slot156` are matched. `State100`, `State102`, `State114` and
+`State136` are written but not matched, and each one's comment says what still differs.
 
 ### The playable characters' own states
 

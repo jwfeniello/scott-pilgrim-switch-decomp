@@ -555,6 +555,7 @@ struct Patel : Boss {
 };
 // vtable 0x1898a48, 274 slots
 struct Envy : TagTeamMember {
+    float TakeDamage(const void* hit, BaseCharacter* other);
     bool Slot82();
     void Update();
     int State122(int event); State State122Ptr();   // slots 122, 123, override TagTeamMember
@@ -706,6 +707,9 @@ struct SuperFightingRobotAI : Boss {
 // vtable 0x188eb08, 274 slots
 struct SuperFightingRobotHand : Boss {
     float TakeDamage(const void* hit, BaseCharacter* other);
+    void Slot13();
+    bool CheckA30210();                     // 0xa30210
+    bool CallA2fae0(bool flag, float speed);   // 0xa2fae0
     void Slot4(onyx::Archive& archive, ComponentSlot::Source* source);
     int State96(int event); State State96Ptr();   // slots 96, 97, override Boss
     int State106(int event); State State106Ptr();   // slots 106, 107, override Boss
@@ -737,10 +741,10 @@ struct SuperFightingRobotHand : Boss {
     int32_t valueEf8;            // +0xef8
     int32_t valueEfc;            // +0xefc
     int32_t valueF00;            // +0xf00
-    int32_t valueF04;            // +0xf04
+    float speedF04;              // +0xf04: times +0xf10 in state 246
     int32_t valueF08;            // +0xf08
     int32_t valueF0c;            // +0xf0c
-    int32_t valueF10;            // +0xf10
+    float speedF10;              // +0xf10
     int32_t valueF14;            // +0xf14
     int32_t valueF18;            // +0xf18
     int32_t valueF1c;            // +0xf1c
@@ -755,7 +759,7 @@ struct SuperFightingRobotHand : Boss {
     int32_t valueF40;            // +0xf40
     int32_t valueF44;            // +0xf44: serialized through a uint32_t
     uint8_t flagF48;             // +0xf48
-    uint8_t flagF49;             // +0xf49
+    bool flagF49;                // +0xf49: passed to the move at 0xa2fae0
     char padding_f4a[0x2];
     int32_t valueF4c;            // +0xf4c
     int32_t valueF50;            // +0xf50
@@ -767,7 +771,8 @@ struct SuperFightingRobotHand : Boss {
     char padding_fa4[0xc];
     SuperFightingRobotAI* owner; // +0xfb0: set by the robot
     uint8_t flagFb8;             // +0xfb8
-    char padding_fb9[0x2];
+    char padding_fb9[0x1];
+    uint8_t halfHealthDone;      // +0xfba: the robot has been told it's at half health
     uint8_t flagFbb;             // +0xfbb
 };
 // vtable 0x188d260, 258 slots
