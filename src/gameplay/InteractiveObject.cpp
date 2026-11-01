@@ -70,12 +70,12 @@ void InteractiveObject::Slot74(const float* point, bool flag, float value) {
 int InteractiveObject::State80(int event) {
     switch (event) {
     case kStateEnter: {
-        CharacterEffect* effect = effectHandle ? static_cast<CharacterEffect*>(effectHandle->object) : nullptr;
+        ShadowAnimatedObject* effect = shadowHandle ? static_cast<ShadowAnimatedObject*>(shadowHandle->object) : nullptr;
         if (effect) effect->visible = 0;
         return kStateHandled;
     }
     case kStateExit: {
-        CharacterEffect* effect = effectHandle ? static_cast<CharacterEffect*>(effectHandle->object) : nullptr;
+        ShadowAnimatedObject* effect = shadowHandle ? static_cast<ShadowAnimatedObject*>(shadowHandle->object) : nullptr;
         if (effect) effect->visible = 1;
         return kStateHandled;
     }
@@ -85,6 +85,46 @@ int InteractiveObject::State80(int event) {
     default:
         return kStateUnhandled;
     }
+}
+
+// Standing: falls when not on the ground.
+int InteractiveObject::State78(int event) {
+    int result = kStateHandled;
+    switch (event) {
+    case kStateUpdate:
+        if (!IsOnGround()) {
+            motionTarget.z = fallZ;
+            motionC4 = fallC4;
+        }
+        result = kStateHandled;
+        break;
+    case kStateEnter: {
+        motion = onyx::Vector3::Zero();
+        motionTarget = onyx::Vector3::Zero();
+        int current = animation;
+        if (current != 0 && current != 170) {
+            if (!emptyLook) PlayAnimation(0, false, false, 1.0f);
+            else PlayAnimation(170, false, false, 1.0f);
+        }
+        flag165 = 0;
+        result = kStateHandled;
+        break;
+    }
+    case kStateExit:
+        result = kStateHandled;
+        flag165 = 1;
+        if (ShadowAnimatedObject* shadow = shadowHandle ? static_cast<ShadowAnimatedObject*>(shadowHandle->object) : nullptr) {
+            result = kStateHandled;
+            shadow->visible = 1;
+        }
+        break;
+    case kStateEvent3:
+        return result;
+    default:
+        result = kStateUnhandled;
+        break;
+    }
+    return result;
 }
 
 }  // namespace SPTG

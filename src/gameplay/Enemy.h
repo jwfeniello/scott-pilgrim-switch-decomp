@@ -15,7 +15,7 @@ struct EnemySensor {
 };
 
 // Reached through the singleton at +0x7a0: picks the bonus and scales the base values.
-struct EnemyScaling { char padding[0x4c]; int32_t mode; float scale; };   // +0x4c, +0x50
+struct GameDifficultyAccessor { char padding[0x4c]; int32_t mode; float scale; };   // +0x4c, +0x50
 
 // A distance band (12 bytes).
 struct AttackRange { float min, max, extra; };   // extra: serialized, not read by the matched states
@@ -108,7 +108,7 @@ struct Enemy : BaseCharacter {
     onyx::ComponentHandle* handle788; // +0x788
     onyx::ComponentHandle* handle790; // +0x790
     Singleton<SwitchLevelGateAccess> levelGate; // +0x798: filled by AssignComponentSlot, getter 0x770d70
-    Singleton<EnemyScaling> scaling; // +0x7a0: getter 0x7a1bc0
+    Singleton<GameDifficultyAccessor> scaling; // +0x7a0: getter 0x7a1bc0
     char padding_7a8[0x4];
     float value7ac;              // +0x7ac
     float stateTime;             // +0x7b0: time spent in the current state

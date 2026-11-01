@@ -91,10 +91,10 @@ struct ActorFlags : onyx::Component {
     char padding_7b[0x9d];
     uint8_t flag118;      // +0x118
 };
-// Game services reached through the singleton at +0x80 (getter 0x992bf0).
+// SPTG::LevelAIManager (type 0x2b951b8a), reached through the singleton at +0x80 (getter 0x992bf0).
 struct GameDifficulty { char padding[0x108]; float value108; };   // +0x108
 struct NpcAccessor { char padding[0x60]; onyx::ComponentHandle* catalog; };   // +0x60, Catalog<NPC>
-struct GameServices {
+struct LevelAIManager {
     char padding[0x50];
     Singleton<GameDifficulty> difficulty;   // +0x50 (getter 0x992f30)
     Singleton<NpcAccessor> npcs;            // +0x58 (getter 0x7725e0)
@@ -135,7 +135,7 @@ struct InteractiveCatalog : onyx::Component {
 };
 
 // Reached through the singleton at +0x1f8 (getter 0x78c910).
-struct CharacterSettings { char padding[0x5ad]; uint8_t flag5ad; };   // +0x5ad
+struct LevelSecretManager { char padding[0x5ad]; uint8_t flag5ad; };   // +0x5ad
 // The hit TakeDamage receives; only +0x14 is known so far.
 struct DamageHit { char padding_0[0x14]; int32_t value14; };
 // What slot 93 receives; only the amount at +0x4 is known.
@@ -144,8 +144,8 @@ struct HitValue { uint32_t value0; float amount; };
 struct GameState { char padding[0xe0]; uint8_t flagE0; };
 extern "C" GameState* Game_State;   // 0x1924bc0
 
-// A visual effect component whose visibility flag the states toggle.
-struct CharacterEffect : onyx::Component {
+// SPTG::ShadowAnimatedObject: the actor's shadow, a weak dependency. It follows the actor, and states hide it.
+struct ShadowAnimatedObject : onyx::Component {
     char padding_8[0x70];
     uint8_t visible;   // +0x78
 };
@@ -224,12 +224,12 @@ struct AnimatedAiActor : onyx::Component {
     uint8_t flag50;              // +0x50
     char padding_51[0x3];
     int32_t value54;             // +0x54: copied to +0x230 by slot 13
-    onyx::ComponentHandle* effectHandle; // +0x58
+    onyx::ComponentHandle* shadowHandle; // +0x58
     char padding_60[0x8];
     onyx::ComponentHandle* partnerHandle; // +0x68
-    onyx::ComponentHandle* animationHandle; // +0x70: AnimationControl (type 0x29fbe438)
+    onyx::ComponentHandle* animationHandle; // +0x70: AnimationController (type 0x29fbe438)
     onyx::ComponentHandle* actorObject; // +0x78
-    Singleton<GameServices> services; // +0x80
+    Singleton<LevelAIManager> levelAI; // +0x80
     char padding_88[0x8];
     Singleton<LevelItemAccessor> level; // +0x90
     float base98;                // +0x98: scaled into +0x9c
@@ -244,7 +244,9 @@ struct AnimatedAiActor : onyx::Component {
     float groundZ;               // +0xf8
     float groundC4;              // +0xfc
     uint8_t flag100;             // +0x100
-    char padding_101[0x2b];
+    char padding_101[0x3];
+    float brakeForce;            // +0x104: how hard it slows down
+    char padding_108[0x24];
     int32_t value12c;            // +0x12c
     uint8_t flag130;             // +0x130
     char padding_131[0x7];
@@ -381,10 +383,10 @@ struct BaseCharacter : AnimatedAiActor {
     SPTG_SLOT(157)
     virtual bool Slot158();                                                  // slot 158
 
-    onyx::ComponentHandle* handle1e8; // +0x1e8
-    void* slot1f0;               // +0x1f0: filled by AssignComponentSlot
-    Singleton<CharacterSettings> settings; // +0x1f8
-    void* slot200;               // +0x200: filled by AssignComponentSlot
+    onyx::ComponentHandle* spritePrinter; // +0x1e8
+    void* textureLoader;               // +0x1f0: filled by AssignComponentSlot
+    Singleton<LevelSecretManager> settings; // +0x1f8
+    void* hudStatus;               // +0x200: filled by AssignComponentSlot
     StateMachine<BaseCharacter> states; // +0x208
     int32_t value230;            // +0x230
     char padding_234[0x4];
@@ -512,7 +514,7 @@ struct BaseCharacter : AnimatedAiActor {
     void Apply8e5750(int value);                       // 0x8e5750
     void HoldAnimation(float time, float speed);
     BaseCharacter* Mount() { return mountHandle ? static_cast<BaseCharacter*>(mountHandle->object) : nullptr; }
-    CharacterEffect* Effect() { return effectHandle ? static_cast<CharacterEffect*>(effectHandle->object) : nullptr; }
+    ShadowAnimatedObject* Shadow() { return shadowHandle ? static_cast<ShadowAnimatedObject*>(shadowHandle->object) : nullptr; }
 };
 static_assert(__builtin_offsetof(BaseCharacter, states) == 0x208, "BaseCharacter states");
 static_assert(__builtin_offsetof(BaseCharacter, actionMode) == 0x500, "BaseCharacter action mode");
@@ -574,8 +576,9 @@ struct AttackInput {
     };
     AttackInput() { bits = 0; value0 = 0; }
 };
-// A player's saved progress: the moves learned and the worlds cleared.
-struct PlayerRecord : onyx::Component {
+// SPTG::PlayerInfo (type 0x466135fe) as the player classes use it: a player's saved progress, with the moves
+// learned and the worlds cleared. ComponentSerialize.h has the serialized view of the same class.
+struct PlayerInfoView : onyx::Component {
     char padding_8[0x59];
     uint8_t moves;               // +0x61
     char padding_62[0x32];
@@ -615,9 +618,9 @@ struct ControllablePlayer : BaseCharacter {
     bool UseItem(Item* item);                            // 0x80e9a0
     void GainExperience(float amount);                   // 0x80ecc0
     bool Effect10();                                     // 0x80f6e0
-    PlayerRecord* Record() { return onyx::Get<PlayerRecord, 1180775934u>(handle7d8); }
+    PlayerInfoView* Info() { return onyx::Get<PlayerInfoView, 1180775934u>(playerInfo); }
     bool KnowsMove(int move) {
-        PlayerRecord* record = Record();
+        PlayerInfoView* record = Info();
         return (record->moves & move) || record->allMoves;
     }
     void ReadAttackInput(AttackInput* out);              // 0x991a20
@@ -734,18 +737,18 @@ struct ControllablePlayer : BaseCharacter {
     virtual void Slot257();                                  // slot 257
 
     char padding_77c[0xc];
-    void* slot788;               // +0x788
+    void* worldMapBroker;               // +0x788
     Singleton<InGameHUD> hud;    // +0x790
-    void* slot798;               // +0x798
-    void* slot7a0;               // +0x7a0
-    void* slot7a8;               // +0x7a8
-    void* slot7b0;               // +0x7b0
-    void* slot7b8;               // +0x7b8
-    void* slot7c0;               // +0x7c0
-    void* slot7c8;               // +0x7c8
-    void* slot7d0;               // +0x7d0
-    onyx::ComponentHandle* handle7d8; // +0x7d8
-    onyx::ComponentHandle* handle7e0; // +0x7e0
+    void* itemRegistry;               // +0x798
+    void* levelGate;               // +0x7a0
+    void* statistics;               // +0x7a8
+    void* localization;               // +0x7b0
+    void* pauseHandler;               // +0x7b8
+    void* flashMenuPhase;               // +0x7c0
+    void* selectedActors;               // +0x7c8
+    void* persistentData;               // +0x7d0
+    onyx::ComponentHandle* playerInfo; // +0x7d8
+    onyx::ComponentHandle* materialModifiers; // +0x7e0
     uint8_t flag7e8;             // +0x7e8
     char padding_7e9[0x17];
     EventSlot event800;          // +0x800

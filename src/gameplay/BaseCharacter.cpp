@@ -51,7 +51,7 @@ int BaseCharacter::StartAttack(Attack* attack, bool flag, int source, BaseCharac
 // it goes to the animation and, with +0x338 set, to the mount.
 void BaseCharacter::SetAnimationSpeed(float speed) {
     animationSpeed = speed;
-    if (hitStopLeft <= 0.0f) onyx::Get<AnimationControl, kAnimationControlType>(animationHandle)->SetSpeed(speed);
+    if (hitStopLeft <= 0.0f) onyx::Get<AnimationController, kAnimationControllerType>(animationHandle)->SetSpeed(speed);
     if (hitStopLeft <= 0.0f && mounted) {
         BaseCharacter* mount = Mount();
         if (mount) mount->SetAnimationSpeed(speed);
@@ -61,7 +61,7 @@ void BaseCharacter::SetAnimationSpeed(float speed) {
 // Slot 26 (0x96c980): pauses or resumes the animation, and with +0x338 set the
 // mount's.
 void BaseCharacter::SetAnimationPaused(bool paused) {
-    onyx::Get<AnimationControl, kAnimationControlType>(animationHandle)->SetPaused(paused);
+    onyx::Get<AnimationController, kAnimationControllerType>(animationHandle)->SetPaused(paused);
     if (mounted) {
         BaseCharacter* mount = Mount();
         if (mount) mount->SetAnimationPaused(paused);
@@ -199,7 +199,7 @@ void BaseCharacter::Slot154() {
 // Slot 158 (0x976630): false while the game state's +0xe0 is set, else the
 // settings' +0x5ad.
 bool BaseCharacter::Slot158() {
-    CharacterSettings* values = settings.Get();
+    LevelSecretManager* values = settings.Get();
     if (Game_State && Game_State->flagE0) return false;
     return values->flag5ad;
 }
@@ -251,10 +251,10 @@ void BaseCharacter::LoseGuts(float value) {
 // and the two attacks of slot 35.
 void BaseCharacter::Slot4(onyx::Archive& archive, ComponentSlot::Source* source) {
     AnimatedAiActor::Slot4(archive, source);
-    onyx::TransferHandle(handle1e8, archive, source);
-    AssignComponentSlot<9864096u, 42196088u>(&slot1f0, source);
+    onyx::TransferHandle(spritePrinter, archive, source);
+    AssignComponentSlot<9864096u, 42196088u>(&textureLoader, source);
     AssignComponentSlot<7920224u, 493361733u>(&settings, source);
-    AssignComponentSlot<8990432u, 1141032170u>(&slot200, source);
+    AssignComponentSlot<8990432u, 1141032170u>(&hudStatus, source);
     attack258.Serialize(archive);
     onyx::Transfer(archive, value2b0);
     onyx::Transfer(archive, value2b4);

@@ -171,18 +171,18 @@ void EnemyAerial::Slot4(onyx::Archive& archive, ComponentSlot::Source* source) {
 // and the settings after them.
 void ControllablePlayer::Slot4(onyx::Archive& archive, ComponentSlot::Source* source) {
     BaseCharacter::Slot4(archive, source);
-    AssignComponentSlot<7785648u, 484521086u>(&slot788, source);
+    AssignComponentSlot<7785648u, 484521086u>(&worldMapBroker, source);
     AssignComponentSlot<9042288u, 2024365970u>(&hud, source);
-    AssignComponentSlot<7999760u, 205210938u>(&slot798, source);
-    AssignComponentSlot<7752160u, 1051727473u>(&slot7a0, source);
-    AssignComponentSlot<7975184u, 521608489u>(&slot7a8, source);
-    AssignComponentSlot<7750592u, 1558270838u>(&slot7b0, source);
-    AssignComponentSlot<7960368u, 184116580u>(&slot7b8, source);
-    AssignComponentSlot<7751376u, 2069148984u>(&slot7c0, source);
-    AssignComponentSlot<7787216u, 840570882u>(&slot7c8, source);
-    AssignComponentSlot<7784864u, 623346953u>(&slot7d0, source);
-    onyx::TransferHandle(handle7d8, archive, source);
-    onyx::TransferHandle(handle7e0, archive, source);
+    AssignComponentSlot<7999760u, 205210938u>(&itemRegistry, source);
+    AssignComponentSlot<7752160u, 1051727473u>(&levelGate, source);
+    AssignComponentSlot<7975184u, 521608489u>(&statistics, source);
+    AssignComponentSlot<7750592u, 1558270838u>(&localization, source);
+    AssignComponentSlot<7960368u, 184116580u>(&pauseHandler, source);
+    AssignComponentSlot<7751376u, 2069148984u>(&flashMenuPhase, source);
+    AssignComponentSlot<7787216u, 840570882u>(&selectedActors, source);
+    AssignComponentSlot<7784864u, 623346953u>(&persistentData, source);
+    onyx::TransferHandle(playerInfo, archive, source);
+    onyx::TransferHandle(materialModifiers, archive, source);
     ReadEventSlot<9930336u, 7735899u>(archive, source, event800, this);
     ReadEventSlot<9930337u, 1396383524u>(archive, source, event818, this);
     ReadEventSlot<9930338u, 516672096u>(archive, source, event830, this);

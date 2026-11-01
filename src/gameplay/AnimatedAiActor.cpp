@@ -8,7 +8,7 @@ namespace SPTG {
 
 // Starts an animation. With a partner whose transform has a parent, also takes the partner's facing.
 void AnimatedAiActor::PlayAnimation(int anim, bool loop, bool scaled, float speed) {
-    onyx::Get<AnimationControl, kAnimationControlType>(animationHandle)->Play(anim, loop);
+    onyx::Get<AnimationController, kAnimationControllerType>(animationHandle)->Play(anim, loop);
     if (partnerHandle && partnerHandle->object) {
         BaseCharacter* partner = static_cast<BaseCharacter*>(partnerHandle->object);
         ActorObject* actor = onyx::Find<ActorObject, onyx_types::type_6492d61d>(actorObject);
@@ -82,7 +82,7 @@ void AnimatedAiActor::Slot74(const float* point, bool flag, float value) {
 // Sets the animation speed, unless a hit is holding the animation.
 void AnimatedAiActor::SetAnimationSpeed(float speed) {
     animationSpeed = speed;
-    if (hitStopLeft <= 0.0f) onyx::Get<AnimationControl, kAnimationControlType>(animationHandle)->SetSpeed(speed);
+    if (hitStopLeft <= 0.0f) onyx::Get<AnimationController, kAnimationControllerType>(animationHandle)->SetSpeed(speed);
 }
 
 // Turns round.

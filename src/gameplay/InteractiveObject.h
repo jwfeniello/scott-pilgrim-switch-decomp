@@ -15,7 +15,7 @@ struct InteractiveObject : AnimatedAiActor {
     bool Slot37() override;                                                  // slot 37
     void Slot43(float value) override;                                       // slot 43
     void Slot74(const float* point, bool flag, float value) override;        // slot 74
-    SPTG_SLOT(78) SPTG_SLOT(79)
+    virtual int State78(int event); virtual State State78Ptr();              // slots 78, 79
     virtual int State80(int event); virtual State State80Ptr();              // slots 80, 81
     virtual int State82(int event); virtual State State82Ptr();              // slots 82, 83
     virtual int State84(int event); virtual State State84Ptr();              // slots 84, 85
@@ -34,6 +34,12 @@ struct InteractiveObject : AnimatedAiActor {
     Attack attack2d8;                // +0x2d8
     Attack attack330;                // +0x330
     Attack attack388;                // +0x388
+    char padding_3e0[0xc];
+    float fallZ;                     // +0x3ec: what it falls with
+    float fallC4;                    // +0x3f0
+    uint8_t emptyLook;               // +0x3f4: stands in animation 170 instead of 0
+    char padding_3f5[0x47];
+    uint8_t slidesInAnimation9;      // +0x43c
 };
 static_assert(__builtin_offsetof(InteractiveObject, states) == 0x250, "InteractiveObject states");
 static_assert(__builtin_offsetof(InteractiveObject, attack388) == 0x388, "InteractiveObject attack388");

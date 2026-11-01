@@ -99,7 +99,7 @@ int Enemy::State126(int event) {
 int Enemy::State136(int event) {
     switch (event) {
     case kStateEnter: {
-        CharacterEffect* effect = effectHandle ? static_cast<CharacterEffect*>(effectHandle->object) : nullptr;
+        ShadowAnimatedObject* effect = shadowHandle ? static_cast<ShadowAnimatedObject*>(shadowHandle->object) : nullptr;
         if (effect) effect->visible = 0;
         timer330 = 0.0f;
         return kStateHandled;
@@ -129,7 +129,7 @@ int Enemy::State136(int event) {
         return kStateHandled;
     }
     case kStateExit: {
-        CharacterEffect* effect = effectHandle ? static_cast<CharacterEffect*>(effectHandle->object) : nullptr;
+        ShadowAnimatedObject* effect = shadowHandle ? static_cast<ShadowAnimatedObject*>(shadowHandle->object) : nullptr;
         if (effect) effect->visible = 1;
         return kStateHandled;
     }
@@ -193,7 +193,7 @@ int Enemy::State108(int event) {
 int Enemy::State112(int event) {
     if (BaseCharacter::State112(event) == kStateParentTookOver) return kStateParentTookOver;
     if (event != kStateEnter) return kStateUnhandled;
-    NpcCatalog* catalog = onyx::Get<NpcCatalog, onyx_types::type_3fb2ecb4>(services.Get()->npcs.Get()->catalog);
+    NpcCatalog* catalog = onyx::Get<NpcCatalog, onyx_types::type_3fb2ecb4>(levelAI.Get()->npcs.Get()->catalog);
     for (BaseCharacter** i = catalog->npcs; i != catalog->npcs + catalog->count; ++i) (*i)->ReactTo(this, 0, nullptr);
     flag130 = 0;
     if (value874 == 0) {
@@ -749,10 +749,10 @@ int Enemy::State222(int event) {
     case kStateEnter: {
         aiMode = 7;
         PlayAnimation(209, 1, 0, 1.0f);
-        if (CharacterEffect* effect = Effect()) effect->visible = 0;
+        if (ShadowAnimatedObject* effect = Shadow()) effect->visible = 0;
         ActorObject* actor = onyx::Find<ActorObject, onyx_types::type_6492d61d>(actorObject);
         onyx::Get<ActorFlags, 0x2eae5813u>(actor->flags)->flag118 = 1;
-        value9c8 = services.Get()->difficulty.Get()->value108;
+        value9c8 = levelAI.Get()->difficulty.Get()->value108;
         health = 0.0f;
         guts = 0.0f;
         flag3ba = 1;
@@ -762,7 +762,7 @@ int Enemy::State222(int event) {
         aiMode = 6;
         ActorObject* actor = onyx::Find<ActorObject, onyx_types::type_6492d61d>(actorObject);
         onyx::Get<ActorFlags, 0x2eae5813u>(actor->flags)->flag118 = 0;
-        if (CharacterEffect* effect = Effect()) effect->visible = 1;
+        if (ShadowAnimatedObject* effect = Shadow()) effect->visible = 1;
         flag3ba = 0;
         return kStateHandled;
     }

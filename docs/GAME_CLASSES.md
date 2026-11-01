@@ -951,6 +951,33 @@ and overrides 38. So `PlayAnimation` (`0x93f750`), `SetFacing`, `IsOnGround` and
 `BaseCharacter::Update()` written in a subclass really calls `AnimatedAiActor::Update`.
 [`AnimatedAiActor.cpp`](../src/gameplay/AnimatedAiActor.cpp) holds the base class's own functions.
 
+The fields that hold a class's dependencies are in the reverse of its `Compose` list, and the type
+hash each serializer passes names the class, so these names come from the binary:
+
+| Class | Offset | Field | Class it holds |
+|---|---|---|---|
+| `AnimatedAiActor` | +0x58 | `shadowHandle` | weak `ShadowAnimatedObject` (its transform is at +0x58, as `Update` uses it) |
+| | +0x70 | `animationHandle` | strong `AnimationController` |
+| | +0x78 | `actorObject` | strong `ActorObject` |
+| | +0x80 | `levelAI` | singleton `LevelAIManager` |
+| | +0x90 | `level` | singleton `LevelItemAccessor` |
+| `BaseCharacter` | +0x1e8 | `spritePrinter` | weak `SpriteAnimationPrinter` |
+| | +0x1f0 | `textureLoader` | singleton `ControllableTextureLoader` |
+| | +0x1f8 | `settings` | singleton `LevelSecretManager` |
+| | +0x200 | `hudStatus` | singleton `HudStatusManager` |
+| `ControllablePlayer` | +0x788 | `worldMapBroker` | singleton `WorldMapInformationBroker` |
+| | +0x790 | `hud` | singleton `InGameHUD` |
+| | +0x798 | `itemRegistry` | singleton `ItemRegistry` |
+| | +0x7a0 | `levelGate` | singleton `SwitchLevelGate` |
+| | +0x7b8 | `pauseHandler` | singleton `PauseHandler` |
+| | +0x7c0 | `flashMenuPhase` | singleton `FlashMenuPhase` |
+| | +0x7c8 | `selectedActors` | singleton `SelectedActorRecorder` |
+| | +0x7d0 | `persistentData` | singleton `PersistentDataManager` |
+| | +0x7d8 | `playerInfo` | strong `PlayerInfo` |
+| | +0x7e0 | `materialModifiers` | weak `MaterialModifierHolder` |
+| `Enemy` | +0x798 | `levelGate` | singleton `SwitchLevelGate` |
+| | +0x7a0 | `scaling` | singleton `GameDifficultyAccessor` |
+
 ### Getting on and off an interactive object
 
 A character can ride an `SPTG::InteractiveObject`. `BaseCharacter` keeps the handle at +0x238
@@ -981,7 +1008,7 @@ the kinds, which also back up the stat names above:
 | 9 | `LearnMove`: sets a bit in the moves of the player's record |
 | 10 | `0x80f6e0` |
 
-The record is the saved component behind +0x7d8, the same one `WorldClearAction` writes to. Bosses
+The record is `PlayerInfo`, behind +0x7d8, the same component `WorldClearAction` writes to. Bosses
 use `LearnMove` too: when Chau leaves `State116`, every player learns move 17.
 
 [`PlayerOverrides.cpp`](../src/gameplay/PlayerOverrides.cpp) has 4 overrides: slots 20, 76, 87 and

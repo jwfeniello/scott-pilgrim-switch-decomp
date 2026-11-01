@@ -66,7 +66,7 @@ void ControllablePlayer::Slot20() {
             return;
         }
         state->flag1e4 = 0;
-        PlayerTable* table = reinterpret_cast<Singleton<PlayerTable>*>(&slot7b8)->Get();
+        PlayerTable* table = reinterpret_cast<Singleton<PlayerTable>*>(&pauseHandler)->Get();
         PlayerInput* current = input;
         uint32_t index = current->value1f0 - 1;
         table->entries[index].flag = 0;

@@ -11,12 +11,12 @@ int BaseCharacter::State136(int event) {
     case kStateUpdate:
         return kStateHandled;
     case kStateEnter: {
-        CharacterEffect* effect = effectHandle ? static_cast<CharacterEffect*>(effectHandle->object) : nullptr;
+        ShadowAnimatedObject* effect = shadowHandle ? static_cast<ShadowAnimatedObject*>(shadowHandle->object) : nullptr;
         if (effect) effect->visible = 0;
         return kStateHandled;
     }
     case kStateExit: {
-        CharacterEffect* effect = effectHandle ? static_cast<CharacterEffect*>(effectHandle->object) : nullptr;
+        ShadowAnimatedObject* effect = shadowHandle ? static_cast<ShadowAnimatedObject*>(shadowHandle->object) : nullptr;
         if (effect) effect->visible = 1;
         return kStateHandled;
     }

@@ -494905,7 +494905,7 @@
           "target_sha256": "fa709e982fa7f68d50f8772e01a1a9e162e2cf044e98ffc276460d5a79d438c8",
           "bindings": {
             "_ZN4SPTG13BaseCharacter8State112Ei": "0x972b70",
-            "_ZN4SPTG9SingletonINS_12GameServicesEE3GetEv": "0x992bf0",
+            "_ZN4SPTG9SingletonINS_14LevelAIManagerEE3GetEv": "0x992bf0",
             "_ZN4SPTG9SingletonINS_11NpcAccessorEE3GetEv": "0x7725e0",
             "Accessor_Resolver": "0x191cd10",
             "Accessor_Resolve": "0x67edd0",
@@ -495180,7 +495180,7 @@
           "bindings": {
             "Accessor_Resolver": "0x191cd10",
             "Accessor_Resolve": "0x67edd0",
-            "_ZN4SPTG9SingletonINS_12GameServicesEE3GetEv": "0x992bf0",
+            "_ZN4SPTG9SingletonINS_14LevelAIManagerEE3GetEv": "0x992bf0",
             "_ZN4SPTG9SingletonINS_14GameDifficultyEE3GetEv": "0x992f30"
           },
           "got_bindings": {},
@@ -568347,7 +568347,7 @@
           "symbol": "_ZN4SPTG13BaseCharacter7Slot158Ev",
           "target_sha256": "be75d01ba8f1918f75a0ed75a73592d30394c59d7c7980fcb524beea85ff70b4",
           "bindings": {
-            "_ZN4SPTG9SingletonINS_17CharacterSettingsEE3GetEv": "0x78c910",
+            "_ZN4SPTG9SingletonINS_18LevelSecretManagerEE3GetEv": "0x78c910",
             "Game_State": "0x1924bc0"
           },
           "got_bindings": {}
@@ -569017,6 +569017,22 @@
             "_ZN4SPTG12StateMachineINS_17InteractiveObjectEE10TransitionEMS1_FiiE": "0x9c3be0"
           },
           "got_bindings": {}
+        },
+        {
+          "address": "0x9c28b0",
+          "size": 440,
+          "symbol": "_ZN4SPTG17InteractiveObject7State78Ei",
+          "target_sha256": "edb8c2127cfffb6ea3d452edf3c52022661b9372ffbfcf066f3ef928a954b9a8",
+          "bindings": {
+            "_ZGVZN4onyx7Vector34ZeroEvE5value": "0x191f8b8",
+            "_ZZN4onyx7Vector34ZeroEvE5value": "0x191f8c0",
+            "__cxa_guard_acquire": "0xfa4130",
+            "__cxa_guard_release": "0xfa4140"
+          },
+          "got_bindings": {},
+          "immutable_sections": {
+            "20": "0x1390e7e"
+          }
         },
         {
           "address": "0x9c2a80",

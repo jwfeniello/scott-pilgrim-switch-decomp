@@ -327,7 +327,7 @@ int Pickup::IdleState(int event) {
                         resting = 1;
                         motion = onyx::Vector3::Zero();
                         motionTarget = onyx::Vector3::Zero();
-                        if (pauseWhenResting) onyx::Get<AnimationControl, 0x29fbe438u>(animation)->SetPaused(true);
+                        if (pauseWhenResting) onyx::Get<AnimationController, 0x29fbe438u>(animation)->SetPaused(true);
                     }
                 }
             } else if (resting) {
@@ -351,7 +351,7 @@ int Pickup::IdleState(int event) {
         return kStateUnhandled;
     case kStateExit:
         states.AssertOwner(this);
-        onyx::Get<AnimationControl, 0x29fbe438u>(animation)->SetPaused(false);
+        onyx::Get<AnimationController, 0x29fbe438u>(animation)->SetPaused(false);
         return kStateHandled;
     }
 }

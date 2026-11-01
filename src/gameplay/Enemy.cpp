@@ -44,7 +44,7 @@ float Enemy::TakeDamage(const void* hit, BaseCharacter* other) {
 void Enemy::Slot229() {
     int mode = scaling.Get()->mode;
     int extra = mode == 3 ? bonusMode3 : mode == 2 ? bonusMode2 : bonus;
-    EnemyScaling* values = scaling.Get();
+    GameDifficultyAccessor* values = scaling.Get();
     scaled9c = base98 * values->scale + extra;
     scaled2f8 = values->scale * base2f4 + extra;
     scaled910 = values->scale * base90c + extra;
