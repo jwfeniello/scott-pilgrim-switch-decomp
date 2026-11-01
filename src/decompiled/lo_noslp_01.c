@@ -36,13 +36,18 @@ typedef struct RecoveredSdkResult { short code; const char *unknown08; unsigned 
 #define __udf(x) __builtin_unreachable()
 #define atomic_load(p) __atomic_load_n(p, 2)
 void* memcpy(void*, const void*, size_t); void* memset(void*, int, size_t); void* memmove(void*, const void*, size_t); int memcmp(const void*, const void*, size_t); size_t strlen(const char*); int strcmp(const char*, const char*); char* strcpy(char*, const char*); char* strncpy(char*, const char*, size_t); int strncmp(const char*, const char*, size_t); void free(void*); void* malloc(size_t); float fabsf(float); float sqrtf(float); float floorf(float); float ceilf(float);
+extern char goff_18EDD08[];
 extern char goff_18EE490[];
 extern char goff_18EE498[];
+extern char goff_18F2620[];
+extern char goff_18F26C8[];
 __attribute__((visibility("hidden"))) __int64 sub_290830();
 __attribute__((visibility("hidden"))) __int64 sub_56C9F0();
+__attribute__((visibility("hidden"))) __int64 sub_56DC80();
 __attribute__((visibility("hidden"))) __int64 sub_575CE0();
 __attribute__((visibility("hidden"))) __int64 sub_57F050();
 __attribute__((visibility("hidden"))) __int64 sub_583240();
+__attribute__((visibility("hidden"))) __int64 sub_782A20();
 
 // N5storm18DynamicTypeFactoryINS_27NetPropertyRefDataContainerEEE, virtual slot 2
 _QWORD *__fastcall sub_2A0580(__int64 a1, __int64 a2, unsigned int a3)
@@ -86,5 +91,38 @@ _QWORD *__fastcall sub_2A0620(__int64 a1, __int64 a2, __int64 a3, unsigned int a
   v5[14] = v7;
   sub_575CE0((__int64)(v5 + 17));
   return v5;
+}
+
+__int64 __fastcall sub_312C80(_QWORD *a1, int a2, _QWORD **a3, int a4)
+{
+  __int64 *v4; // x24
+  __int64 **v5; // x22
+  _QWORD *v6; // x23
+  __int64 *v10; // x26
+  __int64 v11; // x21
+  __int64 (__fastcall **v12)(); // x0
+  __int64 v13; // x0
+
+  v4 = ((__int64 *)((__int64*)goff_18EDD08) + 2);
+  *a1 = ((__int64 *)goff_18F26C8 + 2);
+  v5 = (__int64 **)a1;
+  a1[1] = v4;
+  v6 = a1 + 1;
+  a1[2] = sub_56DC80(a1 + 1);
+  *((_BYTE *)v5 + 24) = 1;
+  v10 = ((__int64 *)goff_18F2620 + 2);
+  *v6 = ((__int64 *)goff_18F2620 + 2);
+  *((_DWORD *)v5 + 7) = a2;
+  v11 = (__int64)(v5 + 4);
+  v12 = sub_583240();
+  sub_290830(v5 + 4, v12);
+  v5[13] = v4;
+  v5 += 13;
+  v13 = sub_56DC80(v5);
+  *v5 = v10;
+  v5[1] = (__int64 *)v13;
+  *((_BYTE *)v5 + 16) = 1;
+  *((_DWORD *)v5 + 5) = a4;
+  return sub_782A20(v11, a3);
 }
 

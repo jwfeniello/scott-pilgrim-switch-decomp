@@ -42,15 +42,30 @@ extern __attribute__((visibility("hidden"))) char hoff_1841BD0[];
 extern __attribute__((visibility("hidden"))) __int64 qword_191B6C0;
 extern __attribute__((visibility("hidden"))) __int64 qword_191CD10;
 extern __attribute__((visibility("hidden"))) __int64 qword_191DCE8;
+extern __attribute__((visibility("hidden"))) __int64 qword_1926BD8;
 extern __attribute__((visibility("hidden"))) __int64 qword_1935138;
 __attribute__((visibility("hidden"))) __int64 sub_1E7720();
+__attribute__((visibility("hidden"))) __int64 sub_1E7A80();
+__attribute__((visibility("hidden"))) int sub_1FB080();
+__attribute__((visibility("hidden"))) __int64 sub_1FBC90();
 __attribute__((visibility("hidden"))) __int64 sub_20CBE0();
 __attribute__((visibility("hidden"))) __int64 sub_2500E0();
 __attribute__((visibility("hidden"))) __int64 sub_250550();
 __attribute__((visibility("hidden"))) __int64 sub_67EDD0();
 __attribute__((visibility("hidden"))) __int64 sub_690410();
 __attribute__((visibility("hidden"))) __int64 sub_69BDF0();
+__attribute__((visibility("hidden"))) unsigned char sub_A82B30();
 __attribute__((visibility("hidden"))) __int64 sub_C04BE0();
+
+int __fastcall sub_1F9EA0(_QWORD *a1, __int64 a2)
+{
+  __int64 v5; // x0
+
+  if ( (unsigned int)sub_1E7A80(a1[1], *(_QWORD *)(*a1 + 16LL)) != 0 )
+    return 0;
+  v5 = sub_1FBC90();
+  return sub_1FB080(v5, a1[1], a1[2], *a1, a2);
+}
 
 __int64 __fastcall sub_20CCF0(__int64 *a1, __int64 a2, unsigned int a3)
 {
@@ -205,6 +220,37 @@ LABEL_10:
         }
       }
     }
+  }
+  return result;
+}
+
+// N4Onyx8Graphics17IndexBufferStaticE, virtual slot 3
+__int64 __fastcall sub_687250(__int64 a1)
+{
+  __int64 result; // x0
+  unsigned int *v3; // x8
+  unsigned int v4; // w9
+  unsigned int v5; // w9
+  __int64 v6; // x19
+  __int64 v7; // x20
+  __int64 v8; // x0
+
+  *(_DWORD *)(a1 + 56) &= ~2u;
+  result = *(_QWORD *)(a1 + 80);
+  if ( result != 0 )
+  {
+    v3 = (unsigned int *)(result + 8);
+    v5 = __atomic_sub_fetch(v3, 1, 0);
+    if ( v5 == 0 )
+      result = (*(__int64 (__fastcall **)(__int64))(*(_QWORD *)result + 24LL))(result);
+    *(_QWORD *)(a1 + 80) = 0;
+  }
+  v6 = *(_QWORD *)(a1 + 96);
+  if ( v6 != 0 )
+  {
+    v7 = qword_1926BD8;
+    v8 = *(_QWORD *)(v7 + 8LL * (unsigned __int8)sub_A82B30(qword_1926BD8, v6) + 880);
+    return (*(__int64 (__fastcall **)(__int64, __int64))(*(_QWORD *)v8 + 48LL))(v8, v6);
   }
   return result;
 }
