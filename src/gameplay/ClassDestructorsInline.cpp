@@ -315,7 +315,7 @@ template<unsigned long Key, unsigned Pool, bool Reset, unsigned Kind> struct Pla
 };
 struct TrackingNode { void* padding; void* key; char data[0x18]; TrackingNode* next; };
 struct TrackingMap { void* mutex; char padding[0x20]; TrackingNode* free_head; TrackingNode* buckets[4003]; };
-extern "C" { extern TrackingMap* HandleTracking; void HandleLock(void*); void HandleUnlock(void*) noexcept; }
+extern "C" { extern TrackingMap* HandleTracking; void HandleLock(void*) noexcept; void HandleUnlock(void*) noexcept; }
 __attribute__((always_inline)) inline void UnlockHandles(TrackingMap* map) noexcept { HandleUnlock(map->mutex); }
 struct HandleObject { virtual ~HandleObject(); };
 struct HandleRecord { char padding[8]; HandleObject* object; unsigned references; };

@@ -315,7 +315,7 @@ template<unsigned long Key, unsigned Pool, bool Reset, unsigned Kind> struct Pla
 };
 struct TrackingNode { void* padding; void* key; char data[0x18]; TrackingNode* next; };
 struct TrackingMap { void* mutex; char padding[0x20]; TrackingNode* free_head; TrackingNode* buckets[4003]; };
-extern "C" { extern TrackingMap* HandleTracking; void HandleLock(void*); void HandleUnlock(void*) noexcept; }
+extern "C" { extern TrackingMap* HandleTracking; void HandleLock(void*) noexcept; void HandleUnlock(void*) noexcept; }
 __attribute__((always_inline)) inline void UnlockHandles(TrackingMap* map) noexcept { HandleUnlock(map->mutex); }
 struct HandleObject { virtual ~HandleObject(); };
 struct HandleRecord { char padding[8]; HandleObject* object; unsigned references; };
@@ -631,6 +631,19 @@ struct Base8ad7c0 { virtual ~Base8ad7c0(); char padding[72]; };
 struct Class8ad7c0 : Base8ad7c0 { AutoInline<PlainStrongHandle<145587205, true>> member_50; AutoInline<PlainStrongHandle<145587204, true>> member_58; char padding_60[8]; AutoInline<Array145587203> member_68; char padding_80[16]; AutoInline<Array145587202> member_90; char padding_a8[8]; AutoInline<PlainStrongHandle<145587201, true>> member_b0; virtual void Key(); ~Class8ad7c0(); };
 Class8ad7c0::~Class8ad7c0() {  }
 
+struct Buffer145734916 { uint64_t w0; uint64_t w8; uint64_t w10; uint64_t w18; void* w20; __attribute__((always_inline)) void Destroy() { w10 = 0; if (w20) FreeObject(w20); w20 = 0; w8 = 0; w10 = 0; } };
+struct Base8afbd0 { virtual ~Base8afbd0(); char padding[104]; };
+struct Level8afbd0_1 : Base8afbd0 { Auto<Buffer145734916> member_70; virtual void Key1(); DT_INLINE ~Level8afbd0_1() {} };
+namespace SPTG { 
+struct GUIObjectDirector : Level8afbd0_1 { char padding_98[8]; ListenerOut<145734915> member_a0; ListenerOut<145734914> member_b8; char padding_d0[8]; AutoInline<PlainStrongHandle<145734913, true>> member_d8; virtual void Key(); ~GUIObjectDirector(); };
+GUIObjectDirector::~GUIObjectDirector() {  }
+}
+struct Base8b6650 { virtual ~Base8b6650(); char padding[72]; };
+struct Level8b6650_1 : Base8b6650 { Member<146171149> member_50; virtual void Key1(); DT_INLINE ~Level8b6650_1() {} };
+namespace SPTG { 
+struct GUIObject : Level8b6650_1 { char padding_51[127]; ListenerOut<146171148> member_d0; ListenerOut<146171147> member_e8; ListenerOut<146171146> member_100; ListenerOut<146171145> member_118; ListenerOut<146171144> member_130; ListenerOut<146171143> member_148; ListenerOut<146171142> member_160; ListenerOut<146171141> member_178; ListenerOut<146171140> member_190; ListenerOut<146171139> member_1a8; ListenerOut<146171138> member_1c0; AutoInline<PlainStrongHandle<146171137, true>> member_1d8; virtual void Key(); ~GUIObject(); };
+GUIObject::~GUIObject() {  }
+}
 struct Element146444801 { char data[16]; ~Element146444801() noexcept; };
 struct Array146444801 { uint64_t w0; uint64_t w8; Element146444801* w10; __attribute__((always_inline)) void Destroy() { if (w10 && w8) { w10[0].~Element146444801(); for (uint64_t i = 1; i < w8; ++i) w10[i].~Element146444801(); } w8 = 0; void* memory = w10; if (memory) FreeObject(memory); } };
 struct Base8ba920 { virtual ~Base8ba920(); char padding[72]; };
@@ -748,6 +761,12 @@ namespace SPTG {
 struct AudioEventComponent : Level937160_1 { char padding_51[15]; ListenerOut<154605057> member_60; virtual void Key(); ~AudioEventComponent(); };
 AudioEventComponent::~AudioEventComponent() {  }
 }
+struct Base964e90 { virtual ~Base964e90(); char padding[480]; };
+struct Level964e90_1 : Base964e90 { Member<157608211> member_1e8; virtual void Key1(); DT_INLINE ~Level964e90_1() {} };
+namespace SPTG { 
+struct BaseCharacter : Level964e90_1 { char padding_1e9[79]; AutoInline<PlainStrongHandle<157608210, true>> member_238; AutoInline<PlainStrongHandle<157608209, true>> member_240; char padding_248[96]; AutoInline<PlainStrongHandle<157608208, true>> member_2a8; char padding_2b0[224]; AutoInline<PlainStrongHandle<157608207, true>> member_390; char padding_398[40]; ListenerOut<157608206> member_3c0; ListenerOut<157608205> member_3d8; ListenerOut<157608204> member_3f0; ListenerOut<157608203> member_408; ListenerOut<157608202> member_420; ListenerOut<157608201> member_438; ListenerOut<157608200> member_450; ListenerOut<157608199> member_468; AutoInline<PlainStrongHandle<157608198, true>> member_480; AutoInline<PlainStrongHandle<157608197, true>> member_488; char padding_490[80]; AutoInline<PlainStrongHandle<157608196, true>> member_4e0; char padding_4e8[152]; AutoInline<PlainStrongHandle<157608195, true>> member_580; char padding_588[80]; AutoInline<PlainStrongHandle<157608194, true>> member_5d8; char padding_5e0[368]; ListenerInline<157608193> member_750; virtual void Key(); ~BaseCharacter(); };
+BaseCharacter::~BaseCharacter() {  }
+}
 struct Buffer163039745 { void* w0; uint64_t w8; __attribute__((always_inline)) void Destroy() { if (w0) FreeObject(w0); w0 = 0; w8 = 0; } };
 struct Buffer163039746 { void* w0; uint64_t w8; __attribute__((always_inline)) void Destroy() { if (w0) FreeObject(w0); w0 = 0; w8 = 0; } };
 struct Base9b7ca0 { virtual ~Base9b7ca0(); char padding[1920]; };
@@ -755,12 +774,15 @@ namespace SPTG {
 struct NPC : Base9b7ca0 { ListenerOut<163039747> member_788; char padding_7a0[32]; Auto<Buffer163039746> member_7c0; char padding_7d0[16]; Auto<Buffer163039745> member_7e0; virtual void Key(); ~NPC(); };
 NPC::~NPC() {  }
 }
-struct Element164363265 { char data[8]; ~Element164363265() noexcept; };
-struct Array164363265 { uint64_t w0; uint64_t w8; Element164363265* w10; __attribute__((always_inline)) void Destroy() { if (w10 && w8) { w10[0].~Element164363265(); for (uint64_t i = 1; i < w8; ++i) w10[i].~Element164363265(); } w8 = 0; void* memory = w10; if (memory) FreeObject(memory); } };
-struct Base9cbfc0 { virtual ~Base9cbfc0(); char padding[2960]; };
+struct Base9bc2f0 { virtual ~Base9bc2f0(); char padding[488]; };
 namespace SPTG { 
-struct EnemyStuntman : Base9cbfc0 { AutoInline<Array164363265> member_b98; virtual void Key(); ~EnemyStuntman() __attribute__((used)); };
-inline EnemyStuntman::~EnemyStuntman() {  }
+struct LaserBeams : Base9bc2f0 { ListenerOut<163327748> member_1f0; ListenerOut<163327747> member_208; ListenerOut<163327746> member_220; char padding_238[96]; AutoInline<PlainStrongHandle<163327745, true>> member_298; virtual void Key(); ~LaserBeams(); };
+LaserBeams::~LaserBeams() {  }
+}
+struct Base9bfb50 { virtual ~Base9bfb50(); char padding[488]; };
+namespace SPTG { 
+struct InteractiveObjectEx : Base9bfb50 { ListenerOut<163558664> member_1f0; ListenerOut<163558663> member_208; ListenerOut<163558662> member_220; ListenerOut<163558661> member_238; char padding_250[128]; AutoInline<PlainStrongHandle<163558660, true>> member_2d0; char padding_2d8[80]; AutoInline<PlainStrongHandle<163558659, true>> member_328; char padding_330[80]; AutoInline<PlainStrongHandle<163558658, true>> member_380; char padding_388[80]; AutoInline<PlainStrongHandle<163558657, true>> member_3d8; virtual void Key(); ~InteractiveObjectEx(); };
+InteractiveObjectEx::~InteractiveObjectEx() {  }
 }
 struct Buffer165748993 { uint64_t w0; uint64_t w8; void* w10; __attribute__((always_inline)) void Destroy() { w8 = 0; if (w10) FreeObject(w10); } };
 struct Element165748998 { char data[24]; ~Element165748998() noexcept; };
@@ -772,20 +794,6 @@ struct Level9e1210_1 : Base9e1210 { Member<165749000> member_788; virtual void K
 namespace SPTG { 
 struct Enemy : Level9e1210_1 { char padding_789[103]; AutoInline<Array165748999> member_7f0; char padding_808[56]; AutoInline<Array165748998> member_840; char padding_858[8]; AutoInline<PlainStrongHandle<165748997, true>> member_860; AutoInline<PlainStrongHandle<165748996, true>> member_868; char padding_870[120]; AutoInline<PlainStrongHandle<165748995, true>> member_8e8; char padding_8f0[360]; Member<165748994> member_a58; char padding_a59[159]; Auto<Buffer165748993> member_af8; virtual void Key(); ~Enemy(); };
 Enemy::~Enemy() {  }
-}
-struct Element165931777 { char data[8]; ~Element165931777() noexcept; };
-struct Array165931777 { uint64_t w0; uint64_t w8; Element165931777* w10; __attribute__((always_inline)) void Destroy() { if (w10 && w8) { w10[0].~Element165931777(); for (uint64_t i = 1; i < w8; ++i) w10[i].~Element165931777(); } w8 = 0; void* memory = w10; if (memory) FreeObject(memory); } };
-struct Base9e3eb0 { virtual ~Base9e3eb0(); char padding[2960]; };
-namespace SPTG { 
-struct EnemyOneHitWonder : Base9e3eb0 { AutoInline<Array165931777> member_b98; virtual void Key(); ~EnemyOneHitWonder() __attribute__((used)); };
-inline EnemyOneHitWonder::~EnemyOneHitWonder() {  }
-}
-struct Element165977857 { char data[8]; ~Element165977857() noexcept; };
-struct Array165977857 { uint64_t w0; uint64_t w8; Element165977857* w10; __attribute__((always_inline)) void Destroy() { if (w10 && w8) { w10[0].~Element165977857(); for (uint64_t i = 1; i < w8; ++i) w10[i].~Element165977857(); } w8 = 0; void* memory = w10; if (memory) FreeObject(memory); } };
-struct Base9e49f0 { virtual ~Base9e49f0(); char padding[2960]; };
-namespace SPTG { 
-struct EnemySasuke : Base9e49f0 { AutoInline<Array165977857> member_b98; virtual void Key(); ~EnemySasuke() __attribute__((used)); };
-inline EnemySasuke::~EnemySasuke() {  }
 }
 struct Element166054914 { char data[8]; ~Element166054914() noexcept; };
 struct Array166054914 { uint64_t w0; uint64_t w8; Element166054914* w10; __attribute__((always_inline)) void Destroy() { if (w10 && w8) { w10[0].~Element166054914(); for (uint64_t i = 1; i < w8; ++i) w10[i].~Element166054914(); } w8 = 0; void* memory = w10; if (memory) FreeObject(memory); } };
@@ -810,12 +818,12 @@ namespace SPTG {
 struct EnemyJake : Base9f27c0 { AutoInline<PlainStrongHandle<166886402, true>> member_11a8; char padding_11b0[32]; AutoInline<Array166886401> member_11d0; virtual void Key(); ~EnemyJake(); };
 EnemyJake::~EnemyJake() {  }
 }
-struct Element167623169 { char data[8]; ~Element167623169() noexcept; };
-struct Array167623169 { uint64_t w0; uint64_t w8; Element167623169* w10; __attribute__((always_inline)) void Destroy() { if (w10 && w8) { w10[0].~Element167623169(); for (uint64_t i = 1; i < w8; ++i) w10[i].~Element167623169(); } w8 = 0; void* memory = w10; if (memory) FreeObject(memory); } };
-struct Base9fdba0 { virtual ~Base9fdba0(); char padding[2960]; };
+struct Element167878657 { char data[8]; ~Element167878657() noexcept; };
+struct Array167878657 { uint64_t w0; uint64_t w8; Element167878657* w10; __attribute__((always_inline)) void Destroy() { if (w10 && w8) { w10[0].~Element167878657(); for (uint64_t i = 1; i < w8; ++i) w10[i].~Element167878657(); } w8 = 0; void* memory = w10; if (memory) FreeObject(memory); } };
+struct Basea01a00 { virtual ~Basea01a00(); char padding[2952]; };
 namespace SPTG { 
-struct EnemyForestElves : Base9fdba0 { AutoInline<Array167623169> member_b98; virtual void Key(); ~EnemyForestElves() __attribute__((used)); };
-inline EnemyForestElves::~EnemyForestElves() {  }
+struct EnemyAerial : Basea01a00 { ListenerOut<167878661> member_b90; char padding_ba8[128]; AutoInline<PlainStrongHandle<167878660, true>> member_c28; char padding_c30[120]; AutoInline<PlainStrongHandle<167878659, true>> member_ca8; char padding_cb0[128]; AutoInline<PlainStrongHandle<167878658, true>> member_d30; char padding_d38[80]; AutoInline<Array167878657> member_d88; virtual void Key(); ~EnemyAerial(); };
+EnemyAerial::~EnemyAerial() {  }
 }
 struct Buffer168788993 { uint64_t w0; void* w8; __attribute__((always_inline)) void Destroy() { w0 = 0; if (w8) FreeObject(w8); } };
 struct Basea0f840 { virtual ~Basea0f840(); char padding[504]; };
@@ -836,6 +844,11 @@ struct Levela1f070_1 : Basea1f070 { Member<169805578> member_d48; virtual void K
 namespace SPTG { 
 struct Todd : Levela1f070_1 { char padding_d49[135]; AutoInline<PlainStrongHandle<169805577, true>> member_dd0; char padding_dd8[104]; AutoInline<PlainStrongHandle<169805576, true>> member_e40; char padding_e48[112]; AutoInline<PlainStrongHandle<169805575, true>> member_eb8; char padding_ec0[112]; AutoInline<PlainStrongHandle<169805574, true>> member_f30; char padding_f38[112]; AutoInline<PlainStrongHandle<169805573, true>> member_fa8; char padding_fb0[112]; AutoInline<PlainStrongHandle<169805572, true>> member_1020; char padding_1028[112]; AutoInline<PlainStrongHandle<169805571, true>> member_1098; char padding_10a0[112]; AutoInline<PlainStrongHandle<169805570, true>> member_1110; char padding_1118[8]; Nested169805569 member_1120; virtual void Key(); ~Todd(); };
 Todd::~Todd() {  }
+}
+struct Basea281e0 { virtual ~Basea281e0(); char padding[3432]; };
+namespace SPTG { 
+struct SuperFightingRobotHand : Basea281e0 { ListenerOut<170401285> member_d70; char padding_d88[104]; AutoInline<PlainStrongHandle<170401284, true>> member_df0; char padding_df8[112]; AutoInline<PlainStrongHandle<170401283, true>> member_e68; char padding_e70[112]; AutoInline<PlainStrongHandle<170401282, true>> member_ee0; char padding_ee8[120]; AutoInline<PlainStrongHandle<170401281, true>> member_f60; virtual void Key(); ~SuperFightingRobotHand(); };
+SuperFightingRobotHand::~SuperFightingRobotHand() {  }
 }
 struct Basea30740 { virtual ~Basea30740(); char padding[3392]; };
 struct Levela30740_1 : Basea30740 { Member<170947588> member_d48; virtual void Key1(); DT_INLINE ~Levela30740_1() {} };
@@ -958,6 +971,12 @@ struct Levelaf5d10_1 : Baseaf5d10 { Member<183881986> member_50; virtual void Ke
 struct Classaf5d10 : Levelaf5d10_1 { char padding_51[31]; AutoInline<Array183881985> member_70; virtual void Key(); ~Classaf5d10(); };
 Classaf5d10::~Classaf5d10() {  }
 
+struct Baseaf5fe0 { virtual ~Baseaf5fe0(); char padding[88]; };
+struct Levelaf5fe0_1 : Baseaf5fe0 { ListenerOut<183893506> member_60; virtual void Key1(); DT_INLINE ~Levelaf5fe0_1() {} };
+namespace Onyx { 
+struct AnimaticEventRouter : Levelaf5fe0_1 { char padding_78[8]; AutoInline<PlainStrongHandle<183893505, true>> member_80; virtual void Key(); ~AnimaticEventRouter(); };
+AnimaticEventRouter::~AnimaticEventRouter() {  }
+}
 struct Element188158723 { char data[8]; ~Element188158723() noexcept; };
 struct Array188158723 { uint64_t w0; uint64_t w8; Element188158723* w10; __attribute__((always_inline)) void Destroy() { if (w10 && w8) { w10[0].~Element188158723(); for (uint64_t i = 1; i < w8; ++i) w10[i].~Element188158723(); } w8 = 0; void* memory = w10; if (memory) FreeObject(memory); } };
 struct Baseb37130 { virtual ~Baseb37130(); char padding[72]; };
@@ -1051,6 +1070,12 @@ struct Levelbabe80_1 : Basebabe80 { ListenerOut<195815426> member_68; virtual vo
 struct Classbabe80 : Levelbabe80_1 { char padding_80[8]; Member<195815425> member_88; virtual void Key(); ~Classbabe80(); };
 Classbabe80::~Classbabe80() {  }
 
+struct Basebbf9a0 { virtual ~Basebbf9a0(); char padding[96]; };
+struct Levelbbf9a0_1 : Basebbf9a0 { ListenerOut<197106178> member_68; virtual void Key1(); DT_INLINE ~Levelbbf9a0_1() {} };
+
+struct Classbbf9a0 : Levelbbf9a0_1 { char padding_80[8]; AutoInline<PlainStrongHandle<197106177, true>> member_88; virtual void Key(); ~Classbbf9a0(); };
+Classbbf9a0::~Classbbf9a0() {  }
+
 struct Element197210113 { char data[8]; ~Element197210113() noexcept; };
 struct Array197210113 { uint64_t w0; uint64_t w8; Element197210113* w10; __attribute__((always_inline)) void Destroy() { if (w10 && w8) { w10[0].~Element197210113(); for (uint64_t i = 1; i < w8; ++i) w10[i].~Element197210113(); } w8 = 0; void* memory = w10; if (memory) FreeObject(memory); } };
 struct Basebc1300 { virtual ~Basebc1300(); char padding[96]; };
@@ -1087,6 +1112,24 @@ namespace Onyx {
 struct CollisionTrigger : Levelc7c440_1 { char padding_70[64]; ListenerInline<209470465> member_b0; virtual void Key(); ~CollisionTrigger(); };
 CollisionTrigger::~CollisionTrigger() {  }
 }
+struct Basec83440 { virtual ~Basec83440(); char padding[80]; };
+struct Levelc83440_1 : Basec83440 { ListenerOut<209929218> member_58; virtual void Key1(); DT_INLINE ~Levelc83440_1() {} };
+namespace Onyx { 
+struct RandomZoneSphere : Levelc83440_1 { char padding_70[16]; AutoInline<PlainStrongHandle<209929217, true>> member_80; virtual void Key(); ~RandomZoneSphere(); };
+RandomZoneSphere::~RandomZoneSphere() {  }
+}
+struct Basec842d0 { virtual ~Basec842d0(); char padding[80]; };
+struct Levelc842d0_1 : Basec842d0 { ListenerOut<209988866> member_58; virtual void Key1(); DT_INLINE ~Levelc842d0_1() {} };
+namespace Onyx { 
+struct RandomZoneCapsule : Levelc842d0_1 { char padding_70[16]; AutoInline<PlainStrongHandle<209988865, true>> member_80; virtual void Key(); ~RandomZoneCapsule(); };
+RandomZoneCapsule::~RandomZoneCapsule() {  }
+}
+struct Basec849e0 { virtual ~Basec849e0(); char padding[80]; };
+struct Levelc849e0_1 : Basec849e0 { ListenerOut<210017794> member_58; virtual void Key1(); DT_INLINE ~Levelc849e0_1() {} };
+namespace Onyx { 
+struct RandomZoneBox : Levelc849e0_1 { char padding_70[16]; AutoInline<PlainStrongHandle<210017793, true>> member_80; virtual void Key(); ~RandomZoneBox(); };
+RandomZoneBox::~RandomZoneBox() {  }
+}
 struct Basec8c910 { virtual ~Basec8c910(); char padding[120]; };
 namespace Onyx { 
 struct ScrollingText : Basec8c910 { ListenerOut<210538756> member_80; ListenerOut<210538755> member_98; ListenerOut<210538754> member_b0; char padding_c8[48]; Member<210538753> member_f8; virtual void Key(); ~ScrollingText(); };
@@ -1109,6 +1152,12 @@ struct Levelca2b60_1 : Baseca2b60 { Auto<Buffer211990018> member_70; virtual voi
 namespace Onyx { 
 struct WaypointLinkGraphicsCatalog : Levelca2b60_1 { char padding_98[8]; ListenerOut<211990017> member_a0; virtual void Key(); ~WaypointLinkGraphicsCatalog(); };
 WaypointLinkGraphicsCatalog::~WaypointLinkGraphicsCatalog() {  }
+}
+struct Basecb1ea0 { virtual ~Basecb1ea0(); char padding[72]; };
+struct Levelcb1ea0_1 : Basecb1ea0 { Member<212986372> member_50; virtual void Key1(); DT_INLINE ~Levelcb1ea0_1() {} };
+namespace Onyx { 
+struct DirectionalArrowGraphics : Levelcb1ea0_1 { char padding_51[63]; ListenerOut<212986371> member_90; AutoInline<PlainStrongHandle<212986370, true>> member_a8; AutoInline<PlainStrongHandle<212986369, true>> member_b0; virtual void Key(); ~DirectionalArrowGraphics(); };
+DirectionalArrowGraphics::~DirectionalArrowGraphics() {  }
 }
 struct Buffer213222146 { uint64_t w0; uint64_t w8; uint64_t w10; uint64_t w18; void* w20; __attribute__((always_inline)) void Destroy() { w10 = 0; if (w20) FreeObject(w20); w20 = 0; w8 = 0; w10 = 0; } };
 struct Basecb5830 { virtual ~Basecb5830(); char padding[104]; };
@@ -1133,6 +1182,12 @@ struct Basecda600 { virtual ~Basecda600(); char padding[72]; };
 namespace Onyx { 
 struct EventAccumulator : Basecda600 { ListenerInline<215638019> member_50; ListenerInline<215638018> member_68; ListenerInline<215638017> member_80; virtual void Key(); ~EventAccumulator(); };
 EventAccumulator::~EventAccumulator() {  }
+}
+struct Basecdc620 { virtual ~Basecdc620(); char padding[128]; };
+struct Levelcdc620_1 : Basecdc620 { ListenerOut<215769602> member_88; virtual void Key1(); DT_INLINE ~Levelcdc620_1() {} };
+namespace Onyx { 
+struct DirectionalShaker : Levelcdc620_1 { char padding_a0[8]; AutoInline<PlainStrongHandle<215769601, true>> member_a8; virtual void Key(); ~DirectionalShaker(); };
+DirectionalShaker::~DirectionalShaker() {  }
 }
 struct Basece0070 { virtual ~Basece0070(); char padding[72]; };
 struct Levelce0070_1 : Basece0070 { Member<216008450> member_50; virtual void Key1(); DT_INLINE ~Levelce0070_1() {} };
