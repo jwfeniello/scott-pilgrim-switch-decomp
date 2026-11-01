@@ -46,11 +46,39 @@ extern __attribute__((visibility("hidden"))) __int64 qword_1926BD8;
 extern __attribute__((visibility("hidden"))) __int64 qword_1935138;
 __attribute__((visibility("hidden"))) __int64 sub_1E7720();
 __attribute__((visibility("hidden"))) __int64 sub_1E7A80();
+__attribute__((visibility("hidden"))) __int64 sub_1EA9F0();
+__attribute__((visibility("hidden"))) __int64 sub_1EAA00();
+__attribute__((visibility("hidden"))) __int64 sub_1EAA10();
+__attribute__((visibility("hidden"))) __int64 sub_1EAA20();
+__attribute__((visibility("hidden"))) __int64 sub_1EAA30();
+__attribute__((visibility("hidden"))) __int64 sub_1EB170();
+__attribute__((visibility("hidden"))) __int64 sub_1EB1D0();
+__attribute__((visibility("hidden"))) __int64 sub_1F54A0();
 __attribute__((visibility("hidden"))) int sub_1FB080();
 __attribute__((visibility("hidden"))) __int64 sub_1FBC90();
 __attribute__((visibility("hidden"))) __int64 sub_20CBE0();
+__attribute__((visibility("hidden"))) __int64 sub_20DDA0();
+__attribute__((visibility("hidden"))) __int64 sub_21E160();
+__attribute__((visibility("hidden"))) __int64 sub_21FFC0();
+__attribute__((visibility("hidden"))) __int64 sub_23AAE0();
+__attribute__((visibility("hidden"))) __int64 sub_23AAF0();
+__attribute__((visibility("hidden"))) __int64 sub_23AB00();
+__attribute__((visibility("hidden"))) __int64 sub_23AB10();
+__attribute__((visibility("hidden"))) __int64 sub_23AB20();
+__attribute__((visibility("hidden"))) __int64 sub_24F310();
+__attribute__((visibility("hidden"))) __int64 sub_24F320();
+__attribute__((visibility("hidden"))) __int64 sub_24F330();
+__attribute__((visibility("hidden"))) __int64 sub_24F340();
+__attribute__((visibility("hidden"))) __int64 sub_24F350();
 __attribute__((visibility("hidden"))) __int64 sub_2500E0();
 __attribute__((visibility("hidden"))) __int64 sub_250550();
+__attribute__((visibility("hidden"))) __int64 sub_250740();
+__attribute__((visibility("hidden"))) __int64 sub_2509B0();
+__attribute__((visibility("hidden"))) __int64 sub_2509F0();
+__attribute__((visibility("hidden"))) __int64 sub_250A30();
+__attribute__((visibility("hidden"))) __int64 sub_2518E0();
+__attribute__((visibility("hidden"))) __int64 sub_2518F0();
+__attribute__((visibility("hidden"))) __int64 sub_252400();
 __attribute__((visibility("hidden"))) __int64 sub_67EDD0();
 __attribute__((visibility("hidden"))) __int64 sub_690410();
 __attribute__((visibility("hidden"))) __int64 sub_69BDF0();
@@ -75,6 +103,114 @@ __int64 __fastcall sub_20CCF0(__int64 *a1, __int64 a2, unsigned int a3)
   v3 = *a1;
   v7 = sub_1E7720();
   return sub_20CBE0(v3, v7, a2, a3, a1[1], 1);
+}
+
+__int64 sub_24F190()
+{
+  __int64 v0; // x0
+  __int64 v1; // x0
+  __int64 v2; // x0
+  __int64 v3; // x0
+  __int64 v4; // x0
+  __int64 v5; // x0
+  __int64 v6; // x0
+  __int64 v7; // x0
+  __int64 v8; // x0
+  __int64 v9; // x0
+  __int64 v10; // x0
+  __int64 v11; // x0
+  __int64 v12; // x0
+  __int64 v13; // x0
+  __int64 v14; // x0
+  __int64 v15; // x0
+  __int64 v16; // x0
+  __int64 v17; // x0
+  __int64 v18; // x0
+  __int64 v19; // x0
+  __int64 v20; // x0
+  __int64 v21; // x0
+  __int64 v22; // x0
+  __int64 v23; // x0
+  __int64 v24; // x0
+  __int64 v25; // x0
+  __int64 v26; // x0
+  __int64 v27; // x0
+  __int64 v28; // x0
+  __int64 v29; // x0
+  __int64 v30; // x0
+  __int64 v31; // x0
+  __int64 v32; // x0
+  __int64 v33; // x0
+  __int64 v34; // x0
+  __int64 v35; // x0
+  __int64 v36; // x0
+  __int64 v37; // x0
+  __int64 v38; // x0
+  __int64 v39; // x0
+  __int64 v40; // x0
+  __int64 v41; // x0
+  __int64 v42; // x0
+  __int64 v43; // x0
+  __int64 v44; // x0
+  __int64 v45; // x0
+  __int64 v46; // x0
+
+  v0 = sub_24F350();
+  v1 = sub_1EB170(v0);
+  v2 = sub_250740(v1);
+  v3 = sub_1EB170(v2);
+  v4 = sub_250A30(v3);
+  v5 = sub_1EB170(v4);
+  v6 = sub_252400(v5);
+  v7 = sub_1EB170(v6);
+  v8 = sub_2518E0(v7);
+  v9 = sub_1EB170(v8);
+  v10 = sub_2518F0(v9);
+  v11 = sub_1EB170(v10);
+  v12 = sub_23AAE0(v11);
+  v13 = sub_1EB170(v12);
+  v14 = sub_23AAF0(v13);
+  v15 = sub_1EB170(v14);
+  v16 = sub_23AB00(v15);
+  v17 = sub_1EB170(v16);
+  v18 = sub_23AB10(v17);
+  v19 = sub_1EB170(v18);
+  v20 = sub_23AB20(v19);
+  v21 = sub_1EB170(v20);
+  v22 = sub_24F310(v21);
+  v23 = sub_1EB170(v22);
+  v24 = sub_24F320(v23);
+  v25 = sub_1EB170(v24);
+  v26 = sub_24F330(v25);
+  v27 = sub_1EB170(v26);
+  v28 = sub_24F340(v27);
+  v29 = sub_1EB170(v28);
+  v30 = sub_1F54A0(v29);
+  sub_1EB1D0(v30);
+  sub_20DDA0("ssl2-md5", 32769, "MD5");
+  v31 = sub_20DDA0("ssl3-md5", 32769, "MD5");
+  v32 = sub_1EA9F0(v31);
+  sub_1EB1D0(v32);
+  sub_20DDA0("ssl3-sha1", 32769, "SHA1");
+  v33 = sub_20DDA0("RSA-SHA1-2", 32769, "RSA-SHA1");
+  v34 = sub_1EAA00(v33);
+  v35 = sub_1EB1D0(v34);
+  v36 = sub_1EAA10(v35);
+  v37 = sub_1EB1D0(v36);
+  v38 = sub_1EAA20(v37);
+  v39 = sub_1EB1D0(v38);
+  v40 = sub_1EAA30(v39);
+  v41 = sub_1EB1D0(v40);
+  v42 = sub_2509B0(v41);
+  sub_1EB1D0(v42);
+  sub_20DDA0("DSA-SHA1-old", 32769, "DSA-SHA1");
+  sub_20DDA0("DSS1", 32769, "DSA-SHA1");
+  v43 = sub_20DDA0("dss1", 32769, "DSA-SHA1");
+  v44 = sub_2509F0(v43);
+  v45 = sub_1EB1D0(v44);
+  v46 = sub_21FFC0(v45);
+  sub_21E160(v46);
+  return 1;
 }
 
 __int64 __fastcall sub_250750(__int64 a1, __int64 a2, __int64 a3, unsigned __int64 a4)
@@ -177,6 +313,86 @@ void __fastcall sub_676040(_QWORD *a1)
   if ( v4 != nullptr )
     _ZdlPv(v4);
   _ZdlPv(a1);
+}
+
+// N4Onyx8Graphics19VertexBufferDynamicE, virtual slot 3
+__int64 __fastcall sub_684CB0(char *result)
+{
+  char *v1; // x20
+  char *v2; // x19
+  unsigned __int64 v3; // x22
+  unsigned int *v4; // x8
+  unsigned int v5; // w9
+  unsigned int v6; // w9
+  char *v7; // x8
+  __int64 v8; // x20
+  char *v9; // x21
+  char *v10; // x0
+  char *v11; // x21
+  char *v12; // x0
+  __int64 v13; // x20
+  char *v14; // x21
+  char *v15; // x0
+  __int64 v16; // x20
+  char *v17; // x21
+  char *v18; // x0
+
+  v1 = *(_QWORD *)(result + 80);
+  v2 = result;
+  *(_DWORD *)(result + 56) &= ~2u;
+  if ( v1 != 0 )
+  {
+    if ( *(_DWORD *)(result + 104) == 0 )
+      goto LABEL_12;
+    v3 = 0;
+    do
+    {
+      result = *(_QWORD *)(v1 + 8 * v3);
+      v4 = (unsigned int *)(result + 8);
+      v6 = __atomic_sub_fetch(v4, 1, 0);
+      if ( v6 == 0 )
+        result = (*(__int64 (__fastcall **)(__int64))(*(_QWORD *)result + 24LL))(result);
+      *(_QWORD *)(*(_QWORD *)(v2 + 80) + 8 * v3) = 0;
+      v7 = *(_QWORD *)(v2 + 96);
+      v8 = *(_QWORD *)(v7 + 8 * v3);
+      if ( v8 != 0 )
+      {
+        v9 = qword_1926BD8;
+        v10 = *(_QWORD *)(v9 + 8LL * (unsigned __int8)sub_A82B30(qword_1926BD8, *(_QWORD *)(v7 + 8 * v3)) + 880);
+        result = (*(__int64 (__fastcall **)(__int64, __int64))(*(_QWORD *)v10 + 48LL))(v10, v8);
+        v7 = *(_QWORD *)(v2 + 96);
+      }
+      *(_QWORD *)(v7 + 8 * v3) = 0;
+      v1 = *(_QWORD *)(v2 + 80);
+      ++v3;
+    }
+    while ( v3 < *(unsigned int *)(v2 + 104) );
+    if ( v1 != 0 )
+    {
+LABEL_12:
+      v11 = qword_1926BD8;
+      v12 = *(_QWORD *)(v11 + 8LL * (unsigned __int8)sub_A82B30(qword_1926BD8, v1) + 880);
+      result = (*(__int64 (__fastcall **)(__int64, __int64))(*(_QWORD *)v12 + 48LL))(v12, v1);
+    }
+    *(_QWORD *)(v2 + 80) = 0;
+  }
+  v13 = *(_QWORD *)(v2 + 88);
+  if ( v13 != 0 )
+  {
+    v14 = qword_1926BD8;
+    v15 = *(_QWORD *)(v14 + 8LL * (unsigned __int8)sub_A82B30(qword_1926BD8, *(_QWORD *)(v2 + 88)) + 880);
+    result = (*(__int64 (__fastcall **)(__int64, __int64))(*(_QWORD *)v15 + 48LL))(v15, v13);
+    *(_QWORD *)(v2 + 88) = 0;
+  }
+  v16 = *(_QWORD *)(v2 + 96);
+  if ( v16 != 0 )
+  {
+    v17 = qword_1926BD8;
+    v18 = *(_QWORD *)(v17 + 8LL * (unsigned __int8)sub_A82B30(qword_1926BD8, *(_QWORD *)(v2 + 96)) + 880);
+    result = (*(__int64 (__fastcall **)(__int64, __int64))(*(_QWORD *)v18 + 48LL))(v18, v16);
+    *(_QWORD *)(v2 + 96) = 0;
+  }
+  return result;
 }
 
 // N4Onyx8Graphics7TextureE, virtual slot 3

@@ -36,18 +36,31 @@ typedef struct RecoveredSdkResult { short code; const char *unknown08; unsigned 
 #define __udf(x) __builtin_unreachable()
 #define atomic_load(p) __atomic_load_n(p, 2)
 void* memcpy(void*, const void*, size_t); void* memset(void*, int, size_t); void* memmove(void*, const void*, size_t); int memcmp(const void*, const void*, size_t); size_t strlen(const char*); int strcmp(const char*, const char*); char* strcpy(char*, const char*); char* strncpy(char*, const char*, size_t); int strncmp(const char*, const char*, size_t); void free(void*); void* malloc(size_t); float fabsf(float); float sqrtf(float); float floorf(float); float ceilf(float);
+__int64 Recovered_ResultCopy();
+__int64 Recovered_ResultTextDestroy();
 extern char goff_18EDD08[];
 extern char goff_18EE490[];
 extern char goff_18EE498[];
 extern char goff_18F2620[];
 extern char goff_18F26C8[];
+extern char goff_18F99B8[];
+extern char goff_18F99C0[];
+extern char goff_18F9BB0[];
 __attribute__((visibility("hidden"))) __int64 sub_290830();
+__attribute__((visibility("hidden"))) __int64 sub_4EB320();
+__attribute__((visibility("hidden"))) __int64 sub_4EC680();
+__attribute__((visibility("hidden"))) __int64 sub_4ED030();
+__attribute__((visibility("hidden"))) __int64 sub_4F48C0();
+__attribute__((visibility("hidden"))) __int64 sub_51D050();
+__attribute__((visibility("hidden"))) __int64 sub_51D320();
+__attribute__((visibility("hidden"))) __int64 sub_51D3A0();
 __attribute__((visibility("hidden"))) __int64 sub_56C9F0();
 __attribute__((visibility("hidden"))) __int64 sub_56DC80();
 __attribute__((visibility("hidden"))) __int64 sub_575CE0();
 __attribute__((visibility("hidden"))) __int64 sub_57F050();
 __attribute__((visibility("hidden"))) __int64 sub_583240();
 __attribute__((visibility("hidden"))) __int64 sub_782A20();
+extern __attribute__((visibility("hidden"))) char unk_1326E41;
 
 // N5storm18DynamicTypeFactoryINS_27NetPropertyRefDataContainerEEE, virtual slot 2
 _QWORD *__fastcall sub_2A0580(__int64 a1, __int64 a2, unsigned int a3)
@@ -124,5 +137,59 @@ __int64 __fastcall sub_312C80(_QWORD *a1, int a2, _QWORD **a3, int a4)
   *((_BYTE *)v5 + 16) = 1;
   *((_DWORD *)v5 + 5) = a4;
   return sub_782A20(v11, a3);
+}
+
+__int64 __fastcall sub_52E990(__int64 a1, unsigned int a2, __int64 a3)
+{
+  __int64 (__fastcall *v5)(); // x9
+  _QWORD v7[3]; // [xsp+8h] [xbp-28h] BYREF
+
+  sub_51D050(a1, 1, a2, v7);
+  *(_QWORD *)a1 = goff_18F99B8 + 16;
+  sub_4EC680(a1 + 144);
+  *(_QWORD *)(a1 + 136) = a3;
+  v5 = ((__int64*)goff_18F99C0);
+  *(_DWORD *)(a1 + 128) = 4096;
+  v7[0] = v5;
+  v7[1] = 0;
+  v7[2] = &unk_1326E41;
+  return sub_51D3A0(a1, v7);
+}
+
+void __fastcall sub_5495B0(__int64 a1)
+{
+  __int64 v1; // x8
+  _BYTE *v3; // x21
+  _QWORD *v4; // x0
+  RecoveredSdkResult self; // [xsp+8h] [xbp-48h] BYREF
+  __int64 v6; // [xsp+38h] [xbp-18h] BYREF
+
+  v1 = *(_QWORD *)(a1 + 160);
+  if ( v1 == a1 + 144 || (v3 = *(_BYTE **)(v1 + 40)) == nullptr )
+  {
+    Recovered_ResultCopy(&self, (const RecoveredSdkResult *)(a1 + 240));
+    (*(void (__fastcall **)(__int64, RecoveredSdkResult *))(*(_QWORD *)a1 + 104LL))(a1, &self);
+    Recovered_ResultTextDestroy(&self.domain);
+  }
+  else if ( v3[17] != 0
+         && (v6 = *(_QWORD *)(a1 + 456),
+             sub_4ED030(a1 + 312),
+             (*(void (__fastcall **)(_BYTE *, __int64, __int64 *))(*(_QWORD *)v3 + 24LL))(v3, a1 + 312, &v6),
+             *(_DWORD *)(a1 + 328) != 0) )
+  {
+    sub_4F48C0(a1);
+    v4 = (_QWORD *)sub_4EB320(24, &unk_1326E41, 0);
+    *v4 = goff_18F9BB0;
+    v4[1] = 0;
+    v4[2] = &unk_1326E41;
+    sub_51D320(a1, a1 + 312, v4);
+  }
+  else
+  {
+    *(_QWORD *)&self.code = goff_18F9BB0;
+    self.unknown08 = nullptr;
+    *(_QWORD *)&self.unknown10 = &unk_1326E41;
+    sub_51D3A0(a1, &self);
+  }
 }
 

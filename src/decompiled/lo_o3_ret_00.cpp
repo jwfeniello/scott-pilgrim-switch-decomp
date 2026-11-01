@@ -38,6 +38,8 @@ void* memcpy(void*, const void*, size_t); void* memset(void*, int, size_t); void
 __attribute__((visibility("hidden"))) __int64 sub_313860(...);
 __attribute__((visibility("hidden"))) __int64 sub_313F70(...);
 __attribute__((visibility("hidden"))) __int64 sub_3145B0(...);
+__attribute__((visibility("hidden"))) __int64 sub_34FF40(...);
+__attribute__((visibility("hidden"))) __int64 sub_3500A0(...);
 __attribute__((visibility("hidden"))) __int64 sub_464E10(...);
 
 Big sub_25DF50(int a1, __int64 *a2)
@@ -88,6 +90,102 @@ Big sub_25DFD0(int a1, __int64 *a2)
   return ret_;
 }
 
+// N5storm4echo27SessionStreamPacker_NetworkE, virtual slot 8
+Big sub_34FE20(_QWORD *result, unsigned int *a2, __int64 a3)
+{
+  Big ret_;
+  _QWORD *a4 = (_QWORD *)&ret_;
+
+  unsigned __int64 v4; // x10
+  unsigned __int64 v6; // x8
+  unsigned __int64 v7; // x11
+  unsigned __int64 v8; // x9
+  __int64 **v9; // x13
+  __int64 *v10; // x20
+  unsigned __int64 v11; // x11
+  __int64 v12; // x10
+  __int64 v13; // x20
+  _QWORD *v14; // t1
+  _QWORD *v15; // x1
+  _QWORD *v16; // x0
+  __int64 v17; // [xsp+8h] [xbp-18h] BYREF
+
+  v4 = result[24];
+  if ( v4 == 0 )
+    goto LABEL_25;
+  v6 = *a2;
+  v7 = v4 - 1;
+  if ( ((v4 - 1) & v4) != 0 )
+  {
+    v8 = *a2;
+    if ( v4 <= v6 )
+      v8 = v6 % v4;
+    v9 = *(__int64 ***)(result[23] + 8 * v8);
+    if ( v9 == nullptr )
+      goto LABEL_25;
+  }
+  else
+  {
+    v8 = v7 & v6;
+    v9 = *(__int64 ***)(result[23] + 8 * (v7 & v6));
+    if ( v9 == nullptr )
+      goto LABEL_25;
+  }
+  v10 = *v9;
+  if ( *v9 != nullptr )
+  {
+    if ( ((v4 - 1) & v4) != 0 )
+    {
+      while ( 1 )
+      {
+        v11 = v10[1];
+        if ( v11 == v6 )
+        {
+          if ( *((_DWORD *)v10 + 4) == (_DWORD)v6 )
+            goto LABEL_24;
+        }
+        else
+        {
+          if ( v11 >= v4 )
+            v11 %= v4;
+          if ( v11 != v8 )
+            goto LABEL_25;
+        }
+        v10 = (__int64 *)*v10;
+        if ( v10 == nullptr )
+          goto LABEL_25;
+      }
+    }
+    do
+    {
+      v12 = v10[1];
+      if ( v12 == v6 )
+      {
+        if ( *((_DWORD *)v10 + 4) == (_DWORD)v6 )
+        {
+LABEL_24:
+          v14 = (_QWORD *)v10[3];
+          v13 = (__int64)(v10 + 3);
+          v15 = *(_QWORD **)(v13 + 8);
+          v17 = a3;
+          v16 = (_QWORD *)(sub_3500A0(v14, v15, &v17));
+          result = (_QWORD *)(sub_34FF40(v13, v16, *(_QWORD **)(v13 + 8)));
+          break;
+        }
+      }
+      else if ( (v12 & v7) != v8 )
+      {
+        break;
+      }
+      v10 = (__int64 *)*v10;
+    }
+    while ( v10 != nullptr );
+  }
+LABEL_25:
+  *a4 = 1;
+  return ret_;
+  return ret_;
+}
 // N5storm37SimpleUbiServicesControllerClientBaseE, virtual slot 2
 Big sub_464F60(_QWORD *result)
 {
