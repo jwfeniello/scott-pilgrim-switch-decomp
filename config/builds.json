@@ -526482,6 +526482,32 @@
           "got_bindings": {}
         },
         {
+          "address": "0x704040",
+          "size": 628,
+          "symbol": "_Z33Create_Onyx_DareAudio_AudioPlayerv",
+          "target_sha256": "597d28c39e503441f4d3c38381d2fb0584944ca597534fd09623d0654811179c",
+          "bindings": {
+            "GenericFactoryManager": "0x191c9c8",
+            "GenericFactoryResolve": "0x676160",
+            "_ZN4Onyx9Component4BaseC2Ev": "0x6764e0",
+            "_ZTVN4Onyx9DareAudio11AudioPlayerE": "0x1847a20",
+            "AllocatorContext": "0x1935058",
+            "_ZN4Onyx7Details16AllocateFunctionEPvm": "0xa972b0",
+            "_ZN4Onyx9DareAudio11AudioPlayer3F58ERK12Event_70d000": "0x70ce80",
+            "_ZTVN4Onyx7Details20FunctionInternalHookINS_14MemberFunctionINS_9DareAudio11AudioPlayerEFvRK12Event_70d000EEEEE": "0x1847a98",
+            "_ZN4Onyx7Details20FunctionInternalHookINS_14MemberFunctionINS_9DareAudio11AudioPlayerEFvRK12Event_70d000EEEE6InvokeEv": "0x70d000",
+            "_ZNK4Onyx7Details20FunctionInternalHookINS_14MemberFunctionINS_9DareAudio11AudioPlayerEFvRK12Event_70d000EEEE5CloneEv": "0x70d8c0",
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
+            "__clang_call_terminate": "0x6768b8",
+            "_ZN4Onyx8ListenerIFvRK12Event_70d000EE10DisconnectEPv": "0x70d020",
+            "_ZN4Onyx9DareAudio17AudioPlayerLayoutD2Ev": "0x70d3a0",
+            "_Unwind_Resume": "0xfa4920",
+            "_ZN4Onyx8FunctionIFvRK12Event_70d000EED2Ev": "0x70d340"
+          },
+          "got_bindings": {}
+        },
+        {
           "address": "0x7043d0",
           "size": 504,
           "symbol": "_Z39Create_Onyx_DareAudio_ListenerComponentv",
@@ -527105,6 +527131,33 @@
           "got_bindings": {}
         },
         {
+          "address": "0xabb2a0",
+          "size": 708,
+          "symbol": "_Z64Create_Onyx_Graphics_EvolutionDevelopment_ShaderVariationHandlerv",
+          "target_sha256": "123286f3ea63e015ca9407fbface04036fa004b87d9db5c216a20bab6b2b2d3f",
+          "bindings": {
+            "GenericFactoryManager": "0x191c9c8",
+            "GenericFactoryResolve": "0x676160",
+            "_ZN4Onyx9Component4BaseC2Ev": "0x6764e0",
+            "_ZTVN4Onyx8Graphics20EvolutionDevelopment22ShaderVariationHandlerE": "0x18ae478",
+            "AllocatorContext": "0x1935058",
+            "_ZN4Onyx7Details16AllocateFunctionEPvm": "0xa972b0",
+            "_ZN4Onyx8Graphics20EvolutionDevelopment22ShaderVariationHandler3F58ERK20EventKeyInputPressed": "0xb784b0",
+            "_ZTVN4Onyx7Details20FunctionInternalHookINS_14MemberFunctionINS_8Graphics20EvolutionDevelopment22ShaderVariationHandlerEFvRK20EventKeyInputPressedEEEEE": "0x18ae4f0",
+            "_ZN4Onyx7Details20FunctionInternalHookINS_14MemberFunctionINS_8Graphics20EvolutionDevelopment22ShaderVariationHandlerEFvRK20EventKeyInputPressedEEEE6InvokeEv": "0xb78590",
+            "_ZNK4Onyx7Details20FunctionInternalHookINS_14MemberFunctionINS_8Graphics20EvolutionDevelopment22ShaderVariationHandlerEFvRK20EventKeyInputPressedEEEE5CloneEv": "0xb78e40",
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
+            "__clang_call_terminate": "0x6768b8",
+            "_ZN4Onyx4ItemILj8ELj56ELm11252496EE4PartD1Ev": "0x688690",
+            "_ZN4Onyx8ListenerIFvRK20EventKeyInputPressedEE10DisconnectEPv": "0xb785b0",
+            "_ZN4Onyx8Graphics20EvolutionDevelopment28ShaderVariationHandlerLayoutD2Ev": "0xb78930",
+            "_Unwind_Resume": "0xfa4920",
+            "_ZN4Onyx8FunctionIFvRK20EventKeyInputPressedEED2Ev": "0xb788d0"
+          },
+          "got_bindings": {}
+        },
+        {
           "address": "0xabeec0",
           "size": 556,
           "symbol": "_Z31Create_Onyx_Graphics_MeshSwitchv",
@@ -527565,6 +527618,40 @@
             "_ZN4Onyx9Component4BaseD2Ev": "0x677400",
             "_Unwind_Resume": "0xfa4920",
             "_ZN4Onyx8FunctionIFvRK17EventSetTransformEED2Ev": "0xc8db40"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xc69c90",
+          "size": 1184,
+          "symbol": "_Z30Create_Onyx_TimeElapsedTriggerv",
+          "target_sha256": "ff2fa5aab246af8adcc8b9ad22a0f792675fe330226bac7365d9a838722fc65c",
+          "bindings": {
+            "GenericFactoryManager": "0x191c9c8",
+            "GenericFactoryResolve": "0x676160",
+            "_ZN4Onyx9Component4BaseC2Ev": "0x6764e0",
+            "_ZTVN4Onyx18TimeElapsedTriggerE": "0x18bea20",
+            "AllocatorContext": "0x1935058",
+            "_ZN4Onyx7Details16AllocateFunctionEPvm": "0xa972b0",
+            "_ZN4Onyx18TimeElapsedTrigger3F68ERK10EventStart": "0xc70510",
+            "_ZTVN4Onyx7Details20FunctionInternalHookINS_14MemberFunctionINS_18TimeElapsedTriggerEFvRK10EventStartEEEEE": "0x18beaa0",
+            "_ZN4Onyx7Details20FunctionInternalHookINS_14MemberFunctionINS_18TimeElapsedTriggerEFvRK10EventStartEEEE6InvokeEv": "0xc70650",
+            "_ZNK4Onyx7Details20FunctionInternalHookINS_14MemberFunctionINS_18TimeElapsedTriggerEFvRK10EventStartEEEE5CloneEv": "0xc714a0",
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
+            "_ZN4Onyx18TimeElapsedTrigger3F80ERK16EventSetDuration": "0xc70670",
+            "_ZTVN4Onyx7Details20FunctionInternalHookINS_14MemberFunctionINS_18TimeElapsedTriggerEFvRK16EventSetDurationEEEEE": "0x18bead0",
+            "_ZN4Onyx7Details20FunctionInternalHookINS_14MemberFunctionINS_18TimeElapsedTriggerEFvRK16EventSetDurationEEEE6InvokeEv": "0xc70680",
+            "_ZNK4Onyx7Details20FunctionInternalHookINS_14MemberFunctionINS_18TimeElapsedTriggerEFvRK16EventSetDurationEEEE5CloneEv": "0xc71400",
+            "__clang_call_terminate": "0x6768b8",
+            "_ZN4Onyx8ListenerIFvRK16EventSetDurationEE10DisconnectEPv": "0xc706a0",
+            "_ZN4Onyx8ListenerIFvRK10EventStartEE10DisconnectEPv": "0x763220",
+            "_ZN4Onyx8ListenerIFvRK13Event_dc70a20EE10DisconnectEPv": "0xc70a20",
+            "_ZN4Onyx24TimeElapsedTriggerLayoutD2Ev": "0x677400",
+            "_Unwind_Resume": "0xfa4920",
+            "_ZN4Onyx8FunctionIFvRK13Event_dc70a20EED2Ev": "0xc70d40",
+            "_ZN4Onyx8FunctionIFvRK10EventStartEED2Ev": "0x763540",
+            "_ZN4Onyx8FunctionIFvRK16EventSetDurationEED2Ev": "0xc709c0"
           },
           "got_bindings": {}
         }

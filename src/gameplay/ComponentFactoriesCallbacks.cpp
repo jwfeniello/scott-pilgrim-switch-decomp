@@ -77,6 +77,46 @@ template<class Sig> struct Function {
         return *this;
     }
 };
+// A growable array: its allocator is set after its three zero fields.
+struct PodVector {
+    void* allocator;
+    uint64_t capacity;
+    uint64_t size;
+    void* data;
+    __attribute__((always_inline)) PodVector() : capacity(0), size(0), data(nullptr) { allocator = DefaultAllocator(); }
+    __attribute__((always_inline)) ~PodVector() noexcept {
+        void* memory = data;
+        size = 0;
+        if (memory) {
+            DecodeAllocators* m = DecodeAllocatorManager;
+            m->values[DecodeAllocatorIndex(m, memory)]->Free(memory);
+        }
+    }
+};
+// The same with elements to destroy. An element has a part with its own destructor.
+template<unsigned Offset, unsigned Size, unsigned long Key> struct Item {
+    char before[Offset];
+    struct Part { ~Part() noexcept; char data[Size - Offset]; } part;
+};
+template<class E> struct ItemVector {
+    void* allocator;
+    uint64_t capacity;
+    uint64_t size;
+    E* items;
+    __attribute__((always_inline)) ItemVector() : capacity(0), size(0), items(nullptr) { allocator = DefaultAllocator(); }
+    __attribute__((always_inline)) ~ItemVector() noexcept {
+        if (items && size) {
+            items[0].~E();
+            for (uint64_t i = 1; i < size; ++i) items[i].~E();
+        }
+        size = 0;
+        void* memory = items;
+        if (memory) {
+            DecodeAllocators* m = DecodeAllocatorManager;
+            m->values[DecodeAllocatorIndex(m, memory)]->Free(memory);
+        }
+    }
+};
 template<class Sig, class F> __attribute__((always_inline)) inline Function<Sig> MakeFunction(const F& f) {
     return Function<Sig>(new (Details::AllocateFunction(AllocatorContext + 0x50, 40)) Details::FunctionInternalHook<F>(f));
 }
@@ -168,6 +208,28 @@ struct AudioComponent : AudioComponentLayout {
 }  // namespace DareAudio
 }  // namespace Onyx
 void* Create_Onyx_DareAudio_AudioComponent() { return new (GenericFactoryResolve(GenericFactoryManager, 0x7b73c94u)->Allocate(sizeof(Onyx::DareAudio::AudioComponent))) Onyx::DareAudio::AudioComponent; }
+
+struct Event_70d000;
+// Onyx::DareAudio::AudioPlayer : Onyx::Component::Compose<...> : Onyx::Component::Base
+namespace Onyx {
+namespace DareAudio {
+struct AudioPlayerLayout : ::Onyx::Component::Base {
+ char p8[0x48];
+ uint64_t field_50;
+ __attribute__((always_inline)) AudioPlayerLayout() { field_50 = 0;  }
+ virtual ~AudioPlayerLayout();
+};
+struct AudioPlayer : AudioPlayerLayout {
+ Onyx::Listener<void(const Event_70d000&)> member_58;
+ Onyx::PodVector member_70;
+ char pe[0x8];
+ void F58(const Event_70d000&);
+ __attribute__((always_inline)) AudioPlayer() : member_58(), member_70() { member_58.owner = this; member_58.function = Onyx::MakeFunction<void(const Event_70d000&)>(Onyx::MemberFunction<AudioPlayer, void(const Event_70d000&)>(this, &AudioPlayer::F58)); }
+ virtual ~AudioPlayer();
+};
+}  // namespace DareAudio
+}  // namespace Onyx
+void* Create_Onyx_DareAudio_AudioPlayer() { return new (GenericFactoryResolve(GenericFactoryManager, 0x7b73c94u)->Allocate(sizeof(Onyx::DareAudio::AudioPlayer))) Onyx::DareAudio::AudioPlayer; }
 
 struct Event_7094a0;
 // Onyx::DareAudio::ListenerComponent : Onyx::Component::Compose<...> : Onyx::Component::Base
@@ -681,6 +743,30 @@ struct AnimationHolder : AnimationHolderLayout {
 }  // namespace Onyx
 void* Create_Onyx_AnimationHolder() { return new (GenericFactoryResolve(GenericFactoryManager, 0x7b73c94u)->Allocate(sizeof(Onyx::AnimationHolder))) Onyx::AnimationHolder; }
 
+struct EventKeyInputPressed;
+// Onyx::Graphics::EvolutionDevelopment::ShaderVariationHandler : Onyx::Component::Compose<...> : Onyx::Component::Base
+namespace Onyx {
+namespace Graphics {
+namespace EvolutionDevelopment {
+struct ShaderVariationHandlerLayout : ::Onyx::Component::Base {
+ char p8[0x48];
+ uint64_t field_50;
+ __attribute__((always_inline)) ShaderVariationHandlerLayout() { field_50 = 0;  }
+ virtual ~ShaderVariationHandlerLayout();
+};
+struct ShaderVariationHandler : ShaderVariationHandlerLayout {
+ Onyx::Listener<void(const EventKeyInputPressed&)> member_58;
+ Onyx::ItemVector<Onyx::Item<8, 56, 11252496ul>> member_70;
+ char pe[0x8];
+ void F58(const EventKeyInputPressed&);
+ __attribute__((always_inline)) ShaderVariationHandler() : member_58(), member_70() { member_58.owner = this; member_58.function = Onyx::MakeFunction<void(const EventKeyInputPressed&)>(Onyx::MemberFunction<ShaderVariationHandler, void(const EventKeyInputPressed&)>(this, &ShaderVariationHandler::F58)); }
+ virtual ~ShaderVariationHandler();
+};
+}  // namespace EvolutionDevelopment
+}  // namespace Graphics
+}  // namespace Onyx
+void* Create_Onyx_Graphics_EvolutionDevelopment_ShaderVariationHandler() { return new (GenericFactoryResolve(GenericFactoryManager, 0x7b73c94u)->Allocate(sizeof(Onyx::Graphics::EvolutionDevelopment::ShaderVariationHandler))) Onyx::Graphics::EvolutionDevelopment::ShaderVariationHandler; }
+
 struct Event_b4d050;
 // Onyx::Graphics::MeshSwitch : Onyx::Switch<...> : Onyx::Component::Compose<...> : Onyx::Component::Base
 namespace Onyx {
@@ -1121,4 +1207,39 @@ struct SaveTransform : SaveTransformLayout {
 };
 }  // namespace Onyx
 void* Create_Onyx_SaveTransform() { return new (GenericFactoryResolve(GenericFactoryManager, 0x7b73c94u)->Allocate(sizeof(Onyx::SaveTransform))) Onyx::SaveTransform; }
+
+struct EventSetDuration;
+struct Event_dc70a20;
+// Onyx::TimeElapsedTrigger : Onyx::Component::Compose<...> : Onyx::TriggerComponent : Onyx::Component::Compose<...> : Onyx::Component::Base
+namespace Onyx {
+struct TimeElapsedTriggerLayout : ::Onyx::Component::Base {
+ char p8[0x42];
+ uint8_t field_4a;
+ char p4b[0x5];
+ __attribute__((always_inline)) TimeElapsedTriggerLayout() { field_4a = 0x1;  }
+ virtual ~TimeElapsedTriggerLayout();
+};
+struct TimeElapsedTrigger : TimeElapsedTriggerLayout {
+ Onyx::Listener<void(const Event_dc70a20&)> member_50;
+ Onyx::Listener<void(const EventStart&)> member_68;
+ Onyx::Listener<void(const EventSetDuration&)> member_80;
+ char p98[0x1];
+ uint8_t field_99;
+ char p9a[0x2];
+ float field_9c;
+ float field_a0;
+ uint8_t field_a4;
+ char pa5[0x3];
+ float field_a8;
+ float field_ac;
+ uint8_t field_b0;
+ char pe[0x7];
+ void F68(const EventStart&);
+ void F80(const EventSetDuration&);
+ void F50(const Event_dc70a20&);
+ __attribute__((always_inline)) TimeElapsedTrigger() : member_50(), member_68(), member_80(), field_99(0), field_9c(0.0f), field_a0(0.0f), field_a4(0x1), field_a8(0.0f), field_ac(0.0f), field_b0(0x1) { member_50.owner = this; member_68.owner = this; member_68.function = Onyx::MakeFunction<void(const EventStart&)>(Onyx::MemberFunction<TimeElapsedTrigger, void(const EventStart&)>(this, &TimeElapsedTrigger::F68)); member_80.owner = this; member_80.function = Onyx::MakeFunction<void(const EventSetDuration&)>(Onyx::MemberFunction<TimeElapsedTrigger, void(const EventSetDuration&)>(this, &TimeElapsedTrigger::F80)); }
+ virtual ~TimeElapsedTrigger();
+};
+}  // namespace Onyx
+void* Create_Onyx_TimeElapsedTrigger() { return new (GenericFactoryResolve(GenericFactoryManager, 0x1af1d642u)->Allocate(sizeof(Onyx::TimeElapsedTrigger))) Onyx::TimeElapsedTrigger; }
 
