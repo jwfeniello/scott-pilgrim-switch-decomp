@@ -1,9 +1,9 @@
 {
   "version": 1,
-  "generated_at": "2026-11-01T20:04:08.775987+00:00",
+  "generated_at": "2026-11-01T20:11:12.079217+00:00",
   "target_elf_sha256": "ea95638e6d6aaa0dc6cddd552a9366799aa1ec3bc07ee201f23f6c151103f5b8",
   "input_sha256": {
-    "config/builds.json": "aa49f642947e770d9a23a5e17a1a0de9dfdbb1ae99b14d251bdd264521c0ec94",
+    "config/builds.json": "c834894885d9115cf1166d468bc78a20ecff84152fbdfa1d55262ad2003ea07d",
     "config/functions.tsv": "399e91468a04e0459194c10d68d2210d1157cedefeb19c7851886ca7632fcb18",
     "config/non_fde_functions.tsv": "6a45f5e185454fa0472af00b2cdc9d040d73ca133d1106217e1fbbe3b32a8175",
     "config/target.json": "23cc6a5227206a953e7668acf5e9ae5c02a25c23b7e7967f0450a814b888241a",
@@ -1126,7 +1126,7 @@
     "src/gameplay/Archive.h": "fb90a7676c2af179940a461fd2f746753d4dc1c638332f911b7d191ae563af17",
     "src/gameplay/Assert.h": "e8ad90fa17cd27c0eefb31341b98ee091197fb3aeb84363fb473339d67770dcc",
     "src/gameplay/BaseCharacter.cpp": "9014d40162db8295f9f2cbfdb467af452b8a3a8eb85e1435dac3b2e931daffb5",
-    "src/gameplay/BaseCharacter.h": "41dcb0f8db470f0ff352767ec8d52d1bf52394adfe1818069bba9e01a6b70e37",
+    "src/gameplay/BaseCharacter.h": "bc4a32bf5e36796cbb2f6a4504553d59f1b255b43fe33672d82faf626c939ae8",
     "src/gameplay/BaseCharacterStates.cpp": "6fbbb252bc5521a5681f438c6a06f9de86bf714b44faa5b8baf858530db9403e",
     "src/gameplay/Boss.h": "6cdc40b731146c34858cd2b481d24b51f7d5bbb3bb374b383472e8ae7de4c378",
     "src/gameplay/BossClassStates.cpp": "3e221b434f73240bb6d2706e633feeb9f9a2e231c976c3386fd297e6b627b2c8",
@@ -1159,6 +1159,8 @@
     "src/gameplay/InteractiveObject.cpp": "a223e62b586c053c2033cccf2b3ec0a4804ac1d67e1b2acea4839c35de7211eb",
     "src/gameplay/InteractiveObject.h": "b6780b2e8c0b93c5b6c88a08e0aa2c66e741fbfe923e15d56d6662aac22691a7",
     "src/gameplay/Level.h": "013cba1086da15ffbb6fe2c067ca0bf50cf4b441934bb2a75b9b5f03241fc910",
+    "src/gameplay/NPC.cpp": "f12347a35126c443daf1f97d7f19f592483676b831ae3b4664876317cf12752e",
+    "src/gameplay/NPC.h": "d3e3902d13f16e4ca0048e371e0ef172d10c113b8d720443c66bb9b2b1bc5d50",
     "src/gameplay/OnyxComponents.h": "d43faba3a3c8983efec92617dd482b937045e005fa5dd757d615e257c731989b",
     "src/gameplay/OnyxEvents.h": "4c8e7d4c83c533dc7e2aef3f29cb7b1747363982464cc8829c2b423344610c0b",
     "src/gameplay/OnyxSerialize.cpp": "304335de146116fb3488bbbbd2231f576e5c067c59eacd8173a69e177b298a83",
@@ -1179,8 +1181,8 @@
     "src/gameplay/Statistics.cpp": "cb3304f4a5f95c404193c0c4e2c9c390df85af91aca001dbdf83ab25f71358ae",
     "src/gameplay/Statistics.h": "182a15497caa9568faf4f1e30f7883748d5282dfab2070914139a84ee5a69f90",
     "src/gameplay/StatisticsDetail.cpp": "86586b7a211a5a3b2f482ad00896ec72f08191db720386e11b3ff383464b59a3",
-    "src/gameplay/Striker.cpp": "dfbd84ef511bea82195123395c5a47a2a873a24719891e71c6212cdcb495e8d1",
-    "src/gameplay/Striker.h": "96cf9fc48538fed9f9a97fb3d04731abb7956fda086a8b73f76ba227e26edf9e",
+    "src/gameplay/Striker.cpp": "ae91804681e28587ddc3d6a84d5eae0d4723ead646d800686f93f95d1184638e",
+    "src/gameplay/Striker.h": "4d663becd12a9af317893ee73d1f19850781d667d6a9e610d436fe19c42b36f1",
     "src/gameplay/Vector.cpp": "bc14eca18fa7ef7b8b2a58c103ff4de2dc87a3ef5ff6d1ae78ab5fbb28a96d30",
     "src/gameplay/Vector.h": "9e8d13803b49f1280e365f3615b136da0700c4e0023f039d8013673647a09efc",
     "src/generated/FUN_00300110.cpp": "ed8777c4bc36a2b226216bb30cb46af3184f586f0ffc6fe94137b50e1eb30988",
@@ -4002,17 +4004,17 @@
     "vendor/zlib-1.2.11/zutil.h": "9a63f6690fac1620aa3cecee5752af618806da438a256b4a047fbcd289cac159"
   },
   "compiler_versions": {
-    "8.0.1": "clang version 8.0.1 (tags/RELEASE_801/final)",
     "7.0.1": "clang version 7.0.1 (tags/RELEASE_701/final)",
+    "8.0.1": "clang version 8.0.1 (tags/RELEASE_801/final)",
     "lld": "LLD 8.0.1 (compatible with GNU linkers)"
   },
   "compiler_sha256": {
-    "8.0.1": "dffd62a213ec6cdb4430012a4a41c11e5e32c288f133d5391f9be49e1c5b69de",
     "7.0.1": "c2f0a175157d9aaace8031f8e6d7ea0ed6142b4bcef287105e3ed227301f1002",
+    "8.0.1": "dffd62a213ec6cdb4430012a4a41c11e5e32c288f133d5391f9be49e1c5b69de",
     "lld": "c4b3aaea06ff7112c64753047a2ab279fc3fe10dd807fd3c22edfdae99f43eed"
   },
-  "exact_functions": 38671,
-  "exact_bytes": 5077760,
+  "exact_functions": 38676,
+  "exact_bytes": 5079024,
   "builds": [
     {
       "id": "probes",
@@ -13480,9 +13482,14 @@
       "object_sha256": "1fcb6d64851f37b5a66d2808b1518376af3a24ab1cd556168d0e426c1ac698e1"
     },
     {
+      "id": "gameplay_npc",
+      "compiler": "8.0.1",
+      "object_sha256": "1ab5d997253fe6fe5165ad57e02d77041226c3814ef87d20f9b5eaf2fcb99551"
+    },
+    {
       "id": "gameplay_striker",
       "compiler": "8.0.1",
-      "object_sha256": "6128017efd0eb33696ba166c66ade7b8456ab09676b280596bc2dce44ddd37a2"
+      "object_sha256": "0c16816bb58b07ee46561f4c053ae8cc4a4dad956b3136aa9d87ca915363934f"
     }
   ],
   "matches": [
@@ -294086,6 +294093,17 @@
       "relocation_count": 0
     },
     {
+      "address": "0x94ea90",
+      "size": 336,
+      "exact": true,
+      "target_sha256": "e7ee227d513f2fe99c46a5a37ef14d7f1c4ddfe32b016f0fdbdfa702a101e67d",
+      "compiled_sha256": "e7ee227d513f2fe99c46a5a37ef14d7f1c4ddfe32b016f0fdbdfa702a101e67d",
+      "source": "src/gameplay/Striker.cpp",
+      "symbol": "_ZN4SPTG12KnivesRamona10AttackDoneEv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 5
+    },
+    {
       "address": "0x94f0b0",
       "size": 12,
       "exact": true,
@@ -302413,6 +302431,17 @@
       "relocation_count": 0
     },
     {
+      "address": "0x9b8330",
+      "size": 240,
+      "exact": true,
+      "target_sha256": "9b1a3464eec3d5d1e19dfd01157017ecaad4e924ad5206c6d4fba705cf52512c",
+      "compiled_sha256": "9b1a3464eec3d5d1e19dfd01157017ecaad4e924ad5206c6d4fba705cf52512c",
+      "source": "src/gameplay/NPC.cpp",
+      "symbol": "_ZN4SPTG3NPC6Slot13Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 3
+    },
+    {
       "address": "0x9b8420",
       "size": 12,
       "exact": true,
@@ -302422,6 +302451,28 @@
       "symbol": "_Z11TypeAddressILj10191904EEPKvv",
       "source_review": "manual_reconstruction",
       "relocation_count": 2
+    },
+    {
+      "address": "0x9b8430",
+      "size": 252,
+      "exact": true,
+      "target_sha256": "44f224f7150cb4bce106554530f60930ac464f536589e417fa04fb077602653d",
+      "compiled_sha256": "44f224f7150cb4bce106554530f60930ac464f536589e417fa04fb077602653d",
+      "source": "src/gameplay/NPC.cpp",
+      "symbol": "_ZN4SPTG3NPC7ReactToEPNS_13BaseCharacterEiPv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 1
+    },
+    {
+      "address": "0x9b8530",
+      "size": 240,
+      "exact": true,
+      "target_sha256": "22627a07a7c9dd0c124e9ee858026af01d90b39ca1dedc51fdb2d18dc022b684",
+      "compiled_sha256": "22627a07a7c9dd0c124e9ee858026af01d90b39ca1dedc51fdb2d18dc022b684",
+      "source": "src/gameplay/NPC.cpp",
+      "symbol": "_ZN4SPTG3NPC5OnHitEPNS_13BaseCharacterEPv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 1
     },
     {
       "address": "0x9b8620",
@@ -302455,6 +302506,17 @@
       "symbol": "RecoveredLeaf_9b8680",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 0
+    },
+    {
+      "address": "0x9b8690",
+      "size": 196,
+      "exact": true,
+      "target_sha256": "3629b0b2b3e8c9f58d73824d3ee50293310e64eb1a9dde3814060fa6e09ccb39",
+      "compiled_sha256": "3629b0b2b3e8c9f58d73824d3ee50293310e64eb1a9dde3814060fa6e09ccb39",
+      "source": "src/gameplay/NPC.cpp",
+      "symbol": "_ZN4SPTG3NPC8State106Ei",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 4
     },
     {
       "address": "0x9b8760",

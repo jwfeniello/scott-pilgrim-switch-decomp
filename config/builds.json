@@ -569379,6 +569379,75 @@
       ]
     },
     {
+      "id": "gameplay_npc",
+      "source": "src/gameplay/NPC.cpp",
+      "compiler": "8.0.1",
+      "source_review": "manual_reconstruction",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-std=c++11",
+        "-O2",
+        "-mcpu=cortex-a57",
+        "-fstrict-aliasing",
+        "-fomit-frame-pointer",
+        "-fno-pic",
+        "-fno-delete-null-pointer-checks",
+        "-ffunction-sections",
+        "-fdata-sections"
+      ],
+      "header_roots": [
+        "src/gameplay"
+      ],
+      "functions": [
+        {
+          "address": "0x9b8330",
+          "size": 240,
+          "symbol": "_ZN4SPTG3NPC6Slot13Ev",
+          "target_sha256": "9b1a3464eec3d5d1e19dfd01157017ecaad4e924ad5206c6d4fba705cf52512c",
+          "bindings": {
+            "_ZN4SPTG15AnimatedAiActor6Slot13Ev": "0x945670",
+            "Move_FrameDelta": "0x1924d70"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x9b8430",
+          "size": 252,
+          "symbol": "_ZN4SPTG3NPC7ReactToEPNS_13BaseCharacterEiPv",
+          "target_sha256": "44f224f7150cb4bce106554530f60930ac464f536589e417fa04fb077602653d",
+          "bindings": {
+            "_ZN4SPTG12StateMachineINS_13BaseCharacterEE10TransitionEMS1_FiiE": "0x812930"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x9b8530",
+          "size": 240,
+          "symbol": "_ZN4SPTG3NPC5OnHitEPNS_13BaseCharacterEPv",
+          "target_sha256": "22627a07a7c9dd0c124e9ee858026af01d90b39ca1dedc51fdb2d18dc022b684",
+          "bindings": {
+            "_ZN4SPTG12StateMachineINS_13BaseCharacterEE10TransitionEMS1_FiiE": "0x812930"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x9b8690",
+          "size": 196,
+          "symbol": "_ZN4SPTG3NPC8State106Ei",
+          "target_sha256": "3629b0b2b3e8c9f58d73824d3ee50293310e64eb1a9dde3814060fa6e09ccb39",
+          "bindings": {
+            "_ZN4SPTG12StateMachineINS_13BaseCharacterEE10TransitionEMS1_FiiE": "0x812930",
+            "_ZN4SPTG13BaseCharacter11Apply8e5750Ei": "0x8e5750"
+          },
+          "got_bindings": {},
+          "immutable_sections": {
+            "12": "0x1390e62"
+          }
+        }
+      ]
+    },
+    {
       "id": "gameplay_striker",
       "source": "src/gameplay/Striker.cpp",
       "compiler": "8.0.1",
@@ -569602,6 +569671,19 @@
             "_ZN4SPTG7Striker14AttackingStateEi": "0x948660",
             "Accessor_Resolver": "0x191cd10",
             "Accessor_Resolve": "0x67edd0"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x94ea90",
+          "size": 336,
+          "symbol": "_ZN4SPTG12KnivesRamona10AttackDoneEv",
+          "target_sha256": "e7ee227d513f2fe99c46a5a37ef14d7f1c4ddfe32b016f0fdbdfa702a101e67d",
+          "bindings": {
+            "_ZN4SPTG9SingletonINS_17LevelItemAccessorEE3GetEv": "0x7725e0",
+            "Accessor_Resolver": "0x191cd10",
+            "Accessor_Resolve": "0x67edd0",
+            "_ZN4SPTG18ControllablePlayer10Call80f6e0Ev": "0x80f6e0"
           },
           "got_bindings": {}
         },

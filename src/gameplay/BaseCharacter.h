@@ -720,6 +720,18 @@ struct ControllablePlayer : BaseCharacter {
     }
     void ReadAttackInput(AttackInput* out);              // 0x991a20
     bool ReadMoveInput(PlayerInput* from, onyx::Vector3* out);  // 0x9913a0
+    void Call80f6e0();                                          // 0x80f6e0
+    // Pays for a striker: guts, and health for what the guts don't cover.
+    __attribute__((always_inline)) void PayStrikerCost() {
+        float cost = __builtin_ceilf(strikerCost * GutsCostScale());
+        float paid = guts;
+        if (cost > paid) {
+            LoseHealth(cost - paid);
+            paid = guts;
+        }
+        if (cost < paid) paid = cost;
+        LoseGuts(paid);
+    }
     bool AnyInputPressed();                              // 0x993270
     // The HUD prompt to mash buttons, for players on this machine.
     __attribute__((always_inline)) void ShowMashPrompt() {

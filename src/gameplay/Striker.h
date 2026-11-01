@@ -58,43 +58,51 @@ struct Striker : AnimatedAiActor {
     ControllablePlayer* owner;       // +0x2d8: the player who called it
     bool removedForRespawn;          // +0x2e0
     char padding_2e1[0x17];
-    uint8_t flag2f8;                 // +0x2f8
+    uint8_t enemyInView;             // +0x2f8: set on arriving; without one it leaves without attacking
+    char padding_2f9[0x3];
+    uint32_t hitCount;               // +0x2fc: Mr. Chau's attacks, or how much Ramona heals
 };
 static_assert(__builtin_offsetof(Striker, states) == 0x1f0, "Striker states");
 static_assert(__builtin_offsetof(Striker, attack) == 0x280, "Striker attack");
 static_assert(__builtin_offsetof(Striker, owner) == 0x2d8, "Striker owner");
-static_assert(__builtin_offsetof(Striker, flag2f8) == 0x2f8, "Striker flag2f8");
+static_assert(__builtin_offsetof(Striker, hitCount) == 0x2fc, "Striker hitCount");
 
 struct StrikerMrsChau : Striker {
     void Slot19() override;
     int AttackingState(int event) override;
-    char padding_2f9[0xf];
+    char padding_300[0x8];
     void* value308;                  // +0x308
 };
 struct StrikerMrChau : Striker {
     void Slot19() override;
     int ArrivingState(int event) override;
-    char padding_2f9[0x23];
-    int32_t value31c;                // +0x31c
-    uint8_t flag320;                 // +0x320
+    virtual int RepeatingState(int event);     // slot 87
+    virtual State RepeatingStatePtr();         // slot 88
+    char padding_300[0x18];
+    float attackDoneTime;            // +0x318: how far into each attack AttackDone runs
+    uint32_t attacksDone;            // +0x31c
+    uint8_t doneThisAttack;          // +0x320
     char padding_321[0x3];
-    int32_t value324;                // +0x324
+    float attackDoneDelay;           // +0x324
 };
 struct KnivesStills : Striker {
     int AttackingState(int event) override;
+};
+struct KnivesRamona : Striker {
+    void AttackDone() override;
 };
 struct KnivesScott : Striker {
     int AttackingState(int event) override;
 };
 struct KnivesNegaScott : Striker {
     void Slot19() override;
-    char padding_2f9[0x37];
+    char padding_300[0x30];
     uint64_t value330;               // +0x330
     uint64_t value338;               // +0x338
 };
 struct KnivesKim : Striker {
     void Slot19() override;
-    char padding_2f9[0x17];
+    char padding_300[0x10];
     int32_t value310;                // +0x310
     uint8_t flag314;                 // +0x314
 };

@@ -26,7 +26,7 @@ void Striker::Slot19() {
     spawnerId = 0;
     owner = nullptr;
     attack = baseAttack;
-    flag2f8 = 0;
+    enemyInView = 0;
 }
 
 // Leaves the level. The spawner that placed it either keeps it to spawn again or removes it.
@@ -132,13 +132,13 @@ int Striker::ArrivingState(int event) {
     switch (event) {
     case kStateUpdate:
         if (!AnimationDone()) return kStateHandled;
-        if (flag2f8) states.Transition(AttackingStatePtr());
+        if (enemyInView) states.Transition(AttackingStatePtr());
         else states.Transition(LeavingStatePtr());
         return kStateParentTookOver;
     case kStateEnter: {
         EnemyCatalog* enemies = onyx::Find<EnemyCatalog, 0x5f5cdd73u>(level.Get()->enemies);
         EnemyList found;
-        if (static_cast<int64_t>(enemies->count * sizeof(Enemy*)) >= 1) flag2f8 = FindEnemies(enemies, &found, true);
+        if (static_cast<int64_t>(enemies->count * sizeof(Enemy*)) >= 1) enemyInView = FindEnemies(enemies, &found, true);
         onyx::Vector3 position;
         position = onyx::Get<onyx::Transform, onyx::kTransform>(onyx::Find<ActorObject, onyx_types::type_6492d61d>(owner->actorObject)->transform)->position;
         position.x += SideOfOwner(position, arrivalDistance);
@@ -248,16 +248,16 @@ int StrikerMrsChau::AttackingState(int event) {
 
 void StrikerMrChau::Slot19() {
     Striker::Slot19();
-    value31c = 0;
-    flag320 = 0;
-    value324 = 0;
+    attacksDone = 0;
+    doneThisAttack = 0;
+    attackDoneDelay = 0.0f;
 }
 
 int StrikerMrChau::ArrivingState(int event) {
     int result = Striker::ArrivingState(event);
     if (result != kStateParentTookOver) {
         if (event == kStateExit) {
-            value31c = 0;
+            attacksDone = 0;
             return kStateHandled;
         }
         return kStateUnhandled;
@@ -270,15 +270,7 @@ int KnivesStills::AttackingState(int event) {
     int result = Striker::AttackingState(event);
     if (result != kStateParentTookOver) {
         if (event == kStateEnter) {
-            ControllablePlayer* player = owner;
-            float cost = __builtin_ceilf(player->strikerCost * player->GutsCostScale());
-            float paid = player->guts;
-            if (cost > paid) {
-                player->LoseHealth(cost - paid);
-                paid = player->guts;
-            }
-            if (cost < paid) paid = cost;
-            player->LoseGuts(paid);
+            owner->PayStrikerCost();
             return kStateHandled;
         }
         return kStateUnhandled;
@@ -310,6 +302,60 @@ void KnivesKim::Slot19() {
     Striker::Slot19();
     value310 = 0;
     flag314 = 0;
+}
+
+// Ramona heals every player who can take it.
+void KnivesRamona::AttackDone() {
+    owner->PayStrikerCost();
+    PlayerCatalog* catalog = onyx::Get<PlayerCatalog, onyx_types::type_0bf4a9b7>(level.Get()->players);
+    if (catalog->count != 0) {
+        ControllablePlayer** i = catalog->players;
+        do {
+            ControllablePlayer* player = *i;
+            if (!player->IsOut() && player->actionMode != 9 && player->IsHeld()) {
+                player->GainHealth(hitCount);
+                player->Call80f6e0();
+            }
+            ++i;
+        } while (i != catalog->players + catalog->count);
+    }
+}
+
+// Attacks hitCount times, paying once; AttackDone runs a moment into each attack. Not yet matched (not credited): the
+// original loads the vtable separately for each of the two next states.
+int StrikerMrChau::RepeatingState(int event) {
+    int result = kStateHandled;
+    switch (event) {
+    case kStateUpdate:
+        if (!doneThisAttack) {
+            attackDoneDelay -= Move_FrameDelta;
+            if (attackDoneDelay < 0.0f) {
+                AttackDone();
+                doneThisAttack = 1;
+            }
+        }
+        if (AnimationDone()) {
+            states.Transition(++attacksDone >= hitCount ? LeavingStatePtr() : AttackingStatePtr());
+            result = kStateParentTookOver;
+        }
+        break;
+    case kStateEnter:
+        StartAttack(&attack, false, 1, owner);
+        PlayAnimation(11, false, false, 1.0f);
+        attackDoneDelay = attackDoneTime;
+        doneThisAttack = 0;
+        if (attacksDone == 0) owner->PayStrikerCost();
+        break;
+    case kStateEvent3:
+        break;
+    default:
+        result = kStateUnhandled;
+        break;
+    case kStateExit:
+        states.AssertOwner(this);
+        break;
+    }
+    return result;
 }
 
 }  // namespace SPTG
