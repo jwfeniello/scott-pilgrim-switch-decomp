@@ -205,6 +205,7 @@ struct EnemyHanzo : Enemy {
 // vtable 0x1884ed8, 240 slots
 struct EnemyGodzilla : Enemy {
     void Update();
+    int State122(int event) override;
     void Approach();
     void Slot166(int kind);
     int State124(int event);
@@ -427,8 +428,20 @@ struct EnemyForestElves : EnemyOneHitWonder {
 };
 // vtable 0x18875e8, 240 slots
 struct EnemyArZee : EnemyShooter {
+    void Slot19() override;
+    int State122(int event) override;
     virtual int State234(int event); virtual State State234Ptr();   // slots 234, 235, overrides EnemyShooter
     virtual int State238(int event); virtual State State238Ptr();   // slots 238, 239
+
+    char padding_c60[0x24];
+    onyx::Vector3 vectorC84;     // +0xc84
+    uint8_t flagC90;             // +0xc90
+    char padding_c91[0x3];
+    int32_t valuesC94[4];        // +0xc94
+    uint8_t flagCa4;             // +0xca4
+    char padding_ca5[0x3];
+    onyx::Vector3 vectorCa8;     // +0xca8
+    onyx::Vector3 vectorCb4;     // +0xcb4
 };
 // vtable 0x1887da8, 250 slots
 struct EnemyAlberta : EnemyNormal {

@@ -109,7 +109,7 @@ struct Pickup : AnimatedAiActor {
     float scale;                     // +0x160
     char padding_164[0x2c];
     uint32_t ignoredActors[4];       // +0x190
-    char padding_1a0[0x4];
+    int32_t currentAnimation;        // +0x1a0
     onyx::Vector3 motion;            // +0x1a4
     onyx::Vector3 motionTarget;      // +0x1b0
     char padding_1bc[0x8];
@@ -138,6 +138,16 @@ struct Pickup : AnimatedAiActor {
     void HandleQueued(QueuedEvent& event);  // 0x9a52e0
     bool TryCollect();               // 0x9a4c40: a nearby player picks the item up
 };
+// SPTG::MithrilSkateboard (vtable 0x18792f0 region): the skateboard pickup, which has three states of its own.
+struct MithrilSkateboard : Pickup {
+    int IdleState(int event) override;
+    int CollectedStateHandler(int event) override;
+    int State84(int event) override;
+    char padding_298[0x4];
+    float restTime;                  // +0x29c
+    float restTimer;                 // +0x2a0
+};
+static_assert(__builtin_offsetof(MithrilSkateboard, restTimer) == 0x2a0, "MithrilSkateboard restTimer");
 static_assert(__builtin_offsetof(Pickup, holder) == 0x40, "Pickup holder");
 static_assert(__builtin_offsetof(Pickup, scale) == 0x160, "Pickup scale");
 static_assert(__builtin_offsetof(Pickup, ignoredActors) == 0x190, "Pickup ignored actors");
@@ -364,6 +374,108 @@ int Pickup::State84(int event) {
         states.AssertOwner(this);
         return kStateHandled;
     }
+}
+
+// Plays animation 189 and then stands in animation 0 until a player collects it. Not yet matched (not credited): the
+// shape is right but the original keeps `this` and the result in the other two registers.
+int MithrilSkateboard::IdleState(int event) {
+    int result = kStateHandled;
+    switch (event) {
+    case kStateUpdate: {
+        if (currentAnimation != 0) {
+            if (currentAnimation == 189 && AnimationDone()) {
+                result = kStateHandled;
+                PlayAnimation(0, 1, 0, 1.0f);
+                break;
+            }
+            result = kStateHandled;
+            break;
+        }
+        if (!TryCollect()) {
+            result = kStateHandled;
+            break;
+        }
+        states.Transition(State84Ptr());
+        result = kStateParentTookOver;
+        break;
+    }
+    case kStateEnter:
+        result = kStateHandled;
+        PlayAnimation(189, 1, 0, 1.0f);
+        break;
+    case kStateExit:
+        states.AssertOwner(this);
+        result = kStateHandled;
+        break;
+    case kStateEvent3:
+        break;
+    default:
+        result = kStateUnhandled;
+        break;
+    }
+    return result;
+}
+
+// Plays animation 16 and tells its spawner it is gone.
+int MithrilSkateboard::CollectedStateHandler(int event) {
+    int result = kStateHandled;
+    switch (event) {
+    case kStateUpdate:
+        if (AnimationDone()) NotifySpawner(true);
+        break;
+    case kStateEnter:
+        PlayAnimation(16, 0, 0, 1.0f);
+        break;
+    case kStateEvent3:
+        break;
+    default:
+        result = kStateUnhandled;
+        break;
+    case kStateExit:
+        states.AssertOwner(this);
+        break;
+    }
+    return result;
+}
+
+// Plays animation 107, then rests in animation 100 for restTime before it counts as collected. Not yet matched (not
+// credited): the original tests for animation 100 first and has a jump table entry of its own for the exit case.
+int MithrilSkateboard::State84(int event) {
+    int result = kStateHandled;
+    switch (event) {
+    case kStateUpdate: {
+        int current = currentAnimation;
+        if (current == 100) {
+            restTimer += Move_FrameDelta;
+            if (AnimationDone() && restTimer >= restTime) {
+                states.Transition(CollectedState());
+                result = kStateParentTookOver;
+                break;
+            }
+        } else if (current == 107 && AnimationDone()) {
+            result = kStateHandled;
+            PlayAnimation(100, 1, 0, 1.0f);
+            break;
+        }
+        result = kStateHandled;
+        break;
+    }
+    case kStateEnter:
+        PlayAnimation(107, 0, 0, 1.0f);
+        restTimer = 0.0f;
+        result = kStateHandled;
+        break;
+    case kStateExit:
+        states.AssertOwner(this);
+        result = kStateHandled;
+        break;
+    case kStateEvent3:
+        break;
+    default:
+        result = kStateUnhandled;
+        break;
+    }
+    return result;
 }
 
 }  // namespace SPTG

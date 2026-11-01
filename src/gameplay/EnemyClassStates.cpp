@@ -1167,4 +1167,67 @@ int EnemyForestElves::State240(int event) {
     }
 }
 
+// Stands still in animation 27 in action mode 7 and goes to slot 194 when that is over.
+int EnemyGodzilla::State122(int event) {
+    switch (event) {
+    case kStateUpdate:
+        if (!AnimationDone()) return kStateHandled;
+        states.Transition(State194Ptr());
+        return kStateParentTookOver;
+    case kStateEnter:
+        motion = onyx::Vector3::Zero();
+        motionTarget = onyx::Vector3::Zero();
+        PlayAnimation(27, 0, 0, 1.0f);
+        actionMode = 7;
+        return kStateHandled;
+    case kStateExit:
+        actionMode = 0;
+        return kStateHandled;
+    case kStateEvent3:
+        return kStateHandled;
+    default:
+        return kStateUnhandled;
+    }
+}
+
+// Stands still in animation 27 and goes to slot 238 when that is over.
+int EnemyArZee::State122(int event) {
+    int result = kStateHandled;
+    switch (event) {
+    case kStateUpdate:
+        if (AnimationDone()) {
+            states.Transition(State238Ptr());
+            result = kStateParentTookOver;
+        }
+        break;
+    case kStateEnter:
+        motion = onyx::Vector3::Zero();
+        motionTarget = onyx::Vector3::Zero();
+        PlayAnimation(27, 0, 1, 1.0f);
+        break;
+    case kStateEvent3:
+        break;
+    default:
+        result = kStateUnhandled;
+        break;
+    case kStateExit:
+        actionMode = 0;
+        break;
+    }
+    return result;
+}
+
+void EnemyArZee::Slot19() {
+    EnemyShooter::Slot19();
+    vectorC84 = onyx::Vector3::Zero();
+    flagC90 = 0;
+    flagCa4 = 0;
+    valuesC94[0] = 0;
+    valuesC94[1] = 0;
+    valuesC94[2] = 0;
+    valuesC94[3] = 0;
+    vectorCa8 = onyx::Vector3::Zero();
+    vectorCb4 = onyx::Vector3::Zero();
+}
+
 }  // namespace SPTG

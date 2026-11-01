@@ -369,6 +369,31 @@ In a state written with `switch`, the case listed first in the source becomes
 the fall-through block of the compare chain. The damaged state matches only with
 the enter case first.
 
+## Breakable objects and turrets
+
+`SPTG::BreakableObject` (vtable `0x1889f10`) is the actor behind breakable scenery, and `Piniata` and
+`GunTurrets` derive from it. [`BreakableObject.cpp`](../src/gameplay/BreakableObject.cpp) has its first two
+states. `DamagedState` picks the damage stage animation for the health left and breaks at zero.
+`BrokenState` sends the broken event, releases the debris, and if `endsAfterBreaking` is set moves on when
+the animation ends. `Piniata.cpp` still has its own local copy of these fields from before this class
+existed.
+
+`GunTurrets` (89 slots) adds three states that only its slot table reaches:
+
+- `WaitingState` (`0xa14230`) plays animation 213 until `TargetInRange` finds a player whose horizontal
+  distance is below `range` (`+0x2b4`).
+- `AimingState` (`0xa14170`) plays animation 214, then goes to `DamagedState`, which is the turret's
+  armed state as well: with a target still in range it counts up to `shootDelay` (`+0x2b0`) and fires, and
+  with none it goes back to waiting.
+- The firing state at slot 88 (`0xa13c30`) is not yet written.
+
+## Money
+
+`ControllablePlayer` keeps `money` at `+0x13e8` as a float in multiples of 0.05, capped at 9999.95, and
+`moneyEarned` at `+0x1458`, capped at 1e9. `SpendMoney` holds that logic, and a negative amount counts as
+earned. The one caller matched so far is `EnemyThief::AttackLanded`: a landed attack takes `moneyStolen`
+(`+0xc08`) from a player who has more than that and is not down, then shows it through `0x996c30`.
+
 ## BaseCharacter states
 
 [`BaseCharacter.h`](../src/gameplay/BaseCharacter.h) describes

@@ -495311,148 +495311,6 @@
       ]
     },
     {
-      "id": "gameplay_pickup",
-      "source": "src/gameplay/Pickup.cpp",
-      "compiler": "8.0.1",
-      "source_review": "manual_reconstruction",
-      "flags": [
-        "-target",
-        "aarch64-none-elf",
-        "-std=c++11",
-        "-O2",
-        "-mcpu=cortex-a57",
-        "-fstrict-aliasing",
-        "-fomit-frame-pointer",
-        "-fno-pic",
-        "-fno-delete-null-pointer-checks",
-        "-ffunction-sections",
-        "-fdata-sections"
-      ],
-      "header_roots": [
-        "src/gameplay"
-      ],
-      "functions": [
-        {
-          "address": "0x9a3d50",
-          "size": 76,
-          "symbol": "_ZN4SPTG6Pickup5ResetEv",
-          "target_sha256": "b4471f23b299519ac824456ed56e908a9aaa89b0638a249b7990d29209395c27",
-          "bindings": {
-            "_ZN4SPTG15AnimatedAiActor5ResetEv": "0x945c40"
-          },
-          "got_bindings": {}
-        },
-        {
-          "address": "0x9a3e40",
-          "size": 132,
-          "symbol": "_ZN4SPTG6Pickup6UpdateEv",
-          "target_sha256": "85923f982184e6a9c0f76c7ff742e20ca61b85649c971ff05fc6dab204fc84c1",
-          "bindings": {
-            "_ZN4SPTG15AnimatedAiActor6UpdateEv": "0x945380",
-            "_ZN4SPTG8NoHolderE": "0x191b6c0"
-          },
-          "got_bindings": {}
-        },
-        {
-          "address": "0x9a3ed0",
-          "size": 848,
-          "symbol": "_ZN4SPTG6Pickup7CollectEv",
-          "target_sha256": "f51c1f09f986954dc9bb99736e3a97ecbeb86f591fc9dec8686add3dff98c229",
-          "bindings": {
-            "_ZN4SPTG6Pickup12HandleQueuedERNS_11QueuedEventE": "0x9a52e0",
-            "Accessor_Allocators": "0x1926bd8",
-            "Accessor_AllocatorIndex": "0xa82b30",
-            "Onyx_ProjectSettings": "0x1935070",
-            "Accessor_Tracking": "0x1935068",
-            "Event_Notify": "0xbf6e80",
-            "_ZGVZN4onyx8SettingsEvE8defaults": "0x1935078",
-            "_ZZN4onyx8SettingsEvE8defaults": "0x1935080",
-            "__cxa_guard_acquire": "0xfa4130",
-            "__cxa_guard_release": "0xfa4140",
-            "_Unwind_Resume": "0xfa4920"
-          },
-          "got_bindings": {},
-          "literals": {
-            "554e4b4e4f574e20": "0x1331ae0",
-            "50524f4a45435420": "0x1331000",
-            "0c0000000c000000ffffff7fffffff7f": "0x1334730"
-          }
-        },
-        {
-          "address": "0x9a4270",
-          "size": 212,
-          "symbol": "_ZN4SPTG6Pickup9OnContactEPvPKNS_7ContactE",
-          "target_sha256": "a959b21d0608eb296f6dcbf3d33889e44a482b993a1a99a1434d6e942cadea46",
-          "bindings": {
-            "_ZN4SPTG12StateMachineINS_6PickupEE10TransitionEMS1_FiiE": "0x9a5210"
-          },
-          "got_bindings": {}
-        },
-        {
-          "address": "0x9a4380",
-          "size": 388,
-          "symbol": "_ZN4SPTG6Pickup13NotifySpawnerEb",
-          "target_sha256": "40085e624551570ad01b67f76770fd72ad2ed1aa6816cf7734128cd1fcbab78d",
-          "bindings": {
-            "_ZN4SPTG9SingletonINS_17LevelItemAccessorEE3GetEv": "0x7725e0",
-            "Accessor_Resolver": "0x191cd10",
-            "Accessor_Resolve": "0x67edd0",
-            "_ZN4SPTG9SingletonINS_14UnspawnManagerEE3GetEv": "0x7766f0",
-            "_ZN4SPTG8NoHolderE": "0x191b6c0",
-            "_ZN4SPTG7Spawner6RemoveEj": "0x690410"
-          },
-          "got_bindings": {}
-        },
-        {
-          "address": "0x9a4550",
-          "size": 184,
-          "symbol": "_ZN4SPTG6Pickup7State78Ei",
-          "target_sha256": "1cf02e1906ee8bf4226a5856e994ceca52ba6ffb601e7e7e4a8d8cace4237a88",
-          "bindings": {
-            "_ZN4SPTG12StateMachineINS_6PickupEE10TransitionEMS1_FiiE": "0x9a5210"
-          },
-          "got_bindings": {},
-          "immutable_sections": {
-            "18": "0x1390e3e"
-          }
-        },
-        {
-          "address": "0x9a4940",
-          "size": 400,
-          "symbol": "_ZN4SPTG6Pickup21CollectedStateHandlerEi",
-          "target_sha256": "9c8170fb6689858cb31a11d79892fe640ba6e536a65502619c96494048df2043",
-          "bindings": {
-            "_ZN4SPTG6Pickup10TryCollectEv": "0x9a4c40",
-            "_ZN4SPTG12StateMachineINS_6PickupEE10TransitionEMS1_FiiE": "0x9a5210",
-            "_ZGVZN4onyx7Vector34ZeroEvE5value": "0x191f8b8",
-            "_ZZN4onyx7Vector34ZeroEvE5value": "0x191f8c0",
-            "__cxa_guard_acquire": "0xfa4130",
-            "__cxa_guard_release": "0xfa4140"
-          },
-          "got_bindings": {},
-          "immutable_sections": {
-            "24": "0x1390e46"
-          }
-        },
-        {
-          "address": "0x9a4ae0",
-          "size": 332,
-          "symbol": "_ZN4SPTG6Pickup7State84Ei",
-          "target_sha256": "1f04d530ca1a61eb4b4303ce0b39bf9c7f9a0f6019f044615136f105552ecbea",
-          "bindings": {
-            "_ZGVZN4onyx7Vector34ZeroEvE5value": "0x191f8b8",
-            "_ZZN4onyx7Vector34ZeroEvE5value": "0x191f8c0",
-            "__cxa_guard_acquire": "0xfa4130",
-            "__cxa_guard_release": "0xfa4140"
-          },
-          "got_bindings": {},
-          "immutable_sections": {
-            "27": "0x1390e4a"
-          }
-        }
-      ]
-    },
-    {
       "id": "gameplay_piniata",
       "source": "src/gameplay/Piniata.cpp",
       "compiler": "8.0.1",
@@ -568686,6 +568544,173 @@
       ]
     },
     {
+      "id": "gameplay_actor",
+      "source": "src/gameplay/AnimatedAiActor.cpp",
+      "compiler": "8.0.1",
+      "source_review": "manual_reconstruction",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-std=c++11",
+        "-O2",
+        "-mcpu=cortex-a57",
+        "-fstrict-aliasing",
+        "-fomit-frame-pointer",
+        "-fno-pic",
+        "-fno-delete-null-pointer-checks",
+        "-ffunction-sections",
+        "-fdata-sections"
+      ],
+      "header_roots": [
+        "src/gameplay"
+      ],
+      "functions": [
+        {
+          "address": "0x93f750",
+          "size": 772,
+          "symbol": "_ZN4SPTG15AnimatedAiActor13PlayAnimationEibbf",
+          "target_sha256": "fc271ba376652b738790b59740300d16d0dfc2ae265b4a8a4038b2f0927739e9",
+          "bindings": {
+            "Accessor_Resolver": "0x191cd10",
+            "Accessor_Resolve": "0x67edd0"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x93fb90",
+          "size": 136,
+          "symbol": "_ZN4SPTG15AnimatedAiActor17SetAnimationSpeedEf",
+          "target_sha256": "20c1ed6a5d984c22745f3f8f9e6343d9b11e8abbe89800d43592a3230461914c",
+          "bindings": {
+            "Accessor_Resolver": "0x191cd10",
+            "Accessor_Resolve": "0x67edd0"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x93fc20",
+          "size": 108,
+          "symbol": "_ZN4SPTG15AnimatedAiActor18SetAnimationPausedEb",
+          "target_sha256": "0e7c3f1e2b7b30d48d48c2ff8e777193c80bed2585af7ef733edfecc18cfc9ae",
+          "bindings": {
+            "Accessor_Resolver": "0x191cd10",
+            "Accessor_Resolve": "0x67edd0"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x93fcf0",
+          "size": 204,
+          "symbol": "_ZN4SPTG15AnimatedAiActor9SetFacingEi",
+          "target_sha256": "f563e8bef8524c713378053adb353386343a5ccd79f749a0b2276fdc9b3b7259",
+          "bindings": {
+            "Accessor_Resolver": "0x191cd10",
+            "Accessor_Resolve": "0x67edd0"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x93fdd0",
+          "size": 220,
+          "symbol": "_ZN4SPTG15AnimatedAiActor10TurnAroundEv",
+          "target_sha256": "f520ec471ef5988d77f68b8e3b6608bcf686ebbb003376d415cee40013e3ee05",
+          "bindings": {
+            "Accessor_Resolver": "0x191cd10",
+            "Accessor_Resolve": "0x67edd0"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x940d00",
+          "size": 216,
+          "symbol": "_ZN4SPTG15AnimatedAiActor12AttackLandedEPS0_",
+          "target_sha256": "e3e2a3c63e2037102975440569a86e8b65cbb3a6445c4cbd45bc4e85543ca3e0",
+          "bindings": {},
+          "got_bindings": {}
+        },
+        {
+          "address": "0x941070",
+          "size": 232,
+          "symbol": "_ZN4SPTG15AnimatedAiActor11StartAttackEPNS_6AttackEbiPNS_13BaseCharacterE",
+          "target_sha256": "8ac4d069464f2b19e6592ea772f79eb6f42a51ac754ae702b9b3c2aa9566cc72",
+          "bindings": {
+            "_ZN4SPTG6AttackaSERKS0_": "0x8e4450",
+            "Attack_NextId": "0x1925328",
+            "_ZN4SPTG6Attack9SetSourceEiPNS_13BaseCharacterE": "0x8e24f0"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x9415b0",
+          "size": 264,
+          "symbol": "_ZN4SPTG15AnimatedAiActor10IsOnGroundEv",
+          "target_sha256": "5891b827e88865a42c29779b6208b9d29c85ab09dfc1b1c2bc713804cf3082e8",
+          "bindings": {
+            "Accessor_Resolver": "0x191cd10",
+            "Accessor_Resolve": "0x67edd0"
+          },
+          "got_bindings": {},
+          "literals": {
+            "bd378635": "0x1331fdc"
+          }
+        },
+        {
+          "address": "0x941770",
+          "size": 32,
+          "symbol": "_ZN4SPTG15AnimatedAiActor10LoseHealthEf",
+          "target_sha256": "2cfc61fbac3fa01e9493149318639a8d2d6df2cf4054621ffd0293d7ecef28c3",
+          "bindings": {},
+          "got_bindings": {}
+        },
+        {
+          "address": "0x941790",
+          "size": 76,
+          "symbol": "_ZN4SPTG15AnimatedAiActor10GainHealthEf",
+          "target_sha256": "a6a05809263bf1d87eb67bf35957a6d0476f198a0ff3a07b3d29f36399d58280",
+          "bindings": {},
+          "got_bindings": {}
+        },
+        {
+          "address": "0x942bc0",
+          "size": 44,
+          "symbol": "_ZN4SPTG15AnimatedAiActor6Slot74EPKfbf",
+          "target_sha256": "31ce7b556840a8899c7a53c3dcaea4e31dce13fe82f5fe8f7d07ee71b57f12de",
+          "bindings": {},
+          "got_bindings": {}
+        },
+        {
+          "address": "0x9430d0",
+          "size": 564,
+          "symbol": "_ZN4SPTG15AnimatedAiActor6Slot76Ev",
+          "target_sha256": "7b39f98405392d65698ae0ac7b302e3cc2a04b7bbf7205a09abde1fa9e2c996f",
+          "bindings": {
+            "Accessor_Resolver": "0x191cd10",
+            "Accessor_Resolve": "0x67edd0",
+            "_ZN4SPTG11ActorObject6MoveToERKN4onyx7Vector3E": "0x85fd70",
+            "_ZN4SPTG20ShadowAnimatedObject15SetGroundHeightEif": "0x85fc20"
+          },
+          "got_bindings": {},
+          "literals": {
+            "bd378635": "0x1331fdc"
+          }
+        },
+        {
+          "address": "0x945380",
+          "size": 748,
+          "symbol": "_ZN4SPTG15AnimatedAiActor6UpdateEv",
+          "target_sha256": "e9a7cb92ac110e1e2bb3a11ea9dd41c0933a2cb17be998e4602f6a8b69d6b8f2",
+          "bindings": {
+            "Accessor_Resolver": "0x191cd10",
+            "Accessor_Resolve": "0x67edd0",
+            "Transform_Invalidate": "0x68f3b0",
+            "Transform_AddChild": "0x68f0e0",
+            "_ZN4SPTG10ActorFlags9SetShadowEPNS_20ShadowAnimatedObjectEb": "0x811870"
+          },
+          "got_bindings": {}
+        }
+      ]
+    },
+    {
       "id": "gameplay_enemy_classes",
       "source": "src/gameplay/EnemyClassStates.cpp",
       "compiler": "8.0.1",
@@ -569409,6 +569434,23 @@
           }
         },
         {
+          "address": "0x9f9310",
+          "size": 368,
+          "symbol": "_ZN4SPTG13EnemyGodzilla8State122Ei",
+          "target_sha256": "48e1fafce8d1dbf0dfacf7a2bd1880d897154f57957b2bbbb48ec6fd1353beaf",
+          "bindings": {
+            "_ZN4SPTG12StateMachineINS_13BaseCharacterEE10TransitionEMS1_FiiE": "0x812930",
+            "_ZGVZN4onyx7Vector34ZeroEvE5value": "0x191f8b8",
+            "_ZZN4onyx7Vector34ZeroEvE5value": "0x191f8c0",
+            "__cxa_guard_acquire": "0xfa4130",
+            "__cxa_guard_release": "0xfa4140"
+          },
+          "got_bindings": {},
+          "immutable_sections": {
+            "192": "0x1391196"
+          }
+        },
+        {
           "address": "0x9f9490",
           "size": 96,
           "symbol": "_ZN4SPTG13EnemyGodzilla8State124Ei",
@@ -569670,6 +569712,37 @@
           "got_bindings": {}
         },
         {
+          "address": "0x9fff40",
+          "size": 328,
+          "symbol": "_ZN4SPTG10EnemyArZee6Slot19Ev",
+          "target_sha256": "1880cb2d155fde2e2680cfc49837abeed4254baedc8e8dace0856b4a14d5909b",
+          "bindings": {
+            "_ZN4SPTG12EnemyShooter6Slot19Ev": "0x9ebd60",
+            "_ZGVZN4onyx7Vector34ZeroEvE5value": "0x191f8b8",
+            "_ZZN4onyx7Vector34ZeroEvE5value": "0x191f8c0",
+            "__cxa_guard_acquire": "0xfa4130",
+            "__cxa_guard_release": "0xfa4140"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xa00090",
+          "size": 368,
+          "symbol": "_ZN4SPTG10EnemyArZee8State122Ei",
+          "target_sha256": "9d1c5bfddbf591fa06c7556e7aa5ee3fc5213bc1d90661c4749376c6651e952b",
+          "bindings": {
+            "_ZN4SPTG12StateMachineINS_13BaseCharacterEE10TransitionEMS1_FiiE": "0x812930",
+            "_ZGVZN4onyx7Vector34ZeroEvE5value": "0x191f8b8",
+            "_ZZN4onyx7Vector34ZeroEvE5value": "0x191f8c0",
+            "__cxa_guard_acquire": "0xfa4130",
+            "__cxa_guard_release": "0xfa4140"
+          },
+          "got_bindings": {},
+          "immutable_sections": {
+            "195": "0x1391243"
+          }
+        },
+        {
           "address": "0xa026b0",
           "size": 132,
           "symbol": "_ZN4SPTG11EnemyAerial6Slot19Ev",
@@ -569707,8 +569780,8 @@
       ]
     },
     {
-      "id": "gameplay_actor",
-      "source": "src/gameplay/AnimatedAiActor.cpp",
+      "id": "gameplay_pickup",
+      "source": "src/gameplay/Pickup.cpp",
       "compiler": "8.0.1",
       "source_review": "manual_reconstruction",
       "flags": [
@@ -569729,145 +569802,277 @@
       ],
       "functions": [
         {
-          "address": "0x93f750",
-          "size": 772,
-          "symbol": "_ZN4SPTG15AnimatedAiActor13PlayAnimationEibbf",
-          "target_sha256": "fc271ba376652b738790b59740300d16d0dfc2ae265b4a8a4038b2f0927739e9",
+          "address": "0x9a3d50",
+          "size": 76,
+          "symbol": "_ZN4SPTG6Pickup5ResetEv",
+          "target_sha256": "b4471f23b299519ac824456ed56e908a9aaa89b0638a249b7990d29209395c27",
           "bindings": {
-            "Accessor_Resolver": "0x191cd10",
-            "Accessor_Resolve": "0x67edd0"
+            "_ZN4SPTG15AnimatedAiActor5ResetEv": "0x945c40"
           },
           "got_bindings": {}
         },
         {
-          "address": "0x93fb90",
-          "size": 136,
-          "symbol": "_ZN4SPTG15AnimatedAiActor17SetAnimationSpeedEf",
-          "target_sha256": "20c1ed6a5d984c22745f3f8f9e6343d9b11e8abbe89800d43592a3230461914c",
+          "address": "0x9a3e40",
+          "size": 132,
+          "symbol": "_ZN4SPTG6Pickup6UpdateEv",
+          "target_sha256": "85923f982184e6a9c0f76c7ff742e20ca61b85649c971ff05fc6dab204fc84c1",
           "bindings": {
-            "Accessor_Resolver": "0x191cd10",
-            "Accessor_Resolve": "0x67edd0"
+            "_ZN4SPTG15AnimatedAiActor6UpdateEv": "0x945380",
+            "_ZN4SPTG8NoHolderE": "0x191b6c0"
           },
           "got_bindings": {}
         },
         {
-          "address": "0x93fc20",
-          "size": 108,
-          "symbol": "_ZN4SPTG15AnimatedAiActor18SetAnimationPausedEb",
-          "target_sha256": "0e7c3f1e2b7b30d48d48c2ff8e777193c80bed2585af7ef733edfecc18cfc9ae",
+          "address": "0x9a3ed0",
+          "size": 848,
+          "symbol": "_ZN4SPTG6Pickup7CollectEv",
+          "target_sha256": "f51c1f09f986954dc9bb99736e3a97ecbeb86f591fc9dec8686add3dff98c229",
           "bindings": {
-            "Accessor_Resolver": "0x191cd10",
-            "Accessor_Resolve": "0x67edd0"
-          },
-          "got_bindings": {}
-        },
-        {
-          "address": "0x93fcf0",
-          "size": 204,
-          "symbol": "_ZN4SPTG15AnimatedAiActor9SetFacingEi",
-          "target_sha256": "f563e8bef8524c713378053adb353386343a5ccd79f749a0b2276fdc9b3b7259",
-          "bindings": {
-            "Accessor_Resolver": "0x191cd10",
-            "Accessor_Resolve": "0x67edd0"
-          },
-          "got_bindings": {}
-        },
-        {
-          "address": "0x93fdd0",
-          "size": 220,
-          "symbol": "_ZN4SPTG15AnimatedAiActor10TurnAroundEv",
-          "target_sha256": "f520ec471ef5988d77f68b8e3b6608bcf686ebbb003376d415cee40013e3ee05",
-          "bindings": {
-            "Accessor_Resolver": "0x191cd10",
-            "Accessor_Resolve": "0x67edd0"
-          },
-          "got_bindings": {}
-        },
-        {
-          "address": "0x940d00",
-          "size": 216,
-          "symbol": "_ZN4SPTG15AnimatedAiActor12AttackLandedEPS0_",
-          "target_sha256": "e3e2a3c63e2037102975440569a86e8b65cbb3a6445c4cbd45bc4e85543ca3e0",
-          "bindings": {},
-          "got_bindings": {}
-        },
-        {
-          "address": "0x941070",
-          "size": 232,
-          "symbol": "_ZN4SPTG15AnimatedAiActor11StartAttackEPNS_6AttackEbiPNS_13BaseCharacterE",
-          "target_sha256": "8ac4d069464f2b19e6592ea772f79eb6f42a51ac754ae702b9b3c2aa9566cc72",
-          "bindings": {
-            "_ZN4SPTG6AttackaSERKS0_": "0x8e4450",
-            "Attack_NextId": "0x1925328",
-            "_ZN4SPTG6Attack9SetSourceEiPNS_13BaseCharacterE": "0x8e24f0"
-          },
-          "got_bindings": {}
-        },
-        {
-          "address": "0x9415b0",
-          "size": 264,
-          "symbol": "_ZN4SPTG15AnimatedAiActor10IsOnGroundEv",
-          "target_sha256": "5891b827e88865a42c29779b6208b9d29c85ab09dfc1b1c2bc713804cf3082e8",
-          "bindings": {
-            "Accessor_Resolver": "0x191cd10",
-            "Accessor_Resolve": "0x67edd0"
+            "_ZN4SPTG6Pickup12HandleQueuedERNS_11QueuedEventE": "0x9a52e0",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30",
+            "Onyx_ProjectSettings": "0x1935070",
+            "Accessor_Tracking": "0x1935068",
+            "Event_Notify": "0xbf6e80",
+            "_ZGVZN4onyx8SettingsEvE8defaults": "0x1935078",
+            "_ZZN4onyx8SettingsEvE8defaults": "0x1935080",
+            "__cxa_guard_acquire": "0xfa4130",
+            "__cxa_guard_release": "0xfa4140",
+            "_Unwind_Resume": "0xfa4920"
           },
           "got_bindings": {},
           "literals": {
-            "bd378635": "0x1331fdc"
+            "554e4b4e4f574e20": "0x1331ae0",
+            "50524f4a45435420": "0x1331000",
+            "0c0000000c000000ffffff7fffffff7f": "0x1334730"
           }
         },
         {
-          "address": "0x941770",
-          "size": 32,
-          "symbol": "_ZN4SPTG15AnimatedAiActor10LoseHealthEf",
-          "target_sha256": "2cfc61fbac3fa01e9493149318639a8d2d6df2cf4054621ffd0293d7ecef28c3",
-          "bindings": {},
-          "got_bindings": {}
-        },
-        {
-          "address": "0x941790",
-          "size": 76,
-          "symbol": "_ZN4SPTG15AnimatedAiActor10GainHealthEf",
-          "target_sha256": "a6a05809263bf1d87eb67bf35957a6d0476f198a0ff3a07b3d29f36399d58280",
-          "bindings": {},
-          "got_bindings": {}
-        },
-        {
-          "address": "0x942bc0",
-          "size": 44,
-          "symbol": "_ZN4SPTG15AnimatedAiActor6Slot74EPKfbf",
-          "target_sha256": "31ce7b556840a8899c7a53c3dcaea4e31dce13fe82f5fe8f7d07ee71b57f12de",
-          "bindings": {},
-          "got_bindings": {}
-        },
-        {
-          "address": "0x9430d0",
-          "size": 564,
-          "symbol": "_ZN4SPTG15AnimatedAiActor6Slot76Ev",
-          "target_sha256": "7b39f98405392d65698ae0ac7b302e3cc2a04b7bbf7205a09abde1fa9e2c996f",
+          "address": "0x9a4270",
+          "size": 212,
+          "symbol": "_ZN4SPTG6Pickup9OnContactEPvPKNS_7ContactE",
+          "target_sha256": "a959b21d0608eb296f6dcbf3d33889e44a482b993a1a99a1434d6e942cadea46",
           "bindings": {
+            "_ZN4SPTG12StateMachineINS_6PickupEE10TransitionEMS1_FiiE": "0x9a5210"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x9a4380",
+          "size": 388,
+          "symbol": "_ZN4SPTG6Pickup13NotifySpawnerEb",
+          "target_sha256": "40085e624551570ad01b67f76770fd72ad2ed1aa6816cf7734128cd1fcbab78d",
+          "bindings": {
+            "_ZN4SPTG9SingletonINS_17LevelItemAccessorEE3GetEv": "0x7725e0",
             "Accessor_Resolver": "0x191cd10",
             "Accessor_Resolve": "0x67edd0",
-            "_ZN4SPTG11ActorObject6MoveToERKN4onyx7Vector3E": "0x85fd70",
-            "_ZN4SPTG20ShadowAnimatedObject15SetGroundHeightEif": "0x85fc20"
+            "_ZN4SPTG9SingletonINS_14UnspawnManagerEE3GetEv": "0x7766f0",
+            "_ZN4SPTG8NoHolderE": "0x191b6c0",
+            "_ZN4SPTG7Spawner6RemoveEj": "0x690410"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x9a4550",
+          "size": 184,
+          "symbol": "_ZN4SPTG6Pickup7State78Ei",
+          "target_sha256": "1cf02e1906ee8bf4226a5856e994ceca52ba6ffb601e7e7e4a8d8cace4237a88",
+          "bindings": {
+            "_ZN4SPTG12StateMachineINS_6PickupEE10TransitionEMS1_FiiE": "0x9a5210"
           },
           "got_bindings": {},
-          "literals": {
-            "bd378635": "0x1331fdc"
+          "immutable_sections": {
+            "18": "0x1390e3e"
           }
         },
         {
-          "address": "0x945380",
-          "size": 748,
-          "symbol": "_ZN4SPTG15AnimatedAiActor6UpdateEv",
-          "target_sha256": "e9a7cb92ac110e1e2bb3a11ea9dd41c0933a2cb17be998e4602f6a8b69d6b8f2",
+          "address": "0x9a4940",
+          "size": 400,
+          "symbol": "_ZN4SPTG6Pickup21CollectedStateHandlerEi",
+          "target_sha256": "9c8170fb6689858cb31a11d79892fe640ba6e536a65502619c96494048df2043",
           "bindings": {
+            "_ZN4SPTG6Pickup10TryCollectEv": "0x9a4c40",
+            "_ZN4SPTG12StateMachineINS_6PickupEE10TransitionEMS1_FiiE": "0x9a5210",
+            "_ZGVZN4onyx7Vector34ZeroEvE5value": "0x191f8b8",
+            "_ZZN4onyx7Vector34ZeroEvE5value": "0x191f8c0",
+            "__cxa_guard_acquire": "0xfa4130",
+            "__cxa_guard_release": "0xfa4140"
+          },
+          "got_bindings": {},
+          "immutable_sections": {
+            "24": "0x1390e46"
+          }
+        },
+        {
+          "address": "0x9a4ae0",
+          "size": 332,
+          "symbol": "_ZN4SPTG6Pickup7State84Ei",
+          "target_sha256": "1f04d530ca1a61eb4b4303ce0b39bf9c7f9a0f6019f044615136f105552ecbea",
+          "bindings": {
+            "_ZGVZN4onyx7Vector34ZeroEvE5value": "0x191f8b8",
+            "_ZZN4onyx7Vector34ZeroEvE5value": "0x191f8c0",
+            "__cxa_guard_acquire": "0xfa4130",
+            "__cxa_guard_release": "0xfa4140"
+          },
+          "got_bindings": {},
+          "immutable_sections": {
+            "27": "0x1390e4a"
+          }
+        },
+        {
+          "address": "0x9b8c70",
+          "size": 164,
+          "symbol": "_ZN4SPTG17MithrilSkateboard21CollectedStateHandlerEi",
+          "target_sha256": "cbab8febb77a8d64f78edbddff7dbe3c932df57d7f4297dc97a50be92dbf4f35",
+          "bindings": {},
+          "got_bindings": {},
+          "immutable_sections": {
+            "33": "0x1390e76"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gameplay_breakable",
+      "source": "src/gameplay/BreakableObject.cpp",
+      "compiler": "8.0.1",
+      "source_review": "manual_reconstruction",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-std=c++11",
+        "-O2",
+        "-mcpu=cortex-a57",
+        "-fstrict-aliasing",
+        "-fomit-frame-pointer",
+        "-fno-pic",
+        "-fno-delete-null-pointer-checks",
+        "-ffunction-sections",
+        "-fdata-sections"
+      ],
+      "header_roots": [
+        "src/gameplay"
+      ],
+      "functions": [
+        {
+          "address": "0xa11cc0",
+          "size": 296,
+          "symbol": "_ZN4SPTG15BreakableObject12DamagedStateEi",
+          "target_sha256": "e850b4b2561ee84d5314acae9670f053928ae5d7d83a9a4fe52395cdb444cd0b",
+          "bindings": {
+            "_ZN4SPTG12StateMachineINS_15BreakableObjectEE10TransitionEMS1_FiiE": "0xa121d0"
+          },
+          "got_bindings": {},
+          "immutable_sections": {
+            "5": "0x1391273"
+          }
+        },
+        {
+          "address": "0xa11e00",
+          "size": 616,
+          "symbol": "_ZN4SPTG15BreakableObject11BrokenStateEi",
+          "target_sha256": "b9377b639869eb757c07ba3c8ab029ed22bc33783ca53072d4a2d7173cbde716",
+          "bindings": {
+            "_ZN4SPTG12StateMachineINS_15BreakableObjectEE10TransitionEMS1_FiiE": "0xa121d0",
+            "Onyx_ProjectSettings": "0x1935070",
+            "Accessor_Tracking": "0x1935068",
+            "Event_Notify": "0xbf6e80",
+            "_ZGVZN4onyx8SettingsEvE8defaults": "0x1935078",
+            "_ZZN4onyx8SettingsEvE8defaults": "0x1935080",
+            "_ZN4SPTG15BreakableDebris7ReleaseEPv": "0x7b4890",
+            "__cxa_guard_acquire": "0xfa4130",
+            "__cxa_guard_release": "0xfa4140",
+            "_Unwind_Resume": "0xfa4920"
+          },
+          "got_bindings": {},
+          "immutable_sections": {
+            "10": "0x1391277"
+          },
+          "literals": {
+            "554e4b4e4f574e20": "0x1331ae0",
+            "50524f4a45435420": "0x1331000",
+            "0c0000000c000000ffffff7fffffff7f": "0x1334730"
+          }
+        },
+        {
+          "address": "0xa13750",
+          "size": 68,
+          "symbol": "_ZN4SPTG10GunTurrets6UpdateEv",
+          "target_sha256": "6f8c9907b683a6303168dc59f58b71bd05356cf41f72492d3aac01fa1d1736e7",
+          "bindings": {
+            "_ZN4SPTG15AnimatedAiActor6UpdateEv": "0x945380",
+            "_ZN4SPTG12StateMachineINS_15BreakableObjectEE10TransitionEMS1_FiiE": "0xa121d0"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xa137a0",
+          "size": 708,
+          "symbol": "_ZN4SPTG10GunTurrets5OnHitEPNS_13BaseCharacterEPv",
+          "target_sha256": "b0ae2a6337823ea773f1c9ec8eca92fa012da0bb04886bc22870f094b7fa20d2",
+          "bindings": {
+            "_ZN4SPTG15BreakableObject5OnHitEPNS_13BaseCharacterEPv": "0xa114d0",
+            "Onyx_ProjectSettings": "0x1935070",
+            "_ZGVZN4onyx8SettingsEvE8defaults": "0x1935078",
+            "_ZZN4onyx8SettingsEvE8defaults": "0x1935080",
+            "Accessor_Tracking": "0x1935068",
+            "Event_Notify": "0xbf6e80",
             "Accessor_Resolver": "0x191cd10",
             "Accessor_Resolve": "0x67edd0",
             "Transform_Invalidate": "0x68f3b0",
-            "Transform_AddChild": "0x68f0e0",
-            "_ZN4SPTG10ActorFlags9SetShadowEPNS_20ShadowAnimatedObjectEb": "0x811870"
+            "__cxa_guard_acquire": "0xfa4130",
+            "__cxa_guard_release": "0xfa4140",
+            "_Unwind_Resume": "0xfa4920"
+          },
+          "got_bindings": {},
+          "literals": {
+            "554e4b4e4f574e20": "0x1331ae0",
+            "50524f4a45435420": "0x1331000",
+            "0c0000000c000000ffffff7fffffff7f": "0x1334730"
+          }
+        },
+        {
+          "address": "0xa13a70",
+          "size": 384,
+          "symbol": "_ZN4SPTG10GunTurrets12DamagedStateEi",
+          "target_sha256": "90a243b88f76e4c739cbabd818bd98af8be8503b4864684502b99c8d61ddb9e2",
+          "bindings": {
+            "_ZN4SPTG12StateMachineINS_15BreakableObjectEE10TransitionEMS1_FiiE": "0xa121d0",
+            "_ZN4SPTG10GunTurrets13TargetInRangeEv": "0xa142f0",
+            "Move_FrameDelta": "0x1924d70"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xa14170",
+          "size": 180,
+          "symbol": "_ZN4SPTG10GunTurrets11AimingStateEi",
+          "target_sha256": "b7e25dfaafca833e38fc72c48b03b46b68a83179efe1c1fd9d142bb9df5e4306",
+          "bindings": {
+            "_ZN4SPTG12StateMachineINS_15BreakableObjectEE10TransitionEMS1_FiiE": "0xa121d0"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xa14230",
+          "size": 180,
+          "symbol": "_ZN4SPTG10GunTurrets12WaitingStateEi",
+          "target_sha256": "d9614dff3c6d07bf4f14e36a7cec67e73c0142fa2e1e95f1ffa39ef0b9495555",
+          "bindings": {
+            "_ZN4SPTG10GunTurrets13TargetInRangeEv": "0xa142f0",
+            "_ZN4SPTG12StateMachineINS_15BreakableObjectEE10TransitionEMS1_FiiE": "0xa121d0"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xa142f0",
+          "size": 540,
+          "symbol": "_ZN4SPTG10GunTurrets13TargetInRangeEv",
+          "target_sha256": "02035b8d014a20872fe9793c99b74b452f651d7800a27e9a957851b2f5080789",
+          "bindings": {
+            "Accessor_Resolver": "0x191cd10",
+            "Accessor_Resolve": "0x67edd0",
+            "_ZN4SPTG9SingletonINS_17LevelItemAccessorEE3GetEv": "0x7725e0"
           },
           "got_bindings": {}
         }
