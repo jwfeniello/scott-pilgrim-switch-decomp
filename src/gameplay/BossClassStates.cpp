@@ -873,82 +873,97 @@ int GigaGideon::State116(int event) {
     }
 }
 
-// Slot 244 (TagTeamMember 0xa25d50, Lynette 0xa630d0, Todd 0xa22500): the boss's
-// approach, as NegaScott's: entry sets the AI mode by target and plays
+// Slot 244 (TagTeamMember 0xa25d50, Lynette 0xa630d0, Todd 0xa22500): the
+// boss's approach, as NegaScott's: entry sets the AI mode by target and plays
 // animation 7; an update first checks the class's exits, then runs Boss's.
-// Not yet matched (not credited): no case order reproduces the original's
-// block layout.
 int TagTeamMember::State244(int event) {
+    int result = kStateHandled;
     switch (event) {
     case kStateUpdate:
         if (flagD5a) {
             if (!(timerD78 > 0.0f)) {
                 states.Transition(State264Ptr());
-                return kStateParentTookOver;
+                result = kStateParentTookOver;
+                break;
             }
         } else if (!flagD5b) {
             states.Transition(State262Ptr());
-            return kStateParentTookOver;
+            result = kStateParentTookOver;
+            break;
         }
-        {
-            int result = Boss::State244(kStateUpdate);
-            if (result != kStateParentTookOver) return kStateHandled;
-            return result;
+        if (Boss::State244(kStateUpdate) == kStateParentTookOver) {
+            states.AssertOwner(this);
+            result = kStateParentTookOver;
+        } else {
+            result = kStateHandled;
         }
+        break;
     case kStateEnter:
         aiMode = target && target->object ? 1 : 6;
         if (!Slot239(7)) PlayAnimation(7, 1, 0, 1.0f);
+        result = kStateHandled;
         value7ac = 0.0f;
         flag813 = 1;
         mode87c = 2;
-        return kStateHandled;
+        break;
+    case kStateEvent3:
+        break;
+    default:
+        result = kStateUnhandled;
+        break;
     case kStateExit:
         flag813 = 0;
         mode87c = 3;
-        return kStateHandled;
-    case kStateEvent3:
-        return kStateHandled;
-    default:
-        return kStateUnhandled;
+        break;
     }
+    return result;
 }
 int Lynette::State244(int event) {
+    int result = kStateHandled;
     switch (event) {
     case kStateUpdate:
         if (flagD80 || flagD84) {
             states.Transition(State276Ptr());
-            return kStateParentTookOver;
+            result = kStateParentTookOver;
+            break;
         }
         if (flagD5a) {
             if (!(timerD78 > 0.0f)) {
                 states.Transition(State264Ptr());
-                return kStateParentTookOver;
+                result = kStateParentTookOver;
+                break;
             }
         } else if (!flagD5b) {
             states.Transition(State262Ptr());
-            return kStateParentTookOver;
+            result = kStateParentTookOver;
+            break;
         }
-        {
-            int result = Boss::State244(kStateUpdate);
-            if (result != kStateParentTookOver) return kStateHandled;
-            return result;
+        if (Boss::State244(kStateUpdate) == kStateParentTookOver) {
+            states.AssertOwner(this);
+            result = kStateParentTookOver;
+        } else {
+            result = kStateHandled;
         }
+        break;
     case kStateEnter:
         aiMode = target && target->object ? 1 : 6;
         if (!Slot239(7)) PlayAnimation(7, 1, 0, 1.0f);
+        result = kStateHandled;
         value7ac = 0.0f;
         flag813 = 1;
         mode87c = 2;
-        return kStateHandled;
+        break;
+    case kStateEvent3:
+        break;
+    default:
+        result = kStateUnhandled;
+        break;
     case kStateExit:
         flag813 = 0;
         mode87c = 3;
-        return kStateHandled;
-    case kStateEvent3:
-        return kStateHandled;
-    default:
-        return kStateUnhandled;
+        break;
     }
+    return result;
 }
 
 // Patel slot 256 (0xa40400): animations 150, 151 and 152 in turn with +0x3ba
@@ -1522,47 +1537,58 @@ int KenKyle::State122(int event) {
 }
 
 // SuperGideon slot 244 (0xa539e0): NegaScott's approach with three exits. With
-// +0xd49 set, an update goes to slot 260 while +0x160 is at least slot 57 times
-// +0x1130, else to 262; +0xd4a leads to 264 and an out target to 186. Entry
-// first runs 0xa254a0; exit clears both flags.
-// Not yet matched (not credited).
+// +0xd49 set, an update goes to slot 260 while +0x160 is at least slot 57
+// times +0x1130, else to 262; +0xd4a leads to 264 and an out target to 186.
+// Entry first runs 0xa254a0; exit clears both flags.
 int SuperGideon::State244(int event) {
+    int result = kStateHandled;
     switch (event) {
     case kStateUpdate:
         if (flagD49) {
-            states.Transition(health < MaxHealth() * value1130 ? State262Ptr() : State260Ptr());
-            return kStateParentTookOver;
+            if (health < MaxHealth() * value1130) states.Transition(State262Ptr());
+            else states.Transition(State260Ptr());
+            result = kStateParentTookOver;
+            break;
         }
         if (flagD4a) {
             states.Transition(State264Ptr());
-            return kStateParentTookOver;
+            result = kStateParentTookOver;
+            break;
         }
         if (static_cast<BaseCharacter*>(target->object)->IsOut()) {
             states.Transition(State186Ptr());
-            return kStateParentTookOver;
+            result = kStateParentTookOver;
+            break;
         }
-        if (Boss::State244(kStateUpdate) == kStateParentTookOver) return kStateParentTookOver;
+        if (Boss::State244(kStateUpdate) == kStateParentTookOver) {
+            states.AssertOwner(this);
+            result = kStateParentTookOver;
+        } else {
+            result = kStateHandled;
+        }
         break;
     case kStateEnter:
         CallA254a0(0.0f);
         aiMode = target && target->object ? 1 : 6;
         if (!Slot239(7)) PlayAnimation(7, 1, 0, 1.0f);
+        result = kStateHandled;
         value7ac = 0.0f;
         flag813 = 1;
         mode87c = 2;
-        return kStateHandled;
+        break;
+    case kStateEvent3:
+        break;
+    default:
+        result = kStateUnhandled;
+        break;
     case kStateExit:
         flag813 = 0;
         mode87c = 3;
         flagD49 = 0;
         flagD4a = 0;
         break;
-    case kStateEvent3:
-        return kStateHandled;
-    default:
-        return kStateUnhandled;
     }
-    return kStateHandled;
+    return result;
 }
 
 // Patel slot 244 (0xa40110): NegaScott's approach; +0x1000 (a mode change)
@@ -1843,10 +1869,10 @@ int Lynette::State282(int event) {
     }
 }
 
-// SuperFightingRobotHand slot 108 (0xa299e0): stops; an update goes to slot 258
-// with animation 38 when the next state is 268 or 270, else to slot 106.
-// Not yet matched (not credited).
+// SuperFightingRobotHand slot 108 (0xa299e0): stops; an update goes to slot
+// 258 with animation 38 when the next state is 268 or 270, else to slot 106.
 int SuperFightingRobotHand::State108(int event) {
+    int result = kStateHandled;
     switch (event) {
     case kStateUpdate:
         if (states.next == State268Ptr() || states.next == State270Ptr()) {
@@ -1855,18 +1881,23 @@ int SuperFightingRobotHand::State108(int event) {
         } else {
             states.Transition(State106Ptr());
         }
-        return kStateParentTookOver;
+        result = kStateParentTookOver;
+        break;
     case kStateEnter:
         motion = onyx::Vector3::Zero();
         motionTarget = onyx::Vector3::Zero();
-        return kStateHandled;
+        // Falls through.
     case kStateExit:
-        return kStateHandled;
+        states.AssertOwner(this);
+        result = kStateHandled;
+        break;
     case kStateEvent3:
-        return kStateHandled;
+        break;
     default:
-        return kStateUnhandled;
+        result = kStateUnhandled;
+        break;
     }
+    return result;
 }
 
 // SuperFightingRobotHand slot 106 (0xa297d0): entry raises +0xfbb. An update
