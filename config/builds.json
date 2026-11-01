@@ -513377,20 +513377,6 @@
           "got_bindings": {}
         },
         {
-          "address": "0x6cf560",
-          "size": 124,
-          "symbol": "_ZN4Onyx8Graphics19RenderSurfaceNativeD0Ev",
-          "target_sha256": "ceec60be1497fd0792f5cf62b5a72df0e68f5f8b57b9938064aaeb94af36187c",
-          "bindings": {
-            "_ZTVN4Onyx8Graphics19RenderSurfaceNativeE": "0x1845328",
-            "DecodeAllocatorManager": "0x1926bd8",
-            "DecodeAllocatorIndex": "0xa82b30",
-            "_ZdlPv": "0xfa3b40",
-            "__clang_call_terminate": "0x6768b8"
-          },
-          "got_bindings": {}
-        },
-        {
           "address": "0x6cff30",
           "size": 228,
           "symbol": "_ZN2EE9GlyphDataD2Ev",
@@ -513415,19 +513401,6 @@
           "got_bindings": {}
         },
         {
-          "address": "0x6ec1a0",
-          "size": 100,
-          "symbol": "_ZN11Class6ec1a0D0Ev",
-          "target_sha256": "d5ddca8650ef52e6bd076d0fdf161de5a978aeee75df7857a79a7b3d0e31395e",
-          "bindings": {
-            "_ZTV11Class6ec1a0": "0x1845f68",
-            "_ZN10Base6ec1a0D2Ev": "0x792d0",
-            "_ZdlPv": "0x3efd0",
-            "__clang_call_terminate": "0x6768b8"
-          },
-          "got_bindings": {}
-        },
-        {
           "address": "0x6f5190",
           "size": 92,
           "symbol": "_ZN11Class6f5190D2Ev",
@@ -513435,19 +513408,6 @@
           "bindings": {
             "_ZTV11Class6f5190": "0x1846780",
             "_ZN10Base6f5190D2Ev": "0x792d0",
-            "__clang_call_terminate": "0x6768b8"
-          },
-          "got_bindings": {}
-        },
-        {
-          "address": "0x6f51f0",
-          "size": 100,
-          "symbol": "_ZN11Class6f51f0D0Ev",
-          "target_sha256": "07c754dd5ff09bc7252b3bfc4000db04966fbb8dc4b047799c5f9d390317426d",
-          "bindings": {
-            "_ZTV11Class6f51f0": "0x1846780",
-            "_ZN10Base6f51f0D2Ev": "0x792d0",
-            "_ZdlPv": "0x3efd0",
             "__clang_call_terminate": "0x6768b8"
           },
           "got_bindings": {}
@@ -513465,19 +513425,6 @@
           "got_bindings": {}
         },
         {
-          "address": "0x6f5ac0",
-          "size": 100,
-          "symbol": "_ZN11Class6f5ac0D0Ev",
-          "target_sha256": "0c652fa15673b6ca5948170d505396bc1e9e4a5acbf789a361773a85bc1909f0",
-          "bindings": {
-            "_ZTV11Class6f5ac0": "0x1846b28",
-            "_ZN10Base6f5ac0D2Ev": "0x792d0",
-            "_ZdlPv": "0x3efd0",
-            "__clang_call_terminate": "0x6768b8"
-          },
-          "got_bindings": {}
-        },
-        {
           "address": "0x6f5cd0",
           "size": 92,
           "symbol": "_ZN11Class6f5cd0D2Ev",
@@ -513485,19 +513432,6 @@
           "bindings": {
             "_ZTV11Class6f5cd0": "0x1846ae0",
             "_ZN10Base6f5cd0D2Ev": "0x792d0",
-            "__clang_call_terminate": "0x6768b8"
-          },
-          "got_bindings": {}
-        },
-        {
-          "address": "0x6f5d30",
-          "size": 100,
-          "symbol": "_ZN11Class6f5d30D0Ev",
-          "target_sha256": "54f7ca0683a800fad976094875b1c8a928b723911ce38879fb72d58ac885c096",
-          "bindings": {
-            "_ZTV11Class6f5d30": "0x1846ae0",
-            "_ZN10Base6f5d30D2Ev": "0x792d0",
-            "_ZdlPv": "0x3efd0",
             "__clang_call_terminate": "0x6768b8"
           },
           "got_bindings": {}
@@ -513515,19 +513449,6 @@
           "got_bindings": {}
         },
         {
-          "address": "0x7014e0",
-          "size": 100,
-          "symbol": "_ZN11Class7014e0D0Ev",
-          "target_sha256": "01943be2fa121f1aebace6117825b2a46e9a984a55413d4eee244311b1b85128",
-          "bindings": {
-            "_ZTV11Class7014e0": "0x1846e68",
-            "_ZN10Base7014e0D2Ev": "0x792d0",
-            "_ZdlPv": "0x3efd0",
-            "__clang_call_terminate": "0x6768b8"
-          },
-          "got_bindings": {}
-        },
-        {
           "address": "0x702340",
           "size": 92,
           "symbol": "_ZN11Class702340D2Ev",
@@ -513535,19 +513456,6 @@
           "bindings": {
             "_ZTV11Class702340": "0x1846ee0",
             "_ZN10Base702340D2Ev": "0x792d0",
-            "__clang_call_terminate": "0x6768b8"
-          },
-          "got_bindings": {}
-        },
-        {
-          "address": "0x7023a0",
-          "size": 100,
-          "symbol": "_ZN11Class7023a0D0Ev",
-          "target_sha256": "141f68a20f5f42c01f166a8796ec51da8792b0fc51b3a64f3aaee1ca80aff236",
-          "bindings": {
-            "_ZTV11Class7023a0": "0x1846ee0",
-            "_ZN10Base7023a0D2Ev": "0x792d0",
-            "_ZdlPv": "0x3efd0",
             "__clang_call_terminate": "0x6768b8"
           },
           "got_bindings": {}
@@ -513616,15 +513524,15 @@
         {
           "address": "0x732790",
           "size": 156,
-          "symbol": "_ZN11Class732790D0Ev",
+          "symbol": "_ZN11Class7326f0D0Ev",
           "target_sha256": "1e27730a74e11815909e55ed0e1af5adae29902aeed866f1c685f4d62431a85a",
           "bindings": {
-            "_ZTV11Class732790": "0x18497c8",
+            "_ZTV11Class7326f0": "0x18497c8",
             "AllocatorContext": "0x1935058",
             "FreeToCounterPool": "0xaaee30",
             "DecodeAllocatorManager": "0x1926bd8",
             "DecodeAllocatorIndex": "0xa82b30",
-            "_ZN16SharedObjectBodyILm120748289EED1Ev": "0x729bd0",
+            "_ZN16SharedObjectBodyILm120745729EED1Ev": "0x729bd0",
             "_ZdlPv": "0xfa3b40",
             "__clang_call_terminate": "0x6768b8"
           },
@@ -513639,10 +513547,28 @@
             "_ZTVN4Onyx4Fire5MovieE": "0x1849df8",
             "DecodeAllocatorManager": "0x1926bd8",
             "DecodeAllocatorIndex": "0xa82b30",
-            "_ZTV13Level738ca0_1": "0x1849d80",
-            "_ZN6MemberILm121162242EED1Ev": "0x739500",
-            "_ZN10Base738ca0D2Ev": "0x677400",
-            "_ZN13Level738ca0_1D2Ev": "0x7394d0",
+            "_ZTV13Level738d30_1": "0x1849d80",
+            "_ZN6MemberILm121164546EED1Ev": "0x739500",
+            "_ZN10Base738d30D2Ev": "0x677400",
+            "_ZN13Level738d30_1D2Ev": "0x7394d0",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x738d30",
+          "size": 144,
+          "symbol": "_ZN4Onyx4Fire5MovieD0Ev",
+          "target_sha256": "0f8457d48560f01766e4f09a2fb2b4d1a0a80a0ee18d0ed609a89885ba96866d",
+          "bindings": {
+            "_ZTVN4Onyx4Fire5MovieE": "0x1849df8",
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
+            "_ZTV13Level738d30_1": "0x1849d80",
+            "_ZN6MemberILm121164546EED1Ev": "0x739500",
+            "_ZN10Base738d30D2Ev": "0x677400",
+            "_ZdlPv": "0xfa3b40",
+            "_ZN13Level738d30_1D2Ev": "0x7394d0",
             "__clang_call_terminate": "0x6768b8"
           },
           "got_bindings": {}
@@ -513755,6 +513681,20 @@
           "got_bindings": {}
         },
         {
+          "address": "0x7d8a50",
+          "size": 212,
+          "symbol": "_ZN11Class7d8a50D0Ev",
+          "target_sha256": "fc34e8809ac739744b8e3b370fd25ff810cc0977038024d975e702668efb5538",
+          "bindings": {
+            "_ZTV11Class7d8a50": "0x18511c8",
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
+            "_ZdlPv": "0xfa3b40",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
           "address": "0x7f5650",
           "size": 92,
           "symbol": "_ZN11Class7f5650D2Ev",
@@ -513762,19 +513702,6 @@
           "bindings": {
             "_ZTV11Class7f5650": "0x1852308",
             "_ZN10Base7f5650D2Ev": "0x792d0",
-            "__clang_call_terminate": "0x6768b8"
-          },
-          "got_bindings": {}
-        },
-        {
-          "address": "0x7f56b0",
-          "size": 100,
-          "symbol": "_ZN11Class7f56b0D0Ev",
-          "target_sha256": "20b6fcdb3d4fa2c395c0eb6efc1eacbca362129859ac0aa75a078cbff85d5e92",
-          "bindings": {
-            "_ZTV11Class7f56b0": "0x1852308",
-            "_ZN10Base7f56b0D2Ev": "0x792d0",
-            "_ZdlPv": "0x3efd0",
             "__clang_call_terminate": "0x6768b8"
           },
           "got_bindings": {}
@@ -513792,19 +513719,6 @@
           "got_bindings": {}
         },
         {
-          "address": "0x7f57c0",
-          "size": 100,
-          "symbol": "_ZN11Class7f57c0D0Ev",
-          "target_sha256": "914f863d1f041281b581172602a87b51975c8d2b66265a38b319572221a04148",
-          "bindings": {
-            "_ZTV11Class7f57c0": "0x18522c0",
-            "_ZN10Base7f57c0D2Ev": "0x792d0",
-            "_ZdlPv": "0x3efd0",
-            "__clang_call_terminate": "0x6768b8"
-          },
-          "got_bindings": {}
-        },
-        {
           "address": "0x7f5a60",
           "size": 92,
           "symbol": "_ZN11Class7f5a60D2Ev",
@@ -513812,19 +513726,6 @@
           "bindings": {
             "_ZTV11Class7f5a60": "0x18523b0",
             "_ZN10Base7f5a60D2Ev": "0x792d0",
-            "__clang_call_terminate": "0x6768b8"
-          },
-          "got_bindings": {}
-        },
-        {
-          "address": "0x7f5ac0",
-          "size": 100,
-          "symbol": "_ZN11Class7f5ac0D0Ev",
-          "target_sha256": "e2fb9407b47d24ecac258f185d22759efa221301d7bbce1ffb7d71599452bf74",
-          "bindings": {
-            "_ZTV11Class7f5ac0": "0x18523b0",
-            "_ZN10Base7f5ac0D2Ev": "0x792d0",
-            "_ZdlPv": "0x3efd0",
             "__clang_call_terminate": "0x6768b8"
           },
           "got_bindings": {}
@@ -514086,7 +513987,22 @@
             "_ZTVN4SPTG16BoundaryGraphicsE": "0x1860a70",
             "DecodeAllocatorManager": "0x1926bd8",
             "DecodeAllocatorIndex": "0xa82b30",
-            "_ZN10Base890b90D2Ev": "0x88f910",
+            "_ZN10Base890c30D2Ev": "0x88f910",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x890c30",
+          "size": 168,
+          "symbol": "_ZN4SPTG16BoundaryGraphicsD0Ev",
+          "target_sha256": "ba7356a01e4ee282e555d17a290cd1ed2bb6fea7e523d43ba79fdcf8a8cd8d05",
+          "bindings": {
+            "_ZTVN4SPTG16BoundaryGraphicsE": "0x1860a70",
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
+            "_ZN10Base890c30D2Ev": "0x88f910",
+            "_ZdlPv": "0xfa3b40",
             "__clang_call_terminate": "0x6768b8"
           },
           "got_bindings": {}
@@ -514103,34 +514019,6 @@
             "_ZTV13Level893db0_1": "0x18611d0",
             "_ZN6MemberILm143907588EED1Ev": "0x893a60",
             "_ZN10Base893db0D2Ev": "0x677400",
-            "__clang_call_terminate": "0x6768b8"
-          },
-          "got_bindings": {}
-        },
-        {
-          "address": "0x8b9c90",
-          "size": 124,
-          "symbol": "_ZN11Class8b9c90D0Ev",
-          "target_sha256": "4a7f8fd83dcfb10402efdcabdca26554f78a7ca8eeb50b66b6740786d3c7fb2e",
-          "bindings": {
-            "_ZTV11Class8b9c90": "0x1863d28",
-            "DecodeAllocatorManager": "0x1926bd8",
-            "DecodeAllocatorIndex": "0xa82b30",
-            "_ZdlPv": "0xfa3b40",
-            "__clang_call_terminate": "0x6768b8"
-          },
-          "got_bindings": {}
-        },
-        {
-          "address": "0x8b9e90",
-          "size": 124,
-          "symbol": "_ZN11Class8b9e90D0Ev",
-          "target_sha256": "17d6ffdf845dd47d839de1c1d0b818a76950a38171f20dd9e684f15b9116c236",
-          "bindings": {
-            "_ZTV11Class8b9e90": "0x1863d70",
-            "DecodeAllocatorManager": "0x1926bd8",
-            "DecodeAllocatorIndex": "0xa82b30",
-            "_ZdlPv": "0xfa3b40",
             "__clang_call_terminate": "0x6768b8"
           },
           "got_bindings": {}
@@ -514163,20 +514051,6 @@
             "DecodeAllocatorManager": "0x1926bd8",
             "DecodeAllocatorIndex": "0xa82b30",
             "_ZN10Base8be540D2Ev": "0x88fb50",
-            "__clang_call_terminate": "0x6768b8"
-          },
-          "got_bindings": {}
-        },
-        {
-          "address": "0x8cc810",
-          "size": 124,
-          "symbol": "_ZN11Class8cc810D0Ev",
-          "target_sha256": "64dd1563ca7558012561471a211f900f7ff79102cf932851f392cfffafc6c7aa",
-          "bindings": {
-            "_ZTV11Class8cc810": "0x1866100",
-            "DecodeAllocatorManager": "0x1926bd8",
-            "DecodeAllocatorIndex": "0xa82b30",
-            "_ZdlPv": "0xfa3b40",
             "__clang_call_terminate": "0x6768b8"
           },
           "got_bindings": {}
@@ -514355,6 +514229,20 @@
           "got_bindings": {}
         },
         {
+          "address": "0x9075e0",
+          "size": 168,
+          "symbol": "_ZN4SPTG18PadControlModifierD2Ev",
+          "target_sha256": "dc64b610e174aad63884037c19b6c1ccd97034974d5704cf7013f2f38eb6f578",
+          "bindings": {
+            "_ZTVN4SPTG18PadControlModifierE": "0x186aca8",
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
+            "_ZN10Base9075e0D2Ev": "0x8f32d0",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
           "address": "0x9237e0",
           "size": 160,
           "symbol": "_ZN4SPTG21BattleRoyalModeActionD2Ev",
@@ -514363,7 +514251,22 @@
             "_ZTVN4SPTG21BattleRoyalModeActionE": "0x186ced8",
             "DecodeAllocatorManager": "0x1926bd8",
             "DecodeAllocatorIndex": "0xa82b30",
-            "_ZN10Base9237e0D2Ev": "0x9234a0",
+            "_ZN10Base923880D2Ev": "0x9234a0",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x923880",
+          "size": 168,
+          "symbol": "_ZN4SPTG21BattleRoyalModeActionD0Ev",
+          "target_sha256": "0f48d5cb82ed4a130026a1fdb3b26bb962d1f57211ed8f2e6ba029f49451929a",
+          "bindings": {
+            "_ZTVN4SPTG21BattleRoyalModeActionE": "0x186ced8",
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
+            "_ZN10Base923880D2Ev": "0x9234a0",
+            "_ZdlPv": "0xfa3b40",
             "__clang_call_terminate": "0x6768b8"
           },
           "got_bindings": {}
@@ -514377,7 +514280,22 @@
             "_ZTVN4SPTG15ArenaModeActionE": "0x186cfa0",
             "DecodeAllocatorManager": "0x1926bd8",
             "DecodeAllocatorIndex": "0xa82b30",
-            "_ZN10Base924670D2Ev": "0x8f32d0",
+            "_ZN10Base924710D2Ev": "0x8f32d0",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x924710",
+          "size": 168,
+          "symbol": "_ZN4SPTG15ArenaModeActionD0Ev",
+          "target_sha256": "14264cd637d22ad03780ea139825476c007bdcbfeb47f318d8962c62b1d9df21",
+          "bindings": {
+            "_ZTVN4SPTG15ArenaModeActionE": "0x186cfa0",
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
+            "_ZN10Base924710D2Ev": "0x8f32d0",
+            "_ZdlPv": "0xfa3b40",
             "__clang_call_terminate": "0x6768b8"
           },
           "got_bindings": {}
@@ -514391,7 +514309,22 @@
             "_ZTVN4SPTG13VolumeMonitorE": "0x186e4c8",
             "DecodeAllocatorManager": "0x1926bd8",
             "DecodeAllocatorIndex": "0xa82b30",
-            "_ZN10Base931c30D2Ev": "0x931a60",
+            "_ZN10Base931cd0D2Ev": "0x931a60",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x931cd0",
+          "size": 168,
+          "symbol": "_ZN4SPTG13VolumeMonitorD0Ev",
+          "target_sha256": "04755bd4379419c06dad0433193af7fe57d7139f3d07baeaaedce1d08010df24",
+          "bindings": {
+            "_ZTVN4SPTG13VolumeMonitorE": "0x186e4c8",
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
+            "_ZN10Base931cd0D2Ev": "0x931a60",
+            "_ZdlPv": "0xfa3b40",
             "__clang_call_terminate": "0x6768b8"
           },
           "got_bindings": {}
@@ -514440,11 +514373,11 @@
         {
           "address": "0x937bf0",
           "size": 128,
-          "symbol": "_ZN11Class937bf0D0Ev",
+          "symbol": "_ZN11Class937b70D0Ev",
           "target_sha256": "8767a1ef5d001f9115ac74272760c586c74d8913fa39f25e5355ed83f29de100",
           "bindings": {
-            "_ZTV11Class937bf0": "0x186eff8",
-            "_ZTV15Nested154648321": "0x186ef78",
+            "_ZTV11Class937b70": "0x186eff8",
+            "_ZTV15Nested154646273": "0x186ef78",
             "DecodeAllocatorManager": "0x1926bd8",
             "DecodeAllocatorIndex": "0xa82b30",
             "_ZdlPv": "0xfa3b40",
@@ -514461,10 +514394,28 @@
             "_ZTVN4SPTG11AudioActionE": "0x186f040",
             "DecodeAllocatorManager": "0x1926bd8",
             "DecodeAllocatorIndex": "0xa82b30",
-            "_ZTV13Level937d20_1": "0x186f100",
-            "_ZN6MemberILm154653186EED1Ev": "0x9367f0",
-            "_ZN10Base937d20D2Ev": "0xbc9d30",
-            "_ZN13Level937d20_1D2Ev": "0x937fc0",
+            "_ZTV13Level937dc0_1": "0x186f100",
+            "_ZN6MemberILm154655746EED1Ev": "0x9367f0",
+            "_ZN10Base937dc0D2Ev": "0xbc9d30",
+            "_ZN13Level937dc0_1D2Ev": "0x937fc0",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x937dc0",
+          "size": 160,
+          "symbol": "_ZN4SPTG11AudioActionD0Ev",
+          "target_sha256": "372b664be60abc3e895a473119079d2e68c8b754661090cb007e2487e7a22dcb",
+          "bindings": {
+            "_ZTVN4SPTG11AudioActionE": "0x186f040",
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
+            "_ZTV13Level937dc0_1": "0x186f100",
+            "_ZN6MemberILm154655746EED1Ev": "0x9367f0",
+            "_ZN10Base937dc0D2Ev": "0xbc9d30",
+            "_ZdlPv": "0xfa3b40",
+            "_ZN13Level937dc0_1D2Ev": "0x937fc0",
             "__clang_call_terminate": "0x6768b8"
           },
           "got_bindings": {}
@@ -514478,8 +514429,40 @@
             "_ZTVN4SPTG14StrikerCatalogE": "0x1870e48",
             "DecodeAllocatorManager": "0x1926bd8",
             "DecodeAllocatorIndex": "0xa82b30",
-            "_ZTV13Level94aa40_1": "0x1870ed0",
-            "_ZN10Base94aa40D2Ev": "0x6c8ae0",
+            "_ZTV13Level94ab00_1": "0x1870ed0",
+            "_ZN10Base94ab00D2Ev": "0x6c8ae0",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x94ab00",
+          "size": 188,
+          "symbol": "_ZN4SPTG14StrikerCatalogD0Ev",
+          "target_sha256": "46dfc40d14b04103e46579a3b80d6480c48d5a32c6ada57d3b0ada47f74734ad",
+          "bindings": {
+            "_ZTVN4SPTG14StrikerCatalogE": "0x1870e48",
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
+            "_ZTV13Level94ab00_1": "0x1870ed0",
+            "_ZN10Base94ab00D2Ev": "0x6c8ae0",
+            "_ZdlPv": "0xfa3b40",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x94b5e0",
+          "size": 188,
+          "symbol": "_ZN11Class94b5e0D0Ev",
+          "target_sha256": "748abf73e302b03412086e8ccfa26b069547e3b2fbbb4e0b4714eb31a5c95d12",
+          "bindings": {
+            "_ZTV11Class94b5e0": "0x1870e48",
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
+            "_ZTV13Level94b5e0_1": "0x1870ed0",
+            "_ZN10Base94b5e0D2Ev": "0x6c8ae0",
+            "_ZdlPv": "0xfa3b40",
             "__clang_call_terminate": "0x6768b8"
           },
           "got_bindings": {}
@@ -514493,8 +514476,40 @@
             "_ZTVN4SPTG24ProjectileSpawnerCatalogE": "0x1872ae8",
             "DecodeAllocatorManager": "0x1926bd8",
             "DecodeAllocatorIndex": "0xa82b30",
-            "_ZTV13Level953900_1": "0x1872b70",
-            "_ZN10Base953900D2Ev": "0x6c8ae0",
+            "_ZTV13Level9539c0_1": "0x1872b70",
+            "_ZN10Base9539c0D2Ev": "0x6c8ae0",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x9539c0",
+          "size": 188,
+          "symbol": "_ZN4SPTG24ProjectileSpawnerCatalogD0Ev",
+          "target_sha256": "df09397d319200fab1d1929fcfe3db373847035fed295814541f65e9964ec9d0",
+          "bindings": {
+            "_ZTVN4SPTG24ProjectileSpawnerCatalogE": "0x1872ae8",
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
+            "_ZTV13Level9539c0_1": "0x1872b70",
+            "_ZN10Base9539c0D2Ev": "0x6c8ae0",
+            "_ZdlPv": "0xfa3b40",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x9544b0",
+          "size": 188,
+          "symbol": "_ZN11Class9544b0D0Ev",
+          "target_sha256": "37cb81e805fa59a9d0c3e7db951212260852b64a90857ef2c3dfbead607c6df0",
+          "bindings": {
+            "_ZTV11Class9544b0": "0x1872ae8",
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
+            "_ZTV13Level9544b0_1": "0x1872b70",
+            "_ZN10Base9544b0D2Ev": "0x6c8ae0",
+            "_ZdlPv": "0xfa3b40",
             "__clang_call_terminate": "0x6768b8"
           },
           "got_bindings": {}
@@ -514541,8 +514556,40 @@
             "_ZTVN4SPTG20PickupSpawnerCatalogE": "0x1878a68",
             "DecodeAllocatorManager": "0x1926bd8",
             "DecodeAllocatorIndex": "0xa82b30",
-            "_ZTV13Level99fec0_1": "0x1878af0",
-            "_ZN10Base99fec0D2Ev": "0x6c8ae0",
+            "_ZTV13Level99ff80_1": "0x1878af0",
+            "_ZN10Base99ff80D2Ev": "0x6c8ae0",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x99ff80",
+          "size": 188,
+          "symbol": "_ZN4SPTG20PickupSpawnerCatalogD0Ev",
+          "target_sha256": "ffef175021f8b72753ab3285e73046ba2a7fe1502d52f8d83b6cf60f0fdb0aba",
+          "bindings": {
+            "_ZTVN4SPTG20PickupSpawnerCatalogE": "0x1878a68",
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
+            "_ZTV13Level99ff80_1": "0x1878af0",
+            "_ZN10Base99ff80D2Ev": "0x6c8ae0",
+            "_ZdlPv": "0xfa3b40",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x9a0a70",
+          "size": 188,
+          "symbol": "_ZN11Class9a0a70D0Ev",
+          "target_sha256": "25abdce2a4d9d491fe2b501aea60a904b03d71d8c12fa974204dda037c0b3414",
+          "bindings": {
+            "_ZTV11Class9a0a70": "0x1878a68",
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
+            "_ZTV13Level9a0a70_1": "0x1878af0",
+            "_ZN10Base9a0a70D2Ev": "0x6c8ae0",
+            "_ZdlPv": "0xfa3b40",
             "__clang_call_terminate": "0x6768b8"
           },
           "got_bindings": {}
@@ -514565,10 +514612,10 @@
         {
           "address": "0x9ab540",
           "size": 164,
-          "symbol": "_ZN11Class9ab540D0Ev",
+          "symbol": "_ZN11Class9ab4a0D0Ev",
           "target_sha256": "857a43d70207ea68cb1f7504085907f90f317b6357f0dc8d69db938b2c9cc12c",
           "bindings": {
-            "_ZTV11Class9ab540": "0x18796c8",
+            "_ZTV11Class9ab4a0": "0x18796c8",
             "AllocatorContext": "0x1935058",
             "FreeToCounterPool": "0xaaee30",
             "DecodeAllocatorManager": "0x1926bd8",
@@ -514596,10 +514643,10 @@
         {
           "address": "0x9acf60",
           "size": 164,
-          "symbol": "_ZN11Class9acf60D0Ev",
+          "symbol": "_ZN11Class9acec0D0Ev",
           "target_sha256": "8a6f757cd2e12b5936fb690c97afc18a75f4cdb101e4ee4d11f68b2b15633e3b",
           "bindings": {
-            "_ZTV11Class9acf60": "0x1879808",
+            "_ZTV11Class9acec0": "0x1879808",
             "AllocatorContext": "0x1935058",
             "FreeToCounterPool": "0xaaee30",
             "DecodeAllocatorManager": "0x1926bd8",
@@ -514618,8 +514665,40 @@
             "_ZTVN4SPTG31InteractiveObjectSpawnerCatalogE": "0x187ae00",
             "DecodeAllocatorManager": "0x1926bd8",
             "DecodeAllocatorIndex": "0xa82b30",
-            "_ZTV13Level9bd2c0_1": "0x187ae88",
-            "_ZN10Base9bd2c0D2Ev": "0x6c8ae0",
+            "_ZTV13Level9bd380_1": "0x187ae88",
+            "_ZN10Base9bd380D2Ev": "0x6c8ae0",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x9bd380",
+          "size": 188,
+          "symbol": "_ZN4SPTG31InteractiveObjectSpawnerCatalogD0Ev",
+          "target_sha256": "c4e4a14ab4288eb7b362a41a088971cae04a7fb8c0c95ed3ffd96e6176768458",
+          "bindings": {
+            "_ZTVN4SPTG31InteractiveObjectSpawnerCatalogE": "0x187ae00",
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
+            "_ZTV13Level9bd380_1": "0x187ae88",
+            "_ZN10Base9bd380D2Ev": "0x6c8ae0",
+            "_ZdlPv": "0xfa3b40",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x9bde70",
+          "size": 188,
+          "symbol": "_ZN11Class9bde70D0Ev",
+          "target_sha256": "d3714355ca60dccb93e36d11d7aff46ceefdcb1567098a60f4aed7c91bed8f58",
+          "bindings": {
+            "_ZTV11Class9bde70": "0x187ae00",
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
+            "_ZTV13Level9bde70_1": "0x187ae88",
+            "_ZN10Base9bde70D2Ev": "0x6c8ae0",
+            "_ZdlPv": "0xfa3b40",
             "__clang_call_terminate": "0x6768b8"
           },
           "got_bindings": {}
@@ -514652,6 +514731,23 @@
             "_ZTV13Level9c4ff0_1": "0x187bbc0",
             "_ZN6MemberILm163905282EED1Ev": "0x9c5aa0",
             "_ZN10Base9c4ff0D2Ev": "0x6c8ae0",
+            "_ZdlPv": "0xfa3b40",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x9c5d90",
+          "size": 136,
+          "symbol": "_ZN11Class9c5d90D0Ev",
+          "target_sha256": "8afc53971dd870dd67149797efc1dcdcc1a797db645eb4f3f14e8305fbfbac45",
+          "bindings": {
+            "_ZTV11Class9c5d90": "0x187bb38",
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
+            "_ZTV13Level9c5d90_1": "0x187bbc0",
+            "_ZN6MemberILm163961090EED1Ev": "0x9c5aa0",
+            "_ZN10Base9c5d90D2Ev": "0x6c8ae0",
             "_ZdlPv": "0xfa3b40",
             "__clang_call_terminate": "0x6768b8"
           },
@@ -514695,8 +514791,40 @@
             "_ZTVN4SPTG19EnemySpawnerCatalogE": "0x187bf60",
             "DecodeAllocatorManager": "0x1926bd8",
             "DecodeAllocatorIndex": "0xa82b30",
-            "_ZTV13Level9c6880_1": "0x187bfe8",
-            "_ZN10Base9c6880D2Ev": "0x6c8ae0",
+            "_ZTV13Level9c6940_1": "0x187bfe8",
+            "_ZN10Base9c6940D2Ev": "0x6c8ae0",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x9c6940",
+          "size": 188,
+          "symbol": "_ZN4SPTG19EnemySpawnerCatalogD0Ev",
+          "target_sha256": "2c944063335635459451e56699c41fc36634f08c02c0e0c807a0e89068954537",
+          "bindings": {
+            "_ZTVN4SPTG19EnemySpawnerCatalogE": "0x187bf60",
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
+            "_ZTV13Level9c6940_1": "0x187bfe8",
+            "_ZN10Base9c6940D2Ev": "0x6c8ae0",
+            "_ZdlPv": "0xfa3b40",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x9c7430",
+          "size": 188,
+          "symbol": "_ZN11Class9c7430D0Ev",
+          "target_sha256": "19d39140d5df78b25768170de95902d85e840d5a4706ea430070b7313c5f0ed6",
+          "bindings": {
+            "_ZTV11Class9c7430": "0x187bf60",
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
+            "_ZTV13Level9c7430_1": "0x187bfe8",
+            "_ZN10Base9c7430D2Ev": "0x6c8ae0",
+            "_ZdlPv": "0xfa3b40",
             "__clang_call_terminate": "0x6768b8"
           },
           "got_bindings": {}
@@ -514748,6 +514876,22 @@
           "got_bindings": {}
         },
         {
+          "address": "0xa0a900",
+          "size": 188,
+          "symbol": "_ZN11Classa0a900D0Ev",
+          "target_sha256": "2b341420ca7080a3a1787a1c15e94b4ecb51def5c63811be613dc87300510d8b",
+          "bindings": {
+            "_ZTV11Classa0a900": "0x1889478",
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
+            "_ZTV13Levela0a900_1": "0x1889500",
+            "_ZN10Basea0a900D2Ev": "0xa09890",
+            "_ZdlPv": "0xfa3b40",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
           "address": "0xa0ab40",
           "size": 204,
           "symbol": "_ZN4SPTG26ControllableSpawnerCatalogD2Ev",
@@ -514760,20 +514904,6 @@
             "DecodeAllocatorIndex": "0xa82b30",
             "_ZTV13Levela0ab40_2": "0x1889500",
             "_ZN10Basea0ab40D2Ev": "0xa09890",
-            "__clang_call_terminate": "0x6768b8"
-          },
-          "got_bindings": {}
-        },
-        {
-          "address": "0xadf9a0",
-          "size": 124,
-          "symbol": "_ZN11Classadf9a0D0Ev",
-          "target_sha256": "4c90e12648ab1d705a976bf8769e50f5d8b9bfebd3f0b62d35cf46e91d12e8b5",
-          "bindings": {
-            "_ZTV11Classadf9a0": "0x18a16f0",
-            "DecodeAllocatorManager": "0x1926bd8",
-            "DecodeAllocatorIndex": "0xa82b30",
-            "_ZdlPv": "0xfa3b40",
             "__clang_call_terminate": "0x6768b8"
           },
           "got_bindings": {}
@@ -515147,6 +515277,20 @@
           "got_bindings": {}
         },
         {
+          "address": "0xb1a450",
+          "size": 304,
+          "symbol": "_ZN4Onyx8Graphics8Particle7Emitter13EmitterSimpleD2Ev",
+          "target_sha256": "9430c7e237d54df04e4e6406ae333db8bc54ae6dd161a6e1ff19dbe16fd8bcc6",
+          "bindings": {
+            "_ZTVN4Onyx8Graphics8Particle7Emitter13EmitterSimpleE": "0x18a5160",
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
+            "_ZN10Baseb1a450D2Ev": "0xb19f30",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
           "address": "0xb3c1d0",
           "size": 180,
           "symbol": "_ZN4Onyx8Graphics17MorphInstanceBaseD2Ev",
@@ -515204,11 +515348,30 @@
             "_ZTVN4Onyx8Graphics12SkinnedMorphE": "0x18a83b0",
             "DecodeAllocatorManager": "0x1926bd8",
             "DecodeAllocatorIndex": "0xa82b30",
-            "_ZTV13Levelb40fd0_1": "0x18a8338",
-            "_ZN6MemberILm188808450EED1Ev": "0xb40de0",
-            "_ZTV13Levelb40fd0_2": "0x18a82c0",
-            "_ZN6MemberILm188808451EED1Ev": "0xb40bf0",
-            "_ZN10Baseb40fd0D2Ev": "0x677400",
+            "_ZTV13Levelb41060_1": "0x18a8338",
+            "_ZN6MemberILm188810754EED1Ev": "0xb40de0",
+            "_ZTV13Levelb41060_2": "0x18a82c0",
+            "_ZN6MemberILm188810755EED1Ev": "0xb40bf0",
+            "_ZN10Baseb41060D2Ev": "0x677400",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xb41060",
+          "size": 148,
+          "symbol": "_ZN4Onyx8Graphics12SkinnedMorphD0Ev",
+          "target_sha256": "93565c2b6dc27d2d9e8513b8cff0074032de4463e2300d58b520a30b169f4d82",
+          "bindings": {
+            "_ZTVN4Onyx8Graphics12SkinnedMorphE": "0x18a83b0",
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
+            "_ZTV13Levelb41060_1": "0x18a8338",
+            "_ZN6MemberILm188810754EED1Ev": "0xb40de0",
+            "_ZTV13Levelb41060_2": "0x18a82c0",
+            "_ZN6MemberILm188810755EED1Ev": "0xb40bf0",
+            "_ZN10Baseb41060D2Ev": "0x677400",
+            "_ZdlPv": "0xfa3b40",
             "__clang_call_terminate": "0x6768b8"
           },
           "got_bindings": {}
@@ -515222,7 +515385,37 @@
             "_ZTVN4Onyx8Graphics11MorphTargetE": "0x18a85a8",
             "DecodeAllocatorManager": "0x1926bd8",
             "DecodeAllocatorIndex": "0xa82b30",
-            "_ZN10Baseb42780D2Ev": "0x677400",
+            "_ZN10Baseb42830D2Ev": "0x677400",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xb42830",
+          "size": 184,
+          "symbol": "_ZN4Onyx8Graphics11MorphTargetD0Ev",
+          "target_sha256": "d8712f4104d589033a83f89908e12c89fb13d7827d5a2f09a094aa94da6cdebf",
+          "bindings": {
+            "_ZTVN4Onyx8Graphics11MorphTargetE": "0x18a85a8",
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
+            "_ZN10Baseb42830D2Ev": "0x677400",
+            "_ZdlPv": "0xfa3b40",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xb42bb0",
+          "size": 184,
+          "symbol": "_ZN4Onyx8Graphics17MorphTargetNativeD0Ev",
+          "target_sha256": "08adb13d8cb723af14072a331ab714b99f0ac4412e87cafdd763ca6424cef50d",
+          "bindings": {
+            "_ZTVN4Onyx8Graphics17MorphTargetNativeE": "0x18a85a8",
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
+            "_ZN10Baseb42bb0D2Ev": "0x677400",
+            "_ZdlPv": "0xfa3b40",
             "__clang_call_terminate": "0x6768b8"
           },
           "got_bindings": {}
@@ -515575,10 +515768,10 @@
         {
           "address": "0xba5f40",
           "size": 144,
-          "symbol": "_ZN11Classba5f40D0Ev",
+          "symbol": "_ZN11Classba5eb0D0Ev",
           "target_sha256": "e9e88deee0a484cfd4520526c1d3fafddb76b059b1fe99c0a29dbed3ec3dfcc2",
           "bindings": {
-            "_ZTV11Classba5f40": "0x18b1348",
+            "_ZTV11Classba5eb0": "0x18b1348",
             "AllocatorContext": "0x1935058",
             "FreeToCounterPool": "0xaaee30",
             "DecodeAllocatorManager": "0x1926bd8",
@@ -515606,10 +515799,10 @@
         {
           "address": "0xba6690",
           "size": 144,
-          "symbol": "_ZN11Classba6690D0Ev",
+          "symbol": "_ZN11Classba6600D0Ev",
           "target_sha256": "714ea771b9bd7ef184bd845dd164d93fcd1485c70c6ce31f1b752010d887bc40",
           "bindings": {
-            "_ZTV11Classba6690": "0x18b1400",
+            "_ZTV11Classba6600": "0x18b1400",
             "AllocatorContext": "0x1935058",
             "FreeToCounterPool": "0xaaee30",
             "DecodeAllocatorManager": "0x1926bd8",
@@ -515645,8 +515838,24 @@
             "_ZTVN4Onyx8Behavior12StateMachineE": "0x18b16c0",
             "DecodeAllocatorManager": "0x1926bd8",
             "DecodeAllocatorIndex": "0xa82b30",
-            "_ZN18PlainPointerMemberILm195579394EE6DeleteEPv": "0xba82b0",
-            "_ZN10Baseba84e0D2Ev": "0xba8320",
+            "_ZN18PlainPointerMemberILm195581186EE6DeleteEPv": "0xba82b0",
+            "_ZN10Baseba8550D2Ev": "0xba8320",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xba8550",
+          "size": 120,
+          "symbol": "_ZN4Onyx8Behavior12StateMachineD0Ev",
+          "target_sha256": "03b7889127cf3027adcaaf6373f94c550a974dc0763206924b9d9b2c50206f01",
+          "bindings": {
+            "_ZTVN4Onyx8Behavior12StateMachineE": "0x18b16c0",
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
+            "_ZN18PlainPointerMemberILm195581186EE6DeleteEPv": "0xba82b0",
+            "_ZN10Baseba8550D2Ev": "0xba8320",
+            "_ZdlPv": "0xfa3b40",
             "__clang_call_terminate": "0x6768b8"
           },
           "got_bindings": {}
@@ -515669,10 +515878,10 @@
         {
           "address": "0xbad5c0",
           "size": 144,
-          "symbol": "_ZN11Classbad5c0D0Ev",
+          "symbol": "_ZN11Classbad530D0Ev",
           "target_sha256": "e094f350e1b1ed010812c8bcb5e5be7d3867605b85e227b7e8df72bdaebaa8ee",
           "bindings": {
-            "_ZTV11Classbad5c0": "0x18b1d10",
+            "_ZTV11Classbad530": "0x18b1d10",
             "AllocatorContext": "0x1935058",
             "FreeToCounterPool": "0xaaee30",
             "DecodeAllocatorManager": "0x1926bd8",
@@ -515983,12 +516192,54 @@
           "got_bindings": {}
         },
         {
-          "address": "0xbf1fd0",
-          "size": 124,
-          "symbol": "_ZN4Onyx16StringDescriptorD0Ev",
-          "target_sha256": "c02ff476689e2651f3dd94068ace667301c8fe49804fbcd921d4b699a8de4df6",
+          "address": "0xbf2160",
+          "size": 188,
+          "symbol": "_ZN4Onyx12XorPredicateD0Ev",
+          "target_sha256": "4cdad43200e390ad93b3f24eb4dace8c5f1773b8d21b2b1f77a4a4b451440047",
           "bindings": {
-            "_ZTVN4Onyx16StringDescriptorE": "0x18b55e8",
+            "_ZTVN4Onyx12XorPredicateE": "0x18b5680",
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
+            "_ZdlPv": "0xfa3b40",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xbf22a0",
+          "size": 188,
+          "symbol": "_ZN11Classbf22a0D0Ev",
+          "target_sha256": "a60635f96a93fe0a572101b7ea1db7490f93755be31e61cd1bbd19b99a14bf01",
+          "bindings": {
+            "_ZTV11Classbf22a0": "0x18b5680",
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
+            "_ZdlPv": "0xfa3b40",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xbf2420",
+          "size": 188,
+          "symbol": "_ZN4Onyx11OrPredicateD0Ev",
+          "target_sha256": "643054a479740e23f76f817c318a6c530ed242cfb813f0a0a9bdd6ad18178c3a",
+          "bindings": {
+            "_ZTVN4Onyx11OrPredicateE": "0x18b5750",
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
+            "_ZdlPv": "0xfa3b40",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xbf2550",
+          "size": 188,
+          "symbol": "_ZN11Classbf2550D0Ev",
+          "target_sha256": "ca0919268f4a6dbda1593d19b4b8014e2d679b1333b84f096702a2af8aecfff4",
+          "bindings": {
+            "_ZTV11Classbf2550": "0x18b5750",
             "DecodeAllocatorManager": "0x1926bd8",
             "DecodeAllocatorIndex": "0xa82b30",
             "_ZdlPv": "0xfa3b40",
@@ -516024,6 +516275,34 @@
           "got_bindings": {}
         },
         {
+          "address": "0xbf2ba0",
+          "size": 188,
+          "symbol": "_ZN4Onyx12AndPredicateD0Ev",
+          "target_sha256": "70ce8fbd6a59ba4e9b73b626addbf98649784982011fa91cde7b56da6aba0006",
+          "bindings": {
+            "_ZTVN4Onyx12AndPredicateE": "0x18b5918",
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
+            "_ZdlPv": "0xfa3b40",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xbf2cd0",
+          "size": 188,
+          "symbol": "_ZN11Classbf2cd0D0Ev",
+          "target_sha256": "d7acfe38213347be5be37c523ef65952837410438fdaf7ff1982ed60ff602414",
+          "bindings": {
+            "_ZTV11Classbf2cd0": "0x18b5918",
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
+            "_ZdlPv": "0xfa3b40",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
           "address": "0xc1cc90",
           "size": 92,
           "symbol": "_ZN11Classc1cc90D2Ev",
@@ -516031,19 +516310,6 @@
           "bindings": {
             "_ZTV11Classc1cc90": "0x18b69a0",
             "_ZN10Basec1cc90D2Ev": "0x792d0",
-            "__clang_call_terminate": "0x6768b8"
-          },
-          "got_bindings": {}
-        },
-        {
-          "address": "0xc1ccf0",
-          "size": 100,
-          "symbol": "_ZN11Classc1ccf0D0Ev",
-          "target_sha256": "d7094bb90e06b23a17187c17955193855e37cf352fb1a07d7707b6f44339ae0f",
-          "bindings": {
-            "_ZTV11Classc1ccf0": "0x18b69a0",
-            "_ZN10Basec1ccf0D2Ev": "0x792d0",
-            "_ZdlPv": "0x3efd0",
             "__clang_call_terminate": "0x6768b8"
           },
           "got_bindings": {}
@@ -516152,13 +516418,13 @@
         {
           "address": "0xc58cf0",
           "size": 92,
-          "symbol": "_ZN11Classc58cf0D0Ev",
+          "symbol": "_ZN11Classc58c90D0Ev",
           "target_sha256": "2e57feb3df60746caf0832b0262bc8ab502cb4d267dedca9340b4efa3ad0db6b",
           "bindings": {
-            "_ZTV11Classc58cf0": "0x18bd708",
+            "_ZTV11Classc58c90": "0x18bd708",
             "AllocatorContext": "0x1935058",
             "FreeToCounterPool": "0xaaee30",
-            "_ZN18PlainSharedPointerILm207146753ELj1176ELb1ELj3EE6DeleteEPv": "0xc58a90",
+            "_ZN18PlainSharedPointerILm207145217ELj1176ELb1ELj3EE6DeleteEPv": "0xc58a90",
             "_ZdlPv": "0xfa3b40",
             "__clang_call_terminate": "0x6768b8"
           },
@@ -516173,10 +516439,28 @@
             "_ZTVN4Onyx8WaypointE": "0x18be5b8",
             "DecodeAllocatorManager": "0x1926bd8",
             "DecodeAllocatorIndex": "0xa82b30",
-            "_ZTV13Levelc6e2b0_1": "0x18be540",
-            "_ZN6MemberILm208546562EED1Ev": "0xc6eb40",
-            "_ZN10Basec6e2b0D2Ev": "0x677400",
-            "_ZN13Levelc6e2b0_1D2Ev": "0xc6eb10",
+            "_ZTV13Levelc6e350_1": "0x18be540",
+            "_ZN6MemberILm208549122EED1Ev": "0xc6eb40",
+            "_ZN10Basec6e350D2Ev": "0x677400",
+            "_ZN13Levelc6e350_1D2Ev": "0xc6eb10",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xc6e350",
+          "size": 160,
+          "symbol": "_ZN4Onyx8WaypointD0Ev",
+          "target_sha256": "fbf4179bf8298fc722121381d302eeb1beda72251f246f67e6a7c36dc2f28771",
+          "bindings": {
+            "_ZTVN4Onyx8WaypointE": "0x18be5b8",
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
+            "_ZTV13Levelc6e350_1": "0x18be540",
+            "_ZN6MemberILm208549122EED1Ev": "0xc6eb40",
+            "_ZN10Basec6e350D2Ev": "0x677400",
+            "_ZdlPv": "0xfa3b40",
+            "_ZN13Levelc6e350_1D2Ev": "0xc6eb10",
             "__clang_call_terminate": "0x6768b8"
           },
           "got_bindings": {}
@@ -516291,10 +516575,56 @@
             "_ZTVN4Onyx25ProximitySpawnPointLockerE": "0x18bfee8",
             "DecodeAllocatorManager": "0x1926bd8",
             "DecodeAllocatorIndex": "0xa82b30",
-            "_ZTV13Levelc82b20_1": "0x18bfe68",
-            "_ZN6MemberILm209891842EED1Ev": "0xc831e0",
-            "_ZN10Basec82b20D2Ev": "0x677400",
-            "_ZN13Levelc82b20_1D2Ev": "0xc831b0",
+            "_ZTV13Levelc82bc0_1": "0x18bfe68",
+            "_ZN6MemberILm209894402EED1Ev": "0xc831e0",
+            "_ZN10Basec82bc0D2Ev": "0x677400",
+            "_ZN13Levelc82bc0_1D2Ev": "0xc831b0",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xc82bc0",
+          "size": 160,
+          "symbol": "_ZN4Onyx25ProximitySpawnPointLockerD0Ev",
+          "target_sha256": "f34ca47ecc66ef058ba570c24a5578d21a93fa3e63804462ad82c2f4a3012c4e",
+          "bindings": {
+            "_ZTVN4Onyx25ProximitySpawnPointLockerE": "0x18bfee8",
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
+            "_ZTV13Levelc82bc0_1": "0x18bfe68",
+            "_ZN6MemberILm209894402EED1Ev": "0xc831e0",
+            "_ZN10Basec82bc0D2Ev": "0x677400",
+            "_ZdlPv": "0xfa3b40",
+            "_ZN13Levelc82bc0_1D2Ev": "0xc831b0",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xc87d70",
+          "size": 188,
+          "symbol": "_ZN4Onyx15ButtonPredicateD0Ev",
+          "target_sha256": "845bd8825a24c8b2d037f9e62ee7294c7235689d1ea542c22c88f54944dba467",
+          "bindings": {
+            "_ZTVN4Onyx15ButtonPredicateE": "0x18c06f0",
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
+            "_ZdlPv": "0xfa3b40",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xc892f0",
+          "size": 188,
+          "symbol": "_ZN4Onyx13AxisPredicateD0Ev",
+          "target_sha256": "208a422084e695455b794fe4ca1c94e0a231f9f9e653e9cda31d133e84b1b48b",
+          "bindings": {
+            "_ZTVN4Onyx13AxisPredicateE": "0x18c0a68",
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
+            "_ZdlPv": "0xfa3b40",
             "__clang_call_terminate": "0x6768b8"
           },
           "got_bindings": {}
@@ -517273,6 +517603,25 @@
           "got_bindings": {}
         },
         {
+          "address": "0x8c0ce0",
+          "size": 452,
+          "symbol": "_ZN4SPTG20LevelSectionGraphicsD2Ev",
+          "target_sha256": "b222b8c3a112f0854cc50bb6c038b49c2dde4cf4f66ce35c771ed5071e84b223",
+          "bindings": {
+            "_ZTVN4SPTG20LevelSectionGraphicsE": "0x18649a8",
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
+            "HandleTracking": "0x1935068",
+            "HandleLock": "0xfa4950",
+            "HandleUnlock": "0xfa4960",
+            "_ZTV15Nested146853378": "0x18a2010",
+            "_ZN6MemberILm146853379EED1Ev": "0x7098c0",
+            "_ZN10Base8c0ce0D2Ev": "0x8c0a10",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
           "address": "0x8cbaa0",
           "size": 244,
           "symbol": "_ZN4SPTG23BitmapFontTextComponentD2Ev",
@@ -517514,6 +517863,26 @@
           "got_bindings": {}
         },
         {
+          "address": "0xa1f070",
+          "size": 2748,
+          "symbol": "_ZN4SPTG4ToddD2Ev",
+          "target_sha256": "f89026b88feb95e8ed907c8428068dfdb40785e5f06dd50c14e6a1d0cbcc4867",
+          "bindings": {
+            "_ZTVN4SPTG4ToddE": "0x188a890",
+            "_ZTV15Nested169805569": "0x186a0f8",
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
+            "HandleTracking": "0x1935068",
+            "HandleLock": "0xfa4950",
+            "HandleUnlock": "0xfa4960",
+            "_ZTV13Levela1f070_1": "0x188b120",
+            "_ZN6MemberILm169805578EED1Ev": "0xa16200",
+            "_ZN10Basea1f070D2Ev": "0xa16c40",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
           "address": "0xa30740",
           "size": 1912,
           "symbol": "_ZN4SPTG20SuperFightingRobotAID2Ev",
@@ -517581,6 +517950,42 @@
           "got_bindings": {}
         },
         {
+          "address": "0xa42390",
+          "size": 460,
+          "symbol": "_ZN4SPTG12HipsterChickD2Ev",
+          "target_sha256": "5bba5500dbbce1d030aebfcb55798da77cfc7f65c29cd275191e07766a031eef",
+          "bindings": {
+            "_ZTVN4SPTG12HipsterChickE": "0x1893850",
+            "_ZTV15Nested172112129": "0x186a0f8",
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
+            "HandleTracking": "0x1935068",
+            "HandleLock": "0xfa4950",
+            "HandleUnlock": "0xfa4960",
+            "_ZN10Basea42390D2Ev": "0xa16c40",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xa441a0",
+          "size": 3052,
+          "symbol": "_ZN4SPTG9NegaScottD2Ev",
+          "target_sha256": "f5c2043524f674b0c612e0eb58e806e3a1cd4594a8f64abc43350a1b3b2245dd",
+          "bindings": {
+            "_ZTVN4SPTG9NegaScottE": "0x1894140",
+            "_ZTV15Nested172235265": "0x186a0f8",
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
+            "HandleTracking": "0x1935068",
+            "HandleLock": "0xfa4950",
+            "HandleUnlock": "0xfa4960",
+            "_ZN10Basea441a0D2Ev": "0xa16c40",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
           "address": "0xa47080",
           "size": 1688,
           "symbol": "_ZN4SPTG8LucasLeeD2Ev",
@@ -517634,6 +518039,24 @@
             "_ZN10Basea55f00D2Ev": "0xa14510",
             "__clang_call_terminate": "0x6768b8",
             "_ZN4AutoI13PlainFunctionILm173404161EEED2Ev": "0xa572b0"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xa5f670",
+          "size": 2404,
+          "symbol": "_ZN4SPTG6GideonD2Ev",
+          "target_sha256": "1b3764fe6f804b4bd40d72fe2754cd15df149d3c4f32ae823048c6c2dfa07b5b",
+          "bindings": {
+            "_ZTVN4SPTG6GideonE": "0x18977c0",
+            "_ZTV15Nested174024449": "0x186a0f8",
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
+            "HandleTracking": "0x1935068",
+            "HandleLock": "0xfa4950",
+            "HandleUnlock": "0xfa4960",
+            "_ZN10Basea5f670D2Ev": "0xa16c40",
+            "__clang_call_terminate": "0x6768b8"
           },
           "got_bindings": {}
         },
@@ -518365,6 +518788,283 @@
             "_ZTV13Levelcee5a0_1": "0x18cb100",
             "_ZN10Basecee5a0D2Ev": "0x6c8ae0",
             "_ZN4AutoI13PlainFunctionILm216947201EEED2Ev": "0xb5eb20",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        }
+      ]
+    },
+    {
+      "id": "gameplay_component_hook_steps",
+      "source": "src/gameplay/ComponentHookSteps.cpp",
+      "compiler": "8.0.1",
+      "source_review": "generated_cxx_abi_view",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-std=c++11",
+        "-O2",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-fomit-frame-pointer",
+        "-fno-pic",
+        "-fno-delete-null-pointer-checks",
+        "-ffunction-sections",
+        "-fdata-sections"
+      ],
+      "header_roots": [
+        "src/gameplay"
+      ],
+      "functions": [
+        {
+          "address": "0x8c1010",
+          "size": 468,
+          "symbol": "_ZN4SPTG20LevelSectionGraphics4StepEv",
+          "target_sha256": "70bd864d106af1fd3e67d139ebdcb4acb39c3abbac81765f621df8ac19028341",
+          "bindings": {
+            "HookContext": "0x1935058",
+            "HookAllocate": "0xa972b0",
+            "_ZN4SPTG20LevelSectionGraphics8OnEvent1ERK5Event": "0x8c16f0",
+            "_ZTV14MemberDelegateILm146866433EN4SPTG20LevelSectionGraphicsEE": "0x1864b88",
+            "_ZN10HookInvokeILm146866433EE6InvokeEv": "0x8c1700",
+            "HookManager": "0x1935068",
+            "HookRemove": "0xc00d00",
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
+            "_ZN4SPTG20LevelSectionGraphics15Call_sub_AFEA80Ev": "0xafea80",
+            "_Unwind_Resume": "0xfa4920",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xacb980",
+          "size": 300,
+          "symbol": "_ZN4Onyx14AttachmentBone4StepEv",
+          "target_sha256": "4260a89e59923186a82b1705d43e6e865d7f024731d7d7e7dc6c42cf96aec3ab",
+          "bindings": {
+            "HookContext": "0x1935058",
+            "HookAllocate": "0xa972b0",
+            "_ZN4Onyx14AttachmentBone8OnEvent1ERK5Event": "0xacc210",
+            "_ZTV14MemberDelegateILm181114881EN4Onyx14AttachmentBoneEE": "0x189fd78",
+            "_ZN10HookInvokeILm181114881EE6InvokeEv": "0xacc230",
+            "HookManager": "0x1935068",
+            "HookRemove": "0xc00d00",
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
+            "_ZN4Onyx14AttachmentBone15Call_sub_68E980Ev": "0x68e980",
+            "_Unwind_Resume": "0xfa4920",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xb1e810",
+          "size": 312,
+          "symbol": "_ZN4Onyx8Graphics8Particle7Emitter15EmitterInstance4StepEv",
+          "target_sha256": "92a2786983385ccdd8febd6c72bf6c39499a8da0f4c756d0dec35994d750075b",
+          "bindings": {
+            "HookContext": "0x1935058",
+            "HookAllocate": "0xa972b0",
+            "_ZN4Onyx8Graphics8Particle7Emitter15EmitterInstance8OnEvent1ERK5Event": "0xb1f2d0",
+            "_ZTV14MemberDelegateILm186548481EN4Onyx8Graphics8Particle7Emitter15EmitterInstanceEE": "0x18a5800",
+            "_ZN10HookInvokeILm186548481EE6InvokeEv": "0xb1f420",
+            "HookManager": "0x1935068",
+            "HookRemove": "0xc00d00",
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
+            "_ZN4Onyx8Graphics8Particle7Emitter15EmitterInstance15Call_sub_B1F440Ev": "0xb1f440",
+            "_Unwind_Resume": "0xfa4920",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xb2d080",
+          "size": 304,
+          "symbol": "_ZN4Onyx8Graphics8Particle18VolumeMeshGraphics4StepEv",
+          "target_sha256": "8b9a0921ab7cf8e6abcba80ae6444fd8a613c5b259b1c2523565fcba0312f9f8",
+          "bindings": {
+            "_ZN4Onyx8Graphics8Particle18VolumeMeshGraphics15Call_sub_B2D550Ev": "0xb2d550",
+            "HookContext": "0x1935058",
+            "HookAllocate": "0xa972b0",
+            "_ZN4Onyx8Graphics8Particle18VolumeMeshGraphics8OnEvent1ERK5Event": "0xb2d740",
+            "_ZTV14MemberDelegateILm187500545EN4Onyx8Graphics8Particle18VolumeMeshGraphicsEE": "0x18a6ea8",
+            "_ZN10HookInvokeILm187500545EE6InvokeEv": "0xb2d760",
+            "HookManager": "0x1935068",
+            "HookRemove": "0xc00d00",
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
+            "_ZN4Onyx8Graphics8Particle18VolumeMeshGraphics15Call_sub_AFEA80Ev": "0xafea80",
+            "_Unwind_Resume": "0xfa4920",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xb39140",
+          "size": 312,
+          "symbol": "_ZN4Onyx8Graphics8Particle23EmitterInstanceGraphics4StepEv",
+          "target_sha256": "8433d7584f3c7d0b581e5766885d7f1c41b0623fb636f7b0169b6eaf522e06fc",
+          "bindings": {
+            "HookContext": "0x1935058",
+            "HookAllocate": "0xa972b0",
+            "_ZN4Onyx8Graphics8Particle23EmitterInstanceGraphics8OnEvent1ERK5Event": "0xb39400",
+            "_ZTV14MemberDelegateILm188290049EN4Onyx8Graphics8Particle23EmitterInstanceGraphicsEE": "0x18a7bd8",
+            "_ZN10HookInvokeILm188290049EE6InvokeEv": "0xb39440",
+            "HookManager": "0x1935068",
+            "HookRemove": "0xc00d00",
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
+            "_ZN4Onyx8Graphics8Particle23EmitterInstanceGraphics15Call_sub_B39460Ev": "0xb39460",
+            "_Unwind_Resume": "0xfa4920",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xb43620",
+          "size": 300,
+          "symbol": "_ZN4Onyx8Graphics13MorphInstance4StepEv",
+          "target_sha256": "461f3c24abc31a2c51fa097c247a104ea358f16bf53940ae18c75a64977cbe8f",
+          "bindings": {
+            "HookContext": "0x1935058",
+            "HookAllocate": "0xa972b0",
+            "_ZN4Onyx8Graphics13MorphInstance8OnEvent1ERK5Event": "0xb44a50",
+            "_ZTV14MemberDelegateILm188965377EN4Onyx8Graphics13MorphInstanceEE": "0x18a8900",
+            "_ZN10HookInvokeILm188965377EE6InvokeEv": "0xb44a70",
+            "HookManager": "0x1935068",
+            "HookRemove": "0xc00d00",
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
+            "_ZN4Onyx8Graphics13MorphInstance15Call_sub_B44A90Ev": "0xb44a90",
+            "_Unwind_Resume": "0xfa4920",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xb5f310",
+          "size": 300,
+          "symbol": "_ZN4Onyx4View4StepEv",
+          "target_sha256": "2b2807e2db1a9204690bd7702b5db205dd3629ee264b520010914cd2d9db0a42",
+          "bindings": {
+            "HookContext": "0x1935058",
+            "HookAllocate": "0xa972b0",
+            "_ZN4Onyx4View8OnEvent1ERK5Event": "0xb5f700",
+            "_ZTV14MemberDelegateILm190787841EN4Onyx4ViewEE": "0x18aac60",
+            "_ZN10HookInvokeILm190787841EE6InvokeEv": "0xb5f710",
+            "HookManager": "0x1935068",
+            "HookRemove": "0xc00d00",
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
+            "_ZN4Onyx4View15Call_sub_69F630Ev": "0x69f630",
+            "_Unwind_Resume": "0xfa4920",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xb91b30",
+          "size": 384,
+          "symbol": "_ZN4Onyx8Graphics14CameraGraphics4StepEv",
+          "target_sha256": "d25b758fde82fb1b797bd78347437917c7fc1823b6dca03058e8896099151b90",
+          "bindings": {
+            "HookContext": "0x1935058",
+            "HookAllocate": "0xa972b0",
+            "_ZN4Onyx8Graphics14CameraGraphics8OnEvent1ERK5Event": "0xb93b30",
+            "_ZTV14MemberDelegateILm194097921EN4Onyx8Graphics14CameraGraphicsEE": "0x18af898",
+            "_ZN10HookInvokeILm194097921EE6InvokeEv": "0xb93b40",
+            "HookManager": "0x1935068",
+            "HookRemove": "0xc00d00",
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
+            "_ZN4Onyx8Graphics14CameraGraphics15Call_sub_AFEA80Ev": "0xafea80",
+            "_Unwind_Resume": "0xfa4920",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xb95520",
+          "size": 384,
+          "symbol": "_ZN4Onyx9Collision14SphereGraphics4StepEv",
+          "target_sha256": "daacc47935243cf3e56bf7d9b8b0085afb7afb5f73783490fbdd75d49b5b5bf7",
+          "bindings": {
+            "HookContext": "0x1935058",
+            "HookAllocate": "0xa972b0",
+            "_ZN4Onyx9Collision14SphereGraphics8OnEvent1ERK5Event": "0xb95de0",
+            "_ZTV14MemberDelegateILm194335233EN4Onyx9Collision14SphereGraphicsEE": "0x18afea0",
+            "_ZN10HookInvokeILm194335233EE6InvokeEv": "0xb95df0",
+            "HookManager": "0x1935068",
+            "HookRemove": "0xc00d00",
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
+            "_ZN4Onyx9Collision14SphereGraphics15Call_sub_AFEA80Ev": "0xafea80",
+            "_Unwind_Resume": "0xfa4920",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xb96270",
+          "size": 384,
+          "symbol": "_ZN4Onyx9Collision13PlaneGraphics4StepEv",
+          "target_sha256": "37f3e72b8953b633da8f1bb3cc4dc81567d1a66f30430016703fd9421e130976",
+          "bindings": {
+            "HookContext": "0x1935058",
+            "HookAllocate": "0xa972b0",
+            "_ZN4Onyx9Collision13PlaneGraphics8OnEvent1ERK5Event": "0xb96b80",
+            "_ZTV14MemberDelegateILm194389761EN4Onyx9Collision13PlaneGraphicsEE": "0x18b00c8",
+            "_ZN10HookInvokeILm194389761EE6InvokeEv": "0xb96b90",
+            "HookManager": "0x1935068",
+            "HookRemove": "0xc00d00",
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
+            "_ZN4Onyx9Collision13PlaneGraphics15Call_sub_AFEA80Ev": "0xafea80",
+            "_Unwind_Resume": "0xfa4920",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xb97010",
+          "size": 384,
+          "symbol": "_ZN4Onyx9Collision15CapsuleGraphics4StepEv",
+          "target_sha256": "82f3dfccd33bee346ce99ebf3686eb757023dc7cdf693776ba7cac185126adc9",
+          "bindings": {
+            "HookContext": "0x1935058",
+            "HookAllocate": "0xa972b0",
+            "_ZN4Onyx9Collision15CapsuleGraphics8OnEvent1ERK5Event": "0xb97960",
+            "_ZTV14MemberDelegateILm194445569EN4Onyx9Collision15CapsuleGraphicsEE": "0x18b02f0",
+            "_ZN10HookInvokeILm194445569EE6InvokeEv": "0xb97970",
+            "HookManager": "0x1935068",
+            "HookRemove": "0xc00d00",
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
+            "_ZN4Onyx9Collision15CapsuleGraphics15Call_sub_AFEA80Ev": "0xafea80",
+            "_Unwind_Resume": "0xfa4920",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xb97df0",
+          "size": 384,
+          "symbol": "_ZN4Onyx9Collision22AxisAlignedBoxGraphics4StepEv",
+          "target_sha256": "75cecbbbf6bf038ae501ce848972ce13527df28f94b9a012bd3cbf1522151fc3",
+          "bindings": {
+            "HookContext": "0x1935058",
+            "HookAllocate": "0xa972b0",
+            "_ZN4Onyx9Collision22AxisAlignedBoxGraphics8OnEvent1ERK5Event": "0xb98720",
+            "_ZTV14MemberDelegateILm194502401EN4Onyx9Collision22AxisAlignedBoxGraphicsEE": "0x18b0518",
+            "_ZN10HookInvokeILm194502401EE6InvokeEv": "0xb98730",
+            "HookManager": "0x1935068",
+            "HookRemove": "0xc00d00",
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
+            "_ZN4Onyx9Collision22AxisAlignedBoxGraphics15Call_sub_AFEA80Ev": "0xafea80",
+            "_Unwind_Resume": "0xfa4920",
             "__clang_call_terminate": "0x6768b8"
           },
           "got_bindings": {}

@@ -378,8 +378,17 @@ the developers wrote. Source in this project falls into four levels:
 - An owned callback or object, destroyed and returned to the allocator it came from.
 - A vector's buffer, with its count cleared first and sometimes its other fields cleared after.
 - A shared block with a count at its start, and a strong handle whose last release destroys the object and removes the handle from the tracking map.
-- A list of owned objects, and an owned block whose buffer is a counted array.
+- A list of owned objects whose values are destroyed by a member of the list node, and an owned block whose buffer is a counted array allocated with four bytes in front of it.
+- An object counted at +8 that releases itself at zero through a virtual function. When that function is the second one, it is the deleting destructor: the object deletes itself, the call cannot throw, and the last one in a destructor becomes a tail call. The ubiservices async results take the pointer out atomically first.
+- An owned object whose virtual destructor comes after other virtual functions.
+- A shared pointer: the object and a counter from a pool on the engine singleton. Deleting the object depends on its class, which gives four forms.
 
 The exception table separates two forms. Cleanup in a member's destructor goes straight to the terminate pad. Cleanup in the class's own destructor body gets a landing pad that destroys the base first, then terminates. `ClassDestructorsForced.cpp` is the set that only matches with member destructors forced inline, which is about inlining order and says nothing about the original source.
 
+A deleting destructor often contains its complete destructor inlined. That needs the destructor declared `inline`, which raises the inlining threshold, so those classes are declared that way with `used` to keep the definition in the object.
+
+Destructors with an array of elements are not matched yet. The original destroys the first element separately and loops from the second, and it does not skip the free when the array is null. Writing the first element out by hand gets the loop right but lets the compiler thread the null test past the free. The loop looks peeled, and nothing tried here makes LLVM 8 peel it.
+
 These sources are generated from the decompiler's reading of each destructor and tested against the bytes, so their builds are marked `generated_cxx_abi_view`. Class names are the RTTI names where those are plain. Offsets come from the code. Base classes and members with their own destructors are stand-ins named after an address or a key.
+
+`src/gameplay/ComponentHookSteps.cpp` is generated the same way from enable and disable steps that take a delegate off a hook, switch off child components and clear the active flag.

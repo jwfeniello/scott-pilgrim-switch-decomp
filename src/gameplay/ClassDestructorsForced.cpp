@@ -577,6 +577,13 @@ namespace SPTG {
 struct StaticAnimatedObject : Level8baf10_1 { char padding_121[31]; AutoInline<PlainStrongHandle<146469121, true>> member_140; virtual void Key(); ~StaticAnimatedObject(); };
 StaticAnimatedObject::~StaticAnimatedObject() {  }
 }
+struct Buffer9398616193 { uint64_t w0; uint64_t w8; void* w10; __attribute__((always_inline)) void Destroy() { w8 = 0; if (w10) FreeObject(w10); } };
+struct Nested146853378 { virtual void Key(); char padding_8[64]; Auto<Buffer9398616193> member_48; DT_INLINE ~Nested146853378() {} };
+struct Base8c0ce0 { virtual ~Base8c0ce0(); char padding[416]; };
+namespace SPTG { 
+struct LevelSectionGraphics : Base8c0ce0 { Member<146853379> member_1a8; char padding_1a9[63]; Nested146853378 member_1e8; char padding_248[8]; AutoInline<PlainStrongHandle<146853377, true>> member_250; virtual void Key(); ~LevelSectionGraphics(); };
+LevelSectionGraphics::~LevelSectionGraphics() {  }
+}
 struct Base8cbaa0 { virtual ~Base8cbaa0(); char padding[288]; };
 namespace SPTG { 
 struct BitmapFontTextComponent : Base8cbaa0 { ListenerOut<147565058> member_128; char padding_140[8]; AutoInline<PlainSharedBuffer<147565057>> member_148; virtual void Key(); ~BitmapFontTextComponent(); };
@@ -641,6 +648,13 @@ namespace SPTG {
 struct BreakableObject : Basea0f840 { ListenerOut<168788996> member_200; ListenerOut<168788995> member_218; ListenerOut<168788994> member_230; char padding_248[64]; Auto<Buffer168788993> member_288; virtual void Key(); ~BreakableObject(); };
 BreakableObject::~BreakableObject() {  }
 }
+struct Nested169805569 { virtual void Key(); char padding_8[88]; Auto<PlainFunction<10867556417>> member_60; DT_INLINE ~Nested169805569() {} };
+struct Basea1f070 { virtual ~Basea1f070(); char padding[3392]; };
+struct Levela1f070_1 : Basea1f070 { Member<169805578> member_d48; virtual void Key1(); DT_INLINE ~Levela1f070_1() {} };
+namespace SPTG { 
+struct Todd : Levela1f070_1 { char padding_d49[135]; AutoInline<PlainStrongHandle<169805577, true>> member_dd0; char padding_dd8[104]; AutoInline<PlainStrongHandle<169805576, true>> member_e40; char padding_e48[112]; AutoInline<PlainStrongHandle<169805575, true>> member_eb8; char padding_ec0[112]; AutoInline<PlainStrongHandle<169805574, true>> member_f30; char padding_f38[112]; AutoInline<PlainStrongHandle<169805573, true>> member_fa8; char padding_fb0[112]; AutoInline<PlainStrongHandle<169805572, true>> member_1020; char padding_1028[112]; AutoInline<PlainStrongHandle<169805571, true>> member_1098; char padding_10a0[112]; AutoInline<PlainStrongHandle<169805570, true>> member_1110; char padding_1118[8]; Nested169805569 member_1120; virtual void Key(); ~Todd(); };
+Todd::~Todd() {  }
+}
 struct Basea30740 { virtual ~Basea30740(); char padding[3392]; };
 struct Levela30740_1 : Basea30740 { Member<170947588> member_d48; virtual void Key1(); DT_INLINE ~Levela30740_1() {} };
 namespace SPTG { 
@@ -661,6 +675,18 @@ namespace SPTG {
 struct Roxy : Basea3b7d0 { AutoInline<PlainStrongHandle<171670794, true>> member_df0; char padding_df8[112]; AutoInline<PlainStrongHandle<171670793, true>> member_e68; char padding_e70[112]; AutoInline<PlainStrongHandle<171670792, true>> member_ee0; char padding_ee8[112]; AutoInline<PlainStrongHandle<171670791, true>> member_f58; char padding_f60[112]; AutoInline<PlainStrongHandle<171670790, true>> member_fd0; char padding_fd8[112]; AutoInline<PlainStrongHandle<171670789, true>> member_1048; char padding_1050[112]; AutoInline<PlainStrongHandle<171670788, true>> member_10c0; char padding_10c8[16]; Auto<Buffer171670787> member_10d8; char padding_10f0[16]; Auto<Buffer171670786> member_1100; char padding_1118[32]; Auto<Buffer171670785> member_1138; virtual void Key(); ~Roxy(); };
 Roxy::~Roxy() {  }
 }
+struct Nested172112129 { virtual void Key(); char padding_8[88]; Auto<PlainFunction<11015176257>> member_60; DT_INLINE ~Nested172112129() {} };
+struct Basea42390 { virtual ~Basea42390(); char padding[3504]; };
+namespace SPTG { 
+struct HipsterChick : Basea42390 { AutoInline<PlainStrongHandle<172112130, true>> member_db8; char padding_dc0[8]; Nested172112129 member_dc8; virtual void Key(); ~HipsterChick(); };
+HipsterChick::~HipsterChick() {  }
+}
+struct Nested172235265 { virtual void Key(); char padding_8[88]; Auto<PlainFunction<11023056961>> member_60; DT_INLINE ~Nested172235265() {} };
+struct Basea441a0 { virtual ~Basea441a0(); char padding[3504]; };
+namespace SPTG { 
+struct NegaScott : Basea441a0 { AutoInline<PlainStrongHandle<172235274, true>> member_db8; char padding_dc0[112]; AutoInline<PlainStrongHandle<172235273, true>> member_e30; char padding_e38[112]; AutoInline<PlainStrongHandle<172235272, true>> member_ea8; char padding_eb0[112]; AutoInline<PlainStrongHandle<172235271, true>> member_f20; char padding_f28[112]; AutoInline<PlainStrongHandle<172235270, true>> member_f98; char padding_fa0[112]; AutoInline<PlainStrongHandle<172235269, true>> member_1010; char padding_1018[112]; AutoInline<PlainStrongHandle<172235268, true>> member_1088; char padding_1090[112]; AutoInline<PlainStrongHandle<172235267, true>> member_1100; char padding_1108[112]; AutoInline<PlainStrongHandle<172235266, true>> member_1178; char padding_1180[8]; Nested172235265 member_1188; virtual void Key(); ~NegaScott(); };
+NegaScott::~NegaScott() {  }
+}
 struct Basea47080 { virtual ~Basea47080(); char padding[3392]; };
 struct Levela47080_1 : Basea47080 { Member<172427270> member_d48; virtual void Key1(); DT_INLINE ~Levela47080_1() {} };
 namespace SPTG { 
@@ -676,6 +702,12 @@ struct Basea55f00 { virtual ~Basea55f00(); char padding[216]; };
 namespace SPTG { 
 struct GigaGideonAI : Basea55f00 { AutoInline<PlainStrongHandle<173404162, true>> member_e0; char padding_e8[8]; ListenerOut<173404161> member_f0; virtual void Key(); ~GigaGideonAI(); };
 GigaGideonAI::~GigaGideonAI() {  }
+}
+struct Nested174024449 { virtual void Key(); char padding_8[88]; Auto<PlainFunction<11137564737>> member_60; DT_INLINE ~Nested174024449() {} };
+struct Basea5f670 { virtual ~Basea5f670(); char padding[3504]; };
+namespace SPTG { 
+struct Gideon : Basea5f670 { AutoInline<PlainStrongHandle<174024456, true>> member_db8; char padding_dc0[112]; AutoInline<PlainStrongHandle<174024455, true>> member_e30; char padding_e38[112]; AutoInline<PlainStrongHandle<174024454, true>> member_ea8; char padding_eb0[112]; AutoInline<PlainStrongHandle<174024453, true>> member_f20; char padding_f28[112]; AutoInline<PlainStrongHandle<174024452, true>> member_f98; char padding_fa0[112]; AutoInline<PlainStrongHandle<174024451, true>> member_1010; char padding_1018[112]; AutoInline<PlainStrongHandle<174024450, true>> member_1088; char padding_1090[8]; Nested174024449 member_1098; virtual void Key(); ~Gideon(); };
+Gideon::~Gideon() {  }
 }
 struct Buffer174173953 { uint64_t w0; uint64_t w8; void* w10; __attribute__((always_inline)) void Destroy() { w8 = 0; if (w10) FreeObject(w10); } };
 struct Buffer174173954 { uint64_t w0; uint64_t w8; void* w10; __attribute__((always_inline)) void Destroy() { w8 = 0; if (w10) FreeObject(w10); } };
