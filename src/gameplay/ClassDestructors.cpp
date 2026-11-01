@@ -676,6 +676,11 @@ namespace SPTG {
 struct BoundaryGraphics : Base890c30 { Auto<Buffer143704834> member_1b0; char padding_1c8[16]; Auto<Buffer143704833> member_1d8; virtual void Key(); ~BoundaryGraphics() __attribute__((used)); };
 inline BoundaryGraphics::~BoundaryGraphics() {  }
 }
+struct Base893660 { virtual ~Base893660(); char padding[88]; };
+namespace SPTG { 
+struct ItemRegistry : Base893660 { AutoInline<PlainPointerMember<143877633>> member_60; virtual void Key(); ~ItemRegistry(); };
+ItemRegistry::~ItemRegistry() {  }
+}
 struct Buffer143907586 { uint64_t w0; void* w8; __attribute__((always_inline)) void Destroy() { w0 = 0; if (w8) FreeObject(w8); } };
 struct Base893db0 { virtual ~Base893db0(); char padding[72]; };
 struct Level893db0_1 : Base893db0 { Member<143907588> member_50; virtual void Key1(); DT_INLINE ~Level893db0_1() {} };
@@ -731,6 +736,12 @@ namespace SPTG {
 struct AnimationInfoHolderBank : Base8ceaa0 { Auto<Buffer147761665> member_68; virtual void Key(); ~AnimationInfoHolderBank(); };
 AnimationInfoHolderBank::~AnimationInfoHolderBank() {  }
 }
+struct Base8de640 { virtual ~Base8de640(); char padding[88]; };
+struct Level8de640_1 : Base8de640 { Member<148792324> member_60; virtual void Key1(); DT_INLINE ~Level8de640_1() {} };
+namespace SPTG { 
+struct GameplayFlow : Level8de640_1 { char padding_61[39]; AutoInline<PlainPointerMember<148792323>> member_88; char padding_90[48]; AutoInline<PlainPointerMember<148792322>> member_c0; char padding_c8[48]; AutoInline<PlainPointerMember<148792321>> member_f8; virtual void Key(); ~GameplayFlow() __attribute__((used)); };
+inline GameplayFlow::~GameplayFlow() {  }
+}
 struct Buffer149519105 { void* w0; uint64_t w8; __attribute__((always_inline)) void Destroy() { if (w0) FreeObject(w0); w0 = 0; w8 = 0; } };
 struct Base8e97b0 { virtual ~Base8e97b0(); char padding[184]; };
 namespace SPTG { 
@@ -781,12 +792,27 @@ namespace SPTG {
 struct UnspawnManager : Base928ae0 { Auto<Buffer153660931> member_68; char padding_80[8]; Auto<Buffer153660930> member_88; Auto<Buffer153660929> member_b0; virtual void Key(); ~UnspawnManager(); };
 UnspawnManager::~UnspawnManager() {  }
 }
+struct Base9290c0 { virtual ~Base9290c0(); char padding[104]; };
+namespace SPTG { 
+struct SPTG_Flow : Base9290c0 { AutoInline<PlainPointerMember<153684993>> member_70; virtual void Key(); ~SPTG_Flow(); };
+SPTG_Flow::~SPTG_Flow() {  }
+}
 struct Buffer154258689 { uint64_t w0; uint64_t w8; void* w10; __attribute__((always_inline)) void Destroy() { w8 = 0; if (w10) FreeObject(w10); } };
 struct Buffer154258690 { uint64_t w0; uint64_t w8; void* w10; __attribute__((always_inline)) void Destroy() { w8 = 0; if (w10) FreeObject(w10); } };
 struct Base931cd0 { virtual ~Base931cd0(); char padding[112]; };
 namespace SPTG { 
 struct VolumeMonitor : Base931cd0 { Auto<Buffer154258690> member_78; char padding_90[16]; Auto<Buffer154258689> member_a0; virtual void Key(); ~VolumeMonitor() __attribute__((used)); };
 inline VolumeMonitor::~VolumeMonitor() {  }
+}
+struct Base9327b0 { virtual ~Base9327b0(); char padding[88]; };
+
+struct Class9327b0 : Base9327b0 { AutoInline<PlainPointerMember<154303233>> member_60; virtual void Key(); ~Class9327b0(); };
+Class9327b0::~Class9327b0() {  }
+
+struct Base932aa0 { virtual ~Base932aa0(); char padding[96]; };
+namespace SPTG { 
+struct DropCoinSwitch : Base932aa0 { AutoInline<PlainPointerMember<154315265>> member_68; virtual void Key(); ~DropCoinSwitch(); };
+DropCoinSwitch::~DropCoinSwitch() {  }
 }
 namespace SPTG { 
 struct EventExecute { AutoInline<PlainSlotOwned<154596097, 1>> member_8; virtual void Key(); virtual ~EventExecute(); };
@@ -1063,6 +1089,36 @@ namespace Onyx { namespace Graphics { namespace Particle { namespace Emitter {
 struct EmitterSimple : Baseb1a450 { Auto<Buffer186270980> member_70; char padding_88[8]; Auto<Buffer186270979> member_90; Auto<Buffer186270978> member_b8; Auto<Buffer186270977> member_e0; virtual void Key(); ~EmitterSimple(); };
 EmitterSimple::~EmitterSimple() {  }
 }}}}
+struct Baseb214b0 { virtual ~Baseb214b0(); char padding[112]; };
+namespace Onyx { namespace Graphics { namespace Particle { namespace Effect { 
+struct EffectTextureStep : Baseb214b0 { AutoInline<PlainPointerMember<186731265>> member_78; virtual void Key(); ~EffectTextureStep(); };
+EffectTextureStep::~EffectTextureStep() {  }
+}}}}
+struct Baseb221b0 { virtual ~Baseb221b0(); char padding[144]; };
+namespace Onyx { namespace Graphics { namespace Particle { namespace Effect { 
+struct EffectSpawner : Baseb221b0 { AutoInline<PlainPointerMember<186784514>> member_98; char padding_a0[48]; AutoInline<PlainPointerMember<186784513>> member_d0; virtual void Key(); ~EffectSpawner(); };
+EffectSpawner::~EffectSpawner() {  }
+}}}}
+struct Baseb23870 { virtual ~Baseb23870(); char padding[144]; };
+namespace Onyx { namespace Graphics { namespace Particle { namespace Effect { 
+struct EffectSequencer : Baseb23870 { AutoInline<PlainPointerMember<186877697>> member_98; virtual void Key(); ~EffectSequencer(); };
+EffectSequencer::~EffectSequencer() {  }
+}}}}
+struct Baseb24430 { virtual ~Baseb24430(); char padding[168]; };
+namespace Onyx { namespace Graphics { namespace Particle { namespace Effect { 
+struct EffectScale : Baseb24430 { AutoInline<PlainPointerMember<186925825>> member_b0; virtual void Key(); ~EffectScale(); };
+EffectScale::~EffectScale() {  }
+}}}}
+struct Baseb25f10 { virtual ~Baseb25f10(); char padding[136]; };
+namespace Onyx { namespace Graphics { namespace Particle { namespace Effect { 
+struct EffectRandom : Baseb25f10 { AutoInline<PlainPointerMember<187035905>> member_90; virtual void Key(); ~EffectRandom(); };
+EffectRandom::~EffectRandom() {  }
+}}}}
+struct Baseb29440 { virtual ~Baseb29440(); char padding[120]; };
+namespace Onyx { namespace Graphics { namespace Particle { namespace Effect { 
+struct EffectColor : Baseb29440 { AutoInline<PlainPointerMember<187253761>> member_80; virtual void Key(); ~EffectColor(); };
+EffectColor::~EffectColor() {  }
+}}}}
 struct Buffer188488961 { uint64_t w0; void* w8; __attribute__((always_inline)) void Destroy() { w0 = 0; if (w8) FreeObject(w8); } };
 struct Buffer188488962 { uint64_t w0; void* w8; __attribute__((always_inline)) void Destroy() { w0 = 0; if (w8) FreeObject(w8); } };
 struct Baseb3c1d0 { virtual ~Baseb3c1d0(); char padding[72]; };
@@ -1271,6 +1327,11 @@ struct Basebbfbe0 { virtual ~Basebbfbe0(); char padding[136]; };
 namespace Onyx { 
 struct Transitionner : Basebbfbe0 { Member<197115395> member_90; char padding_91[87]; Member<197115394> member_e8; char padding_e9[111]; Auto<Buffer197115393> member_158; virtual void Key(); ~Transitionner(); };
 Transitionner::~Transitionner() {  }
+}
+struct Basebc3920 { virtual ~Basebc3920(); char padding[112]; };
+namespace Onyx { 
+struct AnimationSet : Basebc3920 { Member<197366274> member_78; char padding_79[103]; AutoInline<PlainPointerMember<197366273>> member_e0; virtual void Key(); ~AnimationSet(); };
+AnimationSet::~AnimationSet() {  }
 }
 struct Buffer197465089 { uint64_t w0; void* w8; __attribute__((always_inline)) void Destroy() { w0 = 0; if (w8) FreeObject(w8); } };
 struct Basebc5140 { virtual ~Basebc5140(); char padding[72]; };
