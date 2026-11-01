@@ -345,9 +345,14 @@ constructor body sets its owner and binds it. A class with two listeners shows t
 second listener's owner is written after the first bind. The exception table agrees: if binding
 throws, the cleanup checks the flag, disconnects, and destroys the callback.
 
-About 90 more callback factories are not matched. In most of them only the position of one store
-differs: the flag write comes before the callback's null write. No order of the writes in the source
-reproduces that, and neither does natural inlining in place of `always_inline`.
+For a long time most callback factories missed by one store: the flag write came before the callback's
+null write, and no order of writes in the source reproduced it. The cause is that a `Listener`'s
+constructor zeroes all three of its fields, the owner included. The optimizer merges those contiguous
+writes into a 17-byte `memset`, and code generation expands that back into separate stores, all at one
+source position, so scheduling orders them. That explains the flag landing first, and why the order
+can differ between listeners of one class. A later write of the owner removes its zero, so the zero
+only shows when nothing writes the owner in that block. A `memset` of 32 bytes or more uses vector
+stores, which is where the `q0` writes in some of these constructors come from.
 
 These also need `-fstrict-aliasing`: without it the allocator load cannot move past the stores.
 That and the listener registration above suggest the game's code was built with strict aliasing
