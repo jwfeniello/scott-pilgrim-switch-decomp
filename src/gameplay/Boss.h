@@ -38,6 +38,7 @@ struct ActionRunner {
 };
 
 struct Boss : Enemy {
+    void Slot229();
     void Slot4(onyx::Archive& archive, ComponentSlot::Source* source);
     void Update();
     void Slot13();

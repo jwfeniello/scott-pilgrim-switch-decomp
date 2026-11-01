@@ -222,4 +222,10 @@ bool AnimatedAiActor::IsOnScreen() {
     return y > rect.bottom && y < rect.top && x < rect.right && x > rect.left;
 }
 
+// Slot 15 (0x862680): bit 2 of the component flags, while +0x50 is clear.
+// Not yet matched: the original masks the flags with 4 before shifting them, and ours drops the mask.
+bool FlaggedComponent::IsActive() {
+    return !flag50 & ((componentFlags & 4) != 0);
+}
+
 }  // namespace SPTG

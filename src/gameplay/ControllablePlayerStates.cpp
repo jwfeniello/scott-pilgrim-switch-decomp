@@ -1,6 +1,7 @@
 // SPTG::ControllablePlayer's smaller state handlers and overrides. Slots follow
 // the vtable; what most of the states represent is not established yet.
 #include "BaseCharacter.h"
+#include "Random.h"
 
 namespace SPTG {
 
@@ -532,6 +533,209 @@ bool ControllablePlayer::AnyInputPressed() {
     lastMove.y = move.y;
     lastMove.z = move.z;
     return pressed;
+}
+
+// Slot 100 (0x981280): on the ground, steered by the stick. Anything else goes through the input check at slot 256.
+// Not yet matched: the multiply before SpeedScale lands in s9 in the original and s8 here, and the next one in s0 and s1.
+int ControllablePlayer::State100(int event) {
+    int result = BaseCharacter::State100(event);
+    if (result == kStateParentTookOver) return result;
+    if (event == kStateEnter || event == kStateExit) return kStateHandled;
+    if (event != kStateUpdate) return kStateUnhandled;
+    SteerFromInput();
+    if (AirInput(kStateUpdate) == kStateParentTookOver) {
+        states.AssertOwner(this);
+        return kStateParentTookOver;
+    }
+    return kStateHandled;
+}
+
+// Slot 102 (0x9813b0): moving through the air. With +0x1288 raised it takes input only once the timer has run out.
+// Not yet matched, with the same two registers as State100.
+int ControllablePlayer::State102(int event) {
+    int result = BaseCharacter::State102(event);
+    if (result == kStateParentTookOver) return result;
+    switch (event) {
+    case kStateUpdate:
+        if (IsOnGround()) return kStateHandled;
+        SteerFromInput();
+        if (!flag1288) return kStateHandled;
+        airTimer = __builtin_fmaxf(airTimer - Move_FrameDelta, 0.0f);
+        if (__builtin_fabsf(airTimer) > 0.000001f) return kStateHandled;
+        if (AirInput(kStateUpdate) == kStateParentTookOver) {
+            states.AssertOwner(this);
+            return kStateParentTookOver;
+        }
+        return kStateHandled;
+    case kStateEnter:
+        return kStateHandled;
+    case kStateExit:
+        motion.y = 0.0f;
+        motionTarget.x = 0.0f;
+        airTimer = 0.0f;
+        return kStateHandled;
+    default:
+        return kStateUnhandled;
+    }
+}
+
+// Slot 104 (0x981550): landing. Entry stops the fall, snaps to the ground when it's within 0.1 (unless the playfield
+// says not to) and clears the air attack count. While it plays, a charge held in +0x142c or +0x1430 picks states 175 or 177.
+int ControllablePlayer::State104(int event) {
+    int result = BaseCharacter::State104(event);
+    if (result == kStateParentTookOver) return result;
+    switch (event) {
+    case kStateEnter: {
+        flag13f0 = 0;
+        flag13f1 = 0;
+        flag140c = 0;
+        motion.y = 0.0f;
+        onyx::Vector3 position = onyx::Find<onyx::Transform, onyx::kTransform>(onyx::Find<ActorObject, 0x6492d61du>(actorObject)->transform)->position;
+        float ground = groundHeight;
+        if (__builtin_fabsf(position.z - ground) < 0.1f) {
+            PlayfieldCollision* field = static_cast<PlayfieldCollision*>(onyx::Get<ActorObject, 0x6492d61du>(actorObject)->playfield->object);
+            if (!field->IsA(PlayfieldCollision::kType)) field = nullptr;
+            if (!field->flag128) {
+                position.z = ground;
+                onyx::Find<ActorObject, 0x6492d61du>(actorObject)->MoveTo(position);
+                groundHeight = static_cast<int>(ground);
+            }
+        }
+        airAttackCount = 0;
+        return kStateHandled;
+    }
+    case kStateUpdate:
+        if (!IsMounted()) {
+            if (value142c[0] > 0.0f) {
+                states.Transition(State175Ptr());
+            } else if (value142c[1] > 0.0f) {
+                states.Transition(State177Ptr());
+            } else {
+                return kStateHandled;
+            }
+            return kStateParentTookOver;
+        }
+        return kStateHandled;
+    case kStateExit:
+        motion.y = 0.0f;
+        return kStateHandled;
+    default:
+        return kStateUnhandled;
+    }
+}
+
+// Slot 114 (0x9824f0): holds +0x3ba raised, and entry marks the player down on the HUD.
+// Not yet matched: the return block sits in a different place, and one `mov w19, #1` comes before the panel test.
+int ControllablePlayer::State114(int event) {
+    int result = kStateHandled;
+    if (BaseCharacter::State114(event) == kStateParentTookOver) {
+        states.AssertOwner(this);
+        result = kStateParentTookOver;
+    } else {
+        switch (event) {
+        case kStateUpdate:
+            result = kStateHandled;
+            break;
+        case kStateEnter: {
+            result = kStateHandled;
+            flag3ba = result;
+            InGameHUD* screen = hud.Get();
+            uint32_t player = playerIndex;
+            screen->players[player].downed = result;
+            screen->window.Get();
+            if (player <= 3) {
+                if (HudPlayerPanel* panel = screen->panel) {
+                    result = kStateHandled;
+                    panel->showingStatus[player] = result;
+                    panel->SetStatus(12, player);
+                }
+            }
+            break;
+        }
+        case kStateExit:
+            flag3ba = 0;
+            result = kStateHandled;
+            break;
+        default:
+            result = kStateUnhandled;
+            break;
+        }
+    }
+    return result;
+}
+
+// Slot 68 (0x97fe10): counts its calls, and every so many (a random number between +0x12ac and +0x12b0) runs 0x80f6e0.
+void ControllablePlayer::Slot68() {
+    ++value1450;
+    uint32_t low = value12ac;
+    uint32_t high = value12b0;
+    uint32_t every = RandomRange(low, high);
+    if (effectCounter++ >= every) {
+        effectCounter = 0;
+        Effect10();
+    }
+}
+
+// Slot 156 (0x9862d0): whether a second player can act: at least two players outside the state at slot 233, and none
+// of +0x150c, +0x150d or +0x7e8.
+bool ControllablePlayer::Slot156() {
+    PlayerCatalog* catalog = onyx::Find<PlayerCatalog, onyx_types::type_0bf4a9b7>(level.Get()->players);
+    if (!catalog->count) return false;
+    uint32_t active = 0;
+    for (ControllablePlayer** i = catalog->players; i != catalog->players + catalog->count; ++i) {
+        ControllablePlayer* player = *i;
+        State state = player->State233Ptr();
+        active += !(player->states.current == state);
+    }
+    if (active < 2 || flag150c || flag150d) return false;
+    return !flag7e8;
+}
+
+// Slot 136 (0x984d30): Enemy's state of the same slot, but it also follows the way it faces. Once the partner has been held
+// for the delay it plays the recovery animation for the one it was in and is released.
+// Not yet matched: the original inverts the facing flag with `eor`, where ours compares it with zero, and it sets the return
+// value before testing the partner.
+int ControllablePlayer::State136(int event) {
+    switch (event) {
+    case kStateEnter: {
+        ShadowAnimatedObject* effect = shadowHandle ? static_cast<ShadowAnimatedObject*>(shadowHandle->object) : nullptr;
+        if (effect) effect->visible = 0;
+        timer330 = 0.0f;
+        return kStateHandled;
+    }
+    case kStateUpdate: {
+        if (flag13c1 != !onyx::Get<ActorFlags, 0x2eae5813u>(onyx::Find<ActorObject, 0x6492d61du>(actorObject)->flags)->facingLeft) {
+            flag13c1 = !onyx::Get<ActorFlags, 0x2eae5813u>(onyx::Find<ActorObject, 0x6492d61du>(actorObject)->flags)->facingLeft;
+        }
+        timer330 += Move_FrameDelta;
+        BaseCharacter* partner = partnerHandle ? static_cast<BaseCharacter*>(partnerHandle->object) : nullptr;
+        if (partner && timer330 > partnerDelay) {
+            partner->Dismount();
+            int recovery = -1;
+            switch (partner->animation) {
+            case 44: case 60: recovery = 0; break;
+            case 43: case 59: recovery = 1; break;
+            case 53: case 69: recovery = 2; break;
+            case 54: case 70: recovery = 3; break;
+            case 55: case 71: recovery = 4; break;
+            case 56: case 72: recovery = 5; break;
+            case 57: case 73: recovery = 6; break;
+            case 42: case 58: recovery = 7; break;
+            }
+            if (recovery != -1) partner->PlayAnimation(recovery, 1, 0, 1.0f);
+            ReleaseHeld(false, 0.0f, 0.0f);
+            states.Transition(State100Ptr());
+            return kStateParentTookOver;
+        }
+        return kStateHandled;
+    }
+    case kStateExit: {
+        ShadowAnimatedObject* effect = shadowHandle ? static_cast<ShadowAnimatedObject*>(shadowHandle->object) : nullptr;
+        if (effect) effect->visible = 1;
+        return kStateHandled;
+    }
+    }
+    return kStateUnhandled;
 }
 
 }  // namespace SPTG

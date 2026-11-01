@@ -435,4 +435,17 @@ bool BaseCharacter::ApplyKnockback(void* data, BaseCharacter* other) {
     return flag130;
 }
 
+// Slot 77 (0x970560): what scales an attack as it starts, and using it clears both inputs: the charge held, as a share of
+// a full charge, takes it from 1 up to chargeGain, and +0x18c multiplies that.
+// Not yet matched: the operations line up, but the registers differ (the original keeps +0x18c in s0 from the start).
+float BaseCharacter::Slot77() {
+    float charge = value334 / chargeTime;
+    float gain = chargeGain + -1.0f;
+    value334 = 0.0f;
+    float amount = gain * __builtin_fminf(charge, 1.0f);
+    float scale = value18c;
+    value18c = 1.0f;
+    return scale * (amount + 1.0f);
+}
+
 }  // namespace SPTG

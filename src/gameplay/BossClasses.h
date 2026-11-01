@@ -355,7 +355,7 @@ struct LucasLee : Boss {
     bool Slot82();
     void Update();
     void PlayAnimation(int animation, bool a, bool b, float speed);
-    bool Slot162();
+    bool CollectSpecialAttacks(onyx::Vector<uint32_t>* out);
     int State108(int event); State State108Ptr();   // slots 108, 109, override Boss
     virtual void Slot234(int kind);                                          // slot 234, overrides Boss
     SPTG_SLOT(235)   // overrides Boss

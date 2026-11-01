@@ -108,6 +108,16 @@ struct ActorObject : onyx::Component {
     void MoveTo(const onyx::Vector3& position);   // 0x85fd70
 };
 struct ShadowAnimatedObject;
+// A base that actors and their parts share for slot 15 (0x862680). It's reached as inherited, so its real name isn't known.
+struct FlaggedComponent : onyx::Component {
+    SPTG_SLOT(3) SPTG_SLOT(4) SPTG_SLOT(5) SPTG_SLOT(6) SPTG_SLOT(7) SPTG_SLOT(8) SPTG_SLOT(9) SPTG_SLOT(10) SPTG_SLOT(11)
+    SPTG_SLOT(12) SPTG_SLOT(13) SPTG_SLOT(14)
+    virtual bool IsActive();
+    char padding_8[0x30];
+    uint8_t componentFlags;  // +0x38
+    char padding_39[0x17];
+    uint8_t flag50;          // +0x50
+};
 struct TypedComponent : onyx::Component {
     SPTG_SLOT(3) SPTG_SLOT(4) SPTG_SLOT(5) SPTG_SLOT(6) SPTG_SLOT(7) SPTG_SLOT(8) SPTG_SLOT(9) SPTG_SLOT(10) SPTG_SLOT(11)
     virtual bool IsA(uint32_t type);   // slot 12
@@ -683,6 +693,8 @@ struct InGameHUD {
     Singleton<LevelWindowAccessor> window;    // +0x60
     char padding_68[0x8];
     HudPlayerPanel* panel;                    // +0x70
+    char padding_78[0x8];
+    struct PlayerEntry { uint8_t flag0; uint8_t downed; char padding_2[0xe]; } players[4];  // +0x80
 };
 struct PlayerInput {
     char padding_0[0x8];
@@ -866,7 +878,37 @@ struct ControllablePlayer : BaseCharacter {
     void FollowPlayfield() override;
     void PlayAnimationOn(int animation, bool loop, bool flag, BaseCharacter* other, float speed) override;
     bool Slot88(float amount) override;
+    int State100(int event) override;
+    int State102(int event) override;
+    int State104(int event) override;
     int State114(int event) override;
+    int State136(int event) override;
+    void Slot68() override;
+    bool Slot156() override;
+    // Unless +0x13f0 is set, moves along y by the stick.
+    __attribute__((always_inline)) void SteerAlongY() {
+        if (!flag13f0) {
+            onyx::Vector3 depth;
+            ReadMoveInput(input, &depth);
+            motion.y = depth.y * jumpBackSpeed * SpeedScale();
+        }
+    }
+    // Each frame on foot or in the air: turns to the stick and sets the target speed along x from it. Pushing against
+    // the motion clears +0x1bc, otherwise it keeps the speed.
+    __attribute__((always_inline)) void SteerFromInput() {
+        TurnToMoveInput();
+        onyx::Vector3 move;
+        ReadMoveInput(input, &move);
+        if (move.x == 0.0f) {
+            motionTarget.x = 0.0f;
+        } else {
+            motionTarget.x = move.x * value8d4;
+            float speed = motion.x;
+            if ((move.x > 0.0f) == (speed > 0.0f)) value1bc = speed;
+            else value1bc = 0.0f;
+        }
+        SteerAlongY();
+    }
     void TurnAround() override;
     bool CanMount() override;
     void Slot43(float value) override;
@@ -1045,15 +1087,15 @@ struct ControllablePlayer : BaseCharacter {
     int32_t value126c;           // +0x126c
     int32_t value1270;           // +0x1270
     char padding_1274[0xc];
-    int32_t value1280;           // +0x1280
-    int32_t value1284;           // +0x1284
+    float airTimer;              // +0x1280: with +0x1288 raised, state 102 takes input when it runs out
+    float airTimerStart;         // +0x1284
     uint8_t flag1288;            // +0x1288
     char padding_1289[0x3];
     int32_t value128c;           // +0x128c
     int32_t value1290;           // +0x1290
     int32_t value1294;           // +0x1294
     int32_t value1298;           // +0x1298
-    int32_t value129c;           // +0x129c
+    float partnerDelay;          // +0x129c: how long state 136 holds the partner
     int32_t value12a0;           // +0x12a0
     int32_t value12a4;           // +0x12a4
     int32_t value12a8;           // +0x12a8
@@ -1108,7 +1150,8 @@ struct ControllablePlayer : BaseCharacter {
     onyx::Vector3 lastMove;      // +0x13c4: the directions AnyInputPressed saw
     char padding_13d0[0x8];
     float value13d8;             // +0x13d8
-    char padding_13dc[0xc];
+    int32_t effectCounter;       // +0x13dc: slot 68's calls since it last ran 0x80f6e0
+    char padding_13e0[0x8];
     float money;                 // +0x13e8: kept in whole multiples of 0.05
     char padding_13ec[0x4];
     uint8_t flag13f0;            // +0x13f0
@@ -1116,14 +1159,18 @@ struct ControllablePlayer : BaseCharacter {
     char padding_13f2[0x2];
     int32_t pendingItem;         // +0x13f4: the item to use next, or -1
     uint8_t flag13f8;            // +0x13f8
-    char padding_13f9[0x17];
+    char padding_13f9[0x13];
+    uint8_t flag140c;            // +0x140c
+    char padding_140d[0x3];
     float value1410;             // +0x1410
     int32_t value1414;           // +0x1414
     int32_t value1418;           // +0x1418
     int32_t value141c;           // +0x141c
     char padding_1420[0xc];
     float value142c[6];          // +0x142c
-    char padding_1444[0x14];
+    char padding_1444[0xc];
+    int32_t value1450;           // +0x1450: counts slot 68's calls
+    char padding_1454[0x4];
     float moneyEarned;           // +0x1458
     uint32_t mashCount;          // +0x145c: presses so far
     char padding_1460[0x28];
@@ -1146,7 +1193,9 @@ struct ControllablePlayer : BaseCharacter {
     char padding_14fa[0x6];
     PlayerInput* input;          // +0x1500
     uint32_t playerIndex;        // +0x1508
-    char padding_150c[0xc];
+    uint8_t flag150c;            // +0x150c
+    uint8_t flag150d;            // +0x150d
+    char padding_150e[0xa];
     int32_t value1518;           // +0x1518
     int32_t value151c;           // +0x151c
     uint8_t flag1520;            // +0x1520

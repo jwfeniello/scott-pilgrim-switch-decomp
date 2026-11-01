@@ -263,6 +263,13 @@ A few more things decide these handlers' code:
 - Reads before a `bool` built from `&&` stay above it, because the join block has two predecessors and the load can't
   sink. Pure arithmetic on them still moves down to its use (`AttackSlot::InRange`).
 
+- Arguments to an inlined helper are read before the helper's own work. Four ranges read into `WithinRange` keep their floats
+  across the actor lookup, and each case's lookup is then merged at the machine level (`Enemy::TargetInRange`).
+- A float kept across a call in a general register, or converted with `fmov`, points at an `i32` value. It usually means a
+  load that had only stores as users when an earlier pass ran.
+- Changing a field's type to suit one function can break others. `facingLeft` as `bool` gives `State136`'s `eor` but breaks
+  `TurnAround`, `FaceX` and two states, so it stays `uint8_t` and `State136` stays unmatched.
+
 ## Build profile for game classes
 
 The game-class sources (`gameplay_pickup`, `gameplay_piniata`) build with
@@ -592,6 +599,18 @@ their bases (`+0x98`, `+0x2f4`, the special attack's `+0x74`). Slot 229 then
 scales them by a factor from the singleton at `+0x7a0` and adds an integer
 bonus for its mode. Slot 229 is written out but not credited. Only the order of
 two address computations differs.
+
+## How an enemy picks an attack
+
+`CollectSpecialAttacks` (slot 162) lists the attacks of kinds 31 and 32, unless the target's slot 83 refuses them, and
+`CollectBasicAttacks` (slot 163) lists the rest, leaving out kinds 39, 45, 61 and 202 as well. `PickAttack` (slot 165) then
+chooses from a list by weight: an attack slot's `+0x10` byte is its weight, and `RollWeight` (`0x9dcfd0`) rolls from 0 to
+the total. `TargetInRange` (slot 169) tests the actor against half of one of four `AttackRange`s around `rangeOriginX` and
+`rangeOriginY`.
+
+`LoseGuts` (slot 90) takes guts up to `+0x2f8`. With bit 4 of `+0x978` set and at or below `gutsChanceLimit`, it rolls
+`gutsChance` percent to go to AI mode 4. `LoseGuts` and `TargetInRange` are matched. The others are written but not
+matched, and each one's comment says what still differs.
 
 ## Enemy attack states
 
@@ -1035,6 +1054,25 @@ binary has no field names. `SPTG::HudStatusGUTS` and `HudStatusHEARTS` show ther
 | `statSpeed` | +0x864 | `SpeedScale` (slot 60), the multiplier on run speeds |
 | `statWill` | +0x868 | `MaxGuts` (slot 150), `GutsCostScale` (slot 151), slot 58 with its flag set |
 | `statStrength` | +0x86c | slots 40, 152, and slot 58 with its flag clear |
+
+### Moving, landing and being down
+
+`State100` (on the ground) and `State102` (in the air) share `SteerFromInput`: it turns to the stick, sets the target
+speed along x from `+0x8d4`, and clears `+0x1bc` when the stick pushes against the motion. `SteerAlongY`, called inside it,
+moves along y unless `+0x13f0` is set. The two are nested because the original's two `Vector3` reads have separate stack
+slots, with the second one's above the first's. That happens when the second read is inlined while the first is in scope.
+In the air, with `+0x1288` raised, input waits for `airTimer` to run out.
+
+`State104` is landing. Entry clears `+0x13f0`, `+0x13f1` and `+0x140c`, stops the fall, and snaps to the ground when it's
+within 0.1 unless the playfield's `+0x128` is set. It also clears `airAttackCount`. While the state plays, a charge in
+`value142c[0]` picks state 175 and one in `value142c[1]` picks state 177.
+
+`State114` marks the player down on the HUD (`InGameHUD::players`) and shows status 12. `State136` is `Enemy::State136`
+with the facing kept up to date. `Slot68` counts its calls and runs `0x80f6e0` every so many, a random number between
+`+0x12ac` and `+0x12b0`. `Slot156` needs at least two players outside state 233.
+
+`State104`, `Slot68` and `Slot156` are matched. `State100`, `State102`, `State114` and `State136` are written but not
+matched, and each one's comment says what still differs.
 
 ### The playable characters' own states
 

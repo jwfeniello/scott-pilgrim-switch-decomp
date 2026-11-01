@@ -15,10 +15,17 @@ struct EnemySensor {
 };
 
 // Reached through the singleton at +0x7a0: picks the bonus and scales the base values.
-struct GameDifficultyAccessor { char padding[0x4c]; int32_t mode; float scale; };   // +0x4c, +0x50
+struct GameDifficultyAccessor {
+    char padding[0x4c];
+    int32_t mode;          // +0x4c
+    float scale;           // +0x50
+    char padding_54[0x4];
+    float bossScale;       // +0x58: for a boss's health and guts
+    float bossScale2;      // +0x5c: for its +0x90c
+};
 
 // A distance band (12 bytes).
-struct AttackRange { float min, max, extra; };   // extra: serialized, not read by the matched states
+struct AttackRange { float min, max, depth; };   // extra: serialized, not read by the matched states
 
 // A player the enemy may target, with its distance (0x18 bytes).
 struct TargetEntry {
@@ -103,12 +110,14 @@ struct Enemy : BaseCharacter {
     int State136(int event);                                         // slot 136, overrides BaseCharacter
     virtual void Spawn(const EnemySpawnInfo* info);                  // slot 159
     virtual int Slot160(); SPTG_SLOT(161)
-    virtual bool Slot162();                                                  // slot 162
-    SPTG_SLOT(163) SPTG_SLOT(164) SPTG_SLOT(165)
+    virtual bool CollectSpecialAttacks(onyx::Vector<uint32_t>* out);         // slot 162
+    virtual void CollectBasicAttacks(onyx::Vector<uint32_t>* out);           // slot 163
+    SPTG_SLOT(164)
+    virtual int PickAttack(const onyx::Vector<uint32_t>* candidates);        // slot 165
     virtual void Slot166(int kind);                                          // slot 166
     virtual void Approach();             // runs while the approach state continues // slot 167
     virtual bool Slot168();                                                  // slot 168
-    SPTG_SLOT(169)
+    virtual bool TargetInRange(int which);                                   // slot 169
     virtual float Slot170();                                                 // slot 170
     virtual float Slot171();                                                 // slot 171
     virtual int State172(int event); virtual State State172Ptr();            // slots 172, 173
@@ -157,7 +166,10 @@ struct Enemy : BaseCharacter {
     char padding_7b4[0x4];
     uint8_t flag7b8;             // +0x7b8
     uint8_t flag7b9;             // +0x7b9
-    char padding_7ba[0x1a];
+    char padding_7ba[0x2];
+    float rangeOriginX;          // +0x7bc: where slot 169 measures its ranges from
+    float rangeOriginY;          // +0x7c0
+    char padding_7c4[0x10];
     onyx::Vector3 savedMotion;   // +0x7d4
     char padding_7e0[0x8];
     onyx::Vector<AttackSlot> attackList; // +0x7e8: attacks requested this frame
@@ -279,6 +291,16 @@ struct Enemy : BaseCharacter {
     void RollChance();   // 0x9dd6b0: when slot 36 holds, rolls the random chance at +0x920
     void Update9dc4c0(); // 0x9dc4c0: runs each update of state 186
     void PlaceAtSpawn(const EnemySpawnInfo* info);   // 0x9dd110
+    static int RollWeight(uint8_t total);            // 0x9dcfd0
+    // Slot 169's test: whether the actor is within half of a range of the origin, along x and in depth.
+    __attribute__((always_inline)) bool WithinRange(float min, float max, float depth) {
+        onyx::Transform* transform = onyx::Get<onyx::Transform, onyx::kTransform>(onyx::Find<ActorObject, 0x6492d61du>(actorObject)->transform);
+        float x = transform->position.x;
+        float y = transform->position.y;
+        if (__builtin_fabsf(rangeOriginX - x) < __builtin_fabsf(min - max) * 0.5f &&
+            __builtin_fabsf(rangeOriginY - y) < depth * 0.5f) return true;
+        return false;
+    }
     void Calla0bac0(int a, int b, bool c);           // 0xa0bac0
     // Slot 159's work, which the classes that override it have inline.
     __attribute__((always_inline)) void SpawnFrom(const EnemySpawnInfo* info) {

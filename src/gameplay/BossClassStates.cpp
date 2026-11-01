@@ -2540,9 +2540,9 @@ bool LucasLee::Slot239(int anim) {
 
 // LucasLee slot 162 (0xa48050): never while +0xfd0 is raised; otherwise
 // Enemy's.
-bool LucasLee::Slot162() {
+bool LucasLee::CollectSpecialAttacks(onyx::Vector<uint32_t>* out) {
     if (flagFd0) return false;
-    return Enemy::Slot162();
+    return Enemy::CollectSpecialAttacks(out);
 }
 
 // KenKyle slot 240 (0xa4d520): when the twin has +0xd28 raised, raises it here

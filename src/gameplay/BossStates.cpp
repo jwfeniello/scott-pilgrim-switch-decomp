@@ -311,4 +311,31 @@ int Boss::State252(int event) {
     }
 }
 
+// Slot 229 (0xa1b380): Enemy's scaling with the boss's own factors: the bonus for the scaling's mode is in two parts, the
+// second going to +0x910. Not yet matched, with the same gap as Enemy::Slot229: the original works out the address of
+// `bonus` before comparing the mode with 2.
+void Boss::Slot229() {
+    int mode = scaling.Get()->mode;
+    const int32_t* first;
+    const int32_t* second;
+    if (mode == 2) {
+        first = &bonusMode2;
+        second = &value9f0;
+    } else if (mode == 3) {
+        first = &bonusMode3;
+        second = &value9f8;
+    } else {
+        first = &bonus;
+        second = &value9e8;
+    }
+    int32_t extra = *first;
+    int32_t extra2 = *second;
+    GameDifficultyAccessor* values = scaling.Get();
+    scaled9c = base98 * values->bossScale + extra;
+    RestoreHealth();
+    scaled2f8 = base2f4 * values->bossScale + extra;
+    guts = MaxGuts();
+    scaled910 = base90c * values->bossScale2 + extra2;
+}
+
 }  // namespace SPTG

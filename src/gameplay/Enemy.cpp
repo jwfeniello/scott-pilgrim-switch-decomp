@@ -1,6 +1,7 @@
 // SPTG::Enemy's own virtuals other than its states (see
 // docs/GAME_CLASSES.md#enemy-states). Names are provisional.
 #include "Enemy.h"
+#include "Random.h"
 #include "Spawner.h"
 
 namespace SPTG {
@@ -82,16 +83,16 @@ void Enemy::Slot4(onyx::Archive& archive, ComponentSlot::Source* source) {
     onyx::Transfer(archive, flag940);
     onyx::Transfer(archive, range0.min);
     onyx::Transfer(archive, range0.max);
-    onyx::Transfer(archive, range0.extra);
+    onyx::Transfer(archive, range0.depth);
     onyx::Transfer(archive, range1.min);
     onyx::Transfer(archive, range1.max);
-    onyx::Transfer(archive, range1.extra);
+    onyx::Transfer(archive, range1.depth);
     onyx::Transfer(archive, range2.min);
     onyx::Transfer(archive, range2.max);
-    onyx::Transfer(archive, range2.extra);
+    onyx::Transfer(archive, range2.depth);
     onyx::Transfer(archive, range3.min);
     onyx::Transfer(archive, range3.max);
-    onyx::Transfer(archive, range3.extra);
+    onyx::Transfer(archive, range3.depth);
     onyx::Transfer(archive, flag974);
     onyx::Transfer(archive, flags978);
     onyx::Transfer(archive, value97c);
@@ -265,6 +266,109 @@ void Enemy::Slot7() {
         reinterpret_cast<EnemyLinkObject*>(handle788->object)->Block()->value4 = 0;
         reinterpret_cast<EnemyLinkObject*>(handle788->object)->Block()->flagsC &= ~8;
         reinterpret_cast<EnemyLinkObject*>(handle788->object)->Block()->flagsC |= 2;
+    }
+}
+
+// Slot 90 (0x9ce680): takes guts, up to +0x2f8, and with bit 4 of +0x978 set and few enough left it may go to AI mode 4.
+void Enemy::LoseGuts(float amount) {
+    float left = guts - amount;
+    left = left < 0.0f ? 0.0f : left;
+    if (scaled2f8 < left) left = scaled2f8;
+    guts = left;
+    if (value874 == 0 && (flags978 & 0x10) && left <= gutsChanceLimit) {
+        float roll = static_cast<uint32_t>(RandomRange<int>(1, 100));
+        if (gutsChance >= roll) value874 = 4;
+    }
+}
+
+// Slot 162 (0x9cfa40): lists the attacks of kinds 31 and 32, unless the target refuses them.
+// Not yet matched: the original keeps the index as the next value minus one, so one more register is in use.
+bool Enemy::CollectSpecialAttacks(onyx::Vector<uint32_t>* out) {
+    if (static_cast<BaseCharacter*>(target->object)->Slot83()) return false;
+    bool found = false;
+    for (uint32_t i = 0; i < attackList.size; ++i) {
+        if (static_cast<uint32_t>(attackList.data[i].kind - 31) <= 1) {
+            out->Append(i);
+            found = true;
+        }
+    }
+    return found;
+}
+
+// Slot 163 (0x9cfbe0): lists the other attacks, leaving out what slot 237 refuses and kind 202.
+// Not yet matched, for the same reason as slot 162.
+void Enemy::CollectBasicAttacks(onyx::Vector<uint32_t>* out) {
+    for (uint32_t i = 0; i < attackList.size; ++i) {
+        switch (attackList.data[i].kind) {
+        case 31:
+        case 32:
+        case 39:
+        case 45:
+        case 61:
+        case 202:
+            break;
+        default:
+            out->Append(i);
+            break;
+        }
+    }
+}
+
+// A roll from 0 to `total`, the weights of the attacks being picked from.
+// Not yet matched: the checker reports a binding conflict that hasn't been looked into.
+int Enemy::RollWeight(uint8_t total) {
+    return RandomRange<int>(0, total);
+}
+
+// Slot 165 (0x9d0040): picks one of the listed attacks, by the weight each carries at +0x10. -1 when none can be picked.
+// Not yet matched: the first loop's four running totals sit in different registers.
+int Enemy::PickAttack(const onyx::Vector<uint32_t>* candidates) {
+    uint8_t total = 0;
+    for (uint32_t i = 0; i < candidates->size; ++i) {
+        uint32_t index = candidates->data[i];
+        total += attackList.data[index].flag10;
+    }
+    if (total) {
+        int roll = RollWeight(total);
+        for (uint32_t i = 0; i < candidates->size; ++i) {
+            uint32_t index = candidates->data[i];
+            uint8_t weight = attackList.data[index].flag10;
+            if (weight >= roll) return index;
+            roll -= weight;
+        }
+    }
+    return -1;
+}
+
+// Slot 169 (0x9d01f0): whether the actor stands within half of one of the four ranges of the origin, along x and in depth.
+bool Enemy::TargetInRange(int which) {
+    switch (which) {
+    case 0: return WithinRange(range0.min, range0.max, range0.depth);
+    case 1: return WithinRange(range1.min, range1.max, range1.depth);
+    case 2: return WithinRange(range2.min, range2.max, range2.depth);
+    case 3: return WithinRange(range3.min, range3.max, range3.depth);
+    }
+    return false;
+}
+
+// Slot 56 (0x9cdf00): becoming solid goes back to the state at slot 96 on the ground or slot 102 in the air, unless it's
+// out. Otherwise it stops, keeps falling if in the air, and goes to the state at slot 172.
+// Not yet matched: the original tests the inverted value it stored (`tbnz` on the `mvn`), and ours the parameter.
+void Enemy::SetSolid(bool solid) {
+    flag940 = solid;
+    bool notSolid = !solid;
+    flagAe9 = notSolid;
+    if (notSolid) {
+        motion = onyx::Vector3::Zero();
+        motionTarget = onyx::Vector3::Zero();
+        if (!IsOnGround()) {
+            motionTarget.z = savedZ;
+            motionC4 = savedC4;
+        }
+        states.Transition(State172Ptr());
+    } else if (!IsOut()) {
+        if (IsOnGround()) states.Transition(State96Ptr());
+        else states.Transition(State102Ptr());
     }
 }
 

@@ -277,14 +277,14 @@ void ControllablePlayer::Slot4(onyx::Archive& archive, ComponentSlot::Source* so
     onyx::Transfer(archive, value1268);
     onyx::Transfer(archive, value126c);
     onyx::Transfer(archive, value1270);
-    onyx::Transfer(archive, value1284);
+    onyx::Transfer(archive, airTimerStart);
     onyx::Transfer(archive, flag1288);
-    value1280 = value1284;
+    airTimer = airTimerStart;
     onyx::Transfer(archive, value128c);
     onyx::Transfer(archive, value1290);
     onyx::Transfer(archive, value1294);
     onyx::Transfer(archive, value1298);
-    onyx::Transfer(archive, value129c);
+    onyx::Transfer(archive, partnerDelay);
     onyx::Transfer(archive, value12a0);
     onyx::Transfer(archive, value12a4);
     onyx::Transfer(archive, value12a8);

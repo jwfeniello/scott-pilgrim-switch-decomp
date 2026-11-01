@@ -56,6 +56,16 @@ template<class T> struct Vector {
     // SetCount out of line, one instance per element type (Vector.cpp). Some
     // classes expand it in place instead.
     __attribute__((noinline)) void Resize(uint64_t count) { SetCount(count); }
+    // With the growth inline: half as much again, or just enough if that's more.
+    __attribute__((always_inline)) void Append(const T& item) {
+        uint64_t count = size + 1;
+        if (capacity < count) {
+            uint64_t grown = capacity + (capacity >> 1);
+            data = Grow(count, size, grown >= count ? grown : count);
+        }
+        new (&data[size]) T(item);
+        ++size;
+    }
     __attribute__((always_inline)) void PushBack(const T& item) {
         uint64_t count = size + 1;
         if (capacity < count) data = Reserve(count, size, count);
