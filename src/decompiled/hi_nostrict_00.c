@@ -8,7 +8,7 @@
 #define __int8 char
 typedef unsigned long long _QWORD; typedef unsigned int _DWORD; typedef unsigned short _WORD; typedef unsigned char _BYTE; typedef unsigned char _BOOL1; typedef unsigned int _BOOL4; typedef unsigned long long _BOOL8;
 typedef __uint128_t _OWORD;
-typedef unsigned long size_t; typedef long ssize_t; typedef struct { char data[48]; } pthread_mutex_t; typedef struct { char data[48]; } pthread_cond_t; typedef void FILE;
+typedef char __guard; typedef long time_t; typedef int wchar_t_; typedef unsigned long pthread_t; typedef unsigned long size_t; typedef long ssize_t; typedef struct { char data[48]; } pthread_mutex_t; typedef struct { char data[48]; } pthread_cond_t; typedef void FILE;
 typedef union { unsigned long long n128_u64[2]; float n128_f32[4]; double n128_f64[2]; } __n128;
 #define bool _Bool
 #define true 1
@@ -34,6 +34,7 @@ typedef union { unsigned long long n128_u64[2]; float n128_f32[4]; double n128_f
 void* memcpy(void*, const void*, size_t); void* memset(void*, int, size_t); void* memmove(void*, const void*, size_t); int memcmp(const void*, const void*, size_t); size_t strlen(const char*); int strcmp(const char*, const char*); void free(void*); void* malloc(size_t); float fabsf(float); float sqrtf(float); float floorf(float); float ceilf(float);
 
 
+// N2EE22D3D11DeviceContextImplINS_20NvnDeviceContextBaseELb0EEE, virtual slot 96
 __int64 __fastcall sub_DE3960(__int64 result, _DWORD *a2, __int64 a3)
 {
   unsigned __int64 v3; // x8
