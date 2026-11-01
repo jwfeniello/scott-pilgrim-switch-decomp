@@ -253,7 +253,9 @@ struct AnimatedAiActor : onyx::Component {
     uint8_t flag100;             // +0x100
     char padding_101[0x3];
     float brakeForce;            // +0x104: how hard it slows down
-    char padding_108[0x18];
+    char padding_108[0x4];
+    onyx::Vector3 dismountOffset; // +0x10c: where a rider getting off moves it
+    char padding_118[0x8];
     onyx::Vector2 value120;      // +0x120: copied to ActorFlags +0x7c by slot 16
     char padding_128[0x4];
     int32_t value12c;            // +0x12c
@@ -290,6 +292,7 @@ struct AnimatedAiActor : onyx::Component {
     float motionC4;              // +0x1c4
     char padding_1c8[0x18];
     onyx::ComponentHandle* handle1e0; // +0x1e0
+    void Call944010();           // 0x944010
     // -1 facing left, 1 facing right.
     __attribute__((always_inline)) float FacingSign() {
         ActorObject* actor = onyx::Find<ActorObject, onyx_types::type_6492d61d>(actorObject);

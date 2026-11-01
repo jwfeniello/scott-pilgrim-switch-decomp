@@ -92,12 +92,12 @@ bool Lynette::Slot238() {
 }
 
 // Patel slot 170 (0xa3fff0): the jump-back speed, tripled with +0x974 and
-// scaled by +0xd78 in mode 4. Not yet matched (not credited): the original loads
-// the mode after the multiply.
+// scaled by +0xd78 in mode 4.
 float Patel::Slot170() {
+    int mode = modeFfc;
     float speed = jumpBackSpeed;
     if (flag974) speed *= 3.0f;
-    if (modeFfc == 4) return speed * scaleD78;
+    if (mode == 4) speed *= scaleD78;
     return speed;
 }
 
@@ -1015,20 +1015,14 @@ int Patel::State256(int event) {
 
 // KenKyle slot 38 (0xa4c300): outside its states 258, 260 and 262 it is Boss's
 // hit check; in them it refuses a hit it has recorded and records any other.
-// Not yet matched (not credited): one test compiles to tbz instead of cbz.
 bool KenKyle::OnHit(BaseCharacter* other, void* hit) {
-    State first = State258Ptr();
-    if (!(states.current == first)) {
-        State second = State260Ptr();
-        if (!(states.current == second)) {
-            State third = State262Ptr();
-            if (!(states.current == third)) return Boss::OnHit(other, hit);
-        }
+    if (states.IsIn(State258Ptr()) || states.IsIn(State260Ptr()) || states.IsIn(State262Ptr())) {
+        int32_t id = static_cast<const int32_t*>(hit)[17];
+        if (recentHits[0] == id || recentHits[1] == id || recentHits[2] == id || recentHits[3] == id) return false;
+        RecordHit(hit);
+        return true;
     }
-    int32_t id = static_cast<const int32_t*>(hit)[17];
-    if (recentHits[0] == id || recentHits[1] == id || recentHits[2] == id || recentHits[3] == id) return false;
-    RecordHit(hit);
-    return true;
+    return Boss::OnHit(other, hit);
 }
 
 // HipsterChick slot 108 (0xa43050): entry stops the chick; each update switches
@@ -1602,7 +1596,6 @@ int SuperGideon::State244(int event) {
 // Patel slot 244 (0xa40110): NegaScott's approach; +0x1000 (a mode change)
 // leads to slot 260. After Boss's update, standing on a playfield collision
 // with +0x128 and bit 31 of +0x130 drops what it holds and goes to slot 100.
-// Not yet matched (not credited).
 int Patel::State244(int event) {
     switch (event) {
     case kStateUpdate: {
@@ -1631,21 +1624,20 @@ int Patel::State244(int event) {
         flag813 = 1;
         mode87c = 2;
         return kStateHandled;
-    case kStateExit:
-        flag813 = 0;
-        mode87c = 3;
-        return kStateHandled;
     case kStateEvent3:
         return kStateHandled;
     default:
         return kStateUnhandled;
+    case kStateExit:
+        flag813 = 0;
+        mode87c = 3;
+        return kStateHandled;
     }
 }
 
 // Lynette slot 274 (0xa64390): a guard. Animation 181 loops; a hit while time
 // (+0xf38) and absorbed damage (+0xf3c) remain plays 135, then 181 again. Once
 // either runs out, animation 182, then slot 244 with +0xd25 raised.
-// Not yet matched (not credited).
 int Lynette::State274(int event) {
     switch (event) {
     case kStateUpdate:
@@ -1668,13 +1660,13 @@ int Lynette::State274(int event) {
         damageTaken = 0.0f;
         flag3bb = 1;
         return kStateHandled;
-    case kStateExit:
-        flag3bb = 0;
-        return kStateHandled;
     case kStateEvent3:
         return kStateHandled;
     default:
         return kStateUnhandled;
+    case kStateExit:
+        flag3bb = 0;
+        return kStateHandled;
     }
 }
 
@@ -1777,7 +1769,6 @@ int KenKyle::State248(int event) {
 // GigaGideon slot 258 (0xa5b4a0): stands with animation 12. An update goes to
 // slot 264 once +0xd54 is used up, to 262 when +0xd65 is set (clearing it), to
 // 96 when 0xa1e720 passes, else to 260 after +0xe68 seconds.
-// Not yet matched (not credited).
 int GigaGideon::State258(int event) {
     switch (event) {
     case kStateUpdate:
@@ -1802,13 +1793,13 @@ int GigaGideon::State258(int event) {
         value7ac = 0.0f;
         flag3bb = 1;
         return kStateHandled;
-    case kStateExit:
-        flag3bb = 0;
-        return kStateHandled;
     case kStateEvent3:
         return kStateHandled;
     default:
         return kStateUnhandled;
+    case kStateExit:
+        flag3bb = 0;
+        return kStateHandled;
     }
 }
 
@@ -1849,7 +1840,6 @@ int GigaGideon::State262(int event) {
 // Lynette slot 282 (0xa64d10): animation 115 (unless already playing); when
 // +0xd83 is raised, animation 13, and once that is done, slot 264. Exit clears
 // +0xd59.
-// Not yet matched (not credited).
 int Lynette::State282(int event) {
     switch (event) {
     case kStateUpdate:
@@ -1870,14 +1860,14 @@ int Lynette::State282(int event) {
         motionTarget = onyx::Vector3::Zero();
         if (animation != 115) PlayAnimation(115, 1, 0, 1.0f);
         return kStateHandled;
-    case kStateExit:
-        flag3ba = 0;
-        flagD59 = 0;
-        return kStateHandled;
     case kStateEvent3:
         return kStateHandled;
     default:
         return kStateUnhandled;
+    case kStateExit:
+        flag3ba = 0;
+        flagD59 = 0;
+        return kStateHandled;
     }
 }
 
@@ -2400,7 +2390,6 @@ static inline float DistanceXY(BaseCharacter* first, BaseCharacter* second) {
 // KenKyle slot 260 (0xa4e750): stops with animation 114 and +0xd4d raised and
 // waits for the twin; once the twin is in this state too and within +0x10bc
 // (on X and Y), slot 262.
-// Not yet matched (not credited).
 int KenKyle::State260(int event) {
     switch (event) {
     case kStateUpdate:
@@ -2416,14 +2405,14 @@ int KenKyle::State260(int event) {
         PlayAnimation(114, 1, 0, 1.0f);
         flag3bb = 1;
         return kStateHandled;
-    case kStateExit:
-        flagD4d = 0;
-        flag3bb = 0;
-        return kStateHandled;
     case kStateEvent3:
         return kStateHandled;
     default:
         return kStateUnhandled;
+    case kStateExit:
+        flagD4d = 0;
+        flag3bb = 0;
+        return kStateHandled;
     }
 }
 

@@ -228,6 +228,10 @@ A few more things decide these handlers' code:
 - **Loads after slow paths.** A value read before an accessor's slow path stays in a
   callee-saved register across it. `slideSpeed * FacingSign()` holds the speed in
   `d8`; computing the sign into a local first gives the original's code.
+- **Testing several states.** `if (states.IsIn(a()) || states.IsIn(b()))` with the work inside
+  the `if` is the form that matches. Selection then sees the work as the next block and inverts the
+  condition, which gives `cbz`. The same test written with early returns selects `tbnz`, and a later
+  pass reverses it to `tbz`, so one instruction differs. `KenKyle::OnHit` shows this.
 
 ## Build profile for game classes
 

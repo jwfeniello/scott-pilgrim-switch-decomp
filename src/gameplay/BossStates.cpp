@@ -146,10 +146,9 @@ int Boss::State256(int event) {
     }
 }
 
-// Slot 96 (0xa19080): the boss's idle state. Entry stops it and plays animation
-// 0; off the ground it switches to slot 102, and on the ground to slot 244
-// unless 0xa1e720 holds or 0xa1e820 fails. Not yet matched (not credited): as
-// with slot 116, the original merges the "handled" returns into the exit case.
+// Slot 96 (0xa19080): the boss's idle state. Entry stops it and plays
+// animation 0; off the ground it switches to slot 102, and on the ground to
+// slot 244 unless 0xa1e720 holds or 0xa1e820 fails.
 int Boss::State96(int event) {
     switch (event) {
     case kStateUpdate:
@@ -166,13 +165,13 @@ int Boss::State96(int event) {
         PlayAnimation(0, 1, 0, 1.0f);
         mode87c = 2;
         return kStateHandled;
-    case kStateExit:
-        mode87c = 3;
-        return kStateHandled;
     case kStateEvent3:
         return kStateHandled;
     default:
         return kStateUnhandled;
+    case kStateExit:
+        mode87c = 3;
+        return kStateHandled;
     }
 }
 
