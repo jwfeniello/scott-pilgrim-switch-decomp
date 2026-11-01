@@ -76,4 +76,25 @@ void ControllablePlayer::Slot20() {
     Notify995d50();
 }
 
+// Whether the player can start what slot 82 asks about: not in the state at slot 114, with nothing at +0x70 of the camera
+// singleton, held, not answering slot 85, on the ground, unflagged and not in one of five action modes.
+bool ControllablePlayer::Slot82() {
+    if (states.IsIn(State114Ptr())) return false;
+    if (camera.Get()->value70) return false;
+    if (!IsHeld()) return false;
+    if (Slot85()) return false;
+    if (!IsOnGround()) return false;
+    if (flag141) return false;
+    switch (actionMode) {
+    case 3:
+    case 5:
+    case 6:
+    case 8:
+    case 11:
+        return false;
+    default:
+        return true;
+    }
+}
+
 }  // namespace SPTG

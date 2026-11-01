@@ -950,37 +950,6 @@ int Lynette::State244(int event) {
         return kStateUnhandled;
     }
 }
-int Todd::State244(int event) {
-    switch (event) {
-    case kStateUpdate:
-        if (flagD89) {
-            flagD89 = 0;
-            valueD94 = 0;
-            states.Transition(State264Ptr());
-            return kStateParentTookOver;
-        }
-        if (Boss::State244(kStateUpdate) == kStateParentTookOver) return kStateParentTookOver;
-        return kStateHandled;
-    case kStateEnter:
-        aiMode = target && target->object ? 1 : 6;
-        if (!Slot239(7)) PlayAnimation(7, 1, 0, 1.0f);
-        value7ac = 0.0f;
-        flag813 = 1;
-        mode87c = 2;
-        flagD88 = 1;
-        CallA254a0(0.0f);
-        return kStateHandled;
-    case kStateExit:
-        flag813 = 0;
-        mode87c = 3;
-        flagD88 = 0;
-        return kStateHandled;
-    case kStateEvent3:
-        return kStateHandled;
-    default:
-        return kStateUnhandled;
-    }
-}
 
 // Patel slot 256 (0xa40400): animations 150, 151 and 152 in turn with +0x3ba
 // raised; once 152 is done, switches to slot 200. Not yet matched (not
@@ -2799,6 +2768,54 @@ void SuperFightingRobotHand::Slot4(onyx::Archive& archive, ComponentSlot::Source
     onyx::Transfer(archive, valueF54);
     onyx::Transfer(archive, valueF58);
     onyx::Transfer(archive, valueF5c);
+}
+
+// A landed attack in animation 141, in the state at slot 172, sets +0xd8b once. Then it holds like any actor.
+void Todd::AttackLanded(AnimatedAiActor* target) {
+    if (animation == 141 && states.IsIn(State172Ptr()) && !flagD8b) flagD8b = 1;
+    HoldForLandedAttack();
+}
+
+// Todd's slot 244: like the boss's, but raising +0xd89 sends him to the state at slot 264.
+int Todd::State244(int event) {
+    int result = kStateHandled;
+    switch (event) {
+    case kStateUpdate:
+        if (flagD89) {
+            flagD89 = 0;
+            valueD94 = 0;
+            states.Transition(State264Ptr());
+            result = kStateParentTookOver;
+        } else if (Boss::State244(kStateUpdate) == kStateParentTookOver) {
+            states.AssertOwner(this);
+            result = kStateParentTookOver;
+        } else {
+            result = kStateHandled;
+        }
+        break;
+    case kStateEnter:
+        aiMode = target && target->object ? 1 : 6;
+        if (!Slot239(7)) PlayAnimation(7, 1, 0, 1.0f);
+        result = kStateHandled;
+        value7ac = 0.0f;
+        flag813 = 1;
+        mode87c = 2;
+        flagD88 = 1;
+        CallA254a0(0.0f);
+        break;
+    case kStateEvent3:
+        break;
+    default:
+        result = kStateUnhandled;
+        break;
+    case kStateExit:
+        result = kStateHandled;
+        flag813 = 0;
+        mode87c = 3;
+        flagD88 = 0;
+        break;
+    }
+    return result;
 }
 
 }  // namespace SPTG

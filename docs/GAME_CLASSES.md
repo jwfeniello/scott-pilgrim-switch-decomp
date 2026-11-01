@@ -235,6 +235,13 @@ A few more things decide these handlers' code:
   loop. The same markers count in landing pads: each local declared after a throwing call adds a
   one-branch landing pad, so the number of those pads shows how many locals the original had in
   that scope. `Striker::ArrivingState` has three.
+- **The assumption on other paths.** `states.AssertOwner(this)` also belongs on the "parent took over" path of
+  a state that asks its parent first. Without it `result = took over` and `result = handled` fold into a
+  select, and the original keeps both as branches (`Todd::State244`). This is the same stand-in described
+  under the exit case: what the original tests there is unknown.
+- **Narrow loads hide wider fields.** `ldrb [x, #0x61]` with `tbnz #7`, and `ldrb [x, #0x62]` with `tbnz #0`, are
+  bits 15 and 16 of a 32-bit field at `+0x60`, narrowed by selection. Read as bytes they come out as
+  `ldrsb` and `tbnz #31`. `PlayerInfoView::moves` turned out to be this, and it is now declared as 32 bits.
 - **Testing several states.** `if (states.IsIn(a()) || states.IsIn(b()))` with the work inside
   the `if` is the form that matches. Selection then sees the work as the next block and inverts the
   condition, which gives `cbz`. The same test written with early returns selects `tbnz`, and a later

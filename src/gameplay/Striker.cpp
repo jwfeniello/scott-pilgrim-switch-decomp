@@ -314,7 +314,7 @@ void KnivesRamona::AttackDone() {
             ControllablePlayer* player = *i;
             if (!player->IsOut() && player->actionMode != 9 && player->IsHeld()) {
                 player->GainHealth(hitCount);
-                player->Call80f6e0();
+                player->Effect10();
             }
             ++i;
         } while (i != catalog->players + catalog->count);

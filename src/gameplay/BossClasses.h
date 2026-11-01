@@ -49,6 +49,7 @@ struct TagTeamMember : Boss {
 };
 // vtable 0x188a8a0, 272 slots
 struct Todd : Boss {
+    void AttackLanded(AnimatedAiActor* target) override;
     float Slot59();
     void Update();
     float TakeDamage(const void* hit, BaseCharacter* other);
@@ -78,7 +79,8 @@ struct Todd : Boss {
     onyx::ComponentHandle* handlesD48[8]; // +0xd48: moved by slot 4
     uint8_t flagD88;             // +0xd88: raised in states 98 and 248
     uint8_t flagD89;             // +0xd89
-    char padding_d8a[0x2];
+    char padding_d8a[0x1];
+    uint8_t flagD8b;             // +0xd8b: set by a landed attack in animation 141
     float damageD8c;             // +0xd8c: all damage taken
     int32_t countD90;            // +0xd90
     int32_t valueD94;            // +0xd94

@@ -123,7 +123,12 @@ struct ActorFlags : onyx::Component {
 };
 // SPTG::LevelAIManager (type 0x2b951b8a), reached through the singleton at +0x80 (getter 0x992bf0).
 // What the singleton at AnimatedAiActor +0x88 gives (getter 0x774b50).
-struct CameraAccessor { char padding[0x50]; onyx::ComponentHandle* levelCamera; };   // +0x50, LevelCamera
+struct CameraAccessor {
+    char padding[0x50];
+    onyx::ComponentHandle* levelCamera;  // +0x50, LevelCamera
+    char padding_58[0x18];
+    void* value70;                       // +0x70: while set, a player can't start what slot 82 asks about
+};
 struct GameDifficulty { char padding[0x108]; float value108; };   // +0x108
 struct NpcAccessor { char padding[0x60]; onyx::ComponentHandle* catalog; };   // +0x60, Catalog<NPC>
 struct LevelAIManager {
@@ -679,14 +684,16 @@ struct AttackInput {
 // SPTG::PlayerInfo (type 0x466135fe) as the player classes use it: a player's saved progress, with the moves
 // learned and the worlds cleared. ComponentSerialize.h has the serialized view of the same class.
 struct PlayerInfoView : onyx::Component {
-    char padding_8[0x59];
-    uint8_t moves;               // +0x61
-    char padding_62[0x32];
+    char padding_8[0x58];
+    uint32_t moves;              // +0x60: one bit for each move learned
+    char padding_64[0x30];
     uint8_t allMoves;            // +0x94
 };
 enum PlayerMove {
-    kMoveAirKick = 0x04,
-    kMoveAirAttack = 0x10,
+    kMoveAirKick = 0x400,
+    kMoveAirAttack = 0x1000,
+    kMoveStrikerA = 0x8000,      // bit 15: Knives' first special
+    kMoveStrikerB = 0x10000,     // bit 16: Knives' air special
 };
 struct Item;
 struct ItemRegistryNode {
@@ -739,7 +746,7 @@ struct ControllablePlayer : BaseCharacter {
     }
     void ReadAttackInput(AttackInput* out);              // 0x991a20
     bool ReadMoveInput(PlayerInput* from, onyx::Vector3* out);  // 0x9913a0
-    void Call80f6e0();                                          // 0x80f6e0
+    bool Slot82() override;                                     // slot 82
     void Call996c30(float amount, int a, int b, void* effect);  // 0x996c30
     // Takes `amount` from the player's money. A negative amount is money earned, and counts towards the total.
     __attribute__((always_inline)) void SpendMoney(float amount) {
@@ -879,7 +886,9 @@ struct ControllablePlayer : BaseCharacter {
     virtual int State251(int event); virtual State State251Ptr();              // slots 251, 252
     virtual int State253(int event); virtual State State253Ptr();              // slots 253, 254
     virtual int Slot255(int event);                          // slot 255
+    int CheckGroundInput();      // 0x990800: slot 255's code, called directly with no event by the overrides
     virtual int AirInput(int event);                         // slot 256
+    int CheckAirInput();         // 0x991150: slot 256's code, called directly with no event by the overrides
     virtual void Slot257();                                  // slot 257
 
     char padding_77c[0xc];
