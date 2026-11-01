@@ -372,4 +372,16 @@ void Enemy::SetSolid(bool solid) {
     }
 }
 
+// Slot 94 (0x9ce820): knocked out. It lets go, loses all health and guts, and goes down: from state 114 to 116, otherwise to 108,
+// and not at all from 108, 112, 116, 222 or 200.
+void Enemy::Slot94() {
+    Dismount();
+    health = 0.0f;
+    guts = 0.0f;
+    if (!states.IsIn(State108Ptr()) && !states.IsIn(State112Ptr()) && !states.IsIn(State116Ptr()) && !states.IsIn(State222Ptr()) && !states.IsIn(State200Ptr())) {
+        if (states.IsIn(State114Ptr())) states.Transition(State116Ptr());
+        else states.Transition(State108Ptr());
+    }
+}
+
 }  // namespace SPTG

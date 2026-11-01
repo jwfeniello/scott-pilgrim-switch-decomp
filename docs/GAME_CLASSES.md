@@ -279,6 +279,10 @@ A few more things decide these handlers' code:
 - A value multiplied by a function's result, loaded after the call, needs the call in a local first:
   `float sign = FacingSign(); speed = jumpBackSpeed * sign;` (`EnemyChubby::State236`).
 
+- Two cases can go to one block in the finished code but still need separate compares. Selection only builds a compare for each
+  if the destinations differ when it runs. `Todd::State270` matches only with an assumption in `case 136` that falls into
+  `case 135`. That is the same stand-in as the exit case, and what the original does there is unknown.
+
 ## Build profile for game classes
 
 The game-class sources (`gameplay_pickup`, `gameplay_piniata`) build with
@@ -608,6 +612,17 @@ their bases (`+0x98`, `+0x2f4`, the special attack's `+0x74`). Slot 229 then
 scales them by a factor from the singleton at `+0x7a0` and adds an integer
 bonus for its mode. Slot 229 is written out but not credited. Only the order of
 two address computations differs.
+
+## The one-hit enemies' idle state
+
+`EnemyForestElves`, `EnemyStuntman` and `EnemySasuke` share `EnemyOneHitWonder`'s `EnemySensor` at `+0xb90`, and each has its
+own slot 96 written the same way. While idle, once the sensor passes, it takes the first thing the sensor has seen that's
+enabled and not out, turns to it, and places the range origin `+0xbbc` from it (`PickPoint`, `0x9daf90`). `flagBcc` stops this
+running twice, and it goes to state 234. The stuntman also sets `minX` and `maxX` from the screen, less the margin at `+0xbd0`.
+Sasuke sets `targetX` to the screen edge it faces, less the same margin.
+
+`EnemyShooter::State236` fires once `stateTime` runs out. At a target in the air it may aim up: `valueC28` is the percent chance,
+and the upward velocity comes from `tanf` of the angle in `valueC2c`, times the shot's speed along x.
 
 ## How an enemy picks an attack
 

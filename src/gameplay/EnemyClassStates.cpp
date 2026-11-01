@@ -1580,4 +1580,200 @@ int EnemyJetPackMatt::State106(int event) {
     return result;
 }
 
+// EnemyShooter slot 236 (0x9ec240): fires once its delay runs out, and goes to state 96 when the animation ends. At a target in
+// the air it may aim up: animation 21 with its own muzzle and delay, and an upward velocity from the angle.
+int EnemyShooter::State236(int event) {
+    int result = kStateHandled;
+    switch (event) {
+    case kStateUpdate:
+        if (!flagC40) {
+            stateTime -= Move_FrameDelta;
+            if (stateTime < 0.0f) {
+                Fire();
+                flagC40 = 1;
+            }
+        }
+        if (AnimationDone()) {
+            states.Transition(State96Ptr());
+            result = kStateParentTookOver;
+        } else {
+            result = kStateHandled;
+        }
+        break;
+    default:
+        result = kStateUnhandled;
+        break;
+    case kStateEnter: {
+        StartAttack(&attacks[0].attack, false, 1, nullptr);
+        vectorC50.x = valueC08;
+        vectorC50.y = valueC0c;
+        vectorC50.z = valueC10;
+        bool aim = false;
+        if (!static_cast<BaseCharacter*>(target->object)->IsOnGround()) {
+            float roll = static_cast<uint32_t>(RandomRange<int>(0, 100));
+            aim = valueC28 > roll;
+        }
+        if (aim) {
+            vectorC50.z = __builtin_tanf(valueC2c * 3.1415927f / 180.0f) * vectorC50.x;
+            vectorC44.x = valueC30;
+            vectorC44.y = valueC34;
+            vectorC44.z = valueC38;
+            stateTime = valueC3c;
+            PlayAnimation(21, 0, 0, 1.0f);
+        } else {
+            vectorC44.x = valueC14;
+            vectorC44.y = valueC18;
+            vectorC44.z = valueC1c;
+            stateTime = valueC20;
+            PlayAnimation(20, 0, 0, 1.0f);
+        }
+        flagC40 = 0;
+        result = kStateHandled;
+        break;
+    }
+    case kStateExit:
+        states.AssertOwner(this);
+        result = kStateHandled;
+        break;
+    case kStateEvent3:
+        break;
+    }
+    return result;
+}
+
+// EnemyForestElves slot 96 (0x9fe250): idle until the sensor passes. It then turns to the first thing the sensor has seen that's
+// enabled and not out, places the range origin near it once, and goes to state 234.
+int EnemyForestElves::State96(int event) {
+    int result = kStateHandled;
+    switch (event) {
+    case kStateUpdate:
+        if (Check9ddab0(&sensor)) {
+            if (!flagBcc) {
+                BaseCharacter* seen = nullptr;
+                for (uint32_t i = 0; i < sensor.count; ++i) {
+                    onyx::ComponentHandle* handle = sensor.handles[i];
+                    if (handle && handle->object) {
+                        BaseCharacter* character = static_cast<BaseCharacter*>(handle->object);
+                        if ((character->componentFlags & 1) && !character->IsOut()) {
+                            seen = character;
+                            break;
+                        }
+                    }
+                }
+                if (!seen) break;
+                FaceX(onyx::Get<onyx::Transform, onyx::kTransform>(onyx::Find<ActorObject, 0x6492d61du>(seen->actorObject)->transform)->position.x);
+                onyx::Vector3 point;
+                PickPoint(&point, static_cast<float>(valueBbc));
+                rangeOriginX = point.x;
+                rangeOriginY = point.y;
+                rangeOriginZ = point.z;
+                flagBcc = 1;
+            }
+            states.Transition(State234Ptr());
+            result = kStateParentTookOver;
+        }
+        break;
+    case kStateEnter:
+    case kStateEvent3:
+        break;
+    default:
+        result = kStateUnhandled;
+        break;
+    }
+    return result;
+}
+
+// EnemyStuntman slot 96 (0x9cea20): like EnemyForestElves's, and it also sets the range of X positions it acts in from the screen,
+// less the margin at +0xbd0.
+int EnemyStuntman::State96(int event) {
+    int result = kStateHandled;
+    switch (event) {
+    case kStateUpdate:
+        if (Check9ddab0(&sensor)) {
+            if (!flagBcc) {
+                BaseCharacter* seen = nullptr;
+                for (uint32_t i = 0; i < sensor.count; ++i) {
+                    onyx::ComponentHandle* handle = sensor.handles[i];
+                    if (handle && handle->object) {
+                        BaseCharacter* character = static_cast<BaseCharacter*>(handle->object);
+                        if ((character->componentFlags & 1) && !character->IsOut()) {
+                            seen = character;
+                            break;
+                        }
+                    }
+                }
+                if (!seen) break;
+                FaceX(onyx::Get<onyx::Transform, onyx::kTransform>(onyx::Find<ActorObject, 0x6492d61du>(seen->actorObject)->transform)->position.x);
+                onyx::Vector3 point;
+                PickPoint(&point, static_cast<float>(valueBbc));
+                rangeOriginX = point.x;
+                rangeOriginY = point.y;
+                rangeOriginZ = point.z;
+                flagBcc = 1;
+                ScreenRect rect;
+                GetScreenRect(&rect);
+                float margin = valueBd0;
+                minX = rect.left + margin;
+                maxX = rect.right - margin;
+            }
+            states.Transition(State234Ptr());
+            result = kStateParentTookOver;
+        }
+        break;
+    case kStateEnter:
+    case kStateEvent3:
+        break;
+    default:
+        result = kStateUnhandled;
+        break;
+    }
+    return result;
+}
+
+// EnemySasuke slot 96 (0x9e4de0): like EnemyForestElves's, and it aims for the screen edge it faces, less the margin at +0xbd0.
+int EnemySasuke::State96(int event) {
+    int result = kStateHandled;
+    switch (event) {
+    case kStateUpdate:
+        if (Check9ddab0(&sensor)) {
+            if (!flagBcc) {
+                BaseCharacter* seen = nullptr;
+                for (uint32_t i = 0; i < sensor.count; ++i) {
+                    onyx::ComponentHandle* handle = sensor.handles[i];
+                    if (handle && handle->object) {
+                        BaseCharacter* character = static_cast<BaseCharacter*>(handle->object);
+                        if ((character->componentFlags & 1) && !character->IsOut()) {
+                            seen = character;
+                            break;
+                        }
+                    }
+                }
+                if (!seen) break;
+                FaceX(onyx::Get<onyx::Transform, onyx::kTransform>(onyx::Find<ActorObject, 0x6492d61du>(seen->actorObject)->transform)->position.x);
+                onyx::Vector3 point;
+                PickPoint(&point, static_cast<float>(valueBbc));
+                rangeOriginX = point.x;
+                rangeOriginY = point.y;
+                rangeOriginZ = point.z;
+                flagBcc = 1;
+                ScreenRect rect;
+                GetScreenRect(&rect);
+                if (onyx::Get<ActorFlags, 0x2eae5813u>(onyx::Find<ActorObject, 0x6492d61du>(actorObject)->flags)->facingLeft) targetX = rect.right - static_cast<float>(valueBd0);
+                else targetX = rect.left + static_cast<float>(valueBd0);
+                flagBf8 = 0;
+            }
+            states.Transition(State234Ptr());
+            result = kStateParentTookOver;
+        }
+        break;
+    case kStateEnter:
+    case kStateEvent3:
+        break;
+    default:
+        result = kStateUnhandled;
+        break;
+    }
+    return result;
+}
+
 }  // namespace SPTG

@@ -17,12 +17,12 @@ struct EnemyOneHitWonder : Enemy {
     char padding_b7a[0x16];
     EnemySensor sensor;          // +0xb90
     int32_t valueBb8;            // +0xbb8
-    int32_t valueBbc;            // +0xbbc
+    uint32_t valueBbc;           // +0xbbc: how far state 96 places the range origin
     uint8_t flagBc0;             // +0xbc0
     char padding_bc1[0x3];
     float timeLimitBc4;          // +0xbc4: state 238 returns to 96 after this long
     float timerBc8;              // +0xbc8
-    uint8_t flagBcc;             // +0xbcc
+    uint8_t flagBcc;             // +0xbcc: state 96 has found a target
 };
 // vtable 0x187fa08, 244 slots
 struct EnemyZombie : Enemy {
@@ -84,6 +84,7 @@ struct EnemySpeedy : Enemy {
 };
 // vtable 0x1881880, 238 slots
 struct EnemyShooter : Enemy {
+    void Fire();   // 0x9ec540
     void Update();
     void Slot166(int kind);
     void Slot19();
@@ -94,24 +95,24 @@ struct EnemyShooter : Enemy {
     char padding_b7a[0x12];
     int32_t valueB8c;            // +0xb8c: serialized through a uint32_t
     AttackSlot attacks[1];       // +0xb90
-    int32_t valueC08;            // +0xc08
-    int32_t valueC0c;            // +0xc0c
-    int32_t valueC10;            // +0xc10
-    int32_t valueC14;            // +0xc14
-    int32_t valueC18;            // +0xc18
-    int32_t valueC1c;            // +0xc1c
-    int32_t valueC20;            // +0xc20
+    float valueC08;              // +0xc08: with +0xc0c and +0xc10, the shot's velocity
+    float valueC0c;              // +0xc0c
+    float valueC10;              // +0xc10
+    float valueC14;              // +0xc14: with +0xc18 and +0xc1c, the muzzle of a straight shot
+    float valueC18;              // +0xc18
+    float valueC1c;              // +0xc1c
+    float valueC20;              // +0xc20: when a straight shot leaves
     int32_t valueC24;            // +0xc24: serialized through a uint32_t
-    int32_t valueC28;            // +0xc28
-    int32_t valueC2c;            // +0xc2c
-    int32_t valueC30;            // +0xc30
-    int32_t valueC34;            // +0xc34
-    int32_t valueC38;            // +0xc38
-    int32_t valueC3c;            // +0xc3c
-    uint8_t flagC40;             // +0xc40
+    float valueC28;              // +0xc28: percent chance of aiming up at a target in the air
+    float valueC2c;              // +0xc2c: that shot's angle, in degrees
+    float valueC30;              // +0xc30: with +0xc34 and +0xc38, its muzzle
+    float valueC34;              // +0xc34
+    float valueC38;              // +0xc38
+    float valueC3c;              // +0xc3c: when it leaves
+    uint8_t flagC40;             // +0xc40: the shot has left
     char padding_c41[0x3];
-    onyx::Vector3 vectorC44;     // +0xc44
-    onyx::Vector3 vectorC50;     // +0xc50
+    onyx::Vector3 vectorC44;     // +0xc44: the muzzle of this shot
+    onyx::Vector3 vectorC50;     // +0xc50: its velocity
     int32_t valueC5c;            // +0xc5c
 };
 // vtable 0x1882018, 238 slots
@@ -346,6 +347,7 @@ struct EnemyAerial : Enemy {
 };
 // vtable 0x187c648, 241 slots
 struct EnemyStuntman : EnemyOneHitWonder {
+    int State96(int event);
     int State108(int event);
     float TakeDamage(const void* hit, BaseCharacter* other);
     void Update();
@@ -355,7 +357,7 @@ struct EnemyStuntman : EnemyOneHitWonder {
     virtual State State9da590Ptr();   // slot 240: returns the state at 0x9da590
 
     char padding_bcd[0x3];
-    int32_t valueBd0;            // +0xbd0: slot 4 moves these, +0xbd4 through a uint32_t
+    uint32_t valueBd0;           // +0xbd0: slot 4 moves these, +0xbd4 through a uint32_t
     int32_t valueBd4;            // +0xbd4
     int32_t valueBd8;            // +0xbd8
     int32_t valueBdc;            // +0xbdc
@@ -367,13 +369,14 @@ struct EnemyStuntman : EnemyOneHitWonder {
 };
 // vtable 0x187e2f8, 241 slots
 struct EnemySasuke : EnemyOneHitWonder {
+    int State96(int event);
     void Slot4(onyx::Archive& archive, ComponentSlot::Source* source);
     virtual int State234(int event); virtual State State234Ptr();   // slots 234, 235, overrides EnemyOneHitWonder
     int State9e5360(int event);   // 0x9e5360, not virtual
     virtual State State9e5360Ptr();   // slot 240: returns the state at 0x9e5360
 
     char padding_bcd[0x3];
-    int32_t valueBd0;            // +0xbd0: slot 4 moves these, +0xbd4 through a uint32_t
+    uint32_t valueBd0;           // +0xbd0: slot 4 moves these, +0xbd4 through a uint32_t
     int32_t valueBd4;            // +0xbd4
     int32_t valueBd8;            // +0xbd8
     int32_t valueBdc;            // +0xbdc
@@ -382,6 +385,8 @@ struct EnemySasuke : EnemyOneHitWonder {
     int32_t valueBe8;            // +0xbe8
     int32_t valueBec;            // +0xbec
     int32_t valueBf0;            // +0xbf0
+    float targetX;               // +0xbf4: the screen edge it faces, less +0xbd0
+    uint8_t flagBf8;             // +0xbf8
 };
 // vtable 0x187eaa8, 240 slots
 struct EnemyGuyOnFire : EnemyOneHitWonder {
@@ -437,6 +442,7 @@ struct EnemyGeeOne : EnemyGiant {
 };
 // vtable 0x1886668, 242 slots
 struct EnemyForestElves : EnemyOneHitWonder {
+    int State96(int event);
     float TakeDamage(const void* hit, BaseCharacter* other);
     virtual int State234(int event); virtual State State234Ptr();   // slots 234, 235, overrides EnemyOneHitWonder
     virtual int State240(int event); virtual State State240Ptr();   // slots 240, 241

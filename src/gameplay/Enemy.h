@@ -10,7 +10,10 @@ namespace SPTG {
 
 // An object some enemy classes keep (at +0xb90, +0xd80 or +0x11c8).
 struct EnemySensor {
-    char data[0x28];
+    char padding_0[0x10];
+    uint64_t count;                   // +0x10
+    onyx::ComponentHandle** handles;  // +0x18: what it has seen
+    char padding_20[0x8];
     void Reset();   // 0x9dea60
 };
 
@@ -88,6 +91,7 @@ struct Enemy : BaseCharacter {
     void Remove(bool respawn);                                       // slot 70, overrides BaseCharacter
     bool Slot46(BaseCharacter* other);                               // slot 46, overrides BaseCharacter
     void SetSolid(bool solid);                                       // slot 56, overrides BaseCharacter
+    void Slot94();                                                   // slot 94, overrides BaseCharacter
     bool OnHit(BaseCharacter* other, void* hit);                     // slot 38, overrides BaseCharacter (0x9cd330)
     int Slot41(bool a, bool b, bool c, void* data, BaseCharacter* other, float scale, float f1, float f2, float f3);   // slot 41, overrides BaseCharacter
     int Slot45();                                                    // slot 45, overrides BaseCharacter
@@ -171,7 +175,8 @@ struct Enemy : BaseCharacter {
     char padding_7ba[0x2];
     float rangeOriginX;          // +0x7bc: where slot 169 measures its ranges from
     float rangeOriginY;          // +0x7c0
-    char padding_7c4[0x10];
+    float rangeOriginZ;          // +0x7c4
+    char padding_7c8[0xc];
     onyx::Vector3 savedMotion;   // +0x7d4
     char padding_7e0[0x8];
     onyx::Vector<AttackSlot> attackList; // +0x7e8: attacks requested this frame
@@ -319,6 +324,7 @@ struct Enemy : BaseCharacter {
     void Call996c30(float value, int a, int b, void* c);   // 0x996c30
     void Apply995a30(float damage);                         // 0x995a30
     bool Check9ddab0(EnemySensor* sensor);                  // 0x9ddab0
+    void PickPoint(onyx::Vector3* out, float distance);     // 0x9daf90
     void Call9dc2d0(uint32_t value);                        // 0x9dc2d0
 
     // Requests a class attack for this frame, with the hit kind slot 166
