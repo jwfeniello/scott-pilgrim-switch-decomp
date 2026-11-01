@@ -1,9 +1,9 @@
 {
   "version": 1,
-  "generated_at": "2026-11-01T06:47:24.506027+00:00",
+  "generated_at": "2026-11-01T06:55:23.645527+00:00",
   "target_elf_sha256": "ea95638e6d6aaa0dc6cddd552a9366799aa1ec3bc07ee201f23f6c151103f5b8",
   "input_sha256": {
-    "config/builds.json": "d3da059cfd7655e5b5dd5e46ea5f9935dae370fc201dd120d8b9cc743f7edeac",
+    "config/builds.json": "7c428d1e1548f2da50320a3e2fec4a5b68561b1f8b80c870f37b946cafc9d66c",
     "config/functions.tsv": "399e91468a04e0459194c10d68d2210d1157cedefeb19c7851886ca7632fcb18",
     "config/non_fde_functions.tsv": "6a45f5e185454fa0472af00b2cdc9d040d73ca133d1106217e1fbbe3b32a8175",
     "config/target.json": "23cc6a5227206a953e7668acf5e9ae5c02a25c23b7e7967f0450a814b888241a",
@@ -1011,7 +1011,9 @@
     "src/StormStringRecords.cpp": "0ce02ba46e6fe2afc69532967cafb5a1f00f1a1215645ee982c6f8353abbea55",
     "src/StormTypeFactory.h": "17b43619a2c5b02958d55d12c6c089caf59d2d7ce7341c173ace18bfbb0bdaf3",
     "src/StormTypeFactoryKeepPic.cpp": "4e8e97c50519ac56e7998c73bc01304afcff054185c96c2ac585febff12ad81d",
-    "src/StormUbiDestructors.cpp": "b7475c3448fd76ad4830d996c9c89b334a6109d4a2f83f7b3f1aae776539227f",
+    "src/StormUbiDestructors.cpp": "20b81650f9072f864ab04a6261f9a73d1fdb7d73ebd5439f6ac50a892281b5f1",
+    "src/StormUbiDestructorsNoSlp.cpp": "e8e408ee80c3df762a0e9e3812559916702ad0284ffcfb4f12b7e589658b752e",
+    "src/StormUbiDestructorsO3.cpp": "a5cd3c44ed14c63bfc44b9a90f0cfd90c6a231d370f93ca1e641661f3fff41b1",
     "src/StormVectors.cpp": "16cacbbc9ce46ecf1deca449d2ad36c8d9b5de066325de4b3d1af04177b3db8d",
     "src/StructuredRecoveryFrame.cpp": "b9c0b9843dfe9951dbd6c735b391f72540a562dab3cd78967669437212338f6c",
     "src/StructuredRecoveryOmit.cpp": "457eeefdb0c6307a325f0c0deb87d8298b882efcab397e47a6694ebf5cf568e5",
@@ -3972,8 +3974,8 @@
     "8.0.1": "dffd62a213ec6cdb4430012a4a41c11e5e32c288f133d5391f9be49e1c5b69de",
     "lld": "c4b3aaea06ff7112c64753047a2ab279fc3fe10dd807fd3c22edfdae99f43eed"
   },
-  "exact_functions": 35708,
-  "exact_bytes": 4662256,
+  "exact_functions": 35725,
+  "exact_bytes": 4663452,
   "builds": [
     {
       "id": "probes",
@@ -13273,7 +13275,17 @@
     {
       "id": "lib_storm_ubi_destructors",
       "compiler": "8.0.1",
-      "object_sha256": "90f1508ccd9db9421f3880070ef0b5a029bec62a25f96cb51779da61518aab9c"
+      "object_sha256": "2ad9b97cf5abf9a35cec1e35f7be229cab692ed78f13cb113ef287c7667b48f3"
+    },
+    {
+      "id": "lib_storm_ubi_destructors_o3",
+      "compiler": "8.0.1",
+      "object_sha256": "99a69aa1410f57f60aa356f14561315510da24f4375e4a6e654948fc3808f216"
+    },
+    {
+      "id": "lib_storm_ubi_destructors_noslp",
+      "compiler": "8.0.1",
+      "object_sha256": "f6a1955d031030735f58bc86f2a5e1394c43c49b91b50b7818d68f81a1b480aa"
     }
   ],
   "matches": [
@@ -23876,7 +23888,7 @@
       "exact": true,
       "target_sha256": "1cdc49b636435c8d14ae5b1287f2154cd32336f5058312a84a9d97232b6e5439",
       "compiled_sha256": "1cdc49b636435c8d14ae5b1287f2154cd32336f5058312a84a9d97232b6e5439",
-      "source": "src/StormUbiDestructors.cpp",
+      "source": "src/StormUbiDestructorsO3.cpp",
       "symbol": "_ZN11ubiservices29EventInfoPlayerNewsImpressionD2Ev",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 5
@@ -24844,7 +24856,7 @@
       "exact": true,
       "target_sha256": "77324991ec0729d46fc783dec443f8ccf99e9182fea4384982fec5cccb98f8cf",
       "compiled_sha256": "77324991ec0729d46fc783dec443f8ccf99e9182fea4384982fec5cccb98f8cf",
-      "source": "src/StormUbiDestructors.cpp",
+      "source": "src/StormUbiDestructorsO3.cpp",
       "symbol": "_ZN11ubiservices21EventInfoContextStartD0Ev",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 6
@@ -24855,7 +24867,7 @@
       "exact": true,
       "target_sha256": "c0975470eecb96986c96010371a5b0008a86a49f2826a3f4adcd456a9d57de32",
       "compiled_sha256": "c0975470eecb96986c96010371a5b0008a86a49f2826a3f4adcd456a9d57de32",
-      "source": "src/StormUbiDestructors.cpp",
+      "source": "src/StormUbiDestructorsO3.cpp",
       "symbol": "_ZN11ubiservices20EventInfoContextStopD0Ev",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 6
@@ -24910,7 +24922,7 @@
       "exact": true,
       "target_sha256": "9515dc10d008c87e37ec25f54e53b73e8f9c2e0c756db3405cb25f9eefb9e513",
       "compiled_sha256": "9515dc10d008c87e37ec25f54e53b73e8f9c2e0c756db3405cb25f9eefb9e513",
-      "source": "src/StormUbiDestructors.cpp",
+      "source": "src/StormUbiDestructorsO3.cpp",
       "symbol": "_ZN11ubiservices29EventInfoPlayerNewsImpressionD0Ev",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 6
@@ -24921,7 +24933,7 @@
       "exact": true,
       "target_sha256": "2c4a408b66486b7b50bea81313014d68583dbc96f368b60ca275e56ad4b0e971",
       "compiled_sha256": "2c4a408b66486b7b50bea81313014d68583dbc96f368b60ca275e56ad4b0e971",
-      "source": "src/StormUbiDestructors.cpp",
+      "source": "src/StormUbiDestructorsO3.cpp",
       "symbol": "_ZN11ubiservices26EventInfoPlayerProgressionD0Ev",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 6
@@ -25625,7 +25637,7 @@
       "exact": true,
       "target_sha256": "82190750fd50dfdc2f3a57228cbe8337390a50f1bd5dc86d01d119e0255d8174",
       "compiled_sha256": "82190750fd50dfdc2f3a57228cbe8337390a50f1bd5dc86d01d119e0255d8174",
-      "source": "src/StormUbiDestructors.cpp",
+      "source": "src/StormUbiDestructorsO3.cpp",
       "symbol": "_ZN11ubiservices44JobUpdateSessionInfoWithLatestFirstPartyDataD2Ev",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 9
@@ -25636,7 +25648,7 @@
       "exact": true,
       "target_sha256": "ac003194f90b6636f9599b1c0ba54dcf00e59904a4571bc24888bbe6ac73e106",
       "compiled_sha256": "ac003194f90b6636f9599b1c0ba54dcf00e59904a4571bc24888bbe6ac73e106",
-      "source": "src/StormUbiDestructors.cpp",
+      "source": "src/StormUbiDestructorsO3.cpp",
       "symbol": "_ZN11ubiservices44JobUpdateSessionInfoWithLatestFirstPartyDataD0Ev",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 10
@@ -25867,7 +25879,7 @@
       "exact": true,
       "target_sha256": "e133196eb809f2c0f780ff94f12ffa085306d3bfe936ef86f6a1ee393f333358",
       "compiled_sha256": "e133196eb809f2c0f780ff94f12ffa085306d3bfe936ef86f6a1ee393f333358",
-      "source": "src/StormUbiDestructors.cpp",
+      "source": "src/StormUbiDestructorsO3.cpp",
       "symbol": "_ZN11ubiservices21JobInitiateConnectionD2Ev",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 9
@@ -25878,7 +25890,7 @@
       "exact": true,
       "target_sha256": "e450ceb05bd69d852d67fe71121b6a4b966da6ba016a85f913e814b6839d014d",
       "compiled_sha256": "e450ceb05bd69d852d67fe71121b6a4b966da6ba016a85f913e814b6839d014d",
-      "source": "src/StormUbiDestructors.cpp",
+      "source": "src/StormUbiDestructorsO3.cpp",
       "symbol": "_ZN11ubiservices21JobInitiateConnectionD0Ev",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 10
@@ -62723,6 +62735,28 @@
       "relocation_count": 0
     },
     {
+      "address": "0x284740",
+      "size": 44,
+      "exact": true,
+      "target_sha256": "314a668ae1408f6d2f01128a07bbd901e2f1f3b1dadba3d23034b08e3fe1a314",
+      "compiled_sha256": "314a668ae1408f6d2f01128a07bbd901e2f1f3b1dadba3d23034b08e3fe1a314",
+      "source": "src/StormUbiDestructorsNoSlp.cpp",
+      "symbol": "_ZN5storm4echo16PlayerDescriptorD2Ev",
+      "source_review": "generated_cxx_abi_view",
+      "relocation_count": 5
+    },
+    {
+      "address": "0x284770",
+      "size": 88,
+      "exact": true,
+      "target_sha256": "9e104bf0b9e33f96c43b8d2101ecddee790d9ed1903cd420bed7f5c6cc5ed7f0",
+      "compiled_sha256": "9e104bf0b9e33f96c43b8d2101ecddee790d9ed1903cd420bed7f5c6cc5ed7f0",
+      "source": "src/StormUbiDestructorsNoSlp.cpp",
+      "symbol": "_ZN5storm4echo16PlayerDescriptorD0Ev",
+      "source_review": "generated_cxx_abi_view",
+      "relocation_count": 8
+    },
+    {
       "address": "0x2847d0",
       "size": 184,
       "exact": true,
@@ -82037,6 +82071,17 @@
       "symbol": "RecoveredLeaf_2ee170",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 3
+    },
+    {
+      "address": "0x2ee190",
+      "size": 68,
+      "exact": true,
+      "target_sha256": "56f0cba1689f12ee99ce0a2ef8ee5baa08d45b9022db9191afcf7084fd569e4a",
+      "compiled_sha256": "56f0cba1689f12ee99ce0a2ef8ee5baa08d45b9022db9191afcf7084fd569e4a",
+      "source": "src/StormUbiDestructorsNoSlp.cpp",
+      "symbol": "_ZN11Class2ee190D0Ev",
+      "source_review": "generated_cxx_abi_view",
+      "relocation_count": 6
     },
     {
       "address": "0x2ee1e0",
@@ -133134,6 +133179,39 @@
       "relocation_count": 0
     },
     {
+      "address": "0x47bb50",
+      "size": 36,
+      "exact": true,
+      "target_sha256": "a1c282f3f2271f63912d22d2846ceda1f88ab10a240452c269488e46b6321506",
+      "compiled_sha256": "a1c282f3f2271f63912d22d2846ceda1f88ab10a240452c269488e46b6321506",
+      "source": "src/StormUbiDestructorsNoSlp.cpp",
+      "symbol": "_ZN11Class47bb50D2Ev",
+      "source_review": "generated_cxx_abi_view",
+      "relocation_count": 3
+    },
+    {
+      "address": "0x47bbb0",
+      "size": 36,
+      "exact": true,
+      "target_sha256": "3ee001a87b4390950cfe0b43396970051666e741dd1736a95e1350d9cb250050",
+      "compiled_sha256": "3ee001a87b4390950cfe0b43396970051666e741dd1736a95e1350d9cb250050",
+      "source": "src/StormUbiDestructorsNoSlp.cpp",
+      "symbol": "_ZN11Class47bbb0D2Ev",
+      "source_review": "generated_cxx_abi_view",
+      "relocation_count": 3
+    },
+    {
+      "address": "0x47bee0",
+      "size": 36,
+      "exact": true,
+      "target_sha256": "d328bba687f0206b52d170ba8315481dfedb9eeb17d54cf8539ac14aa0f40dd3",
+      "compiled_sha256": "d328bba687f0206b52d170ba8315481dfedb9eeb17d54cf8539ac14aa0f40dd3",
+      "source": "src/StormUbiDestructorsNoSlp.cpp",
+      "symbol": "_ZN11Class47bee0D2Ev",
+      "source_review": "generated_cxx_abi_view",
+      "relocation_count": 3
+    },
+    {
       "address": "0x47bf10",
       "size": 4,
       "exact": true,
@@ -138216,6 +138294,17 @@
       "relocation_count": 5
     },
     {
+      "address": "0x489c20",
+      "size": 72,
+      "exact": true,
+      "target_sha256": "fb7609546e31d5676b7480dbeb77c39c0095640c29330c8e8462d6a1a52bb3e4",
+      "compiled_sha256": "fb7609546e31d5676b7480dbeb77c39c0095640c29330c8e8462d6a1a52bb3e4",
+      "source": "src/StormUbiDestructorsNoSlp.cpp",
+      "symbol": "_ZN11Class489c20D0Ev",
+      "source_review": "generated_cxx_abi_view",
+      "relocation_count": 6
+    },
+    {
       "address": "0x489c70",
       "size": 192,
       "exact": true,
@@ -138337,6 +138426,17 @@
       "relocation_count": 31
     },
     {
+      "address": "0x48ae00",
+      "size": 72,
+      "exact": true,
+      "target_sha256": "e63ff65e5a037ca7a2c69767919fb2df8007397bcd3b35af234215a421d626a1",
+      "compiled_sha256": "e63ff65e5a037ca7a2c69767919fb2df8007397bcd3b35af234215a421d626a1",
+      "source": "src/StormUbiDestructorsNoSlp.cpp",
+      "symbol": "_ZN11Class48ae00D0Ev",
+      "source_review": "generated_cxx_abi_view",
+      "relocation_count": 6
+    },
+    {
       "address": "0x48ae50",
       "size": 192,
       "exact": true,
@@ -138456,6 +138556,17 @@
       "symbol": "_Z15GetLazyTypeInfoILj4764896ELj9ELj174434695EEPvv",
       "source_review": "manual_reconstruction",
       "relocation_count": 31
+    },
+    {
+      "address": "0x48c010",
+      "size": 72,
+      "exact": true,
+      "target_sha256": "ecd6383b6427912e1fe6b213bdd1798fb22637db05f03c277bb690fc9862c87b",
+      "compiled_sha256": "ecd6383b6427912e1fe6b213bdd1798fb22637db05f03c277bb690fc9862c87b",
+      "source": "src/StormUbiDestructorsNoSlp.cpp",
+      "symbol": "_ZN11Class48c010D0Ev",
+      "source_review": "generated_cxx_abi_view",
+      "relocation_count": 6
     },
     {
       "address": "0x48c060",
@@ -144594,6 +144705,28 @@
       "symbol": "RecoveredLeaf_4b0b80",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 0
+    },
+    {
+      "address": "0x4b0bf0",
+      "size": 68,
+      "exact": true,
+      "target_sha256": "7540cf1d9e388d31c80c268130f0d8fc9d36f2b0dec5ff27e68dab9836a50d2f",
+      "compiled_sha256": "7540cf1d9e388d31c80c268130f0d8fc9d36f2b0dec5ff27e68dab9836a50d2f",
+      "source": "src/StormUbiDestructors.cpp",
+      "symbol": "_ZN5storm21SimpleStatsControllerD2Ev",
+      "source_review": "generated_cxx_abi_view",
+      "relocation_count": 4
+    },
+    {
+      "address": "0x4b0c90",
+      "size": 76,
+      "exact": true,
+      "target_sha256": "3a3e098abea0422eaf2b0e1e76d0259b9d67ffc799c36972aa497004c3061bac",
+      "compiled_sha256": "3a3e098abea0422eaf2b0e1e76d0259b9d67ffc799c36972aa497004c3061bac",
+      "source": "src/StormUbiDestructors.cpp",
+      "symbol": "_ZN5storm21SimpleStatsControllerD0Ev",
+      "source_review": "generated_cxx_abi_view",
+      "relocation_count": 5
     },
     {
       "address": "0x4b0de0",
@@ -175264,6 +175397,17 @@
       "relocation_count": 3
     },
     {
+      "address": "0x58ca10",
+      "size": 68,
+      "exact": true,
+      "target_sha256": "7bbff019f0c267133f514d5e1b9a4c24fbd3540fbcdc30bfd6dc2da884a96468",
+      "compiled_sha256": "7bbff019f0c267133f514d5e1b9a4c24fbd3540fbcdc30bfd6dc2da884a96468",
+      "source": "src/StormUbiDestructorsNoSlp.cpp",
+      "symbol": "_ZN5storm24NetPropertyDataContainerD0Ev",
+      "source_review": "generated_cxx_abi_view",
+      "relocation_count": 6
+    },
+    {
       "address": "0x58ca60",
       "size": 192,
       "exact": true,
@@ -178584,6 +178728,28 @@
       "symbol": "RecoveredLeaf_5bed20",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 3
+    },
+    {
+      "address": "0x5bedb0",
+      "size": 136,
+      "exact": true,
+      "target_sha256": "629bf3d8a6c2e9dded9c12b63268f3bde61f7085862bcc9e42c94308bd38b1f0",
+      "compiled_sha256": "629bf3d8a6c2e9dded9c12b63268f3bde61f7085862bcc9e42c94308bd38b1f0",
+      "source": "src/StormUbiDestructorsNoSlp.cpp",
+      "symbol": "_ZN5storm21ApplicationDescriptorD2Ev",
+      "source_review": "generated_cxx_abi_view",
+      "relocation_count": 6
+    },
+    {
+      "address": "0x5bee40",
+      "size": 144,
+      "exact": true,
+      "target_sha256": "d0678cf2f58d8fa27fe605f89fa0de422de3012dc5a446659ba27a8fccf4fd69",
+      "compiled_sha256": "d0678cf2f58d8fa27fe605f89fa0de422de3012dc5a446659ba27a8fccf4fd69",
+      "source": "src/StormUbiDestructorsNoSlp.cpp",
+      "symbol": "_ZN5storm21ApplicationDescriptorD0Ev",
+      "source_review": "generated_cxx_abi_view",
+      "relocation_count": 9
     },
     {
       "address": "0x5beed0",
@@ -186220,6 +186386,17 @@
       "relocation_count": 0
     },
     {
+      "address": "0x5dd910",
+      "size": 60,
+      "exact": true,
+      "target_sha256": "0f034128df726b4fb4b107f519c8eddb67589654e9321b4405672b6fdb80fc85",
+      "compiled_sha256": "0f034128df726b4fb4b107f519c8eddb67589654e9321b4405672b6fdb80fc85",
+      "source": "src/StormUbiDestructorsNoSlp.cpp",
+      "symbol": "_ZN5storm5punch39ProductPunchClientImplMainStartupParamsD2Ev",
+      "source_review": "generated_cxx_abi_view",
+      "relocation_count": 7
+    },
+    {
       "address": "0x5ddc70",
       "size": 8,
       "exact": true,
@@ -186284,6 +186461,28 @@
       "symbol": "_ZN11SharedEventILj6152912ELj56EED1Ev",
       "source_review": "manual_reconstruction",
       "relocation_count": 3
+    },
+    {
+      "address": "0x5de760",
+      "size": 60,
+      "exact": true,
+      "target_sha256": "5e6da26f4ee4ac84b7ea7988a5492cff8a867ee0aa40593554fa5d3f987d340f",
+      "compiled_sha256": "5e6da26f4ee4ac84b7ea7988a5492cff8a867ee0aa40593554fa5d3f987d340f",
+      "source": "src/StormUbiDestructorsNoSlp.cpp",
+      "symbol": "_ZN5storm5punch27UpnpImplNetworkStartupParamD2Ev",
+      "source_review": "generated_cxx_abi_view",
+      "relocation_count": 7
+    },
+    {
+      "address": "0x5de7a0",
+      "size": 60,
+      "exact": true,
+      "target_sha256": "4b958aabfe89479cb8ee92191fcb11748560d15a12a1bbc515dd13e54143a838",
+      "compiled_sha256": "4b958aabfe89479cb8ee92191fcb11748560d15a12a1bbc515dd13e54143a838",
+      "source": "src/StormUbiDestructorsNoSlp.cpp",
+      "symbol": "_ZN5storm5punch32TraversalImplNetworkStartupParamD2Ev",
+      "source_review": "generated_cxx_abi_view",
+      "relocation_count": 7
     },
     {
       "address": "0x5df360",
