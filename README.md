@@ -20,9 +20,9 @@ Edition** for Nintendo Switch.
 [Progress on decomp.dev](https://decomp.dev/jwfeniello/scott-pilgrim-switch-decomp)
 · [Progress workflow](https://github.com/jwfeniello/scott-pilgrim-switch-decomp/actions/workflows/progress.yml)
 
-**Current locally verified progress: 38,553 exact functions /
-5,043,876 bytes / 30.761599% of executable `.text`.** The original `.text` is 16,396,664 bytes.
-Of that, 2,659 functions / 335,016 bytes (2.043% of `.text`) are the decompiler's text compiled
+**Current locally verified progress: 38,588 exact functions /
+5,049,376 bytes / 30.795142% of executable `.text`.** The original `.text` is 16,396,664 bytes.
+Of that, 2,694 functions / 340,516 bytes (2.077% of `.text`) are the decompiler's text compiled
 as C, unreviewed: [what those matches do and do not show](docs/DECOMPILER_TEXT.md).
 This includes engine and library infrastructure. The project does not yet rebuild
 or boot the complete game. Original method names and many ABI declarations remain
@@ -285,7 +285,7 @@ The latest engine families add 3,750 complete functions / 500,192 bytes using
 ordinary C++ templates and Clang 8.0.1. Every instance matches; repeat builds
 and deliberately incorrect source controls validate the comparison. See
 [engine family findings](docs/ENGINE_FAMILIES.md),
-[7% milestone findings](docs/TYPE_AND_CALLBACK_FAMILIES.md) and
+[type and callback family findings](docs/TYPE_AND_CALLBACK_FAMILIES.md) and
 [lazy registration findings](docs/LAZY_TYPE_REGISTRATION.md).
 
 `src/wip/` preserves close reconstructions with **zero** exact-match credit.
