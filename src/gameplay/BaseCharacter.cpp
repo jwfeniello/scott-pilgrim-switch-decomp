@@ -7,12 +7,6 @@ extern "C" int32_t Attack_NextId;   // 0x1925328
 
 namespace SPTG {
 
-// Slot 28 (0x93fcf0): which way the character faces.
-void BaseCharacter::SetFacing(int left) {
-    ActorFlags* flags = onyx::Get<ActorFlags, 0x2eae5813u>(onyx::Find<ActorObject, 0x6492d61du>(actorObject)->flags);
-    flags->facingLeft = left & 1;
-}
-
 // Slot 30 (0x96ca30): turns round, and turns the mount with it.
 void BaseCharacter::TurnAround() {
     SetFacing(!onyx::Get<ActorFlags, 0x2eae5813u>(onyx::Find<ActorObject, 0x6492d61du>(actorObject)->flags)->facingLeft);
@@ -53,20 +47,6 @@ int BaseCharacter::StartAttack(Attack* attack, bool flag, int source, BaseCharac
     return started;
 }
 
-// Slot 65 (0x941790): adds to the value at +0x160, kept between zero and the
-// limit from slot 57.
-void BaseCharacter::GainHealth(float amount) {
-    health += amount;
-    float limit = MaxHealth();
-    float value = health;
-    if (value < 0.0f) {
-        value = 0.0f;
-    } else if (value > limit) {
-        value = limit;
-    }
-    health = value;
-}
-
 // Slot 25 (0x96c8b0): records the animation speed; while +0x14c is not positive
 // it goes to the animation and, with +0x338 set, to the mount.
 void BaseCharacter::SetAnimationSpeed(float speed) {
@@ -91,7 +71,7 @@ void BaseCharacter::SetAnimationPaused(bool paused) {
 // Slot 32 (0x96ce30): after AnimatedAiActor's slot 32, restores the saved
 // motion values and switches to the state at slot 108.
 void BaseCharacter::OnDismount() {
-    ActorSlot32();
+    AnimatedAiActor::OnDismount();
     motionTarget.z = savedZ;
     motionC4 = savedC4;
     states.Transition(State108Ptr());
@@ -100,7 +80,7 @@ void BaseCharacter::OnDismount() {
 // Slot 33 (0x96ce90): after AnimatedAiActor's slot 33, switches to the state at
 // slot 136.
 bool BaseCharacter::OnMount(void* data) {
-    ActorSlot33(data);
+    AnimatedAiActor::OnMount(data);
     states.Transition(State136Ptr());
     return true;
 }
@@ -234,7 +214,7 @@ void BaseCharacter::Slot7() {
     states.next = initial;
     states.current = initial;
     (this->*initial)(kStateEnter);
-    Call945c40();
+    AnimatedAiActor::Slot7();
     Slot153(&flags504);
     value328 = Slot149();
     scaled2f8 = base2f4;
@@ -247,7 +227,7 @@ void BaseCharacter::Slot7() {
 // updates the state machine. Outside the state at slot 106, +0x328 regains
 // +0x518 per second up to slot 149. Then slot 154.
 void BaseCharacter::Slot13() {
-    ActorSlot13();
+    AnimatedAiActor::Slot13();
     value230 = value54;
     states.Update();
     State state = State106Ptr();
@@ -270,7 +250,7 @@ void BaseCharacter::LoseGuts(float value) {
 // slots, the attack at +0x258, the settings, nine event slots (read in place)
 // and the two attacks of slot 35.
 void BaseCharacter::Slot4(onyx::Archive& archive, ComponentSlot::Source* source) {
-    ActorSlot4(archive, source);
+    AnimatedAiActor::Slot4(archive, source);
     onyx::TransferHandle(handle1e8, archive, source);
     AssignComponentSlot<9864096u, 42196088u>(&slot1f0, source);
     AssignComponentSlot<7920224u, 493361733u>(&settings, source);
@@ -457,35 +437,6 @@ void BaseCharacter::MountNearby() {
     onyx::Vector3 position = onyx::Find<onyx::Transform, onyx::kTransform>(actor->transform)->Position();
     InteractiveCatalog* catalog = onyx::Find<InteractiveCatalog, onyx_types::type_7a93a527>(level.Get()->interactiveObjects);
     if (MountObject* object = catalog->FindMount(position)) SetMount(object->self);
-}
-
-// Starts an animation. With a partner whose transform has a parent, also takes the partner's facing.
-void BaseCharacter::PlayAnimation(int anim, bool loop, bool scaled, float speed) {
-    onyx::Get<AnimationControl, kAnimationControlType>(animationHandle)->Play(anim, loop);
-    if (partnerHandle && partnerHandle->object) {
-        BaseCharacter* partner = static_cast<BaseCharacter*>(partnerHandle->object);
-        ActorObject* actor = onyx::Find<ActorObject, onyx_types::type_6492d61d>(actorObject);
-        onyx::Transform* transform = onyx::Get<onyx::Transform, onyx::kTransform>(actor->transform);
-        void** parent = static_cast<void**>(transform->hierarchy);
-        if (parent && *parent) {
-            ActorObject* other = onyx::Find<ActorObject, onyx_types::type_6492d61d>(partner->actorObject);
-            ActorFlags* from = onyx::Find<ActorFlags, 0x2eae5813u>(other->flags);
-            ActorFlags* flags = onyx::Find<ActorFlags, 0x2eae5813u>(onyx::Find<ActorObject, onyx_types::type_6492d61d>(actorObject)->flags);
-            flags->facingLeft = from->facingLeft;
-            flags->flag7a = from->flag7a;
-        }
-    }
-    if (scaled) speed *= SpeedScale();
-    SetAnimationSpeed(speed);
-    animation = anim;
-}
-
-// At or below ground height and not moving up.
-bool BaseCharacter::IsOnGround() {
-    onyx::Transform* transform = onyx::Get<onyx::Transform, onyx::kTransform>(onyx::Find<ActorObject, 0x6492d61du>(actorObject)->transform);
-    if (groundHeight < (int)transform->position.z) return false;
-    if (__builtin_fabsf(motion.z) <= 0.000001f) return true;
-    return motion.z < 0.0f;
 }
 
 }  // namespace SPTG

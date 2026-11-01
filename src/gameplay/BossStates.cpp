@@ -27,7 +27,7 @@ bool Boss::OnMount(void* data) {
         else states.Transition(State122Ptr());
         return false;
     }
-    ActorSlot33(data);
+    AnimatedAiActor::OnMount(data);
     states.Transition(State136Ptr());
     return true;
 }

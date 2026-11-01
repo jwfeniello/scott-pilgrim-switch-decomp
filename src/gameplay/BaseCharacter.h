@@ -17,6 +17,7 @@ namespace SPTG {
 // An attack descriptor, as StartAttack receives it (0x58 bytes). A copy starts
 // with +0x2c clear and no shared handle, then assigns.
 struct BaseCharacter;
+struct AnimatedAiActor;
 struct Attack {
     float damage;                     // +0x0: scaled by the attacker when it starts
     char data_4[0x18];
@@ -149,9 +150,11 @@ struct CharacterEffect : onyx::Component {
     uint8_t visible;   // +0x78
 };
 
-struct BaseCharacter : onyx::Component {
-    typedef StateMachine<BaseCharacter>::State State;
-    virtual ~BaseCharacter();                                                    // slots 0, 1
+// SPTG::AnimatedAiActor (vtable 0x1870698, 78 slots), the base of BaseCharacter and InteractiveObject. Its own
+// functions are the ones BaseCharacter's vtable keeps; the rest BaseCharacter overrides. The first fields not
+// in here are BaseCharacter's and InteractiveObject's, both from +0x1e8.
+struct AnimatedAiActor : onyx::Component {
+    virtual ~AnimatedAiActor();                                                  // slots 0, 1
     SPTG_SLOT(3)
     virtual void Slot4(onyx::Archive& archive, ComponentSlot::Source* source); // slot 4
     SPTG_SLOT(5) SPTG_SLOT(6) SPTG_SLOT(7) SPTG_SLOT(8) SPTG_SLOT(9) SPTG_SLOT(10) SPTG_SLOT(11)
@@ -177,7 +180,7 @@ struct BaseCharacter : onyx::Component {
     virtual bool CanMount();                                              // slot 34
     virtual void Slot35(bool flag, BaseCharacter* other);                    // slot 35
     virtual bool IsMounted();      // flag +0x338 and a live mount at +0x238 // slot 36
-    SPTG_SLOT(37)
+    virtual bool Slot37();                                                   // slot 37
     virtual bool OnHit(BaseCharacter* other, void* hit);                     // slot 38
     SPTG_SLOT(39)
     virtual float Slot40();                                                  // slot 40
@@ -214,61 +217,6 @@ struct BaseCharacter : onyx::Component {
     virtual void Slot75(void* data, void* extra);                            // slot 75
     virtual void Slot76();                                                   // slot 76
     virtual float Slot77();                                                  // slot 77
-    virtual void MountNearby();                                              // slot 78
-    virtual bool Slot79();                                                   // slot 79
-    virtual bool Slot80();                                                   // slot 80
-    virtual float Slot81();                                                  // slot 81
-    virtual bool Slot82();                                                   // slot 82
-    virtual bool Slot83();                                                   // slot 83
-    virtual bool Slot84();                                                   // slot 84
-    virtual bool Slot85();                                                   // slot 85
-    virtual void Slot86();                                                   // slot 86
-    virtual void PlayAnimationOn(int animation, bool loop, bool flag, BaseCharacter* other, float speed); // slot 87
-    virtual bool Slot88(float amount);                                       // slot 88
-    virtual void AddGuts(float amount);                                      // slot 89
-    virtual void LoseGuts(float value);                                        // slot 90
-    virtual void FaceX(float x);                                            // slot 91
-    virtual void Slot92(void* data);                                         // slot 92
-    virtual void Slot93(const HitValue* hit);                                // slot 93
-    virtual void Slot94();                                                   // slot 94
-    virtual bool Slot95();                                                   // slot 95
-    virtual int State96(int event); virtual State State96Ptr();              // slots 96, 97
-    virtual int State98(int event); virtual State State98Ptr();              // slots 98, 99
-    virtual int State100(int event); virtual State State100Ptr();            // slots 100, 101
-    virtual int State102(int event); virtual State State102Ptr();            // slots 102, 103
-    virtual int State104(int event); virtual State State104Ptr();            // slots 104, 105
-    virtual int State106(int event); virtual State State106Ptr();            // slots 106, 107
-    virtual int State108(int event); virtual State State108Ptr();            // slots 108, 109
-    virtual int State110(int event); virtual State State110Ptr();            // slots 110, 111
-    virtual int State112(int event); virtual State State112Ptr();            // slots 112, 113
-    virtual int State114(int event); virtual State State114Ptr();            // slots 114, 115
-    virtual int State116(int event); virtual State State116Ptr();            // slots 116, 117
-    virtual int State118(int event); virtual State State118Ptr();            // slots 118, 119
-    virtual int State120(int event); virtual State State120Ptr();            // slots 120, 121
-    virtual int State122(int event); virtual State State122Ptr();            // slots 122, 123
-    virtual int State124(int event); virtual State State124Ptr();            // slots 124, 125
-    virtual int State126(int event); virtual State State126Ptr();            // slots 126, 127
-    virtual int State128(int event); virtual State State128Ptr();            // slots 128, 129
-    virtual int State130(int event); virtual State State130Ptr();            // slots 130, 131
-    virtual int State132(int event); virtual State State132Ptr();            // slots 132, 133
-    virtual int State134(int event); virtual State State134Ptr();            // slots 134, 135
-    virtual int State136(int event); virtual State State136Ptr();            // slots 136, 137
-    virtual int State138(int event); virtual State State138Ptr();            // slots 138, 139
-    virtual int State140(int event); virtual State State140Ptr();            // slots 140, 141
-    virtual int State142(int event); virtual State State142Ptr();            // slots 142, 143
-    virtual int State144(int event); virtual State State144Ptr();            // slots 144, 145
-    SPTG_SLOT(146)
-    virtual onyx::Vector2 Slot147();                                         // slot 147
-    virtual bool HealWithGuts(bool* out);                                         // slot 148
-    virtual float Slot149();                                                 // slot 149
-    virtual float MaxGuts();                                                 // slot 150
-    virtual float GutsCostScale();                                                 // slot 151
-    virtual float Slot152();                                                 // slot 152
-    virtual void Slot153(uint32_t* flags);                                   // slot 153
-    SPTG_SLOT(154) SPTG_SLOT(155)
-    virtual bool Slot156();                                                  // slot 156
-    SPTG_SLOT(157)
-    virtual bool Slot158();                                                  // slot 158
 
     char padding_8[0x38];
     Holder* attachment;          // +0x40: what the actor is attached to
@@ -328,7 +276,111 @@ struct BaseCharacter : onyx::Component {
     float value1bc;              // +0x1bc
     char padding_1c0[0x4];
     float motionC4;              // +0x1c4
-    char padding_1c8[0x20];
+    char padding_1c8[0x18];
+    onyx::ComponentHandle* handle1e0; // +0x1e0
+    // -1 facing left, 1 facing right.
+    __attribute__((always_inline)) float FacingSign() {
+        ActorObject* actor = onyx::Find<ActorObject, onyx_types::type_6492d61d>(actorObject);
+        ActorFlags* flags = onyx::Get<ActorFlags, 0x2eae5813u>(actor->flags);
+        return flags->facingLeft ? -1.0f : 1.0f;
+    }
+};
+
+struct BaseCharacter : AnimatedAiActor {
+    typedef StateMachine<BaseCharacter>::State State;
+    virtual ~BaseCharacter();                                                    // slots 0, 1
+    void Slot4(onyx::Archive& archive, ComponentSlot::Source* source) override; // slot 4
+    void Slot7() override;                                               // slot 7
+    void Slot8() override;                                               // slot 8
+    void Slot11() override;                                              // slot 11
+    bool IsA(uint32_t type) override;                                    // slot 12
+    void Slot13() override;                                              // slot 13
+    void Slot14() override;                                              // slot 14
+    void Slot19() override;                                              // slot 19
+    void PlayMountedAnimation(int animation, bool a, bool b) override;   // slot 23
+    void SetAnimationSpeed(float speed) override;                        // slot 25
+    void SetAnimationPaused(bool paused) override;                       // slot 26
+    void TurnAround() override;                                          // slot 30
+    void Dismount() override;                                            // slot 31
+    void OnDismount() override;                                          // slot 32
+    bool OnMount(void* data) override;                                   // slot 33
+    bool CanMount() override;                                            // slot 34
+    void Slot35(bool flag, BaseCharacter* other) override;               // slot 35
+    bool IsMounted() override;                                           // slot 36
+    bool OnHit(BaseCharacter* other, void* hit) override;                // slot 38
+    void Slot41(bool a, bool b, bool c, void* data, BaseCharacter* other, float scale, float f1, float f2, float f3) override; // slot 41
+    void Slot42() override;                                              // slot 42
+    int StartAttack(Attack* attack, bool flag, int source, BaseCharacter* attacker) override; // slot 44
+    void Slot47() override;                                              // slot 47
+    bool IsOut() override;                                               // slot 51
+    void Slot53() override;                                              // slot 53
+    void Slot54() override;                                              // slot 54
+    void Slot61() override;                                              // slot 61
+    void Slot62() override;                                              // slot 62
+    void Slot63() override;                                              // slot 63
+    float LoseHealth(float amount) override;                             // slot 64
+    void Slot67() override;                                              // slot 67
+    float TakeDamage(const void* hit, BaseCharacter* other) override;    // slot 69
+    void Slot74(const float* point, bool flag, float value) override;    // slot 74
+    void Slot75(void* data, void* extra) override;                       // slot 75
+    void Slot76() override;                                              // slot 76
+    float Slot77() override;                                             // slot 77
+    virtual void MountNearby();                                              // slot 78
+    virtual bool Slot79();                                                   // slot 79
+    virtual bool Slot80();                                                   // slot 80
+    virtual float Slot81();                                                  // slot 81
+    virtual bool Slot82();                                                   // slot 82
+    virtual bool Slot83();                                                   // slot 83
+    virtual bool Slot84();                                                   // slot 84
+    virtual bool Slot85();                                                   // slot 85
+    virtual void Slot86();                                                   // slot 86
+    virtual void PlayAnimationOn(int animation, bool loop, bool flag, BaseCharacter* other, float speed); // slot 87
+    virtual bool Slot88(float amount);                                       // slot 88
+    virtual void AddGuts(float amount);                                      // slot 89
+    virtual void LoseGuts(float value);                                        // slot 90
+    virtual void FaceX(float x);                                            // slot 91
+    virtual void Slot92(void* data);                                         // slot 92
+    virtual void Slot93(const HitValue* hit);                                // slot 93
+    virtual void Slot94();                                                   // slot 94
+    virtual bool Slot95();                                                   // slot 95
+    virtual int State96(int event); virtual State State96Ptr();              // slots 96, 97
+    virtual int State98(int event); virtual State State98Ptr();              // slots 98, 99
+    virtual int State100(int event); virtual State State100Ptr();            // slots 100, 101
+    virtual int State102(int event); virtual State State102Ptr();            // slots 102, 103
+    virtual int State104(int event); virtual State State104Ptr();            // slots 104, 105
+    virtual int State106(int event); virtual State State106Ptr();            // slots 106, 107
+    virtual int State108(int event); virtual State State108Ptr();            // slots 108, 109
+    virtual int State110(int event); virtual State State110Ptr();            // slots 110, 111
+    virtual int State112(int event); virtual State State112Ptr();            // slots 112, 113
+    virtual int State114(int event); virtual State State114Ptr();            // slots 114, 115
+    virtual int State116(int event); virtual State State116Ptr();            // slots 116, 117
+    virtual int State118(int event); virtual State State118Ptr();            // slots 118, 119
+    virtual int State120(int event); virtual State State120Ptr();            // slots 120, 121
+    virtual int State122(int event); virtual State State122Ptr();            // slots 122, 123
+    virtual int State124(int event); virtual State State124Ptr();            // slots 124, 125
+    virtual int State126(int event); virtual State State126Ptr();            // slots 126, 127
+    virtual int State128(int event); virtual State State128Ptr();            // slots 128, 129
+    virtual int State130(int event); virtual State State130Ptr();            // slots 130, 131
+    virtual int State132(int event); virtual State State132Ptr();            // slots 132, 133
+    virtual int State134(int event); virtual State State134Ptr();            // slots 134, 135
+    virtual int State136(int event); virtual State State136Ptr();            // slots 136, 137
+    virtual int State138(int event); virtual State State138Ptr();            // slots 138, 139
+    virtual int State140(int event); virtual State State140Ptr();            // slots 140, 141
+    virtual int State142(int event); virtual State State142Ptr();            // slots 142, 143
+    virtual int State144(int event); virtual State State144Ptr();            // slots 144, 145
+    SPTG_SLOT(146)
+    virtual onyx::Vector2 Slot147();                                         // slot 147
+    virtual bool HealWithGuts(bool* out);                                         // slot 148
+    virtual float Slot149();                                                 // slot 149
+    virtual float MaxGuts();                                                 // slot 150
+    virtual float GutsCostScale();                                                 // slot 151
+    virtual float Slot152();                                                 // slot 152
+    virtual void Slot153(uint32_t* flags);                                   // slot 153
+    SPTG_SLOT(154) SPTG_SLOT(155)
+    virtual bool Slot156();                                                  // slot 156
+    SPTG_SLOT(157)
+    virtual bool Slot158();                                                  // slot 158
+
     onyx::ComponentHandle* handle1e8; // +0x1e8
     void* slot1f0;               // +0x1f0: filled by AssignComponentSlot
     Singleton<CharacterSettings> settings; // +0x1f8
@@ -436,11 +488,6 @@ struct BaseCharacter : onyx::Component {
     void SetMount(onyx::ComponentHandle* mount);       // 0x976b10
     void ReleaseHeld(bool flag, float x, float y);   // 0x976fb0: drops the reference at +0x240
     void RecordHit(void* hit);                         // 0x977190
-    void ActorSlot4(onyx::Archive& archive, ComponentSlot::Source* source);   // 0x945fe0: AnimatedAiActor's slot 4
-    void ActorSlot32();                                // 0x93fec0: AnimatedAiActor's slot 32
-    void ActorSlot33(void* data);                      // 0x940170: AnimatedAiActor's slot 33
-    void ActorSlot13();                                // 0x945670: AnimatedAiActor's slot 13
-    void Call945c40();                                 // 0x945c40
     void Call94fde0();                                 // 0x94fde0
     void Call9500f0();                                 // 0x9500f0
     void Update976670(float time);                     // 0x976670
@@ -464,12 +511,6 @@ struct BaseCharacter : onyx::Component {
     }
     void Apply8e5750(int value);                       // 0x8e5750
     void HoldAnimation(float time, float speed);
-    // -1 facing left, 1 facing right.
-    __attribute__((always_inline)) float FacingSign() {
-        ActorObject* actor = onyx::Find<ActorObject, onyx_types::type_6492d61d>(actorObject);
-        ActorFlags* flags = onyx::Get<ActorFlags, 0x2eae5813u>(actor->flags);
-        return flags->facingLeft ? -1.0f : 1.0f;
-    }
     BaseCharacter* Mount() { return mountHandle ? static_cast<BaseCharacter*>(mountHandle->object) : nullptr; }
     CharacterEffect* Effect() { return effectHandle ? static_cast<CharacterEffect*>(effectHandle->object) : nullptr; }
 };

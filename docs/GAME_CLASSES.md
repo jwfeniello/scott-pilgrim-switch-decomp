@@ -942,6 +942,15 @@ binary has no field names. `SPTG::HudStatusGUTS` and `HudStatusHEARTS` show ther
 | `statWill` | +0x868 | `MaxGuts` (slot 150), `GutsCostScale` (slot 151), slot 58 with its flag set |
 | `statStrength` | +0x86c | slots 40, 152, and slot 58 with its flag clear |
 
+### `AnimatedAiActor` and `BaseCharacter`
+
+[`BaseCharacter.h`](../src/gameplay/BaseCharacter.h) declares them as the separate classes they are.
+Comparing the two vtables gives the split: of `AnimatedAiActor`'s 78 slots, `BaseCharacter` keeps 40
+and overrides 38. So `PlayAnimation` (`0x93f750`), `SetFacing`, `IsOnGround` and `GainHealth` are
+`AnimatedAiActor`'s, while `StartAttack`, `TurnAround` and `LoseHealth` exist in both forms. A
+`BaseCharacter::Update()` written in a subclass really calls `AnimatedAiActor::Update`.
+[`AnimatedAiActor.cpp`](../src/gameplay/AnimatedAiActor.cpp) holds the base class's own functions.
+
 ### Getting on and off an interactive object
 
 A character can ride an `SPTG::InteractiveObject`. `BaseCharacter` keeps the handle at +0x238

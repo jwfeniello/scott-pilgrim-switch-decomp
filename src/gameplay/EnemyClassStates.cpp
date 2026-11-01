@@ -596,7 +596,7 @@ bool EnemyNormal::OnMount(void* data) {
             return false;
         }
     }
-    ActorSlot33(data);
+    AnimatedAiActor::OnMount(data);
     states.Transition(State136Ptr());
     return true;
 }
