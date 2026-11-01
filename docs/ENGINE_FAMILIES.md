@@ -369,3 +369,17 @@ the developers wrote. Source in this project falls into four levels:
   bytes favour them. Known cases are labelled where they occur: the assignment order in
   `PayloadU64U32`, `Aligned32`, and the cast in `HandleSubscriber68e830`. Older families
   have not been audited for this.
+
+## Class destructors
+
+`src/gameplay/ClassDestructors.cpp` and `ClassDestructorsForced.cpp` hold destructors made of what a class owns. Each one is a run of member cleanups, then the base destructor:
+
+- A tracked listener: a callback, a target and a flag. The flag guards a disconnect, either out of line or inlined. Inlined, it removes two handlers from the global tracking map, which is why a class with two listeners has a 1,776-byte destructor.
+- An owned callback or object, destroyed and returned to the allocator it came from.
+- A vector's buffer, with its count cleared first and sometimes its other fields cleared after.
+- A shared block with a count at its start, and a strong handle whose last release destroys the object and removes the handle from the tracking map.
+- A list of owned objects, and an owned block whose buffer is a counted array.
+
+The exception table separates two forms. Cleanup in a member's destructor goes straight to the terminate pad. Cleanup in the class's own destructor body gets a landing pad that destroys the base first, then terminates. `ClassDestructorsForced.cpp` is the set that only matches with member destructors forced inline, which is about inlining order and says nothing about the original source.
+
+These sources are generated from the decompiler's reading of each destructor and tested against the bytes, so their builds are marked `generated_cxx_abi_view`. Class names are the RTTI names where those are plain. Offsets come from the code. Base classes and members with their own destructors are stand-ins named after an address or a key.
