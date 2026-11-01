@@ -354,6 +354,14 @@ can differ between listeners of one class. A later write of the owner removes it
 only shows when nothing writes the owner in that block. A `memset` of 32 bytes or more uses vector
 stores, which is where the `q0` writes in some of these constructors come from.
 
+The exception table adds more structure. When a parent's vtable is restored during cleanup, that parent's
+destructor was inlined into the landing pad, and the listeners cleaned up after that point are the
+parent's. Listeners that disconnect through one function are one type. A second vtable write after the
+last bind means another class derives from the one doing the binding, with an empty constructor; RTTI
+names that last class, and the source calls the one before it `...Part`. The parent destructors are
+forced inline there, because 8.0.1 treats a landing pad as cold and would otherwise leave them out of
+line. That forcing is about the inliner's threshold and says nothing about the original source.
+
 These also need `-fstrict-aliasing`: without it the allocator load cannot move past the stores.
 That and the listener registration above suggest the game's code was built with strict aliasing
 on, and the `-fno-strict-aliasing` builds elsewhere may just be cases where it makes no difference.
