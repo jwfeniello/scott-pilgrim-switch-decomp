@@ -44,8 +44,8 @@ void Boss::Slot4(onyx::Archive& archive, ComponentSlot::Source* source) {
     onyx::Transfer(archive, limitCb8);
     onyx::Transfer(archive, valueCbc);
     onyx::Transfer(archive, valueCc0);
-    onyx::Transfer(archive, valueCc4);
-    onyx::Transfer(archive, valueCc8);
+    onyx::Transfer(archive, lowHealthShare);
+    onyx::Transfer(archive, lowHealthRate);
     onyx::Transfer(archive, chanceCcc);
     onyx::Transfer(archive, flagCd0);
     onyx::Transfer(archive, flagCd1);

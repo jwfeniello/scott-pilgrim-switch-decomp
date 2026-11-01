@@ -39,7 +39,7 @@ struct TagTeamMember : Boss {
     uint8_t flagD5a;             // +0xd5a
     uint8_t flagD5b;             // +0xd5b
     onyx::Vector3 returnPosition; // +0xd5c: where Lynette reappears in state 264
-    char padding_d68[0xc];
+    onyx::Vector3 retreatPosition; // +0xd68: and in state 262
     uint32_t valueD74;           // +0xd74
     float timerD78;              // +0xd78: counted down by slot 13
     float healthD7c;             // +0xd7c: lowered by every hit
@@ -159,7 +159,7 @@ struct GigaGideon : Boss {
     int State116(int event); State State116Ptr();   // slots 116, 117, override Boss
     int State172(int event); State State172Ptr();   // slots 172, 173, override Boss
     virtual void Slot234(int kind);                                          // slot 234, overrides Boss
-    SPTG_SLOT(241)   // overrides Boss
+    virtual onyx::Vector3 ArrivalPoint();                                    // slot 241, overrides Boss
     virtual void Slot242();                                                  // slot 242, overrides Boss
     virtual int State244(int event); virtual State State244Ptr();   // slots 244, 245, overrides Boss
     virtual int State254(int event); virtual State State254Ptr();   // slots 254, 255, overrides Boss
@@ -247,7 +247,7 @@ struct SuperGideon : Boss {
     int State186(int event); State State186Ptr();   // slots 186, 187, override Boss
     int State196(int event); State State196Ptr();   // slots 196, 197, override Boss
     virtual void Slot234(int kind);                                          // slot 234, overrides Boss
-    SPTG_SLOT(243)   // overrides Boss
+    virtual bool Slot243();                                                  // slot 243, overrides Boss
     virtual int State244(int event); virtual State State244Ptr();   // slots 244, 245, overrides Boss
     virtual int State256(int event); virtual State State256Ptr();   // slots 256, 257, overrides Boss
     virtual int State258(int event); virtual State State258Ptr();   // slots 258, 259
@@ -361,7 +361,7 @@ struct LucasLee : Boss {
     SPTG_SLOT(235)   // overrides Boss
     virtual bool Slot237(const AttackSlot& request);                         // slot 237, overrides Boss
     virtual bool Slot239(int animation);                                     // slot 239, overrides Boss
-    SPTG_SLOT(241)   // overrides Boss
+    virtual onyx::Vector3 ArrivalPoint();                                    // slot 241, overrides Boss
     virtual int State244(int event); virtual State State244Ptr();   // slots 244, 245, overrides Boss
     virtual int State246(int event); virtual State State246Ptr();   // slots 246, 247, overrides Boss
     virtual int State254(int event); virtual State State254Ptr();   // slots 254, 255, overrides Boss
@@ -474,7 +474,7 @@ struct Lynette : TagTeamMember {
     virtual void Slot234(int kind);                                          // slot 234, overrides TagTeamMember
     virtual bool Slot237(const AttackSlot& request);                         // slot 237, overrides TagTeamMember
     virtual bool Slot238();                                                  // slot 238, overrides TagTeamMember
-    SPTG_SLOT(241)   // overrides TagTeamMember
+    virtual onyx::Vector3 ArrivalPoint();                                    // slot 241, overrides TagTeamMember
     virtual int State244(int event); virtual State State244Ptr();   // slots 244, 245, overrides TagTeamMember
     virtual int State254(int event); virtual State State254Ptr();   // slots 254, 255, overrides TagTeamMember
     virtual bool Slot259();                                                  // slot 259, overrides TagTeamMember
@@ -562,7 +562,7 @@ struct Envy : TagTeamMember {
     int State186(int event); State State186Ptr();   // slots 186, 187, override TagTeamMember
     int State198(int event); State State198Ptr();   // slots 198, 199, override TagTeamMember
     virtual void Slot234(int kind);                                          // slot 234, overrides TagTeamMember
-    SPTG_SLOT(241)   // overrides TagTeamMember
+    virtual onyx::Vector3 ArrivalPoint();                                    // slot 241, overrides TagTeamMember
     virtual int State244(int event); virtual State State244Ptr();   // slots 244, 245, overrides TagTeamMember
     virtual int State254(int event); virtual State State254Ptr();   // slots 254, 255, overrides TagTeamMember
     virtual bool Slot259();                                                  // slot 259, overrides TagTeamMember

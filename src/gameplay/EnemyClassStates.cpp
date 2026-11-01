@@ -1,6 +1,7 @@
 // States and overrides of the individual enemy classes (see
 // docs/GAME_CLASSES.md#enemy-class-states). Names are provisional.
 #include "EnemyClasses.h"
+#include "Random.h"
 
 namespace SPTG {
 
@@ -1400,6 +1401,101 @@ int EnemyChubby::State236(int event) {
         break;
     }
     return result;
+}
+
+// EnemyMini slot 196 (0x9f0770): a flying attack. It starts its first attack, keeps its speed or takes the jump speed when
+// it had none, and plays animations 79, 80 in the air and 81 on landing before going to state 96.
+int EnemyMini::State196(int event) {
+    int result = kStateHandled;
+    switch (event) {
+    case kStateUpdate:
+        switch (animation) {
+        case 79:
+            if (AnimationDone()) {
+                result = kStateHandled;
+                PlayAnimation(80, 1, 0, 1.0f);
+            }
+            break;
+        case 80:
+            if (IsOnGround()) {
+                result = kStateHandled;
+                PlayAnimation(81, 1, 0, 1.0f);
+            }
+            break;
+        case 81:
+            if (AnimationDone()) {
+                states.Transition(State96Ptr());
+                result = kStateParentTookOver;
+            }
+            break;
+        }
+        break;
+    default:
+        result = kStateUnhandled;
+        break;
+    case kStateEnter: {
+        StartAttack(&attacks[0].attack, false, 1, nullptr);
+        ReleaseHeld(false, __builtin_fminf(value334 / value2c4, 1.0f), 0.0f);
+        float speed = 0.0f;
+        if (!flag9c4) {
+            speed = savedMotion.x;
+            if (!(speed > 0.0f)) {
+                float sign = FacingSign();
+                speed = jumpBackSpeed * sign;
+            }
+        }
+        motion.x = speed;
+        result = kStateHandled;
+        PlayAnimation(79, 1, 0, 1.0f);
+        break;
+    }
+    case kStateExit:
+        states.AssertOwner(this);
+        result = kStateHandled;
+        break;
+    case kStateEvent3:
+        break;
+    }
+    return result;
+}
+
+// EnemyNormal slot 167 (0x9ef200): picks at random from two attacks, a different pair when the target's slot 83 holds. Mounted,
+// it goes to state 130. Not yet matched: the original shares less of the two inlined random rolls than ours does.
+void EnemyNormal::Approach() {
+    if (IsMounted()) {
+        states.Transition(State130Ptr());
+        return;
+    }
+    if (static_cast<BaseCharacter*>(target->object)->Slot83()) {
+        switch (RandomRange(0, 1)) {
+        case 0: states.Transition(State242Ptr()); break;
+        case 1: states.Transition(State244Ptr()); break;
+        }
+    } else {
+        switch (RandomRange(0, 1)) {
+        case 0: states.Transition(State236Ptr()); break;
+        case 1: states.Transition(State240Ptr()); break;
+        }
+    }
+}
+
+// EnemyGiant slot 167 (0x9fb7f0): the same, with its own attacks. Not yet matched, for the same reason.
+void EnemyGiant::Approach() {
+    if (IsMounted()) {
+        states.Transition(State130Ptr());
+        return;
+    }
+    if (static_cast<BaseCharacter*>(target->object)->Slot83()) {
+        switch (RandomRange(0, 1)) {
+        case 0: states.Transition(State238Ptr()); break;
+        case 1: states.Transition(State240Ptr()); break;
+        }
+    } else {
+        switch (RandomRange(0, 1)) {
+        case 0: states.Transition(State234Ptr()); break;
+        case 1: states.Transition(State236Ptr()); break;
+        }
+    }
 }
 
 }  // namespace SPTG

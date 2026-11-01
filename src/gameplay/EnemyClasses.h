@@ -120,6 +120,7 @@ struct EnemyPaparazzi : Enemy {
 };
 // vtable 0x18827b0, 250 slots
 struct EnemyNormal : Enemy {
+    void Approach();
     void Slot166(int kind);
     int State96(int event);
     int State174(int event);
@@ -146,6 +147,7 @@ struct EnemyNormal : Enemy {
 };
 // vtable 0x1882fa8, 236 slots
 struct EnemyMini : Enemy {
+    int State196(int event);
     void Update();
     void Slot166(int kind);
     void Slot4(onyx::Archive& archive, ComponentSlot::Source* source);
@@ -233,6 +235,7 @@ struct EnemyGodzilla : Enemy {
 };
 // vtable 0x1885680, 248 slots
 struct EnemyGiant : Enemy {
+    void Approach();
     bool CanMount();
     int State196(int event);
     void ReactTo(BaseCharacter* other, int reaction, void* data);

@@ -698,12 +698,16 @@ struct PersistentPlayerRecord {
 };
 static_assert(sizeof(PersistentPlayerRecord) == 0x5b4, "PersistentPlayerRecord size");
 struct PersistentData { PersistentPlayerRecord players[4]; };
-// One of the actions a player keeps as references. Slot 4 stops it, and slot 2 starts it with these two filled in.
-struct PlayerReferenceAction : onyx::Component {
+// An effect a character keeps as a reference. Slot 2 starts it with these two filled in, and slot 4 stops it. +0x18 is
+// clear while it's stopped or not yet running, as Boss's slot 242 reads it.
+struct ActorEffect : onyx::Component {
     SPTG_SLOT(3)
     virtual void Stop();
+    SPTG_SLOT(5)
+    virtual void SetRate(float rate);
     void* target;            // +0x8
     void* modifiers;         // +0x10
+    uint8_t flag18;          // +0x18
 };
 struct InGameHUD {
     char padding_0[0x60];

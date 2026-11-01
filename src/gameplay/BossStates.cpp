@@ -338,4 +338,32 @@ void Boss::Slot229() {
     scaled910 = base90c * values->bossScale2 + extra2;
 }
 
+// Slot 242 (0xa1bd30): the effect at +0xd00 runs while health is low. Above the share of slot 57, with +0xd28 or with slot 243
+// it's stopped. Below, it's started with the actor flags' +0x50 and the object at +0xb98, and its rate rises as health falls.
+void Boss::Slot242() {
+    if (handleB98) {
+        onyx::Component* modifiers = handleB98->object;
+        void* reference = referenceD00;
+        if (modifiers && reference) {
+            float left = health;
+            float limit = MaxHealth() * lowHealthShare;
+            if (left <= limit && !flagD28 && !Slot243()) {
+                ActorEffect* effect = static_cast<ActorEffect*>(referenceD00);
+                if (effect->flag18) {
+                    onyx::ComponentHandle* handle = onyx::Get<ActorFlags, 0x2eae5813u>(onyx::Find<ActorObject, 0x6492d61du>(actorObject)->flags)->handle50;
+                    effect->target = handle ? handle->object : nullptr;
+                    effect->modifiers = modifiers;
+                    static_cast<ActorEffect*>(referenceD00)->EnsureReady();
+                    effect = static_cast<ActorEffect*>(referenceD00);
+                }
+                effect->SetRate((limit - left) / limit * (lowHealthRate + -1.0f) + 1.0f);
+                static_cast<ActorEffect*>(referenceD00)->Slot3();
+            } else {
+                ActorEffect* effect = static_cast<ActorEffect*>(referenceD00);
+                if (!effect->flag18) effect->Stop();
+            }
+        }
+    }
+}
+
 }  // namespace SPTG

@@ -761,15 +761,15 @@ int ControllablePlayer::State122(int event) {
     if (result == kStateParentTookOver) return result;
     if (event != kStateExit) return kStateUnhandled;
     if (reference1370) {
-        if (reference1368) static_cast<PlayerReferenceAction*>(reference1368)->Stop();
-        if (reference1378) static_cast<PlayerReferenceAction*>(reference1378)->Stop();
-        PlayerReferenceAction* action = static_cast<PlayerReferenceAction*>(reference1370);
+        if (reference1368) static_cast<ActorEffect*>(reference1368)->Stop();
+        if (reference1378) static_cast<ActorEffect*>(reference1378)->Stop();
+        ActorEffect* action = static_cast<ActorEffect*>(reference1370);
         onyx::ComponentHandle* handle = onyx::Get<ActorFlags, 0x2eae5813u>(onyx::Find<ActorObject, 0x6492d61du>(actorObject)->flags)->handle50;
         void* target = handle ? handle->object : nullptr;
         void* modifiers = materialModifiers ? materialModifiers->object : nullptr;
         action->target = target;
         action->modifiers = modifiers;
-        static_cast<PlayerReferenceAction*>(reference1370)->EnsureReady();
+        static_cast<ActorEffect*>(reference1370)->EnsureReady();
     }
     flag511 = 0;
     return kStateHandled;
@@ -822,6 +822,36 @@ int ControllablePlayer::State237(int event) {
     case kStateExit:
         states.AssertOwner(this);
         result = kStateHandled;
+        break;
+    case kStateEvent3:
+        break;
+    }
+    return result;
+}
+
+// Slot 165 (0x9875b0): stops and attacks on the spot, back to standing when the animation ends.
+// Not yet matched: the original keeps `this` in x20 and the result in x19, and ours the other way round.
+int ControllablePlayer::State165(int event) {
+    int result = kStateHandled;
+    switch (event) {
+    case kStateUpdate:
+        if (AnimationDone()) {
+            states.Transition(State96Ptr());
+            result = kStateParentTookOver;
+            break;
+        }
+    case kStateExit:
+        states.AssertOwner(this);
+        result = kStateHandled;
+        break;
+    default:
+        result = kStateUnhandled;
+        break;
+    case kStateEnter:
+        result = kStateHandled;
+        StartAttack(&attack990, false, 1, nullptr);
+        motion.x = 0.0f;
+        PlayAnimation(10, false, true, 1.0f);
         break;
     case kStateEvent3:
         break;

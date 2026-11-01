@@ -8,11 +8,7 @@ namespace SPTG {
 
 // A component that answers IsA at slot 12, as SPTG components do.
 // A component GigaGideon keeps at +0x12b8; slot 13 runs its slot 3 while +0x18 is clear.
-struct BossEffect : onyx::Component {
-    SPTG_SLOT(3)
-    char padding_8[0x10];
-    uint8_t flag18;   // +0x18
-};
+typedef ActorEffect BossEffect;
 // What the robot's hand keeps at +0xd70 (0x18 bytes): its owner at +0x8, set
 // to the hand before slot 4 restores the rest (0xa304b0, a DeserializeCallbacks
 // instance).
@@ -85,9 +81,9 @@ struct Boss : Enemy {
     virtual bool Slot238();                                                  // slot 238
     virtual bool Slot239(int animation);                                     // slot 239
     virtual void Slot240();                                                  // slot 240
-    SPTG_SLOT(241)
+    virtual onyx::Vector3 ArrivalPoint();                                    // slot 241
     virtual void Slot242();                                                  // slot 242
-    SPTG_SLOT(243)
+    virtual bool Slot243();                                                  // slot 243
     virtual int State244(int event); virtual State State244Ptr();   // slots 244, 245
     virtual int State246(int event); virtual State State246Ptr();   // slots 246, 247
     virtual int State248(int event); virtual State State248Ptr();   // slots 248, 249
@@ -111,8 +107,8 @@ struct Boss : Enemy {
     float limitCb8;              // +0xcb8
     int32_t valueCbc;            // +0xcbc
     int32_t valueCc0;            // +0xcc0
-    int32_t valueCc4;            // +0xcc4
-    int32_t valueCc8;            // +0xcc8
+    float lowHealthShare;        // +0xcc4: below this share of slot 57 the effect at +0xd00 runs
+    float lowHealthRate;         // +0xcc8: its rate at no health
     float chanceCcc;             // +0xccc: percent, rolled by slot 233
     uint8_t flagCd0;             // +0xcd0
     uint8_t flagCd1;             // +0xcd1
@@ -122,7 +118,8 @@ struct Boss : Enemy {
     void* referenceD00;          // +0xd00: moved by TransferReference
     int32_t valueD08;            // +0xd08
     float timerD0c;              // +0xd0c
-    char padding_d10[0x14];
+    onyx::Vector3 arrivalPoint;  // +0xd10: where state 254 reappears
+    char padding_d1c[0x8];
     uint8_t flagD24;             // +0xd24
     uint8_t flagD25;             // +0xd25
     uint8_t flagD26;             // +0xd26

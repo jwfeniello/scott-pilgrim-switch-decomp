@@ -3286,4 +3286,133 @@ int SuperFightingRobotHand::State246(int event) {
     return result;
 }
 
+// Lynette slot 262 (0xa635a0): vanishes in animation 186, reappears at the retreat position, plays 188 and goes to slot 244.
+int Lynette::State262(int event) {
+    int result = kStateHandled;
+    switch (event) {
+    case kStateUpdate:
+        if (animation == 186) {
+            if (AnimationDone()) {
+                PlaceAt(retreatPosition);
+                result = kStateHandled;
+                PlayAnimation(188, 0, 1, 1.0f);
+            }
+        } else if (animation == 188) {
+            if (AnimationDone()) {
+                states.Transition(State244Ptr());
+                result = kStateParentTookOver;
+            }
+        }
+        break;
+    case kStateEnter:
+        if (TagTeamMember::State262(kStateEnter) == kStateParentTookOver) {
+            states.AssertOwner(this);
+            result = kStateParentTookOver;
+        } else {
+            motion = onyx::Vector3::Zero();
+            motionTarget = onyx::Vector3::Zero();
+            result = kStateHandled;
+            PlayAnimation(186, 0, 1, 1.0f);
+        }
+        break;
+    case kStateEvent3:
+        break;
+    default:
+        result = kStateUnhandled;
+        break;
+    case kStateExit:
+        flag3ba = 0;
+        break;
+    }
+    return result;
+}
+
+// Lynette slot 254 (0xa63240): vanishes in animation 186 and reappears at the point slot 241 picked on entry, then plays 188
+// and goes to slot 268.
+int Lynette::State254(int event) {
+    int result = kStateHandled;
+    switch (event) {
+    case kStateUpdate:
+        if (animation == 186) {
+            if (AnimationDone()) {
+                PlaceAt(arrivalPoint);
+                result = kStateHandled;
+                PlayAnimation(188, 1, 0, 1.0f);
+            }
+        } else if (animation == 188) {
+            if (AnimationDone()) {
+                states.Transition(State268Ptr());
+                result = kStateParentTookOver;
+            }
+        }
+        break;
+    case kStateEnter: {
+        motion = onyx::Vector3::Zero();
+        motionTarget = onyx::Vector3::Zero();
+        CheckA1e820();
+        onyx::Vector3 point = ArrivalPoint();
+        arrivalPoint.x = point.x;
+        arrivalPoint.y = point.y;
+        arrivalPoint.z = point.z;
+        mode87c = 2;
+        result = kStateHandled;
+        PlayAnimation(186, 0, 1, 1.0f);
+        flag3ba = 1;
+        break;
+    }
+    case kStateEvent3:
+        break;
+    default:
+        result = kStateUnhandled;
+        break;
+    case kStateExit:
+        mode87c = 3;
+        flag3ba = 0;
+        break;
+    }
+    return result;
+}
+
+// SuperGideon slot 264 (0xa556b0): stops and plays animation 114. When it ends it starts the effect at +0x1190 and goes to
+// slot 244.
+int SuperGideon::State264(int event) {
+    int result = kStateHandled;
+    switch (event) {
+    case kStateUpdate:
+        if (AnimationDone()) {
+            if (handleB98 && handleB98->object && effect) {
+                void* modifiers = handleB98->object;
+                BossEffect* started = effect;
+                onyx::ComponentHandle* handle = onyx::Get<ActorFlags, 0x2eae5813u>(onyx::Find<ActorObject, 0x6492d61du>(actorObject)->flags)->handle50;
+                void* target = handle ? handle->object : nullptr;
+                started->target = target;
+                started->modifiers = modifiers;
+                effect->EnsureReady();
+            }
+            states.Transition(State244Ptr());
+            result = kStateParentTookOver;
+        } else {
+            result = kStateHandled;
+        }
+        break;
+    default:
+        result = kStateUnhandled;
+        break;
+    case kStateEnter:
+        motion = onyx::Vector3::Zero();
+        motionTarget = onyx::Vector3::Zero();
+        result = kStateHandled;
+        PlayAnimation(114, 1, 0, 1.0f);
+        flag3ba = 1;
+        break;
+    case kStateEvent3:
+        break;
+    case kStateExit:
+        flag3ba = 0;
+        result = kStateHandled;
+        break;
+    }
+    return result;
+}
+
 }  // namespace SPTG
