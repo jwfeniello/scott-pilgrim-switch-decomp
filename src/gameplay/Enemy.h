@@ -32,9 +32,49 @@ struct LevelGateState : onyx::Component {
     char padding_8[0x110];
     int32_t mode;   // +0x118
 };
+// What +0x788 holds. Slot 16 gives a block with a byte of flags at +0xc.
+struct EnemyLinkBlock {
+    char padding_0[0x4];
+    int32_t value4;          // +0x4
+    char padding_8[0x4];
+    uint8_t flagsC;          // +0xc
+};
+struct EnemyLinkObject {
+    SPTG_SLOT(0) SPTG_SLOT(1) SPTG_SLOT(2) SPTG_SLOT(3) SPTG_SLOT(4) SPTG_SLOT(5) SPTG_SLOT(6) SPTG_SLOT(7)
+    SPTG_SLOT(8) SPTG_SLOT(9) SPTG_SLOT(10) SPTG_SLOT(11) SPTG_SLOT(12) SPTG_SLOT(13) SPTG_SLOT(14) SPTG_SLOT(15)
+    virtual EnemyLinkBlock* Block();
+};
+// What +0x790 holds.
+struct EnemyLinkFlag {
+    char padding_0[0x78];
+    uint8_t flag78;          // +0x78
+};
+
 struct SwitchLevelGateAccess {
     char padding[0xa8];
     onyx::ComponentHandle* state;   // +0xa8, a LevelGateState
+};
+
+// What a spawner passes to Enemy::Spawn (0x68 bytes): which side of the screen it comes in from, or 4 for an exact place.
+struct EnemySpawnInfo {
+    virtual ~EnemySpawnInfo();
+    int32_t id;              // +0x8
+    char padding_c[0x8];
+    int32_t side;            // +0x14: 0 left, 1 right, 2 top, 3 bottom, 4 at `position`
+    onyx::Vector3 position;  // +0x18
+    char padding_24[0x38];
+    float laneZ;             // +0x5c
+    float laneY;             // +0x60
+};
+// The enemy's lists of spawns: doubly linked, with the head at +8 (nodes hold a copy of the record).
+struct SpawnedEnemyList {
+    void* allocator;
+    void* first;
+    // Links a copy of the record between two nodes and gives back the new node (0x9dd400).
+    static void Insert(void** node, SpawnedEnemyList* list, const EnemySpawnInfo* info, void* next, void** where);
+    __attribute__((always_inline)) void PushFront(void** node, const EnemySpawnInfo* info) {
+        Insert(node, this, info, first, &first);
+    }
 };
 
 struct Enemy : BaseCharacter {
@@ -61,7 +101,8 @@ struct Enemy : BaseCharacter {
     void LoseGuts(float amount);                                     // slot 90, overrides BaseCharacter
     onyx::Vector2 Slot147();                                         // slot 147, overrides BaseCharacter
     int State136(int event);                                         // slot 136, overrides BaseCharacter
-    SPTG_SLOT(159) virtual int Slot160(); SPTG_SLOT(161)
+    virtual void Spawn(const EnemySpawnInfo* info);                  // slot 159
+    virtual int Slot160(); SPTG_SLOT(161)
     virtual bool Slot162();                                                  // slot 162
     SPTG_SLOT(163) SPTG_SLOT(164) SPTG_SLOT(165)
     virtual void Slot166(int kind);                                          // slot 166
@@ -215,7 +256,10 @@ struct Enemy : BaseCharacter {
     int32_t valueA18;            // +0xa18
     int32_t valueA1c;            // +0xa1c
     int32_t valueA20;            // +0xa20
-    char padding_a24[0x20];
+    char padding_a24[0x4];
+    SpawnedEnemyList* spawnedList;   // +0xa28: where a spawn is recorded
+    SpawnedEnemyList* respawnList;   // +0xa30: the same, for an enemy removed to respawn
+    char padding_a38[0xc];
     onyx::Vector3 backOffPoint;  // +0xa44: the point state 208 backs away from
     float backOffDistance;       // +0xa50
     char padding_a54[0x84];
@@ -234,12 +278,22 @@ struct Enemy : BaseCharacter {
     bool LeaveCheck();   // 0x9dcb90: lets state 172 hand over to state 96
     void RollChance();   // 0x9dd6b0: when slot 36 holds, rolls the random chance at +0x920
     void Update9dc4c0(); // 0x9dc4c0: runs each update of state 186
+    void PlaceAtSpawn(const EnemySpawnInfo* info);   // 0x9dd110
+    void Calla0bac0(int a, int b, bool c);           // 0xa0bac0
+    // Slot 159's work, which the classes that override it have inline.
+    __attribute__((always_inline)) void SpawnFrom(const EnemySpawnInfo* info) {
+        if (Game_State && Game_State->flagE0) value54 = info->id;
+        Slot19();
+        PlaceAtSpawn(info);
+        void* node;
+        if (removedForRespawn) respawnList->PushFront(&node, info);
+        else spawnedList->PushFront(&node, info);
+    }
     void Update9db820(float time, float value);   // 0x9db820
     void Enter9db480();  // 0x9db480
     void Call996c30(float value, int a, int b, void* c);   // 0x996c30
     void Apply995a30(float damage);                         // 0x995a30
     bool Check9ddab0(EnemySensor* sensor);                  // 0x9ddab0
-    bool Check994610();                                     // 0x994610
     void Call9dc2d0(uint32_t value);                        // 0x9dc2d0
 
     // Requests a class attack for this frame, with the hit kind slot 166

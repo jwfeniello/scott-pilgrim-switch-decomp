@@ -120,6 +120,7 @@ struct EnemyPaparazzi : Enemy {
 };
 // vtable 0x18827b0, 250 slots
 struct EnemyNormal : Enemy {
+    void Slot166(int kind);
     int State96(int event);
     int State174(int event);
     int State194(int event);
@@ -162,6 +163,8 @@ struct EnemyMini : Enemy {
 };
 // vtable 0x1883730, 237 slots
 struct EnemyJetPackMatt : Enemy {
+    void Spawn(const EnemySpawnInfo* info) override;
+    void FollowPlayfield() override;
     void Update();
     bool IsOnGround() override;
     void Slot166(int kind);
@@ -187,6 +190,8 @@ struct EnemyJetPackMatt : Enemy {
     int32_t valueC30;            // +0xc30
     int32_t valueC34;            // +0xc34
     uint8_t flying;              // +0xc38
+    char padding_c39[0x3];
+    float spawnHeight;           // +0xc3c: where it was placed
 };
 // vtable 0x1884700, 246 slots
 struct EnemyHanzo : Enemy {
@@ -270,6 +275,7 @@ struct EnemyChubby : Enemy {
 };
 // vtable 0x18885a0, 240 slots
 struct EnemyAerial : Enemy {
+    void FollowPlayfield() override;
     void Slot4(onyx::Archive& archive, ComponentSlot::Source* source);
     void SetSolid(bool solid);
     int State108(int event);

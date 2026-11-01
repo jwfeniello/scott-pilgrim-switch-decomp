@@ -252,6 +252,17 @@ A few more things decide these handlers' code:
   condition, which gives `cbz`. The same test written with early returns selects `tbnz`, and a later
   pass reverses it to `tbz`, so one instruction differs. `KenKyle::OnHit` shows this.
 
+- A position reached through a helper is worked out before the helper runs. `add x20, x19, #N` held across an actor
+  lookup means the caller passed `&field` to an inlined helper (`BaseCharacter::PlaceAt`). Written directly at the call,
+  the address is computed after the lookup.
+- `b.ls` after `fcmp` is an ordered `a <= b`, and `b.le` is `!(a > b)`. They look alike and are different source.
+- A value read before a loop into a local keeps its register apart from the loop's. `Lynette::Slot237` matches only with
+  `float range = closeRange;` before the loop.
+- `if (states.current == state && other && ...)` keeps the pointer-to-member compare's pieces above the null test.
+  With `other` first they sink below it (`Lynette::Slot46`).
+- Reads before a `bool` built from `&&` stay above it, because the join block has two predecessors and the load can't
+  sink. Pure arithmetic on them still moves down to its use (`AttackSlot::InRange`).
+
 ## Build profile for game classes
 
 The game-class sources (`gameplay_pickup`, `gameplay_piniata`) build with
@@ -406,6 +417,26 @@ existed.
 earned. The one caller matched so far is `EnemyThief::AttackLanded`: a landed attack takes `moneyStolen`
 (`+0xc08`) from a player who has more than that and is not down, then shows it through `0x996c30`.
 
+## Spawning and placement
+
+A spawner hands `Enemy::Spawn` (slot 159, `0x9cf9a0`) an `EnemySpawnInfo` of `0x68` bytes. The enemy takes the
+record's ID when the game state's `+0xe0` is set, resets through slot 19 and is placed by `PlaceAtSpawn` (`0x9dd110`).
+A copy of the record then goes on a list: `spawnedList`, or `respawnList` if the enemy was removed to respawn. The list
+is doubly linked, and `0x9dd400` copies the record into a 120-byte node at the front and gives the node back.
+
+`side` (`+0x14`) picks the place. Side 4 is exactly `position` (`+0x18`). Sides 0 and 1 are 30 past the left and right
+edges of the screen, keeping the record's lane (`+0x60` for y, `+0x5c` for z). Sides 2 and 3 are 30 past the top and
+bottom, at the first player's x with the same z. The z also becomes `groundHeight`.
+
+`NegaScott`, `GigaGideon` and `EnemyJetPackMatt` inline slot 159 (`Enemy::SpawnFrom`) and add their own step. The jet
+pack remembers the height it was placed at in `spawnHeight` (`+0xc3c`).
+
+`PlaceAtSpawn` is not matched. After the move, the original converts the height from a value it has carried across the
+call in a general register, instead of reloading it from the `Vector3` it passed. It would only do that if the compiler
+knew `ActorObject::MoveTo` leaves that `Vector3` alone, and these sources can't declare that. Like the base-class bodies
+inlined into subclasses in other files, this suggests the compiler saw more than one source file at a time. That is an
+inference from the code, not something the binary states.
+
 ## BaseCharacter states
 
 [`BaseCharacter.h`](../src/gameplay/BaseCharacter.h) describes
@@ -478,6 +509,11 @@ Three details decide whether these match:
   from one `Vector3` member into another, struct-path alias analysis proves
   the first two independent and merges them into one 64-bit copy, so the point
   arrives as `const float*`.
+
+Slot 75 is `ApplyKnockback`: the hit's kind picks the motion, and it returns `flag130`. BaseCharacter's version starts
+its `attack258` when that holds and has the attacker record the hit's ID in `recentHits`. Slot 76 is `FollowPlayfield`,
+which flying enemies override to take the ground height without snapping to it. `IsOnScreen` (`0x994610`) tests the
+actor's position against `GetScreenRect`.
 
 ## Enemy states
 
@@ -886,6 +922,16 @@ Boss's version and add a class detail:
   Enemy's state 172 that reports only the update as handled. The original
   computes that result at the end as `event == kStateUpdate`, with an event 3
   case that returns the initial 0.
+- **GigaGideon's armor:** slot 19 starts `armorMode` (`+0xd4c`) at 1, with `armorHealth` from `armorHealthStart` and
+  `coreHealth` from `coreHealthStart`. `LoseHealth` (slot 64) sends a hit to the armor in mode 1, where `armorTally`
+  (`+0xd5c`) raises `armorStagger` at `armorTallyLimit`. State 258 goes to 262 on that flag and to 264 when the armor is
+  used up. In mode 2 hits go to the core while `coreExposed` is set, and `coreBroken` rises when it's used up. Otherwise
+  it's BaseCharacter's health and guts.
+- **Todd's kind 28** lifts every interactive object he can get on with that's on screen: state 88 of the object, with
+  `liftHeight` from his `+0x11a8`. With any lifted he goes to 266, otherwise to 260.
+- **Lynette's slot 237** refuses kind 1 when the current target is in range of her kind 180 attack
+  (`AttackSlot::InRange`), and kind 180 when any target is within `closeRange`. An attack slot's first 16 bytes turned
+  out to be its range in x and z, and the y range is `+0x10` of the attack.
 - **Damage (slot 69):** Roxy inlines Boss's handling (`Boss::TakeBossDamage`);
   TagTeamMember also drains its own health at `+0xd7c`, Ken & Kyle start a
   recovery, Chau derives a phase from its health, and the robot hand counts hits.

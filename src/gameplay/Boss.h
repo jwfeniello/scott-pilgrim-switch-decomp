@@ -24,6 +24,19 @@ struct HandCallbacks {
 void TransferCallbacks(onyx::Archive& archive, ComponentSlot::Source* source, HandCallbacks* callbacks);   // 0xa304b0
 
 // vtable 0x188b950, 258 slots
+// An action a boss can run (component type 0x126e2f33).
+struct BossAction : onyx::Component {
+    SPTG_SLOT(3) SPTG_SLOT(4) SPTG_SLOT(5) SPTG_SLOT(6) SPTG_SLOT(7) SPTG_SLOT(8) SPTG_SLOT(9)
+    SPTG_SLOT(10) SPTG_SLOT(11) SPTG_SLOT(12)
+    virtual void Slot13();
+    char padding_8[0x90];
+    uint8_t flag98;          // +0x98
+};
+// What runs them, reached through the singleton at +0xbb0 (getter 0x7b3d60).
+struct ActionRunner {
+    void Run(BossAction* action, int list);   // 0x7b40a0: 0 picks the list by the runner's +0x70
+};
+
 struct Boss : Enemy {
     void Slot4(onyx::Archive& archive, ComponentSlot::Source* source);
     void Update();
@@ -88,7 +101,7 @@ struct Boss : Enemy {
     onyx::ComponentHandle* handleB98; // +0xb98
     void* slotBa0;               // +0xba0
     onyx::ComponentHandle* handleBa8; // +0xba8
-    void* slotBb0;               // +0xbb0
+    Singleton<ActionRunner> actionRunner; // +0xbb0
     AttackSlot attacks[2];       // +0xbb8: the second is requested every update with kind 1
     int32_t valueCa8;            // +0xca8
     int32_t valueCac;            // +0xcac

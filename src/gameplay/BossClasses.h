@@ -3,6 +3,7 @@
 // overrides the sources define. Names are provisional.
 #pragma once
 #include "Boss.h"
+#include "InteractiveObject.h"
 
 namespace SPTG {
 
@@ -37,7 +38,8 @@ struct TagTeamMember : Boss {
     uint8_t flagD59;             // +0xd59
     uint8_t flagD5a;             // +0xd5a
     uint8_t flagD5b;             // +0xd5b
-    char padding_d5c[0x18];
+    onyx::Vector3 returnPosition; // +0xd5c: where Lynette reappears in state 264
+    char padding_d68[0xc];
     uint32_t valueD74;           // +0xd74
     float timerD78;              // +0xd78: counted down by slot 13
     float healthD7c;             // +0xd7c: lowered by every hit
@@ -49,6 +51,7 @@ struct TagTeamMember : Boss {
 };
 // vtable 0x188a8a0, 272 slots
 struct Todd : Boss {
+    int State116(int event);
     void AttackLanded(AnimatedAiActor* target) override;
     float Slot59();
     void Update();
@@ -103,7 +106,7 @@ struct Todd : Boss {
     float limit119c;             // +0x119c
     float limit11a0;             // +0x11a0
     int32_t value11a4;           // +0x11a4
-    int32_t value11a8;           // +0x11a8
+    float liftHeight11a8;        // +0x11a8: how high state 28's objects go
     int32_t value11ac;           // +0x11ac
     float limit11b0;             // +0x11b0: slot 237 accepts kind 11 once +0xdb8 reaches it
     int32_t value11b4;           // +0x11b4
@@ -136,7 +139,18 @@ struct Todd : Boss {
     uint8_t flag1220;            // +0x1220
 };
 // vtable 0x1896e38, 284 slots
+// An object with its own animation, as GigaGideon's +0xba8 holds.
+struct AnimatedAttachment {
+    char padding_0[0x68];
+    onyx::ComponentHandle* animationHandle;  // +0x68
+};
+
 struct GigaGideon : Boss {
+    void Spawn(const EnemySpawnInfo* info) override;
+    void Slot19();
+    void SetAnimationSpeed(float speed) override;
+    float LoseHealth(float amount) override;
+    onyx::Vector2 Slot147();
     void SetSolid(bool solid);
     void Slot13();
     void Update();
@@ -163,20 +177,35 @@ struct GigaGideon : Boss {
     virtual int State280(int event); virtual State State280Ptr();   // slots 280, 281
     virtual int State282(int event); virtual State State282Ptr();   // slots 282, 283
 
-    char padding_d48[0xc];
-    float valueD54;              // +0xd54
-    char padding_d58[0xd];
-    uint8_t flagD65;             // +0xd65
-    char padding_d66[0x12];
+    char padding_d48[0x4];
+    int32_t armorMode;           // +0xd4c: in 1 the armor takes the hits, in 2 the core does while exposed
+    int32_t valueD50;            // +0xd50
+    float armorHealth;           // +0xd54: state 258 leaves for 264 when it's used up
+    int32_t valueD58;            // +0xd58
+    float armorTally;            // +0xd5c: taken since the armor last staggered him
+    float coreHealth;            // +0xd60
+    char padding_d64[0x1];
+    uint8_t armorStagger;        // +0xd65: raised when the tally reaches its limit; state 258 goes to 262
+    uint8_t coreExposed;         // +0xd66
+    uint8_t coreBroken;          // +0xd67: raised when the core is used up
+    char padding_d68[0x10];
     AttackSlot attackD78;        // +0xd78: started in state 262
-    char padding_df0[0x78];
+    char padding_df0[0x70];
+    float armorHealthStart;      // +0xe60
+    char padding_e64[0x4];
     float limitE68;              // +0xe68
-    char padding_e6c[0x38];
+    char padding_e6c[0x34];
+    float armorTallyLimit;       // +0xea0
     float speedEa4;              // +0xea4: animation speed in state 262
     float limitEa8;              // +0xea8
     char padding_eac[0x4];
     AttackSlot attacks[2];       // +0xeb0: requested every update with kinds 20 and 21
-    char padding_fa0[0x260];
+    char padding_fa0[0x240];
+    float value11e0;             // +0x11e0
+    float value11e4;             // +0x11e4
+    char padding_11e8[0x4];
+    float coreHealthStart;       // +0x11ec
+    char padding_11f0[0x10];
     float value1200;             // +0x1200
     float value1204;             // +0x1204
     char padding_1208[0xb0];
@@ -321,6 +350,7 @@ struct KenKyle : Boss {
 };
 // vtable 0x18949c8, 268 slots
 struct LucasLee : Boss {
+    void Slot13();
     void ReactTo(BaseCharacter* other, int reaction, void* data);
     bool Slot82();
     void Update();
@@ -342,16 +372,22 @@ struct LucasLee : Boss {
     virtual int State264(int event); virtual State State264Ptr();   // slots 264, 265
     virtual int State266(int event); virtual State State266Ptr();   // slots 266, 267
 
-    char padding_d48[0x10];
+    char padding_d48[0x8];
+    onyx::ComponentHandle* heldAction;  // +0xd50: runs once he's been held for +0xfb0 seconds
     AttackSlot attackD58;        // +0xd58: requested every update with kind 19
     AttackSlot attackDd0;        // +0xdd0: requested every update with kind 31
     AttackSlot attackE48;        // +0xe48: requested every update with kind 11
     AttackSlot attackEc0;        // +0xec0: requested every update with kind 174; started in state 266
     AttackSlot attackF38;        // +0xf38: requested every update with kind 178
-    char padding_fb0[0x20];
+    float heldLimit;             // +0xfb0
+    char padding_fb4[0x1c];
     uint8_t flagFd0;             // +0xfd0: switches to the other animation set
-    char padding_fd1[0x1f];
+    uint8_t flagFd1;             // +0xfd1: drops what he carries once it reaches the ground
+    char padding_fd2[0x1a];
+    float heldTime;              // +0xfec
     int32_t countFf0;            // +0xff0
+    char padding_ff4[0x4];
+    BaseCharacter* carried;      // +0xff8: what he drops when he falls
 };
 // vtable 0x1891ed8, 272 slots
 struct Roxy : Boss {
@@ -430,6 +466,7 @@ struct Chau : Boss {
 };
 // vtable 0x1898018, 284 slots
 struct Lynette : TagTeamMember {
+    bool Slot46(BaseCharacter* other);
     void Update();
     float TakeDamage(const void* hit, BaseCharacter* other);
     bool Slot82();
@@ -469,7 +506,7 @@ struct Lynette : TagTeamMember {
     int32_t valueF48;            // +0xf48
     int32_t valueF4c;            // +0xf4c
     int32_t valueF50;            // +0xf50
-    int32_t valueF54;            // +0xf54
+    float closeRange;            // +0xf54: kind 180 is refused with a target this close
     float limitF58;              // +0xf58
     char padding_f5c[0x4];
     PairList listF60;            // +0xf60
@@ -551,6 +588,7 @@ struct Envy : TagTeamMember {
 };
 // vtable 0x1894150, 266 slots
 struct NegaScott : Boss {
+    void Spawn(const EnemySpawnInfo* info) override;
     void Slot13();
     void Slot4(onyx::Archive& archive, ComponentSlot::Source* source);
     virtual void Slot234(int kind);                                          // slot 234, overrides Boss

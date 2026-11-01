@@ -143,7 +143,7 @@ void AnimatedAiActor::Update() {
 
 // Follows the playfield: takes its ground height, snaps to it when the playfield says to and the actor isn't moving
 // up or down, and tells the shadow.
-void AnimatedAiActor::Slot76() {
+void AnimatedAiActor::FollowPlayfield() {
     onyx::ComponentHandle* handle = onyx::Get<ActorObject, onyx_types::type_6492d61d>(actorObject)->playfield;
     if (!handle) return;
     PlayfieldCollision* field = static_cast<PlayfieldCollision*>(handle->object);
@@ -211,6 +211,15 @@ void AnimatedAiActor::GetScreenRect(ScreenRect* out) {
         rect.bottom = bottom;
     }
     *out = rect;
+}
+
+// Whether the actor stands inside the screen rectangle.
+bool AnimatedAiActor::IsOnScreen() {
+    float x = onyx::Get<onyx::Transform, onyx::kTransform>(onyx::Find<ActorObject, 0x6492d61du>(actorObject)->transform)->position.x;
+    float y = onyx::Get<ActorFlags, 0x2eae5813u>(onyx::Find<ActorObject, 0x6492d61du>(actorObject)->flags)->valueFc;
+    ScreenRect rect;
+    GetScreenRect(&rect);
+    return y > rect.bottom && y < rect.top && x < rect.right && x > rect.left;
 }
 
 }  // namespace SPTG

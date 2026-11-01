@@ -15,14 +15,14 @@ struct PlayfieldObject : onyx::Component {
     int32_t value118;                  // +0x118
 };
 
-void ControllablePlayer::Slot76() {
+void ControllablePlayer::FollowPlayfield() {
     ActorObject* actor = onyx::Get<ActorObject, onyx_types::type_6492d61d>(actorObject);
     onyx::ComponentHandle* handle = actor->playfield;
     if (!handle) return;
     PlayfieldObject* object = static_cast<PlayfieldObject*>(handle->object);
     if (!object) return;
     if (object->IsA(0x21350526u) && (object->flags & 1) && (actionMode != 5 || object->value118 != 12))
-        BaseCharacter::Slot76();
+        BaseCharacter::FollowPlayfield();
 }
 
 void ControllablePlayer::PlayAnimationOn(int animation, bool loop, bool flag, BaseCharacter* other, float speed) {

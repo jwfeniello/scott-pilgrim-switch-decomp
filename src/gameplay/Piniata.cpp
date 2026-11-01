@@ -64,7 +64,7 @@ struct Piniata : BreakableObject {
     virtual void Slot70();
     virtual void Release();                                       // slot 71
     virtual void Slot72(); virtual void Slot73(); virtual void Slot74();
-    virtual void Slot75(); virtual void Slot76(); virtual void Slot77();
+    virtual void ApplyKnockback(); virtual void FollowPlayfield(); virtual void Slot77();
     // States and the getters returning them (slots 78-85).
     virtual int DamagedState(int event); virtual State DamagedStatePtr();
     virtual int BrokenState(int event);  virtual State BrokenStatePtr();

@@ -207,4 +207,65 @@ void Enemy::Remove(bool respawn) {
     }
 }
 
+// Slot 159 (0x9cf9a0): resets the enemy, puts it where the spawn says and records it.
+void Enemy::Spawn(const EnemySpawnInfo* info) {
+    SpawnFrom(info);
+}
+
+// Places a spawning enemy: exactly where the record says, or 30 past the edge of the screen it comes in from. The
+// left and right edges keep the lane the record gives, and the top and bottom keep the first player's position.
+// Not yet matched: the original carries the height across the move in a general register, without reloading it from the
+// position it passed. It seems to know the move doesn't change that position, which these declarations can't express.
+void Enemy::PlaceAtSpawn(const EnemySpawnInfo* info) {
+    if (info->side == 4) {
+        PlaceAt(info->position);
+    } else {
+        ScreenRect rect;
+        GetScreenRect(&rect);
+        PlayerCatalog* catalog = onyx::Get<PlayerCatalog, onyx_types::type_0bf4a9b7>(level.Get()->players);
+        float x = onyx::Get<onyx::Transform, onyx::kTransform>(onyx::Find<ActorObject, onyx_types::type_6492d61d>(reinterpret_cast<AnimatedAiActor*>(catalog->players[0])->actorObject)->transform)->position.x;
+        onyx::Vector3 position;
+        switch (info->side) {
+        case 0:
+            position = onyx::Vector3(rect.left + -30.0f, info->laneY, info->laneZ);
+            break;
+        case 1:
+            position = onyx::Vector3(rect.right + 30.0f, info->laneY, info->laneZ);
+            break;
+        case 2:
+            position = onyx::Vector3(x, rect.top + 30.0f, info->laneZ);
+            break;
+        case 3:
+            position = onyx::Vector3(x, rect.bottom + -30.0f, info->laneZ);
+            break;
+        default:
+            return;
+        }
+        onyx::Find<ActorObject, onyx_types::type_6492d61d>(actorObject)->MoveTo(position);
+        groundHeight = static_cast<int>(position.z);
+    }
+}
+
+// Slot 7 (0x9e0590): BaseCharacter's reset, then clears what the two link handles hold.
+void Enemy::Slot7() {
+    State initial = State96Ptr();
+    states.owner = this;
+    states.next = initial;
+    states.current = initial;
+    (this->*initial)(kStateEnter);
+    AnimatedAiActor::Slot7();
+    Slot153(&flags504);
+    value328 = Slot149();
+    scaled2f8 = base2f4;
+    guts = MaxGuts();
+    scaled9c = base98;
+    health = MaxHealth();
+    if (handle790 && handle790->object) reinterpret_cast<EnemyLinkFlag*>(handle790->object)->flag78 = 0;
+    if (handle788 && handle788->object) {
+        reinterpret_cast<EnemyLinkObject*>(handle788->object)->Block()->value4 = 0;
+        reinterpret_cast<EnemyLinkObject*>(handle788->object)->Block()->flagsC &= ~8;
+        reinterpret_cast<EnemyLinkObject*>(handle788->object)->Block()->flagsC |= 2;
+    }
+}
+
 }  // namespace SPTG

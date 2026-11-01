@@ -82,7 +82,7 @@ struct Pickup : AnimatedAiActor {
     virtual void NotifySpawner(bool spawned);                     // slot 70
     virtual void Release();                                       // slot 71: clears the held flag
     virtual void Hold();                                          // slot 72: sets the held flag
-    virtual void Slot73(); virtual void Slot74(); virtual void Slot75(); virtual void Slot76();
+    virtual void Slot73(); virtual void Slot74(); virtual void ApplyKnockback(); virtual void FollowPlayfield();
     virtual void Slot77();
     // States and the getters returning them (slots 78-85).
     virtual int State78(int event);  virtual State State78Ptr();

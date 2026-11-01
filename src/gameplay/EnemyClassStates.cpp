@@ -400,14 +400,14 @@ float EnemyForestElves::TakeDamage(const void* hit, BaseCharacter* other) {
 }
 
 // EnemyShooter slot 166 (0x9ebe50): hit kind 20 switches to state 236 or 234
-// (by +0xc24) when 0x994610 passes, else raises +0xb49 and switches to slot 176.
+// (by +0xc24) when it's on screen, else raises +0xb49 and switches to slot 176.
 void EnemyShooter::Slot166(int kind) {
     savedMotion.x = motion.x;
     savedMotion.y = motion.y;
     savedMotion.z = motion.z;
     sentEvents = 0;
     if (kind != 20) return;
-    if (Check994610()) {
+    if (IsOnScreen()) {
         if (valueC24) states.Transition(State236Ptr());
         else states.Transition(State234Ptr());
     } else {
@@ -1254,6 +1254,73 @@ bool EnemyJetPackMatt::IsOnGround() {
     if (groundHeight < (int)transform->position.z) return false;
     if (__builtin_fabsf(motion.z) <= 0.000001f) return true;
     return motion.z < 0.0f;
+}
+
+// Slot 159 (0x9f1c40): Enemy's spawn, and it remembers the height it was placed at.
+void EnemyJetPackMatt::Spawn(const EnemySpawnInfo* info) {
+    SpawnFrom(info);
+    spawnHeight = onyx::Get<onyx::Transform, onyx::kTransform>(onyx::Find<ActorObject, onyx_types::type_6492d61d>(actorObject)->transform)->position.z;
+}
+
+// Slot 76 (0x9f1800): takes the playfield's ground height and tells the shadow; a flyer doesn't snap to the ground.
+void EnemyJetPackMatt::FollowPlayfield() {
+    onyx::ComponentHandle* handle = onyx::Get<ActorObject, onyx_types::type_6492d61d>(actorObject)->playfield;
+    if (!handle) return;
+    PlayfieldCollision* field = static_cast<PlayfieldCollision*>(handle->object);
+    if (!field) return;
+    if (field->IsA(PlayfieldCollision::kType) && (field->componentFlags & 1)) {
+        if (field->hasGround) groundHeight = field->groundHeight;
+        onyx::Transform* transform = onyx::Get<onyx::Transform, onyx::kTransform>(onyx::Find<ActorObject, onyx_types::type_6492d61d>(actorObject)->transform);
+        if (shadowHandle && shadowHandle->object) static_cast<ShadowAnimatedObject*>(shadowHandle->object)->SetGroundHeight(groundHeight, transform->position.z);
+    }
+}
+
+// Slot 76 (0xa030c0): the same as the jetpack's.
+void EnemyAerial::FollowPlayfield() {
+    onyx::ComponentHandle* handle = onyx::Get<ActorObject, onyx_types::type_6492d61d>(actorObject)->playfield;
+    if (!handle) return;
+    PlayfieldCollision* field = static_cast<PlayfieldCollision*>(handle->object);
+    if (!field) return;
+    if (field->IsA(PlayfieldCollision::kType) && (field->componentFlags & 1)) {
+        if (field->hasGround) groundHeight = field->groundHeight;
+        onyx::Transform* transform = onyx::Get<onyx::Transform, onyx::kTransform>(onyx::Find<ActorObject, onyx_types::type_6492d61d>(actorObject)->transform);
+        if (shadowHandle && shadowHandle->object) static_cast<ShadowAnimatedObject*>(shadowHandle->object)->SetGroundHeight(groundHeight, transform->position.z);
+    }
+}
+
+// EnemyNormal slot 166 (0x9ef0d0, shared by EnemyJake and EnemyAlberta): picks the state for an attack kind, unless the
+// level gate is in mode 12, which sends it to slot 96.
+void EnemyNormal::Slot166(int kind) {
+    if (static_cast<LevelGateState*>(levelGate.Get()->state->object)->mode == 12) {
+        states.Transition(State96Ptr());
+        return;
+    }
+    savedMotion.x = motion.x;
+    savedMotion.y = motion.y;
+    savedMotion.z = motion.z;
+    sentEvents = 0;
+    switch (kind) {
+    case 1: states.Transition(State248Ptr()); break;
+    case 8:
+        flag9c4 = 0;
+        states.Transition(State196Ptr());
+        break;
+    case 11: states.Transition(State240Ptr()); break;
+    case 20: states.Transition(State236Ptr()); break;
+    case 31: states.Transition(State242Ptr()); break;
+    case 32: states.Transition(State244Ptr()); break;
+    case 33: states.Transition(State194Ptr()); break;
+    case 45:
+    case 61:
+        states.Transition(State130Ptr());
+        break;
+    case 79:
+        flag9c4 = 1;
+        states.Transition(State196Ptr());
+        break;
+    case 202: states.Transition(State202Ptr()); break;
+    default: break;
+    }
 }
 
 }  // namespace SPTG

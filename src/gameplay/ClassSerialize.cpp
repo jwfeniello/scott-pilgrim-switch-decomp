@@ -34,7 +34,7 @@ void Boss::Slot4(onyx::Archive& archive, ComponentSlot::Source* source) {
     onyx::TransferHandle(handleB98, archive, source);
     AssignComponentSlot<8168064u, 1233810745u>(&slotBa0, source);
     onyx::TransferHandle(handleBa8, archive, source);
-    AssignComponentSlot<8049456u, 1954509136u>(&slotBb0, source);
+    AssignComponentSlot<8049456u, 1954509136u>(&actionRunner, source);
     attacks[0].Serialize(archive);
     attacks[1].Serialize(archive);
     onyx::Transfer(archive, valueCa8);

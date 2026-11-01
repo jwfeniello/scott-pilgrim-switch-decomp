@@ -172,7 +172,7 @@ void BaseCharacter::AddGuts(float amount) {
 // Slot 92 (0x970dd0): passes `data` to slot 75 and switches to the state at
 // slot 108.
 void BaseCharacter::Slot92(void* data) {
-    Slot75(data, nullptr);
+    ApplyKnockback(data, nullptr);
     states.Transition(State108Ptr());
 }
 
@@ -415,6 +415,24 @@ void BaseCharacter::MountNearby() {
     onyx::Vector3 position = onyx::Find<onyx::Transform, onyx::kTransform>(actor->transform)->Position();
     InteractiveCatalog* catalog = onyx::Find<InteractiveCatalog, onyx_types::type_7a93a527>(level.Get()->interactiveObjects);
     if (MountObject* object = catalog->FindMount(position)) SetMount(object->self);
+}
+
+// Slot 75 (0x96f7a0): the actor's knockback, and when it takes effect the character starts its knockdown attack with
+// the hit's ID, and the attacker remembers that ID.
+bool BaseCharacter::ApplyKnockback(void* data, BaseCharacter* other) {
+    flag130 = AnimatedAiActor::ApplyKnockback(data, other);
+    if (flag130) {
+        StartAttack(&attack258, false, 1, nullptr);
+        if (other) {
+            int32_t id = static_cast<HitRecord*>(data)->id;
+            currentAttack->id = id;
+            other->recentHits[0] = other->recentHits[1];
+            other->recentHits[1] = other->recentHits[2];
+            other->recentHits[2] = other->recentHits[3];
+            other->recentHits[3] = id;
+        }
+    }
+    return flag130;
 }
 
 }  // namespace SPTG

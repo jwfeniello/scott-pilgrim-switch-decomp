@@ -1771,10 +1771,10 @@ int GigaGideon::State258(int event) {
     switch (event) {
     case kStateUpdate:
         value7ac += Move_FrameDelta;
-        if (valueD54 <= 0.0f) {
+        if (armorHealth <= 0.0f) {
             states.Transition(State264Ptr());
-        } else if (flagD65) {
-            flagD65 = 0;
+        } else if (armorStagger) {
+            armorStagger = 0;
             states.Transition(State262Ptr());
         } else if (CheckA1e720()) {
             states.Transition(State96Ptr());
@@ -2659,7 +2659,7 @@ void Lynette::Slot4(onyx::Archive& archive, ComponentSlot::Source* source) {
     onyx::Transfer(archive, valueF48);
     onyx::Transfer(archive, valueF4c);
     onyx::Transfer(archive, valueF50);
-    onyx::Transfer(archive, valueF54);
+    onyx::Transfer(archive, closeRange);
     onyx::Transfer(archive, limitF58);
     listF60.Serialize(archive);
 }
@@ -2727,7 +2727,7 @@ void Todd::Slot4(onyx::Archive& archive, ComponentSlot::Source* source) {
     onyx::Transfer(archive, limit119c);
     onyx::Transfer(archive, limit11a0);
     onyx::Transfer(archive, value11a4);
-    onyx::Transfer(archive, value11a8);
+    onyx::Transfer(archive, liftHeight11a8);
     onyx::Transfer(archive, value11ac);
     onyx::Transfer(archive, limit11b0);
     onyx::Transfer(archive, value11b4);
@@ -2849,6 +2849,321 @@ int Todd::State244(int event) {
         mode87c = 3;
         flagD88 = 0;
         break;
+    }
+    return result;
+}
+
+// LucasLee slot 108 (0xa47f80): Enemy's knockdown, and on entry with +0xfd0 raised he lets go of what he carries.
+int LucasLee::State108(int event) {
+    int result = Enemy::State108(event);
+    if (result != kStateParentTookOver) {
+        if (event == kStateEnter) {
+            if (!flagD28 && health <= 0.0f && !Slot95()) Slot240();
+            if (flagFd0 && carried) {
+                flagFd0 = 0;
+                flagFd1 = 1;
+                carried->Slot72();
+                carried->OnDismount();
+            }
+            return kStateHandled;
+        }
+        return kStateUnhandled;
+    }
+    return result;
+}
+
+// NegaScott slot 159 (0xa45560): Enemy's spawn, then the animation helper with 4.
+void NegaScott::Spawn(const EnemySpawnInfo* info) {
+    SpawnFrom(info);
+    Calla0bac0(4, 0, true);
+}
+
+// GigaGideon slot 159 (0xa59b80): Enemy's spawn, then 0x94fde0.
+void GigaGideon::Spawn(const EnemySpawnInfo* info) {
+    SpawnFrom(info);
+    Call94fde0();
+}
+
+// Todd slot 116 (0xa1a000): with +0xcd1 raised he plays out animations 16 and 27 before leaving through slot 256.
+int Todd::State116(int event) {
+    int result = kStateHandled;
+    switch (event) {
+    case kStateUpdate:
+        if (flagCd1) {
+            if (animation == 16) {
+                if (AnimationDone() && hitStopLeft <= 0.0f) {
+                    result = kStateHandled;
+                    PlayAnimation(27, 0, 1, 1.0f);
+                }
+            } else if (animation == 27) {
+                if (AnimationDone()) {
+                    states.Transition(State256Ptr());
+                    result = kStateParentTookOver;
+                }
+            }
+        } else if (AnimationDone()) {
+            states.Transition(State200Ptr());
+            result = kStateParentTookOver;
+        }
+        break;
+    case kStateEnter:
+        if (Enemy::State116(kStateEnter) == kStateParentTookOver) {
+            states.AssertOwner(this);
+            result = kStateParentTookOver;
+        } else {
+            if (!flagD28) Slot240();
+            result = kStateHandled;
+            flag3ba = 1;
+        }
+        break;
+    case kStateEvent3:
+        break;
+    default:
+        result = kStateUnhandled;
+        break;
+    case kStateExit:
+        flag3ba = 0;
+        break;
+    }
+    return result;
+}
+
+// GigaGideon slot 19 (0xa585e0): Enemy's reset, then the armor starts whole and he faces right.
+void GigaGideon::Slot19() {
+    Enemy::Slot19();
+    armorMode = 1;
+    valueD50 = 0;
+    armorHealth = armorHealthStart;
+    valueD58 = 0;
+    armorTally = 0.0f;
+    coreHealth = coreHealthStart;
+    armorStagger = 0;
+    coreExposed = 1;
+    coreBroken = 0;
+    if (onyx::Get<ActorFlags, 0x2eae5813u>(onyx::Find<ActorObject, 0x6492d61du>(actorObject)->flags)->facingLeft) TurnAround();
+    mode87c = 3;
+}
+
+// GigaGideon slot 25 (0xa58710): BaseCharacter's, and the attachment at +0xba8 follows.
+void GigaGideon::SetAnimationSpeed(float speed) {
+    animationSpeed = speed;
+    if (hitStopLeft <= 0.0f) onyx::Get<AnimationController, kAnimationControllerType>(animationHandle)->SetSpeed(speed);
+    if (hitStopLeft <= 0.0f && mounted) {
+        BaseCharacter* mount = Mount();
+        if (mount) mount->SetAnimationSpeed(speed);
+    }
+    if (handleBa8 && handleBa8->object) onyx::Get<AnimationController, kAnimationControllerType>(reinterpret_cast<AnimatedAttachment*>(handleBa8->object)->animationHandle)->SetSpeed(speed);
+}
+
+// GigaGideon slot 64 (0xa58dc0): where the hit goes depends on the armor. In mode 1 the armor takes it, and the tally
+// staggers him when it reaches the limit. In mode 2 the exposed core takes it. Otherwise it's BaseCharacter's
+// health and guts. At no health he goes to the state at slot 116.
+float GigaGideon::LoseHealth(float amount) {
+    float taken;
+    switch (armorMode) {
+    case 1: {
+        float first = armorHealth;
+        if (first >= amount) {
+            armorHealth = first - amount;
+            taken = amount;
+        } else {
+            armorHealth = 0.0f;
+            taken = first;
+        }
+        armorTally += taken;
+        if (armorTally >= armorTallyLimit) {
+            armorTally = 0.0f;
+            armorStagger = 1;
+        }
+        break;
+    }
+    case 2:
+        if (coreExposed) {
+            float first = coreHealth;
+            if (first >= amount) {
+                coreHealth = first - amount;
+                taken = amount;
+            } else {
+                coreBroken = 1;
+                coreHealth = 0.0f;
+                taken = first;
+            }
+            break;
+        }
+        // Falls through.
+    default: {
+        float first = health;
+        if (first >= amount) {
+            health = first - amount;
+            taken = amount;
+        } else {
+            health = 0.0f;
+            taken = first;
+        }
+        if (taken < amount && guts > 0.0f) {
+            float rest = guts - (amount - taken);
+            guts = rest;
+            if (rest < 0.0f) {
+                taken = rest + amount;
+                guts = 0.0f;
+            } else {
+                taken = amount;
+            }
+        }
+        break;
+    }
+    }
+    if (health <= 0.0f) states.Transition(State116Ptr());
+    return taken;
+}
+
+// GigaGideon slot 147 (0xa59a20): Enemy's, but while the armor takes hits the point rises by +0x11e0 - +0x11e4.
+onyx::Vector2 GigaGideon::Slot147() {
+    if (armorMode == 1) {
+        float y = value320.y - (value11e0 - value11e4);
+        onyx::Vector2 point;
+        point.x = value320.x;
+        point.y = y;
+        return point;
+    }
+    if (animation != 139) return value320;
+    float x = value320.x;
+    float sign = FacingSign();
+    onyx::Vector2 point;
+    point.x = x + valueB4c * sign;
+    point.y = value320.y + valueB50;
+    return point;
+}
+
+// Lynette slot 264 (0xa637e0): plays animation 186, reappears at the return position, plays 188 and goes to slot 266.
+int Lynette::State264(int event) {
+    int result = kStateHandled;
+    switch (event) {
+    case kStateUpdate:
+        if (animation == 186) {
+            if (AnimationDone()) {
+                PlaceAt(returnPosition);
+                result = kStateHandled;
+                PlayAnimation(188, 0, 1, 1.0f);
+            }
+        } else if (animation == 188) {
+            if (AnimationDone()) {
+                states.Transition(State266Ptr());
+                result = kStateParentTookOver;
+            }
+        }
+        break;
+    case kStateEnter:
+        if (TagTeamMember::State264(kStateEnter) == kStateParentTookOver) {
+            states.AssertOwner(this);
+            result = kStateParentTookOver;
+        } else {
+            result = kStateHandled;
+            PlayAnimation(186, 0, 1, 1.0f);
+        }
+        break;
+    case kStateEvent3:
+        break;
+    default:
+        result = kStateUnhandled;
+        break;
+    case kStateExit:
+        flag3ba = 0;
+        break;
+    }
+    return result;
+}
+
+// Todd slot 234 (0xa22160): state for an attack kind. Kind 28 lifts every interactive object on screen he can get
+// hold of: with any lifted he goes to slot 266, otherwise slot 260.
+void Todd::Slot234(int kind) {
+    switch (kind) {
+    case 11: states.Transition(State260Ptr()); break;
+    case 20: states.Transition(State258Ptr()); break;
+    case 28: {
+        InteractiveCatalog* catalog = onyx::Get<InteractiveCatalog, onyx_types::type_7a93a527>(level.Get()->interactiveObjects);
+        int lifted = 0;
+        for (MountObject** i = catalog->objects; i != catalog->objects + catalog->count; ++i) {
+            InteractiveObject* object = reinterpret_cast<InteractiveObject*>(*i);
+            if (object->CanMount() && object->IsOnScreen()) {
+                object->states.Transition(object->State88Ptr());
+                ++lifted;
+                object->liftHeight = liftHeight11a8;
+            }
+        }
+        if (lifted) states.Transition(State266Ptr());
+        else states.Transition(State260Ptr());
+        break;
+    }
+    case 32: states.Transition(State264Ptr()); break;
+    default: break;
+    }
+}
+
+// Todd slot 240 (0xa22390): Boss's, then three of his actions run.
+void Todd::Slot240() {
+    Boss::Slot240();
+    actionRunner.Get()->Run(onyx::Find<BossAction, 309210931u>(handlesD48[6]), 0);
+    actionRunner.Get()->Run(onyx::Find<BossAction, 309210931u>(handlesD48[2]), 0);
+    actionRunner.Get()->Run(onyx::Find<BossAction, 309210931u>(handlesD48[4]), 0);
+}
+
+// LucasLee slot 13 (0xa479a0): Boss's, then while held the timer runs until his action fires, and what he carried is let
+// go once it reaches the ground.
+void LucasLee::Slot13() {
+    UpdateBoss13();
+    if (IsHeld()) {
+        if (heldTime >= heldLimit) {
+            BossAction* action = onyx::Get<BossAction, 309210931u>(heldAction);
+            if (action->flag98) action->Slot13();
+        } else {
+            heldTime += Move_FrameDelta;
+        }
+    }
+    if (flagFd1 && carried && carried->IsOnGround()) {
+        flagFd1 = 0;
+        carried->ReactTo(this, 5, nullptr);
+        carried = nullptr;
+    }
+}
+
+// Lynette slot 237 (0xa62d20): Boss's refusals, and she refuses kind 1 when the current target is in the range of the
+// kind 180 attack, and kind 180 unless every target is further away than +0xf54.
+bool Lynette::Slot237(const AttackSlot& request) {
+    switch (request.kind) {
+    case 31:
+    case 32:
+    case 39:
+    case 45:
+    case 61:
+        return false;
+    case 1: {
+        uint64_t index = targetIndex;
+        if (index < targetCount) return !attackEb8.InRange(targets[index].offset);
+        break;
+    }
+    case 180:
+        {
+            float range = closeRange;
+            for (uint32_t i = 0; i < targetCount; ++i) {
+                if (targets[i].distance <= range) return false;
+            }
+        }
+        break;
+    }
+    return true;
+}
+
+// Lynette slot 46 (0xa62790): Enemy's, and in the state at slot 282 she can always act on the type 0x7d97ec86.
+bool Lynette::Slot46(BaseCharacter* other) {
+    State state = State282Ptr();
+    if (states.current == state && other && other->IsA(0x7d97ec86u)) return true;
+    if (Slot85()) return false;
+    int kind = other->Slot45() | 2;
+    bool result = kind == 2;
+    if (static_cast<LevelGateState*>(levelGate.Get()->state->object)->mode == 12) {
+        bool free = other->Slot50() == 3 && (!other->partnerHandle || !other->partnerHandle->object);
+        return free & (kind == 2);
     }
     return result;
 }

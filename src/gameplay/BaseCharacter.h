@@ -20,7 +20,9 @@ struct BaseCharacter;
 struct AnimatedAiActor;
 struct Attack {
     float damage;                     // +0x0: scaled by the attacker when it starts
-    char data_4[0x18];
+    char data_4[0xc];
+    float rangeY;                     // +0x10
+    char data_14[0x8];
     float hitStopTime;                // +0x1c: how long the animation is held on a hit
     float hitStopSpeed;               // +0x20: the animation speed while it is held
     char data_24[0x8];
@@ -42,12 +44,25 @@ static_assert(sizeof(Attack) == 0x58, "Attack size");
 // kind the class's slot 166 answers; the special attack's state plays it as an
 // animation.
 struct AttackSlot {
-    uint64_t header[2];  // +0x0: contents unknown, copied whole
+    float rangeMinX;     // +0x0: how far along x a target must be
+    float rangeMaxX;     // +0x4
+    float rangeMinZ;     // +0x8: and how far in z
+    float rangeMaxZ;     // +0xc
     uint8_t flag10;      // +0x10
     Attack attack;       // +0x18
     int32_t kind;        // +0x70
     uint8_t flag74;      // +0x74
     void Serialize(onyx::Archive& archive);   // 0x9e6310
+    // Whether a target at this offset is in the attack's range.
+    __attribute__((always_inline)) bool InRange(const onyx::Vector3& offset) const {
+        float x = __builtin_fabsf(offset.x);
+        bool inX = rangeMinX <= x && rangeMaxX >= x;
+        float half = attack.rangeY * 0.5f;
+        float y = __builtin_fabsf(offset.y);
+        float z = offset.z;
+        bool inZ = rangeMinZ <= z && rangeMaxZ >= z;
+        return inX && inZ && half > y;
+    }
 };
 static_assert(sizeof(AttackSlot) == 0x78, "AttackSlot size");
 struct BaseCharacter;
@@ -269,8 +284,8 @@ struct AnimatedAiActor : onyx::Component {
     SPTG_SLOT(72)
     virtual bool Slot73();                                                   // slot 73
     virtual void Slot74(const float* point, bool flag, float value);         // slot 74
-    virtual void Slot75(void* data, void* extra);                            // slot 75
-    virtual void Slot76();                                                   // slot 76
+    virtual bool ApplyKnockback(void* data, BaseCharacter* other);                            // slot 75
+    virtual void FollowPlayfield();                                                   // slot 76
     virtual float Slot77();                                                  // slot 77
 
     char padding_8[0x30];
@@ -311,7 +326,7 @@ struct AnimatedAiActor : onyx::Component {
     onyx::Vector2 value120;      // +0x120: copied to ActorFlags +0x7c by slot 16
     char padding_128[0x4];
     int32_t value12c;            // +0x12c
-    uint8_t flag130;             // +0x130
+    bool flag130;                // +0x130: what the knockback handler returns
     char padding_131[0x7];
     Attack* currentAttack;       // +0x138: the character's own copy of the attack it is making
     uint8_t attackLanded;        // +0x140: cleared when an attack starts, set on a hit
@@ -346,6 +361,7 @@ struct AnimatedAiActor : onyx::Component {
     onyx::ComponentHandle* handle1e0; // +0x1e0
     void Call944010();           // 0x944010
     void GetScreenRect(ScreenRect* out);  // 0x95c040
+    bool IsOnScreen();                    // 0x994610
     // An attack landed: its hit stop holds this actor's animation, and with kind 2 the attack's owner's too.
     __attribute__((always_inline)) void HoldForLandedAttack() {
         Attack* landed = currentAttack;
@@ -392,6 +408,11 @@ struct BaseCharacter : AnimatedAiActor {
     void Slot11() override;                                              // slot 11
     bool IsA(uint32_t type) override;                                    // slot 12
     void Slot13() override;                                              // slot 13
+    // Moves the character and makes that height its ground. The position is worked out before the actor object is looked up.
+    __attribute__((always_inline)) void PlaceAt(const onyx::Vector3& position) {
+        onyx::Find<ActorObject, 0x6492d61du>(actorObject)->MoveTo(position);
+        groundHeight = static_cast<int>(position.z);
+    }
     void Slot14() override;                                              // slot 14
     void Slot19() override;                                              // slot 19
     void PlayMountedAnimation(int animation, bool a, bool b) override;   // slot 23
@@ -419,8 +440,8 @@ struct BaseCharacter : AnimatedAiActor {
     void Slot67() override;                                              // slot 67
     float TakeDamage(const void* hit, BaseCharacter* other) override;    // slot 69
     void Slot74(const float* point, bool flag, float value) override;    // slot 74
-    void Slot75(void* data, void* extra) override;                       // slot 75
-    void Slot76() override;                                              // slot 76
+    bool ApplyKnockback(void* data, BaseCharacter* other) override;                       // slot 75
+    void FollowPlayfield() override;                                              // slot 76
     float Slot77() override;                                             // slot 77
     virtual void MountNearby();                                              // slot 78
     virtual bool Slot79();                                                   // slot 79
@@ -842,7 +863,7 @@ struct ControllablePlayer : BaseCharacter {
     float GutsCostScale() override;
     float Slot152() override;
     void Slot20() override;
-    void Slot76() override;
+    void FollowPlayfield() override;
     void PlayAnimationOn(int animation, bool loop, bool flag, BaseCharacter* other, float speed) override;
     bool Slot88(float amount) override;
     int State114(int event) override;

@@ -108,8 +108,8 @@ struct Player {
     virtual void LeaveGameOver();
     virtual void Slot73();
     virtual void Slot74();
-    virtual void Slot75();
-    virtual void Slot76();
+    virtual void ApplyKnockback();
+    virtual void FollowPlayfield();
     virtual void Slot77();
     virtual void MountNearby();
     virtual void Slot79();
