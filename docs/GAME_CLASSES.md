@@ -907,8 +907,21 @@ The compiler's choices show how these were written:
 - The `lt` and `le` conditions in slots 64 and 65 come from plain `if`/`else` blocks that
   the backend turned into conditional selects, not from `?:`.
 
-Slots 64 to 66 change +0x160 (health, going by how they use it), with slot 64 taking any
-remainder from +0x32c. Not matched: `State249`, which differs by one instruction's order.
+Slots 64 to 66 change `health` (+0x160): `LoseHealth`, `GainHealth` and `RestoreHealth`.
+`LoseHealth` takes any remainder from `guts` (+0x32c). Not matched: `State249`, which differs
+by one instruction's order.
+
+The names of these fields and of the four stats are inferred from how the code uses them. The
+binary has no field names. `SPTG::HudStatusGUTS` and `HudStatusHEARTS` show there are two meters,
+`State203` takes a special attack's cost from `guts` before `health`, and `Enemy` starts with
+`guts = MaxGuts()`. The stats' names follow what each one scales, and match the game's four stats:
+
+| Field | Offset | What it scales |
+|---|---|---|
+| `statDefense` | +0x860 | `MaxHealth` (slot 57), slots 59 and 149 |
+| `statSpeed` | +0x864 | `SpeedScale` (slot 60), the multiplier on run speeds |
+| `statWill` | +0x868 | `MaxGuts` (slot 150), `GutsCostScale` (slot 151), slot 58 with its flag set |
+| `statStrength` | +0x86c | slots 40, 152, and slot 58 with its flag clear |
 
 [`PlayerOverrides.cpp`](../src/gameplay/PlayerOverrides.cpp) has 4 overrides: slots 20, 76, 87 and
 88. Slot 76 forwards to the base only when the actor's playfield object passes

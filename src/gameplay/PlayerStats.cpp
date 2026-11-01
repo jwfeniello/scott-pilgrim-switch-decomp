@@ -25,7 +25,7 @@ __attribute__((always_inline)) inline float Scaled(const float& low, const float
 }
 
 float ControllablePlayer::Slot40() {
-    return Min(Max(Max(value86c, 0.0f) * (Max(value898, 0.0f) / 100.0f), 0.0f), 100.0f);
+    return Min(Max(Max(statStrength, 0.0f) * (Max(value898, 0.0f) / 100.0f), 0.0f), 100.0f);
 }
 
 int ControllablePlayer::Slot45() {
@@ -33,43 +33,43 @@ int ControllablePlayer::Slot45() {
     return 0;
 }
 
-float ControllablePlayer::Slot57() {
-    return Scaled(value874, base98, value860);
+float ControllablePlayer::MaxHealth() {
+    return Scaled(value874, base98, statDefense);
 }
 
 float ControllablePlayer::Slot58(bool flag) {
-    const float& stat = flag ? value868 : value86c;
+    const float& stat = flag ? statWill : statStrength;
     const float& percent = flag ? value88c : value890;
     return percent / 100.0f * Max(stat, 0.0f) + 1.0f;
 }
 
 float ControllablePlayer::Slot59() {
-    return value878 / 10000.0f * Max(value860, 0.0f);
+    return value878 / 10000.0f * Max(statDefense, 0.0f);
 }
 
-float ControllablePlayer::Slot60() {
+float ControllablePlayer::SpeedScale() {
     float scale = 1.0f;
     if (value13d8 > 0.0f) scale = value12b4;
-    return scale * (value884 / 100.0f * Max(value864, 0.0f) + 1.0f);
+    return scale * (value884 / 100.0f * Max(statSpeed, 0.0f) + 1.0f);
 }
 
 // Takes damage from +0x160, then any remainder from +0x32c; returns what was taken.
-float ControllablePlayer::Slot64(float amount) {
-    float current = value160;
+float ControllablePlayer::LoseHealth(float amount) {
+    float current = health;
     float taken;
     if (current >= amount) {
         taken = amount;
-        value160 = current - amount;
+        health = current - amount;
     } else {
         taken = current;
-        value160 = 0.0f;
+        health = 0.0f;
     }
-    if (taken < amount && value32c > 0.0f) {
-        float reserve = value32c - (amount - taken);
-        value32c = reserve;
+    if (taken < amount && guts > 0.0f) {
+        float reserve = guts - (amount - taken);
+        guts = reserve;
         if (reserve < 0.0f) {
             taken = reserve + amount;
-            value32c = 0.0f;
+            guts = 0.0f;
         } else {
             taken = amount;
         }
@@ -78,39 +78,39 @@ float ControllablePlayer::Slot64(float amount) {
     return taken;
 }
 
-void ControllablePlayer::Slot65(float amount) {
+void ControllablePlayer::GainHealth(float amount) {
     if (flag7e8) return;
-    float room = Slot57() - value160;
+    float room = MaxHealth() - health;
     float change = room > amount ? amount : room;
-    value160 += amount;
-    float limit = Slot57();
-    float value = value160;
-    value160 = Clamp(value, 0.0f, limit);
+    health += amount;
+    float limit = MaxHealth();
+    float value = health;
+    health = Clamp(value, 0.0f, limit);
     if (__builtin_fabsf(change) <= 0.000001f) return;
     OnHealthChanged(change);
 }
 
-void ControllablePlayer::Slot66() {
-    float change = Slot57() - value160;
-    value160 = Slot57();
+void ControllablePlayer::RestoreHealth() {
+    float change = MaxHealth() - health;
+    health = MaxHealth();
     OnHealthChanged(change);
 }
 
 float ControllablePlayer::Slot149() {
-    return Scaled(value87c, value2fc, value860);
+    return Scaled(value87c, value2fc, statDefense);
 }
 
-float ControllablePlayer::Slot150() {
-    return Scaled(value880, base2f4, value868);
+float ControllablePlayer::MaxGuts() {
+    return Scaled(value880, base2f4, statWill);
 }
 
-float ControllablePlayer::Slot151() {
-    float stat = Max(1.0f, Max(value868, 0.0f));
+float ControllablePlayer::GutsCostScale() {
+    float stat = Max(1.0f, Max(statWill, 0.0f));
     return Max(1.0f - value888 * stat / 100.0f / 100.0f, 0.1f);
 }
 
 float ControllablePlayer::Slot152() {
-    return value894 / 100.0f * Max(value86c, 0.0f) + 1.0f;
+    return value894 / 100.0f * Max(statStrength, 0.0f) + 1.0f;
 }
 
 }  // namespace SPTG

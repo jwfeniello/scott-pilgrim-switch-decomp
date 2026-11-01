@@ -200,7 +200,7 @@ int Enemy::State112(int event) {
         bool skip = false;
         if (flags978 & 2) {
             uint32_t roll = RandomRange(1, 100);
-            float chance = value160 <= counterHealthThreshold ? counterChance : counterChanceHealthy;
+            float chance = health <= counterHealthThreshold ? counterChance : counterChanceHealthy;
             if (roll <= chance) {
                 Apply8e5750(124);
                 value874 = 1;
@@ -329,7 +329,7 @@ int Enemy::State186(int event) {
     case kStateUpdate:
         timer330 += Move_FrameDelta;
         if (AnimationDone() && timer330 >= delay984) {
-            static_cast<BaseCharacter*>(target->object)->Slot90(value980);
+            static_cast<BaseCharacter*>(target->object)->LoseGuts(value980);
             states.Transition(State96Ptr());
             return kStateParentTookOver;
         }
@@ -753,8 +753,8 @@ int Enemy::State222(int event) {
         ActorObject* actor = onyx::Find<ActorObject, onyx_types::type_6492d61d>(actorObject);
         onyx::Get<ActorFlags, 0x2eae5813u>(actor->flags)->flag118 = 1;
         value9c8 = services.Get()->difficulty.Get()->value108;
-        value160 = 0.0f;
-        value32c = 0.0f;
+        health = 0.0f;
+        guts = 0.0f;
         flag3ba = 1;
         return kStateHandled;
     }

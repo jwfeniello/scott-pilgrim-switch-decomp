@@ -491,8 +491,8 @@ int EnemyGuyOnFire::State176(int event) {
 // +0x160, the sensor and its counters.
 void EnemyStuntman::Update() {
     UpdateEnemy();
-    value32c = 0.0f;
-    value160 = 1.0f;
+    guts = 0.0f;
+    health = 1.0f;
     sensor.Reset();
     valueBb8 = 0;
     timerBc8 = 0.0f;

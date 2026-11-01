@@ -188,7 +188,7 @@ int BaseCharacter::State112(int event) {
         if (animation == 146 && AnimationDone()) PlayAnimation(16, 0, 0, 1.0f);
         timer330 += Move_FrameDelta;
         if (timer330 > Slot81()) {
-            if (value160 > 0.0f) {
+            if (health > 0.0f) {
                 states.Transition(State122Ptr());
             } else {
                 bool second;
@@ -535,7 +535,7 @@ int BaseCharacter::State142(int event) {
             motion = onyx::Vector3::Zero();
             motionTarget = onyx::Vector3::Zero();
             if (AnimationDone()) {
-                if (value160 > 0.0f || Slot95()) {
+                if (health > 0.0f || Slot95()) {
                     states.Transition(State112Ptr());
                 } else if (Slot156()) {
                     states.Transition(State114Ptr());

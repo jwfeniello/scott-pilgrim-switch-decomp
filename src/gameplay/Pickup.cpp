@@ -115,8 +115,8 @@ struct Pickup : AnimatedAiActor {
     virtual bool IsHeld();                                        // slot 55: byte +0x238
     virtual void Slot56();
     virtual float BaseScale();                                    // slot 57
-    virtual void Slot58(); virtual void Slot59(); virtual void Slot60(); virtual void Slot61(); virtual void Slot62();
-    virtual void Slot63(); virtual void Slot64(); virtual void Slot65(); virtual void Slot66(); virtual void Slot67();
+    virtual void Slot58(); virtual void Slot59(); virtual void SpeedScale(); virtual void Slot61(); virtual void Slot62();
+    virtual void Slot63(); virtual void LoseHealth(); virtual void GainHealth(); virtual void RestoreHealth(); virtual void Slot67();
     virtual void Slot68(); virtual void Slot69();
     virtual void NotifySpawner(bool spawned);                     // slot 70
     virtual void Release();                                       // slot 71: clears the held flag

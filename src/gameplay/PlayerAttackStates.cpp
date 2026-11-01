@@ -148,8 +148,8 @@ int ControllablePlayer::State227(int event) {
         case kStateUpdate:
             if (AnimationDone()) {
                 actionMode = 0;
-                value160 = Slot57();
-                value32c = Slot150();
+                health = MaxHealth();
+                guts = MaxGuts();
                 states.Transition(State96Ptr());
                 return kStateParentTookOver;
             }

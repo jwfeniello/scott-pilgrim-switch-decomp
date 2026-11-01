@@ -187,10 +187,10 @@ void ControllablePlayer::Slot4(onyx::Archive& archive, ComponentSlot::Source* so
     ReadEventSlot<9930337u, 1396383524u>(archive, source, event818, this);
     ReadEventSlot<9930338u, 516672096u>(archive, source, event830, this);
     ReadEventSlot<9930339u, 916073581u>(archive, source, event848, this);
-    onyx::Transfer(archive, value860);
-    onyx::Transfer(archive, value864);
-    onyx::Transfer(archive, value868);
-    onyx::Transfer(archive, value86c);
+    onyx::Transfer(archive, statDefense);
+    onyx::Transfer(archive, statSpeed);
+    onyx::Transfer(archive, statWill);
+    onyx::Transfer(archive, statStrength);
     onyx::Transfer(archive, value870);
     onyx::Transfer(archive, value874);
     onyx::Transfer(archive, value878);
@@ -249,7 +249,7 @@ void ControllablePlayer::Slot4(onyx::Archive& archive, ComponentSlot::Source* so
     onyx::Transfer(archive, value11dc);
     onyx::Transfer(archive, flag11e0);
     value11d8 = value11dc;
-    onyx::Transfer(archive, value11e4);
+    onyx::Transfer(archive, specialCost);
     onyx::Transfer(archive, value11e8);
     onyx::Transfer(archive, value11ec);
     onyx::Transfer(archive, flag11f0);

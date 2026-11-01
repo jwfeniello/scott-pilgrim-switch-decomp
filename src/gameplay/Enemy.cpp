@@ -48,8 +48,8 @@ void Enemy::Slot229() {
     scaled9c = base98 * values->scale + extra;
     scaled2f8 = values->scale * base2f4 + extra;
     scaled910 = values->scale * base90c + extra;
-    Slot66();
-    value32c = Slot150();
+    RestoreHealth();
+    guts = MaxGuts();
 }
 
 // Slot 4 (0x9e06c0): BaseCharacter's serialization, then Enemy's own fields

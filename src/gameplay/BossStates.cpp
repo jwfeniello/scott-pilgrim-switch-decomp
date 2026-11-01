@@ -56,7 +56,7 @@ int Boss::State108(int event) {
     int result = Enemy::State108(event);
     if (result == kStateParentTookOver) return result;
     if (event != kStateEnter) return kStateUnhandled;
-    if (!flagD28 && value160 <= 0.0f && !Slot95()) Slot240();
+    if (!flagD28 && health <= 0.0f && !Slot95()) Slot240();
     return kStateHandled;
 }
 

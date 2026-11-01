@@ -165,14 +165,15 @@ struct BaseCharacter : onyx::Component {
     SPTG_SLOT(54)
     virtual bool IsHeld();                                                   // slot 55
     virtual void SetSolid(bool solid);                                       // slot 56
-    virtual float Slot57();                                                  // slot 57
+    virtual float MaxHealth();                                                  // slot 57
     virtual float Slot58(bool flag);                                         // slot 58
     virtual float Slot59();                                                  // slot 59
-    virtual float Slot60();                                                  // slot 60
+    virtual float SpeedScale();                                                  // slot 60
     SPTG_SLOT(61) SPTG_SLOT(62) SPTG_SLOT(63)
-    virtual float Slot64(float amount);                                      // slot 64
-    virtual void Slot65(float amount);                                       // slot 65
-    SPTG_SLOT(66) SPTG_SLOT(67)
+    virtual float LoseHealth(float amount);                                  // slot 64
+    virtual void GainHealth(float amount);                                   // slot 65
+    virtual void RestoreHealth();                                            // slot 66
+    SPTG_SLOT(67)
     virtual void Slot68();                                                   // slot 68
     virtual float TakeDamage(const void* hit, BaseCharacter* other);         // slot 69
     virtual void Remove(bool flag);                                          // slot 70
@@ -194,8 +195,8 @@ struct BaseCharacter : onyx::Component {
     virtual void Slot86();                                                   // slot 86
     virtual void Slot87(void* data, bool a, bool b, BaseCharacter* other);   // slot 87
     virtual bool Slot88(float amount);                                       // slot 88
-    virtual void Slot89(float amount);                                       // slot 89
-    virtual void Slot90(float value);                                        // slot 90
+    virtual void AddGuts(float amount);                                      // slot 89
+    virtual void LoseGuts(float value);                                        // slot 90
     virtual void Slot91(float x);                                            // slot 91
     virtual void Slot92(void* data);                                         // slot 92
     virtual void Slot93(const HitValue* hit);                                // slot 93
@@ -229,8 +230,8 @@ struct BaseCharacter : onyx::Component {
     SPTG_SLOT(146) SPTG_SLOT(147)
     virtual bool Slot148(bool* out);                                         // slot 148
     virtual float Slot149();                                                 // slot 149
-    virtual float Slot150();                                                 // slot 150
-    virtual float Slot151();                                                 // slot 151
+    virtual float MaxGuts();                                                 // slot 150
+    virtual float GutsCostScale();                                                 // slot 151
     virtual float Slot152();                                                 // slot 152
     virtual void Slot153(uint32_t* flags);                                   // slot 153
     SPTG_SLOT(154) SPTG_SLOT(155)
@@ -274,7 +275,7 @@ struct BaseCharacter : onyx::Component {
     float hitStopSpeed;          // +0x150
     char padding_154[0x8];
     float value15c;              // +0x15c
-    float value160;              // +0x160
+    float health;              // +0x160
     char padding_164[0x1];
     uint8_t flag165;             // +0x165
     char padding_166[0x2];
@@ -335,7 +336,7 @@ struct BaseCharacter : onyx::Component {
     int32_t value320;            // +0x320
     int32_t value324;            // +0x324
     float value328;              // +0x328
-    float value32c;              // +0x32c
+    float guts;              // +0x32c
     float timer330;              // +0x330
     float value334;              // +0x334
     uint8_t flag338;             // +0x338
@@ -442,10 +443,20 @@ static_assert(__builtin_offsetof(BaseCharacter, actionMode) == 0x500, "BaseChara
 
 // What ControllablePlayer +0x1500 points to. Held lets the player read its bits by
 // index; the other names are provisional.
+struct PlayerInputOwner {
+    char padding_0[0x8];
+    int32_t value8;      // +0x8
+};
+struct PlayerInputSource {
+    char padding_0[0x18];
+    PlayerInputOwner* owner;  // +0x18
+};
 struct PlayerInput {
     char padding_0[0x8];
     uint8_t flag8;       // +0x8
-    char padding_9[0x1a7];
+    char padding_9[0x197];
+    PlayerInputSource* source;  // +0x1a0
+    char padding_1a8[0x8];
     uint64_t value1b0;   // +0x1b0
     char padding_1b8[0x8];
     uint64_t held;       // +0x1c0
@@ -456,7 +467,7 @@ struct PlayerInput {
     char padding_1e5[0xb];
     uint16_t value1f0;   // +0x1f0
     void Call8f80d0();   // 0x8f80d0
-    void Call8fabf0();   // 0x8fabf0
+    void Call8fabf0(int32_t value);   // 0x8fabf0
 };
 // SPTG::ControllablePlayer: its first own virtual (slot 159) receives messages.
 // What a player's attack input reads as (0x991a20).
@@ -473,6 +484,8 @@ struct AttackInput {
 };
 struct ControllablePlayer : BaseCharacter {
     void ReadAttackInput(AttackInput* out);              // 0x991a20
+    bool ReadMoveInput(PlayerInput* from, onyx::Vector3* out);  // 0x9913a0
+    void TurnToMoveInput();                              // 0x993550
     void Slot4(onyx::Archive& archive, ComponentSlot::Source* source);   // slot 4 (0x978660)
     virtual void OnMessage(CharacterMessage* message);   // slot 159
     void Notify995d50();                                 // 0x995d50
@@ -481,16 +494,16 @@ struct ControllablePlayer : BaseCharacter {
     void OnHealthChanged(float amount);                  // 0x995700
     float Slot40() override;
     int Slot45() override;
-    float Slot57() override;
+    float MaxHealth() override;
     float Slot58(bool flag) override;
     float Slot59() override;
-    float Slot60() override;
-    float Slot64(float amount) override;
-    void Slot65(float amount) override;
-    void Slot66() override;
+    float SpeedScale() override;
+    float LoseHealth(float amount) override;
+    void GainHealth(float amount) override;
+    void RestoreHealth() override;
     float Slot149() override;
-    float Slot150() override;
-    float Slot151() override;
+    float MaxGuts() override;
+    float GutsCostScale() override;
     float Slot152() override;
     void Slot20() override;
     void Slot76() override;
@@ -574,10 +587,10 @@ struct ControllablePlayer : BaseCharacter {
     EventSlot event818;          // +0x818
     EventSlot event830;          // +0x830
     EventSlot event848;          // +0x848
-    float value860;              // +0x860
-    float value864;              // +0x864
-    float value868;              // +0x868
-    float value86c;              // +0x86c
+    float statDefense;              // +0x860
+    float statSpeed;              // +0x864
+    float statWill;              // +0x868
+    float statStrength;              // +0x86c
     int32_t value870;            // +0x870
     float value874;              // +0x874
     float value878;              // +0x878
@@ -602,8 +615,8 @@ struct ControllablePlayer : BaseCharacter {
     int32_t value8c4;            // +0x8c4
     int32_t value8c8;            // +0x8c8
     int32_t value8cc;            // +0x8cc
-    int32_t value8d0;            // +0x8d0
-    int32_t value8d4;            // +0x8d4
+    float value8d0;              // +0x8d0
+    float value8d4;              // +0x8d4
     int32_t value8d8;            // +0x8d8
     char padding_8dc[0x4];
     Attack attack8e0;            // +0x8e0
@@ -639,7 +652,7 @@ struct ControllablePlayer : BaseCharacter {
     int32_t value11dc;           // +0x11dc
     uint8_t flag11e0;            // +0x11e0
     char padding_11e1[0x3];
-    int32_t value11e4;           // +0x11e4
+    float specialCost;           // +0x11e4: guts a special attack costs, before GutsCostScale's scaling
     int32_t value11e8;           // +0x11e8
     int32_t value11ec;           // +0x11ec
     uint8_t flag11f0;            // +0x11f0

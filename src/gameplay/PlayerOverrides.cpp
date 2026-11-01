@@ -38,7 +38,7 @@ bool ControllablePlayer::Slot88(float amount) {
     flag14f9 = 0;
     State state = State114Ptr();
     if (states.current == state) {
-        Slot65(amount);
+        GainHealth(amount);
         CharacterMessage message(27, nullptr);
         message.receiver = this;
         OnMessage(&message);

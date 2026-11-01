@@ -298,4 +298,55 @@ int ControllablePlayer::State191(int event) {
     }
 }
 
+// A special attack: its cost comes out of +0x32c first, and any shortfall out of health.
+int ControllablePlayer::State203(int event) {
+    int result = kStateHandled;
+    switch (event) {
+    case kStateUpdate:
+        if (!AnimationDone()) {
+            result = kStateHandled;
+            break;
+        }
+        states.Transition(State96Ptr());
+        result = kStateParentTookOver;
+        break;
+    case kStateEnter: {
+        float cost = __builtin_ceilf(specialCost * GutsCostScale());
+        float available = guts;
+        if (cost > available) {
+            LoseHealth(cost - available);
+            available = guts;
+        }
+        LoseGuts(cost < available ? cost : available);
+        motion = onyx::Vector3::Zero();
+        result = kStateHandled;
+        StartAttack(&attackE60, true, 1, nullptr);
+        PlayAnimation(28, false, false, 1.0f);
+        if (input && !flag13c0) input->Call8fabf0(input->source->owner->value8);
+        break;
+    }
+    case kStateExit:
+        if (input && !flag13c0) input->Call8f80d0();
+        result = kStateHandled;
+        break;
+    case kStateEvent3:
+        return result;
+    default:
+        result = kStateUnhandled;
+        break;
+    }
+    return result;
+}
+
+// Turns the actor around when the held direction points the other way.
+void ControllablePlayer::TurnToMoveInput() {
+    onyx::Vector3 move;
+    if (!ReadMoveInput(input, &move) || __builtin_fabsf(move.x) <= 0.000001f) return;
+    float direction = move.x >= 0.0f ? 1.0f : -1.0f;
+    if (direction * FacingSign() < 0.0f) {
+        flag13c1 ^= 1;
+        TurnAround();
+    }
+}
+
 }  // namespace SPTG

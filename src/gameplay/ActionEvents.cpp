@@ -608,7 +608,7 @@ struct StrikerYeti {
     virtual void S30(); virtual void S31(); virtual void S32(); virtual void S33(); virtual void S34(); virtual void S35(); virtual void S36(); virtual void S37(); virtual void S38(); virtual void S39();
     virtual void S40(); virtual void S41(); virtual void S42(); virtual void S43(); virtual void S44(); virtual void S45(); virtual void S46(); virtual void S47(); virtual void S48(); virtual void S49();
     virtual void S50(); virtual void S51(); virtual void S52(); virtual void S53(); virtual void S54(); virtual void S55(); virtual void S56();
-    virtual float Slot57();
+    virtual float MaxHealth();
     char padding_8[0x30];
     uint32_t flags;              // +0x38
     char padding_3c[0x3c];
@@ -621,7 +621,7 @@ void StrikerYeti::Enable() {
     flags |= 2;
     YetiTarget* x = onyx::Lookup<YetiTarget, 1687344669u>(handle78);
     onyx::SendEvent<0x255c0afeu>(x->callback, x->target);
-    value160 = Slot57();
+    value160 = MaxHealth();
     Slot22(0, 1, 0, 1.0f);
 }
 
@@ -706,7 +706,7 @@ struct LaserBeamsEnable {
     virtual void S30(); virtual void S31(); virtual void S32(); virtual void S33(); virtual void S34(); virtual void S35(); virtual void S36(); virtual void S37(); virtual void S38(); virtual void S39();
     virtual void S40(); virtual void S41(); virtual void S42(); virtual void S43(); virtual void S44(); virtual void S45(); virtual void S46(); virtual void S47(); virtual void S48(); virtual void S49();
     virtual void S50(); virtual void S51(); virtual void S52(); virtual void S53(); virtual void S54(); virtual void S55(); virtual void S56();
-    virtual float Slot57();
+    virtual float MaxHealth();
     char padding_8[0x90];
     uint32_t value98;            // +0x98
     uint32_t value9c;            // +0x9c
@@ -725,7 +725,7 @@ void LaserBeamsEnable::Enable() {
     if (!hide) Slot22(0, 1, 0, 1.0f);
     else onyx::SendEvent<0x339bb246u>(callback, target);
     value9c = value98;
-    value160 = Slot57();
+    value160 = MaxHealth();
 }
 
 // Waits until every listed action has stopped.

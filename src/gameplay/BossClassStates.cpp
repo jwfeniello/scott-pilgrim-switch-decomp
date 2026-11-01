@@ -599,7 +599,7 @@ float TagTeamMember::TakeDamage(const void* hit, BaseCharacter* other) {
 // clears +0xd54.
 float KenKyle::TakeDamage(const void* hit, BaseCharacter* other) {
     float damage = TakeBossDamage(hit, other);
-    if (value160 <= 0.0f && !Slot95()) {
+    if (health <= 0.0f && !Slot95()) {
         switch (actionMode) {
         case 5:
         case 6:
@@ -619,7 +619,7 @@ float KenKyle::TakeDamage(const void* hit, BaseCharacter* other) {
 // health lost (+0x160 against slot 57), in steps of +0x11c0, at most +0x11c4.
 float Chau::TakeDamage(const void* hit, BaseCharacter* other) {
     float damage = TakeBossDamage(hit, other);
-    uint32_t phase = (uint32_t)((1.0f - value160 / Slot57()) / phaseStep);
+    uint32_t phase = (uint32_t)((1.0f - health / MaxHealth()) / phaseStep);
     phaseDb4 = phase + 1 <= phaseCount ? phase + 1 : phaseCount;
     return damage;
 }
@@ -1057,18 +1057,18 @@ int HipsterChick::State108(int event) {
 float Patel::TakeDamage(const void* hit, BaseCharacter* other) {
     float damage = TakeBossDamage(hit, other);
     if (modeChanged) return damage;
-    float health;
+    float left;
     float limit;
     if (modeFfc == 3) {
-        health = value160;
-        limit = Slot57() * (1.0f - (healthStep + healthStep));
+        left = health;
+        limit = MaxHealth() * (1.0f - (healthStep + healthStep));
     } else if (modeFfc == 1) {
-        health = value160;
-        limit = Slot57() * (1.0f - healthStep);
+        left = health;
+        limit = MaxHealth() * (1.0f - healthStep);
     } else {
         return damage;
     }
-    if (health <= limit) {
+    if (left <= limit) {
         if (modeFfc == 1) modeFfc = 2;
         else if (modeFfc == 3) modeFfc = 4;
         modeChanged = 1;
@@ -1296,8 +1296,8 @@ int KenKyle::State270(int event) {
         motion = onyx::Vector3::Zero();
         motionTarget = onyx::Vector3::Zero();
         PlayAnimation(183, 0, 0, 1.0f);
-        Slot65(value10c4);
-        Slot89(value10c8);
+        GainHealth(value10c4);
+        AddGuts(value10c8);
         return kStateHandled;
     case kStateExit:
         states.AssertOwner(this);
@@ -1564,7 +1564,7 @@ int SuperGideon::State244(int event) {
     switch (event) {
     case kStateUpdate:
         if (flagD49) {
-            states.Transition(value160 < Slot57() * value1130 ? State262Ptr() : State260Ptr());
+            states.Transition(health < MaxHealth() * value1130 ? State262Ptr() : State260Ptr());
             return kStateParentTookOver;
         }
         if (flagD4a) {
@@ -2562,7 +2562,7 @@ void KenKyle::Slot240() {
         flagD28 = 1;
         return;
     }
-    if (!(other->value160 <= 0.0f) || other->Slot95()) return;
+    if (!(other->health <= 0.0f) || other->Slot95()) return;
     switch (other->actionMode) {
     case 5:
     case 6:

@@ -56,10 +56,10 @@ struct Piniata : BreakableObject {
     virtual void Slot53(); virtual void Slot54(); virtual void Slot55();
     virtual void SetSolid(bool solid);                            // slot 56
     virtual float MaxHealth();                                    // slot 57
-    virtual void Slot58(); virtual void Slot59(); virtual void Slot60(); virtual void Slot61(); virtual void Slot62();
-    virtual void Slot63(); virtual void Slot64();
+    virtual void Slot58(); virtual void Slot59(); virtual void SpeedScale(); virtual void Slot61(); virtual void Slot62();
+    virtual void Slot63(); virtual void LoseHealth();
     virtual void SetScale(float scale);                           // slot 65
-    virtual void Slot66(); virtual void Slot67(); virtual void Slot68();
+    virtual void RestoreHealth(); virtual void Slot67(); virtual void Slot68();
     virtual float TakeDamage(const Hit* hit, Actor* other);       // slot 69
     virtual void Slot70();
     virtual void Release();                                       // slot 71

@@ -55,16 +55,16 @@ int BaseCharacter::StartAttack(Attack* attack, bool flag, int source, BaseCharac
 
 // Slot 65 (0x941790): adds to the value at +0x160, kept between zero and the
 // limit from slot 57.
-void BaseCharacter::Slot65(float amount) {
-    value160 += amount;
-    float limit = Slot57();
-    float value = value160;
+void BaseCharacter::GainHealth(float amount) {
+    health += amount;
+    float limit = MaxHealth();
+    float value = health;
     if (value < 0.0f) {
         value = 0.0f;
     } else if (value > limit) {
         value = limit;
     }
-    value160 = value;
+    health = value;
 }
 
 // Slot 25 (0x96c8b0): records the animation speed; while +0x14c is not positive
@@ -119,22 +119,22 @@ void BaseCharacter::Slot53() {
 
 // Slot 64 (0x96ede0): takes `amount` from +0x160 first, then from +0x32c, and
 // returns how much was taken.
-float BaseCharacter::Slot64(float amount) {
-    float first = value160;
+float BaseCharacter::LoseHealth(float amount) {
+    float first = health;
     float taken;
     if (first >= amount) {
-        value160 = first - amount;
+        health = first - amount;
         taken = amount;
     } else {
-        value160 = 0.0f;
+        health = 0.0f;
         taken = first;
     }
-    if (taken < amount && value32c > 0.0f) {
-        float rest = value32c - (amount - taken);
-        value32c = rest;
+    if (taken < amount && guts > 0.0f) {
+        float rest = guts - (amount - taken);
+        guts = rest;
         if (!(rest < 0.0f)) return amount;
         taken = rest + amount;
-        value32c = 0.0f;
+        guts = 0.0f;
     }
     return taken;
 }
@@ -182,11 +182,11 @@ void BaseCharacter::Slot86() {
 
 // Slot 89 (0x970b90): adds `amount` to +0x32c, kept between 0 and slot 150. The
 // lower bound is a select (it compiles to fmax), not fmaxf (fmaxnm).
-void BaseCharacter::Slot89(float amount) {
-    float limit = Slot150();
-    float value = value32c + amount;
+void BaseCharacter::AddGuts(float amount) {
+    float limit = MaxGuts();
+    float value = guts + amount;
     float clamped = limit < value ? limit : value;
-    value32c = clamped < 0.0f ? 0.0f : clamped;
+    guts = clamped < 0.0f ? 0.0f : clamped;
 }
 
 // Slot 92 (0x970dd0): passes `data` to slot 75 and switches to the state at
@@ -238,9 +238,9 @@ void BaseCharacter::Slot7() {
     Slot153(&flags504);
     value328 = Slot149();
     scaled2f8 = base2f4;
-    value32c = Slot150();
+    guts = MaxGuts();
     scaled9c = base98;
-    value160 = Slot57();
+    health = MaxHealth();
 }
 
 // Slot 13 (0x96bf80): AnimatedAiActor's slot 13; copies +0x54 to +0x230 and
@@ -260,10 +260,10 @@ void BaseCharacter::Slot13() {
 }
 
 // Slot 90 (0x970be0): lowers +0x32c by `value`, kept between 0 and +0x2f8.
-void BaseCharacter::Slot90(float value) {
-    float lowered = value32c - value;
+void BaseCharacter::LoseGuts(float value) {
+    float lowered = guts - value;
     float clamped = lowered < 0.0f ? 0.0f : lowered;
-    value32c = scaled2f8 < clamped ? scaled2f8 : clamped;
+    guts = scaled2f8 < clamped ? scaled2f8 : clamped;
 }
 
 // BaseCharacter 0x96a2f0: AnimatedAiActor's, a handle and three component
