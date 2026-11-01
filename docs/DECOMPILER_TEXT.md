@@ -13,14 +13,22 @@ It does not show much about the source:
 - **Types are the decompiler's guesses.** `__int64` often stands for a pointer. Offsets are written out by hand instead of being fields of a struct.
 - **Names are address labels.** `sub_123ABC` and `qword_123ABC` say where something is, not what it is. Nothing here gives a class its name. C++ names of library calls are flattened to plain identifiers, so they are not the real symbols.
 - **Calls have no real prototypes.** They are declared with empty parameter lists, which is why an argument can need `0LL` rather than `0`: the width comes from what the original puts in the register. The tool reads that from the original. It is a fact about the call, not about a recovered declaration.
-- **Some spellings are chosen by testing.** The tool tries several readings of the same text and keeps whichever matches:
-  - values that get dereferenced typed as pointers rather than `__int64`
+- **Some spellings are chosen by testing.** The tool tries readings of the same text, one at a time, and keeps a reading only if the machine code gets closer to the original. A function stays only if it ends up an exact match. The readings are:
+  - values that get dereferenced or added to, typed as pointers rather than `__int64`
   - values tested with `& 1` typed as bools, for call results, parameters and the function's own result
-  - a function's result as 32 bits rather than 64
+  - a function's result as 32 bits rather than 64, or as nothing at all when `x0` merely held something at the return
+  - a call's result as the narrow type it is cut down to at once or kept in
+  - a narrow argument passed as it is, where the decompiler's cast says `_QWORD` for the register
+  - `_QWORD` read as signed, since the decompiler's word for it does not give a sign
+  - a 16-byte value written as two words
+  - a word local aligned to 8, where the decompiler shows it in a slot the size of a pointer
+  - `operator new` declared as returning fresh memory
   - a local that only carries a global's value to one use written in place
   - neighbouring statements the other way round, since the decompiler writes them in the order the scheduler chose
+  - the operands of a commutative operator the other way round, and `if`/`else` the other way round, since the decompiler picks its own order for these too
 
-  Each of these is a reasonable reading, but a match does not prove it is what the source said.
+  Each of these is a reasonable reading, but a match does not prove it is what the source said. The aligned local stands in for a wider type nobody has recovered.
+- **Table offsets are read from the original.** `off_X + 2` is 2 bytes or 2 words depending on a type the text does not show, so the tool checks which of the two the original uses.
 
 Where a virtual function holds a function, a comment above it gives the class from RTTI and the slot. That is the one piece of real naming here.
 
@@ -30,8 +38,9 @@ Treat these files as a checked starting point. Moving a function out of here and
 
 Files are grouped by compiler flags. A function is never placed in the same file as something it calls, because the compiler could then inline the call or use what it knows about the callee, and the original was not built that way. For the same reason, two functions that disagree about a declaration go in different files.
 
-Most files are C. Two forms need C++:
+Most files are C. Three forms need C++:
 
+- **Functions whose calls need prototypes.** A call with an empty parameter list reaches LLVM through a cast, and that can change the order of instructions. C++ files declare these callees as taking `(...)`, which keeps the call direct. It is no more of a real prototype than the empty list.
 - **Functions that return through `x8`.** A large result comes back through a hidden pointer that C cannot name. These are written as returning a stand-in struct `Big`, with the `x8` argument as the address of the named result, which C++ builds in place. `Big` and its size are not recovered. A call to such a function constructs its result where the `x8` argument points.
 - **Functions whose only landing pad is the terminate pad.** These are `noexcept`. Casts that C leaves implicit are added where C++ asks for them.
 

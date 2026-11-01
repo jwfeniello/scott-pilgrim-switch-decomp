@@ -10,6 +10,10 @@ typedef unsigned long long _QWORD; typedef unsigned int _DWORD; typedef unsigned
 typedef __uint128_t _OWORD;
 typedef char __guard; typedef long time_t; typedef int wchar_t_; typedef unsigned long pthread_t; typedef unsigned long size_t; typedef long ssize_t; typedef struct { char data[48]; } pthread_mutex_t; typedef struct { char data[48]; } pthread_cond_t; typedef void FILE;
 typedef union { unsigned long long n128_u64[2]; float n128_f32[4]; double n128_f64[2]; } __n128;
+typedef struct RecoveredSdkText { char *data; } RecoveredSdkText;
+typedef struct RecoveredSdkResult { short code; const char *unknown08; unsigned int unknown10; RecoveredSdkText domain; unsigned char error; } RecoveredSdkResult;
+#define __PAIR64__(h, l) (((unsigned long long)(unsigned int)(h) << 32) | (unsigned int)(l))
+#define __PAIR128__(h, l) (((__uint128_t)(unsigned long long)(h) << 64) | (unsigned long long)(l))
 #define bool _Bool
 #define true 1
 #define false 0
@@ -29,9 +33,9 @@ typedef union { unsigned long long n128_u64[2]; float n128_f32[4]; double n128_f
 #define SLODWORD(x) (*((int*)&(x)))
 #define SHIDWORD(x) (*((int*)&(x)+1))
 #define SLOBYTE(x) (*((signed char*)&(x)))
-#define __udf(x) __builtin_trap()
+#define __udf(x) __builtin_unreachable()
 #define atomic_load(p) __atomic_load_n(p, 2)
-void* memcpy(void*, const void*, size_t); void* memset(void*, int, size_t); void* memmove(void*, const void*, size_t); int memcmp(const void*, const void*, size_t); size_t strlen(const char*); int strcmp(const char*, const char*); void free(void*); void* malloc(size_t); float fabsf(float); float sqrtf(float); float floorf(float); float ceilf(float);
+void* memcpy(void*, const void*, size_t); void* memset(void*, int, size_t); void* memmove(void*, const void*, size_t); int memcmp(const void*, const void*, size_t); size_t strlen(const char*); int strcmp(const char*, const char*); char* strcpy(char*, const char*); char* strncpy(char*, const char*, size_t); int strncmp(const char*, const char*, size_t); void free(void*); void* malloc(size_t); float fabsf(float); float sqrtf(float); float floorf(float); float ceilf(float);
 extern char goff_18EE490[];
 extern char goff_18EE498[];
 __attribute__((visibility("hidden"))) __int64 sub_290830();
@@ -51,13 +55,13 @@ _QWORD *__fastcall sub_2A0580(__int64 a1, __int64 a2, unsigned int a3)
   v3 = (_QWORD *)sub_56C9F0(192, 8, 1092624384, 0LL, a2, a3);
   v4 = sub_583240();
   sub_57F050(v3, v4);
-  v5 = ((__int64*)goff_18EE490) + 24;
-  *v3 = ((__int64*)goff_18EE490) + 2;
+  v5 = ((__int64 *)((__int64*)goff_18EE490) + 24);
+  *v3 = ((__int64 *)((__int64*)goff_18EE490) + 2);
   v3[1] = v5;
   sub_290830(v3 + 4, v3 + 1);
   sub_57F050(v3 + 13, v3 + 1);
-  v6 = ((__int64*)goff_18EE498) + 24;
-  v3[13] = ((__int64*)goff_18EE498) + 2;
+  v6 = ((__int64 *)((__int64*)goff_18EE498) + 24);
+  v3[13] = ((__int64 *)((__int64*)goff_18EE498) + 2);
   v3[14] = v6;
   sub_575CE0((__int64)(v3 + 17));
   return v3;
@@ -72,13 +76,13 @@ _QWORD *__fastcall sub_2A0620(__int64 a1, __int64 a2, __int64 a3, unsigned int a
 
   v5 = (_QWORD *)sub_56C9F0(192, 8, 1092624384, 0LL, a3, a4);
   sub_57F050(v5, a2);
-  v6 = ((__int64*)goff_18EE490) + 24;
-  *v5 = ((__int64*)goff_18EE490) + 2;
+  v6 = ((__int64 *)((__int64*)goff_18EE490) + 24);
+  *v5 = ((__int64 *)((__int64*)goff_18EE490) + 2);
   v5[1] = v6;
   sub_290830(v5 + 4, v5 + 1);
   sub_57F050(v5 + 13, v5 + 1);
-  v7 = ((__int64*)goff_18EE498) + 24;
-  v5[13] = ((__int64*)goff_18EE498) + 2;
+  v7 = ((__int64 *)((__int64*)goff_18EE498) + 24);
+  v5[13] = ((__int64 *)((__int64*)goff_18EE498) + 2);
   v5[14] = v7;
   sub_575CE0((__int64)(v5 + 17));
   return v5;
