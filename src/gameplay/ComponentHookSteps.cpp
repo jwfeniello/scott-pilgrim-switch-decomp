@@ -42,6 +42,29 @@ template<unsigned long Key, class Owner, class F> __attribute__((always_inline))
 }
 struct Handle { char padding[8]; struct Child* object; };
 struct Child { virtual void S0(); virtual void S1(); virtual void S2(); virtual void Disable(); };
+namespace Onyx { namespace DareAudio { 
+struct RolloffGraphics {
+    char padding_0[56]; uint32_t field_38; char padding_3c[84]; void* field_90;
+    void OnEvent1(const Event&);
+    void Step();
+};
+void RolloffGraphics::Step() {
+    field_38 |= 2;
+    WithDelegate<118148865ul, RolloffGraphics>(this, &RolloffGraphics::OnEvent1, [this](Delegate** slot) { void* target = field_90; if (target) HookRemove(HookManager, target, 0x6c62f499u, slot); });
+    field_38 &= ~2u;
+}
+}}
+namespace Onyx { namespace DareAudio { 
+struct AudioEngine {
+    char padding_0[56]; uint32_t field_38; char padding_3c[28]; void* field_58;
+    void OnEvent1(const Event&);
+    void Step();
+};
+void AudioEngine::Step() {
+    field_38 &= ~2u;
+    WithDelegate<118517505ul, AudioEngine>(this, &AudioEngine::OnEvent1, [this](Delegate** slot) { void* target = field_58; if (target) HookRemove(HookManager, target, 0x4e51bd4fu, slot); });
+}
+}}
 namespace SPTG { 
 struct LevelSectionGraphics {
     char padding_0[56]; uint32_t field_38; char padding_3c[292]; Handle* field_160; Handle* field_168; Handle* field_170; char padding_178[32]; void* field_198; char padding_1a0[48]; Handle* field_1d0; Handle* field_1d8; Handle* field_1e0;
@@ -59,6 +82,24 @@ void LevelSectionGraphics::Step() {
     Call_sub_AFEA80();
 }
 }
+struct Step93c3f0 {
+    char padding_0[56]; uint32_t field_38; char padding_3c[76]; void* field_88;
+    void Call_sub_93CB90(); void OnEvent1(const Event&);
+    void Run();
+};
+void Step93c3f0::Run() {
+    Call_sub_93CB90();
+    WithDelegate<154943233ul, Step93c3f0>(this, &Step93c3f0::OnEvent1, [this](Delegate** slot) { void* target = field_88; if (target) HookRemove(HookManager, target, 0x7d3fd6d6u, slot); });
+}
+struct Step93db20 {
+    char padding_0[56]; uint32_t field_38; char padding_3c[76]; void* field_88;
+    void Call_sub_93E2C0(); void OnEvent1(const Event&);
+    void Run();
+};
+void Step93db20::Run() {
+    Call_sub_93E2C0();
+    WithDelegate<155038209ul, Step93db20>(this, &Step93db20::OnEvent1, [this](Delegate** slot) { void* target = field_88; if (target) HookRemove(HookManager, target, 0x7d3fd6d6u, slot); });
+}
 namespace Onyx { 
 struct AttachmentBone {
     char padding_0[56]; uint32_t field_38; char padding_3c[92]; void* field_98;
@@ -70,6 +111,17 @@ void AttachmentBone::Step() {
     Call_sub_68E980();
 }
 }
+namespace Onyx { namespace Graphics { namespace Particle { namespace GraphicSource { 
+struct GraphicSourceMesh {
+    char padding_0[56]; uint32_t field_38; char padding_3c[60]; void* field_78;
+    void OnEvent1(const Event&);
+    void Step();
+};
+void GraphicSourceMesh::Step() {
+    field_38 &= ~2u;
+    WithDelegate<186129409ul, GraphicSourceMesh>(this, &GraphicSourceMesh::OnEvent1, [this](Delegate** slot) { void* target = field_78; if (target) HookRemove(HookManager, target, 0x6c62f499u, slot); });
+}
+}}}}
 namespace Onyx { namespace Graphics { namespace Particle { namespace Emitter { 
 struct EmitterInstance {
     char padding_0[56]; uint32_t field_38; char padding_3c[84]; void* field_90;
@@ -115,6 +167,18 @@ struct MorphInstance {
 void MorphInstance::Step() {
     WithDelegate<188965377ul, MorphInstance>(this, &MorphInstance::OnEvent1, [this](Delegate** slot) { void* target = field_140; if (target) HookRemove(HookManager, target, 0x6c62f499u, slot); });
     Call_sub_B44A90();
+}
+}}
+namespace Onyx { namespace Graphics { 
+struct RawMeshGraphics {
+    char padding_0[56]; uint32_t field_38; char padding_3c[84]; void* field_90;
+    void Call_sub_B552C0(); void OnEvent1(const Event&);
+    void Step();
+};
+void RawMeshGraphics::Step() {
+    Call_sub_B552C0();
+    WithDelegate<190113537ul, RawMeshGraphics>(this, &RawMeshGraphics::OnEvent1, [this](Delegate** slot) { void* target = field_90; if (target) HookRemove(HookManager, target, 0x6c62f499u, slot); });
+    field_38 &= ~2u;
 }
 }}
 namespace Onyx { 
@@ -198,3 +262,45 @@ void AxisAlignedBoxGraphics::Step() {
     Call_sub_AFEA80();
 }
 }}
+namespace Onyx { namespace Collision { 
+struct PolygonGraphics {
+    char padding_0[56]; uint32_t field_38; char padding_3c[84]; void* field_90; char padding_98[40]; Handle* field_c0; Handle* field_c8; Handle* field_d0; char padding_d8[8]; Delegate* field_e0;
+    void OnEvent1(const Event&);
+    void Step();
+};
+void PolygonGraphics::Step() {
+    if (field_c0 && field_c0->object) field_c0->object->Disable();
+    if (field_c8 && field_c8->object) field_c8->object->Disable();
+    if (field_d0 && field_d0->object) field_d0->object->Disable();
+    if (field_e0) DestroyDelegate(field_e0);
+    field_e0 = 0;
+    WithDelegate<195084033ul, PolygonGraphics>(this, &PolygonGraphics::OnEvent1, [this](Delegate** slot) { void* target = field_90; if (target) HookRemove(HookManager, target, 0x6c62f499u, slot); });
+    field_38 &= ~2u;
+}
+}}
+namespace Onyx { namespace Collision { 
+struct CircleGraphics {
+    char padding_0[56]; uint32_t field_38; char padding_3c[84]; void* field_90; char padding_98[40]; Handle* field_c0; Handle* field_c8; Handle* field_d0; char padding_d8[8]; Delegate* field_e0;
+    void OnEvent1(const Event&);
+    void Step();
+};
+void CircleGraphics::Step() {
+    if (field_c0 && field_c0->object) field_c0->object->Disable();
+    if (field_c8 && field_c8->object) field_c8->object->Disable();
+    if (field_d0 && field_d0->object) field_d0->object->Disable();
+    if (field_e0) DestroyDelegate(field_e0);
+    field_e0 = 0;
+    WithDelegate<195183105ul, CircleGraphics>(this, &CircleGraphics::OnEvent1, [this](Delegate** slot) { void* target = field_90; if (target) HookRemove(HookManager, target, 0x6c62f499u, slot); });
+    field_38 &= ~2u;
+}
+}}
+namespace Onyx { 
+struct BarChartComponent {
+    char padding_0[56]; uint32_t field_38; char padding_3c[28]; void* field_58;
+    void OnEvent1(const Event&);
+    void Step();
+};
+void BarChartComponent::Step() {
+    WithDelegate<211784961ul, BarChartComponent>(this, &BarChartComponent::OnEvent1, [this](Delegate** slot) { void* target = field_58; if (target) HookRemove(HookManager, target, 0x6c62f499u, slot); });
+}
+}

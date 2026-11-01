@@ -387,7 +387,9 @@ The exception table separates two forms. Cleanup in a member's destructor goes s
 
 A deleting destructor often contains its complete destructor inlined. That needs the destructor declared `inline`, which raises the inlining threshold, so those classes are declared that way with `used` to keep the definition in the object.
 
-Destructors with an array of elements are not matched yet. The original destroys the first element separately and loops from the second, and it does not skip the free when the array is null. Writing the first element out by hand gets the loop right but lets the compiler thread the null test past the free. The loop looks peeled, and nothing tried here makes LLVM 8 peel it.
+An array of elements destroys the first one, then loops from the second, reloading the count and the buffer each time. The free that follows tests the buffer through a `void*`. Testing the typed pointer would let the compiler thread the null test past the free, and the original does not do that.
+
+Some classes get their members' cleanup inlined in the normal path but call it out of line in the landing pad. They need the member destructors declared `inline`, plus a middle base whose empty inline destructor gets the same treatment. `ClassDestructorsInline.cpp` holds those.
 
 These sources are generated from the decompiler's reading of each destructor and tested against the bytes, so their builds are marked `generated_cxx_abi_view`. Class names are the RTTI names where those are plain. Offsets come from the code. Base classes and members with their own destructors are stand-ins named after an address or a key.
 
