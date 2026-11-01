@@ -13,7 +13,9 @@ extern Holder NoHolder;   // 0x191b6c0
 template<class T> struct Singleton { onyx::ComponentHandle* handle; T* Get(); };
 
 struct LevelItemAccessor {
-    char padding[0x68];
+    char padding[0x58];
+    onyx::ComponentHandle* strikerSpawners;     // +0x58, Catalog<StrikerSpawner>
+    char padding_60[0x8];
     onyx::ComponentHandle* projectileSpawners;  // +0x68, Catalog<ProjectileSpawner>
     onyx::ComponentHandle* pickupSpawners;   // +0x70, Catalog<PickupSpawner>
     onyx::ComponentHandle* interactiveSpawners;  // +0x78, Catalog<InteractiveObjectSpawner>

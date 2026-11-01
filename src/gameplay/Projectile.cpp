@@ -212,10 +212,10 @@ int Projectile::FlyingState(int event) {
                 if (levelCamera) {
                     uint32_t which = landingShake;
                     CameraShaker* shaker = onyx::Find<CameraShaker, onyx_types::type_3ddae46b>(levelCamera->shaker);
-                    onyx::ComponentHandle* handle = shaker->patterns[which];
-                    CameraShakePattern* pattern = handle ? static_cast<CameraShakePattern*>(handle->object) : nullptr;
-                    int index = shaker->AddShake();
-                    if (index >= 0) shaker->shakes[index].Start(pattern->settings);
+                    onyx::ComponentHandle* handle = shaker->presets[which];
+                    ShakePreset* preset = handle ? static_cast<ShakePreset*>(handle->object) : nullptr;
+                    int index = shaker->FreeSlot();
+                    if (index >= 0) shaker->slots[index].Start(preset->settings);
                 }
             }
             if (burstsOnLanding) break;

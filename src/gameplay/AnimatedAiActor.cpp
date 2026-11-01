@@ -27,6 +27,11 @@ void AnimatedAiActor::AttackLanded(AnimatedAiActor* target) {
     }
 }
 
+// Pauses or resumes the animation.
+void AnimatedAiActor::SetAnimationPaused(bool paused) {
+    onyx::Get<AnimationController, kAnimationControllerType>(animationHandle)->SetPaused(paused);
+}
+
 // Starts an animation. With a partner whose transform has a parent, also takes the partner's facing.
 void AnimatedAiActor::PlayAnimation(int anim, bool loop, bool scaled, float speed) {
     onyx::Get<AnimationController, kAnimationControllerType>(animationHandle)->Play(anim, loop);
@@ -149,6 +154,58 @@ void AnimatedAiActor::Update() {
         flags->SetShadow(shadow, false);
     }
     flags->value7c = value120;
+}
+
+// Follows the playfield: takes its ground height, snaps to it when the playfield says to and the actor isn't moving
+// up or down, and tells the shadow.
+void AnimatedAiActor::Slot76() {
+    onyx::ComponentHandle* handle = onyx::Get<ActorObject, onyx_types::type_6492d61d>(actorObject)->playfield;
+    if (!handle) return;
+    PlayfieldCollision* field = static_cast<PlayfieldCollision*>(handle->object);
+    if (!field) return;
+    if (field->IsA(PlayfieldCollision::kType) && (field->componentFlags & 1)) {
+        if (field->hasGround) groundHeight = field->groundHeight;
+        onyx::Vector3 position = onyx::Find<onyx::Transform, onyx::kTransform>(onyx::Find<ActorObject, onyx_types::type_6492d61d>(actorObject)->transform)->Position();
+        bool snap = field->hasGround && field->snapsToGround;
+        float z = position.z;
+        if (snap && __builtin_fabsf(motion.z) <= 0.000001f) {
+            z = groundHeight;
+            position.z = z;
+            onyx::Find<ActorObject, onyx_types::type_6492d61d>(actorObject)->MoveTo(position);
+        }
+        if (IsOnGround()) lastGroundHeight = groundHeight;
+        if (shadowHandle && shadowHandle->object) static_cast<ShadowAnimatedObject*>(shadowHandle->object)->SetGroundHeight(groundHeight, z);
+    }
+}
+
+// Thrown or knocked away: sets the motion and moves it by the throw offset, both by the facing unless a direction is
+// given. Not yet matched (not credited): the last two additions have their operands the other way round.
+int AnimatedAiActor::Slot41(bool a, bool b, bool c, void* data, BaseCharacter* other, float scale, float f1, float f2, float f3) {
+    float sign = f2;
+    if (f2 == 0.0f) sign = FacingSign();
+    float speed = __builtin_fabsf(f1);
+    float sx = throwSpeed * scale;
+    float sy = throwY * scale;
+    float sz = throwZ * scale;
+    float x = speed + sx;
+    float y = sy + 0.0f;
+    float z = sz + 0.0f;
+    motion.y = y;
+    motion.z = z;
+    motion.x = sign * x;
+    ActorObject* actor = onyx::Find<ActorObject, onyx_types::type_6492d61d>(actorObject);
+    onyx::Transform* transform = onyx::Get<onyx::Transform, onyx::kTransform>(actor->transform);
+    float oy = throwOffset.y;
+    onyx::Vector3 position = transform->Position();
+    float ox = sign * throwOffset.x;
+    float oz = throwOffset.z;
+    onyx::Vector3 moved;
+    moved.x = ox + position.x;
+    moved.y = oy + position.y;
+    moved.z = oz + position.z;
+    onyx::Find<onyx::Transform, onyx::kTransform>(actor->transform)->SetPosition(moved);
+    if (flag141) Call944010();
+    return 0;
 }
 
 }  // namespace SPTG

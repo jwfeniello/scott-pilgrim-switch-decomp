@@ -2,48 +2,10 @@
 // at +0x280 and its own attack at +0x2d0. Names are provisional. ComponentSerialize.h has a view of the same class,
 // which only serialization uses.
 #pragma once
-#include "BaseCharacter.h"
+#include "Camera.h"
 #include "Archive.h"
 
 namespace SPTG {
-
-// SPTG::CameraBlock (type 0x55e5c01c).
-struct CameraBlock : onyx::Component {
-    char padding_8[0x44];
-    int32_t active;                  // +0x4c
-    char padding_50[0x4];
-    float left;                      // +0x54
-    float top;                       // +0x58
-    float right;                     // +0x5c
-    char padding_60_pad[0x0];
-    float bottom;                    // +0x60
-};
-// What a landing starts on the camera shaker (40 bytes).
-struct CameraShake {
-    char data[40];
-    void Start(const void* pattern);  // 0x8fb610
-};
-// One of the camera shaker's patterns; the settings start at +0x4c.
-struct CameraShakePattern : onyx::Component {
-    char padding_8[0x44];
-    char settings[0x18];              // +0x4c
-};
-// SPTG::CameraShaker (type 0x3ddae46b).
-struct CameraShaker : onyx::Component {
-    char padding_8[0x68];
-    onyx::ComponentHandle** patterns; // +0x70
-    char padding_78[0x20];
-    CameraShake* shakes;              // +0x98
-    int AddShake();                   // 0x8fb2b0
-};
-// SPTG::LevelCamera (type 0x67f2aa4d), as actors see it. ComponentSerialize.h has a view for serialization.
-struct LevelCamera : onyx::Component {
-    char padding_8[0x68];
-    onyx::ComponentHandle* shaker;    // +0x70, CameraShaker
-    onyx::ComponentHandle* block;     // +0x78, CameraBlock
-    char padding_80[0x20];
-    onyx::ComponentHandle* transform; // +0xa0
-};
 
 struct Projectile : AnimatedAiActor {
     typedef StateMachine<Projectile>::State State;

@@ -228,6 +228,13 @@ A few more things decide these handlers' code:
 - **Loads after slow paths.** A value read before an accessor's slow path stays in a
   callee-saved register across it. `slideSpeed * FacingSign()` holds the speed in
   `d8`; computing the sign into a local first gives the original's code.
+- **Locals and early returns.** At -O2 every local gets a lifetime marker, and a `return` that leaves
+  its scope goes through a shared cleanup block. In a loop, `Enemy* enemy = *i;` in the body and a
+  `return true` under it leave `br (or (not hit), justOne)` and a second test of `hit` where the
+  original has two plain branches. `Striker::FindEnemies` matches once `enemy` is declared before the
+  loop. The same markers count in landing pads: each local declared after a throwing call adds a
+  one-branch landing pad, so the number of those pads shows how many locals the original had in
+  that scope. `Striker::ArrivingState` has three.
 - **Testing several states.** `if (states.IsIn(a()) || states.IsIn(b()))` with the work inside
   the `if` is the form that matches. Selection then sees the work as the next block and inverts the
   condition, which gives `cbz`. The same test written with early returns selects `tbnz`, and a later
@@ -1052,6 +1059,32 @@ Everything except `WaitingState`, `FlyingState` and the larger slots is exact. T
 `kind <= 3 && time > 0.0f && hitStopLeft <= 0.0f` stays one test until selection splits it, and the
 `kind > 3` path still reaches the `kind == 2` test. The same test through an inline `HoldAnimation`
 lets jump threading skip that second test, so the loads sink past the branch and the bytes differ.
+
+## Strikers
+
+`SPTG::Striker` (vtable `0x18703d0`, 87 slots) is the helper a player calls in. `StrikerYeti`,
+`StrikerMrChau`, `StrikerMrsChau`, and `KnivesStills`, `KnivesScott`, `KnivesRamona`, `KnivesNegaScott`
+and `KnivesKim` derive from it. Its state machine is at `+0x1f0` and `owner` at `+0x2d8` is the player
+who called it.
+
+- `IdleState` (slot 79, `0x943330`) only answers events, and is where `Slot7` starts it.
+- `ArrivingState` (slot 81, `0x948270`) records whether any enemy is in view, appears `arrivalDistance`
+  (`+0x278`) from its owner on the side towards the middle of the screen, and plays animation 15. When
+  that ends it goes to `AttackingState` if an enemy was in view and to `LeavingState` if not.
+- `AttackingState` (slot 83, `0x948660`) stops, starts `attack` for its owner and plays animation 11.
+  When that ends it calls `AttackDone` (slot 78, empty in `Striker`) and leaves.
+- `LeavingState` (slot 85, `0x948810`) plays animation 16, clears the player's `activeStriker`
+  (`+0x1488`), and returns to its spawner.
+
+`FindEnemies` (`0x9488d0`) walks the level's enemies and takes those that are enabled, not out, held, in
+action mode 0, not flagged at `+0x141` or `+0xae9`, not answering slots 85 or 160 in a way that excludes
+them, and on screen by `EnemyOnScreen`. The screen is the camera position plus a 384 by 216 view, and the
+middle test in `ArrivingState` uses 192, half of that width.
+
+`KnivesStills::AttackingState` shows that calling Stills costs guts: `strikerCost` (`+0x1394`) times
+`GutsCostScale`, rounded up. Whatever the player's guts don't cover comes out of their health.
+
+Subclass `Slot19`s match only with `Striker::Slot19` in the same file, since the original inlines it.
 
 ## Actions and their events
 

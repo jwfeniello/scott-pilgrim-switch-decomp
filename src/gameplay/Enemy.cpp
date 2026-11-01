@@ -14,10 +14,10 @@ void Enemy::Update() {
 
 // Slot 41 (0x9cd820): raises +0x130, runs BaseCharacter's slot 41 and starts the
 // attack at +0x258.
-void Enemy::Slot41(bool a, bool b, bool c, void* data, BaseCharacter* other, float scale, float f1, float f2, float f3) {
+int Enemy::Slot41(bool a, bool b, bool c, void* data, BaseCharacter* other, float scale, float f1, float f2, float f3) {
     flag130 = 1;
     BaseCharacter::Slot41(a, b, c, data, other, scale, f1, f2, f3);
-    StartAttack(&attack258, false, 3, other);
+    return StartAttack(&attack258, false, 3, other);
 }
 
 // Slot 45 (0x9cd870): 0 with +0x130 set, 3 in action mode 8, else the

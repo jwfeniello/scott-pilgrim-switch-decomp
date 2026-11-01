@@ -319,7 +319,7 @@ void ControllablePlayer::Slot4(onyx::Archive& archive, ComponentSlot::Source* so
     onyx::TransferReference(archive, reference1380);
     onyx::TransferReference(archive, reference1388);
     onyx::Transfer(archive, mashNeeded);
-    onyx::Transfer(archive, value1394);
+    onyx::Transfer(archive, strikerCost);
     onyx::Transfer(archive, value1398);
     onyx::Transfer(archive, value139c);
     onyx::Transfer(archive, value13a0);

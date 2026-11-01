@@ -42,7 +42,7 @@ struct Enemy : BaseCharacter {
     bool Slot46(BaseCharacter* other);                               // slot 46, overrides BaseCharacter
     void SetSolid(bool solid);                                       // slot 56, overrides BaseCharacter
     bool OnHit(BaseCharacter* other, void* hit);                     // slot 38, overrides BaseCharacter (0x9cd330)
-    void Slot41(bool a, bool b, bool c, void* data, BaseCharacter* other, float scale, float f1, float f2, float f3);   // slot 41, overrides BaseCharacter
+    int Slot41(bool a, bool b, bool c, void* data, BaseCharacter* other, float scale, float f1, float f2, float f3);   // slot 41, overrides BaseCharacter
     int Slot45();                                                    // slot 45, overrides BaseCharacter
     void Update();                                                   // slot 16, overrides BaseCharacter
     void Slot13();                                                   // slot 13, overrides BaseCharacter (0x9cc340)
@@ -61,7 +61,7 @@ struct Enemy : BaseCharacter {
     void LoseGuts(float amount);                                     // slot 90, overrides BaseCharacter
     onyx::Vector2 Slot147();                                         // slot 147, overrides BaseCharacter
     int State136(int event);                                         // slot 136, overrides BaseCharacter
-    SPTG_SLOT(159) SPTG_SLOT(160) SPTG_SLOT(161)
+    SPTG_SLOT(159) virtual int Slot160(); SPTG_SLOT(161)
     virtual bool Slot162();                                                  // slot 162
     SPTG_SLOT(163) SPTG_SLOT(164) SPTG_SLOT(165)
     virtual void Slot166(int kind);                                          // slot 166

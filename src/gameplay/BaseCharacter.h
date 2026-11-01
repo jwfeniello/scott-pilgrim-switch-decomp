@@ -77,6 +77,7 @@ struct ActorObject : onyx::Component {
     onyx::ComponentHandle* playfield;   // +0x50
     onyx::ComponentHandle* flags;       // +0x58, component type 0x2eae5813
     onyx::ComponentHandle* transform;   // +0x60, Onyx::Transform
+    void MoveTo(const onyx::Vector3& position);   // 0x85fd70
 };
 struct ShadowAnimatedObject;
 struct TypedComponent : onyx::Component {
@@ -86,7 +87,15 @@ struct TypedComponent : onyx::Component {
 // SPTG::PlayfieldCollision (component type 0x21350526), behind ActorObject::playfield.
 struct PlayfieldCollision : TypedComponent {
     static const uint32_t kType = 0x21350526u;
-    char padding_8[0x120];
+    char padding_8[0x30];
+    uint8_t componentFlags;  // +0x38
+    char padding_39[0xdb];
+    uint8_t hasGround;       // +0x114
+    char padding_115[0x7];
+    int32_t groundHeight;    // +0x11c
+    char padding_120[0x4];
+    uint8_t snapsToGround;   // +0x124
+    char padding_125[0x3];
     uint8_t flag128;   // +0x128
     char padding_129[0x7];
     uint32_t flags130; // +0x130
@@ -106,7 +115,9 @@ struct ActorFlags : onyx::Component {
     uint8_t flag7a;       // +0x7a
     char padding_7b[0x1];
     onyx::Vector2 value7c;        // +0x7c
-    char padding_84[0x94];
+    char padding_84[0x78];
+    float valueFc;        // +0xfc: how high it stands, as Striker tests it
+    char padding_100[0x18];
     uint8_t flag118;      // +0x118
     void SetShadow(ShadowAnimatedObject* shadow, bool flag);   // 0x811870
 };
@@ -171,6 +182,7 @@ struct ShadowAnimatedObject : onyx::Component {
     onyx::ComponentHandle* transform;   // +0x58
     char padding_60[0x18];
     uint8_t visible;   // +0x78
+    void SetGroundHeight(int height, float z);   // 0x85fc20
 };
 
 // SPTG::AnimatedAiActor (vtable 0x1870698, 78 slots), the base of BaseCharacter and InteractiveObject. Its own
@@ -207,7 +219,7 @@ struct AnimatedAiActor : onyx::Component {
     virtual bool OnHit(BaseCharacter* other, void* hit);                     // slot 38
     virtual void AttackLanded(AnimatedAiActor* target);                      // slot 39
     virtual float Slot40();                                                  // slot 40
-    virtual void Slot41(bool a, bool b, bool c, void* data, BaseCharacter* other, float scale, float f1, float f2, float f3); // slot 41
+    virtual int Slot41(bool a, bool b, bool c, void* data, BaseCharacter* other, float scale, float f1, float f2, float f3); // slot 41
     SPTG_SLOT(42)
     virtual void Slot43(float value);                                        // slot 43
     virtual int StartAttack(Attack* attack, bool flag, int source, BaseCharacter* attacker); // slot 44
@@ -241,7 +253,9 @@ struct AnimatedAiActor : onyx::Component {
     virtual void Slot76();                                                   // slot 76
     virtual float Slot77();                                                  // slot 77
 
-    char padding_8[0x38];
+    char padding_8[0x30];
+    uint32_t componentFlags;     // +0x38: bit 0 enabled
+    char padding_3c[0x4];
     Holder* attachment;          // +0x40: what the actor is attached to
     char padding_48[0x8];
     uint8_t flag50;              // +0x50
@@ -258,9 +272,10 @@ struct AnimatedAiActor : onyx::Component {
     Singleton<LevelItemAccessor> level; // +0x90
     float base98;                // +0x98: scaled into +0x9c
     float scaled9c;              // +0x9c
-    char padding_a0[0xc];
+    onyx::Vector3 throwOffset;   // +0xa0: where being thrown moves it
     float throwSpeed;            // +0xac: horizontal speed after landing from a throw
-    char padding_b0[0x8];
+    float throwY;                // +0xb0
+    float throwZ;                // +0xb4
     float pushBack;              // +0xb8: Enemy::Slot228's push, against the way it faces
     float pushY;                 // +0xbc
     float pushZ;                 // +0xc0
@@ -283,7 +298,7 @@ struct AnimatedAiActor : onyx::Component {
     uint8_t flag141;             // +0x141
     char padding_142[0x2];
     int32_t groundHeight;        // +0x144: the height that counts as on the ground
-    char padding_148[0x4];
+    int32_t lastGroundHeight;    // +0x148: groundHeight when it was last on the ground
     float hitStopLeft;           // +0x14c: the animation speed applies while not positive
     float hitStopSpeed;          // +0x150
     float liftHeight;            // +0x154: how high InteractiveObject's state 88 lifts it
@@ -350,7 +365,7 @@ struct BaseCharacter : AnimatedAiActor {
     void Slot35(bool flag, BaseCharacter* other) override;               // slot 35
     bool IsMounted() override;                                           // slot 36
     bool OnHit(BaseCharacter* other, void* hit) override;                // slot 38
-    void Slot41(bool a, bool b, bool c, void* data, BaseCharacter* other, float scale, float f1, float f2, float f3) override; // slot 41
+    int Slot41(bool a, bool b, bool c, void* data, BaseCharacter* other, float scale, float f1, float f2, float f3) override; // slot 41
     void Slot42() override;                                              // slot 42
     int StartAttack(Attack* attack, bool flag, int source, BaseCharacter* attacker) override; // slot 44
     void Slot47() override;                                              // slot 47
@@ -981,7 +996,7 @@ struct ControllablePlayer : BaseCharacter {
     void* reference1380;         // +0x1380
     void* reference1388;         // +0x1388
     uint32_t mashNeeded;         // +0x1390: presses it takes to break free (State245)
-    int32_t value1394;           // +0x1394
+    float strikerCost;           // +0x1394: guts it takes to call a striker
     int32_t value1398;           // +0x1398
     int32_t value139c;           // +0x139c
     int32_t value13a0;           // +0x13a0
@@ -1012,7 +1027,9 @@ struct ControllablePlayer : BaseCharacter {
     float value142c[6];          // +0x142c
     char padding_1444[0x18];
     uint32_t mashCount;          // +0x145c: presses so far
-    char padding_1460[0x60];
+    char padding_1460[0x28];
+    void* activeStriker;              // +0x1488: the striker this player has called in, cleared as it leaves
+    char padding_1490[0x30];
     int32_t airAttackCount;      // +0x14c0: since the last landing
     char padding_14c4[0x8];
     int32_t value14cc;           // +0x14cc
