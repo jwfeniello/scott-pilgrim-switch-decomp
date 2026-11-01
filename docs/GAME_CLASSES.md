@@ -931,6 +931,40 @@ binary has no field names. `SPTG::HudStatusGUTS` and `HudStatusHEARTS` show ther
 | `statWill` | +0x868 | `MaxGuts` (slot 150), `GutsCostScale` (slot 151), slot 58 with its flag set |
 | `statStrength` | +0x86c | slots 40, 152, and slot 58 with its flag clear |
 
+### Getting on and off an interactive object
+
+A character can ride an `SPTG::InteractiveObject`. `BaseCharacter` keeps the handle at +0x238
+(`mountHandle`) and a flag at +0x338 (`mounted`), and `IsMounted` (slot 36) checks both.
+
+- `MountNearby` (slot 78) gets the character's position and asks the level's
+  `Catalog<InteractiveObject>`, through `InteractiveCatalog::FindMount`, for the first object whose
+  `CanMount` (slot 34) is true with that position in range. The ranges are per object: +0x3f8 for x
+  and y, +0x40c for z.
+- `SetMount` takes a reference to the object's handle, sets `mounted` and calls the object's
+  `OnMount` (slot 33).
+- `Dismount` (slot 31) calls the object's `OnDismount` (slot 32), replaces the handle with a new
+  empty one and clears `mounted`.
+
+### Items
+
+`ControllablePlayer::UseItem` (`0x80e9a0`, not matched yet: it differs by one conditional select)
+shows how an item works. An item holds a list of effects, each with a kind and an amount. These are
+the kinds, which also back up the stat names above:
+
+| Kind | Effect |
+|---|---|
+| 0 | `GainHealth` |
+| 1 | `AddGuts` |
+| 2 | `0x80ecc0`, which adds to an amount at +0x13ec and can set bits in the player's record |
+| 3 | Adds to the count at +0x870, kept to 9 at most |
+| 4 to 7 | Adds to `statDefense`, `statSpeed`, `statWill` or `statStrength`, kept between 0 and 100 |
+| 8 | Sets the flag at +0x13f8 |
+| 9 | `LearnMove`: sets a bit in the moves of the player's record |
+| 10 | `0x80f6e0` |
+
+The record is the saved component behind +0x7d8, the same one `WorldClearAction` writes to. Bosses
+use `LearnMove` too: when Chau leaves `State116`, every player learns move 17.
+
 [`PlayerOverrides.cpp`](../src/gameplay/PlayerOverrides.cpp) has 4 overrides: slots 20, 76, 87 and
 88. Slot 76 forwards to the base only when the actor's playfield object passes
 `IsA(0x21350526)`. Slot 88 applies slot 65 when the player is in `State114`, then sends message

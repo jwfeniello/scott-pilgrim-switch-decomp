@@ -89,10 +89,10 @@ int BaseCharacter::State100(int event) {
         switch (animation) {
         case 2: case 53: case 69:
             if (AnimationDone()) {
-                if (Slot36Check()) {
+                if (IsMounted()) {
                     if (BaseCharacter* mount = Mount()) {
                         PlayAnimation(mount->Slot49() == 0 ? 54 : 70, 1, 0, 1.0f);
-                        if (Slot36Check()) static_cast<BaseCharacter*>(mountHandle->object)->PlayAnimation(110, 1, 0, 1.0f);
+                        if (IsMounted()) static_cast<BaseCharacter*>(mountHandle->object)->PlayAnimation(110, 1, 0, 1.0f);
                     }
                 } else {
                     PlayAnimation(3, 1, 0, 1.0f);
@@ -101,10 +101,10 @@ int BaseCharacter::State100(int event) {
             break;
         case 3: case 54: case 70:
             if (motion.z < 0.0f) {
-                if (Slot36Check()) {
+                if (IsMounted()) {
                     if (BaseCharacter* mount = Mount()) {
                         PlayAnimation(mount->Slot49() == 0 ? 55 : 71, 0, 0, 1.0f);
-                        if (Slot36Check()) static_cast<BaseCharacter*>(mountHandle->object)->PlayAnimation(111, 0, 0, 1.0f);
+                        if (IsMounted()) static_cast<BaseCharacter*>(mountHandle->object)->PlayAnimation(111, 0, 0, 1.0f);
                     }
                 } else {
                     PlayAnimation(4, 0, 0, 1.0f);
@@ -124,10 +124,10 @@ int BaseCharacter::State100(int event) {
         }
         return kStateHandled;
     case kStateEnter:
-        if (Slot36Check()) {
+        if (IsMounted()) {
             if (BaseCharacter* mount = Mount()) {
                 PlayAnimation(mount->Slot49() == 0 ? 53 : 69, 0, 0, 1.0f);
-                if (Slot36Check()) static_cast<BaseCharacter*>(mountHandle->object)->PlayAnimation(109, 0, 0, 1.0f);
+                if (IsMounted()) static_cast<BaseCharacter*>(mountHandle->object)->PlayAnimation(109, 0, 0, 1.0f);
             }
         } else {
             PlayAnimation(2, 0, 0, 1.0f);
@@ -158,10 +158,10 @@ int BaseCharacter::State102(int event) {
     case kStateEnter:
         motionTarget.z = savedZ;
         motionC4 = savedC4;
-        if (Slot36Check()) {
+        if (IsMounted()) {
             if (BaseCharacter* mount = Mount()) {
                 PlayAnimation(mount->Slot49() == 0 ? 56 : 72, 1, 0, 1.0f);
-                if (Slot36Check()) static_cast<BaseCharacter*>(mountHandle->object)->PlayAnimation(112, 1, 0, 1.0f);
+                if (IsMounted()) static_cast<BaseCharacter*>(mountHandle->object)->PlayAnimation(112, 1, 0, 1.0f);
             }
         } else {
             PlayAnimation(5, 1, 0, 1.0f);
@@ -418,14 +418,14 @@ int BaseCharacter::State130(int event) {
             float direction = onyx::Get<ActorFlags, 0x2eae5813u>(actor->flags)->facingLeft ? -1.0f : 1.0f;
             motionTarget.x = slideSpeed * direction;
         }
-        if (Slot36Check()) {
+        if (IsMounted()) {
             float value = Slot77();
             BaseCharacter* mounted = static_cast<BaseCharacter*>(mountHandle->object);
             mounted->value18c = value;
             mounted->Slot35(false, this);
             if (BaseCharacter* mount = Mount()) {
                 PlayAnimation(mount->Slot49() == 0 ? 45 : 61, 0, 0, 1.0f);
-                if (Slot36Check()) static_cast<BaseCharacter*>(mountHandle->object)->PlayAnimation(101, 0, 0, 1.0f);
+                if (IsMounted()) static_cast<BaseCharacter*>(mountHandle->object)->PlayAnimation(101, 0, 0, 1.0f);
             }
         }
         return kStateHandled;
@@ -457,11 +457,11 @@ int BaseCharacter::State134(int event) {
         }
         return kStateHandled;
     case kStateEnter:
-        if (Mount() && Slot36Check()) {
+        if (Mount() && IsMounted()) {
             static_cast<BaseCharacter*>(mountHandle->object)->Slot35(false, this);
             if (BaseCharacter* mount = Mount()) {
                 PlayAnimation(mount->Slot49() == 0 ? 48 : 64, 0, 0, 1.0f);
-                if (Slot36Check()) static_cast<BaseCharacter*>(mountHandle->object)->PlayAnimation(104, 0, 0, 1.0f);
+                if (IsMounted()) static_cast<BaseCharacter*>(mountHandle->object)->PlayAnimation(104, 0, 0, 1.0f);
             }
         }
         return kStateHandled;

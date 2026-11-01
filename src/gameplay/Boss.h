@@ -40,7 +40,7 @@ struct Boss : Enemy {
     void Slot4(onyx::Archive& archive, ComponentSlot::Source* source);
     void Update();
     void Slot13();
-    bool Slot33(void* data);
+    bool OnMount(void* data);
     float TakeDamage(const void* hit, BaseCharacter* other);
     bool Slot82();
     void Slot86();

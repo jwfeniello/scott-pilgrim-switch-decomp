@@ -19,7 +19,7 @@ void ControllablePlayer::FaceX(float x) {
     flag13c1 = flags->facingLeft ^ 1;
 }
 
-bool ControllablePlayer::Slot34Check() {
+bool ControllablePlayer::CanMount() {
     if (flag141) return false;
     if (actionMode != 6) return false;
     State state = State251Ptr();
@@ -347,6 +347,49 @@ void ControllablePlayer::TurnToMoveInput() {
         flag13c1 ^= 1;
         TurnAround();
     }
+}
+
+// Standing idle without taking input. Leaves the update event unhandled.
+int ControllablePlayer::State247(int event) {
+    int result;
+    switch (event) {
+    case kStateEnter:
+        flag13b0 = 0;
+        value142c[0] = 0.0f;
+        value142c[1] = 0.0f;
+        value142c[4] = 0.0f;
+        value142c[5] = 0.0f;
+        value142c[2] = 0.0f;
+        value142c[3] = 0.0f;
+        motion = onyx::Vector3::Zero();
+        motionTarget = onyx::Vector3::Zero();
+        result = kStateHandled;
+        if (BaseCharacter* mount = Mount()) {
+            int animation = mount->Slot49() ? 60 : 44;
+            PlayAnimation(animation, true, false, 1.0f);
+            if (IsMounted()) static_cast<BaseCharacter*>(mountHandle->object)->PlayAnimation(100, true, false, 1.0f);
+        } else {
+            PlayAnimation(0, true, false, 1.0f);
+        }
+        break;
+    case kStateExit:
+        flag13b0 = 1;
+        value142c[0] = 0.0f;
+        value142c[1] = 0.0f;
+        value142c[4] = 0.0f;
+        value142c[5] = 0.0f;
+        value142c[2] = 0.0f;
+        value142c[3] = 0.0f;
+        result = kStateHandled;
+        break;
+    case kStateEvent3:
+        result = kStateHandled;
+        break;
+    default:
+        result = kStateUnhandled;
+        break;
+    }
+    return result;
 }
 
 }  // namespace SPTG

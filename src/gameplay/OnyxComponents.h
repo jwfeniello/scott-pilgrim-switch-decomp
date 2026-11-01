@@ -77,8 +77,10 @@ struct AllocatorManager { char padding[0x370]; Allocator* allocators[256]; };
 struct TrackingNode { void* padding; ComponentHandle* key; char data[0x18]; TrackingNode* next; };
 struct TrackingMap { void* mutex; char padding[0x20]; TrackingNode* free_head; TrackingNode* buckets[4003]; };
 struct Transform;
+struct HandleHeap;
 }  // namespace onyx
 
+extern "C" onyx::HandleHeap* Handle_Heap;
 extern "C" onyx::AllocatorManager* Accessor_Allocators;
 extern "C" onyx::TrackingMap* Accessor_Tracking;
 extern "C" uint8_t Accessor_AllocatorIndex(onyx::AllocatorManager*, void*);
@@ -130,6 +132,19 @@ __attribute__((always_inline)) inline void DisposeHandle(ComponentHandle* handle
     unlocked:;
     }
     allocator->Free(handle);
+}
+// A new handle with no component and one reference.
+__attribute__((always_inline)) inline ComponentHandle* NewHandle() {
+    Allocator* heap = reinterpret_cast<Allocator*>(reinterpret_cast<char*>(Handle_Heap) + 0x498);
+    ComponentHandle* handle = static_cast<ComponentHandle*>(heap->Allocate(sizeof(ComponentHandle)));
+    handle->references = 1;
+    handle->reserved = nullptr;
+    handle->object = nullptr;
+    return handle;
+}
+// Drops one reference, disposing of the handle with the last.
+__attribute__((always_inline)) inline void ReleaseHandle(ComponentHandle* handle) {
+    if (handle && __atomic_sub_fetch(&handle->references, 1, __ATOMIC_RELAXED) == 0) DisposeHandle(handle);
 }
 // Drops an owned reference held in a member slot.
 __attribute__((always_inline)) inline void ResetHandle(ComponentHandle*& slot) {

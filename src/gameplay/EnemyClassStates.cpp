@@ -195,25 +195,25 @@ void EnemyMini::Slot166(int kind) {
 // Slot 34 (EnemyGiant 0x9fb4d0, EnemyGodzilla 0x9f9030, EnemyHanzo 0x9f6250,
 // EnemyNormal 0x9ef000): not while in the class's state at the given slot or
 // with +0x141 set; otherwise only in action mode 6.
-bool EnemyGiant::Slot34Check() {
+bool EnemyGiant::CanMount() {
     State guarded = State244Ptr();
     if (states.current == guarded) return false;
     if (flag141) return false;
     return actionMode == 6;
 }
-bool EnemyGodzilla::Slot34Check() {
+bool EnemyGodzilla::CanMount() {
     State guarded = State236Ptr();
     if (states.current == guarded) return false;
     if (flag141) return false;
     return actionMode == 6;
 }
-bool EnemyHanzo::Slot34Check() {
+bool EnemyHanzo::CanMount() {
     State guarded = State242Ptr();
     if (states.current == guarded) return false;
     if (flag141) return false;
     return actionMode == 6;
 }
-bool EnemyNormal::Slot34Check() {
+bool EnemyNormal::CanMount() {
     State guarded = State246Ptr();
     if (states.current == guarded) return false;
     if (flag141) return false;
@@ -329,21 +329,21 @@ void EnemyGodzilla::ReactTo(BaseCharacter*, int reaction, void*) {
 
 // Slot 33 (EnemyGiant 0x9fb430, EnemyGodzilla 0x9f8f90, EnemyHanzo 0x9f61b0): in
 // action mode 6, switches to a class state unless already in it.
-bool EnemyGiant::Slot33(void*) {
+bool EnemyGiant::OnMount(void*) {
     if (actionMode == 6) {
         State target = State244Ptr();
         if (!(states.current == target)) states.Transition(State244Ptr());
     }
     return false;
 }
-bool EnemyGodzilla::Slot33(void*) {
+bool EnemyGodzilla::OnMount(void*) {
     if (actionMode == 6) {
         State target = State236Ptr();
         if (!(states.current == target)) states.Transition(State236Ptr());
     }
     return false;
 }
-bool EnemyHanzo::Slot33(void*) {
+bool EnemyHanzo::OnMount(void*) {
     if (actionMode == 6) {
         State target = State242Ptr();
         if (!(states.current == target)) states.Transition(State242Ptr());
@@ -588,7 +588,7 @@ int EnemyGodzilla::State100(int event) {
 // EnemyNormal slot 33 (0x9eef10, shared by EnemyJake and EnemyAlberta): with
 // +0x1040 set in action mode 6, switches to slot 246 unless already in it;
 // otherwise does what BaseCharacter's slot 33 does.
-bool EnemyNormal::Slot33(void* data) {
+bool EnemyNormal::OnMount(void* data) {
     if (flag1040 && actionMode == 6) {
         State target = State246Ptr();
         if (!(states.current == target)) {

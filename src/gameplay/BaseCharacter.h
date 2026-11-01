@@ -54,7 +54,10 @@ struct BaseCharacter;
 struct CharacterMessage {
     int32_t kind;
     BaseCharacter* receiver;
-    void* data;
+    union {
+        void* data;
+        int32_t dataValue;
+    };
     BaseCharacter* sender;
     CharacterMessage() {}
     // A message of `kind` from `from`; the receiver is filled in when sending.
@@ -103,6 +106,33 @@ struct NpcCatalog : onyx::Component {
     BaseCharacter** npcs;    // +0x90
 };
 
+// SPTG::InteractiveObject as a character getting on it sees it. It is not a BaseCharacter, but both share
+// AnimatedAiActor's first virtual slots.
+struct MountObject : onyx::Component {
+    SPTG_SLOT(3) SPTG_SLOT(4) SPTG_SLOT(5) SPTG_SLOT(6) SPTG_SLOT(7) SPTG_SLOT(8) SPTG_SLOT(9) SPTG_SLOT(10)
+    SPTG_SLOT(11) SPTG_SLOT(12) SPTG_SLOT(13) SPTG_SLOT(14) SPTG_SLOT(15) SPTG_SLOT(16) SPTG_SLOT(17)
+    SPTG_SLOT(18) SPTG_SLOT(19) SPTG_SLOT(20) SPTG_SLOT(21) SPTG_SLOT(22) SPTG_SLOT(23) SPTG_SLOT(24)
+    SPTG_SLOT(25) SPTG_SLOT(26) SPTG_SLOT(27) SPTG_SLOT(28) SPTG_SLOT(29) SPTG_SLOT(30) SPTG_SLOT(31)
+    SPTG_SLOT(32) SPTG_SLOT(33)
+    virtual bool CanMount();                 // slot 34
+    char padding_8[0x38];
+    onyx::ComponentHandle* self;             // +0x40
+    char padding_48[0x30];
+    onyx::ComponentHandle* actorObject;      // +0x78
+    char padding_80[0x378];
+    float mountRange;                        // +0x3f8: how far off in x and y a rider can be
+    char padding_3fc[0x10];
+    float mountDepth;                        // +0x40c: and in z
+};
+// Onyx::Catalog<SPTG::InteractiveObject> (component type 0x7a93a527).
+struct InteractiveCatalog : onyx::Component {
+    char padding_8[0x80];
+    uint64_t count;          // +0x88
+    char padding_90[0x8];
+    MountObject** objects;   // +0x98
+    MountObject* FindMount(const onyx::Vector3& position);   // 0x9769a0
+};
+
 // Reached through the singleton at +0x1f8 (getter 0x78c910).
 struct CharacterSettings { char padding[0x5ad]; uint8_t flag5ad; };   // +0x5ad
 // The hit TakeDamage receives; only +0x14 is known so far.
@@ -141,12 +171,12 @@ struct BaseCharacter : onyx::Component {
     virtual void SetFacing(int left);                                          // slot 28
     SPTG_SLOT(29)
     virtual void TurnAround();                                               // slot 30
-    virtual void Slot31Action();                                             // slot 31
-    virtual void Slot32();                                                   // slot 32
-    virtual bool Slot33(void* data);                                         // slot 33
-    virtual bool Slot34Check();                                              // slot 34
+    virtual void Dismount();                                             // slot 31
+    virtual void OnDismount();                                                   // slot 32
+    virtual bool OnMount(void* data);                                         // slot 33
+    virtual bool CanMount();                                              // slot 34
     virtual void Slot35(bool flag, BaseCharacter* other);                    // slot 35
-    virtual bool Slot36Check();      // flag +0x338 and a live mount at +0x238 // slot 36
+    virtual bool IsMounted();      // flag +0x338 and a live mount at +0x238 // slot 36
     SPTG_SLOT(37)
     virtual bool OnHit(BaseCharacter* other, void* hit);                     // slot 38
     SPTG_SLOT(39)
@@ -184,7 +214,7 @@ struct BaseCharacter : onyx::Component {
     virtual void Slot75(void* data, void* extra);                            // slot 75
     virtual void Slot76();                                                   // slot 76
     virtual float Slot77();                                                  // slot 77
-    SPTG_SLOT(78)
+    virtual void MountNearby();                                              // slot 78
     virtual bool Slot79();                                                   // slot 79
     virtual bool Slot80();                                                   // slot 80
     virtual float Slot81();                                                  // slot 81
@@ -339,7 +369,7 @@ struct BaseCharacter : onyx::Component {
     float guts;              // +0x32c
     float timer330;              // +0x330
     float value334;              // +0x334
-    uint8_t flag338;             // +0x338
+    uint8_t mounted;             // +0x338
     uint8_t flag339;             // +0x339
     char padding_33a[0x6];
     char block340[0x64];         // +0x340: passed to slot 69
@@ -399,6 +429,7 @@ struct BaseCharacter : onyx::Component {
     char padding_776[0x2];
     int32_t value778;            // +0x778
 
+    void SetMount(onyx::ComponentHandle* mount);       // 0x976b10
     void ReleaseHeld(bool flag, float x, float y);   // 0x976fb0: drops the reference at +0x240
     void RecordHit(void* hit);                         // 0x977190
     void ActorSlot4(onyx::Archive& archive, ComponentSlot::Source* source);   // 0x945fe0: AnimatedAiActor's slot 4
@@ -493,7 +524,36 @@ enum PlayerMove {
     kMoveAirKick = 0x04,
     kMoveAirAttack = 0x10,
 };
+// One thing an item does when used.
+enum ItemEffectKind {
+    kItemHealth,
+    kItemGuts,
+    kItemExperience,
+    kItemLives,
+    kItemDefense,
+    kItemSpeed,
+    kItemWill,
+    kItemStrength,
+    kItemFlag,
+    kItemLearnMove,
+    kItemEffect10,
+};
+struct ItemEffect {
+    int32_t kind;
+    int32_t amount;
+    int32_t move;       // kItemLearnMove's move
+};
+struct Item {
+    char padding_0[0x60];
+    int32_t id;              // +0x60
+    char padding_64[0x34];
+    uint64_t effectCount;    // +0x98
+    ItemEffect* effects;     // +0xa0
+};
 struct ControllablePlayer : BaseCharacter {
+    bool UseItem(Item* item);                            // 0x80e9a0
+    void GainExperience(float amount);                   // 0x80ecc0
+    bool Effect10();                                     // 0x80f6e0
     PlayerRecord* Record() { return onyx::Get<PlayerRecord, 1180775934u>(handle7d8); }
     bool KnowsMove(int move) {
         PlayerRecord* record = Record();
@@ -505,7 +565,7 @@ struct ControllablePlayer : BaseCharacter {
     void Slot4(onyx::Archive& archive, ComponentSlot::Source* source);   // slot 4 (0x978660)
     virtual void OnMessage(CharacterMessage* message);   // slot 159
     void Notify995d50();                                 // 0x995d50
-    void Notify80f430(int value);                        // 0x80f430
+    bool LearnMove(int move);                        // 0x80f430
     void OnHealthLost(float amount);                     // 0x995a30
     void OnHealthChanged(float amount);                  // 0x995700
     float Slot40() override;
@@ -527,7 +587,7 @@ struct ControllablePlayer : BaseCharacter {
     bool Slot88(float amount) override;
     int State114(int event) override;
     void TurnAround() override;
-    bool Slot34Check() override;
+    bool CanMount() override;
     void Slot43(float value) override;
     void FaceX(float x) override;
     int State126(int event) override;
@@ -607,7 +667,7 @@ struct ControllablePlayer : BaseCharacter {
     float statSpeed;              // +0x864
     float statWill;              // +0x868
     float statStrength;              // +0x86c
-    int32_t value870;            // +0x870
+    uint32_t value870;           // +0x870
     float value874;              // +0x874
     float value878;              // +0x878
     float value87c;              // +0x87c
@@ -755,7 +815,7 @@ struct ControllablePlayer : BaseCharacter {
     int32_t value13a4;           // +0x13a4
     int32_t value13a8;           // +0x13a8
     int32_t value13ac;           // +0x13ac
-    char padding_13b0[0x1];
+    uint8_t flag13b0;            // +0x13b0
     uint8_t flag13b1;            // +0x13b1
     char padding_13b2[0xe];
     uint8_t flag13c0;            // +0x13c0
@@ -765,7 +825,10 @@ struct ControllablePlayer : BaseCharacter {
     char padding_13dc[0x14];
     uint8_t flag13f0;            // +0x13f0
     uint8_t flag13f1;            // +0x13f1
-    char padding_13f2[0x1e];
+    char padding_13f2[0x2];
+    int32_t pendingItem;         // +0x13f4: the item to use next, or -1
+    uint8_t flag13f8;            // +0x13f8
+    char padding_13f9[0x17];
     float value1410;             // +0x1410
     int32_t value1414;           // +0x1414
     char padding_1418[0x4];

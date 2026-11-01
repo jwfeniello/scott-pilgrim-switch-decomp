@@ -118,9 +118,9 @@ struct EnemyNormal : Enemy {
     int State96(int event);
     int State174(int event);
     int State194(int event);
-    bool Slot34Check();
+    bool CanMount();
     int State196(int event);
-    bool Slot33(void* data);
+    bool OnMount(void* data);
     void Slot4(onyx::Archive& archive, ComponentSlot::Source* source);
     virtual int State234(int event); virtual State State234Ptr();   // slots 234, 235
     virtual int State236(int event); virtual State State236Ptr();   // slots 236, 237
@@ -183,8 +183,8 @@ struct EnemyJetPackMatt : Enemy {
 };
 // vtable 0x1884700, 246 slots
 struct EnemyHanzo : Enemy {
-    bool Slot34Check();
-    bool Slot33(void* data);
+    bool CanMount();
+    bool OnMount(void* data);
     void Slot166(int kind);
     virtual int State234(int event); virtual State State234Ptr();   // slots 234, 235
     virtual int State236(int event); virtual State State236Ptr();   // slots 236, 237
@@ -205,10 +205,10 @@ struct EnemyGodzilla : Enemy {
     void Approach();
     void Slot166(int kind);
     int State124(int event);
-    bool Slot34Check();
+    bool CanMount();
     bool OnHit(BaseCharacter* other, void* hit);
     void ReactTo(BaseCharacter* other, int reaction, void* data);
-    bool Slot33(void* data);
+    bool OnMount(void* data);
     int State100(int event);
     bool Slot82();
     virtual int State234(int event); virtual State State234Ptr();   // slots 234, 235
@@ -220,10 +220,10 @@ struct EnemyGodzilla : Enemy {
 };
 // vtable 0x1885680, 248 slots
 struct EnemyGiant : Enemy {
-    bool Slot34Check();
+    bool CanMount();
     int State196(int event);
     void ReactTo(BaseCharacter* other, int reaction, void* data);
-    bool Slot33(void* data);
+    bool OnMount(void* data);
     int State96(int event);
     int State174(int event);
     bool Check9fd3e0();   // 0x9fd3e0

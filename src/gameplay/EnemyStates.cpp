@@ -58,8 +58,8 @@ int Enemy::State100(int event) {
     int result = BaseCharacter::State100(event);
     if (result == kStateParentTookOver) return result;
     if (event != kStateEnter) return kStateUnhandled;
-    if (Slot36Check()) {
-        Slot31Action();
+    if (IsMounted()) {
+        Dismount();
         PlayAnimation(2, 0, 0, 1.0f);
     }
     return kStateHandled;
@@ -69,8 +69,8 @@ int Enemy::State100(int event) {
 int Enemy::State102(int event) {
     if (BaseCharacter::State102(event) == kStateParentTookOver) return kStateParentTookOver;
     if (event != kStateEnter) return kStateUnhandled;
-    if (Slot36Check()) {
-        Slot31Action();
+    if (IsMounted()) {
+        Dismount();
         PlayAnimation(5, 1, 0, 1.0f);
     }
     return kStateHandled;
@@ -109,7 +109,7 @@ int Enemy::State136(int event) {
         BaseCharacter* partner = partnerHandle ? static_cast<BaseCharacter*>(partnerHandle->object) : nullptr;
         if (timer330 >= partnerDelay && partner) {
             partner->ReactTo(this, 2, nullptr);
-            partner->Slot31Action();
+            partner->Dismount();
             int recovery = -1;
             switch (partner->animation) {
             case 44: case 60: recovery = 0; break;
@@ -497,10 +497,10 @@ int Enemy::State198(int event) {
 int Enemy::State226(int event) {
     switch (event) {
     case kStateEnter:
-        if (Slot36Check()) {
+        if (IsMounted()) {
             if (BaseCharacter* mount = Mount()) {
                 PlayAnimation(mount->Slot49() == 0 ? 44 : 60, 1, 0, 1.0f);
-                if (Slot36Check()) static_cast<BaseCharacter*>(mountHandle->object)->PlayAnimation(100, 1, 0, 1.0f);
+                if (IsMounted()) static_cast<BaseCharacter*>(mountHandle->object)->PlayAnimation(100, 1, 0, 1.0f);
             }
         } else {
             PlayAnimation(0, 1, 0, 1.0f);
@@ -539,7 +539,7 @@ int Enemy::State192(int event) {
         PlayAnimation(117, 1, 0, 1.0f);
         aiMode = 7;
         timer330 = 0.0f;
-        Slot31Action();
+        Dismount();
         return kStateHandled;
     case kStateEvent3:
         return kStateHandled;
@@ -675,10 +675,10 @@ int Enemy::State218(int event) {
         value334 = 0.0f;
         if (!Slot231()) {
             Enter9db480();
-        } else if (Slot36Check()) {
+        } else if (IsMounted()) {
             if (BaseCharacter* mount = Mount()) {
                 PlayAnimation(mount->Slot49() == 0 ? 43 : 59, 1, 0, 1.0f);
-                if (Slot36Check()) static_cast<BaseCharacter*>(mountHandle->object)->PlayAnimation(99, 1, 0, 1.0f);
+                if (IsMounted()) static_cast<BaseCharacter*>(mountHandle->object)->PlayAnimation(99, 1, 0, 1.0f);
             }
         } else {
             PlayAnimation(1, 1, 0, 1.0f);
@@ -776,7 +776,7 @@ int Enemy::State222(int event) {
 // 0x9dd6b0: when slot 36 holds, rolls 0-100 against the chance at +0x920 and
 // records the result; a failed roll sets AI mode 6.
 void Enemy::RollChance() {
-    if (!Slot36Check()) return;
+    if (!IsMounted()) return;
     uint32_t roll = RandomRange(0u, 100u);
     if (roll <= chance) {
         chanceResult = 1;

@@ -16,7 +16,7 @@ void BaseCharacter::SetFacing(int left) {
 // Slot 30 (0x96ca30): turns round, and turns the mount with it.
 void BaseCharacter::TurnAround() {
     SetFacing(!onyx::Get<ActorFlags, 0x2eae5813u>(onyx::Find<ActorObject, 0x6492d61du>(actorObject)->flags)->facingLeft);
-    if (flag338) {
+    if (mounted) {
         BaseCharacter* mount = Mount();
         if (mount) mount->TurnAround();
     }
@@ -72,7 +72,7 @@ void BaseCharacter::GainHealth(float amount) {
 void BaseCharacter::SetAnimationSpeed(float speed) {
     animationSpeed = speed;
     if (hitStopLeft <= 0.0f) onyx::Get<AnimationControl, kAnimationControlType>(animationHandle)->SetSpeed(speed);
-    if (hitStopLeft <= 0.0f && flag338) {
+    if (hitStopLeft <= 0.0f && mounted) {
         BaseCharacter* mount = Mount();
         if (mount) mount->SetAnimationSpeed(speed);
     }
@@ -82,7 +82,7 @@ void BaseCharacter::SetAnimationSpeed(float speed) {
 // mount's.
 void BaseCharacter::SetAnimationPaused(bool paused) {
     onyx::Get<AnimationControl, kAnimationControlType>(animationHandle)->SetPaused(paused);
-    if (flag338) {
+    if (mounted) {
         BaseCharacter* mount = Mount();
         if (mount) mount->SetAnimationPaused(paused);
     }
@@ -90,7 +90,7 @@ void BaseCharacter::SetAnimationPaused(bool paused) {
 
 // Slot 32 (0x96ce30): after AnimatedAiActor's slot 32, restores the saved
 // motion values and switches to the state at slot 108.
-void BaseCharacter::Slot32() {
+void BaseCharacter::OnDismount() {
     ActorSlot32();
     motionTarget.z = savedZ;
     motionC4 = savedC4;
@@ -99,7 +99,7 @@ void BaseCharacter::Slot32() {
 
 // Slot 33 (0x96ce90): after AnimatedAiActor's slot 33, switches to the state at
 // slot 136.
-bool BaseCharacter::Slot33(void* data) {
+bool BaseCharacter::OnMount(void* data) {
     ActorSlot33(data);
     states.Transition(State136Ptr());
     return true;
@@ -404,6 +404,59 @@ void BaseCharacter::PlayAnimationOn(int animation, bool loop, bool flag, BaseCha
     }
     states.Transition(State144Ptr());
     states.AssertOwner(this);
+}
+
+// Gets off the mount: tells it, then points the mount handle at a new empty handle.
+void BaseCharacter::Dismount() {
+    if (!IsMounted()) return;
+    static_cast<BaseCharacter*>(mountHandle->object)->OnDismount();
+    onyx::ComponentHandle* empty = onyx::NewHandle();
+    if (empty) __atomic_add_fetch(&empty->references, 1, __ATOMIC_RELAXED);
+    onyx::ComponentHandle* previous = mountHandle;
+    mountHandle = empty;
+    onyx::ReleaseHandle(previous);
+    onyx::ReleaseHandle(empty);
+    mounted = 0;
+}
+
+// Gets on: holds a reference to the object's handle and tells the object.
+void BaseCharacter::SetMount(onyx::ComponentHandle* mount) {
+    __atomic_add_fetch(&mount->references, 1, __ATOMIC_RELAXED);
+    if (mount) __atomic_add_fetch(&mount->references, 1, __ATOMIC_RELAXED);
+    onyx::ComponentHandle* previous = mountHandle;
+    mountHandle = mount;
+    onyx::ReleaseHandle(previous);
+    onyx::ReleaseHandle(mount);
+    mounted = 1;
+    static_cast<BaseCharacter*>(mountHandle->object)->OnMount(this);
+}
+
+// The first object that takes a rider with `position` in its range.
+MountObject* InteractiveCatalog::FindMount(const onyx::Vector3& position) {
+    if (!count) return nullptr;
+    for (MountObject** i = objects; i != objects + count; ++i) {
+        if (!(*i)->CanMount()) continue;
+        MountObject* object = *i;
+        ActorObject* actor = onyx::Find<ActorObject, onyx_types::type_6492d61d>(object->actorObject);
+        onyx::Transform* transform = onyx::Get<onyx::Transform, onyx::kTransform>(actor->transform);
+        float y = transform->position.y;
+        if (__builtin_fabsf(position.y - y) <= object->mountRange) {
+            float x = transform->position.x;
+            if (__builtin_fabsf(position.x - x) <= object->mountRange) {
+                float z = transform->position.z;
+                if (__builtin_fabsf(position.z - z) <= object->mountDepth) return *i;
+            }
+        }
+    }
+    return nullptr;
+}
+
+// Gets on whatever object is in range.
+void BaseCharacter::MountNearby() {
+    ActorObject* actor = onyx::Find<ActorObject, onyx_types::type_6492d61d>(actorObject);
+    onyx::Vector3 position = onyx::Find<onyx::Transform, onyx::kTransform>(actor->transform)->Position();
+    InteractiveCatalog* catalog = onyx::Find<InteractiveCatalog, onyx_types::type_7a93a527>(level.Get()->interactiveObjects);
+    if (MountObject* object = catalog->FindMount(position)) SetMount(object->self);
 }
 
 }  // namespace SPTG

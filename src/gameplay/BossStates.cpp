@@ -21,7 +21,7 @@ void Boss::Update() {
 
 // Slot 33 (0xa188e0): in action mode 6, switches to slot 252 (with +0xcd0) or
 // 122 and refuses; otherwise does what BaseCharacter's slot 33 does.
-bool Boss::Slot33(void* data) {
+bool Boss::OnMount(void* data) {
     if (actionMode == 6) {
         if (flagCd0) states.Transition(State252Ptr());
         else states.Transition(State122Ptr());

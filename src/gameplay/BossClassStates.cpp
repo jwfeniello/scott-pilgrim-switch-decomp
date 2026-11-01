@@ -547,13 +547,13 @@ float Todd::Slot59() {
 }
 
 // Chau slot 116 (0xa6ab50): after Boss's state, exit notifies every player
-// (0x80f430 with 17).
+// (LearnMove with 17).
 int Chau::State116(int event) {
     int result = Boss::State116(event);
     if (result == kStateParentTookOver) return result;
     if (event != kStateExit) return kStateUnhandled;
     PlayerCatalog* catalog = onyx::Get<PlayerCatalog, onyx_types::type_0bf4a9b7>(level.Get()->players);
-    for (ControllablePlayer** i = catalog->players; i != catalog->players + catalog->count; ++i) (*i)->Notify80f430(17);
+    for (ControllablePlayer** i = catalog->players; i != catalog->players + catalog->count; ++i) (*i)->LearnMove(17);
     return kStateHandled;
 }
 

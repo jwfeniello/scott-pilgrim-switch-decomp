@@ -494333,7 +494333,7 @@
         {
           "address": "0xa188e0",
           "size": 160,
-          "symbol": "_ZN4SPTG4Boss6Slot33EPv",
+          "symbol": "_ZN4SPTG4Boss7OnMountEPv",
           "target_sha256": "97b5ec516116a28939d7c55243814a826a69025a4e0ce4ca234de2cd97235f5f",
           "bindings": {
             "_ZN4SPTG13BaseCharacter11ActorSlot33EPv": "0x940170",
@@ -497510,7 +497510,7 @@
             "_ZN4SPTG9SingletonINS_17LevelItemAccessorEE3GetEv": "0x7725e0",
             "Accessor_Resolver": "0x191cd10",
             "Accessor_Resolve": "0x67edd0",
-            "_ZN4SPTG18ControllablePlayer12Notify80f430Ei": "0x80f430"
+            "_ZN4SPTG18ControllablePlayer9LearnMoveEi": "0x80f430"
           },
           "got_bindings": {}
         },
@@ -497901,7 +497901,7 @@
         {
           "address": "0x9eef10",
           "size": 232,
-          "symbol": "_ZN4SPTG11EnemyNormal6Slot33EPv",
+          "symbol": "_ZN4SPTG11EnemyNormal7OnMountEPv",
           "target_sha256": "77e7180000569576f59004a6309c0c8c1aaa759d3e5a8460a9e048d5b25046f6",
           "bindings": {
             "_ZN4SPTG13BaseCharacter11ActorSlot33EPv": "0x940170",
@@ -497912,7 +497912,7 @@
         {
           "address": "0x9ef000",
           "size": 124,
-          "symbol": "_ZN4SPTG11EnemyNormal11Slot34CheckEv",
+          "symbol": "_ZN4SPTG11EnemyNormal8CanMountEv",
           "target_sha256": "7f2ec49d5c0734240b944acc6995336d19a8a2fc1e58e16e2af495bdda40bdb7",
           "bindings": {},
           "got_bindings": {}
@@ -498112,7 +498112,7 @@
         {
           "address": "0x9f61b0",
           "size": 148,
-          "symbol": "_ZN4SPTG10EnemyHanzo6Slot33EPv",
+          "symbol": "_ZN4SPTG10EnemyHanzo7OnMountEPv",
           "target_sha256": "42dd6f4f09f1235faee9a1d5822c6bcda94c422400603e374bc7f9419e075a49",
           "bindings": {
             "_ZN4SPTG12StateMachineINS_13BaseCharacterEE10TransitionEMS1_FiiE": "0x812930"
@@ -498122,7 +498122,7 @@
         {
           "address": "0x9f6250",
           "size": 124,
-          "symbol": "_ZN4SPTG10EnemyHanzo11Slot34CheckEv",
+          "symbol": "_ZN4SPTG10EnemyHanzo8CanMountEv",
           "target_sha256": "4936a61d65b83430fdfeee5552bebf3d9a4f97363aea6c500bc6732ee008e66a",
           "bindings": {},
           "got_bindings": {}
@@ -498180,7 +498180,7 @@
         {
           "address": "0x9f8f90",
           "size": 148,
-          "symbol": "_ZN4SPTG13EnemyGodzilla6Slot33EPv",
+          "symbol": "_ZN4SPTG13EnemyGodzilla7OnMountEPv",
           "target_sha256": "f359360a0621ddcecd6d6612f0a6148de5bd7d602ca0e1ca2219e2f90a80e910",
           "bindings": {
             "_ZN4SPTG12StateMachineINS_13BaseCharacterEE10TransitionEMS1_FiiE": "0x812930"
@@ -498190,7 +498190,7 @@
         {
           "address": "0x9f9030",
           "size": 124,
-          "symbol": "_ZN4SPTG13EnemyGodzilla11Slot34CheckEv",
+          "symbol": "_ZN4SPTG13EnemyGodzilla8CanMountEv",
           "target_sha256": "0ab8461212eb4d1e12f7d5a8333817e0a6622dfa4c123499e8cffc40d2743c03",
           "bindings": {},
           "got_bindings": {}
@@ -498297,7 +498297,7 @@
         {
           "address": "0x9fb430",
           "size": 148,
-          "symbol": "_ZN4SPTG10EnemyGiant6Slot33EPv",
+          "symbol": "_ZN4SPTG10EnemyGiant7OnMountEPv",
           "target_sha256": "e35a64db2a54d7c91d7920f29d30db50b03adad9df3984c2dfb59ae7b3cd128e",
           "bindings": {
             "_ZN4SPTG12StateMachineINS_13BaseCharacterEE10TransitionEMS1_FiiE": "0x812930"
@@ -498307,7 +498307,7 @@
         {
           "address": "0x9fb4d0",
           "size": 124,
-          "symbol": "_ZN4SPTG10EnemyGiant11Slot34CheckEv",
+          "symbol": "_ZN4SPTG10EnemyGiant8CanMountEv",
           "target_sha256": "7ba3c54347b18c20984b2f7c0e0665e111c8e0d71ae8f9031a238a74413d8f49",
           "bindings": {},
           "got_bindings": {}
@@ -568019,7 +568019,7 @@
         {
           "address": "0x97e5c0",
           "size": 128,
-          "symbol": "_ZN4SPTG18ControllablePlayer11Slot34CheckEv",
+          "symbol": "_ZN4SPTG18ControllablePlayer8CanMountEv",
           "target_sha256": "7158334ff5cfce467e42c1d6faa53cc753251ff407894d78d99add56d6971225",
           "bindings": {},
           "got_bindings": {}
@@ -568196,6 +568196,19 @@
           "immutable_sections": {
             "16": "0x1390df0"
           }
+        },
+        {
+          "address": "0x990140",
+          "size": 484,
+          "symbol": "_ZN4SPTG18ControllablePlayer8State247Ei",
+          "target_sha256": "7a4b446bde70d350ea4aee80414a33a0b97a855ade59c40aa75e2c466379f441",
+          "bindings": {
+            "_ZGVZN4onyx7Vector34ZeroEvE5value": "0x191f8b8",
+            "_ZZN4onyx7Vector34ZeroEvE5value": "0x191f8c0",
+            "__cxa_guard_acquire": "0xfa4130",
+            "__cxa_guard_release": "0xfa4140"
+          },
+          "got_bindings": {}
         },
         {
           "address": "0x991360",
@@ -568429,9 +568442,25 @@
           "got_bindings": {}
         },
         {
+          "address": "0x96cb40",
+          "size": 752,
+          "symbol": "_ZN4SPTG13BaseCharacter8DismountEv",
+          "target_sha256": "47301ee38d320e408099f558b29e6569cbbce9ef9311fcf35a48adbe397e85b0",
+          "bindings": {
+            "Handle_Heap": "0x1935058",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30",
+            "Accessor_Tracking": "0x1935068",
+            "Accessor_Lock": "0xfa4950",
+            "Accessor_Unlock": "0xfa4960",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
           "address": "0x96ce30",
           "size": 84,
-          "symbol": "_ZN4SPTG13BaseCharacter6Slot32Ev",
+          "symbol": "_ZN4SPTG13BaseCharacter10OnDismountEv",
           "target_sha256": "d23904d266eb02d2f615dc293772a724cbd7bec569ed5ba2a9272cf34151ef9a",
           "bindings": {
             "_ZN4SPTG13BaseCharacter11ActorSlot32Ev": "0x93fec0",
@@ -568442,7 +568471,7 @@
         {
           "address": "0x96ce90",
           "size": 76,
-          "symbol": "_ZN4SPTG13BaseCharacter6Slot33EPv",
+          "symbol": "_ZN4SPTG13BaseCharacter7OnMountEPv",
           "target_sha256": "6d9bf73c49c938a4186a82c64133167b9eab5eca219e922d609aa3f5f4f1439f",
           "bindings": {
             "_ZN4SPTG13BaseCharacter11ActorSlot33EPv": "0x940170",
@@ -568513,6 +568542,20 @@
           "target_sha256": "475a3ae0669ca035f0e73584ad0a7e38d1464724fa92d5809bfebc6668df42cc",
           "bindings": {
             "_ZN4SPTG12StateMachineINS_13BaseCharacterEE10TransitionEMS1_FiiE": "0x812930"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x9705a0",
+          "size": 340,
+          "symbol": "_ZN4SPTG13BaseCharacter11MountNearbyEv",
+          "target_sha256": "beb7d1faf7a2abdedb0f1c8f2984f432eeb097132f350ec778528bf4ff6fd2ca",
+          "bindings": {
+            "Accessor_Resolver": "0x191cd10",
+            "Accessor_Resolve": "0x67edd0",
+            "_ZN4SPTG9SingletonINS_17LevelItemAccessorEE3GetEv": "0x7725e0",
+            "_ZN4SPTG18InteractiveCatalog9FindMountERKN4onyx7Vector3E": "0x9769a0",
+            "_ZN4SPTG13BaseCharacter8SetMountEPN4onyx15ComponentHandleE": "0x976b10"
           },
           "got_bindings": {}
         },
@@ -568639,6 +568682,32 @@
           "bindings": {
             "_ZN4SPTG9SingletonINS_17CharacterSettingsEE3GetEv": "0x78c910",
             "Game_State": "0x1924bc0"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x9769a0",
+          "size": 368,
+          "symbol": "_ZN4SPTG18InteractiveCatalog9FindMountERKN4onyx7Vector3E",
+          "target_sha256": "2e984f2978af1cdbb36abbd34790c7c93ab921ffbdc34ad67c144a778b20e848",
+          "bindings": {
+            "Accessor_Resolver": "0x191cd10",
+            "Accessor_Resolve": "0x67edd0"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x976b10",
+          "size": 716,
+          "symbol": "_ZN4SPTG13BaseCharacter8SetMountEPN4onyx15ComponentHandleE",
+          "target_sha256": "1443571c493004ee72ffd3a0076f6b4ac49b9a5c0b45a718fce34d535b6e0c0f",
+          "bindings": {
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30",
+            "Accessor_Tracking": "0x1935068",
+            "Accessor_Lock": "0xfa4950",
+            "Accessor_Unlock": "0xfa4960",
+            "__clang_call_terminate": "0x6768b8"
           },
           "got_bindings": {}
         }
