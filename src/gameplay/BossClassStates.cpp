@@ -2658,7 +2658,7 @@ void Lynette::Slot4(onyx::Archive& archive, ComponentSlot::Source* source) {
     onyx::Transfer(archive, limitF44);
     onyx::Transfer(archive, valueF48);
     onyx::Transfer(archive, valueF4c);
-    onyx::Transfer(archive, valueF50);
+    onyx::Transfer(archive, shotCount);
     onyx::Transfer(archive, closeRange);
     onyx::Transfer(archive, limitF58);
     listF60.Serialize(archive);
@@ -2743,10 +2743,10 @@ void Todd::Slot4(onyx::Archive& archive, ComponentSlot::Source* source) {
     onyx::Transfer(archive, value11dc);
     onyx::Transfer(archive, value11e0);
     onyx::Transfer(archive, value11e4);
-    onyx::Transfer(archive, value11e8);
+    onyx::Transfer(archive, chargeTimeLimit);
     onyx::Transfer(archive, value11ec);
     onyx::Transfer(archive, value11f0);
-    onyx::Transfer(archive, value11f4);
+    onyx::Transfer(archive, chargeDamageLimit);
     onyx::Transfer(archive, value11f8);
     onyx::Transfer(archive, value11fc);
     onyx::Transfer(archive, value1200);
@@ -3410,6 +3410,283 @@ int SuperGideon::State264(int event) {
     case kStateExit:
         flag3ba = 0;
         result = kStateHandled;
+        break;
+    }
+    return result;
+}
+
+// GigaGideon slot 278 (0xa5dfd0): stops and swings: animation 20 on him and his attachment, with his first attack. When it ends
+// he goes to slot 244.
+int GigaGideon::State278(int event) {
+    int result = kStateHandled;
+    switch (event) {
+    case kStateUpdate:
+        if (AnimationDone()) {
+            states.Transition(State244Ptr());
+            result = kStateParentTookOver;
+        } else {
+            result = kStateHandled;
+        }
+        break;
+    default:
+        result = kStateUnhandled;
+        break;
+    case kStateEnter:
+        motion = onyx::Vector3::Zero();
+        motionTarget = onyx::Vector3::Zero();
+        result = kStateHandled;
+        PlayAnimation(20, 0, 1, 1.0f);
+        PlayAttachmentAnimation(handleBa8, 20, false);
+        StartAttack(&attacks[0].attack, false, 1, nullptr);
+        flag3bb = 1;
+        break;
+    case kStateExit:
+        flag3bb = 0;
+        HideAttachment();
+        result = kStateHandled;
+        break;
+    case kStateEvent3:
+        break;
+    }
+    return result;
+}
+
+// GigaGideon slot 272 (0xa5ce40): charges: animation 133, then 181 after 135. After the charge time he goes to slot 282, and the
+// core is covered while it lasts.
+int GigaGideon::State272(int event) {
+    int result = kStateHandled;
+    switch (event) {
+    case kStateUpdate:
+        stateTime += Move_FrameDelta;
+        if (AnimationDone()) {
+            if (animation == 135) PlayAnimation(181, 1, 0, 1.0f);
+            if (stateTime >= chargeTime) {
+                states.Transition(State282Ptr());
+                result = kStateParentTookOver;
+                break;
+            }
+        }
+        result = kStateHandled;
+        break;
+    default:
+        result = kStateUnhandled;
+        break;
+    case kStateEnter:
+        motion = onyx::Vector3::Zero();
+        motionTarget = onyx::Vector3::Zero();
+        result = kStateHandled;
+        PlayAnimation(133, 1, 0, 1.0f);
+        PlayAttachmentAnimation(handleBa8, 133, true);
+        stateTime = 0.0f;
+        coreExposed = 0;
+        flag3bb = 1;
+        break;
+    case kStateExit:
+        result = kStateHandled;
+        coreExposed = 1;
+        flag3bb = 0;
+        HideAttachment();
+        break;
+    case kStateEvent3:
+        break;
+    }
+    return result;
+}
+
+// SuperFightingRobotHand slot 264 (0xa2c920): waits and picks what to do about the target. Enough hits make the robot react
+// and send this hand to state 260.
+int SuperFightingRobotHand::State264(int event) {
+    int result = kStateHandled;
+    switch (event) {
+    case kStateUpdate: {
+        if (CheckA1e720()) {
+            states.Transition(State244Ptr());
+            result = kStateParentTookOver;
+            break;
+        }
+        if (!target || !target->object) {
+            CheckA1e820();
+            result = kStateHandled;
+            break;
+        }
+        if (!CheckA1e9c0(range0.min, range0.max, range0.depth) && !CallA2f300(range0.min, range0.max, range0.depth)) {
+            states.Transition(State246Ptr());
+            result = kStateParentTookOver;
+            break;
+        }
+        SuperFightingRobotAI* robot = owner;
+        if (robot->handHits >= robot->valueE08) {
+            robot->handHits = 0;
+            if (!robot->states.IsIn(robot->State274Ptr())) robot->states.Transition(robot->State262Ptr());
+            states.Transition(State260Ptr());
+            result = kStateParentTookOver;
+            break;
+        }
+        if (static_cast<BaseCharacter*>(target->object)->actionMode == 3) {
+            states.Transition(State248Ptr());
+            result = kStateParentTookOver;
+            break;
+        }
+        if (CallA2f300(range0.min, range0.max, range0.depth)) states.Transition(State268Ptr());
+        else states.Transition(State266Ptr());
+        result = kStateParentTookOver;
+        break;
+    }
+    default:
+        result = kStateUnhandled;
+        break;
+    case kStateEnter:
+        if (!target || !target->object) CheckA1e820();
+        motion = onyx::Vector3::Zero();
+        motionTarget = onyx::Vector3::Zero();
+        result = kStateHandled;
+        PlayAnimation(0, 1, 0, 1.0f);
+        value7ac = 0.0f;
+        break;
+    case kStateExit:
+        states.AssertOwner(this);
+        result = kStateHandled;
+        break;
+    case kStateEvent3:
+        break;
+    }
+    return result;
+}
+
+// Todd slot 270 (0xa24f60): charges in animations 136, 133 and 135, flinching with 135 if hit. After the time or damage limit
+// he plays 134, raises +0xd25 when that ends, and goes to slot 244.
+// The assumption in case 136 is the stand-in described under the exit case in docs/GAME_CLASSES.md: it keeps the two cases
+// apart, and what the original does there is unknown.
+int Todd::State270(int event) {
+    int result = kStateHandled;
+    switch (event) {
+    case kStateUpdate:
+        stateTime += Move_FrameDelta;
+        if (flag811 && stateTime < chargeTimeLimit && damageDbc < chargeDamageLimit) PlayAnimation(135, 0, 0, 1.0f);
+        if (AnimationDone()) {
+            switch (animation) {
+            case 136:
+                states.AssertOwner(this);
+                // Falls through.
+            case 135:
+                PlayAnimation(133, 1, 0, 1.0f);
+                break;
+            case 134:
+                flagD25 = 1;
+                states.Transition(State244Ptr());
+                return kStateParentTookOver;
+            }
+            if (stateTime >= chargeTimeLimit || damageDbc >= chargeDamageLimit) PlayAnimation(134, 0, 0, 1.0f);
+        }
+        result = kStateHandled;
+        break;
+    default:
+        result = kStateUnhandled;
+        break;
+    case kStateEnter:
+        motion = onyx::Vector3::Zero();
+        motionTarget = onyx::Vector3::Zero();
+        PlayAnimation(136, 0, 0, 1.0f);
+        stateTime = 0.0f;
+        damageDbc = 0.0f;
+        flag3bb = 1;
+        result = kStateHandled;
+        break;
+    case kStateExit:
+        damageD8c = 0.0f;
+        flag3bb = 0;
+        result = kStateHandled;
+        break;
+    case kStateEvent3:
+        break;
+    }
+    return result;
+}
+
+// Lynette slot 270 (0xa63b20): animation 20, with her attack started shotCount times spread evenly over it. When it ends she
+// goes to slot 244.
+// Not yet matched: only the register for the converted count differs, s3 in the original and s2 here.
+int Lynette::State270(int event) {
+    int result = kStateHandled;
+    switch (event) {
+    case kStateUpdate: {
+        float step = Move_FrameDelta * hitStopSpeed;
+        float time = stateTime + step;
+        uint32_t shots = shotsFired;
+        float next = shotDuration / shotCount * shots;
+        stateTime = time;
+        if (time >= next) {
+            shotsFired = shots + 1;
+            StartAttack(&attackDc8.attack, false, 1, nullptr);
+        }
+        if (AnimationDone() && stateTime > shotDuration) {
+            states.Transition(State244Ptr());
+            result = kStateParentTookOver;
+        } else {
+            result = kStateHandled;
+        }
+        break;
+    }
+    default:
+        result = kStateUnhandled;
+        break;
+    case kStateEnter: {
+        stateTime = 0.0f;
+        shotsFired = 0;
+        motion = onyx::Vector3::Zero();
+        motionTarget = onyx::Vector3::Zero();
+        PlayAnimation(20, 0, 1, 1.0f);
+        float length = onyx::Get<AnimationClip, 0x0f67b22eu>(onyx::Get<AnimationController, kAnimationControllerType>(animationHandle)->Current()->clip)->length;
+        shotDuration = length / SpeedScale();
+    }
+        // Falls through.
+    case kStateExit:
+        states.AssertOwner(this);
+        result = kStateHandled;
+        break;
+    case kStateEvent3:
+        break;
+    }
+    return result;
+}
+
+// SuperFightingRobotHand slot 270 (0xa2d770): waits, then plays animation 38 on itself and on the two objects at +0xd50 and
+// +0xd48, and goes to state 258.
+int SuperFightingRobotHand::State270(int event) {
+    int result = kStateHandled;
+    switch (event) {
+    case kStateUpdate:
+        value7ac += Move_FrameDelta;
+        if (value7ac > valueF20) {
+            PlayAnimation(38, 0, 0, 1.0f);
+            if (handleD50 && handleD50->object) static_cast<BaseCharacter*>(handleD50->object)->PlayAnimation(38, 0, 0, 1.0f);
+            if (handleD48 && handleD48->object) static_cast<BaseCharacter*>(handleD48->object)->PlayAnimation(38, 0, 0, 1.0f);
+            states.Transition(State258Ptr());
+            result = kStateParentTookOver;
+        } else {
+            result = kStateHandled;
+        }
+        break;
+    default:
+        result = kStateUnhandled;
+        break;
+    case kStateEnter:
+        motion = onyx::Vector3::Zero();
+        motionTarget = onyx::Vector3::Zero();
+        value7ac = 0.0f;
+        if (flagFb9) {
+            flagFbb = 0;
+            flagFb9 = 0;
+            owner->CallA2f1e0();
+        }
+        result = kStateHandled;
+        break;
+    case kStateExit:
+        result = kStateHandled;
+        flag3bb = 0;
+        flagFbb = 0;
+        break;
+    case kStateEvent3:
         break;
     }
     return result;

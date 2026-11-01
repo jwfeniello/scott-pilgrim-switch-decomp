@@ -122,10 +122,10 @@ struct Todd : Boss {
     int32_t value11dc;           // +0x11dc
     int32_t value11e0;           // +0x11e0
     int32_t value11e4;           // +0x11e4
-    int32_t value11e8;           // +0x11e8
+    float chargeTimeLimit;       // +0x11e8: state 270 leaves after this long
     int32_t value11ec;           // +0x11ec
     int32_t value11f0;           // +0x11f0
-    int32_t value11f4;           // +0x11f4
+    float chargeDamageLimit;     // +0x11f4: or after this much damage
     int32_t value11f8;           // +0x11f8
     int32_t value11fc;           // +0x11fc
     int32_t value1200;           // +0x1200
@@ -141,15 +141,35 @@ struct Todd : Boss {
 // vtable 0x1896e38, 284 slots
 // An object with its own animation, as GigaGideon's +0xba8 holds.
 struct AnimatedAttachment {
-    char padding_0[0x68];
+    char padding_0[0x60];
+    onyx::ComponentHandle* animatedObject;   // +0x60, SPTG::AnimatedObject
     onyx::ComponentHandle* animationHandle;  // +0x68
 };
+// What an attachment's animated object needs here.
+struct AttachmentVisual : onyx::Component {
+    char padding_8[0x30];
+    uint8_t componentFlags;  // +0x38
+    char padding_39[0x3f];
+    uint8_t visible;         // +0x78
+};
+// Plays an animation on the attachment a handle holds, if it holds one (0xa5ec80).
+void PlayAttachmentAnimation(onyx::ComponentHandle* handle, int animation, bool loop);
 
 struct GigaGideon : Boss {
     void Spawn(const EnemySpawnInfo* info) override;
     void Slot19();
     void SetAnimationSpeed(float speed) override;
     float LoseHealth(float amount) override;
+    // Hides the attachment's animated object if it's showing.
+    __attribute__((always_inline)) void HideAttachment() {
+        if (handleBa8 && handleBa8->object) {
+            AnimatedAttachment* attachment = reinterpret_cast<AnimatedAttachment*>(handleBa8->object);
+            AttachmentVisual* visual = onyx::Find<AttachmentVisual, onyx_types::type_6448f1af>(attachment->animatedObject);
+            if (visual->visible && (visual->componentFlags & 1)) {
+                onyx::Get<AttachmentVisual, onyx_types::type_6448f1af>(attachment->animatedObject)->visible = 0;
+            }
+        }
+    }
     onyx::Vector2 Slot147();
     void SetSolid(bool solid);
     void Slot13();
@@ -205,7 +225,8 @@ struct GigaGideon : Boss {
     float value11e4;             // +0x11e4
     char padding_11e8[0x4];
     float coreHealthStart;       // +0x11ec
-    char padding_11f0[0x10];
+    float chargeTime;            // +0x11f0: how long state 272 charges before state 282
+    char padding_11f4[0xc];
     float value1200;             // +0x1200
     float value1204;             // +0x1204
     char padding_1208[0xb0];
@@ -493,7 +514,10 @@ struct Lynette : TagTeamMember {
     uint8_t flagD85;             // +0xd85: raised when state 280 ends
     char padding_d86[0x2];
     float damageTaken;           // +0xd88: hit values (+0x0) taken in states 274, 278 and 280
-    char padding_d8c[0x3c];
+    char padding_d8c[0x8];
+    uint32_t shotsFired;         // +0xd94: state 270's attacks so far
+    float shotDuration;          // +0xd98: state 270's animation length at this speed
+    char padding_d9c[0x2c];
     AttackSlot attackDc8;        // +0xdc8: requested every update with kind 20
     AttackSlot attack;           // +0xe40: requested every update with kind 11
     AttackSlot attackEb8;        // +0xeb8: requested every update with kind 180
@@ -505,7 +529,7 @@ struct Lynette : TagTeamMember {
     float limitF44;              // +0xf44
     int32_t valueF48;            // +0xf48
     int32_t valueF4c;            // +0xf4c
-    int32_t valueF50;            // +0xf50
+    uint32_t shotCount;          // +0xf50: attacks spread over state 270
     float closeRange;            // +0xf54: kind 180 is refused with a target this close
     float limitF58;              // +0xf58
     char padding_f5c[0x4];
@@ -646,6 +670,7 @@ struct HipsterChick : Boss {
 };
 // vtable 0x188fc40, 284 slots
 struct SuperFightingRobotAI : Boss {
+    void CallA2f1e0();   // 0xa2f1e0
     void Slot4(onyx::Archive& archive, ComponentSlot::Source* source);
     void Slot13();
     void SetSolid(bool solid);
@@ -677,10 +702,12 @@ struct SuperFightingRobotAI : Boss {
     EventSlot eventD88;          // +0xd88
     EventSlot eventDa0;          // +0xda0
     EventSlot eventDb8;          // +0xdb8
-    char padding_dd0[0x30];
+    char padding_dd0[0x24];
+    uint32_t handHits;           // +0xdf4: at +0xe08 a hand's state 264 sends the robot to state 262
+    char padding_df8[0x8];
     int32_t valueE00;            // +0xe00
     int32_t valueE04;            // +0xe04
-    int32_t valueE08;            // +0xe08
+    uint32_t valueE08;           // +0xe08
     int32_t valueE0c;            // +0xe0c
     int32_t valueE10;            // +0xe10
     int32_t valueE14;            // +0xe14
@@ -710,6 +737,7 @@ struct SuperFightingRobotHand : Boss {
     void Slot13();
     bool CheckA30210();                     // 0xa30210
     bool CallA2fae0(bool flag, float speed);   // 0xa2fae0
+    bool CallA2f300(float a, float b, float c);   // 0xa2f300
     void Slot4(onyx::Archive& archive, ComponentSlot::Source* source);
     int State96(int event); State State96Ptr();   // slots 96, 97, override Boss
     int State106(int event); State State106Ptr();   // slots 106, 107, override Boss
@@ -748,7 +776,7 @@ struct SuperFightingRobotHand : Boss {
     int32_t valueF14;            // +0xf14
     int32_t valueF18;            // +0xf18
     int32_t valueF1c;            // +0xf1c
-    int32_t valueF20;            // +0xf20
+    float valueF20;              // +0xf20: how long state 270 waits
     int32_t valueF24;            // +0xf24
     int32_t valueF28;            // +0xf28
     int32_t valueF2c;            // +0xf2c
@@ -771,7 +799,7 @@ struct SuperFightingRobotHand : Boss {
     char padding_fa4[0xc];
     SuperFightingRobotAI* owner; // +0xfb0: set by the robot
     uint8_t flagFb8;             // +0xfb8
-    char padding_fb9[0x1];
+    uint8_t flagFb9;             // +0xfb9: makes state 270 tell the robot through 0xa2f1e0
     uint8_t halfHealthDone;      // +0xfba: the robot has been told it's at half health
     uint8_t flagFbb;             // +0xfbb
 };
