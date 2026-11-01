@@ -10,6 +10,8 @@ typedef unsigned long long _QWORD; typedef unsigned int _DWORD; typedef unsigned
 typedef __uint128_t _OWORD;
 typedef char __guard; typedef long time_t; typedef int wchar_t_; typedef unsigned long pthread_t; typedef unsigned long size_t; typedef long ssize_t; typedef struct { char data[48]; } pthread_mutex_t; typedef struct { char data[48]; } pthread_cond_t; typedef void FILE;
 typedef union { unsigned long long n128_u64[2]; float n128_f32[4]; double n128_f64[2]; } __n128;
+typedef char type_info; typedef struct { int v; } pthread_mutexattr_t; typedef struct { unsigned s_addr; } in_addr; typedef struct { unsigned short sa_family; char sa_data[14]; } sockaddr;
+struct timezone { int tz_minuteswest; int tz_dsttime; };
 typedef struct RecoveredSdkText { char *data; } RecoveredSdkText;
 typedef struct RecoveredSdkResult { short code; const char *unknown08; unsigned int unknown10; RecoveredSdkText domain; unsigned char error; } RecoveredSdkResult;
 #define __PAIR64__(h, l) (((unsigned long long)(unsigned int)(h) << 32) | (unsigned int)(l))
@@ -29,6 +31,18 @@ typedef struct RecoveredSdkResult { short code; const char *unknown08; unsigned 
 #define SLODWORD(x) (*((int*)&(x)))
 #define SHIDWORD(x) (*((int*)&(x)+1))
 #define SLOBYTE(x) (*((signed char*)&(x)))
+#define SBYTE1(x) (*((signed char*)&(x)+1))
+#define BYTE4(x) (*((_BYTE*)&(x)+4))
+#define BYTE5(x) (*((_BYTE*)&(x)+5))
+#define BYTE6(x) (*((_BYTE*)&(x)+6))
+#define BYTE7(x) (*((_BYTE*)&(x)+7))
+#define WORD1(x) (*((_WORD*)&(x)+1))
+#define WORD2(x) (*((_WORD*)&(x)+2))
+#define WORD3(x) (*((_WORD*)&(x)+3))
+#define SWORD1(x) (*((short*)&(x)+1))
+#define SLOWORD(x) (*((short*)&(x)))
+#define SHIWORD(x) (*((short*)&(x)+1))
+#define NAN __builtin_nanf("")
 #define __udf(x) __builtin_unreachable()
 #define atomic_load(p) __atomic_load_n(p, 2)
 extern "C" {

@@ -10,6 +10,8 @@ typedef unsigned long long _QWORD; typedef unsigned int _DWORD; typedef unsigned
 typedef __uint128_t _OWORD;
 typedef char __guard; typedef long time_t; typedef int wchar_t_; typedef unsigned long pthread_t; typedef unsigned long size_t; typedef long ssize_t; typedef struct { char data[48]; } pthread_mutex_t; typedef struct { char data[48]; } pthread_cond_t; typedef void FILE;
 typedef union { unsigned long long n128_u64[2]; float n128_f32[4]; double n128_f64[2]; } __n128;
+typedef char type_info; typedef struct { int v; } pthread_mutexattr_t; typedef struct { unsigned s_addr; } in_addr; typedef struct { unsigned short sa_family; char sa_data[14]; } sockaddr;
+struct timezone { int tz_minuteswest; int tz_dsttime; };
 typedef struct RecoveredSdkText { char *data; } RecoveredSdkText;
 typedef struct RecoveredSdkResult { short code; const char *unknown08; unsigned int unknown10; RecoveredSdkText domain; unsigned char error; } RecoveredSdkResult;
 #define __PAIR64__(h, l) (((unsigned long long)(unsigned int)(h) << 32) | (unsigned int)(l))
@@ -29,6 +31,18 @@ typedef struct RecoveredSdkResult { short code; const char *unknown08; unsigned 
 #define SLODWORD(x) (*((int*)&(x)))
 #define SHIDWORD(x) (*((int*)&(x)+1))
 #define SLOBYTE(x) (*((signed char*)&(x)))
+#define SBYTE1(x) (*((signed char*)&(x)+1))
+#define BYTE4(x) (*((_BYTE*)&(x)+4))
+#define BYTE5(x) (*((_BYTE*)&(x)+5))
+#define BYTE6(x) (*((_BYTE*)&(x)+6))
+#define BYTE7(x) (*((_BYTE*)&(x)+7))
+#define WORD1(x) (*((_WORD*)&(x)+1))
+#define WORD2(x) (*((_WORD*)&(x)+2))
+#define WORD3(x) (*((_WORD*)&(x)+3))
+#define SWORD1(x) (*((short*)&(x)+1))
+#define SLOWORD(x) (*((short*)&(x)))
+#define SHIWORD(x) (*((short*)&(x)+1))
+#define NAN __builtin_nanf("")
 #define __udf(x) __builtin_unreachable()
 #define atomic_load(p) __atomic_load_n(p, 2)
 struct Big { char data[4096]; };
@@ -96,6 +110,9 @@ extern char goff_18F8740[];
 extern char goff_18FA228[];
 extern char goff_18FA680[];
 extern char goff_18FA9D0[];
+extern char goff_18FB8A0[];
+extern char goff_18FB8A8[];
+extern char goff_18FB8B0[];
 extern char goff_18FB8B8[];
 __attribute__((visibility("hidden"))) __int64 nullsub_1152(...);
 extern __attribute__((visibility("hidden"))) __int64 qword_1907E28;
@@ -256,6 +273,7 @@ __attribute__((visibility("hidden"))) __int64 sub_5E41C0(...);
 __attribute__((visibility("hidden"))) __int64 sub_5E5110(...);
 __attribute__((visibility("hidden"))) __int64 sub_5E9E90(...);
 __attribute__((visibility("hidden"))) __int64 sub_5FA30(...);
+__attribute__((visibility("hidden"))) __int64 sub_620DC0(...);
 __attribute__((visibility("hidden"))) __int64 sub_628C10(...);
 __attribute__((visibility("hidden"))) __int64 sub_697BF0(...);
 __attribute__((visibility("hidden"))) __int64 sub_6D140(...);
@@ -5023,6 +5041,119 @@ Big sub_5E9A60(char *a1)
   if ( result != 0 )
     result = (char *)((*(__int64 (__fastcall **)(__int64))(*(_QWORD *)result + 32LL))((long long)(result)));
   *a2 = 1;
+  return ret_;
+  return ret_;
+}
+// N5storm5punch20UpnpThreadCommandAddE, virtual slot 4
+Big sub_5F8150(__int64 a1, __int64 *a2)
+{
+  Big ret_;
+  __int64 *a3 = (__int64 *)&ret_;
+
+  __int64 v5; // x23
+  __int64 v6; // x24
+  __int64 v8; // x0
+  __int64 v9; // x8
+  __int64 v10; // x25
+  __int64 v11; // x21
+  __int64 result; // x0
+  __int64 v13; // [xsp+8h] [xbp-38h] BYREF
+
+  v5 = a1 + 704;
+  v6 = a1 + 20;
+  v8 = sub_56C9F0(760, 8, 1092624387, 0LL, &unk_1326E41, 0);
+  v9 = *a2;
+  LODWORD(a2) = *(_DWORD *)(a1 + 688);
+  v10 = *(_QWORD *)(a1 + 696);
+  v11 = v8;
+  v13 = v9;
+  sub_5859F0(v8, v6, &v13);
+  *(_QWORD *)v11 = (_QWORD)(((__int64 *)((__int64*)goff_18FB8A0) + 2));
+  sub_620DC0(v11 + 48, v5);
+  *(_DWORD *)(v11 + 296) = (_DWORD)(__int64)a2;
+  *(_QWORD *)(v11 + 304) = v10;
+  std__string__basic_string((char *)(v11 + 312), (const char *)(a1 + 240));
+  std__string__basic_string((char *)(v11 + 336), (const char *)(a1 + 264));
+  std__string__basic_string((char *)(v11 + 360), (const char *)(a1 + 288));
+  std__string__basic_string((char *)(v11 + 384), (const char *)(a1 + 312));
+  sub_578210(v11 + 408, a1 + 336);
+  result = sub_578210(v11 + 584, a1 + 512);
+  *a3 = v11;
+  return ret_;
+  return ret_;
+}
+// N5storm5punch23UpnpThreadCommandDeleteE, virtual slot 4
+Big sub_5F8480(__int64 a1, __int64 *a2)
+{
+  Big ret_;
+  __int64 *a3 = (__int64 *)&ret_;
+
+  __int64 v5; // x22
+  __int64 v7; // x0
+  __int64 v8; // x8
+  __int64 v9; // x24
+  __int64 v10; // x23
+  __int64 *v11; // x8
+  __int64 result; // x0
+  __int64 v13; // [xsp+8h] [xbp-38h] BYREF
+
+  v5 = a1 + 20;
+  v7 = sub_56C9F0(512, 8, 1092624387, 0LL, &unk_1326E41, 0);
+  v8 = *a2;
+  LODWORD(a2) = *(_DWORD *)(a1 + 488);
+  v9 = *(_QWORD *)(a1 + 496);
+  v10 = v7;
+  v13 = v8;
+  sub_5859F0(v7, v5, &v13);
+  v11 = ((__int64*)goff_18FB8A8);
+  *(_QWORD *)v10 = (_QWORD)(v11 + 2);
+  *(_DWORD *)(v10 + 48) = (_DWORD)(__int64)a2;
+  *(_QWORD *)(v10 + 56) = v9;
+  std__string__basic_string((char *)(v10 + 64), (const char *)(a1 + 40));
+  std__string__basic_string((char *)(v10 + 88), (const char *)(a1 + 64));
+  std__string__basic_string((char *)(v10 + 112), (const char *)(a1 + 88));
+  std__string__basic_string((char *)(v10 + 136), (const char *)(a1 + 112));
+  sub_578210(v10 + 160, a1 + 136);
+  result = sub_578210(v10 + 336, a1 + 312);
+  *a3 = v10;
+  return ret_;
+  return ret_;
+}
+// N5storm5punch28UpnpThreadCommandGetSpecificE, virtual slot 4
+Big sub_5F88E0(__int64 a1, __int64 *a2)
+{
+  Big ret_;
+  __int64 *a3 = (__int64 *)&ret_;
+
+  __int64 v5; // x23
+  __int64 v6; // x24
+  __int64 v8; // x0
+  __int64 v9; // x8
+  __int64 v10; // x25
+  __int64 v11; // x21
+  __int64 result; // x0
+  __int64 v13; // [xsp+8h] [xbp-38h] BYREF
+
+  v5 = a1 + 32;
+  v6 = a1 + 20;
+  v8 = sub_56C9F0(760, 8, 1092624387, 0LL, &unk_1326E41, 0);
+  v9 = *a2;
+  LODWORD(a2) = *(_DWORD *)(a1 + 728);
+  v10 = *(_QWORD *)(a1 + 736);
+  v11 = v8;
+  v13 = v9;
+  sub_5859F0(v8, v6, &v13);
+  *(_QWORD *)v11 = (_QWORD)(((__int64 *)((__int64*)goff_18FB8B0) + 2));
+  sub_620DC0(v11 + 48, v5);
+  *(_DWORD *)(v11 + 296) = (_DWORD)(__int64)a2;
+  *(_QWORD *)(v11 + 304) = v10;
+  std__string__basic_string((char *)(v11 + 312), (const char *)(a1 + 280));
+  std__string__basic_string((char *)(v11 + 336), (const char *)(a1 + 304));
+  std__string__basic_string((char *)(v11 + 360), (const char *)(a1 + 328));
+  std__string__basic_string((char *)(v11 + 384), (const char *)(a1 + 352));
+  sub_578210(v11 + 408, a1 + 376);
+  result = sub_578210(v11 + 584, a1 + 552);
+  *a3 = v11;
   return ret_;
   return ret_;
 }

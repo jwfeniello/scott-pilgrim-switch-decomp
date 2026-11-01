@@ -43,10 +43,22 @@ Treat these files as a checked starting point. Moving a function out of here and
 
 Files are grouped by compiler flags. A function is never placed in the same file as something it calls, because the compiler could then inline the call or use what it knows about the callee, and the original was not built that way. For the same reason, two functions that disagree about a declaration go in different files.
 
-Most files are C. Three forms need C++:
+Most files are C. Four forms need C++:
 
 - **Functions whose calls need prototypes.** A call with an empty parameter list reaches LLVM through a cast, and that can change the order of instructions. C++ files declare these callees as taking `(...)`, which keeps the call direct. It is no more of a real prototype than the empty list.
 - **Functions that return through `x8`.** A large result comes back through a hidden pointer that C cannot name. These are written as returning a stand-in struct `Big`, with the `x8` argument as the address of the named result, which C++ builds in place. `Big` and its size are not recovered. A call to such a function constructs its result where the `x8` argument points.
 - **Functions whose only landing pad is the terminate pad.** These are `noexcept`. Casts that C leaves implicit are added where C++ asks for them.
 
-Functions with other landing pads cannot be written this way, because the decompiler's text does not show their cleanup. They are the ones most other generated sources in this repository handle.
+- **Functions with cleanup pads.** The decompiler's text shows only the normal path. The rest comes from the original's own code, as described below.
+
+## Cleanup pads
+
+When a call throws, the code that runs is a landing pad at the end of the function. The decompiler's text leaves it out, so this code is taken from the original:
+
+- The original's call-site table says which calls land on which pad.
+- The pad's instructions are lifted one by one into the destructor of a guard object, as statements with temporaries called `t1_` and gotos for its branches.
+- The guard goes in a block around the calls the table names, with a flag that is set at the end of the block. Its destructor only does anything during unwinding, and the compiler removes the flag.
+- A call whose exception goes straight to the terminate pad is wrapped in a `noexcept` lambda.
+- A pad with nothing in it but the resume is written as a guard that stores to a local. The compiler keeps the pad and removes the store.
+
+So in these functions the normal path is the decompiler's reading, and the pad code is machine code spelled as C. It is not what the source said. The source had destructors of locals and members, and the guards stand in for those. A match shows the pad's code and its coverage are right. It says nothing about which objects they belonged to.

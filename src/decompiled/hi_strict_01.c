@@ -10,6 +10,8 @@ typedef unsigned long long _QWORD; typedef unsigned int _DWORD; typedef unsigned
 typedef __uint128_t _OWORD;
 typedef char __guard; typedef long time_t; typedef int wchar_t_; typedef unsigned long pthread_t; typedef unsigned long size_t; typedef long ssize_t; typedef struct { char data[48]; } pthread_mutex_t; typedef struct { char data[48]; } pthread_cond_t; typedef void FILE;
 typedef union { unsigned long long n128_u64[2]; float n128_f32[4]; double n128_f64[2]; } __n128;
+typedef char type_info; typedef struct { int v; } pthread_mutexattr_t; typedef struct { unsigned s_addr; } in_addr; typedef struct { unsigned short sa_family; char sa_data[14]; } sockaddr;
+struct timezone { int tz_minuteswest; int tz_dsttime; };
 typedef struct RecoveredSdkText { char *data; } RecoveredSdkText;
 typedef struct RecoveredSdkResult { short code; const char *unknown08; unsigned int unknown10; RecoveredSdkText domain; unsigned char error; } RecoveredSdkResult;
 #define __PAIR64__(h, l) (((unsigned long long)(unsigned int)(h) << 32) | (unsigned int)(l))
@@ -33,6 +35,18 @@ typedef struct RecoveredSdkResult { short code; const char *unknown08; unsigned 
 #define SLODWORD(x) (*((int*)&(x)))
 #define SHIDWORD(x) (*((int*)&(x)+1))
 #define SLOBYTE(x) (*((signed char*)&(x)))
+#define SBYTE1(x) (*((signed char*)&(x)+1))
+#define BYTE4(x) (*((_BYTE*)&(x)+4))
+#define BYTE5(x) (*((_BYTE*)&(x)+5))
+#define BYTE6(x) (*((_BYTE*)&(x)+6))
+#define BYTE7(x) (*((_BYTE*)&(x)+7))
+#define WORD1(x) (*((_WORD*)&(x)+1))
+#define WORD2(x) (*((_WORD*)&(x)+2))
+#define WORD3(x) (*((_WORD*)&(x)+3))
+#define SWORD1(x) (*((short*)&(x)+1))
+#define SLOWORD(x) (*((short*)&(x)))
+#define SHIWORD(x) (*((short*)&(x)+1))
+#define NAN __builtin_nanf("")
 #define __udf(x) __builtin_unreachable()
 #define atomic_load(p) __atomic_load_n(p, 2)
 void* memcpy(void*, const void*, size_t); void* memset(void*, int, size_t); void* memmove(void*, const void*, size_t); int memcmp(const void*, const void*, size_t); size_t strlen(const char*); int strcmp(const char*, const char*); char* strcpy(char*, const char*); char* strncpy(char*, const char*, size_t); int strncmp(const char*, const char*, size_t); void free(void*); void* malloc(size_t); float fabsf(float); float sqrtf(float); float floorf(float); float ceilf(float);
@@ -233,6 +247,51 @@ __int64 __fastcall sub_7E4DF0(__int64 a1)
   if ( v4 != 0 && *(_QWORD *)(v4 + 8) != 0 )
     v6 = sub_BFBCE0((void *)(v4 + 24));
   return sub_778670(v3, &v6, *(unsigned int *)(a1 + 24), 0);
+}
+
+// N4Onyx8Gameplay8Circuits10Properties7Details40StaticMemberVariablePropertyRegistrationINS1_31Vector3ConstantPublisherCircuitEN4Gear7Vector3IfEEEE, virtual slot 7
+__int64 __fastcall sub_CC55D0(__int64 result, char *a2, _DWORD *a3)
+{
+  _DWORD *v3; // x8
+
+  v3 = (_DWORD *)(a2 + *(unsigned int *)(result + 28));
+  *v3 = *a3;
+  v3[1] = a3[1];
+  v3[2] = a3[2];
+  return result;
+}
+
+// N4Onyx8Gameplay8Circuits10Properties7Details40StaticMemberVariablePropertyRegistrationINS1_31Vector3ConstantPublisherCircuitEN4Gear7Vector3IfEEEE, virtual slot 8
+__int64 __fastcall sub_CC5600(__int64 result, char *a2, _DWORD *a3)
+{
+  _DWORD *v3; // x8
+
+  v3 = (_DWORD *)(a2 + *(unsigned int *)(result + 28));
+  *a3 = *v3;
+  a3[1] = v3[1];
+  a3[2] = v3[2];
+  return result;
+}
+
+// N4Onyx8Gameplay8Circuits10Properties7Details40StaticMemberVariablePropertyRegistrationINS1_29ColorConstantPublisherCircuitENS_8Graphics5ColorEEE, virtual slot 8
+__int64 __fastcall sub_CC5680(char *result, char *a2, _DWORD *a3)
+{
+  *a3 = *(_DWORD *)(a2 + *(unsigned int *)(result + 28));
+  return result;
+}
+
+// N4Onyx8Gameplay8Circuits10Properties7Details40StaticMemberVariablePropertyRegistrationINS1_27F32ConstantPublisherCircuitEfEE, virtual slot 7
+__int64 __fastcall sub_CC56D0(char *result, char *a2, _DWORD *a3)
+{
+  *(_DWORD *)(a2 + *(unsigned int *)(result + 28)) = *a3;
+  return result;
+}
+
+// N4Onyx8Gameplay8Circuits10Properties7Details40StaticMemberVariablePropertyRegistrationINS1_27F32ConstantPublisherCircuitEfEE, virtual slot 8
+__int64 __fastcall sub_CC56E0(char *result, char *a2, _DWORD *a3)
+{
+  *a3 = *(_DWORD *)(a2 + *(unsigned int *)(result + 28));
+  return result;
 }
 
 // N4Onyx8Gameplay8Circuits10Properties7Details40StaticMemberVariablePropertyRegistrationINS1_27U32ConstantPublisherCircuitEjEE, virtual slot 7
@@ -1471,6 +1530,20 @@ __int64 __fastcall sub_D37A20(__int64 a1, int a2)
     return nn__os__TimedWaitEvent(v2, 1000000LL * a2);
   nn__os__WaitEvent(v2);
   return 1;
+}
+
+// N4Dare7Private18DareAsyncSchedulerE, virtual slot 8
+__int64 __fastcall sub_D3C280(__int64 result, unsigned int a2)
+{
+  unsigned int *v2; // x8
+  unsigned int v3; // w9
+  unsigned int v4; // w10
+
+  v2 = (unsigned int *)(result + 103440);
+LABEL_3:
+  v3 = *v2;
+  { __typeof__(*(v2)) e_ = (v3); if ( !__atomic_compare_exchange_n(v2, &e_, a2, 0, 5, 5) ) goto LABEL_3; v4 = e_; }
+  return result;
 }
 
 // N4Dare7Private18DareAsyncSchedulerE, virtual slot 9
@@ -2802,6 +2875,118 @@ float __fastcall sub_D87B90(unsigned int *a1)
     return (float)a1[16] / (float)a1[7];
   else
     return -1.0;
+}
+
+__int64 __fastcall sub_D87DC0(__int64 result)
+{
+  __int64 v1; // x20
+  _QWORD *v2; // x19
+  __int64 v3; // x20
+  __int64 v4; // x20
+  __int64 v5; // x20
+  __int64 v6; // x20
+  __int64 v7; // x20
+  __int64 v8; // x20
+  __int64 v9; // x20
+
+  v1 = *(_QWORD *)(result + 128);
+  v2 = (_QWORD *)result;
+  if ( v1 != 0 )
+  {
+    result = (*(__int64 (__fastcall **)(_QWORD))(*(_QWORD *)v1 + 160LL))(*(_QWORD *)(result + 128));
+    if ( dword_191FB00 != 0 )
+    {
+      result = qword_191FAF8;
+      if ( qword_191FAF8 != 0 )
+        result = (*(__int64 (__fastcall **)(__int64, __int64))(*(_QWORD *)qword_191FAF8 + 48LL))(qword_191FAF8, v1);
+    }
+    v2[16] = 0;
+  }
+  v3 = v2[13];
+  if ( v3 != 0 )
+  {
+    result = (*(__int64 (__fastcall **)(_QWORD))(*(_QWORD *)v3 + 160LL))(v2[13]);
+    if ( dword_191FB00 != 0 )
+    {
+      result = qword_191FAF8;
+      if ( qword_191FAF8 != 0 )
+        result = (*(__int64 (__fastcall **)(__int64, __int64))(*(_QWORD *)qword_191FAF8 + 48LL))(qword_191FAF8, v3);
+    }
+    v2[13] = 0;
+  }
+  v4 = v2[14];
+  if ( v4 != 0 )
+  {
+    result = (*(__int64 (__fastcall **)(_QWORD))(*(_QWORD *)v4 + 160LL))(v2[14]);
+    if ( dword_191FB00 != 0 )
+    {
+      result = qword_191FAF8;
+      if ( qword_191FAF8 != 0 )
+        result = (*(__int64 (__fastcall **)(__int64, __int64))(*(_QWORD *)qword_191FAF8 + 48LL))(qword_191FAF8, v4);
+    }
+    v2[14] = 0;
+  }
+  v5 = v2[15];
+  if ( v5 != 0 )
+  {
+    result = (*(__int64 (__fastcall **)(_QWORD))(*(_QWORD *)v5 + 160LL))(v2[15]);
+    if ( dword_191FB00 != 0 )
+    {
+      result = qword_191FAF8;
+      if ( qword_191FAF8 != 0 )
+        result = (*(__int64 (__fastcall **)(__int64, __int64))(*(_QWORD *)qword_191FAF8 + 48LL))(qword_191FAF8, v5);
+    }
+    v2[15] = 0;
+  }
+  v6 = v2[9];
+  if ( v6 != 0 )
+  {
+    result = (*(__int64 (__fastcall **)(_QWORD))(*(_QWORD *)v6 + 160LL))(v2[9]);
+    if ( dword_191FB00 != 0 )
+    {
+      result = qword_191FAF8;
+      if ( qword_191FAF8 != 0 )
+        result = (*(__int64 (__fastcall **)(__int64, __int64))(*(_QWORD *)qword_191FAF8 + 48LL))(qword_191FAF8, v6);
+    }
+    v2[9] = 0;
+  }
+  v7 = v2[10];
+  if ( v7 != 0 )
+  {
+    result = (*(__int64 (__fastcall **)(_QWORD))(*(_QWORD *)v7 + 160LL))(v2[10]);
+    if ( dword_191FB00 != 0 )
+    {
+      result = qword_191FAF8;
+      if ( qword_191FAF8 != 0 )
+        result = (*(__int64 (__fastcall **)(__int64, __int64))(*(_QWORD *)qword_191FAF8 + 48LL))(qword_191FAF8, v7);
+    }
+    v2[10] = 0;
+  }
+  v8 = v2[11];
+  if ( v8 != 0 )
+  {
+    result = (*(__int64 (__fastcall **)(_QWORD))(*(_QWORD *)v8 + 160LL))(v2[11]);
+    if ( dword_191FB00 != 0 )
+    {
+      result = qword_191FAF8;
+      if ( qword_191FAF8 != 0 )
+        result = (*(__int64 (__fastcall **)(__int64, __int64))(*(_QWORD *)qword_191FAF8 + 48LL))(qword_191FAF8, v8);
+    }
+    v2[11] = 0;
+  }
+  v9 = v2[12];
+  if ( v9 != 0 )
+  {
+    result = (*(__int64 (__fastcall **)(_QWORD))(*(_QWORD *)v9 + 160LL))(v2[12]);
+    if ( dword_191FB00 != 0 )
+    {
+      result = qword_191FAF8;
+      if ( qword_191FAF8 != 0 )
+        result = (*(__int64 (__fastcall **)(__int64, __int64))(*(_QWORD *)qword_191FAF8 + 48LL))(qword_191FAF8, v9);
+    }
+    v2[12] = 0;
+  }
+  return result;
 }
 
 // N4Dare7Private28ManagerVoiceForVirtualPlayerINS0_17ManagerThemeVoiceEEE, virtual slot 10

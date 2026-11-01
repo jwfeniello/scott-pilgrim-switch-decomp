@@ -1,9 +1,9 @@
 {
   "version": 1,
-  "generated_at": "2026-11-01T12:56:16.937233+00:00",
+  "generated_at": "2026-11-01T14:28:22.121143+00:00",
   "target_elf_sha256": "ea95638e6d6aaa0dc6cddd552a9366799aa1ec3bc07ee201f23f6c151103f5b8",
   "input_sha256": {
-    "config/builds.json": "aee50e3df8e1b912de5944adb68144251cdd84a895e41d489fbaee6003e70c4a",
+    "config/builds.json": "98d91a42aaace03a3f2cadea563409a6a905282a03914cd5930442ebc2530c8b",
     "config/functions.tsv": "399e91468a04e0459194c10d68d2210d1157cedefeb19c7851886ca7632fcb18",
     "config/non_fde_functions.tsv": "6a45f5e185454fa0472af00b2cdc9d040d73ca133d1106217e1fbbe3b32a8175",
     "config/target.json": "23cc6a5227206a953e7668acf5e9ae5c02a25c23b7e7967f0450a814b888241a",
@@ -1077,27 +1077,29 @@
     "src/dare_list_destructor_omit_no_pic_instances.inc": "347d2adc67a2cc566d3c209503a5f9ade5523521215cf8f7d75accf5f94c7fec",
     "src/dare_pool_destructor_omit_no_pic_instances.inc": "de979427ef67076a37a24835dbeeb1a0e673dd71343e748fa637099d067444f9",
     "src/dare_tree_destroy_omit_no_pic_instances.inc": "c7329ddd89f600ea32b224cb3a4814b7356f6a774ad64bcb4974546315df88e8",
-    "src/decompiled/hi_nostrict_00.c": "641dece5d675fc50dc217a800d38ced891e2b2ec5aa65b8d2f7693f2d717e74e",
-    "src/decompiled/hi_strict_00.c": "ca677752587a81a3b088cc33745241c81d2cd301e9e04e0b9a66af65c8c44665",
-    "src/decompiled/hi_strict_01.c": "238ab5702cd402b9b7c8bdd582e8a295dd4a66b46a756fbdcb345f51d17ebde6",
-    "src/decompiled/hi_strict_02.c": "ec217eaaa84d47705564f27fe66d08d6eaea8f88c128128537fc098628ac7b93",
-    "src/decompiled/hi_strict_cxx_00.cpp": "87d4c6a77554b3751fa26df53ad837cbfbb4a9abe0db201ab78aec387767a32a",
-    "src/decompiled/hi_strict_cxx_01.cpp": "5df252d4f35957913e24b749da41de34c31fa114247627d11f1d32e116c54fbc",
-    "src/decompiled/hi_strict_ret_00.cpp": "415f84eb8e238fd181068834666d46d5f1303f3b54ee378f544a473b86156c14",
-    "src/decompiled/lo_noslp_00.c": "72aea776f57cd7dd3072ad4ae7d0dbdd7846db43b8fcaa97169fbf76b9161f28",
-    "src/decompiled/lo_noslp_01.c": "156319c31c561b14c2c69a3d9d2752f7e4066d5bc5c0e1febe8d15ac008d4e05",
-    "src/decompiled/lo_noslp_ret_00.cpp": "e8109ac289b632aafbba780f74b7e0daad021637a83c13d220988978cba8c9fb",
-    "src/decompiled/lo_o2_00.c": "bc1c55523842ffd62c720dbce769f597c23a258fc2d05b1106a04efbf62a9574",
-    "src/decompiled/lo_o2_01.c": "3289cc297ca9e33e954864b11ea52e33cee2524ba2b90214449c4b550c30ce32",
-    "src/decompiled/lo_o2_02.c": "beab3bc9fa724e03c2e8265aca3def8a9ee132ea4d5d17dca0dbe0eaef8bfbab",
-    "src/decompiled/lo_o2_03.c": "0c6c323d73c966dd6127769346aa83ddd3b50d3ee486f9b44bf80713449a059e",
-    "src/decompiled/lo_o2_04.c": "f27b58b8408c0c2bc0cdb96d63da4b531cfe59a6b1644a88fe68002674ec9b39",
-    "src/decompiled/lo_o2_ret_00.cpp": "a88c8255870a312d478830e517474194c343b065f6c947f7ffc3352fe84b0719",
-    "src/decompiled/lo_o2_ret_01.cpp": "b1529d1da92957171e54947aef5503080cd3ddfebc42a5e06553fe6021038fcc",
-    "src/decompiled/lo_o2n_00.c": "1e1f7830f79f983d0ec600681b771a64441609231a89b1fd6db8fbf871045f74",
-    "src/decompiled/lo_o2n_cxx_00.cpp": "cc5e9154ca66a4ca155212d4e02b4e1e894e4acb8a8ea4e5557f9610d2da38df",
-    "src/decompiled/lo_o3_00.c": "f1fc6788d68e1f37fd712cd2e37a14e4a5d4091ac1a0c4c42224f10d47050d87",
-    "src/decompiled/lo_o3_ret_00.cpp": "fabf759d1d2dfe273e31cf4caf23f2b37de3f6c093af554c7ec0a3e17833557d",
+    "src/decompiled/hi_nostrict_00.c": "02cb5e74511a057b2b6cf591757c6f012089f6219245bf32caf44ecbf6a7f5bf",
+    "src/decompiled/hi_nostrict_cxx_00.cpp": "4c5d15d10829cec12e3b78fcf60e69130dd2ddf35e987c4e10c28584a48e5f59",
+    "src/decompiled/hi_strict_00.c": "5750fd35e9babad86187332becf9a1d7a5ed7f6ec9cc2d4a176f9011556d8f7f",
+    "src/decompiled/hi_strict_01.c": "80f51e3d9e3312ed5e42a406ec13749cb8db0595a4c06adca6aa03d6885937fd",
+    "src/decompiled/hi_strict_02.c": "2d4f0013981c41ed8f158dcf2a84b3bd0ea93c1052a345245f3bdcc87da503a9",
+    "src/decompiled/hi_strict_cxx_00.cpp": "d0bd0ec4cf2210ae2a5edcdf552148b09270682c68ad3bfbbdc74749f0253f46",
+    "src/decompiled/hi_strict_cxx_01.cpp": "70f2ddcc73d4a8afb39ab9942f36cec8ebb92ddbdbe047ee0abe6a34b6380714",
+    "src/decompiled/hi_strict_pad_00.cpp": "4a1077e8afbc2bc61c735e45b3ee4742d5fb62b7729a0f899dce4d8f5ff0d447",
+    "src/decompiled/hi_strict_ret_00.cpp": "cc63fea283a559857e9724a5caf8bf20dbfa06d4be964864ee2f3b156e5fab5f",
+    "src/decompiled/lo_noslp_00.c": "7e4f669192cba4e2d301be857db6829bd793b872a881d18598c38353c70683d6",
+    "src/decompiled/lo_noslp_01.c": "1262db5f706b7d38e7b355634aafbea5ad520e1e25a5035c70c1da58133550cb",
+    "src/decompiled/lo_noslp_ret_00.cpp": "5e02a24357965649aa4084aa4236a5d07b10888084bad669c055915d6c7539d0",
+    "src/decompiled/lo_o2_00.c": "38cb62c6900e6755bce822a7fe1120ce19fc788b01f1178687785403f06f14d2",
+    "src/decompiled/lo_o2_01.c": "64fc3cfbcc1da7a987c988f6c6a234ccef4877c08e782ada5214babb224fcab4",
+    "src/decompiled/lo_o2_02.c": "f662fa581aca72e7455bbfddc4b02e46573cecb7aff8498f243ac9a646f391ed",
+    "src/decompiled/lo_o2_03.c": "9d7fbc588180c5e8d6eaecd6b84aef222ea6b5e88cb09f799cdfd04e530f518c",
+    "src/decompiled/lo_o2_04.c": "a9944d022a576f02f96c8aa2edfdf0d04d7b39f616f3f184c5dc93f97eb5ca78",
+    "src/decompiled/lo_o2_ret_00.cpp": "d873f08c507ac63b405d64d9a9e8e2e29f8abf8d537acc9d67f167fbabfb0cdc",
+    "src/decompiled/lo_o2_ret_01.cpp": "42adaeaea113379bd4d416c4a2fe7ec312e7adf7688f789e359dcc64c4613401",
+    "src/decompiled/lo_o2n_00.c": "6ef0650ed71478ee2679572dc66f0b48ba7c63e8bb7d4ce1416a5b7fa36aefa5",
+    "src/decompiled/lo_o2n_cxx_00.cpp": "dbde6c1dfc211d2a4ee12ad2d4d76664f8fb785f0b54a89994a102eaa0d3982d",
+    "src/decompiled/lo_o3_00.c": "c824578906e86c44985460c59110b2191e6f7aecabdabb420b7bb16185fd3b10",
+    "src/decompiled/lo_o3_ret_00.cpp": "706d8cff2500dbb1a1eaf39897a5c4a0b952faac5d83e108bf3f15975d90d768",
     "src/delete_with_frame_instances.inc": "efa06ea106de0755487caa72ae0e7eef03d07775bf127698c8bcedf76cd5ce9b",
     "src/deleting_wrapper_instances.inc": "4a3fd0c2b018553c9be4d44f3758054c57d3b0b915ae556fd11f388fc60dbff1",
     "src/descriptor_equals_keep_pic_instances.inc": "bc57f3d1160ed310dc0b98e3ee89799f53eb9c48892046b87ca968aff977674a",
@@ -1961,7 +1963,7 @@
     "src/typed_property_access_wide_instances.inc": "6d1c855d16f02f5787cb8ef642795f0ba54798cd36f4a55898ec2aa284f10306",
     "src/typed_property_access_wider_instances.inc": "8700e28ed0e5b0bb42b798972ee80f42801e6b67227a0f8ed9b9c2c8b7bffc83",
     "src/virtual_result_adapter_instances.inc": "4506d808ac6d0d0dac74021bc5813733b27be23ba0d0672d2e1e24c5093ca01c",
-    "tools/elf.py": "52d5b6fd83c1d4d4fe31f321ff6e71c2dc975cba345de196e63e61a78f026309",
+    "tools/elf.py": "e490559f01eeae9f629f8de1bd6f86f7c9709c47faf218ed165f03b7339911f4",
     "tools/project.py": "c3752d7130830b00f50c120ea1a8520a2d45b60e5655c92977bece0fbed11b85",
     "tools/verify.py": "3b7bad60a7e8b28cde404d1a83bb28f772d69ec0d4a4d72697d39d82b47eb8dc",
     "vendor/curl-7.64.1-sdk/COPYING": "8c8824f50e73a021f5dde1fccbf69685939247399a33a32abab1fa448c9ddabb",
@@ -3989,17 +3991,17 @@
     "vendor/zlib-1.2.11/zutil.h": "9a63f6690fac1620aa3cecee5752af618806da438a256b4a047fbcd289cac159"
   },
   "compiler_versions": {
-    "7.0.1": "clang version 7.0.1 (tags/RELEASE_701/final)",
     "8.0.1": "clang version 8.0.1 (tags/RELEASE_801/final)",
+    "7.0.1": "clang version 7.0.1 (tags/RELEASE_701/final)",
     "lld": "LLD 8.0.1 (compatible with GNU linkers)"
   },
   "compiler_sha256": {
-    "7.0.1": "c2f0a175157d9aaace8031f8e6d7ea0ed6142b4bcef287105e3ed227301f1002",
     "8.0.1": "dffd62a213ec6cdb4430012a4a41c11e5e32c288f133d5391f9be49e1c5b69de",
+    "7.0.1": "c2f0a175157d9aaace8031f8e6d7ea0ed6142b4bcef287105e3ed227301f1002",
     "lld": "c4b3aaea06ff7112c64753047a2ab279fc3fe10dd807fd3c22edfdae99f43eed"
   },
-  "exact_functions": 38270,
-  "exact_bytes": 4993016,
+  "exact_functions": 38375,
+  "exact_bytes": 5015844,
   "builds": [
     {
       "id": "probes",
@@ -13332,14 +13334,19 @@
       "object_sha256": "b9041a96cd9b319eba6af5d64ae51d9a71bcb2922ca5ebd5b45720a15872fb49"
     },
     {
+      "id": "decompiled_hi_nostrict_cxx_00",
+      "compiler": "8.0.1",
+      "object_sha256": "b06aa6a611bc65ff0e1f6a92eea2293a040827f64123ce83625f1d85e4425f26"
+    },
+    {
       "id": "decompiled_hi_strict_00",
       "compiler": "8.0.1",
-      "object_sha256": "8c7e38c966c250b52bee64544d7917eab99e5046c1855b122b66c6cdbb07065c"
+      "object_sha256": "227008c330e1698ae1930441db32e6a46aa5dfd8a087d0b3a7e5f4b944d5ca02"
     },
     {
       "id": "decompiled_hi_strict_01",
       "compiler": "8.0.1",
-      "object_sha256": "6d46d4785cf912400d6c809e3d69d4adf912c3aa97e0045c844372e76014e979"
+      "object_sha256": "04258eed103cdb7d30811005ccdf2a651b85eade8aa49a23447c810e5715ab28"
     },
     {
       "id": "decompiled_hi_strict_02",
@@ -13349,12 +13356,17 @@
     {
       "id": "decompiled_hi_strict_cxx_00",
       "compiler": "8.0.1",
-      "object_sha256": "117dbb877a47a4cb769f30bbd10157a5e56ba61a7d4e5ea955f85c97da5d5e54"
+      "object_sha256": "208714d7a394a65a4232adbcde55bbe428bc6c4700598279dd98ee6e852ccd06"
     },
     {
       "id": "decompiled_hi_strict_cxx_01",
       "compiler": "8.0.1",
-      "object_sha256": "73b0541c6748bb2ba1e5eae58a680e3d6c01a3397fcdb9c08773311158d51154"
+      "object_sha256": "78173e0b4f2aac0ed43035617cc73eccd978ef6cb23f22364b0db4948fe5b801"
+    },
+    {
+      "id": "decompiled_hi_strict_pad_00",
+      "compiler": "8.0.1",
+      "object_sha256": "3a8369aa292c30bfd1ab44287ce382173253e643edcf9a0b14f4a6ae2ee10278"
     },
     {
       "id": "decompiled_hi_strict_ret_00",
@@ -13374,37 +13386,37 @@
     {
       "id": "decompiled_lo_noslp_ret_00",
       "compiler": "8.0.1",
-      "object_sha256": "27535dbb18a864d05a7bbb39dab7e7c991e69d5a0d4d19261af16f59030352c5"
+      "object_sha256": "9d3f45aa6d011b9ac08d7c7cd245c94b5b298d2dd1f530eda75dbd99123c941b"
     },
     {
       "id": "decompiled_lo_o2_00",
       "compiler": "8.0.1",
-      "object_sha256": "598d75702e7f914e9b0318c790e49d2e98e37d3eee2576aa3c78db030c1d81db"
+      "object_sha256": "d4b7e7505814f7a8968e107197b77e5b6172d7770b7da78b6ddc328423b213ed"
     },
     {
       "id": "decompiled_lo_o2_01",
       "compiler": "8.0.1",
-      "object_sha256": "60a747851dbf117ed5ed33a1d85118416bb4f46fb7a2c0904e28f8488bf651de"
+      "object_sha256": "ce6ab7c2c90dcafe4b0836bd13d1ba55109f1ed488ab6bcc61b5c44395de08f9"
     },
     {
       "id": "decompiled_lo_o2_02",
       "compiler": "8.0.1",
-      "object_sha256": "b1ad4bb5c3c7cf89d44e379f9bec417a2feb4dfc667f1ed1ff0401c7448a6858"
+      "object_sha256": "4a1f241c9dde2e4f2f8987dadb851e2483ea76f4073d6c5a1e35db0aa866c9b3"
     },
     {
       "id": "decompiled_lo_o2_03",
       "compiler": "8.0.1",
-      "object_sha256": "1e966c9dc558bb299e3dfa41e77ebdc6770bd4c4db68e4011cff50623c40a4be"
+      "object_sha256": "699e7455d32282597c97de3352ceaf95f2ddc91d7e29877414b376d0b4e04c01"
     },
     {
       "id": "decompiled_lo_o2_04",
       "compiler": "8.0.1",
-      "object_sha256": "38ab1fd2418ba04199a404d0d3ff690049ca7e986d7b8088ac33e5b1fa996eca"
+      "object_sha256": "a99a1e912a8bceb26ca4991cfa63951264d04cab1548cfe14d2a07f37dc7046d"
     },
     {
       "id": "decompiled_lo_o2_ret_00",
       "compiler": "8.0.1",
-      "object_sha256": "bcecbab4a1ca14870ffc4421c4ce619e0bf43ec0666b142d2c589dec96ba5f1e"
+      "object_sha256": "9b674200c2ef1f8e4f87ec175f15cd61614430ec310a75055f682b4a87603566"
     },
     {
       "id": "decompiled_lo_o2_ret_01",
@@ -13424,7 +13436,7 @@
     {
       "id": "decompiled_lo_o3_00",
       "compiler": "8.0.1",
-      "object_sha256": "2872e96951d22d72f005fcb5240b23353e9982d5a0e56f7577d94e6194a70bac"
+      "object_sha256": "fb4a16412f80b1cb37bc92921b3ee9d3b9f67d90ff5e5b4748b7473ab0f91569"
     },
     {
       "id": "decompiled_lo_o3_ret_00",
@@ -20419,6 +20431,17 @@
       "relocation_count": 10
     },
     {
+      "address": "0x37110",
+      "size": 128,
+      "exact": true,
+      "target_sha256": "1af427007c27ceec230bd5c68fc48d03ba792e51c9b56dd244f245a583bb032c",
+      "compiled_sha256": "1af427007c27ceec230bd5c68fc48d03ba792e51c9b56dd244f245a583bb032c",
+      "source": "src/decompiled/lo_o2_01.c",
+      "symbol": "sub_37110",
+      "source_review": "decompiler_text_review_pending",
+      "relocation_count": 13
+    },
+    {
       "address": "0x37190",
       "size": 4,
       "exact": true,
@@ -20452,6 +20475,17 @@
       "relocation_count": 0
     },
     {
+      "address": "0x379f0",
+      "size": 128,
+      "exact": true,
+      "target_sha256": "59aedf2ab2d4d7cccde45829b581d3548c7636ef889869b040d29c7d3e3b28cd",
+      "compiled_sha256": "59aedf2ab2d4d7cccde45829b581d3548c7636ef889869b040d29c7d3e3b28cd",
+      "source": "src/decompiled/lo_o2_01.c",
+      "symbol": "sub_379F0",
+      "source_review": "decompiler_text_review_pending",
+      "relocation_count": 13
+    },
+    {
       "address": "0x37b70",
       "size": 24,
       "exact": true,
@@ -20472,6 +20506,17 @@
       "symbol": "RecoveredLeaf_37da0",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 0
+    },
+    {
+      "address": "0x37db0",
+      "size": 128,
+      "exact": true,
+      "target_sha256": "8adf5e249343b6b78015e3d993e1daa389c3a074efae36a16c85769f6156be60",
+      "compiled_sha256": "8adf5e249343b6b78015e3d993e1daa389c3a074efae36a16c85769f6156be60",
+      "source": "src/decompiled/lo_o2_01.c",
+      "symbol": "sub_37DB0",
+      "source_review": "decompiler_text_review_pending",
+      "relocation_count": 13
     },
     {
       "address": "0x37e30",
@@ -21398,6 +21443,17 @@
       "relocation_count": 5
     },
     {
+      "address": "0x55f60",
+      "size": 576,
+      "exact": true,
+      "target_sha256": "4bb1baf5dfd49329b22dd1d7732ab339ecb28eaf0aa8b501ea26a80afcbc36aa",
+      "compiled_sha256": "4bb1baf5dfd49329b22dd1d7732ab339ecb28eaf0aa8b501ea26a80afcbc36aa",
+      "source": "src/decompiled/lo_o2_00.c",
+      "symbol": "sub_55F60",
+      "source_review": "decompiler_text_review_pending",
+      "relocation_count": 11
+    },
+    {
       "address": "0x56a10",
       "size": 8,
       "exact": true,
@@ -22133,6 +22189,17 @@
       "symbol": "RecoveredLeaf_708b0",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 1
+    },
+    {
+      "address": "0x710d0",
+      "size": 316,
+      "exact": true,
+      "target_sha256": "851f83c3793f555621d3e83506a2761e6c2a0fec5fead7077003acf1e3452a17",
+      "compiled_sha256": "851f83c3793f555621d3e83506a2761e6c2a0fec5fead7077003acf1e3452a17",
+      "source": "src/decompiled/lo_o2_00.c",
+      "symbol": "sub_710D0",
+      "source_review": "decompiler_text_review_pending",
+      "relocation_count": 19
     },
     {
       "address": "0x717e0",
@@ -23642,6 +23709,17 @@
       "relocation_count": 9
     },
     {
+      "address": "0x99230",
+      "size": 332,
+      "exact": true,
+      "target_sha256": "79a0288c61da0bbdce4d21e0e228467922191fe0f6df8ab561cdf339a4a41540",
+      "compiled_sha256": "79a0288c61da0bbdce4d21e0e228467922191fe0f6df8ab561cdf339a4a41540",
+      "source": "src/decompiled/lo_o2_00.c",
+      "symbol": "sub_99230",
+      "source_review": "decompiler_text_review_pending",
+      "relocation_count": 16
+    },
+    {
       "address": "0x99380",
       "size": 160,
       "exact": true,
@@ -24313,6 +24391,17 @@
       "relocation_count": 5
     },
     {
+      "address": "0xd76b0",
+      "size": 576,
+      "exact": true,
+      "target_sha256": "0a00783692f16666c93b4656e3d9a82dd29963b139c9f406ded6a12b79459d7f",
+      "compiled_sha256": "0a00783692f16666c93b4656e3d9a82dd29963b139c9f406ded6a12b79459d7f",
+      "source": "src/decompiled/lo_o2_00.c",
+      "symbol": "sub_D76B0",
+      "source_review": "decompiler_text_review_pending",
+      "relocation_count": 13
+    },
+    {
       "address": "0xd80c0",
       "size": 104,
       "exact": true,
@@ -24520,6 +24609,17 @@
       "symbol": "sub_F0DF0",
       "source_review": "decompiler_text_review_pending",
       "relocation_count": 5
+    },
+    {
+      "address": "0xf1820",
+      "size": 268,
+      "exact": true,
+      "target_sha256": "82faee4b34f53b846575a0829a37b0c2a34e2678758e5316f6c5e02cdbd36171",
+      "compiled_sha256": "82faee4b34f53b846575a0829a37b0c2a34e2678758e5316f6c5e02cdbd36171",
+      "source": "src/decompiled/lo_o2_00.c",
+      "symbol": "sub_F1820",
+      "source_review": "decompiler_text_review_pending",
+      "relocation_count": 12
     },
     {
       "address": "0xf3ee0",
@@ -25182,6 +25282,17 @@
       "relocation_count": 18
     },
     {
+      "address": "0x142440",
+      "size": 320,
+      "exact": true,
+      "target_sha256": "77ee9c26be61eaf1f4cf5331d051f5cbd8e5eb11d31fb33b5dbdfad979a3fb9d",
+      "compiled_sha256": "77ee9c26be61eaf1f4cf5331d051f5cbd8e5eb11d31fb33b5dbdfad979a3fb9d",
+      "source": "src/decompiled/lo_o2_00.c",
+      "symbol": "sub_142440",
+      "source_review": "decompiler_text_review_pending",
+      "relocation_count": 18
+    },
+    {
       "address": "0x142580",
       "size": 288,
       "exact": true,
@@ -25279,6 +25390,17 @@
       "symbol": "_Z16DestroyWithFrameILj1366144EEvPv",
       "source_review": "manual_reconstruction",
       "relocation_count": 2
+    },
+    {
+      "address": "0x14ea00",
+      "size": 476,
+      "exact": true,
+      "target_sha256": "858d3ef0a60095d7ee7d2a354e5a701fde3a5549cb6c8ddcba3ae09f9e792e26",
+      "compiled_sha256": "858d3ef0a60095d7ee7d2a354e5a701fde3a5549cb6c8ddcba3ae09f9e792e26",
+      "source": "src/decompiled/lo_o2_00.c",
+      "symbol": "sub_14EA00",
+      "source_review": "decompiler_text_review_pending",
+      "relocation_count": 26
     },
     {
       "address": "0x14ee40",
@@ -28394,6 +28516,17 @@
       "relocation_count": 4
     },
     {
+      "address": "0x164fb0",
+      "size": 332,
+      "exact": true,
+      "target_sha256": "3a8585f717c812d84e235df58e3f21c6c0b77a8c45555076dfca3c6c6142dbba",
+      "compiled_sha256": "3a8585f717c812d84e235df58e3f21c6c0b77a8c45555076dfca3c6c6142dbba",
+      "source": "src/decompiled/lo_o2_01.c",
+      "symbol": "sub_164FB0",
+      "source_review": "decompiler_text_review_pending",
+      "relocation_count": 3
+    },
+    {
       "address": "0x165600",
       "size": 64,
       "exact": true,
@@ -28656,6 +28789,17 @@
       "symbol": "RecoveredLeaf_1694a0",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 3
+    },
+    {
+      "address": "0x169520",
+      "size": 352,
+      "exact": true,
+      "target_sha256": "66d169b916ca5afa35db23b90168abdef549e8cf17336567ce47e7cbaaf1de7e",
+      "compiled_sha256": "66d169b916ca5afa35db23b90168abdef549e8cf17336567ce47e7cbaaf1de7e",
+      "source": "src/decompiled/lo_o2_00.c",
+      "symbol": "sub_169520",
+      "source_review": "decompiler_text_review_pending",
+      "relocation_count": 0
     },
     {
       "address": "0x169680",
@@ -82635,6 +82779,17 @@
       "relocation_count": 3
     },
     {
+      "address": "0x2c9ef0",
+      "size": 548,
+      "exact": true,
+      "target_sha256": "e7291b47315b0a99220d5f46bc5c34051046cd71af2c43623842f3a8a97de049",
+      "compiled_sha256": "e7291b47315b0a99220d5f46bc5c34051046cd71af2c43623842f3a8a97de049",
+      "source": "src/decompiled/lo_o2_00.c",
+      "symbol": "sub_2C9EF0",
+      "source_review": "decompiler_text_review_pending",
+      "relocation_count": 33
+    },
+    {
       "address": "0x2ca120",
       "size": 36,
       "exact": true,
@@ -88657,7 +88812,7 @@
       "exact": true,
       "target_sha256": "1d84d3a1c57c3a235fb2a38677881f44a59485686648844177586561ea702a9d",
       "compiled_sha256": "1d84d3a1c57c3a235fb2a38677881f44a59485686648844177586561ea702a9d",
-      "source": "src/decompiled/lo_o2_00.c",
+      "source": "src/decompiled/lo_o2_01.c",
       "symbol": "sub_2F4FC0",
       "source_review": "decompiler_text_review_pending",
       "relocation_count": 11
@@ -89955,7 +90110,7 @@
       "exact": true,
       "target_sha256": "1767da36544e8c6d66ed01e8b2022727cdaca51e8945035d841f529c364644eb",
       "compiled_sha256": "1767da36544e8c6d66ed01e8b2022727cdaca51e8945035d841f529c364644eb",
-      "source": "src/decompiled/lo_o2_00.c",
+      "source": "src/decompiled/lo_o2_01.c",
       "symbol": "sub_2F8A40",
       "source_review": "decompiler_text_review_pending",
       "relocation_count": 7
@@ -90131,7 +90286,7 @@
       "exact": true,
       "target_sha256": "e26028d068833a9e3899138e5a4638505d89f759eedbc905b07ae5373891daca",
       "compiled_sha256": "e26028d068833a9e3899138e5a4638505d89f759eedbc905b07ae5373891daca",
-      "source": "src/decompiled/lo_o2_00.c",
+      "source": "src/decompiled/lo_o2_01.c",
       "symbol": "sub_2F9140",
       "source_review": "decompiler_text_review_pending",
       "relocation_count": 9
@@ -90648,7 +90803,7 @@
       "exact": true,
       "target_sha256": "002f82311243bb9fb1e14da12f3b714a1ef4025f280bc0ba05c8b30eba2630f8",
       "compiled_sha256": "002f82311243bb9fb1e14da12f3b714a1ef4025f280bc0ba05c8b30eba2630f8",
-      "source": "src/decompiled/lo_o2_00.c",
+      "source": "src/decompiled/lo_o2_01.c",
       "symbol": "sub_2FB8A0",
       "source_review": "decompiler_text_review_pending",
       "relocation_count": 6
@@ -90681,7 +90836,7 @@
       "exact": true,
       "target_sha256": "f759ff7f8c8bd7ecfadec8feaf3f3b96491a0c3bc097fbd9a98d6b5292156963",
       "compiled_sha256": "f759ff7f8c8bd7ecfadec8feaf3f3b96491a0c3bc097fbd9a98d6b5292156963",
-      "source": "src/decompiled/lo_o2_00.c",
+      "source": "src/decompiled/lo_o2_01.c",
       "symbol": "sub_2FB970",
       "source_review": "decompiler_text_review_pending",
       "relocation_count": 7
@@ -90780,7 +90935,7 @@
       "exact": true,
       "target_sha256": "5f7fc24c57761ab52330af90cd855cb5fa1cce1f34aa72650ffe1c0d9de9a74c",
       "compiled_sha256": "5f7fc24c57761ab52330af90cd855cb5fa1cce1f34aa72650ffe1c0d9de9a74c",
-      "source": "src/decompiled/lo_o2_00.c",
+      "source": "src/decompiled/lo_o2_01.c",
       "symbol": "sub_2FC670",
       "source_review": "decompiler_text_review_pending",
       "relocation_count": 1
@@ -90835,7 +90990,7 @@
       "exact": true,
       "target_sha256": "40a40a0d5ead9bbff7454bb85c7700b564bfb4edd77dfdae98fea9097d0ca476",
       "compiled_sha256": "40a40a0d5ead9bbff7454bb85c7700b564bfb4edd77dfdae98fea9097d0ca476",
-      "source": "src/decompiled/lo_o2_00.c",
+      "source": "src/decompiled/lo_o2_01.c",
       "symbol": "sub_2FCE10",
       "source_review": "decompiler_text_review_pending",
       "relocation_count": 1
@@ -92276,7 +92431,7 @@
       "exact": true,
       "target_sha256": "9da0c707adbca3a4071ab0a3e4b6096d72eafb05ba1ce015cd8aaba190118df4",
       "compiled_sha256": "9da0c707adbca3a4071ab0a3e4b6096d72eafb05ba1ce015cd8aaba190118df4",
-      "source": "src/decompiled/lo_o2_00.c",
+      "source": "src/decompiled/lo_o2_01.c",
       "symbol": "sub_302140",
       "source_review": "decompiler_text_review_pending",
       "relocation_count": 3
@@ -92287,7 +92442,7 @@
       "exact": true,
       "target_sha256": "40f14b4194311e22d2b917d435c2c16e9acc1c2bed6ee72de4b9b5b406aeaf67",
       "compiled_sha256": "40f14b4194311e22d2b917d435c2c16e9acc1c2bed6ee72de4b9b5b406aeaf67",
-      "source": "src/decompiled/lo_o2_00.c",
+      "source": "src/decompiled/lo_o2_01.c",
       "symbol": "sub_302190",
       "source_review": "decompiler_text_review_pending",
       "relocation_count": 2
@@ -93404,6 +93559,17 @@
       "relocation_count": 5
     },
     {
+      "address": "0x306dc0",
+      "size": 212,
+      "exact": true,
+      "target_sha256": "35f98a836942db0e0904a6b2bc9e90a0cad8c987035fa3394d4d6c928574e89f",
+      "compiled_sha256": "35f98a836942db0e0904a6b2bc9e90a0cad8c987035fa3394d4d6c928574e89f",
+      "source": "src/decompiled/lo_o2_01.c",
+      "symbol": "sub_306DC0",
+      "source_review": "decompiler_text_review_pending",
+      "relocation_count": 8
+    },
+    {
       "address": "0x306fc0",
       "size": 348,
       "exact": true,
@@ -94139,6 +94305,17 @@
       "symbol": "_Z15GetLazyTypeInfoILj3203552ELj9ELj1539558318EEPvv",
       "source_review": "manual_reconstruction",
       "relocation_count": 31
+    },
+    {
+      "address": "0x30e4d0",
+      "size": 212,
+      "exact": true,
+      "target_sha256": "65f45bad108c95e2f6cdeec01b1cccd0cbac85b1bc40ed970c66757337604195",
+      "compiled_sha256": "65f45bad108c95e2f6cdeec01b1cccd0cbac85b1bc40ed970c66757337604195",
+      "source": "src/decompiled/lo_o2_01.c",
+      "symbol": "sub_30E4D0",
+      "source_review": "decompiler_text_review_pending",
+      "relocation_count": 8
     },
     {
       "address": "0x30fc30",
@@ -100059,6 +100236,17 @@
       "relocation_count": 1
     },
     {
+      "address": "0x363e10",
+      "size": 412,
+      "exact": true,
+      "target_sha256": "3e08caa3d36a2c75999bff0a24824037e30e7bc5314bed77d4df74876e05d272",
+      "compiled_sha256": "3e08caa3d36a2c75999bff0a24824037e30e7bc5314bed77d4df74876e05d272",
+      "source": "src/decompiled/lo_noslp_ret_00.cpp",
+      "symbol": "sub_363E10",
+      "source_review": "decompiler_text_review_pending",
+      "relocation_count": 22
+    },
+    {
       "address": "0x363fb0",
       "size": 240,
       "exact": true,
@@ -100112,6 +100300,17 @@
       "symbol": "RecoveredLeaf_364430",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 1
+    },
+    {
+      "address": "0x364440",
+      "size": 412,
+      "exact": true,
+      "target_sha256": "53f9924fdcbe40a79852ef145ee8cd9e7a21bcfa4cbc46265b5af2fd190452ed",
+      "compiled_sha256": "53f9924fdcbe40a79852ef145ee8cd9e7a21bcfa4cbc46265b5af2fd190452ed",
+      "source": "src/decompiled/lo_noslp_ret_00.cpp",
+      "symbol": "sub_364440",
+      "source_review": "decompiler_text_review_pending",
+      "relocation_count": 22
     },
     {
       "address": "0x3645e0",
@@ -100576,6 +100775,17 @@
       "relocation_count": 1
     },
     {
+      "address": "0x366570",
+      "size": 380,
+      "exact": true,
+      "target_sha256": "6463e4bc4d9b5c45944d9e5119ea06d44ad3057c745e07152a92d0a7ff0ef301",
+      "compiled_sha256": "6463e4bc4d9b5c45944d9e5119ea06d44ad3057c745e07152a92d0a7ff0ef301",
+      "source": "src/decompiled/lo_noslp_ret_00.cpp",
+      "symbol": "sub_366570",
+      "source_review": "decompiler_text_review_pending",
+      "relocation_count": 21
+    },
+    {
       "address": "0x3666f0",
       "size": 240,
       "exact": true,
@@ -100629,6 +100839,17 @@
       "symbol": "RecoveredLeaf_366b50",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 1
+    },
+    {
+      "address": "0x366b60",
+      "size": 412,
+      "exact": true,
+      "target_sha256": "c8ec4f053640249e55ac74c9cf18f920fd1625f59880a0092aa71c38e180bb0b",
+      "compiled_sha256": "c8ec4f053640249e55ac74c9cf18f920fd1625f59880a0092aa71c38e180bb0b",
+      "source": "src/decompiled/lo_noslp_ret_00.cpp",
+      "symbol": "sub_366B60",
+      "source_review": "decompiler_text_review_pending",
+      "relocation_count": 22
     },
     {
       "address": "0x366d00",
@@ -100948,6 +101169,17 @@
       "symbol": "RecoveredLeaf_368680",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 1
+    },
+    {
+      "address": "0x368690",
+      "size": 424,
+      "exact": true,
+      "target_sha256": "bcf15970b54444a04173cd9ef13971d8af9f35d3a41e535407a9cb43a5196eee",
+      "compiled_sha256": "bcf15970b54444a04173cd9ef13971d8af9f35d3a41e535407a9cb43a5196eee",
+      "source": "src/decompiled/lo_noslp_ret_00.cpp",
+      "symbol": "sub_368690",
+      "source_review": "decompiler_text_review_pending",
+      "relocation_count": 24
     },
     {
       "address": "0x368840",
@@ -118086,6 +118318,17 @@
       "symbol": "_Z15GetLazyTypeInfoILj4058000ELj9ELj391670658EEPvv",
       "source_review": "manual_reconstruction",
       "relocation_count": 31
+    },
+    {
+      "address": "0x3deca0",
+      "size": 560,
+      "exact": true,
+      "target_sha256": "30764f8166d2818f34ee3d97b2ad83b00b929ac1d3ffaccfd5183ef4a881ec8d",
+      "compiled_sha256": "30764f8166d2818f34ee3d97b2ad83b00b929ac1d3ffaccfd5183ef4a881ec8d",
+      "source": "src/decompiled/lo_o2_01.c",
+      "symbol": "sub_3DECA0",
+      "source_review": "decompiler_text_review_pending",
+      "relocation_count": 35
     },
     {
       "address": "0x3df260",
@@ -140632,7 +140875,7 @@
       "exact": true,
       "target_sha256": "e435afaa3d9d34e92cbf9c63587aaf54a896cb72bd546bb0f31654c77aa40362",
       "compiled_sha256": "e435afaa3d9d34e92cbf9c63587aaf54a896cb72bd546bb0f31654c77aa40362",
-      "source": "src/decompiled/lo_o2_01.c",
+      "source": "src/decompiled/lo_o2_02.c",
       "symbol": "sub_44FEB0",
       "source_review": "decompiler_text_review_pending",
       "relocation_count": 3
@@ -140643,7 +140886,7 @@
       "exact": true,
       "target_sha256": "08df509879ac67f197c524ba2d26e6e0e907c78d39fe93295e3a8ad45d1cbbe1",
       "compiled_sha256": "08df509879ac67f197c524ba2d26e6e0e907c78d39fe93295e3a8ad45d1cbbe1",
-      "source": "src/decompiled/lo_o2_01.c",
+      "source": "src/decompiled/lo_o2_02.c",
       "symbol": "sub_44FF00",
       "source_review": "decompiler_text_review_pending",
       "relocation_count": 2
@@ -140654,7 +140897,7 @@
       "exact": true,
       "target_sha256": "f05d84d027d4ec0dc0300cc40f75e1e77eeed71d98c353fcd778599e42d80fea",
       "compiled_sha256": "f05d84d027d4ec0dc0300cc40f75e1e77eeed71d98c353fcd778599e42d80fea",
-      "source": "src/decompiled/lo_o2_01.c",
+      "source": "src/decompiled/lo_o2_02.c",
       "symbol": "sub_4500D0",
       "source_review": "decompiler_text_review_pending",
       "relocation_count": 31
@@ -140720,7 +140963,7 @@
       "exact": true,
       "target_sha256": "fcba5a9d5be674e69009b4ff94b518305794ccb4d70ce5e171bad2c401cbf1de",
       "compiled_sha256": "fcba5a9d5be674e69009b4ff94b518305794ccb4d70ce5e171bad2c401cbf1de",
-      "source": "src/decompiled/lo_o2_01.c",
+      "source": "src/decompiled/lo_o2_02.c",
       "symbol": "sub_450540",
       "source_review": "decompiler_text_review_pending",
       "relocation_count": 24
@@ -140753,7 +140996,7 @@
       "exact": true,
       "target_sha256": "64ed7ba7b524748f1e1ac247f28c7e6c4be703e7c107846c2aec88ddcd187774",
       "compiled_sha256": "64ed7ba7b524748f1e1ac247f28c7e6c4be703e7c107846c2aec88ddcd187774",
-      "source": "src/decompiled/lo_o2_01.c",
+      "source": "src/decompiled/lo_o2_03.c",
       "symbol": "sub_450890",
       "source_review": "decompiler_text_review_pending",
       "relocation_count": 4
@@ -140797,7 +141040,7 @@
       "exact": true,
       "target_sha256": "625d5dd872232b846c41925e40b96d4624553f1ecee200e7823d475d8eb05674",
       "compiled_sha256": "625d5dd872232b846c41925e40b96d4624553f1ecee200e7823d475d8eb05674",
-      "source": "src/decompiled/lo_o2_01.c",
+      "source": "src/decompiled/lo_o2_02.c",
       "symbol": "sub_450930",
       "source_review": "decompiler_text_review_pending",
       "relocation_count": 20
@@ -140808,7 +141051,7 @@
       "exact": true,
       "target_sha256": "62a4583dc365f823f36bcb14d09ecb8e36ab461626d40ad130d1d99c39b31e6b",
       "compiled_sha256": "62a4583dc365f823f36bcb14d09ecb8e36ab461626d40ad130d1d99c39b31e6b",
-      "source": "src/decompiled/lo_o2_01.c",
+      "source": "src/decompiled/lo_o2_02.c",
       "symbol": "sub_450A40",
       "source_review": "decompiler_text_review_pending",
       "relocation_count": 19
@@ -140896,7 +141139,7 @@
       "exact": true,
       "target_sha256": "7c6887e5dd5db0c2762ec85eb19512ae25082064d9a8f63fc9634ed29eb17e25",
       "compiled_sha256": "7c6887e5dd5db0c2762ec85eb19512ae25082064d9a8f63fc9634ed29eb17e25",
-      "source": "src/decompiled/lo_o2_01.c",
+      "source": "src/decompiled/lo_o2_03.c",
       "symbol": "sub_4512A0",
       "source_review": "decompiler_text_review_pending",
       "relocation_count": 8
@@ -140918,7 +141161,7 @@
       "exact": true,
       "target_sha256": "6db364c57686acb0f6ade6f027389cccc6de49cd708f6ad7fb422d0604123860",
       "compiled_sha256": "6db364c57686acb0f6ade6f027389cccc6de49cd708f6ad7fb422d0604123860",
-      "source": "src/decompiled/lo_o2_01.c",
+      "source": "src/decompiled/lo_o2_02.c",
       "symbol": "sub_451570",
       "source_review": "decompiler_text_review_pending",
       "relocation_count": 3
@@ -140929,10 +141172,21 @@
       "exact": true,
       "target_sha256": "9d2f1ec9914eefa3d34c9d8c9d7a3975dafea0d1b2b1a0148025505539ee05ec",
       "compiled_sha256": "9d2f1ec9914eefa3d34c9d8c9d7a3975dafea0d1b2b1a0148025505539ee05ec",
-      "source": "src/decompiled/lo_o2_01.c",
+      "source": "src/decompiled/lo_o2_02.c",
       "symbol": "sub_4515C0",
       "source_review": "decompiler_text_review_pending",
       "relocation_count": 2
+    },
+    {
+      "address": "0x451840",
+      "size": 552,
+      "exact": true,
+      "target_sha256": "bedfe0a53b101548f2830b6b83f87052257655f8a4312afc8f431fd55d5ac235",
+      "compiled_sha256": "bedfe0a53b101548f2830b6b83f87052257655f8a4312afc8f431fd55d5ac235",
+      "source": "src/decompiled/lo_o2_02.c",
+      "symbol": "sub_451840",
+      "source_review": "decompiler_text_review_pending",
+      "relocation_count": 39
     },
     {
       "address": "0x451a70",
@@ -140995,7 +141249,7 @@
       "exact": true,
       "target_sha256": "f12250ef4c55dd0d9f3874595d809f66d2b1d29cbe9888ae1ecefebc1a31ac15",
       "compiled_sha256": "f12250ef4c55dd0d9f3874595d809f66d2b1d29cbe9888ae1ecefebc1a31ac15",
-      "source": "src/decompiled/lo_o2_01.c",
+      "source": "src/decompiled/lo_o2_02.c",
       "symbol": "sub_451D50",
       "source_review": "decompiler_text_review_pending",
       "relocation_count": 12
@@ -141072,7 +141326,7 @@
       "exact": true,
       "target_sha256": "2c1fd68ff747b7d58f9f7e61065d02f3e13732ced199e666905b996172fb41a1",
       "compiled_sha256": "2c1fd68ff747b7d58f9f7e61065d02f3e13732ced199e666905b996172fb41a1",
-      "source": "src/decompiled/lo_o2_01.c",
+      "source": "src/decompiled/lo_o2_02.c",
       "symbol": "sub_451FC0",
       "source_review": "decompiler_text_review_pending",
       "relocation_count": 10
@@ -141083,7 +141337,7 @@
       "exact": true,
       "target_sha256": "4a94e5050eb2fd4fa031b65396533f182912fb4b71d8ff389e6b2c1d369e6df3",
       "compiled_sha256": "4a94e5050eb2fd4fa031b65396533f182912fb4b71d8ff389e6b2c1d369e6df3",
-      "source": "src/decompiled/lo_o2_01.c",
+      "source": "src/decompiled/lo_o2_02.c",
       "symbol": "sub_452060",
       "source_review": "decompiler_text_review_pending",
       "relocation_count": 9
@@ -141149,7 +141403,7 @@
       "exact": true,
       "target_sha256": "2d88da712293a61bf843484d08fa0d39689e049880fce3e6a340839d5f825a76",
       "compiled_sha256": "2d88da712293a61bf843484d08fa0d39689e049880fce3e6a340839d5f825a76",
-      "source": "src/decompiled/lo_o2_01.c",
+      "source": "src/decompiled/lo_o2_02.c",
       "symbol": "sub_4523E0",
       "source_review": "decompiler_text_review_pending",
       "relocation_count": 24
@@ -141182,7 +141436,7 @@
       "exact": true,
       "target_sha256": "a9515751bda3f38d67294be535f67244f9dfe9271882ff95ba8cc9a30ae6e6d9",
       "compiled_sha256": "a9515751bda3f38d67294be535f67244f9dfe9271882ff95ba8cc9a30ae6e6d9",
-      "source": "src/decompiled/lo_o2_01.c",
+      "source": "src/decompiled/lo_o2_03.c",
       "symbol": "sub_452730",
       "source_review": "decompiler_text_review_pending",
       "relocation_count": 4
@@ -141281,7 +141535,7 @@
       "exact": true,
       "target_sha256": "8121bfaae261c6863898407be58cf442242842822a5a9b3180c8d31cd9a74b67",
       "compiled_sha256": "8121bfaae261c6863898407be58cf442242842822a5a9b3180c8d31cd9a74b67",
-      "source": "src/decompiled/lo_o2_01.c",
+      "source": "src/decompiled/lo_o2_02.c",
       "symbol": "sub_452CC0",
       "source_review": "decompiler_text_review_pending",
       "relocation_count": 18
@@ -161428,6 +161682,17 @@
       "relocation_count": 11
     },
     {
+      "address": "0x4c2f60",
+      "size": 236,
+      "exact": true,
+      "target_sha256": "f03580d92222f1ac9c7300ff91d9c7b316a6bf2d2b27ee2989150ba2f7acc74a",
+      "compiled_sha256": "f03580d92222f1ac9c7300ff91d9c7b316a6bf2d2b27ee2989150ba2f7acc74a",
+      "source": "src/decompiled/lo_o2_02.c",
+      "symbol": "sub_4C2F60",
+      "source_review": "decompiler_text_review_pending",
+      "relocation_count": 10
+    },
+    {
       "address": "0x4c3050",
       "size": 344,
       "exact": true,
@@ -166101,6 +166366,17 @@
       "symbol": "_Z11TypeAddressILj5088928EEPKvv",
       "source_review": "manual_reconstruction",
       "relocation_count": 2
+    },
+    {
+      "address": "0x4da6b0",
+      "size": 280,
+      "exact": true,
+      "target_sha256": "58cfeb173e08497098e98dfb391c85f5a6a4939b413b3b27325ecfe78ec75b67",
+      "compiled_sha256": "58cfeb173e08497098e98dfb391c85f5a6a4939b413b3b27325ecfe78ec75b67",
+      "source": "src/decompiled/lo_o3_00.c",
+      "symbol": "sub_4DA6B0",
+      "source_review": "decompiler_text_review_pending",
+      "relocation_count": 4
     },
     {
       "address": "0x4da7d0",
@@ -173319,6 +173595,17 @@
       "relocation_count": 3
     },
     {
+      "address": "0x4ee100",
+      "size": 80,
+      "exact": true,
+      "target_sha256": "bb5ab1a606eaa00433b9ed2af4063f9ccc5c856a2922aeef5cd309ea8cd03099",
+      "compiled_sha256": "bb5ab1a606eaa00433b9ed2af4063f9ccc5c856a2922aeef5cd309ea8cd03099",
+      "source": "src/decompiled/lo_o2_02.c",
+      "symbol": "sub_4EE100",
+      "source_review": "decompiler_text_review_pending",
+      "relocation_count": 4
+    },
+    {
       "address": "0x4ee150",
       "size": 64,
       "exact": true,
@@ -175233,6 +175520,17 @@
       "relocation_count": 1
     },
     {
+      "address": "0x4f6a30",
+      "size": 156,
+      "exact": true,
+      "target_sha256": "b4e445d382c6b3949239d517ea41987511f978d0ed7ab329d55492043246ece2",
+      "compiled_sha256": "b4e445d382c6b3949239d517ea41987511f978d0ed7ab329d55492043246ece2",
+      "source": "src/decompiled/lo_o3_00.c",
+      "symbol": "sub_4F6A30",
+      "source_review": "decompiler_text_review_pending",
+      "relocation_count": 1
+    },
+    {
       "address": "0x4f6ce0",
       "size": 12,
       "exact": true,
@@ -175616,6 +175914,17 @@
       "symbol": "FUN_004facb0",
       "source_review": "local_model_proposal_abi_review_pending",
       "relocation_count": 0
+    },
+    {
+      "address": "0x4facc0",
+      "size": 168,
+      "exact": true,
+      "target_sha256": "bdce6a98d4d31666304a9cd03dbfa74ef9ce7017911c28987875299ad19a8781",
+      "compiled_sha256": "bdce6a98d4d31666304a9cd03dbfa74ef9ce7017911c28987875299ad19a8781",
+      "source": "src/decompiled/lo_o2_03.c",
+      "symbol": "sub_4FACC0",
+      "source_review": "decompiler_text_review_pending",
+      "relocation_count": 7
     },
     {
       "address": "0x4fad70",
@@ -183785,7 +184094,7 @@
       "exact": true,
       "target_sha256": "366bd5d2138076448bac7adbd10073308cdd202d183c382ea5b2fe4283d5ad59",
       "compiled_sha256": "366bd5d2138076448bac7adbd10073308cdd202d183c382ea5b2fe4283d5ad59",
-      "source": "src/decompiled/lo_o2_02.c",
+      "source": "src/decompiled/lo_o2_03.c",
       "symbol": "sub_53A800",
       "source_review": "decompiler_text_review_pending",
       "relocation_count": 1
@@ -183796,7 +184105,7 @@
       "exact": true,
       "target_sha256": "ed7a35577bfd65c48e67e74bdf06a2d9f37e0944ad56ee4d078ff6e3f0860bb7",
       "compiled_sha256": "ed7a35577bfd65c48e67e74bdf06a2d9f37e0944ad56ee4d078ff6e3f0860bb7",
-      "source": "src/decompiled/lo_o2_02.c",
+      "source": "src/decompiled/lo_o2_03.c",
       "symbol": "sub_53A830",
       "source_review": "decompiler_text_review_pending",
       "relocation_count": 1
@@ -183807,7 +184116,7 @@
       "exact": true,
       "target_sha256": "ee1faeedf0cee4c9243abbacb19b7fc750b40556dc5b8c87eda45fc8436de4ef",
       "compiled_sha256": "ee1faeedf0cee4c9243abbacb19b7fc750b40556dc5b8c87eda45fc8436de4ef",
-      "source": "src/decompiled/lo_o2_02.c",
+      "source": "src/decompiled/lo_o2_03.c",
       "symbol": "sub_53A860",
       "source_review": "decompiler_text_review_pending",
       "relocation_count": 1
@@ -183818,7 +184127,7 @@
       "exact": true,
       "target_sha256": "30930529a43c82b0baa07f054cac9e230345897a3e8899928aa725b82bffd40c",
       "compiled_sha256": "30930529a43c82b0baa07f054cac9e230345897a3e8899928aa725b82bffd40c",
-      "source": "src/decompiled/lo_o2_02.c",
+      "source": "src/decompiled/lo_o2_03.c",
       "symbol": "sub_53AFF0",
       "source_review": "decompiler_text_review_pending",
       "relocation_count": 5
@@ -183829,7 +184138,7 @@
       "exact": true,
       "target_sha256": "ff84e2b4cad82974634d676878e03a8119d1ac3664e69696d5e388074cae5ac8",
       "compiled_sha256": "ff84e2b4cad82974634d676878e03a8119d1ac3664e69696d5e388074cae5ac8",
-      "source": "src/decompiled/lo_o2_02.c",
+      "source": "src/decompiled/lo_o2_03.c",
       "symbol": "sub_53B050",
       "source_review": "decompiler_text_review_pending",
       "relocation_count": 5
@@ -183994,7 +184303,7 @@
       "exact": true,
       "target_sha256": "4ffdb51b7fbb7917bc9a3568108387a77d82058669b9bccf32eb6dee7edf2a20",
       "compiled_sha256": "4ffdb51b7fbb7917bc9a3568108387a77d82058669b9bccf32eb6dee7edf2a20",
-      "source": "src/decompiled/lo_o2_02.c",
+      "source": "src/decompiled/lo_o2_04.c",
       "symbol": "sub_540F40",
       "source_review": "decompiler_text_review_pending",
       "relocation_count": 6
@@ -184009,6 +184318,28 @@
       "symbol": "RecoveredLeaf_541220",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 4
+    },
+    {
+      "address": "0x5417e0",
+      "size": 192,
+      "exact": true,
+      "target_sha256": "919a817e3529f018c88a631f8eb200195da3d9518e54aa79653a1c0ccbae041f",
+      "compiled_sha256": "919a817e3529f018c88a631f8eb200195da3d9518e54aa79653a1c0ccbae041f",
+      "source": "src/decompiled/lo_o2_03.c",
+      "symbol": "sub_5417E0",
+      "source_review": "decompiler_text_review_pending",
+      "relocation_count": 5
+    },
+    {
+      "address": "0x541ad0",
+      "size": 192,
+      "exact": true,
+      "target_sha256": "d61c823d83b7ff5022f783bf741d5f2c4d3ac1b645e7c5ba48ad56927a29678d",
+      "compiled_sha256": "d61c823d83b7ff5022f783bf741d5f2c4d3ac1b645e7c5ba48ad56927a29678d",
+      "source": "src/decompiled/lo_o2_03.c",
+      "symbol": "sub_541AD0",
+      "source_review": "decompiler_text_review_pending",
+      "relocation_count": 5
     },
     {
       "address": "0x542250",
@@ -184060,7 +184391,7 @@
       "exact": true,
       "target_sha256": "e3bc250c91851565e56dd90b130ad02c72e2b5d6c6acbdaa77274ef2a8731e5f",
       "compiled_sha256": "e3bc250c91851565e56dd90b130ad02c72e2b5d6c6acbdaa77274ef2a8731e5f",
-      "source": "src/decompiled/lo_o2_02.c",
+      "source": "src/decompiled/lo_o2_03.c",
       "symbol": "sub_542FB0",
       "source_review": "decompiler_text_review_pending",
       "relocation_count": 6
@@ -184159,7 +184490,7 @@
       "exact": true,
       "target_sha256": "611be72ececcc3d20c86dff87dcfd64a3a41ee7d5f9ba192b2a34f32836d25c5",
       "compiled_sha256": "611be72ececcc3d20c86dff87dcfd64a3a41ee7d5f9ba192b2a34f32836d25c5",
-      "source": "src/decompiled/lo_o2_02.c",
+      "source": "src/decompiled/lo_o2_03.c",
       "symbol": "sub_543390",
       "source_review": "decompiler_text_review_pending",
       "relocation_count": 9
@@ -184302,7 +184633,7 @@
       "exact": true,
       "target_sha256": "e4afaa89636bd80c4d0d0ccb930ca9e0e27975a08d912e26e66366d2b5df999f",
       "compiled_sha256": "e4afaa89636bd80c4d0d0ccb930ca9e0e27975a08d912e26e66366d2b5df999f",
-      "source": "src/decompiled/lo_o2_02.c",
+      "source": "src/decompiled/lo_o2_03.c",
       "symbol": "sub_543E90",
       "source_review": "decompiler_text_review_pending",
       "relocation_count": 1
@@ -184313,7 +184644,7 @@
       "exact": true,
       "target_sha256": "e530e9efae55fc13c191f86ec08fa7b6a1feb2c35cafa3f06c8cdca33e9c47be",
       "compiled_sha256": "e530e9efae55fc13c191f86ec08fa7b6a1feb2c35cafa3f06c8cdca33e9c47be",
-      "source": "src/decompiled/lo_o2_02.c",
+      "source": "src/decompiled/lo_o2_03.c",
       "symbol": "sub_5465C0",
       "source_review": "decompiler_text_review_pending",
       "relocation_count": 8
@@ -184324,7 +184655,7 @@
       "exact": true,
       "target_sha256": "f79c3bd689573aa51741fbff26a8da921d0097833c6a5f06fa4868ee50f77692",
       "compiled_sha256": "f79c3bd689573aa51741fbff26a8da921d0097833c6a5f06fa4868ee50f77692",
-      "source": "src/decompiled/lo_o2_02.c",
+      "source": "src/decompiled/lo_o2_03.c",
       "symbol": "sub_546630",
       "source_review": "decompiler_text_review_pending",
       "relocation_count": 8
@@ -184335,7 +184666,7 @@
       "exact": true,
       "target_sha256": "c4b76cf513f4519199e645182afaf1c828fea958898d636187fabf6c083c65c2",
       "compiled_sha256": "c4b76cf513f4519199e645182afaf1c828fea958898d636187fabf6c083c65c2",
-      "source": "src/decompiled/lo_o2_02.c",
+      "source": "src/decompiled/lo_o2_03.c",
       "symbol": "sub_546800",
       "source_review": "decompiler_text_review_pending",
       "relocation_count": 4
@@ -184346,7 +184677,7 @@
       "exact": true,
       "target_sha256": "087155175a63d884ea0fdcaac43ef3f2ec465cb748a1e348c89cb64e1e4f2b54",
       "compiled_sha256": "087155175a63d884ea0fdcaac43ef3f2ec465cb748a1e348c89cb64e1e4f2b54",
-      "source": "src/decompiled/lo_o2_02.c",
+      "source": "src/decompiled/lo_o2_03.c",
       "symbol": "sub_546840",
       "source_review": "decompiler_text_review_pending",
       "relocation_count": 6
@@ -184368,7 +184699,7 @@
       "exact": true,
       "target_sha256": "47cd3fa175f719c3d64a56f70e6413bd5ea5378f2f6e77c20b75333c00ca6f7b",
       "compiled_sha256": "47cd3fa175f719c3d64a56f70e6413bd5ea5378f2f6e77c20b75333c00ca6f7b",
-      "source": "src/decompiled/lo_o2_02.c",
+      "source": "src/decompiled/lo_o2_03.c",
       "symbol": "sub_5469D0",
       "source_review": "decompiler_text_review_pending",
       "relocation_count": 4
@@ -184379,7 +184710,7 @@
       "exact": true,
       "target_sha256": "03c6df67adb568f1b770984fe8a3a13c135a1648c13da46547d1e459d3397d45",
       "compiled_sha256": "03c6df67adb568f1b770984fe8a3a13c135a1648c13da46547d1e459d3397d45",
-      "source": "src/decompiled/lo_o2_02.c",
+      "source": "src/decompiled/lo_o2_03.c",
       "symbol": "sub_546A10",
       "source_review": "decompiler_text_review_pending",
       "relocation_count": 6
@@ -184390,7 +184721,7 @@
       "exact": true,
       "target_sha256": "37ce7b384b6a2a007326e0cb61f0b9cdebc565df9cb5882ff2b29b53385d8851",
       "compiled_sha256": "37ce7b384b6a2a007326e0cb61f0b9cdebc565df9cb5882ff2b29b53385d8851",
-      "source": "src/decompiled/lo_o2_02.c",
+      "source": "src/decompiled/lo_o2_03.c",
       "symbol": "sub_546A70",
       "source_review": "decompiler_text_review_pending",
       "relocation_count": 9
@@ -187366,6 +187697,17 @@
       "relocation_count": 1
     },
     {
+      "address": "0x55fbe0",
+      "size": 272,
+      "exact": true,
+      "target_sha256": "9b3b00f722161dab5c3c1c5f06d29f7d46a93565464a9400e06cc0aa491053be",
+      "compiled_sha256": "9b3b00f722161dab5c3c1c5f06d29f7d46a93565464a9400e06cc0aa491053be",
+      "source": "src/decompiled/lo_o2_03.c",
+      "symbol": "sub_55FBE0",
+      "source_review": "decompiler_text_review_pending",
+      "relocation_count": 14
+    },
+    {
       "address": "0x55fcf0",
       "size": 236,
       "exact": true,
@@ -189388,6 +189730,17 @@
       "symbol": "RecoveredLeaf_570c30",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 1
+    },
+    {
+      "address": "0x570db0",
+      "size": 300,
+      "exact": true,
+      "target_sha256": "e9a58ee96711e56bf02561bbf599d6e506cdab048f985199ef0a65d3cf852273",
+      "compiled_sha256": "e9a58ee96711e56bf02561bbf599d6e506cdab048f985199ef0a65d3cf852273",
+      "source": "src/decompiled/lo_o3_00.c",
+      "symbol": "sub_570DB0",
+      "source_review": "decompiler_text_review_pending",
+      "relocation_count": 3
     },
     {
       "address": "0x570ee0",
@@ -204471,6 +204824,39 @@
       "relocation_count": 6
     },
     {
+      "address": "0x5f8150",
+      "size": 248,
+      "exact": true,
+      "target_sha256": "ef9e384b997476a0a2ab1cc5f39a64521d96ec7a4e2d67c0c0e5d44137a2566e",
+      "compiled_sha256": "ef9e384b997476a0a2ab1cc5f39a64521d96ec7a4e2d67c0c0e5d44137a2566e",
+      "source": "src/decompiled/lo_o2_ret_00.cpp",
+      "symbol": "sub_5F8150",
+      "source_review": "decompiler_text_review_pending",
+      "relocation_count": 13
+    },
+    {
+      "address": "0x5f8480",
+      "size": 232,
+      "exact": true,
+      "target_sha256": "6568cf641adba77f6460f0757979e593fca7a1c6ca1cac73c18a8b35cc900e29",
+      "compiled_sha256": "6568cf641adba77f6460f0757979e593fca7a1c6ca1cac73c18a8b35cc900e29",
+      "source": "src/decompiled/lo_o2_ret_00.cpp",
+      "symbol": "sub_5F8480",
+      "source_review": "decompiler_text_review_pending",
+      "relocation_count": 12
+    },
+    {
+      "address": "0x5f88e0",
+      "size": 248,
+      "exact": true,
+      "target_sha256": "a336c1a0aa612fb4b6fc650361ee222109b993cb908db44b763ad888ba08e97d",
+      "compiled_sha256": "a336c1a0aa612fb4b6fc650361ee222109b993cb908db44b763ad888ba08e97d",
+      "source": "src/decompiled/lo_o2_ret_00.cpp",
+      "symbol": "sub_5F88E0",
+      "source_review": "decompiler_text_review_pending",
+      "relocation_count": 13
+    },
+    {
       "address": "0x5f8fb0",
       "size": 168,
       "exact": true,
@@ -217451,6 +217837,17 @@
       "relocation_count": 54
     },
     {
+      "address": "0x62a0f0",
+      "size": 272,
+      "exact": true,
+      "target_sha256": "1339451d35a7d9c7db63bb9c4286f59c7431d74a46413a1c1a443fbca644d74e",
+      "compiled_sha256": "1339451d35a7d9c7db63bb9c4286f59c7431d74a46413a1c1a443fbca644d74e",
+      "source": "src/decompiled/lo_o2_03.c",
+      "symbol": "sub_62A0F0",
+      "source_review": "decompiler_text_review_pending",
+      "relocation_count": 14
+    },
+    {
       "address": "0x62a7e0",
       "size": 188,
       "exact": true,
@@ -217460,6 +217857,17 @@
       "symbol": "sub_62A7E0",
       "source_review": "decompiler_text_review_pending",
       "relocation_count": 9
+    },
+    {
+      "address": "0x62aae0",
+      "size": 264,
+      "exact": true,
+      "target_sha256": "64cc82ca159e4a2a651cbb55b2722cba2281ba2dabb426b34db345868b0b2823",
+      "compiled_sha256": "64cc82ca159e4a2a651cbb55b2722cba2281ba2dabb426b34db345868b0b2823",
+      "source": "src/decompiled/lo_o3_00.c",
+      "symbol": "sub_62AAE0",
+      "source_review": "decompiler_text_review_pending",
+      "relocation_count": 5
     },
     {
       "address": "0x62b030",
@@ -225943,6 +226351,17 @@
       "relocation_count": 0
     },
     {
+      "address": "0x6ed610",
+      "size": 80,
+      "exact": true,
+      "target_sha256": "211319c2484b7973b5a8315b489301abf03797b541d8ef53213be842a2621304",
+      "compiled_sha256": "211319c2484b7973b5a8315b489301abf03797b541d8ef53213be842a2621304",
+      "source": "src/decompiled/hi_strict_cxx_00.cpp",
+      "symbol": "sub_6ED610",
+      "source_review": "decompiler_text_review_pending",
+      "relocation_count": 6
+    },
+    {
       "address": "0x6ed660",
       "size": 28,
       "exact": true,
@@ -226117,6 +226536,17 @@
       "symbol": "_ZNSt3__110__function6__funcI9ForwarderILj7270032ELj16EENS_9allocatorIS3_EEFvvEED0Ev",
       "source_review": "manual_reconstruction",
       "relocation_count": 3
+    },
+    {
+      "address": "0x6eef20",
+      "size": 156,
+      "exact": true,
+      "target_sha256": "25ced266eadfec0e9cf815a1e04a7ce8a5795bd16ceac7230d7fa04e8c365a63",
+      "compiled_sha256": "25ced266eadfec0e9cf815a1e04a7ce8a5795bd16ceac7230d7fa04e8c365a63",
+      "source": "src/decompiled/hi_strict_cxx_01.cpp",
+      "symbol": "sub_6EEF20",
+      "source_review": "decompiler_text_review_pending",
+      "relocation_count": 5
     },
     {
       "address": "0x6ef040",
@@ -226656,6 +227086,28 @@
       "symbol": "RecoveredLeaf_6f2c10",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 0
+    },
+    {
+      "address": "0x6f3bb0",
+      "size": 68,
+      "exact": true,
+      "target_sha256": "aa99f42647c780c2134133f2e9219aecd04411743339298d53df41646beececc",
+      "compiled_sha256": "aa99f42647c780c2134133f2e9219aecd04411743339298d53df41646beececc",
+      "source": "src/decompiled/hi_strict_cxx_00.cpp",
+      "symbol": "sub_6F3BB0",
+      "source_review": "decompiler_text_review_pending",
+      "relocation_count": 9
+    },
+    {
+      "address": "0x6f50d0",
+      "size": 192,
+      "exact": true,
+      "target_sha256": "0a1f5338bc18566fc87da450b73a24336dcfa143ad2f2dcef3459893a6e01f62",
+      "compiled_sha256": "0a1f5338bc18566fc87da450b73a24336dcfa143ad2f2dcef3459893a6e01f62",
+      "source": "src/decompiled/hi_strict_cxx_00.cpp",
+      "symbol": "sub_6F50D0",
+      "source_review": "decompiler_text_review_pending",
+      "relocation_count": 11
     },
     {
       "address": "0x6f5190",
@@ -227338,6 +227790,17 @@
       "symbol": "_Z11TypeAddressILj7343072EEPKvv",
       "source_review": "manual_reconstruction",
       "relocation_count": 2
+    },
+    {
+      "address": "0x700bf0",
+      "size": 192,
+      "exact": true,
+      "target_sha256": "b4efc2909cf9c82efe872f59553d99f304ef0301bc66d8619b3202d64a5866b8",
+      "compiled_sha256": "b4efc2909cf9c82efe872f59553d99f304ef0301bc66d8619b3202d64a5866b8",
+      "source": "src/decompiled/hi_strict_cxx_00.cpp",
+      "symbol": "sub_700BF0",
+      "source_review": "decompiler_text_review_pending",
+      "relocation_count": 11
     },
     {
       "address": "0x7011c0",
@@ -233104,6 +233567,17 @@
       "relocation_count": 8
     },
     {
+      "address": "0x735250",
+      "size": 116,
+      "exact": true,
+      "target_sha256": "5c72d0fa0a640421ceea36855e3288e275d787278476991d251eb5b000a1e877",
+      "compiled_sha256": "5c72d0fa0a640421ceea36855e3288e275d787278476991d251eb5b000a1e877",
+      "source": "src/decompiled/hi_strict_cxx_00.cpp",
+      "symbol": "sub_735250",
+      "source_review": "decompiler_text_review_pending",
+      "relocation_count": 11
+    },
+    {
       "address": "0x7368a0",
       "size": 680,
       "exact": true,
@@ -234235,6 +234709,17 @@
       "symbol": "sub_73EB60",
       "source_review": "decompiler_text_review_pending",
       "relocation_count": 3
+    },
+    {
+      "address": "0x73ec90",
+      "size": 116,
+      "exact": true,
+      "target_sha256": "5f7541802154af1f37be5422242ea74bc16e57c811f270f824e71f1e51f6a452",
+      "compiled_sha256": "5f7541802154af1f37be5422242ea74bc16e57c811f270f824e71f1e51f6a452",
+      "source": "src/decompiled/hi_strict_cxx_00.cpp",
+      "symbol": "sub_73EC90",
+      "source_review": "decompiler_text_review_pending",
+      "relocation_count": 11
     },
     {
       "address": "0x73ed60",
@@ -239957,6 +240442,17 @@
       "relocation_count": 2
     },
     {
+      "address": "0x779250",
+      "size": 404,
+      "exact": true,
+      "target_sha256": "12b95bced1c00231edf7f901f9e473ef26f14e9cd7c1f66c327f41bf62bb6bb9",
+      "compiled_sha256": "12b95bced1c00231edf7f901f9e473ef26f14e9cd7c1f66c327f41bf62bb6bb9",
+      "source": "src/decompiled/hi_nostrict_cxx_00.cpp",
+      "symbol": "sub_779250",
+      "source_review": "decompiler_text_review_pending",
+      "relocation_count": 8
+    },
+    {
       "address": "0x7793f0",
       "size": 4,
       "exact": true,
@@ -240903,6 +241399,17 @@
       "relocation_count": 1
     },
     {
+      "address": "0x7827a0",
+      "size": 112,
+      "exact": true,
+      "target_sha256": "0e041a5e3280b11cbce0b96013104b536acc0f8f231ce8fa42e62f55b542a8b0",
+      "compiled_sha256": "0e041a5e3280b11cbce0b96013104b536acc0f8f231ce8fa42e62f55b542a8b0",
+      "source": "src/decompiled/hi_strict_cxx_00.cpp",
+      "symbol": "sub_7827A0",
+      "source_review": "decompiler_text_review_pending",
+      "relocation_count": 9
+    },
+    {
       "address": "0x782810",
       "size": 52,
       "exact": true,
@@ -241475,6 +241982,17 @@
       "relocation_count": 1
     },
     {
+      "address": "0x785190",
+      "size": 112,
+      "exact": true,
+      "target_sha256": "79f5053ab074fe8237a9a6cde60f8a9d4d532083dbf6164e28497317e1d7672b",
+      "compiled_sha256": "79f5053ab074fe8237a9a6cde60f8a9d4d532083dbf6164e28497317e1d7672b",
+      "source": "src/decompiled/hi_strict_cxx_00.cpp",
+      "symbol": "sub_785190",
+      "source_review": "decompiler_text_review_pending",
+      "relocation_count": 9
+    },
+    {
       "address": "0x785200",
       "size": 72,
       "exact": true,
@@ -241682,6 +242200,17 @@
       "symbol": "RecoveredLeaf_7871b0",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 1
+    },
+    {
+      "address": "0x7871c0",
+      "size": 112,
+      "exact": true,
+      "target_sha256": "9d22fd9d260a030517a227d95a857930422640ccd200d26b401d4738db03d37f",
+      "compiled_sha256": "9d22fd9d260a030517a227d95a857930422640ccd200d26b401d4738db03d37f",
+      "source": "src/decompiled/hi_strict_cxx_00.cpp",
+      "symbol": "sub_7871C0",
+      "source_review": "decompiler_text_review_pending",
+      "relocation_count": 9
     },
     {
       "address": "0x787360",
@@ -252233,6 +252762,17 @@
       "relocation_count": 1
     },
     {
+      "address": "0x7d9fa0",
+      "size": 112,
+      "exact": true,
+      "target_sha256": "e16e60a92cf21cdae5c55fe96fce40a9f035ee7680ab2edbba47952fe637d79d",
+      "compiled_sha256": "e16e60a92cf21cdae5c55fe96fce40a9f035ee7680ab2edbba47952fe637d79d",
+      "source": "src/decompiled/hi_strict_cxx_00.cpp",
+      "symbol": "sub_7D9FA0",
+      "source_review": "decompiler_text_review_pending",
+      "relocation_count": 9
+    },
+    {
       "address": "0x7da010",
       "size": 52,
       "exact": true,
@@ -254565,6 +255105,17 @@
       "relocation_count": 0
     },
     {
+      "address": "0x7ebe30",
+      "size": 56,
+      "exact": true,
+      "target_sha256": "ee23ae8866323355837cf2ce5743dfaf38889e2e22932ed632d118751bbb43d8",
+      "compiled_sha256": "ee23ae8866323355837cf2ce5743dfaf38889e2e22932ed632d118751bbb43d8",
+      "source": "src/decompiled/hi_strict_cxx_00.cpp",
+      "symbol": "sub_7EBE30",
+      "source_review": "decompiler_text_review_pending",
+      "relocation_count": 1
+    },
+    {
       "address": "0x7ebe70",
       "size": 4,
       "exact": true,
@@ -254706,6 +255257,17 @@
       "symbol": "_ZN4SPTG9AsyncTaskILj8309312EE4TickEi",
       "source_review": "manual_reconstruction",
       "relocation_count": 0
+    },
+    {
+      "address": "0x7f4c30",
+      "size": 68,
+      "exact": true,
+      "target_sha256": "63a7f7c3ba6da75683f4995dde7045164eb06148c2190a0e365d5de673ef896d",
+      "compiled_sha256": "63a7f7c3ba6da75683f4995dde7045164eb06148c2190a0e365d5de673ef896d",
+      "source": "src/decompiled/hi_strict_cxx_00.cpp",
+      "symbol": "sub_7F4C30",
+      "source_review": "decompiler_text_review_pending",
+      "relocation_count": 9
     },
     {
       "address": "0x7f5620",
@@ -256301,6 +256863,17 @@
       "symbol": "RecoveredLeaf_803580",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 0
+    },
+    {
+      "address": "0x803590",
+      "size": 196,
+      "exact": true,
+      "target_sha256": "bc005581810aa277902f9bd0fd3cb0fbb12a5677ff00926082ead08217265456",
+      "compiled_sha256": "bc005581810aa277902f9bd0fd3cb0fbb12a5677ff00926082ead08217265456",
+      "source": "src/decompiled/hi_strict_cxx_00.cpp",
+      "symbol": "sub_803590",
+      "source_review": "decompiler_text_review_pending",
+      "relocation_count": 15
     },
     {
       "address": "0x803660",
@@ -263585,6 +264158,17 @@
       "relocation_count": 0
     },
     {
+      "address": "0x854080",
+      "size": 196,
+      "exact": true,
+      "target_sha256": "6cffbff33f83e079e2d1104c07b45e6736df142046edb8b491905e49803055bb",
+      "compiled_sha256": "6cffbff33f83e079e2d1104c07b45e6736df142046edb8b491905e49803055bb",
+      "source": "src/decompiled/hi_strict_cxx_00.cpp",
+      "symbol": "sub_854080",
+      "source_review": "decompiler_text_review_pending",
+      "relocation_count": 15
+    },
+    {
       "address": "0x854150",
       "size": 4,
       "exact": true,
@@ -266302,6 +266886,17 @@
       "relocation_count": 0
     },
     {
+      "address": "0x86ec80",
+      "size": 208,
+      "exact": true,
+      "target_sha256": "a844531b9b7022157b632cf7380f812d931d9776afda0c868b22965ba7f7d910",
+      "compiled_sha256": "a844531b9b7022157b632cf7380f812d931d9776afda0c868b22965ba7f7d910",
+      "source": "src/decompiled/hi_strict_cxx_00.cpp",
+      "symbol": "sub_86EC80",
+      "source_review": "decompiler_text_review_pending",
+      "relocation_count": 15
+    },
+    {
       "address": "0x86ed50",
       "size": 4,
       "exact": true,
@@ -266588,6 +267183,17 @@
       "relocation_count": 0
     },
     {
+      "address": "0x870010",
+      "size": 196,
+      "exact": true,
+      "target_sha256": "7bf12a98b6ac4c2445e33cffdb4f7063957bf50e2f61e85477f01b2ba6e70be3",
+      "compiled_sha256": "7bf12a98b6ac4c2445e33cffdb4f7063957bf50e2f61e85477f01b2ba6e70be3",
+      "source": "src/decompiled/hi_strict_cxx_00.cpp",
+      "symbol": "sub_870010",
+      "source_review": "decompiler_text_review_pending",
+      "relocation_count": 15
+    },
+    {
       "address": "0x870420",
       "size": 4,
       "exact": true,
@@ -266797,6 +267403,17 @@
       "relocation_count": 0
     },
     {
+      "address": "0x871f00",
+      "size": 204,
+      "exact": true,
+      "target_sha256": "154fbfdf0c765e3eacdd1eed2b9d7a1cc3d61827d2974dd75d5611bbdb4fa3a7",
+      "compiled_sha256": "154fbfdf0c765e3eacdd1eed2b9d7a1cc3d61827d2974dd75d5611bbdb4fa3a7",
+      "source": "src/decompiled/hi_strict_cxx_00.cpp",
+      "symbol": "sub_871F00",
+      "source_review": "decompiler_text_review_pending",
+      "relocation_count": 16
+    },
+    {
       "address": "0x872210",
       "size": 68,
       "exact": true,
@@ -266861,6 +267478,17 @@
       "symbol": "RecoveredLeaf_873460",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 0
+    },
+    {
+      "address": "0x873470",
+      "size": 204,
+      "exact": true,
+      "target_sha256": "effa3883da8d7b278c0eadd59de878059b46d87817e4512846e53ebc24ffbd11",
+      "compiled_sha256": "effa3883da8d7b278c0eadd59de878059b46d87817e4512846e53ebc24ffbd11",
+      "source": "src/decompiled/hi_strict_cxx_00.cpp",
+      "symbol": "sub_873470",
+      "source_review": "decompiler_text_review_pending",
+      "relocation_count": 15
     },
     {
       "address": "0x8746d0",
@@ -278664,6 +279292,17 @@
       "symbol": "RecoveredLeaf_8cac90",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 0
+    },
+    {
+      "address": "0x8caf40",
+      "size": 164,
+      "exact": true,
+      "target_sha256": "27f5405ed1d4ea4327c9966b8ecd30e6dc3fabbd28507636ff4982877d2bd8dd",
+      "compiled_sha256": "27f5405ed1d4ea4327c9966b8ecd30e6dc3fabbd28507636ff4982877d2bd8dd",
+      "source": "src/decompiled/hi_strict_cxx_00.cpp",
+      "symbol": "sub_8CAF40",
+      "source_review": "decompiler_text_review_pending",
+      "relocation_count": 3
     },
     {
       "address": "0x8caff0",
@@ -318541,6 +319180,17 @@
       "relocation_count": 1
     },
     {
+      "address": "0xa7f450",
+      "size": 536,
+      "exact": true,
+      "target_sha256": "9d59f7cc88a3f0580ad7ac39a49e8b20ee44cba259dbeb09b5bafbf5c37364dd",
+      "compiled_sha256": "9d59f7cc88a3f0580ad7ac39a49e8b20ee44cba259dbeb09b5bafbf5c37364dd",
+      "source": "src/decompiled/hi_strict_00.c",
+      "symbol": "sub_A7F450",
+      "source_review": "decompiler_text_review_pending",
+      "relocation_count": 19
+    },
+    {
       "address": "0xa804d0",
       "size": 308,
       "exact": true,
@@ -318550,6 +319200,17 @@
       "symbol": "RecoveredLeaf_a804d0",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 3
+    },
+    {
+      "address": "0xa80c10",
+      "size": 360,
+      "exact": true,
+      "target_sha256": "0e58b105498567997ba44fc5ca0f721af2b9f67d4e88706f9d720e119a04c41a",
+      "compiled_sha256": "0e58b105498567997ba44fc5ca0f721af2b9f67d4e88706f9d720e119a04c41a",
+      "source": "src/decompiled/hi_strict_00.c",
+      "symbol": "sub_A80C10",
+      "source_review": "decompiler_text_review_pending",
+      "relocation_count": 9
     },
     {
       "address": "0xa82250",
@@ -319331,6 +319992,17 @@
       "symbol": "sub_A95750",
       "source_review": "decompiler_text_review_pending",
       "relocation_count": 0
+    },
+    {
+      "address": "0xa95770",
+      "size": 152,
+      "exact": true,
+      "target_sha256": "8847cf94dbb0976622eb68bf811b72d7783d7dddf77ff6590a4604044bdea98f",
+      "compiled_sha256": "8847cf94dbb0976622eb68bf811b72d7783d7dddf77ff6590a4604044bdea98f",
+      "source": "src/decompiled/hi_strict_00.c",
+      "symbol": "sub_A95770",
+      "source_review": "decompiler_text_review_pending",
+      "relocation_count": 4
     },
     {
       "address": "0xa988c0",
@@ -321212,6 +321884,17 @@
       "symbol": "RecoveredLeaf_aa60b0",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 0
+    },
+    {
+      "address": "0xaa72e0",
+      "size": 144,
+      "exact": true,
+      "target_sha256": "1c3591ba37e1d29f13885ab36c6fc2d485b5aa20a965e8392b57c603f82ed437",
+      "compiled_sha256": "1c3591ba37e1d29f13885ab36c6fc2d485b5aa20a965e8392b57c603f82ed437",
+      "source": "src/decompiled/hi_strict_cxx_00.cpp",
+      "symbol": "sub_AA72E0",
+      "source_review": "decompiler_text_review_pending",
+      "relocation_count": 7
     },
     {
       "address": "0xaa7710",
@@ -324382,6 +325065,17 @@
       "relocation_count": 0
     },
     {
+      "address": "0xaaf650",
+      "size": 160,
+      "exact": true,
+      "target_sha256": "ff11585ddbdda1a074be481e6a46369315e34beaa1047cf6f1f37d7de27cd426",
+      "compiled_sha256": "ff11585ddbdda1a074be481e6a46369315e34beaa1047cf6f1f37d7de27cd426",
+      "source": "src/decompiled/hi_strict_00.c",
+      "symbol": "sub_AAF650",
+      "source_review": "decompiler_text_review_pending",
+      "relocation_count": 4
+    },
+    {
       "address": "0xaaf6f0",
       "size": 16,
       "exact": true,
@@ -324402,6 +325096,17 @@
       "symbol": "RecoveredLeaf_aaf700",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 0
+    },
+    {
+      "address": "0xaaf820",
+      "size": 236,
+      "exact": true,
+      "target_sha256": "ad876aec9007b1044658844fc02e6461ad2f82a97d0ac421279ecf41586d0013",
+      "compiled_sha256": "ad876aec9007b1044658844fc02e6461ad2f82a97d0ac421279ecf41586d0013",
+      "source": "src/decompiled/hi_strict_00.c",
+      "symbol": "sub_AAF820",
+      "source_review": "decompiler_text_review_pending",
+      "relocation_count": 4
     },
     {
       "address": "0xaafa20",
@@ -327317,6 +328022,17 @@
       "symbol": "RecoveredLeaf_ac7cd0",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 2
+    },
+    {
+      "address": "0xac7d00",
+      "size": 232,
+      "exact": true,
+      "target_sha256": "4038b1da35ca333fcd03c803e3bb053933d8adbf3a6c75e829a9f7520e29898c",
+      "compiled_sha256": "4038b1da35ca333fcd03c803e3bb053933d8adbf3a6c75e829a9f7520e29898c",
+      "source": "src/decompiled/hi_strict_cxx_00.cpp",
+      "symbol": "sub_AC7D00",
+      "source_review": "decompiler_text_review_pending",
+      "relocation_count": 11
     },
     {
       "address": "0xac7df0",
@@ -352465,6 +353181,17 @@
       "relocation_count": 0
     },
     {
+      "address": "0xbacfe0",
+      "size": 48,
+      "exact": true,
+      "target_sha256": "0d5f0b062e4d0e8b3b4edd857c15a84460d9d61d7d93074ad34ebc6ffc222a07",
+      "compiled_sha256": "0d5f0b062e4d0e8b3b4edd857c15a84460d9d61d7d93074ad34ebc6ffc222a07",
+      "source": "src/decompiled/hi_strict_cxx_00.cpp",
+      "symbol": "sub_BACFE0",
+      "source_review": "decompiler_text_review_pending",
+      "relocation_count": 1
+    },
+    {
       "address": "0xbad010",
       "size": 4,
       "exact": true,
@@ -356557,6 +357284,17 @@
       "relocation_count": 0
     },
     {
+      "address": "0xbe8420",
+      "size": 68,
+      "exact": true,
+      "target_sha256": "be5a1f46459822bc37b28177c17eb6a7c97c971c86f34ced33d4f0382fa44479",
+      "compiled_sha256": "be5a1f46459822bc37b28177c17eb6a7c97c971c86f34ced33d4f0382fa44479",
+      "source": "src/decompiled/hi_strict_cxx_00.cpp",
+      "symbol": "sub_BE8420",
+      "source_review": "decompiler_text_review_pending",
+      "relocation_count": 9
+    },
+    {
       "address": "0xbe9dc0",
       "size": 4,
       "exact": true,
@@ -360308,6 +361046,17 @@
       "relocation_count": 1
     },
     {
+      "address": "0xc21ca0",
+      "size": 112,
+      "exact": true,
+      "target_sha256": "dcf1ede183a7bce7023e26b5c57460e74de743003dbae4bf9777aab2892acf12",
+      "compiled_sha256": "dcf1ede183a7bce7023e26b5c57460e74de743003dbae4bf9777aab2892acf12",
+      "source": "src/decompiled/hi_strict_cxx_00.cpp",
+      "symbol": "sub_C21CA0",
+      "source_review": "decompiler_text_review_pending",
+      "relocation_count": 9
+    },
+    {
       "address": "0xc21d10",
       "size": 176,
       "exact": true,
@@ -360724,6 +361473,17 @@
       "symbol": "_Z11TypeAddressILj12728032EEPKvv",
       "source_review": "manual_reconstruction",
       "relocation_count": 2
+    },
+    {
+      "address": "0xc23810",
+      "size": 92,
+      "exact": true,
+      "target_sha256": "24fbf6bbdab88c6baef7b19ec38005cd76c7d667a9c1965af68f721ee4961f5b",
+      "compiled_sha256": "24fbf6bbdab88c6baef7b19ec38005cd76c7d667a9c1965af68f721ee4961f5b",
+      "source": "src/decompiled/hi_strict_cxx_00.cpp",
+      "symbol": "sub_C23810",
+      "source_review": "decompiler_text_review_pending",
+      "relocation_count": 6
     },
     {
       "address": "0xc23870",
@@ -361969,6 +362729,17 @@
       "relocation_count": 1
     },
     {
+      "address": "0xc2cbc0",
+      "size": 112,
+      "exact": true,
+      "target_sha256": "c8059691807687d2f970426c8f4bca8c19f858f2c225dba98e310390dbab2087",
+      "compiled_sha256": "c8059691807687d2f970426c8f4bca8c19f858f2c225dba98e310390dbab2087",
+      "source": "src/decompiled/hi_strict_cxx_00.cpp",
+      "symbol": "sub_C2CBC0",
+      "source_review": "decompiler_text_review_pending",
+      "relocation_count": 9
+    },
+    {
       "address": "0xc2cc80",
       "size": 4,
       "exact": true,
@@ -362143,6 +362914,17 @@
       "symbol": "RecoveredLeaf_c2e630",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 1
+    },
+    {
+      "address": "0xc2e640",
+      "size": 112,
+      "exact": true,
+      "target_sha256": "24d4d419cd4ed6d78b32d5b064f65a9de0c7a759d76ff69f812eeefc0437ed26",
+      "compiled_sha256": "24d4d419cd4ed6d78b32d5b064f65a9de0c7a759d76ff69f812eeefc0437ed26",
+      "source": "src/decompiled/hi_strict_cxx_00.cpp",
+      "symbol": "sub_C2E640",
+      "source_review": "decompiler_text_review_pending",
+      "relocation_count": 9
     },
     {
       "address": "0xc2e700",
@@ -362453,6 +363235,17 @@
       "relocation_count": 1
     },
     {
+      "address": "0xc30c40",
+      "size": 112,
+      "exact": true,
+      "target_sha256": "f9bad6f216b1d9548ead293c0851c4162aafe2a2e36b6e51ed529e78bb728b71",
+      "compiled_sha256": "f9bad6f216b1d9548ead293c0851c4162aafe2a2e36b6e51ed529e78bb728b71",
+      "source": "src/decompiled/hi_strict_cxx_00.cpp",
+      "symbol": "sub_C30C40",
+      "source_review": "decompiler_text_review_pending",
+      "relocation_count": 9
+    },
+    {
       "address": "0xc30d00",
       "size": 4,
       "exact": true,
@@ -362627,6 +363420,17 @@
       "symbol": "RecoveredLeaf_c325c0",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 1
+    },
+    {
+      "address": "0xc325d0",
+      "size": 112,
+      "exact": true,
+      "target_sha256": "79c754312bed5c186bba59a64bdee8a88f1552a194263dd78fdf174a8dc2f76c",
+      "compiled_sha256": "79c754312bed5c186bba59a64bdee8a88f1552a194263dd78fdf174a8dc2f76c",
+      "source": "src/decompiled/hi_strict_cxx_00.cpp",
+      "symbol": "sub_C325D0",
+      "source_review": "decompiler_text_review_pending",
+      "relocation_count": 9
     },
     {
       "address": "0xc32690",
@@ -364741,6 +365545,17 @@
       "relocation_count": 1
     },
     {
+      "address": "0xc3ad00",
+      "size": 120,
+      "exact": true,
+      "target_sha256": "182255fd2ecf7db1bfc535a3c20eeb5d892c42ef4ceb94c675cf6a3a8899d6a8",
+      "compiled_sha256": "182255fd2ecf7db1bfc535a3c20eeb5d892c42ef4ceb94c675cf6a3a8899d6a8",
+      "source": "src/decompiled/hi_strict_cxx_00.cpp",
+      "symbol": "sub_C3AD00",
+      "source_review": "decompiler_text_review_pending",
+      "relocation_count": 9
+    },
+    {
       "address": "0xc3ad80",
       "size": 8,
       "exact": true,
@@ -364794,6 +365609,17 @@
       "symbol": "RecoveredLeaf_c3c610",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 1
+    },
+    {
+      "address": "0xc3c620",
+      "size": 120,
+      "exact": true,
+      "target_sha256": "95cb4b5ccf06602cf71604a17ab95cc78d002d881cf102e4d2916480af4056aa",
+      "compiled_sha256": "95cb4b5ccf06602cf71604a17ab95cc78d002d881cf102e4d2916480af4056aa",
+      "source": "src/decompiled/hi_strict_cxx_00.cpp",
+      "symbol": "sub_C3C620",
+      "source_review": "decompiler_text_review_pending",
+      "relocation_count": 9
     },
     {
       "address": "0xc3c6a0",
@@ -367502,6 +368328,17 @@
       "relocation_count": 3
     },
     {
+      "address": "0xc489c0",
+      "size": 156,
+      "exact": true,
+      "target_sha256": "4720aa6733aa076aa8bd63fb02ac92a2c12c7daa7e3cbcc5acf9419d97a7962a",
+      "compiled_sha256": "4720aa6733aa076aa8bd63fb02ac92a2c12c7daa7e3cbcc5acf9419d97a7962a",
+      "source": "src/decompiled/hi_strict_cxx_00.cpp",
+      "symbol": "sub_C489C0",
+      "source_review": "decompiler_text_review_pending",
+      "relocation_count": 5
+    },
+    {
       "address": "0xc48ae0",
       "size": 48,
       "exact": true,
@@ -368173,6 +369010,17 @@
       "relocation_count": 3
     },
     {
+      "address": "0xc4b250",
+      "size": 156,
+      "exact": true,
+      "target_sha256": "cec80b1f28e39b2fbf37ed0484199901304fc4ee9f9db3e1d37d6f108b6fb8cb",
+      "compiled_sha256": "cec80b1f28e39b2fbf37ed0484199901304fc4ee9f9db3e1d37d6f108b6fb8cb",
+      "source": "src/decompiled/hi_strict_cxx_01.cpp",
+      "symbol": "sub_C4B250",
+      "source_review": "decompiler_text_review_pending",
+      "relocation_count": 5
+    },
+    {
       "address": "0xc4b370",
       "size": 48,
       "exact": true,
@@ -368336,6 +369184,17 @@
       "symbol": "_ZNSt3__110__function6__funcI9ForwarderILj12892320ELj16EENS_9allocatorIS3_EEFvvEED0Ev",
       "source_review": "manual_reconstruction",
       "relocation_count": 3
+    },
+    {
+      "address": "0xc4b930",
+      "size": 156,
+      "exact": true,
+      "target_sha256": "e290dbfd36143231f056f97a8c47a19802c9e4ba1db6a2885e42dfb4b8a0b271",
+      "compiled_sha256": "e290dbfd36143231f056f97a8c47a19802c9e4ba1db6a2885e42dfb4b8a0b271",
+      "source": "src/decompiled/hi_strict_cxx_01.cpp",
+      "symbol": "sub_C4B930",
+      "source_review": "decompiler_text_review_pending",
+      "relocation_count": 5
     },
     {
       "address": "0xc4ba50",
@@ -368525,6 +369384,17 @@
       "relocation_count": 3
     },
     {
+      "address": "0xc4d010",
+      "size": 164,
+      "exact": true,
+      "target_sha256": "8b29e36829cc127dabde185a79ea12529d3f7a8e53eba4c3f0cc0abb98fed6b7",
+      "compiled_sha256": "8b29e36829cc127dabde185a79ea12529d3f7a8e53eba4c3f0cc0abb98fed6b7",
+      "source": "src/decompiled/hi_strict_cxx_00.cpp",
+      "symbol": "sub_C4D010",
+      "source_review": "decompiler_text_review_pending",
+      "relocation_count": 5
+    },
+    {
       "address": "0xc4d150",
       "size": 48,
       "exact": true,
@@ -368589,6 +369459,17 @@
       "symbol": "_ZNSt3__110__function6__funcI9ForwarderILj12899664ELj16EENS_9allocatorIS3_EEFvvEED0Ev",
       "source_review": "manual_reconstruction",
       "relocation_count": 3
+    },
+    {
+      "address": "0xc4d5e0",
+      "size": 156,
+      "exact": true,
+      "target_sha256": "ce6fc8e7739e7d4d6f28f2cedae53d649c39c5570e241351724b1f232dcb1c3e",
+      "compiled_sha256": "ce6fc8e7739e7d4d6f28f2cedae53d649c39c5570e241351724b1f232dcb1c3e",
+      "source": "src/decompiled/hi_strict_cxx_01.cpp",
+      "symbol": "sub_C4D5E0",
+      "source_review": "decompiler_text_review_pending",
+      "relocation_count": 5
     },
     {
       "address": "0xc4d700",
@@ -368833,6 +369714,17 @@
       "relocation_count": 3
     },
     {
+      "address": "0xc4df00",
+      "size": 156,
+      "exact": true,
+      "target_sha256": "11beaf1042b4fcfb8cf28305ee6554815413c07a7f1d1a313d999de36940ba9b",
+      "compiled_sha256": "11beaf1042b4fcfb8cf28305ee6554815413c07a7f1d1a313d999de36940ba9b",
+      "source": "src/decompiled/hi_strict_cxx_01.cpp",
+      "symbol": "sub_C4DF00",
+      "source_review": "decompiler_text_review_pending",
+      "relocation_count": 5
+    },
+    {
       "address": "0xc4e020",
       "size": 48,
       "exact": true,
@@ -368998,6 +369890,17 @@
       "relocation_count": 3
     },
     {
+      "address": "0xc4e6c0",
+      "size": 156,
+      "exact": true,
+      "target_sha256": "b00c265322712be28bba7045b95013911b793f19f6478eee2a3939ca547192b1",
+      "compiled_sha256": "b00c265322712be28bba7045b95013911b793f19f6478eee2a3939ca547192b1",
+      "source": "src/decompiled/hi_strict_cxx_01.cpp",
+      "symbol": "sub_C4E6C0",
+      "source_review": "decompiler_text_review_pending",
+      "relocation_count": 5
+    },
+    {
       "address": "0xc4e7e0",
       "size": 48,
       "exact": true,
@@ -369161,6 +370064,17 @@
       "symbol": "_ZNSt3__110__function6__funcI9ForwarderILj12905792ELj16EENS_9allocatorIS3_EEFvvEED0Ev",
       "source_review": "manual_reconstruction",
       "relocation_count": 3
+    },
+    {
+      "address": "0xc4edd0",
+      "size": 156,
+      "exact": true,
+      "target_sha256": "56a1bcf7d45d4ae3f4274efd9cb7e5b140ea3b72470f56d73224fe6ae3b1044b",
+      "compiled_sha256": "56a1bcf7d45d4ae3f4274efd9cb7e5b140ea3b72470f56d73224fe6ae3b1044b",
+      "source": "src/decompiled/hi_strict_cxx_01.cpp",
+      "symbol": "sub_C4EDD0",
+      "source_review": "decompiler_text_review_pending",
+      "relocation_count": 5
     },
     {
       "address": "0xc4eef0",
@@ -369425,6 +370339,17 @@
       "symbol": "_ZNSt3__110__function6__funcI9ForwarderILj12908128ELj0EENS_9allocatorIS3_EEFvvEED0Ev",
       "source_review": "manual_reconstruction",
       "relocation_count": 3
+    },
+    {
+      "address": "0xc4f6f0",
+      "size": 148,
+      "exact": true,
+      "target_sha256": "e37d5e2d4fc0fad86d2a2aaf13f0b50031f6776f87ab4f273768803a50d33936",
+      "compiled_sha256": "e37d5e2d4fc0fad86d2a2aaf13f0b50031f6776f87ab4f273768803a50d33936",
+      "source": "src/decompiled/hi_strict_cxx_01.cpp",
+      "symbol": "sub_C4F6F0",
+      "source_review": "decompiler_text_review_pending",
+      "relocation_count": 5
     },
     {
       "address": "0xc4f790",
@@ -372232,6 +373157,28 @@
       "relocation_count": 4
     },
     {
+      "address": "0xc5da50",
+      "size": 208,
+      "exact": true,
+      "target_sha256": "0ae47e206a73c0852a81fdc284064c861545e2123f029cd84b68d396ea713493",
+      "compiled_sha256": "0ae47e206a73c0852a81fdc284064c861545e2123f029cd84b68d396ea713493",
+      "source": "src/decompiled/hi_strict_cxx_00.cpp",
+      "symbol": "sub_C5DA50",
+      "source_review": "decompiler_text_review_pending",
+      "relocation_count": 14
+    },
+    {
+      "address": "0xc5dcc0",
+      "size": 200,
+      "exact": true,
+      "target_sha256": "4f85ca3ff48583f78fb4d3483859c848403c73b362520f21064361e813b4efe9",
+      "compiled_sha256": "4f85ca3ff48583f78fb4d3483859c848403c73b362520f21064361e813b4efe9",
+      "source": "src/decompiled/hi_strict_cxx_00.cpp",
+      "symbol": "sub_C5DCC0",
+      "source_review": "decompiler_text_review_pending",
+      "relocation_count": 14
+    },
+    {
       "address": "0xc5e070",
       "size": 108,
       "exact": true,
@@ -372252,6 +373199,17 @@
       "symbol": "RecoveredLeaf_c5e160",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 6
+    },
+    {
+      "address": "0xc5e1b0",
+      "size": 128,
+      "exact": true,
+      "target_sha256": "2629346b2701168bdd271e88e7c21c19779d7aa5cdb79ca02ab61feaf160f381",
+      "compiled_sha256": "2629346b2701168bdd271e88e7c21c19779d7aa5cdb79ca02ab61feaf160f381",
+      "source": "src/decompiled/hi_strict_cxx_00.cpp",
+      "symbol": "sub_C5E1B0",
+      "source_review": "decompiler_text_review_pending",
+      "relocation_count": 11
     },
     {
       "address": "0xc5e230",
@@ -372595,6 +373553,17 @@
       "relocation_count": 6
     },
     {
+      "address": "0xc60eb0",
+      "size": 132,
+      "exact": true,
+      "target_sha256": "d1295b23db0161cb4c1e80598c73071fd509739b63fba666c8941cb01db780d7",
+      "compiled_sha256": "d1295b23db0161cb4c1e80598c73071fd509739b63fba666c8941cb01db780d7",
+      "source": "src/decompiled/hi_strict_cxx_00.cpp",
+      "symbol": "sub_C60EB0",
+      "source_review": "decompiler_text_review_pending",
+      "relocation_count": 11
+    },
+    {
       "address": "0xc61040",
       "size": 96,
       "exact": true,
@@ -372604,6 +373573,17 @@
       "symbol": "RecoveredLeaf_c61040",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 8
+    },
+    {
+      "address": "0xc636b0",
+      "size": 132,
+      "exact": true,
+      "target_sha256": "ccd0d9c9438c1df024f4fb45ed1170a0bb638d051801626f897f30ee9aefdf01",
+      "compiled_sha256": "ccd0d9c9438c1df024f4fb45ed1170a0bb638d051801626f897f30ee9aefdf01",
+      "source": "src/decompiled/hi_strict_cxx_00.cpp",
+      "symbol": "sub_C636B0",
+      "source_review": "decompiler_text_review_pending",
+      "relocation_count": 11
     },
     {
       "address": "0xc63740",
@@ -372648,6 +373628,17 @@
       "symbol": "_Z29Create_Onyx_BarChartComponentv",
       "source_review": "manual_reconstruction",
       "relocation_count": 50
+    },
+    {
+      "address": "0xc645c0",
+      "size": 184,
+      "exact": true,
+      "target_sha256": "1ca93edef4e0c51a663ea46bfd7042fa58eb0b298afd7ce88c795ca3003674c8",
+      "compiled_sha256": "1ca93edef4e0c51a663ea46bfd7042fa58eb0b298afd7ce88c795ca3003674c8",
+      "source": "src/decompiled/hi_strict_cxx_00.cpp",
+      "symbol": "sub_C645C0",
+      "source_review": "decompiler_text_review_pending",
+      "relocation_count": 12
     },
     {
       "address": "0xc64680",
@@ -385492,7 +386483,7 @@
       "exact": true,
       "target_sha256": "2860b7824ed892c4e95bea26bc6931335e3fa6b9e5ed9e0d564291d01263c626",
       "compiled_sha256": "2860b7824ed892c4e95bea26bc6931335e3fa6b9e5ed9e0d564291d01263c626",
-      "source": "src/decompiled/hi_strict_00.c",
+      "source": "src/decompiled/hi_strict_01.c",
       "symbol": "sub_CC55D0",
       "source_review": "decompiler_text_review_pending",
       "relocation_count": 0
@@ -385503,7 +386494,7 @@
       "exact": true,
       "target_sha256": "3d3560de87bcf20a88d3cb8968dd48c686786c331f16af39640eac96b55e81ce",
       "compiled_sha256": "3d3560de87bcf20a88d3cb8968dd48c686786c331f16af39640eac96b55e81ce",
-      "source": "src/decompiled/hi_strict_00.c",
+      "source": "src/decompiled/hi_strict_01.c",
       "symbol": "sub_CC5600",
       "source_review": "decompiler_text_review_pending",
       "relocation_count": 0
@@ -385558,7 +386549,7 @@
       "exact": true,
       "target_sha256": "10e36b0ffd37044d1d0e2213bf567b3bacbcf1641f8c817623838d4a042ab45b",
       "compiled_sha256": "10e36b0ffd37044d1d0e2213bf567b3bacbcf1641f8c817623838d4a042ab45b",
-      "source": "src/decompiled/hi_strict_00.c",
+      "source": "src/decompiled/hi_strict_01.c",
       "symbol": "sub_CC5680",
       "source_review": "decompiler_text_review_pending",
       "relocation_count": 0
@@ -385613,7 +386604,7 @@
       "exact": true,
       "target_sha256": "5b098ad3c6e9935d5b67534306b334065f8143e28c5fc7cabc2e422d320e6e61",
       "compiled_sha256": "5b098ad3c6e9935d5b67534306b334065f8143e28c5fc7cabc2e422d320e6e61",
-      "source": "src/decompiled/hi_strict_00.c",
+      "source": "src/decompiled/hi_strict_01.c",
       "symbol": "sub_CC56D0",
       "source_review": "decompiler_text_review_pending",
       "relocation_count": 0
@@ -385624,7 +386615,7 @@
       "exact": true,
       "target_sha256": "10e36b0ffd37044d1d0e2213bf567b3bacbcf1641f8c817623838d4a042ab45b",
       "compiled_sha256": "10e36b0ffd37044d1d0e2213bf567b3bacbcf1641f8c817623838d4a042ab45b",
-      "source": "src/decompiled/hi_strict_00.c",
+      "source": "src/decompiled/hi_strict_01.c",
       "symbol": "sub_CC56E0",
       "source_review": "decompiler_text_review_pending",
       "relocation_count": 0
@@ -397928,6 +398919,17 @@
       "relocation_count": 2
     },
     {
+      "address": "0xd175f0",
+      "size": 176,
+      "exact": true,
+      "target_sha256": "3fb170e64f6aa5335278d2db0d98cd6dfa5abda150031a56ffd65f38b8341eb9",
+      "compiled_sha256": "3fb170e64f6aa5335278d2db0d98cd6dfa5abda150031a56ffd65f38b8341eb9",
+      "source": "src/decompiled/hi_strict_cxx_00.cpp",
+      "symbol": "sub_D175F0",
+      "source_review": "decompiler_text_review_pending",
+      "relocation_count": 9
+    },
+    {
       "address": "0xd19850",
       "size": 76,
       "exact": true,
@@ -399730,6 +400732,17 @@
       "symbol": "RecoveredLeaf_d2c8f0",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 0
+    },
+    {
+      "address": "0xd2f010",
+      "size": 148,
+      "exact": true,
+      "target_sha256": "833d98c2dc0af1ae2cd707cfd88c02868ff74a0cfadfeb5e731f2c7b308f771f",
+      "compiled_sha256": "833d98c2dc0af1ae2cd707cfd88c02868ff74a0cfadfeb5e731f2c7b308f771f",
+      "source": "src/decompiled/hi_strict_cxx_00.cpp",
+      "symbol": "sub_D2F010",
+      "source_review": "decompiler_text_review_pending",
+      "relocation_count": 9
     },
     {
       "address": "0xd2fdd0",
@@ -401954,6 +402967,17 @@
       "relocation_count": 0
     },
     {
+      "address": "0xd3c280",
+      "size": 48,
+      "exact": true,
+      "target_sha256": "9f1b20b2cbbffc09d7ca89556cb584053774f343d03877fc4e937a9d21276320",
+      "compiled_sha256": "9f1b20b2cbbffc09d7ca89556cb584053774f343d03877fc4e937a9d21276320",
+      "source": "src/decompiled/hi_strict_01.c",
+      "symbol": "sub_D3C280",
+      "source_review": "decompiler_text_review_pending",
+      "relocation_count": 0
+    },
+    {
       "address": "0xd3c2b0",
       "size": 172,
       "exact": true,
@@ -402493,6 +403517,17 @@
       "relocation_count": 1
     },
     {
+      "address": "0xd44170",
+      "size": 68,
+      "exact": true,
+      "target_sha256": "e159d6e653ffc89b317baa739cdee5c7f99441109f557d0d7dca806b458357b1",
+      "compiled_sha256": "e159d6e653ffc89b317baa739cdee5c7f99441109f557d0d7dca806b458357b1",
+      "source": "src/decompiled/hi_strict_cxx_00.cpp",
+      "symbol": "sub_D44170",
+      "source_review": "decompiler_text_review_pending",
+      "relocation_count": 9
+    },
+    {
       "address": "0xd452a0",
       "size": 180,
       "exact": true,
@@ -402986,6 +404021,17 @@
       "symbol": "_Z16DestroyAllocatedILj13965440EEvPv",
       "source_review": "manual_reconstruction",
       "relocation_count": 2
+    },
+    {
+      "address": "0xd54040",
+      "size": 208,
+      "exact": true,
+      "target_sha256": "7d3ecad8fb0f430a0631000d11c720314744294d0f6d7c73f8c9cbc3566cef80",
+      "compiled_sha256": "7d3ecad8fb0f430a0631000d11c720314744294d0f6d7c73f8c9cbc3566cef80",
+      "source": "src/decompiled/hi_strict_cxx_00.cpp",
+      "symbol": "sub_D54040",
+      "source_review": "decompiler_text_review_pending",
+      "relocation_count": 19
     },
     {
       "address": "0xd56550",
@@ -404262,6 +405308,17 @@
       "symbol": "_ZN8DareListILj14047984EED1Ev",
       "source_review": "manual_reconstruction",
       "relocation_count": 5
+    },
+    {
+      "address": "0xd68820",
+      "size": 196,
+      "exact": true,
+      "target_sha256": "178920f2daac5f2405514292c532486db512406afe4c9ef150699f2b9ccc3b8f",
+      "compiled_sha256": "178920f2daac5f2405514292c532486db512406afe4c9ef150699f2b9ccc3b8f",
+      "source": "src/decompiled/hi_strict_cxx_00.cpp",
+      "symbol": "sub_D68820",
+      "source_review": "decompiler_text_review_pending",
+      "relocation_count": 11
     },
     {
       "address": "0xd68c20",
@@ -408068,6 +409125,17 @@
       "symbol": "RecoveredLeaf_d87c00",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 0
+    },
+    {
+      "address": "0xd87dc0",
+      "size": 568,
+      "exact": true,
+      "target_sha256": "bcb3ee8869b214d26909d148557daf5f76513f162b38fd966bde0aab31119abf",
+      "compiled_sha256": "bcb3ee8869b214d26909d148557daf5f76513f162b38fd966bde0aab31119abf",
+      "source": "src/decompiled/hi_strict_01.c",
+      "symbol": "sub_D87DC0",
+      "source_review": "decompiler_text_review_pending",
+      "relocation_count": 32
     },
     {
       "address": "0xd88000",
@@ -420445,6 +421513,17 @@
       "relocation_count": 2
     },
     {
+      "address": "0xdf7370",
+      "size": 224,
+      "exact": true,
+      "target_sha256": "7cfe0fc20e1d13bf24cbd0c0423d4d0e2e28225b6e4cdb5ff229ff93b14800e0",
+      "compiled_sha256": "7cfe0fc20e1d13bf24cbd0c0423d4d0e2e28225b6e4cdb5ff229ff93b14800e0",
+      "source": "src/decompiled/hi_strict_cxx_00.cpp",
+      "symbol": "sub_DF7370",
+      "source_review": "decompiler_text_review_pending",
+      "relocation_count": 4
+    },
+    {
       "address": "0xdf7450",
       "size": 8,
       "exact": true,
@@ -421842,6 +422921,17 @@
       "relocation_count": 2
     },
     {
+      "address": "0xe08000",
+      "size": 104,
+      "exact": true,
+      "target_sha256": "7e813868616188156cd5d2e381236dfa56754e437014bb687f418eb1186fcbe2",
+      "compiled_sha256": "7e813868616188156cd5d2e381236dfa56754e437014bb687f418eb1186fcbe2",
+      "source": "src/decompiled/hi_strict_pad_00.cpp",
+      "symbol": "sub_E08000",
+      "source_review": "decompiler_text_review_pending",
+      "relocation_count": 4
+    },
+    {
       "address": "0xe083e0",
       "size": 128,
       "exact": true,
@@ -421851,6 +422941,17 @@
       "symbol": "RecoveredLeaf_e083e0",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 1
+    },
+    {
+      "address": "0xe08530",
+      "size": 100,
+      "exact": true,
+      "target_sha256": "2e35dcee005062c3ce2356dcde12725a1766839f7927e02945852323f15cb604",
+      "compiled_sha256": "2e35dcee005062c3ce2356dcde12725a1766839f7927e02945852323f15cb604",
+      "source": "src/decompiled/hi_strict_pad_00.cpp",
+      "symbol": "sub_E08530",
+      "source_review": "decompiler_text_review_pending",
+      "relocation_count": 4
     },
     {
       "address": "0xe08660",
@@ -429003,6 +430104,17 @@
       "relocation_count": 1
     },
     {
+      "address": "0xe960d0",
+      "size": 124,
+      "exact": true,
+      "target_sha256": "648740b429ad690bec0cead001483fc1ef73d2acf00f959ef4ac50da002eef2a",
+      "compiled_sha256": "648740b429ad690bec0cead001483fc1ef73d2acf00f959ef4ac50da002eef2a",
+      "source": "src/decompiled/hi_strict_cxx_00.cpp",
+      "symbol": "sub_E960D0",
+      "source_review": "decompiler_text_review_pending",
+      "relocation_count": 8
+    },
+    {
       "address": "0xe9b480",
       "size": 24,
       "exact": true,
@@ -432204,6 +433316,17 @@
       "relocation_count": 6
     },
     {
+      "address": "0xed8c00",
+      "size": 336,
+      "exact": true,
+      "target_sha256": "efc6195db5e2b4c92afa1f23734b8124481a2b6d80925e89ca66650ced89f0b9",
+      "compiled_sha256": "efc6195db5e2b4c92afa1f23734b8124481a2b6d80925e89ca66650ced89f0b9",
+      "source": "src/decompiled/hi_strict_cxx_00.cpp",
+      "symbol": "sub_ED8C00",
+      "source_review": "decompiler_text_review_pending",
+      "relocation_count": 10
+    },
+    {
       "address": "0xed9860",
       "size": 88,
       "exact": true,
@@ -432380,6 +433503,28 @@
       "relocation_count": 3
     },
     {
+      "address": "0xefa820",
+      "size": 268,
+      "exact": true,
+      "target_sha256": "c6baf0c4cf95d29854b2d095af42551a4986919872f0a4d48b62017221cd7a95",
+      "compiled_sha256": "c6baf0c4cf95d29854b2d095af42551a4986919872f0a4d48b62017221cd7a95",
+      "source": "src/decompiled/hi_strict_cxx_00.cpp",
+      "symbol": "sub_EFA820",
+      "source_review": "decompiler_text_review_pending",
+      "relocation_count": 10
+    },
+    {
+      "address": "0xefa930",
+      "size": 164,
+      "exact": true,
+      "target_sha256": "c7c4e86339f40c3c893e386ca80ef165dfc97d9a8867fd1dd6a26c75e380e5fb",
+      "compiled_sha256": "c7c4e86339f40c3c893e386ca80ef165dfc97d9a8867fd1dd6a26c75e380e5fb",
+      "source": "src/decompiled/hi_strict_cxx_00.cpp",
+      "symbol": "sub_EFA930",
+      "source_review": "decompiler_text_review_pending",
+      "relocation_count": 7
+    },
+    {
       "address": "0xefb9a0",
       "size": 48,
       "exact": true,
@@ -432411,6 +433556,17 @@
       "symbol": "RecoveredLeaf_eff0e0",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 2
+    },
+    {
+      "address": "0xeff8a0",
+      "size": 156,
+      "exact": true,
+      "target_sha256": "b0ec4701ad287db2e6422eb73b73ca51a93d59350efd1d73804be5086c642690",
+      "compiled_sha256": "b0ec4701ad287db2e6422eb73b73ca51a93d59350efd1d73804be5086c642690",
+      "source": "src/decompiled/hi_strict_cxx_00.cpp",
+      "symbol": "sub_EFF8A0",
+      "source_review": "decompiler_text_review_pending",
+      "relocation_count": 6
     },
     {
       "address": "0xf01aa0",
@@ -432587,6 +433743,17 @@
       "symbol": "RecoveredLeaf_f11880",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 2
+    },
+    {
+      "address": "0xf14200",
+      "size": 264,
+      "exact": true,
+      "target_sha256": "69d4d0986c30e3c4ac9a154805e34decdf77324d270d863c60f23c75bba232b3",
+      "compiled_sha256": "69d4d0986c30e3c4ac9a154805e34decdf77324d270d863c60f23c75bba232b3",
+      "source": "src/decompiled/hi_strict_cxx_00.cpp",
+      "symbol": "sub_F14200",
+      "source_review": "decompiler_text_review_pending",
+      "relocation_count": 4
     },
     {
       "address": "0xf25bb0",

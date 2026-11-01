@@ -10,6 +10,8 @@ typedef unsigned long long _QWORD; typedef unsigned int _DWORD; typedef unsigned
 typedef __uint128_t _OWORD;
 typedef char __guard; typedef long time_t; typedef int wchar_t_; typedef unsigned long pthread_t; typedef unsigned long size_t; typedef long ssize_t; typedef struct { char data[48]; } pthread_mutex_t; typedef struct { char data[48]; } pthread_cond_t; typedef void FILE;
 typedef union { unsigned long long n128_u64[2]; float n128_f32[4]; double n128_f64[2]; } __n128;
+typedef char type_info; typedef struct { int v; } pthread_mutexattr_t; typedef struct { unsigned s_addr; } in_addr; typedef struct { unsigned short sa_family; char sa_data[14]; } sockaddr;
+struct timezone { int tz_minuteswest; int tz_dsttime; };
 typedef struct RecoveredSdkText { char *data; } RecoveredSdkText;
 typedef struct RecoveredSdkResult { short code; const char *unknown08; unsigned int unknown10; RecoveredSdkText domain; unsigned char error; } RecoveredSdkResult;
 #define __PAIR64__(h, l) (((unsigned long long)(unsigned int)(h) << 32) | (unsigned int)(l))
@@ -33,6 +35,18 @@ typedef struct RecoveredSdkResult { short code; const char *unknown08; unsigned 
 #define SLODWORD(x) (*((int*)&(x)))
 #define SHIDWORD(x) (*((int*)&(x)+1))
 #define SLOBYTE(x) (*((signed char*)&(x)))
+#define SBYTE1(x) (*((signed char*)&(x)+1))
+#define BYTE4(x) (*((_BYTE*)&(x)+4))
+#define BYTE5(x) (*((_BYTE*)&(x)+5))
+#define BYTE6(x) (*((_BYTE*)&(x)+6))
+#define BYTE7(x) (*((_BYTE*)&(x)+7))
+#define WORD1(x) (*((_WORD*)&(x)+1))
+#define WORD2(x) (*((_WORD*)&(x)+2))
+#define WORD3(x) (*((_WORD*)&(x)+3))
+#define SWORD1(x) (*((short*)&(x)+1))
+#define SLOWORD(x) (*((short*)&(x)))
+#define SHIWORD(x) (*((short*)&(x)+1))
+#define NAN __builtin_nanf("")
 #define __udf(x) __builtin_unreachable()
 #define atomic_load(p) __atomic_load_n(p, 2)
 void* memcpy(void*, const void*, size_t); void* memset(void*, int, size_t); void* memmove(void*, const void*, size_t); int memcmp(const void*, const void*, size_t); size_t strlen(const char*); int strcmp(const char*, const char*); char* strcpy(char*, const char*); char* strncpy(char*, const char*, size_t); int strncmp(const char*, const char*, size_t); void free(void*); void* malloc(size_t); float fabsf(float); float sqrtf(float); float floorf(float); float ceilf(float);
@@ -43,6 +57,7 @@ extern char goff_18F87A8[];
 extern char goff_18F87B0[];
 extern char goff_18F9828[];
 extern char goff_18F9830[];
+extern char goff_18F9AC0[];
 extern char goff_18FA268[];
 extern char goff_18FA270[];
 extern char goff_18FA278[];
@@ -61,6 +76,7 @@ __attribute__((visibility("hidden"))) __int64 sub_4F4A80();
 __attribute__((visibility("hidden"))) __int64 sub_4F6A30();
 __attribute__((visibility("hidden"))) __int64 sub_51DD50();
 __attribute__((visibility("hidden"))) __int64 sub_51E060();
+__attribute__((visibility("hidden"))) __int64 sub_52B270();
 __attribute__((visibility("hidden"))) __int64 sub_5484D0();
 __attribute__((visibility("hidden"))) __int64 sub_55A080();
 __attribute__((visibility("hidden"))) __int64 sub_56CA00();
@@ -183,6 +199,17 @@ LABEL_7:
     Recovered_ResultTextDestroy(&v15.domain);
   }
   return sub_4F48F0(a1);
+}
+
+// N5storm2mm25MatchmakingProtocolClientE, virtual slot 25
+_QWORD *sub_540F40()
+{
+  _QWORD *v0; // x19
+
+  v0 = (_QWORD *)sub_4EB320(96, &unk_1326E41, 0);
+  sub_52B270(v0, 1);
+  *v0 = ((char *)((__int64*)goff_18F9AC0) + 16);
+  return v0;
 }
 
 __int64 __fastcall sub_548360(__int64 a1, __int64 a2)

@@ -44,7 +44,7 @@ class Elf:
         return result
 
     def imported_got_symbols(self):
-        """Named, undefined objects loaded through zero-addend GLOB_DAT cells."""
+        """Named, undefined objects and functions loaded through zero-addend GLOB_DAT cells."""
         if hasattr(self,'_imported_got_symbols'):return self._imported_got_symbols
         rel = self.named['.rela.dyn'];table = self.sections[rel[6]]
         require(table[1] == 11 and table[9] == 24,'Expected dynamic symbol table')
@@ -55,7 +55,7 @@ class Elf:
             index = info>>32
             require(index < table[5]//table[9],'Dynamic symbol index outside table')
             symbol = struct.unpack_from('<IBBHQQ',self.data,table[4]+index*table[9])
-            if symbol[3] != 0 or symbol[4] != 0 or symbol[1]&15 != 1 or symbol[1]>>4 not in (1,2):continue
+            if symbol[3] != 0 or symbol[4] != 0 or symbol[1]&15 not in (1,2) or symbol[1]>>4 not in (1,2):continue
             require(symbol[0] < len(strings),'Dynamic symbol name outside string table')
             end = strings.find(b'\0',symbol[0]);require(end >= symbol[0],'Unterminated dynamic symbol')
             name = strings[symbol[0]:end].decode();require(bool(name),'Empty imported symbol')

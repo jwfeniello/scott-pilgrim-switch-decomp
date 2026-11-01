@@ -10,6 +10,8 @@ typedef unsigned long long _QWORD; typedef unsigned int _DWORD; typedef unsigned
 typedef __uint128_t _OWORD;
 typedef char __guard; typedef long time_t; typedef int wchar_t_; typedef unsigned long pthread_t; typedef unsigned long size_t; typedef long ssize_t; typedef struct { char data[48]; } pthread_mutex_t; typedef struct { char data[48]; } pthread_cond_t; typedef void FILE;
 typedef union { unsigned long long n128_u64[2]; float n128_f32[4]; double n128_f64[2]; } __n128;
+typedef char type_info; typedef struct { int v; } pthread_mutexattr_t; typedef struct { unsigned s_addr; } in_addr; typedef struct { unsigned short sa_family; char sa_data[14]; } sockaddr;
+struct timezone { int tz_minuteswest; int tz_dsttime; };
 typedef struct RecoveredSdkText { char *data; } RecoveredSdkText;
 typedef struct RecoveredSdkResult { short code; const char *unknown08; unsigned int unknown10; RecoveredSdkText domain; unsigned char error; } RecoveredSdkResult;
 #define __PAIR64__(h, l) (((unsigned long long)(unsigned int)(h) << 32) | (unsigned int)(l))
@@ -33,6 +35,18 @@ typedef struct RecoveredSdkResult { short code; const char *unknown08; unsigned 
 #define SLODWORD(x) (*((int*)&(x)))
 #define SHIDWORD(x) (*((int*)&(x)+1))
 #define SLOBYTE(x) (*((signed char*)&(x)))
+#define SBYTE1(x) (*((signed char*)&(x)+1))
+#define BYTE4(x) (*((_BYTE*)&(x)+4))
+#define BYTE5(x) (*((_BYTE*)&(x)+5))
+#define BYTE6(x) (*((_BYTE*)&(x)+6))
+#define BYTE7(x) (*((_BYTE*)&(x)+7))
+#define WORD1(x) (*((_WORD*)&(x)+1))
+#define WORD2(x) (*((_WORD*)&(x)+2))
+#define WORD3(x) (*((_WORD*)&(x)+3))
+#define SWORD1(x) (*((short*)&(x)+1))
+#define SLOWORD(x) (*((short*)&(x)))
+#define SHIWORD(x) (*((short*)&(x)+1))
+#define NAN __builtin_nanf("")
 #define __udf(x) __builtin_unreachable()
 #define atomic_load(p) __atomic_load_n(p, 2)
 void* memcpy(void*, const void*, size_t); void* memset(void*, int, size_t); void* memmove(void*, const void*, size_t); int memcmp(const void*, const void*, size_t); size_t strlen(const char*); int strcmp(const char*, const char*); char* strcpy(char*, const char*); char* strncpy(char*, const char*, size_t); int strncmp(const char*, const char*, size_t); void free(void*); void* malloc(size_t); float fabsf(float); float sqrtf(float); float floorf(float); float ceilf(float);
@@ -76,6 +90,7 @@ extern char goff_18FB8A0[];
 extern char goff_18FB8B0[];
 extern char goff_18FB900[];
 extern char goff_18FBB08[];
+__int64 j__pthread_self();
 __int64 nn__os__ConvertToTimeSpan();
 __int64 nn__os__GetSystemTick();
 __int64 nn__socket__GetSockOpt();
@@ -85,6 +100,7 @@ __int64 pthread_mutex_unlock();
 extern __attribute__((visibility("hidden"))) __int64 qword_19154C0;
 extern __attribute__((visibility("hidden"))) __int64 qword_19154C8;
 __int64 std____shared_weak_count____release_weak();
+__int64 std____tree_remove();
 __int64 std__condition_variable___condition_variable();
 __int64 std__mutex___mutex();
 __int64 std__shared_timed_mutex__lock_shared();
@@ -1467,6 +1483,90 @@ LABEL_6:
   return (*(__int64 (__fastcall **)(_QWORD, __int64))(**(_QWORD **)(a1 + 64) + 352LL))(*(_QWORD *)(a1 + 64), a2);
 }
 
+__int64 __fastcall sub_4DA6B0(_QWORD *a1, unsigned int *a2)
+{
+  __int64 result; // x0
+  _QWORD *v4; // x9
+  unsigned int v5; // w10
+  _QWORD *v6; // x19
+  __int64 i; // x11
+  unsigned int v8; // w12
+  bool v9; // cf
+  _BOOL4 v10; // w12
+  _QWORD *v11; // x10
+  _QWORD *v12; // x9
+  __int64 v13; // x10
+  __int64 v14; // x11
+  _QWORD *v15; // t1
+  __int64 v16; // x0
+
+  v4 = a1 + 1;
+  result = a1[1];
+  if ( result != 0 )
+  {
+    v5 = *a2;
+    v6 = v4;
+    for ( i = result; i != 0; i = *(_QWORD *)(i + 8LL * v10) )
+    {
+      v8 = *(_DWORD *)(i + 32);
+      v9 = v8 >= v5;
+      v10 = v8 < v5;
+      if ( v9 )
+        v6 = (_QWORD *)i;
+    }
+    if ( v6 == v4 )
+    {
+      return 0;
+    }
+    else if ( *((_DWORD *)v6 + 8) <= v5 )
+    {
+      v11 = (_QWORD *)v6[1];
+      if ( v11 != nullptr )
+      {
+        do
+        {
+          v12 = v11;
+          v11 = (_QWORD *)*v11;
+        }
+        while ( v11 != nullptr );
+      }
+      else
+      {
+        v13 = (__int64)(v6 + 2);
+        v12 = (_QWORD *)v6[2];
+        if ( (_QWORD *)*v12 != v6 )
+        {
+          do
+          {
+            v14 = *(_QWORD *)v13;
+            v15 = *(_QWORD **)(*(_QWORD *)v13 + 16LL);
+            v13 = *(_QWORD *)v13 + 16LL;
+            v12 = v15;
+          }
+          while ( *v15 != v14 );
+        }
+      }
+      if ( (_QWORD *)*a1 == v6 )
+        *a1 = v12;
+      --a1[2];
+      std____tree_remove(result, v6);
+      v16 = v6[7];
+      if ( v16 != 0 )
+      {
+        (*(void (__fastcall **)(__int64))(*(_QWORD *)v16 + 8LL))(v16);
+        v6[7] = 0;
+      }
+      sub_56CA00(v6, &unk_1326E41, 0);
+      return 1;
+    }
+    else
+    {
+      return 0;
+    }
+  }
+  return result;
+}
+
 void sub_4EE2A0(__int64 result)
 {
   _BYTE *v1; // x22
@@ -1487,6 +1587,41 @@ void sub_4EE2A0(__int64 result)
       { sub_4EE230(v3); return; }
   }
   return;
+}
+
+__int64 __fastcall sub_4F6A30(char *a1, unsigned int a2)
+{
+  char *v4; // x9
+  __int64 v5; // x20
+  __int64 v6; // t1
+  char *v7; // x8
+  unsigned int v8; // w10
+  bool v9; // cf
+  _BOOL4 v10; // w10
+
+  if ( *(_BYTE *)(*(_QWORD *)(a1 + 80) + 8LL) != 0 )
+    j__pthread_self();
+  v6 = *(_QWORD *)(a1 + 48);
+  v5 = a1 + 48;
+  v4 = v6;
+  if ( v6 == 0 )
+    return 0;
+  v7 = v5;
+  do
+  {
+    v8 = *(_DWORD *)(v4 + 32);
+    v9 = v8 >= a2;
+    v10 = v8 < a2;
+    if ( v9 )
+      v7 = v4;
+    v4 = *(_QWORD *)(v4 + 8LL * v10);
+  }
+  while ( v4 != 0 );
+  if ( v7 == v5 )
+    return 0;
+  if ( *(_DWORD *)(v7 + 32) <= a2 )
+    return *(_QWORD *)(v7 + 40);
+  return 0;
 }
 
 __int64 __fastcall sub_4FD820(char *a1, __int64 a2)
@@ -1751,6 +1886,97 @@ LABEL_7:
   }
   *a2 = 1;
   *a3 = 1;
+  return result;
+}
+
+__int64 __fastcall sub_570DB0(_QWORD *a1, unsigned __int16 *a2)
+{
+  __int64 result; // x0
+  _QWORD *v4; // x9
+  unsigned int v5; // w10
+  _QWORD *v6; // x19
+  __int64 i; // x11
+  unsigned int v8; // w12
+  bool v9; // cf
+  _BOOL4 v10; // w12
+  _QWORD *v11; // x10
+  _QWORD *v12; // x9
+  __int64 v13; // x10
+  __int64 v14; // x11
+  _QWORD *v15; // t1
+  char *v16; // x20
+  unsigned __int64 *v17; // x8
+  unsigned __int64 v18; // x9
+
+  v4 = a1 + 1;
+  result = a1[1];
+  if ( result != 0 )
+  {
+    v5 = *a2;
+    v6 = v4;
+    for ( i = result; i != 0; i = *(_QWORD *)(i + 8LL * v10) )
+    {
+      v8 = *(unsigned __int16 *)(i + 32);
+      v9 = v8 >= v5;
+      v10 = v8 < v5;
+      if ( v9 )
+        v6 = (_QWORD *)i;
+    }
+    if ( v6 == v4 )
+    {
+      return 0;
+    }
+    else if ( *((unsigned __int16 *)v6 + 16) <= v5 )
+    {
+      v11 = (_QWORD *)v6[1];
+      if ( v11 != nullptr )
+      {
+        do
+        {
+          v12 = v11;
+          v11 = (_QWORD *)*v11;
+        }
+        while ( v11 != nullptr );
+      }
+      else
+      {
+        v13 = (__int64)(v6 + 2);
+        v12 = (_QWORD *)v6[2];
+        if ( (_QWORD *)*v12 != v6 )
+        {
+          do
+          {
+            v14 = *(_QWORD *)v13;
+            v15 = *(_QWORD **)(*(_QWORD *)v13 + 16LL);
+            v13 = *(_QWORD *)v13 + 16LL;
+            v12 = v15;
+          }
+          while ( *v15 != v14 );
+        }
+      }
+      if ( (_QWORD *)*a1 == v6 )
+        *a1 = v12;
+      --a1[2];
+      std____tree_remove(result, v6);
+      v16 = (char *)v6[6];
+      if ( v16 != nullptr )
+      {
+        v17 = (unsigned __int64 *)((char *)v16 + 8);
+        v18 = __atomic_fetch_sub(v17, 1, 5);
+        if ( v18 == 0 )
+        {
+          (*(void (__fastcall **)(char *))(*(_QWORD *)v16 + 16LL))(v16);
+          std____shared_weak_count____release_weak(v16);
+        }
+      }
+      sub_37030(v6);
+      return 1;
+    }
+    else
+    {
+      return 0;
+    }
+  }
   return result;
 }
 
@@ -2106,5 +2332,83 @@ void __fastcall sub_60FDC0(_QWORD *a1)
 LABEL_5:
     _ZdlPv(a1);
   }
+}
+
+__int64 __fastcall sub_62AAE0(_QWORD *a1, unsigned int *a2)
+{
+  __int64 result; // x0
+  _QWORD *v4; // x9
+  unsigned int v5; // w10
+  _QWORD *v6; // x19
+  __int64 i; // x11
+  unsigned int v8; // w12
+  bool v9; // cf
+  _BOOL4 v10; // w12
+  _QWORD *v11; // x10
+  _QWORD *v12; // x9
+  __int64 v13; // x10
+  __int64 v14; // x11
+  _QWORD *v15; // t1
+
+  v4 = a1 + 1;
+  result = a1[1];
+  if ( result != 0 )
+  {
+    v5 = *a2;
+    v6 = v4;
+    for ( i = result; i != 0; i = *(_QWORD *)(i + 8LL * v10) )
+    {
+      v8 = *(_DWORD *)(i + 32);
+      v9 = v8 >= v5;
+      v10 = v8 < v5;
+      if ( v9 )
+        v6 = (_QWORD *)i;
+    }
+    if ( v6 == v4 )
+    {
+      return 0;
+    }
+    else if ( *((_DWORD *)v6 + 8) <= v5 )
+    {
+      v11 = (_QWORD *)v6[1];
+      if ( v11 != nullptr )
+      {
+        do
+        {
+          v12 = v11;
+          v11 = (_QWORD *)*v11;
+        }
+        while ( v11 != nullptr );
+      }
+      else
+      {
+        v13 = (__int64)(v6 + 2);
+        v12 = (_QWORD *)v6[2];
+        if ( (_QWORD *)*v12 != v6 )
+        {
+          do
+          {
+            v14 = *(_QWORD *)v13;
+            v15 = *(_QWORD **)(*(_QWORD *)v13 + 16LL);
+            v13 = *(_QWORD *)v13 + 16LL;
+            v12 = v15;
+          }
+          while ( *v15 != v14 );
+        }
+      }
+      if ( (_QWORD *)*a1 == v6 )
+        *a1 = v12;
+      --a1[2];
+      std____tree_remove(result, v6);
+      sub_578410(v6 + 5);
+      sub_56CA00(v6, &unk_1326E41, 0);
+      return 1;
+    }
+    else
+    {
+      return 0;
+    }
+  }
+  return result;
 }
 
