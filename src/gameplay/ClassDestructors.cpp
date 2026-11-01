@@ -369,6 +369,15 @@ namespace SPTG {
 struct Boundary : Base888570 { Auto<Buffer143152898> member_68; char padding_78[24]; Auto<Buffer143152897> member_90; virtual void Key(); ~Boundary(); };
 Boundary::~Boundary() {  }
 }
+struct Buffer143632642 { uint64_t w0; void* w8; __attribute__((always_inline)) void Destroy() { w0 = 0; if (w8) FreeObject(w8); } };
+struct Buffer9192489153 { uint64_t w0; void* w8; __attribute__((always_inline)) void Destroy() { w0 = 0; if (w8) FreeObject(w8); } };
+struct Nested143632643 { virtual void Key(); char padding_8[72]; Auto<Buffer9192489153> member_50; DT_INLINE ~Nested143632643() {} };
+struct Base88fa90 { virtual ~Base88fa90(); char padding[144]; };
+struct Level88fa90_1 : Base88fa90 { Nested143632643 member_98; virtual void Key1(); DT_INLINE ~Level88fa90_1() {} };
+namespace SPTG { 
+struct FillLineListShape : Level88fa90_1 { char padding_f8[32]; Auto<Buffer143632642> member_118; char padding_128[16]; Member<143632641> member_138; virtual void Key(); ~FillLineListShape(); };
+FillLineListShape::~FillLineListShape() {  }
+}
 struct Buffer143702273 { uint64_t w0; void* w8; __attribute__((always_inline)) void Destroy() { w0 = 0; if (w8) FreeObject(w8); } };
 struct Buffer143702274 { uint64_t w0; void* w8; __attribute__((always_inline)) void Destroy() { w0 = 0; if (w8) FreeObject(w8); } };
 struct Base890b90 { virtual ~Base890b90(); char padding[432]; };
@@ -383,6 +392,22 @@ namespace SPTG {
 struct Item : Level893db0_1 { char padding_51[39]; AutoInline<PlainSharedBuffer<143907587>> member_78; char padding_80[24]; Auto<Buffer143907586> member_98; char padding_a8[16]; AutoInline<PlainSharedBuffer<143907585>> member_b8; virtual void Key(); ~Item(); };
 Item::~Item() {  }
 }
+struct Buffer146626818 { uint64_t w0; void* w8; __attribute__((always_inline)) void Destroy() { w0 = 0; if (w8) FreeObject(w8); } };
+struct Buffer9384116417 { uint64_t w0; void* w8; __attribute__((always_inline)) void Destroy() { w0 = 0; if (w8) FreeObject(w8); } };
+struct Nested146626819 { virtual void Key(); char padding_8[72]; Auto<Buffer9384116417> member_50; DT_INLINE ~Nested146626819() {} };
+struct Base8bd590 { virtual ~Base8bd590(); char padding[144]; };
+struct Level8bd590_1 : Base8bd590 { Nested146626819 member_98; virtual void Key1(); DT_INLINE ~Level8bd590_1() {} };
+namespace SPTG { 
+struct FillLineListGroupShape : Level8bd590_1 { char padding_f8[32]; Auto<Buffer146626818> member_118; char padding_128[8]; Member<146626817> member_130; virtual void Key(); ~FillLineListGroupShape(); };
+FillLineListGroupShape::~FillLineListGroupShape() {  }
+}
+struct Buffer9388228673 { uint64_t w0; void* w8; __attribute__((always_inline)) void Destroy() { w0 = 0; if (w8) FreeObject(w8); } };
+struct Nested146691073 { virtual void Key(); char padding_8[72]; Auto<Buffer9388228673> member_50; DT_INLINE ~Nested146691073() {} };
+struct Base8be540 { virtual ~Base8be540(); char padding[144]; };
+namespace Onyx { namespace Graphics { 
+struct ShapeComponent : Base8be540 { Nested146691073 member_98; virtual void Key(); ~ShapeComponent(); };
+ShapeComponent::~ShapeComponent() {  }
+}}
 struct Buffer147639041 { uint64_t w0; void* w8; __attribute__((always_inline)) void Destroy() { w0 = 0; if (w8) FreeObject(w8); } };
 struct Buffer147639042 { uint64_t w0; void* w8; __attribute__((always_inline)) void Destroy() { w0 = 0; if (w8) FreeObject(w8); } };
 struct Base8cccb0 { virtual ~Base8cccb0(); char padding[72]; };
@@ -463,6 +488,87 @@ namespace SPTG {
 struct SelectedActorRecorder : Basea05810 { Member<168132866> member_58; char padding_59[55]; Auto<Buffer168132865> member_90; virtual void Key(); ~SelectedActorRecorder(); };
 SelectedActorRecorder::~SelectedActorRecorder() {  }
 }
+struct Buffer11809620097 { uint64_t w0; void* w8; __attribute__((always_inline)) void Destroy() { w0 = 0; if (w8) FreeObject(w8); } };
+struct Nested184525314 { virtual void Key(); char padding_8[72]; Auto<Buffer11809620097> member_50; DT_INLINE ~Nested184525314() {} };
+struct Baseaffa20 { virtual ~Baseaffa20(); char padding[144]; };
+struct Levelaffa20_1 : Baseaffa20 { Nested184525314 member_98; virtual void Key1(); DT_INLINE ~Levelaffa20_1() {} };
+namespace Onyx { namespace Graphics { 
+struct SphereShape : Levelaffa20_1 { char padding_f8[32]; Member<184525313> member_118; virtual void Key(); ~SphereShape(); };
+SphereShape::~SphereShape() {  }
+}}
+struct Buffer11816353921 { uint64_t w0; void* w8; __attribute__((always_inline)) void Destroy() { w0 = 0; if (w8) FreeObject(w8); } };
+struct Nested184630530 { virtual void Key(); char padding_8[72]; Auto<Buffer11816353921> member_50; DT_INLINE ~Nested184630530() {} };
+struct Baseb013d0 { virtual ~Baseb013d0(); char padding[144]; };
+struct Levelb013d0_1 : Baseb013d0 { Nested184630530 member_98; virtual void Key1(); DT_INLINE ~Levelb013d0_1() {} };
+namespace Onyx { namespace Graphics { 
+struct RingShape : Levelb013d0_1 { char padding_f8[24]; Member<184630529> member_110; virtual void Key(); ~RingShape(); };
+RingShape::~RingShape() {  }
+}}
+struct Buffer11819843713 { uint64_t w0; void* w8; __attribute__((always_inline)) void Destroy() { w0 = 0; if (w8) FreeObject(w8); } };
+struct Nested184685058 { virtual void Key(); char padding_8[72]; Auto<Buffer11819843713> member_50; DT_INLINE ~Nested184685058() {} };
+struct Baseb02120 { virtual ~Baseb02120(); char padding[144]; };
+struct Levelb02120_1 : Baseb02120 { Nested184685058 member_98; virtual void Key1(); DT_INLINE ~Levelb02120_1() {} };
+namespace Onyx { namespace Graphics { 
+struct QuadShape : Levelb02120_1 { char padding_f8[24]; Member<184685057> member_110; virtual void Key(); ~QuadShape(); };
+QuadShape::~QuadShape() {  }
+}}
+struct Buffer11823841409 { uint64_t w0; void* w8; __attribute__((always_inline)) void Destroy() { w0 = 0; if (w8) FreeObject(w8); } };
+struct Nested184747522 { virtual void Key(); char padding_8[72]; Auto<Buffer11823841409> member_50; DT_INLINE ~Nested184747522() {} };
+struct Baseb03060 { virtual ~Baseb03060(); char padding[144]; };
+struct Levelb03060_1 : Baseb03060 { Nested184747522 member_98; virtual void Key1(); DT_INLINE ~Levelb03060_1() {} };
+namespace Onyx { namespace Graphics { 
+struct PyramidShape : Levelb03060_1 { char padding_f8[32]; Member<184747521> member_118; virtual void Key(); ~PyramidShape(); };
+PyramidShape::~PyramidShape() {  }
+}}
+struct Buffer11829444737 { uint64_t w0; void* w8; __attribute__((always_inline)) void Destroy() { w0 = 0; if (w8) FreeObject(w8); } };
+struct Nested184835074 { virtual void Key(); char padding_8[72]; Auto<Buffer11829444737> member_50; DT_INLINE ~Nested184835074() {} };
+struct Baseb045c0 { virtual ~Baseb045c0(); char padding[144]; };
+struct Levelb045c0_1 : Baseb045c0 { Nested184835074 member_98; virtual void Key1(); DT_INLINE ~Levelb045c0_1() {} };
+namespace Onyx { namespace Graphics { 
+struct PlaneShape : Levelb045c0_1 { char padding_f8[40]; Member<184835073> member_120; virtual void Key(); ~PlaneShape(); };
+PlaneShape::~PlaneShape() {  }
+}}
+struct Buffer184918786 { uint64_t w0; void* w8; __attribute__((always_inline)) void Destroy() { w0 = 0; if (w8) FreeObject(w8); } };
+struct Buffer11834802369 { uint64_t w0; void* w8; __attribute__((always_inline)) void Destroy() { w0 = 0; if (w8) FreeObject(w8); } };
+struct Nested184918787 { virtual void Key(); char padding_8[72]; Auto<Buffer11834802369> member_50; DT_INLINE ~Nested184918787() {} };
+struct Baseb05a30 { virtual ~Baseb05a30(); char padding[144]; };
+struct Levelb05a30_1 : Baseb05a30 { Nested184918787 member_98; virtual void Key1(); DT_INLINE ~Levelb05a30_1() {} };
+namespace Onyx { namespace Graphics { 
+struct LineListShape : Levelb05a30_1 { char padding_f8[32]; Auto<Buffer184918786> member_118; char padding_128[16]; Member<184918785> member_138; virtual void Key(); ~LineListShape(); };
+LineListShape::~LineListShape() {  }
+}}
+struct Buffer11838259329 { uint64_t w0; void* w8; __attribute__((always_inline)) void Destroy() { w0 = 0; if (w8) FreeObject(w8); } };
+struct Nested184972802 { virtual void Key(); char padding_8[72]; Auto<Buffer11838259329> member_50; DT_INLINE ~Nested184972802() {} };
+struct Baseb06760 { virtual ~Baseb06760(); char padding[144]; };
+struct Levelb06760_1 : Baseb06760 { Nested184972802 member_98; virtual void Key1(); DT_INLINE ~Levelb06760_1() {} };
+namespace Onyx { namespace Graphics { 
+struct CylinderShape : Levelb06760_1 { char padding_f8[32]; Member<184972801> member_118; virtual void Key(); ~CylinderShape(); };
+CylinderShape::~CylinderShape() {  }
+}}
+struct Buffer11844419713 { uint64_t w0; void* w8; __attribute__((always_inline)) void Destroy() { w0 = 0; if (w8) FreeObject(w8); } };
+struct Nested185069058 { virtual void Key(); char padding_8[72]; Auto<Buffer11844419713> member_50; DT_INLINE ~Nested185069058() {} };
+struct Baseb07ee0 { virtual ~Baseb07ee0(); char padding[144]; };
+struct Levelb07ee0_1 : Baseb07ee0 { Nested185069058 member_98; virtual void Key1(); DT_INLINE ~Levelb07ee0_1() {} };
+namespace Onyx { namespace Graphics { 
+struct ConeShape : Levelb07ee0_1 { char padding_f8[32]; Member<185069057> member_118; virtual void Key(); ~ConeShape(); };
+ConeShape::~ConeShape() {  }
+}}
+struct Buffer11849531521 { uint64_t w0; void* w8; __attribute__((always_inline)) void Destroy() { w0 = 0; if (w8) FreeObject(w8); } };
+struct Nested185148930 { virtual void Key(); char padding_8[72]; Auto<Buffer11849531521> member_50; DT_INLINE ~Nested185148930() {} };
+struct Baseb09260 { virtual ~Baseb09260(); char padding[144]; };
+struct Levelb09260_1 : Baseb09260 { Nested185148930 member_98; virtual void Key1(); DT_INLINE ~Levelb09260_1() {} };
+namespace Onyx { namespace Graphics { 
+struct CapsuleShape : Levelb09260_1 { char padding_f8[40]; Member<185148929> member_120; virtual void Key(); ~CapsuleShape(); };
+CapsuleShape::~CapsuleShape() {  }
+}}
+struct Buffer11861655681 { uint64_t w0; void* w8; __attribute__((always_inline)) void Destroy() { w0 = 0; if (w8) FreeObject(w8); } };
+struct Nested185338370 { virtual void Key(); char padding_8[72]; Auto<Buffer11861655681> member_50; DT_INLINE ~Nested185338370() {} };
+struct Baseb0c0a0 { virtual ~Baseb0c0a0(); char padding[144]; };
+struct Levelb0c0a0_1 : Baseb0c0a0 { Nested185338370 member_98; virtual void Key1(); DT_INLINE ~Levelb0c0a0_1() {} };
+namespace Onyx { namespace Graphics { 
+struct BoxShape : Levelb0c0a0_1 { char padding_f8[32]; Member<185338369> member_118; virtual void Key(); ~BoxShape(); };
+BoxShape::~BoxShape() {  }
+}}
 struct Buffer188488961 { uint64_t w0; void* w8; __attribute__((always_inline)) void Destroy() { w0 = 0; if (w8) FreeObject(w8); } };
 struct Buffer188488962 { uint64_t w0; void* w8; __attribute__((always_inline)) void Destroy() { w0 = 0; if (w8) FreeObject(w8); } };
 struct Baseb3c1d0 { virtual ~Baseb3c1d0(); char padding[72]; };
@@ -499,6 +605,30 @@ namespace Onyx { namespace Graphics {
 struct MorphSkin : Baseb42dd0 { Auto<Buffer188931329> member_a8; virtual void Key(); ~MorphSkin(); };
 MorphSkin::~MorphSkin() {  }
 }}
+struct Buffer12293308481 { uint64_t w0; uint64_t w8; void* w10; __attribute__((always_inline)) void Destroy() { w0 = 0; if (w10) FreeObject(w10); } };
+struct Nested192082945 { virtual void Key(); char padding_8[112]; Auto<Buffer12293308481> member_78; DT_INLINE ~Nested192082945() {} };
+namespace Onyx { namespace Graphics { namespace EvolutionDevelopment { 
+struct BasicRendererTransparent { char padding_8[8]; Nested192082945 member_10; virtual void Key(); virtual ~BasicRendererTransparent(); };
+BasicRendererTransparent::~BasicRendererTransparent() {  }
+}}}
+struct Buffer12293783617 { uint64_t w0; uint64_t w8; void* w10; __attribute__((always_inline)) void Destroy() { w0 = 0; if (w10) FreeObject(w10); } };
+struct Nested192090369 { virtual void Key(); char padding_8[112]; Auto<Buffer12293783617> member_78; DT_INLINE ~Nested192090369() {} };
+namespace Onyx { namespace Graphics { namespace EvolutionDevelopment { 
+struct BasicRendererOpaque { char padding_8[8]; Nested192090369 member_10; virtual void Key(); virtual ~BasicRendererOpaque(); };
+BasicRendererOpaque::~BasicRendererOpaque() {  }
+}}}
+struct Buffer12361859137 { uint64_t w0; uint64_t w8; void* w10; __attribute__((always_inline)) void Destroy() { w0 = 0; if (w10) FreeObject(w10); } };
+struct Nested193154049 { virtual void Key(); char padding_8[112]; Auto<Buffer12361859137> member_78; DT_INLINE ~Nested193154049() {} };
+namespace Onyx { namespace Graphics { namespace EvolutionDevelopment { 
+struct RendererUnlit { char padding_8[16]; Nested193154049 member_18; virtual void Key(); virtual ~RendererUnlit(); };
+RendererUnlit::~RendererUnlit() {  }
+}}}
+struct Buffer12362203201 { uint64_t w0; uint64_t w8; void* w10; __attribute__((always_inline)) void Destroy() { w0 = 0; if (w10) FreeObject(w10); } };
+struct Nested193159425 { virtual void Key(); char padding_8[112]; Auto<Buffer12362203201> member_78; DT_INLINE ~Nested193159425() {} };
+namespace Onyx { namespace Graphics { namespace EvolutionDevelopment { 
+struct BasicRendererSkyBox { char padding_8[8]; Nested193159425 member_10; virtual void Key(); virtual ~BasicRendererSkyBox(); };
+BasicRendererSkyBox::~BasicRendererSkyBox() {  }
+}}}
 struct Baseb89560 { virtual ~Baseb89560(); char padding[72]; };
 struct Levelb89560_1 : Baseb89560 { Member<193549826> member_50; virtual void Key1(); DT_INLINE ~Levelb89560_1() {} };
 namespace Onyx { namespace Graphics { namespace EvolutionDevelopment { 

@@ -1,9 +1,9 @@
 {
   "version": 1,
-  "generated_at": "2026-11-01T00:50:34.623080+00:00",
+  "generated_at": "2026-11-01T04:26:22.626028+00:00",
   "target_elf_sha256": "ea95638e6d6aaa0dc6cddd552a9366799aa1ec3bc07ee201f23f6c151103f5b8",
   "input_sha256": {
-    "config/builds.json": "a686a119bdda4cefc3177cb48ad2439c22281b953b387ab5e8553a7cdb2b7d8c",
+    "config/builds.json": "9a3a4b2930b827f6b4fa2ec231d38627b2762dc99b6564580c9c7a028d44c864",
     "config/functions.tsv": "399e91468a04e0459194c10d68d2210d1157cedefeb19c7851886ca7632fcb18",
     "config/non_fde_functions.tsv": "6a45f5e185454fa0472af00b2cdc9d040d73ca133d1106217e1fbbe3b32a8175",
     "config/target.json": "23cc6a5227206a953e7668acf5e9ae5c02a25c23b7e7967f0450a814b888241a",
@@ -1101,7 +1101,7 @@
     "src/gameplay/BossClassStates.cpp": "f8dacbe4e6c8dcb48b4696cd9a3349ee002e4f420f952d565c25efdfdc07642a",
     "src/gameplay/BossClasses.h": "7f1236d078ce0b485f8c0ab37ab868add844d9140a4c3efa575eb62c66bb41ad",
     "src/gameplay/BossStates.cpp": "d5a73604e03699ab0fddafae090994ccba62c782bf82ad872439774df06977ec",
-    "src/gameplay/ClassDestructors.cpp": "9e3bc0eff177ade1b86a33815479047d12f00f169d79906e7025cb5129f00d34",
+    "src/gameplay/ClassDestructors.cpp": "d973acf2279c40107f61cf4119e1c27d7d44f65875666bae62e3cbfc97cf53d9",
     "src/gameplay/ClassDestructorsForced.cpp": "654b0b1446cae0a00606cf6e0afe6d3ee5447977f465ebe92b7ee1e1bc0c3753",
     "src/gameplay/ClassSerialize.cpp": "4039dafc54c1b5d8c98f61f021c629071b802043af5a97a0e8ed259766ad68cc",
     "src/gameplay/ComponentAccess.cpp": "b1b34b3a09bc3544f3fffe397604e3d185ea651f571180a3eb13cd58e11cbab5",
@@ -1110,6 +1110,7 @@
     "src/gameplay/ComponentFactoriesStatic.cpp": "ffb8d2ff0562301e5803c39d8f6376095cc37daee0f64030ba2ed9054cb013f5",
     "src/gameplay/ComponentSerialize.cpp": "9fd76bf89b2ce86490ebc8c5bbdc0c5a6fa39ff02d48416f6668ca26ba109848",
     "src/gameplay/ComponentSerialize.h": "3a966f37ba8a6dda16cbd6c527bd046018988b8b59e1f90a9acef65fb2d2df6b",
+    "src/gameplay/ComponentSteps.cpp": "35f73fa87a926dbe3fd6d06a9cf53fdedb997fc3d0e7cba9e31d6f9958504dad",
     "src/gameplay/ComponentTypes.h": "f7eea015dc032ea1d06d52741b5f5e7724ff5a61171703a57cdf990981e76953",
     "src/gameplay/ControllablePlayerStates.cpp": "d3156676bb5f40130b7a9bda3b23ce3ee9c0532c084cdf0f869dacded0e0a5f8",
     "src/gameplay/EmitterSequencer.cpp": "2cb8de43644d29ceb9f44f41ad0eadfaaa9b6e39336bcf297864829d0e213acc",
@@ -3959,17 +3960,17 @@
     "vendor/zlib-1.2.11/zutil.h": "9a63f6690fac1620aa3cecee5752af618806da438a256b4a047fbcd289cac159"
   },
   "compiler_versions": {
-    "8.0.1": "clang version 8.0.1 (tags/RELEASE_801/final)",
     "7.0.1": "clang version 7.0.1 (tags/RELEASE_701/final)",
+    "8.0.1": "clang version 8.0.1 (tags/RELEASE_801/final)",
     "lld": "LLD 8.0.1 (compatible with GNU linkers)"
   },
   "compiler_sha256": {
-    "8.0.1": "dffd62a213ec6cdb4430012a4a41c11e5e32c288f133d5391f9be49e1c5b69de",
     "7.0.1": "c2f0a175157d9aaace8031f8e6d7ea0ed6142b4bcef287105e3ed227301f1002",
+    "8.0.1": "dffd62a213ec6cdb4430012a4a41c11e5e32c288f133d5391f9be49e1c5b69de",
     "lld": "c4b3aaea06ff7112c64753047a2ab279fc3fe10dd807fd3c22edfdae99f43eed"
   },
-  "exact_functions": 35154,
-  "exact_bytes": 4504560,
+  "exact_functions": 35221,
+  "exact_bytes": 4513784,
   "builds": [
     {
       "id": "probes",
@@ -13242,9 +13243,14 @@
       "object_sha256": "7a0dda3509f4d7aa956ae573f2b63a03a89c1439c08164207f8e9563b268d049"
     },
     {
+      "id": "gameplay_component_steps",
+      "compiler": "8.0.1",
+      "object_sha256": "9d074cbaa9d10c34fb9a851dd04b53e29ba421a2c1be1269d54547d602d42eed"
+    },
+    {
       "id": "gameplay_class_destructors",
       "compiler": "8.0.1",
-      "object_sha256": "1f91015ef72e0c41802c18ec077be8fe7d42335d19a8dfdbfa979e631519a3d8"
+      "object_sha256": "33bd54cd6b045ff4df92837c14e161477c75b29f948c9aca0b8ea8ec63f60560"
     },
     {
       "id": "gameplay_class_destructors_forced",
@@ -200738,6 +200744,17 @@
       "relocation_count": 2
     },
     {
+      "address": "0x69b530",
+      "size": 80,
+      "exact": true,
+      "target_sha256": "126557770c803ca94151b0c536ad2aabf923f94f704c2d9c2df4d90c67be465f",
+      "compiled_sha256": "126557770c803ca94151b0c536ad2aabf923f94f704c2d9c2df4d90c67be465f",
+      "source": "src/gameplay/ComponentSteps.cpp",
+      "symbol": "_ZN4Onyx7Spawner5Slot2Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 4
+    },
+    {
       "address": "0x69c0d0",
       "size": 28,
       "exact": true,
@@ -232352,6 +232369,17 @@
       "relocation_count": 1
     },
     {
+      "address": "0x7ebde0",
+      "size": 76,
+      "exact": true,
+      "target_sha256": "460b975c3e7ae0aa16ad7352ca80990e0ea4115c739b8cf5c5f4a305781319f2",
+      "compiled_sha256": "460b975c3e7ae0aa16ad7352ca80990e0ea4115c739b8cf5c5f4a305781319f2",
+      "source": "src/gameplay/ComponentSteps.cpp",
+      "symbol": "_ZN4SPTG9AsyncTaskILj8306144EE4TickEi",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 0
+    },
+    {
       "address": "0x7ebe70",
       "size": 4,
       "exact": true,
@@ -232482,6 +232510,17 @@
       "symbol": "RecoveredLeaf_7eca00",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 1
+    },
+    {
+      "address": "0x7eca40",
+      "size": 76,
+      "exact": true,
+      "target_sha256": "460b975c3e7ae0aa16ad7352ca80990e0ea4115c739b8cf5c5f4a305781319f2",
+      "compiled_sha256": "460b975c3e7ae0aa16ad7352ca80990e0ea4115c739b8cf5c5f4a305781319f2",
+      "source": "src/gameplay/ComponentSteps.cpp",
+      "symbol": "_ZN4SPTG9AsyncTaskILj8309312EE4TickEi",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 0
     },
     {
       "address": "0x7f5720",
@@ -232768,6 +232807,17 @@
       "symbol": "RecoveredLeaf_7fac20",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 1
+    },
+    {
+      "address": "0x7fac60",
+      "size": 76,
+      "exact": true,
+      "target_sha256": "460b975c3e7ae0aa16ad7352ca80990e0ea4115c739b8cf5c5f4a305781319f2",
+      "compiled_sha256": "460b975c3e7ae0aa16ad7352ca80990e0ea4115c739b8cf5c5f4a305781319f2",
+      "source": "src/gameplay/ComponentSteps.cpp",
+      "symbol": "_ZN4SPTG9AsyncTaskILj8367200EE4TickEi",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 0
     },
     {
       "address": "0x7facb0",
@@ -247686,6 +247736,17 @@
       "relocation_count": 14
     },
     {
+      "address": "0x88fa90",
+      "size": 192,
+      "exact": true,
+      "target_sha256": "c2d8ac0a5aece5554d6b98660f169d0f32bbb4381b7f1e5bf8315c99e72dbc11",
+      "compiled_sha256": "c2d8ac0a5aece5554d6b98660f169d0f32bbb4381b7f1e5bf8315c99e72dbc11",
+      "source": "src/gameplay/ClassDestructors.cpp",
+      "symbol": "_ZN4SPTG17FillLineListShapeD2Ev",
+      "source_review": "generated_cxx_abi_view",
+      "relocation_count": 16
+    },
+    {
       "address": "0x88fb50",
       "size": 392,
       "exact": true,
@@ -251789,6 +251850,17 @@
       "relocation_count": 6
     },
     {
+      "address": "0x8ad650",
+      "size": 76,
+      "exact": true,
+      "target_sha256": "52b9310f68022f819263b66f37afa052c1a88fcbebfdc9915c6289cecbe0fd76",
+      "compiled_sha256": "52b9310f68022f819263b66f37afa052c1a88fcbebfdc9915c6289cecbe0fd76",
+      "source": "src/gameplay/ComponentSteps.cpp",
+      "symbol": "_ZN4SPTG22HudFiniteNumberCounter5Slot7Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 1
+    },
+    {
       "address": "0x8adcd0",
       "size": 24,
       "exact": true,
@@ -253560,6 +253632,17 @@
       "relocation_count": 0
     },
     {
+      "address": "0x8ba350",
+      "size": 92,
+      "exact": true,
+      "target_sha256": "c4c140babd263d2bf894d8cb9bd9ca2a8c36500074d47dd83c2528bb99a17a76",
+      "compiled_sha256": "c4c140babd263d2bf894d8cb9bd9ca2a8c36500074d47dd83c2528bb99a17a76",
+      "source": "src/gameplay/ComponentSteps.cpp",
+      "symbol": "_ZN4SPTG12StaticObject6Slot13Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 3
+    },
+    {
       "address": "0x8ba470",
       "size": 36,
       "exact": true,
@@ -253967,6 +254050,17 @@
       "relocation_count": 3
     },
     {
+      "address": "0x8bd590",
+      "size": 192,
+      "exact": true,
+      "target_sha256": "a4698eed00082563716d9aefd3c3b732fd7e811fc0c30166d280a9f56daddadb",
+      "compiled_sha256": "a4698eed00082563716d9aefd3c3b732fd7e811fc0c30166d280a9f56daddadb",
+      "source": "src/gameplay/ClassDestructors.cpp",
+      "symbol": "_ZN4SPTG22FillLineListGroupShapeD2Ev",
+      "source_review": "generated_cxx_abi_view",
+      "relocation_count": 16
+    },
+    {
       "address": "0x8bd720",
       "size": 104,
       "exact": true,
@@ -253987,6 +254081,17 @@
       "symbol": "RecoveredLeaf_8bd790",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 2
+    },
+    {
+      "address": "0x8be540",
+      "size": 112,
+      "exact": true,
+      "target_sha256": "bd726c495b7c503befadfa2de9887cc781a369b416ddb03517a0b5e99a0c2d88",
+      "compiled_sha256": "bd726c495b7c503befadfa2de9887cc781a369b416ddb03517a0b5e99a0c2d88",
+      "source": "src/gameplay/ClassDestructors.cpp",
+      "symbol": "_ZN4Onyx8Graphics14ShapeComponentD2Ev",
+      "source_review": "generated_cxx_abi_view",
+      "relocation_count": 9
     },
     {
       "address": "0x8be5b0",
@@ -254196,6 +254301,17 @@
       "symbol": "_ZN8RawOwnerILj9170336ELj64ELj0EED2Ev",
       "source_review": "manual_reconstruction",
       "relocation_count": 7
+    },
+    {
+      "address": "0x8bee10",
+      "size": 112,
+      "exact": true,
+      "target_sha256": "ffd6626e2bf204806d98841eaa5513a7c0a0b78fda81e2234ee480317f88d319",
+      "compiled_sha256": "ffd6626e2bf204806d98841eaa5513a7c0a0b78fda81e2234ee480317f88d319",
+      "source": "src/gameplay/ComponentSteps.cpp",
+      "symbol": "_ZN4SPTG24FlashColorMaterialEffect5StartEv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 1
     },
     {
       "address": "0x8bf2c0",
@@ -257980,6 +258096,17 @@
       "symbol": "RecoveredLeaf_8e82a0",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 2
+    },
+    {
+      "address": "0x8e8830",
+      "size": 60,
+      "exact": true,
+      "target_sha256": "82793e93dcf1446eff7c8cd83eb3f59d3f76498388bfe3dc44de21127c9ea4ad",
+      "compiled_sha256": "82793e93dcf1446eff7c8cd83eb3f59d3f76498388bfe3dc44de21127c9ea4ad",
+      "source": "src/gameplay/ComponentSteps.cpp",
+      "symbol": "_ZN4SPTG25ActorJumpFromBehindAction6Slot15EPv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 1
     },
     {
       "address": "0x8e8870",
@@ -267563,6 +267690,17 @@
       "relocation_count": 0
     },
     {
+      "address": "0x9494e0",
+      "size": 212,
+      "exact": true,
+      "target_sha256": "e7f3693a60335d99e1e84e208e6e4b4756667b4f5a2d144170e067a0ef22122b",
+      "compiled_sha256": "e7f3693a60335d99e1e84e208e6e4b4756667b4f5a2d144170e067a0ef22122b",
+      "source": "src/gameplay/ComponentSteps.cpp",
+      "symbol": "_ZN4SPTG13ObjectSpawnerILj9737440EE6Slot13EPv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 9
+    },
+    {
       "address": "0x9495c0",
       "size": 4,
       "exact": true,
@@ -267651,6 +267789,17 @@
       "relocation_count": 3
     },
     {
+      "address": "0x94a4c0",
+      "size": 212,
+      "exact": true,
+      "target_sha256": "a9af18eff5311b454566ffc27835eae1889e01c2a928da76153561f6edd2c354",
+      "compiled_sha256": "a9af18eff5311b454566ffc27835eae1889e01c2a928da76153561f6edd2c354",
+      "source": "src/gameplay/ComponentSteps.cpp",
+      "symbol": "_ZN4SPTG13ObjectSpawnerILj9741504EE6Slot13EPv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 9
+    },
+    {
       "address": "0x94a5a0",
       "size": 36,
       "exact": true,
@@ -267682,6 +267831,17 @@
       "symbol": "RecoveredLeaf_94a600",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 3
+    },
+    {
+      "address": "0x94a640",
+      "size": 216,
+      "exact": true,
+      "target_sha256": "25ab7c6a22012d7aa734054d4bcf1ab73c12cbdd353267679fcfff021c178eb4",
+      "compiled_sha256": "25ab7c6a22012d7aa734054d4bcf1ab73c12cbdd353267679fcfff021c178eb4",
+      "source": "src/gameplay/ComponentSteps.cpp",
+      "symbol": "_ZN4SPTG15SpawnedInstanceILj9741888ELj93740570ELj2102154688EE5Slot7Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 7
     },
     {
       "address": "0x94a720",
@@ -268586,6 +268746,17 @@
       "relocation_count": 0
     },
     {
+      "address": "0x9548f0",
+      "size": 212,
+      "exact": true,
+      "target_sha256": "6b06f6afd5220489799bd62e152ca69a7c2c3415aa4c409b18a4cb6b78f30af8",
+      "compiled_sha256": "6b06f6afd5220489799bd62e152ca69a7c2c3415aa4c409b18a4cb6b78f30af8",
+      "source": "src/gameplay/ComponentSteps.cpp",
+      "symbol": "_ZN4SPTG13ObjectSpawnerILj9783536EE6Slot13EPv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 9
+    },
+    {
       "address": "0x955b60",
       "size": 24,
       "exact": true,
@@ -268639,6 +268810,17 @@
       "symbol": "RecoveredLeaf_955c60",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 3
+    },
+    {
+      "address": "0x955ca0",
+      "size": 216,
+      "exact": true,
+      "target_sha256": "d9abd62f3c5bab8b9ad0df00fa9760e1ce30f3d1c1b0fcc512971763dde4d013",
+      "compiled_sha256": "d9abd62f3c5bab8b9ad0df00fa9760e1ce30f3d1c1b0fcc512971763dde4d013",
+      "source": "src/gameplay/ComponentSteps.cpp",
+      "symbol": "_ZN4SPTG15SpawnedInstanceILj9788576ELj1133020893ELj938994834EE5Slot7Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 7
     },
     {
       "address": "0x955d80",
@@ -274152,6 +274334,17 @@
       "relocation_count": 0
     },
     {
+      "address": "0x9a0e00",
+      "size": 212,
+      "exact": true,
+      "target_sha256": "39dceda18ecd88ad12f348bf39110aaaef82fa2af91b92ccbeff7a857ab3827e",
+      "compiled_sha256": "39dceda18ecd88ad12f348bf39110aaaef82fa2af91b92ccbeff7a857ab3827e",
+      "source": "src/gameplay/ComponentSteps.cpp",
+      "symbol": "_ZN4SPTG13ObjectSpawnerILj10096128EE6Slot13EPv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 9
+    },
+    {
       "address": "0x9a0ee0",
       "size": 4,
       "exact": true,
@@ -274185,6 +274378,17 @@
       "relocation_count": 3
     },
     {
+      "address": "0x9a1910",
+      "size": 212,
+      "exact": true,
+      "target_sha256": "a567e73303fc650d958c76f6330dd10f7daae52a23b5108f140c51ce6f5a7045",
+      "compiled_sha256": "a567e73303fc650d958c76f6330dd10f7daae52a23b5108f140c51ce6f5a7045",
+      "source": "src/gameplay/ComponentSteps.cpp",
+      "symbol": "_ZN4SPTG13ObjectSpawnerILj10098960EE6Slot13EPv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 9
+    },
+    {
       "address": "0x9a19f0",
       "size": 36,
       "exact": true,
@@ -274216,6 +274420,17 @@
       "symbol": "RecoveredLeaf_9a1a50",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 3
+    },
+    {
+      "address": "0x9a1a90",
+      "size": 216,
+      "exact": true,
+      "target_sha256": "144f6596bdab56cec1499df2ddc713440273305f31ebce466b7e4d045d8ae36c",
+      "compiled_sha256": "144f6596bdab56cec1499df2ddc713440273305f31ebce466b7e4d045d8ae36c",
+      "source": "src/gameplay/ComponentSteps.cpp",
+      "symbol": "_ZN4SPTG15SpawnedInstanceILj10099344ELj1140153524ELj1387463615EE5Slot7Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 7
     },
     {
       "address": "0x9a1b70",
@@ -276176,6 +276391,17 @@
       "relocation_count": 0
     },
     {
+      "address": "0x9ba650",
+      "size": 96,
+      "exact": true,
+      "target_sha256": "2cc14593e90c569d6f05f76778958d993182e56958b7aac168c853148b1ebb1c",
+      "compiled_sha256": "2cc14593e90c569d6f05f76778958d993182e56958b7aac168c853148b1ebb1c",
+      "source": "src/gameplay/ComponentSteps.cpp",
+      "symbol": "_ZN4SPTG15MechanismObject6UpdateEv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 1
+    },
+    {
       "address": "0x9baa10",
       "size": 36,
       "exact": true,
@@ -276748,6 +276974,17 @@
       "relocation_count": 0
     },
     {
+      "address": "0x9be200",
+      "size": 212,
+      "exact": true,
+      "target_sha256": "f5977791b36ba9690931c758c7b4db1d873c53578aa6a74bc9166da35456934c",
+      "compiled_sha256": "f5977791b36ba9690931c758c7b4db1d873c53578aa6a74bc9166da35456934c",
+      "source": "src/gameplay/ComponentSteps.cpp",
+      "symbol": "_ZN4SPTG13ObjectSpawnerILj10215936EE6Slot13EPv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 9
+    },
+    {
       "address": "0x9bece0",
       "size": 24,
       "exact": true,
@@ -276801,6 +277038,17 @@
       "symbol": "RecoveredLeaf_9bede0",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 3
+    },
+    {
+      "address": "0x9bee20",
+      "size": 216,
+      "exact": true,
+      "target_sha256": "e0ac4d7ca407f6f12bad42054561ca427a8fbb99ee77be0ab44b8052342681d6",
+      "compiled_sha256": "e0ac4d7ca407f6f12bad42054561ca427a8fbb99ee77be0ab44b8052342681d6",
+      "source": "src/gameplay/ComponentSteps.cpp",
+      "symbol": "_ZN4SPTG15SpawnedInstanceILj10219040ELj1806313218ELj100462108EE5Slot7Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 7
     },
     {
       "address": "0x9bef00",
@@ -277485,6 +277733,17 @@
       "relocation_count": 0
     },
     {
+      "address": "0x9c7740",
+      "size": 212,
+      "exact": true,
+      "target_sha256": "e482125ae0dce0dff7fbdc30a5f1fa6a69ce99cc8b1646007b1a48e9f6969b8f",
+      "compiled_sha256": "e482125ae0dce0dff7fbdc30a5f1fa6a69ce99cc8b1646007b1a48e9f6969b8f",
+      "source": "src/gameplay/ComponentSteps.cpp",
+      "symbol": "_ZN4SPTG13ObjectSpawnerILj10254144EE6Slot13EPv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 9
+    },
+    {
       "address": "0x9c8710",
       "size": 24,
       "exact": true,
@@ -277538,6 +277797,17 @@
       "symbol": "RecoveredLeaf_9c8810",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 3
+    },
+    {
+      "address": "0x9c8850",
+      "size": 216,
+      "exact": true,
+      "target_sha256": "9bb08608d5ff3d8da718b9502f1d27afd15b590be29c11c8e010bff209e7c786",
+      "compiled_sha256": "9bb08608d5ff3d8da718b9502f1d27afd15b590be29c11c8e010bff209e7c786",
+      "source": "src/gameplay/ComponentSteps.cpp",
+      "symbol": "_ZN4SPTG15SpawnedInstanceILj10258512ELj332952121ELj184502495EE5Slot7Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 7
     },
     {
       "address": "0x9c8930",
@@ -283843,6 +284113,17 @@
       "relocation_count": 0
     },
     {
+      "address": "0xa0b030",
+      "size": 212,
+      "exact": true,
+      "target_sha256": "f80d8c991bb4cee4920ebabda3bfed38ec1c503ba419f5d6884e2d0432676d29",
+      "compiled_sha256": "f80d8c991bb4cee4920ebabda3bfed38ec1c503ba419f5d6884e2d0432676d29",
+      "source": "src/gameplay/ComponentSteps.cpp",
+      "symbol": "_ZN4SPTG13ObjectSpawnerILj10530864EE6Slot13EPv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 9
+    },
+    {
       "address": "0xa0c570",
       "size": 24,
       "exact": true,
@@ -284116,6 +284397,17 @@
       "symbol": "RecoveredLeaf_a0e3b0",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 4
+    },
+    {
+      "address": "0xa0e400",
+      "size": 216,
+      "exact": true,
+      "target_sha256": "0dd4c3b683bc5701b0b51aee832ee0441eb2aa43b7bfc495d95e80a255f3c29e",
+      "compiled_sha256": "0dd4c3b683bc5701b0b51aee832ee0441eb2aa43b7bfc495d95e80a255f3c29e",
+      "source": "src/gameplay/ComponentSteps.cpp",
+      "symbol": "_ZN4SPTG15SpawnedInstanceILj10544128ELj1734408193ELj791409834EE5Slot7Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 7
     },
     {
       "address": "0xa0e4e0",
@@ -286637,6 +286929,17 @@
       "relocation_count": 0
     },
     {
+      "address": "0xa26a40",
+      "size": 160,
+      "exact": true,
+      "target_sha256": "e505110b4fd90edcb9313e55e7b117723ffecdfb58ec4818ac45a56f6372adb4",
+      "compiled_sha256": "e505110b4fd90edcb9313e55e7b117723ffecdfb58ec4818ac45a56f6372adb4",
+      "source": "src/gameplay/ComponentSteps.cpp",
+      "symbol": "_ZN4SPTG9RobotPartILj10644032EE6UpdateEv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 3
+    },
+    {
       "address": "0xa26ae0",
       "size": 12,
       "exact": true,
@@ -286723,6 +287026,17 @@
       "symbol": "RecoveredIdentity_a26ba0_0_0",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 0
+    },
+    {
+      "address": "0xa26c50",
+      "size": 160,
+      "exact": true,
+      "target_sha256": "66c1ceb129e274dc037a64429f806acfa7807af49a4bfc55ea1b99013cdb2381",
+      "compiled_sha256": "66c1ceb129e274dc037a64429f806acfa7807af49a4bfc55ea1b99013cdb2381",
+      "source": "src/gameplay/ComponentSteps.cpp",
+      "symbol": "_ZN4SPTG9RobotPartILj10644560EE6UpdateEv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 3
     },
     {
       "address": "0xa26cf0",
@@ -306129,6 +306443,17 @@
       "relocation_count": 2
     },
     {
+      "address": "0xaed000",
+      "size": 68,
+      "exact": true,
+      "target_sha256": "41ce8e5d248528aa715ed45030ae5c1ab2ffd7d3108601f2376ac80f51625070",
+      "compiled_sha256": "41ce8e5d248528aa715ed45030ae5c1ab2ffd7d3108601f2376ac80f51625070",
+      "source": "src/gameplay/ComponentSteps.cpp",
+      "symbol": "_ZN4SPTG23AnimaticElementInstance5Slot5EPv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 0
+    },
+    {
       "address": "0xaed0a0",
       "size": 4,
       "exact": true,
@@ -308131,6 +308456,17 @@
       "relocation_count": 5
     },
     {
+      "address": "0xafe800",
+      "size": 120,
+      "exact": true,
+      "target_sha256": "b0cb257ed9862738f96a0f5a3e92cc67b378f9b1c4bed83c012143d207ded33e",
+      "compiled_sha256": "b0cb257ed9862738f96a0f5a3e92cc67b378f9b1c4bed83c012143d207ded33e",
+      "source": "src/gameplay/ClassDestructors.cpp",
+      "symbol": "_ZN4Onyx8Graphics14ShapeComponentD0Ev",
+      "source_review": "generated_cxx_abi_view",
+      "relocation_count": 10
+    },
+    {
       "address": "0xafea80",
       "size": 304,
       "exact": true,
@@ -308186,6 +308522,28 @@
       "relocation_count": 0
     },
     {
+      "address": "0xaffa20",
+      "size": 132,
+      "exact": true,
+      "target_sha256": "8b6f8247c171e9a95821400cddc9e4d7cb846fed245a931599e56bdd4f261f29",
+      "compiled_sha256": "8b6f8247c171e9a95821400cddc9e4d7cb846fed245a931599e56bdd4f261f29",
+      "source": "src/gameplay/ClassDestructors.cpp",
+      "symbol": "_ZN4Onyx8Graphics11SphereShapeD2Ev",
+      "source_review": "generated_cxx_abi_view",
+      "relocation_count": 12
+    },
+    {
+      "address": "0xaffab0",
+      "size": 140,
+      "exact": true,
+      "target_sha256": "86565a62d22bd9db564b73f0dafebf2ae950f5beae8449de78ae29616eb83ac6",
+      "compiled_sha256": "86565a62d22bd9db564b73f0dafebf2ae950f5beae8449de78ae29616eb83ac6",
+      "source": "src/gameplay/ClassDestructors.cpp",
+      "symbol": "_ZN4Onyx8Graphics11SphereShapeD0Ev",
+      "source_review": "generated_cxx_abi_view",
+      "relocation_count": 13
+    },
+    {
       "address": "0xb00380",
       "size": 104,
       "exact": true,
@@ -308206,6 +308564,28 @@
       "symbol": "RecoveredLeaf_b00540",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 0
+    },
+    {
+      "address": "0xb013d0",
+      "size": 132,
+      "exact": true,
+      "target_sha256": "76a65d4253d01d9610eae8af47409ba20c3e8d3f639b74c0c47799258b416cea",
+      "compiled_sha256": "76a65d4253d01d9610eae8af47409ba20c3e8d3f639b74c0c47799258b416cea",
+      "source": "src/gameplay/ClassDestructors.cpp",
+      "symbol": "_ZN4Onyx8Graphics9RingShapeD2Ev",
+      "source_review": "generated_cxx_abi_view",
+      "relocation_count": 12
+    },
+    {
+      "address": "0xb01460",
+      "size": 140,
+      "exact": true,
+      "target_sha256": "302e52e8c4b91982369af1aba0c17ffa0926e4afda77fcda6c6b69dbcdbc569a",
+      "compiled_sha256": "302e52e8c4b91982369af1aba0c17ffa0926e4afda77fcda6c6b69dbcdbc569a",
+      "source": "src/gameplay/ClassDestructors.cpp",
+      "symbol": "_ZN4Onyx8Graphics9RingShapeD0Ev",
+      "source_review": "generated_cxx_abi_view",
+      "relocation_count": 13
     },
     {
       "address": "0xb01cc0",
@@ -308263,6 +308643,28 @@
       "relocation_count": 0
     },
     {
+      "address": "0xb02120",
+      "size": 132,
+      "exact": true,
+      "target_sha256": "0bbe978891de19bf121caa02df041c5081f2b4695c159f912220e2a7dd3be48e",
+      "compiled_sha256": "0bbe978891de19bf121caa02df041c5081f2b4695c159f912220e2a7dd3be48e",
+      "source": "src/gameplay/ClassDestructors.cpp",
+      "symbol": "_ZN4Onyx8Graphics9QuadShapeD2Ev",
+      "source_review": "generated_cxx_abi_view",
+      "relocation_count": 12
+    },
+    {
+      "address": "0xb021b0",
+      "size": 140,
+      "exact": true,
+      "target_sha256": "f83815c5242a43386aed0cf33c12137b56f2dec0616c2e4373a194545a74a076",
+      "compiled_sha256": "f83815c5242a43386aed0cf33c12137b56f2dec0616c2e4373a194545a74a076",
+      "source": "src/gameplay/ClassDestructors.cpp",
+      "symbol": "_ZN4Onyx8Graphics9QuadShapeD0Ev",
+      "source_review": "generated_cxx_abi_view",
+      "relocation_count": 13
+    },
+    {
       "address": "0xb02d90",
       "size": 104,
       "exact": true,
@@ -308285,6 +308687,28 @@
       "relocation_count": 0
     },
     {
+      "address": "0xb03060",
+      "size": 132,
+      "exact": true,
+      "target_sha256": "c7e7a80dd3f3117d95ac15ca820c6c46128cbe341840ade74048333246ab92e1",
+      "compiled_sha256": "c7e7a80dd3f3117d95ac15ca820c6c46128cbe341840ade74048333246ab92e1",
+      "source": "src/gameplay/ClassDestructors.cpp",
+      "symbol": "_ZN4Onyx8Graphics12PyramidShapeD2Ev",
+      "source_review": "generated_cxx_abi_view",
+      "relocation_count": 12
+    },
+    {
+      "address": "0xb030f0",
+      "size": 140,
+      "exact": true,
+      "target_sha256": "bb7dc525a7042d46702777ee9b276d49093f7c4ceb477e218ac026a79182d77c",
+      "compiled_sha256": "bb7dc525a7042d46702777ee9b276d49093f7c4ceb477e218ac026a79182d77c",
+      "source": "src/gameplay/ClassDestructors.cpp",
+      "symbol": "_ZN4Onyx8Graphics12PyramidShapeD0Ev",
+      "source_review": "generated_cxx_abi_view",
+      "relocation_count": 13
+    },
+    {
       "address": "0xb04440",
       "size": 104,
       "exact": true,
@@ -308294,6 +308718,28 @@
       "symbol": "RecoveredLeaf_b04440",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 1
+    },
+    {
+      "address": "0xb045c0",
+      "size": 132,
+      "exact": true,
+      "target_sha256": "bbfab5f13076984d3f467ccc00de957c65a58d019c81882e7592c9d61b7b8167",
+      "compiled_sha256": "bbfab5f13076984d3f467ccc00de957c65a58d019c81882e7592c9d61b7b8167",
+      "source": "src/gameplay/ClassDestructors.cpp",
+      "symbol": "_ZN4Onyx8Graphics10PlaneShapeD2Ev",
+      "source_review": "generated_cxx_abi_view",
+      "relocation_count": 12
+    },
+    {
+      "address": "0xb04650",
+      "size": 140,
+      "exact": true,
+      "target_sha256": "42c019dd4830d191c691b4fbed5ffa0cbdf7897fd84c2139b34114527adb8421",
+      "compiled_sha256": "42c019dd4830d191c691b4fbed5ffa0cbdf7897fd84c2139b34114527adb8421",
+      "source": "src/gameplay/ClassDestructors.cpp",
+      "symbol": "_ZN4Onyx8Graphics10PlaneShapeD0Ev",
+      "source_review": "generated_cxx_abi_view",
+      "relocation_count": 13
     },
     {
       "address": "0xb04b20",
@@ -308327,6 +308773,17 @@
       "symbol": "RecoveredLeaf_b04ca0",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 0
+    },
+    {
+      "address": "0xb05a30",
+      "size": 192,
+      "exact": true,
+      "target_sha256": "45f3a90b02254d96d39044729f0bb5e60ff66fc9f40398a8d19004da87936862",
+      "compiled_sha256": "45f3a90b02254d96d39044729f0bb5e60ff66fc9f40398a8d19004da87936862",
+      "source": "src/gameplay/ClassDestructors.cpp",
+      "symbol": "_ZN4Onyx8Graphics13LineListShapeD2Ev",
+      "source_review": "generated_cxx_abi_view",
+      "relocation_count": 16
     },
     {
       "address": "0xb061b0",
@@ -308373,6 +308830,28 @@
       "relocation_count": 0
     },
     {
+      "address": "0xb06760",
+      "size": 132,
+      "exact": true,
+      "target_sha256": "695b25a96c8645956f9b165d233c25b051e39d4d03f536a30574dcf4ddce7c80",
+      "compiled_sha256": "695b25a96c8645956f9b165d233c25b051e39d4d03f536a30574dcf4ddce7c80",
+      "source": "src/gameplay/ClassDestructors.cpp",
+      "symbol": "_ZN4Onyx8Graphics13CylinderShapeD2Ev",
+      "source_review": "generated_cxx_abi_view",
+      "relocation_count": 12
+    },
+    {
+      "address": "0xb067f0",
+      "size": 140,
+      "exact": true,
+      "target_sha256": "629a71df65d8e49c3a9970345cc39258b9373a2f84143997b9edc094c0c4e5ef",
+      "compiled_sha256": "629a71df65d8e49c3a9970345cc39258b9373a2f84143997b9edc094c0c4e5ef",
+      "source": "src/gameplay/ClassDestructors.cpp",
+      "symbol": "_ZN4Onyx8Graphics13CylinderShapeD0Ev",
+      "source_review": "generated_cxx_abi_view",
+      "relocation_count": 13
+    },
+    {
       "address": "0xb07d70",
       "size": 104,
       "exact": true,
@@ -308395,6 +308874,28 @@
       "relocation_count": 0
     },
     {
+      "address": "0xb07ee0",
+      "size": 132,
+      "exact": true,
+      "target_sha256": "2856caf907f8f062b12b2341c851d5292c94a47be0336d48cd2da963d27de534",
+      "compiled_sha256": "2856caf907f8f062b12b2341c851d5292c94a47be0336d48cd2da963d27de534",
+      "source": "src/gameplay/ClassDestructors.cpp",
+      "symbol": "_ZN4Onyx8Graphics9ConeShapeD2Ev",
+      "source_review": "generated_cxx_abi_view",
+      "relocation_count": 12
+    },
+    {
+      "address": "0xb07f70",
+      "size": 140,
+      "exact": true,
+      "target_sha256": "6678795ccb3345aba4bfb775f9271893cd14022a78a34ffd7f402d21f59152cb",
+      "compiled_sha256": "6678795ccb3345aba4bfb775f9271893cd14022a78a34ffd7f402d21f59152cb",
+      "source": "src/gameplay/ClassDestructors.cpp",
+      "symbol": "_ZN4Onyx8Graphics9ConeShapeD0Ev",
+      "source_review": "generated_cxx_abi_view",
+      "relocation_count": 13
+    },
+    {
       "address": "0xb090e0",
       "size": 104,
       "exact": true,
@@ -308404,6 +308905,28 @@
       "symbol": "RecoveredLeaf_b090e0",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 1
+    },
+    {
+      "address": "0xb09260",
+      "size": 132,
+      "exact": true,
+      "target_sha256": "40fcee55397613678bc63e4cc559e2b0ac11367a6b736c19305f684722c64713",
+      "compiled_sha256": "40fcee55397613678bc63e4cc559e2b0ac11367a6b736c19305f684722c64713",
+      "source": "src/gameplay/ClassDestructors.cpp",
+      "symbol": "_ZN4Onyx8Graphics12CapsuleShapeD2Ev",
+      "source_review": "generated_cxx_abi_view",
+      "relocation_count": 12
+    },
+    {
+      "address": "0xb092f0",
+      "size": 140,
+      "exact": true,
+      "target_sha256": "7863077fa9f1d89c869a8027bfb5284eb8622accfd5f50d59b2c678e6926ff31",
+      "compiled_sha256": "7863077fa9f1d89c869a8027bfb5284eb8622accfd5f50d59b2c678e6926ff31",
+      "source": "src/gameplay/ClassDestructors.cpp",
+      "symbol": "_ZN4Onyx8Graphics12CapsuleShapeD0Ev",
+      "source_review": "generated_cxx_abi_view",
+      "relocation_count": 13
     },
     {
       "address": "0xb0a970",
@@ -308437,6 +308960,28 @@
       "symbol": "RecoveredLeaf_b0aaf0",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 0
+    },
+    {
+      "address": "0xb0c0a0",
+      "size": 132,
+      "exact": true,
+      "target_sha256": "916b79f6239f8ea74e340d14589c82d0ccab0a7b18dc6a10d2431c23a2f11ad6",
+      "compiled_sha256": "916b79f6239f8ea74e340d14589c82d0ccab0a7b18dc6a10d2431c23a2f11ad6",
+      "source": "src/gameplay/ClassDestructors.cpp",
+      "symbol": "_ZN4Onyx8Graphics8BoxShapeD2Ev",
+      "source_review": "generated_cxx_abi_view",
+      "relocation_count": 12
+    },
+    {
+      "address": "0xb0c130",
+      "size": 140,
+      "exact": true,
+      "target_sha256": "278c8316debc7f845e82437d82a71226a9c5d778ff3ac45a869ba45d8c36cc4d",
+      "compiled_sha256": "278c8316debc7f845e82437d82a71226a9c5d778ff3ac45a869ba45d8c36cc4d",
+      "source": "src/gameplay/ClassDestructors.cpp",
+      "symbol": "_ZN4Onyx8Graphics8BoxShapeD0Ev",
+      "source_review": "generated_cxx_abi_view",
+      "relocation_count": 13
     },
     {
       "address": "0xb0eec0",
@@ -312289,6 +312834,17 @@
       "relocation_count": 0
     },
     {
+      "address": "0xb2f3e0",
+      "size": 144,
+      "exact": true,
+      "target_sha256": "163d97e97dc93c2819ebb0e73f6316ea079229f867dc2601bc01b378d13000c2",
+      "compiled_sha256": "163d97e97dc93c2819ebb0e73f6316ea079229f867dc2601bc01b378d13000c2",
+      "source": "src/gameplay/ComponentSteps.cpp",
+      "symbol": "_ZN4Onyx10DirtyShapeILj11727840ELj276EE6Slot21EPv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 5
+    },
+    {
       "address": "0xb30170",
       "size": 372,
       "exact": true,
@@ -312725,6 +313281,17 @@
       "compiled_sha256": "9696862a5cd0de74596d4108d9f7a8b40fada6ef013f1463d40cfc1b006ff925",
       "source": "src/IdentityFour.cpp",
       "symbol": "_Z21MatchesFourIdentitiesILj11766256ELj429100959ELj129449108ELj953195164ELj779418806EEbPvj",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 0
+    },
+    {
+      "address": "0xb38a40",
+      "size": 112,
+      "exact": true,
+      "target_sha256": "f060ac85f49ee8e791a1c30609b7f7922b3ff293fe10cae595ff1b62307e159f",
+      "compiled_sha256": "f060ac85f49ee8e791a1c30609b7f7922b3ff293fe10cae595ff1b62307e159f",
+      "source": "src/gameplay/ComponentSteps.cpp",
+      "symbol": "_ZN4Onyx12EmitterGroup6UpdateEv",
       "source_review": "manual_reconstruction",
       "relocation_count": 0
     },
@@ -313530,6 +314097,17 @@
       "symbol": "RecoveredLeaf_b43830",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 0
+    },
+    {
+      "address": "0xb439b0",
+      "size": 96,
+      "exact": true,
+      "target_sha256": "5bb8ad4f7c891bd7c6d3a05e89eb8672f5633efed0aa332156f03023d16792b0",
+      "compiled_sha256": "5bb8ad4f7c891bd7c6d3a05e89eb8672f5633efed0aa332156f03023d16792b0",
+      "source": "src/gameplay/ComponentSteps.cpp",
+      "symbol": "_ZN4Onyx13MorphInstance6Slot21EPv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 1
     },
     {
       "address": "0xb447a0",
@@ -316887,6 +317465,17 @@
       "relocation_count": 4
     },
     {
+      "address": "0xb61830",
+      "size": 72,
+      "exact": true,
+      "target_sha256": "5865aa4cf95245fd2018cae6769d28e8cf555df31fcb17de8327c19c1583ab08",
+      "compiled_sha256": "5865aa4cf95245fd2018cae6769d28e8cf555df31fcb17de8327c19c1583ab08",
+      "source": "src/gameplay/ComponentSteps.cpp",
+      "symbol": "_ZN4Onyx15GraphicsUpdater6Slot15EPNS_11UpdatedListE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 0
+    },
+    {
       "address": "0xb61890",
       "size": 20,
       "exact": true,
@@ -320000,6 +320589,17 @@
       "relocation_count": 1
     },
     {
+      "address": "0xb72f40",
+      "size": 112,
+      "exact": true,
+      "target_sha256": "9eef6c9ca83bf7d4d7a1a5b274d04d7004b5ae599d8bcf5e44b70e3b5a7e456a",
+      "compiled_sha256": "9eef6c9ca83bf7d4d7a1a5b274d04d7004b5ae599d8bcf5e44b70e3b5a7e456a",
+      "source": "src/gameplay/ClassDestructors.cpp",
+      "symbol": "_ZN4Onyx8Graphics20EvolutionDevelopment24BasicRendererTransparentD0Ev",
+      "source_review": "generated_cxx_abi_view",
+      "relocation_count": 9
+    },
+    {
       "address": "0xb73020",
       "size": 100,
       "exact": true,
@@ -320009,6 +320609,17 @@
       "symbol": "_ZN8RawOwnerILj12005408ELj120ELj8EED2Ev",
       "source_review": "manual_reconstruction",
       "relocation_count": 7
+    },
+    {
+      "address": "0xb73110",
+      "size": 112,
+      "exact": true,
+      "target_sha256": "dab27e35e2d2c05aad06423ee91083ed46c005970ea5c589dc20df07f7a70a8c",
+      "compiled_sha256": "dab27e35e2d2c05aad06423ee91083ed46c005970ea5c589dc20df07f7a70a8c",
+      "source": "src/gameplay/ClassDestructors.cpp",
+      "symbol": "_ZN4Onyx8Graphics20EvolutionDevelopment19BasicRendererOpaqueD0Ev",
+      "source_review": "generated_cxx_abi_view",
+      "relocation_count": 9
     },
     {
       "address": "0xb73180",
@@ -320539,6 +321150,17 @@
       "relocation_count": 0
     },
     {
+      "address": "0xb834c0",
+      "size": 112,
+      "exact": true,
+      "target_sha256": "291f5a650b4fdaaa4ec5f8cb8f7742df94a1b402004122b2df8cb20b87c66b56",
+      "compiled_sha256": "291f5a650b4fdaaa4ec5f8cb8f7742df94a1b402004122b2df8cb20b87c66b56",
+      "source": "src/gameplay/ClassDestructors.cpp",
+      "symbol": "_ZN4Onyx8Graphics20EvolutionDevelopment13RendererUnlitD0Ev",
+      "source_review": "generated_cxx_abi_view",
+      "relocation_count": 9
+    },
+    {
       "address": "0xb83530",
       "size": 4,
       "exact": true,
@@ -320603,6 +321225,17 @@
       "symbol": "RecoveredLeaf_b83580",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 1
+    },
+    {
+      "address": "0xb83610",
+      "size": 112,
+      "exact": true,
+      "target_sha256": "f31885944491cc26ce50f24add11d49ac634f7f3257bea72255ea843fbb26435",
+      "compiled_sha256": "f31885944491cc26ce50f24add11d49ac634f7f3257bea72255ea843fbb26435",
+      "source": "src/gameplay/ClassDestructors.cpp",
+      "symbol": "_ZN4Onyx8Graphics20EvolutionDevelopment19BasicRendererSkyBoxD0Ev",
+      "source_review": "generated_cxx_abi_view",
+      "relocation_count": 9
     },
     {
       "address": "0xb83a10",
@@ -322253,6 +322886,17 @@
       "symbol": "RecoveredLeaf_b956a0",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 3
+    },
+    {
+      "address": "0xb95880",
+      "size": 144,
+      "exact": true,
+      "target_sha256": "d199607193a7cea5fb78e672438d383b63f4d800a16e7054f93e35f917d4e592",
+      "compiled_sha256": "d199607193a7cea5fb78e672438d383b63f4d800a16e7054f93e35f917d4e592",
+      "source": "src/gameplay/ComponentSteps.cpp",
+      "symbol": "_ZN4Onyx10DirtyShapeILj12146816ELj272EE6Slot21EPv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 5
     },
     {
       "address": "0xb95de0",
@@ -326083,6 +326727,17 @@
       "relocation_count": 8
     },
     {
+      "address": "0xbbf790",
+      "size": 88,
+      "exact": true,
+      "target_sha256": "0ad0adbd271e77b4247296a1849b02df7a65a41d047cef73b1d20855812b41c1",
+      "compiled_sha256": "0ad0adbd271e77b4247296a1849b02df7a65a41d047cef73b1d20855812b41c1",
+      "source": "src/gameplay/ComponentSteps.cpp",
+      "symbol": "_ZN4Onyx5Press6Slot15EPNS_11UpdatedListE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 0
+    },
+    {
       "address": "0xbbf7f0",
       "size": 116,
       "exact": true,
@@ -329346,6 +330001,17 @@
       "compiled_sha256": "9d9a2a6587cd67de16e03a8201ea879a78e1615d1f22c3a5261ce05afe3e4539",
       "source": "src/IdentityTwo.cpp",
       "symbol": "_Z20MatchesTwoIdentitiesILj12525680ELj526107159ELj699656530EEbPvj",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 0
+    },
+    {
+      "address": "0xbf2220",
+      "size": 68,
+      "exact": true,
+      "target_sha256": "e76c89e8414ae18b4fe9d4f8d8675473d652459bda4f84ddc36a77dc39a93624",
+      "compiled_sha256": "e76c89e8414ae18b4fe9d4f8d8675473d652459bda4f84ddc36a77dc39a93624",
+      "source": "src/gameplay/ComponentSteps.cpp",
+      "symbol": "_ZN4Onyx12XorPredicate8EvaluateEv",
       "source_review": "manual_reconstruction",
       "relocation_count": 0
     },
@@ -347885,6 +348551,17 @@
       "relocation_count": 1
     },
     {
+      "address": "0xc85050",
+      "size": 60,
+      "exact": true,
+      "target_sha256": "cd03a5ca007f10b5a26a53b4692453694aaeabca7f32c5a95de34c26889e5e0d",
+      "compiled_sha256": "cd03a5ca007f10b5a26a53b4692453694aaeabca7f32c5a95de34c26889e5e0d",
+      "source": "src/gameplay/ComponentSteps.cpp",
+      "symbol": "_ZN4Onyx24RealTimeElapsedPredicate8EvaluateEv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 5
+    },
+    {
       "address": "0xc85130",
       "size": 4,
       "exact": true,
@@ -348083,6 +348760,17 @@
       "relocation_count": 1
     },
     {
+      "address": "0xc885f0",
+      "size": 96,
+      "exact": true,
+      "target_sha256": "7fca73279177fcda2229f430f988f341b2bb71e93b3831aaffa7647ac459c278",
+      "compiled_sha256": "7fca73279177fcda2229f430f988f341b2bb71e93b3831aaffa7647ac459c278",
+      "source": "src/gameplay/ComponentSteps.cpp",
+      "symbol": "_ZN4Onyx38AxisPairWithinEpsilon2DStateDescriptor5Slot3EPNS_10AxisSourceE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 0
+    },
+    {
       "address": "0xc886e0",
       "size": 4,
       "exact": true,
@@ -348105,6 +348793,17 @@
       "relocation_count": 1
     },
     {
+      "address": "0xc887c0",
+      "size": 68,
+      "exact": true,
+      "target_sha256": "eb6e92f373912af4cc02c15c52f7e2dc2d1df4cfffd0d44afce9c500dcec9305",
+      "compiled_sha256": "eb6e92f373912af4cc02c15c52f7e2dc2d1df4cfffd0d44afce9c500dcec9305",
+      "source": "src/gameplay/ComponentSteps.cpp",
+      "symbol": "_ZN4Onyx31AxisPairLessThanStateDescriptor5Slot3EPNS_10AxisSourceE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 0
+    },
+    {
       "address": "0xc88810",
       "size": 4,
       "exact": true,
@@ -348114,6 +348813,17 @@
       "symbol": "RecoveredLeaf_c88810",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 1
+    },
+    {
+      "address": "0xc88820",
+      "size": 68,
+      "exact": true,
+      "target_sha256": "bad739284c7a9fffa1723aa696506ab53588f1fed8708034fc9d9bc8f89c73a9",
+      "compiled_sha256": "bad739284c7a9fffa1723aa696506ab53588f1fed8708034fc9d9bc8f89c73a9",
+      "source": "src/gameplay/ComponentSteps.cpp",
+      "symbol": "_ZN4Onyx34AxisPairGreaterThanStateDescriptor5Slot3EPNS_10AxisSourceE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 0
     },
     {
       "address": "0xc88910",
@@ -357477,6 +358187,17 @@
       "relocation_count": 2
     },
     {
+      "address": "0xccd4f0",
+      "size": 128,
+      "exact": true,
+      "target_sha256": "d87da8b636d67ed7c8c9b5bb1c323272758755a9822a4be73f9c68b6c56b7470",
+      "compiled_sha256": "d87da8b636d67ed7c8c9b5bb1c323272758755a9822a4be73f9c68b6c56b7470",
+      "source": "src/gameplay/ComponentSteps.cpp",
+      "symbol": "_ZN4Onyx24RelativeToTargetOrienter5Slot2Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 4
+    },
+    {
       "address": "0xccd570",
       "size": 212,
       "exact": true,
@@ -358696,6 +359417,28 @@
       "symbol": "_Z16DestroyAllocatedILj13464528EEvPv",
       "source_review": "manual_reconstruction",
       "relocation_count": 2
+    },
+    {
+      "address": "0xcd73f0",
+      "size": 124,
+      "exact": true,
+      "target_sha256": "1d9c7317a7b339e64af7213b80da9b56c7551d2ea25010998ba3868d40ae5e40",
+      "compiled_sha256": "1d9c7317a7b339e64af7213b80da9b56c7551d2ea25010998ba3868d40ae5e40",
+      "source": "src/gameplay/ComponentSteps.cpp",
+      "symbol": "_ZN4Onyx15SelfRotateStart5Slot2Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 4
+    },
+    {
+      "address": "0xcd7470",
+      "size": 128,
+      "exact": true,
+      "target_sha256": "05f8d5695bb610b7374e3f668f5a3b2cc85ecf824b682c00d2bb0496e0243dc9",
+      "compiled_sha256": "05f8d5695bb610b7374e3f668f5a3b2cc85ecf824b682c00d2bb0496e0243dc9",
+      "source": "src/gameplay/ComponentSteps.cpp",
+      "symbol": "_ZN4Onyx10SelfRotate5Slot3Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 4
     },
     {
       "address": "0xcd74f0",

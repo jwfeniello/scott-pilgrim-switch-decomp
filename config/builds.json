@@ -512365,6 +512365,463 @@
       ]
     },
     {
+      "id": "gameplay_component_steps",
+      "source": "src/gameplay/ComponentSteps.cpp",
+      "compiler": "8.0.1",
+      "source_review": "manual_reconstruction",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-std=c++11",
+        "-O2",
+        "-mcpu=cortex-a57",
+        "-fstrict-aliasing",
+        "-fomit-frame-pointer",
+        "-fno-pic",
+        "-fno-delete-null-pointer-checks",
+        "-ffunction-sections",
+        "-fdata-sections"
+      ],
+      "header_roots": [
+        "src/gameplay"
+      ],
+      "functions": [
+        {
+          "address": "0x69b530",
+          "size": 80,
+          "symbol": "_ZN4Onyx7Spawner5Slot2Ev",
+          "target_sha256": "126557770c803ca94151b0c536ad2aabf923f94f704c2d9c2df4d90c67be465f",
+          "bindings": {
+            "_ZN4Onyx13SpawnRegistryE": "0x1935138",
+            "_ZN4Onyx11RegistryAddEPvjjS0_": "0xc04850",
+            "_ZN4Onyx7Spawner5StartEj": "0x691680"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x7ebde0",
+          "size": 76,
+          "symbol": "_ZN4SPTG9AsyncTaskILj8306144EE4TickEi",
+          "target_sha256": "460b975c3e7ae0aa16ad7352ca80990e0ea4115c739b8cf5c5f4a305781319f2",
+          "bindings": {},
+          "got_bindings": {}
+        },
+        {
+          "address": "0x7eca40",
+          "size": 76,
+          "symbol": "_ZN4SPTG9AsyncTaskILj8309312EE4TickEi",
+          "target_sha256": "460b975c3e7ae0aa16ad7352ca80990e0ea4115c739b8cf5c5f4a305781319f2",
+          "bindings": {},
+          "got_bindings": {}
+        },
+        {
+          "address": "0x7fac60",
+          "size": 76,
+          "symbol": "_ZN4SPTG9AsyncTaskILj8367200EE4TickEi",
+          "target_sha256": "460b975c3e7ae0aa16ad7352ca80990e0ea4115c739b8cf5c5f4a305781319f2",
+          "bindings": {},
+          "got_bindings": {}
+        },
+        {
+          "address": "0x8ad650",
+          "size": 76,
+          "symbol": "_ZN4SPTG22HudFiniteNumberCounter5Slot7Ev",
+          "target_sha256": "52b9310f68022f819263b66f37afa052c1a88fcbebfdc9915c6289cecbe0fd76",
+          "bindings": {
+            "_ZN4SPTG22HudFiniteNumberCounter9BaseSlot7Ev": "0x8ad6a0"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x8ba350",
+          "size": 92,
+          "symbol": "_ZN4SPTG12StaticObject6Slot13Ev",
+          "target_sha256": "c4c140babd263d2bf894d8cb9bd9ca2a8c36500074d47dd83c2528bb99a17a76",
+          "bindings": {
+            "Accessor_Resolver": "0x191cd10",
+            "Accessor_Resolve": "0x67edd0"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x8bee10",
+          "size": 112,
+          "symbol": "_ZN4SPTG24FlashColorMaterialEffect5StartEv",
+          "target_sha256": "ffd6626e2bf204806d98841eaa5513a7c0a0b78fda81e2234ee480317f88d319",
+          "bindings": {
+            "_ZN4SPTG24FlashColorMaterialEffect5ApplyEmmm": "0x8bf9d0"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x8e8830",
+          "size": 60,
+          "symbol": "_ZN4SPTG25ActorJumpFromBehindAction6Slot15EPv",
+          "target_sha256": "82793e93dcf1446eff7c8cd83eb3f59d3f76498388bfe3dc44de21127c9ea4ad",
+          "bindings": {
+            "_ZN4SPTG25ActorJumpFromBehindAction10BaseSlot15EPv": "0x8e1580"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x9494e0",
+          "size": 212,
+          "symbol": "_ZN4SPTG13ObjectSpawnerILj9737440EE6Slot13EPv",
+          "target_sha256": "e7f3693a60335d99e1e84e208e6e4b4756667b4f5a2d144170e067a0ef22122b",
+          "bindings": {
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30",
+            "_Unwind_Resume": "0xfa4920",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x94a4c0",
+          "size": 212,
+          "symbol": "_ZN4SPTG13ObjectSpawnerILj9741504EE6Slot13EPv",
+          "target_sha256": "a9af18eff5311b454566ffc27835eae1889e01c2a928da76153561f6edd2c354",
+          "bindings": {
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30",
+            "_Unwind_Resume": "0xfa4920",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x94a640",
+          "size": 216,
+          "symbol": "_ZN4SPTG15SpawnedInstanceILj9741888ELj93740570ELj2102154688EE5Slot7Ev",
+          "target_sha256": "25ab7c6a22012d7aa734054d4bcf1ab73c12cbdd353267679fcfff021c178eb4",
+          "bindings": {
+            "Accessor_Resolver": "0x191cd10",
+            "Accessor_Resolve": "0x67edd0",
+            "_ZN4SPTG15SpawnedInstanceILj9741888ELj93740570ELj2102154688EE8RegisterEPNS1_7SpawnerEPNS1_6ObjectEi": "0x949bd0"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x9548f0",
+          "size": 212,
+          "symbol": "_ZN4SPTG13ObjectSpawnerILj9783536EE6Slot13EPv",
+          "target_sha256": "6b06f6afd5220489799bd62e152ca69a7c2c3415aa4c409b18a4cb6b78f30af8",
+          "bindings": {
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30",
+            "_Unwind_Resume": "0xfa4920",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x955ca0",
+          "size": 216,
+          "symbol": "_ZN4SPTG15SpawnedInstanceILj9788576ELj1133020893ELj938994834EE5Slot7Ev",
+          "target_sha256": "d9abd62f3c5bab8b9ad0df00fa9760e1ce30f3d1c1b0fcc512971763dde4d013",
+          "bindings": {
+            "Accessor_Resolver": "0x191cd10",
+            "Accessor_Resolve": "0x67edd0",
+            "_ZN4SPTG15SpawnedInstanceILj9788576ELj1133020893ELj938994834EE8RegisterEPNS1_7SpawnerEPNS1_6ObjectEi": "0x955470"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x9a0e00",
+          "size": 212,
+          "symbol": "_ZN4SPTG13ObjectSpawnerILj10096128EE6Slot13EPv",
+          "target_sha256": "39dceda18ecd88ad12f348bf39110aaaef82fa2af91b92ccbeff7a857ab3827e",
+          "bindings": {
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30",
+            "_Unwind_Resume": "0xfa4920",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x9a1910",
+          "size": 212,
+          "symbol": "_ZN4SPTG13ObjectSpawnerILj10098960EE6Slot13EPv",
+          "target_sha256": "a567e73303fc650d958c76f6330dd10f7daae52a23b5108f140c51ce6f5a7045",
+          "bindings": {
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30",
+            "_Unwind_Resume": "0xfa4920",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x9a1a90",
+          "size": 216,
+          "symbol": "_ZN4SPTG15SpawnedInstanceILj10099344ELj1140153524ELj1387463615EE5Slot7Ev",
+          "target_sha256": "144f6596bdab56cec1499df2ddc713440273305f31ebce466b7e4d045d8ae36c",
+          "bindings": {
+            "Accessor_Resolver": "0x191cd10",
+            "Accessor_Resolve": "0x67edd0",
+            "_ZN4SPTG15SpawnedInstanceILj10099344ELj1140153524ELj1387463615EE8RegisterEPNS1_7SpawnerEPNS1_6ObjectEi": "0x9a1540"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x9ba650",
+          "size": 96,
+          "symbol": "_ZN4SPTG15MechanismObject6UpdateEv",
+          "target_sha256": "2cc14593e90c569d6f05f76778958d993182e56958b7aac168c853148b1ebb1c",
+          "bindings": {
+            "_ZN4SPTG15MechanismObject10BaseUpdateEv": "0x945670"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x9be200",
+          "size": 212,
+          "symbol": "_ZN4SPTG13ObjectSpawnerILj10215936EE6Slot13EPv",
+          "target_sha256": "f5977791b36ba9690931c758c7b4db1d873c53578aa6a74bc9166da35456934c",
+          "bindings": {
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30",
+            "_Unwind_Resume": "0xfa4920",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x9bee20",
+          "size": 216,
+          "symbol": "_ZN4SPTG15SpawnedInstanceILj10219040ELj1806313218ELj100462108EE5Slot7Ev",
+          "target_sha256": "e0ac4d7ca407f6f12bad42054561ca427a8fbb99ee77be0ab44b8052342681d6",
+          "bindings": {
+            "Accessor_Resolver": "0x191cd10",
+            "Accessor_Resolve": "0x67edd0",
+            "_ZN4SPTG15SpawnedInstanceILj10219040ELj1806313218ELj100462108EE8RegisterEPNS1_7SpawnerEPNS1_6ObjectEi": "0x9be970"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x9c7740",
+          "size": 212,
+          "symbol": "_ZN4SPTG13ObjectSpawnerILj10254144EE6Slot13EPv",
+          "target_sha256": "e482125ae0dce0dff7fbdc30a5f1fa6a69ce99cc8b1646007b1a48e9f6969b8f",
+          "bindings": {
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30",
+            "_Unwind_Resume": "0xfa4920",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x9c8850",
+          "size": 216,
+          "symbol": "_ZN4SPTG15SpawnedInstanceILj10258512ELj332952121ELj184502495EE5Slot7Ev",
+          "target_sha256": "9bb08608d5ff3d8da718b9502f1d27afd15b590be29c11c8e010bff209e7c786",
+          "bindings": {
+            "Accessor_Resolver": "0x191cd10",
+            "Accessor_Resolve": "0x67edd0",
+            "_ZN4SPTG15SpawnedInstanceILj10258512ELj332952121ELj184502495EE8RegisterEPNS1_7SpawnerEPNS1_6ObjectEi": "0x9c8460"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xa0b030",
+          "size": 212,
+          "symbol": "_ZN4SPTG13ObjectSpawnerILj10530864EE6Slot13EPv",
+          "target_sha256": "f80d8c991bb4cee4920ebabda3bfed38ec1c503ba419f5d6884e2d0432676d29",
+          "bindings": {
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30",
+            "_Unwind_Resume": "0xfa4920",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xa0e400",
+          "size": 216,
+          "symbol": "_ZN4SPTG15SpawnedInstanceILj10544128ELj1734408193ELj791409834EE5Slot7Ev",
+          "target_sha256": "0dd4c3b683bc5701b0b51aee832ee0441eb2aa43b7bfc495d95e80a255f3c29e",
+          "bindings": {
+            "Accessor_Resolver": "0x191cd10",
+            "Accessor_Resolve": "0x67edd0",
+            "_ZN4SPTG15SpawnedInstanceILj10544128ELj1734408193ELj791409834EE8RegisterEPNS1_7SpawnerEPNS1_6ObjectEi": "0xa0b760"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xa26a40",
+          "size": 160,
+          "symbol": "_ZN4SPTG9RobotPartILj10644032EE6UpdateEv",
+          "target_sha256": "e505110b4fd90edcb9313e55e7b117723ffecdfb58ec4818ac45a56f6372adb4",
+          "bindings": {
+            "_ZN4SPTG9RobotPartILj10644032EE10BaseUpdateEv": "0x945670",
+            "_ZN4SPTG9GameDeltaE": "0x1924d70"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xa26c50",
+          "size": 160,
+          "symbol": "_ZN4SPTG9RobotPartILj10644560EE6UpdateEv",
+          "target_sha256": "66c1ceb129e274dc037a64429f806acfa7807af49a4bfc55ea1b99013cdb2381",
+          "bindings": {
+            "_ZN4SPTG9RobotPartILj10644560EE10BaseUpdateEv": "0x945670",
+            "_ZN4SPTG9GameDeltaE": "0x1924d70"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xaed000",
+          "size": 68,
+          "symbol": "_ZN4SPTG23AnimaticElementInstance5Slot5EPv",
+          "target_sha256": "41ce8e5d248528aa715ed45030ae5c1ab2ffd7d3108601f2376ac80f51625070",
+          "bindings": {},
+          "got_bindings": {}
+        },
+        {
+          "address": "0xb2f3e0",
+          "size": 144,
+          "symbol": "_ZN4Onyx10DirtyShapeILj11727840ELj276EE6Slot21EPv",
+          "target_sha256": "163d97e97dc93c2819ebb0e73f6316ea079229f867dc2601bc01b378d13000c2",
+          "bindings": {
+            "_ZN4Onyx10DirtyShapeILj11727840ELj276EE7RebuildEv": "0xb2f470",
+            "Accessor_Resolver": "0x191cd10",
+            "Accessor_Resolve": "0x67edd0",
+            "_ZN4Onyx11DrawListAddEPvS0_i": "0xae6dd0"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xb38a40",
+          "size": 112,
+          "symbol": "_ZN4Onyx12EmitterGroup6UpdateEv",
+          "target_sha256": "f060ac85f49ee8e791a1c30609b7f7922b3ff293fe10cae595ff1b62307e159f",
+          "bindings": {},
+          "got_bindings": {}
+        },
+        {
+          "address": "0xb439b0",
+          "size": 96,
+          "symbol": "_ZN4Onyx13MorphInstance6Slot21EPv",
+          "target_sha256": "5bb8ad4f7c891bd7c6d3a05e89eb8672f5633efed0aa332156f03023d16792b0",
+          "bindings": {
+            "_ZN4Onyx11DrawListAddEPvS0_i": "0xae6dd0"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xb61830",
+          "size": 72,
+          "symbol": "_ZN4Onyx15GraphicsUpdater6Slot15EPNS_11UpdatedListE",
+          "target_sha256": "5865aa4cf95245fd2018cae6769d28e8cf555df31fcb17de8327c19c1583ab08",
+          "bindings": {},
+          "got_bindings": {}
+        },
+        {
+          "address": "0xb95880",
+          "size": 144,
+          "symbol": "_ZN4Onyx10DirtyShapeILj12146816ELj272EE6Slot21EPv",
+          "target_sha256": "d199607193a7cea5fb78e672438d383b63f4d800a16e7054f93e35f917d4e592",
+          "bindings": {
+            "_ZN4Onyx10DirtyShapeILj12146816ELj272EE7RebuildEv": "0xb95910",
+            "Accessor_Resolver": "0x191cd10",
+            "Accessor_Resolve": "0x67edd0",
+            "_ZN4Onyx11DrawListAddEPvS0_i": "0xae6dd0"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xbbf790",
+          "size": 88,
+          "symbol": "_ZN4Onyx5Press6Slot15EPNS_11UpdatedListE",
+          "target_sha256": "0ad0adbd271e77b4247296a1849b02df7a65a41d047cef73b1d20855812b41c1",
+          "bindings": {},
+          "got_bindings": {}
+        },
+        {
+          "address": "0xbf2220",
+          "size": 68,
+          "symbol": "_ZN4Onyx12XorPredicate8EvaluateEv",
+          "target_sha256": "e76c89e8414ae18b4fe9d4f8d8675473d652459bda4f84ddc36a77dc39a93624",
+          "bindings": {},
+          "got_bindings": {}
+        },
+        {
+          "address": "0xc85050",
+          "size": 60,
+          "symbol": "_ZN4Onyx24RealTimeElapsedPredicate8EvaluateEv",
+          "target_sha256": "cd03a5ca007f10b5a26a53b4692453694aaeabca7f32c5a95de34c26889e5e0d",
+          "bindings": {
+            "_ZN4Onyx10SystemTickEPv": "0xfa3b00",
+            "_ZN4Onyx9TickStartE": "0x195b648",
+            "_ZN4Onyx13TickFrequencyE": "0x195b670"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xc885f0",
+          "size": 96,
+          "symbol": "_ZN4Onyx38AxisPairWithinEpsilon2DStateDescriptor5Slot3EPNS_10AxisSourceE",
+          "target_sha256": "7fca73279177fcda2229f430f988f341b2bb71e93b3831aaffa7647ac459c278",
+          "bindings": {},
+          "got_bindings": {}
+        },
+        {
+          "address": "0xc887c0",
+          "size": 68,
+          "symbol": "_ZN4Onyx31AxisPairLessThanStateDescriptor5Slot3EPNS_10AxisSourceE",
+          "target_sha256": "eb6e92f373912af4cc02c15c52f7e2dc2d1df4cfffd0d44afce9c500dcec9305",
+          "bindings": {},
+          "got_bindings": {}
+        },
+        {
+          "address": "0xc88820",
+          "size": 68,
+          "symbol": "_ZN4Onyx34AxisPairGreaterThanStateDescriptor5Slot3EPNS_10AxisSourceE",
+          "target_sha256": "bad739284c7a9fffa1723aa696506ab53588f1fed8708034fc9d9bc8f89c73a9",
+          "bindings": {},
+          "got_bindings": {}
+        },
+        {
+          "address": "0xccd4f0",
+          "size": 128,
+          "symbol": "_ZN4Onyx24RelativeToTargetOrienter5Slot2Ev",
+          "target_sha256": "d87da8b636d67ed7c8c9b5bb1c323272758755a9822a4be73f9c68b6c56b7470",
+          "bindings": {
+            "_ZN4Onyx24RelativeToTargetOrienter9BaseSlot2Ev": "0xccd8d0",
+            "Accessor_Resolver": "0x191cd10",
+            "Accessor_Resolve": "0x67edd0"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xcd73f0",
+          "size": 124,
+          "symbol": "_ZN4Onyx15SelfRotateStart5Slot2Ev",
+          "target_sha256": "1d9c7317a7b339e64af7213b80da9b56c7551d2ea25010998ba3868d40ae5e40",
+          "bindings": {
+            "Accessor_Resolver": "0x191cd10",
+            "Accessor_Resolve": "0x67edd0",
+            "_ZN4Onyx11RotateStartEPNS_17RotateStartTargetEPf": "0x6c9540"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xcd7470",
+          "size": 128,
+          "symbol": "_ZN4Onyx10SelfRotate5Slot3Ev",
+          "target_sha256": "05f8d5695bb610b7374e3f668f5a3b2cc85ecf824b682c00d2bb0496e0243dc9",
+          "bindings": {
+            "Accessor_Resolver": "0x191cd10",
+            "Accessor_Resolve": "0x67edd0",
+            "_ZN4Onyx8RotateByEPNS_12RotateTargetEPf": "0x6c9740"
+          },
+          "got_bindings": {}
+        }
+      ]
+    },
+    {
       "id": "gameplay_class_destructors",
       "source": "src/gameplay/ClassDestructors.cpp",
       "compiler": "8.0.1",
@@ -512646,6 +513103,23 @@
           "got_bindings": {}
         },
         {
+          "address": "0x88fa90",
+          "size": 192,
+          "symbol": "_ZN4SPTG17FillLineListShapeD2Ev",
+          "target_sha256": "c2d8ac0a5aece5554d6b98660f169d0f32bbb4381b7f1e5bf8315c99e72dbc11",
+          "bindings": {
+            "_ZTVN4SPTG17FillLineListShapeE": "0x1860c20",
+            "_ZN6MemberILm143632641EED1Ev": "0x7098c0",
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
+            "_ZTV13Level88fa90_1": "0x18a3bc0",
+            "_ZTV15Nested143632643": "0x18a2010",
+            "_ZN10Base88fa90D2Ev": "0x88fb50",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
           "address": "0x890b90",
           "size": 160,
           "symbol": "_ZN4SPTG16BoundaryGraphicsD2Ev",
@@ -512671,6 +513145,38 @@
             "_ZTV13Level893db0_1": "0x18611d0",
             "_ZN6MemberILm143907588EED1Ev": "0x893a60",
             "_ZN10Base893db0D2Ev": "0x677400",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x8bd590",
+          "size": 192,
+          "symbol": "_ZN4SPTG22FillLineListGroupShapeD2Ev",
+          "target_sha256": "a4698eed00082563716d9aefd3c3b732fd7e811fc0c30166d280a9f56daddadb",
+          "bindings": {
+            "_ZTVN4SPTG22FillLineListGroupShapeE": "0x18644e0",
+            "_ZN6MemberILm146626817EED1Ev": "0x7098c0",
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
+            "_ZTV13Level8bd590_1": "0x18a3bc0",
+            "_ZTV15Nested146626819": "0x18a2010",
+            "_ZN10Base8bd590D2Ev": "0x88fb50",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x8be540",
+          "size": 112,
+          "symbol": "_ZN4Onyx8Graphics14ShapeComponentD2Ev",
+          "target_sha256": "bd726c495b7c503befadfa2de9887cc781a369b416ddb03517a0b5e99a0c2d88",
+          "bindings": {
+            "_ZTVN4Onyx8Graphics14ShapeComponentE": "0x18a3bc0",
+            "_ZTV15Nested146691073": "0x18a2010",
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
+            "_ZN10Base8be540D2Ev": "0x88fb50",
             "__clang_call_terminate": "0x6768b8"
           },
           "got_bindings": {}
@@ -512984,6 +513490,354 @@
           "got_bindings": {}
         },
         {
+          "address": "0xafe800",
+          "size": 120,
+          "symbol": "_ZN4Onyx8Graphics14ShapeComponentD0Ev",
+          "target_sha256": "b0cb257ed9862738f96a0f5a3e92cc67b378f9b1c4bed83c012143d207ded33e",
+          "bindings": {
+            "_ZTVN4Onyx8Graphics14ShapeComponentE": "0x18a3bc0",
+            "_ZTV15Nested146691073": "0x18a2010",
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
+            "_ZN10Base8be540D2Ev": "0x88fb50",
+            "_ZdlPv": "0xfa3b40",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xaffa20",
+          "size": 132,
+          "symbol": "_ZN4Onyx8Graphics11SphereShapeD2Ev",
+          "target_sha256": "8b6f8247c171e9a95821400cddc9e4d7cb846fed245a931599e56bdd4f261f29",
+          "bindings": {
+            "_ZTVN4Onyx8Graphics11SphereShapeE": "0x18a3ae8",
+            "_ZN6MemberILm184525313EED1Ev": "0x7098c0",
+            "_ZTV13Levelaffa20_1": "0x18a3bc0",
+            "_ZTV15Nested184525314": "0x18a2010",
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
+            "_ZN10Baseaffa20D2Ev": "0x88fb50",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xaffab0",
+          "size": 140,
+          "symbol": "_ZN4Onyx8Graphics11SphereShapeD0Ev",
+          "target_sha256": "86565a62d22bd9db564b73f0dafebf2ae950f5beae8449de78ae29616eb83ac6",
+          "bindings": {
+            "_ZTVN4Onyx8Graphics11SphereShapeE": "0x18a3ae8",
+            "_ZN6MemberILm184525313EED1Ev": "0x7098c0",
+            "_ZTV13Levelaffa20_1": "0x18a3bc0",
+            "_ZTV15Nested184525314": "0x18a2010",
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
+            "_ZN10Baseaffa20D2Ev": "0x88fb50",
+            "_ZdlPv": "0xfa3b40",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xb013d0",
+          "size": 132,
+          "symbol": "_ZN4Onyx8Graphics9RingShapeD2Ev",
+          "target_sha256": "76a65d4253d01d9610eae8af47409ba20c3e8d3f639b74c0c47799258b416cea",
+          "bindings": {
+            "_ZTVN4Onyx8Graphics9RingShapeE": "0x18a3d10",
+            "_ZN6MemberILm184630529EED1Ev": "0x7098c0",
+            "_ZTV13Levelb013d0_1": "0x18a3bc0",
+            "_ZTV15Nested184630530": "0x18a2010",
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
+            "_ZN10Baseb013d0D2Ev": "0x88fb50",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xb01460",
+          "size": 140,
+          "symbol": "_ZN4Onyx8Graphics9RingShapeD0Ev",
+          "target_sha256": "302e52e8c4b91982369af1aba0c17ffa0926e4afda77fcda6c6b69dbcdbc569a",
+          "bindings": {
+            "_ZTVN4Onyx8Graphics9RingShapeE": "0x18a3d10",
+            "_ZN6MemberILm184630529EED1Ev": "0x7098c0",
+            "_ZTV13Levelb013d0_1": "0x18a3bc0",
+            "_ZTV15Nested184630530": "0x18a2010",
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
+            "_ZN10Baseb013d0D2Ev": "0x88fb50",
+            "_ZdlPv": "0xfa3b40",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xb02120",
+          "size": 132,
+          "symbol": "_ZN4Onyx8Graphics9QuadShapeD2Ev",
+          "target_sha256": "0bbe978891de19bf121caa02df041c5081f2b4695c159f912220e2a7dd3be48e",
+          "bindings": {
+            "_ZTVN4Onyx8Graphics9QuadShapeE": "0x18a3e00",
+            "_ZN6MemberILm184685057EED1Ev": "0x7098c0",
+            "_ZTV13Levelb02120_1": "0x18a3bc0",
+            "_ZTV15Nested184685058": "0x18a2010",
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
+            "_ZN10Baseb02120D2Ev": "0x88fb50",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xb021b0",
+          "size": 140,
+          "symbol": "_ZN4Onyx8Graphics9QuadShapeD0Ev",
+          "target_sha256": "f83815c5242a43386aed0cf33c12137b56f2dec0616c2e4373a194545a74a076",
+          "bindings": {
+            "_ZTVN4Onyx8Graphics9QuadShapeE": "0x18a3e00",
+            "_ZN6MemberILm184685057EED1Ev": "0x7098c0",
+            "_ZTV13Levelb02120_1": "0x18a3bc0",
+            "_ZTV15Nested184685058": "0x18a2010",
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
+            "_ZN10Baseb02120D2Ev": "0x88fb50",
+            "_ZdlPv": "0xfa3b40",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xb03060",
+          "size": 132,
+          "symbol": "_ZN4Onyx8Graphics12PyramidShapeD2Ev",
+          "target_sha256": "c7e7a80dd3f3117d95ac15ca820c6c46128cbe341840ade74048333246ab92e1",
+          "bindings": {
+            "_ZTVN4Onyx8Graphics12PyramidShapeE": "0x18a3ef0",
+            "_ZN6MemberILm184747521EED1Ev": "0x7098c0",
+            "_ZTV13Levelb03060_1": "0x18a3bc0",
+            "_ZTV15Nested184747522": "0x18a2010",
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
+            "_ZN10Baseb03060D2Ev": "0x88fb50",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xb030f0",
+          "size": 140,
+          "symbol": "_ZN4Onyx8Graphics12PyramidShapeD0Ev",
+          "target_sha256": "bb7dc525a7042d46702777ee9b276d49093f7c4ceb477e218ac026a79182d77c",
+          "bindings": {
+            "_ZTVN4Onyx8Graphics12PyramidShapeE": "0x18a3ef0",
+            "_ZN6MemberILm184747521EED1Ev": "0x7098c0",
+            "_ZTV13Levelb03060_1": "0x18a3bc0",
+            "_ZTV15Nested184747522": "0x18a2010",
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
+            "_ZN10Baseb03060D2Ev": "0x88fb50",
+            "_ZdlPv": "0xfa3b40",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xb045c0",
+          "size": 132,
+          "symbol": "_ZN4Onyx8Graphics10PlaneShapeD2Ev",
+          "target_sha256": "bbfab5f13076984d3f467ccc00de957c65a58d019c81882e7592c9d61b7b8167",
+          "bindings": {
+            "_ZTVN4Onyx8Graphics10PlaneShapeE": "0x18a3fe0",
+            "_ZN6MemberILm184835073EED1Ev": "0x7098c0",
+            "_ZTV13Levelb045c0_1": "0x18a3bc0",
+            "_ZTV15Nested184835074": "0x18a2010",
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
+            "_ZN10Baseb045c0D2Ev": "0x88fb50",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xb04650",
+          "size": 140,
+          "symbol": "_ZN4Onyx8Graphics10PlaneShapeD0Ev",
+          "target_sha256": "42c019dd4830d191c691b4fbed5ffa0cbdf7897fd84c2139b34114527adb8421",
+          "bindings": {
+            "_ZTVN4Onyx8Graphics10PlaneShapeE": "0x18a3fe0",
+            "_ZN6MemberILm184835073EED1Ev": "0x7098c0",
+            "_ZTV13Levelb045c0_1": "0x18a3bc0",
+            "_ZTV15Nested184835074": "0x18a2010",
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
+            "_ZN10Baseb045c0D2Ev": "0x88fb50",
+            "_ZdlPv": "0xfa3b40",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xb05a30",
+          "size": 192,
+          "symbol": "_ZN4Onyx8Graphics13LineListShapeD2Ev",
+          "target_sha256": "45f3a90b02254d96d39044729f0bb5e60ff66fc9f40398a8d19004da87936862",
+          "bindings": {
+            "_ZTVN4Onyx8Graphics13LineListShapeE": "0x18a40d0",
+            "_ZN6MemberILm184918785EED1Ev": "0x7098c0",
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
+            "_ZTV13Levelb05a30_1": "0x18a3bc0",
+            "_ZTV15Nested184918787": "0x18a2010",
+            "_ZN10Baseb05a30D2Ev": "0x88fb50",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xb06760",
+          "size": 132,
+          "symbol": "_ZN4Onyx8Graphics13CylinderShapeD2Ev",
+          "target_sha256": "695b25a96c8645956f9b165d233c25b051e39d4d03f536a30574dcf4ddce7c80",
+          "bindings": {
+            "_ZTVN4Onyx8Graphics13CylinderShapeE": "0x18a41c0",
+            "_ZN6MemberILm184972801EED1Ev": "0x7098c0",
+            "_ZTV13Levelb06760_1": "0x18a3bc0",
+            "_ZTV15Nested184972802": "0x18a2010",
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
+            "_ZN10Baseb06760D2Ev": "0x88fb50",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xb067f0",
+          "size": 140,
+          "symbol": "_ZN4Onyx8Graphics13CylinderShapeD0Ev",
+          "target_sha256": "629a71df65d8e49c3a9970345cc39258b9373a2f84143997b9edc094c0c4e5ef",
+          "bindings": {
+            "_ZTVN4Onyx8Graphics13CylinderShapeE": "0x18a41c0",
+            "_ZN6MemberILm184972801EED1Ev": "0x7098c0",
+            "_ZTV13Levelb06760_1": "0x18a3bc0",
+            "_ZTV15Nested184972802": "0x18a2010",
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
+            "_ZN10Baseb06760D2Ev": "0x88fb50",
+            "_ZdlPv": "0xfa3b40",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xb07ee0",
+          "size": 132,
+          "symbol": "_ZN4Onyx8Graphics9ConeShapeD2Ev",
+          "target_sha256": "2856caf907f8f062b12b2341c851d5292c94a47be0336d48cd2da963d27de534",
+          "bindings": {
+            "_ZTVN4Onyx8Graphics9ConeShapeE": "0x18a42b0",
+            "_ZN6MemberILm185069057EED1Ev": "0x7098c0",
+            "_ZTV13Levelb07ee0_1": "0x18a3bc0",
+            "_ZTV15Nested185069058": "0x18a2010",
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
+            "_ZN10Baseb07ee0D2Ev": "0x88fb50",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xb07f70",
+          "size": 140,
+          "symbol": "_ZN4Onyx8Graphics9ConeShapeD0Ev",
+          "target_sha256": "6678795ccb3345aba4bfb775f9271893cd14022a78a34ffd7f402d21f59152cb",
+          "bindings": {
+            "_ZTVN4Onyx8Graphics9ConeShapeE": "0x18a42b0",
+            "_ZN6MemberILm185069057EED1Ev": "0x7098c0",
+            "_ZTV13Levelb07ee0_1": "0x18a3bc0",
+            "_ZTV15Nested185069058": "0x18a2010",
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
+            "_ZN10Baseb07ee0D2Ev": "0x88fb50",
+            "_ZdlPv": "0xfa3b40",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xb09260",
+          "size": 132,
+          "symbol": "_ZN4Onyx8Graphics12CapsuleShapeD2Ev",
+          "target_sha256": "40fcee55397613678bc63e4cc559e2b0ac11367a6b736c19305f684722c64713",
+          "bindings": {
+            "_ZTVN4Onyx8Graphics12CapsuleShapeE": "0x18a43a0",
+            "_ZN6MemberILm185148929EED1Ev": "0x7098c0",
+            "_ZTV13Levelb09260_1": "0x18a3bc0",
+            "_ZTV15Nested185148930": "0x18a2010",
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
+            "_ZN10Baseb09260D2Ev": "0x88fb50",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xb092f0",
+          "size": 140,
+          "symbol": "_ZN4Onyx8Graphics12CapsuleShapeD0Ev",
+          "target_sha256": "7863077fa9f1d89c869a8027bfb5284eb8622accfd5f50d59b2c678e6926ff31",
+          "bindings": {
+            "_ZTVN4Onyx8Graphics12CapsuleShapeE": "0x18a43a0",
+            "_ZN6MemberILm185148929EED1Ev": "0x7098c0",
+            "_ZTV13Levelb09260_1": "0x18a3bc0",
+            "_ZTV15Nested185148930": "0x18a2010",
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
+            "_ZN10Baseb09260D2Ev": "0x88fb50",
+            "_ZdlPv": "0xfa3b40",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xb0c0a0",
+          "size": 132,
+          "symbol": "_ZN4Onyx8Graphics8BoxShapeD2Ev",
+          "target_sha256": "916b79f6239f8ea74e340d14589c82d0ccab0a7b18dc6a10d2431c23a2f11ad6",
+          "bindings": {
+            "_ZTVN4Onyx8Graphics8BoxShapeE": "0x18a4490",
+            "_ZN6MemberILm185338369EED1Ev": "0x7098c0",
+            "_ZTV13Levelb0c0a0_1": "0x18a3bc0",
+            "_ZTV15Nested185338370": "0x18a2010",
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
+            "_ZN10Baseb0c0a0D2Ev": "0x88fb50",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xb0c130",
+          "size": 140,
+          "symbol": "_ZN4Onyx8Graphics8BoxShapeD0Ev",
+          "target_sha256": "278c8316debc7f845e82437d82a71226a9c5d778ff3ac45a869ba45d8c36cc4d",
+          "bindings": {
+            "_ZTVN4Onyx8Graphics8BoxShapeE": "0x18a4490",
+            "_ZN6MemberILm185338369EED1Ev": "0x7098c0",
+            "_ZTV13Levelb0c0a0_1": "0x18a3bc0",
+            "_ZTV15Nested185338370": "0x18a2010",
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
+            "_ZN10Baseb0c0a0D2Ev": "0x88fb50",
+            "_ZdlPv": "0xfa3b40",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
           "address": "0xb3c1d0",
           "size": 180,
           "symbol": "_ZN4Onyx8Graphics17MorphInstanceBaseD2Ev",
@@ -513088,6 +513942,66 @@
             "DecodeAllocatorManager": "0x1926bd8",
             "DecodeAllocatorIndex": "0xa82b30",
             "_ZN10Baseb42dd0D2Ev": "0xb42c70",
+            "_ZdlPv": "0xfa3b40",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xb72f40",
+          "size": 112,
+          "symbol": "_ZN4Onyx8Graphics20EvolutionDevelopment24BasicRendererTransparentD0Ev",
+          "target_sha256": "9eef6c9ca83bf7d4d7a1a5b274d04d7004b5ae599d8bcf5e44b70e3b5a7e456a",
+          "bindings": {
+            "_ZTVN4Onyx8Graphics20EvolutionDevelopment24BasicRendererTransparentE": "0x18ae348",
+            "_ZTV15Nested192082945": "0x18ae328",
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
+            "_ZdlPv": "0xfa3b40",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xb73110",
+          "size": 112,
+          "symbol": "_ZN4Onyx8Graphics20EvolutionDevelopment19BasicRendererOpaqueD0Ev",
+          "target_sha256": "dab27e35e2d2c05aad06423ee91083ed46c005970ea5c589dc20df07f7a70a8c",
+          "bindings": {
+            "_ZTVN4Onyx8Graphics20EvolutionDevelopment19BasicRendererOpaqueE": "0x18ae308",
+            "_ZTV15Nested192090369": "0x18ae328",
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
+            "_ZdlPv": "0xfa3b40",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xb834c0",
+          "size": 112,
+          "symbol": "_ZN4Onyx8Graphics20EvolutionDevelopment13RendererUnlitD0Ev",
+          "target_sha256": "291f5a650b4fdaaa4ec5f8cb8f7742df94a1b402004122b2df8cb20b87c66b56",
+          "bindings": {
+            "_ZTVN4Onyx8Graphics20EvolutionDevelopment13RendererUnlitE": "0x18aeb50",
+            "_ZTV15Nested193154049": "0x18ae328",
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
+            "_ZdlPv": "0xfa3b40",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xb83610",
+          "size": 112,
+          "symbol": "_ZN4Onyx8Graphics20EvolutionDevelopment19BasicRendererSkyBoxD0Ev",
+          "target_sha256": "f31885944491cc26ce50f24add11d49ac634f7f3257bea72255ea843fbb26435",
+          "bindings": {
+            "_ZTVN4Onyx8Graphics20EvolutionDevelopment19BasicRendererSkyBoxE": "0x18aead0",
+            "_ZTV15Nested193159425": "0x18ae328",
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
             "_ZdlPv": "0xfa3b40",
             "__clang_call_terminate": "0x6768b8"
           },
