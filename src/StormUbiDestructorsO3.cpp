@@ -136,25 +136,52 @@ template<class Alloc, class Value> struct LcList {
         }
     }
 };
-struct Level156aa0_1 { char padding_8[8]; LcSwappedRef<2> member_10; char padding_18[16]; LcVector<UbiAlloc> member_28; char padding_40[8]; LcSwappedRef<2> member_48; virtual void Key1(); virtual ~Level156aa0_1() {} };
+// A pointer deleted in place, then cleared.
+template<unsigned Slot> struct LcResetPtr {
+    struct Object : VirtualSlots<Slot - 1> { virtual ~Object() noexcept; };
+    Object* value;
+    __attribute__((always_inline)) ~LcResetPtr() {
+        Object* object = value;
+        if (object) {
+            delete object;
+            value = nullptr;
+        }
+    }
+};
+// An object deleted through the storm allocator, which wants the most derived address.
+void StormDelete(void* memory, size_t size, const char* file, int line);
+struct StormObject { virtual ~StormObject(); };
+template<bool Reset> struct StormOwned {
+    StormObject* value;
+    __attribute__((always_inline)) ~StormOwned() {
+        StormObject* object = value;
+        if (object) {
+            void* top = dynamic_cast<void*>(object);
+            object->~StormObject();
+            StormDelete(top, 0, "", 0);
+            if (Reset) value = nullptr;
+        }
+    }
+};
+struct Level156aa0_1 { char padding_8[8]; LcSwappedRef<2> member_10; char padding_18[16]; LcVector<UbiAlloc> member_28; char padding_40[8]; LcSwappedRef<2> member_48; virtual void Key1(); virtual ~Level156aa0_1() {  } };
 namespace ubiservices { 
 struct EventInfoPlayerNewsImpression : Level156aa0_1 { LcSwappedRef<2> member_50; LcSwappedRef<2> member_58; static void operator delete(void* p) { UbiAlloc::Free(p); } virtual void Key(); virtual ~EventInfoPlayerNewsImpression(); };
-EventInfoPlayerNewsImpression::~EventInfoPlayerNewsImpression() {}
+EventInfoPlayerNewsImpression::~EventInfoPlayerNewsImpression() {  }
 }
-struct Level1565f0_1 { char padding_8[8]; LcSwappedRef<2> member_10; char padding_18[16]; LcVector<UbiAlloc> member_28; char padding_40[8]; LcSwappedRef<2> member_48; virtual void Key1(); virtual ~Level1565f0_1() {} };
+struct Level1565f0_1 { char padding_8[8]; LcSwappedRef<2> member_10; char padding_18[16]; LcVector<UbiAlloc> member_28; char padding_40[8]; LcSwappedRef<2> member_48; virtual void Key1(); virtual ~Level1565f0_1() {  } };
 namespace ubiservices { 
 struct EventInfoContextStart : Level1565f0_1 { LcSwappedRef<2> member_50; LcSwappedRef<2> member_58; static void operator delete(void* p) { UbiAlloc::Free(p); } virtual void Key(); virtual ~EventInfoContextStart(); };
-EventInfoContextStart::~EventInfoContextStart() {}
+EventInfoContextStart::~EventInfoContextStart() {  }
 }
-struct Level156720_1 { char padding_8[8]; LcSwappedRef<2> member_10; char padding_18[16]; LcVector<UbiAlloc> member_28; char padding_40[8]; LcSwappedRef<2> member_48; virtual void Key1(); virtual ~Level156720_1() {} };
+struct Level156720_1 { char padding_8[8]; LcSwappedRef<2> member_10; char padding_18[16]; LcVector<UbiAlloc> member_28; char padding_40[8]; LcSwappedRef<2> member_48; virtual void Key1(); virtual ~Level156720_1() {  } };
 namespace ubiservices { 
 struct EventInfoContextStop : Level156720_1 { LcSwappedRef<2> member_50; LcSwappedRef<2> member_58; static void operator delete(void* p) { UbiAlloc::Free(p); } virtual void Key(); virtual ~EventInfoContextStop(); };
-EventInfoContextStop::~EventInfoContextStop() {}
+EventInfoContextStop::~EventInfoContextStop() {  }
 }
-struct Level156bd0_1 { char padding_8[8]; LcSwappedRef<2> member_10; char padding_18[16]; LcVector<UbiAlloc> member_28; char padding_40[8]; LcSwappedRef<2> member_48; virtual void Key1(); virtual ~Level156bd0_1() {} };
+struct Level156bd0_1 { char padding_8[8]; LcSwappedRef<2> member_10; char padding_18[16]; LcVector<UbiAlloc> member_28; char padding_40[8]; LcSwappedRef<2> member_48; virtual void Key1(); virtual ~Level156bd0_1() {  } };
 namespace ubiservices { 
 struct EventInfoPlayerProgression : Level156bd0_1 { LcSwappedRef<2> member_50; LcSwappedRef<2> member_58; static void operator delete(void* p) { UbiAlloc::Free(p); } virtual void Key(); virtual ~EventInfoPlayerProgression(); };
-EventInfoPlayerProgression::~EventInfoPlayerProgression() {}
+EventInfoPlayerProgression::~EventInfoPlayerProgression() {  }
 }
 struct NestedBase22842626 { virtual ~NestedBase22842626(); char padding[8]; };
 struct Nested22842626 : NestedBase22842626 { LcSwappedRef<2> member_10; virtual void Key(); virtual ~Nested22842626() {} };
@@ -163,7 +190,15 @@ struct Nested22842628 : NestedBase22842628 { LcSwappedRef<2> member_10; virtual 
 struct Base15c8d0 { virtual ~Base15c8d0(); char padding[280]; };
 namespace ubiservices { 
 struct JobUpdateSessionInfoWithLatestFirstPartyData : Base15c8d0 { Nested22842628 member_120; Nested22842626 member_138; char padding_150[8]; LcSwappedRef<2> member_158; static void operator delete(void* p) { UbiAlloc::Free(p); } virtual void Key(); virtual ~JobUpdateSessionInfoWithLatestFirstPartyData(); };
-JobUpdateSessionInfoWithLatestFirstPartyData::~JobUpdateSessionInfoWithLatestFirstPartyData() {}
+JobUpdateSessionInfoWithLatestFirstPartyData::~JobUpdateSessionInfoWithLatestFirstPartyData() {  }
+}
+namespace ubiservices { 
+struct FriendInfoClub { char padding_8[24]; LcSwappedRef<2> member_20; char padding_28[8]; uint8_t member_30; char padding_31[15]; LcSwappedRef<2> member_40; char padding_48[8]; LcSwappedRef<2> member_50; LcSwappedRef<2> member_58; LcSwappedRef<2> member_60; static void operator delete(void* p) { UbiAlloc::Free(p); } virtual void Key(); virtual ~FriendInfoClub(); };
+FriendInfoClub::~FriendInfoClub() { member_30 = 0; }
+}
+namespace ubiservices { 
+struct FriendInfoConsole { char padding_8[24]; LcSwappedRef<2> member_20; char padding_28[8]; uint8_t member_30; char padding_31[15]; LcSwappedRef<2> member_40; char padding_48[8]; LcSwappedRef<2> member_50; LcSwappedRef<2> member_58; LcSwappedRef<2> member_60; static void operator delete(void* p) { UbiAlloc::Free(p); } virtual void Key(); virtual ~FriendInfoConsole(); };
+FriendInfoConsole::~FriendInfoConsole() { member_30 = 0; }
 }
 struct NestedBase22995713 { virtual ~NestedBase22995713(); char padding[8]; };
 struct Nested22995713 : NestedBase22995713 { LcSwappedRef<2> member_10; virtual void Key(); virtual ~Nested22995713() {} };
@@ -172,5 +207,5 @@ struct Nested22995715 : NestedBase22995715 { LcSwappedRef<2> member_10; virtual 
 struct Base15ee30 { virtual ~Base15ee30(); char padding[280]; };
 namespace ubiservices { 
 struct JobInitiateConnection : Base15ee30 { LcSwappedRef<2> member_120; Nested22995715 member_128; char padding_140[16]; Nested22995713 member_150; static void operator delete(void* p) { UbiAlloc::Free(p); } virtual void Key(); virtual ~JobInitiateConnection(); };
-JobInitiateConnection::~JobInitiateConnection() {}
+JobInitiateConnection::~JobInitiateConnection() {  }
 }
