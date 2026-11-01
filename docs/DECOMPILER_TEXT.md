@@ -1,0 +1,24 @@
+# Functions compiled from the decompiler's text
+
+`src/decompiled/` holds functions whose decompiled text compiles, as C, to the original bytes. A tool takes the decompiler's output for one function, adds a small prelude that defines the decompiler's type names, compiles it with the project's compiler, and keeps it only if the complete function matches. The usual verifier then checks them like any other build. There is no assembly, no patching and no masking.
+
+Their builds are labelled `decompiler_text_review_pending`, because they sit lower than anything else in this repository.
+
+## What a match here shows
+
+The logic is right: these statements, compiled by this compiler, give the same instructions. So the function's control flow, the fields it touches by offset, what it calls and in what order are all confirmed.
+
+It does not show much about the source:
+
+- **Types are the decompiler's guesses.** `__int64` often stands for a pointer. Offsets are written out by hand instead of being fields of a struct.
+- **Names are address labels.** `sub_123ABC` and `qword_123ABC` say where something is, not what it is. Nothing here gives a class its name. C++ names of library calls are flattened to plain identifiers, so they are not the real symbols.
+- **Calls have no real prototypes.** They are declared with empty parameter lists, which is why an argument can need `0LL` rather than `0`: the width comes from what the original puts in the register. The tool reads that from the original. It is a fact about the call, not about a recovered declaration.
+- **Some spellings are chosen by testing.** The tool tries the text as it is, with dereferenced values typed as pointers, and with calls tested by `& 1` declared as returning a bool. Whichever matches is kept. Each of these is a reasonable reading, but a match does not prove it is what the source said.
+
+Treat these files as a checked starting point. Moving a function out of here and into a real class, with real types and names, is still the work to do. The percentage they add is real exact code, and it says nothing about how well that code is understood.
+
+## How they are laid out
+
+Files are grouped by compiler flags. A function is never placed in the same file as something it calls, because the compiler could then inline the call or use what it knows about the callee, and the original was not built that way. For the same reason, two functions that disagree about a declaration go in different files.
+
+Functions with landing pads cannot be written this way, since C has no exceptions. They are the ones most other generated sources in this repository handle.
