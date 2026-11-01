@@ -9,11 +9,15 @@ namespace SPTG {
 
 struct ControllableScott : ControllablePlayer {
     void Slot4(onyx::Archive& archive, ComponentSlot::Source* source);
+    int State239(int event) override;
     int32_t value1560;           // +0x1560
 };
 
 struct ControllableKim : ControllablePlayer {
     void Slot4(onyx::Archive& archive, ComponentSlot::Source* source);
+    void Slot160(const int* move, int* value) override;
+    int State239(int event) override;
+    int State253(int event) override;
     int32_t value1560;           // +0x1560: set from +0x1564 when loading
     int32_t value1564;           // +0x1564
     uint8_t flag1568;            // +0x1568
@@ -25,6 +29,9 @@ struct ControllableKim : ControllablePlayer {
 
 struct ControllableKnives : ControllablePlayer {
     void Slot4(onyx::Archive& archive, ComponentSlot::Source* source);
+    void Slot160(const int* move, int* value) override;
+    int State215(int event) override;
+    int State239(int event) override;
     char padding_1560[0x4];
     int32_t value1564;           // +0x1564
     int32_t value1568;           // +0x1568
@@ -36,16 +43,20 @@ struct ControllableKnives : ControllablePlayer {
 
 struct ControllableRamona : ControllablePlayer {
     void Slot4(onyx::Archive& archive, ComponentSlot::Source* source);
+    int State239(int event) override;
+    void Slot257() override;
     char padding_1560[0x4];
     int32_t value1564;           // +0x1564
-    int32_t value1568;           // +0x1568
-    char padding_156c[0x4];
+    float chargeLimit;           // +0x1568: how long the second button has to be held
+    float chargeTime;            // +0x156c
     int32_t value1570;           // +0x1570
     int32_t value1574;           // +0x1574
     int32_t value1578;           // +0x1578: set from +0x157c when loading
     int32_t value157c;           // +0x157c
     uint8_t flag1580;            // +0x1580
-    char padding_1581[0x7];
+    char padding_1581[0x3];
+    uint8_t charged;             // +0x1584
+    char padding_1585[0x3];
     int32_t value1588;           // +0x1588
     int32_t value158c;           // +0x158c
 };
@@ -91,7 +102,14 @@ struct ControllableStephen : ControllablePlayer {
 
 struct ControllableNegaScott : ControllablePlayer {
     void Slot4(onyx::Archive& archive, ComponentSlot::Source* source);
-    int32_t values1560[12];      // +0x1560
+    void Slot160(const int* move, int* value) override;
+    int State239(int event) override;
+    void Slot257() override;
+    int32_t values1560[12];      // +0x1560, the first being chargeLimit as a float
+    char padding_1590[0x4];
+    float chargeTime;            // +0x1594
+    char padding_1598[0x6];
+    uint8_t charged;             // +0x159e
 };
 
 

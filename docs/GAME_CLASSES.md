@@ -953,6 +953,17 @@ binary has no field names. `SPTG::HudStatusGUTS` and `HudStatusHEARTS` show ther
 | `statWill` | +0x868 | `MaxGuts` (slot 150), `GutsCostScale` (slot 151), slot 58 with its flag set |
 | `statStrength` | +0x86c | slots 40, 152, and slot 58 with its flag clear |
 
+### The playable characters' own states
+
+`PlayerClasses.cpp` now has more than each character's slot 4. Slot 239 is shared in shape: Scott, Ramona,
+Nega Scott and Knives run `ControllablePlayer::State239` and on exit call `0x9983e0` and `0x994b40` with
+a number of their own (0, 3, 4 and 6). Kim's replaces it and uses 2. `0x9983e0` looks at the level's
+enemies before it answers, so what those numbers select is still open.
+
+Slot 160 adds to a value by move number: all three characters that have one add 3 for moves 17 and 18,
+and they differ on 15 and 16. Slot 257 on Ramona and Nega Scott times two held buttons, and the second
+timer latches `charged` once it passes `chargeLimit`.
+
 ### `AnimatedAiActor` and `BaseCharacter`
 
 [`BaseCharacter.h`](../src/gameplay/BaseCharacter.h) declares them as the separate classes they are.

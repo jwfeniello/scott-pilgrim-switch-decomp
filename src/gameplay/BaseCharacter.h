@@ -721,6 +721,8 @@ struct ControllablePlayer : BaseCharacter {
     void ReadAttackInput(AttackInput* out);              // 0x991a20
     bool ReadMoveInput(PlayerInput* from, onyx::Vector3* out);  // 0x9913a0
     void Call80f6e0();                                          // 0x80f6e0
+    int Call9983e0(int theme);                                  // 0x9983e0
+    void Call994b40(int theme);                                 // 0x994b40
     // Pays for a striker: guts, and health for what the guts don't cover.
     __attribute__((always_inline)) void PayStrikerCost() {
         float cost = __builtin_ceilf(strikerCost * GutsCostScale());
@@ -792,7 +794,7 @@ struct ControllablePlayer : BaseCharacter {
     int State120(int event) override;
     int State126(int event) override;
     int State138(int event) override;
-    SPTG_SLOT(160)
+    virtual void Slot160(const int* move, int* value);                       // slot 160
     virtual int State161(int event); virtual State State161Ptr();              // slots 161, 162
     virtual int State163(int event); virtual State State163Ptr();              // slots 163, 164
     virtual int State165(int event); virtual State State165Ptr();              // slots 165, 166
@@ -1033,7 +1035,7 @@ struct ControllablePlayer : BaseCharacter {
     char padding_13f9[0x17];
     float value1410;             // +0x1410
     int32_t value1414;           // +0x1414
-    char padding_1418[0x4];
+    int32_t value1418;           // +0x1418
     int32_t value141c;           // +0x141c
     char padding_1420[0xc];
     float value142c[6];          // +0x142c

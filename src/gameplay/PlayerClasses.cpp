@@ -1,5 +1,5 @@
-// Slot 4 of the playable characters: ControllablePlayer's serialization, then
-// the class's own fields (see Archive.h and docs/GAME_CLASSES.md).
+// The playable characters: slot 4 is ControllablePlayer's serialization and then the class's own fields (see Archive.h
+// and docs/GAME_CLASSES.md), and the rest are each character's own states.
 #include "PlayerClasses.h"
 
 namespace SPTG {
@@ -37,7 +37,7 @@ void ControllableKnives::Slot4(onyx::Archive& archive, ComponentSlot::Source* so
 void ControllableRamona::Slot4(onyx::Archive& archive, ComponentSlot::Source* source) {
     ControllablePlayer::Slot4(archive, source);
     onyx::Transfer(archive, value1564);
-    onyx::Transfer(archive, value1568);
+    onyx::Transfer(archive, chargeLimit);
     onyx::Transfer(archive, value1570);
     onyx::Transfer(archive, value1574);
     onyx::Transfer(archive, value157c);
@@ -85,6 +85,200 @@ void ControllableStephen::Slot4(onyx::Archive& archive, ComponentSlot::Source* s
 void ControllableNegaScott::Slot4(onyx::Archive& archive, ComponentSlot::Source* source) {
     ControllablePlayer::Slot4(archive, source);
     for (int i = 0; i < 12; ++i) onyx::Transfer(archive, values1560[i]);
+}
+
+// Scott's slot 239: the shared state, then on exit updates his theme (0).
+int ControllableScott::State239(int event) {
+    int result = ControllablePlayer::State239(event);
+    if (result != kStateParentTookOver) {
+        if (event == kStateExit) {
+            Call994b40(Call9983e0(0));
+            return kStateHandled;
+        }
+        return kStateUnhandled;
+    }
+    return result;
+}
+
+int ControllableRamona::State239(int event) {
+    int result = ControllablePlayer::State239(event);
+    if (result != kStateParentTookOver) {
+        if (event == kStateExit) {
+            Call994b40(Call9983e0(3));
+            return kStateHandled;
+        }
+        return kStateUnhandled;
+    }
+    return result;
+}
+
+int ControllableNegaScott::State239(int event) {
+    int result = ControllablePlayer::State239(event);
+    if (result != kStateParentTookOver) {
+        if (event == kStateExit) {
+            Call994b40(Call9983e0(4));
+            return kStateHandled;
+        }
+        return kStateUnhandled;
+    }
+    return result;
+}
+
+int ControllableKnives::State239(int event) {
+    int result = ControllablePlayer::State239(event);
+    if (result != kStateParentTookOver) {
+        if (event == kStateExit) {
+            Call994b40(Call9983e0(6));
+            return kStateHandled;
+        }
+        return kStateUnhandled;
+    }
+    return result;
+}
+
+// Kim's: stands up after animation 96, either free or in the state at slot 242.
+int ControllableKim::State239(int event) {
+    int result = kStateHandled;
+    switch (event) {
+    case kStateUpdate:
+        if (AnimationDone()) {
+            int theme = Call9983e0(2);
+            Call994b40(theme);
+            if (theme == 2) {
+                PlayAnimation(0, true, false, 1.0f);
+                flag3ba = 1;
+                states.Transition(State241Ptr());
+            } else {
+                states.Transition(State96Ptr());
+            }
+            result = kStateParentTookOver;
+        }
+        break;
+    case kStateEnter:
+        motion = onyx::Vector3::Zero();
+        PlayAnimation(96, false, false, 1.0f);
+        break;
+    case kStateEvent3:
+        break;
+    default:
+        result = kStateUnhandled;
+        break;
+    case kStateExit:
+        states.AssertOwner(this);
+        break;
+    }
+    return result;
+}
+
+// Kim's slot 253: an attack with her own animations, marked at +0x3ba.
+int ControllableKim::State253(int event) {
+    int result = kStateUnhandled;
+    switch (event) {
+    case kStateUpdate:
+        if (AnimationDone()) {
+            states.Transition(State96Ptr());
+            result = kStateParentTookOver;
+        }
+        break;
+    case kStateEnter:
+        result = kStateHandled;
+        flag3ba = 1;
+        PlayAnimation(198, false, false, 1.0f);
+        StartAttack(&attackF68, true, 1, nullptr);
+        value14f4 = value14f0;
+        PlayAnimation(121, false, false, 1.0f);
+        break;
+    case kStateExit:
+        flag3ba = 0;
+        break;
+    }
+    return result;
+}
+
+// Knives' slot 215: stands still in animation 190 and starts her attack.
+int ControllableKnives::State215(int event) {
+    int result = kStateHandled;
+    switch (event) {
+    case kStateUpdate:
+        if (AnimationDone()) {
+            states.Transition(State96Ptr());
+            result = kStateParentTookOver;
+        }
+        break;
+    case kStateEnter:
+        motion = onyx::Vector3::Zero();
+        motionTarget = onyx::Vector3::Zero();
+        PlayAnimation(190, false, true, 1.0f);
+        StartAttack(&attackF68, false, 1, nullptr);
+        break;
+    case kStateEvent3:
+        break;
+    default:
+        result = kStateUnhandled;
+        break;
+    case kStateExit:
+        states.AssertOwner(this);
+        break;
+    }
+    return result;
+}
+
+void ControllableKim::Slot160(const int* move, int* value) {
+    if (static_cast<uint32_t>(*move - 17) < 2) *value += 3;
+    else if (*move == 15) *value += 2;
+}
+
+void ControllableNegaScott::Slot160(const int* move, int* value) {
+    int kind = *move;
+    if (static_cast<uint32_t>(kind - 17) <= 1) *value += 3;
+    if (kind == 15) *value += 1;
+    else if (kind == 16) *value += 2;
+}
+
+void ControllableKnives::Slot160(const int* move, int* value) {
+    int kind = *move;
+    if (static_cast<uint32_t>(kind - 17) <= 1) *value += 3;
+    if (kind == 15) *value += 1;
+    else if (kind == 16) *value += 3;
+}
+
+// Holding the two buttons builds up two timers, and the second one latches once it passes a limit.
+void ControllableRamona::Slot257() {
+    PlayerInput* from = input;
+    int button = value1414;
+    uint64_t held = from->held;
+    if (held & (1ull << button)) value1410 += Move_FrameDelta;
+    else value1410 = 0.0f;
+    if (!charged) {
+        float time;
+        if ((1ull << value1418) & held) {
+            time = Move_FrameDelta + chargeTime;
+            chargeTime = time;
+        } else {
+            time = 0.0f;
+            chargeTime = 0.0f;
+        }
+        charged = time > chargeLimit;
+    }
+}
+
+void ControllableNegaScott::Slot257() {
+    PlayerInput* from = input;
+    int button = value1414;
+    uint64_t held = from->held;
+    if (held & (1ull << button)) value1410 += Move_FrameDelta;
+    else value1410 = 0.0f;
+    if (!charged) {
+        float time;
+        if ((1ull << value1418) & held) {
+            time = Move_FrameDelta + chargeTime;
+            chargeTime = time;
+        } else {
+            time = 0.0f;
+            chargeTime = 0.0f;
+        }
+        charged = time > *reinterpret_cast<float*>(&values1560[0]);
+    }
 }
 
 }  // namespace SPTG
