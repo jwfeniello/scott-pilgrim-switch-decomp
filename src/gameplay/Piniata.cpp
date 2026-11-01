@@ -47,7 +47,7 @@ struct Piniata : BreakableObject {
     virtual void PlayAnimation(int animation, int a, int b, float speed);  // slot 22
     virtual void Slot23(); virtual void Slot24(); virtual void Slot25(); virtual void Slot26();
     virtual bool AnimationDone();                                 // slot 27
-    virtual void Slot28(); virtual void Slot29(); virtual void Slot30(); virtual void Slot31(); virtual void Slot32();
+    virtual void SetFacing(); virtual void Slot29(); virtual void Slot30(); virtual void Slot31(); virtual void Slot32();
     virtual void Slot33(); virtual void Slot34(); virtual void Slot35(); virtual void Slot36(); virtual void Slot37();
     virtual bool OnHit(Actor* other, const Hit* hit);             // slot 38
     virtual void Slot39(); virtual void Slot40(); virtual void Slot41(); virtual void Slot42();

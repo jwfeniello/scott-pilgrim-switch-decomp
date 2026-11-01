@@ -848,7 +848,7 @@ int SuperFightingRobotAI::State262(int event) {
 int GigaGideon::State116(int event) {
     switch (event) {
     case kStateUpdate:
-        if (!(value14c <= 0.0f)) return kStateHandled;
+        if (!(hitStopLeft <= 0.0f)) return kStateHandled;
         motion.z = value1200;
         stateTime += Move_FrameDelta;
         if (stateTime >= value1204) {
@@ -1693,7 +1693,7 @@ int TagTeamMember::State266(int event) {
         motion = onyx::Vector3::Zero();
         motionTarget = onyx::Vector3::Zero();
         PlayAnimation(174, 1, 0, 1.0f);
-        Slot28(!flagD58);
+        SetFacing(!flagD58);
         return kStateHandled;
     case kStateExit:
         flagD81 = 1;

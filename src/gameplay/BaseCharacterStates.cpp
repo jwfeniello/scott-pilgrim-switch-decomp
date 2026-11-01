@@ -550,7 +550,7 @@ int BaseCharacter::State142(int event) {
         return kStateHandled;
     case kStateEnter: {
         ActorObject* actor = onyx::Find<ActorObject, onyx_types::type_6492d61d>(actorObject);
-        Slot28(!onyx::Get<ActorFlags, 0x2eae5813u>(actor->flags)->facingLeft);
+        SetFacing(!onyx::Get<ActorFlags, 0x2eae5813u>(actor->flags)->facingLeft);
         onyx::ResetHandle(held);
         PlayAnimation(95, 0, 0, 1.0f);
         actionMode = 8;

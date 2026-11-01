@@ -3,14 +3,76 @@
 // provisional.
 #include "BaseCharacter.h"
 
+extern "C" int32_t Attack_NextId;   // 0x1925328
+
 namespace SPTG {
+
+// Slot 28 (0x93fcf0): which way the character faces.
+void BaseCharacter::SetFacing(uint8_t left) {
+    ActorFlags* flags = onyx::Get<ActorFlags, 0x2eae5813u>(onyx::Find<ActorObject, 0x6492d61du>(actorObject)->flags);
+    flags->facingLeft = left & 1;
+}
+
+// Slot 30 (0x96ca30): turns round, and turns the mount with it.
+void BaseCharacter::TurnAround() {
+    SetFacing(!onyx::Get<ActorFlags, 0x2eae5813u>(onyx::Find<ActorObject, 0x6492d61du>(actorObject)->flags)->facingLeft);
+    if (flag338) {
+        BaseCharacter* mount = Mount();
+        if (mount) mount->TurnAround();
+    }
+}
+
+// Slot 44 (0x96e360): starts an attack: copies it, gives it a new id, scales its
+// damage for whoever is making it and records the id here and on what the
+// character holds, so that one attack hits a target only once. Returns the id.
+int BaseCharacter::StartAttack(Attack* attack, bool flag, int source, BaseCharacter* attacker) {
+    attackLanded = 0;
+    *currentAttack = *attack;
+    int id = ++Attack_NextId;
+    BaseCharacter* scaling = source == 1 ? this : attacker;
+    currentAttack->id = id;
+    float scale = scaling->Slot58(flag);
+    currentAttack->damage = (scale * Slot77()) * currentAttack->damage;
+    float value = scaling->Slot40();
+    currentAttack->value40 = value;
+    currentAttack->SetSource(source, attacker);
+    value15c = 0;
+    int last = currentAttack->id;
+    recentHits[0] = recentHits[1];
+    recentHits[1] = recentHits[2];
+    recentHits[2] = recentHits[3];
+    recentHits[3] = last;
+    int started = currentAttack->id;
+    BaseCharacter* other = held ? static_cast<BaseCharacter*>(held->object) : nullptr;
+    if (other) {
+        other->recentHits[0] = other->recentHits[1];
+        other->recentHits[1] = other->recentHits[2];
+        other->recentHits[2] = other->recentHits[3];
+        other->recentHits[3] = started;
+    }
+    return started;
+}
+
+// Slot 65 (0x941790): adds to the value at +0x160, kept between zero and the
+// limit from slot 57.
+void BaseCharacter::Slot65(float amount) {
+    value160 += amount;
+    float limit = Slot57();
+    float value = value160;
+    if (value < 0.0f) {
+        value = 0.0f;
+    } else if (value > limit) {
+        value = limit;
+    }
+    value160 = value;
+}
 
 // Slot 25 (0x96c8b0): records the animation speed; while +0x14c is not positive
 // it goes to the animation and, with +0x338 set, to the mount.
 void BaseCharacter::SetAnimationSpeed(float speed) {
     animationSpeed = speed;
-    if (value14c <= 0.0f) onyx::Get<AnimationControl, kAnimationControlType>(animationHandle)->SetSpeed(speed);
-    if (value14c <= 0.0f && flag338) {
+    if (hitStopLeft <= 0.0f) onyx::Get<AnimationControl, kAnimationControlType>(animationHandle)->SetSpeed(speed);
+    if (hitStopLeft <= 0.0f && flag338) {
         BaseCharacter* mount = Mount();
         if (mount) mount->SetAnimationSpeed(speed);
     }
@@ -238,8 +300,8 @@ void BaseCharacter::Slot4(onyx::Archive& archive, ComponentSlot::Source* source)
     onyx::Transfer(archive, value308);
     onyx::Transfer(archive, value30c);
     onyx::Transfer(archive, value310);
-    onyx::Transfer(archive, value314);
-    onyx::Transfer(archive, value318);
+    onyx::Transfer(archive, chargeGain);
+    onyx::Transfer(archive, chargeTime);
     onyx::Transfer(archive, value31c);
     onyx::Transfer(archive, value320);
     onyx::Transfer(archive, value324);

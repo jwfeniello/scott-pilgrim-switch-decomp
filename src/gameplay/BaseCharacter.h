@@ -16,14 +16,24 @@ namespace SPTG {
 
 // An attack descriptor, as StartAttack receives it (0x58 bytes). A copy starts
 // with +0x2c clear and no shared handle, then assigns.
+struct BaseCharacter;
 struct Attack {
-    char data_0[0x2c];
+    float damage;                     // +0x0: scaled by the attacker when it starts
+    char data_4[0x18];
+    float hitStopTime;                // +0x1c: how long the animation is held on a hit
+    float hitStopSpeed;               // +0x20: the animation speed while it is held
+    char data_24[0x8];
     int32_t value2c;                  // +0x2c
-    char data_30[0x20];
+    char data_30[0x10];
+    float value40;                    // +0x40: from the attacker's slot 40
+    int32_t id;                       // +0x44: unique per attack started
+    int32_t kind;                     // +0x48: 2 also holds the attacker's animation
+    char data_4c[0x4];
     onyx::ComponentHandle* shared;    // +0x50: reference-counted
     Attack(const Attack& other) : value2c(0), shared(nullptr) { *this = other; }
     Attack& operator=(const Attack& other);   // 0x8e4450
     void Serialize(onyx::Archive& archive);   // 0x8e4630
+    void SetSource(int source, BaseCharacter* attacker);   // 0x8e24f0
 };
 static_assert(sizeof(Attack) == 0x58, "Attack size");
 // An attack an enemy can request (0x78 bytes): the attack states start its
@@ -73,7 +83,8 @@ struct ActorFlags : onyx::Component {
     onyx::EventTarget* blinkOnTarget;        // +0x28
     char padding_30[0x49];
     uint8_t facingLeft;   // +0x79
-    char padding_7a[0x9e];
+    uint8_t flag7a;       // +0x7a
+    char padding_7b[0x9d];
     uint8_t flag118;      // +0x118
 };
 // Game services reached through the singleton at +0x80 (getter 0x992bf0).
@@ -122,11 +133,12 @@ struct BaseCharacter : onyx::Component {
     SPTG_SLOT(20)
     virtual void ReactTo(BaseCharacter* other, int reaction, void* data);    // slot 21
     virtual void PlayAnimation(int animation, bool a, bool b, float speed);  // slot 22
-    SPTG_SLOT(23) SPTG_SLOT(24)
+    virtual void PlayMountedAnimation(int animation, bool a, bool b);        // slot 23
+    virtual void PlayFacingAnimation(int animation, uint8_t flags);          // slot 24
     virtual void SetAnimationSpeed(float speed);                             // slot 25
     virtual void SetAnimationPaused(bool paused);                            // slot 26
     virtual bool AnimationDone();                                            // slot 27
-    virtual void Slot28(bool flag);                                          // slot 28
+    virtual void SetFacing(uint8_t left);                                          // slot 28
     SPTG_SLOT(29)
     virtual void TurnAround();                                               // slot 30
     virtual void Slot31Action();                                             // slot 31
@@ -142,7 +154,7 @@ struct BaseCharacter : onyx::Component {
     virtual void Slot41(bool a, bool b, bool c, void* data, BaseCharacter* other, float scale, float f1, float f2, float f3); // slot 41
     SPTG_SLOT(42)
     virtual void Slot43(float value);                                        // slot 43
-    virtual void StartAttack(Attack* attack, bool flag, int source, BaseCharacter* attacker); // slot 44
+    virtual int StartAttack(Attack* attack, bool flag, int source, BaseCharacter* attacker); // slot 44
     virtual int Slot45();                                                    // slot 45
     SPTG_SLOT(46) SPTG_SLOT(47) SPTG_SLOT(48)
     virtual int Slot49();                                                    // slot 49
@@ -251,11 +263,16 @@ struct BaseCharacter : onyx::Component {
     char padding_101[0x2b];
     int32_t value12c;            // +0x12c
     uint8_t flag130;             // +0x130
-    char padding_131[0x10];
+    char padding_131[0x7];
+    Attack* currentAttack;       // +0x138: the character's own copy of the attack it is making
+    uint8_t attackLanded;        // +0x140: cleared when an attack starts, set on a hit
     uint8_t flag141;             // +0x141
-    char padding_142[0xa];
-    float value14c;              // +0x14c: the animation speed applies while not positive
-    char padding_150[0xc];
+    char padding_142[0x2];
+    int32_t groundHeight;        // +0x144: the height that counts as on the ground
+    char padding_148[0x4];
+    float hitStopLeft;           // +0x14c: the animation speed applies while not positive
+    float hitStopSpeed;          // +0x150
+    char padding_154[0x8];
     float value15c;              // +0x15c
     float value160;              // +0x160
     char padding_164[0x1];
@@ -312,8 +329,8 @@ struct BaseCharacter : onyx::Component {
     int32_t value308;            // +0x308
     int32_t value30c;            // +0x30c
     int32_t value310;            // +0x310
-    int32_t value314;            // +0x314
-    int32_t value318;            // +0x318
+    float chargeGain;            // +0x314: the most an attack is scaled by a full charge
+    float chargeTime;            // +0x318: the time a full charge takes
     int32_t value31c;            // +0x31c
     int32_t value320;            // +0x320
     int32_t value324;            // +0x324
@@ -410,6 +427,7 @@ struct BaseCharacter : onyx::Component {
         return true;
     }
     void Apply8e5750(int value);                       // 0x8e5750
+    void HoldAnimation(float time, float speed);
     BaseCharacter* Mount() { return mountHandle ? static_cast<BaseCharacter*>(mountHandle->object) : nullptr; }
     CharacterEffect* Effect() { return effectHandle ? static_cast<CharacterEffect*>(effectHandle->object) : nullptr; }
 };

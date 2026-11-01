@@ -191,7 +191,7 @@ int Boss::State116(int event) {
             return kStateParentTookOver;
         }
         if (animation == 16) {
-            if (AnimationDone() && value14c <= 0.0f) PlayAnimation(27, 0, 1, 1.0f);
+            if (AnimationDone() && hitStopLeft <= 0.0f) PlayAnimation(27, 0, 1, 1.0f);
             return kStateHandled;
         }
         if (animation == 27) {
