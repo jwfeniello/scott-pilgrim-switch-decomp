@@ -27,7 +27,6 @@ struct EnemyOneHitWonder : Enemy {
 // vtable 0x187fa08, 244 slots
 struct EnemyZombie : Enemy {
     int State174(int event);
-    void Call9db480();   // 0x9db480
     int State202(int event);
     void Slot166(int kind);
     virtual int State234(int event); virtual State State234Ptr();   // slots 234, 235

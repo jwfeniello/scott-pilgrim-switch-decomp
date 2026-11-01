@@ -703,11 +703,12 @@ struct SuperFightingRobotAI : Boss {
     EventSlot eventD88;          // +0xd88
     EventSlot eventDa0;          // +0xda0
     EventSlot eventDb8;          // +0xdb8
-    char padding_dd0[0x24];
+    char padding_dd0[0x20];
+    float headTimer;             // +0xdf0: time in state 260
     uint32_t handHits;           // +0xdf4: at +0xe08 a hand's state 264 sends the robot to state 262
     char padding_df8[0x8];
     int32_t valueE00;            // +0xe00
-    int32_t valueE04;            // +0xe04
+    float valueE04;              // +0xe04: how long state 260 lasts
     uint32_t valueE08;           // +0xe08
     int32_t valueE0c;            // +0xe0c
     int32_t valueE10;            // +0xe10

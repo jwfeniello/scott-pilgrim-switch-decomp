@@ -299,6 +299,8 @@ struct Enemy : BaseCharacter {
     void Update9dc4c0(); // 0x9dc4c0: runs each update of state 186
     void PlaceAtSpawn(const EnemySpawnInfo* info);   // 0x9dd110
     static int RollWeight(uint8_t total);            // 0x9dcfd0
+    void Call9db480();                               // 0x9db480
+    static void DirectionTo(onyx::Vector2* out, Enemy* self, const onyx::Vector3& point);   // 0x9db5c0
     void Call995c50(int kind);                       // 0x995c50
     // Slot 169's test: whether the actor is within half of a range of the origin, along x and in depth.
     __attribute__((always_inline)) bool WithinRange(float min, float max, float depth) {

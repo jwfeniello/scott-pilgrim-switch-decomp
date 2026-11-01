@@ -3741,4 +3741,83 @@ int NegaScott::State264(int event) {
     return result;
 }
 
+// SuperFightingRobotAI slot 260 (0xa31fc0): the head plays animation 173 until this state ends, after +0xe04 seconds or when
+// either hand has +0xfbb raised without +0xfb8. Then it goes to state 258.
+int SuperFightingRobotAI::State260(int event) {
+    int result = kStateHandled;
+    switch (event) {
+    case kStateUpdate:
+        headTimer += Move_FrameDelta;
+        if (headTimer >= valueE04 ||
+            (!onyx::Get<SuperFightingRobotHand, onyx_types::type_37bd3ac0>(hand1)->flagFb8 && onyx::Get<SuperFightingRobotHand, onyx_types::type_37bd3ac0>(hand1)->flagFbb) ||
+            (!onyx::Get<SuperFightingRobotHand, onyx_types::type_37bd3ac0>(hand2)->flagFb8 && onyx::Get<SuperFightingRobotHand, onyx_types::type_37bd3ac0>(hand2)->flagFbb)) {
+            states.Transition(State258Ptr());
+            result = kStateParentTookOver;
+        } else {
+            result = kStateHandled;
+        }
+        break;
+    default:
+        result = kStateUnhandled;
+        break;
+    case kStateEnter:
+        result = kStateHandled;
+        onyx::Get<SuperFightingRobotHead, onyx_types::type_2bc021ad>(handleD80)->PlayAnimation(173, 1, 0, 1.0f);
+        headTimer = 0.0f;
+        break;
+    case kStateExit:
+        result = kStateHandled;
+        onyx::Get<SuperFightingRobotHead, onyx_types::type_2bc021ad>(handleD80)->PlayAnimation(0, 1, 0, 1.0f);
+        break;
+    case kStateEvent3:
+        break;
+    }
+    return result;
+}
+
+// TagTeamMember slot 262 (0xa26170): walks back to the retreat position, then goes to state 96. Entry raises +0xd5b and +0x3ba and
+// refills +0xd7c from +0xd4c. Not yet matched: the original reads the actor's position before the retreat position.
+int TagTeamMember::State262(int event) {
+    int result = kStateHandled;
+    switch (event) {
+    case kStateUpdate: {
+        onyx::Vector3 diff = retreatPosition - onyx::Get<onyx::Transform, onyx::kTransform>(onyx::Find<ActorObject, 0x6492d61du>(actorObject)->transform)->position;
+        if (diff.LengthSquared() <= 4.0f) {
+            states.Transition(State96Ptr());
+            result = kStateParentTookOver;
+        } else {
+            float speed = Slot170();
+            if (speed == 0.0f) speed = Slot170();
+            onyx::Vector2 direction;
+            DirectionTo(&direction, this, retreatPosition);
+            motion.x = direction.x * speed;
+            motion.y = direction.y * speed;
+            FaceX(retreatPosition.x);
+            result = kStateHandled;
+        }
+        break;
+    }
+    default:
+        result = kStateUnhandled;
+        break;
+    case kStateEnter:
+        flagD5b = 1;
+        flag3ba = 1;
+        healthD7c = healthD4c;
+        timerD78 = 0.0f;
+        motion = onyx::Vector3::Zero();
+        motionTarget = onyx::Vector3::Zero();
+        Call9db480();
+        result = kStateHandled;
+        break;
+    case kStateExit:
+        flag3ba = 0;
+        result = kStateHandled;
+        break;
+    case kStateEvent3:
+        break;
+    }
+    return result;
+}
+
 }  // namespace SPTG
