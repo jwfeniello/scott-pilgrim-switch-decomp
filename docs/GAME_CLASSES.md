@@ -152,6 +152,15 @@ slots (see [player action states](PLAYER_ACTION_STATES.md)).
 About 271 game functions (222 KB) compare against these event values. They are the
 starting point for reconstructing character behavior.
 
+The machine holds its owner, the current state and the state before it. Its
+transition (`0x812930` for the characters, an identical copy at `0xa15330` for the
+boss AI) sends the exit event to the current state, makes the new state current
+and the old one previous, and sends the enter event to the new state. While the
+32-bit value after the machine (+0x28 from it) is not -1, it also sends 10003 to
+the old state before the exit and to the new state after the entry. The
+constructors set that value to -1. SuperFightingRobotHand's state 108 reads the
+previous state: a hand that came from state 268 or 270 plays animation 38 first.
+
 ### Matching state handlers
 
 Small handlers that only call their parent state and set fields match directly.
@@ -260,6 +269,12 @@ A few more things decide these handlers' code:
   `float range = closeRange;` before the loop.
 - `if (states.current == state && other && ...)` keeps the pointer-to-member compare's pieces above the null test.
   With `other` first they sink below it (`Lynette::Slot46`).
+- Reading members into locals first sets their registers. `ControllablePlayer::State249` matches with
+  `PlayerInput* in = input; int bit = value141c;` before the test. With the members written inline, two scratch
+  registers trade places.
+- A flag argument worked out at the top of a function is scheduled apart from the call that uses it.
+  `AnimatedAiActor::PlayFacingAnimation` needs `bool loop = (flags & 4) != 0;` before its lookups. Inline in the
+  call, one instruction of the tail call moves.
 - Reads before a `bool` built from `&&` stay above it, because the join block has two predecessors and the load can't
   sink. Pure arithmetic on them still moves down to its use (`AttackSlot::InRange`).
 
@@ -1097,7 +1112,7 @@ declarations: slot 25 of `BaseBossAI` and of `SuperGideonAI`, and slot 23 of
 ## ControllablePlayer stats and states
 
 [`PlayerStats.cpp`](../src/gameplay/PlayerStats.cpp) and
-[`ControllablePlayerStates.cpp`](../src/gameplay/ControllablePlayerStates.cpp) hold 21 of the
+[`ControllablePlayerStates.cpp`](../src/gameplay/ControllablePlayerStates.cpp) hold 45 of the
 class's methods. RTTI gives the class name; method and field names are provisional.
 
 The fields at +0x860 to +0x898 are floats, shown by the original's float loads (they
@@ -1118,8 +1133,7 @@ The compiler's choices show how these were written:
   the backend turned into conditional selects, not from `?:`.
 
 Slots 64 to 66 change `health` (+0x160): `LoseHealth`, `GainHealth` and `RestoreHealth`.
-`LoseHealth` takes any remainder from `guts` (+0x32c). Not matched: `State249`, which differs
-by one instruction's order.
+`LoseHealth` takes any remainder from `guts` (+0x32c).
 
 The names of these fields and of the four stats are inferred from how the code uses them. The
 binary has no field names. `SPTG::HudStatusGUTS` and `HudStatusHEARTS` show there are two meters,
@@ -1154,8 +1168,17 @@ stops two of the actions the player keeps as references and starts a third. `Sta
 moves. Whether that goes to state 161 or 163 depends on a dash, and how a dash is read depends on the player's saved settings
 (`PersistentPlayerRecord`, 0x5b4 bytes each).
 
-`State104`, `State122`, `State237`, `Slot68`, `Slot94` and `Slot156` are matched. `State100`, `State102`, `State114` and
-`State136` are written but not matched, and each one's comment says what still differs.
+`ReactTo` (slot 21) moves the player between states when another character reacts to it. Reaction 2 replays
+animation 0 while idle (state 96), 3 enters state 245 and 4 leaves it for idle, 6 goes idle, 8 moves from state 112
+to 251, and 9 from 251 to 122. `State175` and `State177`, the attacks that a charge starts in `State104`, each start
+their attack (+0xdb0 or +0xe08), stop the sideways motion and play animation 31 or 32, then return to idle when the
+animation ends. `State249` holds while the input bit at +0x141c stays down and goes idle when it is released.
+
+`State104`, `State122`, `State175`, `State177`, `State237`, `State249`, `ReactTo`, `Slot68`, `Slot94` and `Slot156`
+are matched. `State100`, `State102`, `State114`, `State136`, `HealWithGuts` (slot 148) and `CheckAirInput` (slot 256's
+code) are written but not matched, and each one's comment says what still differs. `HealWithGuts` uses the pending
+item (+0x13f4) when one is set: it looks the item up in the `ItemRegistry` tree, whose ids compare unsigned, uses it,
+and clears the pending item.
 
 ### The playable characters' own states
 
@@ -1172,8 +1195,8 @@ timer latches `charged` once it passes `chargeLimit`.
 
 [`BaseCharacter.h`](../src/gameplay/BaseCharacter.h) declares them as the separate classes they are.
 Comparing the two vtables gives the split: of `AnimatedAiActor`'s 78 slots, `BaseCharacter` keeps 40
-and overrides 38. So `PlayAnimation` (`0x93f750`), `SetFacing`, `IsOnGround` and `GainHealth` are
-`AnimatedAiActor`'s, while `StartAttack`, `TurnAround` and `LoseHealth` exist in both forms. A
+and overrides 38. So `PlayAnimation` (`0x93f750`), `PlayFacingAnimation` (slot 24), `SetFacing`, `IsOnGround` and
+`GainHealth` are `AnimatedAiActor`'s, while `StartAttack`, `TurnAround` and `LoseHealth` exist in both forms. A
 `BaseCharacter::Update()` written in a subclass really calls `AnimatedAiActor::Update`.
 [`AnimatedAiActor.cpp`](../src/gameplay/AnimatedAiActor.cpp) holds the base class's own functions.
 
@@ -1208,6 +1231,11 @@ hash each serializer passes names the class, so these names come from the binary
 
 A character can ride an `SPTG::InteractiveObject`. `BaseCharacter` keeps the handle at +0x238
 (`mountHandle`) and a flag at +0x338 (`mounted`), and `IsMounted` (slot 36) checks both.
+
+While riding, `PlayMountedAnimation` (slot 23, `0x96c780`, not yet matched) plays animations 0 to 7
+as rider versions from one of two tables (`0x1349240`, or `0x13490e0` when the mount's slot 49 is
+nonzero). While the character is mounted, the mount plays the matching animation from a third table
+(`0x1349120`). Any other animation gets the character off the mount first.
 
 - `MountNearby` (slot 78) gets the character's position and asks the level's
   `Catalog<InteractiveObject>`, through `InteractiveCatalog::FindMount`, for the first object whose

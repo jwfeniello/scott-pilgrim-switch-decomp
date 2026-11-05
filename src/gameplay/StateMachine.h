@@ -11,13 +11,18 @@ enum StateEvent { kStateUpdate = 10000, kStateEnter = 10001, kStateExit = 10002,
 enum { kStateDamaged = 20000 };
 enum StateResult { kStateUnhandled = 0, kStateHandled = 1, kStateParentTookOver = 2 };
 
-// The owner, the current state and the requested state. Transition is
-// instantiated once per owner class.
+// The owner, the current state and the state before it. Transition is
+// instantiated once per owner class (the characters' copy is 0x812930, the boss
+// AI's 0xa15330, both credited to an earlier placeholder build). It sends the
+// exit event to the current state, makes the new state current and the old one
+// previous, and sends the enter event to the new state. While the 32-bit value
+// that follows the machine is not -1, it also sends kStateEvent3 to the old
+// state before the exit and to the new state after the entry.
 template<class Owner> struct StateMachine {
     typedef int (Owner::*State)(int event);
     Owner* owner;
     State current;
-    State next;
+    State previous;
     void Transition(State state);
     // Sends the current state the per-frame update event.
     __attribute__((always_inline)) void Update() { (owner->*current)(kStateUpdate); }
@@ -28,7 +33,7 @@ template<class Owner> struct StateMachine {
     // Starts the machine in `initial` and sends it the enter event.
     __attribute__((always_inline)) void Start(Owner* self, State initial) {
         owner = self;
-        next = initial;
+        previous = initial;
         current = initial;
         (self->*initial)(kStateEnter);
     }

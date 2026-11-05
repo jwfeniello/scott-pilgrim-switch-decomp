@@ -251,7 +251,7 @@ void Enemy::PlaceAtSpawn(const EnemySpawnInfo* info) {
 void Enemy::Slot7() {
     State initial = State96Ptr();
     states.owner = this;
-    states.next = initial;
+    states.previous = initial;
     states.current = initial;
     (this->*initial)(kStateEnter);
     AnimatedAiActor::Slot7();

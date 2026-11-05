@@ -44,6 +44,16 @@ void AnimatedAiActor::SetFacing(int left) {
     flags->facingLeft = left & 1;
 }
 
+// Slot 24 (0x93fa80): plays an animation with flags: bit 0 faces left, bit 1
+// raises +0x7a of the actor flags, and bit 2 loops the animation.
+void AnimatedAiActor::PlayFacingAnimation(int animation, uint8_t flags) {
+    bool loop = (flags & 4) != 0;
+    ActorFlags* actorFlags = onyx::Find<ActorFlags, 0x2eae5813u>(onyx::Find<ActorObject, 0x6492d61du>(actorObject)->flags);
+    actorFlags->facingLeft = flags & 1;
+    actorFlags->flag7a = (flags & 2) != 0;
+    PlayAnimation(animation, loop, false, 1.0f);
+}
+
 // At or below ground height and not moving up.
 bool AnimatedAiActor::IsOnGround() {
     onyx::Transform* transform = onyx::Get<onyx::Transform, onyx::kTransform>(onyx::Find<ActorObject, 0x6492d61du>(actorObject)->transform);

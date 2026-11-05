@@ -81,7 +81,8 @@ struct Boss : Enemy {
     SPTG_SLOT(236)
     virtual bool Slot237(const AttackSlot& request);                         // slot 237
     virtual bool Slot238();                                                  // slot 238
-    virtual bool Slot239(int animation);                                     // slot 239
+    // Whether the animation playing is `animation` (0xa1b6e0).
+    virtual bool IsPlaying(int animation);                                   // slot 239
     virtual void Slot240();                                                  // slot 240
     virtual onyx::Vector3 ArrivalPoint();                                    // slot 241
     virtual void Slot242();                                                  // slot 242

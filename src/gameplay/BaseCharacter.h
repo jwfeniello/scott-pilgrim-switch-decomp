@@ -769,7 +769,7 @@ struct Item;
 struct ItemRegistryNode {
     ItemRegistryNode* children[2];
     char padding_10[0x10];
-    int32_t id;              // +0x20
+    uint32_t id;             // +0x20
     Item* item;              // +0x28
 };
 // SPTG::ItemRegistry: the game's items, in a binary tree by id.
@@ -895,6 +895,7 @@ struct ControllablePlayer : BaseCharacter {
     bool HealWithGuts(bool* out) override;
     float GutsCostScale() override;
     float Slot152() override;
+    void ReactTo(BaseCharacter* other, int reaction, void* data) override;   // slot 21
     void Slot20() override;
     void FollowPlayfield() override;
     void PlayAnimationOn(int animation, bool loop, bool flag, BaseCharacter* other, float speed) override;

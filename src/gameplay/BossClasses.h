@@ -382,7 +382,7 @@ struct LucasLee : Boss {
     virtual void Slot234(int kind);                                          // slot 234, overrides Boss
     SPTG_SLOT(235)   // overrides Boss
     virtual bool Slot237(const AttackSlot& request);                         // slot 237, overrides Boss
-    virtual bool Slot239(int animation);                                     // slot 239, overrides Boss
+    virtual bool IsPlaying(int animation);                                   // slot 239, overrides Boss
     virtual onyx::Vector3 ArrivalPoint();                                    // slot 241, overrides Boss
     virtual int State244(int event); virtual State State244Ptr();   // slots 244, 245, overrides Boss
     virtual int State246(int event); virtual State State246Ptr();   // slots 246, 247, overrides Boss

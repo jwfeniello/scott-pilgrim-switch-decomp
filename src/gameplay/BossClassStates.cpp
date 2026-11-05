@@ -799,7 +799,7 @@ int NegaScott::State244(int event) {
         break;
     case kStateEnter:
         aiMode = target && target->object ? 1 : 6;
-        if (!Slot239(7)) PlayAnimation(7, 1, 0, 1.0f);
+        if (!IsPlaying(7)) PlayAnimation(7, 1, 0, 1.0f);
         value7ac = 0.0f;
         flag813 = 1;
         mode87c = 2;
@@ -900,7 +900,7 @@ int TagTeamMember::State244(int event) {
         break;
     case kStateEnter:
         aiMode = target && target->object ? 1 : 6;
-        if (!Slot239(7)) PlayAnimation(7, 1, 0, 1.0f);
+        if (!IsPlaying(7)) PlayAnimation(7, 1, 0, 1.0f);
         result = kStateHandled;
         value7ac = 0.0f;
         flag813 = 1;
@@ -947,7 +947,7 @@ int Lynette::State244(int event) {
         break;
     case kStateEnter:
         aiMode = target && target->object ? 1 : 6;
-        if (!Slot239(7)) PlayAnimation(7, 1, 0, 1.0f);
+        if (!IsPlaying(7)) PlayAnimation(7, 1, 0, 1.0f);
         result = kStateHandled;
         value7ac = 0.0f;
         flag813 = 1;
@@ -1570,7 +1570,7 @@ int SuperGideon::State244(int event) {
     case kStateEnter:
         CallA254a0(0.0f);
         aiMode = target && target->object ? 1 : 6;
-        if (!Slot239(7)) PlayAnimation(7, 1, 0, 1.0f);
+        if (!IsPlaying(7)) PlayAnimation(7, 1, 0, 1.0f);
         result = kStateHandled;
         value7ac = 0.0f;
         flag813 = 1;
@@ -1617,7 +1617,7 @@ int Patel::State244(int event) {
     }
     case kStateEnter:
         aiMode = target && target->object ? 1 : 6;
-        if (!Slot239(7)) PlayAnimation(7, 1, 0, 1.0f);
+        if (!IsPlaying(7)) PlayAnimation(7, 1, 0, 1.0f);
         value7ac = 0.0f;
         flag813 = 1;
         mode87c = 2;
@@ -1870,12 +1870,13 @@ int Lynette::State282(int event) {
 }
 
 // SuperFightingRobotHand slot 108 (0xa299e0): stops; an update goes to slot
-// 258 with animation 38 when the next state is 268 or 270, else to slot 106.
+// 258 with animation 38 when the hand came from state 268 or 270, else to slot
+// 106.
 int SuperFightingRobotHand::State108(int event) {
     int result = kStateHandled;
     switch (event) {
     case kStateUpdate:
-        if (states.next == State268Ptr() || states.next == State270Ptr()) {
+        if (states.previous == State268Ptr() || states.previous == State270Ptr()) {
             PlayAnimation(38, 0, 0, 1.0f);
             states.Transition(State258Ptr());
         } else {
@@ -2533,8 +2534,8 @@ void LucasLee::PlayAnimation(int animation, bool a, bool b, float speed) {
 
 // LucasLee slot 239 (0xa48170): whether the animation playing is the given one
 // or its counterpart in the other set.
-// Not yet matched (not credited).
-bool LucasLee::Slot239(int anim) {
+// Not yet matched: the final OR takes its two compares in the other order.
+bool LucasLee::IsPlaying(int anim) {
     return animation == LucasLeeAnimation(anim) || animation == anim;
 }
 
@@ -2830,7 +2831,7 @@ int Todd::State244(int event) {
         break;
     case kStateEnter:
         aiMode = target && target->object ? 1 : 6;
-        if (!Slot239(7)) PlayAnimation(7, 1, 0, 1.0f);
+        if (!IsPlaying(7)) PlayAnimation(7, 1, 0, 1.0f);
         result = kStateHandled;
         value7ac = 0.0f;
         flag813 = 1;
@@ -3220,7 +3221,7 @@ int Envy::State244(int event) {
         break;
     case kStateEnter:
         aiMode = target && target->object ? 1 : 6;
-        if (!Slot239(7)) PlayAnimation(7, 1, 0, 1.0f);
+        if (!IsPlaying(7)) PlayAnimation(7, 1, 0, 1.0f);
         result = kStateHandled;
         value7ac = 0.0f;
         flag813 = 1;

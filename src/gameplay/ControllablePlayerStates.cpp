@@ -859,4 +859,180 @@ int ControllablePlayer::State165(int event) {
     return result;
 }
 
+// ControllablePlayer slot 21 (0x97e310): reactions move the player between
+// states. 2 replays animation 0 while idle (state 96); 3 enters state 245 and 4
+// leaves it for idle; 6 goes idle; 8 moves from state 112 to 251 and 9 from 251
+// to 122.
+void ControllablePlayer::ReactTo(BaseCharacter*, int reaction, void*) {
+    switch (reaction) {
+    case 2:
+        if (states.IsIn(State96Ptr())) PlayAnimation(0, true, false, 1.0f);
+        break;
+    case 3:
+        states.Transition(State245Ptr());
+        break;
+    case 4:
+        if (states.IsIn(State245Ptr())) states.Transition(State96Ptr());
+        break;
+    case 6:
+        states.Transition(State96Ptr());
+        break;
+    case 8:
+        if (states.IsIn(State112Ptr())) states.Transition(State251Ptr());
+        break;
+    case 9:
+        if (states.IsIn(State251Ptr())) states.Transition(State122Ptr());
+        break;
+    }
+}
+
+// ControllablePlayer slot 148 (0x985100): never while +0x7e8 is raised.
+// Without a pending item it buys health with guts as BaseCharacter does;
+// otherwise it uses the pending item if the registry has it, then clears the
+// pending item and reports no guts spent.
+// Not yet matched: here the null and end-marker checks after the search merge into
+// one conditional compare; the original branches on each.
+bool ControllablePlayer::HealWithGuts(bool* out) {
+    if (flag7e8) return false;
+    if (pendingItem == -1) return BuyHealth(out);
+    ItemRegistry* registry = itemRegistry.Get();
+    bool used = false;
+    ItemRegistryNode* node = registry->Root();
+    if (node) {
+        uint32_t id = pendingItem;
+        ItemRegistryNode* found = nullptr;
+        do {
+            if (node->id >= id) found = node;
+            node = node->children[node->id < id];
+        } while (node);
+        if (found && found != &registry->end && found->id <= id && found->item) {
+            UseItem(found->item);
+            used = true;
+        }
+    }
+    pendingItem = -1;
+    if (out) *out = false;
+    return used;
+}
+
+// 0x991150 (slot 256's code): picks an air move. On a mount, timer 0 (+0x142c)
+// picks state 134 and timer 1 state 132. Otherwise timer 1 with the air kick
+// learned picks state 191 or 189 (by +0x13f1), timer 0 picks state 185, and a
+// fresh press of button 0x10 with the air attack learned picks state 187
+// unless the player is in it already.
+// Not yet matched: the original keeps the learned-move result and the state
+// compare as separate values and tests each in turn, even a constant true
+// (`mov w8, #1; cbz w8`). This build folds them, as an LTO-inlined KnowsMove
+// might not have been (see docs/LTO_BUILD.md).
+int ControllablePlayer::CheckAirInput() {
+    if (IsMounted()) {
+        if (value142c[0] > 0.0f) {
+            states.Transition(State134Ptr());
+            return kStateParentTookOver;
+        }
+        if (value142c[1] > 0.0f) {
+            states.Transition(State132Ptr());
+            return kStateParentTookOver;
+        }
+        return kStateHandled;
+    }
+    if (value142c[1] > 0.0f) {
+        PlayerInfoView* record = onyx::Find<PlayerInfoView, 1180775934u>(playerInfo);
+        if ((record->moves & kMoveAirKick) || record->allMoves) {
+            states.Transition(flag13f1 ? State191Ptr() : State189Ptr());
+            return kStateParentTookOver;
+        }
+    }
+    if (value142c[0] > 0.0f) {
+        states.Transition(State185Ptr());
+        return kStateParentTookOver;
+    }
+    if (!input->JustPressed(0x10)) return kStateHandled;
+    bool attacking = states.IsIn(State187Ptr());
+    if (!KnowsMove(kMoveAirAttack)) return kStateHandled;
+    if (attacking) return kStateHandled;
+    states.Transition(State187Ptr());
+    return kStateParentTookOver;
+}
+
+// Slot 175 (0x987eb0): an attack on the spot. Entry starts the attack at +0xdb0,
+// stops the sideways motion and plays animation 31; once it is done, back to
+// idle (state 96).
+int ControllablePlayer::State175(int event) {
+    int result = kStateHandled;
+    switch (event) {
+    case kStateUpdate:
+        if (AnimationDone()) {
+            states.Transition(State96Ptr());
+            result = kStateParentTookOver;
+            break;
+        }
+        result = kStateHandled;
+        break;
+    case kStateEvent3:
+        return result;
+    default:
+        result = kStateUnhandled;
+        break;
+    case kStateEnter:
+        result = kStateHandled;
+        StartAttack(&attackDb0, false, 1, nullptr);
+        motion.x = 0.0f;
+        PlayAnimation(31, false, true, 1.0f);
+        break;
+    case kStateExit:
+        result = kStateHandled;
+        break;
+    }
+    return result;
+}
+
+// Slot 177 (0x987fb0): an attack on the spot. Entry starts the attack at +0xe08,
+// stops the sideways motion and plays animation 32; once it is done, back to
+// idle (state 96).
+int ControllablePlayer::State177(int event) {
+    int result = kStateHandled;
+    switch (event) {
+    case kStateUpdate:
+        if (AnimationDone()) {
+            states.Transition(State96Ptr());
+            result = kStateParentTookOver;
+            break;
+        }
+        result = kStateHandled;
+        break;
+    case kStateEvent3:
+        return result;
+    default:
+        result = kStateUnhandled;
+        break;
+    case kStateEnter:
+        result = kStateHandled;
+        StartAttack(&attackE08, false, 1, nullptr);
+        motion.x = 0.0f;
+        PlayAnimation(32, false, true, 1.0f);
+        break;
+    case kStateExit:
+        result = kStateHandled;
+        break;
+    }
+    return result;
+}
+
+// Slot 249 (0x990340): held while the input bit at +0x141c stays down; on its
+// release the player goes back to idle (state 96). Entry and exit are unhandled.
+int ControllablePlayer::State249(int event) {
+    switch (event) {
+    case kStateEvent3:
+        return kStateHandled;
+    case kStateUpdate:
+        PlayerInput* in = input;
+        int bit = value141c;
+        if (in->held & (1ull << bit)) return kStateHandled;
+        states.Transition(State96Ptr());
+        return kStateParentTookOver;
+    }
+    return kStateUnhandled;
+}
+
 }  // namespace SPTG

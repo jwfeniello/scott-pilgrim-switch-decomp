@@ -211,7 +211,7 @@ bool BaseCharacter::Slot158() {
 void BaseCharacter::Slot7() {
     State initial = State96Ptr();
     states.owner = this;
-    states.next = initial;
+    states.previous = initial;
     states.current = initial;
     (this->*initial)(kStateEnter);
     AnimatedAiActor::Slot7();
@@ -337,6 +337,31 @@ void BaseCharacter::Slot42() {
 // false when there are none, or +0x511 is set.
 bool BaseCharacter::HealWithGuts(bool* out) {
     return BuyHealth(out);
+}
+
+// The first eight animations as a rider plays them (0x1349240 and, when the
+// mount's slot 49 is nonzero, 0x13490e0), and the mount's matching animations
+// (0x1349120).
+static const int kRiderAnimations[8] = {44, 43, 53, 54, 55, 56, 57, 42};
+static const int kRiderAnimationsSlot49[8] = {60, 59, 69, 70, 71, 72, 73, 58};
+static const int kMountAnimations[8] = {100, 99, 109, 110, 111, 112, 113, 98};
+
+// Slot 23 (0x96c780): on a mount, animations 0-7 play as their rider versions,
+// and the mount plays its own version while the character is mounted. Other
+// animations get the character off the mount first.
+// Not yet matched: the original computes both rider-table entries before slot 49
+// and picks between the two addresses; this build picks between the table bases
+// and indexes afterwards.
+void BaseCharacter::PlayMountedAnimation(int animation, bool a, bool b) {
+    BaseCharacter* mount = Mount();
+    if (animation <= 7 && mount) {
+        const int* rider = mount->Slot49() ? kRiderAnimationsSlot49 : kRiderAnimations;
+        PlayAnimation(rider[animation], a, b, 1.0f);
+        if (IsMounted()) static_cast<BaseCharacter*>(mountHandle->object)->PlayAnimation(kMountAnimations[animation], a, b, 1.0f);
+        return;
+    }
+    if (mount) Dismount();
+    PlayAnimation(animation, a, b, 1.0f);
 }
 
 // Turns around when `x` is on the other side from the way the actor faces.
