@@ -453,9 +453,10 @@ pack remembers the height it was placed at in `spawnHeight` (`+0xc3c`).
 
 `PlaceAtSpawn` is not matched. After the move, the original converts the height from a value it has carried across the
 call in a general register, instead of reloading it from the `Vector3` it passed. It would only do that if the compiler
-knew `ActorObject::MoveTo` leaves that `Vector3` alone, and these sources can't declare that. Like the base-class bodies
-inlined into subclasses in other files, this suggests the compiler saw more than one source file at a time. That is an
-inference from the code, not something the binary states.
+knew `ActorObject::MoveTo` leaves that `Vector3` alone, and these sources can't declare that. The executable is a
+link-time optimization build ([LTO_BUILD.md](LTO_BUILD.md)), which would give the compiler that knowledge, the same way it
+let base-class bodies be inlined into subclasses in other files. This function would then only match from a build that
+sees `MoveTo`'s body, which the separate builds here don't.
 
 ## BaseCharacter states
 
@@ -1043,6 +1044,55 @@ Patel's slot 170, Patel's state 256, Ken & Kyle's hit check and the state
 Many boss states differ from a first draft only in the order of their cases or
 in the exit case's assumption. Trying every order of a state's cases, with and
 without the assumption, settled SuperGideon's state 186 and Todd's state 262.
+
+## Boss fight AI
+
+[`BossAI.h`](../src/gameplay/BossAI.h) describes `SPTG::BaseBossAI` (vtable
+`0x188a640`, 27 slots) and the AIs derived from it: `ToddAI`, `SuperGideonAI`,
+`GigaGideonAI` and `EnvyLynetteAI`. The AI is a component of its own, not a
+boss. It keeps one reference per player of the level (`players`, +0x68) and
+runs the same kind of state machine as the characters (+0x90). Each of its
+three states is virtual and followed by a getter that returns it as a
+member-function pointer. Slots 22, 24 and 26 return `{0xa8, 1}`, `{0xb8, 1}`
+and `{0xc8, 1}`: the vtable offset of the state with the virtual bit set. A
+subclass replaces a state by overriding its slot.
+
+| Slot | Address | Behavior |
+| --- | --- | --- |
+| 16 | `0xa14a20` | Start: clears +0x50, sets +0x51 and enters the waiting state |
+| 21 | `0xa15db0` | Waiting: once a player is present, gives every enemy of the level a target and moves to fighting |
+| 23 | `0xa15ee0` | Fighting: back to waiting without players. Otherwise gives a target to each enemy that has none (target index 4) and finishes once a boss (kind 6) has +0xd28 set |
+| 25 | `0xa14dd0` | Finished: sends the event at +0xc0 when entered |
+
+Two non-virtual helpers do the work. `RefreshPlayers` (`0xa14f50`, not yet
+matched) refills the player list from the level's player catalog and returns
+its size. `AssignTarget` (`0xa15400`) makes player 0 the target of an enemy of
+kind 6, 7 or 8 whose +0x50 is clear, then clears the enemy's target index and
+AI mode.
+
+The subclasses change the fight:
+
+- `ToddAI` has its own copy of the waiting state, byte for byte the same code.
+  Its fighting state follows Todd alone. While Todd has no target it offers
+  every enemy one, and the fight finishes once Todd has +0xd28 set. Entering
+  the state clears +0x60.
+- `SuperGideonAI`'s fighting state follows its boss (+0xe0) and finishes once
+  the boss has +0xd28 set. Its finished state waits for the boss to stand idle
+  in animation 187, then sends a second event.
+- `GigaGideonAI`'s fighting state also sends an event the first time its boss
+  raises +0xd68.
+
+Enemy slot 160 returns an enemy's kind: 0 for `Enemy`, 5 for the one-hit
+enemies and 6 for bosses. The boss states test +0xd28 before they run slot 240
+when the health is gone, and Ken & Kyle copy it from the twin, so it most
+likely marks a beaten boss.
+
+[`BossAI.cpp`](../src/gameplay/BossAI.cpp) matches seven functions (2,432
+bytes): slots 16, 21 and 23 of `BaseBossAI`, slots 21 and 23 of `ToddAI`, slot
+23 of `SuperGideonAI`, and `AssignTarget`. Three more were matched earlier in
+[`ActionEvents.cpp`](../src/gameplay/ActionEvents.cpp) under local
+declarations: slot 25 of `BaseBossAI` and of `SuperGideonAI`, and slot 23 of
+`GigaGideonAI`.
 
 ## ControllablePlayer stats and states
 

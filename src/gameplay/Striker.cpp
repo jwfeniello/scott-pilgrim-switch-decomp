@@ -87,7 +87,7 @@ bool Striker::FindEnemies(EnemyCatalog* enemies, EnemyList* found, bool justOne)
     Enemy* enemy;
     for (i = enemies->enemies; i != enemies->enemies + enemies->count; ++i) {
         enemy = *i;
-        if ((enemy->componentFlags & 1) && !enemy->IsOut() && enemy->IsHeld() && enemy->actionMode == 0 && !enemy->flag141 && !enemy->flagAe9 && !enemy->Slot85() && enemy->Slot160() != 4 && EnemyOnScreen(enemy, &rect)) {
+        if ((enemy->componentFlags & 1) && !enemy->IsOut() && enemy->IsHeld() && enemy->actionMode == 0 && !enemy->flag141 && !enemy->flagAe9 && !enemy->Slot85() && enemy->Kind() != 4 && EnemyOnScreen(enemy, &rect)) {
             if (justOne) return true;
             uint64_t size = found->size;
             uint64_t count = size + 1;

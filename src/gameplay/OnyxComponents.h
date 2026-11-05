@@ -150,6 +150,10 @@ __attribute__((always_inline)) inline ComponentHandle* NewHandle() {
     handle->object = nullptr;
     return handle;
 }
+// Adds one reference (nothing for a null handle).
+__attribute__((always_inline)) inline void RetainHandle(ComponentHandle* handle) {
+    if (handle) __atomic_add_fetch(&handle->references, 1, __ATOMIC_RELAXED);
+}
 // Drops one reference, disposing of the handle with the last.
 __attribute__((always_inline)) inline void ReleaseHandle(ComponentHandle* handle) {
     if (handle && __atomic_sub_fetch(&handle->references, 1, __ATOMIC_RELAXED) == 0) DisposeHandle(handle);

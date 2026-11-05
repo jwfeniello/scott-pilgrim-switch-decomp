@@ -3820,4 +3820,43 @@ int TagTeamMember::State262(int event) {
     return result;
 }
 
+// Roxy slot 13 (0xa3c3d0): Boss's while she has a target. Without one she runs 0xa1eb90 for each player, clears the target
+// and turns towards player 0.
+void Roxy::Slot13() {
+    if (target && target->object) {
+        UpdateBoss13();
+        return;
+    }
+    PlayerCatalog* catalog = onyx::Get<PlayerCatalog, onyx_types::type_0bf4a9b7>(level.Get()->players);
+    for (ControllablePlayer** i = catalog->players; i != catalog->players + catalog->count; ++i) {
+        CallA1eb90(0);
+        targetIndex = 0;
+        aiMode = 0;
+        float x = onyx::Get<onyx::Transform, onyx::kTransform>(onyx::Find<ActorObject, 0x6492d61du>(actorObject)->transform)->position.x;
+        onyx::Vector3 player;
+        PlayerPosition(&player, this, 0);
+        if (x < player.x) Call9dc2d0(1);
+        else Call9dc2d0(0);
+    }
+}
+
+// LucasLee slot 241 (0xa481f0): of his points, the one farthest from the target, at his ground height.
+// Not yet matched: the original keeps two loop counters (this one and the next), as written here. The code is the
+// same except that the counter and a hoisted global address trade callee-saved registers (x25 and x26).
+onyx::Vector3 LucasLee::ArrivalPoint() {
+    arrivalIndex = 0;
+    for (uint32_t i = 1, next = 2; i < pointsCd8.size; i = next++) {
+        const onyx::Vector3& position = onyx::Get<onyx::Transform, onyx::kTransform>(onyx::Find<ActorObject, 0x6492d61du>(static_cast<AnimatedAiActor*>(target->object)->actorObject)->transform)->position;
+        uint32_t index = arrivalIndex;
+        const onyx::Vector3& best = pointsCd8.data[index];
+        const onyx::Vector3& candidate = pointsCd8.data[i];
+        if ((position - best).LengthSquared() < (position - candidate).LengthSquared()) arrivalIndex = next - 1;
+    }
+    onyx::Vector3 point;
+    point.x = pointsCd8.data[arrivalIndex].x;
+    point.y = pointsCd8.data[arrivalIndex].y;
+    point.z = groundHeight;
+    return point;
+}
+
 }  // namespace SPTG

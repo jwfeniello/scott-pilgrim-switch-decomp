@@ -113,7 +113,9 @@ struct Enemy : BaseCharacter {
     onyx::Vector2 Slot147();                                         // slot 147, overrides BaseCharacter
     int State136(int event);                                         // slot 136, overrides BaseCharacter
     virtual void Spawn(const EnemySpawnInfo* info);                  // slot 159
-    virtual int Slot160(); SPTG_SLOT(161)
+    // 0 for Enemy, 5 for the one-hit enemies, 6 for bosses.
+    virtual int Kind();                                              // slot 160
+    SPTG_SLOT(161)
     virtual bool CollectSpecialAttacks(onyx::Vector<uint32_t>* out);         // slot 162
     virtual void CollectBasicAttacks(onyx::Vector<uint32_t>* out);           // slot 163
     SPTG_SLOT(164)
@@ -328,6 +330,8 @@ struct Enemy : BaseCharacter {
     bool Check9ddab0(EnemySensor* sensor);                  // 0x9ddab0
     void PickPoint(onyx::Vector3* out, float distance);     // 0x9daf90
     void Call9dc2d0(uint32_t value);                        // 0x9dc2d0
+    // The position of player `index` in the level's player catalog (0x9dc1a0).
+    static void PlayerPosition(onyx::Vector3* out, Enemy* self, uint32_t index);
 
     // Requests a class attack for this frame, with the hit kind slot 166
     // answers. Plain inline (not forced), so it is optimized on its own before

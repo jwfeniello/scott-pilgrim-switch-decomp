@@ -51,6 +51,7 @@ struct TagTeamMember : Boss {
 };
 // vtable 0x188a8a0, 272 slots
 struct Todd : Boss {
+    static const uint32_t kType = 0x4aedc535u;
     int State116(int event);
     void AttackLanded(AnimatedAiActor* target) override;
     float Slot59();
@@ -407,11 +408,12 @@ struct LucasLee : Boss {
     char padding_fd2[0x1a];
     float heldTime;              // +0xfec
     int32_t countFf0;            // +0xff0
-    char padding_ff4[0x4];
+    uint32_t arrivalIndex;       // +0xff4: the point slot 241 picked
     BaseCharacter* carried;      // +0xff8: what he drops when he falls
 };
 // vtable 0x1891ed8, 272 slots
 struct Roxy : Boss {
+    void Slot13();
     float TakeDamage(const void* hit, BaseCharacter* other);
     int State122(int event); State State122Ptr();   // slots 122, 123, override Boss
     virtual void Slot234(int kind);                                          // slot 234, overrides Boss
