@@ -563730,6 +563730,23 @@
           "got_bindings": {}
         },
         {
+          "address": "0x9dcfd0",
+          "size": 308,
+          "symbol": "_ZN4SPTG5Enemy10RollWeightEh",
+          "target_sha256": "126656af07f94856353679049f81d449c8084ec1e24ab107ae6d4f014702c86a",
+          "bindings": {
+            "Game_Random": "0x192ae70",
+            "_ZN2nn2os16GetCurrentThreadEv": "0xfa3e50",
+            "_ZN2nn2os11GetThreadIdEPKNS0_10ThreadTypeE": "0xfa4760",
+            "Game_RandomCalls": "0x1935254"
+          },
+          "got_bindings": {},
+          "literals": {
+            "5f708930": "0x1331e88",
+            "00401c46": "0x1331f68"
+          }
+        },
+        {
           "address": "0x9e0590",
           "size": 296,
           "symbol": "_ZN4SPTG5Enemy5Slot7Ev",

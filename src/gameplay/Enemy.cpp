@@ -315,10 +315,12 @@ void Enemy::CollectBasicAttacks(onyx::Vector<uint32_t>* out) {
     }
 }
 
-// A roll from 0 to `total`, the weights of the attacks being picked from.
-// Not yet matched: the checker reports a binding conflict that hasn't been looked into.
+// 0x9dcfd0: a roll from 0 to `total`, the weights of the attacks being picked from. Unlike RandomRange, the remainder is
+// taken unsigned (`udiv`), so the count is `total + 1u`.
 int Enemy::RollWeight(uint8_t total) {
-    return RandomRange<int>(0, total);
+    int value = static_cast<int>(RandomFloat() * 10000.0f) % (total + 1u);
+    ++Game_RandomCalls;
+    return value;
 }
 
 // Slot 165 (0x9d0040): picks one of the listed attacks, by the weight each carries at +0x10. -1 when none can be picked.

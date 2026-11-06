@@ -558,13 +558,13 @@ struct BaseCharacter : AnimatedAiActor {
     Attack attack258;            // +0x258: started by Enemy's slot 41
     float value2b0;              // +0x2b0: with +0x2b4, the upward speed of EnemyChubby's jump
     float value2b4;              // +0x2b4
-    int32_t value2b8;            // +0x2b8
+    float value2b8;              // +0x2b8: ReleaseHeld speeds a slow x motion up by 1 + this
     float savedZ;                // +0x2bc: restored into motionTarget.z
     float savedC4;               // +0x2c0: restored into motionC4
     float value2c4;              // +0x2c4
     int32_t value2c8;            // +0x2c8
-    int32_t value2cc;            // +0x2cc
-    int32_t value2d0;            // +0x2d0
+    float value2cc;              // +0x2cc: ReleaseHeld's y speed for a throw, times its y
+    float value2d0;              // +0x2d0: ReleaseHeld's upward speed for a throw (+0x2b0 otherwise)
     int32_t value2d4;            // +0x2d4
     int32_t value2d8;            // +0x2d8
     int32_t value2dc;            // +0x2dc

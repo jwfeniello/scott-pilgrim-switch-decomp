@@ -476,4 +476,28 @@ float BaseCharacter::Slot77() {
 // The type tests (slot 12): each class's own type or one of its base's (SPTG_TYPE).
 bool BaseCharacter::IsA(uint32_t type) { return IsType(type); }   // 0x96bf20
 
+
+// 0x976fb0: drops the held reference and starts the jump off: upward at +0x2b0 (+0x2d0 for a throw, which also sets the
+// y speed from +0x2cc times y) scaled by 1 + +0x2b4 times x, with the saved height and +0x1c4 back; below the slide
+// threshold the x motion is sped up by 1 + +0x2b8. Not yet matched (not credited): the original stores the throw's y
+// speed before loading its upward speed, and with that order here the two branches' loads merge into one.
+void BaseCharacter::ReleaseHeld(bool flag, float x, float y) {
+    onyx::ResetHandle(held);
+    float up;
+    if (flag) {
+        up = value2d0;
+        motion.y = value2cc * y;
+    } else {
+        up = value2b0;
+    }
+    float scale = value2b4 * x + 1.0f;
+    float mx = motion.x;
+    float z = savedZ;
+    float c4 = savedC4;
+    motionTarget.x = 0.0f;
+    motionTarget.z = z;
+    motionC4 = c4;
+    motion.z = up * scale;
+    if (__builtin_fabsf(mx) < slideThreshold) motion.x = mx * (value2b8 + 1.0f);
+}
 }  // namespace SPTG
