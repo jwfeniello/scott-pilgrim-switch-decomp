@@ -202,6 +202,65 @@ void InteractiveObject::Slot7() {
     }
 }
 
+// State 82 (0x9c2b20): sliding to a stop. While it still moves sideways it keeps its fall values unless it is on
+// the ground. Once stopped, animation 9 or 74 turns into 293, and when 293 is done (or anything else plays) it
+// goes back to state 78. The animation test is a switch: its cases for 0 and 170 leave compares behind in the
+// original even though they do what the default does. Entering brakes against the direction of motion and plays animation 9 if it slides in
+// that one, else stands in 0 (170 with emptyLook) unless one of those already plays.
+int InteractiveObject::State82(int event) {
+    int result = kStateHandled;
+    switch (event) {
+    case kStateUpdate: {
+        if (__builtin_fabsf(motion.x) <= 0.000001f) {
+            switch (animation) {
+            case 0:
+            case 170:
+                states.Transition(State78Ptr());
+                return kStateParentTookOver;
+            case 9:
+            case 74:
+                PlayAnimation(293, false, false, 1.0f);
+                break;
+            case 293:
+                if (!AnimationDone()) break;
+                states.Transition(State78Ptr());
+                return kStateParentTookOver;
+            default:
+                states.Transition(State78Ptr());
+                return kStateParentTookOver;
+            }
+            break;
+        }
+        if (!IsOnGround()) {
+            motionTarget.z = fallZ;
+            motionC4 = fallC4;
+        }
+        break;
+    }
+    default:
+        result = kStateUnhandled;
+        break;
+    case kStateEnter: {
+        value1bc = 0.0f;
+        motionTarget.x = motion.x > 0.0f ? -brakeForce : brakeForce;
+        if (slidesInAnimation9) {
+            PlayAnimation(9, true, false, 1.0f);
+            break;
+        }
+        int current = animation;
+        if (current == 0 || current == 170) break;
+        if (emptyLook) PlayAnimation(170, false, false, 1.0f);
+        else PlayAnimation(0, false, false, 1.0f);
+    }
+    case kStateExit:
+        states.AssertOwner(this);
+        break;
+    case kStateEvent3:
+        break;
+    }
+    return result;
+}
+
 // Leaves the level. The spawner that placed it either keeps it to spawn again or removes it.
 void InteractiveObject::Remove(bool respawn) {
     Release();

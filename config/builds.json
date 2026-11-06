@@ -571356,6 +571356,22 @@
           }
         },
         {
+          "address": "0x9c2b20",
+          "size": 436,
+          "symbol": "_ZN4SPTG17InteractiveObject7State82Ei",
+          "target_sha256": "1d8475bf94c95cc3deb444b836b99f66302022ac3d09c338353aea136c440046",
+          "bindings": {
+            "_ZN4SPTG12StateMachineINS_17InteractiveObjectEE10TransitionEMS1_FiiE": "0x9c3be0"
+          },
+          "got_bindings": {},
+          "immutable_sections": {
+            "32": "0x1390e86"
+          },
+          "literals": {
+            "bd378635": "0x1331fdc"
+          }
+        },
+        {
           "address": "0x9c3490",
           "size": 480,
           "symbol": "_ZN4SPTG17InteractiveObject7State88Ei",
