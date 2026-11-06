@@ -49,12 +49,38 @@ int BaseBossAI::Fighting(int event) {
     return kStateHandled;
 }
 
+// 0xa14f50: drops the references in the player list and takes one for each
+// player in the level's catalog (the handle at +0x40 of the player, its own).
+// Returns how many there are, as 32 bits.
+// Not yet matched: the code is the original's instruction for instruction, but the
+// original keeps `this` in x20 and the level pointer in x19, and this build the
+// other way round. (State165's similar swap went away with the right case order;
+// no statement order tried here changes it.)
+uint32_t BaseBossAI::RefreshPlayers() {
+    PlayerCatalog* catalog = onyx::Find<PlayerCatalog, onyx_types::type_0bf4a9b7>(level.Get()->players);
+    if (players.data) {
+        for (uint64_t i = 0; i < players.size; ++i) players.data[i].~PlayerRef();
+    }
+    players.size = 0;
+    for (ControllablePlayer** i = catalog->players; i != catalog->players + catalog->count; ++i) {
+        onyx::ComponentHandle* handle = reinterpret_cast<onyx::ComponentHandle*>((*i)->attachment);
+        __atomic_add_fetch(&handle->references, 1, __ATOMIC_RELAXED);
+        uint64_t count = players.size + 1;
+        if (players.capacity < count) players.data = players.Reserve(count, players.size, count, false);
+        players.data[players.size].handle = handle;
+        onyx::RetainHandle(handle);
+        ++players.size;
+        onyx::ReleaseHandle(handle);
+    }
+    return players.size;
+}
+
 // 0xa15400: for an enemy of kind 6, 7 or 8 with +0x50 clear, the target becomes
 // player 0, and the target index and AI mode are cleared. The original takes
 // two references and drops one again, as if the handle were passed by value.
 void BaseBossAI::AssignTarget(Enemy* enemy) {
     if (!enemy->flag50 && (enemy->Kind() == 6 || enemy->Kind() == 7 || enemy->Kind() == 8)) {
-        onyx::ComponentHandle* player = players.data[0];
+        onyx::ComponentHandle* player = players.data[0].handle;
         onyx::RetainHandle(player);
         onyx::RetainHandle(player);
         onyx::ComponentHandle* old = enemy->target;

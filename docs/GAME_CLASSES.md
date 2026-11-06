@@ -275,6 +275,13 @@ A few more things decide these handlers' code:
 - The assumption also stops a tail call. `SuperFightingRobotHand::FollowPlayfield` ends with a call and a
   return in the original, where a plain build branches to the callee. `states.AssertOwner(this)` after the call
   gives the original's code, which fits the release-mode assertion this stands in for.
+- A register swap can be a case-order effect. `ControllablePlayer::State165`, `State175` and `State177`
+  looked like `x19`/`x20` swaps, and all three match with the cases ordered update, event 3, default,
+  enter, exit.
+- `State100`, `State102` and `State187` still differ only in one floating-point register: the multiply
+  kept across `SpeedScale` is in `s9` in the original, which saves `d9` alone, and in `s8` here. The
+  Cortex-A57 load-balancing pass keeps a chain's own colour when the balance is even, so the `s9`
+  should already come from register allocation, which picks `s8` first in these builds.
 - A flag argument worked out at the top of a function is scheduled apart from the call that uses it.
   `AnimatedAiActor::PlayFacingAnimation` needs `bool loop = (flags & 4) != 0;` before its lookups. Inline in the
   call, one instruction of the tail call moves.
@@ -1091,9 +1098,12 @@ subclass replaces a state by overriding its slot.
 | 23 | `0xa15ee0` | Fighting: back to waiting without players. Otherwise gives a target to each enemy that has none (target index 4) and finishes once a boss (kind 6) has +0xd28 set |
 | 25 | `0xa14dd0` | Finished: sends the event at +0xc0 when entered |
 
-Two non-virtual helpers do the work. `RefreshPlayers` (`0xa14f50`, not yet
-matched) refills the player list from the level's player catalog and returns
-its size. `AssignTarget` (`0xa15400`) makes player 0 the target of an enemy of
+Two non-virtual helpers do the work. `RefreshPlayers` (`0xa14f50`) refills the
+player list from the level's player catalog and returns its size. Each entry is
+a counted reference to the player's own handle (+0x40), destroyed out of line
+(`0x9cacf0`). It is written out instruction for instruction but not matched:
+the original keeps `this` in x20 and the level pointer in x19, and this build
+swaps them. `AssignTarget` (`0xa15400`) makes player 0 the target of an enemy of
 kind 6, 7 or 8 whose +0x50 is clear, then clears the enemy's target index and
 AI mode.
 
@@ -1126,7 +1136,7 @@ declarations: slot 25 of `BaseBossAI` and of `SuperGideonAI`, and slot 23 of
 ## ControllablePlayer stats and states
 
 [`PlayerStats.cpp`](../src/gameplay/PlayerStats.cpp) and
-[`ControllablePlayerStates.cpp`](../src/gameplay/ControllablePlayerStates.cpp) hold 45 of the
+[`ControllablePlayerStates.cpp`](../src/gameplay/ControllablePlayerStates.cpp) hold 46 of the
 class's methods. RTTI gives the class name; method and field names are provisional.
 
 The fields at +0x860 to +0x898 are floats, shown by the original's float loads (they
@@ -1188,9 +1198,9 @@ to 251, and 9 from 251 to 122. `State175` and `State177`, the attacks that a cha
 their attack (+0xdb0 or +0xe08), stop the sideways motion and play animation 31 or 32, then return to idle when the
 animation ends. `State249` holds while the input bit at +0x141c stays down and goes idle when it is released.
 
-`State104`, `State122`, `State175`, `State177`, `State237`, `State249`, `ReactTo`, `Slot68`, `Slot94` and `Slot156`
-are matched. `State100`, `State102`, `State114`, `State136`, `HealWithGuts` (slot 148) and `CheckAirInput` (slot 256's
-code) are written but not matched, and each one's comment says what still differs. `HealWithGuts` uses the pending
+`State104`, `State122`, `State165`, `State175`, `State177`, `State237`, `State249`, `ReactTo`, `Slot68`, `Slot94` and
+`Slot156` are matched. `State100`, `State102`, `State114`, `State136`, `State187`, `HealWithGuts` (slot 148) and
+`CheckAirInput` (slot 256's code) are written but not matched, and each one's comment says what still differs. `HealWithGuts` uses the pending
 item (+0x13f4) when one is set: it looks the item up in the `ItemRegistry` tree, whose ids compare unsigned, uses it,
 and clears the pending item.
 

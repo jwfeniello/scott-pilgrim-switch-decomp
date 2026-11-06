@@ -16,6 +16,14 @@
 
 namespace SPTG {
 
+// One counted reference to a player's handle in the AI's player list. The
+// destructor is out of line (0x9cacf0, shared by many such element types).
+struct PlayerRef {
+    onyx::ComponentHandle* handle;
+    __attribute__((always_inline)) PlayerRef(const PlayerRef& other) : handle(other.handle) { onyx::RetainHandle(handle); }
+    ~PlayerRef();
+};
+
 struct BaseBossAI : onyx::Component {
     typedef StateMachine<BaseBossAI>::State State;
     SPTG_SLOT(3) SPTG_SLOT(4) SPTG_SLOT(5) SPTG_SLOT(6) SPTG_SLOT(7) SPTG_SLOT(8) SPTG_SLOT(9) SPTG_SLOT(10)
@@ -55,7 +63,7 @@ struct BaseBossAI : onyx::Component {
     Singleton<LevelItemAccessor> level;    // +0x58 (getter 0x7725e0)
     int32_t value60;                       // +0x60: cleared when ToddAI's fighting state is entered
     char padding_64[0x4];
-    onyx::Vector<onyx::ComponentHandle*> players; // +0x68: one reference per player
+    onyx::Vector<PlayerRef> players;       // +0x68: one reference per player
     char padding_88[0x8];
     StateMachine<BaseBossAI> states;       // +0x90
     int32_t machineValue;                  // +0xb8: -1 from the constructor; otherwise a

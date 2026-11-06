@@ -17,6 +17,8 @@ template<class T> struct Vector {
     // it and moving the rest to end at `tail` (out of line, one instance per
     // element type). The caller stores the result.
     T* Reserve(uint64_t tail, uint64_t index, uint64_t required);
+    // The form with a fourth argument, false at the one call seen (BaseBossAI::RefreshPlayers).
+    T* Reserve(uint64_t tail, uint64_t index, uint64_t required, bool flag);
     // The same logic as Resize has it inline. A zero count (as 32 bits) gives
     // no buffer; when the allocator hands back the old buffer, it is kept.
     __attribute__((always_inline)) T* Grow(uint64_t tail, uint64_t index, uint64_t required) {

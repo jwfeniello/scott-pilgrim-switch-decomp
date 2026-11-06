@@ -830,7 +830,6 @@ int ControllablePlayer::State237(int event) {
 }
 
 // Slot 165 (0x9875b0): stops and attacks on the spot, back to standing when the animation ends.
-// Not yet matched: the original keeps `this` in x20 and the result in x19, and ours the other way round.
 int ControllablePlayer::State165(int event) {
     int result = kStateHandled;
     switch (event) {
@@ -840,10 +839,10 @@ int ControllablePlayer::State165(int event) {
             result = kStateParentTookOver;
             break;
         }
-    case kStateExit:
-        states.AssertOwner(this);
         result = kStateHandled;
         break;
+    case kStateEvent3:
+        return result;
     default:
         result = kStateUnhandled;
         break;
@@ -853,7 +852,8 @@ int ControllablePlayer::State165(int event) {
         motion.x = 0.0f;
         PlayAnimation(10, false, true, 1.0f);
         break;
-    case kStateEvent3:
+    case kStateExit:
+        result = kStateHandled;
         break;
     }
     return result;
@@ -1033,6 +1033,45 @@ int ControllablePlayer::State249(int event) {
         return kStateParentTookOver;
     }
     return kStateUnhandled;
+}
+
+// Slot 187 (0x988820): a jump attack steered in the air (the stick and the air input
+// still work) until the character lands, then the landing state (104).
+// Not yet matched: only the registers of the steering multiply differ (s9 and s0 in the
+// original, s8 and s1 here; it saves d9 alone), as in State100 and State102. The A57 FP
+// load-balancing pass, which picks odd or even registers for multiply chains, is the likely cause.
+int ControllablePlayer::State187(int event) {
+    int result = kStateHandled;
+    switch (event) {
+    case kStateUpdate:
+        if ((IsOnGround() && motion.z <= 0.0f) || IsOnGround()) {
+            states.Transition(State104Ptr());
+            result = kStateParentTookOver;
+            break;
+        }
+        SteerFromInput();
+        if (AirInput(kStateUpdate) == kStateParentTookOver) {
+            result = kStateParentTookOver;
+            break;
+        }
+    case kStateExit:
+        states.AssertOwner(this);
+        result = kStateHandled;
+        break;
+    case kStateEvent3:
+        return result;
+    default:
+        result = kStateUnhandled;
+        break;
+    case kStateEnter:
+        result = kStateHandled;
+        StartAttack(&attackBf8, false, 1, nullptr);
+        motion.z = value1268;
+        PlayAnimation(145, true, false, 1.0f);
+        ++airAttackCount;
+        break;
+    }
+    return result;
 }
 
 }  // namespace SPTG
