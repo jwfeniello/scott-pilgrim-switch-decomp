@@ -1905,38 +1905,43 @@ int SuperFightingRobotHand::State108(int event) {
 // SuperFightingRobotHand slot 106 (0xa297d0): entry raises +0xfbb. An update
 // counts +0x330 down; until +0xd08 reaches +0xcb4 it goes to slot 264 when the
 // time is up. Then +0xd08 restarts and a coin flip picks slot 248 or 264.
-// Not yet matched (not credited).
 int SuperFightingRobotHand::State106(int event) {
+    int result = kStateHandled;
     switch (event) {
     case kStateUpdate:
         timer330 -= Move_FrameDelta;
         if (valueD08 < limitCb4) {
             if (timer330 <= 0.0f) {
                 states.Transition(State264Ptr());
-                return kStateParentTookOver;
+                result = kStateParentTookOver;
             }
-            return kStateHandled;
+            break;
         }
         valueD08 = 0;
         switch (RandomRange(0, 1)) {
-        case 1:
-            states.Transition(State248Ptr());
-            return kStateParentTookOver;
         case 0:
             states.Transition(State264Ptr());
-            return kStateParentTookOver;
+            result = kStateParentTookOver;
+            break;
+        case 1:
+            states.Transition(State248Ptr());
+            result = kStateParentTookOver;
+            break;
         }
-        return kStateHandled;
+        break;
+    default:
+        result = kStateUnhandled;
+        break;
     case kStateEnter:
         flagFbb = 1;
-        return kStateHandled;
+        break;
     case kStateExit:
-        return kStateHandled;
+        states.AssertOwner(this);
+        break;
     case kStateEvent3:
-        return kStateHandled;
-    default:
-        return kStateUnhandled;
+        break;
     }
+    return result;
 }
 
 // Todd slot 82 (0xa21230): never in states 264, 270, 268, 260 or 266; otherwise
@@ -2425,9 +2430,10 @@ int KenKyle::State260(int event) {
 // Patel slot 262 (0xa414a0): with +0x3ba raised, animation 177, then 178 until
 // every HipsterChick is out, then 179; once that is done, slot 244. Every
 // +0xd88 seconds the attack at +0xf70 starts again. Exit sets the mode at
-// +0xffc to 3.
-// Not yet matched (not credited).
+// +0xffc to 3. Not yet matched (not credited): the original tests the animations 179, 178, 177, highest first; a switch
+// or an if chain here tests them lowest first, which is what equal case probabilities give.
 int Patel::State262(int event) {
+    int result = kStateHandled;
     switch (event) {
     case kStateUpdate:
         stateTime -= Move_FrameDelta;
@@ -2435,19 +2441,26 @@ int Patel::State262(int event) {
             stateTime = periodD88;
             StartAttack(&attackF70.attack, false, 1, nullptr);
         }
-        if (animation == 177) {
+        switch (animation) {
+        case 177:
             if (AnimationDone()) PlayAnimation(178, 1, 0, 1.0f);
-        } else if (animation == 178) {
+            break;
+        case 178:
             for (uint32_t i = 0; i < chickCount; ++i)
                 if (!onyx::Get<HipsterChick, onyx_types::type_4a52c0d7>(chicks[i])->IsOut()) return kStateHandled;
             PlayAnimation(179, 0, 0, 1.0f);
-        } else if (animation == 179) {
+            break;
+        case 179:
             if (AnimationDone()) {
                 states.Transition(State244Ptr());
-                return kStateParentTookOver;
+                result = kStateParentTookOver;
             }
+            break;
         }
-        return kStateHandled;
+        break;
+    default:
+        result = kStateUnhandled;
+        break;
     case kStateEnter:
         flag3ba = 1;
         PlayAnimation(177, 0, 1, 1.0f);
@@ -2455,16 +2468,15 @@ int Patel::State262(int event) {
         motionTarget = onyx::Vector3::Zero();
         stateTime = periodD88;
         StartAttack(&attackF70.attack, false, 1, nullptr);
-        return kStateHandled;
+        break;
     case kStateExit:
         flag3ba = 0;
         modeFfc = 3;
-        return kStateHandled;
+        break;
     case kStateEvent3:
-        return kStateHandled;
-    default:
-        return kStateUnhandled;
+        break;
     }
+    return result;
 }
 
 // Slot 237 (Gideon 0xa60c80, Lucas Lee 0xa480f0, Todd 0xa22300): attack
@@ -3951,6 +3963,21 @@ bool SuperFightingRobotHand::CallA2f300(float minX, float maxX, float depth) {
         if (dx <= -minX && dx >= -maxX && __builtin_fabsf(dy) <= depth * 0.5f) return true;
     }
     return false;
+}
+
+// Patel 0xa41ca0: plays one of animations 20, 21 and 22 at random.
+void Patel::CallA41ca0() {
+    switch (RandomRange<int>(0, 2)) {
+    case 0:
+        PlayAnimation(20, false, true, 1.0f);
+        break;
+    case 1:
+        PlayAnimation(21, false, true, 1.0f);
+        break;
+    case 2:
+        PlayAnimation(22, false, true, 1.0f);
+        break;
+    }
 }
 
 // 0xa38af0: sends each hand without +0xfb8 set (the second one first) to its state 258.
