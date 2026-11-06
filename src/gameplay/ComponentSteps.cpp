@@ -422,6 +422,24 @@ void MorphInstance::Slot21(void* list) {
         } while (it != end);
     }
 }
+// SkinnedMorphInstance (slot 21, 0xb3c4c0) adds its parts the same way; they sit 0x38 bytes later.
+struct SkinnedMorphInstance {
+    char padding_0[0x150];
+    uint64_t count;             // +0x150
+    MorphPart* parts;           // +0x158
+    void Slot21(void* list);
+};
+void SkinnedMorphInstance::Slot21(void* list) {
+    uint64_t n = count;
+    if (n) {
+        MorphPart* it = parts;
+        MorphPart* end = it + n;
+        do {
+            DrawListAdd(list, it, it->material->blended ? 2 : 1);
+            ++it;
+        } while (it != end);
+    }
+}
 
 // Axis comparisons read a pair of axes from the pad.
 struct AxisPair { float x, y; AxisPair(const AxisPair& o) : x(o.x), y(o.y) {} };
@@ -477,8 +495,13 @@ struct EmitterGroup {
     uint64_t count;             // +0xa0
     ComponentHandle** children; // +0xa8
     void Update();
+    void UpdateChildren();
 };
-void EmitterGroup::Update() {
+struct EmitterSequencer : EmitterGroup {
+    void Update();              // 0xb36340
+};
+// EmitterGroupGraphics and EmitterSequencerGraphics (slot 13) both pass their position to each child.
+__attribute__((always_inline)) inline void EmitterGroup::UpdateChildren() {
     uint32_t n = static_cast<uint32_t>(count);
     if (n) {
         uint64_t i = 0;
@@ -494,6 +517,8 @@ void EmitterGroup::Update() {
         } while (i != n);
     }
 }
+void EmitterGroup::Update() { UpdateChildren(); }
+void EmitterSequencer::Update() { UpdateChildren(); }
 
 }  // namespace Onyx
 

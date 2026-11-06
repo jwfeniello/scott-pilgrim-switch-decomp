@@ -1574,3 +1574,19 @@ namespace EE {
 struct BatchTexture { char padding_8[8]; AutoInline<PlainCounted<246896643, 1>> member_10; AutoInline<PlainCounted<246896642, 3>> member_18; AutoInline<PlainCounted<246896641, 3>> member_20; virtual void Key(); virtual ~BatchTexture(); };
 BatchTexture::~BatchTexture() {  }
 }
+// A buffer that frees its data and then clears its 32-bit size (the pointer itself is left as it was).
+template<unsigned long Key> struct PlainSizedBuffer {
+    void* data;
+    uint32_t size;
+    __attribute__((always_inline)) void Destroy() { if (data) FreeObject(data); size = 0; }
+};
+namespace Onyx { namespace Fire { 
+struct Base73af70 { virtual ~Base73af70(); char padding[72]; };
+struct FireFontDescriptor : Base73af70 { PlainSizedBuffer<121304833> member_50; virtual void Key(); ~FireFontDescriptor(); };
+FireFontDescriptor::~FireFontDescriptor() { member_50.Destroy(); }
+}}
+namespace SPTG { 
+struct Base7b72a0 { virtual ~Base7b72a0(); char padding[96]; };
+struct PlayfieldCollisionLevelSectionSolver : Base7b72a0 { AutoInline<PlainPointerMember<129444353>> member_68; char padding_70[48]; AutoInline<PlainPointerMember<129444353>> member_a0; virtual void Key(); ~PlayfieldCollisionLevelSectionSolver(); };
+PlayfieldCollisionLevelSectionSolver::~PlayfieldCollisionLevelSectionSolver() {  }
+}

@@ -206,6 +206,55 @@ int Boss::State96(int event) {
     }
 }
 
+// Slot 98 (0xa19230): stunned. Each update counts the time in the state, and animation 29 becomes 12 once
+// done. With +0xd08 up to +0xcb4 the boss stops, clears +0xd08 and goes to state 254; otherwise after half
+// a second, once the animation is done, it stops, raises +0xd25 and goes to state 244. Entering stops it,
+// raises +0x813 and action mode 1 and plays animation 12; exit clears both.
+// Not yet matched: in exit the original sets the result register before the two stores and this build
+// after them. Returning from each case, the owner assumption, or swapping the stores doesn't move it.
+int Boss::State98(int event) {
+    int result = kStateHandled;
+    switch (event) {
+    case kStateUpdate: {
+        stateTime += Move_FrameDelta;
+        if (animation == 29 && AnimationDone()) PlayAnimation(12, 1, 0, 1.0f);
+        if (static_cast<uint32_t>(valueD08) >= limitCb4) {
+            motion = onyx::Vector3::Zero();
+            motionTarget = onyx::Vector3::Zero();
+            valueD08 = 0;
+            states.Transition(State254Ptr());
+            return kStateParentTookOver;
+        }
+        if (stateTime > 0.5f && AnimationDone()) {
+            motion = onyx::Vector3::Zero();
+            motionTarget = onyx::Vector3::Zero();
+            flagD25 = 1;
+            states.Transition(State244Ptr());
+            return kStateParentTookOver;
+        }
+        break;
+    }
+    case kStateEnter:
+        motion = onyx::Vector3::Zero();
+        motionTarget = onyx::Vector3::Zero();
+        flag813 = 1;
+        actionMode = 1;
+        PlayAnimation(12, 1, 0, 1.0f);
+        stateTime = 0.0f;
+        break;
+    case kStateExit:
+        flag813 = 0;
+        actionMode = 0;
+        break;
+    case kStateEvent3:
+        break;
+    default:
+        result = kStateUnhandled;
+        break;
+    }
+    return result;
+}
+
 // Slot 116 (0xa1a000, shared by Todd, TagTeamMember, the robot's parts and the
 // other bosses that don't replace it): on entry, after Enemy's state, runs slot
 // 240 unless +0xd28 is set, and raises +0x3ba until exit. Without +0xcd1 it goes
