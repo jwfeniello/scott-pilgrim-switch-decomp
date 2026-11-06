@@ -1550,7 +1550,9 @@ void EnemyPaparazzi::Approach() {
 // and 240 when the target's slot 83 holds, else 234 and 236.
 // Not yet matched, like EnemyNormal's: the original branches on slot 83 before the
 // random generator's lock is released, with the release copied into both arms and
-// no null test of the generator.
+// no null test of the generator. A draw that locks and releases directly (no null
+// test) hoists the lock, the draw and the count's decrement above the branch as
+// the original does, but then the release is hoisted too (tried Nov 6).
 void EnemyHanzo::Approach() {
     if (static_cast<BaseCharacter*>(target->object)->Slot83()) {
         switch (RandomRange(0, 1)) {
