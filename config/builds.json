@@ -2516,7 +2516,8 @@
             "Accessor_Unlock": "0xfa4960",
             "_Unwind_Resume": "0xfa4920",
             "__clang_call_terminate": "0x6768b8"
-          }
+          },
+          "got_bindings": {}
         }
       ]
     },
@@ -2744,7 +2745,8 @@
             "Accessor_Unlock": "0xfa4960",
             "_Unwind_Resume": "0xfa4920",
             "__clang_call_terminate": "0x6768b8"
-          }
+          },
+          "got_bindings": {}
         }
       ]
     },
@@ -3542,7 +3544,8 @@
             "Accessor_Unlock": "0xfa4960",
             "_Unwind_Resume": "0xfa4920",
             "__clang_call_terminate": "0x6768b8"
-          }
+          },
+          "got_bindings": {}
         }
       ]
     },
@@ -3694,7 +3697,8 @@
             "Accessor_Unlock": "0xfa4960",
             "_Unwind_Resume": "0xfa4920",
             "__clang_call_terminate": "0x6768b8"
-          }
+          },
+          "got_bindings": {}
         }
       ]
     },
@@ -428062,6 +428066,19 @@
       ],
       "functions": [
         {
+          "address": "0x8a0340",
+          "size": 220,
+          "symbol": "_ZN10HudPoolAbi4PoolILj72EED1Ev",
+          "target_sha256": "d36679855889d670215b64e7ee98d056c7b4dfa122b38b9288ac50659ee92b9b",
+          "bindings": {
+            "_ZTVN10HudPoolAbi4PoolILj72EEE": "0x1861d48",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
           "address": "0x8a0420",
           "size": 220,
           "symbol": "_ZN10HudPoolAbi4PoolILj72EED0Ev",
@@ -428071,6 +428088,19 @@
             "Accessor_Allocators": "0x1926bd8",
             "Accessor_AllocatorIndex": "0xa82b30",
             "_ZdlPv": "0xfa3b40",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x8a0d70",
+          "size": 220,
+          "symbol": "_ZN10HudPoolAbi4PoolILj72EED1Ev",
+          "target_sha256": "4bc39a89f44f13473266f28f7a5cfcd2c1aa2aacf07d92a91fc2967bc5ab1bf5",
+          "bindings": {
+            "_ZTVN10HudPoolAbi4PoolILj72EEE": "0x1861df8",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30",
             "__clang_call_terminate": "0x6768b8"
           },
           "got_bindings": {}
@@ -428090,6 +428120,19 @@
           "got_bindings": {}
         },
         {
+          "address": "0x8a14e0",
+          "size": 220,
+          "symbol": "_ZN10HudPoolAbi4PoolILj72EED1Ev",
+          "target_sha256": "4ff0d603fdb37d9cf18ed151f5b0469d4e5c5d66b23d38d66394c513a06ac9f5",
+          "bindings": {
+            "_ZTVN10HudPoolAbi4PoolILj72EEE": "0x1861e98",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
           "address": "0x8a15c0",
           "size": 220,
           "symbol": "_ZN10HudPoolAbi4PoolILj72EED0Ev",
@@ -428099,6 +428142,19 @@
             "Accessor_Allocators": "0x1926bd8",
             "Accessor_AllocatorIndex": "0xa82b30",
             "_ZdlPv": "0xfa3b40",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x8a1b30",
+          "size": 220,
+          "symbol": "_ZN10HudPoolAbi4PoolILj72EED1Ev",
+          "target_sha256": "c8ea9ae86f44d232c217c55220d4ede10fa7e0b155422d747425252b2e0c9a7d",
+          "bindings": {
+            "_ZTVN10HudPoolAbi4PoolILj72EEE": "0x1861f38",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30",
             "__clang_call_terminate": "0x6768b8"
           },
           "got_bindings": {}
@@ -428118,6 +428174,19 @@
           "got_bindings": {}
         },
         {
+          "address": "0x8a1f20",
+          "size": 220,
+          "symbol": "_ZN10HudPoolAbi4PoolILj72EED1Ev",
+          "target_sha256": "1ba6f281861a3b033ccd0eb05cabb772eafd67d543b8a114333f8f6444c609a1",
+          "bindings": {
+            "_ZTVN10HudPoolAbi4PoolILj72EEE": "0x1861fd8",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
           "address": "0x8a2000",
           "size": 220,
           "symbol": "_ZN10HudPoolAbi4PoolILj72EED0Ev",
@@ -428127,6 +428196,19 @@
             "Accessor_Allocators": "0x1926bd8",
             "Accessor_AllocatorIndex": "0xa82b30",
             "_ZdlPv": "0xfa3b40",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x8a2530",
+          "size": 220,
+          "symbol": "_ZN10HudPoolAbi4PoolILj72EED1Ev",
+          "target_sha256": "9b14f0c3d198eeae7daf4f5d217e1dda13801019ec32b2c4d37545f2d18b3c89",
+          "bindings": {
+            "_ZTVN10HudPoolAbi4PoolILj72EEE": "0x1862078",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30",
             "__clang_call_terminate": "0x6768b8"
           },
           "got_bindings": {}
@@ -428146,6 +428228,19 @@
           "got_bindings": {}
         },
         {
+          "address": "0x8a2ea0",
+          "size": 220,
+          "symbol": "_ZN10HudPoolAbi4PoolILj72EED1Ev",
+          "target_sha256": "7f1a6ed92e95c3803231e347f4c5a38a41a6f70038a381cf6e9d854bc623580a",
+          "bindings": {
+            "_ZTVN10HudPoolAbi4PoolILj72EEE": "0x1862118",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
           "address": "0x8a2f80",
           "size": 220,
           "symbol": "_ZN10HudPoolAbi4PoolILj72EED0Ev",
@@ -428155,6 +428250,19 @@
             "Accessor_Allocators": "0x1926bd8",
             "Accessor_AllocatorIndex": "0xa82b30",
             "_ZdlPv": "0xfa3b40",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x8a3810",
+          "size": 220,
+          "symbol": "_ZN10HudPoolAbi4PoolILj72EED1Ev",
+          "target_sha256": "7ca98f0a0d5b7920f6f76879383661954a18532eeb1654f465d5c7e2532d69dd",
+          "bindings": {
+            "_ZTVN10HudPoolAbi4PoolILj72EEE": "0x18621b8",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30",
             "__clang_call_terminate": "0x6768b8"
           },
           "got_bindings": {}
@@ -428174,6 +428282,46 @@
           "got_bindings": {}
         },
         {
+          "address": "0x8a42e0",
+          "size": 212,
+          "symbol": "_ZN10HudPoolAbi4PoolILj80EED1Ev",
+          "target_sha256": "e2f9a774abc7b9360939297b059f7d97b7c27c846d04e3105f2f06e06b75a668",
+          "bindings": {
+            "_ZTVN10HudPoolAbi4PoolILj80EEE": "0x1862258",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x8a43c0",
+          "size": 212,
+          "symbol": "_ZN10HudPoolAbi4PoolILj80EED0Ev",
+          "target_sha256": "a7338b6e6921a740c63a84f6abc74dd058a48c34e39d8ca651b56fa4767704d9",
+          "bindings": {
+            "_ZTVN10HudPoolAbi4PoolILj80EEE": "0x1862258",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30",
+            "_ZdlPv": "0xfa3b40",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x8a4c60",
+          "size": 220,
+          "symbol": "_ZN10HudPoolAbi4PoolILj72EED1Ev",
+          "target_sha256": "ac57c8dd1ff3dfcc1858a28df13f19731ba8b7532696ae62fb58191d50cedeec",
+          "bindings": {
+            "_ZTVN10HudPoolAbi4PoolILj72EEE": "0x18622f8",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
           "address": "0x8a4d40",
           "size": 220,
           "symbol": "_ZN10HudPoolAbi4PoolILj72EED0Ev",
@@ -428183,6 +428331,19 @@
             "Accessor_Allocators": "0x1926bd8",
             "Accessor_AllocatorIndex": "0xa82b30",
             "_ZdlPv": "0xfa3b40",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x8a5050",
+          "size": 220,
+          "symbol": "_ZN10HudPoolAbi4PoolILj72EED1Ev",
+          "target_sha256": "b3ae965f98281712cd640bfa7bc817627350050b2d40c8f16ee75a9eeae8a69f",
+          "bindings": {
+            "_ZTVN10HudPoolAbi4PoolILj72EEE": "0x1862398",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30",
             "__clang_call_terminate": "0x6768b8"
           },
           "got_bindings": {}
@@ -428202,6 +428363,19 @@
           "got_bindings": {}
         },
         {
+          "address": "0x8a5630",
+          "size": 220,
+          "symbol": "_ZN10HudPoolAbi4PoolILj72EED1Ev",
+          "target_sha256": "645abdda7c8bedcd6f789319d0323499f7f0c5b6a0a9744f63137d93476dd98f",
+          "bindings": {
+            "_ZTVN10HudPoolAbi4PoolILj72EEE": "0x1862438",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
           "address": "0x8a5710",
           "size": 220,
           "symbol": "_ZN10HudPoolAbi4PoolILj72EED0Ev",
@@ -428211,6 +428385,19 @@
             "Accessor_Allocators": "0x1926bd8",
             "Accessor_AllocatorIndex": "0xa82b30",
             "_ZdlPv": "0xfa3b40",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x8a5cb0",
+          "size": 220,
+          "symbol": "_ZN10HudPoolAbi4PoolILj72EED1Ev",
+          "target_sha256": "3ca721f6a91dec1a3be96cb59b43df303e28365013708f65415403c6b8910c47",
+          "bindings": {
+            "_ZTVN10HudPoolAbi4PoolILj72EEE": "0x18624d8",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30",
             "__clang_call_terminate": "0x6768b8"
           },
           "got_bindings": {}
@@ -428230,6 +428417,19 @@
           "got_bindings": {}
         },
         {
+          "address": "0x8a6330",
+          "size": 220,
+          "symbol": "_ZN10HudPoolAbi4PoolILj72EED1Ev",
+          "target_sha256": "c9bb232fefbae99d93e2e44606b0f50da1383dc2d32477467c61428bbce3b9f0",
+          "bindings": {
+            "_ZTVN10HudPoolAbi4PoolILj72EEE": "0x1862578",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
           "address": "0x8a6410",
           "size": 220,
           "symbol": "_ZN10HudPoolAbi4PoolILj72EED0Ev",
@@ -428239,6 +428439,19 @@
             "Accessor_Allocators": "0x1926bd8",
             "Accessor_AllocatorIndex": "0xa82b30",
             "_ZdlPv": "0xfa3b40",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x8a69b0",
+          "size": 220,
+          "symbol": "_ZN10HudPoolAbi4PoolILj72EED1Ev",
+          "target_sha256": "bd9b02b2c456724d99bd8cd51eea459cb548277504280903a764913b53c3506f",
+          "bindings": {
+            "_ZTVN10HudPoolAbi4PoolILj72EEE": "0x1862618",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30",
             "__clang_call_terminate": "0x6768b8"
           },
           "got_bindings": {}
@@ -428258,6 +428471,19 @@
           "got_bindings": {}
         },
         {
+          "address": "0x8a7030",
+          "size": 220,
+          "symbol": "_ZN10HudPoolAbi4PoolILj72EED1Ev",
+          "target_sha256": "5d883f44cce0ec82096e8c22ac5ef5fc79c710786e02ec11bd2e0569c5df777a",
+          "bindings": {
+            "_ZTVN10HudPoolAbi4PoolILj72EEE": "0x18626b8",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
           "address": "0x8a7110",
           "size": 220,
           "symbol": "_ZN10HudPoolAbi4PoolILj72EED0Ev",
@@ -428267,6 +428493,19 @@
             "Accessor_Allocators": "0x1926bd8",
             "Accessor_AllocatorIndex": "0xa82b30",
             "_ZdlPv": "0xfa3b40",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x8a7420",
+          "size": 220,
+          "symbol": "_ZN10HudPoolAbi4PoolILj72EED1Ev",
+          "target_sha256": "abecea29e536bb2eda3ef950ad5b83acb73a0a65ceb6a2ea8749e0d5c13dbbde",
+          "bindings": {
+            "_ZTVN10HudPoolAbi4PoolILj72EEE": "0x1862758",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30",
             "__clang_call_terminate": "0x6768b8"
           },
           "got_bindings": {}
@@ -428286,6 +428525,19 @@
           "got_bindings": {}
         },
         {
+          "address": "0x8a76d0",
+          "size": 220,
+          "symbol": "_ZN10HudPoolAbi4PoolILj72EED1Ev",
+          "target_sha256": "a0ee3352e44d167d5c74e1c9558a382e804db073a2c41ffa88a814fa5b16bb8d",
+          "bindings": {
+            "_ZTVN10HudPoolAbi4PoolILj72EEE": "0x18627f8",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
           "address": "0x8a77b0",
           "size": 220,
           "symbol": "_ZN10HudPoolAbi4PoolILj72EED0Ev",
@@ -428295,6 +428547,19 @@
             "Accessor_Allocators": "0x1926bd8",
             "Accessor_AllocatorIndex": "0xa82b30",
             "_ZdlPv": "0xfa3b40",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x8a7980",
+          "size": 220,
+          "symbol": "_ZN10HudPoolAbi4PoolILj72EED1Ev",
+          "target_sha256": "ad3685a532b6a3c70e1e308b75018c8f06bad6a4ff9b0e76248ce8edb57b0f69",
+          "bindings": {
+            "_ZTVN10HudPoolAbi4PoolILj72EEE": "0x1862850",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30",
             "__clang_call_terminate": "0x6768b8"
           },
           "got_bindings": {}
@@ -428314,6 +428579,19 @@
           "got_bindings": {}
         },
         {
+          "address": "0x8a7c30",
+          "size": 220,
+          "symbol": "_ZN10HudPoolAbi4PoolILj72EED1Ev",
+          "target_sha256": "e3bacbca7081ab1edba3848fbbbeec4ddb3fab6559bc461cf2e7a6c53e931be0",
+          "bindings": {
+            "_ZTVN10HudPoolAbi4PoolILj72EEE": "0x18628a8",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
           "address": "0x8a7d10",
           "size": 220,
           "symbol": "_ZN10HudPoolAbi4PoolILj72EED0Ev",
@@ -428323,6 +428601,19 @@
             "Accessor_Allocators": "0x1926bd8",
             "Accessor_AllocatorIndex": "0xa82b30",
             "_ZdlPv": "0xfa3b40",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x8a8020",
+          "size": 220,
+          "symbol": "_ZN10HudPoolAbi4PoolILj72EED1Ev",
+          "target_sha256": "50fe32b39fe172be1ad58ccce710b728d6d0568caf53ed1539b654a0abb1268b",
+          "bindings": {
+            "_ZTVN10HudPoolAbi4PoolILj72EEE": "0x1862900",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30",
             "__clang_call_terminate": "0x6768b8"
           },
           "got_bindings": {}
@@ -428342,6 +428633,19 @@
           "got_bindings": {}
         },
         {
+          "address": "0x8a8410",
+          "size": 220,
+          "symbol": "_ZN10HudPoolAbi4PoolILj72EED1Ev",
+          "target_sha256": "ac08f88bd223d09c7249060890b41e632453290691cd9fb3051d335ac8462513",
+          "bindings": {
+            "_ZTVN10HudPoolAbi4PoolILj72EEE": "0x18629a0",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
           "address": "0x8a84f0",
           "size": 220,
           "symbol": "_ZN10HudPoolAbi4PoolILj72EED0Ev",
@@ -428351,6 +428655,19 @@
             "Accessor_Allocators": "0x1926bd8",
             "Accessor_AllocatorIndex": "0xa82b30",
             "_ZdlPv": "0xfa3b40",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x8a8800",
+          "size": 220,
+          "symbol": "_ZN10HudPoolAbi4PoolILj72EED1Ev",
+          "target_sha256": "ef1a7acf332c16c51f3e287b4a4da8c0c7875f213209a3ae47717521020f86c6",
+          "bindings": {
+            "_ZTVN10HudPoolAbi4PoolILj72EEE": "0x1862a40",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30",
             "__clang_call_terminate": "0x6768b8"
           },
           "got_bindings": {}
@@ -428370,6 +428687,19 @@
           "got_bindings": {}
         },
         {
+          "address": "0x8a8bf0",
+          "size": 220,
+          "symbol": "_ZN10HudPoolAbi4PoolILj72EED1Ev",
+          "target_sha256": "a66f142d9fece6e7cc654fbf6e1cd76d3af6ce6d5728fec5ab2ac1701ddf4d58",
+          "bindings": {
+            "_ZTVN10HudPoolAbi4PoolILj72EEE": "0x1862ae0",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
           "address": "0x8a8cd0",
           "size": 220,
           "symbol": "_ZN10HudPoolAbi4PoolILj72EED0Ev",
@@ -428379,6 +428709,19 @@
             "Accessor_Allocators": "0x1926bd8",
             "Accessor_AllocatorIndex": "0xa82b30",
             "_ZdlPv": "0xfa3b40",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x8a8fe0",
+          "size": 220,
+          "symbol": "_ZN10HudPoolAbi4PoolILj72EED1Ev",
+          "target_sha256": "9af8d9615a3aea0e69e2b669d2f3d9d3762276324930d178a9b574737633999d",
+          "bindings": {
+            "_ZTVN10HudPoolAbi4PoolILj72EEE": "0x1862b80",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30",
             "__clang_call_terminate": "0x6768b8"
           },
           "got_bindings": {}
@@ -428398,6 +428741,19 @@
           "got_bindings": {}
         },
         {
+          "address": "0x8a93d0",
+          "size": 220,
+          "symbol": "_ZN10HudPoolAbi4PoolILj72EED1Ev",
+          "target_sha256": "b042b3db27110b5ed7e29de3bd199dc268e861768d64073fbf619d1ec52c1816",
+          "bindings": {
+            "_ZTVN10HudPoolAbi4PoolILj72EEE": "0x1862c20",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
           "address": "0x8a94b0",
           "size": 220,
           "symbol": "_ZN10HudPoolAbi4PoolILj72EED0Ev",
@@ -428407,6 +428763,19 @@
             "Accessor_Allocators": "0x1926bd8",
             "Accessor_AllocatorIndex": "0xa82b30",
             "_ZdlPv": "0xfa3b40",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x8a9b40",
+          "size": 220,
+          "symbol": "_ZN10HudPoolAbi4PoolILj72EED1Ev",
+          "target_sha256": "29b9110260f94b0164074bdca0ea7ea768fadc9df8feff9da0fd9d5a1990a322",
+          "bindings": {
+            "_ZTVN10HudPoolAbi4PoolILj72EEE": "0x1862cc0",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30",
             "__clang_call_terminate": "0x6768b8"
           },
           "got_bindings": {}
@@ -428426,6 +428795,19 @@
           "got_bindings": {}
         },
         {
+          "address": "0x8aa2b0",
+          "size": 220,
+          "symbol": "_ZN10HudPoolAbi4PoolILj72EED1Ev",
+          "target_sha256": "f333fcaefe72dde674aa809aec7cef98f6c4420911f8d4704e1c439c11c34c2f",
+          "bindings": {
+            "_ZTVN10HudPoolAbi4PoolILj72EEE": "0x1862d60",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
           "address": "0x8aa390",
           "size": 220,
           "symbol": "_ZN10HudPoolAbi4PoolILj72EED0Ev",
@@ -428435,6 +428817,19 @@
             "Accessor_Allocators": "0x1926bd8",
             "Accessor_AllocatorIndex": "0xa82b30",
             "_ZdlPv": "0xfa3b40",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x8aa870",
+          "size": 220,
+          "symbol": "_ZN10HudPoolAbi4PoolILj72EED1Ev",
+          "target_sha256": "53a931efc6bf6cab0788c05f1fa78d59ccaf3d2fc567e16532975cf2c36fe3d4",
+          "bindings": {
+            "_ZTVN10HudPoolAbi4PoolILj72EEE": "0x1862e00",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30",
             "__clang_call_terminate": "0x6768b8"
           },
           "got_bindings": {}
@@ -428454,6 +428849,19 @@
           "got_bindings": {}
         },
         {
+          "address": "0x8aac40",
+          "size": 220,
+          "symbol": "_ZN10HudPoolAbi4PoolILj72EED1Ev",
+          "target_sha256": "cce3b9c5fc99eb02bac90ecc0224512f4cd0ff82fd74e9e1b505b097d4188f16",
+          "bindings": {
+            "_ZTVN10HudPoolAbi4PoolILj72EEE": "0x1862ea0",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
           "address": "0x8aad20",
           "size": 220,
           "symbol": "_ZN10HudPoolAbi4PoolILj72EED0Ev",
@@ -428463,6 +428871,19 @@
             "Accessor_Allocators": "0x1926bd8",
             "Accessor_AllocatorIndex": "0xa82b30",
             "_ZdlPv": "0xfa3b40",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x8ab3c0",
+          "size": 220,
+          "symbol": "_ZN10HudPoolAbi4PoolILj72EED1Ev",
+          "target_sha256": "48c795e3826dc9e1ef29b6e02072bac6d12a54f422f1379094c39c5dd1096b98",
+          "bindings": {
+            "_ZTVN10HudPoolAbi4PoolILj72EEE": "0x1862f40",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30",
             "__clang_call_terminate": "0x6768b8"
           },
           "got_bindings": {}
@@ -428482,6 +428903,19 @@
           "got_bindings": {}
         },
         {
+          "address": "0x8ab790",
+          "size": 220,
+          "symbol": "_ZN10HudPoolAbi4PoolILj72EED1Ev",
+          "target_sha256": "95c1303a29744650527f85a4c8bdb6cf2891733dd47b5c79c7657dc0bb810dee",
+          "bindings": {
+            "_ZTVN10HudPoolAbi4PoolILj72EEE": "0x1862fe0",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
           "address": "0x8ab870",
           "size": 220,
           "symbol": "_ZN10HudPoolAbi4PoolILj72EED0Ev",
@@ -428491,6 +428925,19 @@
             "Accessor_Allocators": "0x1926bd8",
             "Accessor_AllocatorIndex": "0xa82b30",
             "_ZdlPv": "0xfa3b40",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x8abd50",
+          "size": 220,
+          "symbol": "_ZN10HudPoolAbi4PoolILj72EED1Ev",
+          "target_sha256": "3932abc3ecb1bb4bf3bdac1b01d9b2eef59b167e77a6445033463e380c38d476",
+          "bindings": {
+            "_ZTVN10HudPoolAbi4PoolILj72EEE": "0x1863080",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30",
             "__clang_call_terminate": "0x6768b8"
           },
           "got_bindings": {}
@@ -428510,12 +428957,12 @@
           "got_bindings": {}
         },
         {
-          "address": "0x8a0340",
-          "size": 220,
-          "symbol": "_ZN10HudPoolAbi4PoolILj72EED1Ev",
-          "target_sha256": "d36679855889d670215b64e7ee98d056c7b4dfa122b38b9288ac50659ee92b9b",
+          "address": "0xbee200",
+          "size": 212,
+          "symbol": "_ZN10HudPoolAbi6PoolAtILj40ELj40EED1Ev",
+          "target_sha256": "ac0270bc7091126701b074faa26f3a1ad408f96e3fe81610d7ac12ac4cfa4f09",
           "bindings": {
-            "_ZTVN10HudPoolAbi4PoolILj72EEE": "0x1861d48",
+            "_ZTVN10HudPoolAbi6PoolAtILj40ELj40EEE": "0x18b4de0",
             "Accessor_Allocators": "0x1926bd8",
             "Accessor_AllocatorIndex": "0xa82b30",
             "__clang_call_terminate": "0x6768b8"
@@ -428523,12 +428970,26 @@
           "got_bindings": {}
         },
         {
-          "address": "0x8a0d70",
-          "size": 220,
-          "symbol": "_ZN10HudPoolAbi4PoolILj72EED1Ev",
-          "target_sha256": "4bc39a89f44f13473266f28f7a5cfcd2c1aa2aacf07d92a91fc2967bc5ab1bf5",
+          "address": "0xbee2e0",
+          "size": 212,
+          "symbol": "_ZN10HudPoolAbi6PoolAtILj40ELj40EED0Ev",
+          "target_sha256": "aa42d83b170c87d1a05987656eb54c26518cada9d17549f95876bd67e0c2aaff",
           "bindings": {
-            "_ZTVN10HudPoolAbi4PoolILj72EEE": "0x1861df8",
+            "_ZTVN10HudPoolAbi6PoolAtILj40ELj40EEE": "0x18b4de0",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30",
+            "_ZdlPv": "0xfa3b40",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xbee630",
+          "size": 212,
+          "symbol": "_ZN10HudPoolAbi6PoolAtILj24ELj32EED1Ev",
+          "target_sha256": "613c2fb2db89068d3edf881d939492abc8598ed3b3ddd892f05e39f806c023f5",
+          "bindings": {
+            "_ZTVN10HudPoolAbi6PoolAtILj24ELj32EEE": "0x18b4e60",
             "Accessor_Allocators": "0x1926bd8",
             "Accessor_AllocatorIndex": "0xa82b30",
             "__clang_call_terminate": "0x6768b8"
@@ -428536,391 +428997,15 @@
           "got_bindings": {}
         },
         {
-          "address": "0x8a14e0",
-          "size": 220,
-          "symbol": "_ZN10HudPoolAbi4PoolILj72EED1Ev",
-          "target_sha256": "4ff0d603fdb37d9cf18ed151f5b0469d4e5c5d66b23d38d66394c513a06ac9f5",
+          "address": "0xbee710",
+          "size": 212,
+          "symbol": "_ZN10HudPoolAbi6PoolAtILj24ELj32EED0Ev",
+          "target_sha256": "7274f7603b412d6c3efe7513f43488a4f29d0ee86c88d47942564d1d156727dc",
           "bindings": {
-            "_ZTVN10HudPoolAbi4PoolILj72EEE": "0x1861e98",
+            "_ZTVN10HudPoolAbi6PoolAtILj24ELj32EEE": "0x18b4e60",
             "Accessor_Allocators": "0x1926bd8",
             "Accessor_AllocatorIndex": "0xa82b30",
-            "__clang_call_terminate": "0x6768b8"
-          },
-          "got_bindings": {}
-        },
-        {
-          "address": "0x8a1b30",
-          "size": 220,
-          "symbol": "_ZN10HudPoolAbi4PoolILj72EED1Ev",
-          "target_sha256": "c8ea9ae86f44d232c217c55220d4ede10fa7e0b155422d747425252b2e0c9a7d",
-          "bindings": {
-            "_ZTVN10HudPoolAbi4PoolILj72EEE": "0x1861f38",
-            "Accessor_Allocators": "0x1926bd8",
-            "Accessor_AllocatorIndex": "0xa82b30",
-            "__clang_call_terminate": "0x6768b8"
-          },
-          "got_bindings": {}
-        },
-        {
-          "address": "0x8a1f20",
-          "size": 220,
-          "symbol": "_ZN10HudPoolAbi4PoolILj72EED1Ev",
-          "target_sha256": "1ba6f281861a3b033ccd0eb05cabb772eafd67d543b8a114333f8f6444c609a1",
-          "bindings": {
-            "_ZTVN10HudPoolAbi4PoolILj72EEE": "0x1861fd8",
-            "Accessor_Allocators": "0x1926bd8",
-            "Accessor_AllocatorIndex": "0xa82b30",
-            "__clang_call_terminate": "0x6768b8"
-          },
-          "got_bindings": {}
-        },
-        {
-          "address": "0x8a2530",
-          "size": 220,
-          "symbol": "_ZN10HudPoolAbi4PoolILj72EED1Ev",
-          "target_sha256": "9b14f0c3d198eeae7daf4f5d217e1dda13801019ec32b2c4d37545f2d18b3c89",
-          "bindings": {
-            "_ZTVN10HudPoolAbi4PoolILj72EEE": "0x1862078",
-            "Accessor_Allocators": "0x1926bd8",
-            "Accessor_AllocatorIndex": "0xa82b30",
-            "__clang_call_terminate": "0x6768b8"
-          },
-          "got_bindings": {}
-        },
-        {
-          "address": "0x8a2ea0",
-          "size": 220,
-          "symbol": "_ZN10HudPoolAbi4PoolILj72EED1Ev",
-          "target_sha256": "7f1a6ed92e95c3803231e347f4c5a38a41a6f70038a381cf6e9d854bc623580a",
-          "bindings": {
-            "_ZTVN10HudPoolAbi4PoolILj72EEE": "0x1862118",
-            "Accessor_Allocators": "0x1926bd8",
-            "Accessor_AllocatorIndex": "0xa82b30",
-            "__clang_call_terminate": "0x6768b8"
-          },
-          "got_bindings": {}
-        },
-        {
-          "address": "0x8a3810",
-          "size": 220,
-          "symbol": "_ZN10HudPoolAbi4PoolILj72EED1Ev",
-          "target_sha256": "7ca98f0a0d5b7920f6f76879383661954a18532eeb1654f465d5c7e2532d69dd",
-          "bindings": {
-            "_ZTVN10HudPoolAbi4PoolILj72EEE": "0x18621b8",
-            "Accessor_Allocators": "0x1926bd8",
-            "Accessor_AllocatorIndex": "0xa82b30",
-            "__clang_call_terminate": "0x6768b8"
-          },
-          "got_bindings": {}
-        },
-        {
-          "address": "0x8a4c60",
-          "size": 220,
-          "symbol": "_ZN10HudPoolAbi4PoolILj72EED1Ev",
-          "target_sha256": "ac57c8dd1ff3dfcc1858a28df13f19731ba8b7532696ae62fb58191d50cedeec",
-          "bindings": {
-            "_ZTVN10HudPoolAbi4PoolILj72EEE": "0x18622f8",
-            "Accessor_Allocators": "0x1926bd8",
-            "Accessor_AllocatorIndex": "0xa82b30",
-            "__clang_call_terminate": "0x6768b8"
-          },
-          "got_bindings": {}
-        },
-        {
-          "address": "0x8a5050",
-          "size": 220,
-          "symbol": "_ZN10HudPoolAbi4PoolILj72EED1Ev",
-          "target_sha256": "b3ae965f98281712cd640bfa7bc817627350050b2d40c8f16ee75a9eeae8a69f",
-          "bindings": {
-            "_ZTVN10HudPoolAbi4PoolILj72EEE": "0x1862398",
-            "Accessor_Allocators": "0x1926bd8",
-            "Accessor_AllocatorIndex": "0xa82b30",
-            "__clang_call_terminate": "0x6768b8"
-          },
-          "got_bindings": {}
-        },
-        {
-          "address": "0x8a5630",
-          "size": 220,
-          "symbol": "_ZN10HudPoolAbi4PoolILj72EED1Ev",
-          "target_sha256": "645abdda7c8bedcd6f789319d0323499f7f0c5b6a0a9744f63137d93476dd98f",
-          "bindings": {
-            "_ZTVN10HudPoolAbi4PoolILj72EEE": "0x1862438",
-            "Accessor_Allocators": "0x1926bd8",
-            "Accessor_AllocatorIndex": "0xa82b30",
-            "__clang_call_terminate": "0x6768b8"
-          },
-          "got_bindings": {}
-        },
-        {
-          "address": "0x8a5cb0",
-          "size": 220,
-          "symbol": "_ZN10HudPoolAbi4PoolILj72EED1Ev",
-          "target_sha256": "3ca721f6a91dec1a3be96cb59b43df303e28365013708f65415403c6b8910c47",
-          "bindings": {
-            "_ZTVN10HudPoolAbi4PoolILj72EEE": "0x18624d8",
-            "Accessor_Allocators": "0x1926bd8",
-            "Accessor_AllocatorIndex": "0xa82b30",
-            "__clang_call_terminate": "0x6768b8"
-          },
-          "got_bindings": {}
-        },
-        {
-          "address": "0x8a6330",
-          "size": 220,
-          "symbol": "_ZN10HudPoolAbi4PoolILj72EED1Ev",
-          "target_sha256": "c9bb232fefbae99d93e2e44606b0f50da1383dc2d32477467c61428bbce3b9f0",
-          "bindings": {
-            "_ZTVN10HudPoolAbi4PoolILj72EEE": "0x1862578",
-            "Accessor_Allocators": "0x1926bd8",
-            "Accessor_AllocatorIndex": "0xa82b30",
-            "__clang_call_terminate": "0x6768b8"
-          },
-          "got_bindings": {}
-        },
-        {
-          "address": "0x8a69b0",
-          "size": 220,
-          "symbol": "_ZN10HudPoolAbi4PoolILj72EED1Ev",
-          "target_sha256": "bd9b02b2c456724d99bd8cd51eea459cb548277504280903a764913b53c3506f",
-          "bindings": {
-            "_ZTVN10HudPoolAbi4PoolILj72EEE": "0x1862618",
-            "Accessor_Allocators": "0x1926bd8",
-            "Accessor_AllocatorIndex": "0xa82b30",
-            "__clang_call_terminate": "0x6768b8"
-          },
-          "got_bindings": {}
-        },
-        {
-          "address": "0x8a7030",
-          "size": 220,
-          "symbol": "_ZN10HudPoolAbi4PoolILj72EED1Ev",
-          "target_sha256": "5d883f44cce0ec82096e8c22ac5ef5fc79c710786e02ec11bd2e0569c5df777a",
-          "bindings": {
-            "_ZTVN10HudPoolAbi4PoolILj72EEE": "0x18626b8",
-            "Accessor_Allocators": "0x1926bd8",
-            "Accessor_AllocatorIndex": "0xa82b30",
-            "__clang_call_terminate": "0x6768b8"
-          },
-          "got_bindings": {}
-        },
-        {
-          "address": "0x8a7420",
-          "size": 220,
-          "symbol": "_ZN10HudPoolAbi4PoolILj72EED1Ev",
-          "target_sha256": "abecea29e536bb2eda3ef950ad5b83acb73a0a65ceb6a2ea8749e0d5c13dbbde",
-          "bindings": {
-            "_ZTVN10HudPoolAbi4PoolILj72EEE": "0x1862758",
-            "Accessor_Allocators": "0x1926bd8",
-            "Accessor_AllocatorIndex": "0xa82b30",
-            "__clang_call_terminate": "0x6768b8"
-          },
-          "got_bindings": {}
-        },
-        {
-          "address": "0x8a76d0",
-          "size": 220,
-          "symbol": "_ZN10HudPoolAbi4PoolILj72EED1Ev",
-          "target_sha256": "a0ee3352e44d167d5c74e1c9558a382e804db073a2c41ffa88a814fa5b16bb8d",
-          "bindings": {
-            "_ZTVN10HudPoolAbi4PoolILj72EEE": "0x18627f8",
-            "Accessor_Allocators": "0x1926bd8",
-            "Accessor_AllocatorIndex": "0xa82b30",
-            "__clang_call_terminate": "0x6768b8"
-          },
-          "got_bindings": {}
-        },
-        {
-          "address": "0x8a7980",
-          "size": 220,
-          "symbol": "_ZN10HudPoolAbi4PoolILj72EED1Ev",
-          "target_sha256": "ad3685a532b6a3c70e1e308b75018c8f06bad6a4ff9b0e76248ce8edb57b0f69",
-          "bindings": {
-            "_ZTVN10HudPoolAbi4PoolILj72EEE": "0x1862850",
-            "Accessor_Allocators": "0x1926bd8",
-            "Accessor_AllocatorIndex": "0xa82b30",
-            "__clang_call_terminate": "0x6768b8"
-          },
-          "got_bindings": {}
-        },
-        {
-          "address": "0x8a7c30",
-          "size": 220,
-          "symbol": "_ZN10HudPoolAbi4PoolILj72EED1Ev",
-          "target_sha256": "e3bacbca7081ab1edba3848fbbbeec4ddb3fab6559bc461cf2e7a6c53e931be0",
-          "bindings": {
-            "_ZTVN10HudPoolAbi4PoolILj72EEE": "0x18628a8",
-            "Accessor_Allocators": "0x1926bd8",
-            "Accessor_AllocatorIndex": "0xa82b30",
-            "__clang_call_terminate": "0x6768b8"
-          },
-          "got_bindings": {}
-        },
-        {
-          "address": "0x8a8020",
-          "size": 220,
-          "symbol": "_ZN10HudPoolAbi4PoolILj72EED1Ev",
-          "target_sha256": "50fe32b39fe172be1ad58ccce710b728d6d0568caf53ed1539b654a0abb1268b",
-          "bindings": {
-            "_ZTVN10HudPoolAbi4PoolILj72EEE": "0x1862900",
-            "Accessor_Allocators": "0x1926bd8",
-            "Accessor_AllocatorIndex": "0xa82b30",
-            "__clang_call_terminate": "0x6768b8"
-          },
-          "got_bindings": {}
-        },
-        {
-          "address": "0x8a8410",
-          "size": 220,
-          "symbol": "_ZN10HudPoolAbi4PoolILj72EED1Ev",
-          "target_sha256": "ac08f88bd223d09c7249060890b41e632453290691cd9fb3051d335ac8462513",
-          "bindings": {
-            "_ZTVN10HudPoolAbi4PoolILj72EEE": "0x18629a0",
-            "Accessor_Allocators": "0x1926bd8",
-            "Accessor_AllocatorIndex": "0xa82b30",
-            "__clang_call_terminate": "0x6768b8"
-          },
-          "got_bindings": {}
-        },
-        {
-          "address": "0x8a8800",
-          "size": 220,
-          "symbol": "_ZN10HudPoolAbi4PoolILj72EED1Ev",
-          "target_sha256": "ef1a7acf332c16c51f3e287b4a4da8c0c7875f213209a3ae47717521020f86c6",
-          "bindings": {
-            "_ZTVN10HudPoolAbi4PoolILj72EEE": "0x1862a40",
-            "Accessor_Allocators": "0x1926bd8",
-            "Accessor_AllocatorIndex": "0xa82b30",
-            "__clang_call_terminate": "0x6768b8"
-          },
-          "got_bindings": {}
-        },
-        {
-          "address": "0x8a8bf0",
-          "size": 220,
-          "symbol": "_ZN10HudPoolAbi4PoolILj72EED1Ev",
-          "target_sha256": "a66f142d9fece6e7cc654fbf6e1cd76d3af6ce6d5728fec5ab2ac1701ddf4d58",
-          "bindings": {
-            "_ZTVN10HudPoolAbi4PoolILj72EEE": "0x1862ae0",
-            "Accessor_Allocators": "0x1926bd8",
-            "Accessor_AllocatorIndex": "0xa82b30",
-            "__clang_call_terminate": "0x6768b8"
-          },
-          "got_bindings": {}
-        },
-        {
-          "address": "0x8a8fe0",
-          "size": 220,
-          "symbol": "_ZN10HudPoolAbi4PoolILj72EED1Ev",
-          "target_sha256": "9af8d9615a3aea0e69e2b669d2f3d9d3762276324930d178a9b574737633999d",
-          "bindings": {
-            "_ZTVN10HudPoolAbi4PoolILj72EEE": "0x1862b80",
-            "Accessor_Allocators": "0x1926bd8",
-            "Accessor_AllocatorIndex": "0xa82b30",
-            "__clang_call_terminate": "0x6768b8"
-          },
-          "got_bindings": {}
-        },
-        {
-          "address": "0x8a93d0",
-          "size": 220,
-          "symbol": "_ZN10HudPoolAbi4PoolILj72EED1Ev",
-          "target_sha256": "b042b3db27110b5ed7e29de3bd199dc268e861768d64073fbf619d1ec52c1816",
-          "bindings": {
-            "_ZTVN10HudPoolAbi4PoolILj72EEE": "0x1862c20",
-            "Accessor_Allocators": "0x1926bd8",
-            "Accessor_AllocatorIndex": "0xa82b30",
-            "__clang_call_terminate": "0x6768b8"
-          },
-          "got_bindings": {}
-        },
-        {
-          "address": "0x8a9b40",
-          "size": 220,
-          "symbol": "_ZN10HudPoolAbi4PoolILj72EED1Ev",
-          "target_sha256": "29b9110260f94b0164074bdca0ea7ea768fadc9df8feff9da0fd9d5a1990a322",
-          "bindings": {
-            "_ZTVN10HudPoolAbi4PoolILj72EEE": "0x1862cc0",
-            "Accessor_Allocators": "0x1926bd8",
-            "Accessor_AllocatorIndex": "0xa82b30",
-            "__clang_call_terminate": "0x6768b8"
-          },
-          "got_bindings": {}
-        },
-        {
-          "address": "0x8aa2b0",
-          "size": 220,
-          "symbol": "_ZN10HudPoolAbi4PoolILj72EED1Ev",
-          "target_sha256": "f333fcaefe72dde674aa809aec7cef98f6c4420911f8d4704e1c439c11c34c2f",
-          "bindings": {
-            "_ZTVN10HudPoolAbi4PoolILj72EEE": "0x1862d60",
-            "Accessor_Allocators": "0x1926bd8",
-            "Accessor_AllocatorIndex": "0xa82b30",
-            "__clang_call_terminate": "0x6768b8"
-          },
-          "got_bindings": {}
-        },
-        {
-          "address": "0x8aa870",
-          "size": 220,
-          "symbol": "_ZN10HudPoolAbi4PoolILj72EED1Ev",
-          "target_sha256": "53a931efc6bf6cab0788c05f1fa78d59ccaf3d2fc567e16532975cf2c36fe3d4",
-          "bindings": {
-            "_ZTVN10HudPoolAbi4PoolILj72EEE": "0x1862e00",
-            "Accessor_Allocators": "0x1926bd8",
-            "Accessor_AllocatorIndex": "0xa82b30",
-            "__clang_call_terminate": "0x6768b8"
-          },
-          "got_bindings": {}
-        },
-        {
-          "address": "0x8aac40",
-          "size": 220,
-          "symbol": "_ZN10HudPoolAbi4PoolILj72EED1Ev",
-          "target_sha256": "cce3b9c5fc99eb02bac90ecc0224512f4cd0ff82fd74e9e1b505b097d4188f16",
-          "bindings": {
-            "_ZTVN10HudPoolAbi4PoolILj72EEE": "0x1862ea0",
-            "Accessor_Allocators": "0x1926bd8",
-            "Accessor_AllocatorIndex": "0xa82b30",
-            "__clang_call_terminate": "0x6768b8"
-          },
-          "got_bindings": {}
-        },
-        {
-          "address": "0x8ab3c0",
-          "size": 220,
-          "symbol": "_ZN10HudPoolAbi4PoolILj72EED1Ev",
-          "target_sha256": "48c795e3826dc9e1ef29b6e02072bac6d12a54f422f1379094c39c5dd1096b98",
-          "bindings": {
-            "_ZTVN10HudPoolAbi4PoolILj72EEE": "0x1862f40",
-            "Accessor_Allocators": "0x1926bd8",
-            "Accessor_AllocatorIndex": "0xa82b30",
-            "__clang_call_terminate": "0x6768b8"
-          },
-          "got_bindings": {}
-        },
-        {
-          "address": "0x8ab790",
-          "size": 220,
-          "symbol": "_ZN10HudPoolAbi4PoolILj72EED1Ev",
-          "target_sha256": "95c1303a29744650527f85a4c8bdb6cf2891733dd47b5c79c7657dc0bb810dee",
-          "bindings": {
-            "_ZTVN10HudPoolAbi4PoolILj72EEE": "0x1862fe0",
-            "Accessor_Allocators": "0x1926bd8",
-            "Accessor_AllocatorIndex": "0xa82b30",
-            "__clang_call_terminate": "0x6768b8"
-          },
-          "got_bindings": {}
-        },
-        {
-          "address": "0x8abd50",
-          "size": 220,
-          "symbol": "_ZN10HudPoolAbi4PoolILj72EED1Ev",
-          "target_sha256": "3932abc3ecb1bb4bf3bdac1b01d9b2eef59b167e77a6445033463e380c38d476",
-          "bindings": {
-            "_ZTVN10HudPoolAbi4PoolILj72EEE": "0x1863080",
-            "Accessor_Allocators": "0x1926bd8",
-            "Accessor_AllocatorIndex": "0xa82b30",
+            "_ZdlPv": "0xfa3b40",
             "__clang_call_terminate": "0x6768b8"
           },
           "got_bindings": {}
@@ -488034,6 +488119,20 @@
       ],
       "functions": [
         {
+          "address": "0xd15010",
+          "size": 256,
+          "symbol": "_ZN4Dare7Private12DarePoolBaseILj13717520ELj159904EED1Ev",
+          "target_sha256": "2f7de9776391cd20e5d349375dc398e0200d54513d3e40e63a58a101e01524a9",
+          "bindings": {
+            "_ZTVN4Dare7Private12DarePoolBaseILj13717520ELj159904EEE": "0x18cdc68",
+            "Dare_AllocatorEnabled": "0x191fb00",
+            "Dare_Allocator": "0x191faf8",
+            "__clang_call_terminate": "0x6768b8",
+            "_ZN4Dare7Private10DareVectorIPNS0_10PoolObjectILj13717520EEEED2Ev": "0xd15130"
+          },
+          "got_bindings": {}
+        },
+        {
           "address": "0xd151a0",
           "size": 216,
           "symbol": "_ZN4Dare7Private12DarePoolBaseILj13717920ELj24736EED1Ev",
@@ -488044,6 +488143,20 @@
             "Dare_Allocator": "0x191faf8",
             "__clang_call_terminate": "0x6768b8",
             "_ZN4Dare7Private10DareVectorIPNS0_10PoolObjectILj13717920EEEED2Ev": "0xd152a0"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xd15310",
+          "size": 240,
+          "symbol": "_ZN4Dare7Private12DarePoolBaseILj13718288ELj45344EED1Ev",
+          "target_sha256": "92d3d6607acd5a22c4cd9f8a3c0dfb52389ef04075b9fd7b13ac06e85c6618c7",
+          "bindings": {
+            "_ZTVN4Dare7Private12DarePoolBaseILj13718288ELj45344EEE": "0x18cdbe8",
+            "Dare_AllocatorEnabled": "0x191fb00",
+            "Dare_Allocator": "0x191faf8",
+            "__clang_call_terminate": "0x6768b8",
+            "_ZN4Dare7Private10DareVectorIPNS0_10PoolObjectILj13718288EEEED2Ev": "0xd15420"
           },
           "got_bindings": {}
         },
@@ -488090,6 +488203,20 @@
           "got_bindings": {}
         },
         {
+          "address": "0xd158e0",
+          "size": 256,
+          "symbol": "_ZN4Dare7Private12DarePoolBaseILj13719776ELj571552EED1Ev",
+          "target_sha256": "88c81d5eb2764f2643343dd22589c82fd13093732729ab7d358f8279319b5ef1",
+          "bindings": {
+            "_ZTVN4Dare7Private12DarePoolBaseILj13719776ELj571552EEE": "0x18cdae8",
+            "Dare_AllocatorEnabled": "0x191fb00",
+            "Dare_Allocator": "0x191faf8",
+            "__clang_call_terminate": "0x6768b8",
+            "_ZN4Dare7Private10DareVectorIPNS0_10PoolObjectILj13719776EEEED2Ev": "0xd15a00"
+          },
+          "got_bindings": {}
+        },
+        {
           "address": "0xd15a70",
           "size": 208,
           "symbol": "_ZN4Dare7Private12DarePoolBaseILj13720176ELj872EED1Ev",
@@ -488128,6 +488255,48 @@
             "Dare_Allocator": "0x191faf8",
             "__clang_call_terminate": "0x6768b8",
             "_ZN4Dare7Private10DareVectorIPNS0_10PoolObjectILj13720896EEEED2Ev": "0xd15e40"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xd15eb0",
+          "size": 240,
+          "symbol": "_ZN4Dare7Private12DarePoolBaseILj13721264ELj48288EED1Ev",
+          "target_sha256": "ab4d78bba748f678c039962ffc4874a457df5512ff10110bae6790f9d60071f6",
+          "bindings": {
+            "_ZTVN4Dare7Private12DarePoolBaseILj13721264ELj48288EEE": "0x18cd9e8",
+            "Dare_AllocatorEnabled": "0x191fb00",
+            "Dare_Allocator": "0x191faf8",
+            "__clang_call_terminate": "0x6768b8",
+            "_ZN4Dare7Private10DareVectorIPNS0_10PoolObjectILj13721264EEEED2Ev": "0xd15fc0"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xd16030",
+          "size": 240,
+          "symbol": "_ZN4Dare7Private12DarePoolBaseILj13721648ELj33952EED1Ev",
+          "target_sha256": "a3d9ce8fa8d09bf23a0ac242f4713da2a956b31f4bd68eeca2c04e8bdf60eb2a",
+          "bindings": {
+            "_ZTVN4Dare7Private12DarePoolBaseILj13721648ELj33952EEE": "0x18cd9a8",
+            "Dare_AllocatorEnabled": "0x191fb00",
+            "Dare_Allocator": "0x191faf8",
+            "__clang_call_terminate": "0x6768b8",
+            "_ZN4Dare7Private10DareVectorIPNS0_10PoolObjectILj13721648EEEED2Ev": "0xd16140"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xd230d0",
+          "size": 240,
+          "symbol": "_ZN4Dare7Private12DarePoolBaseILj13775056ELj63208EED1Ev",
+          "target_sha256": "71bba6d06f0d6baacd99e76eed34b5adcfb57a75703290119bef8e2d7c323b8b",
+          "bindings": {
+            "_ZTVN4Dare7Private12DarePoolBaseILj13775056ELj63208EEE": "0x18ce9c8",
+            "Dare_AllocatorEnabled": "0x191fb00",
+            "Dare_Allocator": "0x191faf8",
+            "__clang_call_terminate": "0x6768b8",
+            "_ZN4Dare7Private10DareVectorIPNS0_10PoolObjectILj13775056EEEED2Ev": "0xd231e0"
           },
           "got_bindings": {}
         },
@@ -488212,6 +488381,20 @@
             "Dare_Allocator": "0x191faf8",
             "__clang_call_terminate": "0x6768b8",
             "_ZN4Dare7Private10DareVectorIPNS0_10PoolObjectILj13784832EEEED2Ev": "0xd257f0"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xd378a0",
+          "size": 256,
+          "symbol": "_ZN4Dare7Private12DarePoolBaseILj13858976ELj102424EED1Ev",
+          "target_sha256": "da5a3825a6d873c26571842afd16d874946839412f17f25c89a9648dfc2ee2ee",
+          "bindings": {
+            "_ZTVN4Dare7Private12DarePoolBaseILj13858976ELj102424EEE": "0x18cfae0",
+            "Dare_AllocatorEnabled": "0x191fb00",
+            "Dare_Allocator": "0x191faf8",
+            "__clang_call_terminate": "0x6768b8",
+            "_ZN4Dare7Private10DareVectorIPNS0_10PoolObjectILj13858976EEEED2Ev": "0xd3af60"
           },
           "got_bindings": {}
         },
@@ -488772,6 +488955,62 @@
             "Dare_Allocator": "0x191faf8",
             "__clang_call_terminate": "0x6768b8",
             "_ZN4Dare7Private10DareVectorIPNS0_10PoolObjectILj13963552EEEED2Ev": "0xd51210"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xd51280",
+          "size": 240,
+          "symbol": "_ZN4Dare7Private12DarePoolBaseILj13963904ELj40544EED1Ev",
+          "target_sha256": "fc8d36070838d303e115eed84191f875614904815ac1518f9ce8358240d7bbbc",
+          "bindings": {
+            "_ZTVN4Dare7Private12DarePoolBaseILj13963904ELj40544EEE": "0x18d16b0",
+            "Dare_AllocatorEnabled": "0x191fb00",
+            "Dare_Allocator": "0x191faf8",
+            "__clang_call_terminate": "0x6768b8",
+            "_ZN4Dare7Private10DareVectorIPNS0_10PoolObjectILj13963904EEEED2Ev": "0xd51390"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xd51400",
+          "size": 240,
+          "symbol": "_ZN4Dare7Private12DarePoolBaseILj13964288ELj41056EED1Ev",
+          "target_sha256": "8420308018c79712a495a2452c33dcd0281ff8908e9e546a352e5e9d41fe6a29",
+          "bindings": {
+            "_ZTVN4Dare7Private12DarePoolBaseILj13964288ELj41056EEE": "0x18d1670",
+            "Dare_AllocatorEnabled": "0x191fb00",
+            "Dare_Allocator": "0x191faf8",
+            "__clang_call_terminate": "0x6768b8",
+            "_ZN4Dare7Private10DareVectorIPNS0_10PoolObjectILj13964288EEEED2Ev": "0xd51510"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xd51580",
+          "size": 256,
+          "symbol": "_ZN4Dare7Private12DarePoolBaseILj13964672ELj168224EED1Ev",
+          "target_sha256": "cad9effa32320ec7b38cc6e3fc0bbd3ddebf1de78604df204b1f7c183fa2e433",
+          "bindings": {
+            "_ZTVN4Dare7Private12DarePoolBaseILj13964672ELj168224EEE": "0x18d1630",
+            "Dare_AllocatorEnabled": "0x191fb00",
+            "Dare_Allocator": "0x191faf8",
+            "__clang_call_terminate": "0x6768b8",
+            "_ZN4Dare7Private10DareVectorIPNS0_10PoolObjectILj13964672EEEED2Ev": "0xd516a0"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xd51710",
+          "size": 256,
+          "symbol": "_ZN4Dare7Private12DarePoolBaseILj13965072ELj188704EED1Ev",
+          "target_sha256": "9651773d6d811cb6f6e2cd1063b9562da59a301b5ed87b18394653b6753f07ed",
+          "bindings": {
+            "_ZTVN4Dare7Private12DarePoolBaseILj13965072ELj188704EEE": "0x18d15f0",
+            "Dare_AllocatorEnabled": "0x191fb00",
+            "Dare_Allocator": "0x191faf8",
+            "__clang_call_terminate": "0x6768b8",
+            "_ZN4Dare7Private10DareVectorIPNS0_10PoolObjectILj13965072EEEED2Ev": "0xd51830"
           },
           "got_bindings": {}
         }
@@ -568177,6 +568416,23 @@
           "got_bindings": {}
         },
         {
+          "address": "0x71ab00",
+          "size": 220,
+          "symbol": "_ZN4Onyx9DareAudio14AudioComponentD0Ev",
+          "target_sha256": "2083864d79c152638892279b6f99d3bbfb7bca1439c560cb21557b9ec4e2c208",
+          "bindings": {
+            "_ZTVN4Onyx9DareAudio14AudioComponentE": "0x18480a8",
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
+            "_ZTV13Level71aa20_1": "0x1848150",
+            "_ZN6MemberILm119185923EED1Ev": "0x71a390",
+            "_ZN10Base71aa20D2Ev": "0x677400",
+            "_ZdlPv": "0xfa3b40",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
           "address": "0x7326f0",
           "size": 152,
           "symbol": "_ZN11Class7326f0D2Ev",
@@ -568303,6 +568559,22 @@
             "DecodeAllocatorManager": "0x1926bd8",
             "DecodeAllocatorIndex": "0xa82b30",
             "_ZN10Base7a3730D2Ev": "0x677400",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x7a37e0",
+          "size": 172,
+          "symbol": "_ZN4SPTG15AchievementDataD0Ev",
+          "target_sha256": "61ede8260adf537c4abf6254a339d3c24845279250950a40dceb9c4a228e4da4",
+          "bindings": {
+            "_ZTVN4SPTG15AchievementDataE": "0x184da60",
+            "_ZN6MemberILm128152321EED1Ev": "0x7a3bf0",
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
+            "_ZN10Base7a3730D2Ev": "0x677400",
+            "_ZdlPv": "0xfa3b40",
             "__clang_call_terminate": "0x6768b8"
           },
           "got_bindings": {}
@@ -568844,6 +569116,24 @@
             "_ZTV13Level8bd590_1": "0x18a3bc0",
             "_ZTV15Nested146626819": "0x18a2010",
             "_ZN10Base8bd590D2Ev": "0x88fb50",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x8bd650",
+          "size": 200,
+          "symbol": "_ZN4SPTG22FillLineListGroupShapeD0Ev",
+          "target_sha256": "08309514558793bc633e5ffbe260cada0e38e84903570f4c693c6688fa880674",
+          "bindings": {
+            "_ZTVN4SPTG22FillLineListGroupShapeE": "0x18644e0",
+            "_ZN6MemberILm146626817EED1Ev": "0x7098c0",
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
+            "_ZTV13Level8bd590_1": "0x18a3bc0",
+            "_ZTV15Nested146626819": "0x18a2010",
+            "_ZN10Base8bd590D2Ev": "0x88fb50",
+            "_ZdlPv": "0xfa3b40",
             "__clang_call_terminate": "0x6768b8"
           },
           "got_bindings": {}
@@ -569822,6 +570112,24 @@
           "got_bindings": {}
         },
         {
+          "address": "0xa0ac10",
+          "size": 212,
+          "symbol": "_ZN4SPTG26ControllableSpawnerCatalogD0Ev",
+          "target_sha256": "2722c64a893c7b36e910c66ce414825f0d1b67472ea56354636059dbbc7d5b45",
+          "bindings": {
+            "_ZTVN4SPTG26ControllableSpawnerCatalogE": "0x18893f0",
+            "_ZN18PlainPointerMemberILm168473601EE6DeleteEPv": "0xa09820",
+            "_ZTV13Levela0ab40_1": "0x1889478",
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
+            "_ZTV13Levela0ab40_2": "0x1889500",
+            "_ZN10Basea0ab40D2Ev": "0xa09890",
+            "_ZdlPv": "0xfa3b40",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
           "address": "0xadf9a0",
           "size": 124,
           "symbol": "_ZN11Classadf9a0D0Ev",
@@ -570059,6 +570367,24 @@
             "_ZTV13Levelb05a30_1": "0x18a3bc0",
             "_ZTV15Nested184918787": "0x18a2010",
             "_ZN10Baseb05a30D2Ev": "0x88fb50",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xb05af0",
+          "size": 200,
+          "symbol": "_ZN4Onyx8Graphics13LineListShapeD0Ev",
+          "target_sha256": "b36d49c330173a14c45e3755744cbe7adade7e2b49770f2027448d25b56f7751",
+          "bindings": {
+            "_ZTVN4Onyx8Graphics13LineListShapeE": "0x18a40d0",
+            "_ZN6MemberILm184918785EED1Ev": "0x7098c0",
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
+            "_ZTV13Levelb05a30_1": "0x18a3bc0",
+            "_ZTV15Nested184918787": "0x18a2010",
+            "_ZN10Baseb05a30D2Ev": "0x88fb50",
+            "_ZdlPv": "0xfa3b40",
             "__clang_call_terminate": "0x6768b8"
           },
           "got_bindings": {}
@@ -570328,6 +570654,23 @@
             "_ZTV13Levelb3c1d0_1": "0x1863fe0",
             "_ZN6MemberILm188488963EED1Ev": "0x8bab30",
             "_ZN10Baseb3c1d0D2Ev": "0x677400",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xb3c290",
+          "size": 188,
+          "symbol": "_ZN4Onyx8Graphics17MorphInstanceBaseD0Ev",
+          "target_sha256": "dddd073a69124e41ce3b2733d503757cd516fa65d71aba1f6b4bebbac6c3e5b7",
+          "bindings": {
+            "_ZTVN4Onyx8Graphics17MorphInstanceBaseE": "0x18a8048",
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
+            "_ZTV13Levelb3c1d0_1": "0x1863fe0",
+            "_ZN6MemberILm188488963EED1Ev": "0x8bab30",
+            "_ZN10Baseb3c1d0D2Ev": "0x677400",
+            "_ZdlPv": "0xfa3b40",
             "__clang_call_terminate": "0x6768b8"
           },
           "got_bindings": {}
@@ -572398,6 +572741,166 @@
           "immutable_sections": {
             "30": "0x13912ce"
           }
+        }
+      ]
+    },
+    {
+      "source": "src/ComponentAccessor.cpp",
+      "compiler": "8.0.1",
+      "id": "componentaccessor_member_707290",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-std=c++11",
+        "-O2",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-fomit-frame-pointer",
+        "-mllvm",
+        "-jump-threading-threshold=1",
+        "-DCOMPONENT_ACCESSOR_ID=0x74d21027u",
+        "-DCOMPONENT_ACCESSOR_MEMBER_OFFSET=0x50"
+      ],
+      "functions": [
+        {
+          "address": "0x707290",
+          "size": 824,
+          "symbol": "ResolveMemberAccessorCandidate",
+          "target_sha256": "24237037accdfbea897de53fc05fff673100678c4d19e5e9c329e26c16080147",
+          "bindings": {
+            "Accessor_Resolver": "0x191cd10",
+            "Accessor_Find": "0x680d40",
+            "Accessor_Resolve": "0x67edd0",
+            "Accessor_Assign": "0x67c0b0",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30",
+            "Accessor_Tracking": "0x1935068",
+            "Accessor_Lock": "0xfa4950",
+            "Accessor_Unlock": "0xfa4960",
+            "_Unwind_Resume": "0xfa4920",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        }
+      ]
+    },
+    {
+      "source": "src/ComponentAccessor.cpp",
+      "compiler": "8.0.1",
+      "id": "componentaccessor_member_76bc40",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-std=c++11",
+        "-O2",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-fomit-frame-pointer",
+        "-mllvm",
+        "-jump-threading-threshold=1",
+        "-DCOMPONENT_ACCESSOR_ID=0x5defd237u",
+        "-DCOMPONENT_ACCESSOR_MEMBER_OFFSET=0x50"
+      ],
+      "functions": [
+        {
+          "address": "0x76bc40",
+          "size": 824,
+          "symbol": "ResolveMemberAccessorCandidate",
+          "target_sha256": "dbc86e7cd70dc57b3da001430bc54ceb6f44e6922a590c41f2047e8597483225",
+          "bindings": {
+            "Accessor_Resolver": "0x191cd10",
+            "Accessor_Find": "0x680d40",
+            "Accessor_Resolve": "0x67edd0",
+            "Accessor_Assign": "0x67c0b0",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30",
+            "Accessor_Tracking": "0x1935068",
+            "Accessor_Lock": "0xfa4950",
+            "Accessor_Unlock": "0xfa4960",
+            "_Unwind_Resume": "0xfa4920",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        }
+      ]
+    },
+    {
+      "source": "src/ComponentAccessor.cpp",
+      "compiler": "8.0.1",
+      "id": "componentaccessor_member_89b1e0",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-std=c++11",
+        "-O2",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-fomit-frame-pointer",
+        "-mllvm",
+        "-jump-threading-threshold=1",
+        "-DCOMPONENT_ACCESSOR_ID=0x722d9eafu",
+        "-DCOMPONENT_ACCESSOR_MEMBER_OFFSET=0x60"
+      ],
+      "functions": [
+        {
+          "address": "0x89b1e0",
+          "size": 824,
+          "symbol": "ResolveMemberAccessorCandidate",
+          "target_sha256": "2e035d16006a5912aaa5f88716a2d4a3b0414a65bdb9fc7619eab363fcbc5d75",
+          "bindings": {
+            "Accessor_Resolver": "0x191cd10",
+            "Accessor_Find": "0x680d40",
+            "Accessor_Resolve": "0x67edd0",
+            "Accessor_Assign": "0x67c0b0",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30",
+            "Accessor_Tracking": "0x1935068",
+            "Accessor_Lock": "0xfa4950",
+            "Accessor_Unlock": "0xfa4960",
+            "_Unwind_Resume": "0xfa4920",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        }
+      ]
+    },
+    {
+      "source": "src/ComponentAccessor.cpp",
+      "compiler": "8.0.1",
+      "id": "componentaccessor_member_b8aaf0",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-std=c++11",
+        "-O2",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-fomit-frame-pointer",
+        "-mllvm",
+        "-jump-threading-threshold=1",
+        "-DCOMPONENT_ACCESSOR_ID=0x00866786u",
+        "-DCOMPONENT_ACCESSOR_MEMBER_OFFSET=0x58"
+      ],
+      "functions": [
+        {
+          "address": "0xb8aaf0",
+          "size": 824,
+          "symbol": "ResolveMemberAccessorCandidate",
+          "target_sha256": "cb4943408ab176d3cb8bd2e1f7d68f33514b3c87d16b8b92d1804f042833e941",
+          "bindings": {
+            "Accessor_Resolver": "0x191cd10",
+            "Accessor_Find": "0x680d40",
+            "Accessor_Resolve": "0x67edd0",
+            "Accessor_Assign": "0x67c0b0",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30",
+            "Accessor_Tracking": "0x1935068",
+            "Accessor_Lock": "0xfa4950",
+            "Accessor_Unlock": "0xfa4960",
+            "_Unwind_Resume": "0xfa4920",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
         }
       ]
     }

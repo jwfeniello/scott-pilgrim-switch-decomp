@@ -36,4 +36,13 @@ template <unsigned Size> struct Pool {
   Storage<Size> storage;
 };
 template struct Pool<72>;
+template struct Pool<80>;   // SPTG::TSmallPool<HudStatusMONEYINFO>
+// The same pool with its storage further in (Onyx::Localization::Preset and PresetType).
+template <unsigned Size, unsigned StorageOffset> struct PoolAt {
+  __attribute__((always_inline)) virtual ~PoolAt() {}
+  char unknown[StorageOffset - 8];
+  Storage<Size> storage;
+};
+template struct PoolAt<40, 0x28>;
+template struct PoolAt<24, 0x20>;
 } // namespace HudPoolAbi

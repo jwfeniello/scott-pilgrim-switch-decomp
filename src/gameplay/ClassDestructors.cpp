@@ -509,7 +509,7 @@ ListenerComponent::~ListenerComponent() {  }
 struct Base71aa20 { virtual ~Base71aa20(); char padding[72]; };
 struct Level71aa20_1 : Base71aa20 { Member<119185923> member_50; virtual void Key1(); DT_INLINE ~Level71aa20_1() {} };
 namespace Onyx { namespace DareAudio { 
-struct AudioComponent : Level71aa20_1 { char padding_51[31]; Auto<PlainFunction<119185922>> member_70; Auto<PlainFunction<119185921>> member_78; virtual void Key(); ~AudioComponent(); };
+struct AudioComponent : Level71aa20_1 { char padding_51[31]; Auto<PlainFunction<119185922>> member_70; Auto<PlainFunction<119185921>> member_78; virtual void Key(); __attribute__((always_inline)) ~AudioComponent(); };
 AudioComponent::~AudioComponent() {  }
 }}
 
@@ -542,7 +542,7 @@ struct Buffer128152322 { uint64_t w0; void* w8; __attribute__((always_inline)) v
 struct Buffer128152323 { uint64_t w0; void* w8; __attribute__((always_inline)) void Destroy() { w0 = 0; if (w8) FreeObject(w8); } };
 struct Base7a3730 { virtual ~Base7a3730(); char padding[96]; };
 namespace SPTG { 
-struct AchievementData : Base7a3730 { Auto<Buffer128152323> member_68; char padding_78[24]; Auto<Buffer128152322> member_90; char padding_a0[8]; Member<128152321> member_a8; virtual void Key(); ~AchievementData(); };
+struct AchievementData : Base7a3730 { Auto<Buffer128152323> member_68; char padding_78[24]; Auto<Buffer128152322> member_90; char padding_a0[8]; Member<128152321> member_a8; virtual void Key(); __attribute__((always_inline)) ~AchievementData(); };
 AchievementData::~AchievementData() {  }
 }
 struct Buffer128731137 { uint64_t w0; void* w8; __attribute__((always_inline)) void Destroy() { w0 = 0; if (w8) FreeObject(w8); } };
@@ -733,7 +733,7 @@ struct Nested146626819 { virtual void Key(); char padding_8[72]; Auto<Buffer9384
 struct Base8bd590 { virtual ~Base8bd590(); char padding[144]; };
 struct Level8bd590_1 : Base8bd590 { Nested146626819 member_98; virtual void Key1(); DT_INLINE ~Level8bd590_1() {} };
 namespace SPTG { 
-struct FillLineListGroupShape : Level8bd590_1 { char padding_f8[32]; Auto<Buffer146626818> member_118; char padding_128[8]; Member<146626817> member_130; virtual void Key(); ~FillLineListGroupShape(); };
+struct FillLineListGroupShape : Level8bd590_1 { char padding_f8[32]; Auto<Buffer146626818> member_118; char padding_128[8]; Member<146626817> member_130; virtual void Key(); __attribute__((always_inline)) ~FillLineListGroupShape(); };
 FillLineListGroupShape::~FillLineListGroupShape() {  }
 }
 struct Buffer9388228673 { uint64_t w0; void* w8; __attribute__((always_inline)) void Destroy() { w0 = 0; if (w8) FreeObject(w8); } };
@@ -1015,7 +1015,7 @@ struct Basea0ab40 { virtual ~Basea0ab40(); char padding[136]; };
 struct Levela0ab40_2 : Basea0ab40 { Auto<Buffer168473603> member_90; virtual void Key2(); DT_INLINE ~Levela0ab40_2() {} };
 struct Levela0ab40_1 : Levela0ab40_2 { char padding_b8[16]; Auto<Buffer168473602> member_c8; virtual void Key1(); DT_INLINE ~Levela0ab40_1() {} };
 namespace SPTG { 
-struct ControllableSpawnerCatalog : Levela0ab40_1 { char padding_e0[24]; AutoInline<PlainPointerMember<168473601>> member_f8; virtual void Key(); ~ControllableSpawnerCatalog(); };
+struct ControllableSpawnerCatalog : Levela0ab40_1 { char padding_e0[24]; AutoInline<PlainPointerMember<168473601>> member_f8; virtual void Key(); __attribute__((always_inline)) ~ControllableSpawnerCatalog(); };
 ControllableSpawnerCatalog::~ControllableSpawnerCatalog() {  }
 }
 
@@ -1076,7 +1076,7 @@ struct Nested184918787 { virtual void Key(); char padding_8[72]; Auto<Buffer1183
 struct Baseb05a30 { virtual ~Baseb05a30(); char padding[144]; };
 struct Levelb05a30_1 : Baseb05a30 { Nested184918787 member_98; virtual void Key1(); DT_INLINE ~Levelb05a30_1() {} };
 namespace Onyx { namespace Graphics { 
-struct LineListShape : Levelb05a30_1 { char padding_f8[32]; Auto<Buffer184918786> member_118; char padding_128[16]; Member<184918785> member_138; virtual void Key(); ~LineListShape(); };
+struct LineListShape : Levelb05a30_1 { char padding_f8[32]; Auto<Buffer184918786> member_118; char padding_128[16]; Member<184918785> member_138; virtual void Key(); __attribute__((always_inline)) ~LineListShape(); };
 LineListShape::~LineListShape() {  }
 }}
 struct Buffer11838259329 { uint64_t w0; void* w8; __attribute__((always_inline)) void Destroy() { w0 = 0; if (w8) FreeObject(w8); } };
@@ -1155,7 +1155,7 @@ struct Buffer188488962 { uint64_t w0; void* w8; __attribute__((always_inline)) v
 struct Baseb3c1d0 { virtual ~Baseb3c1d0(); char padding[72]; };
 struct Levelb3c1d0_1 : Baseb3c1d0 { Member<188488963> member_50; virtual void Key1(); DT_INLINE ~Levelb3c1d0_1() {} };
 namespace Onyx { namespace Graphics { 
-struct MorphInstanceBase : Levelb3c1d0_1 { char padding_51[111]; Auto<Buffer188488962> member_c0; char padding_d0[24]; Auto<Buffer188488961> member_e8; virtual void Key(); ~MorphInstanceBase(); };
+struct MorphInstanceBase : Levelb3c1d0_1 { char padding_51[111]; Auto<Buffer188488962> member_c0; char padding_d0[24]; Auto<Buffer188488961> member_e8; virtual void Key(); __attribute__((always_inline)) ~MorphInstanceBase(); };
 MorphInstanceBase::~MorphInstanceBase() {  }
 }}
 struct Buffer188505089 { uint64_t w0; void* w8; __attribute__((always_inline)) void Destroy() { w0 = 0; if (w8) FreeObject(w8); } };

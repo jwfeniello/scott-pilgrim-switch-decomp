@@ -1,9 +1,9 @@
 {
   "version": 1,
-  "generated_at": "2026-11-06T06:07:37.582225+00:00",
+  "generated_at": "2026-11-06T06:16:08.698689+00:00",
   "target_elf_sha256": "ea95638e6d6aaa0dc6cddd552a9366799aa1ec3bc07ee201f23f6c151103f5b8",
   "input_sha256": {
-    "config/builds.json": "2170e4ebe94b17fcfe0c1834ef70ca22a6023eea939da603b465dd8163927dbb",
+    "config/builds.json": "712c5e8bdcec307fe89757cbcac59f5eddd2185b10537413f8b550319387b6f8",
     "config/functions.tsv": "399e91468a04e0459194c10d68d2210d1157cedefeb19c7851886ca7632fcb18",
     "config/non_fde_functions.tsv": "6a45f5e185454fa0472af00b2cdc9d040d73ca133d1106217e1fbbe3b32a8175",
     "config/target.json": "23cc6a5227206a953e7668acf5e9ae5c02a25c23b7e7967f0450a814b888241a",
@@ -40,7 +40,7 @@
     "src/CloneSingleRecordRecoveryKeep.cpp": "b47a9755f2eff02e3ae61f29cf6532ff25e32d9db989a8fee453912e22512def",
     "src/ColorPropertyRead.h": "c7f9e099f9c34415576fc83acfc0818b7fcaa83cb8c7da1ed5e48b2acc2776f0",
     "src/ColorPropertyReadOmitNoPic.cpp": "c3f5c2c85626b7ee05bbb1730e6c89d1a4cc2404362377627810bc1b1d83493f",
-    "src/ComponentAccessor.cpp": "09d0b81df3abcacb946f49ed1ed87ab840ee0656bb6f792fd65d25660eabb260",
+    "src/ComponentAccessor.cpp": "04cf6d1bfd38d6fc2ecba4b13073c97ec4cc374ab58cd970c79693ca8b4f2269",
     "src/ComponentEventReader.cpp": "8ba855c3269dae4b06f76f96f0e6e5b59ff9235a3c43d089bcaf91ef43b68d6a",
     "src/ComponentEventRegister.cpp": "109e4d7f4121f3949784bc4de1112d0d19f7fbbd8f6b670ae56afa48a52a602b",
     "src/ComponentEventSubscribe.cpp": "63586533cddc6e328063e9d1c2591e77b05a6114f99d84a22f953cfb7841fa50",
@@ -154,7 +154,7 @@
     "src/HashMapRecovered0.cpp": "97989206b83c70db896ce515be79352fbbf79766a93870dcb75ec8ce710b48b2",
     "src/HashMapRecovered1.cpp": "e579e95cd7428cd470c81bda365b673e6e1e3209ff77bb081aabddd994245cb4",
     "src/HashRebuild.cpp": "9fa8475c07fccf948ce78a975f78d99bba93149b71ff8579fe42f7013111e198",
-    "src/HudPoolCleanup.cpp": "0cc3a87260f2f315869e83c9ca361573c843e6f220843acde05a3aa9f5eb520c",
+    "src/HudPoolCleanup.cpp": "e72e3775c52a28c9bae7322ae90f440dfcac225a9aafb126ef970f483a2ef5c2",
     "src/HudPoolRelease.h": "9b25e9f9f8c976d148e67cd9b42cf37d73d5df82d690ce4f15314edc698bc721",
     "src/HudPoolReleaseOmitNoPic.cpp": "9c325fff5c821571964a45e683a5f0482ad4a887fe5b91726422c80ae4305843",
     "src/IdentityFour.cpp": "5946d7f851d1e751a82d63ab41de4e511dec658a87b665e25e18505b7ea700c7",
@@ -1075,7 +1075,7 @@
     "src/counter_buffer_destructor_instances.inc": "8bda63f753a81068c79bdbc32d6960e7e00f076b8a03064e96b61ce985f437f9",
     "src/dare_flyweight_manager_omit_no_pic_instances.inc": "4acc21db3d06b54700b1a228120ff8126c9c06fa7a55347238b78669840a1fe5",
     "src/dare_list_destructor_omit_no_pic_instances.inc": "347d2adc67a2cc566d3c209503a5f9ade5523521215cf8f7d75accf5f94c7fec",
-    "src/dare_pool_destructor_omit_no_pic_instances.inc": "de979427ef67076a37a24835dbeeb1a0e673dd71343e748fa637099d067444f9",
+    "src/dare_pool_destructor_omit_no_pic_instances.inc": "e4423e258d938d4cb54659937a49c678895325b0ccef54313b9612c76007bdbd",
     "src/dare_tree_destroy_omit_no_pic_instances.inc": "c7329ddd89f600ea32b224cb3a4814b7356f6a774ad64bcb4974546315df88e8",
     "src/decompiled/hi_nostrict_00.c": "02cb5e74511a057b2b6cf591757c6f012089f6219245bf32caf44ecbf6a7f5bf",
     "src/decompiled/hi_nostrict_cxx_00.cpp": "d6bc904a588a29d942d5844eaad202fbf942dd79c54b839e4c2b4ab5384a94e0",
@@ -1137,7 +1137,7 @@
     "src/gameplay/BreakableObject.cpp": "30ab612035e01e05ec3b456b265c60cca256f8c2e8173fddda59351a8e86d282",
     "src/gameplay/BreakableObject.h": "5a4950fc4e7f43527a6cafeb4d413addb1b827330b19b5976ba1f76bb0777dee",
     "src/gameplay/Camera.h": "cd95510335202a3ce560df413bdd5909f8543566e594a1bab2e9ad2e0057cd3f",
-    "src/gameplay/ClassDestructors.cpp": "2ed4f50e8aa95877c4f0e4de05734ae906f493e474a0e406360a17532c53365d",
+    "src/gameplay/ClassDestructors.cpp": "cef0edf994e438aa8469136d0b276ce2ad14693bf65caf496a2b7004118bd63b",
     "src/gameplay/ClassDestructorsForced.cpp": "0c87096fa28a31e86809e538bf713eae970c895dedb34155b61be02fca4d8081",
     "src/gameplay/ClassDestructorsInline.cpp": "034f125f161661c431170c2fe1d3b1c256738468ea3dfabfc4fd4f5747be3e87",
     "src/gameplay/ClassSerialize.cpp": "67271591a71cf7e7a42847e151a56fa73f2f52ed29a141dc14fe71b2fcea4a9a",
@@ -4019,8 +4019,8 @@
     "7.0.1": "c2f0a175157d9aaace8031f8e6d7ea0ed6142b4bcef287105e3ed227301f1002",
     "lld": "c4b3aaea06ff7112c64753047a2ab279fc3fe10dd807fd3c22edfdae99f43eed"
   },
-  "exact_functions": 38852,
-  "exact_bytes": 5134540,
+  "exact_functions": 38879,
+  "exact_bytes": 5143020,
   "builds": [
     {
       "id": "probes",
@@ -11555,7 +11555,7 @@
     {
       "id": "hud_pool_cleanup",
       "compiler": "8.0.1",
-      "object_sha256": "2f0a8cbe140faa132951f8ecb372f1cfc1cee8de28fc6423cb6ae66405478634"
+      "object_sha256": "3641e5eb321a1d80531c344e88c51376ebd9c7055c71f510e854d1c7061e890d"
     },
     {
       "id": "matchmaking_error_description",
@@ -13090,7 +13090,7 @@
     {
       "id": "dare_pool_destructor_omit_no_pic",
       "compiler": "8.0.1",
-      "object_sha256": "5b4ebda02d053543d51a63806e682ac54f1683f681efd8d33f9542d956f2b437"
+      "object_sha256": "db36dde76d6097f751ca79b018f76f77046376a9d516a5b4034607bf1bf0f4f8"
     },
     {
       "id": "component_map_collect_by_key_omit_no_pic",
@@ -13505,12 +13505,32 @@
     {
       "id": "gameplay_class_destructors",
       "compiler": "8.0.1",
-      "object_sha256": "59fc0409b6123b45d2502d0e5b20bddd9a5092fb57fac8968edb7e12ee819eb5"
+      "object_sha256": "efe68d262dacb8480fa1e5e27da9d62a495d21ba8287b8c10cf9603436dcc8ac"
     },
     {
       "id": "gameplay_boss",
       "compiler": "8.0.1",
       "object_sha256": "ce22fb886637b49e775b27642721e8352aca2428cd07ab9a75e6734284b73543"
+    },
+    {
+      "id": "componentaccessor_member_707290",
+      "compiler": "8.0.1",
+      "object_sha256": "45e78fd07185a8ec0dc6d633d3ce8e594bc58ac5ac3360ff076e1ef3bc5515f7"
+    },
+    {
+      "id": "componentaccessor_member_76bc40",
+      "compiler": "8.0.1",
+      "object_sha256": "488212a072e9653507f1741079828d48df6479bf57d4b3efbe16b4aead8e0bc1"
+    },
+    {
+      "id": "componentaccessor_member_89b1e0",
+      "compiler": "8.0.1",
+      "object_sha256": "18274666d4574cb03176f6688f32277dc8dd17b8de3e495ee02238001e0e0f58"
+    },
+    {
+      "id": "componentaccessor_member_b8aaf0",
+      "compiler": "8.0.1",
+      "object_sha256": "27d54980d2d9e44cce70533c815e62c1cf6580ec354d1761f4f3fec5a8a96a55"
     }
   ],
   "matches": [
@@ -229269,6 +229289,17 @@
       "relocation_count": 0
     },
     {
+      "address": "0x707290",
+      "size": 824,
+      "exact": true,
+      "target_sha256": "24237037accdfbea897de53fc05fff673100678c4d19e5e9c329e26c16080147",
+      "compiled_sha256": "24237037accdfbea897de53fc05fff673100678c4d19e5e9c329e26c16080147",
+      "source": "src/ComponentAccessor.cpp",
+      "symbol": "ResolveMemberAccessorCandidate",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 28
+    },
+    {
       "address": "0x707660",
       "size": 28,
       "exact": true,
@@ -230719,6 +230750,17 @@
       "symbol": "_ZN4Onyx9DareAudio14AudioComponentD2Ev",
       "source_review": "manual_reconstruction",
       "relocation_count": 14
+    },
+    {
+      "address": "0x71ab00",
+      "size": 220,
+      "exact": true,
+      "target_sha256": "2083864d79c152638892279b6f99d3bbfb7bca1439c560cb21557b9ec4e2c208",
+      "compiled_sha256": "2083864d79c152638892279b6f99d3bbfb7bca1439c560cb21557b9ec4e2c208",
+      "source": "src/gameplay/ClassDestructors.cpp",
+      "symbol": "_ZN4Onyx9DareAudio14AudioComponentD0Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 15
     },
     {
       "address": "0x71abe0",
@@ -239983,6 +240025,17 @@
       "relocation_count": 0
     },
     {
+      "address": "0x76bc40",
+      "size": 824,
+      "exact": true,
+      "target_sha256": "dbc86e7cd70dc57b3da001430bc54ceb6f44e6922a590c41f2047e8597483225",
+      "compiled_sha256": "dbc86e7cd70dc57b3da001430bc54ceb6f44e6922a590c41f2047e8597483225",
+      "source": "src/ComponentAccessor.cpp",
+      "symbol": "ResolveMemberAccessorCandidate",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 28
+    },
+    {
       "address": "0x76c0d0",
       "size": 356,
       "exact": true,
@@ -246570,6 +246623,17 @@
       "symbol": "_ZN4SPTG15AchievementDataD2Ev",
       "source_review": "manual_reconstruction",
       "relocation_count": 12
+    },
+    {
+      "address": "0x7a37e0",
+      "size": 172,
+      "exact": true,
+      "target_sha256": "61ede8260adf537c4abf6254a339d3c24845279250950a40dceb9c4a228e4da4",
+      "compiled_sha256": "61ede8260adf537c4abf6254a339d3c24845279250950a40dceb9c4a228e4da4",
+      "source": "src/gameplay/ClassDestructors.cpp",
+      "symbol": "_ZN4SPTG15AchievementDataD0Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 13
     },
     {
       "address": "0x7a3890",
@@ -273522,6 +273586,17 @@
       "relocation_count": 2
     },
     {
+      "address": "0x89b1e0",
+      "size": 824,
+      "exact": true,
+      "target_sha256": "2e035d16006a5912aaa5f88716a2d4a3b0414a65bdb9fc7619eab363fcbc5d75",
+      "compiled_sha256": "2e035d16006a5912aaa5f88716a2d4a3b0414a65bdb9fc7619eab363fcbc5d75",
+      "source": "src/ComponentAccessor.cpp",
+      "symbol": "ResolveMemberAccessorCandidate",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 28
+    },
+    {
       "address": "0x89b520",
       "size": 100,
       "exact": true,
@@ -274312,6 +274387,28 @@
       "symbol": "_Z16DestroyAllocatedILj9059008EEvPv",
       "source_review": "manual_reconstruction",
       "relocation_count": 2
+    },
+    {
+      "address": "0x8a42e0",
+      "size": 212,
+      "exact": true,
+      "target_sha256": "e2f9a774abc7b9360939297b059f7d97b7c27c846d04e3105f2f06e06b75a668",
+      "compiled_sha256": "e2f9a774abc7b9360939297b059f7d97b7c27c846d04e3105f2f06e06b75a668",
+      "source": "src/HudPoolCleanup.cpp",
+      "symbol": "_ZN10HudPoolAbi4PoolILj80EED1Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 6
+    },
+    {
+      "address": "0x8a43c0",
+      "size": 212,
+      "exact": true,
+      "target_sha256": "a7338b6e6921a740c63a84f6abc74dd058a48c34e39d8ca651b56fa4767704d9",
+      "compiled_sha256": "a7338b6e6921a740c63a84f6abc74dd058a48c34e39d8ca651b56fa4767704d9",
+      "source": "src/HudPoolCleanup.cpp",
+      "symbol": "_ZN10HudPoolAbi4PoolILj80EED0Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 7
     },
     {
       "address": "0x8a44a0",
@@ -279020,6 +279117,17 @@
       "symbol": "_ZN4SPTG22FillLineListGroupShapeD2Ev",
       "source_review": "manual_reconstruction",
       "relocation_count": 16
+    },
+    {
+      "address": "0x8bd650",
+      "size": 200,
+      "exact": true,
+      "target_sha256": "08309514558793bc633e5ffbe260cada0e38e84903570f4c693c6688fa880674",
+      "compiled_sha256": "08309514558793bc633e5ffbe260cada0e38e84903570f4c693c6688fa880674",
+      "source": "src/gameplay/ClassDestructors.cpp",
+      "symbol": "_ZN4SPTG22FillLineListGroupShapeD0Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 17
     },
     {
       "address": "0x8bd720",
@@ -311956,6 +312064,17 @@
       "relocation_count": 17
     },
     {
+      "address": "0xa0ac10",
+      "size": 212,
+      "exact": true,
+      "target_sha256": "2722c64a893c7b36e910c66ce414825f0d1b67472ea56354636059dbbc7d5b45",
+      "compiled_sha256": "2722c64a893c7b36e910c66ce414825f0d1b67472ea56354636059dbbc7d5b45",
+      "source": "src/gameplay/ClassDestructors.cpp",
+      "symbol": "_ZN4SPTG26ControllableSpawnerCatalogD0Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 18
+    },
+    {
       "address": "0xa0acf0",
       "size": 112,
       "exact": true,
@@ -339357,6 +339476,17 @@
       "relocation_count": 16
     },
     {
+      "address": "0xb05af0",
+      "size": 200,
+      "exact": true,
+      "target_sha256": "b36d49c330173a14c45e3755744cbe7adade7e2b49770f2027448d25b56f7751",
+      "compiled_sha256": "b36d49c330173a14c45e3755744cbe7adade7e2b49770f2027448d25b56f7751",
+      "source": "src/gameplay/ClassDestructors.cpp",
+      "symbol": "_ZN4Onyx8Graphics13LineListShapeD0Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 17
+    },
+    {
       "address": "0xb061b0",
       "size": 104,
       "exact": true,
@@ -344514,6 +344644,17 @@
       "symbol": "_ZN4Onyx8Graphics17MorphInstanceBaseD2Ev",
       "source_review": "manual_reconstruction",
       "relocation_count": 14
+    },
+    {
+      "address": "0xb3c290",
+      "size": 188,
+      "exact": true,
+      "target_sha256": "dddd073a69124e41ce3b2733d503757cd516fa65d71aba1f6b4bebbac6c3e5b7",
+      "compiled_sha256": "dddd073a69124e41ce3b2733d503757cd516fa65d71aba1f6b4bebbac6c3e5b7",
+      "source": "src/gameplay/ClassDestructors.cpp",
+      "symbol": "_ZN4Onyx8Graphics17MorphInstanceBaseD0Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 15
     },
     {
       "address": "0xb3c350",
@@ -353679,6 +353820,17 @@
       "relocation_count": 2
     },
     {
+      "address": "0xb8aaf0",
+      "size": 824,
+      "exact": true,
+      "target_sha256": "cb4943408ab176d3cb8bd2e1f7d68f33514b3c87d16b8b92d1804f042833e941",
+      "compiled_sha256": "cb4943408ab176d3cb8bd2e1f7d68f33514b3c87d16b8b92d1804f042833e941",
+      "source": "src/ComponentAccessor.cpp",
+      "symbol": "ResolveMemberAccessorCandidate",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 28
+    },
+    {
       "address": "0xb8b7d0",
       "size": 28,
       "exact": true,
@@ -362039,6 +362191,28 @@
       "relocation_count": 1
     },
     {
+      "address": "0xbee200",
+      "size": 212,
+      "exact": true,
+      "target_sha256": "ac0270bc7091126701b074faa26f3a1ad408f96e3fe81610d7ac12ac4cfa4f09",
+      "compiled_sha256": "ac0270bc7091126701b074faa26f3a1ad408f96e3fe81610d7ac12ac4cfa4f09",
+      "source": "src/HudPoolCleanup.cpp",
+      "symbol": "_ZN10HudPoolAbi6PoolAtILj40ELj40EED1Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 6
+    },
+    {
+      "address": "0xbee2e0",
+      "size": 212,
+      "exact": true,
+      "target_sha256": "aa42d83b170c87d1a05987656eb54c26518cada9d17549f95876bd67e0c2aaff",
+      "compiled_sha256": "aa42d83b170c87d1a05987656eb54c26518cada9d17549f95876bd67e0c2aaff",
+      "source": "src/HudPoolCleanup.cpp",
+      "symbol": "_ZN10HudPoolAbi6PoolAtILj40ELj40EED0Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 7
+    },
+    {
       "address": "0xbee570",
       "size": 4,
       "exact": true,
@@ -362059,6 +362233,28 @@
       "symbol": "RecoveredLeaf_bee580",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 1
+    },
+    {
+      "address": "0xbee630",
+      "size": 212,
+      "exact": true,
+      "target_sha256": "613c2fb2db89068d3edf881d939492abc8598ed3b3ddd892f05e39f806c023f5",
+      "compiled_sha256": "613c2fb2db89068d3edf881d939492abc8598ed3b3ddd892f05e39f806c023f5",
+      "source": "src/HudPoolCleanup.cpp",
+      "symbol": "_ZN10HudPoolAbi6PoolAtILj24ELj32EED1Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 6
+    },
+    {
+      "address": "0xbee710",
+      "size": 212,
+      "exact": true,
+      "target_sha256": "7274f7603b412d6c3efe7513f43488a4f29d0ee86c88d47942564d1d156727dc",
+      "compiled_sha256": "7274f7603b412d6c3efe7513f43488a4f29d0ee86c88d47942564d1d156727dc",
+      "source": "src/HudPoolCleanup.cpp",
+      "symbol": "_ZN10HudPoolAbi6PoolAtILj24ELj32EED0Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 7
     },
     {
       "address": "0xbee9d0",
@@ -403201,6 +403397,17 @@
       "relocation_count": 5
     },
     {
+      "address": "0xd15010",
+      "size": 256,
+      "exact": true,
+      "target_sha256": "2f7de9776391cd20e5d349375dc398e0200d54513d3e40e63a58a101e01524a9",
+      "compiled_sha256": "2f7de9776391cd20e5d349375dc398e0200d54513d3e40e63a58a101e01524a9",
+      "source": "src/DarePoolDestructorOmitNoPic.cpp",
+      "symbol": "_ZN4Dare7Private12DarePoolBaseILj13717520ELj159904EED1Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 13
+    },
+    {
       "address": "0xd15110",
       "size": 24,
       "exact": true,
@@ -403276,6 +403483,17 @@
       "symbol": "_Z16DestroyAllocatedILj13718256EEvPv",
       "source_review": "manual_reconstruction",
       "relocation_count": 2
+    },
+    {
+      "address": "0xd15310",
+      "size": 240,
+      "exact": true,
+      "target_sha256": "92d3d6607acd5a22c4cd9f8a3c0dfb52389ef04075b9fd7b13ac06e85c6618c7",
+      "compiled_sha256": "92d3d6607acd5a22c4cd9f8a3c0dfb52389ef04075b9fd7b13ac06e85c6618c7",
+      "source": "src/DarePoolDestructorOmitNoPic.cpp",
+      "symbol": "_ZN4Dare7Private12DarePoolBaseILj13718288ELj45344EED1Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 13
     },
     {
       "address": "0xd15400",
@@ -403443,6 +403661,17 @@
       "relocation_count": 2
     },
     {
+      "address": "0xd158e0",
+      "size": 256,
+      "exact": true,
+      "target_sha256": "88c81d5eb2764f2643343dd22589c82fd13093732729ab7d358f8279319b5ef1",
+      "compiled_sha256": "88c81d5eb2764f2643343dd22589c82fd13093732729ab7d358f8279319b5ef1",
+      "source": "src/DarePoolDestructorOmitNoPic.cpp",
+      "symbol": "_ZN4Dare7Private12DarePoolBaseILj13719776ELj571552EED1Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 13
+    },
+    {
       "address": "0xd159e0",
       "size": 24,
       "exact": true,
@@ -403608,6 +403837,17 @@
       "relocation_count": 2
     },
     {
+      "address": "0xd15eb0",
+      "size": 240,
+      "exact": true,
+      "target_sha256": "ab4d78bba748f678c039962ffc4874a457df5512ff10110bae6790f9d60071f6",
+      "compiled_sha256": "ab4d78bba748f678c039962ffc4874a457df5512ff10110bae6790f9d60071f6",
+      "source": "src/DarePoolDestructorOmitNoPic.cpp",
+      "symbol": "_ZN4Dare7Private12DarePoolBaseILj13721264ELj48288EED1Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 13
+    },
+    {
       "address": "0xd15fa0",
       "size": 24,
       "exact": true,
@@ -403639,6 +403879,17 @@
       "symbol": "_Z16DestroyAllocatedILj13721616EEvPv",
       "source_review": "manual_reconstruction",
       "relocation_count": 2
+    },
+    {
+      "address": "0xd16030",
+      "size": 240,
+      "exact": true,
+      "target_sha256": "a3d9ce8fa8d09bf23a0ac242f4713da2a956b31f4bd68eeca2c04e8bdf60eb2a",
+      "compiled_sha256": "a3d9ce8fa8d09bf23a0ac242f4713da2a956b31f4bd68eeca2c04e8bdf60eb2a",
+      "source": "src/DarePoolDestructorOmitNoPic.cpp",
+      "symbol": "_ZN4Dare7Private12DarePoolBaseILj13721648ELj33952EED1Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 13
     },
     {
       "address": "0xd16120",
@@ -404651,6 +404902,17 @@
       "symbol": "sub_D22FA0",
       "source_review": "decompiler_text_review_pending",
       "relocation_count": 26
+    },
+    {
+      "address": "0xd230d0",
+      "size": 240,
+      "exact": true,
+      "target_sha256": "71bba6d06f0d6baacd99e76eed34b5adcfb57a75703290119bef8e2d7c323b8b",
+      "compiled_sha256": "71bba6d06f0d6baacd99e76eed34b5adcfb57a75703290119bef8e2d7c323b8b",
+      "source": "src/DarePoolDestructorOmitNoPic.cpp",
+      "symbol": "_ZN4Dare7Private12DarePoolBaseILj13775056ELj63208EED1Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 13
     },
     {
       "address": "0xd231c0",
@@ -406004,6 +406266,17 @@
       "symbol": "_Z15DestroyDareTreeILj13856400EEvP8DareNodeIXT_EE",
       "source_review": "manual_reconstruction",
       "relocation_count": 5
+    },
+    {
+      "address": "0xd378a0",
+      "size": 256,
+      "exact": true,
+      "target_sha256": "da5a3825a6d873c26571842afd16d874946839412f17f25c89a9648dfc2ee2ee",
+      "compiled_sha256": "da5a3825a6d873c26571842afd16d874946839412f17f25c89a9648dfc2ee2ee",
+      "source": "src/DarePoolDestructorOmitNoPic.cpp",
+      "symbol": "_ZN4Dare7Private12DarePoolBaseILj13858976ELj102424EED1Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 13
     },
     {
       "address": "0xd379a0",
@@ -408778,6 +409051,17 @@
       "relocation_count": 2
     },
     {
+      "address": "0xd51280",
+      "size": 240,
+      "exact": true,
+      "target_sha256": "fc8d36070838d303e115eed84191f875614904815ac1518f9ce8358240d7bbbc",
+      "compiled_sha256": "fc8d36070838d303e115eed84191f875614904815ac1518f9ce8358240d7bbbc",
+      "source": "src/DarePoolDestructorOmitNoPic.cpp",
+      "symbol": "_ZN4Dare7Private12DarePoolBaseILj13963904ELj40544EED1Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 13
+    },
+    {
       "address": "0xd51370",
       "size": 24,
       "exact": true,
@@ -408809,6 +409093,17 @@
       "symbol": "_Z16DestroyAllocatedILj13964256EEvPv",
       "source_review": "manual_reconstruction",
       "relocation_count": 2
+    },
+    {
+      "address": "0xd51400",
+      "size": 240,
+      "exact": true,
+      "target_sha256": "8420308018c79712a495a2452c33dcd0281ff8908e9e546a352e5e9d41fe6a29",
+      "compiled_sha256": "8420308018c79712a495a2452c33dcd0281ff8908e9e546a352e5e9d41fe6a29",
+      "source": "src/DarePoolDestructorOmitNoPic.cpp",
+      "symbol": "_ZN4Dare7Private12DarePoolBaseILj13964288ELj41056EED1Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 13
     },
     {
       "address": "0xd514f0",
@@ -408844,6 +409139,17 @@
       "relocation_count": 2
     },
     {
+      "address": "0xd51580",
+      "size": 256,
+      "exact": true,
+      "target_sha256": "cad9effa32320ec7b38cc6e3fc0bbd3ddebf1de78604df204b1f7c183fa2e433",
+      "compiled_sha256": "cad9effa32320ec7b38cc6e3fc0bbd3ddebf1de78604df204b1f7c183fa2e433",
+      "source": "src/DarePoolDestructorOmitNoPic.cpp",
+      "symbol": "_ZN4Dare7Private12DarePoolBaseILj13964672ELj168224EED1Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 13
+    },
+    {
       "address": "0xd51680",
       "size": 24,
       "exact": true,
@@ -408875,6 +409181,17 @@
       "symbol": "_Z16DestroyAllocatedILj13965040EEvPv",
       "source_review": "manual_reconstruction",
       "relocation_count": 2
+    },
+    {
+      "address": "0xd51710",
+      "size": 256,
+      "exact": true,
+      "target_sha256": "9651773d6d811cb6f6e2cd1063b9562da59a301b5ed87b18394653b6753f07ed",
+      "compiled_sha256": "9651773d6d811cb6f6e2cd1063b9562da59a301b5ed87b18394653b6753f07ed",
+      "source": "src/DarePoolDestructorOmitNoPic.cpp",
+      "symbol": "_ZN4Dare7Private12DarePoolBaseILj13965072ELj188704EED1Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 13
     },
     {
       "address": "0xd51810",

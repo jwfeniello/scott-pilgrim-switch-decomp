@@ -111,8 +111,9 @@ struct TemporaryReference {
     }
 };
 
-extern "C" Object* ResolveComponentAccessorCandidate(Handle** cache) {
-    Handle* initial = __atomic_load_n(cache, __ATOMIC_RELAXED);
+// The member form reads the cache with plain loads, so a resolved handle is returned without a second load.
+template<bool Atomic> static __attribute__((always_inline)) inline Object* Resolve(Handle** cache) {
+    Handle* initial = Atomic ? __atomic_load_n(cache, __ATOMIC_RELAXED) : *cache;
     if (!initial || !initial->object) {
         void* resolver = Accessor_Resolver;
         LookupEntry* entry = Accessor_Find(static_cast<char*>(resolver) + 0x38, COMPONENT_ACCESSOR_ID);
@@ -127,7 +128,14 @@ extern "C" Object* ResolveComponentAccessorCandidate(Handle** cache) {
         TemporaryReference reference(handle, &temporary);
         Accessor_Assign(cache, &temporary);
     }
-    Handle* result = __atomic_load_n(cache, __ATOMIC_RELAXED);
+    Handle* result = Atomic ? __atomic_load_n(cache, __ATOMIC_RELAXED) : *cache;
     return result ? result->object : nullptr;
 }
+extern "C" Object* ResolveComponentAccessorCandidate(Handle** cache) { return Resolve<true>(cache); }
+#ifdef COMPONENT_ACCESSOR_MEMBER_OFFSET
+// The same lookup as a member function whose cache sits at a fixed offset in the object.
+extern "C" Object* ResolveMemberAccessorCandidate(char* self) {
+    return Resolve<false>(reinterpret_cast<Handle**>(self + COMPONENT_ACCESSOR_MEMBER_OFFSET));
+}
+#endif
 }
