@@ -172,6 +172,7 @@ struct EnemyMini : Enemy {
 };
 // vtable 0x1883730, 237 slots
 struct EnemyJetPackMatt : Enemy {
+    void Slot13();
     int State106(int event);
     void Spawn(const EnemySpawnInfo* info) override;
     void FollowPlayfield() override;

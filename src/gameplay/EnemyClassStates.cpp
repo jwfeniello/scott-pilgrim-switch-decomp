@@ -740,6 +740,43 @@ int EnemyStuntman::State234(int event) {
     return kStateUnhandled;
 }
 
+// EnemySasuke slot 234 (0x9e50c0): after EnemyOneHitWonder's state, times the
+// state; while still in it, once Sasuke has reached the x he aims for (+0xbf4) in
+// the direction he faces, saves the motion and switches to the state at
+// 0x9e5360. Event 10003 is not handled.
+// Not yet matched: the original places the second actor lookup's null case before
+// the flags lookup and works out the state machine's address there; the rest lines up.
+int EnemySasuke::State234(int event) {
+    int result = EnemyOneHitWonder::State234(event);
+    if (result == kStateParentTookOver) return result;
+    switch (event) {
+    default:
+        return kStateUnhandled;
+    case kStateEnter:
+        value334 = 0.0f;
+        return kStateHandled;
+    case kStateUpdate: {
+        value334 += Move_FrameDelta;
+        if (flagBf8) return kStateHandled;
+        State state = State234Ptr();
+        if (!(states.current == state)) return kStateHandled;
+        float x = onyx::Get<onyx::Transform, onyx::kTransform>(onyx::Find<ActorObject, onyx_types::type_6492d61d>(actorObject)->transform)->position.x;
+        bool left = onyx::Get<ActorFlags, 0x2eae5813u>(onyx::Find<ActorObject, onyx_types::type_6492d61d>(actorObject)->flags)->facingLeft;
+        float limit = targetX;
+        if (left ? x <= limit : x >= limit) {
+            savedMotion.x = motion.x;
+            savedMotion.y = motion.y;
+            savedMotion.z = motion.z;
+            states.Transition(State9e5360Ptr());
+            return kStateParentTookOver;
+        }
+        return kStateHandled;
+    }
+    case kStateExit:
+        return kStateHandled;
+    }
+}
+
 // Slot 82 (EnemyGiant 0x9fb550, also EnemyGeeOne's; EnemyGodzilla 0x9f9130):
 // never in the class's attack state (Giant 246, Godzilla 238); otherwise
 // BaseCharacter's test.
@@ -1264,6 +1301,27 @@ void EnemyJetPackMatt::Spawn(const EnemySpawnInfo* info) {
 }
 
 // Slot 76 (0x9f1800): takes the playfield's ground height and tells the shadow; a flyer doesn't snap to the ground.
+// EnemyJetPackMatt slot 13 (0x9f0f50): after Enemy's, a Matt above height 80
+// with health left comes down to 70. One whose target is more than 500 away,
+// with +0x940 raised and +0xae9 clear, loses its +0x328 and guts and goes to the
+// state at 0x9f25b0.
+void EnemyJetPackMatt::Slot13() {
+    Enemy::Slot13();
+    onyx::Vector3 position = onyx::Find<onyx::Transform, onyx::kTransform>(onyx::Find<ActorObject, 0x6492d61du>(actorObject)->transform)->position;
+    if (position.z > 80.0f && health > 0.0f) {
+        position.z = 70.0f;
+        onyx::Find<ActorObject, 0x6492d61du>(actorObject)->MoveTo(position);
+        groundHeight = 70;
+        FollowPlayfield();
+    }
+    uint32_t index = targetIndex;
+    if (index != 4 && health > 0.0f && targets[index].distance > 500.0f && flag940 && !flagAe9) {
+        value328 = 0.0f;
+        guts = 0.0f;
+        states.Transition(State9f25b0Ptr());
+    }
+}
+
 void EnemyJetPackMatt::FollowPlayfield() {
     onyx::ComponentHandle* handle = onyx::Get<ActorObject, onyx_types::type_6492d61d>(actorObject)->playfield;
     if (!handle) return;

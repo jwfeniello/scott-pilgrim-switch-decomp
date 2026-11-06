@@ -468,6 +468,9 @@ bottom, at the first player's x with the same z. The z also becomes `groundHeigh
 
 `NegaScott`, `GigaGideon` and `EnemyJetPackMatt` inline slot 159 (`Enemy::SpawnFrom`) and add their own step. The jet
 pack remembers the height it was placed at in `spawnHeight` (`+0xc3c`).
+Each frame (slot 13, after Enemy's) a jet-pack Matt above height 80 with health left is put back at 70, and one whose
+target is more than 500 away, with `+0x940` raised and `+0xae9` clear, loses `+0x328` and its guts and flies off (the
+state at `0x9f25b0`).
 
 `PlaceAtSpawn` is not matched. After the move, the original converts the height from a value it has carried across the
 call in a general register, instead of reloading it from the `Vector3` it passed. It would only do that if the compiler

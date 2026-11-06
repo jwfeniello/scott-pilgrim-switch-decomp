@@ -1,9 +1,9 @@
 {
   "version": 1,
-  "generated_at": "2026-11-06T00:00:10.935328+00:00",
+  "generated_at": "2026-11-06T00:08:25.938722+00:00",
   "target_elf_sha256": "ea95638e6d6aaa0dc6cddd552a9366799aa1ec3bc07ee201f23f6c151103f5b8",
   "input_sha256": {
-    "config/builds.json": "3f67dcb10eae45a27003eee3198fe3d0c90309ca9593b38d129c55dae7e94a08",
+    "config/builds.json": "17d86273a800c5b31d5414f327e20932c7ecdaa99177cf0798523699ce9fc1ae",
     "config/functions.tsv": "399e91468a04e0459194c10d68d2210d1157cedefeb19c7851886ca7632fcb18",
     "config/non_fde_functions.tsv": "6a45f5e185454fa0472af00b2cdc9d040d73ca133d1106217e1fbbe3b32a8175",
     "config/target.json": "23cc6a5227206a953e7668acf5e9ae5c02a25c23b7e7967f0450a814b888241a",
@@ -1155,8 +1155,8 @@
     "src/gameplay/Enemy.cpp": "fcad92e56ebb9578de7647cf667ff23a78b87efaa65bf7f2fa1e709f4cf93017",
     "src/gameplay/Enemy.h": "a1c25386020b402a2658fcb898df9553c48c570ef1b8f53384f7b987599bbc6a",
     "src/gameplay/EnemyAttackStates.cpp": "40c206398172e031a38f74e9243592a04c535166ef4ea3ba4cf2119291e02a6b",
-    "src/gameplay/EnemyClassStates.cpp": "7ea5fccf5dff62d006ae14bd7744ea14197f1fe640ba2beeb209563e7e9e22d0",
-    "src/gameplay/EnemyClasses.h": "10849ef06c4ea444005214b35c3cb792bd0d9f37818f168fe876a73d1c764ebc",
+    "src/gameplay/EnemyClassStates.cpp": "ba60d5b699fedf37ade3bc0ac3fb62271408c29ffeb9010094b94f6b3b71e1cc",
+    "src/gameplay/EnemyClasses.h": "6254c718ea3d132eb36246f402399483f3dd5aa7e2bae93c52f0fc81a8468e39",
     "src/gameplay/EnemyStates.cpp": "f4f572c115a765f27b0dc517f19392577c23775bac9625474b950e17700bdbed",
     "src/gameplay/EventSenders.cpp": "96d7d8707c5fd3995518f2b5aa7cc5e0812de0a92ea69a28b22c939d21deb67d",
     "src/gameplay/GeneratedSerialize.cpp": "0e00aac052499ade138e71b38be31d397d28f565fea31196dda1f8b7bc904a39",
@@ -4010,17 +4010,17 @@
     "vendor/zlib-1.2.11/zutil.h": "9a63f6690fac1620aa3cecee5752af618806da438a256b4a047fbcd289cac159"
   },
   "compiler_versions": {
-    "8.0.1": "clang version 8.0.1 (tags/RELEASE_801/final)",
     "7.0.1": "clang version 7.0.1 (tags/RELEASE_701/final)",
+    "8.0.1": "clang version 8.0.1 (tags/RELEASE_801/final)",
     "lld": "LLD 8.0.1 (compatible with GNU linkers)"
   },
   "compiler_sha256": {
-    "8.0.1": "dffd62a213ec6cdb4430012a4a41c11e5e32c288f133d5391f9be49e1c5b69de",
     "7.0.1": "c2f0a175157d9aaace8031f8e6d7ea0ed6142b4bcef287105e3ed227301f1002",
+    "8.0.1": "dffd62a213ec6cdb4430012a4a41c11e5e32c288f133d5391f9be49e1c5b69de",
     "lld": "c4b3aaea06ff7112c64753047a2ab279fc3fe10dd807fd3c22edfdae99f43eed"
   },
-  "exact_functions": 38779,
-  "exact_bytes": 5118488,
+  "exact_functions": 38780,
+  "exact_bytes": 5118992,
   "builds": [
     {
       "id": "probes",
@@ -13498,11 +13498,6 @@
       "object_sha256": "707038f79042eaa0e737b9c89f4a21f9444abda233201d9e6aba09b9992e7d82"
     },
     {
-      "id": "gameplay_enemy_classes",
-      "compiler": "8.0.1",
-      "object_sha256": "0e0a6b9496cfd9ae3ed617a5ba863462042276ef417f8f70522a7a23865bc94a"
-    },
-    {
       "id": "gameplay_boss_classes",
       "compiler": "8.0.1",
       "object_sha256": "f18cc346164824c9693e2878aa9d42fbfbe78ec0f5d153d55aefe98ba8b27fe2"
@@ -13511,6 +13506,11 @@
       "id": "gameplay_boss_ai",
       "compiler": "8.0.1",
       "object_sha256": "2c3651d27953c3b382eefcacb2658aa9e0d268ef85be6e8c32334f1ed4f8cdd7"
+    },
+    {
+      "id": "gameplay_enemy_classes",
+      "compiler": "8.0.1",
+      "object_sha256": "68d0fddee247a639cd8ff58bbcad9c5d88138188d4a28ed0a6bf2243ad613af8"
     }
   ],
   "matches": [
@@ -308929,6 +308929,17 @@
       "symbol": "RecoveredIdentity_9f0eb0_0_0",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 0
+    },
+    {
+      "address": "0x9f0f50",
+      "size": 504,
+      "exact": true,
+      "target_sha256": "41c9e29d9df2aaf0a1cc78beb6128b435531c8a4ac6ed0c1b77fee3abe786a5d",
+      "compiled_sha256": "41c9e29d9df2aaf0a1cc78beb6128b435531c8a4ac6ed0c1b77fee3abe786a5d",
+      "source": "src/gameplay/EnemyClassStates.cpp",
+      "symbol": "_ZN4SPTG16EnemyJetPackMatt6Slot13Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 16
     },
     {
       "address": "0x9f1150",
