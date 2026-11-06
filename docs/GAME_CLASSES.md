@@ -661,6 +661,10 @@ enabled and not out, turns to it, and places the range origin `+0xbbc` from it (
 running twice, and it goes to state 234. The stuntman also sets `minX` and `maxX` from the screen, less the margin at `+0xbd0`.
 Sasuke sets `targetX` to the screen edge it faces, less the same margin.
 
+Three of their methods are `EnemyOneHitWonder`'s own and shared by all of them (the same address fills the slot in
+each vtable): the update (slot 16, `0x9cccb0`), which resets health, guts, the sensor and its counters every frame;
+damage (slot 69, `0x9ce090`); and state 108 (`0x9cf0b0`). They were credited as `EnemyStuntman`'s before.
+
 `EnemyShooter::State236` fires once `stateTime` runs out. At a target in the air it may aim up: `valueC28` is the percent chance,
 and the upward velocity comes from `tanf` of the angle in `valueC2c`, times the shot's speed along x.
 
@@ -1135,9 +1139,12 @@ The subclasses change the fight:
   raises +0xd68.
 
 Enemy slot 160 returns an enemy's kind: 0 for `Enemy`, 5 for the one-hit
-enemies and 6 for bosses. The boss states test +0xd28 before they run slot 240
-when the health is gone, and Ken & Kyle copy it from the twin, so it most
-likely marks a beaten boss.
+enemies and 6 for bosses. +0xd28 marks a beaten boss. Boss's slot 240
+(`0xa1b6f0`), which the boss states run once the health is gone, gives every
+character in the list behind the singleton at +0xba0 a hit stop: animation
+speed 0.3 for 3 seconds. It then sends event `0x3b6730cc` and raises +0xd28.
+That function is credited to a stand-in (`BossLasers::Arm` in
+`ActionEvents.cpp`) and still has to move to `Boss`.
 
 [`BossAI.cpp`](../src/gameplay/BossAI.cpp) matches 21 functions (3,824
 bytes): slots 13 (update), 16, 21, 23 and 25 of `BaseBossAI`, slots 21 and 23

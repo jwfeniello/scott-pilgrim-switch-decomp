@@ -1,9 +1,9 @@
 {
   "version": 1,
-  "generated_at": "2026-11-06T01:07:34.441089+00:00",
+  "generated_at": "2026-11-06T01:11:43.737755+00:00",
   "target_elf_sha256": "ea95638e6d6aaa0dc6cddd552a9366799aa1ec3bc07ee201f23f6c151103f5b8",
   "input_sha256": {
-    "config/builds.json": "93f53003d16f9ecdb6ec6c928e2f86bf57ca50da49317834fe12015dedb8cc8e",
+    "config/builds.json": "eb5f0d39585700bd454e7d5d0ee888e70cebb385e294e66a6221d47ba301fe35",
     "config/functions.tsv": "399e91468a04e0459194c10d68d2210d1157cedefeb19c7851886ca7632fcb18",
     "config/non_fde_functions.tsv": "6a45f5e185454fa0472af00b2cdc9d040d73ca133d1106217e1fbbe3b32a8175",
     "config/target.json": "23cc6a5227206a953e7668acf5e9ae5c02a25c23b7e7967f0450a814b888241a",
@@ -1155,8 +1155,8 @@
     "src/gameplay/Enemy.cpp": "fcad92e56ebb9578de7647cf667ff23a78b87efaa65bf7f2fa1e709f4cf93017",
     "src/gameplay/Enemy.h": "a1c25386020b402a2658fcb898df9553c48c570ef1b8f53384f7b987599bbc6a",
     "src/gameplay/EnemyAttackStates.cpp": "40c206398172e031a38f74e9243592a04c535166ef4ea3ba4cf2119291e02a6b",
-    "src/gameplay/EnemyClassStates.cpp": "ba60d5b699fedf37ade3bc0ac3fb62271408c29ffeb9010094b94f6b3b71e1cc",
-    "src/gameplay/EnemyClasses.h": "6254c718ea3d132eb36246f402399483f3dd5aa7e2bae93c52f0fc81a8468e39",
+    "src/gameplay/EnemyClassStates.cpp": "176105664630a9d461f829d20e3ca984382b20f342becc7b3868459ecbfc58bd",
+    "src/gameplay/EnemyClasses.h": "d0760e4ce3e9bd8f5e07d6e567b1d3eff142905b41ee0606328e5801004becab",
     "src/gameplay/EnemyStates.cpp": "f4f572c115a765f27b0dc517f19392577c23775bac9625474b950e17700bdbed",
     "src/gameplay/EventSenders.cpp": "96d7d8707c5fd3995518f2b5aa7cc5e0812de0a92ea69a28b22c939d21deb67d",
     "src/gameplay/GeneratedSerialize.cpp": "0e00aac052499ade138e71b38be31d397d28f565fea31196dda1f8b7bc904a39",
@@ -13473,11 +13473,6 @@
       "object_sha256": "707038f79042eaa0e737b9c89f4a21f9444abda233201d9e6aba09b9992e7d82"
     },
     {
-      "id": "gameplay_enemy_classes",
-      "compiler": "8.0.1",
-      "object_sha256": "68d0fddee247a639cd8ff58bbcad9c5d88138188d4a28ed0a6bf2243ad613af8"
-    },
-    {
       "id": "gameplay_player_states2",
       "compiler": "8.0.1",
       "object_sha256": "0c54fdeb2f40c8655a1f31cd1f59a93923b3bc3cdf516410ba3bf4e6d64da9e7"
@@ -13511,6 +13506,11 @@
       "id": "gameplay_boss",
       "compiler": "8.0.1",
       "object_sha256": "99b04f69f0325ffa913542f1e6fc3cfdc6d81813c26c05601cfde318329d0672"
+    },
+    {
+      "id": "gameplay_enemy_classes",
+      "compiler": "8.0.1",
+      "object_sha256": "9ac61780d5009f6da9251b07eb0560376c96577c9ffc91f9d111f2cd029bbce8"
     }
   ],
   "matches": [
@@ -305318,7 +305318,7 @@
       "target_sha256": "b866d96696edc222e5d0eb6bae424a1f7f56b3cdc521b0107eadc790bdc3ef0f",
       "compiled_sha256": "b866d96696edc222e5d0eb6bae424a1f7f56b3cdc521b0107eadc790bdc3ef0f",
       "source": "src/gameplay/EnemyClassStates.cpp",
-      "symbol": "_ZN4SPTG13EnemyStuntman6UpdateEv",
+      "symbol": "_ZN4SPTG17EnemyOneHitWonder6UpdateEv",
       "source_review": "manual_reconstruction",
       "relocation_count": 4
     },
@@ -305439,7 +305439,7 @@
       "target_sha256": "f31d1a248caff11b6d6573e62e784c2a7bedd98ad04c9f805122dad39195c5d7",
       "compiled_sha256": "f31d1a248caff11b6d6573e62e784c2a7bedd98ad04c9f805122dad39195c5d7",
       "source": "src/gameplay/EnemyClassStates.cpp",
-      "symbol": "_ZN4SPTG13EnemyStuntman10TakeDamageEPKvPNS_13BaseCharacterE",
+      "symbol": "_ZN4SPTG17EnemyOneHitWonder10TakeDamageEPKvPNS_13BaseCharacterE",
       "source_review": "manual_reconstruction",
       "relocation_count": 2
     },
@@ -305626,7 +305626,7 @@
       "target_sha256": "8dc36bae943c78b7621746083f8e3d772203d8f72269f06ec17ae671406074e2",
       "compiled_sha256": "8dc36bae943c78b7621746083f8e3d772203d8f72269f06ec17ae671406074e2",
       "source": "src/gameplay/EnemyClassStates.cpp",
-      "symbol": "_ZN4SPTG13EnemyStuntman8State108Ei",
+      "symbol": "_ZN4SPTG17EnemyOneHitWonder8State108Ei",
       "source_review": "manual_reconstruction",
       "relocation_count": 1
     },

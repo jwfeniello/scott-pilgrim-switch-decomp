@@ -84,7 +84,7 @@ void EnemyAerial::SetSolid(bool solid) {
     if (solid) states.Transition(State96Ptr());
 }
 
-// Slot 108 (EnemyAerial 0xa03670, EnemyStuntman 0x9cf0b0): after Enemy's state,
+// Slot 108 (EnemyAerial 0xa03670, EnemyOneHitWonder 0x9cf0b0, which all the one-hit enemies share): after Enemy's state,
 // raise a flag on entry and lower it on exit (Stuntman's +0x940 the other way round).
 int EnemyAerial::State108(int event) {
     if (Enemy::State108(event) == kStateParentTookOver) return kStateParentTookOver;
@@ -98,7 +98,7 @@ int EnemyAerial::State108(int event) {
     }
     return kStateUnhandled;
 }
-int EnemyStuntman::State108(int event) {
+int EnemyOneHitWonder::State108(int event) {
     if (Enemy::State108(event) == kStateParentTookOver) return kStateParentTookOver;
     switch (event) {
     case kStateEnter:
@@ -283,10 +283,10 @@ void EnemyChubby::Slot166(int kind) {
     }
 }
 
-// EnemyStuntman slot 69 (0x9ce090): takes the damage through the base class,
+// EnemyOneHitWonder slot 69 (0x9ce090, shared by the one-hit enemies): takes the damage through the base class,
 // raises +0x811, sends the current state the damage event, passes the damage to
 // the other character (slot 43) and to 0x995a30, and clears +0x328.
-float EnemyStuntman::TakeDamage(const void* hit, BaseCharacter* other) {
+float EnemyOneHitWonder::TakeDamage(const void* hit, BaseCharacter* other) {
     float damage = BaseCharacter::TakeDamage(hit, other);
     flag811 = 1;
     states.Send(kStateDamaged);
@@ -485,12 +485,12 @@ int EnemyGuyOnFire::State176(int event) {
     return kStateUnhandled;
 }
 
-// EnemyStuntman slot 16 (0x9cccb0): the actor update. A stuntman that is not
+// EnemyOneHitWonder slot 16 (0x9cccb0, shared by the one-hit enemies): the actor update. A stuntman that is not
 // held is released (slot 71) when its attachment's ID is outside 10001-999999.
 // Each frame then resets the scaled values to their bases, runs slot 229 (which
 // scales them again) and resets +0x32c,
 // +0x160, the sensor and its counters.
-void EnemyStuntman::Update() {
+void EnemyOneHitWonder::Update() {
     UpdateEnemy();
     guts = 0.0f;
     health = 1.0f;

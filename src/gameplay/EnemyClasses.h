@@ -10,6 +10,9 @@ namespace SPTG {
 
 // vtable 0x187ce88, 240 slots
 struct EnemyOneHitWonder : Enemy {
+    int State108(int event);                                  // slot 108, shared by all one-hit enemies
+    float TakeDamage(const void* hit, BaseCharacter* other);  // slot 69, shared
+    void Update();                                            // slot 16, shared
     virtual int State234(int event); virtual State State234Ptr();   // slots 234, 235
     virtual int State236(int event); virtual State State236Ptr();   // slots 236, 237
     virtual int State238(int event); virtual State State238Ptr();   // slots 238, 239
@@ -350,9 +353,6 @@ struct EnemyAerial : Enemy {
 // vtable 0x187c648, 241 slots
 struct EnemyStuntman : EnemyOneHitWonder {
     int State96(int event);
-    int State108(int event);
-    float TakeDamage(const void* hit, BaseCharacter* other);
-    void Update();
     void Slot4(onyx::Archive& archive, ComponentSlot::Source* source);
     virtual int State234(int event); virtual State State234Ptr();   // slots 234, 235, overrides EnemyOneHitWonder
     int State9da590(int event);   // 0x9da590, not virtual
