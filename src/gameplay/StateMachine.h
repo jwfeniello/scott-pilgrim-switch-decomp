@@ -24,6 +24,17 @@ template<class Owner> struct StateMachine {
     State current;
     State previous;
     void Transition(State state);
+    // The transition written out, for the owners whose copy the compiler inlined (AchievementManager). `value` is
+    // the 32-bit value that follows the machine.
+    __attribute__((always_inline)) void TransitionInline(State state, const int32_t& value) {
+        if (value != -1) (owner->*current)(kStateEvent3);
+        (owner->*current)(kStateExit);
+        State old = current;
+        current = state;
+        previous = old;
+        (owner->*state)(kStateEnter);
+        if (value != -1) (owner->*current)(kStateEvent3);
+    }
     // Sends the current state the per-frame update event.
     __attribute__((always_inline)) void Update() { (owner->*current)(kStateUpdate); }
     // Sends the current state any event.
