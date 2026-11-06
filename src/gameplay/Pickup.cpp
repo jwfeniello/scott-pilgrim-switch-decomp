@@ -376,8 +376,9 @@ int Pickup::State84(int event) {
     }
 }
 
-// Plays animation 189 and then stands in animation 0 until a player collects it. Not yet matched (not credited): the
-// shape is right but the original keeps `this` and the result in the other two registers.
+// Plays animation 189 and then stands in animation 0 until a player collects it. Not yet matched (not credited): with
+// the cases in this order the registers are right, and only the order of three independent moves before the
+// animation calls differs (the result's `mov w19, #1` against the arguments).
 int MithrilSkateboard::IdleState(int event) {
     int result = kStateHandled;
     switch (event) {
@@ -399,18 +400,17 @@ int MithrilSkateboard::IdleState(int event) {
         result = kStateParentTookOver;
         break;
     }
+    case kStateEvent3:
+        return result;
     case kStateEnter:
         result = kStateHandled;
         PlayAnimation(189, 1, 0, 1.0f);
         break;
-    case kStateExit:
-        states.AssertOwner(this);
-        result = kStateHandled;
-        break;
-    case kStateEvent3:
-        break;
     default:
         result = kStateUnhandled;
+        break;
+    case kStateExit:
+        result = kStateHandled;
         break;
     }
     return result;
@@ -438,24 +438,27 @@ int MithrilSkateboard::CollectedStateHandler(int event) {
     return result;
 }
 
-// Plays animation 107, then rests in animation 100 for restTime before it counts as collected. Not yet matched (not
-// credited): the original tests for animation 100 first and has a jump table entry of its own for the exit case.
+// MithrilSkateboard slot 84 (0x9b8d30): plays animation 107, then rests in animation 100 for restTime before it
+// counts as collected. The original compares 100 first, so the source tests 107 first (compare chains come out
+// reversed).
 int MithrilSkateboard::State84(int event) {
     int result = kStateHandled;
     switch (event) {
     case kStateUpdate: {
         int current = currentAnimation;
-        if (current == 100) {
+        if (current == 107) {
+            if (AnimationDone()) {
+                result = kStateHandled;
+                PlayAnimation(100, 1, 0, 1.0f);
+                break;
+            }
+        } else if (current == 100) {
             restTimer += Move_FrameDelta;
             if (AnimationDone() && restTimer >= restTime) {
                 states.Transition(CollectedState());
                 result = kStateParentTookOver;
                 break;
             }
-        } else if (current == 107 && AnimationDone()) {
-            result = kStateHandled;
-            PlayAnimation(100, 1, 0, 1.0f);
-            break;
         }
         result = kStateHandled;
         break;
@@ -465,14 +468,13 @@ int MithrilSkateboard::State84(int event) {
         restTimer = 0.0f;
         result = kStateHandled;
         break;
-    case kStateExit:
-        states.AssertOwner(this);
-        result = kStateHandled;
-        break;
     case kStateEvent3:
-        break;
+        return result;
     default:
         result = kStateUnhandled;
+        break;
+    case kStateExit:
+        result = kStateHandled;
         break;
     }
     return result;

@@ -1,9 +1,9 @@
 {
   "version": 1,
-  "generated_at": "2026-11-06T00:46:24.036994+00:00",
+  "generated_at": "2026-11-06T00:56:33.694519+00:00",
   "target_elf_sha256": "ea95638e6d6aaa0dc6cddd552a9366799aa1ec3bc07ee201f23f6c151103f5b8",
   "input_sha256": {
-    "config/builds.json": "327e73cdfa1d107ff8d48cd0e7d27d205a5cecf28d568aa7a2e01b6c2cb125cb",
+    "config/builds.json": "4ea9e353755f6c32c83c47cf4bffeba5a6a20ae5bdf5fc637fa2cdf0d6dd8dd9",
     "config/functions.tsv": "399e91468a04e0459194c10d68d2210d1157cedefeb19c7851886ca7632fcb18",
     "config/non_fde_functions.tsv": "6a45f5e185454fa0472af00b2cdc9d040d73ca133d1106217e1fbbe3b32a8175",
     "config/target.json": "23cc6a5227206a953e7668acf5e9ae5c02a25c23b7e7967f0450a814b888241a",
@@ -1171,7 +1171,7 @@
     "src/gameplay/OnyxEvents.h": "4c8e7d4c83c533dc7e2aef3f29cb7b1747363982464cc8829c2b423344610c0b",
     "src/gameplay/OnyxSerialize.cpp": "304335de146116fb3488bbbbd2231f576e5c067c59eacd8173a69e177b298a83",
     "src/gameplay/OnyxSerialize.h": "261241fa3a1ed7e6d9530fcee4f1038587ad121cc3d63a068b0f1161fc382d34",
-    "src/gameplay/Pickup.cpp": "a27d2404714deaec4c682a63a8b8d8328633db7ce267d26b71bdc94c7df9195d",
+    "src/gameplay/Pickup.cpp": "0be5c79a412c8099c457b77f109e3d16368ba8bd07a1cf8172285cda0b5caaa7",
     "src/gameplay/Piniata.cpp": "201019838587b7655e7b6db5dc4383f5387e0fe8759676a45f9f63ef2fcf3828",
     "src/gameplay/PlayerAttackStates.cpp": "9344fbc0a8ef74afd7ce66004e295fcfbc26ecbbc9b21361301f87482f022be6",
     "src/gameplay/PlayerClasses.cpp": "fc62a7957c3353dbcb867df8609d63a91c9580acc983135f9f6980eb7b0f5e62",
@@ -4010,17 +4010,17 @@
     "vendor/zlib-1.2.11/zutil.h": "9a63f6690fac1620aa3cecee5752af618806da438a256b4a047fbcd289cac159"
   },
   "compiler_versions": {
-    "8.0.1": "clang version 8.0.1 (tags/RELEASE_801/final)",
     "7.0.1": "clang version 7.0.1 (tags/RELEASE_701/final)",
+    "8.0.1": "clang version 8.0.1 (tags/RELEASE_801/final)",
     "lld": "LLD 8.0.1 (compatible with GNU linkers)"
   },
   "compiler_sha256": {
-    "8.0.1": "dffd62a213ec6cdb4430012a4a41c11e5e32c288f133d5391f9be49e1c5b69de",
     "7.0.1": "c2f0a175157d9aaace8031f8e6d7ea0ed6142b4bcef287105e3ed227301f1002",
+    "8.0.1": "dffd62a213ec6cdb4430012a4a41c11e5e32c288f133d5391f9be49e1c5b69de",
     "lld": "c4b3aaea06ff7112c64753047a2ab279fc3fe10dd807fd3c22edfdae99f43eed"
   },
-  "exact_functions": 38782,
-  "exact_bytes": 5119620,
+  "exact_functions": 38783,
+  "exact_bytes": 5119928,
   "builds": [
     {
       "id": "probes",
@@ -13438,11 +13438,6 @@
       "object_sha256": "17397fadac524bd4560ddb96b9c22dd28e5821b57185d547e0765d35ce0bae01"
     },
     {
-      "id": "gameplay_pickup",
-      "compiler": "8.0.1",
-      "object_sha256": "45489ee59eb77105354b56ba327ca72c2676eb05af22a23b715aba528afd916e"
-    },
-    {
       "id": "gameplay_breakable",
       "compiler": "8.0.1",
       "object_sha256": "683ac4df81aa0c2aae42cf54370f880c901e5bbf2a823a4ea51a4a6b7a0e34e3"
@@ -13511,6 +13506,11 @@
       "id": "gameplay_striker",
       "compiler": "8.0.1",
       "object_sha256": "f9872764cd36c262be40eefac51a7eca3d7295078349acc773074f27d618b952"
+    },
+    {
+      "id": "gameplay_pickup",
+      "compiler": "8.0.1",
+      "object_sha256": "2690b21bd28885b514a6938553e828618ba91bdec65feb18f4220187d213db22"
     }
   ],
   "matches": [
@@ -302901,6 +302901,17 @@
       "symbol": "RecoveredLeaf_9b8d20",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 0
+    },
+    {
+      "address": "0x9b8d30",
+      "size": 308,
+      "exact": true,
+      "target_sha256": "34738528a9830fe1ed4b9ee9a592217bfa3338e0d71b70f8277e55c14f70354f",
+      "compiled_sha256": "34738528a9830fe1ed4b9ee9a592217bfa3338e0d71b70f8277e55c14f70354f",
+      "source": "src/gameplay/Pickup.cpp",
+      "symbol": "_ZN4SPTG17MithrilSkateboard7State84Ei",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 5
     },
     {
       "address": "0x9b8e70",

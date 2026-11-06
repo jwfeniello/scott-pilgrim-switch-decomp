@@ -408,6 +408,14 @@ item comes to rest, plays animation 95 and stops moving. One register-allocation
 detail still differs. Slot 4 (1,632 bytes) loads the item from a stream and
 registers its event bindings; it is not reconstructed yet.
 
+`MithrilSkateboard`, Lucas Lee's skateboard, is a pickup with its own states.
+Its slot 84 (`0x9b8d30`, matched) plays animation 107, then rests in animation
+100 for `restTime` before it counts as collected. The original compares
+animation 100 first, so the source tests 107 first: compare chains come out
+reversed. Its idle state (slot 80) plays animation 189 and then stands in
+animation 0 until a player collects it; it is written out, and only the order of
+three independent moves before the animation calls still differs.
+
 ## Piniatas
 
 `SPTG::Piniata` (vtable `0x1889c08`) is a breakable object that loses health as
