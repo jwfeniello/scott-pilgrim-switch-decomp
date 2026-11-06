@@ -282,6 +282,9 @@ A few more things decide these handlers' code:
   kept across `SpeedScale` is in `s9` in the original, which saves `d9` alone, and in `s8` here. The
   Cortex-A57 load-balancing pass keeps a chain's own colour when the balance is even, so the `s9`
   should already come from register allocation, which picks `s8` first in these builds.
+- `fmaxnm` with the `fabs` after it kept means `0.0f < x ? x : 0.0f`, the max helper with the constant first.
+  `fmaxf(x, 0.0f)` also gives `fmaxnm`, but then LLVM knows the result can't be negative and drops the
+  `fabs` (`StrikerYeti::AttackingState`).
 - A flag argument worked out at the top of a function is scheduled apart from the call that uses it.
   `AnimatedAiActor::PlayFacingAnimation` needs `bool loop = (flags & 4) != 0;` before its lookups. Inline in the
   call, one instruction of the tail call moves.
@@ -1340,6 +1343,8 @@ who called it.
   that ends it goes to `AttackingState` if an enemy was in view and to `LeavingState` if not.
 - `AttackingState` (slot 83, `0x948660`) stops, starts `attack` for its owner and plays animation 11.
   When that ends it calls `AttackDone` (slot 78, empty in `Striker`) and leaves.
+- `StrikerYeti`'s `AttackingState` (`0x943830`) only stops the yeti. Once `+0x328` is raised it counts
+  `+0x320` down by the frame time at `0x191cd00` and leaves when that reaches zero.
 - `LeavingState` (slot 85, `0x948810`) plays animation 16, clears the player's `activeStriker`
   (`+0x1488`), and returns to its spawner.
 

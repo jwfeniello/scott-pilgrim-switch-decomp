@@ -83,6 +83,14 @@ struct StrikerMrChau : Striker {
     char padding_321[0x3];
     float attackDoneDelay;           // +0x324
 };
+// The yeti attacks until a timer that starts with +0x328 runs out.
+struct StrikerYeti : Striker {
+    int AttackingState(int event) override;   // slot 83 (0x943830)
+    char padding_300[0x20];
+    float attackTime;                // +0x320: counts down by FrameDelta while +0x328 is raised
+    char padding_324[0x4];
+    bool timing;                     // +0x328
+};
 struct KnivesStills : Striker {
     int AttackingState(int event) override;
 };

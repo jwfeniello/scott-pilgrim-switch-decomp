@@ -4,6 +4,8 @@
 
 namespace SPTG {
 
+extern float FrameDelta;   // 0x191cd00, the frame time some components use
+
 // Starts the state machine idle.
 void Striker::Slot7() {
     AnimatedAiActor::Slot7();
@@ -180,6 +182,39 @@ int Striker::AttackingState(int event) {
     default:
         result = kStateUnhandled;
         break;
+    case kStateExit:
+        states.AssertOwner(this);
+        break;
+    }
+    return result;
+}
+
+// StrikerYeti slot 83 (0x943830): the attack lasts until attackTime, counted
+// down by FrameDelta once `timing` is raised, runs out; then it leaves. Entry
+// stops all motion.
+int StrikerYeti::AttackingState(int event) {
+    int result = kStateHandled;
+    switch (event) {
+    case kStateUpdate:
+        if (timing) {
+            float delta = FrameDelta;
+            float left = attackTime - delta;
+            left = 0.0f < left ? left : 0.0f;
+            attackTime = left;
+            if (__builtin_fabsf(left) <= 0.000001f) {
+                states.Transition(LeavingStatePtr());
+                result = kStateParentTookOver;
+            }
+        }
+        break;
+    case kStateEvent3:
+        break;
+    default:
+        result = kStateUnhandled;
+        break;
+    case kStateEnter:
+        motion = onyx::Vector3::Zero();
+        motionTarget = onyx::Vector3::Zero();
     case kStateExit:
         states.AssertOwner(this);
         break;
