@@ -177,14 +177,13 @@ struct Enemy : BaseCharacter {
     uint8_t flag7b8;             // +0x7b8
     uint8_t flag7b9;             // +0x7b9
     char padding_7ba[0x2];
-    float rangeOriginX;          // +0x7bc: where slot 169 measures its ranges from
-    float rangeOriginY;          // +0x7c0
-    float rangeOriginZ;          // +0x7c4
+    onyx::Vector3 rangeOrigin;   // +0x7bc: where slot 169 measures its ranges from
     char padding_7c8[0xc];
     onyx::Vector3 savedMotion;   // +0x7d4
     char padding_7e0[0x8];
     onyx::Vector<AttackSlot> attackList; // +0x7e8: attacks requested this frame
-    char padding_808[0x9];
+    char padding_808[0x8];
+    uint8_t flag810;             // +0x810: dropped by Update9db820 after a quarter second
     uint8_t flag811;             // +0x811: set when taking damage
     char padding_812[0x1];
     uint8_t flag813;             // +0x813
@@ -276,7 +275,7 @@ struct Enemy : BaseCharacter {
     int32_t valueA0c;            // +0xa0c
     int32_t valueA10;            // +0xa10
     int32_t valueA14;            // +0xa14
-    int32_t valueA18;            // +0xa18
+    uint32_t valueA18;           // +0xa18: Update9db820's roll of 1-100 has to reach it to go to slot 176
     int32_t valueA1c;            // +0xa1c
     int32_t valueA20;            // +0xa20
     char padding_a24[0x4];
@@ -311,8 +310,8 @@ struct Enemy : BaseCharacter {
         onyx::Transform* transform = onyx::Get<onyx::Transform, onyx::kTransform>(onyx::Find<ActorObject, 0x6492d61du>(actorObject)->transform);
         float x = transform->position.x;
         float y = transform->position.y;
-        if (__builtin_fabsf(rangeOriginX - x) < __builtin_fabsf(min - max) * 0.5f &&
-            __builtin_fabsf(rangeOriginY - y) < depth * 0.5f) return true;
+        if (__builtin_fabsf(rangeOrigin.x - x) < __builtin_fabsf(min - max) * 0.5f &&
+            __builtin_fabsf(rangeOrigin.y - y) < depth * 0.5f) return true;
         return false;
     }
     void Calla0bac0(int a, int b, bool c);           // 0xa0bac0

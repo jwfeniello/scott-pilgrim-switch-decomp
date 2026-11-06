@@ -435,6 +435,47 @@ void Enemy::PickPoint(onyx::Vector3* out, float distance) {
     out->x = x;
 }
 
+// 0x9db820: one update of the approach to the range origin at `speed`. With +0x874 at 3 it goes to slot 192 at once. After
+// `time` passes a quarter second +0x810 drops, and slot 169's range test sends it to slot 96. On a playfield edge (+0x128
+// with the top bit of +0x130), a roll of 1-100 reaching +0xa18 raises +0xb49 for slot 176, otherwise it lets go for slot
+// 100; anywhere else, off the ground goes to slot 102. The direction sits in its own block: every transition is a tail
+// call in the original, which a local still alive at them would rule out. The block itself is only a guess at the
+// spelling; an inlined helper would give the same code.
+void Enemy::Update9db820(float time, float speed) {
+    if (value874 == 3) {
+        states.Transition(State192Ptr());
+        return;
+    }
+    if (flag810 && time > 0.25f) flag810 = 0;
+    {
+        onyx::Vector2 direction;
+        DirectionTo(&direction, this, rangeOrigin);
+        if (targetIndex != 4 && targets[targetIndex].distance < 760.0f) {
+            float y = direction.y * speed;
+            if (__builtin_fabsf(motion.x) <= speed) motion.x = direction.x * speed;
+            motion.y = y;
+        }
+    }
+    if (TargetInRange(rangeType) && time > 0.25f) {
+        states.Transition(State96Ptr());
+        return;
+    }
+    TypedComponent* object = static_cast<TypedComponent*>(onyx::Get<ActorObject, 0x6492d61du>(actorObject)->playfield->object);
+    PlayfieldCollision* field = object->IsA(PlayfieldCollision::kType) ? static_cast<PlayfieldCollision*>(object) : nullptr;
+    if (field->flag128 && (field->flags130 & 0x80000000u)) {
+        if (static_cast<uint32_t>(RandomRange<int>(1, 100)) >= valueA18) {
+            flagB49 = 1;
+            states.Transition(State176Ptr());
+        } else {
+            ReleaseHeld(false, 0.0f, 0.0f);
+            flag9d2 = 1;
+            states.Transition(State100Ptr());
+        }
+    } else if (!IsOnGround()) {
+        states.Transition(State102Ptr());
+    }
+}
+
 // 0x9db480: the stance animation. On foot, 1 with +0x974 set, else 7; mounted, 59 or 43 with +0x974 set and 58 or 42
 // without (by the mount's slot 49), and while still mounted the mount plays 99 or 98.
 void Enemy::Call9db480() {

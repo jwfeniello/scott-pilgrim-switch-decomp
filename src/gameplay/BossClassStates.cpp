@@ -3965,6 +3965,42 @@ bool SuperFightingRobotHand::CallA2f300(float minX, float maxX, float depth) {
     return false;
 }
 
+// Todd 0xa251e0: a point for Todd to head for. x is the middle of the screen plus +0xdc0, which flips between +0x11e0
+// and +0x11dc while +0xd94 is set and otherwise is +0x11e0 with the target at or left of the middle (+0x11dc right of it);
+// y is one of +0x11d0, +0x11d4 and +0x11d8 at random. Not yet matched (not credited): only the order of the two final
+// stores differs (x first in the original, after the epilogue's first restores).
+void Todd::CallA251e0(onyx::Vector2* out, Todd* self) {
+    LevelCamera* levelCamera = onyx::Find<LevelCamera, onyx_types::type_67f2aa4d>(self->camera.Get()->levelCamera);
+    float middle = onyx::Get<onyx::Transform, onyx::kTransform>(levelCamera->transform)->position.x + 192.0f;
+    if (self->valueD94) {
+        float current = self->pointOffset;
+        float offset = self->value11e0;
+        if (current == offset) offset = self->value11dc;
+        self->pointOffset = offset;
+    } else {
+        onyx::Vector3 player;
+        PlayerPosition(&player, self, self->targetIndex);
+        self->pointOffset = player.x > middle ? self->value11dc : self->value11e0;
+    }
+    float y;
+    switch (RandomRange<int>(0, 2)) {
+    case 0:
+        y = self->value11d0;
+        break;
+    case 1:
+        y = self->value11d4;
+        break;
+    case 2:
+        y = self->value11d8;
+        break;
+    default:
+        y = 0.0f;
+        break;
+    }
+    out->x = middle + self->pointOffset;
+    out->y = y + 0.0f;
+}
+
 // Patel 0xa41ca0: plays one of animations 20, 21 and 22 at random.
 void Patel::CallA41ca0() {
     switch (RandomRange<int>(0, 2)) {

@@ -1197,8 +1197,8 @@ struct ControllablePlayer : BaseCharacter {
     void* reference1388;         // +0x1388
     uint32_t mashNeeded;         // +0x1390: presses it takes to break free (State245)
     float strikerCost;           // +0x1394: guts it takes to call a striker
-    int32_t value1398;           // +0x1398
-    int32_t value139c;           // +0x139c
+    uint32_t strikerChance;      // +0x1398: the percentage at which Call9983e0 picks a striker theme of its own
+    uint32_t theme5Chance;       // +0x139c: then the percentage above which it is theme 5 (else 6)
     int32_t value13a0;           // +0x13a0
     int32_t value13a4;           // +0x13a4
     int32_t value13a8;           // +0x13a8

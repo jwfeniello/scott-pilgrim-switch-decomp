@@ -1918,9 +1918,9 @@ int EnemyForestElves::State96(int event) {
                 FaceX(onyx::Get<onyx::Transform, onyx::kTransform>(onyx::Find<ActorObject, 0x6492d61du>(seen->actorObject)->transform)->position.x);
                 onyx::Vector3 point;
                 PickPoint(&point, static_cast<float>(valueBbc));
-                rangeOriginX = point.x;
-                rangeOriginY = point.y;
-                rangeOriginZ = point.z;
+                rangeOrigin.x = point.x;
+                rangeOrigin.y = point.y;
+                rangeOrigin.z = point.z;
                 flagBcc = 1;
             }
             states.Transition(State234Ptr());
@@ -1960,9 +1960,9 @@ int EnemyStuntman::State96(int event) {
                 FaceX(onyx::Get<onyx::Transform, onyx::kTransform>(onyx::Find<ActorObject, 0x6492d61du>(seen->actorObject)->transform)->position.x);
                 onyx::Vector3 point;
                 PickPoint(&point, static_cast<float>(valueBbc));
-                rangeOriginX = point.x;
-                rangeOriginY = point.y;
-                rangeOriginZ = point.z;
+                rangeOrigin.x = point.x;
+                rangeOrigin.y = point.y;
+                rangeOrigin.z = point.z;
                 flagBcc = 1;
                 ScreenRect rect;
                 GetScreenRect(&rect);
@@ -2006,9 +2006,9 @@ int EnemySasuke::State96(int event) {
                 FaceX(onyx::Get<onyx::Transform, onyx::kTransform>(onyx::Find<ActorObject, 0x6492d61du>(seen->actorObject)->transform)->position.x);
                 onyx::Vector3 point;
                 PickPoint(&point, static_cast<float>(valueBbc));
-                rangeOriginX = point.x;
-                rangeOriginY = point.y;
-                rangeOriginZ = point.z;
+                rangeOrigin.x = point.x;
+                rangeOrigin.y = point.y;
+                rangeOrigin.z = point.z;
                 flagBcc = 1;
                 ScreenRect rect;
                 GetScreenRect(&rect);

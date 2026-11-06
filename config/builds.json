@@ -556903,7 +556903,7 @@
             "0000c842": "0x1332104"
           },
           "immutable_sections": {
-            "33": "0x1390a85"
+            "35": "0x1390a85"
           }
         },
         {
@@ -557056,6 +557056,26 @@
           "got_bindings": {},
           "literals": {
             "0000c842": "0x1332104"
+          }
+        },
+        {
+          "address": "0x9983e0",
+          "size": 900,
+          "symbol": "_ZN4SPTG18ControllablePlayer10Call9983e0Ei",
+          "target_sha256": "b94f9c83e90a0356587741b8adf98b34e580329fb20a9852b38ceb694bd70468",
+          "bindings": {
+            "Accessor_Resolver": "0x191cd10",
+            "Accessor_Resolve": "0x67edd0",
+            "_ZN4SPTG9SingletonINS_17LevelItemAccessorEE3GetEv": "0x7725e0",
+            "Game_Random": "0x192ae70",
+            "_ZN2nn2os16GetCurrentThreadEv": "0xfa3e50",
+            "_ZN2nn2os11GetThreadIdEPKNS0_10ThreadTypeE": "0xfa4760",
+            "Game_RandomCalls": "0x1935254"
+          },
+          "got_bindings": {},
+          "literals": {
+            "5f708930": "0x1331e88",
+            "00401c46": "0x1331f68"
           }
         }
       ]
@@ -563704,6 +563724,29 @@
           "got_bindings": {},
           "literals": {
             "bd378635": "0x1331fdc"
+          }
+        },
+        {
+          "address": "0x9db820",
+          "size": 824,
+          "symbol": "_ZN4SPTG5Enemy12Update9db820Eff",
+          "target_sha256": "386689bd2a79acb1b21c6d7b4325ad000ff146e3c2e4c9402005f10885414025",
+          "bindings": {
+            "_ZN4SPTG5Enemy11DirectionToEPN4onyx7Vector2EPS0_RKNS1_7Vector3E": "0x9db5c0",
+            "Accessor_Resolver": "0x191cd10",
+            "Accessor_Resolve": "0x67edd0",
+            "Game_Random": "0x192ae70",
+            "_ZN2nn2os16GetCurrentThreadEv": "0xfa3e50",
+            "_ZN2nn2os11GetThreadIdEPKNS0_10ThreadTypeE": "0xfa4760",
+            "Game_RandomCalls": "0x1935254",
+            "_ZN4SPTG13BaseCharacter11ReleaseHeldEbff": "0x976fb0",
+            "_ZN4SPTG12StateMachineINS_13BaseCharacterEE10TransitionEMS1_FiiE": "0x812930"
+          },
+          "got_bindings": {},
+          "literals": {
+            "00003e44": "0x13320b4",
+            "5f708930": "0x1331e88",
+            "00401c46": "0x1331f68"
           }
         },
         {

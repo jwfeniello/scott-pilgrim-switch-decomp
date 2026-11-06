@@ -55,6 +55,7 @@ struct TagTeamMember : Boss {
 struct Todd : Boss {
     SPTG_TYPE(Boss, 0x4aedc535u)
     bool IsA(uint32_t type) override;   // slot 12 (0xa20240)
+    static void CallA251e0(onyx::Vector2* out, Todd* self);   // 0xa251e0
     void AttackLanded(AnimatedAiActor* target) override;
     float Slot59();
     void Update();
@@ -94,7 +95,8 @@ struct Todd : Boss {
     int32_t hitsDb4;             // +0xdb4: hits taken in state 260
     float valueDb8;              // +0xdb8
     float damageDbc;             // +0xdbc: damage taken in state 270
-    char padding_dc0[0x18];
+    float pointOffset;           // +0xdc0: CallA251e0's x offset from the middle of the screen
+    char padding_dc4[0x14];
     AttackSlot attackDd8;        // +0xdd8: requested every update with kind 20; passed to 0xa255e0
     AttackSlot attackE50;        // +0xe50: requested every update with kind 11
     AttackSlot attackEc8;        // +0xec8
@@ -119,11 +121,11 @@ struct Todd : Boss {
     int32_t value11c4;           // +0x11c4
     int32_t value11c8;           // +0x11c8
     int32_t value11cc;           // +0x11cc
-    int32_t value11d0;           // +0x11d0
-    int32_t value11d4;           // +0x11d4
-    int32_t value11d8;           // +0x11d8
-    int32_t value11dc;           // +0x11dc
-    int32_t value11e0;           // +0x11e0
+    float value11d0;             // +0x11d0: the heights CallA251e0 picks from
+    float value11d4;             // +0x11d4
+    float value11d8;             // +0x11d8
+    float value11dc;             // +0x11dc: CallA251e0's x offsets, taken by side
+    float value11e0;             // +0x11e0
     int32_t value11e4;           // +0x11e4
     float chargeTimeLimit;       // +0x11e8: state 270 leaves after this long
     int32_t value11ec;           // +0x11ec

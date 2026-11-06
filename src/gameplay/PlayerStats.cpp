@@ -3,6 +3,8 @@
 // reaches a base value's limit, or adds that many percent. What each stat means
 // is not established, so the fields keep their offsets as names.
 #include "BaseCharacter.h"
+#include "Enemy.h"
+#include "Random.h"
 
 namespace SPTG {
 
@@ -111,6 +113,22 @@ float ControllablePlayer::GutsCostScale() {
 
 float ControllablePlayer::Slot152() {
     return value894 / 100.0f * Max(statStrength, 0.0f) + 1.0f;
+}
+
+// 0x9983e0: the striker theme. With move bit 17 or all moves learned, and no boss (kind 6 to 8) among the level's active
+// enemies, a roll of 0-100 within +0x1398 picks theme 6, or 5 when a second roll is above +0x139c; otherwise `theme`.
+int ControllablePlayer::Call9983e0(int theme) {
+    PlayerInfoView* info = onyx::Find<PlayerInfoView, 1180775934u>(playerInfo);
+    if (!(info->moves & 0x20000u) && !info->allMoves) return theme;
+    EnemyCatalog* enemies = onyx::Get<EnemyCatalog, onyx_types::type_5f5cdd73>(level.Get()->enemies);
+    for (Enemy** i = enemies->enemies; i != enemies->enemies + enemies->count; ++i) {
+        Enemy* enemy = *i;
+        if ((enemy->componentFlags & 1) && static_cast<uint32_t>(enemy->Kind() - 6) < 3) return theme;
+    }
+    if (static_cast<uint32_t>(RandomRange<int>(0, 100)) <= strikerChance) {
+        return static_cast<uint32_t>(RandomRange<int>(0, 100)) > theme5Chance ? 5 : 6;
+    }
+    return theme;
 }
 
 // 0x80f6e0: item effect 10. With the effect at +0x1358 ready (+0x18), stops the actions at +0x1368 and +0x1378, starts
