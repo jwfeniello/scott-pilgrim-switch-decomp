@@ -83,11 +83,11 @@ int Boss::State200(int event) {
         break;
     case kStateEvent3:
         return kStateHandled;
-    default:
-        return kStateUnhandled;
     case kStateExit:
         states.AssertOwner(this);
         break;
+    default:
+        return kStateUnhandled;
     }
     return kStateHandled;
 }

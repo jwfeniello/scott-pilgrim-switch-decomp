@@ -1,9 +1,9 @@
 {
   "version": 1,
-  "generated_at": "2026-11-06T00:56:33.694519+00:00",
+  "generated_at": "2026-11-06T01:03:18.210845+00:00",
   "target_elf_sha256": "ea95638e6d6aaa0dc6cddd552a9366799aa1ec3bc07ee201f23f6c151103f5b8",
   "input_sha256": {
-    "config/builds.json": "4ea9e353755f6c32c83c47cf4bffeba5a6a20ae5bdf5fc637fa2cdf0d6dd8dd9",
+    "config/builds.json": "1b7dc8f2c8ddc9ba224a518548507001eb9f797731f3869dfdbb74669c90b5ed",
     "config/functions.tsv": "399e91468a04e0459194c10d68d2210d1157cedefeb19c7851886ca7632fcb18",
     "config/non_fde_functions.tsv": "6a45f5e185454fa0472af00b2cdc9d040d73ca133d1106217e1fbbe3b32a8175",
     "config/target.json": "23cc6a5227206a953e7668acf5e9ae5c02a25c23b7e7967f0450a814b888241a",
@@ -1133,7 +1133,7 @@
     "src/gameplay/BossAI.h": "68355060c3710d713428e4f392dab533c70bb3da28cffe391c3b91630cd929bc",
     "src/gameplay/BossClassStates.cpp": "f1b66fb2164b421b7435a8cb42389c79ce8c0ce5efd4bbb04ca74037745001d3",
     "src/gameplay/BossClasses.h": "804a669a2db29187720b637f15489839486673be63ef62be20c5218f6f316312",
-    "src/gameplay/BossStates.cpp": "94fe578cffecc6def2e4cf7c1dad18a7f138cee5a6fff266452ca801fce92435",
+    "src/gameplay/BossStates.cpp": "c61c2fb317a9ac3bac3b9231dfa9ac83e6e274727a5c562c9b591549b6e17d27",
     "src/gameplay/BreakableObject.cpp": "6a12d0a6bb0bf0cb9d50b16a4fbfb943af2d800999ed9ac3bc660da660cde351",
     "src/gameplay/BreakableObject.h": "02d45f6dc901706749390eff10ca7cec9565ac47f90e46543eef984af3e70763",
     "src/gameplay/Camera.h": "cd95510335202a3ce560df413bdd5909f8543566e594a1bab2e9ad2e0057cd3f",
@@ -4019,8 +4019,8 @@
     "8.0.1": "dffd62a213ec6cdb4430012a4a41c11e5e32c288f133d5391f9be49e1c5b69de",
     "lld": "c4b3aaea06ff7112c64753047a2ab279fc3fe10dd807fd3c22edfdae99f43eed"
   },
-  "exact_functions": 38783,
-  "exact_bytes": 5119928,
+  "exact_functions": 38784,
+  "exact_bytes": 5120164,
   "builds": [
     {
       "id": "probes",
@@ -13463,11 +13463,6 @@
       "object_sha256": "3c7de0bf08bf984fe6c8ba260d7da4ef672d39f9f2abd2e8eb5ea5da38444004"
     },
     {
-      "id": "gameplay_boss",
-      "compiler": "8.0.1",
-      "object_sha256": "0ecc37e9fb8696aa133b2c5f227ee2a10e35214470d1af1ff934fa698a4bb98b"
-    },
-    {
       "id": "gameplay_enemy",
       "compiler": "8.0.1",
       "object_sha256": "d10a6d5d62afcf317b53e714a06ef4b8d269e54793c81baa9873d8bf91af0802"
@@ -13511,6 +13506,11 @@
       "id": "gameplay_pickup",
       "compiler": "8.0.1",
       "object_sha256": "2690b21bd28885b514a6938553e828618ba91bdec65feb18f4220187d213db22"
+    },
+    {
+      "id": "gameplay_boss",
+      "compiler": "8.0.1",
+      "object_sha256": "e8268b6b4514107e39e7a1503369896e6de468bebbe5feb295022d241b529758"
     }
   ],
   "matches": [
@@ -313879,6 +313879,17 @@
       "symbol": "RecoveredLeaf_a1b270",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 0
+    },
+    {
+      "address": "0xa1b280",
+      "size": 236,
+      "exact": true,
+      "target_sha256": "6acdbfc5a18dfef56918719e157034425bd293ee88f38f7bba44591b55d7d7f0",
+      "compiled_sha256": "6acdbfc5a18dfef56918719e157034425bd293ee88f38f7bba44591b55d7d7f0",
+      "source": "src/gameplay/BossStates.cpp",
+      "symbol": "_ZN4SPTG4Boss8State200Ei",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 4
     },
     {
       "address": "0xa1b370",

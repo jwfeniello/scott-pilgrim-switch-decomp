@@ -951,8 +951,8 @@ generated like the enemy classes. All derive from Boss, except Lynette and Envy,
 which derive from `TagTeamMember`. The family has about 267 KB of unmatched code
 in 329 functions.
 
-[`BossStates.cpp`](../src/gameplay/BossStates.cpp) matches 15 of Boss's own
-functions (3,100 bytes):
+[`BossStates.cpp`](../src/gameplay/BossStates.cpp) matches 18 of Boss's own
+functions (4,196 bytes), among them:
 
 | Slot | Address | Behavior |
 | --- | --- | --- |
@@ -964,6 +964,7 @@ functions (3,100 bytes):
 | 108 | `0xa19c20` | After Enemy's state, on entry runs slot 240 unless `+0xd28` is set, `+0x160` is positive or slot 95 holds |
 | 122 | `0xa1a170` | Knockdown: stops, animation 27, action mode 7; standing on a flagged `PlayfieldCollision` raises `+0xd26`; then 244 |
 | 198 | `0xa1b100` | Special attack: after Enemy's state, passes the target's X position to slot 91; then 244 |
+| 200 | `0xa1b280` | Blink state: entry runs `0x996c30` (with `+0xcd1`) or starts the blink timer; an update with `+0xd29` removes the boss and raises `+0xd2a` |
 | 233 | `0xa1b470` | When triggered in state 244, rolls 1–100 against `+0xccc` |
 | 234, 237, 238 | `0xa1b620`.. | Go to 246 for kind 1 (else 198); refuse attack requests of kinds 31, 32, 39, 45, 61; whether animation 0, 1 or 7 plays |
 | 252 | `0xa1da40` | Stops, starts the first attack with animation 131 in action mode 6; then 122 |
@@ -978,9 +979,10 @@ overrides. A boss calling the getters `State122Ptr` and `State252Ptr` then calls
 them through the same class, which lets the compiler hoist the shared vtable
 load as the original does.
 
-Slots 96, 116 and 200 are written out but not credited. In each, the original
-merges the "handled" returns into a shared tail (for 96 and 116, the exit
-case's) that this build duplicates.
+Slots 96 and 116 are written out but not credited. In each, the original
+merges the "handled" returns into the exit case's tail, which this build
+duplicates. Slot 200 had the same gap and matches with the cases in the order
+update, enter, event 3, exit, default.
 
 [`BossClassStates.cpp`](../src/gameplay/BossClassStates.cpp) matches 134
 functions of the boss classes (40,740 bytes). Most are hooks that inline
