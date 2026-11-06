@@ -51,9 +51,11 @@ struct HandleReference {
     __attribute__((always_inline)) ~HandleReference() { if (__atomic_sub_fetch(&handle->references, 1, __ATOMIC_RELAXED) == 0) DisposeHandleInDestructor(handle); }
 };
 template<unsigned Key> struct SwitchBase { virtual ~SwitchBase(); char data[0x48]; };
+// One owner (0x8cd240) has an 8-byte larger base, so its member and target sit 8 bytes later.
+template<> struct SwitchBase<0x8cd240u> { virtual ~SwitchBase(); char data[0x50]; };
 template<unsigned Key, unsigned Size> struct SwitchMember { ~SwitchMember(); char data[Size]; };
 template<unsigned Key, unsigned TargetOffset> struct SwitchMiddle : SwitchBase<Key> {
-    SwitchMember<Key, TargetOffset - 0x50> member;
+    SwitchMember<Key, TargetOffset - sizeof(SwitchBase<Key>)> member;
     ~SwitchMiddle() override {}
 };
 // Clears the switched component's target and notifies listeners of the change.

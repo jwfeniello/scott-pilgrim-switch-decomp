@@ -38,6 +38,21 @@ template<unsigned long Key> struct PlainFunction {
     __attribute__((always_inline)) void Destroy() { if (value) DestroyFunction(value); }
 };
 template<unsigned long Key> using Function = Auto<PlainFunction<Key>>;
+// A member that owns an Onyx::Behavior predicate, whose destructor is its second virtual.
+struct PredicateBase {
+    virtual void Evaluate();
+    virtual ~PredicateBase() noexcept;
+};
+__attribute__((always_inline)) inline void DestroyPredicate(PredicateBase* d) {
+    DecodeAllocators* m = DecodeAllocatorManager;
+    DecodeAllocator* a = m->values[DecodeAllocatorIndex(m, d)];
+    d->~PredicateBase();
+    a->Free(d);
+}
+template<unsigned long Key> struct PlainPredicate {
+    PredicateBase* value;
+    __attribute__((always_inline)) void Destroy() { if (value) DestroyPredicate(value); }
+};
 
 // A callback that also tracks its registration; +0x10 says whether it is registered.
 template<unsigned long Key> struct ListenerOut {
@@ -405,6 +420,22 @@ namespace Onyx { namespace Graphics {
 struct RenderSurfaceNative { char padding_8[32]; AutoInline<PlainSharedKeep<114251265>> member_28; virtual void Key(); virtual ~RenderSurfaceNative(); };
 RenderSurfaceNative::~RenderSurfaceNative() {  }
 }}
+namespace Onyx { namespace Graphics { namespace NewMaterialSystem { 
+struct MaterialParameterBase { char padding_8[16]; AutoInline<PlainSharedKeep<191035649>> member_18; virtual void Key(); virtual ~MaterialParameterBase(); };
+MaterialParameterBase::~MaterialParameterBase() {  }
+struct Vector4MaterialParameter { char padding_8[16]; AutoInline<PlainSharedKeep<191247873>> member_18; virtual void Key(); virtual ~Vector4MaterialParameter(); };
+Vector4MaterialParameter::~Vector4MaterialParameter() {  }
+struct Vector3MaterialParameter { char padding_8[16]; AutoInline<PlainSharedKeep<191250177>> member_18; virtual void Key(); virtual ~Vector3MaterialParameter(); };
+Vector3MaterialParameter::~Vector3MaterialParameter() {  }
+struct Vector2MaterialParameter { char padding_8[16]; AutoInline<PlainSharedKeep<191252481>> member_18; virtual void Key(); virtual ~Vector2MaterialParameter(); };
+Vector2MaterialParameter::~Vector2MaterialParameter() {  }
+struct IntegerMaterialParameter { char padding_8[16]; AutoInline<PlainSharedKeep<191254785>> member_18; virtual void Key(); virtual ~IntegerMaterialParameter(); };
+IntegerMaterialParameter::~IntegerMaterialParameter() {  }
+struct BoolMaterialParameter { char padding_8[16]; AutoInline<PlainSharedKeep<191257089>> member_18; virtual void Key(); virtual ~BoolMaterialParameter(); };
+BoolMaterialParameter::~BoolMaterialParameter() {  }
+struct F32MaterialParameter { char padding_8[16]; AutoInline<PlainSharedKeep<191259393>> member_18; virtual void Key(); virtual ~F32MaterialParameter(); };
+F32MaterialParameter::~F32MaterialParameter() {  }
+}}}
 struct Nested114291458 { virtual void Key(); char padding_8[8]; AutoInline<PlainCounted<7314653315, 1>> member_10; AutoInline<PlainCounted<7314653314, 3>> member_18; AutoInline<PlainCounted<7314653313, 3>> member_20; DT_INLINE ~Nested114291458() {} };
 namespace EE { 
 struct GlyphData { char padding_8[8]; Nested114291458 member_10; char padding_38[24]; AutoInline<PlainCounted<114291457, 1>> member_50; virtual void Key(); virtual ~GlyphData(); };
@@ -1379,6 +1410,16 @@ namespace Onyx {
 struct XorPredicate { PlainFunction<200414721> member_8; PlainFunction<200414722> member_10; virtual void Key(); virtual ~XorPredicate() __attribute__((used)); };
 inline XorPredicate::~XorPredicate() { member_8.Destroy(); member_10.Destroy(); }
 }
+namespace Onyx { namespace Behavior { 
+struct OrPredicate { PlainPredicate<195654913> member_8; PlainPredicate<195654914> member_10; virtual void Key(); virtual ~OrPredicate() __attribute__((used)); };
+inline OrPredicate::~OrPredicate() { member_8.Destroy(); member_10.Destroy(); }
+struct AndPredicate { PlainPredicate<195659777> member_8; PlainPredicate<195659778> member_10; virtual void Key(); virtual ~AndPredicate() __attribute__((used)); };
+inline AndPredicate::~AndPredicate() { member_8.Destroy(); member_10.Destroy(); }
+struct Crossfade { char padding_8[24]; Auto<PlainFunction<195459841>> member_20; virtual void Key(); virtual ~Crossfade(); };
+Crossfade::~Crossfade() {  }
+struct VariablePredicate { Auto<PlainFunction<195646721>> member_8; virtual void Key(); virtual ~VariablePredicate(); };
+VariablePredicate::~VariablePredicate() {  }
+}}
 
 struct Classbf22a0 { PlainFunction<200419841> member_8; PlainFunction<200419842> member_10; virtual void Key(); virtual ~Classbf22a0() __attribute__((used)); };
 inline Classbf22a0::~Classbf22a0() { member_8.Destroy(); member_10.Destroy(); }

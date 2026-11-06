@@ -396,6 +396,12 @@ template<unsigned Key, unsigned DirtyOffset> int DirtyShape<Key, DirtyOffset>::S
 }
 template struct DirtyShape<0xb2f3e0, 276>;
 template struct DirtyShape<0xb95880, 272>;
+template struct DirtyShape<0xb2e750, 272>;
+template struct DirtyShape<0xb30670, 272>;
+template struct DirtyShape<0xb91f30, 264>;
+template struct DirtyShape<0xb96590, 272>;
+template struct DirtyShape<0xb97400, 272>;
+template struct DirtyShape<0xb98160, 272>;
 
 // Morph instances add each of their parts.
 struct MorphPart { char padding_0[0x10]; ShapeMaterial* material; char padding_18[0x40]; };
@@ -608,6 +614,25 @@ template struct HeldGraphics<0xb2d310, 344>;
 template struct HeldGraphics<0xb55080, 224>;
 template struct HeldGraphics<0xba0f60, 224>;
 template struct HeldGraphics<0xba2790, 224>;
+// Their slot 21 adds the same object to the list at +0x90 of what it is given (VolumeMeshGraphics,
+// RawMeshGraphics, Collision::PolygonGraphics and CircleGraphics).
+struct LaterDrawList {
+    char padding_0[0x90];
+    DrawList list;              // +0x90
+};
+template<unsigned Key, unsigned Offset> struct HeldGraphicsLater {
+    char padding_0[Offset];
+    void* held;
+    void Slot21(LaterDrawList* lists);
+};
+template<unsigned Key, unsigned Offset> void HeldGraphicsLater<Key, Offset>::Slot21(LaterDrawList* lists) {
+    void* value = held;
+    if (value) lists->list.PushBack(value);
+}
+template struct HeldGraphicsLater<0xb2d430, 344>;
+template struct HeldGraphicsLater<0xb551a0, 224>;
+template struct HeldGraphicsLater<0xba1080, 224>;
+template struct HeldGraphicsLater<0xba28b0, 224>;
 }  // namespace Onyx
 
 namespace SPTG {
