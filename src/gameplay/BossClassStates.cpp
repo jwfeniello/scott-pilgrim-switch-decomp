@@ -2587,13 +2587,23 @@ bool Envy::Slot259() {
     return flagD84 && flagD80;
 }
 
-// Patel slot 13 (0xa3faf0): Boss's slot 13, then, with +0x7b8 set, each
-// HipsterChick's slot 94.
-// Not yet matched (not credited).
+// Patel slot 13 (0xa3faf0): Boss's slot 13, then, with +0x7b8 set, each of his
+// HipsterChicks' slot 94. The lookup is written out because after activating a
+// chick the original reads it again from the array, not through the handle it
+// resolved, which `onyx::Get` would do.
 void Patel::Slot13() {
     UpdateBoss13();
     if (!flag7b8) return;
-    for (uint32_t i = 0; i < chickCount; ++i) onyx::Get<HipsterChick, onyx_types::type_4a52c0d7>(chicks[i])->Slot94();
+    for (uint64_t i = 0; i < chickCount; ++i) {
+        onyx::ComponentHandle*& chick = chicks[i];
+        onyx::Component* object = chick ? chick->object : nullptr;
+        if (!object) {
+            Accessor_Resolve(Accessor_Resolver, onyx_types::type_4a52c0d7, &chick);
+            chick->object->EnsureReady();
+            object = chicks[i]->object;
+        }
+        static_cast<HipsterChick*>(object)->Slot94();
+    }
 }
 
 // KenKyle slot 4 (0xa4b5f0): Boss's serialization, then the seven attack slots

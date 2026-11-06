@@ -154,6 +154,54 @@ int InteractiveObject::State88(int event) {
     }
 }
 
+// The spawner in the catalog with this id, or null.
+static __attribute__((always_inline)) inline ActorSpawner<InteractiveObject>* FindSpawner(ActorSpawnerCatalog<InteractiveObject>* catalog, uint32_t id) {
+    ActorSpawner<InteractiveObject>** i = catalog->spawners;
+    ActorSpawner<InteractiveObject>** end = i + catalog->count;
+    if (i == end) return nullptr;
+    while ((*i)->id != id) {
+        ++i;
+        if (i == end) return nullptr;
+    }
+    return *i;
+}
+
+// Slot 2 (0x9c0280): AnimatedAiActor's. Then, unless it is held, an object placed with the level (its id is
+// not one handed out at run time) releases itself and joins the spawned list of the spawner that placed it.
+// +0x9c and the health start over.
+void InteractiveObject::EnsureReady() {
+    AnimatedAiActor::EnsureReady();
+    if (!IsHeld()) {
+        const Holder* h = attachment ? attachment : &NoHolder;
+        if (h->id - 10001u >= 989999u) {
+            Release();
+            LevelItemAccessor* items = level.Get();
+            ActorSpawnerCatalog<InteractiveObject>* catalog = onyx::Get<ActorSpawnerCatalog<InteractiveObject>, onyx_types::type_43f66d96>(items->interactiveSpawners);
+            if (ActorSpawner<InteractiveObject>* owner = FindSpawner(catalog, spawnerId)) owner->spawned.PushFront(this);
+        }
+    }
+    scaled9c = base98;
+    health = MaxHealth();
+}
+
+// Slot 7 (0x9c03e0): AnimatedAiActor's, then the machine starts in state 78 and the object stands in animation 0
+// (170 with +0x3f4 and +0x3f5 set), and takes its fall values. An object of spawner 49 moves to x 150, y 0.
+// Not yet matched: the original stores z before it loads the constant pair for x and y, and this build loads
+// the pair first. Writing the position as a copy, field by field or in either order doesn't change it.
+void InteractiveObject::Slot7() {
+    AnimatedAiActor::Slot7();
+    states.Start(this, State78Ptr());
+    if (emptyLook && flag3f5) PlayAnimation(170, false, false, 1.0f);
+    else PlayAnimation(0, false, false, 1.0f);
+    motionTarget.z = fallZ;
+    motionC4 = fallC4;
+    if (spawnerId == 49) {
+        float z = onyx::Get<onyx::Transform, onyx::kTransform>(onyx::Find<ActorObject, 0x6492d61du>(actorObject)->transform)->position.z;
+        onyx::Vector3 position(150.0f, 0.0f, z);
+        onyx::Find<ActorObject, 0x6492d61du>(actorObject)->MoveTo(position);
+    }
+}
+
 // Leaves the level. The spawner that placed it either keeps it to spawn again or removes it.
 void InteractiveObject::Remove(bool respawn) {
     Release();
@@ -184,5 +232,15 @@ void InteractiveObject::Remove(bool respawn) {
 // The type tests (slot 12): each class's own type or one of its base's (SPTG_TYPE).
 bool InteractiveObjectEx::IsA(uint32_t type) { return IsType(type); }   // 0x9c05d0
 bool InteractiveObject::IsA(uint32_t type) { return IsType(type); }   // 0x9c4f80
+
+// InteractiveObjectEx slot 41 (0x9c2010): InteractiveObject's, then motion.y
+// grows by |pushFactor * scale| and takes pushFactor's direction.
+int InteractiveObjectEx::Slot41(bool a, bool b, bool c, void* data, BaseCharacter* other, float scale, float f1, float f2, float f3) {
+    int result = InteractiveObject::Slot41(a, b, c, data, other, scale, f1, f2, f3);
+    float factor = pushFactor;
+    float push = __builtin_fabsf(factor * scale) + __builtin_fabsf(motion.y);
+    motion.y = factor > 0.0f ? push : -push;
+    return result;
+}
 
 }  // namespace SPTG

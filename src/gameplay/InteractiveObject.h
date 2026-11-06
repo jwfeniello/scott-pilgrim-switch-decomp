@@ -9,9 +9,12 @@ struct InteractiveObject : AnimatedAiActor {
     SPTG_TYPE(AnimatedAiActor, 0x05fcee1cu)
     bool IsA(uint32_t type) override;   // slot 12 (0x9c4f80)
     typedef StateMachine<InteractiveObject>::State State;
+    void EnsureReady() override;                                             // slot 2 (0x9c0280)
+    void Slot7() override;                                                   // slot 7 (0x9c03e0)
     void ReactTo(BaseCharacter* other, int reaction, void* data) override;   // slot 21
     void OnDismount() override;                                              // slot 32
     bool OnMount(void* rider) override;                                      // slot 33
+    int Slot41(bool a, bool b, bool c, void* data, BaseCharacter* other, float scale, float f1, float f2, float f3) override;   // slot 41 (0x9c4170)
     bool CanMount() override;                                                // slot 34
     void Slot35(bool flag, BaseCharacter* other) override;                   // slot 35
     bool Slot37() override;                                                  // slot 37
@@ -41,7 +44,8 @@ struct InteractiveObject : AnimatedAiActor {
     float fallZ;                     // +0x3ec: what it falls with
     float fallC4;                    // +0x3f0
     uint8_t emptyLook;               // +0x3f4: stands in animation 170 instead of 0
-    char padding_3f5[0x3f];
+    uint8_t flag3f5;                 // +0x3f5: with emptyLook, slot 7 starts in animation 170
+    char padding_3f6[0x3e];
     uint32_t spawnerId;              // +0x434: which spawner placed it, or 51
     char padding_438[0x4];
     uint8_t slidesInAnimation9;      // +0x43c
@@ -55,6 +59,10 @@ static_assert(__builtin_offsetof(InteractiveObject, attack388) == 0x388, "Intera
 struct InteractiveObjectEx : InteractiveObject {
     SPTG_TYPE(InteractiveObject, 0x03564b5au)
     bool IsA(uint32_t type) override;   // slot 12 (0x9c05d0)
+    int Slot41(bool a, bool b, bool c, void* data, BaseCharacter* other, float scale, float f1, float f2, float f3) override;   // slot 41
+    char padding_450[0x14];
+    float pushFactor;                // +0x464: slot 41 pushes motion.y by this times the scale, in its direction
 };
+static_assert(__builtin_offsetof(InteractiveObjectEx, pushFactor) == 0x464, "InteractiveObjectEx pushFactor");
 
 }  // namespace SPTG

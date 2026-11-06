@@ -335,6 +335,13 @@ A few more things decide these handlers' code:
   if the destinations differ when it runs. `Todd::State270` matches only with an assumption in `case 136` that falls into
   `case 135`. That is the same stand-in as the exit case, and what the original does there is unknown.
 
+- A handle in an array, looked up with `onyx::Get(chicks[i])`, keeps the element's address through the resolve
+  and the activation. `Patel`'s slot 13 reads the element again from the array after the activation, so its
+  lookup is written out, with a 64-bit index.
+- A search that returns from inside the loop when it reaches the end (`InteractiveObject::Remove` and
+  `FindSpawner`) keeps the pointer increment apart from the load. Written as a `for` loop with a `break`, the
+  increment folds into a post-indexed load.
+
 ## Build profile for game classes
 
 The game-class sources (`gameplay_pickup`, `gameplay_piniata`) build with
