@@ -503200,6 +503200,23 @@
           "got_bindings": {}
         },
         {
+          "address": "0x754ac0",
+          "size": 208,
+          "symbol": "_Z23Create_SPTG_LevelCamerav",
+          "target_sha256": "adc0bf642d42855e3d37207a296e762c02621e6e7e11cc5e82f2195b46de2f21",
+          "bindings": {
+            "GenericFactoryManager": "0x191c9c8",
+            "GenericFactoryResolve": "0x676160",
+            "_ZN4Onyx9Component4BaseC2Ev": "0x6764e0",
+            "_ZTVN4SPTG11LevelCameraE": "0x18603f0",
+            "_ZGVZN7Vector24ZeroEvE5value": "0x1924c98",
+            "_ZZN7Vector24ZeroEvE5value": "0x1924ca0",
+            "__cxa_guard_acquire": "0xfa4130",
+            "__cxa_guard_release": "0xfa4140"
+          },
+          "got_bindings": {}
+        },
+        {
           "address": "0x754b90",
           "size": 104,
           "symbol": "_Z27Create_SPTG_ParallaxUpdaterv",
@@ -503479,6 +503496,23 @@
             "GenericFactoryResolve": "0x676160",
             "_ZN4Onyx4Fire10FireVisualC2Ev": "0x7fb9f0",
             "_ZTVN4SPTG9KissMovieE": "0x1858c28"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x75ad60",
+          "size": 168,
+          "symbol": "_Z20Create_SPTG_PopupBoxv",
+          "target_sha256": "be18c8362f50b83b27101d583844488f4f31a55f227f6c156e5d5d19acf6bf94",
+          "bindings": {
+            "GenericFactoryManager": "0x191c9c8",
+            "GenericFactoryResolve": "0x676160",
+            "_ZN4Onyx4Fire10FireVisualC2Ev": "0x7fb9f0",
+            "_ZTVN4SPTG8PopupBoxE": "0x1855210",
+            "_ZGVZN7Vector24ZeroEvE5value": "0x1924c98",
+            "_ZZN7Vector24ZeroEvE5value": "0x1924ca0",
+            "__cxa_guard_acquire": "0xfa4130",
+            "__cxa_guard_release": "0xfa4140"
           },
           "got_bindings": {}
         },
@@ -504268,6 +504302,26 @@
           }
         },
         {
+          "address": "0x74de70",
+          "size": 172,
+          "symbol": "_Z39Create_SPTG_SetPopupBoxVisibilityActionv",
+          "target_sha256": "9141aea4ee5d4d78e5c43bdfd399e3333276c87b1f5c69ce388fc1a9c14385d4",
+          "bindings": {
+            "GenericFactoryManager": "0x191c9c8",
+            "GenericFactoryResolve": "0x676160",
+            "_ZN4Onyx15ActionComponentC2Ev": "0xbc97a0",
+            "_ZTVN4SPTG27SetPopupBoxVisibilityActionE": "0x186bce8",
+            "_ZGVZN7Vector24ZeroEvE5value": "0x1924c98",
+            "_ZZN7Vector24ZeroEvE5value": "0x1924ca0",
+            "__cxa_guard_acquire": "0xfa4130",
+            "__cxa_guard_release": "0xfa4140"
+          },
+          "got_bindings": {},
+          "literals": {
+            "ffffffff02000000": "0x1331830"
+          }
+        },
+        {
           "address": "0x74fb10",
           "size": 188,
           "symbol": "_Z39Create_SPTG_ActorCircleNavigationActionv",
@@ -504314,6 +504368,24 @@
             "_ZTVN4SPTG25ActorMoveFromBehindActionE": "0x1867b00",
             "_ZGVZN7Vector34ZeroEvE5value": "0x191f8b8",
             "_ZZN7Vector34ZeroEvE5value": "0x191f8c0",
+            "__cxa_guard_acquire": "0xfa4130",
+            "__cxa_guard_release": "0xfa4140"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x751b90",
+          "size": 212,
+          "symbol": "_Z24Create_SPTG_RepeatObjectv",
+          "target_sha256": "ee004f42d5e881d0f68c238386305ae81d4921429d5097dfc50842c96f0b31e7",
+          "bindings": {
+            "GenericFactoryManager": "0x191c9c8",
+            "GenericFactoryResolve": "0x676160",
+            "_ZN4Onyx9Component4BaseC2Ev": "0x6764e0",
+            "AllocatorContext": "0x1935058",
+            "_ZTVN4SPTG12RepeatObjectE": "0x18653e8",
+            "_ZGVZN7Vector24ZeroEvE5value": "0x1924c98",
+            "_ZZN7Vector24ZeroEvE5value": "0x1924ca0",
             "__cxa_guard_acquire": "0xfa4130",
             "__cxa_guard_release": "0xfa4140"
           },

@@ -23,6 +23,15 @@ __attribute__((always_inline)) inline void* DefaultAllocator() { return Allocato
 namespace Onyx { namespace Component { struct Base { Base(); virtual ~Base(); }; } }
 struct Base_6a48c0 { Base_6a48c0(); virtual ~Base_6a48c0(); };  // Onyx::Component::Compose<...>
 namespace Onyx { namespace Fire { struct FireVisual { FireVisual(); virtual ~FireVisual(); }; } }
+// As in ComponentFactoriesStatic.cpp: the zero's static is 8-aligned (see onyx::Vector2::Zero()).
+struct Vector2 {
+    float x, y;
+    Vector2() {}
+    Vector2(float a, float b) : x(a), y(b) {}
+    Vector2(const Vector2& o) : x(o.x), y(o.y) {}
+    __attribute__((always_inline)) void Set(const Vector2& o) { x = o.x; y = o.y; }
+    static const Vector2& Zero() { alignas(8) static const Vector2 value(0.0f, 0.0f); return value; }
+};
 namespace SPTG { struct FillLineListShape { FillLineListShape(); virtual ~FillLineListShape(); }; }
 namespace SPTG { struct Striker { Striker(); virtual ~Striker(); }; }
 struct Base_95d1d0 { Base_95d1d0(); virtual ~Base_95d1d0(); };  // Onyx::Component::Compose<...>
@@ -2443,6 +2452,63 @@ struct ControllerDisconnectionMessage : ControllerDisconnectionMessageLayout {
 };
 }  // namespace SPTG
 void* Create_SPTG_ControllerDisconnectionMessage() { return new (GenericFactoryResolve(GenericFactoryManager, 0x19938f9fu)->Allocate(sizeof(SPTG::ControllerDisconnectionMessage))) SPTG::ControllerDisconnectionMessage; }
+
+// SPTG::PopupBox (factory 0x75ad60), written by hand: the lifter skipped it.
+namespace SPTG {
+struct PopupBoxLayout : ::Onyx::Fire::FireVisual {
+    char padding_8[0x2ac];
+    __attribute__((always_inline)) PopupBoxLayout() {}
+    virtual ~PopupBoxLayout();
+};
+// The member is PopupBox's own, in the base's tail padding: declared on the Layout instead, its address is worked out
+// after the zero's guard rather than before it as in the original.
+struct PopupBox : PopupBoxLayout {
+    Vector2 field_2b4;
+    __attribute__((always_inline)) PopupBox() { field_2b4 = Vector2::Zero(); }
+    virtual ~PopupBox();
+};
+static_assert(__builtin_offsetof(SPTG::PopupBox, field_2b4) == 0x2b4 && sizeof(SPTG::PopupBox) == 0x2c0, "PopupBox layout");
+}  // namespace SPTG
+void* Create_SPTG_PopupBox() { return new (GenericFactoryResolve(GenericFactoryManager, 0x19938f9fu)->Allocate(sizeof(SPTG::PopupBox))) SPTG::PopupBox; }
+
+// SPTG::LevelCamera (factory 0x754ac0), written by hand: the lifter skipped it. The zeroing before the vtable is set
+// (+0x90 to +0xaf) and after it (+0x60 to +0x8f) are two separate blocks. The constructor ends by setting +0x58 to 2
+// when it differs and raising +0x5c, an inlined setter.
+namespace SPTG {
+struct LevelCameraLayout : ::Onyx::Component::Base {
+    char padding_8[0x48];
+    uint64_t field_50;
+    int32_t field_58;
+    uint8_t field_5c;
+    char padding_5d[0x3];
+    uint64_t field_60;
+    uint64_t field_68;
+    uint64_t field_70;
+    uint64_t field_78;
+    uint64_t field_80;
+    uint64_t field_88;
+    uint64_t field_90;
+    uint64_t field_98;
+    uint64_t field_a0;
+    uint64_t field_a8;
+    __attribute__((always_inline)) LevelCameraLayout() { field_50 = 0; field_58 = 0x7fffffff; field_90 = 0; field_98 = 0; field_a0 = 0; field_a8 = 0; field_5c = 0; }
+    virtual ~LevelCameraLayout();
+};
+struct LevelCamera : LevelCameraLayout {
+    Vector2 field_b0;
+    uint16_t field_b8;
+    __attribute__((always_inline)) LevelCamera() {
+        field_60 = 0; field_68 = 0; field_70 = 0; field_78 = 0; field_80 = 0; field_88 = 0;
+        field_b0 = Vector2::Zero();
+        field_b8 = 1;
+        if (field_58 != 2) field_58 = 2;
+        field_5c = 1;
+    }
+    virtual ~LevelCamera();
+};
+}  // namespace SPTG
+static_assert(sizeof(SPTG::LevelCamera) == 0xc0, "LevelCamera size");
+void* Create_SPTG_LevelCamera() { return new (GenericFactoryResolve(GenericFactoryManager, 0x7b73c94u)->Allocate(sizeof(SPTG::LevelCamera))) SPTG::LevelCamera; }
 
 // SPTG::ControlMenu : Onyx::Component::Compose<...> : SPTG::FlashMenu : Onyx::Component::Compose<...> : Onyx::Fire::FireVisual : Onyx::Component::Compose<...> : Onyx::Fire::FireVisualBase : Onyx::Component::Compose<...>
 namespace SPTG {

@@ -32,7 +32,7 @@ struct Vector2 {
     Vector2(float a, float b) : x(a), y(b) {}
     Vector2(const Vector2& o) : x(o.x), y(o.y) {}
     __attribute__((always_inline)) void Set(const Vector2& o) { x = o.x; y = o.y; }
-    static const Vector2& Zero() { static const Vector2 value(0.0f, 0.0f); return value; }
+    static const Vector2& Zero() { alignas(8) static const Vector2 value(0.0f, 0.0f); return value; }
 };
 namespace Onyx { namespace Component { struct Base { Base(); virtual ~Base(); }; } }
 namespace Onyx { struct ActionComponent { ActionComponent(); virtual ~ActionComponent(); }; }
@@ -137,6 +137,30 @@ struct PileOnMgr : PileOnMgrLayout {
 }  // namespace SPTG
 void* Create_SPTG_PileOnMgr() { return new (GenericFactoryResolve(GenericFactoryManager, 0x7b73c94u)->Allocate(sizeof(SPTG::PileOnMgr))) SPTG::PileOnMgr; }
 
+// SPTG::SetPopupBoxVisibilityAction : Onyx::Component::Compose<...> : SPTG::SetFlashMenuVisibilityAction : Onyx::Component::Compose<...> : Onyx::ActionComponent : Onyx::Component::Compose<...> : Onyx::Component::Base
+namespace SPTG {
+struct SetPopupBoxVisibilityActionLayout : ::Onyx::ActionComponent {
+    char padding_8[0x98];
+    uint64_t field_a0;
+    int32_t field_a8;
+    uint32_t field_ac;
+    char padding_b0[0x8];
+    uint64_t field_b8;
+    uint64_t field_c0;
+    uint64_t field_c8;
+    Vector2 field_d0;
+    uint32_t field_d8;
+    char padding_dc[0x4];
+    __attribute__((always_inline)) SetPopupBoxVisibilityActionLayout() { field_a0 = 0; field_a8 = -1; field_ac = 0x2u; field_b8 = 0; field_c0 = 0; }
+    virtual ~SetPopupBoxVisibilityActionLayout();
+};
+struct SetPopupBoxVisibilityAction : SetPopupBoxVisibilityActionLayout {
+    __attribute__((always_inline)) SetPopupBoxVisibilityAction() { field_c8 = 0; field_d0.Set(Vector2::Zero()); field_d8 = 0; }
+    virtual ~SetPopupBoxVisibilityAction();
+};
+}  // namespace SPTG
+void* Create_SPTG_SetPopupBoxVisibilityAction() { return new (GenericFactoryResolve(GenericFactoryManager, 0x7b73c94u)->Allocate(sizeof(SPTG::SetPopupBoxVisibilityAction))) SPTG::SetPopupBoxVisibilityAction; }
+
 // SPTG::ActorCircleNavigationAction : Onyx::Component::Compose<...> : SPTG::ActorActionComponent : Onyx::Component::Compose<...> : Onyx::ActionComponent : Onyx::Component::Compose<...> : Onyx::Component::Base
 namespace SPTG {
 struct ActorCircleNavigationActionLayout : ::Onyx::ActionComponent {
@@ -201,6 +225,47 @@ struct ActorMoveFromBehindAction : ActorMoveFromBehindActionLayout {
 };
 }  // namespace SPTG
 void* Create_SPTG_ActorMoveFromBehindAction() { return new (GenericFactoryResolve(GenericFactoryManager, 0x7b73c94u)->Allocate(sizeof(SPTG::ActorMoveFromBehindAction))) SPTG::ActorMoveFromBehindAction; }
+
+// SPTG::RepeatObject : Onyx::Component::Compose<...> : SPTG::StaticObject : Onyx::Component::Compose<...> : SPTG::GraphicsObject : Onyx::Component::Compose<...> : Onyx::Component::Base
+namespace SPTG {
+struct RepeatObjectLayout : ::Onyx::Component::Base {
+    char padding_8[0x48];
+    uint64_t field_50;
+    uint64_t field_58;
+    char padding_60[0x18];
+    uint8_t field_78;
+    char padding_79[0x17];
+    uint64_t field_90;
+    void* field_98;
+    uint64_t field_a0;
+    uint64_t field_a8;
+    uint64_t field_b0;
+    char padding_b8[0x2];
+    uint16_t field_ba;
+    uint16_t field_bc;
+    char padding_be[0x2];
+    int32_t field_c0;
+    uint8_t field_c4;
+    char padding_c5[0x3f];
+    uint16_t field_104;
+    char padding_106[0x2];
+    uint64_t field_108;
+    uint64_t field_110;
+    uint8_t field_118;
+    char padding_119[0x7];
+    uint64_t field_120;
+    uint64_t field_128;
+    char padding_130[0x10];
+    Vector2 field_140;
+    __attribute__((always_inline)) RepeatObjectLayout() { field_50 = 0; field_58 = 0; field_78 = 0x1; field_90 = 0; field_a0 = 0; field_a8 = 0; field_b0 = 0; field_98 = DefaultAllocator(); field_ba = 0; field_bc = 0; field_c0 = -1; }
+    virtual ~RepeatObjectLayout();
+};
+struct RepeatObject : RepeatObjectLayout {
+    __attribute__((always_inline)) RepeatObject() { field_c4 = 0; field_104 = 0; field_108 = 0; field_110 = 0; field_118 = 0; field_120 = 0; field_128 = 0; field_140.Set(Vector2::Zero()); }
+    virtual ~RepeatObject();
+};
+}  // namespace SPTG
+void* Create_SPTG_RepeatObject() { return new (GenericFactoryResolve(GenericFactoryManager, 0x2eae5813u)->Allocate(sizeof(SPTG::RepeatObject))) SPTG::RepeatObject; }
 
 // SPTG::PlayfieldCollision : Onyx::Component::Compose<...> : Onyx::Component::Base
 namespace SPTG {
