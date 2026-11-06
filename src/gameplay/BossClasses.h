@@ -743,6 +743,7 @@ struct SuperFightingRobotHand : Boss {
     bool CallA2fae0(bool flag, float speed);   // 0xa2fae0
     bool CallA2f300(float a, float b, float c);   // 0xa2f300
     void Slot4(onyx::Archive& archive, ComponentSlot::Source* source);
+    void FollowPlayfield() override;                                         // slot 76
     int State96(int event); State State96Ptr();   // slots 96, 97, override Boss
     int State106(int event); State State106Ptr();   // slots 106, 107, override Boss
     int State108(int event); State State108Ptr();   // slots 108, 109, override Boss
@@ -786,7 +787,7 @@ struct SuperFightingRobotHand : Boss {
     int32_t valueF2c;            // +0xf2c
     int32_t valueF30;            // +0xf30
     int32_t valueF34;            // +0xf34
-    int32_t valueF38;            // +0xf38
+    float groundF38;             // +0xf38: the hand's own ground height, read as a float by slot 76
     int32_t valueF3c;            // +0xf3c
     int32_t valueF40;            // +0xf40
     int32_t valueF44;            // +0xf44: serialized through a uint32_t

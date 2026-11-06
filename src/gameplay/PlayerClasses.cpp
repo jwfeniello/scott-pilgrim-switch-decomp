@@ -281,4 +281,25 @@ void ControllableNegaScott::Slot257() {
     }
 }
 
+// Knives slot 256 (0x99cc60): in the air and not mounted, with her air special
+// learned, timer 1 (+0x1430) running and button 8 held, starts the special
+// (state 258). Otherwise the shared air input decides.
+// Not yet matched: the original tests the learned move and the button together
+// after the timer (an `orr` of two flags) and returns 2 through one shared block;
+// this build tests the move first and selects the return value.
+int ControllableKnives::AirInput(int) {
+    PlayerInput* in = input;
+    if (in && !IsMounted()) {
+        PlayerInfoView* record = onyx::Find<PlayerInfoView, 1180775934u>(playerInfo);
+        bool known = (record->moves & kMoveStrikerB) || record->allMoves;
+        if (value142c[1] > 0.0f && known && (in->held & 8)) {
+            value1560 = 2;
+            states.Transition(State258Ptr());
+            return kStateParentTookOver;
+        }
+    }
+    if (CheckAirInput() == kStateParentTookOver) return kStateParentTookOver;
+    return kStateHandled;
+}
+
 }  // namespace SPTG

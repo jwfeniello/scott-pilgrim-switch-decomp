@@ -1479,6 +1479,34 @@ void EnemyNormal::Approach() {
     }
 }
 
+// EnemyPaparazzi slot 167 (0x9ecf60): picks one of its two attack states at
+// random.
+void EnemyPaparazzi::Approach() {
+    switch (RandomRange(0, 1)) {
+    case 0: states.Transition(State234Ptr()); break;
+    case 1: states.Transition(State236Ptr()); break;
+    }
+}
+
+// EnemyHanzo slot 167 (0x9f6b30): picks at random from two attacks, states 238
+// and 240 when the target's slot 83 holds, else 234 and 236.
+// Not yet matched, like EnemyNormal's: the original branches on slot 83 before the
+// random generator's lock is released, with the release copied into both arms and
+// no null test of the generator.
+void EnemyHanzo::Approach() {
+    if (static_cast<BaseCharacter*>(target->object)->Slot83()) {
+        switch (RandomRange(0, 1)) {
+        case 0: states.Transition(State238Ptr()); break;
+        case 1: states.Transition(State240Ptr()); break;
+        }
+    } else {
+        switch (RandomRange(0, 1)) {
+        case 0: states.Transition(State234Ptr()); break;
+        case 1: states.Transition(State236Ptr()); break;
+        }
+    }
+}
+
 // EnemyGiant slot 167 (0x9fb7f0): the same, with its own attacks. Not yet matched, for the same reason.
 void EnemyGiant::Approach() {
     if (IsMounted()) {

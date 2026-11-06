@@ -2793,7 +2793,7 @@ void SuperFightingRobotHand::Slot4(onyx::Archive& archive, ComponentSlot::Source
     onyx::Transfer(archive, valueF2c);
     onyx::Transfer(archive, valueF30);
     onyx::Transfer(archive, valueF34);
-    onyx::Transfer(archive, valueF38);
+    onyx::Transfer(archive, groundF38);
     onyx::Transfer(archive, valueF3c);
     onyx::Transfer(archive, valueF40);
     onyx::TransferAs<uint32_t>(archive, valueF44);
@@ -3858,6 +3858,24 @@ onyx::Vector3 LucasLee::ArrivalPoint() {
     point.y = pointsCd8.data[arrivalIndex].y;
     point.z = groundHeight;
     return point;
+}
+
+// SuperFightingRobotHand slot 76 (0xa295a0): the hand keeps its own ground
+// height (+0xf38), and its shadow stays under it at that height. The original
+// calls SetGroundHeight and then returns, where a plain build makes it a tail call;
+// the assumption after it (see StateMachine.h) gives the original's code.
+void SuperFightingRobotHand::FollowPlayfield() {
+    groundHeight = static_cast<int>(groundF38);
+    onyx::Transform* transform = onyx::Get<onyx::Transform, onyx::kTransform>(onyx::Find<ActorObject, onyx_types::type_6492d61d>(actorObject)->transform);
+    if (ShadowAnimatedObject* shadow = Shadow()) {
+        onyx::Vector3 position = transform->position;
+        float z = position.z;
+        onyx::Transform* shadowTransform = onyx::Find<onyx::Transform, onyx::kTransform>(shadow->transform);
+        position.z = groundF38;
+        shadowTransform->SetPosition(position);
+        Shadow()->SetGroundHeight(static_cast<int>(groundF38), z);
+        states.AssertOwner(this);
+    }
 }
 
 }  // namespace SPTG

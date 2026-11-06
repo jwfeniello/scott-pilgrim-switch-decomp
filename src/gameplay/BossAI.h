@@ -19,7 +19,9 @@ namespace SPTG {
 struct BaseBossAI : onyx::Component {
     typedef StateMachine<BaseBossAI>::State State;
     SPTG_SLOT(3) SPTG_SLOT(4) SPTG_SLOT(5) SPTG_SLOT(6) SPTG_SLOT(7) SPTG_SLOT(8) SPTG_SLOT(9) SPTG_SLOT(10)
-    SPTG_SLOT(11) SPTG_SLOT(12) SPTG_SLOT(13) SPTG_SLOT(14) SPTG_SLOT(15)
+    SPTG_SLOT(11) SPTG_SLOT(12)
+    virtual void Update();                 // slot 13 (0xa149f0)
+    SPTG_SLOT(14) SPTG_SLOT(15)
     virtual void Start();                  // slot 16 (0xa14a20)
     SPTG_SLOT(17) SPTG_SLOT(18) SPTG_SLOT(19) SPTG_SLOT(20)
     // Until a player is present.
@@ -75,11 +77,27 @@ struct ToddAI : BaseBossAI {
 
 // Super Gideon's fight follows one boss, the actor at +0xe0.
 struct SuperGideonAI : BaseBossAI {
+    int Waiting(int event) override;       // slot 21 (0xa50fa0)
+    State WaitingPtr() override;           // slot 22
     int Fighting(int event) override;      // slot 23 (0xa51430)
+    State FightingPtr() override;          // slot 24
+    int Finished(int event) override;      // slot 25 (0xa514e0, see ActionEvents.cpp)
+    State FinishedPtr() override;          // slot 26
     char padding_d8[0x8];
     onyx::ComponentHandle* actor;          // +0xe0: the boss
     bool reported;                         // +0xe8
 };
 static_assert(__builtin_offsetof(SuperGideonAI, actor) == 0xe0, "SuperGideonAI actor");
+
+// Giga Gideon's fight also reports when its boss is first enraged (+0xd68).
+struct GigaGideonAI : BaseBossAI {
+    int Waiting(int event) override;       // slot 21 (0xa56600)
+    State WaitingPtr() override;           // slot 22
+    int Fighting(int event) override;      // slot 23 (0xa56a90, see ActionEvents.cpp)
+    State FightingPtr() override;          // slot 24
+    char padding_d8[0x8];
+    onyx::ComponentHandle* actor;          // +0xe0: the boss
+    bool raged;                            // +0xe8
+};
 
 }  // namespace SPTG

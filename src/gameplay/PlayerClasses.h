@@ -32,7 +32,9 @@ struct ControllableKnives : ControllablePlayer {
     void Slot160(const int* move, int* value) override;
     int State215(int event) override;
     int State239(int event) override;
-    char padding_1560[0x4];
+    int AirInput(int event) override;                                    // slot 256
+    virtual int State258(int event); virtual State State258Ptr();        // slots 258, 259: the air special
+    int32_t value1560;           // +0x1560: 2 when the air special starts
     int32_t value1564;           // +0x1564
     int32_t value1568;           // +0x1568
     int32_t value156c;           // +0x156c

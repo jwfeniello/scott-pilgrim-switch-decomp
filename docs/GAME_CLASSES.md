@@ -272,6 +272,9 @@ A few more things decide these handlers' code:
 - Reading members into locals first sets their registers. `ControllablePlayer::State249` matches with
   `PlayerInput* in = input; int bit = value141c;` before the test. With the members written inline, two scratch
   registers trade places.
+- The assumption also stops a tail call. `SuperFightingRobotHand::FollowPlayfield` ends with a call and a
+  return in the original, where a plain build branches to the callee. `states.AssertOwner(this)` after the call
+  gives the original's code, which fits the release-mode assertion this stands in for.
 - A flag argument worked out at the top of a function is scheduled apart from the call that uses it.
   `AnimatedAiActor::PlayFacingAnimation` needs `bool loop = (flags & 4) != 0;` before its lookups. Inline in the
   call, one instruction of the tail call moves.
@@ -877,7 +880,11 @@ EnemyGuyOnFire's own slot sits at `+0xbd0` and ends where its attack delay
   (EnemyAerial and EnemyStuntman 108).
 - The approach hook (slot 167): EnemyGodzilla and EnemySpeedy go straight to
   their own state 234; EnemyWolverine and EnemyChubby pick a state by the
-  target's slot 83.
+  target's slot 83. EnemyPaparazzi picks state 234 or 236 with one random roll
+  (matched). EnemyNormal, EnemyGiant and EnemyHanzo pick a pair of attacks by
+  the target's slot 83 and then one of the pair at random; those are written
+  but not matched, because the original copies the generator's lock release
+  into both arms.
 - Slot 166, a hit hook: saves the motion, clears `+0x15c` and, for certain hit
   kinds, switches to a class state (EnemyGodzilla, EnemyJetPackMatt, EnemyThief,
   EnemyPaparazzi, EnemyMini, EnemyWolverine, EnemyChubby, EnemyShooter). The
@@ -995,6 +1002,8 @@ Boss's version and add a class detail:
   268 she counts the damage she takes. The approach otherwise follows Lynette's, with the target going out as an extra exit.
 - **SuperFightingRobotHand:** at half health it tells the robot once (`halfHealthDone`, the robot's state 274) and goes to state
   260. At no health it goes to state 262.
+  Its slot 76 doesn't follow the playfield: the hand keeps its own ground height, a float at `+0xf38`, and holds
+  its shadow under it at that height.
 - **Damage (slot 69):** Roxy inlines Boss's handling (`Boss::TakeBossDamage`);
   TagTeamMember also drains its own health at `+0xd7c`, Ken & Kyle start a
   recovery, Chau derives a phase from its health, and the robot hand counts hits.
@@ -1102,9 +1111,11 @@ enemies and 6 for bosses. The boss states test +0xd28 before they run slot 240
 when the health is gone, and Ken & Kyle copy it from the twin, so it most
 likely marks a beaten boss.
 
-[`BossAI.cpp`](../src/gameplay/BossAI.cpp) matches seven functions (2,432
-bytes): slots 16, 21 and 23 of `BaseBossAI`, slots 21 and 23 of `ToddAI`, slot
-23 of `SuperGideonAI`, and `AssignTarget`. Three more were matched earlier in
+[`BossAI.cpp`](../src/gameplay/BossAI.cpp) matches 18 functions (2,584
+bytes): slots 13 (update), 16, 21 and 23 of `BaseBossAI`, slots 21 and 23 of
+`ToddAI`, slot 23 of `SuperGideonAI`, `AssignTarget`, and the ten state
+getters of the four classes. The getters and slot 13 were credited before to
+generated ABI views (`RecoveredLeaf_…`), which now leave them to the class. Three more were matched earlier in
 [`ActionEvents.cpp`](../src/gameplay/ActionEvents.cpp) under local
 declarations: slot 25 of `BaseBossAI` and of `SuperGideonAI`, and slot 23 of
 `GigaGideonAI`.

@@ -3,6 +3,11 @@
 
 namespace SPTG {
 
+// Slot 13 (0xa149f0): sends the current state the update event.
+void BaseBossAI::Update() {
+    states.Update();
+}
+
 // Slot 16 (0xa14a20): clears +0x50, sets +0x51 and starts in the waiting state.
 void BaseBossAI::Start() {
     flag50 = false;
@@ -122,5 +127,18 @@ int SuperGideonAI::Fighting(int event) {
     }
     return kStateParentTookOver;
 }
+
+// The getters at slots 22, 24 and 26 return a state as a pointer to a virtual
+// member: its vtable offset (0xa8, 0xb8, 0xc8) with the virtual bit.
+BaseBossAI::State BaseBossAI::WaitingPtr() { return &BaseBossAI::Waiting; }                       // 0xa15ed0
+BaseBossAI::State BaseBossAI::FightingPtr() { return &BaseBossAI::Fighting; }                     // 0xa16030
+BaseBossAI::State BaseBossAI::FinishedPtr() { return &BaseBossAI::Finished; }                     // 0xa14f40
+BaseBossAI::State ToddAI::WaitingPtr() { return static_cast<State>(&ToddAI::Waiting); }           // 0xa14b90
+BaseBossAI::State ToddAI::FightingPtr() { return static_cast<State>(&ToddAI::Fighting); }         // 0xa14dc0
+BaseBossAI::State SuperGideonAI::WaitingPtr() { return static_cast<State>(&SuperGideonAI::Waiting); }    // 0xa51420
+BaseBossAI::State SuperGideonAI::FightingPtr() { return static_cast<State>(&SuperGideonAI::Fighting); }  // 0xa514d0
+BaseBossAI::State SuperGideonAI::FinishedPtr() { return static_cast<State>(&SuperGideonAI::Finished); }  // 0xa51690
+BaseBossAI::State GigaGideonAI::WaitingPtr() { return static_cast<State>(&GigaGideonAI::Waiting); }      // 0xa56a80
+BaseBossAI::State GigaGideonAI::FightingPtr() { return static_cast<State>(&GigaGideonAI::Fighting); }    // 0xa56c60
 
 }  // namespace SPTG

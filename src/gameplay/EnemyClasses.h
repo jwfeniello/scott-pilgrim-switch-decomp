@@ -117,6 +117,7 @@ struct EnemyShooter : Enemy {
 // vtable 0x1882018, 238 slots
 struct EnemyPaparazzi : Enemy {
     void Update();
+    void Approach();
     void Slot166(int kind);
     virtual int State234(int event); virtual State State234Ptr();   // slots 234, 235
     virtual int State236(int event); virtual State State236Ptr();   // slots 236, 237
@@ -204,6 +205,7 @@ struct EnemyJetPackMatt : Enemy {
 };
 // vtable 0x1884700, 246 slots
 struct EnemyHanzo : Enemy {
+    void Approach();
     bool CanMount();
     bool OnMount(void* data);
     void Slot166(int kind);
