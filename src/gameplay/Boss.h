@@ -65,10 +65,10 @@ struct Boss : Enemy {
     }
     bool CheckA1e720();   // 0xa1e720
     bool CheckA1e820();   // 0xa1e820
-    void CallA1eb90(int value);   // 0xa1eb90
+    void TargetPlayer(uint8_t index);   // 0xa1eb90: takes the player at that index as the target
     bool CheckA1e9c0(float a, float b, float c);   // 0xa1e9c0
     void CallA254a0(float value);   // 0xa254a0
-    bool CheckA255e0(void* data);   // 0xa255e0
+    bool CheckA255e0(const AttackSlot* slot);   // 0xa255e0
     int State96(int event); State State96Ptr();   // slots 96, 97, override Enemy
     int State98(int event); State State98Ptr();   // slots 98, 99, override Enemy
     int State106(int event); State State106Ptr();   // slots 106, 107, override Enemy

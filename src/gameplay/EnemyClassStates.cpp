@@ -700,6 +700,144 @@ int EnemyOneHitWonder::State238(int event) {
     }
 }
 
+// EnemyAerial's state at 0xa04af0 (slot 238 returns it): EnemyOneHitWonder's slot 236, which also raises +0xdc0 on
+// entry; the next update removes the enemy.
+int EnemyAerial::Statea04af0(int event) {
+    switch (event) {
+    case kStateUpdate:
+        Remove(true);
+        return kStateHandled;
+    case kStateEnter:
+        actionMode = 5;
+        motion = onyx::Vector3::Zero();
+        motionTarget = onyx::Vector3::Zero();
+        targetIndex = 4;
+        aiMode = 6;
+        mode87c = 3;
+        flag7b8 = 1;
+        flag7b9 = 1;
+        flagDc0 = 1;
+        return kStateHandled;
+    case kStateEvent3:
+        return kStateHandled;
+    default:
+        return kStateUnhandled;
+    case kStateExit:
+        states.AssertOwner(this);
+        return kStateHandled;
+    }
+}
+
+// EnemyAerial's state at 0xa04890 (slot 239 returns it): like EnemyOneHitWonder's slot 238, times the state against
+// +0xcc0 and then clears +0xdac and returns to slot 96. Entry also puts the enemy at the height kept in +0xdb8.
+int EnemyAerial::Statea04890(int event) {
+    switch (event) {
+    case kStateUpdate:
+        timerDbc += Move_FrameDelta;
+        if (timerDbc > timeLimitCc0) {
+            flagDac = 0;
+            states.Transition(State96Ptr());
+            return kStateParentTookOver;
+        }
+        return kStateHandled;
+    case kStateEnter: {
+        timerDbc = 0.0f;
+        motion = onyx::Vector3::Zero();
+        motionTarget = onyx::Vector3::Zero();
+        onyx::Vector3 position = onyx::Get<onyx::Transform, onyx::kTransform>(onyx::Find<ActorObject, 0x6492d61du>(actorObject)->transform)->Position();
+        position.z = vectorDb0.z;
+        onyx::Find<ActorObject, 0x6492d61du>(actorObject)->MoveTo(position);
+        return kStateHandled;
+    }
+    case kStateEvent3:
+        return kStateHandled;
+    default:
+        return kStateUnhandled;
+    case kStateExit:
+        states.AssertOwner(this);
+        return kStateHandled;
+    }
+}
+// EnemySpeedy's state at 0x9eb520 (slot 238 returns it): turns round if the last dodge went left, then runs along the
+// facing at +0xde8 with animation 9 until the animation ends, and goes back to slot 96. Exit stops the enemy.
+int EnemySpeedy::State9eb520(int event) {
+    int result = kStateHandled;
+    switch (event) {
+    case kStateUpdate:
+        if (!AnimationDone()) return kStateHandled;
+        states.Transition(State96Ptr());
+        result = kStateParentTookOver;
+        break;
+    default:
+        result = kStateUnhandled;
+        break;
+    case kStateEnter: {
+        if (dodgeDirection == -1.0f) TurnAround();
+        float sign = FacingSign();
+        motion.x = runSpeed * sign;
+        PlayAnimation(9, false, false, 1.0f);
+        break;
+    }
+    case kStateExit:
+        motion = onyx::Vector3::Zero();
+        motionTarget = onyx::Vector3::Zero();
+        break;
+    case kStateEvent3:
+        break;
+    }
+    return result;
+}
+EnemySpeedy::State EnemySpeedy::State9eb520Ptr() { return static_cast<State>(&EnemySpeedy::State9eb520); }   // 0x9eb510
+
+// EnemyJetPackMatt's state at 0x9f25b0 (slot 236 returns it): the jet pack flight. Entry stops the enemy and plays
+// animation 174; when that ends it rises with animation 2 at +0xc34's speed, falls with animation 15 once the rise turns
+// and lands into slot 116. Exit clears the flying flag.
+int EnemyJetPackMatt::State9f25b0(int event) {
+    int result = kStateHandled;
+    switch (event) {
+    case kStateUpdate:
+        switch (animation) {
+        case 174:
+            if (AnimationDone()) {
+                PlayAnimation(2, true, false, 1.0f);
+                motionTarget.z = groundZ;
+                motionC4 = groundC4;
+                motion.z = liftSpeed;
+                flying = 1;
+            }
+            break;
+        case 15:
+            if (IsOnGround()) {
+                states.Transition(State116Ptr());
+                result = kStateParentTookOver;
+            }
+            break;
+        case 2:
+            if (motion.z < 0.0f) PlayAnimation(15, true, false, 1.0f);
+            break;
+        }
+        break;
+    default:
+        result = kStateUnhandled;
+        break;
+    case kStateEnter:
+        motion = onyx::Vector3::Zero();
+        motionTarget = onyx::Vector3::Zero();
+        PlayAnimation(174, false, false, 1.0f);
+        break;
+    case kStateExit:
+        flying = 0;
+        break;
+    case kStateEvent3:
+        break;
+    }
+    return result;
+}
+EnemyJetPackMatt::State EnemyJetPackMatt::State9f25b0Ptr() { return static_cast<State>(&EnemyJetPackMatt::State9f25b0); }   // 0x9f25a0
+
+EnemyAerial::State EnemyAerial::Statea04af0Ptr() { return static_cast<State>(&EnemyAerial::Statea04af0); }   // 0xa04870
+EnemyAerial::State EnemyAerial::Statea04890Ptr() { return static_cast<State>(&EnemyAerial::Statea04890); }   // 0xa04880
+
 // EnemyStuntman slot 234 (0x9da030): after EnemyOneHitWonder's state, times the
 // state; while still in it, with the stuntman's X position inside its range and
 // the current target within reach on every axis, saves the motion and switches
@@ -896,7 +1034,7 @@ void EnemyAerial::Slot19() {
     valueDa8 = 0;
     flagDac = 0;
     vectorDb0 = onyx::Vector3::Zero();
-    valueDbc = 0;
+    timerDbc = 0.0f;
     flagDc0 = 0;
 }
 void EnemyShooter::Slot19() {
@@ -1058,7 +1196,7 @@ void EnemyJetPackMatt::Slot4(onyx::Archive& archive, ComponentSlot::Source* sour
     onyx::Transfer(archive, valueC28);
     onyx::Transfer(archive, valueC2c);
     onyx::Transfer(archive, valueC30);
-    onyx::Transfer(archive, valueC34);
+    onyx::Transfer(archive, liftSpeed);
 }
 void EnemyShooter::Slot4(onyx::Archive& archive, ComponentSlot::Source* source) {
     Enemy::Slot4(archive, source);

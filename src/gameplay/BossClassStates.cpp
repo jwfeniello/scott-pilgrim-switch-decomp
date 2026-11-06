@@ -3796,7 +3796,7 @@ void Roxy::Slot13() {
     }
     PlayerCatalog* catalog = onyx::Get<PlayerCatalog, onyx_types::type_0bf4a9b7>(level.Get()->players);
     for (ControllablePlayer** i = catalog->players; i != catalog->players + catalog->count; ++i) {
-        CallA1eb90(0);
+        TargetPlayer(0);
         targetIndex = 0;
         aiMode = 0;
         float x = onyx::Get<onyx::Transform, onyx::kTransform>(onyx::Find<ActorObject, 0x6492d61du>(actorObject)->transform)->position.x;

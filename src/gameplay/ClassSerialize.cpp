@@ -144,7 +144,7 @@ void EnemyAerial::Slot4(onyx::Archive& archive, ComponentSlot::Source* source) {
     attackC40.Serialize(archive);
     onyx::Transfer(archive, valueCb8);
     onyx::Transfer(archive, flagCbc);
-    onyx::Transfer(archive, valueCc0);
+    onyx::Transfer(archive, timeLimitCc0);
     onyx::Transfer(archive, flagCc4);
     onyx::Transfer(archive, flagCc5);
     onyx::Transfer(archive, flagCc6);

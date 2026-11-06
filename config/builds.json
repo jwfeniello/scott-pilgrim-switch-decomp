@@ -405135,16 +405135,6 @@
           "got_bindings": {}
         },
         {
-          "address": "0x9eb510",
-          "size": 16,
-          "symbol": "RecoveredLeaf_9eb510",
-          "target_sha256": "14750eca44c00195f534b0c5c4607983909adb665541f4b8c9c2fb3ed2283c08",
-          "bindings": {
-            "LeafData_9eb510_0": "0x9eb520"
-          },
-          "got_bindings": {}
-        },
-        {
           "address": "0x9ec230",
           "size": 12,
           "symbol": "RecoveredLeaf_9ec230",
@@ -405310,16 +405300,6 @@
           "symbol": "RecoveredLeaf_9f2590",
           "target_sha256": "e00ce9db636d831b4a43cf60a79aa121de78df37292104259848531233b3a0c1",
           "bindings": {},
-          "got_bindings": {}
-        },
-        {
-          "address": "0x9f25a0",
-          "size": 16,
-          "symbol": "RecoveredLeaf_9f25a0",
-          "target_sha256": "a17e4ec812b74078b939c164021df750ff830d00e925d551233b3c926d925ad3",
-          "bindings": {
-            "LeafData_9f25a0_0": "0x9f25b0"
-          },
           "got_bindings": {}
         },
         {
@@ -405700,26 +405680,6 @@
           "symbol": "RecoveredLeaf_a04860",
           "target_sha256": "4f08dcbdfffe906a5d2fc221d2e0b4d2e432ed585d6259d6a79de43bb16bba2d",
           "bindings": {},
-          "got_bindings": {}
-        },
-        {
-          "address": "0xa04870",
-          "size": 16,
-          "symbol": "RecoveredLeaf_a04870",
-          "target_sha256": "9bc6dab86f4910549d3bbd44fe97c034e6ecacd5fa8b0618cda588ee9471b2d6",
-          "bindings": {
-            "LeafData_a04870_0": "0xa04af0"
-          },
-          "got_bindings": {}
-        },
-        {
-          "address": "0xa04880",
-          "size": 16,
-          "symbol": "RecoveredLeaf_a04880",
-          "target_sha256": "91dd6dacfcf75053ba39a55f8c31ab878bac928c182d96cc7310dc1a79e5576a",
-          "bindings": {
-            "LeafData_a04880_0": "0xa04890"
-          },
           "got_bindings": {}
         },
         {
@@ -562033,6 +561993,35 @@
           "got_bindings": {}
         },
         {
+          "address": "0x9eb510",
+          "size": 16,
+          "symbol": "_ZN4SPTG11EnemySpeedy14State9eb520PtrEv",
+          "target_sha256": "14750eca44c00195f534b0c5c4607983909adb665541f4b8c9c2fb3ed2283c08",
+          "bindings": {
+            "_ZN4SPTG11EnemySpeedy11State9eb520Ei": "0x9eb520"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x9eb520",
+          "size": 568,
+          "symbol": "_ZN4SPTG11EnemySpeedy11State9eb520Ei",
+          "target_sha256": "9362ff800b5b2daff78d9ddf5201c07e70717cde49f9a825967a806cd8eaed73",
+          "bindings": {
+            "_ZN4SPTG12StateMachineINS_13BaseCharacterEE10TransitionEMS1_FiiE": "0x812930",
+            "Accessor_Resolver": "0x191cd10",
+            "Accessor_Resolve": "0x67edd0",
+            "_ZGVZN4onyx7Vector34ZeroEvE5value": "0x191f8b8",
+            "_ZZN4onyx7Vector34ZeroEvE5value": "0x191f8c0",
+            "__cxa_guard_acquire": "0xfa4130",
+            "__cxa_guard_release": "0xfa4140"
+          },
+          "got_bindings": {},
+          "immutable_sections": {
+            "138": "0x13910a1"
+          }
+        },
+        {
           "address": "0x9eb900",
           "size": 616,
           "symbol": "_ZN4SPTG12EnemyShooter5Slot4ERN4onyx7ArchiveEPN13ComponentSlot6SourceE",
@@ -562106,7 +562095,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "239": "0x13910a9"
+            "259": "0x13910a9"
           },
           "literals": {
             "5f708930": "0x1331e88",
@@ -562223,7 +562212,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "214": "0x13910b5"
+            "234": "0x13910b5"
           }
         },
         {
@@ -562275,7 +562264,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "183": "0x1391118"
+            "203": "0x1391118"
           }
         },
         {
@@ -562343,7 +562332,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "223": "0x139111c"
+            "243": "0x139111c"
           }
         },
         {
@@ -562437,7 +562426,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "236": "0x1391124"
+            "256": "0x1391124"
           }
         },
         {
@@ -562475,6 +562464,33 @@
           "got_bindings": {},
           "immutable_sections": {
             "83": "0x1391128"
+          }
+        },
+        {
+          "address": "0x9f25a0",
+          "size": 16,
+          "symbol": "_ZN4SPTG16EnemyJetPackMatt14State9f25b0PtrEv",
+          "target_sha256": "a17e4ec812b74078b939c164021df750ff830d00e925d551233b3c926d925ad3",
+          "bindings": {
+            "_ZN4SPTG16EnemyJetPackMatt11State9f25b0Ei": "0x9f25b0"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x9f25b0",
+          "size": 528,
+          "symbol": "_ZN4SPTG16EnemyJetPackMatt11State9f25b0Ei",
+          "target_sha256": "3fefb588a83a60ab9b4bd55460fbc38736e1d5098a91a5b31029104faad064c9",
+          "bindings": {
+            "_ZGVZN4onyx7Vector34ZeroEvE5value": "0x191f8b8",
+            "_ZZN4onyx7Vector34ZeroEvE5value": "0x191f8c0",
+            "_ZN4SPTG12StateMachineINS_13BaseCharacterEE10TransitionEMS1_FiiE": "0x812930",
+            "__cxa_guard_acquire": "0xfa4130",
+            "__cxa_guard_release": "0xfa4140"
+          },
+          "got_bindings": {},
+          "immutable_sections": {
+            "143": "0x1391130"
           }
         },
         {
@@ -562519,7 +562535,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "156": "0x1391142"
+            "176": "0x1391142"
           }
         },
         {
@@ -562535,7 +562551,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "159": "0x1391146"
+            "179": "0x1391146"
           }
         },
         {
@@ -562588,7 +562604,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "144": "0x1391178"
+            "164": "0x1391178"
           }
         },
         {
@@ -562685,7 +562701,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "194": "0x1391196"
+            "214": "0x1391196"
           }
         },
         {
@@ -562729,7 +562745,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "147": "0x13911a2"
+            "167": "0x13911a2"
           }
         },
         {
@@ -562743,7 +562759,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "141": "0x13911a6"
+            "161": "0x13911a6"
           }
         },
         {
@@ -562848,7 +562864,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "186": "0x1391222"
+            "206": "0x1391222"
           }
         },
         {
@@ -562862,7 +562878,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "138": "0x1391226"
+            "158": "0x1391226"
           }
         },
         {
@@ -562964,7 +562980,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "189": "0x139122f"
+            "209": "0x139122f"
           }
         },
         {
@@ -563009,7 +563025,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "220": "0x1391233"
+            "240": "0x1391233"
           }
         },
         {
@@ -563026,7 +563042,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "217": "0x139123f"
+            "237": "0x139123f"
           }
         },
         {
@@ -563065,7 +563081,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "197": "0x1391243"
+            "217": "0x1391243"
           }
         },
         {
@@ -563130,6 +563146,66 @@
             "_ZN4SPTG5Enemy8State108Ei": "0x9dd830"
           },
           "got_bindings": {}
+        },
+        {
+          "address": "0xa04870",
+          "size": 16,
+          "symbol": "_ZN4SPTG11EnemyAerial14Statea04af0PtrEv",
+          "target_sha256": "9bc6dab86f4910549d3bbd44fe97c034e6ecacd5fa8b0618cda588ee9471b2d6",
+          "bindings": {
+            "_ZN4SPTG11EnemyAerial11Statea04af0Ei": "0xa04af0"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xa04880",
+          "size": 16,
+          "symbol": "_ZN4SPTG11EnemyAerial14Statea04890PtrEv",
+          "target_sha256": "91dd6dacfcf75053ba39a55f8c31ab878bac928c182d96cc7310dc1a79e5576a",
+          "bindings": {
+            "_ZN4SPTG11EnemyAerial11Statea04890Ei": "0xa04890"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xa04890",
+          "size": 608,
+          "symbol": "_ZN4SPTG11EnemyAerial11Statea04890Ei",
+          "target_sha256": "6ef493103e02b6b3ab2a2c70a7f6483f50e40e56a861580cd48aecd049f7f865",
+          "bindings": {
+            "Move_FrameDelta": "0x1924d70",
+            "_ZN4SPTG12StateMachineINS_13BaseCharacterEE10TransitionEMS1_FiiE": "0x812930",
+            "_ZGVZN4onyx7Vector34ZeroEvE5value": "0x191f8b8",
+            "_ZZN4onyx7Vector34ZeroEvE5value": "0x191f8c0",
+            "Accessor_Resolver": "0x191cd10",
+            "Accessor_Resolve": "0x67edd0",
+            "_ZN4SPTG11ActorObject6MoveToERKN4onyx7Vector3E": "0x85fd70",
+            "__cxa_guard_acquire": "0xfa4130",
+            "__cxa_guard_release": "0xfa4140"
+          },
+          "got_bindings": {},
+          "immutable_sections": {
+            "135": "0x139126b"
+          }
+        },
+        {
+          "address": "0xa04af0",
+          "size": 364,
+          "symbol": "_ZN4SPTG11EnemyAerial11Statea04af0Ei",
+          "target_sha256": "15304e7e5181154d0155ff7690a590dae804ca5b0888d8aba529527fa915eee3",
+          "bindings": {
+            "_ZGVZN4onyx7Vector34ZeroEvE5value": "0x191f8b8",
+            "_ZZN4onyx7Vector34ZeroEvE5value": "0x191f8c0",
+            "__cxa_guard_acquire": "0xfa4130",
+            "__cxa_guard_release": "0xfa4140"
+          },
+          "got_bindings": {},
+          "immutable_sections": {
+            "132": "0x139126f"
+          },
+          "literals": {
+            "0400000006000000": "0x13312f0"
+          }
         }
       ]
     },
@@ -564016,7 +564092,7 @@
           "symbol": "_ZN4SPTG4Todd8State122Ei",
           "target_sha256": "cdda30024d4b6d6a3a158d1d8fb2d00058ee9a82527f3550122980b6570a5fa1",
           "bindings": {
-            "_ZN4SPTG4Boss11CheckA255e0EPv": "0xa255e0",
+            "_ZN4SPTG4Boss11CheckA255e0EPKNS_10AttackSlotE": "0xa255e0",
             "_ZGVZN4onyx7Vector34ZeroEvE5value": "0x191f8b8",
             "_ZZN4onyx7Vector34ZeroEvE5value": "0x191f8c0",
             "_ZN4SPTG4Boss10CallA254a0Ef": "0xa254a0",
@@ -564573,7 +564649,7 @@
             "_ZN4SPTG9SingletonINS_17LevelItemAccessorEE3GetEv": "0x7725e0",
             "Accessor_Resolver": "0x191cd10",
             "Accessor_Resolve": "0x67edd0",
-            "_ZN4SPTG4Boss10CallA1eb90Ei": "0xa1eb90",
+            "_ZN4SPTG4Boss12TargetPlayerEh": "0xa1eb90",
             "_ZN4SPTG5Enemy14PlayerPositionEPN4onyx7Vector3EPS0_j": "0x9dc1a0",
             "_ZN4SPTG5Enemy10Call9dc2d0Ej": "0x9dc2d0"
           },
@@ -572471,7 +572547,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "39": "0x1391293"
+            "43": "0x1391293"
           }
         },
         {
@@ -572490,7 +572566,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "42": "0x1391297"
+            "46": "0x1391297"
           }
         },
         {
@@ -572506,7 +572582,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "45": "0x13912a0"
+            "49": "0x13912a0"
           }
         },
         {
@@ -572616,7 +572692,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "50": "0x13912c2"
+            "54": "0x13912c2"
           }
         },
         {
@@ -572631,6 +572707,85 @@
           "immutable_sections": {
             "30": "0x13912ce"
           }
+        },
+        {
+          "address": "0xa1e720",
+          "size": 256,
+          "symbol": "_ZN4SPTG4Boss11CheckA1e720Ev",
+          "target_sha256": "fc9e92afc9181c630e58b84be5c087b620eabdcca1563d1d26dd449949d28a40",
+          "bindings": {
+            "_ZN4SPTG9SingletonINS_17LevelItemAccessorEE3GetEv": "0x7725e0",
+            "Accessor_Resolver": "0x191cd10",
+            "Accessor_Resolve": "0x67edd0"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xa1e820",
+          "size": 412,
+          "symbol": "_ZN4SPTG4Boss11CheckA1e820Ev",
+          "target_sha256": "2879428df15f2101db48c487ea4d5b67719f307e3d9dafe7d5785682e084b423",
+          "bindings": {
+            "_ZN4SPTG9SingletonINS_17LevelItemAccessorEE3GetEv": "0x7725e0",
+            "Accessor_Resolver": "0x191cd10",
+            "Accessor_Resolve": "0x67edd0",
+            "_ZN4SPTG4Boss12TargetPlayerEh": "0xa1eb90"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xa1e9c0",
+          "size": 456,
+          "symbol": "_ZN4SPTG4Boss11CheckA1e9c0Efff",
+          "target_sha256": "f62b2f13a723fe228e50f8c1bf800f33f4a711cfeee2cfd9d62a47a203e3cd87",
+          "bindings": {
+            "Accessor_Resolver": "0x191cd10",
+            "Accessor_Resolve": "0x67edd0"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xa1eb90",
+          "size": 776,
+          "symbol": "_ZN4SPTG4Boss12TargetPlayerEh",
+          "target_sha256": "0272bf70550a9fd6866ece4f3f1cfea02918446ab7c050b03d56f4dd410005e1",
+          "bindings": {
+            "_ZN4SPTG9SingletonINS_17LevelItemAccessorEE3GetEv": "0x7725e0",
+            "Accessor_Resolver": "0x191cd10",
+            "Accessor_Resolve": "0x67edd0",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30",
+            "Accessor_Tracking": "0x1935068",
+            "Accessor_Lock": "0xfa4950",
+            "Accessor_Unlock": "0xfa4960",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xa254a0",
+          "size": 312,
+          "symbol": "_ZN4SPTG4Boss10CallA254a0Ef",
+          "target_sha256": "418ab2647350c898c960e0e30da7cb6ab4f2890d4cb5c03a8c621b3f109794e0",
+          "bindings": {
+            "Accessor_Resolver": "0x191cd10",
+            "Accessor_Resolve": "0x67edd0",
+            "_ZN4SPTG11ActorObject6MoveToERKN4onyx7Vector3E": "0x85fd70"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xa255e0",
+          "size": 488,
+          "symbol": "_ZN4SPTG4Boss11CheckA255e0EPKNS_10AttackSlotE",
+          "target_sha256": "24e1693bd4d658d547b83f8761c3c8d63866808f73b76107cdb5a328439c7ff8",
+          "bindings": {
+            "_ZN4SPTG9SingletonINS_17LevelItemAccessorEE3GetEv": "0x7725e0",
+            "Accessor_Resolver": "0x191cd10",
+            "Accessor_Resolve": "0x67edd0",
+            "_ZN4SPTG4Boss12TargetPlayerEh": "0xa1eb90"
+          },
+          "got_bindings": {}
         }
       ]
     },

@@ -457,4 +457,92 @@ void Boss::Slot242() {
 // The type tests (slot 12): each class's own type or one of its base's (SPTG_TYPE).
 bool Boss::IsA(uint32_t type) { return IsType(type); }   // 0xa186b0
 
+// 0xa1e720: whether every player is out (slot 51) or in its slot 114 state; true with no players.
+bool Boss::CheckA1e720() {
+    PlayerCatalog* catalog = onyx::Get<PlayerCatalog, onyx_types::type_0bf4a9b7>(level.Get()->players);
+    if (static_cast<uint32_t>(catalog->count) == 0) return true;
+    for (ControllablePlayer** i = catalog->players; i != catalog->players + catalog->count; ++i) {
+        ControllablePlayer* player = *i;
+        if (!player->IsOut() && !player->states.IsIn(player->State114Ptr())) return false;
+    }
+    return true;
+}
+
+// 0xa1e820: targets the nearest player (by the target entries' distances) whose action mode is below 3 or is 4, through
+// 0xa1eb90 and +0x820; false when there's none.
+bool Boss::CheckA1e820() {
+    if (targetCount == 0) return false;
+    uint32_t mode = onyx::Get<PlayerCatalog, onyx_types::type_0bf4a9b7>(level.Get()->players)->players[0]->actionMode;
+    bool found = mode < 3 || mode == 4;
+    uint32_t best = 0;
+    for (uint32_t i = 1; i < targetCount; ++i) {
+        mode = onyx::Get<PlayerCatalog, onyx_types::type_0bf4a9b7>(level.Get()->players)->players[i]->actionMode;
+        if (mode < 3 || mode == 4) {
+            if (!found || targets[i].distance < targets[best].distance) best = i;
+            found = true;
+        }
+    }
+    if (!found) return false;
+    TargetPlayer(best);
+    targetIndex = best;
+    return true;
+}
+
+// 0xa1e9c0: whether the target is between minX and maxX away along x and within half of depth along y.
+bool Boss::CheckA1e9c0(float minX, float maxX, float depth) {
+    onyx::Transform* transform = onyx::Get<onyx::Transform, onyx::kTransform>(onyx::Find<ActorObject, 0x6492d61du>(actorObject)->transform);
+    float x = transform->position.x;
+    float y = transform->position.y;
+    BaseCharacter* player = static_cast<BaseCharacter*>(target->object);
+    onyx::Transform* other = onyx::Get<onyx::Transform, onyx::kTransform>(onyx::Find<ActorObject, 0x6492d61du>(player->actorObject)->transform);
+    float dx = __builtin_fabsf(x - other->position.x);
+    if (dx >= minX && dx <= maxX && __builtin_fabsf(y - other->position.y) <= depth * 0.5f) return true;
+    return false;
+}
+
+// 0xa255e0: targets the first player whose action mode is below 3 or is 4 and who is in the slot's range (by the
+// target entries' offsets), through +0x820 and 0xa1eb90; false when there's none. The range test is AttackSlot::InRange's,
+// but the original branches only on the low z bound and evaluates the other three tests together. The `&`s give that
+// layout; their order is chosen because it matches, not from other evidence.
+bool Boss::CheckA255e0(const AttackSlot* slot) {
+    PlayerCatalog* catalog = onyx::Get<PlayerCatalog, onyx_types::type_0bf4a9b7>(level.Get()->players);
+    uint8_t i = 0;
+    for (ControllablePlayer** p = catalog->players; p != catalog->players + catalog->count; ++p, ++i) {
+        uint32_t mode = onyx::Get<PlayerCatalog, onyx_types::type_0bf4a9b7>(level.Get()->players)->players[i]->actionMode;
+        if ((mode < 3 || mode == 4) && i < targetCount) {
+            const onyx::Vector3& offset = targets[i].offset;
+            float x = __builtin_fabsf(offset.x);
+            bool inX = slot->rangeMinX <= x && slot->rangeMaxX >= x;
+            if (slot->rangeMinZ <= offset.z && (((slot->attack.rangeY * 0.5f > __builtin_fabsf(offset.y)) & (slot->rangeMaxZ >= offset.z)) & inX)) {
+                targetIndex = i;
+                TargetPlayer(i);
+                return true;
+            }
+        }
+    }
+    return false;
+}
+
+// 0xa1eb90: the player at that index in the level's catalog becomes the target. The handle is retained twice and
+// released once more after the swap, as if passed by value (BaseCharacter::SetMount does the same). The original's last
+// release is not a tail call; the closing assumption reproduces that (docs/GAME_CLASSES.md), and nothing else here shows
+// why the original kept the call.
+void Boss::TargetPlayer(uint8_t index) {
+    onyx::ComponentHandle* player = reinterpret_cast<onyx::ComponentHandle*>(onyx::Get<PlayerCatalog, onyx_types::type_0bf4a9b7>(level.Get()->players)->players[index]->attachment);
+    __atomic_add_fetch(&player->references, 1, __ATOMIC_RELAXED);
+    if (player) __atomic_add_fetch(&player->references, 1, __ATOMIC_RELAXED);
+    onyx::ComponentHandle* old = target;
+    target = player;
+    onyx::ReleaseHandle(old);
+    onyx::ReleaseHandle(player);
+    states.AssertOwner(this);
+}
+
+// 0xa254a0: moves the boss to height z, keeping its x and y.
+void Boss::CallA254a0(float z) {
+    onyx::Vector3 position = onyx::Get<onyx::Transform, onyx::kTransform>(onyx::Find<ActorObject, 0x6492d61du>(actorObject)->transform)->Position();
+    position.z = z;
+    onyx::Find<ActorObject, 0x6492d61du>(actorObject)->MoveTo(position);
+}
+
 }  // namespace SPTG

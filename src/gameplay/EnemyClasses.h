@@ -93,6 +93,7 @@ struct EnemySpeedy : Enemy {
     char padding_b7a[0x12];
     float dodgeDirection;        // +0xb8c: which way the last dodge went
     AttackSlot attacks[5];       // +0xb90
+    float runSpeed;              // +0xde8: the speed along x of the state at 0x9eb520
 };
 // vtable 0x1881880, 238 slots
 struct EnemyShooter : Enemy {
@@ -222,7 +223,7 @@ struct EnemyJetPackMatt : Enemy {
     int32_t valueC28;            // +0xc28
     int32_t valueC2c;            // +0xc2c
     int32_t valueC30;            // +0xc30
-    int32_t valueC34;            // +0xc34
+    float liftSpeed;             // +0xc34: how fast the jet pack takes it up
     uint8_t flying;              // +0xc38
     char padding_c39[0x3];
     float spawnHeight;           // +0xc3c: where it was placed
@@ -348,7 +349,7 @@ struct EnemyAerial : Enemy {
     int32_t valueCb8;            // +0xcb8
     uint8_t flagCbc;             // +0xcbc
     char padding_cbd[0x3];
-    int32_t valueCc0;            // +0xcc0
+    float timeLimitCc0;          // +0xcc0: how long the state at 0xa04890 lasts
     uint8_t flagCc4;             // +0xcc4
     uint8_t flagCc5;             // +0xcc5
     uint8_t flagCc6;             // +0xcc6
@@ -377,7 +378,7 @@ struct EnemyAerial : Enemy {
     uint8_t flagDac;             // +0xdac
     char padding_dad[0x3];
     onyx::Vector3 vectorDb0;     // +0xdb0
-    int32_t valueDbc;            // +0xdbc
+    float timerDbc;              // +0xdbc: time spent in the state at 0xa04890
     uint8_t flagDc0;             // +0xdc0
 };
 // vtable 0x187c648, 241 slots
