@@ -556937,6 +556937,17 @@
           "got_bindings": {}
         },
         {
+          "address": "0x97f960",
+          "size": 460,
+          "symbol": "_ZN4SPTG18ControllablePlayer6Slot46EPNS_13BaseCharacterE",
+          "target_sha256": "a7e9914f1ae2ed4a6022a45daff687d2d99cfbcfab33c4318e2127af466e49eb",
+          "bindings": {
+            "_ZN4SPTG9SingletonINS_14PersistentDataEE3GetEv": "0x777710",
+            "_ZN4SPTG9SingletonINS_21SwitchLevelGateAccessEE3GetEv": "0x770d70"
+          },
+          "got_bindings": {}
+        },
+        {
           "address": "0x97fb80",
           "size": 72,
           "symbol": "_ZN4SPTG18ControllablePlayer9MaxHealthEv",
@@ -561217,7 +561228,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "82": "0x1390ceb"
+            "90": "0x1390ceb"
           }
         },
         {
@@ -561308,6 +561319,35 @@
           }
         },
         {
+          "address": "0x9824f0",
+          "size": 196,
+          "symbol": "_ZN4SPTG18ControllablePlayer8State114Ei",
+          "target_sha256": "affd5a3b7446f5ae1170dc671fb2728d1625c83a51a1f1739bf058a61594d1a9",
+          "bindings": {
+            "_ZN4SPTG13BaseCharacter8State114Ei": "0x972dd0",
+            "_ZN4SPTG9SingletonINS_9InGameHUDEE3GetEv": "0x7b59b0",
+            "_ZN4SPTG9SingletonINS_19LevelWindowAccessorEE3GetEv": "0x774b50",
+            "_ZN4SPTG14HudPlayerPanel9SetStatusEii": "0x7b5cf0"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x983170",
+          "size": 392,
+          "symbol": "_ZN4SPTG18ControllablePlayer8State120Ei",
+          "target_sha256": "8ffe2fbba416681dd55250574c78ad054c407881a9bf968ad413fef3b2ee5d35",
+          "bindings": {
+            "_ZN4SPTG13BaseCharacter8State120Ei": "0x9733e0",
+            "Game_State": "0x1924bc0",
+            "_ZN4SPTG9SingletonINS_9InGameHUDEE3GetEv": "0x7b59b0",
+            "_ZN4SPTG9SingletonINS_19LevelWindowAccessorEE3GetEv": "0x774b50",
+            "_ZN4SPTG14HudPlayerPanel9SetStatusEii": "0x7b5cf0",
+            "_ZN4SPTG18ControllablePlayer15AnyInputPressedEv": "0x993270",
+            "_ZN4SPTG12StateMachineINS_13BaseCharacterEE10TransitionEMS1_FiiE": "0x812930"
+          },
+          "got_bindings": {}
+        },
+        {
           "address": "0x983310",
           "size": 340,
           "symbol": "_ZN4SPTG18ControllablePlayer8State122Ei",
@@ -561361,7 +561401,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "79": "0x1390d34"
+            "87": "0x1390d34"
           }
         },
         {
@@ -561407,7 +561447,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "89": "0x1390d48"
+            "97": "0x1390d48"
           }
         },
         {
@@ -561420,7 +561460,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "92": "0x1390d4c"
+            "100": "0x1390d4c"
           }
         },
         {
@@ -561539,6 +561579,29 @@
           }
         },
         {
+          "address": "0x98a7b0",
+          "size": 948,
+          "symbol": "_ZN4SPTG18ControllablePlayer8State205Ei",
+          "target_sha256": "60c8f9c21e4b0ae57a72613ebbfe25b70dc0e1a91ead7e31ea3d301173a1ad91",
+          "bindings": {
+            "_ZN4SPTG12StateMachineINS_13BaseCharacterEE10TransitionEMS1_FiiE": "0x812930",
+            "_ZGVZN4onyx7Vector34ZeroEvE5value": "0x191f8b8",
+            "_ZZN4onyx7Vector34ZeroEvE5value": "0x191f8c0",
+            "Game_State": "0x1924bc0",
+            "_ZN4SPTG9SingletonINS_9InGameHUDEE3GetEv": "0x7b59b0",
+            "_ZN4SPTG9SingletonINS_19LevelWindowAccessorEE3GetEv": "0x774b50",
+            "_ZN4SPTG14HudPlayerPanel9SetStatusEii": "0x7b5cf0",
+            "Accessor_Resolver": "0x191cd10",
+            "Accessor_Resolve": "0x67edd0",
+            "__cxa_guard_acquire": "0xfa4130",
+            "__cxa_guard_release": "0xfa4140"
+          },
+          "got_bindings": {},
+          "immutable_sections": {
+            "84": "0x1390d8c"
+          }
+        },
+        {
           "address": "0x98f470",
           "size": 640,
           "symbol": "_ZN4SPTG18ControllablePlayer8State235Ei",
@@ -561572,7 +561635,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "76": "0x1390de4"
+            "78": "0x1390de4"
           }
         },
         {
@@ -561586,6 +561649,28 @@
           "got_bindings": {},
           "immutable_sections": {
             "16": "0x1390df0"
+          }
+        },
+        {
+          "address": "0x98fee0",
+          "size": 580,
+          "symbol": "_ZN4SPTG18ControllablePlayer8State245Ei",
+          "target_sha256": "2bcee436129dacd8eaba2488a7f5eb928a73d400729e15d8c95df51552b268f2",
+          "bindings": {
+            "_ZN4SPTG18ControllablePlayer15AnyInputPressedEv": "0x993270",
+            "_ZN4SPTG12StateMachineINS_13BaseCharacterEE10TransitionEMS1_FiiE": "0x812930",
+            "_ZGVZN4onyx7Vector34ZeroEvE5value": "0x191f8b8",
+            "_ZZN4onyx7Vector34ZeroEvE5value": "0x191f8c0",
+            "Game_State": "0x1924bc0",
+            "_ZN4SPTG9SingletonINS_9InGameHUDEE3GetEv": "0x7b59b0",
+            "_ZN4SPTG9SingletonINS_19LevelWindowAccessorEE3GetEv": "0x774b50",
+            "_ZN4SPTG14HudPlayerPanel9SetStatusEii": "0x7b5cf0",
+            "__cxa_guard_acquire": "0xfa4130",
+            "__cxa_guard_release": "0xfa4140"
+          },
+          "got_bindings": {},
+          "immutable_sections": {
+            "81": "0x1390df4"
           }
         },
         {

@@ -230,4 +230,29 @@ bool ControllablePlayer::UseItem(Item* item) {
     return true;
 }
 
+// Slot 46 (0x97f960): whether this player can act on `other`: a character whose slot 45 is 1 or 2, anyone with the
+// saved friendly-fire byte, or a player (or a player's partner) on another team; never in action modes 11 and 13 or in
+// state 247. When the level's mode is 12, `other` must also have a slot 50 of 3 and no partner.
+bool ControllablePlayer::Slot46(BaseCharacter* other) {
+    ControllablePlayer* player = nullptr;
+    ControllablePlayer* partner = nullptr;
+    bool kind = true;
+    if (other) {
+        partner = Cast<ControllablePlayer>(other->partnerHandle ? static_cast<BaseCharacter*>(other->partnerHandle->object) : nullptr);
+        player = Cast<ControllablePlayer>(other);
+        kind = static_cast<uint32_t>(other->Slot45() - 1) < 2;
+    }
+    bool result = kind | persistentData.Get()->friendlyFire;
+    result |= player ? player->OnOtherTeam(team) : false;
+    result |= partner ? partner->OnOtherTeam(team) : false;
+    State state = State247Ptr();
+    bool elsewhere = states.current != state;
+    result = elsewhere & result & (actionMode != 11) & (actionMode != 13);
+    if (static_cast<LevelGateState*>(levelGate.Get()->state->object)->mode == 12) {
+        bool free = other->Slot50() == 3 && (!other->partnerHandle || !other->partnerHandle->object);
+        return free & result;
+    }
+    return result;
+}
+
 }  // namespace SPTG

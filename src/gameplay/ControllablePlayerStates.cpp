@@ -624,44 +624,32 @@ int ControllablePlayer::State104(int event) {
     }
 }
 
-// Slot 114 (0x9824f0): holds +0x3ba raised, and entry marks the player down on the HUD.
-// Not yet matched: the return block sits in a different place, and one `mov w19, #1` comes before the panel test.
+// Slot 114 (0x9824f0): holds +0x3ba raised, and entry marks the player down on the HUD. As in the mash prompt, the panel
+// is read before the player test and both tests are one condition.
 int ControllablePlayer::State114(int event) {
-    int result = kStateHandled;
-    if (BaseCharacter::State114(event) == kStateParentTookOver) {
-        states.AssertOwner(this);
-        result = kStateParentTookOver;
-    } else {
-        switch (event) {
-        case kStateUpdate:
-            result = kStateHandled;
-            break;
-        case kStateEnter: {
-            result = kStateHandled;
-            flag3ba = result;
-            InGameHUD* screen = hud.Get();
-            uint32_t player = playerIndex;
-            screen->players[player].downed = result;
-            screen->window.Get();
-            if (player <= 3) {
-                if (HudPlayerPanel* panel = screen->panel) {
-                    result = kStateHandled;
-                    panel->showingStatus[player] = result;
-                    panel->SetStatus(12, player);
-                }
-            }
-            break;
+    if (BaseCharacter::State114(event) == kStateParentTookOver) return kStateParentTookOver;
+    switch (event) {
+    case kStateEnter: {
+        flag3ba = 1;
+        InGameHUD* screen = hud.Get();
+        uint32_t player = playerIndex;
+        screen->players[player].downed = 1;
+        screen->window.Get();
+        HudPlayerPanel* panel = screen->panel;
+        if (player <= 3 && panel) {
+            panel->showingStatus[player] = 1;
+            panel->SetStatus(12, player);
         }
-        case kStateExit:
-            flag3ba = 0;
-            result = kStateHandled;
-            break;
-        default:
-            result = kStateUnhandled;
-            break;
-        }
+        return kStateHandled;
     }
-    return result;
+    case kStateUpdate:
+        return kStateHandled;
+    case kStateExit:
+        flag3ba = 0;
+        return kStateHandled;
+    default:
+        return kStateUnhandled;
+    }
 }
 
 // Slot 68 (0x97fe10): counts its calls, and every so many (a random number between +0x12ac and +0x12b0) runs 0x80f6e0.
@@ -754,6 +742,28 @@ void ControllablePlayer::Slot94() {
     }
 }
 
+// Slot 120 (0x983170): stunned, mashing to break free: each press takes mashStep off the stun timer, and leaving the
+// ground goes to state 102. Entry and exit show and hide the HUD's mash prompt.
+int ControllablePlayer::State120(int event) {
+    int result = BaseCharacter::State120(event);
+    if (result == kStateParentTookOver) return result;
+    switch (event) {
+    case kStateEnter:
+        ShowMashPrompt();
+        return kStateHandled;
+    case kStateUpdate:
+        if (AnyInputPressed()) timer330 -= mashStep;
+        if (IsOnGround()) return kStateHandled;
+        states.Transition(State102Ptr());
+        return kStateParentTookOver;
+    case kStateExit:
+        HideMashPrompt();
+        return kStateHandled;
+    default:
+        return kStateUnhandled;
+    }
+}
+
 // Slot 122 (0x983310): BaseCharacter's, and exit stops the two actions at +0x1368 and +0x1378 and starts
 // the one at +0x1370, with the actor flags' +0x50 and the material modifiers filled in.
 int ControllablePlayer::State122(int event) {
@@ -824,6 +834,79 @@ int ControllablePlayer::State237(int event) {
         result = kStateHandled;
         break;
     case kStateEvent3:
+        break;
+    }
+    return result;
+}
+
+// Slot 245 (0x98fee0): held, mashing to break free: each press counts, and at mashNeeded it goes to state 96. Entry gets
+// off any mount, stops, plays animation 289 in action mode 3 and shows the mash prompt; exit clears both.
+int ControllablePlayer::State245(int event) {
+    int result = kStateHandled;
+    switch (event) {
+    case kStateUpdate:
+        if (AnyInputPressed() && ++mashCount >= mashNeeded) states.Transition(State96Ptr());
+        break;
+    case kStateEnter:
+        Dismount();
+        motion = onyx::Vector3::Zero();
+        motionTarget = onyx::Vector3::Zero();
+        PlayAnimation(289, true, false, 1.0f);
+        mashCount = 0;
+        actionMode = 3;
+        ShowMashPrompt();
+        break;
+    case kStateExit:
+        actionMode = 0;
+        HideMashPrompt();
+        break;
+    case kStateEvent3:
+        break;
+    default:
+        result = kStateUnhandled;
+        break;
+    }
+    return result;
+}
+
+// Slot 205 (0x98a7b0): down and mashing: each newly pressed button of the first ten counts, and with +0x13d4 set,
+// +0x8b8 presses or +0x1510 send it to state 102. Above liftHeight it stops rising. Entry plays animation 132, stops with
+// motion.z at 1, gets off any mount and shows the mash prompt; exit sets the animation speed back to 1 and hides it.
+int ControllablePlayer::State205(int event) {
+    int result = kStateHandled;
+    switch (event) {
+    case kStateUpdate:
+        if (input->JustPressed(0x1) || input->JustPressed(0x2) || input->JustPressed(0x4) || input->JustPressed(0x8) ||
+            input->JustPressed(0x10) || input->JustPressed(0x20) || input->JustPressed(0x40) || input->JustPressed(0x80) ||
+            input->JustPressed(0x100) || input->JustPressed(0x200))
+            ++pressCount;
+        if (flag13d4 && (pressCount >= value8b8 || flag1510)) {
+            states.Transition(State102Ptr());
+            result = kStateParentTookOver;
+            break;
+        }
+        if (onyx::Get<onyx::Transform, onyx::kTransform>(onyx::Find<ActorObject, 0x6492d61du>(actorObject)->transform)->position.z > liftHeight)
+            motion.z = 0.0f;
+        break;
+    case kStateEnter:
+        pressCount = 0;
+        PlayAnimation(132, true, true, 1.0f);
+        motion = onyx::Vector3::Zero();
+        motionTarget = onyx::Vector3::Zero();
+        motion.z = 1.0f;
+        Dismount();
+        flag13d4 = 1;
+        flag1510 = 0;
+        ShowMashPrompt();
+        break;
+    case kStateExit:
+        SetAnimationSpeed(1.0f);
+        HideMashPrompt();
+        break;
+    case kStateEvent3:
+        break;
+    default:
+        result = kStateUnhandled;
         break;
     }
     return result;

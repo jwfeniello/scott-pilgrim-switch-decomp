@@ -225,6 +225,7 @@ struct LevelSecretManager { char padding[0x5ad]; uint8_t flag5ad; };   // +0x5ad
 struct DamageHit { char padding_0[0x14]; int32_t value14; };
 // What slot 93 receives; only the amount at +0x4 is known.
 struct HitValue { uint32_t value0; float amount; };
+struct SwitchLevelGateAccess;   // Enemy.h
 // The object behind the global at 0x1924bc0; slot 158 fails while +0xe0 is set.
 struct GameState { char padding[0xe0]; uint8_t flagE0; };
 extern "C" GameState* Game_State;   // 0x1924bc0
@@ -731,7 +732,11 @@ struct PersistentPlayerRecord {
     char padding_158[0x45c];
 };
 static_assert(sizeof(PersistentPlayerRecord) == 0x5b4, "PersistentPlayerRecord size");
-struct PersistentData { PersistentPlayerRecord players[4]; };
+struct PersistentData {
+    PersistentPlayerRecord players[4];
+    char padding_16d0[0x108];
+    bool friendlyFire;       // +0x17d8: lets a player act on anyone (ControllablePlayer slot 46); the name is a guess
+};
 // An effect a character keeps as a reference. Slot 2 starts it with these two filled in, and slot 4 stops it. +0x18 is
 // clear while it's stopped or not yet running, as Boss's slot 242 reads it.
 struct ActorEffect : onyx::Component {
@@ -884,17 +889,18 @@ struct ControllablePlayer : BaseCharacter {
         LoseGuts(paid);
     }
     bool AnyInputPressed();                              // 0x993270
-    // The HUD prompt to mash buttons, for players on this machine.
+    // The HUD prompt to mash buttons, for players on this machine. The panel is read before the player test and the two
+    // tests are one condition: the original keeps a single result constant for both early exits, which separate ifs
+    // don't give.
     __attribute__((always_inline)) void ShowMashPrompt() {
         if (!Game_State || !Game_State->flagE0 || input->value1e8 == 1) {
             InGameHUD* screen = hud.Get();
             uint32_t player = playerIndex;
             screen->window.Get();
-            if (player <= 3) {
-                if (HudPlayerPanel* panel = screen->panel) {
-                    panel->showingStatus[player] = 1;
-                    panel->SetStatus(6, player);
-                }
+            HudPlayerPanel* panel = screen->panel;
+            if (player <= 3 && panel) {
+                panel->showingStatus[player] = 1;
+                panel->SetStatus(6, player);
             }
         }
     }
@@ -902,11 +908,10 @@ struct ControllablePlayer : BaseCharacter {
         if (!Game_State || !Game_State->flagE0 || input->value1e8 == 1) {
             InGameHUD* screen = hud.Get();
             uint32_t player = playerIndex;
-            if (player <= 3) {
-                if (HudPlayerPanel* panel = screen->panel) {
-                    panel->showingStatus[player] = 0;
-                    panel->SetStatus(-1, player);
-                }
+            HudPlayerPanel* panel = screen->panel;
+            if (player <= 3 && panel) {
+                panel->showingStatus[player] = 0;
+                panel->SetStatus(-1, player);
             }
         }
     }
@@ -919,6 +924,10 @@ struct ControllablePlayer : BaseCharacter {
     void OnHealthChanged(float amount);                  // 0x995700
     float Slot40() override;
     int Slot45() override;
+    bool Slot46(BaseCharacter* other) override;
+    // Whether this player's team is not `other`. A member taking the caller's team: the original loads the caller's team
+    // before this one's, in 0x97f960 and 0x9936a0 alike, which a plain comparison doesn't do. The name is a guess.
+    bool OnOtherTeam(int32_t other) const { return team != other; }
     float MaxHealth() override;
     float Slot58(bool flag) override;
     float Slot59() override;
@@ -1036,7 +1045,7 @@ struct ControllablePlayer : BaseCharacter {
     void* worldMapBroker;               // +0x788
     Singleton<InGameHUD> hud;    // +0x790
     Singleton<ItemRegistry> itemRegistry;               // +0x798
-    void* levelGate;               // +0x7a0
+    Singleton<SwitchLevelGateAccess> levelGate; // +0x7a0: getter 0x770d70
     void* statistics;               // +0x7a8
     void* localization;               // +0x7b0
     void* pauseHandler;               // +0x7b8
@@ -1210,7 +1219,9 @@ struct ControllablePlayer : BaseCharacter {
     uint8_t flag13c1;            // +0x13c1
     char padding_13c2[0x2];
     onyx::Vector3 lastMove;      // +0x13c4: the directions AnyInputPressed saw
-    char padding_13d0[0x8];
+    uint32_t pressCount;         // +0x13d0: buttons pressed in state 205
+    uint8_t flag13d4;            // +0x13d4: state 205 counts towards +0x8b8 while it's set
+    char padding_13d5[0x3];
     float value13d8;             // +0x13d8
     int32_t effectCounter;       // +0x13dc: slot 68's calls since it last ran 0x80f6e0
     char padding_13e0[0x8];
@@ -1247,7 +1258,8 @@ struct ControllablePlayer : BaseCharacter {
     int32_t value14dc;           // +0x14dc
     int32_t value14e0;           // +0x14e0
     int32_t value14e4;           // +0x14e4
-    char padding_14e8[0x8];
+    int32_t team;                // +0x14e8: a player acts on players whose team differs (slot 46)
+    char padding_14ec[0x4];
     int32_t value14f0;           // +0x14f0
     int32_t value14f4;           // +0x14f4
     uint8_t flag14f8;            // +0x14f8: EnemyGiant's charge passes over a player with it set
@@ -1257,7 +1269,9 @@ struct ControllablePlayer : BaseCharacter {
     uint32_t playerIndex;        // +0x1508
     uint8_t flag150c;            // +0x150c
     uint8_t flag150d;            // +0x150d
-    char padding_150e[0xa];
+    char padding_150e[0x2];
+    uint8_t flag1510;            // +0x1510: sends state 205 to state 102
+    char padding_1511[0x7];
     int32_t value1518;           // +0x1518
     int32_t value151c;           // +0x151c
     uint8_t flag1520;            // +0x1520
