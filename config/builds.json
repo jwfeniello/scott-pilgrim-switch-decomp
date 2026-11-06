@@ -505163,42 +505163,6 @@
       ]
     },
     {
-      "id": "gameplay_emitter_sequencer",
-      "source": "src/gameplay/EmitterSequencer.cpp",
-      "compiler": "8.0.1",
-      "source_review": "manual_reconstruction",
-      "flags": [
-        "-target",
-        "aarch64-none-elf",
-        "-std=c++11",
-        "-O2",
-        "-mcpu=cortex-a57",
-        "-fstrict-aliasing",
-        "-fomit-frame-pointer",
-        "-fno-pic",
-        "-fno-delete-null-pointer-checks",
-        "-ffunction-sections",
-        "-fdata-sections"
-      ],
-      "header_roots": [
-        "src/gameplay"
-      ],
-      "functions": [
-        {
-          "address": "0xb1d350",
-          "size": 312,
-          "symbol": "_ZN4Onyx8Graphics8Particle7Emitter16EmitterSequencer6UpdateEPv",
-          "target_sha256": "374b50819ede8d4bbef1ea2dabd55ff9ed8498c9202c5d8e28c48f235b10ba74",
-          "bindings": {
-            "Accessor_Tracking": "0x1935068",
-            "Event_Notify": "0xbf6e80",
-            "_Unwind_Resume": "0xfa4920"
-          },
-          "got_bindings": {}
-        }
-      ]
-    },
-    {
       "id": "gameplay_component_hook_steps",
       "source": "src/gameplay/ComponentHookSteps.cpp",
       "compiler": "8.0.1",
@@ -562662,6 +562626,32 @@
           "got_bindings": {}
         },
         {
+          "address": "0x9ebf10",
+          "size": 788,
+          "symbol": "_ZN4SPTG12EnemyShooter8State234Ei",
+          "target_sha256": "699845ff15340751116512df69514c0f6f7e657ea5808d293189d5fc9d72635e",
+          "bindings": {
+            "Move_FrameDelta": "0x1924d70",
+            "_ZN4SPTG12EnemyShooter4FireEv": "0x9ec540",
+            "Game_Random": "0x192ae70",
+            "_ZN2nn2os16GetCurrentThreadEv": "0xfa3e50",
+            "_ZN2nn2os11GetThreadIdEPKNS0_10ThreadTypeE": "0xfa4760",
+            "_ZN4SPTG12StateMachineINS_13BaseCharacterEE10TransitionEMS1_FiiE": "0x812930",
+            "Game_RandomCalls": "0x1935254",
+            "tanf": "0xfa4d20"
+          },
+          "got_bindings": {},
+          "immutable_sections": {
+            "292": "0x13910a5"
+          },
+          "literals": {
+            "5f708930": "0x1331e88",
+            "00401c46": "0x1331f68",
+            "db0f4940": "0x1331e60",
+            "00003443": "0x1332014"
+          }
+        },
+        {
           "address": "0x9ec240",
           "size": 748,
           "symbol": "_ZN4SPTG12EnemyShooter8State236Ei",
@@ -562678,7 +562668,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "289": "0x13910a9"
+            "297": "0x13910a9"
           },
           "literals": {
             "5f708930": "0x1331e88",
@@ -562808,7 +562798,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "262": "0x13910b5"
+            "267": "0x13910b5"
           }
         },
         {
@@ -562860,7 +562850,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "231": "0x1391118"
+            "233": "0x1391118"
           }
         },
         {
@@ -562928,7 +562918,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "271": "0x139111c"
+            "276": "0x139111c"
           }
         },
         {
@@ -563022,7 +563012,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "284": "0x1391124"
+            "289": "0x1391124"
           }
         },
         {
@@ -563152,7 +563142,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "205": "0x1391142"
+            "207": "0x1391142"
           }
         },
         {
@@ -563168,8 +563158,20 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "208": "0x1391146"
+            "210": "0x1391146"
           }
+        },
+        {
+          "address": "0x9f4e10",
+          "size": 448,
+          "symbol": "_ZN4SPTG9EnemyJake14OffScreenPointEPN4onyx7Vector3Ef",
+          "target_sha256": "c7c54063c75943458e7705e8c9464aeaea7ae14b617cf7ddc26af87efde0c864",
+          "bindings": {
+            "_ZN4SPTG15AnimatedAiActor13GetScreenRectEPNS_10ScreenRectE": "0x95c040",
+            "Accessor_Resolver": "0x191cd10",
+            "Accessor_Resolve": "0x67edd0"
+          },
+          "got_bindings": {}
         },
         {
           "address": "0x9f5cc0",
@@ -563352,7 +563354,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "242": "0x1391196"
+            "244": "0x1391196"
           }
         },
         {
@@ -563551,7 +563553,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "234": "0x1391222"
+            "236": "0x1391222"
           }
         },
         {
@@ -563691,7 +563693,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "237": "0x139122f"
+            "239": "0x139122f"
           }
         },
         {
@@ -563736,7 +563738,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "268": "0x1391233"
+            "273": "0x1391233"
           }
         },
         {
@@ -563753,7 +563755,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "265": "0x139123f"
+            "270": "0x139123f"
           }
         },
         {
@@ -563792,7 +563794,35 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "245": "0x1391243"
+            "250": "0x1391243"
+          }
+        },
+        {
+          "address": "0xa00210",
+          "size": 932,
+          "symbol": "_ZN4SPTG10EnemyArZee8State234Ei",
+          "target_sha256": "ce1561cc65dc26b4c91c34e513056ead9bd8ecb0ce3fcc7ab7c576d21050d17a",
+          "bindings": {
+            "Game_Random": "0x192ae70",
+            "_ZN2nn2os16GetCurrentThreadEv": "0xfa3e50",
+            "_ZN2nn2os11GetThreadIdEPKNS0_10ThreadTypeE": "0xfa4760",
+            "Move_FrameDelta": "0x1924d70",
+            "_ZN4SPTG10EnemyArZee8FireShotEb": "0xa00aa0",
+            "_ZN4SPTG12StateMachineINS_13BaseCharacterEE10TransitionEMS1_FiiE": "0x812930",
+            "Game_RandomCalls": "0x1935254",
+            "tanf": "0xfa4d20"
+          },
+          "got_bindings": {},
+          "immutable_sections": {
+            "247": "0x1391247"
+          },
+          "literals": {
+            "5f708930": "0x1331e88",
+            "00401c46": "0x1331f68",
+            "db0f4940": "0x1331e60",
+            "00003443": "0x1332014",
+            "1400000013000000": "0x1331410",
+            "1500000016000000": "0x1331a48"
           }
         },
         {
@@ -564083,6 +564113,17 @@
           "got_bindings": {}
         },
         {
+          "address": "0x9d9cb0",
+          "size": 888,
+          "symbol": "_ZN4SPTG5Enemy7Slot233EPKh",
+          "target_sha256": "12118a33e0e4b9818399c7985ec0703186d1e592b2acc92612de97bb44dc787e",
+          "bindings": {
+            "Accessor_Resolver": "0x191cd10",
+            "Accessor_Resolve": "0x67edd0"
+          },
+          "got_bindings": {}
+        },
+        {
           "address": "0x9db480",
           "size": 320,
           "symbol": "_ZN4SPTG5Enemy10Call9db480Ev",
@@ -564166,6 +564207,17 @@
             "_ZN4SPTG5Enemy10Call9dc2d0Ej": "0x9dc2d0"
           },
           "got_bindings": {}
+        },
+        {
+          "address": "0x9dc660",
+          "size": 364,
+          "symbol": "_ZN4SPTG5Enemy17FindTargetInReachEPj",
+          "target_sha256": "0affc1eb13ae8c1e461cad65a5740ecb77e827bdfc4f487004b66ff42b3edf6c",
+          "bindings": {},
+          "got_bindings": {},
+          "immutable_sections": {
+            "56": "0x1390f82"
+          }
         },
         {
           "address": "0x9dcfd0",
@@ -564950,7 +565002,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "236": "0x13912d2"
+            "247": "0x13912d2"
           }
         },
         {
@@ -564968,7 +565020,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "206": "0x13912d6"
+            "217": "0x13912d6"
           }
         },
         {
@@ -564986,7 +565038,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "415": "0x13912da"
+            "429": "0x13912da"
           }
         },
         {
@@ -565023,7 +565075,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "391": "0x13912f0"
+            "402": "0x13912f0"
           }
         },
         {
@@ -565066,7 +565118,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "197": "0x13912f8"
+            "208": "0x13912f8"
           }
         },
         {
@@ -565083,7 +565135,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "200": "0x1391336"
+            "211": "0x1391336"
           }
         },
         {
@@ -565101,7 +565153,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "460": "0x13913ba"
+            "474": "0x13913ba"
           }
         },
         {
@@ -565171,7 +565223,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "168": "0x13913be"
+            "170": "0x13913be"
           }
         },
         {
@@ -565190,6 +565242,49 @@
           }
         },
         {
+          "address": "0xa26170",
+          "size": 672,
+          "symbol": "_ZN4SPTG13TagTeamMember8State262Ei",
+          "target_sha256": "3c54026cf8bf0d265da85df6c5496b096934a522394de0f7e738e01a51a7d905",
+          "bindings": {
+            "Accessor_Resolver": "0x191cd10",
+            "Accessor_Resolve": "0x67edd0",
+            "_ZGVZN4onyx7Vector34ZeroEvE5value": "0x191f8b8",
+            "_ZZN4onyx7Vector34ZeroEvE5value": "0x191f8c0",
+            "_ZN4SPTG5Enemy10Call9db480Ev": "0x9db480",
+            "_ZN4SPTG12StateMachineINS_13BaseCharacterEE10TransitionEMS1_FiiE": "0x812930",
+            "_ZN4SPTG5Enemy11DirectionToEPN4onyx7Vector2EPS0_RKNS1_7Vector3E": "0x9db5c0",
+            "__cxa_guard_acquire": "0xfa4130",
+            "__cxa_guard_release": "0xfa4140"
+          },
+          "got_bindings": {},
+          "immutable_sections": {
+            "454": "0x13913c2"
+          }
+        },
+        {
+          "address": "0xa26420",
+          "size": 840,
+          "symbol": "_ZN4SPTG13TagTeamMember8State264Ei",
+          "target_sha256": "810f2e4802a7f19bf9269c2dd7b2dd68af794497d002642d383be29238fb0994",
+          "bindings": {
+            "Accessor_Resolver": "0x191cd10",
+            "Accessor_Resolve": "0x67edd0",
+            "_ZGVZN4onyx7Vector34ZeroEvE5value": "0x191f8b8",
+            "_ZZN4onyx7Vector34ZeroEvE5value": "0x191f8c0",
+            "_ZN4SPTG5Enemy10Call9db480Ev": "0x9db480",
+            "_ZN4SPTG5Enemy11DirectionToEPN4onyx7Vector2EPS0_RKNS1_7Vector3E": "0x9db5c0",
+            "_ZN4SPTG11ActorObject6MoveToERKN4onyx7Vector3E": "0x85fd70",
+            "_ZN4SPTG12StateMachineINS_13BaseCharacterEE10TransitionEMS1_FiiE": "0x812930",
+            "__cxa_guard_acquire": "0xfa4130",
+            "__cxa_guard_release": "0xfa4140"
+          },
+          "got_bindings": {},
+          "immutable_sections": {
+            "426": "0x13913c6"
+          }
+        },
+        {
           "address": "0xa26780",
           "size": 440,
           "symbol": "_ZN4SPTG13TagTeamMember8State266Ei",
@@ -565203,7 +565298,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "255": "0x13913ca"
+            "266": "0x13913ca"
           }
         },
         {
@@ -565326,7 +565421,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "288": "0x13913ce"
+            "299": "0x13913ce"
           },
           "literals": {
             "5f708930": "0x1331e88",
@@ -565347,7 +565442,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "285": "0x13913d2"
+            "296": "0x13913d2"
           }
         },
         {
@@ -565377,7 +565472,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "432": "0x13913e3"
+            "446": "0x13913e3"
           }
         },
         {
@@ -565393,7 +565488,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "184": "0x13913f4"
+            "186": "0x13913f4"
           }
         },
         {
@@ -565414,7 +565509,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "455": "0x1391400"
+            "469": "0x1391400"
           }
         },
         {
@@ -565433,7 +565528,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "466": "0x1391414"
+            "480": "0x1391414"
           }
         },
         {
@@ -565497,6 +565592,20 @@
           "got_bindings": {}
         },
         {
+          "address": "0xa319a0",
+          "size": 1260,
+          "symbol": "_ZN4SPTG20SuperFightingRobotAI6UpdateEv",
+          "target_sha256": "f755e6b225424fa9b366dd4cf24ad0f66b14c0139b1a4e968a69abfa0605852a",
+          "bindings": {
+            "_ZN4SPTG4Boss6UpdateEv": "0xa187b0",
+            "Accessor_Resolver": "0x191cd10",
+            "Accessor_Resolve": "0x67edd0",
+            "_ZN4SPTG11ActorObject6MoveToERKN4onyx7Vector3E": "0x85fd70",
+            "_ZN4SPTG20SuperFightingRobotAI10CallA38af0Ev": "0xa38af0"
+          },
+          "got_bindings": {}
+        },
+        {
           "address": "0xa31eb0",
           "size": 84,
           "symbol": "_ZN4SPTG20SuperFightingRobotAI8SetSolidEb",
@@ -565530,7 +565639,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "473": "0x1391420"
+            "487": "0x1391420"
           }
         },
         {
@@ -565559,7 +565668,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "159": "0x1391424"
+            "161": "0x1391424"
           }
         },
         {
@@ -565718,7 +565827,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "327": "0x1391488"
+            "338": "0x1391488"
           }
         },
         {
@@ -565737,7 +565846,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "330": "0x139148c"
+            "341": "0x139148c"
           }
         },
         {
@@ -565756,7 +565865,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "333": "0x1391490"
+            "344": "0x1391490"
           }
         },
         {
@@ -565775,7 +565884,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "336": "0x1391494"
+            "347": "0x1391494"
           }
         },
         {
@@ -565872,7 +565981,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "249": "0x13914a0"
+            "260": "0x13914a0"
           }
         },
         {
@@ -565899,7 +566008,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "174": "0x13914a4"
+            "176": "0x13914a4"
           }
         },
         {
@@ -565919,7 +566028,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "340": "0x13914b8"
+            "351": "0x13914b8"
           }
         },
         {
@@ -565938,7 +566047,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "324": "0x13914bc"
+            "335": "0x13914bc"
           }
         },
         {
@@ -566044,7 +566153,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "224": "0x13914c4"
+            "235": "0x13914c4"
           }
         },
         {
@@ -566061,7 +566170,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "179": "0x13914c8"
+            "181": "0x13914c8"
           }
         },
         {
@@ -566078,7 +566187,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "227": "0x13914cc"
+            "238": "0x13914cc"
           }
         },
         {
@@ -566108,7 +566217,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "221": "0x13914d4"
+            "232": "0x13914d4"
           }
         },
         {
@@ -566279,7 +566388,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "359": "0x13914f4"
+            "370": "0x13914f4"
           }
         },
         {
@@ -566336,7 +566445,30 @@
           "bindings": {},
           "got_bindings": {},
           "immutable_sections": {
-            "362": "0x1391502"
+            "373": "0x1391502"
+          }
+        },
+        {
+          "address": "0xa48b20",
+          "size": 1028,
+          "symbol": "_ZN4SPTG8LucasLee8State254Ei",
+          "target_sha256": "b1fe7907201f191ae0fb0e6e4acf2accb4ceae4cb030786fdd0c988d7dc9743d",
+          "bindings": {
+            "Accessor_Resolver": "0x191cd10",
+            "Accessor_Resolve": "0x67edd0",
+            "_ZGVZN4onyx7Vector34ZeroEvE5value": "0x191f8b8",
+            "_ZZN4onyx7Vector34ZeroEvE5value": "0x191f8c0",
+            "_ZN4SPTG12StateMachineINS_13BaseCharacterEE10TransitionEMS1_FiiE": "0x812930",
+            "_ZN4SPTG5Enemy11DirectionToEPN4onyx7Vector2EPS0_RKNS1_7Vector3E": "0x9db5c0",
+            "__cxa_guard_acquire": "0xfa4130",
+            "__cxa_guard_release": "0xfa4140"
+          },
+          "got_bindings": {},
+          "immutable_sections": {
+            "202": "0x1391514"
+          },
+          "literals": {
+            "00006143": "0x1331e68"
           }
         },
         {
@@ -566353,7 +566485,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "194": "0x139151c"
+            "205": "0x139151c"
           }
         },
         {
@@ -566370,7 +566502,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "308": "0x1391524"
+            "319": "0x1391524"
           }
         },
         {
@@ -566387,7 +566519,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "311": "0x139153a"
+            "322": "0x139153a"
           }
         },
         {
@@ -566509,7 +566641,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "203": "0x1391542"
+            "214": "0x1391542"
           }
         },
         {
@@ -566527,7 +566659,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "345": "0x139154e"
+            "356": "0x139154e"
           },
           "literals": {
             "00401c46": "0x1331f68"
@@ -566599,7 +566731,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "350": "0x1391562"
+            "361": "0x1391562"
           }
         },
         {
@@ -566616,7 +566748,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "212": "0x139157e"
+            "223": "0x139157e"
           }
         },
         {
@@ -566750,7 +566882,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "188": "0x1391586"
+            "190": "0x1391586"
           }
         },
         {
@@ -566775,7 +566907,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "246": "0x139158e"
+            "257": "0x139158e"
           }
         },
         {
@@ -566794,7 +566926,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "446": "0x13915b4"
+            "460": "0x13915b4"
           }
         },
         {
@@ -566886,7 +567018,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "165": "0x13915c0"
+            "167": "0x13915c0"
           }
         },
         {
@@ -566953,7 +567085,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "276": "0x13915de"
+            "287": "0x13915de"
           }
         },
         {
@@ -566971,7 +567103,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "279": "0x13915ea"
+            "290": "0x13915ea"
           }
         },
         {
@@ -566988,7 +567120,50 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "191": "0x13915ee"
+            "199": "0x13915ee"
+          }
+        },
+        {
+          "address": "0xa5c0a0",
+          "size": 832,
+          "symbol": "_ZN4SPTG10GigaGideon8State266Ei",
+          "target_sha256": "c20b7e28dd10f89f33a06d036976128a5b2627980be8e7ed678e8e622a5859c4",
+          "bindings": {
+            "Accessor_Resolver": "0x191cd10",
+            "Accessor_Resolve": "0x67edd0",
+            "_ZGVZN4onyx7Vector34ZeroEvE5value": "0x191f8b8",
+            "_ZZN4onyx7Vector34ZeroEvE5value": "0x191f8c0",
+            "_ZN4SPTG13BaseCharacter10Call94fde0Ev": "0x94fde0",
+            "_ZN4SPTG11ActorObject6MoveToERKN4onyx7Vector3E": "0x85fd70",
+            "_ZN4SPTG12StateMachineINS_13BaseCharacterEE10TransitionEMS1_FiiE": "0x812930",
+            "__cxa_guard_acquire": "0xfa4130",
+            "__cxa_guard_release": "0xfa4140"
+          },
+          "got_bindings": {},
+          "immutable_sections": {
+            "196": "0x13915f2"
+          }
+        },
+        {
+          "address": "0xa5ca90",
+          "size": 928,
+          "symbol": "_ZN4SPTG10GigaGideon8State270Ei",
+          "target_sha256": "f0b7410779d4521493911954d7954d01ffcc5434a644847fbdb60274b084d595",
+          "bindings": {
+            "Accessor_Resolver": "0x191cd10",
+            "Accessor_Resolve": "0x67edd0",
+            "_ZGVZN4onyx7Vector34ZeroEvE5value": "0x191f8b8",
+            "_ZZN4onyx7Vector34ZeroEvE5value": "0x191f8c0",
+            "_ZN4SPTG10GigaGideon10CallA5edb0EPN4onyx7Vector3EPS0_": "0xa5edb0",
+            "_ZN4SPTG5Enemy11DirectionToEPN4onyx7Vector2EPS0_RKNS1_7Vector3E": "0x9db5c0",
+            "_ZN4SPTG11ActorObject6MoveToERKN4onyx7Vector3E": "0x85fd70",
+            "_ZN4SPTG12StateMachineINS_13BaseCharacterEE10TransitionEMS1_FiiE": "0x812930",
+            "__cxa_guard_acquire": "0xfa4130",
+            "__cxa_guard_release": "0xfa4140"
+          },
+          "got_bindings": {},
+          "immutable_sections": {
+            "193": "0x13915fa"
           }
         },
         {
@@ -567009,7 +567184,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "452": "0x13915fe"
+            "466": "0x13915fe"
           }
         },
         {
@@ -567029,7 +567204,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "449": "0x139160a"
+            "463": "0x139160a"
           }
         },
         {
@@ -567134,7 +567309,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "218": "0x1391638"
+            "229": "0x1391638"
           }
         },
         {
@@ -567255,7 +567430,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "171": "0x139163c"
+            "173": "0x139163c"
           }
         },
         {
@@ -567276,7 +567451,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "443": "0x1391640"
+            "457": "0x1391640"
           }
         },
         {
@@ -567305,7 +567480,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "437": "0x1391644"
+            "451": "0x1391644"
           }
         },
         {
@@ -567322,7 +567497,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "412": "0x1391648"
+            "423": "0x1391648"
           }
         },
         {
@@ -567339,7 +567514,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "215": "0x139164c"
+            "226": "0x139164c"
           }
         },
         {
@@ -567359,7 +567534,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "463": "0x1391650"
+            "477": "0x1391650"
           }
         },
         {
@@ -567373,7 +567548,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "252": "0x1391658"
+            "263": "0x1391658"
           }
         },
         {
@@ -567391,7 +567566,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "299": "0x1391660"
+            "310": "0x1391660"
           }
         },
         {
@@ -567409,7 +567584,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "302": "0x1391664"
+            "313": "0x1391664"
           }
         },
         {
@@ -567426,7 +567601,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "282": "0x1391668"
+            "293": "0x1391668"
           }
         },
         {
@@ -567493,7 +567668,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "209": "0x139166c"
+            "220": "0x139166c"
           }
         },
         {
@@ -567543,7 +567718,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "427": "0x1391670"
+            "441": "0x1391670"
           }
         },
         {
@@ -567561,7 +567736,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "305": "0x1391684"
+            "316": "0x1391684"
           }
         },
         {
@@ -567576,7 +567751,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "233": "0x1391688"
+            "244": "0x1391688"
           }
         },
         {
@@ -567594,7 +567769,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "230": "0x139168c"
+            "241": "0x139168c"
           }
         },
         {
@@ -574800,6 +574975,30 @@
           }
         },
         {
+          "address": "0xb271a0",
+          "size": 72,
+          "symbol": "_ZN4Onyx8Graphics8Particle6Effect12EffectPhysic11EnsureReadyEv",
+          "target_sha256": "44861c2be5a52ff10b940c52b96735826b53584a6a41159f6903742039029017",
+          "bindings": {},
+          "got_bindings": {}
+        },
+        {
+          "address": "0xb282b0",
+          "size": 152,
+          "symbol": "_ZN4Onyx8Graphics8Particle6Effect11EffectGroup4TickEf",
+          "target_sha256": "4c60e2bf8159f551505b4e68f282b78126803bd88867f815f3ed9523dafe5290",
+          "bindings": {},
+          "got_bindings": {}
+        },
+        {
+          "address": "0xb28350",
+          "size": 104,
+          "symbol": "_ZN4Onyx8Graphics8Particle6Effect11EffectGroup6Slot17EPv",
+          "target_sha256": "e3924fcb714d4c547df273ed589da49a9a9c1b574929111c70066dc4289f0284",
+          "bindings": {},
+          "got_bindings": {}
+        },
+        {
           "address": "0xb29240",
           "size": 288,
           "symbol": "_ZN4Onyx8Graphics8Particle6Effect11EffectDelay5StartEPNS1_12ParticleDataE",
@@ -574835,6 +575034,213 @@
           "literals": {
             "bd370636": "0x1331f30"
           }
+        }
+      ]
+    },
+    {
+      "id": "gameplay_particle_volumes",
+      "source": "src/gameplay/ParticleVolumes.cpp",
+      "compiler": "8.0.1",
+      "source_review": "manual_reconstruction",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-std=c++11",
+        "-O2",
+        "-mcpu=cortex-a57",
+        "-fstrict-aliasing",
+        "-fomit-frame-pointer",
+        "-fno-pic",
+        "-fno-delete-null-pointer-checks",
+        "-ffunction-sections",
+        "-fdata-sections"
+      ],
+      "header_roots": [
+        "src/gameplay"
+      ],
+      "functions": [
+        {
+          "address": "0xb117a0",
+          "size": 68,
+          "symbol": "_ZN4Onyx8Graphics8Particle6Volume11VolumePoint5PlaceEPNS1_12ParticleListE",
+          "target_sha256": "e310b019579e9bac78fa56f7e73141eefc5a7af18deef0f3643405e0faacbcf0",
+          "bindings": {},
+          "got_bindings": {}
+        },
+        {
+          "address": "0xb2be10",
+          "size": 20,
+          "symbol": "_ZN4Onyx8Graphics8Particle18VolumeBaseGraphics9GetExtentEPNS1_12VolumeExtentE",
+          "target_sha256": "faae1fcdb904c820d0d7896d3a13d3660549cc234ff1a70ad84a06a4db78c19c",
+          "bindings": {},
+          "got_bindings": {},
+          "literals": {
+            "ffff7fffffff7fffffff7fff00000000": "0x13334c0"
+          }
+        },
+        {
+          "address": "0xb2e600",
+          "size": 20,
+          "symbol": "_ZN4Onyx8Graphics8Particle18VolumeLineGraphics9GetExtentEPNS1_12VolumeExtentE",
+          "target_sha256": "360e2f137e02dc3583cebb4704c140211578840044a4b4301d97ea75d469e707",
+          "bindings": {},
+          "got_bindings": {},
+          "literals": {
+            "ffff7fffffff7fffffff7fff00000000": "0x13334c0"
+          }
+        },
+        {
+          "address": "0xb2f220",
+          "size": 136,
+          "symbol": "_ZN4Onyx8Graphics8Particle20VolumeCircleGraphics9GetExtentEPNS1_12VolumeExtentE",
+          "target_sha256": "04717d8735d5a459d5fd0ca6097e470cc01ded0eb512c2d510c8c95a5ab53942",
+          "bindings": {
+            "Accessor_Resolver": "0x191cd10",
+            "Accessor_Resolve": "0x67edd0"
+          },
+          "got_bindings": {},
+          "literals": {
+            "ffff7fffffff7fffffff7fff00000000": "0x13334c0"
+          }
+        },
+        {
+          "address": "0xb30ed0",
+          "size": 48,
+          "symbol": "_ZN4Onyx8Graphics8Particle21EmitterSimpleGraphics9GetExtentEPNS1_12VolumeExtentE",
+          "target_sha256": "6fab817ed615616a62e0f750e3931de02a3672ac8c699219cc7c4f5e9ce24bfc",
+          "bindings": {},
+          "got_bindings": {},
+          "literals": {
+            "ffff7fffffff7fffffff7fff00000000": "0x13334c0"
+          }
+        },
+        {
+          "address": "0xb361f0",
+          "size": 168,
+          "symbol": "_ZN4Onyx8Graphics8Particle24EmitterSequencerGraphics7DisableEv",
+          "target_sha256": "84aca5466f107c4988ba0cf79533bb66f39822e00ad6ebcb97851d7dec60b3fc",
+          "bindings": {
+            "_ZN4Onyx8Graphics8Particle12ComponentRefD1Ev": "0x67f5f0"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xb36550",
+          "size": 104,
+          "symbol": "_ZN4Onyx8Graphics8Particle24EmitterSequencerGraphics4DrawEPv",
+          "target_sha256": "4614779698e34b2327eeba25895e4be504db10883d9eec47eba9739d0c3d532c",
+          "bindings": {},
+          "got_bindings": {}
+        },
+        {
+          "address": "0xb365c0",
+          "size": 104,
+          "symbol": "_ZN4Onyx8Graphics8Particle24EmitterSequencerGraphics6Slot21EPv",
+          "target_sha256": "d5c4c14b4fcafeba5792b8b6db339ac6ec7c79e5bc338d84522e2cccab5c0d63",
+          "bindings": {},
+          "got_bindings": {}
+        },
+        {
+          "address": "0xb388e0",
+          "size": 168,
+          "symbol": "_ZN4Onyx8Graphics8Particle20EmitterGroupGraphics7DisableEv",
+          "target_sha256": "629d788f08fd4950471d0b7854505096f552b3d09114320ea85d0b26fcbcbcde",
+          "bindings": {
+            "_ZN4Onyx8Graphics8Particle12ComponentRefD1Ev": "0x67f5f0"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xb38c50",
+          "size": 104,
+          "symbol": "_ZN4Onyx8Graphics8Particle20EmitterGroupGraphics4DrawEPv",
+          "target_sha256": "4614779698e34b2327eeba25895e4be504db10883d9eec47eba9739d0c3d532c",
+          "bindings": {},
+          "got_bindings": {}
+        },
+        {
+          "address": "0xb38cc0",
+          "size": 104,
+          "symbol": "_ZN4Onyx8Graphics8Particle20EmitterGroupGraphics6Slot21EPv",
+          "target_sha256": "d5c4c14b4fcafeba5792b8b6db339ac6ec7c79e5bc338d84522e2cccab5c0d63",
+          "bindings": {},
+          "got_bindings": {}
+        }
+      ]
+    },
+    {
+      "id": "gameplay_particle_emitters",
+      "source": "src/gameplay/ParticleEmitters.cpp",
+      "compiler": "8.0.1",
+      "source_review": "manual_reconstruction",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-std=c++11",
+        "-O2",
+        "-mcpu=cortex-a57",
+        "-fstrict-aliasing",
+        "-fomit-frame-pointer",
+        "-fno-pic",
+        "-fno-delete-null-pointer-checks",
+        "-ffunction-sections",
+        "-fdata-sections"
+      ],
+      "header_roots": [
+        "src/gameplay"
+      ],
+      "functions": [
+        {
+          "address": "0xb1d350",
+          "size": 312,
+          "symbol": "_ZN4Onyx8Graphics8Particle7Emitter16EmitterSequencer6UpdateEPv",
+          "target_sha256": "374b50819ede8d4bbef1ea2dabd55ff9ed8498c9202c5d8e28c48f235b10ba74",
+          "bindings": {
+            "Accessor_Tracking": "0x1935068",
+            "Event_Notify": "0xbf6e80",
+            "_Unwind_Resume": "0xfa4920"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xb1d490",
+          "size": 96,
+          "symbol": "_ZN4Onyx8Graphics8Particle7Emitter16EmitterSequencer7RestartEv",
+          "target_sha256": "809cd15c792ac26d789c470885abadf40afc448ebf548c0e4a30c68b4546534d",
+          "bindings": {},
+          "got_bindings": {}
+        },
+        {
+          "address": "0xb1fa60",
+          "size": 88,
+          "symbol": "_ZN4Onyx8Graphics8Particle7Emitter12EmitterGroup7RestartEv",
+          "target_sha256": "ea29c89330155a372152ba99abeb4f2bd1854893ec72a735ee4834c2f835304c",
+          "bindings": {},
+          "got_bindings": {}
+        },
+        {
+          "address": "0xb1fac0",
+          "size": 116,
+          "symbol": "_ZN4Onyx8Graphics8Particle7Emitter12EmitterGroup8FinishedEv",
+          "target_sha256": "31e0068418326a3ba5838676e90c8ebcd541b0dd6aa6a2e8ed35482a56721cd6",
+          "bindings": {},
+          "got_bindings": {}
+        },
+        {
+          "address": "0xb1fb40",
+          "size": 104,
+          "symbol": "_ZN4Onyx8Graphics8Particle7Emitter12EmitterGroup6Slot16EPv",
+          "target_sha256": "c7fe3af4e2a40d94b7a294f99706679c5c4f16e1d5ec0380353cc598c747727e",
+          "bindings": {},
+          "got_bindings": {}
+        },
+        {
+          "address": "0xb1fbc0",
+          "size": 104,
+          "symbol": "_ZN4Onyx8Graphics8Particle7Emitter12EmitterGroup6Slot18Eb",
+          "target_sha256": "c858b4233f1718ff3fab086df6a1ed94cabe4b5c9fdafe9606a3555ce70e06a4",
+          "bindings": {},
+          "got_bindings": {}
         }
       ]
     },

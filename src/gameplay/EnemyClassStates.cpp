@@ -975,16 +975,18 @@ EnemyAerial::State EnemyAerial::Statea04890Ptr() { return static_cast<State>(&En
 // EnemyStuntman slot 234 (0x9da030): after EnemyOneHitWonder's state, times the
 // state; while still in it, with the stuntman's X position inside its range and
 // the current target within reach on every axis, saves the motion and switches
-// to the state at 0x9da590. Not yet matched (not credited): the x and y reach
-// tests match (they compile to one vector compare), but the original shares
-// one "handled" return block between the entry, exit and early exits.
+// to the state at 0x9da590. Not yet matched (not credited): with the entry and
+// exit breaking to one "handled" return, the range test written minX <= x and
+// the x and y reach tests as one vector compare, only two things differ: the
+// original sets the result before its first range branch, and it addresses the
+// target entry once (madd) where this build indexes it.
 int EnemyStuntman::State234(int event) {
     int result = EnemyOneHitWonder::State234(event);
     if (result == kStateParentTookOver) return result;
     switch (event) {
     case kStateEnter:
         value334 = 0.0f;
-        return kStateHandled;
+        break;
     case kStateUpdate: {
         value334 += Move_FrameDelta;
         if (flagBf8) return kStateHandled;
@@ -992,7 +994,7 @@ int EnemyStuntman::State234(int event) {
         if (!(states.current == state)) return kStateHandled;
         ActorObject* actor = onyx::Find<ActorObject, onyx_types::type_6492d61d>(actorObject);
         float x = onyx::Get<onyx::Transform, onyx::kTransform>(actor->transform)->position.x;
-        if (x >= minX && x <= maxX && targetIndex < targetCount) {
+        if (minX <= x && x <= maxX && targetIndex < targetCount) {
             const TargetEntry& target = targets[targetIndex];
             if ((reach.x >= __builtin_fabsf(target.offset.x)) & (reach.y >= __builtin_fabsf(target.offset.y)) &&
                 reach.z >= __builtin_fabsf(target.offset.z)) {
@@ -1007,9 +1009,11 @@ int EnemyStuntman::State234(int event) {
         return kStateHandled;
     }
     case kStateExit:
-        return kStateHandled;
+        break;
+    default:
+        return kStateUnhandled;
     }
-    return kStateUnhandled;
+    return kStateHandled;
 }
 
 // EnemySasuke slot 234 (0x9e50c0): after EnemyOneHitWonder's state, times the
@@ -1017,7 +1021,8 @@ int EnemyStuntman::State234(int event) {
 // the direction he faces, saves the motion and switches to the state at
 // 0x9e5360. Event 10003 is not handled.
 // Not yet matched: the original places the second actor lookup's null case before
-// the flags lookup and works out the state machine's address there; the rest lines up.
+// the flags lookup and works out the state machine's address there; the rest lines up
+// (entry and exit now break to one handled return, as in EnemyStuntman's).
 int EnemySasuke::State234(int event) {
     int result = EnemyOneHitWonder::State234(event);
     if (result == kStateParentTookOver) return result;
@@ -1026,7 +1031,7 @@ int EnemySasuke::State234(int event) {
         return kStateUnhandled;
     case kStateEnter:
         value334 = 0.0f;
-        return kStateHandled;
+        break;
     case kStateUpdate: {
         value334 += Move_FrameDelta;
         if (flagBf8) return kStateHandled;
@@ -1045,8 +1050,9 @@ int EnemySasuke::State234(int event) {
         return kStateHandled;
     }
     case kStateExit:
-        return kStateHandled;
+        break;
     }
+    return kStateHandled;
 }
 
 // Slot 82 (EnemyGiant 0x9fb550, also EnemyGeeOne's; EnemyGodzilla 0x9f9130):
@@ -1215,6 +1221,20 @@ void EnemyHanzo::Remove(bool respawn) {
 void EnemyAlberta::Remove(bool respawn) {
     Enemy::Remove(respawn);
     SpawnObjectHere(26);
+}
+
+// EnemyJake 0x9f4e10: Jake's position with x just off the screen on the side he faces: `distance` left of its left edge
+// or `distance` right of its right edge. States 96 and 250 use it. The position is stored field by field: the original
+// reads the actor handle for the facing before those stores, which a copy of the whole vector would forbid.
+void EnemyJake::OffScreenPoint(onyx::Vector3* out, float distance) {
+    ScreenRect rect;
+    GetScreenRect(&rect);
+    onyx::Vector3 position = onyx::Get<onyx::Transform, onyx::kTransform>(onyx::Find<ActorObject, 0x6492d61du>(actorObject)->transform)->Position();
+    out->x = position.x;
+    out->y = position.y;
+    out->z = position.z;
+    bool facingLeft = onyx::Get<ActorFlags, 0x2eae5813u>(onyx::Find<ActorObject, 0x6492d61du>(actorObject)->flags)->facingLeft;
+    out->x = facingLeft ? rect.left - distance : rect.right + distance;
 }
 
 // EnemyJake slot 19 (0xa026b0): after Enemy's slot 19, resets the sensor at
@@ -1538,6 +1558,75 @@ int EnemyGodzilla::State122(int event) {
     }
 }
 
+// EnemyArZee slot 234 (0xa00210): EnemyShooter's shot in three animations (+0xc98, +0xc9c, +0xca0): 20, 19 and 23 for a
+// straight shot, 21, 22 and 24 for one aimed up at a target in the air (a roll against +0xc28 decides, and +0xc90 says
+// which). The middle animation fires once the delay runs out; the last one ends in state 96.
+int EnemyArZee::State234(int event) {
+    switch (event) {
+    case kStateUpdate:
+        if (animation == valuesC94[1]) {
+            if (AnimationDone()) PlayAnimation(valuesC94[2], 0, 0, 1.0f);
+        } else if (animation == valuesC94[2]) {
+            if (!flagCa4) {
+                stateTime -= Move_FrameDelta;
+                if (stateTime < 0.0f) {
+                    FireShot(straightShot);
+                    flagCa4 = 1;
+                }
+            }
+            if (AnimationDone()) PlayAnimation(valuesC94[3], 0, 0, 1.0f);
+        } else if (animation == valuesC94[3]) {
+            if (AnimationDone()) {
+                states.Transition(State96Ptr());
+                return kStateParentTookOver;
+            }
+        }
+        return kStateHandled;
+    case kStateEnter:
+        StartAttack(&attacks[0].attack, false, 1, nullptr);
+        straightShot = true;
+        vectorC84.x = valueC08;
+        vectorC84.y = valueC0c;
+        vectorC84.z = valueC10;
+        if (!static_cast<BaseCharacter*>(target->object)->IsOnGround()) {
+            float roll = static_cast<uint32_t>(RandomRange<int>(0, 100));
+            if (valueC28 > roll) {
+                straightShot = false;
+                vectorC84.z = __builtin_tanf(valueC2c * 3.1415927f / 180.0f) * vectorC84.x;
+            }
+        }
+        if (straightShot) {
+            vectorCa8.x = valueC14;
+            vectorCa8.y = valueC18;
+            vectorCa8.z = valueC1c;
+            vectorCb4.x = vectorC68.x;
+            vectorCb4.y = vectorC68.y;
+            vectorCb4.z = vectorC68.z;
+            stateTime = valueC20;
+            valuesC94[1] = 20;
+            valuesC94[2] = 19;
+            valuesC94[3] = 23;
+        } else {
+            vectorCa8.x = valueC30;
+            vectorCa8.y = valueC34;
+            vectorCa8.z = valueC38;
+            stateTime = valueC3c;
+            valuesC94[1] = 21;
+            valuesC94[2] = 22;
+            valuesC94[3] = 24;
+        }
+        PlayAnimation(valuesC94[1], 0, 0, 1.0f);
+        flagCa4 = 0;
+        return kStateHandled;
+    case kStateExit:
+        states.AssertOwner(this);
+        return kStateHandled;
+    case kStateEvent3:
+        return kStateHandled;
+    }
+    return kStateUnhandled;
+}
+
 // Stands still in animation 27 and goes to slot 238 when that is over.
 int EnemyArZee::State122(int event) {
     int result = kStateHandled;
@@ -1568,7 +1657,7 @@ int EnemyArZee::State122(int event) {
 void EnemyArZee::Slot19() {
     EnemyShooter::Slot19();
     vectorC84 = onyx::Vector3::Zero();
-    flagC90 = 0;
+    straightShot = false;
     flagCa4 = 0;
     valuesC94[0] = 0;
     valuesC94[1] = 0;
@@ -1978,6 +2067,62 @@ int EnemyJetPackMatt::State106(int event) {
     return result;
 }
 
+// EnemyShooter slot 234 (0x9ebf10): the straight shot. Entry starts the attack, plays animation 20 and takes the straight
+// shot's delay, velocity and muzzle; at a target in the air it may aim the velocity up by the angle. Updates fire once the
+// delay runs out; when animation 20 ends 21 plays, and when that ends it goes to state 96.
+int EnemyShooter::State234(int event) {
+    int result = kStateHandled;
+    switch (event) {
+    case kStateUpdate:
+        switch (animation) {
+        case 20:
+            if (!flagC40) {
+                stateTime -= Move_FrameDelta;
+                if (stateTime < 0.0f) {
+                    Fire();
+                    flagC40 = 1;
+                }
+            }
+            if (AnimationDone()) PlayAnimation(21, 0, 0, 1.0f);
+            break;
+        case 21:
+            if (AnimationDone()) {
+                states.Transition(State96Ptr());
+                result = kStateParentTookOver;
+            }
+            break;
+        }
+        break;
+    default:
+        result = kStateUnhandled;
+        break;
+    case kStateEnter:
+        StartAttack(&attacks[0].attack, false, 1, nullptr);
+        PlayAnimation(20, 0, 0, 1.0f);
+        stateTime = valueC20;
+        vectorC50.x = valueC08;
+        vectorC50.y = valueC0c;
+        vectorC50.z = valueC10;
+        vectorC44.x = valueC14;
+        vectorC44.y = valueC18;
+        vectorC44.z = valueC1c;
+        flagC40 = 0;
+        if (!static_cast<BaseCharacter*>(target->object)->IsOnGround()) {
+            float roll = static_cast<uint32_t>(RandomRange<int>(0, 100));
+            if (valueC28 > roll) vectorC50.z = __builtin_tanf(valueC2c * 3.1415927f / 180.0f) * vectorC50.x;
+        }
+        result = kStateHandled;
+        break;
+    case kStateExit:
+        states.AssertOwner(this);
+        result = kStateHandled;
+        break;
+    case kStateEvent3:
+        break;
+    }
+    return result;
+}
+
 // EnemyShooter 0x9ec540: fires the shot. Facing left, the velocity (+0xc50) and the muzzle (+0xc44) turn round in x first.
 // Projectile spawner +0xb8c fires it from the muzzle with that velocity, as part of the current attack, and with +0x40
 // set when facing right. Not yet matched: the record's stores and the registers of its inputs come in another order.
@@ -2075,6 +2220,56 @@ int EnemyForestElves::State96(int event) {
                 }
                 if (!seen) break;
                 FaceX(onyx::Get<onyx::Transform, onyx::kTransform>(onyx::Find<ActorObject, 0x6492d61du>(seen->actorObject)->transform)->position.x);
+                onyx::Vector3 point;
+                PickPoint(&point, static_cast<float>(valueBbc));
+                rangeOrigin.x = point.x;
+                rangeOrigin.y = point.y;
+                rangeOrigin.z = point.z;
+                flagBcc = 1;
+            }
+            states.Transition(State234Ptr());
+            result = kStateParentTookOver;
+        }
+        break;
+    case kStateEnter:
+    case kStateEvent3:
+        break;
+    default:
+        result = kStateUnhandled;
+        break;
+    }
+    return result;
+}
+
+// EnemyChargingCrowd slot 96 (0x9e6ad0): EnemyForestElves's, and with +0xcc8 set the crowd also moves to the height of
+// what it has turned to. Not yet matched: the original reads the crowd's own x and z before it reloads the actor handle
+// for the second lookup; this build loads the handle first. The rest lines up.
+int EnemyChargingCrowd::State96(int event) {
+    int result = kStateHandled;
+    switch (event) {
+    case kStateUpdate:
+        if (Check9ddab0(&sensor)) {
+            if (!flagBcc) {
+                BaseCharacter* seen = nullptr;
+                for (uint32_t i = 0; i < sensor.count; ++i) {
+                    onyx::ComponentHandle* handle = sensor.handles[i];
+                    if (handle && handle->object) {
+                        BaseCharacter* character = static_cast<BaseCharacter*>(handle->object);
+                        if ((character->componentFlags & 1) && !character->IsOut()) {
+                            seen = character;
+                            break;
+                        }
+                    }
+                }
+                if (!seen) break;
+                onyx::Transform* seenTransform = onyx::Get<onyx::Transform, onyx::kTransform>(onyx::Find<ActorObject, 0x6492d61du>(seen->actorObject)->transform);
+                float seenX = seenTransform->position.x;
+                float seenY = seenTransform->position.y;
+                FaceX(seenX);
+                if (matchHeight) {
+                    onyx::Vector3 position = onyx::Get<onyx::Transform, onyx::kTransform>(onyx::Find<ActorObject, 0x6492d61du>(actorObject)->transform)->Position();
+                    onyx::Find<onyx::Transform, onyx::kTransform>(onyx::Find<ActorObject, 0x6492d61du>(actorObject)->transform)->SetPosition(onyx::Vector3(position.x, seenY, position.z));
+                }
                 onyx::Vector3 point;
                 PickPoint(&point, static_cast<float>(valueBbc));
                 rangeOrigin.x = point.x;

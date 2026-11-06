@@ -121,12 +121,12 @@ void SuperFightingRobotAI::Slot4(onyx::Archive& archive, ComponentSlot::Source* 
     onyx::Transfer(archive, hand2Offset.x);
     onyx::Transfer(archive, hand2Offset.y);
     onyx::Transfer(archive, hand2Offset.z);
-    onyx::Transfer(archive, valueE4c);
-    onyx::Transfer(archive, valueE50);
-    onyx::Transfer(archive, valueE54);
-    onyx::Transfer(archive, valueE58);
-    onyx::Transfer(archive, valueE5c);
-    onyx::Transfer(archive, valueE60);
+    onyx::Transfer(archive, hand1Rest.x);
+    onyx::Transfer(archive, hand1Rest.y);
+    onyx::Transfer(archive, hand1Rest.z);
+    onyx::Transfer(archive, hand2Rest.x);
+    onyx::Transfer(archive, hand2Rest.y);
+    onyx::Transfer(archive, hand2Rest.z);
 }
 
 // EnemyAerial 0xa01f20: Enemy's, the callbacks (read in place), three attack

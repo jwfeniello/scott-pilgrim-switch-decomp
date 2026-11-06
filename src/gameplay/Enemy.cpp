@@ -218,6 +218,8 @@ void Enemy::Spawn(const EnemySpawnInfo* info) {
 // left and right edges keep the lane the record gives, and the top and bottom keep the first player's position.
 // Not yet matched: the original carries the height across the move in a general register, without reloading it from the
 // position it passed. It seems to know the move doesn't change that position, which these declarations can't express.
+// Lead (Nov 6): MoveTo taking the Vector3 by value (passed as a pointer to a copy, so the callee's code is the same)
+// would keep this local from escaping; untested, as it renames ActorObject::MoveTo's matched symbol in gameplay_actor.
 void Enemy::PlaceAtSpawn(const EnemySpawnInfo* info) {
     if (info->side == 4) {
         PlaceAt(info->position);
@@ -390,6 +392,66 @@ void Enemy::Slot94() {
 // The type tests (slot 12): each class's own type or one of its base's (SPTG_TYPE).
 bool Enemy::IsA(uint32_t type) { return IsType(type); }   // 0x9e1f00
 
+// 0x9dcb90: whether state 172 may hand over to state 96. Never while out. By +0x7e0: 1, once the enemy's feet (y + z) are
+// within the screen's height above its bottom and its x within the screen's width; 2, once a player is closer than
+// +0x7e4 (a squared distance); 3, while the camera block is active. Not yet matched: the original tests the mode for 3,
+// 2 and 1 in that order with the position loads after the first test; this build makes a switch tested 1, 2, 3.
+bool Enemy::LeaveCheck() {
+    if (IsOut()) return false;
+    onyx::Vector3 position = onyx::Get<onyx::Transform, onyx::kTransform>(onyx::Find<ActorObject, 0x6492d61du>(actorObject)->transform)->Position();
+    if (leaveMode == 3) {
+        LevelCamera* levelCamera = onyx::Find<LevelCamera, onyx_types::type_67f2aa4d>(camera.Get()->levelCamera);
+        return onyx::Find<CameraBlock, onyx_types::type_55e5c01c>(levelCamera->block)->active != 0;
+    } else if (leaveMode == 2) {
+        PlayerCatalog* players = onyx::Get<PlayerCatalog, onyx_types::type_0bf4a9b7>(level.Get()->players);
+        for (ControllablePlayer** i = players->players; i != players->players + players->count; ++i) {
+            onyx::Vector3 p = onyx::Get<onyx::Transform, onyx::kTransform>(onyx::Find<ActorObject, 0x6492d61du>((*i)->actorObject)->transform)->Position();
+            float dx = p.x - position.x;
+            float dy = p.y - position.y;
+            float dz = p.z - position.z;
+            if (dx * dx + dy * dy + dz * dz < leaveDistance) return true;
+        }
+    } else if (leaveMode == 1) {
+        LevelCamera* levelCamera = onyx::Find<LevelCamera, onyx_types::type_67f2aa4d>(camera.Get()->levelCamera);
+        onyx::Transform* view = onyx::Get<onyx::Transform, onyx::kTransform>(levelCamera->transform);
+        float feet = position.y + position.z;
+        if (feet > view->position.y && feet < view->position.y + 216.0f && view->position.x < position.x &&
+            view->position.x + 384.0f > position.x) return true;
+    }
+    return false;
+}
+
+// Slot 233 (0x9d9cb0): a trigger starts the range origin following the enemy along x (or y, for a vertical trigger) until
+// it passes the trigger's end; without one, each call moves it along, or stops when it has passed. The y case stops the
+// x flag, not its own, in the original too. The vertical start reads the position through Position(): spelled like the
+// x start, the two lookups merge into one ahead of the test, which the original keeps apart (a guess at the spelling,
+// kept for that).
+void Enemy::Slot233(const uint8_t* trigger) {
+    const RangeTrigger* t = reinterpret_cast<const RangeTrigger*>(trigger);
+    if (t->active) {
+        if (t->id < 0) return;
+        if (t->vertical) {
+            rangeOrigin.y = onyx::Get<onyx::Transform, onyx::kTransform>(onyx::Find<ActorObject, 0x6492d61du>(actorObject)->transform)->Position().y;
+            yLimitSet = 1;
+            yLimitAbove = t->toY > t->fromY;
+            yLimit = t->toY;
+        } else {
+            rangeOrigin.x = onyx::Get<onyx::Transform, onyx::kTransform>(onyx::Find<ActorObject, 0x6492d61du>(actorObject)->transform)->position.x;
+            xLimitSet = 1;
+            xLimitAbove = t->toX > t->fromX;
+            xLimit = t->toX;
+        }
+        return;
+    }
+    if (xLimitSet) {
+        if (xLimitAbove != (rangeOrigin.x > static_cast<float>(xLimit))) xLimitSet = 0;
+        else rangeOrigin.x = onyx::Get<onyx::Transform, onyx::kTransform>(onyx::Find<ActorObject, 0x6492d61du>(actorObject)->transform)->position.x;
+    } else if (yLimitSet) {
+        if (yLimitAbove != (rangeOrigin.y > static_cast<float>(yLimit))) xLimitSet = 0;
+        else rangeOrigin.y = onyx::Get<onyx::Transform, onyx::kTransform>(onyx::Find<ActorObject, 0x6492d61du>(actorObject)->transform)->position.y;
+    }
+}
+
 // 0x9dc1a0: the position of player `index` in the level's player catalog. The copy goes field by field: the original
 // stores x and y before it loads z.
 void Enemy::PlayerPosition(onyx::Vector3* out, Enemy* self, uint32_t index) {
@@ -401,8 +463,8 @@ void Enemy::PlayerPosition(onyx::Vector3* out, Enemy* self, uint32_t index) {
 }
 
 // 0x9dc660: the first target, not out, that one of this frame's attacks reaches; its index goes to `index`. The moves
-// that aren't aimed at anyone (kinds 8, 31-33, 39, 45, 61, 79 and 202) don't count. Not yet matched: the original reads
-// the attack's near depth before the target's depth and tests the height before the far depth; the rest lines up.
+// that aren't aimed at anyone (kinds 8, 31-33, 39, 45, 61, 79 and 202) don't count. The range test is written as in
+// Boss::CheckA255e0 (branch on the near depth, the other tests evaluated together), which gives the original's order.
 bool Enemy::FindTargetInReach(uint32_t* index) {
     AttackSlot* end = attackList.data + attackList.size;
     for (uint32_t i = 0; i < targetCount; ++i) {
@@ -412,9 +474,14 @@ bool Enemy::FindTargetInReach(uint32_t* index) {
             case 8: case 31: case 32: case 33: case 39: case 45: case 61: case 79: case 202:
                 continue;
             }
-            if (i < targetCount && attack->InRange(targets[i].offset)) {
-                *index = i;
-                return true;
+            if (i < targetCount) {
+                const onyx::Vector3& offset = targets[i].offset;
+                float x = __builtin_fabsf(offset.x);
+                bool inX = attack->rangeMinX <= x && attack->rangeMaxX >= x;
+                if (attack->rangeMinZ <= offset.z && (((attack->attack.rangeY * 0.5f > __builtin_fabsf(offset.y)) & (attack->rangeMaxZ >= offset.z)) & inX)) {
+                    *index = i;
+                    return true;
+                }
             }
         }
     }

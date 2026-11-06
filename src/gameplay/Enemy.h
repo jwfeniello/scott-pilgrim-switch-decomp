@@ -28,6 +28,19 @@ struct GameDifficultyAccessor {
     float bossScale2;      // +0x5c: for its +0x90c
 };
 
+// What slot 233 is handed: a level trigger's record that makes the range origin follow the enemy along one axis until it
+// passes a limit (names provisional).
+struct RangeTrigger {
+    uint8_t active;          // +0x0
+    char padding_1[0x7];
+    int32_t id;              // +0x8: negative for none
+    int32_t fromX;           // +0xc
+    int32_t fromY;           // +0x10
+    int32_t toX;             // +0x14
+    int32_t toY;             // +0x18
+    uint8_t vertical;        // +0x1c
+};
+
 // A distance band (12 bytes).
 struct AttackRange { float min, max, depth; };   // extra: serialized, not read by the matched states
 
@@ -181,7 +194,8 @@ struct Enemy : BaseCharacter {
     onyx::Vector3 rangeOrigin;   // +0x7bc: where slot 169 measures its ranges from
     char padding_7c8[0xc];
     onyx::Vector3 savedMotion;   // +0x7d4
-    char padding_7e0[0x8];
+    int32_t leaveMode;           // +0x7e0: what lets state 172 end (LeaveCheck)
+    float leaveDistance;         // +0x7e4: for mode 2, a squared distance to a player
     onyx::Vector<AttackSlot> attackList; // +0x7e8: attacks requested this frame
     char padding_808[0x8];
     uint8_t flag810;             // +0x810: dropped by Update9db820 after a quarter second
@@ -289,7 +303,16 @@ struct Enemy : BaseCharacter {
     uint8_t flagAd8;             // +0xad8
     char padding_ad9[0x10];
     uint8_t flagAe9;             // +0xae9
-    char padding_aea[0x5f];
+    char padding_aea[0x4e];
+    uint8_t xLimitSet;           // +0xb38: slot 233 moves the range origin's x with the enemy until it passes xLimit
+    uint8_t xLimitAbove;         // +0xb39: which side of xLimit the trigger heads for
+    char padding_b3a[0x2];
+    int32_t xLimit;              // +0xb3c
+    uint8_t yLimitSet;           // +0xb40: the same along y
+    uint8_t yLimitAbove;         // +0xb41
+    char padding_b42[0x2];
+    int32_t yLimit;              // +0xb44
+    char padding_b48[0x1];
     uint8_t flagB49;             // +0xb49
     char padding_b4a[0x2];
     float valueB4c;              // +0xb4c

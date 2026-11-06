@@ -126,7 +126,8 @@ struct Boss : Enemy {
     int32_t valueD08;            // +0xd08
     float timerD0c;              // +0xd0c
     onyx::Vector3 arrivalPoint;  // +0xd10: where state 254 reappears
-    char padding_d1c[0x8];
+    float walkSpeed;             // +0xd1c: the speed a walk to the arrival point takes (slot 171 at the start)
+    char padding_d20[0x4];
     uint8_t flagD24;             // +0xd24
     uint8_t flagD25;             // +0xd25
     uint8_t flagD26;             // +0xd26

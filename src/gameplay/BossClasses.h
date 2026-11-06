@@ -175,6 +175,7 @@ void PlayAttachmentAnimation(onyx::ComponentHandle* handle, int animation, bool 
 struct GigaGideon : Boss {
     SPTG_TYPE(Boss, 0x3c09f4bdu)
     bool IsA(uint32_t type) override;   // slot 12 (0xa58380)
+    static void CallA5edb0(onyx::Vector3* out, GigaGideon* self);   // 0xa5edb0: picks state 270's arrival point
     void Spawn(const EnemySpawnInfo* info) override;
     void Slot19();
     void SetAnimationSpeed(float speed) override;
@@ -242,8 +243,8 @@ struct GigaGideon : Boss {
     AttackSlot attacks[2];       // +0xeb0: requested every update with kinds 20 and 21
     char padding_fa0[0x240];
     float value11e0;             // +0x11e0
-    float value11e4;             // +0x11e4
-    char padding_11e8[0x4];
+    float value11e4;             // +0x11e4: the height state 266 lands him at and slot 241 puts him at
+    float sinkSpeed;             // +0x11e8: how fast state 266 lowers him to it
     float coreHealthStart;       // +0x11ec
     float chargeTime;            // +0x11f0: how long state 272 charges before state 282
     char padding_11f4[0x8];
@@ -342,6 +343,7 @@ struct KenKyle : Boss {
     void Update();
     bool Slot82();
     void CallA506f0(uint32_t index);   // 0xa506f0
+    void CallA501d0();                 // 0xa501d0
     void Slot4(onyx::Archive& archive, ComponentSlot::Source* source);
     int State114(int event); State State114Ptr();   // slots 114, 115, override Boss
     int State122(int event); State State122Ptr();   // slots 122, 123, override Boss
@@ -396,8 +398,8 @@ struct KenKyle : Boss {
     float range10dc;             // +0x10dc: the twin joins states 246 and 248 within this distance
     float value10e0;             // +0x10e0: passed to 0x996c30 by slot 240
     float limit10e4;             // +0x10e4
-    int32_t value10e8;           // +0x10e8
-    int32_t value10ec;           // +0x10ec
+    float stepX;                 // +0x10e8: how far 0xa501d0 moves him the way he faces
+    float stepY;                 // +0x10ec: and in y
 };
 // vtable 0x18949c8, 268 slots
 struct LucasLee : Boss {
@@ -740,6 +742,7 @@ struct SuperFightingRobotAI : Boss {
     void CallA2f1e0();   // 0xa2f1e0
     void Slot4(onyx::Archive& archive, ComponentSlot::Source* source);
     void Slot13();
+    void Update();
     void SetSolid(bool solid);
     void CallA38af0();   // 0xa38af0
     void Slot7();
@@ -777,7 +780,7 @@ struct SuperFightingRobotAI : Boss {
     uint8_t hand1Ready;          // +0xdf8: state 264 has sent hand 1 to its state 260
     uint8_t hand2Ready;          // +0xdf9: and hand 2
     char padding_dfa[0x6];
-    int32_t valueE00;            // +0xe00
+    float valueE00;              // +0xe00: while not zero the update ends with 0xa38af0
     float valueE04;              // +0xe04: how long state 260 lasts
     uint32_t valueE08;           // +0xe08
     int32_t valueE0c;            // +0xe0c
@@ -792,12 +795,8 @@ struct SuperFightingRobotAI : Boss {
     int32_t valueE30;            // +0xe30
     onyx::Vector3 hand1Offset;   // +0xe34
     onyx::Vector3 hand2Offset;   // +0xe40
-    int32_t valueE4c;            // +0xe4c
-    int32_t valueE50;            // +0xe50
-    int32_t valueE54;            // +0xe54
-    int32_t valueE58;            // +0xe58
-    int32_t valueE5c;            // +0xe5c
-    int32_t valueE60;            // +0xe60
+    onyx::Vector3 hand1Rest;     // +0xe4c: where the update keeps hand 1, from the +0xd48 transform's position
+    onyx::Vector3 hand2Rest;     // +0xe58: and hand 2
 };
 // vtable 0x188eb08, 274 slots
 struct SuperFightingRobotHand : Boss {
@@ -810,6 +809,7 @@ struct SuperFightingRobotHand : Boss {
     bool CallA2fae0(bool flag, float speed);   // 0xa2fae0
     bool CallA2f300(float a, float b, float c);   // 0xa2f300
     void Slot4(onyx::Archive& archive, ComponentSlot::Source* source);
+    void Slot7();
     void FollowPlayfield() override;                                         // slot 76
     int State96(int event); State State96Ptr();   // slots 96, 97, override Boss
     int State106(int event); State State106Ptr();   // slots 106, 107, override Boss
@@ -846,7 +846,7 @@ struct SuperFightingRobotHand : Boss {
     int32_t valueF0c;            // +0xf0c
     float speedF10;              // +0xf10
     int32_t valueF14;            // +0xf14
-    int32_t valueF18;            // +0xf18
+    float heightF18;             // +0xf18: how far above its ground height slot 7 puts the hand
     int32_t valueF1c;            // +0xf1c
     float valueF20;              // +0xf20: how long state 270 waits
     int32_t valueF24;            // +0xf24
@@ -867,9 +867,8 @@ struct SuperFightingRobotHand : Boss {
     int32_t valueF58;            // +0xf58
     float sideOffset;            // +0xf5c: how far beside the target the hand aims; its sign picks the side
     char padding_f60[0x20];
-    float boxCenterX;            // +0xf80
-    float boxCenterY;            // +0xf84
-    char padding_f88[0x18];
+    onyx::Vector3 boxCenter;     // +0xf80: where slot 7 found the hand
+    char padding_f8c[0x14];
     int32_t hitsFa0;             // +0xfa0
     char padding_fa4[0xc];
     SuperFightingRobotAI* owner; // +0xfb0: set by the robot

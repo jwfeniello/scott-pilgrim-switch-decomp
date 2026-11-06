@@ -452,10 +452,13 @@ struct EnemyChargingCrowd : EnemyOneHitWonder {
     SPTG_TYPE(EnemyOneHitWonder, 0x379bc97fu)
     bool IsA(uint32_t type) override;   // slot 12 (0x9e68e0)
     void AttackLanded(AnimatedAiActor* target) override;
+    int State96(int event);
     virtual int State234(int event); virtual State State234Ptr();   // slots 234, 235, overrides EnemyOneHitWonder
     virtual int State240(int event); virtual State State240Ptr();   // slots 240, 241
 
-    char padding_bcd[0x103];
+    char padding_bcd[0xfb];
+    uint8_t matchHeight;         // +0xcc8: state 96 moves the crowd to the height of what it has seen
+    char padding_cc9[0x7];
     float attackTimer;           // +0xcd0
     uint8_t attackPending;       // +0xcd4
 };
@@ -467,6 +470,7 @@ struct EnemyJake : EnemyNormal {
     int State108(int event);
     void Slot19();
     void Slot4(onyx::Archive& archive, ComponentSlot::Source* source);
+    void OffScreenPoint(onyx::Vector3* out, float distance);   // 0x9f4e10
     virtual int State250(int event); virtual State State250Ptr();   // slots 250, 251
     virtual int State252(int event); virtual State State252Ptr();   // slots 252, 253
     virtual int State254(int event); virtual State State254Ptr();   // slots 254, 255
@@ -517,10 +521,13 @@ struct EnemyArZee : EnemyShooter {
     int State122(int event) override;
     virtual int State234(int event); virtual State State234Ptr();   // slots 234, 235, overrides EnemyShooter
     virtual int State238(int event); virtual State State238Ptr();   // slots 238, 239
+    void FireShot(bool straight);   // 0xa00aa0
 
-    char padding_c60[0x24];
+    char padding_c60[0x8];
+    onyx::Vector3 vectorC68;     // +0xc68: copied to +0xcb4 for a straight shot
+    char padding_c74[0x10];
     onyx::Vector3 vectorC84;     // +0xc84
-    uint8_t flagC90;             // +0xc90
+    bool straightShot;           // +0xc90: state 234 fires straight (not aimed up)
     char padding_c91[0x3];
     int32_t valuesC94[4];        // +0xc94
     uint8_t flagCa4;             // +0xca4

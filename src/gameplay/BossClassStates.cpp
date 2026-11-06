@@ -940,6 +940,26 @@ void GigaGideon::Update() {
 
 // SuperFightingRobotAI slot 262 (0xa32280): each update switches to slot 272
 // when either hand has +0xfb8 set, else to slot 264.
+// SuperFightingRobotAI slot 16 (0xa319a0): Boss's update; then the head, torso, hands and shoulders play animation 0
+// looping and the part at +0xd50 gets its slot 71. The hands' points become the +0xd48 transform's position plus
+// +0xe4c and +0xe58 and the hands are moved there. While +0xe00 isn't zero it ends with 0xa38af0.
+void SuperFightingRobotAI::Update() {
+    Boss::Update();
+    onyx::Get<SuperFightingRobotHead, 0x2bc021adu>(handleD80)->PlayAnimation(0, true, false, 1.0f);
+    onyx::Get<SuperFightingRobotTorso, 0x15d09a06u>(handleD78)->PlayAnimation(0, true, false, 1.0f);
+    onyx::Get<SuperFightingRobotHand, 0x37bd3ac0u>(hand1)->PlayAnimation(0, true, false, 1.0f);
+    onyx::Get<SuperFightingRobotHand, 0x37bd3ac0u>(hand2)->PlayAnimation(0, true, false, 1.0f);
+    onyx::Get<SuperFightingRobotShoulder, 0x19ac00b3u>(handleD60)->PlayAnimation(0, true, false, 1.0f);
+    onyx::Get<SuperFightingRobotShoulder, 0x19ac00b3u>(handleD58)->PlayAnimation(0, true, false, 1.0f);
+    onyx::Get<SuperFightingRobotTorso, 0x15d09a06u>(handleD50)->Release();
+    onyx::Vector3 position = onyx::Get<onyx::Transform, onyx::kTransform>(handleD48)->position;
+    hand1Point = onyx::Vector3(position.x + hand1Rest.x, position.y + hand1Rest.y, position.z + hand1Rest.z);
+    hand2Point = onyx::Vector3(position.x + hand2Rest.x, position.y + hand2Rest.y, position.z + hand2Rest.z);
+    onyx::Find<ActorObject, 0x6492d61du>(onyx::Find<SuperFightingRobotHand, 0x37bd3ac0u>(hand1)->actorObject)->MoveTo(hand1Point);
+    onyx::Find<ActorObject, 0x6492d61du>(onyx::Find<SuperFightingRobotHand, 0x37bd3ac0u>(hand2)->actorObject)->MoveTo(hand2Point);
+    if (valueE00 != 0.0f) CallA38af0();
+}
+
 // SuperFightingRobotAI slot 264 (0xa323c0): entry sets the hands' points, the +0xd48 transform's position plus +0xe34
 // and +0xe40. Each update a hand not yet sent goes to its state 260 once it's free (+0xfb8 clear and its 0xa30210 holds);
 // a sent one moves to its point at +0xe10 (its 0xa2ed40). When both are there, state 266.
@@ -1279,6 +1299,99 @@ int SuperGideon::State186(int event) {
         return kStateUnhandled;
     }
 }
+
+// GigaGideon slot 270 (0xa5ca90): entry stops him, plays animation 0, picks the arrival point (0xa5edb0) and raises
+// +0x3bb until exit. He walks there at slot 170's speed; within 5 he is put there, taking its height as ground, stops and
+// goes to state 244.
+int GigaGideon::State270(int event) {
+    int result = kStateHandled;
+    switch (event) {
+    case kStateUpdate: {
+        onyx::Vector3 diff = arrivalPoint - onyx::Get<onyx::Transform, onyx::kTransform>(onyx::Find<ActorObject, 0x6492d61du>(actorObject)->transform)->Position();
+        if (diff.LengthSquared() <= 25.0f) {
+            motion = onyx::Vector3::Zero();
+            motionTarget = onyx::Vector3::Zero();
+            onyx::Find<ActorObject, 0x6492d61du>(actorObject)->MoveTo(arrivalPoint);
+            groundHeight = static_cast<int>(arrivalPoint.z);
+            states.Transition(State244Ptr());
+            result = kStateParentTookOver;
+        } else {
+            float speed = Slot170();
+            onyx::Vector2 direction;
+            DirectionTo(&direction, this, arrivalPoint);
+            motion.x = direction.x * speed;
+            motion.y = direction.y * speed;
+            result = kStateHandled;
+        }
+        break;
+    }
+    case kStateEnter: {
+        motion = onyx::Vector3::Zero();
+        motionTarget = onyx::Vector3::Zero();
+        PlayAnimation(0, 1, 0, 1.0f);
+        onyx::Vector3 point;
+        CallA5edb0(&point, this);
+        arrivalPoint.x = point.x;
+        arrivalPoint.y = point.y;
+        arrivalPoint.z = point.z;
+        flag3bb = 1;
+        break;
+    }
+    case kStateEvent3:
+        break;
+    default:
+        result = kStateUnhandled;
+        break;
+    case kStateExit:
+        flag3bb = 0;
+        break;
+    }
+    return result;
+}
+
+// GigaGideon slot 266 (0xa5c0a0): stands in animation 0 with +0x3ba raised until exit (entry also runs 0x94fde0) and sinks
+// at +0x11e8 while above +0x11e4. Once there he is put at that height, which becomes his ground, stops, takes armor mode 2
+// and goes to state 244.
+int GigaGideon::State266(int event) {
+    int result = kStateHandled;
+    switch (event) {
+    case kStateUpdate: {
+        onyx::Vector3 position = onyx::Find<onyx::Transform, onyx::kTransform>(onyx::Find<ActorObject, 0x6492d61du>(actorObject)->transform)->Position();
+        float z = position.z;
+        float height = value11e4;
+        if (height >= z) {
+            position.z = height;
+            onyx::Find<ActorObject, 0x6492d61du>(actorObject)->MoveTo(position);
+            groundHeight = static_cast<int>(height);
+            motion = onyx::Vector3::Zero();
+            motionTarget = onyx::Vector3::Zero();
+            armorMode = 2;
+            states.Transition(State244Ptr());
+            result = kStateParentTookOver;
+        } else {
+            motion.z = sinkSpeed;
+        }
+        break;
+    }
+    case kStateEnter:
+        motion = onyx::Vector3::Zero();
+        motionTarget = onyx::Vector3::Zero();
+        PlayAnimation(0, 1, 0, 1.0f);
+        flag3ba = 1;
+        Call94fde0();
+        break;
+    case kStateEvent3:
+        break;
+    default:
+        result = kStateUnhandled;
+        break;
+    case kStateExit:
+        flag3ba = 0;
+        break;
+    }
+    return result;
+}
+
 int GigaGideon::State264(int event) {
     switch (event) {
     case kStateUpdate:
@@ -1302,6 +1415,63 @@ int GigaGideon::State264(int event) {
         return kStateUnhandled;
     }
 }
+// LucasLee slot 254 (0xa48b20): walks to the arrival point (slot 241) in animation 1 at slot 171's speed (170's when that
+// is zero), facing it, with +0x3bb raised and facing mode 2 until exit. Within 15, or at once on a playfield edge, he
+// stops and goes to state 264 while on the board (+0xfd0), else to 244.
+int LucasLee::State254(int event) {
+    int result = kStateHandled;
+    switch (event) {
+    case kStateUpdate: {
+        onyx::Vector3 diff = arrivalPoint - onyx::Get<onyx::Transform, onyx::kTransform>(onyx::Find<ActorObject, 0x6492d61du>(actorObject)->transform)->Position();
+        bool there = diff.LengthSquared() <= 225.0f;
+        if (!there) {
+            onyx::Component* object = onyx::Get<ActorObject, 0x6492d61du>(actorObject)->playfield->object;
+            PlayfieldCollision* field = static_cast<TypedComponent*>(object)->IsA(PlayfieldCollision::kType) ? static_cast<PlayfieldCollision*>(object) : nullptr;
+            if (!field->flag128) {
+                FaceX(arrivalPoint.x);
+                float speed = walkSpeed;
+                if (speed == 0.0f) speed = Slot170();
+                onyx::Vector2 direction;
+                DirectionTo(&direction, this, arrivalPoint);
+                motion.x = direction.x * speed;
+                motion.y = direction.y * speed;
+                result = kStateHandled;
+                break;
+            }
+        }
+        motion = onyx::Vector3::Zero();
+        motionTarget = onyx::Vector3::Zero();
+        if (flagFd0) states.Transition(State264Ptr());
+        else states.Transition(State244Ptr());
+        result = kStateParentTookOver;
+        break;
+    }
+    case kStateEnter: {
+        motion = onyx::Vector3::Zero();
+        motionTarget = onyx::Vector3::Zero();
+        mode87c = 2;
+        onyx::Vector3 point = ArrivalPoint();
+        arrivalPoint.x = point.x;
+        arrivalPoint.y = point.y;
+        arrivalPoint.z = point.z;
+        walkSpeed = Slot171();
+        PlayAnimation(1, 1, 0, 1.0f);
+        flag3bb = 1;
+        break;
+    }
+    case kStateEvent3:
+        break;
+    default:
+        result = kStateUnhandled;
+        break;
+    case kStateExit:
+        mode87c = 3;
+        flag3bb = 0;
+        break;
+    }
+    return result;
+}
+
 int LucasLee::State258(int event) {
     switch (event) {
     case kStateUpdate:
@@ -3070,8 +3240,8 @@ void KenKyle::Slot4(onyx::Archive& archive, ComponentSlot::Source* source) {
     onyx::Transfer(archive, range10dc);
     onyx::Transfer(archive, value10e0);
     onyx::Transfer(archive, limit10e4);
-    onyx::Transfer(archive, value10e8);
-    onyx::Transfer(archive, value10ec);
+    onyx::Transfer(archive, stepX);
+    onyx::Transfer(archive, stepY);
 }
 
 // Slot 4, serialization (see Archive.h): Boss's, then the class's fields.
@@ -3234,7 +3404,7 @@ void SuperFightingRobotHand::Slot4(onyx::Archive& archive, ComponentSlot::Source
     onyx::Transfer(archive, valueF0c);
     onyx::Transfer(archive, speedF10);
     onyx::Transfer(archive, valueF14);
-    onyx::Transfer(archive, valueF18);
+    onyx::Transfer(archive, heightF18);
     onyx::Transfer(archive, valueF1c);
     onyx::Transfer(archive, valueF20);
     onyx::Transfer(archive, valueF24);
@@ -4238,13 +4408,57 @@ int SuperFightingRobotAI::State260(int event) {
     return result;
 }
 
+// TagTeamMember slot 264 (0xa26420, also Envy's): walks back to the return position at +0x2e0 (slot 170 when that's
+// zero), facing it; once within 2 it's put there, taking its height as ground, and goes to state 266, as it does at once
+// on a playfield edge (+0x128). Entry raises +0x3ba until exit, stops and plays the stance (0x9db480).
+int TagTeamMember::State264(int event) {
+    switch (event) {
+    case kStateUpdate: {
+        onyx::Vector3 diff = returnPosition - onyx::Get<onyx::Transform, onyx::kTransform>(onyx::Find<ActorObject, 0x6492d61du>(actorObject)->transform)->Position();
+        if (diff.LengthSquared() <= 4.0f) {
+            onyx::Find<ActorObject, 0x6492d61du>(actorObject)->MoveTo(returnPosition);
+            groundHeight = static_cast<int>(returnPosition.z);
+        } else {
+            onyx::Component* object = onyx::Get<ActorObject, 0x6492d61du>(actorObject)->playfield->object;
+            PlayfieldCollision* field = static_cast<TypedComponent*>(object)->IsA(PlayfieldCollision::kType) ? static_cast<PlayfieldCollision*>(object) : nullptr;
+            if (!field->flag128) {
+                float speed = jumpBackSpeed;
+                if (speed == 0.0f) speed = Slot170();
+                onyx::Vector2 direction;
+                DirectionTo(&direction, this, returnPosition);
+                motion.x = direction.x * speed;
+                motion.y = direction.y * speed;
+                FaceX(returnPosition.x);
+                return kStateHandled;
+            }
+        }
+        states.Transition(State266Ptr());
+        return kStateParentTookOver;
+    }
+    case kStateEnter:
+        flag3ba = 1;
+        motion = onyx::Vector3::Zero();
+        motionTarget = onyx::Vector3::Zero();
+        Call9db480();
+        return kStateHandled;
+    case kStateEvent3:
+        return kStateHandled;
+    default:
+        return kStateUnhandled;
+    case kStateExit:
+        flag3ba = 0;
+        return kStateHandled;
+    }
+}
+
 // TagTeamMember slot 262 (0xa26170): walks back to the retreat position, then goes to state 96. Entry raises +0xd5b and +0x3ba and
-// refills +0xd7c from +0xd4c. Not yet matched: the original reads the actor's position before the retreat position.
+// refills +0xd7c from +0xd4c. The actor's position is taken as a copy (Position()), which the original reads before the
+// retreat position.
 int TagTeamMember::State262(int event) {
     int result = kStateHandled;
     switch (event) {
     case kStateUpdate: {
-        onyx::Vector3 diff = retreatPosition - onyx::Get<onyx::Transform, onyx::kTransform>(onyx::Find<ActorObject, 0x6492d61du>(actorObject)->transform)->position;
+        onyx::Vector3 diff = retreatPosition - onyx::Get<onyx::Transform, onyx::kTransform>(onyx::Find<ActorObject, 0x6492d61du>(actorObject)->transform)->Position();
         if (diff.LengthSquared() <= 4.0f) {
             states.Transition(State96Ptr());
             result = kStateParentTookOver;
@@ -4322,6 +4536,32 @@ onyx::Vector3 LucasLee::ArrivalPoint() {
     return point;
 }
 
+// SuperFightingRobotHand slot 7 (0xa28ca0): Enemy's slot 7 and facing mode 3. Its position becomes the box centre
+// (+0xf80) and it's put +0xf18 above its own ground height. It requests its three attacks (kinds 11, 187 and 178), the
+// flags at +0xd58 run 0x8e7330 and are hidden, its shadow part's +0x4 clears and its flags lose bit 3 and gain bit 1,
+// and it goes to state 260.
+// Not yet matched (not credited): the original stores the facing mode right after Enemy's slot 7 and loads the position's
+// y and z before its x; here the store waits for the actor handle's load.
+void SuperFightingRobotHand::Slot7() {
+    Boss::Slot7();
+    mode87c = 3;
+    onyx::Vector3 position = onyx::Find<onyx::Transform, onyx::kTransform>(onyx::Find<ActorObject, 0x6492d61du>(actorObject)->transform)->Position();
+    boxCenter = position;
+    onyx::Vector3 start = position;
+    start.z = groundF38 + heightF18;
+    onyx::Find<ActorObject, 0x6492d61du>(actorObject)->MoveTo(start);
+    RequestAttack(attackD88, 11);
+    RequestAttack(attackE00, 187);
+    RequestAttack(attackE78, 178);
+    ActorFlags* flags = onyx::Find<ActorFlags, 0x2eae5813u>(handleD58);
+    flags->Call8e7330();
+    flags->visible = 0;
+    onyx::Get<ShadowGraphics, 0x771ba2eeu>(handleD60)->Slot16()->value4 = 0.0f;
+    onyx::Get<ShadowGraphics, 0x771ba2eeu>(handleD60)->Slot16()->flagsC &= ~8;
+    onyx::Get<ShadowGraphics, 0x771ba2eeu>(handleD60)->Slot16()->flagsC |= 2;
+    states.Transition(State260Ptr());
+}
+
 // SuperFightingRobotHand slot 76 (0xa295a0): the hand keeps its own ground
 // height (+0xf38), and its shadow stays under it at that height. The original
 // calls SetGroundHeight and then returns, where a plain build makes it a tail call;
@@ -4362,6 +4602,19 @@ bool Lynette::IsA(uint32_t type) { return IsType(type); }   // 0xa62250
 bool Envy::IsA(uint32_t type) { return IsType(type); }   // 0xa66e30
 bool Chau::IsA(uint32_t type) { return IsType(type); }   // 0xa6a440
 
+// 0xa501d0 (KenKyle's states 264 and 266): moves him +0x10e8 the way he faces and +0x10ec in y, and makes his height his
+// ground height.
+// Not yet matched (not credited): the original keeps the z it loaded across the move (MoveTo); here it's read back from
+// the position afterwards. Copying z or the position first splits the copy differently.
+void KenKyle::CallA501d0() {
+    onyx::Vector3 position = onyx::Find<onyx::Transform, onyx::kTransform>(onyx::Find<ActorObject, 0x6492d61du>(actorObject)->transform)->Position();
+    bool left = onyx::Get<ActorFlags, 0x2eae5813u>(onyx::Find<ActorObject, 0x6492d61du>(actorObject)->flags)->facingLeft;
+    position.x += left ? -stepX : stepX;
+    position.y += stepY;
+    onyx::Find<ActorObject, 0x6492d61du>(actorObject)->MoveTo(position);
+    groundHeight = static_cast<int>(position.z);
+}
+
 // KenKyle 0xa506f0: unless in state 198, takes attack `index` as the special attack (or none past the end) and passes its
 // kind to slot 166; then +0xd50 is the current animation's length over the slower of the twins' speed scales.
 void KenKyle::CallA506f0(uint32_t index) {
@@ -4391,8 +4644,8 @@ bool SuperFightingRobotHand::CallA2fae0(bool clamp, float speed) {
     BaseCharacter* player = static_cast<BaseCharacter*>(target->object);
     onyx::Vector3 goal = onyx::Find<onyx::Transform, onyx::kTransform>(onyx::Find<ActorObject, 0x6492d61du>(player->actorObject)->transform)->Position();
     if (clamp) {
-        float centerY = boxCenterY;
-        float centerX = boxCenterX;
+        float centerY = boxCenter.y;
+        float centerX = boxCenter.x;
         float halfWidth = boxWidth * 0.5f;
         float halfHeight = boxHeight * 0.5f;
         float right = centerX + halfWidth;

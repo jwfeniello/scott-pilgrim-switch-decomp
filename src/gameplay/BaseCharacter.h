@@ -168,6 +168,7 @@ struct ActorFlags : onyx::Component {
     char padding_100[0x18];
     uint8_t flag118;      // +0x118
     void SetShadow(ShadowAnimatedObject* shadow, bool flag);   // 0x811870
+    void Call8e7330();                                         // 0x8e7330
 };
 // SPTG::LevelAIManager (type 0x2b951b8a), reached through the singleton at +0x80 (getter 0x992bf0).
 // What the singleton at AnimatedAiActor +0x88 gives (getter 0x774b50).
@@ -242,7 +243,7 @@ struct ShadowAnimatedObject : onyx::Component {
     void SetGroundHeight(int height, float z);   // 0x85fc20
 };
 // The shadow's graphics (component type 0x771ba2ee); slot 16 gives the part whose +0x4 SetGroundHeight sets.
-struct ShadowPart { uint32_t value0; float value4; };
+struct ShadowPart { uint32_t value0; float value4; char padding_8[0x4]; uint8_t flagsC; };
 struct ShadowGraphics : onyx::Component {
     SPTG_SLOT(3) SPTG_SLOT(4) SPTG_SLOT(5) SPTG_SLOT(6) SPTG_SLOT(7) SPTG_SLOT(8) SPTG_SLOT(9) SPTG_SLOT(10) SPTG_SLOT(11)
     SPTG_SLOT(12) SPTG_SLOT(13) SPTG_SLOT(14) SPTG_SLOT(15)
