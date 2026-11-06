@@ -209,7 +209,8 @@ struct GigaGideon : Boss {
     uint8_t armorStagger;        // +0xd65: raised when the tally reaches its limit; state 258 goes to 262
     uint8_t coreExposed;         // +0xd66
     uint8_t coreBroken;          // +0xd67: raised when the core is used up
-    char padding_d68[0x10];
+    bool ragedD68;               // +0xd68: watched by GigaGideonAI, which reports its first rise
+    char padding_d69[0xf];
     AttackSlot attackD78;        // +0xd78: started in state 262
     char padding_df0[0x70];
     float armorHealthStart;      // +0xe60

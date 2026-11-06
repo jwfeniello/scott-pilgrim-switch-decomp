@@ -92,6 +92,15 @@ void BaseBossAI::AssignTarget(Enemy* enemy) {
     }
 }
 
+// Slot 25 (0xa14dd0): entry sends the finished event; update, exit and
+// kStateEvent3 need nothing.
+int BaseBossAI::Finished(int event) {
+    if (static_cast<unsigned>(event - kStateExit) < 2 || event == kStateUpdate) return kStateHandled;
+    if (event != kStateEnter) return kStateUnhandled;
+    onyx::SendEvent<817469290u>(finishedCallback, finishedTarget);
+    return kStateHandled;
+}
+
 // ToddAI slot 21 (0xa14a70): the same code as BaseBossAI's waiting state.
 int ToddAI::Waiting(int event) {
     if (static_cast<unsigned>(event - kStateEnter) < 3) return kStateHandled;
@@ -147,6 +156,50 @@ int SuperGideonAI::Fighting(int event) {
     if (event != kStateUpdate) return kStateUnhandled;
     if (RefreshPlayers()) {
         if (!static_cast<Boss*>(actor->object)->flagD28) return kStateHandled;
+        states.Transition(FinishedPtr());
+    } else {
+        states.Transition(WaitingPtr());
+    }
+    return kStateParentTookOver;
+}
+
+// SuperGideonAI slot 25 (0xa514e0): after the base state, each update sends the
+// idle event once, when the boss stands in its state 256 with animation 187.
+int SuperGideonAI::Finished(int event) {
+    int result = BaseBossAI::Finished(event);
+    if (result != kStateParentTookOver) {
+        if (event == kStateUpdate) {
+            if (!reported) {
+                Boss* boss = static_cast<Boss*>(actor->object);
+                Boss::State idle = boss->State256Ptr();
+                if (boss->states.current == idle && boss->animation == 187) {
+                    reported = true;
+                    onyx::SendEvent<0x6c9df3bdu>(idleCallback, idleTarget);
+                }
+            }
+            return kStateHandled;
+        }
+        return kStateUnhandled;
+    }
+    return result;
+}
+
+// GigaGideonAI slot 23 (0xa56a90): as the base fighting state for one boss. Each
+// update it also sends an event when the boss's +0xd68 first rises, and finishes
+// once the boss has +0xd28 set.
+int GigaGideonAI::Fighting(int event) {
+    if (static_cast<unsigned>(event - kStateEnter) < 3) return kStateHandled;
+    if (event != kStateUpdate) return kStateUnhandled;
+    if (RefreshPlayers()) {
+        GigaGideon* boss = actor ? static_cast<GigaGideon*>(actor->object) : nullptr;
+        if (!boss) return kStateHandled;
+        bool now = boss->ragedD68;
+        if (now && !raged) {
+            onyx::SendEvent<0x5478af9bu>(ragedCallback, ragedTarget);
+            boss = static_cast<GigaGideon*>(actor->object);
+        }
+        raged = now;
+        if (!boss->flagD28) return kStateHandled;
         states.Transition(FinishedPtr());
     } else {
         states.Transition(WaitingPtr());

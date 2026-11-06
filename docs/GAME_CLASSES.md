@@ -1124,14 +1124,14 @@ enemies and 6 for bosses. The boss states test +0xd28 before they run slot 240
 when the health is gone, and Ken & Kyle copy it from the twin, so it most
 likely marks a beaten boss.
 
-[`BossAI.cpp`](../src/gameplay/BossAI.cpp) matches 18 functions (2,584
-bytes): slots 13 (update), 16, 21 and 23 of `BaseBossAI`, slots 21 and 23 of
-`ToddAI`, slot 23 of `SuperGideonAI`, `AssignTarget`, and the ten state
-getters of the four classes. The getters and slot 13 were credited before to
-generated ABI views (`RecoveredLeaf_…`), which now leave them to the class. Three more were matched earlier in
-[`ActionEvents.cpp`](../src/gameplay/ActionEvents.cpp) under local
-declarations: slot 25 of `BaseBossAI` and of `SuperGideonAI`, and slot 23 of
-`GigaGideonAI`.
+[`BossAI.cpp`](../src/gameplay/BossAI.cpp) matches 21 functions (3,824
+bytes): slots 13 (update), 16, 21, 23 and 25 of `BaseBossAI`, slots 21 and 23
+of `ToddAI`, slots 23 and 25 of `SuperGideonAI`, slot 23 of `GigaGideonAI`,
+`AssignTarget`, and the ten state getters of the four classes. The getters and
+slot 13 were credited before to generated ABI views (`RecoveredLeaf_...`), and
+the three slot-25 and Giga Gideon methods to stand-in structs in
+`ActionEvents.cpp`; both now leave them to the classes. Giga Gideon's flag at
++0xd68 is a `bool`, as the AI reads it.
 
 ## ControllablePlayer stats and states
 
@@ -1393,7 +1393,7 @@ handlers: most match on the first or second try, and the misses are usually a fi
 ### Actors, bosses and value events
 
 - `SPTG::ActorMoveAction` walks its actor from +0xd4 to +0xe0 over the time at +0xec, and sets the actor's depth at +0x144 from z. `ActorAnimationAction` flips the actor when its graphic's facing disagrees with what it wants. `ActorAddGraphicMasterAction` hands the actor's graphic to another object.
-- `SPTG::SuperGideonAI` reports once when its actor sits in the idle state in animation 187. `SPTG::GigaGideonAI` reports the rising edge of the flag at +0xd68 on its actor and attacks when +0xd28 is set.
+- `SPTG::SuperGideonAI` reports once when its actor sits in the idle state in animation 187. `SPTG::GigaGideonAI` reports the rising edge of the flag at +0xd68 on its actor and finishes the fight when +0xd28 is set (see [Boss fight AI](#boss-fight-ai)).
 - `SPTG::UnspawnManager` applies three queues once per frame: objects, objects with a reason, and notices, then empties all three.
 - `Onyx::Gameplay::DistanceTrigger` fires while the squared distance between two objects is within the value at +0x90.
 - `SPTG::StartCameraShakeAction` takes a free slot from the shaker and starts it from a preset or from its own settings. It stores the slot, or the failure, either way.

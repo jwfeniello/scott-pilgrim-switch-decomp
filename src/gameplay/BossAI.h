@@ -3,14 +3,11 @@
 // machine whose states are virtual, each followed by a getter that returns it,
 // so that a subclass can replace one state. Names are provisional (see
 // docs/GAME_CLASSES.md#boss-fight-ai).
-//
-// Three more methods are matched in ActionEvents.cpp under local declarations:
-// BaseBossAI slot 25 (0xa14dd0), SuperGideonAI slot 25 (0xa514e0) and
-// GigaGideonAI slot 23 (0xa56a90).
 #pragma once
 #include "BossClasses.h"
 #include "ComponentTypes.h"
 #include "Level.h"
+#include "OnyxEvents.h"
 #include "StateMachine.h"
 #include "Vector.h"
 
@@ -39,7 +36,7 @@ struct BaseBossAI : onyx::Component {
     virtual int Fighting(int event);       // slot 23
     virtual State FightingPtr();           // slot 24
     // After a boss is beaten: sends the event at +0xc0 when entered.
-    virtual int Finished(int event);       // slot 25 (0xa14dd0, see ActionEvents.cpp)
+    virtual int Finished(int event);       // slot 25 (0xa14dd0)
     virtual State FinishedPtr();           // slot 26
 
     // Refills `players` from the level's player catalog and returns how many
@@ -69,11 +66,13 @@ struct BaseBossAI : onyx::Component {
     int32_t machineValue;                  // +0xb8: -1 from the constructor; otherwise a
                                            // transition also sends kStateEvent3 to both states
     char padding_bc[0x4];
-    char finishedEvent[0x18];              // +0xc0: event slot (callback, target)
+    onyx::EventCallback* finishedCallback; // +0xc0: the event slot the finished state sends (0x30b9976a)
+    onyx::EventTarget* finishedTarget;     // +0xc8
+    void* finishedD0;                      // +0xd0
 };
 static_assert(__builtin_offsetof(BaseBossAI, players) == 0x68, "BaseBossAI players");
 static_assert(__builtin_offsetof(BaseBossAI, states) == 0x90, "BaseBossAI states");
-static_assert(__builtin_offsetof(BaseBossAI, finishedEvent) == 0xc0, "BaseBossAI event");
+static_assert(__builtin_offsetof(BaseBossAI, finishedCallback) == 0xc0, "BaseBossAI event");
 
 // Todd's fight ends when Todd himself is beaten.
 struct ToddAI : BaseBossAI {
@@ -89,23 +88,30 @@ struct SuperGideonAI : BaseBossAI {
     State WaitingPtr() override;           // slot 22
     int Fighting(int event) override;      // slot 23 (0xa51430)
     State FightingPtr() override;          // slot 24
-    int Finished(int event) override;      // slot 25 (0xa514e0, see ActionEvents.cpp)
+    int Finished(int event) override;      // slot 25 (0xa514e0)
     State FinishedPtr() override;          // slot 26
     char padding_d8[0x8];
     onyx::ComponentHandle* actor;          // +0xe0: the boss
-    bool reported;                         // +0xe8
+    bool reported;                         // +0xe8: the idle event has been sent
+    char padding_e9[0x7];
+    onyx::EventCallback* idleCallback;     // +0xf0: sent once the beaten boss stands idle (0x6c9df3bd)
+    onyx::EventTarget* idleTarget;         // +0xf8
 };
-static_assert(__builtin_offsetof(SuperGideonAI, actor) == 0xe0, "SuperGideonAI actor");
+static_assert(__builtin_offsetof(SuperGideonAI, idleCallback) == 0xf0, "SuperGideonAI event");
 
 // Giga Gideon's fight also reports when its boss is first enraged (+0xd68).
 struct GigaGideonAI : BaseBossAI {
     int Waiting(int event) override;       // slot 21 (0xa56600)
     State WaitingPtr() override;           // slot 22
-    int Fighting(int event) override;      // slot 23 (0xa56a90, see ActionEvents.cpp)
+    int Fighting(int event) override;      // slot 23 (0xa56a90)
     State FightingPtr() override;          // slot 24
     char padding_d8[0x8];
     onyx::ComponentHandle* actor;          // +0xe0: the boss
-    bool raged;                            // +0xe8
+    bool raged;                            // +0xe8: the boss's +0xd68 at the last update
+    char padding_e9[0x7];
+    onyx::EventCallback* ragedCallback;    // +0xf0: sent when +0xd68 first rises (0x5478af9b)
+    onyx::EventTarget* ragedTarget;        // +0xf8
 };
+static_assert(__builtin_offsetof(GigaGideonAI, ragedCallback) == 0xf0, "GigaGideonAI event");
 
 }  // namespace SPTG

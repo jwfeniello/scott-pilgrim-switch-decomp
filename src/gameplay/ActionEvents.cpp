@@ -218,19 +218,6 @@ void DelayAction::Update() {
     if (value >= limit) onyx::SendEvent<ActionFinished>(callback, target);
 }
 
-struct BaseBossAI {
-    char padding_0[0xc0];
-    EventCallback* callback;    // +0xc0
-    EventTarget* target;        // +0xc8
-    bool Slot25(int id);
-};
-bool BaseBossAI::Slot25(int id) {
-    if (static_cast<unsigned>(id - 10002) < 2 || id == 10000) return true;
-    if (id != 10001) return false;
-    onyx::SendEvent<817469290u>(callback, target);
-    return true;
-}
-
 struct TimerCircuit {
     char padding_0[0x98];
     EventCallback* callback;    // +0x98
@@ -2311,90 +2298,6 @@ struct ControllableSpawnEvent {
     void Send();
 };
 void ControllableSpawnEvent::Send() { onyx::SendValue<0x1b2247fdu, ControllableSpawnInfo>(callback, target); }
-
-// SPTG::SuperGideonAI reports once when its actor is idle in animation 187.
-#define ACTOR_SLOTS(p) virtual void p##0(); virtual void p##1(); virtual void p##2(); virtual void p##3(); virtual void p##4(); virtual void p##5(); virtual void p##6(); virtual void p##7(); virtual void p##8(); virtual void p##9();
-struct GideonActor : onyx::Component {
-    typedef void (GideonActor::*State)();
-    virtual void S3(); virtual void S4(); virtual void S5(); virtual void S6(); virtual void S7(); virtual void S8(); virtual void S9();
-    ACTOR_SLOTS(A1) ACTOR_SLOTS(A2) ACTOR_SLOTS(A3) ACTOR_SLOTS(A4) ACTOR_SLOTS(A5) ACTOR_SLOTS(A6) ACTOR_SLOTS(A7) ACTOR_SLOTS(A8) ACTOR_SLOTS(A9) ACTOR_SLOTS(A10) ACTOR_SLOTS(A11) ACTOR_SLOTS(A12)
-    ACTOR_SLOTS(A13) ACTOR_SLOTS(A14) ACTOR_SLOTS(A15) ACTOR_SLOTS(A16) ACTOR_SLOTS(A17) ACTOR_SLOTS(A18) ACTOR_SLOTS(A19) ACTOR_SLOTS(A20) ACTOR_SLOTS(A21) ACTOR_SLOTS(A22) ACTOR_SLOTS(A23) ACTOR_SLOTS(A24)
-    virtual void B0(); virtual void B1(); virtual void B2(); virtual void B3(); virtual void B4(); virtual void B5(); virtual void B6();
-    virtual State IdlePtr();    // slot 257
-    char padding_8[0x198];
-    int32_t animation;          // +0x1a0
-    char padding_1a4[0x6c];
-    State current;              // +0x210
-    char padding_220[0xb08];
-    bool enraged;               // +0xd28
-    char padding_d29[0x3f];
-    bool raged;                 // +0xd68
-};
-struct SuperGideonAI {
-    char padding_0[0xe0];
-    ComponentHandle* actor;     // +0xe0
-    bool reported;              // +0xe8
-    EventCallback* callback;    // +0xf0
-    EventTarget* target;        // +0xf8
-    int Slot25(int event);
-    int BaseSlot25(int event);
-};
-int SuperGideonAI::Slot25(int event) {
-    int result = BaseSlot25(event);
-    if (result != 2) {
-        if (event == 10000) {
-            if (!reported) {
-                GideonActor* x = static_cast<GideonActor*>(actor->object);
-                auto idle = x->IdlePtr();
-                if (x->current == idle && x->animation == 187) {
-                    reported = true;
-                    onyx::SendEvent<0x6c9df3bdu>(callback, target);
-                }
-            }
-            return 1;
-        }
-        return 0;
-    }
-    return result;
-}
-
-struct GigaGideonAI {
-    typedef void (GigaGideonAI::*State)();
-    virtual void S0(); virtual void S1(); virtual void S2(); virtual void S3(); virtual void S4(); virtual void S5(); virtual void S6(); virtual void S7(); virtual void S8(); virtual void S9();
-    virtual void S10(); virtual void S11(); virtual void S12(); virtual void S13(); virtual void S14(); virtual void S15(); virtual void S16(); virtual void S17(); virtual void S18(); virtual void S19();
-    virtual void S20(); virtual void S21();
-    virtual State DeadPtr();    // slot 22
-    virtual void S23(); virtual void S24(); virtual void S25();
-    virtual State AttackPtr();  // slot 26
-    char padding_8[0x88];
-    struct Machine { void Transition(State next); } states;     // +0x90
-    char padding_91[0x4f];
-    ComponentHandle* actor;     // +0xe0
-    bool raged;                 // +0xe8
-    EventCallback* callback;    // +0xf0
-    EventTarget* target;        // +0xf8
-    int Slot23(int event);
-    int Alive();
-};
-int GigaGideonAI::Slot23(int event) {
-    if (static_cast<unsigned>(event - 10001) < 3) return 1;
-    if (event != 10000) return 0;
-    if (Alive()) {
-        GideonActor* x = onyx::Peek<GideonActor>(actor);
-        if (!x) return 1;
-        bool now = x->raged;
-        if (now && !raged) {
-            onyx::SendEvent<0x5478af9bu>(callback, target);
-            x = static_cast<GideonActor*>(actor->object);
-        }
-        raged = now;
-        if (!x->enraged) return 1;
-        states.Transition(AttackPtr());
-    } else {
-        states.Transition(DeadPtr());
-    }
-    return 2;
-}
 
 // A boss arms each of its lasers; the laser's own event comes after.
 struct ArmedLaser {
