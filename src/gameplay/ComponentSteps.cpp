@@ -658,6 +658,14 @@ template struct HeldGraphicsLater<0xb2d430, 344>;
 template struct HeldGraphicsLater<0xb551a0, 224>;
 template struct HeldGraphicsLater<0xba1080, 224>;
 template struct HeldGraphicsLater<0xba28b0, 224>;
+// GridComponent's slot 21 adds its drawable (at +0x118) to that later list the same way.
+template<unsigned Key, unsigned DrawOffset> struct DrawnGraphicsLater {
+    char padding_0[DrawOffset];
+    char draw;
+    void Slot21(LaterDrawList* lists);
+};
+template<unsigned Key, unsigned DrawOffset> void DrawnGraphicsLater<Key, DrawOffset>::Slot21(LaterDrawList* lists) { lists->list.PushBack(&draw); }
+template struct DrawnGraphicsLater<0xb52e10, 0x118>;
 }  // namespace Onyx
 
 namespace SPTG {

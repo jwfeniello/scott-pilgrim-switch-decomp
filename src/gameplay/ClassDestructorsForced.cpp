@@ -1468,3 +1468,8 @@ FreePositionner::~FreePositionner() {  }
 struct FreeOrienter : Basebf1900 { AutoInline<PlainSharedPointer<214840065, 1176, true, 4>> member_58; virtual void Key(); DT_INLINE ~FreeOrienter(); };
 FreeOrienter::~FreeOrienter() {  }
 }
+struct Basecae410 { virtual ~Basecae410(); char padding[128]; };
+namespace Onyx { 
+struct LightDirectionalGraphics : Basecae410 { char padding_88[16]; AutoInline<PlainStrongHandle<212746499, true>> member_98; AutoInline<PlainStrongHandle<212746498, true>> member_a0; AutoInline<PlainStrongHandle<212746497, true>> member_a8; virtual void Key(); DT_INLINE ~LightDirectionalGraphics(); };
+LightDirectionalGraphics::~LightDirectionalGraphics() {  }
+}

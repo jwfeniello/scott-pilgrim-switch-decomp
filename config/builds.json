@@ -508905,6 +508905,24 @@
           "got_bindings": {}
         },
         {
+          "address": "0xcae410",
+          "size": 1028,
+          "symbol": "_ZN4Onyx24LightDirectionalGraphicsD0Ev",
+          "target_sha256": "de1b95184767d74a9c0847a31eab37f58a353fa4fb30900c674a1307bc7f2652",
+          "bindings": {
+            "_ZTVN4Onyx24LightDirectionalGraphicsE": "0x18c43c0",
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
+            "HandleTracking": "0x1935068",
+            "HandleLock": "0xfa4950",
+            "HandleUnlock": "0xfa4960",
+            "_ZN10Basecae410D2Ev": "0xcade30",
+            "_ZdlPv": "0xfa3b40",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
           "address": "0xcb1ea0",
           "size": 832,
           "symbol": "_ZN4Onyx24DirectionalArrowGraphicsD2Ev",
@@ -567734,6 +567752,19 @@
           "got_bindings": {}
         },
         {
+          "address": "0xb52e10",
+          "size": 272,
+          "symbol": "_ZN4Onyx18DrawnGraphicsLaterILj11873808ELj280EE6Slot21EPNS_13LaterDrawListE",
+          "target_sha256": "7d88835dd94cee85af80c4f7e4b3fb5ef83fb67669f8dd5ae1fa7be77555eeca",
+          "bindings": {
+            "memcpy": "0xfa3330",
+            "memmove": "0xfa33b0",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30"
+          },
+          "got_bindings": {}
+        },
+        {
           "address": "0xb55080",
           "size": 276,
           "symbol": "_ZN4Onyx12HeldGraphicsILj11882624ELj224EE3AddEPNS_8DrawListE",
@@ -570144,6 +570175,35 @@
           "got_bindings": {}
         },
         {
+          "address": "0xae6b60",
+          "size": 132,
+          "symbol": "_ZN4Onyx8Graphics22SoftwareSpriteStrategyD2Ev",
+          "target_sha256": "7f0b5a4b39d904ce3848eecaf050be92e3bfa88319e9d49fafdb0e1d89d1b9eb",
+          "bindings": {
+            "_ZTVN4Onyx8Graphics22SoftwareSpriteStrategyE": "0x18a1fd8",
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
+            "_ZN6MemberILm182892034EED1Ev": "0x7098c0",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xae6bf0",
+          "size": 140,
+          "symbol": "_ZN4Onyx8Graphics22SoftwareSpriteStrategyD0Ev",
+          "target_sha256": "e7481cc6790cb2c98e2504e56a6e84009e1bfd158a4a064220094fe60393c6b7",
+          "bindings": {
+            "_ZTVN4Onyx8Graphics22SoftwareSpriteStrategyE": "0x18a1fd8",
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
+            "_ZN6MemberILm182892034EED1Ev": "0x7098c0",
+            "_ZdlPv": "0xfa3b40",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
           "address": "0xaf8cf0",
           "size": 240,
           "symbol": "_ZN4Onyx20SkinnedMeshComponentD2Ev",
@@ -572443,6 +572503,34 @@
           "bindings": {
             "_ZTVN2EE12BatchTextureE": "0x18e9878",
             "_ZdlPv": "0x631ec0",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xf9bec0",
+          "size": 128,
+          "symbol": "_ZN4fire18DefaultBasicStringIcED0Ev",
+          "target_sha256": "7b57a4af14a1f8b7add8d22d43d9cbf01da4d5478f23842cb3bd135c2f5e47ba",
+          "bindings": {
+            "_ZTVN4fire18DefaultBasicStringIcEE": "0x18eac70",
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
+            "_ZdlPv": "0xfa3b40",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xf9f2f0",
+          "size": 128,
+          "symbol": "_ZN4fire18DefaultBasicStringIwED0Ev",
+          "target_sha256": "44df833df269c7d4a4960ca927cbc507aa8227643677dd160e03883a12ea52f2",
+          "bindings": {
+            "_ZTVN4fire18DefaultBasicStringIwEE": "0x18ead20",
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
+            "_ZdlPv": "0xfa3b40",
             "__clang_call_terminate": "0x6768b8"
           },
           "got_bindings": {}

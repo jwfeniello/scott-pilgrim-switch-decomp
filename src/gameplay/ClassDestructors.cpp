@@ -248,6 +248,15 @@ template<unsigned long Key> struct PlainSharedBuffer {
         }
     }
 };
+// The same count kept at the pointer, with the block starting Back bytes before it (fire's strings).
+template<unsigned long Key, unsigned Back> struct PlainSharedKeepBlock {
+    unsigned* value;
+    __attribute__((always_inline)) void Destroy() {
+        if (value && __atomic_sub_fetch(value, 1, __ATOMIC_RELAXED) == 0) {
+            if (value) FreeObject(reinterpret_cast<char*>(value) - Back);
+        }
+    }
+};
 template<unsigned long Key> struct PlainSharedKeep {
     unsigned* value;
     __attribute__((always_inline)) void Destroy() {
@@ -1589,4 +1598,14 @@ namespace SPTG {
 struct Base7b72a0 { virtual ~Base7b72a0(); char padding[96]; };
 struct PlayfieldCollisionLevelSectionSolver : Base7b72a0 { AutoInline<PlainPointerMember<129444353>> member_68; char padding_70[48]; AutoInline<PlainPointerMember<129444353>> member_a0; virtual void Key(); ~PlayfieldCollisionLevelSectionSolver(); };
 PlayfieldCollisionLevelSectionSolver::~PlayfieldCollisionLevelSectionSolver() {  }
+}
+namespace Onyx { namespace Graphics { 
+struct SoftwareSpriteStrategy { Member<182892034> member_8; char padding_9[63]; PlainFunction<182892033> member_48; virtual void Key(); virtual ~SoftwareSpriteStrategy(); };
+SoftwareSpriteStrategy::~SoftwareSpriteStrategy() { member_48.Destroy(); }
+}}
+namespace fire { 
+template<class T> struct DefaultBasicString { char padding_8[8]; AutoInline<PlainSharedKeepBlock<261876737, 0x40>> member_10; virtual void Key(); virtual ~DefaultBasicString(); };
+template<class T> DefaultBasicString<T>::~DefaultBasicString() {  }
+template struct DefaultBasicString<char>;
+template struct DefaultBasicString<wchar_t>;
 }
