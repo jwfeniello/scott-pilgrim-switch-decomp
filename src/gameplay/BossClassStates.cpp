@@ -42,6 +42,32 @@ void GigaGideon::Slot13() {
     if (effect && !effect->flag18) effect->Slot3();
 }
 
+// TagTeamMember slot 261 (0xa25ee0, also Lynette's and Envy's): the retreat position. It starts from the partner's
+// position when there is one (taking its +0xd59), else the target's, and moves +0xd54 along x toward the middle of the
+// screen (the camera's x plus 192); +0xd74 becomes 1 when that is to the left. +0xd5a clears.
+void TagTeamMember::Slot261(TagTeamMember* partner) {
+    flagD5a = 0;
+    onyx::Transform* transform;
+    if (partner) {
+        flagD59 = partner->flagD59;
+        transform = onyx::Get<onyx::Transform, onyx::kTransform>(onyx::Find<ActorObject, 0x6492d61du>(partner->actorObject)->transform);
+    } else {
+        BaseCharacter* player = static_cast<BaseCharacter*>(target->object);
+        transform = onyx::Get<onyx::Transform, onyx::kTransform>(onyx::Find<ActorObject, 0x6492d61du>(player->actorObject)->transform);
+    }
+    onyx::Vector3 position = transform->Position();
+    retreatPosition = position;
+    LevelCamera* levelCamera = onyx::Find<LevelCamera, onyx_types::type_67f2aa4d>(camera.Get()->levelCamera);
+    float middle = onyx::Get<onyx::Transform, onyx::kTransform>(levelCamera->transform)->position.x + 192.0f;
+    if (middle > position.x) {
+        retreatPosition.x += retreatDistance;
+        valueD74 = 0;
+    } else {
+        retreatPosition.x += -retreatDistance;
+        valueD74 = 1;
+    }
+}
+
 // TagTeamMember slot 168 (0xa25d00): Boss's slot 168, only with +0xd81 set.
 bool TagTeamMember::Slot168() {
     if (flagD81) return Boss::Slot168();
@@ -1298,6 +1324,75 @@ int LucasLee::State258(int event) {
     default:
         return kStateUnhandled;
     }
+}
+
+// Todd slot 258 (0xa22800): starts the attack at +0xdd8, plays animation 20 and faces the target, with +0x3bb raised
+// until exit. When 20 is done, 21 loops and the attack starts again, shotCount times in all, spread over loopCount of
+// its loops; after them comes 22, and when that is done slot 244. The cases run default, update, event 3, enter, exit:
+// the order that lays out the original's blocks (see docs/GAME_CLASSES.md on case order).
+int Todd::State258(int event) {
+    int result = kStateHandled;
+    switch (event) {
+    default:
+        result = kStateUnhandled;
+        break;
+    case kStateUpdate: {
+        float step = Move_FrameDelta * hitStopSpeed;
+        float time = stateTime + step;
+        stateTime = time;
+        switch (animation) {
+        case 20:
+            if (AnimationDone()) {
+                PlayAnimation(21, 1, 1, 1.0f);
+                float length = onyx::Get<AnimationClip, 0x0f67b22eu>(onyx::Get<AnimationController, kAnimationControllerType>(animationHandle)->Current()->clip)->length;
+                shotDuration = length / SpeedScale() * loopCount;
+                stateTime = 0.0f;
+            }
+            break;
+        case 21: {
+            uint32_t count = shotCount;
+            uint32_t shots = shotsFired;
+            if (shots < count && time >= shotDuration / count * shots) {
+                shotsFired = shots + 1;
+                StartAttack(&attackDd8.attack, false, 1, nullptr);
+            }
+            if (AnimationDone()) {
+                float loops = loopsDone;
+                loopsDone = loops + 1.0f;
+                if (loops >= loopCount) PlayAnimation(22, 0, 1, 1.0f);
+            }
+            break;
+        }
+        case 22:
+            if (AnimationDone()) {
+                states.Transition(State244Ptr());
+                result = kStateParentTookOver;
+            }
+            break;
+        }
+        break;
+    }
+    case kStateEvent3:
+        break;
+    case kStateEnter: {
+        StartAttack(&attackDd8.attack, false, 1, nullptr);
+        PlayAnimation(20, 0, 1, 1.0f);
+        motion = onyx::Vector3::Zero();
+        motionTarget = onyx::Vector3::Zero();
+        BaseCharacter* player = static_cast<BaseCharacter*>(target->object);
+        ActorObject* actor = onyx::Find<ActorObject, onyx_types::type_6492d61d>(player->actorObject);
+        FaceX(onyx::Get<onyx::Transform, onyx::kTransform>(actor->transform)->position.x);
+        shotsFired = 1;
+        loopsDone = 1.0f;
+        stateTime = 0.0f;
+        flag3bb = 1;
+        break;
+    }
+    case kStateExit:
+        flag3bb = 0;
+        break;
+    }
+    return result;
 }
 
 // Todd slot 262 (0xa233a0): plays animation 97 with +0x3bb raised until exit;
@@ -3000,7 +3095,7 @@ void Lynette::Slot4(onyx::Archive& archive, ComponentSlot::Source* source) {
     Boss::Slot4(archive, source);
     onyx::Transfer(archive, healthD4c);
     onyx::Transfer(archive, timeD50);
-    onyx::Transfer(archive, valueD54);
+    onyx::Transfer(archive, retreatDistance);
     onyx::Transfer(archive, flagD58);
     attackDc8.Serialize(archive);
     attack.Serialize(archive);
@@ -3085,8 +3180,8 @@ void Todd::Slot4(onyx::Archive& archive, ComponentSlot::Source* source) {
     onyx::Transfer(archive, liftHeight11a8);
     onyx::Transfer(archive, value11ac);
     onyx::Transfer(archive, limit11b0);
-    onyx::Transfer(archive, value11b4);
-    onyx::Transfer(archive, value11b8);
+    onyx::Transfer(archive, loopCount);
+    onyx::Transfer(archive, shotCount);
     onyx::Transfer(archive, value11bc);
     onyx::Transfer(archive, value11c0);
     onyx::Transfer(archive, value11c4);
@@ -4433,6 +4528,22 @@ onyx::Vector3 GigaGideon::ArrivalPoint() {
     int32_t flag = 0;
     list1260.Query(&from, &to, &point, &flag);
     return onyx::Vector3(point.x + arrivalOffset, point.y, value11e4);
+}
+
+// Envy slot 241 (0xa67740): a point at the edge of her screen rectangle on the target's side away from the middle of
+// the screen: its left edge when the target is right of the middle, else its right edge; at the target's y and
+// +0xf78 above her ground height.
+onyx::Vector3 Envy::ArrivalPoint() {
+    ScreenRect rect;
+    GetScreenRect(&rect);
+    BaseCharacter* player = static_cast<BaseCharacter*>(target->object);
+    float targetX = onyx::Get<onyx::Transform, onyx::kTransform>(onyx::Find<ActorObject, 0x6492d61du>(player->actorObject)->transform)->position.x;
+    LevelCamera* levelCamera = onyx::Find<LevelCamera, onyx_types::type_67f2aa4d>(camera.Get()->levelCamera);
+    float middle = onyx::Get<onyx::Transform, onyx::kTransform>(levelCamera->transform)->position.x + 192.0f;
+    float x = targetX > middle ? rect.left : rect.right;
+    BaseCharacter* other = static_cast<BaseCharacter*>(target->object);
+    float y = onyx::Get<onyx::Transform, onyx::kTransform>(onyx::Find<ActorObject, 0x6492d61du>(other->actorObject)->transform)->position.y;
+    return onyx::Vector3(x, y, groundHeight + arrivalHeight);
 }
 
 // Lynette slot 241 (0xa62e90): a point beside the target, on the side away from the middle of the screen (+0xf34 away),

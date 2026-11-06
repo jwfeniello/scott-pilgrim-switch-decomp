@@ -27,7 +27,7 @@ struct TagTeamMember : Boss {
     SPTG_SLOT(258)
     virtual bool Slot259();                                                  // slot 259
     SPTG_SLOT(260)
-    SPTG_SLOT(261)
+    virtual void Slot261(TagTeamMember* partner);                            // slot 261
     virtual int State262(int event); virtual State State262Ptr();   // slots 262, 263
     virtual int State264(int event); virtual State State264Ptr();   // slots 264, 265
     virtual int State266(int event); virtual State State266Ptr();   // slots 266, 267
@@ -35,14 +35,14 @@ struct TagTeamMember : Boss {
     char padding_d48[0x4];
     float healthD4c;             // +0xd4c: copied to +0xd7c by Lynette's update
     float timeD50;               // +0xd50: copied to +0xd78 when hit in state 266
-    int32_t valueD54;            // +0xd54
+    float retreatDistance;       // +0xd54: how far along x from where slot 261 starts the retreat position
     uint8_t flagD58;             // +0xd58
     uint8_t flagD59;             // +0xd59
     uint8_t flagD5a;             // +0xd5a
     uint8_t flagD5b;             // +0xd5b
     onyx::Vector3 returnPosition; // +0xd5c: where Lynette reappears in state 264
     onyx::Vector3 retreatPosition; // +0xd68: and in state 262
-    uint32_t valueD74;           // +0xd74
+    uint32_t valueD74;           // +0xd74: the facing mode slot 261 picks, 1 when it moves the point left
     float timerD78;              // +0xd78: counted down by slot 13
     float healthD7c;             // +0xd7c: lowered by every hit
     uint8_t flagD80;             // +0xd80: set once +0xd7c runs out
@@ -92,12 +92,15 @@ struct Todd : Boss {
     float damageD8c;             // +0xd8c: all damage taken
     int32_t countD90;            // +0xd90
     int32_t valueD94;            // +0xd94
-    char padding_d98[0x1c];
+    char padding_d98[0x14];
+    uint32_t shotsFired;         // +0xdac: state 258's attacks so far
+    float loopsDone;             // +0xdb0: state 258's loops of animation 21
     int32_t hitsDb4;             // +0xdb4: hits taken in state 260
     float valueDb8;              // +0xdb8
     float damageDbc;             // +0xdbc: damage taken in state 270
     float pointOffset;           // +0xdc0: CallA251e0's x offset from the middle of the screen
-    char padding_dc4[0x14];
+    float shotDuration;          // +0xdc4: state 258's loops of animation 21 at this speed
+    char padding_dc8[0x10];
     AttackSlot attackDd8;        // +0xdd8: requested every update with kind 20; passed to 0xa255e0
     AttackSlot attackE50;        // +0xe50: requested every update with kind 11
     AttackSlot attackEc8;        // +0xec8
@@ -115,8 +118,8 @@ struct Todd : Boss {
     float liftHeight11a8;        // +0x11a8: how high state 28's objects go
     int32_t value11ac;           // +0x11ac
     float limit11b0;             // +0x11b0: slot 237 accepts kind 11 once +0xdb8 reaches it
-    int32_t value11b4;           // +0x11b4
-    int32_t value11b8;           // +0x11b8
+    float loopCount;             // +0x11b4: how many loops of animation 21 state 258 plays
+    uint32_t shotCount;          // +0x11b8: attacks spread over them
     int32_t value11bc;           // +0x11bc
     int32_t value11c0;           // +0x11c0
     int32_t value11c4;           // +0x11c4
@@ -658,7 +661,8 @@ struct Envy : TagTeamMember {
     AttackSlot attackE10;        // +0xe10: requested every update with kind 32
     AttackSlot attackE88;        // +0xe88: requested every update with kind 25
     AttackSlot attackF00;        // +0xf00: requested every update with kind 79
-    char padding_f78[0xc];
+    float arrivalHeight;         // +0xf78: how far above her ground height ArrivalPoint puts her
+    char padding_f7c[0x8];
     float limitF84;              // +0xf84
     float limitF88;              // +0xf88
     float limitF8c;              // +0xf8c

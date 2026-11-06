@@ -698,6 +698,59 @@ void EnemyChubby::Update() {
     RequestAttack(attacks[2], 39);
     RequestAttack(attacks[1], 32);
 }
+// The same for EnemySpeedy (0x9eac50), EnemyZombie (0x9e7e80), EnemyHanzo (0x9f5d70), EnemyGiant (0x9faea0, also
+// EnemyGeeOne's) and EnemyNormal (0x9ee8b0, also EnemyJake's and EnemyAlberta's).
+void EnemySpeedy::Update() {
+    UpdateEnemy();
+    RequestAttack(attacks[0], 20);
+    RequestAttack(attacks[1], 33);
+    RequestAttack(attacks[2], 8);
+    RequestAttack(attacks[3], 79);
+    RequestAttack(attacks[4], 31);
+}
+void EnemyZombie::Update() {
+    UpdateEnemy();
+    RequestAttack(attacks[0], 20);
+    RequestAttack(attacks[1], 11);
+    RequestAttack(attacks[2], 31);
+    RequestAttack(attacks[3], 32);
+    RequestAttack(attacks[4], 202);
+}
+void EnemyHanzo::Update() {
+    UpdateEnemy();
+    RequestAttack(attacks[0], 20);
+    RequestAttack(attacks[1], 11);
+    RequestAttack(attacks[2], 33);
+    RequestAttack(attacks[3], 8);
+    RequestAttack(attacks[4], 79);
+    RequestAttack(attacks[5], 31);
+    RequestAttack(attacks[6], 32);
+}
+void EnemyGiant::Update() {
+    UpdateEnemy();
+    RequestAttack(attacks[0], 20);
+    RequestAttack(attacks[1], 11);
+    RequestAttack(attacks[2], 33);
+    RequestAttack(attacks[3], 8);
+    RequestAttack(attacks[4], 79);
+    RequestAttack(attacks[5], 31);
+    RequestAttack(attacks[6], 32);
+    RequestAttack(attacks[8], 89);
+}
+void EnemyNormal::Update() {
+    UpdateEnemy();
+    RequestAttack(attacks[0], 20);
+    RequestAttack(attacks[1], 11);
+    RequestAttack(attacks[2], 33);
+    RequestAttack(attacks[3], 8);
+    RequestAttack(attacks[4], 79);
+    RequestAttack(attacks[5], 31);
+    RequestAttack(attacks[6], 32);
+    RequestAttack(attacks[7], 45);
+    RequestAttack(attacks[8], 61);
+    RequestAttack(attacks[9], 202);
+    RequestAttack(attack10c0, 1);
+}
 
 // EnemyOneHitWonder slot 236 (0x9da280, inherited by its five subclasses): entry
 // stops the enemy in action mode 5 and AI mode 6; each update removes it.

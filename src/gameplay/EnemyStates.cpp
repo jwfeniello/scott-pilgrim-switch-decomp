@@ -358,7 +358,13 @@ int Enemy::State186(int event) {
 // dashes (animation 34, speed scaled by the special attack's scale); after the
 // hold time it stops (animation 35) and, once that is done, returns to slot 96.
 // Not yet byte-identical, so not credited: the original orders the loads and
-// stores of the delay computation differently.
+// stores of the delay computation differently. Lead (Nov 6): the original keeps
+// both stores to +0x9c0 (the base delay copied as an integer, then the result),
+// so the read of the target's offset between them may alias the enemy's fields
+// there; with TargetEntry as declared, dead-store elimination drops the first
+// store. EnemyGodzilla::State194 matched once that copy and its read sat in
+// different blocks. Hanzo's, Wolverine's, EnemyGiant's and EnemyChargingCrowd's
+// copies of this state (0x9f6d60, 0x9e9750, 0x9fbaf0, 0x9e7270) share it.
 int Enemy::State194(int event) {
     switch (event) {
     case kStateUpdate:

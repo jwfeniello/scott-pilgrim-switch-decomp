@@ -33,6 +33,7 @@ struct EnemyOneHitWonder : Enemy {
 struct EnemyZombie : Enemy {
     SPTG_TYPE(Enemy, 0x6addc293u)
     bool IsA(uint32_t type) override;   // slot 12 (0x9e7dd0)
+    void Update();
     int State174(int event);
     int State202(int event);
     void Slot166(int kind);
@@ -80,6 +81,7 @@ struct EnemyThief : Enemy {
 struct EnemySpeedy : Enemy {
     SPTG_TYPE(Enemy, 0x1c3d9e50u)
     bool IsA(uint32_t type) override;   // slot 12 (0x9eaba0)
+    void Update();
     void Approach();
     bool OnHit(BaseCharacter* other, void* hit) override;
     int State194(int event);
@@ -147,6 +149,7 @@ struct EnemyPaparazzi : Enemy {
 struct EnemyNormal : Enemy {
     SPTG_TYPE(Enemy, 0x65c38d59u)
     bool IsA(uint32_t type) override;   // slot 12 (0x9ee800)
+    void Update();
     void Approach();
     void Slot166(int kind);
     int State96(int event);
@@ -231,6 +234,7 @@ struct EnemyJetPackMatt : Enemy {
 struct EnemyHanzo : Enemy {
     SPTG_TYPE(Enemy, 0x0f4fe01fu)
     bool IsA(uint32_t type) override;   // slot 12 (0x9f5cc0)
+    void Update();
     void Remove(bool respawn);
     void Approach();
     bool CanMount();
@@ -277,6 +281,7 @@ struct EnemyGodzilla : Enemy {
 struct EnemyGiant : Enemy {
     SPTG_TYPE(Enemy, 0x15b0cbd1u)
     bool IsA(uint32_t type) override;   // slot 12 (0x9fadf0)
+    void Update();
     void Approach();
     bool CanMount();
     int State196(int event);
