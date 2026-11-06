@@ -52,7 +52,6 @@ struct TagTeamMember : Boss {
 // vtable 0x188a8a0, 272 slots
 struct Todd : Boss {
     static const uint32_t kType = 0x4aedc535u;
-    int State116(int event);
     void AttackLanded(AnimatedAiActor* target) override;
     float Slot59();
     void Update();

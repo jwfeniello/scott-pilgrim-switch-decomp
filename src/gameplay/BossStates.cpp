@@ -175,44 +175,52 @@ int Boss::State96(int event) {
     }
 }
 
-// Slot 116 (0xa1a000): on entry, after Enemy's state, runs slot 240 unless
-// +0xd28 is set, and raises +0x3ba until exit. Without +0xcd1 it goes to slot
-// 200 once the animation is done; with it, animation 27 leads to slot 256, and
-// a finished animation 16 with +0x14c used up starts animation 27. Not yet
-// matched (not credited): the original merges the update's "handled" returns
-// into the exit case's tail.
+// Slot 116 (0xa1a000, shared by Todd, TagTeamMember, the robot's parts and the
+// other bosses that don't replace it): on entry, after Enemy's state, runs slot
+// 240 unless +0xd28 is set, and raises +0x3ba until exit. Without +0xcd1 it goes
+// to slot 200 once the animation is done; with it, animation 27 leads to slot
+// 256, and a finished animation 16 with +0x14c used up starts animation 27.
 int Boss::State116(int event) {
+    int result = kStateHandled;
     switch (event) {
     case kStateUpdate:
-        if (!flagCd1) {
-            if (!AnimationDone()) return kStateHandled;
+        if (flagCd1) {
+            if (animation == 16) {
+                if (AnimationDone() && hitStopLeft <= 0.0f) {
+                    result = kStateHandled;
+                    PlayAnimation(27, 0, 1, 1.0f);
+                }
+            } else if (animation == 27) {
+                if (AnimationDone()) {
+                    states.Transition(State256Ptr());
+                    result = kStateParentTookOver;
+                }
+            }
+        } else if (AnimationDone()) {
             states.Transition(State200Ptr());
-            return kStateParentTookOver;
+            result = kStateParentTookOver;
         }
-        if (animation == 16) {
-            if (AnimationDone() && hitStopLeft <= 0.0f) PlayAnimation(27, 0, 1, 1.0f);
-            return kStateHandled;
+        break;
+    case kStateEnter:
+        if (Enemy::State116(kStateEnter) == kStateParentTookOver) {
+            states.AssertOwner(this);
+            result = kStateParentTookOver;
+        } else {
+            if (!flagD28) Slot240();
+            result = kStateHandled;
+            flag3ba = 1;
         }
-        if (animation == 27) {
-            if (!AnimationDone()) return kStateHandled;
-            states.Transition(State256Ptr());
-            return kStateParentTookOver;
-        }
-        return kStateHandled;
-    case kStateEnter: {
-        if (Enemy::State116(event) == kStateParentTookOver) return kStateParentTookOver;
-        if (!flagD28) Slot240();
-        flag3ba = 1;
-        return kStateHandled;
-    }
+        break;
+    case kStateEvent3:
+        break;
+    default:
+        result = kStateUnhandled;
+        break;
     case kStateExit:
         flag3ba = 0;
-        return kStateHandled;
-    case kStateEvent3:
-        return kStateHandled;
-    default:
-        return kStateUnhandled;
+        break;
     }
+    return result;
 }
 
 // Slot 122 (0xa1a170): knocked down: entry stops the boss, plays animation 27 in

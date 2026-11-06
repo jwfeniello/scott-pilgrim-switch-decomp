@@ -2885,50 +2885,6 @@ void GigaGideon::Spawn(const EnemySpawnInfo* info) {
     Call94fde0();
 }
 
-// Todd slot 116 (0xa1a000): with +0xcd1 raised he plays out animations 16 and 27 before leaving through slot 256.
-int Todd::State116(int event) {
-    int result = kStateHandled;
-    switch (event) {
-    case kStateUpdate:
-        if (flagCd1) {
-            if (animation == 16) {
-                if (AnimationDone() && hitStopLeft <= 0.0f) {
-                    result = kStateHandled;
-                    PlayAnimation(27, 0, 1, 1.0f);
-                }
-            } else if (animation == 27) {
-                if (AnimationDone()) {
-                    states.Transition(State256Ptr());
-                    result = kStateParentTookOver;
-                }
-            }
-        } else if (AnimationDone()) {
-            states.Transition(State200Ptr());
-            result = kStateParentTookOver;
-        }
-        break;
-    case kStateEnter:
-        if (Enemy::State116(kStateEnter) == kStateParentTookOver) {
-            states.AssertOwner(this);
-            result = kStateParentTookOver;
-        } else {
-            if (!flagD28) Slot240();
-            result = kStateHandled;
-            flag3ba = 1;
-        }
-        break;
-    case kStateEvent3:
-        break;
-    default:
-        result = kStateUnhandled;
-        break;
-    case kStateExit:
-        flag3ba = 0;
-        break;
-    }
-    return result;
-}
-
 // GigaGideon slot 19 (0xa585e0): Enemy's reset, then the armor starts whole and he faces right.
 void GigaGideon::Slot19() {
     Enemy::Slot19();
