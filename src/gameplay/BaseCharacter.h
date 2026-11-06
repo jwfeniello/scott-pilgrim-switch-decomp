@@ -360,7 +360,8 @@ struct AnimatedAiActor : SPTG_AIComponent {
     float pushBack;              // +0xb8: Enemy::Slot228's push, against the way it faces
     float pushY;                 // +0xbc
     float pushZ;                 // +0xc0
-    char padding_c4[0x34];
+    onyx::Vector3 hitPush;       // +0xc4: the push Todd's slot 38 gives a character it refuses a hit from
+    char padding_d0[0x28];
     float groundZ;               // +0xf8
     float groundC4;              // +0xfc
     uint8_t flag100;             // +0x100
@@ -406,6 +407,8 @@ struct AnimatedAiActor : SPTG_AIComponent {
     char padding_1c8[0x18];
     onyx::ComponentHandle* handle1e0; // +0x1e0
     void Call944010();           // 0x944010
+    // Sets the motion to `push`, its x turned away from `from` (0x9c46b0).
+    void Call9c46b0(const onyx::Vector3& push, const onyx::Vector3& from);
     void GetScreenRect(ScreenRect* out);  // 0x95c040
     bool IsOnScreen();                    // 0x994610
     // An attack landed: its hit stop holds this actor's animation, and with kind 2 the attack's owner's too.

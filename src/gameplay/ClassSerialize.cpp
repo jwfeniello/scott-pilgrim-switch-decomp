@@ -70,7 +70,7 @@ void Chau::Slot4(onyx::Archive& archive, ComponentSlot::Source* source) {
     attack1030.Serialize(archive);
     attack10a8.Serialize(archive);
     attack1120.Serialize(archive);
-    onyx::Transfer(archive, value1198);
+    onyx::Transfer(archive, shotCount);
     onyx::Transfer(archive, value119c);
     onyx::Transfer(archive, value11a0);
     onyx::Transfer(archive, value11a4);
@@ -106,7 +106,7 @@ void SuperFightingRobotAI::Slot4(onyx::Archive& archive, ComponentSlot::Source* 
     onyx::Transfer(archive, valueE04);
     onyx::Transfer(archive, valueE08);
     onyx::Transfer(archive, valueE0c);
-    onyx::Transfer(archive, valueE10);
+    onyx::Transfer(archive, handSpeed);
     onyx::Transfer(archive, valueE14);
     onyx::Transfer(archive, valueE18);
     onyx::Transfer(archive, valueE1c);
@@ -115,12 +115,12 @@ void SuperFightingRobotAI::Slot4(onyx::Archive& archive, ComponentSlot::Source* 
     onyx::Transfer(archive, valueE28);
     onyx::Transfer(archive, valueE2c);
     onyx::Transfer(archive, valueE30);
-    onyx::Transfer(archive, valueE34);
-    onyx::Transfer(archive, valueE38);
-    onyx::Transfer(archive, valueE3c);
-    onyx::Transfer(archive, valueE40);
-    onyx::Transfer(archive, valueE44);
-    onyx::Transfer(archive, valueE48);
+    onyx::Transfer(archive, hand1Offset.x);
+    onyx::Transfer(archive, hand1Offset.y);
+    onyx::Transfer(archive, hand1Offset.z);
+    onyx::Transfer(archive, hand2Offset.x);
+    onyx::Transfer(archive, hand2Offset.y);
+    onyx::Transfer(archive, hand2Offset.z);
     onyx::Transfer(archive, valueE4c);
     onyx::Transfer(archive, valueE50);
     onyx::Transfer(archive, valueE54);

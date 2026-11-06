@@ -209,9 +209,8 @@ int Boss::State96(int event) {
 // Slot 98 (0xa19230): stunned. Each update counts the time in the state, and animation 29 becomes 12 once
 // done. With +0xd08 up to +0xcb4 the boss stops, clears +0xd08 and goes to state 254; otherwise after half
 // a second, once the animation is done, it stops, raises +0xd25 and goes to state 244. Entering stops it,
-// raises +0x813 and action mode 1 and plays animation 12; exit clears both.
-// Not yet matched: in exit the original sets the result register before the two stores and this build
-// after them. Returning from each case, the owner assumption, or swapping the stores doesn't move it.
+// raises +0x813 and action mode 1 and plays animation 12; exit clears both. The exit case comes last, after
+// default, which is what puts the result before its two stores.
 int Boss::State98(int event) {
     int result = kStateHandled;
     switch (event) {
@@ -242,17 +241,72 @@ int Boss::State98(int event) {
         PlayAnimation(12, 1, 0, 1.0f);
         stateTime = 0.0f;
         break;
-    case kStateExit:
-        flag813 = 0;
-        actionMode = 0;
-        break;
     case kStateEvent3:
         break;
     default:
         result = kStateUnhandled;
         break;
+    case kStateExit:
+        flag813 = 0;
+        actionMode = 0;
+        break;
     }
     return result;
+}
+
+// Slot 112 (0xa19cb0): down. Entry makes every NPC react to the boss (reaction 0), clears +0x130, stops it, plays
+// animation 16 in action mode 6 and restarts the timer at +0x330. Each update counts the timer; out of health without
+// +0xd28 or slot 95 it runs the defeat (slot 240), and a finished animation 146 gives way to 16, clearing +0xd27. Once
+// the timer passes slot 81: with health left, state 252 with +0xd27 and +0xcd0, else 122 (raising +0xd26 when only
+// +0xd27 is set); without, state 124 if slot 148 holds, 114 if slot 156 does, else 116. Exit clears +0xd27 and the
+// action mode.
+int Boss::State112(int event) {
+    switch (event) {
+    case kStateUpdate:
+        timer330 += Move_FrameDelta;
+        if (!flagD28 && health <= 0.0f && !Slot95()) Slot240();
+        if (animation == 146 && AnimationDone()) {
+            flagD27 = 0;
+            PlayAnimation(16, 0, 0, 1.0f);
+        }
+        if (!(timer330 > Slot81())) return kStateHandled;
+        if (health > 0.0f) {
+            if (flagD27) {
+                if (flagCd0) {
+                    states.Transition(State252Ptr());
+                    return kStateParentTookOver;
+                }
+                flagD26 = 1;
+            }
+            states.Transition(State122Ptr());
+        } else if (HealWithGuts(nullptr)) {
+            states.Transition(State124Ptr());
+        } else if (Slot156()) {
+            states.Transition(State114Ptr());
+        } else {
+            states.Transition(State116Ptr());
+        }
+        return kStateParentTookOver;
+    case kStateEnter: {
+        NpcCatalog* catalog = onyx::Get<NpcCatalog, onyx_types::type_3fb2ecb4>(levelAI.Get()->npcs.Get()->catalog);
+        for (BaseCharacter** i = catalog->npcs; i != catalog->npcs + catalog->count; ++i) (*i)->ReactTo(this, 0, nullptr);
+        flag130 = 0;
+        motion = onyx::Vector3::Zero();
+        motionTarget = onyx::Vector3::Zero();
+        PlayAnimation(16, 0, 0, 1.0f);
+        actionMode = 6;
+        timer330 = 0.0f;
+        return kStateHandled;
+    }
+    case kStateEvent3:
+        return kStateHandled;
+    default:
+        return kStateUnhandled;
+    case kStateExit:
+        flagD27 = 0;
+        actionMode = 0;
+        return kStateHandled;
+    }
 }
 
 // Slot 116 (0xa1a000, shared by Todd, TagTeamMember, the robot's parts and the

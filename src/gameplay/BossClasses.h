@@ -59,6 +59,7 @@ struct Todd : Boss {
     void AttackLanded(AnimatedAiActor* target) override;
     float Slot59();
     void Update();
+    bool OnHit(BaseCharacter* other, void* hit);
     float TakeDamage(const void* hit, BaseCharacter* other);
     bool Slot82();
     void Slot4(onyx::Archive& archive, ComponentSlot::Source* source);
@@ -146,15 +147,23 @@ struct Todd : Boss {
 // vtable 0x1896e38, 284 slots
 // An object with its own animation, as GigaGideon's +0xba8 holds.
 struct AnimatedAttachment {
-    char padding_0[0x60];
+    char padding_0[0x58];
+    onyx::ComponentHandle* modifiers;        // +0x58: what GigaGideon's slot 242 gives the effect at +0x88
     onyx::ComponentHandle* animatedObject;   // +0x60, SPTG::AnimatedObject
     onyx::ComponentHandle* animationHandle;  // +0x68
+    bool loop;                               // +0x70: whether the animation PlayAttachmentAnimation started loops
+    char padding_71[0x3];
+    int32_t animation;                       // +0x74: that animation
+    char padding_78[0x10];
+    struct ActorEffect* effect;              // +0x88: run alongside the boss's low-health effect
 };
 // What an attachment's animated object needs here.
 struct AttachmentVisual : onyx::Component {
     char padding_8[0x30];
     uint8_t componentFlags;  // +0x38
-    char padding_39[0x3f];
+    char padding_39[0x17];
+    onyx::ComponentHandle* handle50;  // +0x50: the target GigaGideon's slot 242 gives the attachment's effect
+    char padding_58[0x20];
     uint8_t visible;         // +0x78
 };
 // Plays an animation on the attachment a handle holds, if it holds one (0xa5ec80).
@@ -275,6 +284,7 @@ struct SuperGideon : Boss {
     bool IsA(uint32_t type) override;   // slot 12 (0xa52a60)
     bool Slot73();
     void Slot13();
+    void Update();
     bool Slot82();
     float TakeDamage(const void* hit, BaseCharacter* other);
     void Slot4(onyx::Archive& archive, ComponentSlot::Source* source);
@@ -427,13 +437,14 @@ struct LucasLee : Boss {
     float heldTime;              // +0xfec
     int32_t countFf0;            // +0xff0
     uint32_t arrivalIndex;       // +0xff4: the point slot 241 picked
-    BaseCharacter* carried;      // +0xff8: what he drops when he falls
+    InteractiveObject* carried;  // +0xff8: what he drops when he falls (state 262 tests its state 78)
 };
 // vtable 0x1891ed8, 272 slots
 struct Roxy : Boss {
     SPTG_TYPE(Boss, 0x55ad8d4du)
     bool IsA(uint32_t type) override;   // slot 12 (0xa3c320)
     void Slot13();
+    void Update();
     float TakeDamage(const void* hit, BaseCharacter* other);
     int State122(int event); State State122Ptr();   // slots 122, 123, override Boss
     virtual void Slot234(int kind);                                          // slot 234, overrides Boss
@@ -446,15 +457,24 @@ struct Roxy : Boss {
     virtual int State268(int event); virtual State State268Ptr();   // slots 268, 269
     virtual int State270(int event); virtual State State270Ptr();   // slots 270, 271
 
-    char padding_d48[0xb8];
+    char padding_d48[0x3c];
+    float valueD84;              // +0xd84: the share of slot 57 above which state 122 doesn't roll
+    AttackSlot attackD88;        // +0xd88: started shotCount times in state 262
     AttackSlot attackE00;        // +0xe00: started in state 264
     AttackSlot attackE78;        // +0xe78: started in state 268
     AttackSlot attackEf0;        // +0xef0: started in state 266
+    AttackSlot attackF68;        // +0xf68: requested every update with kind 79
+    AttackSlot attackFe0;        // +0xfe0: requested every update with kind 177
+    char padding_1058[0xc8];
+    float shotDuration;          // +0x1120: state 262's animation length at this speed
+    float shotCount;             // +0x1124: attacks spread over state 262
+    uint32_t shotsFired;         // +0x1128: state 262's attacks so far
 };
 // vtable 0x1890e58, 260 slots
 struct RoxyMirror : Boss {
     SPTG_TYPE(Boss, 0x4e41bcb8u)
     bool IsA(uint32_t type) override;   // slot 12 (0xa3a810)
+    void Slot7();
     void Slot13();
     int State96(int event); State State96Ptr();   // slots 96, 97, override Boss
     virtual int State258(int event); virtual State State258Ptr();   // slots 258, 259
@@ -463,6 +483,7 @@ struct RoxyMirror : Boss {
 struct Chau : Boss {
     SPTG_TYPE(Boss, 0x0ee894c1u)
     bool IsA(uint32_t type) override;   // slot 12 (0xa6a440)
+    void Update();
     bool OnHit(BaseCharacter* other, void* hit);
     float TakeDamage(const void* hit, BaseCharacter* other);
     bool Slot73();
@@ -482,7 +503,9 @@ struct Chau : Boss {
     void* slotD50;               // +0xd50
     ReferenceList referencesD58; // +0xd58
     ReferenceList referencesD80; // +0xd80
-    char padding_da8[0xc];
+    char padding_da8[0x4];
+    float shotDuration;          // +0xdac: state 258's animation length at this speed
+    uint32_t shotsFired;         // +0xdb0: state 258's attacks so far
     uint32_t phaseDb4;           // +0xdb4: set from health by slot 69
     char padding_db8[0x20];
     AttackSlot attackDd8;        // +0xdd8
@@ -493,7 +516,7 @@ struct Chau : Boss {
     AttackSlot attack1030;       // +0x1030
     AttackSlot attack10a8;       // +0x10a8
     AttackSlot attack1120;       // +0x1120
-    int32_t value1198;           // +0x1198
+    uint32_t shotCount;          // +0x1198: attacks spread over state 258
     int32_t value119c;           // +0x119c
     int32_t value11a0;           // +0x11a0
     int32_t value11a4;           // +0x11a4
@@ -649,6 +672,7 @@ struct NegaScott : Boss {
     bool IsA(uint32_t type) override;   // slot 12 (0xa44fd0)
     void Spawn(const EnemySpawnInfo* info) override;
     void Slot13();
+    void Update();
     void Slot4(onyx::Archive& archive, ComponentSlot::Source* source);
     virtual void Slot234(int kind);                                          // slot 234, overrides Boss
     SPTG_SLOT(235)   // overrides Boss
@@ -741,15 +765,19 @@ struct SuperFightingRobotAI : Boss {
     EventSlot eventD88;          // +0xd88
     EventSlot eventDa0;          // +0xda0
     EventSlot eventDb8;          // +0xdb8
-    char padding_dd0[0x20];
+    onyx::Vector3 hand1Point;    // +0xdd0: where state 264 sends hand 1: the +0xd48 transform's position plus +0xe34
+    onyx::Vector3 hand2Point;    // +0xddc: and hand 2, plus +0xe40
+    char padding_de8[0x8];
     float headTimer;             // +0xdf0: time in state 260
     uint32_t handHits;           // +0xdf4: at +0xe08 a hand's state 264 sends the robot to state 262
-    char padding_df8[0x8];
+    uint8_t hand1Ready;          // +0xdf8: state 264 has sent hand 1 to its state 260
+    uint8_t hand2Ready;          // +0xdf9: and hand 2
+    char padding_dfa[0x6];
     int32_t valueE00;            // +0xe00
     float valueE04;              // +0xe04: how long state 260 lasts
     uint32_t valueE08;           // +0xe08
     int32_t valueE0c;            // +0xe0c
-    int32_t valueE10;            // +0xe10
+    float handSpeed;             // +0xe10: the speed state 264 moves the hands to their points at
     int32_t valueE14;            // +0xe14
     int32_t valueE18;            // +0xe18
     int32_t valueE1c;            // +0xe1c
@@ -758,12 +786,8 @@ struct SuperFightingRobotAI : Boss {
     int32_t valueE28;            // +0xe28
     int32_t valueE2c;            // +0xe2c
     int32_t valueE30;            // +0xe30
-    int32_t valueE34;            // +0xe34
-    int32_t valueE38;            // +0xe38
-    int32_t valueE3c;            // +0xe3c
-    int32_t valueE40;            // +0xe40
-    int32_t valueE44;            // +0xe44
-    int32_t valueE48;            // +0xe48
+    onyx::Vector3 hand1Offset;   // +0xe34
+    onyx::Vector3 hand2Offset;   // +0xe40
     int32_t valueE4c;            // +0xe4c
     int32_t valueE50;            // +0xe50
     int32_t valueE54;            // +0xe54
@@ -778,6 +802,7 @@ struct SuperFightingRobotHand : Boss {
     float TakeDamage(const void* hit, BaseCharacter* other);
     void Slot13();
     bool CheckA30210();                     // 0xa30210
+    bool CallA2ed40(const onyx::Vector3& point, bool flag, float speed);   // 0xa2ed40: moves toward the point
     bool CallA2fae0(bool flag, float speed);   // 0xa2fae0
     bool CallA2f300(float a, float b, float c);   // 0xa2f300
     void Slot4(onyx::Archive& archive, ComponentSlot::Source* source);

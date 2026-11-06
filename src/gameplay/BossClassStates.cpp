@@ -19,6 +19,16 @@ void SuperFightingRobotAI::Slot13() {
     UpdateBoss13();
 }
 
+// RoxyMirror slot 7 (0xa3a5f0): Boss's slot 7, then the blink-on event of the actor's flags, +0x3ba raised and the
+// facing mode held at 3.
+void RoxyMirror::Slot7() {
+    Boss::Slot7();
+    ActorFlags* flags = onyx::Find<ActorFlags, 0x2eae5813u>(onyx::Find<ActorObject, 0x6492d61du>(actorObject)->flags);
+    onyx::SendEvent<0x44174b43u>(flags->blinkOnCallback, flags->blinkOnTarget);
+    flag3ba = 1;
+    mode87c = 3;
+}
+
 // TagTeamMember slot 13 (0xa25a70): Boss's slot 13, then counts +0xd78 down.
 void TagTeamMember::Slot13() {
     UpdateBoss13();
@@ -406,6 +416,39 @@ float Roxy::TakeDamage(const void* hit, BaseCharacter* other) {
     return TakeBossDamage(hit, other);
 }
 
+// Roxy slot 122 (0xa3ca00): Boss's knockdown entry, then 0xa254a0 with 0. Once the animation is done: at or below the
+// share +0xd84 of slot 57, one time in four slot 270; above it slot 254 on a playfield edge (+0x128); otherwise 244.
+// Exit clears the action mode.
+int Roxy::State122(int event) {
+    switch (event) {
+    case kStateUpdate:
+        if (!AnimationDone()) return kStateHandled;
+        if (health <= MaxHealth() * valueD84) {
+            if (RandomRange(0, 3) == 0) states.Transition(State270Ptr());
+            else states.Transition(State244Ptr());
+        } else {
+            ActorObject* actor = onyx::Get<ActorObject, onyx_types::type_6492d61d>(actorObject);
+            onyx::Component* object = actor->playfield->object;
+            PlayfieldCollision* collision =
+                static_cast<TypedComponent*>(object)->IsA(PlayfieldCollision::kType) ? static_cast<PlayfieldCollision*>(object) : nullptr;
+            if (collision->flag128) states.Transition(State254Ptr());
+            else states.Transition(State244Ptr());
+        }
+        return kStateParentTookOver;
+    case kStateEnter:
+        if (Boss::State122(event) == kStateParentTookOver) return kStateParentTookOver;
+        CallA254a0(0.0f);
+        return kStateHandled;
+    case kStateEvent3:
+        return kStateHandled;
+    default:
+        return kStateUnhandled;
+    case kStateExit:
+        actionMode = 0;
+        return kStateHandled;
+    }
+}
+
 // Slot 172 (Chau 0xa6ac30, GigaGideon 0xa59c20, KenKyle 0xa4cb20, SuperGideon
 // 0xa53350): Enemy's state 172 as these classes write it: only the update
 // reports the event as handled, which the original computes at the end as
@@ -545,6 +588,50 @@ float Todd::Slot59() {
     State second = State270Ptr();
     if (states.current == second) return 0.0f;
     return value1198;
+}
+
+// Chau slot 258 (0xa6b360): faces the target and plays animation 19, with the attack at +0xdd8 started shotCount times
+// spread evenly over it (Lynette's state 270). When it ends she goes to slot 244.
+int Chau::State258(int event) {
+    switch (event) {
+    case kStateUpdate: {
+        float step = Move_FrameDelta * hitStopSpeed;
+        float time = stateTime + step;
+        uint32_t shots = shotsFired;
+        float count = shotCount;
+        float fired = shots;
+        stateTime = time;
+        if (time >= shotDuration / count * fired) {
+            shotsFired = shots + 1;
+            StartAttack(&attackDd8.attack, false, 1, nullptr);
+        }
+        if (AnimationDone() && stateTime > shotDuration) {
+            states.Transition(State244Ptr());
+            return kStateParentTookOver;
+        }
+        return kStateHandled;
+    }
+    case kStateEnter: {
+        stateTime = 0.0f;
+        shotsFired = 0;
+        motion = onyx::Vector3::Zero();
+        motionTarget = onyx::Vector3::Zero();
+        BaseCharacter* player = static_cast<BaseCharacter*>(target->object);
+        ActorObject* actor = onyx::Find<ActorObject, onyx_types::type_6492d61d>(player->actorObject);
+        FaceX(onyx::Get<onyx::Transform, onyx::kTransform>(actor->transform)->position.x);
+        PlayAnimation(19, 0, 1, 1.0f);
+        float length = onyx::Get<AnimationClip, 0x0f67b22eu>(onyx::Get<AnimationController, kAnimationControllerType>(animationHandle)->Current()->clip)->length;
+        shotDuration = length / SpeedScale();
+        return kStateHandled;
+    }
+    case kStateExit:
+        states.AssertOwner(this);
+        return kStateHandled;
+    case kStateEvent3:
+        return kStateHandled;
+    default:
+        return kStateUnhandled;
+    }
 }
 
 // Chau slot 116 (0xa6ab50): after Boss's state, exit notifies every player
@@ -827,6 +914,58 @@ void GigaGideon::Update() {
 
 // SuperFightingRobotAI slot 262 (0xa32280): each update switches to slot 272
 // when either hand has +0xfb8 set, else to slot 264.
+// SuperFightingRobotAI slot 264 (0xa323c0): entry sets the hands' points, the +0xd48 transform's position plus +0xe34
+// and +0xe40. Each update a hand not yet sent goes to its state 260 once it's free (+0xfb8 clear and its 0xa30210 holds);
+// a sent one moves to its point at +0xe10 (its 0xa2ed40). When both are there, state 266.
+int SuperFightingRobotAI::State264(int event) {
+    int result = kStateHandled;
+    switch (event) {
+    case kStateUpdate: {
+        SuperFightingRobotHand* first = onyx::Find<SuperFightingRobotHand, 0x37bd3ac0u>(hand1);
+        SuperFightingRobotHand* second = onyx::Find<SuperFightingRobotHand, 0x37bd3ac0u>(hand2);
+        bool firstThere;
+        if (hand1Ready) {
+            firstThere = first->CallA2ed40(hand1Point, true, handSpeed);
+        } else {
+            if (!first->flagFb8 && first->CheckA30210()) {
+                first->states.Transition(first->State260Ptr());
+                hand1Ready = 1;
+            }
+            firstThere = false;
+        }
+        if (hand2Ready) {
+            bool secondThere = second->CallA2ed40(hand2Point, true, handSpeed);
+            bool both = firstThere && secondThere;
+            if (both) {
+                states.Transition(State266Ptr());
+                result = kStateParentTookOver;
+            }
+        } else if (!second->flagFb8 && second->CheckA30210()) {
+            second->states.Transition(second->State260Ptr());
+            hand2Ready = 1;
+        }
+        break;
+    }
+    case kStateEnter: {
+        hand1Ready = 0;
+        hand2Ready = 0;
+        onyx::Vector3 position = onyx::Get<onyx::Transform, onyx::kTransform>(handleD48)->position;
+        hand1Point = onyx::Vector3(position.x + hand1Offset.x, position.y + hand1Offset.y, position.z + hand1Offset.z);
+        hand2Point = onyx::Vector3(position.x + hand2Offset.x, position.y + hand2Offset.y, position.z + hand2Offset.z);
+        break;
+    }
+    case kStateExit:
+        states.AssertOwner(this);
+        break;
+    case kStateEvent3:
+        break;
+    default:
+        result = kStateUnhandled;
+        break;
+    }
+    return result;
+}
+
 int SuperFightingRobotAI::State262(int event) {
     switch (event) {
     case kStateUpdate:
@@ -1541,6 +1680,64 @@ int KenKyle::State122(int event) {
 // +0xd49 set, an update goes to slot 260 while +0x160 is at least slot 57
 // times +0x1130, else to 262; +0xd4a leads to 264 and an out target to 186.
 // Entry first runs 0xa254a0; exit clears both flags.
+// SuperGideon slot 196 (0xa53590): Enemy's jump back with an attack. Entry lets go of what he holds, jumps back from
+// the way he faces at +0x2e0, starts the attack in slot 3 of +0xd58 (kind 79) and plays animation 2. Then 2 gives way to
+// 3, 3 to 79 once falling and 79 to 80 when done; landed (in 79 or 80) he stops and plays 6, and when 6 is done he runs
+// 0xa254a0 with 0 and goes to state 244.
+// Not yet matched (not credited): the original keeps each PlayAnimation call of the update in its own block; here the
+// calls for animations 3 and 79 share one. Neither order of the cases nor the form of the results changes that.
+int SuperGideon::State196(int event) {
+    int result = kStateHandled;
+    switch (event) {
+    case kStateUpdate:
+        switch (animation) {
+        case 2:
+            if (AnimationDone()) PlayAnimation(3, 1, 0, 1.0f);
+            break;
+        case 3:
+            if (motion.z <= 0.0f) PlayAnimation(79, 0, 1, 1.0f);
+            break;
+        case 6:
+            if (AnimationDone()) {
+                CallA254a0(0.0f);
+                states.Transition(State244Ptr());
+                result = kStateParentTookOver;
+            }
+            break;
+        case 79:
+            if (AnimationDone()) PlayAnimation(80, 1, 1, 1.0f);
+            // Falls through.
+        case 80:
+            if (IsOnGround() && motion.z <= 0.0f) {
+                motion = onyx::Vector3::Zero();
+                motionTarget = onyx::Vector3::Zero();
+                PlayAnimation(6, 1, 0, 1.0f);
+            }
+            break;
+        }
+        break;
+    case kStateEnter: {
+        ReleaseHeld(false, __builtin_fminf(value334 / value2c4, 1.0f), 0.0f);
+        ActorObject* actor = onyx::Find<ActorObject, onyx_types::type_6492d61d>(actorObject);
+        float direction = onyx::Get<ActorFlags, 0x2eae5813u>(actor->flags)->facingLeft ? -1.0f : 1.0f;
+        motion.x = jumpBackSpeed * direction;
+        motion.y = 0.0f;
+        StartAttack(&attacksD58[3].attack, false, 1, nullptr);
+        PlayAnimation(2, 0, 1, 1.0f);
+        break;
+    }
+    case kStateExit:
+        states.AssertOwner(this);
+        break;
+    case kStateEvent3:
+        break;
+    default:
+        result = kStateUnhandled;
+        break;
+    }
+    return result;
+}
+
 int SuperGideon::State244(int event) {
     int result = kStateHandled;
     switch (event) {
@@ -1699,6 +1896,52 @@ int TagTeamMember::State266(int event) {
     default:
         return kStateUnhandled;
     }
+}
+
+// 0x19251f4: a mode NegaScott's update compares with 3. What it holds is unknown.
+extern "C" int32_t Global_19251f4;
+
+// Slot 16 (Roxy 0xa3c5f0, SuperGideon 0xa52b90, NegaScott 0xa450d0, Chau 0xa6a500): Boss's update, then the class's
+// attacks are requested, each with its kind. NegaScott then sets +0xd4c to 120, or 0 when 0x19251f4 is 3.
+void Roxy::Update() {
+    Boss::Update();
+    RequestAttack(attackD88, 19);
+    RequestAttack(attackE00, 31);
+    RequestAttack(attackE78, 174);
+    RequestAttack(attackEf0, 180);
+    RequestAttack(attackF68, 79);
+    RequestAttack(attackFe0, 177);
+}
+void SuperGideon::Update() {
+    Boss::Update();
+    RequestAttack(attacksD58[0], 20);
+    RequestAttack(attacksD58[1], 11);
+    RequestAttack(attacksD58[2], 32);
+    RequestAttack(attacksD58[3], 79);
+    RequestAttack(attacksD58[4], 174);
+    RequestAttack(attacksD58[5], 176);
+}
+void NegaScott::Update() {
+    Boss::Update();
+    RequestAttack(attacksD50[0], 19);
+    RequestAttack(attacksD50[1], 31);
+    RequestAttack(attacksD50[2], 11);
+    RequestAttack(attacksD50[3], 32);
+    RequestAttack(attacksD50[4], 79);
+    RequestAttack(attacksD50[7], 190);
+    RequestAttack(attacksD50[5], 193);
+    RequestAttack(attacksD50[6], 195);
+    valueD4c = Global_19251f4 == 3 ? 0.0f : 120.0f;
+}
+void Chau::Update() {
+    Boss::Update();
+    RequestAttack(attackDd8, 19);
+    RequestAttack(attackE50, 11);
+    RequestAttack(attackEc8, 32);
+    RequestAttack(attackF40, 79);
+    RequestAttack(attackFb8, 81);
+    RequestAttack(attack1030, 174);
+    RequestAttack(attack10a8, 177);
 }
 
 // Slot 16 (Todd 0xa20ab0, Lynette 0xa62320): Boss's update, then the class's
@@ -2102,6 +2345,35 @@ int Envy::State268(int event) {
     }
 }
 
+// LucasLee slot 262 (0xa49e30): animation 107 with +0x3bb raised until exit. Once it is done, if what he carries is in
+// its state 78 he gets on it (its slot 33), raises +0xfd0 and lets it go; then slot 254.
+int LucasLee::State262(int event) {
+    switch (event) {
+    case kStateUpdate:
+        if (!AnimationDone()) return kStateHandled;
+        if (carried && carried->states.IsIn(carried->State78Ptr())) {
+            carried->OnMount(this);
+            flagFd0 = 1;
+            carried->Release();
+        }
+        states.Transition(State254Ptr());
+        return kStateParentTookOver;
+    case kStateEnter:
+        PlayAnimation(107, 0, 1, 1.0f);
+        motion = onyx::Vector3::Zero();
+        motionTarget = onyx::Vector3::Zero();
+        flag3bb = 1;
+        return kStateHandled;
+    case kStateExit:
+        flag3bb = 0;
+        return kStateHandled;
+    case kStateEvent3:
+        return kStateHandled;
+    default:
+        return kStateUnhandled;
+    }
+}
+
 // LucasLee slot 266 (0xa4a810): animation 174 with the attack at +0xec0; each
 // time it ends it plays again (175 after the first, counted at +0xff0) with
 // the attack; once 175 is done, slot 244.
@@ -2137,6 +2409,23 @@ int LucasLee::State266(int event) {
     default:
         return kStateUnhandled;
     }
+}
+
+// Todd slot 38 (0xa20c70): while +0xd88 is raised, a hit from a character whose slot 50 is 3 and whose slot 37 holds
+// is refused: the character is pushed by its +0xc4 away from Todd, the hit's ID joins the recent ones and Todd goes
+// to state 262. Any other hit is Boss's.
+bool Todd::OnHit(BaseCharacter* other, void* hit) {
+    if (other->Slot50() == 3 && other->Slot37() && flagD88) {
+        other->Call9c46b0(hitPush, onyx::Find<onyx::Transform, onyx::kTransform>(onyx::Find<ActorObject, 0x6492d61du>(actorObject)->transform)->Position());
+        int32_t id = static_cast<const int32_t*>(hit)[17];
+        recentHits[0] = recentHits[1];
+        recentHits[1] = recentHits[2];
+        recentHits[2] = recentHits[3];
+        recentHits[3] = id;
+        states.Transition(State262Ptr());
+        return false;
+    }
+    return Boss::OnHit(other, hit);
 }
 
 // Todd slot 69 (0xa21010): Boss's damage handling; totals the damage at +0xd8c,
@@ -2217,6 +2506,49 @@ int Patel::State266(int event) {
         return kStateUnhandled;
     }
 }
+// Roxy slot 262 (0xa3dd30): faces the target and plays animation 19, with the attack at +0xd88 started shotCount times
+// spread evenly over it. When it ends she goes to slot 244.
+int Roxy::State262(int event) {
+    switch (event) {
+    case kStateUpdate: {
+        float step = Move_FrameDelta * hitStopSpeed;
+        float time = stateTime + step;
+        uint32_t shots = shotsFired;
+        float fired = shots;
+        stateTime = time;
+        if (shotCount > fired && time >= shotDuration / shotCount * fired) {
+            shotsFired = shots + 1;
+            StartAttack(&attackD88.attack, false, 1, nullptr);
+        }
+        if (AnimationDone() && stateTime > shotDuration) {
+            states.Transition(State244Ptr());
+            return kStateParentTookOver;
+        }
+        return kStateHandled;
+    }
+    case kStateEnter: {
+        stateTime = 0.0f;
+        shotsFired = 0;
+        motion = onyx::Vector3::Zero();
+        motionTarget = onyx::Vector3::Zero();
+        BaseCharacter* player = static_cast<BaseCharacter*>(target->object);
+        ActorObject* actor = onyx::Find<ActorObject, onyx_types::type_6492d61d>(player->actorObject);
+        FaceX(onyx::Get<onyx::Transform, onyx::kTransform>(actor->transform)->position.x);
+        PlayAnimation(19, 0, 1, 1.0f);
+        float length = onyx::Get<AnimationClip, 0x0f67b22eu>(onyx::Get<AnimationController, kAnimationControllerType>(animationHandle)->Current()->clip)->length;
+        shotDuration = length / SpeedScale();
+        return kStateHandled;
+    }
+    case kStateExit:
+        states.AssertOwner(this);
+        return kStateHandled;
+    case kStateEvent3:
+        return kStateHandled;
+    default:
+        return kStateUnhandled;
+    }
+}
+
 int Roxy::State264(int event) {
     switch (event) {
     case kStateUpdate:
@@ -2545,11 +2877,10 @@ void LucasLee::PlayAnimation(int animation, bool a, bool b, float speed) {
     BaseCharacter::PlayAnimation(animation, a, b, speed);
 }
 
-// LucasLee slot 239 (0xa48170): whether the animation playing is the given one
-// or its counterpart in the other set.
-// Not yet matched: the final OR takes its two compares in the other order.
+// LucasLee slot 239 (0xa48170): whether the animation playing is the given one's
+// counterpart in the other set, or (Boss's test) the given one.
 bool LucasLee::IsPlaying(int anim) {
-    return animation == LucasLeeAnimation(anim) || animation == anim;
+    return animation == LucasLeeAnimation(anim) || Boss::IsPlaying(anim);
 }
 
 // LucasLee slot 162 (0xa48050): never while +0xfd0 is raised; otherwise
@@ -2903,6 +3234,63 @@ void NegaScott::Spawn(const EnemySpawnInfo* info) {
 }
 
 // GigaGideon slot 159 (0xa59b80): Enemy's spawn, then 0x94fde0.
+// 0xa5ec80: plays an animation on the attachment a handle holds, if it holds one. Its visual shows, the animation and
+// whether it loops are kept at +0x74 and +0x70, and the controller is unpaused.
+void PlayAttachmentAnimation(onyx::ComponentHandle* handle, int animation, bool loop) {
+    if (!handle || !handle->object) return;
+    AnimatedAttachment* attachment = reinterpret_cast<AnimatedAttachment*>(handle->object);
+    AnimationController* controller = onyx::Find<AnimationController, kAnimationControllerType>(attachment->animationHandle);
+    AttachmentVisual* visual = onyx::Find<AttachmentVisual, onyx_types::type_6448f1af>(attachment->animatedObject);
+    attachment->loop = loop;
+    visual->visible = 1;
+    controller->Play(animation, loop);
+    attachment->animation = animation;
+    controller->SetPaused(false);
+}
+
+// GigaGideon slot 242 (0xa5a000): Boss's slot 242 without an attachment. With one, its effect (+0x88) follows the
+// boss's low-health effect: started with the attachment visual's +0x50 and the attachment's +0x58, given the same rate,
+// and stopped with it. Slot 243 isn't asked.
+// Not yet matched (not credited): the original tests the four values one branch at a time, the attachment's modifiers
+// through their null phi; here the missing handle returns at once and the other three tests merge into one.
+void GigaGideon::Slot242() {
+    if (!handleBa8 || !handleBa8->object) {
+        Boss::Slot242();
+        return;
+    }
+    AnimatedAttachment* attachment = reinterpret_cast<AnimatedAttachment*>(handleBa8->object);
+    ActorEffect* attachmentEffect = attachment->effect;
+    onyx::Component* modifiers = handleB98 ? handleB98->object : nullptr;
+    onyx::Component* attachmentModifiers = attachment->modifiers ? attachment->modifiers->object : nullptr;
+    if (!attachmentModifiers || !modifiers || !attachmentEffect || !referenceD00) return;
+    float left = health;
+    float limit = MaxHealth() * lowHealthShare;
+    if (left <= limit && !flagD28) {
+        ActorEffect* effect = static_cast<ActorEffect*>(referenceD00);
+        if (effect->flag18) {
+            onyx::ComponentHandle* handle = onyx::Get<ActorFlags, 0x2eae5813u>(onyx::Find<ActorObject, 0x6492d61du>(actorObject)->flags)->handle50;
+            effect->target = handle ? handle->object : nullptr;
+            effect->modifiers = modifiers;
+            static_cast<ActorEffect*>(referenceD00)->EnsureReady();
+            onyx::ComponentHandle* visualHandle = onyx::Get<AttachmentVisual, onyx_types::type_6448f1af>(attachment->animatedObject)->handle50;
+            attachmentEffect->target = visualHandle ? visualHandle->object : nullptr;
+            attachmentEffect->modifiers = attachmentModifiers;
+            attachmentEffect->EnsureReady();
+        }
+        float rate = (limit - left) / limit * (lowHealthRate + -1.0f) + 1.0f;
+        static_cast<ActorEffect*>(referenceD00)->SetRate(rate);
+        attachmentEffect->SetRate(rate);
+        static_cast<ActorEffect*>(referenceD00)->Slot3();
+        attachmentEffect->Slot3();
+    } else {
+        ActorEffect* effect = static_cast<ActorEffect*>(referenceD00);
+        if (!effect->flag18) {
+            effect->Stop();
+            attachmentEffect->Stop();
+        }
+    }
+}
+
 void GigaGideon::Spawn(const EnemySpawnInfo* info) {
     SpawnFrom(info);
     Call94fde0();
@@ -3584,8 +3972,7 @@ int Todd::State270(int event) {
 }
 
 // Lynette slot 270 (0xa63b20): animation 20, with her attack started shotCount times spread evenly over it. When it ends she
-// goes to slot 244.
-// Not yet matched: only the register for the converted count differs, s3 in the original and s2 here.
+// goes to slot 244. Both counts are converted in locals of their own, which gives the original's registers.
 int Lynette::State270(int event) {
     int result = kStateHandled;
     switch (event) {
@@ -3593,9 +3980,10 @@ int Lynette::State270(int event) {
         float step = Move_FrameDelta * hitStopSpeed;
         float time = stateTime + step;
         uint32_t shots = shotsFired;
-        float next = shotDuration / shotCount * shots;
+        float count = shotCount;
+        float fired = shots;
         stateTime = time;
-        if (time >= next) {
+        if (time >= shotDuration / count * fired) {
             shotsFired = shots + 1;
             StartAttack(&attackDc8.attack, false, 1, nullptr);
         }

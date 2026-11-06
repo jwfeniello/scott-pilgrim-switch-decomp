@@ -83,8 +83,9 @@ struct Boss : Enemy {
     SPTG_SLOT(236)
     virtual bool Slot237(const AttackSlot& request);                         // slot 237
     virtual bool Slot238();                                                  // slot 238
-    // Whether the animation playing is `animation` (0xa1b6e0).
-    virtual bool IsPlaying(int animation);                                   // slot 239
+    // Whether the animation playing is `animation` (0xa1b6e0). Inline: LucasLee's override inlines it (its second
+    // compare reads the field through a Boss pointer, which is what keeps the compares in the original's order).
+    virtual bool IsPlaying(int animation) { return this->animation == animation; }   // slot 239
     // The defeat: slows every character down for 3 seconds, sends the event at +0xd30 and raises +0xd28 (0xa1b6f0).
     virtual void Slot240();                                                  // slot 240
     virtual onyx::Vector3 ArrivalPoint();                                    // slot 241
