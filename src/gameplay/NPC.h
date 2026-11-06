@@ -13,9 +13,13 @@ struct NPC : BaseCharacter {
     bool OnHit(BaseCharacter* other, void* hit) override;                    // slot 38
     int State96(int event) override;                                         // slot 96
     int State106(int event) override;                                        // slot 106
-    virtual State ReactionState1();                                          // slot 159
-    virtual State ReactionState2();                                          // slot 160
-    virtual State ReactionState3();                                          // slot 161
+    virtual State ReactionState1();                                          // slot 159 (0x9b8770): Reaction1
+    virtual State ReactionState2();                                          // slot 160 (0x9b8780): Reaction2
+    virtual State ReactionState3();                                          // slot 161 (0x9b8790): Reaction3
+    // The states those getters return; they aren't virtual.
+    int Reaction1(int event);                                                // 0x9b8920
+    int Reaction2(int event);                                                // 0x9b8860
+    int Reaction3(int event);                                                // 0x9b87a0
 
     char padding_77c[0xc];
     EventSlot event788;              // +0x788

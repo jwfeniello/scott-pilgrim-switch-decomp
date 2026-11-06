@@ -772,3 +772,56 @@ template struct FlashScreen<0x8528a0>;
 template struct FlashScreen<0x8250d0>;
 template struct FlashScreen<0x876cb0>;
 }  // namespace SPTG
+
+namespace Onyx { namespace DLC {
+using namespace SPTG;
+// States of the DLC tasks that only accept their events: update, enter and event 3 are handled, anything else
+// isn't (as Projectile::GoneState). The getter at each slot returns its state; neither is virtual here.
+struct UpdateTask { typedef int (UpdateTask::*State)(int); int Slot16State(int event); State Slot16StatePtr(); int Slot17State(int event); State Slot17StatePtr(); int Slot18State(int event); State Slot18StatePtr(); };
+struct Login { typedef int (Login::*State)(int); int Slot16State(int event); State Slot16StatePtr(); };
+struct DownloadTask { typedef int (DownloadTask::*State)(int); int Slot16State(int event); State Slot16StatePtr(); int Slot17State(int event); State Slot17StatePtr(); int Slot18State(int event); State Slot18StatePtr(); int Slot19State(int event); State Slot19StatePtr(); int Slot20State(int event); State Slot20StatePtr(); int Slot21State(int event); State Slot21StatePtr(); int Slot22State(int event); State Slot22StatePtr(); };
+int UpdateTask::Slot16State(int event) {   // 0x72b3b0
+    switch (event) { case kStateUpdate: case kStateEnter: case kStateEvent3: return kStateHandled; default: return kStateUnhandled; }
+}
+UpdateTask::State UpdateTask::Slot16StatePtr() { return &UpdateTask::Slot16State; }   // 0x72b320
+int UpdateTask::Slot17State(int event) {   // 0x72b380
+    switch (event) { case kStateUpdate: case kStateEnter: case kStateEvent3: return kStateHandled; default: return kStateUnhandled; }
+}
+UpdateTask::State UpdateTask::Slot17StatePtr() { return &UpdateTask::Slot17State; }   // 0x72b330
+int UpdateTask::Slot18State(int event) {   // 0x72b350
+    switch (event) { case kStateUpdate: case kStateEnter: case kStateEvent3: return kStateHandled; default: return kStateUnhandled; }
+}
+UpdateTask::State UpdateTask::Slot18StatePtr() { return &UpdateTask::Slot18State; }   // 0x72b340
+int Login::Slot16State(int event) {   // 0x72ee90
+    switch (event) { case kStateUpdate: case kStateEnter: case kStateEvent3: return kStateHandled; default: return kStateUnhandled; }
+}
+Login::State Login::Slot16StatePtr() { return &Login::Slot16State; }   // 0x72ee80
+int DownloadTask::Slot16State(int event) {   // 0x732690
+    switch (event) { case kStateUpdate: case kStateEnter: case kStateEvent3: return kStateHandled; default: return kStateUnhandled; }
+}
+DownloadTask::State DownloadTask::Slot16StatePtr() { return &DownloadTask::Slot16State; }   // 0x732500
+int DownloadTask::Slot17State(int event) {   // 0x732660
+    switch (event) { case kStateUpdate: case kStateEnter: case kStateEvent3: return kStateHandled; default: return kStateUnhandled; }
+}
+DownloadTask::State DownloadTask::Slot17StatePtr() { return &DownloadTask::Slot17State; }   // 0x732510
+int DownloadTask::Slot18State(int event) {   // 0x732630
+    switch (event) { case kStateUpdate: case kStateEnter: case kStateEvent3: return kStateHandled; default: return kStateUnhandled; }
+}
+DownloadTask::State DownloadTask::Slot18StatePtr() { return &DownloadTask::Slot18State; }   // 0x732520
+int DownloadTask::Slot19State(int event) {   // 0x732600
+    switch (event) { case kStateUpdate: case kStateEnter: case kStateEvent3: return kStateHandled; default: return kStateUnhandled; }
+}
+DownloadTask::State DownloadTask::Slot19StatePtr() { return &DownloadTask::Slot19State; }   // 0x732530
+int DownloadTask::Slot20State(int event) {   // 0x7325d0
+    switch (event) { case kStateUpdate: case kStateEnter: case kStateEvent3: return kStateHandled; default: return kStateUnhandled; }
+}
+DownloadTask::State DownloadTask::Slot20StatePtr() { return &DownloadTask::Slot20State; }   // 0x732540
+int DownloadTask::Slot21State(int event) {   // 0x7325a0
+    switch (event) { case kStateUpdate: case kStateEnter: case kStateEvent3: return kStateHandled; default: return kStateUnhandled; }
+}
+DownloadTask::State DownloadTask::Slot21StatePtr() { return &DownloadTask::Slot21State; }   // 0x732550
+int DownloadTask::Slot22State(int event) {   // 0x732570
+    switch (event) { case kStateUpdate: case kStateEnter: case kStateEvent3: return kStateHandled; default: return kStateUnhandled; }
+}
+DownloadTask::State DownloadTask::Slot22StatePtr() { return &DownloadTask::Slot22State; }   // 0x732560
+}}  // namespace Onyx::DLC

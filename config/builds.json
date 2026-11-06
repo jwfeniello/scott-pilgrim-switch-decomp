@@ -403187,122 +403187,12 @@
           "got_bindings": {}
         },
         {
-          "address": "0x72b320",
-          "size": 16,
-          "symbol": "RecoveredLeaf_72b320",
-          "target_sha256": "81b5fd3f1a7d6c880106008c59a8307f4815ec7e2ae2ab57d359901748e1e52a",
-          "bindings": {
-            "LeafData_72b320_0": "0x72b3b0"
-          },
-          "got_bindings": {}
-        },
-        {
-          "address": "0x72b330",
-          "size": 16,
-          "symbol": "RecoveredLeaf_72b330",
-          "target_sha256": "13cf556729a107e35112a875e8d908441ebd3a4aee2b959b8b7b38ffa43b1d4c",
-          "bindings": {
-            "LeafData_72b330_0": "0x72b380"
-          },
-          "got_bindings": {}
-        },
-        {
-          "address": "0x72b340",
-          "size": 16,
-          "symbol": "RecoveredLeaf_72b340",
-          "target_sha256": "23d6523a4240d4d46d4603ccbc8a3243727725dc79d0de7d6b50ee23cab89302",
-          "bindings": {
-            "LeafData_72b340_0": "0x72b350"
-          },
-          "got_bindings": {}
-        },
-        {
           "address": "0x72e3c0",
           "size": 16,
           "symbol": "RecoveredLeaf_72e3c0",
           "target_sha256": "ccd04899e08cb65f774ea498585b1e6c5f29be670d99bedfd16776f9ccff8f63",
           "bindings": {
             "LeafData_72e3c0_0": "0x72e3d0"
-          },
-          "got_bindings": {}
-        },
-        {
-          "address": "0x72ee80",
-          "size": 16,
-          "symbol": "RecoveredLeaf_72ee80",
-          "target_sha256": "aeae902f9f273652092d5befdabb9d70d5d4ceb370d22e3d88de6a6263d0e298",
-          "bindings": {
-            "LeafData_72ee80_0": "0x72ee90"
-          },
-          "got_bindings": {}
-        },
-        {
-          "address": "0x732500",
-          "size": 16,
-          "symbol": "RecoveredLeaf_732500",
-          "target_sha256": "9a886bf151128e37c6110a832b26d9193b4864bf8354bcc9956161b68fe38f76",
-          "bindings": {
-            "LeafData_732500_0": "0x732690"
-          },
-          "got_bindings": {}
-        },
-        {
-          "address": "0x732510",
-          "size": 16,
-          "symbol": "RecoveredLeaf_732510",
-          "target_sha256": "7724cc96aae33d9889d60e41398c4eef336ca708e3a6de7b5e77e8a6d42d82f8",
-          "bindings": {
-            "LeafData_732510_0": "0x732660"
-          },
-          "got_bindings": {}
-        },
-        {
-          "address": "0x732520",
-          "size": 16,
-          "symbol": "RecoveredLeaf_732520",
-          "target_sha256": "fa04ba4afcbababad06be7eca2286a7d9b2d51bfa0b934d6c7c94f3dc85e0579",
-          "bindings": {
-            "LeafData_732520_0": "0x732630"
-          },
-          "got_bindings": {}
-        },
-        {
-          "address": "0x732530",
-          "size": 16,
-          "symbol": "RecoveredLeaf_732530",
-          "target_sha256": "99dfae74129fb090b3c45632a854f75890395dcffb0bd974c3e4f4297c4cffd8",
-          "bindings": {
-            "LeafData_732530_0": "0x732600"
-          },
-          "got_bindings": {}
-        },
-        {
-          "address": "0x732540",
-          "size": 16,
-          "symbol": "RecoveredLeaf_732540",
-          "target_sha256": "18b4feec69e34ca89e944a6ed731ed86d821f515899da31cfcb2005f9d7f5313",
-          "bindings": {
-            "LeafData_732540_0": "0x7325d0"
-          },
-          "got_bindings": {}
-        },
-        {
-          "address": "0x732550",
-          "size": 16,
-          "symbol": "RecoveredLeaf_732550",
-          "target_sha256": "692374d0f63a774cd0f40f61576d8a04ba1642253a9a774a63b50f1230575d76",
-          "bindings": {
-            "LeafData_732550_0": "0x7325a0"
-          },
-          "got_bindings": {}
-        },
-        {
-          "address": "0x732560",
-          "size": 16,
-          "symbol": "RecoveredLeaf_732560",
-          "target_sha256": "3f5230923f6f4def80daf1a5b850964dbdf6a9b85cb8a6491b5703d5c1f68419",
-          "bindings": {
-            "LeafData_732560_0": "0x732570"
           },
           "got_bindings": {}
         },
@@ -404675,36 +404565,6 @@
           "got_bindings": {}
         },
         {
-          "address": "0x9b8770",
-          "size": 16,
-          "symbol": "RecoveredLeaf_9b8770",
-          "target_sha256": "7ca41d90af2c0a21205eb924be2b63b7a983cf9341095969f4455b732416ba05",
-          "bindings": {
-            "LeafData_9b8770_0": "0x9b8920"
-          },
-          "got_bindings": {}
-        },
-        {
-          "address": "0x9b8780",
-          "size": 16,
-          "symbol": "RecoveredLeaf_9b8780",
-          "target_sha256": "48ccf95cf36a5b4556f363a6cd34c3580cecf401667543923adf537b966ae453",
-          "bindings": {
-            "LeafData_9b8780_0": "0x9b8860"
-          },
-          "got_bindings": {}
-        },
-        {
-          "address": "0x9b8790",
-          "size": 16,
-          "symbol": "RecoveredLeaf_9b8790",
-          "target_sha256": "31fb960e63fc39bd45bb5221510cfcbf50e12b080347c1aaaa6579083bbdc76d",
-          "bindings": {
-            "LeafData_9b8790_0": "0x9b87a0"
-          },
-          "got_bindings": {}
-        },
-        {
           "address": "0x9b8c60",
           "size": 12,
           "symbol": "RecoveredLeaf_9b8c60",
@@ -405978,16 +405838,6 @@
           "symbol": "RecoveredLeaf_a13400",
           "target_sha256": "bf1812cc111b53714f55753f688a52ca3a2f79bf0bd62fac31d3f8ae55d1eb65",
           "bindings": {},
-          "got_bindings": {}
-        },
-        {
-          "address": "0xa13410",
-          "size": 16,
-          "symbol": "RecoveredLeaf_a13410",
-          "target_sha256": "4cf566cf3c0ad876420c718eb4a96b96fd08b787944ae306c067224d73efbbda",
-          "bindings": {
-            "LeafData_a13410_0": "0xa13420"
-          },
           "got_bindings": {}
         },
         {
@@ -494678,130 +494528,6 @@
       ]
     },
     {
-      "id": "gameplay_piniata",
-      "source": "src/gameplay/Piniata.cpp",
-      "compiler": "8.0.1",
-      "source_review": "manual_reconstruction",
-      "flags": [
-        "-target",
-        "aarch64-none-elf",
-        "-std=c++11",
-        "-O2",
-        "-mcpu=cortex-a57",
-        "-fstrict-aliasing",
-        "-fomit-frame-pointer",
-        "-fno-pic",
-        "-fno-delete-null-pointer-checks",
-        "-ffunction-sections",
-        "-fdata-sections"
-      ],
-      "header_roots": [
-        "src/gameplay"
-      ],
-      "functions": [
-        {
-          "address": "0xa11430",
-          "size": 132,
-          "symbol": "_ZN4SPTG7Piniata6UpdateEv",
-          "target_sha256": "a3f8defb39b3769d9340b18871be5d9f2dc8b3112a3cf18f17d9420ab976a9f9",
-          "bindings": {
-            "_ZN4SPTG15BreakableObject6UpdateEv": "0x945670"
-          },
-          "got_bindings": {}
-        },
-        {
-          "address": "0xa11c70",
-          "size": 76,
-          "symbol": "_ZN4SPTG7Piniata10TakeDamageEPKNS_3HitEPNS_5ActorE",
-          "target_sha256": "7b85710783457c2d51d109de8a6d8eb70d5c5c2af0434d5053ca830a7e3eed21",
-          "bindings": {
-            "_ZN4SPTG15BreakableObject10TakeDamageEPKNS_3HitEPNS_5ActorE": "0x941820"
-          },
-          "got_bindings": {}
-        },
-        {
-          "address": "0xa12080",
-          "size": 184,
-          "symbol": "_ZN4SPTG7Piniata7State82Ei",
-          "target_sha256": "3244ce9c82fbc30ae446b716cc33cb47429cdf39227850208003df3f6af9187f",
-          "bindings": {
-            "_ZN4SPTG12StateMachineINS_7PiniataEE10TransitionEMS1_FiiE": "0xa121d0"
-          },
-          "got_bindings": {},
-          "immutable_sections": {
-            "18": "0x139127b"
-          }
-        },
-        {
-          "address": "0xa12150",
-          "size": 100,
-          "symbol": "_ZN4SPTG7Piniata9IdleStateEi",
-          "target_sha256": "391426261a3b85caed54d899ccb045bd82c029b782ed6a1dd74b94b79e7ed82a",
-          "bindings": {},
-          "got_bindings": {}
-        },
-        {
-          "address": "0xa12e10",
-          "size": 708,
-          "symbol": "_ZN4SPTG7Piniata5OnHitEPNS_5ActorEPKNS_3HitE",
-          "target_sha256": "2758638b2c7a5ee21c4236a4e54bdee9f0a1da80e289ed55eb25b0adc483d408",
-          "bindings": {
-            "_ZN4SPTG7Piniata8CheckHitEPNS_5ActorEPKNS_3HitE": "0xa114d0",
-            "Onyx_ProjectSettings": "0x1935070",
-            "_ZGVZN4onyx8SettingsEvE8defaults": "0x1935078",
-            "_ZZN4onyx8SettingsEvE8defaults": "0x1935080",
-            "Accessor_Tracking": "0x1935068",
-            "Event_Notify": "0xbf6e80",
-            "Accessor_Resolver": "0x191cd10",
-            "Accessor_Resolve": "0x67edd0",
-            "Transform_Invalidate": "0x68f3b0",
-            "__cxa_guard_acquire": "0xfa4130",
-            "__cxa_guard_release": "0xfa4140",
-            "_Unwind_Resume": "0xfa4920"
-          },
-          "got_bindings": {},
-          "literals": {
-            "554e4b4e4f574e20": "0x1331ae0",
-            "50524f4a45435420": "0x1331000",
-            "0c0000000c000000ffffff7fffffff7f": "0x1334730"
-          }
-        },
-        {
-          "address": "0xa130e0",
-          "size": 308,
-          "symbol": "_ZN4SPTG7Piniata12DamagedStateEi",
-          "target_sha256": "8fe0a6521a3e8a81639c6ebe0d5806afe65cb009458d45ff5d373dd0416ea78f",
-          "bindings": {
-            "_ZN4SPTG12StateMachineINS_7PiniataEE10TransitionEMS1_FiiE": "0xa121d0"
-          },
-          "got_bindings": {}
-        },
-        {
-          "address": "0xa13230",
-          "size": 464,
-          "symbol": "_ZN4SPTG7Piniata11BrokenStateEi",
-          "target_sha256": "23b0d840692f35556d15eca16d4b1036e120a1495c718133038eca0eaa0ad707",
-          "bindings": {
-            "Onyx_ProjectSettings": "0x1935070",
-            "Accessor_Tracking": "0x1935068",
-            "Event_Notify": "0xbf6e80",
-            "_ZGVZN4onyx8SettingsEvE8defaults": "0x1935078",
-            "_ZZN4onyx8SettingsEvE8defaults": "0x1935080",
-            "_ZN4SPTG13PiniataDebris7ReleaseEPv": "0x7b4890",
-            "__cxa_guard_acquire": "0xfa4130",
-            "__cxa_guard_release": "0xfa4140",
-            "_Unwind_Resume": "0xfa4920"
-          },
-          "got_bindings": {},
-          "literals": {
-            "554e4b4e4f574e20": "0x1331ae0",
-            "50524f4a45435420": "0x1331000",
-            "0c0000000c000000ffffff7fffffff7f": "0x1334730"
-          }
-        }
-      ]
-    },
-    {
       "id": "gameplay_vector",
       "source": "src/gameplay/Vector.cpp",
       "compiler": "8.0.1",
@@ -561950,91 +561676,6 @@
       ]
     },
     {
-      "id": "gameplay_npc",
-      "source": "src/gameplay/NPC.cpp",
-      "compiler": "8.0.1",
-      "source_review": "manual_reconstruction",
-      "flags": [
-        "-target",
-        "aarch64-none-elf",
-        "-std=c++11",
-        "-O2",
-        "-mcpu=cortex-a57",
-        "-fstrict-aliasing",
-        "-fomit-frame-pointer",
-        "-fno-pic",
-        "-fno-delete-null-pointer-checks",
-        "-ffunction-sections",
-        "-fdata-sections"
-      ],
-      "header_roots": [
-        "src/gameplay"
-      ],
-      "functions": [
-        {
-          "address": "0x9b82a0",
-          "size": 132,
-          "symbol": "_ZN4SPTG3NPC3IsAEj",
-          "target_sha256": "16ecf1f641174221a5e48912eb92b4f2792055728993709abfd4f7a7707b4488",
-          "bindings": {},
-          "got_bindings": {}
-        },
-        {
-          "address": "0x9b8330",
-          "size": 240,
-          "symbol": "_ZN4SPTG3NPC6Slot13Ev",
-          "target_sha256": "9b1a3464eec3d5d1e19dfd01157017ecaad4e924ad5206c6d4fba705cf52512c",
-          "bindings": {
-            "_ZN4SPTG15AnimatedAiActor6Slot13Ev": "0x945670",
-            "Move_FrameDelta": "0x1924d70"
-          },
-          "got_bindings": {}
-        },
-        {
-          "address": "0x9b8430",
-          "size": 252,
-          "symbol": "_ZN4SPTG3NPC7ReactToEPNS_13BaseCharacterEiPv",
-          "target_sha256": "44f224f7150cb4bce106554530f60930ac464f536589e417fa04fb077602653d",
-          "bindings": {
-            "_ZN4SPTG12StateMachineINS_13BaseCharacterEE10TransitionEMS1_FiiE": "0x812930"
-          },
-          "got_bindings": {}
-        },
-        {
-          "address": "0x9b8530",
-          "size": 240,
-          "symbol": "_ZN4SPTG3NPC5OnHitEPNS_13BaseCharacterEPv",
-          "target_sha256": "22627a07a7c9dd0c124e9ee858026af01d90b39ca1dedc51fdb2d18dc022b684",
-          "bindings": {
-            "_ZN4SPTG12StateMachineINS_13BaseCharacterEE10TransitionEMS1_FiiE": "0x812930"
-          },
-          "got_bindings": {}
-        },
-        {
-          "address": "0x9b8630",
-          "size": 68,
-          "symbol": "_ZN4SPTG3NPC7State96Ei",
-          "target_sha256": "93cf71e4fd3de762989e2df800b4907a6f7473bc6bfea1909a960b72f9b9fe94",
-          "bindings": {},
-          "got_bindings": {}
-        },
-        {
-          "address": "0x9b8690",
-          "size": 196,
-          "symbol": "_ZN4SPTG3NPC8State106Ei",
-          "target_sha256": "3629b0b2b3e8c9f58d73824d3ee50293310e64eb1a9dde3814060fa6e09ccb39",
-          "bindings": {
-            "_ZN4SPTG12StateMachineINS_13BaseCharacterEE10TransitionEMS1_FiiE": "0x812930",
-            "_ZN4SPTG13BaseCharacter11Apply8e5750Ei": "0x8e5750"
-          },
-          "got_bindings": {},
-          "immutable_sections": {
-            "12": "0x1390e62"
-          }
-        }
-      ]
-    },
-    {
       "id": "gameplay_enemy_classes",
       "source": "src/gameplay/EnemyClassStates.cpp",
       "compiler": "8.0.1",
@@ -567085,6 +566726,237 @@
             "_ZN4Onyx7Spawner5StartEj": "0x691680"
           },
           "got_bindings": {}
+        },
+        {
+          "address": "0x72b320",
+          "size": 16,
+          "symbol": "_ZN4Onyx3DLC10UpdateTask14Slot16StatePtrEv",
+          "target_sha256": "81b5fd3f1a7d6c880106008c59a8307f4815ec7e2ae2ab57d359901748e1e52a",
+          "bindings": {
+            "_ZN4Onyx3DLC10UpdateTask11Slot16StateEi": "0x72b3b0"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x72b330",
+          "size": 16,
+          "symbol": "_ZN4Onyx3DLC10UpdateTask14Slot17StatePtrEv",
+          "target_sha256": "13cf556729a107e35112a875e8d908441ebd3a4aee2b959b8b7b38ffa43b1d4c",
+          "bindings": {
+            "_ZN4Onyx3DLC10UpdateTask11Slot17StateEi": "0x72b380"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x72b340",
+          "size": 16,
+          "symbol": "_ZN4Onyx3DLC10UpdateTask14Slot18StatePtrEv",
+          "target_sha256": "23d6523a4240d4d46d4603ccbc8a3243727725dc79d0de7d6b50ee23cab89302",
+          "bindings": {
+            "_ZN4Onyx3DLC10UpdateTask11Slot18StateEi": "0x72b350"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x72b350",
+          "size": 40,
+          "symbol": "_ZN4Onyx3DLC10UpdateTask11Slot18StateEi",
+          "target_sha256": "937fd160f37c5e429a311537ef9f1a80ee2bed9c402bbf6dd3af5dce45b24ce3",
+          "bindings": {},
+          "got_bindings": {},
+          "literals": {
+            "01000000010000000000000001000000": "0x1333d80"
+          }
+        },
+        {
+          "address": "0x72b380",
+          "size": 40,
+          "symbol": "_ZN4Onyx3DLC10UpdateTask11Slot17StateEi",
+          "target_sha256": "937fd160f37c5e429a311537ef9f1a80ee2bed9c402bbf6dd3af5dce45b24ce3",
+          "bindings": {},
+          "got_bindings": {},
+          "literals": {
+            "01000000010000000000000001000000": "0x1333d80"
+          }
+        },
+        {
+          "address": "0x72b3b0",
+          "size": 40,
+          "symbol": "_ZN4Onyx3DLC10UpdateTask11Slot16StateEi",
+          "target_sha256": "937fd160f37c5e429a311537ef9f1a80ee2bed9c402bbf6dd3af5dce45b24ce3",
+          "bindings": {},
+          "got_bindings": {},
+          "literals": {
+            "01000000010000000000000001000000": "0x1333d80"
+          }
+        },
+        {
+          "address": "0x72ee80",
+          "size": 16,
+          "symbol": "_ZN4Onyx3DLC5Login14Slot16StatePtrEv",
+          "target_sha256": "aeae902f9f273652092d5befdabb9d70d5d4ceb370d22e3d88de6a6263d0e298",
+          "bindings": {
+            "_ZN4Onyx3DLC5Login11Slot16StateEi": "0x72ee90"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x72ee90",
+          "size": 40,
+          "symbol": "_ZN4Onyx3DLC5Login11Slot16StateEi",
+          "target_sha256": "64d26c28fdc20e9ab798b2aef7d6e50101b988dd184b676f8ee6fa17d8bb511a",
+          "bindings": {},
+          "got_bindings": {},
+          "literals": {
+            "01000000010000000000000001000000": "0x1333d80"
+          }
+        },
+        {
+          "address": "0x732500",
+          "size": 16,
+          "symbol": "_ZN4Onyx3DLC12DownloadTask14Slot16StatePtrEv",
+          "target_sha256": "9a886bf151128e37c6110a832b26d9193b4864bf8354bcc9956161b68fe38f76",
+          "bindings": {
+            "_ZN4Onyx3DLC12DownloadTask11Slot16StateEi": "0x732690"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x732510",
+          "size": 16,
+          "symbol": "_ZN4Onyx3DLC12DownloadTask14Slot17StatePtrEv",
+          "target_sha256": "7724cc96aae33d9889d60e41398c4eef336ca708e3a6de7b5e77e8a6d42d82f8",
+          "bindings": {
+            "_ZN4Onyx3DLC12DownloadTask11Slot17StateEi": "0x732660"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x732520",
+          "size": 16,
+          "symbol": "_ZN4Onyx3DLC12DownloadTask14Slot18StatePtrEv",
+          "target_sha256": "fa04ba4afcbababad06be7eca2286a7d9b2d51bfa0b934d6c7c94f3dc85e0579",
+          "bindings": {
+            "_ZN4Onyx3DLC12DownloadTask11Slot18StateEi": "0x732630"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x732530",
+          "size": 16,
+          "symbol": "_ZN4Onyx3DLC12DownloadTask14Slot19StatePtrEv",
+          "target_sha256": "99dfae74129fb090b3c45632a854f75890395dcffb0bd974c3e4f4297c4cffd8",
+          "bindings": {
+            "_ZN4Onyx3DLC12DownloadTask11Slot19StateEi": "0x732600"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x732540",
+          "size": 16,
+          "symbol": "_ZN4Onyx3DLC12DownloadTask14Slot20StatePtrEv",
+          "target_sha256": "18b4feec69e34ca89e944a6ed731ed86d821f515899da31cfcb2005f9d7f5313",
+          "bindings": {
+            "_ZN4Onyx3DLC12DownloadTask11Slot20StateEi": "0x7325d0"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x732550",
+          "size": 16,
+          "symbol": "_ZN4Onyx3DLC12DownloadTask14Slot21StatePtrEv",
+          "target_sha256": "692374d0f63a774cd0f40f61576d8a04ba1642253a9a774a63b50f1230575d76",
+          "bindings": {
+            "_ZN4Onyx3DLC12DownloadTask11Slot21StateEi": "0x7325a0"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x732560",
+          "size": 16,
+          "symbol": "_ZN4Onyx3DLC12DownloadTask14Slot22StatePtrEv",
+          "target_sha256": "3f5230923f6f4def80daf1a5b850964dbdf6a9b85cb8a6491b5703d5c1f68419",
+          "bindings": {
+            "_ZN4Onyx3DLC12DownloadTask11Slot22StateEi": "0x732570"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x732570",
+          "size": 40,
+          "symbol": "_ZN4Onyx3DLC12DownloadTask11Slot22StateEi",
+          "target_sha256": "3a23fd405f8ec144381f71b4acdf378717c69aae11d058de74ab8cae383bf793",
+          "bindings": {},
+          "got_bindings": {},
+          "literals": {
+            "01000000010000000000000001000000": "0x1333d80"
+          }
+        },
+        {
+          "address": "0x7325a0",
+          "size": 40,
+          "symbol": "_ZN4Onyx3DLC12DownloadTask11Slot21StateEi",
+          "target_sha256": "3a23fd405f8ec144381f71b4acdf378717c69aae11d058de74ab8cae383bf793",
+          "bindings": {},
+          "got_bindings": {},
+          "literals": {
+            "01000000010000000000000001000000": "0x1333d80"
+          }
+        },
+        {
+          "address": "0x7325d0",
+          "size": 40,
+          "symbol": "_ZN4Onyx3DLC12DownloadTask11Slot20StateEi",
+          "target_sha256": "3a23fd405f8ec144381f71b4acdf378717c69aae11d058de74ab8cae383bf793",
+          "bindings": {},
+          "got_bindings": {},
+          "literals": {
+            "01000000010000000000000001000000": "0x1333d80"
+          }
+        },
+        {
+          "address": "0x732600",
+          "size": 40,
+          "symbol": "_ZN4Onyx3DLC12DownloadTask11Slot19StateEi",
+          "target_sha256": "3a23fd405f8ec144381f71b4acdf378717c69aae11d058de74ab8cae383bf793",
+          "bindings": {},
+          "got_bindings": {},
+          "literals": {
+            "01000000010000000000000001000000": "0x1333d80"
+          }
+        },
+        {
+          "address": "0x732630",
+          "size": 40,
+          "symbol": "_ZN4Onyx3DLC12DownloadTask11Slot18StateEi",
+          "target_sha256": "3a23fd405f8ec144381f71b4acdf378717c69aae11d058de74ab8cae383bf793",
+          "bindings": {},
+          "got_bindings": {},
+          "literals": {
+            "01000000010000000000000001000000": "0x1333d80"
+          }
+        },
+        {
+          "address": "0x732660",
+          "size": 40,
+          "symbol": "_ZN4Onyx3DLC12DownloadTask11Slot17StateEi",
+          "target_sha256": "3a23fd405f8ec144381f71b4acdf378717c69aae11d058de74ab8cae383bf793",
+          "bindings": {},
+          "got_bindings": {},
+          "literals": {
+            "01000000010000000000000001000000": "0x1333d80"
+          }
+        },
+        {
+          "address": "0x732690",
+          "size": 40,
+          "symbol": "_ZN4Onyx3DLC12DownloadTask11Slot16StateEi",
+          "target_sha256": "3a23fd405f8ec144381f71b4acdf378717c69aae11d058de74ab8cae383bf793",
+          "bindings": {},
+          "got_bindings": {},
+          "literals": {
+            "01000000010000000000000001000000": "0x1333d80"
+          }
         },
         {
           "address": "0x793ad0",
@@ -572989,6 +572861,304 @@
             "__clang_call_terminate": "0x6768b8"
           },
           "got_bindings": {}
+        }
+      ]
+    },
+    {
+      "id": "gameplay_piniata",
+      "source": "src/gameplay/Piniata.cpp",
+      "compiler": "8.0.1",
+      "source_review": "manual_reconstruction",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-std=c++11",
+        "-O2",
+        "-mcpu=cortex-a57",
+        "-fstrict-aliasing",
+        "-fomit-frame-pointer",
+        "-fno-pic",
+        "-fno-delete-null-pointer-checks",
+        "-ffunction-sections",
+        "-fdata-sections"
+      ],
+      "header_roots": [
+        "src/gameplay"
+      ],
+      "functions": [
+        {
+          "address": "0xa11430",
+          "size": 132,
+          "symbol": "_ZN4SPTG7Piniata6UpdateEv",
+          "target_sha256": "a3f8defb39b3769d9340b18871be5d9f2dc8b3112a3cf18f17d9420ab976a9f9",
+          "bindings": {
+            "_ZN4SPTG15BreakableObject6UpdateEv": "0x945670"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xa11c70",
+          "size": 76,
+          "symbol": "_ZN4SPTG7Piniata10TakeDamageEPKNS_3HitEPNS_5ActorE",
+          "target_sha256": "7b85710783457c2d51d109de8a6d8eb70d5c5c2af0434d5053ca830a7e3eed21",
+          "bindings": {
+            "_ZN4SPTG15BreakableObject10TakeDamageEPKNS_3HitEPNS_5ActorE": "0x941820"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xa12080",
+          "size": 184,
+          "symbol": "_ZN4SPTG7Piniata7State82Ei",
+          "target_sha256": "3244ce9c82fbc30ae446b716cc33cb47429cdf39227850208003df3f6af9187f",
+          "bindings": {
+            "_ZN4SPTG12StateMachineINS_7PiniataEE10TransitionEMS1_FiiE": "0xa121d0"
+          },
+          "got_bindings": {},
+          "immutable_sections": {
+            "22": "0x139127b"
+          }
+        },
+        {
+          "address": "0xa12150",
+          "size": 100,
+          "symbol": "_ZN4SPTG7Piniata9IdleStateEi",
+          "target_sha256": "391426261a3b85caed54d899ccb045bd82c029b782ed6a1dd74b94b79e7ed82a",
+          "bindings": {},
+          "got_bindings": {}
+        },
+        {
+          "address": "0xa12e10",
+          "size": 708,
+          "symbol": "_ZN4SPTG7Piniata5OnHitEPNS_5ActorEPKNS_3HitE",
+          "target_sha256": "2758638b2c7a5ee21c4236a4e54bdee9f0a1da80e289ed55eb25b0adc483d408",
+          "bindings": {
+            "_ZN4SPTG7Piniata8CheckHitEPNS_5ActorEPKNS_3HitE": "0xa114d0",
+            "Onyx_ProjectSettings": "0x1935070",
+            "_ZGVZN4onyx8SettingsEvE8defaults": "0x1935078",
+            "_ZZN4onyx8SettingsEvE8defaults": "0x1935080",
+            "Accessor_Tracking": "0x1935068",
+            "Event_Notify": "0xbf6e80",
+            "Accessor_Resolver": "0x191cd10",
+            "Accessor_Resolve": "0x67edd0",
+            "Transform_Invalidate": "0x68f3b0",
+            "__cxa_guard_acquire": "0xfa4130",
+            "__cxa_guard_release": "0xfa4140",
+            "_Unwind_Resume": "0xfa4920"
+          },
+          "got_bindings": {},
+          "literals": {
+            "554e4b4e4f574e20": "0x1331ae0",
+            "50524f4a45435420": "0x1331000",
+            "0c0000000c000000ffffff7fffffff7f": "0x1334730"
+          }
+        },
+        {
+          "address": "0xa130e0",
+          "size": 308,
+          "symbol": "_ZN4SPTG7Piniata12DamagedStateEi",
+          "target_sha256": "8fe0a6521a3e8a81639c6ebe0d5806afe65cb009458d45ff5d373dd0416ea78f",
+          "bindings": {
+            "_ZN4SPTG12StateMachineINS_7PiniataEE10TransitionEMS1_FiiE": "0xa121d0"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xa13230",
+          "size": 464,
+          "symbol": "_ZN4SPTG7Piniata11BrokenStateEi",
+          "target_sha256": "23b0d840692f35556d15eca16d4b1036e120a1495c718133038eca0eaa0ad707",
+          "bindings": {
+            "Onyx_ProjectSettings": "0x1935070",
+            "Accessor_Tracking": "0x1935068",
+            "Event_Notify": "0xbf6e80",
+            "_ZGVZN4onyx8SettingsEvE8defaults": "0x1935078",
+            "_ZZN4onyx8SettingsEvE8defaults": "0x1935080",
+            "_ZN4SPTG13PiniataDebris7ReleaseEPv": "0x7b4890",
+            "__cxa_guard_acquire": "0xfa4130",
+            "__cxa_guard_release": "0xfa4140",
+            "_Unwind_Resume": "0xfa4920"
+          },
+          "got_bindings": {},
+          "literals": {
+            "554e4b4e4f574e20": "0x1331ae0",
+            "50524f4a45435420": "0x1331000",
+            "0c0000000c000000ffffff7fffffff7f": "0x1334730"
+          }
+        },
+        {
+          "address": "0xa13410",
+          "size": 16,
+          "symbol": "_ZN4SPTG7Piniata14Slot86StatePtrEv",
+          "target_sha256": "4cf566cf3c0ad876420c718eb4a96b96fd08b787944ae306c067224d73efbbda",
+          "bindings": {
+            "_ZN4SPTG7Piniata11Slot86StateEi": "0xa13420"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xa13420",
+          "size": 188,
+          "symbol": "_ZN4SPTG7Piniata11Slot86StateEi",
+          "target_sha256": "8f5ed70cf73b548be4eb6a66d8e02a5184e3dd184e17ea270f09f7535cecb219",
+          "bindings": {
+            "_ZN4SPTG12StateMachineINS_7PiniataEE10TransitionEMS1_FiiE": "0xa121d0"
+          },
+          "got_bindings": {}
+        }
+      ]
+    },
+    {
+      "id": "gameplay_npc",
+      "source": "src/gameplay/NPC.cpp",
+      "compiler": "8.0.1",
+      "source_review": "manual_reconstruction",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-std=c++11",
+        "-O2",
+        "-mcpu=cortex-a57",
+        "-fstrict-aliasing",
+        "-fomit-frame-pointer",
+        "-fno-pic",
+        "-fno-delete-null-pointer-checks",
+        "-ffunction-sections",
+        "-fdata-sections"
+      ],
+      "header_roots": [
+        "src/gameplay"
+      ],
+      "functions": [
+        {
+          "address": "0x9b82a0",
+          "size": 132,
+          "symbol": "_ZN4SPTG3NPC3IsAEj",
+          "target_sha256": "16ecf1f641174221a5e48912eb92b4f2792055728993709abfd4f7a7707b4488",
+          "bindings": {},
+          "got_bindings": {}
+        },
+        {
+          "address": "0x9b8330",
+          "size": 240,
+          "symbol": "_ZN4SPTG3NPC6Slot13Ev",
+          "target_sha256": "9b1a3464eec3d5d1e19dfd01157017ecaad4e924ad5206c6d4fba705cf52512c",
+          "bindings": {
+            "_ZN4SPTG15AnimatedAiActor6Slot13Ev": "0x945670",
+            "Move_FrameDelta": "0x1924d70"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x9b8430",
+          "size": 252,
+          "symbol": "_ZN4SPTG3NPC7ReactToEPNS_13BaseCharacterEiPv",
+          "target_sha256": "44f224f7150cb4bce106554530f60930ac464f536589e417fa04fb077602653d",
+          "bindings": {
+            "_ZN4SPTG12StateMachineINS_13BaseCharacterEE10TransitionEMS1_FiiE": "0x812930"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x9b8530",
+          "size": 240,
+          "symbol": "_ZN4SPTG3NPC5OnHitEPNS_13BaseCharacterEPv",
+          "target_sha256": "22627a07a7c9dd0c124e9ee858026af01d90b39ca1dedc51fdb2d18dc022b684",
+          "bindings": {
+            "_ZN4SPTG12StateMachineINS_13BaseCharacterEE10TransitionEMS1_FiiE": "0x812930"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x9b8630",
+          "size": 68,
+          "symbol": "_ZN4SPTG3NPC7State96Ei",
+          "target_sha256": "93cf71e4fd3de762989e2df800b4907a6f7473bc6bfea1909a960b72f9b9fe94",
+          "bindings": {},
+          "got_bindings": {}
+        },
+        {
+          "address": "0x9b8690",
+          "size": 196,
+          "symbol": "_ZN4SPTG3NPC8State106Ei",
+          "target_sha256": "3629b0b2b3e8c9f58d73824d3ee50293310e64eb1a9dde3814060fa6e09ccb39",
+          "bindings": {
+            "_ZN4SPTG12StateMachineINS_13BaseCharacterEE10TransitionEMS1_FiiE": "0x812930",
+            "_ZN4SPTG13BaseCharacter11Apply8e5750Ei": "0x8e5750"
+          },
+          "got_bindings": {},
+          "immutable_sections": {
+            "12": "0x1390e62"
+          }
+        },
+        {
+          "address": "0x9b8770",
+          "size": 16,
+          "symbol": "_ZN4SPTG3NPC14ReactionState1Ev",
+          "target_sha256": "7ca41d90af2c0a21205eb924be2b63b7a983cf9341095969f4455b732416ba05",
+          "bindings": {
+            "_ZN4SPTG3NPC9Reaction1Ei": "0x9b8920"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x9b8780",
+          "size": 16,
+          "symbol": "_ZN4SPTG3NPC14ReactionState2Ev",
+          "target_sha256": "48ccf95cf36a5b4556f363a6cd34c3580cecf401667543923adf537b966ae453",
+          "bindings": {
+            "_ZN4SPTG3NPC9Reaction2Ei": "0x9b8860"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x9b8790",
+          "size": 16,
+          "symbol": "_ZN4SPTG3NPC14ReactionState3Ev",
+          "target_sha256": "31fb960e63fc39bd45bb5221510cfcbf50e12b080347c1aaaa6579083bbdc76d",
+          "bindings": {
+            "_ZN4SPTG3NPC9Reaction3Ei": "0x9b87a0"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x9b87a0",
+          "size": 184,
+          "symbol": "_ZN4SPTG3NPC9Reaction3Ei",
+          "target_sha256": "10506b535ecb56b3c788b5b55cd0867fdc756f3e09873bd467d4f8a253b1122e",
+          "bindings": {
+            "_ZN4SPTG12StateMachineINS_13BaseCharacterEE10TransitionEMS1_FiiE": "0x812930"
+          },
+          "got_bindings": {},
+          "immutable_sections": {
+            "22": "0x1390e66"
+          }
+        },
+        {
+          "address": "0x9b8860",
+          "size": 184,
+          "symbol": "_ZN4SPTG3NPC9Reaction2Ei",
+          "target_sha256": "2c49b144ac37439ee190946438964c98635a09d4b19f8b44a894499747f09895",
+          "bindings": {
+            "_ZN4SPTG12StateMachineINS_13BaseCharacterEE10TransitionEMS1_FiiE": "0x812930"
+          },
+          "got_bindings": {},
+          "immutable_sections": {
+            "19": "0x1390e6a"
+          }
+        },
+        {
+          "address": "0x9b8920",
+          "size": 184,
+          "symbol": "_ZN4SPTG3NPC9Reaction1Ei",
+          "target_sha256": "c59f277a394df5fa8e8980476c67d61a6296b844a4dbc1af8bf311c9bd12ae6d",
+          "bindings": {
+            "_ZN4SPTG12StateMachineINS_13BaseCharacterEE10TransitionEMS1_FiiE": "0x812930"
+          },
+          "got_bindings": {},
+          "immutable_sections": {
+            "16": "0x1390e6e"
+          }
         }
       ]
     }

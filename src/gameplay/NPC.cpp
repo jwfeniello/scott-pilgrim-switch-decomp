@@ -85,4 +85,71 @@ int NPC::State106(int event) {
 // The type tests (slot 12): each class's own type or one of its base's (SPTG_TYPE).
 bool NPC::IsA(uint32_t type) { return IsType(type); }   // 0x9b82a0
 
+
+// The reaction states (the getters at slots 159-161 return them): each plays its animation, 121, the one at
+// +0x7ac or 117, and goes back to state 96 once it is done.
+int NPC::Reaction1(int event) {
+    switch (event) {
+    case kStateUpdate:
+        if (AnimationDone()) {
+            states.Transition(State96Ptr());
+            return kStateParentTookOver;
+        }
+        return kStateHandled;
+    case kStateEnter:
+        PlayAnimation(121, false, false, 1.0f);
+        return kStateHandled;
+    case kStateEvent3:
+        return kStateHandled;
+    default:
+        return kStateUnhandled;
+    case kStateExit:
+        states.AssertOwner(this);
+        return kStateHandled;
+    }
+}
+int NPC::Reaction2(int event) {
+    switch (event) {
+    case kStateUpdate:
+        if (AnimationDone()) {
+            states.Transition(State96Ptr());
+            return kStateParentTookOver;
+        }
+        return kStateHandled;
+    case kStateEnter:
+        PlayAnimation(value7ac, false, false, 1.0f);
+        return kStateHandled;
+    case kStateEvent3:
+        return kStateHandled;
+    default:
+        return kStateUnhandled;
+    case kStateExit:
+        states.AssertOwner(this);
+        return kStateHandled;
+    }
+}
+int NPC::Reaction3(int event) {
+    switch (event) {
+    case kStateUpdate:
+        if (AnimationDone()) {
+            states.Transition(State96Ptr());
+            return kStateParentTookOver;
+        }
+        return kStateHandled;
+    case kStateEnter:
+        PlayAnimation(117, false, false, 1.0f);
+        return kStateHandled;
+    case kStateEvent3:
+        return kStateHandled;
+    default:
+        return kStateUnhandled;
+    case kStateExit:
+        states.AssertOwner(this);
+        return kStateHandled;
+    }
+}
+NPC::State NPC::ReactionState1() { return static_cast<State>(&NPC::Reaction1); }   // 0x9b8770
+NPC::State NPC::ReactionState2() { return static_cast<State>(&NPC::Reaction2); }   // 0x9b8780
+NPC::State NPC::ReactionState3() { return static_cast<State>(&NPC::Reaction3); }   // 0x9b8790
+
 }  // namespace SPTG

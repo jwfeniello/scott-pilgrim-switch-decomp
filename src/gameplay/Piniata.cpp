@@ -70,6 +70,8 @@ struct Piniata : BreakableObject {
     virtual int BrokenState(int event);  virtual State BrokenStatePtr();
     virtual int State82(int event);      virtual State State82Ptr();
     virtual int IdleState(int event);    virtual State IdleStatePtr();
+    virtual State Slot86StatePtr();                               // slot 86 (0xa13410), returns a state that isn't virtual
+    int Slot86State(int event);                                   // 0xa13420
 
     char padding_8[0x158];
     float health;                         // +0x160
@@ -170,6 +172,30 @@ int Piniata::DamagedState(int event) {
     }
     return kStateUnhandled;
 }
+
+// The state slot 86 returns (0xa13420): plays animation 211, looping, and once it is done goes to the damaged
+// state.
+int Piniata::Slot86State(int event) {
+    int result;
+    switch (event) {
+    case kStateEnter:
+        result = kStateHandled;
+        PlayAnimation(211, 1, 0, 1.0f);
+        break;
+    case kStateUpdate:
+        if (AnimationDone()) {
+            states.Transition(DamagedStatePtr());
+            return kStateParentTookOver;
+        }
+        return kStateHandled;
+    case kStateEvent3:
+        return kStateHandled;
+    default:
+        return kStateUnhandled;
+    }
+    return result;
+}
+Piniata::State Piniata::Slot86StatePtr() { return &Piniata::Slot86State; }   // 0xa13410
 
 // Slot 80 (0xa13230): on entry, plays animation 212, stops being solid, sends the
 // broken event (hash 0x1b7fbfc1) and releases the debris; once the animation is
