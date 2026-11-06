@@ -283,6 +283,7 @@ struct EnemyGiant : Enemy {
     int State96(int event);
     int State174(int event);
     bool Check9fd3e0();   // 0x9fd3e0
+    bool Check9fd120();   // 0x9fd120: a range test Check9fd3e0 makes before its roll
     void Slot166(int kind);
     bool Slot82();
     void Slot4(onyx::Archive& archive, ComponentSlot::Source* source);
@@ -298,7 +299,7 @@ struct EnemyGiant : Enemy {
     uint8_t flagB89;             // +0xb89
     char padding_b8a[0x6];
     AttackSlot attacks[10];      // +0xb90
-    int32_t value1040;           // +0x1040
+    float waitTimer;             // +0x1040: how long Check9fd3e0 has waited
 };
 // vtable 0x1886e20, 244 slots
 struct EnemyChubby : Enemy {

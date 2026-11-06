@@ -113,6 +113,23 @@ float ControllablePlayer::Slot152() {
     return value894 / 100.0f * Max(statStrength, 0.0f) + 1.0f;
 }
 
+// 0x80f6e0: item effect 10. With the effect at +0x1358 ready (+0x18), stops the actions at +0x1368 and +0x1378, starts
+// the timer at +0x13d8, aims the effect at the actor flags' +0x50 with the material modifiers and restarts it.
+bool ControllablePlayer::Effect10() {
+    if (!reference1358 || !static_cast<ActorEffect*>(reference1358)->flag18) return false;
+    if (reference1368) static_cast<ActorEffect*>(reference1368)->Stop();
+    if (reference1378) static_cast<ActorEffect*>(reference1378)->Stop();
+    value13d8 = effect10Time;
+    ActorEffect* effect = static_cast<ActorEffect*>(reference1358);
+    onyx::ComponentHandle* handle = onyx::Get<ActorFlags, 0x2eae5813u>(onyx::Find<ActorObject, 0x6492d61du>(actorObject)->flags)->handle50;
+    void* target = handle ? handle->object : nullptr;
+    void* modifiers = materialModifiers ? materialModifiers->object : nullptr;
+    effect->target = target;
+    effect->modifiers = modifiers;
+    static_cast<ActorEffect*>(reference1358)->EnsureReady();
+    return true;
+}
+
 // What an item does when used. Returns whether any of its effects did anything.
 bool ControllablePlayer::UseItem(Item* item) {
     if (!item->effectCount) return false;

@@ -359,7 +359,7 @@ int EnemyGiant::State96(int event) {
     if (result == kStateParentTookOver) return result;
     switch (event) {
     case kStateEnter:
-        value1040 = 0;
+        waitTimer = 0.0f;
         return kStateHandled;
     case kStateUpdate:
         if (Check9fd3e0()) {
@@ -375,7 +375,7 @@ int EnemyGiant::State174(int event) {
     if (result == kStateParentTookOver) return result;
     switch (event) {
     case kStateEnter:
-        value1040 = 0;
+        waitTimer = 0.0f;
         return kStateHandled;
     case kStateUpdate:
         if (Check9fd3e0()) {
@@ -758,6 +758,34 @@ int EnemyAerial::Statea04890(int event) {
         return kStateHandled;
     }
 }
+// EnemyGiant 0x9fd3e0: with a target that passes its slot 82 and hasn't +0x14f8 set, times the wait at +0x1040 against a
+// limit for the special type (3 s for 0, 1 s for 1 and 2, 0.2 s for 3, 0.1 s for 4, never for others). Past it, and if
+// 0x9fd120 holds, rolls 1-100 against attack 8's +0x10, which works as a percentage here.
+bool EnemyGiant::Check9fd3e0() {
+    if (!target || !target->object) return false;
+    if (!static_cast<BaseCharacter*>(target->object)->Slot82() || static_cast<ControllablePlayer*>(target->object)->flag14f8) return false;
+    waitTimer += Move_FrameDelta;
+    switch (specialType) {
+    case 0:
+        if (!(waitTimer > 3.0f)) return false;
+        break;
+    case 1:
+    case 2:
+        if (!(waitTimer > 1.0f)) return false;
+        break;
+    case 3:
+        if (!(waitTimer > 0.2f)) return false;
+        break;
+    case 4:
+        if (!(waitTimer > 0.1f)) return false;
+        break;
+    default:
+        return false;
+    }
+    if (!Check9fd120()) return false;
+    return static_cast<uint32_t>(RandomRange<int>(1, 100)) <= attacks[8].flag10;
+}
+
 // EnemySpeedy's state at 0x9eb520 (slot 238 returns it): turns round if the last dodge went left, then runs along the
 // facing at +0xde8 with animation 9 until the animation ends, and goes back to slot 96. Exit stops the enemy.
 int EnemySpeedy::State9eb520(int event) {

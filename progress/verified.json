@@ -1,9 +1,9 @@
 {
   "version": 1,
-  "generated_at": "2026-11-06T08:11:36.451820+00:00",
+  "generated_at": "2026-11-06T08:18:17.445106+00:00",
   "target_elf_sha256": "ea95638e6d6aaa0dc6cddd552a9366799aa1ec3bc07ee201f23f6c151103f5b8",
   "input_sha256": {
-    "config/builds.json": "5af4ecfa51fb5512d08e654fcb176d2798a0c8ca37bc826cfb8ffb7d60c625d2",
+    "config/builds.json": "4064ceb64cced202e24633b56926e650d80443ba8b613aa9a5179f733a615d70",
     "config/functions.tsv": "399e91468a04e0459194c10d68d2210d1157cedefeb19c7851886ca7632fcb18",
     "config/non_fde_functions.tsv": "6a45f5e185454fa0472af00b2cdc9d040d73ca133d1106217e1fbbe3b32a8175",
     "config/target.json": "23cc6a5227206a953e7668acf5e9ae5c02a25c23b7e7967f0450a814b888241a",
@@ -1127,7 +1127,7 @@
     "src/gameplay/Archive.h": "e84bf1d8d002c8d3be74aa8426bd7ac8535e4e6cef7d27b9aa6d3bdcb52403ae",
     "src/gameplay/Assert.h": "e8ad90fa17cd27c0eefb31341b98ee091197fb3aeb84363fb473339d67770dcc",
     "src/gameplay/BaseCharacter.cpp": "ac2035dcb970289d073237ce8d8f686de31a2077fab2d2f225fdd1e21e827a3b",
-    "src/gameplay/BaseCharacter.h": "8d5a3f86f5753563d12640fe4eb15dc895305b1ecd99d6a1dcb8a5cf17566d32",
+    "src/gameplay/BaseCharacter.h": "b322bdc5792f483a14a85f4af71131e3951860b15f4091b706c9db6644c46d40",
     "src/gameplay/BaseCharacterStates.cpp": "593efaaa1eab898d81712650dff9964b8941b427094ab0bc508bbb09f554b0c4",
     "src/gameplay/Boss.h": "0ed27e277860ff7c2394333967cf4aa68d79f2a39e512cc88c18a34d70225749",
     "src/gameplay/BossAI.cpp": "b8c327bc59dd7dd31a6e52c3dd206d3e297a3acc5a3a36f41cab74814bb94581",
@@ -1141,7 +1141,7 @@
     "src/gameplay/ClassDestructors.cpp": "c9e734e54727683804492f4a62fd67246fbf39202d83b99237fa68e4d4c07a0d",
     "src/gameplay/ClassDestructorsForced.cpp": "4eb18189dd148ccf15e05f76b380d60d77fbcd5894adb0db7ddbf4c9eb085fc6",
     "src/gameplay/ClassDestructorsInline.cpp": "034f125f161661c431170c2fe1d3b1c256738468ea3dfabfc4fd4f5747be3e87",
-    "src/gameplay/ClassSerialize.cpp": "c2b76cb4c9f1bfddcdf7292d984b3d10353310906b55a8b0c77ee1cc7f4c70eb",
+    "src/gameplay/ClassSerialize.cpp": "465e5312ac4da5329980de1c2be224f7d374afb07f4f36f6fd07b0a797c161ae",
     "src/gameplay/ComponentAccess.cpp": "b1b34b3a09bc3544f3fffe397604e3d185ea651f571180a3eb13cd58e11cbab5",
     "src/gameplay/ComponentFactories.cpp": "a608f244c1dc7a56e1d803dc887e064ac69f3fa5467c387eab470098ecc1b2e7",
     "src/gameplay/ComponentFactoriesCallbacks.cpp": "4706affb373090b4a811798c4fc6a7fd4e1deed9474dfbc7e9b6b72c0c7caae0",
@@ -1156,8 +1156,8 @@
     "src/gameplay/Enemy.cpp": "15b6b61c0f8b51b01dc8fa2c56634ee7928a5022bcbc8fe077de872f16c3bc54",
     "src/gameplay/Enemy.h": "add0fe10ef53128f3986f780da2bb7bd812f62814f6fce4ae792095e0f410340",
     "src/gameplay/EnemyAttackStates.cpp": "40c206398172e031a38f74e9243592a04c535166ef4ea3ba4cf2119291e02a6b",
-    "src/gameplay/EnemyClassStates.cpp": "c6bb6eeae8f7006af7010317469adf97a2c2b5ae49a2c114e91277c99845e6e8",
-    "src/gameplay/EnemyClasses.h": "4425321001ef548cfbc626e9c7c95abf8dfc7cedddf264c74c48cec1b204d352",
+    "src/gameplay/EnemyClassStates.cpp": "7fb08d964a7351d2ed174f56f077d384e6f7022d2c8d8b863319b975f13ea901",
+    "src/gameplay/EnemyClasses.h": "11f7d9a54fea1d3d1d7257b512a0ca7a45250fb0d789774fe9cc9783f285fc1c",
     "src/gameplay/EnemyStates.cpp": "06cbfe8615a0d1b9afe4437a86a29796d43bfbaf1a81b93d43ade0a581023200",
     "src/gameplay/EventSenders.cpp": "96d7d8707c5fd3995518f2b5aa7cc5e0812de0a92ea69a28b22c939d21deb67d",
     "src/gameplay/GeneratedSerialize.cpp": "0e00aac052499ade138e71b38be31d397d28f565fea31196dda1f8b7bc904a39",
@@ -1179,7 +1179,7 @@
     "src/gameplay/PlayerClasses.h": "9cebbcfdaa4a1652beb883b5b196655d42357418922ed281779c5934d9cf82f9",
     "src/gameplay/PlayerOverrides.cpp": "7d1284a378fbcbabfb19c505372ab47b5c4a07e3cf5aa04a2269a0d4cd50e409",
     "src/gameplay/PlayerStates.cpp": "d3aa3af1173485b18916a6420490d5006a28f7e94423e2094e1fff6ab858caa7",
-    "src/gameplay/PlayerStats.cpp": "8866375387213d17228a35a66e93d5edf73a1d3070d3b697cbe322fd6d37c84a",
+    "src/gameplay/PlayerStats.cpp": "5dda1615f0d7654618867507792cec782eeae201f478f81dbfd4358bcdbda633",
     "src/gameplay/Projectile.cpp": "10e65e67c1f30d8d6b8642340b692b8dcdcf56ab15153024641a22d8f312beda",
     "src/gameplay/Projectile.h": "8c23fe74793980e136779a50dc69c406d9a14b758efd87ac010b8252358eccf6",
     "src/gameplay/Random.h": "5e343748d9efadc76cd3b008c9cf5d5a87c7756feefdcb5eadac5bc9f29b0d5c",
@@ -4021,8 +4021,8 @@
     "8.0.1": "dffd62a213ec6cdb4430012a4a41c11e5e32c288f133d5391f9be49e1c5b69de",
     "lld": "c4b3aaea06ff7112c64753047a2ab279fc3fe10dd807fd3c22edfdae99f43eed"
   },
-  "exact_functions": 38948,
-  "exact_bytes": 5158788,
+  "exact_functions": 38950,
+  "exact_bytes": 5159668,
   "builds": [
     {
       "id": "probes",
@@ -13402,7 +13402,7 @@
     {
       "id": "gameplay_player_stats",
       "compiler": "8.0.1",
-      "object_sha256": "51494cc08f372aea40d705a895880305cc3ba93b4508deda79e3bcac995fbff9"
+      "object_sha256": "11da87bc13ec24790cb2206428f25b1d4b80f2f20118a153b3626561b4543b37"
     },
     {
       "id": "gameplay_laser_beams",
@@ -13462,7 +13462,7 @@
     {
       "id": "gameplay_enemy_classes",
       "compiler": "8.0.1",
-      "object_sha256": "be87a4ae6e80d4eed4bb04f8fa3edb79a3bde4583e6d5a32f63e1c57f4e7f459"
+      "object_sha256": "655e0b220e19f5522d43ee7923fc5980ea500e265c582887b679d6676ef5099f"
     },
     {
       "id": "gameplay_enemy",
@@ -259485,6 +259485,17 @@
       "relocation_count": 4
     },
     {
+      "address": "0x80f6e0",
+      "size": 344,
+      "exact": true,
+      "target_sha256": "9ec0128b0ff5c2a192d96ba3a1c2be22906b08088c2e487857422a925022a4c2",
+      "compiled_sha256": "9ec0128b0ff5c2a192d96ba3a1c2be22906b08088c2e487857422a925022a4c2",
+      "source": "src/gameplay/PlayerStats.cpp",
+      "symbol": "_ZN4SPTG18ControllablePlayer8Effect10Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 6
+    },
+    {
       "address": "0x80f840",
       "size": 824,
       "exact": true,
@@ -310974,6 +310985,17 @@
       "symbol": "RecoveredLeaf_9fd110",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 0
+    },
+    {
+      "address": "0x9fd3e0",
+      "size": 536,
+      "exact": true,
+      "target_sha256": "841d888a25c521442b0a46d7a0f78feba085983222f3c249f8942a8467faf8b6",
+      "compiled_sha256": "841d888a25c521442b0a46d7a0f78feba085983222f3c249f8942a8467faf8b6",
+      "source": "src/gameplay/EnemyClassStates.cpp",
+      "symbol": "_ZN4SPTG10EnemyGiant11Check9fd3e0Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 22
     },
     {
       "address": "0x9fd600",

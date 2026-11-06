@@ -1160,7 +1160,7 @@ struct ControllablePlayer : BaseCharacter {
     float partnerDelay;          // +0x129c: how long state 136 holds the partner
     int32_t value12a0;           // +0x12a0
     int32_t value12a4;           // +0x12a4
-    int32_t value12a8;           // +0x12a8
+    float effect10Time;          // +0x12a8: how long Effect10 lasts (it sets +0x13d8 from it)
     int32_t value12ac;           // +0x12ac
     int32_t value12b0;           // +0x12b0
     float value12b4;             // +0x12b4
@@ -1250,7 +1250,7 @@ struct ControllablePlayer : BaseCharacter {
     char padding_14e8[0x8];
     int32_t value14f0;           // +0x14f0
     int32_t value14f4;           // +0x14f4
-    char padding_14f8[0x1];
+    uint8_t flag14f8;            // +0x14f8: EnemyGiant's charge passes over a player with it set
     uint8_t flag14f9;            // +0x14f9
     char padding_14fa[0x6];
     PlayerInput* input;          // +0x1500
