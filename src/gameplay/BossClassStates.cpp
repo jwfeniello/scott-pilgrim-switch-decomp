@@ -2789,8 +2789,8 @@ void SuperFightingRobotHand::Slot4(onyx::Archive& archive, ComponentSlot::Source
     onyx::Transfer(archive, valueEf0);
     onyx::Transfer(archive, valueEf4);
     onyx::Transfer(archive, valueEf8);
-    onyx::Transfer(archive, valueEfc);
-    onyx::Transfer(archive, valueF00);
+    onyx::Transfer(archive, boxWidth);
+    onyx::Transfer(archive, boxHeight);
     onyx::Transfer(archive, speedF04);
     onyx::Transfer(archive, valueF08);
     onyx::Transfer(archive, valueF0c);
@@ -2814,7 +2814,7 @@ void SuperFightingRobotHand::Slot4(onyx::Archive& archive, ComponentSlot::Source
     onyx::Transfer(archive, valueF50);
     onyx::Transfer(archive, valueF54);
     onyx::Transfer(archive, valueF58);
-    onyx::Transfer(archive, valueF5c);
+    onyx::Transfer(archive, sideOffset);
 }
 
 // A landed attack in animation 141, in the state at slot 172, sets +0xd8b once. Then it holds like any actor.
@@ -3866,6 +3866,104 @@ bool Gideon::IsA(uint32_t type) { return IsType(type); }   // 0xa600a0
 bool Lynette::IsA(uint32_t type) { return IsType(type); }   // 0xa62250
 bool Envy::IsA(uint32_t type) { return IsType(type); }   // 0xa66e30
 bool Chau::IsA(uint32_t type) { return IsType(type); }   // 0xa6a440
+
+// KenKyle 0xa506f0: unless in state 198, takes attack `index` as the special attack (or none past the end) and passes its
+// kind to slot 166; then +0xd50 is the current animation's length over the slower of the twins' speed scales.
+void KenKyle::CallA506f0(uint32_t index) {
+    if (!states.IsIn(State198Ptr())) {
+        if (index < attackList.size) {
+            value878 = index;
+            specialAttack = attackList.data[index];
+        } else {
+            value878 = -1;
+        }
+        Slot166(specialAttack.kind);
+    }
+    float own = SpeedScale();
+    float other = static_cast<KenKyle*>(twin->object)->SpeedScale();
+    float speed = own < other ? own : other;
+    AnimationInstance* current = onyx::Get<AnimationController, kAnimationControllerType>(animationHandle)->Current();
+    timeD50 = onyx::Get<AnimationClip, 0x0f67b22eu>(current->clip)->length / speed;
+}
+
+// 0xa2fae0: heads for the target, its position kept inside the box at +0xf80 when `clamp` is set. Within twice `speed` of
+// it on both axes, the hand stops and is put there (at its own height): true. Otherwise it moves toward it at `speed`, or
+// slot 170's speed when that's zero: false. False with no target. Not yet matched (not credited): the register the 0.5
+// constant lives in (s6 in the original, s3 here) is all that differs.
+bool SuperFightingRobotHand::CallA2fae0(bool clamp, float speed) {
+    onyx::Vector2 direction;
+    if (!target || !target->object) return false;
+    BaseCharacter* player = static_cast<BaseCharacter*>(target->object);
+    onyx::Vector3 goal = onyx::Find<onyx::Transform, onyx::kTransform>(onyx::Find<ActorObject, 0x6492d61du>(player->actorObject)->transform)->Position();
+    if (clamp) {
+        float centerY = boxCenterY;
+        float centerX = boxCenterX;
+        float halfWidth = boxWidth * 0.5f;
+        float halfHeight = boxHeight * 0.5f;
+        float right = centerX + halfWidth;
+        float top = centerY + halfHeight;
+        if (right < goal.x) goal.x = right;
+        else if (centerX - halfWidth > goal.x) goal.x = centerX - halfWidth;
+        if (top < goal.y) goal.y = top;
+        else if (centerY - halfHeight > goal.y) goal.y = centerY - halfHeight;
+    }
+    onyx::Transform* own = onyx::Get<onyx::Transform, onyx::kTransform>(onyx::Find<ActorObject, 0x6492d61du>(actorObject)->transform);
+    float reach = __builtin_fabsf(speed) + __builtin_fabsf(speed);
+    if (__builtin_fabsf(goal.x - own->position.x) <= reach && __builtin_fabsf(goal.y - own->position.y) <= reach) {
+        float z = own->position.z;
+        motion = onyx::Vector3::Zero();
+        motionTarget = onyx::Vector3::Zero();
+        goal.z = z;
+        onyx::Find<ActorObject, 0x6492d61du>(actorObject)->MoveTo(goal);
+        return true;
+    }
+    float step = speed;
+    if (speed == 0.0f) step = Slot170();
+    DirectionTo(&direction, this, goal);
+    motion.x = direction.x * step;
+    motion.y = direction.y * step;
+    return false;
+}
+
+// 0xa30210: whether the hand still has health and is in one of its states 260, 244, 248, 96, 106, 264, 246 or 258.
+bool SuperFightingRobotHand::CheckA30210() {
+    return health > 0.0f &&
+           (states.IsIn(State260Ptr()) || states.IsIn(State244Ptr()) || states.IsIn(State248Ptr()) || states.IsIn(State96Ptr()) ||
+            states.IsIn(State106Ptr()) || states.IsIn(State264Ptr()) || states.IsIn(State246Ptr()) || states.IsIn(State258Ptr()));
+}
+
+// 0xa2f300: whether the hand, measured from the target's x moved by +0xf5c, is between minX and maxX away along x on the
+// side +0xf5c's sign picks, and within half of depth along y.
+bool SuperFightingRobotHand::CallA2f300(float minX, float maxX, float depth) {
+    BaseCharacter* player = static_cast<BaseCharacter*>(target->object);
+    onyx::Transform* transform = onyx::Get<onyx::Transform, onyx::kTransform>(onyx::Find<ActorObject, 0x6492d61du>(player->actorObject)->transform);
+    float x = transform->position.x;
+    float y = transform->position.y;
+    float offset = sideOffset;
+    ActorObject* actor = onyx::Find<ActorObject, 0x6492d61du>(actorObject);
+    x += offset;
+    onyx::Transform* own = onyx::Get<onyx::Transform, onyx::kTransform>(actor->transform);
+    float dx = own->position.x - x;
+    float dy = own->position.y - y;
+    if (sideOffset >= 0.0f) {
+        if (dx >= minX && dx <= maxX && __builtin_fabsf(dy) <= depth * 0.5f) return true;
+    } else {
+        if (dx <= -minX && dx >= -maxX && __builtin_fabsf(dy) <= depth * 0.5f) return true;
+    }
+    return false;
+}
+
+// 0xa38af0: sends each hand without +0xfb8 set (the second one first) to its state 258.
+void SuperFightingRobotAI::CallA38af0() {
+    if (!onyx::Get<SuperFightingRobotHand, onyx_types::type_37bd3ac0>(hand1)->flagFb8) {
+        SuperFightingRobotHand* hand = onyx::Find<SuperFightingRobotHand, onyx_types::type_37bd3ac0>(hand1);
+        hand->states.Transition(hand->State258Ptr());
+    }
+    if (!onyx::Get<SuperFightingRobotHand, onyx_types::type_37bd3ac0>(hand2)->flagFb8) {
+        SuperFightingRobotHand* hand = onyx::Find<SuperFightingRobotHand, onyx_types::type_37bd3ac0>(hand2);
+        hand->states.Transition(hand->State258Ptr());
+    }
+}
 
 // 0xa2f1e0: in state 258, slot 96 or state 260, (re)enters state 260.
 void SuperFightingRobotAI::CallA2f1e0() {

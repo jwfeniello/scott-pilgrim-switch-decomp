@@ -502094,6 +502094,20 @@
           "got_bindings": {}
         },
         {
+          "address": "0x675290",
+          "size": 124,
+          "symbol": "_Z32Create_Onyx_Graphics_DisplayListv",
+          "target_sha256": "b93483b02495de75d0961273c9e5c40fc5b7df93d373cf8ef5eae666e67663ee",
+          "bindings": {
+            "GenericFactoryManager": "0x191c9c8",
+            "GenericFactoryResolve": "0x676160",
+            "_ZN4Onyx9Component4BaseC2Ev": "0x6764e0",
+            "_ZTVN4Onyx8Graphics11DisplayListE": "0x1842d38",
+            "AllocatorContext": "0x1935058"
+          },
+          "got_bindings": {}
+        },
+        {
           "address": "0x675310",
           "size": 80,
           "symbol": "_Z38Create_Onyx_Graphics_IndexBufferStaticv",
@@ -564409,7 +564423,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "213": "0x13912d2"
+            "215": "0x13912d2"
           }
         },
         {
@@ -564427,7 +564441,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "183": "0x13912d6"
+            "185": "0x13912d6"
           }
         },
         {
@@ -564445,7 +564459,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "364": "0x13912da"
+            "368": "0x13912da"
           }
         },
         {
@@ -564482,7 +564496,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "343": "0x13912f0"
+            "347": "0x13912f0"
           }
         },
         {
@@ -564505,7 +564519,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "135": "0x13912f4"
+            "137": "0x13912f4"
           }
         },
         {
@@ -564522,7 +564536,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "177": "0x1391336"
+            "179": "0x1391336"
           }
         },
         {
@@ -564540,7 +564554,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "405": "0x13913ba"
+            "414": "0x13913ba"
           }
         },
         {
@@ -564610,7 +564624,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "148": "0x13913be"
+            "150": "0x13913be"
           }
         },
         {
@@ -564627,7 +564641,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "230": "0x13913ca"
+            "232": "0x13913ca"
           }
         },
         {
@@ -564749,7 +564763,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "252": "0x13913d2"
+            "254": "0x13913d2"
           }
         },
         {
@@ -564779,7 +564793,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "381": "0x13913e3"
+            "386": "0x13913e3"
           }
         },
         {
@@ -564795,7 +564809,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "164": "0x13913f4"
+            "166": "0x13913f4"
           }
         },
         {
@@ -564816,7 +564830,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "402": "0x1391400"
+            "409": "0x1391400"
           }
         },
         {
@@ -564835,7 +564849,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "411": "0x1391414"
+            "420": "0x1391414"
           }
         },
         {
@@ -564846,6 +564860,25 @@
           "bindings": {
             "_ZN4SPTG12StateMachineINS_13BaseCharacterEE10TransitionEMS1_FiiE": "0x812930"
           },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xa2f300",
+          "size": 488,
+          "symbol": "_ZN4SPTG22SuperFightingRobotHand10CallA2f300Efff",
+          "target_sha256": "f98d57efc693b8ba1a3ab7932fddacc5152dd79202753281bf6ec766d8879612",
+          "bindings": {
+            "Accessor_Resolver": "0x191cd10",
+            "Accessor_Resolve": "0x67edd0"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xa30210",
+          "size": 664,
+          "symbol": "_ZN4SPTG22SuperFightingRobotHand11CheckA30210Ev",
+          "target_sha256": "98a4b3dd4e79db2139daf2ab065c8ecf2be2ba37430f093067dcce4993a4906b",
+          "bindings": {},
           "got_bindings": {}
         },
         {
@@ -564913,7 +564946,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "418": "0x1391420"
+            "427": "0x1391420"
           }
         },
         {
@@ -564921,6 +564954,18 @@
           "size": 296,
           "symbol": "_ZN4SPTG20SuperFightingRobotAI8State262Ei",
           "target_sha256": "7c9e2da5830c630870b0d9865fa350c915c94a2ecc6cf9c112d69375efd11d21",
+          "bindings": {
+            "Accessor_Resolver": "0x191cd10",
+            "Accessor_Resolve": "0x67edd0",
+            "_ZN4SPTG12StateMachineINS_13BaseCharacterEE10TransitionEMS1_FiiE": "0x812930"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xa38af0",
+          "size": 416,
+          "symbol": "_ZN4SPTG20SuperFightingRobotAI10CallA38af0Ev",
+          "target_sha256": "1eff618a2aa8e54205cc87c1227e9c6f4311b67a3e77983a73c541bd9d778f69",
           "bindings": {
             "Accessor_Resolver": "0x191cd10",
             "Accessor_Resolve": "0x67edd0",
@@ -565009,7 +565054,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "288": "0x139148c"
+            "290": "0x139148c"
           }
         },
         {
@@ -565028,7 +565073,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "291": "0x1391490"
+            "293": "0x1391490"
           }
         },
         {
@@ -565047,7 +565092,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "294": "0x1391494"
+            "296": "0x1391494"
           }
         },
         {
@@ -565144,7 +565189,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "224": "0x13914a0"
+            "226": "0x13914a0"
           }
         },
         {
@@ -565171,7 +565216,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "154": "0x13914a4"
+            "156": "0x13914a4"
           }
         },
         {
@@ -565191,7 +565236,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "298": "0x13914b8"
+            "300": "0x13914b8"
           }
         },
         {
@@ -565210,7 +565255,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "285": "0x13914bc"
+            "287": "0x13914bc"
           }
         },
         {
@@ -565282,7 +565327,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "79": "0x13914c0"
+            "81": "0x13914c0"
           }
         },
         {
@@ -565299,7 +565344,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "201": "0x13914c4"
+            "203": "0x13914c4"
           }
         },
         {
@@ -565316,7 +565361,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "159": "0x13914c8"
+            "161": "0x13914c8"
           }
         },
         {
@@ -565333,7 +565378,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "204": "0x13914cc"
+            "206": "0x13914cc"
           }
         },
         {
@@ -565346,7 +565391,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "121": "0x13914d0"
+            "123": "0x13914d0"
           }
         },
         {
@@ -565363,7 +565408,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "198": "0x13914d4"
+            "200": "0x13914d4"
           }
         },
         {
@@ -565376,7 +565421,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "82": "0x13914e0"
+            "84": "0x13914e0"
           }
         },
         {
@@ -565452,7 +565497,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "138": "0x13914e4"
+            "140": "0x13914e4"
           }
         },
         {
@@ -565518,7 +565563,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "313": "0x13914f4"
+            "317": "0x13914f4"
           }
         },
         {
@@ -565581,7 +565626,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "174": "0x139151c"
+            "176": "0x139151c"
           }
         },
         {
@@ -565598,7 +565643,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "274": "0x139153a"
+            "276": "0x139153a"
           }
         },
         {
@@ -565702,7 +565747,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "95": "0x139153e"
+            "97": "0x139153e"
           }
         },
         {
@@ -565720,7 +565765,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "180": "0x1391542"
+            "182": "0x1391542"
           }
         },
         {
@@ -565734,11 +565779,11 @@
             "_ZN4SPTG5Enemy8State198Ei": "0x9d40b0",
             "Accessor_Resolver": "0x191cd10",
             "Accessor_Resolve": "0x67edd0",
-            "_ZN4SPTG7KenKyle10CallA506f0Ei": "0xa506f0"
+            "_ZN4SPTG7KenKyle10CallA506f0Ej": "0xa506f0"
           },
           "got_bindings": {},
           "immutable_sections": {
-            "301": "0x139154e"
+            "303": "0x139154e"
           },
           "literals": {
             "00401c46": "0x1331f68"
@@ -565810,7 +565855,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "304": "0x1391562"
+            "308": "0x1391562"
           }
         },
         {
@@ -565827,8 +565872,20 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "189": "0x139157e"
+            "191": "0x139157e"
           }
+        },
+        {
+          "address": "0xa506f0",
+          "size": 424,
+          "symbol": "_ZN4SPTG7KenKyle10CallA506f0Ej",
+          "target_sha256": "3de825cefb473c3c351cb8f2e81de072378a66ef33615b581c25212fa2d8e2f5",
+          "bindings": {
+            "_ZN4SPTG6AttackaSERKS0_": "0x8e4450",
+            "Accessor_Resolver": "0x191cd10",
+            "Accessor_Resolve": "0x67edd0"
+          },
+          "got_bindings": {}
         },
         {
           "address": "0xa52700",
@@ -565920,7 +565977,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "98": "0x1391582"
+            "100": "0x1391582"
           }
         },
         {
@@ -565937,7 +565994,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "168": "0x1391586"
+            "170": "0x1391586"
           }
         },
         {
@@ -565962,7 +566019,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "221": "0x139158e"
+            "223": "0x139158e"
           }
         },
         {
@@ -565981,7 +566038,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "393": "0x13915b4"
+            "400": "0x13915b4"
           }
         },
         {
@@ -566073,7 +566130,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "145": "0x13915c0"
+            "147": "0x13915c0"
           }
         },
         {
@@ -566111,7 +566168,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "92": "0x13915c4"
+            "94": "0x13915c4"
           }
         },
         {
@@ -566140,7 +566197,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "243": "0x13915de"
+            "245": "0x13915de"
           }
         },
         {
@@ -566158,7 +566215,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "246": "0x13915ea"
+            "248": "0x13915ea"
           }
         },
         {
@@ -566175,7 +566232,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "171": "0x13915ee"
+            "173": "0x13915ee"
           }
         },
         {
@@ -566196,7 +566253,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "399": "0x13915fe"
+            "406": "0x13915fe"
           }
         },
         {
@@ -566216,7 +566273,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "396": "0x139160a"
+            "403": "0x139160a"
           }
         },
         {
@@ -566310,7 +566367,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "195": "0x1391638"
+            "197": "0x1391638"
           }
         },
         {
@@ -566431,7 +566488,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "151": "0x139163c"
+            "153": "0x139163c"
           }
         },
         {
@@ -566452,7 +566509,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "390": "0x1391640"
+            "397": "0x1391640"
           }
         },
         {
@@ -566481,7 +566538,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "384": "0x1391644"
+            "391": "0x1391644"
           }
         },
         {
@@ -566498,7 +566555,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "361": "0x1391648"
+            "365": "0x1391648"
           }
         },
         {
@@ -566515,7 +566572,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "192": "0x139164c"
+            "194": "0x139164c"
           }
         },
         {
@@ -566529,7 +566586,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "227": "0x1391658"
+            "229": "0x1391658"
           }
         },
         {
@@ -566547,7 +566604,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "265": "0x1391660"
+            "267": "0x1391660"
           }
         },
         {
@@ -566565,7 +566622,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "268": "0x1391664"
+            "270": "0x1391664"
           }
         },
         {
@@ -566582,7 +566639,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "249": "0x1391668"
+            "251": "0x1391668"
           }
         },
         {
@@ -566649,7 +566706,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "186": "0x139166c"
+            "188": "0x139166c"
           }
         },
         {
@@ -566683,7 +566740,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "376": "0x1391670"
+            "380": "0x1391670"
           }
         },
         {
@@ -566701,7 +566758,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "271": "0x1391684"
+            "273": "0x1391684"
           }
         },
         {
@@ -566716,7 +566773,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "210": "0x1391688"
+            "212": "0x1391688"
           }
         },
         {
@@ -566734,7 +566791,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "207": "0x139168c"
+            "209": "0x139168c"
           }
         },
         {
@@ -566799,7 +566856,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "89": "0x1391690"
+            "91": "0x1391690"
           }
         },
         {

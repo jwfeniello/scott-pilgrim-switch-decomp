@@ -4425,3 +4425,36 @@ struct Damper : DamperLayout {
     virtual ~Damper();
 };
 void* Create_Damper() { return new (GenericFactoryResolve(GenericFactoryManager, 0x386d550du)->Allocate(sizeof(Damper))) Damper; }
+
+// Onyx::Graphics::DisplayList (factory 0x675290), by its constructor's stores
+namespace Onyx {
+namespace Graphics {
+struct DisplayListLayout : ::Onyx::Component::Base {
+    char padding_8[0x48];
+    uint64_t field_50;
+    uint64_t field_58;
+    int32_t field_60;
+    char padding_64[0x4];
+    void* field_68;
+    uint64_t field_70;
+    uint64_t field_78;
+    uint64_t field_80;
+    char padding_88[0x8];
+    int32_t field_90;
+    int32_t field_94;
+    int32_t field_98;
+    char padding_9c[0x4];
+    int32_t field_a0;
+    int32_t field_a4;
+    int32_t field_a8;
+    char padding_ac[0x4];
+    __attribute__((always_inline)) DisplayListLayout() { field_60 = 0; field_50 = 0; field_58 = 0; field_78 = 0; field_80 = 0; }
+    virtual ~DisplayListLayout();
+};
+struct DisplayList : DisplayListLayout {
+    __attribute__((always_inline)) DisplayList() { field_68 = DefaultAllocator(); field_70 = 0; field_90 = 0; field_94 = 0; field_98 = 0; field_a0 = 0; field_a4 = 0; field_a8 = -1; }
+    virtual ~DisplayList();
+};
+}  // namespace Graphics
+}  // namespace Onyx
+void* Create_Onyx_Graphics_DisplayList() { return new (GenericFactoryResolve(GenericFactoryManager, 0x7b73c94u)->Allocate(sizeof(Onyx::Graphics::DisplayList))) Onyx::Graphics::DisplayList; }

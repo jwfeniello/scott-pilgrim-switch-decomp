@@ -326,7 +326,7 @@ struct KenKyle : Boss {
     bool OnHit(BaseCharacter* other, void* hit);
     void Update();
     bool Slot82();
-    void CallA506f0(int32_t value);   // 0xa506f0
+    void CallA506f0(uint32_t index);   // 0xa506f0
     void Slot4(onyx::Archive& archive, ComponentSlot::Source* source);
     int State114(int event); State State114Ptr();   // slots 114, 115, override Boss
     int State122(int event); State State122Ptr();   // slots 122, 123, override Boss
@@ -808,8 +808,8 @@ struct SuperFightingRobotHand : Boss {
     int32_t valueEf0;            // +0xef0
     int32_t valueEf4;            // +0xef4
     int32_t valueEf8;            // +0xef8
-    int32_t valueEfc;            // +0xefc
-    int32_t valueF00;            // +0xf00
+    float boxWidth;              // +0xefc: the box 0xa2fae0 keeps the hand's goal in, around +0xf80
+    float boxHeight;             // +0xf00
     float speedF04;              // +0xf04: times +0xf10 in state 246
     int32_t valueF08;            // +0xf08
     int32_t valueF0c;            // +0xf0c
@@ -834,8 +834,11 @@ struct SuperFightingRobotHand : Boss {
     int32_t valueF50;            // +0xf50
     int32_t valueF54;            // +0xf54
     int32_t valueF58;            // +0xf58
-    int32_t valueF5c;            // +0xf5c
-    char padding_f60[0x40];
+    float sideOffset;            // +0xf5c: how far beside the target the hand aims; its sign picks the side
+    char padding_f60[0x20];
+    float boxCenterX;            // +0xf80
+    float boxCenterY;            // +0xf84
+    char padding_f88[0x18];
     int32_t hitsFa0;             // +0xfa0
     char padding_fa4[0xc];
     SuperFightingRobotAI* owner; // +0xfb0: set by the robot
