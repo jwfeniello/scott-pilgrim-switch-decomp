@@ -141,9 +141,26 @@ struct ProjectileSpawnInfo {
 static_assert(sizeof(ProjectileSpawnInfo) == 0x70, "ProjectileSpawnInfo size");
 // A 0x50-byte member some bosses serialize with 0xc1f2b0: a count, then a
 // vector of 4-byte pairs. Contents otherwise unknown.
+struct IntPair { int32_t x, y; };
 struct PairList {
-    char data[0x50];
+    char data[0x38];
+    uint64_t count;                 // +0x38
+    IntPair* pairs;                 // +0x40
+    char data_48[0x8];
+    // 0xc1f0c0: given a move from `from` to `to`, fills `out` (zero unless the list changes it) and `flag`.
+    // The bosses' ArrivalPoint passes it a move and takes `out` as the point. Name and meaning not known yet.
+    void Query(const onyx::Vector2* from, const onyx::Vector2* to, onyx::Vector2* out, int32_t* flag);
     void Serialize(onyx::Archive& archive);   // 0xc1f2b0
+    // The pairs' average (zero for none). GigaGideon's ArrivalPoint uses only x, but the original still works out y.
+    IntPair Average() const {
+        if (!count) return IntPair{0, 0};
+        int32_t x = 0, y = 0;
+        for (uint32_t i = 0; i < count; ++i) {
+            x += pairs[i].x;
+            y += pairs[i].y;
+        }
+        return IntPair{x / static_cast<int32_t>(count), y / static_cast<int32_t>(count)};
+    }
 };
 // A 0x28-byte list of component references, restored by 0x682f80 (which many
 // components share): a count, then each reference's key pair, resolved

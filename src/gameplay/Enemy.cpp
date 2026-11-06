@@ -387,4 +387,41 @@ void Enemy::Slot94() {
 // The type tests (slot 12): each class's own type or one of its base's (SPTG_TYPE).
 bool Enemy::IsA(uint32_t type) { return IsType(type); }   // 0x9e1f00
 
+// 0x9db480: the stance animation. On foot, 1 with +0x974 set, else 7; mounted, 59 or 43 with +0x974 set and 58 or 42
+// without (by the mount's slot 49), and while still mounted the mount plays 99 or 98.
+void Enemy::Call9db480() {
+    if (IsMounted()) {
+        if (flag974) {
+            if (mountHandle && mountHandle->object) {
+                PlayAnimation(static_cast<BaseCharacter*>(mountHandle->object)->Slot49() ? 59 : 43, true, false, 1.0f);
+                if (IsMounted()) static_cast<BaseCharacter*>(mountHandle->object)->PlayAnimation(99, true, false, 1.0f);
+            }
+        } else {
+            if (mountHandle && mountHandle->object) {
+                PlayAnimation(static_cast<BaseCharacter*>(mountHandle->object)->Slot49() ? 58 : 42, true, false, 1.0f);
+                if (IsMounted()) static_cast<BaseCharacter*>(mountHandle->object)->PlayAnimation(98, true, false, 1.0f);
+            }
+        }
+    } else {
+        if (flag974) PlayAnimation(1, true, false, 1.0f);
+        else PlayAnimation(7, true, false, 1.0f);
+    }
+}
+
+// 0x9db5c0: the unit direction in x and y from the actor to the point, or zero when they are within 1e-6.
+void Enemy::DirectionTo(onyx::Vector2* out, Enemy* self, const onyx::Vector3& point) {
+    onyx::Transform* transform = onyx::Get<onyx::Transform, onyx::kTransform>(onyx::Find<ActorObject, 0x6492d61du>(self->actorObject)->transform);
+    float x = transform->position.x;
+    float y = transform->position.y;
+    onyx::Vector2 offset(point.x - x, point.y - y);
+    *out = offset;
+    if (__builtin_fabsf(__builtin_sqrtf(offset.x * offset.x + offset.y * offset.y)) <= 1e-6f) {
+        *out = onyx::Vector2::Zero();
+    } else {
+        float length = __builtin_sqrtf(offset.x * offset.x + offset.y * offset.y);
+        out->x = offset.x / length;
+        out->y = offset.y / length;
+    }
+}
+
 }  // namespace SPTG

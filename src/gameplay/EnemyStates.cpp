@@ -274,7 +274,7 @@ int Enemy::State174(int event) {
         BaseCharacter* player = static_cast<BaseCharacter*>(target->object);
         ActorObject* actor = onyx::Find<ActorObject, onyx_types::type_6492d61d>(player->actorObject);
         FaceX(onyx::Get<onyx::Transform, onyx::kTransform>(actor->transform)->position.x);
-        Enter9db480();
+        Call9db480();
         mode87c = 2;
         flag9d2 = 0;
         motionTarget = onyx::Vector3::Zero();
@@ -674,7 +674,7 @@ int Enemy::State218(int event) {
     case kStateEnter:
         value334 = 0.0f;
         if (!Slot231()) {
-            Enter9db480();
+            Call9db480();
         } else if (IsMounted()) {
             if (BaseCharacter* mount = Mount()) {
                 PlayAnimation(mount->Slot49() == 0 ? 43 : 59, 1, 0, 1.0f);

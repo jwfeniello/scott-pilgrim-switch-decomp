@@ -232,10 +232,13 @@ struct GigaGideon : Boss {
     char padding_11e8[0x4];
     float coreHealthStart;       // +0x11ec
     float chargeTime;            // +0x11f0: how long state 272 charges before state 282
-    char padding_11f4[0xc];
+    char padding_11f4[0x8];
+    float arrivalOffset;         // +0x11fc: added to ArrivalPoint's x
     float value1200;             // +0x1200
     float value1204;             // +0x1204
-    char padding_1208[0xb0];
+    char padding_1208[0x58];
+    PairList list1260;           // +0x1260
+    char padding_12b0[0x8];
     BossEffect* effect;          // +0x12b8
 };
 // vtable 0x18977d0, 260 slots
@@ -545,7 +548,7 @@ struct Lynette : TagTeamMember {
     AttackSlot attack;           // +0xe40: requested every update with kind 11
     AttackSlot attackEb8;        // +0xeb8: requested every update with kind 180
     int32_t valueF30;            // +0xf30: serialized through a uint32_t
-    int32_t valueF34;            // +0xf34
+    float sideOffset;            // +0xf34: how far beside the target ArrivalPoint aims
     float limitF38;              // +0xf38
     float limitF3c;              // +0xf3c
     float limitF40;              // +0xf40

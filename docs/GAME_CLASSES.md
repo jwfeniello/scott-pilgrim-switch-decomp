@@ -341,6 +341,15 @@ A few more things decide these handlers' code:
 - A search that returns from inside the loop when it reaches the end (`InteractiveObject::Remove` and
   `FindSpawner`) keeps the pointer increment apart from the load. Written as a `for` loop with a `break`, the
   increment folds into a post-indexed load.
+- `onyx::Vector2::Zero()`'s value (0x1924ca0) is read with a single 8-byte load whose low address bits fold into the
+  load in all 44 places that use it, which only happens for an 8-aligned object. The type can't be 8-aligned
+  (`ActorFlags` keeps a `Vector2` at +0x7c), so the static is declared `alignas(8)`. `Enemy::DirectionTo` and
+  `Lynette::ArrivalPoint` matched once it was.
+- A first loop iteration written out by hand shows as a value computed before the loop (a `cset`/`orr` pair instead of a
+  branch) and a loop counter that starts at 1. LLVM doesn't peel a loop like this on its own (`Boss::CheckA1e820`).
+- On-foot and mounted calls through the same slot share one tail-call block, and a choice between two constants for
+  such a call stays two calls: `if (flag) PlayAnimation(1, ...); else PlayAnimation(7, ...);`, not a `?:` argument
+  (`Enemy::Call9db480`).
 
 ## Build profile for game classes
 

@@ -1,6 +1,7 @@
 // States and hooks of the boss classes (see docs/GAME_CLASSES.md#bosses). Names
 // are provisional.
 #include "BossClasses.h"
+#include "Camera.h"
 #include "ComponentTypes.h"
 #include "Random.h"
 
@@ -2662,7 +2663,7 @@ void Lynette::Slot4(onyx::Archive& archive, ComponentSlot::Source* source) {
     attack.Serialize(archive);
     attackEb8.Serialize(archive);
     onyx::TransferAs<uint32_t>(archive, valueF30);
-    onyx::Transfer(archive, valueF34);
+    onyx::Transfer(archive, sideOffset);
     onyx::Transfer(archive, limitF38);
     onyx::Transfer(archive, limitF3c);
     onyx::Transfer(archive, limitF40);
@@ -3865,5 +3866,41 @@ bool Gideon::IsA(uint32_t type) { return IsType(type); }   // 0xa600a0
 bool Lynette::IsA(uint32_t type) { return IsType(type); }   // 0xa62250
 bool Envy::IsA(uint32_t type) { return IsType(type); }   // 0xa66e30
 bool Chau::IsA(uint32_t type) { return IsType(type); }   // 0xa6a440
+
+// 0xa2f1e0: in state 258, slot 96 or state 260, (re)enters state 260.
+void SuperFightingRobotAI::CallA2f1e0() {
+    if (states.IsIn(State258Ptr()) || states.IsIn(State96Ptr()) || states.IsIn(State260Ptr())) states.Transition(State260Ptr());
+}
+
+// GigaGideon slot 241 (0xa59d40): from his position toward the average x of the list's pairs, through the list, then
+// +0x11fc further along x at +0x11e4's height. Not yet matched (not credited): the original keeps the y average too (both
+// sums in one vector loop of 16 pairs, the pair built in a register and only x used); here y is dropped and the x sum
+// loop is unrolled by four instead.
+onyx::Vector3 GigaGideon::ArrivalPoint() {
+    onyx::Transform* transform = onyx::Get<onyx::Transform, onyx::kTransform>(onyx::Find<ActorObject, 0x6492d61du>(actorObject)->transform);
+    onyx::Vector2 from(transform->position.x, transform->position.y);
+    onyx::Vector2 to(static_cast<float>(list1260.Average().x), from.y);
+    onyx::Vector2 point = onyx::Vector2::Zero();
+    int32_t flag = 0;
+    list1260.Query(&from, &to, &point, &flag);
+    return onyx::Vector3(point.x + arrivalOffset, point.y, value11e4);
+}
+
+// Lynette slot 241 (0xa62e90): a point beside the target, on the side away from the middle of the screen (+0xf34 away),
+// passed through the list at +0xf60 and put at her ground height.
+onyx::Vector3 Lynette::ArrivalPoint() {
+    BaseCharacter* player = static_cast<BaseCharacter*>(target->object);
+    onyx::Transform* transform = onyx::Get<onyx::Transform, onyx::kTransform>(onyx::Find<ActorObject, 0x6492d61du>(player->actorObject)->transform);
+    float x = transform->position.x;
+    float y = transform->position.y;
+    onyx::Vector2 from(x, y);
+    LevelCamera* levelCamera = onyx::Find<LevelCamera, onyx_types::type_67f2aa4d>(camera.Get()->levelCamera);
+    float middle = onyx::Get<onyx::Transform, onyx::kTransform>(levelCamera->transform)->position.x + 192.0f;
+    onyx::Vector2 to(x + (x > middle ? -sideOffset : sideOffset), y);
+    onyx::Vector2 point = onyx::Vector2::Zero();
+    int32_t flag = 0;
+    listF60.Query(&from, &to, &point, &flag);
+    return onyx::Vector3(point.x, point.y, static_cast<float>(groundHeight));
+}
 
 }  // namespace SPTG

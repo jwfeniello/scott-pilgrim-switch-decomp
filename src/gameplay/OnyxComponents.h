@@ -34,8 +34,12 @@ struct Vector3 {
 struct Vector2 {
     float x, y;
     Vector2() {}
+    Vector2(float x_, float y_) : x(x_), y(y_) {}
     Vector2(const Vector2& o) : x(o.x), y(o.y) {}
     Vector2& operator=(const Vector2&) = default;
+    // The zero (0x1924ca0) is read with 8-byte loads in every function that uses it, so it is 8-aligned; the type
+    // isn't (ActorFlags keeps one at +0x7c).
+    static Vector2 Zero() { alignas(8) static const Vector2 value(0.0f, 0.0f); return value; }
 };
 
 struct Component {

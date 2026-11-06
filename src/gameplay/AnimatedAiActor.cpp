@@ -253,4 +253,29 @@ bool FlaggedComponent::IsActive() {
 // The type tests (slot 12): each class's own type or one of its base's (SPTG_TYPE).
 bool AnimatedAiActor::IsA(uint32_t type) { return IsType(type); }   // 0x948080
 
+// 0x85fd70: puts the actor at the position and, when its playfield is a PlayfieldCollision, hands that the position
+// rounded half away from zero.
+void ActorObject::MoveTo(const onyx::Vector3& position) {
+    onyx::Find<onyx::Transform, onyx::kTransform>(transform)->SetPosition(position);
+    TypedComponent* object = playfield ? static_cast<TypedComponent*>(playfield->object) : nullptr;
+    if (object && object->IsA(PlayfieldCollision::kType)) {
+        float x = static_cast<float>(static_cast<int>(position.x + (position.x > 0.0f ? 0.5f : -0.5f)));
+        float y = static_cast<float>(static_cast<int>(position.y + (position.y > 0.0f ? 0.5f : -0.5f)));
+        float z = static_cast<float>(static_cast<int>(position.z + (position.z > 0.0f ? 0.5f : -0.5f)));
+        int32_t cell[3] = { static_cast<int>(x), static_cast<int>(y), static_cast<int>(z) };
+        static_cast<PlayfieldCollision*>(object)->Place(cell);
+    }
+}
+
+// 0x85fc20: records the ground height under the actor and sets the shadow graphics' value by how far above it the
+// actor is: 0.2 above 60, 0.1 above 30, else 0. Not yet matched (not credited): the original makes both tests before
+// any lookup, keeps three separate lookups and shares one float store; here the last two lookups merge.
+void ShadowAnimatedObject::SetGroundHeight(int height, float z) {
+    float above = z - static_cast<float>(height);
+    groundHeight = height;
+    if (above > 60.0f) onyx::Get<ShadowGraphics, 0x771ba2eeu>(graphics)->Slot16()->value4 = 0.2f;
+    else if (above > 30.0f) onyx::Get<ShadowGraphics, 0x771ba2eeu>(graphics)->Slot16()->value4 = 0.1f;
+    else onyx::Get<ShadowGraphics, 0x771ba2eeu>(graphics)->Slot16()->value4 = 0.0f;
+}
+
 }  // namespace SPTG

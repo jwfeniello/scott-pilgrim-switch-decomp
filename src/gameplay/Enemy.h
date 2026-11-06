@@ -326,7 +326,6 @@ struct Enemy : BaseCharacter {
         else spawnedList->PushFront(&node, info);
     }
     void Update9db820(float time, float value);   // 0x9db820
-    void Enter9db480();  // 0x9db480
     void Call996c30(float value, int a, int b, void* c);   // 0x996c30
     void Apply995a30(float damage);                         // 0x995a30
     bool Check9ddab0(EnemySensor* sensor);                  // 0x9ddab0
