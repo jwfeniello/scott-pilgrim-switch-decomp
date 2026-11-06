@@ -264,4 +264,7 @@ int Projectile::FlyingState(int event) {
     return kStateParentTookOver;
 }
 
+// The type tests (slot 12): each class's own type or one of its base's (SPTG_TYPE).
+bool Projectile::IsA(uint32_t type) { return IsType(type); }   // 0x9596e0
+
 }  // namespace SPTG

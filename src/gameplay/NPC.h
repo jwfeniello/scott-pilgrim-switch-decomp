@@ -6,6 +6,8 @@
 namespace SPTG {
 
 struct NPC : BaseCharacter {
+    SPTG_TYPE(BaseCharacter, 0x5d52578du)
+    bool IsA(uint32_t type) override;   // slot 12 (0x9b82a0)
     void Slot13() override;                                                  // slot 13
     void ReactTo(BaseCharacter* other, int reaction, void* data) override;   // slot 21
     bool OnHit(BaseCharacter* other, void* hit) override;                    // slot 38

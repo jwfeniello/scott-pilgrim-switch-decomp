@@ -124,6 +124,30 @@ Playable characters, bosses, enemies, NPCs and level objects all derive from
     - `StrikerMrsChau`
     - `StrikerYeti`
 
+### Type tests (slot 12)
+
+Every class in this tree answers `IsA(type)` at slot 12, which `Cast<T>` uses. A class's test accepts its own
+type or any of its base's, inlined into one chain, so the hashes each `IsA` compares confirm the tree above
+independently of RTTI. In the source a class declares its type with `SPTG_TYPE(Base, type)`, which adds `kType`
+and an inline `IsType`, and its `IsA` returns `IsType(type)`. 64 classes have theirs on the real class.
+
+- Every component passes 0x07b73c94 (the menus too), and the actors also pass 0x386d550d.
+- `SPTG_AIComponent` is 0x1486d4e8 (the pool the factories allocate the game's components from),
+  `AnimatedAiActor` 0x1cfd89c7 and `BaseCharacter` 0x1cfe99c7. Below them: `Enemy` 0x0aff48df, `NPC`
+  0x5d52578d, `ControllablePlayer` 0x2f2bf4aa and `Boss` 0x38fe97eb; `Striker` 0x7d4c55c0, `Projectile`
+  0x37f7ec92, `Pickup` 0x52b303bf, `InteractiveObject` 0x05fcee1c and `BreakableObject` 0x1b2ba6bf. The
+  subclasses' types are in their headers.
+- The two base types need an inline function of their own (`SPTG_AIComponent::BaseIsType`). Written into
+  the same `||` chain as the class types, the compares become branches, where the original tests the last two
+  with `cset` and `orr`.
+- `EnemyJake`'s test leaves out `EnemyNormal`'s type (0x65c38d59), although its vtable has `EnemyNormal`'s
+  methods, so its type declaration names `Enemy` as the base.
+- 0x2f2bf4aa, the type of the characters that receive messages at slot 159, is `ControllablePlayer`'s own.
+  The separate `MessageReceiver` view that stood for it is gone.
+- Still on placeholders: `SPTG_AIComponent`'s own test (0x862630, shared by 15 vtables), `Pickup` (0x9a3db0)
+  and `MithrilSkateboard` (0x9b8a60), since `Pickup.cpp` still uses a small stand-in for `AnimatedAiActor`,
+  and the 40 menu screens, which share a five-type base of their own.
+
 ## State machines
 
 Characters run hierarchical state machines. A state is a member function taking

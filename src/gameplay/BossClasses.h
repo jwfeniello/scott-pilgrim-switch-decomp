@@ -9,6 +9,8 @@ namespace SPTG {
 
 // vtable 0x188c9c0, 268 slots
 struct TagTeamMember : Boss {
+    SPTG_TYPE(Boss, 0x53b1eadcu)
+    bool IsA(uint32_t type) override;   // slot 12 (0xa259c0)
     void Slot13();
     bool Slot168();
     bool Slot82();
@@ -51,7 +53,8 @@ struct TagTeamMember : Boss {
 };
 // vtable 0x188a8a0, 272 slots
 struct Todd : Boss {
-    static const uint32_t kType = 0x4aedc535u;
+    SPTG_TYPE(Boss, 0x4aedc535u)
+    bool IsA(uint32_t type) override;   // slot 12 (0xa20240)
     void AttackLanded(AnimatedAiActor* target) override;
     float Slot59();
     void Update();
@@ -156,6 +159,8 @@ struct AttachmentVisual : onyx::Component {
 void PlayAttachmentAnimation(onyx::ComponentHandle* handle, int animation, bool loop);
 
 struct GigaGideon : Boss {
+    SPTG_TYPE(Boss, 0x3c09f4bdu)
+    bool IsA(uint32_t type) override;   // slot 12 (0xa58380)
     void Spawn(const EnemySpawnInfo* info) override;
     void Slot19();
     void SetAnimationSpeed(float speed) override;
@@ -235,6 +240,8 @@ struct GigaGideon : Boss {
 };
 // vtable 0x18977d0, 260 slots
 struct Gideon : Boss {
+    SPTG_TYPE(Boss, 0x3038d415u)
+    bool IsA(uint32_t type) override;   // slot 12 (0xa600a0)
     bool Slot168();
     bool OnHit(BaseCharacter* other, void* hit);
     void Update();
@@ -259,6 +266,8 @@ struct Gideon : Boss {
 };
 // vtable 0x1896478, 266 slots
 struct SuperGideon : Boss {
+    SPTG_TYPE(Boss, 0x7eebcd6au)
+    bool IsA(uint32_t type) override;   // slot 12 (0xa52a60)
     bool Slot73();
     void Slot13();
     bool Slot82();
@@ -308,6 +317,8 @@ struct SuperGideon : Boss {
 };
 // vtable 0x1895a88, 272 slots
 struct KenKyle : Boss {
+    SPTG_TYPE(Boss, 0x70d627b3u)
+    bool IsA(uint32_t type) override;   // slot 12 (0xa4b900)
     float TakeDamage(const void* hit, BaseCharacter* other);
     bool OnHit(BaseCharacter* other, void* hit);
     void Update();
@@ -372,6 +383,8 @@ struct KenKyle : Boss {
 };
 // vtable 0x18949c8, 268 slots
 struct LucasLee : Boss {
+    SPTG_TYPE(Boss, 0x4e00c44au)
+    bool IsA(uint32_t type) override;   // slot 12 (0xa478f0)
     void Slot13();
     void ReactTo(BaseCharacter* other, int reaction, void* data);
     bool Slot82();
@@ -413,6 +426,8 @@ struct LucasLee : Boss {
 };
 // vtable 0x1891ed8, 272 slots
 struct Roxy : Boss {
+    SPTG_TYPE(Boss, 0x55ad8d4du)
+    bool IsA(uint32_t type) override;   // slot 12 (0xa3c320)
     void Slot13();
     float TakeDamage(const void* hit, BaseCharacter* other);
     int State122(int event); State State122Ptr();   // slots 122, 123, override Boss
@@ -433,12 +448,16 @@ struct Roxy : Boss {
 };
 // vtable 0x1890e58, 260 slots
 struct RoxyMirror : Boss {
+    SPTG_TYPE(Boss, 0x4e41bcb8u)
+    bool IsA(uint32_t type) override;   // slot 12 (0xa3a810)
     void Slot13();
     int State96(int event); State State96Ptr();   // slots 96, 97, override Boss
     virtual int State258(int event); virtual State State258Ptr();   // slots 258, 259
 };
 // vtable 0x1899b20, 266 slots
 struct Chau : Boss {
+    SPTG_TYPE(Boss, 0x0ee894c1u)
+    bool IsA(uint32_t type) override;   // slot 12 (0xa6a440)
     bool OnHit(BaseCharacter* other, void* hit);
     float TakeDamage(const void* hit, BaseCharacter* other);
     bool Slot73();
@@ -489,6 +508,8 @@ struct Chau : Boss {
 };
 // vtable 0x1898018, 284 slots
 struct Lynette : TagTeamMember {
+    SPTG_TYPE(TagTeamMember, 0x6c1efe14u)
+    bool IsA(uint32_t type) override;   // slot 12 (0xa62250)
     bool Slot46(BaseCharacter* other);
     void Update();
     float TakeDamage(const void* hit, BaseCharacter* other);
@@ -539,6 +560,8 @@ struct Lynette : TagTeamMember {
 };
 // vtable 0x1892fb8, 269 slots
 struct Patel : Boss {
+    SPTG_TYPE(Boss, 0x2307dac3u)
+    bool IsA(uint32_t type) override;   // slot 12 (0xa3fa40)
     bool OnHit(BaseCharacter* other, void* hit);
     float TakeDamage(const void* hit, BaseCharacter* other);
     float Slot170();
@@ -581,6 +604,8 @@ struct Patel : Boss {
 };
 // vtable 0x1898a48, 274 slots
 struct Envy : TagTeamMember {
+    SPTG_TYPE(TagTeamMember, 0x7d97ec86u)
+    bool IsA(uint32_t type) override;   // slot 12 (0xa66e30)
     float TakeDamage(const void* hit, BaseCharacter* other);
     bool Slot82();
     void Update();
@@ -615,6 +640,8 @@ struct Envy : TagTeamMember {
 };
 // vtable 0x1894150, 266 slots
 struct NegaScott : Boss {
+    SPTG_TYPE(Boss, 0x71a465b8u)
+    bool IsA(uint32_t type) override;   // slot 12 (0xa44fd0)
     void Spawn(const EnemySpawnInfo* info) override;
     void Slot13();
     void Slot4(onyx::Archive& archive, ComponentSlot::Source* source);
@@ -645,6 +672,8 @@ struct NegaScott : Boss {
 };
 // vtable 0x1893860, 272 slots
 struct HipsterChick : Boss {
+    SPTG_TYPE(Boss, 0x4a52c0d7u)
+    bool IsA(uint32_t type) override;   // slot 12 (0xa42860)
     void Slot7();
     void Slot19();
     bool IsOut();
@@ -673,6 +702,8 @@ struct HipsterChick : Boss {
 };
 // vtable 0x188fc40, 284 slots
 struct SuperFightingRobotAI : Boss {
+    SPTG_TYPE(Boss, 0x349d69f0u)
+    bool IsA(uint32_t type) override;   // slot 12 (0xa318a0)
     void CallA2f1e0();   // 0xa2f1e0
     void Slot4(onyx::Archive& archive, ComponentSlot::Source* source);
     void Slot13();
@@ -737,6 +768,8 @@ struct SuperFightingRobotAI : Boss {
 };
 // vtable 0x188eb08, 274 slots
 struct SuperFightingRobotHand : Boss {
+    SPTG_TYPE(Boss, 0x37bd3ac0u)
+    bool IsA(uint32_t type) override;   // slot 12 (0xa29140)
     float TakeDamage(const void* hit, BaseCharacter* other);
     void Slot13();
     bool CheckA30210();                     // 0xa30210
@@ -810,14 +843,20 @@ struct SuperFightingRobotHand : Boss {
 };
 // vtable 0x188d260, 258 slots
 struct SuperFightingRobotTorso : Boss {
+    SPTG_TYPE(Boss, 0x15d09a06u)
+    bool IsA(uint32_t type) override;   // slot 12 (0xa26990)
 
 };
 // vtable 0x188da98, 258 slots
 struct SuperFightingRobotShoulder : Boss {
+    SPTG_TYPE(Boss, 0x19ac00b3u)
+    bool IsA(uint32_t type) override;   // slot 12 (0xa26ba0)
 
 };
 // vtable 0x188e2d0, 258 slots
 struct SuperFightingRobotHead : Boss {
+    SPTG_TYPE(Boss, 0x2bc021adu)
+    bool IsA(uint32_t type) override;   // slot 12 (0xa270f0)
     void Slot4(onyx::Archive& archive, ComponentSlot::Source* source);
 
     char padding_d48[0x8];

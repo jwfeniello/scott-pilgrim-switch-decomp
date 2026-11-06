@@ -250,4 +250,7 @@ bool FlaggedComponent::IsActive() {
     return !flag50 & ((componentFlags & 4) != 0);
 }
 
+// The type tests (slot 12): each class's own type or one of its base's (SPTG_TYPE).
+bool AnimatedAiActor::IsA(uint32_t type) { return IsType(type); }   // 0x948080
+
 }  // namespace SPTG

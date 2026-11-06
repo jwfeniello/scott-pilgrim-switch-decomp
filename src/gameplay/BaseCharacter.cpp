@@ -473,4 +473,7 @@ float BaseCharacter::Slot77() {
     return scale * (amount + 1.0f);
 }
 
+// The type tests (slot 12): each class's own type or one of its base's (SPTG_TYPE).
+bool BaseCharacter::IsA(uint32_t type) { return IsType(type); }   // 0x96bf20
+
 }  // namespace SPTG

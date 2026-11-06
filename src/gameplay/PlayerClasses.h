@@ -66,6 +66,8 @@ struct ControllableRamona : ControllablePlayer {
 // Wallace and Stephen share one layout: two attacks with a value and a flag
 // after them, twice.
 struct ControllableWallace : ControllablePlayer {
+    SPTG_TYPE(ControllablePlayer, 0x3a99ef0fu)
+    bool IsA(uint32_t type) override;   // slot 12 (0x997ad0)
     void Slot4(onyx::Archive& archive, ComponentSlot::Source* source);
     int32_t value1560;           // +0x1560
     int32_t value1564;           // +0x1564

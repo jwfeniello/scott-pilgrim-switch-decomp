@@ -405,4 +405,7 @@ void Boss::Slot242() {
     }
 }
 
+// The type tests (slot 12): each class's own type or one of its base's (SPTG_TYPE).
+bool Boss::IsA(uint32_t type) { return IsType(type); }   // 0xa186b0
+
 }  // namespace SPTG

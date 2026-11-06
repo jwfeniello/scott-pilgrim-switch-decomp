@@ -150,4 +150,7 @@ bool GunTurrets::TargetInRange() {
     return false;
 }
 
+// The type tests (slot 12): each class's own type or one of its base's (SPTG_TYPE).
+bool BreakableObject::IsA(uint32_t type) { return IsType(type); }   // 0xa113d0
+
 }  // namespace SPTG

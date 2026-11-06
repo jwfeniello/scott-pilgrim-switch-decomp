@@ -6,6 +6,8 @@
 namespace SPTG {
 
 struct InteractiveObject : AnimatedAiActor {
+    SPTG_TYPE(AnimatedAiActor, 0x05fcee1cu)
+    bool IsA(uint32_t type) override;   // slot 12 (0x9c4f80)
     typedef StateMachine<InteractiveObject>::State State;
     void ReactTo(BaseCharacter* other, int reaction, void* data) override;   // slot 21
     void OnDismount() override;                                              // slot 32
@@ -48,5 +50,11 @@ struct InteractiveObject : AnimatedAiActor {
 };
 static_assert(__builtin_offsetof(InteractiveObject, states) == 0x250, "InteractiveObject states");
 static_assert(__builtin_offsetof(InteractiveObject, attack388) == 0x388, "InteractiveObject attack388");
+
+// SPTG::InteractiveObjectEx (vtable 0x187b1e0, 92 slots).
+struct InteractiveObjectEx : InteractiveObject {
+    SPTG_TYPE(InteractiveObject, 0x03564b5au)
+    bool IsA(uint32_t type) override;   // slot 12 (0x9c05d0)
+};
 
 }  // namespace SPTG

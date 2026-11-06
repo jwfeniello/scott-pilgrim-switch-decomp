@@ -3834,4 +3834,26 @@ void SuperFightingRobotHand::FollowPlayfield() {
     }
 }
 
+// The type tests (slot 12): each class's own type or one of its base's (SPTG_TYPE).
+bool Todd::IsA(uint32_t type) { return IsType(type); }   // 0xa20240
+bool TagTeamMember::IsA(uint32_t type) { return IsType(type); }   // 0xa259c0
+bool SuperFightingRobotTorso::IsA(uint32_t type) { return IsType(type); }   // 0xa26990
+bool SuperFightingRobotShoulder::IsA(uint32_t type) { return IsType(type); }   // 0xa26ba0
+bool SuperFightingRobotHead::IsA(uint32_t type) { return IsType(type); }   // 0xa270f0
+bool SuperFightingRobotHand::IsA(uint32_t type) { return IsType(type); }   // 0xa29140
+bool SuperFightingRobotAI::IsA(uint32_t type) { return IsType(type); }   // 0xa318a0
+bool RoxyMirror::IsA(uint32_t type) { return IsType(type); }   // 0xa3a810
+bool Roxy::IsA(uint32_t type) { return IsType(type); }   // 0xa3c320
+bool Patel::IsA(uint32_t type) { return IsType(type); }   // 0xa3fa40
+bool HipsterChick::IsA(uint32_t type) { return IsType(type); }   // 0xa42860
+bool NegaScott::IsA(uint32_t type) { return IsType(type); }   // 0xa44fd0
+bool LucasLee::IsA(uint32_t type) { return IsType(type); }   // 0xa478f0
+bool KenKyle::IsA(uint32_t type) { return IsType(type); }   // 0xa4b900
+bool SuperGideon::IsA(uint32_t type) { return IsType(type); }   // 0xa52a60
+bool GigaGideon::IsA(uint32_t type) { return IsType(type); }   // 0xa58380
+bool Gideon::IsA(uint32_t type) { return IsType(type); }   // 0xa600a0
+bool Lynette::IsA(uint32_t type) { return IsType(type); }   // 0xa62250
+bool Envy::IsA(uint32_t type) { return IsType(type); }   // 0xa66e30
+bool Chau::IsA(uint32_t type) { return IsType(type); }   // 0xa6a440
+
 }  // namespace SPTG

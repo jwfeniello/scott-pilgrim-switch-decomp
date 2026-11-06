@@ -260,16 +260,16 @@ int BaseCharacter::State116(int event) {
         if (other && holderMode != 1) other = holder2 ? static_cast<BaseCharacter*>(holder2->object) : nullptr;
         if (other) {
             other->Slot68();
-            if (MessageReceiver* receiver = Cast<MessageReceiver>(other)) {
+            if (ControllablePlayer* receiver = Cast<ControllablePlayer>(other)) {
                 CharacterMessage message(2, this);
                 message.receiver = receiver;
                 receiver->OnMessage(&message);
             }
         }
-        if (IsA(MessageReceiver::kType)) {
+        if (IsA(ControllablePlayer::kType)) {
             CharacterMessage message(26, nullptr);
             message.receiver = this;
-            static_cast<MessageReceiver*>(this)->OnMessage(&message);
+            static_cast<ControllablePlayer*>(this)->OnMessage(&message);
         }
         actionMode = 5;
         onyx::SendEvent<0x2c285404u>(event750.callback, event750.target);

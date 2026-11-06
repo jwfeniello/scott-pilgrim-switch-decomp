@@ -88,6 +88,8 @@ struct SpawnedEnemyList {
 };
 
 struct Enemy : BaseCharacter {
+    SPTG_TYPE(BaseCharacter, 0x0aff48dfu)
+    bool IsA(uint32_t type) override;   // slot 12 (0x9e1f00)
     void Remove(bool respawn);                                       // slot 70, overrides BaseCharacter
     bool Slot46(BaseCharacter* other);                               // slot 46, overrides BaseCharacter
     void SetSolid(bool solid);                                       // slot 56, overrides BaseCharacter

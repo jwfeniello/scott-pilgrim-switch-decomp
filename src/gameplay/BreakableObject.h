@@ -27,6 +27,8 @@ struct BreakableHit { char padding[0x60]; uint32_t kind; float x, y; };   // +0x
 struct BreakableStage { float threshold; int32_t animation; uint8_t loop; };
 
 struct BreakableObject : AnimatedAiActor {
+    SPTG_TYPE(AnimatedAiActor, 0x1b2ba6bfu)
+    bool IsA(uint32_t type) override;   // slot 12 (0xa113d0)
     typedef StateMachine<BreakableObject>::State State;
     bool OnHit(BaseCharacter* other, void* hit) override;                    // slot 38 (0xa114d0)
     virtual int DamagedState(int event); virtual State DamagedStatePtr();    // slots 78, 79

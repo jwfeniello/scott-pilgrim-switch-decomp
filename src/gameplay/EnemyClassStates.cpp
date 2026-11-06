@@ -1862,4 +1862,30 @@ int EnemySasuke::State96(int event) {
     return result;
 }
 
+// The type tests (slot 12): each class's own type or one of its base's (SPTG_TYPE).
+bool EnemyStuntman::IsA(uint32_t type) { return IsType(type); }   // 0x9cc290
+bool EnemyOneHitWonder::IsA(uint32_t type) { return IsType(type); }   // 0x9e4010
+bool EnemySasuke::IsA(uint32_t type) { return IsType(type); }   // 0x9e4ce0
+bool EnemyGuyOnFire::IsA(uint32_t type) { return IsType(type); }   // 0x9e5fc0
+bool EnemyChargingCrowd::IsA(uint32_t type) { return IsType(type); }   // 0x9e68e0
+bool EnemyZombie::IsA(uint32_t type) { return IsType(type); }   // 0x9e7dd0
+bool EnemyWolverine::IsA(uint32_t type) { return IsType(type); }   // 0x9e9340
+bool EnemyThief::IsA(uint32_t type) { return IsType(type); }   // 0x9ea020
+bool EnemySpeedy::IsA(uint32_t type) { return IsType(type); }   // 0x9eaba0
+bool EnemyShooter::IsA(uint32_t type) { return IsType(type); }   // 0x9ebb80
+bool EnemyPaparazzi::IsA(uint32_t type) { return IsType(type); }   // 0x9ecc80
+bool EnemyNormal::IsA(uint32_t type) { return IsType(type); }   // 0x9ee800
+bool EnemyMini::IsA(uint32_t type) { return IsType(type); }   // 0x9f0120
+bool EnemyJetPackMatt::IsA(uint32_t type) { return IsType(type); }   // 0x9f0eb0
+bool EnemyJake::IsA(uint32_t type) { return IsType(type); }   // 0x9f2aa0
+bool EnemyHanzo::IsA(uint32_t type) { return IsType(type); }   // 0x9f5cc0
+bool EnemyGodzilla::IsA(uint32_t type) { return IsType(type); }   // 0x9f8cf0
+bool EnemyGiant::IsA(uint32_t type) { return IsType(type); }   // 0x9fadf0
+bool EnemyGeeOne::IsA(uint32_t type) { return IsType(type); }   // 0x9fd700
+bool EnemyForestElves::IsA(uint32_t type) { return IsType(type); }   // 0x9fdd50
+bool EnemyChubby::IsA(uint32_t type) { return IsType(type); }   // 0x9fede0
+bool EnemyArZee::IsA(uint32_t type) { return IsType(type); }   // 0x9ffe80
+bool EnemyAlberta::IsA(uint32_t type) { return IsType(type); }   // 0xa01050
+bool EnemyAerial::IsA(uint32_t type) { return IsType(type); }   // 0xa02600
+
 }  // namespace SPTG

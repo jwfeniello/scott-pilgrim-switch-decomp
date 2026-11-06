@@ -8,6 +8,8 @@
 namespace SPTG {
 
 struct Projectile : AnimatedAiActor {
+    SPTG_TYPE(AnimatedAiActor, 0x37f7ec92u)
+    bool IsA(uint32_t type) override;   // slot 12 (0x9596e0)
     typedef StateMachine<Projectile>::State State;
     void Slot7() override;                                                   // slot 7
     void Slot19() override;                                                  // slot 19

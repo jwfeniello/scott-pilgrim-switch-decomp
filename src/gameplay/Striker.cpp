@@ -393,4 +393,15 @@ int StrikerMrChau::RepeatingState(int event) {
     return result;
 }
 
+// The type tests (slot 12): each class's own type or one of its base's (SPTG_TYPE).
+bool StrikerYeti::IsA(uint32_t type) { return IsType(type); }   // 0x93f4c0
+bool Striker::IsA(uint32_t type) { return IsType(type); }   // 0x948210
+bool StrikerMrsChau::IsA(uint32_t type) { return IsType(type); }   // 0x94b790
+bool StrikerMrChau::IsA(uint32_t type) { return IsType(type); }   // 0x94cac0
+bool KnivesStills::IsA(uint32_t type) { return IsType(type); }   // 0x94d980
+bool KnivesScott::IsA(uint32_t type) { return IsType(type); }   // 0x94e0a0
+bool KnivesRamona::IsA(uint32_t type) { return IsType(type); }   // 0x94ea00
+bool KnivesNegaScott::IsA(uint32_t type) { return IsType(type); }   // 0x94f250
+bool KnivesKim::IsA(uint32_t type) { return IsType(type); }   // 0x950480
+
 }  // namespace SPTG

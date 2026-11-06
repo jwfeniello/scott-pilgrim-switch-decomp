@@ -302,4 +302,7 @@ int ControllableKnives::AirInput(int) {
     return kStateHandled;
 }
 
+// The type tests (slot 12): each class's own type or one of its base's (SPTG_TYPE).
+bool ControllableWallace::IsA(uint32_t type) { return IsType(type); }   // 0x997ad0
+
 }  // namespace SPTG

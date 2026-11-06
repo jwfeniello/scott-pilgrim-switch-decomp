@@ -34,6 +34,8 @@ struct ActionRunner {
 };
 
 struct Boss : Enemy {
+    SPTG_TYPE(Enemy, 0x38fe97ebu)
+    bool IsA(uint32_t type) override;   // slot 12 (0xa186b0)
     void Slot229();
     void Slot4(onyx::Archive& archive, ComponentSlot::Source* source);
     void Update();

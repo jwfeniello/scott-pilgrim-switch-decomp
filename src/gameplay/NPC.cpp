@@ -82,4 +82,7 @@ int NPC::State106(int event) {
     return result;
 }
 
+// The type tests (slot 12): each class's own type or one of its base's (SPTG_TYPE).
+bool NPC::IsA(uint32_t type) { return IsType(type); }   // 0x9b82a0
+
 }  // namespace SPTG

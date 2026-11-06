@@ -1074,4 +1074,7 @@ int ControllablePlayer::State187(int event) {
     return result;
 }
 
+// The type tests (slot 12): each class's own type or one of its base's (SPTG_TYPE).
+bool ControllablePlayer::IsA(uint32_t type) { return IsType(type); }   // 0x97aec0
+
 }  // namespace SPTG

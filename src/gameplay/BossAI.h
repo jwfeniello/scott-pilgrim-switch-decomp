@@ -21,7 +21,7 @@ struct PlayerRef {
     ~PlayerRef();
 };
 
-struct BaseBossAI : onyx::Component {
+struct BaseBossAI : SPTG_AIComponent {
     typedef StateMachine<BaseBossAI>::State State;
     SPTG_SLOT(3) SPTG_SLOT(4) SPTG_SLOT(5) SPTG_SLOT(6) SPTG_SLOT(7) SPTG_SLOT(8) SPTG_SLOT(9) SPTG_SLOT(10)
     SPTG_SLOT(11) SPTG_SLOT(12)

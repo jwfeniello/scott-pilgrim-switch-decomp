@@ -10,6 +10,8 @@ namespace SPTG {
 
 // vtable 0x187ce88, 240 slots
 struct EnemyOneHitWonder : Enemy {
+    SPTG_TYPE(Enemy, 0x0324f771u)
+    bool IsA(uint32_t type) override;   // slot 12 (0x9e4010)
     int State108(int event);                                  // slot 108, shared by all one-hit enemies
     float TakeDamage(const void* hit, BaseCharacter* other);  // slot 69, shared
     void Update();                                            // slot 16, shared
@@ -29,6 +31,8 @@ struct EnemyOneHitWonder : Enemy {
 };
 // vtable 0x187fa08, 244 slots
 struct EnemyZombie : Enemy {
+    SPTG_TYPE(Enemy, 0x6addc293u)
+    bool IsA(uint32_t type) override;   // slot 12 (0x9e7dd0)
     int State174(int event);
     int State202(int event);
     void Slot166(int kind);
@@ -47,6 +51,8 @@ struct EnemyZombie : Enemy {
 };
 // vtable 0x18801d0, 238 slots
 struct EnemyWolverine : Enemy {
+    SPTG_TYPE(Enemy, 0x228c3181u)
+    bool IsA(uint32_t type) override;   // slot 12 (0x9e9340)
     void Update();
     void Approach();
     void Slot166(int kind);
@@ -58,6 +64,8 @@ struct EnemyWolverine : Enemy {
 };
 // vtable 0x1880968, 234 slots
 struct EnemyThief : Enemy {
+    SPTG_TYPE(Enemy, 0x74a9ef02u)
+    bool IsA(uint32_t type) override;   // slot 12 (0x9ea020)
     void Update();
     void Slot166(int kind);
     int State194(int event);
@@ -70,6 +78,8 @@ struct EnemyThief : Enemy {
 };
 // vtable 0x18810e0, 239 slots
 struct EnemySpeedy : Enemy {
+    SPTG_TYPE(Enemy, 0x1c3d9e50u)
+    bool IsA(uint32_t type) override;   // slot 12 (0x9eaba0)
     void Approach();
     bool OnHit(BaseCharacter* other, void* hit) override;
     int State194(int event);
@@ -86,6 +96,8 @@ struct EnemySpeedy : Enemy {
 };
 // vtable 0x1881880, 238 slots
 struct EnemyShooter : Enemy {
+    SPTG_TYPE(Enemy, 0x1d528948u)
+    bool IsA(uint32_t type) override;   // slot 12 (0x9ebb80)
     void Fire();   // 0x9ec540
     void Update();
     void Slot166(int kind);
@@ -119,6 +131,8 @@ struct EnemyShooter : Enemy {
 };
 // vtable 0x1882018, 238 slots
 struct EnemyPaparazzi : Enemy {
+    SPTG_TYPE(Enemy, 0x130fc851u)
+    bool IsA(uint32_t type) override;   // slot 12 (0x9ecc80)
     void Update();
     void Approach();
     void Slot166(int kind);
@@ -130,6 +144,8 @@ struct EnemyPaparazzi : Enemy {
 };
 // vtable 0x18827b0, 250 slots
 struct EnemyNormal : Enemy {
+    SPTG_TYPE(Enemy, 0x65c38d59u)
+    bool IsA(uint32_t type) override;   // slot 12 (0x9ee800)
     void Approach();
     void Slot166(int kind);
     int State96(int event);
@@ -157,6 +173,8 @@ struct EnemyNormal : Enemy {
 };
 // vtable 0x1882fa8, 236 slots
 struct EnemyMini : Enemy {
+    SPTG_TYPE(Enemy, 0x01d4338fu)
+    bool IsA(uint32_t type) override;   // slot 12 (0x9f0120)
     int State196(int event);
     void Update();
     void Slot166(int kind);
@@ -175,6 +193,8 @@ struct EnemyMini : Enemy {
 };
 // vtable 0x1883730, 237 slots
 struct EnemyJetPackMatt : Enemy {
+    SPTG_TYPE(Enemy, 0x4a38882eu)
+    bool IsA(uint32_t type) override;   // slot 12 (0x9f0eb0)
     void Slot13();
     int State106(int event);
     void Spawn(const EnemySpawnInfo* info) override;
@@ -209,6 +229,8 @@ struct EnemyJetPackMatt : Enemy {
 };
 // vtable 0x1884700, 246 slots
 struct EnemyHanzo : Enemy {
+    SPTG_TYPE(Enemy, 0x0f4fe01fu)
+    bool IsA(uint32_t type) override;   // slot 12 (0x9f5cc0)
     void Approach();
     bool CanMount();
     bool OnMount(void* data);
@@ -228,6 +250,8 @@ struct EnemyHanzo : Enemy {
 };
 // vtable 0x1884ed8, 240 slots
 struct EnemyGodzilla : Enemy {
+    SPTG_TYPE(Enemy, 0x5a0b2941u)
+    bool IsA(uint32_t type) override;   // slot 12 (0x9f8cf0)
     void Update();
     int State122(int event) override;
     void Approach();
@@ -248,6 +272,8 @@ struct EnemyGodzilla : Enemy {
 };
 // vtable 0x1885680, 248 slots
 struct EnemyGiant : Enemy {
+    SPTG_TYPE(Enemy, 0x15b0cbd1u)
+    bool IsA(uint32_t type) override;   // slot 12 (0x9fadf0)
     void Approach();
     bool CanMount();
     int State196(int event);
@@ -275,6 +301,8 @@ struct EnemyGiant : Enemy {
 };
 // vtable 0x1886e20, 244 slots
 struct EnemyChubby : Enemy {
+    SPTG_TYPE(Enemy, 0x49d67b25u)
+    bool IsA(uint32_t type) override;   // slot 12 (0x9fede0)
     void Update();
     int State136(int event) override;
     void Approach();
@@ -291,6 +319,8 @@ struct EnemyChubby : Enemy {
 };
 // vtable 0x18885a0, 240 slots
 struct EnemyAerial : Enemy {
+    SPTG_TYPE(Enemy, 0x513449e0u)
+    bool IsA(uint32_t type) override;   // slot 12 (0xa02600)
     void FollowPlayfield() override;
     void Slot4(onyx::Archive& archive, ComponentSlot::Source* source);
     void SetSolid(bool solid);
@@ -352,6 +382,8 @@ struct EnemyAerial : Enemy {
 };
 // vtable 0x187c648, 241 slots
 struct EnemyStuntman : EnemyOneHitWonder {
+    SPTG_TYPE(EnemyOneHitWonder, 0x119b895fu)
+    bool IsA(uint32_t type) override;   // slot 12 (0x9cc290)
     int State96(int event);
     void Slot4(onyx::Archive& archive, ComponentSlot::Source* source);
     virtual int State234(int event); virtual State State234Ptr();   // slots 234, 235, overrides EnemyOneHitWonder
@@ -371,6 +403,8 @@ struct EnemyStuntman : EnemyOneHitWonder {
 };
 // vtable 0x187e2f8, 241 slots
 struct EnemySasuke : EnemyOneHitWonder {
+    SPTG_TYPE(EnemyOneHitWonder, 0x640c2724u)
+    bool IsA(uint32_t type) override;   // slot 12 (0x9e4ce0)
     int State96(int event);
     void Slot4(onyx::Archive& archive, ComponentSlot::Source* source);
     virtual int State234(int event); virtual State State234Ptr();   // slots 234, 235, overrides EnemyOneHitWonder
@@ -392,6 +426,8 @@ struct EnemySasuke : EnemyOneHitWonder {
 };
 // vtable 0x187eaa8, 240 slots
 struct EnemyGuyOnFire : EnemyOneHitWonder {
+    SPTG_TYPE(EnemyOneHitWonder, 0x1e5611d4u)
+    bool IsA(uint32_t type) override;   // slot 12 (0x9e5fc0)
     int State96(int event);
     int State176(int event);
     void AttackLanded(AnimatedAiActor* target) override;
@@ -404,6 +440,8 @@ struct EnemyGuyOnFire : EnemyOneHitWonder {
 };
 // vtable 0x187f250, 242 slots
 struct EnemyChargingCrowd : EnemyOneHitWonder {
+    SPTG_TYPE(EnemyOneHitWonder, 0x379bc97fu)
+    bool IsA(uint32_t type) override;   // slot 12 (0x9e68e0)
     void AttackLanded(AnimatedAiActor* target) override;
     virtual int State234(int event); virtual State State234Ptr();   // slots 234, 235, overrides EnemyOneHitWonder
     virtual int State240(int event); virtual State State240Ptr();   // slots 240, 241
@@ -414,6 +452,9 @@ struct EnemyChargingCrowd : EnemyOneHitWonder {
 };
 // vtable 0x1883ec0, 256 slots
 struct EnemyJake : EnemyNormal {
+    // Its type test leaves out EnemyNormal's type (0x65c38d59): the type names Enemy as its base.
+    SPTG_TYPE(Enemy, 0x3b005f5du)
+    bool IsA(uint32_t type) override;   // slot 12 (0x9f2aa0)
     void Slot19();
     void Slot4(onyx::Archive& archive, ComponentSlot::Source* source);
     virtual int State250(int event); virtual State State250Ptr();   // slots 250, 251
@@ -434,6 +475,8 @@ struct EnemyJake : EnemyNormal {
 };
 // vtable 0x1885e68, 248 slots
 struct EnemyGeeOne : EnemyGiant {
+    SPTG_TYPE(EnemyGiant, 0x3fd82782u)
+    bool IsA(uint32_t type) override;   // slot 12 (0x9fd700)
     void Slot4(onyx::Archive& archive, ComponentSlot::Source* source);
 
     char padding_1044[0x4];
@@ -444,6 +487,8 @@ struct EnemyGeeOne : EnemyGiant {
 };
 // vtable 0x1886668, 242 slots
 struct EnemyForestElves : EnemyOneHitWonder {
+    SPTG_TYPE(EnemyOneHitWonder, 0x4617209cu)
+    bool IsA(uint32_t type) override;   // slot 12 (0x9fdd50)
     int State96(int event);
     float TakeDamage(const void* hit, BaseCharacter* other);
     virtual int State234(int event); virtual State State234Ptr();   // slots 234, 235, overrides EnemyOneHitWonder
@@ -456,6 +501,8 @@ struct EnemyForestElves : EnemyOneHitWonder {
 };
 // vtable 0x18875e8, 240 slots
 struct EnemyArZee : EnemyShooter {
+    SPTG_TYPE(EnemyShooter, 0x5c68c411u)
+    bool IsA(uint32_t type) override;   // slot 12 (0x9ffe80)
     void Slot19() override;
     int State122(int event) override;
     virtual int State234(int event); virtual State State234Ptr();   // slots 234, 235, overrides EnemyShooter
@@ -473,6 +520,8 @@ struct EnemyArZee : EnemyShooter {
 };
 // vtable 0x1887da8, 250 slots
 struct EnemyAlberta : EnemyNormal {
+    SPTG_TYPE(EnemyNormal, 0x6387d624u)
+    bool IsA(uint32_t type) override;   // slot 12 (0xa01050)
 
 };
 

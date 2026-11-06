@@ -28,6 +28,8 @@ struct EnemyList {
 bool EnemyOnScreen(Enemy* enemy, const ScreenRect* rect);   // 0x948ba0
 
 struct Striker : AnimatedAiActor {
+    SPTG_TYPE(AnimatedAiActor, 0x7d4c55c0u)
+    bool IsA(uint32_t type) override;   // slot 12 (0x948210)
     typedef StateMachine<Striker>::State State;
     void Slot7() override;                                                   // slot 7
     void Update() override;                                                  // slot 16
@@ -66,12 +68,16 @@ static_assert(__builtin_offsetof(Striker, owner) == 0x2d8, "Striker owner");
 static_assert(__builtin_offsetof(Striker, hitCount) == 0x2fc, "Striker hitCount");
 
 struct StrikerMrsChau : Striker {
+    SPTG_TYPE(Striker, 0x0a4659e7u)
+    bool IsA(uint32_t type) override;   // slot 12 (0x94b790)
     void Slot19() override;
     int AttackingState(int event) override;
     char padding_300[0x8];
     void* value308;                  // +0x308
 };
 struct StrikerMrChau : Striker {
+    SPTG_TYPE(Striker, 0x58850279u)
+    bool IsA(uint32_t type) override;   // slot 12 (0x94cac0)
     void Slot19() override;
     int ArrivingState(int event) override;
     virtual int RepeatingState(int event);     // slot 87
@@ -85,6 +91,8 @@ struct StrikerMrChau : Striker {
 };
 // The yeti attacks until a timer that starts with +0x328 runs out.
 struct StrikerYeti : Striker {
+    SPTG_TYPE(Striker, 0x475f8ebfu)
+    bool IsA(uint32_t type) override;   // slot 12 (0x93f4c0)
     int AttackingState(int event) override;   // slot 83 (0x943830)
     char padding_300[0x20];
     float attackTime;                // +0x320: counts down by FrameDelta while +0x328 is raised
@@ -92,21 +100,31 @@ struct StrikerYeti : Striker {
     bool timing;                     // +0x328
 };
 struct KnivesStills : Striker {
+    SPTG_TYPE(Striker, 0x50588faeu)
+    bool IsA(uint32_t type) override;   // slot 12 (0x94d980)
     int AttackingState(int event) override;
 };
 struct KnivesRamona : Striker {
+    SPTG_TYPE(Striker, 0x316d83dcu)
+    bool IsA(uint32_t type) override;   // slot 12 (0x94ea00)
     void AttackDone() override;
 };
 struct KnivesScott : Striker {
+    SPTG_TYPE(Striker, 0x67209629u)
+    bool IsA(uint32_t type) override;   // slot 12 (0x94e0a0)
     int AttackingState(int event) override;
 };
 struct KnivesNegaScott : Striker {
+    SPTG_TYPE(Striker, 0x277726d8u)
+    bool IsA(uint32_t type) override;   // slot 12 (0x94f250)
     void Slot19() override;
     char padding_300[0x30];
     uint64_t value330;               // +0x330
     uint64_t value338;               // +0x338
 };
 struct KnivesKim : Striker {
+    SPTG_TYPE(Striker, 0x6b23a6d6u)
+    bool IsA(uint32_t type) override;   // slot 12 (0x950480)
     void Slot19() override;
     char padding_300[0x10];
     int32_t value310;                // +0x310

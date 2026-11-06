@@ -99,6 +99,11 @@ struct CharacterMessage {
 };
 
 #define SPTG_SLOT(n) virtual void Slot##n();
+// A class's type and the type test behind its IsA (slot 12): SPTG_TYPE(Base, type) declares kType, and IsType
+// accepts it or any type of the base's. The test is inlined, so each IsA compares the whole chain.
+#define SPTG_TYPE(Base, type) \
+    static const uint32_t kType = type; \
+    static bool IsType(uint32_t t) { return t == kType || Base::IsType(t); }
 // SPTG::ActorObject (component type 0x6492d61d).
 struct ActorObject : onyx::Component {
     onyx::EventCallback* readyCallback; // +0x8: event 0x255c0afe, sent when the actor is activated
@@ -234,16 +239,30 @@ struct ShadowAnimatedObject : onyx::Component {
 
 // What the screen covers: the camera block's edges when one is active, otherwise the camera position and a 384 by 216 view.
 struct ScreenRect { float left, top, right, bottom; };
-// SPTG::AnimatedAiActor (vtable 0x1870698, 78 slots), the base of BaseCharacter and InteractiveObject. Its own
-// functions are the ones BaseCharacter's vtable keeps; the rest BaseCharacter overrides. The first fields not
-// in here are BaseCharacter's and InteractiveObject's, both from +0x1e8.
-struct AnimatedAiActor : onyx::Component {
+// SPTG::SPTG_AIComponent (type 0x1486d4e8): the base of AnimatedAiActor, the boss AIs and other game components,
+// which the factories allocate from its pool. Its own IsA (slot 12, 0x862630, shared by 15 vtables) is still
+// credited to a placeholder.
+struct SPTG_AIComponent : onyx::Component {
+    // The types of its two bases, which aren't written out: 0x386d550d (also the pool of many Onyx components)
+    // and 0x07b73c94, which every component passes (menus too). The test has to be a level of its own: written
+    // into IsType's chain, the two compares become branches instead of the original's `cset`/`orr`.
+    static bool BaseIsType(uint32_t type) { return type == 0x386d550du || type == 0x07b73c94u; }
+    static const uint32_t kType = 0x1486d4e8u;
+    static bool IsType(uint32_t type) { return type == kType || BaseIsType(type); }
+};
+
+// SPTG::AnimatedAiActor (vtable 0x1870698, 78 slots), the base of BaseCharacter, InteractiveObject, Striker,
+// Projectile, Pickup and BreakableObject (their type tests include its type). Its own functions are the ones
+// BaseCharacter's vtable keeps; the rest BaseCharacter overrides. The first fields not in here are
+// BaseCharacter's and InteractiveObject's, both from +0x1e8.
+struct AnimatedAiActor : SPTG_AIComponent {
+    SPTG_TYPE(SPTG_AIComponent, 0x1cfd89c7u)
     virtual ~AnimatedAiActor();                                                  // slots 0, 1
     void EnsureReady() override;                                             // slot 2 (0x93f1f0)
     SPTG_SLOT(3)
     virtual void Slot4(onyx::Archive& archive, ComponentSlot::Source* source); // slot 4
     SPTG_SLOT(5) SPTG_SLOT(6) SPTG_SLOT(7) SPTG_SLOT(8) SPTG_SLOT(9) SPTG_SLOT(10) SPTG_SLOT(11)
-    virtual bool IsA(uint32_t type);                                         // slot 12
+    virtual bool IsA(uint32_t type);                                         // slot 12 (0x948080)
     SPTG_SLOT(13) SPTG_SLOT(14) SPTG_SLOT(15)
     virtual void Update();                                                   // slot 16
     SPTG_SLOT(17) SPTG_SLOT(18)
@@ -415,13 +434,14 @@ struct AnimatedAiActor : onyx::Component {
 };
 
 struct BaseCharacter : AnimatedAiActor {
+    SPTG_TYPE(AnimatedAiActor, 0x1cfe99c7u)
     typedef StateMachine<BaseCharacter>::State State;
     virtual ~BaseCharacter();                                                    // slots 0, 1
     void Slot4(onyx::Archive& archive, ComponentSlot::Source* source) override; // slot 4
     void Slot7() override;                                               // slot 7
     void Slot8() override;                                               // slot 8
     void Slot11() override;                                              // slot 11
-    bool IsA(uint32_t type) override;                                    // slot 12
+    bool IsA(uint32_t type) override;                                    // slot 12 (0x96bf20)
     void Slot13() override;                                              // slot 13
     // Moves the character and makes that height its ground. The position is worked out before the actor object is looked up.
     __attribute__((always_inline)) void PlaceAt(const onyx::Vector3& position) {
@@ -809,6 +829,8 @@ struct Item {
     ItemEffect* effects;     // +0xa0
 };
 struct ControllablePlayer : BaseCharacter {
+    SPTG_TYPE(BaseCharacter, 0x2f2bf4aau)
+    bool IsA(uint32_t type) override;   // slot 12 (0x97aec0)
     bool UseItem(Item* item);                            // 0x80e9a0
     void GainExperience(float amount);                   // 0x80ecc0
     bool Effect10();                                     // 0x80f6e0
@@ -1233,12 +1255,6 @@ struct ControllablePlayer : BaseCharacter {
     char padding_1526[0x3a];     // up to +0x1560, where the playable classes' fields begin
 };
 static_assert(sizeof(ControllablePlayer) == 0x1560, "ControllablePlayer size");
-// A character that passes IsA(0x2f2bf4aa) (registered as Onyx::Component::Bucket)
-// also receives messages at slot 159.
-struct MessageReceiver : BaseCharacter {
-    static const uint32_t kType = 0x2f2bf4aau;
-    virtual void OnMessage(CharacterMessage* message);   // slot 159
-};
 // A checked cast: the character if it is non-null and passes IsA(T::kType).
 template<class T> __attribute__((always_inline)) inline T* Cast(BaseCharacter* character) {
     return character && character->IsA(T::kType) ? static_cast<T*>(character) : nullptr;

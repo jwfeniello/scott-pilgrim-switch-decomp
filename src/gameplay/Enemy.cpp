@@ -384,4 +384,7 @@ void Enemy::Slot94() {
     }
 }
 
+// The type tests (slot 12): each class's own type or one of its base's (SPTG_TYPE).
+bool Enemy::IsA(uint32_t type) { return IsType(type); }   // 0x9e1f00
+
 }  // namespace SPTG
