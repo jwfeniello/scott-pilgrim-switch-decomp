@@ -92,6 +92,37 @@ int Boss::State200(int event) {
     return kStateHandled;
 }
 
+// The characters a beaten boss slows down: the list behind its singleton at
+// +0xba0 (getter 0x9270d0).
+struct SlowedCharacters : onyx::Component {
+    char padding_8[0x78];
+    uint64_t count;               // +0x80
+    char padding_88[0x8];
+    BaseCharacter** characters;   // +0x90
+};
+template<class T> T* SingletonGet(void* slot);
+
+// Slot 240 (0xa1b6f0): the defeat. Every character in the list is held in slow
+// motion (animation speed 0.3 for 3 seconds, keeping its normal speed to return
+// to), the event at +0xd30 is sent and +0xd28 is raised.
+void Boss::Slot240() {
+    SlowedCharacters* list = SingletonGet<SlowedCharacters>(&slotBa0);
+    if (list->count) {
+        BaseCharacter** it = list->characters;
+        do {
+            BaseCharacter* character = *it++;
+            float saved = character->animationSpeed;
+            character->hitStopLeft = 0.0f;
+            character->hitStopSpeed = 0.3f;
+            character->SetAnimationSpeed(0.3f);
+            character->animationSpeed = saved;
+            character->hitStopLeft = 3.0f;
+        } while (it != list->characters + list->count);
+    }
+    onyx::SendEvent<0x3b6730ccu>(eventD30.callback, eventD30.target);
+    flagD28 = 1;
+}
+
 // Slot 234 (0xa1b620): switches to slot 246 for kind 1, else to slot 198.
 void Boss::Slot234(int kind) {
     TransitionForKind(kind);

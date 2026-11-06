@@ -2299,46 +2299,6 @@ struct ControllableSpawnEvent {
 };
 void ControllableSpawnEvent::Send() { onyx::SendValue<0x1b2247fdu, ControllableSpawnInfo>(callback, target); }
 
-// A boss arms each of its lasers; the laser's own event comes after.
-struct ArmedLaser {
-    virtual void S0(); virtual void S1(); virtual void S2(); virtual void S3(); virtual void S4(); virtual void S5(); virtual void S6(); virtual void S7(); virtual void S8(); virtual void S9();
-    virtual void S10(); virtual void S11(); virtual void S12(); virtual void S13(); virtual void S14(); virtual void S15(); virtual void S16(); virtual void S17(); virtual void S18(); virtual void S19();
-    virtual void S20(); virtual void S21(); virtual void S22(); virtual void S23(); virtual void S24();
-    virtual void Fire(float rate);  // slot 25
-    char padding_8[0x144];
-    float timer;                // +0x14c
-    float rate;                 // +0x150
-    char padding_154[0x34];
-    int32_t mark;               // +0x188
-};
-struct LaserList { char padding_0[0x80]; uint64_t count; char padding_88[8]; ArmedLaser** items; };
-struct BossLasers {
-    char padding_0[0xba0];
-    void* lasers;               // +0xba0
-    char padding_ba8[0x180];
-    bool armed;                 // +0xd28
-    EventCallback* callback;    // +0xd30
-    EventTarget* target;        // +0xd38
-    void Arm();
-};
-void BossLasers::Arm() {
-    LaserList* list = SingletonGet<LaserList>(&lasers);
-    if (list->count) {
-        ArmedLaser** it = list->items;
-        do {
-            ArmedLaser* x = *it++;
-            int32_t mark = x->mark;
-            x->timer = 0.0f;
-            x->rate = 0.3f;
-            x->Fire(0.3f);
-            x->mark = mark;
-            x->timer = 3.0f;
-        } while (it != list->items + list->count);
-    }
-    onyx::SendEvent<0x3b6730ccu>(callback, target);
-    armed = true;
-}
-
 // A selector that fades what plays now, then reports the new choice. The name is a stand-in.
 bool SoundIsPlaying(int64_t sound);
 void SoundSetVolume(int64_t sound, float volume);

@@ -955,8 +955,8 @@ generated like the enemy classes. All derive from Boss, except Lynette and Envy,
 which derive from `TagTeamMember`. The family has about 267 KB of unmatched code
 in 329 functions.
 
-[`BossStates.cpp`](../src/gameplay/BossStates.cpp) matches 19 of Boss's own
-functions (4,544 bytes), among them:
+[`BossStates.cpp`](../src/gameplay/BossStates.cpp) matches 20 of Boss's own
+functions (4,976 bytes), among them:
 
 | Slot | Address | Behavior |
 | --- | --- | --- |
@@ -972,6 +972,7 @@ functions (4,544 bytes), among them:
 | 200 | `0xa1b280` | Blink state: entry runs `0x996c30` (with `+0xcd1`) or starts the blink timer; an update with `+0xd29` removes the boss and raises `+0xd2a` |
 | 233 | `0xa1b470` | When triggered in state 244, rolls 1–100 against `+0xccc` |
 | 234, 237, 238 | `0xa1b620`.. | Go to 246 for kind 1 (else 198); refuse attack requests of kinds 31, 32, 39, 45, 61; whether animation 0, 1 or 7 plays |
+| 240 | `0xa1b6f0` | The defeat: every character in the list at `+0xba0` slows to animation speed 0.3 for 3 seconds; then event `0x3b6730cc` and `+0xd28` |
 | 252 | `0xa1da40` | Stops, starts the first attack with animation 131 in action mode 6; then 122 |
 | 256 | `0xa1e390` | Animation 283 with `+0x3ba` raised; then 200 |
 
@@ -1143,8 +1144,10 @@ enemies and 6 for bosses. +0xd28 marks a beaten boss. Boss's slot 240
 (`0xa1b6f0`), which the boss states run once the health is gone, gives every
 character in the list behind the singleton at +0xba0 a hit stop: animation
 speed 0.3 for 3 seconds. It then sends event `0x3b6730cc` and raises +0xd28.
-That function is credited to a stand-in (`BossLasers::Arm` in
-`ActionEvents.cpp`) and still has to move to `Boss`.
+It was credited to a stand-in (`BossLasers::Arm` in `ActionEvents.cpp`) and
+now lives in `BossStates.cpp` as `Boss::Slot240`. The original reads the
+character's normal speed before it starts the hold, and doesn't go through the
+`HoldAnimation` helper.
 
 [`BossAI.cpp`](../src/gameplay/BossAI.cpp) matches 21 functions (3,824
 bytes): slots 13 (update), 16, 21, 23 and 25 of `BaseBossAI`, slots 21 and 23
