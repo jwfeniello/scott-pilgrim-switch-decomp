@@ -1,6 +1,7 @@
 // SPTG::AnimatedAiActor's own functions: the ones BaseCharacter and InteractiveObject inherit or call. See
 // BaseCharacter.h for the class.
 #include "Camera.h"
+#include "OnyxEvents.h"
 
 extern "C" int32_t Attack_NextId;   // 0x1925328
 extern "C" void Transform_AddChild(onyx::Transform* parent, onyx::Transform* child, bool keepPosition);   // 0x68f0e0
@@ -42,6 +43,17 @@ void AnimatedAiActor::PlayAnimation(int anim, bool loop, bool scaled, float spee
 void AnimatedAiActor::SetFacing(int left) {
     ActorFlags* flags = onyx::Get<ActorFlags, 0x2eae5813u>(onyx::Find<ActorObject, 0x6492d61du>(actorObject)->flags);
     flags->facingLeft = left & 1;
+}
+
+// Slot 2 (0x93f1f0, shared by the actor classes): activation. Sets bit 1 of the
+// component flags, sends the actor object's event 0x255c0afe, refills health and
+// plays animation 0.
+void AnimatedAiActor::EnsureReady() {
+    componentFlags |= 2;
+    ActorObject* actor = onyx::Find<ActorObject, 0x6492d61du>(actorObject);
+    onyx::SendEvent<0x255c0afeu>(actor->readyCallback, actor->readyTarget);
+    health = MaxHealth();
+    PlayAnimation(0, true, false, 1.0f);
 }
 
 // Slot 24 (0x93fa80): plays an animation with flags: bit 0 faces left, bit 1

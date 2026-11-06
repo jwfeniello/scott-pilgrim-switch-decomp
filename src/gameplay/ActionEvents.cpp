@@ -581,37 +581,6 @@ void StartEnemyAction::Update() {
     onyx::SendEvent<ActionFinished>(callback, target);
 }
 
-struct YetiTarget : onyx::Component {
-    char padding_8[0];
-    EventCallback* callback;     // +0x08
-    EventTarget* target;         // +0x10
-};
-struct StrikerYeti {
-    virtual void S0(); virtual void S1(); virtual void S2(); virtual void S3(); virtual void S4(); virtual void S5(); virtual void S6(); virtual void S7(); virtual void S8(); virtual void S9();
-    virtual void S10(); virtual void S11(); virtual void S12(); virtual void S13(); virtual void S14(); virtual void S15(); virtual void S16(); virtual void S17(); virtual void S18(); virtual void S19();
-    virtual void S20(); virtual void S21();
-    virtual void Slot22(int a, int b, int c, float d);
-    virtual void S23(); virtual void S24(); virtual void S25(); virtual void S26(); virtual void S27(); virtual void S28(); virtual void S29();
-    virtual void S30(); virtual void S31(); virtual void S32(); virtual void S33(); virtual void S34(); virtual void S35(); virtual void S36(); virtual void S37(); virtual void S38(); virtual void S39();
-    virtual void S40(); virtual void S41(); virtual void S42(); virtual void S43(); virtual void S44(); virtual void S45(); virtual void S46(); virtual void S47(); virtual void S48(); virtual void S49();
-    virtual void S50(); virtual void S51(); virtual void S52(); virtual void S53(); virtual void S54(); virtual void S55(); virtual void S56();
-    virtual float MaxHealth();
-    char padding_8[0x30];
-    uint32_t flags;              // +0x38
-    char padding_3c[0x3c];
-    ComponentHandle* handle78;   // +0x78
-    char padding_80[0xe0];
-    float value160;              // +0x160
-    void Enable();
-};
-void StrikerYeti::Enable() {
-    flags |= 2;
-    YetiTarget* x = onyx::Lookup<YetiTarget, 1687344669u>(handle78);
-    onyx::SendEvent<0x255c0afeu>(x->callback, x->target);
-    value160 = MaxHealth();
-    Slot22(0, 1, 0, 1.0f);
-}
-
 struct CycleTargetState { char padding[8]; float value; };
 struct CycleTarget : onyx::Component {
     virtual void S3(); virtual void S4(); virtual void S5(); virtual void S6(); virtual void S7(); virtual void S8(); virtual void S9(); virtual void S10(); virtual void S11(); virtual void S12(); virtual void S13(); virtual void S14(); virtual void S15();

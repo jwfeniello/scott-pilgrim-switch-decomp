@@ -1244,10 +1244,13 @@ timer latches `charged` once it passes `chargeLimit`.
 
 [`BaseCharacter.h`](../src/gameplay/BaseCharacter.h) declares them as the separate classes they are.
 Comparing the two vtables gives the split: of `AnimatedAiActor`'s 78 slots, `BaseCharacter` keeps 40
-and overrides 38. So `PlayAnimation` (`0x93f750`), `PlayFacingAnimation` (slot 24), `SetFacing`, `IsOnGround` and
-`GainHealth` are `AnimatedAiActor`'s, while `StartAttack`, `TurnAround` and `LoseHealth` exist in both forms. A
+and overrides 38. So `PlayAnimation` (`0x93f750`), `PlayFacingAnimation` (slot 24), `SetFacing`, `IsOnGround`,
+`GainHealth` and the activation (slot 2, `EnsureReady`, `0x93f1f0`) are `AnimatedAiActor`'s, while `StartAttack`, `TurnAround` and `LoseHealth` exist in both forms. A
 `BaseCharacter::Update()` written in a subclass really calls `AnimatedAiActor::Update`.
 [`AnimatedAiActor.cpp`](../src/gameplay/AnimatedAiActor.cpp) holds the base class's own functions.
+The activation sets bit 1 of the component flags, sends the actor object's event `0x255c0afe` (the slot at
++0x8 of `ActorObject`), refills health with `MaxHealth()` and plays animation 0. It was credited to a stand-in
+(`StrikerYeti::Enable` in `ActionEvents.cpp`) before; 85 vtables share it.
 
 The fields that hold a class's dependencies are in the reverse of its `Compose` list, and the type
 hash each serializer passes names the class, so these names come from the binary:

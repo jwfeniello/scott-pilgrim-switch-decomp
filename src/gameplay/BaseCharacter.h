@@ -101,7 +101,9 @@ struct CharacterMessage {
 #define SPTG_SLOT(n) virtual void Slot##n();
 // SPTG::ActorObject (component type 0x6492d61d).
 struct ActorObject : onyx::Component {
-    char padding_8[0x48];
+    onyx::EventCallback* readyCallback; // +0x8: event 0x255c0afe, sent when the actor is activated
+    onyx::EventTarget* readyTarget;     // +0x10
+    char padding_18[0x38];
     onyx::ComponentHandle* playfield;   // +0x50
     onyx::ComponentHandle* flags;       // +0x58, component type 0x2eae5813
     onyx::ComponentHandle* transform;   // +0x60, Onyx::Transform
@@ -237,6 +239,7 @@ struct ScreenRect { float left, top, right, bottom; };
 // in here are BaseCharacter's and InteractiveObject's, both from +0x1e8.
 struct AnimatedAiActor : onyx::Component {
     virtual ~AnimatedAiActor();                                                  // slots 0, 1
+    void EnsureReady() override;                                             // slot 2 (0x93f1f0)
     SPTG_SLOT(3)
     virtual void Slot4(onyx::Archive& archive, ComponentSlot::Source* source); // slot 4
     SPTG_SLOT(5) SPTG_SLOT(6) SPTG_SLOT(7) SPTG_SLOT(8) SPTG_SLOT(9) SPTG_SLOT(10) SPTG_SLOT(11)
