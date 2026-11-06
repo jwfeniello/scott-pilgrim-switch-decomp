@@ -563672,6 +563672,29 @@
           }
         },
         {
+          "address": "0x9dc2d0",
+          "size": 484,
+          "symbol": "_ZN4SPTG5Enemy10Call9dc2d0Ej",
+          "target_sha256": "0f8d62185fb67d8c62daa6e2a79dd558763a4d439398070728dca84ac83eb1cc",
+          "bindings": {
+            "Accessor_Resolver": "0x191cd10",
+            "Accessor_Resolve": "0x67edd0"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x9dc4c0",
+          "size": 416,
+          "symbol": "_ZN4SPTG5Enemy12Update9dc4c0Ev",
+          "target_sha256": "cdaa1091587f208736e5ec55b1ad3c2b8f2dc751e56e08274b0466521b2aac82",
+          "bindings": {
+            "Accessor_Resolver": "0x191cd10",
+            "Accessor_Resolve": "0x67edd0",
+            "_ZN4SPTG5Enemy10Call9dc2d0Ej": "0x9dc2d0"
+          },
+          "got_bindings": {}
+        },
+        {
           "address": "0x9e0590",
           "size": 296,
           "symbol": "_ZN4SPTG5Enemy5Slot7Ev",

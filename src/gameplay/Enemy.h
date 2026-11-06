@@ -300,7 +300,7 @@ struct Enemy : BaseCharacter {
 
     bool LeaveCheck();   // 0x9dcb90: lets state 172 hand over to state 96
     void RollChance();   // 0x9dd6b0: when slot 36 holds, rolls the random chance at +0x920
-    void Update9dc4c0(); // 0x9dc4c0: runs each update of state 186
+    float Update9dc4c0(); // 0x9dc4c0: runs each update of state 186; faces the target and returns -1 or 1
     void PlaceAtSpawn(const EnemySpawnInfo* info);   // 0x9dd110
     static int RollWeight(uint8_t total);            // 0x9dcfd0
     void Call9db480();                               // 0x9db480
@@ -330,7 +330,7 @@ struct Enemy : BaseCharacter {
     void Apply995a30(float damage);                         // 0x995a30
     bool Check9ddab0(EnemySensor* sensor);                  // 0x9ddab0
     void PickPoint(onyx::Vector3* out, float distance);     // 0x9daf90
-    void Call9dc2d0(uint32_t value);                        // 0x9dc2d0
+    void Call9dc2d0(uint32_t mode);                         // 0x9dc2d0: sets the facing mode
     // The position of player `index` in the level's player catalog (0x9dc1a0).
     static void PlayerPosition(onyx::Vector3* out, Enemy* self, uint32_t index);
 

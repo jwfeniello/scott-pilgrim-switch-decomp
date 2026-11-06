@@ -1,5 +1,6 @@
 // SPTG::Enemy's own virtuals other than its states (see
 // docs/GAME_CLASSES.md#enemy-states). Names are provisional.
+#include "Camera.h"
 #include "Enemy.h"
 #include "Random.h"
 #include "Spawner.h"
@@ -386,6 +387,51 @@ void Enemy::Slot94() {
 
 // The type tests (slot 12): each class's own type or one of its base's (SPTG_TYPE).
 bool Enemy::IsA(uint32_t type) { return IsType(type); }   // 0x9e1f00
+
+// 0x9dc2d0: sets the facing mode (unless it is 3, which holds) and faces the enemy, and the mount it rides, right for
+// mode 1 and left for mode 0.
+void Enemy::Call9dc2d0(uint32_t mode) {
+    if (mode87c == 3) return;
+    mode87c = mode;
+    ActorFlags* flags = onyx::Find<ActorFlags, 0x2eae5813u>(onyx::Find<ActorObject, 0x6492d61du>(actorObject)->flags);
+    ActorFlags* mountFlags = nullptr;
+    if (mounted && mountHandle && mountHandle->object) {
+        BaseCharacter* mount = static_cast<BaseCharacter*>(mountHandle->object);
+        mountFlags = onyx::Find<ActorFlags, 0x2eae5813u>(onyx::Find<ActorObject, 0x6492d61du>(mount->actorObject)->flags);
+    }
+    if (mode87c == 0) {
+        flags->facingLeft = 1;
+        if (mountFlags) mountFlags->facingLeft = 1;
+    } else if (mode87c == 1) {
+        flags->facingLeft = 0;
+        if (mountFlags) mountFlags->facingLeft = 0;
+    }
+}
+
+// 0x9dc4c0: faces the target: mode 1 (right, returning -1) when it is right of the enemy, else mode 0 (left, returning 1).
+float Enemy::Update9dc4c0() {
+    BaseCharacter* player = static_cast<BaseCharacter*>(target->object);
+    float targetX = onyx::Get<onyx::Transform, onyx::kTransform>(onyx::Find<ActorObject, 0x6492d61du>(player->actorObject)->transform)->position.x;
+    float x = onyx::Get<onyx::Transform, onyx::kTransform>(onyx::Find<ActorObject, 0x6492d61du>(actorObject)->transform)->position.x;
+    if (targetX > x) {
+        Call9dc2d0(1);
+        return -1.0f;
+    }
+    Call9dc2d0(0);
+    return 1.0f;
+}
+
+// 0x9daf90: the enemy's position with x just off the screen on the side it faces: `distance` left of the camera's left
+// edge, or `distance` right of its right edge (384 further). Not yet matched (not credited): the original loads the 384
+// from a page address it set up before the transform lookups and kept across them.
+void Enemy::PickPoint(onyx::Vector3* out, float distance) {
+    LevelCamera* levelCamera = onyx::Find<LevelCamera, onyx_types::type_67f2aa4d>(camera.Get()->levelCamera);
+    float left = onyx::Get<onyx::Transform, onyx::kTransform>(levelCamera->transform)->position.x;
+    float x = left - distance;
+    *out = onyx::Get<onyx::Transform, onyx::kTransform>(onyx::Find<ActorObject, 0x6492d61du>(actorObject)->transform)->Position();
+    if (!onyx::Get<ActorFlags, 0x2eae5813u>(onyx::Find<ActorObject, 0x6492d61du>(actorObject)->flags)->facingLeft) x = left + 384.0f + distance;
+    out->x = x;
+}
 
 // 0x9db480: the stance animation. On foot, 1 with +0x974 set, else 7; mounted, 59 or 43 with +0x974 set and 58 or 42
 // without (by the mount's slot 49), and while still mounted the mount plays 99 or 98.

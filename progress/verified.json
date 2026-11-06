@@ -1,9 +1,9 @@
 {
   "version": 1,
-  "generated_at": "2026-11-06T08:04:45.658419+00:00",
+  "generated_at": "2026-11-06T08:11:36.451820+00:00",
   "target_elf_sha256": "ea95638e6d6aaa0dc6cddd552a9366799aa1ec3bc07ee201f23f6c151103f5b8",
   "input_sha256": {
-    "config/builds.json": "84b7709359959cd8b9a308d5821df210a39bf320ac745007f1c0d19f19db33c8",
+    "config/builds.json": "5af4ecfa51fb5512d08e654fcb176d2798a0c8ca37bc826cfb8ffb7d60c625d2",
     "config/functions.tsv": "399e91468a04e0459194c10d68d2210d1157cedefeb19c7851886ca7632fcb18",
     "config/non_fde_functions.tsv": "6a45f5e185454fa0472af00b2cdc9d040d73ca133d1106217e1fbbe3b32a8175",
     "config/target.json": "23cc6a5227206a953e7668acf5e9ae5c02a25c23b7e7967f0450a814b888241a",
@@ -1153,8 +1153,8 @@
     "src/gameplay/ComponentTypes.h": "f7eea015dc032ea1d06d52741b5f5e7724ff5a61171703a57cdf990981e76953",
     "src/gameplay/ControllablePlayerStates.cpp": "95dd533aebaef1722679b609272a3dd4d3b3308e8b1a4fdcdddc81a671f9e4a1",
     "src/gameplay/EmitterSequencer.cpp": "2cb8de43644d29ceb9f44f41ad0eadfaaa9b6e39336bcf297864829d0e213acc",
-    "src/gameplay/Enemy.cpp": "20a883aa369a923cc8f60a15e90693d7ed3af192c424ca5d71c8ebec3570a659",
-    "src/gameplay/Enemy.h": "07d6a52faf621c426a6a9c0ef554fa847e9c20e9f27e7ee1afe7b0148379f4a2",
+    "src/gameplay/Enemy.cpp": "15b6b61c0f8b51b01dc8fa2c56634ee7928a5022bcbc8fe077de872f16c3bc54",
+    "src/gameplay/Enemy.h": "add0fe10ef53128f3986f780da2bb7bd812f62814f6fce4ae792095e0f410340",
     "src/gameplay/EnemyAttackStates.cpp": "40c206398172e031a38f74e9243592a04c535166ef4ea3ba4cf2119291e02a6b",
     "src/gameplay/EnemyClassStates.cpp": "c6bb6eeae8f7006af7010317469adf97a2c2b5ae49a2c114e91277c99845e6e8",
     "src/gameplay/EnemyClasses.h": "4425321001ef548cfbc626e9c7c95abf8dfc7cedddf264c74c48cec1b204d352",
@@ -4012,17 +4012,17 @@
     "vendor/zlib-1.2.11/zutil.h": "9a63f6690fac1620aa3cecee5752af618806da438a256b4a047fbcd289cac159"
   },
   "compiler_versions": {
-    "8.0.1": "clang version 8.0.1 (tags/RELEASE_801/final)",
     "7.0.1": "clang version 7.0.1 (tags/RELEASE_701/final)",
+    "8.0.1": "clang version 8.0.1 (tags/RELEASE_801/final)",
     "lld": "LLD 8.0.1 (compatible with GNU linkers)"
   },
   "compiler_sha256": {
-    "8.0.1": "dffd62a213ec6cdb4430012a4a41c11e5e32c288f133d5391f9be49e1c5b69de",
     "7.0.1": "c2f0a175157d9aaace8031f8e6d7ea0ed6142b4bcef287105e3ed227301f1002",
+    "8.0.1": "dffd62a213ec6cdb4430012a4a41c11e5e32c288f133d5391f9be49e1c5b69de",
     "lld": "c4b3aaea06ff7112c64753047a2ab279fc3fe10dd807fd3c22edfdae99f43eed"
   },
-  "exact_functions": 38946,
-  "exact_bytes": 5157888,
+  "exact_functions": 38948,
+  "exact_bytes": 5158788,
   "builds": [
     {
       "id": "probes",
@@ -13467,7 +13467,7 @@
     {
       "id": "gameplay_enemy",
       "compiler": "8.0.1",
-      "object_sha256": "b8f878f05831430af0ae5e8a8bc2c49c0b1d0709346734772f59331eb37e0f50"
+      "object_sha256": "de50b6c744a8855c0612c5aeb7ea17eac7ad41d32ba0e968f1da35a6a8e70242"
     },
     {
       "id": "gameplay_basecharacter_states",
@@ -307124,6 +307124,28 @@
       "symbol": "_Z21CallbackIdentityEqualILj10336208EEbPK12CallbackViewS2_",
       "source_review": "manual_reconstruction",
       "relocation_count": 0
+    },
+    {
+      "address": "0x9dc2d0",
+      "size": 484,
+      "exact": true,
+      "target_sha256": "0f8d62185fb67d8c62daa6e2a79dd558763a4d439398070728dca84ac83eb1cc",
+      "compiled_sha256": "0f8d62185fb67d8c62daa6e2a79dd558763a4d439398070728dca84ac83eb1cc",
+      "source": "src/gameplay/Enemy.cpp",
+      "symbol": "_ZN4SPTG5Enemy10Call9dc2d0Ej",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 12
+    },
+    {
+      "address": "0x9dc4c0",
+      "size": 416,
+      "exact": true,
+      "target_sha256": "cdaa1091587f208736e5ec55b1ad3c2b8f2dc751e56e08274b0466521b2aac82",
+      "compiled_sha256": "cdaa1091587f208736e5ec55b1ad3c2b8f2dc751e56e08274b0466521b2aac82",
+      "source": "src/gameplay/Enemy.cpp",
+      "symbol": "_ZN4SPTG5Enemy12Update9dc4c0Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 14
     },
     {
       "address": "0x9dd6b0",
