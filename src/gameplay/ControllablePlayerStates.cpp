@@ -523,6 +523,24 @@ int ControllablePlayer::State235(int event) {
 }
 
 // Whether a direction or an attack button went down since the last call. Remembers the directions.
+// 0x9913a0: the stick as -1, 0 or 1 in x (bits 1 and 0 of the held buttons) and y (bits 2 and 3), and whether it moves.
+// Online (+0xe0 of the game state) with +0x13b1 set, it reads nothing.
+// Not yet matched: the original sets the flag's 1 in one block that the four early tests branch to; here it is set
+// before the tests and the loads take another register.
+bool ControllablePlayer::ReadMoveInput(PlayerInput* from, onyx::Vector3* out) {
+    bool reading = true;
+    if (from && from->held && Game_State && Game_State->flagE0) reading = !flag13b1;
+    onyx::Vector3 move = onyx::Vector3::Zero();
+    *out = move;
+    if (!reading) return false;
+    uint64_t held = from->held;
+    if (held & 2) out->x += 1.0f;
+    else if (held & 1) out->x += -1.0f;
+    if (held & 4) out->y += 1.0f;
+    else if (held & 8) out->y += -1.0f;
+    return out->x != 0.0f || out->y != 0.0f;
+}
+
 bool ControllablePlayer::AnyInputPressed() {
     onyx::Vector3 move;
     ReadMoveInput(input, &move);
@@ -904,6 +922,82 @@ int ControllablePlayer::State205(int event) {
         HideMashPrompt();
         break;
     case kStateEvent3:
+        break;
+    default:
+        result = kStateUnhandled;
+        break;
+    }
+    return result;
+}
+
+// Slot 96 (0x980a50): standing. Entry slides on at slideSpeed when moving faster than jumpBackSpeed (else stops) and plays
+// the stance animation; a stick move goes to state 161 or 163 as in state 237, and 3 s of idling to state 229.
+// As in state 237, the last check's took-over branch asserts the machine's owner; without something there the check
+// becomes a select, where the original keeps a branch.
+int ControllablePlayer::State96(int event) {
+    int result = kStateHandled;
+    switch (event) {
+    case kStateEnter:
+        value1bc = 0.0f;
+        if (__builtin_fabsf(motion.x) > jumpBackSpeed) {
+            float sign = FacingSign();
+            motionTarget.x = slideSpeed * sign;
+        } else {
+            motion.x = 0.0f;
+            motionTarget.x = 0.0f;
+        }
+        if (IsMounted()) {
+            if (BaseCharacter* mount = Mount()) {
+                PlayAnimation(mount->Slot49() ? 60 : 44, true, false, 1.0f);
+                if (IsMounted()) static_cast<BaseCharacter*>(mountHandle->object)->PlayAnimation(100, true, false, 1.0f);
+            }
+        } else {
+            PlayAnimation(0, true, false, 1.0f);
+        }
+        value334 = 0.0f;
+        break;
+    case kStateUpdate: {
+        if (idleTime > 3.0f) {
+            idleTime = 0.0f;
+            flag13fa = 1;
+            states.Transition(State229Ptr());
+            result = kStateParentTookOver;
+            break;
+        }
+        result = Call993350();
+        if (result == kStateParentTookOver) break;
+        onyx::Vector3 move;
+        if (ReadMoveInput(input, &move)) {
+            motionTarget.x = 0.0f;
+            TurnToMoveInput();
+            uint64_t dash = input->held & 0x300000000ull;
+            if (persistentData.Get()->players[playerIndex].value154) {
+                if (dash) states.Transition(State161Ptr());
+                else states.Transition(State163Ptr());
+            } else {
+                if ((input->value1b0 & 1) | dash | (input->value1b0 & 2)) states.Transition(State161Ptr());
+                else states.Transition(State163Ptr());
+            }
+            result = kStateParentTookOver;
+            break;
+        }
+        if (!IsOnGround()) {
+            states.Transition(State102Ptr());
+            result = kStateParentTookOver;
+            break;
+        }
+        result = Slot255(kStateUpdate);
+        if (result == kStateParentTookOver) break;
+        if (Call9936a0() != kStateParentTookOver) {
+            result = kStateHandled;
+        } else {
+            states.AssertOwner(this);
+            result = kStateParentTookOver;
+        }
+        break;
+    }
+    case kStateExit:
+        result = kStateHandled;
         break;
     default:
         result = kStateUnhandled;

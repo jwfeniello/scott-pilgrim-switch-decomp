@@ -945,6 +945,7 @@ struct ControllablePlayer : BaseCharacter {
     void FollowPlayfield() override;
     void PlayAnimationOn(int animation, bool loop, bool flag, BaseCharacter* other, float speed) override;
     bool Slot88(float amount) override;
+    int State96(int event) override;
     int State100(int event) override;
     int State102(int event) override;
     int State104(int event) override;
@@ -1214,7 +1215,9 @@ struct ControllablePlayer : BaseCharacter {
     int32_t value13ac;           // +0x13ac
     uint8_t flag13b0;            // +0x13b0
     uint8_t flag13b1;            // +0x13b1
-    char padding_13b2[0xe];
+    char padding_13b2[0x6];
+    int32_t value13b8;           // +0x13b8: +0x11f4 while in state 163, else 0
+    char padding_13bc[0x4];
     uint8_t flag13c0;            // +0x13c0
     uint8_t flag13c1;            // +0x13c1
     char padding_13c2[0x2];
@@ -1232,7 +1235,11 @@ struct ControllablePlayer : BaseCharacter {
     char padding_13f2[0x2];
     int32_t pendingItem;         // +0x13f4: the item to use next, or -1
     uint8_t flag13f8;            // +0x13f8
-    char padding_13f9[0x13];
+    char padding_13f9[0x1];
+    uint8_t flag13fa;            // +0x13fa: raised when the idle timer sends states 96 and 163 to state 229
+    char padding_13fb[0x1];
+    float idleTime;              // +0x13fc: past 3 s, states 96 and 163 go to state 229
+    char padding_1400[0xc];
     uint8_t flag140c;            // +0x140c
     char padding_140d[0x3];
     float value1410;             // +0x1410

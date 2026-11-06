@@ -1,9 +1,9 @@
 {
   "version": 1,
-  "generated_at": "2026-11-06T09:37:18.437370+00:00",
+  "generated_at": "2026-11-06T10:07:03.794435+00:00",
   "target_elf_sha256": "ea95638e6d6aaa0dc6cddd552a9366799aa1ec3bc07ee201f23f6c151103f5b8",
   "input_sha256": {
-    "config/builds.json": "69d8233b3a6ec7521594b5eeb7167ea4ed415fa97e0614539f661a87092e8d83",
+    "config/builds.json": "5d9cab49e067294ab06a15d15c70652c428efc17820a8f86a70214554c49f392",
     "config/functions.tsv": "399e91468a04e0459194c10d68d2210d1157cedefeb19c7851886ca7632fcb18",
     "config/non_fde_functions.tsv": "6a45f5e185454fa0472af00b2cdc9d040d73ca133d1106217e1fbbe3b32a8175",
     "config/target.json": "23cc6a5227206a953e7668acf5e9ae5c02a25c23b7e7967f0450a814b888241a",
@@ -1127,7 +1127,7 @@
     "src/gameplay/Archive.h": "e84bf1d8d002c8d3be74aa8426bd7ac8535e4e6cef7d27b9aa6d3bdcb52403ae",
     "src/gameplay/Assert.h": "e8ad90fa17cd27c0eefb31341b98ee091197fb3aeb84363fb473339d67770dcc",
     "src/gameplay/BaseCharacter.cpp": "7ff0ca1f0be17176893fc1dab6f71fd30a5a8ff6787c500b0de8f082d9e6401b",
-    "src/gameplay/BaseCharacter.h": "6cd931cc184998cac5b275ad1ed60f067015a14aebfa0bb59ebe617f95771d87",
+    "src/gameplay/BaseCharacter.h": "cbde2018b6ba4472fac8ab893f6deef313f827b4cba2d2b3439064f43582d3ab",
     "src/gameplay/BaseCharacterStates.cpp": "593efaaa1eab898d81712650dff9964b8941b427094ab0bc508bbb09f554b0c4",
     "src/gameplay/Boss.h": "0ed27e277860ff7c2394333967cf4aa68d79f2a39e512cc88c18a34d70225749",
     "src/gameplay/BossAI.cpp": "b8c327bc59dd7dd31a6e52c3dd206d3e297a3acc5a3a36f41cab74814bb94581",
@@ -1151,7 +1151,7 @@
     "src/gameplay/ComponentSerialize.h": "3a966f37ba8a6dda16cbd6c527bd046018988b8b59e1f90a9acef65fb2d2df6b",
     "src/gameplay/ComponentSteps.cpp": "d4d2ad379a99414c85f75db6c043ed37dbb4ee4eb0db6e8d2bc7377b7def6901",
     "src/gameplay/ComponentTypes.h": "f7eea015dc032ea1d06d52741b5f5e7724ff5a61171703a57cdf990981e76953",
-    "src/gameplay/ControllablePlayerStates.cpp": "2213e72a63644db86d69b65ee3b9eaa2cff9b66376b2261a596a3799dbc45100",
+    "src/gameplay/ControllablePlayerStates.cpp": "0de040aa489c17176916d7298e1ff2ca0d5048a97a1926e90ca244bcd50e913b",
     "src/gameplay/EmitterSequencer.cpp": "2cb8de43644d29ceb9f44f41ad0eadfaaa9b6e39336bcf297864829d0e213acc",
     "src/gameplay/Enemy.cpp": "88a84a4acb7baa39d56ad7a9b5a9daff487bc45246516e829a2d6db7c3945324",
     "src/gameplay/Enemy.h": "0f68f9c7ca9218e53601344a4be19388ba253d48d7beadf79b99fa6c1ddef3a4",
@@ -4012,17 +4012,17 @@
     "vendor/zlib-1.2.11/zutil.h": "9a63f6690fac1620aa3cecee5752af618806da438a256b4a047fbcd289cac159"
   },
   "compiler_versions": {
-    "7.0.1": "clang version 7.0.1 (tags/RELEASE_701/final)",
     "8.0.1": "clang version 8.0.1 (tags/RELEASE_801/final)",
+    "7.0.1": "clang version 7.0.1 (tags/RELEASE_701/final)",
     "lld": "LLD 8.0.1 (compatible with GNU linkers)"
   },
   "compiler_sha256": {
-    "7.0.1": "c2f0a175157d9aaace8031f8e6d7ea0ed6142b4bcef287105e3ed227301f1002",
     "8.0.1": "dffd62a213ec6cdb4430012a4a41c11e5e32c288f133d5391f9be49e1c5b69de",
+    "7.0.1": "c2f0a175157d9aaace8031f8e6d7ea0ed6142b4bcef287105e3ed227301f1002",
     "lld": "c4b3aaea06ff7112c64753047a2ab279fc3fe10dd807fd3c22edfdae99f43eed"
   },
-  "exact_functions": 38960,
-  "exact_bytes": 5165192,
+  "exact_functions": 38961,
+  "exact_bytes": 5165992,
   "builds": [
     {
       "id": "probes",
@@ -13452,12 +13452,12 @@
     {
       "id": "gameplay_player_states2",
       "compiler": "8.0.1",
-      "object_sha256": "276a3923b3761ba004ee3b4a5cecb40cb492f67542dbe2c3953a2c3e61e0edf7"
+      "object_sha256": "64aacb9369457f7ad6faeb668661d0900945b4b7e7bf4f011f069cb69e82b8b3"
     },
     {
       "id": "gameplay_player_classes",
       "compiler": "8.0.1",
-      "object_sha256": "d4bf401f16e5280d8f2107ade076080c16458d8c80667d845086a6ece59daeb8"
+      "object_sha256": "48b405b287efb490d9038b80b5dd8279e9350ab5fe7b944f0220cd6f9445ef80"
     },
     {
       "id": "gameplay_enemy_classes",
@@ -299193,6 +299193,17 @@
       "symbol": "RecoveredLeaf_9809f0",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 0
+    },
+    {
+      "address": "0x980a50",
+      "size": 800,
+      "exact": true,
+      "target_sha256": "309ad6069c4ed5a8f3a592b436d79d4eb8ccd958e8de5f839004015cb6a2410f",
+      "compiled_sha256": "309ad6069c4ed5a8f3a592b436d79d4eb8ccd958e8de5f839004015cb6a2410f",
+      "source": "src/gameplay/ControllablePlayerStates.cpp",
+      "symbol": "_ZN4SPTG18ControllablePlayer7State96Ei",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 12
     },
     {
       "address": "0x980d70",

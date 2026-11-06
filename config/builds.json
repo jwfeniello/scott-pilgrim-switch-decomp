@@ -561228,7 +561228,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "90": "0x1390ceb"
+            "94": "0x1390ceb"
           }
         },
         {
@@ -561298,6 +561298,23 @@
           "target_sha256": "1420de4d3f1cd70bfba0e8ca6eee5cbcf422cdeae294ff3e1d8006f673b21c6c",
           "bindings": {
             "_ZN4SPTG12StateMachineINS_13BaseCharacterEE10TransitionEMS1_FiiE": "0x812930"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x980a50",
+          "size": 800,
+          "symbol": "_ZN4SPTG18ControllablePlayer7State96Ei",
+          "target_sha256": "309ad6069c4ed5a8f3a592b436d79d4eb8ccd958e8de5f839004015cb6a2410f",
+          "bindings": {
+            "Accessor_Resolver": "0x191cd10",
+            "Accessor_Resolve": "0x67edd0",
+            "_ZN4SPTG12StateMachineINS_13BaseCharacterEE10TransitionEMS1_FiiE": "0x812930",
+            "_ZN4SPTG18ControllablePlayer10Call993350Ev": "0x993350",
+            "_ZN4SPTG18ControllablePlayer13ReadMoveInputEPNS_11PlayerInputEPN4onyx7Vector3E": "0x9913a0",
+            "_ZN4SPTG18ControllablePlayer15TurnToMoveInputEv": "0x993550",
+            "_ZN4SPTG9SingletonINS_14PersistentDataEE3GetEv": "0x777710",
+            "_ZN4SPTG18ControllablePlayer10Call9936a0Ev": "0x9936a0"
           },
           "got_bindings": {}
         },
@@ -561401,7 +561418,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "87": "0x1390d34"
+            "91": "0x1390d34"
           }
         },
         {
@@ -561447,7 +561464,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "97": "0x1390d48"
+            "101": "0x1390d48"
           }
         },
         {
@@ -561460,7 +561477,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "100": "0x1390d4c"
+            "104": "0x1390d4c"
           }
         },
         {
@@ -561475,7 +561492,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "47": "0x1390d50"
+            "49": "0x1390d50"
           }
         },
         {
@@ -561490,7 +561507,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "50": "0x1390d54"
+            "52": "0x1390d54"
           }
         },
         {
@@ -561598,7 +561615,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "84": "0x1390d8c"
+            "86": "0x1390d8c"
           }
         },
         {
@@ -561617,7 +561634,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "53": "0x1390de0"
+            "55": "0x1390de0"
           }
         },
         {
@@ -561635,7 +561652,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "78": "0x1390de4"
+            "80": "0x1390de4"
           }
         },
         {
@@ -561670,7 +561687,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "81": "0x1390df4"
+            "83": "0x1390df4"
           }
         },
         {
