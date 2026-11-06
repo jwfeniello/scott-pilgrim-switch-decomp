@@ -562093,7 +562093,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "130": "0x1390f6e"
+            "133": "0x1390f6e"
           },
           "literals": {
             "0400000006000000": "0x13312f0"
@@ -562114,7 +562114,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "133": "0x1390f72"
+            "136": "0x1390f72"
           }
         },
         {
@@ -562445,7 +562445,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "142": "0x13910a1"
+            "145": "0x13910a1"
           }
         },
         {
@@ -562522,7 +562522,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "262": "0x13910a9"
+            "279": "0x13910a9"
           },
           "literals": {
             "5f708930": "0x1331e88",
@@ -562639,7 +562639,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "237": "0x13910b5"
+            "252": "0x13910b5"
           }
         },
         {
@@ -562691,7 +562691,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "206": "0x1391118"
+            "221": "0x1391118"
           }
         },
         {
@@ -562759,7 +562759,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "246": "0x139111c"
+            "261": "0x139111c"
           }
         },
         {
@@ -562853,7 +562853,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "259": "0x1391124"
+            "274": "0x1391124"
           }
         },
         {
@@ -562917,7 +562917,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "147": "0x1391130"
+            "150": "0x1391130"
           }
         },
         {
@@ -562951,6 +562951,27 @@
           "got_bindings": {}
         },
         {
+          "address": "0x9f3ed0",
+          "size": 604,
+          "symbol": "_ZN4SPTG9EnemyJake8State108Ei",
+          "target_sha256": "cfb41d0ae3619fa763a553b3e39b8297c365a825f9f07597a213935b79245025",
+          "bindings": {
+            "_ZN4SPTG5Enemy8State108Ei": "0x9dd830",
+            "Accessor_Resolver": "0x191cd10",
+            "Accessor_Resolve": "0x67edd0",
+            "_ZTVN4SPTG26InteractiveObjectSpawnInfoE": "0x186a5b0",
+            "_ZN4SPTG9SingletonINS_17LevelItemAccessorEE3GetEv": "0x7725e0",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30",
+            "__clang_call_terminate": "0x6768b8",
+            "_Unwind_Resume": "0xfa4920"
+          },
+          "got_bindings": {},
+          "literals": {
+            "ffffffff1b000000": "0x1331498"
+          }
+        },
+        {
           "address": "0x9f4c20",
           "size": 264,
           "symbol": "_ZN4SPTG9EnemyJake8State252Ei",
@@ -562962,7 +562983,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "180": "0x1391142"
+            "195": "0x1391142"
           }
         },
         {
@@ -562978,7 +562999,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "183": "0x1391146"
+            "198": "0x1391146"
           }
         },
         {
@@ -563008,6 +563029,27 @@
           "got_bindings": {}
         },
         {
+          "address": "0x9f6810",
+          "size": 564,
+          "symbol": "_ZN4SPTG10EnemyHanzo6RemoveEb",
+          "target_sha256": "6a58d9fd62757c2ab1411f372b6dba4c6e4c53b51075c5bc4bb67407071437f9",
+          "bindings": {
+            "_ZN4SPTG5Enemy6RemoveEb": "0x9ce120",
+            "Accessor_Resolver": "0x191cd10",
+            "Accessor_Resolve": "0x67edd0",
+            "_ZTVN4SPTG26InteractiveObjectSpawnInfoE": "0x186a5b0",
+            "_ZN4SPTG9SingletonINS_17LevelItemAccessorEE3GetEv": "0x7725e0",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30",
+            "__clang_call_terminate": "0x6768b8",
+            "_Unwind_Resume": "0xfa4920"
+          },
+          "got_bindings": {},
+          "literals": {
+            "ffffffff18000000": "0x1331788"
+          }
+        },
+        {
           "address": "0x9f6a60",
           "size": 204,
           "symbol": "_ZN4SPTG10EnemyHanzo7Slot166Ei",
@@ -563031,7 +563073,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "168": "0x1391178"
+            "171": "0x1391178"
           }
         },
         {
@@ -563111,7 +563153,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "108": "0x1391192"
+            "111": "0x1391192"
           }
         },
         {
@@ -563128,7 +563170,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "217": "0x1391196"
+            "232": "0x1391196"
           }
         },
         {
@@ -563162,6 +563204,29 @@
           "got_bindings": {}
         },
         {
+          "address": "0x9f95a0",
+          "size": 908,
+          "symbol": "_ZN4SPTG13EnemyGodzilla8State194Ei",
+          "target_sha256": "4553fe2900e64e49e60dbda55f92283b9be97de1b44c4d43e8cd9bc0e4be390f",
+          "bindings": {
+            "Move_FrameDelta": "0x1924d70",
+            "_ZGVZN4onyx7Vector34ZeroEvE5value": "0x191f8b8",
+            "_ZZN4onyx7Vector34ZeroEvE5value": "0x191f8c0",
+            "Accessor_Resolver": "0x191cd10",
+            "Accessor_Resolve": "0x67edd0",
+            "_ZN4SPTG12StateMachineINS_13BaseCharacterEE10TransitionEMS1_FiiE": "0x812930",
+            "__cxa_guard_acquire": "0xfa4130",
+            "__cxa_guard_release": "0xfa4140"
+          },
+          "got_bindings": {},
+          "immutable_sections": {
+            "108": "0x139119a"
+          },
+          "literals": {
+            "00007042": "0x1331fe0"
+          }
+        },
+        {
           "address": "0x9f9a50",
           "size": 264,
           "symbol": "_ZN4SPTG13EnemyGodzilla8State236Ei",
@@ -563172,7 +563237,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "171": "0x13911a2"
+            "174": "0x13911a2"
           }
         },
         {
@@ -563186,7 +563251,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "165": "0x13911a6"
+            "168": "0x13911a6"
           }
         },
         {
@@ -563291,7 +563356,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "209": "0x1391222"
+            "224": "0x1391222"
           }
         },
         {
@@ -563305,7 +563370,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "162": "0x1391226"
+            "165": "0x1391226"
           }
         },
         {
@@ -563431,7 +563496,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "212": "0x139122f"
+            "227": "0x139122f"
           }
         },
         {
@@ -563476,7 +563541,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "243": "0x1391233"
+            "258": "0x1391233"
           }
         },
         {
@@ -563493,7 +563558,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "240": "0x139123f"
+            "255": "0x139123f"
           }
         },
         {
@@ -563532,7 +563597,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "220": "0x1391243"
+            "235": "0x1391243"
           }
         },
         {
@@ -563542,6 +563607,27 @@
           "target_sha256": "c9956e173fd9125e4147b7ac3b60b985ab3c187158a5d9728df30caa1db91727",
           "bindings": {},
           "got_bindings": {}
+        },
+        {
+          "address": "0xa01110",
+          "size": 564,
+          "symbol": "_ZN4SPTG12EnemyAlberta6RemoveEb",
+          "target_sha256": "581ff1f9c120b7d235756e0fcab80ac9af5630b92b5d05182134e4ffa0cd8410",
+          "bindings": {
+            "_ZN4SPTG5Enemy6RemoveEb": "0x9ce120",
+            "Accessor_Resolver": "0x191cd10",
+            "Accessor_Resolve": "0x67edd0",
+            "_ZTVN4SPTG26InteractiveObjectSpawnInfoE": "0x186a5b0",
+            "_ZN4SPTG9SingletonINS_17LevelItemAccessorEE3GetEv": "0x7725e0",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30",
+            "__clang_call_terminate": "0x6768b8",
+            "_Unwind_Resume": "0xfa4920"
+          },
+          "got_bindings": {},
+          "literals": {
+            "ffffffff1a000000": "0x1331018"
+          }
         },
         {
           "address": "0xa02600",
@@ -563636,7 +563722,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "139": "0x139126b"
+            "142": "0x139126b"
           }
         },
         {
@@ -563652,7 +563738,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "136": "0x139126f"
+            "139": "0x139126f"
           },
           "literals": {
             "0400000006000000": "0x13312f0"
@@ -563850,6 +563936,18 @@
             "5f708930": "0x1331e88",
             "00401c46": "0x1331f68"
           }
+        },
+        {
+          "address": "0x9dc1a0",
+          "size": 304,
+          "symbol": "_ZN4SPTG5Enemy14PlayerPositionEPN4onyx7Vector3EPS0_j",
+          "target_sha256": "1d0c5f5b9b76002abb963f0aeab32b3448f91a5b276c267001e89adc79cf0430",
+          "bindings": {
+            "_ZN4SPTG9SingletonINS_17LevelItemAccessorEE3GetEv": "0x7725e0",
+            "Accessor_Resolver": "0x191cd10",
+            "Accessor_Resolve": "0x67edd0"
+          },
+          "got_bindings": {}
         },
         {
           "address": "0x9dc2d0",

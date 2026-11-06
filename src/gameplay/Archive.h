@@ -6,6 +6,7 @@
 #include <stdint.h>
 #include "Level.h"
 #include "OnyxEvents.h"
+#include "OnyxFunction.h"
 #include "Vector.h"
 
 // Passed along with the archive (slot 4's second argument). The same type
@@ -130,12 +131,38 @@ template<class T> __attribute__((always_inline)) inline void TransferVectorInPla
 
 namespace SPTG {
 
-// SPTG::ProjectileSpawnInfo (vtable 0x186a108, 0x70 bytes), which several
-// bosses embed (HipsterChick's destructor resets the one at +0xdc8). Its
-// serialization (0x8fd4c0) follows its destructors in the binary.
+// SPTG::ProjectileSpawnInfo (vtable 0x186a108, 0x70 bytes): where a projectile spawner is to fire a projectile, which
+// several bosses embed (HipsterChick's destructor resets the one at +0xdc8). Its serialization (0x8fd4c0) follows its
+// destructors in the binary. The builders seen so far construct it with the spawner, the place, +0x20, the attack and +0x40,
+// and the rest as below: the order of their stores (one pair of +0x48 and +0x4c, the zeros up to +0x3b in one run) is
+// the one this member order gives.
+struct Projectile;
+template<class T> struct SpawnedCallbackParam;
 struct ProjectileSpawnInfo {
-    virtual ~ProjectileSpawnInfo();
-    char data_8[0x68];
+    ProjectileSpawnInfo(uint32_t spawner, const onyx::Vector3& position, const onyx::Vector3& vector20, int32_t attackId,
+                        uint8_t flag40)
+        : id(-1), spawner(spawner), kind(3), position(position), vector20(vector20), value2c(0.0f), value30(0.0f),
+          value34(0.0f), value38(0), attackId(attackId), flag40(flag40), value44(0), value48(0.0f), value4c(1.0f), value50(1),
+          value58(0), flag68(0) {}
+    virtual ~ProjectileSpawnInfo() {}
+    int32_t id;                  // +0x8: -1 until the spawner numbers it
+    uint32_t spawner;            // +0xc: the id of the spawner that is to fire it
+    uint32_t kind;               // +0x10
+    onyx::Vector3 position;      // +0x14
+    onyx::Vector3 vector20;      // +0x20
+    float value2c;               // +0x2c
+    float value30;               // +0x30
+    float value34;               // +0x34
+    uint32_t value38;            // +0x38
+    int32_t attackId;            // +0x3c: the id of the attack the shooter is making
+    uint8_t flag40;              // +0x40
+    int32_t value44;             // +0x44
+    float value48;               // +0x48
+    float value4c;               // +0x4c
+    int32_t value50;             // +0x50
+    uint64_t value58;            // +0x58
+    onyx::Function<void(const SpawnedCallbackParam<Projectile>&)> spawned;   // +0x60
+    uint8_t flag68;              // +0x68
     void Serialize(onyx::Archive& archive);   // 0x8fd4c0
 };
 static_assert(sizeof(ProjectileSpawnInfo) == 0x70, "ProjectileSpawnInfo size");

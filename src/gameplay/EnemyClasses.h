@@ -176,6 +176,7 @@ struct EnemyNormal : Enemy {
 struct EnemyMini : Enemy {
     SPTG_TYPE(Enemy, 0x01d4338fu)
     bool IsA(uint32_t type) override;   // slot 12 (0x9f0120)
+    void Remove(bool respawn);
     int State196(int event);
     void Update();
     void Slot166(int kind);
@@ -184,12 +185,10 @@ struct EnemyMini : Enemy {
 
     char padding_b7a[0x16];
     AttackSlot attacks[2];       // +0xb90
-    uint8_t flagC80;             // +0xc80
+    uint8_t projectileOnRemove;  // +0xc80: Remove fires a projectile
     char padding_c81[0x3];
-    int32_t valueC84;            // +0xc84: serialized through a uint32_t
-    int32_t valueC88;            // +0xc88
-    int32_t valueC8c;            // +0xc8c
-    int32_t valueC90;            // +0xc90
+    uint32_t projectileSpawner;  // +0xc84: from that spawner
+    onyx::Vector3 projectileOffset; // +0xc88: from the enemy's position moved by this
     uint8_t flagC94;             // +0xc94
 };
 // vtable 0x1883730, 237 slots
@@ -232,6 +231,7 @@ struct EnemyJetPackMatt : Enemy {
 struct EnemyHanzo : Enemy {
     SPTG_TYPE(Enemy, 0x0f4fe01fu)
     bool IsA(uint32_t type) override;   // slot 12 (0x9f5cc0)
+    void Remove(bool respawn);
     void Approach();
     bool CanMount();
     bool OnMount(void* data);
@@ -263,6 +263,7 @@ struct EnemyGodzilla : Enemy {
     void ReactTo(BaseCharacter* other, int reaction, void* data);
     bool OnMount(void* data);
     int State100(int event);
+    int State194(int event);
     bool Slot82();
     virtual int State234(int event); virtual State State234Ptr();   // slots 234, 235
     virtual int State236(int event); virtual State State236Ptr();   // slots 236, 237
@@ -270,6 +271,7 @@ struct EnemyGodzilla : Enemy {
 
     char padding_b7a[0x16];
     AttackSlot attacks[4];       // +0xb90
+    uint8_t dashing;             // +0xd70: state 194 waits out the delay before its dash
 };
 // vtable 0x1885680, 248 slots
 struct EnemyGiant : Enemy {
@@ -457,6 +459,7 @@ struct EnemyJake : EnemyNormal {
     // Its type test leaves out EnemyNormal's type (0x65c38d59): the type names Enemy as its base.
     SPTG_TYPE(Enemy, 0x3b005f5du)
     bool IsA(uint32_t type) override;   // slot 12 (0x9f2aa0)
+    int State108(int event);
     void Slot19();
     void Slot4(onyx::Archive& archive, ComponentSlot::Source* source);
     virtual int State250(int event); virtual State State250Ptr();   // slots 250, 251
@@ -524,6 +527,7 @@ struct EnemyArZee : EnemyShooter {
 struct EnemyAlberta : EnemyNormal {
     SPTG_TYPE(EnemyNormal, 0x6387d624u)
     bool IsA(uint32_t type) override;   // slot 12 (0xa01050)
+    void Remove(bool respawn);
 
 };
 

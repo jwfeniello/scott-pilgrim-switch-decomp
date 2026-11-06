@@ -563,6 +563,59 @@ void EnemyGiant::Slot166(int kind) {
     }
 }
 
+// EnemyGodzilla slot 194 (0x9f95a0): its own timed dash. Entry stops, loops animation 33, sets the dash speed (scaled by
+// +0x908) the way it faces and works out the delay from the target's x offset (25 without a target), then starts
+// attack 1 and waits (+0xd70). Once the delay is out it dashes for the hold time, then stops and goes to slot 96. The
+// target test is a signed compare in the original, unlike targetIndex's other uses, hence the cast. The copy of the
+// base delay is an integer copy, read back as a float after the next store, as the original's fmov shows.
+int EnemyGodzilla::State194(int event) {
+    int result = kStateHandled;
+    switch (event) {
+    case kStateUpdate:
+        if (dashing) {
+            value334 += Move_FrameDelta;
+            if (value334 > dashDelay) {
+                stateTime = 0.0f;
+                dashing = 0;
+            }
+        } else {
+            stateTime += Move_FrameDelta;
+            if (stateTime > dashHold) {
+                motion = onyx::Vector3::Zero();
+                motionTarget = onyx::Vector3::Zero();
+                states.Transition(State96Ptr());
+                result = kStateParentTookOver;
+            }
+        }
+        break;
+    case kStateEnter: {
+        motion = onyx::Vector3::Zero();
+        motionTarget = onyx::Vector3::Zero();
+        PlayAnimation(33, true, false, 1.0f);
+        float direction = onyx::Get<ActorFlags, 0x2eae5813u>(onyx::Find<ActorObject, 0x6492d61du>(actorObject)->flags)->facingLeft ? -1.0f : 1.0f;
+        float perSecond = dashSpeed * 60.0f;
+        motion.x = specialSpeedScale * (dashSpeed * direction);
+        dashDelay = dashDelayBase;
+        value334 = 0.0f;
+        float reach = perSecond * (dashHold + dashDelay);
+        float distance = static_cast<int>(targetIndex) < 4 ? __builtin_fabsf(targets[targetIndex].offset.x) : 25.0f;
+        dashDelay += (distance - reach) / perSecond;
+        StartAttack(&attacks[1].attack, false, 1, nullptr);
+        dashing = 1;
+        break;
+    }
+    case kStateExit:
+        states.AssertOwner(this);
+        break;
+    case kStateEvent3:
+        break;
+    default:
+        result = kStateUnhandled;
+        break;
+    }
+    return result;
+}
+
 // EnemyGodzilla slot 100 (0x9f9230): replaces BaseCharacter's state: entry plays
 // animation 0; once falling or level and on the ground, switches to slot 104.
 int EnemyGodzilla::State100(int event) {
@@ -1073,6 +1126,44 @@ void EnemyShooter::Slot19() {
     valueC5c = 0;
 }
 
+// EnemyJake slot 108 (0x9f3ed0): after Enemy's state, on entry and once per life (+0x11c1, raised again by slot 19),
+// interactive object spawner 27 places an object where Jake stands.
+int EnemyJake::State108(int event) {
+    int result = Enemy::State108(event);
+    if (result == kStateParentTookOver) return result;
+    if (event != kStateEnter) return kStateUnhandled;
+    if (flag11c1) {
+        flag11c1 = 0;
+        SpawnObjectHere(27);
+    }
+    return kStateHandled;
+}
+
+// EnemyMini slot 70 (0x9f0390): Enemy's, then with +0xc80 set, projectile spawner +0xc84 fires a projectile from the
+// enemy's position moved by +0xc88, carrying the id of the attack it is making. Not yet matched: only the order of two
+// stores into the record differs (the original stores the +0x48 pair before +0x1c, +0x40 and +0x50, this build after).
+void EnemyMini::Remove(bool respawn) {
+    Enemy::Remove(respawn);
+    if (!projectileOnRemove) return;
+    onyx::Vector3 position = onyx::Get<onyx::Transform, onyx::kTransform>(onyx::Find<ActorObject, 0x6492d61du>(actorObject)->transform)->Position();
+    ProjectileSpawnInfo info(projectileSpawner, onyx::Vector3(position.x + projectileOffset.x, position.y + projectileOffset.y,
+                                                              position.z + projectileOffset.z),
+                             onyx::Vector3(0.0f, 0.0f, 0.0f), currentAttack->id, 1);
+    FireProjectile(info);
+}
+
+// Slot 70 of EnemyHanzo (0x9f6810) and EnemyAlberta (0xa01110): Enemy's, then interactive object spawner 24 (Hanzo) or
+// 26 (Alberta) places an object where the enemy was.
+void EnemyHanzo::Remove(bool respawn) {
+    Enemy::Remove(respawn);
+    SpawnObjectHere(24);
+}
+
+void EnemyAlberta::Remove(bool respawn) {
+    Enemy::Remove(respawn);
+    SpawnObjectHere(26);
+}
+
 // EnemyJake slot 19 (0xa026b0): after Enemy's slot 19, resets the sensor at
 // +0x11c8 and the state values, and raises +0x11c1.
 void EnemyJake::Slot19() {
@@ -1169,11 +1260,11 @@ void EnemyMini::Slot4(onyx::Archive& archive, ComponentSlot::Source* source) {
     Enemy::Slot4(archive, source);
     attacks[0].Serialize(archive);
     attacks[1].Serialize(archive);
-    onyx::Transfer(archive, flagC80);
-    onyx::TransferAs<uint32_t>(archive, valueC84);
-    onyx::Transfer(archive, valueC88);
-    onyx::Transfer(archive, valueC8c);
-    onyx::Transfer(archive, valueC90);
+    onyx::Transfer(archive, projectileOnRemove);
+    onyx::TransferAs<uint32_t>(archive, projectileSpawner);
+    onyx::Transfer(archive, projectileOffset.x);
+    onyx::Transfer(archive, projectileOffset.y);
+    onyx::Transfer(archive, projectileOffset.z);
     onyx::Transfer(archive, flagC94);
 }
 
@@ -1832,6 +1923,21 @@ int EnemyJetPackMatt::State106(int event) {
         break;
     }
     return result;
+}
+
+// EnemyShooter 0x9ec540: fires the shot. Facing left, the velocity (+0xc50) and the muzzle (+0xc44) turn round in x first.
+// Projectile spawner +0xb8c fires it from the muzzle with that velocity, as part of the current attack, and with +0x40
+// set when facing right. Not yet matched: the record's stores and the registers of its inputs come in another order.
+void EnemyShooter::Fire() {
+    uint8_t facingLeft = onyx::Get<ActorFlags, 0x2eae5813u>(onyx::Find<ActorObject, 0x6492d61du>(actorObject)->flags)->facingLeft;
+    if (facingLeft) {
+        vectorC50.x = -vectorC50.x;
+        vectorC44.x = -vectorC44.x;
+    }
+    onyx::Vector3 position = onyx::Get<onyx::Transform, onyx::kTransform>(onyx::Find<ActorObject, 0x6492d61du>(actorObject)->transform)->Position();
+    ProjectileSpawnInfo info(valueB8c, onyx::Vector3(position.x + vectorC44.x, position.y + vectorC44.y, position.z + vectorC44.z),
+                             vectorC50, currentAttack->id, facingLeft ^ 1);
+    FireProjectile(info);
 }
 
 // EnemyShooter slot 236 (0x9ec240): fires once its delay runs out, and goes to state 96 when the animation ends. At a target in

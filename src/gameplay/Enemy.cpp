@@ -390,6 +390,37 @@ void Enemy::Slot94() {
 // The type tests (slot 12): each class's own type or one of its base's (SPTG_TYPE).
 bool Enemy::IsA(uint32_t type) { return IsType(type); }   // 0x9e1f00
 
+// 0x9dc1a0: the position of player `index` in the level's player catalog. The copy goes field by field: the original
+// stores x and y before it loads z.
+void Enemy::PlayerPosition(onyx::Vector3* out, Enemy* self, uint32_t index) {
+    ControllablePlayer* player = onyx::Get<PlayerCatalog, onyx_types::type_0bf4a9b7>(self->level.Get()->players)->players[index];
+    onyx::Transform* transform = onyx::Find<onyx::Transform, onyx::kTransform>(onyx::Find<ActorObject, 0x6492d61du>(player->actorObject)->transform);
+    out->x = transform->position.x;
+    out->y = transform->position.y;
+    out->z = transform->position.z;
+}
+
+// 0x9dc660: the first target, not out, that one of this frame's attacks reaches; its index goes to `index`. The moves
+// that aren't aimed at anyone (kinds 8, 31-33, 39, 45, 61, 79 and 202) don't count. Not yet matched: the original reads
+// the attack's near depth before the target's depth and tests the height before the far depth; the rest lines up.
+bool Enemy::FindTargetInReach(uint32_t* index) {
+    AttackSlot* end = attackList.data + attackList.size;
+    for (uint32_t i = 0; i < targetCount; ++i) {
+        if (static_cast<BaseCharacter*>(targets[i].actor->object)->IsOut()) continue;
+        for (AttackSlot* attack = attackList.data; attack != end; ++attack) {
+            switch (attack->kind) {
+            case 8: case 31: case 32: case 33: case 39: case 45: case 61: case 79: case 202:
+                continue;
+            }
+            if (i < targetCount && attack->InRange(targets[i].offset)) {
+                *index = i;
+                return true;
+            }
+        }
+    }
+    return false;
+}
+
 // 0x9dc2d0: sets the facing mode (unless it is 3, which holds) and faces the enemy, and the mount it rides, right for
 // mode 1 and left for mode 0.
 void Enemy::Call9dc2d0(uint32_t mode) {

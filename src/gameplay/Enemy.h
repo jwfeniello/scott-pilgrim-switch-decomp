@@ -4,6 +4,7 @@
 // in Enemy even where they may belong to BaseCharacter. Names are provisional.
 #pragma once
 #include "BaseCharacter.h"
+#include "Spawner.h"
 #include "Vector.h"
 
 namespace SPTG {
@@ -324,11 +325,22 @@ struct Enemy : BaseCharacter {
         if (removedForRespawn) respawnList->PushFront(&node, info);
         else spawnedList->PushFront(&node, info);
     }
+    // Has interactive object spawner `spawner` place an object where the enemy stands, with no callback.
+    __attribute__((always_inline)) void SpawnObjectHere(uint32_t spawner) {
+        onyx::Vector3 position = onyx::Get<onyx::Transform, onyx::kTransform>(onyx::Find<ActorObject, 0x6492d61du>(actorObject)->transform)->Position();
+        InteractiveObjectSpawnInfo info(spawner, position);
+        onyx::Find<ActorSpawnerCatalog<InteractiveObject>, onyx_types::type_43f66d96>(level.Get()->interactiveSpawners)->Spawn(info);
+    }
+    // Has the projectile spawner the record names fire a projectile from it.
+    __attribute__((always_inline)) void FireProjectile(ProjectileSpawnInfo& info) {
+        onyx::Find<ActorSpawnerCatalog<Projectile>, onyx_types::type_0ae24dd5>(level.Get()->projectileSpawners)->Spawn(info);
+    }
     void Update9db820(float time, float value);   // 0x9db820
     void Call996c30(float value, int a, int b, void* c);   // 0x996c30
     void Apply995a30(float damage);                         // 0x995a30
     bool Check9ddab0(EnemySensor* sensor);                  // 0x9ddab0
     void PickPoint(onyx::Vector3* out, float distance);     // 0x9daf90
+    bool FindTargetInReach(uint32_t* index);                // 0x9dc660
     void Call9dc2d0(uint32_t mode);                         // 0x9dc2d0: sets the facing mode
     // The position of player `index` in the level's player catalog (0x9dc1a0).
     static void PlayerPosition(onyx::Vector3* out, Enemy* self, uint32_t index);
