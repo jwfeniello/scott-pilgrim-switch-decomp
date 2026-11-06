@@ -502180,6 +502180,17 @@
           "got_bindings": {}
         },
         {
+          "address": "0x704a80",
+          "size": 68,
+          "symbol": "_Z36Create_Onyx_DareAudio_EventPlayStorev",
+          "target_sha256": "a6ba2d41f7d8fb6a3a0aca2db2bb79071dff05e89fe6a87b3adc946713b34314",
+          "bindings": {
+            "AllocatorContext": "0x1935058",
+            "_ZTVN4Onyx9DareAudio14EventPlayStoreE": "0x18471e8"
+          },
+          "got_bindings": {}
+        },
+        {
           "address": "0x722f10",
           "size": 92,
           "symbol": "_Z28Create_Onyx_DLC_ProgressTaskv",
@@ -502862,6 +502873,19 @@
             "GenericFactoryResolve": "0x676160",
             "_ZN4Onyx15ActionComponentC2Ev": "0xbc97a0",
             "_ZTVN4SPTG16ShowObjectActionE": "0x186a938"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x74e520",
+          "size": 88,
+          "symbol": "_Z31Create_SPTG_SoundTestModeActionv",
+          "target_sha256": "a3ab8d33f75b5d4b2378a2ea08c8a966968a512eef5bf50ec41be5b63df3ae3a",
+          "bindings": {
+            "GenericFactoryManager": "0x191c9c8",
+            "GenericFactoryResolve": "0x676160",
+            "_ZN4Onyx15ActionComponentC2Ev": "0xbc97a0",
+            "_ZTVN4SPTG19SoundTestModeActionE": "0x186a7d8"
           },
           "got_bindings": {}
         },
@@ -503666,6 +503690,22 @@
           "got_bindings": {}
         },
         {
+          "address": "0xab7490",
+          "size": 84,
+          "symbol": "_Z19Create_Onyx_Animatev",
+          "target_sha256": "483079a4a2610432a012d686df50d968de8589464ffb24e39c54f2a410b9dcc2",
+          "bindings": {
+            "GenericFactoryManager": "0x191c9c8",
+            "GenericFactoryResolve": "0x676160",
+            "_ZN11Base_93b180C2Ev": "0x93b180",
+            "_ZTVN4Onyx7AnimateE": "0x18b3230"
+          },
+          "got_bindings": {},
+          "literals": {
+            "000000000000803f": "0x1331668"
+          }
+        },
+        {
           "address": "0xab7d20",
           "size": 108,
           "symbol": "_Z30Create_Onyx_Behavior_Generatorv",
@@ -503704,6 +503744,100 @@
             "_ZN4Onyx9Component4BaseC2Ev": "0x6764e0",
             "_ZTVN4Onyx8Graphics20EvolutionDevelopment5SceneE": "0x18adec8",
             "AllocatorContext": "0x1935058"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xabc250",
+          "size": 72,
+          "symbol": "_Z51Create_Onyx_Graphics_MaterialProperty_BindTextureExv",
+          "target_sha256": "4f660bf425829c36b3823fb1a2daca8a8d45ab0c14ac15569b01cebd74a742c0",
+          "bindings": {
+            "AllocatorContext": "0x1935058",
+            "_ZTVN4Onyx8Graphics16MaterialProperty13BindTextureExE": "0x18a1828"
+          },
+          "got_bindings": {},
+          "literals": {
+            "00000000020000000200000002000000": "0x13341f0"
+          }
+        },
+        {
+          "address": "0xabcdb0",
+          "size": 68,
+          "symbol": "_Z62Create_Onyx_Graphics_MaterialProperty_TextureStageCoordGenCoefv",
+          "target_sha256": "316f23485cf36bad16217eb97cb2ad7812b5d0e6b1e0f63c1cb92b1959b89537",
+          "bindings": {
+            "AllocatorContext": "0x1935058",
+            "_ZTVN4Onyx8Graphics16MaterialProperty24TextureStageCoordGenCoefE": "0x18ac548"
+          },
+          "got_bindings": {},
+          "literals": {
+            "0000803f000000000000000000000000": "0x1333f40"
+          }
+        },
+        {
+          "address": "0xabd150",
+          "size": 76,
+          "symbol": "_Z59Create_Onyx_Graphics_NewMaterialSystem_F32MaterialParameterv",
+          "target_sha256": "0a4fd37060e94f8c3c37dbb0a4b0d5d28b5c6562392e1400f3e3a232aa5cb2df",
+          "bindings": {
+            "AllocatorContext": "0x1935058",
+            "_ZTVN4Onyx8Graphics17NewMaterialSystem20F32MaterialParameterE": "0x18ac028"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xabd1a0",
+          "size": 72,
+          "symbol": "_Z60Create_Onyx_Graphics_NewMaterialSystem_BoolMaterialParameterv",
+          "target_sha256": "8ba1e8bd9e7b82310acb1f3f38cfe2733a83d23186c5167e728a6e1efb133b10",
+          "bindings": {
+            "AllocatorContext": "0x1935058",
+            "_ZTVN4Onyx8Graphics17NewMaterialSystem21BoolMaterialParameterE": "0x18abfd0"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xabd1f0",
+          "size": 76,
+          "symbol": "_Z63Create_Onyx_Graphics_NewMaterialSystem_IntegerMaterialParameterv",
+          "target_sha256": "7db13bb412f6cf36815a1e48ce0d50d42a003aa12b550ebc7b7381dcb2ec2f51",
+          "bindings": {
+            "AllocatorContext": "0x1935058",
+            "_ZTVN4Onyx8Graphics17NewMaterialSystem24IntegerMaterialParameterE": "0x18abf78"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xabd240",
+          "size": 76,
+          "symbol": "_Z63Create_Onyx_Graphics_NewMaterialSystem_Vector2MaterialParameterv",
+          "target_sha256": "dcd2d6bbbd0c6091ea79d003f1b947e78747bcc0da355ed8371f14215619e313",
+          "bindings": {
+            "AllocatorContext": "0x1935058",
+            "_ZTVN4Onyx8Graphics17NewMaterialSystem24Vector2MaterialParameterE": "0x18abf20"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xabd290",
+          "size": 76,
+          "symbol": "_Z63Create_Onyx_Graphics_NewMaterialSystem_Vector3MaterialParameterv",
+          "target_sha256": "b3abe3fd73ed75aa5925c2a4d9c58bc29b2bb588e7bf00cc21e5db5ad2ac4be4",
+          "bindings": {
+            "AllocatorContext": "0x1935058",
+            "_ZTVN4Onyx8Graphics17NewMaterialSystem24Vector3MaterialParameterE": "0x18abec8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xabd2e0",
+          "size": 76,
+          "symbol": "_Z63Create_Onyx_Graphics_NewMaterialSystem_Vector4MaterialParameterv",
+          "target_sha256": "4df3a0865184412f2e8537a2735d3b514df42907f77ad34323abd69baf5be555",
+          "bindings": {
+            "AllocatorContext": "0x1935058",
+            "_ZTVN4Onyx8Graphics17NewMaterialSystem24Vector4MaterialParameterE": "0x18abe70"
           },
           "got_bindings": {}
         },
@@ -503805,6 +503939,19 @@
           "got_bindings": {}
         },
         {
+          "address": "0xabf1d0",
+          "size": 84,
+          "symbol": "_Z27Create_Onyx_Graphics_Modulev",
+          "target_sha256": "d238eaabcff34c153a91ad988775c9df0ef979ae1019e495a17d9956b52a26d7",
+          "bindings": {
+            "GenericFactoryManager": "0x191c9c8",
+            "GenericFactoryResolve": "0x676160",
+            "_ZN4Onyx9Component4BaseC2Ev": "0x6764e0",
+            "_ZTVN4Onyx8Graphics6ModuleE": "0x18a9060"
+          },
+          "got_bindings": {}
+        },
+        {
           "address": "0xabf3b0",
           "size": 100,
           "symbol": "_Z50Create_Onyx_Graphics_MorphEvaluationContextCreatorv",
@@ -503859,6 +504006,38 @@
             "_ZTVN4Onyx8Graphics12SkinnedMorphE": "0x18a83b0"
           },
           "got_bindings": {}
+        },
+        {
+          "address": "0xabff70",
+          "size": 88,
+          "symbol": "_Z47Create_Onyx_Graphics_Particle_Effect_EffectBasev",
+          "target_sha256": "1f3eb5fc45ca4a3ae8cd7164c6242699e148f5b9daa05b58b7e286b8c4f5c1c6",
+          "bindings": {
+            "GenericFactoryManager": "0x191c9c8",
+            "GenericFactoryResolve": "0x676160",
+            "_ZN4Onyx9Component4BaseC2Ev": "0x6764e0",
+            "_ZTVN4Onyx8Graphics8Particle6Effect10EffectBaseE": "0x18a6888"
+          },
+          "got_bindings": {},
+          "literals": {
+            "0000803f00000000": "0x1330d70"
+          }
+        },
+        {
+          "address": "0xac0060",
+          "size": 88,
+          "symbol": "_Z48Create_Onyx_Graphics_Particle_Effect_EffectDelayv",
+          "target_sha256": "9397817bc79a2c9a3356e1b1039500d56e890a5f7f0cb6ed0d616800b0d3083c",
+          "bindings": {
+            "GenericFactoryManager": "0x191c9c8",
+            "GenericFactoryResolve": "0x676160",
+            "_ZN4Onyx9Component4BaseC2Ev": "0x6764e0",
+            "_ZTVN4Onyx8Graphics8Particle6Effect11EffectDelayE": "0x18a6718"
+          },
+          "got_bindings": {},
+          "literals": {
+            "0000803f00000000": "0x1330d70"
+          }
         },
         {
           "address": "0xac13c0",
@@ -504029,6 +504208,22 @@
             "_ZTV12Class_bd7840": "0x18b4310"
           },
           "got_bindings": {}
+        },
+        {
+          "address": "0xbf0590",
+          "size": 88,
+          "symbol": "_Z13Create_Damperv",
+          "target_sha256": "a2e8b53035dfee129bdab6903a70488a8157946e8f2db1a32f5d11d91ffcf680",
+          "bindings": {
+            "GenericFactoryManager": "0x191c9c8",
+            "GenericFactoryResolve": "0x676160",
+            "_ZN4Onyx9Component4BaseC2Ev": "0x6764e0",
+            "_ZTV6Damper": "0x18b54b8"
+          },
+          "got_bindings": {},
+          "literals": {
+            "0000803f00000000": "0x1330d70"
+          }
         },
         {
           "address": "0xc5a530",

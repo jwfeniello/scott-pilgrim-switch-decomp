@@ -37,6 +37,10 @@ namespace SPTG { struct Striker { Striker(); virtual ~Striker(); }; }
 struct Base_95d1d0 { Base_95d1d0(); virtual ~Base_95d1d0(); };  // Onyx::Component::Compose<...>
 struct Base_b4c840 { Base_b4c840(); virtual ~Base_b4c840(); };  // Onyx::Component::Compose<...>
 namespace Onyx { struct ActionComponent { ActionComponent(); virtual ~ActionComponent(); }; }
+struct Base_93b180 { Base_93b180(); virtual ~Base_93b180(); };
+// The allocator in the context's slot at +0x558, which plain objects come from; DefaultAllocator() is the same
+// context's +0x50.
+__attribute__((always_inline)) inline TypeAllocator* DirectAllocator() { return *reinterpret_cast<TypeAllocator**>(AllocatorContext + 0x558); }
 
 // Onyx::Flow::Game : Onyx::Component::Compose<...> : Onyx::Component::Base
 namespace Onyx {
@@ -4102,3 +4106,322 @@ struct Waypoint : WaypointLayout {
 };
 }  // namespace Onyx
 void* Create_Onyx_Waypoint() { return new (GenericFactoryResolve(GenericFactoryManager, 0x7b73c94u)->Allocate(sizeof(Onyx::Waypoint))) Onyx::Waypoint; }
+
+// Onyx::DareAudio::EventPlayStore (factory 0x704a80), by its constructor's stores
+namespace Onyx {
+namespace DareAudio {
+struct EventPlayStoreLayout {
+    virtual ~EventPlayStoreLayout();
+    void* field_8;
+    uint64_t field_10;
+    uint64_t field_18;
+    uint64_t field_20;
+    char padding_28[0x8];
+    __attribute__((always_inline)) EventPlayStoreLayout() { field_18 = 0; field_20 = 0; field_10 = 0; field_8 = DefaultAllocator(); }
+};
+struct EventPlayStore : EventPlayStoreLayout {
+    __attribute__((always_inline)) EventPlayStore() {}
+    virtual ~EventPlayStore();
+};
+}  // namespace DareAudio
+}  // namespace Onyx
+void* Create_Onyx_DareAudio_EventPlayStore() { return new (DirectAllocator()->Allocate(sizeof(Onyx::DareAudio::EventPlayStore))) Onyx::DareAudio::EventPlayStore; }
+
+// SPTG::SoundTestModeAction (factory 0x74e520), by its constructor's stores
+namespace SPTG {
+struct SoundTestModeActionLayout : ::Onyx::ActionComponent {
+    char padding_8[0x98];
+    uint64_t field_a0;
+    uint64_t field_a8;
+    uint64_t field_b0;
+    int32_t field_b8;
+    int32_t field_bc;
+    char padding_c0[0x8];
+    __attribute__((always_inline)) SoundTestModeActionLayout() { field_a0 = 0; field_a8 = 0; field_b0 = 0; }
+    virtual ~SoundTestModeActionLayout();
+};
+struct SoundTestModeAction : SoundTestModeActionLayout {
+    __attribute__((always_inline)) SoundTestModeAction() { field_b8 = -1; field_bc = -1; }
+    virtual ~SoundTestModeAction();
+};
+}  // namespace SPTG
+void* Create_SPTG_SoundTestModeAction() { return new (GenericFactoryResolve(GenericFactoryManager, 0x7b73c94u)->Allocate(sizeof(SPTG::SoundTestModeAction))) SPTG::SoundTestModeAction; }
+
+// Onyx::Animate (factory 0xab7490), by its constructor's stores
+namespace Onyx {
+struct AnimateLayout : Base_93b180 {
+    char padding_8[0x90];
+    int32_t field_98;
+    int32_t field_9c;
+    __attribute__((always_inline)) AnimateLayout() {}
+    virtual ~AnimateLayout();
+};
+struct Animate : AnimateLayout {
+    __attribute__((always_inline)) Animate() { field_98 = 0; field_9c = 0x3f800000u; }
+    virtual ~Animate();
+};
+}  // namespace Onyx
+void* Create_Onyx_Animate() { return new (GenericFactoryResolve(GenericFactoryManager, 0x7b73c94u)->Allocate(sizeof(Onyx::Animate))) Onyx::Animate; }
+
+// Onyx::Graphics::MaterialProperty::BindTextureEx (factory 0xabc250), by its constructor's stores
+namespace Onyx {
+namespace Graphics {
+namespace MaterialProperty {
+struct BindTextureExLayout {
+    virtual ~BindTextureExLayout();
+    uint64_t field_8;
+    uint64_t field_10;
+    int32_t field_18;
+    char padding_1c[0x4];
+    __attribute__((always_inline)) BindTextureExLayout() {}
+};
+struct BindTextureEx : BindTextureExLayout {
+    __attribute__((always_inline)) BindTextureEx() { field_8 = 0x200000000ull; field_10 = 0x200000002ull; field_18 = 2; }
+    virtual ~BindTextureEx();
+};
+}  // namespace MaterialProperty
+}  // namespace Graphics
+}  // namespace Onyx
+void* Create_Onyx_Graphics_MaterialProperty_BindTextureEx() { return new (DirectAllocator()->Allocate(sizeof(Onyx::Graphics::MaterialProperty::BindTextureEx))) Onyx::Graphics::MaterialProperty::BindTextureEx; }
+
+// Onyx::Graphics::MaterialProperty::TextureStageCoordGenCoef (factory 0xabcdb0), by its constructor's stores
+namespace Onyx {
+namespace Graphics {
+namespace MaterialProperty {
+struct TextureStageCoordGenCoefLayout {
+    virtual ~TextureStageCoordGenCoefLayout();
+    int32_t field_8;
+    char padding_c[0x4];
+    uint64_t field_10;
+    uint64_t field_18;
+    __attribute__((always_inline)) TextureStageCoordGenCoefLayout() {}
+};
+struct TextureStageCoordGenCoef : TextureStageCoordGenCoefLayout {
+    __attribute__((always_inline)) TextureStageCoordGenCoef() { field_8 = 0; field_10 = 0x3f800000ull; field_18 = 0; }
+    virtual ~TextureStageCoordGenCoef();
+};
+}  // namespace MaterialProperty
+}  // namespace Graphics
+}  // namespace Onyx
+void* Create_Onyx_Graphics_MaterialProperty_TextureStageCoordGenCoef() { return new (DirectAllocator()->Allocate(sizeof(Onyx::Graphics::MaterialProperty::TextureStageCoordGenCoef))) Onyx::Graphics::MaterialProperty::TextureStageCoordGenCoef; }
+
+// Onyx::Graphics::NewMaterialSystem::F32MaterialParameter (factory 0xabd150), by its constructor's stores
+namespace Onyx {
+namespace Graphics {
+namespace NewMaterialSystem {
+struct F32MaterialParameterLayout {
+    virtual ~F32MaterialParameterLayout();
+    uint8_t field_8;
+    char padding_9[0x3];
+    int32_t field_c;
+    void* field_10;
+    uint64_t field_18;
+    char padding_20[0x8];
+    __attribute__((always_inline)) F32MaterialParameterLayout() { field_8 = 0; field_c = 1; field_18 = 0; field_10 = DefaultAllocator(); }
+};
+struct F32MaterialParameter : F32MaterialParameterLayout {
+    __attribute__((always_inline)) F32MaterialParameter() {}
+    virtual ~F32MaterialParameter();
+};
+}  // namespace NewMaterialSystem
+}  // namespace Graphics
+}  // namespace Onyx
+void* Create_Onyx_Graphics_NewMaterialSystem_F32MaterialParameter() { return new (DirectAllocator()->Allocate(sizeof(Onyx::Graphics::NewMaterialSystem::F32MaterialParameter))) Onyx::Graphics::NewMaterialSystem::F32MaterialParameter; }
+
+// Onyx::Graphics::NewMaterialSystem::BoolMaterialParameter (factory 0xabd1a0), by its constructor's stores
+namespace Onyx {
+namespace Graphics {
+namespace NewMaterialSystem {
+struct BoolMaterialParameterLayout {
+    virtual ~BoolMaterialParameterLayout();
+    uint8_t field_8;
+    char padding_9[0x3];
+    int32_t field_c;
+    void* field_10;
+    uint64_t field_18;
+    char padding_20[0x8];
+    __attribute__((always_inline)) BoolMaterialParameterLayout() { field_8 = 0; field_c = 0; field_18 = 0; field_10 = DefaultAllocator(); }
+};
+struct BoolMaterialParameter : BoolMaterialParameterLayout {
+    __attribute__((always_inline)) BoolMaterialParameter() {}
+    virtual ~BoolMaterialParameter();
+};
+}  // namespace NewMaterialSystem
+}  // namespace Graphics
+}  // namespace Onyx
+void* Create_Onyx_Graphics_NewMaterialSystem_BoolMaterialParameter() { return new (DirectAllocator()->Allocate(sizeof(Onyx::Graphics::NewMaterialSystem::BoolMaterialParameter))) Onyx::Graphics::NewMaterialSystem::BoolMaterialParameter; }
+
+// Onyx::Graphics::NewMaterialSystem::IntegerMaterialParameter (factory 0xabd1f0), by its constructor's stores
+namespace Onyx {
+namespace Graphics {
+namespace NewMaterialSystem {
+struct IntegerMaterialParameterLayout {
+    virtual ~IntegerMaterialParameterLayout();
+    uint8_t field_8;
+    char padding_9[0x3];
+    int32_t field_c;
+    void* field_10;
+    uint64_t field_18;
+    char padding_20[0x8];
+    __attribute__((always_inline)) IntegerMaterialParameterLayout() { field_8 = 0; field_c = 5; field_18 = 0; field_10 = DefaultAllocator(); }
+};
+struct IntegerMaterialParameter : IntegerMaterialParameterLayout {
+    __attribute__((always_inline)) IntegerMaterialParameter() {}
+    virtual ~IntegerMaterialParameter();
+};
+}  // namespace NewMaterialSystem
+}  // namespace Graphics
+}  // namespace Onyx
+void* Create_Onyx_Graphics_NewMaterialSystem_IntegerMaterialParameter() { return new (DirectAllocator()->Allocate(sizeof(Onyx::Graphics::NewMaterialSystem::IntegerMaterialParameter))) Onyx::Graphics::NewMaterialSystem::IntegerMaterialParameter; }
+
+// Onyx::Graphics::NewMaterialSystem::Vector2MaterialParameter (factory 0xabd240), by its constructor's stores
+namespace Onyx {
+namespace Graphics {
+namespace NewMaterialSystem {
+struct Vector2MaterialParameterLayout {
+    virtual ~Vector2MaterialParameterLayout();
+    uint8_t field_8;
+    char padding_9[0x3];
+    int32_t field_c;
+    void* field_10;
+    uint64_t field_18;
+    char padding_20[0x8];
+    __attribute__((always_inline)) Vector2MaterialParameterLayout() { field_8 = 0; field_c = 2; field_18 = 0; field_10 = DefaultAllocator(); }
+};
+struct Vector2MaterialParameter : Vector2MaterialParameterLayout {
+    __attribute__((always_inline)) Vector2MaterialParameter() {}
+    virtual ~Vector2MaterialParameter();
+};
+}  // namespace NewMaterialSystem
+}  // namespace Graphics
+}  // namespace Onyx
+void* Create_Onyx_Graphics_NewMaterialSystem_Vector2MaterialParameter() { return new (DirectAllocator()->Allocate(sizeof(Onyx::Graphics::NewMaterialSystem::Vector2MaterialParameter))) Onyx::Graphics::NewMaterialSystem::Vector2MaterialParameter; }
+
+// Onyx::Graphics::NewMaterialSystem::Vector3MaterialParameter (factory 0xabd290), by its constructor's stores
+namespace Onyx {
+namespace Graphics {
+namespace NewMaterialSystem {
+struct Vector3MaterialParameterLayout {
+    virtual ~Vector3MaterialParameterLayout();
+    uint8_t field_8;
+    char padding_9[0x3];
+    int32_t field_c;
+    void* field_10;
+    uint64_t field_18;
+    char padding_20[0x10];
+    __attribute__((always_inline)) Vector3MaterialParameterLayout() { field_8 = 0; field_c = 3; field_18 = 0; field_10 = DefaultAllocator(); }
+};
+struct Vector3MaterialParameter : Vector3MaterialParameterLayout {
+    __attribute__((always_inline)) Vector3MaterialParameter() {}
+    virtual ~Vector3MaterialParameter();
+};
+}  // namespace NewMaterialSystem
+}  // namespace Graphics
+}  // namespace Onyx
+void* Create_Onyx_Graphics_NewMaterialSystem_Vector3MaterialParameter() { return new (DirectAllocator()->Allocate(sizeof(Onyx::Graphics::NewMaterialSystem::Vector3MaterialParameter))) Onyx::Graphics::NewMaterialSystem::Vector3MaterialParameter; }
+
+// Onyx::Graphics::NewMaterialSystem::Vector4MaterialParameter (factory 0xabd2e0), by its constructor's stores
+namespace Onyx {
+namespace Graphics {
+namespace NewMaterialSystem {
+struct Vector4MaterialParameterLayout {
+    virtual ~Vector4MaterialParameterLayout();
+    uint8_t field_8;
+    char padding_9[0x3];
+    int32_t field_c;
+    void* field_10;
+    uint64_t field_18;
+    char padding_20[0x10];
+    __attribute__((always_inline)) Vector4MaterialParameterLayout() { field_8 = 0; field_c = 4; field_18 = 0; field_10 = DefaultAllocator(); }
+};
+struct Vector4MaterialParameter : Vector4MaterialParameterLayout {
+    __attribute__((always_inline)) Vector4MaterialParameter() {}
+    virtual ~Vector4MaterialParameter();
+};
+}  // namespace NewMaterialSystem
+}  // namespace Graphics
+}  // namespace Onyx
+void* Create_Onyx_Graphics_NewMaterialSystem_Vector4MaterialParameter() { return new (DirectAllocator()->Allocate(sizeof(Onyx::Graphics::NewMaterialSystem::Vector4MaterialParameter))) Onyx::Graphics::NewMaterialSystem::Vector4MaterialParameter; }
+
+// Onyx::Graphics::Module (factory 0xabf1d0), by its constructor's stores
+namespace Onyx {
+namespace Graphics {
+struct ModuleLayout : ::Onyx::Component::Base {
+    char padding_8[0x48];
+    uint64_t field_50;
+    int32_t field_58;
+    int32_t field_5c;
+    __attribute__((always_inline)) ModuleLayout() { field_50 = 0; }
+    virtual ~ModuleLayout();
+};
+struct Module : ModuleLayout {
+    __attribute__((always_inline)) Module() { field_58 = 0; field_5c = -1; }
+    virtual ~Module();
+};
+}  // namespace Graphics
+}  // namespace Onyx
+void* Create_Onyx_Graphics_Module() { return new (GenericFactoryResolve(GenericFactoryManager, 0x7b73c94u)->Allocate(sizeof(Onyx::Graphics::Module))) Onyx::Graphics::Module; }
+
+// Onyx::Graphics::Particle::Effect::EffectBase (factory 0xabff70), by its constructor's stores
+namespace Onyx {
+namespace Graphics {
+namespace Particle {
+namespace Effect {
+struct EffectBaseLayout : ::Onyx::Component::Base {
+    char padding_8[0x44];
+    int32_t field_4c;
+    int32_t field_50;
+    int32_t field_54;
+    __attribute__((always_inline)) EffectBaseLayout() {}
+    virtual ~EffectBaseLayout();
+};
+struct EffectBase : EffectBaseLayout {
+    __attribute__((always_inline)) EffectBase() { field_4c = 0x3f800000u; field_50 = 0; field_54 = 0; }
+    virtual ~EffectBase();
+};
+}  // namespace Effect
+}  // namespace Particle
+}  // namespace Graphics
+}  // namespace Onyx
+void* Create_Onyx_Graphics_Particle_Effect_EffectBase() { return new (GenericFactoryResolve(GenericFactoryManager, 0x7b73c94u)->Allocate(sizeof(Onyx::Graphics::Particle::Effect::EffectBase))) Onyx::Graphics::Particle::Effect::EffectBase; }
+
+// Onyx::Graphics::Particle::Effect::EffectDelay (factory 0xac0060), by its constructor's stores
+namespace Onyx {
+namespace Graphics {
+namespace Particle {
+namespace Effect {
+struct EffectDelayLayout : ::Onyx::Component::Base {
+    char padding_8[0x44];
+    int32_t field_4c;
+    int32_t field_50;
+    int32_t field_54;
+    char padding_58[0x8];
+    __attribute__((always_inline)) EffectDelayLayout() { field_4c = 0x3f800000u; field_50 = 0; field_54 = 0; }
+    virtual ~EffectDelayLayout();
+};
+struct EffectDelay : EffectDelayLayout {
+    __attribute__((always_inline)) EffectDelay() {}
+    virtual ~EffectDelay();
+};
+}  // namespace Effect
+}  // namespace Particle
+}  // namespace Graphics
+}  // namespace Onyx
+void* Create_Onyx_Graphics_Particle_Effect_EffectDelay() { return new (GenericFactoryResolve(GenericFactoryManager, 0x7b73c94u)->Allocate(sizeof(Onyx::Graphics::Particle::Effect::EffectDelay))) Onyx::Graphics::Particle::Effect::EffectDelay; }
+
+// Damper (factory 0xbf0590), by its constructor's stores
+struct DamperLayout : ::Onyx::Component::Base {
+    char padding_8[0x48];
+    uint64_t field_50;
+    uint64_t field_58;
+    char padding_60[0x18];
+    int32_t field_78;
+    int32_t field_7c;
+    __attribute__((always_inline)) DamperLayout() {}
+    virtual ~DamperLayout();
+};
+struct Damper : DamperLayout {
+    __attribute__((always_inline)) Damper() { field_50 = 0; field_78 = 0x3f800000u; field_58 = 0; field_7c = 0; }
+    virtual ~Damper();
+};
+void* Create_Damper() { return new (GenericFactoryResolve(GenericFactoryManager, 0x386d550du)->Allocate(sizeof(Damper))) Damper; }
