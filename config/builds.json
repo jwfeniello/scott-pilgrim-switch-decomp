@@ -574901,6 +574901,741 @@
       ]
     },
     {
+      "id": "gear_files",
+      "source": "src/gameplay/GearFiles.cpp",
+      "compiler": "8.0.1",
+      "source_review": "manual_reconstruction",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-std=c++11",
+        "-O2",
+        "-mcpu=cortex-a57",
+        "-fstrict-aliasing",
+        "-fomit-frame-pointer",
+        "-fno-pic",
+        "-fno-delete-null-pointer-checks",
+        "-ffunction-sections",
+        "-fdata-sections"
+      ],
+      "header_roots": [
+        "src/gameplay"
+      ],
+      "functions": [
+        {
+          "address": "0xa9e460",
+          "size": 188,
+          "symbol": "_ZN4Gear7MemFile4SeekEPKm",
+          "target_sha256": "f2aeae3655061f46e9998cd11ce4f9f1a939dc7544a5cc0c7bd72a429ef26914",
+          "bindings": {
+            "_ZN2nn2os9LockMutexEPNS0_9MutexTypeE": "0xfa4950",
+            "_ZN4Gear11ReportErrorE": "0x189b308",
+            "_ZN2nn2os11UnlockMutexEPNS0_9MutexTypeE": "0xfa4960"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xa9e540",
+          "size": 176,
+          "symbol": "_ZN4Gear7MemFile5AtEndEv",
+          "target_sha256": "9558fb10020498dc58c560c7607fc1db62e88f5e94089705e91653a0165c5618",
+          "bindings": {
+            "_ZN4Gear11ReportErrorE": "0x189b308"
+          },
+          "got_bindings": {}
+        }
+      ]
+    },
+    {
+      "id": "gear_input",
+      "source": "src/gameplay/GearInput.cpp",
+      "compiler": "8.0.1",
+      "source_review": "manual_reconstruction",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-std=c++11",
+        "-O2",
+        "-mcpu=cortex-a57",
+        "-fstrict-aliasing",
+        "-fomit-frame-pointer",
+        "-fno-pic",
+        "-fno-delete-null-pointer-checks",
+        "-ffunction-sections",
+        "-fdata-sections"
+      ],
+      "header_roots": [
+        "src/gameplay"
+      ],
+      "functions": [
+        {
+          "address": "0xaa9b10",
+          "size": 252,
+          "symbol": "_ZN4Gear25InteractiveDeviceHookBaseINS_16GamePadInterfaceEED2Ev",
+          "target_sha256": "bac41e8e1ddd2c48c76377a06494908e8f93f724f36a56a911a78d5f2bc1f9f0",
+          "bindings": {
+            "_ZTVN4Gear25InteractiveDeviceHookBaseINS_16GamePadInterfaceEEE": "0x189d2f8",
+            "_ZN4Gear6InputsE": "0x192aeb8",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xaa9c20",
+          "size": 176,
+          "symbol": "_ZNK4Gear25InteractiveDeviceHookBaseINS_16GamePadInterfaceEE3IsAEPKc",
+          "target_sha256": "c534389da72baf56100cee5c1645680b900c1486cb2997ca946ad66a3c29fec3",
+          "bindings": {
+            "_ZN4Gear25InteractiveDeviceHookBaseINS_16GamePadInterfaceEE4NameE": "0x14ee505",
+            "_ZN4Gear21InteractiveDeviceHook4NameE": "0x14ee51f",
+            "_ZN4Gear17InteractiveDevice4NameE": "0x1318b61"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xaab210",
+          "size": 280,
+          "symbol": "_ZNK4Gear19TimeFilteredGamePad3IsAEPKc",
+          "target_sha256": "8430af0d81f0625c9ea6faeead2c0b5730678d8a2a1ba1df0a93d85180f60904",
+          "bindings": {
+            "_ZN4Gear19TimeFilteredGamePad4NameE": "0x14ee5be",
+            "_ZN4Gear11GamePadHook4NameE": "0x14ee5d2",
+            "_ZN4Gear25InteractiveDeviceHookBaseINS_16GamePadInterfaceEE4NameE": "0x14ee505",
+            "_ZN4Gear21InteractiveDeviceHook4NameE": "0x14ee51f",
+            "_ZN4Gear17InteractiveDevice4NameE": "0x1318b61"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xaaca20",
+          "size": 228,
+          "symbol": "_ZNK4Gear11GamePadHook3IsAEPKc",
+          "target_sha256": "8ffbaea086c0761faefc4a7e209b80e4295b51258fb54a8b654cbf977bdb9f1b",
+          "bindings": {
+            "_ZN4Gear11GamePadHook4NameE": "0x14ee5d2",
+            "_ZN4Gear25InteractiveDeviceHookBaseINS_16GamePadInterfaceEE4NameE": "0x14ee505",
+            "_ZN4Gear21InteractiveDeviceHook4NameE": "0x14ee51f",
+            "_ZN4Gear17InteractiveDevice4NameE": "0x1318b61"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xaacd80",
+          "size": 252,
+          "symbol": "_ZN4Gear25InteractiveDeviceHookBaseINS_17KeyboardInterfaceEED2Ev",
+          "target_sha256": "1c69cf615a1a88ed47a747809ab9b00c9765c3ee07a2ced69c1b7f5ab52b2f62",
+          "bindings": {
+            "_ZTVN4Gear25InteractiveDeviceHookBaseINS_17KeyboardInterfaceEEE": "0x189e408",
+            "_ZN4Gear6InputsE": "0x192aeb8",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xaace90",
+          "size": 176,
+          "symbol": "_ZNK4Gear25InteractiveDeviceHookBaseINS_17KeyboardInterfaceEE3IsAEPKc",
+          "target_sha256": "0419c089ab24ce6a8846ed67fbf92907d936cf6425959deae511f8a9b7842df5",
+          "bindings": {
+            "_ZN4Gear25InteractiveDeviceHookBaseINS_17KeyboardInterfaceEE4NameE": "0x14ee610",
+            "_ZN4Gear21InteractiveDeviceHook4NameE": "0x14ee51f",
+            "_ZN4Gear17InteractiveDevice4NameE": "0x1318b61"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xaacfa0",
+          "size": 280,
+          "symbol": "_ZNK4Gear20TimeFilteredKeyboard3IsAEPKc",
+          "target_sha256": "0e9042e964b62442316313ce607c4eb24cf664b9e6c37ffbb870fe84a2a9daed",
+          "bindings": {
+            "_ZN4Gear20TimeFilteredKeyboard4NameE": "0x14ee666",
+            "_ZN4Gear12KeyboardHook4NameE": "0x14ee67b",
+            "_ZN4Gear25InteractiveDeviceHookBaseINS_17KeyboardInterfaceEE4NameE": "0x14ee610",
+            "_ZN4Gear21InteractiveDeviceHook4NameE": "0x14ee51f",
+            "_ZN4Gear17InteractiveDevice4NameE": "0x1318b61"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xaad5e0",
+          "size": 228,
+          "symbol": "_ZNK4Gear12KeyboardHook3IsAEPKc",
+          "target_sha256": "71aa4b6cd2ebae09e579b4b3176b066267d1aa2d29611428aa77d0cf7e713856",
+          "bindings": {
+            "_ZN4Gear12KeyboardHook4NameE": "0x14ee67b",
+            "_ZN4Gear25InteractiveDeviceHookBaseINS_17KeyboardInterfaceEE4NameE": "0x14ee610",
+            "_ZN4Gear21InteractiveDeviceHook4NameE": "0x14ee51f",
+            "_ZN4Gear17InteractiveDevice4NameE": "0x1318b61"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xaad6e0",
+          "size": 252,
+          "symbol": "_ZN4Gear25InteractiveDeviceHookBaseINS_14MouseInterfaceEED2Ev",
+          "target_sha256": "b9f842754aa4281eefcb6e576312bafc8365d1f86b4c88ac991e3c8c56cfa209",
+          "bindings": {
+            "_ZTVN4Gear25InteractiveDeviceHookBaseINS_14MouseInterfaceEEE": "0x189e830",
+            "_ZN4Gear6InputsE": "0x192aeb8",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xaad7f0",
+          "size": 176,
+          "symbol": "_ZNK4Gear25InteractiveDeviceHookBaseINS_14MouseInterfaceEE3IsAEPKc",
+          "target_sha256": "a995c481308975695dc4dd1a5e1470705c8d839bdf234d925b6a77ad30fabca2",
+          "bindings": {
+            "_ZN4Gear25InteractiveDeviceHookBaseINS_14MouseInterfaceEE4NameE": "0x14ee6bc",
+            "_ZN4Gear21InteractiveDeviceHook4NameE": "0x14ee51f",
+            "_ZN4Gear17InteractiveDevice4NameE": "0x1318b61"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xaad930",
+          "size": 280,
+          "symbol": "_ZNK4Gear17TimeFilteredMouse3IsAEPKc",
+          "target_sha256": "0c08caf457bef866c4da42a76b294a3255bf6977edb15b1a59d11aa199ea5bae",
+          "bindings": {
+            "_ZN4Gear17TimeFilteredMouse4NameE": "0x14ee727",
+            "_ZN4Gear9MouseHook4NameE": "0x14ee739",
+            "_ZN4Gear25InteractiveDeviceHookBaseINS_14MouseInterfaceEE4NameE": "0x14ee6bc",
+            "_ZN4Gear21InteractiveDeviceHook4NameE": "0x14ee51f",
+            "_ZN4Gear17InteractiveDevice4NameE": "0x1318b61"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xaae030",
+          "size": 228,
+          "symbol": "_ZNK4Gear9MouseHook3IsAEPKc",
+          "target_sha256": "3b27cc5d15da0d2dd62a8c12b6e3c3cdaa9116851236776146b38b5e75d48636",
+          "bindings": {
+            "_ZN4Gear9MouseHook4NameE": "0x14ee739",
+            "_ZN4Gear25InteractiveDeviceHookBaseINS_14MouseInterfaceEE4NameE": "0x14ee6bc",
+            "_ZN4Gear21InteractiveDeviceHook4NameE": "0x14ee51f",
+            "_ZN4Gear17InteractiveDevice4NameE": "0x1318b61"
+          },
+          "got_bindings": {}
+        }
+      ]
+    },
+    {
+      "id": "gear_path",
+      "source": "src/gameplay/GearPath.cpp",
+      "compiler": "8.0.1",
+      "source_review": "manual_reconstruction",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-std=c++11",
+        "-O2",
+        "-mcpu=cortex-a57",
+        "-fstrict-aliasing",
+        "-fomit-frame-pointer",
+        "-fno-pic",
+        "-fno-delete-null-pointer-checks",
+        "-ffunction-sections",
+        "-fdata-sections"
+      ],
+      "header_roots": [
+        "src/gameplay"
+      ],
+      "functions": [
+        {
+          "address": "0xaa1120",
+          "size": 212,
+          "symbol": "_ZN4Gear4PathD2Ev",
+          "target_sha256": "2cc95089478b08812e109e09999ca37a224f5f0615317936b1d48f88fedea0b2",
+          "bindings": {
+            "_ZTVN4Gear4PathE": "0x189c4a8",
+            "_ZN4Gear6MemoryE": "0x1926bd8",
+            "_ZN4Gear10MemManager7IndexOfEPKv": "0xa82b30",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        }
+      ]
+    },
+    {
+      "id": "gameplay_dare_parameters",
+      "source": "src/gameplay/DareParameters.cpp",
+      "compiler": "8.0.1",
+      "source_review": "manual_reconstruction",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-std=c++11",
+        "-O2",
+        "-mcpu=cortex-a57",
+        "-fstrict-aliasing",
+        "-fomit-frame-pointer",
+        "-fno-pic",
+        "-fno-delete-null-pointer-checks",
+        "-ffunction-sections",
+        "-fdata-sections"
+      ],
+      "header_roots": [
+        "src/gameplay"
+      ],
+      "functions": [
+        {
+          "address": "0xd24b90",
+          "size": 92,
+          "symbol": "_ZN4Dare7Private11EffectChainD1Ev",
+          "target_sha256": "91b951fa72044aedf7efe4df5bee0e2ad244e74a99d64b74584c5863615cf01a",
+          "bindings": {
+            "_ZTVN4Dare7Private11EffectChainE": "0x18ceb30",
+            "Dare_AllocatorEnabled": "0x191fb00",
+            "Dare_Allocator": "0x191faf8",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xd24bf0",
+          "size": 84,
+          "symbol": "_ZN4Dare7Private11EffectChainD0Ev",
+          "target_sha256": "745e2f8b889fc4e4a0d9ab9e98692967a10cfb8d77b8a11b226928fe797493c7",
+          "bindings": {
+            "_ZTVN4Dare7Private11EffectChainE": "0x18ceb30",
+            "Dare_AllocatorEnabled": "0x191fb00",
+            "Dare_Allocator": "0x191faf8",
+            "_ZdlPv": "0xfa3b40",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xd7f4a0",
+          "size": 96,
+          "symbol": "_ZN4Dare7Private20CachedSoundParameterINS0_20EffectChainParameterEED1Ev",
+          "target_sha256": "ff9a5e9f17b548758d296b3a0ec101c7b85a180df340052667e45276019dcb57",
+          "bindings": {
+            "_ZTVN4Dare7Private20CachedSoundParameterINS0_20EffectChainParameterEEE": "0x18d4d10",
+            "_ZN4Dare7Private20EffectChainParameterD1Ev": "0xcf8f70",
+            "Dare_AllocatorEnabled": "0x191fb00",
+            "Dare_Allocator": "0x191faf8",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xd7f500",
+          "size": 88,
+          "symbol": "_ZN4Dare7Private20CachedSoundParameterINS0_20EffectChainParameterEED0Ev",
+          "target_sha256": "22f9c01a994ab4712da642578bfe0ee1e2af4b434f2c0fadf89efb2afe806cca",
+          "bindings": {
+            "_ZTVN4Dare7Private20CachedSoundParameterINS0_20EffectChainParameterEEE": "0x18d4d10",
+            "_ZN4Dare7Private20EffectChainParameterD1Ev": "0xcf8f70",
+            "Dare_AllocatorEnabled": "0x191fb00",
+            "Dare_Allocator": "0x191faf8",
+            "_ZdlPv": "0xfa3b40",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xd7f560",
+          "size": 92,
+          "symbol": "_ZN4Dare7Private20CachedSoundParameterINS0_22RolloffVolumeParameterEED1Ev",
+          "target_sha256": "85889f9eab41359c9469d7ec7899e7c26d5478696d4a9a3c4b3727ba3d355186",
+          "bindings": {
+            "_ZTVN4Dare7Private20CachedSoundParameterINS0_22RolloffVolumeParameterEEE": "0x18d4cf0",
+            "Dare_AllocatorEnabled": "0x191fb00",
+            "Dare_Allocator": "0x191faf8",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xd7f5c0",
+          "size": 84,
+          "symbol": "_ZN4Dare7Private20CachedSoundParameterINS0_22RolloffVolumeParameterEED0Ev",
+          "target_sha256": "ea8d05980350afe666a1023de22c8347764e87b7d1dd0589ded59447ab6fe692",
+          "bindings": {
+            "_ZTVN4Dare7Private20CachedSoundParameterINS0_22RolloffVolumeParameterEEE": "0x18d4cf0",
+            "Dare_AllocatorEnabled": "0x191fb00",
+            "Dare_Allocator": "0x191faf8",
+            "_ZdlPv": "0xfa3b40",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xd7f700",
+          "size": 92,
+          "symbol": "_ZN4Dare7Private20CachedSoundParameterINS0_18OcclusionParameterEED1Ev",
+          "target_sha256": "2c58d83f5da546436cf57bccdec4e055dd1644aa101a9c886828d37a0ed7f6b8",
+          "bindings": {
+            "_ZTVN4Dare7Private20CachedSoundParameterINS0_18OcclusionParameterEEE": "0x18d4cb0",
+            "Dare_AllocatorEnabled": "0x191fb00",
+            "Dare_Allocator": "0x191faf8",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xd7f760",
+          "size": 84,
+          "symbol": "_ZN4Dare7Private20CachedSoundParameterINS0_18OcclusionParameterEED0Ev",
+          "target_sha256": "f3ac3fe64f0307cdd66588df5e24c881cd73b31a99f79a6dd6ee0655968057f1",
+          "bindings": {
+            "_ZTVN4Dare7Private20CachedSoundParameterINS0_18OcclusionParameterEEE": "0x18d4cb0",
+            "Dare_AllocatorEnabled": "0x191fb00",
+            "Dare_Allocator": "0x191faf8",
+            "_ZdlPv": "0xfa3b40",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xd7f7c0",
+          "size": 92,
+          "symbol": "_ZN4Dare7Private20CachedSoundParameterINS0_20ObstructionParameterEED1Ev",
+          "target_sha256": "a5707ce978fdc737e978a7c458c41662e39d943a3388e8b80491f26d1b445e64",
+          "bindings": {
+            "_ZTVN4Dare7Private20CachedSoundParameterINS0_20ObstructionParameterEEE": "0x18d4c90",
+            "Dare_AllocatorEnabled": "0x191fb00",
+            "Dare_Allocator": "0x191faf8",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xd7f820",
+          "size": 84,
+          "symbol": "_ZN4Dare7Private20CachedSoundParameterINS0_20ObstructionParameterEED0Ev",
+          "target_sha256": "439dff64459967876f44a2949c1abbc9d9bb1c3d0e68103f33b98fb24d3d435f",
+          "bindings": {
+            "_ZTVN4Dare7Private20CachedSoundParameterINS0_20ObstructionParameterEEE": "0x18d4c90",
+            "Dare_AllocatorEnabled": "0x191fb00",
+            "Dare_Allocator": "0x191faf8",
+            "_ZdlPv": "0xfa3b40",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xd7f880",
+          "size": 92,
+          "symbol": "_ZN4Dare7Private20CachedSoundParameterINS0_14PitchParameterEED1Ev",
+          "target_sha256": "0bf1e9b94b321d5360cb497fa032356be9c9ff4479ea7976ec1fe8cc3f141b85",
+          "bindings": {
+            "_ZTVN4Dare7Private20CachedSoundParameterINS0_14PitchParameterEEE": "0x18d4c70",
+            "Dare_AllocatorEnabled": "0x191fb00",
+            "Dare_Allocator": "0x191faf8",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xd7f8e0",
+          "size": 84,
+          "symbol": "_ZN4Dare7Private20CachedSoundParameterINS0_14PitchParameterEED0Ev",
+          "target_sha256": "06b4268135bc718a868e2cca3df03bd0ebbc0ca5b01b0f9cbcbacbe4bf5789d2",
+          "bindings": {
+            "_ZTVN4Dare7Private20CachedSoundParameterINS0_14PitchParameterEEE": "0x18d4c70",
+            "Dare_AllocatorEnabled": "0x191fb00",
+            "Dare_Allocator": "0x191faf8",
+            "_ZdlPv": "0xfa3b40",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        }
+      ]
+    },
+    {
+      "id": "gameplay_dare_modules",
+      "source": "src/gameplay/DareModules.cpp",
+      "compiler": "8.0.1",
+      "source_review": "manual_reconstruction",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-std=c++11",
+        "-O2",
+        "-mcpu=cortex-a57",
+        "-fstrict-aliasing",
+        "-fomit-frame-pointer",
+        "-fno-pic",
+        "-fno-delete-null-pointer-checks",
+        "-ffunction-sections",
+        "-fdata-sections"
+      ],
+      "header_roots": [
+        "src/gameplay"
+      ],
+      "functions": [
+        {
+          "address": "0xd70510",
+          "size": 108,
+          "symbol": "_ZN7TEffect7ConnectEP14TVirtualSample",
+          "target_sha256": "c01d07ede93f374eaaa5bc9772d1c465ef9abcfdc944e503b82240377f0d1f0c",
+          "bindings": {},
+          "got_bindings": {}
+        },
+        {
+          "address": "0xd70b10",
+          "size": 108,
+          "symbol": "_ZN10TConverter7ConnectEP14TVirtualSample",
+          "target_sha256": "316153f6ec34fca595f6de6996d0de65ca99199a57488171242744ee2c2a9a9e",
+          "bindings": {},
+          "got_bindings": {}
+        },
+        {
+          "address": "0xd72010",
+          "size": 40,
+          "symbol": "_ZN14TVolPanGeneric10DisconnectEi",
+          "target_sha256": "131f8d0cde63f8bcdac7f7c22a3d327558a0c1ab14240e00c67cefa6cd26d6d1",
+          "bindings": {},
+          "got_bindings": {}
+        },
+        {
+          "address": "0xd72b00",
+          "size": 40,
+          "symbol": "_ZN20TPitchShifterGeneric10DisconnectEi",
+          "target_sha256": "13d39d356f4ae86cd297db0f763d006f1521dbbb2c19058917e567fa6a871239",
+          "bindings": {},
+          "got_bindings": {}
+        },
+        {
+          "address": "0xd74c60",
+          "size": 108,
+          "symbol": "_ZN6TFader7ConnectEP14TVirtualSample",
+          "target_sha256": "316153f6ec34fca595f6de6996d0de65ca99199a57488171242744ee2c2a9a9e",
+          "bindings": {},
+          "got_bindings": {}
+        },
+        {
+          "address": "0xd74d40",
+          "size": 40,
+          "symbol": "_ZN6TFader10DisconnectEi",
+          "target_sha256": "bc135a21cdd039564209eb05e55af8ecaf9ea271c54c0c8cfa1d5215d267af57",
+          "bindings": {},
+          "got_bindings": {}
+        },
+        {
+          "address": "0xd75620",
+          "size": 108,
+          "symbol": "_ZN9TImaAdpcm7ConnectEP14TVirtualSample",
+          "target_sha256": "e4681b7f6acaab8702125c170886326aac36d590912ef04fe0d3e9a84f8a1791",
+          "bindings": {},
+          "got_bindings": {}
+        },
+        {
+          "address": "0xd75700",
+          "size": 40,
+          "symbol": "_ZN9TImaAdpcm10DisconnectEi",
+          "target_sha256": "131f8d0cde63f8bcdac7f7c22a3d327558a0c1ab14240e00c67cefa6cd26d6d1",
+          "bindings": {},
+          "got_bindings": {}
+        },
+        {
+          "address": "0xd75fa0",
+          "size": 108,
+          "symbol": "_ZN4TPCM7ConnectEP14TVirtualSample",
+          "target_sha256": "e4681b7f6acaab8702125c170886326aac36d590912ef04fe0d3e9a84f8a1791",
+          "bindings": {},
+          "got_bindings": {}
+        },
+        {
+          "address": "0xd76080",
+          "size": 40,
+          "symbol": "_ZN4TPCM10DisconnectEi",
+          "target_sha256": "131f8d0cde63f8bcdac7f7c22a3d327558a0c1ab14240e00c67cefa6cd26d6d1",
+          "bindings": {},
+          "got_bindings": {}
+        },
+        {
+          "address": "0xd766e0",
+          "size": 40,
+          "symbol": "_ZN11TMultiTrack10DisconnectEi",
+          "target_sha256": "bc135a21cdd039564209eb05e55af8ecaf9ea271c54c0c8cfa1d5215d267af57",
+          "bindings": {},
+          "got_bindings": {}
+        }
+      ]
+    },
+    {
+      "id": "gameplay_dare_renderer",
+      "source": "src/gameplay/DareRenderer.cpp",
+      "compiler": "8.0.1",
+      "source_review": "manual_reconstruction",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-std=c++11",
+        "-O2",
+        "-mcpu=cortex-a57",
+        "-fstrict-aliasing",
+        "-fomit-frame-pointer",
+        "-fno-pic",
+        "-fno-delete-null-pointer-checks",
+        "-ffunction-sections",
+        "-fdata-sections"
+      ],
+      "header_roots": [
+        "src/gameplay"
+      ],
+      "functions": [
+        {
+          "address": "0xdafa00",
+          "size": 48,
+          "symbol": "_ZN4Dare7Private10RendererEE6Slot64EPNS0_12RendererListEj",
+          "target_sha256": "9863815858c4c6120b02602df5bd5996b0ba3da3f52075b747662d86c4270bea",
+          "bindings": {},
+          "got_bindings": {}
+        },
+        {
+          "address": "0xdafa30",
+          "size": 48,
+          "symbol": "_ZN4Dare7Private10RendererEE6Slot65EPNS0_12RendererListEj",
+          "target_sha256": "ccd24afbc9f0d8837a905cdb3d8c9b6f3431a855ee33b244116612ca1194c065",
+          "bindings": {},
+          "got_bindings": {}
+        },
+        {
+          "address": "0xdafa60",
+          "size": 48,
+          "symbol": "_ZN4Dare7Private10RendererEE6Slot66EPNS0_12RendererListEj",
+          "target_sha256": "fdce050b018066f927621800cd49920c9ffd64b18efead483bb624fe2291e3e1",
+          "bindings": {},
+          "got_bindings": {}
+        },
+        {
+          "address": "0xdafa90",
+          "size": 48,
+          "symbol": "_ZN4Dare7Private10RendererEE6Slot67EPNS0_12RendererListEj",
+          "target_sha256": "48d0e139c23011723e14da24dc5cdd32097d418bf060587ebcc9ad13b4dbbe8e",
+          "bindings": {},
+          "got_bindings": {}
+        },
+        {
+          "address": "0xdafac0",
+          "size": 48,
+          "symbol": "_ZN4Dare7Private10RendererEE6Slot68EPNS0_12RendererListEj",
+          "target_sha256": "d38477becc82ee1ad5a30859e3b65efa79f2b991da622214bc34223fff0a2f2e",
+          "bindings": {},
+          "got_bindings": {}
+        }
+      ]
+    },
+    {
+      "id": "gameplay_dare_callbacks",
+      "source": "src/gameplay/DareCallbacks.cpp",
+      "compiler": "8.0.1",
+      "source_review": "manual_reconstruction",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-std=c++11",
+        "-O2",
+        "-mcpu=cortex-a57",
+        "-fstrict-aliasing",
+        "-fomit-frame-pointer",
+        "-fno-pic",
+        "-fno-delete-null-pointer-checks",
+        "-ffunction-sections",
+        "-fdata-sections"
+      ],
+      "header_roots": [
+        "src/gameplay"
+      ],
+      "functions": [
+        {
+          "address": "0xd30310",
+          "size": 108,
+          "symbol": "_ZN4Dare23CPosSpeedCallbackObject16SanitizePositionEv",
+          "target_sha256": "d5042efa02f2fdcacd3a9b36b91b29a1c0d52abf3daa1dafb95e99e4339ba69f",
+          "bindings": {},
+          "got_bindings": {}
+        },
+        {
+          "address": "0xd30380",
+          "size": 108,
+          "symbol": "_ZN4Dare23CPosSpeedCallbackObject13SanitizeSpeedEv",
+          "target_sha256": "a4bc29d634e7b6e6c54c64ff7b5f517cea5a8186a1c9dd5e386fc0c31a98aaf7",
+          "bindings": {},
+          "got_bindings": {}
+        },
+        {
+          "address": "0xd3ec30",
+          "size": 108,
+          "symbol": "_ZN4Dare19MicroCallbackObject16SanitizePositionEv",
+          "target_sha256": "9b6b207f1da37c8ea09e88a4ab22ba9e2dfd70e7492b22cf6014cd10f88ba8fa",
+          "bindings": {},
+          "got_bindings": {}
+        },
+        {
+          "address": "0xd3eca0",
+          "size": 108,
+          "symbol": "_ZN4Dare19MicroCallbackObject13SanitizeSpeedEv",
+          "target_sha256": "d5042efa02f2fdcacd3a9b36b91b29a1c0d52abf3daa1dafb95e99e4339ba69f",
+          "bindings": {},
+          "got_bindings": {}
+        }
+      ]
+    },
+    {
+      "id": "gameplay_dare_voices",
+      "source": "src/gameplay/DareVoices.cpp",
+      "compiler": "8.0.1",
+      "source_review": "manual_reconstruction",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-std=c++11",
+        "-O2",
+        "-mcpu=cortex-a57",
+        "-fstrict-aliasing",
+        "-fomit-frame-pointer",
+        "-fno-pic",
+        "-fno-delete-null-pointer-checks",
+        "-ffunction-sections",
+        "-fdata-sections"
+      ],
+      "header_roots": [
+        "src/gameplay"
+      ],
+      "functions": []
+    },
+    {
+      "id": "gameplay_dare_effects",
+      "source": "src/gameplay/DareEffects.cpp",
+      "compiler": "8.0.1",
+      "source_review": "manual_reconstruction",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-std=c++11",
+        "-O2",
+        "-mcpu=cortex-a57",
+        "-fstrict-aliasing",
+        "-fomit-frame-pointer",
+        "-fno-pic",
+        "-fno-delete-null-pointer-checks",
+        "-ffunction-sections",
+        "-fdata-sections"
+      ],
+      "header_roots": [
+        "src/gameplay"
+      ],
+      "functions": [
+        {
+          "address": "0xcfb440",
+          "size": 92,
+          "symbol": "_ZN4Dare7Private14DareEffectBase13SetParametersEPKNS0_19EffectParameterListE",
+          "target_sha256": "df8d2cb962c0732e531967d95492de8e62114530b8d321c38cbce143669815d3",
+          "bindings": {},
+          "got_bindings": {}
+        }
+      ]
+    },
+    {
       "id": "gameplay_particle_effects",
       "source": "src/gameplay/ParticleEffects.cpp",
       "compiler": "8.0.1",
@@ -575352,6 +576087,16 @@
           "got_bindings": {}
         },
         {
+          "address": "0xa98940",
+          "size": 108,
+          "symbol": "_ZN4Gear10DiskDevice6IsFileERKNS_4PathE",
+          "target_sha256": "f369f5b0547d392007acd6032f2c88c7f590aaae73cc629c2a056e667d6a8de4",
+          "bindings": {
+            "_ZN4Gear11ReportErrorE": "0x189b308"
+          },
+          "got_bindings": {}
+        },
+        {
           "address": "0xa996d0",
           "size": 64,
           "symbol": "_ZN4Gear9MemDeviceD0Ev",
@@ -575381,6 +576126,16 @@
           "got_bindings": {}
         },
         {
+          "address": "0xa99da0",
+          "size": 108,
+          "symbol": "_ZN4Gear9MemDevice6IsFileERKNS_4PathE",
+          "target_sha256": "2f89aba874077c34b73f9320aaa4906e331b6f1c38a3ba98a172deb9cdc78084",
+          "bindings": {
+            "_ZN4Gear11ReportErrorE": "0x189b308"
+          },
+          "got_bindings": {}
+        },
+        {
           "address": "0xa9d4a0",
           "size": 92,
           "symbol": "_ZN4Gear13MemFileDevice4TypeEv",
@@ -575397,14 +576152,213 @@
         {
           "address": "0xaa02f0",
           "size": 92,
-          "symbol": "_ZN4Gear10ZLibDevice4TypeEv",
+          "symbol": "_ZN4Gear12FilterDevice4TypeEv",
           "target_sha256": "23cd30ed81345eda6095704a1f6decdcb0d69a342ce7332a9739af9b02769fd8",
           "bindings": {
-            "@.bss._ZGVZN4Gear10ZLibDevice4TypeEvE4type": "0x192aeb0",
-            "@.bss._ZZN4Gear10ZLibDevice4TypeEvE4type": "0x295e290",
+            "@.bss._ZGVZN4Gear12FilterDevice4TypeEvE4type": "0x192aeb0",
+            "@.bss._ZZN4Gear12FilterDevice4TypeEvE4type": "0x295e290",
             "__cxa_guard_acquire": "0xfa4130",
             "_ZN4Gear14NextDeviceTypeE": "0x295e278",
             "__cxa_guard_release": "0xfa4140"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xaa03e0",
+          "size": 132,
+          "symbol": "_ZN4Gear12FilterDevice5Slot6ERKNS_4PathEPv",
+          "target_sha256": "078b5d6b56e5ed25b0633f3432e51ecdb3c443f1fad6614274a4aa5eabb0fdc6",
+          "bindings": {
+            "_ZN4Gear7DevicesE": "0x1926be0",
+            "_ZN4Gear4PathC1EPKS0_": "0xaa0c60",
+            "_ZN4Gear13DeviceManager7ResolveERKNS_4PathE": "0xaa1000",
+            "_ZN4Gear4PathD1Ev": "0xaa1120",
+            "_Unwind_Resume": "0xfa4920"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xaa0470",
+          "size": 116,
+          "symbol": "_ZN4Gear12FilterDevice6ExistsERKNS_4PathE",
+          "target_sha256": "ac3bb193dab5cd1440955910dffed25111167dd7ed5a83cb74f8ce69f702b297",
+          "bindings": {
+            "_ZN4Gear7DevicesE": "0x1926be0",
+            "_ZN4Gear4PathC1EPKS0_": "0xaa0c60",
+            "_ZN4Gear13DeviceManager7ResolveERKNS_4PathE": "0xaa1000",
+            "_ZN4Gear4PathD1Ev": "0xaa1120",
+            "_Unwind_Resume": "0xfa4920"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xaa04f0",
+          "size": 116,
+          "symbol": "_ZN4Gear12FilterDevice8IsFolderERKNS_4PathE",
+          "target_sha256": "6e5f6c4d8a6c1ab0cba7f4f14c2784d96b57a4d2b01add9a3a758b91f4da6cfa",
+          "bindings": {
+            "_ZN4Gear7DevicesE": "0x1926be0",
+            "_ZN4Gear4PathC1EPKS0_": "0xaa0c60",
+            "_ZN4Gear13DeviceManager7ResolveERKNS_4PathE": "0xaa1000",
+            "_ZN4Gear4PathD1Ev": "0xaa1120",
+            "_Unwind_Resume": "0xfa4920"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xaa0570",
+          "size": 116,
+          "symbol": "_ZN4Gear12FilterDevice6IsFileERKNS_4PathE",
+          "target_sha256": "34a5f096cc5ec1ba7295ca672f5d328f383c6730d9284ec390e7f1e61fa0b5ec",
+          "bindings": {
+            "_ZN4Gear7DevicesE": "0x1926be0",
+            "_ZN4Gear4PathC1EPKS0_": "0xaa0c60",
+            "_ZN4Gear13DeviceManager7ResolveERKNS_4PathE": "0xaa1000",
+            "_ZN4Gear4PathD1Ev": "0xaa1120",
+            "_Unwind_Resume": "0xfa4920"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xaa05f0",
+          "size": 184,
+          "symbol": "_ZN4Gear12FilterDevice6Slot10ERKNS_4PathE",
+          "target_sha256": "6ad6d04330a00cd02f526df9696d4e54188d7fbe837d250615093172996177a1",
+          "bindings": {
+            "_ZN4Gear7DevicesE": "0x1926be0",
+            "_ZN4Gear4PathC1EPKS0_": "0xaa0c60",
+            "_ZN4Gear13DeviceManager7ResolveERKNS_4PathE": "0xaa1000",
+            "_ZN4Gear11ReportErrorE": "0x189b308",
+            "_ZN4Gear4PathD1Ev": "0xaa1120",
+            "_Unwind_Resume": "0xfa4920"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xaa06b0",
+          "size": 184,
+          "symbol": "_ZN4Gear12FilterDevice6Slot11ERKNS_4PathE",
+          "target_sha256": "f8197e7bf76b42d641cead7fb38636ff30d3559ed68ae02714b76a0b494ad848",
+          "bindings": {
+            "_ZN4Gear7DevicesE": "0x1926be0",
+            "_ZN4Gear4PathC1EPKS0_": "0xaa0c60",
+            "_ZN4Gear13DeviceManager7ResolveERKNS_4PathE": "0xaa1000",
+            "_ZN4Gear11ReportErrorE": "0x189b308",
+            "_ZN4Gear4PathD1Ev": "0xaa1120",
+            "_Unwind_Resume": "0xfa4920"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xaa0770",
+          "size": 116,
+          "symbol": "_ZN4Gear12FilterDevice6Slot12ERKNS_4PathE",
+          "target_sha256": "c030fe81c2eb09c9343b721447d612bb13445270292859b452cf1a363fd5e0ec",
+          "bindings": {
+            "_ZN4Gear7DevicesE": "0x1926be0",
+            "_ZN4Gear4PathC1EPKS0_": "0xaa0c60",
+            "_ZN4Gear13DeviceManager7ResolveERKNS_4PathE": "0xaa1000",
+            "_ZN4Gear4PathD1Ev": "0xaa1120",
+            "_Unwind_Resume": "0xfa4920"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xaa07f0",
+          "size": 116,
+          "symbol": "_ZN4Gear12FilterDevice6Slot13ERKNS_4PathE",
+          "target_sha256": "6729cb11cc95931fb0b8513e30c5ca2d9cbd36c0fd81cdd4d317dbdaf8e66cef",
+          "bindings": {
+            "_ZN4Gear7DevicesE": "0x1926be0",
+            "_ZN4Gear4PathC1EPKS0_": "0xaa0c60",
+            "_ZN4Gear13DeviceManager7ResolveERKNS_4PathE": "0xaa1000",
+            "_ZN4Gear4PathD1Ev": "0xaa1120",
+            "_Unwind_Resume": "0xfa4920"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xaa0870",
+          "size": 116,
+          "symbol": "_ZN4Gear12FilterDevice6Slot14ERKNS_4PathE",
+          "target_sha256": "6264b12f982e6da48e2d630316903b034908661e9a2021bbf7e04281c421b52d",
+          "bindings": {
+            "_ZN4Gear7DevicesE": "0x1926be0",
+            "_ZN4Gear4PathC1EPKS0_": "0xaa0c60",
+            "_ZN4Gear13DeviceManager7ResolveERKNS_4PathE": "0xaa1000",
+            "_ZN4Gear4PathD1Ev": "0xaa1120",
+            "_Unwind_Resume": "0xfa4920"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xaa08f0",
+          "size": 184,
+          "symbol": "_ZN4Gear12FilterDevice6Slot15ERKNS_4PathE",
+          "target_sha256": "4d119c73d50a14dbc8c84ee9638017b1245e50e89178ee08595049083d5902f6",
+          "bindings": {
+            "_ZN4Gear7DevicesE": "0x1926be0",
+            "_ZN4Gear4PathC1EPKS0_": "0xaa0c60",
+            "_ZN4Gear13DeviceManager7ResolveERKNS_4PathE": "0xaa1000",
+            "_ZN4Gear4PathD1Ev": "0xaa1120",
+            "_Unwind_Resume": "0xfa4920"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xaa09b0",
+          "size": 116,
+          "symbol": "_ZN4Gear12FilterDevice6Slot16ERKNS_4PathE",
+          "target_sha256": "eb7d1a7accc4f74fbd34b8063a4fc38d5183f63004b50e80996dbb0eb7bafe07",
+          "bindings": {
+            "_ZN4Gear7DevicesE": "0x1926be0",
+            "_ZN4Gear4PathC1EPKS0_": "0xaa0c60",
+            "_ZN4Gear13DeviceManager7ResolveERKNS_4PathE": "0xaa1000",
+            "_ZN4Gear4PathD1Ev": "0xaa1120",
+            "_Unwind_Resume": "0xfa4920"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xaa0a30",
+          "size": 140,
+          "symbol": "_ZN4Gear12FilterDevice6Slot17ERKNS_4PathES3_",
+          "target_sha256": "1f6a753f66318dd6e040805c187ecf62dcd458d7db5eacf77e5d9cfbc8b96456",
+          "bindings": {
+            "_ZN4Gear7DevicesE": "0x1926be0",
+            "_ZN4Gear4PathC1EPKS0_": "0xaa0c60",
+            "_ZN4Gear13DeviceManager6Slot17ERKNS_4PathES3_b": "0xaa1e10",
+            "_ZN4Gear4PathD1Ev": "0xaa1120",
+            "_Unwind_Resume": "0xfa4920"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xaa0ac0",
+          "size": 140,
+          "symbol": "_ZN4Gear12FilterDevice6Slot18ERKNS_4PathES3_",
+          "target_sha256": "60db2fc3a9ecd6f135f420cf2de64bd7394cd5888b4ab919cc1e06bdac8ad14b",
+          "bindings": {
+            "_ZN4Gear7DevicesE": "0x1926be0",
+            "_ZN4Gear4PathC1EPKS0_": "0xaa0c60",
+            "_ZN4Gear13DeviceManager6Slot17ERKNS_4PathES3_b": "0xaa1e10",
+            "_ZN4Gear4PathD1Ev": "0xaa1120",
+            "_Unwind_Resume": "0xfa4920"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xaa0b50",
+          "size": 200,
+          "symbol": "_ZN4Gear12FilterDevice6Slot19ERKNS_4PathEPv",
+          "target_sha256": "22fa605c9407ddc88dda1ffe6b840f15c6dc199a8ea47db5b55d8a07c9cf0d38",
+          "bindings": {
+            "_ZN4Gear7DevicesE": "0x1926be0",
+            "_ZN4Gear4PathC1EPKS0_": "0xaa0c60",
+            "_ZN4Gear13DeviceManager7ResolveERKNS_4PathE": "0xaa1000",
+            "_ZN4Gear11ReportErrorE": "0x189b308",
+            "_ZN4Gear4PathD1Ev": "0xaa1120",
+            "_Unwind_Resume": "0xfa4920"
           },
           "got_bindings": {}
         },
@@ -575429,7 +576383,7 @@
           "symbol": "_ZN4Gear10ZLibDeviceD0Ev",
           "target_sha256": "64fc6f3c3fbc41cfda8d083dc890a287c395ec45fd9359fa5299e5b9f4fc52bd",
           "bindings": {
-            "_ZTVN4Gear10ZLibDeviceE": "0x189bde8",
+            "_ZTVN4Gear12FilterDeviceE": "0x189bde8",
             "_ZN4Gear7DevicesE": "0x1926be0",
             "_ZN4Gear13DeviceManager10UnregisterEPNS_15DeviceInterfaceE": "0xa83130",
             "_ZdlPv": "0xfa3b40",
