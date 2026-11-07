@@ -1,6 +1,6 @@
 // Dare::Private's sound associations (RTTI names: AssoMultiEvent and the other Asso classes). The base's name and the
 // member names are provisional.
-#include <stdint.h>
+#include "DareCore.h"
 
 namespace Dare {
 namespace Private {
@@ -224,6 +224,31 @@ int32_t AssoSwitch::Slot17() {
     AssoKey key(first, second, owner->id);
     return table.Find(&key, 0) ? 0 : static_cast<int32_t>(0x8000e009u);
 }
+
+// A growable array without DareArray's reserved word (provisional name): emptied, freed and cleared when destroyed.
+// Its destructor at 0xd90ff0 is called from 0xd91500; the element type is unknown.
+template<class T> struct DareVector {
+    uint64_t capacity;
+    uint64_t size;       // +0x8
+    T* data;             // +0x10
+    ~DareVector() {
+        size = 0;
+        if (data) DareFree(data);
+        capacity = 0;
+        size = 0;
+        data = nullptr;
+    }
+};
+template struct DareVector<void*>;
+// Four more out-of-line instantiations; their element types aren't known yet, so they're named by address.
+struct VectorItem_cf3030;
+struct VectorItem_d7aef0;
+struct VectorItem_db1740;
+struct VectorItem_db1bb0;
+template struct DareVector<VectorItem_cf3030>;   // 0xcf3030
+template struct DareVector<VectorItem_d7aef0>;   // 0xd7aef0
+template struct DareVector<VectorItem_db1740>;   // 0xdb1740
+template struct DareVector<VectorItem_db1bb0>;   // 0xdb1bb0
 
 }  // namespace Private
 }  // namespace Dare
