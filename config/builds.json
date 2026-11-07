@@ -557186,6 +557186,249 @@
       ]
     },
     {
+      "id": "gameplay_menus",
+      "source": "src/gameplay/Menus.cpp",
+      "compiler": "8.0.1",
+      "source_review": "manual_reconstruction",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-std=c++11",
+        "-O2",
+        "-mcpu=cortex-a57",
+        "-fstrict-aliasing",
+        "-fomit-frame-pointer",
+        "-fno-pic",
+        "-fno-delete-null-pointer-checks",
+        "-ffunction-sections",
+        "-fdata-sections"
+      ],
+      "header_roots": [
+        "src/gameplay"
+      ],
+      "functions": [
+        {
+          "address": "0x7fc6f0",
+          "size": 148,
+          "symbol": "_ZN4SPTG9FlashMenu6Slot26Ev",
+          "target_sha256": "88f03a589367e517125df6a3722bac742dbcec303c8682502a3ff395118512fa",
+          "bindings": {
+            "Global_19251c8": "0x19251c8",
+            "Accessor_Resolver": "0x191cd10",
+            "Accessor_Resolve": "0x67edd0",
+            "Transform_Invalidate": "0x68f3b0"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x7fd310",
+          "size": 92,
+          "symbol": "_ZN4SPTG15FlashMenuBridge4CallEPvS1_PNS_10ScriptCallE",
+          "target_sha256": "7cb1535a5d97decf3a59ba3f443ecaf42403e7e9b50df2d4411f3b0cadd159f3",
+          "bindings": {
+            "_ZN4SPTG18UpdateTexturesCallE": "0x13951c0"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x7ff7c0",
+          "size": 312,
+          "symbol": "_ZN4SPTG9FlashMenu6Slot29Ev",
+          "target_sha256": "27b4eb2c2d03e8063dbd586f635cd2f80da9e3b040e44da904102d09ad887c05",
+          "bindings": {
+            "Game_State": "0x1924bc0",
+            "Global_1925158": "0x1925158",
+            "Clock_GetTick": "0xfa3b00",
+            "Clock_StartTick": "0x195b648",
+            "Clock_Frequency": "0x195b670",
+            "_ZN4SPTG10FirePlayer7AdvanceElii": "0xf988b0",
+            "_ZN4SPTG18MenuDirectorAccess3GetEv": "0x6ea720",
+            "_ZN4SPTG12MenuDirector9IsShowingEPKj": "0x7755c0"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x804bd0",
+          "size": 112,
+          "symbol": "_ZN4SPTG11TitleScreen5Slot8Ev",
+          "target_sha256": "df147de28b601d7c0b82bfa2a72e4dbf32271b026d89cfd8964b083313be2417",
+          "bindings": {
+            "_ZN4SPTG17LevelSecretAccess3GetEv": "0x78c910",
+            "memset": "0xfa3340"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x817a80",
+          "size": 92,
+          "symbol": "_ZN4SPTG16SelectDifficulty6Slot29Ev",
+          "target_sha256": "a8666e4215b63011b8921815869f034c2aa1760e298c259e5ae1b4d597d1fa0f",
+          "bindings": {
+            "_ZN4SPTG9FlashMenu6Slot29Ev": "0x7ff7c0",
+            "Global_1924cb0": "0x1924cb0",
+            "_ZN4SPTG22NetworkComponentAccess3GetEv": "0x680a00",
+            "Global_191e540": "0x191e540",
+            "OnlineSession_Flush": "0xfa4a90",
+            "OnlineSession_Connected": "0x6e9340",
+            "OnlineSession_Drop": "0x6f0170",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x82e1a0",
+          "size": 92,
+          "symbol": "_ZN4SPTG17ServerSettingMenu6Slot29Ev",
+          "target_sha256": "6fd6cbbe7e758e116b243077051fcda55ab3e8f39c8576bd6a92c7fde41f6a3b",
+          "bindings": {
+            "_ZN4SPTG9FlashMenu6Slot29Ev": "0x7ff7c0",
+            "Global_1924cb0": "0x1924cb0",
+            "_ZN4SPTG22NetworkComponentAccess3GetEv": "0x680a00",
+            "Global_191e540": "0x191e540",
+            "OnlineSession_Flush": "0xfa4a90",
+            "OnlineSession_Connected": "0x6e9340",
+            "OnlineSession_Drop": "0x6f0170",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x830570",
+          "size": 76,
+          "symbol": "_ZN4SPTG19MultiplayerGameMenu6Slot29Ev",
+          "target_sha256": "be6bb9260beeb873962f684e8cf484f9cabc5ada9b5ded0d0febda59df5067ef",
+          "bindings": {
+            "_ZN4SPTG9FlashMenu6Slot29Ev": "0x7ff7c0",
+            "_ZN4SPTG22NetworkComponentAccess3GetEv": "0x680a00",
+            "Global_191e540": "0x191e540",
+            "OnlineSession_Flush": "0xfa4a90",
+            "OnlineSession_Connected": "0x6e9340",
+            "OnlineSession_Drop": "0x6f0170",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x83d3a0",
+          "size": 300,
+          "symbol": "_ZN4SPTG19MainMenu_XBOX_Trail16SelectInMainMenuEPKwj",
+          "target_sha256": "0c6e0382d0495853f4447e38a7d2a0ae62b74349a12fefcfbf257362a44cc4d2",
+          "bindings": {
+            "_ZN4SPTG13StoryModeNameE": "0x1393e10",
+            "_ZN4SPTG18HelpAndOpitionNameE": "0x139472c",
+            "_ZN4SPTG18UnlockFullGameNameE": "0x1396560",
+            "_ZN4SPTG12ExitGameNameE": "0x139659c",
+            "_ZN4SPTG8HashNameEPKc": "0xbfbce0",
+            "_ZN4SPTG12MainMenuBase9OpenMovieEjj": "0x83d4d0",
+            "_ZN4SPTG18MenuDirectorAccess3GetEv": "0x6ea720",
+            "_ZN4SPTG12MenuDirector9OpenModalEPKjii": "0x778670"
+          },
+          "got_bindings": {},
+          "literals": {
+            "53656c656374446966666963756c74794d6f76696500": "0x131c87d",
+            "48656c70416e644f7074696f6e734d6f76696500": "0x1314927",
+            "4578697447616d65436f6e6669726d426f784d6f76696500": "0x1318b00"
+          }
+        },
+        {
+          "address": "0x848200",
+          "size": 196,
+          "symbol": "_ZN4SPTG18MainMenu_PS3_Trail16SelectInMainMenuEPKwj",
+          "target_sha256": "21e6980510fc7f080595488c7abe09678a7e9392fd8e31811443989f73c5c504",
+          "bindings": {
+            "_ZN4SPTG13StoryModeNameE": "0x1393e10",
+            "_ZN4SPTG18HelpAndOpitionNameE": "0x139472c",
+            "_ZN4SPTG18UnlockFullGameNameE": "0x1396560",
+            "_ZN4SPTG8HashNameEPKc": "0xbfbce0",
+            "_ZN4SPTG12MainMenuBase9OpenMovieEjj": "0x83d4d0"
+          },
+          "got_bindings": {},
+          "literals": {
+            "53656c656374446966666963756c74794d6f76696500": "0x131c87d",
+            "48656c70416e644f7074696f6e734d6f76696500": "0x1314927"
+          }
+        },
+        {
+          "address": "0x8547a0",
+          "size": 304,
+          "symbol": "_ZN4SPTG14InGameHUDMovie6Slot29Ev",
+          "target_sha256": "2972f98e5db2d9eb88747f9417171df060933adcf8ce38d9fc3d4ed2fa02a1b8",
+          "bindings": {
+            "_ZN4SPTG9FlashMenu6Slot29Ev": "0x7ff7c0",
+            "_ZN4SPTG16MenuCameraAccess3GetEv": "0x774b50",
+            "Accessor_Resolver": "0x191cd10",
+            "Accessor_Resolve": "0x67edd0",
+            "Transform_Invalidate": "0x68f3b0"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x86d340",
+          "size": 84,
+          "symbol": "_ZN4SPTG14ExModeGameOver20ExModeGameOverBridge4CallEPvS2_PNS_10ScriptCallE",
+          "target_sha256": "a495cc68fc1f714221c7cc8c94a7549c92f82bc20750147567bf0c8e5a54a255",
+          "bindings": {
+            "_ZN4SPTG18UpdateTexturesCallE": "0x13951c0"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x878d30",
+          "size": 208,
+          "symbol": "_ZN4SPTG13CharacterData6Slot29Ev",
+          "target_sha256": "65b59756a878fd1ed7d4a77648343252ff73b5e35f54fc1f9a8dc769c932d90e",
+          "bindings": {
+            "_ZN4SPTG9FlashMenu6Slot29Ev": "0x7ff7c0",
+            "_ZN4SPTG20MenuPersistentAccess3GetEv": "0x777710",
+            "_ZN4SPTG19PadRepositoryAccess3GetEv": "0x7725e0",
+            "Accessor_Resolver": "0x191cd10",
+            "Accessor_Resolve": "0x67edd0",
+            "_ZN4SPTG13CharacterData10Call877840Eii": "0x877840"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x87a250",
+          "size": 236,
+          "symbol": "_ZN4SPTG11BossFightVS17BossFightVSBridge4CallEPvS2_PNS_10ScriptCallE",
+          "target_sha256": "59bf1c6de77923dc57667bd33dc19b0e46c0bc78bf17d8f10f1f9794358ac2db",
+          "bindings": {
+            "_ZN4SPTG18UpdateTexturesCallE": "0x13951c0"
+          },
+          "got_bindings": {},
+          "literals": {
+            "53746f7000": "0x132e2b7"
+          }
+        },
+        {
+          "address": "0x87ac70",
+          "size": 72,
+          "symbol": "_ZN4SPTG11AttractMode6Slot42Ev",
+          "target_sha256": "5475682a84c682ffd74ecdf1d2306a743e54ad01d6b9f567e170b0c2d8e42f8e",
+          "bindings": {
+            "AllocatorContext": "0x1935058",
+            "_ZTVN4SPTG11AttractMode17AttractModeBridgeE": "0x185e5b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x87c710",
+          "size": 100,
+          "symbol": "_ZN4SPTG9AreaClear6Slot29Ev",
+          "target_sha256": "7ec5bcf185fe1404ea0964b2d487f021e345f883ae5e35a0b57efee2c77fc7cb",
+          "bindings": {
+            "_ZN4SPTG9FlashMenu6Slot29Ev": "0x7ff7c0",
+            "Move_FrameDelta": "0x1924d70",
+            "Global_1924d6f": "0x1924d6f"
+          },
+          "got_bindings": {},
+          "literals": {
+            "bd378635": "0x1331fdc"
+          }
+        }
+      ]
+    },
+    {
       "id": "gameplay_laser_beams",
       "source": "src/gameplay/LaserBeams.cpp",
       "compiler": "8.0.1",
