@@ -331,3 +331,26 @@ int32_t OneShotMULTITRACKPath::Slot23() {
         for (uint32_t i = 0; i < static_cast<uint32_t>(trackCount); ++i) trackChannels[i] = -1;
     return 0;
 }
+
+// SMemory (RTTI name): a sound played from memory. Member names are provisional.
+struct SMemory {
+    virtual void Slot0(); virtual void Slot1(); virtual void Slot2(); virtual void Slot3(); virtual void Slot4();
+    virtual void Slot5(); virtual void Slot6(); virtual void Slot7();
+    virtual void Seek(uint32_t position);   // slot 8
+    int32_t pending;     // +0x8
+    char padding_c[0x34];
+    uint32_t position;   // +0x40
+    char padding_44[0x24];
+    uint32_t size;       // +0x68
+};
+
+// Slot 8 (0xd6d640): moves to `position` when it's within the size; past it, to the end only when the size minus the
+// position (unsigned) is at most 500.
+void SMemory::Seek(uint32_t position) {
+    if (position > size) {
+        if (size - position <= 500) this->position = size;
+    } else {
+        this->position = position;
+        pending = 0;
+    }
+}

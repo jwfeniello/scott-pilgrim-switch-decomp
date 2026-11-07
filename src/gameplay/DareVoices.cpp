@@ -4,6 +4,13 @@
 
 void* DareAllocate(size_t size, uint32_t alignment);   // 0x722190
 
+namespace nn { namespace os {
+struct MutexType;
+void LockMutex(MutexType* mutex) noexcept;
+void UnlockMutex(MutexType* mutex) noexcept;
+} }  // namespace nn::os
+extern "C" nn::os::MutexType* Dare_ApiMutex;   // 0x19397c8 (name provisional)
+
 namespace Dare {
 namespace Private {
 
@@ -13,10 +20,45 @@ struct SoundPlatform {
     float (*query)(void* handle);   // +0x28
 };
 // Dare::Private::SndManager, made on first use and kept in the global at 0x19397f0.
+// What SndManager's slot 7 reads (its class is unknown): slot 27 gives a float.
+struct SndManagedObject {
+    virtual void Slot0();
+    virtual void Slot1();
+    virtual void Slot2();
+    virtual void Slot3();
+    virtual void Slot4();
+    virtual void Slot5();
+    virtual void Slot6();
+    virtual void Slot7();
+    virtual void Slot8();
+    virtual void Slot9();
+    virtual void Slot10();
+    virtual void Slot11();
+    virtual void Slot12();
+    virtual void Slot13();
+    virtual void Slot14();
+    virtual void Slot15();
+    virtual void Slot16();
+    virtual void Slot17();
+    virtual void Slot18();
+    virtual void Slot19();
+    virtual void Slot20();
+    virtual void Slot21();
+    virtual void Slot22();
+    virtual void Slot23();
+    virtual void Slot24();
+    virtual void Slot25();
+    virtual void Slot26();
+    virtual float Slot27();
+};
+
 struct SndManager {
     static void* operator new(size_t size) { return DareAllocate(size, 8); }
     SndManager();   // 0xcf6830
-    char padding_0[0x40];
+    virtual void Slot0(); virtual void Slot1(); virtual void Slot2(); virtual void Slot3(); virtual void Slot4();
+    virtual void Slot5(); virtual void Slot6();
+    virtual float Slot7(SndManagedObject* object);   // slot 7
+    char padding_8[0x38];
     SoundPlatform* platform;   // +0x40
     char padding_48[0x1a0];
     static SndManager* Get();
@@ -167,6 +209,14 @@ template struct ManagerVoiceForVirtualPlayer<ManagerHardwareVoice>;   // slot 39
 template struct ManagerVoiceForVirtualPlayer<ManagerSynthVoice>;      // 0xd850a0
 template struct ManagerVoiceForVirtualPlayer<ManagerThemeVoice>;      // 0xd8a7e0
 template struct ManagerVoiceForVirtualPlayer<ManagerToolVoice>;       // 0xd8e440
+
+// Slot 7 (0xcf88f0): `object`'s slot 27, under the API lock.
+float SndManager::Slot7(SndManagedObject* object) {
+    nn::os::LockMutex(Dare_ApiMutex);
+    float result = object->Slot27();
+    nn::os::UnlockMutex(Dare_ApiMutex);
+    return result;
+}
 
 }  // namespace Private
 }  // namespace Dare

@@ -575977,6 +575977,56 @@
           "got_bindings": {}
         },
         {
+          "address": "0xd6d040",
+          "size": 132,
+          "symbol": "_ZN7SStreamD2Ev",
+          "target_sha256": "ce387643a9249a4a0b642d6519092cc50a1babbc7ca3c9cd7dd24bc2c9d9d99b",
+          "bindings": {
+            "_ZTV7SStream": "0x18d3128",
+            "_Z11StreamClosel": "0x722a20",
+            "Dare_OpenStreamCount": "0x1945e10",
+            "_ZTV14TVirtualSample": "0x18d2ca0",
+            "_ZN16DareObjectHandleD1Ev": "0xd31160",
+            "_ZN14TVirtualSampleD2Ev": "0xd6a890",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xd6d0d0",
+          "size": 140,
+          "symbol": "_ZN7SStreamD0Ev",
+          "target_sha256": "3c21cc603556c3da872dda94bab12ed4d92938bb93699f994db130c47683d0b1",
+          "bindings": {
+            "_ZTV7SStream": "0x18d3128",
+            "_Z11StreamClosel": "0x722a20",
+            "Dare_OpenStreamCount": "0x1945e10",
+            "_ZTV14TVirtualSample": "0x18d2ca0",
+            "_ZN16DareObjectHandleD1Ev": "0xd31160",
+            "_ZdlPv": "0xfa3b40",
+            "_ZN14TVirtualSampleD2Ev": "0xd6a890",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xd6db50",
+          "size": 140,
+          "symbol": "_ZN18SZeroLatencyStreamD0Ev",
+          "target_sha256": "17d790937542aea749eef1f1843cd783389c3f3f0ebbad9a98c7293984de923e",
+          "bindings": {
+            "_ZTV7SStream": "0x18d3128",
+            "_Z11StreamClosel": "0x722a20",
+            "Dare_OpenStreamCount": "0x1945e10",
+            "_ZTV14TVirtualSample": "0x18d2ca0",
+            "_ZN16DareObjectHandleD1Ev": "0xd31160",
+            "_ZdlPv": "0xfa3b40",
+            "_ZN14TVirtualSampleD2Ev": "0xd6a890",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
           "address": "0xd70510",
           "size": 108,
           "symbol": "_ZN7TEffect7ConnectEP14TVirtualSample",
@@ -575990,6 +576040,39 @@
           "symbol": "_ZN10TConverter7ConnectEP14TVirtualSample",
           "target_sha256": "316153f6ec34fca595f6de6996d0de65ca99199a57488171242744ee2c2a9a9e",
           "bindings": {},
+          "got_bindings": {}
+        },
+        {
+          "address": "0xd712c0",
+          "size": 128,
+          "symbol": "_ZN10TConverterD2Ev",
+          "target_sha256": "79f9d90caa9ba5d4c52f54b11ffd757d725208c164a6e2039fe9b4bf25e45925",
+          "bindings": {
+            "_ZTV10TConverter": "0x18d3830",
+            "Dare_AllocatorEnabled": "0x191fb00",
+            "Dare_Allocator": "0x191faf8",
+            "_ZTV14TVirtualSample": "0x18d2ca0",
+            "_ZN16DareObjectHandleD1Ev": "0xd31160",
+            "_ZN14TVirtualSampleD2Ev": "0xd6a890",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xd71340",
+          "size": 136,
+          "symbol": "_ZN10TConverterD0Ev",
+          "target_sha256": "deee35fae6eca662cebe22b95db913c1cdb05b511eedacfe303c672c59be671d",
+          "bindings": {
+            "_ZTV10TConverter": "0x18d3830",
+            "Dare_AllocatorEnabled": "0x191fb00",
+            "Dare_Allocator": "0x191faf8",
+            "_ZTV14TVirtualSample": "0x18d2ca0",
+            "_ZN16DareObjectHandleD1Ev": "0xd31160",
+            "_ZdlPv": "0xfa3b40",
+            "_ZN14TVirtualSampleD2Ev": "0xd6a890",
+            "__clang_call_terminate": "0x6768b8"
+          },
           "got_bindings": {}
         },
         {
@@ -576007,22 +576090,6 @@
           "size": 92,
           "symbol": "_ZN12TEffectChain5Slot6EPK13TSampleFormat",
           "target_sha256": "0afc1d1956b9c0c7fa2c055cd688fee1e9755411a06a7ee74ba035f70a0c08ec",
-          "bindings": {},
-          "got_bindings": {}
-        },
-        {
-          "address": "0xd72010",
-          "size": 40,
-          "symbol": "_ZN14TVolPanGeneric10DisconnectEi",
-          "target_sha256": "131f8d0cde63f8bcdac7f7c22a3d327558a0c1ab14240e00c67cefa6cd26d6d1",
-          "bindings": {},
-          "got_bindings": {}
-        },
-        {
-          "address": "0xd72b00",
-          "size": 40,
-          "symbol": "_ZN20TPitchShifterGeneric10DisconnectEi",
-          "target_sha256": "13d39d356f4ae86cd297db0f763d006f1521dbbb2c19058917e567fa6a871239",
           "bindings": {},
           "got_bindings": {}
         },
@@ -576059,6 +576126,39 @@
           "got_bindings": {}
         },
         {
+          "address": "0xd75c50",
+          "size": 124,
+          "symbol": "_ZN9TImaAdpcmD2Ev",
+          "target_sha256": "b32c753d1ce955ec19ef1302491936c0ed039a1dddba61c617c6fc8c1d8ea4b2",
+          "bindings": {
+            "_ZTV9TImaAdpcm": "0x18d3ed0",
+            "Dare_AllocatorEnabled": "0x191fb00",
+            "Dare_Allocator": "0x191faf8",
+            "_ZTV14TVirtualSample": "0x18d2ca0",
+            "_ZN16DareObjectHandleD1Ev": "0xd31160",
+            "_ZN14TVirtualSampleD2Ev": "0xd6a890",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xd75cd0",
+          "size": 132,
+          "symbol": "_ZN9TImaAdpcmD0Ev",
+          "target_sha256": "7cc515e7f9aa6b89bbf2665d688c77e4d9aef82a8d185f3038bede13a182a127",
+          "bindings": {
+            "_ZTV9TImaAdpcm": "0x18d3ed0",
+            "Dare_AllocatorEnabled": "0x191fb00",
+            "Dare_Allocator": "0x191faf8",
+            "_ZTV14TVirtualSample": "0x18d2ca0",
+            "_ZN16DareObjectHandleD1Ev": "0xd31160",
+            "_ZdlPv": "0xfa3b40",
+            "_ZN14TVirtualSampleD2Ev": "0xd6a890",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
           "address": "0xd75fa0",
           "size": 108,
           "symbol": "_ZN4TPCM7ConnectEP14TVirtualSample",
@@ -576080,6 +576180,112 @@
           "symbol": "_ZN11TMultiTrack10DisconnectEi",
           "target_sha256": "bc135a21cdd039564209eb05e55af8ecaf9ea271c54c0c8cfa1d5215d267af57",
           "bindings": {},
+          "got_bindings": {}
+        }
+      ]
+    },
+    {
+      "id": "gameplay_dare_modules_volpan",
+      "source": "src/gameplay/DareModulesVolPan.cpp",
+      "compiler": "8.0.1",
+      "source_review": "manual_reconstruction",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-std=c++11",
+        "-O2",
+        "-mcpu=cortex-a57",
+        "-fstrict-aliasing",
+        "-fomit-frame-pointer",
+        "-fno-pic",
+        "-fno-delete-null-pointer-checks",
+        "-ffunction-sections",
+        "-fdata-sections"
+      ],
+      "header_roots": [
+        "src/gameplay"
+      ],
+      "functions": [
+        {
+          "address": "0xd72010",
+          "size": 40,
+          "symbol": "_ZN14TVolPanGeneric10DisconnectEi",
+          "target_sha256": "131f8d0cde63f8bcdac7f7c22a3d327558a0c1ab14240e00c67cefa6cd26d6d1",
+          "bindings": {},
+          "got_bindings": {}
+        },
+        {
+          "address": "0xd72620",
+          "size": 132,
+          "symbol": "_ZN14TVolPanGenericD2Ev",
+          "target_sha256": "454453e7b50304c42f2943653d4deec061bce87a133f52181c298496e47c7361",
+          "bindings": {
+            "_ZTV14TVolPanGeneric": "0x18d3a58",
+            "Dare_AllocatorEnabled": "0x191fb00",
+            "Dare_Allocator": "0x191faf8",
+            "_ZTV14TVirtualSample": "0x18d2ca0",
+            "_ZN16DareObjectHandleD1Ev": "0xd31160",
+            "_ZN14TVirtualSampleD2Ev": "0xd729b0",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xd726b0",
+          "size": 140,
+          "symbol": "_ZN14TVolPanGenericD0Ev",
+          "target_sha256": "fc19800ac48630be4e0467f8f2a78e5efaa440574734786d8545b25b46744549",
+          "bindings": {
+            "_ZTV14TVolPanGeneric": "0x18d3a58",
+            "Dare_AllocatorEnabled": "0x191fb00",
+            "Dare_Allocator": "0x191faf8",
+            "_ZTV14TVirtualSample": "0x18d2ca0",
+            "_ZN16DareObjectHandleD1Ev": "0xd31160",
+            "_ZdlPv": "0xfa3b40",
+            "_ZN14TVirtualSampleD2Ev": "0xd729b0",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xd72b00",
+          "size": 40,
+          "symbol": "_ZN20TPitchShifterGeneric10DisconnectEi",
+          "target_sha256": "13d39d356f4ae86cd297db0f763d006f1521dbbb2c19058917e567fa6a871239",
+          "bindings": {},
+          "got_bindings": {}
+        },
+        {
+          "address": "0xd73110",
+          "size": 136,
+          "symbol": "_ZN20TPitchShifterGenericD2Ev",
+          "target_sha256": "bdd745c6cc6f3f5cc9cd26f4f46de4b1997218b0f16e89e5d4f529daa78140e8",
+          "bindings": {
+            "_ZTV20TPitchShifterGeneric": "0x18d3bb8",
+            "Dare_AllocatorEnabled": "0x191fb00",
+            "Dare_Allocator": "0x191faf8",
+            "_ZTV14TVirtualSample": "0x18d2ca0",
+            "_ZN16DareObjectHandleD1Ev": "0xd31160",
+            "_ZN14TVirtualSampleD2Ev": "0xd73a90",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xd731a0",
+          "size": 144,
+          "symbol": "_ZN20TPitchShifterGenericD0Ev",
+          "target_sha256": "bcb1ca236df5c530c82b5a1af92ea9e93dc6580b6313879032bdbbdb2c2b5b6f",
+          "bindings": {
+            "_ZTV20TPitchShifterGeneric": "0x18d3bb8",
+            "Dare_AllocatorEnabled": "0x191fb00",
+            "Dare_Allocator": "0x191faf8",
+            "_ZTV14TVirtualSample": "0x18d2ca0",
+            "_ZN16DareObjectHandleD1Ev": "0xd31160",
+            "_ZdlPv": "0xfa3b40",
+            "_ZN14TVirtualSampleD2Ev": "0xd73a90",
+            "__clang_call_terminate": "0x6768b8"
+          },
           "got_bindings": {}
         }
       ]
@@ -576226,6 +576432,18 @@
         "src/gameplay"
       ],
       "functions": [
+        {
+          "address": "0xcf88f0",
+          "size": 76,
+          "symbol": "_ZN4Dare7Private10SndManager5Slot7EPNS0_16SndManagedObjectE",
+          "target_sha256": "5875fac868ff06b154f269077a5a523a9909258ec280d49923e9a10dbb78c499",
+          "bindings": {
+            "Dare_ApiMutex": "0x19397c8",
+            "_ZN2nn2os9LockMutexEPNS0_9MutexTypeE": "0xfa4950",
+            "_ZN2nn2os11UnlockMutexEPNS0_9MutexTypeE": "0xfa4960"
+          },
+          "got_bindings": {}
+        },
         {
           "address": "0xd84520",
           "size": 104,
@@ -576760,6 +576978,14 @@
           "got_bindings": {}
         },
         {
+          "address": "0xd6d640",
+          "size": 40,
+          "symbol": "_ZN7SMemory4SeekEj",
+          "target_sha256": "703f1a11fb200b5be0a69cd6eb18753deb0ec71884305a02e2886b723b1d1656",
+          "bindings": {},
+          "got_bindings": {}
+        },
+        {
           "address": "0xd6ec70",
           "size": 128,
           "symbol": "_ZN21OneShotMULTITRACKPath6Slot23Ev",
@@ -577215,6 +577441,138 @@
             "_ZN10HandleSlot7ReleaseEv": "0xd29990",
             "_ZN2nn2os11UnlockMutexEPNS0_9MutexTypeE": "0xfa4960",
             "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        }
+      ]
+    },
+    {
+      "id": "gameplay_dare_locked",
+      "source": "src/gameplay/DareLocked.cpp",
+      "compiler": "8.0.1",
+      "source_review": "manual_reconstruction",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-std=c++11",
+        "-O2",
+        "-mcpu=cortex-a57",
+        "-fstrict-aliasing",
+        "-fomit-frame-pointer",
+        "-fno-pic",
+        "-fno-delete-null-pointer-checks",
+        "-ffunction-sections",
+        "-fdata-sections"
+      ],
+      "header_roots": [
+        "src/gameplay"
+      ],
+      "functions": [
+        {
+          "address": "0xcf7460",
+          "size": 68,
+          "symbol": "_Z17LockedCall_cf7460P12LockedObject",
+          "target_sha256": "7588904f06d3b45f69dcd9c1c178c416e3ac24057c326fd1ca29e850c03c6179",
+          "bindings": {
+            "Dare_ApiMutex": "0x19397c8",
+            "_ZN2nn2os9LockMutexEPNS0_9MutexTypeE": "0xfa4950",
+            "_ZN2nn2os11UnlockMutexEPNS0_9MutexTypeE": "0xfa4960"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xcf74f0",
+          "size": 68,
+          "symbol": "_Z17LockedCall_cf74f0P12LockedObject",
+          "target_sha256": "70ad29b64692ead8affe3ae3feddedc208527c3adc97c050d8e6112d6f150d94",
+          "bindings": {
+            "Dare_ApiMutex": "0x19397c8",
+            "_ZN2nn2os9LockMutexEPNS0_9MutexTypeE": "0xfa4950",
+            "_ZN2nn2os11UnlockMutexEPNS0_9MutexTypeE": "0xfa4960"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xcf75c0",
+          "size": 76,
+          "symbol": "_Z17LockedCall_cf75c0P12LockedObject",
+          "target_sha256": "f27bc8d62034f969020e8edf0e842f41577186a10866ae706ffe86617bfc976b",
+          "bindings": {
+            "Dare_ApiMutex": "0x19397c8",
+            "_ZN2nn2os9LockMutexEPNS0_9MutexTypeE": "0xfa4950",
+            "_ZN2nn2os11UnlockMutexEPNS0_9MutexTypeE": "0xfa4960"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xcf7610",
+          "size": 68,
+          "symbol": "_Z17LockedCall_cf7610P12LockedObject",
+          "target_sha256": "b1a56ff1580172255bbc501c992f26f751b16c7c65025760a6d76c2b7b7588d5",
+          "bindings": {
+            "Dare_ApiMutex": "0x19397c8",
+            "_ZN2nn2os9LockMutexEPNS0_9MutexTypeE": "0xfa4950",
+            "_ZN2nn2os11UnlockMutexEPNS0_9MutexTypeE": "0xfa4960"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xcf7660",
+          "size": 68,
+          "symbol": "_Z17LockedCall_cf7660P12LockedObject",
+          "target_sha256": "99c4dd05b10dd0eb1429ecd97bd53bba0307bd4694587ea79529d2236e034abd",
+          "bindings": {
+            "Dare_ApiMutex": "0x19397c8",
+            "_ZN2nn2os9LockMutexEPNS0_9MutexTypeE": "0xfa4950",
+            "_ZN2nn2os11UnlockMutexEPNS0_9MutexTypeE": "0xfa4960"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xcf76b0",
+          "size": 68,
+          "symbol": "_Z17LockedCall_cf76b0P12LockedObject",
+          "target_sha256": "0ece75c08c8b2e21a7728cdaaae8d6caffcf5fbfde5116b4c4b0de0e2cfb0255",
+          "bindings": {
+            "Dare_ApiMutex": "0x19397c8",
+            "_ZN2nn2os9LockMutexEPNS0_9MutexTypeE": "0xfa4950",
+            "_ZN2nn2os11UnlockMutexEPNS0_9MutexTypeE": "0xfa4960"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xcf7710",
+          "size": 68,
+          "symbol": "_Z17LockedCall_cf7710P12LockedObject",
+          "target_sha256": "8c99e07ced3c0644219f469e860fd22533b753443d60961c237f2ba8a75eda42",
+          "bindings": {
+            "Dare_ApiMutex": "0x19397c8",
+            "_ZN2nn2os9LockMutexEPNS0_9MutexTypeE": "0xfa4950",
+            "_ZN2nn2os11UnlockMutexEPNS0_9MutexTypeE": "0xfa4960"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xcf7760",
+          "size": 76,
+          "symbol": "_Z17LockedCall_cf7760P12LockedObjectPv",
+          "target_sha256": "885b6894deb1c9f4c149c1a1e7dd59445e8e4a8245e14f7e89af565e1a554023",
+          "bindings": {
+            "Dare_ApiMutex": "0x19397c8",
+            "_ZN2nn2os9LockMutexEPNS0_9MutexTypeE": "0xfa4950",
+            "_ZN2nn2os11UnlockMutexEPNS0_9MutexTypeE": "0xfa4960"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xcf8b50",
+          "size": 76,
+          "symbol": "_Z17LockedCall_cf8b50PvP12LockedObject",
+          "target_sha256": "ce2b8be7385eb971391a6d5e9685304e36577bbe06570fe24a2abc11656298bc",
+          "bindings": {
+            "Dare_ApiMutex": "0x19397c8",
+            "_ZN2nn2os9LockMutexEPNS0_9MutexTypeE": "0xfa4950",
+            "_ZN2nn2os11UnlockMutexEPNS0_9MutexTypeE": "0xfa4960"
           },
           "got_bindings": {}
         }
@@ -578315,6 +578673,370 @@
           "target_sha256": "0df0e4a28d92619c852d0fe8f8920f70173001d52f69a37725a1718739e23b7e",
           "bindings": {
             "_ZN4Onyx8Graphics13GraphicsFader5ApplyEf": "0xc9d8b0"
+          },
+          "got_bindings": {}
+        }
+      ]
+    },
+    {
+      "id": "gameplay_fire_hashtable",
+      "source": "src/gameplay/FireHashTable.cpp",
+      "compiler": "8.0.1",
+      "source_review": "manual_reconstruction",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-std=c++11",
+        "-O2",
+        "-mcpu=cortex-a57",
+        "-fstrict-aliasing",
+        "-fomit-frame-pointer",
+        "-fno-pic",
+        "-fno-delete-null-pointer-checks",
+        "-ffunction-sections",
+        "-fdata-sections"
+      ],
+      "header_roots": [
+        "src/gameplay"
+      ],
+      "functions": [
+        {
+          "address": "0xf35730",
+          "size": 172,
+          "symbol": "_ZN9HashTableD2Ev",
+          "target_sha256": "ccb8e3bb3932b260c1adf225809883937d0b068bc67ac1039a59edc0d4ae07d3",
+          "bindings": {
+            "_ZTV9HashTable": "0x18ea400",
+            "_Z8FireFreePv": "0xfa0140",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xf357e0",
+          "size": 184,
+          "symbol": "_ZN9HashTableD0Ev",
+          "target_sha256": "a39f94bc658d58e5ca774bb4d1ad2f1a18c544ee912b354273189b61a0dcf693",
+          "bindings": {
+            "_ZTV9HashTable": "0x18ea400",
+            "_Z8FireFreePv": "0xfa0140",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xf35a30",
+          "size": 272,
+          "symbol": "_ZN9HashTable6InsertEPvS0_",
+          "target_sha256": "765177d75dd69a7d1e4e936d0076a93fcae3d5ac123cc3e7215f284cff2511a1",
+          "bindings": {},
+          "got_bindings": {}
+        },
+        {
+          "address": "0xf35b60",
+          "size": 200,
+          "symbol": "_ZN12VarHashTableD2Ev",
+          "target_sha256": "df3e52c184a5fb92fb20cbd5ff2950d89a9be157756459cd0bb9ee6b55c15072",
+          "bindings": {
+            "_ZTV12VarHashTable": "0x18ea468",
+            "_ZTV9HashTable": "0x18ea400",
+            "_Z8FireFreePv": "0xfa0140",
+            "__clang_call_terminate": "0x6768b8",
+            "_ZN9HashTableD2Ev": "0xf35730"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xf35d40",
+          "size": 120,
+          "symbol": "_ZN27CorePlayerPropertyHashTable7HashKeyEPvjPj",
+          "target_sha256": "be26145be202a637c71124da76c4f8f08e7e565fcad227e61c15fbd92f7923fb",
+          "bindings": {
+            "FireCaseTable": "0x153f6d5"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xf35dd0",
+          "size": 184,
+          "symbol": "_ZN16IntegerHashTableD0Ev",
+          "target_sha256": "d835afa81646df917bd11284ca782b90442408b800f3ad3d619905b9570fa5a4",
+          "bindings": {
+            "_ZTV9HashTable": "0x18ea400",
+            "_Z8FireFreePv": "0xfa0140",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xf35ec0",
+          "size": 184,
+          "symbol": "_ZN27ScriptVariableNameHashTableD0Ev",
+          "target_sha256": "e44c1bd2d9bbeb867d1aebe880628d4662fcbd257720221164d577325bc650ad",
+          "bindings": {
+            "_ZTV9HashTable": "0x18ea400",
+            "_Z8FireFreePv": "0xfa0140",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xf35f80",
+          "size": 40,
+          "symbol": "_ZN27ScriptVariableNameHashTable7HashKeyEPvjPj",
+          "target_sha256": "c2bd966f31aa63b5d5c6bca39ac1de707394ab27e0b3933afb3877f29363c1e5",
+          "bindings": {},
+          "got_bindings": {}
+        }
+      ]
+    },
+    {
+      "id": "gameplay_fire_tables",
+      "source": "src/gameplay/FireTables.cpp",
+      "compiler": "8.0.1",
+      "source_review": "manual_reconstruction",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-std=c++11",
+        "-O2",
+        "-mcpu=cortex-a57",
+        "-fstrict-aliasing",
+        "-fomit-frame-pointer",
+        "-fno-pic",
+        "-fno-delete-null-pointer-checks",
+        "-ffunction-sections",
+        "-fdata-sections"
+      ],
+      "header_roots": [
+        "src/gameplay"
+      ],
+      "functions": [
+        {
+          "address": "0xec8c40",
+          "size": 180,
+          "symbol": "_ZN13EditTextTableD2Ev",
+          "target_sha256": "1b8925fa8b966813d30cf7b2ba1119f9b24e633702a8ade84fdfd927662c4d52",
+          "bindings": {
+            "_ZTV13EditTextTable": "0x18e9e28",
+            "_ZN12VarHashTableD2Ev": "0xf35b60",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xee4dc0",
+          "size": 180,
+          "symbol": "_ZN10ClassTableD2Ev",
+          "target_sha256": "01e2d88092161a219a577ba5a2d0f0a1f964b3493684d987ffa3f2e155f95be9",
+          "bindings": {
+            "_ZTV10ClassTable": "0x18e9f20",
+            "_ZN12VarHashTableD2Ev": "0xf35b60",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xefb3e0",
+          "size": 180,
+          "symbol": "_ZN20ScriptWatchHashTableD2Ev",
+          "target_sha256": "303a93231420cbafa08a39b062258418e4bb0749df948618775fb987a6b5252c",
+          "bindings": {
+            "_ZTV20ScriptWatchHashTable": "0x18ea0d8",
+            "_ZN9HashTableD2Ev": "0xf35730",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xf8b5a0",
+          "size": 180,
+          "symbol": "_ZN11IntervalMgr15IntervalCookiesD2Ev",
+          "target_sha256": "fd1d6fce124802d16d02cf8cabab04303d2667f7a46592668851f159db5463e6",
+          "bindings": {
+            "_ZTVN11IntervalMgr15IntervalCookiesE": "0x18ea7d0",
+            "_ZN9HashTableD2Ev": "0xf35730",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xf8b660",
+          "size": 196,
+          "symbol": "_ZN11IntervalMgr15IntervalCookiesD0Ev",
+          "target_sha256": "e13f40f9a2c5e714799d5a023d2b3f6bcdd5dc1be576bc9c4a883fd426e6b84a",
+          "bindings": {
+            "_ZTVN11IntervalMgr15IntervalCookiesE": "0x18ea7d0",
+            "_ZN9HashTableD2Ev": "0xf35730",
+            "_Z8FireFreePv": "0xfa0140",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xf8b730",
+          "size": 40,
+          "symbol": "_ZN11IntervalMgr15IntervalCookies10DeleteItemEPvS1_",
+          "target_sha256": "992125f3753ee281c3e8152bba4efaaeb6afbe0cd0d01a68ba0229114eeb606b",
+          "bindings": {
+            "_ZN11IntervalMgr6CookieD1Ev": "0xf8b140",
+            "_Z8FireFreePv": "0xfa0140",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        }
+      ]
+    },
+    {
+      "id": "gameplay_fire_charformat",
+      "source": "src/gameplay/FireCharFormat.cpp",
+      "compiler": "8.0.1",
+      "source_review": "manual_reconstruction",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-std=c++11",
+        "-O2",
+        "-mcpu=cortex-a57",
+        "-fstrict-aliasing",
+        "-fomit-frame-pointer",
+        "-fno-pic",
+        "-fno-delete-null-pointer-checks",
+        "-ffunction-sections",
+        "-fdata-sections"
+      ],
+      "header_roots": [
+        "src/gameplay"
+      ],
+      "functions": [
+        {
+          "address": "0xf287e0",
+          "size": 72,
+          "symbol": "_ZN19PlatformECharFormatD2Ev",
+          "target_sha256": "3eee26a2c2f517e3f16c682d30a5be89492b672a029b4c87dc8e511927bfddd8",
+          "bindings": {
+            "_ZTV19PlatformECharFormat": "0x18ea260",
+            "_Z8FireFreePv": "0xfa0140",
+            "_ZN11ECharFormatD2Ev": "0xf2b2c0",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xf28830",
+          "size": 88,
+          "symbol": "_ZN19PlatformECharFormatD0Ev",
+          "target_sha256": "ddda802c011819148501215cd2be0eea3dccffb928bfda1adb0108dac6073cb3",
+          "bindings": {
+            "_ZTV19PlatformECharFormat": "0x18ea260",
+            "_Z8FireFreePv": "0xfa0140",
+            "_ZN11ECharFormatD2Ev": "0xf2b2c0",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xf28890",
+          "size": 140,
+          "symbol": "_ZN15PlatformEDeviceD2Ev",
+          "target_sha256": "eb7c3e7166d43144c6e06cc3240307415ca960391e47045eebece3d7c78af60e",
+          "bindings": {
+            "_ZTV15PlatformEDevice": "0x18ea2a0",
+            "_Z8FireFreePv": "0xfa0140",
+            "_ZTV19PlatformECharFormat": "0x18ea260",
+            "_ZN11ECharFormatD2Ev": "0xf2b2c0",
+            "_ZTV7EDevice": "0x18ea338",
+            "__clang_call_terminate": "0x6768b8",
+            "__cxa_call_unexpected": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xf29210",
+          "size": 16,
+          "symbol": "_ZN15PlatformEDevice6Slot10Ei",
+          "target_sha256": "200d8500419226fc22a5c8b696717d364006fbce960258da1f8bd1b9a08cac51",
+          "bindings": {
+            "_ZN11ECharFormat11Func_f2b740EP7EDevicei": "0xf2b740"
+          },
+          "got_bindings": {}
+        }
+      ]
+    },
+    {
+      "id": "gameplay_fire_delayedevent",
+      "source": "src/gameplay/FireDelayedEvent.cpp",
+      "compiler": "8.0.1",
+      "source_review": "manual_reconstruction",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-std=c++11",
+        "-O2",
+        "-mcpu=cortex-a57",
+        "-fstrict-aliasing",
+        "-fomit-frame-pointer",
+        "-fno-pic",
+        "-fno-delete-null-pointer-checks",
+        "-ffunction-sections",
+        "-fdata-sections"
+      ],
+      "header_roots": [
+        "src/gameplay"
+      ],
+      "functions": [
+        {
+          "address": "0xf4ae00",
+          "size": 156,
+          "symbol": "_ZN22DelayedNavigationEventD2Ev",
+          "target_sha256": "d0db395a55da121027c6c670fdf0580a22256deda6253e7f36c78a9a5c7a1a0f",
+          "bindings": {
+            "_ZTV22DelayedNavigationEvent": "0x18ea628",
+            "_Z8FireFreePv": "0xfa0140",
+            "_ZTV12DelayedEvent": "0x18ea668",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        }
+      ]
+    },
+    {
+      "id": "gameplay_fire_platformplayer",
+      "source": "src/gameplay/FirePlatformPlayer.cpp",
+      "compiler": "8.0.1",
+      "source_review": "manual_reconstruction",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-std=c++11",
+        "-O2",
+        "-mcpu=cortex-a57",
+        "-fstrict-aliasing",
+        "-fomit-frame-pointer",
+        "-fno-pic",
+        "-fno-delete-null-pointer-checks",
+        "-ffunction-sections",
+        "-fdata-sections"
+      ],
+      "header_roots": [
+        "src/gameplay"
+      ],
+      "functions": [
+        {
+          "address": "0xec6580",
+          "size": 80,
+          "symbol": "_ZN14PlatformPlayer12SetFrameRateEi",
+          "target_sha256": "558505effb0387da514b9b63e61fdf60ba326f3ad6135d40fff57a5e124dbaeb",
+          "bindings": {},
+          "got_bindings": {}
+        },
+        {
+          "address": "0xec97b0",
+          "size": 56,
+          "symbol": "_ZN14PlatformPlayer6Slot21EPv",
+          "target_sha256": "036c39dfb3ff8223157ddda0c6ffffc44065333e763b3c370ff47a4a6798f700",
+          "bindings": {
+            "_ZN14FireSlotResultC1EPvS0_S0_iS0_": "0xf335f0"
           },
           "got_bindings": {}
         }
