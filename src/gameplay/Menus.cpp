@@ -239,3 +239,64 @@ void AttractMode::Slot42() {
 }
 
 }  // namespace SPTG
+
+// The static descriptor 0x1935080 behind the pointer 0x1935070, shared with ActionStep.cpp (same names and layout).
+extern "C" int __cxa_guard_acquire(uint64_t* guard);
+extern "C" void __cxa_guard_release(uint64_t* guard);
+extern "C" int* ActionStep_GatePointer;                     // 0x1935070
+extern "C" uint64_t ActionStep_GateGuard;                   // 0x1935078
+extern "C" unsigned char ActionStep_GateData[0xa4];         // 0x1935080
+extern "C" uint64_t ActionStep_GateFloatConstantA;          // 0x1331ae0
+extern "C" uint64_t ActionStep_GateFloatConstantB;          // 0x1331000
+extern "C" unsigned char ActionStep_GateVectorConstant[16];  // 0x1334730
+// Fills the descriptor; run once through a function-local static, whose guard is 0x1935078.
+struct GateInit {
+    GateInit() {
+        for (unsigned i = 0; i < 0xa4; ++i) ActionStep_GateData[i] = 0;
+        *reinterpret_cast<uint64_t*>(ActionStep_GateData + 4) = ActionStep_GateFloatConstantA;
+        *reinterpret_cast<uint64_t*>(ActionStep_GateData + 12) = ActionStep_GateFloatConstantB;
+        *reinterpret_cast<uint32_t*>(ActionStep_GateData + 20) = 0x454d414e;
+        *reinterpret_cast<uint32_t*>(ActionStep_GateData + 0x88) = 13;
+        for (unsigned i = 0; i < 16; ++i) ActionStep_GateData[0x90 + i] = ActionStep_GateVectorConstant[i];
+    }
+};
+static inline int* GateValue() {
+    if (!ActionStep_GatePointer) {
+        static GateInit init;
+        ActionStep_GatePointer = reinterpret_cast<int*>(ActionStep_GateData);
+    }
+    return ActionStep_GatePointer;
+}
+
+namespace Onyx {
+namespace Fire {
+
+// Slot 15 (0x7377c0): half the movie's width and height, under the movie's lock, as both the centre and the extent
+// (zero when there is no loaded movie). Not yet matched (not credited): width and height trade w20 and w22.
+// With 32-bit locals the halves are vectorized instead.
+void FireVisualBase::Slot15(FireBox* out) {
+    uint16_t width = 0, height = 0;
+    FireMovieInstance* locked = instance;
+    if (locked) {
+        FireMutex_Lock(locked->context->mutex);
+        FireMovieInfo* info = instance->info;
+        if (info && instance->loaded) { width = info->width; height = info->height; }
+        FireMutex_Unlock(locked->context->mutex);
+    }
+    float x = width * 0.5f, y = height * 0.5f;
+    out->center = onyx::Vector3(x, y, 0.0f);
+    out->extent = onyx::Vector3(x, y, 0.0f);
+}
+
+// Slot 21 (0x7386d0): unless the descriptor reads 3, hands the drawable to the renderer once the movie is loaded.
+// Not yet matched (not credited): the frame and checks match, but the original's descriptor initialization stores
+// in another order (floats through d0, a byte at +0x18), and its 1 for the mode is a movz where this build has orr.
+void FireVisualBase::Slot21(void* renderer) {
+    if (*GateValue() == 3) return;
+    if (!movie || !movie->loaded) return;
+    PrepareDrawable();
+    FireRenderer_Submit(renderer, &drawable, drawable.mode);
+}
+
+}  // namespace Fire
+}  // namespace Onyx

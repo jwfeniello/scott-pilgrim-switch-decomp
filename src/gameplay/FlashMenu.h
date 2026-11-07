@@ -323,3 +323,58 @@ struct InGameHUDMovie : FlashMenu {
 };
 
 }  // namespace SPTG
+
+namespace Onyx {
+namespace Fire {
+
+// The movie instance a visual plays (+0xa8), as the shared slots read it. Field names provisional.
+struct FireMovieInfo { char padding[0x20]; uint16_t width; uint16_t height; };   // +0x20, +0x22
+struct FireMovieContext { char padding[0x10]; void* mutex; };                     // +0x10
+struct FireMovieInstance {
+    char padding[0x58];
+    FireMovieContext* context;   // +0x58
+    char padding_60[0x38];
+    FireMovieInfo* info;         // +0x98
+    char padding_a0[0xa8];
+    uint8_t loaded;              // +0x148
+};
+extern "C" void FireMutex_Lock(void* mutex);     // 0xfa4950; name provisional
+extern "C" void FireMutex_Unlock(void* mutex);   // 0xfa4960; name provisional
+// What a visual hands the renderer (+0x118). Field names provisional.
+struct FireDrawable {
+    char padding_0[0x20];
+    int32_t mode;      // +0x20: 2 when the visual's +0xb9 is set, else 1
+    char padding_24[0x1c];
+    uint32_t value40;  // +0x40
+    uint8_t flag44;    // +0x44
+    uint8_t flag45;    // +0x45
+};
+extern "C" void FireRenderer_Submit(void* renderer, FireDrawable* drawable, int mode);   // 0xae6dd0; name provisional
+struct FireBox { onyx::Vector3 center; onyx::Vector3 extent; };   // provisional
+
+// Onyx::Fire::FireVisualBase as the slots every menu shares from it use it (vtable slots 13, 15, 20 and 21). SPTG::FlashMenu
+// derives from it through FireVisual; this view declares those slots as plain members and names only what they read.
+struct FireVisualBase : onyx::Component {
+    char padding_8[0xa0];
+    FireMovieInstance* instance;   // +0xa8
+    char padding_b0[0x8];
+    uint8_t flagB8;                // +0xb8
+    uint8_t flagB9;                // +0xb9
+    char padding_ba[0x6];
+    uint32_t valueC0;              // +0xc0
+    char padding_c4[0x14];
+    SPTG::FireMovieState* movie;   // +0xd8
+    char padding_e0[0x38];
+    FireDrawable drawable;         // +0x118
+    void PrepareDrawable() {
+        drawable.value40 = valueC0;
+        drawable.flag44 = flagB8;
+        drawable.flag45 = flagB9;
+        drawable.mode = drawable.flag45 ? 2 : 1;
+    }
+    void Slot15(FireBox* out);       // 0x7377c0
+    void Slot21(void* renderer);     // 0x7386d0
+};
+
+}  // namespace Fire
+}  // namespace Onyx

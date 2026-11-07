@@ -575426,6 +575426,37 @@
       ],
       "functions": [
         {
+          "address": "0xcfda00",
+          "size": 52,
+          "symbol": "_ZN4Dare7Private23EffectParameterSndFloat5ApplyEPKf",
+          "target_sha256": "f34443278c329d3a117f35737b7e87d58b3c62a1f9d993ee8c74fc0338645fc7",
+          "bindings": {},
+          "got_bindings": {}
+        },
+        {
+          "address": "0xd1b490",
+          "size": 40,
+          "symbol": "_ZN4Dare7Private27BusPreEffectVolumeParameter5ClampEv",
+          "target_sha256": "5ef72fead52796b47ac78437a89bad8efea3a78f39f88f4244d3192782d0eb59",
+          "bindings": {},
+          "got_bindings": {},
+          "literals": {
+            "0000c0c2": "0x1332130"
+          }
+        },
+        {
+          "address": "0xd1b550",
+          "size": 44,
+          "symbol": "_ZN4Dare7Private17BusPitchParameter5ClampEv",
+          "target_sha256": "4c45e234eccfc1bccfbea2e8980117fac4915a737496a8813669d373e29edec9",
+          "bindings": {},
+          "got_bindings": {},
+          "literals": {
+            "6f12033c": "0x13320d8",
+            "00000043": "0x1331fec"
+          }
+        },
+        {
           "address": "0xd24b90",
           "size": 92,
           "symbol": "_ZN4Dare7Private11EffectChainD1Ev",
@@ -575844,7 +575875,47 @@
       "header_roots": [
         "src/gameplay"
       ],
-      "functions": []
+      "functions": [
+        {
+          "address": "0xd84520",
+          "size": 104,
+          "symbol": "_ZN4Dare7Private28ManagerVoiceForVirtualPlayerINS0_17ManagerSynthVoiceEE5Slot1Ei",
+          "target_sha256": "c66907a5e00e6a7896aa39e40415ac575544b1b4a5817282ec29ab3965ac8650",
+          "bindings": {},
+          "got_bindings": {}
+        },
+        {
+          "address": "0xd8a2f0",
+          "size": 88,
+          "symbol": "_ZN4Dare7Private28ManagerVoiceForVirtualPlayerINS0_17ManagerThemeVoiceEE6Slot23EPvS4_",
+          "target_sha256": "003d523d428e7da62dbc1af364dabd2c9ece2943191bdf2b87cd6db224f349a0",
+          "bindings": {
+            "_ZN4Dare7Private13ThemeSettings6AssignEPKS1_": "0xd4f100",
+            "_ZN4Dare7Private28ManagerVoiceForVirtualPlayerINS0_17ManagerThemeVoiceEE4PlayEPvS4_": "0xd84860"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xd8ae60",
+          "size": 100,
+          "symbol": "_ZN4Dare7Private28ManagerVoiceForVirtualPlayerINS0_17ManagerThemeVoiceEE6Slot44Ev",
+          "target_sha256": "76c83009dd808428d95008ba38847a6e80f2b3484d5a93e788f8fcddbb5d18e0",
+          "bindings": {
+            "_ZN4Dare7Private11ThemeHandle3GetEv": "0xd359b0"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xd8aed0",
+          "size": 100,
+          "symbol": "_ZN4Dare7Private17ManagerThemeVoice4PartEv",
+          "target_sha256": "7c2c8386270c51f8206d05a9f12b1a7fa7c497f5d327df57a9d623686a62a89b",
+          "bindings": {
+            "_ZN4Dare7Private11ThemeHandle3GetEv": "0xd359b0"
+          },
+          "got_bindings": {}
+        }
+      ]
     },
     {
       "id": "gameplay_dare_effects",
@@ -575873,6 +575944,320 @@
           "size": 92,
           "symbol": "_ZN4Dare7Private14DareEffectBase13SetParametersEPKNS0_19EffectParameterListE",
           "target_sha256": "df8d2cb962c0732e531967d95492de8e62114530b8d321c38cbce143669815d3",
+          "bindings": {},
+          "got_bindings": {}
+        },
+        {
+          "address": "0xd0c070",
+          "size": 144,
+          "symbol": "_ZN4Dare7Private22PlatformSpecificEffectINS0_8EQEffectEE12GetParameterEiPNS0_21EffectParameterReportE",
+          "target_sha256": "553f3343e0f2b4d0f8d140a26a50e562af86593bb9bb08612306800d804451d1",
+          "bindings": {},
+          "got_bindings": {},
+          "immutable_sections": {
+            "19": "0x1391a92"
+          }
+        },
+        {
+          "address": "0xd0ca20",
+          "size": 112,
+          "symbol": "_ZN4Dare7Private10UserEffectINS0_8EQEffectEE12GetParameterEhPhPi",
+          "target_sha256": "34d457b3612943ff03277f47cfd77efa350e46f400946b779bd34502f13deb0d",
+          "bindings": {},
+          "got_bindings": {},
+          "immutable_sections": {
+            "16": "0x1391a9b"
+          }
+        },
+        {
+          "address": "0xd0e100",
+          "size": 128,
+          "symbol": "_ZN4Dare7Private22PlatformSpecificEffectINS0_14BandPassEffectEE12GetParameterEiPNS0_21EffectParameterReportE",
+          "target_sha256": "c7e4e98961d68ca3ef4d9eb7e2ec6f5927c37f0bd889e9679bdad678e7bd96dc",
+          "bindings": {},
+          "got_bindings": {},
+          "immutable_sections": {
+            "13": "0x1391aa8"
+          }
+        },
+        {
+          "address": "0xd0f480",
+          "size": 80,
+          "symbol": "_ZN4Dare7Private22PlatformSpecificEffectINS0_14HighPassEffectEE12GetParameterEiPNS0_21EffectParameterReportE",
+          "target_sha256": "713860904183a0045223cb8c2cc922dafed027df505f4248a9a9bd35285ad10d",
+          "bindings": {},
+          "got_bindings": {}
+        },
+        {
+          "address": "0xd0fde0",
+          "size": 80,
+          "symbol": "_ZN4Dare7Private10UserEffectINS0_14HighPassEffectEE12GetParameterEhPhPi",
+          "target_sha256": "5328cae447318b8003d9c2b1dddf2bda83b2840bc5931708c6652169b9d223b7",
+          "bindings": {},
+          "got_bindings": {}
+        },
+        {
+          "address": "0xd10470",
+          "size": 104,
+          "symbol": "_ZN4Dare7Private10UserEffectINS0_14BandPassEffectEE12GetParameterEhPhPi",
+          "target_sha256": "14b8ed3192d9d0f313139586c1db2e85810f89582984f7895c9acdb639b46721",
+          "bindings": {},
+          "got_bindings": {},
+          "immutable_sections": {
+            "10": "0x1391abd"
+          }
+        },
+        {
+          "address": "0xd11110",
+          "size": 96,
+          "symbol": "_ZN4Dare7Private22PlatformSpecificEffectINS0_13LowPassEffectEE12GetParameterEiPNS0_21EffectParameterReportE",
+          "target_sha256": "0e50ff45f3732eb1f9fd5b05c0a7e10ec09625520bcd15653acfd2d6e14859ce",
+          "bindings": {},
+          "got_bindings": {}
+        },
+        {
+          "address": "0xd11a70",
+          "size": 80,
+          "symbol": "_ZN4Dare7Private10UserEffectINS0_13LowPassEffectEE12GetParameterEhPhPi",
+          "target_sha256": "5328cae447318b8003d9c2b1dddf2bda83b2840bc5931708c6652169b9d223b7",
+          "bindings": {},
+          "got_bindings": {}
+        }
+      ]
+    },
+    {
+      "id": "gameplay_dare_asso",
+      "source": "src/gameplay/DareAsso.cpp",
+      "compiler": "8.0.1",
+      "source_review": "manual_reconstruction",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-std=c++11",
+        "-O2",
+        "-mcpu=cortex-a57",
+        "-fstrict-aliasing",
+        "-fomit-frame-pointer",
+        "-fno-pic",
+        "-fno-delete-null-pointer-checks",
+        "-ffunction-sections",
+        "-fdata-sections"
+      ],
+      "header_roots": [
+        "src/gameplay"
+      ],
+      "functions": [
+        {
+          "address": "0xd56870",
+          "size": 76,
+          "symbol": "_ZN4Dare7Private14AssoMultiEvent5Slot4Efi",
+          "target_sha256": "98e5a54bf6f9547708a1c7d83df31ccf74816390dbc1a97f80f4040e3194c29c",
+          "bindings": {},
+          "got_bindings": {}
+        },
+        {
+          "address": "0xd56e60",
+          "size": 84,
+          "symbol": "_ZN4Dare7Private14AssoMultiEvent6Slot12Ev",
+          "target_sha256": "69677c7e7846d5afd614a626887037505d548fe01418ca842c07d71b7635405d",
+          "bindings": {},
+          "got_bindings": {}
+        },
+        {
+          "address": "0xd56ec0",
+          "size": 192,
+          "symbol": "_ZN4Dare7Private14AssoMultiEvent6Slot13Ei",
+          "target_sha256": "acd131889f9d432c05c2e41393c55f205d238a05a5f80e8cad8b646db9f3943d",
+          "bindings": {},
+          "got_bindings": {}
+        },
+        {
+          "address": "0xd56fe0",
+          "size": 100,
+          "symbol": "_ZN4Dare7Private14AssoMultiEvent6Slot16Eii",
+          "target_sha256": "88dfae9dcaf15a8d0b33ae93803941e9a6555e07b94987825795750dc0b44117",
+          "bindings": {
+            "_ZN4Dare7Private13AssoCondition5CheckEii": "0xd59560"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xd57be0",
+          "size": 116,
+          "symbol": "_ZN4Dare7Private14AssoMultiEvent6Slot18EPvif",
+          "target_sha256": "2392f5b43666b2fc8c7929f6aee9eb34373845e74e778ef3503c81117d183452",
+          "bindings": {
+            "_ZN4Dare7Private9VisitAssoEPPNS0_8AssoBaseEPvif": "0xd53f60"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xd5d350",
+          "size": 72,
+          "symbol": "_ZN4Dare7Private10AssoSwitch6Slot17Ev",
+          "target_sha256": "c17285b8f32c82de9df6beb3b6534070907aed5bfe95938b592386ae70b15ee4",
+          "bindings": {
+            "_ZN4Dare7Private9AssoTable4FindEPKNS0_7AssoKeyEi": "0xd53620"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xd5d5b0",
+          "size": 20,
+          "symbol": "_ZN4Dare7Private8AssoPlay5Slot4Ef",
+          "target_sha256": "c54d6f6f5e332f45a224ea172cfe6b6012df7d98a661ae002f04e769333ed52b",
+          "bindings": {
+            "_ZN4Dare7Private8AssoPlay4Ramp3SetEff": "0xd56010"
+          },
+          "got_bindings": {},
+          "literals": {
+            "0000c0c2": "0x1332130"
+          }
+        },
+        {
+          "address": "0xd5edf0",
+          "size": 132,
+          "symbol": "_ZN4Dare7Private8AssoPlay6Slot16Eii",
+          "target_sha256": "44c4cc044272e9a8d428f50c4033baa0411a34bdcedc0e5057d8cea706b48c6c",
+          "bindings": {
+            "_ZN4Dare7Private13AssoCondition5CheckEii": "0xd59560",
+            "_ZN4Dare7Private12PlayingSound4KindEv": "0xd310a0",
+            "Dare_SoundKinds": "0x18d2318"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xd90750",
+          "size": 112,
+          "symbol": "_ZN4Dare7Private8AssoPlay6ReportEPPv",
+          "target_sha256": "a0e9a268ebb3078bebd77232a64a04cce35fa15f6e76f9e847d13fed4d16fcfd",
+          "bindings": {
+            "_ZN4Dare7Private12PlayingSound4KindEv": "0xd310a0",
+            "Dare_SoundKinds": "0x18d2318"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xd907c0",
+          "size": 72,
+          "symbol": "_ZN4Dare7Private8AssoPlay5QueryEv",
+          "target_sha256": "6113bb2ac7daaedcdbba69eb1ac65b00a199cb2e2a150f225580593d8adb39c9",
+          "bindings": {
+            "_ZN4Dare7Private12PlayingSound4KindEv": "0xd310a0",
+            "Dare_SoundKinds": "0x18d2318"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xd90e20",
+          "size": 80,
+          "symbol": "_ZN4Dare7Private8AssoPlay4StopEv",
+          "target_sha256": "9e0bb60943b8ae0e0d521717e80f7bec1df35b636a8240c425acb70474b3d26b",
+          "bindings": {
+            "_ZN4Dare7Private12PlayingSound4KindEv": "0xd310a0",
+            "Dare_SoundKinds": "0x18d2318"
+          },
+          "got_bindings": {}
+        }
+      ]
+    },
+    {
+      "id": "gameplay_dare_bus",
+      "source": "src/gameplay/DareBus.cpp",
+      "compiler": "8.0.1",
+      "source_review": "manual_reconstruction",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-std=c++11",
+        "-O2",
+        "-mcpu=cortex-a57",
+        "-fstrict-aliasing",
+        "-fomit-frame-pointer",
+        "-fno-pic",
+        "-fno-delete-null-pointer-checks",
+        "-ffunction-sections",
+        "-fdata-sections"
+      ],
+      "header_roots": [
+        "src/gameplay"
+      ],
+      "functions": [
+        {
+          "address": "0xd1e980",
+          "size": 168,
+          "symbol": "_ZN4Dare7Private11PhysicalBus12UpdateVolumeEv",
+          "target_sha256": "649db0239afd135fd6b3aa4cfe40a1fcfe92c9197bb7373b95eae43dcc4e4de1",
+          "bindings": {},
+          "got_bindings": {}
+        },
+        {
+          "address": "0xd21550",
+          "size": 120,
+          "symbol": "_ZN4Dare7Private11PhysicalBus13RefreshVoicesEv",
+          "target_sha256": "98eda5211fdc97fac19e2fae7f191a37d28e0980814a5bea8b956fc006c8cc5f",
+          "bindings": {
+            "_ZN4Dare7Private12BusVoiceSlot7RefreshEi": "0xd229e0"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xd218c0",
+          "size": 228,
+          "symbol": "_ZN4Dare7Private11PhysicalBus18ApplyVoiceSettingsEPKNS0_16BusVoiceSettingsEj",
+          "target_sha256": "e24241b46fe86d33d9c10c5b50b44cfbf15dd1ae43528abfdbaf41fcc5e4150b",
+          "bindings": {},
+          "got_bindings": {}
+        },
+        {
+          "address": "0xd219b0",
+          "size": 176,
+          "symbol": "_ZN4Dare7Private11PhysicalBus14ForwardToVoiceEiiPvj",
+          "target_sha256": "120f2e97ec551f746d6aeb72a07e10354f629bfea5d0ac3445034e37985fbfb7",
+          "bindings": {},
+          "got_bindings": {}
+        }
+      ]
+    },
+    {
+      "id": "gameplay_dare_thread",
+      "source": "src/gameplay/DareThread.cpp",
+      "compiler": "8.0.1",
+      "source_review": "manual_reconstruction",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-std=c++11",
+        "-O2",
+        "-mcpu=cortex-a57",
+        "-fstrict-aliasing",
+        "-fomit-frame-pointer",
+        "-fno-pic",
+        "-fno-delete-null-pointer-checks",
+        "-ffunction-sections",
+        "-fdata-sections"
+      ],
+      "header_roots": [
+        "src/gameplay"
+      ],
+      "functions": [
+        {
+          "address": "0xd379e0",
+          "size": 64,
+          "symbol": "_ZN4Dare10DareThread5Slot4Ev",
+          "target_sha256": "1b7eb905aad21b658cb24a56822c35ca6d9eeb382fc56d517963d2cb8c0d6b0b",
+          "bindings": {
+            "@.bss._ZGVZN4Dare10DareThread5Slot4EvE4once": "0x1939cc8",
+            "__cxa_guard_acquire": "0xfa4130",
+            "__cxa_guard_release": "0xfa4140"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xd37b10",
+          "size": 68,
+          "symbol": "_ZN4Dare10DareThread9ConfigureEii",
+          "target_sha256": "df7ca40a8bab5756596fbbab29b241418d2f561090cb93c7c329561949bcf616",
           "bindings": {},
           "got_bindings": {}
         }

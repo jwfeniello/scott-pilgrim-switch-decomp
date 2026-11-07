@@ -38,5 +38,46 @@ struct EffectChain {
 };
 EffectChain::~EffectChain() {}
 
+// The bus parameters keep their value in range (slot 7): a pre-effect volume between -96 dB and 0, a pitch between
+// 0.008 and 128.
+struct BusPreEffectVolumeParameter {
+    void* vtable;
+    float value;   // +0x8
+    void Clamp();
+};
+struct BusPitchParameter {
+    void* vtable;
+    float value;   // +0x8
+    void Clamp();
+};
+void BusPreEffectVolumeParameter::Clamp() {   // 0xd1b490
+    if (value < -96.0f) value = -96.0f;
+    else if (value > 0.0f) value = 0.0f;
+}
+void BusPitchParameter::Clamp() {   // 0xd1b550
+    if (value < 0.008f) value = 0.008f;
+    else if (value > 128.0f) value = 128.0f;
+}
+
+// Dare::Private::EffectParameterSndFloat, slot 8: applies `amount` to the value, added in mode 0 and multiplied in mode
+// 1 (+0x30).
+struct EffectParameterSndFloat {
+    void* vtable;
+    float value;   // +0x8
+    char padding_c[0x24];
+    int32_t mode;  // +0x30
+    void Apply(const float* amount);
+};
+void EffectParameterSndFloat::Apply(const float* amount) {   // 0xcfda00
+    switch (mode) {
+    case 0:
+        value = *amount + value;
+        break;
+    case 1:
+        value = *amount * value;
+        break;
+    }
+}
+
 }  // namespace Private
 }  // namespace Dare
