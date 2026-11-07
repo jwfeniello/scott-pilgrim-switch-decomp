@@ -466,9 +466,10 @@ struct ShaderMaterialTemplate {
 namespace EvolutionDevelopment {
 
 // The catalogs keep a ring of entries (a sentinel link in the catalog, the entry at +0x10 of each node). An entry
-// holds a function (+0x8) that takes the entry; slot 14 calls every entry's.
+// is an owned object (its allocator gets it back) that holds a function (+0x8) taking the entry; slot 14 calls
+// every entry's.
 struct CatalogEntry {
-    void* reserved;
+    virtual ~CatalogEntry();
     void (*function)(CatalogEntry* entry);   // +0x8
 };
 struct CatalogLink {
@@ -490,22 +491,94 @@ struct CatalogIterator {
     }
     bool operator!=(const CatalogIterator& other) const { return link != other.link; }
 };
-struct CatalogLayout {
-    virtual void Slot0();
-    char padding_8[0xa0];
-    CatalogLink entries;         // +0xa8: the sentinel
+// The ring (sentinel, count). Its destructor destroys every entry and frees every node, then leaves the ring empty.
+// The original inlines it into the catalogs' destructors, which our inliner declines without always_inline.
+struct CatalogRing {
+    CatalogLink head;
+    uint64_t count;              // +0x10
+    __attribute__((always_inline)) ~CatalogRing() {
+        for (CatalogLink* link = head.next; link != &head;) {
+            CatalogNode* node = static_cast<CatalogNode*>(link);
+            link = link->next;
+            if (CatalogEntry* entry = node->entry) {
+                onyx::Allocator* allocator = onyx::AllocatorFor(entry);
+                entry->~CatalogEntry();
+                allocator->Free(entry);
+            }
+            if (node) onyx::AllocatorFor(node)->Free(node);
+        }
+        count = 0;
+        head.next = &head;
+        head.prev = &head;
+    }
     __attribute__((always_inline)) void CallEntries() {
-        CatalogIterator end = {&entries};
-        for (CatalogIterator it = {entries.next}; end != it;) {
+        CatalogIterator end = {&head};
+        for (CatalogIterator it = {head.next}; end != it;) {
             CatalogEntry* entry = *it++;
             entry->function(entry);
         }
     }
 };
-struct View2Catalog : CatalogLayout { void Slot14(); };          // slot 14 (0xb6f990)
-struct VisualCatalog : CatalogLayout { void Slot14(); };         // slot 14 (0xb70f00)
-struct PartitioningCatalog : CatalogLayout { void Slot14(); };   // slot 14 (0xb72a80)
-struct LightCatalog : CatalogLayout { void Slot14(); };          // slot 14 (0xb72e70)
+
+}  // namespace EvolutionDevelopment
+
+// The base the catalogs' Onyx::Catalog<T> derives from; its destructor is 0x6c8ae0 (ComponentBase::~ComponentBase
+// in other builds).
+struct CatalogComponentBase {
+    virtual ~CatalogComponentBase();
+    char padding_8[0x68];
+};
+// A list of component pointers that frees its buffer when it goes (Onyx::Catalog's list, +0x70).
+template<class T> struct OwnedPointerList : PointerList<T> {
+    ~OwnedPointerList() {
+        T* buffer = this->items;
+        this->count = 0;
+        if (buffer) onyx::AllocatorFor(buffer)->Free(buffer);
+        this->items = nullptr;
+        this->capacity = 0;
+        this->count = 0;
+    }
+};
+
+}  // namespace Graphics
+
+namespace Meta { struct Null; }
+// Onyx::Catalog<T, Meta::Null>: the components of type T (its slot 13 is CatalogRefresh.cpp's Collection).
+template<class T, class M> struct Catalog : Graphics::CatalogComponentBase {
+    Graphics::OwnedPointerList<T*> components;   // +0x70
+    char padding_98[0x10];
+};
+struct LightComponent;
+
+namespace Graphics {
+struct Visual;
+namespace EvolutionDevelopment {
+
+struct View2;
+// The catalogs: slot 14 calls every entry's function; slot 0 (the destructor) empties the ring.
+struct View2Catalog : Catalog<View2, Meta::Null> {
+    ~View2Catalog();             // slot 0 (0xb6f830)
+    void Slot14();               // slot 14 (0xb6f990)
+    CatalogRing entries;         // +0xa8
+};
+struct VisualCatalog : Catalog<Visual, Meta::Null> {
+    ~VisualCatalog();            // slot 0 (0xb70da0)
+    void Slot14();               // slot 14 (0xb70f00)
+    CatalogRing entries;         // +0xa8
+};
+struct Partitioning;
+struct PartitioningCatalog : Catalog<Partitioning, Meta::Null> {
+    ~PartitioningCatalog();      // slot 0 (0xb728e0)
+    void Slot14();               // slot 14 (0xb72a80)
+    CatalogRing entries;         // +0xa8
+    char padding_c0[0x8];
+    OwnedPointerList<void*> list;   // +0xc8
+};
+struct LightCatalog : Catalog<LightComponent, Meta::Null> {
+    ~LightCatalog();             // slot 0 (0xb72d10)
+    void Slot14();               // slot 14 (0xb72e70)
+    CatalogRing entries;         // +0xa8
+};
 
 }  // namespace EvolutionDevelopment
 

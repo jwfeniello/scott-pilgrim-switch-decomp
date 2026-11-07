@@ -280,12 +280,22 @@ struct FireTimer {
     FireIntervalTarget** target;  // 0x0
     char pad8[0x28 - 0x8];
     long intervalMs;  // 0x28
+    char pad30[0x60 - 0x30];
+    int state60;  // 0x60 (provisional)
+};
+
+// Object at FirePlayerCore+0x40 (provisional): holds a heap at +0x30.
+struct FirePlayerContext {
+    char pad0[0x30];
+    void* heap;  // 0x30
 };
 
 // Object at PlatformPlayer+0x1608 (provisional).
 struct FirePlayerCore {
+    void Func_ebc150();  // 0xebc150 (provisional name)
+
     char pad0[0x40];
-    void* source40;  // 0x40 (provisional)
+    FirePlayerContext* context;  // 0x40 (provisional)
     char pad48[0x830 - 0x48];
     FireTimer* timer;  // 0x830
 };
@@ -307,7 +317,7 @@ public:
     virtual void Slot4();                   // 0xec6570
     virtual bool SetFrameRate(int fps);     // slot 5: 0xec6580 (provisional name)
     virtual void Slot6();                   // 0xec65d0
-    virtual void Slot7();                   // 0xec65e0
+    virtual void Slot7();                   // 0xec65e0: sets value1600 to a copy of "."
     virtual void Slot8();                   // 0xec6650
     virtual void Slot9();                   // 0xec6710
     virtual void Slot10();                  // 0xec6720
@@ -322,10 +332,27 @@ public:
     virtual void Slot19();                  // 0xec6760
     virtual FireSlotResult Slot20(void* arg);  // 0xec9600
     virtual FireSlotResult Slot21(void* arg);  // 0xec97b0
+    virtual void Slot22();                  // 0xec97f0
+    virtual void Slot23();                  // 0xec9800
+    virtual void Slot24();                  // 0xec9b00
+    virtual void Slot25();                  // 0xec6770
+    virtual void Slot26();                  // 0xec9c70
+    virtual void Slot27();                  // 0xec9c90
+    virtual void Slot28(int code);          // 0xec6780
 
     char pad8[0x3dc - 0x8];
     int frameRate;  // 0x3dc (provisional)
     char pad3e0[0x1600 - 0x3e0];
     void* value1600;       // 0x1600 (provisional)
     FirePlayerCore* core;  // 0x1608
+    char pad1610[0x162c - 0x1610];
+    int flag162c;  // 0x162c (provisional names from here on)
+    int flag1630;  // 0x1630
+    int flag1634;  // 0x1634
+    int flag1638;  // 0x1638
+    char pad163c[0x1690 - 0x163c];
+    int flag1690;  // 0x1690
+    int flag1694;  // 0x1694
+    char pad1698[0x16a4 - 0x1698];
+    unsigned short value16a4;  // 0x16a4
 };

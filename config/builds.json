@@ -578619,11 +578619,41 @@
           }
         },
         {
+          "address": "0xb6f830",
+          "size": 296,
+          "symbol": "_ZN4Onyx8Graphics20EvolutionDevelopment12View2CatalogD2Ev",
+          "target_sha256": "1b5fa8d15e82291a0308f03fe9bc8228b6880abcd69d72aa75196f189d8b0bf1",
+          "bindings": {
+            "_ZTVN4Onyx8Graphics20EvolutionDevelopment12View2CatalogE": "0x18adae0",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30",
+            "_ZTVN4Onyx7CatalogINS_8Graphics20EvolutionDevelopment5View2ENS_4Meta4NullEEE": "0x18adb68",
+            "_ZN4Onyx8Graphics20CatalogComponentBaseD2Ev": "0x6c8ae0",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
           "address": "0xb6f990",
           "size": 68,
           "symbol": "_ZN4Onyx8Graphics20EvolutionDevelopment12View2Catalog6Slot14Ev",
           "target_sha256": "528f21a5f38dd1fdb4b2928dfca10faf130dfc3c3976ec273a05aafc52c51d2c",
           "bindings": {},
+          "got_bindings": {}
+        },
+        {
+          "address": "0xb70da0",
+          "size": 296,
+          "symbol": "_ZN4Onyx8Graphics20EvolutionDevelopment13VisualCatalogD2Ev",
+          "target_sha256": "817585bf3829b7c620fc106115f3621d33f3990f6618e52353ffcfdfc6184fcd",
+          "bindings": {
+            "_ZTVN4Onyx8Graphics20EvolutionDevelopment13VisualCatalogE": "0x18add88",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30",
+            "_ZTVN4Onyx7CatalogINS_8Graphics6VisualENS_4Meta4NullEEE": "0x18ade10",
+            "_ZN4Onyx8Graphics20CatalogComponentBaseD2Ev": "0x6c8ae0",
+            "__clang_call_terminate": "0x6768b8"
+          },
           "got_bindings": {}
         },
         {
@@ -578635,11 +578665,41 @@
           "got_bindings": {}
         },
         {
+          "address": "0xb728e0",
+          "size": 364,
+          "symbol": "_ZN4Onyx8Graphics20EvolutionDevelopment19PartitioningCatalogD2Ev",
+          "target_sha256": "5b8f3c9a528d4687438cada96e96bd5272ae00c5663ffe0448f6b92c39a6b17a",
+          "bindings": {
+            "_ZTVN4Onyx8Graphics20EvolutionDevelopment19PartitioningCatalogE": "0x18ae030",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30",
+            "_ZTVN4Onyx7CatalogINS_8Graphics20EvolutionDevelopment12PartitioningENS_4Meta4NullEEE": "0x18ae0b8",
+            "_ZN4Onyx8Graphics20CatalogComponentBaseD2Ev": "0x6c8ae0",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
           "address": "0xb72a80",
           "size": 68,
           "symbol": "_ZN4Onyx8Graphics20EvolutionDevelopment19PartitioningCatalog6Slot14Ev",
           "target_sha256": "528f21a5f38dd1fdb4b2928dfca10faf130dfc3c3976ec273a05aafc52c51d2c",
           "bindings": {},
+          "got_bindings": {}
+        },
+        {
+          "address": "0xb72d10",
+          "size": 296,
+          "symbol": "_ZN4Onyx8Graphics20EvolutionDevelopment12LightCatalogD2Ev",
+          "target_sha256": "1bd243a193beeb246e97649e4e448f26af316863fe15349e4bb1a3aa80d33a3e",
+          "bindings": {
+            "_ZTVN4Onyx8Graphics20EvolutionDevelopment12LightCatalogE": "0x18ae170",
+            "Accessor_Allocators": "0x1926bd8",
+            "Accessor_AllocatorIndex": "0xa82b30",
+            "_ZTVN4Onyx7CatalogINS_14LightComponentENS_4Meta4NullEEE": "0x18ae1f8",
+            "_ZN4Onyx8Graphics20CatalogComponentBaseD2Ev": "0x6c8ae0",
+            "__clang_call_terminate": "0x6768b8"
+          },
           "got_bindings": {}
         },
         {
@@ -579029,6 +579089,29 @@
           "target_sha256": "558505effb0387da514b9b63e61fdf60ba326f3ad6135d40fff57a5e124dbaeb",
           "bindings": {},
           "got_bindings": {}
+        },
+        {
+          "address": "0xec65e0",
+          "size": 100,
+          "symbol": "_ZN14PlatformPlayer5Slot7Ev",
+          "target_sha256": "d80da86eb3b4b0fe02ad5d35230963ec3c30419cf40bbb120a4a6f75e8ca16d8",
+          "bindings": {
+            "_Z9FireAllocPvS_mS_S_": "0xf9fb50"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xec6780",
+          "size": 172,
+          "symbol": "_ZN14PlatformPlayer6Slot28Ei",
+          "target_sha256": "2986a798fbc2428bbddad175fdfff0073a167120ff7072bda5ac6bd8512147c5",
+          "bindings": {
+            "_ZN14FirePlayerCore11Func_ebc150Ev": "0xebc150"
+          },
+          "got_bindings": {},
+          "immutable_sections": {
+            "8": "0x1392c6a"
+          }
         },
         {
           "address": "0xec97b0",

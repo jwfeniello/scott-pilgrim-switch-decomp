@@ -50,19 +50,19 @@ namespace EvolutionDevelopment {
 
 // Slot 14 (0xb6f990): calls every entry's function.
 void View2Catalog::Slot14() {
-    CallEntries();
+    entries.CallEntries();
 }
 // Slot 14 (0xb70f00): calls every entry's function.
 void VisualCatalog::Slot14() {
-    CallEntries();
+    entries.CallEntries();
 }
 // Slot 14 (0xb72a80): calls every entry's function.
 void PartitioningCatalog::Slot14() {
-    CallEntries();
+    entries.CallEntries();
 }
 // Slot 14 (0xb72e70): calls every entry's function.
 void LightCatalog::Slot14() {
-    CallEntries();
+    entries.CallEntries();
 }
 
 }  // namespace EvolutionDevelopment
@@ -449,5 +449,26 @@ void GraphicsFader::Enable() {
     Apply(level);
 }
 
+}  // namespace Graphics
+}  // namespace Onyx
+
+namespace Onyx {
+namespace Graphics {
+namespace EvolutionDevelopment {
+
+// Slot 0 (0xb6f830): empties the ring; Catalog's list and base go after.
+View2Catalog::~View2Catalog() {
+}
+// Slot 0 (0xb70da0): empties the ring; Catalog's list and base go after.
+VisualCatalog::~VisualCatalog() {
+}
+// Slot 0 (0xb72d10): empties the ring; Catalog's list and base go after.
+LightCatalog::~LightCatalog() {
+}
+// Slot 0 (0xb728e0): frees its own list and empties the ring; Catalog's list and base go after.
+PartitioningCatalog::~PartitioningCatalog() {
+}
+
+}  // namespace EvolutionDevelopment
 }  // namespace Graphics
 }  // namespace Onyx
