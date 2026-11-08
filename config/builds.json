@@ -558539,6 +558539,19 @@
           }
         },
         {
+          "address": "0x8e7220",
+          "size": 260,
+          "symbol": "_ZN4SPTG25ActorMoveFromBehindAction4StopEPv",
+          "target_sha256": "8d2aca7c8254e32ede6cf1e8af72870d1a75c99465639f9fa4b88db8e978673b",
+          "bindings": {
+            "Accessor_Resolver": "0x191cd10",
+            "Accessor_Resolve": "0x67edd0",
+            "_ZN4SPTG12ActorGraphic10Call8e7330Ev": "0x8e7330",
+            "_ZN4SPTG20ActorActionComponent4StopEPv": "0x8e1580"
+          },
+          "got_bindings": {}
+        },
+        {
           "address": "0x8e7c90",
           "size": 640,
           "symbol": "_ZN4SPTG15ActorMoveAction6UpdateEv",
@@ -559054,6 +559067,16 @@
           }
         },
         {
+          "address": "0x90d080",
+          "size": 128,
+          "symbol": "_ZN4SPTG30SpawnInteractiveObjectActionEx5StartEPv",
+          "target_sha256": "bdb388ff80d46858d046a9d91c5b701ffb004184abad2ea0d9dd540094d5e1cb",
+          "bindings": {
+            "_ZN4SPTG16SpawnedObjectRefD1Ev": "0x90c480"
+          },
+          "got_bindings": {}
+        },
+        {
           "address": "0x910600",
           "size": 680,
           "symbol": "_ZN4SPTG16HideObjectAction5StartEv",
@@ -559241,7 +559264,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "313": "0x14dec60"
+            "317": "0x14dec60"
           },
           "literals": {
             "554e4b4e4f574e20": "0x1331ae0",

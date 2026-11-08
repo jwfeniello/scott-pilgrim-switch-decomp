@@ -1215,6 +1215,16 @@ struct ActorActionBase {
     char padding_9a[6];
     ComponentHandle* actor;     // +0xa0
     void Update();
+    // The base action's start and stop steps (Onyx::ActionComponent's slots 14 and 15 inline). They take the event, so
+    // a subclass's slot 15 that ends in ActorActionComponent's still passes its event on. The names are ours.
+    void Begin(void*) {
+        active = true;
+        stopped = 0;
+    }
+    void End(void*) {
+        active = false;
+        stopped = 1;
+    }
 };
 // SPTG::ActorActionComponent's own slots 14 and 15 (the actions above call slot 14 as their base start).
 struct ActorActionComponent : ActorActionBase {
@@ -1233,18 +1243,16 @@ void ActorActionBase::Update() {
     }
 }
 // Slot 14: started, a player that is neither idle (233) nor in 241 already goes to state 241 when +0xa8 says so.
-void ActorActionComponent::Start(void*) {
-    active = true;
-    stopped = 0;
+void ActorActionComponent::Start(void* event) {
+    Begin(event);
     ControllablePlayer* c = onyx::Peek<ControllablePlayer>(actor);
     if (c && c->IsA(0x2f2bf4aau) && enterOnStart) {
         if (!c->states.IsIn(c->State233Ptr()) && !c->states.IsIn(c->State241Ptr())) c->states.Transition(c->State241Ptr());
     }
 }
 // Slot 15: stopped, a player in state 241 (and not idle) goes to state 96 when +0xa9 says so.
-void ActorActionComponent::Stop(void*) {
-    active = false;
-    stopped = 1;
+void ActorActionComponent::Stop(void* event) {
+    End(event);
     ControllablePlayer* c = onyx::Peek<ControllablePlayer>(actor);
     if (c && c->IsA(0x2f2bf4aau) && leaveOnStop) {
         if (!c->states.IsIn(c->State233Ptr()) && c->states.IsIn(c->State241Ptr())) c->states.Transition(c->State96Ptr());
@@ -2013,7 +2021,11 @@ void ValueForwarder::Forward(int32_t* value) {
 }
 
 // An actor action's actor, what moves it and what draws it.
-struct ActorGraphic : onyx::Component { char padding_8[0x71]; bool hidden; };
+struct ActorGraphic : onyx::Component {
+    char padding_8[0x71];
+    bool hidden;
+    void Call8e7330();          // 0x8e7330; name provisional
+};
 struct ActorBody : onyx::Component {
     char padding_8[0x50];
     ComponentHandle* graphic;   // +0x58
@@ -2025,6 +2037,10 @@ struct ActionActor : onyx::Component {
     virtual void PlayAnimation(uint32_t animation, uint32_t loops, int mode);  // slot 23
     virtual void S24(); virtual void S25(); virtual void S26(); virtual void S27(); virtual void S28(); virtual void S29();
     virtual void Flip();        // slot 30
+    virtual void S31(); virtual void S32(); virtual void S33(); virtual void S34(); virtual void S35(); virtual void S36(); virtual void S37(); virtual void S38(); virtual void S39();
+    virtual void S40(); virtual void S41(); virtual void S42(); virtual void S43(); virtual void S44(); virtual void S45(); virtual void S46(); virtual void S47(); virtual void S48(); virtual void S49();
+    virtual void S50(); virtual void S51(); virtual void S52(); virtual void S53(); virtual void S54(); virtual void S55();
+    virtual void SetSolid(bool solid);   // slot 56
     char padding_8[0x70];
     ComponentHandle* body;      // +0x78
     char padding_80[0xc4];
@@ -2071,6 +2087,20 @@ void ActorAnimationAction::Start() {
         if (want == (g->hidden ^ 1)) static_cast<ActionActor*>(actor->object)->Flip();
     }
     if (!waits) onyx::SendEvent<ActionFinished>(callback, target);
+}
+
+// SPTG::ActorMoveFromBehindAction's slot 15 (0x8e7220): runs 0x8e7330 on the actor's graphic, makes the actor solid
+// again and stops as ActorActionComponent does.
+struct ActorMoveFromBehindAction : ActorActionComponent {
+    void Stop(void* event);
+};
+void ActorMoveFromBehindAction::Stop(void* event) {
+    ActionActor* x = static_cast<ActionActor*>(actor->object);
+    ActorBody* b = onyx::Lookup<ActorBody, 1687344669u>(x->body);
+    ActorGraphic* g = onyx::Lookup<ActorGraphic, 783177747u>(b->graphic);
+    g->Call8e7330();
+    static_cast<ActionActor*>(actor->object)->SetSolid(true);
+    ActorActionComponent::Stop(event);
 }
 
 // SPTG::ActorMoveAction walks the actor in a straight line, keeping its depth with its z.
@@ -2515,5 +2545,38 @@ struct ExtraModeScoringAction : Onyx::ActionComponent {
 void ExtraModeScoringAction::Stop() noexcept {
     onyx::EventPayload event;
     Stop(&event);
+}
+}  // namespace SPTG
+
+namespace SPTG {
+// SPTG::SpawnInteractiveObjectActionEx keeps a reference to each object it spawned. Starting again drops them all (the
+// reference's destructor, 0x90c480, releases the handle), clears the spawn count at +0x110 and moves +0xe0 on by +0xc0.
+struct SpawnedObjectRef {
+    ComponentHandle* handle;
+    ~SpawnedObjectRef();        // 0x90c480
+};
+struct SpawnInteractiveObjectActionEx {
+    char padding_0[0x98];
+    bool active;                // +0x98
+    uint8_t stopped;            // +0x99
+    char padding_9a[0x26];
+    uint32_t step;              // +0xc0
+    char padding_c4[0x1c];
+    uint32_t next;              // +0xe0
+    char padding_e4[0x4];
+    onyx::Vector<SpawnedObjectRef> spawned;   // +0xe8
+    char padding_108[0x8];
+    uint32_t spawnCount;        // +0x110
+    void Start(void* event);    // slot 14 (0x90d080)
+};
+void SpawnInteractiveObjectActionEx::Start(void*) {
+    spawnCount = 0;
+    active = true;
+    stopped = 0;
+    if (spawned.data) {
+        for (uint64_t i = 0; i < spawned.size; ++i) spawned.data[i].~SpawnedObjectRef();
+    }
+    spawned.size = 0;
+    next += step;
 }
 }  // namespace SPTG
