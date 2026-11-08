@@ -1,9 +1,9 @@
 {
   "version": 1,
-  "generated_at": "2026-11-07T04:24:42.298767+00:00",
+  "generated_at": "2026-11-08T07:51:12.404034+00:00",
   "target_elf_sha256": "ea95638e6d6aaa0dc6cddd552a9366799aa1ec3bc07ee201f23f6c151103f5b8",
   "input_sha256": {
-    "config/builds.json": "8e1eab367703f78d8638f61fb70b08967feb3ee2dd1e32126ad0b16b48eefee6",
+    "config/builds.json": "897dd42a84a3da7cbae943de906f96a7ba59063379d80ded4867b961c6d40dde",
     "config/functions.tsv": "399e91468a04e0459194c10d68d2210d1157cedefeb19c7851886ca7632fcb18",
     "config/non_fde_functions.tsv": "6a45f5e185454fa0472af00b2cdc9d040d73ca133d1106217e1fbbe3b32a8175",
     "config/target.json": "23cc6a5227206a953e7668acf5e9ae5c02a25c23b7e7967f0450a814b888241a",
@@ -1196,6 +1196,7 @@
     "src/gameplay/LaserBeams.cpp": "84412667c7152aa63849fb8c075bff0c440e4ef9c1807205372c0eb326b0781c",
     "src/gameplay/LaserBeams.h": "cb639c5e5ab61d7c8a96d908809c1308208cfd69ef859656f8c78ba79c27bf3a",
     "src/gameplay/Level.h": "013cba1086da15ffbb6fe2c067ca0bf50cf4b441934bb2a75b9b5f03241fc910",
+    "src/gameplay/MaterialProperties.cpp": "d215f14aae7d547a6e7193543591cb6a1ad3b75b170f084d743694159e1c99a8",
     "src/gameplay/Menus.cpp": "e652cf7909e808e671ce219d33b2777f28367919fc4e450958fa700866c632ea",
     "src/gameplay/NPC.cpp": "9697d4d3decb9396dd43ef77ace0f1a242fd793e768aa07696607cffa75b8154",
     "src/gameplay/NPC.h": "716c2913dc92043bb3ffd5da9a424eb3bd4e174ffb01b041ff9bf8ed5c45d53f",
@@ -4059,8 +4060,8 @@
     "7.0.1": "c2f0a175157d9aaace8031f8e6d7ea0ed6142b4bcef287105e3ed227301f1002",
     "lld": "c4b3aaea06ff7112c64753047a2ab279fc3fe10dd807fd3c22edfdae99f43eed"
   },
-  "exact_functions": 39313,
-  "exact_bytes": 5234748,
+  "exact_functions": 39329,
+  "exact_bytes": 5235996,
   "builds": [
     {
       "id": "probes",
@@ -13436,6 +13437,11 @@
       "id": "gameplay_player_stats",
       "compiler": "8.0.1",
       "object_sha256": "4a23089c19f7ebd5097db57aac02b174b695eaa8eb02034f2400af0806401e51"
+    },
+    {
+      "id": "gameplay_material_properties",
+      "compiler": "8.0.1",
+      "object_sha256": "9e1ff801db3d912d63a4cfee730e8d327d6aa90a9618f110c8ca598840431ce3"
     },
     {
       "id": "gameplay_menus",
@@ -338345,6 +338351,17 @@
       "relocation_count": 2
     },
     {
+      "address": "0xae1fa0",
+      "size": 104,
+      "exact": true,
+      "target_sha256": "0db09efcec114d9bc4252afadd20edeea9a450d1a37d3aa033da979f6e6505e2",
+      "compiled_sha256": "0db09efcec114d9bc4252afadd20edeea9a450d1a37d3aa033da979f6e6505e2",
+      "source": "src/gameplay/MaterialProperties.cpp",
+      "symbol": "_ZN4Onyx8Graphics16MaterialProperty8Blending5ApplyEPNS1_11PassContextE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 4
+    },
+    {
       "address": "0xae2010",
       "size": 132,
       "exact": true,
@@ -339123,6 +339140,28 @@
       "source": "src/LeafPrimitives.cpp",
       "symbol": "RecoveredLeaf_aeb490",
       "source_review": "generated_cxx_abi_view",
+      "relocation_count": 0
+    },
+    {
+      "address": "0xaeb4a0",
+      "size": 64,
+      "exact": true,
+      "target_sha256": "aa3bb0b6c6b55c6e34e55bdc03a458086626ee1d9225d4db6552119b947e6a62",
+      "compiled_sha256": "aa3bb0b6c6b55c6e34e55bdc03a458086626ee1d9225d4db6552119b947e6a62",
+      "source": "src/gameplay/MaterialProperties.cpp",
+      "symbol": "_ZN4Onyx8Graphics16MaterialProperty17DisableDepthWrite5ResetEPNS1_11PassContextE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 0
+    },
+    {
+      "address": "0xaeb4e0",
+      "size": 64,
+      "exact": true,
+      "target_sha256": "cf545e533deb1c8a03650d09299ab60e51a049c1bfd7d496479679b2aff28a6b",
+      "compiled_sha256": "cf545e533deb1c8a03650d09299ab60e51a049c1bfd7d496479679b2aff28a6b",
+      "source": "src/gameplay/MaterialProperties.cpp",
+      "symbol": "_ZN4Onyx8Graphics16MaterialProperty17DisableDepthWrite5ApplyEPNS1_11PassContextE",
+      "source_review": "manual_reconstruction",
       "relocation_count": 0
     },
     {
@@ -341566,6 +341605,17 @@
       "symbol": "RecoveredLeaf_afbc30",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 2
+    },
+    {
+      "address": "0xafbc70",
+      "size": 88,
+      "exact": true,
+      "target_sha256": "e9d3ad0cf4b8bac177667153909eba0bafa541ebfd6ec5797d4f8fe1eead6559",
+      "compiled_sha256": "e9d3ad0cf4b8bac177667153909eba0bafa541ebfd6ec5797d4f8fe1eead6559",
+      "source": "src/gameplay/MaterialProperties.cpp",
+      "symbol": "_ZN4Onyx8Graphics16MaterialProperty8FillMode5ApplyEPNS1_11PassContextE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 4
     },
     {
       "address": "0xafbcd0",
@@ -352821,6 +352871,28 @@
       "relocation_count": 0
     },
     {
+      "address": "0xb666f0",
+      "size": 64,
+      "exact": true,
+      "target_sha256": "aa3bb0b6c6b55c6e34e55bdc03a458086626ee1d9225d4db6552119b947e6a62",
+      "compiled_sha256": "aa3bb0b6c6b55c6e34e55bdc03a458086626ee1d9225d4db6552119b947e6a62",
+      "source": "src/gameplay/MaterialProperties.cpp",
+      "symbol": "_ZN4Onyx8Graphics16MaterialProperty5Noise5ResetEPNS1_11PassContextE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 0
+    },
+    {
+      "address": "0xb66730",
+      "size": 64,
+      "exact": true,
+      "target_sha256": "cf545e533deb1c8a03650d09299ab60e51a049c1bfd7d496479679b2aff28a6b",
+      "compiled_sha256": "cf545e533deb1c8a03650d09299ab60e51a049c1bfd7d496479679b2aff28a6b",
+      "source": "src/gameplay/MaterialProperties.cpp",
+      "symbol": "_ZN4Onyx8Graphics16MaterialProperty5Noise5ApplyEPNS1_11PassContextE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 0
+    },
+    {
       "address": "0xb66770",
       "size": 136,
       "exact": true,
@@ -353096,6 +353168,17 @@
       "relocation_count": 0
     },
     {
+      "address": "0xb67420",
+      "size": 56,
+      "exact": true,
+      "target_sha256": "a5c2d7c584ddc96a81de5c00f1c59c2c9fd51d11a8e57e845cb7ff71c55c6eb6",
+      "compiled_sha256": "a5c2d7c584ddc96a81de5c00f1c59c2c9fd51d11a8e57e845cb7ff71c55c6eb6",
+      "source": "src/gameplay/MaterialProperties.cpp",
+      "symbol": "_ZN4Onyx8Graphics16MaterialProperty16ClearColorBuffer5ApplyEPNS1_11PassContextE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 3
+    },
+    {
       "address": "0xb67460",
       "size": 4,
       "exact": true,
@@ -353138,6 +353221,17 @@
       "symbol": "RecoveredLeaf_b67490",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 0
+    },
+    {
+      "address": "0xb674b0",
+      "size": 56,
+      "exact": true,
+      "target_sha256": "51bd415bc8061a4f2aeecc6ff8c27a59937957503b240c66064983b769132240",
+      "compiled_sha256": "51bd415bc8061a4f2aeecc6ff8c27a59937957503b240c66064983b769132240",
+      "source": "src/gameplay/MaterialProperties.cpp",
+      "symbol": "_ZN4Onyx8Graphics16MaterialProperty17ClearFrameBuffers5ApplyEPNS1_11PassContextE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 3
     },
     {
       "address": "0xb674f0",
@@ -353976,6 +354070,17 @@
       "relocation_count": 0
     },
     {
+      "address": "0xb68750",
+      "size": 72,
+      "exact": true,
+      "target_sha256": "aab052cde89a849509c57fa8d6561d335a78c0cf859c37580ac5e55841dbae4f",
+      "compiled_sha256": "aab052cde89a849509c57fa8d6561d335a78c0cf859c37580ac5e55841dbae4f",
+      "source": "src/gameplay/MaterialProperties.cpp",
+      "symbol": "_ZN4Onyx8Graphics16MaterialProperty11DepthOffset5ApplyEPNS1_11PassContextE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 2
+    },
+    {
       "address": "0xb687a0",
       "size": 100,
       "exact": true,
@@ -354018,6 +354123,17 @@
       "symbol": "RecoveredLeaf_b68830",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 0
+    },
+    {
+      "address": "0xb68850",
+      "size": 100,
+      "exact": true,
+      "target_sha256": "5954b10000fac96f88d6bccc955c20c6846d5c96dbe728eb10786ace6c48bf8d",
+      "compiled_sha256": "5954b10000fac96f88d6bccc955c20c6846d5c96dbe728eb10786ace6c48bf8d",
+      "source": "src/gameplay/MaterialProperties.cpp",
+      "symbol": "_ZN4Onyx8Graphics16MaterialProperty21BlendingConstantColor5ApplyEPNS1_11PassContextE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 2
     },
     {
       "address": "0xb688c0",
@@ -354339,6 +354455,17 @@
       "relocation_count": 2
     },
     {
+      "address": "0xb696b0",
+      "size": 124,
+      "exact": true,
+      "target_sha256": "4bef3fdf799f9b6299b62dafe39daea055d101a2a572afe805ecbc688bb3f960",
+      "compiled_sha256": "4bef3fdf799f9b6299b62dafe39daea055d101a2a572afe805ecbc688bb3f960",
+      "source": "src/gameplay/MaterialProperties.cpp",
+      "symbol": "_ZN4Onyx8Graphics16MaterialProperty9FrontFace5ApplyEPNS1_11PassContextE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 4
+    },
+    {
       "address": "0xb69730",
       "size": 80,
       "exact": true,
@@ -354394,6 +354521,17 @@
       "relocation_count": 2
     },
     {
+      "address": "0xb697f0",
+      "size": 80,
+      "exact": true,
+      "target_sha256": "18ce4eb8026ce98db472bbb317d3263840ab201d154abb14228dd55b5d59da9f",
+      "compiled_sha256": "18ce4eb8026ce98db472bbb317d3263840ab201d154abb14228dd55b5d59da9f",
+      "source": "src/gameplay/MaterialProperties.cpp",
+      "symbol": "_ZN4Onyx8Graphics16MaterialProperty9DepthFunc5ApplyEPNS1_11PassContextE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 4
+    },
+    {
       "address": "0xb69840",
       "size": 80,
       "exact": true,
@@ -354424,6 +354562,28 @@
       "source": "src/LeafPrimitives.cpp",
       "symbol": "RecoveredLeaf_b698a0",
       "source_review": "generated_cxx_abi_view",
+      "relocation_count": 0
+    },
+    {
+      "address": "0xb698b0",
+      "size": 64,
+      "exact": true,
+      "target_sha256": "aa3bb0b6c6b55c6e34e55bdc03a458086626ee1d9225d4db6552119b947e6a62",
+      "compiled_sha256": "aa3bb0b6c6b55c6e34e55bdc03a458086626ee1d9225d4db6552119b947e6a62",
+      "source": "src/gameplay/MaterialProperties.cpp",
+      "symbol": "_ZN4Onyx8Graphics16MaterialProperty17DisableColorWrite5ResetEPNS1_11PassContextE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 0
+    },
+    {
+      "address": "0xb698f0",
+      "size": 64,
+      "exact": true,
+      "target_sha256": "cf545e533deb1c8a03650d09299ab60e51a049c1bfd7d496479679b2aff28a6b",
+      "compiled_sha256": "cf545e533deb1c8a03650d09299ab60e51a049c1bfd7d496479679b2aff28a6b",
+      "source": "src/gameplay/MaterialProperties.cpp",
+      "symbol": "_ZN4Onyx8Graphics16MaterialProperty17DisableColorWrite5ApplyEPNS1_11PassContextE",
+      "source_review": "manual_reconstruction",
       "relocation_count": 0
     },
     {
@@ -354546,6 +354706,17 @@
       "symbol": "RecoveredLeaf_b69a50",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 2
+    },
+    {
+      "address": "0xb69a90",
+      "size": 108,
+      "exact": true,
+      "target_sha256": "8d1abe40803d5ce17700cbf499606ac5613784c7e39fe0fdee57d680c939207e",
+      "compiled_sha256": "8d1abe40803d5ce17700cbf499606ac5613784c7e39fe0fdee57d680c939207e",
+      "source": "src/gameplay/MaterialProperties.cpp",
+      "symbol": "_ZN4Onyx8Graphics16MaterialProperty9AlphaTest5ApplyEPNS1_11PassContextE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 4
     },
     {
       "address": "0xb69b00",
@@ -355745,6 +355916,17 @@
       "symbol": "RecoveredLeaf_b78370",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 0
+    },
+    {
+      "address": "0xb78390",
+      "size": 76,
+      "exact": true,
+      "target_sha256": "472c1e1cd8935d3f59f25be08338a5926b3c519031190cd025f78ef288bf3c5e",
+      "compiled_sha256": "472c1e1cd8935d3f59f25be08338a5926b3c519031190cd025f78ef288bf3c5e",
+      "source": "src/gameplay/MaterialProperties.cpp",
+      "symbol": "_ZN4Onyx8Graphics16MaterialProperty23BindRenderTargetTexture5ApplyEPNS1_11PassContextE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 1
     },
     {
       "address": "0xb78590",

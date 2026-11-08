@@ -557186,6 +557186,184 @@
       ]
     },
     {
+      "id": "gameplay_material_properties",
+      "source": "src/gameplay/MaterialProperties.cpp",
+      "compiler": "8.0.1",
+      "source_review": "manual_reconstruction",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-std=c++11",
+        "-O2",
+        "-mcpu=cortex-a57",
+        "-fstrict-aliasing",
+        "-fomit-frame-pointer",
+        "-fno-pic",
+        "-fno-delete-null-pointer-checks",
+        "-ffunction-sections",
+        "-fdata-sections"
+      ],
+      "header_roots": [
+        "src/gameplay"
+      ],
+      "functions": [
+        {
+          "address": "0xae1fa0",
+          "size": 104,
+          "symbol": "_ZN4Onyx8Graphics16MaterialProperty8Blending5ApplyEPNS1_11PassContextE",
+          "target_sha256": "0db09efcec114d9bc4252afadd20edeea9a450d1a37d3aa033da979f6e6505e2",
+          "bindings": {
+            "Graphics_Renderer": "0x191dce8",
+            "Graphics_BlendTable": "0x14a8be0"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xaeb4a0",
+          "size": 64,
+          "symbol": "_ZN4Onyx8Graphics16MaterialProperty17DisableDepthWrite5ResetEPNS1_11PassContextE",
+          "target_sha256": "aa3bb0b6c6b55c6e34e55bdc03a458086626ee1d9225d4db6552119b947e6a62",
+          "bindings": {},
+          "got_bindings": {}
+        },
+        {
+          "address": "0xaeb4e0",
+          "size": 64,
+          "symbol": "_ZN4Onyx8Graphics16MaterialProperty17DisableDepthWrite5ApplyEPNS1_11PassContextE",
+          "target_sha256": "cf545e533deb1c8a03650d09299ab60e51a049c1bfd7d496479679b2aff28a6b",
+          "bindings": {},
+          "got_bindings": {}
+        },
+        {
+          "address": "0xafbc70",
+          "size": 88,
+          "symbol": "_ZN4Onyx8Graphics16MaterialProperty8FillMode5ApplyEPNS1_11PassContextE",
+          "target_sha256": "e9d3ad0cf4b8bac177667153909eba0bafa541ebfd6ec5797d4f8fe1eead6559",
+          "bindings": {
+            "Graphics_FillModeTable": "0x14a8c10",
+            "Graphics_Renderer": "0x191dce8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xb666f0",
+          "size": 64,
+          "symbol": "_ZN4Onyx8Graphics16MaterialProperty5Noise5ResetEPNS1_11PassContextE",
+          "target_sha256": "aa3bb0b6c6b55c6e34e55bdc03a458086626ee1d9225d4db6552119b947e6a62",
+          "bindings": {},
+          "got_bindings": {}
+        },
+        {
+          "address": "0xb66730",
+          "size": 64,
+          "symbol": "_ZN4Onyx8Graphics16MaterialProperty5Noise5ApplyEPNS1_11PassContextE",
+          "target_sha256": "cf545e533deb1c8a03650d09299ab60e51a049c1bfd7d496479679b2aff28a6b",
+          "bindings": {},
+          "got_bindings": {}
+        },
+        {
+          "address": "0xb67420",
+          "size": 56,
+          "symbol": "_ZN4Onyx8Graphics16MaterialProperty16ClearColorBuffer5ApplyEPNS1_11PassContextE",
+          "target_sha256": "a5c2d7c584ddc96a81de5c00f1c59c2c9fd51d11a8e57e845cb7ff71c55c6eb6",
+          "bindings": {
+            "Graphics_Renderer": "0x191dce8",
+            "_ZN4Onyx8Graphics13RendererState12FrameBuffers10ClearColorEv": "0x6d6830"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xb674b0",
+          "size": 56,
+          "symbol": "_ZN4Onyx8Graphics16MaterialProperty17ClearFrameBuffers5ApplyEPNS1_11PassContextE",
+          "target_sha256": "51bd415bc8061a4f2aeecc6ff8c27a59937957503b240c66064983b769132240",
+          "bindings": {
+            "Graphics_Renderer": "0x191dce8",
+            "_ZN4Onyx8Graphics13RendererState12FrameBuffers8ClearAllEv": "0x6d6710"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xb68750",
+          "size": 72,
+          "symbol": "_ZN4Onyx8Graphics16MaterialProperty11DepthOffset5ApplyEPNS1_11PassContextE",
+          "target_sha256": "aab052cde89a849509c57fa8d6561d335a78c0cf859c37580ac5e55841dbae4f",
+          "bindings": {
+            "Graphics_Renderer": "0x191dce8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xb68850",
+          "size": 100,
+          "symbol": "_ZN4Onyx8Graphics16MaterialProperty21BlendingConstantColor5ApplyEPNS1_11PassContextE",
+          "target_sha256": "5954b10000fac96f88d6bccc955c20c6846d5c96dbe728eb10786ace6c48bf8d",
+          "bindings": {
+            "Graphics_Renderer": "0x191dce8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xb696b0",
+          "size": 124,
+          "symbol": "_ZN4Onyx8Graphics16MaterialProperty9FrontFace5ApplyEPNS1_11PassContextE",
+          "target_sha256": "4bef3fdf799f9b6299b62dafe39daea055d101a2a572afe805ecbc688bb3f960",
+          "bindings": {
+            "Graphics_Renderer": "0x191dce8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xb697f0",
+          "size": 80,
+          "symbol": "_ZN4Onyx8Graphics16MaterialProperty9DepthFunc5ApplyEPNS1_11PassContextE",
+          "target_sha256": "18ce4eb8026ce98db472bbb317d3263840ab201d154abb14228dd55b5d59da9f",
+          "bindings": {
+            "Graphics_DepthFuncTable": "0x13492a0",
+            "Graphics_Renderer": "0x191dce8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xb698b0",
+          "size": 64,
+          "symbol": "_ZN4Onyx8Graphics16MaterialProperty17DisableColorWrite5ResetEPNS1_11PassContextE",
+          "target_sha256": "aa3bb0b6c6b55c6e34e55bdc03a458086626ee1d9225d4db6552119b947e6a62",
+          "bindings": {},
+          "got_bindings": {}
+        },
+        {
+          "address": "0xb698f0",
+          "size": 64,
+          "symbol": "_ZN4Onyx8Graphics16MaterialProperty17DisableColorWrite5ApplyEPNS1_11PassContextE",
+          "target_sha256": "cf545e533deb1c8a03650d09299ab60e51a049c1bfd7d496479679b2aff28a6b",
+          "bindings": {},
+          "got_bindings": {}
+        },
+        {
+          "address": "0xb69a90",
+          "size": 108,
+          "symbol": "_ZN4Onyx8Graphics16MaterialProperty9AlphaTest5ApplyEPNS1_11PassContextE",
+          "target_sha256": "8d1abe40803d5ce17700cbf499606ac5613784c7e39fe0fdee57d680c939207e",
+          "bindings": {
+            "Graphics_Renderer": "0x191dce8",
+            "Graphics_DepthFuncTable": "0x13492a0"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xb78390",
+          "size": 76,
+          "symbol": "_ZN4Onyx8Graphics16MaterialProperty23BindRenderTargetTexture5ApplyEPNS1_11PassContextE",
+          "target_sha256": "472c1e1cd8935d3f59f25be08338a5926b3c519031190cd025f78ef288bf3c5e",
+          "bindings": {
+            "_ZN4Onyx8Graphics16MaterialProperty23BindRenderTargetTexture4BindEj": "0xb783e0"
+          },
+          "got_bindings": {}
+        }
+      ]
+    },
+    {
       "id": "gameplay_menus",
       "source": "src/gameplay/Menus.cpp",
       "compiler": "8.0.1",
