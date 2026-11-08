@@ -1,9 +1,9 @@
 {
   "version": 1,
-  "generated_at": "2026-11-08T08:45:40.483432+00:00",
+  "generated_at": "2026-11-08T08:52:20.689082+00:00",
   "target_elf_sha256": "ea95638e6d6aaa0dc6cddd552a9366799aa1ec3bc07ee201f23f6c151103f5b8",
   "input_sha256": {
-    "config/builds.json": "45c80e7c225c53835c4ed4c9377b3b2fe074c869cf740999903f742ddfdc1aec",
+    "config/builds.json": "3a2338e5e6ea9fe253af994868fc6c77c8c9097deafadc332ea08c82cf2495b1",
     "config/functions.tsv": "399e91468a04e0459194c10d68d2210d1157cedefeb19c7851886ca7632fcb18",
     "config/non_fde_functions.tsv": "6a45f5e185454fa0472af00b2cdc9d040d73ca133d1106217e1fbbe3b32a8175",
     "config/target.json": "23cc6a5227206a953e7668acf5e9ae5c02a25c23b7e7967f0450a814b888241a",
@@ -1120,7 +1120,7 @@
     "src/function_clone8_keep_pic_instances.inc": "311a256b3152534efd3d25a3a8e9cc3fd850f04f83d70e0a8b465845e55feb3f",
     "src/function_swap_instances.inc": "adc7468c16b98505670b099e14c5a5dd411a6fafe924c49ce0aabf48e5dd3850",
     "src/gameplay/Achievements.cpp": "fbdfc00fed2a51d4e0c2f64e364d443d5f80c1d48351c7625a9df408347333bc",
-    "src/gameplay/ActionEvents.cpp": "d42acc918e25b6fa0448d53c7252c4c3262e9681c2cc03a76c997de792e18117",
+    "src/gameplay/ActionEvents.cpp": "4cbd5281f0c4dfd19877de3b2d29ad852a78aed0d82d38a2d9c6b53bf60c8525",
     "src/gameplay/ActivationEvents.cpp": "6019f3c533c2c50c844de44eb70be4212ed77cb0e9a0d2bf6e17d7bd83d0aa98",
     "src/gameplay/AnimatedAiActor.cpp": "8c2cff7e1173c3d83e67bcc63cd2007d3a702ed7645945ac1c194c18d9238e12",
     "src/gameplay/Animation.h": "65c6c89e50b399e5e43aa182443f682185b24bef010f3e6ee9d750371873c22a",
@@ -4060,8 +4060,8 @@
     "8.0.1": "dffd62a213ec6cdb4430012a4a41c11e5e32c288f133d5391f9be49e1c5b69de",
     "lld": "c4b3aaea06ff7112c64753047a2ab279fc3fe10dd807fd3c22edfdae99f43eed"
   },
-  "exact_functions": 39344,
-  "exact_bytes": 5238892,
+  "exact_functions": 39346,
+  "exact_bytes": 5239212,
   "builds": [
     {
       "id": "probes",
@@ -13466,7 +13466,7 @@
     {
       "id": "gameplay_action_events",
       "compiler": "8.0.1",
-      "object_sha256": "d4e14b27d72feda8808c3ae418736655f64f425ef52b9e7f52306eac71569feb"
+      "object_sha256": "d6ee325921f37ce05681b3c468690ea65d0263d61fb5a5d5e159a6192d8174e6"
     },
     {
       "id": "gameplay_actor",
@@ -285859,6 +285859,17 @@
       "relocation_count": 0
     },
     {
+      "address": "0x8f6ae0",
+      "size": 160,
+      "exact": true,
+      "target_sha256": "6b7585e88f993e2c8852bdb9454b9d6a048d34b09fbb33355b60e19ccfb09d54",
+      "compiled_sha256": "6b7585e88f993e2c8852bdb9454b9d6a048d34b09fbb33355b60e19ccfb09d54",
+      "source": "src/gameplay/ActionEvents.cpp",
+      "symbol": "_ZN4SPTG11TimerAction5StartEPv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 3
+    },
+    {
       "address": "0x8f6b80",
       "size": 84,
       "exact": true,
@@ -288835,7 +288846,7 @@
       "target_sha256": "bf119d21bda034be30e329732b3fa6b96b913947b91886d6a915600b00437da6",
       "compiled_sha256": "bf119d21bda034be30e329732b3fa6b96b913947b91886d6a915600b00437da6",
       "source": "src/gameplay/ActionEvents.cpp",
-      "symbol": "_ZN4SPTG22ExtraModeScoringAction4StopEv",
+      "symbol": "_ZN4SPTG22ExtraModeScoringAction6FinishEPv",
       "source_review": "manual_reconstruction",
       "relocation_count": 1
     },
@@ -292356,6 +292367,17 @@
       "compiled_sha256": "b74536aef5130c25cf4e4d8647e1968b227d6d286aaa6907222c7841a648a22e",
       "source": "src/TypeAddress.cpp",
       "symbol": "_Z11TypeAddressILj9666320EEPKvv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 2
+    },
+    {
+      "address": "0x937f20",
+      "size": 160,
+      "exact": true,
+      "target_sha256": "fe831c968723f9649d252ef6a0374ad76a0d36a9016d6a166f18db85e47103a3",
+      "compiled_sha256": "fe831c968723f9649d252ef6a0374ad76a0d36a9016d6a166f18db85e47103a3",
+      "source": "src/gameplay/ActionEvents.cpp",
+      "symbol": "_ZN4SPTG11AudioAction6Slot18Ev",
       "source_review": "manual_reconstruction",
       "relocation_count": 2
     },
@@ -364229,7 +364251,7 @@
       "target_sha256": "d5b34c29cd05a735c43157224f1144bc5a2a743e3be79a7b027ebaa821197f32",
       "compiled_sha256": "d5b34c29cd05a735c43157224f1144bc5a2a743e3be79a7b027ebaa821197f32",
       "source": "src/gameplay/ActionEvents.cpp",
-      "symbol": "_ZN4Onyx15ActionComponent4StopEv",
+      "symbol": "_ZN4Onyx15ActionComponent6FinishEPv",
       "source_review": "manual_reconstruction",
       "relocation_count": 1
     },

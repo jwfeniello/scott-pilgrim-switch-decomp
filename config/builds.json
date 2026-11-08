@@ -558881,6 +558881,18 @@
           }
         },
         {
+          "address": "0x8f6ae0",
+          "size": 160,
+          "symbol": "_ZN4SPTG11TimerAction5StartEPv",
+          "target_sha256": "6b7585e88f993e2c8852bdb9454b9d6a048d34b09fbb33355b60e19ccfb09d54",
+          "bindings": {
+            "_ZN4SPTG11TimerTarget10Call8f6be0Ebf": "0x8f6be0",
+            "_ZN4SPTG11TimerTarget10Call8f5cd0Eb": "0x8f5cd0",
+            "_ZN4SPTG11TimerTarget10Call8f6130Eb": "0x8f6130"
+          },
+          "got_bindings": {}
+        },
+        {
           "address": "0x8f8830",
           "size": 484,
           "symbol": "_ZN4SPTG12CameraAction9StopShakeEv",
@@ -559227,7 +559239,7 @@
         {
           "address": "0x916ac0",
           "size": 32,
-          "symbol": "_ZN4SPTG22ExtraModeScoringAction4StopEv",
+          "symbol": "_ZN4SPTG22ExtraModeScoringAction6FinishEPv",
           "target_sha256": "bf119d21bda034be30e329732b3fa6b96b913947b91886d6a915600b00437da6",
           "bindings": {
             "__clang_call_terminate": "0xfa4920"
@@ -559289,7 +559301,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "325": "0x14dec60"
+            "329": "0x14dec60"
           },
           "literals": {
             "554e4b4e4f574e20": "0x1331ae0",
@@ -559367,6 +559379,16 @@
             "50524f4a45435420": "0x1331000",
             "0c0000000c000000ffffff7fffffff7f": "0x1334730"
           }
+        },
+        {
+          "address": "0x937f20",
+          "size": 160,
+          "symbol": "_ZN4SPTG11AudioAction6Slot18Ev",
+          "target_sha256": "fe831c968723f9649d252ef6a0374ad76a0d36a9016d6a166f18db85e47103a3",
+          "bindings": {
+            "__clang_call_terminate": "0xfa4920"
+          },
+          "got_bindings": {}
         },
         {
           "address": "0x9396a0",
@@ -560068,7 +560090,7 @@
         {
           "address": "0xbcaa10",
           "size": 32,
-          "symbol": "_ZN4Onyx15ActionComponent4StopEv",
+          "symbol": "_ZN4Onyx15ActionComponent6FinishEPv",
           "target_sha256": "d5b34c29cd05a735c43157224f1144bc5a2a743e3be79a7b027ebaa821197f32",
           "bindings": {
             "__clang_call_terminate": "0xfa4920"

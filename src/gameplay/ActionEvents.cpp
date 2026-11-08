@@ -2545,15 +2545,16 @@ void GroupStep::StartCurrent() {
 
 namespace Onyx {
 // Onyx::ActionComponent, the base of the actions: slot 14 starts one (+0x98 set, +0x99 cleared), slot 15 stops it
-// (+0x98 cleared, +0x99 set; 0xbcad20) and slot 16 stops it with an empty event. Slot names are provisional.
+// (+0x98 cleared, +0x99 set; 0xbcad20) and slot 16 finishes it: it stops it with an empty event of its own, leaving the
+// event it is given (AudioAction passes one) unused. Slot names are provisional.
 struct ActionComponent {
     virtual void S0(); virtual void S1(); virtual void S2(); virtual void S3(); virtual void S4(); virtual void S5(); virtual void S6(); virtual void S7(); virtual void S8(); virtual void S9();
     virtual void S10(); virtual void S11(); virtual void S12(); virtual void S13();
     virtual void Start(void* event);      // slot 14
     virtual void Stop(void* event);       // slot 15
-    virtual void Stop() noexcept;         // slot 16 (0xbcaa10, inherited by most actions)
+    virtual void Finish(void* event) noexcept;   // slot 16 (0xbcaa10, inherited by most actions)
 };
-void ActionComponent::Stop() noexcept {
+void ActionComponent::Finish(void*) noexcept {
     onyx::EventPayload event;
     Stop(&event);
 }
@@ -2562,10 +2563,9 @@ void ActionComponent::Stop() noexcept {
 namespace SPTG {
 // ExtraModeScoringAction has its own copy of the base's slot 16 (0x916ac0).
 struct ExtraModeScoringAction : Onyx::ActionComponent {
-    using Onyx::ActionComponent::Stop;
-    void Stop() noexcept override;
+    void Finish(void* event) noexcept override;
 };
-void ExtraModeScoringAction::Stop() noexcept {
+void ExtraModeScoringAction::Finish(void*) noexcept {
     onyx::EventPayload event;
     Stop(&event);
 }
@@ -2676,6 +2676,91 @@ void ChaseModeAction::Stop(void*) {
     for (ControllablePlayer** it = catalog->players; it != catalog->players + catalog->count; ++it) {
         (*it)->flag150c = 0;
         (*it)->flag150e = 0;
+    }
+}
+}  // namespace SPTG
+
+namespace SPTG {
+// SPTG::TimerAction's slot 14 (0x8f6ae0): with a duration (+0xdc set) the time left (+0xf4) starts at +0xe0, otherwise
+// at 0; with +0xd8 set, the target behind +0xa0 gets 0x8f6be0 with that time, then 0x8f5cd0 and 0x8f6130.
+// The target's functions are named by address; what they do isn't known.
+struct TimerTarget : onyx::Component {
+    void Call8f6be0(bool untimed, float time);   // 0x8f6be0
+    void Call8f5cd0(bool flag);                  // 0x8f5cd0
+    void Call8f6130(bool flag);                  // 0x8f6130
+};
+// The duration and the time left are copied as whole values (32-bit integer moves) and cleared through their float, so
+// they're a one-float type of their own here; its name is ours.
+struct TimerSeconds { float seconds; };
+struct TimerAction {
+    char padding_0[0x98];
+    bool active;                // +0x98
+    uint8_t stopped;            // +0x99
+    char padding_9a[0x6];
+    ComponentHandle* target;    // +0xa0
+    char padding_a8[0x30];
+    bool flagD8;                // +0xd8
+    bool flagD9;                // +0xd9
+    char padding_da[0x2];
+    uint32_t timed;             // +0xdc
+    TimerSeconds duration;      // +0xe0
+    char padding_e4[0xc];
+    float elapsed;              // +0xf0
+    TimerSeconds remaining;     // +0xf4
+    void Start(void* event);    // slot 14
+};
+void TimerAction::Start(void*) {
+    active = true;
+    stopped = 0;
+    uint32_t mode = timed;
+    elapsed = 0.0f;
+    float time;
+    if (!mode) {
+        remaining.seconds = 0.0f;
+        time = 0.0f;
+    } else {
+        remaining = duration;
+        time = remaining.seconds;
+    }
+    if (flagD8) {
+        TimerTarget* t = onyx::Peek<TimerTarget>(target);
+        if (t) {
+            t->Call8f6be0(mode == 0, time);
+            onyx::Peek<TimerTarget>(target)->Call8f5cd0(true);
+            onyx::Peek<TimerTarget>(target)->Call8f6130(false);
+        }
+    }
+}
+
+// SPTG::AudioAction's slot 18 (0x937f20): hands its sound (+0xb8) the objects behind +0xa8 and +0xa0 (sound slot 3),
+// then finishes once the sound says it's done (slot 4); with no sound it finishes at once.
+struct AudioActionSound {
+    virtual void S0(); virtual void S1(); virtual void S2();
+    virtual void Play(onyx::Component* first, onyx::Component* second) noexcept;   // slot 3
+    virtual bool Done() noexcept;                                                  // slot 4
+};
+struct AudioAction {
+    virtual void S0(); virtual void S1(); virtual void S2(); virtual void S3(); virtual void S4(); virtual void S5(); virtual void S6(); virtual void S7(); virtual void S8(); virtual void S9();
+    virtual void S10(); virtual void S11(); virtual void S12(); virtual void S13(); virtual void S14(); virtual void S15();
+    virtual void Finish(void* event);            // slot 16: called here as if it could throw (each call has its own pad)
+    virtual void S17();
+    virtual void Slot18() noexcept;              // slot 18
+    char padding_8[0x98];
+    ComponentHandle* second;    // +0xa0
+    ComponentHandle* first;     // +0xa8
+    char padding_b0[0x8];
+    AudioActionSound* sound;    // +0xb8
+};
+void AudioAction::Slot18() noexcept {
+    if (sound) {
+        sound->Play(first ? first->object : nullptr, second ? second->object : nullptr);
+        if (sound->Done()) {
+            onyx::EventPayload event;
+            Finish(&event);
+        }
+    } else {
+        onyx::EventPayload event;
+        Finish(&event);
     }
 }
 }  // namespace SPTG
