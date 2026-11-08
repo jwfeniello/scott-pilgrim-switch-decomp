@@ -558627,6 +558627,18 @@
           }
         },
         {
+          "address": "0x8ec2e0",
+          "size": 336,
+          "symbol": "_ZN4SPTG31ActorAnimationDrivenSpawnAction4StopEPv",
+          "target_sha256": "77f14301f2ab72675efc2decfefd013fbcbebe243e7b425ef668ce7eadf9879d",
+          "bindings": {
+            "Accessor_Resolver": "0x191cd10",
+            "Accessor_Resolve": "0x67edd0",
+            "_ZN4SPTG31ActorAnimationDrivenSpawnAction8BaseStopEPv": "0x8e1580"
+          },
+          "got_bindings": {}
+        },
+        {
           "address": "0x8ec8f0",
           "size": 336,
           "symbol": "_ZN4SPTG11ActorActionILj9357552EE9AnimationEv",
@@ -559223,6 +559235,19 @@
           "got_bindings": {}
         },
         {
+          "address": "0x924380",
+          "size": 276,
+          "symbol": "_ZN4SPTG21BattleRoyalModeAction5StartEPv",
+          "target_sha256": "0f00ccd1883711de0c972435ed00cdc9266177595a933bc5d93c041fb954b7c3",
+          "bindings": {
+            "_ZN4SPTG12SingletonGetINS_10KillHolderEEEPT_Pv": "0x7725e0",
+            "Accessor_Resolver": "0x191cd10",
+            "Accessor_Resolve": "0x67edd0",
+            "_ZN4SPTG21BattleRoyalModeAction10Call9244a0Ev": "0x9244a0"
+          },
+          "got_bindings": {}
+        },
+        {
           "address": "0x9244a0",
           "size": 344,
           "symbol": "_ZN4SPTG9GroupStep12StartCurrentEv",
@@ -559264,7 +559289,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "317": "0x14dec60"
+            "325": "0x14dec60"
           },
           "literals": {
             "554e4b4e4f574e20": "0x1331ae0",

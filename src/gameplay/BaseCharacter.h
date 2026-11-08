@@ -1281,7 +1281,8 @@ struct ControllablePlayer : BaseCharacter {
     uint32_t playerIndex;        // +0x1508
     uint8_t flag150c;            // +0x150c
     uint8_t flag150d;            // +0x150d
-    char padding_150e[0x2];
+    uint8_t flag150e;            // +0x150e: ChaseModeAction sets it from its +0x101
+    char padding_150f[0x1];
     uint8_t flag1510;            // +0x1510: sends state 205 to state 102
     char padding_1511[0x7];
     int32_t value1518;           // +0x1518

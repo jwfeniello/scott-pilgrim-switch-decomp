@@ -434,10 +434,17 @@ struct ActorAnimationDrivenSpawnAction {
     EventTarget* target;            // +0x88
     char padding_90[8];
     bool active;                    // +0x98
-    char padding_99[0x17];
+    char padding_99[0x7];
+    ComponentHandle* actor;         // +0xa0
+    char padding_a8[0x8];
     ComponentHandle* spawned;       // +0xb0
+    ComponentHandle* animatedObject;   // +0xb8
+    char padding_c0[0x8];
+    bool keepAnimatedObject;        // +0xc8
     void StepBase();
     void Update();
+    void Stop(void* event);         // slot 15 (0x8ec2e0)
+    void BaseStop(void* event);     // ActorActionComponent's slot 15 (0x8e1580)
 };
 void ActorAnimationDrivenSpawnAction::Update() {
     StepBase();
@@ -2022,7 +2029,8 @@ void ValueForwarder::Forward(int32_t* value) {
 
 // An actor action's actor, what moves it and what draws it.
 struct ActorGraphic : onyx::Component {
-    char padding_8[0x71];
+    char padding_8[0x70];
+    uint8_t flag78;             // +0x78: ActorAnimationDrivenSpawnAction sets it as it stops
     bool hidden;
     void Call8e7330();          // 0x8e7330; name provisional
 };
@@ -2101,6 +2109,21 @@ void ActorMoveFromBehindAction::Stop(void* event) {
     g->Call8e7330();
     static_cast<ActionActor*>(actor->object)->SetSolid(true);
     ActorActionComponent::Stop(event);
+}
+
+// SPTG::ActorAnimationDrivenSpawnAction's slot 15 (0x8ec2e0): unless +0xc8 is set, clears +0x78 of the animated object
+// behind +0xb8; then sets the actor graphic's +0x78, makes the actor solid again and stops as ActorActionComponent does.
+struct DrivenAnimatedObject : onyx::Component {   // SPTG::AnimatedObject (type 0x6448f1af), as this action uses it
+    char padding_8[0x70];
+    uint8_t flag78;             // +0x78
+};
+void ActorAnimationDrivenSpawnAction::Stop(void* event) {
+    if (!keepAnimatedObject) onyx::Get<DrivenAnimatedObject, onyx_types::type_6448f1af>(animatedObject)->flag78 = 0;
+    ActionActor* x = static_cast<ActionActor*>(actor->object);
+    ActorBody* b = onyx::Lookup<ActorBody, 1687344669u>(x->body);
+    onyx::Get<ActorGraphic, 783177747u>(b->graphic)->flag78 = 1;
+    static_cast<ActionActor*>(actor->object)->SetSolid(true);
+    BaseStop(event);
 }
 
 // SPTG::ActorMoveAction walks the actor in a straight line, keeping its depth with its z.
@@ -2578,5 +2601,81 @@ void SpawnInteractiveObjectActionEx::Start(void*) {
     }
     spawned.size = 0;
     next += step;
+}
+}  // namespace SPTG
+
+namespace SPTG {
+// SPTG::BattleRoyalModeAction's slot 14 (0x924380): every player starts full (health, guts and +0x328 from slots 57,
+// 150 and 149) with +0x870 at the action's +0x12c less one; in mode 1 (+0x134) it then clears +0x130 and runs 0x9244a0.
+struct BattleRoyalModeAction {
+    char padding_0[0x98];
+    bool active;                // +0x98
+    uint8_t stopped;            // +0x99
+    char padding_9a[0x36];
+    void* level;                // +0xd0: the singleton holding the player catalog
+    char padding_d8[0x54];
+    int32_t lives;              // +0x12c
+    int32_t value130;           // +0x130
+    int32_t mode;               // +0x134
+    void Start(void* event);    // slot 14
+    void Call9244a0();          // 0x9244a0; name provisional
+};
+void BattleRoyalModeAction::Start(void*) {
+    active = true;
+    stopped = 0;
+    PlayerCatalog* catalog = onyx::Get<PlayerCatalog, onyx_types::type_0bf4a9b7>(SingletonGet<KillHolder>(&level)->players);
+    for (ControllablePlayer** it = catalog->players; it != catalog->players + catalog->count; ++it) {
+        ControllablePlayer* player = *it;
+        player->health = player->MaxHealth();
+        player->guts = player->MaxGuts();
+        player->value328 = player->Slot149();
+        player->value870 = 3;
+        ControllablePlayer* again = *it;   // read again after the calls, before the action's +0x12c
+        again->value870 = lives - 1;
+    }
+    if (mode == 1) {
+        value130 = 0;
+        Call9244a0();
+    }
+}
+
+// SPTG::ChaseModeAction: starting sets every player's +0x150c and gives each the action's +0x101 as +0x150e, then
+// clears the action's +0xc8 and +0xcc; stopping clears both player flags.
+// Not yet matched: the loops unroll as in the original, but the original works out the pointer the remainder starts
+// from after the unrolled loop, and ours before it; the registers differ from there on.
+struct ChaseModeAction {
+    char padding_0[0x98];
+    bool active;                // +0x98
+    uint8_t stopped;            // +0x99
+    char padding_9a[0xe];
+    void* level;                // +0xa8: the singleton holding the player catalog
+    char padding_b0[0x18];
+    int32_t valueC8;            // +0xc8
+    uint8_t flagCc;             // +0xcc
+    char padding_cd[0x34];
+    uint8_t flag101;            // +0x101
+    void Start(void* event);    // slot 14 (0x922760)
+    void Stop(void* event);     // slot 15 (0x9228c0)
+};
+void ChaseModeAction::Start(void*) {
+    active = true;
+    stopped = 0;
+    PlayerCatalog* catalog = onyx::Get<PlayerCatalog, onyx_types::type_0bf4a9b7>(SingletonGet<KillHolder>(&level)->players);
+    uint8_t value = flag101;
+    for (ControllablePlayer** it = catalog->players; it != catalog->players + catalog->count; ++it) {
+        (*it)->flag150c = 1;
+        (*it)->flag150e = value;
+    }
+    valueC8 = 0;
+    flagCc = 0;
+}
+void ChaseModeAction::Stop(void*) {
+    active = false;
+    stopped = 1;
+    PlayerCatalog* catalog = onyx::Get<PlayerCatalog, onyx_types::type_0bf4a9b7>(SingletonGet<KillHolder>(&level)->players);
+    for (ControllablePlayer** it = catalog->players; it != catalog->players + catalog->count; ++it) {
+        (*it)->flag150c = 0;
+        (*it)->flag150e = 0;
+    }
 }
 }  // namespace SPTG

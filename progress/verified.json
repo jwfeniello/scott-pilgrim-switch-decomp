@@ -1,9 +1,9 @@
 {
   "version": 1,
-  "generated_at": "2026-11-08T08:39:13.923105+00:00",
+  "generated_at": "2026-11-08T08:45:40.483432+00:00",
   "target_elf_sha256": "ea95638e6d6aaa0dc6cddd552a9366799aa1ec3bc07ee201f23f6c151103f5b8",
   "input_sha256": {
-    "config/builds.json": "41eca407a414251566c9a23d1aeb234f5b13f739f18b25b34015bd6bedc35e68",
+    "config/builds.json": "45c80e7c225c53835c4ed4c9377b3b2fe074c869cf740999903f742ddfdc1aec",
     "config/functions.tsv": "399e91468a04e0459194c10d68d2210d1157cedefeb19c7851886ca7632fcb18",
     "config/non_fde_functions.tsv": "6a45f5e185454fa0472af00b2cdc9d040d73ca133d1106217e1fbbe3b32a8175",
     "config/target.json": "23cc6a5227206a953e7668acf5e9ae5c02a25c23b7e7967f0450a814b888241a",
@@ -1120,14 +1120,14 @@
     "src/function_clone8_keep_pic_instances.inc": "311a256b3152534efd3d25a3a8e9cc3fd850f04f83d70e0a8b465845e55feb3f",
     "src/function_swap_instances.inc": "adc7468c16b98505670b099e14c5a5dd411a6fafe924c49ce0aabf48e5dd3850",
     "src/gameplay/Achievements.cpp": "fbdfc00fed2a51d4e0c2f64e364d443d5f80c1d48351c7625a9df408347333bc",
-    "src/gameplay/ActionEvents.cpp": "1f5ea618540ebb871e5d7e3a5b1d484392d4f4c0ec0b4957f9981e8a014c3795",
+    "src/gameplay/ActionEvents.cpp": "d42acc918e25b6fa0448d53c7252c4c3262e9681c2cc03a76c997de792e18117",
     "src/gameplay/ActivationEvents.cpp": "6019f3c533c2c50c844de44eb70be4212ed77cb0e9a0d2bf6e17d7bd83d0aa98",
     "src/gameplay/AnimatedAiActor.cpp": "8c2cff7e1173c3d83e67bcc63cd2007d3a702ed7645945ac1c194c18d9238e12",
     "src/gameplay/Animation.h": "65c6c89e50b399e5e43aa182443f682185b24bef010f3e6ee9d750371873c22a",
     "src/gameplay/Archive.h": "32de126d994da5c87c23123d22e71ca521246483eb637bb49df08fe376eea14a",
     "src/gameplay/Assert.h": "e8ad90fa17cd27c0eefb31341b98ee091197fb3aeb84363fb473339d67770dcc",
     "src/gameplay/BaseCharacter.cpp": "7ff0ca1f0be17176893fc1dab6f71fd30a5a8ff6787c500b0de8f082d9e6401b",
-    "src/gameplay/BaseCharacter.h": "62e57c7b5d2b40f15b2816d4e63c7fa54cf9945c7079e192aa90c846e83fb776",
+    "src/gameplay/BaseCharacter.h": "271a6ad9b3dcbb69d82ecd156692276e7a3abf068a90642e0346f6710c49cc66",
     "src/gameplay/BaseCharacterStates.cpp": "593efaaa1eab898d81712650dff9964b8941b427094ab0bc508bbb09f554b0c4",
     "src/gameplay/Boss.h": "f51fcb5879c1e3275252c2114310d5e18d7c0fd1eadfb1314164ba8f1b12dcd0",
     "src/gameplay/BossAI.cpp": "b8c327bc59dd7dd31a6e52c3dd206d3e297a3acc5a3a36f41cab74814bb94581",
@@ -4051,17 +4051,17 @@
     "vendor/zlib-1.2.11/zutil.h": "9a63f6690fac1620aa3cecee5752af618806da438a256b4a047fbcd289cac159"
   },
   "compiler_versions": {
-    "8.0.1": "clang version 8.0.1 (tags/RELEASE_801/final)",
     "7.0.1": "clang version 7.0.1 (tags/RELEASE_701/final)",
+    "8.0.1": "clang version 8.0.1 (tags/RELEASE_801/final)",
     "lld": "LLD 8.0.1 (compatible with GNU linkers)"
   },
   "compiler_sha256": {
-    "8.0.1": "dffd62a213ec6cdb4430012a4a41c11e5e32c288f133d5391f9be49e1c5b69de",
     "7.0.1": "c2f0a175157d9aaace8031f8e6d7ea0ed6142b4bcef287105e3ed227301f1002",
+    "8.0.1": "dffd62a213ec6cdb4430012a4a41c11e5e32c288f133d5391f9be49e1c5b69de",
     "lld": "c4b3aaea06ff7112c64753047a2ab279fc3fe10dd807fd3c22edfdae99f43eed"
   },
-  "exact_functions": 39342,
-  "exact_bytes": 5238280,
+  "exact_functions": 39344,
+  "exact_bytes": 5238892,
   "builds": [
     {
       "id": "probes",
@@ -13466,7 +13466,7 @@
     {
       "id": "gameplay_action_events",
       "compiler": "8.0.1",
-      "object_sha256": "6547eb68b9c4eabdf99959ff5abf0087b533ab104931e2e1969979f6a580a9ba"
+      "object_sha256": "d4e14b27d72feda8808c3ae418736655f64f425ef52b9e7f52306eac71569feb"
     },
     {
       "id": "gameplay_actor",
@@ -284275,6 +284275,17 @@
       "relocation_count": 29
     },
     {
+      "address": "0x8ec2e0",
+      "size": 336,
+      "exact": true,
+      "target_sha256": "77f14301f2ab72675efc2decfefd013fbcbebe243e7b425ef668ce7eadf9879d",
+      "compiled_sha256": "77f14301f2ab72675efc2decfefd013fbcbebe243e7b425ef668ce7eadf9879d",
+      "source": "src/gameplay/ActionEvents.cpp",
+      "symbol": "_ZN4SPTG31ActorAnimationDrivenSpawnAction4StopEPv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 10
+    },
+    {
       "address": "0x8ec430",
       "size": 680,
       "exact": true,
@@ -289585,6 +289596,17 @@
       "source": "src/TypedCfgVoidOmitDirect.cpp",
       "symbol": "RecoveredLeaf_923930",
       "source_review": "generated_cxx_abi_view",
+      "relocation_count": 5
+    },
+    {
+      "address": "0x924380",
+      "size": 276,
+      "exact": true,
+      "target_sha256": "0f00ccd1883711de0c972435ed00cdc9266177595a933bc5d93c041fb954b7c3",
+      "compiled_sha256": "0f00ccd1883711de0c972435ed00cdc9266177595a933bc5d93c041fb954b7c3",
+      "source": "src/gameplay/ActionEvents.cpp",
+      "symbol": "_ZN4SPTG21BattleRoyalModeAction5StartEPv",
+      "source_review": "manual_reconstruction",
       "relocation_count": 5
     },
     {
