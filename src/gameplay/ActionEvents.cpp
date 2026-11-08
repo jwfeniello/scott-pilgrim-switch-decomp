@@ -811,7 +811,7 @@ struct KillableList : onyx::Component {
     char padding_88[8];
     Killable** items;     // +0x90
 };
-struct KillHolder { char padding[0x98]; ComponentHandle* killables; };
+struct KillHolder { char padding[0x98]; ComponentHandle* killables; ComponentHandle* players; };   // +0x98, +0xa0
 struct KillAllEnemiesAction {
     char padding_0[0x80];
     EventCallback* callback;     // +0x80
@@ -1055,10 +1055,31 @@ void CollisionTrigger::Update() {
 
 // The controller-disconnected screen, shown once.
 uint32_t HashName(const char* name);
-struct MovieHost;
+// The movie host (the menu director): +0x80 its catalog of menus, +0xa0 the movie showing.
+struct MovieHost {
+    char padding_0[0x80];
+    ComponentHandle* menus;         // +0x80, an Onyx::Catalog<FlashMenu> (type 0x323ef9de)
+    char padding_88[0x18];
+    uint32_t current;               // +0xa0
+};
+// The menus in that catalog, as far as the popup box looks at them: +0x228 is a menu's movie.
+struct HostedMenu { char padding_0[0x228]; uint32_t movie; };
+struct MenuCatalog : onyx::Component {
+    char padding_8[0x78];
+    uint64_t count;                 // +0x80
+    char padding_88[0x8];
+    HostedMenu** menus;             // +0x90
+};
 struct MovieName { uint32_t hash; };
-void ShowMovie(MovieHost* host, MovieName* name);
+// 0x7755c0 only reads the name, and in this LTO-built game a call after it can be a tail call (the popup box's Hide).
+void ShowMovie(MovieHost* host, __attribute__((noescape)) MovieName* name);
 void CommitMovie(MovieHost* host);
+__attribute__((always_inline)) inline void ShowControllerMessage(MovieHost* movie) {
+    MovieName name;
+    name.hash = HashName("ControllerDisconnectionMessageMovie");
+    ShowMovie(movie, &name);
+    CommitMovie(movie);
+}
 struct ControllerNotice {
     char padding_0[0x170];
     void* host;                     // +0x170
@@ -1199,25 +1220,40 @@ void ActorActionBase::Update() {
     }
 }
 
-// Shows, hides or toggles a popup box.
-struct SetPopupBoxVisibilityAction {
+extern uint8_t AllLevelsUnlocked;
+struct SaveSettings { char padding[0xe0]; bool unlockAll; };
+extern SaveSettings* CurrentSave;
+void PrepareMovies(MovieHost* host);   // 0x7731c0; name provisional
+
+// SetFlashMenuVisibilityAction shows, hides or toggles a Flash menu's movie. SetPopupBoxVisibilityAction and
+// SetMainPlayerFlashMenuVisibilityAction derive from it (RTTI, and they share its slots 14, 17 and 19).
+struct SetFlashMenuVisibilityAction {
     virtual void S0(); virtual void S1(); virtual void S2(); virtual void S3(); virtual void S4(); virtual void S5(); virtual void S6(); virtual void S7(); virtual void S8(); virtual void S9();
-    virtual void S10(); virtual void S11(); virtual void S12(); virtual void S13(); virtual void S14(); virtual void S15(); virtual void S16();
-    virtual bool IsVisible();   // slot 17
-    virtual void Show();        // slot 18
-    virtual void Hide();        // slot 19
+    virtual void S10(); virtual void S11(); virtual void S12(); virtual void S13();
+    virtual void Start(void* arg);   // slot 14 (0x9117c0): the main player's version passes the argument on
+    virtual void S15(); virtual void S16();
+    virtual bool IsVisible();        // slot 17 (0x911950)
+    virtual void Show();             // slot 18
+    virtual void Hide();             // slot 19 (0x911a60)
     char padding_8[0x78];
     EventCallback* callback;    // +0x80
     EventTarget* target;        // +0x88
     char padding_90[8];
     uint16_t state;             // +0x98
-    char padding_9a[0x12];
+    char padding_9a[0x6];
+    void* host;                 // +0xa0: the movie host
+    MovieName movie;            // +0xa8: the menu's movie
     int32_t mode;               // +0xac
     bool waits;                 // +0xb0
-    void Start();
+    char padding_b1[0x7];
+    void* level;                // +0xb8: the singleton holding the player catalog
+    uint32_t player;            // +0xc0: the main player's character, for the main player's version
+    // The start step actions share (most set state 1 first). Slot 14's argument reaches it: the main player's version
+    // still hands the argument on to this slot 14, so it had a use here before inlining. The name is ours.
+    void Begin(void*) { state = 1; }
 };
-void SetPopupBoxVisibilityAction::Start() {
-    state = 1;
+void SetFlashMenuVisibilityAction::Start(void* arg) {
+    Begin(arg);
     bool visible = IsVisible();
     switch (mode) {
         case 0: if (!visible) Show(); break;
@@ -1226,10 +1262,77 @@ void SetPopupBoxVisibilityAction::Start() {
     }
     if (!waits) onyx::SendEvent<ActionFinished>(callback, target);
 }
+// The first menu in [first, last) playing the movie, or last. The original's search needs a find of this shape: with
+// the loop written in place, the empty catalog's end test folds away. The name is ours.
+inline HostedMenu** FindMenu(HostedMenu** first, HostedMenu** last, uint32_t movie) {
+    for (; first != last; ++first)
+        if ((*first)->movie == movie) return first;
+    return last;
+}
+// Slot 17: whether the movie showing is the menu's, and a menu in the host's catalog plays it.
+bool SetFlashMenuVisibilityAction::IsVisible() {
+    MovieHost* director = SingletonGet<MovieHost>(&host);
+    MenuCatalog* catalog = onyx::Get<MenuCatalog, onyx_types::type_323ef9de>(director->menus);
+    HostedMenu** end = catalog->menus + catalog->count;
+    HostedMenu** it = FindMenu(catalog->menus, end, director->current);
+    HostedMenu* menu = it != end ? *it : nullptr;
+    return menu && movie.hash == menu->movie;
+}
+// Slot 18 (0x912330): with the save's flag at +0xe0 set, the host runs 0x7731c0 first; then the movie is shown.
+void SetFlashMenuVisibilityAction::Show() {
+    if (CurrentSave && CurrentSave->unlockAll) PrepareMovies(SingletonGet<MovieHost>(&host));
+    SpawnNamed(SingletonGet<FlashSpawnerHost>(&host), &movie.hash, 32, 0);
+}
+// Slot 19: the controller message's steps on the host.
+void SetFlashMenuVisibilityAction::Hide() {
+    ShowControllerMessage(SingletonGet<MovieHost>(&host));
+}
 
-extern uint8_t AllLevelsUnlocked;
-struct SaveSettings { char padding[0xe0]; bool unlockAll; };
-extern SaveSettings* CurrentSave;
+struct SetPopupBoxVisibilityAction : SetFlashMenuVisibilityAction {
+    void Show() override;   // slot 18 (0x911a30)
+};
+void SetPopupBoxVisibilityAction::Show() {
+    SpawnNamed(SingletonGet<FlashSpawnerHost>(&host), &movie.hash, 0, 0);
+}
+
+// The main player's menu: its movie is the one for the main player's character in a list (+0xe0).
+struct SetMainPlayerFlashMenuVisibilityAction : SetFlashMenuVisibilityAction {
+    void Start(void* arg) override;   // slot 14 (0x9127c0)
+    bool IsVisible() override;        // slot 17 (0x9128e0)
+    void Show() override;             // slot 18 (0x9129c0)
+    char padding_c4[0x1c];
+    uint32_t* movies;                 // +0xe0
+};
+static_assert(__builtin_offsetof(SetMainPlayerFlashMenuVisibilityAction, movies) == 0xe0, "movies");
+// Slot 14: the main player is the one with the lowest player index (below 4); its character picks the movie.
+void SetMainPlayerFlashMenuVisibilityAction::Start(void* arg) {
+    PlayerCatalog* catalog = onyx::Get<PlayerCatalog, onyx_types::type_0bf4a9b7>(SingletonGet<KillHolder>(&level)->players);
+    uint32_t lowest = 4;
+    for (ControllablePlayer** it = catalog->players; it != catalog->players + catalog->count; ++it) {
+        ControllablePlayer* candidate = *it;
+        if (candidate->playerIndex < lowest) {
+            player = candidate->character1460;
+            lowest = candidate->playerIndex;
+        }
+    }
+    SetFlashMenuVisibilityAction::Start(arg);
+}
+bool SetMainPlayerFlashMenuVisibilityAction::IsVisible() {
+    MovieHost* director = SingletonGet<MovieHost>(&host);
+    MenuCatalog* catalog = onyx::Get<MenuCatalog, onyx_types::type_323ef9de>(director->menus);
+    HostedMenu** end = catalog->menus + catalog->count;
+    HostedMenu** it = FindMenu(catalog->menus, end, director->current);
+    HostedMenu* menu = it != end ? *it : nullptr;
+    if (!menu) return false;
+    uint32_t index = player;
+    return movies[index] == menu->movie;
+}
+void SetMainPlayerFlashMenuVisibilityAction::Show() {
+    FlashSpawnerHost* director = SingletonGet<FlashSpawnerHost>(&host);
+    uint32_t index = player;   // read before the list, as the original does
+    SpawnNamed(director, &movies[index], 32, 0);
+}
+
 struct SaveProgress { char padding[0xc8]; uint32_t unlocked; };
 struct CheckLevelUnlokcedAction {
     char padding_0[0xa0];
@@ -2189,12 +2292,6 @@ void WorldMap::Slot29() {
 }
 
 // The end of Ex mode. The class name is a stand-in.
-__attribute__((always_inline)) inline void ShowControllerMessage(MovieHost* movie) {
-    MovieName name;
-    name.hash = HashName("ControllerDisconnectionMessageMovie");
-    ShowMovie(movie, &name);
-    CommitMovie(movie);
-}
 void PlayMovieFlags(MovieHost* host, MovieName* name, int flags);
 struct GameOverScreen {
     char padding_0[0x170];

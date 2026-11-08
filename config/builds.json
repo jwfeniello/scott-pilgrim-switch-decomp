@@ -517315,30 +517315,6 @@
           "got_bindings": {}
         },
         {
-          "address": "0x911a30",
-          "size": 36,
-          "symbol": "sub_911A30",
-          "target_sha256": "f8def4d681e6f3992698d751e000698877750407f97e1f89692cd38a178a4750",
-          "bindings": {
-            "sub_6EA720": "0x6ea720",
-            "sub_778670": "0x778670"
-          },
-          "got_bindings": {}
-        },
-        {
-          "address": "0x912330",
-          "size": 68,
-          "symbol": "sub_912330",
-          "target_sha256": "c2e0f822d93d12a9df5e3ecc639aef5c1924ed6d63160426029149251e1b4671",
-          "bindings": {
-            "qword_1924BC0": "0x1924bc0",
-            "sub_6EA720": "0x6ea720",
-            "sub_7731C0": "0x7731c0",
-            "sub_778670": "0x778670"
-          },
-          "got_bindings": {}
-        },
-        {
           "address": "0x9133a0",
           "size": 40,
           "symbol": "sub_9133A0",
@@ -559085,7 +559061,7 @@
         {
           "address": "0x9117c0",
           "size": 392,
-          "symbol": "_ZN4SPTG27SetPopupBoxVisibilityAction5StartEv",
+          "symbol": "_ZN4SPTG28SetFlashMenuVisibilityAction5StartEPv",
           "target_sha256": "03a5f65a3ec990c996e4beab88996ab95821fa898dc76b9a6599fe07334a1ec8",
           "bindings": {
             "Onyx_ProjectSettings": "0x1935070",
@@ -559103,6 +559079,95 @@
             "50524f4a45435420": "0x1331000",
             "0c0000000c000000ffffff7fffffff7f": "0x1334730"
           }
+        },
+        {
+          "address": "0x911950",
+          "size": 212,
+          "symbol": "_ZN4SPTG28SetFlashMenuVisibilityAction9IsVisibleEv",
+          "target_sha256": "c5b6d7e2245cbcd037f92c7103a9e8617b96fd6e0cb83a3aa8fe6bc122c098ce",
+          "bindings": {
+            "_ZN4SPTG12SingletonGetINS_9MovieHostEEEPT_Pv": "0x6ea720",
+            "Accessor_Resolver": "0x191cd10",
+            "Accessor_Resolve": "0x67edd0"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x911a30",
+          "size": 36,
+          "symbol": "_ZN4SPTG27SetPopupBoxVisibilityAction4ShowEv",
+          "target_sha256": "f8def4d681e6f3992698d751e000698877750407f97e1f89692cd38a178a4750",
+          "bindings": {
+            "_ZN4SPTG12SingletonGetINS_16FlashSpawnerHostEEEPT_Pv": "0x6ea720",
+            "_ZN4SPTG10SpawnNamedEPNS_16FlashSpawnerHostEPKjii": "0x778670"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x911a60",
+          "size": 64,
+          "symbol": "_ZN4SPTG28SetFlashMenuVisibilityAction4HideEv",
+          "target_sha256": "7d60b35f55c5f65e3b6a59451dfa0a83b87f6986d3f62394095c156002158e02",
+          "bindings": {
+            "_ZN4SPTG12SingletonGetINS_9MovieHostEEEPT_Pv": "0x6ea720",
+            "_ZN4SPTG8HashNameEPKc": "0xbfbce0",
+            "_ZN4SPTG9ShowMovieEPNS_9MovieHostEPNS_9MovieNameE": "0x7755c0",
+            "_ZN4SPTG11CommitMovieEPNS_9MovieHostE": "0x775660"
+          },
+          "got_bindings": {},
+          "literals": {
+            "436f6e74726f6c6c6572446973636f6e6e656374696f6e4d6573736167654d6f76696500": "0x12f4787"
+          }
+        },
+        {
+          "address": "0x912330",
+          "size": 68,
+          "symbol": "_ZN4SPTG28SetFlashMenuVisibilityAction4ShowEv",
+          "target_sha256": "c2e0f822d93d12a9df5e3ecc639aef5c1924ed6d63160426029149251e1b4671",
+          "bindings": {
+            "_ZN4SPTG11CurrentSaveE": "0x1924bc0",
+            "_ZN4SPTG12SingletonGetINS_9MovieHostEEEPT_Pv": "0x6ea720",
+            "_ZN4SPTG13PrepareMoviesEPNS_9MovieHostE": "0x7731c0",
+            "_ZN4SPTG12SingletonGetINS_16FlashSpawnerHostEEEPT_Pv": "0x6ea720",
+            "_ZN4SPTG10SpawnNamedEPNS_16FlashSpawnerHostEPKjii": "0x778670"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x9127c0",
+          "size": 280,
+          "symbol": "_ZN4SPTG38SetMainPlayerFlashMenuVisibilityAction5StartEPv",
+          "target_sha256": "10da4a75467c6eaa8ba211b311d68efdfade353e363bf50f8171f7497f86c58e",
+          "bindings": {
+            "_ZN4SPTG12SingletonGetINS_10KillHolderEEEPT_Pv": "0x7725e0",
+            "Accessor_Resolver": "0x191cd10",
+            "Accessor_Resolve": "0x67edd0",
+            "_ZN4SPTG28SetFlashMenuVisibilityAction5StartEPv": "0x9117c0"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x9128e0",
+          "size": 220,
+          "symbol": "_ZN4SPTG38SetMainPlayerFlashMenuVisibilityAction9IsVisibleEv",
+          "target_sha256": "b1b59edf8778d73a0d04114a5b1eb5ba24c7dc5d1eea6d718e71253bac6ad8a9",
+          "bindings": {
+            "_ZN4SPTG12SingletonGetINS_9MovieHostEEEPT_Pv": "0x6ea720",
+            "Accessor_Resolver": "0x191cd10",
+            "Accessor_Resolve": "0x67edd0"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x9129c0",
+          "size": 44,
+          "symbol": "_ZN4SPTG38SetMainPlayerFlashMenuVisibilityAction4ShowEv",
+          "target_sha256": "e24f49e7219383f1e9685d28ca24a3aaf0635c9c7f6ec7d3567366727c601e25",
+          "bindings": {
+            "_ZN4SPTG12SingletonGetINS_16FlashSpawnerHostEEEPT_Pv": "0x6ea720",
+            "_ZN4SPTG10SpawnNamedEPNS_16FlashSpawnerHostEPKjii": "0x778670"
+          },
+          "got_bindings": {}
         },
         {
           "address": "0x9244a0",
@@ -559146,7 +559211,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "274": "0x14dec60"
+            "298": "0x14dec60"
           },
           "literals": {
             "554e4b4e4f574e20": "0x1331ae0",
@@ -560380,6 +560445,14 @@
           "got_bindings": {}
         },
         {
+          "address": "0x862680",
+          "size": 28,
+          "symbol": "_ZN4SPTG16FlaggedComponent8IsActiveEv",
+          "target_sha256": "c9392c355d0ea9dd392040191281ab7daaec9218cb38682c4dea454e49004c02",
+          "bindings": {},
+          "got_bindings": {}
+        },
+        {
           "address": "0x93f1f0",
           "size": 468,
           "symbol": "_ZN4SPTG15AnimatedAiActor11EnsureReadyEv",
@@ -561311,6 +561384,20 @@
             "_ZN4SPTG7Striker13ArrivingStateEi": "0x948270"
           },
           "got_bindings": {}
+        },
+        {
+          "address": "0x94d730",
+          "size": 440,
+          "symbol": "_ZN4SPTG13StrikerMrChau14RepeatingStateEi",
+          "target_sha256": "3772a370e2d93a9ce8c8b10d2f719f22bf633af0986fb508acb9ad0cc6cfcfd9",
+          "bindings": {
+            "Move_FrameDelta": "0x1924d70",
+            "_ZN4SPTG12StateMachineINS_7StrikerEE10TransitionEMS1_FiiE": "0x943a30"
+          },
+          "got_bindings": {},
+          "immutable_sections": {
+            "52": "0x1390bd4"
+          }
         },
         {
           "address": "0x94d980",

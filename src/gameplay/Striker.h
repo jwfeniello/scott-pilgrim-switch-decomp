@@ -80,6 +80,9 @@ struct StrikerMrChau : Striker {
     bool IsA(uint32_t type) override;   // slot 12 (0x94cac0)
     void Slot19() override;
     int ArrivingState(int event) override;
+    State ArrivingStatePtr() override;         // slot 82 (0x94d3f0)
+    int AttackingState(int event) override;    // slot 83 (0x94d400)
+    State AttackingStatePtr() override;        // slot 84 (0x94d720)
     virtual int RepeatingState(int event);     // slot 87
     virtual State RepeatingStatePtr();         // slot 88
     char padding_300[0x18];

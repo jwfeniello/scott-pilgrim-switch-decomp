@@ -244,10 +244,11 @@ bool AnimatedAiActor::IsOnScreen() {
     return y > rect.bottom && y < rect.top && x < rect.right && x > rect.left;
 }
 
-// Slot 15 (0x862680): bit 2 of the component flags, while +0x50 is clear.
-// Not yet matched: the original masks the flags with 4 before shifting them, and ours drops the mask.
+// Slot 15 (0x862680): bit 2 of the component flags, while +0x50 is clear. Testing the bit into a local first keeps
+// the original's mask before the shift.
 bool FlaggedComponent::IsActive() {
-    return !flag50 & ((componentFlags & 4) != 0);
+    bool active = (componentFlags & 4) != 0;
+    return !flag50 && active;
 }
 
 // The type tests (slot 12): each class's own type or one of its base's (SPTG_TYPE).

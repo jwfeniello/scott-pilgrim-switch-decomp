@@ -1257,7 +1257,8 @@ struct ControllablePlayer : BaseCharacter {
     char padding_1454[0x4];
     float moneyEarned;           // +0x1458
     uint32_t mashCount;          // +0x145c: presses so far
-    char padding_1460[0x28];
+    uint32_t character1460;      // +0x1460: picks the main player's menu movie (SetMainPlayerFlashMenuVisibilityAction)
+    char padding_1464[0x24];
     void* activeStriker;              // +0x1488: the striker this player has called in, cleared as it leaves
     char padding_1490[0x30];
     int32_t airAttackCount;      // +0x14c0: since the last landing

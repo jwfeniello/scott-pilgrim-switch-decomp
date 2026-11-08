@@ -356,8 +356,9 @@ void KnivesRamona::AttackDone() {
     }
 }
 
-// Attacks hitCount times, paying once; AttackDone runs a moment into each attack. Not yet matched (not credited): the
-// original loads the vtable separately for each of the two next states.
+// Attacks hitCount times, paying once; AttackDone runs a moment into each attack. The original loads the vtable
+// separately for each next state: AttackingStatePtr is this class's override and LeavingStatePtr is Striker's, so the
+// two loads differ and aren't hoisted.
 int StrikerMrChau::RepeatingState(int event) {
     int result = kStateHandled;
     switch (event) {
@@ -370,7 +371,8 @@ int StrikerMrChau::RepeatingState(int event) {
             }
         }
         if (AnimationDone()) {
-            states.Transition(++attacksDone >= hitCount ? LeavingStatePtr() : AttackingStatePtr());
+            if (++attacksDone >= hitCount) states.Transition(LeavingStatePtr());
+            else states.Transition(AttackingStatePtr());
             result = kStateParentTookOver;
         }
         break;
