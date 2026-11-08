@@ -184,6 +184,11 @@ review and verification standards. Useful contributions include:
 - Identifying compiler settings, SDK revisions, and upstream library versions.
 - Improving verification tools, documentation, and source review.
 
+**Start with [working on functions](docs/AGENT_GUIDE.md).** It covers setup, the `tools/fn.py` workbench
+(read an original function, diff your build against it, try several spellings at once, record a match, list
+unmatched functions by class) and the patterns that have made hard functions match. It is written so an AI agent
+can follow it directly; claim what you work on with the issue template so nobody duplicates it.
+
 Open an issue to share findings or submit a focused pull request. For function
 reconstructions, include the original address and complete function size, compiler
 version and flags, verification commands and results, and any uncertain ABI or
