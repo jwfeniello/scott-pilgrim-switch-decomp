@@ -1062,15 +1062,20 @@ struct MovieHost {
     char padding_88[0x18];
     uint32_t current;               // +0xa0
 };
-// The menus in that catalog, as far as the popup box looks at them: +0x228 is a menu's movie.
-struct HostedMenu { char padding_0[0x228]; uint32_t movie; };
+struct MovieName { uint32_t hash; };
+// The menus in that catalog, as far as the visibility actions look at them: +0x228 is a menu's movie.
+struct HostedMenu {
+    char padding_0[0x228];
+    MovieName movie;                // +0x228
+    char padding_22c[0x44];
+    bool loaded;                    // +0x270
+};
 struct MenuCatalog : onyx::Component {
     char padding_8[0x78];
     uint64_t count;                 // +0x80
     char padding_88[0x8];
     HostedMenu** menus;             // +0x90
 };
-struct MovieName { uint32_t hash; };
 // 0x7755c0 only reads the name, and in this LTO-built game a call after it can be a tail call (the popup box's Hide).
 void ShowMovie(MovieHost* host, __attribute__((noescape)) MovieName* name);
 void CommitMovie(MovieHost* host);
@@ -1206,9 +1211,17 @@ struct ActorActionBase {
     EventTarget* target;        // +0x88
     char padding_90[8];
     bool active;                // +0x98
-    char padding_99[7];
+    uint8_t stopped;            // +0x99
+    char padding_9a[6];
     ComponentHandle* actor;     // +0xa0
     void Update();
+};
+// SPTG::ActorActionComponent's own slots 14 and 15 (the actions above call slot 14 as their base start).
+struct ActorActionComponent : ActorActionBase {
+    bool enterOnStart;          // +0xa8: a player goes to state 241 as the action starts
+    bool leaveOnStop;           // +0xa9: and back to state 96 as it stops
+    void Start(void* event);    // slot 14 (0x8e1690)
+    void Stop(void* event);     // slot 15 (0x8e1580)
 };
 void ActorActionBase::Update() {
     if (active) {
@@ -1217,6 +1230,24 @@ void ActorActionBase::Update() {
             auto idle = c->State233Ptr();
             if (c->states.current == idle) onyx::SendEvent<ActionFinished>(callback, target);
         }
+    }
+}
+// Slot 14: started, a player that is neither idle (233) nor in 241 already goes to state 241 when +0xa8 says so.
+void ActorActionComponent::Start(void*) {
+    active = true;
+    stopped = 0;
+    ControllablePlayer* c = onyx::Peek<ControllablePlayer>(actor);
+    if (c && c->IsA(0x2f2bf4aau) && enterOnStart) {
+        if (!c->states.IsIn(c->State233Ptr()) && !c->states.IsIn(c->State241Ptr())) c->states.Transition(c->State241Ptr());
+    }
+}
+// Slot 15: stopped, a player in state 241 (and not idle) goes to state 96 when +0xa9 says so.
+void ActorActionComponent::Stop(void*) {
+    active = false;
+    stopped = 1;
+    ControllablePlayer* c = onyx::Peek<ControllablePlayer>(actor);
+    if (c && c->IsA(0x2f2bf4aau) && leaveOnStop) {
+        if (!c->states.IsIn(c->State233Ptr()) && c->states.IsIn(c->State241Ptr())) c->states.Transition(c->State96Ptr());
     }
 }
 
@@ -1229,7 +1260,8 @@ void PrepareMovies(MovieHost* host);   // 0x7731c0; name provisional
 // SetMainPlayerFlashMenuVisibilityAction derive from it (RTTI, and they share its slots 14, 17 and 19).
 struct SetFlashMenuVisibilityAction {
     virtual void S0(); virtual void S1(); virtual void S2(); virtual void S3(); virtual void S4(); virtual void S5(); virtual void S6(); virtual void S7(); virtual void S8(); virtual void S9();
-    virtual void S10(); virtual void S11(); virtual void S12(); virtual void S13();
+    virtual void S10(); virtual void S11(); virtual void S12();
+    virtual void Update();           // slot 13 (0x911aa0)
     virtual void Start(void* arg);   // slot 14 (0x9117c0): the main player's version passes the argument on
     virtual void S15(); virtual void S16();
     virtual bool IsVisible();        // slot 17 (0x911950)
@@ -1239,7 +1271,8 @@ struct SetFlashMenuVisibilityAction {
     EventCallback* callback;    // +0x80
     EventTarget* target;        // +0x88
     char padding_90[8];
-    uint16_t state;             // +0x98
+    bool active;                // +0x98
+    uint8_t flag99;             // +0x99: cleared on start
     char padding_9a[0x6];
     void* host;                 // +0xa0: the movie host
     MovieName movie;            // +0xa8: the menu's movie
@@ -1250,7 +1283,10 @@ struct SetFlashMenuVisibilityAction {
     uint32_t player;            // +0xc0: the main player's character, for the main player's version
     // The start step actions share (most set state 1 first). Slot 14's argument reaches it: the main player's version
     // still hands the argument on to this slot 14, so it had a use here before inlining. The name is ours.
-    void Begin(void*) { state = 1; }
+    void Begin(void*) {
+        active = true;
+        flag99 = 0;
+    }
 };
 void SetFlashMenuVisibilityAction::Start(void* arg) {
     Begin(arg);
@@ -1266,7 +1302,7 @@ void SetFlashMenuVisibilityAction::Start(void* arg) {
 // the loop written in place, the empty catalog's end test folds away. The name is ours.
 inline HostedMenu** FindMenu(HostedMenu** first, HostedMenu** last, uint32_t movie) {
     for (; first != last; ++first)
-        if ((*first)->movie == movie) return first;
+        if ((*first)->movie.hash == movie) return first;
     return last;
 }
 // Slot 17: whether the movie showing is the menu's, and a menu in the host's catalog plays it.
@@ -1276,7 +1312,41 @@ bool SetFlashMenuVisibilityAction::IsVisible() {
     HostedMenu** end = catalog->menus + catalog->count;
     HostedMenu** it = FindMenu(catalog->menus, end, director->current);
     HostedMenu* menu = it != end ? *it : nullptr;
-    return menu && movie.hash == menu->movie;
+    return menu && movie.hash == menu->movie.hash;
+}
+// Slot 13 (0x911aa0): while waiting for its movie, finishes once the menu showing it has loaded and puts the controller
+// message's steps through; with the save's flag at +0xe0 set and the controller message showing, finishes for each
+// loaded menu playing its movie, closing the message and that menu's movie.
+// Not yet matched: the original takes &candidate->movie before hashing the message's name and keeps it in the register
+// the candidate had; here it's worked out after the first ShowMovie, and the loop's registers differ from there on.
+// The payloads are locals of the method: that gives the original's stack slots.
+void SetFlashMenuVisibilityAction::Update() {
+    if (!waits || !active) return;
+    MovieHost* director = SingletonGet<MovieHost>(&host);
+    MenuCatalog* catalog = onyx::Get<MenuCatalog, onyx_types::type_323ef9de>(director->menus);
+    HostedMenu** end = catalog->menus + catalog->count;
+    HostedMenu** it = FindMenu(catalog->menus, end, director->current);
+    HostedMenu* menu = it != end ? *it : nullptr;
+    if (menu && movie.hash == menu->movie.hash && menu->loaded) {
+        onyx::EventPayload finished;
+        onyx::SendEvent<ActionFinished>(callback, target, finished);
+        ShowControllerMessage(director);
+    }
+    bool unlocked = CurrentSave && CurrentSave->unlockAll;
+    if (!menu || !unlocked) return;
+    if (HashName("ControllerDisconnectionMessageMovie") != menu->movie.hash) return;
+    MenuCatalog* all = onyx::Get<MenuCatalog, onyx_types::type_323ef9de>(director->menus);
+    for (HostedMenu** other = all->menus; other != all->menus + all->count; ++other) {
+        HostedMenu* candidate = *other;
+        if (movie.hash == candidate->movie.hash && candidate->loaded) {
+            onyx::EventPayload finished;
+            onyx::SendEvent<ActionFinished>(callback, target, finished);
+            MovieName name;
+            name.hash = HashName("ControllerDisconnectionMessageMovie");
+            ShowMovie(director, &name);
+            ShowMovie(director, &candidate->movie);
+        }
+    }
 }
 // Slot 18 (0x912330): with the save's flag at +0xe0 set, the host runs 0x7731c0 first; then the movie is shown.
 void SetFlashMenuVisibilityAction::Show() {
@@ -1325,7 +1395,7 @@ bool SetMainPlayerFlashMenuVisibilityAction::IsVisible() {
     HostedMenu* menu = it != end ? *it : nullptr;
     if (!menu) return false;
     uint32_t index = player;
-    return movies[index] == menu->movie;
+    return movies[index] == menu->movie.hash;
 }
 void SetMainPlayerFlashMenuVisibilityAction::Show() {
     FlashSpawnerHost* director = SingletonGet<FlashSpawnerHost>(&host);
@@ -2418,4 +2488,32 @@ void GroupStep::StartCurrent() {
     onyx::SendEvent<0x1da2cf68u>(x->callback, x->target);
 }
 
+}  // namespace SPTG
+
+namespace Onyx {
+// Onyx::ActionComponent, the base of the actions: slot 14 starts one (+0x98 set, +0x99 cleared), slot 15 stops it
+// (+0x98 cleared, +0x99 set; 0xbcad20) and slot 16 stops it with an empty event. Slot names are provisional.
+struct ActionComponent {
+    virtual void S0(); virtual void S1(); virtual void S2(); virtual void S3(); virtual void S4(); virtual void S5(); virtual void S6(); virtual void S7(); virtual void S8(); virtual void S9();
+    virtual void S10(); virtual void S11(); virtual void S12(); virtual void S13();
+    virtual void Start(void* event);      // slot 14
+    virtual void Stop(void* event);       // slot 15
+    virtual void Stop() noexcept;         // slot 16 (0xbcaa10, inherited by most actions)
+};
+void ActionComponent::Stop() noexcept {
+    onyx::EventPayload event;
+    Stop(&event);
+}
+}  // namespace Onyx
+
+namespace SPTG {
+// ExtraModeScoringAction has its own copy of the base's slot 16 (0x916ac0).
+struct ExtraModeScoringAction : Onyx::ActionComponent {
+    using Onyx::ActionComponent::Stop;
+    void Stop() noexcept override;
+};
+void ExtraModeScoringAction::Stop() noexcept {
+    onyx::EventPayload event;
+    Stop(&event);
+}
 }  // namespace SPTG

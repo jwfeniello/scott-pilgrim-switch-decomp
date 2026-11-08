@@ -558428,6 +558428,26 @@
           }
         },
         {
+          "address": "0x8e1580",
+          "size": 272,
+          "symbol": "_ZN4SPTG20ActorActionComponent4StopEPv",
+          "target_sha256": "93ac058be603f96894360322954ee03c255ce96f53bb763958864f5d2a716731",
+          "bindings": {
+            "_ZN4SPTG12StateMachineINS_13BaseCharacterEE10TransitionEMS1_FiiE": "0x812930"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x8e1690",
+          "size": 272,
+          "symbol": "_ZN4SPTG20ActorActionComponent5StartEPv",
+          "target_sha256": "6948da053bacb0ceff38404ed55245994df231046729421cbe660f8256ef5b20",
+          "bindings": {
+            "_ZN4SPTG12StateMachineINS_13BaseCharacterEE10TransitionEMS1_FiiE": "0x812930"
+          },
+          "got_bindings": {}
+        },
+        {
           "address": "0x8e17a0",
           "size": 400,
           "symbol": "_ZN4SPTG15ActorActionBase6UpdateEv",
@@ -559170,6 +559190,16 @@
           "got_bindings": {}
         },
         {
+          "address": "0x916ac0",
+          "size": 32,
+          "symbol": "_ZN4SPTG22ExtraModeScoringAction4StopEv",
+          "target_sha256": "bf119d21bda034be30e329732b3fa6b96b913947b91886d6a915600b00437da6",
+          "bindings": {
+            "__clang_call_terminate": "0xfa4920"
+          },
+          "got_bindings": {}
+        },
+        {
           "address": "0x9244a0",
           "size": 344,
           "symbol": "_ZN4SPTG9GroupStep12StartCurrentEv",
@@ -559211,7 +559241,7 @@
           },
           "got_bindings": {},
           "immutable_sections": {
-            "298": "0x14dec60"
+            "313": "0x14dec60"
           },
           "literals": {
             "554e4b4e4f574e20": "0x1331ae0",
@@ -559986,6 +560016,16 @@
             "50524f4a45435420": "0x1331000",
             "0c0000000c000000ffffff7fffffff7f": "0x1334730"
           }
+        },
+        {
+          "address": "0xbcaa10",
+          "size": 32,
+          "symbol": "_ZN4Onyx15ActionComponent4StopEv",
+          "target_sha256": "d5b34c29cd05a735c43157224f1144bc5a2a743e3be79a7b027ebaa821197f32",
+          "bindings": {
+            "__clang_call_terminate": "0xfa4920"
+          },
+          "got_bindings": {}
         },
         {
           "address": "0xbcbf70",
