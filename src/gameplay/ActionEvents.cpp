@@ -694,7 +694,7 @@ void LaserBeamsEnable::Enable() {
 // Waits until every listed action has stopped.
 struct WaitChild : onyx::Component {
     char padding_8[0x91];
-    bool stopped;                // +0x99
+    uint8_t stopped;             // +0x99: tested as a byte
 };
 struct WaitForActionEnd {
     char padding_0[0x80];
@@ -708,6 +708,27 @@ struct WaitForActionEnd {
     void StepBase();
     void Update();
 };
+// Slot 13 (0x8f40e0): after the actor action's update, finishes once every action it waits for has stopped. Each
+// handle is resolved in place and then read again through the array.
+// Not yet matched: here the address of actions[i] is worked out once, so the first load can't fold it ([x8, x22] in the
+// original). Computing the resolve's address separately (as bytes from the array) gives the original's fold, so the
+// original's resolve takes an address the compiler doesn't merge with the load's; BindTexture has the same gap. The
+// counter's increment is placed after the test in the original.
+void WaitForActionEnd::Update() {
+    StepBase();
+    if (!active) return;
+    bool all = true;
+    uint32_t n = count;
+    for (uint32_t i = 0; i < n; ++i) {
+        if (!(actions[i] && actions[i]->object)) {
+            ComponentHandle** ref = &actions[i];
+            Accessor_Resolve(Accessor_Resolver, ActionType, ref);
+            (*ref)->object->EnsureReady();
+        }
+        all &= static_cast<WaitChild*>(actions[i]->object)->stopped != 0;
+    }
+    if (all) onyx::SendEvent<ActionFinished>(callback, target);
+}
 
 // Camera actions go through the level's camera holder.
 struct TrackingCamera : onyx::Component {
@@ -2693,20 +2714,27 @@ struct TimerTarget : onyx::Component {
 // they're a one-float type of their own here; its name is ours.
 struct TimerSeconds { float seconds; };
 struct TimerAction {
-    char padding_0[0x98];
+    char padding_0[0x80];
+    EventCallback* callback;    // +0x80
+    EventTarget* target;        // +0x88
+    char padding_90[0x8];
     bool active;                // +0x98
     uint8_t stopped;            // +0x99
     char padding_9a[0x6];
-    ComponentHandle* target;    // +0xa0
+    ComponentHandle* subject;   // +0xa0: what the timer drives
     char padding_a8[0x30];
     bool flagD8;                // +0xd8
     bool flagD9;                // +0xd9
     char padding_da[0x2];
     uint32_t timed;             // +0xdc
     TimerSeconds duration;      // +0xe0
-    char padding_e4[0xc];
+    char padding_e4[0x4];
+    float limit;                // +0xe8: where an untimed one stops counting
+    bool paused;                // +0xec
+    char padding_ed[0x3];
     float elapsed;              // +0xf0
     TimerSeconds remaining;     // +0xf4
+    void Update();              // slot 13
     void Start(void* event);    // slot 14
 };
 void TimerAction::Start(void*) {
@@ -2723,13 +2751,46 @@ void TimerAction::Start(void*) {
         time = remaining.seconds;
     }
     if (flagD8) {
-        TimerTarget* t = onyx::Peek<TimerTarget>(target);
+        TimerTarget* t = onyx::Peek<TimerTarget>(subject);
         if (t) {
             t->Call8f6be0(mode == 0, time);
-            onyx::Peek<TimerTarget>(target)->Call8f5cd0(true);
-            onyx::Peek<TimerTarget>(target)->Call8f6130(false);
+            onyx::Peek<TimerTarget>(subject)->Call8f5cd0(true);
+            onyx::Peek<TimerTarget>(subject)->Call8f6130(false);
         }
     }
+}
+// Slot 13 (0x8f68f0): while running (and +0xec clear) it counts the game time up. A timed one counts its time left
+// down and finishes at 0; an untimed one counts up to +0xe8 and finishes there. With +0xd8 set the target gets the
+// time each frame.
+// Not yet matched: only the order inside the two finishing blocks differs (the original sets the time and the flag
+// before clearing the time left, and stores elapsed and time left before setting them in the untimed one).
+void TimerAction::Update() {
+    if (!active || paused) return;
+    float time = GameDelta + elapsed;
+    elapsed = time;
+    uint32_t mode = timed;
+    bool done = false;
+    if (mode) {
+        time = duration.seconds - time;
+        remaining.seconds = time;
+        if (time <= 0.0f) {
+            time = 0.0f;
+            done = true;
+            remaining.seconds = time;
+        }
+    } else if (!(time >= limit)) {
+        remaining.seconds = time;
+    } else {
+        time = limit;
+        elapsed = time;
+        remaining.seconds = time;
+        done = true;
+    }
+    if (flagD8) {
+        TimerTarget* x = onyx::Peek<TimerTarget>(subject);
+        if (x) x->Call8f6be0(mode == 0, time);
+    }
+    if (done) onyx::SendEvent<ActionFinished>(callback, target);
 }
 
 // SPTG::AudioAction's slot 18 (0x937f20): hands its sound (+0xb8) the objects behind +0xa8 and +0xa0 (sound slot 3),
