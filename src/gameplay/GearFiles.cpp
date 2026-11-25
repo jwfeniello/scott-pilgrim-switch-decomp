@@ -46,6 +46,26 @@ struct File {
     }
 };
 
+// What a disk file reads through (+0x130): the platform's file, slot 9 seeks (whence 0 from the start, 2 from the end).
+struct PlatformFile {
+    virtual void Slot0(); virtual void Slot1(); virtual void Slot2(); virtual void Slot3(); virtual void Slot4();
+    virtual void Slot5(); virtual void Slot6(); virtual void Slot7(); virtual void Slot8();
+    virtual void Seek(int64_t offset, int32_t whence);   // slot 9
+};
+// Gear::DiskFile: a file on a disk device.
+struct DiskFile : File {
+    bool Seek(const uint64_t* position) override;
+    char padding_29[0x107];
+    PlatformFile* handle;              // +0x130
+};
+// Slot 3 (0xa992f0): 0 seeks to the start and -1 to the end (the original tests 0 on its own).
+bool DiskFile::Seek(const uint64_t* position) {
+    if (*position == 0) handle->Seek(0, 0);
+    else if (*position == uint64_t(-1)) handle->Seek(0, 2);
+    else handle->Seek(*position, 0);
+    return true;
+}
+
 // What a memory file reads: a block of memory, its size at +0x10.
 struct MemoryBlock {
     char padding_0[0x10];

@@ -575637,6 +575637,50 @@
           "got_bindings": {}
         },
         {
+          "address": "0xa8a110",
+          "size": 124,
+          "symbol": "_ZN4Gear11ZLibDeflateD2Ev",
+          "target_sha256": "d42c2ffb98d40f5fe20455ae3db99ffe6aef438c4ec183320877ad7f54069776",
+          "bindings": {
+            "_ZTVN4Gear11ZLibDeflateE": "0x189ba20",
+            "deflate": "0xa852b0",
+            "deflateEnd": "0xa89500",
+            "_ZTVN4Gear4ZLibE": "0x189b958",
+            "__clang_call_terminate": "0x6768b8",
+            "_ZN4Gear4ZLibD2Ev": "0xa89fa0"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xa8a190",
+          "size": 128,
+          "symbol": "_ZN4Gear11ZLibDeflateD0Ev",
+          "target_sha256": "1983ef9df2b8404c20bb2221009a1ef3feff09450d7d6d129aa744b8d6100422",
+          "bindings": {
+            "_ZTVN4Gear11ZLibDeflateE": "0x189ba20",
+            "deflate": "0xa852b0",
+            "deflateEnd": "0xa89500",
+            "_ZTVN4Gear4ZLibE": "0x189b958",
+            "_ZdlPv": "0xfa3b40",
+            "__clang_call_terminate": "0x6768b8",
+            "_ZN4Gear4ZLibD2Ev": "0xa89fa0"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xa8a3f0",
+          "size": 196,
+          "symbol": "_ZN4Gear11ZLibInflateD2Ev",
+          "target_sha256": "aec48d15eecc845dd6c70e5c4a78b84c56299beeef2ea04f2933b34d97fbf277",
+          "bindings": {
+            "_ZTVN4Gear11ZLibInflateE": "0x189baa0",
+            "_ZTVN4Gear4ZLibE": "0x189b958",
+            "_ZN4Gear4ZLibD2Ev": "0xa89fa0",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
           "address": "0xa95490",
           "size": 64,
           "symbol": "_ZN4Gear13MemAllocDl2835Slot7Ev",
@@ -575979,6 +576023,14 @@
       ],
       "functions": [
         {
+          "address": "0xa992f0",
+          "size": 76,
+          "symbol": "_ZN4Gear8DiskFile4SeekEPKm",
+          "target_sha256": "bbd85b59d03806eac63e5030b44c0bd4e943dc9bcffc0fd9b112abdbe5d09a50",
+          "bindings": {},
+          "got_bindings": {}
+        },
+        {
           "address": "0xa9e460",
           "size": 188,
           "symbol": "_ZN4Gear7MemFile4SeekEPKm",
@@ -576094,6 +576146,14 @@
           "got_bindings": {}
         },
         {
+          "address": "0xaaede0",
+          "size": 32,
+          "symbol": "_ZN4Gear13MemAllocSmall9BlockSizeEPvPj",
+          "target_sha256": "29fc475b30bd47494cf5eaba4d43ac23154b7a02d19c4450547db58c0f1bfc1f",
+          "bindings": {},
+          "got_bindings": {}
+        },
+        {
           "address": "0xaaf4b0",
           "size": 104,
           "symbol": "_ZN4Gear13MemAllocStackD0Ev",
@@ -576107,6 +576167,14 @@
             "_ZTVN4Gear12MemInterfaceE": "0x1842080",
             "__clang_call_terminate": "0x6768b8"
           },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xaaf5f0",
+          "size": 24,
+          "symbol": "_ZN4Gear13MemAllocStack5Slot7Ev",
+          "target_sha256": "39b247a05051a9e8c451c9b54a841bafde659811c47f0a70cea377ef890d9315",
+          "bindings": {},
           "got_bindings": {}
         }
       ]
@@ -576169,6 +576237,18 @@
         "src/gameplay"
       ],
       "functions": [
+        {
+          "address": "0xa7ef30",
+          "size": 196,
+          "symbol": "_ZN4Gear6Thread5StartEv",
+          "target_sha256": "c1c68c2fa3a7ba65b4b7896b0ef062ebed65874d2451c93a335b0c83be61320d",
+          "bindings": {
+            "_ZN2nn2os16GetCurrentThreadEv": "0xfa3e50",
+            "_ZN2nn2os11GetThreadIdEPKNS0_10ThreadTypeE": "0xfa4760",
+            "_ZN2nn2os11StartThreadEPNS0_10ThreadTypeE": "0xfa4d40"
+          },
+          "got_bindings": {}
+        },
         {
           "address": "0xa7f000",
           "size": 64,
@@ -579173,6 +579253,27 @@
       ],
       "functions": [
         {
+          "address": "0xa7e050",
+          "size": 104,
+          "symbol": "_ZN4Gear12AsynchDevice4ItemEj",
+          "target_sha256": "e10e10a68164de11dcc65ad2aaea1cac7ba6ddcd45d324a0321d0dd7914f4a95",
+          "bindings": {
+            "_ZN4Gear2nn2os9LockMutexEPNS1_9MutexTypeE": "0xfa4950",
+            "_ZN4Gear2nn2os11UnlockMutexEPNS1_9MutexTypeE": "0xfa4960"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xa7e360",
+          "size": 44,
+          "symbol": "_ZN4Gear12AsynchDevice6Slot19ERKNS_4PathEPv",
+          "target_sha256": "2cdad77f847a886f00f60e6b9e96101b75f1e15583facd6c9e8a34accb91181a",
+          "bindings": {
+            "_ZN4Gear11ReportErrorE": "0x189b308"
+          },
+          "got_bindings": {}
+        },
+        {
           "address": "0xa84270",
           "size": 80,
           "symbol": "_ZN4Gear13AsynchGenericD0Ev",
@@ -579318,6 +579419,14 @@
           "bindings": {
             "_ZN4Gear11ReportErrorE": "0x189b308"
           },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xa9a580",
+          "size": 76,
+          "symbol": "_ZN4Gear9MemDevice6Slot18ERKNS_4PathES3_",
+          "target_sha256": "86e850e07e72686f8cfce298b31ffa6c41eba76947acee73cef43057de950121",
+          "bindings": {},
           "got_bindings": {}
         },
         {

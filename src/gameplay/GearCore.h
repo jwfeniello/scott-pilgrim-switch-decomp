@@ -246,19 +246,60 @@ __attribute__((always_inline)) inline void TouchSharedStatic() {
     static SharedStatic once;
 }
 
+// A lock a thread can take again while it holds it: the owner's thread ID folded to 32 bits (0 when free) and a count.
+// The same lock as SPTG's (Random.h); the unlock's ownership check is an assertion whose calls stay.
+}  // namespace Gear
+namespace nn { namespace os {
+struct ThreadType;
+ThreadType* GetCurrentThread() noexcept;
+uint64_t GetThreadId(const ThreadType* thread) noexcept;
+void StartThread(ThreadType* thread) noexcept;
+} }  // namespace nn::os
+namespace Gear {
+struct RecursiveSpinLock {
+    uint32_t owner;
+    uint32_t count;
+    __attribute__((always_inline)) static uint32_t CurrentThread() {
+        uint64_t id = nn::os::GetThreadId(nn::os::GetCurrentThread());
+        return uint32_t(id >> 32) ^ uint32_t(id);
+    }
+    __attribute__((always_inline)) void Lock() {
+        uint32_t self = CurrentThread();
+        if (owner != self) {
+            uint32_t expected;
+            do expected = 0;
+            while (!__atomic_compare_exchange_n(&owner, &expected, self, false, __ATOMIC_SEQ_CST, __ATOMIC_SEQ_CST));
+        }
+        ++count;
+    }
+    __attribute__((always_inline)) void Unlock() {
+        if (owner != CurrentThread()) __builtin_unreachable();
+        if (--count == 0) {
+            uint32_t expected;
+            do expected = owner;
+            while (!__atomic_compare_exchange_n(&owner, &expected, 0u, false, __ATOMIC_SEQ_CST, __ATOMIC_SEQ_CST));
+        }
+    }
+};
+
 // Gear::Thread (vtable 0x189b400). Slot 6 waits for the thread to end (-1: no time limit).
 struct Thread {
     virtual ~Thread();                 // 0xa82c40
     virtual void ThreadSlot2();
-    virtual void ThreadSlot3();
+    virtual bool Start();              // slot 3 (0xa7ef30)
     virtual int32_t ThreadSlot4();     // slot 4 (0xa7f000): 7
     virtual void ThreadSlot5();
     virtual void Wait(int32_t timeout);   // slot 6
     char padding_8[0x10];
     uint32_t id;                       // +0x18: what the thread table (0x1926bc0) knows it by
     char padding_1c[0x44];
-    uint32_t value60;                  // +0x60
-    char padding_64[0xec];
+    uint32_t value60;                  // +0x60: 2 once the thread is ready to start
+    char padding_64[0x14];
+    RecursiveSpinLock* lock;           // +0x78
+    char padding_80[0xd8];
+    uint8_t created;                   // +0x158: the system thread exists
+    char padding_159[0x17];
+    char thread[0x1c0];                // +0x170: the nn::os::ThreadType
 };
 
 }  // namespace Gear

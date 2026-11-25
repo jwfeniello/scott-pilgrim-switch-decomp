@@ -6,6 +6,17 @@ namespace Gear {
 
 // Gear::AsynchDevice (vtable 0x189b140, its thread's at 0x189b258): a device served by its own thread, which it
 // derives from at +0xd0. The two asynchronous devices below both shut it down first thing in their destructors.
+namespace nn { namespace os {
+struct MutexType;
+void LockMutex(MutexType* mutex);
+void UnlockMutex(MutexType* mutex);
+} }  // namespace nn::os
+// What an asynchronous device keeps a list of; the next one is at +0x130 (name provisional).
+struct AsynchEntry {
+    char padding_0[0x130];
+    AsynchEntry* next;                 // +0x130
+};
+
 struct AsynchDevice : DeviceInterface, Thread {
     ~AsynchDevice() override;          // 0xa7de60
     bool Attributes(const char* path, void* reserved, uint32_t* out) override;
@@ -39,8 +50,13 @@ struct AsynchDevice : DeviceInterface, Thread {
     virtual void Slot31();
     virtual void Slot32();
     void Shutdown();                   // 0xa82f90: leaves the registry, stops and waits for the thread, drops the queue
-    char padding_220[0x1e0];
     MemInterface* allocator;           // +0x400
+    char padding_408[0x48];
+    AsynchEntry* first;                // +0x450: the list slot 3 walks
+    char padding_458[0x28];
+    nn::os::MutexType* mutex;          // +0x480
+    char padding_488[0x20];
+    uint32_t busy;                     // +0x4a8: raised while the list is read
 };
 
 // Gear::AsynchGeneric (vtable 0x189b4f8).
@@ -63,7 +79,7 @@ struct SharedHolder {
 struct AsynchPlatformSpecific : AsynchDevice {
     inline ~AsynchPlatformSpecific() override;
     uint32_t Type() override;
-    char padding_408[0x330];
+    char padding_4b0[0x288];
     SharedHolder* holder;              // +0x738
 };
 // Declared inline: without the hint clang doesn't inline it into the deleting destructor, which the original does.
@@ -169,6 +185,26 @@ struct MemDevice : DeviceInterface {
     void Slot22() override;
 };
 MemDevice::~MemDevice() { Devices->Unregister(this); }
+// Slot 3 (0xa7e050): the list's entry at `index` (null past the end), read under the lock.
+void* AsynchDevice::Item(uint32_t index) {
+    nn::os::LockMutex(mutex);
+    ++busy;
+    AsynchEntry* entry = first;
+    for (uint64_t i = 0; i < index && entry; ++i) entry = entry->next;
+    --busy;
+    nn::os::UnlockMutex(mutex);
+    return entry;
+}
+// Slot 19 (0xa7e360, shared by the asynchronous devices): not supported, error 4.
+void* AsynchDevice::Slot19(const Path& path, void* arg) {
+    Error(4);
+    return nullptr;
+}
+// Slot 18 (0xa9a580): slot 17 (a copy, as its use here says), then slot 16 on the source (provisional reading: a move).
+bool MemDevice::Slot18(const Path& from, const Path& to) {
+    if (Slot17(from, to)) return Slot16(from);
+    return false;
+}
 uint32_t MemDevice::Type() {   // 0xa998f0
     static uint32_t type = NextDeviceType++;
     return type;

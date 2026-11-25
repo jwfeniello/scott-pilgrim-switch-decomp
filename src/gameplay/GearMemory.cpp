@@ -135,8 +135,68 @@ DynamicMemoryBlockProvider::~DynamicMemoryBlockProvider() {
 struct ZLib {
     virtual ~ZLib();
     MemInterface* allocator;           // +0x8
+    void* stream;                      // +0x10: the z_stream
     static void* Alloc(void* opaque, uint32_t items, uint32_t size);
 };
+// 0xa89fa0: the stream goes back to the allocator. Its free may throw here (the deflater's destructor, which inlines
+// this, has a landing pad around it), unlike MemInterface's as GearCore.h declares it; the view is a guess at that.
+struct ZLibAllocator {
+    virtual void Slot0(); virtual void Slot1(); virtual void Slot2(); virtual void Slot3(); virtual void Slot4();
+    virtual void Slot5();
+    virtual void Free(void* block);    // slot 6
+};
+ZLib::~ZLib() {
+    if (stream) reinterpret_cast<ZLibAllocator*>(allocator)->Free(stream);
+}
+
+// zlib's deflate (0xa852b0) and deflateEnd (0xa89500).
+extern "C" int deflate(void* stream, int flush);
+extern "C" int deflateEnd(void* stream);
+
+// The parts of zlib's stream and inflate state that inflateEnd touches (zlib 1.2.8's layout on AArch64).
+struct ZInflateState {
+    char padding_0[0x38];
+    void* window;                      // +0x38
+};
+struct ZStream {
+    char padding_0[0x38];
+    ZInflateState* state;              // +0x38
+    void* (*zalloc)(void* opaque, uint32_t items, uint32_t size);   // +0x40
+    void (*zfree)(void* opaque, void* address);                     // +0x48
+    void* opaque;                      // +0x50
+};
+// zlib 1.2.8's inflateEnd, which the link-time optimizer inlined.
+__attribute__((always_inline)) inline int InflateEnd(ZStream* stream) {
+    if (!stream || !stream->state || !stream->zfree) return -2;
+    ZInflateState* state = stream->state;
+    if (state->window) stream->zfree(stream->opaque, state->window);
+    stream->zfree(stream->opaque, stream->state);
+    stream->state = nullptr;
+    return 0;
+}
+
+// Gear::ZLibInflate (vtable 0x189bab0).
+struct ZLibInflate : ZLib {
+    ~ZLibInflate() override;
+};
+// Slots 0 and 1 (0xa8a3f0, 0xa8a4c0): ends the stream.
+ZLibInflate::~ZLibInflate() {
+    if (stream) InflateEnd(static_cast<ZStream*>(stream));
+}
+
+// Gear::ZLibDeflate (vtable 0x189ba30).
+struct ZLibDeflate : ZLib {
+    ~ZLibDeflate() override;
+    char padding_18[0x4];
+    int32_t flush;                     // +0x1c
+};
+// Slots 0 and 1 (0xa8a110, 0xa8a190): finishes the stream and ends it. always_inline stands in for the link-time
+// inlining into the deleting destructor (its only support is that it matches).
+__attribute__((always_inline)) ZLibDeflate::~ZLibDeflate() {
+    flush = 4;
+    deflate(stream, 4);
+    deflateEnd(stream);
+}
 
 void* ZLib::Alloc(void* opaque, uint32_t items, uint32_t size) {   // 0xa89f70: zlib's allocation callback
     uint32_t total = size * items;

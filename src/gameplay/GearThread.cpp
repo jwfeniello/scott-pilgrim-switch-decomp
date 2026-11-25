@@ -3,6 +3,18 @@
 
 namespace Gear {
 
+// Slot 3 (0xa7ef30): starts a thread that is ready (and starts the system thread once it exists), under its lock.
+bool Thread::Start() {
+    lock->Lock();
+    bool started = false;
+    if (value60 == 2) {
+        if (created) nn::os::StartThread(reinterpret_cast<nn::os::ThreadType*>(thread));
+        started = true;
+    }
+    lock->Unlock();
+    return started;
+}
+
 // Slot 4 (0xa7f000), shared by Gear's threads and the Onyx threads built on them: 7.
 int32_t Thread::ThreadSlot4() {
     TouchSharedStatic();
