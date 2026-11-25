@@ -502975,6 +502975,19 @@
           "got_bindings": {}
         },
         {
+          "address": "0x74e130",
+          "size": 112,
+          "symbol": "_Z34Create_SPTG_ChangeLayerAlphaActionv",
+          "target_sha256": "aac8ca025a475c27ebc06904883865b0d767aaf8bccc2e84af4f9a5cb274f98c",
+          "bindings": {
+            "GenericFactoryManager": "0x191c9c8",
+            "GenericFactoryResolve": "0x676160",
+            "_ZN4Onyx15ActionComponentC2Ev": "0xbc97a0",
+            "_ZTVN4SPTG22ChangeLayerAlphaActionE": "0x186b418"
+          },
+          "got_bindings": {}
+        },
+        {
           "address": "0x74e1a0",
           "size": 88,
           "symbol": "_Z36Create_SPTG_SetLayerVisibilityActionv",
@@ -503982,6 +503995,35 @@
           "got_bindings": {}
         },
         {
+          "address": "0xab9d30",
+          "size": 112,
+          "symbol": "_Z29Create_Onyx_Collision_Capsulev",
+          "target_sha256": "8ce9aee88c95079fb3fb8794f5b819a60485a0f7a614af23bb7aa3d629662cdb",
+          "bindings": {
+            "GenericFactoryManager": "0x191c9c8",
+            "GenericFactoryResolve": "0x676160",
+            "_ZN4Onyx9Component4BaseC2Ev": "0x6764e0",
+            "_ZTVN4Onyx9Collision7CapsuleE": "0x18afb68"
+          },
+          "got_bindings": {},
+          "literals": {
+            "00000000000000000000803f0000803f": "0x1332f80"
+          }
+        },
+        {
+          "address": "0xab9e10",
+          "size": 108,
+          "symbol": "_Z28Create_Onyx_Collision_Spherev",
+          "target_sha256": "802a2ba9d97efe22ae598d79812b80c974d1ee9b8a1a18798daf3792d81ef27d",
+          "bindings": {
+            "GenericFactoryManager": "0x191c9c8",
+            "GenericFactoryResolve": "0x676160",
+            "_ZN4Onyx9Component4BaseC2Ev": "0x6764e0",
+            "_ZTVN4Onyx9Collision6SphereE": "0x18af8e0"
+          },
+          "got_bindings": {}
+        },
+        {
           "address": "0xaba5b0",
           "size": 104,
           "symbol": "_Z59Create_Onyx_Graphics_EvolutionDevelopment_ScreenRenderSetupv",
@@ -504403,6 +504445,23 @@
             "GenericFactoryResolve": "0x676160",
             "_ZN4Onyx9Component4BaseC2Ev": "0x6764e0",
             "_ZTVN4Onyx8Graphics8Particle6Effect11EffectEventE": "0x18a6618"
+          },
+          "got_bindings": {},
+          "literals": {
+            "0000803f00000000": "0x1330d70"
+          }
+        },
+        {
+          "address": "0xac0120",
+          "size": 116,
+          "symbol": "_Z48Create_Onyx_Graphics_Particle_Effect_EffectGroupv",
+          "target_sha256": "7710b6c5766ddc0e13b0641e3316e32cfa36e6beeda157da43947d5fb3b37f34",
+          "bindings": {
+            "GenericFactoryManager": "0x191c9c8",
+            "GenericFactoryResolve": "0x676160",
+            "_ZN4Onyx9Component4BaseC2Ev": "0x6764e0",
+            "_ZTVN4Onyx8Graphics8Particle6Effect11EffectGroupE": "0x18a6560",
+            "AllocatorContext": "0x1935058"
           },
           "got_bindings": {},
           "literals": {

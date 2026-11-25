@@ -4887,3 +4887,172 @@ struct Modifier : ModifierLayout {
 }  // namespace Behavior
 }  // namespace Onyx
 void* Create_Onyx_Behavior_Modifier() { return new (GenericFactoryResolve(GenericFactoryManager, 0x7b73c94u)->Allocate(sizeof(Onyx::Behavior::Modifier))) Onyx::Behavior::Modifier; }
+
+// Onyx::Collision::Sphere, Capsule and Plane (factories 0xab9e10, 0xab9d30, 0xab9da0), by their constructors' stores:
+// a common part from +0x50 to +0x78 cleared as one block, a pointer to the object itself at +0x70, and the shape's
+// own size after it.
+namespace Onyx {
+namespace Collision {
+struct ShapeCommon : ::Onyx::Component::Base {
+    char padding_8[0x48];
+    uint64_t field_50;
+    uint64_t field_58;
+    uint64_t field_60;
+    uint8_t field_68[8];
+    void* field_70;
+    uint8_t field_78;
+    char padding_79[0x7];
+    uint64_t field_80;
+    uint32_t field_88;
+    char padding_8c[0x4];
+    uint64_t field_90;
+    char padding_98[0x4];
+    __attribute__((always_inline)) ShapeCommon() {
+        __builtin_memset(&field_50, 0, 0x29);
+        field_80 = 0;
+        field_88 = 0;
+        field_90 = 0;
+        field_70 = this;
+    }
+    virtual ~ShapeCommon();
+};
+struct Sphere : ShapeCommon {
+    float radius;           // +0x9c
+    __attribute__((always_inline)) Sphere() { radius = 1.0f; }
+    virtual ~Sphere();
+};
+struct Capsule : ShapeCommon {
+    float size[4];          // +0x9c
+    __attribute__((always_inline)) Capsule() { size[0] = 0.0f; size[1] = 0.0f; size[2] = 1.0f; size[3] = 1.0f; }
+    virtual ~Capsule();
+};
+// Not yet matched (Plane): the shared stores come out in another order around the normal's.
+struct Plane : ShapeCommon {
+    float normal[3];        // +0x9c
+    __attribute__((always_inline)) Plane() { normal[0] = 0.0f; normal[1] = 0.0f; normal[2] = 1.0f; }
+    virtual ~Plane();
+};
+}  // namespace Collision
+}  // namespace Onyx
+void* Create_Onyx_Collision_Sphere() { return new (GenericFactoryResolve(GenericFactoryManager, 0x3e453135u)->Allocate(sizeof(Onyx::Collision::Sphere))) Onyx::Collision::Sphere; }
+void* Create_Onyx_Collision_Capsule() { return new (GenericFactoryResolve(GenericFactoryManager, 0x3e453135u)->Allocate(sizeof(Onyx::Collision::Capsule))) Onyx::Collision::Capsule; }
+void* Create_Onyx_Collision_Plane() { return new (GenericFactoryResolve(GenericFactoryManager, 0x3e453135u)->Allocate(sizeof(Onyx::Collision::Plane))) Onyx::Collision::Plane; }
+
+// SPTG::ItemRegistry (factory 0x754540), by its constructor's stores: an empty list (its head points at itself)
+// Not yet matched: the original pairs the stores at +0x58 and +0x60 and stores +0x50 alone; clang pairs +0x50 and +0x58.
+namespace SPTG {
+struct ItemRegistryLayout : ::Onyx::Component::Base {
+    char padding_8[0x48];
+    void* field_50;
+    void* field_58;
+    uint64_t field_60;
+    uint32_t field_68;
+    char padding_6c[0x4];
+    uint32_t field_70;
+    char padding_74[0x4];
+    void* field_78;
+    char padding_80[0x8];
+    __attribute__((always_inline)) ItemRegistryLayout() {}
+    virtual ~ItemRegistryLayout();
+};
+struct ItemRegistry : ItemRegistryLayout {
+    __attribute__((always_inline)) ItemRegistry() {
+        field_50 = reinterpret_cast<char*>(this) + 0x50;
+        field_58 = reinterpret_cast<char*>(this) + 0x50;
+        field_60 = 0;
+        field_68 = 0;
+        field_70 = 0;
+        field_78 = DefaultAllocator();
+    }
+    virtual ~ItemRegistry();
+};
+}  // namespace SPTG
+void* Create_SPTG_ItemRegistry() { return new (GenericFactoryResolve(GenericFactoryManager, 0x7b73c94u)->Allocate(sizeof(SPTG::ItemRegistry))) SPTG::ItemRegistry; }
+
+// SPTG::ChangeLayerAlphaAction (factory 0x74e130) : Onyx::ActionComponent, by its constructor's stores
+namespace SPTG {
+struct ChangeLayerAlphaActionLayout : ::Onyx::ActionComponent {
+    char padding_8[0x98];
+    uint64_t field_a0;
+    uint64_t field_a8;
+    float field_b0;
+    uint8_t flag0 : 1;
+    uint8_t flag1 : 1;
+    uint8_t flag2 : 1;
+    uint8_t flag3 : 1;
+    uint8_t flag4 : 1;
+    uint8_t rest : 3;
+    char padding_b5[0x3];
+    int32_t field_b8;
+    char padding_bc[0x4];
+    uint32_t field_c0;
+    char padding_c4[0x4];
+    __attribute__((always_inline)) ChangeLayerAlphaActionLayout() { field_a0 = 0; field_a8 = 0; flag0 = 0; flag1 = 1; flag2 = 0; flag3 = 0; flag4 = 0; }
+    virtual ~ChangeLayerAlphaActionLayout();
+};
+struct ChangeLayerAlphaAction : ChangeLayerAlphaActionLayout {
+    __attribute__((always_inline)) ChangeLayerAlphaAction() { field_b0 = 1.0f; field_b8 = -1; field_c0 = 0; }
+    virtual ~ChangeLayerAlphaAction();
+};
+}  // namespace SPTG
+void* Create_SPTG_ChangeLayerAlphaAction() { return new (GenericFactoryResolve(GenericFactoryManager, 0x7b73c94u)->Allocate(sizeof(SPTG::ChangeLayerAlphaAction))) SPTG::ChangeLayerAlphaAction; }
+
+// Onyx::Graphics::Particle::Effect::EffectGroup and EffectRandom (factories 0xac0120, 0xac0440), by their constructors'
+// stores: the common effect fields, then a list from the default allocator (and EffectRandom's self-linked ring).
+namespace Onyx {
+namespace Graphics {
+namespace Particle {
+namespace Effect {
+struct EffectGroupLayout : ::Onyx::Component::Base {
+    char padding_8[0x44];
+    int32_t field_4c;
+    int32_t field_50;
+    int32_t field_54;
+    void* field_58;
+    uint64_t field_60;
+    uint64_t field_68;
+    uint64_t field_70;
+    char padding_78[0x8];
+    uint16_t field_80;
+    char padding_82[0x2];
+    uint32_t field_84;
+    __attribute__((always_inline)) EffectGroupLayout() { field_4c = 0x3f800000u; field_50 = 0; field_54 = 0; field_68 = 0; field_70 = 0; field_58 = DefaultAllocator(); }
+    virtual ~EffectGroupLayout();
+};
+struct EffectGroup : EffectGroupLayout {
+    __attribute__((always_inline)) EffectGroup() { field_60 = 0; field_80 = 0; field_84 = 0; }
+    virtual ~EffectGroup();
+};
+// Not yet matched (EffectRandom): the ring at +0x80 pairs its stores as ItemRegistry's does (see there).
+struct EffectRandomLayout : ::Onyx::Component::Base {
+    char padding_8[0x44];
+    int32_t field_4c;
+    int32_t field_50;
+    int32_t field_54;
+    void* field_58;
+    uint64_t field_60;
+    uint64_t field_68;
+    uint64_t field_70;
+    char padding_78[0x8];
+    void* field_80;
+    void* field_88;
+    uint64_t field_90;
+    uint32_t field_98;
+    char padding_9c[0x4];
+    uint32_t field_a0;
+    char padding_a4[0x4];
+    void* field_a8;
+    char padding_b0[0x8];
+    __attribute__((always_inline)) EffectRandomLayout() { field_4c = 0x3f800000u; field_50 = 0; field_54 = 0; field_68 = 0; field_70 = 0; field_58 = DefaultAllocator(); }
+    virtual ~EffectRandomLayout();
+};
+struct EffectRandom : EffectRandomLayout {
+    __attribute__((always_inline)) EffectRandom() { field_60 = 0; field_80 = reinterpret_cast<char*>(this) + 0x80; field_88 = reinterpret_cast<char*>(this) + 0x80; field_90 = 0; field_98 = 0; field_a0 = 0; field_a8 = DefaultAllocator(); }
+    virtual ~EffectRandom();
+};
+}  // namespace Effect
+}  // namespace Particle
+}  // namespace Graphics
+}  // namespace Onyx
+void* Create_Onyx_Graphics_Particle_Effect_EffectGroup() { return new (GenericFactoryResolve(GenericFactoryManager, 0x7b73c94u)->Allocate(sizeof(Onyx::Graphics::Particle::Effect::EffectGroup))) Onyx::Graphics::Particle::Effect::EffectGroup; }
+void* Create_Onyx_Graphics_Particle_Effect_EffectRandom() { return new (GenericFactoryResolve(GenericFactoryManager, 0x7b73c94u)->Allocate(sizeof(Onyx::Graphics::Particle::Effect::EffectRandom))) Onyx::Graphics::Particle::Effect::EffectRandom; }
