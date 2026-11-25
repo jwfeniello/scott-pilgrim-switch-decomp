@@ -304,3 +304,167 @@ void BarChartComponent::Step() {
     WithDelegate<211784961ul, BarChartComponent>(this, &BarChartComponent::OnEvent1, [this](Delegate** slot) { void* target = field_58; if (target) HookRemove(HookManager, target, 0x6c62f499u, slot); });
 }
 }
+
+// SPTG::EditorGraphicsObject<...>'s slot 3, one instance per derived class (the template argument is elided in its RTTI
+// name): resets the bounds at +0x98 (-FLT_MAX three times, then 0, then a zero word) before taking the delegate off.
+namespace SPTG {
+struct StaticEditorGraphicsObject {
+    char padding_0[56]; uint32_t field_38; char padding_3c[84]; void* field_90; float field_98[4]; uint64_t field_a8;
+    void OnEvent1(const Event&);
+    void Step();
+};
+void StaticEditorGraphicsObject::Step() {
+    field_98[0] = -3.40282347e+38f; field_98[1] = -3.40282347e+38f; field_98[2] = -3.40282347e+38f; field_98[3] = 0.0f;
+    field_a8 = 0;
+    WithDelegate<147307521ul, StaticEditorGraphicsObject>(this, &StaticEditorGraphicsObject::OnEvent1, [this](Delegate** slot) { void* target = field_90; if (target) HookRemove(HookManager, target, 0x6c62f499u, slot); });
+    field_38 &= ~2u;
+}
+struct RepeatEditorGraphicsObject {
+    char padding_0[56]; uint32_t field_38; char padding_3c[84]; void* field_90; float field_98[4]; uint64_t field_a8;
+    void OnEvent1(const Event&);
+    void Step();
+};
+void RepeatEditorGraphicsObject::Step() {
+    field_98[0] = -3.40282347e+38f; field_98[1] = -3.40282347e+38f; field_98[2] = -3.40282347e+38f; field_98[3] = 0.0f;
+    field_a8 = 0;
+    WithDelegate<147382273ul, RepeatEditorGraphicsObject>(this, &RepeatEditorGraphicsObject::OnEvent1, [this](Delegate** slot) { void* target = field_90; if (target) HookRemove(HookManager, target, 0x6c62f499u, slot); });
+    field_38 &= ~2u;
+}
+struct FlashEditorGraphicsObject {
+    char padding_0[56]; uint32_t field_38; char padding_3c[84]; void* field_90; float field_98[4]; uint64_t field_a8;
+    void OnEvent1(const Event&);
+    void Step();
+};
+void FlashEditorGraphicsObject::Step() {
+    field_98[0] = -3.40282347e+38f; field_98[1] = -3.40282347e+38f; field_98[2] = -3.40282347e+38f; field_98[3] = 0.0f;
+    field_a8 = 0;
+    WithDelegate<147427329ul, FlashEditorGraphicsObject>(this, &FlashEditorGraphicsObject::OnEvent1, [this](Delegate** slot) { void* target = field_90; if (target) HookRemove(HookManager, target, 0x6c62f499u, slot); });
+    field_38 &= ~2u;
+}
+struct AnimatedEditorGraphicsObject {
+    char padding_0[56]; uint32_t field_38; char padding_3c[84]; void* field_90; float field_98[4]; uint64_t field_a8;
+    void OnEvent1(const Event&);
+    void Step();
+};
+void AnimatedEditorGraphicsObject::Step() {
+    field_98[0] = -3.40282347e+38f; field_98[1] = -3.40282347e+38f; field_98[2] = -3.40282347e+38f; field_98[3] = 0.0f;
+    field_a8 = 0;
+    WithDelegate<147472385ul, AnimatedEditorGraphicsObject>(this, &AnimatedEditorGraphicsObject::OnEvent1, [this](Delegate** slot) { void* target = field_90; if (target) HookRemove(HookManager, target, 0x6c62f499u, slot); });
+    field_38 &= ~2u;
+}
+}
+
+namespace Onyx {
+// Onyx::SkeletonGraphics's slot 3 (0xca7020): clears the active flag, disables the child at +0x98, then takes its
+// delegate off.
+struct SkeletonGraphics {
+    char padding_0[56]; uint32_t field_38; char padding_3c[84]; void* field_90; Child* field_98;
+    void OnEvent1(const Event&);
+    void Step();
+};
+void SkeletonGraphics::Step() {
+    field_38 &= ~2u;
+    if (field_98) field_98->Disable();
+    WithDelegate<212271617ul, SkeletonGraphics>(this, &SkeletonGraphics::OnEvent1, [this](Delegate** slot) { void* target = field_90; if (target) HookRemove(HookManager, target, 0x6c62f499u, slot); });
+}
+// Onyx::AnimationHolder's slot 3 (0xbc6cd0): with an animation at +0xa8, takes its delegate off the hook at the
+// animation's +0x40; then clears the active flag.
+struct AnimationHolderTarget { char padding_0[0x40]; void* hook; };
+struct AnimationHolder {
+    char padding_0[56]; uint32_t field_38; char padding_3c[108]; AnimationHolderTarget* field_a8;
+    void OnEvent1(const Event&);
+    void Step();
+};
+void AnimationHolder::Step() {
+    if (field_a8) WithDelegate<197577985ul, AnimationHolder>(this, &AnimationHolder::OnEvent1, [this](Delegate** slot) { void* target = field_a8->hook; HookRemove(HookManager, target, 0x6c62f499u, slot); });
+    field_38 &= ~2u;
+}
+}
+
+namespace SPTG {
+// What SPTG::GameStatisticsBureau keeps at +0x58 (provisional): resolves to the list its delegate was added to.
+struct BureauAccessor { void* Resolve(); };   // 0x796450
+void DelegateListRemove(void* list, Delegate** slot);   // 0x6f0750
+// SPTG::GameStatisticsBureau's slot 3 (0x7a2230): clears the active flag, then takes its delegate off the list the
+// accessor at +0x58 resolves to. Not yet matched (not credited): the original materializes the delegate's vtable
+// before its invoke pointer and keeps the delegate in x19 earlier; the instructions are otherwise the same.
+struct GameStatisticsBureau {
+    char padding_0[56]; uint32_t field_38; char padding_3c[28]; BureauAccessor field_58;
+    void OnEvent1(const Event&);
+    void Step();
+};
+void GameStatisticsBureau::Step() {
+    field_38 &= ~2u;
+    void* list = field_58.Resolve();
+    WithDelegate<128066305ul, GameStatisticsBureau>(this, &GameStatisticsBureau::OnEvent1, [list](Delegate** slot) { DelegateListRemove(list, slot); });
+}
+}
+namespace Onyx { namespace Graphics { namespace Particle { namespace Emitter {
+// Onyx::Graphics::Particle::Emitter::EmitterSequencer's slot 3 (0xb1d150): clears the active flag and +0x78, then
+// takes its delegate off each hook in the array at +0x60 (count) and +0x68.
+struct EmitterSequencer {
+    char padding_0[56]; uint32_t field_38; char padding_3c[36]; uint64_t field_60; void** field_68; char padding_70[8]; int32_t field_78;
+    void OnEvent1(const Event&);
+    void Step();
+};
+void EmitterSequencer::Step() {
+    field_38 &= ~2u;
+    field_78 = -1;
+    WithDelegate<186455297ul, EmitterSequencer>(this, &EmitterSequencer::OnEvent1, [this](Delegate** slot) {
+        uint64_t count = field_60;
+        if (!count) return;
+        for (void** item = field_68, **end = item + count; item != end; ++item) {
+            void* target = *item;
+            HookRemove(HookManager, target, 0x6c62f499u, slot);
+        }
+    });
+}
+} } } }
+
+namespace Onyx {
+// What Onyx::TextComponent owns at +0xb8 (provisional): destroyed through the decode allocators, slot 3 disables it.
+struct TextChild { virtual ~TextChild(); virtual void S2(); virtual void Disable(); };
+// Onyx::TextComponent's slot 3 (0xadc740): takes its delegate off, disables and destroys the child at +0xb8, then
+// clears the active flag.
+struct TextComponent {
+    char padding_0[56]; uint32_t field_38; char padding_3c[84]; void* field_90; char padding_98[32]; TextChild* field_b8;
+    void OnEvent1(const Event&);
+    void Step();
+};
+void TextComponent::Step() {
+    WithDelegate<182219777ul, TextComponent>(this, &TextComponent::OnEvent1, [this](Delegate** slot) { void* target = field_90; if (target) HookRemove(HookManager, target, 0x6c62f499u, slot); });
+    if (field_b8) {
+        field_b8->Disable();
+        if (TextChild* child = field_b8) {
+            DecodeAllocators* m = DecodeAllocatorManager;
+            DecodeAllocator* a = m->values[DecodeAllocatorIndex(m, child)];
+            child->~TextChild();
+            a->Free(child);
+        }
+        field_b8 = nullptr;
+    }
+    field_38 &= ~2u;
+}
+namespace Graphics {
+// Onyx::Graphics::Morph's base part (Onyx::Component::Compose<...>), whose slot 3 is 0xb42000.
+struct MorphCompose { void Step(); };
+// Onyx::Graphics::Morph's slot 3 (0xb45860): takes its delegate off each hook in the array at +0x90 (count) and
+// +0x98, then runs its base's slot 3.
+struct Morph : MorphCompose {
+    char padding_0[0x90]; uint64_t field_90; void** field_98;
+    void OnEvent1(const Event&);
+    void Step();
+};
+void Morph::Step() {
+    WithDelegate<189105665ul, Morph>(this, &Morph::OnEvent1, [this](Delegate** slot) {
+        uint64_t count = field_90;
+        if (!count) return;
+        for (void** item = field_98, **end = item + count; item != end; ++item) {
+            void* target = *item;
+            HookRemove(HookManager, target, 0x6c62f499u, slot);
+        }
+    });
+    MorphCompose::Step();
+}
+}
+}

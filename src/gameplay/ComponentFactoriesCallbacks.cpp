@@ -1125,6 +1125,117 @@ struct LerpedVector3PublisherCircuit : LerpedVector3PublisherCircuitPart {
 }  // namespace Onyx
 void* Create_Onyx_Gameplay_Circuits_LerpedVector3PublisherCircuit() { return new (GenericFactoryResolve(GenericFactoryManager, 0x7b73c94u)->Allocate(sizeof(Onyx::Gameplay::Circuits::LerpedVector3PublisherCircuit))) Onyx::Gameplay::Circuits::LerpedVector3PublisherCircuit; }
 
+struct Event_cc36a0;
+struct Event_dc96230;
+// Onyx::Gameplay::Circuits::LerpedF32PublisherCircuit : Onyx::Gameplay::Circuits::Detail::LerpedValuePublisherCircuit<...> : Onyx::Gameplay::Circuits::Detail::BaseValuePublisherCircuit<...> : Onyx::Component::Compose<...> : Onyx::Gameplay::Circuits::BaseCircuit : Onyx::Component::Compose<...> : Onyx::Component::Base
+namespace Onyx {
+namespace Gameplay {
+namespace Circuits {
+struct LerpedF32PublisherCircuitLayout : ::Onyx::Component::Base {
+ char p8[0x48];
+ Onyx::Listener<void(const Event_dc96230&)> member_50;
+ __attribute__((always_inline)) LerpedF32PublisherCircuitLayout() : member_50() {  member_50.owner = this; }
+ __attribute__((always_inline)) virtual ~LerpedF32PublisherCircuitLayout() {}
+ virtual void Key();
+};
+struct LerpedF32PublisherCircuitPart : LerpedF32PublisherCircuitLayout {
+ Onyx::Listener<void(const Event_cc36a0&)> member_68;
+ Onyx::Listener<void(const Event_cc36a0&)> member_80;
+ float field_98;
+ float field_9c;
+ uint8_t field_a0;
+ char pa1[0x3];
+ float field_a4;
+ float field_a8;
+ float field_ac;
+ void F68(const Event_cc36a0&);
+ void F80(const Event_cc36a0&);
+ __attribute__((always_inline)) LerpedF32PublisherCircuitPart() : member_68(), member_80(), field_98(0.0f), field_9c(0.0f), field_a0(0), field_a4(1.0f), field_a8(0.0f), field_ac(1.0f) { member_68.owner = this; member_68.function = Onyx::MakeFunction<void(const Event_cc36a0&)>(Onyx::MemberFunction<LerpedF32PublisherCircuitPart, void(const Event_cc36a0&)>(this, &LerpedF32PublisherCircuitPart::F68)); member_80.owner = this; }
+ virtual ~LerpedF32PublisherCircuitPart();
+};
+struct LerpedF32PublisherCircuit : LerpedF32PublisherCircuitPart {
+ __attribute__((always_inline)) LerpedF32PublisherCircuit() {}
+ virtual ~LerpedF32PublisherCircuit();
+};
+}  // namespace Circuits
+}  // namespace Gameplay
+}  // namespace Onyx
+void* Create_Onyx_Gameplay_Circuits_LerpedF32PublisherCircuit() { return new (GenericFactoryResolve(GenericFactoryManager, 0x7b73c94u)->Allocate(sizeof(Onyx::Gameplay::Circuits::LerpedF32PublisherCircuit))) Onyx::Gameplay::Circuits::LerpedF32PublisherCircuit; }
+
+struct Event_cc2b90;
+struct Event_dc93b20;
+// Onyx::Gameplay::Circuits::LerpedU32PublisherCircuit : Onyx::Gameplay::Circuits::Detail::LerpedValuePublisherCircuit<...> : Onyx::Gameplay::Circuits::Detail::BaseValuePublisherCircuit<...> : Onyx::Component::Compose<...> : Onyx::Gameplay::Circuits::BaseCircuit : Onyx::Component::Compose<...> : Onyx::Component::Base
+namespace Onyx {
+namespace Gameplay {
+namespace Circuits {
+struct LerpedU32PublisherCircuitLayout : ::Onyx::Component::Base {
+ char p8[0x48];
+ Onyx::Listener<void(const Event_dc93b20&)> member_50;
+ __attribute__((always_inline)) LerpedU32PublisherCircuitLayout() : member_50() {  member_50.owner = this; }
+ __attribute__((always_inline)) virtual ~LerpedU32PublisherCircuitLayout() {}
+ virtual void Key();
+};
+struct LerpedU32PublisherCircuitPart : LerpedU32PublisherCircuitLayout {
+ Onyx::Listener<void(const Event_cc2b90&)> member_68;
+ Onyx::Listener<void(const Event_cc2b90&)> member_80;
+ uint32_t field_98;
+ uint32_t field_9c;
+ uint8_t field_a0;
+ char pa1[0x3];
+ float field_a4;
+ float field_a8;
+ float field_ac;
+ void F68(const Event_cc2b90&);
+ void F80(const Event_cc2b90&);
+ __attribute__((always_inline)) LerpedU32PublisherCircuitPart() : member_68(), member_80(), field_98(0), field_9c(0), field_a0(0), field_a4(1.0f), field_a8(0.0f), field_ac(1.0f) { member_68.owner = this; member_68.function = Onyx::MakeFunction<void(const Event_cc2b90&)>(Onyx::MemberFunction<LerpedU32PublisherCircuitPart, void(const Event_cc2b90&)>(this, &LerpedU32PublisherCircuitPart::F68)); member_80.owner = this; }
+ virtual ~LerpedU32PublisherCircuitPart();
+};
+struct LerpedU32PublisherCircuit : LerpedU32PublisherCircuitPart {
+ __attribute__((always_inline)) LerpedU32PublisherCircuit() {}
+ virtual ~LerpedU32PublisherCircuit();
+};
+}  // namespace Circuits
+}  // namespace Gameplay
+}  // namespace Onyx
+void* Create_Onyx_Gameplay_Circuits_LerpedU32PublisherCircuit() { return new (GenericFactoryResolve(GenericFactoryManager, 0x7b73c94u)->Allocate(sizeof(Onyx::Gameplay::Circuits::LerpedU32PublisherCircuit))) Onyx::Gameplay::Circuits::LerpedU32PublisherCircuit; }
+
+struct Event_cc4340;
+struct Event_dc93ea0;
+// Onyx::Gameplay::Circuits::LerpedColorPublisherCircuit : Onyx::Gameplay::Circuits::Detail::LerpedValuePublisherCircuit<...> : Onyx::Gameplay::Circuits::Detail::BaseValuePublisherCircuit<...> : Onyx::Component::Compose<...> : Onyx::Gameplay::Circuits::BaseCircuit : Onyx::Component::Compose<...> : Onyx::Component::Base
+namespace Onyx {
+namespace Gameplay {
+namespace Circuits {
+struct LerpedColorPublisherCircuitLayout : ::Onyx::Component::Base {
+ char p8[0x48];
+ Onyx::Listener<void(const Event_dc93ea0&)> member_50;
+ __attribute__((always_inline)) LerpedColorPublisherCircuitLayout() : member_50() {  member_50.owner = this; }
+ __attribute__((always_inline)) virtual ~LerpedColorPublisherCircuitLayout() {}
+ virtual void Key();
+};
+struct LerpedColorPublisherCircuitPart : LerpedColorPublisherCircuitLayout {
+ Onyx::Listener<void(const Event_cc4340&)> member_68;
+ Onyx::Listener<void(const Event_cc4340&)> member_80;
+ uint32_t field_98;
+ uint32_t field_9c;
+ uint8_t field_a0;
+ char pa1[0x3];
+ float field_a4;
+ float field_a8;
+ float field_ac;
+ void F68(const Event_cc4340&);
+ void F80(const Event_cc4340&);
+ __attribute__((always_inline)) LerpedColorPublisherCircuitPart() : member_68(), member_80(), field_98(0xff000000u), field_9c(0xff000000u), field_a0(0), field_a4(1.0f), field_a8(0.0f), field_ac(1.0f) { member_68.owner = this; member_68.function = Onyx::MakeFunction<void(const Event_cc4340&)>(Onyx::MemberFunction<LerpedColorPublisherCircuitPart, void(const Event_cc4340&)>(this, &LerpedColorPublisherCircuitPart::F68)); member_80.owner = this; }
+ virtual ~LerpedColorPublisherCircuitPart();
+};
+struct LerpedColorPublisherCircuit : LerpedColorPublisherCircuitPart {
+ __attribute__((always_inline)) LerpedColorPublisherCircuit() {}
+ virtual ~LerpedColorPublisherCircuit();
+};
+}  // namespace Circuits
+}  // namespace Gameplay
+}  // namespace Onyx
+void* Create_Onyx_Gameplay_Circuits_LerpedColorPublisherCircuit() { return new (GenericFactoryResolve(GenericFactoryManager, 0x7b73c94u)->Allocate(sizeof(Onyx::Gameplay::Circuits::LerpedColorPublisherCircuit))) Onyx::Gameplay::Circuits::LerpedColorPublisherCircuit; }
+
 struct EventGeneric;
 // Onyx::GenericMaterialReactor : Onyx::Component::Compose<...> : Onyx::Component::Base
 namespace Onyx {
