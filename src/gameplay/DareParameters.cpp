@@ -79,5 +79,20 @@ void EffectParameterSndFloat::Apply(const float* amount) {   // 0xcfda00
     }
 }
 
+// Dare::Private::ChannelVolumes: a volume for each of seven channels (+0x8).
+struct ChannelVolumes {
+    void* vtable;
+    float values[7];   // +0x8
+};
+// Dare::Private::BusPostEffectVolumesParameter, slot 8: adds `amount`'s volumes to its own (+0x8).
+struct BusPostEffectVolumesParameter {
+    void* vtable;
+    ChannelVolumes volumes;   // +0x8
+    void Add(const ChannelVolumes* amount);
+};
+void BusPostEffectVolumesParameter::Add(const ChannelVolumes* amount) {   // 0xd1b380
+    for (int32_t i = 0; i < 7; ++i) volumes.values[i] = amount->values[i] + volumes.values[i];
+}
+
 }  // namespace Private
 }  // namespace Dare

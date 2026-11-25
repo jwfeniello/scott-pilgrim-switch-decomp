@@ -58,10 +58,28 @@ struct SndManager {
     virtual void Slot0(); virtual void Slot1(); virtual void Slot2(); virtual void Slot3(); virtual void Slot4();
     virtual void Slot5(); virtual void Slot6();
     virtual float Slot7(SndManagedObject* object);   // slot 7
-    char padding_8[0x38];
+    struct VoiceList {
+        void Refresh(struct VirtualVoice* voice);   // 0xd7db50 (provisional names)
+        // 0xd7df10: a platform voice for the entry, -1 when there is none.
+        struct VirtualVoice* Create(struct ThemeEntry* entry, void* owner, uint32_t tracks);
+    } voices;                  // +0x8
+    char padding_9[0x37];
     SoundPlatform* platform;   // +0x40
-    char padding_48[0x1a0];
+    char padding_48[0x190];
+    struct EffectContext* context;   // +0x1d8
+    char padding_1e0[0x8];
     static SndManager* Get();
+};
+// What SndManager keeps at +0x1d8 (the effects' context; its class is not known): slots 50 and 51 bracket changes to a
+// player.
+struct EffectContext {
+    virtual void Slot0(); virtual void Slot1(); virtual void Slot2(); virtual void Slot3(); virtual void Slot4(); virtual void Slot5(); virtual void Slot6(); virtual void Slot7(); virtual void Slot8(); virtual void Slot9();
+    virtual void Slot10(); virtual void Slot11(); virtual void Slot12(); virtual void Slot13(); virtual void Slot14(); virtual void Slot15(); virtual void Slot16(); virtual void Slot17(); virtual void Slot18(); virtual void Slot19();
+    virtual void Slot20(); virtual void Slot21(); virtual void Slot22(); virtual void Slot23(); virtual void Slot24(); virtual void Slot25(); virtual void Slot26(); virtual void Slot27(); virtual void Slot28(); virtual void Slot29();
+    virtual void Slot30(); virtual void Slot31(); virtual void Slot32(); virtual void Slot33(); virtual void Slot34(); virtual void Slot35(); virtual void Slot36(); virtual void Slot37(); virtual void Slot38(); virtual void Slot39();
+    virtual void Slot40(); virtual void Slot41(); virtual void Slot42(); virtual void Slot43(); virtual void Slot44(); virtual void Slot45(); virtual void Slot46(); virtual void Slot47(); virtual void Slot48(); virtual void Slot49();
+    virtual void Lock();     // slot 50
+    virtual void Unlock();   // slot 51
 };
 extern "C" SndManager* Dare_SndManager;   // 0x19397f0
 inline SndManager* SndManager::Get() {
@@ -100,6 +118,8 @@ struct PlayerState {
 };
 // The virtual player a manager voice plays through (its theme settings matter only to theme voices).
 struct ThemePlayer {
+    void Pause();    // 0xd7e9e0 (provisional names)
+    void Resume();   // 0xd7e890
     char padding_0[0x10];
     ThemeSettings defaults;   // +0x10
     char padding_20[0x60];
@@ -147,11 +167,70 @@ struct ManagerThemeVoice {
 // Slot 0 (0xd8aed0).
 void* ManagerThemeVoice::Part() { return handle.Part(); }
 
+// What a voice's track grid holds (provisional names): slot 2 of its meter reads the level.
+struct VoiceMeter {
+    virtual void Slot0(); virtual void Slot1();
+    virtual int32_t Read(float* level);   // slot 2
+};
+struct VoiceTrack {
+    void Update();         // 0xd7c7c0
+    void UpdateTarget();   // 0xd7d120
+    char padding_0[0x168];
+    int32_t target;        // +0x168
+    char padding_16c[0x30c];
+    int32_t changed;       // +0x478
+    char padding_47c[0x24];
+    VoiceMeter* meter;     // +0x4a0
+    char padding_4a8[0x8];
+    float level;           // +0x4b0
+    int32_t current;       // +0x4b4
+};
+// What the voices are ordered by (provisional names), at an offset that differs by kind of voice (the members before
+// it do): 0x88 for hardware voices, 0xc8 for synth voices, 0xd0 for theme voices, 0xc0 for tool voices.
+struct VoiceRank {
+    int32_t priority;      // +0x0
+    int32_t order;         // +0x4
+    int32_t value8;
+    float peak;            // +0xc: the loudest track level slot 35 found
+};
+template<class Manager> struct VoiceRankOffset;
+template<> struct VoiceRankOffset<ManagerHardwareVoice> { static const unsigned value = 0x88; };
+template<> struct VoiceRankOffset<ManagerSynthVoice> { static const unsigned value = 0xc8; };
+template<> struct VoiceRankOffset<ManagerThemeVoice> { static const unsigned value = 0xd0; };
+template<> struct VoiceRankOffset<ManagerToolVoice> { static const unsigned value = 0xc0; };
+
 template<class Manager> struct ManagerVoiceForVirtualPlayer {
-    void* vtable;
+    virtual void Slot0();
+    virtual void Slot1(int32_t keep);
+    virtual void Slot2();
+    virtual void Slot3();
+    virtual void Slot4();
+    virtual void Slot5(); virtual void Slot6(); virtual void Slot7(); virtual void Slot8();
+    virtual int32_t Compare(ManagerVoiceForVirtualPlayer* other);   // slot 9
+    virtual void Slot10();
+    virtual int32_t Priority();   // slot 11
+    virtual int32_t Order();      // slot 12
+    virtual void Slot13(); virtual void Slot14(); virtual void Slot15(); virtual void Slot16(); virtual void Slot17();
+    virtual void Slot18(); virtual void Slot19(); virtual void Slot20(); virtual void Slot21(); virtual void Slot22();
+    virtual int32_t Slot23(void* a, void* b);
+    virtual void Slot24(); virtual void Slot25(); virtual void Slot26(); virtual void Slot27(); virtual void Slot28();
+    virtual void Slot29(); virtual void Slot30(); virtual void Slot31(); virtual void Slot32();
+    virtual int32_t Start();   // slot 33
+    virtual void Slot34();
+    virtual void Slot35();
+    virtual void Slot36(); virtual void Slot37(); virtual void Slot38();
+    virtual float Slot39();
+    virtual void Slot40(); virtual void Slot41(); virtual void Slot42(); virtual void Slot43();
+    virtual void* Slot44();
     VirtualVoice* voice;   // +0x8
     int32_t state;         // +0x10
-    char padding_14[0x6c];
+    char padding_14[0x24];
+    VoiceTrack*** tracks;  // +0x38: rows of columns
+    ThemeHandle sound;     // +0x40: what the voice plays
+    char padding_48[0x8];
+    uint32_t columns;      // +0x50
+    uint32_t rows;         // +0x54
+    char padding_58[0x28];
     ThemePlayer* player;   // +0x80
     char padding_88[0x28];
     VoiceObject* object;   // +0xb0
@@ -159,19 +238,68 @@ template<class Manager> struct ManagerVoiceForVirtualPlayer {
     ThemeHandle handle;       // +0xc0
     ThemeSettings settings;   // +0xc8
     int32_t Play(void* a, void* b);   // the synth and tool voices' slot 23 (0xd84860)
-    int32_t Slot23(void* a, void* b);
-    void* Slot44();
-    void Slot1(int32_t keep);
-    // Slot 39: 0 for a voice of kind 3, -1 for any kind but 1, else what the platform reports for it. Not credited:
-    // the original tests kind 3 first with these registers; every order that tests it first here swaps them.
-    float Slot39() {
-        SndManager* manager = SndManager::Get();
-        int32_t kind = voice->kind;
-        if (kind == 3) return 0.0f;
-        if (kind != 1) return -1.0f;
-        return manager->platform->query(voice->handle);
+    VoiceRank& Rank() {
+        return *reinterpret_cast<VoiceRank*>(reinterpret_cast<char*>(this) + VoiceRankOffset<Manager>::value);
+    }
+    // Updates every track and gives the loudest level (inlined into both slots that use it; always_inline stands in for
+    // that).
+    __attribute__((always_inline))
+    float TrackPeak() {
+        float peak = 0.0f;
+        for (uint64_t row = 0; row < rows; ++row) {
+            for (uint64_t column = 0; column < columns; ++column) {
+                VoiceTrack* track = tracks[row][column];
+                if (!track) continue;
+                track->Update();
+                track->UpdateTarget();
+                int32_t target = track->target;
+                if (track->current != target) {
+                    VoiceMeter* meter = track->meter;
+                    track->current = target;
+                    if (meter && meter->Read(&track->level)) track->changed = 1;
+                }
+                if (peak < track->level) peak = track->level;
+            }
+        }
+        return peak;
     }
 };
+
+// Slot 35: updates every track, notes the loudest level, then has the manager refresh the voice.
+template<class Manager> void ManagerVoiceForVirtualPlayer<Manager>::Slot35() {
+    Rank().peak = TrackPeak();
+    SndManager::Get()->voices.Refresh(voice);
+}
+
+// Slot 33: updates the tracks and notes their peak, then has the manager make the platform voice for the sound; whether
+// it could.
+template<class Manager> int32_t ManagerVoiceForVirtualPlayer<Manager>::Start() {
+    Rank().peak = TrackPeak();
+    SndManager* manager = SndManager::Get();
+    voice = manager->voices.Create(sound.Get(), this, columns);
+    state = 1;
+    return voice != reinterpret_cast<VirtualVoice*>(-1);
+}
+
+// Slot 9: orders two voices by priority, then by the other's current peak, then by order.
+template<class Manager> int32_t ManagerVoiceForVirtualPlayer<Manager>::Compare(ManagerVoiceForVirtualPlayer* other) {
+    int32_t result = Rank().priority - other->Priority();
+    if (result) return result;
+    float peak = other->TrackPeak();
+    if (Rank().peak > peak) return 1;
+    if (Rank().peak < peak) return -1;
+    return Rank().order - other->Order();
+}
+
+// Slot 39: 0 for a voice of kind 3, what the platform reports for one of kind 1, else -1.
+template<class Manager> float ManagerVoiceForVirtualPlayer<Manager>::Slot39() {
+    SndManager* manager = SndManager::Get();
+    switch (voice->kind) {
+    case 3: return 0.0f;
+    case 1: return manager->platform->query(voice->handle);
+    }
+    return -1.0f;
+}
 
 // Slot 23 for theme voices (0xd8a2f0): takes the player's settings (its current ones when valid) before doing what the
 // other voices' slot 23 does; 0 without a player.
@@ -203,6 +331,27 @@ template<> void ManagerVoiceForVirtualPlayer<ManagerSynthVoice>::Slot1(int32_t k
         return;
     }
     state = 3;
+}
+
+// Slots 3 and 4 for hardware voices (0xd7b7e0, 0xd7b860): pause or resume the player, between the context's slots 50
+// and 51.
+template<> void ManagerVoiceForVirtualPlayer<ManagerHardwareVoice>::Slot3() {
+    SndManager* manager = SndManager::Get();
+    ThemePlayer* player = this->player;
+    if (!player) return;
+    EffectContext* context = manager->context;
+    context->Lock();
+    player->Pause();
+    context->Unlock();
+}
+template<> void ManagerVoiceForVirtualPlayer<ManagerHardwareVoice>::Slot4() {
+    SndManager* manager = SndManager::Get();
+    ThemePlayer* player = this->player;
+    if (!player) return;
+    EffectContext* context = manager->context;
+    context->Lock();
+    player->Resume();
+    context->Unlock();
 }
 
 template struct ManagerVoiceForVirtualPlayer<ManagerHardwareVoice>;   // slot 39 at 0xd7c570

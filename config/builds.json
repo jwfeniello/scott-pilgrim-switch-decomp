@@ -579631,6 +579631,14 @@
           "got_bindings": {}
         },
         {
+          "address": "0xd1b380",
+          "size": 104,
+          "symbol": "_ZN4Dare7Private29BusPostEffectVolumesParameter3AddEPKNS0_14ChannelVolumesE",
+          "target_sha256": "f316d23b1d4e3e252b4f8d930e6ac0f95b16eebc96bd9b10b1b03c5eaa13658a",
+          "bindings": {},
+          "got_bindings": {}
+        },
+        {
           "address": "0xd1b490",
           "size": 40,
           "symbol": "_ZN4Dare7Private27BusPreEffectVolumeParameter5ClampEv",
@@ -580258,6 +580266,42 @@
       ],
       "functions": [
         {
+          "address": "0xd14590",
+          "size": 84,
+          "symbol": "_ZN4Dare21C3DAlgoCallbackObject7RefreshEv",
+          "target_sha256": "abe0fface9c78c56b4d0867cea9458d6e2f4c4cc60052c94aa18349e5421a945",
+          "bindings": {},
+          "got_bindings": {}
+        },
+        {
+          "address": "0xd145f0",
+          "size": 252,
+          "symbol": "_ZN4Dare21C3DAlgoCallbackObject5Slot7Ev",
+          "target_sha256": "afa5a9e7ee92209316bbf952a75aec8be9881defe76f107e628dad99be3d1c21",
+          "bindings": {
+            "Dare_C3DAlgoPool": "0x1939a80"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xd30120",
+          "size": 252,
+          "symbol": "_ZN4Dare23CPosSpeedCallbackObject7RefreshEv",
+          "target_sha256": "8925fd8565c6717341e9a374eca2834bbbbabfd31f0088eda148c99645b4bcbf",
+          "bindings": {},
+          "got_bindings": {}
+        },
+        {
+          "address": "0xd30220",
+          "size": 228,
+          "symbol": "_ZN4Dare23CPosSpeedCallbackObject5Slot7Ev",
+          "target_sha256": "329f7a9c87cac4e7fb20f3537fe4c7216742c2bf483c96b69c370f5521ff3f57",
+          "bindings": {
+            "Dare_CPosSpeedPool": "0x1939a90"
+          },
+          "got_bindings": {}
+        },
+        {
           "address": "0xd30310",
           "size": 108,
           "symbol": "_ZN4Dare23CPosSpeedCallbackObject16SanitizePositionEv",
@@ -580271,6 +580315,33 @@
           "symbol": "_ZN4Dare23CPosSpeedCallbackObject13SanitizeSpeedEv",
           "target_sha256": "a4bc29d634e7b6e6c54c64ff7b5f517cea5a8186a1c9dd5e386fc0c31a98aaf7",
           "bindings": {},
+          "got_bindings": {}
+        },
+        {
+          "address": "0xd304e0",
+          "size": 672,
+          "symbol": "_ZN4Dare8DarePoolINS_23CPosSpeedCallbackObjectELj128EE8AllocateEv",
+          "target_sha256": "906e04ecf7fbc835c3683ad02cfeda9b9d4778ad8f5b73959814467c5a8a85bc",
+          "bindings": {
+            "_Z12DareAllocatemj": "0x722190",
+            "memcpy": "0xfa3330",
+            "memmove": "0xfa33b0",
+            "Dare_AllocatorEnabled": "0x191fb00",
+            "Dare_Allocator": "0x191faf8"
+          },
+          "got_bindings": {},
+          "literals": {
+            "18000000000000001784000000000000": "0x1333630"
+          }
+        },
+        {
+          "address": "0xd3ea80",
+          "size": 204,
+          "symbol": "_ZN4Dare19MicroCallbackObject5Slot7Ev",
+          "target_sha256": "c6aff1a30285a9f9a8b1b0c916bef2d1d54348ae407b68309cd13cc4bf81d7c6",
+          "bindings": {
+            "Dare_MicroPool": "0x1939ab0"
+          },
           "got_bindings": {}
         },
         {
@@ -580288,8 +580359,524 @@
           "target_sha256": "d5042efa02f2fdcacd3a9b36b91b29a1c0d52abf3daa1dafb95e99e4339ba69f",
           "bindings": {},
           "got_bindings": {}
+        },
+        {
+          "address": "0xd3fe60",
+          "size": 360,
+          "symbol": "_ZN4Dare19MTT3DCallbackObject7RefreshEv",
+          "target_sha256": "86e6c40ec70c8a2673944dcdd0ede03d7d767af219f7e5b5e789606d5fad72dd",
+          "bindings": {
+            "memcpy": "0xfa3330"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xd3ffd0",
+          "size": 252,
+          "symbol": "_ZN4Dare19MTT3DCallbackObject5Slot7Ev",
+          "target_sha256": "bc9411d5953e1b512adfb4310f19ab63b1c97a279639bce0b7b9d7fbf8aac78c",
+          "bindings": {
+            "Dare_MTT3DPool": "0x1939ab8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xd400d0",
+          "size": 188,
+          "symbol": "_ZN4Dare19MTT3DCallbackObject14SanitizeBlock0Ev",
+          "target_sha256": "5b18cff08a15dd9063e0a9cb0d3f674630539335e9b9d62eb4777f7b0c57aaaa",
+          "bindings": {},
+          "got_bindings": {}
+        },
+        {
+          "address": "0xd40a90",
+          "size": 728,
+          "symbol": "_ZN4Dare8DarePoolINS_19MTT3DCallbackObjectELj128EE8AllocateEv",
+          "target_sha256": "a18c520f5a11cd2e67f7ab32a77ec2ac6d4a3961633b041288ffaaaa42c29bd0",
+          "bindings": {
+            "_Z12DareAllocatemj": "0x722190",
+            "memcpy": "0xfa3330",
+            "memmove": "0xfa33b0",
+            "Dare_AllocatorEnabled": "0x191fb00",
+            "Dare_Allocator": "0x191faf8"
+          },
+          "got_bindings": {},
+          "literals": {
+            "180000000000000017b8080000000000": "0x1333750"
+          }
+        },
+        {
+          "address": "0xd40ff0",
+          "size": 220,
+          "symbol": "_ZN4Dare33MultiLayerParameterCallbackObject5Slot7Ev",
+          "target_sha256": "43647b01b80ce6cd9259fb58bf1355756973d138fabe8370795a18cac799c998",
+          "bindings": {
+            "Dare_MultiLayerParameterPool": "0x1939ac0"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xd410d0",
+          "size": 680,
+          "symbol": "_ZN4Dare8DarePoolINS_33MultiLayerParameterCallbackObjectELj128EE8AllocateEv",
+          "target_sha256": "2bdc94c70aa563262dd5f1a4555ea57294e6196c85e90ad09a91429fc8a5a503",
+          "bindings": {
+            "_Z12DareAllocatemj": "0x722190",
+            "memcpy": "0xfa3330",
+            "memmove": "0xfa33b0",
+            "Dare_AllocatorEnabled": "0x191fb00",
+            "Dare_Allocator": "0x191faf8"
+          },
+          "got_bindings": {},
+          "literals": {
+            "18000000000000001758000000000000": "0x1333120"
+          }
+        },
+        {
+          "address": "0xd41690",
+          "size": 220,
+          "symbol": "_ZN4Dare38MultiLayerActivationFlagCallbackObject5Slot7Ev",
+          "target_sha256": "4e3428fa9ab65d042e1a1c3431a118bcd82bcb4d46ed23fc284e8a579fcc3380",
+          "bindings": {
+            "Dare_MultiLayerActivationFlagPool": "0x1939ac8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xd41770",
+          "size": 680,
+          "symbol": "_ZN4Dare8DarePoolINS_38MultiLayerActivationFlagCallbackObjectELj128EE8AllocateEv",
+          "target_sha256": "3022ef80a02a4f111ed7dae105c65a911baeed99acbbaff8c5684f097e36de7f",
+          "bindings": {
+            "_Z12DareAllocatemj": "0x722190",
+            "memcpy": "0xfa3330",
+            "memmove": "0xfa33b0",
+            "Dare_AllocatorEnabled": "0x191fb00",
+            "Dare_Allocator": "0x191faf8"
+          },
+          "got_bindings": {},
+          "literals": {
+            "18000000000000001758000000000000": "0x1333120"
+          }
+        },
+        {
+          "address": "0xd4f430",
+          "size": 228,
+          "symbol": "_ZN4Dare21OccObstCallbackObject5Slot7Ev",
+          "target_sha256": "060a7d9a6309c347dca29ad08e87b723a0e2e38f2da9f12e2cc2924160015cad",
+          "bindings": {
+            "Dare_OccObstPool": "0x1939a98"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xd4f520",
+          "size": 672,
+          "symbol": "_ZN4Dare8DarePoolINS_21OccObstCallbackObjectELj128EE8AllocateEv",
+          "target_sha256": "586e56a380c08d5ecf1ad6c33ef1f523bfae40b170d8f03cc830863fc2c8549f",
+          "bindings": {
+            "_Z12DareAllocatemj": "0x722190",
+            "memcpy": "0xfa3330",
+            "memmove": "0xfa33b0",
+            "Dare_AllocatorEnabled": "0x191fb00",
+            "Dare_Allocator": "0x191faf8"
+          },
+          "got_bindings": {},
+          "literals": {
+            "180000000000000017bc000000000000": "0x1334cc0"
+          }
+        },
+        {
+          "address": "0xd4f7c0",
+          "size": 168,
+          "symbol": "_ZN4Dare21OccObstCallbackObject7RefreshEv",
+          "target_sha256": "10e22b0d20c552fad91f53454028880241823962773d5468f876ba4df2a93122",
+          "bindings": {},
+          "got_bindings": {}
+        },
+        {
+          "address": "0xd4ff40",
+          "size": 120,
+          "symbol": "_ZN4Dare21PPVCallbackObjectBase8SanitizeEv",
+          "target_sha256": "0726ad636edb7b6c1fd13eebe1703debc8ea4acb64eaa8478385a1e37e80df32",
+          "bindings": {},
+          "got_bindings": {}
+        },
+        {
+          "address": "0xd50440",
+          "size": 220,
+          "symbol": "_ZN4Dare25PitchPanVolCallbackObject5Slot7Ev",
+          "target_sha256": "4cefbb26ef6a16e3c938f89185020c3d60af0a8dbb358456026b1d84e1211ffb",
+          "bindings": {
+            "Dare_PitchPanVolPool": "0x1939ad0"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xd50800",
+          "size": 680,
+          "symbol": "_ZN4Dare8DarePoolINS_25PitchPanVolCallbackObjectELj128EE8AllocateEv",
+          "target_sha256": "db708813c541b5139687c3c3476178e069c025c91a2424d213206e91abc60d9c",
+          "bindings": {
+            "_Z12DareAllocatemj": "0x722190",
+            "memcpy": "0xfa3330",
+            "memmove": "0xfa33b0",
+            "Dare_AllocatorEnabled": "0x191fb00",
+            "Dare_Allocator": "0x191faf8"
+          },
+          "got_bindings": {},
+          "literals": {
+            "18000000000000001770000000000000": "0x1334480"
+          }
+        },
+        {
+          "address": "0xd50d30",
+          "size": 220,
+          "symbol": "_ZN4Dare21RolloffCallbackObject5Slot7Ev",
+          "target_sha256": "e6fb1cdd732578743cf48e50dc96a0c5afcb46a9ca66169cfbead59c9e74558d",
+          "bindings": {
+            "Dare_RolloffPool": "0x1939aa0"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xd50e10",
+          "size": 680,
+          "symbol": "_ZN4Dare8DarePoolINS_21RolloffCallbackObjectELj128EE8AllocateEv",
+          "target_sha256": "abae8bb151c52cdd9d483037b688a7fc40a5fb93b894987da8a6d7abe06ab648",
+          "bindings": {
+            "_Z12DareAllocatemj": "0x722190",
+            "memcpy": "0xfa3330",
+            "memmove": "0xfa33b0",
+            "Dare_AllocatorEnabled": "0x191fb00",
+            "Dare_Allocator": "0x191faf8"
+          },
+          "got_bindings": {},
+          "literals": {
+            "18000000000000001758000000000000": "0x1333120"
+          }
+        },
+        {
+          "address": "0xd5c570",
+          "size": 736,
+          "symbol": "_ZN4Dare8DarePoolINS_20SwitchCallbackObjectELj256EE8AllocateEv",
+          "target_sha256": "8e6c954d26b05b35c24cb447ff297f9f3d4af0ffc016a5024afd88109ac5cf0e",
+          "bindings": {
+            "_Z12DareAllocatemj": "0x722190",
+            "memcpy": "0xfa3330",
+            "memmove": "0xfa33b0",
+            "Dare_AllocatorEnabled": "0x191fb00",
+            "Dare_Allocator": "0x191faf8"
+          },
+          "got_bindings": {},
+          "literals": {
+            "180000000000000017b0000000000000": "0x1334bc0"
+          }
+        },
+        {
+          "address": "0xd5caa0",
+          "size": 228,
+          "symbol": "_ZN4Dare20SwitchCallbackObject5Slot7Ev",
+          "target_sha256": "68cccf7ec8c077a4176f95485835819005c2cbc6c6375fd1194e441ba3a7e0ca",
+          "bindings": {
+            "Dare_SwitchPool": "0x1939ad8"
+          },
+          "got_bindings": {}
         }
       ]
+    },
+    {
+      "id": "gameplay_dare_path_destructors",
+      "source": "src/gameplay/DarePathDestructors.cpp",
+      "compiler": "8.0.1",
+      "source_review": "manual_reconstruction",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-std=c++11",
+        "-O2",
+        "-mcpu=cortex-a57",
+        "-fstrict-aliasing",
+        "-fomit-frame-pointer",
+        "-fno-pic",
+        "-fno-delete-null-pointer-checks",
+        "-ffunction-sections",
+        "-fdata-sections"
+      ],
+      "header_roots": [
+        "src/gameplay"
+      ],
+      "functions": [
+        {
+          "address": "0xd6a380",
+          "size": 188,
+          "symbol": "_ZN18OneShotSILENCEPathD2Ev",
+          "target_sha256": "269bd64230508b9db55908afed94dfe869c3fbc90373750c3fe526ce4bd2a4ed",
+          "bindings": {
+            "_ZTV18OneShotSILENCEPath": "0x18d2af0",
+            "Dare_AllocatorEnabled": "0x191fb00",
+            "Dare_Allocator": "0x191faf8",
+            "_ZTV5CPath": "0x18d2a40",
+            "_ZN16DareObjectHandleD1Ev": "0xd31160",
+            "_ZN5CPathD2Ev": "0xd6a910",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xd6a920",
+          "size": 196,
+          "symbol": "_ZN18OneShotSILENCEPathD0Ev",
+          "target_sha256": "934356a85dee335ed2b5ad3b14d0ffaf4bdb458f9ff7be04396d9d985364d107",
+          "bindings": {
+            "_ZTV18OneShotSILENCEPath": "0x18d2af0",
+            "Dare_AllocatorEnabled": "0x191fb00",
+            "Dare_Allocator": "0x191faf8",
+            "_ZTV5CPath": "0x18d2a40",
+            "_ZN16DareObjectHandleD1Ev": "0xd31160",
+            "_ZdlPv": "0xfa3b40",
+            "_ZN5CPathD2Ev": "0xd6a910",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xd6f5a0",
+          "size": 268,
+          "symbol": "_ZN11CEffectPathD2Ev",
+          "target_sha256": "682f235f8a86e9a435bda1789b66149205c40befcd51a0d5e29fe99852adbc6b",
+          "bindings": {
+            "_ZTV11CEffectPath": "0x18d3560",
+            "Dare_AllocatorEnabled": "0x191fb00",
+            "Dare_Allocator": "0x191faf8",
+            "_ZN15PathEffectChainD2Ev": "0xd713d0",
+            "_ZTV5CPath": "0x18d2a40",
+            "_ZN16DareObjectHandleD1Ev": "0xd31160",
+            "_ZN5CPathD2Ev": "0xd6a910",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xd776b0",
+          "size": 108,
+          "symbol": "_ZN23OneShotMULTITRACK3DPathD2Ev",
+          "target_sha256": "d806aeccab127206da60711ee18cf7ccaf75da94498cbac273ffe5e6bb1b2940",
+          "bindings": {
+            "_ZTV23OneShotMULTITRACK3DPath": "0x18d41d0",
+            "Dare_AllocatorEnabled": "0x191fb00",
+            "Dare_Allocator": "0x191faf8",
+            "_ZN25OneShotMULTITRACKPathBaseD2Ev": "0xd6b720",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xd77720",
+          "size": 116,
+          "symbol": "_ZN23OneShotMULTITRACK3DPathD0Ev",
+          "target_sha256": "d5ce81e4ea49a5b56b98f0f31b425ad660a9e19277646987f1656be573e46eba",
+          "bindings": {
+            "_ZTV23OneShotMULTITRACK3DPath": "0x18d41d0",
+            "Dare_AllocatorEnabled": "0x191fb00",
+            "Dare_Allocator": "0x191faf8",
+            "_ZN25OneShotMULTITRACKPathBaseD2Ev": "0xd6b720",
+            "_ZdlPv": "0xfa3b40",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xd78240",
+          "size": 128,
+          "symbol": "_ZN17OneShotSAMPLEPath17GetPlayParametersEP18PathPlayParameters",
+          "target_sha256": "fc174bfd79c330d0b914cfc2e20ec6be199b8ffed1deecf61097e85b38130617",
+          "bindings": {},
+          "got_bindings": {}
+        },
+        {
+          "address": "0xd782c0",
+          "size": 84,
+          "symbol": "_ZN17OneShotSAMPLEPath17SetPlayParametersEPK18PathPlayParameters",
+          "target_sha256": "7adfa7bae970ee0e06e66402b834ed3df0c4175f4360e366e1a2588a3407135e",
+          "bindings": {},
+          "got_bindings": {}
+        },
+        {
+          "address": "0xd88ea0",
+          "size": 76,
+          "symbol": "_ZN9SynthPathD2Ev",
+          "target_sha256": "593f78d6f060239cc25a5dfa13fd83b465fd6637e6e95d656fcb6d5e9109d922",
+          "bindings": {
+            "_ZTV9SynthPath": "0x18d5240",
+            "_ZN9SynthPath4StopEv": "0xd87dc0",
+            "_ZTV5CPath": "0x18d2a40",
+            "_ZN16DareObjectHandleD1Ev": "0xd31160",
+            "_ZN5CPathD2Ev": "0xd6a910",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xd88ef0",
+          "size": 84,
+          "symbol": "_ZN9SynthPathD0Ev",
+          "target_sha256": "3bab1223d8b3fd288fe68d529252e673df5340454930309315ee8ed122d0d524",
+          "bindings": {
+            "_ZTV9SynthPath": "0x18d5240",
+            "_ZN9SynthPath4StopEv": "0xd87dc0",
+            "_ZTV5CPath": "0x18d2a40",
+            "_ZN16DareObjectHandleD1Ev": "0xd31160",
+            "_ZdlPv": "0xfa3b40",
+            "_ZN5CPathD2Ev": "0xd6a910",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xd891d0",
+          "size": 124,
+          "symbol": "_ZN9SynthPath17GetPlayParametersEP18PathPlayParameters",
+          "target_sha256": "b3f7b04c83e41e67915cae9d073ff2e296d9661d31994853434667105739ab0b",
+          "bindings": {},
+          "got_bindings": {}
+        },
+        {
+          "address": "0xd89250",
+          "size": 80,
+          "symbol": "_ZN9SynthPath17SetPlayParametersEPK18PathPlayParameters",
+          "target_sha256": "04f61349bad950763459345e53f9f261ac2e7a02494af4809a82c8b11bec51fb",
+          "bindings": {},
+          "got_bindings": {}
+        }
+      ]
+    },
+    {
+      "id": "gameplay_dare_extensions",
+      "source": "src/gameplay/DareExtensions.cpp",
+      "compiler": "8.0.1",
+      "source_review": "manual_reconstruction",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-std=c++11",
+        "-O2",
+        "-mcpu=cortex-a57",
+        "-fstrict-aliasing",
+        "-fomit-frame-pointer",
+        "-fno-pic",
+        "-fno-delete-null-pointer-checks",
+        "-ffunction-sections",
+        "-fdata-sections"
+      ],
+      "header_roots": [
+        "src/gameplay"
+      ],
+      "functions": [
+        {
+          "address": "0xcf9210",
+          "size": 128,
+          "symbol": "_ZN4Dare7Private8ThemeExtD2Ev",
+          "target_sha256": "7a8be5a30021661ff85b5b0ec39be864963ead9030a1229e2df4185490b37a48",
+          "bindings": {
+            "_ZTVN4Dare7Private8ThemeExtE": "0x18cc1e0",
+            "Dare_AllocatorEnabled": "0x191fb00",
+            "Dare_Allocator": "0x191faf8",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xd11c80",
+          "size": 80,
+          "symbol": "_ZN4Dare7Private16VirtualPlayerExtD0Ev",
+          "target_sha256": "d7cb31c1d13fd3caffea3f2a9f78998677e33fb0b14dbe032f97a9a19f57511d",
+          "bindings": {
+            "_ZTVN4Dare7Private16VirtualPlayerExtE": "0x18cbed0",
+            "_ZN4Dare7Private20VirtualPlayerExtPart5ClearEv": "0xcf77b0",
+            "_ZN4Dare7Private20VirtualPlayerExtPartD1Ev": "0xcf7930",
+            "_ZdlPv": "0xfa3b40",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xd25b00",
+          "size": 80,
+          "symbol": "_ZN4Dare7Private10VirtualBus5Slot5EPNS0_16VirtualBusSourceE",
+          "target_sha256": "e8a4d8be6fb544e5575f7768c3a577d7ad744bb27ae0d040628383267df89341",
+          "bindings": {},
+          "got_bindings": {}
+        },
+        {
+          "address": "0xd324d0",
+          "size": 108,
+          "symbol": "_ZN4Dare7Private17DareDualSchedulerD0Ev",
+          "target_sha256": "8f9e57a858213de9a5281c8d256e5ba67ecf5246fdda6b5ee63fe5ee9b9f5055",
+          "bindings": {
+            "_ZTVN4Dare7Private17DareDualSchedulerE": "0x18cf7f8",
+            "Dare_AllocatorEnabled": "0x191fb00",
+            "Dare_Allocator": "0x191faf8",
+            "_ZdlPv": "0xfa3b40",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xd3bbd0",
+          "size": 64,
+          "symbol": "_ZN4Dare7Private18DareAsyncScheduler5Slot2Ev",
+          "target_sha256": "cca83b4f560b25f9e796365c5e231e462740a17db875352fd4baa30c33656919",
+          "bindings": {},
+          "got_bindings": {},
+          "literals": {
+            "03000000ffffffff": "0x1331288"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gameplay_dare_callback_objects",
+      "source": "src/gameplay/DareCallbackObjects.cpp",
+      "compiler": "8.0.1",
+      "source_review": "manual_reconstruction",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-std=c++11",
+        "-O2",
+        "-mcpu=cortex-a57",
+        "-fstrict-aliasing",
+        "-fomit-frame-pointer",
+        "-fno-pic",
+        "-fno-delete-null-pointer-checks",
+        "-ffunction-sections",
+        "-fdata-sections"
+      ],
+      "header_roots": [
+        "src/gameplay"
+      ],
+      "functions": []
+    },
+    {
+      "id": "gameplay_dare_object_pool",
+      "source": "src/gameplay/DareObjectPool.cpp",
+      "compiler": "8.0.1",
+      "source_review": "manual_reconstruction",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-std=c++11",
+        "-mcpu=cortex-a57",
+        "-fno-strict-aliasing",
+        "-O2",
+        "-fomit-frame-pointer",
+        "-fno-pic"
+      ],
+      "header_roots": [
+        "src/gameplay"
+      ],
+      "functions": []
     },
     {
       "id": "gameplay_dare_voices",
@@ -580342,11 +580929,156 @@
           "got_bindings": {}
         },
         {
+          "address": "0xd7b7e0",
+          "size": 128,
+          "symbol": "_ZN4Dare7Private28ManagerVoiceForVirtualPlayerINS0_20ManagerHardwareVoiceEE5Slot3Ev",
+          "target_sha256": "3521d378148305788fa2cec8efeac243ccefbc429242742a80a11c4b5f1cc9f9",
+          "bindings": {
+            "Dare_SndManager": "0x19397f0",
+            "_ZN4Dare7Private11ThemePlayer5PauseEv": "0xd7e9e0",
+            "_Z12DareAllocatemj": "0x722190",
+            "_ZN4Dare7Private10SndManagerC1Ev": "0xcf6830"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xd7b860",
+          "size": 128,
+          "symbol": "_ZN4Dare7Private28ManagerVoiceForVirtualPlayerINS0_20ManagerHardwareVoiceEE5Slot4Ev",
+          "target_sha256": "8dad84dec6a47d7f898dce2762bc7a31a10f20be0be1362eef4ff6c74b531b66",
+          "bindings": {
+            "Dare_SndManager": "0x19397f0",
+            "_ZN4Dare7Private11ThemePlayer6ResumeEv": "0xd7e890",
+            "_Z12DareAllocatemj": "0x722190",
+            "_ZN4Dare7Private10SndManagerC1Ev": "0xcf6830"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xd7ba00",
+          "size": 312,
+          "symbol": "_ZN4Dare7Private28ManagerVoiceForVirtualPlayerINS0_20ManagerHardwareVoiceEE7CompareEPS3_",
+          "target_sha256": "0745baedd2f9c8a58ea20806e80188c97f198b17fe785476c84780ab4c51edfc",
+          "bindings": {
+            "_ZN4Dare7Private10VoiceTrack6UpdateEv": "0xd7c7c0",
+            "_ZN4Dare7Private10VoiceTrack12UpdateTargetEv": "0xd7d120"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xd7c1a0",
+          "size": 308,
+          "symbol": "_ZN4Dare7Private28ManagerVoiceForVirtualPlayerINS0_20ManagerHardwareVoiceEE5StartEv",
+          "target_sha256": "8a8b6e9abfb8fb48430a65fda5c6633276fee288213314ac4625ec31582186f6",
+          "bindings": {
+            "_ZN4Dare7Private10VoiceTrack6UpdateEv": "0xd7c7c0",
+            "_ZN4Dare7Private10VoiceTrack12UpdateTargetEv": "0xd7d120",
+            "Dare_SndManager": "0x19397f0",
+            "_Z12DareAllocatemj": "0x722190",
+            "_ZN4Dare7Private10SndManagerC1Ev": "0xcf6830",
+            "_ZN4Dare7Private11ThemeHandle3GetEv": "0xd359b0",
+            "_ZN4Dare7Private10SndManager9VoiceList6CreateEPNS0_10ThemeEntryEPvj": "0xd7df10"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xd7c330",
+          "size": 264,
+          "symbol": "_ZN4Dare7Private28ManagerVoiceForVirtualPlayerINS0_20ManagerHardwareVoiceEE6Slot35Ev",
+          "target_sha256": "54258425a488ee5c0850b7ce5865195d990332e5e3a7e68f74a9e62067115ad2",
+          "bindings": {
+            "_ZN4Dare7Private10VoiceTrack6UpdateEv": "0xd7c7c0",
+            "_ZN4Dare7Private10VoiceTrack12UpdateTargetEv": "0xd7d120",
+            "Dare_SndManager": "0x19397f0",
+            "_Z12DareAllocatemj": "0x722190",
+            "_ZN4Dare7Private10SndManagerC1Ev": "0xcf6830",
+            "_ZN4Dare7Private10SndManager9VoiceList7RefreshEPNS0_12VirtualVoiceE": "0xd7db50"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xd7c570",
+          "size": 120,
+          "symbol": "_ZN4Dare7Private28ManagerVoiceForVirtualPlayerINS0_20ManagerHardwareVoiceEE6Slot39Ev",
+          "target_sha256": "438a1ab9efd2a0e8c2707f3f71be83d32c0ad5b26c620fe64b4f0618fe5f3f8b",
+          "bindings": {
+            "Dare_SndManager": "0x19397f0",
+            "_Z12DareAllocatemj": "0x722190",
+            "_ZN4Dare7Private10SndManagerC1Ev": "0xcf6830"
+          },
+          "got_bindings": {}
+        },
+        {
           "address": "0xd84520",
           "size": 104,
           "symbol": "_ZN4Dare7Private28ManagerVoiceForVirtualPlayerINS0_17ManagerSynthVoiceEE5Slot1Ei",
           "target_sha256": "c66907a5e00e6a7896aa39e40415ac575544b1b4a5817282ec29ab3965ac8650",
           "bindings": {},
+          "got_bindings": {}
+        },
+        {
+          "address": "0xd84600",
+          "size": 312,
+          "symbol": "_ZN4Dare7Private28ManagerVoiceForVirtualPlayerINS0_17ManagerSynthVoiceEE7CompareEPS3_",
+          "target_sha256": "8abcfe176d604a64d336d7537db6898e5107d7d0315eee2aa360f5a6b9ab0b3d",
+          "bindings": {
+            "_ZN4Dare7Private10VoiceTrack6UpdateEv": "0xd7c7c0",
+            "_ZN4Dare7Private10VoiceTrack12UpdateTargetEv": "0xd7d120"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xd84cd0",
+          "size": 308,
+          "symbol": "_ZN4Dare7Private28ManagerVoiceForVirtualPlayerINS0_17ManagerSynthVoiceEE5StartEv",
+          "target_sha256": "5c4825b382907c728dab57cccf5458f3f6ea7d3890912994a650d8dabe5fa1ce",
+          "bindings": {
+            "_ZN4Dare7Private10VoiceTrack6UpdateEv": "0xd7c7c0",
+            "_ZN4Dare7Private10VoiceTrack12UpdateTargetEv": "0xd7d120",
+            "Dare_SndManager": "0x19397f0",
+            "_Z12DareAllocatemj": "0x722190",
+            "_ZN4Dare7Private10SndManagerC1Ev": "0xcf6830",
+            "_ZN4Dare7Private11ThemeHandle3GetEv": "0xd359b0",
+            "_ZN4Dare7Private10SndManager9VoiceList6CreateEPNS0_10ThemeEntryEPvj": "0xd7df10"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xd84e60",
+          "size": 264,
+          "symbol": "_ZN4Dare7Private28ManagerVoiceForVirtualPlayerINS0_17ManagerSynthVoiceEE6Slot35Ev",
+          "target_sha256": "86d7b898cdb9c5958dd5ac1002fe9a6a9bbf7a81d2ca35eaeab41f6a6a6f85d9",
+          "bindings": {
+            "_ZN4Dare7Private10VoiceTrack6UpdateEv": "0xd7c7c0",
+            "_ZN4Dare7Private10VoiceTrack12UpdateTargetEv": "0xd7d120",
+            "Dare_SndManager": "0x19397f0",
+            "_Z12DareAllocatemj": "0x722190",
+            "_ZN4Dare7Private10SndManagerC1Ev": "0xcf6830",
+            "_ZN4Dare7Private10SndManager9VoiceList7RefreshEPNS0_12VirtualVoiceE": "0xd7db50"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xd850a0",
+          "size": 120,
+          "symbol": "_ZN4Dare7Private28ManagerVoiceForVirtualPlayerINS0_17ManagerSynthVoiceEE6Slot39Ev",
+          "target_sha256": "31459e2170f393748ba760e0a124fe854dd3e548ea8bd22c2203fa2189ab0c97",
+          "bindings": {
+            "Dare_SndManager": "0x19397f0",
+            "_Z12DareAllocatemj": "0x722190",
+            "_ZN4Dare7Private10SndManagerC1Ev": "0xcf6830"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xd8a050",
+          "size": 312,
+          "symbol": "_ZN4Dare7Private28ManagerVoiceForVirtualPlayerINS0_17ManagerThemeVoiceEE7CompareEPS3_",
+          "target_sha256": "5bd5712e2d7b60427fed392c4ba6c3ecb6cc3c91d9d3e2d2eb51d1c3e56b6c5b",
+          "bindings": {
+            "_ZN4Dare7Private10VoiceTrack6UpdateEv": "0xd7c7c0",
+            "_ZN4Dare7Private10VoiceTrack12UpdateTargetEv": "0xd7d120"
+          },
           "got_bindings": {}
         },
         {
@@ -580357,6 +581089,49 @@
           "bindings": {
             "_ZN4Dare7Private13ThemeSettings6AssignEPKS1_": "0xd4f100",
             "_ZN4Dare7Private28ManagerVoiceForVirtualPlayerINS0_17ManagerThemeVoiceEE4PlayEPvS4_": "0xd84860"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xd8a410",
+          "size": 308,
+          "symbol": "_ZN4Dare7Private28ManagerVoiceForVirtualPlayerINS0_17ManagerThemeVoiceEE5StartEv",
+          "target_sha256": "4d398ee320b0ff5fef7071b0f8290a658af1a6ca0daa67d32c17199fd378f536",
+          "bindings": {
+            "_ZN4Dare7Private10VoiceTrack6UpdateEv": "0xd7c7c0",
+            "_ZN4Dare7Private10VoiceTrack12UpdateTargetEv": "0xd7d120",
+            "Dare_SndManager": "0x19397f0",
+            "_Z12DareAllocatemj": "0x722190",
+            "_ZN4Dare7Private10SndManagerC1Ev": "0xcf6830",
+            "_ZN4Dare7Private11ThemeHandle3GetEv": "0xd359b0",
+            "_ZN4Dare7Private10SndManager9VoiceList6CreateEPNS0_10ThemeEntryEPvj": "0xd7df10"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xd8a5a0",
+          "size": 264,
+          "symbol": "_ZN4Dare7Private28ManagerVoiceForVirtualPlayerINS0_17ManagerThemeVoiceEE6Slot35Ev",
+          "target_sha256": "2bb56e19a97a76c9f403f1b489d25c2c6612ceec762b493158d8b8a527c7ce19",
+          "bindings": {
+            "_ZN4Dare7Private10VoiceTrack6UpdateEv": "0xd7c7c0",
+            "_ZN4Dare7Private10VoiceTrack12UpdateTargetEv": "0xd7d120",
+            "Dare_SndManager": "0x19397f0",
+            "_Z12DareAllocatemj": "0x722190",
+            "_ZN4Dare7Private10SndManagerC1Ev": "0xcf6830",
+            "_ZN4Dare7Private10SndManager9VoiceList7RefreshEPNS0_12VirtualVoiceE": "0xd7db50"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xd8a7e0",
+          "size": 120,
+          "symbol": "_ZN4Dare7Private28ManagerVoiceForVirtualPlayerINS0_17ManagerThemeVoiceEE6Slot39Ev",
+          "target_sha256": "e463e52c5f635e0e4509251596761164ea4a4658a3880ad5f3ab3e1c3f0b4d07",
+          "bindings": {
+            "Dare_SndManager": "0x19397f0",
+            "_Z12DareAllocatemj": "0x722190",
+            "_ZN4Dare7Private10SndManagerC1Ev": "0xcf6830"
           },
           "got_bindings": {}
         },
@@ -580377,6 +581152,60 @@
           "target_sha256": "7c2c8386270c51f8206d05a9f12b1a7fa7c497f5d327df57a9d623686a62a89b",
           "bindings": {
             "_ZN4Dare7Private11ThemeHandle3GetEv": "0xd359b0"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xd8de00",
+          "size": 312,
+          "symbol": "_ZN4Dare7Private28ManagerVoiceForVirtualPlayerINS0_16ManagerToolVoiceEE7CompareEPS3_",
+          "target_sha256": "bb79cfc3908bd55db6eee5754537ae8ecaea08943e811fd803a077f6248b352e",
+          "bindings": {
+            "_ZN4Dare7Private10VoiceTrack6UpdateEv": "0xd7c7c0",
+            "_ZN4Dare7Private10VoiceTrack12UpdateTargetEv": "0xd7d120"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xd8e070",
+          "size": 308,
+          "symbol": "_ZN4Dare7Private28ManagerVoiceForVirtualPlayerINS0_16ManagerToolVoiceEE5StartEv",
+          "target_sha256": "dc71ba2cb604382f975b5d9fe9d41e519849b5bc62c21c4b7cedc2c38f3bb9e5",
+          "bindings": {
+            "_ZN4Dare7Private10VoiceTrack6UpdateEv": "0xd7c7c0",
+            "_ZN4Dare7Private10VoiceTrack12UpdateTargetEv": "0xd7d120",
+            "Dare_SndManager": "0x19397f0",
+            "_Z12DareAllocatemj": "0x722190",
+            "_ZN4Dare7Private10SndManagerC1Ev": "0xcf6830",
+            "_ZN4Dare7Private11ThemeHandle3GetEv": "0xd359b0",
+            "_ZN4Dare7Private10SndManager9VoiceList6CreateEPNS0_10ThemeEntryEPvj": "0xd7df10"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xd8e200",
+          "size": 264,
+          "symbol": "_ZN4Dare7Private28ManagerVoiceForVirtualPlayerINS0_16ManagerToolVoiceEE6Slot35Ev",
+          "target_sha256": "6f806608b2ef6453503918aec766a6251b800902e7bf636a9b46db0735968677",
+          "bindings": {
+            "_ZN4Dare7Private10VoiceTrack6UpdateEv": "0xd7c7c0",
+            "_ZN4Dare7Private10VoiceTrack12UpdateTargetEv": "0xd7d120",
+            "Dare_SndManager": "0x19397f0",
+            "_Z12DareAllocatemj": "0x722190",
+            "_ZN4Dare7Private10SndManagerC1Ev": "0xcf6830",
+            "_ZN4Dare7Private10SndManager9VoiceList7RefreshEPNS0_12VirtualVoiceE": "0xd7db50"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xd8e440",
+          "size": 120,
+          "symbol": "_ZN4Dare7Private28ManagerVoiceForVirtualPlayerINS0_16ManagerToolVoiceEE6Slot39Ev",
+          "target_sha256": "0f50445cd6dcfdfc599da9f04117ea1a0f6bb46ee07444274978dbc17f374fbc",
+          "bindings": {
+            "Dare_SndManager": "0x19397f0",
+            "_Z12DareAllocatemj": "0x722190",
+            "_ZN4Dare7Private10SndManagerC1Ev": "0xcf6830"
           },
           "got_bindings": {}
         },
@@ -580418,12 +581247,101 @@
       ],
       "functions": [
         {
+          "address": "0xcf3bc0",
+          "size": 312,
+          "symbol": "_ZN4Dare7Private14SCurveStrategy5ApplyEf",
+          "target_sha256": "3b75511f9470660fdbeb5938558c64f0b0911a31fae1f6b8270e6f2c367b4785",
+          "bindings": {},
+          "got_bindings": {},
+          "literals": {
+            "625f0f3e": "0x13320bc",
+            "83f9a23f": "0x1331fa0",
+            "922eb8bf": "0x1331fd4",
+            "78eead3e": "0x1331f34",
+            "0000fe42": "0x133201c",
+            "00000034": "0x1332128",
+            "0000fec2": "0x1331f4c",
+            "7976b13e": "0x1331ecc"
+          }
+        },
+        {
+          "address": "0xcf3d00",
+          "size": 160,
+          "symbol": "_ZN4Dare7Private18PowerCurveStrategy5ApplyEf",
+          "target_sha256": "b0029dc1551d899de57c72f80a7d97b68ecd54a12db9796039b4b8a83a12e7c2",
+          "bindings": {},
+          "got_bindings": {},
+          "literals": {
+            "00000034": "0x1332128",
+            "0000fec2": "0x1331f4c",
+            "7976b13e": "0x1331ecc",
+            "78eeadbe": "0x1331e74",
+            "0000fe42": "0x133201c"
+          }
+        },
+        {
           "address": "0xcfb440",
           "size": 92,
           "symbol": "_ZN4Dare7Private14DareEffectBase13SetParametersEPKNS0_19EffectParameterListE",
           "target_sha256": "df8d2cb962c0732e531967d95492de8e62114530b8d321c38cbce143669815d3",
           "bindings": {},
           "got_bindings": {}
+        },
+        {
+          "address": "0xd03930",
+          "size": 124,
+          "symbol": "_ZN4Dare7Private10UserEffectINS0_12AmpModEffectEE12GetParameterEhPhPi",
+          "target_sha256": "5c98412c08ed2276269ab55db5540dcda8a7631e81393c21ddd9c0a097d5c870",
+          "bindings": {},
+          "got_bindings": {},
+          "immutable_sections": {
+            "25": "0x1391a44"
+          }
+        },
+        {
+          "address": "0xd04340",
+          "size": 204,
+          "symbol": "_ZN4Dare7Private22PlatformSpecificEffectINS0_16DistortionEffectEE12GetParameterEiPNS0_21EffectParameterReportE",
+          "target_sha256": "68256a4390771fdfd7faa6aae2d00624e08afe744eff877d9cd7f3f9c191074a",
+          "bindings": {},
+          "got_bindings": {},
+          "literals": {
+            "00000034": "0x1332128",
+            "0000fec2": "0x1331f4c",
+            "7976b13e": "0x1331ecc",
+            "789a5440": "0x133213c"
+          }
+        },
+        {
+          "address": "0xd04ce0",
+          "size": 176,
+          "symbol": "_ZN4Dare7Private10UserEffectINS0_16DistortionEffectEE12GetParameterEhPhPi",
+          "target_sha256": "cb796a13326f4ab35cb35c6c4d8e6d09050542ce98fe96a49e4dcba2fa0c8bea",
+          "bindings": {},
+          "got_bindings": {},
+          "literals": {
+            "00000034": "0x1332128",
+            "0000fec2": "0x1331f4c",
+            "7976b13e": "0x1331ecc",
+            "789a5440": "0x133213c"
+          }
+        },
+        {
+          "address": "0xd09340",
+          "size": 292,
+          "symbol": "_ZN4Dare7Private10UserEffectINS0_14CrossComEffectEE12GetParameterEhPhPi",
+          "target_sha256": "7c8da7397ac8ce67594f02dd479e1be789a74a214cab7efa20dffe9b32cba39e",
+          "bindings": {},
+          "got_bindings": {},
+          "immutable_sections": {
+            "43": "0x1391a6e"
+          },
+          "literals": {
+            "00000034": "0x1332128",
+            "0000fec2": "0x1331f4c",
+            "7976b13e": "0x1331ecc",
+            "789a5440": "0x133213c"
+          }
         },
         {
           "address": "0xd0c070",
@@ -580448,6 +581366,20 @@
           }
         },
         {
+          "address": "0xd0d920",
+          "size": 188,
+          "symbol": "_ZN4Dare7Private22PlatformSpecificEffectINS0_15OcclusionEffectEE12GetParameterEiPNS0_21EffectParameterReportE",
+          "target_sha256": "15ba79b589c4ba4b435c128303dd22d8c898dd6fd3fb1414c029d6958f382d21",
+          "bindings": {},
+          "got_bindings": {},
+          "literals": {
+            "0100000004000000": "0x1330ba0"
+          },
+          "immutable_sections": {
+            "29": "0x1391aa0"
+          }
+        },
+        {
           "address": "0xd0e100",
           "size": 128,
           "symbol": "_ZN4Dare7Private22PlatformSpecificEffectINS0_14BandPassEffectEE12GetParameterEiPNS0_21EffectParameterReportE",
@@ -580456,6 +581388,17 @@
           "got_bindings": {},
           "immutable_sections": {
             "13": "0x1391aa8"
+          }
+        },
+        {
+          "address": "0xd0e7c0",
+          "size": 116,
+          "symbol": "_ZN4Dare7Private10UserEffectINS0_15OcclusionEffectEE12GetParameterEhPhPi",
+          "target_sha256": "7eeafa8d6fb9a7222a28a6154e9a76cae13ae9577efb5017972a0e45c7ddacba",
+          "bindings": {},
+          "got_bindings": {},
+          "immutable_sections": {
+            "22": "0x1391ab0"
           }
         },
         {
@@ -580586,6 +581529,36 @@
           "got_bindings": {}
         },
         {
+          "address": "0xd32270",
+          "size": 184,
+          "symbol": "_ZN4Dare7Private13PooledCommandINS0_14Command_d32270ELj64EXadL_Z20Dare_CommandPool_b68EEE7ReleaseEPv",
+          "target_sha256": "cad72bce918b880a1eeee4f3f97147a423abe8a7ca0d2bbd86b99182ccbefa9d",
+          "bindings": {
+            "Dare_CommandPool_b68": "0x1939b68"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xd34b30",
+          "size": 160,
+          "symbol": "_ZN4Dare7Private13PooledCommandINS0_13UpdateCommandELj64EXadL_Z15Dare_UpdatePoolEEE7ReleaseEPv",
+          "target_sha256": "e324bad0955649599bf3c69a4996a4516041cebb4662251f0dd12874ffd50abc",
+          "bindings": {
+            "Dare_UpdatePool": "0x1939b70"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xd3c810",
+          "size": 184,
+          "symbol": "_ZN4Dare7Private13PooledCommandINS0_18DareAsyncScheduler18SynchronizeCommandELj64EXadL_Z20Dare_SynchronizePoolEEE7ReleaseEPv",
+          "target_sha256": "017c486e594584e70b1ec0b70026e4b7abf86713ded1b0fb4fa79fca7d8a5bfe",
+          "bindings": {
+            "Dare_SynchronizePool": "0x1939bb0"
+          },
+          "got_bindings": {}
+        },
+        {
           "address": "0xd4e740",
           "size": 120,
           "symbol": "_ZN4Dare7Private9DareStackINS0_16StackItem_d4e740EED2Ev",
@@ -580615,6 +581588,31 @@
           "symbol": "_ZN4Dare7Private14AssoMultiEvent5Slot4Efi",
           "target_sha256": "98e5a54bf6f9547708a1c7d83df31ccf74816390dbc1a97f80f4040e3194c29c",
           "bindings": {},
+          "got_bindings": {}
+        },
+        {
+          "address": "0xd56920",
+          "size": 264,
+          "symbol": "_ZN4Dare7Private14AssoMultiEventD2Ev",
+          "target_sha256": "083b7f77bb7ec22d900a66ff6749ab422e783f5bef2f6395d3bbf46eb508b9a8",
+          "bindings": {
+            "_ZTVN4Dare7Private14AssoMultiEventE": "0x18d1a10",
+            "Dare_AssoMultiEventPool": "0x1939df8",
+            "_ZN4Dare7Private8AssoBaseD2Ev": "0xd539d0"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xd56a30",
+          "size": 272,
+          "symbol": "_ZN4Dare7Private14AssoMultiEventD0Ev",
+          "target_sha256": "e86d823c5cec9f218d666c5b31d8d96e37616894c897571e59b460106fa39e9b",
+          "bindings": {
+            "_ZTVN4Dare7Private14AssoMultiEventE": "0x18d1a10",
+            "Dare_AssoMultiEventPool": "0x1939df8",
+            "_ZN4Dare7Private8AssoBaseD2Ev": "0xd539d0",
+            "_ZdlPv": "0xfa3b40"
+          },
           "got_bindings": {}
         },
         {
@@ -580654,6 +581652,105 @@
           "got_bindings": {}
         },
         {
+          "address": "0xd57c60",
+          "size": 188,
+          "symbol": "_ZN4Dare7Private16RegisteredClientIXadL_Z20Dare_CallbackKind130EELj24EE16RegisteredObjectEv",
+          "target_sha256": "e96311a16fceb3d07cf9a0bd985b400c2b5e4c754f6bab04b2d53bc867fd5110",
+          "bindings": {
+            "Dare_CallbackRegistry": "0x1939a88",
+            "_ZN4Dare7Private12DareAllocateEmj": "0x722190",
+            "_ZN4Dare7Private16CallbackRegistryC1Ev": "0xd147f0",
+            "_ZN2nn2os9LockMutexEPNS0_9MutexTypeE": "0xfa4950",
+            "Dare_CallbackKind130": "0x1939130",
+            "_ZN2nn2os11UnlockMutexEPNS0_9MutexTypeE": "0xfa4960"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xd58300",
+          "size": 188,
+          "symbol": "_ZN4Dare7Private16RegisteredClientIXadL_Z20Dare_CallbackKind12cEELj24EE16RegisteredObjectEv",
+          "target_sha256": "2118cf071c8043fb615a05d152003a39e6e5c22bc3c03024090c4d08b3520248",
+          "bindings": {
+            "Dare_CallbackRegistry": "0x1939a88",
+            "_ZN4Dare7Private12DareAllocateEmj": "0x722190",
+            "_ZN4Dare7Private16CallbackRegistryC1Ev": "0xd147f0",
+            "_ZN2nn2os9LockMutexEPNS0_9MutexTypeE": "0xfa4950",
+            "Dare_CallbackKind12c": "0x193912c",
+            "_ZN2nn2os11UnlockMutexEPNS0_9MutexTypeE": "0xfa4960"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xd588e0",
+          "size": 188,
+          "symbol": "_ZN4Dare7Private16RegisteredClientIXadL_Z20Dare_CallbackKind128EELj24EE16RegisteredObjectEv",
+          "target_sha256": "60c37abcb8a3a2e65ca5ebc6f6b487340bc0c6affd3656fbacd7516127ff3490",
+          "bindings": {
+            "Dare_CallbackRegistry": "0x1939a88",
+            "_ZN4Dare7Private12DareAllocateEmj": "0x722190",
+            "_ZN4Dare7Private16CallbackRegistryC1Ev": "0xd147f0",
+            "_ZN2nn2os9LockMutexEPNS0_9MutexTypeE": "0xfa4950",
+            "Dare_CallbackKind128": "0x1939128",
+            "_ZN2nn2os11UnlockMutexEPNS0_9MutexTypeE": "0xfa4960"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xd58f10",
+          "size": 188,
+          "symbol": "_ZN4Dare7Private16RegisteredClientIXadL_Z20Dare_CallbackKind124EELj24EE16RegisteredObjectEv",
+          "target_sha256": "9150bd9c7cd3ad84db9f8fee5fb5b9f1b1001056a6f41c966200f055ea39dfe6",
+          "bindings": {
+            "Dare_CallbackRegistry": "0x1939a88",
+            "_ZN4Dare7Private12DareAllocateEmj": "0x722190",
+            "_ZN4Dare7Private16CallbackRegistryC1Ev": "0xd147f0",
+            "_ZN2nn2os9LockMutexEPNS0_9MutexTypeE": "0xfa4950",
+            "Dare_CallbackKind124": "0x1939124",
+            "_ZN2nn2os11UnlockMutexEPNS0_9MutexTypeE": "0xfa4960"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xd5bf30",
+          "size": 188,
+          "symbol": "_ZN4Dare7Private16RegisteredClientIXadL_Z20Dare_CallbackKind134EELj24EE16RegisteredObjectEv",
+          "target_sha256": "a96423312ee75422262a2ead41f8aa3f4b668375881800539bedac543bae836d",
+          "bindings": {
+            "Dare_CallbackRegistry": "0x1939a88",
+            "_ZN4Dare7Private12DareAllocateEmj": "0x722190",
+            "_ZN4Dare7Private16CallbackRegistryC1Ev": "0xd147f0",
+            "_ZN2nn2os9LockMutexEPNS0_9MutexTypeE": "0xfa4950",
+            "Dare_CallbackKind134": "0x1939134",
+            "_ZN2nn2os11UnlockMutexEPNS0_9MutexTypeE": "0xfa4960"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xd5cd90",
+          "size": 280,
+          "symbol": "_ZN4Dare7Private10AssoSwitchD2Ev",
+          "target_sha256": "dd5ff0bf1bcb058efed5dac4bd2872cf18d85a63f4aadb59335d2a54a0afe50c",
+          "bindings": {
+            "_ZTVN4Dare7Private10AssoSwitchE": "0x18d18a0",
+            "Dare_AssoSwitchPool": "0x1939de8",
+            "_ZN4Dare7Private9AssoTableD1Ev": "0xd538f0",
+            "_ZN4Dare7Private4AssoD2Ev": "0xd539d0"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xd5d100",
+          "size": 212,
+          "symbol": "_ZN4Dare7Private10AssoSwitch6Slot11EPKNS0_8AssoBase5StateE",
+          "target_sha256": "c2dc8371c758d7f9c27513742dbf472282ce33baacf8672ab3c704f54a9e843d",
+          "bindings": {
+            "_ZN4Dare7Private10AssoSwitch11Update599e0Ev": "0xd599e0",
+            "_ZN4Dare7Private10AssoSwitch11Update59b00Ev": "0xd59b00"
+          },
+          "got_bindings": {}
+        },
+        {
           "address": "0xd5d350",
           "size": 72,
           "symbol": "_ZN4Dare7Private10AssoSwitch6Slot17Ev",
@@ -580669,12 +581766,27 @@
           "symbol": "_ZN4Dare7Private8AssoPlay5Slot4Ef",
           "target_sha256": "c54d6f6f5e332f45a224ea172cfe6b6012df7d98a661ae002f04e769333ed52b",
           "bindings": {
-            "_ZN4Dare7Private8AssoPlay4Ramp3SetEff": "0xd56010"
+            "_ZN4Dare7Private8AssoRamp3SetEff": "0xd56010"
           },
           "got_bindings": {},
           "literals": {
             "0000c0c2": "0x1332130"
           }
+        },
+        {
+          "address": "0xd5d5f0",
+          "size": 260,
+          "symbol": "_ZN4Dare7Private13AssoPlaySynthD2Ev",
+          "target_sha256": "9197704c01bb8f2cbb8e4e593488ae17ddc82243c2ccfcf5599e96b8ce8bcbbe",
+          "bindings": {
+            "_ZTVN4Dare7Private13AssoPlaySynthE": "0x18d17f8",
+            "Dare_SynthSounds": "0x1939560",
+            "_ZN4Dare7Private11SynthSounds7ReleaseEPNS0_12PlayingSoundE": "0xcf62c0",
+            "Dare_AssoPlaySynthPool": "0x1939e00",
+            "_ZN4Dare7Private8AssoPlayD2Ev": "0xd90560",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
         },
         {
           "address": "0xd5edf0",
@@ -581075,6 +582187,36 @@
           "got_bindings": {}
         },
         {
+          "address": "0xd62fd0",
+          "size": 188,
+          "symbol": "_ZN4Dare7Private16RegisteredClientIXadL_Z20Dare_CallbackKind144EELj56EE16RegisteredObjectEv",
+          "target_sha256": "0f0dcae061628301d978d36ed0f7c7433ac39b836be185b4a980a58a7b4cd923",
+          "bindings": {
+            "Dare_CallbackRegistry": "0x1939a88",
+            "_ZN4Dare7Private12DareAllocateEmj": "0x722190",
+            "_ZN4Dare7Private16CallbackRegistryC1Ev": "0xd147f0",
+            "_ZN2nn2os9LockMutexEPNS0_9MutexTypeE": "0xfa4950",
+            "Dare_CallbackKind144": "0x1939144",
+            "_ZN2nn2os11UnlockMutexEPNS0_9MutexTypeE": "0xfa4960"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xd63900",
+          "size": 188,
+          "symbol": "_ZN4Dare7Private16RegisteredClientIXadL_Z20Dare_CallbackKind140EELj48EE16RegisteredObjectEv",
+          "target_sha256": "bb734e660d5d50d0c1e93a1f67c18bb47ebbc8e41dfbcfeb490671171b0422c5",
+          "bindings": {
+            "Dare_CallbackRegistry": "0x1939a88",
+            "_ZN4Dare7Private12DareAllocateEmj": "0x722190",
+            "_ZN4Dare7Private16CallbackRegistryC1Ev": "0xd147f0",
+            "_ZN2nn2os9LockMutexEPNS0_9MutexTypeE": "0xfa4950",
+            "Dare_CallbackKind140": "0x1939140",
+            "_ZN2nn2os11UnlockMutexEPNS0_9MutexTypeE": "0xfa4960"
+          },
+          "got_bindings": {}
+        },
+        {
           "address": "0xd7aef0",
           "size": 76,
           "symbol": "_ZN4Dare7Private10DareVectorINS0_17VectorItem_d7aef0EED2Ev",
@@ -581087,6 +582229,21 @@
           "got_bindings": {}
         },
         {
+          "address": "0xd892a0",
+          "size": 188,
+          "symbol": "_ZN4Dare7Private16RegisteredClientIXadL_Z20Dare_CallbackKind13cEELj24EE16RegisteredObjectEv",
+          "target_sha256": "30d14443b38816e9788893301a16770bb27d90537d7be06429cab65ff3521531",
+          "bindings": {
+            "Dare_CallbackRegistry": "0x1939a88",
+            "_ZN4Dare7Private12DareAllocateEmj": "0x722190",
+            "_ZN4Dare7Private16CallbackRegistryC1Ev": "0xd147f0",
+            "_ZN2nn2os9LockMutexEPNS0_9MutexTypeE": "0xfa4950",
+            "Dare_CallbackKind13c": "0x193913c",
+            "_ZN2nn2os11UnlockMutexEPNS0_9MutexTypeE": "0xfa4960"
+          },
+          "got_bindings": {}
+        },
+        {
           "address": "0xd90000",
           "size": 276,
           "symbol": "_ZN4Dare7Private20AdvanceWrappedSound2EPNS0_13WrappedSound2E",
@@ -581094,6 +582251,24 @@
           "bindings": {
             "_ZN4Dare7Private12PlayingSound4KindEv": "0xd310a0",
             "_ZN4Dare7Private9MakeSoundEPviS1_iiS1_": "0xd65f50"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xd90560",
+          "size": 496,
+          "symbol": "_ZN4Dare7Private8AssoPlayD2Ev",
+          "target_sha256": "e736dd7e5d7fcb6c6b0510ea0cd9eb44f77d1b89a70af4003e8eaa94d02f1539",
+          "bindings": {
+            "_ZTVN4Dare7Private8AssoPlayE": "0x18d6008",
+            "_ZN4Dare7Private12PlayingSound4KindEv": "0xd310a0",
+            "Dare_SoundKinds": "0x18d2318",
+            "Dare_AssoPlayPool": "0x1939de0",
+            "_ZN4Dare7Private11DareGetTickEv": "0xfa3b00",
+            "Dare_TickBase": "0x195b648",
+            "_ZN4Dare7Private4AssoD2Ev": "0xd539d0",
+            "_ZN4Dare7Private8AssoRampD2Ev": "0xd36e40",
+            "__clang_call_terminate": "0x6768b8"
           },
           "got_bindings": {}
         },
@@ -581241,6 +582416,16 @@
           "got_bindings": {}
         },
         {
+          "address": "0xd9b400",
+          "size": 184,
+          "symbol": "_ZN4Dare7Private13PooledCommandINS0_25UnloadAtomicObjectCommandELj64EXadL_Z27Dare_UnloadAtomicObjectPoolEEE7ReleaseEPv",
+          "target_sha256": "4b0bdbec9bc6e8904b49759ababb9935c745acc9ea60cd31156a6d7221387c0c",
+          "bindings": {
+            "Dare_UnloadAtomicObjectPool": "0x1939bc8"
+          },
+          "got_bindings": {}
+        },
+        {
           "address": "0xda2210",
           "size": 80,
           "symbol": "_ZN4Dare7Private24LoadUnloadPackageCommandD2Ev",
@@ -581250,6 +582435,16 @@
             "Dare_AllocatorEnabled": "0x191fb00",
             "Dare_Allocator": "0x191faf8",
             "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xda22d0",
+          "size": 184,
+          "symbol": "_ZN4Dare7Private13PooledCommandINS0_24LoadUnloadPackageCommandELj32EXadL_Z26Dare_LoadUnloadPackagePoolEEE7ReleaseEPv",
+          "target_sha256": "b7f6fb47e8bf06e5a5852210859645b3f3f422dc7d7bffa49fae9333ccfad578",
+          "bindings": {
+            "Dare_LoadUnloadPackagePool": "0x1939c18"
           },
           "got_bindings": {}
         },
@@ -581274,6 +582469,36 @@
             "Dare_AllocatorEnabled": "0x191fb00",
             "Dare_Allocator": "0x191faf8",
             "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xdb2680",
+          "size": 200,
+          "symbol": "_ZN4Dare7Private13PooledCommandINS0_23SendSoundRequestCommandELj64EXadL_Z25Dare_SendSoundRequestPoolEEE7ReleaseEPv",
+          "target_sha256": "9b1380a2d8b1ca1b52f00293fba13f4544cab272ffcdcfaa6a65a2fe1cad83ef",
+          "bindings": {
+            "Dare_SendSoundRequestPool": "0x1939bb8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xdb2d50",
+          "size": 184,
+          "symbol": "_ZN4Dare7Private13PooledCommandINS0_19SetPlayStateCommandELj64EXadL_Z21Dare_SetPlayStatePoolEEE7ReleaseEPv",
+          "target_sha256": "f46454a30d5b5d42c6142af942e1e41b59a76de1122dcf274d16e89c68c2c5af",
+          "bindings": {
+            "Dare_SetPlayStatePool": "0x1939cb8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xdb3000",
+          "size": 184,
+          "symbol": "_ZN4Dare7Private13PooledCommandINS0_13PresetCommandELj64EXadL_Z15Dare_PresetPoolEEE7ReleaseEPv",
+          "target_sha256": "b905727b25263eaa891b2870c00c30a1d8ed4d57e87d0c4ee9a0abaadff0a390",
+          "bindings": {
+            "Dare_PresetPool": "0x1939cb0"
           },
           "got_bindings": {}
         },
@@ -581305,6 +582530,26 @@
           "got_bindings": {}
         },
         {
+          "address": "0xdb3930",
+          "size": 168,
+          "symbol": "_ZN4Dare7Private13PooledCommandINS0_22KillSoundObjectCommandELj64EXadL_Z24Dare_KillSoundObjectPoolEEE7ReleaseEPv",
+          "target_sha256": "22e661a4922d205fe8fb3deeb97ef92aa8b188c262bfba157913e2ce99b21ea7",
+          "bindings": {
+            "Dare_KillSoundObjectPool": "0x1939bd8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xdb3dd0",
+          "size": 200,
+          "symbol": "_ZN4Dare7Private13PooledCommandINS0_10MicCommandELj64EXadL_Z12Dare_MicPoolEEE7ReleaseEPv",
+          "target_sha256": "5642512956f0588d14e21a144b905f33fb66c3b10cd6d3c7c89e333e57794499",
+          "bindings": {
+            "Dare_MicPool": "0x1939cc0"
+          },
+          "got_bindings": {}
+        },
+        {
           "address": "0xdb3ed0",
           "size": 88,
           "symbol": "_ZN4Dare7Private24SetRetSoundMicrosCommand7ExecuteEv",
@@ -581314,6 +582559,16 @@
             "_ZN4Dare7Private12DareAllocateEmj": "0x722190",
             "_ZN4Dare7Private16CallbackRegistryC1Ev": "0xd147f0",
             "_ZN4Dare7Private16CallbackRegistry17SetRetSoundMicrosERKNS0_11SoundMicrosE": "0xda15e0"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xdb3f50",
+          "size": 200,
+          "symbol": "_ZN4Dare7Private13PooledCommandINS0_24SetRetSoundMicrosCommandELj128EXadL_Z26Dare_SetRetSoundMicrosPoolEEE7ReleaseEPv",
+          "target_sha256": "eed4bd5ae3968a9e6689015938c63d7d4c9a85f6dd176abe70d1266cfdbccc4d",
+          "bindings": {
+            "Dare_SetRetSoundMicrosPool": "0x1939c08"
           },
           "got_bindings": {}
         },
@@ -581341,6 +582596,46 @@
             "Dare_Allocator": "0x191faf8",
             "_ZdlPv": "0xfa3b40",
             "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xdb4130",
+          "size": 200,
+          "symbol": "_ZN4Dare7Private13PooledCommandINS0_25AddSoundObjectTypeCommandELj128EXadL_Z27Dare_AddSoundObjectTypePoolEEE7ReleaseEPv",
+          "target_sha256": "77825a0029eff829927e2a5d5034a668499e1424785e2552036a6eaefa542c15",
+          "bindings": {
+            "Dare_AddSoundObjectTypePool": "0x1939be8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xdb65a0",
+          "size": 176,
+          "symbol": "_ZN4Dare7Private13PooledCommandINS0_29ChangeVolumeObjectTypeCommandELj128EXadL_Z31Dare_ChangeVolumeObjectTypePoolEEE7ReleaseEPv",
+          "target_sha256": "8c1e2778305a7740a209c45dd9307d040b4fea0dc0172c62b0d4c8f83c75c337",
+          "bindings": {
+            "Dare_ChangeVolumeObjectTypePool": "0x1939c00"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xdb67b0",
+          "size": 184,
+          "symbol": "_ZN4Dare7Private13PooledCommandINS0_26ChangeVolumeRequestCommandELj64EXadL_Z28Dare_ChangeVolumeRequestPoolEEE7ReleaseEPv",
+          "target_sha256": "c026eb653ad89ecee68ae86e21c2e9e9bddae46a32a8368860f5c66153dc9359",
+          "bindings": {
+            "Dare_ChangeVolumeRequestPool": "0x1939be0"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xdb6930",
+          "size": 184,
+          "symbol": "_ZN4Dare7Private13PooledCommandINS0_34ChangeVolumeMTTChannelTrackCommandELj64EXadL_Z36Dare_ChangeVolumeMTTChannelTrackPoolEEE7ReleaseEPv",
+          "target_sha256": "30ea9a9871295027f1891e97ce25e496bf8f8f2640f201492978aebbe660f7eb",
+          "bindings": {
+            "Dare_ChangeVolumeMTTChannelTrackPool": "0x1939c40"
           },
           "got_bindings": {}
         }
@@ -581964,6 +583259,49 @@
           "got_bindings": {}
         },
         {
+          "address": "0xd323d0",
+          "size": 156,
+          "symbol": "_ZN10HandleSlotaSERKS_",
+          "target_sha256": "f4d67e7b835ba31027d1500a5775746dc55a134dbdf1d00afddee61facb09106",
+          "bindings": {
+            "Dare_HandleMutex": "0x1939b38",
+            "_ZN2nn2os9LockMutexEPNS0_9MutexTypeE": "0xfa4950",
+            "_ZN10HandleSlot7ReleaseEv": "0xd29990",
+            "_ZN11HandleTable3GetEv": "0xd29af0",
+            "_ZN2nn2os11UnlockMutexEPNS0_9MutexTypeE": "0xfa4960",
+            "_Unwind_Resume": "0xfa4920"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xd325c0",
+          "size": 120,
+          "symbol": "_ZN13Handle_d325c05ValueEv",
+          "target_sha256": "312ef6b8885f68bb2a3914dfcb58d0776246eb27f20f196eaa2d65ea4a42301c",
+          "bindings": {
+            "Dare_HandleMutex": "0x1939b38",
+            "_ZN2nn2os9LockMutexEPNS0_9MutexTypeE": "0xfa4950",
+            "_ZN11HandleTable3GetEv": "0xd29af0",
+            "_ZN2nn2os11UnlockMutexEPNS0_9MutexTypeE": "0xfa4960",
+            "_Unwind_Resume": "0xfa4920"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xd359b0",
+          "size": 128,
+          "symbol": "_ZN4Dare7Private11ThemeHandle3GetEv",
+          "target_sha256": "75d59b5d064a7ca9766aec6b76785ac83fa51813a964a5b6331e01ac6d99e822",
+          "bindings": {
+            "Dare_HandleMutex": "0x1939b38",
+            "_ZN2nn2os9LockMutexEPNS0_9MutexTypeE": "0xfa4950",
+            "_ZN11HandleTable3GetEv": "0xd29af0",
+            "_ZN2nn2os11UnlockMutexEPNS0_9MutexTypeE": "0xfa4960",
+            "_Unwind_Resume": "0xfa4920"
+          },
+          "got_bindings": {}
+        },
+        {
           "address": "0xd448c0",
           "size": 104,
           "symbol": "_ZN13Handle_d448c0D2Ev",
@@ -581974,6 +583312,21 @@
             "_ZN10HandleSlot7ReleaseEv": "0xd29990",
             "_ZN2nn2os11UnlockMutexEPNS0_9MutexTypeE": "0xfa4960",
             "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xd4f100",
+          "size": 156,
+          "symbol": "_ZN17HandleSlot_d4f100aSERKS_",
+          "target_sha256": "d21b43ad1296b0dfb0dacf1f224031942f885cfa19fd7304e65b512ade16ea32",
+          "bindings": {
+            "Dare_HandleMutex": "0x1939b38",
+            "_ZN2nn2os9LockMutexEPNS0_9MutexTypeE": "0xfa4950",
+            "_ZN17HandleSlot_d4f1007ReleaseEv": "0xd29990",
+            "_ZN11HandleTable3GetEv": "0xd29af0",
+            "_ZN2nn2os11UnlockMutexEPNS0_9MutexTypeE": "0xfa4960",
+            "_Unwind_Resume": "0xfa4920"
           },
           "got_bindings": {}
         },
