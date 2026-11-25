@@ -1957,6 +1957,8 @@ struct ShopMenu : ShopMenuLayout {
 }  // namespace SPTG
 void* Create_SPTG_ShopMenu() { return new (GenericFactoryResolve(GenericFactoryManager, 0x19938f9fu)->Allocate(sizeof(SPTG::ShopMenu))) SPTG::ShopMenu; }
 namespace Onyx { namespace Localization { struct Localization; } struct Profile; }
+struct Event_ConfirmBox_2b8;
+struct Event_ConfirmBox_2d0;
 namespace SPTG {
 struct SwitchLevelGate;
 struct LevelItemAccessor;
@@ -2015,6 +2017,53 @@ struct DebugMenu : FlashMenuWith2<LevelItemAccessor, PauseHandler> {
     __attribute__((always_inline)) DebugMenu() : scratch() {}
     virtual ~DebugMenu();
 };
+// SPTG::TitleScreen (factory 0x75bb60), over four singletons.
+struct TitleScreen : FlashMenuWith4<LevelSecretManager, SwitchLevelGate, ::Onyx::Localization::Localization, ::Onyx::Profile> {
+    char p2d0[0x4];
+    uint8_t field_2d4[7];
+    char p2db[0x5];
+    uint64_t field_2e0;
+    uint64_t field_2e8;
+    uint64_t field_2f0;
+    int32_t field_2f8;
+    char p2fc[0x4];
+    uint16_t field_300;
+    char p302[0x6];
+    __attribute__((always_inline)) TitleScreen() : field_2d4(), field_2e0(0), field_2e8(0), field_2f0(0), field_2f8(1), field_300(0) { flag273 = 0; }
+    virtual ~TitleScreen();
+};
+// The handle of one singleton dependency, released out of line.
+template<class A> struct SingletonOne {
+    void* handle;
+    __attribute__((always_inline)) SingletonOne() : handle(nullptr) {}
+    ~SingletonOne();
+};
+// Onyx::Component::Compose<SPTG::FlashMenu, Meta::Collection<Singleton<A>, ...>> (from RTTI).
+template<class A> struct FlashMenuWith1 : FlashMenu {
+    SingletonOne<A> dependency;
+};
+// A shared text as ConfirmBox builds it: the buffer cleared before the allocator is set (its only support is that it
+// matches; SharedText sets the allocator first).
+struct SharedTextLate {
+    void* allocator;
+    unsigned* buffer;
+    __attribute__((always_inline)) SharedTextLate() : buffer(nullptr) { allocator = DefaultAllocator(); }
+};
+// SPTG::ConfirmBox (factory 0x756480): two listeners, bound later.
+struct ConfirmBox : FlashMenuWith1< ::Onyx::Localization::Localization> {
+    Onyx::Listener<void(const Event_ConfirmBox_2b8&)> member_2b8;
+    Onyx::Listener<void(const Event_ConfirmBox_2d0&)> member_2d0;
+    char p2e8[0x4];
+    uint16_t field_2ec;
+    uint8_t field_2ee;
+    char p2ef[0x5];
+    float field_2f4[2];
+    uint8_t field_2fc;
+    char p2fd[0x13];
+    SharedTextLate member_310;
+    __attribute__((always_inline)) ConfirmBox() : member_2b8(), member_2d0(), field_2ec(0), field_2ee(0), field_2f4{0.0f, 0.0f}, field_2fc(1), member_310() { member_2b8.owner = this; member_2d0.owner = this; }
+    virtual ~ConfirmBox();
+};
 // SPTG::BossFightVS (factory 0x755e70): sets the flag at +0x273 after making its helper.
 struct BossFightVS : FlashMenuWith2<LevelItemAccessor, ::Onyx::Localization::Localization> {
     MenuScratch* scratch;
@@ -2041,4 +2090,206 @@ void* Create_SPTG_BossFightVS() { return new (GenericFactoryResolve(GenericFacto
 void* Create_SPTG_InShopStatus() { return new (GenericFactoryResolve(GenericFactoryManager, 0x19938f9fu)->Allocate(sizeof(SPTG::InShopStatus))) SPTG::InShopStatus; }
 void* Create_SPTG_ExtraGameMode() { return new (GenericFactoryResolve(GenericFactoryManager, 0x19938f9fu)->Allocate(sizeof(SPTG::ExtraGameMode))) SPTG::ExtraGameMode; }
 void* Create_SPTG_DebugMenu() { return new (GenericFactoryResolve(GenericFactoryManager, 0x19938f9fu)->Allocate(sizeof(SPTG::DebugMenu))) SPTG::DebugMenu; }
+void* Create_SPTG_TitleScreen() { return new (GenericFactoryResolve(GenericFactoryManager, 0x19938f9fu)->Allocate(sizeof(SPTG::TitleScreen))) SPTG::TitleScreen; }
+void* Create_SPTG_ConfirmBox() { return new (GenericFactoryResolve(GenericFactoryManager, 0x19938f9fu)->Allocate(sizeof(SPTG::ConfirmBox))) SPTG::ConfirmBox; }
 void* Create_SPTG_StatusScreen() { return new (GenericFactoryResolve(GenericFactoryManager, 0x19938f9fu)->Allocate(sizeof(SPTG::StatusScreen))) SPTG::StatusScreen; }
+
+namespace SPTG {
+// SPTG::Striker as its subclasses' factories see it: built out of line (0x93edd0).
+struct Striker {
+    Striker();
+    virtual ~Striker();
+};
+// SPTG::StrikerYeti (factory 0x74adf0): its layout part clears eight floats before the vtable is set.
+struct StrikerYetiLayout : Striker {
+    char p8[0x2f8];
+    float field_300[8];
+    __attribute__((always_inline)) StrikerYetiLayout() { for (int i = 0; i < 8; ++i) field_300[i] = 0.0f; }
+    virtual ~StrikerYetiLayout();
+};
+struct StrikerYeti : StrikerYetiLayout {
+    float field_320;
+    float field_324;
+    uint8_t field_328;
+    char p329[0x7];
+    __attribute__((always_inline)) StrikerYeti() { field_320 = 0.0f; field_324 = 0.0f; field_328 = 1; }
+    virtual ~StrikerYeti();
+};
+}  // namespace SPTG
+void* Create_SPTG_StrikerYeti() { return new (GenericFactoryResolve(GenericFactoryManager, 0x1486d4e8u)->Allocate(sizeof(SPTG::StrikerYeti))) SPTG::StrikerYeti; }
+
+namespace SPTG {
+// SPTG::ControllablePlayer as its subclasses' factories see it: built out of line (0x95d1d0), 0x1560 bytes.
+struct ControllablePlayer {
+    ControllablePlayer();
+    virtual ~ControllablePlayer();
+    char p8[0x1558];
+};
+// SPTG::ControllableNegaScott (factory 0x749f20).
+struct ControllableNegaScott : ControllablePlayer {
+    char p1560[0x24];
+    float field_1584;
+    float field_1588;
+    float field_158c;
+    uint8_t field_1590[15];
+    char p159f[0x1];
+    __attribute__((always_inline)) ControllableNegaScott() : field_1584(10.0f), field_1588(-30.0f), field_158c(3.0f), field_1590() {}
+    virtual ~ControllableNegaScott();
+};
+// SPTG::ControllableRamona (factory 0x749f90).
+struct ControllableRamona : ControllablePlayer {
+    uint32_t field_1560;
+    char p1564[0x8];
+    uint32_t field_156c;
+    char p1570[0x8];
+    float field_1578;
+    float field_157c;
+    uint8_t field_1580;
+    char p1581[0x3];
+    uint8_t field_1584;
+    char p1585[0xb];
+    uint32_t field_1590;
+    char p1594[0x4];
+    __attribute__((always_inline)) ControllableRamona() : field_1560(0), field_156c(0), field_1578(0.0f), field_157c(0.0f), field_1580(1), field_1584(0), field_1590(0) {}
+    virtual ~ControllableRamona();
+};
+// SPTG::ControllableKim (factory 0x749e40).
+struct ControllableKim : ControllablePlayer {
+    float field_1560;
+    float field_1564;
+    uint8_t field_1568;
+    char p1569[0x3];
+    uint32_t field_156c;
+    float field_1570;
+    float field_1574;
+    uint8_t field_1578;
+    char p1579[0x3];
+    uint32_t field_157c;
+    uint8_t field_1580;
+    char p1581[0x7];
+    __attribute__((always_inline)) ControllableKim() : field_1560(0.0f), field_1564(0.0f), field_1568(1), field_156c(0), field_1570(0.0f), field_1574(0.0f), field_1578(1), field_157c(0), field_1580(0) {}
+    virtual ~ControllableKim();
+};
+}  // namespace SPTG
+void* Create_SPTG_ControllableNegaScott() { return new (GenericFactoryResolve(GenericFactoryManager, 0x1486d4e8u)->Allocate(sizeof(SPTG::ControllableNegaScott))) SPTG::ControllableNegaScott; }
+void* Create_SPTG_ControllableRamona() { return new (GenericFactoryResolve(GenericFactoryManager, 0x1486d4e8u)->Allocate(sizeof(SPTG::ControllableRamona))) SPTG::ControllableRamona; }
+void* Create_SPTG_ControllableKim() { return new (GenericFactoryResolve(GenericFactoryManager, 0x1486d4e8u)->Allocate(sizeof(SPTG::ControllableKim))) SPTG::ControllableKim; }
+
+namespace SPTG {
+// SPTG::Attack (0x58 bytes, BaseCharacter.h) as a factory builds one: cleared, with its defaults, then given its source.
+// The spellings here are the ones the factories' stores support, and only that: SetSource (0x8e24f0) taken as not
+// throwing (no cleanup surrounds the call), +0x28 and +0x2c written as one word (1.0f's bits and 3), the two flags at
+// +0x35 as one pair, and the statements in the order the stores come.
+struct BytePair { uint8_t a, b; };
+struct Attack {
+    uint64_t words0[2];
+    uint64_t words10[2];
+    float value20;
+    float value24;
+    uint64_t value28;
+    int32_t value30;
+    uint8_t flag34;
+    BytePair flags;
+    char p37[0x9];
+    uint64_t value40;
+    char p48[0x8];
+    void* shared;                     // +0x50
+    __attribute__((always_inline)) Attack() { shared = nullptr; words10[0] = 0; words10[1] = 0; words0[0] = 0; words0[1] = 0; value20 = 0.1f; value24 = 2.0f; value28 = 0x33f800000ull; flag34 = 0; value30 = 0; flags = BytePair{1, 1}; value40 = 0; SetSource(1, nullptr); }
+    void SetSource(int source, BaseCharacter* attacker) noexcept;
+};
+// SPTG::Enemy as its subclasses' factories see it: built out of line (0x9e4110), 0xb90 bytes.
+struct Enemy {
+    Enemy();
+    virtual ~Enemy();
+    char p8[0xb88];
+};
+// SPTG::AttackSlot (0x78 bytes, BaseCharacter.h) as an enemy's constructor builds one: its attack first, then the rest.
+struct AttackSlot {
+    float rangeMinX;
+    float rangeMaxX;
+    float rangeMinZ;
+    float rangeMaxZ;
+    uint8_t flag10;
+    char p11[0x7];
+    Attack attack;
+    int32_t kind;
+    uint8_t flag74;
+    char p75[0x3];
+    __attribute__((always_inline)) AttackSlot() : attack() { rangeMinX = 0.0f; rangeMaxX = 0.0f; rangeMinZ = 0.0f; rangeMaxZ = 50.0f; flag10 = 0; kind = 0; flag74 = 0; }
+};
+// Enemies whose own part is attack slots and untouched words (factories 0x746c20, 0x746810, 0x7466a0, 0x746ce0,
+// 0x745d30).
+#define SLOT_ENEMY(Name, Slots, Tail)                                                                                      struct Name : Enemy {                                                                                                      AttackSlot slots[Slots];                                                                                               char tail[Tail];                                                                                                       virtual ~Name();                                                                                                   };
+SLOT_ENEMY(EnemyThief, 1, 0x8)
+SLOT_ENEMY(EnemyMini, 2, 0x18)
+#undef SLOT_ENEMY
+// SPTG::EnemyPaparazzi (factory 0x746810) and SPTG::EnemyWolverine (0x746ce0): attack slots only.
+struct EnemyPaparazzi : Enemy {
+    AttackSlot slots[2];
+    virtual ~EnemyPaparazzi();
+};
+struct EnemyWolverine : Enemy {
+    AttackSlot slots[3];
+    virtual ~EnemyWolverine();
+};
+// SPTG::EnemyChubby (factory 0x745d30).
+struct EnemyChubby : Enemy {
+    AttackSlot slots[3];
+    uint8_t field_cf8;
+    char pcf9[0x7];
+    __attribute__((always_inline)) EnemyChubby() : field_cf8(0) {}
+    virtual ~EnemyChubby();
+};
+// SPTG::EnemySpeedy (factory 0x746a00) and SPTG::EnemyZombie (0x746e60): five attack slots.
+struct EnemySpeedy : Enemy {
+    AttackSlot slots[5];
+    char tail[0x8];
+    __attribute__((always_inline)) EnemySpeedy() {}
+    virtual ~EnemySpeedy();
+};
+struct EnemyZombie : Enemy {
+    AttackSlot slots[5];
+    char tail[0x10];
+    __attribute__((always_inline)) EnemyZombie() {}
+    virtual ~EnemyZombie();
+};
+// SPTG::EnemyGodzilla (factory 0x745f90).
+struct EnemyGodzilla : Enemy {
+    AttackSlot slots[4];
+    uint8_t field_d70;
+    char pd71[0x7];
+    __attribute__((always_inline)) EnemyGodzilla() : field_d70(0) {}
+    virtual ~EnemyGodzilla();
+};
+// SPTG::EnemyShooter (factory 0x746940).
+struct EnemyShooter : Enemy {
+    AttackSlot slot;
+    char pc08[0x38];
+    uint8_t field_c40;
+    char pc41[0x1f];
+    __attribute__((always_inline)) EnemyShooter() : slot(), field_c40(0) {}
+    virtual ~EnemyShooter();
+};
+// SPTG::EnemyJetPackMatt (factory 0x7465e0).
+struct EnemyJetPackMatt : Enemy {
+    AttackSlot slot;
+    char pc08[0x30];
+    uint8_t field_c38;
+    char pc39[0x3];
+    uint32_t field_c3c;
+    uint8_t field_c40;
+    char pc41[0x7];
+    __attribute__((always_inline)) EnemyJetPackMatt() : slot(), field_c38(0), field_c3c(0), field_c40(0) {}
+    virtual ~EnemyJetPackMatt();
+};
+}  // namespace SPTG
+void* Create_SPTG_EnemyThief() { return new (GenericFactoryResolve(GenericFactoryManager, 0x1486d4e8u)->Allocate(sizeof(SPTG::EnemyThief))) SPTG::EnemyThief; }
+void* Create_SPTG_EnemyPaparazzi() { return new (GenericFactoryResolve(GenericFactoryManager, 0x1486d4e8u)->Allocate(sizeof(SPTG::EnemyPaparazzi))) SPTG::EnemyPaparazzi; }
+void* Create_SPTG_EnemyMini() { return new (GenericFactoryResolve(GenericFactoryManager, 0x1486d4e8u)->Allocate(sizeof(SPTG::EnemyMini))) SPTG::EnemyMini; }
+void* Create_SPTG_EnemyWolverine() { return new (GenericFactoryResolve(GenericFactoryManager, 0x1486d4e8u)->Allocate(sizeof(SPTG::EnemyWolverine))) SPTG::EnemyWolverine; }
+void* Create_SPTG_EnemyChubby() { return new (GenericFactoryResolve(GenericFactoryManager, 0x1486d4e8u)->Allocate(sizeof(SPTG::EnemyChubby))) SPTG::EnemyChubby; }
+void* Create_SPTG_EnemySpeedy() { return new (GenericFactoryResolve(GenericFactoryManager, 0x1486d4e8u)->Allocate(sizeof(SPTG::EnemySpeedy))) SPTG::EnemySpeedy; }
+void* Create_SPTG_EnemyZombie() { return new (GenericFactoryResolve(GenericFactoryManager, 0x1486d4e8u)->Allocate(sizeof(SPTG::EnemyZombie))) SPTG::EnemyZombie; }
+void* Create_SPTG_EnemyGodzilla() { return new (GenericFactoryResolve(GenericFactoryManager, 0x1486d4e8u)->Allocate(sizeof(SPTG::EnemyGodzilla))) SPTG::EnemyGodzilla; }
+void* Create_SPTG_EnemyShooter() { return new (GenericFactoryResolve(GenericFactoryManager, 0x1486d4e8u)->Allocate(sizeof(SPTG::EnemyShooter))) SPTG::EnemyShooter; }
+void* Create_SPTG_EnemyJetPackMatt() { return new (GenericFactoryResolve(GenericFactoryManager, 0x1486d4e8u)->Allocate(sizeof(SPTG::EnemyJetPackMatt))) SPTG::EnemyJetPackMatt; }
