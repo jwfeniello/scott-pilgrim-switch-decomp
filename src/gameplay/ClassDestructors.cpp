@@ -1624,6 +1624,7 @@ template struct Auto<PlainSharedPointer<110267649, 1176, true, 0>>;   // 0x6928d
 template struct Auto<PlainSharedPointer<114817281, 1176, true, 0>>;   // 0x6d7f90
 template struct Auto<PlainSharedPointer<114819841, 1176, true, 0>>;   // 0x6d8030
 template struct Auto<PlainSharedPointer<121028353, 1176, true, 0>>;   // 0x736bf0
+template struct Auto<PlainSharedPointer<207016449, 1176, true, 0>>;   // 0xc56d20
 
 // Structures holding two shared buffers (at First and Second) destroyed out of line, each its own instance; what they
 // are is not known, so they are keyed by address. The later one goes first.
@@ -1642,3 +1643,19 @@ template struct TwoSharedBuffers<0x7bb430, 0x20, 0x30>;
 template struct TwoSharedBuffers<0x7d9030, 0x30, 0x40>;
 template struct TwoSharedBuffers<0xbfcce0, 0x30, 0x48>;
 template struct TwoSharedBuffers<0xbff0a0, 0x8, 0x18>;
+
+// Objects destroyed and freed through the decode allocators out of line (null-safe), one instance per owner; keyed
+// by address since what they delete is not known.
+template<unsigned long Key> struct OutOfLineDelete { static void Delete(FunctionBase* object) noexcept; };
+template<unsigned long Key> void OutOfLineDelete<Key>::Delete(FunctionBase* object) noexcept {
+    if (object) DestroyFunction(object);
+}
+template struct OutOfLineDelete<0xbb35b0>;
+template struct OutOfLineDelete<0xbf90f0>;
+template struct OutOfLineDelete<0xbf9150>;
+template struct OutOfLineDelete<0xbf91b0>;
+template struct OutOfLineDelete<0xbf9210>;
+template struct OutOfLineDelete<0xbf9270>;
+template struct OutOfLineDelete<0xbf92d0>;
+template struct OutOfLineDelete<0xbf9330>;
+template struct OutOfLineDelete<0xc02320>;

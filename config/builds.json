@@ -574604,6 +574604,18 @@
           "got_bindings": {}
         },
         {
+          "address": "0xbb35b0",
+          "size": 96,
+          "symbol": "_ZN15OutOfLineDeleteILm12268976EE6DeleteEP12FunctionBase",
+          "target_sha256": "79251a73a00e417bb53f413105c7c8c8ff130a72ac95a28a9b836575af028bbe",
+          "bindings": {
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
           "address": "0xbb64e0",
           "size": 132,
           "symbol": "_ZN4Onyx8Behavior8ModifierD2Ev",
@@ -575058,6 +575070,90 @@
           "got_bindings": {}
         },
         {
+          "address": "0xbf90f0",
+          "size": 96,
+          "symbol": "_ZN15OutOfLineDeleteILm12554480EE6DeleteEP12FunctionBase",
+          "target_sha256": "6240d9d6c8b3b336a13716ac116dcb3b202a54e5c34163fb4eaeb479dd7a9cf3",
+          "bindings": {
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xbf9150",
+          "size": 96,
+          "symbol": "_ZN15OutOfLineDeleteILm12554576EE6DeleteEP12FunctionBase",
+          "target_sha256": "7d97ca0ea21ebb2cd71573a8cd3d5b2b472be61e84dc5db2eade1cdc441314e0",
+          "bindings": {
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xbf91b0",
+          "size": 96,
+          "symbol": "_ZN15OutOfLineDeleteILm12554672EE6DeleteEP12FunctionBase",
+          "target_sha256": "cbee966039f0459d7320deeb408d5595860d3b0d3b18192048896c3aa4dd2949",
+          "bindings": {
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xbf9210",
+          "size": 96,
+          "symbol": "_ZN15OutOfLineDeleteILm12554768EE6DeleteEP12FunctionBase",
+          "target_sha256": "e4f7f6ba327c016cf72e2b5a4b9c62ccd5cdb89c4dfdfd1ece4c9a817768497f",
+          "bindings": {
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xbf9270",
+          "size": 96,
+          "symbol": "_ZN15OutOfLineDeleteILm12554864EE6DeleteEP12FunctionBase",
+          "target_sha256": "fd7662e8041dbe723c1567a361a888e6d415c56758b1dd9b9c52234b6d0a23bc",
+          "bindings": {
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xbf92d0",
+          "size": 96,
+          "symbol": "_ZN15OutOfLineDeleteILm12554960EE6DeleteEP12FunctionBase",
+          "target_sha256": "03444297102c9cd5bc7c52abae1780014a553c617685393dc87aa212c9cee8e8",
+          "bindings": {
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xbf9330",
+          "size": 96,
+          "symbol": "_ZN15OutOfLineDeleteILm12555056EE6DeleteEP12FunctionBase",
+          "target_sha256": "a3eb7bb32194a795aca1f7431f142a24fbe60449f2c08a437826cc880ea82f19",
+          "bindings": {
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
           "address": "0xbfcce0",
           "size": 200,
           "symbol": "_ZN16TwoSharedBuffersILm12569824ELj48ELj72EED2Ev",
@@ -575074,6 +575170,18 @@
           "size": 200,
           "symbol": "_ZN16TwoSharedBuffersILm12578976ELj8ELj24EED2Ev",
           "target_sha256": "78fe73f7999269d07616bb2d132234768ccec800fa993b0d49a9d20e25e4c440",
+          "bindings": {
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xc02320",
+          "size": 96,
+          "symbol": "_ZN15OutOfLineDeleteILm12591904EE6DeleteEP12FunctionBase",
+          "target_sha256": "12201fddcfcbdf8bdb121a95e91289820757e8430b8d00dd6859cb49a93ee193",
           "bindings": {
             "DecodeAllocatorManager": "0x1926bd8",
             "DecodeAllocatorIndex": "0xa82b30",
@@ -575102,6 +575210,20 @@
             "_ZTV11Classc1ccf0": "0x18b69a0",
             "_ZN10Basec1ccf0D2Ev": "0x792d0",
             "_ZdlPv": "0x3efd0",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xc56d20",
+          "size": 148,
+          "symbol": "_ZN4AutoI18PlainSharedPointerILm207016449ELj1176ELb1ELj0EEED2Ev",
+          "target_sha256": "dcdc9a7ac6e63f29695d99a0c77cabeb1827cbded81d21a25d45e0fbb5721d44",
+          "bindings": {
+            "AllocatorContext": "0x1935058",
+            "FreeToCounterPool": "0xaaee30",
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
             "__clang_call_terminate": "0x6768b8"
           },
           "got_bindings": {}
