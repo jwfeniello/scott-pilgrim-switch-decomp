@@ -496666,6 +496666,52 @@
           "got_bindings": {}
         },
         {
+          "address": "0x7a4610",
+          "size": 1868,
+          "symbol": "_ZN4SPTG12SPTGSavegame5Slot4ERN4onyx7ArchiveEPN13ComponentSlot6SourceE",
+          "target_sha256": "b0e083ced21c30ba375aa543ab64e35b3c4087dbff02676e74b44b90b6198c6a",
+          "bindings": {
+            "_ZN17OnyxComponentBase5Slot4ERN4onyx7ArchiveEPN13ComponentSlot6SourceE": "0x6782a0",
+            "_ZN4onyx14TransferHandleERPNS_15ComponentHandleERNS_7ArchiveEPN13ComponentSlot6SourceE": "0x67dd00",
+            "_ZN13DecodeBindingILj8013328EE9ReadValueEPvPm": "0x678830",
+            "_ZN13DecodeBindingILj8013328EE6LookupEPvS1_": "0x678ae0",
+            "_ZN4SPTG15KeyedDecodeHostILj8013328EE7GenericERK11DecodeEvent": "0x678db0",
+            "_ZN4SPTG15KeyedDecodeHostILj8013328EE5TypedERK11DecodeEvent": "0x678c60",
+            "_ZN13DecodeBindingILj8013328EE7contextE": "0x1935058",
+            "_ZN13DecodeBindingILj8013328EE8AllocateEPvm": "0xa972b0",
+            "_ZTV14DecodeCallbackILj8013328EE": "0x1841e40",
+            "_ZN13DecodeBindingILj8013328EE6InvokeEv": "0x678d90",
+            "_ZN13DecodeBindingILj8013328EE7managerE": "0x1935068",
+            "_ZN13DecodeBindingILj8013328EE7ProcessEPvS1_jS1_m": "0xbf6b10",
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
+            "_ZN13DecodeBindingILj8013329EE9ReadValueEPvPm": "0x678830",
+            "_ZN13DecodeBindingILj8013329EE6LookupEPvS1_": "0x678ae0",
+            "_ZN4SPTG15KeyedDecodeHostILj8013329EE7GenericERK11DecodeEvent": "0x679410",
+            "_ZN4SPTG15KeyedDecodeHostILj8013329EE5TypedERK11DecodeEvent": "0x6792c0",
+            "_ZN13DecodeBindingILj8013329EE7contextE": "0x1935058",
+            "_ZN13DecodeBindingILj8013329EE8AllocateEPvm": "0xa972b0",
+            "_ZTV14DecodeCallbackILj8013329EE": "0x1841ed0",
+            "_ZN13DecodeBindingILj8013329EE6InvokeEv": "0x6793f0",
+            "_ZN13DecodeBindingILj8013329EE7managerE": "0x1935068",
+            "_ZN13DecodeBindingILj8013329EE7ProcessEPvS1_jS1_m": "0xbf6b10",
+            "_ZN13DecodeBindingILj8013330EE9ReadValueEPvPm": "0x678830",
+            "_ZN13DecodeBindingILj8013330EE6LookupEPvS1_": "0x678ae0",
+            "_ZN4SPTG15KeyedDecodeHostILj8013330EE7GenericERK11DecodeEvent": "0x67f8b0",
+            "_ZN4SPTG15KeyedDecodeHostILj8013330EE5TypedERK11DecodeEvent": "0x67f760",
+            "_ZN13DecodeBindingILj8013330EE7contextE": "0x1935058",
+            "_ZN13DecodeBindingILj8013330EE8AllocateEPvm": "0xa972b0",
+            "_ZTV14DecodeCallbackILj8013330EE": "0x1842488",
+            "_ZN13DecodeBindingILj8013330EE6InvokeEv": "0x67f890",
+            "_ZN13DecodeBindingILj8013330EE7managerE": "0x1935068",
+            "_ZN13DecodeBindingILj8013330EE7ProcessEPvS1_jS1_m": "0xbf6b10",
+            "_Z20DeserializeCallbacksILj8015312ELj786693866EEvP12DecodeReaderPvP10DecodeHost": "0x7a4dd0",
+            "__clang_call_terminate": "0x6768b8",
+            "_Unwind_Resume": "0xfa4920"
+          },
+          "got_bindings": {}
+        },
+        {
           "address": "0x7acea0",
           "size": 888,
           "symbol": "_ZN4SPTG12LevelSection5Slot4ERN4onyx7ArchiveEPN13ComponentSlot6SourceE",
@@ -571038,6 +571084,35 @@
           "got_bindings": {}
         },
         {
+          "address": "0x684420",
+          "size": 164,
+          "symbol": "_ZN4Onyx8Graphics15VertexBufferRawD2Ev",
+          "target_sha256": "2fa07683680faa4f31ee52a2a0026baac188af08dd946fb5784262ae5b7c1722",
+          "bindings": {
+            "_ZTVN4Onyx8Graphics15VertexBufferRawE": "0x18428f0",
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
+            "_ZN10Base677400D2Ev": "0x677400",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x6844d0",
+          "size": 172,
+          "symbol": "_ZN4Onyx8Graphics15VertexBufferRawD0Ev",
+          "target_sha256": "b82230f018b0ff792a5c9e6d35c1584d8a71e890695847516feea9e2b1c94b92",
+          "bindings": {
+            "_ZTVN4Onyx8Graphics15VertexBufferRawE": "0x18428f0",
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
+            "_ZN10Base677400D2Ev": "0x677400",
+            "_ZdlPv": "0xfa3b40",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
           "address": "0x686f60",
           "size": 116,
           "symbol": "_ZN4Onyx8Graphics13PaletteBufferD2Ev",
@@ -571078,6 +571153,32 @@
             "_ZN10Base6874e0D2Ev": "0x677400",
             "__clang_call_terminate": "0x6768b8",
             "_ZN4AutoI15Buffer109530626ED2Ev": "0x6877e0"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x68d700",
+          "size": 200,
+          "symbol": "_ZN16TwoSharedBuffersILm6870784ELj8ELj40EED2Ev",
+          "target_sha256": "f89ba415a187599041f7df0e95551f90899c7f9653fd1f0a31ca3a3dfce692e9",
+          "bindings": {
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x6928d0",
+          "size": 148,
+          "symbol": "_ZN4AutoI18PlainSharedPointerILm110267649ELj1176ELb1ELj0EEED2Ev",
+          "target_sha256": "075069af88633a0b36ca915924f6bd553715ea02c061860ddfe5a30ac9d751bf",
+          "bindings": {
+            "AllocatorContext": "0x1935058",
+            "FreeToCounterPool": "0xaaee30",
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
+            "__clang_call_terminate": "0x6768b8"
           },
           "got_bindings": {}
         },
@@ -571147,6 +571248,46 @@
           "bindings": {
             "_ZTVN2EE9GlyphDataE": "0x1845490",
             "_ZTV15Nested114291458": "0x18e9878",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x6d7f90",
+          "size": 148,
+          "symbol": "_ZN4AutoI18PlainSharedPointerILm114817281ELj1176ELb1ELj0EEED2Ev",
+          "target_sha256": "84770e4fe2cccb73307f086891443ffdc206fe1d10c0ba7b2374e99aa3edd817",
+          "bindings": {
+            "AllocatorContext": "0x1935058",
+            "FreeToCounterPool": "0xaaee30",
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x6d8030",
+          "size": 148,
+          "symbol": "_ZN4AutoI18PlainSharedPointerILm114819841ELj1176ELb1ELj0EEED2Ev",
+          "target_sha256": "d71921f35320b592afc59c2e78b9063697c5619c7decdad08811fcad684da82c",
+          "bindings": {
+            "AllocatorContext": "0x1935058",
+            "FreeToCounterPool": "0xaaee30",
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x6e1db0",
+          "size": 200,
+          "symbol": "_ZN16TwoSharedBuffersILm7216560ELj8ELj24EED2Ev",
+          "target_sha256": "b225e3dc1fe24b2b597d525480e88e598a2f03301f55ac2bc36c712fbd1e60ce",
+          "bindings": {
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
             "__clang_call_terminate": "0x6768b8"
           },
           "got_bindings": {}
@@ -571364,6 +571505,18 @@
           "got_bindings": {}
         },
         {
+          "address": "0x729d70",
+          "size": 200,
+          "symbol": "_ZN16TwoSharedBuffersILm7511408ELj8ELj24EED2Ev",
+          "target_sha256": "e6dc8f682ce6b280e14282f7bbac21b6e99122b9cd2253dce02d2c3f6bc44f42",
+          "bindings": {
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
           "address": "0x7326f0",
           "size": 152,
           "symbol": "_ZN11Class7326f0D2Ev",
@@ -571392,6 +571545,32 @@
             "DecodeAllocatorIndex": "0xa82b30",
             "_ZN16SharedObjectBodyILm120748289EED1Ev": "0x729bd0",
             "_ZdlPv": "0xfa3b40",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x7367d0",
+          "size": 200,
+          "symbol": "_ZN16TwoSharedBuffersILm7563216ELj8ELj24EED2Ev",
+          "target_sha256": "3afef2b15b5790cd85727d399a128b9012fe2e69f4601386557ca8e2648b9e66",
+          "bindings": {
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x736bf0",
+          "size": 148,
+          "symbol": "_ZN4AutoI18PlainSharedPointerILm121028353ELj1176ELb1ELj0EEED2Ev",
+          "target_sha256": "986f8e5fea5b160083051fc174b3d694e79f15a1f784b17d7d2376b3ba107ed5",
+          "bindings": {
+            "AllocatorContext": "0x1935058",
+            "FreeToCounterPool": "0xaaee30",
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
             "__clang_call_terminate": "0x6768b8"
           },
           "got_bindings": {}
@@ -571597,6 +571776,18 @@
           "got_bindings": {}
         },
         {
+          "address": "0x7bb430",
+          "size": 200,
+          "symbol": "_ZN16TwoSharedBuffersILm8107056ELj32ELj48EED2Ev",
+          "target_sha256": "1b62b6922791ebe16905cd43020c96ab9d0cd379999327c84257bcdfa7507913",
+          "bindings": {
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
           "address": "0x7d8a50",
           "size": 212,
           "symbol": "_ZN11Class7d8a50D0Ev",
@@ -571606,6 +571797,18 @@
             "DecodeAllocatorManager": "0x1926bd8",
             "DecodeAllocatorIndex": "0xa82b30",
             "_ZdlPv": "0xfa3b40",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x7d9030",
+          "size": 200,
+          "symbol": "_ZN16TwoSharedBuffersILm8228912ELj48ELj64EED2Ev",
+          "target_sha256": "9c58d745815dc651ede0f4b48153f48a0e42680fb68bc9df14dd1f618413e37e",
+          "bindings": {
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
             "__clang_call_terminate": "0x6768b8"
           },
           "got_bindings": {}
@@ -574850,6 +575053,30 @@
             "DecodeAllocatorManager": "0x1926bd8",
             "DecodeAllocatorIndex": "0xa82b30",
             "_ZdlPv": "0xfa3b40",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xbfcce0",
+          "size": 200,
+          "symbol": "_ZN16TwoSharedBuffersILm12569824ELj48ELj72EED2Ev",
+          "target_sha256": "c80a362392e2c14ee1d007d496faac6f84ebc67d5e82118be01a43ed813dcaf2",
+          "bindings": {
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xbff0a0",
+          "size": 200,
+          "symbol": "_ZN16TwoSharedBuffersILm12578976ELj8ELj24EED2Ev",
+          "target_sha256": "78fe73f7999269d07616bb2d132234768ccec800fa993b0d49a9d20e25e4c440",
+          "bindings": {
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
             "__clang_call_terminate": "0x6768b8"
           },
           "got_bindings": {}

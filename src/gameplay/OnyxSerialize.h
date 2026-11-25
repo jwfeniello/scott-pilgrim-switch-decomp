@@ -1301,3 +1301,25 @@ struct DistanceTrigger : ::OnyxComponentBase {
 };
 
 } }  // namespace Onyx::Gameplay
+
+// What a serializer's source belongs to (provisional): some components keep its +0xe0.
+struct SlotOwner {
+    char padding_0[0xe0];
+    void* valueE0;   // +0xe0
+};
+
+namespace SPTG {
+
+// SPTG::SPTGSavegame: keeps the engine its source's owner has at +0xe0.
+struct SPTGSavegame : ::OnyxComponentBase {
+    void Slot4(onyx::Archive& archive, ComponentSlot::Source* source);   // 0x7a4610
+    char padding_0[0x50];
+    void* engine50;         // +0x50
+    onyx::ComponentHandle* handle58; // +0x58
+    SPTG::EventSlot event60; // +0x60
+    SPTG::EventSlot event78; // +0x78
+    SPTG::EventSlot event90; // +0x90
+    SPTG::EventSlot eventa8; // +0xa8
+};
+
+}  // namespace SPTG

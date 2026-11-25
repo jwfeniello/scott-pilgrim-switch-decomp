@@ -1609,3 +1609,36 @@ template<class T> DefaultBasicString<T>::~DefaultBasicString() {  }
 template struct DefaultBasicString<char>;
 template struct DefaultBasicString<wchar_t>;
 }
+
+struct Buffer109330945 { uint64_t w0; int32_t w8; void* w10; __attribute__((always_inline)) void Destroy() { if (w10) FreeObject(w10); w10 = 0; w8 = 0; } };
+struct Buffer109330946 { uint64_t w0; uint64_t w8; void* w10; __attribute__((always_inline)) void Destroy() { w8 = 0; if (w10) FreeObject(w10); } };
+// Onyx::Component::Base, whose destructor (0x677400) many components end in.
+struct Base677400 { virtual ~Base677400(); char padding[72]; };
+namespace Onyx { namespace Graphics { 
+struct VertexBufferRaw : Base677400 { char padding_50[8]; Auto<Buffer109330946> member_58; char padding_70[24]; Auto<Buffer109330945> member_88; virtual void Key(); ~VertexBufferRaw() __attribute__((used)); };
+inline VertexBufferRaw::~VertexBufferRaw() {  }
+}}
+// Shared pointers destroyed out of line (each its own instance; what they point to is not known, so they are keyed by
+// address): the counter goes back to its pool at the last reference, then the object is destroyed and freed.
+template struct Auto<PlainSharedPointer<110267649, 1176, true, 0>>;   // 0x6928d0
+template struct Auto<PlainSharedPointer<114817281, 1176, true, 0>>;   // 0x6d7f90
+template struct Auto<PlainSharedPointer<114819841, 1176, true, 0>>;   // 0x6d8030
+template struct Auto<PlainSharedPointer<121028353, 1176, true, 0>>;   // 0x736bf0
+
+// Structures holding two shared buffers (at First and Second) destroyed out of line, each its own instance; what they
+// are is not known, so they are keyed by address. The later one goes first.
+template<unsigned long Key, unsigned First, unsigned Second> struct TwoSharedBuffers {
+    char padding_0[First];
+    AutoInline<PlainSharedBuffer<Key * 2>> first;
+    char padding_between[Second - First - 8];
+    AutoInline<PlainSharedBuffer<Key * 2 + 1>> second;
+    ~TwoSharedBuffers() {}
+};
+template struct TwoSharedBuffers<0x68d700, 0x8, 0x28>;
+template struct TwoSharedBuffers<0x6e1db0, 0x8, 0x18>;
+template struct TwoSharedBuffers<0x729d70, 0x8, 0x18>;
+template struct TwoSharedBuffers<0x7367d0, 0x8, 0x18>;
+template struct TwoSharedBuffers<0x7bb430, 0x20, 0x30>;
+template struct TwoSharedBuffers<0x7d9030, 0x30, 0x40>;
+template struct TwoSharedBuffers<0xbfcce0, 0x30, 0x48>;
+template struct TwoSharedBuffers<0xbff0a0, 0x8, 0x18>;

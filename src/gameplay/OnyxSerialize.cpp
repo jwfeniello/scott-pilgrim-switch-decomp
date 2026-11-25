@@ -1062,3 +1062,18 @@ void DistanceTrigger::Slot4(onyx::Archive& archive, ComponentSlot::Source* sourc
 }
 
 } }  // namespace Onyx::Gameplay
+
+namespace SPTG {
+
+// 0x7a4610
+void SPTGSavegame::Slot4(onyx::Archive& archive, ComponentSlot::Source* source) {
+    ::OnyxComponentBase::Slot4(archive, source);
+    engine50 = static_cast<SlotOwner*>(source->owner)->valueE0;
+    onyx::TransferHandle(handle58, archive, source);
+    SPTG::ReadEventSlot<8013328u, 133225177u>(archive, source, event60, this);
+    SPTG::ReadEventSlot<8013329u, 1986898944u>(archive, source, event78, this);
+    SPTG::ReadEventSlot<8013330u, 425997678u>(archive, source, event90, this);
+    SPTG::TransferEventSlot<8015312u, 786693866u>(archive, source, eventa8, this);
+}
+
+}  // namespace SPTG
