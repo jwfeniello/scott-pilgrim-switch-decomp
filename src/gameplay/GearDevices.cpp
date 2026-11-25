@@ -19,9 +19,9 @@ struct AsynchEntry {
 
 struct AsynchDevice : DeviceInterface, Thread {
     ~AsynchDevice() override;          // 0xa7de60
-    bool Attributes(const char* path, void* reserved, uint32_t* out) override;
+    bool Attributes(const char* path, int32_t value, uint32_t* out) override;
     void* Item(uint32_t index) override;
-    bool Slot5() override;
+    bool PathAttributes(const Path& path, uint32_t* out) override;
     bool Slot6(const Path& path, void* out) override;
     bool Exists(const Path& path) override;
     bool IsFolder(const Path& path) override;
@@ -112,9 +112,9 @@ bool QueryPlatformPath(void* fileSystem, const char* path, uint32_t* info);
 struct DiskDevice : DeviceInterface {
     ~DiskDevice() override;
     uint32_t Type() override;
-    bool Attributes(const char* path, void* reserved, uint32_t* out) override;
+    bool Attributes(const char* path, int32_t value, uint32_t* out) override;
     void* Item(uint32_t index) override;
-    bool Slot5() override;
+    bool PathAttributes(const Path& path, uint32_t* out) override;
     bool Slot6(const Path& path, void* out) override;
     bool Exists(const Path& path) override;
     bool IsFolder(const Path& path) override;
@@ -139,9 +139,20 @@ uint32_t DiskDevice::Type() {   // 0xa987b0
     return type;
 }
 
+// Slot 5 (0xa98810): the attributes of a path that exists (error 5 otherwise), with 0x80 added to bit 1.
+bool DiskDevice::PathAttributes(const Path& path, uint32_t* out) {
+    if (Exists(path)) {
+        if (!Attributes(path.Name30(), 0, out)) return false;
+        if (*out & 2) *out |= 0x80;
+        return true;
+    }
+    Error(5);
+    return false;
+}
+
 // Slot 2 (0xa98680): attributes 0xe9 for any path the platform knows.
 // Not yet matched: the original sets the return value before storing the attributes; here the store comes first.
-bool DiskDevice::Attributes(const char* path, void* reserved, uint32_t* out) {
+bool DiskDevice::Attributes(const char* path, int32_t value, uint32_t* out) {
     uint32_t info;
     if (QueryPlatformPath(PlatformFileSystem, path, &info)) {
         *out = 0xe9;
@@ -163,9 +174,9 @@ bool DiskDevice::IsFile(const Path& path) {
 struct MemDevice : DeviceInterface {
     ~MemDevice() override;
     uint32_t Type() override;
-    bool Attributes(const char* path, void* reserved, uint32_t* out) override;
+    bool Attributes(const char* path, int32_t value, uint32_t* out) override;
     void* Item(uint32_t index) override;
-    bool Slot5() override;
+    bool PathAttributes(const Path& path, uint32_t* out) override;
     bool Slot6(const Path& path, void* out) override;
     bool Exists(const Path& path) override;
     bool IsFolder(const Path& path) override;
@@ -195,6 +206,12 @@ void* AsynchDevice::Item(uint32_t index) {
     nn::os::UnlockMutex(mutex);
     return entry;
 }
+// Slot 5 (0xa99950): the attributes of a path that exists (error 5 otherwise).
+bool MemDevice::PathAttributes(const Path& path, uint32_t* out) {
+    if (Exists(path)) return Attributes(path.Name30(), path.value18, out);
+    Error(5);
+    return false;
+}
 // Slot 19 (0xa7e360, shared by the asynchronous devices): not supported, error 4.
 void* AsynchDevice::Slot19(const Path& path, void* arg) {
     Error(4);
@@ -220,9 +237,9 @@ bool MemDevice::IsFile(const Path& path) {
 // Gear::MemFileDevice (vtable 0x189c1e8).
 struct MemFileDevice : DeviceInterface {
     uint32_t Type() override;
-    bool Attributes(const char* path, void* reserved, uint32_t* out) override;
+    bool Attributes(const char* path, int32_t value, uint32_t* out) override;
     void* Item(uint32_t index) override;
-    bool Slot5() override;
+    bool PathAttributes(const Path& path, uint32_t* out) override;
     bool Slot6(const Path& path, void* out) override;
     bool Exists(const Path& path) override;
     bool IsFolder(const Path& path) override;
@@ -252,7 +269,7 @@ struct FilterDevice : DeviceInterface {
     ~FilterDevice() override;
     void* Item(uint32_t index) override;
     uint32_t Type() override;
-    bool Slot5() override;
+    bool PathAttributes(const Path& path, uint32_t* out) override;
     bool Slot6(const Path& path, void* out) override;
     bool Exists(const Path& path) override;
     bool IsFolder(const Path& path) override;
@@ -322,13 +339,20 @@ void* FilterDevice::Slot19(const Path& path, void* arg) {   // 0xaa0b50
 // Gear::ZLibDevice (vtable 0x189cfd8): a filter, with two slots of its own after the interface's.
 struct ZLibDevice : FilterDevice {
     ~ZLibDevice() override;
-    bool Attributes(const char* path, void* reserved, uint32_t* out) override;
+    bool Attributes(const char* path, int32_t value, uint32_t* out) override;
+    bool PathAttributes(const Path& path, uint32_t* out) override;
     void Slot21() override;
     void Slot22() override;
     virtual void Slot23();
     virtual void Slot24();
 };
 ZLibDevice::~ZLibDevice() {}
+// Slot 5 (0xaa0350): as MemDevice's, with error 7.
+bool ZLibDevice::PathAttributes(const Path& path, uint32_t* out) {
+    if (Exists(path)) return Attributes(path.Name30(), path.value18, out);
+    Error(7);
+    return false;
+}
 
 // Gear::DeviceAlias (vtable 0x189bdb8): an alias that leaves the registry if it was added.
 struct DeviceAlias : DeviceAliasInterface {

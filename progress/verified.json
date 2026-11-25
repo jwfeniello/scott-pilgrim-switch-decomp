@@ -1,9 +1,9 @@
 {
   "version": 1,
-  "generated_at": "2026-11-25T08:38:59.804267+00:00",
+  "generated_at": "2026-11-25T08:44:29.360464+00:00",
   "target_elf_sha256": "ea95638e6d6aaa0dc6cddd552a9366799aa1ec3bc07ee201f23f6c151103f5b8",
   "input_sha256": {
-    "config/builds.json": "cd8467cb544cc8bd166867c8387862ac25b08145c8323a683a96514f0369e5b8",
+    "config/builds.json": "7627502fbee2ac2e7a65de7a9e59515b821761b6e70353569ef9020d362b24dd",
     "config/functions.tsv": "399e91468a04e0459194c10d68d2210d1157cedefeb19c7851886ca7632fcb18",
     "config/non_fde_functions.tsv": "6a45f5e185454fa0472af00b2cdc9d040d73ca133d1106217e1fbbe3b32a8175",
     "config/target.json": "23cc6a5227206a953e7668acf5e9ae5c02a25c23b7e7967f0450a814b888241a",
@@ -1183,12 +1183,12 @@
     "src/gameplay/FirePlatformPlayer.cpp": "e98746038a2ed475b333d212ca72e072686fac350d7d0fe56d8f9600109c59a0",
     "src/gameplay/FireTables.cpp": "789d157e1356a3c878fbae2cee3eaf483d1faf9f6ce71243251b515acc88c36a",
     "src/gameplay/FlashMenu.h": "c4ed779e815b0f029d51ffcd43f50654f1ae0b0882571d31ce6f27d3329f074a",
-    "src/gameplay/GearAllocators.cpp": "2eba19fce1d8ba20d40411b03916ed1122fa7ec31f7e261265aa4710d4686515",
-    "src/gameplay/GearCore.h": "d9b37e0ec3e54c31dab55d65e6e9bd826191b2614aeb002ef39dd3ef1bad95ae",
-    "src/gameplay/GearDevices.cpp": "e0b4bdcb846bc6ad65c3f924bb7f6fe245c9f15037ebdc94dc7d421a744b4879",
+    "src/gameplay/GearAllocators.cpp": "329b9e64a0aa5c02bb28774a1861982595aad159b4d0afb0224520db9235e5b1",
+    "src/gameplay/GearCore.h": "8414b474e5d3ae1b03f5ddac293fa35b6f449a8eabad9f999908c6adc72cd67e",
+    "src/gameplay/GearDevices.cpp": "30e7879745c83ccd99883ad5502860aa22cac925e368b47e498a262b786a0d88",
     "src/gameplay/GearFiles.cpp": "e541f0e42a7a99d86efce4f23f2586f51370fc44e501f954e19d42f0b497e19a",
     "src/gameplay/GearInput.cpp": "08724d1b0f43d8ce7d07363675628b60ecadb2f0d5292078de2639c0ab78afa2",
-    "src/gameplay/GearMemory.cpp": "7eaeddf92d43f00e7f233d47f1111ce1d54459f25ac9d9cf2cba1b7992708a81",
+    "src/gameplay/GearMemory.cpp": "47e83f59f09c0d16598ca9dddc584b63179a99915c621f324a0892dbc33bd7cc",
     "src/gameplay/GearPath.cpp": "a96441e3f4b395f2eed13d15debb2bc489a87679360f9deee585253110398e57",
     "src/gameplay/GearSockets.cpp": "4144f64f6dbf35d02221e50506913ca33c927fa3bc6e96ee7b7b4c4bd7b0c3c9",
     "src/gameplay/GearThread.cpp": "2a2a34f8ef7c6202a55e0bbe94128914dafac906542cf143ff66409388a2c9ca",
@@ -4066,8 +4066,8 @@
     "7.0.1": "c2f0a175157d9aaace8031f8e6d7ea0ed6142b4bcef287105e3ed227301f1002",
     "lld": "c4b3aaea06ff7112c64753047a2ab279fc3fe10dd807fd3c22edfdae99f43eed"
   },
-  "exact_functions": 39423,
-  "exact_bytes": 5248444,
+  "exact_functions": 39432,
+  "exact_bytes": 5250080,
   "builds": [
     {
       "id": "probes",
@@ -13602,7 +13602,7 @@
     {
       "id": "gear_memory",
       "compiler": "8.0.1",
-      "object_sha256": "346d835686b8dd0acc970013cbd197a932f3539993ef7f14a3cf33bf2e4bf2ae"
+      "object_sha256": "c9cf4d1228dcc8f3d110598183a81a2975cf68728237afc955783a1f75f88b4b"
     },
     {
       "id": "gear_sockets",
@@ -13622,7 +13622,7 @@
     {
       "id": "gear_allocators",
       "compiler": "8.0.1",
-      "object_sha256": "505ce121b489afa46fe57a336219a94dbcb5700b7271ddf8ccfe6dc76e8b528c"
+      "object_sha256": "178196463e9c19833574acfb8123a3b5fcf3e0dcf0312851f72c8a055bc6fdf9"
     },
     {
       "id": "onyx_bucket",
@@ -13742,7 +13742,7 @@
     {
       "id": "gear_devices",
       "compiler": "8.0.1",
-      "object_sha256": "9780840feffd25d5432ecdef264f77d4a8a02e7d2fdabb6be756a53f54c207d3"
+      "object_sha256": "e61fcfdfad0ce985f62090b559b267b8556b34430a33908caae40a891f43bcdb"
     },
     {
       "id": "gameplay_onyx_graphics",
@@ -325473,6 +325473,17 @@
       "relocation_count": 0
     },
     {
+      "address": "0xa945d0",
+      "size": 188,
+      "exact": true,
+      "target_sha256": "b06cf2190a73b76764ff455d36ab6ce863e4a7003bd80a45cdceaa968b6abe25",
+      "compiled_sha256": "b06cf2190a73b76764ff455d36ab6ce863e4a7003bd80a45cdceaa968b6abe25",
+      "source": "src/gameplay/GearAllocators.cpp",
+      "symbol": "_ZN4Gear13MemAllocDl283D2Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 21
+    },
+    {
       "address": "0xa94800",
       "size": 8,
       "exact": true,
@@ -325559,6 +325570,17 @@
       "symbol": "sub_A94C40",
       "source_review": "decompiler_text_review_pending",
       "relocation_count": 0
+    },
+    {
+      "address": "0xa94ca0",
+      "size": 172,
+      "exact": true,
+      "target_sha256": "0d7b81e564b2fabe1ab3c79867a0134152e561c022452998863b5a669c55af27",
+      "compiled_sha256": "0d7b81e564b2fabe1ab3c79867a0134152e561c022452998863b5a669c55af27",
+      "source": "src/gameplay/GearAllocators.cpp",
+      "symbol": "_ZN4Gear13MemAllocFixed4FreeEPv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 4
     },
     {
       "address": "0xa94d50",
@@ -325687,7 +325709,7 @@
       "exact": true,
       "target_sha256": "5dc10acc0fb3a3538d16d8914bf0f2bb4e6670cbe6335fb15c6613565ca6b434",
       "compiled_sha256": "5dc10acc0fb3a3538d16d8914bf0f2bb4e6670cbe6335fb15c6613565ca6b434",
-      "source": "src/gameplay/GearMemory.cpp",
+      "source": "src/gameplay/GearAllocators.cpp",
       "symbol": "_ZN4Gear13MemAllocDl2835Slot7Ev",
       "source_review": "manual_reconstruction",
       "relocation_count": 8
@@ -325759,6 +325781,17 @@
       "relocation_count": 0
     },
     {
+      "address": "0xa95550",
+      "size": 252,
+      "exact": true,
+      "target_sha256": "e5ab75a33a9f6896599001bf01ff81897cc9cc3e7da5e55f9be7e83d5a8d0393",
+      "compiled_sha256": "e5ab75a33a9f6896599001bf01ff81897cc9cc3e7da5e55f9be7e83d5a8d0393",
+      "source": "src/gameplay/GearAllocators.cpp",
+      "symbol": "_ZN4Gear13MemAllocDl2836Slot15Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 9
+    },
+    {
       "address": "0xa95650",
       "size": 8,
       "exact": true,
@@ -325768,6 +325801,17 @@
       "symbol": "RecoveredLeaf_a95650",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 0
+    },
+    {
+      "address": "0xa95660",
+      "size": 236,
+      "exact": true,
+      "target_sha256": "2ee6b98f9818bf1ad76116227da1b121a8543cc8a06287bf1295b63ef2bedcb5",
+      "compiled_sha256": "2ee6b98f9818bf1ad76116227da1b121a8543cc8a06287bf1295b63ef2bedcb5",
+      "source": "src/gameplay/GearAllocators.cpp",
+      "symbol": "_ZN4Gear13MemAllocDl2836Slot17Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 8
     },
     {
       "address": "0xa95750",
@@ -325823,6 +325867,17 @@
       "symbol": "_ZN4Gear10DiskDevice4TypeEv",
       "source_review": "manual_reconstruction",
       "relocation_count": 15
+    },
+    {
+      "address": "0xa98810",
+      "size": 168,
+      "exact": true,
+      "target_sha256": "b47bf5e32c012017af18b932c9bbea37a24231045e93ae74be7be788ea4c4af2",
+      "compiled_sha256": "b47bf5e32c012017af18b932c9bbea37a24231045e93ae74be7be788ea4c4af2",
+      "source": "src/gameplay/GearDevices.cpp",
+      "symbol": "_ZN4Gear10DiskDevice14PathAttributesERKNS_4PathEPj",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 2
     },
     {
       "address": "0xa988c0",
@@ -326164,6 +326219,17 @@
       "symbol": "_ZN4Gear9MemDevice4TypeEv",
       "source_review": "manual_reconstruction",
       "relocation_count": 15
+    },
+    {
+      "address": "0xa99950",
+      "size": 144,
+      "exact": true,
+      "target_sha256": "bdc8a6d2e86883735f4ccc69cfa13a79c2c2c9e442b4c4a74990e9ac2b1c22bb",
+      "compiled_sha256": "bdc8a6d2e86883735f4ccc69cfa13a79c2c2c9e442b4c4a74990e9ac2b1c22bb",
+      "source": "src/gameplay/GearDevices.cpp",
+      "symbol": "_ZN4Gear9MemDevice14PathAttributesERKNS_4PathEPj",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 2
     },
     {
       "address": "0xa99da0",
@@ -326560,6 +326626,17 @@
       "symbol": "_ZN4Gear12FilterDevice4TypeEv",
       "source_review": "manual_reconstruction",
       "relocation_count": 15
+    },
+    {
+      "address": "0xaa0350",
+      "size": 144,
+      "exact": true,
+      "target_sha256": "65b523218b9b902c02c2f266730005fa4241627c6cb376e7f7f36511eee93d93",
+      "compiled_sha256": "65b523218b9b902c02c2f266730005fa4241627c6cb376e7f7f36511eee93d93",
+      "source": "src/gameplay/GearDevices.cpp",
+      "symbol": "_ZN4Gear10ZLibDevice14PathAttributesERKNS_4PathEPj",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 2
     },
     {
       "address": "0xaa03e0",
@@ -328481,7 +328558,7 @@
       "exact": true,
       "target_sha256": "cb9f1ffc3026e58e2574c8e0efe8c204cbae5c8a05c745e4d930431f18660d7f",
       "compiled_sha256": "cb9f1ffc3026e58e2574c8e0efe8c204cbae5c8a05c745e4d930431f18660d7f",
-      "source": "src/gameplay/GearMemory.cpp",
+      "source": "src/gameplay/GearAllocators.cpp",
       "symbol": "_ZN4Gear19MemDefaultAllocatorD2Ev",
       "source_review": "manual_reconstruction",
       "relocation_count": 5
@@ -331774,6 +331851,28 @@
       "symbol": "RecoveredLeaf_aaec50",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 1
+    },
+    {
+      "address": "0xaaec60",
+      "size": 180,
+      "exact": true,
+      "target_sha256": "29abd664e9084a1980fe543716bb24dd8c910e655b6fd47233db46ecfb764ed9",
+      "compiled_sha256": "29abd664e9084a1980fe543716bb24dd8c910e655b6fd47233db46ecfb764ed9",
+      "source": "src/gameplay/GearAllocators.cpp",
+      "symbol": "_ZN4Gear13MemAllocSmall7ReallocEPvj",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 5
+    },
+    {
+      "address": "0xaaed20",
+      "size": 152,
+      "exact": true,
+      "target_sha256": "ee739f4f35d074a25d98b289cb800a55241cca6c55d6d85163f7c4c7b9e10ef9",
+      "compiled_sha256": "ee739f4f35d074a25d98b289cb800a55241cca6c55d6d85163f7c4c7b9e10ef9",
+      "source": "src/gameplay/GearAllocators.cpp",
+      "symbol": "_ZN4Gear13MemAllocSmall14ReallocAlignedEPvjj",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 3
     },
     {
       "address": "0xaaedc0",

@@ -211,25 +211,4 @@ void ExchangeSetting(bool read, uint32_t* value) {   // 0xa81230
     *to = read ? Setting1926bd0 : *value;
 }
 
-// Gear::MemAllocDl283: dlmalloc 2.8.3 behind Gear's allocator interface; only its destructor is needed here.
-struct MemAllocDl283 : MemInterface {
-    ~MemAllocDl283() override;   // 0xa945d0
-    virtual int32_t Slot7();     // slot 7, shared with MemDefaultAllocator
-};
-
-int32_t MemAllocDl283::Slot7() {   // 0xa95490: 0
-    TouchSharedStatic();
-    return 0;
-}
-
-// Gear::MemDefaultAllocator (vtable 0x189bb80): the allocator the default pointer (0x1926bb8) names; it leaves that
-// pointer at -1 as it goes.
-struct MemDefaultAllocator : MemAllocDl283 {
-    ~MemDefaultAllocator() override;
-};
-
-MemDefaultAllocator::~MemDefaultAllocator() {   // 0xaa8730
-    DefaultAllocator = reinterpret_cast<MemInterface*>(-1);
-}
-
 }  // namespace Gear

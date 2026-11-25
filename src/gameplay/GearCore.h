@@ -19,8 +19,8 @@ struct MemInterface {
     virtual ~MemInterface();                    // slots 0, 1
     virtual void* Alloc(uint32_t size);         // slot 2
     virtual void Slot3();
-    virtual void Slot4();
-    virtual void Slot5();
+    virtual void* Realloc(void* block, uint32_t size);                          // slot 4
+    virtual void* ReallocAligned(void* block, uint32_t size, uint32_t align);   // slot 5
     virtual void Free(void* block) noexcept;    // slot 6
 };
 
@@ -163,10 +163,10 @@ extern uint32_t NextDeviceType;
 // signatures aren't known yet, and the names of 7-9 are provisional.
 struct DeviceInterface {
     virtual ~DeviceInterface() { ; }                                              // slots 0, 1
-    virtual bool Attributes(const char* path, void* reserved, uint32_t* out) = 0; // slot 2: 0xa9 for async devices
+    virtual bool Attributes(const char* path, int32_t value, uint32_t* out) = 0;  // slot 2: 0xa9 for async devices
     virtual void* Item(uint32_t index) = 0;                                       // slot 3: an entry of a list
     virtual uint32_t Type() = 0;                                                  // slot 4
-    virtual bool Slot5() = 0;
+    virtual bool PathAttributes(const Path& path, uint32_t* out) = 0;   // slot 5: slot 2 for a path that exists
     virtual bool Slot6(const Path& path, void* out) = 0;
     virtual bool Exists(const Path& path) = 0;                                    // slot 7
     virtual bool IsFolder(const Path& path) = 0;                                  // slot 8
