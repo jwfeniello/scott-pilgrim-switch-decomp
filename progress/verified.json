@@ -1,9 +1,9 @@
 {
   "version": 1,
-  "generated_at": "2026-11-25T08:20:45.049646+00:00",
+  "generated_at": "2026-11-25T08:31:01.280124+00:00",
   "target_elf_sha256": "ea95638e6d6aaa0dc6cddd552a9366799aa1ec3bc07ee201f23f6c151103f5b8",
   "input_sha256": {
-    "config/builds.json": "7e678352c539ed06a0f18039b4dd2788b888d10093dd6560165fa3291ff31169",
+    "config/builds.json": "e389f084b4799f3ec0c5f27fcb6034351fc71181cddf9c4ed127ad3bdaf81cb7",
     "config/functions.tsv": "399e91468a04e0459194c10d68d2210d1157cedefeb19c7851886ca7632fcb18",
     "config/non_fde_functions.tsv": "6a45f5e185454fa0472af00b2cdc9d040d73ca133d1106217e1fbbe3b32a8175",
     "config/target.json": "23cc6a5227206a953e7668acf5e9ae5c02a25c23b7e7967f0450a814b888241a",
@@ -1226,6 +1226,7 @@
     "src/gameplay/Projectile.cpp": "10e65e67c1f30d8d6b8642340b692b8dcdcf56ab15153024641a22d8f312beda",
     "src/gameplay/Projectile.h": "8c23fe74793980e136779a50dc69c406d9a14b758efd87ac010b8252358eccf6",
     "src/gameplay/Random.h": "5e343748d9efadc76cd3b008c9cf5d5a87c7756feefdcb5eadac5bc9f29b0d5c",
+    "src/gameplay/SPTGPhase.cpp": "7c5c35c3458cfcf5a424e30451bafdc7a27c175abc708c63bda3a40e8aef26b3",
     "src/gameplay/SaveData.cpp": "89b22e68687d1927ebf9a6b57052ad3d57abe0cf51130e08bd34e44aaac39e62",
     "src/gameplay/SndGearFiles.cpp": "2d2cad25923ddcccb0bc58c9486e29166bbb93f32a9ef1640060b53196c9d4ac",
     "src/gameplay/Spawner.h": "8a2fba220caa300c546f299c66ea0d1724465d2cc8c45599f8bd3324379f7419",
@@ -4056,17 +4057,17 @@
     "vendor/zlib-1.2.11/zutil.h": "9a63f6690fac1620aa3cecee5752af618806da438a256b4a047fbcd289cac159"
   },
   "compiler_versions": {
-    "8.0.1": "clang version 8.0.1 (tags/RELEASE_801/final)",
     "7.0.1": "clang version 7.0.1 (tags/RELEASE_701/final)",
+    "8.0.1": "clang version 8.0.1 (tags/RELEASE_801/final)",
     "lld": "LLD 8.0.1 (compatible with GNU linkers)"
   },
   "compiler_sha256": {
-    "8.0.1": "dffd62a213ec6cdb4430012a4a41c11e5e32c288f133d5391f9be49e1c5b69de",
     "7.0.1": "c2f0a175157d9aaace8031f8e6d7ea0ed6142b4bcef287105e3ed227301f1002",
+    "8.0.1": "dffd62a213ec6cdb4430012a4a41c11e5e32c288f133d5391f9be49e1c5b69de",
     "lld": "c4b3aaea06ff7112c64753047a2ab279fc3fe10dd807fd3c22edfdae99f43eed"
   },
-  "exact_functions": 39412,
-  "exact_bytes": 5247364,
+  "exact_functions": 39413,
+  "exact_bytes": 5247444,
   "builds": [
     {
       "id": "probes",
@@ -13442,6 +13443,11 @@
       "id": "gameplay_player_stats",
       "compiler": "8.0.1",
       "object_sha256": "4a23089c19f7ebd5097db57aac02b174b695eaa8eb02034f2400af0806401e51"
+    },
+    {
+      "id": "gameplay_sptg_phase",
+      "compiler": "8.0.1",
+      "object_sha256": "1cf1062625bdcdffa678f10dc43b2e72de6335b9a56a83b8f741b5fab54054d9"
     },
     {
       "id": "gameplay_material_properties",
@@ -240578,6 +240584,17 @@
       "symbol": "RecoveredLeaf_76bbe0",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 0
+    },
+    {
+      "address": "0x76bbf0",
+      "size": 80,
+      "exact": true,
+      "target_sha256": "a0da0c342b79aa829b4ccef34310620a57f501e2a6712c9b1f4818617f53a853",
+      "compiled_sha256": "a0da0c342b79aa829b4ccef34310620a57f501e2a6712c9b1f4818617f53a853",
+      "source": "src/gameplay/SPTGPhase.cpp",
+      "symbol": "_ZN4SPTG10SPTG_Phase4RunsEv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 2
     },
     {
       "address": "0x76bc40",
