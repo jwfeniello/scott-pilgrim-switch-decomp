@@ -946,5 +946,17 @@ template struct DareStack<StackItem_d4e740>;   // 0xd4e740
 template struct DareStack<StackItem_d4e830>;   // 0xd4e830
 template struct DareStack<StackItem_d2fd10>;   // 0xd2fd10
 
+// Two more whose elements hold a Dare array: at +0x18 of 0x38 bytes, and at +0x8 of 0x28 bytes.
+struct StackItem_d17170 {
+    char padding_0[0x18];
+    DareArray<void*> items;   // +0x18
+};
+struct StackItem_d17240 {
+    char padding_0[0x8];
+    DareArray<void*> items;   // +0x8
+};
+template struct DareStack<StackItem_d17170>;   // 0xd17170
+template struct DareStack<StackItem_d17240>;   // 0xd17240
+
 }  // namespace Private
 }  // namespace Dare

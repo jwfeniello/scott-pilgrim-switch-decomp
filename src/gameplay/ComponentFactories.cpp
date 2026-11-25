@@ -5181,3 +5181,79 @@ struct Skeleton : SkeletonLayout {
 };
 }  // namespace Onyx
 void* Create_Onyx_Skeleton() { return new (GenericFactoryResolve(GenericFactoryManager, 0x7b73c94u)->Allocate(sizeof(Onyx::Skeleton))) Onyx::Skeleton; }
+
+// Onyx::WallAvoidBehavior (factory 0xc5d4b0), by its constructor's stores
+namespace Onyx {
+struct WallAvoidBehaviorLayout : ::Onyx::Component::Base {
+    char padding_8[0x48];
+    uint64_t field_50;
+    uint64_t field_58;
+    uint64_t field_60;
+    uint32_t field_68;
+    char padding_6c[0x4];
+    float field_70;
+    float field_74;
+    __attribute__((always_inline)) WallAvoidBehaviorLayout() { field_50 = 0; field_58 = 0; field_60 = 0; field_68 = 0x3f800000u; }
+    virtual ~WallAvoidBehaviorLayout();
+};
+struct WallAvoidBehavior : WallAvoidBehaviorLayout {
+    __attribute__((always_inline)) WallAvoidBehavior() { field_70 = 0.0f; field_74 = 1.0f; }
+    virtual ~WallAvoidBehavior();
+};
+}  // namespace Onyx
+void* Create_Onyx_WallAvoidBehavior() { return new (GenericFactoryResolve(GenericFactoryManager, 0x386d550du)->Allocate(sizeof(Onyx::WallAvoidBehavior))) Onyx::WallAvoidBehavior; }
+
+// Onyx::FreeCamera (factory 0xc5d9f0), by its constructor's stores
+namespace Onyx {
+struct FreeCameraLayout : ::Onyx::Component::Base {
+    char padding_8[0x48];
+    uint64_t field_50;
+    float field_58;
+    float field_5c;
+    uint32_t field_60;
+    __attribute__((always_inline)) FreeCameraLayout() { field_50 = 0; }
+    virtual ~FreeCameraLayout();
+};
+struct FreeCamera : FreeCameraLayout {
+    __attribute__((always_inline)) FreeCamera() { field_60 = 0; field_58 = 5.0f; field_5c = 0.0f; }
+    virtual ~FreeCamera();
+};
+}  // namespace Onyx
+void* Create_Onyx_FreeCamera() { return new (GenericFactoryResolve(GenericFactoryManager, 0x386d550du)->Allocate(sizeof(Onyx::FreeCamera))) Onyx::FreeCamera; }
+
+// Onyx::Gameplay::Circuits::TimerCircuit (factory 0xc5e540), by its constructor's stores
+namespace Onyx {
+namespace Gameplay {
+namespace Circuits {
+struct TimerCircuitLayout : ::Onyx::Component::Base {
+    char padding_8[0x48];
+    uint64_t field_50;
+    void* field_58;
+    uint8_t field_60;
+    char padding_61[0x7];
+    uint64_t field_68;
+    void* field_70;
+    uint8_t field_78;
+    char padding_79[0x7];
+    uint64_t field_80;
+    void* field_88;
+    uint8_t field_90;
+    char padding_91[0x7];
+    uint64_t field_98;
+    void* field_a0;
+    uint8_t field_a8;
+    char padding_a9[0x7];
+    float field_b0;
+    float field_b4;
+    uint8_t field_b8;
+    __attribute__((always_inline)) TimerCircuitLayout() { field_60 = 0; field_78 = 0; field_90 = 0; field_a8 = 0; field_b8 = 0; }
+    virtual ~TimerCircuitLayout();
+};
+struct TimerCircuit : TimerCircuitLayout {
+    __attribute__((always_inline)) TimerCircuit() { field_b0 = 1.0f; field_b4 = 0.0f; field_50 = 0; field_58 = this; field_68 = 0; field_70 = this; field_80 = 0; field_88 = this; field_98 = 0; field_a0 = this; }
+    virtual ~TimerCircuit();
+};
+}  // namespace Circuits
+}  // namespace Gameplay
+}  // namespace Onyx
+void* Create_Onyx_Gameplay_Circuits_TimerCircuit() { return new (GenericFactoryResolve(GenericFactoryManager, 0x7b73c94u)->Allocate(sizeof(Onyx::Gameplay::Circuits::TimerCircuit))) Onyx::Gameplay::Circuits::TimerCircuit; }
