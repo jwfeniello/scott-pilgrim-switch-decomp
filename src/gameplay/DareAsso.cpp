@@ -710,9 +710,28 @@ int32_t WrappedSound2_Function38(WrappedSound2* object, int32_t value) {
 
 // Entry 7 of the table at 0x18d2318 plays several sounds at once (provisional name): its object keeps them in an
 // array, as many as its own kind's +0x24 says.
+}  // namespace Private
+struct MultiLayerParameterCallbackObject;
+struct MultiLayerActivationFlagCallbackObject;
+}  // namespace Dare
+struct McMapTag;
+struct McArrayTag;
+namespace Dare {
+// Dare::CallbackClient<...> (RTTI names); only their destructors (0xd62ca0, 0xd62b10) are used here.
+template<class Object, int N, class Key, class Tag> struct CallbackClient {
+    virtual ~CallbackClient();
+};
+namespace Private {
 struct MultiSound {
     char key[0x8];          // +0x0: what 0xd310a0 finds this sound's own kind by
     PlayingSound** sounds;  // +0x8: -1 where a sound failed
+    CallbackClient<MultiLayerParameterCallbackObject, 0, unsigned, McMapTag> parameters;        // +0x10
+    char padding_18[0x38];
+    CallbackClient<MultiLayerActivationFlagCallbackObject, 0, int, McArrayTag> activations;    // +0x50
+    // 0xd629f0, not matched yet: written out (letting each sound go through its kind's +0x18, freeing the array),
+    // the loop comes out unrotated or with the array pointer kept across it, and here its definition would be inlined
+    // into the +0x28 function, which the original calls.
+    ~MultiSound();
     MultiKind* Kind() { return static_cast<MultiKind*>(reinterpret_cast<PlayingSound*>(key)->Kind()); }
 };
 
@@ -788,6 +807,26 @@ int32_t MultiSound_Report(MultiSound* object, void* out) {
         return playing->Functions().report(playing->object, out);
     }
     return static_cast<int32_t>(0x8000e009u);
+}
+
+// Entry 7's +0x28 function (0xd62300): 1 while any sound's kind says it goes on; the others are let go and dropped
+// (-1); then the object is destroyed and freed.
+int32_t MultiSound_GoOn(MultiSound* object, void* argument) {
+    if (object->sounds) {
+        for (uint64_t i = 0; i < object->Kind()->count; ++i) {
+            PlayingSound* playing = object->sounds[i];
+            if (playing == reinterpret_cast<PlayingSound*>(-1)) continue;
+            if (!playing->stopped) {
+                if (playing->active && playing->Functions().goOn(playing->object, argument)) return 1;
+                playing->value10 = 0;
+                playing->stopped = 1;
+            }
+            object->sounds[i] = reinterpret_cast<PlayingSound*>(-1);
+        }
+    }
+    object->~MultiSound();
+    DareFree(object);
+    return 0;
 }
 
 // A growable array without DareArray's reserved word (provisional name): emptied, freed and cleared when destroyed.

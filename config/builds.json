@@ -579956,6 +579956,20 @@
           "got_bindings": {}
         },
         {
+          "address": "0xd62300",
+          "size": 268,
+          "symbol": "_ZN4Dare7Private15MultiSound_GoOnEPNS0_10MultiSoundEPv",
+          "target_sha256": "60cfdf9237457c52a42fa5f09e6f358002a2a91049f2c87570de80ff18f1fd4d",
+          "bindings": {
+            "_ZN4Dare7Private12PlayingSound4KindEv": "0xd310a0",
+            "Dare_SoundKinds": "0x18d2318",
+            "_ZN4Dare7Private10MultiSoundD1Ev": "0xd629f0",
+            "Dare_AllocatorEnabled": "0x191fb00",
+            "Dare_Allocator": "0x191faf8"
+          },
+          "got_bindings": {}
+        },
+        {
           "address": "0xd62410",
           "size": 132,
           "symbol": "_ZN4Dare7Private18MultiSound_ForwardEPNS0_10MultiSoundEPv",
