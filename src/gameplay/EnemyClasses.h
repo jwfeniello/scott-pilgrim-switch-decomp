@@ -471,6 +471,7 @@ struct EnemyJake : EnemyNormal {
     void Slot19();
     void Slot4(onyx::Archive& archive, ComponentSlot::Source* source);
     void OffScreenPoint(onyx::Vector3* out, float distance);   // 0x9f4e10
+    bool Slot168() override;                                    // slot 168 (0x9f4140)
     virtual int State250(int event); virtual State State250Ptr();   // slots 250, 251
     virtual int State252(int event); virtual State State252Ptr();   // slots 252, 253
     virtual int State254(int event); virtual State State254Ptr();   // slots 254, 255

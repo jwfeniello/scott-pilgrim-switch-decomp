@@ -241,7 +241,12 @@ struct GigaGideon : Boss {
     float limitEa8;              // +0xea8
     char padding_eac[0x4];
     AttackSlot attacks[2];       // +0xeb0: requested every update with kinds 20 and 21
-    char padding_fa0[0x240];
+    AttackSlot attackFa0;        // +0xfa0: started in state 280
+    char padding_1018[0x18];
+    HitValue hit1030;            // +0x1030: what state 280 gives each player on the ground (slot 93)
+    char padding_1038[0x64];
+    uint32_t shotSpawner;        // +0x109c: the projectile spawner state 274 fires from
+    char padding_10a0[0x140];
     float value11e0;             // +0x11e0
     float value11e4;             // +0x11e4: the height state 266 lands him at and slot 241 puts him at
     float sinkSpeed;             // +0x11e8: how fast state 266 lowers him to it
@@ -251,9 +256,13 @@ struct GigaGideon : Boss {
     float arrivalOffset;         // +0x11fc: added to ArrivalPoint's x
     float value1200;             // +0x1200
     float value1204;             // +0x1204
-    char padding_1208[0x58];
+    float rageDelay;             // +0x1208: how long state 280 waits (scaled by SpeedScale) before it hits the players
+    uint32_t shotCount;          // +0x120c: state 274's shots
+    float shotInterval;          // +0x1210: the time between them (scaled by SpeedScale)
+    char padding_1214[0x4c];
     PairList list1260;           // +0x1260
-    char padding_12b0[0x8];
+    int32_t rageKind;            // +0x12b0: the kind state 280 passes to 0x995c50
+    char padding_12b4[0x4];
     BossEffect* effect;          // +0x12b8
 };
 // vtable 0x18977d0, 260 slots

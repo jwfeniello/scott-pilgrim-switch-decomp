@@ -1239,7 +1239,7 @@ struct ControllablePlayer : BaseCharacter {
     char padding_13f2[0x2];
     int32_t pendingItem;         // +0x13f4: the item to use next, or -1
     uint8_t flag13f8;            // +0x13f8
-    char padding_13f9[0x1];
+    uint8_t flag13f9;            // +0x13f9: state 195 may go to state 197
     uint8_t flag13fa;            // +0x13fa: raised when the idle timer sends states 96 and 163 to state 229
     char padding_13fb[0x1];
     float idleTime;              // +0x13fc: past 3 s, states 96 and 163 go to state 229
@@ -1252,7 +1252,8 @@ struct ControllablePlayer : BaseCharacter {
     int32_t value141c;           // +0x141c
     char padding_1420[0xc];
     float value142c[6];          // +0x142c
-    char padding_1444[0xc];
+    char padding_1444[0x4];
+    onyx::ComponentHandle* handle1448; // +0x1448: what state 195 throws (a BaseCharacter: slots 21 and 82 are called on it)
     int32_t value1450;           // +0x1450: counts slot 68's calls
     char padding_1454[0x4];
     float moneyEarned;           // +0x1458

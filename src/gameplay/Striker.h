@@ -47,6 +47,7 @@ struct Striker : AnimatedAiActor {
     float SideOfOwner(const onyx::Vector3& position, float distance);
     // Which enemies it could hit. With `justOne` it stops at the first and adds nothing to `found`.
     bool FindEnemies(EnemyCatalog* enemies, EnemyList* found, bool justOne);  // 0x9488d0
+    Enemy* PickEnemy();                        // 0x94c760: an enemy for Stills and Mr. Chau to go for, or null
 
     void* slot1e8;                   // +0x1e8
     StateMachine<Striker> states;    // +0x1f0
@@ -105,6 +106,7 @@ struct StrikerYeti : Striker {
 struct KnivesStills : Striker {
     SPTG_TYPE(Striker, 0x50588faeu)
     bool IsA(uint32_t type) override;   // slot 12 (0x94d980)
+    int ArrivingState(int event) override;     // slot 81 (0x94da10)
     int AttackingState(int event) override;
 };
 struct KnivesRamona : Striker {
@@ -121,6 +123,7 @@ struct KnivesNegaScott : Striker {
     SPTG_TYPE(Striker, 0x277726d8u)
     bool IsA(uint32_t type) override;   // slot 12 (0x94f250)
     void Slot19() override;
+    virtual int State87(int event);     // slot 87 (0x94f940)
     char padding_300[0x30];
     uint64_t value330;               // +0x330
     uint64_t value338;               // +0x338
@@ -129,8 +132,11 @@ struct KnivesKim : Striker {
     SPTG_TYPE(Striker, 0x6b23a6d6u)
     bool IsA(uint32_t type) override;   // slot 12 (0x950480)
     void Slot19() override;
-    char padding_300[0x10];
-    int32_t value310;                // +0x310
+    int ArrivingState(int event) override;    // slot 81 (0x950f50)
+    int AttackingState(int event) override;   // slot 83 (0x9513b0)
+    char padding_300[0xc];
+    float value30c;                  // +0x30c: when animation 174 starts (a float: slot 83 compares it)
+    float value310;                  // +0x310: counts up by Move_FrameDelta (a float: slot 83 adds to it)
     uint8_t flag314;                 // +0x314
 };
 

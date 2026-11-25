@@ -128,6 +128,27 @@ __attribute__((always_inline)) inline float Striker::SideOfOwner(const onyx::Vec
     return position.x > onyx::Get<onyx::Transform, onyx::kTransform>(levelCamera->transform)->position.x + 192.0f ? -distance : distance;
 }
 
+// 0x94c760: of the enemies it could hit, the one with the most health above zero; null when there is none. It sits in
+// this file because FindEnemies has to be defined in the same unit: that makes the list parameter nocapture, so the
+// list's data pointer isn't read again around its free.
+Enemy* Striker::PickEnemy() {
+    EnemyCatalog* enemies = onyx::Get<EnemyCatalog, 0x5f5cdd73u>(level.Get()->enemies);
+    if (static_cast<int64_t>(enemies->count * sizeof(Enemy*)) < 1) return nullptr;
+    EnemyList found;
+    Enemy* best = nullptr;
+    if (FindEnemies(enemies, &found, false) && found.size) {
+        float most = 0.0f;
+        for (Enemy** i = found.data; i != found.data + found.size; ++i) {
+            Enemy* enemy = *i;
+            if (enemy->health > most) {
+                most = enemy->health;
+                best = enemy;
+            }
+        }
+    }
+    return best;
+}
+
 // Appears beside its owner, on the side of the screen with more room, and plays animation 15. When that is over it
 // attacks if an enemy was in view and otherwise leaves.
 int Striker::ArrivingState(int event) {

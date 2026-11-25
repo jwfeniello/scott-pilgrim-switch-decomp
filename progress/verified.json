@@ -1,9 +1,9 @@
 {
   "version": 1,
-  "generated_at": "2026-11-25T14:31:58.481806+00:00",
+  "generated_at": "2026-11-25T14:35:28.706434+00:00",
   "target_elf_sha256": "ea95638e6d6aaa0dc6cddd552a9366799aa1ec3bc07ee201f23f6c151103f5b8",
   "input_sha256": {
-    "config/builds.json": "ec6a1b977f7f43144483052bccdced495b5e3a62f62266765cd79bde94d950d7",
+    "config/builds.json": "fdacbbdb45f3e16c7a9ba1b695bfd04200241065f724f4015951223ec8afc2f2",
     "config/functions.tsv": "399e91468a04e0459194c10d68d2210d1157cedefeb19c7851886ca7632fcb18",
     "config/non_fde_functions.tsv": "6a45f5e185454fa0472af00b2cdc9d040d73ca133d1106217e1fbbe3b32a8175",
     "config/target.json": "23cc6a5227206a953e7668acf5e9ae5c02a25c23b7e7967f0450a814b888241a",
@@ -1131,13 +1131,13 @@
     "src/gameplay/Archive.h": "32de126d994da5c87c23123d22e71ca521246483eb637bb49df08fe376eea14a",
     "src/gameplay/Assert.h": "e8ad90fa17cd27c0eefb31341b98ee091197fb3aeb84363fb473339d67770dcc",
     "src/gameplay/BaseCharacter.cpp": "7ff0ca1f0be17176893fc1dab6f71fd30a5a8ff6787c500b0de8f082d9e6401b",
-    "src/gameplay/BaseCharacter.h": "271a6ad9b3dcbb69d82ecd156692276e7a3abf068a90642e0346f6710c49cc66",
+    "src/gameplay/BaseCharacter.h": "5f43ea5b84ace3b0b69c271ee22f304677a9d457fbf9b8a395dc86ef57e4c432",
     "src/gameplay/BaseCharacterStates.cpp": "593efaaa1eab898d81712650dff9964b8941b427094ab0bc508bbb09f554b0c4",
     "src/gameplay/Boss.h": "f51fcb5879c1e3275252c2114310d5e18d7c0fd1eadfb1314164ba8f1b12dcd0",
     "src/gameplay/BossAI.cpp": "b8c327bc59dd7dd31a6e52c3dd206d3e297a3acc5a3a36f41cab74814bb94581",
     "src/gameplay/BossAI.h": "5fdb103972ce69cda4a59ddd95a352c7db04a6fb68e5c4d6399018aa4de34da0",
     "src/gameplay/BossClassStates.cpp": "84651e5208eeb15d4459efe98cb345cc96dd32088db2356b4b926df0c50ce52a",
-    "src/gameplay/BossClasses.h": "5588a32c0cec8626c36e22f9f5a7c479e4c3290829425b84791718ed7d05353d",
+    "src/gameplay/BossClasses.h": "878223cbcc164b1f8833728d569cc0521ef9b1e7c8cb70828d1b5bd9a11c3c13",
     "src/gameplay/BossStates.cpp": "b8594b4af27c90e58faa84cb4be51c0eeffa56d134ccc9d4a5f34ac652092c95",
     "src/gameplay/BreakableObject.cpp": "30ab612035e01e05ec3b456b265c60cca256f8c2e8173fddda59351a8e86d282",
     "src/gameplay/BreakableObject.h": "5a4950fc4e7f43527a6cafeb4d413addb1b827330b19b5976ba1f76bb0777dee",
@@ -1177,7 +1177,7 @@
     "src/gameplay/Enemy.h": "44fab39ec6e2ffa9c9c38050cc64bf883fca0ce98b12dd8f1c34de671ed43055",
     "src/gameplay/EnemyAttackStates.cpp": "40c206398172e031a38f74e9243592a04c535166ef4ea3ba4cf2119291e02a6b",
     "src/gameplay/EnemyClassStates.cpp": "9aaa0a3dd8c74366a3ac351a73fcdefeb40475e9e67cb774691e1b4be624e08d",
-    "src/gameplay/EnemyClasses.h": "87f58b097fede2c7f9e62864c3c4a9968a30e291442f95678fcb9d0532ed02ed",
+    "src/gameplay/EnemyClasses.h": "02aa8fe2e2252590ceaeee1fda45112e5f105ad811a48e8641f645d4b61de8e0",
     "src/gameplay/EnemyStates.cpp": "ab39f3430b8426012517fdb361f75f9f36961f312cd8f4674600e6fd341450d0",
     "src/gameplay/EventSenders.cpp": "6e71c575a4e5b9f2d777928622c119f7fc166479d59c77b7deb009a50642031e",
     "src/gameplay/FireCharFormat.cpp": "8298d136abe1ee3c61e0a0d514f13a43f5f785c5ba9f79d5a5ae0a9a76ff5c6d",
@@ -1187,6 +1187,7 @@
     "src/gameplay/FirePlatformPlayer.cpp": "e98746038a2ed475b333d212ca72e072686fac350d7d0fe56d8f9600109c59a0",
     "src/gameplay/FireTables.cpp": "8a6086e5cc25f7695cb0ea26baea27bc2e2203c426450e7f7a8d63b8e2e8fabf",
     "src/gameplay/FlashMenu.h": "c4ed779e815b0f029d51ffcd43f50654f1ae0b0882571d31ce6f27d3329f074a",
+    "src/gameplay/GameStates2.cpp": "fab784d770a77060f2ac7cdabec796cb099c4ae55ae4777b87e6ad30b0b3ff1f",
     "src/gameplay/GearAllocators.cpp": "9e458f6c5af2a11427ba619242f0950c2c722f7184b78c2c121d18f8635acbdd",
     "src/gameplay/GearCore.h": "a0347ff923d5f96176794714fd31691afd0b0edd8c2dc7d3a6fe444d2f043441",
     "src/gameplay/GearDevices.cpp": "30e7879745c83ccd99883ad5502860aa22cac925e368b47e498a262b786a0d88",
@@ -1239,8 +1240,8 @@
     "src/gameplay/Statistics.cpp": "cb3304f4a5f95c404193c0c4e2c9c390df85af91aca001dbdf83ab25f71358ae",
     "src/gameplay/Statistics.h": "182a15497caa9568faf4f1e30f7883748d5282dfab2070914139a84ee5a69f90",
     "src/gameplay/StatisticsDetail.cpp": "86586b7a211a5a3b2f482ad00896ec72f08191db720386e11b3ff383464b59a3",
-    "src/gameplay/Striker.cpp": "7bc2a04aaaba2c9832bf13597a607fdd201ada98ca75c888e5f777f6596eebec",
-    "src/gameplay/Striker.h": "08c3a192614b9f5caceb7ea18f37d39d4eac8b56b852f2b79c8eb5a409884d8e",
+    "src/gameplay/Striker.cpp": "d61219d363eaf1f52c4fe85b648cef52b68e1b50ff714ef309261ffa0e52f0d6",
+    "src/gameplay/Striker.h": "37ed5886aa7d415a988a1678ad8649247902b14fc72919ff7b916d184147440c",
     "src/gameplay/Vector.cpp": "bc14eca18fa7ef7b8b2a58c103ff4de2dc87a3ef5ff6d1ae78ab5fbb28a96d30",
     "src/gameplay/Vector.h": "272cd69ede47a9b61ebe4cf79ab50c319d223723dc0a1afccff6e446faa4f275",
     "src/generated/FUN_00300110.cpp": "ed8777c4bc36a2b226216bb30cb46af3184f586f0ffc6fe94137b50e1eb30988",
@@ -4071,8 +4072,8 @@
     "7.0.1": "c2f0a175157d9aaace8031f8e6d7ea0ed6142b4bcef287105e3ed227301f1002",
     "lld": "c4b3aaea06ff7112c64753047a2ab279fc3fe10dd807fd3c22edfdae99f43eed"
   },
-  "exact_functions": 39631,
-  "exact_bytes": 5297280,
+  "exact_functions": 39645,
+  "exact_bytes": 5308824,
   "builds": [
     {
       "id": "probes",
@@ -13497,7 +13498,7 @@
     {
       "id": "gameplay_striker",
       "compiler": "8.0.1",
-      "object_sha256": "d611c0d36fe7569edf11ff6d5fe4a92a8d6c6ded858e5bc1acc73ac716b85050"
+      "object_sha256": "1896601dd66e2a705e0a58a5b5e45ec7bf3fd26a982ce825a17ca1725ea57195"
     },
     {
       "id": "gameplay_projectile",
@@ -13522,7 +13523,7 @@
     {
       "id": "gameplay_enemy_classes",
       "compiler": "8.0.1",
-      "object_sha256": "e1388e0d2c916c9f82c2c4d03bdbbb9182fbd523b318cfd25566ec4ed111dd85"
+      "object_sha256": "52c2638ba22cb85c48c589afc05b4c01b592c50a1cfa15df7c7446ad5383db62"
     },
     {
       "id": "gameplay_enemy",
@@ -13793,6 +13794,11 @@
       "id": "fire_zlib_lto",
       "compiler": "8.0.1",
       "object_sha256": "e83d5f50f14c178a7a4825e688e251cfbd15e05385b3b3363729227ee3cc474e"
+    },
+    {
+      "id": "gameplay_game_states2",
+      "compiler": "8.0.1",
+      "object_sha256": "a92274dffa9973724118763c00f42f94fc9608a2a298770cd7f4dfc55614a091"
     }
   ],
   "matches": [
@@ -295694,6 +295700,17 @@
       "relocation_count": 0
     },
     {
+      "address": "0x94c760",
+      "size": 448,
+      "exact": true,
+      "target_sha256": "46d96a1da00f50bc9ef07fabef1574a821e80e53fee4f290eac76c3d5f78773c",
+      "compiled_sha256": "46d96a1da00f50bc9ef07fabef1574a821e80e53fee4f290eac76c3d5f78773c",
+      "source": "src/gameplay/Striker.cpp",
+      "symbol": "_ZN4SPTG7Striker9PickEnemyEv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 16
+    },
+    {
       "address": "0x94c920",
       "size": 24,
       "exact": true,
@@ -295771,6 +295788,17 @@
       "relocation_count": 0
     },
     {
+      "address": "0x94d400",
+      "size": 796,
+      "exact": true,
+      "target_sha256": "503f55347b0204500adf7a4a6440320fcbbda15a77eb653442cd83d46ff6e148",
+      "compiled_sha256": "503f55347b0204500adf7a4a6440320fcbbda15a77eb653442cd83d46ff6e148",
+      "source": "src/gameplay/GameStates2.cpp",
+      "symbol": "_ZN4SPTG13StrikerMrChau14AttackingStateEi",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 21
+    },
+    {
       "address": "0x94d720",
       "size": 12,
       "exact": true,
@@ -295846,6 +295874,17 @@
       "symbol": "_ZN4SPTG12KnivesStills3IsAEj",
       "source_review": "manual_reconstruction",
       "relocation_count": 0
+    },
+    {
+      "address": "0x94da10",
+      "size": 1200,
+      "exact": true,
+      "target_sha256": "55c67ad71e50fb6fe139b36e9bcdb9ae0e2198ce48ca797ca0990a3d024a612a",
+      "compiled_sha256": "55c67ad71e50fb6fe139b36e9bcdb9ae0e2198ce48ca797ca0990a3d024a612a",
+      "source": "src/gameplay/GameStates2.cpp",
+      "symbol": "_ZN4SPTG12KnivesStills13ArrivingStateEi",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 33
     },
     {
       "address": "0x94dec0",
@@ -296101,6 +296140,17 @@
       "relocation_count": 0
     },
     {
+      "address": "0x94f940",
+      "size": 432,
+      "exact": true,
+      "target_sha256": "604870e93f7fa74f84508c07430e1f2f0a4bf60e0ed4413868ba16a50b8abdca",
+      "compiled_sha256": "604870e93f7fa74f84508c07430e1f2f0a4bf60e0ed4413868ba16a50b8abdca",
+      "source": "src/gameplay/GameStates2.cpp",
+      "symbol": "_ZN4SPTG15KnivesNegaScott7State87Ei",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 4
+    },
+    {
       "address": "0x94faf0",
       "size": 12,
       "exact": true,
@@ -296211,6 +296261,17 @@
       "relocation_count": 2
     },
     {
+      "address": "0x950f50",
+      "size": 1100,
+      "exact": true,
+      "target_sha256": "ab933fbd419362c25fc8545593b18034ed16aded4682f1ed29173b58f9ee9431",
+      "compiled_sha256": "ab933fbd419362c25fc8545593b18034ed16aded4682f1ed29173b58f9ee9431",
+      "source": "src/gameplay/GameStates2.cpp",
+      "symbol": "_ZN4SPTG9KnivesKim13ArrivingStateEi",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 34
+    },
+    {
       "address": "0x9513a0",
       "size": 12,
       "exact": true,
@@ -296220,6 +296281,17 @@
       "symbol": "RecoveredLeaf_9513a0",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 0
+    },
+    {
+      "address": "0x9513b0",
+      "size": 476,
+      "exact": true,
+      "target_sha256": "b1bdd9f69c386ba6cdf1d3490445ac479b0f81a6bdccef23496c829dc0729d31",
+      "compiled_sha256": "b1bdd9f69c386ba6cdf1d3490445ac479b0f81a6bdccef23496c829dc0729d31",
+      "source": "src/gameplay/GameStates2.cpp",
+      "symbol": "_ZN4SPTG9KnivesKim14AttackingStateEi",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 4
     },
     {
       "address": "0x951590",
@@ -301214,6 +301286,17 @@
       "symbol": "RecoveredLeaf_989070",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 0
+    },
+    {
+      "address": "0x989080",
+      "size": 740,
+      "exact": true,
+      "target_sha256": "23ee2be95d6a63dbb390f54b43db4da655d89507417f39ca99906f9ae822f6ff",
+      "compiled_sha256": "23ee2be95d6a63dbb390f54b43db4da655d89507417f39ca99906f9ae822f6ff",
+      "source": "src/gameplay/GameStates2.cpp",
+      "symbol": "_ZN4SPTG18ControllablePlayer8State195Ei",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 27
     },
     {
       "address": "0x989370",
@@ -308883,6 +308966,17 @@
       "relocation_count": 0
     },
     {
+      "address": "0x9e3170",
+      "size": 908,
+      "exact": true,
+      "target_sha256": "5455c58383a1b091a902be53c9ac958bde104efb2e00f1232c4848d250096e3f",
+      "compiled_sha256": "5455c58383a1b091a902be53c9ac958bde104efb2e00f1232c4848d250096e3f",
+      "source": "src/gameplay/GameStates2.cpp",
+      "symbol": "_ZN4SPTG5Enemy7Slot168Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 27
+    },
+    {
       "address": "0x9e3eb0",
       "size": 180,
       "exact": true,
@@ -311477,6 +311571,17 @@
       "symbol": "RecoveredLeaf_9f4130",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 0
+    },
+    {
+      "address": "0x9f4140",
+      "size": 920,
+      "exact": true,
+      "target_sha256": "130a96766957fbc05289a7a3476689a1bbf437bf30c831c469fefcdda884bffa",
+      "compiled_sha256": "130a96766957fbc05289a7a3476689a1bbf437bf30c831c469fefcdda884bffa",
+      "source": "src/gameplay/GameStates2.cpp",
+      "symbol": "_ZN4SPTG9EnemyJake7Slot168Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 27
     },
     {
       "address": "0x9f44e0",
@@ -316242,6 +316347,17 @@
       "relocation_count": 0
     },
     {
+      "address": "0xa1ad50",
+      "size": 932,
+      "exact": true,
+      "target_sha256": "cd87e5b77c370303c2636a38ebe691fe43a9424dc433ac4c7778479a011ae57a",
+      "compiled_sha256": "cd87e5b77c370303c2636a38ebe691fe43a9424dc433ac4c7778479a011ae57a",
+      "source": "src/gameplay/GameStates2.cpp",
+      "symbol": "_ZN4SPTG4Boss7Slot168Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 27
+    },
+    {
       "address": "0xa1b100",
       "size": 356,
       "exact": true,
@@ -316891,6 +317007,17 @@
       "relocation_count": 0
     },
     {
+      "address": "0xa21ee0",
+      "size": 616,
+      "exact": true,
+      "target_sha256": "bb14c722c1204914234cc990963b25a7d1175929a55283860955356a6274db01",
+      "compiled_sha256": "bb14c722c1204914234cc990963b25a7d1175929a55283860955356a6274db01",
+      "source": "src/gameplay/GameStates2.cpp",
+      "symbol": "_ZN4SPTG4Todd8State200Ei",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 24
+    },
+    {
       "address": "0xa22150",
       "size": 12,
       "exact": true,
@@ -317076,6 +317203,17 @@
       "symbol": "RecoveredLeaf_a24410",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 0
+    },
+    {
+      "address": "0xa24420",
+      "size": 1148,
+      "exact": true,
+      "target_sha256": "9637cf8471eca7e4ed0de574f79d0001d7fca4fdbdf9bf724ac8bc039ffdd548",
+      "compiled_sha256": "9637cf8471eca7e4ed0de574f79d0001d7fca4fdbdf9bf724ac8bc039ffdd548",
+      "source": "src/gameplay/GameStates2.cpp",
+      "symbol": "_ZN4SPTG4Todd8State266Ei",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 34
     },
     {
       "address": "0xa248a0",
@@ -321973,6 +322111,17 @@
       "relocation_count": 0
     },
     {
+      "address": "0xa58f10",
+      "size": 852,
+      "exact": true,
+      "target_sha256": "13d55d8ac783fec6a366cde2d504b279c58f64c7f3cb06ebc101fd0ab7dab9a7",
+      "compiled_sha256": "13d55d8ac783fec6a366cde2d504b279c58f64c7f3cb06ebc101fd0ab7dab9a7",
+      "source": "src/gameplay/GameStates2.cpp",
+      "symbol": "_ZN4SPTG10GigaGideon7State96Ei",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 37
+    },
+    {
       "address": "0xa59270",
       "size": 12,
       "exact": true,
@@ -322301,6 +322450,17 @@
       "symbol": "RecoveredLeaf_a5e230",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 0
+    },
+    {
+      "address": "0xa5e240",
+      "size": 976,
+      "exact": true,
+      "target_sha256": "9768dda866ade3c98fcb2e5da3e6a6a6d71fcfddee2e480f3cc710706dce114e",
+      "compiled_sha256": "9768dda866ade3c98fcb2e5da3e6a6a6d71fcfddee2e480f3cc710706dce114e",
+      "source": "src/gameplay/GameStates2.cpp",
+      "symbol": "_ZN4SPTG10GigaGideon8State280Ei",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 35
     },
     {
       "address": "0xa5e610",
