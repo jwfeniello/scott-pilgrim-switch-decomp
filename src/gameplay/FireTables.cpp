@@ -31,3 +31,23 @@ inline IntervalMgr::IntervalCookies::~IntervalCookies() {
 void IntervalMgr::IntervalCookies::DeleteItem(void* key, void* value) {
     if (value) delete (Cookie*)value;
 }
+
+// ScriptObject and FunctionScriptObject (vtables 0x18e9ff8 and 0x18ea158), as far as the latter's destructors need
+// them: slots 4 and 5 are the destructors. The two calls' names are provisional.
+struct ScriptObject {
+    virtual void Slot0(); virtual void Slot1(); virtual void Slot2(); virtual void Slot3();
+    virtual ~ScriptObject();                // slots 4 and 5 (0xeea5a0)
+    void Release() noexcept;                // 0xeeacc0 (no landing pad guards it)
+    static void operator delete(void* p) { FireFree(p); }
+};
+struct FunctionScriptObject : ScriptObject {
+    ~FunctionScriptObject() override;
+    void ClearFunction();                   // 0xefb9d0
+};
+// Slot 4 (0xefb7e0): releases what the object holds and its function, then destroys the base. The deleting destructor
+// (slot 5, 0xefb830) inlines this body; always_inline stands in for that inlining (its only support is that it
+// matches).
+__attribute__((always_inline)) FunctionScriptObject::~FunctionScriptObject() {
+    Release();
+    ClearFunction();
+}

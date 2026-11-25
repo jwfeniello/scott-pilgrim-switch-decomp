@@ -958,5 +958,86 @@ struct StackItem_d17240 {
 template struct DareStack<StackItem_d17170>;   // 0xd17170
 template struct DareStack<StackItem_d17240>;   // 0xd17240
 
+// Dare's commands (RTTI names; a base with nine slots, provisional names): slots 3 and 4 are the destructors, the
+// base's trivial. These three own a block allocated through Dare, which their destructors free.
+struct DareCommand {
+    virtual void Slot0();
+    virtual const char* Name();
+    virtual int32_t Execute();
+    virtual ~DareCommand() {}
+    virtual void Slot5(); virtual void Slot6(); virtual void Slot7(); virtual void Slot8();
+};
+struct KillSoundObjectCommand : DareCommand {
+    char padding_8[0x28];
+    void* data;              // +0x30
+    ~KillSoundObjectCommand() override;
+};
+struct AddSoundObjectTypeCommand : DareCommand {
+    char padding_8[0x80];
+    void* data;              // +0x88
+    ~AddSoundObjectTypeCommand() override;
+};
+struct LoadUnloadPackageCommand : DareCommand {
+    char padding_8[0x18];
+    void* data;              // +0x20
+    ~LoadUnloadPackageCommand() override;
+};
+// Slot 3 (0xdb3880; slot 4 at 0xdb38d0 inlines it, always_inline standing in for that, its only support being that it
+// matches): frees the block.
+__attribute__((always_inline)) KillSoundObjectCommand::~KillSoundObjectCommand() {
+    if (data) DareFree(data);
+}
+// Slot 3 (0xdb4080; slot 4 at 0xdb40d0 inlines it, as above): frees the block.
+__attribute__((always_inline)) AddSoundObjectTypeCommand::~AddSoundObjectTypeCommand() {
+    if (data) DareFree(data);
+}
+// Slot 3 (0xda2210): frees the block and forgets it. Slot 4 (0xda2260) is not matched: it tests the pointer and the
+// allocator flag together, reading the flag first, which DareCore.h's volatile flag doesn't allow.
+__attribute__((always_inline)) LoadUnloadPackageCommand::~LoadUnloadPackageCommand() {
+    if (data) {
+        DareFree(data);
+        data = nullptr;
+    }
+}
+
+}  // namespace Private
+}  // namespace Dare
+namespace nn { namespace os { struct MutexType; } }
+namespace Dare {
+namespace Private {
+// The registry Dare keeps callbacks in (provisional names): made on first use, kept in the global at 0x1939a88.
+struct SoundMicros {
+    char data[0x20];
+};
+struct CallbackRegistry {
+    static void* operator new(size_t size) { return DareAllocate(size, 8); }
+    CallbackRegistry() noexcept;   // 0xd147f0 (no landing pad guards it where it is inlined)
+    char padding_0[0x88];
+    ::nn::os::MutexType* mutex;    // +0x88
+    char padding_90[0x20];
+    static CallbackRegistry* Get();
+    void SetRetSoundMicros(const SoundMicros& micros);   // 0xda15e0
+};
+extern "C" CallbackRegistry* Dare_CallbackRegistry;   // 0x1939a88
+inline CallbackRegistry* CallbackRegistry::Get() {
+    CallbackRegistry* registry = Dare_CallbackRegistry;
+    if (!registry) {
+        registry = new CallbackRegistry;
+        Dare_CallbackRegistry = registry;
+    }
+    return registry;
+}
+struct SetRetSoundMicrosCommand : DareCommand {
+    char padding_8[0x8];
+    SoundMicros micros;      // +0x10
+    int32_t Execute() override;
+};
+// Slot 2 (0xdb3ed0): hands a copy of the micros to the registry.
+int32_t SetRetSoundMicrosCommand::Execute() {
+    SoundMicros copy = micros;
+    CallbackRegistry::Get()->SetRetSoundMicros(copy);
+    return 0;
+}
+
 }  // namespace Private
 }  // namespace Dare

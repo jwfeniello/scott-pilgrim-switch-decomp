@@ -248,5 +248,32 @@ int32_t PlainSound_Forward(PlainSound* object, void** target) {
     return result;
 }
 
+// Dare's commands (see DareAsso.cpp): slot 2 runs the command.
+struct DareCommand {
+    virtual void Slot0();
+    virtual const char* Name();
+    virtual int32_t Execute();
+    virtual ~DareCommand() {}
+};
+// Sets an MTT channel track's volume (0xd55720; provisional name and argument names).
+void SetMTTChannelTrackVolume(int32_t track, int32_t object, int32_t channel, float volume, float fade);
+struct ChangeVolumeMTTChannelTrackCommand : DareCommand {
+    char padding_8[0x8];
+    int32_t object;      // +0x10
+    int32_t channel;     // +0x14
+    int32_t track;       // +0x18
+    float fade;          // +0x1c
+    float volume;        // +0x20
+    int32_t Execute() override;
+};
+// Slot 2 (0xdb68a0): makes sure of the manager, then sets the volume.
+int32_t ChangeVolumeMTTChannelTrackCommand::Execute() {
+    int32_t track = this->track, object = this->object, channel = this->channel;
+    float volume = this->volume, fade = this->fade;
+    SndManager::Get();
+    SetMTTChannelTrackVolume(track, object, channel, volume, fade);
+    return 0;
+}
+
 }  // namespace Private
 }  // namespace Dare

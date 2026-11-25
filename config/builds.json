@@ -579275,6 +579275,19 @@
             "_ZN4Dare7Private11ThemeHandle3GetEv": "0xd359b0"
           },
           "got_bindings": {}
+        },
+        {
+          "address": "0xdb68a0",
+          "size": 112,
+          "symbol": "_ZN4Dare7Private34ChangeVolumeMTTChannelTrackCommand7ExecuteEv",
+          "target_sha256": "d1a9abfab85e1d2d263f12ae0955051ac7cd2c97ff68d966bf0dca957c5a12f9",
+          "bindings": {
+            "Dare_SndManager": "0x19397f0",
+            "_Z12DareAllocatemj": "0x722190",
+            "_ZN4Dare7Private10SndManagerC1Ev": "0xcf6830",
+            "_ZN4Dare7Private24SetMTTChannelTrackVolumeEiiiff": "0xd55720"
+          },
+          "got_bindings": {}
         }
       ]
     },
@@ -580110,6 +580123,19 @@
           "got_bindings": {}
         },
         {
+          "address": "0xda2210",
+          "size": 80,
+          "symbol": "_ZN4Dare7Private24LoadUnloadPackageCommandD2Ev",
+          "target_sha256": "16ef02c1d8efb04c90d08f97a5dc225bf6f08310f101cb762a13ef8a1146ce12",
+          "bindings": {
+            "_ZTVN4Dare7Private24LoadUnloadPackageCommandE": "0x18d6888",
+            "Dare_AllocatorEnabled": "0x191fb00",
+            "Dare_Allocator": "0x191faf8",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
           "address": "0xdb1740",
           "size": 76,
           "symbol": "_ZN4Dare7Private10DareVectorINS0_17VectorItem_db1740EED2Ev",
@@ -580129,6 +580155,73 @@
           "bindings": {
             "Dare_AllocatorEnabled": "0x191fb00",
             "Dare_Allocator": "0x191faf8",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xdb3880",
+          "size": 72,
+          "symbol": "_ZN4Dare7Private22KillSoundObjectCommandD2Ev",
+          "target_sha256": "04e7959e180312e172563512290a5b279def4a4d39c8ab6e69555d31d7cb79c7",
+          "bindings": {
+            "_ZTVN4Dare7Private22KillSoundObjectCommandE": "0x18d78b0",
+            "Dare_AllocatorEnabled": "0x191fb00",
+            "Dare_Allocator": "0x191faf8",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xdb38d0",
+          "size": 80,
+          "symbol": "_ZN4Dare7Private22KillSoundObjectCommandD0Ev",
+          "target_sha256": "5e7669a0f45b3be0e04772918738bf57774854bdc66be76dda991618d34bc91f",
+          "bindings": {
+            "_ZTVN4Dare7Private22KillSoundObjectCommandE": "0x18d78b0",
+            "Dare_AllocatorEnabled": "0x191fb00",
+            "Dare_Allocator": "0x191faf8",
+            "_ZdlPv": "0xfa3b40",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xdb3ed0",
+          "size": 88,
+          "symbol": "_ZN4Dare7Private24SetRetSoundMicrosCommand7ExecuteEv",
+          "target_sha256": "2d94b0456425bbab4934033291c6902507cab22a3aa932a9d87b5c752e8e0de5",
+          "bindings": {
+            "Dare_CallbackRegistry": "0x1939a88",
+            "_ZN4Dare7Private12DareAllocateEmj": "0x722190",
+            "_ZN4Dare7Private16CallbackRegistryC1Ev": "0xd147f0",
+            "_ZN4Dare7Private16CallbackRegistry17SetRetSoundMicrosERKNS0_11SoundMicrosE": "0xda15e0"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xdb4080",
+          "size": 72,
+          "symbol": "_ZN4Dare7Private25AddSoundObjectTypeCommandD2Ev",
+          "target_sha256": "6decd4c21b8d2089ae51101bca95a341209980363d606a1455f762992539aa67",
+          "bindings": {
+            "_ZTVN4Dare7Private25AddSoundObjectTypeCommandE": "0x18d7a00",
+            "Dare_AllocatorEnabled": "0x191fb00",
+            "Dare_Allocator": "0x191faf8",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xdb40d0",
+          "size": 80,
+          "symbol": "_ZN4Dare7Private25AddSoundObjectTypeCommandD0Ev",
+          "target_sha256": "1b09f353b5460ef00440ae34ba5918af4a7b2408e25c7c02421690409d3c4cb4",
+          "bindings": {
+            "_ZTVN4Dare7Private25AddSoundObjectTypeCommandE": "0x18d7a00",
+            "Dare_AllocatorEnabled": "0x191fb00",
+            "Dare_Allocator": "0x191faf8",
+            "_ZdlPv": "0xfa3b40",
             "__clang_call_terminate": "0x6768b8"
           },
           "got_bindings": {}
@@ -582531,6 +582624,35 @@
           "bindings": {
             "_ZTV20ScriptWatchHashTable": "0x18ea0d8",
             "_ZN9HashTableD2Ev": "0xf35730",
+            "_Z8FireFreePv": "0xfa0140",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xefb7e0",
+          "size": 72,
+          "symbol": "_ZN20FunctionScriptObjectD2Ev",
+          "target_sha256": "c88607b088d82804aed64dddb2e83c99a1e7d1de711a364746a16f56aafca7d4",
+          "bindings": {
+            "_ZTV20FunctionScriptObject": "0x18ea148",
+            "_ZN12ScriptObject7ReleaseEv": "0xeeacc0",
+            "_ZN20FunctionScriptObject13ClearFunctionEv": "0xefb9d0",
+            "_ZN12ScriptObjectD2Ev": "0xeea5a0",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xefb830",
+          "size": 88,
+          "symbol": "_ZN20FunctionScriptObjectD0Ev",
+          "target_sha256": "b9d088e16c81ed1b328d0078402f4ab174c149bf482ed33f3de8b3654aa4a474",
+          "bindings": {
+            "_ZTV20FunctionScriptObject": "0x18ea148",
+            "_ZN12ScriptObject7ReleaseEv": "0xeeacc0",
+            "_ZN20FunctionScriptObject13ClearFunctionEv": "0xefb9d0",
+            "_ZN12ScriptObjectD2Ev": "0xeea5a0",
             "_Z8FireFreePv": "0xfa0140",
             "__clang_call_terminate": "0x6768b8"
           },
