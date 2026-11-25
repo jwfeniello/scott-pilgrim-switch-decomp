@@ -15,7 +15,44 @@ __attribute__((always_inline)) inline int CompareNames(const char* a, const char
 }
 
 // The interfaces the game reads devices through; a hook implements its device's at +0x10.
-struct GamePadInterface { virtual void GamePadSlot0(); };
+// Gear::GamePadInterface: 52 slots, its destructor at 44 and 45. Slot names are provisional.
+struct GamePadBlock { float values[12]; };   // what slot 3 takes: 48 bytes (the field names aren't known)
+struct GamePadInterface {
+    virtual void Slot0(); virtual void Slot1(); virtual void Slot2();
+    virtual void SetBlock(const GamePadBlock& block);                  // slot 3
+    virtual bool Slot4(uint8_t button);                                // slot 4: slot 5's
+    virtual bool Slot5(uint8_t button);                                // slot 5: the button's value at least +0x180
+    virtual uint8_t Slot6(uint8_t button);                            // slot 6
+    virtual const float* Slot7(int32_t index);                         // slot 7: two values per index
+    virtual const float* Slot8();                                      // slot 8: two values
+    virtual float Slot9();                                             // slot 9
+    virtual const float* Slot10(int32_t index);                        // slot 10: three values per index
+    virtual void Slot11(); virtual void Slot12();
+    virtual const float* Slot13();                                     // slot 13: one value
+    virtual void Slot14(); virtual void Slot15();
+    virtual const float* Slot16();                                     // slot 16: three values
+    virtual void Slot17(); virtual void Slot18();
+    virtual const float* Slot19();                                     // slot 19: three values
+    virtual void Slot20();
+    virtual void Slot21();
+    virtual uint8_t Threshold();                                       // slot 22: what slot 5 compares with
+    virtual void Slot23(); virtual void Slot24(); virtual void Slot25();
+    virtual void Slot26(); virtual void Slot27(); virtual void Slot28(); virtual void Slot29(); virtual void Slot30();
+    virtual void Slot31();
+    virtual void Vibrate(uint32_t left, uint32_t right, uint32_t leftTime, uint32_t rightTime);   // slot 32
+    virtual void VibrateLeft(uint32_t strength, uint32_t time);       // slot 33
+    virtual void VibrateRight(uint32_t strength, uint32_t time);      // slot 34
+    virtual void EnableVibration(bool enabled);                        // slot 35
+    virtual void StopVibration();                                      // slot 36
+    virtual void Slot37(); virtual void Slot38(); virtual void Slot39(); virtual void Slot40(); virtual void Slot41();
+    virtual void Slot42(); virtual void Slot43();
+    virtual ~GamePadInterface() {}                                     // slots 44, 45
+    virtual void Slot46();
+    virtual bool Pressed(uint8_t button);                              // slot 47
+    virtual void Slot48(); virtual void Slot49();
+    virtual bool AnyPressed();                                         // slot 50
+    virtual void Slot51();
+};
 struct KeyboardInterface { virtual void KeyboardSlot0(); };
 struct MouseInterface { virtual void MouseSlot0(); };
 
@@ -96,26 +133,344 @@ template struct InteractiveDeviceHookBase<MouseInterface>;
 // The hooks for each kind of device (vtables 0x189db68, 0x189e548, 0x189e978) and the time filters over them
 // (0x189df28, 0x189e678, 0x189eab0).
 #define GEAR_INPUT_CLASS(Class, Base)     struct Class : Base {         static const char Name[];         const char* ClassName() const override;         bool IsA(const char* name) const override;     };     bool Class::IsA(const char* name) const { return CompareNames(name, Name) == 0 || Base::IsA(name); }
-GEAR_INPUT_CLASS(GamePadHook, InteractiveDeviceHookBase<GamePadInterface>)        // IsA 0xaaca20
 GEAR_INPUT_CLASS(KeyboardHook, InteractiveDeviceHookBase<KeyboardInterface>)      // IsA 0xaad5e0
 GEAR_INPUT_CLASS(MouseHook, InteractiveDeviceHookBase<MouseInterface>)            // IsA 0xaae030
-GEAR_INPUT_CLASS(TimeFilteredGamePad, GamePadHook)                                // IsA 0xaab210
 GEAR_INPUT_CLASS(TimeFilteredKeyboard, KeyboardHook)                              // IsA 0xaacfa0
 GEAR_INPUT_CLASS(TimeFilteredMouse, MouseHook)                                    // IsA 0xaad930
+// Two tables of the 27 buttons (0x192aec1 and 0x192aedc), filled with 0xff the first time a button is read; the flag
+// at 0x192aec0 says they're ready. A button with an entry other than 0xff in the first can have its value overridden.
+// The names are provisional.
+extern uint8_t ButtonTablesReady;   // bit 0 (tested as a bit: only the match supports that spelling)
+extern uint8_t ButtonTableA[27];
+extern uint8_t ButtonTableB[27];
+__attribute__((always_inline)) inline void PrepareButtonTables() {
+    if (!(ButtonTablesReady & 1)) {
+        __builtin_memset(ButtonTableA, 0xff, sizeof(ButtonTableA));
+        __builtin_memset(ButtonTableB, 0xff, sizeof(ButtonTableB));
+        ButtonTablesReady = 1;
+    }
+}
+// A value per button and the overrides (0 for none).
+struct ButtonValues {
+    uint8_t values[27];
+    uint8_t overrides[27];
+    __attribute__((always_inline)) uint8_t Get(uint8_t button) const {
+        PrepareButtonTables();
+        if (ButtonTableA[button] != 0xff)
+            if (uint8_t value = overrides[button]) return value;
+        return values[button];
+    }
+};
+
+// Gear::GamePadHook (vtable 0x189db68): passes each of the 50 game-pad slots on to the interface below it
+// (+0x28); its overriders fill slots 14-63 of its first vtable in the interface's order (0xaab7a0-0xaabae0, credited
+// to older builds, so only declared here).
+struct GamePadHook : InteractiveDeviceHookBase<GamePadInterface> {
+    static const char Name[];
+    const char* ClassName() const override;
+    bool IsA(const char* name) const override;
+    void Slot0() override;
+    void Slot1() override;
+    void Slot2() override;
+    void SetBlock(const GamePadBlock& block) override;
+    bool Slot4(uint8_t button) override;
+    bool Slot5(uint8_t button) override;
+    uint8_t Slot6(uint8_t button) override;
+    const float* Slot7(int32_t index) override;
+    const float* Slot8() override;
+    float Slot9() override;
+    const float* Slot10(int32_t index) override;
+    void Slot11() override;
+    void Slot12() override;
+    const float* Slot13() override;
+    void Slot14() override;
+    void Slot15() override;
+    const float* Slot16() override;
+    void Slot17() override;
+    void Slot18() override;
+    const float* Slot19() override;
+    void Slot20() override;
+    void Slot21() override;
+    uint8_t Threshold() override;
+    void Slot23() override;
+    void Slot24() override;
+    void Slot25() override;
+    void Slot26() override;
+    void Slot27() override;
+    void Slot28() override;
+    void Slot29() override;
+    void Slot30() override;
+    void Slot31() override;
+    void Vibrate(uint32_t left, uint32_t right, uint32_t leftTime, uint32_t rightTime) override;
+    void VibrateLeft(uint32_t strength, uint32_t time) override;
+    void VibrateRight(uint32_t strength, uint32_t time) override;
+    void EnableVibration(bool enabled) override;
+    void StopVibration() override;
+    void Slot37() override;
+    void Slot38() override;
+    void Slot39() override;
+    void Slot40() override;
+    void Slot41() override;
+    void Slot42() override;
+    void Slot43() override;
+    void Slot46() override;
+    bool Pressed(uint8_t button) override;
+    void Slot48() override;
+    void Slot49() override;
+    bool AnyPressed() override;
+    void Slot51() override;
+};
+bool GamePadHook::IsA(const char* name) const {
+    return CompareNames(name, Name) == 0 || InteractiveDeviceHookBase<GamePadInterface>::IsA(name);
+}
+// Gear::TimeFilteredGamePad (vtable 0x189df28): keeps what it last read from the pad and tells whether each reading
+// moved; analog values count as moved past 2e-6. Slots 64-95 are its own; their names are provisional.
+struct TimeFilteredGamePad : GamePadHook {
+    static const char Name[];
+    const char* ClassName() const override;
+    bool IsA(const char* name) const override;   // 0xaab210
+    virtual void Slot64(); virtual void Slot65(); virtual void Slot66();
+    virtual bool PressedNow(uint8_t button);     // slot 67
+    virtual void Slot68();
+    virtual bool ReleasedNow(uint8_t button);    // slot 69
+    virtual void Slot70(); virtual void Slot71();
+    virtual int32_t Delta6(uint8_t button);      // slot 72
+    virtual void Slot73();
+    virtual void Slot74(); virtual void Slot75(); virtual void Slot76(); virtual void Slot77(); virtual void Slot78();
+    virtual void Slot79(); virtual void Slot80(); virtual void Slot81(); virtual void Slot82(); virtual void Slot83();
+    virtual bool Moved13();                      // slot 84
+    virtual bool Moved16();                      // slot 85
+    virtual bool Moved19();                      // slot 86
+    virtual void Slot87();
+    virtual bool Changed6(uint8_t button);       // slot 88
+    virtual bool Changed7(int32_t index);        // slot 89
+    virtual bool Changed10(int32_t index);       // slot 90
+    virtual bool Changed8();                     // slot 91
+    virtual bool Moved9();                       // slot 92
+    virtual void Slot93(); virtual void Slot94(); virtual void Slot95();
+    char padding_30[0x4];
+    float last7[2][2];                 // +0x34
+    float last10[2][3];                // +0x44
+    float last8[2];                    // +0x5c
+    char padding_64[0x10];
+    float last13;                      // +0x74
+    float last9;                       // +0x78
+    char padding_7c[0x58];
+    ButtonValues lastButtons;          // +0xd4
+    char padding_10a[0x2];
+    float last16[3];                   // +0x10c
+    float last19[3];                   // +0x118
+};
+bool TimeFilteredGamePad::IsA(const char* name) const { return CompareNames(name, Name) == 0 || GamePadHook::IsA(name); }
+
+// Whether two analog readings are the same to within 2e-6 (the moved tests are its negation: unordered counts as
+// moved).
+__attribute__((always_inline)) inline bool Near(float a, float b) { return __builtin_fabsf(a - b) <= 2e-6f; }
+
+// Slot 84 (0xaac140).
+bool TimeFilteredGamePad::Moved13() { return !Near(*Slot13(), last13); }
+// Slot 85 (0xaac180).
+bool TimeFilteredGamePad::Moved16() {
+    const float* now = Slot16();
+    return !Near(now[0], last16[0]) || !Near(now[1], last16[1]) || !Near(now[2], last16[2]);
+}
+// Slot 86 (0xaac200).
+bool TimeFilteredGamePad::Moved19() {
+    const float* now = Slot19();
+    return !Near(now[0], last19[0]) || !Near(now[1], last19[1]) || !Near(now[2], last19[2]);
+}
+// Slot 67 (0xaabb60): the button reaches the threshold now and didn't before.
+bool TimeFilteredGamePad::PressedNow(uint8_t button) { return lastButtons.Get(button) < Threshold() && Slot5(button); }
+// Slot 69 (0xaabc40): the button reached the threshold before and doesn't now.
+bool TimeFilteredGamePad::ReleasedNow(uint8_t button) {
+    return lastButtons.Get(button) >= Threshold() && !Slot5(button);
+}
+// Slot 72 (0xaabd50): how far the button's value moved.
+int32_t TimeFilteredGamePad::Delta6(uint8_t button) {
+    uint8_t now = Slot6(button);
+    return now - lastButtons.Get(button);
+}
+// Slot 88 (0xaac3c0).
+bool TimeFilteredGamePad::Changed6(uint8_t button) {
+    uint8_t now = Slot6(button);
+    return lastButtons.Get(button) != now;
+}
+// Slot 89 (0xaac460).
+bool TimeFilteredGamePad::Changed7(int32_t index) {
+    const float* now = Slot7(index);
+    return now[0] != last7[index][0] || now[1] != last7[index][1];
+}
+// Slot 90 (0xaac4c0).
+bool TimeFilteredGamePad::Changed10(int32_t index) {
+    const float* now = Slot10(index);
+    return now[0] != last10[index][0] || now[1] != last10[index][1] || now[2] != last10[index][2];
+}
+// Slot 91 (0xaac540, credited to an older build).
+bool TimeFilteredGamePad::Changed8() {
+    const float* now = Slot8();
+    return now[0] != last8[0] || now[1] != last8[1];
+}
+// Slot 92 (0xaac590).
+bool TimeFilteredGamePad::Moved9() { return !Near(Slot9(), last9); }
 
 // Gear::GamePad and the pads under it. The game-pad interface is the first base, so InteractiveDevice sits at +0x8:
 // each IsA fills a new slot (53) of the first vtable and slot 1 of the second through a thunk. IsA reads no member,
 // so the thunk carries the whole test and the original has it twice.
 // Gear::GamePad (thunk 0xaa4b90).
+// A block of memory a pad owns: emptied, then given back to the allocator that owns its address. Here the allocator's
+// slot 6 may throw (HardwareGamePad's destructor has landing pads around both frees and doesn't tail-call the last),
+// unlike MemInterface's as GearDevices.cpp sees it; the view type is a guess at that.
+struct ThrowingAllocator {
+    virtual void Slot0(); virtual void Slot1(); virtual void Slot2(); virtual void Slot3(); virtual void Slot4();
+    virtual void Slot5();
+    virtual void Free(void* block);    // slot 6
+};
+struct GamePadBuffer {
+    MemInterface* allocator;
+    uint64_t count;
+    void* data;
+    ~GamePadBuffer() {
+        count = 0;
+        if (void* block = data) reinterpret_cast<ThrowingAllocator*>(AllocatorFor(block))->Free(block);
+    }
+};
 struct GamePad : GamePadInterface, InteractiveDevice {
+    static const char Name[];
+    const char* ClassName() const override;   // slot 52
+    bool IsA(const char* name) const override;   // slot 53
+    // Slots 54-67: GamePad's own, some of them its InteractiveDevice overrides (thunks 0xaa4c10-0xaa4de0); which is
+    // which isn't known yet.
+    virtual void Slot54(); virtual void Slot55(); virtual void Slot56(); virtual void Slot57(); virtual void Slot58();
+    virtual void Slot59(); virtual void Slot60(); virtual void Slot61(); virtual void Slot62(); virtual void Slot63();
+    virtual void Slot64(); virtual void Slot65(); virtual void Slot66(); virtual void Slot67();
+    void SetBlock(const GamePadBlock& block) override;
+    bool Slot4(uint8_t button) override;
+    bool Slot5(uint8_t button) override;
+    uint8_t Slot6(uint8_t button) override;
+    void StopVibration() override;
+    char padding_10[0xa4];
+    ButtonValues buttons;              // +0xb4
+    char padding_ea[0x3e];
+    GamePadBlock block;                // +0x128
+    char padding_158[0x8];
+    GamePadBuffer buffer160;           // +0x160
+    char padding_178[0x8];
+    uint8_t threshold;                 // +0x180
+};
+bool GamePad::IsA(const char* name) const { return CompareNames(name, Name) == 0 || InteractiveDevice::IsA(name); }
+// Slot 3 (0xaa4060): keeps the block.
+void GamePad::SetBlock(const GamePadBlock& value) { block = value; }
+// Slot 4 (0xaa4090, credited to an older build): slot 5's answer.
+bool GamePad::Slot4(uint8_t button) { return Slot5(button); }
+// Slot 5 (0xaa40a0): whether the button's value reaches the threshold.
+bool GamePad::Slot5(uint8_t button) { return buttons.Get(button) >= threshold; }
+// Slot 6 (0xaa4120): the button's value.
+uint8_t GamePad::Slot6(uint8_t button) { return buttons.Get(button); }
+// Slot 36 (0xaa43d0): no vibration on either side.
+void GamePad::StopVibration() { Vibrate(0, 0, 0, 0); }
+
+// Gear::HardwareGamePad (thunk 0xaa4ed0 for IsA 0xaa4e10).
+struct HardwareGamePad : GamePad {
     static const char Name[];
     const char* ClassName() const override;
     bool IsA(const char* name) const override;
+    ~HardwareGamePad() override;
+    char padding_188[0x8];
+    GamePadBuffer buffer190;           // +0x190
 };
-bool GamePad::IsA(const char* name) const { return CompareNames(name, Name) == 0 || InteractiveDevice::IsA(name); }
-GEAR_INPUT_CLASS(HardwareGamePad, GamePad)                     // IsA 0xaa4e10, thunk 0xaa4ed0
-GEAR_INPUT_CLASS(VibrationEnabledGamePad, HardwareGamePad)
-GEAR_INPUT_CLASS(GamePadEE, VibrationEnabledGamePad)           // IsA 0xaa5370, thunk 0xaa5f90
+bool HardwareGamePad::IsA(const char* name) const { return CompareNames(name, Name) == 0 || GamePad::IsA(name); }
+// 0xaa3f80 (no vtable slot: GamePadEE's destructor calls it): the two buffers go, this one first.
+HardwareGamePad::~HardwareGamePad() {}
+
+// Gear::VibrationEnabledGamePad: two motors, each with a strength and an end time (0 for none) against the clock at
+// +0x1c4; slot 68 applies them.
+struct VibrationEnabledGamePad : HardwareGamePad {
+    static const char Name[];
+    const char* ClassName() const override;
+    bool IsA(const char* name) const override;
+    virtual void ApplyVibration();     // slot 68
+    void Vibrate(uint32_t left, uint32_t right, uint32_t leftTime, uint32_t rightTime) override;
+    void VibrateLeft(uint32_t strength, uint32_t time) override;
+    void VibrateRight(uint32_t strength, uint32_t time) override;
+    void EnableVibration(bool enabled) override;
+    char padding_1a8[0x8];
+    bool vibrating;                    // +0x1b0
+    bool enabled;                      // +0x1b1
+    char padding_1b2[0x2];
+    uint32_t leftEnd;                  // +0x1b4
+    uint32_t rightEnd;                 // +0x1b8
+    uint32_t left;                     // +0x1bc
+    uint32_t right;                    // +0x1c0
+    uint32_t now;                      // +0x1c4
+};
+bool VibrationEnabledGamePad::IsA(const char* name) const {
+    return CompareNames(name, Name) == 0 || HardwareGamePad::IsA(name);
+}
+// Slot 32 (0xaa5010).
+void VibrationEnabledGamePad::Vibrate(uint32_t left, uint32_t right, uint32_t leftTime, uint32_t rightTime) {
+    this->left = left;
+    this->right = right;
+    leftEnd = leftTime ? now + leftTime : 0;
+    rightEnd = rightTime ? now + rightTime : 0;
+    ApplyVibration();
+}
+// Slot 33 (0xaa5060, credited to an older build).
+void VibrationEnabledGamePad::VibrateLeft(uint32_t strength, uint32_t time) {
+    left = strength;
+    leftEnd = time ? now + time : 0;
+    ApplyVibration();
+}
+// Slot 34 (0xaa5090, credited to an older build).
+void VibrationEnabledGamePad::VibrateRight(uint32_t strength, uint32_t time) {
+    right = strength;
+    rightEnd = time ? now + time : 0;
+    ApplyVibration();
+}
+// Slot 35 (0xaa50c0, credited to an older build): applies only a change.
+void VibrationEnabledGamePad::EnableVibration(bool on) {
+    if (enabled == on) return;
+    enabled = on;
+    ApplyVibration();
+}
+
+// The state a GamePadEE reads (+0x1c8): a byte per button at +0x10, their count at +0x18.
+struct GamePadState {
+    char padding_0[0x10];
+    uint8_t* buttons;                  // +0x10
+    uint64_t count;                    // +0x18
+    void Release() noexcept;           // 0xaa61d0 (GamePadEE's destructor has no landing pad around it)
+};
+// Where each of Gear's buttons is in the state (0x19254d0, 12 bytes each).
+struct GamePadButton {
+    int32_t index;
+    char padding_4[0x8];
+};
+extern const GamePadButton GamePadButtons[];
+
+struct GamePadEE : VibrationEnabledGamePad {
+    static const char Name[];
+    const char* ClassName() const override;
+    bool IsA(const char* name) const override;
+    ~GamePadEE() override;
+    virtual void Slot69();             // slot 69
+    bool Pressed(uint8_t button) override;
+    bool AnyPressed() override;
+    GamePadState* state;               // +0x1c8
+};
+bool GamePadEE::IsA(const char* name) const { return CompareNames(name, Name) == 0 || VibrationEnabledGamePad::IsA(name); }
+// Slots 44 and 45 (0xaa51e0, 0xaa5220).
+GamePadEE::~GamePadEE() { state->Release(); }
+// Slot 47 (0xaa5260): whether the button is down.
+bool GamePadEE::Pressed(uint8_t button) {
+    int32_t index = GamePadButtons[button].index;
+    return state->buttons[index] != 0;
+}
+// Slot 50 (0xaa5310): whether any button is down.
+bool GamePadEE::AnyPressed() {
+    for (uint64_t i = 0; state->count > i; ++i)
+        if (state->buttons[i]) return true;
+    return false;
+}
 GEAR_INPUT_CLASS(GamePadKeyboard, GamePad)                     // IsA 0xaa9ff0, thunk 0xaaa900
 GEAR_INPUT_CLASS(GamePadMouse, GamePad)                        // IsA 0xaaac30, thunk 0xaab110
 // Gear::Keyboard the same way; KeyboardEE keeps its test (thunk 0xaa3cf0).

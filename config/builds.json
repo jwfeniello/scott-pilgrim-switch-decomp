@@ -576290,6 +576290,60 @@
           "got_bindings": {}
         },
         {
+          "address": "0xaa3f80",
+          "size": 192,
+          "symbol": "_ZN4Gear15HardwareGamePadD2Ev",
+          "target_sha256": "1b73b3b9278a48a808f9bf6ff14ba51d1a0aed3db3d6b1b0c54a02036d017f6f",
+          "bindings": {
+            "_ZTVN4Gear15HardwareGamePadE": "0x189c9e8",
+            "_ZN4Gear6MemoryE": "0x1926bd8",
+            "_ZN4Gear10MemManager7IndexOfEPKv": "0xa82b30",
+            "_ZTVN4Gear7GamePadE": "0x189cc90",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xaa4060",
+          "size": 36,
+          "symbol": "_ZN4Gear7GamePad8SetBlockERKNS_12GamePadBlockE",
+          "target_sha256": "ea46ce70088706f713d364ed6fb873a1c5082f41d64caa57b34fa1ba6ee8a3bb",
+          "bindings": {},
+          "got_bindings": {}
+        },
+        {
+          "address": "0xaa40a0",
+          "size": 128,
+          "symbol": "_ZN4Gear7GamePad5Slot5Eh",
+          "target_sha256": "61ae290a1bfc3d4402b7e725fad0312ac045d3778da77f26b001ec5426cb0223",
+          "bindings": {
+            "_ZN4Gear17ButtonTablesReadyE": "0x192aec0",
+            "_ZN4Gear12ButtonTableAE": "0x192aec1",
+            "_ZN4Gear12ButtonTableBE": "0x192aedc"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xaa4120",
+          "size": 128,
+          "symbol": "_ZN4Gear7GamePad5Slot6Eh",
+          "target_sha256": "90b133b86a023a98944375a9e2abbe4a5e8dc2fabca4947446ea0fa706eca0b0",
+          "bindings": {
+            "_ZN4Gear17ButtonTablesReadyE": "0x192aec0",
+            "_ZN4Gear12ButtonTableAE": "0x192aec1",
+            "_ZN4Gear12ButtonTableBE": "0x192aedc"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xaa43d0",
+          "size": 28,
+          "symbol": "_ZN4Gear7GamePad13StopVibrationEv",
+          "target_sha256": "4f86687da594942ed228c8236ea62254fd54ea69cb0d8ece439bc523f9ba96f2",
+          "bindings": {},
+          "got_bindings": {}
+        },
+        {
           "address": "0xaa4940",
           "size": 124,
           "symbol": "_ZNK4Gear7GamePad3IsAEPKc",
@@ -576333,6 +576387,57 @@
             "_ZN4Gear7GamePad4NameE": "0x14d2a94",
             "_ZN4Gear17InteractiveDevice4NameE": "0x1318b61"
           },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xaa5010",
+          "size": 72,
+          "symbol": "_ZN4Gear23VibrationEnabledGamePad7VibrateEjjjj",
+          "target_sha256": "a67b01eda2cf7b641e8bec5d4756629dcb155a87556a39af4005f8d4453ed36d",
+          "bindings": {},
+          "got_bindings": {}
+        },
+        {
+          "address": "0xaa51e0",
+          "size": 52,
+          "symbol": "_ZN4Gear9GamePadEED2Ev",
+          "target_sha256": "ddf1d9cf67b316ab1331ec17c7fd332851945f235fa109a4b4bafda9e7fb1d3b",
+          "bindings": {
+            "_ZTVN4Gear9GamePadEEE": "0x189c730",
+            "_ZN4Gear12GamePadState7ReleaseEv": "0xaa61d0",
+            "_ZN4Gear15HardwareGamePadD2Ev": "0xaa3f80"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xaa5220",
+          "size": 60,
+          "symbol": "_ZN4Gear9GamePadEED0Ev",
+          "target_sha256": "1378818f3c9bff4aa88e398c5714e2e62c7156f91c38a31e00a815294083f185",
+          "bindings": {
+            "_ZTVN4Gear9GamePadEEE": "0x189c730",
+            "_ZN4Gear12GamePadState7ReleaseEv": "0xaa61d0",
+            "_ZN4Gear15HardwareGamePadD2Ev": "0xaa3f80",
+            "_ZdlPv": "0xfa3b40"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xaa5260",
+          "size": 48,
+          "symbol": "_ZN4Gear9GamePadEE7PressedEh",
+          "target_sha256": "1ef217e9d6e171a5e5f7871f6909383f76a3e5173e787659fd64e8d94297b765",
+          "bindings": {
+            "_ZN4Gear14GamePadButtonsE": "0x19254d0"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xaa5310",
+          "size": 64,
+          "symbol": "_ZN4Gear9GamePadEE10AnyPressedEv",
+          "target_sha256": "86ac464b41b619b887c9ef533cd83b8690d97c7b281c53e59b5f997f24c33537",
+          "bindings": {},
           "got_bindings": {}
         },
         {
@@ -576448,6 +576553,114 @@
             "_ZN4Gear17InteractiveDevice4NameE": "0x1318b61"
           },
           "got_bindings": {}
+        },
+        {
+          "address": "0xaabb60",
+          "size": 196,
+          "symbol": "_ZN4Gear19TimeFilteredGamePad10PressedNowEh",
+          "target_sha256": "37d38256680bf8160610fbc83b0c0e90f9907d7ff41f52db33bed7a4eeb83ba0",
+          "bindings": {
+            "_ZN4Gear17ButtonTablesReadyE": "0x192aec0",
+            "_ZN4Gear12ButtonTableAE": "0x192aec1",
+            "_ZN4Gear12ButtonTableBE": "0x192aedc"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xaabc40",
+          "size": 200,
+          "symbol": "_ZN4Gear19TimeFilteredGamePad11ReleasedNowEh",
+          "target_sha256": "14260b35d3cb72ac8d87d3c4a03a4b5cd104d7b016be4316998586314161e741",
+          "bindings": {
+            "_ZN4Gear17ButtonTablesReadyE": "0x192aec0",
+            "_ZN4Gear12ButtonTableAE": "0x192aec1",
+            "_ZN4Gear12ButtonTableBE": "0x192aedc"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xaabd50",
+          "size": 160,
+          "symbol": "_ZN4Gear19TimeFilteredGamePad6Delta6Eh",
+          "target_sha256": "1718d7985ad79a15e076c4903d6ac25f200c7d5dd5a200ea1356c534f142493f",
+          "bindings": {
+            "_ZN4Gear17ButtonTablesReadyE": "0x192aec0",
+            "_ZN4Gear12ButtonTableAE": "0x192aec1",
+            "_ZN4Gear12ButtonTableBE": "0x192aedc"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xaac140",
+          "size": 56,
+          "symbol": "_ZN4Gear19TimeFilteredGamePad7Moved13Ev",
+          "target_sha256": "cd85ad9807c4adf914aba50e9a69f29ddd490b146676e5a66bf2180ce81975a5",
+          "bindings": {},
+          "got_bindings": {},
+          "literals": {
+            "bd370636": "0x1331f30"
+          }
+        },
+        {
+          "address": "0xaac180",
+          "size": 120,
+          "symbol": "_ZN4Gear19TimeFilteredGamePad7Moved16Ev",
+          "target_sha256": "4c14bd0c21dc68cadc972a919120429c512537d6e998dc84fda009b779edd95e",
+          "bindings": {},
+          "got_bindings": {},
+          "literals": {
+            "bd370636": "0x1331f30"
+          }
+        },
+        {
+          "address": "0xaac200",
+          "size": 120,
+          "symbol": "_ZN4Gear19TimeFilteredGamePad7Moved19Ev",
+          "target_sha256": "c5df981d5317aa23af9e3cac5825db978e9e030b5748ae9da19b977e96cc3af3",
+          "bindings": {},
+          "got_bindings": {},
+          "literals": {
+            "bd370636": "0x1331f30"
+          }
+        },
+        {
+          "address": "0xaac3c0",
+          "size": 160,
+          "symbol": "_ZN4Gear19TimeFilteredGamePad8Changed6Eh",
+          "target_sha256": "ba163476e12b3a84dc5f8d51f7dedcabfa9b824315b25f16f72de4d9dfba0c19",
+          "bindings": {
+            "_ZN4Gear17ButtonTablesReadyE": "0x192aec0",
+            "_ZN4Gear12ButtonTableAE": "0x192aec1",
+            "_ZN4Gear12ButtonTableBE": "0x192aedc"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xaac460",
+          "size": 92,
+          "symbol": "_ZN4Gear19TimeFilteredGamePad8Changed7Ei",
+          "target_sha256": "bb5c26868ddb238ec911c955879e91f7a81505417635c69e3a7be5697ab5a4c0",
+          "bindings": {},
+          "got_bindings": {}
+        },
+        {
+          "address": "0xaac4c0",
+          "size": 124,
+          "symbol": "_ZN4Gear19TimeFilteredGamePad9Changed10Ei",
+          "target_sha256": "9ade829c81475329db38b8806f83b10ceb590bbee9005dc7c4fc2207228ddabc",
+          "bindings": {},
+          "got_bindings": {}
+        },
+        {
+          "address": "0xaac590",
+          "size": 52,
+          "symbol": "_ZN4Gear19TimeFilteredGamePad6Moved9Ev",
+          "target_sha256": "bf9a756bac76bd69d2848e4c4ecf76b1275915fc219cab76773cc2f4b45527c0",
+          "bindings": {},
+          "got_bindings": {},
+          "literals": {
+            "bd370636": "0x1331f30"
+          }
         },
         {
           "address": "0xaaca20",
