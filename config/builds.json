@@ -569964,6 +569964,46 @@
           "got_bindings": {}
         },
         {
+          "address": "0xbb21e0",
+          "size": 84,
+          "symbol": "_ZN4Onyx8Behavior8Sequence5Slot4EPNS0_7ContextE",
+          "target_sha256": "7a0dbe9dd2b499fad2d480731526b0e4c12a0d97b61014c5cdf6004bb1ce97e0",
+          "bindings": {},
+          "got_bindings": {}
+        },
+        {
+          "address": "0xbb2e40",
+          "size": 84,
+          "symbol": "_ZN4Onyx8Behavior15ParametricBlend5Slot4EPNS0_7ContextE",
+          "target_sha256": "7a0dbe9dd2b499fad2d480731526b0e4c12a0d97b61014c5cdf6004bb1ce97e0",
+          "bindings": {},
+          "got_bindings": {}
+        },
+        {
+          "address": "0xbb3e80",
+          "size": 84,
+          "symbol": "_ZN4Onyx8Behavior10MultiBlend5Slot4EPNS0_7ContextE",
+          "target_sha256": "7a0dbe9dd2b499fad2d480731526b0e4c12a0d97b61014c5cdf6004bb1ce97e0",
+          "bindings": {},
+          "got_bindings": {}
+        },
+        {
+          "address": "0xbb5410",
+          "size": 84,
+          "symbol": "_ZN4Onyx8Behavior4Clip5Slot4EPNS0_7ContextE",
+          "target_sha256": "7a0dbe9dd2b499fad2d480731526b0e4c12a0d97b61014c5cdf6004bb1ce97e0",
+          "bindings": {},
+          "got_bindings": {}
+        },
+        {
+          "address": "0xbb5c70",
+          "size": 84,
+          "symbol": "_ZN4Onyx8Behavior5Blend5Slot4EPNS0_7ContextE",
+          "target_sha256": "7a0dbe9dd2b499fad2d480731526b0e4c12a0d97b61014c5cdf6004bb1ce97e0",
+          "bindings": {},
+          "got_bindings": {}
+        },
+        {
           "address": "0xbbf790",
           "size": 88,
           "symbol": "_ZN4Onyx5Press6Slot15EPNS_11UpdatedListE",
@@ -569980,6 +570020,38 @@
           "got_bindings": {}
         },
         {
+          "address": "0xbf24e0",
+          "size": 60,
+          "symbol": "_ZN4Onyx11OrPredicate8EvaluateEv",
+          "target_sha256": "3ba697e5eee2b488cbdfb9c8bcfeb2245fff61e14ac6740f163ca2829c1aac2f",
+          "bindings": {},
+          "got_bindings": {}
+        },
+        {
+          "address": "0xbf2730",
+          "size": 124,
+          "symbol": "_ZN4Onyx16OrGroupPredicate8EvaluateEv",
+          "target_sha256": "85f43381f5d7a8a3e139ee1790498e12b521ab79ca383abbea88be0720acae55",
+          "bindings": {},
+          "got_bindings": {}
+        },
+        {
+          "address": "0xbf2c60",
+          "size": 60,
+          "symbol": "_ZN4Onyx12AndPredicate8EvaluateEv",
+          "target_sha256": "ca1cc93e30accd33d852cecce99578e4436f4386e621e88d075ce4c7e6488ff5",
+          "bindings": {},
+          "got_bindings": {}
+        },
+        {
+          "address": "0xbf2eb0",
+          "size": 124,
+          "symbol": "_ZN4Onyx17AndGroupPredicate8EvaluateEv",
+          "target_sha256": "4b9cc2b3e66a91ba1f19970a35e5a92b5d276e7a0dc0fa47befdee0a01aac4ef",
+          "bindings": {},
+          "got_bindings": {}
+        },
+        {
           "address": "0xc85050",
           "size": 60,
           "symbol": "_ZN4Onyx24RealTimeElapsedPredicate8EvaluateEv",
@@ -569992,10 +570064,26 @@
           "got_bindings": {}
         },
         {
+          "address": "0xc87e30",
+          "size": 60,
+          "symbol": "_ZN4Onyx15ButtonPredicate8EvaluateEv",
+          "target_sha256": "e47b9d2a7d455eba823f630897e2274ac72bd548a5d44f23aa0455dd7d9e80b6",
+          "bindings": {},
+          "got_bindings": {}
+        },
+        {
           "address": "0xc885f0",
           "size": 96,
           "symbol": "_ZN4Onyx38AxisPairWithinEpsilon2DStateDescriptor5Slot3EPNS_10AxisSourceE",
           "target_sha256": "7fca73279177fcda2229f430f988f341b2bb71e93b3831aaffa7647ac459c278",
+          "bindings": {},
+          "got_bindings": {}
+        },
+        {
+          "address": "0xc886f0",
+          "size": 76,
+          "symbol": "_ZN4Onyx38AxisPairWithinEpsilon1DStateDescriptor5Slot3EPNS_10AxisSourceE",
+          "target_sha256": "54116d6eff5168bf5862cff55e4682025aaa43453790650b1f7ef715bbb133bd",
           "bindings": {},
           "got_bindings": {}
         },
@@ -570012,6 +570100,38 @@
           "size": 68,
           "symbol": "_ZN4Onyx34AxisPairGreaterThanStateDescriptor5Slot3EPNS_10AxisSourceE",
           "target_sha256": "bad739284c7a9fffa1723aa696506ab53588f1fed8708034fc9d9bc8f89c73a9",
+          "bindings": {},
+          "got_bindings": {}
+        },
+        {
+          "address": "0xc88920",
+          "size": 76,
+          "symbol": "_ZN4Onyx38SingleAxisWithinEpsilonStateDescriptor5Slot3EPNS_10AxisSourceE",
+          "target_sha256": "ccdf1f4a02478a61274107eefbf8e2a3ee0a3a8e2172e596d2b3fe5b53a73bba",
+          "bindings": {},
+          "got_bindings": {}
+        },
+        {
+          "address": "0xc88a00",
+          "size": 80,
+          "symbol": "_ZN4Onyx33SingleAxisLessThanStateDescriptor5Slot3EPNS_10AxisSourceE",
+          "target_sha256": "a6f6463e0a514808f34a5eb81f9aa47afea17e468624e8d515092e13b94ea1ee",
+          "bindings": {},
+          "got_bindings": {}
+        },
+        {
+          "address": "0xc88a60",
+          "size": 80,
+          "symbol": "_ZN4Onyx36SingleAxisGreaterThanStateDescriptor5Slot3EPNS_10AxisSourceE",
+          "target_sha256": "7e79c753000b0dea2c620d31ecb886f4a0a17b080e5ae5d3cfda16ec8853d071",
+          "bindings": {},
+          "got_bindings": {}
+        },
+        {
+          "address": "0xc893b0",
+          "size": 60,
+          "symbol": "_ZN4Onyx13AxisPredicate8EvaluateEv",
+          "target_sha256": "5752433d037611f6e54a9c773ee2f72e3b84b7416afc30fb14a12add7b4e8b83",
           "bindings": {},
           "got_bindings": {}
         },
@@ -576380,6 +576500,16 @@
         "src/gameplay"
       ],
       "functions": [
+        {
+          "address": "0xdb72b0",
+          "size": 32,
+          "symbol": "_ZN7SndGear15ExchangeSettingEbPj",
+          "target_sha256": "3d9bb54310e112877f6b9a7ed6ecd13218f880d4dc5de41a22725c6efd91384e",
+          "bindings": {
+            "_ZN7SndGear14Setting1948b38E": "0x1948b38"
+          },
+          "got_bindings": {}
+        },
         {
           "address": "0xdb9340",
           "size": 116,

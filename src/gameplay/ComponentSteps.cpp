@@ -302,6 +302,129 @@ bool XorPredicate::Evaluate() {
     return a != b->Evaluate();
 }
 
+// Onyx::BinaryPredicate<BinaryOrPolicy> and <BinaryAndPolicy> (OrPredicate, AndPredicate), slot 2 (0xbf24e0, 0xbf2c60).
+struct OrPredicate {
+    void* vtable;
+    Predicate* first;           // +0x08
+    Predicate* second;          // +0x10
+    bool Evaluate();
+};
+bool OrPredicate::Evaluate() {
+    Predicate* b = second;
+    if (first->Evaluate()) return true;
+    return b->Evaluate();
+}
+struct AndPredicate {
+    void* vtable;
+    Predicate* first;           // +0x08
+    Predicate* second;          // +0x10
+    bool Evaluate();
+};
+bool AndPredicate::Evaluate() {
+    Predicate* b = second;
+    if (!first->Evaluate()) return false;
+    return b->Evaluate();
+}
+
+// Onyx::GroupPredicate<OrGroupPolicy> and <AndGroupPolicy> (OrGroupPredicate, AndGroupPredicate), slot 2 (0xbf2730,
+// 0xbf2eb0): whether any child holds, or all of them.
+struct PredicateGroup {
+    void* vtable;
+    char padding_8[0x10];
+    uint64_t count;             // +0x18
+    char padding_20[0x8];
+    Predicate** items;          // +0x28
+    Predicate** begin() { return items; }
+    Predicate** end() { return items + count; }
+    template<bool Wanted> static Predicate** Find(Predicate** it, Predicate** last) {
+        for (; it != last; ++it)
+            if ((*it)->Evaluate() == Wanted) return it;
+        return last;
+    }
+};
+struct OrGroupPredicate : PredicateGroup { bool Evaluate(); };
+bool OrGroupPredicate::Evaluate() { return Find<true>(begin(), end()) != end(); }
+struct AndGroupPredicate : PredicateGroup { bool Evaluate(); };
+bool AndGroupPredicate::Evaluate() { return Find<false>(begin(), end()) == end(); }
+
+// Onyx::ButtonPredicate and AxisPredicate, slot 2 (0xc87e30, 0xc893b0): a state descriptor's test on the device, when
+// the device is there to ask (its slot 8 for buttons, slot 3 for axes).
+struct PredicateDevice {
+    virtual void S0(); virtual void S1(); virtual void S2();
+    virtual bool HasAxes();     // slot 3
+    virtual void S4(); virtual void S5(); virtual void S6(); virtual void S7();
+    virtual bool HasButtons();  // slot 8
+};
+struct StateDescriptor {
+    virtual void S0(); virtual void S1();
+    virtual bool TestButton(PredicateDevice* device);   // slot 2
+    virtual bool TestAxis(PredicateDevice* device);     // slot 3
+};
+struct ButtonPredicate {
+    void* vtable;
+    PredicateDevice* device;    // +0x08
+    StateDescriptor* state;     // +0x10
+    bool Evaluate();
+};
+bool ButtonPredicate::Evaluate() {
+    if (!device->HasButtons()) return false;
+    return state->TestButton(device);
+}
+struct AxisPredicate {
+    void* vtable;
+    PredicateDevice* device;    // +0x08
+    StateDescriptor* state;     // +0x10
+    bool Evaluate();
+};
+bool AxisPredicate::Evaluate() {
+    if (!device->HasAxes()) return false;
+    return state->TestAxis(device);
+}
+
+// Onyx::Behavior's nodes (Sequence, ParametricBlend, MultiBlend, Clip, Blend): slot 4 does nothing when the context
+// already holds an entry with the node's id, and otherwise hands on to slot 3. Names provisional.
+namespace Behavior {
+struct ContextEntry {
+    int32_t id;
+    char padding_4[0xc];
+};
+struct ContextTable {
+    char padding_0[0x10];
+    uint64_t count;             // +0x10
+    ContextEntry* entries;      // +0x18
+};
+struct Context {
+    char padding_0[0x8];
+    ContextTable* table;        // +0x8
+};
+__attribute__((always_inline)) inline ContextEntry* FindEntry(ContextEntry* it, ContextEntry* last, int32_t id) {
+    for (; it != last; ++it)
+        if (it->id == id) return it;
+    return last;
+}
+struct Node {
+    virtual void S0(); virtual void S1(); virtual void S2();
+    virtual void Slot3(Context* context);   // slot 3
+    virtual void Slot4(Context* context);   // slot 4
+    int32_t id;                 // +0x8
+    __attribute__((always_inline)) void Slot4Body(Context* context) {
+        ContextTable* table = context->table;
+        ContextEntry* last = table->entries + table->count;
+        if (FindEntry(table->entries, last, id) == last) Slot3(context);
+    }
+};
+struct Sequence : Node { void Slot4(Context* context) override; };
+struct ParametricBlend : Node { void Slot4(Context* context) override; };
+struct MultiBlend : Node { void Slot4(Context* context) override; };
+struct Clip : Node { void Slot4(Context* context) override; };
+struct Blend : Node { void Slot4(Context* context) override; };
+void Sequence::Slot4(Context* context) { Slot4Body(context); }          // 0xbb21e0
+void ParametricBlend::Slot4(Context* context) { Slot4Body(context); }   // 0xbb2e40
+void MultiBlend::Slot4(Context* context) { Slot4Body(context); }        // 0xbb3e80
+void Clip::Slot4(Context* context) { Slot4Body(context); }              // 0xbb5410
+void Blend::Slot4(Context* context) { Slot4Body(context); }             // 0xbb5c70
+}  // namespace Behavior
+
 // The clock: game time when a capture is running, the system tick otherwise.
 long SystemTick(void* context);
 extern long TickStart;
@@ -492,6 +615,62 @@ bool AxisPairWithinEpsilon2DStateDescriptor::Slot3(AxisSource* source) {
     float f = ey;
     AxisPair v = source->Axes();
     return __builtin_fabsf(v.x - a) <= e && __builtin_fabsf(v.y - b) <= f;
+}
+
+// The single-axis comparisons (slot 3: 0xc88a00, 0xc88a60, 0xc88920) read one of the two axes; the 1D pair test
+// (0xc886f0) compares the distance to a point with an epsilon.
+struct SingleAxisLessThanStateDescriptor {
+    void* vtable;
+    uint32_t axis;              // +0x08
+    float value;                // +0x0c
+    bool Slot3(AxisSource* source);
+};
+bool SingleAxisLessThanStateDescriptor::Slot3(AxisSource* source) {
+    float limit = value;
+    uint32_t index = axis;
+    AxisPair v = source->Axes();
+    return (&v.x)[index] < limit;
+}
+struct SingleAxisGreaterThanStateDescriptor {
+    void* vtable;
+    uint32_t axis;              // +0x08
+    float value;                // +0x0c
+    bool Slot3(AxisSource* source);
+};
+bool SingleAxisGreaterThanStateDescriptor::Slot3(AxisSource* source) {
+    float limit = value;
+    uint32_t index = axis;
+    AxisPair v = source->Axes();
+    return (&v.x)[index] > limit;
+}
+struct SingleAxisWithinEpsilonStateDescriptor {
+    void* vtable;
+    uint32_t axis;              // +0x08
+    float value;                // +0x0c
+    float epsilon;              // +0x10
+    bool Slot3(AxisSource* source);
+};
+bool SingleAxisWithinEpsilonStateDescriptor::Slot3(AxisSource* source) {
+    float a = value;
+    float e = epsilon;
+    uint32_t index = axis;
+    AxisPair v = source->Axes();
+    return __builtin_fabsf((&v.x)[index] - a) <= e;
+}
+struct AxisPairWithinEpsilon1DStateDescriptor {
+    void* vtable;
+    float x, y;                 // +0x08
+    float epsilon;              // +0x10
+    bool Slot3(AxisSource* source);
+};
+bool AxisPairWithinEpsilon1DStateDescriptor::Slot3(AxisSource* source) {
+    float a = x;
+    float b = y;
+    float e = epsilon;
+    AxisPair v = source->Axes();
+    float dx = a - v.x;
+    float dy = b - v.y;
+    return dx * dx + dy * dy <= e * e;
 }
 
 // A particle emitter passes its position to each child and updates it.

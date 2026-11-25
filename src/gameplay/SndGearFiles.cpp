@@ -144,6 +144,14 @@ uint32_t StaticMemoryBlockProvider::Write(const void* from, uint32_t offset, uin
     return written;
 }
 
+// The word at 0x1948b38, read or written through one function, the counterpart of Gear's (0xa81230). The code is
+// folded with a slot of SndGear::DList::DRoot<...> (slot 2), so the vtable lists it there.
+extern uint32_t Setting1948b38;
+void ExchangeSetting(bool read, uint32_t* value) {   // 0xdb72b0
+    uint32_t* to = read ? value : &Setting1948b38;
+    *to = read ? Setting1948b38 : *value;
+}
+
 // The next device type number (0x295e294), the counterpart of Gear::NextDeviceType.
 extern uint32_t NextDeviceType;
 
