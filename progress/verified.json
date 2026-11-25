@@ -1,9 +1,9 @@
 {
   "version": 1,
-  "generated_at": "2026-11-25T12:44:58.890691+00:00",
+  "generated_at": "2026-11-25T12:52:39.611584+00:00",
   "target_elf_sha256": "ea95638e6d6aaa0dc6cddd552a9366799aa1ec3bc07ee201f23f6c151103f5b8",
   "input_sha256": {
-    "config/builds.json": "e19c4d35d436ff7dcaa5eed54a3eb523c6112914440b71817344919e950de0d7",
+    "config/builds.json": "d308f2efaa056250b26116dc290aff686fd52ad5b91747f7da6b90005a6beb05",
     "config/functions.tsv": "399e91468a04e0459194c10d68d2210d1157cedefeb19c7851886ca7632fcb18",
     "config/non_fde_functions.tsv": "6a45f5e185454fa0472af00b2cdc9d040d73ca133d1106217e1fbbe3b32a8175",
     "config/target.json": "23cc6a5227206a953e7668acf5e9ae5c02a25c23b7e7967f0450a814b888241a",
@@ -1138,7 +1138,7 @@
     "src/gameplay/BreakableObject.cpp": "30ab612035e01e05ec3b456b265c60cca256f8c2e8173fddda59351a8e86d282",
     "src/gameplay/BreakableObject.h": "5a4950fc4e7f43527a6cafeb4d413addb1b827330b19b5976ba1f76bb0777dee",
     "src/gameplay/Camera.h": "cd95510335202a3ce560df413bdd5909f8543566e594a1bab2e9ad2e0057cd3f",
-    "src/gameplay/ClassDestructors.cpp": "dab65d38774acdf19a9a44ffed432fb94ab78c9b053117100d7fbf07b1b5215d",
+    "src/gameplay/ClassDestructors.cpp": "adff363b73796f72712e2918dc5e01f3ee131e77fb45a44f85d8bfcf889e9d06",
     "src/gameplay/ClassDestructorsForced.cpp": "4eb18189dd148ccf15e05f76b380d60d77fbcd5894adb0db7ddbf4c9eb085fc6",
     "src/gameplay/ClassDestructorsInline.cpp": "034f125f161661c431170c2fe1d3b1c256738468ea3dfabfc4fd4f5747be3e87",
     "src/gameplay/ClassSerialize.cpp": "813424d6d2fffd9d7c1b8a4664bdcd5b2e904986219a789417f9a6c018724551",
@@ -4058,17 +4058,17 @@
     "vendor/zlib-1.2.11/zutil.h": "9a63f6690fac1620aa3cecee5752af618806da438a256b4a047fbcd289cac159"
   },
   "compiler_versions": {
-    "7.0.1": "clang version 7.0.1 (tags/RELEASE_701/final)",
     "8.0.1": "clang version 8.0.1 (tags/RELEASE_801/final)",
+    "7.0.1": "clang version 7.0.1 (tags/RELEASE_701/final)",
     "lld": "LLD 8.0.1 (compatible with GNU linkers)"
   },
   "compiler_sha256": {
-    "7.0.1": "c2f0a175157d9aaace8031f8e6d7ea0ed6142b4bcef287105e3ed227301f1002",
     "8.0.1": "dffd62a213ec6cdb4430012a4a41c11e5e32c288f133d5391f9be49e1c5b69de",
+    "7.0.1": "c2f0a175157d9aaace8031f8e6d7ea0ed6142b4bcef287105e3ed227301f1002",
     "lld": "c4b3aaea06ff7112c64753047a2ab279fc3fe10dd807fd3c22edfdae99f43eed"
   },
-  "exact_functions": 39596,
-  "exact_bytes": 5279548,
+  "exact_functions": 39598,
+  "exact_bytes": 5279948,
   "builds": [
     {
       "id": "probes",
@@ -13553,7 +13553,7 @@
     {
       "id": "gameplay_class_destructors",
       "compiler": "8.0.1",
-      "object_sha256": "e5300bd1fc4ac894159dc135a66338425142217ff15ec30877e586604bca0951"
+      "object_sha256": "164956161af4d591b165fa818bfabb7277a4a8b7aee80aa8062eee6a32daf5ec"
     },
     {
       "id": "gameplay_boss",
@@ -270380,6 +270380,17 @@
       "relocation_count": 3
     },
     {
+      "address": "0x879830",
+      "size": 196,
+      "exact": true,
+      "target_sha256": "76868aa8b38b6f1ad36b9c65057cd3f761dc42bed4940bf0a7db1d8593e5dbc1",
+      "compiled_sha256": "76868aa8b38b6f1ad36b9c65057cd3f761dc42bed4940bf0a7db1d8593e5dbc1",
+      "source": "src/gameplay/ClassDestructors.cpp",
+      "symbol": "_ZN4SPTG11BossFightVSD2Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 14
+    },
+    {
       "address": "0x879900",
       "size": 24,
       "exact": true,
@@ -323684,6 +323695,17 @@
       "symbol": "_Z11TypeAddressILj10943504EEPKvv",
       "source_review": "manual_reconstruction",
       "relocation_count": 2
+    },
+    {
+      "address": "0xa6ff50",
+      "size": 204,
+      "exact": true,
+      "target_sha256": "84ceb84f8c145d6889e4b8a401f97fca0fd8d6bdf19f89bde407788807b6132f",
+      "compiled_sha256": "84ceb84f8c145d6889e4b8a401f97fca0fd8d6bdf19f89bde407788807b6132f",
+      "source": "src/gameplay/ClassDestructors.cpp",
+      "symbol": "_ZN4SPTG26SideScrollerCollisionPhaseD2Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 14
     },
     {
       "address": "0xa70020",

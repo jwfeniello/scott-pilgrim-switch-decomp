@@ -163,7 +163,7 @@ struct CountedArray {
         }
     }
 };
-template<unsigned long Key, unsigned Offset> struct PlainOwnedBlock {
+template<unsigned long Key, unsigned Offset, bool Reset = true> struct PlainOwnedBlock {
     struct Block { char padding[Offset]; CountedArray data; };
     Block* value;
     __attribute__((always_inline)) void Destroy() {
@@ -174,7 +174,7 @@ template<unsigned long Key, unsigned Offset> struct PlainOwnedBlock {
             block->~Block();
             a->Free(block);
         }
-        value = nullptr;
+        if (Reset) value = nullptr;
     }
 };
 // A list of owned objects: the head is a node without a value.
@@ -617,6 +617,45 @@ struct Level808560_1 : Base808560 { Member<134764034> member_2b0; virtual void K
 namespace SPTG { 
 struct StatusScreen : Level808560_1 { char padding_2b1[15]; PlainOwnedBlock<134764033, 16> member_2c0; virtual void Key(); ~StatusScreen(); };
 StatusScreen::~StatusScreen() { member_2c0.Destroy(); }
+}
+// An owned block holding a sized array at Offset: the size is cleared and the data freed with the block.
+struct SizedArray {
+    uint64_t size;
+    char* data;
+    __attribute__((always_inline)) ~SizedArray() {
+        size = 0;
+        if (char* p = data) {
+            DecodeAllocators* n = DecodeAllocatorManager;
+            n->values[DecodeAllocatorIndex(n, p)]->Free(p);
+        }
+    }
+};
+template<unsigned long Key, unsigned Offset> struct PlainOwnedSizedBlock {
+    struct Block { char padding[Offset]; SizedArray data; };
+    Block* value;
+    __attribute__((always_inline)) void Destroy() {
+        Block* block = value;
+        if (block) {
+            DecodeAllocators* m = DecodeAllocatorManager;
+            DecodeAllocator* a = m->values[DecodeAllocatorIndex(m, block)];
+            block->~Block();
+            a->Free(block);
+        }
+        value = nullptr;
+    }
+};
+// SPTG::SideScrollerCollisionPhase: the same shape, over a component base (destructor 0x76b5c0).
+struct Base76b5c0 { virtual ~Base76b5c0(); char padding[88]; };
+struct Levela72520_1 : Base76b5c0 { Member<175109378> member_60; virtual void Key1(); DT_INLINE ~Levela72520_1() {} };
+namespace SPTG { 
+struct SideScrollerCollisionPhase : Levela72520_1 { char padding_61[15]; PlainOwnedSizedBlock<175109377, 16> member_70; virtual void Key(); ~SideScrollerCollisionPhase(); };
+SideScrollerCollisionPhase::~SideScrollerCollisionPhase() { member_70.Destroy(); }
+}
+// SPTG::BossFightVS: StatusScreen's shape over another level, its block left set.
+struct Level879790_1 : Base808560 { Member<142181122> member_2b0; virtual void Key1(); DT_INLINE ~Level879790_1() {} };
+namespace SPTG { 
+struct BossFightVS : Level879790_1 { char padding_2b1[15]; PlainOwnedBlock<142181121, 16, false> member_2c0; virtual void Key(); ~BossFightVS(); };
+BossFightVS::~BossFightVS() { member_2c0.Destroy(); }
 }
 struct Base8149f0 { virtual ~Base8149f0(); char padding[704]; };
 namespace SPTG { 
