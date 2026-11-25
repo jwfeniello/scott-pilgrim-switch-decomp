@@ -1572,3 +1572,35 @@ struct NewMoveAnimationLoader : NewMoveAnimationLoaderLayout {
 };
 }  // namespace SPTG
 void* Create_SPTG_NewMoveAnimationLoader() { return new (GenericFactoryResolve(GenericFactoryManager, 0x1486d4e8u)->Allocate(sizeof(SPTG::NewMoveAnimationLoader))) SPTG::NewMoveAnimationLoader; }
+
+struct Event_9a9270;
+struct Event_9a9360;
+// SPTG::PersistentDataAgency (factory 0x7487b0): drafted from its constructor
+namespace SPTG {
+struct PersistentDataAgencyLayout : ::Onyx::Component::Base {
+ char p8[0x48];
+ float field_50[12];
+ uint64_t field_80;
+ __attribute__((always_inline)) PersistentDataAgencyLayout() : field_50(), field_80(0) {}
+ virtual ~PersistentDataAgencyLayout();
+};
+struct PersistentDataAgency : PersistentDataAgencyLayout {
+ Onyx::Listener<void(const Event_9a9270&)> member_88;
+ Onyx::Listener<void(const Event_9a9360&)> member_a0;
+ float field_b8[8];
+ uint64_t field_d8;
+ int32_t field_e0;
+ char pe4[0x4];
+ uint32_t field_e8;
+ uint32_t field_ec[4];
+ uint16_t field_fc;
+ uint8_t field_fe;
+ uint8_t field_ff;
+ Registration member_100;   // +0x100
+ void F88(const Event_9a9270&);
+ void Fa0(const Event_9a9360&);
+ __attribute__((always_inline)) PersistentDataAgency() : member_88(), member_a0(), field_b8(), field_d8(0), field_e0(-1), field_e8(6), field_ec(), field_fc(1), field_fe(1), field_ff(0), member_100() { member_88.owner = this; member_88.function = Onyx::MakeFunction<void(const Event_9a9270&)>(Onyx::MemberFunction<PersistentDataAgency, void(const Event_9a9270&)>(this, &PersistentDataAgency::F88)); member_a0.owner = this; member_a0.function = Onyx::MakeFunction<void(const Event_9a9360&)>(Onyx::MemberFunction<PersistentDataAgency, void(const Event_9a9360&)>(this, &PersistentDataAgency::Fa0)); }
+ virtual ~PersistentDataAgency();
+};
+}  // namespace SPTG
+void* Create_SPTG_PersistentDataAgency() { return new (GenericFactoryResolve(GenericFactoryManager, 0x7b73c94u)->Allocate(sizeof(SPTG::PersistentDataAgency))) SPTG::PersistentDataAgency; }
