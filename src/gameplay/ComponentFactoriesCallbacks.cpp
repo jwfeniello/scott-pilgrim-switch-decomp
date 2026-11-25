@@ -2293,3 +2293,25 @@ void* Create_SPTG_EnemyZombie() { return new (GenericFactoryResolve(GenericFacto
 void* Create_SPTG_EnemyGodzilla() { return new (GenericFactoryResolve(GenericFactoryManager, 0x1486d4e8u)->Allocate(sizeof(SPTG::EnemyGodzilla))) SPTG::EnemyGodzilla; }
 void* Create_SPTG_EnemyShooter() { return new (GenericFactoryResolve(GenericFactoryManager, 0x1486d4e8u)->Allocate(sizeof(SPTG::EnemyShooter))) SPTG::EnemyShooter; }
 void* Create_SPTG_EnemyJetPackMatt() { return new (GenericFactoryResolve(GenericFactoryManager, 0x1486d4e8u)->Allocate(sizeof(SPTG::EnemyJetPackMatt))) SPTG::EnemyJetPackMatt; }
+
+namespace SPTG {
+// SPTG::Boss as its subclasses' factories see it: built (0xa16040, also its generic factory's constructor, 0xd48
+// bytes) and destroyed (0xa16c40) out of line.
+struct Boss {
+    Boss();
+    virtual ~Boss();
+    char p8[0xd40];
+};
+// SPTG::RoxyMirror (factory 0x743cc0), over Component::Compose<Boss, Meta::Null>.
+struct RoxyMirror : Boss {
+    char pd48[0x10];
+    OwnedVector member_d58;
+    char pd78[0x8];
+    Attack attack;
+    uint16_t field_dd8;
+    uint32_t field_ddc;
+    __attribute__((always_inline)) RoxyMirror() : member_d58(), attack(), field_dd8(0), field_ddc(0) {}
+    virtual ~RoxyMirror();
+};
+}  // namespace SPTG
+void* Create_SPTG_RoxyMirror() { return new (GenericFactoryResolve(GenericFactoryManager, 0x1486d4e8u)->Allocate(sizeof(SPTG::RoxyMirror))) SPTG::RoxyMirror; }

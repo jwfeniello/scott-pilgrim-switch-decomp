@@ -1,9 +1,9 @@
 {
   "version": 1,
-  "generated_at": "2026-11-25T15:02:57.205539+00:00",
+  "generated_at": "2026-11-25T15:11:58.678084+00:00",
   "target_elf_sha256": "ea95638e6d6aaa0dc6cddd552a9366799aa1ec3bc07ee201f23f6c151103f5b8",
   "input_sha256": {
-    "config/builds.json": "04d0221854969c9b8cd771747f2e16481cf40c70dee7a76361f75c0383e0e4f9",
+    "config/builds.json": "907e2a334ad585e046833e171ce6875e94848c92473c57b962efb092c0d9ce5e",
     "config/functions.tsv": "399e91468a04e0459194c10d68d2210d1157cedefeb19c7851886ca7632fcb18",
     "config/non_fde_functions.tsv": "6a45f5e185454fa0472af00b2cdc9d040d73ca133d1106217e1fbbe3b32a8175",
     "config/target.json": "23cc6a5227206a953e7668acf5e9ae5c02a25c23b7e7967f0450a814b888241a",
@@ -1148,7 +1148,7 @@
     "src/gameplay/ClassSerialize.cpp": "813424d6d2fffd9d7c1b8a4664bdcd5b2e904986219a789417f9a6c018724551",
     "src/gameplay/ComponentAccess.cpp": "b1b34b3a09bc3544f3fffe397604e3d185ea651f571180a3eb13cd58e11cbab5",
     "src/gameplay/ComponentFactories.cpp": "2d3cf6461fd7abdb9283c4e8d010a8039d63e75ddc0bc51376de25ca85a93d7f",
-    "src/gameplay/ComponentFactoriesCallbacks.cpp": "0802c68efaa4c6f96a3881cc06093881eadc606a0b3e4389eb2fb27c8442688f",
+    "src/gameplay/ComponentFactoriesCallbacks.cpp": "2592e31f0bce1affca7a5ab20dadbcdb5bf6aa59ff8bc2b3296b3cccd54b224c",
     "src/gameplay/ComponentFactoriesStatic.cpp": "166444914614f9c173b8289779000ae8929c87b9f5f12a8fd83a318c46ea79ed",
     "src/gameplay/ComponentHookSteps.cpp": "59bb3943a30cb2f53c80c3aab47cf7accd19b234b6ad49adc88ab043ba4dc2a6",
     "src/gameplay/ComponentSerialize.cpp": "9fd76bf89b2ce86490ebc8c5bbdc0c5a6fa39ff02d48416f6668ca26ba109848",
@@ -4070,17 +4070,17 @@
     "vendor/zlib-1.2.11/zutil.h": "9a63f6690fac1620aa3cecee5752af618806da438a256b4a047fbcd289cac159"
   },
   "compiler_versions": {
-    "8.0.1": "clang version 8.0.1 (tags/RELEASE_801/final)",
     "7.0.1": "clang version 7.0.1 (tags/RELEASE_701/final)",
+    "8.0.1": "clang version 8.0.1 (tags/RELEASE_801/final)",
     "lld": "LLD 8.0.1 (compatible with GNU linkers)"
   },
   "compiler_sha256": {
-    "8.0.1": "dffd62a213ec6cdb4430012a4a41c11e5e32c288f133d5391f9be49e1c5b69de",
     "7.0.1": "c2f0a175157d9aaace8031f8e6d7ea0ed6142b4bcef287105e3ed227301f1002",
+    "8.0.1": "dffd62a213ec6cdb4430012a4a41c11e5e32c288f133d5391f9be49e1c5b69de",
     "lld": "c4b3aaea06ff7112c64753047a2ab279fc3fe10dd807fd3c22edfdae99f43eed"
   },
-  "exact_functions": 39717,
-  "exact_bytes": 5325220,
+  "exact_functions": 39718,
+  "exact_bytes": 5325408,
   "builds": [
     {
       "id": "probes",
@@ -13325,7 +13325,7 @@
     {
       "id": "component_factories_callbacks",
       "compiler": "8.0.1",
-      "object_sha256": "6c7c3209bd077102b508d7fb5c5ec46cae6af7e5df826bc0696aeed8fa81df8e"
+      "object_sha256": "8f825ba2c11d0a3900fbf96442588d34e776cb3e14327fb34fb06550fc736df0"
     },
     {
       "id": "decompiled_hi_nostrict_00",
@@ -236643,6 +236643,17 @@
       "symbol": "_Z25Create_SPTG_SuperGideonAIv",
       "source_review": "manual_reconstruction",
       "relocation_count": 8
+    },
+    {
+      "address": "0x743cc0",
+      "size": 188,
+      "exact": true,
+      "target_sha256": "856900f01aedc947fea2ade220a8e4758fc4c5db565db53f41d97a4bd87851ca",
+      "compiled_sha256": "856900f01aedc947fea2ade220a8e4758fc4c5db565db53f41d97a4bd87851ca",
+      "source": "src/gameplay/ComponentFactoriesCallbacks.cpp",
+      "symbol": "_Z22Create_SPTG_RoxyMirrorv",
+      "source_review": "generated_cxx_abi_view",
+      "relocation_count": 11
     },
     {
       "address": "0x744340",

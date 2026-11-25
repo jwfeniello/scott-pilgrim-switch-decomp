@@ -516069,6 +516069,24 @@
           "got_bindings": {}
         },
         {
+          "address": "0x743cc0",
+          "size": 188,
+          "symbol": "_Z22Create_SPTG_RoxyMirrorv",
+          "target_sha256": "856900f01aedc947fea2ade220a8e4758fc4c5db565db53f41d97a4bd87851ca",
+          "bindings": {
+            "GenericFactoryManager": "0x191c9c8",
+            "GenericFactoryResolve": "0x676160",
+            "_ZN4SPTG4BossC2Ev": "0xa16040",
+            "_ZTVN4SPTG10RoxyMirrorE": "0x1890e48",
+            "AllocatorContext": "0x1935058",
+            "_ZN4SPTG6Attack9SetSourceEiPNS_13BaseCharacterE": "0x8e24f0"
+          },
+          "got_bindings": {},
+          "literals": {
+            "cdcccc3d00000040": "0x1331828"
+          }
+        },
+        {
           "address": "0x744990",
           "size": 552,
           "symbol": "_Z19Create_SPTG_Piniatav",
