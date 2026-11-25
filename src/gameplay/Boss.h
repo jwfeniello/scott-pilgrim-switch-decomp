@@ -109,7 +109,7 @@ struct Boss : Enemy {
     AttackSlot attacks[2];       // +0xbb8: the second is requested every update with kind 1
     int32_t valueCa8;            // +0xca8
     int32_t valueCac;            // +0xcac
-    int32_t valueCb0;            // +0xcb0
+    float valueCb0;              // +0xcb0: how long state 248 lasts (compared as a float there)
     uint32_t limitCb4;           // +0xcb4
     float limitCb8;              // +0xcb8
     int32_t valueCbc;            // +0xcbc
