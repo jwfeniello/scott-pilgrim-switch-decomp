@@ -1822,3 +1822,223 @@ struct EnterExitTrigger : BaseCollisionTrigger {
 };
 }  // namespace Onyx
 void* Create_Onyx_EnterExitTrigger() { return new (GenericFactoryResolve(GenericFactoryManager, 0x1af1d642u)->Allocate(sizeof(Onyx::EnterExitTrigger))) Onyx::EnterExitTrigger; }
+
+struct EventSwitchToActionState;
+namespace SPTG {
+// SPTG::BaseCharacter as its subclasses' factories see it: built (0x998770) and destroyed (0x964e90) out of line.
+struct BaseCharacter {
+    BaseCharacter();
+    virtual ~BaseCharacter();
+    char p8[0x780];
+};
+// A buffer with its allocator: freed and cleared when destroyed (provisional names; the word at +0x18 is untouched).
+struct ClearedList_npc {
+    void* allocator;
+    void* data;
+    uint64_t size;
+    char p18[0x8];
+    __attribute__((always_inline)) ClearedList_npc() : data(nullptr), size(0) { allocator = DefaultAllocator(); }
+    __attribute__((always_inline)) ~ClearedList_npc() {
+        if (void* p = data) {
+            DecodeAllocators* m = DecodeAllocatorManager;
+            m->values[DecodeAllocatorIndex(m, p)]->Free(p);
+        }
+        data = nullptr;
+        size = 0;
+    }
+};
+// SPTG::NPC (factory 0x7483f0), over Component::Compose<BaseCharacter, Meta::Null>.
+struct NPC : BaseCharacter {
+    Onyx::Listener<void(const EventSwitchToActionState&)> member_788;
+    char p7a0[0x18];
+    ClearedList_npc member_7b8;
+    ClearedList_npc member_7d8;
+    void F788(const EventSwitchToActionState&);
+    __attribute__((always_inline)) NPC() : member_788(), member_7b8(), member_7d8() { member_788.owner = this; member_788.function = Onyx::MakeFunction<void(const EventSwitchToActionState&)>(Onyx::MemberFunction<NPC, void(const EventSwitchToActionState&)>(this, &NPC::F788)); }
+    virtual ~NPC();
+};
+}  // namespace SPTG
+void* Create_SPTG_NPC() { return new (GenericFactoryResolve(GenericFactoryManager, 0x1486d4e8u)->Allocate(sizeof(SPTG::NPC))) SPTG::NPC; }
+
+// The heap the menus' helper objects come from (the allocator at +0x558 of the allocator context).
+__attribute__((always_inline)) inline DecodeAllocator* MenuHeap() { return *reinterpret_cast<DecodeAllocator**>(AllocatorContext + 0x558); }
+// A 0x108-byte helper several menus make in their constructors: a buffer of 1024 ints (its own count in front) and
+// cleared words (provisional names; what it is is not known).
+struct MenuScratch {
+    int32_t count;
+    int32_t capacity;
+    uint16_t flag8;
+    int32_t* begin;
+    int32_t* end;
+    uint64_t words[29];
+    __attribute__((always_inline)) MenuScratch() : count(0), capacity(1024), flag8(1), begin(nullptr) {
+        int32_t* block = static_cast<int32_t*>(MenuHeap()->Allocate(0x1004));
+        *block++ = 1024;
+        begin = block;
+        __builtin_memset(words, 0, sizeof(words));
+        end = block;
+    }
+};
+namespace SPTG {
+// SPTG::HelpAndOptions (factory 0x758020): the layout part (destroyed out of line, 0x858670) clears a word at +0x2b0;
+// the menu itself clears a flag at +0x273 before making its helper.
+struct HelpAndOptionsLayout : ::Onyx::Fire::FireVisual {
+    char p8[0x26b];
+    uint8_t flag273;
+    char p274[0x3c];
+    uint64_t field_2b0;
+    __attribute__((always_inline)) HelpAndOptionsLayout() : field_2b0(0) {}
+    virtual ~HelpAndOptionsLayout();
+};
+struct HelpAndOptions : HelpAndOptionsLayout {
+    MenuScratch* scratch;
+    __attribute__((always_inline)) HelpAndOptions() { flag273 = 0; scratch = new (MenuHeap()->Allocate(sizeof(MenuScratch))) MenuScratch; }
+    virtual ~HelpAndOptions();
+};
+// SPTG::SelectDifficulty (factory 0x75b1c0): the layout part (destroyed out of line, 0x817000) clears three words.
+struct SelectDifficultyLayout : ::Onyx::Fire::FireVisual {
+    char p8[0x2a8];
+    uint64_t field_2b0;
+    uint64_t field_2b8;
+    uint64_t field_2c0;
+    __attribute__((always_inline)) SelectDifficultyLayout() : field_2b0(0), field_2b8(0), field_2c0(0) {}
+    virtual ~SelectDifficultyLayout();
+};
+struct SelectDifficulty : SelectDifficultyLayout {
+    MenuScratch* scratch;
+    __attribute__((always_inline)) SelectDifficulty() : scratch(new (MenuHeap()->Allocate(sizeof(MenuScratch))) MenuScratch) {}
+    virtual ~SelectDifficulty();
+};
+}  // namespace SPTG
+void* Create_SPTG_HelpAndOptions() { return new (GenericFactoryResolve(GenericFactoryManager, 0x19938f9fu)->Allocate(sizeof(SPTG::HelpAndOptions))) SPTG::HelpAndOptions; }
+void* Create_SPTG_SelectDifficulty() { return new (GenericFactoryResolve(GenericFactoryManager, 0x19938f9fu)->Allocate(sizeof(SPTG::SelectDifficulty))) SPTG::SelectDifficulty; }
+namespace SPTG {
+// SPTG::NewMoveUnlocked (factory 0x75abc0): the layout part (destroyed out of line, 0x82d170) clears three words.
+struct NewMoveUnlockedLayout : ::Onyx::Fire::FireVisual {
+    char p8[0x2a8];
+    uint64_t field_2b0;
+    uint64_t field_2b8;
+    uint64_t field_2c0;
+    __attribute__((always_inline)) NewMoveUnlockedLayout() : field_2b0(0), field_2b8(0), field_2c0(0) {}
+    virtual ~NewMoveUnlockedLayout();
+};
+struct NewMoveUnlocked : NewMoveUnlockedLayout {
+    OwnedVector member_2c8;
+    char p2e8[0x8];
+    MenuScratch* scratch;
+    float field_2f8;
+    char p2fc[0x4];
+    __attribute__((always_inline)) NewMoveUnlocked() : member_2c8(), field_2f8(-1.0f) { scratch = new (MenuHeap()->Allocate(sizeof(MenuScratch))) MenuScratch; }
+    virtual ~NewMoveUnlocked();
+};
+}  // namespace SPTG
+void* Create_SPTG_NewMoveUnlocked() { return new (GenericFactoryResolve(GenericFactoryManager, 0x19938f9fu)->Allocate(sizeof(SPTG::NewMoveUnlocked))) SPTG::NewMoveUnlocked; }
+namespace SPTG {
+// SPTG::ShopMenu (factory 0x75b800): the layout part (destroyed out of line, 0x80bf40) clears a word at +0x2b0; the
+// helper at +0x2b8 is made last, in the constructor's body.
+struct ShopMenuLayout : ::Onyx::Fire::FireVisual {
+    char p8[0x2a8];
+    uint64_t field_2b0;
+    __attribute__((always_inline)) ShopMenuLayout() : field_2b0(0) {}
+    virtual ~ShopMenuLayout();
+};
+struct ShopMenu : ShopMenuLayout {
+    MenuScratch* scratch;
+    Onyx::CatalogList<void> member_2c0;
+    uint64_t field_2e8;
+    SharedText member_2f0;
+    uint16_t field_300;
+    uint8_t field_302;
+    char p303[0x1];
+    uint32_t field_304[11];
+    __attribute__((always_inline)) ShopMenu() : member_2c0(), field_2e8(0), member_2f0(), field_300(0), field_302(0), field_304() { scratch = new (MenuHeap()->Allocate(sizeof(MenuScratch))) MenuScratch; }
+    virtual ~ShopMenu();
+};
+}  // namespace SPTG
+void* Create_SPTG_ShopMenu() { return new (GenericFactoryResolve(GenericFactoryManager, 0x19938f9fu)->Allocate(sizeof(SPTG::ShopMenu))) SPTG::ShopMenu; }
+namespace Onyx { namespace Localization { struct Localization; } struct Profile; }
+namespace SPTG {
+struct SwitchLevelGate;
+struct LevelItemAccessor;
+struct ItemRegistry;
+// SPTG::FlashMenu as its subclasses' factories see it: Fire::FireVisual's part (built out of line, 0x7fb9f0) and
+// destroyed out of line (0x8017c0).
+struct FlashMenu : ::Onyx::Fire::FireVisual {
+    char p8[0x26b];
+    uint8_t flag273;             // cleared by some menus before they make their helper (provisional name)
+    char p274[0x3c];
+    virtual ~FlashMenu();
+};
+// The handles of two singleton dependencies, released together out of line (one function per pair of types).
+template<class A, class B> struct SingletonPair {
+    void* first;
+    void* second;
+    __attribute__((always_inline)) SingletonPair() : first(nullptr), second(nullptr) {}
+    ~SingletonPair();
+};
+// Onyx::Component::Compose<SPTG::FlashMenu, Meta::Collection<Singleton<A>, Singleton<B>, ...>> (from RTTI).
+template<class A, class B> struct FlashMenuWith2 : FlashMenu {
+    SingletonPair<A, B> dependencies;
+};
+// Menus over two singletons, with the helper at +0x2c0 (factories 0x75a620, 0x75aab0).
+#define SCRATCH_MENU2(Name, A, B)                                                                                     \
+    struct Name : FlashMenuWith2<A, B> {                                                                               \
+        MenuScratch* scratch;                                                                                          \
+        __attribute__((always_inline)) Name() : scratch(new (MenuHeap()->Allocate(sizeof(MenuScratch))) MenuScratch) {} \
+        virtual ~Name();                                                                                               \
+    };
+SCRATCH_MENU2(MultiplayerGameMenu, SwitchLevelGate, ::Onyx::Profile)
+SCRATCH_MENU2(ServerSettingMenu, SwitchLevelGate, ::Onyx::Profile)
+#undef SCRATCH_MENU2
+struct PauseHandler;
+struct LevelSecretManager;
+struct ContentInstaller;
+// The handles of four singleton dependencies, released together out of line.
+template<class A, class B, class C, class D> struct SingletonQuad {
+    void* handles[4];
+    __attribute__((always_inline)) SingletonQuad() : handles() {}
+    ~SingletonQuad();
+};
+// Onyx::Component::Compose<SPTG::FlashMenu, Meta::Collection<Singleton<A>, ..., Singleton<D>, ...>> (from RTTI).
+template<class A, class B, class C, class D> struct FlashMenuWith4 : FlashMenu {
+    SingletonQuad<A, B, C, D> dependencies;
+};
+// SPTG::ExtraGameMode (factory 0x756ef0).
+struct ExtraGameMode : FlashMenuWith4<PauseHandler, SwitchLevelGate, LevelSecretManager, ContentInstaller> {
+    MenuScratch* scratch;
+    __attribute__((always_inline)) ExtraGameMode() : scratch(new (MenuHeap()->Allocate(sizeof(MenuScratch))) MenuScratch) {}
+    virtual ~ExtraGameMode();
+};
+// SPTG::DebugMenu (factory 0x756650): holds its helper by value.
+struct DebugMenu : FlashMenuWith2<LevelItemAccessor, PauseHandler> {
+    MenuScratch scratch;
+    __attribute__((always_inline)) DebugMenu() : scratch() {}
+    virtual ~DebugMenu();
+};
+// SPTG::BossFightVS (factory 0x755e70): sets the flag at +0x273 after making its helper.
+struct BossFightVS : FlashMenuWith2<LevelItemAccessor, ::Onyx::Localization::Localization> {
+    MenuScratch* scratch;
+    __attribute__((always_inline)) BossFightVS() : scratch(new (MenuHeap()->Allocate(sizeof(MenuScratch))) MenuScratch) { flag273 = 1; }
+    virtual ~BossFightVS();
+};
+// SPTG::InShopStatus (factory 0x758630), over Component::Compose<FlashMenu, Meta::Null>.
+struct InShopStatus : FlashMenu {
+    char p2b0[0x8];
+    MenuScratch* scratch;
+    __attribute__((always_inline)) InShopStatus() : scratch(new (MenuHeap()->Allocate(sizeof(MenuScratch))) MenuScratch) {}
+    virtual ~InShopStatus();
+};
+// SPTG::StatusScreen (factory 0x75ba40): clears a flag at +0x273 before making its helper.
+struct StatusScreen : FlashMenuWith2<LevelItemAccessor, ItemRegistry> {
+    MenuScratch* scratch;
+    __attribute__((always_inline)) StatusScreen() { flag273 = 0; scratch = new (MenuHeap()->Allocate(sizeof(MenuScratch))) MenuScratch; }
+    virtual ~StatusScreen();
+};
+}  // namespace SPTG
+void* Create_SPTG_MultiplayerGameMenu() { return new (GenericFactoryResolve(GenericFactoryManager, 0x19938f9fu)->Allocate(sizeof(SPTG::MultiplayerGameMenu))) SPTG::MultiplayerGameMenu; }
+void* Create_SPTG_ServerSettingMenu() { return new (GenericFactoryResolve(GenericFactoryManager, 0x19938f9fu)->Allocate(sizeof(SPTG::ServerSettingMenu))) SPTG::ServerSettingMenu; }
+void* Create_SPTG_BossFightVS() { return new (GenericFactoryResolve(GenericFactoryManager, 0x19938f9fu)->Allocate(sizeof(SPTG::BossFightVS))) SPTG::BossFightVS; }
+void* Create_SPTG_InShopStatus() { return new (GenericFactoryResolve(GenericFactoryManager, 0x19938f9fu)->Allocate(sizeof(SPTG::InShopStatus))) SPTG::InShopStatus; }
+void* Create_SPTG_ExtraGameMode() { return new (GenericFactoryResolve(GenericFactoryManager, 0x19938f9fu)->Allocate(sizeof(SPTG::ExtraGameMode))) SPTG::ExtraGameMode; }
+void* Create_SPTG_DebugMenu() { return new (GenericFactoryResolve(GenericFactoryManager, 0x19938f9fu)->Allocate(sizeof(SPTG::DebugMenu))) SPTG::DebugMenu; }
+void* Create_SPTG_StatusScreen() { return new (GenericFactoryResolve(GenericFactoryManager, 0x19938f9fu)->Allocate(sizeof(SPTG::StatusScreen))) SPTG::StatusScreen; }

@@ -516193,6 +516193,32 @@
           "got_bindings": {}
         },
         {
+          "address": "0x7483f0",
+          "size": 712,
+          "symbol": "_Z15Create_SPTG_NPCv",
+          "target_sha256": "2fbba420fc539a580cefec6a73c40b0f07247ee272a9f55258699e422b684ed3",
+          "bindings": {
+            "GenericFactoryManager": "0x191c9c8",
+            "GenericFactoryResolve": "0x676160",
+            "_ZN4SPTG13BaseCharacterC2Ev": "0x998770",
+            "_ZTVN4SPTG3NPCE": "0x1879a88",
+            "AllocatorContext": "0x1935058",
+            "_ZN4Onyx7Details16AllocateFunctionEPvm": "0xa972b0",
+            "_ZN4SPTG3NPC4F788ERK24EventSwitchToActionState": "0x9b74b0",
+            "_ZTVN4Onyx7Details20FunctionInternalHookINS_14MemberFunctionIN4SPTG3NPCEFvRK24EventSwitchToActionStateEEEEE": "0x1879fa8",
+            "_ZN4Onyx7Details20FunctionInternalHookINS_14MemberFunctionIN4SPTG3NPCEFvRK24EventSwitchToActionStateEEEE6InvokeEv": "0x9b7540",
+            "_ZNK4Onyx7Details20FunctionInternalHookINS_14MemberFunctionIN4SPTG3NPCEFvRK24EventSwitchToActionStateEEEE5CloneEv": "0x9b7c10",
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
+            "__clang_call_terminate": "0x6768b8",
+            "_ZN4Onyx8ListenerIFvRK24EventSwitchToActionStateEE10DisconnectEPv": "0x9b7560",
+            "_ZN4SPTG13BaseCharacterD2Ev": "0x964e90",
+            "_Unwind_Resume": "0xfa4920",
+            "_ZN4Onyx8FunctionIFvRK24EventSwitchToActionStateEED2Ev": "0x9b7880"
+          },
+          "got_bindings": {}
+        },
+        {
           "address": "0x7487b0",
           "size": 1132,
           "symbol": "_Z32Create_SPTG_PersistentDataAgencyv",
@@ -516500,6 +516526,69 @@
           "got_bindings": {}
         },
         {
+          "address": "0x755e70",
+          "size": 276,
+          "symbol": "_Z23Create_SPTG_BossFightVSv",
+          "target_sha256": "526b1f7f60e8393fe2e5d14d777667ef41698b544f17fbde5cb65590e9cbcb52",
+          "bindings": {
+            "GenericFactoryManager": "0x191c9c8",
+            "GenericFactoryResolve": "0x676160",
+            "_ZN4Onyx4Fire10FireVisualC2Ev": "0x7fb9f0",
+            "_ZTVN4SPTG11BossFightVSE": "0x185dee8",
+            "AllocatorContext": "0x1935058",
+            "_ZTVN4SPTG14FlashMenuWith2INS_17LevelItemAccessorEN4Onyx12Localization12LocalizationEEE": "0x185e058",
+            "_ZN4SPTG13SingletonPairINS_17LevelItemAccessorEN4Onyx12Localization12LocalizationEED1Ev": "0x85ca90",
+            "_ZN4SPTG9FlashMenuD2Ev": "0x8017c0",
+            "_Unwind_Resume": "0xfa4920"
+          },
+          "got_bindings": {},
+          "literals": {
+            "0000000000040000": "0x13318b0"
+          }
+        },
+        {
+          "address": "0x756650",
+          "size": 236,
+          "symbol": "_Z21Create_SPTG_DebugMenuv",
+          "target_sha256": "f32b1cfdd35b765c14fc1ccca1b472ed053d08487c1381046d8d7e3d18473fbe",
+          "bindings": {
+            "GenericFactoryManager": "0x191c9c8",
+            "GenericFactoryResolve": "0x676160",
+            "_ZN4Onyx4Fire10FireVisualC2Ev": "0x7fb9f0",
+            "_ZTVN4SPTG9DebugMenuE": "0x185cc00",
+            "AllocatorContext": "0x1935058",
+            "_ZTVN4SPTG14FlashMenuWith2INS_17LevelItemAccessorENS_12PauseHandlerEEE": "0x185cd70",
+            "_ZN4SPTG13SingletonPairINS_17LevelItemAccessorENS_12PauseHandlerEED1Ev": "0x86fad0",
+            "_ZN4SPTG9FlashMenuD2Ev": "0x8017c0",
+            "_Unwind_Resume": "0xfa4920"
+          },
+          "got_bindings": {},
+          "literals": {
+            "0000000000040000": "0x13318b0"
+          }
+        },
+        {
+          "address": "0x756ef0",
+          "size": 272,
+          "symbol": "_Z25Create_SPTG_ExtraGameModev",
+          "target_sha256": "be047166cfbf4ed1630a8d97c253079346165e1da865cef4f5dd51e4f3986fdf",
+          "bindings": {
+            "GenericFactoryManager": "0x191c9c8",
+            "GenericFactoryResolve": "0x676160",
+            "_ZN4Onyx4Fire10FireVisualC2Ev": "0x7fb9f0",
+            "_ZTVN4SPTG13ExtraGameModeE": "0x185ba98",
+            "AllocatorContext": "0x1935058",
+            "_ZTVN4SPTG14FlashMenuWith4INS_12PauseHandlerENS_15SwitchLevelGateENS_18LevelSecretManagerENS_16ContentInstallerEEE": "0x185bc08",
+            "_ZN4SPTG13SingletonQuadINS_12PauseHandlerENS_15SwitchLevelGateENS_18LevelSecretManagerENS_16ContentInstallerEED1Ev": "0x868fe0",
+            "_ZN4SPTG9FlashMenuD2Ev": "0x8017c0",
+            "_Unwind_Resume": "0xfa4920"
+          },
+          "got_bindings": {},
+          "literals": {
+            "0000000000040000": "0x13318b0"
+          }
+        },
+        {
           "address": "0x7578a0",
           "size": 516,
           "symbol": "_Z28Create_SPTG_GamePurchaseMenuv",
@@ -516522,6 +516611,44 @@
             "_Unwind_Resume": "0xfa4920"
           },
           "got_bindings": {}
+        },
+        {
+          "address": "0x758020",
+          "size": 240,
+          "symbol": "_Z26Create_SPTG_HelpAndOptionsv",
+          "target_sha256": "93b02e4d0f7d191d3f9f83006be6281732be2aa7a81da38b622939c01ac7678f",
+          "bindings": {
+            "GenericFactoryManager": "0x191c9c8",
+            "GenericFactoryResolve": "0x676160",
+            "_ZN4Onyx4Fire10FireVisualC2Ev": "0x7fb9f0",
+            "_ZTVN4SPTG14HelpAndOptionsE": "0x1859b40",
+            "AllocatorContext": "0x1935058",
+            "_ZN4SPTG20HelpAndOptionsLayoutD2Ev": "0x858670",
+            "_Unwind_Resume": "0xfa4920"
+          },
+          "got_bindings": {},
+          "literals": {
+            "0000000000040000": "0x13318b0"
+          }
+        },
+        {
+          "address": "0x758630",
+          "size": 232,
+          "symbol": "_Z24Create_SPTG_InShopStatusv",
+          "target_sha256": "37b41db8af7b8b6377e6efb3c634e435bc1b65cb57165051a96d4ff031ae3051",
+          "bindings": {
+            "GenericFactoryManager": "0x191c9c8",
+            "GenericFactoryResolve": "0x676160",
+            "_ZN4Onyx4Fire10FireVisualC2Ev": "0x7fb9f0",
+            "_ZTVN4SPTG12InShopStatusE": "0x1859170",
+            "AllocatorContext": "0x1935058",
+            "_ZN4SPTG9FlashMenuD2Ev": "0x8017c0",
+            "_Unwind_Resume": "0xfa4920"
+          },
+          "got_bindings": {},
+          "literals": {
+            "0000000000040000": "0x13318b0"
+          }
         },
         {
           "address": "0x758f10",
@@ -516554,6 +516681,132 @@
             "_ZN4Onyx8FunctionIFvRK12Event_848610EED2Ev": "0x848950"
           },
           "got_bindings": {}
+        },
+        {
+          "address": "0x75a620",
+          "size": 272,
+          "symbol": "_Z31Create_SPTG_MultiplayerGameMenuv",
+          "target_sha256": "f69a5cb643a8e80d4833873981f947a1da68e3a2fe61867743cb5afb7b8cfa4c",
+          "bindings": {
+            "GenericFactoryManager": "0x191c9c8",
+            "GenericFactoryResolve": "0x676160",
+            "_ZN4Onyx4Fire10FireVisualC2Ev": "0x7fb9f0",
+            "_ZTVN4SPTG19MultiplayerGameMenuE": "0x1856410",
+            "AllocatorContext": "0x1935058",
+            "_ZTVN4SPTG14FlashMenuWith2INS_15SwitchLevelGateEN4Onyx7ProfileEEE": "0x1855e68",
+            "_ZN4SPTG13SingletonPairINS_15SwitchLevelGateEN4Onyx7ProfileEED1Ev": "0x817180",
+            "_ZN4SPTG9FlashMenuD2Ev": "0x8017c0",
+            "_Unwind_Resume": "0xfa4920"
+          },
+          "got_bindings": {},
+          "literals": {
+            "0000000000040000": "0x13318b0"
+          }
+        },
+        {
+          "address": "0x75aab0",
+          "size": 272,
+          "symbol": "_Z29Create_SPTG_ServerSettingMenuv",
+          "target_sha256": "50d0c41f357dc52c49d1f8ee96cbccc5c527ac9cd320a0d31b29a15d77704c8c",
+          "bindings": {
+            "GenericFactoryManager": "0x191c9c8",
+            "GenericFactoryResolve": "0x676160",
+            "_ZN4Onyx4Fire10FireVisualC2Ev": "0x7fb9f0",
+            "_ZTVN4SPTG17ServerSettingMenuE": "0x1855cf8",
+            "AllocatorContext": "0x1935058",
+            "_ZTVN4SPTG14FlashMenuWith2INS_15SwitchLevelGateEN4Onyx7ProfileEEE": "0x1855e68",
+            "_ZN4SPTG13SingletonPairINS_15SwitchLevelGateEN4Onyx7ProfileEED1Ev": "0x817180",
+            "_ZN4SPTG9FlashMenuD2Ev": "0x8017c0",
+            "_Unwind_Resume": "0xfa4920"
+          },
+          "got_bindings": {},
+          "literals": {
+            "0000000000040000": "0x13318b0"
+          }
+        },
+        {
+          "address": "0x75abc0",
+          "size": 340,
+          "symbol": "_Z27Create_SPTG_NewMoveUnlockedv",
+          "target_sha256": "9f81337f05abad9ecc1c729d0de3b75e9e5810f74fb00b9069f975edb39576fd",
+          "bindings": {
+            "GenericFactoryManager": "0x191c9c8",
+            "GenericFactoryResolve": "0x676160",
+            "_ZN4Onyx4Fire10FireVisualC2Ev": "0x7fb9f0",
+            "_ZTVN4SPTG15NewMoveUnlockedE": "0x18559e8",
+            "AllocatorContext": "0x1935058",
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
+            "_ZN4SPTG21NewMoveUnlockedLayoutD2Ev": "0x82d170",
+            "_Unwind_Resume": "0xfa4920",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {},
+          "literals": {
+            "0000000000040000": "0x13318b0"
+          }
+        },
+        {
+          "address": "0x75b1c0",
+          "size": 244,
+          "symbol": "_Z28Create_SPTG_SelectDifficultyv",
+          "target_sha256": "f53a498f602d460a00d435dd140c0f1796172191c48a7f014b1dd0e559f3ae3b",
+          "bindings": {
+            "GenericFactoryManager": "0x191c9c8",
+            "GenericFactoryResolve": "0x676160",
+            "_ZN4Onyx4Fire10FireVisualC2Ev": "0x7fb9f0",
+            "_ZTVN4SPTG16SelectDifficultyE": "0x18544f0",
+            "AllocatorContext": "0x1935058",
+            "_ZN4SPTG22SelectDifficultyLayoutD2Ev": "0x817000",
+            "_Unwind_Resume": "0xfa4920"
+          },
+          "got_bindings": {},
+          "literals": {
+            "0000000000040000": "0x13318b0"
+          }
+        },
+        {
+          "address": "0x75b800",
+          "size": 468,
+          "symbol": "_Z20Create_SPTG_ShopMenuv",
+          "target_sha256": "20999c0a69f2bacf90d2ea115b5098345300d87116d66295474c0c7e6988cfb5",
+          "bindings": {
+            "GenericFactoryManager": "0x191c9c8",
+            "GenericFactoryResolve": "0x676160",
+            "_ZN4Onyx4Fire10FireVisualC2Ev": "0x7fb9f0",
+            "_ZTVN4SPTG8ShopMenuE": "0x1853c70",
+            "AllocatorContext": "0x1935058",
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
+            "_ZN4SPTG14ShopMenuLayoutD2Ev": "0x80bf40",
+            "_Unwind_Resume": "0xfa4920",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {},
+          "literals": {
+            "0000000000040000": "0x13318b0"
+          }
+        },
+        {
+          "address": "0x75ba40",
+          "size": 276,
+          "symbol": "_Z24Create_SPTG_StatusScreenv",
+          "target_sha256": "2a8b44baca3444669a467ef837f7eb6654a1ee79fabf1974607bae6110e4d8db",
+          "bindings": {
+            "GenericFactoryManager": "0x191c9c8",
+            "GenericFactoryResolve": "0x676160",
+            "_ZN4Onyx4Fire10FireVisualC2Ev": "0x7fb9f0",
+            "_ZTVN4SPTG12StatusScreenE": "0x18535a0",
+            "AllocatorContext": "0x1935058",
+            "_ZTVN4SPTG14FlashMenuWith2INS_17LevelItemAccessorENS_12ItemRegistryEEE": "0x1853710",
+            "_ZN4SPTG13SingletonPairINS_17LevelItemAccessorENS_12ItemRegistryEED1Ev": "0x808210",
+            "_ZN4SPTG9FlashMenuD2Ev": "0x8017c0",
+            "_Unwind_Resume": "0xfa4920"
+          },
+          "got_bindings": {},
+          "literals": {
+            "0000000000040000": "0x13318b0"
+          }
         },
         {
           "address": "0x75bca0",
