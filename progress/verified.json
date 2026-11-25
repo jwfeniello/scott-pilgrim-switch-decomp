@@ -1,9 +1,9 @@
 {
   "version": 1,
-  "generated_at": "2026-11-25T14:59:36.999538+00:00",
+  "generated_at": "2026-11-25T15:02:57.205539+00:00",
   "target_elf_sha256": "ea95638e6d6aaa0dc6cddd552a9366799aa1ec3bc07ee201f23f6c151103f5b8",
   "input_sha256": {
-    "config/builds.json": "5e2fdd0e95ff960c01635a4302307311746e7e745abea7d101268e981f0690ce",
+    "config/builds.json": "04d0221854969c9b8cd771747f2e16481cf40c70dee7a76361f75c0383e0e4f9",
     "config/functions.tsv": "399e91468a04e0459194c10d68d2210d1157cedefeb19c7851886ca7632fcb18",
     "config/non_fde_functions.tsv": "6a45f5e185454fa0472af00b2cdc9d040d73ca133d1106217e1fbbe3b32a8175",
     "config/target.json": "23cc6a5227206a953e7668acf5e9ae5c02a25c23b7e7967f0450a814b888241a",
@@ -1180,12 +1180,19 @@
     "src/gameplay/EnemyClasses.h": "02aa8fe2e2252590ceaeee1fda45112e5f105ad811a48e8641f645d4b61de8e0",
     "src/gameplay/EnemyStates.cpp": "ab39f3430b8426012517fdb361f75f9f36961f312cd8f4674600e6fd341450d0",
     "src/gameplay/EventSenders.cpp": "6e71c575a4e5b9f2d777928622c119f7fc166479d59c77b7deb009a50642031e",
-    "src/gameplay/FireCharFormat.cpp": "8298d136abe1ee3c61e0a0d514f13a43f5f785c5ba9f79d5a5ae0a9a76ff5c6d",
-    "src/gameplay/FireCore.h": "53b19fe351c58bed15f8a91ea4ec8edcfba4f6b8429ecc9b839522b96875cc79",
-    "src/gameplay/FireDelayedEvent.cpp": "8e6be86bd5d9a7f3248de660472f0a45b25ba2b69293713d2086d30d41118a51",
+    "src/gameplay/FireAchw.cpp": "892b36fe3458c093263b1bf82f5f62bdaba2a631f0d21ce3554b9c6c1c4ccd7e",
+    "src/gameplay/FireAtom.cpp": "fbe79eaf8afb890af53f78a25f435f637050df7a39253e7b78bf6f8f2950eb61",
+    "src/gameplay/FireCharFormat.cpp": "0ee20e0961f6b901206b9baa4b1c638b50eda7fee2b4f59402894e54d7e59d22",
+    "src/gameplay/FireCore.h": "c2490ad6142b4e852221b72a82ff76ddc0b4b8a5d831dce7887498518bfb05d1",
+    "src/gameplay/FireDelayedEvent.cpp": "9aec16e05df33c0f3f94f207d280c7f317d0819748f4b273873b43f19fcf3468",
     "src/gameplay/FireHashTable.cpp": "5df41aff128f37b701f90d4cea6dda9b698d99e8e47c3e890a9902e473d2dc97",
+    "src/gameplay/FireMisc.cpp": "69cd11696ec5c8a4339fa72d8fa74d4125eb959672ae92366618386840389f52",
     "src/gameplay/FirePlatformPlayer.cpp": "e98746038a2ed475b333d212ca72e072686fac350d7d0fe56d8f9600109c59a0",
-    "src/gameplay/FireTables.cpp": "8a6086e5cc25f7695cb0ea26baea27bc2e2203c426450e7f7a8d63b8e2e8fabf",
+    "src/gameplay/FireRichEdit.cpp": "ebc0037cac49f7b2085d091455fa6332d4a1fe01d505619aba0d7d191b7b52cb",
+    "src/gameplay/FireString.cpp": "c926788142088f638d78d4c7f05e20ab1132d7718477a3145968b61a424176bd",
+    "src/gameplay/FireTables.cpp": "486f5c0eb37b91b561db953c6f225d5d3aa3d6526309facb0d86f4587c0b138e",
+    "src/gameplay/FireText.h": "c32fd31e36fe1001bf9af8ac450d2ad7153548a91413fe7f6ac5e6d7c2c5ac3c",
+    "src/gameplay/FireXml.cpp": "5adcf69ae5502ef547b421d208b52f68b0d47f890dcedafdfa4a85379ce25f7c",
     "src/gameplay/FlashMenu.h": "c4ed779e815b0f029d51ffcd43f50654f1ae0b0882571d31ce6f27d3329f074a",
     "src/gameplay/GameStates2.cpp": "fab784d770a77060f2ac7cdabec796cb099c4ae55ae4777b87e6ad30b0b3ff1f",
     "src/gameplay/GearAllocators.cpp": "9e458f6c5af2a11427ba619242f0950c2c722f7184b78c2c121d18f8635acbdd",
@@ -4072,8 +4079,8 @@
     "7.0.1": "c2f0a175157d9aaace8031f8e6d7ea0ed6142b4bcef287105e3ed227301f1002",
     "lld": "c4b3aaea06ff7112c64753047a2ab279fc3fe10dd807fd3c22edfdae99f43eed"
   },
-  "exact_functions": 39661,
-  "exact_bytes": 5312980,
+  "exact_functions": 39717,
+  "exact_bytes": 5325220,
   "builds": [
     {
       "id": "probes",
@@ -13768,17 +13775,47 @@
     {
       "id": "gameplay_fire_tables",
       "compiler": "8.0.1",
-      "object_sha256": "052f9ebbfc03bcc1e35de1d2a881e4a8f9fed52bcd0c2067b285d4f502d844bc"
+      "object_sha256": "f3842f1704d5a4d0199333bad12a66637b9c7602336ff8bf609b050e8f8e12a1"
     },
     {
       "id": "gameplay_fire_charformat",
       "compiler": "8.0.1",
-      "object_sha256": "2079eea467a17a0d8944fa7af2717e6f859d933d12d94bb0b2e43c7a788ff2ff"
+      "object_sha256": "0537c710784423d2d8677889823cc1b8e3744d162ed6aff450a37dd44f36a8f6"
     },
     {
       "id": "gameplay_fire_delayedevent",
       "compiler": "8.0.1",
-      "object_sha256": "dce66e6b702d96a4264dc499cdc59bba75737932fd3006850f2c7105df23708c"
+      "object_sha256": "467449e845cd7a13160511d2942852bd2c63bb911f81402fdeaacf43a0b104cb"
+    },
+    {
+      "id": "gameplay_fire_achw",
+      "compiler": "8.0.1",
+      "object_sha256": "cb017ca00856e32628e086ded618585acdfe110819684e514559238ff1058e00"
+    },
+    {
+      "id": "gameplay_fire_misc",
+      "compiler": "8.0.1",
+      "object_sha256": "0331bf782453dfb19b07143a0d2db0fa99b92ba1c989fa102dafda84fe065f69"
+    },
+    {
+      "id": "gameplay_fire_richedit",
+      "compiler": "8.0.1",
+      "object_sha256": "d51003af5267ac4a9a9f19ccaeb41a8a22e20e6c4aaa9d527bb3b55f92d0b119"
+    },
+    {
+      "id": "gameplay_fire_string",
+      "compiler": "8.0.1",
+      "object_sha256": "10a504c48e0adcb6af8b98311ccf752ae459255b8aade5506701a6d0391f22e3"
+    },
+    {
+      "id": "gameplay_fire_atom",
+      "compiler": "8.0.1",
+      "object_sha256": "9378f81de115ea835769a6005d9d519c08ba3bc0dee9d220f43cbfd6346cd964"
+    },
+    {
+      "id": "gameplay_fire_xml",
+      "compiler": "8.0.1",
+      "object_sha256": "deeea9a3442a04348816a541d15df933867eab9224d719f9305c04e2ace8d22b"
     },
     {
       "id": "gameplay_fire_platformplayer",
@@ -447049,6 +447086,17 @@
       "relocation_count": 4
     },
     {
+      "address": "0xec5330",
+      "size": 128,
+      "exact": true,
+      "target_sha256": "d49187cdc45d786915c3076656523f6d728fcaee72d3960f14d12d72f24b55e1",
+      "compiled_sha256": "d49187cdc45d786915c3076656523f6d728fcaee72d3960f14d12d72f24b55e1",
+      "source": "src/gameplay/FireAchw.cpp",
+      "symbol": "_ZN17achwGradientCache7ReleaseEi",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 1
+    },
+    {
       "address": "0xec6520",
       "size": 8,
       "exact": true,
@@ -447390,6 +447438,17 @@
       "relocation_count": 10
     },
     {
+      "address": "0xed9020",
+      "size": 128,
+      "exact": true,
+      "target_sha256": "46e7e98e9911c6a8e460519bf7e429aa95c5999e62b81ae8e28cd820f8177f35",
+      "compiled_sha256": "46e7e98e9911c6a8e460519bf7e429aa95c5999e62b81ae8e28cd820f8177f35",
+      "source": "src/gameplay/FireMisc.cpp",
+      "symbol": "_ZN14FireEntryOwner6RemoveEP16FireEntryRequest",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 5
+    },
+    {
       "address": "0xed9860",
       "size": 88,
       "exact": true,
@@ -447419,6 +447478,17 @@
       "compiled_sha256": "b3f9db6d7394da38c32299eddac0f7f906270ac9bcda99e6d25967e207d73c8b",
       "source": "src/gameplay/FireTables.cpp",
       "symbol": "_ZN10ClassTableD0Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 7
+    },
+    {
+      "address": "0xee63a0",
+      "size": 128,
+      "exact": true,
+      "target_sha256": "6436d801829076705f0427c21ca7a8a7d480de283f93ddc46bff74aa8709a958",
+      "compiled_sha256": "6436d801829076705f0427c21ca7a8a7d480de283f93ddc46bff74aa8709a958",
+      "source": "src/gameplay/FireMisc.cpp",
+      "symbol": "_ZN17FireInlineBuffersD2Ev",
       "source_review": "manual_reconstruction",
       "relocation_count": 7
     },
@@ -447489,6 +447559,17 @@
       "relocation_count": 0
     },
     {
+      "address": "0xeeaa40",
+      "size": 260,
+      "exact": true,
+      "target_sha256": "099187956c5810e957e277109c2feaf1ea6654a46f879adee5ae7c2a94aa6ee2",
+      "compiled_sha256": "099187956c5810e957e277109c2feaf1ea6654a46f879adee5ae7c2a94aa6ee2",
+      "source": "src/gameplay/FireTables.cpp",
+      "symbol": "_ZN12ScriptObject5Slot7Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 0
+    },
+    {
       "address": "0xeeab50",
       "size": 32,
       "exact": true,
@@ -447508,6 +447589,17 @@
       "source": "src/decompiled/hi_strict_cxx_01.cpp",
       "symbol": "sub_EEACC0",
       "source_review": "decompiler_text_review_pending",
+      "relocation_count": 6
+    },
+    {
+      "address": "0xeead80",
+      "size": 132,
+      "exact": true,
+      "target_sha256": "54a41f94b967be7a5b5a4798e0b9b29edba4139cd60e0db9fcc65bd43b3353b8",
+      "compiled_sha256": "54a41f94b967be7a5b5a4798e0b9b29edba4139cd60e0db9fcc65bd43b3353b8",
+      "source": "src/gameplay/FireAtom.cpp",
+      "symbol": "_ZN13FireAtomArray7ReleaseEv",
+      "source_review": "manual_reconstruction",
       "relocation_count": 6
     },
     {
@@ -447541,6 +447633,17 @@
       "source": "src/generated/FUN_00eeafb0.cpp",
       "symbol": "FUN_00eeafb0",
       "source_review": "local_model_proposal_abi_review_pending",
+      "relocation_count": 0
+    },
+    {
+      "address": "0xeeb410",
+      "size": 280,
+      "exact": true,
+      "target_sha256": "2b5c3ef3dc10dba5a6e53982c9acdab094c24f37eea7792fc35dc9b00a79e87c",
+      "compiled_sha256": "2b5c3ef3dc10dba5a6e53982c9acdab094c24f37eea7792fc35dc9b00a79e87c",
+      "source": "src/gameplay/FireTables.cpp",
+      "symbol": "_ZN12ScriptObject5UnpinEv",
+      "source_review": "manual_reconstruction",
       "relocation_count": 0
     },
     {
@@ -447676,6 +447779,17 @@
       "relocation_count": 9
     },
     {
+      "address": "0xefb890",
+      "size": 260,
+      "exact": true,
+      "target_sha256": "099187956c5810e957e277109c2feaf1ea6654a46f879adee5ae7c2a94aa6ee2",
+      "compiled_sha256": "099187956c5810e957e277109c2feaf1ea6654a46f879adee5ae7c2a94aa6ee2",
+      "source": "src/gameplay/FireTables.cpp",
+      "symbol": "_ZN20FunctionScriptObject5Slot7Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 0
+    },
+    {
       "address": "0xefb9a0",
       "size": 48,
       "exact": true,
@@ -447687,6 +447801,28 @@
       "relocation_count": 0
     },
     {
+      "address": "0xefc890",
+      "size": 212,
+      "exact": true,
+      "target_sha256": "76299083888e96a7cfa39584f952b3d28b70cd90f11f8ae2f37637fe5771f13a",
+      "compiled_sha256": "76299083888e96a7cfa39584f952b3d28b70cd90f11f8ae2f37637fe5771f13a",
+      "source": "src/gameplay/FireAtom.cpp",
+      "symbol": "_ZN19FireAtomObject3List3AddEP18FireAtomReleasablei",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 3
+    },
+    {
+      "address": "0xefcbf0",
+      "size": 200,
+      "exact": true,
+      "target_sha256": "4edfe95b99c199838bbd364017fa95edad4dc098bd00a1f81fd0599e86fcd6bd",
+      "compiled_sha256": "4edfe95b99c199838bbd364017fa95edad4dc098bd00a1f81fd0599e86fcd6bd",
+      "source": "src/gameplay/FireMisc.cpp",
+      "symbol": "_ZN14FireByteBuffer6AppendEPKvi",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 4
+    },
+    {
       "address": "0xefcf10",
       "size": 8,
       "exact": true,
@@ -447696,6 +447832,28 @@
       "symbol": "RecoveredLeaf_efcf10",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 1
+    },
+    {
+      "address": "0xefd130",
+      "size": 128,
+      "exact": true,
+      "target_sha256": "a3feccf428821501cfcbeaa67c97cc8ab483692370d7d81876c26070786f0ffb",
+      "compiled_sha256": "a3feccf428821501cfcbeaa67c97cc8ab483692370d7d81876c26070786f0ffb",
+      "source": "src/gameplay/FireMisc.cpp",
+      "symbol": "_ZN16FireCountedQueueD2Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 5
+    },
+    {
+      "address": "0xefd1b0",
+      "size": 236,
+      "exact": true,
+      "target_sha256": "336bece68199032019a15b018c20e5d9cc330f63397af8aa1a1cef6f5ff58f76",
+      "compiled_sha256": "336bece68199032019a15b018c20e5d9cc330f63397af8aa1a1cef6f5ff58f76",
+      "source": "src/gameplay/FireMisc.cpp",
+      "symbol": "_Z27FireCountedQueueClearTargetP20FireCountedQueueNodeP15FireQueueTargeti",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 7
     },
     {
       "address": "0xeff0e0",
@@ -447874,6 +448032,28 @@
       "relocation_count": 0
     },
     {
+      "address": "0xf11110",
+      "size": 148,
+      "exact": true,
+      "target_sha256": "e8431bd070d7982eb257d9971d6a9088698216d838882e4ab1e8656bc351d075",
+      "compiled_sha256": "e8431bd070d7982eb257d9971d6a9088698216d838882e4ab1e8656bc351d075",
+      "source": "src/gameplay/FireMisc.cpp",
+      "symbol": "_ZN13FireWordArray5AdoptEPPvi",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 6
+    },
+    {
+      "address": "0xf111b0",
+      "size": 168,
+      "exact": true,
+      "target_sha256": "ac74b2835a9b18303af0cdf4b353bd1f61afccfc0c8d3fea79d90a7be18bd17b",
+      "compiled_sha256": "ac74b2835a9b18303af0cdf4b353bd1f61afccfc0c8d3fea79d90a7be18bd17b",
+      "source": "src/gameplay/FireMisc.cpp",
+      "symbol": "_ZN13FireWordArray6RemoveEii",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 5
+    },
+    {
       "address": "0xf11440",
       "size": 128,
       "exact": true,
@@ -447929,6 +448109,28 @@
       "relocation_count": 4
     },
     {
+      "address": "0xf24f40",
+      "size": 356,
+      "exact": true,
+      "target_sha256": "1ef26cb3cbb9b7f74107b32834855dde804320f22ae7c89b8da8cd749e5272db",
+      "compiled_sha256": "1ef26cb3cbb9b7f74107b32834855dde804320f22ae7c89b8da8cd749e5272db",
+      "source": "src/gameplay/FireRichEdit.cpp",
+      "symbol": "_ZN8RichEdit11ClearCachesEv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 7
+    },
+    {
+      "address": "0xf25830",
+      "size": 888,
+      "exact": true,
+      "target_sha256": "1dbae3e0cd3c907e514f66bfed6ae6087a4a70ac548993b5c0a13c14bb2136fd",
+      "compiled_sha256": "1dbae3e0cd3c907e514f66bfed6ae6087a4a70ac548993b5c0a13c14bb2136fd",
+      "source": "src/gameplay/FireCharFormat.cpp",
+      "symbol": "_ZN8RichEditD2Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 49
+    },
+    {
       "address": "0xf25bb0",
       "size": 32,
       "exact": true,
@@ -447951,6 +448153,17 @@
       "relocation_count": 9
     },
     {
+      "address": "0xf25cb0",
+      "size": 52,
+      "exact": true,
+      "target_sha256": "ccf68a6660ebbe2b72a7d95213dbbd5c7bc14c56f1755945dafad2377aefbb50",
+      "compiled_sha256": "ccf68a6660ebbe2b72a7d95213dbbd5c7bc14c56f1755945dafad2377aefbb50",
+      "source": "src/gameplay/FireCharFormat.cpp",
+      "symbol": "_ZN16FireRichEditSpanD2Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 2
+    },
+    {
       "address": "0xf27f00",
       "size": 40,
       "exact": true,
@@ -447960,6 +448173,39 @@
       "symbol": "RecoveredLeaf_f27f00",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 2
+    },
+    {
+      "address": "0xf27f30",
+      "size": 200,
+      "exact": true,
+      "target_sha256": "b2820f64f1a55563d7529dfb854fba4fe8b7501d60921c68b9bbb3f8aa59fb5f",
+      "compiled_sha256": "b2820f64f1a55563d7529dfb854fba4fe8b7501d60921c68b9bbb3f8aa59fb5f",
+      "source": "src/gameplay/FireString.cpp",
+      "symbol": "_ZN10FireString3SetERKS_",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 3
+    },
+    {
+      "address": "0xf28000",
+      "size": 248,
+      "exact": true,
+      "target_sha256": "49d8fbacdf1ca14bc9f3c740dcc52534a35f317a5762924290ec6f6d00c4993a",
+      "compiled_sha256": "49d8fbacdf1ca14bc9f3c740dcc52534a35f317a5762924290ec6f6d00c4993a",
+      "source": "src/gameplay/FireString.cpp",
+      "symbol": "_ZN10FireString6AppendEPKc",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 4
+    },
+    {
+      "address": "0xf28230",
+      "size": 188,
+      "exact": true,
+      "target_sha256": "12531b7eaef0f02cb4814bee0560e082bfd4c64f9743bdb59bc710e3454ca1e8",
+      "compiled_sha256": "12531b7eaef0f02cb4814bee0560e082bfd4c64f9743bdb59bc710e3454ca1e8",
+      "source": "src/gameplay/FireString.cpp",
+      "symbol": "_ZN10FireString6AppendEc",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 3
     },
     {
       "address": "0xf283a0",
@@ -448037,6 +448283,17 @@
       "symbol": "FUN_00f28c80",
       "source_review": "local_model_proposal_abi_review_pending",
       "relocation_count": 0
+    },
+    {
+      "address": "0xf28c90",
+      "size": 304,
+      "exact": true,
+      "target_sha256": "bd08ec346618ce21b23cd6ab68fb1b7c501a095ae559542ce26392328237b015",
+      "compiled_sha256": "bd08ec346618ce21b23cd6ab68fb1b7c501a095ae559542ce26392328237b015",
+      "source": "src/gameplay/FireCharFormat.cpp",
+      "symbol": "_ZN15PlatformEDevice5Slot5Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 10
     },
     {
       "address": "0xf29200",
@@ -448182,6 +448439,28 @@
       "relocation_count": 4
     },
     {
+      "address": "0xf2ea40",
+      "size": 112,
+      "exact": true,
+      "target_sha256": "ccca0c1cde0a824056c133939964c3a00f096a3484d712666d93c0d524115fba",
+      "compiled_sha256": "ccca0c1cde0a824056c133939964c3a00f096a3484d712666d93c0d524115fba",
+      "source": "src/gameplay/FireAtom.cpp",
+      "symbol": "_ZN15FireAtomObject47ReleaseEv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 8
+    },
+    {
+      "address": "0xf2f610",
+      "size": 172,
+      "exact": true,
+      "target_sha256": "380723825635c41b21202590e90300c65f74c50d0c541646b52a3512e0b2a143",
+      "compiled_sha256": "380723825635c41b21202590e90300c65f74c50d0c541646b52a3512e0b2a143",
+      "source": "src/gameplay/FireAtom.cpp",
+      "symbol": "_ZN15FireAtomObject44WideEv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 2
+    },
+    {
       "address": "0xf2f8b0",
       "size": 32,
       "exact": true,
@@ -448191,6 +448470,50 @@
       "symbol": "RecoveredLeaf_f2f8b0",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 1
+    },
+    {
+      "address": "0xf30450",
+      "size": 176,
+      "exact": true,
+      "target_sha256": "f0c50b2d9b31148df1fa773e13f6ea1223b27130890f0fba971522bd2da7df59",
+      "compiled_sha256": "f0c50b2d9b31148df1fa773e13f6ea1223b27130890f0fba971522bd2da7df59",
+      "source": "src/gameplay/FireAtom.cpp",
+      "symbol": "_Z16FireAtomWideTextP15FireAtomObject4",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 2
+    },
+    {
+      "address": "0xf30500",
+      "size": 252,
+      "exact": true,
+      "target_sha256": "dd088df5255bf6bb2ce12f50a4d1df9452b31da9bc9420c1014bba394e70daeb",
+      "compiled_sha256": "dd088df5255bf6bb2ce12f50a4d1df9452b31da9bc9420c1014bba394e70daeb",
+      "source": "src/gameplay/FireAtom.cpp",
+      "symbol": "_Z18FireAtomCharCodeAtP15FireAtomObject4i",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 6
+    },
+    {
+      "address": "0xf30a80",
+      "size": 108,
+      "exact": true,
+      "target_sha256": "7be9e1ce1a1e812d3237ecd2168892edc869dde80da270e1481bd8631070d267",
+      "compiled_sha256": "7be9e1ce1a1e812d3237ecd2168892edc869dde80da270e1481bd8631070d267",
+      "source": "src/gameplay/FireMisc.cpp",
+      "symbol": "_ZN14FireBufferListD2Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 6
+    },
+    {
+      "address": "0xf322f0",
+      "size": 236,
+      "exact": true,
+      "target_sha256": "1d0b3d41b4879739e656b529d4f3584d8c5b3c119819acd54600d3437ea6db0f",
+      "compiled_sha256": "1d0b3d41b4879739e656b529d4f3584d8c5b3c119819acd54600d3437ea6db0f",
+      "source": "src/gameplay/FireString.cpp",
+      "symbol": "_ZN14FireRecordUserD2Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 4
     },
     {
       "address": "0xf323e0",
@@ -448204,6 +448527,39 @@
       "relocation_count": 0
     },
     {
+      "address": "0xf33130",
+      "size": 120,
+      "exact": true,
+      "target_sha256": "08914e2419fd57aad09996f4cae85ea8b83a3d07b2e7fbc4fbaa486ebed55f49",
+      "compiled_sha256": "08914e2419fd57aad09996f4cae85ea8b83a3d07b2e7fbc4fbaa486ebed55f49",
+      "source": "src/gameplay/FireMisc.cpp",
+      "symbol": "_ZN16FireRegistrationD2Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 4
+    },
+    {
+      "address": "0xf33420",
+      "size": 272,
+      "exact": true,
+      "target_sha256": "c0e3072036a74c10f36adebc40671814f2394c218c7d3687ff19e23514fb4e89",
+      "compiled_sha256": "c0e3072036a74c10f36adebc40671814f2394c218c7d3687ff19e23514fb4e89",
+      "source": "src/gameplay/FireString.cpp",
+      "symbol": "_ZN16FireStringRecordC2EP17FirePlayerContext",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 12
+    },
+    {
+      "address": "0xf33530",
+      "size": 180,
+      "exact": true,
+      "target_sha256": "683989431e42373bdfc065b9b0a5c16261c9c70d72aca4c0eb240049cdc9b1cd",
+      "compiled_sha256": "683989431e42373bdfc065b9b0a5c16261c9c70d72aca4c0eb240049cdc9b1cd",
+      "source": "src/gameplay/FireString.cpp",
+      "symbol": "_ZN16FireStringRecord5ResetEv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 7
+    },
+    {
       "address": "0xf34b70",
       "size": 136,
       "exact": true,
@@ -448213,6 +448569,39 @@
       "symbol": "RecoveredLeaf_f34b70",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 10
+    },
+    {
+      "address": "0xf34d70",
+      "size": 248,
+      "exact": true,
+      "target_sha256": "dc327be44b086172f1169206ce5669af6264399c50fc8ccb39dd9e17aa7b5024",
+      "compiled_sha256": "dc327be44b086172f1169206ce5669af6264399c50fc8ccb39dd9e17aa7b5024",
+      "source": "src/gameplay/FireAtom.cpp",
+      "symbol": "_ZN8FireAtom5ClearEv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 6
+    },
+    {
+      "address": "0xf34f50",
+      "size": 68,
+      "exact": true,
+      "target_sha256": "816b885a77f48502a31449535592c688f7e8ef9669c28a92e31aff4b2e352a7b",
+      "compiled_sha256": "816b885a77f48502a31449535592c688f7e8ef9669c28a92e31aff4b2e352a7b",
+      "source": "src/gameplay/FireAtom.cpp",
+      "symbol": "_ZN8FireAtom9GetObjectEv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 0
+    },
+    {
+      "address": "0xf34fa0",
+      "size": 232,
+      "exact": true,
+      "target_sha256": "d96ae3d7744aa608aca066d266d959872de761084338791c21660e640d1f2ede",
+      "compiled_sha256": "d96ae3d7744aa608aca066d266d959872de761084338791c21660e640d1f2ede",
+      "source": "src/gameplay/FireAtom.cpp",
+      "symbol": "_ZN8FireAtom9SetObjectEP18FireAtomReleasable",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 2
     },
     {
       "address": "0xf35730",
@@ -448468,6 +448857,28 @@
       "relocation_count": 1
     },
     {
+      "address": "0xf38e90",
+      "size": 164,
+      "exact": true,
+      "target_sha256": "ef90ae025bff87cef4d79d432e5348f4b6b172a49516309d30d87812c8e05ba2",
+      "compiled_sha256": "ef90ae025bff87cef4d79d432e5348f4b6b172a49516309d30d87812c8e05ba2",
+      "source": "src/gameplay/FireMisc.cpp",
+      "symbol": "_ZN14FireLinkedItemD2Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 4
+    },
+    {
+      "address": "0xf38f40",
+      "size": 164,
+      "exact": true,
+      "target_sha256": "f58d5458e85b277746aa3230690d5edbd00f9ebfb8be36d83089b1d1ecae1291",
+      "compiled_sha256": "f58d5458e85b277746aa3230690d5edbd00f9ebfb8be36d83089b1d1ecae1291",
+      "source": "src/gameplay/FireMisc.cpp",
+      "symbol": "_ZN14FireLinkedItem5ClearEv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 4
+    },
+    {
       "address": "0xf39390",
       "size": 4,
       "exact": true,
@@ -448477,6 +448888,17 @@
       "symbol": "RecoveredLeaf_f39390",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 0
+    },
+    {
+      "address": "0xf4ad00",
+      "size": 248,
+      "exact": true,
+      "target_sha256": "a44028acb358c2ebff5661e70b088f52d07a789e46235442cbaf5415c416fb79",
+      "compiled_sha256": "a44028acb358c2ebff5661e70b088f52d07a789e46235442cbaf5415c416fb79",
+      "source": "src/gameplay/FireDelayedEvent.cpp",
+      "symbol": "_ZN22DelayedNavigationEvent8TypeNameEv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 23
     },
     {
       "address": "0xf4ae00",
@@ -448501,6 +448923,17 @@
       "relocation_count": 14
     },
     {
+      "address": "0xf4af50",
+      "size": 296,
+      "exact": true,
+      "target_sha256": "35ecb7add58f67e32d0274b2e6cdc6d96d9679a0f788350b1872ad377bc2593b",
+      "compiled_sha256": "35ecb7add58f67e32d0274b2e6cdc6d96d9679a0f788350b1872ad377bc2593b",
+      "source": "src/gameplay/FireDelayedEvent.cpp",
+      "symbol": "_ZN12DelayedEvent8TypeNameEv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 42
+    },
+    {
       "address": "0xf4f4a0",
       "size": 56,
       "exact": true,
@@ -448510,6 +448943,17 @@
       "symbol": "sub_F4F4A0",
       "source_review": "decompiler_text_review_pending",
       "relocation_count": 3
+    },
+    {
+      "address": "0xf51d10",
+      "size": 104,
+      "exact": true,
+      "target_sha256": "1376c1dd91c1684d4023427bcde56217c7784bff568b1ed764be4ac71bb9b962",
+      "compiled_sha256": "1376c1dd91c1684d4023427bcde56217c7784bff568b1ed764be4ac71bb9b962",
+      "source": "src/gameplay/FireAtom.cpp",
+      "symbol": "_ZN19FireTextTripleOwner6DeleteEP14FireTextTriple",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 7
     },
     {
       "address": "0xf59c10",
@@ -448532,6 +448976,17 @@
       "symbol": "RecoveredLeaf_f5a580",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 1
+    },
+    {
+      "address": "0xf5c170",
+      "size": 136,
+      "exact": true,
+      "target_sha256": "cf70cffc89aec15a86bdbdf22c63d8ea744bfa97d29dad74b86f882d80fe5268",
+      "compiled_sha256": "cf70cffc89aec15a86bdbdf22c63d8ea744bfa97d29dad74b86f882d80fe5268",
+      "source": "src/gameplay/FireMisc.cpp",
+      "symbol": "_ZN16FireCleanupGuardD2Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 8
     },
     {
       "address": "0xf65360",
@@ -448567,6 +449022,39 @@
       "relocation_count": 1
     },
     {
+      "address": "0xf6eca0",
+      "size": 200,
+      "exact": true,
+      "target_sha256": "14a9d54e72c4de13a0ce7c3ed35ced89b97b4351bdb608f6c4a23ef8a640896c",
+      "compiled_sha256": "14a9d54e72c4de13a0ce7c3ed35ced89b97b4351bdb608f6c4a23ef8a640896c",
+      "source": "src/gameplay/FireString.cpp",
+      "symbol": "_ZN14FireTextSource9SubstringEjjP10FireString",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 4
+    },
+    {
+      "address": "0xf6eee0",
+      "size": 224,
+      "exact": true,
+      "target_sha256": "c2b8fcd650a73e8194cc624aae0289d81244827e42d0421ebcde7093d849ed1c",
+      "compiled_sha256": "c2b8fcd650a73e8194cc624aae0289d81244827e42d0421ebcde7093d849ed1c",
+      "source": "src/gameplay/FireXml.cpp",
+      "symbol": "_ZN7XMLNode8SetValueEPKc",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 7
+    },
+    {
+      "address": "0xf6fa60",
+      "size": 72,
+      "exact": true,
+      "target_sha256": "00d98cda9ded7ce2d13d473442e2611df529d265db52165c38f7584d88968bcc",
+      "compiled_sha256": "00d98cda9ded7ce2d13d473442e2611df529d265db52165c38f7584d88968bcc",
+      "source": "src/gameplay/FireXml.cpp",
+      "symbol": "_ZN7XMLNode9VisitTreeEv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 1
+    },
+    {
       "address": "0xf6ffb0",
       "size": 20,
       "exact": true,
@@ -448578,6 +449066,39 @@
       "relocation_count": 2
     },
     {
+      "address": "0xf6ffd0",
+      "size": 172,
+      "exact": true,
+      "target_sha256": "ba14f22bf2e2980593f4b2fa98bdb8d483d25dbe7ddeb27abfe223e656239213",
+      "compiled_sha256": "ba14f22bf2e2980593f4b2fa98bdb8d483d25dbe7ddeb27abfe223e656239213",
+      "source": "src/gameplay/FireXml.cpp",
+      "symbol": "_ZN12FirePtrArray5ClearEv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 1
+    },
+    {
+      "address": "0xf70080",
+      "size": 292,
+      "exact": true,
+      "target_sha256": "ae9209cd7b00df67bcbdf14f8882c31f6d9813163f8f816c50acf6a805e4864e",
+      "compiled_sha256": "ae9209cd7b00df67bcbdf14f8882c31f6d9813163f8f816c50acf6a805e4864e",
+      "source": "src/gameplay/FireXml.cpp",
+      "symbol": "_ZN12FirePtrArray8RemoveAtEj",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 0
+    },
+    {
+      "address": "0xf701b0",
+      "size": 168,
+      "exact": true,
+      "target_sha256": "2acbd75b630bbbe06e5840ad2e4abb0d4786a955d339fd08de39b42c3bcbfb16",
+      "compiled_sha256": "2acbd75b630bbbe06e5840ad2e4abb0d4786a955d339fd08de39b42c3bcbfb16",
+      "source": "src/gameplay/FireXml.cpp",
+      "symbol": "_ZN6XMLDomD2Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 7
+    },
+    {
       "address": "0xf70260",
       "size": 32,
       "exact": true,
@@ -448586,6 +449107,28 @@
       "source": "src/decompiled/hi_strict_cxx_01.cpp",
       "symbol": "sub_F70260",
       "source_review": "decompiler_text_review_pending",
+      "relocation_count": 3
+    },
+    {
+      "address": "0xf70280",
+      "size": 212,
+      "exact": true,
+      "target_sha256": "9265f65419fd383a69ed8e5ec6a0e89db4fe83961cb4c82b9a0edadce5bd9721",
+      "compiled_sha256": "9265f65419fd383a69ed8e5ec6a0e89db4fe83961cb4c82b9a0edadce5bd9721",
+      "source": "src/gameplay/FireXml.cpp",
+      "symbol": "_ZN6XMLDom6FinishEv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 2
+    },
+    {
+      "address": "0xf70360",
+      "size": 360,
+      "exact": true,
+      "target_sha256": "905fdad0ff72670179f0dc44aa8e65205360b96ec0add80350dd94cf0ab724cc",
+      "compiled_sha256": "905fdad0ff72670179f0dc44aa8e65205360b96ec0add80350dd94cf0ab724cc",
+      "source": "src/gameplay/FireXml.cpp",
+      "symbol": "_ZN6XMLDom7AddTreeEP7XMLNode",
+      "source_review": "manual_reconstruction",
       "relocation_count": 3
     },
     {
@@ -448609,6 +449152,17 @@
       "symbol": "RecoveredLeaf_f70500",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 8
+    },
+    {
+      "address": "0xf70540",
+      "size": 308,
+      "exact": true,
+      "target_sha256": "75277e2a3a32ea9e24099e74f91f1c64ed60a9cfad043b1b8a839856acc99ef9",
+      "compiled_sha256": "75277e2a3a32ea9e24099e74f91f1c64ed60a9cfad043b1b8a839856acc99ef9",
+      "source": "src/gameplay/FireXml.cpp",
+      "symbol": "_ZN7XMLDoms3AddEP7XMLNode",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 2
     },
     {
       "address": "0xf708f0",
@@ -448919,6 +449473,28 @@
       "relocation_count": 0
     },
     {
+      "address": "0xf815a0",
+      "size": 320,
+      "exact": true,
+      "target_sha256": "d705d186e8a33687603d5860ad039887187ead312a9dafc3a836555f11f96944",
+      "compiled_sha256": "d705d186e8a33687603d5860ad039887187ead312a9dafc3a836555f11f96944",
+      "source": "src/gameplay/FireAtom.cpp",
+      "symbol": "_ZN9URLStream7CleanupEv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 16
+    },
+    {
+      "address": "0xf83b00",
+      "size": 196,
+      "exact": true,
+      "target_sha256": "47491d07cb92b6f2187e07c443e75a9bccd193cc25b0a462ae95c1b70b88d5e3",
+      "compiled_sha256": "47491d07cb92b6f2187e07c443e75a9bccd193cc25b0a462ae95c1b70b88d5e3",
+      "source": "src/gameplay/FireAtom.cpp",
+      "symbol": "_ZN12FireCallSlot7SetCallEP14FireCallTargetP8FireAtomi",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 7
+    },
+    {
       "address": "0xf83bd0",
       "size": 76,
       "exact": true,
@@ -448952,6 +449528,17 @@
       "relocation_count": 1
     },
     {
+      "address": "0xf8b140",
+      "size": 232,
+      "exact": true,
+      "target_sha256": "cb7860346547410cca977ab96d0eccbff804614aa449315b3eb9c1a77566b72a",
+      "compiled_sha256": "cb7860346547410cca977ab96d0eccbff804614aa449315b3eb9c1a77566b72a",
+      "source": "src/gameplay/FireAtom.cpp",
+      "symbol": "_ZN11IntervalMgr6CookieD2Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 9
+    },
+    {
       "address": "0xf8b5a0",
       "size": 180,
       "exact": true,
@@ -448983,6 +449570,17 @@
       "symbol": "_ZN11IntervalMgr15IntervalCookies10DeleteItemEPvS1_",
       "source_review": "manual_reconstruction",
       "relocation_count": 3
+    },
+    {
+      "address": "0xf8b760",
+      "size": 180,
+      "exact": true,
+      "target_sha256": "83c86363f9c115614235f8e776dc6b17245fe9ead1e63d43239a95b8565bf283",
+      "compiled_sha256": "83c86363f9c115614235f8e776dc6b17245fe9ead1e63d43239a95b8565bf283",
+      "source": "src/gameplay/FireTables.cpp",
+      "symbol": "_ZN11IntervalMgrD2Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 5
     },
     {
       "address": "0xf8ce50",
@@ -449073,6 +449671,17 @@
       "relocation_count": 6
     },
     {
+      "address": "0xf90a60",
+      "size": 188,
+      "exact": true,
+      "target_sha256": "6d51c0d0a304b383c37f1705d5ce48df2c239c0ac49b18fd53fb054eece84993",
+      "compiled_sha256": "6d51c0d0a304b383c37f1705d5ce48df2c239c0ac49b18fd53fb054eece84993",
+      "source": "src/gameplay/FireAchw.cpp",
+      "symbol": "_ZN19achwShapeOES_Stroke7ReleaseEi",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 3
+    },
+    {
       "address": "0xf90b20",
       "size": 132,
       "exact": true,
@@ -449093,6 +449702,39 @@
       "symbol": "sub_F90BB0",
       "source_review": "decompiler_text_review_pending",
       "relocation_count": 6
+    },
+    {
+      "address": "0xf90c50",
+      "size": 484,
+      "exact": true,
+      "target_sha256": "9270088ae87b924535ce954316a19bec52a5ccef71dbdb535190145784992ead",
+      "compiled_sha256": "9270088ae87b924535ce954316a19bec52a5ccef71dbdb535190145784992ead",
+      "source": "src/gameplay/FireAchw.cpp",
+      "symbol": "_ZN25achwShapeOES_ScaledColors7ReleaseEi",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 5
+    },
+    {
+      "address": "0xf93a50",
+      "size": 276,
+      "exact": true,
+      "target_sha256": "bfd32e2bc6721deb4506795747b5cc4a267a9c6a0c17caf7c1681b7a2daea04d",
+      "compiled_sha256": "bfd32e2bc6721deb4506795747b5cc4a267a9c6a0c17caf7c1681b7a2daea04d",
+      "source": "src/gameplay/FireAchw.cpp",
+      "symbol": "_ZN12achwShapeOESD2Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 8
+    },
+    {
+      "address": "0xf93b70",
+      "size": 288,
+      "exact": true,
+      "target_sha256": "7db6dd1a412d87283b911e020802040b936017f63fad29d58dd494a64a75d9b0",
+      "compiled_sha256": "7db6dd1a412d87283b911e020802040b936017f63fad29d58dd494a64a75d9b0",
+      "source": "src/gameplay/FireAchw.cpp",
+      "symbol": "_ZN12achwShapeOESD0Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 10
     },
     {
       "address": "0xf93c90",
@@ -449192,6 +449834,17 @@
       "symbol": "sub_F96330",
       "source_review": "decompiler_text_review_pending",
       "relocation_count": 13
+    },
+    {
+      "address": "0xf963c0",
+      "size": 136,
+      "exact": true,
+      "target_sha256": "85dbc8490aa89f3988631d62790149c4b50c2637202128a647ccb270fed13a56",
+      "compiled_sha256": "85dbc8490aa89f3988631d62790149c4b50c2637202128a647ccb270fed13a56",
+      "source": "src/gameplay/FireDelayedEvent.cpp",
+      "symbol": "_ZN20FireSetFlashVarEvent5ApplyEPv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 2
     },
     {
       "address": "0xf96780",
