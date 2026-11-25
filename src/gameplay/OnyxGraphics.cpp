@@ -472,6 +472,73 @@ PartitioningCatalog::~PartitioningCatalog() {
 }  // namespace EvolutionDevelopment
 }  // namespace Graphics
 
+// The editor's marker graphics (WaypointGraphics, SpawnPointGraphics, LightPointGraphics, ControlPointGraphics): slot 15
+// reports a unit box at the origin. The unit size is one function-local static they all share (guard 0x191e520),
+// returned by value like onyx::Vector3::Zero(). It is copied as one 12-byte block, so the box here is made of
+// onyx::Vector3s (whose copy assignment is the defaulted one), not the particle code's element-by-element Vec3.
+struct MarkerExtent {
+    onyx::Vector3 halfSize;
+    onyx::Vector3 center;
+};
+__attribute__((always_inline)) inline onyx::Vector3 UnitSize() {
+    static const onyx::Vector3 size(1.0f, 1.0f, 1.0f);
+    return size;
+}
+struct MarkerGraphics : onyx::Component {
+    virtual void Slot2(); virtual void Slot3(); virtual void Slot4(); virtual void Slot5(); virtual void Slot6();
+    virtual void Slot7(); virtual void Slot8(); virtual void Slot9(); virtual void Slot10(); virtual void Slot11();
+    virtual void Slot12(); virtual void Slot13(); virtual void Slot14();
+    virtual void GetExtent(MarkerExtent& extent);      // slot 15
+    __attribute__((always_inline)) static void UnitExtent(MarkerExtent& extent) {
+        extent.halfSize = onyx::Vector3(0.0f, 0.0f, 0.0f);
+        extent.center = onyx::Vector3(0.0f, 0.0f, 0.0f);
+        extent.halfSize = UnitSize();
+    }
+};
+struct WaypointGraphics : MarkerGraphics { void GetExtent(MarkerExtent& extent) override; };
+struct SpawnPointGraphics : MarkerGraphics { void GetExtent(MarkerExtent& extent) override; };
+struct LightPointGraphics : MarkerGraphics { void GetExtent(MarkerExtent& extent) override; };
+struct ControlPointGraphics : MarkerGraphics { void GetExtent(MarkerExtent& extent) override; };
+void WaypointGraphics::GetExtent(MarkerExtent& extent) { UnitExtent(extent); }       // 0xca4270
+void SpawnPointGraphics::GetExtent(MarkerExtent& extent) { UnitExtent(extent); }     // 0xca5980
+void LightPointGraphics::GetExtent(MarkerExtent& extent) { UnitExtent(extent); }     // 0xcadc80
+void ControlPointGraphics::GetExtent(MarkerExtent& extent) { UnitExtent(extent); }   // 0xcb7820
+
+// Slot 15's default (0xadad80), shared by 55 graphics classes (Visual, ShapeComponent, AnimaticInstance and others;
+// which base declares it isn't known): an empty extent, -FLT_MAX in each half size. BoundingVolumeGraphics has its
+// own copy (0xcb9e10).
+struct ExtentDefault : MarkerGraphics { void GetExtent(MarkerExtent& extent) override; };
+void ExtentDefault::GetExtent(MarkerExtent& extent) {
+    extent.halfSize = onyx::Vector3(-3.40282347e+38f, -3.40282347e+38f, -3.40282347e+38f);
+    extent.center = onyx::Vector3(0.0f, 0.0f, 0.0f);
+}
+struct BoundingVolumeGraphics : MarkerGraphics { void GetExtent(MarkerExtent& extent) override; };
+void BoundingVolumeGraphics::GetExtent(MarkerExtent& extent) {   // 0xcb9e10
+    extent.halfSize = onyx::Vector3(-3.40282347e+38f, -3.40282347e+38f, -3.40282347e+38f);
+    extent.center = onyx::Vector3(0.0f, 0.0f, 0.0f);
+}
+// Onyx::DareAudio::RolloffGraphics, slot 15 (0x70b550): a half size of 2, the centre left alone.
+namespace DareAudio {
+struct RolloffGraphics : MarkerGraphics { void GetExtent(MarkerExtent& extent) override; };
+void RolloffGraphics::GetExtent(MarkerExtent& extent) { extent.halfSize = onyx::Vector3(2.0f, 2.0f, 2.0f); }
+}  // namespace DareAudio
+// The light, camera and arrow graphics, slot 15: the unit box about onyx::Vector3::Zero().
+struct UnitBoxGraphics : MarkerGraphics {
+    __attribute__((always_inline)) static void UnitBox(MarkerExtent& extent) {
+        extent = MarkerExtent{UnitSize(), onyx::Vector3::Zero()};
+    }
+};
+struct LightSpotGraphics : UnitBoxGraphics { void GetExtent(MarkerExtent& extent) override; };
+struct LightDirectionalGraphics : UnitBoxGraphics { void GetExtent(MarkerExtent& extent) override; };
+struct DirectionalArrowGraphics : UnitBoxGraphics { void GetExtent(MarkerExtent& extent) override; };
+namespace Graphics {
+struct CameraGraphics : UnitBoxGraphics { void GetExtent(MarkerExtent& extent) override; };
+void CameraGraphics::GetExtent(MarkerExtent& extent) { UnitBox(extent); }               // 0xb91d00
+}  // namespace Graphics
+void LightSpotGraphics::GetExtent(MarkerExtent& extent) { UnitBox(extent); }            // 0xcabaa0
+void LightDirectionalGraphics::GetExtent(MarkerExtent& extent) { UnitBox(extent); }     // 0xcb03c0
+void DirectionalArrowGraphics::GetExtent(MarkerExtent& extent) { UnitBox(extent); }     // 0xcb4030
+
 // Onyx::Profile (vtable 0x1845068): a component with a ring of entries at +0x70, like the graphics catalogs'. Slot
 // names are provisional.
 struct Profile {

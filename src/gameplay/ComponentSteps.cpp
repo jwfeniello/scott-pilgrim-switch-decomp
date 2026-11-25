@@ -530,6 +530,18 @@ template<unsigned Key, unsigned DirtyOffset> int DirtyShape<Key, DirtyOffset>::S
     int blend = onyx::Get<ShapeMaterial, 996313107u>(material)->blended ? 2 : 1;
     return DrawListAdd(list, draw, blend);
 }
+// Onyx::Graphics::ShapeComponent's slot 21 (0xafecc0, shared by the 23 shapes that don't rebuild first): adds the
+// shape's draw (+0x98) to the list, blended when its material is.
+struct ShapeComponentDraw {
+    char padding_0[0x90];
+    ComponentHandle* material;  // +0x90
+    char draw[0x8];             // +0x98
+    int Slot21(void* list);
+};
+int ShapeComponentDraw::Slot21(void* list) {
+    int blend = onyx::Get<ShapeMaterial, 996313107u>(material)->blended ? 2 : 1;
+    return DrawListAdd(list, draw, blend);
+}
 template struct DirtyShape<0xb2f3e0, 276>;
 template struct DirtyShape<0xb95880, 272>;
 template struct DirtyShape<0xb2e750, 272>;

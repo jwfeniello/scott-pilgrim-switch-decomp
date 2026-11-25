@@ -569574,6 +569574,18 @@
           "got_bindings": {}
         },
         {
+          "address": "0xafecc0",
+          "size": 124,
+          "symbol": "_ZN4Onyx18ShapeComponentDraw6Slot21EPv",
+          "target_sha256": "2ac563b0203c39824ffb0785cc85cdb6a94f62208f61c1b94547b151d0e8e5c9",
+          "bindings": {
+            "Accessor_Resolver": "0x191cd10",
+            "Accessor_Resolve": "0x67edd0",
+            "_ZN4Onyx11DrawListAddEPvS0_i": "0xae6dd0"
+          },
+          "got_bindings": {}
+        },
+        {
           "address": "0xb2d310",
           "size": 276,
           "symbol": "_ZN4Onyx12HeldGraphicsILj11719440ELj344EE3AddEPNS_8DrawListE",
@@ -580063,6 +580075,25 @@
           "got_bindings": {}
         },
         {
+          "address": "0x70b550",
+          "size": 20,
+          "symbol": "_ZN4Onyx9DareAudio15RolloffGraphics9GetExtentERNS_12MarkerExtentE",
+          "target_sha256": "29d03215abde6e2fa6e9f64aa9ffd82610f6a243dfa0761ccf91df2339cc8e87",
+          "bindings": {},
+          "got_bindings": {}
+        },
+        {
+          "address": "0xadad80",
+          "size": 20,
+          "symbol": "_ZN4Onyx13ExtentDefault9GetExtentERNS_12MarkerExtentE",
+          "target_sha256": "b82c58f518d8771fe6c9237501e283d85244859765559b3989e8540284f329e2",
+          "bindings": {},
+          "got_bindings": {},
+          "literals": {
+            "ffff7fffffff7fffffff7fff00000000": "0x13334c0"
+          }
+        },
+        {
           "address": "0xae1420",
           "size": 48,
           "symbol": "_ZN4Onyx8Graphics25GeometryDynamicRenderUnit4DrawEv",
@@ -580328,6 +580359,21 @@
           "got_bindings": {}
         },
         {
+          "address": "0xb91d00",
+          "size": 252,
+          "symbol": "_ZN4Onyx8Graphics14CameraGraphics9GetExtentERNS_12MarkerExtentE",
+          "target_sha256": "a8c28a95c8756721c802ba9fcf0caae9569e205bf0d7e3597771b335b29f03c3",
+          "bindings": {
+            "_ZGVZN4Onyx8UnitSizeEvE4size": "0x191e520",
+            "_ZZN4Onyx8UnitSizeEvE4size": "0x191e528",
+            "_ZGVZN4onyx7Vector34ZeroEvE5value": "0x191f8b8",
+            "_ZZN4onyx7Vector34ZeroEvE5value": "0x191f8c0",
+            "__cxa_guard_acquire": "0xfa4130",
+            "__cxa_guard_release": "0xfa4140"
+          },
+          "got_bindings": {}
+        },
+        {
           "address": "0xc9d0f0",
           "size": 88,
           "symbol": "_ZN4Onyx8Graphics13GraphicsFader6EnableEv",
@@ -580336,6 +580382,114 @@
             "_ZN4Onyx8Graphics13GraphicsFader5ApplyEf": "0xc9d8b0"
           },
           "got_bindings": {}
+        },
+        {
+          "address": "0xca4270",
+          "size": 128,
+          "symbol": "_ZN4Onyx16WaypointGraphics9GetExtentERNS_12MarkerExtentE",
+          "target_sha256": "ec319333c9cf96e34ea89137880eb5ebe2d6a7ffdc4a7fb1a00d38bbb7adef28",
+          "bindings": {
+            "_ZGVZN4Onyx8UnitSizeEvE4size": "0x191e520",
+            "_ZZN4Onyx8UnitSizeEvE4size": "0x191e528",
+            "__cxa_guard_acquire": "0xfa4130",
+            "__cxa_guard_release": "0xfa4140"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xca5980",
+          "size": 128,
+          "symbol": "_ZN4Onyx18SpawnPointGraphics9GetExtentERNS_12MarkerExtentE",
+          "target_sha256": "46ae1a793492e059609bf87719335950e4657f289e9f60e5634df1ab8d5cab64",
+          "bindings": {
+            "_ZGVZN4Onyx8UnitSizeEvE4size": "0x191e520",
+            "_ZZN4Onyx8UnitSizeEvE4size": "0x191e528",
+            "__cxa_guard_acquire": "0xfa4130",
+            "__cxa_guard_release": "0xfa4140"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xcabaa0",
+          "size": 252,
+          "symbol": "_ZN4Onyx17LightSpotGraphics9GetExtentERNS_12MarkerExtentE",
+          "target_sha256": "03caeb7faec1243afb6df5ba798949d4906dde40db3682b73d10071078015d47",
+          "bindings": {
+            "_ZGVZN4Onyx8UnitSizeEvE4size": "0x191e520",
+            "_ZZN4Onyx8UnitSizeEvE4size": "0x191e528",
+            "_ZGVZN4onyx7Vector34ZeroEvE5value": "0x191f8b8",
+            "_ZZN4onyx7Vector34ZeroEvE5value": "0x191f8c0",
+            "__cxa_guard_acquire": "0xfa4130",
+            "__cxa_guard_release": "0xfa4140"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xcadc80",
+          "size": 128,
+          "symbol": "_ZN4Onyx18LightPointGraphics9GetExtentERNS_12MarkerExtentE",
+          "target_sha256": "aaaabae254be88c135546f930cf966007ffb37564604c3cecb264cbcbd7e7850",
+          "bindings": {
+            "_ZGVZN4Onyx8UnitSizeEvE4size": "0x191e520",
+            "_ZZN4Onyx8UnitSizeEvE4size": "0x191e528",
+            "__cxa_guard_acquire": "0xfa4130",
+            "__cxa_guard_release": "0xfa4140"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xcb03c0",
+          "size": 252,
+          "symbol": "_ZN4Onyx24LightDirectionalGraphics9GetExtentERNS_12MarkerExtentE",
+          "target_sha256": "e5e8471f0f20e14ae6d402ef54f5ac742688c5a9216a0f6dbe554c1da6765c82",
+          "bindings": {
+            "_ZGVZN4Onyx8UnitSizeEvE4size": "0x191e520",
+            "_ZZN4Onyx8UnitSizeEvE4size": "0x191e528",
+            "_ZGVZN4onyx7Vector34ZeroEvE5value": "0x191f8b8",
+            "_ZZN4onyx7Vector34ZeroEvE5value": "0x191f8c0",
+            "__cxa_guard_acquire": "0xfa4130",
+            "__cxa_guard_release": "0xfa4140"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xcb4030",
+          "size": 252,
+          "symbol": "_ZN4Onyx24DirectionalArrowGraphics9GetExtentERNS_12MarkerExtentE",
+          "target_sha256": "57d892777ef1e330bcd5502e01535ae49ff71a703f7697e88e427121131d0efe",
+          "bindings": {
+            "_ZGVZN4Onyx8UnitSizeEvE4size": "0x191e520",
+            "_ZZN4Onyx8UnitSizeEvE4size": "0x191e528",
+            "_ZGVZN4onyx7Vector34ZeroEvE5value": "0x191f8b8",
+            "_ZZN4onyx7Vector34ZeroEvE5value": "0x191f8c0",
+            "__cxa_guard_acquire": "0xfa4130",
+            "__cxa_guard_release": "0xfa4140"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xcb7820",
+          "size": 128,
+          "symbol": "_ZN4Onyx20ControlPointGraphics9GetExtentERNS_12MarkerExtentE",
+          "target_sha256": "9dfe6e7e5b540a7d0b7531dbfc634dee20efa00e6bbde249c2caddac9daf83a0",
+          "bindings": {
+            "_ZGVZN4Onyx8UnitSizeEvE4size": "0x191e520",
+            "_ZZN4Onyx8UnitSizeEvE4size": "0x191e528",
+            "__cxa_guard_acquire": "0xfa4130",
+            "__cxa_guard_release": "0xfa4140"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xcb9e10",
+          "size": 20,
+          "symbol": "_ZN4Onyx22BoundingVolumeGraphics9GetExtentERNS_12MarkerExtentE",
+          "target_sha256": "ef25e712cffeb58f628ce262fd13cbb18fe2bfe5e52992950e23fe9cdd88eee6",
+          "bindings": {},
+          "got_bindings": {},
+          "literals": {
+            "ffff7fffffff7fffffff7fff00000000": "0x13334c0"
+          }
         }
       ]
     },
