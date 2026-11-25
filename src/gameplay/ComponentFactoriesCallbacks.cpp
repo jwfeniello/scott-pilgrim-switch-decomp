@@ -1354,3 +1354,25 @@ struct TimeElapsedTrigger : TimeElapsedTriggerLayout {
 }  // namespace Onyx
 void* Create_Onyx_TimeElapsedTrigger() { return new (GenericFactoryResolve(GenericFactoryManager, 0x1af1d642u)->Allocate(sizeof(Onyx::TimeElapsedTrigger))) Onyx::TimeElapsedTrigger; }
 
+struct Event_b8ded0;
+struct Event_b8df10;
+// Onyx::Graphics::WindowSettings : Onyx::Component::Base (the cleanup ends in Base's destructor). Not yet matched (not
+// credited): the second listener's owner (+0x70) is zeroed before its flag (+0x78) in the original, after it here.
+namespace Onyx {
+namespace Graphics {
+struct WindowSettings : ::Onyx::Component::Base {
+ char p8[0x48];
+ Onyx::Listener<void(const Event_b8ded0&)> member_50;
+ Onyx::Listener<void(const Event_b8df10&)> member_68;
+ uint32_t field_80;
+ uint16_t field_84;
+ uint8_t field_86;
+ char p87[0x1];
+ void F50(const Event_b8ded0&);
+ void F68(const Event_b8df10&);
+ __attribute__((always_inline)) WindowSettings() : member_50(), member_68(), field_84(0) { field_80 = 0; field_86 = 0xff; member_50.owner = this; member_50.function = Onyx::MakeFunction<void(const Event_b8ded0&)>(Onyx::MemberFunction<WindowSettings, void(const Event_b8ded0&)>(this, &WindowSettings::F50)); member_68.owner = this; member_68.function = Onyx::MakeFunction<void(const Event_b8df10&)>(Onyx::MemberFunction<WindowSettings, void(const Event_b8df10&)>(this, &WindowSettings::F68)); }
+ virtual ~WindowSettings();
+};
+}  // namespace Graphics
+}  // namespace Onyx
+void* Create_Onyx_Graphics_WindowSettings() { return new (GenericFactoryResolve(GenericFactoryManager, 0x7b73c94u)->Allocate(sizeof(Onyx::Graphics::WindowSettings))) Onyx::Graphics::WindowSettings; }

@@ -259,6 +259,23 @@ void ColorConstantPublisherCircuit::Slot13() {
 }
 } } }  // namespace Onyx::Gameplay::Circuits
 
+// Runs its slot 15, then sends itself as the payload (no caller or vtable refers to it; named by address).
+struct Senderada8f0 {
+    virtual void Slot0(); virtual void Slot1(); virtual void Slot2(); virtual void Slot3(); virtual void Slot4();
+    virtual void Slot5(); virtual void Slot6(); virtual void Slot7(); virtual void Slot8(); virtual void Slot9();
+    virtual void Slot10(); virtual void Slot11(); virtual void Slot12(); virtual void Slot13(); virtual void Slot14();
+    virtual void Slot15();
+    char padding_8[0xe0];
+    onyx::EventCallback* callback;   // +0xe8
+    onyx::EventTarget* target;       // +0xf0
+    void Send();
+};
+void Senderada8f0::Send() {   // 0xada8f0
+    Slot15();
+    onyx::ValuePayload<Senderada8f0*> payload(this);
+    onyx::SendEvent<0x7c134948u>(callback, target, payload);
+}
+
 struct Pair64x32 { uint64_t a; uint32_t b; };
 // Copied field by field.
 struct PairPayload { uint64_t a; uint32_t b; PairPayload(const Pair64x32& p) : a(p.a), b(p.b) {} ~PairPayload() {} };

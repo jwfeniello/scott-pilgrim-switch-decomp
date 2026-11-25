@@ -500214,6 +500214,28 @@
           }
         },
         {
+          "address": "0xada8f0",
+          "size": 316,
+          "symbol": "_ZN12Senderada8f04SendEv",
+          "target_sha256": "4c340f061d15a9c8e28490b84f1c11c669cfe1443e276d137403c25b7250b701",
+          "bindings": {
+            "Onyx_ProjectSettings": "0x1935070",
+            "Accessor_Tracking": "0x1935068",
+            "Event_Notify": "0xbf6e80",
+            "_ZGVZN4onyx8SettingsEvE8defaults": "0x1935078",
+            "_ZZN4onyx8SettingsEvE8defaults": "0x1935080",
+            "__cxa_guard_acquire": "0xfa4130",
+            "__cxa_guard_release": "0xfa4140",
+            "_Unwind_Resume": "0xfa4920"
+          },
+          "got_bindings": {},
+          "literals": {
+            "554e4b4e4f574e20": "0x1331ae0",
+            "50524f4a45435420": "0x1331000",
+            "0c0000000c000000ffffff7fffffff7f": "0x1334730"
+          }
+        },
+        {
           "address": "0xb28bd0",
           "size": 312,
           "symbol": "_ZN11ValueSenderILj11701200ELj913605653ELj0EmLm0EE4SendEv",
