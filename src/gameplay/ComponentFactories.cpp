@@ -4935,6 +4935,9 @@ struct Plane : ShapeCommon {
 }  // namespace Collision
 }  // namespace Onyx
 void* Create_Onyx_Collision_Sphere() { return new (GenericFactoryResolve(GenericFactoryManager, 0x3e453135u)->Allocate(sizeof(Onyx::Collision::Sphere))) Onyx::Collision::Sphere; }
+// A second, identical Sphere factory (0xbd7690), the one 0xbd7a50 registers with the game's other factories (name
+// provisional).
+void* Create_Onyx_Collision_Sphere_bd7690() { return new (GenericFactoryResolve(GenericFactoryManager, 0x3e453135u)->Allocate(sizeof(Onyx::Collision::Sphere))) Onyx::Collision::Sphere; }
 void* Create_Onyx_Collision_Capsule() { return new (GenericFactoryResolve(GenericFactoryManager, 0x3e453135u)->Allocate(sizeof(Onyx::Collision::Capsule))) Onyx::Collision::Capsule; }
 void* Create_Onyx_Collision_Plane() { return new (GenericFactoryResolve(GenericFactoryManager, 0x3e453135u)->Allocate(sizeof(Onyx::Collision::Plane))) Onyx::Collision::Plane; }
 

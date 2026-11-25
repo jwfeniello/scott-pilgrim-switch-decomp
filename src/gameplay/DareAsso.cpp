@@ -815,5 +815,136 @@ template struct DareVector<VectorItem_d7aef0>;   // 0xd7aef0
 template struct DareVector<VectorItem_db1740>;   // 0xdb1740
 template struct DareVector<VectorItem_db1bb0>;   // 0xdb1bb0
 
+// A growable array kept as begin and end pointers, with a word saying it is in use (provisional name): popped back to
+// its start, freed and cleared when destroyed. 0xd91500 destroys five at +0x2c to +0xd8 (one inline, four out of line).
+template<class T> struct DareStack {
+    int32_t used;     // +0x0
+    T* begin;         // +0x8
+    T* end;           // +0x10
+    T* capacity;      // +0x18
+    void* value20;    // +0x20
+    ~DareStack() {
+        if (!used) return;
+        while (end > begin) {
+            --end;
+            end->~T();
+        }
+        value20 = nullptr;
+        DareFree(begin);
+        used = 0;
+        begin = nullptr;
+        end = nullptr;
+    }
+};
+// Their elements are 12 bytes; what they are isn't known yet, so they're named by their destructors' addresses.
+struct StackItem_d91280 { char data[0xc]; };
+struct StackItem_d91300 { char data[0xc]; };
+struct StackItem_d91380 { char data[0xc]; };
+struct StackItem_d91400 { char data[0xc]; };
+struct StackItem_d91480 { char data[0xc]; };
+template struct DareStack<StackItem_d91280>;   // 0xd91280
+template struct DareStack<StackItem_d91300>;   // 0xd91300
+template struct DareStack<StackItem_d91380>;   // 0xd91380
+template struct DareStack<StackItem_d91400>;   // 0xd91400
+template struct DareStack<StackItem_d91480>;   // 0xd91480
+
+// Three more, whose elements have destructors (named by their stacks' destructors' addresses).
+// 0xd91040's elements: a part at +0x4 destroyed out of line (0xd1dc90).
+struct StackPart_d91040 {
+    ~StackPart_d91040();   // 0xd1dc90
+    char data[0x68];
+};
+struct StackItem_d91040 {
+    int32_t value0;
+    StackPart_d91040 part;   // +0x4
+};
+// 0xd910d0's elements: an array at +0x8.
+struct StackItem_d910d0 {
+    void* value0;
+    DareVector<void*> items;   // +0x8
+    void* value20;             // +0x20
+};
+// Dare::Private::ChannelVolumes (vtable 0x18cd740): its destructor (0xd11d80) clears +0x28. Its size here is only
+// what 0xd911a0's elements leave for it.
+#pragma pack(push, 4)
+struct ChannelVolumes {
+    virtual ~ChannelVolumes() { value28 = nullptr; }
+    char padding_8[0x20];
+    void* value28;   // +0x28
+    char padding_30[0xc];
+};
+// 0xd911a0's elements (4-byte packed): an array at +0x10 and channel volumes at +0x30.
+struct StackItem_d911a0 {
+    char padding_0[0x10];
+    DareVector<void*> items;   // +0x10
+    char padding_28[0x8];
+    ChannelVolumes volumes;    // +0x30
+};
+#pragma pack(pop)
+static_assert(sizeof(StackItem_d91040) == 0x6c && sizeof(StackItem_d910d0) == 0x28 && sizeof(StackItem_d911a0) == 0x6c,
+              "stack item sizes");
+template struct DareStack<StackItem_d91040>;   // 0xd91040
+template struct DareStack<StackItem_d910d0>;   // 0xd910d0
+template struct DareStack<StackItem_d911a0>;   // 0xd911a0
+
+// An object Dare counts references to (provisional names): +0x8 is the count; slot 2 destroys it.
+struct DareCounted {
+    virtual void Slot0();
+    virtual void Slot1();
+    virtual void Destroy();   // slot 2
+    int32_t references;       // +0x8
+};
+// A counted reference: drops its reference when destroyed.
+template<class T> struct DareRef {
+    T* object;
+    ~DareRef() {
+        T* counted = object;
+        if (counted && __atomic_sub_fetch(&counted->references, 1, __ATOMIC_RELAXED) == 0) counted->Destroy();
+    }
+};
+// Destroys an element in place (null-safe, as Dare's containers do it).
+template<class T> inline void DareDestroy(T* element) {
+    if (element) element->~T();
+}
+// A growable array that destroys its elements (provisional name): capacity, size, data.
+template<class T> struct DareObjectArray {
+    uint64_t capacity;
+    uint64_t size;       // +0x8
+    T* data;             // +0x10
+    ~DareObjectArray() {
+        if (data) {
+            for (uint64_t i = 0; i < size; ++i) DareDestroy(&data[i]);
+        }
+        size = 0;
+        if (data) DareFree(data);
+        capacity = 0;
+        size = 0;
+        data = nullptr;
+    }
+};
+template struct DareObjectArray<DareRef<DareCounted>>;   // 0xd62ef0
+// 0xd62e10's elements (4-byte packed): a counted reference at +0x4.
+#pragma pack(push, 4)
+struct StackItem_d62e10 {
+    int32_t value0;
+    DareRef<DareCounted> ref;   // +0x4
+};
+#pragma pack(pop)
+template struct DareStack<StackItem_d62e10>;   // 0xd62e10
+
+// Four more stacks of the same kind elsewhere in Dare: three of plain elements (16, 28 and 16 bytes) and one whose
+// 16-byte elements hold a counted reference at +0x8.
+struct StackItem_cf3140 { char data[0x10]; };
+struct StackItem_d4e740 { char data[0x1c]; };
+struct StackItem_d4e830 { char data[0x10]; };
+struct StackItem_d2fd10 {
+    void* value0;
+    DareRef<DareCounted> ref;   // +0x8
+};
+template struct DareStack<StackItem_cf3140>;   // 0xcf3140
+template struct DareStack<StackItem_d4e740>;   // 0xd4e740
+template struct DareStack<StackItem_d4e830>;   // 0xd4e830
+template struct DareStack<StackItem_d2fd10>;   // 0xd2fd10
+
 }  // namespace Private
 }  // namespace Dare

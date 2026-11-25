@@ -238,6 +238,27 @@ template<unsigned Key, uint32_t Hash> void FieldSender<Key, Hash>::Send() {
 template struct FieldSender<0xcc6550u, 0x51404a1eu>;
 template struct FieldSender<0xcc6ac0u, 0x1184faefu>;
 
+// Onyx::Gameplay::Circuits::ColorConstantPublisherCircuit's slot 13 (0xcc5fe0, from its base
+// Detail::ConstantValuePublisherCircuit<...>): sends its color (+0x80) as the payload. Same form as FieldSender, but
+// the payload is the color itself. That the color is four bytes (alignment 1) comes from the payload's stack slot.
+namespace Onyx { namespace Gameplay { namespace Circuits {
+struct ColorRGBA {
+    uint8_t r, g, b, a;
+};
+struct ColorConstantPublisherCircuit {
+    char padding[0x50];
+    onyx::EventCallback* callback;   // +0x50
+    onyx::EventTarget* target;       // +0x58
+    char padding_60[0x20];
+    ColorRGBA color;                 // +0x80
+    void Slot13();
+};
+void ColorConstantPublisherCircuit::Slot13() {
+    onyx::ValuePayload<ColorRGBA> payload(color);
+    onyx::SendEvent<0x3939ece8u>(callback, target, payload);
+}
+} } }  // namespace Onyx::Gameplay::Circuits
+
 struct Pair64x32 { uint64_t a; uint32_t b; };
 // Copied field by field.
 struct PairPayload { uint64_t a; uint32_t b; PairPayload(const Pair64x32& p) : a(p.a), b(p.b) {} ~PairPayload() {} };
