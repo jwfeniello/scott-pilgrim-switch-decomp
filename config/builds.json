@@ -502750,6 +502750,17 @@
           "got_bindings": {}
         },
         {
+          "address": "0x74c990",
+          "size": 80,
+          "symbol": "_Z33Create_SPTG_ChangeOccFactorOnTimev",
+          "target_sha256": "40057f63c3a51406de32845ab1293f0945d84dd781357f2e9e489d63be723648",
+          "bindings": {
+            "AllocatorContext": "0x1935058",
+            "_ZTVN4SPTG21ChangeOccFactorOnTimeE": "0x186e450"
+          },
+          "got_bindings": {}
+        },
+        {
           "address": "0x74cb90",
           "size": 84,
           "symbol": "_Z28Create_SPTG_AudioEventMergerv",
@@ -503199,6 +503210,17 @@
             "_ZN4Onyx9Component4BaseC2Ev": "0x6764e0",
             "_ZTVN4SPTG17GrayScreenTriggerE": "0x1864e30",
             "AllocatorContext": "0x1935058"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x752290",
+          "size": 80,
+          "symbol": "_Z39Create_SPTG_ChangeColorMaterialEffectorv",
+          "target_sha256": "e155e27b210a05cf6fd9356d4216ef4914dc4937c4f5ee49a99780a29aaca031",
+          "bindings": {
+            "AllocatorContext": "0x1935058",
+            "_ZTVN4SPTG27ChangeColorMaterialEffectorE": "0x1864948"
           },
           "got_bindings": {}
         },
@@ -503850,6 +503872,90 @@
           }
         },
         {
+          "address": "0xab76f0",
+          "size": 88,
+          "symbol": "_Z27Create_Onyx_f32SampledTrackv",
+          "target_sha256": "1a902be6442a91a1d9ea3834915c78d1fe6c275fac1abd26e046cab288fb62f0",
+          "bindings": {
+            "AllocatorContext": "0x1935058",
+            "Engine_SpecialConstant": "0x192afd8",
+            "_ZTVN4Onyx15f32SampledTrackE": "0x18b2dc0"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xab77b0",
+          "size": 88,
+          "symbol": "_Z37Create_Onyx_DisplacementRotationTrackv",
+          "target_sha256": "60769a2785120bfc49dbb29028098191ba67d4c7021ea499625f90781cb3fb03",
+          "bindings": {
+            "AllocatorContext": "0x1935058",
+            "Engine_SpecialConstant": "0x192afd8",
+            "_ZTVN4Onyx25DisplacementRotationTrackE": "0x18b2ca8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xab7860",
+          "size": 88,
+          "symbol": "_Z40Create_Onyx_QuaternionFx1d14SampledTrackv",
+          "target_sha256": "382bb99ab19ee9761e656cd720a7da4e08d51058127c4427c0ebda880e6d87f7",
+          "bindings": {
+            "AllocatorContext": "0x1935058",
+            "Engine_SpecialConstant": "0x192afd8",
+            "_ZTVN4Onyx28QuaternionFx1d14SampledTrackE": "0x18b2ba0"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xab7950",
+          "size": 88,
+          "symbol": "_Z34Create_Onyx_QuaternionSampledTrackv",
+          "target_sha256": "47e1f95c99bdcddfcc62f3f14b30e07be02c6ed272703ff692cb2201c318aa88",
+          "bindings": {
+            "AllocatorContext": "0x1935058",
+            "Engine_SpecialConstant": "0x192afd8",
+            "_ZTVN4Onyx22QuaternionSampledTrackE": "0x18b29f8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xab79b0",
+          "size": 88,
+          "symbol": "_Z37Create_Onyx_DisplacementPositionTrackv",
+          "target_sha256": "d47e7c5eeaaa91874a0eefefeddd2c03a97671607f65df38ec5340e35a67cd90",
+          "bindings": {
+            "AllocatorContext": "0x1935058",
+            "Engine_SpecialConstant": "0x192afd8",
+            "_ZTVN4Onyx25DisplacementPositionTrackE": "0x18b2970"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xab7c60",
+          "size": 88,
+          "symbol": "_Z31Create_Onyx_Vector2SampledTrackv",
+          "target_sha256": "58e4fcc9cd0c3950e2e4d3202d19b25d1743c827cd962b04b2281df69c297387",
+          "bindings": {
+            "AllocatorContext": "0x1935058",
+            "Engine_SpecialConstant": "0x192afd8",
+            "_ZTVN4Onyx19Vector2SampledTrackE": "0x18b2580"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xab7cc0",
+          "size": 88,
+          "symbol": "_Z31Create_Onyx_Vector3SampledTrackv",
+          "target_sha256": "c6230f12bae434aa8245b3a779bf18e3b9925b848ae02ddf86ef3b4898fa4303",
+          "bindings": {
+            "AllocatorContext": "0x1935058",
+            "Engine_SpecialConstant": "0x192afd8",
+            "_ZTVN4Onyx19Vector3SampledTrackE": "0x18b24d0"
+          },
+          "got_bindings": {}
+        },
+        {
           "address": "0xab7d20",
           "size": 108,
           "symbol": "_Z30Create_Onyx_Behavior_Generatorv",
@@ -503876,6 +503982,20 @@
             "AllocatorContext": "0x1935058"
           },
           "got_bindings": {}
+        },
+        {
+          "address": "0xaba860",
+          "size": 72,
+          "symbol": "_Z60Create_Onyx_Graphics_EvolutionDevelopment_ClearBuffersRegionv",
+          "target_sha256": "d2cd37499109e3949bba10fd6d7fab535285eae243db201bbf45881b3d115d34",
+          "bindings": {
+            "AllocatorContext": "0x1935058",
+            "_ZTVN4Onyx8Graphics20EvolutionDevelopment18ClearBuffersRegionE": "0x18aec58"
+          },
+          "got_bindings": {},
+          "literals": {
+            "000000000000803f000000000000803f": "0x1334b50"
+          }
         },
         {
           "address": "0xabb9e0",
@@ -503917,6 +504037,20 @@
           "got_bindings": {},
           "literals": {
             "0000803f000000000000000000000000": "0x1333f40"
+          }
+        },
+        {
+          "address": "0xabce00",
+          "size": 68,
+          "symbol": "_Z72Create_Onyx_Graphics_MaterialProperty_TextureStageCoordProjectionMappingv",
+          "target_sha256": "96b14ec42f7ac6c21d2e3ad71fad7d50012b1f2738fac64aee999fedca6a7840",
+          "bindings": {
+            "AllocatorContext": "0x1935058",
+            "_ZTVN4Onyx8Graphics16MaterialProperty34TextureStageCoordProjectionMappingE": "0x18ac4b0"
+          },
+          "got_bindings": {},
+          "literals": {
+            "920a863f713daa3f0000803f00000044": "0x1333cb0"
           }
         },
         {
@@ -504039,6 +504173,38 @@
             "_ZTVN4Onyx19RenderModifierBeginE": "0x18ab398"
           },
           "got_bindings": {}
+        },
+        {
+          "address": "0xabe320",
+          "size": 100,
+          "symbol": "_Z30Create_Onyx_ClearBuffersRegionv",
+          "target_sha256": "9baed221695a5056227ba3ddbb6ca998b152e05d4d777f41fcc1e15729367f70",
+          "bindings": {
+            "GenericFactoryManager": "0x191c9c8",
+            "GenericFactoryResolve": "0x676160",
+            "_ZN4Onyx9Component4BaseC2Ev": "0x6764e0",
+            "_ZTVN4Onyx18ClearBuffersRegionE": "0x18ab198"
+          },
+          "got_bindings": {},
+          "literals": {
+            "000000000000803f000000000000803f": "0x1334b50"
+          }
+        },
+        {
+          "address": "0xabe3e0",
+          "size": 88,
+          "symbol": "_Z34Create_Onyx_ClearDepthBufferRegionv",
+          "target_sha256": "ccce0169c5f2090fd359543b8b3f4bb68502cb4f34eb7378247e1569a20b3ccd",
+          "bindings": {
+            "GenericFactoryManager": "0x191c9c8",
+            "GenericFactoryResolve": "0x676160",
+            "_ZN4Onyx9Component4BaseC2Ev": "0x6764e0",
+            "_ZTVN4Onyx22ClearDepthBufferRegionE": "0x18aafb8"
+          },
+          "got_bindings": {},
+          "literals": {
+            "000000000000803f000000000000803f": "0x1334b50"
+          }
         },
         {
           "address": "0xabeda0",

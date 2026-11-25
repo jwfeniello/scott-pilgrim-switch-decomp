@@ -4151,6 +4151,46 @@ struct f32StepKeyFrameCurve : f32KeyFrameCurveLayout {
 void* Create_Onyx_f32LinearKeyFrameCurve() { return new (DirectAllocator()->Allocate(sizeof(Onyx::f32LinearKeyFrameCurve))) Onyx::f32LinearKeyFrameCurve; }
 void* Create_Onyx_f32StepKeyFrameCurve() { return new (DirectAllocator()->Allocate(sizeof(Onyx::f32StepKeyFrameCurve))) Onyx::f32StepKeyFrameCurve; }
 
+// Onyx's sampled tracks (f32SampledTrack and the others below; factories 0xab76f0 to 0xab7cc0): 0x38 bytes, the word
+// at 0x192afd8 at +0x8 (the constant tracks' factories store it too; what it is isn't known), the default allocator
+// at +0x10 and a scale pair of ones at +0x30.
+namespace Onyx {
+extern "C" uint64_t Engine_SpecialConstant;   // 0x192afd8
+struct SampledTrackLayout {
+    virtual ~SampledTrackLayout();
+    uint64_t field_8;
+    void* field_10;
+    uint64_t field_18;
+    uint64_t field_20;
+    char padding_28[0x8];
+    float field_30;
+    float field_34;
+    __attribute__((always_inline)) SampledTrackLayout() {
+        field_8 = Engine_SpecialConstant;
+        field_18 = 0; field_20 = 0;
+        field_10 = DefaultAllocator();
+        field_30 = 1.0f; field_34 = 1.0f;
+    }
+};
+#define SAMPLED_TRACK(Name) \
+    struct Name : SampledTrackLayout { __attribute__((always_inline)) Name() {} virtual ~Name(); };
+SAMPLED_TRACK(f32SampledTrack)
+SAMPLED_TRACK(DisplacementRotationTrack)
+SAMPLED_TRACK(QuaternionFx1d14SampledTrack)
+SAMPLED_TRACK(QuaternionSampledTrack)
+SAMPLED_TRACK(DisplacementPositionTrack)
+SAMPLED_TRACK(Vector2SampledTrack)
+SAMPLED_TRACK(Vector3SampledTrack)
+#undef SAMPLED_TRACK
+}  // namespace Onyx
+void* Create_Onyx_f32SampledTrack() { return new (DirectAllocator()->Allocate(sizeof(Onyx::f32SampledTrack))) Onyx::f32SampledTrack; }
+void* Create_Onyx_DisplacementRotationTrack() { return new (DirectAllocator()->Allocate(sizeof(Onyx::DisplacementRotationTrack))) Onyx::DisplacementRotationTrack; }
+void* Create_Onyx_QuaternionFx1d14SampledTrack() { return new (DirectAllocator()->Allocate(sizeof(Onyx::QuaternionFx1d14SampledTrack))) Onyx::QuaternionFx1d14SampledTrack; }
+void* Create_Onyx_QuaternionSampledTrack() { return new (DirectAllocator()->Allocate(sizeof(Onyx::QuaternionSampledTrack))) Onyx::QuaternionSampledTrack; }
+void* Create_Onyx_DisplacementPositionTrack() { return new (DirectAllocator()->Allocate(sizeof(Onyx::DisplacementPositionTrack))) Onyx::DisplacementPositionTrack; }
+void* Create_Onyx_Vector2SampledTrack() { return new (DirectAllocator()->Allocate(sizeof(Onyx::Vector2SampledTrack))) Onyx::Vector2SampledTrack; }
+void* Create_Onyx_Vector3SampledTrack() { return new (DirectAllocator()->Allocate(sizeof(Onyx::Vector3SampledTrack))) Onyx::Vector3SampledTrack; }
+
 // SPTG::SoundTestModeAction (factory 0x74e520), by its constructor's stores
 namespace SPTG {
 struct SoundTestModeActionLayout : ::Onyx::ActionComponent {
@@ -4482,3 +4522,196 @@ struct DisplayList : DisplayListLayout {
 }  // namespace Graphics
 }  // namespace Onyx
 void* Create_Onyx_Graphics_DisplayList() { return new (GenericFactoryResolve(GenericFactoryManager, 0x7b73c94u)->Allocate(sizeof(Onyx::Graphics::DisplayList))) Onyx::Graphics::DisplayList; }
+
+// Onyx::Graphics::MaterialProperty::TextureStageCoordProjectionMapping (factory 0xabce00): 0x20 bytes, a word of 0 and
+// a projection of 60 degrees, aspect 1.33, from 1 to 512 (field names provisional).
+namespace Onyx {
+namespace Graphics {
+namespace MaterialProperty {
+struct TextureStageCoordProjectionMapping {
+    virtual ~TextureStageCoordProjectionMapping();
+    uint32_t field_8;
+    float fieldOfView;      // +0xc
+    float aspect;           // +0x10
+    float nearPlane;        // +0x14
+    float farPlane;         // +0x18
+    __attribute__((always_inline)) TextureStageCoordProjectionMapping() {
+        field_8 = 0;
+        fieldOfView = 1.04719758f;
+        aspect = 1.33f;
+        nearPlane = 1.0f;
+        farPlane = 512.0f;
+    }
+};
+}  // namespace MaterialProperty
+namespace EvolutionDevelopment {
+// Onyx::Graphics::EvolutionDevelopment::ClearBuffersRegion (factory 0xaba860): opaque black and the whole view. The
+// colour is set before the vtable, so a base constructor sets it.
+struct ClearBuffersRegionLayout {
+    virtual ~ClearBuffersRegionLayout();
+    uint32_t color;         // +0x8
+    float region[4];        // +0xc: left, right, top, bottom as fractions (provisional)
+    __attribute__((always_inline)) ClearBuffersRegionLayout() { color = 0xff000000u; }
+};
+struct ClearBuffersRegion : ClearBuffersRegionLayout {
+    __attribute__((always_inline)) ClearBuffersRegion() {
+        region[0] = 0.0f;
+        region[1] = 1.0f;
+        region[2] = 0.0f;
+        region[3] = 1.0f;
+    }
+    virtual ~ClearBuffersRegion();
+};
+}  // namespace EvolutionDevelopment
+}  // namespace Graphics
+
+// Onyx::ClearBuffersRegion and ClearDepthBufferRegion (factories 0xabe320, 0xabe3e0): components over the whole view;
+// the colour one clears to a dark grey.
+struct ClearBuffersRegionLayout : ::Onyx::Component::Base {
+    char padding_8[0x48];
+    uint64_t field_50;
+    char padding_58[0x2];
+    uint8_t color[4];       // +0x5a
+    char padding_5e[0x2];
+    float region[4];        // +0x60
+    __attribute__((always_inline)) ClearBuffersRegionLayout() {
+        field_50 = 0;
+        color[0] = 0x50;
+        color[1] = 0x50;
+        color[2] = 0x50;
+        color[3] = 0xff;
+    }
+    virtual ~ClearBuffersRegionLayout();
+};
+struct ClearBuffersRegion : ClearBuffersRegionLayout {
+    __attribute__((always_inline)) ClearBuffersRegion() {
+        region[0] = 0.0f;
+        region[1] = 1.0f;
+        region[2] = 0.0f;
+        region[3] = 1.0f;
+    }
+    virtual ~ClearBuffersRegion();
+};
+struct ClearDepthBufferRegionLayout : ::Onyx::Component::Base {
+    char padding_8[0x48];
+    uint64_t field_50;
+    char padding_58[0x4];
+    float region[4];        // +0x5c
+    __attribute__((always_inline)) ClearDepthBufferRegionLayout() {}
+    virtual ~ClearDepthBufferRegionLayout();
+};
+struct ClearDepthBufferRegion : ClearDepthBufferRegionLayout {
+    __attribute__((always_inline)) ClearDepthBufferRegion() {
+        field_50 = 0;
+        region[0] = 0.0f;
+        region[1] = 1.0f;
+        region[2] = 0.0f;
+        region[3] = 1.0f;
+    }
+    virtual ~ClearDepthBufferRegion();
+};
+}  // namespace Onyx
+void* Create_Onyx_Graphics_MaterialProperty_TextureStageCoordProjectionMapping() { return new (DirectAllocator()->Allocate(sizeof(Onyx::Graphics::MaterialProperty::TextureStageCoordProjectionMapping))) Onyx::Graphics::MaterialProperty::TextureStageCoordProjectionMapping; }
+void* Create_Onyx_Graphics_EvolutionDevelopment_ClearBuffersRegion() { return new (DirectAllocator()->Allocate(sizeof(Onyx::Graphics::EvolutionDevelopment::ClearBuffersRegion))) Onyx::Graphics::EvolutionDevelopment::ClearBuffersRegion; }
+void* Create_Onyx_ClearBuffersRegion() { return new (GenericFactoryResolve(GenericFactoryManager, 0x7b73c94u)->Allocate(sizeof(Onyx::ClearBuffersRegion))) Onyx::ClearBuffersRegion; }
+void* Create_Onyx_ClearDepthBufferRegion() { return new (GenericFactoryResolve(GenericFactoryManager, 0x7b73c94u)->Allocate(sizeof(Onyx::ClearDepthBufferRegion))) Onyx::ClearDepthBufferRegion; }
+
+// SPTG::ChangeVolume (factory 0x74ca70), by its constructor's stores
+namespace SPTG {
+// Its four words at +0x14 are copied in as one 16-byte block from a constant (0, 2, 0, 0). Not yet matched: the
+// original stores the two zero words after loading the block; here they go first.
+struct ChangeVolumeSettings { uint32_t a, b, c, d; };
+struct ChangeVolume {
+    virtual ~ChangeVolume();
+    char padding_8[0x4];
+    uint32_t field_c;
+    uint32_t field_10;
+    ChangeVolumeSettings field_14;
+    __attribute__((always_inline)) ChangeVolume() { alignas(16) static const ChangeVolumeSettings defaults = {0, 2, 0, 0}; field_c = 0; field_10 = 0; field_14 = defaults; }
+};
+// SPTG::ChangeOccFactorOnTime (factory 0x74c990), by its constructor's stores
+struct ChangeOccFactorOnTimeLayout {
+    virtual ~ChangeOccFactorOnTimeLayout();
+    char padding_8[0x1];
+    uint8_t field_9;
+    char padding_a[0x2];
+    float field_c;
+    float field_10;
+    uint8_t field_14;
+    char padding_15[0x3];
+    float field_18;
+    float field_1c;
+    uint8_t field_20;
+    __attribute__((always_inline)) ChangeOccFactorOnTimeLayout() { field_9 = 1; field_14 = 1; }
+};
+struct ChangeOccFactorOnTime : ChangeOccFactorOnTimeLayout {
+    __attribute__((always_inline)) ChangeOccFactorOnTime() { field_c = 0.0f; field_10 = 0.0f; field_18 = 0.0f; field_1c = 0.0f; field_20 = 1; }
+    virtual ~ChangeOccFactorOnTime();
+};
+// SPTG::ChangeColorMaterialEffector (factory 0x752290), by its constructor's stores: opaque black at +0x28
+struct ChangeColorMaterialEffector {
+    virtual ~ChangeColorMaterialEffector();
+    uint64_t field_8;
+    uint64_t field_10;
+    uint8_t field_18;
+    char padding_19[0x3];
+    float field_1c;
+    float field_20;
+    float field_24;
+    uint8_t color[4];       // +0x28
+    char padding_2c[0x4];
+    void* field_30;
+    __attribute__((always_inline)) ChangeColorMaterialEffector() {
+        field_8 = 0;
+        field_10 = 0;
+        field_18 = 1;
+        field_1c = 0.0f;
+        field_20 = 0.0f;
+        field_24 = 0.0f;
+        color[0] = 0;
+        color[1] = 0;
+        color[2] = 0;
+        color[3] = 0xff;
+    }
+};
+// SPTG::FlashColorMaterialEffector (factory 0x7522e0), by its constructor's stores
+// Not yet matched: clang merges the base's +0x20 with the 1.0 at +0x24 and moves the derived stores ahead of the
+// vtable; the original keeps every derived store after it.
+struct FlashColorMaterialEffectorLayout {
+    virtual ~FlashColorMaterialEffectorLayout();
+    uint64_t field_8;
+    uint64_t field_10;
+    uint8_t field_18;
+    uint8_t field_19;
+    char padding_1a[0x2];
+    float field_1c;
+    float field_20;
+    float field_24;
+    uint64_t field_28;
+    void* field_30;
+    uint64_t field_38;
+    uint64_t field_40;
+    uint64_t field_48;
+    char padding_50[0x18];
+    __attribute__((always_inline)) FlashColorMaterialEffectorLayout() { field_1c = 0.0f; field_20 = 0.0f; }
+};
+struct FlashColorMaterialEffector : FlashColorMaterialEffectorLayout {
+    __attribute__((always_inline)) FlashColorMaterialEffector() {
+        field_38 = 0;
+        field_18 = 1;
+        field_19 = 0;
+        field_24 = 1.0f;
+        field_8 = 0;
+        field_10 = 0;
+        field_40 = 0;
+        field_48 = 0;
+        field_28 = 0;
+        field_30 = DefaultAllocator();
+    }
+    virtual ~FlashColorMaterialEffector();
+};
+}  // namespace SPTG
+void* Create_SPTG_ChangeVolume() { return new (DirectAllocator()->Allocate(sizeof(SPTG::ChangeVolume))) SPTG::ChangeVolume; }
+void* Create_SPTG_ChangeOccFactorOnTime() { return new (DirectAllocator()->Allocate(sizeof(SPTG::ChangeOccFactorOnTime))) SPTG::ChangeOccFactorOnTime; }
+void* Create_SPTG_ChangeColorMaterialEffector() { return new (DirectAllocator()->Allocate(sizeof(SPTG::ChangeColorMaterialEffector))) SPTG::ChangeColorMaterialEffector; }
+void* Create_SPTG_FlashColorMaterialEffector() { return new (DirectAllocator()->Allocate(sizeof(SPTG::FlashColorMaterialEffector))) SPTG::FlashColorMaterialEffector; }
