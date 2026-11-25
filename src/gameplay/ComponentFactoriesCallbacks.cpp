@@ -1604,3 +1604,156 @@ struct PersistentDataAgency : PersistentDataAgencyLayout {
 };
 }  // namespace SPTG
 void* Create_SPTG_PersistentDataAgency() { return new (GenericFactoryResolve(GenericFactoryManager, 0x7b73c94u)->Allocate(sizeof(SPTG::PersistentDataAgency))) SPTG::PersistentDataAgency; }
+
+struct Event_c8c490;
+struct Event_c8c4e0;
+struct Event_ScrollingText_b0;
+// Onyx::ScrollingText (factory 0xc666d0): three listeners and a text list (0x68d390) over a layout part destroyed out
+// of line (0xc8c500).
+namespace Onyx {
+struct ScrollingTextLayout : ::Onyx::Component::Base {
+ char p8[0x48];
+ uint64_t field_50;
+ void* field_58;
+ uint64_t field_60;
+ uint64_t field_68;
+ uint64_t field_70;
+ // The words at +0x60 are cleared before +0x50 and the allocator; its only support is that it matches.
+ __attribute__((always_inline)) ScrollingTextLayout() { field_60 = 0; field_68 = 0; field_70 = 0; field_50 = 0; field_58 = DefaultAllocator(); }
+ virtual ~ScrollingTextLayout();
+};
+struct ScrollingText : ScrollingTextLayout {
+ char p78[0x8];
+ Onyx::Listener<void(const Event_c8c490&)> member_80;
+ Onyx::Listener<void(const Event_c8c4e0&)> member_98;
+ Onyx::Listener<void(const Event_ScrollingText_b0&)> member_b0;
+ float field_c8[8];
+ uint64_t field_e8;
+ uint32_t field_f0;
+ TextList_68d390 member_f8;
+ char p118[0x8];
+ float field_120;
+ float field_124;
+ uint8_t field_128;
+ char p129[0xf];
+ uint64_t field_138;
+ void F80(const Event_c8c490&);
+ void F98(const Event_c8c4e0&);
+ __attribute__((always_inline)) ScrollingText() : member_80(), member_98(), member_b0(), field_c8(), field_e8(0), field_f0(0xffffffffu), member_f8(), field_120(0.0f), field_124(1.0f), field_128(0), field_138(0) { member_80.owner = this; member_80.function = Onyx::MakeFunction<void(const Event_c8c490&)>(Onyx::MemberFunction<ScrollingText, void(const Event_c8c490&)>(this, &ScrollingText::F80)); member_98.owner = this; member_98.function = Onyx::MakeFunction<void(const Event_c8c4e0&)>(Onyx::MemberFunction<ScrollingText, void(const Event_c8c4e0&)>(this, &ScrollingText::F98)); member_b0.owner = this; }
+ virtual ~ScrollingText();
+};
+}  // namespace Onyx
+void* Create_Onyx_ScrollingText() { return new (GenericFactoryResolve(GenericFactoryManager, 0x386d550du)->Allocate(sizeof(Onyx::ScrollingText))) Onyx::ScrollingText; }
+
+// Onyx::BaseCatalog: the catalogs' base (constructor 0x6c89a0, destructor 0x6c8ae0).
+namespace Onyx {
+struct BaseCatalog {
+    BaseCatalog();
+    virtual ~BaseCatalog();
+    char p8[0x68];
+};
+namespace Meta { struct Null; }
+// The heap key a catalog's part at +0x98 is resolved from, per element type (provisional: read off each factory).
+template<class T> struct CatalogHeap;
+#define CATALOG_HEAP(T, Key) template<> struct CatalogHeap<T> { static const uint32_t key = Key; };
+struct Billboard;
+struct DirectionalArrowGraphics;
+struct WaypointLinkGraphics;
+CATALOG_HEAP(Billboard, 0x7b73c94u)
+CATALOG_HEAP(DirectionalArrowGraphics, 0x19938f9fu)
+CATALOG_HEAP(WaypointLinkGraphics, 0x19938f9fu)
+}  // namespace Onyx
+namespace SPTG {
+struct EnemySpawner;
+struct InteractiveObjectSpawner;
+struct PickupSpawner;
+struct ProjectileSpawner;
+struct StrikerSpawner;
+}  // namespace SPTG
+namespace Onyx {
+CATALOG_HEAP(SPTG::EnemySpawner, 0x25055aa6u)
+CATALOG_HEAP(SPTG::InteractiveObjectSpawner, 0x25055aa6u)
+CATALOG_HEAP(SPTG::PickupSpawner, 0x25055aa6u)
+CATALOG_HEAP(SPTG::ProjectileSpawner, 0x25055aa6u)
+CATALOG_HEAP(SPTG::StrikerSpawner, 0x25055aa6u)
+#undef CATALOG_HEAP
+// The catalog's list of T* (+0x70): emptied and its buffer freed when it goes.
+template<class T> struct CatalogList {
+    void* allocator;
+    uint64_t capacity;
+    uint64_t count;
+    void* reserved;
+    T** items;
+    __attribute__((always_inline)) CatalogList() : capacity(0), count(0), items(nullptr) { allocator = DefaultAllocator(); }
+    __attribute__((always_inline)) ~CatalogList() {
+        count = 0;
+        if (T** p = items) {
+            DecodeAllocators* m = DecodeAllocatorManager;
+            m->values[DecodeAllocatorIndex(m, p)]->Free(p);
+        }
+        items = nullptr;
+        capacity = 0;
+        count = 0;
+    }
+};
+// Onyx::Catalog<T, Meta::Null>: the list of T* and a heap (+0x98).
+template<class T, class M> struct Catalog : BaseCatalog {
+    CatalogList<T> components;
+    DecodeAllocator* heap;
+    __attribute__((always_inline)) Catalog() : components(), heap(GenericFactoryResolve(GenericFactoryManager, CatalogHeap<T>::key)) {}
+};
+}  // namespace Onyx
+
+// The three catalogs with a pre-render listener (factories 0xc5ac70, 0xc61790, 0xc63e70).
+#define LISTENING_CATALOG(Name, T)                                                                                      \
+    namespace Onyx {                                                                                                   \
+    struct T;                                                                                                          \
+    struct Name : Catalog<T, Meta::Null> {                                                                             \
+        Onyx::Listener<void(const EventPreRender&)> member_a0;                                                         \
+        void Fa0(const EventPreRender&);                                                                               \
+        __attribute__((always_inline)) Name() : member_a0() {                                                          \
+            member_a0.owner = this;                                                                                    \
+            member_a0.function = Onyx::MakeFunction<void(const EventPreRender&)>(                                      \
+                Onyx::MemberFunction<Name, void(const EventPreRender&)>(this, &Name::Fa0));                            \
+        }                                                                                                              \
+        virtual ~Name();                                                                                               \
+    };                                                                                                                 \
+    }                                                                                                                  \
+    void* Create_Onyx_##Name() {                                                                                       \
+        return new (GenericFactoryResolve(GenericFactoryManager, 0x7b73c94u)->Allocate(sizeof(Onyx::Name))) Onyx::Name; \
+    }
+LISTENING_CATALOG(BillboardCatalog, Billboard)
+LISTENING_CATALOG(DirectionalArrowCatalog, DirectionalArrowGraphics)
+LISTENING_CATALOG(WaypointLinkGraphicsCatalog, WaypointLinkGraphics)
+#undef LISTENING_CATALOG
+
+// SPTG::ObjectSpawnerCatalog<Object, Spawner, SpawnInfo, Meta::Null> (from RTTI): a catalog of spawners with a plain
+// list after it (its fields' names are provisional).
+namespace SPTG {
+template<class Object, class Spawner, class SpawnInfo, class M> struct ObjectSpawnerCatalog : Onyx::Catalog<Spawner, M> {
+    void* allocator;
+    uint64_t capacity;
+    uint64_t count;
+    SpawnInfo* items;
+    char pc0[0x8];
+    __attribute__((always_inline)) ObjectSpawnerCatalog() : capacity(0), count(0), items(nullptr) { allocator = DefaultAllocator(); }
+};
+}  // namespace SPTG
+// The spawner catalogs (factories 0x747580, 0x7479d0, 0x749c30, 0x74a700, 0x74ac10).
+#define SPAWNER_CATALOG(Name, Object, Spawner)                                                                         \
+    namespace SPTG {                                                                                                   \
+    struct Object;                                                                                                     \
+    struct Object##SpawnInfo;                                                                                          \
+    struct Name : ObjectSpawnerCatalog<Object, Spawner, Object##SpawnInfo, Onyx::Meta::Null> {                         \
+        virtual ~Name();                                                                                               \
+    };                                                                                                                 \
+    }                                                                                                                  \
+    void* Create_SPTG_##Name() {                                                                                       \
+        return new (GenericFactoryResolve(GenericFactoryManager, 0x7b73c94u)->Allocate(sizeof(SPTG::Name))) SPTG::Name;\
+    }
+SPAWNER_CATALOG(EnemySpawnerCatalog, Enemy, EnemySpawner)
+SPAWNER_CATALOG(InteractiveObjectSpawnerCatalog, InteractiveObject, InteractiveObjectSpawner)
+SPAWNER_CATALOG(PickupSpawnerCatalog, Pickup, PickupSpawner)
+SPAWNER_CATALOG(ProjectileSpawnerCatalog, Projectile, ProjectileSpawner)
+SPAWNER_CATALOG(StrikerCatalog, Striker, StrikerSpawner)
+#undef SPAWNER_CATALOG
