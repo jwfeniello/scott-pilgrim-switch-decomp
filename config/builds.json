@@ -502348,6 +502348,18 @@
           "got_bindings": {}
         },
         {
+          "address": "0x723360",
+          "size": 72,
+          "symbol": "_Z34Create_Onyx_DLC_GameContentPackagev",
+          "target_sha256": "c31f67ec09d873eaf5f4cf3e0c7d77a7cae448afb021b13c57f741401fe76c12",
+          "bindings": {
+            "AllocatorContext": "0x1935058",
+            "_ZTVN4Onyx3DLC18GameContentPackageE": "0x1848b70",
+            "_ZTVN4Onyx20BigFileStreamCreatorE": "0x18b6400"
+          },
+          "got_bindings": {}
+        },
+        {
           "address": "0x7351e0",
           "size": 112,
           "symbol": "_Z22Create_Onyx_Fire_Moviev",
@@ -504134,6 +504146,22 @@
           "got_bindings": {}
         },
         {
+          "address": "0xabd3a0",
+          "size": 96,
+          "symbol": "_Z50Create_Onyx_Graphics_NewMaterialSystem_NewMaterialv",
+          "target_sha256": "2b45a16d467b57c5ead8aa8bf886de695df8fae5bcab1a475f2d19a8ccab22cd",
+          "bindings": {
+            "GenericFactoryManager": "0x191c9c8",
+            "GenericFactoryResolve": "0x676160",
+            "_ZN4Onyx9Component4BaseC2Ev": "0x6764e0",
+            "_ZTVN4Onyx8Graphics17NewMaterialSystem11NewMaterialE": "0x18abbe8"
+          },
+          "got_bindings": {},
+          "literals": {
+            "0100000000000000": "0x13314e8"
+          }
+        },
+        {
           "address": "0xabd400",
           "size": 120,
           "symbol": "_Z61Create_Onyx_Graphics_NewMaterialSystem_ShaderMaterialTemplatev",
@@ -504318,6 +504346,22 @@
           "got_bindings": {}
         },
         {
+          "address": "0xabff00",
+          "size": 112,
+          "symbol": "_Z48Create_Onyx_Graphics_Particle_Effect_EffectAnglev",
+          "target_sha256": "f0f90a21ffdba0866cea77bd592f715ab3669674ce58b6378817fcccea3ec774",
+          "bindings": {
+            "GenericFactoryManager": "0x191c9c8",
+            "GenericFactoryResolve": "0x676160",
+            "_ZN4Onyx9Component4BaseC2Ev": "0x6764e0",
+            "_ZTVN4Onyx8Graphics8Particle6Effect11EffectAngleE": "0x18a6928"
+          },
+          "got_bindings": {},
+          "literals": {
+            "0000803f00000000": "0x1330d70"
+          }
+        },
+        {
           "address": "0xabff70",
           "size": 88,
           "symbol": "_Z47Create_Onyx_Graphics_Particle_Effect_EffectBasev",
@@ -504343,6 +504387,38 @@
             "GenericFactoryResolve": "0x676160",
             "_ZN4Onyx9Component4BaseC2Ev": "0x6764e0",
             "_ZTVN4Onyx8Graphics8Particle6Effect11EffectDelayE": "0x18a6718"
+          },
+          "got_bindings": {},
+          "literals": {
+            "0000803f00000000": "0x1330d70"
+          }
+        },
+        {
+          "address": "0xac00c0",
+          "size": 96,
+          "symbol": "_Z48Create_Onyx_Graphics_Particle_Effect_EffectEventv",
+          "target_sha256": "1b515484081cf00807c9d03ab51565405bc915f645ec54154b13baf857a42392",
+          "bindings": {
+            "GenericFactoryManager": "0x191c9c8",
+            "GenericFactoryResolve": "0x676160",
+            "_ZN4Onyx9Component4BaseC2Ev": "0x6764e0",
+            "_ZTVN4Onyx8Graphics8Particle6Effect11EffectEventE": "0x18a6618"
+          },
+          "got_bindings": {},
+          "literals": {
+            "0000803f00000000": "0x1330d70"
+          }
+        },
+        {
+          "address": "0xac0a40",
+          "size": 96,
+          "symbol": "_Z53Create_Onyx_Graphics_Particle_Effect_EffectWorldSpacev",
+          "target_sha256": "596ed3419e2420975c8f1b87ad8b5374f5db2e96a57b147c3a8c4028f5d117d7",
+          "bindings": {
+            "GenericFactoryManager": "0x191c9c8",
+            "GenericFactoryResolve": "0x676160",
+            "_ZN4Onyx9Component4BaseC2Ev": "0x6764e0",
+            "_ZTVN4Onyx8Graphics8Particle6Effect16EffectWorldSpaceE": "0x18a5b48"
           },
           "got_bindings": {},
           "literals": {

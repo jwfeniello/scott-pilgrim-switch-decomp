@@ -4715,3 +4715,175 @@ void* Create_SPTG_ChangeVolume() { return new (DirectAllocator()->Allocate(sizeo
 void* Create_SPTG_ChangeOccFactorOnTime() { return new (DirectAllocator()->Allocate(sizeof(SPTG::ChangeOccFactorOnTime))) SPTG::ChangeOccFactorOnTime; }
 void* Create_SPTG_ChangeColorMaterialEffector() { return new (DirectAllocator()->Allocate(sizeof(SPTG::ChangeColorMaterialEffector))) SPTG::ChangeColorMaterialEffector; }
 void* Create_SPTG_FlashColorMaterialEffector() { return new (DirectAllocator()->Allocate(sizeof(SPTG::FlashColorMaterialEffector))) SPTG::FlashColorMaterialEffector; }
+
+// Onyx::Graphics::Particle::Effect::EffectEvent, EffectWorldSpace and EffectAngle (factories 0xac00c0, 0xac0a40,
+// 0xabff00), by their constructors' stores
+namespace Onyx {
+namespace Graphics {
+namespace Particle {
+namespace Effect {
+struct EffectEventLayout : ::Onyx::Component::Base {
+    char padding_8[0x44];
+    int32_t field_4c;
+    int32_t field_50;
+    int32_t field_54;
+    char padding_58[0x8];
+    uint64_t field_60;
+    void* field_68;
+    uint8_t field_70;
+    __attribute__((always_inline)) EffectEventLayout() { field_54 = 0; field_4c = 0x3f800000u; field_50 = 0; }
+    virtual ~EffectEventLayout();
+};
+struct EffectEvent : EffectEventLayout {
+    __attribute__((always_inline)) EffectEvent() { field_70 = 0; field_60 = 0; field_68 = this; }
+    virtual ~EffectEvent();
+};
+struct EffectWorldSpaceLayout : ::Onyx::Component::Base {
+    char padding_8[0x44];
+    int32_t field_4c;
+    int32_t field_50;
+    int32_t field_54;
+    char padding_58[0x1];
+    uint8_t field_59;
+    uint8_t field_5a;
+    char padding_5b[0x5];
+    __attribute__((always_inline)) EffectWorldSpaceLayout() { field_4c = 0x3f800000u; field_50 = 0; field_54 = 0; }
+    virtual ~EffectWorldSpaceLayout();
+};
+struct EffectWorldSpace : EffectWorldSpaceLayout {
+    __attribute__((always_inline)) EffectWorldSpace() { field_59 = 1; field_5a = 1; }
+    virtual ~EffectWorldSpace();
+};
+struct EffectAngleLayout : ::Onyx::Component::Base {
+    char padding_8[0x44];
+    int32_t field_4c;
+    int32_t field_50;
+    int32_t field_54;
+    char padding_58[0x1];
+    uint8_t field_59;
+    uint8_t field_5a;
+    uint8_t field_5b;
+    float field_5c;
+    uint64_t field_60;
+    uint64_t field_68;
+    uint64_t field_70;
+    __attribute__((always_inline)) EffectAngleLayout() { field_4c = 0x3f800000u; field_50 = 0; field_54 = 0; }
+    virtual ~EffectAngleLayout();
+};
+struct EffectAngle : EffectAngleLayout {
+    __attribute__((always_inline)) EffectAngle() {
+        field_59 = 0;
+        field_5a = 0;
+        field_5b = 0;
+        field_5c = 1.0f;
+        field_68 = 0;
+        field_70 = 0;
+        field_60 = 0;
+    }
+    virtual ~EffectAngle();
+};
+}  // namespace Effect
+}  // namespace Particle
+}  // namespace Graphics
+}  // namespace Onyx
+void* Create_Onyx_Graphics_Particle_Effect_EffectEvent() { return new (GenericFactoryResolve(GenericFactoryManager, 0x7b73c94u)->Allocate(sizeof(Onyx::Graphics::Particle::Effect::EffectEvent))) Onyx::Graphics::Particle::Effect::EffectEvent; }
+void* Create_Onyx_Graphics_Particle_Effect_EffectWorldSpace() { return new (GenericFactoryResolve(GenericFactoryManager, 0x7b73c94u)->Allocate(sizeof(Onyx::Graphics::Particle::Effect::EffectWorldSpace))) Onyx::Graphics::Particle::Effect::EffectWorldSpace; }
+void* Create_Onyx_Graphics_Particle_Effect_EffectAngle() { return new (GenericFactoryResolve(GenericFactoryManager, 0x7b73c94u)->Allocate(sizeof(Onyx::Graphics::Particle::Effect::EffectAngle))) Onyx::Graphics::Particle::Effect::EffectAngle; }
+
+// Onyx::DLC::GameContentPackage (factory 0x723360): a BigFileStreamCreator of its own at +0x8, with no stream yet.
+namespace Onyx {
+struct BigFileStreamCreator {
+    __attribute__((always_inline)) BigFileStreamCreator() { stream = nullptr; }
+    virtual ~BigFileStreamCreator();
+    void* stream;
+};
+namespace DLC {
+struct GameContentPackage {
+    __attribute__((always_inline)) GameContentPackage() {}
+    virtual ~GameContentPackage();
+    BigFileStreamCreator creator;   // +0x8
+};
+}  // namespace DLC
+// Onyx::Graphics::NewMaterialSystem::NewMaterial (factory 0xabd3a0), by its constructor's stores
+namespace Graphics {
+namespace NewMaterialSystem {
+struct NewMaterialLayout : ::Onyx::Component::Base {
+    char padding_8[0x48];
+    uint64_t field_50;
+    uint8_t field_58;
+    uint8_t field_59;
+    uint8_t field_5a;
+    uint8_t field_5b;
+    uint32_t field_5c;
+    uint32_t field_60;
+    __attribute__((always_inline)) NewMaterialLayout() { field_50 = 0; }
+    virtual ~NewMaterialLayout();
+};
+struct NewMaterial : NewMaterialLayout {
+    __attribute__((always_inline)) NewMaterial() { field_58 = 1; field_59 = 1; field_5a = 0; field_5b = 0; field_5c = 1; field_60 = 0; }
+    virtual ~NewMaterial();
+};
+}  // namespace NewMaterialSystem
+}  // namespace Graphics
+}  // namespace Onyx
+void* Create_Onyx_DLC_GameContentPackage() { return new (DirectAllocator()->Allocate(sizeof(Onyx::DLC::GameContentPackage))) Onyx::DLC::GameContentPackage; }
+void* Create_Onyx_Graphics_NewMaterialSystem_NewMaterial() { return new (GenericFactoryResolve(GenericFactoryManager, 0x7b73c94u)->Allocate(sizeof(Onyx::Graphics::NewMaterialSystem::NewMaterial))) Onyx::Graphics::NewMaterialSystem::NewMaterial; }
+
+// SPTG::StrikerYeti (factory 0x74adf0) : SPTG::Striker, by its constructor's stores. Not yet matched: the original
+// zeroes +0x320 with a vector register after the 32 bytes before it; here it is one integer store, first.
+namespace SPTG {
+struct StrikerYeti : ::SPTG::Striker {
+    char padding_8[0x2f8];
+    uint64_t field_300;
+    uint64_t field_308;
+    uint64_t field_310;
+    uint64_t field_318;
+    float field_320;
+    float field_324;
+    uint8_t field_328;
+    __attribute__((always_inline)) StrikerYeti() {
+        field_300 = 0;
+        field_308 = 0;
+        field_310 = 0;
+        field_318 = 0;
+        field_320 = 0.0f;
+        field_324 = 0.0f;
+        field_328 = 1;
+    }
+    virtual ~StrikerYeti();
+};
+}  // namespace SPTG
+void* Create_SPTG_StrikerYeti() { return new (GenericFactoryResolve(GenericFactoryManager, 0x1486d4e8u)->Allocate(sizeof(SPTG::StrikerYeti))) SPTG::StrikerYeti; }
+
+// Onyx::Behavior::Modifier (factory 0xab7d90), by its constructor's stores. Not yet matched: the original stores the
+// halfword at +0x68 after the vtable; no split of the stores between the constructors gives that here.
+namespace Onyx {
+namespace Behavior {
+struct ModifierLayout : ::Onyx::Component::Base {
+    char padding_8[0x48];
+    uint64_t field_50;
+    uint64_t field_58;
+    uint8_t field_60;
+    char padding_61[0x3];
+    uint32_t field_64;
+    uint8_t field_68;
+    uint8_t field_69;
+    char padding_6a[0x6];
+    uint64_t field_70;
+    __attribute__((always_inline)) ModifierLayout() { field_64 = 0; }
+    virtual ~ModifierLayout();
+};
+struct Modifier : ModifierLayout {
+    __attribute__((always_inline)) Modifier() {
+        field_68 = 1;
+        field_69 = 0;
+        field_50 = 0;
+        field_58 = 0;
+        field_60 = 1;
+        field_70 = 0;
+    }
+    virtual ~Modifier();
+};
+}  // namespace Behavior
+}  // namespace Onyx
+void* Create_Onyx_Behavior_Modifier() { return new (GenericFactoryResolve(GenericFactoryManager, 0x7b73c94u)->Allocate(sizeof(Onyx::Behavior::Modifier))) Onyx::Behavior::Modifier; }
