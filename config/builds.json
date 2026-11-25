@@ -569483,6 +569483,14 @@
           "got_bindings": {}
         },
         {
+          "address": "0xaed050",
+          "size": 68,
+          "symbol": "_ZN4SPTG23AnimaticElementInstance5Slot6EPv",
+          "target_sha256": "6de1c543f89c5ae43aa7605d595ebe8a4cfe00b6cb1d5a823e2cf49bc4f024ca",
+          "bindings": {},
+          "got_bindings": {}
+        },
+        {
           "address": "0xafebb0",
           "size": 272,
           "symbol": "_ZN4Onyx13DrawnGraphicsILj11529136ELj152EE6Slot20EPNS_8DrawListE",
@@ -575559,6 +575567,18 @@
           "got_bindings": {}
         },
         {
+          "address": "0xa95490",
+          "size": 64,
+          "symbol": "_ZN4Gear13MemAllocDl2835Slot7Ev",
+          "target_sha256": "5dc10acc0fb3a3538d16d8914bf0f2bb4e6670cbe6335fb15c6613565ca6b434",
+          "bindings": {
+            "_ZGVZN4Gear17TouchSharedStaticEvE4once": "0x191cd08",
+            "__cxa_guard_acquire": "0xfa4130",
+            "__cxa_guard_release": "0xfa4140"
+          },
+          "got_bindings": {}
+        },
+        {
           "address": "0xa9e690",
           "size": 116,
           "symbol": "_ZN4Gear25StaticMemoryBlockProvider4ReadEPvjj",
@@ -575611,6 +575631,18 @@
           "literals": {
             "ffffffff03000000": "0x1331b38"
           }
+        },
+        {
+          "address": "0xaa8af0",
+          "size": 64,
+          "symbol": "_ZN4Gear10MemSysPage8PageSizeEv",
+          "target_sha256": "3df68e3037a33ce3266f82e9b756bec9b94a4f528a40a0d10033dc2add3a643d",
+          "bindings": {
+            "_ZGVZN4Gear17TouchSharedStaticEvE4once": "0x191cd08",
+            "__cxa_guard_acquire": "0xfa4130",
+            "__cxa_guard_release": "0xfa4140"
+          },
+          "got_bindings": {}
         }
       ]
     },
@@ -575889,6 +575921,159 @@
       ]
     },
     {
+      "id": "onyx_bucket",
+      "source": "src/gameplay/OnyxBucket.cpp",
+      "compiler": "8.0.1",
+      "source_review": "manual_reconstruction",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-std=c++11",
+        "-O2",
+        "-mcpu=cortex-a57",
+        "-fstrict-aliasing",
+        "-fomit-frame-pointer",
+        "-fno-pic",
+        "-fno-delete-null-pointer-checks",
+        "-ffunction-sections",
+        "-fdata-sections"
+      ],
+      "header_roots": [
+        "src/gameplay"
+      ],
+      "functions": [
+        {
+          "address": "0x67b930",
+          "size": 64,
+          "symbol": "_ZN4Onyx9Component6Bucket5Slot7Ev",
+          "target_sha256": "a489a440bed316ca4f99b4fe1afb663720b36c4d2fe9b51e4556392fb2ba4e4a",
+          "bindings": {
+            "_ZGVZN4Gear17TouchSharedStaticEvE4once": "0x191cd08",
+            "__cxa_guard_acquire": "0xfa4130",
+            "__cxa_guard_release": "0xfa4140"
+          },
+          "got_bindings": {}
+        }
+      ]
+    },
+    {
+      "id": "gear_thread",
+      "source": "src/gameplay/GearThread.cpp",
+      "compiler": "8.0.1",
+      "source_review": "manual_reconstruction",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-std=c++11",
+        "-O2",
+        "-mcpu=cortex-a57",
+        "-fstrict-aliasing",
+        "-fomit-frame-pointer",
+        "-fno-pic",
+        "-fno-delete-null-pointer-checks",
+        "-ffunction-sections",
+        "-fdata-sections"
+      ],
+      "header_roots": [
+        "src/gameplay"
+      ],
+      "functions": [
+        {
+          "address": "0xa7f000",
+          "size": 64,
+          "symbol": "_ZN4Gear6Thread11ThreadSlot4Ev",
+          "target_sha256": "2bdb9ffb0c2c09a49107deccffd380e0b0d7c5c2d04d3bc22883d7ffccfaf9eb",
+          "bindings": {
+            "_ZGVZN4Gear17TouchSharedStaticEvE4once": "0x191cd08",
+            "__cxa_guard_acquire": "0xfa4130",
+            "__cxa_guard_release": "0xfa4140"
+          },
+          "got_bindings": {}
+        }
+      ]
+    },
+    {
+      "id": "sndgear_files",
+      "source": "src/gameplay/SndGearFiles.cpp",
+      "compiler": "8.0.1",
+      "source_review": "manual_reconstruction",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-std=c++11",
+        "-O2",
+        "-mcpu=cortex-a57",
+        "-fstrict-aliasing",
+        "-fomit-frame-pointer",
+        "-fno-pic",
+        "-fno-delete-null-pointer-checks",
+        "-ffunction-sections",
+        "-fdata-sections"
+      ],
+      "header_roots": [
+        "src/gameplay"
+      ],
+      "functions": [
+        {
+          "address": "0xdb9340",
+          "size": 116,
+          "symbol": "_ZN7SndGear25StaticMemoryBlockProvider4ReadEPvjj",
+          "target_sha256": "346c56f730f1a2f763e9724b42ddedc776fb44e5bcfa28211fea33a413895c1c",
+          "bindings": {
+            "memcpy": "0xfa3330",
+            "_ZN7SndGear11ReportErrorE": "0x18d7de8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xdb93c0",
+          "size": 92,
+          "symbol": "_ZN7SndGear25StaticMemoryBlockProvider5WriteEPKvjj",
+          "target_sha256": "6bdf799d7d4a11344e309a966615bf8a2a4d91e6903de2a80eba39687d248240",
+          "bindings": {
+            "memcpy": "0xfa3330"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xdb9840",
+          "size": 92,
+          "symbol": "_ZN7SndGear13MemFileDevice4TypeEv",
+          "target_sha256": "57f4dacd0b7aeaa5645159c3e744abc65b561eb08ecf462360c9654c4fbd50fc",
+          "bindings": {
+            "@.bss._ZGVZN7SndGear13MemFileDevice4TypeEvE4type": "0x1948b50",
+            "@.bss._ZZN7SndGear13MemFileDevice4TypeEvE4type": "0x295e298",
+            "__cxa_guard_acquire": "0xfa4130",
+            "_ZN7SndGear14NextDeviceTypeE": "0x295e294",
+            "__cxa_guard_release": "0xfa4140"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xdba140",
+          "size": 188,
+          "symbol": "_ZN7SndGear7MemFile4SeekEPKm",
+          "target_sha256": "76ac90a01af3183f1a2d576240d520f9d915c071cf214be5ce1adac953760847",
+          "bindings": {
+            "_ZN2nn2os9LockMutexEPNS0_9MutexTypeE": "0xfa4950",
+            "_ZN7SndGear11ReportErrorE": "0x18d7de8",
+            "_ZN2nn2os11UnlockMutexEPNS0_9MutexTypeE": "0xfa4960"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xdba220",
+          "size": 176,
+          "symbol": "_ZN7SndGear7MemFile5AtEndEv",
+          "target_sha256": "62042957bdbc5a3bedee919e0ad2e617f2479559aedfc4c544479447012980bb",
+          "bindings": {
+            "_ZN7SndGear11ReportErrorE": "0x18d7de8"
+          },
+          "got_bindings": {}
+        }
+      ]
+    },
+    {
       "id": "gear_input",
       "source": "src/gameplay/GearInput.cpp",
       "compiler": "8.0.1",
@@ -575911,6 +576096,102 @@
       ],
       "functions": [
         {
+          "address": "0xaa3a00",
+          "size": 124,
+          "symbol": "_ZNK4Gear8Keyboard3IsAEPKc",
+          "target_sha256": "b856a00f45f7a612708ce871de6bff720be3cb1c5bdbdfe96db552d2b9e20d24",
+          "bindings": {
+            "_ZN4Gear8Keyboard4NameE": "0x14ee21d",
+            "_ZN4Gear17InteractiveDevice4NameE": "0x1318b61"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xaa3cf0",
+          "size": 124,
+          "symbol": "_ZThn8_NK4Gear8Keyboard3IsAEPKc",
+          "target_sha256": "b856a00f45f7a612708ce871de6bff720be3cb1c5bdbdfe96db552d2b9e20d24",
+          "bindings": {
+            "_ZN4Gear8Keyboard4NameE": "0x14ee21d",
+            "_ZN4Gear17InteractiveDevice4NameE": "0x1318b61"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xaa4940",
+          "size": 124,
+          "symbol": "_ZNK4Gear7GamePad3IsAEPKc",
+          "target_sha256": "b030454f4dcd72399b190334fdb33d5b687656a0369d470fffa8d8a001742534",
+          "bindings": {
+            "_ZN4Gear7GamePad4NameE": "0x14d2a94",
+            "_ZN4Gear17InteractiveDevice4NameE": "0x1318b61"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xaa4b90",
+          "size": 124,
+          "symbol": "_ZThn8_NK4Gear7GamePad3IsAEPKc",
+          "target_sha256": "b030454f4dcd72399b190334fdb33d5b687656a0369d470fffa8d8a001742534",
+          "bindings": {
+            "_ZN4Gear7GamePad4NameE": "0x14d2a94",
+            "_ZN4Gear17InteractiveDevice4NameE": "0x1318b61"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xaa4e10",
+          "size": 176,
+          "symbol": "_ZNK4Gear15HardwareGamePad3IsAEPKc",
+          "target_sha256": "3d8f5740f4d7e4d352a95637d16c2477f497f936abcd02017e4f1fb30ce3f670",
+          "bindings": {
+            "_ZN4Gear15HardwareGamePad4NameE": "0x14ee3ab",
+            "_ZN4Gear7GamePad4NameE": "0x14d2a94",
+            "_ZN4Gear17InteractiveDevice4NameE": "0x1318b61"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xaa4ed0",
+          "size": 176,
+          "symbol": "_ZThn8_NK4Gear15HardwareGamePad3IsAEPKc",
+          "target_sha256": "3d8f5740f4d7e4d352a95637d16c2477f497f936abcd02017e4f1fb30ce3f670",
+          "bindings": {
+            "_ZN4Gear15HardwareGamePad4NameE": "0x14ee3ab",
+            "_ZN4Gear7GamePad4NameE": "0x14d2a94",
+            "_ZN4Gear17InteractiveDevice4NameE": "0x1318b61"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xaa5370",
+          "size": 280,
+          "symbol": "_ZNK4Gear9GamePadEE3IsAEPKc",
+          "target_sha256": "ee056da791e846c0eceda1192ea98d81ee938ca484ba21acb3cd141f08776c42",
+          "bindings": {
+            "_ZN4Gear9GamePadEE4NameE": "0x14ee3d4",
+            "_ZN4Gear23VibrationEnabledGamePad4NameE": "0x1310f91",
+            "_ZN4Gear15HardwareGamePad4NameE": "0x14ee3ab",
+            "_ZN4Gear7GamePad4NameE": "0x14d2a94",
+            "_ZN4Gear17InteractiveDevice4NameE": "0x1318b61"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xaa5f90",
+          "size": 280,
+          "symbol": "_ZThn8_NK4Gear9GamePadEE3IsAEPKc",
+          "target_sha256": "d13e34b980843ede232d21921215dd99d22c1f0145d83869f026c3ca84506952",
+          "bindings": {
+            "_ZN4Gear9GamePadEE4NameE": "0x14ee3d4",
+            "_ZN4Gear23VibrationEnabledGamePad4NameE": "0x1310f91",
+            "_ZN4Gear15HardwareGamePad4NameE": "0x14ee3ab",
+            "_ZN4Gear7GamePad4NameE": "0x14d2a94",
+            "_ZN4Gear17InteractiveDevice4NameE": "0x1318b61"
+          },
+          "got_bindings": {}
+        },
+        {
           "address": "0xaa9b10",
           "size": 252,
           "symbol": "_ZN4Gear25InteractiveDeviceHookBaseINS_16GamePadInterfaceEED2Ev",
@@ -575930,6 +576211,54 @@
           "bindings": {
             "_ZN4Gear25InteractiveDeviceHookBaseINS_16GamePadInterfaceEE4NameE": "0x14ee505",
             "_ZN4Gear21InteractiveDeviceHook4NameE": "0x14ee51f",
+            "_ZN4Gear17InteractiveDevice4NameE": "0x1318b61"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xaa9ff0",
+          "size": 176,
+          "symbol": "_ZNK4Gear15GamePadKeyboard3IsAEPKc",
+          "target_sha256": "ae254e33537573f9431ca98f3b194328880cb9a6d0bfbfba45bf32f74b37eadc",
+          "bindings": {
+            "_ZN4Gear15GamePadKeyboard4NameE": "0x14d2a9c",
+            "_ZN4Gear7GamePad4NameE": "0x14d2a94",
+            "_ZN4Gear17InteractiveDevice4NameE": "0x1318b61"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xaaa900",
+          "size": 176,
+          "symbol": "_ZThn8_NK4Gear15GamePadKeyboard3IsAEPKc",
+          "target_sha256": "3ac216a620aa7cf3688f1662266bea1e77f4cb8be54e0cfb9010d3920e36c1e1",
+          "bindings": {
+            "_ZN4Gear15GamePadKeyboard4NameE": "0x14d2a9c",
+            "_ZN4Gear7GamePad4NameE": "0x14d2a94",
+            "_ZN4Gear17InteractiveDevice4NameE": "0x1318b61"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xaaac30",
+          "size": 176,
+          "symbol": "_ZNK4Gear12GamePadMouse3IsAEPKc",
+          "target_sha256": "72d76213ea4f6bd2191e8507829a320b176618e51dee9fef95b2ec820ffdb2a9",
+          "bindings": {
+            "_ZN4Gear12GamePadMouse4NameE": "0x14d2aac",
+            "_ZN4Gear7GamePad4NameE": "0x14d2a94",
+            "_ZN4Gear17InteractiveDevice4NameE": "0x1318b61"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xaab110",
+          "size": 176,
+          "symbol": "_ZThn8_NK4Gear12GamePadMouse3IsAEPKc",
+          "target_sha256": "bd8831cce3e2f7f751886cf8f1c7e84d188e390580ed0f202159877ae9293ca6",
+          "bindings": {
+            "_ZN4Gear12GamePadMouse4NameE": "0x14d2aac",
+            "_ZN4Gear7GamePad4NameE": "0x14d2a94",
             "_ZN4Gear17InteractiveDevice4NameE": "0x1318b61"
           },
           "got_bindings": {}
@@ -577219,6 +577548,16 @@
           "target_sha256": "120f2e97ec551f746d6aeb72a07e10354f629bfea5d0ac3445034e37985fbfb7",
           "bindings": {},
           "got_bindings": {}
+        },
+        {
+          "address": "0xd26ca0",
+          "size": 120,
+          "symbol": "_ZN4Dare7Private15MasterReverbBus13RefreshVoicesEv",
+          "target_sha256": "ff38a6a3cdb9d287f0b46b91c4d1b1ac84fa1293dae0b4caf7ad8cfff2cfb810",
+          "bindings": {
+            "_ZN4Dare7Private12BusVoiceSlot7RefreshEi": "0xd229e0"
+          },
+          "got_bindings": {}
         }
       ]
     },
@@ -577370,6 +577709,14 @@
             "_Z14PathReallocatePvmi": "0x722280",
             "_Z12PathAllocatemi": "0x722190"
           },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xd77940",
+          "size": 104,
+          "symbol": "_ZN23OneShotMULTITRACK3DPath6Slot14Ev",
+          "target_sha256": "82e0db37bfdfc03dd25de71671b16d25749a60a86fe2a18d2d00ecf9fabcc162",
+          "bindings": {},
           "got_bindings": {}
         },
         {
@@ -578810,6 +579157,14 @@
             "Accessor_ShaderRegistry": "0x191dcf0",
             "_ZN4Onyx8Graphics17NewMaterialSystem10FindShaderENS1_15ShaderTableViewEPKNS1_9ShaderKeyE": "0x687c60"
           },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x6bc560",
+          "size": 68,
+          "symbol": "_ZN4Onyx7Profile6Slot14Ev",
+          "target_sha256": "158b7647555af3d82022ada73e247c21a7afc4bf19e8229b1f0ab19195df83dc",
+          "bindings": {},
           "got_bindings": {}
         },
         {

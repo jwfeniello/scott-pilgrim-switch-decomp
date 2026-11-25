@@ -216,13 +216,14 @@ void FlashColorMaterialEffect::Start() {
     }
 }
 
-struct AnimaticChild { virtual void S0(); virtual void S1(); virtual void S2(); virtual void S3(); virtual void S4(); virtual void Slot5(void* arg); };
+struct AnimaticChild { virtual void S0(); virtual void S1(); virtual void S2(); virtual void S3(); virtual void S4(); virtual void Slot5(void* arg); virtual void Slot6(void* arg); };
 struct AnimaticElementInstance {
     char padding_0[0x18];
     uint64_t count;             // +0x18
     char padding_20[8];
     AnimaticChild** children;   // +0x28
     void Slot5(void* arg);
+    void Slot6(void* arg);
 };
 void AnimaticElementInstance::Slot5(void* arg) {
     uint64_t n = count;
@@ -232,6 +233,18 @@ void AnimaticElementInstance::Slot5(void* arg) {
         do {
             AnimaticChild* c = *it++;
             c->Slot5(arg);
+        } while (it != end);
+    }
+}
+// Slot 6 of Onyx::AnimaticElementInstance and AnimaticSpriteInstance (0xaed050): slot 6 of every child.
+void AnimaticElementInstance::Slot6(void* arg) {
+    uint64_t n = count;
+    if (n) {
+        AnimaticChild** it = children;
+        AnimaticChild** end = it + n;
+        do {
+            AnimaticChild* c = *it++;
+            c->Slot6(arg);
         } while (it != end);
     }
 }

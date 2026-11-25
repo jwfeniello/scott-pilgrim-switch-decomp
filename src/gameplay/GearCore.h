@@ -236,12 +236,22 @@ struct DeviceAliasInterface {
     virtual ~DeviceAliasInterface() { ; }
 };
 
+// A function-local static that several of Gear's constant slots construct before answering (Thread's slot 4, the
+// allocators' slot 7, MemSysPage's slot 6, Onyx::Component::Bucket's slot 7). They all share one guard (0x191cd08), so
+// it is one inline function's static; its construction compiles to nothing. The empty type is a guess at that shape.
+struct SharedStatic {
+    SharedStatic() {}
+};
+__attribute__((always_inline)) inline void TouchSharedStatic() {
+    static SharedStatic once;
+}
+
 // Gear::Thread (vtable 0x189b400). Slot 6 waits for the thread to end (-1: no time limit).
 struct Thread {
     virtual ~Thread();                 // 0xa82c40
     virtual void ThreadSlot2();
     virtual void ThreadSlot3();
-    virtual void ThreadSlot4();
+    virtual int32_t ThreadSlot4();     // slot 4 (0xa7f000): 7
     virtual void ThreadSlot5();
     virtual void Wait(int32_t timeout);   // slot 6
     char padding_8[0x148];

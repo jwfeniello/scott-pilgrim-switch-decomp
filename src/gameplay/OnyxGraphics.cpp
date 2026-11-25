@@ -471,4 +471,21 @@ PartitioningCatalog::~PartitioningCatalog() {
 
 }  // namespace EvolutionDevelopment
 }  // namespace Graphics
+
+// Onyx::Profile (vtable 0x1845068): a component with a ring of entries at +0x70, like the graphics catalogs'. Slot
+// names are provisional.
+struct Profile {
+    virtual void Slot0(); virtual void Slot1(); virtual void Slot2(); virtual void Slot3(); virtual void Slot4();
+    virtual void Slot5(); virtual void Slot6(); virtual void Slot7(); virtual void Slot8(); virtual void Slot9();
+    virtual void Slot10(); virtual void Slot11(); virtual void Slot12(); virtual void Slot13();
+    virtual void Slot14();             // slot 14
+    char padding_8[0x68];
+    Graphics::EvolutionDevelopment::CatalogRing entries;   // +0x70
+};
+
+// Slot 14 (0x6bc560): calls every entry's function.
+void Profile::Slot14() {
+    entries.CallEntries();
+}
+
 }  // namespace Onyx

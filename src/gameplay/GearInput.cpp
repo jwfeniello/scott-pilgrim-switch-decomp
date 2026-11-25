@@ -103,4 +103,27 @@ GEAR_INPUT_CLASS(TimeFilteredGamePad, GamePadHook)                              
 GEAR_INPUT_CLASS(TimeFilteredKeyboard, KeyboardHook)                              // IsA 0xaacfa0
 GEAR_INPUT_CLASS(TimeFilteredMouse, MouseHook)                                    // IsA 0xaad930
 
+// Gear::GamePad and the pads under it. The game-pad interface is the first base, so InteractiveDevice sits at +0x8:
+// each IsA fills a new slot (53) of the first vtable and slot 1 of the second through a thunk. IsA reads no member,
+// so the thunk carries the whole test and the original has it twice.
+// Gear::GamePad (thunk 0xaa4b90).
+struct GamePad : GamePadInterface, InteractiveDevice {
+    static const char Name[];
+    const char* ClassName() const override;
+    bool IsA(const char* name) const override;
+};
+bool GamePad::IsA(const char* name) const { return CompareNames(name, Name) == 0 || InteractiveDevice::IsA(name); }
+GEAR_INPUT_CLASS(HardwareGamePad, GamePad)                     // IsA 0xaa4e10, thunk 0xaa4ed0
+GEAR_INPUT_CLASS(VibrationEnabledGamePad, HardwareGamePad)
+GEAR_INPUT_CLASS(GamePadEE, VibrationEnabledGamePad)           // IsA 0xaa5370, thunk 0xaa5f90
+GEAR_INPUT_CLASS(GamePadKeyboard, GamePad)                     // IsA 0xaa9ff0, thunk 0xaaa900
+GEAR_INPUT_CLASS(GamePadMouse, GamePad)                        // IsA 0xaaac30, thunk 0xaab110
+// Gear::Keyboard the same way; KeyboardEE keeps its test (thunk 0xaa3cf0).
+struct Keyboard : KeyboardInterface, InteractiveDevice {
+    static const char Name[];
+    const char* ClassName() const override;
+    bool IsA(const char* name) const override;
+};
+bool Keyboard::IsA(const char* name) const { return CompareNames(name, Name) == 0 || InteractiveDevice::IsA(name); }
+
 }  // namespace Gear

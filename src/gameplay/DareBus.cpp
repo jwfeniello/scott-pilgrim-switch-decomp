@@ -136,5 +136,17 @@ int32_t PhysicalBus::ForwardToVoice(int32_t id, int32_t value, void* data, uint3
     return result;
 }
 
+// Dare::Private::MasterReverbBus (vtable 0x18ceea0): a physical bus that overrides slot 11 with the same refresh.
+struct MasterReverbBus : PhysicalBus {
+    int32_t RefreshVoices() override;
+};
+
+// Slot 11 (0xd26ca0): as PhysicalBus's, every voice slot of every group told its index.
+int32_t MasterReverbBus::RefreshVoices() {
+    for (BusVoiceGroup *group = groups, *end = groups + groupCount; group != end; ++group)
+        for (uint32_t i = 0; i < group->count; ++i) group->slots[i].Refresh(i);
+    return 0;
+}
+
 }  // namespace Private
 }  // namespace Dare

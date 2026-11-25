@@ -10,7 +10,9 @@ namespace SPTG {
 struct ControllableScott : ControllablePlayer {
     void Slot4(onyx::Archive& archive, ComponentSlot::Source* source);
     int State239(int event) override;
+    int Slot255(int event) override;    // slot 255 (0x999f20)
     int32_t value1560;           // +0x1560
+    uint8_t special;             // +0x1564: which special slot 255 starts (1 with button 8, 0 with button 4)
 };
 
 struct ControllableKim : ControllablePlayer {

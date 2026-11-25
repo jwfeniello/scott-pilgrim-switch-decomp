@@ -29,7 +29,7 @@ struct MemSysPage {
     virtual void Free(void* block, uint32_t size, uint8_t kind);    // slot 3
     virtual bool Describe(void* block, PageInfo* info);             // slot 4
     virtual void Slot5();
-    virtual uint32_t PageSize();                                    // slot 6: 0x10000
+    virtual uint32_t PageSize();                                    // slot 6
     virtual void Slot7();
 };
 
@@ -44,6 +44,11 @@ void MemSysPage::Free(void* block, uint32_t size, uint8_t kind) {   // 0xaa8a60
     } else {
         free(block);
     }
+}
+
+uint32_t MemSysPage::PageSize() {   // 0xaa8af0: 64 KB
+    TouchSharedStatic();
+    return 0x10000;
 }
 
 bool MemSysPage::Describe(void* block, PageInfo* info) {   // 0xaa8ac0
@@ -113,7 +118,13 @@ void ExchangeSetting(bool read, uint32_t* value) {   // 0xa81230
 // Gear::MemAllocDl283: dlmalloc 2.8.3 behind Gear's allocator interface; only its destructor is needed here.
 struct MemAllocDl283 : MemInterface {
     ~MemAllocDl283() override;   // 0xa945d0
+    virtual int32_t Slot7();     // slot 7, shared with MemDefaultAllocator
 };
+
+int32_t MemAllocDl283::Slot7() {   // 0xa95490: 0
+    TouchSharedStatic();
+    return 0;
+}
 
 // Gear::MemDefaultAllocator (vtable 0x189bb80): the allocator the default pointer (0x1926bb8) names; it leaves that
 // pointer at -1 as it goes.

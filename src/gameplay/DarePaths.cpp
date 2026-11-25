@@ -279,7 +279,10 @@ struct MultitrackTrack {
 struct OneShotMULTITRACK3DPath {
     virtual void Slot0(); virtual void Slot1(); virtual void Slot2(); virtual void Slot3(); virtual void Slot4();
     virtual void Slot5(); virtual void Slot6(); virtual void Slot7(); virtual void Slot8(); virtual void Slot9();
-    virtual void Slot10(); virtual void Slot11(); virtual void Slot12(); virtual void Slot13(); virtual void Slot14();
+    virtual void Slot10(); virtual void Slot11();
+    virtual PathTrack* Track(uint32_t index);      // slot 12
+    virtual void Slot13();
+    virtual int32_t Slot14();                      // slot 14
     virtual void Slot15();
     virtual void Slot16(float value, float time, int32_t mode, int32_t index, int32_t id);   // slot 16
     virtual void Slot17(float value, float time, int32_t mode, int32_t index, int32_t id);   // slot 17
@@ -295,6 +298,12 @@ struct OneShotMULTITRACK3DPath {
     char padding_b0[0x38];
     int32_t* trackChannels;     // +0xe8
 };
+// Slot 14 (0xd77940): whether slot 19 holds for every track, as in the theme paths.
+int32_t OneShotMULTITRACK3DPath::Slot14() {
+    int32_t result = 1;
+    for (uint32_t i = 0; i < trackCount; ++i) result &= Track(i)->Slot19();
+    return result;
+}
 // The allocator 0xd6ec70 uses (names provisional).
 void* PathAllocate(uint64_t size, int32_t flags);                  // 0x722190
 void* PathReallocate(void* block, uint64_t size, int32_t flags);   // 0x722280

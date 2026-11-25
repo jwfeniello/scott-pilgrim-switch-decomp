@@ -100,6 +100,13 @@ int ControllableScott::State239(int event) {
     return result;
 }
 
+// Scott's slot 255 (0x999f20) isn't written here yet: unless mounted or without input, and while +0x1430 is positive,
+// holding button 8 (not just pressed) with move bit 16 learned, or button 4 with bit 15, starts the special in state
+// 215; otherwise the shared ground input. A version that matches up to the last test (the first move lookup is
+// onyx::Find, the second Get, and both specials share one block) still differs there: the original keeps
+// CheckGroundInput()'s test as a branch into the special's "return 2", where clang selects. (Compiling the attempt in
+// this file also renumbers the jump tables of the functions after it.) Knives' slots 255 and 256 stop at the same point.
+
 int ControllableRamona::State239(int event) {
     int result = ControllablePlayer::State239(event);
     if (result != kStateParentTookOver) {
