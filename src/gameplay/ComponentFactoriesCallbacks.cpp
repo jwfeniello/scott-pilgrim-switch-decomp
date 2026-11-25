@@ -1757,3 +1757,68 @@ SPAWNER_CATALOG(PickupSpawnerCatalog, Pickup, PickupSpawner)
 SPAWNER_CATALOG(ProjectileSpawnerCatalog, Projectile, ProjectileSpawner)
 SPAWNER_CATALOG(StrikerCatalog, Striker, StrikerSpawner)
 #undef SPAWNER_CATALOG
+
+// A pair of words destroyed out of line (0xc8aa50; provisional name).
+struct RefPair_c8aa50 {
+    void* first;
+    void* second;
+    ~RefPair_c8aa50();
+};
+struct Event_cd1210;
+namespace Onyx {
+// Onyx::WalkLocomotor: built out of line (0xcd09e0, also its generic factory's constructor); its destructor is
+// inline: the pair at +0x50, then Component::Base.
+struct WalkLocomotor : Component::Base {
+    WalkLocomotor();
+    char p8[0x48];
+    RefPair_c8aa50 member_50;
+    char p60[0x20];
+};
+// Onyx::CollisionWalkLocomotor (factory 0xc5d5e0), over Component::Compose<WalkLocomotor, Meta::Null>.
+struct CollisionWalkLocomotor : WalkLocomotor {
+    char p80[0x8];
+    Onyx::Listener<void(const Event_cd1210&)> member_88;
+    uint32_t field_a0;           // stored with +0xa4 as one integer word, so not a float
+    float field_a4;
+    uint64_t field_a8;
+    uint8_t field_b0;
+    void F88(const Event_cd1210&);
+    // The flag at +0xb0 is set before the words at +0xa0; its only support is that it matches.
+    __attribute__((always_inline)) CollisionWalkLocomotor() : member_88(), field_b0(0) { field_a0 = 0; field_a4 = 1.0f; field_a8 = 0; member_88.owner = this; member_88.function = Onyx::MakeFunction<void(const Event_cd1210&)>(Onyx::MemberFunction<CollisionWalkLocomotor, void(const Event_cd1210&)>(this, &CollisionWalkLocomotor::F88)); }
+    virtual ~CollisionWalkLocomotor();
+};
+}  // namespace Onyx
+void* Create_Onyx_CollisionWalkLocomotor() { return new (GenericFactoryResolve(GenericFactoryManager, 0x7b73c94u)->Allocate(sizeof(Onyx::CollisionWalkLocomotor))) Onyx::CollisionWalkLocomotor; }
+
+// The base under Onyx::BaseCollisionTrigger, destroyed out of line (0xac7390; provisional name).
+struct ReleaseSingle_ac7390 {
+    virtual ~ReleaseSingle_ac7390();
+    char p8[0x50];
+};
+struct Event_EnterExitTrigger_b0;
+struct Event_EnterExitTrigger_c8;
+struct Event_c7afa0;
+namespace Onyx {
+// Onyx::BaseCollisionTrigger: built out of line (0xac6590); its destructor is inline. Its listener at +0x58 has the
+// same event type as CollisionWalkLocomotor's (the same reference functions, 0xac7010 and 0xac7330).
+struct BaseCollisionTrigger : ReleaseSingle_ac7390 {
+    BaseCollisionTrigger();
+    virtual void Slot2(); virtual void Slot3(); virtual void Slot4(); virtual void Slot5(); virtual void Slot6();
+    virtual void Slot7(); virtual void Slot8(); virtual void Slot9(); virtual void Slot10(); virtual void Slot11();
+    virtual void Slot12(); virtual void Slot13(); virtual void Slot14(); virtual void Slot15(); virtual void Slot16();
+    Onyx::Listener<void(const Event_cd1210&)> member_58;
+    char p70[0x40];
+};
+// Onyx::EnterExitTrigger (factory 0xc695e0).
+struct EnterExitTrigger : BaseCollisionTrigger {
+    Onyx::Listener<void(const Event_EnterExitTrigger_b0&)> member_b0;
+    Onyx::Listener<void(const Event_EnterExitTrigger_c8&)> member_c8;
+    Onyx::Listener<void(const Event_c7afa0&)> member_e0;
+    uint8_t field_f8;
+    char pf9[0x7];
+    virtual void Fe0(const Event_c7afa0&);   // slot 17 (0xc7c430): bound through its vtable offset
+    __attribute__((always_inline)) EnterExitTrigger() : member_b0(), member_c8(), member_e0(), field_f8(0) { member_b0.owner = this; member_c8.owner = this; member_e0.owner = this; member_e0.function = Onyx::MakeFunction<void(const Event_c7afa0&)>(Onyx::MemberFunction<EnterExitTrigger, void(const Event_c7afa0&)>(this, &EnterExitTrigger::Fe0)); }
+    virtual ~EnterExitTrigger();
+};
+}  // namespace Onyx
+void* Create_Onyx_EnterExitTrigger() { return new (GenericFactoryResolve(GenericFactoryManager, 0x1af1d642u)->Allocate(sizeof(Onyx::EnterExitTrigger))) Onyx::EnterExitTrigger; }
