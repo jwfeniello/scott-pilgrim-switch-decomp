@@ -586174,6 +586174,16 @@
           "got_bindings": {}
         },
         {
+          "address": "0xec6650",
+          "size": 184,
+          "symbol": "_ZN14PlatformPlayer5Slot8EPKcPvS1_ibbP16FireLoadSettings",
+          "target_sha256": "b310578742366d1fb3271821a9414dbfccb9a888e5e36c59c5e09758fbd0d110",
+          "bindings": {
+            "_ZN14FirePlayerCore11Func_ebe3f0EP15FireLoadRequest": "0xebe3f0"
+          },
+          "got_bindings": {}
+        },
+        {
           "address": "0xec6780",
           "size": 172,
           "symbol": "_ZN14PlatformPlayer6Slot28Ei",
@@ -586185,6 +586195,32 @@
           "immutable_sections": {
             "8": "0x1392c6a"
           }
+        },
+        {
+          "address": "0xec91d0",
+          "size": 252,
+          "symbol": "_ZN14PlatformPlayer6Slot15EP9URLStream",
+          "target_sha256": "707bb57e4cda349e8c82c8884de93b348411097caa806ee821e038ef041bb4e2",
+          "bindings": {
+            "_Z9FireAllocPvS_mS_S_": "0xf9fb50",
+            "_ZTV12DelayedEvent": "0x18ea668",
+            "_ZN14PlatformPlayer8RunEventEP12DelayedEvent": "0xec9cf0"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xec9500",
+          "size": 244,
+          "symbol": "_ZN14PlatformPlayer6Slot17EP9URLStreamb",
+          "target_sha256": "cef1395384dfa9aa9e91267467468426dbac57a68036bb91f8bbd157a6daa407",
+          "bindings": {
+            "_ZN9URLStream11Func_f82850Ei": "0xf82850",
+            "_ZN9URLStream7CleanupEv": "0xf815a0",
+            "_ZN16FireScriptPlayer11Func_ef3890Ev": "0xef3890",
+            "_ZN16FireScriptPlayer11Func_ef99c0Ev": "0xef99c0",
+            "_ZN16FireScriptPlayer11Func_ef7bb0Ei": "0xef7bb0"
+          },
+          "got_bindings": {}
         },
         {
           "address": "0xec97b0",

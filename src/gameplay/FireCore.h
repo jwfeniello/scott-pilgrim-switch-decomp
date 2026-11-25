@@ -516,6 +516,17 @@ void FireUnregisterName(void* table, const char* name, void* object);
 struct FireValue {
     unsigned long bits;
     void Clear();
+
+    // Kind of the value, looking through a kind-7 box (FireAtom::Kind in FireAtom.cpp).
+    int Kind() const {
+        int v = (int)bits;
+        int k = v & 7;
+        if (k == 7) {
+            v = (int)((const FireValue*)(bits & ~7ul))[1].bits;  // the boxed value at +0x8
+            k = v & 7;
+        }
+        return k == 2 ? v & 0x1f : k;
+    }
 };
 // Player fields a RichEdit reaches (provisional).
 struct FireRichEditPlayer {
@@ -612,11 +623,26 @@ public:
     }
 
     static void operator delete(void* p) { FireFree(p); }
+    // Allocation from a player heap (provisional; no null check before construction, so not noexcept).
+    static void* operator new(decltype(sizeof(0)) size, void* heap) { return FireAlloc(heap, 0, size, 0, 0); }
+
+    // Event of a type with one value (provisional; inlined where events are queued).
+    DelayedEvent(int type, long value) : type(type), value10(value) {
+        value18 = 0;
+        value20 = 0;
+        buffer28 = 0;
+        value30 = 0;
+        next = 0;
+        owns40 = 0;
+    }
 
     int type;  // 0x8: kEvent... constant
-    char padc[0x28 - 0xc];
+    long value10;    // 0x10 (provisional names from here on)
+    long value18;    // 0x18
+    long value20;    // 0x20
     void* buffer28;  // 0x28
-    char pad30[0x40 - 0x30];
+    long value30;    // 0x30
+    DelayedEvent* next;  // 0x38: next queued event
     void* owns40;    // 0x40
 };
 
@@ -684,6 +710,58 @@ struct FireTimerClient {
 // Object at PlatformPlayer+0x1608 (provisional).
 struct FirePlayerCore : FirePlayerCoreBase, FireTimerClient {
     void Func_ebc150();  // 0xebc150 (provisional name)
+    void Func_ebe3f0(struct FireLoadRequest* request);  // 0xebe3f0 (provisional name)
+};
+
+// Object at PlatformPlayer+0x960 (provisional name and layout).
+struct FirePlayerMovie {
+    unsigned char kind;  // 0x0 (provisional)
+    char pad1[0x18 - 0x1];
+    void* value18;       // 0x18 (provisional)
+};
+
+// Node of a tree walked in preorder (provisional name and layout).
+struct FireDisplayNode {
+    void Func_f060b0();  // 0xf060b0 (provisional name)
+
+    // Next node in preorder below root, or null (provisional; inlined by the player).
+    FireDisplayNode* Next(FireDisplayNode* root) {
+        if (child) return child;
+        FireDisplayNode* p = this;
+        while (!p->sibling) {
+            p = p->parent;
+            if (p == root) return 0;
+        }
+        return p->sibling;
+    }
+
+    char pad0[0x8];
+    FireDisplayNode* parent;   // 0x8
+    FireDisplayNode* sibling;  // 0x10
+    FireDisplayNode* child;    // 0x18
+    char pad20[0x30 - 0x20];
+};
+
+// Rectangle of four ints (provisional).
+struct FireRect {
+    int v[4];
+};
+
+// Load request built by PlatformPlayer slot 8 (provisional names and meanings).
+struct FireLoadRequest {
+    const char* url;             // 0x0
+    short urlLength;             // 0x8
+    const char* target;          // 0x10
+    unsigned long targetLength;  // 0x18
+    struct FireLoadSettings* settings;  // 0x20
+    short flag40;                // 0x28
+    short flag42;                // 0x2a
+    void* value48;               // 0x30
+};
+
+// Settings block passed to a load request (provisional; 24 bytes copied whole).
+struct FireLoadSettings {
+    long v[3];
 };
 
 // Value returned by PlatformPlayer slots 20/21 (provisional): built by the constructor at 0xf335f0.
@@ -704,31 +782,59 @@ public:
     virtual bool SetFrameRate(int fps);     // slot 5: 0xec6580 (provisional name)
     virtual void Slot6();                   // 0xec65d0
     virtual void Slot7();                   // 0xec65e0: sets value1600 to a copy of "."
-    virtual void Slot8();                   // 0xec6650
+    virtual int Slot8(const char* url, void* value, const char* target, int unused, bool flag42, bool flag40,
+                      struct FireLoadSettings* settings);  // 0xec6650 (provisional meanings)
     virtual void Slot9();                   // 0xec6710
     virtual void Slot10();                  // 0xec6720
     virtual void Slot11();                  // 0xec6730
     virtual void Slot12();                  // 0xec6740
     virtual void Slot13();                  // 0xec8ff0
     virtual void Slot14();                  // 0xec9120
-    virtual void Slot15();                  // 0xec91d0
+    virtual int Slot15(class URLStream* stream);  // 0xec91d0 (provisional meaning)
     virtual void Slot16();                  // 0xec92d0
-    virtual void Slot17();                  // 0xec9500
+    virtual void Slot17(class URLStream* stream, bool keep);  // 0xec9500 (provisional meaning)
     virtual void Slot18();                  // 0xec6750
     virtual void Slot19();                  // 0xec6760
     virtual FireSlotResult Slot20(void* arg);  // 0xec9600
     virtual FireSlotResult Slot21(void* arg);  // 0xec97b0
     virtual void Slot22();                  // 0xec97f0
-    virtual void Slot23();                  // 0xec9800
+    virtual int Slot23();                   // 0xec9800
     virtual void Slot24();                  // 0xec9b00
     virtual void Slot25();                  // 0xec6770
     virtual void Slot26();                  // 0xec9c70
     virtual void Slot27();                  // 0xec9c90
     virtual void Slot28(int code);          // 0xec6780
 
-    char pad8[0x3dc - 0x8];
+    void RunEvent(DelayedEvent* e);  // 0xec9cf0 (provisional name)
+
+    char pad8[0x10 - 0x8];
+    char value10[0x3dc - 0x10];  // 0x10: sub-object some streams point at (provisional)
     int frameRate;  // 0x3dc (provisional)
-    char pad3e0[0x1600 - 0x3e0];
+    char pad3e0[0x740 - 0x3e0];
+    char value740[0x30];  // 0x740 (provisional)
+    FireDisplayNode displayRoot;  // 0x770 (provisional)
+    char pad7a0[0x814 - 0x7a0];
+    unsigned flags814;    // 0x814 (provisional)
+    char pad818[0x8ac - 0x818];
+    bool flag8ac;         // 0x8ac (provisional)
+    unsigned char flag8ad;  // 0x8ad (provisional)
+    char pad8ae[0x8d8 - 0x8ae];
+    FireRect dirty8d8;    // 0x8d8: INT_MIN in every field when empty (provisional)
+    int value8e8;         // 0x8e8 (provisional)
+    char pad8ec[0x960 - 0x8ec];
+    FirePlayerMovie* movie;  // 0x960 (provisional name)
+    char pad968[0xec0 - 0x968];
+    int valueec0;         // 0xec0 (provisional)
+    char padec4[0xf18 - 0xec4];
+    FireLoadSettings defaultSettings;  // 0xf18 (provisional)
+    char padf30[0x1011 - 0xf30];
+    bool flag1011;  // 0x1011: set while slot 13 runs (provisional)
+    char pad1012[0x1248 - 0x1012];
+    unsigned flags1248;  // 0x1248 (provisional)
+    int value124c;       // 0x124c (provisional)
+    char pad1250[0x15e8 - 0x1250];
+    int value15e8;  // 0x15e8 (provisional)
+    char pad15ec[0x1600 - 0x15ec];
     void* value1600;       // 0x1600 (provisional)
     FirePlayerCore* core;  // 0x1608
     char pad1610[0x162c - 0x1610];
@@ -736,9 +842,16 @@ public:
     int flag1630;  // 0x1630
     int flag1634;  // 0x1634
     int flag1638;  // 0x1638
-    char pad163c[0x1690 - 0x163c];
+    char pad163c[0x1680 - 0x163c];
+    int value1680;  // 0x1680
+    char pad1684[0x1690 - 0x1684];
     int flag1690;  // 0x1690
     int flag1694;  // 0x1694
-    char pad1698[0x16a4 - 0x1698];
+    char pad1698[0x16a0 - 0x1698];
+    int flag16a0;  // 0x16a0
     unsigned short value16a4;  // 0x16a4
+    int value16a8;  // 0x16a8
+    char pad16ac[0x16b8 - 0x16ac];
+    DelayedEvent* eventHead;  // 0x16b8: queued events (provisional)
+    DelayedEvent* eventTail;  // 0x16c0
 };
