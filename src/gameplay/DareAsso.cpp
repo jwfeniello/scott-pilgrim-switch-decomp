@@ -1,6 +1,7 @@
 // Dare::Private's sound associations (RTTI names: AssoMultiEvent and the other Asso classes). The base's name and the
 // member names are provisional.
 #include "DareCore.h"
+#include <stddef.h>
 
 namespace Dare {
 namespace Private {
@@ -89,7 +90,7 @@ int32_t AssoMultiEvent::Slot18(void* context, int32_t flag, float value) {   // 
 
 // The functions each kind of playing sound has (0x50-byte entries of the table at 0x18d2318).
 struct SoundKindFunctions {
-    void* function0;
+    void (*start)(void* object);
     void (*stop)(void* object);                                   // +0x8
     void* function10;
     void (*release)(void* object);                                // +0x18
@@ -104,6 +105,12 @@ extern "C" SoundKindFunctions Dare_SoundKinds[];
 struct SoundKind {
     int32_t value0;
     uint32_t index;      // +0x4: into Dare_SoundKinds
+};
+// What 0xd310a0 finds for an entry 7 object (provisional names).
+struct MultiKind : SoundKind {
+    char padding_8[0x18];
+    int32_t value20;     // +0x20
+    uint32_t count;      // +0x24
 };
 // What an association plays.
 struct PlayingSound {
@@ -232,19 +239,64 @@ int32_t AssoSwitch::Slot17() {
 
 // Three kinds of playing sound only wrap another playing sound (provisional names, after their entries 2 to 4 of the
 // table at 0x18d2318) and pass the table's functions on to that sound's own kind.
-// Destroyed out of line (0xcf8f70); see DareParameters.cpp.
-struct EffectChainParameter {
-    ~EffectChainParameter();
+void* DareAllocate(size_t size, uint32_t alignment);   // 0x722190
+extern "C" void* memcpy(void* to, const void* from, size_t size) noexcept;   // 0xfa3330
+
+// A Dare array that can be assigned (provisional name): it grows to the other's capacity when the other holds more.
+template<class T> struct DareCopyArray : Dare::DareArray<T> {
+    DareCopyArray& operator=(const DareCopyArray& other) {
+        if (this != &other) {
+            if (other.size > this->capacity) {
+                T* data = static_cast<T*>(DareAllocate(static_cast<uint32_t>(other.capacity) * sizeof(T), 0));
+                memcpy(data, other.data, static_cast<uint32_t>(other.size) * sizeof(T));
+                this->size = 0;
+                if (this->data) DareFree(this->data);
+                this->capacity = other.capacity;
+                this->data = data;
+            } else {
+                memcpy(this->data, other.data, static_cast<uint32_t>(other.size) * sizeof(T));
+            }
+            this->size = other.size;
+        }
+        return *this;
+    }
+};
+// Destroyed out of line (0xcf8f70); see DareParameters.cpp, which only knows its first 0x20 bytes.
+struct EffectChainPart {
+    EffectChainPart& operator=(const EffectChainPart& other);   // 0xd35b00
     char data[0x20];
 };
+struct EffectChainParameter {
+    ~EffectChainParameter();
+    EffectChainParameter& operator=(const EffectChainParameter& other) {
+        if (this != &other) {
+            effects = other.effects;
+            part = other.part;
+            value40 = other.value40;
+        }
+        return *this;
+    }
+    DareCopyArray<uint64_t> effects;
+    EffectChainPart part;    // +0x20
+    uint64_t value40;        // +0x40
+};
+// What entry 2's object keeps for the sounds it makes (0xd8 bytes; provisional name).
+struct SoundSettings {
+    char data[0xd8];
+};
+struct SequenceKind;
 struct WrappedSound2 {
     char key[0x8];         // +0x0: what 0xd310a0 finds this sound's own kind by
-    char padding_8[0x8];
+    int32_t value8;        // +0x8
+    int32_t valueC;        // +0xc
     PlayingSound* sound;   // +0x10
-    char padding_18[0xc];
+    uint32_t step;         // +0x18
+    uint32_t loopsRun;     // +0x1c
+    int32_t loopDone;      // +0x20
     int32_t started;       // +0x24
-    char padding_28[0xd8];
+    SoundSettings settings;         // +0x28: handed to the sounds it makes
     EffectChainParameter effects;   // +0x100
+    SequenceKind* Kind();
 };
 // The list at 0x1939510 of what refers to entry 2's objects (provisional names); its nodes are freed through Dare.
 struct SoundUseNode {
@@ -546,8 +598,74 @@ void WrappedSound2_Release(WrappedSound2* object) {
     ForgetWrappedSound2(object);
 }
 
-// What entry 2 does when its wrapped sound ends (provisional name): may start the next one, setting +0x24.
-void AdvanceWrappedSound2(WrappedSound2* object);   // 0xd90000
+// What 0xd310a0 finds for an entry 2 object (provisional names): a sequence of sounds with a loop. Each step is the
+// key of a sound (what 0xd310a0 finds its kind by), which is also the data MakeSound starts from.
+struct SequenceStep {
+    void* data;
+};
+struct SequenceKind : SoundKind {
+    char padding_8[0x10];
+    int32_t loops;          // +0x18: nonzero when the sequence loops
+    uint32_t loopStart;     // +0x1c
+    uint32_t loopEnd;       // +0x20
+    uint32_t loopCount;     // +0x24: 0 loops forever
+    uint32_t count;         // +0x28
+    char padding_2c[0x8];
+    SequenceStep* steps;    // +0x34 (unaligned)
+} __attribute__((packed));
+inline SequenceKind* WrappedSound2::Kind() { return static_cast<SequenceKind*>(reinterpret_cast<PlayingSound*>(key)->Kind()); }
+
+// Entry 2's advance (0xd90000): moves to the next step of the sequence, looping back to the loop start until the loop
+// has run its count, and makes the next playing sound; marks the object not started when the sequence ends or the
+// sound can't be made.
+void AdvanceWrappedSound2(WrappedSound2* object) {
+    ++object->step;
+    if (object->Kind()->loops && !object->loopDone) {
+        if (object->step == object->Kind()->loopEnd + 1) {
+            uint32_t loopCount = object->Kind()->loopCount;
+            uint32_t loops = object->loopsRun;
+            if (loopCount) object->loopsRun = ++loops;
+            if (loops == object->Kind()->loopCount + 1) {
+                object->loopDone = 1;
+                goto end;
+            }
+            object->step = object->Kind()->loopStart;
+        }
+    } else {
+    end:
+        if (object->step >= object->Kind()->count) {
+            object->started = 0;
+            object->sound = reinterpret_cast<PlayingSound*>(-1);
+            return;
+        }
+    }
+    SequenceStep* step = &object->Kind()->steps[object->step];
+    if (reinterpret_cast<PlayingSound*>(step)->Kind()) {
+        object->sound = MakeSound(step->data, -1, &object->settings, object->value8, object->valueC, &object->effects);
+        if (object->sound != reinterpret_cast<PlayingSound*>(-1)) return;
+    }
+    object->started = 0;
+}
+
+// Entry 2's +0x10 function (0xd5f360): when started, takes the new settings and effect chain, then restarts the
+// wrapped sound, or moves to the next step when it can't; forgets the object when it isn't (or is no longer) started.
+// Not yet matched (not credited): the original tests the effect chain for self-assignment twice (the parameter's own
+// test, then its array's, both on the same pointers); this build folds the second away, 8 bytes shorter.
+int32_t WrappedSound2_Start(WrappedSound2* object, const SoundSettings* settings, const EffectChainParameter* effects) {
+    if (object->started) {
+        object->settings = *settings;
+        object->effects = *effects;
+    }
+    if (!object->started) {
+        ForgetWrappedSound2(object);
+        return 0;
+    }
+    if (RestartSound(object->sound, const_cast<SoundSettings*>(settings), const_cast<EffectChainParameter*>(effects))) return 1;
+    AdvanceWrappedSound2(object);
+    if (object->started) return 1;
+    ForgetWrappedSound2(object);
+    return 0;
+}
 
 // Entry 2's +0x28 function (0xd5f750): 1 while the wrapped sound goes on, or while a next one starts after it ends;
 // otherwise (or when never started) forgets the object and answers 0.
@@ -588,6 +706,88 @@ int32_t WrappedSound2_Function38(WrappedSound2* object, int32_t value) {
     if (object->started) return 1;
     ForgetWrappedSound2(object);
     return 0;
+}
+
+// Entry 7 of the table at 0x18d2318 plays several sounds at once (provisional name): its object keeps them in an
+// array, as many as its own kind's +0x24 says.
+struct MultiSound {
+    char key[0x8];          // +0x0: what 0xd310a0 finds this sound's own kind by
+    PlayingSound** sounds;  // +0x8: -1 where a sound failed
+    MultiKind* Kind() { return static_cast<MultiKind*>(reinterpret_cast<PlayingSound*>(key)->Kind()); }
+};
+
+// Entry 7's start (0xd61e10): starts each playing sound through its kind, setting its +0x28.
+void MultiSound_Start(MultiSound* object) {
+    for (uint64_t i = 0; i < object->Kind()->count; ++i) {
+        PlayingSound* playing = object->sounds[i];
+        if (playing == reinterpret_cast<PlayingSound*>(-1) || playing->stopped || !playing->active) continue;
+        playing->value28 = 1;
+        playing->Functions().start(playing->object);
+    }
+}
+
+// Entry 7's stop (0xd61eb0): stops each playing sound through its kind, clearing its +0x28.
+void MultiSound_Stop(MultiSound* object) {
+    for (uint64_t i = 0; i < object->Kind()->count; ++i) {
+        PlayingSound* playing = object->sounds[i];
+        if (playing == reinterpret_cast<PlayingSound*>(-1) || playing->stopped || !playing->active) continue;
+        playing->value28 = 0;
+        playing->Functions().stop(playing->object);
+    }
+}
+
+// Entry 7's query (0xd621f0): with one sound, what its kind reports (-1 when it isn't playing); with several, -5 when
+// any of them reports more than 0, else -1.
+float MultiSound_Query(MultiSound* object) {
+    uint32_t count = object->Kind()->count;
+    if (count == 0) return -1.0f;
+    if (count == 1) {
+        PlayingSound* playing = object->sounds[0];
+        if (playing == reinterpret_cast<PlayingSound*>(-1) || !playing->active) return -1.0f;
+        return playing->Functions().query(playing->object);
+    }
+    for (uint64_t i = 0; i < count; ++i) {
+        PlayingSound* playing = object->sounds[i];
+        if (playing == reinterpret_cast<PlayingSound*>(-1) || !playing->active) continue;
+        if (playing->Functions().query(playing->object) > 0.0f) return -5.0f;
+    }
+    return -1.0f;
+}
+
+// Entry 7's +0x30 function (0xd62410): 1 when every sound's kind answers nonzero.
+int32_t MultiSound_Forward(MultiSound* object, void* argument) {
+    uint32_t count = object->Kind()->count;
+    for (uint64_t i = 0; i < count; ++i) {
+        PlayingSound* playing = object->sounds[i];
+        if (!playing->Functions().forward(playing->object, argument)) return 0;
+    }
+    return 1;
+}
+
+// Entry 7's check (0xd62840): 1 when asked (b 0x20000000) about this sound's own kind's value a, or when any playing
+// sound's kind says so.
+int32_t MultiSound_Check(MultiSound* object, int32_t a, int32_t b) {
+    SoundKind* kind = object->Kind();
+    if (b == 0x20000000 && kind->value0 == a) return 1;
+    for (uint64_t i = 0; i < object->Kind()->count; ++i) {
+        PlayingSound* playing = object->sounds[i];
+        if (playing == reinterpret_cast<PlayingSound*>(-1) || playing->stopped || !playing->active) continue;
+        if (playing->Functions().check(playing->object, a, b)) return 1;
+    }
+    return 0;
+}
+
+// Entry 7's report (0xd62920): the report of the first sound there is (of the kind's +0x20 many), or 0x8000e009 when
+// there is none or it isn't playing. The first lookup of the kind is unused.
+int32_t MultiSound_Report(MultiSound* object, void* out) {
+    object->Kind();
+    for (int64_t i = 0; i < object->Kind()->value20; ++i) {
+        PlayingSound* playing = object->sounds[i];
+        if (playing == reinterpret_cast<PlayingSound*>(-1)) continue;
+        if (playing->stopped || !playing->active) return static_cast<int32_t>(0x8000e009u);
+        return playing->Functions().report(playing->object, out);
+    }
+    return static_cast<int32_t>(0x8000e009u);
 }
 
 // A growable array without DareArray's reserved word (provisional name): emptied, freed and cleared when destroyed.

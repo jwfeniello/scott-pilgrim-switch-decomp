@@ -578438,6 +578438,22 @@
           "got_bindings": {}
         },
         {
+          "address": "0xd5f090",
+          "size": 276,
+          "symbol": "_ZN4Dare7Private18PlainSound_ForwardEPNS0_10PlainSoundEPPv",
+          "target_sha256": "8ae484f07ff4a95edf4aba6234fb00324223c303c39aaf6d6a67ed09d618e0a4",
+          "bindings": {
+            "Dare_SndManager": "0x19397f0",
+            "_Z12DareAllocatemj": "0x722190",
+            "_ZN4Dare7Private10SndManagerC1Ev": "0xcf6830",
+            "Dare_ApiMutex": "0x19397c8",
+            "_ZN2nn2os9LockMutexEPNS0_9MutexTypeE": "0xfa4950",
+            "_ZN2nn2os11UnlockMutexEPNS0_9MutexTypeE": "0xfa4960",
+            "_ZN4Dare7Private13SoundPlayPart4PlayEPPvS2_f": "0xd7e260"
+          },
+          "got_bindings": {}
+        },
+        {
           "address": "0xd84520",
           "size": 104,
           "symbol": "_ZN4Dare7Private28ManagerVoiceForVirtualPlayerINS0_17ManagerSynthVoiceEE5Slot1Ei",
@@ -578982,6 +578998,72 @@
           "got_bindings": {}
         },
         {
+          "address": "0xd61e10",
+          "size": 160,
+          "symbol": "_ZN4Dare7Private16MultiSound_StartEPNS0_10MultiSoundE",
+          "target_sha256": "f162884a9fb6323fea6cf2df49d045a301f98ef700d855aa5772bf5875ef40bf",
+          "bindings": {
+            "_ZN4Dare7Private12PlayingSound4KindEv": "0xd310a0",
+            "Dare_SoundKinds": "0x18d2318"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xd61eb0",
+          "size": 148,
+          "symbol": "_ZN4Dare7Private15MultiSound_StopEPNS0_10MultiSoundE",
+          "target_sha256": "618e1a31acfe617dad84f83c6e74e23a190d7cc4d098162838dd3a6ccb082d03",
+          "bindings": {
+            "_ZN4Dare7Private12PlayingSound4KindEv": "0xd310a0",
+            "Dare_SoundKinds": "0x18d2318"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xd621f0",
+          "size": 260,
+          "symbol": "_ZN4Dare7Private16MultiSound_QueryEPNS0_10MultiSoundE",
+          "target_sha256": "4994603aad6b2bb57caf32b94361ea87387c2fb9982d77b6ed241a9c0bac3fe7",
+          "bindings": {
+            "_ZN4Dare7Private12PlayingSound4KindEv": "0xd310a0",
+            "Dare_SoundKinds": "0x18d2318"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xd62410",
+          "size": 132,
+          "symbol": "_ZN4Dare7Private18MultiSound_ForwardEPNS0_10MultiSoundEPv",
+          "target_sha256": "bc3922b4c8ca71e290176273a96ac8de506682ec3f3640609512302c206c050f",
+          "bindings": {
+            "_ZN4Dare7Private12PlayingSound4KindEv": "0xd310a0",
+            "Dare_SoundKinds": "0x18d2318"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xd62840",
+          "size": 216,
+          "symbol": "_ZN4Dare7Private16MultiSound_CheckEPNS0_10MultiSoundEii",
+          "target_sha256": "f8cf2c678007be928d2caa129512f9a9695c54ad2ba578572fe15c33ab3ac1a0",
+          "bindings": {
+            "_ZN4Dare7Private12PlayingSound4KindEv": "0xd310a0",
+            "Dare_SoundKinds": "0x18d2318"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xd62920",
+          "size": 188,
+          "symbol": "_ZN4Dare7Private17MultiSound_ReportEPNS0_10MultiSoundEPv",
+          "target_sha256": "2092ddcd9917b83151dd079641713fad262df43f483017050ee85f3da4f30e9f",
+          "bindings": {
+            "_ZN4Dare7Private12PlayingSound4KindEv": "0xd310a0",
+            "Dare_SoundKinds": "0x18d2318"
+          },
+          "got_bindings": {}
+        },
+        {
           "address": "0xd7aef0",
           "size": 76,
           "symbol": "_ZN4Dare7Private10DareVectorINS0_17VectorItem_d7aef0EED2Ev",
@@ -578990,6 +579072,17 @@
             "Dare_AllocatorEnabled": "0x191fb00",
             "Dare_Allocator": "0x191faf8",
             "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xd90000",
+          "size": 276,
+          "symbol": "_ZN4Dare7Private20AdvanceWrappedSound2EPNS0_13WrappedSound2E",
+          "target_sha256": "f7763c9a68b93a257d6972275a8f0330b96b1150880109d6ecef61d080066e5d",
+          "bindings": {
+            "_ZN4Dare7Private12PlayingSound4KindEv": "0xd310a0",
+            "_ZN4Dare7Private9MakeSoundEPviS1_iiS1_": "0xd65f50"
           },
           "got_bindings": {}
         },

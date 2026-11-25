@@ -54,7 +54,7 @@ struct SndManagedObject {
 
 struct SndManager {
     static void* operator new(size_t size) { return DareAllocate(size, 8); }
-    SndManager();   // 0xcf6830
+    SndManager() noexcept;   // 0xcf6830 (no landing pad guards it where it is inlined into 0xd5f090)
     virtual void Slot0(); virtual void Slot1(); virtual void Slot2(); virtual void Slot3(); virtual void Slot4();
     virtual void Slot5(); virtual void Slot6();
     virtual float Slot7(SndManagedObject* object);   // slot 7
@@ -214,6 +214,36 @@ template struct ManagerVoiceForVirtualPlayer<ManagerToolVoice>;       // 0xd8e44
 float SndManager::Slot7(SndManagedObject* object) {
     nn::os::LockMutex(Dare_ApiMutex);
     float result = object->Slot27();
+    nn::os::UnlockMutex(Dare_ApiMutex);
+    return result;
+}
+
+// What entries 1 and 6 of the sound kinds table at 0x18d2318 keep (provisional names): a managed object that is also,
+// at +0x18, what plays it (a second base: its slot 0 is called virtually).
+struct SoundPlayPart {
+    virtual void* Slot0();
+    int32_t Play(void** target, void* value, float volume);   // 0xd7e260
+};
+struct PlainSoundBase : SndManagedObject {
+    char padding_8[0x10];
+};
+struct PlainSound : PlainSoundBase, SoundPlayPart {};
+
+// Entries 1 and 6's +0x30 function (0xd5f090): plays through the part at the manager's volume for the object, with
+// what the part's slot 0 gives unless the target is -1, each step under the API lock. The manager is made sure of
+// before each use, once more than it is used.
+int32_t PlainSound_Forward(PlainSound* object, void** target) {
+    void* value = nullptr;
+    if (*target != reinterpret_cast<void*>(-1)) {
+        SndManager::Get();
+        nn::os::LockMutex(Dare_ApiMutex);
+        value = static_cast<SoundPlayPart&>(*object).Slot0();
+        nn::os::UnlockMutex(Dare_ApiMutex);
+    }
+    SndManager::Get();
+    float volume = SndManager::Get()->Slot7(object);
+    nn::os::LockMutex(Dare_ApiMutex);
+    int32_t result = static_cast<SoundPlayPart&>(*object).Play(target, value, volume);
     nn::os::UnlockMutex(Dare_ApiMutex);
     return result;
 }
