@@ -14,7 +14,8 @@ namespace Gear {
 struct DeviceInterface;
 struct DeviceAliasInterface;
 
-// Gear::MemInterface (vtable 0x1842090): an allocator. Only the slots used so far are named.
+// Gear::MemInterface (vtable 0x1842090): an allocator. Only the slots used so far are named. Its index in the
+// manager's table is at +0x8 (0xff once it is unregistered).
 struct MemInterface {
     virtual ~MemInterface();                    // slots 0, 1
     virtual void* Alloc(uint32_t size);         // slot 2
@@ -24,11 +25,34 @@ struct MemInterface {
     virtual void Free(void* block) noexcept;    // slot 6
 };
 
+// Something told when allocators come and go: an object (its slot 2) or a function with a context (names provisional).
+struct MemListenerObject {
+    virtual void Slot0(); virtual void Slot1();
+    virtual void Notify(int32_t event, MemInterface* allocator);   // slot 2
+};
+struct MemListener {
+    union {
+        MemListenerObject* object;
+        void (*function)(int32_t event, MemInterface* allocator, void* context);
+    };
+    bool isObject;                       // +0x8
+    void* context;                       // +0x10
+};
+struct RecursiveSpinLock;
+
 // What the global at 0x1926bd8 points to: the table of allocators, one per memory range (allocations are freed through
-// the one that owns their address).
+// the one that owns their address), and who to tell when one goes.
 struct MemManager {
-    char padding_0[0x370];
-    MemInterface* allocators[256];      // +0x370
+    char padding_0[0x8];
+    MemListener listeners[16];           // +0x8
+    char padding_188[0x8];
+    uint64_t listenerCount;              // +0x190
+    char padding_198[0x1c0];
+    RecursiveSpinLock* lock;             // +0x358
+    char padding_360[0x10];
+    MemInterface* allocators[127];       // +0x370 (indexes are 7 bits)
+    char padding_768[0x4];
+    uint8_t defaultIndex;                // +0x76c: 0xff for none
     uint8_t IndexOf(const void* block);  // 0xa82b30
 };
 extern MemManager* Memory;              // 0x1926bd8

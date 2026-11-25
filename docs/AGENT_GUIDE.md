@@ -113,6 +113,16 @@ in practice. More detail is in [game classes](GAME_CLASSES.md), [components](GAM
 - Calls that become invokes (landing pads) or plain calls follow whether the declaration the caller sees is
   `noexcept`.
 
+**Exceptions and destructors**
+
+- Landing pads say what may throw. No pad around a call means the callee is `noexcept`; a pad that only terminates
+  around one call means that call sits inside an inlined `noexcept` helper.
+- An extra branch into a shared landing pad means an address-taken local's scope ends between two calls (the end of
+  its lifetime is a cleanup): put that local in an inner block.
+- A destructor defined out of line in the same file is inlined on the normal path and called on the cleanup path.
+  When a deleting destructor inlines the complete one but the class needs that destructor as its key function, an
+  `always_inline` attribute on the out-of-line definition stands in for the link-time inlining (say so in a comment).
+
 **Helpers and locals**
 
 - Locals of inlined helpers are placed above the function's own locals in the frame, each later inline higher.

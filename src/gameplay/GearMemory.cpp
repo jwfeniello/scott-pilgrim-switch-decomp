@@ -204,6 +204,102 @@ void* ZLib::Alloc(void* opaque, uint32_t items, uint32_t size) {   // 0xa89f70: 
     return static_cast<ZLib*>(opaque)->allocator->Alloc(total);
 }
 
+// MemManager's page map (+0x340): a libc++ std::map from the top 16 bits of an address (bits 32-47) to a table of
+// allocator indexes per 64 KB page, laid out as libc++'s tree: the first node, the end node (its left child is the
+// root) and the size.
+struct PageMapNode {
+    PageMapNode* left;
+    PageMapNode* right;
+    PageMapNode* parent;               // +0x10
+    bool black;                        // +0x18
+    alignas(8) uint32_t key;           // +0x20 (the value pair is 8-aligned)
+    uint8_t* pages;                    // +0x28: 0xff for none; the index in the low 7 bits
+};
+void BalanceAfterInsert(PageMapNode* root, PageMapNode* node) noexcept;   // libc++'s __tree_balance_after_insert
+struct PageMap {
+    PageMapNode* begin;                // +0x340
+    struct EndNode {
+        PageMapNode* left;             // the root
+    } end;                             // +0x348
+    uint64_t size;                     // +0x350
+    PageMapNode* End() { return reinterpret_cast<PageMapNode*>(&end); }
+    // libc++'s __find_equal: the link where the key is or would go, and its parent.
+    __attribute__((always_inline)) PageMapNode*& FindEqual(PageMapNode*& parent, uint32_t key) {
+        PageMapNode* node = End()->left;
+        PageMapNode** link = &End()->left;
+        if (node) {
+            for (;;) {
+                if (key < node->key) {
+                    if (node->left) {
+                        link = &node->left;
+                        node = node->left;
+                    } else {
+                        parent = node;
+                        return parent->left;
+                    }
+                } else if (node->key < key) {
+                    if (node->right) {
+                        link = &node->right;
+                        node = node->right;
+                    } else {
+                        parent = node;
+                        return node->right;
+                    }
+                } else {
+                    parent = node;
+                    return *link;
+                }
+            }
+        }
+        parent = End();
+        return parent->left;
+    }
+    // libc++'s __insert_node_at.
+    __attribute__((always_inline)) void InsertNodeAt(PageMapNode* parent, PageMapNode*& child, PageMapNode* node) {
+        node->left = nullptr;
+        node->right = nullptr;
+        node->parent = parent;
+        child = node;
+        if (begin->left) begin = begin->left;
+        BalanceAfterInsert(End()->left, child);
+        ++size;
+    }
+    // libc++'s operator[]: finds the key or inserts it with a null table.
+    __attribute__((always_inline)) uint8_t*& operator[](uint32_t key) {
+        PageMapNode* parent;
+        PageMapNode*& child = FindEqual(parent, key);
+        PageMapNode* found = child;
+        if (!child) {
+            PageMapNode* node = static_cast<PageMapNode*>(::operator new(sizeof(PageMapNode)));
+            node->key = key;
+            node->pages = nullptr;
+            InsertNodeAt(parent, child, node);
+            found = node;
+        }
+        return found->pages;
+    }
+};
+struct MemManagerPages {
+    char padding_0[0x340];
+    PageMap pages;                     // +0x340
+    char padding_358[0x414];
+    uint8_t defaultIndex;              // +0x76c
+};
+
+// 0xa82b30: the index of the allocator that owns an address (the default one for an unknown page).
+// Not yet matched: when the tree is empty the original still tests the end node's child before inserting (and keeps
+// the find's two results in other registers); here clang threads that test away.
+uint8_t MemManager::IndexOf(const void* block) {
+    MemManagerPages* self = reinterpret_cast<MemManagerPages*>(this);
+    uintptr_t address = reinterpret_cast<uintptr_t>(block);
+    uint8_t* table = self->pages[uint32_t(address >> 32) & 0xffff];
+    if (table) {
+        uint8_t index = table[(address >> 16) & 0xffff];
+        if (index != 0xff) return index & 0x7f;
+    }
+    return self->defaultIndex;
+}
+
 // The word at 0x1926bd0, read or written through one function (0xa81230); what it holds isn't known yet.
 extern uint32_t Setting1926bd0;
 void ExchangeSetting(bool read, uint32_t* value) {   // 0xa81230

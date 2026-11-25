@@ -3,10 +3,17 @@
 
 namespace Gear {
 
+// Where an allocator's memory comes from: slot 3 gives a block back (kind 2 here), as MemSysPage's does.
+struct PageSource {
+    virtual void Slot0(); virtual void Slot1(); virtual void Slot2();
+    virtual void Free(void* block, uint32_t size, uint8_t kind);   // slot 3
+};
+
 // What 0x1926bd8 offers allocators as they go (names provisional).
 struct MemManagerCalls : MemManager {
     void Unregister(MemInterface* allocator);                                                   // 0xa7da50
-    void ReleaseBlock(void* block, int32_t flags, MemInterface* owner, uint64_t size);          // 0xa7d8e0
+    void ReleaseBlock(void* block, uint32_t size, MemInterface* owner, PageSource* source);     // 0xa7d8e0
+    void UnmarkPages(void* block, uint32_t size, uint32_t* pages, int32_t mode);                // 0xa7d5e0
     void ReleaseSpace(MemInterface* owner, void* base);                                         // 0xa7d3d0
 };
 __attribute__((always_inline)) inline MemManagerCalls* Manager() { return static_cast<MemManagerCalls*>(Memory); }
@@ -17,17 +24,28 @@ __attribute__((always_inline)) inline MemManagerCalls* Manager() { return static
 __attribute__((always_inline)) MemInterface::~MemInterface() { ; }
 
 // Gear::MemAllocFixedBase (vtable 0x189d248): the fixed-size allocators' base; its destructor (0xaa8a00) adds nothing.
+// Holds an allocator's lock for a scope; the unlock rereads the lock, so the guard keeps the allocator.
+template<class Owner> struct OwnerLock {
+    Owner* owner;
+    explicit OwnerLock(Owner* owner) : owner(owner) { owner->lock->Lock(); }
+    ~OwnerLock() { owner->lock->Unlock(); }
+};
+
 struct MemAllocFixedBase : MemInterface {
     ~MemAllocFixedBase() override {}
     void Clear();                      // 0xa94a10
+    char padding_8[0x1];
+    bool closing;                      // +0x9
+    char padding_a[0x6];
+    void* base;                        // +0x10: the memory it hands out
+    char padding_18[0x8];
+    RecursiveSpinLock* lock;           // +0x20
 };
 
 // Gear::MemAllocFixed (vtable 0x189bce0).
 struct MemAllocFixed : MemAllocFixedBase {
     ~MemAllocFixed() override;
     void Free(void* block) noexcept override;
-    char padding_8[0x18];
-    RecursiveSpinLock* lock;           // +0x20
     char padding_28[0x10];
     uint64_t value38;                  // +0x38
     uint64_t value40;                  // +0x40
@@ -41,6 +59,13 @@ void MemAllocFixed::Free(void* block) noexcept {
     freeList = block;
     lock->Unlock();
 }
+// 0xa94a10: marks the allocator as closing and hands its memory back, under the lock.
+void MemAllocFixedBase::Clear() {
+    closing = true;
+    OwnerLock<MemAllocFixedBase> hold(this);
+    Manager()->ReleaseSpace(this, base);
+}
+
 // Slot 0 (0xa94b10; the deleting destructor 0xa94b70 inlines it): forgets its three words, clears and unregisters.
 MemAllocFixed::~MemAllocFixed() {
     value38 = 0;
@@ -70,7 +95,7 @@ struct MemAllocStack : MemInterface {
     void* block;                       // +0x10
     char padding_18[0x8];
     void* cursor;                      // +0x20
-    uint64_t size;                     // +0x28
+    PageSource* source;                // +0x28: where the block came from
     char padding_30[0x8];
     uint32_t value38;                  // +0x38
 };
@@ -81,7 +106,7 @@ uint32_t MemAllocStack::Slot7() {
 // Slot 0 (0xaaf440; the deleting destructor 0xaaf4b0 inlines it): hands the block back and unregisters.
 MemAllocStack::~MemAllocStack() {
     closing = true;
-    if (block) Manager()->ReleaseBlock(block, 0, this, size);
+    if (block) Manager()->ReleaseBlock(block, 0, this, source);
     Manager()->Unregister(this);
 }
 
@@ -160,27 +185,61 @@ struct MemAllocDl283 : MemInterface {
     MemAllocFixed fixed;         // +0x3f8: a fixed-size allocator of its own
     DlSpace* Space() { return reinterpret_cast<DlSpace*>(space); }
 };
+// 0xa7d8e0: gives a block back to its source under the lock: its pages are unmarked when it has an owner (and the
+// size, when not given, is theirs), and the owner's count of bytes (+0xc) goes down by it. The page count lives in a
+// scope of its own: the end of its lifetime is a cleanup, which gives the first call a landing pad of its own.
+void MemManagerCalls::ReleaseBlock(void* block, uint32_t size, MemInterface* owner, PageSource* source) {
+    OwnerLock<MemManager> hold(this);
+    uint32_t bytes;
+    {
+        uint32_t pages = 0;
+        if (owner) {
+            UnmarkPages(block, size, &pages, 1);
+            bytes = pages << 16;
+        } else {
+            bytes = 0;
+        }
+    }
+    if (!size) size = bytes;
+    source->Free(block, size, 2);
+    if (owner) {
+        uint32_t& used = reinterpret_cast<uint32_t*>(owner)[3];
+        if (used >= size) used -= size;
+    }
+}
+
+// 0xa7da50: takes an allocator out of the table (and as the default) under the lock, tells the listeners, and marks it
+// unregistered.
+void MemManagerCalls::Unregister(MemInterface* allocator) {
+    uint8_t index = reinterpret_cast<uint8_t*>(allocator)[8];
+    {
+        OwnerLock<MemManager> hold(this);
+        allocators[index] = nullptr;
+        if (index == defaultIndex) defaultIndex = 0xff;
+    }
+    for (MemListener* listener = listeners; listener != listeners + listenerCount; ++listener) {
+        if (listener->isObject) listener->object->Notify(0, allocator);
+        else listener->function(0, allocator, listener->context);
+    }
+    reinterpret_cast<uint8_t*>(allocator)[8] = 0xff;
+}
+
 // Slot 0 (0xa945d0): hands its memory back and unregisters, before the fixed allocator goes.
 MemAllocDl283::~MemAllocDl283() {
     closing = true;
     Manager()->ReleaseSpace(this, base);
     Manager()->Unregister(this);
 }
-// Holds the allocator's lock for a scope (the unlock rereads the lock, so the guard keeps the allocator).
-struct Dl283Lock {
-    MemAllocDl283* owner;
-    explicit Dl283Lock(MemAllocDl283* owner) : owner(owner) { owner->lock->Lock(); }
-    ~Dl283Lock() { owner->lock->Unlock(); }
-};
+
 // Slot 15 (0xa95550): both of dlmalloc's passes, under the lock.
 void MemAllocDl283::Slot15() {
-    Dl283Lock hold(this);
+    OwnerLock<MemAllocDl283> hold(this);
     Call96360(Space());
     Call95810(Space());
 }
 // Slot 17 (0xa95660): the second pass alone, under the lock.
 void MemAllocDl283::Slot17() {
-    Dl283Lock hold(this);
+    OwnerLock<MemAllocDl283> hold(this);
     Call95810(Space());
 }
 

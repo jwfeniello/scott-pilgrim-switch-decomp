@@ -576302,6 +576302,30 @@
       ],
       "functions": [
         {
+          "address": "0xa7d8e0",
+          "size": 364,
+          "symbol": "_ZN4Gear15MemManagerCalls12ReleaseBlockEPvjPNS_12MemInterfaceEPNS_10PageSourceE",
+          "target_sha256": "1f41574a86ecd54275e922cf9aa6d9889f2fde5660af3efe639d519dac10117b",
+          "bindings": {
+            "_ZN2nn2os16GetCurrentThreadEv": "0xfa3e50",
+            "_ZN2nn2os11GetThreadIdEPKNS0_10ThreadTypeE": "0xfa4760",
+            "_ZN4Gear15MemManagerCalls11UnmarkPagesEPvjPji": "0xa7d5e0",
+            "_Unwind_Resume": "0xfa4920"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xa7da50",
+          "size": 304,
+          "symbol": "_ZN4Gear15MemManagerCalls10UnregisterEPNS_12MemInterfaceE",
+          "target_sha256": "9f0e9bf66a6626731e5c50d0afc47edfb2e64b99d50cedbd16631aa0f01ed168",
+          "bindings": {
+            "_ZN2nn2os16GetCurrentThreadEv": "0xfa3e50",
+            "_ZN2nn2os11GetThreadIdEPKNS0_10ThreadTypeE": "0xfa4760"
+          },
+          "got_bindings": {}
+        },
+        {
           "address": "0xa945d0",
           "size": 188,
           "symbol": "_ZN4Gear13MemAllocDl283D2Ev",
@@ -576316,6 +576340,20 @@
             "_ZTVN4Gear12MemInterfaceE": "0x1842080",
             "__clang_call_terminate": "0x6768b8",
             "_ZN4Gear13MemAllocFixedD2Ev": "0xa94b10"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xa94a10",
+          "size": 252,
+          "symbol": "_ZN4Gear17MemAllocFixedBase5ClearEv",
+          "target_sha256": "d25ab6c4fd7d48bf7ea589a4a9f42423b8cfec9f47a4e321f27d63fa12de9118",
+          "bindings": {
+            "_ZN2nn2os16GetCurrentThreadEv": "0xfa3e50",
+            "_ZN2nn2os11GetThreadIdEPKNS0_10ThreadTypeE": "0xfa4760",
+            "_ZN4Gear6MemoryE": "0x1926bd8",
+            "_ZN4Gear15MemManagerCalls12ReleaseSpaceEPNS_12MemInterfaceEPv": "0xa7d3d0",
+            "_Unwind_Resume": "0xfa4920"
           },
           "got_bindings": {}
         },
@@ -576453,7 +576491,7 @@
           "bindings": {
             "_ZTVN4Gear13MemAllocStackE": "0x189edb0",
             "_ZN4Gear6MemoryE": "0x1926bd8",
-            "_ZN4Gear15MemManagerCalls12ReleaseBlockEPviPNS_12MemInterfaceEm": "0xa7d8e0",
+            "_ZN4Gear15MemManagerCalls12ReleaseBlockEPvjPNS_12MemInterfaceEPNS_10PageSourceE": "0xa7d8e0",
             "_ZN4Gear15MemManagerCalls10UnregisterEPNS_12MemInterfaceE": "0xa7da50",
             "_ZdlPv": "0xfa3b40",
             "_ZTVN4Gear12MemInterfaceE": "0x1842080",
