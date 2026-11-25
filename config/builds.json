@@ -576344,6 +576344,19 @@
           "got_bindings": {}
         },
         {
+          "address": "0xaa4850",
+          "size": 104,
+          "symbol": "_ZN4Gear7GamePadD2Ev",
+          "target_sha256": "3ca76be906396e1fe6b3cd3ce69cc0c1605fe0e5e650413fcde15bdab53dd33b",
+          "bindings": {
+            "_ZTVN4Gear7GamePadE": "0x189cc90",
+            "_ZN4Gear6MemoryE": "0x1926bd8",
+            "_ZN4Gear10MemManager7IndexOfEPKv": "0xa82b30",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
           "address": "0xaa4940",
           "size": 124,
           "symbol": "_ZNK4Gear7GamePad3IsAEPKc",
@@ -576493,6 +576506,41 @@
           "got_bindings": {}
         },
         {
+          "address": "0xaa9e20",
+          "size": 168,
+          "symbol": "_ZN4Gear15GamePadKeyboardD2Ev",
+          "target_sha256": "17d943e7b3bc0588cce35142d2ae711b7c9fe3785dad4afe1e0362610e9fee97",
+          "bindings": {
+            "_ZTVN4Gear15GamePadKeyboardE": "0x189d5b8",
+            "_ZN4Gear6InputsE": "0x192aeb8",
+            "_ZN4Gear13InputRegistry6RemoveEPNS_17InteractiveDeviceE": "0xaaa9f0",
+            "_ZTVN4Gear7GamePadE": "0x189cc90",
+            "_ZN4Gear6MemoryE": "0x1926bd8",
+            "_ZN4Gear10MemManager7IndexOfEPKv": "0xa82b30",
+            "_ZN4Gear7GamePadD2Ev": "0xaa4850",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xaa9ef0",
+          "size": 44,
+          "symbol": "_ZN4Gear15GamePadKeyboard7PressedEh",
+          "target_sha256": "44f13b610eecd4b353760b4e88bd689184a1b9d8af6a4d5f8267f05c6be93399",
+          "bindings": {
+            "_ZN4Gear11GamePadKeysE": "0x1925620"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xaa9f60",
+          "size": 104,
+          "symbol": "_ZN4Gear15GamePadKeyboard10AnyPressedEv",
+          "target_sha256": "dc52b9bb0f1e139787543d9ff4198f7cd4aa9829841b300c6b7db103f4b48eb1",
+          "bindings": {},
+          "got_bindings": {}
+        },
+        {
           "address": "0xaa9ff0",
           "size": 176,
           "symbol": "_ZNK4Gear15GamePadKeyboard3IsAEPKc",
@@ -576513,6 +576561,23 @@
             "_ZN4Gear15GamePadKeyboard4NameE": "0x14d2a9c",
             "_ZN4Gear7GamePad4NameE": "0x14d2a94",
             "_ZN4Gear17InteractiveDevice4NameE": "0x1318b61"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xaaab50",
+          "size": 168,
+          "symbol": "_ZN4Gear12GamePadMouseD2Ev",
+          "target_sha256": "ee3d0296bd28340d3f7ae3d276717c67fc7a1fcc83ab4195e90417b3c8335943",
+          "bindings": {
+            "_ZTVN4Gear12GamePadMouseE": "0x189d888",
+            "_ZN4Gear6InputsE": "0x192aeb8",
+            "_ZN4Gear13InputRegistry6RemoveEPNS_17InteractiveDeviceE": "0xaaa9f0",
+            "_ZTVN4Gear7GamePadE": "0x189cc90",
+            "_ZN4Gear6MemoryE": "0x1926bd8",
+            "_ZN4Gear10MemManager7IndexOfEPKv": "0xa82b30",
+            "_ZN4Gear7GamePadD2Ev": "0xaa4850",
+            "__clang_call_terminate": "0x6768b8"
           },
           "got_bindings": {}
         },
@@ -576624,6 +576689,17 @@
           }
         },
         {
+          "address": "0xaac280",
+          "size": 312,
+          "symbol": "_ZN4Gear19TimeFilteredGamePad7Moved20Ev",
+          "target_sha256": "fbeb79a00bd48ab00be381892e2ee07a3c8bdac99c656e3ea04e3bbab7b6eab8",
+          "bindings": {},
+          "got_bindings": {},
+          "literals": {
+            "bd378636": "0x1331fcc"
+          }
+        },
+        {
           "address": "0xaac3c0",
           "size": 160,
           "symbol": "_ZN4Gear19TimeFilteredGamePad8Changed6Eh",
@@ -576660,6 +576736,17 @@
           "got_bindings": {},
           "literals": {
             "bd370636": "0x1331f30"
+          }
+        },
+        {
+          "address": "0xaac5d0",
+          "size": 152,
+          "symbol": "_ZN4Gear19TimeFilteredGamePad7Moved12Ev",
+          "target_sha256": "15e40db03412e3239ff5c9ed602e95c9103ab1bfa6a32d88fada74b714671689",
+          "bindings": {},
+          "got_bindings": {},
+          "literals": {
+            "bd378635": "0x1331fdc"
           }
         },
         {

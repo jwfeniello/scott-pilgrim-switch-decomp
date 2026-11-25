@@ -27,13 +27,14 @@ struct GamePadInterface {
     virtual const float* Slot8();                                      // slot 8: two values
     virtual float Slot9();                                             // slot 9
     virtual const float* Slot10(int32_t index);                        // slot 10: three values per index
-    virtual void Slot11(); virtual void Slot12();
+    virtual void Slot11();
+    virtual const float* Slot12();                                     // slot 12: four values
     virtual const float* Slot13();                                     // slot 13: one value
     virtual void Slot14(); virtual void Slot15();
     virtual const float* Slot16();                                     // slot 16: three values
     virtual void Slot17(); virtual void Slot18();
     virtual const float* Slot19();                                     // slot 19: three values
-    virtual void Slot20();
+    virtual const float* Slot20();                                     // slot 20: nine values
     virtual void Slot21();
     virtual uint8_t Threshold();                                       // slot 22: what slot 5 compares with
     virtual void Slot23(); virtual void Slot24(); virtual void Slot25();
@@ -53,7 +54,11 @@ struct GamePadInterface {
     virtual bool AnyPressed();                                         // slot 50
     virtual void Slot51();
 };
-struct KeyboardInterface { virtual void KeyboardSlot0(); };
+// Gear::KeyboardInterface: slot 0 tells whether a key is down, slot 1 the same through the keyboard's own index.
+struct KeyboardInterface {
+    virtual bool KeyDown(uint8_t key);                                 // slot 0
+    virtual bool Slot1(uint8_t key);                                   // slot 1
+};
 struct MouseInterface { virtual void MouseSlot0(); };
 
 // Gear::InteractiveDevice: the root of the input classes. Its destructor is slot 8; slot 2 is the device's index in
@@ -81,6 +86,7 @@ struct InputRegistry {
     uint64_t count;                    // +0x110
     char padding_118[0x30];
     InteractiveDevice** devices;       // +0x148
+    void Remove(InteractiveDevice* device);   // 0xaaa9f0 (name provisional)
     void SetTop(InteractiveDevice* device, uint8_t index) {
         if (index < count) devices[index] = device;
     }
@@ -162,6 +168,33 @@ struct ButtonValues {
     }
 };
 
+// What a pad reads in a frame (0x118 bytes): a game pad keeps one at +0x10, the time filter its last copy at +0x30.
+// Bit 0 of the flags marks it as read; a reset of an unread one sets bits 0 and 15 and zeroes everything but 0x54-0xa4.
+// Field names follow the interface slots that return them.
+struct GamePadReading {
+    uint32_t flags;
+    float sticks[2][2];                // +0x4: slot 7
+    float values10[2][3];              // +0x14: slot 10
+    float values8[2];                  // +0x2c: slot 8
+    float values12[4];                 // +0x34: slot 12
+    float value13;                     // +0x44: slot 13
+    float value9;                      // +0x48: slot 9
+    uint8_t unknown4c[0x8];
+    uint8_t unknown54[0x50];           // +0x54: not reset
+    ButtonValues buttons;              // +0xa4
+    uint8_t unknownda[0x2];
+    float values16[3];                 // +0xdc: slot 16
+    float values19[3];                 // +0xe8: slot 19
+    float values20[3][3];              // +0xf4: slot 20
+    __attribute__((always_inline)) void Reset() {
+        if (flags & 1) return;
+        flags |= 0x8001;
+        __builtin_memset(sticks, 0, offsetof(GamePadReading, unknown54) - offsetof(GamePadReading, sticks));
+        __builtin_memset(&buttons, 0, sizeof(buttons));
+        __builtin_memset(unknownda, 0, sizeof(GamePadReading) - offsetof(GamePadReading, unknownda));
+    }
+};
+
 // Gear::GamePadHook (vtable 0x189db68): passes each of the 50 game-pad slots on to the interface below it
 // (+0x28); its overriders fill slots 14-63 of its first vtable in the interface's order (0xaab7a0-0xaabae0, credited
 // to older builds, so only declared here).
@@ -181,7 +214,7 @@ struct GamePadHook : InteractiveDeviceHookBase<GamePadInterface> {
     float Slot9() override;
     const float* Slot10(int32_t index) override;
     void Slot11() override;
-    void Slot12() override;
+    const float* Slot12() override;
     const float* Slot13() override;
     void Slot14() override;
     void Slot15() override;
@@ -189,7 +222,7 @@ struct GamePadHook : InteractiveDeviceHookBase<GamePadInterface> {
     void Slot17() override;
     void Slot18() override;
     const float* Slot19() override;
-    void Slot20() override;
+    const float* Slot20() override;
     void Slot21() override;
     uint8_t Threshold() override;
     void Slot23() override;
@@ -229,6 +262,7 @@ struct TimeFilteredGamePad : GamePadHook {
     static const char Name[];
     const char* ClassName() const override;
     bool IsA(const char* name) const override;   // 0xaab210
+    void DeviceSlot4() override;                 // slot 4
     virtual void Slot64(); virtual void Slot65(); virtual void Slot66();
     virtual bool PressedNow(uint8_t button);     // slot 67
     virtual void Slot68();
@@ -241,82 +275,100 @@ struct TimeFilteredGamePad : GamePadHook {
     virtual bool Moved13();                      // slot 84
     virtual bool Moved16();                      // slot 85
     virtual bool Moved19();                      // slot 86
-    virtual void Slot87();
+    virtual bool Moved20();                      // slot 87
     virtual bool Changed6(uint8_t button);       // slot 88
     virtual bool Changed7(int32_t index);        // slot 89
     virtual bool Changed10(int32_t index);       // slot 90
     virtual bool Changed8();                     // slot 91
     virtual bool Moved9();                       // slot 92
-    virtual void Slot93(); virtual void Slot94(); virtual void Slot95();
-    char padding_30[0x4];
-    float last7[2][2];                 // +0x34
-    float last10[2][3];                // +0x44
-    float last8[2];                    // +0x5c
-    char padding_64[0x10];
-    float last13;                      // +0x74
-    float last9;                       // +0x78
-    char padding_7c[0x58];
-    ButtonValues lastButtons;          // +0xd4
-    char padding_10a[0x2];
-    float last16[3];                   // +0x10c
-    float last19[3];                   // +0x118
+    virtual bool Moved12();                      // slot 93
+    virtual void Slot94(); virtual void Slot95();
+    GamePadReading last;               // +0x30
 };
 bool TimeFilteredGamePad::IsA(const char* name) const { return CompareNames(name, Name) == 0 || GamePadHook::IsA(name); }
 
 // Whether two analog readings are the same to within 2e-6 (the moved tests are its negation: unordered counts as
 // moved).
-__attribute__((always_inline)) inline bool Near(float a, float b) { return __builtin_fabsf(a - b) <= 2e-6f; }
+__attribute__((always_inline)) inline bool Near(float a, float b, float epsilon = 2e-6f) {
+    return __builtin_fabsf(a - b) <= epsilon;
+}
 
+// Slot 4 (0xaab330): slot 4 of what it reads from, then a reset of its last reading.
+void TimeFilteredGamePad::DeviceSlot4() {
+    if (target) target->DeviceSlot4();
+    last.Reset();
+}
 // Slot 84 (0xaac140).
-bool TimeFilteredGamePad::Moved13() { return !Near(*Slot13(), last13); }
+bool TimeFilteredGamePad::Moved13() { return !Near(*Slot13(), last.value13); }
 // Slot 85 (0xaac180).
 bool TimeFilteredGamePad::Moved16() {
     const float* now = Slot16();
-    return !Near(now[0], last16[0]) || !Near(now[1], last16[1]) || !Near(now[2], last16[2]);
+    return !Near(now[0], last.values16[0]) || !Near(now[1], last.values16[1]) || !Near(now[2], last.values16[2]);
 }
 // Slot 86 (0xaac200).
 bool TimeFilteredGamePad::Moved19() {
     const float* now = Slot19();
-    return !Near(now[0], last19[0]) || !Near(now[1], last19[1]) || !Near(now[2], last19[2]);
+    return !Near(now[0], last.values19[0]) || !Near(now[1], last.values19[1]) || !Near(now[2], last.values19[2]);
 }
 // Slot 67 (0xaabb60): the button reaches the threshold now and didn't before.
-bool TimeFilteredGamePad::PressedNow(uint8_t button) { return lastButtons.Get(button) < Threshold() && Slot5(button); }
+bool TimeFilteredGamePad::PressedNow(uint8_t button) { return last.buttons.Get(button) < Threshold() && Slot5(button); }
 // Slot 69 (0xaabc40): the button reached the threshold before and doesn't now.
 bool TimeFilteredGamePad::ReleasedNow(uint8_t button) {
-    return lastButtons.Get(button) >= Threshold() && !Slot5(button);
+    return last.buttons.Get(button) >= Threshold() && !Slot5(button);
 }
 // Slot 72 (0xaabd50): how far the button's value moved.
 int32_t TimeFilteredGamePad::Delta6(uint8_t button) {
     uint8_t now = Slot6(button);
-    return now - lastButtons.Get(button);
+    return now - last.buttons.Get(button);
+}
+// Slot 87 (0xaac280): nine values, to within 4e-6.
+bool TimeFilteredGamePad::Moved20() {
+    const float* now = Slot20();
+    const float* was = last.values20[0];
+    return !Near(now[0], was[0], 4e-6f) || !Near(now[1], was[1], 4e-6f) || !Near(now[2], was[2], 4e-6f) ||
+           !Near(now[3], was[3], 4e-6f) || !Near(now[4], was[4], 4e-6f) || !Near(now[5], was[5], 4e-6f) ||
+           !Near(now[6], was[6], 4e-6f) || !Near(now[7], was[7], 4e-6f) || !Near(now[8], was[8], 4e-6f);
 }
 // Slot 88 (0xaac3c0).
 bool TimeFilteredGamePad::Changed6(uint8_t button) {
     uint8_t now = Slot6(button);
-    return lastButtons.Get(button) != now;
+    return last.buttons.Get(button) != now;
 }
 // Slot 89 (0xaac460).
 bool TimeFilteredGamePad::Changed7(int32_t index) {
     const float* now = Slot7(index);
-    return now[0] != last7[index][0] || now[1] != last7[index][1];
+    return now[0] != last.sticks[index][0] || now[1] != last.sticks[index][1];
 }
 // Slot 90 (0xaac4c0).
 bool TimeFilteredGamePad::Changed10(int32_t index) {
     const float* now = Slot10(index);
-    return now[0] != last10[index][0] || now[1] != last10[index][1] || now[2] != last10[index][2];
+    return now[0] != last.values10[index][0] || now[1] != last.values10[index][1] || now[2] != last.values10[index][2];
 }
 // Slot 91 (0xaac540, credited to an older build).
 bool TimeFilteredGamePad::Changed8() {
     const float* now = Slot8();
-    return now[0] != last8[0] || now[1] != last8[1];
+    return now[0] != last.values8[0] || now[1] != last.values8[1];
+}
+// Slot 93 (0xaac5d0): four values, to within 1e-6.
+bool TimeFilteredGamePad::Moved12() {
+    const float* now = Slot12();
+    return !Near(now[0], last.values12[0], 1e-6f) || !Near(now[1], last.values12[1], 1e-6f) ||
+           !Near(now[2], last.values12[2], 1e-6f) || !Near(now[3], last.values12[3], 1e-6f);
 }
 // Slot 92 (0xaac590).
-bool TimeFilteredGamePad::Moved9() { return !Near(Slot9(), last9); }
+bool TimeFilteredGamePad::Moved9() { return !Near(Slot9(), last.value9); }
 
 // Gear::GamePad and the pads under it. The game-pad interface is the first base, so InteractiveDevice sits at +0x8:
 // each IsA fills a new slot (53) of the first vtable and slot 1 of the second through a thunk. IsA reads no member,
 // so the thunk carries the whole test and the original has it twice.
 // Gear::GamePad (thunk 0xaa4b90).
+// What a button is read from (12 bytes; field names provisional): -1 in both words for nothing.
+struct ButtonMapping {
+    int32_t first;
+    int32_t second;
+    uint8_t third;
+};
+
 // A block of memory a pad owns: emptied, then given back to the allocator that owns its address. Here the allocator's
 // slot 6 may throw (HardwareGamePad's destructor has landing pads around both frees and doesn't tail-call the last),
 // unlike MemInterface's as GearDevices.cpp sees it; the view type is a guess at that.
@@ -340,17 +392,19 @@ struct GamePad : GamePadInterface, InteractiveDevice {
     bool IsA(const char* name) const override;   // slot 53
     // Slots 54-67: GamePad's own, some of them its InteractiveDevice overrides (thunks 0xaa4c10-0xaa4de0); which is
     // which isn't known yet.
-    virtual void Slot54(); virtual void Slot55(); virtual void Slot56(); virtual void Slot57(); virtual void Slot58();
+    virtual void Slot54();
+    virtual void SetMapping(uint8_t button, const ButtonMapping& mapping);   // slot 55
+    virtual void Slot56(); virtual void Slot57(); virtual void Slot58();
     virtual void Slot59(); virtual void Slot60(); virtual void Slot61(); virtual void Slot62(); virtual void Slot63();
-    virtual void Slot64(); virtual void Slot65(); virtual void Slot66(); virtual void Slot67();
+    virtual void ResetReading();       // slot 64
+    virtual void Slot65(); virtual void Slot66(); virtual void Slot67();
     void SetBlock(const GamePadBlock& block) override;
     bool Slot4(uint8_t button) override;
     bool Slot5(uint8_t button) override;
     uint8_t Slot6(uint8_t button) override;
     void StopVibration() override;
-    char padding_10[0xa4];
-    ButtonValues buttons;              // +0xb4
-    char padding_ea[0x3e];
+    ~GamePad() override;
+    GamePadReading reading;            // +0x10
     GamePadBlock block;                // +0x128
     char padding_158[0x8];
     GamePadBuffer buffer160;           // +0x160
@@ -363,9 +417,15 @@ void GamePad::SetBlock(const GamePadBlock& value) { block = value; }
 // Slot 4 (0xaa4090, credited to an older build): slot 5's answer.
 bool GamePad::Slot4(uint8_t button) { return Slot5(button); }
 // Slot 5 (0xaa40a0): whether the button's value reaches the threshold.
-bool GamePad::Slot5(uint8_t button) { return buttons.Get(button) >= threshold; }
+bool GamePad::Slot5(uint8_t button) { return reading.buttons.Get(button) >= threshold; }
 // Slot 6 (0xaa4120): the button's value.
-uint8_t GamePad::Slot6(uint8_t button) { return buttons.Get(button); }
+uint8_t GamePad::Slot6(uint8_t button) { return reading.buttons.Get(button); }
+// 0xaa4850: the buffer at +0x160 goes. The pads' destructors inline it, except on GamePadKeyboard's cleanup path.
+GamePad::~GamePad() {}
+// Slot 64 (0xaa4a70): resets the reading unless it has been read.
+// Not yet matched (nor TimeFilteredGamePad's slot 4, 0xaab330): the original clears the buttons (0xa4-0xda) and the
+// rest (0xda-0x118) as two blocks; clang merges the two adjacent clears into one, whatever the order.
+void GamePad::ResetReading() { reading.Reset(); }
 // Slot 36 (0xaa43d0): no vibration on either side.
 void GamePad::StopVibration() { Vibrate(0, 0, 0, 0); }
 
@@ -455,7 +515,11 @@ struct GamePadEE : VibrationEnabledGamePad {
     virtual void Slot69();             // slot 69
     bool Pressed(uint8_t button) override;
     bool AnyPressed() override;
+    void SetMapping(uint8_t button, const ButtonMapping& mapping) override;
     GamePadState* state;               // +0x1c8
+    char padding_1d0[0x100];
+    ButtonMapping mappings[27];        // +0x2d0
+    uint8_t mapped[27];                // +0x414: bit 0 when the button has a mapping
 };
 bool GamePadEE::IsA(const char* name) const { return CompareNames(name, Name) == 0 || VibrationEnabledGamePad::IsA(name); }
 // Slots 44 and 45 (0xaa51e0, 0xaa5220).
@@ -465,14 +529,66 @@ bool GamePadEE::Pressed(uint8_t button) {
     int32_t index = GamePadButtons[button].index;
     return state->buttons[index] != 0;
 }
+// Slot 55 (0xaa5490): sets a button's mapping and whether it has one.
+// Not yet matched: the original sets or clears bit 0 on separate branches, each reading the byte; clang selects.
+void GamePadEE::SetMapping(uint8_t button, const ButtonMapping& mapping) {
+    ButtonMapping& to = mappings[button];
+    to.first = mapping.first;
+    to.second = mapping.second;
+    to.third = mapping.third;
+    if (mapping.second != -1 || mapping.first != -1) mapped[button] |= 1;
+    else mapped[button] &= ~1;
+}
 // Slot 50 (0xaa5310): whether any button is down.
 bool GamePadEE::AnyPressed() {
     for (uint64_t i = 0; state->count > i; ++i)
         if (state->buttons[i]) return true;
     return false;
 }
-GEAR_INPUT_CLASS(GamePadKeyboard, GamePad)                     // IsA 0xaa9ff0, thunk 0xaaa900
-GEAR_INPUT_CLASS(GamePadMouse, GamePad)                        // IsA 0xaaac30, thunk 0xaab110
+// Gear::GamePadKeyboard (IsA 0xaa9ff0, thunk 0xaaa900): a game pad played on a keyboard (+0x238); each button has a
+// key (0x1925620, 5 bytes each).
+struct GamePadKey {
+    uint8_t key;
+    char padding_1[0x4];
+};
+extern const GamePadKey GamePadKeys[];
+struct GamePadKeyboard : GamePad {
+    static const char Name[];
+    const char* ClassName() const override;
+    bool IsA(const char* name) const override;
+    ~GamePadKeyboard() override;
+    virtual void Slot68(); virtual void Slot69();   // its own slots 68 and 69
+    bool Pressed(uint8_t button) override;
+    bool AnyPressed() override;
+    char padding_188[0xb0];
+    KeyboardInterface* keyboard;       // +0x238
+};
+// Slots 44 and 45 (0xaa9e20 and its deleting form): leaves the input registry.
+GamePadKeyboard::~GamePadKeyboard() { Inputs->Remove(this); }
+bool GamePadKeyboard::IsA(const char* name) const { return CompareNames(name, Name) == 0 || GamePad::IsA(name); }
+// Slot 47 (0xaa9ef0): whether the button's key is down (no without a keyboard).
+bool GamePadKeyboard::Pressed(uint8_t button) {
+    if (!keyboard) return false;
+    return keyboard->KeyDown(GamePadKeys[button].key);
+}
+// Slot 50 (0xaa9f60): whether any of the 256 keys is down.
+bool GamePadKeyboard::AnyPressed() {
+    if (!keyboard) return false;
+    for (int key = 0; key <= 0xff; ++key)
+        if (keyboard->Slot1(key)) return true;
+    return false;
+}
+// Gear::GamePadMouse (IsA 0xaaac30, thunk 0xaab110): a game pad played with a mouse.
+struct GamePadMouse : GamePad {
+    static const char Name[];
+    const char* ClassName() const override;
+    bool IsA(const char* name) const override;
+    ~GamePadMouse() override;
+    virtual void Slot68(); virtual void Slot69();   // its own slots 68 and 69
+};
+bool GamePadMouse::IsA(const char* name) const { return CompareNames(name, Name) == 0 || GamePad::IsA(name); }
+// Slots 44 and 45 (0xaaab50 and its deleting form): leaves the input registry.
+GamePadMouse::~GamePadMouse() { Inputs->Remove(this); }
 // Gear::Keyboard the same way; KeyboardEE keeps its test (thunk 0xaa3cf0).
 struct Keyboard : KeyboardInterface, InteractiveDevice {
     static const char Name[];

@@ -1,9 +1,9 @@
 {
   "version": 1,
-  "generated_at": "2026-11-25T08:13:01.062646+00:00",
+  "generated_at": "2026-11-25T08:20:45.049646+00:00",
   "target_elf_sha256": "ea95638e6d6aaa0dc6cddd552a9366799aa1ec3bc07ee201f23f6c151103f5b8",
   "input_sha256": {
-    "config/builds.json": "2c2fa8cc5cacbf6afbabf51dffb1a6ccb5132b0f81b390eed3787017f4614a1f",
+    "config/builds.json": "7e678352c539ed06a0f18039b4dd2788b888d10093dd6560165fa3291ff31169",
     "config/functions.tsv": "399e91468a04e0459194c10d68d2210d1157cedefeb19c7851886ca7632fcb18",
     "config/non_fde_functions.tsv": "6a45f5e185454fa0472af00b2cdc9d040d73ca133d1106217e1fbbe3b32a8175",
     "config/target.json": "23cc6a5227206a953e7668acf5e9ae5c02a25c23b7e7967f0450a814b888241a",
@@ -1187,7 +1187,7 @@
     "src/gameplay/GearCore.h": "a9cda684013d5e561e3aaab20b3580d28e55bc3c3006244fdcecd94bb572c275",
     "src/gameplay/GearDevices.cpp": "99a6f20066a650aa01575d5216c24a88164bdaca2aac2bfe287e18fe8105d983",
     "src/gameplay/GearFiles.cpp": "20b9c69262e8fd2711d6b5f3a044f1bc905e1f0bc5fa8a19db3a80f9a1a3de39",
-    "src/gameplay/GearInput.cpp": "44c431c2309a106d04c29dc25b20883aa974947efff2bb65d979ea9074c981ce",
+    "src/gameplay/GearInput.cpp": "08724d1b0f43d8ce7d07363675628b60ecadb2f0d5292078de2639c0ab78afa2",
     "src/gameplay/GearMemory.cpp": "9cc9f38265e70d6cf238df04391014c61b5d8baa809122f1caa3fc0264a801db",
     "src/gameplay/GearPath.cpp": "a96441e3f4b395f2eed13d15debb2bc489a87679360f9deee585253110398e57",
     "src/gameplay/GearSockets.cpp": "4144f64f6dbf35d02221e50506913ca33c927fa3bc6e96ee7b7b4c4bd7b0c3c9",
@@ -4065,8 +4065,8 @@
     "7.0.1": "c2f0a175157d9aaace8031f8e6d7ea0ed6142b4bcef287105e3ed227301f1002",
     "lld": "c4b3aaea06ff7112c64753047a2ab279fc3fe10dd807fd3c22edfdae99f43eed"
   },
-  "exact_functions": 39405,
-  "exact_bytes": 5246312,
+  "exact_functions": 39412,
+  "exact_bytes": 5247364,
   "builds": [
     {
       "id": "probes",
@@ -13636,7 +13636,7 @@
     {
       "id": "gear_input",
       "compiler": "8.0.1",
-      "object_sha256": "48eab516061fddb45bb80ffe7a5d21d3c08d83adc2712f57d2f60690711a200c"
+      "object_sha256": "ec67a517bfe8ea0d48fea6038a84297d15abc11909b3fc7adc6713d9da35adca"
     },
     {
       "id": "gear_path",
@@ -327568,6 +327568,17 @@
       "relocation_count": 0
     },
     {
+      "address": "0xaa4850",
+      "size": 104,
+      "exact": true,
+      "target_sha256": "3ca76be906396e1fe6b3cd3ce69cc0c1605fe0e5e650413fcde15bdab53dd33b",
+      "compiled_sha256": "3ca76be906396e1fe6b3cd3ce69cc0c1605fe0e5e650413fcde15bdab53dd33b",
+      "source": "src/gameplay/GearInput.cpp",
+      "symbol": "_ZN4Gear7GamePadD2Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 6
+    },
+    {
       "address": "0xaa48d0",
       "size": 8,
       "exact": true,
@@ -328690,6 +328701,17 @@
       "relocation_count": 0
     },
     {
+      "address": "0xaa9e20",
+      "size": 168,
+      "exact": true,
+      "target_sha256": "17d943e7b3bc0588cce35142d2ae711b7c9fe3785dad4afe1e0362610e9fee97",
+      "compiled_sha256": "17d943e7b3bc0588cce35142d2ae711b7c9fe3785dad4afe1e0362610e9fee97",
+      "source": "src/gameplay/GearInput.cpp",
+      "symbol": "_ZN4Gear15GamePadKeyboardD2Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 13
+    },
+    {
       "address": "0xaa9ed0",
       "size": 24,
       "exact": true,
@@ -328697,6 +328719,17 @@
       "compiled_sha256": "1a7b974028ddd7b5c239e42ef8723efa8b5db2d080e88755ce23007aa4a67913",
       "source": "src/DeletingWrapper.cpp",
       "symbol": "_Z16DestroyAllocatedILj11181776EEvPv",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 2
+    },
+    {
+      "address": "0xaa9ef0",
+      "size": 44,
+      "exact": true,
+      "target_sha256": "44f13b610eecd4b353760b4e88bd689184a1b9d8af6a4d5f8267f05c6be93399",
+      "compiled_sha256": "44f13b610eecd4b353760b4e88bd689184a1b9d8af6a4d5f8267f05c6be93399",
+      "source": "src/gameplay/GearInput.cpp",
+      "symbol": "_ZN4Gear15GamePadKeyboard7PressedEh",
       "source_review": "manual_reconstruction",
       "relocation_count": 2
     },
@@ -328720,6 +328753,17 @@
       "source": "src/GuardRecoveryOmit.cpp",
       "symbol": "RecoveredLeaf_aa9f40",
       "source_review": "generated_cxx_abi_view",
+      "relocation_count": 0
+    },
+    {
+      "address": "0xaa9f60",
+      "size": 104,
+      "exact": true,
+      "target_sha256": "dc52b9bb0f1e139787543d9ff4198f7cd4aa9829841b300c6b7db103f4b48eb1",
+      "compiled_sha256": "dc52b9bb0f1e139787543d9ff4198f7cd4aa9829841b300c6b7db103f4b48eb1",
+      "source": "src/gameplay/GearInput.cpp",
+      "symbol": "_ZN4Gear15GamePadKeyboard10AnyPressedEv",
+      "source_review": "manual_reconstruction",
       "relocation_count": 0
     },
     {
@@ -328930,6 +328974,17 @@
       "symbol": "FUN_00aaab40",
       "source_review": "local_model_proposal_abi_review_pending",
       "relocation_count": 0
+    },
+    {
+      "address": "0xaaab50",
+      "size": 168,
+      "exact": true,
+      "target_sha256": "ee3d0296bd28340d3f7ae3d276717c67fc7a1fcc83ab4195e90417b3c8335943",
+      "compiled_sha256": "ee3d0296bd28340d3f7ae3d276717c67fc7a1fcc83ab4195e90417b3c8335943",
+      "source": "src/gameplay/GearInput.cpp",
+      "symbol": "_ZN4Gear12GamePadMouseD2Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 13
     },
     {
       "address": "0xaaac00",
@@ -329922,6 +329977,17 @@
       "relocation_count": 2
     },
     {
+      "address": "0xaac280",
+      "size": 312,
+      "exact": true,
+      "target_sha256": "fbeb79a00bd48ab00be381892e2ee07a3c8bdac99c656e3ea04e3bbab7b6eab8",
+      "compiled_sha256": "fbeb79a00bd48ab00be381892e2ee07a3c8bdac99c656e3ea04e3bbab7b6eab8",
+      "source": "src/gameplay/GearInput.cpp",
+      "symbol": "_ZN4Gear19TimeFilteredGamePad7Moved20Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 2
+    },
+    {
       "address": "0xaac3c0",
       "size": 160,
       "exact": true,
@@ -329973,6 +330039,17 @@
       "compiled_sha256": "bf9a756bac76bd69d2848e4c4ecf76b1275915fc219cab76773cc2f4b45527c0",
       "source": "src/gameplay/GearInput.cpp",
       "symbol": "_ZN4Gear19TimeFilteredGamePad6Moved9Ev",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 2
+    },
+    {
+      "address": "0xaac5d0",
+      "size": 152,
+      "exact": true,
+      "target_sha256": "15e40db03412e3239ff5c9ed602e95c9103ab1bfa6a32d88fada74b714671689",
+      "compiled_sha256": "15e40db03412e3239ff5c9ed602e95c9103ab1bfa6a32d88fada74b714671689",
+      "source": "src/gameplay/GearInput.cpp",
+      "symbol": "_ZN4Gear19TimeFilteredGamePad7Moved12Ev",
       "source_review": "manual_reconstruction",
       "relocation_count": 2
     },
