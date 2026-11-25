@@ -390,6 +390,14 @@ void AnyKeyInputTrigger::Slot4(onyx::Archive& archive, ComponentSlot::Source* so
     SPTG::ReadEventSlot<13095568u, 102768149u>(archive, source, event50, this);
 }
 
+// 0xc722b0
+void PredicateTrigger::Slot4(onyx::Archive& archive, ComponentSlot::Source* source) {
+    ::OnyxComponentBase::Slot4(archive, source);
+    onyx::Transfer(archive, flag4a);
+    SPTG::ReadEventSlot<13050544u, 2122043198u>(archive, source, event50, this);
+    TransferPredicatePart(archive, part68);
+}
+
 // 0xcdd090
 void VisualEffect::Slot4(onyx::Archive& archive, ComponentSlot::Source* source) {
     ::OnyxComponentBase::Slot4(archive, source);
@@ -1037,3 +1045,20 @@ template struct BaseValuePublisherCircuit<float>;                    // 0xcc35e0
 template struct BaseValuePublisherCircuit<Onyx::Graphics::Color>;    // 0xcc4280
 
 } } } }  // namespace Onyx::Gameplay::Circuits::Detail
+
+namespace Onyx { namespace Gameplay {
+
+// 0xcd9310
+void DistanceTrigger::Slot4(onyx::Archive& archive, ComponentSlot::Source* source) {
+    ::OnyxComponentBase::Slot4(archive, source);
+    onyx::Transfer(archive, flag4a);
+    onyx::TransferHandle(handle50, archive, source);
+    onyx::TransferHandle(handle58, archive, source);
+    SPTG::ReadEventSlot<13472528u, 467818291u>(archive, source, event60, this);
+    SPTG::ReadEventSlot<13472529u, 537016270u>(archive, source, event78, this);
+    float distance;
+    onyx::Transfer(archive, distance);
+    distanceSquared = distance * distance;
+}
+
+} }  // namespace Onyx::Gameplay

@@ -1,9 +1,9 @@
 {
   "version": 1,
-  "generated_at": "2026-11-25T11:25:39.646474+00:00",
+  "generated_at": "2026-11-25T11:43:10.329659+00:00",
   "target_elf_sha256": "ea95638e6d6aaa0dc6cddd552a9366799aa1ec3bc07ee201f23f6c151103f5b8",
   "input_sha256": {
-    "config/builds.json": "d04a5e07d9aaf62b96f20253a9b7b53a52018d9cfb22666f7e53ac23f1f13bd4",
+    "config/builds.json": "dff61108d6d45034a95d047c93ffb0aff17ef2c4705fbf2275c65e8a47710f30",
     "config/functions.tsv": "399e91468a04e0459194c10d68d2210d1157cedefeb19c7851886ca7632fcb18",
     "config/non_fde_functions.tsv": "6a45f5e185454fa0472af00b2cdc9d040d73ca133d1106217e1fbbe3b32a8175",
     "config/target.json": "23cc6a5227206a953e7668acf5e9ae5c02a25c23b7e7967f0450a814b888241a",
@@ -1210,8 +1210,8 @@
     "src/gameplay/OnyxFunction.h": "d7d73b24d377ccf4c1837b37ae1e75f9e304982c5ef4be385f655832a44408c4",
     "src/gameplay/OnyxGraphics.cpp": "933112fb92b716758fb3cac83526c7202fb2d29ae341e0912462c22c2001f4ab",
     "src/gameplay/OnyxGraphics.h": "1beb316067c141d9579c3c2ee71cc582ea91571b1197b1b4323eb75402bdacb6",
-    "src/gameplay/OnyxSerialize.cpp": "304335de146116fb3488bbbbd2231f576e5c067c59eacd8173a69e177b298a83",
-    "src/gameplay/OnyxSerialize.h": "261241fa3a1ed7e6d9530fcee4f1038587ad121cc3d63a068b0f1161fc382d34",
+    "src/gameplay/OnyxSerialize.cpp": "f3b6c860b7229f61b4a53f4c8ac3901e76c221d8f75c1f60b4062b06c89c0804",
+    "src/gameplay/OnyxSerialize.h": "66452d9eb4864eec8f30e0642f7df06ea6b6e5e4d098adb321c60c4c1c99e502",
     "src/gameplay/Particle.h": "9109df9112f601ce7db8f625169eafe6b2b57c3c59fead0d778a6dff390f2e29",
     "src/gameplay/ParticleEffects.cpp": "1015d145c16846c8b37c7cfbd194d87fa2f2519b52b1d6c5af9d9b9cf9b6f84f",
     "src/gameplay/ParticleEmitters.cpp": "432c54d433db012966ed19aa1d09b2e487772da8c8cad54d952c2089a38b5f91",
@@ -4058,17 +4058,17 @@
     "vendor/zlib-1.2.11/zutil.h": "9a63f6690fac1620aa3cecee5752af618806da438a256b4a047fbcd289cac159"
   },
   "compiler_versions": {
-    "8.0.1": "clang version 8.0.1 (tags/RELEASE_801/final)",
     "7.0.1": "clang version 7.0.1 (tags/RELEASE_701/final)",
+    "8.0.1": "clang version 8.0.1 (tags/RELEASE_801/final)",
     "lld": "LLD 8.0.1 (compatible with GNU linkers)"
   },
   "compiler_sha256": {
-    "8.0.1": "dffd62a213ec6cdb4430012a4a41c11e5e32c288f133d5391f9be49e1c5b69de",
     "7.0.1": "c2f0a175157d9aaace8031f8e6d7ea0ed6142b4bcef287105e3ed227301f1002",
+    "8.0.1": "dffd62a213ec6cdb4430012a4a41c11e5e32c288f133d5391f9be49e1c5b69de",
     "lld": "c4b3aaea06ff7112c64753047a2ab279fc3fe10dd807fd3c22edfdae99f43eed"
   },
-  "exact_functions": 39554,
-  "exact_bytes": 5270312,
+  "exact_functions": 39556,
+  "exact_bytes": 5272376,
   "builds": [
     {
       "id": "probes",
@@ -13213,7 +13213,7 @@
     {
       "id": "gameplay_onyx_serialize",
       "compiler": "8.0.1",
-      "object_sha256": "82bb464bf6cc037da45c2c11362f2de40074f1cb2ba6b2d76a1c1ce63bd0a0d4"
+      "object_sha256": "7a70863e8356a2e96bf1f54139ce5062c33e46537d097355d208d949ea957d11"
     },
     {
       "id": "catalog_refresh",
@@ -385242,6 +385242,17 @@
       "relocation_count": 2
     },
     {
+      "address": "0xc722b0",
+      "size": 708,
+      "exact": true,
+      "target_sha256": "6bf11ffb317bb8a4a5c4c7a275f0939c96312d6bb398143a5415ba22b4bc5497",
+      "compiled_sha256": "6bf11ffb317bb8a4a5c4c7a275f0939c96312d6bb398143a5415ba22b4bc5497",
+      "source": "src/gameplay/OnyxSerialize.cpp",
+      "symbol": "_ZN4Onyx16PredicateTrigger5Slot4ERN4onyx7ArchiveEPN13ComponentSlot6SourceE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 27
+    },
+    {
       "address": "0xc72580",
       "size": 600,
       "exact": true,
@@ -400574,6 +400585,17 @@
       "symbol": "_ZN4SPTG15DistanceTrigger6UpdateEv",
       "source_review": "manual_reconstruction",
       "relocation_count": 32
+    },
+    {
+      "address": "0xcd9310",
+      "size": 1356,
+      "exact": true,
+      "target_sha256": "2e037315a1b117c5ff377bbfa3cf3a5b7078a3aff2797b08d1c8ed8818a73d64",
+      "compiled_sha256": "2e037315a1b117c5ff377bbfa3cf3a5b7078a3aff2797b08d1c8ed8818a73d64",
+      "source": "src/gameplay/OnyxSerialize.cpp",
+      "symbol": "_ZN4Onyx8Gameplay15DistanceTrigger5Slot4ERN4onyx7ArchiveEPN13ComponentSlot6SourceE",
+      "source_review": "manual_reconstruction",
+      "relocation_count": 52
     },
     {
       "address": "0xcd9b80",

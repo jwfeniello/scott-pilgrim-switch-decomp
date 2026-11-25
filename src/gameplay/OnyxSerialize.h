@@ -568,6 +568,18 @@ struct AnyKeyInputTrigger : ::OnyxComponentBase {
     SPTG::EventSlot event50;           // +0x50
 };
 
+// Onyx::PredicateTrigger: AnyKeyInputTrigger's fields, then a part at +0x68 that 0x678830 transfers.
+struct PredicatePart { char data[0x8]; };
+void TransferPredicatePart(onyx::Archive& archive, PredicatePart& part);   // 0x678830 (name provisional)
+struct PredicateTrigger : ::OnyxComponentBase {
+    void Slot4(onyx::Archive& archive, ComponentSlot::Source* source);   // 0xc722b0
+    char padding_0[0x4a];
+    uint8_t flag4a;              // +0x4a
+    char padding_4b[0x5];
+    SPTG::EventSlot event50;           // +0x50
+    PredicatePart part68;              // +0x68
+};
+
 // Onyx::VisualEffect
 struct VisualEffect : ::OnyxComponentBase {
     void Slot4(onyx::Archive& archive, ComponentSlot::Source* source);   // 0xcdd090
@@ -1272,3 +1284,20 @@ struct Localization : ::OnyxComponentBase {
 };
 
 } }  // namespace Onyx::Localization
+
+namespace Onyx { namespace Gameplay {
+
+// Onyx::Gameplay::DistanceTrigger: two handles and two events; the distance it reads is kept squared.
+struct DistanceTrigger : ::OnyxComponentBase {
+    void Slot4(onyx::Archive& archive, ComponentSlot::Source* source);   // 0xcd9310
+    char padding_0[0x4a];
+    uint8_t flag4a;              // +0x4a
+    char padding_4b[0x5];
+    onyx::ComponentHandle* handle50; // +0x50
+    onyx::ComponentHandle* handle58; // +0x58
+    SPTG::EventSlot event60;           // +0x60
+    SPTG::EventSlot event78;           // +0x78
+    float distanceSquared;       // +0x90
+};
+
+} }  // namespace Onyx::Gameplay

@@ -497355,6 +497355,31 @@
           "got_bindings": {}
         },
         {
+          "address": "0xc722b0",
+          "size": 708,
+          "symbol": "_ZN4Onyx16PredicateTrigger5Slot4ERN4onyx7ArchiveEPN13ComponentSlot6SourceE",
+          "target_sha256": "6bf11ffb317bb8a4a5c4c7a275f0939c96312d6bb398143a5415ba22b4bc5497",
+          "bindings": {
+            "_ZN17OnyxComponentBase5Slot4ERN4onyx7ArchiveEPN13ComponentSlot6SourceE": "0x6782a0",
+            "_ZN13DecodeBindingILj13050544EE9ReadValueEPvPm": "0x678830",
+            "_ZN13DecodeBindingILj13050544EE6LookupEPvS1_": "0x678ae0",
+            "_ZN4SPTG15KeyedDecodeHostILj13050544EE7GenericERK11DecodeEvent": "0xc72910",
+            "_ZN4SPTG15KeyedDecodeHostILj13050544EE5TypedERK11DecodeEvent": "0xc727e0",
+            "_ZN13DecodeBindingILj13050544EE7contextE": "0x1935058",
+            "_ZN13DecodeBindingILj13050544EE8AllocateEPvm": "0xa972b0",
+            "_ZTV14DecodeCallbackILj13050544EE": "0x18becb8",
+            "_ZN13DecodeBindingILj13050544EE6InvokeEv": "0xc72a40",
+            "_ZN13DecodeBindingILj13050544EE7managerE": "0x1935068",
+            "_ZN13DecodeBindingILj13050544EE7ProcessEPvS1_jS1_m": "0xbf6b10",
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
+            "_ZN4Onyx21TransferPredicatePartERN4onyx7ArchiveERNS_13PredicatePartE": "0x678830",
+            "_Unwind_Resume": "0xfa4920",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
           "address": "0xc79ee0",
           "size": 1328,
           "symbol": "_ZN4Onyx15KeyInputTrigger5Slot4ERN4onyx7ArchiveEPN13ComponentSlot6SourceE",
@@ -498007,6 +498032,41 @@
           "bindings": {
             "_ZN17OnyxComponentBase5Slot4ERN4onyx7ArchiveEPN13ComponentSlot6SourceE": "0x6782a0",
             "_ZN4onyx14TransferHandleERPNS_15ComponentHandleERNS_7ArchiveEPN13ComponentSlot6SourceE": "0x67dd00"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xcd9310",
+          "size": 1356,
+          "symbol": "_ZN4Onyx8Gameplay15DistanceTrigger5Slot4ERN4onyx7ArchiveEPN13ComponentSlot6SourceE",
+          "target_sha256": "2e037315a1b117c5ff377bbfa3cf3a5b7078a3aff2797b08d1c8ed8818a73d64",
+          "bindings": {
+            "_ZN17OnyxComponentBase5Slot4ERN4onyx7ArchiveEPN13ComponentSlot6SourceE": "0x6782a0",
+            "_ZN4onyx14TransferHandleERPNS_15ComponentHandleERNS_7ArchiveEPN13ComponentSlot6SourceE": "0x67dd00",
+            "_ZN13DecodeBindingILj13472528EE9ReadValueEPvPm": "0x678830",
+            "_ZN13DecodeBindingILj13472528EE6LookupEPvS1_": "0x678ae0",
+            "_ZN4SPTG15KeyedDecodeHostILj13472528EE7GenericERK11DecodeEvent": "0xcd9cb0",
+            "_ZN4SPTG15KeyedDecodeHostILj13472528EE5TypedERK11DecodeEvent": "0xcd9b80",
+            "_ZN13DecodeBindingILj13472528EE7contextE": "0x1935058",
+            "_ZN13DecodeBindingILj13472528EE8AllocateEPvm": "0xa972b0",
+            "_ZTV14DecodeCallbackILj13472528EE": "0x18c9920",
+            "_ZN13DecodeBindingILj13472528EE6InvokeEv": "0xcd9de0",
+            "_ZN13DecodeBindingILj13472528EE7managerE": "0x1935068",
+            "_ZN13DecodeBindingILj13472528EE7ProcessEPvS1_jS1_m": "0xbf6b10",
+            "DecodeAllocatorManager": "0x1926bd8",
+            "DecodeAllocatorIndex": "0xa82b30",
+            "_ZN13DecodeBindingILj13472529EE9ReadValueEPvPm": "0x678830",
+            "_ZN13DecodeBindingILj13472529EE6LookupEPvS1_": "0x678ae0",
+            "_ZN4SPTG15KeyedDecodeHostILj13472529EE7GenericERK11DecodeEvent": "0xcd9f30",
+            "_ZN4SPTG15KeyedDecodeHostILj13472529EE5TypedERK11DecodeEvent": "0xcd9e00",
+            "_ZN13DecodeBindingILj13472529EE7contextE": "0x1935058",
+            "_ZN13DecodeBindingILj13472529EE8AllocateEPvm": "0xa972b0",
+            "_ZTV14DecodeCallbackILj13472529EE": "0x18c9950",
+            "_ZN13DecodeBindingILj13472529EE6InvokeEv": "0xcda060",
+            "_ZN13DecodeBindingILj13472529EE7managerE": "0x1935068",
+            "_ZN13DecodeBindingILj13472529EE7ProcessEPvS1_jS1_m": "0xbf6b10",
+            "__clang_call_terminate": "0x6768b8",
+            "_Unwind_Resume": "0xfa4920"
           },
           "got_bindings": {}
         },
