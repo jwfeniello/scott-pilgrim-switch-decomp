@@ -1418,7 +1418,7 @@ struct OwnedVector {
     uint64_t capacity;
     uint64_t size;
     void* data;
-    __attribute__((always_inline)) OwnedVector() : allocator(DefaultAllocator()), capacity(0), size(0), data(nullptr) {}
+    __attribute__((always_inline)) OwnedVector() : capacity(0), size(0), data(nullptr) { allocator = DefaultAllocator(); }
     ~OwnedVector() {
         size = 0;
         if (void* p = data) {
@@ -1431,6 +1431,13 @@ struct OwnedVector {
 struct WaypointPart_7635a0 {
     char data[0x50];
     ~WaypointPart_7635a0();
+};
+// A pair of words cleared when made and destroyed out of line (0x899dd0; provisional name).
+struct RefPair_899dd0 {
+    void* first;
+    void* second;
+    __attribute__((always_inline)) RefPair_899dd0() : first(nullptr), second(nullptr) {}
+    ~RefPair_899dd0();
 };
 // A registration held by its owner: given back through 0x690ee0 when destroyed, with the owner's +0x30 and the kind.
 struct RegistrationOwner { char padding_0[0x30]; int32_t id; };
@@ -1537,3 +1544,31 @@ struct WorldMapWaypoint : WorldMapWaypointLayout {
 };
 }  // namespace SPTG
 void* Create_SPTG_WorldMapWaypoint() { return new (GenericFactoryResolve(GenericFactoryManager, 0x69a91c98u)->Allocate(sizeof(SPTG::WorldMapWaypoint))) SPTG::WorldMapWaypoint; }
+
+struct Event_899db0;
+struct Event_NewMoveAnimationLoader_80;
+// SPTG::NewMoveAnimationLoader (factory 0x753c80): drafted from its constructor
+namespace SPTG {
+struct NewMoveAnimationLoaderLayout : ::Onyx::Component::Base {
+ char p8[0x48];
+ uint16_t field_50;
+ char p52[0x2];
+ int32_t field_54;
+ RefPair_899dd0 member_58;
+ __attribute__((always_inline)) NewMoveAnimationLoaderLayout() : field_50(0x101), field_54(-1), member_58() {}
+ virtual ~NewMoveAnimationLoaderLayout() {}
+};
+struct NewMoveAnimationLoader : NewMoveAnimationLoaderLayout {
+ Onyx::Listener<void(const Event_899db0&)> member_68;
+ Onyx::Listener<void(const Event_NewMoveAnimationLoader_80&)> member_80;
+ int32_t field_98;
+ uint16_t field_9c;
+ char p9e[0x2];
+ OwnedVector member_a0;
+ char pc0[0x8];
+ void F68(const Event_899db0&);
+ __attribute__((always_inline)) NewMoveAnimationLoader() : member_68(), member_80(), field_98(-1), field_9c(0), member_a0() { member_80.owner = this; member_68.owner = this; member_68.function = Onyx::MakeFunction<void(const Event_899db0&)>(Onyx::MemberFunction<NewMoveAnimationLoader, void(const Event_899db0&)>(this, &NewMoveAnimationLoader::F68)); }
+ virtual ~NewMoveAnimationLoader();
+};
+}  // namespace SPTG
+void* Create_SPTG_NewMoveAnimationLoader() { return new (GenericFactoryResolve(GenericFactoryManager, 0x1486d4e8u)->Allocate(sizeof(SPTG::NewMoveAnimationLoader))) SPTG::NewMoveAnimationLoader; }
