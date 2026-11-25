@@ -28,9 +28,20 @@ struct AddressMap {
     }
 };
 
+// The stream the reader reads (+0x60): a buffer (cursor and what is left in it) that slot 3 refills.
+struct ReaderStream {
+    virtual void Slot0(); virtual void Slot1(); virtual void Slot2();
+    virtual void Refill();             // slot 3
+    const uint8_t* cursor;             // +0x8
+    uint32_t remaining;                // +0x10
+};
+__attribute__((always_inline)) inline uint64_t ByteSwap(uint64_t value) { return __builtin_bswap64(value); }
+
 struct BinaryReaderSerializer {
     virtual void Slot0(); virtual void Slot1(); virtual void Slot2(); virtual void Slot3(); virtual void Slot4();
-    virtual void Slot5(); virtual void Slot6(); virtual void Slot7(); virtual void Slot8(); virtual void Slot9();
+    virtual void Slot5(); virtual void Slot6(); virtual void Slot7();
+    virtual void Read(uint64_t* value);   // slot 8
+    virtual void Slot9();
     virtual void Slot10(); virtual void Slot11(); virtual void Slot12(); virtual void Slot13(); virtual void Slot14();
     virtual void Slot15(); virtual void Slot16(); virtual void Slot17(); virtual void Slot18(); virtual void Slot19();
     virtual void Slot20(); virtual void Slot21(); virtual void Slot22(); virtual void Slot23(); virtual void Slot24();
@@ -43,7 +54,45 @@ struct BinaryReaderSerializer {
     int32_t mode;                  // +0x8
     char padding_c[0xc];
     AddressMap addresses;          // +0x18
+    char padding_48[0x10];
+    bool swap;                     // +0x58: the data's byte order differs from ours
+    char padding_59[0x7];
+    // +0x60: a stream constructed in place, its type chosen at run time (so calls through it stay virtual).
+    alignas(8) char streamStorage[0x18];
+    ReaderStream& Stream() { return *reinterpret_cast<ReaderStream*>(streamStorage); }
+    // Reads `size` bytes: in one piece when the buffer holds them, else a piece at a time, refilling as it empties.
+    template<class T> __attribute__((always_inline)) void ReadRaw(T* value) {
+        ReaderStream& stream = Stream();
+        if (stream.remaining < sizeof(T)) {
+            if (!stream.remaining) stream.Refill();
+            uint8_t* to = reinterpret_cast<uint8_t*>(value);
+            uint32_t left = sizeof(T);
+            while (stream.remaining) {
+                uint32_t piece = left < stream.remaining ? left : stream.remaining;
+                __builtin_memcpy(to, stream.cursor, piece);
+                stream.remaining -= piece;
+                stream.cursor += piece;
+                to += piece;
+                left -= piece;
+                if (!stream.remaining) stream.Refill();
+                if (!left) break;
+            }
+        } else {
+            __builtin_memcpy(value, stream.cursor, sizeof(T));
+            stream.remaining -= sizeof(T);
+            stream.cursor += sizeof(T);
+            if (!stream.remaining) stream.Refill();
+        }
+    }
 };
+
+// Slot 8 (0xdbb100): an eight-byte value, swapped when the data's byte order differs.
+// Not yet matched: the original tests remaining >= 8 (ours remaining > 7), and in the piecewise loop it stores what
+// remains before it rereads the cursor.
+void BinaryReaderSerializer::Read(uint64_t* value) {
+    ReadRaw(value);
+    if (swap) *value = ByteSwap(*value);
+}
 
 // Slot 32 (0xdbced0): what `address` maps to, or null. Not matched yet: the original tests the lower bound for null
 // alone, then its key and the end together.
