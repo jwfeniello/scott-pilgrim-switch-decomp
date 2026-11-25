@@ -91,9 +91,12 @@ int32_t AssoMultiEvent::Slot18(void* context, int32_t flag, float value) {   // 
 struct SoundKindFunctions {
     void* function0;
     void (*stop)(void* object);                                   // +0x8
-    void* functions10[2];
+    void* function10;
+    void (*release)(void* object);                                // +0x18
     float (*query)(void* object);                                 // +0x20
-    void* functions28[3];
+    int32_t (*goOn)(void* object, void* argument);                // +0x28: nonzero while the sound goes on
+    int32_t (*forward)(void* object, void* argument);            // +0x30
+    int32_t (*function38)(void* object, int32_t value);           // +0x38: only kinds 2 to 7 have one
     int32_t (*check)(void* object, int32_t a, int32_t b);         // +0x40
     int32_t (*report)(void* object, void* out);                   // +0x48
 };
@@ -106,7 +109,9 @@ struct SoundKind {
 struct PlayingSound {
     int32_t stopped;     // +0x0
     int32_t active;      // +0x4
-    char padding_8[0x10];
+    char padding_8[0x8];
+    int32_t value10;     // +0x10
+    char padding_14[0x4];
     void* object;        // +0x18
     char key[0x8];       // +0x20: what 0xd310a0 finds the kind by
     int32_t value28;     // +0x28
@@ -223,6 +228,366 @@ struct AssoSwitch {
 int32_t AssoSwitch::Slot17() {
     AssoKey key(first, second, owner->id);
     return table.Find(&key, 0) ? 0 : static_cast<int32_t>(0x8000e009u);
+}
+
+// Three kinds of playing sound only wrap another playing sound (provisional names, after their entries 2 to 4 of the
+// table at 0x18d2318) and pass the table's functions on to that sound's own kind.
+// Destroyed out of line (0xcf8f70); see DareParameters.cpp.
+struct EffectChainParameter {
+    ~EffectChainParameter();
+    char data[0x20];
+};
+struct WrappedSound2 {
+    char key[0x8];         // +0x0: what 0xd310a0 finds this sound's own kind by
+    char padding_8[0x8];
+    PlayingSound* sound;   // +0x10
+    char padding_18[0xc];
+    int32_t started;       // +0x24
+    char padding_28[0xd8];
+    EffectChainParameter effects;   // +0x100
+};
+// The list at 0x1939510 of what refers to entry 2's objects (provisional names); its nodes are freed through Dare.
+struct SoundUseNode {
+    SoundUseNode* prev;
+    SoundUseNode* next;    // +0x8
+    WrappedSound2* owner;  // +0x10
+};
+struct SoundUseList {
+    SoundUseNode* prev;
+    SoundUseNode* next;    // +0x8
+    uint64_t count;        // +0x10
+};
+extern "C" SoundUseList Dare_SoundUses;
+// Destroys and frees what Dare allocated (not freed when the destructor throws).
+template<class T> inline void DareDelete(T* object) {
+    if (object) {
+        object->~T();
+        DareFree(object);
+    }
+}
+// Part of entry 3's object whose destructor is 0xd538f0 (provisional).
+struct WrappedSoundPart {
+    ~WrappedSoundPart();
+};
+struct WrappedSound3 {
+    char padding_0[0x8];
+    PlayingSound* sound;   // +0x8: -1 once let go
+    char padding_10[0x8];
+    char key[0x8];         // +0x18
+    int32_t value20;       // +0x20
+    int32_t value24;       // +0x24
+    int32_t value28;       // +0x28
+    char padding_2c[0x4];
+    WrappedSoundPart part; // +0x30
+    // Not noexcept: the original destroys `part` and resumes when the release in the body throws.
+    ~WrappedSound3() noexcept(false);
+};
+struct WrappedSound4 {
+    PlayingSound* sound;   // +0x0
+    char key[0x8];         // +0x8
+    int32_t finished;      // +0x10
+};
+
+// Entry 2's stop (0xd5f310): stops the wrapped sound through its kind, clearing its +0x28.
+void WrappedSound2_Stop(WrappedSound2* object) {
+    PlayingSound* playing = object->sound;
+    if (playing->stopped) return;
+    if (!playing->active) return;
+    playing->value28 = 0;
+    playing->Functions().stop(playing->object);
+}
+
+// Entry 2's +0x30 function (0xd5f910): 1 until the sound has started, then what the wrapped sound's kind answers.
+int32_t WrappedSound2_Forward(WrappedSound2* object, void* argument) {
+    if (!object->started) return 1;
+    PlayingSound* playing = object->sound;
+    return playing->Functions().forward(playing->object, argument);
+}
+
+// Entry 2's report (0xd5fbf0): the wrapped sound's kind's report, or 0x8000e009 when it isn't playing.
+int32_t WrappedSound2_Report(WrappedSound2* object, void* out) {
+    PlayingSound* playing = object->sound;
+    if (playing->stopped || !playing->active) return static_cast<int32_t>(0x8000e009u);
+    return playing->Functions().report(playing->object, out);
+}
+
+// Entry 3's stop (0xd5fcc0): stops the wrapped sound through its kind, clearing its +0x28.
+void WrappedSound3_Stop(WrappedSound3* object) {
+    PlayingSound* playing = object->sound;
+    if (playing->stopped) return;
+    if (!playing->active) return;
+    playing->value28 = 0;
+    playing->Functions().stop(playing->object);
+}
+
+// Entry 3's query (0xd5fed0): what the wrapped sound's kind reports, or -1 when it isn't playing.
+float WrappedSound3_Query(WrappedSound3* object) {
+    PlayingSound* playing = object->sound;
+    if (!playing->active) return -1.0f;
+    return playing->Functions().query(playing->object);
+}
+
+// Entry 3's +0x30 function (0xd5ffb0): what the wrapped sound's kind answers.
+int32_t WrappedSound3_Forward(WrappedSound3* object, void* argument) {
+    PlayingSound* playing = object->sound;
+    return playing->Functions().forward(playing->object, argument);
+}
+
+// Entry 3's report (0xd60270): the wrapped sound's kind's report, or 0x8000e009 when it isn't playing.
+int32_t WrappedSound3_Report(WrappedSound3* object, void* out) {
+    PlayingSound* playing = object->sound;
+    if (playing->stopped || !playing->active) return static_cast<int32_t>(0x8000e009u);
+    return playing->Functions().report(playing->object, out);
+}
+
+// Entry 4's stop (0xd60340): unless finished, stops the wrapped sound through its kind, clearing its +0x28.
+void WrappedSound4_Stop(WrappedSound4* object) {
+    if (object->finished) return;
+    PlayingSound* playing = object->sound;
+    if (playing->stopped) return;
+    if (!playing->active) return;
+    playing->value28 = 0;
+    playing->Functions().stop(playing->object);
+}
+
+// Entry 4's query (0xd604a0): -1 once finished or when the wrapped sound isn't playing, else what its kind reports.
+float WrappedSound4_Query(WrappedSound4* object) {
+    if (object->finished) return -1.0f;
+    PlayingSound* playing = object->sound;
+    if (!playing->active) return -1.0f;
+    return playing->Functions().query(playing->object);
+}
+
+// Entry 4's +0x30 function (0xd605a0): 1 once finished, else what the wrapped sound's kind answers.
+int32_t WrappedSound4_Forward(WrappedSound4* object, void* argument) {
+    if (object->finished) return 1;
+    PlayingSound* playing = object->sound;
+    return playing->Functions().forward(playing->object, argument);
+}
+
+// Entry 2's check (0xd5fb50): 1 when asked (b 0x20000000) about this sound's own kind's value a, else what the
+// wrapped sound's kind answers (0 when it isn't playing).
+int32_t WrappedSound2_Check(WrappedSound2* object, int32_t a, int32_t b) {
+    SoundKind* kind = reinterpret_cast<PlayingSound*>(object->key)->Kind();
+    if (b == 0x20000000 && kind->value0 == a) return 1;
+    PlayingSound* playing = object->sound;
+    if (playing->stopped) return 0;
+    if (!playing->active) return 0;
+    return playing->Functions().check(playing->object, a, b);
+}
+
+// Entry 3's check (0xd601d0): as entry 2's.
+int32_t WrappedSound3_Check(WrappedSound3* object, int32_t a, int32_t b) {
+    SoundKind* kind = reinterpret_cast<PlayingSound*>(object->key)->Kind();
+    if (b == 0x20000000 && kind->value0 == a) return 1;
+    PlayingSound* playing = object->sound;
+    if (playing->stopped) return 0;
+    if (!playing->active) return 0;
+    return playing->Functions().check(playing->object, a, b);
+}
+
+// Entry 4's check (0xd606d0): as entry 2's, but 0 once finished.
+int32_t WrappedSound4_Check(WrappedSound4* object, int32_t a, int32_t b) {
+    SoundKind* kind = reinterpret_cast<PlayingSound*>(object->key)->Kind();
+    if (b == 0x20000000 && kind->value0 == a) return 1;
+    if (object->finished) return 0;
+    PlayingSound* playing = object->sound;
+    if (playing->stopped) return 0;
+    if (!playing->active) return 0;
+    return playing->Functions().check(playing->object, a, b);
+}
+
+// Entry 4's report (0xd60770): the wrapped sound's kind's report, or 0x8000e009 without an object, a sound (-1), or
+// when the sound isn't playing.
+int32_t WrappedSound4_Report(WrappedSound4* object, void* out) {
+    if (!object) return static_cast<int32_t>(0x8000e009u);
+    PlayingSound* playing = object->sound;
+    if (playing == reinterpret_cast<PlayingSound*>(-1)) return static_cast<int32_t>(0x8000e009u);
+    if (playing->stopped || !playing->active) return static_cast<int32_t>(0x8000e009u);
+    return playing->Functions().report(playing->object, out);
+}
+
+// Lets a playing sound go: its kind releases it when it is active, then it is marked stopped.
+inline void LetGo(PlayingSound* playing) {
+    if (playing->active) playing->Functions().release(playing->object);
+    playing->value10 = 0;
+    playing->stopped = 1;
+}
+
+// Entry 3's object lets its sound go once.
+WrappedSound3::~WrappedSound3() noexcept(false) {
+    if (sound != reinterpret_cast<PlayingSound*>(-1)) {
+        PlayingSound* playing = sound;
+        if (!playing->stopped) LetGo(playing);
+        sound = reinterpret_cast<PlayingSound*>(-1);
+    }
+}
+
+// Entry 3's release (0xd5fe10): destroys and frees the object (not freed when the destructor throws).
+void WrappedSound3_Release(WrappedSound3* object) {
+    if (!object) return;
+    object->~WrappedSound3();
+    DareFree(object);
+}
+
+// Entry 3's +0x28 function (0xd5ff20): 1 while the wrapped sound goes on; otherwise lets it go, releases the object
+// and answers 0.
+int32_t WrappedSound3_GoOn(WrappedSound3* object, void* argument) {
+    PlayingSound* playing = object->sound;
+    if (!playing->stopped) {
+        if (playing->active && playing->Functions().goOn(playing->object, argument)) return 1;
+        playing->value10 = 0;
+        playing->stopped = 1;
+    }
+    object->sound = reinterpret_cast<PlayingSound*>(-1);
+    WrappedSound3_Release(object);
+    return 0;
+}
+
+// Entry 4's release (0xd60400): unless finished, lets the wrapped sound go; then frees the object.
+void WrappedSound4_Release(WrappedSound4* object) {
+    if (!object->finished) {
+        PlayingSound* playing = object->sound;
+        if (!playing->stopped) LetGo(playing);
+    }
+    DareFree(object);
+}
+
+// Entry 4's +0x28 function (0xd604f0): 1 while the wrapped sound goes on; otherwise (or once finished) lets it go,
+// frees the object and answers 0.
+int32_t WrappedSound4_GoOn(WrappedSound4* object, void* argument) {
+    if (!object->finished) {
+        PlayingSound* playing = object->sound;
+        if (!playing->stopped) {
+            if (playing->active && playing->Functions().goOn(playing->object, argument)) return 1;
+            playing->value10 = 0;
+            playing->stopped = 1;
+        }
+    }
+    DareFree(object);
+    return 0;
+}
+
+// Entry 4's +0x38 function (0xd60600): 1 while the wrapped sound's kind answers nonzero, or when its kind is not one of
+// 2 to 7 (the kinds that have this function); otherwise (or once finished) lets the sound go, frees the object and
+// answers 0. The 64-bit index's only support is that it matches (a 32-bit range test compares in w registers).
+int32_t WrappedSound4_Function38(WrappedSound4* object, int32_t value) {
+    if (!object->finished) {
+        PlayingSound* playing = object->sound;
+        if (!playing->stopped) {
+            if (playing->active) {
+                uint64_t index = reinterpret_cast<PlayingSound*>(playing->key)->Kind()->index;
+                if (index - 2 > 5 || playing->Functions().function38(playing->object, value)) return 1;
+            }
+            playing->value10 = 0;
+            playing->stopped = 1;
+        }
+    }
+    DareFree(object);
+    return 0;
+}
+
+// What entry 3's start uses (provisional names): finds the sound data (fresh when the sound must be made anew), makes
+// a playing sound from it (-1 when that fails), or restarts the one there is.
+int32_t PrepareSound(WrappedSound3* object, void** data, int32_t* fresh);                                // 0xd65e00
+PlayingSound* MakeSound(void* data, int32_t value28, void* first, int32_t value20, int32_t value24, void* second);  // 0xd65f50
+int32_t RestartSound(PlayingSound* sound, void* first, void* second);                                    // 0xd64900
+
+// Entry 3's +0x10 function (0xd5fd10): (re)starts the wrapped sound, letting the old one go when a new one is made;
+// on failure the object is released and the answer is 0.
+int32_t WrappedSound3_Start(WrappedSound3* object, void* first, void* second) {
+    int32_t fresh = 1;
+    void* data;
+    if (PrepareSound(object, &data, &fresh)) {
+        if (fresh) {
+            PlayingSound* playing = object->sound;
+            if (!playing->stopped) LetGo(playing);
+            object->sound = MakeSound(data, object->value28, first, object->value20, object->value24, second);
+        } else if (!RestartSound(object->sound, first, second)) {
+            object->sound = reinterpret_cast<PlayingSound*>(-1);
+            WrappedSound3_Release(object);
+            return 0;
+        }
+        if (object->sound != reinterpret_cast<PlayingSound*>(-1)) return 1;
+    }
+    WrappedSound3_Release(object);
+    return 0;
+}
+
+// Drops the list's nodes for an entry 2 object (the loop steps past the node after each one it removes), then
+// destroys and frees the object. The original tests the object for null only after walking a non-empty list; this
+// spelling of that is match-only (a plain DareDelete after the loop also tests it when the list is empty).
+inline void ForgetWrappedSound2(WrappedSound2* object) {
+    SoundUseNode* end = reinterpret_cast<SoundUseNode*>(&Dare_SoundUses);
+    SoundUseNode* node = Dare_SoundUses.next;
+    if (node != end) {
+        do {
+            if (node->owner == object) {
+                SoundUseNode* next = node->next;
+                node->prev->next = next;
+                next->prev = node->prev;
+                DareDelete(node);
+                --Dare_SoundUses.count;
+                node = next;
+            }
+            node = node->next;
+        } while (node != end);
+        if (!object) return;
+    }
+    object->effects.~EffectChainParameter();
+    DareFree(object);
+}
+
+// Entry 2's release (0xd5f610): lets the wrapped sound go, then forgets the object.
+void WrappedSound2_Release(WrappedSound2* object) {
+    object->started = 0;
+    PlayingSound* playing = object->sound;
+    if (!playing->stopped) LetGo(playing);
+    ForgetWrappedSound2(object);
+}
+
+// What entry 2 does when its wrapped sound ends (provisional name): may start the next one, setting +0x24.
+void AdvanceWrappedSound2(WrappedSound2* object);   // 0xd90000
+
+// Entry 2's +0x28 function (0xd5f750): 1 while the wrapped sound goes on, or while a next one starts after it ends;
+// otherwise (or when never started) forgets the object and answers 0.
+int32_t WrappedSound2_GoOn(WrappedSound2* object, void* argument) {
+    if (!object->started) {
+        ForgetWrappedSound2(object);
+        return 0;
+    }
+    PlayingSound* playing = object->sound;
+    if (!playing->stopped) {
+        if (playing->active && playing->Functions().goOn(playing->object, argument)) return 1;
+        playing->value10 = 0;
+        playing->stopped = 1;
+    }
+    AdvanceWrappedSound2(object);
+    if (object->started) return 1;
+    ForgetWrappedSound2(object);
+    return 0;
+}
+
+// Entry 2's +0x38 function (0xd5f970): as its +0x28 function, through the wrapped sound's kind's +0x38 function
+// (kinds other than 2 to 7 count as going on; the 64-bit index as in WrappedSound4_Function38).
+int32_t WrappedSound2_Function38(WrappedSound2* object, int32_t value) {
+    if (!object->started) {
+        ForgetWrappedSound2(object);
+        return 0;
+    }
+    PlayingSound* playing = object->sound;
+    if (!playing->stopped) {
+        if (playing->active) {
+            uint64_t index = reinterpret_cast<PlayingSound*>(playing->key)->Kind()->index;
+            if (index - 2 > 5 || playing->Functions().function38(playing->object, value)) return 1;
+        }
+        playing->value10 = 0;
+        playing->stopped = 1;
+    }
+    AdvanceWrappedSound2(object);
+    if (object->started) return 1;
+    ForgetWrappedSound2(object);
+    return 0;
 }
 
 // A growable array without DareArray's reserved word (provisional name): emptied, freed and cleared when destroyed.
