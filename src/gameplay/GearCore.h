@@ -254,7 +254,11 @@ struct Thread {
     virtual int32_t ThreadSlot4();     // slot 4 (0xa7f000): 7
     virtual void ThreadSlot5();
     virtual void Wait(int32_t timeout);   // slot 6
-    char padding_8[0x148];
+    char padding_8[0x10];
+    uint32_t id;                       // +0x18: what the thread table (0x1926bc0) knows it by
+    char padding_1c[0x44];
+    uint32_t value60;                  // +0x60
+    char padding_64[0xec];
 };
 
 }  // namespace Gear

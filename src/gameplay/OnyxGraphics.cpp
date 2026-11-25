@@ -357,9 +357,9 @@ namespace Graphics {
 
 // Slots 0 and 1 (0x6866b0, 0x686730): destroys the texel buffer and gives its memory back. The base-object
 // destructor (D2, which the complete one aliases here) is slot 0's code.
-// Not yet matched (slot 1): ours calls the aliased complete destructor; the original inlines it, as a destructor
-// defined in the class (emitted with a vtable whose key function is elsewhere in the file) would be.
-Texture::~Texture() {
+// The deleting destructor inlines the body, as the link-time optimizer did; always_inline stands in for that inlining
+// (its only support is that it matches), since spelled inline the destructor would no longer be the key function.
+__attribute__((always_inline)) Texture::~Texture() {
     TexelBuffer* buffer = texels;
     if (buffer) {
         onyx::Allocator* allocator = onyx::AllocatorFor(buffer);

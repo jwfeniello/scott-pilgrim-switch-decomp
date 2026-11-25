@@ -2824,4 +2824,19 @@ void AudioAction::Slot18() noexcept {
         Finish(&event);
     }
 }
+
+// SPTG::StartPlayerAction (vtable 0x1869da0). Its base is Onyx::Component::Compose<Onyx::ActionComponent,
+// Collection<Singleton<SPTG::LevelItemAccessor>, Singleton<SPTG::GameplayFlow>, WeakList<SPTG::ActorActionComponent>>>,
+// whose destructor (0x8fa3c0) isn't written yet; the base name is provisional.
+struct StartPlayerActionBase {
+    virtual ~StartPlayerActionBase();
+};
+struct StartPlayerAction : StartPlayerActionBase {
+    ~StartPlayerAction() override;
+    void Release();             // 0x8f91f0 (name provisional): what the action still holds goes, while +0xd8 is set
+};
+// Slot 0 (0x8f8a70; the deleting destructor 0x8f8ab0 inlines it).
+StartPlayerAction::~StartPlayerAction() {
+    Release();
+}
 }  // namespace SPTG

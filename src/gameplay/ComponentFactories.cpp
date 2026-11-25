@@ -4127,6 +4127,30 @@ struct EventPlayStore : EventPlayStoreLayout {
 }  // namespace Onyx
 void* Create_Onyx_DareAudio_EventPlayStore() { return new (DirectAllocator()->Allocate(sizeof(Onyx::DareAudio::EventPlayStore))) Onyx::DareAudio::EventPlayStore; }
 
+// Onyx::f32LinearKeyFrameCurve (factory 0xbf1b90) and Onyx::f32StepKeyFrameCurve (factory 0xbf1be0), built like
+// EventPlayStore: 0x30 bytes, the default allocator at +0x8 and zeros after it.
+namespace Onyx {
+struct f32KeyFrameCurveLayout {
+    virtual ~f32KeyFrameCurveLayout();
+    void* field_8;
+    uint64_t field_10;
+    uint64_t field_18;
+    uint64_t field_20;
+    char padding_28[0x8];
+    __attribute__((always_inline)) f32KeyFrameCurveLayout() { field_18 = 0; field_20 = 0; field_10 = 0; field_8 = DefaultAllocator(); }
+};
+struct f32LinearKeyFrameCurve : f32KeyFrameCurveLayout {
+    __attribute__((always_inline)) f32LinearKeyFrameCurve() {}
+    virtual ~f32LinearKeyFrameCurve();
+};
+struct f32StepKeyFrameCurve : f32KeyFrameCurveLayout {
+    __attribute__((always_inline)) f32StepKeyFrameCurve() {}
+    virtual ~f32StepKeyFrameCurve();
+};
+}  // namespace Onyx
+void* Create_Onyx_f32LinearKeyFrameCurve() { return new (DirectAllocator()->Allocate(sizeof(Onyx::f32LinearKeyFrameCurve))) Onyx::f32LinearKeyFrameCurve; }
+void* Create_Onyx_f32StepKeyFrameCurve() { return new (DirectAllocator()->Allocate(sizeof(Onyx::f32StepKeyFrameCurve))) Onyx::f32StepKeyFrameCurve; }
+
 // SPTG::SoundTestModeAction (factory 0x74e520), by its constructor's stores
 namespace SPTG {
 struct SoundTestModeActionLayout : ::Onyx::ActionComponent {

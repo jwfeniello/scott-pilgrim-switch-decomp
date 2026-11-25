@@ -2,23 +2,23 @@
 #include "FireCore.h"
 
 // 0xec8c40 (EditTextTable slot 0): empties the table while its own slots are in place.
-// Not yet matched: the deleting destructor (0xec8d00) inlines this body in the original; that needs the inline hint, but
-// spelled inline this destructor would leave the class without a key function here, so no vtable or destructors get emitted.
-EditTextTable::~EditTextTable() {
+// The deleting destructor (0xec8d00) inlines this body, as the link-time optimizer did. Spelled inline it would leave the
+// class without a key function here, so always_inline stands in for that inlining (its only support is that it matches).
+__attribute__((always_inline)) EditTextTable::~EditTextTable() {
     RemoveAll();
 }
 
 // 0xee4dc0 (ClassTable slot 0): empties the table while its own slots are in place.
-// Not yet matched: the deleting destructor (0xee4e80) inlines this body in the original; that needs the inline hint, but
-// spelled inline this destructor would leave the class without a key function here, so no vtable or destructors get emitted.
-ClassTable::~ClassTable() {
+// The deleting destructor (0xee4e80) inlines this body, as the link-time optimizer did. Spelled inline it would leave the
+// class without a key function here, so always_inline stands in for that inlining (its only support is that it matches).
+__attribute__((always_inline)) ClassTable::~ClassTable() {
     RemoveAll();
 }
 
 // 0xefb3e0 (ScriptWatchHashTable slot 0): empties the table while its own slots are in place.
-// Not yet matched: the deleting destructor (0xefb4a0) inlines this body in the original; that needs the inline hint, but
-// spelled inline this destructor needs DeleteItem (0xefb570, unmatched) defined here as the key function, so no vtable or destructors get emitted.
-ScriptWatchHashTable::~ScriptWatchHashTable() {
+// The deleting destructor (0xefb4a0) inlines this body, as the link-time optimizer did. Spelled inline it would leave the
+// class without a key function here, so always_inline stands in for that inlining (its only support is that it matches).
+__attribute__((always_inline)) ScriptWatchHashTable::~ScriptWatchHashTable() {
     RemoveAll();
 }
 

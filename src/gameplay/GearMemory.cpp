@@ -94,6 +94,42 @@ uint32_t StaticMemoryBlockProvider::Write(const void* from, uint32_t offset, uin
     return written;
 }
 
+// Gear::DynamicMemoryBlockProvider (vtable 0x189c2b0): memory file contents in a list of blocks from an allocator.
+struct DynamicMemoryBlockProvider {
+    // A list node: the block's memory at +0x10.
+    struct Node {
+        Node* next;
+        Node* previous;                // +0x8
+        void* data;                    // +0x10
+    };
+    // The allocator at +0x8 as this class sees it: its slot 6 frees, and unlike MemInterface's here it may throw (the
+    // original's destructor has a terminate landing pad around the calls). The type is a guess at that shape.
+    struct Allocator {
+        virtual void Slot0(); virtual void Slot1(); virtual void Slot2(); virtual void Slot3(); virtual void Slot4();
+        virtual void Slot5();
+        virtual void Free(void* block);    // slot 6
+    };
+    virtual ~DynamicMemoryBlockProvider();
+    Allocator* allocator;              // +0x8
+    char padding_10[0x8];
+    Node* head;                        // +0x18
+    Node* tail;                        // +0x20
+};
+
+// Slot 0 (0xa9c9f0; the deleting destructor 0xa9ca70 inlines it): unlinks each block from the front and frees it and
+// its node.
+DynamicMemoryBlockProvider::~DynamicMemoryBlockProvider() {
+    while (Node* node = head) {
+        head = node->next;
+        if (node->next) node->next->previous = nullptr;
+        else tail = nullptr;
+        node->next = nullptr;
+        node->previous = nullptr;
+        allocator->Free(node->data);
+        allocator->Free(node);
+    }
+}
+
 // Gear::ZLib (vtable 0x189b968): a zlib stream, whose memory comes from the Gear allocator at +0x8; the stream's
 // opaque pointer is the ZLib itself. Slot 2 of the allocator takes the size.
 struct ZLib {
