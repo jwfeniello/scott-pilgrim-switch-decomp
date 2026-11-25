@@ -5056,3 +5056,125 @@ struct EffectRandom : EffectRandomLayout {
 }  // namespace Onyx
 void* Create_Onyx_Graphics_Particle_Effect_EffectGroup() { return new (GenericFactoryResolve(GenericFactoryManager, 0x7b73c94u)->Allocate(sizeof(Onyx::Graphics::Particle::Effect::EffectGroup))) Onyx::Graphics::Particle::Effect::EffectGroup; }
 void* Create_Onyx_Graphics_Particle_Effect_EffectRandom() { return new (GenericFactoryResolve(GenericFactoryManager, 0x7b73c94u)->Allocate(sizeof(Onyx::Graphics::Particle::Effect::EffectRandom))) Onyx::Graphics::Particle::Effect::EffectRandom; }
+
+// SPTG::AreaClear (factory 0x755d50), by its constructor's stores
+namespace SPTG {
+struct AreaClearLayout : ::Onyx::Fire::FireVisual {
+    char padding_8[0x2a8];
+    float field_2b0;
+    float field_2b4;
+    float field_2b8;
+    float field_2bc;
+    float field_2c0;
+    float field_2c4;
+    float field_2c8;
+    float field_2cc;
+    float field_2d0;
+    float field_2d4;
+    float field_2d8;
+    float field_2dc;
+    float field_2e0;
+    float field_2e4;
+    uint8_t field_2e8;
+    char padding_2e9[0x3];
+    uint8_t field_2ec;
+    __attribute__((always_inline)) AreaClearLayout() { field_2c0 = 0.0f; field_2c4 = 0.0f; field_2c8 = 0.0f; field_2cc = 0.0f; field_2d0 = 0.0f; field_2d4 = 0.0f; field_2d8 = 0.0f; field_2dc = 0.0f; }
+    virtual ~AreaClearLayout();
+};
+struct AreaClear : AreaClearLayout {
+    __attribute__((always_inline)) AreaClear() { field_2e8 = 1; field_2ec = 0; field_2b0 = 0.0f; field_2b4 = 0.0f; field_2b8 = 0.0f; field_2bc = 0.0f; field_2e0 = 5.0f; field_2e4 = 5.0f; }
+    virtual ~AreaClear();
+};
+}  // namespace SPTG
+void* Create_SPTG_AreaClear() { return new (GenericFactoryResolve(GenericFactoryManager, 0x19938f9fu)->Allocate(sizeof(SPTG::AreaClear))) SPTG::AreaClear; }
+
+// SPTG::PublisherScreen (factory 0x75ae10), by its constructor's stores
+namespace SPTG {
+struct PublisherScreenLayout : ::Onyx::Fire::FireVisual {
+    char padding_8[0x2b0];
+    uint64_t field_2b8;
+    void* field_2c0;
+    uint8_t field_2c8;
+    char padding_2c9[0x7];
+    uint64_t field_2d0;
+    void* field_2d8;
+    uint8_t field_2e0;
+    char padding_2e1[0x7];
+    float field_2e8;
+    float field_2ec;
+    uint8_t field_2f0;
+    __attribute__((always_inline)) PublisherScreenLayout() {}
+    virtual ~PublisherScreenLayout();
+};
+struct PublisherScreen : PublisherScreenLayout {
+    __attribute__((always_inline)) PublisherScreen() { field_2b8 = 0; field_2c8 = 0; field_2d0 = 0; field_2e0 = 0; field_2e8 = 7.0f; field_2ec = 7.0f; field_2f0 = 1; field_2c0 = this; field_2d8 = this; }
+    virtual ~PublisherScreen();
+};
+}  // namespace SPTG
+void* Create_SPTG_PublisherScreen() { return new (GenericFactoryResolve(GenericFactoryManager, 0x19938f9fu)->Allocate(sizeof(SPTG::PublisherScreen))) SPTG::PublisherScreen; }
+
+// SPTG::SaveOverlay (factory 0x7619a0), by its constructor's stores
+namespace SPTG {
+struct SaveOverlayLayout : ::Onyx::Component::Base {
+    char padding_8[0x48];
+    uint64_t field_50;
+    uint64_t field_58;
+    uint64_t field_60;
+    void* field_68;
+    uint64_t field_70;
+    uint64_t field_78;
+    char padding_80[0x8];
+    uint64_t field_88;
+    float field_90;
+    float field_94;
+    float field_98;
+    float field_9c;
+    float field_a0;
+    float field_a4;
+    float field_a8;
+    float field_ac;
+    uint64_t field_b0;
+    float field_b8;
+    float field_bc;
+    uint8_t field_c0;
+    char padding_c1[0x3];
+    uint16_t field_c4;
+    __attribute__((always_inline)) SaveOverlayLayout() { field_50 = 0; field_58 = 0; field_60 = 0; }
+    virtual ~SaveOverlayLayout();
+};
+struct SaveOverlay : SaveOverlayLayout {
+    __attribute__((always_inline)) SaveOverlay() { field_88 = 0; field_70 = 0; field_78 = 0; field_68 = DefaultAllocator(); field_90 = 0.0f; field_94 = 0.0f; field_98 = 0.0f; field_9c = 0.0f; field_a0 = 0.0f; field_a4 = 0.0f; field_a8 = 0.0f; field_ac = 0.0f; field_c0 = 1; field_b0 = 0; field_b8 = 3.0f; field_bc = 3.0f; field_c4 = 0x100u; }
+    virtual ~SaveOverlay();
+};
+}  // namespace SPTG
+void* Create_SPTG_SaveOverlay() { return new (GenericFactoryResolve(GenericFactoryManager, 0x7b73c94u)->Allocate(sizeof(SPTG::SaveOverlay))) SPTG::SaveOverlay; }
+
+// Onyx::Skeleton (factory 0xac59c0), by its constructor's stores
+namespace Onyx {
+struct SkeletonLayout : ::Onyx::Component::Base {
+    char padding_8[0x48];
+    void* field_50;
+    uint64_t field_58;
+    uint64_t field_60;
+    char padding_68[0x8];
+    uint64_t field_70;
+    void* field_78;
+    uint64_t field_80;
+    uint64_t field_88;
+    char padding_90[0x8];
+    uint64_t field_98;
+    char padding_a0[0x8];
+    void* field_a8;
+    uint64_t field_b0;
+    uint64_t field_b8;
+    uint64_t field_c0;
+    char padding_c8[0x8];
+    __attribute__((always_inline)) SkeletonLayout() { field_70 = 0; field_58 = 0; field_60 = 0; field_50 = DefaultAllocator(); field_98 = 0; field_80 = 0; field_88 = 0; }
+    virtual ~SkeletonLayout();
+};
+struct Skeleton : SkeletonLayout {
+    __attribute__((always_inline)) Skeleton() { field_78 = DefaultAllocator(); field_a8 = DefaultAllocator(); field_b0 = 0; field_b8 = 0; field_c0 = 0; }
+    virtual ~Skeleton();
+};
+}  // namespace Onyx
+void* Create_Onyx_Skeleton() { return new (GenericFactoryResolve(GenericFactoryManager, 0x7b73c94u)->Allocate(sizeof(Onyx::Skeleton))) Onyx::Skeleton; }

@@ -164,3 +164,26 @@ T_DISCONNECT(TFader)                // 0xd74d40
 T_DISCONNECT(TImaAdpcm)             // 0xd75700
 T_DISCONNECT(TPCM)                  // 0xd76080
 T_DISCONNECT(TMultiTrack)           // 0xd766e0
+
+// TAdder (RTTI name): mixes the samples on its list of inputs (+0x38; each node's sample first, the next node at
+// +0x20). Names provisional.
+struct TAdderInput {
+    TVirtualSample* sample;
+    char padding_8[0x18];
+    TAdderInput* next;       // +0x20
+};
+struct TAdder : TVirtualSample {
+    int Slot19() override;
+    TAdderInput* inputs;     // +0x38
+};
+// Slot 19 (0xd74200): whether slot 19 holds for every input.
+int TAdder::Slot19() {
+    int result = 1;
+    TAdderInput* input = inputs;
+    while (input) {
+        TAdderInput* next = input->next;
+        result &= input->sample->Slot19();
+        input = next;
+    }
+    return result;
+}

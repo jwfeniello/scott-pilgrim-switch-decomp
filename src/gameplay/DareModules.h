@@ -35,7 +35,8 @@ struct TVirtualSample {
     virtual void Slot12(); virtual void Slot13(); virtual void Slot14(); virtual void Slot15();
     virtual void Read(const TSampleBuffer* buffer, uint32_t* written);   // slot 16
     virtual void ReadFrames(TSampleBuffer* frames, uint32_t* produced);  // slot 17
-    virtual void Slot18(); virtual void Slot19();
+    virtual void Slot18();
+    virtual int Slot19();                          // slot 19
     // Slots 20 and 21 (the base's own at 0xd6a890): only the handle goes.
     virtual ~TVirtualSample() {}
     char padding_8[0x4];
