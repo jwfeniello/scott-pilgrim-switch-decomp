@@ -137,6 +137,7 @@ template<class Sig> struct Listener {
 
 namespace Onyx { namespace Component { struct Base { Base(); virtual ~Base(); }; } }
 namespace Onyx { namespace Fire { struct FireVisual { FireVisual(); virtual ~FireVisual(); }; } }
+struct Base_6a48c0 { Base_6a48c0(); virtual ~Base_6a48c0(); };  // Onyx::Component::Compose<...>
 struct Base_948e20 { Base_948e20(); virtual ~Base_948e20(); };  // Onyx::Component::Compose<...>
 namespace SPTG { struct BreakableObject { BreakableObject(); virtual ~BreakableObject(); }; }
 struct Base_b4c840 { Base_b4c840(); virtual ~Base_b4c840(); };  // Onyx::Component::Compose<...>
@@ -1376,3 +1377,163 @@ struct WindowSettings : ::Onyx::Component::Base {
 }  // namespace Graphics
 }  // namespace Onyx
 void* Create_Onyx_Graphics_WindowSettings() { return new (GenericFactoryResolve(GenericFactoryManager, 0x7b73c94u)->Allocate(sizeof(Onyx::Graphics::WindowSettings))) Onyx::Graphics::WindowSettings; }
+
+// Members of the factories below that have destructors (provisional names; the out-of-line ones are named by their
+// destructors' addresses).
+// A shared counted buffer with its allocator: the last reference frees it.
+struct SharedText {
+    void* allocator;
+    unsigned* buffer;
+    __attribute__((always_inline)) SharedText() : allocator(DefaultAllocator()), buffer(nullptr) {}
+    ~SharedText() {
+        if (buffer) {
+            if (__atomic_sub_fetch(buffer, 1, __ATOMIC_RELAXED) == 0) {
+                if (unsigned* p = buffer) {
+                    DecodeAllocators* m = DecodeAllocatorManager;
+                    m->values[DecodeAllocatorIndex(m, p)]->Free(p);
+                }
+            }
+            buffer = nullptr;
+        }
+    }
+};
+// A list with its allocator, destroyed out of line (0x68d390).
+struct TextList_68d390 {
+    void* allocator;
+    uint64_t value8, value10, value18;
+    __attribute__((always_inline)) TextList_68d390() : allocator(DefaultAllocator()), value8(0), value10(0), value18(0) {}
+    ~TextList_68d390();
+};
+// A list with its allocator, destroyed out of line (0x68fe60). Its constructor clears the words before setting the
+// allocator.
+struct RefVector_68fe60 {
+    void* allocator;
+    uint64_t value8, value10, value18;
+    __attribute__((always_inline)) RefVector_68fe60() { value8 = 0; value10 = 0; value18 = 0; allocator = DefaultAllocator(); }
+    ~RefVector_68fe60();
+};
+// A vector with its allocator: emptied and its data freed when destroyed.
+struct OwnedVector {
+    void* allocator;
+    uint64_t capacity;
+    uint64_t size;
+    void* data;
+    __attribute__((always_inline)) OwnedVector() : allocator(DefaultAllocator()), capacity(0), size(0), data(nullptr) {}
+    ~OwnedVector() {
+        size = 0;
+        if (void* p = data) {
+            DecodeAllocators* m = DecodeAllocatorManager;
+            m->values[DecodeAllocatorIndex(m, p)]->Free(p);
+        }
+    }
+};
+// A 0x50-byte part, cleared when made and destroyed out of line (0x7635a0).
+struct WaypointPart_7635a0 {
+    char data[0x50];
+    ~WaypointPart_7635a0();
+};
+// A registration held by its owner: given back through 0x690ee0 when destroyed, with the owner's +0x30 and the kind.
+struct RegistrationOwner { char padding_0[0x30]; int32_t id; };
+void ReleaseRegistration(void* data, int32_t id, int32_t kind);   // 0x690ee0
+struct Registration {
+    RegistrationOwner* owner;
+    void* data;
+    int32_t kind;
+    __attribute__((always_inline)) Registration() : owner(nullptr), data(nullptr), kind(1) {}
+    ~Registration() { if (owner) ReleaseRegistration(data, owner->id, kind); }
+};
+
+struct Event_68fac0;
+// Onyx::SpawnTicket (factory 0x674e70): drafted from its constructor
+namespace Onyx {
+struct SpawnTicketLayout : ::Onyx::Component::Base {
+ char p8[0x48];
+ RefVector_68fe60 member_50;
+ char p70[0x8];
+ uint64_t field_78;
+ __attribute__((always_inline)) SpawnTicketLayout() : member_50() { field_78 = 0; }
+ virtual ~SpawnTicketLayout() {}
+};
+struct SpawnTicket : SpawnTicketLayout {
+ Onyx::Listener<void(const Event_68fac0&)> member_80;
+ OwnedVector member_98;
+ char pb8[0x8];
+ void F80(const Event_68fac0&);
+ __attribute__((always_inline)) SpawnTicket() : member_80(), member_98() { member_80.owner = this; member_80.function = Onyx::MakeFunction<void(const Event_68fac0&)>(Onyx::MemberFunction<SpawnTicket, void(const Event_68fac0&)>(this, &SpawnTicket::F80)); }
+ virtual ~SpawnTicket();
+};
+}  // namespace Onyx
+void* Create_Onyx_SpawnTicket() { return new (GenericFactoryResolve(GenericFactoryManager, 0x7b73c94u)->Allocate(sizeof(Onyx::SpawnTicket))) Onyx::SpawnTicket; }
+
+struct Event_73c330;
+// Onyx::Fire::FireActionScriptTrigger (factory 0x734840): drafted from its constructor
+namespace Onyx {
+namespace Fire {
+struct FireActionScriptTriggerLayout : ::Onyx::Component::Base {
+ char p8[0x48];
+ uint64_t field_50;
+ __attribute__((always_inline)) FireActionScriptTriggerLayout() { field_50 = 0; }
+ virtual ~FireActionScriptTriggerLayout();
+};
+struct FireActionScriptTrigger : FireActionScriptTriggerLayout {
+ Onyx::Listener<void(const Event_73c330&)> member_58;
+ SharedText member_70;
+ TextList_68d390 member_80;
+ char pa0[0x8];
+ void F58(const Event_73c330&);
+ __attribute__((always_inline)) FireActionScriptTrigger() : member_58(), member_70(), member_80() { member_58.owner = this; member_58.function = Onyx::MakeFunction<void(const Event_73c330&)>(Onyx::MemberFunction<FireActionScriptTrigger, void(const Event_73c330&)>(this, &FireActionScriptTrigger::F58)); }
+ virtual ~FireActionScriptTrigger();
+};
+}  // namespace Fire
+}  // namespace Onyx
+void* Create_Onyx_Fire_FireActionScriptTrigger() { return new (GenericFactoryResolve(GenericFactoryManager, 0x7b73c94u)->Allocate(sizeof(Onyx::Fire::FireActionScriptTrigger))) Onyx::Fire::FireActionScriptTrigger; }
+
+struct Event_880e50;
+struct Event_880eb0;
+// SPTG::LevelStage (factory 0x755280): drafted from its constructor
+namespace SPTG {
+struct LevelStageLayout : Base_6a48c0 {
+ __attribute__((always_inline)) LevelStageLayout() {  }
+ virtual ~LevelStageLayout();
+};
+struct LevelStage : LevelStageLayout {
+ char p8[0xd8];
+ Onyx::Listener<void(const Event_880e50&)> member_e0;
+ Onyx::Listener<void(const Event_880eb0&)> member_f8;
+ Registration member_110;
+ uint32_t field_128;
+ uint8_t field_12c;
+ char p12d[0x3];
+ void Fe0(const Event_880e50&);
+ void Ff8(const Event_880eb0&);
+ __attribute__((always_inline)) LevelStage() : member_e0(), member_f8(), member_110(), field_128(0xffffffffu), field_12c(0) { member_e0.owner = this; member_e0.function = Onyx::MakeFunction<void(const Event_880e50&)>(Onyx::MemberFunction<LevelStage, void(const Event_880e50&)>(this, &LevelStage::Fe0)); member_f8.owner = this; member_f8.function = Onyx::MakeFunction<void(const Event_880eb0&)>(Onyx::MemberFunction<LevelStage, void(const Event_880eb0&)>(this, &LevelStage::Ff8)); }
+ virtual ~LevelStage();
+};
+}  // namespace SPTG
+void* Create_SPTG_LevelStage() { return new (GenericFactoryResolve(GenericFactoryManager, 0x123d701du)->Allocate(sizeof(SPTG::LevelStage))) SPTG::LevelStage; }
+
+struct Event_WorldMapWaypoint_a0;
+struct Event_762e80;
+// SPTG::WorldMapWaypoint (factory 0x7620e0): drafted from its constructor
+namespace SPTG {
+struct WorldMapWaypointLayout : ::Onyx::Component::Base {
+ char p8[0x48];
+ WaypointPart_7635a0 member_50;
+ __attribute__((always_inline)) WorldMapWaypointLayout() : member_50() {}
+ virtual ~WorldMapWaypointLayout() {}
+};
+struct WorldMapWaypoint : WorldMapWaypointLayout {
+ Onyx::Listener<void(const Event_WorldMapWaypoint_a0&)> member_a0;
+ Onyx::Listener<void(const Event_762e80&)> member_b8;
+ uint32_t field_d0;
+ char pd4[0x4];
+ SharedText member_d8;
+ int32_t field_e8;
+ uint16_t field_ec;
+ char pee[0x2];
+ void Fb8(const Event_762e80&);
+ __attribute__((always_inline)) WorldMapWaypoint() : member_a0(), member_b8(), field_d0(0), member_d8(), field_e8(-1), field_ec(1) { member_a0.owner = this; member_b8.owner = this; member_b8.function = Onyx::MakeFunction<void(const Event_762e80&)>(Onyx::MemberFunction<WorldMapWaypoint, void(const Event_762e80&)>(this, &WorldMapWaypoint::Fb8)); }
+ virtual ~WorldMapWaypoint();
+};
+}  // namespace SPTG
+void* Create_SPTG_WorldMapWaypoint() { return new (GenericFactoryResolve(GenericFactoryManager, 0x69a91c98u)->Allocate(sizeof(SPTG::WorldMapWaypoint))) SPTG::WorldMapWaypoint; }
