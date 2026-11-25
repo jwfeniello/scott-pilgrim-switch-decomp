@@ -2315,3 +2315,30 @@ struct RoxyMirror : Boss {
 };
 }  // namespace SPTG
 void* Create_SPTG_RoxyMirror() { return new (GenericFactoryResolve(GenericFactoryManager, 0x1486d4e8u)->Allocate(sizeof(SPTG::RoxyMirror))) SPTG::RoxyMirror; }
+namespace SPTG {
+// SPTG::ControllableStephen (factory 0x74a060) and SPTG::ControllableWallace (0x74a220): four attacks each.
+#define FOUR_ATTACK_PLAYER(Name)\
+    struct Name : ControllablePlayer {                                                                                 \
+        char p1560[0x10];                                                                                              \
+        Attack attack1570;                                                                                             \
+        Attack attack15c8;                                                                                             \
+        float field_1620[2];                                                                                           \
+        uint8_t field_1628;                                                                                            \
+        char p1629[0x7];                                                                                               \
+        Attack attack1630;                                                                                             \
+        Attack attack1688;                                                                                             \
+        float field_16e0[2];                                                                                           \
+        uint8_t field_16e8;                                                                                            \
+        char p16e9[0x3];                                                                                               \
+        int32_t field_16ec;                                                                                            \
+        uint8_t field_16f0;                                                                                            \
+        char p16f1[0x7];                                                                                               \
+        __attribute__((always_inline)) Name() : attack1570(), attack15c8(), field_1620{0.0f, 0.0f}, field_1628(1), attack1630(), attack1688(), field_16e0{0.0f, 0.0f}, field_16e8(1), field_16ec(0), field_16f0(0) {}\
+        virtual ~Name();                                                                                               \
+    };
+FOUR_ATTACK_PLAYER(ControllableStephen)
+FOUR_ATTACK_PLAYER(ControllableWallace)
+#undef FOUR_ATTACK_PLAYER
+}  // namespace SPTG
+void* Create_SPTG_ControllableWallace() { return new (GenericFactoryResolve(GenericFactoryManager, 0x1486d4e8u)->Allocate(sizeof(SPTG::ControllableWallace))) SPTG::ControllableWallace; }
+void* Create_SPTG_ControllableStephen() { return new (GenericFactoryResolve(GenericFactoryManager, 0x1486d4e8u)->Allocate(sizeof(SPTG::ControllableStephen))) SPTG::ControllableStephen; }

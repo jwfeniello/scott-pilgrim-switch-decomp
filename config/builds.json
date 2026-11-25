@@ -516512,6 +516512,40 @@
           "got_bindings": {}
         },
         {
+          "address": "0x74a060",
+          "size": 440,
+          "symbol": "_Z31Create_SPTG_ControllableStephenv",
+          "target_sha256": "ed16826e5676033c117710b02d585d0eeb82d92a3f5642fd7acb95241c125766",
+          "bindings": {
+            "GenericFactoryManager": "0x191c9c8",
+            "GenericFactoryResolve": "0x676160",
+            "_ZN4SPTG18ControllablePlayerC2Ev": "0x95d1d0",
+            "_ZTVN4SPTG19ControllableStephenE": "0x1875668",
+            "_ZN4SPTG6Attack9SetSourceEiPNS_13BaseCharacterE": "0x8e24f0"
+          },
+          "got_bindings": {},
+          "literals": {
+            "cdcccc3d00000040": "0x1331828"
+          }
+        },
+        {
+          "address": "0x74a220",
+          "size": 440,
+          "symbol": "_Z31Create_SPTG_ControllableWallacev",
+          "target_sha256": "35e0959c1ffdd0df588c74296b037b7eeb385d8fb00e690082c3570bb5e8c2d5",
+          "bindings": {
+            "GenericFactoryManager": "0x191c9c8",
+            "GenericFactoryResolve": "0x676160",
+            "_ZN4SPTG18ControllablePlayerC2Ev": "0x95d1d0",
+            "_ZTVN4SPTG19ControllableWallaceE": "0x1873440",
+            "_ZN4SPTG6Attack9SetSourceEiPNS_13BaseCharacterE": "0x8e24f0"
+          },
+          "got_bindings": {},
+          "literals": {
+            "cdcccc3d00000040": "0x1331828"
+          }
+        },
+        {
           "address": "0x74a700",
           "size": 256,
           "symbol": "_Z36Create_SPTG_ProjectileSpawnerCatalogv",
