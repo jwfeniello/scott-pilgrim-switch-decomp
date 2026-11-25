@@ -583420,6 +583420,151 @@
           "got_bindings": {}
         }
       ]
+    },
+    {
+      "id": "zlib_adler32_lto_gear",
+      "kind": "lto",
+      "source": "src/ZlibAdler32LtoRoots.c",
+      "compiler": "8.0.1",
+      "source_review": "public_library_lto_build",
+      "lto_sources": [
+        "vendor/freetype-2.9/src/gzip/adler32.c"
+      ],
+      "keep_source": "src/ZlibAdler32LtoKeep.c",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-x",
+        "c",
+        "-std=gnu99",
+        "-mcpu=cortex-a57",
+        "-fsigned-char",
+        "-DZEXPORT(x)=x",
+        "-DZEXTERN(x)=extern x",
+        "-funwind-tables",
+        "-O3",
+        "-fomit-frame-pointer",
+        "-fPIE",
+        "-ffunction-sections",
+        "-fdata-sections",
+        "-I",
+        "vendor/freetype-2.9/src/gzip",
+        "-isystem",
+        "vendor/musl/include",
+        "-isystem",
+        "vendor/musl/generated",
+        "-flto"
+      ],
+      "keep_flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-x",
+        "c",
+        "-O2"
+      ],
+      "link_flags": [
+        "-e",
+        "zlib_adler32_keep",
+        "--lto-O2",
+        "-pie",
+        "-z",
+        "norelro",
+        "-z",
+        "notext",
+        "--unresolved-symbols=ignore-all"
+      ],
+      "header_roots": [
+        "vendor/freetype-2.9/src/gzip",
+        "vendor/musl/include",
+        "vendor/musl/generated"
+      ],
+      "functions": [
+        {
+          "address": "0xa85030",
+          "size": 628,
+          "symbol": "adler32",
+          "target_sha256": "bf924005edbea11b95323e63bbc66a954f7a3f11b2b8bc7b9c84667ee375ab57",
+          "bindings": {},
+          "got_bindings": {}
+        }
+      ]
+    },
+    {
+      "id": "fire_zlib_lto",
+      "kind": "lto",
+      "source": "src/FireZlibLtoRoots.c",
+      "compiler": "8.0.1",
+      "source_review": "public_library_lto_build",
+      "lto_sources": [],
+      "keep_source": "src/FireZlibLtoKeep.c",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-x",
+        "c",
+        "-std=gnu99",
+        "-mcpu=cortex-a57",
+        "-fsigned-char",
+        "-DZEXPORT(x)=x",
+        "-DZEXTERN(x)=extern x",
+        "-DZEXTERNDEF(x)=extern x",
+        "-funwind-tables",
+        "-O3",
+        "-fomit-frame-pointer",
+        "-fPIE",
+        "-ffunction-sections",
+        "-fdata-sections",
+        "-I",
+        "vendor/freetype-2.9/src/gzip",
+        "-isystem",
+        "vendor/musl/include",
+        "-isystem",
+        "vendor/musl/generated",
+        "-flto"
+      ],
+      "keep_flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-x",
+        "c",
+        "-O2"
+      ],
+      "link_flags": [
+        "-e",
+        "fire_zlib_entry",
+        "--lto-O2",
+        "-pie",
+        "-z",
+        "norelro",
+        "-z",
+        "notext",
+        "--unresolved-symbols=ignore-all"
+      ],
+      "header_roots": [
+        "vendor/freetype-2.9/src/gzip",
+        "vendor/musl/include",
+        "vendor/musl/generated"
+      ],
+      "functions": [
+        {
+          "address": "0xf80a40",
+          "size": 328,
+          "symbol": "inflate_flush",
+          "target_sha256": "32447e0490771076c27d95cf7f043ef08c2d1bb9dba34f160c046b800cccf2db",
+          "bindings": {
+            "ft_memcpy": "0xec21a0"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0xf81250",
+          "size": 628,
+          "symbol": "adler32",
+          "target_sha256": "bf924005edbea11b95323e63bbc66a954f7a3f11b2b8bc7b9c84667ee375ab57",
+          "bindings": {},
+          "got_bindings": {}
+        }
+      ]
     }
   ]
 }

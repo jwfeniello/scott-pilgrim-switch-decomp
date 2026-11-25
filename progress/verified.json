@@ -1,9 +1,9 @@
 {
   "version": 1,
-  "generated_at": "2026-11-25T14:04:21.191091+00:00",
+  "generated_at": "2026-11-25T14:16:41.109338+00:00",
   "target_elf_sha256": "ea95638e6d6aaa0dc6cddd552a9366799aa1ec3bc07ee201f23f6c151103f5b8",
   "input_sha256": {
-    "config/builds.json": "8b9fc00341718d068815d7c5b1630a8caa528c4c170a2a3d347e3742db9dd4bb",
+    "config/builds.json": "e0f760029c476e33101498868a5afe0e5a1f08062aa087ced5968e717ac38879",
     "config/functions.tsv": "399e91468a04e0459194c10d68d2210d1157cedefeb19c7851886ca7632fcb18",
     "config/non_fde_functions.tsv": "6a45f5e185454fa0472af00b2cdc9d040d73ca133d1106217e1fbbe3b32a8175",
     "config/target.json": "23cc6a5227206a953e7668acf5e9ae5c02a25c23b7e7967f0450a814b888241a",
@@ -96,6 +96,8 @@
     "src/FactoryGroup638650.cpp": "980df5c69772eb7820d8b8e92ba142aab62d67b57420cf67264c73f2acd127dc",
     "src/FactoryGroup639650.cpp": "5d7910b3b9232b86861c61d31a567e55fbbbe7e2c2d589cf0ce96f0fde831646",
     "src/FactoryGroup6660A0.cpp": "73c80e41ed695a82f9acb0640bd08458404309047ab7f5bd92e01df47b5d32d3",
+    "src/FireZlibLtoKeep.c": "091fddbb42c92b5f4eb1fcecc2532bfd6c4e9c6dd94c3a3fc196323213124210",
+    "src/FireZlibLtoRoots.c": "bc5482157e33ba227ecb3418e3a7f166a2253bf0f2ff79d91836e2fbb42682b0",
     "src/FloatCallsFloatOmitDirect.cpp": "f0c80cb33d8bdf64e21ba35f69ab8b01b84e3fcf4c376827979bea65af2a8a95",
     "src/FloatCallsIntegerOmitDirect.cpp": "11bdae597e21ecb6387a8b3d88852ea5375d6e36c0f8163b380234012866c5d5",
     "src/FloatCallsVoidOmitDirect.cpp": "5d5105e8770ae29393e6bed423268c30a8fe77324b600aab14533bd68bc78579",
@@ -1045,6 +1047,8 @@
     "src/UnwindStackRecoveryOmitKeepDirect.cpp": "d881219feab2c1ac62a476a78947020af332eb1a31e576b608a46151ea7bbe4a",
     "src/VectorRecoveryOmit.cpp": "22e2ee087e3458f535305b37ff52010a27cbc27a6ac0829d53e217d014072ba9",
     "src/VirtualResultAdapter.cpp": "436a3ddbde6aa3d01599ef5c245e57e963998f8f52d688fd29f7547980f61158",
+    "src/ZlibAdler32LtoKeep.c": "e766e55ec62a10562252784fcb00e848e4130fd90220b7ac6b0909f78b8873d7",
+    "src/ZlibAdler32LtoRoots.c": "c25b6bd66d1695f1a4d19c7a4653697ddc1f6aefa26a1382185e16f63e2069e0",
     "src/Zlib_adler32_O2_omit.c": "ec537ac207846270120b7051e87e75c72549d04b0c0ba68779f172232d33f8d0",
     "src/Zlib_crc32_O2_omit.c": "71dae8a62707aae2001d8bd3da33597f789d50f8c779bcb0fcd4e922296d6164",
     "src/Zlib_deflate_O2_omit.c": "f9a1ec1d933a225672247b6e71a7be7bca40ff2f6c12d3099492850323cd5e7f",
@@ -4067,8 +4071,8 @@
     "8.0.1": "dffd62a213ec6cdb4430012a4a41c11e5e32c288f133d5391f9be49e1c5b69de",
     "lld": "c4b3aaea06ff7112c64753047a2ab279fc3fe10dd807fd3c22edfdae99f43eed"
   },
-  "exact_functions": 39616,
-  "exact_bytes": 5291856,
+  "exact_functions": 39619,
+  "exact_bytes": 5293440,
   "builds": [
     {
       "id": "probes",
@@ -13779,6 +13783,16 @@
       "id": "gameplay_fire_platformplayer",
       "compiler": "8.0.1",
       "object_sha256": "91e2fc08a3818a8b7f40a519b6d3ff91a5dd57c659f22fbf1d17a3184e074bd7"
+    },
+    {
+      "id": "zlib_adler32_lto_gear",
+      "compiler": "8.0.1",
+      "object_sha256": "7655a7d7317a3660970afe78c08e4e3e273302444ccaacd6fc898b70155d1c42"
+    },
+    {
+      "id": "fire_zlib_lto",
+      "compiler": "8.0.1",
+      "object_sha256": "e83d5f50f14c178a7a4825e688e251cfbd15e05385b3b3363729227ee3cc474e"
     }
   ],
   "matches": [
@@ -325721,6 +325735,17 @@
       "relocation_count": 1
     },
     {
+      "address": "0xa85030",
+      "size": 628,
+      "exact": true,
+      "target_sha256": "bf924005edbea11b95323e63bbc66a954f7a3f11b2b8bc7b9c84667ee375ab57",
+      "compiled_sha256": "bf924005edbea11b95323e63bbc66a954f7a3f11b2b8bc7b9c84667ee375ab57",
+      "source": "src/ZlibAdler32LtoRoots.c",
+      "symbol": "adler32",
+      "source_review": "public_library_lto_build",
+      "relocation_count": 0
+    },
+    {
       "address": "0xa89500",
       "size": 164,
       "exact": true,
@@ -448338,6 +448363,17 @@
       "relocation_count": 0
     },
     {
+      "address": "0xf80a40",
+      "size": 328,
+      "exact": true,
+      "target_sha256": "32447e0490771076c27d95cf7f043ef08c2d1bb9dba34f160c046b800cccf2db",
+      "compiled_sha256": "32447e0490771076c27d95cf7f043ef08c2d1bb9dba34f160c046b800cccf2db",
+      "source": "src/FireZlibLtoRoots.c",
+      "symbol": "inflate_flush",
+      "source_review": "public_library_lto_build",
+      "relocation_count": 2
+    },
+    {
       "address": "0xf81220",
       "size": 24,
       "exact": true,
@@ -448358,6 +448394,17 @@
       "symbol": "RecoveredLeaf_f81240",
       "source_review": "generated_cxx_abi_view",
       "relocation_count": 1
+    },
+    {
+      "address": "0xf81250",
+      "size": 628,
+      "exact": true,
+      "target_sha256": "bf924005edbea11b95323e63bbc66a954f7a3f11b2b8bc7b9c84667ee375ab57",
+      "compiled_sha256": "bf924005edbea11b95323e63bbc66a954f7a3f11b2b8bc7b9c84667ee375ab57",
+      "source": "src/FireZlibLtoRoots.c",
+      "symbol": "adler32",
+      "source_review": "public_library_lto_build",
+      "relocation_count": 0
     },
     {
       "address": "0xf814d0",
