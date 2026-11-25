@@ -576163,6 +576163,86 @@
       ]
     },
     {
+      "id": "onyx_fire_renderer",
+      "source": "src/gameplay/OnyxFireRenderer.cpp",
+      "compiler": "8.0.1",
+      "source_review": "manual_reconstruction",
+      "flags": [
+        "-target",
+        "aarch64-none-elf",
+        "-std=c++11",
+        "-O2",
+        "-mcpu=cortex-a57",
+        "-fstrict-aliasing",
+        "-fomit-frame-pointer",
+        "-fno-pic",
+        "-fno-delete-null-pointer-checks",
+        "-ffunction-sections",
+        "-fdata-sections"
+      ],
+      "header_roots": [
+        "src/gameplay"
+      ],
+      "functions": [
+        {
+          "address": "0x73ef20",
+          "size": 48,
+          "symbol": "_ZN4Onyx4Fire12FireRendererD2Ev",
+          "target_sha256": "06067dd94b363ffd5b8410115efce120d8379a5bfcba749a3cfbbaefe86361cf",
+          "bindings": {
+            "_ZTVN4Onyx4Fire12FireRendererE": "0x184a6c0",
+            "_ZN4Onyx4Fire12VertexArraysD1Ev": "0x73ee20",
+            "_ZN4Onyx4Fire17RendererResources7ReleaseEPS1_": "0x73d810",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x73ef50",
+          "size": 64,
+          "symbol": "_ZN4Onyx4Fire12FireRendererD0Ev",
+          "target_sha256": "1558eee87c3e3f19671b719a2f8bb2f9d6da060d67ec0ab38c00db53658c2ec7",
+          "bindings": {
+            "_ZTVN4Onyx4Fire12FireRendererE": "0x184a6c0",
+            "_ZN4Onyx4Fire12VertexArraysD1Ev": "0x73ee20",
+            "_ZN4Onyx4Fire17RendererResources7ReleaseEPS1_": "0x73d810",
+            "_ZdlPv": "0xfa3b40",
+            "__clang_call_terminate": "0x6768b8"
+          },
+          "got_bindings": {}
+        },
+        {
+          "address": "0x73f640",
+          "size": 92,
+          "symbol": "_ZN4Onyx4Fire12FireRenderer15PrepareVerticesEjjPj",
+          "target_sha256": "6be10537af44e2f788f56773e73a4c433fdddb2a1cd432d0c807d8b34cd76cd0",
+          "bindings": {
+            "_ZN4Onyx4Fire13ReadyVerticesEjPNS0_11VertexArrayEi": "0x6d8a10"
+          },
+          "got_bindings": {},
+          "literals": {
+            "08000000100000000c00000014000000": "0x13341a0"
+          }
+        },
+        {
+          "address": "0x73fbf0",
+          "size": 48,
+          "symbol": "_ZN4Onyx4Fire12FireRenderer10SetTextureEPNS0_11FireTextureE",
+          "target_sha256": "645e3489107ce194fad7605eeee448d15537b2d41425dfdb6e3cac11bb328290",
+          "bindings": {},
+          "got_bindings": {}
+        },
+        {
+          "address": "0x73fc60",
+          "size": 52,
+          "symbol": "_ZN4Onyx4Fire12FireRenderer13SetTextureRefEPNS0_14FireTextureRefE",
+          "target_sha256": "b2fe26c6af4b6dfa666c117ff3d91e73056cb64cea9b1d3eebb7133030adb477",
+          "bindings": {},
+          "got_bindings": {}
+        }
+      ]
+    },
+    {
       "id": "onyx_async_broker",
       "source": "src/gameplay/OnyxAsyncBroker.cpp",
       "compiler": "8.0.1",
